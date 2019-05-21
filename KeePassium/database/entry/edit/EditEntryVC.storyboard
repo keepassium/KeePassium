@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Entry-->
+        <scene sceneID="dEd-KK-5Fq">
+            <objects>
+                <tableViewController storyboardIdentifier="EditEntryVC" title="Edit Entry" id="dyC-HY-kh4" customClass="EditEntryVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zyf-Cf-svH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="86" id="GLB-1c-KE8" customClass="EditEntryTitleCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GLB-1c-KE8" id="9Es-ir-laV">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/kpbIcon00" translatesAutoresizingMaskIntoConstraints="NO" id="10U-0j-Qe5">
+                                            <rect key="frame" x="16" y="11" width="29" height="29"/>
+                                            <color key="tintColor" name="ActionTint"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="29" id="NW4-Ih-278"/>
+                                                <constraint firstAttribute="height" constant="29" id="rL7-C7-WIc"/>
+                                            </constraints>
+                                        </imageView>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Entry Title" borderStyle="roundedRect" placeholder="Entry Title" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-If-zfn" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                            <rect key="frame" x="53" y="11" width="306" height="30"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-rc-pdR">
+                                            <rect key="frame" x="16" y="48" width="92" height="36"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="tintColor" name="ActionTint"/>
+                                            <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                                            <state key="normal" title="Change Icon"/>
+                                            <connections>
+                                                <action selector="didPressChangeIcon:" destination="GLB-1c-KE8" eventType="touchUpInside" id="Qoc-MH-Wkf"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <gestureRecognizers/>
+                                    <constraints>
+                                        <constraint firstItem="HcW-rc-pdR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mGc-If-zfn" secondAttribute="bottom" constant="4" id="2zE-9x-4Ts"/>
+                                        <constraint firstItem="10U-0j-Qe5" firstAttribute="top" secondItem="9Es-ir-laV" secondAttribute="topMargin" id="3IL-3l-OR9"/>
+                                        <constraint firstItem="mGc-If-zfn" firstAttribute="trailing" secondItem="9Es-ir-laV" secondAttribute="trailingMargin" id="Cj7-de-yDR"/>
+                                        <constraint firstItem="HcW-rc-pdR" firstAttribute="top" secondItem="10U-0j-Qe5" secondAttribute="bottom" priority="750" constant="8" id="PbJ-Ff-fIB"/>
+                                        <constraint firstItem="mGc-If-zfn" firstAttribute="top" secondItem="9Es-ir-laV" secondAttribute="topMargin" id="QD8-TM-ifx"/>
+                                        <constraint firstItem="mGc-If-zfn" firstAttribute="leading" secondItem="10U-0j-Qe5" secondAttribute="trailing" constant="8" id="XW4-GU-QCO"/>
+                                        <constraint firstItem="HcW-rc-pdR" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="9Es-ir-laV" secondAttribute="bottom" id="kCc-Eu-jIg"/>
+                                        <constraint firstItem="10U-0j-Qe5" firstAttribute="leading" secondItem="9Es-ir-laV" secondAttribute="leadingMargin" id="ryr-MC-Yl3"/>
+                                        <constraint firstItem="HcW-rc-pdR" firstAttribute="leading" secondItem="10U-0j-Qe5" secondAttribute="leading" id="x99-82-rYb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="changeIconButton" destination="HcW-rc-pdR" id="4r3-89-bzE"/>
+                                    <outlet property="iconView" destination="10U-0j-Qe5" id="OyN-WA-JpH"/>
+                                    <outlet property="titleTextField" destination="mGc-If-zfn" id="Wgt-4Z-iil"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineCell" rowHeight="80" id="fOA-rA-t9w" customClass="EditEntrySingleLineCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="114" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fOA-rA-t9w" id="fv0-vc-xOU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zo6-9v-QQD" userLabel="Separator">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="p7c-1i-Stv"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN9-CU-AJF">
+                                            <rect key="frame" x="16" y="12" width="343" height="19"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Field Value" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zr2-BH-wQ3" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="39" width="343" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="JcH-Or-9Cf"/>
+                                            </constraints>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="zo6-9v-QQD" secondAttribute="trailing" id="NKp-Gx-XFk"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="CN9-CU-AJF" secondAttribute="trailing" id="Qk4-hL-53H"/>
+                                        <constraint firstItem="zo6-9v-QQD" firstAttribute="leading" secondItem="fv0-vc-xOU" secondAttribute="leading" id="VMh-Ye-oOw"/>
+                                        <constraint firstItem="zr2-BH-wQ3" firstAttribute="leading" secondItem="fv0-vc-xOU" secondAttribute="leadingMargin" id="XB0-Mn-9Av"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zr2-BH-wQ3" secondAttribute="trailing" id="YXl-RR-pqr"/>
+                                        <constraint firstItem="zr2-BH-wQ3" firstAttribute="top" secondItem="CN9-CU-AJF" secondAttribute="bottom" constant="8" id="b0A-5H-XPw"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="zr2-BH-wQ3" secondAttribute="bottom" id="r3g-HG-5oV"/>
+                                        <constraint firstItem="zo6-9v-QQD" firstAttribute="top" secondItem="fv0-vc-xOU" secondAttribute="top" id="y0D-zA-Rob"/>
+                                        <constraint firstItem="CN9-CU-AJF" firstAttribute="top" secondItem="zo6-9v-QQD" secondAttribute="bottom" constant="8" id="yW0-WQ-5Cv"/>
+                                        <constraint firstItem="CN9-CU-AJF" firstAttribute="leading" secondItem="fv0-vc-xOU" secondAttribute="leadingMargin" id="zSb-gY-Npx"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="zr2-BH-wQ3" id="Bqm-QR-otS"/>
+                                    <outlet property="titleLabel" destination="CN9-CU-AJF" id="W1O-DL-4V6"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineProtectedCell" rowHeight="80" id="Kw5-lo-PXD" customClass="EditEntrySingleLineProtectedCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="194" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kw5-lo-PXD" id="n4E-7U-Owp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="903-Pj-kT9" userLabel="Separator">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="C9V-Uc-gIb"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-4o-MBS">
+                                            <rect key="frame" x="16" y="12" width="254" height="19"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Field Value" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ro2-Xv-zrw" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="39" width="343" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="8RP-zF-9wp"/>
+                                            </constraints>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-wo-jYf">
+                                            <rect key="frame" x="278" y="7" width="81" height="32"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <state key="normal" title="Randomize"/>
+                                            <connections>
+                                                <action selector="didPressRandomizeButton:" destination="Kw5-lo-PXD" eventType="touchUpInside" id="aQH-Hs-qJc"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kN4-4o-MBS" firstAttribute="top" secondItem="903-Pj-kT9" secondAttribute="bottom" constant="8" id="5It-NO-unn"/>
+                                        <constraint firstItem="Ro2-Xv-zrw" firstAttribute="top" secondItem="kN4-4o-MBS" secondAttribute="bottom" constant="8" id="5ty-ot-h51"/>
+                                        <constraint firstAttribute="trailing" secondItem="903-Pj-kT9" secondAttribute="trailing" id="FNk-yy-fEq"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Ro2-Xv-zrw" secondAttribute="bottom" id="KVh-Ug-Ohv"/>
+                                        <constraint firstItem="Ro2-Xv-zrw" firstAttribute="leading" secondItem="n4E-7U-Owp" secondAttribute="leadingMargin" id="KlV-6i-GV0"/>
+                                        <constraint firstItem="z2C-wo-jYf" firstAttribute="leading" secondItem="kN4-4o-MBS" secondAttribute="trailing" constant="8" id="UvQ-au-DGe"/>
+                                        <constraint firstItem="903-Pj-kT9" firstAttribute="leading" secondItem="n4E-7U-Owp" secondAttribute="leading" id="a5E-LP-zcO"/>
+                                        <constraint firstItem="Ro2-Xv-zrw" firstAttribute="top" secondItem="z2C-wo-jYf" secondAttribute="bottom" id="cY0-TH-sNb"/>
+                                        <constraint firstItem="kN4-4o-MBS" firstAttribute="leading" secondItem="n4E-7U-Owp" secondAttribute="leadingMargin" id="ech-K4-SdJ"/>
+                                        <constraint firstItem="903-Pj-kT9" firstAttribute="top" secondItem="n4E-7U-Owp" secondAttribute="top" id="g8t-tA-8o5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ro2-Xv-zrw" secondAttribute="trailing" id="maP-wj-csG"/>
+                                        <constraint firstItem="z2C-wo-jYf" firstAttribute="trailing" secondItem="Ro2-Xv-zrw" secondAttribute="trailing" id="ncY-vZ-zto"/>
+                                        <constraint firstItem="z2C-wo-jYf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="903-Pj-kT9" secondAttribute="bottom" id="ndN-bi-5Hx"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="randomizeButton" destination="z2C-wo-jYf" id="NEy-eb-wcL"/>
+                                    <outlet property="textField" destination="Ro2-Xv-zrw" id="c0e-CI-ITG"/>
+                                    <outlet property="titleLabel" destination="kN4-4o-MBS" id="h1b-82-aP7"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MultiLineCell" rowHeight="157" id="5Ke-qE-K1F" customClass="EditEntryMultiLineCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="274" width="375" height="157"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ke-qE-K1F" id="MDp-Cu-Sys">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="998-Hc-DjE" userLabel="Separator">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="Yqm-Ad-P63"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYx-OE-79H">
+                                            <rect key="frame" x="16" y="12" width="343" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9e5-bz-qOo" customClass="ValidatingTextView" customModule="KeePassium" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="39.5" width="343" height="102.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="750" constant="200" id="TKR-Wn-Ydd"/>
+                                            </constraints>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9e5-bz-qOo" secondAttribute="bottom" constant="4" id="9Es-wf-O4H"/>
+                                        <constraint firstItem="9e5-bz-qOo" firstAttribute="trailing" secondItem="MDp-Cu-Sys" secondAttribute="trailingMargin" id="Bm8-RB-43q"/>
+                                        <constraint firstItem="998-Hc-DjE" firstAttribute="top" secondItem="MDp-Cu-Sys" secondAttribute="top" id="JdU-lx-010"/>
+                                        <constraint firstAttribute="trailing" secondItem="998-Hc-DjE" secondAttribute="trailing" id="VI8-cg-Yg0"/>
+                                        <constraint firstItem="9e5-bz-qOo" firstAttribute="top" secondItem="mYx-OE-79H" secondAttribute="bottom" constant="8" id="g4E-CE-Css"/>
+                                        <constraint firstItem="mYx-OE-79H" firstAttribute="leading" secondItem="MDp-Cu-Sys" secondAttribute="leadingMargin" id="lnd-KU-4EO"/>
+                                        <constraint firstItem="mYx-OE-79H" firstAttribute="top" secondItem="998-Hc-DjE" secondAttribute="bottom" constant="8" id="ppl-Te-dgq"/>
+                                        <constraint firstItem="9e5-bz-qOo" firstAttribute="leading" secondItem="MDp-Cu-Sys" secondAttribute="leadingMargin" id="qGo-YH-r5B"/>
+                                        <constraint firstItem="998-Hc-DjE" firstAttribute="leading" secondItem="MDp-Cu-Sys" secondAttribute="leading" id="vvx-dW-8ug"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="mYx-OE-79H" secondAttribute="trailing" id="yCP-ZK-r6h"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textView" destination="9e5-bz-qOo" id="hbl-RK-Mcw"/>
+                                    <outlet property="titleLabel" destination="mYx-OE-79H" id="wof-BP-yiC"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomFieldCell" rowHeight="197" id="CcF-c8-r4M" customClass="EditEntryCustomFieldCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="431" width="375" height="197"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CcF-c8-r4M" id="8k8-If-CEX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDy-AV-pKE" userLabel="Separator">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="aNX-bx-azn"/>
+                                            </constraints>
+                                        </view>
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Field Name" borderStyle="roundedRect" placeholder="Field Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-Xd-ff5" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="12" width="343" height="30"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7iU-ut-hd7" customClass="ValidatingTextView" customModule="KeePassium" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="50" width="343" height="93"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="750" constant="150" id="o4u-g8-4jQ"/>
+                                            </constraints>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eox-My-Hns">
+                                            <rect key="frame" x="310" y="151" width="51" height="31"/>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In-memory Protection" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pb-xb-fuf">
+                                            <rect key="frame" x="16" y="156" width="286" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eox-My-Hns" secondAttribute="trailing" id="8UL-gi-tig"/>
+                                        <constraint firstItem="0pb-xb-fuf" firstAttribute="centerY" secondItem="eox-My-Hns" secondAttribute="centerY" id="93i-wP-ueg"/>
+                                        <constraint firstItem="eox-My-Hns" firstAttribute="leading" secondItem="0pb-xb-fuf" secondAttribute="trailing" constant="8" id="FGh-18-s7j"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="7iU-ut-hd7" secondAttribute="trailing" id="ILo-tq-FmI"/>
+                                        <constraint firstItem="7iU-ut-hd7" firstAttribute="top" secondItem="ecN-Xd-ff5" secondAttribute="bottom" constant="8" id="QiZ-92-wp5"/>
+                                        <constraint firstAttribute="trailing" secondItem="cDy-AV-pKE" secondAttribute="trailing" id="USV-Kh-HP9"/>
+                                        <constraint firstItem="ecN-Xd-ff5" firstAttribute="top" secondItem="cDy-AV-pKE" secondAttribute="bottom" constant="8" id="Vd2-Qa-MzU"/>
+                                        <constraint firstItem="cDy-AV-pKE" firstAttribute="top" secondItem="8k8-If-CEX" secondAttribute="top" id="XQV-Rc-Jti"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eox-My-Hns" secondAttribute="bottom" constant="4" id="bip-aF-SUF"/>
+                                        <constraint firstItem="eox-My-Hns" firstAttribute="top" secondItem="7iU-ut-hd7" secondAttribute="bottom" constant="8" id="cVd-5B-6xA"/>
+                                        <constraint firstItem="cDy-AV-pKE" firstAttribute="leading" secondItem="8k8-If-CEX" secondAttribute="leading" id="lGf-yl-wzs"/>
+                                        <constraint firstItem="0pb-xb-fuf" firstAttribute="leading" secondItem="8k8-If-CEX" secondAttribute="leadingMargin" id="rGw-bn-DcK"/>
+                                        <constraint firstItem="ecN-Xd-ff5" firstAttribute="leading" secondItem="8k8-If-CEX" secondAttribute="leadingMargin" id="wLP-5q-MPz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ecN-Xd-ff5" secondAttribute="trailing" id="yaj-Pm-Vop"/>
+                                        <constraint firstItem="7iU-ut-hd7" firstAttribute="leading" secondItem="8k8-If-CEX" secondAttribute="leadingMargin" id="zUq-TC-Xaj"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameTextField" destination="ecN-Xd-ff5" id="CnH-83-W6v"/>
+                                    <outlet property="protectionSwitch" destination="eox-My-Hns" id="uu4-Aw-Frn"/>
+                                    <outlet property="valueTextView" destination="7iU-ut-hd7" id="SO3-fk-v0n"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dyC-HY-kh4" id="O61-jZ-KAx"/>
+                            <outlet property="delegate" destination="dyC-HY-kh4" id="tQJ-WP-lgN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Entry" id="l3s-Bv-fA1" userLabel="Edit Entry">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pJ7-8j-CZA">
+                            <connections>
+                                <action selector="onCancelAction:" destination="dyC-HY-kh4" id="HbE-tw-28V"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="done" systemItem="done" id="urr-zn-2MK">
+                                <connections>
+                                    <action selector="onSaveAction:" destination="dyC-HY-kh4" id="MPz-Hx-N6f"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="HGI-xq-zUf">
+                                <connections>
+                                    <action selector="didPressAddField:" destination="dyC-HY-kh4" id="bWR-w3-H61"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addFieldButton" destination="HGI-xq-zUf" id="aPE-l1-Fw7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WWU-SY-Plz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4146.3999999999996" y="1255.3223388305848"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="db-icons/kpbIcon00" width="29" height="29"/>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+    <color key="tintColor" name="ActionTint"/>
+</document>

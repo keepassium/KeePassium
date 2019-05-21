@@ -1,0 +1,1036 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7505E8CB2236C93300E5202E /* TOTPGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CA2236C93300E5202E /* TOTPGenerator.swift */; };
+		7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CE2236ED6E00E5202E /* Base32.swift */; };
+		7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8D02236FA0F00E5202E /* StringExtension.swift */; };
+		75C764E4226F475500025F8B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */; };
+		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
+		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B862174F02F00F7DEF2 /* salsa20.c */; };
+		75D09BA52174F02F00F7DEF2 /* CryptoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B872174F02F00F7DEF2 /* CryptoError.swift */; };
+		75D09BAE2174F3E600F7DEF2 /* KeePassiumLib-prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BAB2174F3E500F7DEF2 /* KeePassiumLib-prefix.pch */; };
+		75D09BAF2174F3E600F7DEF2 /* KeePassiumLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BAD2174F3E600F7DEF2 /* KeePassiumLib.m */; };
+		75D09BCE2174F76500F7DEF2 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BB12174F76400F7DEF2 /* chacha20.c */; };
+		75D09BCF2174F76500F7DEF2 /* chacha20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BB22174F76400F7DEF2 /* chacha20.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75D09BD02174F76500F7DEF2 /* aeskdf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BB42174F76400F7DEF2 /* aeskdf.cpp */; };
+		75D09BD12174F76500F7DEF2 /* aeskdf.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BB52174F76400F7DEF2 /* aeskdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75D09BD22174F76500F7DEF2 /* ChaCha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BB62174F76400F7DEF2 /* ChaCha20.swift */; };
+		75D09BD32174F76500F7DEF2 /* Twofish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BB72174F76500F7DEF2 /* Twofish.swift */; };
+		75D09BD42174F76500F7DEF2 /* twofish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BB92174F76500F7DEF2 /* twofish.cpp */; };
+		75D09BD52174F76500F7DEF2 /* twofish.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BBA2174F76500F7DEF2 /* twofish.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75D09BD62174F76500F7DEF2 /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BBC2174F76500F7DEF2 /* thread.c */; };
+		75D09BD72174F76500F7DEF2 /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BBD2174F76500F7DEF2 /* core.h */; };
+		75D09BD82174F76500F7DEF2 /* blamka-round-ref.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BBF2174F76500F7DEF2 /* blamka-round-ref.h */; };
+		75D09BD92174F76500F7DEF2 /* blamka-round-opt.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BC02174F76500F7DEF2 /* blamka-round-opt.h */; };
+		75D09BDA2174F76500F7DEF2 /* blake2.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BC12174F76500F7DEF2 /* blake2.h */; };
+		75D09BDB2174F76500F7DEF2 /* blake2b.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BC22174F76500F7DEF2 /* blake2b.c */; };
+		75D09BDC2174F76500F7DEF2 /* blake2-impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BC32174F76500F7DEF2 /* blake2-impl.h */; };
+		75D09BDD2174F76500F7DEF2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 75D09BC42174F76500F7DEF2 /* LICENSE */; };
+		75D09BDE2174F76500F7DEF2 /* ref.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BC52174F76500F7DEF2 /* ref.c */; };
+		75D09BDF2174F76500F7DEF2 /* argon2.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BC62174F76500F7DEF2 /* argon2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75D09BE02174F76500F7DEF2 /* encoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BC72174F76500F7DEF2 /* encoding.h */; };
+		75D09BE12174F76500F7DEF2 /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BC82174F76500F7DEF2 /* core.c */; };
+		75D09BE22174F76500F7DEF2 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09BC92174F76500F7DEF2 /* thread.h */; };
+		75D09BE32174F76500F7DEF2 /* argon2.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BCA2174F76500F7DEF2 /* argon2.c */; };
+		75D09BE42174F76500F7DEF2 /* encoding.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BCB2174F76500F7DEF2 /* encoding.c */; };
+		75D09BE52174F76500F7DEF2 /* CryptoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BCC2174F76500F7DEF2 /* CryptoManager.swift */; };
+		75D09BE62174F76500F7DEF2 /* Argon2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BCD2174F76500F7DEF2 /* Argon2.swift */; };
+		75D09C1B2174F77000F7DEF2 /* KDFFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BE92174F77000F7DEF2 /* KDFFactory.swift */; };
+		75D09C1C2174F77000F7DEF2 /* AESKDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BEA2174F77000F7DEF2 /* AESKDF.swift */; };
+		75D09C1D2174F77000F7DEF2 /* KDFParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BEB2174F77000F7DEF2 /* KDFParams.swift */; };
+		75D09C1E2174F77000F7DEF2 /* Argon2KDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BEC2174F77000F7DEF2 /* Argon2KDF.swift */; };
+		75D09C1F2174F77000F7DEF2 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BED2174F77000F7DEF2 /* Attachment.swift */; };
+		75D09C202174F77000F7DEF2 /* Header2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BEF2174F77000F7DEF2 /* Header2.swift */; };
+		75D09C212174F77000F7DEF2 /* Binary2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF02174F77000F7DEF2 /* Binary2.swift */; };
+		75D09C222174F77000F7DEF2 /* CustomData2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF12174F77000F7DEF2 /* CustomData2.swift */; };
+		75D09C232174F77000F7DEF2 /* Database2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF22174F77000F7DEF2 /* Database2.swift */; };
+		75D09C242174F77000F7DEF2 /* Attachment2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF32174F77000F7DEF2 /* Attachment2.swift */; };
+		75D09C252174F77000F7DEF2 /* Entry2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF42174F77000F7DEF2 /* Entry2.swift */; };
+		75D09C262174F77000F7DEF2 /* Xml2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF52174F77000F7DEF2 /* Xml2.swift */; };
+		75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF62174F77000F7DEF2 /* KeyHelper2.swift */; };
+		75D09C282174F77000F7DEF2 /* CustomIcon2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF72174F77000F7DEF2 /* CustomIcon2.swift */; };
+		75D09C292174F77000F7DEF2 /* Group2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF82174F77000F7DEF2 /* Group2.swift */; };
+		75D09C2A2174F77000F7DEF2 /* DeletedObject2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BF92174F77000F7DEF2 /* DeletedObject2.swift */; };
+		75D09C2B2174F77000F7DEF2 /* Meta2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BFA2174F77000F7DEF2 /* Meta2.swift */; };
+		75D09C2C2174F77000F7DEF2 /* IconID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BFB2174F77000F7DEF2 /* IconID.swift */; };
+		75D09C2D2174F77000F7DEF2 /* VarDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BFD2174F77000F7DEF2 /* VarDict.swift */; };
+		75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BFE2174F77000F7DEF2 /* UUID+extension.swift */; };
+		75D09C2F2174F77000F7DEF2 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BFF2174F77000F7DEF2 /* Date+extension.swift */; };
+		75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C002174F77000F7DEF2 /* ByteArray.swift */; };
+		75D09C312174F77000F7DEF2 /* Eraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C012174F77000F7DEF2 /* Eraser.swift */; };
+		75D09C322174F77000F7DEF2 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C022174F77000F7DEF2 /* String+extension.swift */; };
+		75D09C332174F77000F7DEF2 /* ProgressInterruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C032174F77000F7DEF2 /* ProgressInterruption.swift */; };
+		75D09C342174F77000F7DEF2 /* Bool+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C042174F77000F7DEF2 /* Bool+extension.swift */; };
+		75D09C362174F77000F7DEF2 /* FixedWidthInteger+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C062174F77000F7DEF2 /* FixedWidthInteger+extension.swift */; };
+		75D09C372174F77000F7DEF2 /* KeyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C072174F77000F7DEF2 /* KeyHelper.swift */; };
+		75D09C382174F77000F7DEF2 /* StreamCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C092174F77000F7DEF2 /* StreamCipher.swift */; };
+		75D09C392174F77000F7DEF2 /* TwofishDataCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C0A2174F77000F7DEF2 /* TwofishDataCipher.swift */; };
+		75D09C3A2174F77000F7DEF2 /* DataCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C0B2174F77000F7DEF2 /* DataCipher.swift */; };
+		75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C0C2174F77000F7DEF2 /* DataCipherFactory.swift */; };
+		75D09C3C2174F77000F7DEF2 /* ChaCha20DataCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C0D2174F77000F7DEF2 /* ChaCha20DataCipher.swift */; };
+		75D09C3D2174F77000F7DEF2 /* AESDataCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C0E2174F77000F7DEF2 /* AESDataCipher.swift */; };
+		75D09C3E2174F77000F7DEF2 /* StreamCipherFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C0F2174F77000F7DEF2 /* StreamCipherFactory.swift */; };
+		75D09C3F2174F77000F7DEF2 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C102174F77000F7DEF2 /* Entry.swift */; };
+		75D09C402174F77000F7DEF2 /* Eraseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C112174F77000F7DEF2 /* Eraseable.swift */; };
+		75D09C412174F77000F7DEF2 /* Database1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C132174F77000F7DEF2 /* Database1.swift */; };
+		75D09C422174F77000F7DEF2 /* Header1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C142174F77000F7DEF2 /* Header1.swift */; };
+		75D09C432174F77000F7DEF2 /* DateExtension-kp1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C152174F77000F7DEF2 /* DateExtension-kp1.swift */; };
+		75D09C442174F77000F7DEF2 /* Group1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C162174F77000F7DEF2 /* Group1.swift */; };
+		75D09C452174F77000F7DEF2 /* Entry1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C172174F77000F7DEF2 /* Entry1.swift */; };
+		75D09C462174F77000F7DEF2 /* KeyHelper1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C182174F77000F7DEF2 /* KeyHelper1.swift */; };
+		75D09C472174F77000F7DEF2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C192174F77000F7DEF2 /* Database.swift */; };
+		75D09C482174F77000F7DEF2 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C1A2174F77000F7DEF2 /* Group.swift */; };
+		75D09C572174F81900F7DEF2 /* Data+Gzip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C4C2174F81900F7DEF2 /* Data+Gzip.swift */; };
+		75D09C5A2174F81900F7DEF2 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C502174F81900F7DEF2 /* Options.swift */; };
+		75D09C5C2174F81900F7DEF2 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C522174F81900F7DEF2 /* Error.swift */; };
+		75D09C5D2174F81900F7DEF2 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C532174F81900F7DEF2 /* Element.swift */; };
+		75D09C5F2174F81900F7DEF2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C552174F81900F7DEF2 /* Document.swift */; };
+		75D09C602174F81900F7DEF2 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C562174F81900F7DEF2 /* Parser.swift */; };
+		75D09C622174F89A00F7DEF2 /* ProgressEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C612174F89A00F7DEF2 /* ProgressEx.swift */; };
+		75D0C77B2174AF2000C64C93 /* KeePassiumLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA2D1621B2FB4000826FC6 /* Diag.swift */; };
+		75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD12177456200B22D8B /* PasswordGenerator.swift */; };
+		75F4ACD5217745B300B22D8B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD3217745B300B22D8B /* DatabaseManager.swift */; };
+		75F4ACD6217745B300B22D8B /* DatabaseManagerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD4217745B300B22D8B /* DatabaseManagerObserver.swift */; };
+		75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD82177469500B22D8B /* TemporaryFileURL.swift */; };
+		75F4ACE02177469500B22D8B /* FileKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD92177469500B22D8B /* FileKeeper.swift */; };
+		75F4ACE12177469500B22D8B /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDA2177469500B22D8B /* FileType.swift */; };
+		75F4ACE22177469500B22D8B /* DatabaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDB2177469500B22D8B /* DatabaseDocument.swift */; };
+		75F4ACE32177469500B22D8B /* FileDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDC2177469500B22D8B /* FileDocument.swift */; };
+		75F4ACE42177469500B22D8B /* FileKeeperObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */; };
+		75F4ACE52177469500B22D8B /* URLReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDE2177469500B22D8B /* URLReference.swift */; };
+		75F4ACEA2177485D00B22D8B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACE72177485D00B22D8B /* Settings.swift */; };
+		75F4ACEB2177485D00B22D8B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACE82177485D00B22D8B /* Keychain.swift */; };
+		75F4ACEC2177485D00B22D8B /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACE92177485D00B22D8B /* Weak.swift */; };
+		75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACED217749DB00B22D8B /* UserDefaults+appGroupShared.swift */; };
+		75F4ACF0217749DC00B22D8B /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACEE217749DB00B22D8B /* AppGroup.swift */; };
+		75F4ACF321774A6400B22D8B /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACF121774A6300B22D8B /* Clipboard.swift */; };
+		75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACF221774A6300B22D8B /* URL+extensions.swift */; };
+		75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F594B7221BDC51001729FD /* SettingsMigrator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		75C764E5226F475500025F8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75D0C7612174AF1F00C64C93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75D0C7692174AF1F00C64C93;
+			remoteInfo = KeePassiumLib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7505E8CA2236C93300E5202E /* TOTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGenerator.swift; sourceTree = "<group>"; };
+		7505E8CE2236ED6E00E5202E /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
+		7505E8D02236FA0F00E5202E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		75C764DF226F475500025F8B /* KeePassiumLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeePassiumLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
+		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
+		75D09B862174F02F00F7DEF2 /* salsa20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = salsa20.c; sourceTree = "<group>"; };
+		75D09B872174F02F00F7DEF2 /* CryptoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoError.swift; sourceTree = "<group>"; };
+		75D09BAB2174F3E500F7DEF2 /* KeePassiumLib-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KeePassiumLib-prefix.pch"; sourceTree = "<group>"; };
+		75D09BAC2174F3E600F7DEF2 /* KeePassiumLib.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = KeePassiumLib.modulemap; sourceTree = "<group>"; };
+		75D09BAD2174F3E600F7DEF2 /* KeePassiumLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeePassiumLib.m; sourceTree = "<group>"; };
+		75D09BB12174F76400F7DEF2 /* chacha20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = chacha20.c; sourceTree = "<group>"; };
+		75D09BB22174F76400F7DEF2 /* chacha20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chacha20.h; sourceTree = "<group>"; };
+		75D09BB42174F76400F7DEF2 /* aeskdf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aeskdf.cpp; sourceTree = "<group>"; };
+		75D09BB52174F76400F7DEF2 /* aeskdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aeskdf.h; sourceTree = "<group>"; };
+		75D09BB62174F76400F7DEF2 /* ChaCha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaCha20.swift; sourceTree = "<group>"; };
+		75D09BB72174F76500F7DEF2 /* Twofish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twofish.swift; sourceTree = "<group>"; };
+		75D09BB92174F76500F7DEF2 /* twofish.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = twofish.cpp; sourceTree = "<group>"; };
+		75D09BBA2174F76500F7DEF2 /* twofish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twofish.h; sourceTree = "<group>"; };
+		75D09BBC2174F76500F7DEF2 /* thread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = thread.c; sourceTree = "<group>"; };
+		75D09BBD2174F76500F7DEF2 /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
+		75D09BBF2174F76500F7DEF2 /* blamka-round-ref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "blamka-round-ref.h"; sourceTree = "<group>"; };
+		75D09BC02174F76500F7DEF2 /* blamka-round-opt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "blamka-round-opt.h"; sourceTree = "<group>"; };
+		75D09BC12174F76500F7DEF2 /* blake2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blake2.h; sourceTree = "<group>"; };
+		75D09BC22174F76500F7DEF2 /* blake2b.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = blake2b.c; sourceTree = "<group>"; };
+		75D09BC32174F76500F7DEF2 /* blake2-impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "blake2-impl.h"; sourceTree = "<group>"; };
+		75D09BC42174F76500F7DEF2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		75D09BC52174F76500F7DEF2 /* ref.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ref.c; sourceTree = "<group>"; };
+		75D09BC62174F76500F7DEF2 /* argon2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = argon2.h; sourceTree = "<group>"; };
+		75D09BC72174F76500F7DEF2 /* encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encoding.h; sourceTree = "<group>"; };
+		75D09BC82174F76500F7DEF2 /* core.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = core.c; sourceTree = "<group>"; };
+		75D09BC92174F76500F7DEF2 /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
+		75D09BCA2174F76500F7DEF2 /* argon2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = argon2.c; sourceTree = "<group>"; };
+		75D09BCB2174F76500F7DEF2 /* encoding.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = encoding.c; sourceTree = "<group>"; };
+		75D09BCC2174F76500F7DEF2 /* CryptoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoManager.swift; sourceTree = "<group>"; };
+		75D09BCD2174F76500F7DEF2 /* Argon2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Argon2.swift; sourceTree = "<group>"; };
+		75D09BE92174F77000F7DEF2 /* KDFFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDFFactory.swift; sourceTree = "<group>"; };
+		75D09BEA2174F77000F7DEF2 /* AESKDF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESKDF.swift; sourceTree = "<group>"; };
+		75D09BEB2174F77000F7DEF2 /* KDFParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDFParams.swift; sourceTree = "<group>"; };
+		75D09BEC2174F77000F7DEF2 /* Argon2KDF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Argon2KDF.swift; sourceTree = "<group>"; };
+		75D09BED2174F77000F7DEF2 /* Attachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
+		75D09BEF2174F77000F7DEF2 /* Header2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header2.swift; sourceTree = "<group>"; };
+		75D09BF02174F77000F7DEF2 /* Binary2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binary2.swift; sourceTree = "<group>"; };
+		75D09BF12174F77000F7DEF2 /* CustomData2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomData2.swift; sourceTree = "<group>"; };
+		75D09BF22174F77000F7DEF2 /* Database2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database2.swift; sourceTree = "<group>"; };
+		75D09BF32174F77000F7DEF2 /* Attachment2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attachment2.swift; sourceTree = "<group>"; };
+		75D09BF42174F77000F7DEF2 /* Entry2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry2.swift; sourceTree = "<group>"; };
+		75D09BF52174F77000F7DEF2 /* Xml2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xml2.swift; sourceTree = "<group>"; };
+		75D09BF62174F77000F7DEF2 /* KeyHelper2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyHelper2.swift; sourceTree = "<group>"; };
+		75D09BF72174F77000F7DEF2 /* CustomIcon2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIcon2.swift; sourceTree = "<group>"; };
+		75D09BF82174F77000F7DEF2 /* Group2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group2.swift; sourceTree = "<group>"; };
+		75D09BF92174F77000F7DEF2 /* DeletedObject2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletedObject2.swift; sourceTree = "<group>"; };
+		75D09BFA2174F77000F7DEF2 /* Meta2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta2.swift; sourceTree = "<group>"; };
+		75D09BFB2174F77000F7DEF2 /* IconID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconID.swift; sourceTree = "<group>"; };
+		75D09BFD2174F77000F7DEF2 /* VarDict.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarDict.swift; sourceTree = "<group>"; };
+		75D09BFE2174F77000F7DEF2 /* UUID+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UUID+extension.swift"; sourceTree = "<group>"; };
+		75D09BFF2174F77000F7DEF2 /* Date+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
+		75D09C002174F77000F7DEF2 /* ByteArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteArray.swift; sourceTree = "<group>"; };
+		75D09C012174F77000F7DEF2 /* Eraser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eraser.swift; sourceTree = "<group>"; };
+		75D09C022174F77000F7DEF2 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
+		75D09C032174F77000F7DEF2 /* ProgressInterruption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressInterruption.swift; sourceTree = "<group>"; };
+		75D09C042174F77000F7DEF2 /* Bool+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+extension.swift"; sourceTree = "<group>"; };
+		75D09C062174F77000F7DEF2 /* FixedWidthInteger+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+extension.swift"; sourceTree = "<group>"; };
+		75D09C072174F77000F7DEF2 /* KeyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyHelper.swift; sourceTree = "<group>"; };
+		75D09C092174F77000F7DEF2 /* StreamCipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamCipher.swift; sourceTree = "<group>"; };
+		75D09C0A2174F77000F7DEF2 /* TwofishDataCipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwofishDataCipher.swift; sourceTree = "<group>"; };
+		75D09C0B2174F77000F7DEF2 /* DataCipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCipher.swift; sourceTree = "<group>"; };
+		75D09C0C2174F77000F7DEF2 /* DataCipherFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCipherFactory.swift; sourceTree = "<group>"; };
+		75D09C0D2174F77000F7DEF2 /* ChaCha20DataCipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaCha20DataCipher.swift; sourceTree = "<group>"; };
+		75D09C0E2174F77000F7DEF2 /* AESDataCipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESDataCipher.swift; sourceTree = "<group>"; };
+		75D09C0F2174F77000F7DEF2 /* StreamCipherFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamCipherFactory.swift; sourceTree = "<group>"; };
+		75D09C102174F77000F7DEF2 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		75D09C112174F77000F7DEF2 /* Eraseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eraseable.swift; sourceTree = "<group>"; };
+		75D09C132174F77000F7DEF2 /* Database1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database1.swift; sourceTree = "<group>"; };
+		75D09C142174F77000F7DEF2 /* Header1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header1.swift; sourceTree = "<group>"; };
+		75D09C152174F77000F7DEF2 /* DateExtension-kp1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateExtension-kp1.swift"; sourceTree = "<group>"; };
+		75D09C162174F77000F7DEF2 /* Group1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group1.swift; sourceTree = "<group>"; };
+		75D09C172174F77000F7DEF2 /* Entry1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry1.swift; sourceTree = "<group>"; };
+		75D09C182174F77000F7DEF2 /* KeyHelper1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyHelper1.swift; sourceTree = "<group>"; };
+		75D09C192174F77000F7DEF2 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		75D09C1A2174F77000F7DEF2 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		75D09C4C2174F81900F7DEF2 /* Data+Gzip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Gzip.swift"; sourceTree = "<group>"; };
+		75D09C502174F81900F7DEF2 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		75D09C522174F81900F7DEF2 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		75D09C532174F81900F7DEF2 /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		75D09C552174F81900F7DEF2 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		75D09C562174F81900F7DEF2 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		75D09C612174F89A00F7DEF2 /* ProgressEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressEx.swift; sourceTree = "<group>"; };
+		75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeePassiumLib.h; sourceTree = "<group>"; };
+		75D0C76E2174AF1F00C64C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75EA2D1621B2FB4000826FC6 /* Diag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diag.swift; sourceTree = "<group>"; };
+		75F4ACC1217743BF00B22D8B /* DiagLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiagLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75F4ACD12177456200B22D8B /* PasswordGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
+		75F4ACD3217745B300B22D8B /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		75F4ACD4217745B300B22D8B /* DatabaseManagerObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManagerObserver.swift; sourceTree = "<group>"; };
+		75F4ACD82177469500B22D8B /* TemporaryFileURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporaryFileURL.swift; sourceTree = "<group>"; };
+		75F4ACD92177469500B22D8B /* FileKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileKeeper.swift; sourceTree = "<group>"; };
+		75F4ACDA2177469500B22D8B /* FileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
+		75F4ACDB2177469500B22D8B /* DatabaseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseDocument.swift; sourceTree = "<group>"; };
+		75F4ACDC2177469500B22D8B /* FileDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDocument.swift; sourceTree = "<group>"; };
+		75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileKeeperObserver.swift; sourceTree = "<group>"; };
+		75F4ACDE2177469500B22D8B /* URLReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLReference.swift; sourceTree = "<group>"; };
+		75F4ACE72177485D00B22D8B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		75F4ACE82177485D00B22D8B /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		75F4ACE92177485D00B22D8B /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
+		75F4ACED217749DB00B22D8B /* UserDefaults+appGroupShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+appGroupShared.swift"; sourceTree = "<group>"; };
+		75F4ACEE217749DB00B22D8B /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		75F4ACF121774A6300B22D8B /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
+		75F4ACF221774A6300B22D8B /* URL+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+extensions.swift"; sourceTree = "<group>"; };
+		75F594B7221BDC51001729FD /* SettingsMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMigrator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		75C764DC226F475500025F8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75C764E4226F475500025F8B /* KeePassiumLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75D0C7672174AF1F00C64C93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7505E8CC2236E69F00E5202E /* totp */ = {
+			isa = PBXGroup;
+			children = (
+				7505E8CA2236C93300E5202E /* TOTPGenerator.swift */,
+			);
+			path = totp;
+			sourceTree = "<group>";
+		};
+		7505E8CD2236ED2F00E5202E /* base32 */ = {
+			isa = PBXGroup;
+			children = (
+				7505E8D02236FA0F00E5202E /* StringExtension.swift */,
+				7505E8CE2236ED6E00E5202E /* Base32.swift */,
+			);
+			path = base32;
+			sourceTree = "<group>";
+		};
+		75D09B6A2174F02F00F7DEF2 /* crypto */ = {
+			isa = PBXGroup;
+			children = (
+				75D09BB32174F76400F7DEF2 /* aeskdf */,
+				75D09BBB2174F76500F7DEF2 /* argon2 */,
+				75D09BB02174F76400F7DEF2 /* chacha20 */,
+				75D09B842174F02F00F7DEF2 /* salsa20 */,
+				75D09BB82174F76500F7DEF2 /* twofish */,
+				75D09BCD2174F76500F7DEF2 /* Argon2.swift */,
+				75D09BB62174F76400F7DEF2 /* ChaCha20.swift */,
+				75D09BCC2174F76500F7DEF2 /* CryptoManager.swift */,
+				75D09B872174F02F00F7DEF2 /* CryptoError.swift */,
+				75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */,
+				75D09BB72174F76500F7DEF2 /* Twofish.swift */,
+			);
+			path = crypto;
+			sourceTree = "<group>";
+		};
+		75D09B842174F02F00F7DEF2 /* salsa20 */ = {
+			isa = PBXGroup;
+			children = (
+				75D09B852174F02F00F7DEF2 /* salsa20.h */,
+				75D09B862174F02F00F7DEF2 /* salsa20.c */,
+			);
+			path = salsa20;
+			sourceTree = "<group>";
+		};
+		75D09BB02174F76400F7DEF2 /* chacha20 */ = {
+			isa = PBXGroup;
+			children = (
+				75D09BB12174F76400F7DEF2 /* chacha20.c */,
+				75D09BB22174F76400F7DEF2 /* chacha20.h */,
+			);
+			path = chacha20;
+			sourceTree = "<group>";
+		};
+		75D09BB32174F76400F7DEF2 /* aeskdf */ = {
+			isa = PBXGroup;
+			children = (
+				75D09BB42174F76400F7DEF2 /* aeskdf.cpp */,
+				75D09BB52174F76400F7DEF2 /* aeskdf.h */,
+			);
+			path = aeskdf;
+			sourceTree = "<group>";
+		};
+		75D09BB82174F76500F7DEF2 /* twofish */ = {
+			isa = PBXGroup;
+			children = (
+				75D09BB92174F76500F7DEF2 /* twofish.cpp */,
+				75D09BBA2174F76500F7DEF2 /* twofish.h */,
+			);
+			path = twofish;
+			sourceTree = "<group>";
+		};
+		75D09BBB2174F76500F7DEF2 /* argon2 */ = {
+			isa = PBXGroup;
+			children = (
+				75D09BBC2174F76500F7DEF2 /* thread.c */,
+				75D09BBD2174F76500F7DEF2 /* core.h */,
+				75D09BBE2174F76500F7DEF2 /* blake2 */,
+				75D09BC42174F76500F7DEF2 /* LICENSE */,
+				75D09BC52174F76500F7DEF2 /* ref.c */,
+				75D09BC62174F76500F7DEF2 /* argon2.h */,
+				75D09BC72174F76500F7DEF2 /* encoding.h */,
+				75D09BC82174F76500F7DEF2 /* core.c */,
+				75D09BC92174F76500F7DEF2 /* thread.h */,
+				75D09BCA2174F76500F7DEF2 /* argon2.c */,
+				75D09BCB2174F76500F7DEF2 /* encoding.c */,
+			);
+			path = argon2;
+			sourceTree = "<group>";
+		};
+		75D09BBE2174F76500F7DEF2 /* blake2 */ = {
+			isa = PBXGroup;
+			children = (
+				75D09BBF2174F76500F7DEF2 /* blamka-round-ref.h */,
+				75D09BC02174F76500F7DEF2 /* blamka-round-opt.h */,
+				75D09BC12174F76500F7DEF2 /* blake2.h */,
+				75D09BC22174F76500F7DEF2 /* blake2b.c */,
+				75D09BC32174F76500F7DEF2 /* blake2-impl.h */,
+			);
+			path = blake2;
+			sourceTree = "<group>";
+		};
+		75D09BE72174F77000F7DEF2 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				7505E8CC2236E69F00E5202E /* totp */,
+				75D09BE82174F77000F7DEF2 /* kdf */,
+				75D09C082174F77000F7DEF2 /* cipher */,
+				75D09C122174F77000F7DEF2 /* kp1 */,
+				75D09BEE2174F77000F7DEF2 /* kp2 */,
+				75F4ACE6217746FF00B22D8B /* util */,
+				75D09C192174F77000F7DEF2 /* Database.swift */,
+				75D09C1A2174F77000F7DEF2 /* Group.swift */,
+				75D09C102174F77000F7DEF2 /* Entry.swift */,
+				75D09C072174F77000F7DEF2 /* KeyHelper.swift */,
+				75D09BED2174F77000F7DEF2 /* Attachment.swift */,
+				75D09BFB2174F77000F7DEF2 /* IconID.swift */,
+			);
+			path = db;
+			sourceTree = "<group>";
+		};
+		75D09BE82174F77000F7DEF2 /* kdf */ = {
+			isa = PBXGroup;
+			children = (
+				75D09BEA2174F77000F7DEF2 /* AESKDF.swift */,
+				75D09BEC2174F77000F7DEF2 /* Argon2KDF.swift */,
+				75D09BE92174F77000F7DEF2 /* KDFFactory.swift */,
+				75D09BEB2174F77000F7DEF2 /* KDFParams.swift */,
+			);
+			path = kdf;
+			sourceTree = "<group>";
+		};
+		75D09BEE2174F77000F7DEF2 /* kp2 */ = {
+			isa = PBXGroup;
+			children = (
+				75D09BF22174F77000F7DEF2 /* Database2.swift */,
+				75D09BEF2174F77000F7DEF2 /* Header2.swift */,
+				75D09BFA2174F77000F7DEF2 /* Meta2.swift */,
+				75D09BF82174F77000F7DEF2 /* Group2.swift */,
+				75D09BF42174F77000F7DEF2 /* Entry2.swift */,
+				75D09BF62174F77000F7DEF2 /* KeyHelper2.swift */,
+				75D09BF52174F77000F7DEF2 /* Xml2.swift */,
+				75D09BF02174F77000F7DEF2 /* Binary2.swift */,
+				75D09BF12174F77000F7DEF2 /* CustomData2.swift */,
+				75D09BF32174F77000F7DEF2 /* Attachment2.swift */,
+				75D09BF72174F77000F7DEF2 /* CustomIcon2.swift */,
+				75D09BF92174F77000F7DEF2 /* DeletedObject2.swift */,
+			);
+			path = kp2;
+			sourceTree = "<group>";
+		};
+		75D09BFC2174F77000F7DEF2 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				75F4ACEE217749DB00B22D8B /* AppGroup.swift */,
+				75EA2D1621B2FB4000826FC6 /* Diag.swift */,
+				75F4ACE72177485D00B22D8B /* Settings.swift */,
+				75F594B7221BDC51001729FD /* SettingsMigrator.swift */,
+				75F4ACE82177485D00B22D8B /* Keychain.swift */,
+				75F4ACF121774A6300B22D8B /* Clipboard.swift */,
+				75D09C612174F89A00F7DEF2 /* ProgressEx.swift */,
+				75D09C032174F77000F7DEF2 /* ProgressInterruption.swift */,
+				75F4ACD12177456200B22D8B /* PasswordGenerator.swift */,
+				75F4ACED217749DB00B22D8B /* UserDefaults+appGroupShared.swift */,
+				75F4ACF221774A6300B22D8B /* URL+extensions.swift */,
+				75F4ACE92177485D00B22D8B /* Weak.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		75D09C082174F77000F7DEF2 /* cipher */ = {
+			isa = PBXGroup;
+			children = (
+				75D09C092174F77000F7DEF2 /* StreamCipher.swift */,
+				75D09C0A2174F77000F7DEF2 /* TwofishDataCipher.swift */,
+				75D09C0B2174F77000F7DEF2 /* DataCipher.swift */,
+				75D09C0C2174F77000F7DEF2 /* DataCipherFactory.swift */,
+				75D09C0D2174F77000F7DEF2 /* ChaCha20DataCipher.swift */,
+				75D09C0E2174F77000F7DEF2 /* AESDataCipher.swift */,
+				75D09C0F2174F77000F7DEF2 /* StreamCipherFactory.swift */,
+			);
+			path = cipher;
+			sourceTree = "<group>";
+		};
+		75D09C122174F77000F7DEF2 /* kp1 */ = {
+			isa = PBXGroup;
+			children = (
+				75D09C132174F77000F7DEF2 /* Database1.swift */,
+				75D09C142174F77000F7DEF2 /* Header1.swift */,
+				75D09C162174F77000F7DEF2 /* Group1.swift */,
+				75D09C172174F77000F7DEF2 /* Entry1.swift */,
+				75D09C182174F77000F7DEF2 /* KeyHelper1.swift */,
+				75D09C152174F77000F7DEF2 /* DateExtension-kp1.swift */,
+			);
+			path = kp1;
+			sourceTree = "<group>";
+		};
+		75D09C4B2174F81900F7DEF2 /* GzipSwift */ = {
+			isa = PBXGroup;
+			children = (
+				75D09C4C2174F81900F7DEF2 /* Data+Gzip.swift */,
+			);
+			path = GzipSwift;
+			sourceTree = "<group>";
+		};
+		75D09C4F2174F81900F7DEF2 /* AEXML */ = {
+			isa = PBXGroup;
+			children = (
+				75D09C502174F81900F7DEF2 /* Options.swift */,
+				75D09C522174F81900F7DEF2 /* Error.swift */,
+				75D09C532174F81900F7DEF2 /* Element.swift */,
+				75D09C552174F81900F7DEF2 /* Document.swift */,
+				75D09C562174F81900F7DEF2 /* Parser.swift */,
+			);
+			path = AEXML;
+			sourceTree = "<group>";
+		};
+		75D0C7602174AF1F00C64C93 = {
+			isa = PBXGroup;
+			children = (
+				75D0C76C2174AF1F00C64C93 /* KeePassiumLib */,
+				75D0C76B2174AF1F00C64C93 /* Products */,
+				75F4ACA22175F4A400B22D8B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		75D0C76B2174AF1F00C64C93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */,
+				75C764DF226F475500025F8B /* KeePassiumLibTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75D0C76C2174AF1F00C64C93 /* KeePassiumLib */ = {
+			isa = PBXGroup;
+			children = (
+				75F4ACD72177469500B22D8B /* files */,
+				75D09B6A2174F02F00F7DEF2 /* crypto */,
+				75D09BE72174F77000F7DEF2 /* db */,
+				75D09C4F2174F81900F7DEF2 /* AEXML */,
+				7505E8CD2236ED2F00E5202E /* base32 */,
+				75D09C4B2174F81900F7DEF2 /* GzipSwift */,
+				75D09BFC2174F77000F7DEF2 /* util */,
+				75F4ACD3217745B300B22D8B /* DatabaseManager.swift */,
+				75F4ACD4217745B300B22D8B /* DatabaseManagerObserver.swift */,
+				75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */,
+				75D09BAB2174F3E500F7DEF2 /* KeePassiumLib-prefix.pch */,
+				75D09BAD2174F3E600F7DEF2 /* KeePassiumLib.m */,
+				75D09BAC2174F3E600F7DEF2 /* KeePassiumLib.modulemap */,
+				75D0C76E2174AF1F00C64C93 /* Info.plist */,
+			);
+			path = KeePassiumLib;
+			sourceTree = "<group>";
+		};
+		75F4ACA22175F4A400B22D8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75F4ACC1217743BF00B22D8B /* DiagLib.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75F4ACD72177469500B22D8B /* files */ = {
+			isa = PBXGroup;
+			children = (
+				75F4ACD92177469500B22D8B /* FileKeeper.swift */,
+				75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */,
+				75F4ACDA2177469500B22D8B /* FileType.swift */,
+				75F4ACDB2177469500B22D8B /* DatabaseDocument.swift */,
+				75F4ACDC2177469500B22D8B /* FileDocument.swift */,
+				75F4ACD82177469500B22D8B /* TemporaryFileURL.swift */,
+				75F4ACDE2177469500B22D8B /* URLReference.swift */,
+			);
+			path = files;
+			sourceTree = "<group>";
+		};
+		75F4ACE6217746FF00B22D8B /* util */ = {
+			isa = PBXGroup;
+			children = (
+				75D09C002174F77000F7DEF2 /* ByteArray.swift */,
+				75D09BFD2174F77000F7DEF2 /* VarDict.swift */,
+				75D09C112174F77000F7DEF2 /* Eraseable.swift */,
+				75D09C012174F77000F7DEF2 /* Eraser.swift */,
+				75D09C042174F77000F7DEF2 /* Bool+extension.swift */,
+				75D09C062174F77000F7DEF2 /* FixedWidthInteger+extension.swift */,
+				75D09BFE2174F77000F7DEF2 /* UUID+extension.swift */,
+				75D09BFF2174F77000F7DEF2 /* Date+extension.swift */,
+				75D09C022174F77000F7DEF2 /* String+extension.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		75D0C7652174AF1F00C64C93 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75D0C77B2174AF2000C64C93 /* KeePassiumLib.h in Headers */,
+				75D09BDC2174F76500F7DEF2 /* blake2-impl.h in Headers */,
+				75D09BDA2174F76500F7DEF2 /* blake2.h in Headers */,
+				75D09BDF2174F76500F7DEF2 /* argon2.h in Headers */,
+				75D09BD12174F76500F7DEF2 /* aeskdf.h in Headers */,
+				75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */,
+				75D09BCF2174F76500F7DEF2 /* chacha20.h in Headers */,
+				75D09BAE2174F3E600F7DEF2 /* KeePassiumLib-prefix.pch in Headers */,
+				75D09BE22174F76500F7DEF2 /* thread.h in Headers */,
+				75D09BD92174F76500F7DEF2 /* blamka-round-opt.h in Headers */,
+				75D09BD52174F76500F7DEF2 /* twofish.h in Headers */,
+				75D09BE02174F76500F7DEF2 /* encoding.h in Headers */,
+				75D09BD72174F76500F7DEF2 /* core.h in Headers */,
+				75D09BD82174F76500F7DEF2 /* blamka-round-ref.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		75C764DE226F475500025F8B /* KeePassiumLibTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75C764E7226F475500025F8B /* Build configuration list for PBXNativeTarget "KeePassiumLibTests" */;
+			buildPhases = (
+				75C764DB226F475500025F8B /* Sources */,
+				75C764DC226F475500025F8B /* Frameworks */,
+				75C764DD226F475500025F8B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75C764E6226F475500025F8B /* PBXTargetDependency */,
+			);
+			name = KeePassiumLibTests;
+			productName = KeePassiumLibTests;
+			productReference = 75C764DF226F475500025F8B /* KeePassiumLibTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		75D0C7692174AF1F00C64C93 /* KeePassiumLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75D0C77E2174AF2000C64C93 /* Build configuration list for PBXNativeTarget "KeePassiumLib" */;
+			buildPhases = (
+				75D0C7652174AF1F00C64C93 /* Headers */,
+				75D0C7662174AF1F00C64C93 /* Sources */,
+				75D0C7672174AF1F00C64C93 /* Frameworks */,
+				75D0C7682174AF1F00C64C93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeePassiumLib;
+			productName = KeePassiumLib;
+			productReference = 75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		75D0C7612174AF1F00C64C93 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Andrei Popleteev";
+				TargetAttributes = {
+					75C764DE226F475500025F8B = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					75D0C7692174AF1F00C64C93 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 75D0C7642174AF1F00C64C93 /* Build configuration list for PBXProject "KeePassiumLib" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 75D0C7602174AF1F00C64C93;
+			productRefGroup = 75D0C76B2174AF1F00C64C93 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				75D0C7692174AF1F00C64C93 /* KeePassiumLib */,
+				75C764DE226F475500025F8B /* KeePassiumLibTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75C764DD226F475500025F8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75D0C7682174AF1F00C64C93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75D09BDD2174F76500F7DEF2 /* LICENSE in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		75C764DB226F475500025F8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75D0C7662174AF1F00C64C93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75D09C482174F77000F7DEF2 /* Group.swift in Sources */,
+				75D09C442174F77000F7DEF2 /* Group1.swift in Sources */,
+				75D09BE12174F76500F7DEF2 /* core.c in Sources */,
+				75D09BCE2174F76500F7DEF2 /* chacha20.c in Sources */,
+				75D09C1C2174F77000F7DEF2 /* AESKDF.swift in Sources */,
+				75D09BD02174F76500F7DEF2 /* aeskdf.cpp in Sources */,
+				75D09C262174F77000F7DEF2 /* Xml2.swift in Sources */,
+				75D09C2D2174F77000F7DEF2 /* VarDict.swift in Sources */,
+				75F4ACD6217745B300B22D8B /* DatabaseManagerObserver.swift in Sources */,
+				75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */,
+				75D09C1F2174F77000F7DEF2 /* Attachment.swift in Sources */,
+				75D09C362174F77000F7DEF2 /* FixedWidthInteger+extension.swift in Sources */,
+				75D09C382174F77000F7DEF2 /* StreamCipher.swift in Sources */,
+				7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */,
+				75F4ACF321774A6400B22D8B /* Clipboard.swift in Sources */,
+				75D09C292174F77000F7DEF2 /* Group2.swift in Sources */,
+				75D09C342174F77000F7DEF2 /* Bool+extension.swift in Sources */,
+				75D09C392174F77000F7DEF2 /* TwofishDataCipher.swift in Sources */,
+				75D09C2B2174F77000F7DEF2 /* Meta2.swift in Sources */,
+				75D09C1E2174F77000F7DEF2 /* Argon2KDF.swift in Sources */,
+				75D09C3A2174F77000F7DEF2 /* DataCipher.swift in Sources */,
+				75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */,
+				75F4ACD5217745B300B22D8B /* DatabaseManager.swift in Sources */,
+				75D09C212174F77000F7DEF2 /* Binary2.swift in Sources */,
+				75D09C222174F77000F7DEF2 /* CustomData2.swift in Sources */,
+				75D09C242174F77000F7DEF2 /* Attachment2.swift in Sources */,
+				75D09C232174F77000F7DEF2 /* Database2.swift in Sources */,
+				75D09C2F2174F77000F7DEF2 /* Date+extension.swift in Sources */,
+				75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */,
+				75D09C312174F77000F7DEF2 /* Eraser.swift in Sources */,
+				75D09BDE2174F76500F7DEF2 /* ref.c in Sources */,
+				75D09C202174F77000F7DEF2 /* Header2.swift in Sources */,
+				75D09C472174F77000F7DEF2 /* Database.swift in Sources */,
+				75D09C5A2174F81900F7DEF2 /* Options.swift in Sources */,
+				75F4ACF0217749DC00B22D8B /* AppGroup.swift in Sources */,
+				75F4ACE02177469500B22D8B /* FileKeeper.swift in Sources */,
+				75D09C282174F77000F7DEF2 /* CustomIcon2.swift in Sources */,
+				75F4ACE42177469500B22D8B /* FileKeeperObserver.swift in Sources */,
+				75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */,
+				75F4ACEC2177485D00B22D8B /* Weak.swift in Sources */,
+				75D09C1D2174F77000F7DEF2 /* KDFParams.swift in Sources */,
+				75D09BE42174F76500F7DEF2 /* encoding.c in Sources */,
+				75D09BE62174F76500F7DEF2 /* Argon2.swift in Sources */,
+				75F4ACE52177469500B22D8B /* URLReference.swift in Sources */,
+				75D09C332174F77000F7DEF2 /* ProgressInterruption.swift in Sources */,
+				75D09C1B2174F77000F7DEF2 /* KDFFactory.swift in Sources */,
+				75F4ACEB2177485D00B22D8B /* Keychain.swift in Sources */,
+				75D09C2C2174F77000F7DEF2 /* IconID.swift in Sources */,
+				75D09BD42174F76500F7DEF2 /* twofish.cpp in Sources */,
+				75D09BD32174F76500F7DEF2 /* Twofish.swift in Sources */,
+				7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */,
+				75D09C432174F77000F7DEF2 /* DateExtension-kp1.swift in Sources */,
+				75D09C322174F77000F7DEF2 /* String+extension.swift in Sources */,
+				75D09C572174F81900F7DEF2 /* Data+Gzip.swift in Sources */,
+				75D09C622174F89A00F7DEF2 /* ProgressEx.swift in Sources */,
+				75D09C3C2174F77000F7DEF2 /* ChaCha20DataCipher.swift in Sources */,
+				75D09C602174F81900F7DEF2 /* Parser.swift in Sources */,
+				75D09C3E2174F77000F7DEF2 /* StreamCipherFactory.swift in Sources */,
+				75D09C2A2174F77000F7DEF2 /* DeletedObject2.swift in Sources */,
+				75D09C462174F77000F7DEF2 /* KeyHelper1.swift in Sources */,
+				75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */,
+				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
+				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
+				75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */,
+				75D09C412174F77000F7DEF2 /* Database1.swift in Sources */,
+				75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */,
+				75D09C422174F77000F7DEF2 /* Header1.swift in Sources */,
+				75D09BD22174F76500F7DEF2 /* ChaCha20.swift in Sources */,
+				75D09C3D2174F77000F7DEF2 /* AESDataCipher.swift in Sources */,
+				75D09C452174F77000F7DEF2 /* Entry1.swift in Sources */,
+				75D09C3F2174F77000F7DEF2 /* Entry.swift in Sources */,
+				75D09BE52174F76500F7DEF2 /* CryptoManager.swift in Sources */,
+				75D09BD62174F76500F7DEF2 /* thread.c in Sources */,
+				75D09BE32174F76500F7DEF2 /* argon2.c in Sources */,
+				75D09BA52174F02F00F7DEF2 /* CryptoError.swift in Sources */,
+				7505E8CB2236C93300E5202E /* TOTPGenerator.swift in Sources */,
+				75D09C402174F77000F7DEF2 /* Eraseable.swift in Sources */,
+				75D09C5C2174F81900F7DEF2 /* Error.swift in Sources */,
+				75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */,
+				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
+				75F4ACE32177469500B22D8B /* FileDocument.swift in Sources */,
+				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,
+				75F4ACE22177469500B22D8B /* DatabaseDocument.swift in Sources */,
+				75D09BDB2174F76500F7DEF2 /* blake2b.c in Sources */,
+				75F4ACEA2177485D00B22D8B /* Settings.swift in Sources */,
+				75D09C5D2174F81900F7DEF2 /* Element.swift in Sources */,
+				75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */,
+				75D09C5F2174F81900F7DEF2 /* Document.swift in Sources */,
+				75D09C372174F77000F7DEF2 /* KeyHelper.swift in Sources */,
+				75D09BAF2174F3E600F7DEF2 /* KeePassiumLib.m in Sources */,
+				75D09C252174F77000F7DEF2 /* Entry2.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75C764E6226F475500025F8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75D0C7692174AF1F00C64C93 /* KeePassiumLib */;
+			targetProxy = 75C764E5226F475500025F8B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		75C764E8226F475500025F8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84W4PHXS24;
+				INFOPLIST_FILE = KeePassiumLibTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.KeePassiumLibTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75C764E9226F475500025F8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84W4PHXS24;
+				INFOPLIST_FILE = KeePassiumLibTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.KeePassiumLibTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		75D0C77C2174AF2000C64C93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		75D0C77D2174AF2000C64C93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		75D0C77F2174AF2000C64C93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 84W4PHXS24;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KeePassiumLib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.KeePassiumLib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75D0C7802174AF2000C64C93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 84W4PHXS24;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KeePassiumLib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.KeePassiumLib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		75C764E7226F475500025F8B /* Build configuration list for PBXNativeTarget "KeePassiumLibTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75C764E8226F475500025F8B /* Debug */,
+				75C764E9226F475500025F8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75D0C7642174AF1F00C64C93 /* Build configuration list for PBXProject "KeePassiumLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75D0C77C2174AF2000C64C93 /* Debug */,
+				75D0C77D2174AF2000C64C93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75D0C77E2174AF2000C64C93 /* Build configuration list for PBXNativeTarget "KeePassiumLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75D0C77F2174AF2000C64C93 /* Debug */,
+				75D0C7802174AF2000C64C93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 75D0C7612174AF1F00C64C93 /* Project object */;
+}

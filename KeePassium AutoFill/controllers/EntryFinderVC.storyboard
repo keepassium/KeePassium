@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Entries-->
+        <scene sceneID="5TI-sf-QvZ">
+            <objects>
+                <tableViewController storyboardIdentifier="EntryFinderVC" title="Entries" modalTransitionStyle="crossDissolve" id="14C-rX-ove" customClass="EntryFinderVC" customModule="KeePassium_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="o0d-5d-uRM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryFinderCell" textLabel="DNc-mh-Khc" detailTextLabel="ru1-k8-vdN" imageView="mHv-EI-eJ4" style="IBUITableViewCellStyleSubtitle" id="Pm9-wz-Hfw" customClass="EntryFinderCell" customModule="KeePassium_AutoFill" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pm9-wz-Hfw" id="JFA-JS-6zR">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="(Entry name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="DNc-mh-Khc">
+                                            <rect key="frame" x="60" y="5" width="99" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="(User name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ru1-k8-vdN">
+                                            <rect key="frame" x="60" y="25.5" width="70.5" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="db-icons/kpbIcon00" id="mHv-EI-eJ4">
+                                            <rect key="frame" x="16" y="7" width="29" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="tintColor" name="IconTint"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NothingFoundCell" textLabel="NSB-dG-jRN" style="IBUITableViewCellStyleDefault" id="7Co-2E-5Mp" customClass="EntryFinderCell" customModule="KeePassium_AutoFill" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Co-2E-5Mp" id="Ubw-hi-hdw">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sorry, there is nothing suitable." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="NSB-dG-jRN">
+                                            <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="14C-rX-ove" id="BHy-8s-QNf"/>
+                            <outlet property="delegate" destination="14C-rX-ove" id="2OG-pR-By0"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CJJ-ej-rR1"/>
+                        <barButtonItem title="Lock Database" image="lock-database-toolbar" id="dPB-bK-tzh">
+                            <connections>
+                                <action selector="didPressLockDatabase:" destination="14C-rX-ove" id="yOc-vL-HSV"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="EjY-Ch-YkM"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="separatorView" destination="sx0-Sw-ZEC" id="8wD-mr-bhz"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rG2-CG-hh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view opaque="NO" contentMode="scaleToFill" id="sx0-Sw-ZEC" userLabel="SeparatorView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Related Entries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLY-eZ-iAh">
+                            <rect key="frame" x="65.5" y="54.5" width="109" height="19.5"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                            <color key="textColor" name="AuxiliaryText"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5e-BQ-NJo">
+                            <rect key="frame" x="8" y="63.5" width="49.5" height="1"/>
+                            <color key="backgroundColor" name="AuxiliaryText"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="3TV-2Y-3Ug"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vuL-34-hcw">
+                            <rect key="frame" x="182.5" y="63.5" width="49.5" height="1"/>
+                            <color key="backgroundColor" name="AuxiliaryText"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="197-PD-EOY"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="vuL-34-hcw" firstAttribute="centerY" secondItem="sx0-Sw-ZEC" secondAttribute="centerY" id="6u8-XS-dd1"/>
+                        <constraint firstItem="yLY-eZ-iAh" firstAttribute="centerX" secondItem="sx0-Sw-ZEC" secondAttribute="centerX" id="NZ5-R4-zyH"/>
+                        <constraint firstItem="MkU-Zb-Trn" firstAttribute="trailing" secondItem="vuL-34-hcw" secondAttribute="trailing" constant="8" id="Oel-d2-DId"/>
+                        <constraint firstItem="yLY-eZ-iAh" firstAttribute="centerY" secondItem="sx0-Sw-ZEC" secondAttribute="centerY" id="dxC-VY-rjd"/>
+                        <constraint firstItem="yLY-eZ-iAh" firstAttribute="leading" secondItem="g5e-BQ-NJo" secondAttribute="trailing" constant="8" id="lNO-zz-TMv"/>
+                        <constraint firstItem="g5e-BQ-NJo" firstAttribute="leading" secondItem="MkU-Zb-Trn" secondAttribute="leading" constant="8" id="mlf-hb-ngB"/>
+                        <constraint firstItem="g5e-BQ-NJo" firstAttribute="centerY" secondItem="sx0-Sw-ZEC" secondAttribute="centerY" id="tPm-Cd-k4e"/>
+                        <constraint firstItem="vuL-34-hcw" firstAttribute="leading" secondItem="yLY-eZ-iAh" secondAttribute="trailing" constant="8" id="tsx-Mi-YNZ"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="MkU-Zb-Trn"/>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="-190" y="207"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="db-icons/kpbIcon00" width="29" height="29"/>
+        <image name="lock-database-toolbar" width="25" height="25"/>
+        <namedColor name="AuxiliaryText">
+            <color white="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

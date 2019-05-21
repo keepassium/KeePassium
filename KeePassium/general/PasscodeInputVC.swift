@@ -1,0 +1,189 @@
+//  KeePassium Password Manager
+//  Copyright © 2018–2019 Andrei Popleteev <info@keepassium.com>
+// 
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact the author.
+
+import KeePassiumLib
+import LocalAuthentication
+
+protocol PasscodeInputDelegate: class {
+    func passcodeInputDidCancel(_ sender: PasscodeInputVC)
+    
+    func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool
+    
+    func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String)
+    
+    func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC)
+}
+
+extension PasscodeInputDelegate {
+    func passcodeInputDidCancel(_ sender: PasscodeInputVC) {}
+    func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
+        return passcode.count > 0
+    }
+    func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode: String) {}
+    func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {}
+}
+
+class PasscodeInputVC: UIViewController {
+
+    public enum Mode {
+        case setup
+        case verification
+    }
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var passcodeTextField: ProtectedTextField!
+    @IBOutlet weak var mainButton: UIButton!
+    @IBOutlet weak var switchKeyboardButton: UIButton!
+    @IBOutlet weak var useBiometricsButton: UIButton!
+    @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
+    
+    public var mode: Mode = .setup
+    public var shouldActivateKeyboard = true
+    public var isCancelAllowed = true
+    public var isBiometricsAllowed = false {
+        didSet { refreshBiometricsButton() }
+    }
+    
+    weak var delegate: PasscodeInputDelegate?
+    private var nextKeyboardType = Settings.PasscodeKeyboardType.alphanumeric
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
+        view.layer.isOpaque = false
+        
+        passcodeTextField.delegate = self
+        passcodeTextField.validityDelegate = self
+        passcodeTextField.isWatchdogAware = (mode != .verification) 
+
+        let cancelButton = UIBarButtonItem(
+            barButtonSystemItem: .cancel,
+            target: self,
+            action: #selector(didPressCancelButton))
+        navigationItem.leftBarButtonItem = cancelButton
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            switchKeyboardButton.isHidden = true
+        }
+        setKeyboardType(Settings.current.passcodeKeyboardType)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        switch mode {
+        case .setup:
+            mainButton.setTitle(LString.actionDone, for: .normal)
+        case .verification:
+            mainButton.setTitle(LString.actionUnlock, for: .normal)
+        }
+        cancelButton.isHidden = !isCancelAllowed
+        mainButton.isEnabled = passcodeTextField.isValid
+        refreshBiometricsButton()
+        
+        if shouldActivateKeyboard {
+            passcodeTextField.becomeFirstResponder()
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateKeyboardLayoutConstraints()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        DispatchQueue.main.async {
+            self.updateKeyboardLayoutConstraints()
+        }
+    }
+    
+    private func refreshBiometricsButton() {
+        guard isViewLoaded else { return }
+        useBiometricsButton.isHidden = !isBiometricsAllowed
+        
+        let biometryType = LAContext.getBiometryType()
+        useBiometricsButton.setImage(biometryType.icon, for: .normal)
+    }
+    
+    private func updateKeyboardLayoutConstraints() {
+        if let window = view.window {
+            let viewTop = view.convert(view.frame.origin, to: window).y
+            let viewHeight = view.frame.height
+            let windowHeight = window.frame.height
+            let viewBottomOffset = windowHeight - (viewTop + viewHeight)
+            keyboardLayoutConstraint.viewOffset = viewBottomOffset
+        }
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return passcodeTextField.canBecomeFirstResponder
+    }
+    
+    @discardableResult
+    override func becomeFirstResponder() -> Bool {
+        let result = super.becomeFirstResponder()
+        passcodeTextField.becomeFirstResponder()
+        return result
+    }
+    
+    private func setKeyboardType(_ type: Settings.PasscodeKeyboardType) {
+        Settings.current.passcodeKeyboardType = type
+        let nextKeyboardTitle: String
+        switch type {
+        case .numeric:
+            passcodeTextField.keyboardType = .numberPad
+            nextKeyboardType = .alphanumeric
+            nextKeyboardTitle = NSLocalizedString("123→ABC", comment: "Action: change keyboard type to enter alphanumeric passphrases")
+        case .alphanumeric:
+            passcodeTextField.keyboardType = .asciiCapable
+            nextKeyboardType = .numeric
+            nextKeyboardTitle = NSLocalizedString("ABC→123", comment: "Action: change keyboard type to enter PIN numbers")
+        }
+        passcodeTextField.reloadInputViews()
+        switchKeyboardButton.setTitle(nextKeyboardTitle, for: .normal)
+    }
+    
+    public func animateWrongPassccode() {
+        passcodeTextField.shake()
+        passcodeTextField.selectAll(nil)
+    }
+    
+    
+    @IBAction func didPressCancelButton(_ sender: Any) {
+        delegate?.passcodeInputDidCancel(self)
+    }
+    
+    @IBAction func didPressMainButton(_ sender: Any) {
+        let passcode = passcodeTextField.text ?? ""
+        delegate?.passcodeInput(self, didEnterPasscode: passcode)
+    }
+    
+    @IBAction func didPressSwitchKeyboard(_ sender: Any) {
+        setKeyboardType(nextKeyboardType)
+    }
+    
+    @IBAction func didPressUseBiometricsButton(_ sender: Any) {
+        delegate?.passcodeInputDidRequestBiometrics(self)
+    }
+}
+
+extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        didPressMainButton(textField)
+        return false
+    }
+    
+    func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
+        let passcode = passcodeTextField.text ?? ""
+        let isAcceptable = delegate?
+            .passcodeInput(_sender: self, canAcceptPasscode: passcode) ?? false
+        mainButton.isEnabled = isAcceptable
+        return isAcceptable
+    }
+}

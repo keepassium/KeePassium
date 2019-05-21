@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Data Safety-->
+        <scene sceneID="9c1-sR-NKV">
+            <objects>
+                <tableViewController storyboardIdentifier="SettingsDataProtectionVC" title="Data Safety" id="IZZ-aM-g2i" customClass="SettingsDataProtectionVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Bpw-6U-LVJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Database Unlocking" id="Faj-km-pM5" userLabel="Master Keys">
+                                <string key="footerTitle">Once you unlock a database, its master key will be stored in device's secure keychain. The next time you need that database, the stored key will be used to unlock it, so you won't need to type your full master password.</string>
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="j7b-PX-ojf">
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j7b-PX-ojf" id="3WR-cy-Je7">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-remember-master-keys-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="o75-tg-dCR">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="ESJ-MU-YzE"/>
+                                                        <constraint firstAttribute="width" constant="29" id="vcq-dT-xa0"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Remember Master Keys" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INJ-Cy-Tfo">
+                                                    <rect key="frame" x="61" y="11.5" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xIS-oe-VeS">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleRememberMasterKeys:" destination="IZZ-aM-g2i" eventType="valueChanged" id="Axv-BV-FTH"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="o75-tg-dCR" firstAttribute="leading" secondItem="3WR-cy-Je7" secondAttribute="leadingMargin" id="2Od-qU-eeY"/>
+                                                <constraint firstItem="INJ-Cy-Tfo" firstAttribute="centerY" secondItem="3WR-cy-Je7" secondAttribute="centerY" id="4Bo-KY-RJZ"/>
+                                                <constraint firstItem="xIS-oe-VeS" firstAttribute="leading" secondItem="INJ-Cy-Tfo" secondAttribute="trailing" constant="8" id="8we-Xu-GGB"/>
+                                                <constraint firstItem="xIS-oe-VeS" firstAttribute="trailing" secondItem="3WR-cy-Je7" secondAttribute="trailingMargin" id="GZc-AZ-yz5"/>
+                                                <constraint firstItem="INJ-Cy-Tfo" firstAttribute="leading" secondItem="o75-tg-dCR" secondAttribute="trailing" constant="16" id="Jmv-rU-OvT"/>
+                                                <constraint firstItem="o75-tg-dCR" firstAttribute="centerY" secondItem="3WR-cy-Je7" secondAttribute="centerY" id="QNd-UD-FtZ"/>
+                                                <constraint firstItem="xIS-oe-VeS" firstAttribute="centerY" secondItem="3WR-cy-Je7" secondAttribute="centerY" id="wxI-ix-dLo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="PLI-CX-Rsv">
+                                        <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PLI-CX-Rsv" id="Dks-a6-DS3">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-nv-Mst">
+                                                    <rect key="frame" x="94" y="6" width="132" height="32"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="tintColor" name="DestructiveTint"/>
+                                                    <state key="normal" title="Clear Master Keys"/>
+                                                    <connections>
+                                                        <action selector="didPressClearMasterKeys:" destination="IZZ-aM-g2i" eventType="touchUpInside" id="Msq-bi-tx7"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="e1v-nv-Mst" firstAttribute="centerY" secondItem="Dks-a6-DS3" secondAttribute="centerY" id="Mgh-1s-WnA"/>
+                                                <constraint firstItem="e1v-nv-Mst" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dks-a6-DS3" secondAttribute="leadingMargin" id="hDq-c1-Nr5"/>
+                                                <constraint firstItem="e1v-nv-Mst" firstAttribute="centerX" secondItem="Dks-a6-DS3" secondAttribute="centerX" priority="750" id="qQf-HX-lkF"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="e1v-nv-Mst" secondAttribute="trailing" id="vds-4q-tO0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" id="Mxu-GP-FmN" userLabel="Key File Associations">
+                                <string key="footerTitle">Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files.</string>
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="qrz-wG-vpS">
+                                        <rect key="frame" x="0.0" y="255.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qrz-wG-vpS" id="cEF-MG-8iD">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-remember-keyfiles-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="DwH-6B-R5v">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="QLe-0h-7Xe"/>
+                                                        <constraint firstAttribute="width" constant="29" id="UTd-hV-Xzy"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Remember Key Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHl-o7-xHI">
+                                                    <rect key="frame" x="61" y="11.5" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4I-y6-xzA">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleRememberUsedKeyFiles:" destination="IZZ-aM-g2i" eventType="valueChanged" id="dyR-h9-yFs"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="p4I-y6-xzA" firstAttribute="leading" secondItem="JHl-o7-xHI" secondAttribute="trailing" constant="8" id="4Bz-Oo-RLr"/>
+                                                <constraint firstItem="DwH-6B-R5v" firstAttribute="leading" secondItem="cEF-MG-8iD" secondAttribute="leadingMargin" id="4x9-Uj-TS6"/>
+                                                <constraint firstItem="JHl-o7-xHI" firstAttribute="leading" secondItem="DwH-6B-R5v" secondAttribute="trailing" constant="16" id="BYu-EY-OjW"/>
+                                                <constraint firstItem="p4I-y6-xzA" firstAttribute="trailing" secondItem="cEF-MG-8iD" secondAttribute="trailingMargin" id="HIy-E9-YIe"/>
+                                                <constraint firstItem="DwH-6B-R5v" firstAttribute="centerY" secondItem="cEF-MG-8iD" secondAttribute="centerY" id="PE0-PH-vwd"/>
+                                                <constraint firstItem="p4I-y6-xzA" firstAttribute="centerY" secondItem="cEF-MG-8iD" secondAttribute="centerY" id="fD8-UD-zKZ"/>
+                                                <constraint firstItem="JHl-o7-xHI" firstAttribute="centerY" secondItem="cEF-MG-8iD" secondAttribute="centerY" id="h0N-5u-2EP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="63r-C0-jmV">
+                                        <rect key="frame" x="0.0" y="299.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="63r-C0-jmV" id="54K-xz-dwY">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uV-Zs-RRo">
+                                                    <rect key="frame" x="63" y="6" width="194" height="32"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="tintColor" name="DestructiveTint"/>
+                                                    <state key="normal" title="Clear Key File Associations"/>
+                                                    <connections>
+                                                        <action selector="didPressClearKeyFileAssociations:" destination="IZZ-aM-g2i" eventType="touchUpInside" id="ggE-qh-yTh"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3uV-Zs-RRo" firstAttribute="centerY" secondItem="54K-xz-dwY" secondAttribute="centerY" id="09x-Dy-qX3"/>
+                                                <constraint firstItem="3uV-Zs-RRo" firstAttribute="centerX" secondItem="54K-xz-dwY" secondAttribute="centerX" priority="750" id="SQ3-Ls-K8t"/>
+                                                <constraint firstItem="3uV-Zs-RRo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="54K-xz-dwY" secondAttribute="leadingMargin" id="XB1-O7-I7L"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3uV-Zs-RRo" secondAttribute="trailing" id="XmG-Lp-Mhe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Lock Database" footerTitle="Databases can be automatically locked after some time and/or when you enter a wrong AppLock passcode." id="neJ-eG-TV7" userLabel="Timeout">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="weX-SZ-IDB" detailTextLabel="beV-Hv-Qdr" imageView="kwU-PJ-9tl" style="IBUITableViewCellStyleValue1" id="7gS-TC-EzJ">
+                                        <rect key="frame" x="0.0" y="451" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7gS-TC-EzJ" id="3iu-pK-y97">
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Timeout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="weX-SZ-IDB">
+                                                    <rect key="frame" x="60" y="12" width="63" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="beV-Hv-Qdr">
+                                                    <rect key="frame" x="243.5" y="13" width="41.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-database-timeout-listitem" id="kwU-PJ-9tl">
+                                                    <rect key="frame" x="16" y="7" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="eL0-pb-xhd">
+                                        <rect key="frame" x="0.0" y="495" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eL0-pb-xhd" id="GDd-dn-lzw">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-database-protection-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="QES-Ru-anK">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="B5X-EI-8sj"/>
+                                                        <constraint firstAttribute="height" constant="29" id="H8i-uT-L8Y"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="On a Wrong AppLock Passcode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-Pz-pPI">
+                                                    <rect key="frame" x="61" y="0.5" width="186" height="42.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oah-UU-2Vv">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleLockDatabaseOnFailedPasscode:" destination="IZZ-aM-g2i" eventType="valueChanged" id="ZoO-N6-A4I"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Wed-Pz-pPI" firstAttribute="leading" secondItem="QES-Ru-anK" secondAttribute="trailing" constant="16" id="6sf-H5-CNy"/>
+                                                <constraint firstItem="Wed-Pz-pPI" firstAttribute="centerY" secondItem="GDd-dn-lzw" secondAttribute="centerY" id="7wx-MM-jkT"/>
+                                                <constraint firstItem="Oah-UU-2Vv" firstAttribute="trailing" secondItem="GDd-dn-lzw" secondAttribute="trailingMargin" id="G7u-Yx-HtP"/>
+                                                <constraint firstItem="Oah-UU-2Vv" firstAttribute="centerY" secondItem="GDd-dn-lzw" secondAttribute="centerY" id="Zik-vW-qN2"/>
+                                                <constraint firstItem="QES-Ru-anK" firstAttribute="centerY" secondItem="GDd-dn-lzw" secondAttribute="centerY" id="a5u-bA-ZX6"/>
+                                                <constraint firstItem="Oah-UU-2Vv" firstAttribute="leading" secondItem="Wed-Pz-pPI" secondAttribute="trailing" constant="8" id="mdC-HI-E2W"/>
+                                                <constraint firstItem="QES-Ru-anK" firstAttribute="leading" secondItem="GDd-dn-lzw" secondAttribute="leadingMargin" id="uS1-WK-dUf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Clipboard" footerTitle="When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time." id="hnI-Q8-Ixm" userLabel="Pasteboard Timeout">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="SSu-Sr-MCg" detailTextLabel="xPd-ot-oqe" imageView="KN4-NG-3Iw" style="IBUITableViewCellStyleValue1" id="pl7-TW-G1h" userLabel="Clipboard Timeout Cell">
+                                        <rect key="frame" x="0.0" y="646.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pl7-TW-G1h" id="Wfm-hG-PH6">
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Clipboard Timeout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="SSu-Sr-MCg">
+                                                    <rect key="frame" x="60" y="12" width="141.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-clipboard-timeout-listitem" id="KN4-NG-3Iw">
+                                                    <rect key="frame" x="16" y="7" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                </imageView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xPd-ot-oqe">
+                                                    <rect key="frame" x="243.5" y="13" width="41.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Backup" id="lYK-Kp-tOs" userLabel="Backup">
+                                <string key="footerTitle">Before saving a database, KeePassium will make a copy, just in case. To see backup copies, check the Sort Order menu in the database list.</string>
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Jks-aw-dhP">
+                                        <rect key="frame" x="0.0" y="798" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jks-aw-dhP" id="SUS-pw-noN">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup Database Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O3-xh-Xh6">
+                                                    <rect key="frame" x="61" y="11.5" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0T4-3k-cGh">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleBackupDatabases:" destination="IZZ-aM-g2i" eventType="valueChanged" id="zVS-Cw-Qkf"/>
+                                                    </connections>
+                                                </switch>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-database-backup-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-Qo-sgD">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="5m0-Hp-7eu"/>
+                                                        <constraint firstAttribute="width" constant="29" id="Cai-7Y-agn"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7A9-Qo-sgD" firstAttribute="leading" secondItem="SUS-pw-noN" secondAttribute="leadingMargin" id="NT4-cR-a0K"/>
+                                                <constraint firstItem="0T4-3k-cGh" firstAttribute="leading" secondItem="3O3-xh-Xh6" secondAttribute="trailing" constant="8" id="TdW-zk-3lS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0T4-3k-cGh" secondAttribute="trailing" id="U2t-d1-xG4"/>
+                                                <constraint firstItem="7A9-Qo-sgD" firstAttribute="centerY" secondItem="SUS-pw-noN" secondAttribute="centerY" id="W72-12-EZZ"/>
+                                                <constraint firstItem="3O3-xh-Xh6" firstAttribute="centerY" secondItem="SUS-pw-noN" secondAttribute="centerY" id="aJ8-B1-rK4"/>
+                                                <constraint firstItem="0T4-3k-cGh" firstAttribute="centerY" secondItem="SUS-pw-noN" secondAttribute="centerY" id="han-qQ-f2J"/>
+                                                <constraint firstItem="3O3-xh-Xh6" firstAttribute="leading" secondItem="7A9-Qo-sgD" secondAttribute="trailing" constant="16" id="tSo-Sw-KpX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="IZZ-aM-g2i" id="saX-Ms-ENf"/>
+                            <outlet property="delegate" destination="IZZ-aM-g2i" id="j4A-iG-g34"/>
+                        </connections>
+                    </tableView>
+                    <size key="freeformSize" width="320" height="900"/>
+                    <connections>
+                        <outlet property="backupDatabasesSwitch" destination="0T4-3k-cGh" id="LEb-Jl-8GR"/>
+                        <outlet property="clearKeyFileAssociationsButton" destination="3uV-Zs-RRo" id="AaL-yl-h39"/>
+                        <outlet property="clearMasterKeysButton" destination="e1v-nv-Mst" id="uRo-08-UjQ"/>
+                        <outlet property="clipboardTimeoutCell" destination="pl7-TW-G1h" id="kdi-rO-dBh"/>
+                        <outlet property="databaseTimeoutCell" destination="7gS-TC-EzJ" id="3Ue-ZN-LSr"/>
+                        <outlet property="lockDatabaseOnFailedPasscodeSwitch" destination="Oah-UU-2Vv" id="XTr-Je-3ST"/>
+                        <outlet property="rememberMasterKeysSwitch" destination="xIS-oe-VeS" id="3aO-D6-Lhz"/>
+                        <outlet property="rememberUsedKeyFiles" destination="p4I-y6-xzA" id="Yx9-zT-Cc0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O0h-PX-haA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="241"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings-clipboard-timeout-listitem" width="29" height="29"/>
+        <image name="settings-database-backup-listitem" width="29" height="29"/>
+        <image name="settings-database-protection-listitem" width="29" height="29"/>
+        <image name="settings-database-timeout-listitem" width="29" height="29"/>
+        <image name="settings-remember-keyfiles-listitem" width="29" height="29"/>
+        <image name="settings-remember-master-keys-listitem" width="29" height="29"/>
+        <namedColor name="AuxiliaryText">
+            <color white="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="DestructiveTint">
+            <color red="0.91900002956390381" green="0.24799999594688416" blue="0.14599999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

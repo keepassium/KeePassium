@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyi-Rh-F8f">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Root NavigationVC-->
+        <scene sceneID="spq-Kp-sWb">
+            <objects>
+                <navigationController toolbarHidden="NO" id="nZ1-Jp-xE5" customClass="RootNavigationVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UKf-of-HJ4">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JGm-F0-obj">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="Z08-Gt-Uut" kind="relationship" relationship="rootViewController" id="rf9-on-HSy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ub-03-8Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2424" y="324"/>
+        </scene>
+        <!--Root SplitVC-->
+        <scene sceneID="fOK-gr-1HT">
+            <objects>
+                <splitViewController id="dyi-Rh-F8f" customClass="RootSplitVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="nZ1-Jp-xE5" kind="relationship" relationship="masterViewController" id="U2q-WN-Ugf"/>
+                        <segue destination="dPP-th-Ejq" kind="relationship" relationship="detailViewController" id="iWO-Yw-euW"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gvc-iy-8mI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3446" y="716"/>
+        </scene>
+        <!--PlaceholderVC-->
+        <scene sceneID="W23-I2-hzc">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="PlaceholderVC" storyboardName="PlaceholderVC" referencedIdentifier="PlaceholderVC" id="dPP-th-Ejq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o4E-kC-jtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2362" y="906"/>
+        </scene>
+        <!--ChooseDatabaseVC-->
+        <scene sceneID="njc-Ea-uWy">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ChooseDatabaseVC" storyboardName="ChooseDatabaseVC" referencedIdentifier="ChooseDatabaseVC" id="Z08-Gt-Uut" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oqt-F2-2Tb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bBu-z5-JzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1619" y="323"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" name="ActionTint"/>
+</document>

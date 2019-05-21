@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ProgressVC-->
+        <scene sceneID="DCu-dm-iQz">
+            <objects>
+                <viewController storyboardIdentifier="ProgressVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="0e5-HR-Ac4" customClass="ProgressVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sf7-EU-i4c">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxv-aR-vqM" userLabel="Panel">
+                                <rect key="frame" x="10" y="191.5" width="300" height="185"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Progress status)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S17-YX-yJd">
+                                        <rect key="frame" x="8" y="63" width="132" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" name="PrimaryText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(123%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sN-ep-FkQ">
+                                        <rect key="frame" x="241" y="64" width="51" height="19.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <color key="textColor" name="AuxiliaryText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yhH-e5-e6b">
+                                        <rect key="frame" x="8" y="91.5" width="284" height="2"/>
+                                    </progressView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQU-T2-XpC">
+                                        <rect key="frame" x="0.0" y="141" width="300" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="l6O-IX-YQs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="tintColor" name="ActionTint"/>
+                                        <state key="normal" title="(Cancel)"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="ActionTint"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didPressCancel:" destination="0e5-HR-Ac4" eventType="touchUpInside" id="CEK-CQ-e03"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yhH-e5-e6b" firstAttribute="top" secondItem="8sN-ep-FkQ" secondAttribute="bottom" constant="8" id="66z-kp-QFe"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZQU-T2-XpC" secondAttribute="trailing" id="B5s-AM-ak9"/>
+                                    <constraint firstItem="S17-YX-yJd" firstAttribute="leading" secondItem="yhH-e5-e6b" secondAttribute="leading" id="HOM-cN-OPZ"/>
+                                    <constraint firstItem="S17-YX-yJd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dxv-aR-vqM" secondAttribute="topMargin" id="MHX-yE-PcY"/>
+                                    <constraint firstItem="yhH-e5-e6b" firstAttribute="top" secondItem="S17-YX-yJd" secondAttribute="bottom" constant="8" id="Mpb-Uh-l0Z"/>
+                                    <constraint firstItem="8sN-ep-FkQ" firstAttribute="trailing" secondItem="yhH-e5-e6b" secondAttribute="trailing" id="Mw5-OU-ndS"/>
+                                    <constraint firstItem="ZQU-T2-XpC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yhH-e5-e6b" secondAttribute="bottom" constant="8" id="Nlm-Ul-yGD"/>
+                                    <constraint firstItem="yhH-e5-e6b" firstAttribute="centerY" secondItem="Dxv-aR-vqM" secondAttribute="centerY" id="WfD-w2-YdD"/>
+                                    <constraint firstItem="yhH-e5-e6b" firstAttribute="leading" secondItem="Dxv-aR-vqM" secondAttribute="leadingMargin" id="YNX-Iu-2XY"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="yhH-e5-e6b" secondAttribute="trailing" id="aoe-kG-EAn"/>
+                                    <constraint firstAttribute="height" constant="185" id="dt5-e6-zEc"/>
+                                    <constraint firstAttribute="width" constant="300" id="fve-gn-3TM"/>
+                                    <constraint firstItem="ZQU-T2-XpC" firstAttribute="leading" secondItem="Dxv-aR-vqM" secondAttribute="leading" id="jNt-SV-Er6"/>
+                                    <constraint firstItem="8sN-ep-FkQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="S17-YX-yJd" secondAttribute="trailing" constant="8" id="lAZ-si-Raw"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZQU-T2-XpC" secondAttribute="bottom" id="tSd-ay-bmD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dxv-aR-vqM" firstAttribute="centerY" secondItem="sf7-EU-i4c" secondAttribute="centerY" id="1zh-94-sHP"/>
+                            <constraint firstItem="Dxv-aR-vqM" firstAttribute="centerX" secondItem="sf7-EU-i4c" secondAttribute="centerX" id="8Fw-EX-iHZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kbn-qx-AeQ"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="ZQU-T2-XpC" id="1su-jD-XAf"/>
+                        <outlet property="percentLabel" destination="8sN-ep-FkQ" id="18f-kg-z5Z"/>
+                        <outlet property="progressView" destination="yhH-e5-e6b" id="7Dy-pe-Waa"/>
+                        <outlet property="statusLabel" destination="S17-YX-yJd" id="z1R-JZ-Zz8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WnD-4F-wb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-273" y="85"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AuxiliaryText">
+            <color white="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eAa-Z5-pdq">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Unlock Database-->
+        <scene sceneID="Bah-z1-kFB">
+            <objects>
+                <viewController storyboardIdentifier="UnlockDatabaseVC" title="Unlock Database" modalTransitionStyle="flipHorizontal" id="eAa-Z5-pdq" customClass="UnlockDatabaseVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bPc-V2-3Of">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-k8-gTg" userLabel="KeyboardAdjustingView">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1da-3k-RQm" userLabel="Error Message Panel">
+                                        <rect key="frame" x="74.5" y="116" width="171" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="(Error message)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2U-7y-vCm">
+                                                <rect key="frame" x="8" y="0.0" width="117" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                <color key="textColor" name="WarningText"/>
+                                                <nil key="highlightedColor"/>
+                                                <size key="shadowOffset" width="1" height="1"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrD-QC-R8N">
+                                                <rect key="frame" x="133" y="0.0" width="38" height="30"/>
+                                                <color key="tintColor" name="ActionTint"/>
+                                                <inset key="contentEdgeInsets" minX="8" minY="4" maxX="8" maxY="4"/>
+                                                <connections>
+                                                    <action selector="didPressErrorDetails:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="edS-Y9-GT3"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="WarningBackground"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="d2U-7y-vCm" secondAttribute="bottom" id="1mb-u6-IgV"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nrD-QC-R8N" secondAttribute="bottom" id="1vr-aB-9MA"/>
+                                            <constraint firstItem="nrD-QC-R8N" firstAttribute="leading" secondItem="d2U-7y-vCm" secondAttribute="trailing" constant="8" id="Ezw-RE-QJt"/>
+                                            <constraint firstItem="nrD-QC-R8N" firstAttribute="centerY" secondItem="d2U-7y-vCm" secondAttribute="centerY" id="Ld0-jc-4xf"/>
+                                            <constraint firstItem="d2U-7y-vCm" firstAttribute="top" secondItem="1da-3k-RQm" secondAttribute="top" id="MW8-cL-bE4"/>
+                                            <constraint firstAttribute="trailing" secondItem="nrD-QC-R8N" secondAttribute="trailing" id="bGv-4g-Kjr"/>
+                                            <constraint firstItem="nrD-QC-R8N" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1da-3k-RQm" secondAttribute="top" id="fUg-8o-7ge"/>
+                                            <constraint firstItem="d2U-7y-vCm" firstAttribute="leading" secondItem="1da-3k-RQm" secondAttribute="leadingMargin" id="wHo-hI-0As"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dr0-TU-sMX" userLabel="Database Name Panel">
+                                        <rect key="frame" x="63.5" y="154" width="187.5" height="29"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="database-cloud-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="MLZ-P0-rnn">
+                                                <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
+                                                <color key="tintColor" name="PrimaryText"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="29" id="8AS-4O-0qN"/>
+                                                    <constraint firstAttribute="height" constant="29" id="rUf-rV-WA6"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="(Database file name)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsQ-5N-nP3">
+                                                <rect key="frame" x="37" y="0.0" width="150.5" height="29"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                <color key="textColor" name="PrimaryText"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="MLZ-P0-rnn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="top" id="7CX-rL-I7J"/>
+                                            <constraint firstAttribute="trailing" secondItem="LsQ-5N-nP3" secondAttribute="trailing" id="90z-fh-qpv"/>
+                                            <constraint firstItem="MLZ-P0-rnn" firstAttribute="centerY" secondItem="Dr0-TU-sMX" secondAttribute="centerY" id="9MK-W4-LSa"/>
+                                            <constraint firstItem="LsQ-5N-nP3" firstAttribute="centerY" secondItem="Dr0-TU-sMX" secondAttribute="centerY" id="W6t-oy-prY"/>
+                                            <constraint firstItem="MLZ-P0-rnn" firstAttribute="leading" secondItem="Dr0-TU-sMX" secondAttribute="leading" id="ftF-2v-Dxg"/>
+                                            <constraint firstItem="LsQ-5N-nP3" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="top" priority="750" id="hHC-oX-5mt"/>
+                                            <constraint firstAttribute="bottom" secondItem="LsQ-5N-nP3" secondAttribute="bottom" priority="750" id="q9D-Ew-QRU"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MLZ-P0-rnn" secondAttribute="bottom" id="tNJ-ot-qsT"/>
+                                            <constraint firstItem="LsQ-5N-nP3" firstAttribute="leading" secondItem="MLZ-P0-rnn" secondAttribute="trailing" constant="8" id="vHL-Ls-ulA"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G3Q-hY-M1b">
+                                        <rect key="frame" x="20" y="191" width="280" height="166"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3xv-vB-0Jn">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="90"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuN-tE-lAG" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
+                                                        <rect key="frame" x="8" y="0.0" width="264" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="Ce1-pB-jMO"/>
+                                                        </constraints>
+                                                        <color key="textColor" name="PrimaryText"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="password"/>
+                                                    </textField>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="854-YG-tHO" userLabel="Separator">
+                                                        <rect key="frame" x="0.0" y="44" width="280" height="2"/>
+                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="2" id="1li-ig-vuf"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYY-hP-3vH" customClass="WatchdogAwareTextField" customModule="KeePassium" customModuleProvider="target">
+                                                        <rect key="frame" x="8" y="46" width="264" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="zgu-ja-9pO"/>
+                                                        </constraints>
+                                                        <color key="textColor" name="PrimaryText"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="mYY-hP-3vH" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="11G-x2-VCX"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2QP-BY-ymU"/>
+                                                    <constraint firstItem="CuN-tE-lAG" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="7YG-AI-dEZ"/>
+                                                    <constraint firstAttribute="width" priority="750" constant="280" id="FqB-Kn-Heq"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="CuN-tE-lAG" secondAttribute="trailing" id="O1R-4o-zHz"/>
+                                                    <constraint firstItem="854-YG-tHO" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="ayP-z8-IdO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="mYY-hP-3vH" secondAttribute="bottom" id="bSg-bu-ElE"/>
+                                                    <constraint firstItem="CuN-tE-lAG" firstAttribute="top" secondItem="3xv-vB-0Jn" secondAttribute="top" id="kvI-is-rJb"/>
+                                                    <constraint firstItem="854-YG-tHO" firstAttribute="top" secondItem="CuN-tE-lAG" secondAttribute="bottom" id="sZa-3K-Joh"/>
+                                                    <constraint firstItem="mYY-hP-3vH" firstAttribute="top" secondItem="854-YG-tHO" secondAttribute="bottom" id="v62-wO-G2n"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="mYY-hP-3vH" secondAttribute="trailing" id="vA6-I9-AaR"/>
+                                                    <constraint firstAttribute="trailing" secondItem="854-YG-tHO" secondAttribute="trailing" id="waV-xA-21s"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l45-hq-1lr" userLabel="Unlock">
+                                                <rect key="frame" x="0.0" y="98" width="280" height="44"/>
+                                                <color key="backgroundColor" name="ActionTint"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="vAF-Ke-xi5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="tintColor" name="ActionText"/>
+                                                <state key="normal" title="Unlock"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressUnlock:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="9kb-5G-Hvo"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Will use the remembered master key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3Y-ON-C19">
+                                                <rect key="frame" x="0.0" y="150" width="280" height="16"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <color key="textColor" name="AuxiliaryText"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2vz-Ao-z4Z"/>
+                                            <constraint firstAttribute="width" priority="750" constant="280" id="XJS-1Z-GxV"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" text="Database was closed by a timer." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epu-yU-Lyg">
+                                        <rect key="frame" x="8" y="516" width="304" height="16"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" name="AuxiliaryText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="epu-yU-Lyg" firstAttribute="leading" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="Aou-HZ-SdU"/>
+                                    <constraint firstItem="Dr0-TU-sMX" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" constant="-3" id="Bsv-T2-67i"/>
+                                    <constraint firstItem="1da-3k-RQm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="topMargin" id="EbW-cm-bpV"/>
+                                    <constraint firstItem="1da-3k-RQm" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" id="FP4-XB-1dt"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="epu-yU-Lyg" secondAttribute="bottom" constant="8" id="JGC-h1-9tH"/>
+                                    <constraint firstItem="epu-yU-Lyg" firstAttribute="trailing" secondItem="cdl-k8-gTg" secondAttribute="trailingMargin" id="NJc-XI-9Ke"/>
+                                    <constraint firstItem="Dr0-TU-sMX" firstAttribute="top" secondItem="1da-3k-RQm" secondAttribute="bottom" constant="8" id="O4m-qw-isl"/>
+                                    <constraint firstItem="1da-3k-RQm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="TRV-Gf-C9B"/>
+                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="bottom" constant="8" id="gih-9n-0TA"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="trailing" id="iPw-bZ-jul"/>
+                                    <constraint firstItem="Dr0-TU-sMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="mbo-7y-lJ6"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="1da-3k-RQm" secondAttribute="trailing" id="qJL-KC-hd6"/>
+                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerY" secondItem="cdl-k8-gTg" secondAttribute="centerY" priority="250" id="qdq-Nk-k5M"/>
+                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="topMargin" id="sTd-Jp-xZI"/>
+                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" id="yQN-7S-jaf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cdl-k8-gTg" firstAttribute="leading" secondItem="fjp-FI-lys" secondAttribute="leading" id="D0r-G0-qVk"/>
+                            <constraint firstItem="cdl-k8-gTg" firstAttribute="trailing" secondItem="fjp-FI-lys" secondAttribute="trailing" id="Okf-K9-G8m"/>
+                            <constraint firstItem="fjp-FI-lys" firstAttribute="bottom" secondItem="cdl-k8-gTg" secondAttribute="bottom" priority="250" id="VaD-Ev-zg3" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
+                            <constraint firstItem="cdl-k8-gTg" firstAttribute="top" secondItem="fjp-FI-lys" secondAttribute="top" id="dQA-ql-OqA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fjp-FI-lys"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="KeyFileField" destination="mYY-hP-3vH" id="e2c-j0-r8o"/>
+                        <outlet property="databaseIconImage" destination="MLZ-P0-rnn" id="96A-DR-0Q0"/>
+                        <outlet property="databaseNameLabel" destination="LsQ-5N-nP3" id="nWY-4W-BPY"/>
+                        <outlet property="errorDetailButton" destination="nrD-QC-R8N" id="Hdc-k4-pl1"/>
+                        <outlet property="errorLabel" destination="d2U-7y-vCm" id="Tfd-pH-JMJ"/>
+                        <outlet property="errorMessagePanel" destination="1da-3k-RQm" id="XSq-Rx-ZNa"/>
+                        <outlet property="inputPanel" destination="3xv-vB-0Jn" id="dpu-5T-Uzb"/>
+                        <outlet property="keyFileField" destination="mYY-hP-3vH" id="ITo-zF-Ead"/>
+                        <outlet property="keyboardAdjView" destination="cdl-k8-gTg" id="gDU-xh-QP9"/>
+                        <outlet property="masterKeyKnownLabel" destination="K3Y-ON-C19" id="biz-bo-isU"/>
+                        <outlet property="passwordField" destination="CuN-tE-lAG" id="8Cx-tM-tfp"/>
+                        <outlet property="watchdogTimeoutLabel" destination="epu-yU-Lyg" id="8Mz-oL-08S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Juw-QX-Vel" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="756" y="-438.53073463268368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="database-cloud-listitem" width="29" height="29"/>
+        <namedColor name="ActionText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AuxiliaryText">
+            <color white="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="WarningBackground">
+            <color red="0.94199997186660767" green="0.59700000286102295" blue="0.21699999272823334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WarningText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+    <color key="tintColor" name="ActionTint"/>
+</document>

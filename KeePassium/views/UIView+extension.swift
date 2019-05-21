@@ -1,0 +1,47 @@
+//  KeePassium Password Manager
+//  Copyright © 2018–2019 Andrei Popleteev <info@keepassium.com>
+// 
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact the author.
+
+import UIKit
+
+extension UIView {
+    @IBInspectable var borderColor: UIColor? {
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
+        get {
+            guard let cgColor = layer.borderColor else { return nil }
+            return UIColor(cgColor: cgColor)
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            layer.borderWidth = newValue
+        }
+        get {
+            return layer.borderWidth
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        set {
+            layer.cornerRadius = newValue
+        }
+        get {
+            return layer.cornerRadius
+        }
+    }
+    
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.duration = 0.6
+        animation.values = [-15.0, 15.0, -15.0, 15.0, -7.0, 7.0, -3.0, 3.0, 0.0 ]
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        layer.add(animation, forKey: "shake")
+    }
+}

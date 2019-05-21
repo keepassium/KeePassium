@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W6c-47-p86">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Group-->
+        <scene sceneID="F1I-Yc-Zvb">
+            <objects>
+                <viewController storyboardIdentifier="EditGroupVC" title="Edit Group" id="W6c-47-p86" customClass="EditGroupVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1kK-A7-3vw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/kpbIcon48" translatesAutoresizingMaskIntoConstraints="NO" id="7lM-kE-WVJ">
+                                <rect key="frame" x="16" y="28" width="29" height="29"/>
+                                <color key="tintColor" name="IconTint"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="29" id="NHa-yp-ndU"/>
+                                    <constraint firstAttribute="height" constant="29" id="nLa-af-gJh"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="p8m-XM-QTb" appends="YES" id="UN6-67-frb"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="(Group Name)" borderStyle="roundedRect" placeholder="Group Name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jea-zX-9LD" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="53" y="28" width="306" height="30"/>
+                                <color key="textColor" name="PrimaryText"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vz5-tj-l9g">
+                                <rect key="frame" x="16" y="65" width="100" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" title="Change Icon">
+                                    <color key="titleColor" name="ActionTint"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressChangeIcon:" destination="W6c-47-p86" eventType="touchUpInside" id="OUk-nf-xDy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="ListBackground"/>
+                        <constraints>
+                            <constraint firstItem="vz5-tj-l9g" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jea-zX-9LD" secondAttribute="bottom" constant="4" id="1Ci-fK-JWu"/>
+                            <constraint firstItem="7lM-kE-WVJ" firstAttribute="top" secondItem="jea-zX-9LD" secondAttribute="top" id="Q9M-Pv-9kc"/>
+                            <constraint firstItem="7lM-kE-WVJ" firstAttribute="leading" secondItem="ahd-ms-ScQ" secondAttribute="leading" constant="16" id="RQg-DN-8gK"/>
+                            <constraint firstItem="ahd-ms-ScQ" firstAttribute="trailing" secondItem="jea-zX-9LD" secondAttribute="trailing" constant="16" id="YOK-EW-MCp"/>
+                            <constraint firstItem="jea-zX-9LD" firstAttribute="top" secondItem="ahd-ms-ScQ" secondAttribute="top" constant="8" id="bEd-FV-ap3"/>
+                            <constraint firstItem="vz5-tj-l9g" firstAttribute="leading" secondItem="7lM-kE-WVJ" secondAttribute="leading" id="c65-4M-vSG"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vz5-tj-l9g" secondAttribute="trailing" id="hQV-Ie-AnL"/>
+                            <constraint firstItem="vz5-tj-l9g" firstAttribute="top" secondItem="7lM-kE-WVJ" secondAttribute="bottom" priority="750" constant="8" id="q8Y-bU-bUq"/>
+                            <constraint firstItem="jea-zX-9LD" firstAttribute="leading" secondItem="7lM-kE-WVJ" secondAttribute="trailing" constant="8" id="yCm-A1-W0s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ahd-ms-ScQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="i3F-A8-9jn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zU7-E5-Efw">
+                            <connections>
+                                <action selector="didPressCancel:" destination="W6c-47-p86" id="U6G-bV-cBC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="VCh-xb-2sE">
+                            <connections>
+                                <action selector="didPressDone:" destination="W6c-47-p86" id="inT-Xc-3OV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="7lM-kE-WVJ" id="Siu-TR-rzi"/>
+                        <outlet property="nameTextField" destination="jea-zX-9LD" id="NLp-De-ylv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Or-BT-erR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="p8m-XM-QTb">
+                    <connections>
+                        <action selector="didTapIcon:" destination="W6c-47-p86" id="f3a-hu-DHt"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2385" y="320.07042253521126"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="db-icons/kpbIcon48" width="29" height="29"/>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ListBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+    <color key="tintColor" name="ActionTint"/>
+</document>

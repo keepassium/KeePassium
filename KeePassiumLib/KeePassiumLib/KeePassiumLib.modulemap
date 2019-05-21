@@ -1,0 +1,6 @@
+framework module KeePassiumLib {
+  umbrella header "KeePassiumLib.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfT-SG-IdV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Databases-->
+        <scene sceneID="2Uz-Z4-ZqM">
+            <objects>
+                <tableViewController storyboardIdentifier="DatabaseChooserVC" title="Databases" modalTransitionStyle="crossDissolve" id="sfT-SG-IdV" customClass="DatabaseChooserVC" customModule="KeePassium_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j87-X8-qsR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" textLabel="gs3-2C-fts" detailTextLabel="wKG-yp-SZt" imageView="uJr-zo-xUb" style="IBUITableViewCellStyleSubtitle" id="aPc-lF-R7F" customClass="DatabaseFileListCell" customModule="KeePassium_AutoFill" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aPc-lF-R7F" id="rEz-tF-rru">
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="gs3-2C-fts">
+                                            <rect key="frame" x="60" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="wKG-yp-SZt">
+                                            <rect key="frame" x="60" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="database-local-listitem" id="uJr-zo-xUb">
+                                            <rect key="frame" x="16" y="7" width="29" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoFilesCell" id="rNs-5c-DZV" userLabel="NoFilesCell">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rNs-5c-DZV" id="OX6-CW-PNo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="No recent databases" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXt-kp-oSe">
+                                            <rect key="frame" x="16" y="11.5" width="343" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="fXt-kp-oSe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OX6-CW-PNo" secondAttribute="topMargin" id="GoI-oa-cJp"/>
+                                        <constraint firstItem="fXt-kp-oSe" firstAttribute="centerX" secondItem="OX6-CW-PNo" secondAttribute="centerX" id="PoB-sH-02P"/>
+                                        <constraint firstItem="fXt-kp-oSe" firstAttribute="leading" secondItem="OX6-CW-PNo" secondAttribute="leadingMargin" id="VlT-lx-bTi"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="fXt-kp-oSe" secondAttribute="bottom" id="rBP-Mc-d41"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="fXt-kp-oSe" secondAttribute="trailing" id="u5f-Dg-ApM"/>
+                                        <constraint firstItem="fXt-kp-oSe" firstAttribute="centerY" secondItem="OX6-CW-PNo" secondAttribute="centerY" id="wH0-Q8-EWF"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sfT-SG-IdV" id="wfz-j9-O5j"/>
+                            <outlet property="delegate" destination="sfT-SG-IdV" id="9Wn-RK-bIM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Databases" id="Zun-me-VzS">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="l4I-nu-vBG">
+                            <connections>
+                                <action selector="didPressCancel:" destination="sfT-SG-IdV" id="lat-CE-y2p"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="create-item-toolbar" id="CbK-f7-To5" userLabel="Add Database">
+                            <connections>
+                                <action selector="didPressAddDatabase:" destination="sfT-SG-IdV" id="GuG-Sx-O7f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0h1-oh-1Ij" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="73.313343328335833"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="create-item-toolbar" width="25" height="25"/>
+        <image name="database-local-listitem" width="29" height="29"/>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="AuxiliaryText">
+            <color white="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>
