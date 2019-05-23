@@ -147,7 +147,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             preferredStyle: .alert)
         let continueAction = UIAlertAction(
             title: NSLocalizedString("Ignore and Continue", comment: "Action: ignore warnings and proceed to work with the database"),
-            style: .destructive,
+            style: .default,
             handler: nil)
         let contactUsAction = UIAlertAction(
             title: LString.actionContactUs,

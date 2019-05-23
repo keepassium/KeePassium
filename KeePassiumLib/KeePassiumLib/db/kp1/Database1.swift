@@ -365,9 +365,8 @@ public class Database1: Database {
         
         parentGroup.remove(group: group)
         
-        var subGroups = [Group]()
         var subEntries = [Entry]()
-        group.collectAllChildren(groups: &subGroups, entries: &subEntries)
+        group.collectAllEntries(to: &subEntries)
         
         subEntries.forEach { (entry) in
             backupGroup.moveEntry(entry: entry)

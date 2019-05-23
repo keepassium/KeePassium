@@ -79,10 +79,9 @@ class SearchHelper {
     private func performSearch(in database: Database, url: String) -> [ScoredEntry] {
         guard let url = URL(string: url) else { return [] }
         
-        var allGroups = [Group]()
         var allEntries = [Entry]()
         guard let rootGroup = database.root else { return [] }
-        rootGroup.collectAllChildren(groups: &allGroups, entries: &allEntries)
+        rootGroup.collectAllEntries(to: &allEntries)
         
         let relevantEntries = allEntries
             .filter { (entry) in
@@ -105,10 +104,9 @@ class SearchHelper {
     }
 
     private func performSearch(in database: Database, domain: String) -> [ScoredEntry] {
-        var allGroups = [Group]()
         var allEntries = [Entry]()
         guard let rootGroup = database.root else { return [] }
-        rootGroup.collectAllChildren(groups: &allGroups, entries: &allEntries)
+        rootGroup.collectAllEntries(to: &allEntries)
         
         let relevantEntries = allEntries
             .filter { (entry) in

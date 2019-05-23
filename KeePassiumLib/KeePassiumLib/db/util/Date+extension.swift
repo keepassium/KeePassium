@@ -11,12 +11,7 @@ import Foundation
 public extension Date {
     static var now: Date { return Date() }
     
-    static internal let dotNetTimeZero = DateComponents(
-        calendar: Calendar(identifier: .gregorian),
-        timeZone: TimeZone(abbreviation: "UTC"),
-        year: 1, month: 1, day: 1,
-        hour: 0, minute: 0, second: 0, nanosecond: 0
-        ).date! 
+    static internal let secondsBetweenSwiftAndDotNetReferenceDates = Int64(63113904000)
 
     init?(iso8601string string: String?) {
         guard let string = string else { return nil }
@@ -31,8 +26,10 @@ public extension Date {
     
     init?(base64Encoded string: String?) {
         guard let data = ByteArray(base64Encoded: string) else { return nil }
-        guard let seconds = Int64(data: data) else { return nil }
-        self = Date(timeInterval: Double(seconds), since: Date.dotNetTimeZero)
+        guard let secondsSinceDotNetReferenceDate = Int64(data: data) else { return nil }
+        let secondsSinceSwiftReferenceDate =
+            secondsSinceDotNetReferenceDate - Date.secondsBetweenSwiftAndDotNetReferenceDates
+        self = Date(timeIntervalSinceReferenceDate: Double(secondsSinceSwiftReferenceDate))
     }
     
     func iso8601String() -> String {
@@ -40,7 +37,9 @@ public extension Date {
     }
     
     func base64EncodedString() -> String {
-        let secondsSinceRef = Int64(self.timeIntervalSince(Date.dotNetTimeZero))
-        return secondsSinceRef.data.base64EncodedString()
+        let secondsSinceSwiftReferenceDate = Int64(self.timeIntervalSinceReferenceDate)
+        let secondsSinceDotNetReferenceDate =
+            secondsSinceSwiftReferenceDate + Date.secondsBetweenSwiftAndDotNetReferenceDates
+        return secondsSinceDotNetReferenceDate.data.base64EncodedString()
     }
 }

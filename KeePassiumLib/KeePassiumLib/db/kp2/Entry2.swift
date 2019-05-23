@@ -78,7 +78,6 @@ public class EntryField2: EntryField {
         }
         if _key.isEmpty && _value.isNotEmpty {
             Diag.error("Missing Entry/String/Key with present Value")
-            throw Xml2.ParsingError.malformedValue(tag: "Entry/String/Key+Value", value: nil)
         }
         self.name = _key
         self.value = _value
@@ -368,7 +367,12 @@ public class Entry2: Entry {
         return false
     }
     
-    func load(xml: AEXMLElement, streamCipher: StreamCipher) throws {
+    func load(
+        xml: AEXMLElement,
+        streamCipher: StreamCipher,
+        warnings: DatabaseLoadingWarnings
+        ) throws
+    {
         assert(xml.name == Xml2.entry)
         Diag.verbose("Loading XML: entry")
         
@@ -397,6 +401,9 @@ public class Entry2: Entry {
                 try field.load(xml: tag, streamCipher: streamCipher)
                 if field.isEmpty {
                     Diag.debug("Loaded empty entry field, ignoring.")
+                } else if field.name.isEmpty {
+                    Diag.warning("Loaded entry field with an empty name, will show a warning.")
+                    setField(name: field.name, value: field.value, isProtected: field.isProtected)
                 } else {
                     Diag.verbose("Entry field loaded OK")
                     setField(name: field.name, value: field.value, isProtected: field.isProtected)
@@ -418,7 +425,7 @@ public class Entry2: Entry {
                 try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Entry")
                 Diag.verbose("Entry custom data loaded OK")
             case Xml2.history:
-                try loadHistory(xml: tag, streamCipher: streamCipher)
+                try loadHistory(xml: tag, streamCipher: streamCipher, warnings: warnings)
                 Diag.verbose("Entry history loaded OK")
             default:
                 Diag.error("Unexpected XML tag in Entry: \(tag.name)")
@@ -485,14 +492,19 @@ public class Entry2: Entry {
         }
     }
 
-    func loadHistory(xml: AEXMLElement, streamCipher: StreamCipher) throws {
+    func loadHistory(
+        xml: AEXMLElement,
+        streamCipher: StreamCipher,
+        warnings: DatabaseLoadingWarnings
+        ) throws
+    {
         assert(xml.name == Xml2.history)
         Diag.verbose("Loading XML: entry history")
         for tag in xml.children {
             switch tag.name {
             case Xml2.entry:
                 let histEntry = Entry2(database: database)
-                try histEntry.load(xml: tag, streamCipher: streamCipher)
+                try histEntry.load(xml: tag, streamCipher: streamCipher, warnings: warnings)
                 history.append(histEntry)
                 Diag.verbose("Entry history item loaded OK")
             default:

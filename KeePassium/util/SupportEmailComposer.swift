@@ -31,16 +31,17 @@ class SupportEmailComposer: NSObject {
         }
         let appName = infoDict["CFBundleDisplayName"] as? String ?? "KeePassium"
         let appVersion = infoDict["CFBundleShortVersionString"] as? String ?? "_0.0"
+        let buildVersion = infoDict["CFBundleVersion"] as? String ?? ""
         let subject, content: String
         if includeDiagnostics {
-            subject = "\(appName) v\(appVersion) - Problem"
+            subject = "\(appName) \(appVersion).\(buildVersion) - Problem"
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
             content = LString.emailTemplateDescribeTheProblemHere +
                 "\n\n----- Diagnostic Info -----\n" +
-                "\(appName) v\(appVersion)\n" +
+                "\(appName) \(appVersion).\(buildVersion)\n" +
                 Diag.toString()
         } else {
-            subject = "\(appName) v\(appVersion) - Support Request"
+            subject = "\(appName) \(appVersion).\(buildVersion) - Support Request"
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
             content = ""
         }

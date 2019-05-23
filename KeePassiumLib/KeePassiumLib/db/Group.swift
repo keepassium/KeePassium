@@ -185,6 +185,13 @@ public class Group: Eraseable {
         entries.append(contentsOf: self.entries)
     }
     
+    public func collectAllEntries(to entries: inout Array<Entry>) {
+        for group in self.groups {
+            group.collectAllEntries(to: &entries)
+        }
+        entries.append(contentsOf: self.entries)
+    }
+    
     public func filterEntries(query: SearchQuery, result: inout Array<Entry>) {
         if self.isDeleted && !query.includeDeleted {
             return
