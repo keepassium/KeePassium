@@ -128,4 +128,15 @@ public class URLReference: Equatable, Codable {
         }
         self.info = result
     }
+    
+    public func find(in refs: [URLReference], fallbackToNamesake: Bool=false) -> URLReference? {
+        if let exactMatchIndex = refs.firstIndex(of: self) {
+            return refs[exactMatchIndex]
+        }
+        if fallbackToNamesake {
+            let fileName = self.info.fileName
+            return refs.first(where: { $0.info.fileName == fileName })
+        }
+        return nil
+    }
 }

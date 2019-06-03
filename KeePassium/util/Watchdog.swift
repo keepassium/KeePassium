@@ -229,6 +229,7 @@ class Watchdog {
         Diag.info("Engaging Database Lock")
         self.databaseLockTimer?.invalidate()
         self.databaseLockTimer = nil
+        try? Keychain.shared.removeAllDatabaseKeys() 
         DatabaseManager.shared.closeDatabase(
             completion: {
                 DispatchQueue.main.async {

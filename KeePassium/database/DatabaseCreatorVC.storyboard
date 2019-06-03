@@ -183,6 +183,12 @@
                                                     <action selector="didPressContinue:" destination="Nri-WU-XVv" eventType="touchUpInside" id="Dad-pe-dYN"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Will use kdbx4 format (Argon2+ChaCha20)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVR-1N-ywy">
+                                                <rect key="frame" x="20" y="339" width="280" height="16"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <color key="textColor" name="DisabledText"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -190,12 +196,16 @@
                                             <constraint firstItem="2iK-ct-ygq" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="3SQ-1j-Si4"/>
                                             <constraint firstItem="m1h-to-FIR" firstAttribute="centerX" secondItem="BU0-lv-Dei" secondAttribute="centerX" id="49a-BD-wsP"/>
                                             <constraint firstItem="VjQ-di-Ilx" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="921-nM-mQW"/>
+                                            <constraint firstItem="XVR-1N-ywy" firstAttribute="leading" secondItem="h6C-CG-RVI" secondAttribute="leading" id="NR7-Bl-GXx"/>
                                             <constraint firstItem="h6C-CG-RVI" firstAttribute="top" secondItem="sgR-8q-2o9" secondAttribute="bottom" constant="16" id="OOE-jZ-lJc"/>
+                                            <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XVR-1N-ywy" secondAttribute="bottom" constant="8" id="SBN-Gl-ytW"/>
                                             <constraint firstItem="2iK-ct-ygq" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="STh-Nt-ayy"/>
                                             <constraint firstItem="h6C-CG-RVI" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="VmC-90-rMN"/>
+                                            <constraint firstItem="XVR-1N-ywy" firstAttribute="trailing" secondItem="h6C-CG-RVI" secondAttribute="trailing" id="aXN-vP-blN"/>
                                             <constraint firstItem="m1h-to-FIR" firstAttribute="top" secondItem="BU0-lv-Dei" secondAttribute="topMargin" id="ape-Js-Rig"/>
                                             <constraint firstItem="VjQ-di-Ilx" firstAttribute="top" secondItem="pxN-RE-FXX" secondAttribute="bottom" constant="16" id="cv2-ka-Nn2"/>
                                             <constraint firstItem="h6C-CG-RVI" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="dhP-OV-ETu"/>
+                                            <constraint firstItem="XVR-1N-ywy" firstAttribute="top" secondItem="h6C-CG-RVI" secondAttribute="bottom" constant="8" id="dp1-Fc-krB"/>
                                             <constraint firstItem="pxN-RE-FXX" firstAttribute="top" secondItem="2iK-ct-ygq" secondAttribute="bottom" constant="8" id="eAd-A3-LfG"/>
                                             <constraint firstItem="uHk-Yt-mBh" firstAttribute="centerY" secondItem="BU0-lv-Dei" secondAttribute="centerY" id="efg-QB-40s"/>
                                             <constraint firstItem="VjQ-di-Ilx" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="fBF-tg-cR1"/>
@@ -262,6 +272,9 @@
         </namedColor>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DisabledText">
+            <color red="0.75300002098083496" green="0.75300002098083496" blue="0.75300002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

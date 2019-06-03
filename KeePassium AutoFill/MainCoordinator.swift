@@ -49,6 +49,8 @@ class MainCoordinator: NSObject, Coordinator {
     }
     
     func start() {
+        DatabaseManager.shared.closeDatabase(clearStoredKey: false)
+        
         databaseManagerNotifications = DatabaseManagerNotifications(observer: self)
         databaseManagerNotifications?.startObserving()
         watchdog.didBecomeActive()

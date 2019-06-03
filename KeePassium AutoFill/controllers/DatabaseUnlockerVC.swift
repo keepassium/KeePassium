@@ -119,9 +119,14 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             databaseLocationIconImage.image = UIImage.databaseIcon(for: dbRef)
         }
         
-        let settings = Settings.current
-        if let associatedKeyFileRef = settings.getKeyFileForDatabase(databaseRef: dbRef) {
-            setKeyFile(urlRef: associatedKeyFileRef)
+        if let associatedKeyFileRef = Settings.current.getKeyFileForDatabase(databaseRef: dbRef) {
+            let allAvailableKeyFiles = FileKeeper.shared
+                .getAllReferences(fileType: .keyFile, includeBackup: false)
+            if let availableKeyFileRef = associatedKeyFileRef
+                .find(in: allAvailableKeyFiles, fallbackToNamesake: true)
+            {
+                setKeyFile(urlRef: availableKeyFileRef)
+            }
         }
     }
     

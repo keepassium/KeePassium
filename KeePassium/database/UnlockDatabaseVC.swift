@@ -120,8 +120,15 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             showErrorMessage(databaseRef.info.errorMessage)
         }
         
-        if let associatedKeyFileRef = Settings.current.getKeyFileForDatabase(databaseRef: databaseRef) {
-            setKeyFile(urlRef: associatedKeyFileRef)
+        let settings = Settings.current
+        if let associatedKeyFileRef = settings.getKeyFileForDatabase(databaseRef: databaseRef) {
+            let allAvailableKeyFiles = FileKeeper.shared
+                .getAllReferences(fileType: .keyFile, includeBackup: false)
+            if let availableKeyFileRef = associatedKeyFileRef
+                .find(in: allAvailableKeyFiles, fallbackToNamesake: true)
+            {
+                setKeyFile(urlRef: availableKeyFileRef)
+            }
         }
         
         refreshInputMode()
