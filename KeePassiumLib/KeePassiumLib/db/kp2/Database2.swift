@@ -772,7 +772,7 @@ public class Database2: Database {
             blockIndex += 1
             writeProgress.completedUnitCount += Int64(blockSize)
             if writeProgress.isCancelled {
-                throw ProgressInterruption.cancelledByUser
+                throw ProgressInterruption.cancelled(reason: writeProgress.cancellationReason)
             }
         }
         let endBlockSize: Int32 = 0
@@ -850,7 +850,7 @@ public class Database2: Database {
             blockID += 1
             writingProgress.completedUnitCount += Int64(blockSize)
             if writingProgress.isCancelled {
-                throw ProgressInterruption.cancelledByUser
+                throw ProgressInterruption.cancelled(reason: writingProgress.cancellationReason)
             }
         }
         stream.write(value: UInt32(blockID))

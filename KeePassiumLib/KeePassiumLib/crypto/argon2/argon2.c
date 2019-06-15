@@ -14,7 +14,7 @@
  * You should have received a copy of both of these licenses along with this
  * software. If not, they may be obtained at the above URLs.
  */
-// KeePassium/Andrei Popleteev: added progress callback for each iteration
+// KeePassium/Andrei Popleteev: added progress callback for each iteration, and a quick-abort flag.
 
 #include <string.h>
 #include <stdlib.h>
@@ -89,13 +89,14 @@ int argon2_ctx(argon2_context *context, argon2_type type) {
     /* 4. Filling memory */
     result = fill_memory_blocks(&instance);
 
-    if (ARGON2_OK != result) {
+    // [AP] Externally interrupted processing is not OK, but still need to free up the memory.
+    if (ARGON2_OK != result && ARGON2_INTERRUPTED != result) {
         return result;
     }
     /* 5. Finalization */
     finalize(context, &instance);
 
-    return ARGON2_OK;
+    return result;
 }
 
 int argon2_hash(const uint32_t t_cost, const uint32_t m_cost,
@@ -104,7 +105,8 @@ int argon2_hash(const uint32_t t_cost, const uint32_t m_cost,
                 void *hash, const size_t hashlen, char *encoded,
                 const size_t encodedlen, argon2_type type,
                 const uint32_t version,
-                const progress_fptr progress_cbk, const void* progress_user_obj){
+                const progress_fptr progress_cbk, const void* progress_user_obj,
+                const uint8_t *flag_abort){
 
     argon2_context context;
     int result;
@@ -151,6 +153,7 @@ int argon2_hash(const uint32_t t_cost, const uint32_t m_cost,
     context.version = version;
     context.progress_cbk = progress_cbk;
     context.progress_user_obj = progress_user_obj;
+    context.flag_abort = flag_abort;
 
     result = argon2_ctx(&context, type);
 
@@ -185,22 +188,25 @@ int argon2i_hash_encoded(const uint32_t t_cost, const uint32_t m_cost,
                          const size_t pwdlen, const void *salt,
                          const size_t saltlen, const size_t hashlen,
                          char *encoded, const size_t encodedlen,
-                         const progress_fptr progress_cbk, const void* progress_user_obj) {
+                         const progress_fptr progress_cbk, const void* progress_user_obj,
+                         const uint8_t *flag_abort) {
 
     return argon2_hash(t_cost, m_cost, parallelism, pwd, pwdlen, salt, saltlen,
                        NULL, hashlen, encoded, encodedlen, Argon2_i,
-                       ARGON2_VERSION_NUMBER, progress_cbk, progress_user_obj);
+                       ARGON2_VERSION_NUMBER, progress_cbk, progress_user_obj,
+                       flag_abort);
 }
 
 int argon2i_hash_raw(const uint32_t t_cost, const uint32_t m_cost,
                      const uint32_t parallelism, const void *pwd,
                      const size_t pwdlen, const void *salt,
                      const size_t saltlen, void *hash, const size_t hashlen,
-                     const progress_fptr progress_cbk, const void* progress_user_obj) {
+                     const progress_fptr progress_cbk, const void* progress_user_obj,
+                     const uint8_t *flag_abort) {
 
     return argon2_hash(t_cost, m_cost, parallelism, pwd, pwdlen, salt, saltlen,
                        hash, hashlen, NULL, 0, Argon2_i, ARGON2_VERSION_NUMBER,
-                       progress_cbk, progress_user_obj);
+                       progress_cbk, progress_user_obj, flag_abort);
 }
 
 int argon2d_hash_encoded(const uint32_t t_cost, const uint32_t m_cost,
@@ -208,22 +214,25 @@ int argon2d_hash_encoded(const uint32_t t_cost, const uint32_t m_cost,
                          const size_t pwdlen, const void *salt,
                          const size_t saltlen, const size_t hashlen,
                          char *encoded, const size_t encodedlen,
-                         const progress_fptr progress_cbk, const void* progress_user_obj) {
+                         const progress_fptr progress_cbk, const void* progress_user_obj,
+                         const uint8_t *flag_abort) {
 
     return argon2_hash(t_cost, m_cost, parallelism, pwd, pwdlen, salt, saltlen,
                        NULL, hashlen, encoded, encodedlen, Argon2_d,
-                       ARGON2_VERSION_NUMBER, progress_cbk, progress_user_obj);
+                       ARGON2_VERSION_NUMBER, progress_cbk, progress_user_obj,
+                       flag_abort);
 }
 
 int argon2d_hash_raw(const uint32_t t_cost, const uint32_t m_cost,
                      const uint32_t parallelism, const void *pwd,
                      const size_t pwdlen, const void *salt,
                      const size_t saltlen, void *hash, const size_t hashlen,
-                     const progress_fptr progress_cbk, const void* progress_user_obj) {
+                     const progress_fptr progress_cbk, const void* progress_user_obj,
+                     const uint8_t *flag_abort) {
 
     return argon2_hash(t_cost, m_cost, parallelism, pwd, pwdlen, salt, saltlen,
                        hash, hashlen, NULL, 0, Argon2_d, ARGON2_VERSION_NUMBER,
-                       progress_cbk, progress_user_obj);
+                       progress_cbk, progress_user_obj, flag_abort);
 }
 
 int argon2id_hash_encoded(const uint32_t t_cost, const uint32_t m_cost,
@@ -231,21 +240,25 @@ int argon2id_hash_encoded(const uint32_t t_cost, const uint32_t m_cost,
                           const size_t pwdlen, const void *salt,
                           const size_t saltlen, const size_t hashlen,
                           char *encoded, const size_t encodedlen,
-                          const progress_fptr progress_cbk, const void* progress_user_obj) {
+                          const progress_fptr progress_cbk, const void* progress_user_obj,
+                          const uint8_t *flag_abort) {
 
     return argon2_hash(t_cost, m_cost, parallelism, pwd, pwdlen, salt, saltlen,
                        NULL, hashlen, encoded, encodedlen, Argon2_id,
-                       ARGON2_VERSION_NUMBER, progress_cbk, progress_user_obj);
+                       ARGON2_VERSION_NUMBER, progress_cbk, progress_user_obj,
+                       flag_abort);
 }
 
 int argon2id_hash_raw(const uint32_t t_cost, const uint32_t m_cost,
                       const uint32_t parallelism, const void *pwd,
                       const size_t pwdlen, const void *salt,
                       const size_t saltlen, void *hash, const size_t hashlen,
-                      const progress_fptr progress_cbk, const void* progress_user_obj) {
+                      const progress_fptr progress_cbk, const void* progress_user_obj,
+                      const uint8_t *flag_abort) {
     return argon2_hash(t_cost, m_cost, parallelism, pwd, pwdlen, salt, saltlen,
                        hash, hashlen, NULL, 0, Argon2_id,
-                       ARGON2_VERSION_NUMBER, progress_cbk, progress_user_obj);
+                       ARGON2_VERSION_NUMBER, progress_cbk, progress_user_obj,
+                       flag_abort);
 }
 
 static int argon2_compare(const uint8_t *b1, const uint8_t *b2, size_t len) {

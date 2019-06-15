@@ -818,14 +818,23 @@ fileprivate class DatabaseLoader {
             dbDoc.database = nil
             dbDoc.close(completionHandler: nil)
             switch error {
-            case .cancelledByUser:
-                Diag.info("Database load was cancelled by user. [message: \(error.localizedDescription)]")
+            case .cancelled(let reason):
+                Diag.info("Database loading was cancelled. [reason: \(reason.localizedDescription)]")
                 stopObservingProgress()
-                notifier.notifyDatabaseLoadError(
-                    database: dbRef,
-                    isCancelled: true,
-                    message: error.localizedDescription,
-                    reason: error.failureReason)
+                switch reason {
+                case .userRequest:
+                    notifier.notifyDatabaseLoadError(
+                        database: dbRef,
+                        isCancelled: true,
+                        message: error.localizedDescription,
+                        reason: error.failureReason)
+                case .lowMemoryWarning:
+                    notifier.notifyDatabaseLoadError(
+                        database: dbRef,
+                        isCancelled: false,
+                        message: error.localizedDescription,
+                        reason: nil)
+                }
                 endBackgroundTask()
             }
         } catch {
@@ -965,13 +974,22 @@ fileprivate class DatabaseSaver {
         } catch let error as ProgressInterruption {
             stopObservingProgress()
             switch error {
-            case .cancelledByUser:
-                Diag.error("Database saving was interrupted by user. [message: \(error.localizedDescription)]")
-                notifier.notifyDatabaseSaveError(
-                    database: dbRef,
-                    isCancelled: true,
-                    message: error.localizedDescription,
-                    reason: nil)
+            case .cancelled(let reason):
+                Diag.error("Database saving was cancelled. [reason: \(reason.localizedDescription)]")
+                switch reason {
+                case .userRequest:
+                    notifier.notifyDatabaseSaveError(
+                        database: dbRef,
+                        isCancelled: true,
+                        message: error.localizedDescription,
+                        reason: nil)
+                case .lowMemoryWarning:
+                    notifier.notifyDatabaseSaveError(
+                        database: dbRef,
+                        isCancelled: false,
+                        message: error.localizedDescription,
+                        reason: nil)
+                }
                 endBackgroundTask()
             }
         } catch { 

@@ -141,7 +141,8 @@ void fill_segment(const argon2_instance_t *instance,
         prev_offset = curr_offset - 1;
     }
 
-    for (i = starting_index; i < instance->segment_length;
+    const uint8_t *flag_abort = instance->context_ptr->flag_abort;
+    for (i = starting_index; i < instance->segment_length && !(*flag_abort);
          ++i, ++curr_offset, ++prev_offset) {
         /*1.1 Rotating prev_offset if needed */
         if (curr_offset % instance->lane_length == 1) {

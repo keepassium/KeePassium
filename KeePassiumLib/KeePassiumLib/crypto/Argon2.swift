@@ -21,13 +21,25 @@ public final class Argon2 {
         memoryKiB m_cost: UInt32,
         iterations t_cost: UInt32,
         version: UInt32,
-        progress: Progress?
+        progress: ProgressEx?
         ) throws -> ByteArray
     {
 
+        var isAbortProcessing: UInt8 = 0
+        
         progress?.totalUnitCount = Int64(t_cost)
         progress?.completedUnitCount = 0
-        
+        let progressKVO = progress?.observe(
+            \.isCancelled,
+            options: [.new],
+            changeHandler: { (progress, _) in
+                if progress.cancellationReason == .lowMemoryWarning {
+                    FLAG_clear_internal_memory = 0
+                }
+                isAbortProcessing = 1
+            }
+        )
+        FLAG_clear_internal_memory = 1
         var outBytes = [UInt8](repeating: 0, count: 32)
         let statusCode = pwd.withBytes {
             (pwdBytes) in
@@ -37,10 +49,11 @@ public final class Argon2 {
                     return argon2_hash(
                         t_cost, m_cost, nThreads, pwdBytes, pwdBytes.count,
                         saltBytes, saltBytes.count, &outBytes, outBytes.count,
-                        nil, 0, Argon2_d, version, nil, nil)
+                        nil, 0, Argon2_d, version, nil, nil, &isAbortProcessing)
                 }
                 
                 let progressPtr = UnsafeRawPointer(Unmanaged.passUnretained(progress).toOpaque())
+                
                 
                 return argon2_hash(
                     t_cost, m_cost, nThreads, pwdBytes, pwdBytes.count,
@@ -54,13 +67,18 @@ public final class Argon2 {
                         let isShouldStop: Int32 = progress.isCancelled ? 1 : 0
                         return isShouldStop
                     },
-                    progressPtr)
+                    progressPtr,
+                    &isAbortProcessing)
             }
         }
-        progress?.completedUnitCount = Int64(t_cost) 
-        if progress?.isCancelled ?? false {
-            throw ProgressInterruption.cancelledByUser
+        progressKVO?.invalidate()
+        if let progress = progress {
+            progress.completedUnitCount = Int64(t_cost) 
+            if progress.isCancelled {
+                throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
+            }
         }
+        
         if statusCode != ARGON2_OK.rawValue {
             throw CryptoError.argon2Error(code: Int(statusCode))
         }

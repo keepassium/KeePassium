@@ -48,7 +48,7 @@ public final class ChaCha20: StreamCipher {
         }
     }
     
-    func xor(bytes: inout [UInt8], progress: Progress?) throws {
+    func xor(bytes: inout [UInt8], progress: ProgressEx?) throws {
         let progressBatchSize = blockSize * 1024
         progress?.completedUnitCount = 0
         
@@ -70,18 +70,18 @@ public final class ChaCha20: StreamCipher {
         if let progress = progress {
             progress.completedUnitCount = progress.totalUnitCount
             if progress.isCancelled {
-                throw ProgressInterruption.cancelledByUser
+                throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
             }
         }
     }
     
-    func encrypt(data: ByteArray, progress: Progress?=nil) throws -> ByteArray {
+    func encrypt(data: ByteArray, progress: ProgressEx?=nil) throws -> ByteArray {
         var outBytes = data.bytesCopy()
         try xor(bytes: &outBytes, progress: progress) 
         return ByteArray(bytes: outBytes)
     }
     
-    func decrypt(data: ByteArray, progress: Progress?=nil) throws -> ByteArray {
+    func decrypt(data: ByteArray, progress: ProgressEx?=nil) throws -> ByteArray {
         return try encrypt(data: data, progress: progress) 
     }
 }

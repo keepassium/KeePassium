@@ -22,7 +22,7 @@ final class AESDataCipher: DataCipher {
     init() {
     }
     
-    func initProgress() -> Progress {
+    func initProgress() -> ProgressEx {
         progress = ProgressEx()
         return progress
     }
@@ -57,7 +57,7 @@ final class AESDataCipher: DataCipher {
         }
         progress.completedUnitCount = Int64(data.count)
         if progress.isCancelled {
-            throw ProgressInterruption.cancelledByUser
+            throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
         }
         
         debugPrint("encrypted size: \(numBytesEncrypted) bytes")
@@ -100,7 +100,7 @@ final class AESDataCipher: DataCipher {
         }
         progress.completedUnitCount = Int64(encData.count)
         if progress.isCancelled {
-            throw ProgressInterruption.cancelledByUser
+            throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
         }
         
         debugPrint("decrypted \(numBytesDecrypted) bytes")

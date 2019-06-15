@@ -22,7 +22,7 @@ final class TwofishDataCipher: DataCipher {
     init() {
     }
 
-    func initProgress() -> Progress {
+    func initProgress() -> ProgressEx {
         progress = ProgressEx()
         return progress
     }

@@ -250,9 +250,10 @@ static int fill_memory_blocks_st(argon2_instance_t *instance) {
     uint32_t r, s, l;
     progress_fptr progress_cbk = instance->context_ptr->progress_cbk;
     
-    for (r = 0; r < instance->passes; ++r) {
-        for (s = 0; s < ARGON2_SYNC_POINTS; ++s) {
-            for (l = 0; l < instance->lanes; ++l) {
+    const uint8_t *flag_abort = instance->context_ptr->flag_abort;
+    for (r = 0; r < instance->passes && !(*flag_abort); ++r) {
+        for (s = 0; s < ARGON2_SYNC_POINTS && !(*flag_abort); ++s) {
+            for (l = 0; l < instance->lanes && !(*flag_abort); ++l) {
                 argon2_position_t position = {r, l, (uint8_t)s, 0};
                 fill_segment(instance, position);
             }
@@ -260,6 +261,9 @@ static int fill_memory_blocks_st(argon2_instance_t *instance) {
 #ifdef GENKAT
         internal_kat(instance, r); /* Print all memory blocks */
 #endif
+        if (*instance->context_ptr->flag_abort) {
+            return ARGON2_INTERRUPTED;
+        }
         if (progress_cbk) {
             int should_stop = progress_cbk(r, instance->context_ptr->progress_user_obj);
             if (should_stop)
@@ -303,9 +307,10 @@ static int fill_memory_blocks_mt(argon2_instance_t *instance) {
         goto fail;
     }
 
+    const uint8_t *flag_abort = instance->context_ptr->flag_abort;
     progress_fptr progress_cbk = instance->context_ptr->progress_cbk;
-    for (r = 0; r < instance->passes; ++r) {
-        for (s = 0; s < ARGON2_SYNC_POINTS; ++s) {
+    for (r = 0; r < instance->passes && !(*flag_abort); ++r) {
+        for (s = 0; s < ARGON2_SYNC_POINTS && !(*flag_abort); ++s) {
             uint32_t l;
 
             /* 2. Calling threads */
@@ -349,6 +354,12 @@ static int fill_memory_blocks_mt(argon2_instance_t *instance) {
             }
         }
 
+        if (*instance->context_ptr->flag_abort) {
+            // processing has been aborted by the caller
+            rc = ARGON2_INTERRUPTED;
+            goto fail;
+        }
+        
 #ifdef GENKAT
         internal_kat(instance, r); /* Print all memory blocks */
 #endif

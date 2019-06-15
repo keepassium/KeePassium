@@ -98,7 +98,6 @@
 		75B24DBC21C3CAE8003C9486 /* EntryFinderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75B24DBB21C3CAE8003C9486 /* EntryFinderVC.storyboard */; };
 		75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
 		75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
-		75B5EAB2215764050039C654 /* CreateDatabaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5EAB1215764050039C654 /* CreateDatabaseVC.swift */; };
 		75B5FB7720D53EA700D402D9 /* ViewEntryFieldsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */; };
 		75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75B5FB7B20D61BC000D402D9 /* ViewableEntryFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */; };
@@ -118,7 +117,6 @@
 		75C38025217A1F3A006F74C2 /* ViewEntryHistoryVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38024217A1F3A006F74C2 /* ViewEntryHistoryVC.storyboard */; };
 		75C3802B217A245A006F74C2 /* ViewEntryVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802A217A245A006F74C2 /* ViewEntryVC.storyboard */; };
 		75C3802D217A2650006F74C2 /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
-		75C3802F217A2676006F74C2 /* CreateDatabaseVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802E217A2676006F74C2 /* CreateDatabaseVC.storyboard */; };
 		75C38031217A26B2006F74C2 /* WelcomeVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38030217A26B2006F74C2 /* WelcomeVC.storyboard */; };
 		75C38033217A26DC006F74C2 /* AboutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38032217A26DC006F74C2 /* AboutVC.storyboard */; };
 		75C38035217A271B006F74C2 /* ViewDiagnosticsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38034217A271B006F74C2 /* ViewDiagnosticsVC.storyboard */; };
@@ -272,7 +270,6 @@
 		75B24DBB21C3CAE8003C9486 /* EntryFinderVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EntryFinderVC.storyboard; sourceTree = "<group>"; };
 		75B24DD421C523AE003C9486 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
 		75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderVC.swift; sourceTree = "<group>"; };
-		75B5EAB1215764050039C654 /* CreateDatabaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDatabaseVC.swift; sourceTree = "<group>"; };
 		75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFieldsVC.swift; sourceTree = "<group>"; };
 		75B5FB7820D6101100D402D9 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewableEntryFieldFactory.swift; sourceTree = "<group>"; };
@@ -291,7 +288,6 @@
 		75C38024217A1F3A006F74C2 /* ViewEntryHistoryVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewEntryHistoryVC.storyboard; sourceTree = "<group>"; };
 		75C3802A217A245A006F74C2 /* ViewEntryVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewEntryVC.storyboard; sourceTree = "<group>"; };
 		75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppCoverVC.storyboard; sourceTree = "<group>"; };
-		75C3802E217A2676006F74C2 /* CreateDatabaseVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateDatabaseVC.storyboard; sourceTree = "<group>"; };
 		75C38030217A26B2006F74C2 /* WelcomeVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeVC.storyboard; sourceTree = "<group>"; };
 		75C38032217A26DC006F74C2 /* AboutVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutVC.storyboard; sourceTree = "<group>"; };
 		75C38034217A271B006F74C2 /* ViewDiagnosticsVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewDiagnosticsVC.storyboard; sourceTree = "<group>"; };
@@ -516,8 +512,6 @@
 				75C38046217A3254006F74C2 /* ChooseDatabaseVC.storyboard */,
 				754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */,
 				75C38040217A284A006F74C2 /* ChooseKeyFileVC.storyboard */,
-				75B5EAB1215764050039C654 /* CreateDatabaseVC.swift */,
-				75C3802E217A2676006F74C2 /* CreateDatabaseVC.storyboard */,
 				7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */,
 				75C3803C217A27FE006F74C2 /* ChangeMasterKeyVC.storyboard */,
 				750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */,
@@ -761,7 +755,6 @@
 				758D8E922274D2C800644FA6 /* DatabaseCreatorVC.storyboard in Resources */,
 				75C38031217A26B2006F74C2 /* WelcomeVC.storyboard in Resources */,
 				75C3803B217A27CF006F74C2 /* ViewGroupVC.storyboard in Resources */,
-				75C3802F217A2676006F74C2 /* CreateDatabaseVC.storyboard in Resources */,
 				75C3801D217A1EC0006F74C2 /* PasswordGeneratorVC.storyboard in Resources */,
 				75802631222EBC3800F4525F /* ProgressVC.storyboard in Resources */,
 				754BF08A2082A6BD00E3A292 /* Assets.xcassets in Resources */,
@@ -894,7 +887,6 @@
 				75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */,
-				75B5EAB2215764050039C654 /* CreateDatabaseVC.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

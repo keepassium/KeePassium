@@ -22,10 +22,10 @@ internal enum ProtectedStreamAlgorithm: UInt32 {
 }
 
 final internal class UselessStreamCipher: StreamCipher {
-    func encrypt(data: ByteArray, progress: Progress?) throws -> ByteArray {
+    func encrypt(data: ByteArray, progress: ProgressEx?) throws -> ByteArray {
         return data
     }
-    func decrypt(data: ByteArray, progress: Progress?) throws -> ByteArray {
+    func decrypt(data: ByteArray, progress: ProgressEx?) throws -> ByteArray {
         return data
     }
     func erase() {

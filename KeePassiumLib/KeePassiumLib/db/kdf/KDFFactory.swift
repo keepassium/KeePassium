@@ -13,7 +13,7 @@ protocol KeyDerivationFunction {
     var name: String { get }
     var defaultParams: KDFParams { get }
     
-    func initProgress() -> Progress
+    func initProgress() -> ProgressEx
 
     init()
     

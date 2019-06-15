@@ -225,6 +225,8 @@ typedef struct Argon2_Context {
     deallocate_fptr free_cbk;   /* pointer to memory deallocator */
     progress_fptr progress_cbk; //[AP] progress callback to Swift
     const void *progress_user_obj; // [AP] a Swift object to be passed to progress callback
+    const uint8_t *flag_abort; // [AP] whenever the pointed value is set to TRUE,
+                               // aborts any processing and returns with ARGON2_INTERRUPTED
 
     uint32_t flags; /* array of bool options */
 } argon2_context;
@@ -270,6 +272,9 @@ ARGON2_PUBLIC int argon2_ctx(argon2_context *context, argon2_type type);
  * @param hashlen Desired length of the hash in bytes
  * @param encoded Buffer where to write the encoded hash
  * @param encodedlen Size of the buffer (thus max size of the encoded hash)
+ * @param progress_cbk [AP] callback to call on each iteraction
+ * @param progress_user_obj [AP] user object to be passed to progress_cbk
+ * @param flag_abort [AP] "emergency brake" flag checked in memory-intense routines
  * @pre   Different parallelism levels will give different results
  * @pre   Returns ARGON2_OK if successful
  */
@@ -280,7 +285,9 @@ ARGON2_PUBLIC int argon2i_hash_encoded(const uint32_t t_cost,
                                        const void *salt, const size_t saltlen,
                                        const size_t hashlen, char *encoded,
                                        const size_t encodedlen,
-                                       const progress_fptr progress_cbk, const void* progress_user_obj);
+                                       const progress_fptr progress_cbk,
+                                       const void* progress_user_obj,
+                                       const uint8_t *flag_abort);
 
 /**
  * Hashes a password with Argon2i, producing a raw hash at @hash
@@ -301,7 +308,9 @@ ARGON2_PUBLIC int argon2i_hash_raw(const uint32_t t_cost, const uint32_t m_cost,
                                    const size_t pwdlen, const void *salt,
                                    const size_t saltlen, void *hash,
                                    const size_t hashlen,
-                                   const progress_fptr progress_cbk, const void* progress_user_obj);
+                                   const progress_fptr progress_cbk,
+                                   const void* progress_user_obj,
+                                   const uint8_t *flag_abort);
 
 ARGON2_PUBLIC int argon2d_hash_encoded(const uint32_t t_cost,
                                        const uint32_t m_cost,
@@ -310,14 +319,18 @@ ARGON2_PUBLIC int argon2d_hash_encoded(const uint32_t t_cost,
                                        const void *salt, const size_t saltlen,
                                        const size_t hashlen, char *encoded,
                                        const size_t encodedlen,
-                                       const progress_fptr progress_cbk, const void* progress_user_obj);
+                                       const progress_fptr progress_cbk,
+                                       const void* progress_user_obj,
+                                       const uint8_t *flag_abort);
 
 ARGON2_PUBLIC int argon2d_hash_raw(const uint32_t t_cost, const uint32_t m_cost,
                                    const uint32_t parallelism, const void *pwd,
                                    const size_t pwdlen, const void *salt,
                                    const size_t saltlen, void *hash,
                                    const size_t hashlen,
-                                   const progress_fptr progress_cbk, const void* progress_user_obj);
+                                   const progress_fptr progress_cbk,
+                                   const void* progress_user_obj,
+                                   const uint8_t *flag_abort);
 
 ARGON2_PUBLIC int argon2id_hash_encoded(const uint32_t t_cost,
                                         const uint32_t m_cost,
@@ -326,7 +339,9 @@ ARGON2_PUBLIC int argon2id_hash_encoded(const uint32_t t_cost,
                                         const void *salt, const size_t saltlen,
                                         const size_t hashlen, char *encoded,
                                         const size_t encodedlen,
-                                        const progress_fptr progress_cbk, const void* progress_user_obj);
+                                        const progress_fptr progress_cbk,
+                                        const void* progress_user_obj,
+                                        const uint8_t *flag_abort);
 
 ARGON2_PUBLIC int argon2id_hash_raw(const uint32_t t_cost,
                                     const uint32_t m_cost,
@@ -334,7 +349,9 @@ ARGON2_PUBLIC int argon2id_hash_raw(const uint32_t t_cost,
                                     const size_t pwdlen, const void *salt,
                                     const size_t saltlen, void *hash,
                                     const size_t hashlen,
-                                    const progress_fptr progress_cbk, const void* progress_user_obj);
+                                    const progress_fptr progress_cbk,
+                                    const void* progress_user_obj,
+                                    const uint8_t *flag_abort);
 
 
 /* generic function underlying the above ones */
@@ -345,7 +362,9 @@ ARGON2_PUBLIC int argon2_hash(const uint32_t t_cost, const uint32_t m_cost,
                               const size_t hashlen, char *encoded,
                               const size_t encodedlen, argon2_type type,
                               const uint32_t version,
-                              const progress_fptr progress_cbk, const void* progress_user_obj);
+                              const progress_fptr progress_cbk,
+                              const void* progress_user_obj,
+                              const uint8_t *flag_abort);
 
 /**
  * Verifies a password against an encoded string

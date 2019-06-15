@@ -11,13 +11,18 @@ import Foundation
 public extension Date {
     static var now: Date { return Date() }
     
+    private static let iso8601DateFormatter = { () -> DateFormatter in
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return dateFormatter
+    }()
+    
     static internal let secondsBetweenSwiftAndDotNetReferenceDates = Int64(63113904000)
 
     init?(iso8601string string: String?) {
         guard let string = string else { return nil }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        if let date = dateFormatter.date(from:string) {
+        if let date = Date.iso8601DateFormatter.date(from:string) {
             self = date
         } else {
             return nil

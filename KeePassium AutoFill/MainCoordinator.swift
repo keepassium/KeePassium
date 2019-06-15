@@ -76,12 +76,7 @@ class MainCoordinator: NSObject, Coordinator {
     
     public func didReceiveMemoryWarning() {
         Diag.error("Received a memory warning")
-        DatabaseManager.shared.progress.cancel()
-        let alert = UIAlertController.make(
-            title: NSLocalizedString("Not enough memory", comment: "Title of an `Out of Memory` error message"),
-            message: NSLocalizedString("Not enough memory to continue. This can happen with large databases or memory-demanding database settings (Argon2).\n\nPlease contact us if you need help with this.", comment: "Message shown when the app runs out of memory."),
-            cancelButtonTitle: LString.actionDismiss)
-        navigationController.present(alert, animated: true, completion: nil)
+        DatabaseManager.shared.progress.cancel(reason: .lowMemoryWarning)
     }
     
     func cleanup() {

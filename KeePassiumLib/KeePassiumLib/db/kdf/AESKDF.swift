@@ -38,7 +38,7 @@ class AESKDF: KeyDerivationFunction {
     required init() {
     }
     
-    func initProgress() -> Progress {
+    func initProgress() -> ProgressEx {
         progress = ProgressEx()
         progress.localizedDescription = NSLocalizedString("Master key processing", comment: "Status message: processing of the master key is in progress")
         return progress
@@ -79,7 +79,7 @@ class AESKDF: KeyDerivationFunction {
                         guard let progressPtr = progressPtr else {
                             return 0 /* continue transformations */
                         }
-                        let progress = Unmanaged<Progress>
+                        let progress = Unmanaged<ProgressEx>
                             .fromOpaque(progressPtr)
                             .takeUnretainedValue()
                         progress.completedUnitCount = Int64(round)
@@ -91,7 +91,7 @@ class AESKDF: KeyDerivationFunction {
         }
         progress.completedUnitCount = progress.totalUnitCount
         if progress.isCancelled {
-            throw ProgressInterruption.cancelledByUser
+            throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
         }
         
         guard status == kCCSuccess else {

@@ -14,7 +14,7 @@ protocol DataCipher {
     var keySize: Int { get }
     var name: String { get }
     
-    func initProgress() -> Progress
+    func initProgress() -> ProgressEx
     
     func encrypt(plainText: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray
     func decrypt(cipherText: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray

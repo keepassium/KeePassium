@@ -66,7 +66,7 @@ public class Settings {
         case lockAllDatabasesOnFailedPasscode
         case recentUserActivityTimestamp
         case appLockTimeout
-        case databaseCloseTimeout
+        case databaseLockTimeout
         case clipboardTimeout
 
         case startWithSearch
@@ -96,8 +96,8 @@ public class Settings {
     public enum AppLockTimeout: Int {
         public static let allValues = [
             immediately, /* after5seconds,*/ after15seconds, after30seconds,
-            after1minute, after2minutes, after5minutes /*, never */]
-        case never = -1
+            after1minute, after2minutes, after5minutes]
+        case never = -1 
         case immediately = 0
         case after5seconds = 5
         case after15seconds = 15
@@ -116,18 +116,17 @@ public class Settings {
                 return NSLocalizedString("Never", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Application: Never'")
             case .immediately:
                 return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Database: Immediately'")
-            case .after5seconds:
-                return NSLocalizedString("After 5 seconds", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Application: After 5 seconds'")
-            case .after15seconds:
-                return NSLocalizedString("After 15 seconds", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Application: After 15 seconds'")
-            case .after30seconds:
-                return NSLocalizedString("After 30 seconds", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Application: After 30 seconds'")
-            case .after1minute:
-                return NSLocalizedString("After 1 minute", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Application: After 1 minute'")
-            case .after2minutes:
-                return NSLocalizedString("After 2 minutes", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Application: After 2 minutes'")
-            case .after5minutes:
-                return NSLocalizedString("After 5 minutes", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Application: After 5 minutes'")
+            default:
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.collapsesLargestUnit = true
+                formatter.maximumUnitCount = 2
+                formatter.unitsStyle = .full
+                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                    assertionFailure()
+                    return "?"
+                }
+                return result
             }
         }
         public var shortTitle: String {
@@ -136,18 +135,17 @@ public class Settings {
                 return NSLocalizedString("Never", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be as a short version of 'Never'. Will be shown as 'Timeouts: Lock Application: Never'")
             case .immediately:
                 return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be a short description of 'Immediately'. Will be shown as 'Timeouts: Lock Application: Immediately'")
-            case .after5seconds:
-                return NSLocalizedString("5 s", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be a short description of '(after) 5 seconds'. Will be shown as 'Timeouts: Lock Application: 5 s'")
-            case .after15seconds:
-                return NSLocalizedString("15 s", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be a short description of '(after) 15 seconds'. Will be shown as 'Timeouts: Lock Application: 15 s'")
-            case .after30seconds:
-                return NSLocalizedString("30 s", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be a short description of '(after) 30 seconds'. Will be shown as 'Timeouts: Lock Application: 30 s'")
-            case .after1minute:
-                return NSLocalizedString("1 min", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be a short description of '(after) 1 minute'. Will be shown as 'Timeouts: Lock Application: 1 min'")
-            case .after2minutes:
-                return NSLocalizedString("2 min", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be a short description of '(after) 2 minute'. Will be shown as 'Timeouts: Lock Application: 2 min'")
-            case .after5minutes:
-                return NSLocalizedString("5 min", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be a short description of '(after) 5 minutes'. Will be shown as 'Timeouts: Lock Application: 5 min'")
+            default:
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.collapsesLargestUnit = true
+                formatter.maximumUnitCount = 2
+                formatter.unitsStyle = .brief
+                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                    assertionFailure()
+                    return "?"
+                }
+                return result
             }
         }
         public var description: String? {
@@ -160,11 +158,12 @@ public class Settings {
         }
     }
 
-    public enum DatabaseCloseTimeout: Int {
+    public enum DatabaseLockTimeout: Int {
         public static let allValues = [
             immediately, /*after5seconds, after15seconds, */after30seconds,
             after1minute, after2minutes, after5minutes, after10minutes,
-            after30minutes, after1hour, never]
+            after30minutes, after1hour, after2hours, after4hours, after8hours,
+            after24hours, never]
         case never = -1
         case immediately = 0
         case after5seconds = 5
@@ -176,6 +175,10 @@ public class Settings {
         case after10minutes = 600
         case after30minutes = 1800
         case after1hour = 3600
+        case after2hours = 7200
+        case after4hours = 14400
+        case after8hours = 28800
+        case after24hours = 86400
 
         public var seconds: Int {
             return self.rawValue
@@ -184,53 +187,39 @@ public class Settings {
         public var fullTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString("Never", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: Never'")
+                return NSLocalizedString("Never", comment: "One of the possible values of the 'Database Lock Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Database: Never'")
             case .immediately:
-                return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: Immediately'")
-            case .after5seconds:
-                return NSLocalizedString("After 5 seconds", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 5 seconds'")
-            case .after15seconds:
-                return NSLocalizedString("After 15 seconds", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 15 seconds'")
-            case .after30seconds:
-                return NSLocalizedString("After 30 seconds", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 30 seconds'")
-            case .after1minute:
-                return NSLocalizedString("After 1 minute", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 1 minute'")
-            case .after2minutes:
-                return NSLocalizedString("After 2 minutes", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 2 minutes'")
-            case .after5minutes:
-                return NSLocalizedString("After 5 minutes", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 5 minutes'")
-            case .after10minutes:
-                return NSLocalizedString("After 10 minutes", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 10 minutes'")
-            case .after30minutes:
-                return NSLocalizedString("After 30 minutes", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 30 minutes'")
-            case .after1hour:
-                return NSLocalizedString("After 1 hour", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be full description. Will be shown as 'Timeouts: Close Database: After 1 hour'")
+                return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Database Lock Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Database: Immediately'")
+            default:
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.collapsesLargestUnit = true
+                formatter.maximumUnitCount = 2
+                formatter.unitsStyle = .full
+                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                    assertionFailure()
+                    return "?"
+                }
+                return result
             }
         }
         public var shortTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString("Never", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be as a short version of 'Never'. Will be shown as 'Timeouts: Close Database: Never'")
+                return NSLocalizedString("Never", comment: "One of the possible values of the 'Database Lock Timeout' setting. This should be as a short version of 'Never'. Will be shown as 'Timeouts: Lock Database: Never'")
             case .immediately:
-                return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of 'Immediately'. Will be shown as 'Timeouts: Close Database: Immediately'")
-            case .after5seconds:
-                return NSLocalizedString("5 s", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 5 seconds'. Will be shown as 'Timeouts: Close Database: 5 s'")
-            case .after15seconds:
-                return NSLocalizedString("15 s", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 15 seconds'. Will be shown as 'Timeouts: Close Database: 15 s'")
-            case .after30seconds:
-                return NSLocalizedString("30 s", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 30 seconds'. Will be shown as 'Timeouts: Close Database: 30 s'")
-            case .after1minute:
-                return NSLocalizedString("1 min", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 1 minute'. Will be shown as 'Timeouts: Close Database: 1 min'")
-            case .after2minutes:
-                return NSLocalizedString("2 min", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 2 minutes'. Will be shown as 'Timeouts: Close Database: 2 min'")
-            case .after5minutes:
-                return NSLocalizedString("5 min", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 5 minutes'. Will be shown as 'Timeouts: Close Database: 5 min'")
-            case .after10minutes:
-                return NSLocalizedString("10 min", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 10 minutes'. Will be shown as 'Timeouts: Close Database: 10 min'")
-            case .after30minutes:
-                return NSLocalizedString("30 min", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 30 minutes'. Will be shown as 'Timeouts: Close Database: 30 min'")
-            case .after1hour:
-                return NSLocalizedString("1 hour", comment: "One of the possible values of the 'Close Database Timeout' setting. This should be a short description of '(after) 1 hour'. Will be shown as 'Timeouts: Close Database: 1 hour'")
+                return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Database Lock Timeout' setting. This should be a short description of 'Immediately'. Will be shown as 'Timeouts: Lock Database: Immediately'")
+            default:
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.collapsesLargestUnit = true
+                formatter.maximumUnitCount = 2
+                formatter.unitsStyle = .brief
+                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                    assertionFailure()
+                    return "?"
+                }
+                return result
             }
         }
         public var description: String? {
@@ -266,48 +255,34 @@ public class Settings {
             switch self {
             case .never:
                 return NSLocalizedString("Never", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: Never'")
-            case .after10seconds:
-                return NSLocalizedString("After 10 seconds", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 10 seconds'")
-            case .after20seconds:
-                return NSLocalizedString("After 20 seconds", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 20 seconds'")
-            case .after30seconds:
-                return NSLocalizedString("After 30 seconds", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 30 seconds'")
-            case .after1minute:
-                return NSLocalizedString("After 1 minute", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 1 minute'")
-            case .after2minutes:
-                return NSLocalizedString("After 2 minutes", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 2 minutes'")
-            case .after3minutes:
-                return NSLocalizedString("After 3 minutes", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 3 minutes'")
-            case .after5minutes:
-                return NSLocalizedString("After 5 minutes", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 5 minutes'")
-            case .after10minutes:
-                return NSLocalizedString("After 10 minutes", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 10 minutes'")
-            case .after20minutes:
-                return NSLocalizedString("After 20 minutes", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: After 20 minutes'")
+            default:
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.collapsesLargestUnit = true
+                formatter.maximumUnitCount = 2
+                formatter.unitsStyle = .full
+                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                    assertionFailure()
+                    return "?"
+                }
+                return result
             }
         }
         public var shortTitle: String {
             switch self {
             case .never:
                 return NSLocalizedString("Never", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'Never'. Will be shown as 'Clear Clipboard: Never'")
-            case .after10seconds:
-                return NSLocalizedString("10 s", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 10 seconds'. Will be shown as 'Clear Clipboard: 10 s'")
-            case .after20seconds:
-                return NSLocalizedString("20 s", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 20 seconds'. Will be shown as 'Clear Clipboard: 20 s'")
-            case .after30seconds:
-                return NSLocalizedString("30 s", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 30 seconds'. Will be shown as 'Clear Clipboard: 30 s'")
-            case .after1minute:
-                return NSLocalizedString("1 min", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 1 minute'. Will be shown as 'Clear Clipboard: 1 min'")
-            case .after2minutes:
-                return NSLocalizedString("2 min", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 2 minutes'. Will be shown as 'Clear Clipboard: 2 min'")
-            case .after3minutes:
-                return NSLocalizedString("3 min", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 3 minutes'. Will be shown as 'Clear Clipboard: 3 min'")
-            case .after5minutes:
-                return NSLocalizedString("5 min", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 5 minutes'. Will be shown as 'Clear Clipboard: 5 min'")
-            case .after10minutes:
-                return NSLocalizedString("10 min", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 10 minutes'. Will be shown as 'Clear Clipboard: 10 min'")
-            case .after20minutes:
-                return NSLocalizedString("20 min", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'After 20 minutes'. Will be shown as 'Clear Clipboard: 20 min'")
+            default:
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.collapsesLargestUnit = true
+                formatter.maximumUnitCount = 2
+                formatter.unitsStyle = .brief
+                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                    assertionFailure()
+                    return "?"
+                }
+                return result
             }
         }
     }
@@ -759,23 +734,23 @@ public class Settings {
         }
     }
     
-    public var databaseCloseTimeout: DatabaseCloseTimeout {
+    public var databaseLockTimeout: DatabaseLockTimeout {
         get {
             if let rawValue = UserDefaults.appGroupShared
-                    .object(forKey: Keys.databaseCloseTimeout.rawValue) as? Int,
-                let timeout = DatabaseCloseTimeout(rawValue: rawValue)
+                    .object(forKey: Keys.databaseLockTimeout.rawValue) as? Int,
+                let timeout = DatabaseLockTimeout(rawValue: rawValue)
             {
                 return timeout
             }
-            return DatabaseCloseTimeout.after1hour
+            return DatabaseLockTimeout.after1hour
         }
         set {
-            let oldValue = databaseCloseTimeout
+            let oldValue = databaseLockTimeout
             UserDefaults.appGroupShared.set(
                 newValue.rawValue,
-                forKey: Keys.databaseCloseTimeout.rawValue)
+                forKey: Keys.databaseLockTimeout.rawValue)
             if newValue != oldValue {
-                postChangeNotification(changedKey: Keys.databaseCloseTimeout)
+                postChangeNotification(changedKey: Keys.databaseLockTimeout)
             }
         }
     }

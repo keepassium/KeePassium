@@ -33,7 +33,7 @@ public final class Twofish {
         Twofish_clear_key(&internalKey)
     }
     
-    func encrypt(data: ByteArray, progress: Progress?) throws  {
+    func encrypt(data: ByteArray, progress: ProgressEx?) throws  {
         CryptoManager.addPadding(data: data, blockSize: Twofish.blockSize)
         let nBlocks: Int = data.count / Twofish.blockSize
         
@@ -71,12 +71,12 @@ public final class Twofish {
         if let progress = progress {
             progress.completedUnitCount = progress.totalUnitCount
             if progress.isCancelled {
-                throw ProgressInterruption.cancelledByUser
+                throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
             }
         }
     }
     
-    func decrypt(data: ByteArray, progress: Progress?) throws {
+    func decrypt(data: ByteArray, progress: ProgressEx?) throws {
         print("twofish key \(key.asHexString)")
         print("twofish iv \(initVector.asHexString)")
         print("twofish cipher \(data.prefix(32).asHexString)")
@@ -115,7 +115,7 @@ public final class Twofish {
         if let progress = progress {
             progress.completedUnitCount = progress.totalUnitCount
             if progress.isCancelled {
-                throw ProgressInterruption.cancelledByUser
+                throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
             }
         }
 

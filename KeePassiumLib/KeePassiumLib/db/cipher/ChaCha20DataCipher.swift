@@ -21,7 +21,7 @@ final class ChaCha20DataCipher: DataCipher {
     init() {
     }
     
-    func initProgress() -> Progress {
+    func initProgress() -> ProgressEx {
         progress = ProgressEx()
         return progress
     }
