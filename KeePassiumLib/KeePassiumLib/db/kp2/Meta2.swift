@@ -322,6 +322,11 @@ final class Meta2: Eraseable {
         return backupGroup
     }
     
+    func resetRecycleBinGroupUUID() {
+        recycleBinGroupUUID = UUID.ZERO
+        self.recycleBinChangedTime = Date.now
+    }
+    
     func toXml(streamCipher: StreamCipher) throws -> AEXMLElement {
         Diag.verbose("Generating XML: meta")
         let xmlMeta = AEXMLElement(name: Xml2.meta)

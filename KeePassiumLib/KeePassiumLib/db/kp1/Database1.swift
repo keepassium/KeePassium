@@ -257,7 +257,7 @@ public class Database1: Database {
             return decrypted
         case .twofish:
             Diag.debug("Decrypting Twofish cipher")
-            let cipher = TwofishDataCipher()
+            let cipher = TwofishDataCipher(isPaddingLikelyMessedUp: false)
             progress.addChild(cipher.initProgress(), withPendingUnitCount: ProgressSteps.decryption)
             let decrypted = try cipher.decrypt(cipherText: data, key: masterKey, iv: header.initialVector)
             return decrypted
@@ -341,7 +341,7 @@ public class Database1: Database {
                 iv: header.initialVector) 
         case .twofish:
             Diag.debug("Encrypting Twofish")
-            let cipher = TwofishDataCipher()
+            let cipher = TwofishDataCipher(isPaddingLikelyMessedUp: false)
             progress.addChild(cipher.initProgress(), withPendingUnitCount: ProgressSteps.encryption)
             return try cipher.encrypt(
                 plainText: data,

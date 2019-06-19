@@ -10,8 +10,8 @@ import Foundation
 
 public final class Twofish {
     public static let blockSize = 16
-    private var key: SecureByteArray
-    private var initVector: SecureByteArray
+    private let key: SecureByteArray
+    private let initVector: SecureByteArray
     private var internalKey: Twofish_key
     
     init(key: ByteArray, iv: ByteArray) {
@@ -34,7 +34,6 @@ public final class Twofish {
     }
     
     func encrypt(data: ByteArray, progress: ProgressEx?) throws  {
-        CryptoManager.addPadding(data: data, blockSize: Twofish.blockSize)
         let nBlocks: Int = data.count / Twofish.blockSize
         
         progress?.totalUnitCount = Int64(nBlocks / 100) + 1 
@@ -118,7 +117,5 @@ public final class Twofish {
                 throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
             }
         }
-
-        try CryptoManager.removePadding(data: data) 
     }
 }

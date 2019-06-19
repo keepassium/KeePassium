@@ -187,6 +187,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = true
+        searchController.delegate = self
 
         definesPresentationContext = true
         searchController.searchResultsUpdater = self
@@ -370,8 +371,9 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             guard indexPath.row < searchResult.entries.count else { return nil }
             return searchResult.entries[indexPath.row]
         } else {
-            guard indexPath.row >= groupsSorted.count else { return nil }
-            return entriesSorted[indexPath.row - groupsSorted.count].value
+            let entryIndex = indexPath.row - groupsSorted.count
+            guard entryIndex >= 0 && entryIndex < entriesSorted.count else { return nil }
+            return entriesSorted[entryIndex].value
         }
     }
 
@@ -409,7 +411,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         _ tableView: UITableView,
         canEditRowAt indexPath: IndexPath) -> Bool
     {
-        return true
+        return getEntry(at: indexPath) != nil || getGroup(at: indexPath) != nil
     }
 
     override open func tableView(
@@ -757,3 +759,8 @@ extension ViewGroupVC: UISearchResultsUpdating {
     }
 }
 
+extension ViewGroupVC: UISearchControllerDelegate {
+    public func didDismissSearchController(_ searchController: UISearchController) {
+        refresh()
+    }
+}

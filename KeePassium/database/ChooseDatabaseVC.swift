@@ -191,7 +191,7 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     
     func didPressOpenDatabase() {
         let picker = UIDocumentPickerViewController(
-            documentTypes: FileType.publicDataUTIs,
+            documentTypes: FileType.databaseUTIs,
             in: .open)
         picker.delegate = self
         picker.modalPresentationStyle = .pageSheet

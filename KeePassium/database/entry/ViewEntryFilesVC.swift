@@ -273,7 +273,7 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     
     private func addAttachment() {
         let picker = UIDocumentPickerViewController(
-            documentTypes: FileType.publicDataUTIs,
+            documentTypes: FileType.attachmentUTIs,
             in: .import)
         picker.modalPresentationStyle = .formSheet
         picker.delegate = self

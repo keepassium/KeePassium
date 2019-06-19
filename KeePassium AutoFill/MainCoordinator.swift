@@ -163,7 +163,7 @@ class MainCoordinator: NSObject, Coordinator {
     
     func addDatabase() {
         let picker = UIDocumentPickerViewController(
-            documentTypes: FileType.publicDataUTIs,
+            documentTypes: FileType.databaseUTIs,
             in: .open)
         picker.delegate = self
         navigationController.topViewController?.present(picker, animated: true, completion: nil)

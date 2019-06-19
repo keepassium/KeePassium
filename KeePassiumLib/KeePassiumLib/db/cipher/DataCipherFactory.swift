@@ -16,7 +16,7 @@ final class DataCipherFactory {
     private init() {
         aes = AESDataCipher()
         chacha20 = ChaCha20DataCipher()
-        twofish = TwofishDataCipher()
+        twofish = TwofishDataCipher(isPaddingLikelyMessedUp: true)
     }
     
     public func createFor(uuid: UUID) -> DataCipher? {
@@ -29,7 +29,7 @@ final class DataCipherFactory {
             return ChaCha20DataCipher()
         case twofish.uuid:
             Diag.info("Creating Twofish cipher")
-            return TwofishDataCipher()
+            return TwofishDataCipher(isPaddingLikelyMessedUp: true)
         default:
             Diag.warning("Unrecognized cipher UUID")
             return nil

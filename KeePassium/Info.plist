@@ -56,7 +56,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>24</string>
+	<string>25</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
@@ -211,6 +211,18 @@
 			<array/>
 			<key>UTTypeIdentifier</key>
 			<string>com.markmcguill.strongbox.kdbx</string>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.keepassxc</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-keepass</string>
+					<string>application/x-keepass2</string>
+				</array>
+			</dict>
 		</dict>
 	</array>
 </dict>

@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.0.25] (Public Beta) - 2019-06-19
+
+### Fixed
+
+- Loading of Twofish-encrypted `kdbx` databases [thanks, Robin]
+- Some files in Google Drive still appeared greyed-out [thanks, Edoardo]
+- Crash when trying to delete something in an empty group
+- Internal clean up after deleting the Recycle Bin group
+- Possible crash when quickly switching between online databases
+
+
 ## [1.0.24] (Public Beta) - 2019-06-15
 
 ### Added

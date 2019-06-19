@@ -167,6 +167,8 @@ public class Database2: Database {
                 Diag.debug("Inner header read OK")
             }
             
+            try removeGarbageAfterXML(data: xmlData) 
+            
             try load(xmlData: xmlData, warnings: warnings) 
             
             propagateDeletedStatus()
@@ -351,6 +353,41 @@ public class Database2: Database {
         }
         readingProgress.completedUnitCount = readingProgress.totalUnitCount
         return blocksData
+    }
+
+    
+    private func removeGarbageAfterXML(data: ByteArray) throws {
+        guard header.dataCipher is TwofishDataCipher else { return }
+        
+        let finalXMLTagBytes = ("</" + Xml2.keePassFile + ">").arrayUsingUTF8StringEncoding
+        let finalTagSize = finalXMLTagBytes.count
+        guard data.count > finalTagSize else { return }
+        
+        let lastBytes = data.withBytes { $0[(data.count - finalTagSize)..<data.count] }
+        if lastBytes.elementsEqual(finalXMLTagBytes) {
+            return
+        }
+        
+        let searchFrom = data.count - finalTagSize - 2 * Twofish.blockSize
+        let searchTo = data.count - finalTagSize
+        guard searchFrom > 0 && searchTo > 0 else { return }
+        var closingTagIndex: Int? = nil
+        data.withBytes {
+            for i in searchFrom...searchTo {
+                let slice = $0[i..<(i + finalTagSize)]
+                if slice.elementsEqual(finalXMLTagBytes) {
+                    closingTagIndex = i
+                    break
+                }
+            }
+        }
+
+        guard let _closingTagIndex = closingTagIndex else {
+            Diag.warning("Failed to remove padding from XML content")
+            throw CryptoError.paddingError(code: 100)
+        }
+        Diag.warning("Removed random padding from XML data")
+        data.trim(toCount: _closingTagIndex + finalTagSize)
     }
 
     func load(xmlData: ByteArray, warnings: DatabaseLoadingWarnings) throws {
@@ -928,6 +965,9 @@ public class Database2: Database {
             subEntries.forEach { $0.isDeleted = true }
         } else {
             Diag.debug("Removing the group permanently.")
+            if group === getBackupGroup(createIfMissing: false) {
+                meta?.resetRecycleBinGroupUUID()
+            }
             addDeletedObject(uuid: group.uuid)
             subGroups.forEach { addDeletedObject(uuid: $0.uuid) }
             subEntries.forEach { addDeletedObject(uuid: $0.uuid) }

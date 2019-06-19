@@ -9,15 +9,17 @@
 import Foundation
 
 public enum FileType {
-    public static let publicDataUTIs = ["public.data", "public.content"]
+    public static let attachmentUTIs = ["public.data", "public.content"]
     
     public static let databaseUTIs = [
+        "public.data", "public.content", 
         "com.keepassium.kdb", "com.keepassium.kdbx",
         "com.jflan.MiniKeePass.kdb", "com.jflan.MiniKeePass.kdbx",
         "com.kptouch.kdb", "com.kptouch.kdbx",
         "com.markmcguill.strongbox.kdb",
         "com.markmcguill.strongbox.kdbx",
-        "be.kyuran.kypass.kdb"]
+        "be.kyuran.kypass.kdb",
+        "org.keepassxc"]
     
     public static let keyFileUTIs =
         ["com.keepassium.keyfile", "public.data", "public.content"]
