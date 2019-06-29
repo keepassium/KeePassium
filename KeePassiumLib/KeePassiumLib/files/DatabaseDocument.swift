@@ -47,10 +47,6 @@ public class DatabaseDocument: UIDocument {
         })
     }
     
-    public override func revert(toContentsOf url: URL, completionHandler: ((Bool) -> Void)? = nil) {
-        completionHandler?(false)
-    }
-    
     override public func contents(forType typeName: String) throws -> Any {
         errorMessage = nil
         return encryptedData.asData

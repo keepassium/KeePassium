@@ -83,6 +83,7 @@ public class FileKeeper {
             Diag.warning("Failed to create backup directory")
         }
         
+        deleteExpiredBackupFiles()
     }
 
     fileprivate func getDirectory(for location: URLReference.Location) -> URL? {
@@ -185,12 +186,13 @@ public class FileKeeper {
             let url = try urlRef.resolve()
             do {
                 try FileManager.default.trashItem(at: url, resultingItemURL: nil)
+                Diag.info("Local file moved to trash")
             } catch {
                 Diag.warning("Failed to trash file, will delete instead [message: '\(error.localizedDescription)']")
                 try FileManager.default.removeItem(at: url)
+                Diag.info("Local file permanently deleted")
             }
             FileKeeperNotifier.notifyFileRemoved(urlRef: urlRef, fileType: fileType)
-            Diag.info("Local file moved to trash")
         } catch {
             if ignoreErrors {
                 Diag.debug("Suppressed file deletion error [message: '\(error.localizedDescription)']")
@@ -536,6 +538,8 @@ public class FileKeeper {
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         guard let nameTemplateURL = URL(string: encodedNameTemplate) else { return }
         
+        deleteExpiredBackupFiles()
+        
         let fileManager = FileManager.default
         do {
             try fileManager.createDirectory(
@@ -567,5 +571,37 @@ public class FileKeeper {
         } catch {
             Diag.warning("Failed to make backup copy [error: \(error.localizedDescription)]")
         }
+    }
+    
+    public func getBackupFiles() -> [URLReference] {
+        return scanLocalDirectory(backupDirURL, fileType: .database)
+    }
+    
+    @discardableResult
+    public func deleteExpiredBackupFiles() -> Bool {
+        Diag.debug("Will perform backup maintenance")
+        let isAllOK = deleteBackupFiles(olderThan: Settings.current.backupKeepingDuration.seconds)
+        Diag.info("Backup maintenance completed [allOK: \(isAllOK)]")
+        return isAllOK
+    }
+
+    @discardableResult
+    public func deleteBackupFiles(olderThan maxAge: TimeInterval) -> Bool {
+        let allBackupFileRefs = getBackupFiles()
+        var isEverythingProcessedOK = true
+        let now = Date.now
+        for fileRef in allBackupFileRefs {
+            guard let modificationDate = fileRef.getInfo().modificationDate else { continue }
+            if now.timeIntervalSince(modificationDate) < maxAge {
+                continue
+            }
+            do {
+                try deleteFile(fileRef, fileType: .database, ignoreErrors: false)
+                FileKeeperNotifier.notifyFileRemoved(urlRef: fileRef, fileType: .database)
+            } catch {
+                isEverythingProcessedOK = false
+            }
+        }
+        return isEverythingProcessedOK
     }
 }

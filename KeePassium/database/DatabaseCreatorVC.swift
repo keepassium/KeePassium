@@ -32,6 +32,7 @@ class DatabaseCreatorVC: UIViewController {
     @IBOutlet var errorMessagePanel: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     weak var delegate: DatabaseCreatorDelegate?
 
@@ -109,13 +110,24 @@ class DatabaseCreatorVC: UIViewController {
     
     func setError(message: String?, animated: Bool) {
         errorLabel.text = message
-        let visible = message?.isNotEmpty ?? false
+        let isToShow = message?.isNotEmpty ?? false
+        let isToHide = !isToShow
+        
+        if isToShow {
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: animated)
+        }
+
+        guard errorMessagePanel.isHidden != isToHide else {
+            return
+        }
         if animated {
-            UIView.animate(withDuration: 0.3) { 
-                self.errorMessagePanel.isHidden = !visible
+            UIView.animate(withDuration: 0.3) {
+                self.errorMessagePanel.isHidden = isToHide
+                self.errorMessagePanel.superview?.layoutIfNeeded()
             }
         } else {
-            self.errorMessagePanel.isHidden = !visible
+            errorMessagePanel.isHidden = isToHide
+            errorMessagePanel.superview?.layoutIfNeeded()
         }
     }
     

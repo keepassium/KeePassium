@@ -75,8 +75,10 @@ public class Settings {
         case entryViewerPage
 
         case backupDatabaseOnSave
+        case backupKeepingDuration
         
         case autoFillFinishedOK
+        case copyTOTPOnAutoFill
         
         case passwordGeneratorLength
         case passwordGeneratorIncludeLowerCase
@@ -94,12 +96,18 @@ public class Settings {
 
     
     public enum AppLockTimeout: Int {
+        public enum TriggerMode {
+            case userIdle
+            case appMinimized
+        }
+        
         public static let allValues = [
-            immediately, /* after5seconds,*/ after15seconds, after30seconds,
+            immediately, after3seconds, after15seconds, after30seconds,
             after1minute, after2minutes, after5minutes]
+        
         case never = -1 
         case immediately = 0
-        case after5seconds = 5
+        case after3seconds = 3
         case after15seconds = 15
         case after30seconds = 30
         case after1minute = 60
@@ -108,6 +116,17 @@ public class Settings {
         
         public var seconds: Int {
             return self.rawValue
+        }
+        
+        public var triggerMode: TriggerMode {
+            switch self {
+            case .never,
+                 .immediately,
+                 .after3seconds:
+                return .appMinimized
+            default:
+                return .userIdle
+            }
         }
         
         public var fullTitle: String {
@@ -149,11 +168,11 @@ public class Settings {
             }
         }
         public var description: String? {
-            switch self {
-            case .immediately:
-                return NSLocalizedString("When leaving the app", comment: "A description for the 'Lock Application: Immediately'.")
-            default:
-                return nil
+            switch triggerMode {
+            case .appMinimized:
+                return NSLocalizedString("After leaving the app", comment: "A description for AppLock timeout trigger 'when the app is minimized'. For example: 'Lock Timeout: 3 seconds (After leaving the app)")
+            case .userIdle:
+                return NSLocalizedString("After last interaction", comment: "A description for AppLock timeout trigger event 'when the user is idle'. For example: 'Lock Timeout: 3 seconds (After last interaction)")
             }
         }
     }
@@ -284,6 +303,51 @@ public class Settings {
                 }
                 return result
             }
+        }
+    }
+    
+    public enum BackupKeepingDuration: Int {
+        public static let allValues: [BackupKeepingDuration] = [
+            .forever, _1year, _6months, _4weeks, _1week, _1day, _4hours, _1hour
+        ]
+        case _1hour = 3600
+        case _4hours = 14400
+        case _1day = 86400
+        case _1week = 604_800
+        case _4weeks = 2_419_200
+        case _6months = 15_552_000
+        case _1year = 31_536_000
+        case forever
+
+        public var seconds: TimeInterval {
+            switch self {
+            case .forever:
+                return TimeInterval.infinity
+            default:
+                return TimeInterval(self.rawValue)
+            }
+        }
+        
+        public var shortTitle: String {
+            switch self {
+            case .forever:
+                return NSLocalizedString("Forever", comment: "One of the possible values of the 'Keep Backup Files (Duration)' setting. Please keep it short. Will be shown as 'Keep Backup Files: Forever'")
+            default:
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.year, .month, .day, .hour]
+                formatter.collapsesLargestUnit = true
+                formatter.maximumUnitCount = 1
+                formatter.unitsStyle = .full
+                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                    assertionFailure()
+                    return "?"
+                }
+                return result
+            }
+        }
+        
+        public var fullTitle: String {
+            return shortTitle
         }
     }
     
@@ -562,7 +626,7 @@ public class Settings {
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.rememberDatabaseKey.rawValue)
                 as? Bool
-            return stored ?? false
+            return stored ?? true
         }
         set {
             updateAndNotify(
@@ -858,6 +922,27 @@ public class Settings {
         }
     }
     
+    public var backupKeepingDuration: BackupKeepingDuration {
+        get {
+            if let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.backupKeepingDuration.rawValue) as? Int,
+                let timeout = BackupKeepingDuration(rawValue: stored)
+            {
+                return timeout
+            }
+            return BackupKeepingDuration.forever
+        }
+        set {
+            let oldValue = backupKeepingDuration
+            UserDefaults.appGroupShared.set(
+                newValue.rawValue,
+                forKey: Keys.backupKeepingDuration.rawValue)
+            if newValue != oldValue {
+                postChangeNotification(changedKey: Keys.backupKeepingDuration)
+            }
+        }
+    }
+    
     
     public var isAutoFillFinishedOK: Bool {
         get {
@@ -873,6 +958,21 @@ public class Settings {
                 key: Keys.autoFillFinishedOK)
             
             UserDefaults.appGroupShared.synchronize()
+        }
+    }
+    
+    public var isCopyTOTPOnAutoFill: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.copyTOTPOnAutoFill.rawValue)
+                as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isCopyTOTPOnAutoFill,
+                newValue: newValue,
+                key: .copyTOTPOnAutoFill)
         }
     }
 

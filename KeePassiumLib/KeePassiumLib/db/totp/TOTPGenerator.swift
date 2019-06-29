@@ -12,6 +12,16 @@ open class TOTPGeneratorFactory {
     public static let totpSeedFieldName = "TOTP Seed"
     public static let totpSettingsFieldName = "TOTP Settings"
     
+    public static func makeGenerator(for entry: Entry) -> TOTPGenerator? {
+        guard let seedField =
+            entry.getField(with: TOTPGeneratorFactory.totpSeedFieldName) else { return nil }
+        guard let settingsField =
+            entry.getField(with: TOTPGeneratorFactory.totpSettingsFieldName) else { return nil }
+        return TOTPGeneratorFactory.makeGenerator(
+            seed: seedField.value,
+            settings: settingsField.value)
+    }
+    
     public static func makeGenerator(from fields: [EntryField]) -> TOTPGenerator? {
         guard let seedField =
             fields.first(where: { $0.name == TOTPGeneratorFactory.totpSeedFieldName })

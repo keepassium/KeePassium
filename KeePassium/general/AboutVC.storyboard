@@ -153,17 +153,18 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FH-1C-Kl7">
                                                     <rect key="frame" x="16" y="11" width="343" height="22"/>
-                                                    <string key="text">• KeePass by Dominik Reichl (https://keepass.info)
+                                                    <mutableString key="text">• KeePass by Dominik Reichl (https://keepass.info)
 • Feather icons by Cole Bemis (MIT licence, https://feathericons.com) • Ionicons by Ionic (MIT license, http://ionicons.com)
 • Linecons by Andrian Valeanu (https://designmodo.com/linecons-free/)
 • Fancy deboss pattern by Daniel Beaton (CC BY 3.0, http://subtlepatterns.com)
+• System settings icon by Vicons Design (CC BY 3.0, http://vicons.superatic.com)
 • AEXML by Marko Tadić(MIT license, https://github.com/tadija/AEXML) • Rijndael implementation by Szymon Stefanek (public domain)
 • Argon2 by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves (CC0 license, https://github.com/P-H-C/phc-winner-argon2)
 • ChaCha20 &amp; Salsa20 implementation by D. J. Bernstein (public domain, https://cr.yp.to/salsa20.html)
 • Twofish implementation by Niels Ferguson (available under its own very permissive  license, http://www.cartotype.com/downloads/twofish/twofish.cpp).
 • GzipSwift by 1024jp (MIT license, https://github.com/1024jp/GzipSwift)
 • Base32 for Swift by Norio Nomura (MIT license, https://github.com/norio-nomura/Base32)
-• KeyboardLayoutConstraint by James Tang (MIT license, https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift)</string>
+• KeyboardLayoutConstraint by James Tang (MIT license, https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift)</mutableString>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

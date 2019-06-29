@@ -92,6 +92,18 @@ class MainCoordinator: NSObject, Coordinator {
 
     func returnCredentials(entry: Entry) {
         watchdog.restart()
+        
+        let settings = Settings.current
+        if settings.isCopyTOTPOnAutoFill,
+            let totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry)
+        {
+            let totpString = totpGenerator.generate()
+            Clipboard.general.insert(
+                text: totpString,
+                timeout: TimeInterval(settings.clipboardTimeout.seconds)
+            )
+        }
+        
         let passwordCredential = ASPasswordCredential(user: entry.userName, password: entry.password)
         rootController.extensionContext.completeRequest(
             withSelectedCredential: passwordCredential,

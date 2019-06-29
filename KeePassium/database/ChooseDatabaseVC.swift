@@ -60,9 +60,14 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         
         clearsSelectionOnViewWillAppear = false
         
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(didLongPressTableView))
+        tableView.addGestureRecognizer(longPressGestureRecognizer)
+        
         updateDetailView(onlyInTwoPaneMode: false)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = false
@@ -164,6 +169,15 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         showDetailViewController(aboutVC, sender: self)
     }
     
+    @objc func didLongPressTableView(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        let point = gestureRecognizer.location(in: tableView)
+        guard gestureRecognizer.state == .began,
+            let indexPath = tableView.indexPathForRow(at: point),
+            tableView(tableView, canEditRowAt: indexPath),
+            let cell = tableView.cellForRow(at: indexPath) else { return }
+        cell.demoShowEditActions(lastActionColor: UIColor.destructiveTint)
+    }
+
     @IBAction func didPressAddDatabase(_ sender: Any) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         

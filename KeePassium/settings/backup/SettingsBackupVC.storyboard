@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Database Backup-->
+        <scene sceneID="ozz-dA-rkU">
+            <objects>
+                <tableViewController storyboardIdentifier="SettingsBackupVC" title="Database Backup" id="nSy-3u-0xW" customClass="SettingsBackupVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="AkD-Ud-4f0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="" footerTitle="Before saving a database, we will automatically make a copy, just in case." id="nBI-OF-9iV" userLabel="Enable Backup">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="oIk-Ar-xZK">
+                                        <rect key="frame" x="0.0" y="35" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oIk-Ar-xZK" id="2cm-BA-x2x">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make Backup Copies" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ7-eQ-JOc">
+                                                    <rect key="frame" x="61" y="11.5" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C3i-cd-qyP">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleEnableDatabaseBackup:" destination="nSy-3u-0xW" eventType="valueChanged" id="7rh-cv-tmj"/>
+                                                    </connections>
+                                                </switch>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-backup-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="fMb-2L-wBk">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="8E5-8s-QnP"/>
+                                                        <constraint firstAttribute="height" constant="29" id="um1-FY-6CP"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fMb-2L-wBk" firstAttribute="leading" secondItem="2cm-BA-x2x" secondAttribute="leadingMargin" id="TvG-tU-Dh5"/>
+                                                <constraint firstItem="C3i-cd-qyP" firstAttribute="leading" secondItem="BJ7-eQ-JOc" secondAttribute="trailing" constant="8" id="VT0-zD-a3i"/>
+                                                <constraint firstItem="BJ7-eQ-JOc" firstAttribute="leading" secondItem="fMb-2L-wBk" secondAttribute="trailing" constant="16" id="gUy-r2-X3P"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="C3i-cd-qyP" secondAttribute="trailing" id="mNE-di-76Z"/>
+                                                <constraint firstItem="BJ7-eQ-JOc" firstAttribute="centerY" secondItem="2cm-BA-x2x" secondAttribute="centerY" id="mng-pq-K4H"/>
+                                                <constraint firstItem="fMb-2L-wBk" firstAttribute="centerY" secondItem="2cm-BA-x2x" secondAttribute="centerY" id="oYx-61-ShX"/>
+                                                <constraint firstItem="C3i-cd-qyP" firstAttribute="centerY" secondItem="2cm-BA-x2x" secondAttribute="centerY" id="pNZ-jj-55W"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" footerTitle="Backup copies will appear along with the original files." id="XeH-7q-aad" userLabel="Show Backup Files">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="x2W-ul-UYg">
+                                        <rect key="frame" x="0.0" y="143" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x2W-ul-UYg" id="q8H-9i-H0G">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Backup Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEK-cJ-9bc">
+                                                    <rect key="frame" x="16" y="11.5" width="231" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQZ-OX-Wt1">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleShowBackupFiles:" destination="nSy-3u-0xW" eventType="valueChanged" id="Qu0-vF-HeJ"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aEK-cJ-9bc" firstAttribute="leading" secondItem="q8H-9i-H0G" secondAttribute="leadingMargin" id="AJJ-zj-JGz"/>
+                                                <constraint firstItem="gQZ-OX-Wt1" firstAttribute="centerY" secondItem="q8H-9i-H0G" secondAttribute="centerY" id="J34-0i-hyz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gQZ-OX-Wt1" secondAttribute="trailing" id="Mg0-Fq-hiQ"/>
+                                                <constraint firstItem="gQZ-OX-Wt1" firstAttribute="leading" secondItem="aEK-cJ-9bc" secondAttribute="trailing" constant="8" id="eaP-N2-rAP"/>
+                                                <constraint firstItem="aEK-cJ-9bc" firstAttribute="centerY" secondItem="q8H-9i-H0G" secondAttribute="centerY" id="vmv-Kr-K47"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Periodic cleanup" footerTitle="KeePassium can automatically delete old backup files to free up some storage space." id="B3L-Dk-Uq3" userLabel="Backup Maintenance">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="G42-gR-eKm" detailTextLabel="PKe-6p-Ssr" imageView="Ohh-2R-oTa" style="IBUITableViewCellStyleValue1" id="ljV-dR-Ihl">
+                                        <rect key="frame" x="0.0" y="278.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ljV-dR-Ihl" id="Apj-dQ-zIf">
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Keep Backup Files" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="G42-gR-eKm">
+                                                    <rect key="frame" x="60" y="12" width="140" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="(N days)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="PKe-6p-Ssr">
+                                                    <rect key="frame" x="220" y="12" width="65" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-backup-duration-listitem" id="Ohh-2R-oTa">
+                                                    <rect key="frame" x="16" y="7" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="sJf-8e-FM0">
+                                        <rect key="frame" x="0.0" y="322.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sJf-8e-FM0" id="Xwy-hZ-bIT">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-mN-5RB">
+                                                    <rect key="frame" x="55" y="6" width="210" height="32"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="tintColor" name="DestructiveTint"/>
+                                                    <state key="normal" title="(Delete ALL Backup Files (1))"/>
+                                                    <connections>
+                                                        <action selector="didPressDeleteAllBackupFiles:" destination="nSy-3u-0xW" eventType="touchUpInside" id="6hJ-fX-5bk"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RXF-mN-5RB" firstAttribute="centerY" secondItem="Xwy-hZ-bIT" secondAttribute="centerY" id="7dM-ET-4cS"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="RXF-mN-5RB" secondAttribute="trailing" id="g0d-g1-JPd"/>
+                                                <constraint firstItem="RXF-mN-5RB" firstAttribute="centerX" secondItem="Xwy-hZ-bIT" secondAttribute="centerX" id="gB3-uu-mG3"/>
+                                                <constraint firstItem="RXF-mN-5RB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xwy-hZ-bIT" secondAttribute="leadingMargin" id="hSh-yY-cR7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="nSy-3u-0xW" id="MvM-oF-QFT"/>
+                            <outlet property="delegate" destination="nSy-3u-0xW" id="IgL-2e-ahv"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="backupDurationCell" destination="ljV-dR-Ihl" id="jnT-OS-Id5"/>
+                        <outlet property="deleteAllBackupsButton" destination="RXF-mN-5RB" id="xUb-IE-XBT"/>
+                        <outlet property="enableDatabaseBackupSwitch" destination="C3i-cd-qyP" id="Wzl-9s-eTN"/>
+                        <outlet property="showBackupFilesSwitch" destination="gQZ-OX-Wt1" id="6NG-Ci-gF5"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="to3-d0-r7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151" y="92"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings-backup-duration-listitem" width="29" height="29"/>
+        <image name="settings-backup-listitem" width="29" height="29"/>
+        <namedColor name="AuxiliaryText">
+            <color white="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="DestructiveTint">
+            <color red="0.91900002956390381" green="0.24799999594688416" blue="0.14599999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

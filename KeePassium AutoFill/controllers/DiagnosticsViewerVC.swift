@@ -52,7 +52,15 @@ class DiagnosticsViewerVC: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         items = Diag.itemsSnapshot()
         super.viewDidLoad()
+
+        if items.count > 0 {
+            let lastRowIndexPath = IndexPath(row: items.count - 1, section: 0)
+            DispatchQueue.main.async { 
+                self.tableView.scrollToRow(at: lastRowIndexPath, at: .none, animated: true)
+            }
+        }
     }
+    
     
     
     @IBAction func didPressCopy(_ sender: Any) {

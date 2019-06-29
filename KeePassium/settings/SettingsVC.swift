@@ -15,6 +15,8 @@ class SettingsVC: UITableViewController, Refreshable {
 
     @IBOutlet weak var appSafetyCell: UITableViewCell!
     @IBOutlet weak var dataSafetyCell: UITableViewCell!
+    @IBOutlet weak var dataBackupCell: UITableViewCell!
+    @IBOutlet weak var autoFillCell: UITableViewCell!
     
     @IBOutlet weak var diagnosticLogCell: UITableViewCell!
     @IBOutlet weak var contactSupportCell: UITableViewCell!
@@ -88,9 +90,15 @@ class SettingsVC: UITableViewController, Refreshable {
         case appSafetyCell:
             let appLockSettingsVC = SettingsAppLockVC.instantiateFromStoryboard()
             show(appLockSettingsVC, sender: self)
+        case autoFillCell:
+            let autoFillSettingsVC = SettingsAutoFillVC.instantiateFromStoryboard()
+            show(autoFillSettingsVC, sender: self)
         case dataSafetyCell:
             let dataProtectionSettingsVC = SettingsDataProtectionVC.instantiateFromStoryboard()
             show(dataProtectionSettingsVC, sender: self)
+        case dataBackupCell:
+            let dataBackupSettingsVC = SettingsBackupVC.instantiateFromStoryboard()
+            show(dataBackupSettingsVC, sender: self)
         case diagnosticLogCell:
             let viewer = ViewDiagnosticsVC.make()
             show(viewer, sender: self)

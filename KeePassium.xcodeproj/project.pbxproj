@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */; };
+		75065A3322C41B3A00958243 /* SettingsAutoFillVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75065A3222C41B3A00958243 /* SettingsAutoFillVC.storyboard */; };
+		75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */; };
 		750C683220D767F6001A6AA0 /* EditEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C683120D767F6001A6AA0 /* EditEntryVC.swift */; };
 		750CFBC821BA9ACD00E62B09 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; };
 		750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */; };
@@ -70,6 +72,12 @@
 		75779864223023D3006671BD /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
 		75779865223023D3006671BD /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
 		75781A2D20CA3D7A00BE474F /* SettingsFileSortingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */; };
+		7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
+		7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
+		7578488422C165B700BBEF9A /* SettingsBackupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7578488322C165B700BBEF9A /* SettingsBackupVC.storyboard */; };
+		7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488522C165C900BBEF9A /* SettingsBackupVC.swift */; };
+		7578488D22C1DFC400BBEF9A /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7578488C22C1DFC400BBEF9A /* SettingsBackupTimeoutPickerVC.storyboard */; };
+		7578488F22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */; };
 		757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */; };
 		757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */; };
 		757EF2F520EB3D1C0024AACD /* PasswordGeneratorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757EF2F420EB3D1C0024AACD /* PasswordGeneratorVC.swift */; };
@@ -198,6 +206,8 @@
 
 /* Begin PBXFileReference section */
 		750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCreatorCoordinator.swift; sourceTree = "<group>"; };
+		75065A3222C41B3A00958243 /* SettingsAutoFillVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsAutoFillVC.storyboard; sourceTree = "<group>"; };
+		75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAutoFillVC.swift; sourceTree = "<group>"; };
 		750C683120D767F6001A6AA0 /* EditEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryVC.swift; sourceTree = "<group>"; };
 		750CFBC721BA9ACD00E62B09 /* KeePassium AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassium AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialProviderViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +262,11 @@
 		756FF64320BAB20300FF890B /* UIColor+namedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+namedColors.swift"; sourceTree = "<group>"; };
 		75779863223023D3006671BD /* ProgressViewHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewHost.swift; sourceTree = "<group>"; };
 		75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFileSortingVC.swift; sourceTree = "<group>"; };
+		7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+demoEditActions.swift"; sourceTree = "<group>"; };
+		7578488322C165B700BBEF9A /* SettingsBackupVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsBackupVC.storyboard; sourceTree = "<group>"; };
+		7578488522C165C900BBEF9A /* SettingsBackupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupVC.swift; sourceTree = "<group>"; };
+		7578488C22C1DFC400BBEF9A /* SettingsBackupTimeoutPickerVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsBackupTimeoutPickerVC.storyboard; sourceTree = "<group>"; };
+		7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupTimeoutPickerVC.swift; sourceTree = "<group>"; };
 		757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDatabaseTimeoutVC.swift; sourceTree = "<group>"; };
 		757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClipboardTimeoutVC.swift; sourceTree = "<group>"; };
 		757EF2F420EB3D1C0024AACD /* PasswordGeneratorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorVC.swift; sourceTree = "<group>"; };
@@ -362,6 +377,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		75065A3122C41B2200958243 /* autoFill */ = {
+			isa = PBXGroup;
+			children = (
+				75065A3222C41B3A00958243 /* SettingsAutoFillVC.storyboard */,
+				75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */,
+			);
+			path = autoFill;
+			sourceTree = "<group>";
+		};
 		750CFBC921BA9ACD00E62B09 /* KeePassium AutoFill */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,7 +404,9 @@
 		7546FBC420C1024200C5D834 /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				75065A3122C41B2200958243 /* autoFill */,
 				75C3800F217A0497006F74C2 /* appLock */,
+				7578488722C16D7D00BBEF9A /* backup */,
 				7546FBC520C1027700C5D834 /* SettingsVC.swift */,
 				7546FBC920C104EE00C5D834 /* SettingsVC.storyboard */,
 				75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */,
@@ -447,6 +473,7 @@
 				75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */,
 				756FF64320BAB20300FF890B /* UIColor+namedColors.swift */,
 				755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */,
+				7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */,
 				75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */,
 				7542D2412129640F00C8A926 /* String+extensions.swift */,
 				7523F71C21C98D620025C706 /* SupportEmailComposer.swift */,
@@ -521,6 +548,17 @@
 				758D8E912274D2C800644FA6 /* DatabaseCreatorVC.storyboard */,
 			);
 			path = database;
+			sourceTree = "<group>";
+		};
+		7578488722C16D7D00BBEF9A /* backup */ = {
+			isa = PBXGroup;
+			children = (
+				7578488522C165C900BBEF9A /* SettingsBackupVC.swift */,
+				7578488322C165B700BBEF9A /* SettingsBackupVC.storyboard */,
+				7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */,
+				7578488C22C1DFC400BBEF9A /* SettingsBackupTimeoutPickerVC.storyboard */,
+			);
+			path = backup;
 			sourceTree = "<group>";
 		};
 		758BF0D920D21EE500897C83 /* general */ = {
@@ -743,11 +781,13 @@
 				75C38047217A3254006F74C2 /* ChooseDatabaseVC.storyboard in Resources */,
 				75C38033217A26DC006F74C2 /* AboutVC.storyboard in Resources */,
 				754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */,
+				7578488422C165B700BBEF9A /* SettingsBackupVC.storyboard in Resources */,
 				75C38041217A284A006F74C2 /* ChooseKeyFileVC.storyboard in Resources */,
 				75C3800E217A0344006F74C2 /* SettingsItemListVC.storyboard in Resources */,
 				75C38039217A27A7006F74C2 /* ChooseIconVC.storyboard in Resources */,
 				75C38013217A053D006F74C2 /* SettingsAppTimeoutVC.storyboard in Resources */,
 				75C38021217A1F0A006F74C2 /* ViewEntryFieldsVC.storyboard in Resources */,
+				7578488D22C1DFC400BBEF9A /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
 				75C38035217A271B006F74C2 /* ViewDiagnosticsVC.storyboard in Resources */,
 				75C3801F217A1EE1006F74C2 /* EditEntryVC.storyboard in Resources */,
 				75C3803D217A27FE006F74C2 /* ChangeMasterKeyVC.storyboard in Resources */,
@@ -767,6 +807,7 @@
 				75C38045217A3204006F74C2 /* PlaceholderVC.storyboard in Resources */,
 				75C38017217A0750006F74C2 /* SettingsDatabaseTimeoutVC.storyboard in Resources */,
 				75C3800C217A02DD006F74C2 /* SettingsFileSortingVC.storyboard in Resources */,
+				75065A3322C41B3A00958243 /* SettingsAutoFillVC.storyboard in Resources */,
 				75C3803F217A281D006F74C2 /* UnlockDatabaseVC.storyboard in Resources */,
 				75C38019217A078D006F74C2 /* SettingsClipboardTimeoutVC.storyboard in Resources */,
 				752ED68B2235543F00C20D3E /* SettingsDataProtectionVC.storyboard in Resources */,
@@ -790,6 +831,7 @@
 				75CBAB9F21C1671F00B8AFE2 /* MainCoordinator.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* DatabaseFileListCell.swift in Sources */,
 				7523F71521C94DD90025C706 /* DiagnosticsViewerVC.swift in Sources */,
+				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */,
 				750CFC0921BADBA500E62B09 /* DatabaseChooserVC.swift in Sources */,
 				757FB3CD21F9C50700F016FA /* ValidatingTextField.swift in Sources */,
@@ -873,6 +915,8 @@
 				75CD364121537A320018AF46 /* AppStoreReviewHelper.swift in Sources */,
 				75B5FB7720D53EA700D402D9 /* ViewEntryFieldsVC.swift in Sources */,
 				75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */,
+				7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */,
+				75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */,
 				7546FBD920C3A3F600C5D834 /* Watchdog.swift in Sources */,
 				75CA73912144381200ADAD64 /* KeyboardLayoutConstraint.swift in Sources */,
 				757FB3CA21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
@@ -881,10 +925,12 @@
 				7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */,
 				758BF0D820D1B1DA00897C83 /* ValidatingTextField.swift in Sources */,
 				754BF09A20984DEE00E3A292 /* UnlockDatabaseVC.swift in Sources */,
+				7578488F22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift in Sources */,
 				75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */,
 				75F4ACFC21776F4800B22D8B /* LString.swift in Sources */,
 				750D127E20CF071600BE0CCE /* EditGroupVC.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */,
+				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,

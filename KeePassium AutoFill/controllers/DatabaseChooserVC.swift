@@ -37,6 +37,11 @@ class DatabaseChooserVC: UITableViewController, Refreshable {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.refreshControl = refreshControl
 
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(didLongPressTableView))
+        tableView.addGestureRecognizer(longPressGestureRecognizer)
+        
         refresh()
     }
 
@@ -74,6 +79,15 @@ class DatabaseChooserVC: UITableViewController, Refreshable {
     @IBAction func didPressAddDatabase(_ sender: Any) {
         Watchdog.shared.restart()
         delegate?.databaseChooserShouldAddDatabase(self)
+    }
+    
+    @objc func didLongPressTableView(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        let point = gestureRecognizer.location(in: tableView)
+        guard gestureRecognizer.state == .began,
+            let indexPath = tableView.indexPathForRow(at: point),
+            tableView(tableView, canEditRowAt: indexPath),
+            let cell = tableView.cellForRow(at: indexPath) else { return }
+        cell.demoShowEditActions(lastActionColor: UIColor.destructiveTint)
     }
     
 

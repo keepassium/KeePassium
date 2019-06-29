@@ -22,8 +22,6 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     
     @IBOutlet weak var clipboardTimeoutCell: UITableViewCell!
     
-    @IBOutlet weak var backupDatabasesSwitch: UISwitch!
-    
     private var settingsNotifications: SettingsNotifications!
     
     
@@ -52,7 +50,6 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
         databaseTimeoutCell.detailTextLabel?.text = settings.databaseLockTimeout.shortTitle
         lockDatabaseOnFailedPasscodeSwitch.isOn = settings.isLockAllDatabasesOnFailedPasscode
         clipboardTimeoutCell.detailTextLabel?.text = settings.clipboardTimeout.shortTitle
-        backupDatabasesSwitch.isOn = settings.isBackupDatabaseOnSave
     }
     
     
@@ -107,10 +104,6 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
         show(clipboardTimeoutVC, sender: self)
     }
 
-    @IBAction func didToggleBackupDatabases(_ sender: UISwitch) {
-        Settings.current.isBackupDatabaseOnSave = backupDatabasesSwitch.isOn
-        refresh()
-    }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -95,6 +95,11 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         groupChangeNotifications = GroupChangeNotifications(observer: self)
         entryChangeNotifications = EntryChangeNotifications(observer: self)
         settingsNotifications = SettingsNotifications(observer: self)
+        
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(didLongPressTableView))
+        tableView.addGestureRecognizer(longPressGestureRecognizer)
     }
     
     override open func viewDidAppear(_ animated: Bool) {
@@ -599,6 +604,15 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
         let vc = ChangeMasterKeyVC.make(dbRef: dbRef)
         present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func didLongPressTableView(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        let point = gestureRecognizer.location(in: tableView)
+        guard gestureRecognizer.state == .began,
+            let indexPath = tableView.indexPathForRow(at: point),
+            tableView(tableView, canEditRowAt: indexPath),
+            let cell = tableView.cellForRow(at: indexPath) else { return }
+        cell.demoShowEditActions(lastActionColor: UIColor.destructiveTint)
     }
     
     

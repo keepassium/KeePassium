@@ -1,5 +1,29 @@
 #CHANGELOG
 
+## [1.0.26] (Public Beta) - 2019-06-29
+
+### Added 
+- [Frequently asked questions](https://keepassium.com/faq)
+- AutoFill setup instructions
+- Option to lock the app not only immediately, but after a few seconds in background (closes #14) [thanks, J.B.]
+- Option to automatically delete old backup copies (closes #12) [thanks, Dragonblitz10]
+- Button in AutoFill to discard auto-suggestions and start manual search (closes #9) [thanks, Dragonblitz10]
+- Option to copy OTP to clipboard when using AutoFill (closes #7) [thanks, Thunder33345]
+- When long-pressing a file, suggest swiping instead [thanks, u/bananajoe]
+
+### Changed
+- "Remember master keys" option now defaults to "on" on first launch
+- Manual search now checks the names of custom entry fields, even protected ones (related to #8)
+- Moved backup setings to a separate page
+- Refined the Settings screens
+
+### Fixed
+- Diagnostics viewer scrolls to bottom 
+- Error message animation in Create Database dialog [thanks, Tobias]
+- Regression: files are not syncronized (#10, #13) [thanks, Sunil and AndiB.]
+- Database loading error 'Nil value in Entry/Times/ExpiryTime' in some cases [thanks, u/yacob841]
+
+
 ## [1.0.25] (Public Beta) - 2019-06-19
 
 ### Fixed

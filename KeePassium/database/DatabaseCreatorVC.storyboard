@@ -259,6 +259,7 @@
                         <outlet property="keyFileField" destination="pvt-FS-0Yx" id="BlR-qx-R5P"/>
                         <outlet property="keyboardLayoutConstraint" destination="Vn9-PM-nmb" id="fUd-Xa-ZpD"/>
                         <outlet property="passwordField" destination="uHk-Yt-mBh" id="JiK-BH-kCB"/>
+                        <outlet property="scrollView" destination="UAC-3N-WvO" id="Re8-AB-rKc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Rt-lm-o3c" userLabel="First Responder" sceneMemberID="firstResponder"/>

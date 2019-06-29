@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Data Safety-->
+        <!--Data Protection-->
         <scene sceneID="9c1-sR-NKV">
             <objects>
-                <tableViewController storyboardIdentifier="SettingsDataProtectionVC" title="Data Safety" id="IZZ-aM-g2i" customClass="SettingsDataProtectionVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsDataProtectionVC" title="Data Protection" id="IZZ-aM-g2i" customClass="SettingsDataProtectionVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Bpw-6U-LVJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,7 +203,7 @@
                                                         <constraint firstAttribute="height" constant="29" id="H8i-uT-L8Y"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="On a Wrong AppLock Passcode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-Pz-pPI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="On Wrong AppLock Passcode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-Pz-pPI">
                                                     <rect key="frame" x="61" y="0.5" width="186" height="42.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -262,50 +262,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Backup" id="lYK-Kp-tOs" userLabel="Backup">
-                                <string key="footerTitle">Before saving a database, KeePassium will make a copy, just in case. To see backup copies, check the Sort Order menu in the database list.</string>
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Jks-aw-dhP">
-                                        <rect key="frame" x="0.0" y="798" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jks-aw-dhP" id="SUS-pw-noN">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup Database Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O3-xh-Xh6">
-                                                    <rect key="frame" x="61" y="11.5" width="186" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" name="PrimaryText"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0T4-3k-cGh">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="didToggleBackupDatabases:" destination="IZZ-aM-g2i" eventType="valueChanged" id="zVS-Cw-Qkf"/>
-                                                    </connections>
-                                                </switch>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-database-backup-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-Qo-sgD">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
-                                                    <color key="tintColor" name="IconTint"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="29" id="5m0-Hp-7eu"/>
-                                                        <constraint firstAttribute="width" constant="29" id="Cai-7Y-agn"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="7A9-Qo-sgD" firstAttribute="leading" secondItem="SUS-pw-noN" secondAttribute="leadingMargin" id="NT4-cR-a0K"/>
-                                                <constraint firstItem="0T4-3k-cGh" firstAttribute="leading" secondItem="3O3-xh-Xh6" secondAttribute="trailing" constant="8" id="TdW-zk-3lS"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="0T4-3k-cGh" secondAttribute="trailing" id="U2t-d1-xG4"/>
-                                                <constraint firstItem="7A9-Qo-sgD" firstAttribute="centerY" secondItem="SUS-pw-noN" secondAttribute="centerY" id="W72-12-EZZ"/>
-                                                <constraint firstItem="3O3-xh-Xh6" firstAttribute="centerY" secondItem="SUS-pw-noN" secondAttribute="centerY" id="aJ8-B1-rK4"/>
-                                                <constraint firstItem="0T4-3k-cGh" firstAttribute="centerY" secondItem="SUS-pw-noN" secondAttribute="centerY" id="han-qQ-f2J"/>
-                                                <constraint firstItem="3O3-xh-Xh6" firstAttribute="leading" secondItem="7A9-Qo-sgD" secondAttribute="trailing" constant="16" id="tSo-Sw-KpX"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="IZZ-aM-g2i" id="saX-Ms-ENf"/>
@@ -314,7 +270,6 @@
                     </tableView>
                     <size key="freeformSize" width="320" height="900"/>
                     <connections>
-                        <outlet property="backupDatabasesSwitch" destination="0T4-3k-cGh" id="LEb-Jl-8GR"/>
                         <outlet property="clearKeyFileAssociationsButton" destination="3uV-Zs-RRo" id="AaL-yl-h39"/>
                         <outlet property="clearMasterKeysButton" destination="e1v-nv-Mst" id="uRo-08-UjQ"/>
                         <outlet property="clipboardTimeoutCell" destination="pl7-TW-G1h" id="kdi-rO-dBh"/>
@@ -331,7 +286,6 @@
     </scenes>
     <resources>
         <image name="settings-clipboard-timeout-listitem" width="29" height="29"/>
-        <image name="settings-database-backup-listitem" width="29" height="29"/>
         <image name="settings-database-protection-listitem" width="29" height="29"/>
         <image name="settings-database-timeout-listitem" width="29" height="29"/>
         <image name="settings-remember-keyfiles-listitem" width="29" height="29"/>

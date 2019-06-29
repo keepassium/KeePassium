@@ -104,8 +104,9 @@ class Watchdog {
         }
         
         let appTimeout = Settings.current.appLockTimeout
-        if appTimeout == .immediately {
+        if appTimeout.triggerMode == .appMinimized {
             Diag.debug("Going to background: App Lock engaged")
+            Watchdog.shared.restart() 
         }
         
         appLockTimer?.invalidate()
@@ -181,10 +182,10 @@ class Watchdog {
         }
         
         let timeout = Settings.current.appLockTimeout
-        switch timeout {
-        case .never, .immediately:
+        switch timeout.triggerMode {
+        case .appMinimized:
             return
-        default:
+        case .userIdle:
             appLockTimer = Timer.scheduledTimer(
                 timeInterval: Double(timeout.seconds),
                 target: self,

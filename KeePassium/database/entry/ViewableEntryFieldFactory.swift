@@ -137,7 +137,7 @@ class ViewableEntryFieldFactory {
             result.append(viewableField)
         }
         
-        if let _ = TOTPGeneratorFactory.makeGenerator(from: entry.fields),
+        if let _ = TOTPGeneratorFactory.makeGenerator(for: entry),
             !excludeNonEditable
         {
             result.append(TOTPViewableField(fields: entry.fields))
