@@ -553,6 +553,8 @@ public class Database2: Database {
         var allEntries = [Entry]()
         root?.collectAllEntries(to: &allEntries)
         
+        maybeFixAttachmentNames(entries: allEntries, warnings: warnings)
+        
         var usedIDs = Set<Binary2.ID>() 
         allEntries.forEach { (entry) in
             insertAllAttachmentIDs(of: entry as! Entry2, into: &usedIDs)
@@ -598,6 +600,43 @@ public class Database2: Database {
                 .joined(separator: ", ")
             Diag.warning("Some entries refer to non-existent binaries [IDs: \(missingIDs)]")
         }
+    }
+    
+    private func maybeFixAttachmentNames(entries: [Entry], warnings: DatabaseLoadingWarnings) {
+        func maybeFixAttachmentNames(entry: Entry2) -> Bool {
+            var isSomethingFixed = false
+            entry.attachments.forEach {
+                if $0.name.isEmpty {
+                    $0.name = "?" 
+                    isSomethingFixed = true
+                }
+            }
+            return isSomethingFixed
+        }
+        
+        var affectedEntries = [Entry2]()
+        for entry in entries {
+            let entry2 = entry as! Entry2
+            let isEntryAffected = maybeFixAttachmentNames(entry: entry2)
+            let isHistoryAffected = entry2.history.reduce(false) { (result, historyEntry) in
+                return result || maybeFixAttachmentNames(entry: historyEntry)
+            }
+            if isEntryAffected || isHistoryAffected {
+                affectedEntries.append(entry2)
+            }
+        }
+        
+        if affectedEntries.isEmpty {
+            return
+        }
+        let listOfEntryNames = affectedEntries
+            .compactMap { $0.getGroupPath() + "/" + $0.title } 
+            .map { "\"\($0)\"" } 
+            .joined(separator: "\n ") 
+        
+        let warningMessage = NSLocalizedString("Some entries have attachments without a name. This is a sign of previous database corruption.\n\n Please review attached files in the following entries (and their history):\n\(listOfEntryNames)", comment: "A warning about nameless attachments, shown after loading the database")
+        Diag.warning(warningMessage)
+        warnings.messages.append(warningMessage)
     }
     
     private func checkCustomFieldsIntegrity(warnings: DatabaseLoadingWarnings) {

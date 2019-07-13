@@ -67,9 +67,9 @@ public class Attachment2: Attachment {
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "Entry/Binary/*")
             }
         }
-        guard let _name = name else {
-            Diag.error("Missing Entry/Binary/Name")
-            throw Xml2.ParsingError.malformedValue(tag: "Entry/Binary/Name", value: nil)
+        let _name = name ?? ""
+        if _name.isEmpty {
+            Diag.error("Missing Entry/Binary/Name, ignoring")
         }
         guard let _binary = binary else {
             Diag.error("Missing Entry/Binary/Value")

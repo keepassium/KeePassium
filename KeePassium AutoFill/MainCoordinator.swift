@@ -37,7 +37,7 @@ class MainCoordinator: NSObject, Coordinator {
             navigationOrientation: .horizontal,
             options: [:]
         )
-        navigationController = UINavigationController()
+        navigationController = LongPressAwareNavigationController()
         navigationController.view.backgroundColor = .clear
         watchdog = Watchdog.shared 
         super.init()
@@ -458,7 +458,7 @@ extension MainCoordinator: UIDocumentPickerDelegate {
     }
 }
 
-extension MainCoordinator: UINavigationControllerDelegate {
+extension MainCoordinator: LongPressAwareNavigationControllerDelegate {
     func navigationController(
         _ navigationController: UINavigationController,
         willShow viewController: UIViewController,
@@ -470,6 +470,33 @@ extension MainCoordinator: UINavigationControllerDelegate {
         if fromVC is EntryFinderVC {
             DatabaseManager.shared.closeDatabase(clearStoredKey: false)
         }
+    }
+    
+    func didLongPressLeftSide(in navigationController: LongPressAwareNavigationController) {
+        guard let topVC = navigationController.topViewController else { return }
+        guard topVC is DatabaseChooserVC
+            || topVC is KeyFileChooserVC
+            || topVC is DatabaseUnlockerVC
+            || topVC is EntryFinderVC
+            || topVC is FirstSetupVC else { return }
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(
+            title: "Show Diagnostic Log".localized(comment: "Action/button to show internal diagnostic log"),
+            style: .default,
+            handler: { [weak self] _ in
+                self?.showDiagnostics()
+            }
+        ))
+        actionSheet.addAction(
+            UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        )
+
+        actionSheet.modalPresentationStyle = .popover
+        if let popover = actionSheet.popoverPresentationController {
+            popover.barButtonItem = navigationController.navigationItem.leftBarButtonItem
+        }
+        topVC.present(actionSheet, animated: true)
     }
 }
 
@@ -485,7 +512,8 @@ extension MainCoordinator: EntryFinderDelegate {
 }
 
 extension MainCoordinator: DiagnosticsViewerDelegate {
-    func diagnosticsViewer(_ sender: DiagnosticsViewerVC, didCopyContents text: String) {
+    func didPressCopy(in diagnosticsViewer: DiagnosticsViewerVC, text: String) {
+        Clipboard.general.insert(text: text, timeout: nil)
         let infoAlert = UIAlertController.make(
             title: nil,
             message: NSLocalizedString(

@@ -37,7 +37,7 @@ KeePassium is a commercial open source app. The "commercial" part gives you a we
 	- ChaCha20, Argon2, AES, Salsa20, Twofish algorithms
 * Easy switching between multiple databases
 * And more:
-	- TOTP support (both RFC-6238 and Steam TOTP)
+	- Viewing TOTP codes (both RFC-6238 and Steam TOTP)
 	- File attachments
 	- Custom fields
 	- Custom icons

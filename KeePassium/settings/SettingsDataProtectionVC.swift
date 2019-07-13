@@ -18,7 +18,6 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @IBOutlet weak var clearKeyFileAssociationsButton: UIButton!
     
     @IBOutlet weak var databaseTimeoutCell: UITableViewCell!
-    @IBOutlet weak var lockDatabaseOnFailedPasscodeSwitch: UISwitch!
     
     @IBOutlet weak var clipboardTimeoutCell: UITableViewCell!
     
@@ -48,7 +47,6 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
         rememberMasterKeysSwitch.isOn = settings.isRememberDatabaseKey
         rememberUsedKeyFiles.isOn = settings.isKeepKeyFileAssociations
         databaseTimeoutCell.detailTextLabel?.text = settings.databaseLockTimeout.shortTitle
-        lockDatabaseOnFailedPasscodeSwitch.isOn = settings.isLockAllDatabasesOnFailedPasscode
         clipboardTimeoutCell.detailTextLabel?.text = settings.clipboardTimeout.shortTitle
     }
     
@@ -92,11 +90,6 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @objc func didPressDatabaseTimeout(_ sender: Any) {
         let databaseTimeoutVC = SettingsDatabaseTimeoutVC.make()
         show(databaseTimeoutVC, sender: self)
-    }
-
-    @IBAction func didToggleLockDatabaseOnFailedPasscode(_ sender: UISwitch) {
-        Settings.current.isLockAllDatabasesOnFailedPasscode = lockDatabaseOnFailedPasscodeSwitch.isOn
-        refresh()
     }
     
     func didPressClipboardTimeout(_ sender: Any) {

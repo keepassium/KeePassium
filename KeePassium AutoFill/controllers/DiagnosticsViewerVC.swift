@@ -37,7 +37,7 @@ class DiagnosticsViewerCell: UITableViewCell {
 }
 
 protocol DiagnosticsViewerDelegate: class {
-    func diagnosticsViewer(_ sender: DiagnosticsViewerVC, didCopyContents text: String)
+    func didPressCopy(in diagnosticsViewer: DiagnosticsViewerVC, text: String)
 }
 
 class DiagnosticsViewerVC: UITableViewController {
@@ -66,7 +66,7 @@ class DiagnosticsViewerVC: UITableViewController {
     @IBAction func didPressCopy(_ sender: Any) {
         Watchdog.shared.restart()
         let logText = Diag.toString()
-        delegate?.diagnosticsViewer(self, didCopyContents: logText)
+        delegate?.didPressCopy(in: self, text: logText)
     }
     
     

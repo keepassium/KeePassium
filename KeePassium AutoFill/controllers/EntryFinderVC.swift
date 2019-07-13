@@ -31,6 +31,7 @@ class EntryFinderCell: UITableViewCell {
     }
 }
 
+
 class EntryFinderVC: UITableViewController {
     private enum CellID {
         static let entry = EntryFinderCell.storyboardID
@@ -48,7 +49,7 @@ class EntryFinderVC: UITableViewController {
     }
     
     private var searchHelper = SearchHelper()
-    private var searchResults = SearchResults(exactMatch: [], partialMatch: [])
+    private var searchResults = FuzzySearchResults(exactMatch: [], partialMatch: [])
     private var searchController: UISearchController! 
     private var manualSearchButton: UIBarButtonItem! 
 
@@ -236,7 +237,8 @@ extension EntryFinderVC: UISearchResultsUpdating {
         Watchdog.shared.restart()
         guard let searchText = searchController.searchBar.text,
             let database = database else { return }
-        searchResults = searchHelper.find(database: database, searchText: searchText)
+        searchResults.exactMatch = searchHelper.find(database: database, searchText: searchText)
+        searchResults.partialMatch = []
         sortSearchResults()
         tableView.reloadData()
     }

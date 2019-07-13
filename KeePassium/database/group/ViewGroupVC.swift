@@ -15,11 +15,6 @@ class GroupViewListCell: UITableViewCell {
     @IBOutlet weak var subtitleLabel: UILabel!
 }
 
-struct SearchResult {
-    var group: Group
-    var entries: [Entry]
-}
-
 open class ViewGroupVC: UITableViewController, Refreshable {
     
     private enum CellID {
@@ -54,7 +49,8 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     private weak var shownEntry: Entry?
 
     private var isActivateSearch: Bool = false
-    private var searchResults: [SearchResult] = []
+    private var searchHelper = SearchHelper()
+    private var searchResults = [GroupedEntries]()
     private var searchController: UISearchController!
     var isSearchActive: Bool {
         guard let searchController = searchController else { return false }
@@ -287,7 +283,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
                 for: indexPath)
         }
 
-        let entry = searchResults[indexPath.section].entries[indexPath.row]
+        let entry = searchResults[indexPath.section].entries[indexPath.row].entry
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID.entry, for: indexPath)
         guard let entryCell = cell as? GroupViewListCell else { fatalError() }
         entryCell.titleLabel?.text = entry.title
@@ -374,7 +370,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             guard indexPath.section < searchResults.count else { return  nil }
             let searchResult = searchResults[indexPath.section]
             guard indexPath.row < searchResult.entries.count else { return nil }
-            return searchResult.entries[indexPath.row]
+            return searchResult.entries[indexPath.row].entry
         } else {
             let entryIndex = indexPath.row - groupsSorted.count
             guard entryIndex >= 0 && entryIndex < entriesSorted.count else { return nil }
@@ -730,41 +726,10 @@ extension ViewGroupVC: GroupChangeObserver {
 extension ViewGroupVC: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
-        let words = searchText.split(separator: " " as Character)
-        let query = SearchQuery(
-            includeSubgroups: true,
-            includeDeleted: false,
-            text: searchText,
-            textWords: words)
-        performSearch(query: query)
+        guard let database = group?.database else { return }
+        searchResults = searchHelper.find(database: database, searchText: searchText)
         sortSearchResults()
         tableView.reloadData()
-    }
-    
-    func performSearch(query: SearchQuery) {
-        searchResults.removeAll()
-        guard let database = group?.database else { return }
-
-        var foundEntries: [Entry] = []
-        let foundCount = database.search(query: query, result: &foundEntries)
-        print("Found \(foundCount) entries")
-        searchResults.reserveCapacity(foundCount)
-        
-        for entry in foundEntries {
-            guard let parentGroup = entry.parent else { assertionFailure(); return }
-            var isInserted = false
-            for i in 0..<searchResults.count {
-                if searchResults[i].group === parentGroup {
-                    searchResults[i].entries.append(entry)
-                    isInserted = true
-                    break
-                }
-            }
-            if !isInserted {
-                let newSearchResult = SearchResult(group: parentGroup, entries: [entry])
-                searchResults.append(newSearchResult)
-            }
-        }
     }
     
     private func sortSearchResults() {

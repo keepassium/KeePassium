@@ -9,29 +9,88 @@
 import Foundation
 
 open class TOTPGeneratorFactory {
-    public static let totpSeedFieldName = "TOTP Seed"
-    public static let totpSettingsFieldName = "TOTP Settings"
+    enum SplitFormat {
+        public static let seedFieldName = "TOTP Seed"
+        public static let settingsFieldName = "TOTP Settings"
+    }
+    
+    enum URIFormat {
+        public static let fieldName = "otp"
+        
+        public static let scheme = "otpauth"
+        public static let host = "totp"
+        
+        public static let seedParam = "secret"
+        public static let timeStepParam = "period"
+        public static let lengthParam = "digits"
+        public static let algorithmParam = "algorithm"
+        
+        public static let defaultTimeStep = 30
+        public static let defaultLength = 6
+        public static let defaultAlgorithm = "SHA1"
+    }
     
     public static func makeGenerator(for entry: Entry) -> TOTPGenerator? {
-        guard let seedField =
-            entry.getField(with: TOTPGeneratorFactory.totpSeedFieldName) else { return nil }
-        guard let settingsField =
-            entry.getField(with: TOTPGeneratorFactory.totpSettingsFieldName) else { return nil }
-        return TOTPGeneratorFactory.makeGenerator(
-            seed: seedField.value,
-            settings: settingsField.value)
+        return makeGenerator(from: entry.fields)
     }
     
     public static func makeGenerator(from fields: [EntryField]) -> TOTPGenerator? {
-        guard let seedField =
-            fields.first(where: { $0.name == TOTPGeneratorFactory.totpSeedFieldName })
-            else { return nil }
-        guard let settingsField =
-            fields.first(where: { $0.name == TOTPGeneratorFactory.totpSettingsFieldName })
-            else { return nil }
-        return TOTPGeneratorFactory.makeGenerator(
-            seed: seedField.value,
-            settings: settingsField.value)
+        if let totpURIField = fields.first(where: { $0.name == URIFormat.fieldName }) {
+            return TOTPGeneratorFactory.makeGenerator(uri: totpURIField.value)
+        } else {
+            guard let seedField =
+                fields.first(where: { $0.name == SplitFormat.seedFieldName })
+                else { return nil }
+            guard let settingsField =
+                fields.first(where: { $0.name == SplitFormat.settingsFieldName })
+                else { return nil }
+            return TOTPGeneratorFactory.makeGenerator(
+                seed: seedField.value,
+                settings: settingsField.value)
+        }
+    }
+    
+    public static func makeGenerator(uri uriString: String) -> TOTPGenerator? {
+         guard let components = URLComponents(string: uriString),
+            components.scheme == URIFormat.scheme,
+            components.host == URIFormat.host,
+            let queryItems = components.queryItems else
+        {
+            Diag.warning("OTP URI has unexpected format")
+            return nil
+        }
+        
+        let params = queryItems.reduce(into: [String: String]()) { (result, item) in
+            result[item.name] = item.value
+        }
+        
+        guard let seedString = params[URIFormat.seedParam],
+            let seedData = base32DecodeToData(seedString),
+            !seedData.isEmpty else
+        {
+            Diag.warning("OTP parameter cannot be parsed [parameter: \(URIFormat.seedParam)]")
+            return nil
+        }
+        
+        if let algorithm = params[URIFormat.algorithmParam],
+            algorithm != URIFormat.defaultAlgorithm
+        {
+            Diag.warning("OTP algorithm is not supported [algorithm: \(algorithm)]")
+            return nil
+        }
+        guard let timeStep = Int(params[URIFormat.timeStepParam] ?? "\(URIFormat.defaultTimeStep)") else {
+            Diag.warning("OTP parameter cannot be parsed [parameter: \(URIFormat.timeStepParam)]")
+            return nil
+        }
+        guard let length = Int(params[URIFormat.lengthParam] ?? "\(URIFormat.defaultLength)") else {
+            Diag.warning("OTP parameter cannot be parsed [parameter: \(URIFormat.lengthParam)]")
+            return nil
+        }
+        
+        return TOTPGeneratorRFC6238(
+            seed: ByteArray(data: seedData),
+            timeStep: timeStep,
+            length: length)
     }
     
     public static func makeGenerator(
@@ -112,9 +171,9 @@ extension TOTPGenerator {
 }
 
 public class TOTPGeneratorRFC6238: TOTPGenerator {
-    private let seed: ByteArray
-    private let timeStep: Int
-    private let length: Int
+    internal let seed: ByteArray
+    internal let timeStep: Int
+    internal let length: Int
     
     public var elapsedTimeFraction: Float { return getElapsedTimeFraction(timeStep: timeStep) }
 

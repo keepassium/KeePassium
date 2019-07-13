@@ -284,22 +284,6 @@ public class Entry1: Entry {
         writeField(fieldID: .end, data: ByteArray())
     }
     
-    override public func matches(query: SearchQuery) -> Bool {
-        if super.matches(query: query) {
-            return true
-        }
-        guard let att = getAttachment() else {
-            return false
-        }
-        
-        for word in query.textWords {
-            if !att.name.contains(word) {
-                return false
-            }
-        }
-        return true
-    }
-    
     override public func backupState() {
         let copy = self.clone()
 

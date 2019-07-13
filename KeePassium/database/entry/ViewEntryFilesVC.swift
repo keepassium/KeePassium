@@ -252,7 +252,28 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     }
     
     private func didPressRenameAttachment(at indexPath: IndexPath) {
-        print("did press Rename Attachment")
+        guard let attachment = entry?.attachments[indexPath.row] else { return }
+        
+        let renameController = UIAlertController(
+            title: "Rename File".localized(comment: "Title of a dialog for renaming an attached file"),
+            message: nil,
+            preferredStyle: .alert)
+        renameController.addTextField { (textField) in
+            textField.text = attachment.name
+        }
+        let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        let renameAction = UIAlertAction(title: LString.actionRename, style: .default) {
+            [weak renameController, weak self] (action) in
+            guard let textField = renameController?.textFields?.first,
+                let newName = textField.text,
+                newName.isNotEmpty else { return }
+            attachment.name = newName
+            self?.refresh()
+            self?.applyChangesAndSaveDatabase()
+        }
+        renameController.addAction(cancelAction)
+        renameController.addAction(renameAction)
+        self.present(renameController, animated: true, completion: nil)
     }
     
     private func didPressDeleteAttachment(at indexPath: IndexPath) {

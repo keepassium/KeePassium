@@ -1,5 +1,26 @@
 #CHANGELOG
 
+## [1.0.27] (Public Beta) - 2019-07-13
+
+### Added
+- Support for URI-formatted TOTP (closes #23) [thanks, Nu11u5]
+- View diagnostic log in AutoFill by long-pressing the top-left button (inspired by #22) [thanks, Ankur]
+- Possibility to rename attachments (Entry - Files - Edit - tap the file)
+
+### Changed
+- Unified search: AutoFill and main app use the same method
+- Rearranged "Unlocking Database" settings page
+
+### Fixed
+- Parsing of ISO8601 timestamps with fractional seconds [thanks, Luka]
+- Copy to clipboard did not work in AutoFill diagnostics (closes #16) [thanks, Dragonblitz10]
+- Search in v1/kdb was case-sensitive (closes #21) [thanks, Martin]
+- Multi-word search was erratic
+- Welcome screen did not close after adding a database (closes #18) [thanks, Patrik and Craig]
+- Graceful handling of attachments with empty names [thanks, Marco and Radim]
+- Clarified in readme.txt that TOTP is view-only at the moment
+
+
 ## [1.0.26] (Public Beta) - 2019-06-29
 
 ### Added 

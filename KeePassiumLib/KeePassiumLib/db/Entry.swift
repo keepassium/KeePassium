@@ -47,11 +47,13 @@ public class EntryField: Eraseable {
         isProtected = false
     }
     
-    public func matches(query: SearchQuery) -> Bool {
-        if name.localizedCaseInsensitiveContains(query.text) {
+    public func contains(word: Substring) -> Bool {
+        guard name != EntryField.password else { return false } 
+        
+        if name.localizedCaseInsensitiveContains(word) {
             return true
         }
-        if !isProtected && value.localizedCaseInsensitiveContains(query.text) {
+        if !isProtected && value.localizedCaseInsensitiveContains(word) {
             return true
         }
         return false
@@ -243,17 +245,26 @@ public class Entry: Eraseable {
     
     public func matches(query: SearchQuery) -> Bool {
         for word in query.textWords {
-            if title.contains(word) || userName.contains(word) || url.contains(word) || notes.contains(word) {
-                continue
-            }
             var wordFound = false
-            for att in attachments {
-                if att.name.contains(word) {
+            for field in fields {
+                if field.contains(word: word) {
                     wordFound = true
                     break
                 }
             }
-            if !wordFound { return false }
+            if wordFound {
+                continue
+            }
+
+            for att in attachments {
+                if att.name.localizedCaseInsensitiveContains(word) {
+                    wordFound = true
+                    break
+                }
+            }
+            if !wordFound {
+                return false
+            }
         }
         return true
     }
