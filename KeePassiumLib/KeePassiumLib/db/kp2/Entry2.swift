@@ -397,6 +397,10 @@ public class Entry2: Entry {
                     setField(name: field.name, value: field.value, isProtected: field.isProtected)
                 }
             case Xml2.binary:
+                guard !tag.children.isEmpty else {
+                    Diag.warning("Skipping an empty Binary tag")
+                    continue
+                }
                 let att = try Attachment2.load(
                     xml: tag,
                     database: database as! Database2,

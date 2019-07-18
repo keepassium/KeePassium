@@ -87,31 +87,27 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="40" id="oj0-Pv-9aK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="X2u-c9-gwU" imageView="htt-Zy-a4u" rowHeight="40" style="IBUITableViewCellStyleDefault" id="oj0-Pv-9aK">
                                         <rect key="frame" x="0.0" y="175.5" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oj0-Pv-9aK" id="JHf-F8-pxz">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxJ-bu-3ea">
-                                                    <rect key="frame" x="255" y="4.5" width="51" height="31"/>
-                                                </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Turn on &quot;AutoFill Passwords&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpb-7j-tZh">
-                                                    <rect key="frame" x="16" y="10.5" width="231" height="19.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Turn on &quot;AutoFill Passwords&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="X2u-c9-gwU">
+                                                    <rect key="frame" x="60" y="0.0" width="244" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="autofill-setup-4" id="htt-Zy-a4u">
+                                                    <rect key="frame" x="16" y="5" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstItem="hxJ-bu-3ea" firstAttribute="centerY" secondItem="JHf-F8-pxz" secondAttribute="centerY" id="JG2-gF-Wy0"/>
-                                                <constraint firstItem="hxJ-bu-3ea" firstAttribute="leading" secondItem="jpb-7j-tZh" secondAttribute="trailing" constant="8" id="KrE-Vu-IEj"/>
-                                                <constraint firstItem="jpb-7j-tZh" firstAttribute="leading" secondItem="JHf-F8-pxz" secondAttribute="leadingMargin" id="UGf-eG-Qrp"/>
-                                                <constraint firstItem="hxJ-bu-3ea" firstAttribute="trailing" secondItem="JHf-F8-pxz" secondAttribute="trailingMargin" id="dMR-Ph-hbK"/>
-                                                <constraint firstItem="jpb-7j-tZh" firstAttribute="centerY" secondItem="JHf-F8-pxz" secondAttribute="centerY" priority="750" id="v7D-2Y-spw"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" textLabel="caI-eV-WlU" imageView="xx5-4P-3bA" rowHeight="40" style="IBUITableViewCellStyleDefault" id="CMk-6u-wue">
@@ -128,7 +124,7 @@
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="autofill-setup-4" id="xx5-4P-3bA">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="autofill-setup-5" id="xx5-4P-3bA">
                                                     <rect key="frame" x="16" y="5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -202,6 +198,7 @@
         <image name="autofill-setup-2" width="29" height="29"/>
         <image name="autofill-setup-3" width="29" height="29"/>
         <image name="autofill-setup-4" width="29" height="29"/>
+        <image name="autofill-setup-5" width="29" height="29"/>
         <image name="settings-clipboard-timeout-listitem" width="29" height="29"/>
         <namedColor name="IconTint">
             <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

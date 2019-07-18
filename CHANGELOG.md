@@ -1,5 +1,15 @@
 #CHANGELOG
 
+## [1.0.28] (Public Beta) - 2019-07-18
+
+### Changed
+- Refined AutoFill setup instructions
+
+### Fixed
+- Handling of empty tags in decrypted XML
+- Accessibility labels on toolbar buttons and password fields
+
+
 ## [1.0.27] (Public Beta) - 2019-07-13
 
 ### Added

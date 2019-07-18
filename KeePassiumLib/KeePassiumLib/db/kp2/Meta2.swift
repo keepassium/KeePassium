@@ -284,6 +284,16 @@ final class Meta2: Eraseable {
     func loadBinaries(xml: AEXMLElement, streamCipher: StreamCipher) throws {
         assert(xml.name == Xml2.binaries)
         Diag.verbose("Loading XML: meta binaries")
+        guard database.header.formatVersion == .v3 else {
+            if let tag = xml.children.first {
+                Diag.error("Unexpected XML content in V4 Meta/Binaries: \(tag.name)")
+                throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: nil)
+            } else {
+                Diag.warning("Found empty Meta/Binaries in a V4 database, ignoring.")
+            }
+            return
+        }
+        
         database.binaries.removeAll()
         for tag in xml.children {
             switch tag.name {

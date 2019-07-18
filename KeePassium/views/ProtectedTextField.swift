@@ -41,6 +41,8 @@ class ProtectedTextField: ValidatingTextField {
             width: hideImage.size.width + 2 * horizontalInsets,
             height: hideImage.size.height + 2 * verticalInsets)
         toggleButton.isSelected = !isSecureTextEntry
+        toggleButton.isAccessibilityElement = true
+        toggleButton.accessibilityLabel = "Show Password".localized(comment: "Button to make password visible as plain-text")
         self.rightView = toggleButton
         self.rightViewMode = .always
     }
