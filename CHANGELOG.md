@@ -1,5 +1,27 @@
 #CHANGELOG
 
+## [1.0.30] (Public Beta) - 2019-07-24
+
+### Added
+- Support for KeeOtp TOTP format (closes #29) [thanks, Z.Z.]
+
+### Changed
+- In TouchID prompt, the "Cancel" button renamed to "Use Passcode" for clarity [thanks, James]
+
+### Fixed
+- AutoFill did not always quit properly and skipped the TouchID/FaceID prompt [thanks, Arthur]
+- Handling of extra settings in TrayTOTP settings (closes #28) [thanks, Bas]
+- Accessibility labels in entry editor [thanks, Adrian]
+- Scaling of custom icons in AutoFill
+
+
+## [1.0.29] (Internal Release) - 2019-07-19
+An internal release for App Store review. 
+
+### Added
+- In-app purchases
+
+
 ## [1.0.28] (Public Beta) - 2019-07-18
 
 ### Changed

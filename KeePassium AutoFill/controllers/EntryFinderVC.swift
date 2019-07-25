@@ -16,17 +16,23 @@ protocol EntryFinderDelegate: class {
 
 class EntryFinderCell: UITableViewCell {
     fileprivate static let storyboardID = "EntryFinderCell"
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var iconView: UIImageView!
+    
+    
     fileprivate var entry: Entry? {
         didSet {
             guard let entry = entry else {
-                textLabel?.text = ""
-                detailTextLabel?.text = ""
-                imageView?.image = nil
+                titleLabel?.text = ""
+                subtitleLabel?.text = ""
+                iconView?.image = nil
                 return
             }
-            textLabel?.text = entry.title
-            detailTextLabel?.text = entry.userName
-            imageView?.image = UIImage.kpIcon(forEntry: entry)
+            titleLabel?.text = entry.title
+            subtitleLabel?.text = entry.userName
+            iconView?.image = UIImage.kpIcon(forEntry: entry)
         }
     }
 }

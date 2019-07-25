@@ -35,12 +35,18 @@
                                                 <constraint firstAttribute="width" constant="29" id="NW4-Ih-278"/>
                                                 <constraint firstAttribute="height" constant="29" id="rL7-C7-WIc"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Entry Title" borderStyle="roundedRect" placeholder="Entry Title" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-If-zfn" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
                                             <rect key="frame" x="53" y="11" width="306" height="30"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Entry title"/>
+                                            </userDefinedRuntimeAttributes>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-rc-pdR">
                                             <rect key="frame" x="16" y="48" width="92" height="36"/>
@@ -154,6 +160,10 @@
                                             <rect key="frame" x="278" y="7" width="81" height="32"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <state key="normal" title="Randomize"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Randomize password"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="didPressRandomizeButton:" destination="Kw5-lo-PXD" eventType="touchUpInside" id="aQH-Hs-qJc"/>
                                             </connections>
@@ -250,6 +260,10 @@
                                             <color key="textColor" name="PrimaryText"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Custom field name"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </textField>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7iU-ut-hd7" customClass="ValidatingTextView" customModule="KeePassium" customModuleProvider="target">
                                             <rect key="frame" x="16" y="50" width="343" height="93"/>
@@ -261,6 +275,10 @@
                                             <color key="textColor" name="PrimaryText"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Custom field value"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </textView>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eox-My-Hns">
                                             <rect key="frame" x="310" y="151" width="51" height="31"/>
@@ -294,6 +312,9 @@
                                         <constraint firstItem="7iU-ut-hd7" firstAttribute="leading" secondItem="8k8-If-CEX" secondAttribute="leadingMargin" id="zUq-TC-Xaj"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Custom field editor"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="nameTextField" destination="ecN-Xd-ff5" id="CnH-83-W6v"/>
                                     <outlet property="protectionSwitch" destination="eox-My-Hns" id="uu4-Aw-Frn"/>

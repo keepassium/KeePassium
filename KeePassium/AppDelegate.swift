@@ -154,7 +154,8 @@ extension AppDelegate: WatchdogDelegate {
         
         let context = LAContext()
         let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
-        context.localizedFallbackTitle = "" // hide "Enter Password" fallback; nil won't work
+        context.localizedFallbackTitle = "" // hide "Enter (System) Password" fallback; nil won't work
+        context.localizedCancelTitle = LString.actionUsePasscode
         print("Showing biometrics request")
         
         showBiometricsBackground()

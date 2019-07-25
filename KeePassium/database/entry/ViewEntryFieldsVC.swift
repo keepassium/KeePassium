@@ -35,6 +35,7 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
         tableView.estimatedRowHeight = 44
         
         editButton.image = UIImage(asset: .editItemToolbar)
+        editButton.title = "Edit Entry".localized(comment: "Action to start editing an entry")
         editButton.target = self
         editButton.action = #selector(onEditAction)
         

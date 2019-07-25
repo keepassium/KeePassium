@@ -26,6 +26,15 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
         mainCoordinator?.start()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Watchdog.shared.willResignActive()
+        mainCoordinator?.cleanup()
+        DispatchQueue.main.async {
+            exit(0)
+        }
+    }
+    
     func dismiss() {
         self.extensionContext.cancelRequest(withError:
             NSError(
