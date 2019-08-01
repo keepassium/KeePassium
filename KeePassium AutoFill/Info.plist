@@ -19,7 +19,11 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.30</string>
 	<key>CFBundleVersion</key>
-	<string>30</string>
+	<string>31</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>keepassium</string>
+	</array>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSExtension</key>

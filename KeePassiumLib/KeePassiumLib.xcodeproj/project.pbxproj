@@ -10,7 +10,11 @@
 		7505E8CB2236C93300E5202E /* TOTPGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CA2236C93300E5202E /* TOTPGenerator.swift */; };
 		7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CE2236ED6E00E5202E /* Base32.swift */; };
 		7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8D02236FA0F00E5202E /* StringExtension.swift */; };
+		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
+		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
+		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
+		75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677A229045A60097C693 /* PremiumFeature.swift */; };
 		75C764E4226F475500025F8B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */; };
 		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
 		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -131,7 +135,11 @@
 		7505E8CA2236C93300E5202E /* TOTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGenerator.swift; sourceTree = "<group>"; };
 		7505E8CE2236ED6E00E5202E /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		7505E8D02236FA0F00E5202E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		7538167D22B15FC7000FA4BD /* Settings+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+premium.swift"; sourceTree = "<group>"; };
+		75384B9822CCB76800157598 /* UsageMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageMonitor.swift; sourceTree = "<group>"; };
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
+		75A2676F228DAC430097C693 /* PremiumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManager.swift; sourceTree = "<group>"; };
+		75A2677A229045A60097C693 /* PremiumFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeature.swift; sourceTree = "<group>"; };
 		75C764DF226F475500025F8B /* KeePassiumLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeePassiumLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
@@ -277,6 +285,17 @@
 				7505E8CE2236ED6E00E5202E /* Base32.swift */,
 			);
 			path = base32;
+			sourceTree = "<group>";
+		};
+		75A267792290458E0097C693 /* premium */ = {
+			isa = PBXGroup;
+			children = (
+				75A2676F228DAC430097C693 /* PremiumManager.swift */,
+				75A2677A229045A60097C693 /* PremiumFeature.swift */,
+				7538167D22B15FC7000FA4BD /* Settings+premium.swift */,
+				75384B9822CCB76800157598 /* UsageMonitor.swift */,
+			);
+			path = premium;
 			sourceTree = "<group>";
 		};
 		75D09B6A2174F02F00F7DEF2 /* crypto */ = {
@@ -499,6 +518,7 @@
 		75D0C76C2174AF1F00C64C93 /* KeePassiumLib */ = {
 			isa = PBXGroup;
 			children = (
+				75A267792290458E0097C693 /* premium */,
 				75F4ACD72177469500B22D8B /* files */,
 				75D09B6A2174F02F00F7DEF2 /* crypto */,
 				75D09BE72174F77000F7DEF2 /* db */,
@@ -692,11 +712,13 @@
 				75D09BD02174F76500F7DEF2 /* aeskdf.cpp in Sources */,
 				75D09C262174F77000F7DEF2 /* Xml2.swift in Sources */,
 				75D09C2D2174F77000F7DEF2 /* VarDict.swift in Sources */,
+				75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */,
 				75F4ACD6217745B300B22D8B /* DatabaseManagerObserver.swift in Sources */,
 				75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */,
 				75D09C1F2174F77000F7DEF2 /* Attachment.swift in Sources */,
 				75D09C362174F77000F7DEF2 /* FixedWidthInteger+extension.swift in Sources */,
 				75D09C382174F77000F7DEF2 /* StreamCipher.swift in Sources */,
+				7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */,
 				7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */,
 				75F4ACF321774A6400B22D8B /* Clipboard.swift in Sources */,
 				75D09C292174F77000F7DEF2 /* Group2.swift in Sources */,
@@ -749,6 +771,7 @@
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
 				75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */,
 				75D09C412174F77000F7DEF2 /* Database1.swift in Sources */,
+				75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */,
 				75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */,
 				75D09C422174F77000F7DEF2 /* Header1.swift in Sources */,
 				75D09BD22174F76500F7DEF2 /* ChaCha20.swift in Sources */,
@@ -774,6 +797,7 @@
 				75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */,
 				75D09C5F2174F81900F7DEF2 /* Document.swift in Sources */,
 				75D09C372174F77000F7DEF2 /* KeyHelper.swift in Sources */,
+				75A26770228DAC440097C693 /* PremiumManager.swift in Sources */,
 				75D09BAF2174F3E600F7DEF2 /* KeePassiumLib.m in Sources */,
 				75D09C252174F77000F7DEF2 /* Entry2.swift in Sources */,
 			);

@@ -61,6 +61,9 @@ class MainCoordinator: NSObject, Coordinator {
                 animated: true,
                 completion: nil)
         }
+
+        PremiumManager.shared.usageMonitor.startInterval()
+
         rootController.present(pageController, animated: false, completion: nil)
         startMainFlow()
     }
@@ -82,6 +85,7 @@ class MainCoordinator: NSObject, Coordinator {
     func cleanup() {
         databaseManagerNotifications?.stopObserving()
         DatabaseManager.shared.closeDatabase(clearStoredKey: false)
+        PremiumManager.shared.usageMonitor.stopInterval()
     }
 
     func dismissAndQuit() {
@@ -270,6 +274,47 @@ class MainCoordinator: NSObject, Coordinator {
         vcs[vcs.count - 1] = entriesVC
         navigationController.setViewControllers(vcs, animated: true)
     }
+    
+    
+    func offerPremiumUpgrade(from viewController: UIViewController, for feature: PremiumFeature) {
+        let upgradeAlertVC = UIAlertController(
+            title: feature.titleName,
+            message: feature.upgradeNoticeText,
+            preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        let upgradeAction = UIAlertAction( title: LString.actionUpgradeToPremium, style: .default) {
+            [weak self] (action) in
+            let isURLOpened = self?.openURL(AppGroup.upgradeToPremiumURL) ?? false
+            if !isURLOpened {
+                Diag.warning("Failed to open main app")
+                self?.showManualUpgradeMessage()
+            }
+        }
+        upgradeAlertVC.addAction(upgradeAction)
+        upgradeAlertVC.addAction(cancelAction)
+        viewController.present(upgradeAlertVC, animated: true, completion: nil)
+    }
+
+    @objc func openURL(_ url: URL) -> Bool {
+        var responder: UIResponder? = rootController
+        while responder != nil {
+            guard let application = responder as? UIApplication else {
+                responder = responder?.next
+                continue
+            }
+            let result = application.perform(#selector(openURL(_:)), with: url)
+            return result != nil
+        }
+        return false
+    }
+    
+    func showManualUpgradeMessage() {
+        let manualUpgradeAlert = UIAlertController.make(
+            title: "Premium Upgrade".localized(comment: "Title of a message related to upgrading to the premium version"),
+            message: "To upgrade, please manually open KeePassium from your home screen.".localized(comment: "Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version."),
+            cancelButtonTitle: LString.actionOK)
+        navigationController.present(manualUpgradeAlert, animated: true, completion: nil)
+    }
 }
 
 extension MainCoordinator: DatabaseChooserDelegate {
@@ -280,7 +325,15 @@ extension MainCoordinator: DatabaseChooserDelegate {
     
     func databaseChooserShouldAddDatabase(_ sender: DatabaseChooserVC) {
         watchdog.restart()
-        addDatabase()
+        if sender.databaseRefs.count > 0 {
+            if PremiumManager.shared.isAvailable(feature: .canUseMultipleDatabases) {
+                addDatabase()
+            } else {
+                offerPremiumUpgrade(from: sender, for: .canUseMultipleDatabases)
+            }
+        } else {
+            addDatabase()
+        }
     }
     
     func databaseChooser(_ sender: DatabaseChooserVC, didSelectDatabase urlRef: URLReference) {
@@ -575,7 +628,7 @@ extension MainCoordinator: WatchdogDelegate {
     }
     
     private func isBiometricAuthAvailable() -> Bool {
-        guard Settings.current.isBiometricAppLockEnabled else { return false }
+        guard Settings.current.premiumIsBiometricAppLockEnabled else { return false }
         let context = LAContext()
         let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
         return context.canEvaluatePolicy(policy, error: nil)

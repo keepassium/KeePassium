@@ -1,5 +1,20 @@
 #CHANGELOG
 
+## [1.0.30.31] (Public Release) - 2019-07-26
+
+### Added
+- Added a business premium tier
+
+### Changed
+- Refined the style and wording of the premium upgrade screen
+
+### Fixed
+- Fixed positioning of the Upgrade button on iPad
+
+### Removed
+- Obsolete (debug) in-app purchases
+
+
 ## [1.0.30] (Public Beta) - 2019-07-24
 
 ### Added

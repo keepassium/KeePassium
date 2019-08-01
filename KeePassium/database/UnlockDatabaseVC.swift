@@ -21,6 +21,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     @IBOutlet private weak var watchdogTimeoutLabel: UILabel!
     @IBOutlet private weak var databaseIconImage: UIImageView!
     @IBOutlet weak var masterKeyKnownLabel: UILabel!
+    @IBOutlet weak var getPremiumButton: UIButton!
     
     public var databaseRef: URLReference! {
         didSet {
@@ -48,6 +49,11 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         
         databaseManagerNotifications = DatabaseManagerNotifications(observer: self)
         fileKeeperNotifications = FileKeeperNotifications(observer: self)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refreshPremiumStatus),
+            name: PremiumManager.statusUpdateNotification,
+            object: nil)
 
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
@@ -68,6 +74,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        refreshPremiumStatus()
         refresh()
     }
     
@@ -119,8 +126,9 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             showErrorMessage(databaseRef.info.errorMessage)
         }
         
-        let settings = Settings.current
-        if let associatedKeyFileRef = settings.getKeyFileForDatabase(databaseRef: databaseRef) {
+        let associatedKeyFileRef = Settings.current
+            .premiumGetKeyFileForDatabase(databaseRef: databaseRef)
+        if let associatedKeyFileRef = associatedKeyFileRef {
             let allAvailableKeyFiles = FileKeeper.shared
                 .getAllReferences(fileType: .keyFile, includeBackup: false)
             if let availableKeyFileRef = associatedKeyFileRef
@@ -133,6 +141,17 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         refreshInputMode()
     }
     
+    @objc private func refreshPremiumStatus() {
+        switch PremiumManager.shared.status {
+        case .initialGracePeriod,
+             .freeLightUse,
+             .freeHeavyUse:
+            getPremiumButton.isHidden = false
+        case .subscribed,
+             .lapsed:
+            getPremiumButton.isHidden = true
+        }
+    }
     
     private func refreshInputMode() {
         let isDatabaseKeyStored = try? DatabaseManager.shared.hasKey(for: databaseRef)
@@ -278,6 +297,14 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     @IBAction func didPressUnlock(_ sender: Any) {
         tryToUnlockDatabase()
+    }
+    
+    private var premiumCoordinator: PremiumCoordinator?
+    @IBAction func didPressUpgradeToPremium(_ sender: Any) {
+        assert(premiumCoordinator == nil)
+        premiumCoordinator = PremiumCoordinator(presentingViewController: self)
+        premiumCoordinator?.delegate = self
+        premiumCoordinator?.start()
     }
     
     
@@ -457,5 +484,15 @@ extension UnlockDatabaseVC: FileKeeperObserver {
                 _self.present(alert, animated: true, completion: nil)
             }
         )
+    }
+}
+
+extension UnlockDatabaseVC: PremiumCoordinatorDelegate {
+    func didUpgradeToPremium(in premiumCoordinator: PremiumCoordinator) {
+        refresh()
+    }
+    
+    func didFinish(_ premiumCoordinator: PremiumCoordinator) {
+        self.premiumCoordinator = nil
     }
 }

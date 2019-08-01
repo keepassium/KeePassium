@@ -43,6 +43,8 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     
     private let fileInfoReloader = FileInfoReloader()
     
+    private let premiumUpgradeHelper = PremiumUpgradeHelper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -179,6 +181,17 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     }
 
     @IBAction func didPressAddDatabase(_ sender: Any) {
+        if databaseRefs.count > 0 {
+            premiumUpgradeHelper.performActionOrOfferUpgrade(.canUseMultipleDatabases, in: self) {
+                [weak self] in
+                self?.handleDidPressAddDatabase()
+            }
+        } else {
+            handleDidPressAddDatabase()
+        }
+    }
+    
+    private func handleDidPressAddDatabase() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: LString.actionOpenDatabase, style: .default) {

@@ -52,6 +52,7 @@ public class Settings {
     
     public enum Keys: String {
         case settingsVersion
+        case firstLaunchTimestamp
         
         case filesSortOrder
         case backupFilesVisible
@@ -177,7 +178,7 @@ public class Settings {
         }
     }
 
-    public enum DatabaseLockTimeout: Int {
+    public enum DatabaseLockTimeout: Int, Comparable {
         public static let allValues = [
             immediately, /*after5seconds, after15seconds, */after30seconds,
             after1minute, after2minutes, after5minutes, after10minutes,
@@ -201,6 +202,10 @@ public class Settings {
 
         public var seconds: Int {
             return self.rawValue
+        }
+        
+        public static func < (a: DatabaseLockTimeout, b: DatabaseLockTimeout) -> Bool {
+            return a.seconds < b.seconds
         }
         
         public var fullTitle: String {
@@ -565,7 +570,32 @@ public class Settings {
             }
         }
     }
+
+    public var firstLaunchTimestamp: Date {
+        get {
+            if let storedTimestamp = UserDefaults.appGroupShared
+                .object(forKey: Keys.firstLaunchTimestamp.rawValue)
+                as? Date
+            {
+                return storedTimestamp
+            } else {
+                let firstLaunchTimestamp = Date.now
+                UserDefaults.appGroupShared.set(
+                    firstLaunchTimestamp,
+                    forKey: Keys.firstLaunchTimestamp.rawValue)
+                return firstLaunchTimestamp
+            }
+        }
+    }
     
+#if DEBUG
+    public func resetFirstLaunchTimestampToNow() {
+        UserDefaults.appGroupShared.set(
+            Date.now,
+            forKey: Keys.firstLaunchTimestamp.rawValue)
+    }
+#endif
+
     
     public var filesSortOrder: FilesSortOrder {
         get {

@@ -22,13 +22,18 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @IBOutlet weak var clipboardTimeoutCell: UITableViewCell!
     
     private var settingsNotifications: SettingsNotifications!
-    
+    private var premiumUpgradeHelper = PremiumUpgradeHelper()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
         settingsNotifications = SettingsNotifications(observer: self)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refreshPremiumStatus),
+            name: PremiumManager.statusUpdateNotification,
+            object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +50,13 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     func refresh() {
         let settings = Settings.current
         rememberMasterKeysSwitch.isOn = settings.isRememberDatabaseKey
-        rememberUsedKeyFiles.isOn = settings.isKeepKeyFileAssociations
-        databaseTimeoutCell.detailTextLabel?.text = settings.databaseLockTimeout.shortTitle
+        rememberUsedKeyFiles.isOn = settings.premiumIsKeepKeyFileAssociations
+        databaseTimeoutCell.detailTextLabel?.text = settings.premiumDatabaseLockTimeout.shortTitle
         clipboardTimeoutCell.detailTextLabel?.text = settings.clipboardTimeout.shortTitle
+    }
+    
+    @objc func refreshPremiumStatus() {
+        refresh()
     }
     
     
@@ -74,7 +83,7 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     }
     
     @IBAction func didToggleRememberUsedKeyFiles(_ sender: UISwitch) {
-        Settings.current.isKeepKeyFileAssociations = rememberUsedKeyFiles.isOn
+        Settings.current.isKeepKeyFileAssociations = sender.isOn
         refresh()
     }
     
@@ -115,6 +124,7 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
 
 extension SettingsDataProtectionVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
+        guard key != .recentUserActivityTimestamp else { return }
         refresh()
     }
 }

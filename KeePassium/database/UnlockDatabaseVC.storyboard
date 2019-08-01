@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-k8-gTg" userLabel="KeyboardAdjustingView">
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-k8-gTg" userLabel="KeyboardAdjustingView">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1da-3k-RQm" userLabel="Error Message Panel">
@@ -179,6 +179,14 @@
                                         <color key="textColor" name="AuxiliaryText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6N-fq-JbM">
+                                        <rect key="frame" x="153" y="0.0" width="159" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="Upgrade to Premium"/>
+                                        <connections>
+                                            <action selector="didPressUpgradeToPremium:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="i0V-29-l6q"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="epu-yU-Lyg" firstAttribute="leading" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="Aou-HZ-SdU"/>
@@ -186,9 +194,11 @@
                                     <constraint firstItem="1da-3k-RQm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="topMargin" id="EbW-cm-bpV"/>
                                     <constraint firstItem="1da-3k-RQm" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" id="FP4-XB-1dt"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="epu-yU-Lyg" secondAttribute="bottom" constant="8" id="JGC-h1-9tH"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="i6N-fq-JbM" secondAttribute="trailing" id="K3R-Ah-UaM"/>
                                     <constraint firstItem="epu-yU-Lyg" firstAttribute="trailing" secondItem="cdl-k8-gTg" secondAttribute="trailingMargin" id="NJc-XI-9Ke"/>
                                     <constraint firstItem="Dr0-TU-sMX" firstAttribute="top" secondItem="1da-3k-RQm" secondAttribute="bottom" constant="8" id="O4m-qw-isl"/>
                                     <constraint firstItem="1da-3k-RQm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="TRV-Gf-C9B"/>
+                                    <constraint firstItem="i6N-fq-JbM" firstAttribute="top" secondItem="cdl-k8-gTg" secondAttribute="top" id="XQ0-DM-1T5"/>
                                     <constraint firstItem="G3Q-hY-M1b" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="bottom" constant="8" id="gih-9n-0TA"/>
                                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="trailing" id="iPw-bZ-jul"/>
                                     <constraint firstItem="Dr0-TU-sMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="mbo-7y-lJ6"/>
@@ -196,6 +206,7 @@
                                     <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerY" secondItem="cdl-k8-gTg" secondAttribute="centerY" priority="250" id="qdq-Nk-k5M"/>
                                     <constraint firstItem="G3Q-hY-M1b" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="topMargin" id="sTd-Jp-xZI"/>
                                     <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" id="yQN-7S-jaf"/>
+                                    <constraint firstItem="1da-3k-RQm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i6N-fq-JbM" secondAttribute="bottom" constant="8" id="zNn-eF-nnf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -216,6 +227,7 @@
                         <outlet property="errorDetailButton" destination="nrD-QC-R8N" id="Hdc-k4-pl1"/>
                         <outlet property="errorLabel" destination="d2U-7y-vCm" id="Tfd-pH-JMJ"/>
                         <outlet property="errorMessagePanel" destination="1da-3k-RQm" id="XSq-Rx-ZNa"/>
+                        <outlet property="getPremiumButton" destination="i6N-fq-JbM" id="ptX-SW-qPO"/>
                         <outlet property="inputPanel" destination="3xv-vB-0Jn" id="dpu-5T-Uzb"/>
                         <outlet property="keyFileField" destination="mYY-hP-3vH" id="ITo-zF-Ead"/>
                         <outlet property="keyboardAdjView" destination="cdl-k8-gTg" id="gDU-xh-QP9"/>

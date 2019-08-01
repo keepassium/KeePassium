@@ -47,8 +47,8 @@ KeePassium is a commercial open source app. The "commercial" part gives you a we
 
 KeePassium relies on OS-provided integration with storage providers, and supports most providers that appear in iOS Files app.
 
-* __Full support__ (files are automatically downloaded and uploaded when changed): iCloud Drive, Dropbox, Box, Google Drive, OneDrive, Nextcloud, SFTP (via third-party apps, like [this one](https://itunes.apple.com/app/id1406981461?mt=8))
-* __Limited support__ (no background sync, files have to be imported and exported manually): Mega, Cryptomator (it supports [only import/export](https://github.com/cryptomator/cryptomator-ios/issues/98#issuecomment-402446441) operations)
+* __Full support__ (files are automatically downloaded and uploaded when changed): iCloud Drive, Box, [Dropbox](https://keepassium.com/articles/sync-ios-keepass-with-dropbox/), [Google Drive](https://keepassium.com/articles/sync-ios-keepass-with-google-drive/), [OneDrive](https://keepassium.com/articles/sync-ios-keepass-with-onedrive/), [Resilio Sync](https://keepassium.com/articles/sync-ios-keepass-with-resilio-sync/), [Nextcloud](https://keepassium.com/articles/sync-ios-keepass-with-nextcloud/) (with hiccups), [SFTP](https://keepassium.com/articles/sync-ios-keepass-with-ftp-sftp/) / [WebDAV](https://keepassium.com/articles/sync-ios-keepass-with-webdav/) (via third-party apps)
+* __Limited support__ (no background sync, files have to be imported and exported [manually](https://keepassium.com/articles/how-to-sync-database-manually/)): Mega, Cryptomator (it supports [only import/export](https://github.com/cryptomator/cryptomator-ios/issues/98#issuecomment-402446441) operations)
 * __Not tested yet__: ownCloud, Tresorit
 
 If automatic sync does not work for you, please make sure the cloud provider app can work in background (device settings — Dropbox/OneDrive/... — Background App Refresh = Enabled). 
@@ -56,11 +56,12 @@ If automatic sync does not work for you, please make sure the cloud provider app
 
 ### Password AutoFill
 
-To fill your passwords easily and quickly, enable AutoFill feature: device settings — Passwords & Accounts — AutoFill Passwords — select KeePassium in the list.
+To fill your passwords easily and quickly, [enable AutoFill feature](https://keepassium.com/articles/how-to-setup-autofill/): device settings — Passwords & Accounts — AutoFill Passwords — select KeePassium in the list.
 
 ### App and Data Protection
 
 KeePassium has multi-layer protection from unauthorized access.
+
 - __App Lock__ protects the app itself, by covering any in-app screens. This way, only you can see the unlocked database, the list of databases, or change app settings. 
 - __Database Lock__ closes all opened databases after a timeout, or after a failed AppLock attempt. It also removes any remembered master keys from keychain.
 - __Encryption__ protects the contents of database files. The app relies on [CommonCrypto](https://opensource.apple.com/source/CommonCrypto/) library (for AES and SHA) and time-proven reference implementations of crypto algorithms (see [Credits](#author-and-credits)).
@@ -70,33 +71,33 @@ By default, AppLock requires a passcode (of any complexity). For convenience, yo
 
 ## Installation
 
-AppStore release is coming soon. During the beta, the app can be installed via [TestFlight](https://testflight.apple.com/join/y8R6iLlK). 
+KeePassium is [available on the App Store](https://apps.apple.com/us/app/id1435127111). Current beta can be installed via [TestFlight](https://testflight.apple.com/join/y8R6iLlK). 
 
 To build your own binary, download the project and open it in Xcode 10.2 (or above). All the dependencies are already included.
 
 
 ## Is it free?
 
-**Free as in free speech (libre):** Yes! You have the freedom to read, modify and distribute the app under the terms of its [license](#license).
-
-**Free as in free beer (gratis):** No. KeePassium is a freemium app, and some features are reserved for premium version. 
+[Yes](https://keepassium.com/articles/is-keepassium-free/), KeePassium can be used free of charge (gratis) and is also [free as in speech](#license) (libre). An optional [premium subscription](https://keepassium.com/articles/why-upgrade-to-premium/) enables a few convenience and time-saving features, and supports the project.
 
 **But I can just...** Yes, you can take the source code and build your personal premium version for free (gratis). Feel free to do so, but please be nice and don't request premium support for personal builds. Also, if you delegate this to a freelancer, please make sure you can trust them. 
 
 
 ## How to Contribute
 
+Code contributions cannot be accepted due to [formalities](#license), but feel free to:
+
 - [Report bugs](https://github.com/keepassium/KeePassium/issues)
 - [Suggest new features](https://github.com/keepassium/KeePassium/issues)
-- Write an AppStore review (once the app is there)
-- Consider buying a premium version (once it is ready)
+- Consider buying a premium subscription
+- [Write an AppStore review](https://apps.apple.com/us/app/id1435127111)
 
 
 ## Support
 
 - Bug reports: [GitHub Issues](https://github.com/keepassium/KeePassium/issues)
 - Discussion: [/r/KeePassium](https://reddit.com/r/KeePassium)
-- Updates: [@KeePassium](https://twitter.com/keepassium)
+- Updates: [KeePassium Blog](https://keepassium.com/blog/) and [Twitter](https://twitter.com/keepassium)
 
 
 ## Author and Credits
@@ -132,6 +133,6 @@ Copyright ©2018–2019 [Andrei Popleteev](http://popleteev.com).
 
 KeePassium is a commercial open-source app, available under the  [GPLv3 license](https://choosealicense.com/licenses/gpl-3.0/). Our intention is to provide the maximal possible transparency: you can personally audit the code and build your own binary. 
 
-While derivative works (forks) are explicitly allowed by the GPL, please don't submit them to AppStore. Due to a conflict between GPL and AppStore terms of service, GPL-licensed apps are [banned](https://www.fsf.org/blogs/licensing/more-about-the-app-store-gpl-enforcement) from AppStore. 
+While derivative works (forks) are explicitly allowed by the GPL, please don't submit them to AppStore. Due to a conflict between GPL and AppStore terms of service, GPL-licensed apps are [banned](https://www.fsf.org/blogs/licensing/more-about-the-app-store-gpl-enforcement) from AppStore. For the same reason, KeePassium [cannot accept code contributions](https://apple.stackexchange.com/questions/6109/is-it-possible-to-have-gpl-software-in-the-mac-app-store).
 
 For commercial licensing or custom modifications, please [contact us](info@keepassium.com).

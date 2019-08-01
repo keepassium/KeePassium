@@ -23,7 +23,18 @@ class SettingsVC: UITableViewController, Refreshable {
     @IBOutlet weak var rateTheAppCell: UITableViewCell!
     @IBOutlet weak var aboutAppCell: UITableViewCell!
     
+    @IBOutlet weak var premiumTrialCell: UITableViewCell!
+    @IBOutlet weak var premiumStatusCell: UITableViewCell!
+    @IBOutlet weak var manageSubscriptionCell: UITableViewCell!
+    
     private var settingsNotifications: SettingsNotifications!
+    
+    private enum CellIndexPath {
+        static let premiumTrial = IndexPath(row: 0, section: 0)
+        static let premiumStatus = IndexPath(row: 1, section: 0)
+        static let manageSubscription = IndexPath(row: 2, section: 0)
+    }
+    private var hiddenIndexPaths = Set<IndexPath>()
     
     static func make(popoverFromBar barButtonSource: UIBarButtonItem?=nil) -> UIViewController {
         let vc = SettingsVC.instantiateFromStoryboard()
@@ -40,7 +51,18 @@ class SettingsVC: UITableViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
+        
         settingsNotifications = SettingsNotifications(observer: self)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refreshPremiumStatus),
+            name: PremiumManager.statusUpdateNotification,
+            object: nil)
+        refreshPremiumStatus(animated: false)
+        #if DEBUG
+        premiumStatusCell.accessoryType = .detailButton
+        premiumTrialCell.accessoryType = .detailButton
+        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +94,34 @@ class SettingsVC: UITableViewController, Refreshable {
                 "App Lock, passcode, timeout",
                 comment: "Settings: subtitle of the `App Protection` section when biometric auth is not available.")
         }
-
+        refreshPremiumStatus(animated: false)
+    }
+    
+    private func setCellVisibility(_ cell: UITableViewCell, isHidden: Bool) {
+        cell.isHidden = isHidden
+        if isHidden {
+            switch cell {
+            case premiumTrialCell:
+                hiddenIndexPaths.insert(CellIndexPath.premiumTrial)
+            case premiumStatusCell:
+                hiddenIndexPaths.insert(CellIndexPath.premiumStatus)
+            case manageSubscriptionCell:
+                hiddenIndexPaths.insert(CellIndexPath.manageSubscription)
+            default:
+                break
+            }
+        } else {
+            switch cell {
+            case premiumTrialCell:
+                hiddenIndexPaths.remove(CellIndexPath.premiumTrial)
+            case premiumStatusCell:
+                hiddenIndexPaths.remove(CellIndexPath.premiumStatus)
+            case manageSubscriptionCell:
+                hiddenIndexPaths.remove(CellIndexPath.manageSubscription)
+            default:
+                break
+            }
+        }
     }
     
     private func getAppLockStatus() -> String {
@@ -81,6 +130,13 @@ class SettingsVC: UITableViewController, Refreshable {
         } else {
             return LString.statusAppLockIsDisabled
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if hiddenIndexPaths.contains(indexPath) {
+            return 0.0
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -99,6 +155,12 @@ class SettingsVC: UITableViewController, Refreshable {
         case dataBackupCell:
             let dataBackupSettingsVC = SettingsBackupVC.instantiateFromStoryboard()
             show(dataBackupSettingsVC, sender: self)
+        case premiumStatusCell:
+            break 
+        case premiumTrialCell:
+            didPressUpgradeToPremium()
+        case manageSubscriptionCell:
+            didPressManageSubscription()
         case diagnosticLogCell:
             let viewer = ViewDiagnosticsVC.make()
             show(viewer, sender: self)
@@ -114,6 +176,29 @@ class SettingsVC: UITableViewController, Refreshable {
         }
     }
     
+    override func tableView(
+        _ tableView: UITableView,
+        accessoryButtonTappedForRowWith indexPath: IndexPath)
+    {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        switch cell {
+#if DEBUG
+        case premiumStatusCell, premiumTrialCell:
+            PremiumManager.shared.resetSubscription()
+            refreshPremiumStatus(animated: true)
+#endif
+        default:
+            assertionFailure() 
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard section == 0 else {
+            return super.tableView(tableView, titleForFooterInSection: section)
+        }
+        return getAppUsageDescription()
+    }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
         dismissPopover(animated: true)
     }
@@ -122,11 +207,172 @@ class SettingsVC: UITableViewController, Refreshable {
         Settings.current.isStartWithSearch = startWithSearchSwitch.isOn
         refresh()
     }
+    
+    
+    private var premiumCoordinator: PremiumCoordinator? 
+    func didPressUpgradeToPremium() {
+        assert(premiumCoordinator == nil)
+        premiumCoordinator = PremiumCoordinator(presentingViewController: self)
+        premiumCoordinator!.delegate = self
+        premiumCoordinator!.start()
+    }
+    
+    func didPressManageSubscription() {
+        guard let application = AppGroup.applicationShared,
+            let url = URL(string: "itms-apps://apps.apple.com/account/subscriptions")
+            else { assertionFailure(); return }
+        application.open(url, options: [:])
+    }
+    
+    
+    #if DEBUG
+    private let premiumRefreshInterval = 1.0
+    #else
+    private let premiumRefreshInterval = 10.0
+    #endif
+    
+    @objc private func refreshPremiumStatus(animated: Bool) {
+        let premiumManager = PremiumManager.shared
+        premiumManager.usageMonitor.refresh()
+        premiumManager.updateStatus()
+        switch premiumManager.status {
+        case .initialGracePeriod:
+            setCellVisibility(premiumTrialCell, isHidden: false)
+            setCellVisibility(premiumStatusCell, isHidden: true)
+            setCellVisibility(manageSubscriptionCell, isHidden: true)
+            
+            let secondsLeft = premiumManager.gracePeriodSecondsRemaining
+            let timeFormatted = DateComponentsFormatter.format(
+                secondsLeft,
+                allowedUnits: [.day, .hour, .minute, .second],
+                maxUnitCount: 2) ?? "?"
+            premiumTrialCell.detailTextLabel?.text = "Free trial: \(timeFormatted) remaining".localized(comment: "Status: remaining time of free trial. For example: `Free trial: 2d 23h remaining`")
+            DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) {
+                [weak self] in
+                self?.refreshPremiumStatus(animated: false)
+            }
+        case .subscribed:
+            guard let expiryDate = premiumManager.getPremiumExpiryDate() else {
+                assertionFailure()
+                Diag.error("Subscribed, but no expiry date?")
+                premiumStatusCell.detailTextLabel?.text = "?"
+                return
+            }
+            guard let product = premiumManager.getPremiumProduct() else {
+                assertionFailure()
+                Diag.error("Subscribed, but no product info?")
+                premiumStatusCell.detailTextLabel?.text = "?"
+                return
+            }
+            
+            setCellVisibility(premiumTrialCell, isHidden: true)
+            setCellVisibility(premiumStatusCell, isHidden: false)
+            setCellVisibility(manageSubscriptionCell, isHidden: !product.isSubscription)
+            
+            if expiryDate == .distantFuture {
+                premiumStatusCell.detailTextLabel?.text = "Valid forever".localized(comment: "Status: validity period of once-and-forever premium")
+            } else {
+                #if DEBUG
+                let expiryDateString = DateFormatter
+                    .localizedString(from: expiryDate, dateStyle: .medium, timeStyle: .short)
+                #else
+                let expiryDateString = DateFormatter
+                    .localizedString(from: expiryDate, dateStyle: .medium, timeStyle: .none)
+                #endif
+                premiumStatusCell.detailTextLabel?.text = "Next renewal on \(expiryDateString)".localized(comment: "Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`")
+            }
+        case .lapsed:
+            setCellVisibility(premiumTrialCell, isHidden: false)
+            setCellVisibility(premiumStatusCell, isHidden: false)
+            setCellVisibility(manageSubscriptionCell, isHidden: false)
+            
+            let premiumStatusText: String
+            if let secondsSinceExpiration = premiumManager.secondsSinceExpiration {
+                let timeFormatted = DateComponentsFormatter.format(
+                    secondsSinceExpiration,
+                    allowedUnits: [.day, .hour, .minute],
+                    maxUnitCount: 1) ?? "?"
+                premiumStatusText = "Expired \(timeFormatted) ago. Please renew.".localized(comment: "Status: premium subscription has expired. For example: `Expired 1 day ago`")
+            } else {
+                assertionFailure()
+                premiumStatusText = "?"
+            }
+            premiumTrialCell.detailTextLabel?.text = ""
+            premiumStatusCell.detailTextLabel?.text = premiumStatusText
+            premiumStatusCell.detailTextLabel?.textColor = .errorMessage
+            DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) {
+                [weak self] in
+                self?.refreshPremiumStatus(animated: false)
+            }
+        case .freeLightUse,
+             .freeHeavyUse:
+            setCellVisibility(premiumTrialCell, isHidden: false)
+            setCellVisibility(premiumStatusCell, isHidden: true)
+            setCellVisibility(manageSubscriptionCell, isHidden: true)
+            premiumTrialCell.detailTextLabel?.text = nil
+            DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) {
+                [weak self] in
+                self?.refreshPremiumStatus(animated: false)
+            }
+        }
+        if animated {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        } else {
+            tableView.reloadData()
+        }
+    }
+    
+    private func getAppUsageDescription() -> String? {
+        let usageMonitor = PremiumManager.shared.usageMonitor
+        let monthlyUseDuration = usageMonitor.getAppUsageDuration(.perMonth)
+        let annualUseDuration = 12 * monthlyUseDuration
+        
+        guard monthlyUseDuration > 5 * 60.0 else { return nil }
+        guard let monthlyUsage = DateComponentsFormatter.format(
+                monthlyUseDuration,
+                allowedUnits: [.hour, .minute],
+                maxUnitCount: 1,
+                style: .full),
+            let annualUsage = DateComponentsFormatter.format(
+                annualUseDuration,
+                allowedUnits: [.hour, .minute],
+                maxUnitCount: 1,
+                style: .full)
+            else { return nil}
+        let appUsageDescription = "App being useful: \(monthlyUsage)/month, that is around \(annualUsage)/year.".localized(comment: "Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`")
+        return appUsageDescription
+    }
 }
 
 extension SettingsVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
+        guard key != .recentUserActivityTimestamp else { return }
         refresh()
     }
 }
 
+extension SettingsVC: PremiumCoordinatorDelegate {
+    func didFinish(_ premiumCoordinator: PremiumCoordinator) {
+        self.premiumCoordinator = nil
+    }
+}
+
+extension DateComponentsFormatter {
+    static func format(
+        _ interval: TimeInterval,
+        allowedUnits: NSCalendar.Unit,
+        maxUnitCount: Int = 3,
+        style: DateComponentsFormatter.UnitsStyle = .abbreviated,
+        addRemainingPhrase: Bool = false
+        ) -> String?
+    {
+        let timeFormatter = DateComponentsFormatter()
+        timeFormatter.allowedUnits = allowedUnits
+        timeFormatter.collapsesLargestUnit = true
+        timeFormatter.includesTimeRemainingPhrase = addRemainingPhrase
+        timeFormatter.maximumUnitCount = maxUnitCount
+        timeFormatter.unitsStyle = style
+        return timeFormatter.string(from: interval)
+    }
+}

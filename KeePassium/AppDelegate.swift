@@ -32,9 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         AppGroup.applicationShared = application
         SettingsMigrator.processAppLaunch(with: Settings.current)
+        PremiumManager.shared.startObservingTransactions()
         
         showAppCoverScreen()
         return true
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        PremiumManager.shared.finishObservingTransactions()
     }
     
     func application(
@@ -48,9 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Diag.info("Opened with URL: \(inputURL.redacted) [inPlace: \(isOpenInPlace)]")
         
-        FileKeeper.shared.prepareToAddFile(
-            url: inputURL,
-            mode: isOpenInPlace ? .openInPlace : .import)
+        if inputURL.scheme != AppGroup.appURLScheme {
+            FileKeeper.shared.prepareToAddFile(
+                url: inputURL,
+                mode: isOpenInPlace ? .openInPlace : .import)
+        }
         
         DatabaseManager.shared.closeDatabase(clearStoredKey: false)
         return true
@@ -103,7 +110,7 @@ extension AppDelegate: WatchdogDelegate {
     }
     
     private var canUseBiometrics: Bool {
-        return isBiometricsAvailable() && Settings.current.isBiometricAppLockEnabled
+        return isBiometricsAvailable() && Settings.current.premiumIsBiometricAppLockEnabled
     }
     
     private func showAppLockScreen() {
@@ -149,7 +156,7 @@ extension AppDelegate: WatchdogDelegate {
     
     private func performBiometricUnlock() {
         assert(isBiometricsAvailable())
-        guard Settings.current.isBiometricAppLockEnabled else { return }
+        guard Settings.current.premiumIsBiometricAppLockEnabled else { return }
         guard !isBiometricAuthShown else { return }
         
         let context = LAContext()

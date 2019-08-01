@@ -11,6 +11,10 @@ import Foundation
 public class AppGroup {
     public static let id = "group.com.keepassium"
     
+    public static let appURLScheme = "keepassium"
+    
+    public static let upgradeToPremiumURL = URL(string: appURLScheme + ":upgradeToPremium")! 
+    
     public static var isMainApp: Bool {
         return applicationShared != nil
     }

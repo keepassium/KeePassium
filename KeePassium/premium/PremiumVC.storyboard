@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Premium-->
+        <scene sceneID="jVP-0t-Asp">
+            <objects>
+                <viewController storyboardIdentifier="PremiumVC" title="Preimum" id="yXg-JJ-VAJ" userLabel="Premium" customClass="PremiumVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZaF-vV-wvb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1h-nO-yH4">
+                                <rect key="frame" x="0.0" y="20" width="320" height="836"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfw-Sq-XAv" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1046.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IZs-4j-RVF" userLabel="BenefitsStack">
+                                                <rect key="frame" x="8" y="8" width="304" height="585"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8j-ph-twJ" userLabel="Multiple databases" customClass="PremiumBenefitView" customModule="KeePassium" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="304" height="82.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="IconTint"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Sync with the team"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Add multiple databases and quickly switch between them."/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="premium-benefit-multidb"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcX-dB-0Lm" userLabel="Save your time" customClass="PremiumBenefitView" customModule="KeePassium" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="90.5" width="304" height="122.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="IconTint"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Save your time and fingers"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Tired of typing your master password? Keep your database open longer and unlock it with one tap."/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="premium-benefit-db-timeout"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1O-1B-cBy" userLabel="Preview" customClass="PremiumBenefitView" customModule="KeePassium" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="221" width="304" height="122.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="IconTint"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Preview without a trace"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="subtitle">
+                                                                <string key="value">Preview attached files directly in KeePassium and leave no traces in other apps. (Works with images, documents, archives and more.)</string>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="premium-benefit-preview"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fX6-b1-2er" userLabel="Support" customClass="PremiumBenefitView" customModule="KeePassium" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="351.5" width="304" height="122.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="IconTint"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Talk to support that cares"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Community support means no obligations. With premium, get answers and solutions directly from the developer."/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="premium-benefit-support"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7N-iA-RqT" userLabel="Maintenance" customClass="PremiumBenefitView" customModule="KeePassium" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="482" width="304" height="103"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="IconTint"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Protect the future"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Keep KeePassium shiny and available to everyone who needs security without ads."/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="premium-benefit-shiny"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Lb7-tD-p8f" userLabel="ButtonStack">
+                                                <rect key="frame" x="20" y="617" width="280" height="55.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="(Status/error text)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOe-GX-YWy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="19.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <color key="textColor" name="AuxiliaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="D4c-jF-xBI">
+                                                        <rect key="frame" x="0.0" y="35.5" width="280" height="20"/>
+                                                    </activityIndicatorView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="280" id="zgA-gr-Ksr"/>
+                                                </constraints>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yss-Xu-2XK">
+                                                <rect key="frame" x="92" y="688.5" width="136" height="32"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                <state key="normal" title="Restore Purchases"/>
+                                                <connections>
+                                                    <action selector="didPressRestorePurchases:" destination="yXg-JJ-VAJ" eventType="touchUpInside" id="dYJ-LA-Gk6"/>
+                                                </connections>
+                                            </button>
+                                            <view opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="NtD-1H-0E8" userLabel="FooterView">
+                                                <rect key="frame" x="16" y="736.5" width="288" height="294"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkk-oi-8fO" userLabel="FooterText">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="214"/>
+                                                        <string key="text">Payment will be charged to your Apple ID account at the confirmation of purchase. 
+
+Subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. 
+
+You can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                        <color key="textColor" name="AuxiliaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujr-9f-eco">
+                                                        <rect key="frame" x="78" y="222" width="132" height="28"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                        <state key="normal" title="Terms and Conditions"/>
+                                                        <connections>
+                                                            <action selector="didPressTerms:" destination="yXg-JJ-VAJ" eventType="touchUpInside" id="cFn-Ci-NtF"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfd-LU-ij4">
+                                                        <rect key="frame" x="102" y="258" width="84" height="28"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                        <state key="normal" title="Privacy Policy"/>
+                                                        <connections>
+                                                            <action selector="didPressPrivacyPolicy:" destination="yXg-JJ-VAJ" eventType="touchUpInside" id="DP1-WO-UeY"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="Dfd-LU-ij4" secondAttribute="bottom" constant="8" id="1BU-mj-MHY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Rkk-oi-8fO" secondAttribute="trailing" id="7v4-3H-3AE"/>
+                                                    <constraint firstItem="Rkk-oi-8fO" firstAttribute="leading" secondItem="NtD-1H-0E8" secondAttribute="leading" id="BIz-dn-3OT"/>
+                                                    <constraint firstItem="Rkk-oi-8fO" firstAttribute="top" secondItem="NtD-1H-0E8" secondAttribute="top" id="FkY-aU-141"/>
+                                                    <constraint firstItem="ujr-9f-eco" firstAttribute="centerX" secondItem="NtD-1H-0E8" secondAttribute="centerX" id="UYy-NW-bxh"/>
+                                                    <constraint firstItem="ujr-9f-eco" firstAttribute="top" secondItem="Rkk-oi-8fO" secondAttribute="bottom" constant="8" id="arR-37-OUa"/>
+                                                    <constraint firstItem="Dfd-LU-ij4" firstAttribute="top" secondItem="ujr-9f-eco" secondAttribute="bottom" constant="8" id="fNy-sk-HJ8"/>
+                                                    <constraint firstItem="Dfd-LU-ij4" firstAttribute="centerX" secondItem="NtD-1H-0E8" secondAttribute="centerX" id="jlu-BZ-0yh"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="IZs-4j-RVF" secondAttribute="trailing" id="2rm-ee-00i"/>
+                                            <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="NtD-1H-0E8" secondAttribute="bottom" constant="8" id="6dk-Ky-z43"/>
+                                            <constraint firstItem="yss-Xu-2XK" firstAttribute="centerX" secondItem="pfw-Sq-XAv" secondAttribute="centerX" id="D3g-h7-YCe"/>
+                                            <constraint firstItem="Lb7-tD-p8f" firstAttribute="top" secondItem="IZs-4j-RVF" secondAttribute="bottom" constant="24" id="NVh-Nr-1Ct"/>
+                                            <constraint firstItem="NtD-1H-0E8" firstAttribute="leading" secondItem="pfw-Sq-XAv" secondAttribute="leadingMargin" constant="8" id="StU-RF-6Tp"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="NtD-1H-0E8" secondAttribute="trailing" constant="8" id="WSp-f3-bja"/>
+                                            <constraint firstItem="Lb7-tD-p8f" firstAttribute="centerX" secondItem="pfw-Sq-XAv" secondAttribute="centerX" id="WpY-fX-smW"/>
+                                            <constraint firstItem="IZs-4j-RVF" firstAttribute="top" secondItem="pfw-Sq-XAv" secondAttribute="topMargin" id="YUD-Fj-Ke7"/>
+                                            <constraint firstItem="IZs-4j-RVF" firstAttribute="leading" secondItem="pfw-Sq-XAv" secondAttribute="leadingMargin" id="g4A-ou-LN0"/>
+                                            <constraint firstItem="IZs-4j-RVF" firstAttribute="centerX" secondItem="pfw-Sq-XAv" secondAttribute="centerX" id="xLh-qI-kEc"/>
+                                            <constraint firstItem="yss-Xu-2XK" firstAttribute="top" secondItem="Lb7-tD-p8f" secondAttribute="bottom" constant="16" id="zXt-P2-EXn"/>
+                                            <constraint firstItem="NtD-1H-0E8" firstAttribute="top" secondItem="yss-Xu-2XK" secondAttribute="bottom" constant="16" id="zz1-Sw-n06"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pfw-Sq-XAv" secondAttribute="bottom" priority="750" id="2tk-kn-wkF"/>
+                                    <constraint firstAttribute="trailing" secondItem="pfw-Sq-XAv" secondAttribute="trailing" id="6FN-fW-y6A"/>
+                                    <constraint firstItem="pfw-Sq-XAv" firstAttribute="leading" secondItem="D1h-nO-yH4" secondAttribute="leading" id="94b-pw-olc"/>
+                                    <constraint firstItem="pfw-Sq-XAv" firstAttribute="top" secondItem="D1h-nO-yH4" secondAttribute="top" id="oOg-rG-PIq"/>
+                                    <constraint firstItem="pfw-Sq-XAv" firstAttribute="centerY" secondItem="D1h-nO-yH4" secondAttribute="centerY" priority="250" id="unK-9j-TOR"/>
+                                    <constraint firstItem="pfw-Sq-XAv" firstAttribute="centerX" secondItem="D1h-nO-yH4" secondAttribute="centerX" id="ypm-45-a4a"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="D1h-nO-yH4" firstAttribute="top" secondItem="sog-vN-ood" secondAttribute="top" priority="250" id="3oj-CG-CIH"/>
+                            <constraint firstItem="D1h-nO-yH4" firstAttribute="bottom" secondItem="sog-vN-ood" secondAttribute="bottom" priority="250" id="KUL-ja-PNu"/>
+                            <constraint firstItem="D1h-nO-yH4" firstAttribute="trailing" secondItem="sog-vN-ood" secondAttribute="trailing" id="LQf-yb-4Ck"/>
+                            <constraint firstItem="D1h-nO-yH4" firstAttribute="leading" secondItem="sog-vN-ood" secondAttribute="leading" id="ccG-b6-wIf"/>
+                            <constraint firstItem="pfw-Sq-XAv" firstAttribute="width" secondItem="ZaF-vV-wvb" secondAttribute="width" id="uyl-4C-o0r"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sog-vN-ood"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Premium" id="WdG-3q-lNo">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Agm-4c-8eT">
+                            <connections>
+                                <action selector="didPressCancel:" destination="yXg-JJ-VAJ" id="f8j-5v-PV3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <size key="freeformSize" width="320" height="900"/>
+                    <connections>
+                        <outlet property="activityIndcator" destination="D4c-jF-xBI" id="U77-eW-OL6"/>
+                        <outlet property="buttonStack" destination="Lb7-tD-p8f" id="zrA-M9-QPV"/>
+                        <outlet property="cancelButton" destination="Agm-4c-8eT" id="Na8-Ut-sRm"/>
+                        <outlet property="contentView" destination="pfw-Sq-XAv" id="RUD-ic-Xhd"/>
+                        <outlet property="footerView" destination="NtD-1H-0E8" id="btT-so-qpB"/>
+                        <outlet property="privacyPolicyButton" destination="Dfd-LU-ij4" id="aoJ-Nv-cyL"/>
+                        <outlet property="restorePurchasesButton" destination="yss-Xu-2XK" id="nji-TJ-JG5"/>
+                        <outlet property="statusLabel" destination="GOe-GX-YWy" id="svC-9X-iJE"/>
+                        <outlet property="termsButton" destination="ujr-9f-eco" id="kbr-hl-gVS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ze-9Y-7aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-226.875" y="134.1549295774648"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="premium-benefit-db-timeout" width="29" height="29"/>
+        <image name="premium-benefit-multidb" width="29" height="29"/>
+        <image name="premium-benefit-preview" width="29" height="29"/>
+        <image name="premium-benefit-shiny" width="29" height="29"/>
+        <image name="premium-benefit-support" width="29" height="29"/>
+        <namedColor name="AuxiliaryText">
+            <color white="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

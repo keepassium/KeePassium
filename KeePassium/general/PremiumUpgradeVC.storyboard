@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Uct-oM-wvA">
+            <objects>
+                <navigationController id="oXR-6D-KkQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E0p-yM-H79">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yXg-JJ-VAJ" kind="relationship" relationship="rootViewController" id="lYf-1T-lQs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QPy-3n-WA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1118" y="134"/>
+        </scene>
+        <!--Preimum-->
+        <scene sceneID="jVP-0t-Asp">
+            <objects>
+                <viewController title="Preimum" id="yXg-JJ-VAJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZaF-vV-wvb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock all features" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTu-Ez-q8b">
+                                <rect key="frame" x="8" y="72" width="304" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" name="PrimaryText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage multiple databases, quickly unlock them, preview attachments (images and PDF documents)..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqg-WJ-mix">
+                                <rect key="frame" x="8" y="104" width="304" height="61.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <color key="textColor" name="PrimaryText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwv-Qe-X9w">
+                                <rect key="frame" x="20" y="181.5" width="280" height="44"/>
+                                <color key="backgroundColor" name="ActionTint"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3kE-bH-R6g"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="D5k-Ed-6Uy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="$39.99 once">
+                                    <color key="titleColor" name="ActionText"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vl6-tp-H3M">
+                                <rect key="frame" x="20" y="241.5" width="280" height="44"/>
+                                <color key="backgroundColor" name="ActionTint"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="7FA-Oj-T8U"/>
+                                    <constraint firstAttribute="height" constant="44" id="fM6-uQ-uwr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="$14.99 / year">
+                                    <color key="titleColor" name="ActionText"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Luf-E8-cHK">
+                                <rect key="frame" x="20" y="301.5" width="280" height="44"/>
+                                <color key="backgroundColor" name="ActionTint"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="b2C-gn-xdO"/>
+                                    <constraint firstAttribute="height" constant="44" id="bDL-E0-t6d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="$1.99 / month">
+                                    <color key="titleColor" name="ActionText"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yss-Xu-2XK">
+                                <rect key="frame" x="92" y="361.5" width="136" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <state key="normal" title="Restore Purchases"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ4-OB-zCn">
+                                <rect key="frame" x="8" y="409.5" width="304" height="178"/>
+                                <string key="text">Payment will be charged to your Apple ID account at the confirmation of purchase. Subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.
+</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" name="PrimaryText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nqg-WJ-mix" firstAttribute="leading" secondItem="sog-vN-ood" secondAttribute="leading" constant="8" id="1wA-ej-6XH"/>
+                            <constraint firstItem="Vl6-tp-H3M" firstAttribute="centerX" secondItem="ZaF-vV-wvb" secondAttribute="centerX" id="BaH-HS-v2S"/>
+                            <constraint firstItem="sog-vN-ood" firstAttribute="trailing" secondItem="nqg-WJ-mix" secondAttribute="trailing" constant="8" id="FzX-DS-geK"/>
+                            <constraint firstItem="Jwv-Qe-X9w" firstAttribute="centerX" secondItem="ZaF-vV-wvb" secondAttribute="centerX" id="MHN-d5-scO"/>
+                            <constraint firstItem="aQ4-OB-zCn" firstAttribute="top" secondItem="yss-Xu-2XK" secondAttribute="bottom" constant="16" id="NG3-oF-4jk"/>
+                            <constraint firstItem="yss-Xu-2XK" firstAttribute="centerX" secondItem="ZaF-vV-wvb" secondAttribute="centerX" id="NxV-s3-1mB"/>
+                            <constraint firstItem="Luf-E8-cHK" firstAttribute="centerX" secondItem="ZaF-vV-wvb" secondAttribute="centerX" id="ONz-x6-Fxi"/>
+                            <constraint firstItem="Vl6-tp-H3M" firstAttribute="top" secondItem="Jwv-Qe-X9w" secondAttribute="bottom" constant="16" id="ObJ-q1-ofZ"/>
+                            <constraint firstItem="nqg-WJ-mix" firstAttribute="top" secondItem="pTu-Ez-q8b" secondAttribute="bottom" constant="8" id="PQt-fw-64U"/>
+                            <constraint firstItem="yss-Xu-2XK" firstAttribute="top" secondItem="Luf-E8-cHK" secondAttribute="bottom" constant="16" id="f3f-qY-gip"/>
+                            <constraint firstItem="pTu-Ez-q8b" firstAttribute="top" secondItem="sog-vN-ood" secondAttribute="top" constant="8" id="gBS-Ku-S5L"/>
+                            <constraint firstItem="aQ4-OB-zCn" firstAttribute="leading" secondItem="sog-vN-ood" secondAttribute="leading" constant="8" id="lKQ-g5-m7z"/>
+                            <constraint firstItem="pTu-Ez-q8b" firstAttribute="leading" secondItem="sog-vN-ood" secondAttribute="leading" constant="8" id="n4l-Ts-JZc"/>
+                            <constraint firstItem="sog-vN-ood" firstAttribute="trailing" secondItem="aQ4-OB-zCn" secondAttribute="trailing" constant="8" id="ocs-Af-lEm"/>
+                            <constraint firstItem="sog-vN-ood" firstAttribute="trailing" secondItem="pTu-Ez-q8b" secondAttribute="trailing" constant="8" id="rbr-nz-W8g"/>
+                            <constraint firstItem="Luf-E8-cHK" firstAttribute="top" secondItem="Vl6-tp-H3M" secondAttribute="bottom" constant="16" id="vao-WO-N8q"/>
+                            <constraint firstItem="Jwv-Qe-X9w" firstAttribute="top" secondItem="nqg-WJ-mix" secondAttribute="bottom" constant="16" id="xaT-K8-5Cm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sog-vN-ood"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Premium" id="WdG-3q-lNo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ze-9Y-7aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-226.875" y="134.1549295774648"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="ActionText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

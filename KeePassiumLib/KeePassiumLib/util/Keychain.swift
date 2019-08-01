@@ -26,12 +26,15 @@ public class Keychain {
     
     private static let accessGroup: String? = nil
     private enum Service: String {
-        static let allValues: [Service] = [.general, .databaseKeys]
+        static let allValues: [Service] = [.general, .databaseKeys, .premium]
         
         case general = "KeePassium"
         case databaseKeys = "KeePassium.dbKeys"
+        case premium = "KeePassium.premium"
     }
     private let appPasscodeAccount = "appPasscode"
+    private let premiumExpiryDateAccount = "premiumExpiryDate"
+    private let premiumProductAccount = "premiumProductID"
     
     private init() {
     }
@@ -106,6 +109,12 @@ public class Keychain {
         }
     }
     
+    public func removeAll() throws {
+        for service in Service.allValues {
+            try remove(service: service, account: nil) 
+        }
+    }
+
     
     public func setAppPasscode(_ passcode: String) throws {
         let dataHash = ByteArray(utf8String: passcode).sha256.asData
@@ -159,9 +168,36 @@ public class Keychain {
         try remove(service: .databaseKeys, account: nil)
     }
     
-    public func removeAll() throws {
-        for service in Service.allValues {
-            try remove(service: service, account: nil) 
+    
+    
+    public func setPremiumExpiry(for product: InAppProduct, to expiryDate: Date) throws {
+        let timestampBytes = UInt64(expiryDate.timeIntervalSinceReferenceDate).data
+        let productID = product.rawValue.dataUsingUTF8StringEncoding
+        try set(service: .premium, account: premiumProductAccount, data: productID)
+        try set(service: .premium, account: premiumExpiryDateAccount, data: timestampBytes.asData)
+    }
+    
+    #if DEBUG
+    public func clearPremiumExpiryDate() throws {
+        try remove(service: .premium, account: premiumExpiryDateAccount)
+    }
+    #endif
+    
+    public func getPremiumExpiryDate() throws -> Date? {
+        guard let data = try get(service: .premium, account: premiumExpiryDateAccount) else {
+            return nil
         }
+        guard let timestamp = UInt64(data: ByteArray(data: data)) else {
+            assertionFailure()
+            return nil
+        }
+        return Date(timeIntervalSinceReferenceDate: Double(timestamp))
+    }
+    
+    public func getPremiumProduct() throws -> InAppProduct? {
+        guard let data = try get(service: .premium, account: premiumProductAccount),
+            let productIDString = String(data: data, encoding: .utf8) else { return nil }
+        guard let product = InAppProduct(rawValue: productIDString) else { return nil }
+        return product
     }
 }
