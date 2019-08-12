@@ -44,6 +44,8 @@
 		7532A24D21C5A035005DF56F /* KeyFileChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */; };
 		7532A24F21C5A03F005DF56F /* KeyFileChooserVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7532A24E21C5A03F005DF56F /* KeyFileChooserVC.storyboard */; };
 		753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
+		753C23CB22FDBEA900C30A71 /* BetaTransitionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753C23CA22FDBEA900C30A71 /* BetaTransitionVC.storyboard */; };
+		753C23CE22FEADA700C30A71 /* BetaTransitionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C23CD22FEADA700C30A71 /* BetaTransitionVC.swift */; };
 		753F924B22905621005E496F /* PremiumUpgradeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924A22905621005E496F /* PremiumUpgradeHelper.swift */; };
 		753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
@@ -70,6 +72,14 @@
 		7561850320E033DB00EEFAEE /* WatchdogAwareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */; };
 		7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850420E0379F00EEFAEE /* ValidatingTextView.swift */; };
 		75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */; };
+		75679ACB22F8095F00372301 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
+		75679ACC22F887AB00372301 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
+		75679ACE22FD897000372301 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
+		75679ACF22FD897000372301 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
+		75679AD222FD968F00372301 /* _201908_BetaTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679AD122FD968F00372301 /* _201908_BetaTransition.swift */; };
+		75679AD322FD968F00372301 /* _201908_BetaTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679AD122FD968F00372301 /* _201908_BetaTransition.swift */; };
+		75679AD522FD98C900372301 /* _201908_SpecialPricesExpireNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679AD422FD98C900372301 /* _201908_SpecialPricesExpireNews.swift */; };
+		75679AD622FD98C900372301 /* _201908_SpecialPricesExpireNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679AD422FD98C900372301 /* _201908_SpecialPricesExpireNews.swift */; };
 		756AE9D320CF8B5E00995846 /* ChooseIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE9D220CF8B5E00995846 /* ChooseIconVC.swift */; };
 		756FF64420BAB20300FF890B /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
 		7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
@@ -163,7 +173,7 @@
 		75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75CBABA621C1C2DB00B8AFE2 /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7529310A21ADA44C00E4B0D2 /* FileInfoVC.storyboard */; };
 		75CD363F21521FAF0018AF46 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD363E21521FAE0018AF46 /* LocalAuthentication.framework */; };
-		75CD364121537A320018AF46 /* AppStoreReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD364021537A310018AF46 /* AppStoreReviewHelper.swift */; };
+		75CD364121537A320018AF46 /* AppStoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD364021537A310018AF46 /* AppStoreHelper.swift */; };
 		75CFBE2821C2BDC60029A80A /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75CFBE2721C2BDC60029A80A /* DatabaseUnlockerVC.storyboard */; };
 		75CFBE2A21C2BDDF0029A80A /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
 		75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
@@ -247,6 +257,8 @@
 		7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileChooserVC.swift; sourceTree = "<group>"; };
 		7532A24E21C5A03F005DF56F /* KeyFileChooserVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KeyFileChooserVC.storyboard; sourceTree = "<group>"; };
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
+		753C23CA22FDBEA900C30A71 /* BetaTransitionVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BetaTransitionVC.storyboard; sourceTree = "<group>"; };
+		753C23CD22FEADA700C30A71 /* BetaTransitionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetaTransitionVC.swift; sourceTree = "<group>"; };
 		753F924A22905621005E496F /* PremiumUpgradeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUpgradeHelper.swift; sourceTree = "<group>"; };
 		753F924D2290705D005E496F /* SKProduct+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+extension.swift"; sourceTree = "<group>"; };
 		7542D2412129640F00C8A926 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
@@ -274,6 +286,10 @@
 		7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareTextView.swift; sourceTree = "<group>"; };
 		7561850420E0379F00EEFAEE /* ValidatingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatingTextView.swift; sourceTree = "<group>"; };
 		75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFieldCells.swift; sourceTree = "<group>"; };
+		75679ACA22F8095F00372301 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		75679ACD22FD896F00372301 /* NewsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCenter.swift; sourceTree = "<group>"; };
+		75679AD122FD968F00372301 /* _201908_BetaTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _201908_BetaTransition.swift; sourceTree = "<group>"; };
+		75679AD422FD98C900372301 /* _201908_SpecialPricesExpireNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _201908_SpecialPricesExpireNews.swift; sourceTree = "<group>"; };
 		756AE9D220CF8B5E00995846 /* ChooseIconVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseIconVC.swift; sourceTree = "<group>"; };
 		756D15602129AFB60052C728 /* KeePassium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium.entitlements; sourceTree = "<group>"; };
 		756FF64320BAB20300FF890B /* UIColor+namedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+namedColors.swift"; sourceTree = "<group>"; };
@@ -350,7 +366,7 @@
 		75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSetupVC.swift; sourceTree = "<group>"; };
 		75CBABA221C16D8E00B8AFE2 /* FirstSetupVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstSetupVC.storyboard; sourceTree = "<group>"; };
 		75CD363E21521FAE0018AF46 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		75CD364021537A310018AF46 /* AppStoreReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewHelper.swift; sourceTree = "<group>"; };
+		75CD364021537A310018AF46 /* AppStoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreHelper.swift; sourceTree = "<group>"; };
 		75CFBE2721C2BDC60029A80A /* DatabaseUnlockerVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DatabaseUnlockerVC.storyboard; sourceTree = "<group>"; };
 		75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUnlockerVC.swift; sourceTree = "<group>"; };
 		75D1674921464333005E33C3 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
@@ -508,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				75F4ACFB21776F4800B22D8B /* LString.swift */,
+				75679ACA22F8095F00372301 /* AppInfo.swift */,
 				7546FBD820C3A3F600C5D834 /* Watchdog.swift */,
 				753A3EE920D3776D00A1CF70 /* Refreshable.swift */,
 				75779863223023D3006671BD /* ProgressViewHost.swift */,
@@ -519,7 +536,7 @@
 				75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */,
 				7542D2412129640F00C8A926 /* String+extensions.swift */,
 				7523F71C21C98D620025C706 /* SupportEmailComposer.swift */,
-				75CD364021537A310018AF46 /* AppStoreReviewHelper.swift */,
+				75CD364021537A310018AF46 /* AppStoreHelper.swift */,
 				75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */,
 				75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */,
 				75B24DD421C523AE003C9486 /* SearchHelper.swift */,
@@ -540,6 +557,18 @@
 				75C3801C217A1EC0006F74C2 /* PasswordGeneratorVC.storyboard */,
 			);
 			path = edit;
+			sourceTree = "<group>";
+		};
+		75679AD022FD963200372301 /* news */ = {
+			isa = PBXGroup;
+			children = (
+				75679ACD22FD896F00372301 /* NewsCenter.swift */,
+				75679AD122FD968F00372301 /* _201908_BetaTransition.swift */,
+				75679AD422FD98C900372301 /* _201908_SpecialPricesExpireNews.swift */,
+				753C23CA22FDBEA900C30A71 /* BetaTransitionVC.storyboard */,
+				753C23CD22FEADA700C30A71 /* BetaTransitionVC.swift */,
+			);
+			path = news;
 			sourceTree = "<group>";
 		};
 		756FF64520BAB52C00FF890B /* entry */ = {
@@ -608,6 +637,7 @@
 		758BF0D920D21EE500897C83 /* general */ = {
 			isa = PBXGroup;
 			children = (
+				75679AD022FD963200372301 /* news */,
 				759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */,
 				7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */,
 				75D1674921464333005E33C3 /* AboutVC.swift */,
@@ -774,6 +804,9 @@
 							com.apple.Push = {
 								enabled = 0;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -841,6 +874,7 @@
 				75C3803D217A27FE006F74C2 /* ChangeMasterKeyVC.storyboard in Resources */,
 				75C3802B217A245A006F74C2 /* ViewEntryVC.storyboard in Resources */,
 				758D8E922274D2C800644FA6 /* DatabaseCreatorVC.storyboard in Resources */,
+				753C23CB22FDBEA900C30A71 /* BetaTransitionVC.storyboard in Resources */,
 				75C38031217A26B2006F74C2 /* WelcomeVC.storyboard in Resources */,
 				75C3803B217A27CF006F74C2 /* ViewGroupVC.storyboard in Resources */,
 				75C3801D217A1EC0006F74C2 /* PasswordGeneratorVC.storyboard in Resources */,
@@ -875,11 +909,13 @@
 				753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */,
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
+				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				7532A24D21C5A035005DF56F /* KeyFileChooserVC.swift in Sources */,
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
 				75CBAB9F21C1671F00B8AFE2 /* MainCoordinator.swift in Sources */,
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
+				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* DatabaseFileListCell.swift in Sources */,
 				7523F71521C94DD90025C706 /* DiagnosticsViewerVC.swift in Sources */,
 				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
@@ -900,6 +936,8 @@
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
 				75779865223023D3006671BD /* ProgressViewHost.swift in Sources */,
+				75679AD322FD968F00372301 /* _201908_BetaTransition.swift in Sources */,
+				75679AD622FD98C900372301 /* _201908_SpecialPricesExpireNews.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */,
@@ -916,6 +954,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75679ACE22FD897000372301 /* NewsCenter.swift in Sources */,
 				758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */,
 				754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */,
 				7584B3F120DD908A0086C094 /* UITextView+border.swift in Sources */,
@@ -937,6 +976,7 @@
 				7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */,
 				7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */,
 				750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */,
+				75679ACB22F8095F00372301 /* AppInfo.swift in Sources */,
 				75781A2D20CA3D7A00BE474F /* SettingsFileSortingVC.swift in Sources */,
 				752B1E9320E8AA070073AABD /* EditableField.swift in Sources */,
 				756FF64420BAB20300FF890B /* UIColor+namedColors.swift in Sources */,
@@ -960,6 +1000,7 @@
 				756AE9D320CF8B5E00995846 /* ChooseIconVC.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
 				7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */,
+				75679AD222FD968F00372301 /* _201908_BetaTransition.swift in Sources */,
 				75D3A3AF21BAE53F00255FC3 /* DatabaseFileListCell.swift in Sources */,
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
 				7546FBC320BFC03700C5D834 /* RootNavigationVC.swift in Sources */,
@@ -970,7 +1011,7 @@
 				75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */,
 				75C11F1E22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
 				7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */,
-				75CD364121537A320018AF46 /* AppStoreReviewHelper.swift in Sources */,
+				75CD364121537A320018AF46 /* AppStoreHelper.swift in Sources */,
 				75B5FB7720D53EA700D402D9 /* ViewEntryFieldsVC.swift in Sources */,
 				75A2677D22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
 				75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */,
@@ -978,6 +1019,7 @@
 				75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */,
 				7546FBD920C3A3F600C5D834 /* Watchdog.swift in Sources */,
 				75CA73912144381200ADAD64 /* KeyboardLayoutConstraint.swift in Sources */,
+				753C23CE22FEADA700C30A71 /* BetaTransitionVC.swift in Sources */,
 				75A26776228F02C80097C693 /* PremiumCoordinator.swift in Sources */,
 				757FB3CA21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				75A26774228E7D200097C693 /* PremiumVC.swift in Sources */,
@@ -990,6 +1032,7 @@
 				75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */,
 				75F4ACFC21776F4800B22D8B /* LString.swift in Sources */,
 				750D127E20CF071600BE0CCE /* EditGroupVC.swift in Sources */,
+				75679AD522FD98C900372301 /* _201908_SpecialPricesExpireNews.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,

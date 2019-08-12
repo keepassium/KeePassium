@@ -43,6 +43,7 @@ class MainCoordinator: NSObject, Coordinator {
         super.init()
 
         SettingsMigrator.processAppLaunch(with: Settings.current)
+        Diag.info(AppInfo.description)
 
         navigationController.delegate = self
         watchdog.delegate = self
@@ -284,15 +285,19 @@ class MainCoordinator: NSObject, Coordinator {
         let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
         let upgradeAction = UIAlertAction( title: LString.actionUpgradeToPremium, style: .default) {
             [weak self] (action) in
-            let isURLOpened = self?.openURL(AppGroup.upgradeToPremiumURL) ?? false
-            if !isURLOpened {
-                Diag.warning("Failed to open main app")
-                self?.showManualUpgradeMessage()
-            }
+            self?.showUpgradeOptions(from: viewController)
         }
         upgradeAlertVC.addAction(upgradeAction)
         upgradeAlertVC.addAction(cancelAction)
         viewController.present(upgradeAlertVC, animated: true, completion: nil)
+    }
+    
+    func showUpgradeOptions(from viewController: UIViewController) {
+        guard openURL(AppGroup.upgradeToPremiumURL) else {
+            Diag.warning("Failed to open main app")
+            showManualUpgradeMessage()
+            return
+        }
     }
 
     @objc func openURL(_ url: URL) -> Bool {
@@ -366,6 +371,10 @@ extension MainCoordinator: DatabaseUnlockerDelegate {
     {
         watchdog.restart()
         tryToUnlockDatabase(database: database, password: password, keyFile: keyFile)
+    }
+    
+    func didPressNewsItem(in databaseUnlocker: DatabaseUnlockerVC, newsItem: NewsItem) {
+        newsItem.show(in: databaseUnlocker)
     }
 }
 

@@ -104,7 +104,7 @@
                                 <action selector="didPressHelpButton:" destination="vWt-yt-cgE" id="C2G-nG-7ZZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qPq-UR-uZs">
+                        <barButtonItem key="rightBarButtonItem" title="Add Database" image="create-item-toolbar" id="qPq-UR-uZs">
                             <connections>
                                 <action selector="didPressAddDatabase:" destination="vWt-yt-cgE" id="s1g-VK-Lau"/>
                             </connections>
@@ -121,6 +121,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="create-item-toolbar" width="25" height="25"/>
         <image name="database-local-listitem" width="29" height="29"/>
         <image name="help-about-toolbar" width="25" height="25"/>
         <image name="settings-toolbar" width="25" height="25"/>

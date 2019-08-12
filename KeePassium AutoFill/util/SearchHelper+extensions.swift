@@ -46,7 +46,7 @@ extension SearchHelper {
     }
     
     private func performSearch(in database: Database, url: String) -> [ScoredEntry] {
-        guard let url = URL(string: url) else { return [] }
+        guard let url = URL.guessFrom(malformedString: url) else { return [] }
         
         var allEntries = [Entry]()
         guard let rootGroup = database.root else { return [] }
@@ -112,12 +112,14 @@ extension SearchHelper {
     }
     
     private func getSimilarity(domain: String, entry: Entry) -> Double {
-        let urlScore = howSimilar(domain: domain, with: URL(string: entry.url))
+        let urlScore = howSimilar(domain: domain, with: URL.guessFrom(malformedString: entry.url))
         let titleScore = entry.title.localizedCaseInsensitiveContains(domain) ? 0.8 : 0.0
         let notesScore = entry.notes.localizedCaseInsensitiveContains(domain) ? 0.5 : 0.0
         
         if let entry2 = entry as? Entry2 {
-            let altURLScore = howSimilar(domain: domain, with: URL(string: entry2.overrideURL))
+            let altURLScore = howSimilar(
+                domain: domain,
+                with: URL.guessFrom(malformedString: entry2.overrideURL))
             let maxScoreSoFar = max(urlScore, titleScore, notesScore, altURLScore)
             if maxScoreSoFar >= 0.5 {
                 return maxScoreSoFar
@@ -161,7 +163,7 @@ extension SearchHelper {
     
     private func getSimilarity(url: URL, entry: Entry) -> Double {
         
-        let urlScore = howSimilar(url, with: URL(string: entry.url))
+        let urlScore = howSimilar(url, with: URL.guessFrom(malformedString: entry.url))
         let titleScore: Double
         let notesScore: Double
         
@@ -186,18 +188,23 @@ extension SearchHelper {
         }
         
         if let entry2 = entry as? Entry2 {
-            let altURLScore = howSimilar(url, with: URL(string: entry2.overrideURL))
+            let altURLScore = howSimilar(
+                url,
+                with: URL.guessFrom(malformedString: entry2.overrideURL))
             let maxScoreSoFar = max(urlScore, titleScore, notesScore, altURLScore)
             if maxScoreSoFar >= 0.5 {
                 return maxScoreSoFar
             }
             
+            let urlString = url.absoluteString
             guard let urlHost = url.host,
                 let urlDomain2 = url.domain2 else { return maxScoreSoFar }
             let extraFieldScores: [Double] = entry2.fields
                 .filter { !$0.isStandardField }
                 .map { (field) in
-                    if field.value.localizedCaseInsensitiveContains(urlHost) {
+                    if field.value.localizedCaseInsensitiveContains(urlString) {
+                        return 1.0
+                    } else if field.value.localizedCaseInsensitiveContains(urlHost) {
                         return 0.5
                     } else if field.value.localizedCaseInsensitiveContains(urlDomain2) {
                         return 0.3
@@ -209,5 +216,20 @@ extension SearchHelper {
         } else {
             return max(urlScore, titleScore, notesScore)
         }
+    }
+}
+
+fileprivate extension URL {
+    static func guessFrom(malformedString string: String?) -> URL? {
+        guard let string = string else { return nil }
+        
+        if let wellFormedURL = URL(string: string), let _ = wellFormedURL.scheme {
+            return wellFormedURL
+        }
+        guard let fakeSchemeURL = URL(string: "https://" + string),
+            let _ = fakeSchemeURL.host else {
+                return nil
+        }
+        return fakeSchemeURL
     }
 }

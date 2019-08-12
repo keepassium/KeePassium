@@ -21,44 +21,62 @@
                             <view opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAZ-VX-s1Y" userLabel="KeyboardAdjView">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Crk-4o-Fqu" userLabel="ErrorPanel">
-                                        <rect key="frame" x="74.5" y="147.5" width="171" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QNs-Fg-BB8" userLabel="NotificationButtons">
+                                        <rect key="frame" x="259" y="0.0" width="53" height="33"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="(Error message)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dID-zL-AtZ">
-                                                <rect key="frame" x="8" y="0.0" width="117" height="30"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                <color key="textColor" name="WarningText"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="1" height="1"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnT-Je-y2j" userLabel="Error Details Button">
-                                                <rect key="frame" x="133" y="0.0" width="38" height="30"/>
-                                                <color key="tintColor" name="ActionTint"/>
-                                                <inset key="contentEdgeInsets" minX="8" minY="4" maxX="8" maxY="4"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrv-DG-D6F" userLabel="Announcement Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <state key="normal" title="(news)"/>
                                                 <connections>
-                                                    <action selector="didPressErrorDetailsButton:" destination="bxv-kR-0w1" eventType="touchUpInside" id="LzC-3D-4eF"/>
+                                                    <action selector="didPressAnouncementButton:" destination="bxv-kR-0w1" eventType="touchUpInside" id="N4V-ip-Rzi"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" name="WarningBackground"/>
-                                        <color key="tintColor" name="ActionTint"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="dID-zL-AtZ" secondAttribute="bottom" id="4C3-Vk-VyV"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dnT-Je-y2j" secondAttribute="bottom" id="ACL-lu-h1k"/>
-                                            <constraint firstItem="dnT-Je-y2j" firstAttribute="leading" secondItem="dID-zL-AtZ" secondAttribute="trailing" constant="8" id="GOx-m4-DpX"/>
-                                            <constraint firstItem="dID-zL-AtZ" firstAttribute="leading" secondItem="Crk-4o-Fqu" secondAttribute="leadingMargin" id="TqA-BG-YTO"/>
-                                            <constraint firstItem="dnT-Je-y2j" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Crk-4o-Fqu" secondAttribute="top" id="vQJ-4K-eb7"/>
-                                            <constraint firstItem="dID-zL-AtZ" firstAttribute="centerY" secondItem="dnT-Je-y2j" secondAttribute="centerY" id="vbj-gE-rZQ"/>
-                                            <constraint firstItem="dID-zL-AtZ" firstAttribute="top" secondItem="Crk-4o-Fqu" secondAttribute="top" id="wEM-yA-HSa"/>
-                                            <constraint firstAttribute="trailing" secondItem="dnT-Je-y2j" secondAttribute="trailing" id="zKk-B2-Lr3"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YUw-D5-oyJ" userLabel="ErrorStack">
+                                        <rect key="frame" x="74.5" y="127.5" width="171" height="50"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Crk-4o-Fqu" userLabel="ErrorPanel">
+                                                <rect key="frame" x="0.0" y="0.0" width="171" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="(Error message)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dID-zL-AtZ">
+                                                        <rect key="frame" x="8" y="0.0" width="117" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <color key="textColor" name="WarningText"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <size key="shadowOffset" width="1" height="1"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnT-Je-y2j" userLabel="Error Details Button">
+                                                        <rect key="frame" x="133" y="10" width="38" height="30"/>
+                                                        <color key="tintColor" name="ActionTint"/>
+                                                        <inset key="contentEdgeInsets" minX="8" minY="4" maxX="8" maxY="4"/>
+                                                        <connections>
+                                                            <action selector="didPressErrorDetailsButton:" destination="bxv-kR-0w1" eventType="touchUpInside" id="LzC-3D-4eF"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" name="WarningBackground"/>
+                                                <color key="tintColor" name="ActionTint"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="dID-zL-AtZ" secondAttribute="bottom" id="4C3-Vk-VyV"/>
+                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dnT-Je-y2j" secondAttribute="bottom" id="ACL-lu-h1k"/>
+                                                    <constraint firstItem="dnT-Je-y2j" firstAttribute="leading" secondItem="dID-zL-AtZ" secondAttribute="trailing" constant="8" id="GOx-m4-DpX"/>
+                                                    <constraint firstItem="dID-zL-AtZ" firstAttribute="leading" secondItem="Crk-4o-Fqu" secondAttribute="leadingMargin" id="TqA-BG-YTO"/>
+                                                    <constraint firstItem="dnT-Je-y2j" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Crk-4o-Fqu" secondAttribute="top" id="vQJ-4K-eb7"/>
+                                                    <constraint firstItem="dID-zL-AtZ" firstAttribute="centerY" secondItem="dnT-Je-y2j" secondAttribute="centerY" id="vbj-gE-rZQ"/>
+                                                    <constraint firstItem="dID-zL-AtZ" firstAttribute="top" secondItem="Crk-4o-Fqu" secondAttribute="top" id="wEM-yA-HSa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="dnT-Je-y2j" secondAttribute="trailing" id="zKk-B2-Lr3"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="database-local-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="i0B-8N-nM0" userLabel="Database Icon">
                                         <rect key="frame" x="48" y="189" width="29" height="29"/>
                                         <color key="tintColor" name="PrimaryText"/>
@@ -156,23 +174,26 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Crk-4o-Fqu" secondAttribute="trailing" id="3Bb-8K-cfD"/>
+                                    <constraint firstItem="YUw-D5-oyJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fAZ-VX-s1Y" secondAttribute="leadingMargin" id="2hq-pc-s7v"/>
+                                    <constraint firstItem="YUw-D5-oyJ" firstAttribute="centerX" secondItem="fAZ-VX-s1Y" secondAttribute="centerX" id="3JP-Oy-OyB"/>
+                                    <constraint firstItem="QNs-Fg-BB8" firstAttribute="top" secondItem="fAZ-VX-s1Y" secondAttribute="top" id="4km-Y5-tDe"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="QNs-Fg-BB8" secondAttribute="trailing" id="CCJ-9P-fK2"/>
                                     <constraint firstItem="89h-8b-LRO" firstAttribute="leading" secondItem="Q5g-RY-uXD" secondAttribute="leading" id="F1I-t4-mXr"/>
-                                    <constraint firstItem="Crk-4o-Fqu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fAZ-VX-s1Y" secondAttribute="leadingMargin" id="GvL-M0-ENV"/>
                                     <constraint firstItem="66o-BC-gwg" firstAttribute="leading" secondItem="i0B-8N-nM0" secondAttribute="trailing" constant="8" id="LnB-He-MSd"/>
                                     <constraint firstItem="Q5g-RY-uXD" firstAttribute="centerX" secondItem="fAZ-VX-s1Y" secondAttribute="centerX" id="Mgu-j5-XDW"/>
                                     <constraint firstItem="66o-BC-gwg" firstAttribute="centerX" secondItem="fAZ-VX-s1Y" secondAttribute="centerX" id="O7O-gU-15a"/>
-                                    <constraint firstItem="Crk-4o-Fqu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fAZ-VX-s1Y" secondAttribute="top" constant="8" id="QDE-9y-Dkn"/>
                                     <constraint firstItem="Q5g-RY-uXD" firstAttribute="top" secondItem="66o-BC-gwg" secondAttribute="bottom" constant="16" id="TLd-6f-2Ea"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="66o-BC-gwg" secondAttribute="trailing" constant="8" id="TgO-13-YE7"/>
                                     <constraint firstItem="89h-8b-LRO" firstAttribute="trailing" secondItem="Q5g-RY-uXD" secondAttribute="trailing" id="Vn8-OD-H9q"/>
-                                    <constraint firstItem="Crk-4o-Fqu" firstAttribute="centerX" secondItem="fAZ-VX-s1Y" secondAttribute="centerX" id="WoG-Qb-u5t"/>
                                     <constraint firstItem="89h-8b-LRO" firstAttribute="top" secondItem="Q5g-RY-uXD" secondAttribute="bottom" constant="8" id="XUZ-f1-D77"/>
+                                    <constraint firstItem="66o-BC-gwg" firstAttribute="top" secondItem="YUw-D5-oyJ" secondAttribute="bottom" constant="16" id="YPN-Bb-ccx"/>
                                     <constraint firstItem="i0B-8N-nM0" firstAttribute="centerY" secondItem="66o-BC-gwg" secondAttribute="centerY" id="dSY-ts-aEq"/>
+                                    <constraint firstItem="QNs-Fg-BB8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fAZ-VX-s1Y" secondAttribute="leadingMargin" id="fe7-Qr-Ynk"/>
+                                    <constraint firstItem="YUw-D5-oyJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QNs-Fg-BB8" secondAttribute="bottom" id="ftC-HR-biD"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="YUw-D5-oyJ" secondAttribute="trailing" id="gVV-A4-UAE"/>
                                     <constraint firstItem="Q5g-RY-uXD" firstAttribute="centerY" secondItem="fAZ-VX-s1Y" secondAttribute="centerY" priority="250" id="gaS-ck-Wc3"/>
                                     <constraint firstItem="i0B-8N-nM0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fAZ-VX-s1Y" secondAttribute="leading" constant="8" id="m4A-7S-ULI"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="89h-8b-LRO" secondAttribute="bottom" constant="8" id="ndT-fa-Ujj"/>
-                                    <constraint firstItem="66o-BC-gwg" firstAttribute="top" secondItem="Crk-4o-Fqu" secondAttribute="bottom" constant="16" id="zW6-ID-zph"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -187,6 +208,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
+                        <outlet property="announcementButton" destination="hrv-DG-D6F" id="v9K-wF-kw1"/>
                         <outlet property="databaseFileNameLabel" destination="66o-BC-gwg" id="xnJ-1o-Jbp"/>
                         <outlet property="databaseLocationIconImage" destination="i0B-8N-nM0" id="eTp-zh-Cl0"/>
                         <outlet property="errorDetailsButton" destination="dnT-Je-y2j" id="kex-pd-E3t"/>

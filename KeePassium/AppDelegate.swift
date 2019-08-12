@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         AppGroup.applicationShared = application
         SettingsMigrator.processAppLaunch(with: Settings.current)
+        Diag.info(AppInfo.description)
         PremiumManager.shared.startObservingTransactions()
         
         showAppCoverScreen()

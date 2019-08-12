@@ -84,7 +84,7 @@ class PremiumVC: UIViewController {
         assert(self.products == nil)
         
         let products = unsortedProducts.sorted { (product1, product2) -> Bool in
-            let isP1BeforeP2 = product1.price.doubleValue > product2.price.doubleValue
+            let isP1BeforeP2 = product1.price.doubleValue < product2.price.doubleValue
             return isP1BeforeP2
         }
         

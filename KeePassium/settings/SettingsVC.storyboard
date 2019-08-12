@@ -127,16 +127,18 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="462-mb-sqA">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="8" width="51" height="27.5"/>
                                                     <connections>
                                                         <action selector="didChangeStartWithSearch:" destination="lJf-1X-3im" eventType="valueChanged" id="cs5-DG-ase"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="462-mb-sqA" secondAttribute="bottom" constant="8" id="Cbe-Eu-YrD"/>
                                                 <constraint firstItem="3Nt-pT-cdk" firstAttribute="centerY" secondItem="4VU-x6-B16" secondAttribute="centerY" id="GVT-F0-hpI"/>
                                                 <constraint firstItem="462-mb-sqA" firstAttribute="centerY" secondItem="4VU-x6-B16" secondAttribute="centerY" id="QBf-Pq-RvD"/>
                                                 <constraint firstItem="462-mb-sqA" firstAttribute="leading" secondItem="yuN-Ls-o9d" secondAttribute="trailing" constant="8" id="X8x-XF-VKT"/>
+                                                <constraint firstItem="462-mb-sqA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4VU-x6-B16" secondAttribute="top" constant="8" id="dC6-BJ-Tz9"/>
                                                 <constraint firstItem="3Nt-pT-cdk" firstAttribute="leading" secondItem="4VU-x6-B16" secondAttribute="leadingMargin" id="jv2-Hq-wee"/>
                                                 <constraint firstItem="yuN-Ls-o9d" firstAttribute="centerY" secondItem="4VU-x6-B16" secondAttribute="centerY" id="kux-l1-xJ0"/>
                                                 <constraint firstItem="yuN-Ls-o9d" firstAttribute="leading" secondItem="3Nt-pT-cdk" secondAttribute="trailing" constant="16" id="wHn-YZ-5tA"/>

@@ -58,7 +58,7 @@ class SettingsVC: UITableViewController, Refreshable {
             selector: #selector(refreshPremiumStatus),
             name: PremiumManager.statusUpdateNotification,
             object: nil)
-        refreshPremiumStatus(animated: false)
+        refreshPremiumStatus()
         #if DEBUG
         premiumStatusCell.accessoryType = .detailButton
         premiumTrialCell.accessoryType = .detailButton
@@ -94,7 +94,7 @@ class SettingsVC: UITableViewController, Refreshable {
                 "App Lock, passcode, timeout",
                 comment: "Settings: subtitle of the `App Protection` section when biometric auth is not available.")
         }
-        refreshPremiumStatus(animated: false)
+        refreshPremiumStatus()
     }
     
     private func setCellVisibility(_ cell: UITableViewCell, isHidden: Bool) {
@@ -167,7 +167,7 @@ class SettingsVC: UITableViewController, Refreshable {
         case contactSupportCell:
             SupportEmailComposer.show(includeDiagnostics: false)
         case rateTheAppCell:
-            AppStoreReviewHelper.writeReview()
+            AppStoreHelper.writeReview()
         case aboutAppCell:
             let aboutVC = AboutVC.make()
             show(aboutVC, sender: self)
@@ -184,8 +184,8 @@ class SettingsVC: UITableViewController, Refreshable {
         switch cell {
 #if DEBUG
         case premiumStatusCell, premiumTrialCell:
-            PremiumManager.shared.resetSubscription()
-            refreshPremiumStatus(animated: true)
+            didPressUpgradeToPremium()
+            refreshPremiumStatus()
 #endif
         default:
             assertionFailure() 
@@ -196,7 +196,12 @@ class SettingsVC: UITableViewController, Refreshable {
         guard section == 0 else {
             return super.tableView(tableView, titleForFooterInSection: section)
         }
-        return getAppUsageDescription()
+        
+        if PremiumManager.shared.usageMonitor.isEnabled {
+            return getAppUsageDescription()
+        } else {
+            return nil
+        }
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
@@ -231,7 +236,7 @@ class SettingsVC: UITableViewController, Refreshable {
     private let premiumRefreshInterval = 10.0
     #endif
     
-    @objc private func refreshPremiumStatus(animated: Bool) {
+    @objc private func refreshPremiumStatus() {
         let premiumManager = PremiumManager.shared
         premiumManager.usageMonitor.refresh()
         premiumManager.updateStatus()
@@ -241,16 +246,15 @@ class SettingsVC: UITableViewController, Refreshable {
             setCellVisibility(premiumStatusCell, isHidden: true)
             setCellVisibility(manageSubscriptionCell, isHidden: true)
             
-            let secondsLeft = premiumManager.gracePeriodSecondsRemaining
-            let timeFormatted = DateComponentsFormatter.format(
-                secondsLeft,
-                allowedUnits: [.day, .hour, .minute, .second],
-                maxUnitCount: 2) ?? "?"
-            premiumTrialCell.detailTextLabel?.text = "Free trial: \(timeFormatted) remaining".localized(comment: "Status: remaining time of free trial. For example: `Free trial: 2d 23h remaining`")
-            DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) {
-                [weak self] in
-                self?.refreshPremiumStatus(animated: false)
+            if Settings.current.isTestEnvironment {
+                let secondsLeft = premiumManager.gracePeriodSecondsRemaining
+                let timeFormatted = DateComponentsFormatter.format(
+                    secondsLeft,
+                    allowedUnits: [.day, .hour, .minute, .second],
+                    maxUnitCount: 2) ?? "?"
+                Diag.debug("Initial setup period: \(timeFormatted) remaining")
             }
+            premiumTrialCell.detailTextLabel?.text = nil
         case .subscribed:
             guard let expiryDate = premiumManager.getPremiumExpiryDate() else {
                 assertionFailure()
@@ -270,7 +274,11 @@ class SettingsVC: UITableViewController, Refreshable {
             setCellVisibility(manageSubscriptionCell, isHidden: !product.isSubscription)
             
             if expiryDate == .distantFuture {
-                premiumStatusCell.detailTextLabel?.text = "Valid forever".localized(comment: "Status: validity period of once-and-forever premium")
+                if Settings.current.isTestEnvironment {
+                    premiumStatusCell.detailTextLabel?.text = "Beta testing" 
+                } else {
+                    premiumStatusCell.detailTextLabel?.text = "Valid forever".localized(comment: "Status: validity period of once-and-forever premium")
+                }
             } else {
                 #if DEBUG
                 let expiryDateString = DateFormatter
@@ -300,26 +308,20 @@ class SettingsVC: UITableViewController, Refreshable {
             premiumTrialCell.detailTextLabel?.text = ""
             premiumStatusCell.detailTextLabel?.text = premiumStatusText
             premiumStatusCell.detailTextLabel?.textColor = .errorMessage
-            DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) {
-                [weak self] in
-                self?.refreshPremiumStatus(animated: false)
-            }
         case .freeLightUse,
              .freeHeavyUse:
             setCellVisibility(premiumTrialCell, isHidden: false)
             setCellVisibility(premiumStatusCell, isHidden: true)
             setCellVisibility(manageSubscriptionCell, isHidden: true)
             premiumTrialCell.detailTextLabel?.text = nil
-            DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) {
-                [weak self] in
-                self?.refreshPremiumStatus(animated: false)
-            }
         }
-        if animated {
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        } else {
-            tableView.reloadData()
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) {
+            [weak self] in
+            self?.refreshPremiumStatus()
         }
     }
     

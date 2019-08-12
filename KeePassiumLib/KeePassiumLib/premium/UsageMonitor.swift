@@ -49,7 +49,7 @@ public class UsageMonitor {
         cleanupObsoleteData()
     }
     
-    private var isMonitoringEnabled: Bool {
+    public var isEnabled: Bool {
         switch PremiumManager.shared.status {
         case .initialGracePeriod,
              .subscribed:
@@ -63,7 +63,7 @@ public class UsageMonitor {
     
     
     @objc public func startInterval() {
-        if isMonitoringEnabled {
+        if isEnabled {
             startTime = Date.now
         } else {
             startTime = nil

@@ -16,12 +16,8 @@ public enum InAppProduct: String {
         case monthly
         case other
     }
-
-    static let allKnownIDs: Set<String> = [
-        InAppProduct.forever.rawValue,
-        InAppProduct.montlySubscription.rawValue,
-        InAppProduct.yearlySubscription.rawValue,
-        InAppProduct.yearlyBusinessSubscription.rawValue]
+    
+    case betaForever = "com.keepassium.ios.iap.beta.forever"
     
     case forever = "com.keepassium.ios.iap.forever"
     case montlySubscription = "com.keepassium.ios.iap.subscription.1month"
@@ -34,7 +30,8 @@ public enum InAppProduct: String {
 
     public var isSubscription: Bool {
         switch self {
-        case .forever:
+        case .forever,
+             .betaForever:
             return false
         case .montlySubscription,
              .yearlySubscription,
@@ -48,6 +45,7 @@ public enum InAppProduct: String {
         case .yearlyBusinessSubscription:
             return true
         case .forever,
+             .betaForever,
              .montlySubscription,
              .yearlySubscription:
             return false
@@ -189,6 +187,14 @@ public class PremiumManager: NSObject {
     }
 
     public func getPremiumProduct() -> InAppProduct? {
+        #if DEBUG
+        return InAppProduct.betaForever 
+        #else
+        if Settings.current.isTestEnvironment {
+            return InAppProduct.betaForever
+        }
+        #endif
+
         do {
             return try Keychain.shared.getPremiumProduct() 
         } catch {
@@ -198,6 +204,14 @@ public class PremiumManager: NSObject {
     }
     
     public func getPremiumExpiryDate() -> Date? {
+        #if DEBUG
+        return Date.distantFuture 
+        #else
+        if Settings.current.isTestEnvironment {
+            return Date.distantFuture
+        }
+        #endif
+        
         do {
             return try Keychain.shared.getPremiumExpiryDate() 
         } catch {
@@ -250,7 +264,11 @@ public class PremiumManager: NSObject {
 
     
     public fileprivate(set) var availableProducts: [SKProduct]?
-    private let knownProductIDs = InAppProduct.allKnownIDs
+    private let purchaseableProductIDs = Set<String>([
+        InAppProduct.forever.rawValue,
+        InAppProduct.montlySubscription.rawValue,
+        InAppProduct.yearlySubscription.rawValue,
+        InAppProduct.yearlyBusinessSubscription.rawValue])
     
     private var productsRequest: SKProductsRequest?
 
@@ -262,7 +280,7 @@ public class PremiumManager: NSObject {
         productsRequest?.cancel()
         productsRequestHandler = completionHandler
         
-        productsRequest = SKProductsRequest(productIdentifiers: Set<String>(knownProductIDs))
+        productsRequest = SKProductsRequest(productIdentifiers: purchaseableProductIDs)
         productsRequest!.delegate = self
         productsRequest!.start()
     }

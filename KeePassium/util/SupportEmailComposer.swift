@@ -26,25 +26,18 @@ class SupportEmailComposer: NSObject {
     }
     
     static func show(includeDiagnostics: Bool, completion: CompletionHandler?=nil) {
-        guard let infoDict = Bundle.main.infoDictionary else {
-            Diag.error("Bundle.main.infoDictionary is nil?!")
-            return
-        }
-        let appName = infoDict["CFBundleDisplayName"] as? String ?? "KeePassium"
-        let appVersion = infoDict["CFBundleShortVersionString"] as? String ?? "_0.0"
-        let buildVersion = infoDict["CFBundleVersion"] as? String ?? ""
         let subject, content: String
         if includeDiagnostics {
-            subject = "\(appName) \(appVersion).\(buildVersion) - Problem"
+            subject = "\(AppInfo.name) - Problem" 
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
             content = LString.emailTemplateDescribeTheProblemHere +
                 "\n\n----- Diagnostic Info -----\n" +
-                "\(appName) \(appVersion).\(buildVersion)\n" +
-                Diag.toString()
+                Diag.toString() +
+                "\n\n\(AppInfo.description)"
         } else {
-            subject = "\(appName) \(appVersion).\(buildVersion) - Support Request"
+            subject = "\(AppInfo.name) - Support Request" 
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
-            content = ""
+            content = "\n\n\(AppInfo.description)"
         }
         
         let instance = SupportEmailComposer(subject: subject, content: content,

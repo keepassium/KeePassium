@@ -167,7 +167,6 @@ public class Entry2: Entry {
         
         func loadAssociation(xml: AEXMLElement) throws {
             assert(xml.name == Xml2.association)
-            erase()
             
             var window: String?
             var sequence: String?

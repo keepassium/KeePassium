@@ -22,6 +22,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     @IBOutlet private weak var databaseIconImage: UIImageView!
     @IBOutlet weak var masterKeyKnownLabel: UILabel!
     @IBOutlet weak var getPremiumButton: UIButton!
+    @IBOutlet weak var announcementButton: UIButton!
     
     public var databaseRef: URLReference! {
         didSet {
@@ -60,6 +61,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         
         watchdogTimeoutLabel.alpha = 0.0
         errorMessagePanel.alpha = 0.0
+        errorMessagePanel.isHidden = true
 
         passwordField.inputAssistantItem.leadingBarButtonGroups = []
         passwordField.inputAssistantItem.trailingBarButtonGroups = []
@@ -70,6 +72,8 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             target: nil,
             action: nil)
         navigationItem.backBarButtonItem = lockDatabaseButton
+        
+        refreshNews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,7 +141,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
                 setKeyFile(urlRef: availableKeyFileRef)
             }
         }
-        
+        refreshNews()
         refreshInputMode()
     }
     
@@ -167,6 +171,26 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         }
     }
     
+    
+    private var newsItem: NewsItem?
+    
+    private func refreshNews() {
+        let nc = NewsCenter.shared
+        if let newsItem = nc.getTopItem() {
+            announcementButton.titleLabel?.numberOfLines = 0
+            announcementButton.setTitle(newsItem.title, for: .normal)
+            announcementButton.isHidden = false
+            self.newsItem = newsItem
+        } else {
+            announcementButton.isHidden = true
+            self.newsItem = nil
+        }
+    }
+
+    @IBAction func didPressAnouncementButton(_ sender: Any) {
+        newsItem?.show(in: self)
+    }
+    
 
     func showErrorMessage(_ message: String?, details: String?=nil) {
         guard let message = message else { return }
@@ -182,6 +206,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             options: .curveEaseIn,
             animations: {
                 [weak self] in
+                self?.errorMessagePanel.isHidden = false
                 self?.errorMessagePanel.alpha = 1.0
             },
             completion: {
@@ -200,6 +225,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
                 animations: {
                     [weak self] in
                     self?.errorMessagePanel.alpha = 0.0
+                    self?.errorMessagePanel.isHidden = true
                 },
                 completion: {
                     [weak self] (finished) in

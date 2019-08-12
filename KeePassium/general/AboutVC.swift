@@ -12,7 +12,7 @@ import KeePassiumLib
 class AboutVC: UITableViewController {
     @IBOutlet weak var contactSupportCell: UITableViewCell!
     @IBOutlet weak var writeReviewCell: UITableViewCell!
-    @IBOutlet weak var debugInfoCell: UITableViewCell!
+    @IBOutlet weak var versionLabel: UILabel!
     
     static func make() -> UIViewController {
         let vc = AboutVC.instantiateFromStoryboard()
@@ -23,11 +23,12 @@ class AboutVC: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        refresh()
+        
+        if Settings.current.isTestEnvironment {
+            versionLabel.text = "v\(AppInfo.version).\(AppInfo.build) beta"
+        } else {
+            versionLabel.text = "v\(AppInfo.version).\(AppInfo.build)"
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -37,20 +38,9 @@ class AboutVC: UITableViewController {
         case contactSupportCell:
             SupportEmailComposer.show(includeDiagnostics: false, completion: nil)
         case writeReviewCell:
-            AppStoreReviewHelper.writeReview()
-        case debugInfoCell:
-            resetAutoFillCleanExitFlag()
+            AppStoreHelper.writeReview()
         default:
             break
         } 
-    }
-    
-    private func resetAutoFillCleanExitFlag() {
-        Settings.current.isAutoFillFinishedOK = true
-        refresh()
-    }
-    
-    private func refresh() {
-        debugInfoCell.textLabel?.text = "AutoFill finished OK: \(Settings.current.isAutoFillFinishedOK)"
     }
 }

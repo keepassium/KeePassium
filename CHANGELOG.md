@@ -1,5 +1,34 @@
 #CHANGELOG
 
+## [1.0.32] (Public Release) - 2019-08-12
+
+### Added
+- In-app announcements about the AppStore release and early-bird promo
+- Associated the app with keepassium.com domain, to allow auto-filling master passwords from Keychain (closes #44)
+- Detection whether running in TestFlight (beta) or App Store (production) environment
+- Added app version to About screen and diagnostic log (closes #37) [thanks, Marcel]
+- AutoFill now also searches for full URL in custom fields (closes #47) [thanks, Dragonblitz10]
+
+### Changed
+- Hiding visible passwords when leaving the app (closes #43) [thanks, V.M.]
+- Running in TestFlight automatically enables premium features
+- Switched to prettier version numbering: major.minor.build
+
+### Fixed
+- Incomplete loading of AutoType sequences (fixes #45) [thanks, Silun]
+- Fixed broken App Store links (closes #32) [thanks, Patrik]
+- Don't show usage stats in premium version (they are frozen anyway)
+- Entry sorting in AutoFill (fixes #31) [thanks, rderensy]
+- AutoFill did not understand domain-name only URLs [thanks, Brett]
+- Accessibility labels in entry editor and for Add Database buttons [thanks, Adrian]
+- Creating a new database also created an empty backup file [thanks, Phani]
+- Jumpy/squished footer in Settings (closes #33) [thanks, Patrik]
+
+### Removed
+- Hidden obsolete "Free trial" countdown from Settings (fixes #36) [thanks, Akshay]
+- Removed obsolete debug info from the About screen
+
+
 ## [1.0.30.31] (Public Release) - 2019-07-26
 
 ### Added

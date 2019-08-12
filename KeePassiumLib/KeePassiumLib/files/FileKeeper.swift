@@ -534,6 +534,10 @@ public class FileKeeper {
     }
     
     func makeBackup(nameTemplate: String, contents: ByteArray) {
+        guard !contents.isEmpty else {
+            Diag.info("No data to backup.")
+            return
+        }
         guard let encodedNameTemplate = nameTemplate
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         guard let nameTemplateURL = URL(string: encodedNameTemplate) else { return }
