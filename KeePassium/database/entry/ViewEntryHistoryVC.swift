@@ -73,15 +73,30 @@ class ViewEntryHistoryVC: UITableViewController, Refreshable {
         guard let section = Section(rawValue: section) else { assertionFailure(); return nil }
         switch section {
         case .expiryTime:
-            return NSLocalizedString("Expiry Date", comment: "Title of a field with date and time when tthe entry will no longer be valid. 'Never' is also a possible value")
+            return NSLocalizedString(
+                "[Entry/History] Expiry Date",
+                value: "Expiry Date",
+                comment: "Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value")
         case .creationTime:
-            return NSLocalizedString("Creation Date", comment: "Title of a field with entry creation date and time")
+            return NSLocalizedString(
+                "[Entry/History] Creation Date",
+                value: "Creation Date",
+                comment: "Title of a field with entry creation date and time")
         case .lastModificationTime:
-            return NSLocalizedString("Last Modification Date", comment: "Title of a field with entry's last modification date and time")
+            return NSLocalizedString(
+                "[Entry/History] Last Modification Date",
+                value: "Last Modification Date",
+                comment: "Title of a field with entry's last modification date and time")
         case .lastAccessTime:
-            return NSLocalizedString("Last Access Date", comment: "Title of a field with date and time when the entry was last accessed/viewed")
+            return NSLocalizedString(
+                "[Entry/History] Last Access Date",
+                value: "Last Access Date",
+                comment: "Title of a field with date and time when the entry was last accessed/viewed")
         case .previousVersions:
-            return NSLocalizedString("Previous Versions", comment: "Title of a list with previous versions/revisions of an entry.")
+            return NSLocalizedString(
+                "[Entry/History] Previous Versions",
+                value: "Previous Versions",
+                comment: "Title of a list with previous versions/revisions of an entry.")
         }
     }
     
@@ -114,7 +129,10 @@ class ViewEntryHistoryVC: UITableViewController, Refreshable {
             if entry.canExpire {
                 cell.textLabel?.text = dateFormatter.string(from: entry.expiryTime)
             } else {
-                cell.textLabel?.text = NSLocalizedString("Never", comment: "Expiry Date of an entry which does not expire.")
+                cell.textLabel?.text = NSLocalizedString(
+                    "[Entry/History/ExpiryDate] Never",
+                    value: "Never",
+                    comment: "Expiry Date of an entry which does not expire.")
             }
         case .creationTime:
             cell = tableView.dequeueReusableCell(withIdentifier: CellID.fixedTimestamp, for: indexPath)

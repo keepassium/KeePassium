@@ -34,7 +34,12 @@ final class TwofishDataCipher: DataCipher {
         assert(key.count == self.keySize)
         assert(iv.count == self.initialVectorSize)
         
-        progress.localizedDescription = NSLocalizedString("Encrypting", comment: "Status message")
+        progress.localizedDescription = NSLocalizedString(
+            "[Cipher/Progress] Encrypting",
+            bundle: Bundle.framework,
+            value: "Encrypting",
+            comment: "Progress status")
+        
         let twofish = Twofish(key: key, iv: iv)
         let dataClone = data.clone() 
         CryptoManager.addPadding(data: dataClone, blockSize: Twofish.blockSize)
@@ -45,7 +50,11 @@ final class TwofishDataCipher: DataCipher {
     func decrypt(cipherText encData: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {
         assert(key.count == self.keySize)
         assert(iv.count == self.initialVectorSize)
-        progress.localizedDescription = NSLocalizedString("Decrypting", comment: "Status message")
+        progress.localizedDescription = NSLocalizedString(
+            "[Cipher/Progress] Decrypting",
+            bundle: Bundle.framework,
+            value: "Decrypting",
+            comment: "Progress status")
         
         let twofish = Twofish(key: key, iv: iv) 
         let dataClone = encData.clone() 

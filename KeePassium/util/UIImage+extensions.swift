@@ -30,6 +30,11 @@ enum ImageAsset: String {
     case copyToClipboardAccessory = "copy-to-clipboard-accessory"
     case biometryTouchIDListitem = "touch-id-listitem"
     case biometryFaceIDListitem = "face-id-listitem"
+    case premiumBenefitMultiDB = "premium-benefit-multidb"
+    case premiumBenefitDBTimeout = "premium-benefit-db-timeout"
+    case premiumBenefitPreview = "premium-benefit-preview"
+    case premiumBenefitSupport = "premium-benefit-support"
+    case premiumBenefitShiny = "premium-benefit-shiny"
 }
 
 extension UIImage {

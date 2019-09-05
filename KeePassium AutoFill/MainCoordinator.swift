@@ -201,7 +201,10 @@ class MainCoordinator: NSObject, Coordinator {
         } catch {
             Diag.error("Failed to delete database file [message: \(error.localizedDescription)]")
             let alert = UIAlertController.make(
-                title: NSLocalizedString("Failed to delete database file", comment: "Error message"),
+                title: NSLocalizedString(
+                    "[Database/Delete] Failed to delete database file",
+                    value: "Failed to delete database file",
+                    comment: "Title of an error message"),
                 message: error.localizedDescription,
                 cancelButtonTitle: LString.actionDismiss)
             navigationController.present(alert, animated: true, completion: nil)
@@ -315,8 +318,14 @@ class MainCoordinator: NSObject, Coordinator {
     
     func showManualUpgradeMessage() {
         let manualUpgradeAlert = UIAlertController.make(
-            title: "Premium Upgrade".localized(comment: "Title of a message related to upgrading to the premium version"),
-            message: "To upgrade, please manually open KeePassium from your home screen.".localized(comment: "Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version."),
+            title: NSLocalizedString(
+                "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade",
+                value: "Premium Upgrade",
+                comment: "Title of a message related to upgrading to the premium version"),
+            message: NSLocalizedString(
+                "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen.",
+                value: "To upgrade, please manually open KeePassium from your home screen.",
+                comment: "Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version."),
             cancelButtonTitle: LString.actionOK)
         navigationController.present(manualUpgradeAlert, animated: true, completion: nil)
     }
@@ -472,9 +481,12 @@ extension MainCoordinator: UIDocumentPickerDelegate {
             let fileName = url.lastPathComponent
             let errorAlert = UIAlertController.make(
                 title: LString.titleWarning,
-                message: NSLocalizedString(
-                    "Selected file \"\(fileName)\" does not look like a database.",
-                    comment: "Warning when trying to add a file"),
+                message: String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Database/Add] Selected file \"%@\" does not look like a database.",
+                        value: "Selected file \"%@\" does not look like a database.",
+                        comment: "Warning when trying to add a random file as a database. [fileName: String]"),
+                    fileName),
                 cancelButtonTitle: LString.actionOK)
             navigationController.present(errorAlert, animated: true, completion: nil)
             return
@@ -544,7 +556,10 @@ extension MainCoordinator: LongPressAwareNavigationControllerDelegate {
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(
-            title: "Show Diagnostic Log".localized(comment: "Action/button to show internal diagnostic log"),
+            title: NSLocalizedString(
+                "[Diagnostics] Show Diagnostic Log",
+                value: "Show Diagnostic Log",
+                comment: "Action/button to show internal diagnostic log"),
             style: .default,
             handler: { [weak self] _ in
                 self?.showDiagnostics()
@@ -579,8 +594,9 @@ extension MainCoordinator: DiagnosticsViewerDelegate {
         let infoAlert = UIAlertController.make(
             title: nil,
             message: NSLocalizedString(
-                "Diagnostic log has been copied to clipboard.",
-                comment: "[Diagnostics] notification/confirmation message"),
+                "[Diagnostics] Diagnostic log has been copied to clipboard.",
+                value: "Diagnostic log has been copied to clipboard.",
+                comment: "Notification/confirmation message"),
             cancelButtonTitle: LString.actionOK)
         navigationController.present(infoAlert, animated: true, completion: nil)
     }

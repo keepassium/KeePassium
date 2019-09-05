@@ -290,7 +290,7 @@ extension ChooseKeyFileVC: UIDocumentPickerDelegate {
                 [weak self] (error) in
                 guard let _self = self else { return }
                 let alert = UIAlertController.make(
-                    title: LString.titleImportError,
+                    title: LString.titleFileImportError,
                     message: error.localizedDescription)
                 _self.present(alert, animated: true, completion: nil)
             }

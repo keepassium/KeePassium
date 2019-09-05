@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Beta tester promo"; ObjectID = "Ams-tg-a6W"; */
+"Ams-tg-a6W.text" = "Акция для бета-тестеров";
+
+/* Class = "UILabel"; text = "Install the free version from the App Store, upgrade to premium whenever you want."; ObjectID = "DHf-ZF-lUj"; */
+"DHf-ZF-lUj.text" = "Установите бесплатную версию из App Store, обновитесь до премиум-версии когда захотите.";
+
+/* Class = "UILabel"; text = "Until 31 August 2019, premium upgrades are available at special early bird prices."; ObjectID = "Dln-R4-hDr"; */
+"Dln-R4-hDr.text" = "До 31 августа 2019 года премиум-версия доступна по специальной цене.";
+
+/* Class = "UILabel"; text = "Tap here to get free premium until 1 Sep 2020. \n(But note: the early-bird pricing won't be there anymore, so this might not be the best choice in the long run.)"; ObjectID = "gBU-27-3it"; */
+"gBU-27-3it.text" = "Нажмите здесь, чтобы получить бесплатную премиум-версию до 1 сентября 2020. \n(Обратите внимание, что через год цена подписки может вырасти, так что это может быть не лучшим вариантом в долгой перспективе.)";
+
+/* Class = "UILabel"; text = "Early adopter promo"; ObjectID = "Hem-sD-JQZ"; */
+"Hem-sD-JQZ.text" = "Стартовая промо-акция ";
+
+/* Class = "UINavigationItem"; title = "Beta → Release"; ObjectID = "hx0-nf-Kwn"; */
+"hx0-nf-Kwn.title" = "Бета → App Store";
+
+/* Class = "UILabel"; text = "Contact us"; ObjectID = "lju-i3-mMS"; */
+"lju-i3-mMS.text" = "Связаться с нами";
+
+/* Class = "UILabel"; text = "Feel free to stay on the beta channel and get new features as soon as they appear. Beta versions will have all the bells and whistles, but might be less stable than before."; ObjectID = "naw-As-2di"; */
+"naw-As-2di.text" = "Останьтесь на бета-тестировании и пробуйте новые функции как только они добавляются. Бета-версии включают все навороты, но могут быть менее стабильны, чем раньше.";
+
+/* Class = "UILabel"; text = "Stick to TestFlight"; ObjectID = "Nha-DI-lcm"; */
+"Nha-DI-lcm.text" = "Остаться на TestFlight";
+
+/* Class = "UILabel"; text = "Switch to the free version"; ObjectID = "UVw-Iq-kix"; */
+"UVw-Iq-kix.text" = "Перейти на бесплатную версию";
+
+/* Class = "UILabel"; text = "Contact us if you have any questions about switching from beta to release version."; ObjectID = "WYR-9D-CUb"; */
+"WYR-9D-CUb.text" = "Свяжитесь с нами, если у вас есть вопросы о переходе от бета-версии к релизу.";
+
+/* Class = "UILabel"; text = "KeePassium is now officially available on the App Store. Thank you for testing!"; ObjectID = "xEf-mF-cRj"; */
+"xEf-mF-cRj.text" = "Теперь KeePassium официально доступен в App Store. Спасибо за тестирование!";
+
+/* Class = "UITableViewSection"; headerTitle = "What's next?"; ObjectID = "yZc-RG-QZj"; */
+"yZc-RG-QZj.headerTitle" = "Что дальше?";
+

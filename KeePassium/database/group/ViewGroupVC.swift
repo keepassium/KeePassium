@@ -139,15 +139,26 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         guard !warnings.isEmpty else { return }
         
         let lastUsedAppName = warnings.databaseGenerator ?? ""
-        let footerLine = NSLocalizedString("Database was last edited by: \(lastUsedAppName)", comment: "Provides the name of the app that was last to write/create the database file.")
+        let footerLine = String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[Database/Opened/Warning/lastEdited] Database was last edited by: %@",
+                    value: "Database was last edited by: %@",
+                    comment: "Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String]"),
+                lastUsedAppName)
         let message = warnings.messages.joined(separator: "\n\n") + "\n\n" + footerLine
         
         let alert = UIAlertController(
-            title: NSLocalizedString("Your database is ready, but there was an issue.", comment: "Title of a warning message"),
+            title: NSLocalizedString(
+                "[Database/Opened/Warning/title] Your database is ready, but there was an issue.",
+                value: "Your database is ready, but there was an issue.",
+                comment: "Title of a warning message, shown after opening a problematic database"),
             message: message,
             preferredStyle: .alert)
         let continueAction = UIAlertAction(
-            title: NSLocalizedString("Ignore and Continue", comment: "Action: ignore warnings and proceed to work with the database"),
+            title: NSLocalizedString(
+                "[Database/Opened/Warning/action] Ignore and Continue",
+                value: "Ignore and Continue",
+                comment: "Action: ignore warnings and proceed to work with the database"),
             style: .default,
             handler: nil)
         let contactUsAction = UIAlertAction(
@@ -160,7 +171,10 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             }
         )
         let lockDatabaseAction = UIAlertAction(
-            title: NSLocalizedString("Close Database", comment: "Action: lock database"),
+            title: NSLocalizedString(
+                "[Database/Opened/Warning/action] Close Database",
+                value: "Close Database",
+                comment: "Action: lock database"),
             style: .cancel,
             handler: { (action) in
                 DatabaseManager.shared.closeDatabase(clearStoredKey: true)

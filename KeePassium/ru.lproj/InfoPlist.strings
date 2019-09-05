@@ -1,0 +1,18 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "KeePassium";
+
+/* Bundle name */
+"CFBundleName" = "KeePassium";
+
+/* (No Comment) */
+"KeePass Database (kdb)" = "База Паролей KeePass (kdb)";
+
+/* (No Comment) */
+"KeePass Database (kdbx)" = "База Паролей KeePass (kdbx)";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Использовать Face ID для доступа к KeePassium";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "KeePassium нужно разрешение на сохранение файлов в вашу фотобиблиотеку.";
+

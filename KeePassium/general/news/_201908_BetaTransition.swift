@@ -13,13 +13,19 @@ class _201908_BetaTransitionNews: NewsItem {
     
     let isCurrent = true 
     
-    var title = "Now on the App Store!".localized(comment: "News title for beta testers: the app is now available on the App Store.")
+    var title = NSLocalizedString(
+        "[News/2019/08/BetaTransition/title] Now on the App Store!",
+        value: "Now on the App Store!",
+        comment: "News title for beta testers: the app is now available on the App Store.")
     
     func show(in viewController: UIViewController) {
         #if AUTOFILL_EXT
         let alert = UIAlertController.make(
             title: self.title,
-            message: "Please open the main app for the full announcement.",
+            message: NSLocalizedString(
+                "[News/AutoFill/stubText] Please open the main app for the full announcement.",
+                value: "Please open the main app for the full announcement.",
+                comment: "Message shown when opening an announcement in AutoFill"),
             cancelButtonTitle: LString.actionDismiss)
         viewController.present(alert, animated: true, completion: nil)
         #elseif MAIN_APP

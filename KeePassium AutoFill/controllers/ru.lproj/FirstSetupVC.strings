@@ -1,0 +1,15 @@
+/* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
+"enW-gs-tra.normalTitle" = "Добавить Базу Паролей";
+
+/* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
+"P0M-N3-ynf.text" = "Для использования в Автозаполнении, пожалуйста добавьте базы паролей и ключевые файлы ещё раз.";
+
+/* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
+"pIl-6L-Msp.text" = "Настройка Автозаполнения";
+
+/* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
+"rzY-Ci-bd9.title" = "KeePassium";
+
+/* Class = "UITextView"; text = "The AutoFill cannot automatically access the files you already have in the main KeePassium app.\n\nWhy? Behind the scenes, the system treats AutoFill as a separate app, independent from the main KeePassium process. For security reasons, an app cannot simply access any external files – unless you explicitly link these files to that app. Thus the system guarantees that the app can only access the few files you allowed it to.\n\nAs a result, both AutoFill and the main KeePassium app need to be given their own permissions for each external file. Luckily, this is a one-time procedure."; ObjectID = "UAW-0G-N5G"; */
+"UAW-0G-N5G.text" = "Автозаполнение не может автоматически открывать файлы, уже добавленные в основное приложение.\n\nПочему? С точки зрения системы, Автозаполнение — это отдельное приложение, независимое от основного. В целях безопасности, приложение не может просто так открывать файлы в других приложениях, если только пользователь не свяжет эти файлы с этим приложением. Таким образом система гарантирует, что приложения могут работать только с несколькими специально выбранными файлами.\n\nВ результате, и Автозаполнение, и основное приложение должны получить \"отдельные приглашения\" для работы с каждым внешним файлом. К счастью, эта процедура нужна только один раз.";
+

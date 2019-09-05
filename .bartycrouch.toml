@@ -1,0 +1,4 @@
+[lint]
+path = "."
+duplicateKeys = true
+emptyValues = true

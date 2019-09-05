@@ -1,0 +1,357 @@
+/* Type of keyboard to show for App Lock passcode: letters and digits. */
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "Цифро-буквенная";
+
+/* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "Цифровая";
+
+/* Progress status */
+"[Cipher/Progress] Decrypting" = "Дешифрование";
+
+/* Progress status */
+"[Cipher/Progress] Encrypting" = "Шифрование";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES decryption error (code %d)" = "Ошибка дешифрования AES (код %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES encryption error (code %d)" = "Ошибка шифрования AES (код %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES initialization error (code %d)" = "Ошибка инициализации AES (код %d)";
+
+/* Error message about Argon2 hashing function. [errorCode: Int] */
+"[CryptoError] Argon2 hashing error (code %d)" = "Ошибка хеширования Argon2 (код %d)";
+
+/* Error message about PKCS7 padding. [errorCode: Int] */
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "Неверное дополнение (padding). Код %d. Повреждённый файл?";
+
+/* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "Неверный параметр KDF: %1$@ - %2$@. Повреждённый файл?";
+
+/* Error message about random number generator. [errorCode: Int] */
+"[CryptoError] Random number generator error (code %d)" = "Ошибка генератора случайных чисел (код %d)";
+
+/* Error message about Twofish cipher. [errorCode: Int] */
+"[CryptoError] Twofish cipher error (code %d)" = "Ошибка шифра Twofish (код %d)";
+
+/* Error message */
+"[Database/Load/Error] Cannot find database file" = "Не удалось найти файл базы паролей";
+
+/* Error message */
+"[Database/Load/Error] Cannot find key file" = "Не удалось найти ключевой файл";
+
+/* Error message */
+"[Database/Load/Error] Cannot open database file" = "Не удалось открыть базу паролей";
+
+/* Error message */
+"[Database/Load/Error] Cannot open key file" = "Не удалось открыть ключевой файл";
+
+/* Error shown when both master password and key file are empty */
+"[Database/Load/Error] Please provide at least a password or a key file" = "Пожалуйста укажите пароль или ключевой файл";
+
+/* Error message */
+"[Database/Load/Error] Unrecognized database format" = "Неизвестный формат базы";
+
+/* Progress status: finished loading database */
+"[Database/Progress] Done" = "Готово";
+
+/* Progress bar status */
+"[Database/Progress] Loading database file..." = "Загрузка базы паролей...";
+
+/* Progress status */
+"[Database/Progress] Loading key file..." = "Загрузка ключевого файла...";
+
+/* Error message */
+"[Database/Unlock/Error] Failed to open key file" = "Не удалось открыть ключевой файл";
+
+/* Error message */
+"[Database/Unlock/Error] Password and key file are both empty." = "И пароль, и ключевой файл пусты.";
+
+/* Error message */
+"[Database1/FormatError] Database file is corrupted." = "Файл базы паролей повреждён.";
+
+/* Error message [fieldName: String] */
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Не удалось разобрать поле %@. Файл базы повреждён?";
+
+/* Error message */
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Обнаружена запись вне группы. Файл базы повреждён?";
+
+/* Error message */
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Неожиданный конец файла. Файл базы повреждён?";
+
+/* Error message when reading database header */
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Ошибка чтения заголовка. Файл базы повреждён?";
+
+/* Error message. [flagsHexString: String] */
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Неподдерживаемый алгоритм шифрования. (Код %@)";
+
+/* Error message when opening a database. [version: String] */
+"[Database1/Header1/Error] Unsupported database format version: %@." = "Неподдерживаемая версия формата базы: %@.";
+
+/* Error message when opening a database */
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Неверная сигнатура файла. Это точно база паролей KeePass?";
+
+/* Status message: collecting database items into a single package */
+"[Database1/Progress] Packing the content" = "Упаковка данных";
+
+/* Status message: processing the content of a database */
+"[Database1/Progress] Parsing content" = "Разбор данных";
+
+/* Name of a group which contains deleted entries */
+"[Database2/backupGroupName] Recycle Bin" = "Корзина";
+
+/* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
+"[Database2/FormatError] Cannot parse database. %s" = "Не удалось разобрать базу паролей. %s";
+
+/* Error message [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Файл с базой паролей повреждён (блок %d имеет отрицательный размер)";
+
+/* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Файл с базой паролей повреждён (неверный хеш в блоке %d)";
+
+/* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Файл с базой паролей повреждён (неверный HMAC в блоке %d)";
+
+/* Error message about Gzip compression algorithm. [reason: String] */
+"[Database2/FormatError] Gzip error: %@" = "Ошибка Gzip: %@";
+
+/* Error message: wrong ID of a data block */
+"[Database2/FormatError] Unexpected block ID." = "Неожиданный номер блока.";
+
+/* Error message */
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "Неожиданный конец файла. Повреждённый файл?";
+
+/* Error message when saving a database. [reason: String] */
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "Не удалось распаковать содержимое прикреплённого файла: %@";
+
+/* Error message, with the name of problematic field. [fieldName: String] */
+"[Database2/Header2/Error] Header field %@ is corrupted." = "В заголовке повреждено поле %@.";
+
+/* Error message */
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Неверный хеш заголовка. Файл базы повреждён?";
+
+/* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Неверный HMAC заголовка. Файл базы повреждён?";
+
+/* Error message when reading database header */
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "Ошибка при чтении заголовка. Файл базы повреждён?";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Unknown compression algorithm." = "Неизвестный алгоритм сжатия.";
+
+/* Error message. [uuidHexString: String] */
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "Неподдерживаемый алгоритм шифрования данных: %@";
+
+/* Error message when opening a database. [version: String] */
+"[Database2/Header2/Error] Unsupported database format version: %@." = "Неподдерживаемая версия формата базы: %@.";
+
+/* Error message when opening a database. [id: UInt32] */
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Неподдерживаемый поточный шифр (ID %d)";
+
+/* Error message about Key Derivation Function. [uuidString: String] */
+"[Database2/Header2/Error] Unsupported KDF: %@" = "Незнакомая функция формирования ключа (KDF): %@";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Неверная сигнатура файла. Это точно база KeePass?";
+
+/* Error message about Gzip compression algorithm. [errorMessage: String] */
+"[Database2/Loading/Error] Error unpacking database: %@" = "Ошибка при распаковке базы: %@";
+
+/* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
+"[Database2/Loading/Warning/missingBinaries]" = "Прикреплённые файлы в некоторых записях не имеют содержимого. Это признак повреждения базы паролей, возможно последним использованным приложением (%1$@). KeePassium оставит эти пустые прикреплённые файлы, но не может восстановить их. Советуем восстановить базу из резервной копии.\n\nОтсутствующие прикреплённые файлы: %2$@";
+
+/* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
+"[Database2/Loading/Warning/namelessAttachments]" = "Некоторые записи содержат прикреплённые файлы без имени. Это признак повреждённой базы паролей.\n\nПроверьте прикреплённые файлы в следующих записях (и их прошлых версиях):\n%@";
+
+/* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
+"[Database2/Loading/Warning/namelessCustomFields]" = "Некоторые записи содержат поля без названий. Это может быть признаком повреждённой базы. Проверьте следующие записи:\n\n%@";
+
+/* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
+"[Database2/Loading/Warning/unusedAttachments]" = "База содержит прикреплённые данные, которые не используются ни в одной записи. Скорее всего, они были забыты предыдущей программой (%@), но это может быть и признаком повреждения базы.\nПеред тем как что-либо редактировать, убедитесь, что у Вас есть резервная копия базы паролей.";
+
+/* Progress bar status */
+"[Database2/Progress] Loading database" = "Загрузка базы паролей";
+
+/* Progress bar status */
+"[Database2/Progress] Reading database content" = "Чтение базы паролей";
+
+/* Progress bar status */
+"[Database2/Progress] Writing encrypted blocks" = "Запись шифрованных блоков";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Data compression error: %@" = "Ошибка сжатия данных: %@";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Encryption error: %@" = "Ошибка шифрования: %@";
+
+/* Error message about XML parsing. [value: String, tag: String] */
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "Непонятное значение ‘%1$@’ в теге %2$@";
+
+/* Error message about XML parsing. [tag: String] */
+"[Database2/Xml2/ParsingError] Nil value in %@" = "Обнаружено значение \"nil\" в теге %@";
+
+/* Error message about XML parsing */
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "XML не соответствует формату KeePass";
+
+/* Error message about XML parsing. [actualTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Неожиданный тег ‘%@‘";
+
+/* Error message about XML parsing. [actualTag: String, expectedTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "Неожиданный тег ‘%1$@‘ (вместо ‘%2$@‘)";
+
+/* Generic error while parsing XML. [errorDetails: String] */
+"[Database2/Xml2/ParsingError] XML error: %@" = "Ошибка XML: %@";
+
+/* Error message while opening a database */
+"[DatabaseError] Cannot open database" = "Не удалось открыть базу паролей";
+
+/* Error message while saving a database */
+"[DatabaseError] Cannot save database" = "Не удалось сохранить базу паролей";
+
+/* Error message: user provided a wrong master key for decryption. */
+"[DatabaseError] Invalid password or key file" = "Неверный пароль или ключевой файл";
+
+/* A very generic error message */
+"[FileDocument] Unexpected file error, please contact us." = "Неожиданная ошибка при работе с файлами. Пожалуйста, сообщите об этом нам.";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to delete file. Reason: %@" = "Не удалось удалить файл. Причина: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to import file. Reason: %@" = "Не удалось импортировать файл. Причина: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to open file. Reason: %@" = "Не удалось открыть файл. Причина: %@";
+
+/* Error message: tried to import URL which does not point to a file */
+"[FileKeeper] Not a file URL" = "Не файловый URL";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Дата Создания (Начиная со Старых)";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Дата Создания (Начиная с Новых)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Дата Изменения (Начиная со Старых)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Дата Изменения (Начиная с Новых)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
+"[FilesSortOrder/longTitle] Name (A..Z)" = "Имя (А..я)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
+"[FilesSortOrder/longTitle] Name (Z..A)" = "Имя (я..А)";
+
+/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
+"[FilesSortOrder/longTitle] No Sorting" = "Не сортировать";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "По Дате Создания (Новые..Старые)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "По Дате Создания (Старые..Новые)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "По Дате Изменения (Новые..Старые)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "По Дате Изменения (Старые..Новые)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "По Названию (А..я)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "По Названию (я..А)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
+"[GroupSortOrder/longTitle] No Sorting" = "Не сортировать";
+
+/* Status message: processing of the master key is in progress */
+"[KDF/Progress] Processing the master key" = "Подготовка мастер-ключа";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "Ошибка при работе со Связкой Ключей (код %d) ";
+
+/* Error message about system keychain. */
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Ошибка при работе со Связкой Ключей: неожиданный формат данных";
+
+/* Explanation/notification when a long-running operation was cancelled by user */
+"[Progress/CancellationReason] Cancelled by user" = "Отменено пользователем";
+
+/* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
+"[Progress/CancellationReason/lowMemory]" = "Не хватило памяти.\nВозможно, база слишком велика или требует очень много памяти (для Argon2).";
+
+/* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
+"[Settings/AppLockTimeout/description] After last interaction" = "После бездействия";
+
+/* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
+"[Settings/AppLockTimeout/description] After leaving the app" = "После выхода из приложения";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "Немедленно";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/fullTitle] Never" = "Никогда";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "Сразу";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/shortTitle] Never" = "Никогда";
+
+/* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "Вечно";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/fullTitle] Never" = "Никогда";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/shortTitle] Never" = "Никогда";
+
+/* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "При выходе из приложения";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "Немедленно";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "Никогда";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "Сразу";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "Никогда";
+
+/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Дата Изменения";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
+"[Settings/EntryListDetail/longTitle] None" = "Нет";
+
+/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
+"[Settings/EntryListDetail/longTitle] Notes" = "Заметки";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
+"[Settings/EntryListDetail/longTitle] Password" = "Пароль";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
+"[Settings/EntryListDetail/longTitle] URL" = "URL";
+
+/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
+"[Settings/EntryListDetail/longTitle] User Name" = "Имя";
+
+/* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
+"[URLReference/Location] Cloud storage / Another app" = "Онлайн / В другом приложении";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
+"[URLReference/Location] Internal backup" = "Внутренняя резервная копия";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
+"[URLReference/Location] Internal inbox" = "Внутренний импорт";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
+"[URLReference/Location] Local copy" = "Локальная копия";
+

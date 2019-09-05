@@ -73,7 +73,7 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use FaceID to unlock KeePassium</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>The app needs permission to export flie to your Photo Library.</string>
+	<string>KeePassium needs permission to export files to your Photo Library.</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

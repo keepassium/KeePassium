@@ -15,11 +15,29 @@ public enum FileKeeperError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .openError(let reason):
-            return NSLocalizedString("Failed to open file. Reason: \(reason)", comment: "Error message")
+            return String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[FileKeeper] Failed to open file. Reason: %@",
+                    bundle: Bundle.framework,
+                    value: "Failed to open file. Reason: %@",
+                    comment: "Error message [reason: String]"),
+                reason)
         case .importError(let reason):
-            return NSLocalizedString("File import error. Reason: \(reason)", comment: "Error message")
+            return String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[FileKeeper] Failed to import file. Reason: %@",
+                    bundle: Bundle.framework,
+                    value: "Failed to import file. Reason: %@",
+                    comment: "Error message [reason: String]"),
+                reason)
         case .removalError(let reason):
-            return NSLocalizedString("Failed to remove file. Reason: \(reason)", comment: "Error message")
+            return String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[FileKeeper] Failed to delete file. Reason: %@",
+                    bundle: Bundle.framework,
+                    value: "Failed to delete file. Reason: %@",
+                    comment: "Error message [reason: String]"),
+                reason)
         }
     }
 }
@@ -293,7 +311,11 @@ public class FileKeeper {
 
         guard sourceURL.isFileURL else {
             Diag.error("Tried to import a non-file URL: \(sourceURL.redacted)")
-            let messageNotAFileURL = NSLocalizedString("Not a file URL", comment: "Error message: tried to import URL which does not point to a file")
+            let messageNotAFileURL = NSLocalizedString(
+                "[FileKeeper] Not a file URL",
+                bundle: Bundle.framework,
+                value: "Not a file URL",
+                comment: "Error message: tried to import URL which does not point to a file")
             switch openMode {
             case .import:
                 let importError = FileKeeperError.importError(reason: messageNotAFileURL)

@@ -35,13 +35,21 @@ class _201908_SpecialPricesExpireNews: NewsItem {
         return isPastStart && isBeforeEnd
     }
     
-    lazy var title = "Early bird promo ends \(formattedDateUntil)" 
+    lazy var title = String.localizedStringWithFormat(
+        NSLocalizedString(
+            "[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@",
+            value: "Early bird promo ends %@",
+            comment: "Title of an announcement [expiryDateFormatted: String]"),
+        formattedDateUntil)
     
     func show(in viewController: UIViewController) {
         #if AUTOFILL_EXT
         let alert = UIAlertController.make(
             title: self.title,
-            message: "Please open the main app from your home screen for further details.",
+            message: NSLocalizedString(
+                "[News/AutoFill/stubText] Please open the main app for the full announcement.",
+                value: "Please open the main app for the full announcement.",
+                comment: "Message shown when opening an announcement in AutoFill"),
             cancelButtonTitle: LString.actionDismiss)
         viewController.present(alert, animated: true, completion: nil)
         #elseif MAIN_APP

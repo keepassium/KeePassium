@@ -191,7 +191,7 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
             let fileName = URL(string: encodedAttName)?.lastPathComponent else
         {
             Diag.warning("Failed to create a URL from attachment name [att.name: \(att.name)]")
-            let alert = UIAlertController.make(title: LString.titleExportError, message: nil)
+            let alert = UIAlertController.make(title: LString.titleFileExportError, message: nil)
             present(alert, animated: true, completion: nil)
             return
         }
@@ -228,7 +228,7 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
         } catch {
             Diag.error("Failed to write attachment [reason: \(error.localizedDescription)]")
             let alert = UIAlertController.make(
-                title: LString.titleExportError,
+                title: LString.titleFileExportError,
                 message: error.localizedDescription)
             present(alert, animated: true, completion: nil)
         }
@@ -244,8 +244,14 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
         }
         
         let replacementAlert = UIAlertController(
-            title: NSLocalizedString("Replace existing attachment?", comment: "Confirmation message to replace an existing entry attachment with a new one."),
-            message: NSLocalizedString("This database supports only one attachment per entry, and there is already one. ", comment: "Explanation for replacing the only attachment of KeePass1 entry"),
+            title: NSLocalizedString(
+                "[Entry/Files/Add] Replace existing attachment?",
+                value: "Replace existing attachment?",
+                comment: "Confirmation message to replace an existing entry attachment with a new one."),
+            message: NSLocalizedString(
+                "[Entry/Files/Add] This database supports only one attachment per entry, and there is already one.",
+                value: "This database supports only one attachment per entry, and there is already one.",
+                comment: "Explanation for replacing the only attachment of KeePass1 entry"),
             preferredStyle: .alert)
         let cancelAction = UIAlertAction(
             title: LString.actionCancel,
@@ -268,7 +274,10 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
         guard let attachment = entry?.attachments[indexPath.row] else { return }
         
         let renameController = UIAlertController(
-            title: "Rename File".localized(comment: "Title of a dialog for renaming an attached file"),
+            title: NSLocalizedString(
+                "[Entry/Files/Rename/title] Rename File",
+                value: "Rename File",
+                comment: "Title of a dialog for renaming an attached file"),
             message: nil,
             preferredStyle: .alert)
         renameController.addTextField { (textField) in
@@ -379,7 +388,10 @@ extension ViewEntryFilesVC: UIDocumentPickerDelegate {
         guard let url = urls.first else { return }
         
         progressViewHost?.showProgressView(
-            title: NSLocalizedString("Loading attachment file", comment: "Status message: loading file to be attached to an entry"),
+            title: NSLocalizedString(
+                "[Entry/Files/Add] Loading attachment file",
+                value: "Loading attachment file",
+                comment: "Status message: loading file to be attached to an entry"),
             allowCancelling: false)
         
         let doc = FileDocument(fileURL: url)

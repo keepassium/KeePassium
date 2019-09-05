@@ -69,8 +69,14 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
         do {
             try Keychain.shared.removeAllDatabaseKeys() 
             let confirmationAlert = UIAlertController.make(
-                title: NSLocalizedString("Cleared", comment: "Title of the success message for `Remove Master Keys` button"),
-                message: NSLocalizedString("All master keys have been removed.", comment: "Success message for `Remove Master Keys` button"),
+                title: NSLocalizedString(
+                    "[Settings/ClearMasterKeys/Cleared/title] Cleared",
+                    value: "Cleared",
+                    comment: "Title of the success message for `Clear Master Keys` button"),
+                message: NSLocalizedString(
+                    "[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted.",
+                    value: "All master keys have been deleted.",
+                    comment: "Text of the success message for `Clear Master Keys` button"),
                 cancelButtonTitle: LString.actionOK)
             present(confirmationAlert, animated: true, completion: nil)
         } catch {
@@ -90,8 +96,14 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @IBAction func didPressClearKeyFileAssociations(_ sender: Any) {
         Settings.current.removeAllKeyFileAssociations()
         let confirmationAlert = UIAlertController.make(
-            title: NSLocalizedString("Cleared", comment: "Title of the success message for `Clear Key File Associations` button"),
-            message: NSLocalizedString("Associations between key files and databases have been removed.", comment: "Success message for `Clear Key File Associations` button"),
+            title: NSLocalizedString(
+                "[Settings/ClearKeyFileAssociations/Cleared/title] Cleared",
+                value: "Cleared",
+                comment: "Title of the success message for `Clear Key File Associations` button"),
+            message: NSLocalizedString(
+                "[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed.",
+                value: "Associations between key files and databases have been removed.",
+                comment: "Text of the success message for `Clear Key File Associations` button"),
             cancelButtonTitle: LString.actionOK)
         present(confirmationAlert, animated: true, completion: nil)
     }

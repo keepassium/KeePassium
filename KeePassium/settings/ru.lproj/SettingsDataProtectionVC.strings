@@ -1,0 +1,45 @@
+/* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
+"3uV-Zs-RRo.normalTitle" = "Очистить Связи с Ключевыми Файлами";
+
+/* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
+"e1v-nv-Mst.normalTitle" = "Удалить Мастер-Ключи";
+
+/* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.footerTitle" = "При открытии базы паролей, её мастер-ключ будет сохранён в связке ключей устройства. В следующий раз KeePassium использует этот мастер-ключ, чтобы Вам не пришлось заново вводить свой основной пароль. \n\n(Запомненные мастер-ключи автоматически удаляются при автоматическом закрытии баз.)";
+
+/* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.headerTitle" = "Быстрый Доступ";
+
+/* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.footerTitle" = "После копирования, KeePassium автоматически очистит буфер обмена через некоторое время.";
+
+/* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.headerTitle" = "Буфер Обмена";
+
+/* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
+"INJ-Cy-Tfo.text" = "Запоминать Мастер-Ключи";
+
+/* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
+"IZZ-aM-g2i.title" = "Защита Данных";
+
+/* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
+"JHl-o7-xHI.text" = "Запоминать Ключевые Файлы";
+
+/* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.footerTitle" = "Запоминать и автоматически выбирать последний использованный ключевой файл для каждой базы. Очистка запомненных связей не повлияет на сами файлы.";
+
+/* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.headerTitle" = "Ключевые Файлы";
+
+/* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.footerTitle" = "Через указанное время все открытые базы паролей будут закрыты, а их мастер-ключи стёрты. Чтобы открыть базу, нужно будет заново ввести её мастер-пароль.";
+
+/* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.headerTitle" = "Автоматическое Закрытие";
+
+/* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
+"SSu-Sr-MCg.text" = "Очистка Буфера Обмена";
+
+/* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
+"weX-SZ-IDB.text" = "Задержка до Закрытия Баз";
+

@@ -31,6 +31,7 @@ class PremiumVC: UIViewController {
     }
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var benefitsStackView: UIStackView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var buttonStack: UIStackView!
     @IBOutlet weak var activityIndcator: UIActivityIndicatorView!
@@ -57,10 +58,77 @@ class PremiumVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        statusLabel.text = "Contacting AppStore...".localized(comment: "Status message before downloading available in-app purchases")
+        statusLabel.text = NSLocalizedString(
+            "[Premium/Upgrade/Progress] Contacting AppStore...",
+            value: "Contacting AppStore...",
+            comment: "Status message when downloading available in-app purchases")
         activityIndcator.isHidden = false
         restorePurchasesButton.isHidden = !allowRestorePurchases
         footerView.isHidden = true
+        
+        setupBenefitsView()
+    }
+    
+    private func setupBenefitsView() {
+        let multiDatabaseBenefit = PremiumBenefitView(frame: CGRect.zero) 
+        multiDatabaseBenefit.image = UIImage(asset: .premiumBenefitMultiDB)
+        multiDatabaseBenefit.title = NSLocalizedString(
+            "[Premium/Benefits/MultiDB/title]",
+            value: "Sync with the team",
+            comment: "Title of a premium feature")
+        multiDatabaseBenefit.subtitle = NSLocalizedString(
+            "[Premium/Benefits/MultiDB/details]",
+            value: "Add multiple databases and quickly switch between them.",
+            comment: "Explanation of the premium feature")
+        benefitsStackView.addArrangedSubview(multiDatabaseBenefit)
+        
+        let databaseTimeoutBenefit = PremiumBenefitView(frame: CGRect.zero)
+        databaseTimeoutBenefit.image = UIImage(asset: .premiumBenefitDBTimeout)
+        databaseTimeoutBenefit.title = NSLocalizedString(
+            "[Premium/Benefits/DatabaseTimeout/title]",
+            value: "Save your time",
+            comment: "Title of a premium feature")
+        databaseTimeoutBenefit.subtitle = NSLocalizedString(
+            "[Premium/Benefits/DatabaseTimeout/details]",
+            value: "Tired of typing your master password? Keep your database open longer and unlock it with one tap.",
+            comment: "Explanation of the premium feature")
+        benefitsStackView.addArrangedSubview(databaseTimeoutBenefit)
+        
+        let previewBenefit = PremiumBenefitView(frame: CGRect.zero)
+        previewBenefit.image = UIImage(asset: .premiumBenefitPreview)
+        previewBenefit.title = NSLocalizedString(
+            "[Premium/Benefits/AttachmentPreview/title]",
+            value: "Preview without a trace",
+            comment: "Title of a premium feature")
+        previewBenefit.subtitle = NSLocalizedString(
+            "[Premium/Benefits/AttachmentPreview/details]",
+            value: "Preview attached files directly in KeePassium and leave no traces in other apps. (Works with images, documents, archives and more.)",
+            comment: "Explanation of the premium feature")
+        benefitsStackView.addArrangedSubview(previewBenefit)
+        
+        let supportBenefit = PremiumBenefitView(frame: CGRect.zero)
+        supportBenefit.image = UIImage(asset: .premiumBenefitSupport)
+        supportBenefit.title = NSLocalizedString(
+            "[Premium/Benefits/Support/title]",
+            value: "Talk to support that cares",
+            comment: "Title of a premium feature")
+        supportBenefit.subtitle = NSLocalizedString(
+            "[Premium/Benefits/Support/details]",
+            value: "Community support means no obligations. With premium, get answers and solutions directly from the developer.",
+            comment: "Explanation of the premium feature")
+        benefitsStackView.addArrangedSubview(supportBenefit)
+        
+        let maintenanceBenefit = PremiumBenefitView(frame: CGRect.zero)
+        maintenanceBenefit.image = UIImage(asset: .premiumBenefitShiny)
+        maintenanceBenefit.title = NSLocalizedString(
+            "[Premium/Benefits/Maintenance/title]",
+            value: "Keep it shiny",
+            comment: "Title of a premium feature")
+        maintenanceBenefit.subtitle = NSLocalizedString(
+            "[Premium/Benefits/Maintenance/details]",
+            value: "Keep KeePassium improved, maintained and without ads.",
+            comment: "Explanation of the premium feature")
+        benefitsStackView.addArrangedSubview(maintenanceBenefit)
     }
     
     
@@ -121,11 +189,26 @@ class PremiumVC: UIViewController {
         let productPrice: String
         switch iap.period {
         case .oneTime:
-            productPrice = "\(product.localizedPrice) once".localized(comment: "Product price for once-and-forever premium")
+            productPrice = String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[Premium/Upgrade/price] %@ once",
+                    value: "%@ once",
+                    comment: "Product price for once-and-forever premium. [localizedPrice: String]"),
+                product.localizedPrice)
         case .yearly:
-            productPrice = "\(product.localizedPrice) / year".localized(comment: "Product price for annual premium subscription")
+            productPrice = String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[Premium/Upgrade/price] %@ / year",
+                    value: "%@ / year",
+                    comment: "Product price for annual premium subscription. [localizedPrice: String]"),
+                product.localizedPrice)
         case .monthly:
-            productPrice = "\(product.localizedPrice) / month".localized(comment: "Product price for monthly premium subscription")
+            productPrice = String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[Premium/Upgrade/price] %@ / month",
+                    value: "%@ / month",
+                    comment: "Product price for monthly premium subscription. [localizedPrice: String]"),
+                product.localizedPrice)
         case .other:
             assertionFailure("Should not be here")
             productPrice = "\(product.localizedPrice)"
@@ -147,7 +230,10 @@ class PremiumVC: UIViewController {
         buttonTitle.append(attributedTitle)
         
         if iap.hasPrioritySupport {
-            let prioritySupportDescription = "with priority support".localized(comment: "Description of a premium option. Lowercase. For example 'Business Premium with priority support'.")
+            let prioritySupportDescription = NSLocalizedString(
+                "[Premium/Upgrade/description] with priority support",
+                value: "with priority support",
+                comment: "Description of a premium option. Lowercase. For example 'Business Premium / with priority support'.")
             let descriptionParagraphStyle = NSMutableParagraphStyle()
             descriptionParagraphStyle.paragraphSpacingBefore = -3.0
             descriptionParagraphStyle.alignment = .center
@@ -200,7 +286,11 @@ class PremiumVC: UIViewController {
             }
         }
         if isPurchasing {
-            showMessage("Contacting AppStore...".localized(comment: "Status: transaction related to in-app purchase (not necessarily a purchase) is in progress"))
+            showMessage(NSLocalizedString(
+                "[Premium/Upgrade/Progress] Contacting AppStore...",
+                value: "Contacting AppStore...",
+                comment: "Status message when downloading available in-app purchases")
+            )
             UIView.animate(withDuration: 0.3) {
                 self.activityIndcator.isHidden = false
             }

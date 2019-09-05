@@ -1,0 +1,9 @@
+/* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "CbK-f7-To5"; Note = "Action"; */
+"CbK-f7-To5.title" = "Добавить Базу Паролей";
+
+/* Class = "UILabel"; text = "No recent databases"; ObjectID = "fXt-kp-oSe"; */
+"fXt-kp-oSe.text" = "Пока здесь пусто";
+
+/* Class = "UINavigationItem"; title = "Databases"; ObjectID = "Zun-me-VzS"; */
+"Zun-me-VzS.title" = "Базы Паролей";
+

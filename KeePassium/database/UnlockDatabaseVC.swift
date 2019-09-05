@@ -67,7 +67,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         passwordField.inputAssistantItem.trailingBarButtonGroups = []
         
         let lockDatabaseButton = UIBarButtonItem(
-            title: NSLocalizedString("Close", comment: "Button to close currently opened database, when leaving the root group"),
+            title: LString.actionCloseDatabase,
             style: .plain,
             target: nil,
             action: nil)
@@ -384,7 +384,12 @@ extension UnlockDatabaseVC: KeyFileChooserDelegate {
             return
         }
         if let errorDetails = fileInfo.errorMessage {
-            let errorMessage = NSLocalizedString("Key file error: \(errorDetails)", comment: "Error message related to key file")
+            let errorMessage = String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[Database/Unlock] Key file error: %@",
+                    value: "Key file error: %@",
+                    comment: "Error message related to key file. [errorDetails: String]"),
+                errorDetails)
             Diag.warning(errorMessage)
             showErrorMessage(errorMessage)
             keyFileField.text = ""

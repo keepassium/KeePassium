@@ -16,11 +16,39 @@ protocol WelcomeDelegate: class {
 
 class WelcomeVC: UIViewController {
     private weak var delegate: WelcomeDelegate?
-
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    
     static func make(delegate: WelcomeDelegate) -> WelcomeVC {
         let vc = WelcomeVC.instantiateFromStoryboard()
         vc.delegate = delegate
         return vc
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        prettifyInfoText()
+    }
+
+    private func prettifyInfoText() {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        paragraphStyle.lineHeightMultiple = 1.2
+        paragraphStyle.paragraphSpacing = 6.0
+        paragraphStyle.paragraphSpacingBefore = 6.0
+        
+        let font = UIFont.preferredFont(forTextStyle: .body)
+        
+        let attributedInfoText = NSMutableAttributedString(
+            string: infoLabel.text ?? "",
+            attributes: [
+                NSAttributedString.Key.font: font,
+                NSAttributedString.Key.paragraphStyle: paragraphStyle
+            ]
+        )
+        infoLabel.attributedText = attributedInfoText
     }
     
     @IBAction func didPressCreateDatabase(_ sender: Any) {

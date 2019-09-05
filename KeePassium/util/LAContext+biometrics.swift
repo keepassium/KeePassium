@@ -22,9 +22,15 @@ extension LABiometryType {
     var name: String? {
         switch self {
         case .touchID:
-            return NSLocalizedString("Touch ID", comment: "Name of biometric authentication method")
+            return NSLocalizedString(
+                "[BiometricAuthType] Touch ID",
+                value: "Touch ID",
+                comment: "Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language.")
         case .faceID:
-            return NSLocalizedString("Face ID", comment: "Name of biometric authentication method")
+            return NSLocalizedString(
+                "[BiometricAuthType] Face ID",
+                value: "Face ID",
+                comment: "Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language.")
         default:
             return nil
         }

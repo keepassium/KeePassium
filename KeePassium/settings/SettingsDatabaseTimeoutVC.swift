@@ -49,7 +49,10 @@ class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard section == 0 else { return nil }
-        return NSLocalizedString("If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again.", comment: "[Settings/Database Timeout/Footer]")
+        return NSLocalizedString(
+            "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again.",
+            value: "If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again.",
+            comment: "Description of the Database Lock Timeout")
     }
     
     override func tableView(

@@ -145,7 +145,10 @@ class DatabaseCreatorVC: UIViewController {
         let hasPassword = passwordField.text?.isNotEmpty ?? false
         guard hasPassword || (keyFile != nil) else {
             setError(
-                message: NSLocalizedString("Please enter a password or choose a key file.", comment: "Hint shown when both password and key file are empty."),
+                message: NSLocalizedString(
+                    "[Database/Create] Please enter a password or choose a key file.",
+                    value: "Please enter a password or choose a key file.",
+                    comment: "Hint shown when both password and key file are empty."),
                 animated: true)
             return
         }

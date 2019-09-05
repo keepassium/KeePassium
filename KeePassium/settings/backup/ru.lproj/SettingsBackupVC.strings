@@ -1,0 +1,24 @@
+/* Class = "UILabel"; text = "Show Backup Files"; ObjectID = "aEK-cJ-9bc"; Note = "Settings option: whether to show backup copies in the list of database files"; */
+"aEK-cJ-9bc.text" = "Показывать Резервные Копии";
+
+/* Class = "UITableViewSection"; footerTitle = "KeePassium can automatically delete old backup files to free up some storage space."; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
+"B3L-Dk-Uq3.footerTitle" = "KeePassium может автоматически удалять старые резервные копии, чтобы уменьшить занимаемое место.";
+
+/* Class = "UITableViewSection"; headerTitle = "Periodic cleanup"; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
+"B3L-Dk-Uq3.headerTitle" = "Периодическая Очистка";
+
+/* Class = "UILabel"; text = "Make Backup Copies"; ObjectID = "BJ7-eQ-JOc"; Note = "Settings option: backup databases before saving them"; */
+"BJ7-eQ-JOc.text" = "Создавать Резервные Копии";
+
+/* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
+"G42-gR-eKm.text" = "Хранить Резервные Копии";
+
+/* Class = "UITableViewSection"; footerTitle = "Before saving a database, KeePassium will automatically make a copy, just in case."; ObjectID = "nBI-OF-9iV"; Note = "Explanation for the `Make Backup Copies` option"; */
+"nBI-OF-9iV.footerTitle" = "Перед тем как сохранять базу паролей, KeePassium создаст её копию, на всякий случай.";
+
+/* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
+"nSy-3u-0xW.title" = "Резервирование";
+
+/* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
+"XeH-7q-aad.footerTitle" = "Резервные копии будут показываться вместе с исходными файлами.";
+

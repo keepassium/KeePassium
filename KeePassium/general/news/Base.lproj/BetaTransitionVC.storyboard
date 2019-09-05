@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Beta → Release-->
+        <scene sceneID="mGM-qs-dsg">
+            <objects>
+                <tableViewController storyboardIdentifier="BetaTransitionVC" id="1zA-48-AUl" customClass="BetaTransitionVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="4vW-pH-1k1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="TVh-53-jnh">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hvV-1M-vMO">
+                                        <rect key="frame" x="0.0" y="35" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hvV-1M-vMO" id="egi-AX-5Ho">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="KeePassium is now officially available on the App Store. Thank you for testing!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEf-mF-cRj">
+                                                    <rect key="frame" x="16" y="19" width="288" height="22"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xEf-mF-cRj" firstAttribute="centerY" secondItem="egi-AX-5Ho" secondAttribute="centerY" priority="250" id="LlC-kH-ysS"/>
+                                                <constraint firstItem="xEf-mF-cRj" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="egi-AX-5Ho" secondAttribute="bottomMargin" constant="8" id="PGe-6W-8jZ"/>
+                                                <constraint firstItem="xEf-mF-cRj" firstAttribute="leading" secondItem="egi-AX-5Ho" secondAttribute="leadingMargin" id="UcJ-vU-rEG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="xEf-mF-cRj" secondAttribute="trailing" id="mPx-gY-qWt"/>
+                                                <constraint firstItem="xEf-mF-cRj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="egi-AX-5Ho" secondAttribute="topMargin" constant="8" id="uFZ-33-71n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="What's next?" footerTitle="" id="yZc-RG-QZj">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jeG-M5-Uu1" userLabel="Switch to Free version">
+                                        <rect key="frame" x="0.0" y="142.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jeG-M5-Uu1" id="aes-Zn-giK">
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5Qo-o6-O2j">
+                                                    <rect key="frame" x="16" y="15" width="262" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="Switch to the free version" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVw-Iq-kix">
+                                                            <rect key="frame" x="0.0" y="0.0" width="262" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <color key="textColor" name="PrimaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Install the free version from the App Store, upgrade to premium whenever you want." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHf-ZF-lUj">
+                                                            <rect key="frame" x="0.0" y="4" width="262" height="18"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5Qo-o6-O2j" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="aes-Zn-giK" secondAttribute="bottomMargin" constant="4" id="7W3-EZ-9S2"/>
+                                                <constraint firstItem="5Qo-o6-O2j" firstAttribute="centerY" secondItem="aes-Zn-giK" secondAttribute="centerY" priority="250" id="FpB-pt-Ls0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5Qo-o6-O2j" secondAttribute="trailing" id="Olb-r1-IBT"/>
+                                                <constraint firstItem="5Qo-o6-O2j" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aes-Zn-giK" secondAttribute="topMargin" constant="4" id="Ydd-M0-EGA"/>
+                                                <constraint firstItem="5Qo-o6-O2j" firstAttribute="leading" secondItem="aes-Zn-giK" secondAttribute="leadingMargin" id="vZU-w2-8nd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Kl1-06-HfC" userLabel="Early bird promo">
+                                        <rect key="frame" x="0.0" y="186.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kl1-06-HfC" id="38F-KQ-yQd">
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xkY-lC-S57">
+                                                    <rect key="frame" x="16" y="15" width="262" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="Early adopter promo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hem-sD-JQZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="262" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <color key="textColor" name="PrimaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Until 31 August 2019, premium upgrades are available at special early bird prices." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dln-R4-hDr">
+                                                            <rect key="frame" x="0.0" y="4" width="262" height="18"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xkY-lC-S57" firstAttribute="leading" secondItem="38F-KQ-yQd" secondAttribute="leadingMargin" id="5GN-lY-5ZF"/>
+                                                <constraint firstItem="xkY-lC-S57" firstAttribute="top" relation="greaterThanOrEqual" secondItem="38F-KQ-yQd" secondAttribute="topMargin" constant="4" id="FPz-9q-ruv"/>
+                                                <constraint firstItem="xkY-lC-S57" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="38F-KQ-yQd" secondAttribute="bottomMargin" constant="4" id="mJT-sy-egN"/>
+                                                <constraint firstItem="xkY-lC-S57" firstAttribute="centerY" secondItem="38F-KQ-yQd" secondAttribute="centerY" priority="250" id="vu4-AB-NBK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="xkY-lC-S57" secondAttribute="trailing" id="ydn-Cs-zwQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="LRg-9M-bOu" userLabel="Beta tester promo">
+                                        <rect key="frame" x="0.0" y="230.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LRg-9M-bOu" id="uvS-V9-Ao9">
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7Vt-pn-EiI">
+                                                    <rect key="frame" x="16" y="15" width="262" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="Beta tester promo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ams-tg-a6W">
+                                                            <rect key="frame" x="0.0" y="0.0" width="262" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <color key="textColor" name="PrimaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBU-27-3it">
+                                                            <rect key="frame" x="0.0" y="4" width="262" height="18"/>
+                                                            <string key="text">Tap here to get free premium until 1 Sep 2020. 
+(But note: the early-bird pricing won't be there anymore, so this might not be the best choice in the long run.)</string>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Vt-pn-EiI" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="uvS-V9-Ao9" secondAttribute="bottomMargin" constant="4" id="G3h-g6-YkR"/>
+                                                <constraint firstItem="7Vt-pn-EiI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uvS-V9-Ao9" secondAttribute="topMargin" constant="4" id="O0T-dD-Pqc"/>
+                                                <constraint firstItem="7Vt-pn-EiI" firstAttribute="leading" secondItem="uvS-V9-Ao9" secondAttribute="leadingMargin" id="SAg-2n-cpT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7Vt-pn-EiI" secondAttribute="trailing" id="sB9-Xf-dqg"/>
+                                                <constraint firstItem="7Vt-pn-EiI" firstAttribute="centerY" secondItem="uvS-V9-Ao9" secondAttribute="centerY" priority="250" id="z9w-FJ-jXB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GRa-iF-4ev" userLabel="Stick to Beta">
+                                        <rect key="frame" x="0.0" y="274.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GRa-iF-4ev" id="N4E-6h-RSk">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pSQ-Ue-Nwq">
+                                                    <rect key="frame" x="16" y="15" width="288" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="Stick to TestFlight" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nha-DI-lcm" userLabel="Stick to TestFlight">
+                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <color key="textColor" name="PrimaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naw-As-2di">
+                                                            <rect key="frame" x="0.0" y="4" width="288" height="18"/>
+                                                            <string key="text">Feel free to stay on the beta channel and get new features as soon as they appear. Beta versions will have all the bells and whistles, but might be less stable than before.</string>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pSQ-Ue-Nwq" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="N4E-6h-RSk" secondAttribute="bottomMargin" constant="4" id="8a2-Md-h9l"/>
+                                                <constraint firstItem="pSQ-Ue-Nwq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="N4E-6h-RSk" secondAttribute="topMargin" constant="4" id="BSi-EW-vwd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pSQ-Ue-Nwq" secondAttribute="trailing" id="hHr-RZ-n9S"/>
+                                                <constraint firstItem="pSQ-Ue-Nwq" firstAttribute="leading" secondItem="N4E-6h-RSk" secondAttribute="leadingMargin" id="kKF-tR-Kqi"/>
+                                                <constraint firstItem="pSQ-Ue-Nwq" firstAttribute="centerY" secondItem="N4E-6h-RSk" secondAttribute="centerY" priority="250" id="qf2-yD-Hf7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="0wn-6c-sSU">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="je2-bT-gOs" userLabel="Contact Us">
+                                        <rect key="frame" x="0.0" y="354.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="je2-bT-gOs" id="Fd1-cy-y36">
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Vzv-Zb-ehv">
+                                                    <rect key="frame" x="16" y="15" width="262" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="Contact us" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lju-i3-mMS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="262" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <color key="textColor" name="PrimaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Contact us if you have any questions about switching from beta to release version." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-9D-CUb">
+                                                            <rect key="frame" x="0.0" y="4" width="262" height="18"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Vzv-Zb-ehv" firstAttribute="leading" secondItem="Fd1-cy-y36" secondAttribute="leadingMargin" id="Inu-qk-G3s"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Vzv-Zb-ehv" secondAttribute="trailing" id="PFB-BW-7s8"/>
+                                                <constraint firstItem="Vzv-Zb-ehv" firstAttribute="centerY" secondItem="Fd1-cy-y36" secondAttribute="centerY" priority="250" id="d7c-Eg-EJL"/>
+                                                <constraint firstItem="Vzv-Zb-ehv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Fd1-cy-y36" secondAttribute="topMargin" constant="4" id="dvI-F7-DGu"/>
+                                                <constraint firstItem="Vzv-Zb-ehv" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Fd1-cy-y36" secondAttribute="bottomMargin" constant="4" id="xUb-3p-6bZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="1zA-48-AUl" id="74o-hU-BKx"/>
+                            <outlet property="delegate" destination="1zA-48-AUl" id="lke-mv-x19"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Beta → Release" id="hx0-nf-Kwn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="i2B-Ks-pyD"/>
+                    </navigationItem>
+                    <size key="freeformSize" width="320" height="700"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KGh-5Z-eNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-13.125" y="173.2394366197183"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AuxiliaryText">
+            <color white="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

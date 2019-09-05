@@ -49,13 +49,20 @@ class SettingsBackupVC: UITableViewController {
         backupDurationCell.detailTextLabel?.text = settings.backupKeepingDuration.shortTitle
         if backupFileCount > 0 {
             deleteAllBackupsButton.isEnabled = true
-            deleteAllBackupsButton.setTitle(
-                "Delete ALL Backup Files (\(backupFileCount))".localized(comment: "Action to delete all backup files from the app. `ALL` is in capitals as a highlight."),
-                for: .normal)
+            let buttonTitle = String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[Settings/Backup] Delete ALL Backup Files (%d)",
+                    value: "Delete ALL Backup Files (%d)",
+                    comment: "Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int]"),
+                backupFileCount)
+            deleteAllBackupsButton.setTitle(buttonTitle, for: .normal)
         } else {
             deleteAllBackupsButton.isEnabled = false
             deleteAllBackupsButton.setTitle(
-                "No Backup Files Found".localized(comment: "Status message: there are no backup files to delete"),
+                NSLocalizedString(
+                    "[Settings/Backup] No Backup Files Found",
+                    value: "No Backup Files Found",
+                    comment: "Status message: there are no backup files to delete"),
                 for: .normal)
         }
     }
@@ -89,7 +96,10 @@ class SettingsBackupVC: UITableViewController {
     
     @IBAction func didPressDeleteAllBackupFiles(_ sender: Any) {
         let confirmationAlert = UIAlertController.make(
-            title: "Delete all backup files?".localized(comment: "Confirmation dialog message to delete all backup files"),
+            title: NSLocalizedString(
+                "[Settings/Backup/Delete/title] Delete all backup files?",
+                value: "Delete all backup files?",
+                comment: "Confirmation dialog message to delete all backup files"),
             message: nil,
             cancelButtonTitle: LString.actionCancel)
         let deleteAction = UIAlertAction(

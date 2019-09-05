@@ -27,30 +27,87 @@ final class Header2: Eraseable {
         case hashMismatch 
         case hmacMismatch 
         case corruptedField(fieldName: String)
+        
         public var errorDescription: String? {
             switch self {
             case .readingError:
-                return NSLocalizedString("Header reading error. DB file corrupted?", comment: "Error message when reading database header")
+                return NSLocalizedString(
+                    "[Database2/Header2/Error] Header reading error. DB file corrupt?",
+                    bundle: Bundle.framework,
+                    value: "Header reading error. DB file corrupt?",
+                    comment: "Error message when reading database header")
             case .wrongSignature:
-                return NSLocalizedString("Wrong file signature. Not a KeePass database?", comment: "Error message when opening a database")
+                return NSLocalizedString(
+                    "[Database2/Header2/Error] Wrong file signature. Not a KeePass database?",
+                    bundle: Bundle.framework,
+                    value: "Wrong file signature. Not a KeePass database?",
+                    comment: "Error message when opening a database")
             case .unsupportedFileVersion(let version):
-                return NSLocalizedString("Unsupported database format version: \(version).", comment: "Error message when opening a database")
+                return String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Database2/Header2/Error] Unsupported database format version: %@.",
+                        bundle: Bundle.framework,
+                        value: "Unsupported database format version: %@.",
+                        comment: "Error message when opening a database. [version: String]"),
+                    version)
             case .unsupportedDataCipher(let uuidHexString):
-                return NSLocalizedString("Unsupported data cipher: \(uuidHexString.prefix(32))", comment: "Error message")
+                return String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Database2/Header2/Error] Unsupported data cipher: %@",
+                        bundle: Bundle.framework,
+                        value: "Unsupported data cipher: %@",
+                        comment: "Error message. [uuidHexString: String]"),
+                    uuidHexString.prefix(32).localizedUppercase)
             case .unsupportedStreamCipher(let id):
-                return NSLocalizedString("Unsupported inner stream cipher (ID \(id).", comment: "Error message when opening a database")
+                return String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)",
+                        bundle: Bundle.framework,
+                        value: "Unsupported inner stream cipher (ID %d)",
+                        comment: "Error message when opening a database. [id: UInt32]"),
+                    id)
             case .unsupportedKDF(let uuid):
-                return NSLocalizedString("Unsupported KDF: \(uuid.uuidString)", comment: "Error message")
+                return String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Database2/Header2/Error] Unsupported KDF: %@",
+                        bundle: Bundle.framework,
+                        value: "Unsupported KDF: %@",
+                        comment: "Error message about Key Derivation Function. [uuidString: String]"),
+                    uuid.uuidString)
             case .unknownCompressionAlgorithm:
-                return NSLocalizedString("Unknown compression algorithm.", comment: "Error message when opening a database")
+                return NSLocalizedString(
+                    "[Database2/Header2/Error] Unknown compression algorithm.",
+                    bundle: Bundle.framework,
+                    value: "Unknown compression algorithm.",
+                    comment: "Error message when opening a database")
             case .binaryUncompressionError(let reason):
-                return NSLocalizedString("Failed to uncompress attachment data: \(reason)", comment: "Error message when saving a database")
+                return String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Database2/Header2/Error] Failed to uncompress attachment data: %@",
+                        bundle: Bundle.framework,
+                        value: "Failed to uncompress attachment data: %@",
+                        comment: "Error message when saving a database. [reason: String]"),
+                    reason)
             case .corruptedField(let fieldName):
-                return NSLocalizedString("Header field \(fieldName) is corrupted.", comment: "Error message, with the name of problematic field")
+                return String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Database2/Header2/Error] Header field %@ is corrupted.",
+                        bundle: Bundle.framework,
+                        value: "Header field %@ is corrupted.",
+                        comment: "Error message, with the name of problematic field. [fieldName: String]"),
+                    fieldName)
             case .hashMismatch:
-                return NSLocalizedString("Header hash mismatch. DB file corrupt?", comment: "Error message")
+                return NSLocalizedString(
+                    "[Database2/Header2/Error] Header hash mismatch. DB file corrupt?",
+                    bundle: Bundle.framework,
+                    value: "Header hash mismatch. DB file corrupt?",
+                    comment: "Error message")
             case .hmacMismatch:
-                return NSLocalizedString("Header HMAC mismatch. DB file corrupt?", comment: "Error message. HMAC = https://en.wikipedia.org/wiki/HMAC")
+                return NSLocalizedString(
+                    "[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?",
+                    bundle: Bundle.framework,
+                    value: "Header HMAC mismatch. DB file corrupt?",
+                    comment: "Error message. HMAC = https://en.wikipedia.org/wiki/HMAC")
             }
         }
     }

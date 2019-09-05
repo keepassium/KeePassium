@@ -1,0 +1,453 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "Открыть";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "Открыть KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Использовать Код Доступа";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→АБВ";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "АБВ→123";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Выбранный файл \"%@\" не похож на базу паролей.";
+
+/* Hint shown when both password and key file are empty. */
+"[Database/Create] Please enter a password or choose a key file." = "Введите пароль или выберите ключевой файл.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Создать Базу Паролей";
+
+/* Note for a sample entry */
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Здесь можно оставить заметки.";
+
+/* Password for a sample entry. Translation is optional. */
+"[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
+
+/* Title for a sample entry */
+"[Database/Create/TemplateEntry/title] Sample Entry" = "Новая Запись";
+
+/* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
+"[Database/Create/TemplateEntry/userName] john.smith" = "ivan.petrov";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Email" = "E-mail";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Finance" = "Финансы";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] General" = "Основное";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Internet" = "Интернет";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Network" = "Сеть";
+
+/* Predefined `Operating system` group in a new database */
+"[Database/Create/TemplateGroup/title] OS" = "Система";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Создать Базу Паролей";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Удалить файл базы паролей?\nУбедитесь, что у вас есть резервная копия.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "Загрузка...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "Мастер-ключ успешно изменён";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "Открыть Базу Паролей";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "Закрыть";
+
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "Закрыть Базу Паролей";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "Пропустить и Продолжить";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "Последние изменения в базе паролей были сделаны: %@";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Ваша база паролей готова, но есть проблема.";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Удалить базу паролей из списка?\nФайл останется нетронутым и вы сможете добавить его позже.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "Готово";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "Сохранение...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "Проблема с ключевым файлом: %@";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "Прикреплённые Файлы";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "Создать Запись";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Название Поля";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "Заметки";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "Пароль";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "Название";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "Имя";
+
+/* Status message: loading file to be attached to an entry */
+"[Entry/Files/Add] Loading attachment file" = "Загрузка прикреплённого файла";
+
+/* Confirmation message to replace an existing entry attachment with a new one. */
+"[Entry/Files/Add] Replace existing attachment?" = "Заменить существующий файл?";
+
+/* Explanation for replacing the only attachment of KeePass1 entry */
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "В этой базе каждая запись может иметь только один прикреплённый файл, и он уже есть.";
+
+/* Title of a dialog for renaming an attached file */
+"[Entry/Files/Rename/title] Rename File" = "Переименовать Файл";
+
+/* Title of a field with entry creation date and time */
+"[Entry/History] Creation Date" = "Дата Создания";
+
+/* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
+"[Entry/History] Expiry Date" = "Срок Действия";
+
+/* Title of a field with date and time when the entry was last accessed/viewed */
+"[Entry/History] Last Access Date" = "Дата Последнего Доступа";
+
+/* Title of a field with entry's last modification date and time */
+"[Entry/History] Last Modification Date" = "Дата Последнего Изменения";
+
+/* Title of a list with previous versions/revisions of an entry. */
+"[Entry/History] Previous Versions" = "Предыдущие Версии";
+
+/* Expiry Date of an entry which does not expire. */
+"[Entry/History/ExpiryDate] Never" = "Никогда";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "Новая Запись";
+
+/* Action to start editing an entry */
+"[Entry/View] Edit Entry" = "Изменить Запись";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "Дата Создания";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "Местонахождение Файла";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "Имя Файла";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "Размер Файла";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "Дата Последнего Изменения";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "Ошибка";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "Отменить";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "Связаться с нами";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "Удалить";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "Не сохранять";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "Закрыть";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "Готово";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "Изменить";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "Экспорт";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "ОК";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "Переименовать";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "Заменить";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "Подробности";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "Вы уверены?";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Отменить несохранённые изменения?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "Есть несохранённые изменения";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "Удалить";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "Убрать";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "Ошибка Экспорта";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "Ошибка Импорта";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "Ошибка";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "Ошибка Связки Ключей";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "Внимание";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "Создать Группу";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "Создать Группу";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "Изменить Группу";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "Новая Группа";
+
+/* Name of an entry/group category (visual style): default one, like in KeePass */
+"[ItemCategory] Default (KeePass)" = "По умолчанию (KeePass)";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Удалить ключевой файл?\nУбедитесь, что у вас есть резервная копия.";
+
+/* News title for beta testers: the app is now available on the App Store. */
+"[News/2019/08/BetaTransition/title] Now on the App Store!" = "Уже в App Store!";
+
+/* Title of an announcement [expiryDateFormatted: String] */
+"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "Стартовая промо-акция заканчивается %@";
+
+/* Message shown when opening an announcement in AutoFill */
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "Пожалуйста, откройте главное приложение чтобы прочесть полное объявление.";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/AttachmentPreview/details]" = "Просматривайте прикреплённые файлы прямо в KeePassium, не оставляя следов в других приложениях. (Работает с изображениями, документами, архивами и другими файлами.)";
+
+/* Title of a premium feature */
+"[Premium/Benefits/AttachmentPreview/title]" = "Просмотр без следа";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/DatabaseTimeout/details]" = "Надоело вводить основной пароль? Держите вашу базу паролей открытой дольше, и разблокируйте её одним нажатием.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/DatabaseTimeout/title]" = "Экономьте своё время";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/Maintenance/details]" = "Поддержите дальнейшее развитие KeePassium — классной программы без шпионажа и рекламы.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/Maintenance/title]" = "Вперёд и вверх";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/MultiDB/details]" = "Добавьте несколько баз и переключайтесь между ними за пару нажатий.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/MultiDB/title]" = "Синхронизация с другими";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/Support/details]" = "Бесплатная версия поддерживается сообществом. Пользователи премиум-версии получают ответы напрямую от разработчика.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/Support/title]" = "Внимательная поддержка";
+
+/* Status: special premium for beta-testing environment is active */
+"[Premium/status] Beta testing" = "Бета-тестирование";
+
+/* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
+"[Premium/status] Expired %@ ago. Please renew." = "Подписка закончилась %@ назад. Пожалуйста, обновите её.";
+
+/* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
+"[Premium/status] Next renewal on %@" = "Следующее обновление %@";
+
+/* Status: validity period of once-and-forever premium */
+"[Premium/status] Valid forever" = "Навсегда";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Хм, нет доступных покупок. Такого быть не должно, пожалуйста, свяжитесь с поддержкой.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Перейти на Премиум";
+
+/* Message shown when in-app purchase is deferred until parental approval. */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent" = "Спасибо! Вы можете использовать KeePassium, пока покупка ожидает родительского подтверждения.";
+
+/* Description of a premium option. Lowercase. For example 'Business Premium / with priority support'. */
+"[Premium/Upgrade/description] with priority support" = "с приоритетной поддержкой";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@ / месяц";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@ / год";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "%@ однократно";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "Связываемся с App Store...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "Покупка...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "Обновление прошло успешно, приятной работы!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "Покупки Восстановлены";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "Не нашлось покупок, которые могут быть восстановлены.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "Извините";
+
+/* Text of the message shown after successful in-app purchase */
+"[Premium/Upgrade/Success/text] Upgrade successful, enjoy the app!" = "Обновление прошло успешно, приятной работы!";
+
+/* Title of the message shown after a successful in-app purchase */
+"[Premium/Upgrade/Success/title] Thank You" = "Спасибо";
+
+/* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "Приложение полезно %1$@/месяц, т.е. около %2$@/год.";
+
+/* Description/advertisement for the `Biometric Unlock` premium feature */
+"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "Быстрый доступ к паролям с помощью Face ID/Touch ID в премиум-версии.";
+
+/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
+"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Биометрическая Разблокировка";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Экономьте время на вводе сложных мастер-паролей — держите базу открытой дольше в премиум-версии.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Отложенное Закрытие Баз";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Переключайтесь между базами легко и быстро в премиум-версии.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Несколько Баз Паролей";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Просматривайте изображения и документы непосредственно в приложении – в премиум-версии.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "Просмотр Прикреплённых Файлов";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "Показать Пароль";
+
+/* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
+"[Settings/AppLock/Biometric/title] Use %@" = "Использовать %@";
+
+/* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
+"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Блокировка приложения, %@, задержки";
+
+/* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Блокировка приложения, код доступа, задержки";
+
+/* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
+"[Settings/Backup] Delete ALL Backup Files (%d)" = "Удалить ВСЕ резервные копии (%d)";
+
+/* Status message: there are no backup files to delete */
+"[Settings/Backup] No Backup Files Found" = "Резервных копий не найдено";
+
+/* Confirmation dialog message to delete all backup files */
+"[Settings/Backup/Delete/title] Delete all backup files?" = "Удалить все резервные копии?";
+
+/* Text of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed." = "Связи между ключевыми файлами и базами паролей были удалены.";
+
+/* Title of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/title] Cleared" = "Готово";
+
+/* Text of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted." = "Все мастер-ключи были удалены.";
+
+/* Title of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "Готово";
+
+/* Description of the clipboard/pasteboard timeout. */
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "Когда вы копируете какой-то текст из записи, приложение автоматически очистит буфер обмена через заданное время.";
+
+/* Description of the Database Lock Timeout */
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Если вы не трогаете приложение в течение некоторого времени, база паролей будет автоматически закрыта и заблокирована. Чтобы открыть её, нужно будет снова ввести основной пароль.";
+
+/* Title of a settings section about making backup files */
+"[Settings/FileLists/Backup/title] Backup" = "Резервирование";
+
+/* Title of a settings section about file order in lists */
+"[Settings/FileLists/Sorting/title] Sorting" = "Сортировка";
+
+/* Title of a settings section: which entry field to show along with entry title */
+"[Settings/GroupViewer] Entry Subtitle" = "Показывать Под Записями";
+
+/* Title of a settings section: sort order of groups and entries in a list */
+"[Settings/GroupViewer] Sort Order" = "Сортировка";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(Опишите проблему)";
+
+/* Action/button to add database to the app */
+"Add Database" = "Добавить Базу Паролей";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "Выбрать Базу Паролей";
+
+/* Action/button */
+"Import Database" = "Импортировать Базу Паролей";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "База паролей KeePass не должна использоваться в качестве ключевого файла. Выберите другой файл.";
+

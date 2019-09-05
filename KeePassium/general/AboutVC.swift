@@ -14,6 +14,25 @@ class AboutVC: UITableViewController {
     @IBOutlet weak var writeReviewCell: UITableViewCell!
     @IBOutlet weak var versionLabel: UILabel!
     
+    let cellTagToURL: [Int: String] = [
+        10: "https://github.com/keepassium/KeePassium-L10n",
+        20: "https://keepass.info",
+        30: "https://feathericons.com",
+        40: "http://ionicons.com",
+        50: "https://designmodo.com/linecons-free/",
+        55: "https://icons8.com/paid-license-99",
+        60: "http://subtlepatterns.com",
+        70: "http://vicons.superatic.com",
+        80: "https://github.com/tadija/AEXML",
+        90: "",
+        100: "https://github.com/P-H-C/phc-winner-argon2",
+        110: "https://cr.yp.to/salsa20.html",
+        120: "http://www.cartotype.com/downloads/twofish/twofish.cpp",
+        130: "https://github.com/1024jp/GzipSwift",
+        140: "https://github.com/norio-nomura/Base32",
+        150: "https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift",
+    ]
+    
     static func make() -> UIViewController {
         let vc = AboutVC.instantiateFromStoryboard()
         return vc
@@ -31,6 +50,14 @@ class AboutVC: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.1
+        } else {
+            return super.tableView(tableView, heightForHeaderInSection: section)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
@@ -40,7 +67,9 @@ class AboutVC: UITableViewController {
         case writeReviewCell:
             AppStoreHelper.writeReview()
         default:
-            break
+            if let urlString = cellTagToURL[selectedCell.tag], let url = URL(string: urlString) {
+                AppGroup.applicationShared?.open(url, options: [:], completionHandler: nil)
+            }
         } 
     }
 }

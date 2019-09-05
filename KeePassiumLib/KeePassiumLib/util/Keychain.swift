@@ -11,12 +11,23 @@ import Foundation
 public enum KeychainError: LocalizedError {
     case generic(code: Int)
     case unexpectedFormat
+    
     public var errorDescription: String? {
         switch self {
         case .generic(let code):
-            return NSLocalizedString("Keychain error (code \(code)) ", comment: "Generic error message about system keychain, with an error code.")
+            return String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[KeychainError/generic] Keychain error (code %d) ",
+                    bundle: Bundle.framework,
+                    value: "Keychain error (code %d) ",
+                    comment: "Generic error message about system keychain. [errorCode: Int]"),
+                code)
         case .unexpectedFormat:
-            return NSLocalizedString("Keychain error: unexpected data format", comment: "Error message about system keychain.")
+            return NSLocalizedString(
+                "[KeychainError/unexpectedFormat] Keychain error: unexpected data format",
+                bundle: Bundle.framework,
+                value: "Keychain error: unexpected data format",
+                comment: "Error message about system keychain.")
         }
     }
 }

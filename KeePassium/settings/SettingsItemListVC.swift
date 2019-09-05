@@ -18,9 +18,15 @@ class SettingsItemListVC: UITableViewController, Refreshable {
         var title: String? {
             switch self {
             case .groupSorting:
-                return NSLocalizedString("Sort Order", comment: "Title of list with group sorting settings")
+                return NSLocalizedString(
+                    "[Settings/GroupViewer] Sort Order",
+                    value: "Sort Order",
+                    comment: "Title of a settings section: sort order of groups and entries in a list")
             case .entrySubtitle:
-                return NSLocalizedString("Entry Subtitle", comment: "Title of list with settings: which details to show below entries")
+                return NSLocalizedString(
+                    "[Settings/GroupViewer] Entry Subtitle",
+                    value: "Entry Subtitle",
+                    comment: "Title of a settings section: which entry field to show along with entry title")
             }
         }
     }

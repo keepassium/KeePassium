@@ -1,0 +1,9 @@
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "ebS-pB-Qan"; */
+"ebS-pB-Qan.title" = "Закрыть";
+
+/* Class = "UILabel"; text = "It seems that AutoFill did not close correctly the last time. \n\nThis can happen with large databases or memory-demanding database settings (Argon2).\n\nPlease contact us if you need help with this."; ObjectID = "kmV-si-Nrg"; */
+"kmV-si-Nrg.text" = "Похоже что работа Автозаполнения была неожиданно прервана в прошлый раз. \n\nЭто может происходить с большими базами паролей, или когда настройки шифрования требуют больших объёмов памяти (Argon2).\n\nНапишите нам, если Вам нужна помощь с этим.";
+
+/* Class = "UINavigationItem"; title = "We are sorry"; ObjectID = "zvf-PV-5l4"; */
+"zvf-PV-5l4.title" = "Ой";
+

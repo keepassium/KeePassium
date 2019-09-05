@@ -16,15 +16,33 @@ public class Database1: Database {
         public var errorDescription: String? {
             switch self {
             case .prematureDataEnd:
-                return NSLocalizedString("Unexpected end of file. Corrupted DB file?", comment: "Error message")
+                return NSLocalizedString(
+                    "[Database1/FormatError] Unexpected end of file. Corrupted database file?",
+                    bundle: Bundle.framework,
+                    value: "Unexpected end of file. Corrupted database file?",
+                    comment: "Error message")
             case .corruptedField(let fieldName):
                 if fieldName != nil {
-                    return NSLocalizedString("Error parsing field \(fieldName!). Corrupted DB file?", comment: "Error message, with the name of problematic field")
+                    return String.localizedStringWithFormat(
+                        NSLocalizedString(
+                            "[Database1/FormatError] Error parsing field %@. Corrupted database file?",
+                            bundle: Bundle.framework,
+                            value: "Error parsing field %@. Corrupted database file?",
+                            comment: "Error message [fieldName: String]"),
+                        fieldName!)
                 } else {
-                    return NSLocalizedString("Database file is corrupted.", comment: "Error message")
+                    return NSLocalizedString(
+                        "[Database1/FormatError] Database file is corrupted.",
+                        bundle: Bundle.framework,
+                        value: "Database file is corrupted.",
+                        comment: "Error message")
                 }
             case .orphanedEntry:
-                return NSLocalizedString("Found an entry outside any group. Corrupted DB file?", comment: "Error message")
+                return NSLocalizedString(
+                    "[Database1/FormatError] Found an entry outside any group. Corrupted DB file?",
+                    bundle: Bundle.framework,
+                    value: "Found an entry outside any group. Corrupted DB file?",
+                    comment: "Error message")
             }
         }
     }
@@ -183,7 +201,11 @@ public class Database1: Database {
         
         let loadProgress = ProgressEx()
         loadProgress.totalUnitCount = Int64(header.groupCount + header.entryCount)
-        loadProgress.localizedDescription = NSLocalizedString("Parsing content", comment: "Status message: processing the content of a database")
+        loadProgress.localizedDescription = NSLocalizedString(
+            "[Database1/Progress] Parsing content",
+            bundle: Bundle.framework,
+            value: "Parsing content",
+            comment: "Status message: processing the content of a database")
         self.progress.addChild(loadProgress, withPendingUnitCount: ProgressSteps.parsing)
         
         Diag.debug("Loading groups")
@@ -280,7 +302,11 @@ public class Database1: Database {
             
             let packingProgress = ProgressEx()
             packingProgress.totalUnitCount = Int64(groups.count + entries.count + metaStreamEntries.count)
-            packingProgress.localizedDescription = NSLocalizedString("Packing the content", comment: "Status message: collecting database items into a single package")
+            packingProgress.localizedDescription = NSLocalizedString(
+                "[Database1/Progress] Packing the content",
+                bundle: Bundle.framework,
+                value: "Packing the content",
+                comment: "Status message: collecting database items into a single package")
             progress.addChild(packingProgress, withPendingUnitCount: ProgressSteps.packing)
             Diag.debug("Packing the content")
             for group in groups {

@@ -86,13 +86,18 @@ class SettingsVC: UITableViewController, Refreshable {
         
         let biometryType = LAContext.getBiometryType()
         if let biometryTypeName = biometryType.name {
-            appSafetyCell.detailTextLabel?.text = NSLocalizedString(
-                "App Lock, \(biometryTypeName), timeout",
-                comment: "Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'.")
+            appSafetyCell.detailTextLabel?.text = String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[Settings/AppLock/subtitle] App Lock, %@, timeout",
+                    value: "App Lock, %@, timeout",
+                    comment: "Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String]"),
+                biometryTypeName)
         } else {
-            appSafetyCell.detailTextLabel?.text = NSLocalizedString(
-                "App Lock, passcode, timeout",
-                comment: "Settings: subtitle of the `App Protection` section when biometric auth is not available.")
+            appSafetyCell.detailTextLabel?.text =
+                NSLocalizedString(
+                    "[Settings/AppLock/subtitle] App Lock, passcode, timeout",
+                    value: "App Lock, passcode, timeout",
+                    comment: "Settings: subtitle of the `App Protection` section when biometric auth is not available.")
         }
         refreshPremiumStatus()
     }
@@ -121,14 +126,6 @@ class SettingsVC: UITableViewController, Refreshable {
             default:
                 break
             }
-        }
-    }
-    
-    private func getAppLockStatus() -> String {
-        if Settings.current.isAppLockEnabled {
-            return Settings.current.appLockTimeout.shortTitle
-        } else {
-            return LString.statusAppLockIsDisabled
         }
     }
     
@@ -275,9 +272,15 @@ class SettingsVC: UITableViewController, Refreshable {
             
             if expiryDate == .distantFuture {
                 if Settings.current.isTestEnvironment {
-                    premiumStatusCell.detailTextLabel?.text = "Beta testing" 
+                    premiumStatusCell.detailTextLabel?.text = NSLocalizedString(
+                        "[Premium/status] Beta testing",
+                        value: "Beta testing",
+                        comment: "Status: special premium for beta-testing environment is active")
                 } else {
-                    premiumStatusCell.detailTextLabel?.text = "Valid forever".localized(comment: "Status: validity period of once-and-forever premium")
+                    premiumStatusCell.detailTextLabel?.text = NSLocalizedString(
+                        "[Premium/status] Valid forever",
+                        value: "Valid forever",
+                        comment: "Status: validity period of once-and-forever premium")
                 }
             } else {
                 #if DEBUG
@@ -287,7 +290,12 @@ class SettingsVC: UITableViewController, Refreshable {
                 let expiryDateString = DateFormatter
                     .localizedString(from: expiryDate, dateStyle: .medium, timeStyle: .none)
                 #endif
-                premiumStatusCell.detailTextLabel?.text = "Next renewal on \(expiryDateString)".localized(comment: "Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`")
+                premiumStatusCell.detailTextLabel?.text = String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Premium/status] Next renewal on %@",
+                        value: "Next renewal on %@",
+                        comment: "Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String]"),
+                    expiryDateString)
             }
         case .lapsed:
             setCellVisibility(premiumTrialCell, isHidden: false)
@@ -300,7 +308,12 @@ class SettingsVC: UITableViewController, Refreshable {
                     secondsSinceExpiration,
                     allowedUnits: [.day, .hour, .minute],
                     maxUnitCount: 1) ?? "?"
-                premiumStatusText = "Expired \(timeFormatted) ago. Please renew.".localized(comment: "Status: premium subscription has expired. For example: `Expired 1 day ago`")
+                premiumStatusText = String.localizedStringWithFormat(
+                    NSLocalizedString(
+                        "[Premium/status] Expired %@ ago. Please renew.",
+                        value: "Expired %@ ago. Please renew.",
+                        comment: "Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)]"),
+                    timeFormatted)
             } else {
                 assertionFailure()
                 premiumStatusText = "?"
@@ -342,7 +355,13 @@ class SettingsVC: UITableViewController, Refreshable {
                 maxUnitCount: 1,
                 style: .full)
             else { return nil}
-        let appUsageDescription = "App being useful: \(monthlyUsage)/month, that is around \(annualUsage)/year.".localized(comment: "Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`")
+        let appUsageDescription = String.localizedStringWithFormat(
+            NSLocalizedString(
+                "[Premium/usage] App being useful: %@/month, that is around %@/year.",
+                value: "App being useful: %@/month, that is around %@/year.",
+                comment: "Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)]"),
+            monthlyUsage,
+            annualUsage)
         return appUsageDescription
     }
 }

@@ -134,9 +134,17 @@ public class Settings {
         public var fullTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString("Never", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Application: Never'")
+                return NSLocalizedString(
+                    "[Settings/AppLockTimeout/fullTitle] Never",
+                    bundle: Bundle.framework,
+                    value: "Never",
+                    comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
             case .immediately:
-                return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Database: Immediately'")
+                return NSLocalizedString(
+                    "[Settings/AppLockTimeout/fullTitle] Immediately",
+                    bundle: Bundle.framework,
+                    value: "Immediately",
+                    comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
@@ -153,9 +161,17 @@ public class Settings {
         public var shortTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString("Never", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be as a short version of 'Never'. Will be shown as 'Timeouts: Lock Application: Never'")
+                return NSLocalizedString(
+                    "[Settings/AppLockTimeout/shortTitle] Never",
+                    bundle: Bundle.framework,
+                    value: "Never",
+                    comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
             case .immediately:
-                return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Lock Application Timeout' setting. This should be a short description of 'Immediately'. Will be shown as 'Timeouts: Lock Application: Immediately'")
+                return NSLocalizedString(
+                    "[Settings/AppLockTimeout/shortTitle] Immediately",
+                    bundle: Bundle.framework,
+                    value: "Immediately",
+                    comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
@@ -172,9 +188,17 @@ public class Settings {
         public var description: String? {
             switch triggerMode {
             case .appMinimized:
-                return NSLocalizedString("After leaving the app", comment: "A description for AppLock timeout trigger 'when the app is minimized'. For example: 'Lock Timeout: 3 seconds (After leaving the app)")
+                return NSLocalizedString(
+                    "[Settings/AppLockTimeout/description] After leaving the app",
+                    bundle: Bundle.framework,
+                    value: "After leaving the app",
+                    comment: "A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app)")
             case .userIdle:
-                return NSLocalizedString("After last interaction", comment: "A description for AppLock timeout trigger event 'when the user is idle'. For example: 'Lock Timeout: 3 seconds (After last interaction)")
+                return NSLocalizedString(
+                    "[Settings/AppLockTimeout/description] After last interaction",
+                    bundle: Bundle.framework,
+                    value: "After last interaction",
+                    comment: "A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction)")
             }
         }
     }
@@ -212,9 +236,17 @@ public class Settings {
         public var fullTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString("Never", comment: "One of the possible values of the 'Database Lock Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Database: Never'")
+                return NSLocalizedString(
+                    "[Settings/DatabaseLockTimeout/fullTitle] Never",
+                    bundle: Bundle.framework,
+                    value: "Never",
+                    comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Never'")
             case .immediately:
-                return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Database Lock Timeout' setting. This should be full description. Will be shown as 'Timeouts: Lock Database: Immediately'")
+                return NSLocalizedString(
+                    "[Settings/DatabaseLockTimeout/fullTitle] Immediately",
+                    bundle: Bundle.framework,
+                    value: "Immediately",
+                    comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately'")
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
@@ -231,9 +263,17 @@ public class Settings {
         public var shortTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString("Never", comment: "One of the possible values of the 'Database Lock Timeout' setting. This should be as a short version of 'Never'. Will be shown as 'Timeouts: Lock Database: Never'")
+                return NSLocalizedString(
+                    "[Settings/DatabaseLockTimeout/shortTitle] Never",
+                    bundle: Bundle.framework,
+                    value: "Never",
+                    comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Never'")
             case .immediately:
-                return NSLocalizedString("Immediately", comment: "One of the possible values of the 'Database Lock Timeout' setting. This should be a short description of 'Immediately'. Will be shown as 'Timeouts: Lock Database: Immediately'")
+                return NSLocalizedString(
+                    "[Settings/DatabaseLockTimeout/shortTitle] Immediately",
+                    bundle: Bundle.framework,
+                    value: "Immediately",
+                    comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately'")
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
@@ -250,7 +290,11 @@ public class Settings {
         public var description: String? {
             switch self {
             case .immediately:
-                return NSLocalizedString("When leaving the app", comment: "A description for the 'Close Database: Immediately'.")
+                return NSLocalizedString(
+                    "[Settings/DatabaseLockTimeout/description] When leaving the app",
+                    bundle: Bundle.framework,
+                    value: "When leaving the app",
+                    comment: "A description/subtitle for the 'DatabaseLockTimeout: Immediately'.")
             default:
                 return nil
             }
@@ -279,7 +323,11 @@ public class Settings {
         public var fullTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString("Never", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be full description. Will be shown as 'Clear Clipboard: Never'")
+                return NSLocalizedString(
+                    "[Settings/ClipboardTimeout/fullTitle] Never",
+                    bundle: Bundle.framework,
+                    value: "Never",
+                    comment: "An option in Settings. Will be shown as 'Clipboard Timeout: Never'")
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
@@ -296,7 +344,11 @@ public class Settings {
         public var shortTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString("Never", comment: "One of the possible values of the 'Clear Clipboard Timeout' setting. This should be a short version of 'Never'. Will be shown as 'Clear Clipboard: Never'")
+                return NSLocalizedString(
+                    "[Settings/ClipboardTimeout/shortTitle] Never",
+                    bundle: Bundle.framework,
+                    value: "Never",
+                    comment: "An option in Settings. Will be shown as 'Clipboard Timeout: Never'")
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
@@ -337,7 +389,11 @@ public class Settings {
         public var shortTitle: String {
             switch self {
             case .forever:
-                return NSLocalizedString("Forever", comment: "One of the possible values of the 'Keep Backup Files (Duration)' setting. Please keep it short. Will be shown as 'Keep Backup Files: Forever'")
+                return NSLocalizedString(
+                    "[Settings/BackupKeepingDuration/shortTitle] Forever",
+                    bundle: Bundle.framework,
+                    value: "Forever",
+                    comment: "An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever'")
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.year, .month, .day, .hour]
@@ -367,23 +423,44 @@ public class Settings {
         case notes
         case lastModifiedDate
         
-        public var shortTitle: String {
-            return longTitle
-        }
         public var longTitle: String {
             switch self {
             case .none:
-                return NSLocalizedString("None", comment: "One of the possible values of the 'Entry List Details' setting. Will be shown as 'Entry List Details   None', meaningin that no entry details will be shown in any lists.")
+                return NSLocalizedString(
+                    "[Settings/EntryListDetail/longTitle] None",
+                    bundle: Bundle.framework,
+                    value: "None",
+                    comment: "An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists.")
             case .userName:
-                return NSLocalizedString("User Name", comment: "One of the possible values of the 'Entry List Details' setting; it refers to login information rather than person name. Will be shown as 'Entry List Details   User Name'.")
+                return NSLocalizedString(
+                    "[Settings/EntryListDetail/longTitle] User Name",
+                    bundle: Bundle.framework,
+                    value: "User Name",
+                    comment: "An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'.")
             case .password:
-                return NSLocalizedString("Password", comment: "One of the possible values of the 'Entry List Details' setting. Will be shown as 'Entry List Details   Password'.")
+                return NSLocalizedString(
+                    "[Settings/EntryListDetail/longTitle] Password",
+                    bundle: Bundle.framework,
+                    value: "Password",
+                    comment: "An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'.")
             case .url:
-                return NSLocalizedString("URL", comment: "One of the possible values of the 'Entry List Details' setting. URL stands for 'internet address' or 'internet link'. Will be shown as 'Entry List Details   URL'.")
+                return NSLocalizedString(
+                    "[Settings/EntryListDetail/longTitle] URL",
+                    bundle: Bundle.framework,
+                    value: "URL",
+                    comment: "An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'.")
             case .notes:
-                return NSLocalizedString("Notes", comment: "One of the possible values of the 'Entry List Details' setting; it refers to comments or additional text information contained in an entry. Will be shown as 'Entry List Details   Notes'.")
+                return NSLocalizedString(
+                    "[Settings/EntryListDetail/longTitle] Notes",
+                    bundle: Bundle.framework,
+                    value: "Notes",
+                    comment: "An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'.")
             case .lastModifiedDate:
-                return NSLocalizedString("Last Modified Date", comment: "One of the possible values of the 'Entry List Details' setting; it referst fo the most recent time when the entry was modified. Will be shown as 'Entry List Details   Last Modified Time'.")
+                return NSLocalizedString(
+                    "[Settings/EntryListDetail/longTitle] Last Modified Date",
+                    bundle: Bundle.framework,
+                    value: "Last Modified Date",
+                    comment: "An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'.")
             }
         }
     }
@@ -406,37 +483,47 @@ public class Settings {
         public var longTitle: String {
             switch self {
             case .noSorting:
-                return NSLocalizedString("No Sorting", comment: "One of possible values of the 'Sort Groups By' setting (full title). Example: 'Sort Groups: No Sorting'")
+                return NSLocalizedString(
+                    "[GroupSortOrder/longTitle] No Sorting",
+                    bundle: Bundle.framework,
+                    value: "No Sorting",
+                    comment: "An option in Group Viewer settings. Example: 'Sort Order: No Sorting'")
             case .nameAsc:
-                return NSLocalizedString("By Title (A..Z)", comment: "One of possible values of the 'Sort Groups By' setting (full title). Example: 'Sort Groups: By Title (A..Z)'")
+                return NSLocalizedString(
+                    "[GroupSortOrder/longTitle] By Title (A..Z)",
+                    bundle: Bundle.framework,
+                    value: "By Title (A..Z)",
+                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)'")
             case .nameDesc:
-                return NSLocalizedString("By Title (Z..A)", comment: "One of possible values of the 'Sort Groups By' setting (full title). Example: 'Sort Groups: By Title (Z..A)'")
+                return NSLocalizedString(
+                    "[GroupSortOrder/longTitle] By Title (Z..A)",
+                    bundle: Bundle.framework,
+                    value: "By Title (Z..A)",
+                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)'")
             case .creationTimeAsc:
-                return NSLocalizedString("By Creation Date (Old..New)", comment: "One of possible values of the 'Sort Groups By' setting (full title). Example: 'Sort Groups: By Creation Date (Old..New)'")
+                return NSLocalizedString(
+                    "[GroupSortOrder/longTitle] By Creation Date (Old..New)",
+                    bundle: Bundle.framework,
+                    value: "By Creation Date (Old..New)",
+                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)'")
             case .creationTimeDesc:
-                return NSLocalizedString("By Creation Date (New..Old)", comment: "One of possible values of the 'Sort Groups By' setting (full title). Example: 'Sort Groups: By Creation Date (New..Old)'")
+                return NSLocalizedString(
+                    "[GroupSortOrder/longTitle] By Creation Date (New..Old)",
+                    bundle: Bundle.framework,
+                    value: "By Creation Date (New..Old)",
+                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)'")
             case .modificationTimeAsc:
-                return NSLocalizedString("By Modification Date (Old..New)", comment: "One of possible values of the 'Sort Groups By' setting (full title). Example: 'Sort Groups: By Modification Date (Old..New)'")
+                return NSLocalizedString(
+                    "[GroupSortOrder/longTitle] By Modification Date (Old..New)",
+                    bundle: Bundle.framework,
+                    value: "By Modification Date (Old..New)",
+                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)'")
             case .modificationTimeDesc:
-                return NSLocalizedString("By Modification Date (New..Old)", comment:  "One of possible values of the 'Sort Groups By' setting (full title). Example: 'Sort Groups: By Modification Date (New..Old)'")
-            }
-        }
-        public var shortTitle: String {
-            switch self {
-            case .noSorting:
-                return NSLocalizedString("None", comment: "One of possible values of the 'Sort Groups By' setting (short title for 'No Sorting'). Example: 'Sort Groups: None'")
-            case .nameAsc:
-                return NSLocalizedString("A..Z", comment: "One of possible values of the 'Sort Groups By' setting (short title for 'Title (A..Z)'). Example: 'Sort Groups: A..Z'")
-            case .nameDesc:
-                return NSLocalizedString("Z..A", comment: "One of possible values of the 'Sort Groups By' setting (short title for 'Title (Z..A)'). Example: 'Sort Groups: Z..A'")
-            case .creationTimeAsc:
-                return NSLocalizedString("Creation Date", comment: "One of possible values of the 'Sort Groups By' setting (short title for 'By Creation Date (Old..New)'). Example: 'Sort Groups: Creation Date'")
-            case .creationTimeDesc:
-                return NSLocalizedString("Creation Date", comment: "One of possible values of the 'Sort Groups By' setting (short title for 'By Creation Date (New..Old)'). Example: 'Sort Groups: Creation Date'")
-            case .modificationTimeAsc:
-                return NSLocalizedString("Last Modified", comment: "One of possible values of the 'Sort Groups By' setting (short title for 'By Modification Date (Old..New)'). Example: 'Sort Groups: Last Modified'")
-            case .modificationTimeDesc:
-                return NSLocalizedString("Last Modified", comment: "One of possible values of the 'Sort Groups By' setting (short title for 'By Modification Date (New..Old)'). Example: 'Sort Groups: Last Modified'")
+                return NSLocalizedString(
+                    "[GroupSortOrder/longTitle] By Modification Date (New..Old)",
+                    bundle: Bundle.framework,
+                    value: "By Modification Date (New..Old)",
+                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)'")
             }
         }
         public func compare(_ group1: Group, _ group2: Group) -> Bool {
@@ -495,19 +582,47 @@ public class Settings {
         public var longTitle: String {
             switch self {
             case .noSorting:
-                return NSLocalizedString("No Sorting", comment: "A settings option which defines sorting of items in lists. Example: 'Sort order   No Sorting'")
+                return NSLocalizedString(
+                    "[FilesSortOrder/longTitle] No Sorting",
+                    bundle: Bundle.framework,
+                    value: "No Sorting",
+                    comment: "A sorting option for a list of files. Example: 'Sort Order: No Sorting'")
             case .nameAsc:
-                return NSLocalizedString("Name (A..Z)", comment: "One of the possible values of the 'File Sort Order' setting. Will be displayed as 'File Sort Order: Name (A..Z)'")
+                return NSLocalizedString(
+                    "[FilesSortOrder/longTitle] Name (A..Z)",
+                    bundle: Bundle.framework,
+                    value: "Name (A..Z)",
+                    comment: "A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)'")
             case .nameDesc:
-                return NSLocalizedString("Name (Z..A)", comment: "One of the possible values of the 'File Sort Order' setting. Will be displayed as 'File Sort Order: Name (Z..A)'")
+                return NSLocalizedString(
+                    "[FilesSortOrder/longTitle] Name (Z..A)",
+                    bundle: Bundle.framework,
+                    value: "Name (Z..A)",
+                    comment: "A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)'")
             case .creationTimeAsc:
-                return NSLocalizedString("Date Created (Oldest First)", comment: "One of the possible values of the 'File Sort Order' setting. Will be displayed as 'File Sort Order: Date Created (Oldest First)")
+                return NSLocalizedString(
+                    "[FilesSortOrder/longTitle] Creation Date (Oldest First)",
+                    bundle: Bundle.framework,
+                    value: "Creation Date (Oldest First)",
+                    comment: "A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)'")
             case .creationTimeDesc:
-                return NSLocalizedString("Date Created (Recent First)", comment: "One of the possible values of the 'File Sort Order' setting. Will be displayed as 'File Sort Order: Date Created (Recent First)'")
+                return NSLocalizedString(
+                    "[FilesSortOrder/longTitle] Creation Date (Recent First)",
+                    bundle: Bundle.framework,
+                    value: "Creation Date (Recent First)",
+                    comment: "A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)'")
             case .modificationTimeAsc:
-                return NSLocalizedString("Date Modified (Oldest First)", comment: "One of the possible values of the 'File Sort Order' setting. Will be displayed as 'File Sort Order: Date Modified (Oldest First)'")
+                return NSLocalizedString(
+                    "[FilesSortOrder/longTitle] Modification Date (Oldest First)",
+                    bundle: Bundle.framework,
+                    value: "Modification Date (Oldest First)",
+                    comment: "A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)'")
             case .modificationTimeDesc:
-                return NSLocalizedString("Date Modified (Recent First)", comment: "One of the possible values of the 'File Sort Order' setting. Will be displayed as 'File Sort Order: Date Modified (Recent First)'")
+                return NSLocalizedString(
+                    "[FilesSortOrder/longTitle] Modification Date (Recent First)",
+                    bundle: Bundle.framework,
+                    value: "Modification Date (Recent First)",
+                    comment: "A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)'")
             }
         }
 
@@ -546,9 +661,17 @@ public class Settings {
         public var title: String {
             switch self {
             case .numeric:
-                return NSLocalizedString("Numeric", comment: "Type of keyboard to show for App Lock passcode: digits-only.")
+                return NSLocalizedString(
+                    "[AppLock/Passcode/KeyboardType/title] Numeric",
+                    bundle: Bundle.framework,
+                    value: "Numeric",
+                    comment: "Type of keyboard to show for App Lock passcode: digits only (PIN code).")
             case .alphanumeric:
-                return NSLocalizedString("Alphanumeric", comment: "Type of keyboard to show for App Lock passcode: letters and digits.")
+                return NSLocalizedString(
+                    "[AppLock/Passcode/KeyboardType/title] Alphanumeric",
+                    bundle: Bundle.framework,
+                    value: "Alphanumeric",
+                    comment: "Type of keyboard to show for App Lock passcode: letters and digits.")
             }
         }
     }

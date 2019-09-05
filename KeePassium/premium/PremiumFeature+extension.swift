@@ -13,26 +13,50 @@ extension PremiumFeature {
     public var titleName: String {
         switch self {
         case .canUseMultipleDatabases:
-            return "Multiple Databases".localized(comment: "Title of a premium feature: ability to use multiple databases (In Title Case)")
+            return NSLocalizedString(
+                "[PremiumFeature/MultiDB/title] Multiple Databases",
+                value: "Multiple Databases",
+                comment: "Title of a premium feature: ability to use multiple databases (In Title Case)")
         case .canUseBiometricAppLock:
-            return "Biometric Unlock".localized(comment: "Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case)")
+            return NSLocalizedString(
+                "[PremiumFeature/BiometricAppLock/title] Biometric Unlock",
+                value: "Biometric Unlock",
+                comment: "Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case)")
         case .canUseLongDatabaseTimeouts:
-            return "Long Database Timeouts".localized(comment: "Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case)")
+            return NSLocalizedString(
+                "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts",
+                value: "Long Database Timeouts",
+                comment: "Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case)")
         case .canPreviewAttachments:
-            return "Preview Attachments".localized(comment: "Title of a premium feature: ability to preview some attached files directly in the app (In Title Case)")
+            return NSLocalizedString(
+                "[PremiumFeature/Preview/title] Preview Attachments",
+                value: "Preview Attachments",
+                comment: "Title of a premium feature: ability to preview some attached files directly in the app (In Title Case)")
         }
     }
     
     public var upgradeNoticeText: String {
         switch self {
         case .canUseMultipleDatabases:
-            return "Easily switch between databases in the premium version.".localized(comment: "Description/advertisement for the `Multiple Databases` premium feature")
+            return NSLocalizedString(
+                "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version.",
+                value: "Easily switch between databases in the premium version.",
+                comment: "Description/advertisement for the `Multiple Databases` premium feature")
         case .canUseBiometricAppLock:
-            return "Quickly access your passwords using Face ID/Touch ID in the premium version.".localized(comment: "Description/advertisement for the `Biometric Unlock` premium feature")
+            return NSLocalizedString(
+                "[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version.",
+                value: "Quickly access your passwords using Face ID/Touch ID in the premium version.",
+                comment: "Description/advertisement for the `Biometric Unlock` premium feature")
         case .canUseLongDatabaseTimeouts:
-            return "Save time entering your complex master passwords — keep your database open longer in the premium version.".localized(comment: "Description/advertisement for the `Long Database Timeouts` premium feature")
+            return NSLocalizedString(
+                "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version.",
+                value: "Save time entering your complex master passwords — keep your database open longer in the premium version.",
+                comment: "Description/advertisement for the `Long Database Timeouts` premium feature")
         case .canPreviewAttachments:
-            return "Preview images and documents directly in the app, in the premium version.".localized(comment: "Description/advertisement for the `Preview Attachments` premium feature")
+            return NSLocalizedString(
+                "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version.",
+                value: "Preview images and documents directly in the app, in the premium version.",
+                comment: "Description/advertisement for the `Preview Attachments` premium feature")
         }
     }
 }

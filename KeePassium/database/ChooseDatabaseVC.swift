@@ -80,7 +80,7 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         guard let splitVC = splitViewController else { fatalError() }
         if !splitVC.isCollapsed {
             navigationItem.backBarButtonItem = UIBarButtonItem(
-                title: NSLocalizedString("Close", comment: "Button to close currently opened database, when leaving the root group"),
+                title: LString.actionCloseDatabase,
                 style: .plain,
                 target: nil,
                 action: nil
@@ -260,7 +260,7 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         } catch {
             Diag.error("Failed to resolve URL reference [message: \(error.localizedDescription)]")
             let alert = UIAlertController.make(
-                title: LString.titleExportError,
+                title: LString.titleFileExportError,
                 message: error.localizedDescription)
             present(alert, animated: true, completion: nil)
         }
@@ -477,11 +477,15 @@ extension ChooseDatabaseVC: UIDocumentPickerDelegate {
         guard let url = urls.first else { return }
         guard FileType.isDatabaseFile(url: url) else {
             let fileName = url.lastPathComponent
+            let errorMessage = String.localizedStringWithFormat(
+                NSLocalizedString(
+                    "[Database/Add] Selected file \"%@\" does not look like a database.",
+                    value: "Selected file \"%@\" does not look like a database.",
+                    comment: "Warning when trying to add a random file as a database. [fileName: String]"),
+                fileName)
             let errorAlert = UIAlertController.make(
                 title: LString.titleWarning,
-                message: NSLocalizedString(
-                    "Selected file \"\(fileName)\" does not look like a database.",
-                    comment: "Warning when trying to add a file"),
+                message: errorMessage,
                 cancelButtonTitle: LString.actionOK)
             present(errorAlert, animated: true, completion: nil)
             return

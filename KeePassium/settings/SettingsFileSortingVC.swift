@@ -50,9 +50,15 @@ class SettingsFileSortingVC: UITableViewController {
                             titleForHeaderInSection section: Int) -> String?
     {
         if section == 0 {
-            return NSLocalizedString("Backup", comment: "Title of a settings section about making backup files")
+            return NSLocalizedString(
+                "[Settings/FileLists/Backup/title] Backup",
+                value: "Backup",
+                comment: "Title of a settings section about making backup files")
         } else {
-            return NSLocalizedString("Sorting", comment: "Title of a settings section about file order in lists")
+            return NSLocalizedString(
+                "[Settings/FileLists/Sorting/title] Sorting",
+                value: "Sorting",
+                comment: "Title of a settings section about file order in lists")
         }
     }
 

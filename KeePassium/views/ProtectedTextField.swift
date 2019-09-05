@@ -42,7 +42,10 @@ class ProtectedTextField: ValidatingTextField {
             height: hideImage.size.height + 2 * verticalInsets)
         toggleButton.isSelected = !isSecureTextEntry
         toggleButton.isAccessibilityElement = true
-        toggleButton.accessibilityLabel = "Show Password".localized(comment: "Button to make password visible as plain-text")
+        toggleButton.accessibilityLabel = NSLocalizedString(
+            "[ProtectedTextField] Show Password",
+            value: "Show Password",
+            comment: "Action/button to make password visible as plain-text")
         self.rightView = toggleButton
         self.rightViewMode = .always
         
