@@ -87,11 +87,10 @@ To build your own binary, download the project and open it in Xcode 10.2 (or abo
 
 Code contributions cannot be accepted due to [formalities](#license), but feel free to:
 
-- [Report bugs](https://github.com/keepassium/KeePassium/issues)
-- [Suggest new features](https://github.com/keepassium/KeePassium/issues)
-- Consider buying a premium subscription
+- [Report bugs, suggest new features](https://github.com/keepassium/KeePassium/issues)
+- [Contribute to translation](https://github.com/keepassium/KeePassium-L10n)
 - [Write an AppStore review](https://apps.apple.com/us/app/id1435127111)
-
+- Consider buying a premium subscription :)
 
 ## Support
 
