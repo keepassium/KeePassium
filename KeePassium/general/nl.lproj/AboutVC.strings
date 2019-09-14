@@ -1,0 +1,129 @@
+/* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
+"7bL-fQ-OUc.headerTitle" = "Feedback";
+
+/* Class = "UILabel"; text = "Proprietary license"; ObjectID = "7cl-Fc-8Nf"; */
+"7cl-Fc-8Nf.text" = "Gesloten licentie";
+
+/* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
+"7id-QT-w26.text" = "Pictogrammen van Icons8";
+
+/* Class = "UILabel"; text = "Ionicons by Ionic"; ObjectID = "9lh-fA-Xgx"; */
+"9lh-fA-Xgx.text" = "Ionicons door Ionic";
+
+/* Class = "UILabel"; text = "Base32 for Swift by Norio Nomura"; ObjectID = "9MZ-zt-75x"; */
+"9MZ-zt-75x.text" = "Base32 voor Swift door Norio Nomura";
+
+/* Class = "UILabel"; text = "KeePassium does not collect any personal or analytical data nor share it with anyone."; ObjectID = "9wt-nj-TZW"; */
+"9wt-nj-TZW.text" = "KeePassium verzamelt geen persoonlijke of analytische gegevens en deel deze niet met iemand.";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
+"Aig-jg-p8B.text" = "MIT-licentie";
+
+/* Class = "UILabel"; text = "Do you like what you see?"; ObjectID = "AMd-x7-PDa"; Note = "First part of the 'Do you like what you see? / Leave an App Store review.\""; */
+"AMd-x7-PDa.text" = "Vind je de app prettig?";
+
+/* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
+"aqX-J9-IzD.text" = "Vertaling door KeePassium-bijdragers";
+
+/* Class = "UILabel"; text = "Twofish implementation by Niels Ferguson"; ObjectID = "axY-gm-XNr"; */
+"axY-gm-XNr.text" = "Twovis-implementatie door Niels Ferguson";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "bAq-tq-nuY"; */
+"bAq-tq-nuY.text" = "MIT-licentie";
+
+/* Class = "UILabel"; text = "©2019 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
+"bmf-Ed-H4x.text" = "©2019 Andrei Popleteev";
+
+/* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
+"CNI-b8-7Da.text" = "KeePass van Dominik Reichl";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
+"daJ-ma-jhe.text" = "MIT-licentie";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "dMv-Zw-y7y"; */
+"dMv-Zw-y7y.text" = "MIT-licentie";
+
+/* Class = "UILabel"; text = "Custom permissive license"; ObjectID = "EWy-OI-IxL"; */
+"EWy-OI-IxL.text" = "Aangepaste vrijblijvende licentie";
+
+/* Class = "UILabel"; text = "ChaCha20 & Salsa20 implementation by D. J. Bernstein"; ObjectID = "Ha8-Qv-0qg"; */
+"Ha8-Qv-0qg.text" = "ChaCha20- en Salsa20-implementatie door D. J. Bernstein";
+
+/* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
+"hDU-6p-Bzr.text" = "Rijndael-implementatie door Szymon Stefanek";
+
+/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "hVm-qH-TAI"; */
+"hVm-qH-TAI.text" = "CC BY 3.0";
+
+/* Class = "UILabel"; text = "CC BY-ND 3.0"; ObjectID = "iKy-z5-Ox7"; */
+"iKy-z5-Ox7.text" = "CC BY-ND 3.0";
+
+/* Class = "UITableViewSection"; headerTitle = "Privacy Policy"; ObjectID = "JbR-nf-D9o"; Note = "Section: privacy policy"; */
+"JbR-nf-D9o.headerTitle" = "Privacybeleid";
+
+/* Class = "UILabel"; text = "Public domain"; ObjectID = "JgR-60-OMp"; */
+"JgR-60-OMp.text" = "Publiek domein";
+
+/* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
+"JRy-jy-KXb.text" = "GPL-licentie";
+
+/* Class = "UILabel"; text = "Any questions? We have answers."; ObjectID = "jzd-La-4YT"; */
+"jzd-La-4YT.text" = "Heb je vragen? Wij hebben de antwoorden.";
+
+/* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
+"Kdg-Hz-XOQ.text" = "Gelikt deboss-patroon van Daniel Beaton";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
+"lht-LP-o0Y.text" = "MIT-licentie";
+
+/* Class = "UITableViewSection"; headerTitle = "Credits"; ObjectID = "muG-xI-muo"; Note = "Section: acknowledgements and thank-you notes"; */
+"muG-xI-muo.headerTitle" = "Met dank aan";
+
+/* Class = "UITableViewController"; title = "About"; ObjectID = "NLN-lQ-bh5"; */
+"NLN-lQ-bh5.title" = "Over";
+
+/* Class = "UILabel"; text = "CC0 license"; ObjectID = "o9e-qb-mMw"; */
+"o9e-qb-mMw.text" = "CC0-licentie";
+
+/* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
+"QV5-N8-NRt.text" = "Publiek domein";
+
+/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "Qz4-PJ-Tra"; */
+"Qz4-PJ-Tra.text" = "CC BY 3.0";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
+"Rab-wf-OQe.text" = "MIT-licentie";
+
+/* Class = "UILabel"; text = "Argon2 by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves"; ObjectID = "rDJ-4G-8Oz"; */
+"rDJ-4G-8Oz.text" = "Argon2 van Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson en Samuel Neves";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "sCk-Se-Vvo"; */
+"sCk-Se-Vvo.text" = "MIT-licentie";
+
+/* Class = "UILabel"; text = "GzipSwift by 1024jp"; ObjectID = "sDW-ws-pQf"; */
+"sDW-ws-pQf.text" = "GzipSwift van 1024jp";
+
+/* Class = "UILabel"; text = "AEXML by Marko Tadić"; ObjectID = "sI5-AG-Y6p"; */
+"sI5-AG-Y6p.text" = "AEXML van Marko Tadić";
+
+/* Class = "UILabel"; text = "Linecons by Andrian Valeanu"; ObjectID = "SOX-Re-yl9"; */
+"SOX-Re-yl9.text" = "Linecons door Andrian Valeanu";
+
+/* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
+"TOl-DA-gYc.text" = "Neem contact op met ons ondersteuningsteam";
+
+/* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
+"tOr-N9-2UY.text" = "Veerpictogrammen van Cole Bemis";
+
+/* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
+"uiw-Qh-pNp.text" = "Laat een recensie achter in de App Store.";
+
+/* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
+"vg0-6M-OIq.text" = "KeyboardLayoutConstraint van James Tang";
+
+/* Class = "UILabel"; text = "KeePassium"; ObjectID = "Wuj-Uw-baK"; */
+"Wuj-Uw-baK.text" = "KeePassium";
+
+/* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
+"wYr-Ya-qAP.text" = "Systeeminstellingenpictogram van Vicons Design";
+

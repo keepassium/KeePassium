@@ -1,0 +1,12 @@
+/* Class = "UIButton"; normalTitle = "Unlock"; ObjectID = "89h-8b-LRO"; */
+"89h-8b-LRO.normalTitle" = "Unlock";
+
+/* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "bxv-kR-0w1"; */
+"bxv-kR-0w1.title" = "Unlock Database";
+
+/* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "Dnl-vm-GMg"; */
+"Dnl-vm-GMg.placeholder" = "No Key File";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "U6j-Ph-AWS"; */
+"U6j-Ph-AWS.placeholder" = "Password";
+

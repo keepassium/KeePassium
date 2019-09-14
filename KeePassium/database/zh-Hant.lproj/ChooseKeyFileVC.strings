@@ -1,0 +1,9 @@
+/* Class = "UINavigationItem"; title = "Choose Key File"; ObjectID = "dAQ-9p-8Y9"; */
+"dAQ-9p-8Y9.title" = "選擇金鑰檔案";
+
+/* Class = "UILabel"; text = "Use only password"; ObjectID = "Ftb-fa-Dvb"; Note = "Explanation of the default option in key file picker: don't use key files."; */
+"Ftb-fa-Dvb.text" = "僅使用密碼";
+
+/* Class = "UILabel"; text = "No Key File"; ObjectID = "tGm-oo-awN"; Note = "Title of the default option in key file picker: don't use key files."; */
+"tGm-oo-awN.text" = "沒有金鑰檔案";
+

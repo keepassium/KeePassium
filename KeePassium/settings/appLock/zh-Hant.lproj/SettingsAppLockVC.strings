@@ -1,0 +1,30 @@
+/* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
+"5Dg-KX-m7a.footerTitle" = "如果您使用了錯誤的應用解鎖密碼, KeePassium 將會關閉所有的資料庫並從系統鑰匙圈中清除所有的主金鑰。";
+
+/* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
+"5Dg-KX-m7a.headerTitle" = "錯誤的應用解鎖密碼";
+
+/* Class = "UILabel"; text = "Protect Databases"; ObjectID = "6Pk-35-Fx6"; */
+"6Pk-35-Fx6.text" = "保護資料庫";
+
+/* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
+"7ae-8I-LiQ.footerTitle" = "可以使用生物識別身份驗證作為應用解鎖密碼(但可能不這麼安全) 快速解鎖的替代方案。";
+
+/* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
+"7ae-8I-LiQ.headerTitle" = "生物識別技術";
+
+/* Class = "UITableViewSection"; footerTitle = "Protect KeePassium from unauthorized access."; ObjectID = "aBx-Ee-bMk"; Note = "Explanation for the `Enable AppLock` option."; */
+"aBx-Ee-bMk.footerTitle" = "保護KeePassium免受未經授權的訪問。";
+
+/* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
+"Ef4-Jw-xeO.text" = "超時";
+
+/* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
+"IS1-Lb-MFy.text" = "啟用應用解鎖密碼";
+
+/* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
+"m50-fl-4tu.footerTitle" = "應用程序將在此時間後自動鎖定。";
+
+/* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
+"U5m-je-MhO.title" = "應用保護";
+

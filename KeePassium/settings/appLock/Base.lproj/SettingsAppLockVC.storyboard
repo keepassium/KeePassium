@@ -28,7 +28,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable AppLock" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IS1-Lb-MFy">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Enable AppLock" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IS1-Lb-MFy">
                                                     <rect key="frame" x="61" y="11.5" width="186" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -50,13 +50,17 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="IS1-Lb-MFy" firstAttribute="centerY" secondItem="tII-pX-NuJ" secondAttribute="centerY" id="3eM-h8-KT9"/>
+                                                <constraint firstItem="IS1-Lb-MFy" firstAttribute="centerY" secondItem="tII-pX-NuJ" secondAttribute="centerY" priority="250" id="3eM-h8-KT9"/>
                                                 <constraint firstItem="3af-il-hAW" firstAttribute="trailing" secondItem="tII-pX-NuJ" secondAttribute="trailingMargin" id="4Ut-gK-BZf"/>
+                                                <constraint firstItem="3af-il-hAW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tII-pX-NuJ" secondAttribute="top" constant="6" id="CoG-xf-dPM"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3af-il-hAW" secondAttribute="bottom" constant="6" id="Lrl-6h-aAr"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="IS1-Lb-MFy" secondAttribute="bottom" id="QUI-Lw-vq4"/>
                                                 <constraint firstItem="8Uj-yt-PUw" firstAttribute="centerY" secondItem="tII-pX-NuJ" secondAttribute="centerY" id="TV1-0u-zEB"/>
                                                 <constraint firstItem="3af-il-hAW" firstAttribute="leading" secondItem="IS1-Lb-MFy" secondAttribute="trailing" constant="8" id="VMK-04-rVy"/>
                                                 <constraint firstItem="8Uj-yt-PUw" firstAttribute="leading" secondItem="tII-pX-NuJ" secondAttribute="leadingMargin" id="lG0-pc-Fnr"/>
                                                 <constraint firstItem="IS1-Lb-MFy" firstAttribute="leading" secondItem="8Uj-yt-PUw" secondAttribute="trailing" constant="16" id="llt-Na-DEe"/>
-                                                <constraint firstItem="3af-il-hAW" firstAttribute="centerY" secondItem="tII-pX-NuJ" secondAttribute="centerY" id="qTM-1J-R7P"/>
+                                                <constraint firstItem="IS1-Lb-MFy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tII-pX-NuJ" secondAttribute="topMargin" id="pJW-OL-7yx"/>
+                                                <constraint firstItem="3af-il-hAW" firstAttribute="centerY" secondItem="tII-pX-NuJ" secondAttribute="centerY" priority="750" id="qTM-1J-R7P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -99,12 +103,16 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="BEv-H7-38c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="k5A-l1-01Y" secondAttribute="top" constant="6" id="4Zy-kn-iCZ"/>
                                                 <constraint firstItem="BEv-H7-38c" firstAttribute="trailing" secondItem="k5A-l1-01Y" secondAttribute="trailingMargin" id="EuQ-zp-fgr"/>
                                                 <constraint firstItem="Fez-6g-oyk" firstAttribute="leading" secondItem="Qtt-Tp-tnl" secondAttribute="trailing" constant="16" id="MwJ-Jo-Odx"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Fez-6g-oyk" secondAttribute="bottom" id="SeY-5S-rLQ"/>
                                                 <constraint firstItem="BEv-H7-38c" firstAttribute="leading" secondItem="Fez-6g-oyk" secondAttribute="trailing" constant="8" id="b6N-FR-WjB"/>
-                                                <constraint firstItem="Fez-6g-oyk" firstAttribute="centerY" secondItem="k5A-l1-01Y" secondAttribute="centerY" id="fKS-eC-oA8"/>
-                                                <constraint firstItem="BEv-H7-38c" firstAttribute="centerY" secondItem="k5A-l1-01Y" secondAttribute="centerY" id="koz-wx-cXz"/>
+                                                <constraint firstItem="Fez-6g-oyk" firstAttribute="centerY" secondItem="k5A-l1-01Y" secondAttribute="centerY" priority="250" id="fKS-eC-oA8"/>
+                                                <constraint firstItem="BEv-H7-38c" firstAttribute="centerY" secondItem="k5A-l1-01Y" secondAttribute="centerY" priority="750" id="koz-wx-cXz"/>
                                                 <constraint firstItem="Qtt-Tp-tnl" firstAttribute="centerY" secondItem="k5A-l1-01Y" secondAttribute="centerY" id="pfu-EX-1DC"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BEv-H7-38c" secondAttribute="bottom" constant="6" id="tN3-Dc-P5J"/>
+                                                <constraint firstItem="Fez-6g-oyk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="k5A-l1-01Y" secondAttribute="topMargin" id="yMZ-V1-ZW4"/>
                                                 <constraint firstItem="Qtt-Tp-tnl" firstAttribute="leading" secondItem="k5A-l1-01Y" secondAttribute="leadingMargin" id="z63-eB-dLI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -123,7 +131,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Timeout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Ef4-Jw-xeO">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Timeout" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Ef4-Jw-xeO">
                                                     <rect key="frame" x="60" y="12" width="63" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -143,7 +151,7 @@
                                                         <fragment content="#bc-ignore!"/>
                                                     </attributedString>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-app-lock-timeout-listitem" id="VMH-qU-wJg">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="settings-app-lock-timeout-listitem" id="VMH-qU-wJg">
                                                     <rect key="frame" x="16" y="7" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
@@ -169,7 +177,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLg-ic-wmL">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="8" width="51" height="27.5"/>
                                                     <connections>
                                                         <action selector="didChangeLockDatabasesOnFailedPasscodeSwitch:" destination="U5m-je-MhO" eventType="valueChanged" id="H2o-Wt-gpV"/>
                                                     </connections>
@@ -185,12 +193,16 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="cLg-ic-wmL" firstAttribute="trailing" secondItem="EJO-oS-RvY" secondAttribute="trailingMargin" id="5A6-uW-2fu"/>
-                                                <constraint firstItem="6Pk-35-Fx6" firstAttribute="centerY" secondItem="EJO-oS-RvY" secondAttribute="centerY" id="8hp-um-Dgt"/>
+                                                <constraint firstItem="6Pk-35-Fx6" firstAttribute="centerY" secondItem="EJO-oS-RvY" secondAttribute="centerY" priority="250" id="8hp-um-Dgt"/>
+                                                <constraint firstItem="cLg-ic-wmL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EJO-oS-RvY" secondAttribute="top" constant="8" id="99q-8u-UnZ"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="6Pk-35-Fx6" secondAttribute="bottom" id="EWx-V6-MZG"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cLg-ic-wmL" secondAttribute="bottom" constant="8" id="IVr-0R-259"/>
                                                 <constraint firstItem="7A0-DS-UtO" firstAttribute="leading" secondItem="EJO-oS-RvY" secondAttribute="leadingMargin" id="Nga-qL-kE6"/>
                                                 <constraint firstItem="6Pk-35-Fx6" firstAttribute="leading" secondItem="7A0-DS-UtO" secondAttribute="trailing" constant="16" id="OE9-oM-CB2"/>
                                                 <constraint firstItem="cLg-ic-wmL" firstAttribute="leading" secondItem="6Pk-35-Fx6" secondAttribute="trailing" constant="8" id="PHs-TA-Xiy"/>
                                                 <constraint firstItem="7A0-DS-UtO" firstAttribute="centerY" secondItem="EJO-oS-RvY" secondAttribute="centerY" id="Tfn-mz-qDl"/>
-                                                <constraint firstItem="cLg-ic-wmL" firstAttribute="centerY" secondItem="EJO-oS-RvY" secondAttribute="centerY" id="cno-rA-NXK"/>
+                                                <constraint firstItem="cLg-ic-wmL" firstAttribute="centerY" secondItem="EJO-oS-RvY" secondAttribute="centerY" priority="750" id="cno-rA-NXK"/>
+                                                <constraint firstItem="6Pk-35-Fx6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EJO-oS-RvY" secondAttribute="topMargin" id="eAN-gp-Ilx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

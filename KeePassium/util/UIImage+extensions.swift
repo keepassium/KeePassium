@@ -47,9 +47,6 @@ extension UIImage {
     }
     
     static func kpIcon(forEntry entry: Entry) -> UIImage? {
-        if entry.isExpired {
-            return UIImage(named: "db-icons/kpbIconExpired")
-        }
         if let entry2 = entry as? Entry2,
             let db2 = entry2.database as? Database2,
             let customIcon2 = db2.customIcons[entry2.customIconUUID],
@@ -60,9 +57,6 @@ extension UIImage {
     }
     
     static func kpIcon(forGroup group: Group) -> UIImage? {
-        if group.isExpired {
-            return UIImage(named: "db-icons/kpbIconExpired")
-        }
         if let group2 = group as? Group2,
             let db2 = group2.database as? Database2,
             let customIcon2 = db2.customIcons[group2.customIconUUID],

@@ -26,7 +26,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Prototype Sorting Cell}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="xy9-Tf-Yi6">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Prototype Sorting Cell}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="xy9-Tf-Yi6">
                                             <rect key="frame" x="16" y="0.0" width="319" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -46,8 +46,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Backup Files" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp5-eX-yPx">
-                                            <rect key="frame" x="16" y="11.5" width="294" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Show Backup Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp5-eX-yPx">
+                                            <rect key="frame" x="16" y="11.5" width="286" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -56,15 +56,19 @@
                                             </attributedString>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="07r-DF-Oeg">
-                                            <rect key="frame" x="318" y="6.5" width="51" height="31"/>
+                                            <rect key="frame" x="310" y="6.5" width="51" height="31"/>
                                         </switch>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="pp5-eX-yPx" firstAttribute="leading" secondItem="vsc-Vd-mro" secondAttribute="leadingMargin" id="2rA-e7-Yd8"/>
-                                        <constraint firstItem="07r-DF-Oeg" firstAttribute="centerY" secondItem="vsc-Vd-mro" secondAttribute="centerY" id="AMH-Wy-61p"/>
+                                        <constraint firstItem="07r-DF-Oeg" firstAttribute="centerY" secondItem="vsc-Vd-mro" secondAttribute="centerY" priority="750" id="AMH-Wy-61p"/>
                                         <constraint firstItem="07r-DF-Oeg" firstAttribute="leading" secondItem="pp5-eX-yPx" secondAttribute="trailing" constant="8" id="Iyo-Xz-dx8"/>
-                                        <constraint firstItem="pp5-eX-yPx" firstAttribute="centerY" secondItem="vsc-Vd-mro" secondAttribute="centerY" id="Oea-pg-Tv7"/>
-                                        <constraint firstAttribute="trailing" secondItem="07r-DF-Oeg" secondAttribute="trailing" constant="8" id="iJe-Zp-0J2"/>
+                                        <constraint firstItem="pp5-eX-yPx" firstAttribute="centerY" secondItem="vsc-Vd-mro" secondAttribute="centerY" priority="750" id="Oea-pg-Tv7"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="pp5-eX-yPx" secondAttribute="bottom" id="RAE-7F-j66"/>
+                                        <constraint firstItem="07r-DF-Oeg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vsc-Vd-mro" secondAttribute="top" constant="6" id="SUE-LE-E00"/>
+                                        <constraint firstItem="pp5-eX-yPx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vsc-Vd-mro" secondAttribute="topMargin" id="aMU-zM-nu5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="07r-DF-Oeg" secondAttribute="trailing" id="iJe-Zp-0J2"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="07r-DF-Oeg" secondAttribute="bottom" constant="6" id="tcY-DM-RQ5"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

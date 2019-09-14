@@ -39,7 +39,8 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
         editButton = UIBarButtonItem(
-            barButtonSystemItem: .edit,
+            title: LString.actionEdit,
+            style: .plain,
             target: self,
             action: #selector(didPressEdit))
         navigationItem.rightBarButtonItem = isHistoryMode ? nil : editButton
@@ -54,8 +55,21 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
         refresh()
     }
     
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        tableView.isEditing = false
+        refresh()
+    }
+    
     func refresh() {
         tableView.reloadData()
+        if tableView.isEditing {
+            editButton.title = LString.actionDone
+            editButton.style = .done
+        } else {
+            editButton.title = LString.actionEdit
+            editButton.style = .plain
+        }
     }
     
 
@@ -179,9 +193,20 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
         return [deleteAction]
     }
     
+    override func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .insert {
+            didPressAddAttachment()
+        }
+    }
+    
     
     @objc func didPressEdit() {
         tableView.setEditing(!tableView.isEditing, animated: true)
+        refresh()
     }
     
 

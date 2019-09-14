@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Beta tester promo"; ObjectID = "Ams-tg-a6W"; */
+"Ams-tg-a6W.text" = "Beta測試者優惠";
+
+/* Class = "UILabel"; text = "Install the free version from the App Store, upgrade to premium whenever you want."; ObjectID = "DHf-ZF-lUj"; */
+"DHf-ZF-lUj.text" = "從App Store安裝免費版, 並且隨時升級到高級版。";
+
+/* Class = "UILabel"; text = "Until 31 August 2019, premium upgrades are available at special early bird prices."; ObjectID = "Dln-R4-hDr"; */
+"Dln-R4-hDr.text" = "在2019年8月31日之前享有早鳥優惠價格升級。";
+
+/* Class = "UILabel"; text = "Tap here to get free premium until 1 Sep 2020. \n(But note: the early-bird pricing won't be there anymore, so this might not be the best choice in the long run.)"; ObjectID = "gBU-27-3it"; */
+"gBU-27-3it.text" = "點擊這裡獲取免費的高級版到2020年9月1日。 \n(但請注意: 早鳥價格可能不再存在, 從長遠的角度看來, 可能不是一個最好的選擇。)";
+
+/* Class = "UILabel"; text = "Early adopter promo"; ObjectID = "Hem-sD-JQZ"; */
+"Hem-sD-JQZ.text" = "早鳥價格優惠";
+
+/* Class = "UINavigationItem"; title = "Beta → Release"; ObjectID = "hx0-nf-Kwn"; */
+"hx0-nf-Kwn.title" = "測試版 → 正式發行版";
+
+/* Class = "UILabel"; text = "Contact us"; ObjectID = "lju-i3-mMS"; */
+"lju-i3-mMS.text" = "聯繫我們";
+
+/* Class = "UILabel"; text = "Feel free to stay on the beta channel and get new features as soon as they appear. Beta versions will have all the bells and whistles, but might be less stable than before."; ObjectID = "naw-As-2di"; */
+"naw-As-2di.text" = "保持在測試頻道將會在第一時間獲取最新的特性。測試版本所有功能均能免費使用, 但可能不如正式版穩定。";
+
+/* Class = "UILabel"; text = "Stick to TestFlight"; ObjectID = "Nha-DI-lcm"; */
+"Nha-DI-lcm.text" = "保留 TestFlight";
+
+/* Class = "UILabel"; text = "Switch to the free version"; ObjectID = "UVw-Iq-kix"; */
+"UVw-Iq-kix.text" = "切換到免費版本";
+
+/* Class = "UILabel"; text = "Contact us if you have any questions about switching from beta to release version."; ObjectID = "WYR-9D-CUb"; */
+"WYR-9D-CUb.text" = "如果您對於從Beta測試版升級到正式版有疑問, 歡迎聯繫我們。";
+
+/* Class = "UILabel"; text = "KeePassium is now officially available on the App Store. Thank you for testing!"; ObjectID = "xEf-mF-cRj"; */
+"xEf-mF-cRj.text" = "KeePassium 現在已經在App Store正式上架, 感謝您的測試。";
+
+/* Class = "UITableViewSection"; headerTitle = "What's next?"; ObjectID = "yZc-RG-QZj"; */
+"yZc-RG-QZj.headerTitle" = "下一步是什麼?";
+

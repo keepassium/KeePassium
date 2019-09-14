@@ -30,7 +30,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     weak var group: Group? {
         didSet {
             if let group = group {
-                groupTitleLabel.text = group.name
+                groupTitleLabel.setText(group.name, strikethrough: group.isExpired)
                 groupIconView.image = UIImage.kpIcon(forGroup: group)
             } else {
                 groupTitleLabel.text = nil
@@ -298,12 +298,17 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
 
         let entry = searchResults[indexPath.section].entries[indexPath.row].entry
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.entry, for: indexPath)
-        guard let entryCell = cell as? GroupViewListCell else { fatalError() }
-        entryCell.titleLabel?.text = entry.title
-        entryCell.subtitleLabel?.text = getDetailInfo(forEntry: entry)
-        entryCell.iconView?.image = UIImage.kpIcon(forEntry: entry)
-        return cell
+        let entryCell = tableView.dequeueReusableCell(
+            withIdentifier: CellID.entry,
+            for: indexPath)
+            as! GroupViewListCell
+        setupCell(
+            entryCell,
+            title: entry.title,
+            subtitle: getDetailInfo(forEntry: entry),
+            image: UIImage.kpIcon(forEntry: entry),
+            isExpired: entry.isExpired)
+        return entryCell
     }
     
     private func getGroupItemCell(at indexPath: IndexPath) -> UITableViewCell {
@@ -312,30 +317,52 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
         
         if indexPath.row < groupsSorted.count {
+            guard let group = groupsSorted[indexPath.row].value else {
+                assertionFailure()
+                return tableView.dequeueReusableCell(withIdentifier: CellID.group, for: indexPath)
+            }
             let groupCell = tableView.dequeueReusableCell(
                 withIdentifier: CellID.group,
                 for: indexPath)
                 as! GroupViewListCell
-            if let _group = groupsSorted[indexPath.row].value {
-                groupCell.titleLabel?.text = _group.name
-                let subitemCount = _group.groups.count + _group.entries.count
-                groupCell.subtitleLabel?.text = "\(subitemCount)"
-                groupCell.iconView?.image = UIImage.kpIcon(forGroup: _group)
-            }
+            setupCell(
+                groupCell,
+                title: group.name,
+                subtitle: "\(group.groups.count + group.entries.count)",
+                image: UIImage.kpIcon(forGroup: group),
+                isExpired: group.isExpired)
             return groupCell
         } else {
+            let entryIndex = indexPath.row - groupsSorted.count
+            guard let entry = entriesSorted[entryIndex].value else {
+                assertionFailure()
+                return tableView.dequeueReusableCell(withIdentifier: CellID.entry, for: indexPath)
+            }
+            
             let entryCell = tableView.dequeueReusableCell(
                 withIdentifier: CellID.entry,
                 for: indexPath)
                 as! GroupViewListCell
-            let entryIndex = indexPath.row - groupsSorted.count
-            if let _entry = entriesSorted[entryIndex].value {
-                entryCell.titleLabel?.text = _entry.title
-                entryCell.subtitleLabel?.text = getDetailInfo(forEntry: _entry)
-                entryCell.iconView?.image = UIImage.kpIcon(forEntry: _entry)
-            }
+            setupCell(
+                entryCell,
+                title: entry.title,
+                subtitle: getDetailInfo(forEntry: entry),
+                image: UIImage.kpIcon(forEntry: entry),
+                isExpired: entry.isExpired)
             return entryCell
         }
+    }
+    
+    private func setupCell(
+        _ cell: GroupViewListCell,
+        title: String,
+        subtitle: String?,
+        image: UIImage?,
+        isExpired: Bool)
+    {
+        cell.titleLabel.setText(title, strikethrough: isExpired)
+        cell.subtitleLabel?.setText(subtitle, strikethrough: isExpired)
+        cell.iconView?.image = image
     }
 
     func getDetailInfo(forEntry entry: Entry) -> String? {

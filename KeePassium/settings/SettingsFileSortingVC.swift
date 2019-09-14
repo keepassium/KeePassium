@@ -33,12 +33,14 @@ class SettingsFileSortingVC: UITableViewController {
             18 * 2 + 
             18 * 2 
         vc.preferredContentSize = CGSize(width: 320, height: contentHeight)
-        vc.modalPresentationStyle = .popover
-        if let popover = vc.popoverPresentationController {
+        
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = .popover
+        if let popover = navVC.popoverPresentationController {
             popover.barButtonItem = barButtonSource
             popover.delegate = vc
         }
-        return vc
+        return navVC
     }
     
     
@@ -106,13 +108,16 @@ extension SettingsFileSortingVC: UIPopoverPresentationControllerDelegate {
         viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle
         ) -> UIViewController?
     {
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(dismissPopover))
-        let nav = UINavigationController(rootViewController: controller.presentedViewController)
-        nav.topViewController?.navigationItem.rightBarButtonItem = doneButton
-        return nav
+        if let wrapperNavVC = controller.presentedViewController as? UINavigationController,
+            let navItem = wrapperNavVC.topViewController?.navigationItem
+        {
+            let doneButton = UIBarButtonItem(
+                barButtonSystemItem: .done,
+                target: self,
+                action: #selector(dismissPopover))
+            navItem.rightBarButtonItem = doneButton
+        }
+        return nil 
     }
 
     @objc

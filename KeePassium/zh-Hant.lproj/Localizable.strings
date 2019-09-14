@@ -1,0 +1,453 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "解鎖";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "解鎖 KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "使用應用解鎖密碼";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "您選定的檔案 \"%@\" 看起來不像是個資料庫文件。";
+
+/* Hint shown when both password and key file are empty. */
+"[Database/Create] Please enter a password or choose a key file." = "請輸入一個密碼或者選擇一個金鑰檔案。";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "創建新的資料庫";
+
+/* Note for a sample entry */
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "如果您願意, 您也可以填寫一些備註。";
+
+/* Password for a sample entry. Translation is optional. */
+"[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
+
+/* Title for a sample entry */
+"[Database/Create/TemplateEntry/title] Sample Entry" = "條目樣本";
+
+/* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
+"[Database/Create/TemplateEntry/userName] john.smith" = "張三";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Email" = "電子郵件";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Finance" = "財務";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] General" = "一般";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Internet" = "互聯網";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Network" = "網際網路";
+
+/* Predefined `Operating system` group in a new database */
+"[Database/Create/TemplateGroup/title] OS" = "作業系統";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "創建新的資料庫";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "刪除資料庫文件?\n 請確保您有備份檔案!";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "載入中...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "主密碼修改成功";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "打開資料庫";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "關閉";
+
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "關閉資料庫";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "忽略並繼續";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "資料庫最後由 %@ 編輯。";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "您的資料庫已經準備就緒, 但還有點問題。";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "從列表中刪除資料庫?\n 不會對檔案進行更改或刪除, 您可以在稍後添加回來。";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "完成";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "正在保存...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "金鑰檔案異常: %@";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "附件";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "創建新條目";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "欄位名稱";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "備註";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "密碼";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "標題";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "網址";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "用戶名稱";
+
+/* Status message: loading file to be attached to an entry */
+"[Entry/Files/Add] Loading attachment file" = "載入附件";
+
+/* Confirmation message to replace an existing entry attachment with a new one. */
+"[Entry/Files/Add] Replace existing attachment?" = "替換現有的附件？";
+
+/* Explanation for replacing the only attachment of KeePass1 entry */
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "此資料庫每個條目僅支持一個附件, 且它已經有一個附件了。";
+
+/* Title of a dialog for renaming an attached file */
+"[Entry/Files/Rename/title] Rename File" = "重新命名檔案";
+
+/* Title of a field with entry creation date and time */
+"[Entry/History] Creation Date" = "建立時間";
+
+/* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
+"[Entry/History] Expiry Date" = "到期日期";
+
+/* Title of a field with date and time when the entry was last accessed/viewed */
+"[Entry/History] Last Access Date" = "上次存取時間";
+
+/* Title of a field with entry's last modification date and time */
+"[Entry/History] Last Modification Date" = "最後修改日期";
+
+/* Title of a list with previous versions/revisions of an entry. */
+"[Entry/History] Previous Versions" = "之前的版本";
+
+/* Expiry Date of an entry which does not expire. */
+"[Entry/History/ExpiryDate] Never" = "從不";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "新條目";
+
+/* Action to start editing an entry */
+"[Entry/View] Edit Entry" = "編輯條目";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "建立時間";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "檔案位置";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "檔案名稱";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "檔案大小";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "最後修改日期";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "錯誤";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "取消";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "聯繫我們";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "刪除";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "捨棄";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "關閉";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "完成";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "編輯";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "匯出";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "確定";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "重新命名";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "替換";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "顯示詳細資訊";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "您確定嗎？";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "要捨棄尚未儲存的變更？";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "此處有未存檔的變更";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "刪除";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "移除";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "匯出錯誤";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "匯入錯誤";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "錯誤";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "鑰匙圈錯誤";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "警告";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "建立群組";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "建立群組";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "編輯群組";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "新建群組";
+
+/* Name of an entry/group category (visual style): default one, like in KeePass */
+"[ItemCategory] Default (KeePass)" = "默認(KeePass)";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "刪除金鑰文件?\n 請確保您有備份檔案!";
+
+/* News title for beta testers: the app is now available on the App Store. */
+"[News/2019/08/BetaTransition/title] Now on the App Store!" = "現在去 App Store 更新正式版!";
+
+/* Title of an announcement [expiryDateFormatted: String] */
+"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "早鳥優惠結束 %@";
+
+/* Message shown when opening an announcement in AutoFill */
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "請打開主程序獲得完整的公告。";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/AttachmentPreview/details]" = "直接在KeePassium上預覽附件, 並且不留痕跡。(適用於圖像, 文檔, 檔案等。)";
+
+/* Title of a premium feature */
+"[Premium/Benefits/AttachmentPreview/title]" = "無痕預覽";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/DatabaseTimeout/details]" = "厭倦了輸入您的主密碼？保持資料庫打開時間更長, 只需輕輕一按即可解鎖。";
+
+/* Title of a premium feature */
+"[Premium/Benefits/DatabaseTimeout/title]" = "節省您的時間";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/Maintenance/details]" = "保持 KeePassium 的改進、維護以及無廣告。";
+
+/* Title of a premium feature */
+"[Premium/Benefits/Maintenance/title]" = "保持光輝";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/MultiDB/details]" = "添加多個資料庫並快速切換它們。";
+
+/* Title of a premium feature */
+"[Premium/Benefits/MultiDB/title]" = "與團隊同步";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/Support/details]" = "社區支持意味著沒有義務。開通高級版，直接從開發人員那裡獲得答案和解決方案。";
+
+/* Title of a premium feature */
+"[Premium/Benefits/Support/title]" = "與技術支持談談";
+
+/* Status: special premium for beta-testing environment is active */
+"[Premium/status] Beta testing" = "測試版本";
+
+/* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
+"[Premium/status] Expired %@ ago. Please renew." = "已經到期 %@ 天, 請續訂。";
+
+/* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
+"[Premium/status] Next renewal on %@" = "下次續訂時間: %@";
+
+/* Status: validity period of once-and-forever premium */
+"[Premium/status] Valid forever" = "永遠有效";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "沒有可用的升級, 這不應該發生, 請聯繫技術支持。";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "升級到高級版";
+
+/* Message shown when in-app purchase is deferred until parental approval. */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent" = "感恩您! 您可以使用KeePassium 直到父母批准購買。";
+
+/* Description of a premium option. Lowercase. For example 'Business Premium / with priority support'. */
+"[Premium/Upgrade/description] with priority support" = "優先支持";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@ / 月";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@ / 年";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "%@ 一次性付費";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "聯繫 AppStore...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "購買中…";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "升級成功, 享受它!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "恢復購買";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "沒有可以還原的內購。";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "很抱歉";
+
+/* Text of the message shown after successful in-app purchase */
+"[Premium/Upgrade/Success/text] Upgrade successful, enjoy the app!" = "升級成功, 享受它!";
+
+/* Title of the message shown after a successful in-app purchase */
+"[Premium/Upgrade/Success/title] Thank You" = "感恩";
+
+/* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "程序已使用: %1$@/月, 大約%2$@/年";
+
+/* Description/advertisement for the `Biometric Unlock` premium feature */
+"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "升級高級版使用Face ID/Touch ID來快速存取您的密碼。";
+
+/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
+"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "生物識別解鎖";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "節省輸入複雜主密碼的時間 - 在高級版中保持資料庫打開更長時間。";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "資料庫超時時間";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在高級版本中快速切換多個資料庫。";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "多個資料庫";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級高級版支持直接在程序中預覽圖像和文檔。";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "附件預覽";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "顯示密碼";
+
+/* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
+"[Settings/AppLock/Biometric/title] Use %@" = "使用 %@";
+
+/* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
+"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "應用鎖定,%@, 超時";
+
+/* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "應用鎖定, 應用解鎖密碼, 超時";
+
+/* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
+"[Settings/Backup] Delete ALL Backup Files (%d)" = "刪除所有備份儅案(%d)";
+
+/* Status message: there are no backup files to delete */
+"[Settings/Backup] No Backup Files Found" = "沒有找到備份檔案";
+
+/* Confirmation dialog message to delete all backup files */
+"[Settings/Backup/Delete/title] Delete all backup files?" = "刪除所有備份儅案?";
+
+/* Text of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed." = "金鑰檔案與資料庫之間的關聯已被刪除。";
+
+/* Title of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/title] Cleared" = "已清除";
+
+/* Text of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted." = "所有主金鑰已刪除。";
+
+/* Title of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "已清除";
+
+/* Description of the clipboard/pasteboard timeout. */
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "如果您從條目中複製了文本, 會在稍後自動地清理您的剪貼版。";
+
+/* Description of the Database Lock Timeout */
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "如果您在一段時間內沒有與KeePassium程序交互, 資料庫將會自動關閉, 以確保您的安全。如果重新打開KeePassium程序您需要重新輸入主密碼。";
+
+/* Title of a settings section about making backup files */
+"[Settings/FileLists/Backup/title] Backup" = "備份";
+
+/* Title of a settings section about file order in lists */
+"[Settings/FileLists/Sorting/title] Sorting" = "排序";
+
+/* Title of a settings section: which entry field to show along with entry title */
+"[Settings/GroupViewer] Entry Subtitle" = "條目副標題";
+
+/* Title of a settings section: sort order of groups and entries in a list */
+"[Settings/GroupViewer] Sort Order" = "排序順序";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(請在此處描述問題)";
+
+/* Action/button to add database to the app */
+"Add Database" = "添加資料庫";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "關閉資料庫";
+
+/* Action/button */
+"Import Database" = "匯入資料庫";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "KeePass資料庫檔案不應該當作金鑰檔案使用。 請選擇其他文件。";
+

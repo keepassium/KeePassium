@@ -1,0 +1,252 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "Ontgrendel";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "Ontgrendel KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Gebruik toegangscode";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Open KeePassium handmatig vanop je beginscherm om te upgraden.";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Premium-upgrade";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Het geselecteerde bestand ('%@') lijkt geen databank te zijn.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Maak databank";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Maak databank";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "Kan databankbestand niet verwijderen";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databankbestand?\n Zorg ervoor dat je een back-up hebt.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "Bezig met laden...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "Hoofdsleutel is gewijzigd";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "Open databank";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "Sluit";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Verwijder databank uit de lijst?\n Het bestand blijft intact en je kunt het later nog toevoegen.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "Klaar";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "Bezig met opslaan...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "Sleutelbestandsfout: %@";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisch logbestand is gekopieerd naar het klembord.";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "Toon diagnostisch logbestand";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "Bijgevoegde bestanden";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "Maak item";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Veldnaam";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "Notities";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "Wachtwoord";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "Titel";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "Gebruikersnaam";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "Nieuw item";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "Aanmaakdatum";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "Bestandslocatie";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "Bestandsnaam";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "Bestandsgrootte";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "Laatst gewijzigd op";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "Fout";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "Annuleer";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "Neem contact op";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "Verwijder";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "Verwerp";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "Negeer";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "Klaar";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "Bewerk";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "Exporteer";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "Oké";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "Wijzig naam";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "Vervang";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "Toon details";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "Weet je het zeker?";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Verwerp niet-opgeslagen wijzigingen?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "Er zijn niet-opgeslagen wijzigingen";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "Verwijder";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "Verwijder";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "Exporteerfout";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "Importeerfout";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "Fout";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "Sleutelhangerfout";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "Waarschuwing";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "Maak groep";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "Maak groep";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "Bewerk groep";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "Nieuwe groep";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";
+
+/* News title for beta testers: the app is now available on the App Store. */
+"[News/2019/08/BetaTransition/title] Now on the App Store!" = "Nu in de App Store!";
+
+/* Title of an announcement [expiryDateFormatted: String] */
+"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "De vroegevogelactie eindigt op %@";
+
+/* Message shown when opening an announcement in AutoFill */
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "Open de app om de volledige aankondiging te lezen.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Upgrade naar Premium";
+
+/* Description/advertisement for the `Biometric Unlock` premium feature */
+"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "In de Premium-versie kun je snel toegang krijgen tot je wachtwoorden met Face ID en/of Touch ID.";
+
+/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
+"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Biometrische ontgrendeling";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Bespaar tijd bij het invoeren van complexe hoofdwachtwoorden — in de Premium-versie kun je je databank langer open houden.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Lage databank-time-outs";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "In de Premium-versie kun je eenvoudig schakelen tusses databanken.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Meerdere databanken";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "In de Premium-versie kun je afbeeldingen en documenten direct voorvertonen in de app.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "Bijlagen voorvertonen";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "Toon wachtwoord";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(beschrijf hier het probleem)";
+
+/* Action/button to add database to the app */
+"Add Database" = "Voeg databank toe";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "Kies databank";
+
+/* Action/button */
+"Import Database" = "Importeer databank";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "De KeePass-databank mag niet worden gebruikt als sleutelbestand. Kies een ander bestand.";
+

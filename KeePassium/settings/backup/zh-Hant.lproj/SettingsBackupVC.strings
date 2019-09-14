@@ -1,0 +1,24 @@
+/* Class = "UILabel"; text = "Show Backup Files"; ObjectID = "aEK-cJ-9bc"; Note = "Settings option: whether to show backup copies in the list of database files"; */
+"aEK-cJ-9bc.text" = "顯示備份檔案";
+
+/* Class = "UITableViewSection"; footerTitle = "KeePassium can automatically delete old backup files to free up some storage space."; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
+"B3L-Dk-Uq3.footerTitle" = "KeePassium 可以自動刪除舊的備份文件幫您釋放點手機檔案空間。";
+
+/* Class = "UITableViewSection"; headerTitle = "Periodic cleanup"; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
+"B3L-Dk-Uq3.headerTitle" = "定期清理";
+
+/* Class = "UILabel"; text = "Make Backup Copies"; ObjectID = "BJ7-eQ-JOc"; Note = "Settings option: backup databases before saving them"; */
+"BJ7-eQ-JOc.text" = "創建備份副本";
+
+/* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
+"G42-gR-eKm.text" = "保留備份檔案";
+
+/* Class = "UITableViewSection"; footerTitle = "Before saving a database, KeePassium will automatically make a copy, just in case."; ObjectID = "nBI-OF-9iV"; Note = "Explanation for the `Make Backup Copies` option"; */
+"nBI-OF-9iV.footerTitle" = "在保存資料庫時, KeePassium 會自動創建一個副本, 以防萬一。";
+
+/* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
+"nSy-3u-0xW.title" = "資料庫備份";
+
+/* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
+"XeH-7q-aad.footerTitle" = "備份副本將與原始文件一起顯示。";
+

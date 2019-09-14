@@ -1,6 +1,24 @@
 #CHANGELOG
 
-## [1.0.32] (Public Release) - 2019-08-12
+## [1.02.33] (Public Release) - 2019-09-10
+
+### Added
+- Russian translation
+- Chinese Traditional and Chinese Simplified translations [thanks, 3374575857]
+- Dutch translation [thanks, vistausss]
+
+### Changed
+- Massive under-the-hood work for localization (#20)
+- Expired items now shown in strikethrough font and with original icons
+- Refined Edit mode for entry attachments [thanks, KK9]
+- Improved VoiceOver label for the entry Notes field [thanks, Adrian]
+- Added a title bar to File Sorting popover (closes #51) [thanks, raymond127]
+
+### Fixed
+- UI layouts adjusted to accommodate longer texts
+
+
+## [1.01.32] (Public Release) - 2019-08-12
 
 ### Added
 - In-app announcements about the AppStore release and early-bird promo

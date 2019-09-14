@@ -1,0 +1,15 @@
+/* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
+"enW-gs-tra.normalTitle" = "添加資料庫";
+
+/* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
+"P0M-N3-ynf.text" = "請重新添加資料庫以及金鑰檔案用於使用系統自動填充的功能。";
+
+/* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
+"pIl-6L-Msp.text" = "設置自動填充";
+
+/* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
+"rzY-Ci-bd9.title" = "KeePassium";
+
+/* Class = "UITextView"; text = "The AutoFill cannot automatically access the files you already have in the main KeePassium app.\n\nWhy? Behind the scenes, the system treats AutoFill as a separate app, independent from the main KeePassium process. For security reasons, an app cannot simply access any external files – unless you explicitly link these files to that app. Thus the system guarantees that the app can only access the few files you allowed it to.\n\nAs a result, both AutoFill and the main KeePassium app need to be given their own permissions for each external file. Luckily, this is a one-time procedure."; ObjectID = "UAW-0G-N5G"; */
+"UAW-0G-N5G.text" = "自動填充功能無法自動訪問主KeePassium應用程序中已有的資料庫。\n\n為什麼？ 在系統後台，系統將自動填充視為一個獨立的應用程序，獨立於主要的KeePassium處理程序。 出於安全原因，應用程序無法簡單地訪問任何外部文件 - 除非您明確將這些檔案添加到該應用程序。系統安全特性保證應用程序只能訪問您允許的少數文件。\n\n因此，需要為自動填充和KeePassium應用程序賦予所需的資料庫檔案以及金鑰檔案權限。 幸運的是，這只要設置一次。";
+

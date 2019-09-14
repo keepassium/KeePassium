@@ -1,0 +1,9 @@
+/* Class = "UIBarButtonItem"; title = "Lock Database"; ObjectID = "dPB-bK-tzh"; Note = "Action "; */
+"dPB-bK-tzh.title" = "鎖定資料庫";
+
+/* Class = "UILabel"; text = "Nothing suitable found."; ObjectID = "NSB-dG-jRN"; Note = "Placeholder text for empty search results."; */
+"NSB-dG-jRN.text" = "沒有找到適合的東西。";
+
+/* Class = "UILabel"; text = "Related Entries"; ObjectID = "yLY-eZ-iAh"; Note = "Title of a list of entries similar to (but not exactly matching) the search query."; */
+"yLY-eZ-iAh.text" = "相關資料";
+

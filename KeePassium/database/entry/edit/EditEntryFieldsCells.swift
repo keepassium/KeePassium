@@ -247,6 +247,7 @@ class EditEntryMultiLineCell: UITableViewCell, EditableFieldCell, ValidatingText
             titleLabel.text = field?.visibleName
             textView.text = field?.value
             textView.isSecureTextEntry = field?.isProtected ?? false
+            textView.accessibilityLabel = field?.visibleName
         }
     }
     

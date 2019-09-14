@@ -100,15 +100,20 @@ class ViewEntryVC: UIViewController, Refreshable {
         }
 
         let targetPageVC = pages[index]
+        let previousPageVC = pagesViewController.viewControllers?.first
+        previousPageVC?.willMove(toParent: nil)
+        targetPageVC.willMove(toParent: pagesViewController)
         pagesViewController.setViewControllers(
             [targetPageVC],
             direction: direction,
             animated: true,
             completion: { [weak self] (finished) in
-                guard let _self = self else { return }
-                _self.pageSelector.selectedSegmentIndex = index
-                _self.currentPageIndex = index
-                _self.navigationItem.rightBarButtonItem =
+                guard let self = self else { return }
+                previousPageVC?.didMove(toParent: nil)
+                targetPageVC.didMove(toParent: self.pagesViewController)
+                self.pageSelector.selectedSegmentIndex = index
+                self.currentPageIndex = index
+                self.navigationItem.rightBarButtonItem =
                     targetPageVC.navigationItem.rightBarButtonItem
             }
         )
@@ -121,7 +126,7 @@ class ViewEntryVC: UIViewController, Refreshable {
 
     func refresh() {
         guard let entry = entry else { return }
-        titleLabel?.text = entry.title
+        titleLabel.setText(entry.title, strikethrough: entry.isExpired)
         titleImageView?.image = UIImage.kpIcon(forEntry: entry)
         if isHistoryMode {
             if traitCollection.horizontalSizeClass == .compact {
@@ -195,6 +200,8 @@ extension ViewEntryVC: UIPageViewControllerDelegate {
         if finished && completed {
             guard let selectedVC = pageViewController.viewControllers?.first,
                 let selectedIndex = pages.index(of: selectedVC) else { return }
+            previousViewControllers.first?.didMove(toParent: nil)
+            selectedVC.didMove(toParent: pagesViewController)
             currentPageIndex = selectedIndex
             pageSelector.selectedSegmentIndex = selectedIndex
             navigationItem.rightBarButtonItem = selectedVC.navigationItem.rightBarButtonItem

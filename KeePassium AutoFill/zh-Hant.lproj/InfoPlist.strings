@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "KeePassium 自動填充";
+
+/* Bundle name */
+"CFBundleName" = "KeePassium 自動填充";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "使用 FaceID 解鎖 KeePassium";
+

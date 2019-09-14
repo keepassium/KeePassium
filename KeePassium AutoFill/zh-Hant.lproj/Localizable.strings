@@ -1,0 +1,252 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "解鎖";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "解鎖 KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "使用應用解鎖密碼";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "如果要升級，請從主屏幕右上角+號中, 手動打開升級介面。";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "升級高級版";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "您選定的檔案 \"%@\" 看起來不像是個資料庫文件。";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "創建新的資料庫";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "創建新的資料庫";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "刪除資料庫文件失敗";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "刪除資料庫文件?\n 請確保您有備份檔案!";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "載入中...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "主密碼修改成功";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "打開資料庫";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "關閉";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "從列表中刪除資料庫?\n 不會對檔案進行更改或刪除, 您可以在稍後添加回來。";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "完成";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "正在保存...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "金鑰檔案異常: %@";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "診斷日誌複製到剪貼版成功。";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "顯示診斷日誌";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "附件";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "創建新條目";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "欄位名稱";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "備註";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "密碼";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "標題";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "網址";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "用戶名稱";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "新條目";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "建立時間";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "檔案位置";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "檔案名稱";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "檔案大小";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "最後修改日期";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "錯誤";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "取消";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "聯繫我們";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "刪除";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "捨棄";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "關閉";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "完成";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "編輯";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "匯出";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "確定";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "重新命名";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "替換";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "顯示詳細資訊";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "您確定嗎？";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "要捨棄尚未儲存的變更？";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "此處有未存檔的變更";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "刪除";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "移除";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "匯出錯誤";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "匯入錯誤";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "錯誤";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "鑰匙圈錯誤";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "警告";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "建立群組";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "建立群組";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "編輯群組";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "新建群組";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "刪除金鑰文件?\n 請確保您有備份檔案!";
+
+/* News title for beta testers: the app is now available on the App Store. */
+"[News/2019/08/BetaTransition/title] Now on the App Store!" = "現在去 App Store 更新正式版!";
+
+/* Title of an announcement [expiryDateFormatted: String] */
+"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "早鳥優惠結束 %@";
+
+/* Message shown when opening an announcement in AutoFill */
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "請打開主程序獲得完整的公告。";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "升級到高級版";
+
+/* Description/advertisement for the `Biometric Unlock` premium feature */
+"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "升級高級版使用Face ID/Touch ID來快速存取您的密碼。";
+
+/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
+"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "生物識別解鎖";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "節省輸入複雜主密碼的時間 - 在高級版中保持資料庫打開更長時間。";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "資料庫超時時間";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在高級版本中快速切換多個資料庫。";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "多個資料庫";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級高級版支持直接在程序中預覽圖像和文檔。";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "附件預覽";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "顯示密碼";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(請在此處描述問題)";
+
+/* Action/button to add database to the app */
+"Add Database" = "添加資料庫";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "關閉資料庫";
+
+/* Action/button */
+"Import Database" = "匯入資料庫";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "KeePass資料庫檔案不應該當作金鑰檔案使用。 請選擇其他文件。";
+
