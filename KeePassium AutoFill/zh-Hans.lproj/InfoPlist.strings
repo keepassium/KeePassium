@@ -1,9 +1,9 @@
 /* Bundle display name */
-"CFBundleDisplayName" = "KeePassium AutoFill";
+"CFBundleDisplayName" = "KeePassium 自动填充";
 
 /* Bundle name */
-"CFBundleName" = "KeePassium AutoFill";
+"CFBundleName" = "KeePassium 自动填充";
 
 /* Privacy - Face ID Usage Description */
-"NSFaceIDUsageDescription" = "Use FaceID to unlock KeePassium";
+"NSFaceIDUsageDescription" = "使用 FaceID 解锁 KeePassium";
 

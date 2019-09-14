@@ -25,8 +25,13 @@ class EditEntryVC: UITableViewController, Refreshable {
     private weak var delegate: EditEntryFieldsDelegate?
     private var databaseManagerNotifications: DatabaseManagerNotifications!
     private var fields = [EditableField]()
-    private var isModified = false 
-    
+    private var isModified = false {
+        didSet {
+            if #available(iOS 13.0, *) {
+                isModalInPresentation = isModified
+            }
+        }
+    }
     public enum Mode {
         case create
         case edit
@@ -50,6 +55,7 @@ class EditEntryVC: UITableViewController, Refreshable {
         
         if let newEntry2 = newEntry as? Entry2, let group2 = group as? Group2 {
             newEntry2.customIconUUID = group2.customIconUUID
+            newEntry2.userName = (group2.database as? Database2)?.defaultUserName ?? ""
         }
         newEntry.title = LString.defaultNewEntryName
         return make(mode: .create, entry: newEntry, popoverSource: popoverSource, delegate: delegate)
@@ -82,6 +88,7 @@ class EditEntryVC: UITableViewController, Refreshable {
 
         let navVC = UINavigationController(rootViewController: editEntryVC)
         navVC.modalPresentationStyle = .formSheet
+        navVC.presentationController?.delegate = editEntryVC
         if let popover = navVC.popoverPresentationController, let popoverSource = popoverSource {
             popover.sourceView = popoverSource
             popover.sourceRect = popoverSource.bounds
@@ -91,6 +98,9 @@ class EditEntryVC: UITableViewController, Refreshable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44.0
+        
         entry?.accessed()
         refresh()
         if mode == .create {
@@ -300,6 +310,9 @@ class EditEntryVC: UITableViewController, Refreshable {
     
     private func showSavingOverlay() {
         navigationController?.setNavigationBarHidden(true, animated: true)
+        if #available(iOS 13, *) {
+            isModalInPresentation = true 
+        }
         savingOverlay = ProgressOverlay.addTo(
             view,
             title: LString.databaseStatusSaving,
@@ -337,6 +350,16 @@ extension EditEntryVC: ValidatingTextFieldDelegate {
 
 
 extension EditEntryVC: EditableFieldCellDelegate {
+    func didPressButton(field: EditableField, in cell: EditableFieldCell) {
+        if cell is EditEntryTitleCell {
+            didPressChangeIcon(in: cell)
+        } else if cell is EditEntrySingleLineProtectedCell {
+            didPressRandomize(field: field, in: cell)
+        } else if field.internalName == EntryField.userName {
+            didPressChooseUserName(field: field, in: cell)
+        }
+    }
+    
     func didPressChangeIcon(in cell: EditableFieldCell) {
         showIconChooser()
     }
@@ -362,6 +385,40 @@ extension EditEntryVC: EditableFieldCellDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func didPressChooseUserName(field: EditableField, in cell: EditableFieldCell) {
+        guard let database = entry?.database,
+            let userNameCell = cell as? EditEntrySingleLineCell
+            else { return }
+        
+        let textField = userNameCell.textField!
+        textField.becomeFirstResponder()
+        let handler = { (action: UIAlertAction) in
+            self.isModified = true
+            field.value = action.title
+            userNameCell.textField.text = action.title
+            cell.validate()
+        }
+
+        let nameChooser = UIAlertController(
+            title: LString.fieldUserName,
+            message: nil,
+            preferredStyle: .actionSheet)
+        for userName in UserNameHelper.getUserNameSuggestions(from: database, count: 5) {
+            let action = UIAlertAction(title: userName, style: .default, handler: handler)
+            nameChooser.addAction(action)
+        }
+        nameChooser.addAction(
+            UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil))
+        
+        nameChooser.modalPresentationStyle = .popover
+        if let popover = nameChooser.popoverPresentationController {
+            popover.sourceView = textField
+            popover.sourceRect = textField.bounds
+            popover.permittedArrowDirections = [.up, .down]
+        }
+        self.present(nameChooser, animated: true, completion: nil)
+    }
+    
     func isFieldValid(field: EditableField) -> Bool {
         if field.internalName == EntryField.title {
             return field.value?.isNotEmpty ?? false
@@ -369,9 +426,6 @@ extension EditEntryVC: EditableFieldCellDelegate {
         
         if field.internalName.isEmpty {
             return false
-        }
-        if field.isFixed { 
-            return true
         }
         
         var sameNameCount = 0
@@ -444,5 +498,20 @@ extension EditEntryVC: DatabaseManagerObserver {
     
     func databaseManager(progressDidChange progress: ProgressEx) {
         savingOverlay?.update(with: progress)
+    }
+}
+
+extension EditEntryVC: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidAttemptToDismiss(
+        _ presentationController: UIPresentationController)
+    {
+        guard savingOverlay == nil else {
+            return
+        }
+        onCancelAction(presentationController) 
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        onCancelAction(presentationController) 
     }
 }

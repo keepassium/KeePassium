@@ -12,6 +12,9 @@ class ProtectedTextField: ValidatingTextField {
     private let horizontalInsets = CGFloat(8.0)
     private let verticalInsets = CGFloat(2.0)
     
+    private let unhideImage = UIImage(asset: .unhideAccessory)
+    private let hideImage = UIImage(asset: .hideAccessory)
+
     private var toggleButton: UIButton! 
     override var isSecureTextEntry: Bool {
         didSet {
@@ -21,9 +24,6 @@ class ProtectedTextField: ValidatingTextField {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        let unhideImage = UIImage(asset: .unhideAccessory)
-        let hideImage = UIImage(asset: .hideAccessory)
 
         toggleButton = UIButton(type: .custom)
         toggleButton.tintColor = UIColor.actionTint 
@@ -56,6 +56,14 @@ class ProtectedTextField: ValidatingTextField {
             object: nil)
     }
 
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(
+            x: bounds.maxX - hideImage.size.width - 2 * horizontalInsets,
+            y: bounds.midY - hideImage.size.height / 2 - verticalInsets,
+            width: hideImage.size.width + 2 * horizontalInsets,
+            height: hideImage.size.height + 2 * verticalInsets)
+    }
+    
     @objc
     func resetVisibility(_ sender: Any) {
         isSecureTextEntry = true

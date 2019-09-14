@@ -5,14 +5,14 @@
 "CFBundleName" = "KeePassium";
 
 /* (No Comment) */
-"KeePass Database (kdb)" = "KeePass Database (kdb)";
+"KeePass Database (kdb)" = "KeePass 数据库(kdb)";
 
 /* (No Comment) */
-"KeePass Database (kdbx)" = "KeePass Database (kdbx)";
+"KeePass Database (kdbx)" = "KeePass 数据库(kdbx)";
 
 /* Privacy - Face ID Usage Description */
-"NSFaceIDUsageDescription" = "Use FaceID to unlock KeePassium";
+"NSFaceIDUsageDescription" = "使用 FaceID 解锁 KeePassium";
 
 /* Privacy - Photo Library Additions Usage Description */
-"NSPhotoLibraryAddUsageDescription" = "KeePassium needs permission to export files to your Photo Library.";
+"NSPhotoLibraryAddUsageDescription" = "KeePassium 需要获取汇出文件到照片库的权限。";
 

@@ -1,11 +1,11 @@
 /* Action/button to unlock the App Lock with passcode */
-"[AppLock] Unlock" = "Unlock";
+"[AppLock] Unlock" = "解锁";
 
 /* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
-"[AppLock/Biometric/Hint] Unlock KeePassium" = "Unlock KeePassium";
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "解锁 KeePassium";
 
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
-"[AppLock/cancelBiometricAuth] Use Passcode" = "Use Passcode";
+"[AppLock/cancelBiometricAuth] Use Passcode" = "使用应用解锁密码";
 
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
@@ -14,10 +14,10 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
-"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "To upgrade, please manually open KeePassium from your home screen.";
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "如果要升级，请从主屏幕右上角+号中, 手动打开升级接口。";
 
 /* Title of a message related to upgrading to the premium version */
-"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Premium Upgrade";
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "升级高级版";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -26,227 +26,227 @@
 "[BiometricAuthType] Touch ID" = "Touch ID";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
-"[Database/Add] Selected file \"%@\" does not look like a database." = "Selected file \"%@\" does not look like a database.";
+"[Database/Add] Selected file \"%@\" does not look like a database." = "您选定的文件 \"%@\" 看起来不像是个数据库文件。";
 
 /* Action/button to create a new database */
-"[Database/Create/action] Create Database" = "Create Database";
+"[Database/Create/action] Create Database" = "创建新的数据库";
 
 /* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Create Database";
+"[Database/Create/title] Create Database" = "创建新的数据库";
 
 /* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "Failed to delete database file";
+"[Database/Delete] Failed to delete database file" = "删除数据库文件失败";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
-"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Delete database file?\n Make sure you have a backup.";
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "删除数据库文件?\n 请确保您有备份文件!";
 
 /* Status message: loading a database */
-"[Database/Loading/Status] Loading..." = "Loading...";
+"[Database/Loading/Status] Loading..." = "载入中...";
 
 /* Notification after changing database master key */
-"[Database/MasterKey/changed] Master key successfully changed" = "Master key successfully changed";
+"[Database/MasterKey/changed] Master key successfully changed" = "主密码修改成功";
 
 /* Action/button */
-"[Database/Open/action] Open Database" = "Open Database";
+"[Database/Open/action] Open Database" = "打开数据库";
 
 /* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
-"[Database/Opened/action] Close" = "Close";
+"[Database/Opened/action] Close" = "关闭";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
-"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Remove database from the list?\n The file will remain intact and you can add it again later.";
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "从列表中删除数据库?\n 不会对文件进行更改或删除, 您可以在稍后添加回来。";
 
 /* Status message: finished saving a database */
-"[Database/Saving/Status] Done" = "Done";
+"[Database/Saving/Status] Done" = "完成";
 
 /* Status message: saving a database */
-"[Database/Saving/Status] Saving..." = "Saving...";
+"[Database/Saving/Status] Saving..." = "正在保存...";
 
 /* Error message related to key file. [errorDetails: String] */
-"[Database/Unlock] Key file error: %@" = "Key file error: %@";
+"[Database/Unlock] Key file error: %@" = "密钥文件异常: %@";
 
 /* Notification/confirmation message */
-"[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostic log has been copied to clipboard.";
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "诊断日志复制到剪贴板成功。";
 
 /* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "Show Diagnostic Log";
+"[Diagnostics] Show Diagnostic Log" = "显示诊断日志";
 
 /* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "Attached Files";
+"[Entry/Attachments/title] Attached Files" = "附件";
 
 /* Action/button to create a new entry in the current group */
-"[Entry/Create/action] Create Entry" = "Create Entry";
+"[Entry/Create/action] Create Entry" = "创建新条目";
 
 /* Default name of a newly created entry field */
-"[Entry/Edit/CreateField/defaultName] Field Name" = "Field Name";
+"[Entry/Edit/CreateField/defaultName] Field Name" = "域名";
 
 /* Name of an entry field */
-"[Entry/Field/name] Notes" = "Notes";
+"[Entry/Field/name] Notes" = "备注";
 
 /* Name of an entry field */
-"[Entry/Field/name] Password" = "Password";
+"[Entry/Field/name] Password" = "密码";
 
 /* Name of an entry field */
-"[Entry/Field/name] Title" = "Title";
+"[Entry/Field/name] Title" = "标题";
 
 /* Name of an entry field */
-"[Entry/Field/name] URL" = "URL";
+"[Entry/Field/name] URL" = "网址";
 
 /* Name of an entry field */
-"[Entry/Field/name] User Name" = "User Name";
+"[Entry/Field/name] User Name" = "用户名称";
 
 /* Default title of a new entry */
-"[Entry/New/defaultTitle] New Entry" = "New Entry";
+"[Entry/New/defaultTitle] New Entry" = "新条目";
 
 /* Field title */
-"[FileInfo/Field/title] Creation Date" = "Creation Date";
+"[FileInfo/Field/title] Creation Date" = "建立时间";
 
 /* Field title */
-"[FileInfo/Field/title] File Location" = "File Location";
+"[FileInfo/Field/title] File Location" = "文件位置";
 
 /* Field title */
-"[FileInfo/Field/title] File Name" = "File Name";
+"[FileInfo/Field/title] File Name" = "文件名";
 
 /* Field title */
-"[FileInfo/Field/title] File Size" = "File Size";
+"[FileInfo/Field/title] File Size" = "文件大小";
 
 /* Field title */
-"[FileInfo/Field/title] Last Modification Date" = "Last Modification Date";
+"[FileInfo/Field/title] Last Modification Date" = "最后修改日期";
 
 /* Title of a field with an error message */
-"[FileInfo/Field/valueError] Error" = "Error";
+"[FileInfo/Field/valueError] Error" = "错误";
 
 /* Action/button to cancel whatever is going on */
-"[Generic] Cancel" = "Cancel";
+"[Generic] Cancel" = "取消";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Us" = "Contact Us";
+"[Generic] Contact Us" = "联系我们";
 
 /* Action/button to delete an item (destroys the item/file) */
-"[Generic] Delete" = "Delete";
+"[Generic] Delete" = "删除";
 
 /* Action/button to discard any unsaved changes */
-"[Generic] Discard" = "Discard";
+"[Generic] Discard" = "舍弃";
 
 /* Action/button to close an error message. */
-"[Generic] Dismiss" = "Dismiss";
+"[Generic] Dismiss" = "关闭";
 
 /* Action/button to finish (editing) and keep changes */
-"[Generic] Done" = "Done";
+"[Generic] Done" = "完成";
 
 /* Action/button to edit an item */
-"[Generic] Edit" = "Edit";
+"[Generic] Edit" = "编辑";
 
 /* Action/button to export an item to another app */
-"[Generic] Export" = "Export";
+"[Generic] Export" = "汇出";
 
 /* Action/button: generic OK */
-"[Generic] OK" = "OK";
+"[Generic] OK" = "确定";
 
 /* Action/button to rename an item */
-"[Generic] Rename" = "Rename";
+"[Generic] Rename" = "重新命名";
 
 /* Action/button to replace an item with another one */
-"[Generic] Replace" = "Replace";
+"[Generic] Replace" = "替换";
 
 /* Action/button to show additional information about an error or item */
-"[Generic] Show Details" = "Show Details";
+"[Generic] Show Details" = "显示详细信息";
 
 /* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "Are you sure?";
+"[Generic/ConfirmDelete/title] Are you sure?" = "您确定吗？";
 
 /* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Discard unsaved changes?";
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "要舍弃尚未储存的变更？";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/title] There are unsaved changes" = "There are unsaved changes";
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "此处有未存档的变更";
 
 /* Action/button to delete a file (destroys the file forever) */
-"[Generic/File] Delete" = "Delete";
+"[Generic/File] Delete" = "删除";
 
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
-"[Generic/File] Remove" = "Remove";
+"[Generic/File] Remove" = "移除";
 
 /* Title of an error message about file export */
-"[Generic/File/title] Export Error" = "Export Error";
+"[Generic/File/title] Export Error" = "汇出错误";
 
 /* Title of an error message about file import */
-"[Generic/File/title] Import Error" = "Import Error";
+"[Generic/File/title] Import Error" = "汇入错误";
 
 /* Title of an error message notification */
-"[Generic/title] Error" = "Error";
+"[Generic/title] Error" = "错误";
 
 /* Title of an error message about iOS system keychain */
-"[Generic/title] Keychain Error" = "Keychain Error";
+"[Generic/title] Keychain Error" = "钥匙圈错误";
 
 /* Title of an warning message */
-"[Generic/title] Warning" = "Warning";
+"[Generic/title] Warning" = "警告";
 
 /* Action/button to create a new sub-group in the current group */
-"[Group/Create/action] Create Group" = "Create Group";
+"[Group/Create/action] Create Group" = "建立群组";
 
 /* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Create Group";
+"[Group/Create/title] Create Group" = "建立群组";
 
 /* Title of a form for editing a group */
-"[Group/Edit/title] Edit Group" = "Edit Group";
+"[Group/Edit/title] Edit Group" = "编辑群组";
 
 /* Default name of a new group */
-"[Group/New/defaultName] New Group" = "New Group";
+"[Group/New/defaultName] New Group" = "新建群组";
 
 /* Message to confirm deletion of a key file. */
-"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Delete key file?\n Make sure you have a backup.";
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "删除密钥文件?\n 请确保您有备份文件!";
 
 /* News title for beta testers: the app is now available on the App Store. */
-"[News/2019/08/BetaTransition/title] Now on the App Store!" = "Now on the App Store!";
+"[News/2019/08/BetaTransition/title] Now on the App Store!" = "现在去 App Store 更新正式版!";
 
 /* Title of an announcement [expiryDateFormatted: String] */
-"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "Early bird promo ends %@";
+"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "早鸟优惠结束 %@";
 
 /* Message shown when opening an announcement in AutoFill */
-"[News/AutoFill/stubText] Please open the main app for the full announcement." = "Please open the main app for the full announcement.";
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "请打开主程序获得完整的公告。";
 
 /* Action/button to start choosing premium versions and possibly buying one */
-"[Premium/Upgrade/action] Upgrade to Premium" = "Upgrade to Premium";
+"[Premium/Upgrade/action] Upgrade to Premium" = "升级到高级版";
 
 /* Description/advertisement for the `Biometric Unlock` premium feature */
-"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "Quickly access your passwords using Face ID/Touch ID in the premium version.";
+"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "升级高级版使用Face ID/Touch ID来快速存取您的密码。";
 
 /* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
-"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Biometric Unlock";
+"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "生物识别解锁";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Save time entering your complex master passwords — keep your database open longer in the premium version.";
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "节省输入复杂主密码的时间 - 在高级版中保持数据库打开更长时间。";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Long Database Timeouts";
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "更长的数据库超时时间";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
-"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Easily switch between databases in the premium version.";
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在高级版本中快速切换多个数据库。";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
-"[PremiumFeature/MultiDB/title] Multiple Databases" = "Multiple Databases";
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "多个数据库";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Preview images and documents directly in the app, in the premium version.";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升级高级版支持直接在程序中预览图像和文文件。";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Preview Attachments";
+"[PremiumFeature/Preview/title] Preview Attachments" = "附件预览";
 
 /* Action/button to make password visible as plain-text */
-"[ProtectedTextField] Show Password" = "Show Password";
+"[ProtectedTextField] Show Password" = "显示密码";
 
 /* Template text of a bug report email */
-"[Support/template] (Please describe the problem here)" = "(Please describe the problem here)";
+"[Support/template] (Please describe the problem here)" = "(请在此处描述问题)";
 
 /* Action/button to add database to the app */
-"Add Database" = "Add Database";
+"Add Database" = "添加数据库";
 
 /* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "Choose Database";
+"Choose Database" = "关闭数据库";
 
 /* Action/button */
-"Import Database" = "Import Database";
+"Import Database" = "汇入数据库";
 
 /* Warning message when the user tries to use a database as a key file */
-"KeePass database should not be used as key file. Please pick a different file." = "KeePass database should not be used as key file. Please pick a different file.";
+"KeePass database should not be used as key file. Please pick a different file." = "KeePass数据库文件不应该当作密钥文件使用。 请选择其他文件。";
 

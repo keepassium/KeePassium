@@ -53,6 +53,7 @@ class EditGroupVC: UIViewController, Refreshable {
         
         let navVC = UINavigationController(rootViewController: editGroupVC)
         navVC.modalPresentationStyle = .formSheet
+        navVC.presentationController?.delegate = editGroupVC
         if let popover = navVC.popoverPresentationController, let popoverSource = popoverSource {
             popover.sourceView = popoverSource
             popover.sourceRect = popoverSource.bounds
@@ -162,6 +163,9 @@ class EditGroupVC: UIViewController, Refreshable {
             view,
             title: LString.databaseStatusSaving,
             animated: true)
+        if #available(iOS 13, *) {
+            isModalInPresentation = true 
+        }
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -247,5 +251,12 @@ extension EditGroupVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         didPressDone(self)
         return true
+    }
+}
+
+
+extension EditGroupVC: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        didPressCancel(presentationController)
     }
 }

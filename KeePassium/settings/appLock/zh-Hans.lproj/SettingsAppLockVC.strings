@@ -1,30 +1,30 @@
 /* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.footerTitle" = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain.";
+"5Dg-KX-m7a.footerTitle" = "如果您使用了错误的应用解锁密码, KeePassium 将会关闭所有的数据库并从系统钥匙圈中清除所有的主密钥。";
 
 /* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.headerTitle" = "Wrong Passcode";
+"5Dg-KX-m7a.headerTitle" = "错误的应用解锁密码";
 
 /* Class = "UILabel"; text = "Protect Databases"; ObjectID = "6Pk-35-Fx6"; */
-"6Pk-35-Fx6.text" = "Protect Databases";
+"6Pk-35-Fx6.text" = "保护数据库";
 
 /* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.footerTitle" = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode.";
+"7ae-8I-LiQ.footerTitle" = "可以使用生物识别身份验证作为应用解锁密码(但可能不这么安全) 快速解锁的替代方案。";
 
 /* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.headerTitle" = "Biometrics";
+"7ae-8I-LiQ.headerTitle" = "生物识别技术";
 
 /* Class = "UITableViewSection"; footerTitle = "Protect KeePassium from unauthorized access."; ObjectID = "aBx-Ee-bMk"; Note = "Explanation for the `Enable AppLock` option."; */
-"aBx-Ee-bMk.footerTitle" = "Protect KeePassium from unauthorized access.";
+"aBx-Ee-bMk.footerTitle" = "保护KeePassium免受未经授权的访问。";
 
 /* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
-"Ef4-Jw-xeO.text" = "Timeout";
+"Ef4-Jw-xeO.text" = "自动锁定";
 
 /* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
-"IS1-Lb-MFy.text" = "Enable AppLock";
+"IS1-Lb-MFy.text" = "启用应用解锁密码";
 
 /* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
-"m50-fl-4tu.footerTitle" = "The app will automatically lock up after this time.";
+"m50-fl-4tu.footerTitle" = "应用程序将在此时间后自动锁定。";
 
 /* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
-"U5m-je-MhO.title" = "App Protection";
+"U5m-je-MhO.title" = "应用保护";
 

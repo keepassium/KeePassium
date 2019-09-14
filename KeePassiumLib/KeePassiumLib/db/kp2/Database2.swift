@@ -100,6 +100,7 @@ public class Database2: Database {
     private(set) var meta: Meta2!
     public var binaries: [Binary2.ID: Binary2] = [:]
     public var customIcons: [UUID: CustomIcon2] { return meta.customIcons }
+    public var defaultUserName: String { return meta.defaultUserName }
     private var cipherKey = SecureByteArray()
     private var hmacKey = ByteArray()
     private var deletedObjects: ContiguousArray<DeletedObject2> = []

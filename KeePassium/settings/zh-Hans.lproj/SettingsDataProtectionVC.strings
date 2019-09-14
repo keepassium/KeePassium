@@ -1,45 +1,45 @@
 /* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
-"3uV-Zs-RRo.normalTitle" = "Clear Key File Associations";
+"3uV-Zs-RRo.normalTitle" = "清除密钥文件的关联";
 
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
-"e1v-nv-Mst.normalTitle" = "Clear Master Keys";
+"e1v-nv-Mst.normalTitle" = "清除主密钥";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)";
+"Faj-km-pM5.footerTitle" = "当解锁数据库时, 主密钥将会安全的保存在系统钥匙圈中。在下次登入KeePassium 将会自动使用该密钥文件, 所以您无须再输入您完整的主密码。\n\n(主密钥将在数据库超时时自动删除。)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.headerTitle" = "Quick Unlock";
+"Faj-km-pM5.headerTitle" = "快速解锁";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.footerTitle" = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time.";
+"hnI-Q8-Ixm.footerTitle" = "当您复制任何东西, KeePassium 会在稍后自动的为您清除剪贴板。";
 
 /* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.headerTitle" = "Clipboard";
+"hnI-Q8-Ixm.headerTitle" = "剪贴板";
 
 /* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
-"INJ-Cy-Tfo.text" = "Remember Master Keys";
+"INJ-Cy-Tfo.text" = "记住主密钥";
 
 /* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
-"IZZ-aM-g2i.title" = "Data Protection";
+"IZZ-aM-g2i.title" = "数据保护";
 
 /* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
-"JHl-o7-xHI.text" = "Remember Key Files";
+"JHl-o7-xHI.text" = "记住密钥文件";
 
 /* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.footerTitle" = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files.";
+"Mxu-GP-FmN.footerTitle" = "记住并自动使用该数据库上次使用的密钥文件。清除关联不会对文件本身做修改。";
 
 /* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.headerTitle" = "Key Files";
+"Mxu-GP-FmN.headerTitle" = "密钥文件";
 
 /* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.footerTitle" = "Database timeout closes any opened databases and clears any remembered master keys after some time.";
+"neJ-eG-TV7.footerTitle" = "数据库超时会关闭任何打开的数据库, 并在稍后清除任何记住的主密钥。";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.headerTitle" = "Automatic Lock";
+"neJ-eG-TV7.headerTitle" = "自动锁定";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "Clipboard Timeout";
+"SSu-Sr-MCg.text" = "剪贴板自动清除";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Database Timeout";
+"weX-SZ-IDB.text" = "数据库自动锁定";
 

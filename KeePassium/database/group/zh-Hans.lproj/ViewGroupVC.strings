@@ -1,18 +1,18 @@
 /* Class = "UIBarButtonItem"; 9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Lock Database"; ObjectID = "9KV-rC-1XL"; */
-"9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Lock Database";
+"9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "锁定数据库";
 
 /* Class = "UIBarButtonItem"; M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "M5a-Ld-ZXd"; */
-"M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Sort Order";
+"M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "排序顺序";
 
 /* Class = "UIBarButtonItem"; qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Change Master Key"; ObjectID = "qkh-6K-yQW"; */
-"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Change Master Key";
+"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "变更主密钥";
 
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
-"QXa-eN-7am.text" = "This group is empty";
+"QXa-eN-7am.text" = "这个群组是空的";
 
 /* Class = "UIBarButtonItem"; rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Settings"; ObjectID = "rF3-mC-kj1"; */
-"rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Settings";
+"rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "设置";
 
 /* Class = "UILabel"; text = "No entries found"; ObjectID = "tpA-i1-ah8"; */
-"tpA-i1-ah8.text" = "No entries found";
+"tpA-i1-ah8.text" = "没有找到条目";
 

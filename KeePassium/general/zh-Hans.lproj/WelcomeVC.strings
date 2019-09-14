@@ -1,12 +1,12 @@
 /* Class = "UIViewController"; title = "Welcome"; ObjectID = "1Nc-wz-Yqq"; Note = "Onboarding screen shown on first launch"; */
-"1Nc-wz-Yqq.title" = "Welcome";
+"1Nc-wz-Yqq.title" = "欢迎使用";
 
 /* Class = "UIButton"; normalTitle = "Create New Database"; ObjectID = "4wh-8O-5Ch"; */
-"4wh-8O-5Ch.normalTitle" = "Create New Database";
+"4wh-8O-5Ch.normalTitle" = "创建新的数据库";
 
 /* Class = "UILabel"; text = "KeePassium stores your passwords, credit cards and other information in an encrypted file (database). \nYou can have multiple databases, for example to separate work, family and personal accounts."; ObjectID = "PgB-6p-H0t"; */
-"PgB-6p-H0t.text" = "KeePassium stores your passwords, credit cards and other information in an encrypted file (database). \nYou can have multiple databases, for example to separate work, family and personal accounts.";
+"PgB-6p-H0t.text" = "KeePassium 可以将您的密码、信用卡和其他讯息 加密的保存(数据库)。\n您可以拥有多个数据库, 比如区分: 公司用、家庭用以及私人用。";
 
 /* Class = "UIButton"; normalTitle = "Add Existing Database"; ObjectID = "ZKW-2f-Xkz"; */
-"ZKW-2f-Xkz.normalTitle" = "Add Existing Database";
+"ZKW-2f-Xkz.normalTitle" = "添加现有数据库";
 

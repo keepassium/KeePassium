@@ -1,357 +1,357 @@
 /* Type of keyboard to show for App Lock passcode: letters and digits. */
-"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "Alphanumeric";
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "字母与数字";
 
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
-"[AppLock/Passcode/KeyboardType/title] Numeric" = "Numeric";
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "数字";
 
 /* Progress status */
-"[Cipher/Progress] Decrypting" = "Decrypting";
+"[Cipher/Progress] Decrypting" = "解密中";
 
 /* Progress status */
-"[Cipher/Progress] Encrypting" = "Encrypting";
+"[Cipher/Progress] Encrypting" = "加密中";
 
 /* Error message about AES cipher. [errorCode: Int] */
-"[CryptoError] AES decryption error (code %d)" = "AES decryption error (code %d)";
+"[CryptoError] AES decryption error (code %d)" = "AES 解密错误 (代码 %d)";
 
 /* Error message about AES cipher. [errorCode: Int] */
-"[CryptoError] AES encryption error (code %d)" = "AES encryption error (code %d)";
+"[CryptoError] AES encryption error (code %d)" = "AES 加密错误 (代码 %d)";
 
 /* Error message about AES cipher. [errorCode: Int] */
-"[CryptoError] AES initialization error (code %d)" = "AES initialization error (code %d)";
+"[CryptoError] AES initialization error (code %d)" = "AES 初始化错误 (代码 %d)";
 
 /* Error message about Argon2 hashing function. [errorCode: Int] */
-"[CryptoError] Argon2 hashing error (code %d)" = "Argon2 hashing error (code %d)";
+"[CryptoError] Argon2 hashing error (code %d)" = "Argon2 哈希错误 (代码 %d)";
 
 /* Error message about PKCS7 padding. [errorCode: Int] */
-"[CryptoError] Invalid data padding (code %d). File corrupt?" = "Invalid data padding (code %d). File corrupt?";
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "无效的数据填充(代码 %d)。文件损坏了吗?";
 
 /* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
-"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "Invalid KDF parameter: %1$@ - %2$@. File corrupt?";
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "无效的KDF参数: %1$@ - %2$@。文件损坏了吗?";
 
 /* Error message about random number generator. [errorCode: Int] */
-"[CryptoError] Random number generator error (code %d)" = "Random number generator error (code %d)";
+"[CryptoError] Random number generator error (code %d)" = "随机密码产生器错误(代码 %d)";
 
 /* Error message about Twofish cipher. [errorCode: Int] */
-"[CryptoError] Twofish cipher error (code %d)" = "Twofish cipher error (code %d)";
+"[CryptoError] Twofish cipher error (code %d)" = "Twofish 密码错误(代码 %d)";
 
 /* Error message */
-"[Database/Load/Error] Cannot find database file" = "Cannot find database file";
+"[Database/Load/Error] Cannot find database file" = "找不到数据库文件";
 
 /* Error message */
-"[Database/Load/Error] Cannot find key file" = "Cannot find key file";
+"[Database/Load/Error] Cannot find key file" = "找不到密钥文件";
 
 /* Error message */
-"[Database/Load/Error] Cannot open database file" = "Cannot open database file";
+"[Database/Load/Error] Cannot open database file" = "无法打开数据库文件";
 
 /* Error message */
-"[Database/Load/Error] Cannot open key file" = "Cannot open key file";
+"[Database/Load/Error] Cannot open key file" = "无法打开密钥文件";
 
 /* Error shown when both master password and key file are empty */
-"[Database/Load/Error] Please provide at least a password or a key file" = "Please provide at least a password or a key file";
+"[Database/Load/Error] Please provide at least a password or a key file" = "请至少输入一个密码或者选择一个密钥文件";
 
 /* Error message */
-"[Database/Load/Error] Unrecognized database format" = "Unrecognized database format";
+"[Database/Load/Error] Unrecognized database format" = "未知的数据库格式";
 
 /* Progress status: finished loading database */
-"[Database/Progress] Done" = "Done";
+"[Database/Progress] Done" = "完成";
 
 /* Progress bar status */
-"[Database/Progress] Loading database file..." = "Loading database file...";
+"[Database/Progress] Loading database file..." = "加载数据库文件...";
 
 /* Progress status */
-"[Database/Progress] Loading key file..." = "Loading key file...";
+"[Database/Progress] Loading key file..." = "载入密钥文件中...";
 
 /* Error message */
-"[Database/Unlock/Error] Failed to open key file" = "Failed to open key file";
+"[Database/Unlock/Error] Failed to open key file" = "无法打开密钥文件";
 
 /* Error message */
-"[Database/Unlock/Error] Password and key file are both empty." = "Password and key file are both empty.";
+"[Database/Unlock/Error] Password and key file are both empty." = "密码和密钥都是空的。";
 
 /* Error message */
-"[Database1/FormatError] Database file is corrupted." = "Database file is corrupted.";
+"[Database1/FormatError] Database file is corrupted." = "数据库文件损毁。";
 
 /* Error message [fieldName: String] */
-"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Error parsing field %@. Corrupted database file?";
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "解析 %@ 字段错误。数据库文件损坏?";
 
 /* Error message */
-"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Found an entry outside any group. Corrupted DB file?";
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "在群组外找到条目。数据库文件损坏?";
 
 /* Error message */
-"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Unexpected end of file. Corrupted database file?";
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "文件意外的结束。数据库文件损坏?";
 
 /* Error message when reading database header */
-"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Header reading error. DB file corrupt?";
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "头部讯息加载错误。数据库文件损坏?";
 
 /* Error message. [flagsHexString: String] */
-"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Unsupported cipher. (Code: %@)";
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "不支持的密码。(代码:%@)";
 
 /* Error message when opening a database. [version: String] */
-"[Database1/Header1/Error] Unsupported database format version: %@." = "Unsupported database format version: %@.";
+"[Database1/Header1/Error] Unsupported database format version: %@." = "不支持的数据库格式版本:%@。";
 
 /* Error message when opening a database */
-"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Wrong file signature. Not a KeePass database?";
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "错误的文件签名。不是一个KeePass数据库?";
 
 /* Status message: collecting database items into a single package */
-"[Database1/Progress] Packing the content" = "Packing the content";
+"[Database1/Progress] Packing the content" = "打包内容";
 
 /* Status message: processing the content of a database */
-"[Database1/Progress] Parsing content" = "Parsing content";
+"[Database1/Progress] Parsing content" = "解析内容";
 
 /* Name of a group which contains deleted entries */
-"[Database2/backupGroupName] Recycle Bin" = "Recycle Bin";
+"[Database2/backupGroupName] Recycle Bin" = "回收站";
 
 /* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
-"[Database2/FormatError] Cannot parse database. %s" = "Cannot parse database. %s";
+"[Database2/FormatError] Cannot parse database. %s" = "无法解析数据库。%s";
 
 /* Error message [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Corrupted database file (block %d has negative size)";
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "数据库文件损坏(区块 %d 具有负大小)";
 
 /* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Corrupted database file (hash mismatch in block %d)";
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "数据库文件损坏(区块 %d 哈希值不匹配)";
 
 /* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Corrupted database file (HMAC mismatch in block %d)";
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "数据库文件损坏(区块 %d HMAC值不匹配)";
 
 /* Error message about Gzip compression algorithm. [reason: String] */
-"[Database2/FormatError] Gzip error: %@" = "Gzip error: %@";
+"[Database2/FormatError] Gzip error: %@" = "Gzip 错误: %@";
 
 /* Error message: wrong ID of a data block */
-"[Database2/FormatError] Unexpected block ID." = "Unexpected block ID.";
+"[Database2/FormatError] Unexpected block ID." = "意外的区块ID。";
 
 /* Error message */
-"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "Unexpected end of file. Corrupted file?";
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "文件意外的结束。文件损坏?";
 
 /* Error message when saving a database. [reason: String] */
-"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "Failed to uncompress attachment data: %@";
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "解压缩附件的数据失败:%@";
 
 /* Error message, with the name of problematic field. [fieldName: String] */
-"[Database2/Header2/Error] Header field %@ is corrupted." = "Header field %@ is corrupted.";
+"[Database2/Header2/Error] Header field %@ is corrupted." = "标头字段 %@ 已损坏。";
 
 /* Error message */
-"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Header hash mismatch. DB file corrupt?";
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "标头哈希值不匹配。数据库文件损坏?";
 
 /* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
-"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Header HMAC mismatch. DB file corrupt?";
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "标头 HMAC 不匹配。数据库文件损坏?";
 
 /* Error message when reading database header */
-"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "Header reading error. DB file corrupt?";
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "头部讯息加载错误。数据库文件损坏?";
 
 /* Error message when opening a database */
-"[Database2/Header2/Error] Unknown compression algorithm." = "Unknown compression algorithm.";
+"[Database2/Header2/Error] Unknown compression algorithm." = "未知的压缩算法。";
 
 /* Error message. [uuidHexString: String] */
-"[Database2/Header2/Error] Unsupported data cipher: %@" = "Unsupported data cipher: %@";
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "不支持的数据密码: %@";
 
 /* Error message when opening a database. [version: String] */
-"[Database2/Header2/Error] Unsupported database format version: %@." = "Unsupported database format version: %@.";
+"[Database2/Header2/Error] Unsupported database format version: %@." = "不支持的数据库格式版本:%@。";
 
 /* Error message when opening a database. [id: UInt32] */
-"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Unsupported inner stream cipher (ID %d)";
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "不支持的内部数据流密码(ID %d)";
 
 /* Error message about Key Derivation Function. [uuidString: String] */
-"[Database2/Header2/Error] Unsupported KDF: %@" = "Unsupported KDF: %@";
+"[Database2/Header2/Error] Unsupported KDF: %@" = "不支持的 KDF:%@";
 
 /* Error message when opening a database */
-"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Wrong file signature. Not a KeePass database?";
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "错误的文件签名。不是一个KeePass数据库?";
 
 /* Error message about Gzip compression algorithm. [errorMessage: String] */
-"[Database2/Loading/Error] Error unpacking database: %@" = "Error unpacking database: %@";
+"[Database2/Loading/Error] Error unpacking database: %@" = "解压缩数据库时出错: %@";
 
 /* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
-"[Database2/Loading/Warning/missingBinaries]" = "Attachments of some entries are missing data. This is a sign of database corruption, most likely by the last used app (%1$@). KeePassium will preserve the empty attachments, but cannot restore them. You should restore your database from a backup copy. \n\nMissing attachments: %2$@";
+"[Database2/Loading/Warning/missingBinaries]" = "某些条目的附件缺少数据, 这是数据库早期损坏的迹象，最有可能是上次使用的应用程序(%1$@)。KeePassium将保留空的附件，但无法恢复它们。您应该从备份副本还原数据库。 \n\n缺少附件：%2$@";
 
 /* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
-"[Database2/Loading/Warning/namelessAttachments]" = "Some entries have attachments without a name. This is a sign of previous database corruption.\n\n Please review attached files in the following entries (and their history):\n%@";
+"[Database2/Loading/Warning/namelessAttachments]" = "有些条目有附件没有名字。这是数据库早期损坏的迹象。\n\n 请查看以下条目中的附件(及其历史记录)：\n%@";
 
 /* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
-"[Database2/Loading/Warning/namelessCustomFields]" = "Some entries have custom field(s) with empty names. This can be a sign of data corruption. Please check these entries:\n\n%@";
+"[Database2/Loading/Warning/namelessCustomFields]" = "某些条目具有空名称的自定义字段。这是数据库早期损坏的迹象。请检查以下条目：\n\n%@";
 
 /* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
-"[Database2/Loading/Warning/unusedAttachments]" = "The database contains some attachments that are not used in any entry. Most likely, they have been forgotten by the last used app (%@). However, this can also be a sign of data corruption. \nPlease make sure to have a backup of your database before changing anything.";
+"[Database2/Loading/Warning/unusedAttachments]" = "数据库包含一些未在任何条目中使用的附件。最有可能的是，它们已被上次使用的应用程序(%@) 遗忘。但是，这也可能是数据库早期损坏的迹象。在更改任何内容之前,\n请确保数据库已经备份。";
 
 /* Progress bar status */
-"[Database2/Progress] Loading database" = "Loading database";
+"[Database2/Progress] Loading database" = "加载数据库";
 
 /* Progress bar status */
-"[Database2/Progress] Reading database content" = "Reading database content";
+"[Database2/Progress] Reading database content" = "读取数据库内容";
 
 /* Progress bar status */
-"[Database2/Progress] Writing encrypted blocks" = "Writing encrypted blocks";
+"[Database2/Progress] Writing encrypted blocks" = "写入加密区块";
 
 /* Error message while saving a database. [errorDescription: String] */
-"[Database2/Saving/Error] Data compression error: %@" = "Data compression error: %@";
+"[Database2/Saving/Error] Data compression error: %@" = "数据压缩错误: %@";
 
 /* Error message while saving a database. [errorDescription: String] */
-"[Database2/Saving/Error] Encryption error: %@" = "Encryption error: %@";
+"[Database2/Saving/Error] Encryption error: %@" = "加密错误: %@";
 
 /* Error message about XML parsing. [value: String, tag: String] */
-"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "Malformed value '%1$@' in %2$@";
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "%2$@ 中的值 %1$@ 错误";
 
 /* Error message about XML parsing. [tag: String] */
-"[Database2/Xml2/ParsingError] Nil value in %@" = "Nil value in %@";
+"[Database2/Xml2/ParsingError] Nil value in %@" = "在%@中找到\"Nil\"值";
 
 /* Error message about XML parsing */
-"[Database2/Xml2/ParsingError] Not a KeePass XML" = "Not a KeePass XML";
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "不是KeePass 的XML格式";
 
 /* Error message about XML parsing. [actualTag: String] */
-"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Unexpected tag '%@'";
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "意外的标签 '%@'";
 
 /* Error message about XML parsing. [actualTag: String, expectedTag: String] */
-"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "Unexpected tag '%1$@' (instead of '%2$@')";
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "'%1$@'标签错误(而不是'%2$@')";
 
 /* Generic error while parsing XML. [errorDetails: String] */
-"[Database2/Xml2/ParsingError] XML error: %@" = "XML error: %@";
+"[Database2/Xml2/ParsingError] XML error: %@" = "XML 数据错误:%@";
 
 /* Error message while opening a database */
-"[DatabaseError] Cannot open database" = "Cannot open database";
+"[DatabaseError] Cannot open database" = "数据库无法开启";
 
 /* Error message while saving a database */
-"[DatabaseError] Cannot save database" = "Cannot save database";
+"[DatabaseError] Cannot save database" = "数据库保存错误";
 
 /* Error message: user provided a wrong master key for decryption. */
-"[DatabaseError] Invalid password or key file" = "Invalid password or key file";
+"[DatabaseError] Invalid password or key file" = "错误的密码或者密钥文件";
 
 /* A very generic error message */
-"[FileDocument] Unexpected file error, please contact us." = "Unexpected file error, please contact us.";
+"[FileDocument] Unexpected file error, please contact us." = "文件意外的错误, 请与我们联系。";
 
 /* Error message [reason: String] */
-"[FileKeeper] Failed to delete file. Reason: %@" = "Failed to delete file. Reason: %@";
+"[FileKeeper] Failed to delete file. Reason: %@" = "删除文件错误。原因:%@";
 
 /* Error message [reason: String] */
-"[FileKeeper] Failed to import file. Reason: %@" = "Failed to import file. Reason: %@";
+"[FileKeeper] Failed to import file. Reason: %@" = "文件导入失败。原因: %@";
 
 /* Error message [reason: String] */
-"[FileKeeper] Failed to open file. Reason: %@" = "Failed to open file. Reason: %@";
+"[FileKeeper] Failed to open file. Reason: %@" = "文件打开失败。原因: %@";
 
 /* Error message: tried to import URL which does not point to a file */
-"[FileKeeper] Not a file URL" = "Not a file URL";
+"[FileKeeper] Not a file URL" = "不是一个文件网址";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Creation Date (Oldest First)";
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "创建日期(最初始的)";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Creation Date (Recent First)";
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "创建日期(最近的一次)";
 
 /* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Modification Date (Oldest First)";
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "修改日期(最早的开始)";
 
 /* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Modification Date (Recent First)";
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "修改日期(最近的一个)";
 
 /* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "Name (A..Z)";
+"[FilesSortOrder/longTitle] Name (A..Z)" = "姓名 (A..Z)";
 
 /* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "Name (Z..A)";
+"[FilesSortOrder/longTitle] Name (Z..A)" = "姓名(Z..A)";
 
 /* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "No Sorting";
+"[FilesSortOrder/longTitle] No Sorting" = "不排序";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "By Creation Date (New..Old)";
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "按创建日期(新...旧)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "By Creation Date (Old..New)";
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "按创建日期(旧...新)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "By Modification Date (New..Old)";
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "按修改日期(新...旧)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "By Modification Date (Old..New)";
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "按修改日期(旧...新)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "By Title (A..Z)";
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "按标题 (A..Z)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "By Title (Z..A)";
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "按标题 (Z..A)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "No Sorting";
+"[GroupSortOrder/longTitle] No Sorting" = "不排序";
 
 /* Status message: processing of the master key is in progress */
-"[KDF/Progress] Processing the master key" = "Processing the master key";
+"[KDF/Progress] Processing the master key" = "主密钥处理中";
 
 /* Generic error message about system keychain. [errorCode: Int] */
-"[KeychainError/generic] Keychain error (code %d) " = "Keychain error (code %d) ";
+"[KeychainError/generic] Keychain error (code %d) " = "钥匙圈错误(代码 %d) ";
 
 /* Error message about system keychain. */
-"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Keychain error: unexpected data format";
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "钥匙圈错误: 意外的数据格式";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
-"[Progress/CancellationReason] Cancelled by user" = "Cancelled by user";
+"[Progress/CancellationReason] Cancelled by user" = "已被使用者取消";
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
-"[Progress/CancellationReason/lowMemory]" = "Not enough memory to continue.\nThis can happen with larger databases or too ambitious database settings (Argon2 memory parameter).";
+"[Progress/CancellationReason/lowMemory]" = "没有足够的内存供继续程序继续。\n较大的数据库或过于消耗内存的数据库设置(Argon2内存参数) 可能会发生这种情况。";
 
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
-"[Settings/AppLockTimeout/description] After last interaction" = "After last interaction";
+"[Settings/AppLockTimeout/description] After last interaction" = "没操作应用程序";
 
 /* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
-"[Settings/AppLockTimeout/description] After leaving the app" = "After leaving the app";
+"[Settings/AppLockTimeout/description] After leaving the app" = "离开程序后";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
-"[Settings/AppLockTimeout/fullTitle] Immediately" = "Immediately";
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "立刻";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
-"[Settings/AppLockTimeout/fullTitle] Never" = "Never";
+"[Settings/AppLockTimeout/fullTitle] Never" = "永不";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
-"[Settings/AppLockTimeout/shortTitle] Immediately" = "Immediately";
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "立刻";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
-"[Settings/AppLockTimeout/shortTitle] Never" = "Never";
+"[Settings/AppLockTimeout/shortTitle] Never" = "永不";
 
 /* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
-"[Settings/BackupKeepingDuration/shortTitle] Forever" = "Forever";
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "永远";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
-"[Settings/ClipboardTimeout/fullTitle] Never" = "Never";
+"[Settings/ClipboardTimeout/fullTitle] Never" = "永不";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
-"[Settings/ClipboardTimeout/shortTitle] Never" = "Never";
+"[Settings/ClipboardTimeout/shortTitle] Never" = "永不";
 
 /* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
-"[Settings/DatabaseLockTimeout/description] When leaving the app" = "When leaving the app";
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "离开程序时";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
-"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "Immediately";
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "立刻";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
-"[Settings/DatabaseLockTimeout/fullTitle] Never" = "Never";
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "永不";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
-"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "Immediately";
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "立刻";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
-"[Settings/DatabaseLockTimeout/shortTitle] Never" = "Never";
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "永不";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Last Modified Date";
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "上次修改的日期";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
-"[Settings/EntryListDetail/longTitle] None" = "None";
+"[Settings/EntryListDetail/longTitle] None" = "无";
 
 /* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "Notes";
+"[Settings/EntryListDetail/longTitle] Notes" = "备注";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "Password";
+"[Settings/EntryListDetail/longTitle] Password" = "密码";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
+"[Settings/EntryListDetail/longTitle] URL" = "网址";
 
 /* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "User Name";
+"[Settings/EntryListDetail/longTitle] User Name" = "用户名称";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
-"[URLReference/Location] Cloud storage / Another app" = "Cloud storage / Another app";
+"[URLReference/Location] Cloud storage / Another app" = "云端存档 / 其他app应用";
 
 /* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
-"[URLReference/Location] Internal backup" = "Internal backup";
+"[URLReference/Location] Internal backup" = "内部备份";
 
 /* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
-"[URLReference/Location] Internal inbox" = "Internal inbox";
+"[URLReference/Location] Internal inbox" = "内部导入";
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
-"[URLReference/Location] Local copy" = "Local copy";
+"[URLReference/Location] Local copy" = "本地副本";
 

@@ -1,9 +1,9 @@
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "CbK-f7-To5"; Note = "Action"; */
-"CbK-f7-To5.title" = "Add Database";
+"CbK-f7-To5.title" = "添加数据库";
 
 /* Class = "UILabel"; text = "No recent databases"; ObjectID = "fXt-kp-oSe"; */
-"fXt-kp-oSe.text" = "No recent databases";
+"fXt-kp-oSe.text" = "没有最近的数据库";
 
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "Zun-me-VzS"; */
-"Zun-me-VzS.title" = "Databases";
+"Zun-me-VzS.title" = "数据库";
 

@@ -1,6 +1,25 @@
 #CHANGELOG
 
-## [1.02.33] (Public Release) - 2019-09-10
+## [1.02.34] - 2019-09-14
+
+### Added
+
+- German translation [thanks, Lukas Wolfsteiner and @cpktmpkt]
+- Chinese Simplified translation (omitted by mistake in v1.02.33) [thanks, 3374575857]
+- In entry editor, you can choose a random or a frequently used username [thanks, Mike]
+- For new entries, the user name field is pre-filled with the default one from database settings [thanks, Mike]
+- Added a "Repeat password" field to the Change Master Key dialog [thanks, A.G.]
+
+### Fixed
+
+- Search controller did not show up on iOS 13 (fixes #46)
+- Custom fields could interfere with the fixed ones (fixes #54) [thanks, Michael]
+- Layout issues (missing buttons) in entry editor [thanks, S.Y.]
+- Unlock errors could be squished/invisible on small screens (iOS 13) [thanks, KK9]
+- Properly dismissing group/entry editor with a gesture (iOS 13)
+
+
+## [1.02.33] (Beta Release) - 2019-09-10
 
 ### Added
 - Russian translation

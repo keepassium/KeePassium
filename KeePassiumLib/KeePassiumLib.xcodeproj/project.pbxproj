@@ -241,6 +241,7 @@
 		75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeePassiumLib.h; sourceTree = "<group>"; };
 		75D0C76E2174AF1F00C64C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75E4CA89232D0B2200EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75EA2D1621B2FB4000826FC6 /* Diag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diag.swift; sourceTree = "<group>"; };
 		75F4ACC1217743BF00B22D8B /* DiagLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiagLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F4ACD12177456200B22D8B /* PasswordGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
@@ -684,6 +685,7 @@
 				nl,
 				"zh-Hant",
 				"zh-Hans",
+				de,
 			);
 			mainGroup = 75D0C7602174AF1F00C64C93;
 			productRefGroup = 75D0C76B2174AF1F00C64C93 /* Products */;
@@ -868,6 +870,7 @@
 				75AC53482326FCC6000AA4FB /* nl */,
 				75AC534A2326FCDB000AA4FB /* zh-Hant */,
 				75AC53A2232766EB000AA4FB /* zh-Hans */,
+				75E4CA89232D0B2200EB6805 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

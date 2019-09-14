@@ -1,15 +1,15 @@
 /* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "Dfd-LU-ij4"; */
-"Dfd-LU-ij4.normalTitle" = "Privacy Policy";
+"Dfd-LU-ij4.normalTitle" = "隐私权政策";
 
 /* Class = "UILabel"; text = "Payment will be charged to your Apple ID account at the confirmation of purchase. \n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. \n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase."; ObjectID = "Rkk-oi-8fO"; Note = "Standard conditions text mandated by Apple."; */
-"Rkk-oi-8fO.text" = "Payment will be charged to your Apple ID account at the confirmation of purchase. \n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. \n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.";
+"Rkk-oi-8fO.text" = "在确认购买时，将会从您的Apple ID账户中收取付款。 \n\n除非在到期前至少24小时取消，否则订阅会自动续订。您的账户将在到期前24小时内收取续订费用。 \n\n您可以在购买后转到App Store上的账户设置来管理和取消订阅。";
 
 /* Class = "UIButton"; normalTitle = "Terms and Conditions"; ObjectID = "ujr-9f-eco"; */
-"ujr-9f-eco.normalTitle" = "Terms and Conditions";
+"ujr-9f-eco.normalTitle" = "条款与条件";
 
 /* Class = "UINavigationItem"; title = "Premium"; ObjectID = "WdG-3q-lNo"; */
-"WdG-3q-lNo.title" = "Premium";
+"WdG-3q-lNo.title" = "高级版";
 
 /* Class = "UIButton"; normalTitle = "Restore Purchases"; ObjectID = "yss-Xu-2XK"; */
-"yss-Xu-2XK.normalTitle" = "Restore Purchases";
+"yss-Xu-2XK.normalTitle" = "还原购买";
 

@@ -1,24 +1,24 @@
 /* Class = "UILabel"; text = "Show Backup Files"; ObjectID = "aEK-cJ-9bc"; Note = "Settings option: whether to show backup copies in the list of database files"; */
-"aEK-cJ-9bc.text" = "Show Backup Files";
+"aEK-cJ-9bc.text" = "显示备份文件";
 
 /* Class = "UITableViewSection"; footerTitle = "KeePassium can automatically delete old backup files to free up some storage space."; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
-"B3L-Dk-Uq3.footerTitle" = "KeePassium can automatically delete old backup files to free up some storage space.";
+"B3L-Dk-Uq3.footerTitle" = "KeePassium 可以自动删除旧的备份文件帮您释放点手机文件空间。";
 
 /* Class = "UITableViewSection"; headerTitle = "Periodic cleanup"; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
-"B3L-Dk-Uq3.headerTitle" = "Periodic cleanup";
+"B3L-Dk-Uq3.headerTitle" = "定期清理";
 
 /* Class = "UILabel"; text = "Make Backup Copies"; ObjectID = "BJ7-eQ-JOc"; Note = "Settings option: backup databases before saving them"; */
-"BJ7-eQ-JOc.text" = "Make Backup Copies";
+"BJ7-eQ-JOc.text" = "创建备份副本";
 
 /* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
-"G42-gR-eKm.text" = "Keep Backup Files";
+"G42-gR-eKm.text" = "保留备份文件";
 
 /* Class = "UITableViewSection"; footerTitle = "Before saving a database, KeePassium will automatically make a copy, just in case."; ObjectID = "nBI-OF-9iV"; Note = "Explanation for the `Make Backup Copies` option"; */
-"nBI-OF-9iV.footerTitle" = "Before saving a database, KeePassium will automatically make a copy, just in case.";
+"nBI-OF-9iV.footerTitle" = "在保存数据库时, KeePassium 会自动创建一个副本, 以防万一。";
 
 /* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
-"nSy-3u-0xW.title" = "Database Backup";
+"nSy-3u-0xW.title" = "数据库备份";
 
 /* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
-"XeH-7q-aad.footerTitle" = "Backup copies will appear along with the original files.";
+"XeH-7q-aad.footerTitle" = "备份副本将与原始文件一起显示。";
 

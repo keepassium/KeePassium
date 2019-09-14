@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,21 +13,21 @@
             <objects>
                 <tableViewController storyboardIdentifier="EditEntryVC" id="dyC-HY-kh4" customClass="EditEntryVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zyf-Cf-svH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="86" id="GLB-1c-KE8" customClass="EditEntryTitleCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" id="GLB-1c-KE8" customClass="EditEntryTitleCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GLB-1c-KE8" id="9Es-ir-laV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/kpbIcon00" translatesAutoresizingMaskIntoConstraints="NO" id="10U-0j-Qe5">
-                                            <rect key="frame" x="16" y="11" width="29" height="29"/>
+                                            <rect key="frame" x="20" y="11" width="29" height="29"/>
                                             <color key="tintColor" name="ActionTint"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="29" id="NW4-Ih-278"/>
@@ -40,7 +38,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Entry Title}" borderStyle="roundedRect" placeholder="Entry Title" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-If-zfn" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="53" y="11" width="306" height="30"/>
+                                            <rect key="frame" x="57" y="11" width="337" height="33"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -51,8 +49,8 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Entry title" localized="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-rc-pdR">
-                                            <rect key="frame" x="16" y="48" width="92" height="36"/>
+                                        <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-rc-pdR" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="48" width="92" height="36"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <color key="tintColor" name="ActionTint"/>
                                             <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
@@ -67,10 +65,11 @@
                                         <constraint firstItem="HcW-rc-pdR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mGc-If-zfn" secondAttribute="bottom" constant="4" id="2zE-9x-4Ts"/>
                                         <constraint firstItem="10U-0j-Qe5" firstAttribute="top" secondItem="9Es-ir-laV" secondAttribute="topMargin" id="3IL-3l-OR9"/>
                                         <constraint firstItem="mGc-If-zfn" firstAttribute="trailing" secondItem="9Es-ir-laV" secondAttribute="trailingMargin" id="Cj7-de-yDR"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="HcW-rc-pdR" secondAttribute="trailing" id="OeJ-l6-SZj"/>
                                         <constraint firstItem="HcW-rc-pdR" firstAttribute="top" secondItem="10U-0j-Qe5" secondAttribute="bottom" priority="750" constant="8" id="PbJ-Ff-fIB"/>
                                         <constraint firstItem="mGc-If-zfn" firstAttribute="top" secondItem="9Es-ir-laV" secondAttribute="topMargin" id="QD8-TM-ifx"/>
                                         <constraint firstItem="mGc-If-zfn" firstAttribute="leading" secondItem="10U-0j-Qe5" secondAttribute="trailing" constant="8" id="XW4-GU-QCO"/>
-                                        <constraint firstItem="HcW-rc-pdR" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="9Es-ir-laV" secondAttribute="bottom" id="kCc-Eu-jIg"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HcW-rc-pdR" secondAttribute="bottom" id="kCc-Eu-jIg"/>
                                         <constraint firstItem="10U-0j-Qe5" firstAttribute="leading" secondItem="9Es-ir-laV" secondAttribute="leadingMargin" id="ryr-MC-Yl3"/>
                                         <constraint firstItem="HcW-rc-pdR" firstAttribute="leading" secondItem="10U-0j-Qe5" secondAttribute="leading" id="x99-82-rYb"/>
                                     </constraints>
@@ -82,22 +81,22 @@
                                     <outlet property="titleTextField" destination="mGc-If-zfn" id="Wgt-4Z-iil"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineCell" rowHeight="80" id="fOA-rA-t9w" customClass="EditEntrySingleLineCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="114" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineCell" id="fOA-rA-t9w" customClass="EditEntrySingleLineCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="112" width="414" height="84.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fOA-rA-t9w" id="fv0-vc-xOU">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84.333335876464844"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zo6-9v-QQD" userLabel="Separator">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="4"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="4" id="p7c-1i-Stv"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Field Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN9-CU-AJF">
-                                            <rect key="frame" x="16" y="12" width="343" height="19"/>
+                                            <rect key="frame" x="20" y="11.999999999999998" width="89" height="19.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
@@ -109,7 +108,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Value}" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zr2-BH-wQ3" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="39" width="343" height="30"/>
+                                            <rect key="frame" x="20" y="39.333333333333336" width="374" height="34.000000000000007"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="JcH-Or-9Cf"/>
                                             </constraints>
@@ -120,14 +119,31 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </textField>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-MK-Ca2">
+                                            <rect key="frame" x="334" y="4" width="60" height="35.333333333333336"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <state key="normal" title="{Button}">
+                                                <color key="titleColor" name="ActionTint"/>
+                                            </state>
+                                            <attributedString key="userComments">
+                                                <fragment content="#bc-ignore!"/>
+                                            </attributedString>
+                                            <connections>
+                                                <action selector="didPressActionButton:" destination="fOA-rA-t9w" eventType="touchUpInside" id="c5P-cn-3LK"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="yxs-MK-Ca2" firstAttribute="firstBaseline" secondItem="CN9-CU-AJF" secondAttribute="firstBaseline" priority="750" id="A4M-vW-rRZ"/>
                                         <constraint firstAttribute="trailing" secondItem="zo6-9v-QQD" secondAttribute="trailing" id="NKp-Gx-XFk"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="CN9-CU-AJF" secondAttribute="trailing" id="Qk4-hL-53H"/>
+                                        <constraint firstItem="zr2-BH-wQ3" firstAttribute="top" secondItem="yxs-MK-Ca2" secondAttribute="bottom" id="PTj-t3-edN"/>
+                                        <constraint firstItem="yxs-MK-Ca2" firstAttribute="trailing" secondItem="zr2-BH-wQ3" secondAttribute="trailing" id="Pa6-83-ed7"/>
                                         <constraint firstItem="zo6-9v-QQD" firstAttribute="leading" secondItem="fv0-vc-xOU" secondAttribute="leading" id="VMh-Ye-oOw"/>
                                         <constraint firstItem="zr2-BH-wQ3" firstAttribute="leading" secondItem="fv0-vc-xOU" secondAttribute="leadingMargin" id="XB0-Mn-9Av"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="zr2-BH-wQ3" secondAttribute="trailing" id="YXl-RR-pqr"/>
                                         <constraint firstItem="zr2-BH-wQ3" firstAttribute="top" secondItem="CN9-CU-AJF" secondAttribute="bottom" constant="8" id="b0A-5H-XPw"/>
+                                        <constraint firstItem="yxs-MK-Ca2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CN9-CU-AJF" secondAttribute="trailing" constant="8" id="cU9-nc-Tmi"/>
+                                        <constraint firstItem="yxs-MK-Ca2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zo6-9v-QQD" secondAttribute="bottom" id="dWV-ps-qIT"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="zr2-BH-wQ3" secondAttribute="bottom" id="r3g-HG-5oV"/>
                                         <constraint firstItem="zo6-9v-QQD" firstAttribute="top" secondItem="fv0-vc-xOU" secondAttribute="top" id="y0D-zA-Rob"/>
                                         <constraint firstItem="CN9-CU-AJF" firstAttribute="top" secondItem="zo6-9v-QQD" secondAttribute="bottom" constant="8" id="yW0-WQ-5Cv"/>
@@ -135,26 +151,27 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="actionButton" destination="yxs-MK-Ca2" id="1UT-Qs-8ZH"/>
                                     <outlet property="textField" destination="zr2-BH-wQ3" id="Bqm-QR-otS"/>
                                     <outlet property="titleLabel" destination="CN9-CU-AJF" id="W1O-DL-4V6"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineProtectedCell" rowHeight="80" id="Kw5-lo-PXD" customClass="EditEntrySingleLineProtectedCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="194" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineProtectedCell" id="Kw5-lo-PXD" customClass="EditEntrySingleLineProtectedCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="196.33333587646484" width="414" height="84.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kw5-lo-PXD" id="n4E-7U-Owp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84.333335876464844"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="903-Pj-kT9" userLabel="Separator">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="4"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="4" id="C9V-Uc-gIb"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="{Field Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-4o-MBS">
-                                            <rect key="frame" x="16" y="12" width="254" height="19"/>
+                                            <rect key="frame" x="20" y="11.999999999999998" width="89" height="19.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
@@ -166,7 +183,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Value}" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ro2-Xv-zrw" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="39" width="343" height="30"/>
+                                            <rect key="frame" x="20" y="39.333333333333336" width="374" height="34.000000000000007"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="8RP-zF-9wp"/>
                                             </constraints>
@@ -177,8 +194,8 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-wo-jYf">
-                                            <rect key="frame" x="278" y="7" width="81" height="32"/>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-wo-jYf">
+                                            <rect key="frame" x="313" y="4" width="81" height="35.333333333333336"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <state key="normal" title="Randomize"/>
                                             <attributedString key="userComments">
@@ -199,11 +216,12 @@
                                         <constraint firstAttribute="trailing" secondItem="903-Pj-kT9" secondAttribute="trailing" id="FNk-yy-fEq"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Ro2-Xv-zrw" secondAttribute="bottom" id="KVh-Ug-Ohv"/>
                                         <constraint firstItem="Ro2-Xv-zrw" firstAttribute="leading" secondItem="n4E-7U-Owp" secondAttribute="leadingMargin" id="KlV-6i-GV0"/>
-                                        <constraint firstItem="z2C-wo-jYf" firstAttribute="leading" secondItem="kN4-4o-MBS" secondAttribute="trailing" constant="8" id="UvQ-au-DGe"/>
+                                        <constraint firstItem="z2C-wo-jYf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kN4-4o-MBS" secondAttribute="trailing" constant="8" id="UvQ-au-DGe"/>
                                         <constraint firstItem="903-Pj-kT9" firstAttribute="leading" secondItem="n4E-7U-Owp" secondAttribute="leading" id="a5E-LP-zcO"/>
                                         <constraint firstItem="Ro2-Xv-zrw" firstAttribute="top" secondItem="z2C-wo-jYf" secondAttribute="bottom" id="cY0-TH-sNb"/>
                                         <constraint firstItem="kN4-4o-MBS" firstAttribute="leading" secondItem="n4E-7U-Owp" secondAttribute="leadingMargin" id="ech-K4-SdJ"/>
                                         <constraint firstItem="903-Pj-kT9" firstAttribute="top" secondItem="n4E-7U-Owp" secondAttribute="top" id="g8t-tA-8o5"/>
+                                        <constraint firstItem="z2C-wo-jYf" firstAttribute="firstBaseline" secondItem="kN4-4o-MBS" secondAttribute="firstBaseline" priority="750" id="kL3-yu-Ldw"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ro2-Xv-zrw" secondAttribute="trailing" id="maP-wj-csG"/>
                                         <constraint firstItem="z2C-wo-jYf" firstAttribute="trailing" secondItem="Ro2-Xv-zrw" secondAttribute="trailing" id="ncY-vZ-zto"/>
                                         <constraint firstItem="z2C-wo-jYf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="903-Pj-kT9" secondAttribute="bottom" id="ndN-bi-5Hx"/>
@@ -215,22 +233,22 @@
                                     <outlet property="titleLabel" destination="kN4-4o-MBS" id="h1b-82-aP7"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MultiLineCell" rowHeight="157" id="5Ke-qE-K1F" customClass="EditEntryMultiLineCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="274" width="375" height="157"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MultiLineCell" id="5Ke-qE-K1F" customClass="EditEntryMultiLineCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="280.66667175292969" width="414" height="254.66667175292969"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ke-qE-K1F" id="MDp-Cu-Sys">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="254.66667175292969"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="998-Hc-DjE" userLabel="Separator">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="4"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="4" id="Yqm-Ad-P63"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="{Field Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYx-OE-79H">
-                                            <rect key="frame" x="16" y="12" width="343" height="19.5"/>
+                                            <rect key="frame" x="20" y="12.000000000000002" width="374" height="19.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
@@ -242,7 +260,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9e5-bz-qOo" customClass="ValidatingTextView" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="39.5" width="343" height="102.5"/>
+                                            <rect key="frame" x="20" y="39.666666666666657" width="374" height="200"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="750" constant="200" id="TKR-Wn-Ydd"/>
@@ -274,22 +292,22 @@
                                     <outlet property="titleLabel" destination="mYx-OE-79H" id="wof-BP-yiC"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomFieldCell" rowHeight="197" id="CcF-c8-r4M" customClass="EditEntryCustomFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="431" width="375" height="197"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomFieldCell" id="CcF-c8-r4M" customClass="EditEntryCustomFieldCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="535.33334350585938" width="414" height="258"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CcF-c8-r4M" id="8k8-If-CEX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="258"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDy-AV-pKE" userLabel="Separator">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="4"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="4" id="aNX-bx-azn"/>
                                             </constraints>
                                         </view>
                                         <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Name}" borderStyle="roundedRect" placeholder="Field Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-Xd-ff5" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="12" width="343" height="30"/>
+                                            <rect key="frame" x="20" y="12" width="374" height="34"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -302,7 +320,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </textField>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7iU-ut-hd7" customClass="ValidatingTextView" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="50" width="343" height="93"/>
+                                            <rect key="frame" x="20" y="54" width="374" height="150"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="750" constant="150" id="o4u-g8-4jQ"/>
@@ -320,7 +338,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </textView>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eox-My-Hns">
-                                            <rect key="frame" x="310" y="151" width="51" height="31"/>
+                                            <rect key="frame" x="345" y="212" width="51" height="31"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."/>
                                             </attributedString>
@@ -330,7 +348,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In-memory Protection" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pb-xb-fuf">
-                                            <rect key="frame" x="16" y="156" width="286" height="21"/>
+                                            <rect key="frame" x="20" y="217" width="317" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>

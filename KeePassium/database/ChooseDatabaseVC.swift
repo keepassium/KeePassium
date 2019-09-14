@@ -447,7 +447,7 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
 extension ChooseDatabaseVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
         if key == .filesSortOrder || key == .backupFilesVisible {
-            sortFileList()
+            refresh()
         }
     }
 }

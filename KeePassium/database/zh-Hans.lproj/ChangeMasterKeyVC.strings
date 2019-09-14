@@ -1,9 +1,9 @@
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "hYP-f0-K1s"; Note = "Placeholder: text field for entering a master password"; */
-"hYP-f0-K1s.placeholder" = "Password";
+"hYP-f0-K1s.placeholder" = "密码";
 
 /* Class = "UINavigationItem"; title = "Change Master Key"; ObjectID = "JKD-iF-iwA"; Note = "Title of the dialog for changing the database's master key."; */
-"JKD-iF-iwA.title" = "Change Master Key";
+"JKD-iF-iwA.title" = "变更主密钥";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "M9Q-v8-e6Q"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
-"M9Q-v8-e6Q.placeholder" = "No Key File";
+"M9Q-v8-e6Q.placeholder" = "没有密钥文件";
 

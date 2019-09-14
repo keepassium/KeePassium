@@ -14,7 +14,9 @@ class ChangeMasterKeyVC: UIViewController {
     @IBOutlet weak var databaseNameLabel: UILabel!
     @IBOutlet weak var databaseIcon: UIImageView!
     @IBOutlet weak var passwordField: ValidatingTextField!
+    @IBOutlet weak var repeatPasswordField: ValidatingTextField!
     @IBOutlet weak var keyFileField: ValidatingTextField!
+    @IBOutlet weak var passwordMismatchImage: UIImageView!
     
     private var databaseRef: URLReference!
     private var keyFileRef: URLReference?
@@ -34,9 +36,12 @@ class ChangeMasterKeyVC: UIViewController {
         databaseIcon.image = UIImage.databaseIcon(for: databaseRef)
         
         passwordField.invalidBackgroundColor = nil
+        repeatPasswordField.invalidBackgroundColor = nil
         keyFileField.invalidBackgroundColor = nil
         passwordField.delegate = self
         passwordField.validityDelegate = self
+        repeatPasswordField.delegate = self
+        repeatPasswordField.validityDelegate = self
         keyFileField.delegate = self
         keyFileField.validityDelegate = self
         
@@ -94,6 +99,9 @@ class ChangeMasterKeyVC: UIViewController {
             view, title: LString.databaseStatusSaving, animated: true)
         progressOverlay?.isCancellable = true
         
+        if #available(iOS 13, *) {
+            isModalInPresentation = true
+        }
         navigationItem.leftBarButtonItem?.isEnabled = false
         navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.hidesBackButton = true
@@ -115,6 +123,9 @@ class ChangeMasterKeyVC: UIViewController {
                 _self.progressOverlay = nil
             }
         )
+        if #available(iOS 13, *) {
+            isModalInPresentation = false
+        }
         navigationItem.leftBarButtonItem?.isEnabled = true
         navigationItem.rightBarButtonItem?.isEnabled = true
         navigationItem.hidesBackButton = false
@@ -123,8 +134,13 @@ class ChangeMasterKeyVC: UIViewController {
 
 extension ChangeMasterKeyVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField === passwordField {
+        switch textField {
+        case passwordField:
+            repeatPasswordField.becomeFirstResponder()
+        case repeatPasswordField:
             didPressSaveChanges(self)
+        default:
+            break
         }
         return true
     }
@@ -142,13 +158,31 @@ extension ChangeMasterKeyVC: UITextFieldDelegate {
 
 extension ChangeMasterKeyVC: ValidatingTextFieldDelegate {
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
-        let gotPassword = passwordField.text?.isNotEmpty ?? false
-        let gotKeyFile = keyFileRef != nil
-        return gotPassword || gotKeyFile
+        switch sender {
+        case passwordField, keyFileField:
+            let gotPassword = passwordField.text?.isNotEmpty ?? false
+            let gotKeyFile = keyFileRef != nil
+            return gotPassword || gotKeyFile
+        case repeatPasswordField:
+            let isPasswordsMatch = (passwordField.text == repeatPasswordField.text)
+            UIView.animate(withDuration: 0.5) {
+                self.passwordMismatchImage.alpha = isPasswordsMatch ? 0.0 : 1.0
+            }
+            return isPasswordsMatch
+        default:
+            return true
+        }
+    }
+    
+    func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
+        if sender === passwordField {
+            repeatPasswordField.validate()
+        }
     }
     
     func validatingTextField(_ sender: ValidatingTextField, validityDidChange isValid: Bool) {
-        navigationItem.rightBarButtonItem?.isEnabled = isValid
+        let allValid = passwordField.isValid && repeatPasswordField.isValid && keyFileField.isValid
+        navigationItem.rightBarButtonItem?.isEnabled = allValid
     }
 }
 

@@ -38,15 +38,27 @@ class EditableFieldCellFactory {
             for: indexPath)
             as! EditableFieldCell & UITableViewCell
         cell.field = field
+        
+        if field.internalName == EntryField.userName,
+            let userNameCell = cell as? EditEntrySingleLineCell
+        {
+            userNameCell.actionButton.setTitle(
+                NSLocalizedString(
+                    "[EditEntry/UserName/choose]",
+                    value: "Choose",
+                    comment: "Action: choose a username from a list"),
+                for: .normal)
+            userNameCell.actionButton.isHidden = false
+        }
+        
         return cell
     }
 }
 
 internal protocol EditableFieldCellDelegate: class {
-    func didPressChangeIcon(in cell: EditableFieldCell)
     func didChangeField(field: EditableField, in cell: EditableFieldCell)
     func didPressReturn(in cell: EditableFieldCell)
-    func didPressRandomize(field: EditableField, in cell: EditableFieldCell)
+    func didPressButton(field: EditableField, in cell: EditableFieldCell)
 }
 
 internal protocol EditableFieldCell: class {
@@ -95,7 +107,8 @@ class EditEntryTitleCell:
     }
     
     @IBAction func didPressChangeIcon(_ sender: Any) {
-        delegate?.didPressChangeIcon(in: self)
+        guard let field = field else { return }
+        delegate?.didPressButton(field: field, in: self)
     }
     
     override func becomeFirstResponder() -> Bool {
@@ -135,8 +148,9 @@ class EditEntrySingleLineCell:
     UITextFieldDelegate
 {
     public static let storyboardID = "SingleLineCell"
-    @IBOutlet private weak var textField: ValidatingTextField!
-    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet weak var textField: ValidatingTextField!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var actionButton: UIButton!
     
     var delegate: EditableFieldCellDelegate?
     weak var field: EditableField? {
@@ -175,6 +189,11 @@ class EditEntrySingleLineCell:
     
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         return field?.isValid ?? false
+    }
+    
+    @IBAction func didPressActionButton(_ sender: Any) {
+        guard let field = field else { return }
+        delegate?.didPressButton(field: field, in: self)
     }
 }
 
@@ -232,7 +251,7 @@ class EditEntrySingleLineProtectedCell:
     
     @IBAction func didPressRandomizeButton(_ sender: Any) {
         guard let field = field else { return }
-        delegate?.didPressRandomize(field: field, in: self)
+        delegate?.didPressButton(field: field, in: self)
     }
 }
 

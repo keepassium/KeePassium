@@ -96,6 +96,10 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             target: self,
             action: #selector(didLongPressTableView))
         tableView.addGestureRecognizer(longPressGestureRecognizer)
+        
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     override open func viewDidAppear(_ animated: Bool) {
@@ -188,14 +192,11 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     
     
     private func setupSearch() {
-        if navigationItem.searchController == nil  {
-            searchController = UISearchController(searchResultsController: nil)
-            navigationItem.searchController = searchController
-        } else {
-            searchController = navigationItem.searchController
+        guard navigationItem.searchController != nil else {
+            assertionFailure()
+            return
         }
 
-        navigationItem.hidesSearchBarWhenScrolling = true
         searchController.searchBar.searchBarStyle = .default
         searchController.searchBar.returnKeyType = .search
         searchController.searchBar.barStyle = .default

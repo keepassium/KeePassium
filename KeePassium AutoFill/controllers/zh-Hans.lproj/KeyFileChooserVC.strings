@@ -1,12 +1,12 @@
 /* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
-"9UZ-FK-v73.text" = "No Key File";
+"9UZ-FK-v73.text" = "没有密钥文件";
 
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
-"leO-vH-qBX.text" = "Use only password";
+"leO-vH-qBX.text" = "仅使用密码";
 
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
-"Lod-RE-tcd.title" = "Add Key File";
+"Lod-RE-tcd.title" = "添加密钥文件";
 
 /* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
-"r85-yz-wYI.title" = "Key Files";
+"r85-yz-wYI.title" = "密钥文件";
 

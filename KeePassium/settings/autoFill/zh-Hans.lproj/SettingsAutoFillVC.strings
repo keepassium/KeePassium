@@ -1,30 +1,30 @@
 /* Class = "UILabel"; text = "Tap \"Passwords & Accounts\""; ObjectID = "7SF-2E-uTg"; Note = "Step 2. Must match system's translation."; */
-"7SF-2E-uTg.text" = "Tap \"Passwords & Accounts\"";
+"7SF-2E-uTg.text" = "点选 \"密码 & 账户\"";
 
 /* Class = "UILabel"; text = "Select \"KeePassium\""; ObjectID = "caI-eV-WlU"; */
-"caI-eV-WlU.text" = "Select \"KeePassium\"";
+"caI-eV-WlU.text" = "选择\"KeePassium\"";
 
 /* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
-"ei6-22-NXN.title" = "AutoFill";
+"ei6-22-NXN.title" = "自动填充功能";
 
 /* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"go1-Nt-isQ.text" = "Copy OTP to clipboard";
+"go1-Nt-isQ.text" = "复制 一次性密码OTP 到剪贴板";
 
 /* Class = "UILabel"; text = "Open device settings"; ObjectID = "K3a-Mc-VCg"; Note = "Step 1"; */
-"K3a-Mc-VCg.text" = "Open device settings";
+"K3a-Mc-VCg.text" = "打开系统设置";
 
 /* Class = "UITableViewSection"; headerTitle = "Initial Setup"; ObjectID = "r0b-qe-g8J"; */
-"r0b-qe-g8J.headerTitle" = "Initial Setup";
+"r0b-qe-g8J.headerTitle" = "初始设置";
 
 /* Class = "UILabel"; text = "Tap \"AutoFill Passwords\""; ObjectID = "UzV-Ht-rGx"; Note = "Step 3. Must match system's translation."; */
-"UzV-Ht-rGx.text" = "Tap \"AutoFill Passwords\"";
+"UzV-Ht-rGx.text" = "点选 \"自动填充密码\"";
 
 /* Class = "UILabel"; text = "Turn on \"AutoFill Passwords\""; ObjectID = "X2u-c9-gwU"; */
-"X2u-c9-gwU.text" = "Turn on \"AutoFill Passwords\"";
+"X2u-c9-gwU.text" = "打开\"自动填充密码\"";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you."; ObjectID = "XYL-1l-Jx6"; */
-"XYL-1l-Jx6.footerTitle" = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you.";
+"XYL-1l-Jx6.footerTitle" = "当自动填充写入用户名和密码时，它还可以自动为您复制一次性密码（OTP）。";
 
 /* Class = "UITableViewSection"; headerTitle = "One-time passwords"; ObjectID = "XYL-1l-Jx6"; */
-"XYL-1l-Jx6.headerTitle" = "One-time passwords";
+"XYL-1l-Jx6.headerTitle" = "一次性密码";
 

@@ -1,0 +1,9 @@
+/* Class = "UINavigationItem"; title = "Choose Key File"; ObjectID = "dAQ-9p-8Y9"; */
+"dAQ-9p-8Y9.title" = "Schlüsseldatei auswählen";
+
+/* Class = "UILabel"; text = "Use only password"; ObjectID = "Ftb-fa-Dvb"; Note = "Explanation of the default option in key file picker: don't use key files."; */
+"Ftb-fa-Dvb.text" = "Nur Passwort verwenden";
+
+/* Class = "UILabel"; text = "No Key File"; ObjectID = "tGm-oo-awN"; Note = "Title of the default option in key file picker: don't use key files."; */
+"tGm-oo-awN.text" = "Keine Schlüsseldatei";
+

@@ -1,12 +1,12 @@
 /* Class = "UILabel"; text = "Enter passcode"; ObjectID = "3mQ-t6-0ty"; Note = "Call for action above the passcode text field"; */
-"3mQ-t6-0ty.text" = "Enter passcode";
+"3mQ-t6-0ty.text" = "输入解锁密码";
 
 /* Class = "UINavigationItem"; title = "Unlock KeePassium"; ObjectID = "P3J-3c-ucU"; */
-"P3J-3c-ucU.title" = "Unlock KeePassium";
+"P3J-3c-ucU.title" = "解锁 KeePassium";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "z0x-Rz-Nfj"; */
-"z0x-Rz-Nfj.normalTitle" = "Cancel";
+"z0x-Rz-Nfj.normalTitle" = "取消";
 
 /* Class = "UITextField"; placeholder = "Passcode"; ObjectID = "ZTd-Zj-qAs"; Note = "Placeholder text in the AppLock passcode field"; */
-"ZTd-Zj-qAs.placeholder" = "Passcode";
+"ZTd-Zj-qAs.placeholder" = "应用解锁密码";
 

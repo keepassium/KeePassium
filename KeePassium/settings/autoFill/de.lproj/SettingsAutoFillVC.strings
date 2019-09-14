@@ -1,0 +1,30 @@
+/* Class = "UILabel"; text = "Tap \"Passwords & Accounts\""; ObjectID = "7SF-2E-uTg"; Note = "Step 2. Must match system's translation."; */
+"7SF-2E-uTg.text" = "Drücke \"Passwörter & Accounts\"";
+
+/* Class = "UILabel"; text = "Select \"KeePassium\""; ObjectID = "caI-eV-WlU"; */
+"caI-eV-WlU.text" = "Wähle \"KeePassium\"";
+
+/* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
+"ei6-22-NXN.title" = "Automatisch ausfüllen";
+
+/* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
+"go1-Nt-isQ.text" = "OTP in die Zwischenablage kopieren";
+
+/* Class = "UILabel"; text = "Open device settings"; ObjectID = "K3a-Mc-VCg"; Note = "Step 1"; */
+"K3a-Mc-VCg.text" = "Einstellungen öffnen";
+
+/* Class = "UITableViewSection"; headerTitle = "Initial Setup"; ObjectID = "r0b-qe-g8J"; */
+"r0b-qe-g8J.headerTitle" = "Ersteinrichtung";
+
+/* Class = "UILabel"; text = "Tap \"AutoFill Passwords\""; ObjectID = "UzV-Ht-rGx"; Note = "Step 3. Must match system's translation."; */
+"UzV-Ht-rGx.text" = "Tippe auf \"Automatisch ausfüllen\"";
+
+/* Class = "UILabel"; text = "Turn on \"AutoFill Passwords\""; ObjectID = "X2u-c9-gwU"; */
+"X2u-c9-gwU.text" = "Aktiviere \"Automatisch ausfüllen\"";
+
+/* Class = "UITableViewSection"; footerTitle = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you."; ObjectID = "XYL-1l-Jx6"; */
+"XYL-1l-Jx6.footerTitle" = "Wenn AutoFill den Benutzernamen und das Passwort einfügt, kann es auch das einmalige Passwort (OTP) für Sie kopieren.";
+
+/* Class = "UITableViewSection"; headerTitle = "One-time passwords"; ObjectID = "XYL-1l-Jx6"; */
+"XYL-1l-Jx6.headerTitle" = "Einmalkennwörter";
+
