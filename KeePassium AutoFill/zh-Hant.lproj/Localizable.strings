@@ -65,7 +65,7 @@
 "[Database/Unlock] Key file error: %@" = "金鑰檔案異常: %@";
 
 /* Notification/confirmation message */
-"[Diagnostics] Diagnostic log has been copied to clipboard." = "診斷日誌複製到剪貼版成功。";
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "診斷日誌複製到剪貼簿成功。";
 
 /* Action/button to show internal diagnostic log */
 "[Diagnostics] Show Diagnostic Log" = "顯示診斷日誌";
@@ -203,7 +203,7 @@
 "[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "早鳥優惠結束 %@";
 
 /* Message shown when opening an announcement in AutoFill */
-"[News/AutoFill/stubText] Please open the main app for the full announcement." = "請打開主程序獲得完整的公告。";
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "請打開主程式獲得完整的公告。";
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "升級到高級版";
@@ -218,7 +218,7 @@
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "節省輸入複雜主密碼的時間 - 在高級版中保持資料庫打開更長時間。";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "資料庫超時時間";
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "更長的資料庫逾時時間";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在高級版本中快速切換多個資料庫。";
@@ -227,7 +227,7 @@
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "多個資料庫";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級高級版支持直接在程序中預覽圖像和文檔。";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級高級版支持直接在程式中預覽圖像和文檔。";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "附件預覽";

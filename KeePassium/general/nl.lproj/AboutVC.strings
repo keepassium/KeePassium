@@ -23,7 +23,7 @@
 "AMd-x7-PDa.text" = "Vind je de app prettig?";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "Vertaling door KeePassium-bijdragers";
+"aqX-J9-IzD.text" = "Dutch translation by Heimen Stoffels (@Vistaus)";
 
 /* Class = "UILabel"; text = "Twofish implementation by Niels Ferguson"; ObjectID = "axY-gm-XNr"; */
 "axY-gm-XNr.text" = "Twovis-implementatie door Niels Ferguson";

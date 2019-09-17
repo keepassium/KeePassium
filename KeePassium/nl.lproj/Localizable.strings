@@ -100,6 +100,9 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Sleutelbestandsfout: %@";
 
+/* Action: choose a username from a list */
+"[EditEntry/UserName/choose]" = "Kies";
+
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Bijgevoegde bestanden";
 

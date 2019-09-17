@@ -313,18 +313,24 @@ extension PremiumManager: SKProductsRequestDelegate {
         didReceive response: SKProductsResponse)
     {
         Diag.debug("Received list of in-app purchases")
-        self.availableProducts = response.products
-        productsRequestHandler?(self.availableProducts, nil)
-        productsRequest = nil
-        productsRequestHandler = nil
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.availableProducts = response.products
+            self.productsRequestHandler?(self.availableProducts, nil)
+            self.productsRequest = nil
+            self.productsRequestHandler = nil
+        }
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
         Diag.warning("Failed to acquire list of in-app purchases [message: \(error.localizedDescription)]")
-        self.availableProducts = nil
-        productsRequestHandler?(nil, error)
-        productsRequest = nil
-        productsRequestHandler = nil
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.availableProducts = nil
+            self.productsRequestHandler?(nil, error)
+            self.productsRequest = nil
+            self.productsRequestHandler = nil
+        }
     }
 }
 

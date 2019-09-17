@@ -13,7 +13,23 @@
           "alpha" : "1.000",
           "blue" : "0.753",
           "green" : "0.753"
-        } 
+        }
+      }
+    },
+    {
+      "idiom" : "universal",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "color-space" : "gray-gamma-22",
+        "components" : {
+          "white" : "0.423",
+          "alpha" : "1.000"
+        }
       }
     }
   ]

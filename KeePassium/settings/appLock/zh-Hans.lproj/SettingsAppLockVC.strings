@@ -17,7 +17,7 @@
 "aBx-Ee-bMk.footerTitle" = "保护KeePassium免受未经授权的访问。";
 
 /* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
-"Ef4-Jw-xeO.text" = "自动锁定";
+"Ef4-Jw-xeO.text" = "超时";
 
 /* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
 "IS1-Lb-MFy.text" = "启用应用解锁密码";

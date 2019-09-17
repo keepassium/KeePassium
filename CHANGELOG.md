@@ -1,5 +1,20 @@
 #CHANGELOG
 
+## [1.02.35] - 2019-09-17
+
+### Added
+
+- iOS 13 dark mode (#56, closes #35)
+
+### Fixed
+
+- Some elements appeared not translated (closes #60) [thanks, 3374575857]
+- Entry timestamps not visible on iOS 13
+- Unlock errors sometimes were not visible on small screen (iPhone SE)
+- Gesture dismissal of AutoFill and Premium upgrade dialogs on iOS 13
+- Premium upgrade did not work on iOS 13
+
+
 ## [1.02.34] - 2019-09-14
 
 ### Added

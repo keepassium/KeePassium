@@ -5,7 +5,7 @@
 "7cl-Fc-8Nf.text" = "專有許可證";
 
 /* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
-"7id-QT-w26.text" = "圖標來自Icons8";
+"7id-QT-w26.text" = "圖標 來自 Icons8";
 
 /* Class = "UILabel"; text = "Ionicons by Ionic"; ObjectID = "9lh-fA-Xgx"; */
 "9lh-fA-Xgx.text" = "Ionicons 來自 Ionic";
@@ -23,7 +23,7 @@
 "AMd-x7-PDa.text" = "您喜歡您看到的嗎？";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "繁體中文翻譯 來自 3374575857";
+"aqX-J9-IzD.text" = "繁體中文翻譯 由 社群 與 3374575857 貢獻";
 
 /* Class = "UILabel"; text = "Twofish implementation by Niels Ferguson"; ObjectID = "axY-gm-XNr"; */
 "axY-gm-XNr.text" = "Twofish 由 Niels Ferguson 實現";
@@ -125,5 +125,5 @@
 "Wuj-Uw-baK.text" = "KeePassium";
 
 /* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
-"wYr-Ya-qAP.text" = "系統設置圖標來自 Vicons Design";
+"wYr-Ya-qAP.text" = "系統設置圖標 來自 Vicons Design";
 

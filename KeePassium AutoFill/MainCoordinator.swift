@@ -37,6 +37,9 @@ class MainCoordinator: NSObject, Coordinator {
             navigationOrientation: .horizontal,
             options: [:]
         )
+        if #available(iOS 13, *) {
+            pageController.modalPresentationStyle = .fullScreen
+        }
         navigationController = LongPressAwareNavigationController()
         navigationController.view.backgroundColor = .clear
         watchdog = Watchdog.shared 

@@ -100,6 +100,9 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Проблема с ключевым файлом: %@";
 
+/* Action: choose a username from a list */
+"[EditEntry/UserName/choose]" = "Выбрать";
+
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Прикреплённые Файлы";
 
@@ -140,7 +143,7 @@
 "[Entry/History] Creation Date" = "Дата Создания";
 
 /* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
-"[Entry/History] Expiry Date" = "Срок Действия";
+"[Entry/History] Expiry Date" = "Дата Окончания";
 
 /* Title of a field with date and time when the entry was last accessed/viewed */
 "[Entry/History] Last Access Date" = "Дата Последнего Доступа";

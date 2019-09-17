@@ -7,13 +7,8 @@
     {
       "idiom" : "universal",
       "color" : {
-        "color-space" : "srgb",
-        "components" : {
-          "red" : "0x00",
-          "alpha" : "1.000",
-          "blue" : "0xD9",
-          "green" : "0x69"
-        }
+        "platform" : "ios",
+        "reference" : "linkColor"
       }
     }
   ]

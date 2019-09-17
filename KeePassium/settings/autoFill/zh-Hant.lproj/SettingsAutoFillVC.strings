@@ -8,7 +8,7 @@
 "ei6-22-NXN.title" = "自動填入功能";
 
 /* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"go1-Nt-isQ.text" = "複製 一次性密碼OTP 到剪貼版";
+"go1-Nt-isQ.text" = "複製 一次性密碼OTP 到剪貼簿";
 
 /* Class = "UILabel"; text = "Open device settings"; ObjectID = "K3a-Mc-VCg"; Note = "Step 1"; */
 "K3a-Mc-VCg.text" = "打開系統設置";

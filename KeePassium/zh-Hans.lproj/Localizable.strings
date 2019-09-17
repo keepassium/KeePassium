@@ -100,6 +100,9 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "密钥文件异常: %@";
 
+/* Action: choose a username from a list */
+"[EditEntry/UserName/choose]" = "选择";
+
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "附件";
 
@@ -395,7 +398,7 @@
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "应用锁定,%@, 超时";
 
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
-"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "应用锁定, 应用解锁密码, 自动锁定设定";
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "应用锁定, 应用解锁密码, 超时";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "删除所有备份当案(%d)";

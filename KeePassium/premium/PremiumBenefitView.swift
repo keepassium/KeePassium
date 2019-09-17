@@ -43,7 +43,11 @@ class PremiumBenefitView: UIView {
     }
     
     private func setupViews() {
-        backgroundColor = UIColor.groupTableViewBackground
+        if #available(iOS 13, *) {
+            backgroundColor = UIColor.secondarySystemGroupedBackground
+        } else {
+            backgroundColor = UIColor.groupTableViewBackground
+        }
         
         titleLabel = UILabel()
         titleLabel.text = "(Title)"
@@ -66,8 +70,6 @@ class PremiumBenefitView: UIView {
         imageView = UIImageView(image: UIImage.kpIcon(forID: .apple))
         imageView.contentMode = .center
         addSubview(imageView)
-        
-        backgroundColor = UIColor.white
     }
     
     private func setupLayout() {

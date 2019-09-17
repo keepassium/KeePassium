@@ -42,6 +42,13 @@ class ViewEntryHistoryVC: UITableViewController, Refreshable {
     }
     
     func refresh() {
+        if traitCollection.horizontalSizeClass == .compact {
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .medium
+        } else {
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .long
+        }
         tableView.reloadData()
     }
 
@@ -102,14 +109,7 @@ class ViewEntryHistoryVC: UITableViewController, Refreshable {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if traitCollection.horizontalSizeClass == .compact {
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .medium
-        } else {
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .long
-        }
-        tableView.reloadData()
+        refresh()
     }
     
     override func tableView(

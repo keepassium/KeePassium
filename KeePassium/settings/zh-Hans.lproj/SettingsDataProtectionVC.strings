@@ -38,8 +38,8 @@
 "neJ-eG-TV7.headerTitle" = "自动锁定";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "剪贴板自动清除";
+"SSu-Sr-MCg.text" = "剪贴板超时";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "数据库自动锁定";
+"weX-SZ-IDB.text" = "数据库超时";
 

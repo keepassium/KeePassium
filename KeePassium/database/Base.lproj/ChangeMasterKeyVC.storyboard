@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ymj-cN-i1q">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -49,7 +49,7 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
                                                 <attributedString key="userComments">
-                                                    <fragment content="Placeholder: text field for entering a master password"/>
+                                                    <fragment content="Placeholder: text field for changing the master password"/>
                                                 </attributedString>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRQ-hf-Pd2" userLabel="Separator1">
@@ -59,7 +59,7 @@
                                                     <constraint firstAttribute="height" constant="2" id="fWO-s6-Q3h"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password Again" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHG-X2-fHH" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHG-X2-fHH" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="46" width="234" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="bS0-dy-vQZ"/>
@@ -69,7 +69,7 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                                 <attributedString key="userComments">
-                                                    <fragment content="Placeholder: text field for entering a master password"/>
+                                                    <fragment content="Placeholder: the second text field for changing the master password"/>
                                                 </attributedString>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHO-Fw-vsa" userLabel="Separator2">
@@ -92,7 +92,7 @@
                                                 </attributedString>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="BRQ-hf-Pd2" secondAttribute="trailing" id="5rB-nM-Y3M"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="M9Q-v8-e6Q" secondAttribute="trailing" id="A4k-x6-sc4"/>

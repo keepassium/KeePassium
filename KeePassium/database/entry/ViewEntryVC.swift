@@ -88,6 +88,7 @@ class ViewEntryVC: UIViewController, Refreshable {
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         refresh()
     }
     

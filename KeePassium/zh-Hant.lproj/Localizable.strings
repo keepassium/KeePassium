@@ -38,7 +38,7 @@
 "[Database/Create/TemplateEntry/title] Sample Entry" = "條目樣本";
 
 /* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
-"[Database/Create/TemplateEntry/userName] john.smith" = "張三";
+"[Database/Create/TemplateEntry/userName] john.smith" = "小明";
 
 /* Predefined group in a new database */
 "[Database/Create/TemplateGroup/title] Email" = "電子郵件";
@@ -50,10 +50,10 @@
 "[Database/Create/TemplateGroup/title] General" = "一般";
 
 /* Predefined group in a new database */
-"[Database/Create/TemplateGroup/title] Internet" = "互聯網";
+"[Database/Create/TemplateGroup/title] Internet" = "網際網路";
 
 /* Predefined group in a new database */
-"[Database/Create/TemplateGroup/title] Network" = "網際網路";
+"[Database/Create/TemplateGroup/title] Network" = "網路";
 
 /* Predefined `Operating system` group in a new database */
 "[Database/Create/TemplateGroup/title] OS" = "作業系統";
@@ -99,6 +99,9 @@
 
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "金鑰檔案異常: %@";
+
+/* Action: choose a username from a list */
+"[EditEntry/UserName/choose]" = "Choose";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "附件";
@@ -269,7 +272,7 @@
 "[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "早鳥優惠結束 %@";
 
 /* Message shown when opening an announcement in AutoFill */
-"[News/AutoFill/stubText] Please open the main app for the full announcement." = "請打開主程序獲得完整的公告。";
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "請打開主程式獲得完整的公告。";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "直接在KeePassium上預覽附件, 並且不留痕跡。(適用於圖像, 文檔, 檔案等。)";
@@ -359,7 +362,7 @@
 "[Premium/Upgrade/Success/title] Thank You" = "感恩";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
-"[Premium/usage] App being useful: %@/month, that is around %@/year." = "程序已使用: %1$@/月, 大約%2$@/年";
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "程式已使用: %1$@/月, 大約%2$@/年";
 
 /* Description/advertisement for the `Biometric Unlock` premium feature */
 "[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "升級高級版使用Face ID/Touch ID來快速存取您的密碼。";
@@ -371,7 +374,7 @@
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "節省輸入複雜主密碼的時間 - 在高級版中保持資料庫打開更長時間。";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "資料庫超時時間";
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "更長的資料庫逾時時間";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在高級版本中快速切換多個資料庫。";
@@ -380,7 +383,7 @@
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "多個資料庫";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級高級版支持直接在程序中預覽圖像和文檔。";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級高級版支持直接在程式中預覽圖像和文檔。";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "附件預覽";
@@ -392,10 +395,10 @@
 "[Settings/AppLock/Biometric/title] Use %@" = "使用 %@";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
-"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "應用鎖定,%@, 超時";
+"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "應用鎖定,%@, 逾時";
 
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
-"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "應用鎖定, 應用解鎖密碼, 超時";
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "應用鎖定, 應用解鎖密碼, 逾時";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "刪除所有備份儅案(%d)";
@@ -419,10 +422,10 @@
 "[Settings/ClearMasterKeys/Cleared/title] Cleared" = "已清除";
 
 /* Description of the clipboard/pasteboard timeout. */
-"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "如果您從條目中複製了文本, 會在稍後自動地清理您的剪貼版。";
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "如果您從條目中複製了文本, 會在稍後自動地清理您的剪貼簿。";
 
 /* Description of the Database Lock Timeout */
-"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "如果您在一段時間內沒有與KeePassium程序交互, 資料庫將會自動關閉, 以確保您的安全。如果重新打開KeePassium程序您需要重新輸入主密碼。";
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "如果您在一段時間內沒有與KeePassium程式交互, 資料庫將會自動關閉, 以確保您的安全。如果重新打開KeePassium程式您需要重新輸入主密碼。";
 
 /* Title of a settings section about making backup files */
 "[Settings/FileLists/Backup/title] Backup" = "備份";

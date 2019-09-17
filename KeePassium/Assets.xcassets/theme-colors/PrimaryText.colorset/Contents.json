@@ -7,11 +7,21 @@
     {
       "idiom" : "universal",
       "color" : {
-        "color-space" : "gray-gamma-22",
-        "components" : {
-          "white" : "0x00",
-          "alpha" : "1.000"
+        "platform" : "ios",
+        "reference" : "labelColor"
+      }
+    },
+    {
+      "idiom" : "universal",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
         }
+      ],
+      "color" : {
+        "platform" : "ios",
+        "reference" : "labelColor"
       }
     }
   ]
