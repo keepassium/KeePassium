@@ -1,6 +1,13 @@
 #CHANGELOG
 
-## [1.02.35] - 2019-09-17
+## [1.02.36] - 2019-09-17
+
+### Fixed
+
+- English UI garbled (regression caused by the workaround for #60) [thanks, shad0whawk]
+
+
+## [1.02.35] - 2019-09-17 [WITHDRAWN]
 
 ### Added
 

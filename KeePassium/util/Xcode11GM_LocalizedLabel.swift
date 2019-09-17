@@ -27,13 +27,14 @@ class Xcode11GM_LocalizedLabel: UILabel {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let localizationKey = l10nKey,
-            let localizationTable = l10nTable {
-            text = NSLocalizedString(
-                localizationKey,
-                tableName: localizationTable,
-                bundle: Bundle.main,
-                comment: "")
+        guard let localizationKey = l10nKey, let localizationTable = l10nTable else { return }
+        let translatedText = NSLocalizedString(
+            localizationKey,
+            tableName: localizationTable,
+            bundle: Bundle.main,
+            comment: "")
+        if translatedText != localizationKey {
+            text = translatedText
         }
     }
 }
