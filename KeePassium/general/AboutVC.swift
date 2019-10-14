@@ -63,7 +63,7 @@ class AboutVC: UITableViewController {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         switch selectedCell {
         case contactSupportCell:
-            SupportEmailComposer.show(includeDiagnostics: false, completion: nil)
+            SupportEmailComposer.show(subject: .supportRequest)
         case writeReviewCell:
             AppStoreHelper.writeReview()
         default:

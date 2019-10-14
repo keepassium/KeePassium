@@ -1,0 +1,437 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "us-light@1.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "us-dark@1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "locale" : "cs",
+      "idiom" : "universal",
+      "filename" : "cz-light@1.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "cs",
+      "idiom" : "universal",
+      "filename" : "cz-dark@1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "locale" : "de",
+      "idiom" : "universal",
+      "filename" : "de-light@1.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "de",
+      "idiom" : "universal",
+      "filename" : "de-dark@1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "locale" : "nl",
+      "idiom" : "universal",
+      "filename" : "nl-light@1.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "nl",
+      "idiom" : "universal",
+      "filename" : "nl-dark@1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "locale" : "ru",
+      "idiom" : "universal",
+      "filename" : "ru-light@1.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "ru",
+      "idiom" : "universal",
+      "filename" : "ru-dark@1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "locale" : "sv",
+      "idiom" : "universal",
+      "filename" : "se-light@1.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "sv",
+      "idiom" : "universal",
+      "filename" : "se-dark@1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "locale" : "zh-Hans",
+      "idiom" : "universal",
+      "filename" : "cn-light@1.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "zh-Hans",
+      "idiom" : "universal",
+      "filename" : "cn-dark@1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "locale" : "zh-Hant",
+      "idiom" : "universal",
+      "filename" : "cn-light@1-1.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "zh-Hant",
+      "idiom" : "universal",
+      "filename" : "cn-dark@1-1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "us-light@2.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "us-dark@2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "locale" : "cs",
+      "idiom" : "universal",
+      "filename" : "cz-light@2.png",
+      "scale" : "2x"
+    },
+    {
+      "locale" : "cs",
+      "idiom" : "universal",
+      "filename" : "cz-dark@2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "locale" : "de",
+      "idiom" : "universal",
+      "filename" : "de-light@2.png",
+      "scale" : "2x"
+    },
+    {
+      "locale" : "de",
+      "idiom" : "universal",
+      "filename" : "de-dark@2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "locale" : "nl",
+      "idiom" : "universal",
+      "filename" : "nl-light@2.png",
+      "scale" : "2x"
+    },
+    {
+      "locale" : "nl",
+      "idiom" : "universal",
+      "filename" : "nl-dark@2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "locale" : "ru",
+      "idiom" : "universal",
+      "filename" : "ru-light@2.png",
+      "scale" : "2x"
+    },
+    {
+      "locale" : "ru",
+      "idiom" : "universal",
+      "filename" : "ru-dark@2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "locale" : "sv",
+      "idiom" : "universal",
+      "filename" : "se-light@2.png",
+      "scale" : "2x"
+    },
+    {
+      "locale" : "sv",
+      "idiom" : "universal",
+      "filename" : "se-dark@2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "locale" : "zh-Hans",
+      "idiom" : "universal",
+      "filename" : "cn-light@2.png",
+      "scale" : "2x"
+    },
+    {
+      "locale" : "zh-Hans",
+      "idiom" : "universal",
+      "filename" : "cn-dark@2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "locale" : "zh-Hant",
+      "idiom" : "universal",
+      "filename" : "cn-light@2-1.png",
+      "scale" : "2x"
+    },
+    {
+      "locale" : "zh-Hant",
+      "idiom" : "universal",
+      "filename" : "cn-dark@2-1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "us-light@3.png",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "us-dark@3.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    },
+    {
+      "locale" : "cs",
+      "idiom" : "universal",
+      "filename" : "cz-light@3.png",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "cs",
+      "idiom" : "universal",
+      "filename" : "cz-dark@3.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    },
+    {
+      "locale" : "de",
+      "idiom" : "universal",
+      "filename" : "de-light@3.png",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "de",
+      "idiom" : "universal",
+      "filename" : "de-dark@3.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    },
+    {
+      "locale" : "nl",
+      "idiom" : "universal",
+      "filename" : "nl-light@3.png",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "nl",
+      "idiom" : "universal",
+      "filename" : "nl-dark@3.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    },
+    {
+      "locale" : "ru",
+      "idiom" : "universal",
+      "filename" : "ru-light@3.png",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "ru",
+      "idiom" : "universal",
+      "filename" : "ru-dark@3.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    },
+    {
+      "locale" : "sv",
+      "idiom" : "universal",
+      "filename" : "se-light@3.png",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "sv",
+      "idiom" : "universal",
+      "filename" : "se-dark@3.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    },
+    {
+      "locale" : "zh-Hans",
+      "idiom" : "universal",
+      "filename" : "cn-light@3.png",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "zh-Hans",
+      "idiom" : "universal",
+      "filename" : "cn-dark@3.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    },
+    {
+      "locale" : "zh-Hant",
+      "idiom" : "universal",
+      "filename" : "cn-light@3-1.png",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "zh-Hant",
+      "idiom" : "universal",
+      "filename" : "cn-dark@3-1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

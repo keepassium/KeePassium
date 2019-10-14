@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Premium ContainerVC-->
+        <scene sceneID="zah-3G-dEE">
+            <objects>
+                <pageViewController storyboardIdentifier="PremiumContainerVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="tMF-et-IF4" customClass="PremiumContainerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="slb-Z7-inL">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9YG-LN-Ft1">
+                            <connections>
+                                <action selector="didPressCancel:" destination="tMF-et-IF4" id="QEt-HW-Cr0"/>
+                            </connections>
+                        </barButtonItem>
+                        <connections>
+                            <outlet property="titleView" destination="Qkk-pB-jp6" id="1jA-tN-4IY"/>
+                        </connections>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="9YG-LN-Ft1" id="e3l-P3-JNo"/>
+                        <outlet property="segmentedControl" destination="Qkk-pB-jp6" id="W8l-F5-1xi"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="957-MG-fFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Qkk-pB-jp6">
+                    <rect key="frame" x="0.0" y="0.0" width="147" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Premium"/>
+                        <segment title="Pro"/>
+                    </segments>
+                    <connections>
+                        <action selector="didChangeSelectedPage:" destination="tMF-et-IF4" eventType="valueChanged" id="v0S-7f-W88"/>
+                    </connections>
+                </segmentedControl>
+            </objects>
+            <point key="canvasLocation" x="-407" y="-259"/>
+        </scene>
+    </scenes>
+</document>

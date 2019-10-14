@@ -15,6 +15,12 @@ class SupportEmailComposer: NSObject {
     private let betaSupportEmail = "beta@keepassium.com"
     private let premiumSupportEmail = "premium-support@keepassium.com"
     
+    enum Subject: String { 
+        case problem = "Problem"
+        case supportRequest = "Support Request"
+        case proUpgrade = "Pro Upgradе"
+    }
+    
     typealias CompletionHandler = ((Bool)->Void)
     private let completionHandler: CompletionHandler?
     private var subject = ""
@@ -26,23 +32,25 @@ class SupportEmailComposer: NSObject {
         self.content = content
     }
     
-    static func show(includeDiagnostics: Bool, completion: CompletionHandler?=nil) {
-        let subject, content: String
+    static func show(subject: Subject, completion: CompletionHandler?=nil) {
+        let subjectText = "\(AppInfo.name) - \(subject.rawValue)" 
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
+        
+        let includeDiagnostics = (subject == .problem)
+        let contentText: String
         if includeDiagnostics {
-            subject = "\(AppInfo.name) - Problem" 
-                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
-            content = LString.emailTemplateDescribeTheProblemHere +
+            contentText = LString.emailTemplateDescribeTheProblemHere +
                 "\n\n----- Diagnostic Info -----\n" +
                 Diag.toString() +
                 "\n\n\(AppInfo.description)"
         } else {
-            subject = "\(AppInfo.name) - Support Request" 
-                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
-            content = "\n\n\(AppInfo.description)"
+            contentText = "\n\n\(AppInfo.description)"
         }
         
-        let instance = SupportEmailComposer(subject: subject, content: content,
-                                            completionHandler: completion)
+        let instance = SupportEmailComposer(
+            subject: subjectText,
+            content: contentText,
+            completionHandler: completion)
         
         instance.openSystemEmailComposer()
     }

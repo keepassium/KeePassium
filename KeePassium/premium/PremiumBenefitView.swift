@@ -46,7 +46,7 @@ class PremiumBenefitView: UIView {
         if #available(iOS 13, *) {
             backgroundColor = UIColor.secondarySystemGroupedBackground
         } else {
-            backgroundColor = UIColor.groupTableViewBackground
+            backgroundColor = UIColor.white
         }
         
         titleLabel = UILabel()

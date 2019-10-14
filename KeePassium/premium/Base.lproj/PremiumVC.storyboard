@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,6 +40,7 @@
                                                     </label>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="D4c-jF-xBI">
                                                         <rect key="frame" x="0.0" y="35.5" width="280" height="20"/>
+                                                        <color key="color" name="PrimaryText"/>
                                                     </activityIndicatorView>
                                                 </subviews>
                                                 <constraints>
@@ -139,20 +140,12 @@ You can manage and cancel your subscriptions by going to your account settings o
                         <viewLayoutGuide key="safeArea" id="sog-vN-ood"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Premium" id="WdG-3q-lNo">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Agm-4c-8eT">
-                            <connections>
-                                <action selector="didPressCancel:" destination="yXg-JJ-VAJ" id="f8j-5v-PV3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="320" height="900"/>
                     <connections>
                         <outlet property="activityIndcator" destination="D4c-jF-xBI" id="U77-eW-OL6"/>
                         <outlet property="benefitsStackView" destination="IZs-4j-RVF" id="gND-iI-xev"/>
                         <outlet property="buttonStack" destination="Lb7-tD-p8f" id="zrA-M9-QPV"/>
-                        <outlet property="cancelButton" destination="Agm-4c-8eT" id="Na8-Ut-sRm"/>
                         <outlet property="contentView" destination="pfw-Sq-XAv" id="RUD-ic-Xhd"/>
                         <outlet property="footerView" destination="NtD-1H-0E8" id="btT-so-qpB"/>
                         <outlet property="privacyPolicyButton" destination="Dfd-LU-ij4" id="aoJ-Nv-cyL"/>
@@ -169,6 +162,9 @@ You can manage and cancel your subscriptions by going to your account settings o
     <resources>
         <namedColor name="AuxiliaryText">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

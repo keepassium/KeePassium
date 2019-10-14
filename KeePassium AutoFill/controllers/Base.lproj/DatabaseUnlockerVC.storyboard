@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxv-kR-0w1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxv-kR-0w1">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Unlock Database-->
         <scene sceneID="Iw4-YB-y36">
             <objects>
-                <viewController storyboardIdentifier="DatabaseUnlockerVC" title="Unlock Database" modalTransitionStyle="crossDissolve" id="bxv-kR-0w1" customClass="DatabaseUnlockerVC" customModule="KeePassium_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DatabaseUnlockerVC" title="Unlock Database" modalTransitionStyle="crossDissolve" id="bxv-kR-0w1" customClass="DatabaseUnlockerVC" customModule="KeePassiumPro_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GNR-ie-eMS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QNs-Fg-BB8" userLabel="NotificationButtons">
                                         <rect key="frame" x="138" y="0.0" width="174" height="33"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrv-DG-D6F" userLabel="Announcement Button">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrv-DG-D6F" userLabel="Announcement Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="174" height="33"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="tintColor" name="ActionTint"/>
@@ -103,7 +103,7 @@
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Q5g-RY-uXD" userLabel="InputPanel">
                                         <rect key="frame" x="20" y="239" width="280" height="90"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U6j-Ph-AWS" customClass="ProtectedTextField" customModule="KeePassium_AutoFill" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U6j-Ph-AWS" customClass="ProtectedTextField" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="0.0" width="264" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="6ym-0q-4Wx"/>
@@ -211,7 +211,7 @@
                             <constraint firstItem="IWv-PL-Eda" firstAttribute="trailing" secondItem="fAZ-VX-s1Y" secondAttribute="trailing" id="Bf0-le-JFo"/>
                             <constraint firstItem="fAZ-VX-s1Y" firstAttribute="top" secondItem="IWv-PL-Eda" secondAttribute="top" id="TLU-J1-ftW"/>
                             <constraint firstItem="fAZ-VX-s1Y" firstAttribute="leading" secondItem="IWv-PL-Eda" secondAttribute="leading" id="Tme-D6-MJh"/>
-                            <constraint firstItem="IWv-PL-Eda" firstAttribute="bottom" secondItem="fAZ-VX-s1Y" secondAttribute="bottom" priority="250" id="p1m-Aa-EAI" customClass="KeyboardLayoutConstraint" customModule="KeePassium_AutoFill" customModuleProvider="target"/>
+                            <constraint firstItem="IWv-PL-Eda" firstAttribute="bottom" secondItem="fAZ-VX-s1Y" secondAttribute="bottom" priority="250" id="p1m-Aa-EAI" customClass="KeyboardLayoutConstraint" customModule="KeePassiumPro_AutoFill" customModuleProvider="target"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IWv-PL-Eda"/>
                     </view>
@@ -242,7 +242,7 @@
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="WarningBackground">
             <color red="0.94199997186660767" green="0.59700000286102295" blue="0.21699999272823334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

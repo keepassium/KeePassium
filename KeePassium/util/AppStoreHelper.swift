@@ -9,14 +9,17 @@
 import UIKit
 
 class AppStoreHelper {
+    static public let proVersionID = 1481781647
+    static public let freemiumVersionID = 1435127111
+    
     #if PREPAID_VERSION
-    static private let appStoreID = 1481781647
+    static private let appStoreID = AppStoreHelper.proVersionID
     #else
-    static private let appStoreID = 1435127111
+    static private let appStoreID = AppStoreHelper.freemiumVersionID
     #endif
 
-    static func openInAppStore() {
-        guard let url = URL(string: "itms-apps://apps.apple.com/app/id\(appStoreID)") else {
+    static func openInAppStore(appID: Int = appStoreID) {
+        guard let url = URL(string: "itms-apps://apps.apple.com/app/id\(appID)") else {
             assertionFailure("Invalid AppStore URL")
             return
         }

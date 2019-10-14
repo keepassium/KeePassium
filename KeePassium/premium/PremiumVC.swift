@@ -11,6 +11,7 @@ import KeePassiumLib
 import StoreKit
 
 protocol PremiumDelegate: class {
+    func getAvailableProducts() -> [SKProduct]
     func didPressCancel(in premiumController: PremiumVC)
     func didPressRestorePurchases(in premiumController: PremiumVC)
     func didPressBuy(product: SKProduct, in premiumController: PremiumVC)
@@ -37,7 +38,6 @@ class PremiumVC: UIViewController {
     @IBOutlet weak var activityIndcator: UIActivityIndicatorView!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var restorePurchasesButton: UIButton!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var termsButton: UIButton!
     @IBOutlet weak var privacyPolicyButton: UIButton!
     
@@ -67,6 +67,11 @@ class PremiumVC: UIViewController {
         footerView.isHidden = true
         
         setupBenefitsView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh(animated: false)
     }
     
     private func setupBenefitsView() {
@@ -131,6 +136,13 @@ class PremiumVC: UIViewController {
         benefitsStackView.addArrangedSubview(maintenanceBenefit)
     }
     
+    public func refresh(animated: Bool) {
+        guard let products = delegate?.getAvailableProducts(),
+            !products.isEmpty
+            else { return }
+        setAvailableProducts(products, animated: animated)
+    }
+    
     
     public func showMessage(_ message: String) {
         statusLabel.text = message
@@ -148,16 +160,19 @@ class PremiumVC: UIViewController {
     }
     
     
-    public func setAvailableProducts(_ unsortedProducts: [SKProduct]) {
-        assert(self.products == nil)
-        
+    private func setAvailableProducts(_ unsortedProducts: [SKProduct], animated: Bool) {
         let products = unsortedProducts.sorted { (product1, product2) -> Bool in
             let isP1BeforeP2 = product1.price.doubleValue < product2.price.doubleValue
             return isP1BeforeP2
         }
         
         self.products = products
+        purchaseButtons.forEach { button in
+            buttonStack.removeArrangedSubview(button)
+            button.removeFromSuperview()
+        }
         purchaseButtons.removeAll()
+        
         for index in 0..<products.count {
             let product = products[index]
             let title = getActionText(for: product)
@@ -171,11 +186,18 @@ class PremiumVC: UIViewController {
             purchaseButtons.append(button)
         }
         purchaseButtons.forEach { button in
-            UIView.animate(withDuration: 0.5) { button.isHidden = false }
+            UIView.animate(withDuration: animated ? 0.5 : 0.0) {
+                button.isHidden = false
+            }
         }
         activityIndcator.isHidden = true
         statusLabel.isHidden = true
-        UIView.animate(withDuration: 0.5) {
+        
+        if animated {
+            UIView.animate(withDuration: 0.5) {
+                self.footerView.isHidden = false
+            }
+        } else {
             self.footerView.isHidden = false
         }
     }
@@ -277,7 +299,6 @@ class PremiumVC: UIViewController {
     
     
     public func setPurchasing(_ isPurchasing: Bool) {
-        cancelButton.isEnabled = !isPurchasing
         restorePurchasesButton.isEnabled = !isPurchasing
         purchaseButtons.forEach { button in
             button.isEnabled = !isPurchasing
@@ -308,13 +329,11 @@ class PremiumVC: UIViewController {
     }
     
     @IBAction func didPressRestorePurchases(_ sender: Any) {
-        setPurchasing(true)
         delegate?.didPressRestorePurchases(in: self)
     }
     
     @objc private func didPressPurchaseButton(_ sender: UIButton) {
         guard let products = products else { assertionFailure(); return }
-        setPurchasing(true)
         let productIndex = sender.tag
         delegate?.didPressBuy(product: products[productIndex], in: self)
     }

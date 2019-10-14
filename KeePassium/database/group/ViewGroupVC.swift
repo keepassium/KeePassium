@@ -169,9 +169,12 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             title: LString.actionContactUs,
             style: .default,
             handler: { (action) in
-                SupportEmailComposer.show(includeDiagnostics: true, completion: { (isSent) in
-                    alert.dismiss(animated: false, completion: nil)
-                })
+                SupportEmailComposer.show(
+                    subject: .problem,
+                    completion: { (isSent) in
+                        alert.dismiss(animated: false, completion: nil)
+                    }
+                )
             }
         )
         let lockDatabaseAction = UIAlertAction(

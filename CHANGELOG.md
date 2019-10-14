@@ -1,5 +1,27 @@
 #CHANGELOG
 
+## [1.05.40] - 2019-10-06
+
+### Added
+
+- KeePassium Pro as a family-friendly alternative to premium upgrade
+- Notification about KeePassium Pro release
+
+### Changed
+
+- Premium Upgrade screen remains available to premium users
+
+### Removed
+
+- Outdated notifications (beta transition and early-bird pricing)
+
+### Fixed
+
+- iOS 13: Search bar did not autofocus in AutoFill (fixes #69) [thanks, tunger]
+- Database timeout could have been set to 'Never' in free version
+- UI colors in the Premium Upgrade screen
+
+
 ## [1.04.39] - 2019-10-04
 
 ### Added

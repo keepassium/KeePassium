@@ -69,7 +69,6 @@ class SettingsVC: UITableViewController, Refreshable {
         }
         refreshPremiumStatus()
         #if DEBUG
-        premiumStatusCell.accessoryType = .detailButton
         premiumTrialCell.accessoryType = .detailButton
         #endif
     }
@@ -185,7 +184,7 @@ class SettingsVC: UITableViewController, Refreshable {
             let dataBackupSettingsVC = SettingsBackupVC.instantiateFromStoryboard()
             show(dataBackupSettingsVC, sender: self)
         case premiumStatusCell:
-            break 
+            didPressUpgradeToPremium()
         case premiumTrialCell:
             didPressUpgradeToPremium()
         case manageSubscriptionCell:
@@ -194,7 +193,7 @@ class SettingsVC: UITableViewController, Refreshable {
             let viewer = ViewDiagnosticsVC.make()
             show(viewer, sender: self)
         case contactSupportCell:
-            SupportEmailComposer.show(includeDiagnostics: false)
+            SupportEmailComposer.show(subject: .supportRequest)
         case rateTheAppCell:
             AppStoreHelper.writeReview()
         case aboutAppCell:
