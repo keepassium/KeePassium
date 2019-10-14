@@ -434,7 +434,7 @@
 "[Settings/FileLists/Sorting/title] Sorting" = "Sortering";
 
 /* Title of a settings section: which entry field to show along with entry title */
-"[Settings/GroupViewer] Entry Subtitle" = "Tilläggsinfo";
+"[Settings/GroupViewer] Entry Subtitle" = "Visa som andra rad i kontolistan";
 
 /* Title of a settings section: sort order of groups and entries in a list */
 "[Settings/GroupViewer] Sort Order" = "Sortering";

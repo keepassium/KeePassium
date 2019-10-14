@@ -58,6 +58,8 @@ class PasscodeInputVC: UIViewController {
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
         
+        self.presentationController?.delegate = self
+        
         passcodeTextField.delegate = self
         passcodeTextField.validityDelegate = self
         passcodeTextField.isWatchdogAware = (mode != .verification) 
@@ -191,5 +193,13 @@ extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
             .passcodeInput(_sender: self, canAcceptPasscode: passcode) ?? false
         mainButton.isEnabled = isAcceptable
         return isAcceptable
+    }
+}
+
+
+extension PasscodeInputVC: UIAdaptivePresentationControllerDelegate {
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        didPressCancelButton(self)
     }
 }

@@ -1,5 +1,18 @@
 #CHANGELOG
 
+## [1.04.38] - 2019-10-01
+
+### Changed
+
+- Updated Swedish translation [thanks, Patrik]
+- Minor changes to facilitate fastlane snapshots
+
+### Fixed
+
+- AppLock passcode colors in dark mode [thanks, Joseph and Chris]
+- Handling of the dismiss gesture in AppLock setup dialog (iOS 13)
+
+
 ## [1.03.37] - 2019-09-25
 
 ### Added

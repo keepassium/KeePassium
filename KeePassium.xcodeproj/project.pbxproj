@@ -25,6 +25,7 @@
 		750CFC0721BAD98B00E62B09 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACFB21776F4800B22D8B /* LString.swift */; };
 		750CFC0921BADBA500E62B09 /* DatabaseChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFC0821BADBA500E62B09 /* DatabaseChooserVC.swift */; };
 		750D127E20CF071600BE0CCE /* EditGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D127D20CF071600BE0CCE /* EditGroupVC.swift */; };
+		751146E6233F9E2900443BCD /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751146E5233F9E2900443BCD /* KeePassiumLib.framework */; };
 		7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
 		75151D3323268AB300F3C411 /* UILabel+strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */; };
 		75151D3423268AB300F3C411 /* UILabel+strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */; };
@@ -147,6 +148,8 @@
 		758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */; };
 		758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
 		7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
+		7598963F2341590300DF39AA /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
+		759896402341590300DF39AA /* KeePassiumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599636F22E112E50004BC85 /* Attachment+extensions.swift */; };
 		759BCEB02144E6E8002FC18B /* RootSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */; };
 		75A26774228E7D200097C693 /* PremiumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A26773228E7D200097C693 /* PremiumVC.swift */; };
@@ -157,6 +160,137 @@
 		75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
 		75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */; };
 		75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
+		75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
+		75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */; };
+		75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
+		75B38BF6233E5B7C006BDEFC /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
+		75B38BF7233E5B7C006BDEFC /* SettingsItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752BB12420F089B30070FAC0 /* SettingsItemListVC.swift */; };
+		75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
+		75B38BF9233E5B7C006BDEFC /* ViewDiagnosticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BE252211C395D0071050A /* ViewDiagnosticsVC.swift */; };
+		75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */; };
+		75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */; };
+		75B38BFC233E5B7C006BDEFC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC520C1027700C5D834 /* SettingsVC.swift */; };
+		75B38BFD233E5B7C006BDEFC /* PasswordGeneratorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757EF2F420EB3D1C0024AACD /* PasswordGeneratorVC.swift */; };
+		75B38BFE233E5B7C006BDEFC /* ViewGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5620B373BA004FA29D /* ViewGroupVC.swift */; };
+		75B38BFF233E5B7C006BDEFC /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
+		75B38C00233E5B7C006BDEFC /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
+		75B38C01233E5B7C006BDEFC /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
+		75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */; };
+		75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
+		75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */; };
+		75B38C05233E5B7C006BDEFC /* EditEntryFieldsCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75514A3320DF5B6200202340 /* EditEntryFieldsCells.swift */; };
+		75B38C06233E5B7C006BDEFC /* RootSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */; };
+		75B38C07233E5B7C006BDEFC /* ChangeMasterKeyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */; };
+		75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599636F22E112E50004BC85 /* Attachment+extensions.swift */; };
+		75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */; };
+		75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
+		75B38C0B233E5B7C006BDEFC /* Xcode11GM_LocalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */; };
+		75B38C0C233E5B7C006BDEFC /* SettingsFileSortingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */; };
+		75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B1E9220E8AA070073AABD /* EditableField.swift */; };
+		75B38C0E233E5B7C006BDEFC /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
+		75B38C0F233E5B7C006BDEFC /* ViewableEntryFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */; };
+		75B38C10233E5B7C006BDEFC /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
+		75B38C11233E5B7C006BDEFC /* EntryChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */; };
+		75B38C12233E5B7C006BDEFC /* ViewEntryHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C6020B4BAC4004FA29D /* ViewEntryHistoryVC.swift */; };
+		75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75802633222ED11D00F4525F /* ProgressVC.swift */; };
+		75B38C14233E5B7C006BDEFC /* PremiumBenefitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7612022DE7A9800397D8C /* PremiumBenefitView.swift */; };
+		75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
+		75B38C16233E5B7C006BDEFC /* ChooseKeyFileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */; };
+		75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */; };
+		75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
+		75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1674921464333005E33C3 /* AboutVC.swift */; };
+		75B38C1A233E5B7C006BDEFC /* EditEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C683120D767F6001A6AA0 /* EditEntryVC.swift */; };
+		75B38C1B233E5B7C006BDEFC /* UILabel+strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */; };
+		75B38C1C233E5B7C006BDEFC /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */; };
+		75B38C1D233E5B7C006BDEFC /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
+		75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71C21C98D620025C706 /* SupportEmailComposer.swift */; };
+		75B38C1F233E5B7C006BDEFC /* ViewEntryFieldCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */; };
+		75B38C20233E5B7C006BDEFC /* PremiumUpgradeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924A22905621005E496F /* PremiumUpgradeHelper.swift */; };
+		75B38C21233E5B7C006BDEFC /* ChooseIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE9D220CF8B5E00995846 /* ChooseIconVC.swift */; };
+		75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDC20C3ACFD00C5D834 /* KPApplication.swift */; };
+		75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
+		75B38C24233E5B7C006BDEFC /* _201908_BetaTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679AD122FD968F00372301 /* _201908_BetaTransition.swift */; };
+		75B38C25233E5B7C006BDEFC /* DatabaseFileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */; };
+		75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
+		75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */; };
+		75B38C28233E5B7C006BDEFC /* ChooseDatabaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* ChooseDatabaseVC.swift */; };
+		75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
+		75B38C2A233E5B7C006BDEFC /* ViewEntryFilesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5E20B4BAB0004FA29D /* ViewEntryFilesVC.swift */; };
+		75B38C2B233E5B7C006BDEFC /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542D2412129640F00C8A926 /* String+extensions.swift */; };
+		75B38C2C233E5B7C006BDEFC /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
+		75B38C2D233E5B7C006BDEFC /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
+		75B38C2E233E5B7C006BDEFC /* ValidatingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850420E0379F00EEFAEE /* ValidatingTextView.swift */; };
+		75B38C2F233E5B7C006BDEFC /* AppStoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD364021537A310018AF46 /* AppStoreHelper.swift */; };
+		75B38C30233E5B7C006BDEFC /* ViewEntryFieldsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */; };
+		75B38C31233E5B7C006BDEFC /* PremiumFeature+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677C22904E0D0097C693 /* PremiumFeature+extension.swift */; };
+		75B38C32233E5B7C006BDEFC /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
+		75B38C33233E5B7C006BDEFC /* SettingsBackupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488522C165C900BBEF9A /* SettingsBackupVC.swift */; };
+		75B38C34233E5B7C006BDEFC /* SettingsAutoFillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */; };
+		75B38C35233E5B7C006BDEFC /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
+		75B38C36233E5B7C006BDEFC /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
+		75B38C37233E5B7C006BDEFC /* BetaTransitionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C23CD22FEADA700C30A71 /* BetaTransitionVC.swift */; };
+		75B38C38233E5B7C006BDEFC /* PremiumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A26775228F02C70097C693 /* PremiumCoordinator.swift */; };
+		75B38C39233E5B7C006BDEFC /* PasscodeInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */; };
+		75B38C3A233E5B7C006BDEFC /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
+		75B38C3B233E5B7C006BDEFC /* PremiumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A26773228E7D200097C693 /* PremiumVC.swift */; };
+		75B38C3C233E5B7C006BDEFC /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC020BFB8DD00C5D834 /* WelcomeVC.swift */; };
+		75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
+		75B38C3E233E5B7C006BDEFC /* SettingsAppLockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAE8211416170093B117 /* SettingsAppLockVC.swift */; };
+		75B38C3F233E5B7C006BDEFC /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */; };
+		75B38C40233E5B7C006BDEFC /* UnlockDatabaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF09920984DEE00E3A292 /* UnlockDatabaseVC.swift */; };
+		75B38C41233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */; };
+		75B38C42233E5B7C006BDEFC /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
+		75B38C43233E5B7C006BDEFC /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACFB21776F4800B22D8B /* LString.swift */; };
+		75B38C44233E5B7C006BDEFC /* EditGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D127D20CF071600BE0CCE /* EditGroupVC.swift */; };
+		75B38C45233E5B7C006BDEFC /* _201908_SpecialPricesExpireNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679AD422FD98C900372301 /* _201908_SpecialPricesExpireNews.swift */; };
+		75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5A20B4B8C2004FA29D /* ViewEntryVC.swift */; };
+		75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
+		75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
+		75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
+		75B38C4A233E5B7C006BDEFC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDA20C3AC5E00C5D834 /* main.swift */; };
+		75B38C4D233E5B7C006BDEFC /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		75B38C4E233E5B7C006BDEFC /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD363E21521FAE0018AF46 /* LocalAuthentication.framework */; };
+		75B38C4F233E5B7C006BDEFC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A26777228F4E820097C693 /* StoreKit.framework */; };
+		75B38C51233E5B7C006BDEFC /* ViewEntryHistoryVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D122309AF4C0088BB10 /* ViewEntryHistoryVC.storyboard */; };
+		75B38C52233E5B7C006BDEFC /* ChooseDatabaseVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D152309AF540088BB10 /* ChooseDatabaseVC.storyboard */; };
+		75B38C53233E5B7C006BDEFC /* AboutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863023054FA200E9FC83 /* AboutVC.storyboard */; };
+		75B38C54233E5B7C006BDEFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */; };
+		75B38C55233E5B7C006BDEFC /* SettingsBackupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF12309AE920088BB10 /* SettingsBackupVC.storyboard */; };
+		75B38C56233E5B7C006BDEFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7DA0232008300010E199 /* Localizable.strings */; };
+		75B38C57233E5B7C006BDEFC /* ChooseKeyFileVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D182309AF5D0088BB10 /* ChooseKeyFileVC.storyboard */; };
+		75B38C58233E5B7C006BDEFC /* SettingsItemListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42AB2313C20A003DE72E /* SettingsItemListVC.storyboard */; };
+		75B38C59233E5B7C006BDEFC /* ChooseIconVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D242309AFAC0088BB10 /* ChooseIconVC.storyboard */; };
+		75B38C5A233E5B7C006BDEFC /* SettingsAppTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */; };
+		75B38C5B233E5B7C006BDEFC /* ViewEntryFieldsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0C2309AF380088BB10 /* ViewEntryFieldsVC.storyboard */; };
+		75B38C5C233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */; };
+		75B38C5D233E5B7C006BDEFC /* ViewDiagnosticsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863723054FBF00E9FC83 /* ViewDiagnosticsVC.storyboard */; };
+		75B38C5E233E5B7C006BDEFC /* EditEntryVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D032309AF1B0088BB10 /* EditEntryVC.storyboard */; };
+		75B38C5F233E5B7C006BDEFC /* ChangeMasterKeyVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1B2309AF620088BB10 /* ChangeMasterKeyVC.storyboard */; };
+		75B38C60233E5B7C006BDEFC /* ViewEntryVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D092309AF250088BB10 /* ViewEntryVC.storyboard */; };
+		75B38C61233E5B7C006BDEFC /* DatabaseCreatorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D212309AF6B0088BB10 /* DatabaseCreatorVC.storyboard */; };
+		75B38C62233E5B7C006BDEFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7D9A232008300010E199 /* InfoPlist.strings */; };
+		75B38C63233E5B7C006BDEFC /* BetaTransitionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B862D23054F9900E9FC83 /* BetaTransitionVC.storyboard */; };
+		75B38C64233E5B7C006BDEFC /* WelcomeVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863B23054FC700E9FC83 /* WelcomeVC.storyboard */; };
+		75B38C65233E5B7C006BDEFC /* ViewGroupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CFD2309AF0D0088BB10 /* ViewGroupVC.storyboard */; };
+		75B38C66233E5B7C006BDEFC /* PasswordGeneratorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D062309AF210088BB10 /* PasswordGeneratorVC.storyboard */; };
+		75B38C67233E5B7C006BDEFC /* ProgressVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75802630222EBC3800F4525F /* ProgressVC.storyboard */; };
+		75B38C68233E5B7C006BDEFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
+		75B38C69233E5B7C006BDEFC /* PasscodeInputVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863423054FAD00E9FC83 /* PasscodeInputVC.storyboard */; };
+		75B38C6A233E5B7C006BDEFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0862082A6BD00E3A292 /* Main.storyboard */; };
+		75B38C6B233E5B7C006BDEFC /* PremiumVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CFA2309AEF90088BB10 /* PremiumVC.storyboard */; };
+		75B38C6C233E5B7C006BDEFC /* SettingsAppLockVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */; };
+		75B38C6D233E5B7C006BDEFC /* EditGroupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D002309AF150088BB10 /* EditGroupVC.storyboard */; };
+		75B38C6E233E5B7C006BDEFC /* ViewEntryFilesVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0F2309AF400088BB10 /* ViewEntryFilesVC.storyboard */; };
+		75B38C6F233E5B7C006BDEFC /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
+		75B38C70233E5B7C006BDEFC /* PlaceholderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */; };
+		75B38C71233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429F2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard */; };
+		75B38C72233E5B7C006BDEFC /* SettingsFileSortingVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEB2309AE860088BB10 /* SettingsFileSortingVC.storyboard */; };
+		75B38C73233E5B7C006BDEFC /* SettingsAutoFillVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF72309AEBB0088BB10 /* SettingsAutoFillVC.storyboard */; };
+		75B38C74233E5B7C006BDEFC /* UnlockDatabaseVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1E2309AF670088BB10 /* UnlockDatabaseVC.storyboard */; };
+		75B38C75233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */; };
+		75B38C76233E5B7C006BDEFC /* SettingsDataProtectionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */; };
+		75B38C77233E5B7C006BDEFC /* SettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */; };
+		75B38C78233E5B7C006BDEFC /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
 		75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
 		75B5FB7720D53EA700D402D9 /* ViewEntryFieldsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */; };
 		75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
@@ -185,6 +319,67 @@
 		75D3A3AF21BAE53F00255FC3 /* DatabaseFileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */; };
 		75D3A3B121BAE66F00255FC3 /* DatabaseFileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */; };
 		75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5D4002235CD720003CD55 /* CrashReportVC.swift */; };
+		75D7DF7C233E5E310029AD87 /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
+		75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
+		75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5D4002235CD720003CD55 /* CrashReportVC.swift */; };
+		75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
+		75D7DF80233E5E310029AD87 /* KeyFileChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */; };
+		75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */; };
+		75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
+		75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9E21C1671F00B8AFE2 /* MainCoordinator.swift */; };
+		75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
+		75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
+		75D7DF86233E5E310029AD87 /* DatabaseFileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */; };
+		75D7DF87233E5E310029AD87 /* DiagnosticsViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71421C94DD90025C706 /* DiagnosticsViewerVC.swift */; };
+		75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
+		75D7DF89233E5E310029AD87 /* EntryFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */; };
+		75D7DF8A233E5E310029AD87 /* DatabaseChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFC0821BADBA500E62B09 /* DatabaseChooserVC.swift */; };
+		75D7DF8B233E5E310029AD87 /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */; };
+		75D7DF8C233E5E310029AD87 /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
+		75D7DF8D233E5E310029AD87 /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
+		75D7DF8E233E5E310029AD87 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
+		75D7DF8F233E5E310029AD87 /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
+		75D7DF90233E5E310029AD87 /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
+		75D7DF91233E5E310029AD87 /* SearchHelper+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */; };
+		75D7DF92233E5E310029AD87 /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
+		75D7DF93233E5E310029AD87 /* FirstSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */; };
+		75D7DF94233E5E310029AD87 /* Xcode11GM_LocalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */; };
+		75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75802633222ED11D00F4525F /* ProgressVC.swift */; };
+		75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
+		75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
+		75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
+		75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */; };
+		75D7DF9A233E5E310029AD87 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
+		75D7DF9B233E5E310029AD87 /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
+		75D7DF9C233E5E310029AD87 /* _201908_BetaTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679AD122FD968F00372301 /* _201908_BetaTransition.swift */; };
+		75D7DF9D233E5E310029AD87 /* _201908_SpecialPricesExpireNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679AD422FD98C900372301 /* _201908_SpecialPricesExpireNews.swift */; };
+		75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
+		75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */; };
+		75D7DFA0233E5E310029AD87 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
+		75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
+		75D7DFA2233E5E310029AD87 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACFB21776F4800B22D8B /* LString.swift */; };
+		75D7DFA3233E5E310029AD87 /* UILabel+strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */; };
+		75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677C22904E0D0097C693 /* PremiumFeature+extension.swift */; };
+		75D7DFA5233E5E310029AD87 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
+		75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
+		75D7DFA7233E5E310029AD87 /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */; };
+		75D7DFAA233E5E310029AD87 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; };
+		75D7DFAC233E5E310029AD87 /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D342309AFF30088BB10 /* DatabaseUnlockerVC.storyboard */; };
+		75D7DFAD233E5E310029AD87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7D97232008300010E199 /* InfoPlist.strings */; };
+		75D7DFAE233E5E310029AD87 /* DatabaseChooserVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D312309AFED0088BB10 /* DatabaseChooserVC.storyboard */; };
+		75D7DFAF233E5E310029AD87 /* PasscodeInputVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863423054FAD00E9FC83 /* PasscodeInputVC.storyboard */; };
+		75D7DFB0233E5E310029AD87 /* EntryFinderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */; };
+		75D7DFB1233E5E310029AD87 /* DiagnosticsViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3D2309B01A0088BB10 /* DiagnosticsViewerVC.storyboard */; };
+		75D7DFB2233E5E310029AD87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
+		75D7DFB3233E5E310029AD87 /* ProgressVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75802630222EBC3800F4525F /* ProgressVC.storyboard */; };
+		75D7DFB4233E5E310029AD87 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 750CFBCC21BA9ACD00E62B09 /* MainInterface.storyboard */; };
+		75D7DFB5233E5E310029AD87 /* WelcomeVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863B23054FC700E9FC83 /* WelcomeVC.storyboard */; };
+		75D7DFB6233E5E310029AD87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7D9D232008300010E199 /* Localizable.strings */; };
+		75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2B2309AFE50088BB10 /* CrashReportVC.storyboard */; };
+		75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2E2309AFE90088BB10 /* FirstSetupVC.storyboard */; };
+		75D7DFB9233E5E310029AD87 /* KeyFileChooserVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFileChooserVC.storyboard */; };
+		75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
+		75D7DFC7233E5E8C0029AD87 /* KeePassiumPro AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */; };
 		75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
 		75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
@@ -212,6 +407,13 @@
 			remoteGlobalIDString = 750CFBC621BA9ACD00E62B09;
 			remoteInfo = "KeePassium AutoFill";
 		};
+		75530C92233E604300EC557E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 754BF0732082A6BD00E3A292 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75D7DF7A233E5E310029AD87;
+			remoteInfo = "KeePassiumPro AutoFill";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -237,6 +439,28 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		759896412341590300DF39AA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				759896402341590300DF39AA /* KeePassiumLib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75B38C79233E5B7C006BDEFC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				75D7DFC7233E5E8C0029AD87 /* KeePassiumPro AutoFill.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +474,8 @@
 		750CFBD021BA9ACD00E62B09 /* KeePassium_AutoFill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium_AutoFill.entitlements; sourceTree = "<group>"; };
 		750CFC0821BADBA500E62B09 /* DatabaseChooserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseChooserVC.swift; sourceTree = "<group>"; };
 		750D127D20CF071600BE0CCE /* EditGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupVC.swift; sourceTree = "<group>"; };
+		751146E2233F9E1500443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		751146E5233F9E2900443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressAwareNavigationController.swift; sourceTree = "<group>"; };
 		75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+strikethrough.swift"; sourceTree = "<group>"; };
 		751B99AE2315B4EF002AA609 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
@@ -323,6 +549,8 @@
 		7550D231215D758800360E0C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		7550D24B215FDEC500360E0C /* AppCoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoverVC.swift; sourceTree = "<group>"; };
 		75514A3320DF5B6200202340 /* EditEntryFieldsCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryFieldsCells.swift; sourceTree = "<group>"; };
+		75530C8E233E603000EC557E /* KeePassiumLibPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75530C94233E604E00EC557E /* KeePassiumLibPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		755B862C23054F9900E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BetaTransitionVC.storyboard; sourceTree = "<group>"; };
 		755B862F23054FA200E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AboutVC.storyboard; sourceTree = "<group>"; };
 		755B863323054FAD00E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PasscodeInputVC.storyboard; sourceTree = "<group>"; };
@@ -499,6 +727,7 @@
 		75AC53CD2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsBackupTimeoutPickerVC.strings"; sourceTree = "<group>"; };
 		75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFinderVC.swift; sourceTree = "<group>"; };
 		75B24DD421C523AE003C9486 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
+		75B38C81233E5B7C006BDEFC /* KeePassiumPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeePassiumPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderVC.swift; sourceTree = "<group>"; };
 		75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFieldsVC.swift; sourceTree = "<group>"; };
 		75B5FB7820D6101100D402D9 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
@@ -523,6 +752,9 @@
 		75D1674921464333005E33C3 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFileListCell.swift; sourceTree = "<group>"; };
 		75D5D4002235CD720003CD55 /* CrashReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportVC.swift; sourceTree = "<group>"; };
+		75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassiumPro AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D7DFC0233E5E630029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D7DFC4233E5E870029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoReloader.swift; sourceTree = "<group>"; };
 		75E371932108CA08002602BD /* ProgressOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverlay.swift; sourceTree = "<group>"; };
@@ -608,6 +840,8 @@
 		75ED42AD2313C20F003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
 		75ED42AF2313C267003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75ED42B12315896C003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
+		75F15C9F233E512F001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75F15CA2233E5399001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F4ACBF2175F7A400B22D8B /* DiagLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiagLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F4ACFB21776F4800B22D8B /* LString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75F5CACC20BD18320056C969 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
@@ -721,12 +955,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		75B38C4B233E5B7C006BDEFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B38C4D233E5B7C006BDEFC /* AuthenticationServices.framework in Frameworks */,
+				7598963F2341590300DF39AA /* KeePassiumLib.framework in Frameworks */,
+				75B38C4E233E5B7C006BDEFC /* LocalAuthentication.framework in Frameworks */,
+				75B38C4F233E5B7C006BDEFC /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75D7DFA8233E5E310029AD87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75D7DFAA233E5E310029AD87 /* AuthenticationServices.framework in Frameworks */,
+				751146E6233F9E2900443BCD /* KeePassiumLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		16DE7C3A873A37E1B4636309 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				751146E5233F9E2900443BCD /* KeePassiumLib.framework */,
+				751146E2233F9E1500443BCD /* KeePassiumLib.framework */,
+				75530C94233E604E00EC557E /* KeePassiumLibPro.framework */,
+				75530C8E233E603000EC557E /* KeePassiumLibPro.framework */,
+				75D7DFC4233E5E870029AD87 /* KeePassiumLibPrepaid.framework */,
+				75D7DFC0233E5E630029AD87 /* KeePassiumLibPrepaid.framework */,
+				75F15CA2233E5399001FA223 /* KeePassiumLib-PRO.framework */,
+				75F15C9F233E512F001FA223 /* KeePassiumLib-PRO.framework */,
 				75A26777228F4E820097C693 /* StoreKit.framework */,
 				75F4ACBF2175F7A400B22D8B /* DiagLib.framework */,
 				75FEC2222175292C0034334B /* KeePassiumLib.framework */,
@@ -813,6 +1075,8 @@
 			children = (
 				754BF07B2082A6BD00E3A292 /* KeePassium.app */,
 				750CFBC721BA9ACD00E62B09 /* KeePassium AutoFill.appex */,
+				75B38C81233E5B7C006BDEFC /* KeePassiumPro.app */,
+				75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1084,6 +1348,44 @@
 			productReference = 754BF07B2082A6BD00E3A292 /* KeePassium.app */;
 			productType = "com.apple.product-type.application";
 		};
+		75B38BEF233E5B7C006BDEFC /* KeePassiumPro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75B38C7E233E5B7C006BDEFC /* Build configuration list for PBXNativeTarget "KeePassiumPro" */;
+			buildPhases = (
+				75B38BF2233E5B7C006BDEFC /* Sources */,
+				75B38C4B233E5B7C006BDEFC /* Frameworks */,
+				75B38C50233E5B7C006BDEFC /* Resources */,
+				75B38C79233E5B7C006BDEFC /* Embed App Extensions */,
+				75B38C7D233E5B7C006BDEFC /* BartyCrouch */,
+				759896412341590300DF39AA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75530C93233E604300EC557E /* PBXTargetDependency */,
+			);
+			name = KeePassiumPro;
+			productName = KeePassium;
+			productReference = 75B38C81233E5B7C006BDEFC /* KeePassiumPro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		75D7DF7A233E5E310029AD87 /* KeePassiumPro AutoFill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75D7DFBB233E5E310029AD87 /* Build configuration list for PBXNativeTarget "KeePassiumPro AutoFill" */;
+			buildPhases = (
+				75D7DF7B233E5E310029AD87 /* Sources */,
+				75D7DFA8233E5E310029AD87 /* Frameworks */,
+				75D7DFAB233E5E310029AD87 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KeePassiumPro AutoFill";
+			productName = "KeePassium AutoFill";
+			productReference = 75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1137,6 +1439,12 @@
 							};
 						};
 					};
+					75B38BEF233E5B7C006BDEFC = {
+						ProvisioningStyle = Automatic;
+					};
+					75D7DF7A233E5E310029AD87 = {
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 754BF0762082A6BD00E3A292 /* Build configuration list for PBXProject "KeePassium" */;
@@ -1161,6 +1469,8 @@
 			targets = (
 				754BF07A2082A6BD00E3A292 /* KeePassium */,
 				750CFBC621BA9ACD00E62B09 /* KeePassium AutoFill */,
+				75B38BEF233E5B7C006BDEFC /* KeePassiumPro */,
+				75D7DF7A233E5E310029AD87 /* KeePassiumPro AutoFill */,
 			);
 		};
 /* End PBXProject section */
@@ -1235,10 +1545,97 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		75B38C50233E5B7C006BDEFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B38C51233E5B7C006BDEFC /* ViewEntryHistoryVC.storyboard in Resources */,
+				75B38C52233E5B7C006BDEFC /* ChooseDatabaseVC.storyboard in Resources */,
+				75B38C53233E5B7C006BDEFC /* AboutVC.storyboard in Resources */,
+				75B38C54233E5B7C006BDEFC /* LaunchScreen.storyboard in Resources */,
+				75B38C55233E5B7C006BDEFC /* SettingsBackupVC.storyboard in Resources */,
+				75B38C56233E5B7C006BDEFC /* Localizable.strings in Resources */,
+				75B38C57233E5B7C006BDEFC /* ChooseKeyFileVC.storyboard in Resources */,
+				75B38C58233E5B7C006BDEFC /* SettingsItemListVC.storyboard in Resources */,
+				75B38C59233E5B7C006BDEFC /* ChooseIconVC.storyboard in Resources */,
+				75B38C5A233E5B7C006BDEFC /* SettingsAppTimeoutVC.storyboard in Resources */,
+				75B38C5B233E5B7C006BDEFC /* ViewEntryFieldsVC.storyboard in Resources */,
+				75B38C5C233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
+				75B38C5D233E5B7C006BDEFC /* ViewDiagnosticsVC.storyboard in Resources */,
+				75B38C5E233E5B7C006BDEFC /* EditEntryVC.storyboard in Resources */,
+				75B38C5F233E5B7C006BDEFC /* ChangeMasterKeyVC.storyboard in Resources */,
+				75B38C60233E5B7C006BDEFC /* ViewEntryVC.storyboard in Resources */,
+				75B38C61233E5B7C006BDEFC /* DatabaseCreatorVC.storyboard in Resources */,
+				75B38C62233E5B7C006BDEFC /* InfoPlist.strings in Resources */,
+				75B38C63233E5B7C006BDEFC /* BetaTransitionVC.storyboard in Resources */,
+				75B38C64233E5B7C006BDEFC /* WelcomeVC.storyboard in Resources */,
+				75B38C65233E5B7C006BDEFC /* ViewGroupVC.storyboard in Resources */,
+				75B38C66233E5B7C006BDEFC /* PasswordGeneratorVC.storyboard in Resources */,
+				75B38C67233E5B7C006BDEFC /* ProgressVC.storyboard in Resources */,
+				75B38C68233E5B7C006BDEFC /* Assets.xcassets in Resources */,
+				75B38C69233E5B7C006BDEFC /* PasscodeInputVC.storyboard in Resources */,
+				75B38C6A233E5B7C006BDEFC /* Main.storyboard in Resources */,
+				75B38C6B233E5B7C006BDEFC /* PremiumVC.storyboard in Resources */,
+				75B38C6C233E5B7C006BDEFC /* SettingsAppLockVC.storyboard in Resources */,
+				75B38C6D233E5B7C006BDEFC /* EditGroupVC.storyboard in Resources */,
+				75B38C6E233E5B7C006BDEFC /* ViewEntryFilesVC.storyboard in Resources */,
+				75B38C6F233E5B7C006BDEFC /* FileInfoVC.storyboard in Resources */,
+				75B38C70233E5B7C006BDEFC /* PlaceholderVC.storyboard in Resources */,
+				75B38C71233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.storyboard in Resources */,
+				75B38C72233E5B7C006BDEFC /* SettingsFileSortingVC.storyboard in Resources */,
+				75B38C73233E5B7C006BDEFC /* SettingsAutoFillVC.storyboard in Resources */,
+				75B38C74233E5B7C006BDEFC /* UnlockDatabaseVC.storyboard in Resources */,
+				75B38C75233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.storyboard in Resources */,
+				75B38C76233E5B7C006BDEFC /* SettingsDataProtectionVC.storyboard in Resources */,
+				75B38C77233E5B7C006BDEFC /* SettingsVC.storyboard in Resources */,
+				75B38C78233E5B7C006BDEFC /* AppCoverVC.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75D7DFAB233E5E310029AD87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75D7DFAC233E5E310029AD87 /* DatabaseUnlockerVC.storyboard in Resources */,
+				75D7DFAD233E5E310029AD87 /* InfoPlist.strings in Resources */,
+				75D7DFAE233E5E310029AD87 /* DatabaseChooserVC.storyboard in Resources */,
+				75D7DFAF233E5E310029AD87 /* PasscodeInputVC.storyboard in Resources */,
+				75D7DFB0233E5E310029AD87 /* EntryFinderVC.storyboard in Resources */,
+				75D7DFB1233E5E310029AD87 /* DiagnosticsViewerVC.storyboard in Resources */,
+				75D7DFB2233E5E310029AD87 /* Assets.xcassets in Resources */,
+				75D7DFB3233E5E310029AD87 /* ProgressVC.storyboard in Resources */,
+				75D7DFB4233E5E310029AD87 /* MainInterface.storyboard in Resources */,
+				75D7DFB5233E5E310029AD87 /* WelcomeVC.storyboard in Resources */,
+				75D7DFB6233E5E310029AD87 /* Localizable.strings in Resources */,
+				75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */,
+				75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */,
+				75D7DFB9233E5E310029AD87 /* KeyFileChooserVC.storyboard in Resources */,
+				75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		75007566231D1C96007CC2F1 /* BartyCrouch */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = BartyCrouch;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#if which bartycrouch > /dev/null; then\n#  #bartycrouch update -x\n#  bartycrouch lint -x\n#else\n#  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n#fi\n";
+		};
+		75B38C7D233E5B7C006BDEFC /* BartyCrouch */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1405,6 +1802,152 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		75B38BF2233E5B7C006BDEFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */,
+				75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */,
+				75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */,
+				75B38BF6233E5B7C006BDEFC /* UITextView+border.swift in Sources */,
+				75B38BF7233E5B7C006BDEFC /* SettingsItemListVC.swift in Sources */,
+				75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */,
+				75B38BF9233E5B7C006BDEFC /* ViewDiagnosticsVC.swift in Sources */,
+				75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */,
+				75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */,
+				75B38BFC233E5B7C006BDEFC /* SettingsVC.swift in Sources */,
+				75B38BFD233E5B7C006BDEFC /* PasswordGeneratorVC.swift in Sources */,
+				75B38BFE233E5B7C006BDEFC /* ViewGroupVC.swift in Sources */,
+				75B38BFF233E5B7C006BDEFC /* SKProduct+extension.swift in Sources */,
+				75B38C00233E5B7C006BDEFC /* UIViewController+storyboard.swift in Sources */,
+				75B38C01233E5B7C006BDEFC /* FileInfoVC.swift in Sources */,
+				75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */,
+				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
+				75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */,
+				75B38C05233E5B7C006BDEFC /* EditEntryFieldsCells.swift in Sources */,
+				75B38C06233E5B7C006BDEFC /* RootSplitVC.swift in Sources */,
+				75B38C07233E5B7C006BDEFC /* ChangeMasterKeyVC.swift in Sources */,
+				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
+				75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */,
+				75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */,
+				75B38C0B233E5B7C006BDEFC /* Xcode11GM_LocalizedLabel.swift in Sources */,
+				75B38C0C233E5B7C006BDEFC /* SettingsFileSortingVC.swift in Sources */,
+				75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */,
+				75B38C0E233E5B7C006BDEFC /* UIColor+namedColors.swift in Sources */,
+				75B38C0F233E5B7C006BDEFC /* ViewableEntryFieldFactory.swift in Sources */,
+				75B38C10233E5B7C006BDEFC /* UITableViewCell+extension.swift in Sources */,
+				75B38C11233E5B7C006BDEFC /* EntryChangeObserver+Notifier.swift in Sources */,
+				75B38C12233E5B7C006BDEFC /* ViewEntryHistoryVC.swift in Sources */,
+				75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */,
+				75B38C14233E5B7C006BDEFC /* PremiumBenefitView.swift in Sources */,
+				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
+				75B38C16233E5B7C006BDEFC /* ChooseKeyFileVC.swift in Sources */,
+				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
+				75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */,
+				75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */,
+				75B38C1A233E5B7C006BDEFC /* EditEntryVC.swift in Sources */,
+				75B38C1B233E5B7C006BDEFC /* UILabel+strikethrough.swift in Sources */,
+				75B38C1C233E5B7C006BDEFC /* UIImage+extensions.swift in Sources */,
+				75B38C1D233E5B7C006BDEFC /* UIView+extension.swift in Sources */,
+				75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */,
+				75B38C1F233E5B7C006BDEFC /* ViewEntryFieldCells.swift in Sources */,
+				75B38C20233E5B7C006BDEFC /* PremiumUpgradeHelper.swift in Sources */,
+				75B38C21233E5B7C006BDEFC /* ChooseIconVC.swift in Sources */,
+				75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */,
+				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
+				75B38C24233E5B7C006BDEFC /* _201908_BetaTransition.swift in Sources */,
+				75B38C25233E5B7C006BDEFC /* DatabaseFileListCell.swift in Sources */,
+				75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */,
+				75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */,
+				75B38C28233E5B7C006BDEFC /* ChooseDatabaseVC.swift in Sources */,
+				75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */,
+				75B38C2A233E5B7C006BDEFC /* ViewEntryFilesVC.swift in Sources */,
+				75B38C2B233E5B7C006BDEFC /* String+extensions.swift in Sources */,
+				75B38C2C233E5B7C006BDEFC /* ProgressOverlay.swift in Sources */,
+				75B38C2D233E5B7C006BDEFC /* LAContext+biometrics.swift in Sources */,
+				75B38C2E233E5B7C006BDEFC /* ValidatingTextView.swift in Sources */,
+				75B38C2F233E5B7C006BDEFC /* AppStoreHelper.swift in Sources */,
+				75B38C30233E5B7C006BDEFC /* ViewEntryFieldsVC.swift in Sources */,
+				75B38C31233E5B7C006BDEFC /* PremiumFeature+extension.swift in Sources */,
+				75B38C32233E5B7C006BDEFC /* PlaceholderVC.swift in Sources */,
+				75B38C33233E5B7C006BDEFC /* SettingsBackupVC.swift in Sources */,
+				75B38C34233E5B7C006BDEFC /* SettingsAutoFillVC.swift in Sources */,
+				75B38C35233E5B7C006BDEFC /* Watchdog.swift in Sources */,
+				75B38C36233E5B7C006BDEFC /* KeyboardLayoutConstraint.swift in Sources */,
+				75B38C37233E5B7C006BDEFC /* BetaTransitionVC.swift in Sources */,
+				75B38C38233E5B7C006BDEFC /* PremiumCoordinator.swift in Sources */,
+				75B38C39233E5B7C006BDEFC /* PasscodeInputVC.swift in Sources */,
+				75B38C3A233E5B7C006BDEFC /* MultilineButton.swift in Sources */,
+				75B38C3B233E5B7C006BDEFC /* PremiumVC.swift in Sources */,
+				75B38C3C233E5B7C006BDEFC /* WelcomeVC.swift in Sources */,
+				75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */,
+				75B38C3E233E5B7C006BDEFC /* SettingsAppLockVC.swift in Sources */,
+				75B38C3F233E5B7C006BDEFC /* ValidatingTextField.swift in Sources */,
+				75B38C40233E5B7C006BDEFC /* UnlockDatabaseVC.swift in Sources */,
+				75B38C41233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.swift in Sources */,
+				75B38C42233E5B7C006BDEFC /* UIAlertController+extensions.swift in Sources */,
+				75B38C43233E5B7C006BDEFC /* LString.swift in Sources */,
+				75B38C44233E5B7C006BDEFC /* EditGroupVC.swift in Sources */,
+				75B38C45233E5B7C006BDEFC /* _201908_SpecialPricesExpireNews.swift in Sources */,
+				75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */,
+				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
+				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
+				75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */,
+				75B38C4A233E5B7C006BDEFC /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75D7DF7B233E5E310029AD87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75D7DF7C233E5E310029AD87 /* SKProduct+extension.swift in Sources */,
+				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
+				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
+				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
+				75D7DF80233E5E310029AD87 /* KeyFileChooserVC.swift in Sources */,
+				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
+				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
+				75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */,
+				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
+				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
+				75D7DF86233E5E310029AD87 /* DatabaseFileListCell.swift in Sources */,
+				75D7DF87233E5E310029AD87 /* DiagnosticsViewerVC.swift in Sources */,
+				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
+				75D7DF89233E5E310029AD87 /* EntryFinderVC.swift in Sources */,
+				75D7DF8A233E5E310029AD87 /* DatabaseChooserVC.swift in Sources */,
+				75D7DF8B233E5E310029AD87 /* ValidatingTextField.swift in Sources */,
+				75D7DF8C233E5E310029AD87 /* FileInfoReloader.swift in Sources */,
+				75D7DF8D233E5E310029AD87 /* MultilineButton.swift in Sources */,
+				75D7DF8E233E5E310029AD87 /* Refreshable.swift in Sources */,
+				75D7DF8F233E5E310029AD87 /* UITableViewCell+extension.swift in Sources */,
+				75D7DF90233E5E310029AD87 /* DatabaseUnlockerVC.swift in Sources */,
+				75D7DF91233E5E310029AD87 /* SearchHelper+extensions.swift in Sources */,
+				75D7DF92233E5E310029AD87 /* UIColor+namedColors.swift in Sources */,
+				75D7DF93233E5E310029AD87 /* FirstSetupVC.swift in Sources */,
+				75D7DF94233E5E310029AD87 /* Xcode11GM_LocalizedLabel.swift in Sources */,
+				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
+				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
+				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
+				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
+				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,
+				75D7DF9A233E5E310029AD87 /* UIView+extension.swift in Sources */,
+				75D7DF9B233E5E310029AD87 /* ProgressViewHost.swift in Sources */,
+				75D7DF9C233E5E310029AD87 /* _201908_BetaTransition.swift in Sources */,
+				75D7DF9D233E5E310029AD87 /* _201908_SpecialPricesExpireNews.swift in Sources */,
+				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
+				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
+				75D7DFA0233E5E310029AD87 /* SearchHelper.swift in Sources */,
+				75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */,
+				75D7DFA2233E5E310029AD87 /* LString.swift in Sources */,
+				75D7DFA3233E5E310029AD87 /* UILabel+strikethrough.swift in Sources */,
+				75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */,
+				75D7DFA5233E5E310029AD87 /* KeyboardLayoutConstraint.swift in Sources */,
+				75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */,
+				75D7DFA7233E5E310029AD87 /* UIImage+extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1412,6 +1955,11 @@
 			isa = PBXTargetDependency;
 			target = 750CFBC621BA9ACD00E62B09 /* KeePassium AutoFill */;
 			targetProxy = 750CFBD121BA9ACD00E62B09 /* PBXContainerItemProxy */;
+		};
+		75530C93233E604300EC557E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75D7DF7A233E5E310029AD87 /* KeePassiumPro AutoFill */;
+			targetProxy = 75530C92233E604300EC557E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2090,12 +2638,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.03;
+				MARKETING_VERSION = 1.04;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -2114,12 +2662,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.03;
+				MARKETING_VERSION = 1.04;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.KeePassium-AutoFill";
@@ -2252,10 +2800,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -2263,7 +2811,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.03;
+				MARKETING_VERSION = 1.04;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MAIN_APP";
@@ -2277,10 +2825,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -2288,11 +2836,108 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.03;
+				MARKETING_VERSION = 1.04;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = MAIN_APP;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		75B38C7F233E5B7C006BDEFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
+				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 38;
+				DEVELOPMENT_TEAM = 84W4PHXS24;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_UNROLL_LOOPS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.04;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MAIN_APP PREPAID_VERSION";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75B38C80233E5B7C006BDEFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
+				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 38;
+				DEVELOPMENT_TEAM = 84W4PHXS24;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_UNROLL_LOOPS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.04;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "MAIN_APP PREPAID_VERSION";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		75D7DFBC233E5E310029AD87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 38;
+				DEVELOPMENT_TEAM = 84W4PHXS24;
+				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.04;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.pro.KeePassium-AutoFill";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG AUTOFILL_EXT PREPAID_VERSION";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75D7DFBD233E5E310029AD87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 38;
+				DEVELOPMENT_TEAM = 84W4PHXS24;
+				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.04;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.pro.KeePassium-AutoFill";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "AUTOFILL_EXT PREPAID_VERSION";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2324,6 +2969,24 @@
 			buildConfigurations = (
 				754BF0922082A6BD00E3A292 /* Debug */,
 				754BF0932082A6BD00E3A292 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75B38C7E233E5B7C006BDEFC /* Build configuration list for PBXNativeTarget "KeePassiumPro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75B38C7F233E5B7C006BDEFC /* Debug */,
+				75B38C80233E5B7C006BDEFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75D7DFBB233E5E310029AD87 /* Build configuration list for PBXNativeTarget "KeePassiumPro AutoFill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75D7DFBC233E5E310029AD87 /* Debug */,
+				75D7DFBD233E5E310029AD87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

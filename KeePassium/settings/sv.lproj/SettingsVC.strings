@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "9Me-8P-nIZ"; */
-"9Me-8P-nIZ.footerTitle" = "Efter databasöppning, visa automatiskt sökfältet.";
+"9Me-8P-nIZ.footerTitle" = "Efter databasen öppnats, visa automatiskt sökfältet.";
 
 /* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9Me-8P-nIZ"; */
 "9Me-8P-nIZ.headerTitle" = "Start";

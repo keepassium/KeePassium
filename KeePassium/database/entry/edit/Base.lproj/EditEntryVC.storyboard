@@ -201,6 +201,7 @@
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-wo-jYf">
                                             <rect key="frame" x="313" y="4" width="81" height="35.333333333333336"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="randomize_button"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <state key="normal" title="Randomize">
                                                 <color key="titleColor" name="ActionTint"/>

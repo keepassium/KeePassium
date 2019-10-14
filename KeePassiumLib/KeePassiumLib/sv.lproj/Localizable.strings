@@ -329,7 +329,7 @@
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Senaste ändringsdatum";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
-"[Settings/EntryListDetail/longTitle] None" = "Ingen";
+"[Settings/EntryListDetail/longTitle] None" = "Inget";
 
 /* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
 "[Settings/EntryListDetail/longTitle] Notes" = "Anteckningar";

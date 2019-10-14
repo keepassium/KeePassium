@@ -140,6 +140,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuN-tE-lAG" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="0.0" width="264" height="44"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="password_field"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Ce1-pB-jMO"/>
                                                         </constraints>
@@ -209,6 +210,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l45-hq-1lr" userLabel="Unlock">
                                                 <rect key="frame" x="0.0" y="98" width="280" height="44"/>
                                                 <color key="backgroundColor" name="ActionTint"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="unlock_button"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="vAF-Ke-xi5"/>
                                                 </constraints>

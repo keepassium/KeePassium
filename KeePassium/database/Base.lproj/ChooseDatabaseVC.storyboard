@@ -104,6 +104,7 @@
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Settings" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings_button"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="didPressSettingsButton:" destination="vWt-yt-cgE" id="jmb-uz-meX"/>

@@ -1,6 +1,10 @@
 # (Un)related files
 .related/
 
+# Auto-generated fastlane stuff
+fastlane/screenshots/*
+fastlane/Preview.html
+
 # Temporary OS X files
 .DS_Store
 

@@ -29,10 +29,13 @@ class SettingsVC: UITableViewController, Refreshable {
     
     private var settingsNotifications: SettingsNotifications!
     
+    private var isPremiumSectionHidden = false
+    
     private enum CellIndexPath {
-        static let premiumTrial = IndexPath(row: 0, section: 0)
-        static let premiumStatus = IndexPath(row: 1, section: 0)
-        static let manageSubscription = IndexPath(row: 2, section: 0)
+        static let premiumSectionIndex = 0
+        static let premiumTrial = IndexPath(row: 0, section: premiumSectionIndex)
+        static let premiumStatus = IndexPath(row: 1, section: premiumSectionIndex)
+        static let manageSubscription = IndexPath(row: 2, section: premiumSectionIndex)
     }
     private var hiddenIndexPaths = Set<IndexPath>()
     
@@ -58,6 +61,12 @@ class SettingsVC: UITableViewController, Refreshable {
             selector: #selector(refreshPremiumStatus),
             name: PremiumManager.statusUpdateNotification,
             object: nil)
+        if BusinessModel.type == .prepaid {
+            isPremiumSectionHidden = true
+            setPremiumCellVisibility(premiumTrialCell, isHidden: true)
+            setPremiumCellVisibility(premiumStatusCell, isHidden: true)
+            setPremiumCellVisibility(manageSubscriptionCell, isHidden: true)
+        }
         refreshPremiumStatus()
         #if DEBUG
         premiumStatusCell.accessoryType = .detailButton
@@ -102,7 +111,8 @@ class SettingsVC: UITableViewController, Refreshable {
         refreshPremiumStatus()
     }
     
-    private func setCellVisibility(_ cell: UITableViewCell, isHidden: Bool) {
+    
+    private func setPremiumCellVisibility(_ cell: UITableViewCell, isHidden: Bool) {
         cell.isHidden = isHidden
         if isHidden {
             switch cell {
@@ -131,10 +141,32 @@ class SettingsVC: UITableViewController, Refreshable {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if hiddenIndexPaths.contains(indexPath) {
-            return 0.0
+            return 0.01
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == CellIndexPath.premiumSectionIndex && isPremiumSectionHidden {
+            return 0.01
+        }
+        return super.tableView(tableView, heightForFooterInSection: section)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == CellIndexPath.premiumSectionIndex && isPremiumSectionHidden {
+            return 0.01
+        }
+        return super.tableView(tableView, heightForHeaderInSection: section)
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == CellIndexPath.premiumSectionIndex && isPremiumSectionHidden {
+            return nil
+        }
+        return super.tableView(tableView, titleForHeaderInSection: section)
+    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -189,12 +221,13 @@ class SettingsVC: UITableViewController, Refreshable {
         }
     }
     
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        guard section == 0 else {
+        guard section == CellIndexPath.premiumSectionIndex else {
             return super.tableView(tableView, titleForFooterInSection: section)
         }
         
-        if PremiumManager.shared.usageMonitor.isEnabled {
+        if !isPremiumSectionHidden && PremiumManager.shared.usageMonitor.isEnabled {
             return getAppUsageDescription()
         } else {
             return nil
@@ -234,14 +267,16 @@ class SettingsVC: UITableViewController, Refreshable {
     #endif
     
     @objc private func refreshPremiumStatus() {
+        guard BusinessModel.type != .prepaid else { return }
+        
         let premiumManager = PremiumManager.shared
         premiumManager.usageMonitor.refresh()
         premiumManager.updateStatus()
         switch premiumManager.status {
         case .initialGracePeriod:
-            setCellVisibility(premiumTrialCell, isHidden: false)
-            setCellVisibility(premiumStatusCell, isHidden: true)
-            setCellVisibility(manageSubscriptionCell, isHidden: true)
+            setPremiumCellVisibility(premiumTrialCell, isHidden: false)
+            setPremiumCellVisibility(premiumStatusCell, isHidden: true)
+            setPremiumCellVisibility(manageSubscriptionCell, isHidden: true)
             
             if Settings.current.isTestEnvironment {
                 let secondsLeft = premiumManager.gracePeriodSecondsRemaining
@@ -266,9 +301,9 @@ class SettingsVC: UITableViewController, Refreshable {
                 return
             }
             
-            setCellVisibility(premiumTrialCell, isHidden: true)
-            setCellVisibility(premiumStatusCell, isHidden: false)
-            setCellVisibility(manageSubscriptionCell, isHidden: !product.isSubscription)
+            setPremiumCellVisibility(premiumTrialCell, isHidden: true)
+            setPremiumCellVisibility(premiumStatusCell, isHidden: false)
+            setPremiumCellVisibility(manageSubscriptionCell, isHidden: !product.isSubscription)
             
             if expiryDate == .distantFuture {
                 if Settings.current.isTestEnvironment {
@@ -298,9 +333,9 @@ class SettingsVC: UITableViewController, Refreshable {
                     expiryDateString)
             }
         case .lapsed:
-            setCellVisibility(premiumTrialCell, isHidden: false)
-            setCellVisibility(premiumStatusCell, isHidden: false)
-            setCellVisibility(manageSubscriptionCell, isHidden: false)
+            setPremiumCellVisibility(premiumTrialCell, isHidden: false)
+            setPremiumCellVisibility(premiumStatusCell, isHidden: false)
+            setPremiumCellVisibility(manageSubscriptionCell, isHidden: false)
             
             let premiumStatusText: String
             if let secondsSinceExpiration = premiumManager.secondsSinceExpiration {
@@ -323,9 +358,9 @@ class SettingsVC: UITableViewController, Refreshable {
             premiumStatusCell.detailTextLabel?.textColor = .errorMessage
         case .freeLightUse,
              .freeHeavyUse:
-            setCellVisibility(premiumTrialCell, isHidden: false)
-            setCellVisibility(premiumStatusCell, isHidden: true)
-            setCellVisibility(manageSubscriptionCell, isHidden: true)
+            setPremiumCellVisibility(premiumTrialCell, isHidden: false)
+            setPremiumCellVisibility(premiumStatusCell, isHidden: true)
+            setPremiumCellVisibility(manageSubscriptionCell, isHidden: true)
             premiumTrialCell.detailTextLabel?.text = nil
         }
         

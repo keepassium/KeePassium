@@ -9,7 +9,11 @@
 import UIKit
 
 class AppStoreHelper {
+    #if PREPAID_VERSION
+    static private let appStoreID = 1481781647
+    #else
     static private let appStoreID = 1435127111
+    #endif
 
     static func openInAppStore() {
         guard let url = URL(string: "itms-apps://apps.apple.com/app/id\(appStoreID)") else {

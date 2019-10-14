@@ -213,6 +213,7 @@
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Settings" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings_button"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="didPressSettings:" destination="Rxg-rI-fqC" id="8sY-q8-g31"/>

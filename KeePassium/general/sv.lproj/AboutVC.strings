@@ -14,7 +14,7 @@
 "9MZ-zt-75x.text" = "Base32 för Swift av Norio Nomura";
 
 /* Class = "UILabel"; text = "KeePassium does not collect any personal or analytical data nor share it with anyone."; ObjectID = "9wt-nj-TZW"; */
-"9wt-nj-TZW.text" = "KeePassium samlar inte ihop någon personlig eller analytisk data vare sig för eget eller någon annans bruk.";
+"9wt-nj-TZW.text" = "KeePassium samlar inte in personlig eller analytisk data vare sig för eget eller tredje parts bruk.";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
 "Aig-jg-p8B.text" = "MIT-licens";

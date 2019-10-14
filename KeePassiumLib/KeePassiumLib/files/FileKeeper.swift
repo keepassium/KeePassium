@@ -46,8 +46,21 @@ public class FileKeeper {
     public static let shared = FileKeeper()
     
     private enum UserDefaultsKey {
-        static let mainAppPrefix = "com.keepassium.recentFiles"
-        static let autoFillExtensionPrefix = "com.keepassium.autoFill.recentFiles"
+        static var mainAppPrefix: String {
+            if BusinessModel.type == .prepaid {
+                return "com.keepassium.pro.recentFiles"
+            } else {
+                return "com.keepassium.recentFiles"
+            }
+        }
+
+        static var autoFillExtensionPrefix: String {
+            if BusinessModel.type == .prepaid {
+                return "com.keepassium.pro.autoFill.recentFiles"
+            } else {
+                return "com.keepassium.autoFill.recentFiles"
+            }
+        }
         
         static let internalDatabases = ".internal.databases"
         static let internalKeyFiles = ".internal.keyFiles"

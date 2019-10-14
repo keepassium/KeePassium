@@ -41,7 +41,8 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
             comment: "Action to start editing an entry")
         editButton.target = self
         editButton.action = #selector(onEditAction)
-        
+        editButton.accessibilityIdentifier = "edit_entry_button" 
+
         entryChangeNotifications = EntryChangeNotifications(observer: self)
         refresh()
     }

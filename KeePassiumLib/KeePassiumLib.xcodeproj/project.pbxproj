@@ -16,9 +16,9 @@
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
 		755E7DA7232021460010E199 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7DA5232021460010E199 /* InfoPlist.strings */; };
+		759896432341CED300DF39AA /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759896422341CED300DF39AA /* BusinessModel.swift */; };
 		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
 		75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677A229045A60097C693 /* PremiumFeature.swift */; };
-		75C764E4226F475500025F8B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */; };
 		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
 		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B862174F02F00F7DEF2 /* salsa20.c */; };
@@ -124,16 +124,6 @@
 		75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F594B7221BDC51001729FD /* SettingsMigrator.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		75C764E5226F475500025F8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75D0C7612174AF1F00C64C93 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 75D0C7692174AF1F00C64C93;
-			remoteInfo = KeePassiumLib;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		7505E8CA2236C93300E5202E /* TOTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGenerator.swift; sourceTree = "<group>"; };
 		7505E8CE2236ED6E00E5202E /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
@@ -145,6 +135,7 @@
 		75384B9822CCB76800157598 /* UsageMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageMonitor.swift; sourceTree = "<group>"; };
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
 		755E7DA6232021460010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		759896422341CED300DF39AA /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BusinessModel.swift; path = ../../../../../../projects/xcode/KeePassium/KeePassiumLib/KeePassiumLib/premium/BusinessModel.swift; sourceTree = "<group>"; };
 		75A2676F228DAC430097C693 /* PremiumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManager.swift; sourceTree = "<group>"; };
 		75A2677A229045A60097C693 /* PremiumFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeature.swift; sourceTree = "<group>"; };
 		75AC53472326FCC6000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -153,7 +144,6 @@
 		75AC534A2326FCDB000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC53A1232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		75AC53A2232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		75C764DF226F475500025F8B /* KeePassiumLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeePassiumLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
 		75D09B862174F02F00F7DEF2 /* salsa20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = salsa20.c; sourceTree = "<group>"; };
@@ -267,14 +257,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		75C764DC226F475500025F8B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				75C764E4226F475500025F8B /* KeePassiumLib.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		75D0C7672174AF1F00C64C93 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,6 +292,7 @@
 				75A2677A229045A60097C693 /* PremiumFeature.swift */,
 				7538167D22B15FC7000FA4BD /* Settings+premium.swift */,
 				75384B9822CCB76800157598 /* UsageMonitor.swift */,
+				759896422341CED300DF39AA /* BusinessModel.swift */,
 			);
 			path = premium;
 			sourceTree = "<group>";
@@ -527,7 +510,6 @@
 			isa = PBXGroup;
 			children = (
 				75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */,
-				75C764DF226F475500025F8B /* KeePassiumLibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -621,24 +603,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		75C764DE226F475500025F8B /* KeePassiumLibTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 75C764E7226F475500025F8B /* Build configuration list for PBXNativeTarget "KeePassiumLibTests" */;
-			buildPhases = (
-				75C764DB226F475500025F8B /* Sources */,
-				75C764DC226F475500025F8B /* Frameworks */,
-				75C764DD226F475500025F8B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				75C764E6226F475500025F8B /* PBXTargetDependency */,
-			);
-			name = KeePassiumLibTests;
-			productName = KeePassiumLibTests;
-			productReference = 75C764DF226F475500025F8B /* KeePassiumLibTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		75D0C7692174AF1F00C64C93 /* KeePassiumLib */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75D0C77E2174AF2000C64C93 /* Build configuration list for PBXNativeTarget "KeePassiumLib" */;
@@ -668,9 +632,6 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Andrei Popleteev";
 				TargetAttributes = {
-					75C764DE226F475500025F8B = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
 					75D0C7692174AF1F00C64C93 = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -697,19 +658,11 @@
 			projectRoot = "";
 			targets = (
 				75D0C7692174AF1F00C64C93 /* KeePassiumLib */,
-				75C764DE226F475500025F8B /* KeePassiumLibTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		75C764DD226F475500025F8B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		75D0C7682174AF1F00C64C93 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -744,13 +697,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		75C764DB226F475500025F8B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		75D0C7662174AF1F00C64C93 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -818,6 +764,7 @@
 				75D09C3E2174F77000F7DEF2 /* StreamCipherFactory.swift in Sources */,
 				75D09C2A2174F77000F7DEF2 /* DeletedObject2.swift in Sources */,
 				75D09C462174F77000F7DEF2 /* KeyHelper1.swift in Sources */,
+				759896432341CED300DF39AA /* BusinessModel.swift in Sources */,
 				75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */,
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
@@ -857,14 +804,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		75C764E6226F475500025F8B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 75D0C7692174AF1F00C64C93 /* KeePassiumLib */;
-			targetProxy = 75C764E5226F475500025F8B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		751E0CDD2309A3420088BB10 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -895,44 +834,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		75C764E8226F475500025F8B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84W4PHXS24;
-				INFOPLIST_FILE = KeePassiumLibTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.KeePassiumLibTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		75C764E9226F475500025F8B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84W4PHXS24;
-				INFOPLIST_FILE = KeePassiumLibTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.KeePassiumLibTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		75D0C77C2174AF2000C64C93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1114,15 +1015,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		75C764E7226F475500025F8B /* Build configuration list for PBXNativeTarget "KeePassiumLibTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				75C764E8226F475500025F8B /* Debug */,
-				75C764E9226F475500025F8B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		75D0C7642174AF1F00C64C93 /* Build configuration list for PBXProject "KeePassiumLib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

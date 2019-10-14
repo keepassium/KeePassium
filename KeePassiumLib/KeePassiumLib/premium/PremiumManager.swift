@@ -187,13 +187,16 @@ public class PremiumManager: NSObject {
     }
 
     public func getPremiumProduct() -> InAppProduct? {
+        if BusinessModel.type == .prepaid {
+            return InAppProduct.forever
+        }
+        
         #if DEBUG
         return InAppProduct.betaForever 
-        #else
+        #endif
         if Settings.current.isTestEnvironment {
             return InAppProduct.betaForever
         }
-        #endif
 
         do {
             return try Keychain.shared.getPremiumProduct() 
@@ -204,13 +207,16 @@ public class PremiumManager: NSObject {
     }
     
     public func getPremiumExpiryDate() -> Date? {
+        if BusinessModel.type == .prepaid {
+            return Date.distantFuture
+        }
+        
         #if DEBUG
         return Date.distantFuture 
-        #else
+        #endif
         if Settings.current.isTestEnvironment {
             return Date.distantFuture
         }
-        #endif
         
         do {
             return try Keychain.shared.getPremiumExpiryDate() 
