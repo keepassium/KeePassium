@@ -25,6 +25,12 @@ class FileInfoCell: UITableViewCell {
             valueLabel.text = value
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        nameLabel?.font = UIFont.systemFont(forTextStyle: .subheadline, weight: .thin)
+        valueLabel?.font = UIFont.monospaceFont(forTextStyle: .body)
+    }
 }
 
 class FileInfoVC: UITableViewController {

@@ -1,5 +1,20 @@
 #CHANGELOG
 
+## [1.06.41] - 2019-10-14
+
+### Added
+
+- Spanish translation [thanks, Juan_Net and NicolasCGN]
+
+### Changed
+
+- Under-the-hood: database state broadcasts (notifications) replaced by observers to prevent race conditions
+
+### Fixed
+
+- Respect font size settings throughout the app [thanks, AD]
+
+
 ## [1.05.40] - 2019-10-06
 
 ### Added

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
     <device id="retina5_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +37,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Entry Title}" borderStyle="roundedRect" placeholder="Entry Title" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-If-zfn" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Entry Title}" borderStyle="roundedRect" placeholder="Entry Title" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-If-zfn" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
                                             <rect key="frame" x="57" y="11" width="337" height="33"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             <color key="textColor" name="PrimaryText"/>
@@ -110,7 +110,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Value}" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zr2-BH-wQ3" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Value}" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zr2-BH-wQ3" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
                                             <rect key="frame" x="20" y="39.333333333333336" width="374" height="34.000000000000007"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             <constraints>
@@ -186,7 +186,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Value}" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ro2-Xv-zrw" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Value}" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ro2-Xv-zrw" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                             <rect key="frame" x="20" y="39.333333333333336" width="374" height="34.000000000000007"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             <constraints>
@@ -314,11 +314,11 @@
                                                 <constraint firstAttribute="height" constant="4" id="aNX-bx-azn"/>
                                             </constraints>
                                         </view>
-                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Name}" borderStyle="roundedRect" placeholder="Field Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-Xd-ff5" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Name}" borderStyle="roundedRect" placeholder="Field Name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-Xd-ff5" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
                                             <rect key="frame" x="20" y="12" width="374" height="34"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             <color key="textColor" name="PrimaryText"/>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <attributedString key="userComments">
                                                 <fragment content="#bc-ignore!"/>
@@ -346,7 +346,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </textView>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eox-My-Hns">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eox-My-Hns">
                                             <rect key="frame" x="345" y="212" width="51" height="31"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."/>
@@ -356,8 +356,8 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In-memory Protection" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pb-xb-fuf">
-                                            <rect key="frame" x="20" y="217" width="317" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="In-memory Protection" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pb-xb-fuf">
+                                            <rect key="frame" x="20" y="217.33333333333334" width="317" height="20.333333333333343"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
@@ -371,12 +371,14 @@
                                         <constraint firstItem="0pb-xb-fuf" firstAttribute="centerY" secondItem="eox-My-Hns" secondAttribute="centerY" id="93i-wP-ueg"/>
                                         <constraint firstItem="eox-My-Hns" firstAttribute="leading" secondItem="0pb-xb-fuf" secondAttribute="trailing" constant="8" id="FGh-18-s7j"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="7iU-ut-hd7" secondAttribute="trailing" id="ILo-tq-FmI"/>
+                                        <constraint firstItem="0pb-xb-fuf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7iU-ut-hd7" secondAttribute="bottom" constant="8" id="KRB-6R-qwN"/>
                                         <constraint firstItem="7iU-ut-hd7" firstAttribute="top" secondItem="ecN-Xd-ff5" secondAttribute="bottom" constant="8" id="QiZ-92-wp5"/>
                                         <constraint firstAttribute="trailing" secondItem="cDy-AV-pKE" secondAttribute="trailing" id="USV-Kh-HP9"/>
                                         <constraint firstItem="ecN-Xd-ff5" firstAttribute="top" secondItem="cDy-AV-pKE" secondAttribute="bottom" constant="8" id="Vd2-Qa-MzU"/>
                                         <constraint firstItem="cDy-AV-pKE" firstAttribute="top" secondItem="8k8-If-CEX" secondAttribute="top" id="XQV-Rc-Jti"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="eox-My-Hns" secondAttribute="bottom" constant="4" id="bip-aF-SUF"/>
-                                        <constraint firstItem="eox-My-Hns" firstAttribute="top" secondItem="7iU-ut-hd7" secondAttribute="bottom" constant="8" id="cVd-5B-6xA"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="eox-My-Hns" secondAttribute="bottom" constant="4" id="bip-aF-SUF"/>
+                                        <constraint firstItem="eox-My-Hns" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7iU-ut-hd7" secondAttribute="bottom" constant="8" id="cVd-5B-6xA"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="0pb-xb-fuf" secondAttribute="bottom" constant="8" id="fKq-Sl-UQS"/>
                                         <constraint firstItem="cDy-AV-pKE" firstAttribute="leading" secondItem="8k8-If-CEX" secondAttribute="leading" id="lGf-yl-wzs"/>
                                         <constraint firstItem="0pb-xb-fuf" firstAttribute="leading" secondItem="8k8-If-CEX" secondAttribute="leadingMargin" id="rGw-bn-DcK"/>
                                         <constraint firstItem="ecN-Xd-ff5" firstAttribute="leading" secondItem="8k8-If-CEX" secondAttribute="leadingMargin" id="wLP-5q-MPz"/>

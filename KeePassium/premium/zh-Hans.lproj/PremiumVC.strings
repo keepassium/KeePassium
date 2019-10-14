@@ -7,9 +7,6 @@
 /* Class = "UIButton"; normalTitle = "Terms and Conditions"; ObjectID = "ujr-9f-eco"; */
 "ujr-9f-eco.normalTitle" = "条款与条件";
 
-/* Class = "UINavigationItem"; title = "Premium"; ObjectID = "WdG-3q-lNo"; */
-"WdG-3q-lNo.title" = "高级版";
-
 /* Class = "UIButton"; normalTitle = "Restore Purchases"; ObjectID = "yss-Xu-2XK"; */
 "yss-Xu-2XK.normalTitle" = "还原购买";
 

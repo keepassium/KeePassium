@@ -29,7 +29,7 @@
                                             <action selector="didPressCancelButton:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="nDF-m5-NUc"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter passcode" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-t6-0ty">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter passcode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-t6-0ty">
                                         <rect key="frame" x="60" y="233.5" width="119" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" name="PrimaryText"/>
@@ -38,7 +38,7 @@
                                             <fragment content="Call for action above the passcode text field"/>
                                         </attributedString>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTd-Zj-qAs" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTd-Zj-qAs" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                         <rect key="frame" x="60" y="262" width="200" height="44"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <constraints>
@@ -69,7 +69,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="nSI-oU-RRJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="tintColor" name="ActionText"/>
                                         <state key="normal" title="{Unlock / Save}"/>
                                         <attributedString key="userComments">

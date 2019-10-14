@@ -265,12 +265,6 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "删除密钥文件?\n 请确保您有备份文件!";
 
-/* News title for beta testers: the app is now available on the App Store. */
-"[News/2019/08/BetaTransition/title] Now on the App Store!" = "现在去 App Store 更新正式版!";
-
-/* Title of an announcement [expiryDateFormatted: String] */
-"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "早鸟优惠结束 %@";
-
 /* Message shown when opening an announcement in AutoFill */
 "[News/AutoFill/stubText] Please open the main app for the full announcement." = "请打开主程序获得完整的公告。";
 

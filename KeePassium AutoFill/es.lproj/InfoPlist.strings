@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Autocompletar KeePassium";
+
+/* Bundle name */
+"CFBundleName" = "Autocompletar KeePassium";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Utilizar Face ID para desbloquear KeePassium";
+

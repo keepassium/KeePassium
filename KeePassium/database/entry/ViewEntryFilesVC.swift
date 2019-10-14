@@ -20,7 +20,6 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     private var editButton: UIBarButtonItem! 
     private var isHistoryMode = false
     private var canAddFiles: Bool { return !isHistoryMode }
-    private var databaseManagerNotifications: DatabaseManagerNotifications!
     private var progressViewHost: ProgressViewHost?
     private var exportController: UIDocumentInteractionController!
 
@@ -44,8 +43,6 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
             target: self,
             action: #selector(didPressEdit))
         navigationItem.rightBarButtonItem = isHistoryMode ? nil : editButton
-        
-        databaseManagerNotifications = DatabaseManagerNotifications(observer: self)
         
         exportController = UIDocumentInteractionController()
     }
@@ -352,7 +349,7 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     private func applyChangesAndSaveDatabase() {
         guard let entry = entry else { return }
         entry.modified()
-        databaseManagerNotifications.startObserving()
+        DatabaseManager.shared.addObserver(self)
         DatabaseManager.shared.startSavingDatabase()
     }
 }
@@ -370,7 +367,7 @@ extension ViewEntryFilesVC: DatabaseManagerObserver {
     }
     
     func databaseManager(didSaveDatabase urlRef: URLReference) {
-        databaseManagerNotifications.stopObserving()
+        DatabaseManager.shared.removeObserver(self)
         progressViewHost?.hideProgressView()
         if let entry = entry {
             EntryChangeNotifications.post(entryDidChange: entry)
@@ -378,7 +375,7 @@ extension ViewEntryFilesVC: DatabaseManagerObserver {
     }
     
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        databaseManagerNotifications.stopObserving()
+        DatabaseManager.shared.removeObserver(self)
         progressViewHost?.hideProgressView()
     }
 
@@ -387,7 +384,7 @@ extension ViewEntryFilesVC: DatabaseManagerObserver {
         savingError message: String,
         reason: String?)
     {
-        databaseManagerNotifications.stopObserving()
+        DatabaseManager.shared.removeObserver(self)
         progressViewHost?.hideProgressView()
         
         let errorAlert = UIAlertController.make(

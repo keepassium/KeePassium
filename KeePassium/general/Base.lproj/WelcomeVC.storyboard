@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Nc-wz-Yqq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Nc-wz-Yqq">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@ You can have multiple databases, for example to separate work, family and person
                                     <constraint firstAttribute="height" constant="44" id="HJn-c9-G4M"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="VPs-lr-DdF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Add Existing Database">
                                     <color key="titleColor" name="ActionText"/>
                                 </state>
@@ -54,7 +54,7 @@ You can have multiple databases, for example to separate work, family and person
                                     <constraint firstAttribute="height" constant="44" id="g9b-F1-o7L"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="tb9-3s-hrE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Create New Database">
                                     <color key="titleColor" name="ActionText"/>
                                 </state>

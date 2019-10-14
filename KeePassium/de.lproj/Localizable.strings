@@ -265,12 +265,6 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Schlüsseldatei löschen?\n Stellen Sie sicher, dass Sie ein Backup haben.";
 
-/* News title for beta testers: the app is now available on the App Store. */
-"[News/2019/08/BetaTransition/title] Now on the App Store!" = "Jetzt im App Store erhältlich!";
-
-/* Title of an announcement [expiryDateFormatted: String] */
-"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "Earlybird Promotion endet am %@";
-
 /* Message shown when opening an announcement in AutoFill */
 "[News/AutoFill/stubText] Please open the main app for the full announcement." = "Bitte öffnen Sie die Haupt-App für die vollständige Ankündigung.";
 

@@ -196,12 +196,6 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Удалить ключевой файл?\nУбедитесь, что у вас есть резервная копия.";
 
-/* News title for beta testers: the app is now available on the App Store. */
-"[News/2019/08/BetaTransition/title] Now on the App Store!" = "Уже в App Store!";
-
-/* Title of an announcement [expiryDateFormatted: String] */
-"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "Стартовая промо-акция заканчивается %@";
-
 /* Message shown when opening an announcement in AutoFill */
 "[News/AutoFill/stubText] Please open the main app for the full announcement." = "Пожалуйста, откройте главное приложение чтобы прочесть полное объявление.";
 

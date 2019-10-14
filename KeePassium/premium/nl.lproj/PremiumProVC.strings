@@ -1,6 +1,8 @@
-
 /* Class = "UIButton"; accessibilityLabel = "Download in the App Store"; ObjectID = "5rv-SA-uRy"; */
 "5rv-SA-uRy.accessibilityLabel" = "Download in de App Store";
+
+/* Class = "UIButton"; normalTitle = "Premium Keeper = Free upgrade\nContact us"; ObjectID = "k28-Nu-VFD"; */
+"k28-Nu-VFD.normalTitle" = "Premium Keeper = Gratis upgrade\nNeem contact op";
 
 /* Class = "UILabel"; text = "KeePassium Pro"; ObjectID = "RMU-nJ-6tZ"; */
 "RMU-nJ-6tZ.text" = "KeePassium Pro";
@@ -8,5 +10,3 @@
 /* Class = "UILabel"; text = "KeePassium Pro is a paid version of KeePassium, and is suitable for Family Sharing and Volume Purchase Program."; ObjectID = "TAt-eQ-x30"; */
 "TAt-eQ-x30.text" = "KeePassium Pro is een betaalde versie van KeePassium en is geschikt voor Delen met gezin en Volume Purchase Program.";
 
-/* Class = "UIButton"; normalTitle = "Premium Keeper = Free upgrade\nContact us"; ObjectID = "k28-Nu-VFD"; */
-"k28-Nu-VFD.normalTitle" = "Premium Keeper = Gratis upgrade\nNeem contact op";

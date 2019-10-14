@@ -28,6 +28,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     @IBOutlet weak var passwordField: ProtectedTextField!
     @IBOutlet weak var keyFileField: UITextField!
     @IBOutlet weak var announcementButton: UIButton!
+    @IBOutlet weak var unlockButton: UIButton!
     
     weak var coordinator: MainCoordinator?
     weak var delegate: DatabaseUnlockerDelegate?
@@ -42,6 +43,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
+        unlockButton.titleLabel?.adjustsFontForContentSizeCategory = true
         
         errorMessagePanel.alpha = 0.0
         errorMessagePanel.isHidden = true

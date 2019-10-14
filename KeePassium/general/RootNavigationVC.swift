@@ -11,18 +11,15 @@ import KeePassiumLib
 
 class RootNavigationVC: UINavigationController, UINavigationControllerDelegate {
 
-    var databaseManagerNotifications: DatabaseManagerNotifications!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.delegate = self
-        databaseManagerNotifications = DatabaseManagerNotifications(observer: self)
-        databaseManagerNotifications.startObserving()
+        DatabaseManager.shared.addObserver(self)
     }
     
     deinit {
-        databaseManagerNotifications.stopObserving()
+        DatabaseManager.shared.removeObserver(self)
     }
       
     func navigationController(

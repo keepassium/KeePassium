@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rv-SA-uRy">
-                                <rect key="frame" x="24" y="201" width="327" height="120"/>
+                                <rect key="frame" x="7.5" y="201" width="360" height="120"/>
                                 <accessibility key="accessibilityConfiguration" label="Download in the App Store">
                                     <accessibilityTraits key="traits" button="YES" link="YES" image="YES"/>
                                 </accessibility>
@@ -92,10 +92,10 @@ Contact us</string>
         </scene>
     </scenes>
     <resources>
-        <image name="appstore-download" width="163.5" height="60"/>
+        <image name="appstore-download" width="180" height="60"/>
         <image name="premium-pro" width="60" height="60"/>
         <namedColor name="PrimaryText">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

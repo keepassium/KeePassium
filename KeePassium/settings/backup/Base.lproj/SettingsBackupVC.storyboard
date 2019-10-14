@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -119,7 +119,7 @@
                                         <rect key="frame" x="0.0" y="294.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ljV-dR-Ihl" id="Apj-dQ-zIf">
-                                            <rect key="frame" x="0.0" y="0.0" width="292.5" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Keep Backup Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="G42-gR-eKm" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
@@ -137,7 +137,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{N days}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="PKe-6p-Ssr">
-                                                    <rect key="frame" x="219.5" y="12" width="65" height="20.5"/>
+                                                    <rect key="frame" x="220" y="12" width="65" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -162,7 +162,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-mN-5RB" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="55" y="6" width="210" height="32"/>
+                                                    <rect key="frame" x="55" y="15" width="210" height="14"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="tintColor" name="DestructiveTint"/>
                                                     <state key="normal" title="{Delete ALL Backup Files (1)}"/>
@@ -176,9 +176,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="RXF-mN-5RB" firstAttribute="centerY" secondItem="Xwy-hZ-bIT" secondAttribute="centerY" id="7dM-ET-4cS"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="RXF-mN-5RB" secondAttribute="bottom" constant="4" id="Pv9-eG-1dp"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="RXF-mN-5RB" secondAttribute="trailing" id="g0d-g1-JPd"/>
                                                 <constraint firstItem="RXF-mN-5RB" firstAttribute="centerX" secondItem="Xwy-hZ-bIT" secondAttribute="centerX" id="gB3-uu-mG3"/>
                                                 <constraint firstItem="RXF-mN-5RB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xwy-hZ-bIT" secondAttribute="leadingMargin" id="hSh-yY-cR7"/>
+                                                <constraint firstItem="RXF-mN-5RB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Xwy-hZ-bIT" secondAttribute="topMargin" constant="4" id="sNh-cT-LnM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

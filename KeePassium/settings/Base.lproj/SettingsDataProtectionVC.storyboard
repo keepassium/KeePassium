@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,7 +73,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-nv-Mst" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="94" y="6" width="132" height="32"/>
+                                                    <rect key="frame" x="94" y="15" width="132" height="14"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="tintColor" name="DestructiveTint"/>
                                                     <state key="normal" title="Clear Master Keys"/>
@@ -83,8 +83,10 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="e1v-nv-Mst" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dks-a6-DS3" secondAttribute="topMargin" constant="4" id="8ch-dq-oyv"/>
                                                 <constraint firstItem="e1v-nv-Mst" firstAttribute="centerY" secondItem="Dks-a6-DS3" secondAttribute="centerY" id="Mgh-1s-WnA"/>
                                                 <constraint firstItem="e1v-nv-Mst" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dks-a6-DS3" secondAttribute="leadingMargin" id="hDq-c1-Nr5"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="e1v-nv-Mst" secondAttribute="bottom" constant="4" id="lsI-44-PTJ"/>
                                                 <constraint firstItem="e1v-nv-Mst" firstAttribute="centerX" secondItem="Dks-a6-DS3" secondAttribute="centerX" priority="750" id="qQf-HX-lkF"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="e1v-nv-Mst" secondAttribute="trailing" id="vds-4q-tO0"/>
                                             </constraints>
@@ -98,7 +100,7 @@
                                         <rect key="frame" x="0.0" y="315" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7gS-TC-EzJ" id="3iu-pK-y97">
-                                            <rect key="frame" x="0.0" y="0.0" width="292.5" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Database Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="weX-SZ-IDB" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
@@ -113,7 +115,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Detail}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="beV-Hv-Qdr">
-                                                    <rect key="frame" x="231" y="13" width="53.5" height="19.5"/>
+                                                    <rect key="frame" x="231.5" y="13" width="53.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -138,7 +140,7 @@
                                         <rect key="frame" x="0.0" y="466.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pl7-TW-G1h" id="Wfm-hG-PH6">
-                                            <rect key="frame" x="0.0" y="0.0" width="292.5" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Clipboard Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="SSu-Sr-MCg" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
@@ -158,7 +160,7 @@
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Detail}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="xPd-ot-oqe">
-                                                    <rect key="frame" x="231" y="13" width="53.5" height="19.5"/>
+                                                    <rect key="frame" x="231.5" y="13" width="53.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -226,7 +228,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uV-Zs-RRo" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="63" y="6" width="194" height="32"/>
+                                                    <rect key="frame" x="63" y="15" width="194" height="14"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="tintColor" name="DestructiveTint"/>
                                                     <state key="normal" title="Clear Key File Associations"/>
@@ -237,9 +239,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3uV-Zs-RRo" firstAttribute="centerY" secondItem="54K-xz-dwY" secondAttribute="centerY" id="09x-Dy-qX3"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="3uV-Zs-RRo" secondAttribute="bottom" constant="4" id="88G-B8-xr6"/>
                                                 <constraint firstItem="3uV-Zs-RRo" firstAttribute="centerX" secondItem="54K-xz-dwY" secondAttribute="centerX" priority="750" id="SQ3-Ls-K8t"/>
                                                 <constraint firstItem="3uV-Zs-RRo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="54K-xz-dwY" secondAttribute="leadingMargin" id="XB1-O7-I7L"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3uV-Zs-RRo" secondAttribute="trailing" id="XmG-Lp-Mhe"/>
+                                                <constraint firstItem="3uV-Zs-RRo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="54K-xz-dwY" secondAttribute="topMargin" constant="4" id="Y2e-Wm-dRg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

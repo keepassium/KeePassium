@@ -1,0 +1,15 @@
+/* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
+"enW-gs-tra.normalTitle" = "Añadir base de datos";
+
+/* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
+"P0M-N3-ynf.text" = "Por favor, vuelve a agregar las bases de datos y los archivos de claves para utilizar con la función de autocompletar (AutoFill).";
+
+/* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
+"pIl-6L-Msp.text" = "Configurar autocompletar (AutoFill)";
+
+/* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
+"rzY-Ci-bd9.title" = "KeePassium";
+
+/* Class = "UITextView"; text = "The AutoFill cannot automatically access the files you already have in the main KeePassium app.\n\nWhy? Behind the scenes, the system treats AutoFill as a separate app, independent from the main KeePassium process. For security reasons, an app cannot simply access any external files – unless you explicitly link these files to that app. Thus the system guarantees that the app can only access the few files you allowed it to.\n\nAs a result, both AutoFill and the main KeePassium app need to be given their own permissions for each external file. Luckily, this is a one-time procedure."; ObjectID = "UAW-0G-N5G"; */
+"UAW-0G-N5G.text" = "Autocompletar (AutoFill) no puede acceder automáticamente a los archivos de la aplicación principal de KeePassium.\n\n¿Por qué? Internamente, el sistema trata AutoFill como una aplicación separada, independiente del proceso principal de KeePassium. Por razones de seguridad, una aplicación no puede simplemente acceder a ningún archivo externo, a menos que se vinculen explícitamente estos archivos con esa aplicación. Así, el sistema garantiza que la aplicación sólo puede acceder a los archivos permitidos.\n\nComo resultado, tanto la aplicación de AutoFill como la aplicación principal de KeePassium deben recibir sus propios permisos para cada archivo externo. Afortunadamente, sólo se necesita hacerlo una vez por cada nueva base de datos.";
+

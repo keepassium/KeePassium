@@ -53,6 +53,24 @@
       "scale" : "1x"
     },
     {
+      "locale" : "es",
+      "idiom" : "universal",
+      "filename" : "es-light@1.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "es",
+      "idiom" : "universal",
+      "filename" : "es-dark@1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
       "locale" : "nl",
       "idiom" : "universal",
       "filename" : "nl-light@1.png",
@@ -195,6 +213,24 @@
       "scale" : "2x"
     },
     {
+      "locale" : "es",
+      "idiom" : "universal",
+      "filename" : "es-light@2.png",
+      "scale" : "2x"
+    },
+    {
+      "locale" : "es",
+      "idiom" : "universal",
+      "filename" : "es-dark@2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
       "locale" : "nl",
       "idiom" : "universal",
       "filename" : "nl-light@2.png",
@@ -328,6 +364,24 @@
       "locale" : "de",
       "idiom" : "universal",
       "filename" : "de-dark@3.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "3x"
+    },
+    {
+      "locale" : "es",
+      "idiom" : "universal",
+      "filename" : "es-light@3.png",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "es",
+      "idiom" : "universal",
+      "filename" : "es-dark@3.png",
       "appearances" : [
         {
           "appearance" : "luminosity",

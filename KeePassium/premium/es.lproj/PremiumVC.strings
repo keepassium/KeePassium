@@ -1,0 +1,12 @@
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "Dfd-LU-ij4"; */
+"Dfd-LU-ij4.normalTitle" = "Política de privacidad";
+
+/* Class = "UILabel"; text = "Payment will be charged to your Apple ID account at the confirmation of purchase. \n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. \n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase."; ObjectID = "Rkk-oi-8fO"; Note = "Standard conditions text mandated by Apple."; */
+"Rkk-oi-8fO.text" = "El pago se cargará a tu ID de Apple al confirmar la compra. \n\nLa suscripción se renueva automáticamente a no ser que se cancele al menos 24 horas antes de que finalice el periodo actual. Se cobrará la renovación de la suscripción 24 horas antes que termine el periodo actual.\n\nPuedes gestionar y cancelar tus suscripciones accediendo a los ajustes de tu cuenta en la AppStore después de la compra.";
+
+/* Class = "UIButton"; normalTitle = "Terms and Conditions"; ObjectID = "ujr-9f-eco"; */
+"ujr-9f-eco.normalTitle" = "Términos y condiciones";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchases"; ObjectID = "yss-Xu-2XK"; */
+"yss-Xu-2XK.normalTitle" = "Restaurar compras";
+

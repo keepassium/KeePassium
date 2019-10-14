@@ -196,12 +196,6 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Opravdu chcete odstranit soubor s klíčem?\nUjistěte se, že jej máte zálohovaný.";
 
-/* News title for beta testers: the app is now available on the App Store. */
-"[News/2019/08/BetaTransition/title] Now on the App Store!" = "Nyní v App Store!";
-
-/* Title of an announcement [expiryDateFormatted: String] */
-"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "Promo akce pro první osvojitele končí %@";
-
 /* Message shown when opening an announcement in AutoFill */
 "[News/AutoFill/stubText] Please open the main app for the full announcement." = "Pro zhlédnutí celé zprávy prosím otevřete hlavní aplikaci.";
 

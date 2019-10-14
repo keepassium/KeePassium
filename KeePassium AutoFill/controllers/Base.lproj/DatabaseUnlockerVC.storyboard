@@ -166,7 +166,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="xBS-ci-fwG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="tintColor" name="ActionText"/>
                                         <state key="normal" title="Unlock"/>
                                         <userDefinedRuntimeAttributes>
@@ -226,6 +226,7 @@
                         <outlet property="inputPanel" destination="Q5g-RY-uXD" id="6S7-1l-TIX"/>
                         <outlet property="keyFileField" destination="Dnl-vm-GMg" id="frD-BC-dbG"/>
                         <outlet property="passwordField" destination="U6j-Ph-AWS" id="eKJ-Bd-ciZ"/>
+                        <outlet property="unlockButton" destination="89h-8b-LRO" id="f59-RP-Gbr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XzC-pt-YBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -242,7 +243,7 @@
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="WarningBackground">
             <color red="0.94199997186660767" green="0.59700000286102295" blue="0.21699999272823334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

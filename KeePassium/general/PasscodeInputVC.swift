@@ -58,6 +58,10 @@ class PasscodeInputVC: UIViewController {
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
         
+        mainButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        mainButton.titleLabel?.textAlignment = .center
+        mainButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        
         self.presentationController?.delegate = self
         
         passcodeTextField.delegate = self
