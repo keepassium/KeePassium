@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.04.39] - 2019-10-04
+
+### Added
+
+- KeePassium Pro edition, compatible with Family Sharing
+
+### Fixed 
+
+- On iPadOS 13, the app launched to an empty screen (fixes #66)
+
+
 ## [1.04.38] - 2019-10-01
 
 ### Changed
