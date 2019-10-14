@@ -1,0 +1,252 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "Odemknout";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "Odemknout KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Použít kód aplikace";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Zakoupení prémiové verze prosím proveďte z hlavní aplikace KeePassium.";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Přejít na Premium";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Vybraný soubor \"%@\" nevypadá jako databáze.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Vytvořit databázi";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Vytvořit databázi";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "Databázi se nepodařilo odstranit";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Odstranit databázový soubor?\n Ujistěte se, že máte zálohu.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "Načítání...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "Hlavní klíč k databázi úspěšně změněn";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "Otevřít databázi";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "Zavřít";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Odstranit databázi ze seznamu?\nSoubor nebude ostraněn a můžete jej znovu přidat později.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "Hotovo";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "Ukládání...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "Chyba souboru s klíčem: %@";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostické zprávy byly zkopírovány.";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "Zobrazit Diagnostické Zprávy";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "Přiložené soubory";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "Vytvořit záznam";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Název pole";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "Poznámky";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "Heslo";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "Název";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "Adresa";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "Uživatelské jméno";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "Nový záznam";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "Datum vytvoření";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "Umístění souboru";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "Název souboru";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "Velikost souboru";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "Datum poslední změny";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "Chyba";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "Zrušit";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "Napište nám";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "Odstranit";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "Zahodit";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "Zavřít";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "Potvrdit";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "Upravit";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "Exportovat";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "OK";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "Přejmenovat";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "Nahradit";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "Zobrazit podrobnosti";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "Jste si jisti?";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Zahodit neuložené změny?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "Máte neuložené změny";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "Odstranit";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "Odebrat";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "Export selhal";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "Import selhal";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "Chyba";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "Chyba klíčenky";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "Varování";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "Vytvořit skupinu";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "Vytvořit skupinu";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "Upravit skupinu";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "Nová skupina";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Opravdu chcete odstranit soubor s klíčem?\nUjistěte se, že jej máte zálohovaný.";
+
+/* News title for beta testers: the app is now available on the App Store. */
+"[News/2019/08/BetaTransition/title] Now on the App Store!" = "Nyní v App Store!";
+
+/* Title of an announcement [expiryDateFormatted: String] */
+"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "Promo akce pro první osvojitele končí %@";
+
+/* Message shown when opening an announcement in AutoFill */
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "Pro zhlédnutí celé zprávy prosím otevřete hlavní aplikaci.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Přejít na Premium";
+
+/* Description/advertisement for the `Biometric Unlock` premium feature */
+"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "Prémiová verze umožňuje rychlý přístup k heslům pomocí Face ID/Touch ID.";
+
+/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
+"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Biometrický zámek";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Ušetřete čas zadáváním vašeho hlavního hesla – prémiová verze umožňuje ponechat databázi déle otevřenou.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Dlouhý časový zámek";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "V prémiové verzi můžete snadno přepínat mezi více databázemi.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Více databází";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Prémiová verze umožňuje náhled obrázků a dokumentů přímo v aplikaci.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "Náhled příloh";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "Ukázat heslo";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(Zde prosím popište váš problém)";
+
+/* Action/button to add database to the app */
+"Add Database" = "Přidat databázi";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "Vybrat Databázi";
+
+/* Action/button */
+"Import Database" = "Importovat databázi";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "KeePass databáze by neměla být použita jako soubor s klíčem. Prosím, vyberte jiný soubor.";
+

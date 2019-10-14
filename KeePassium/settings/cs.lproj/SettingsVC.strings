@@ -1,0 +1,72 @@
+/* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "9Me-8P-nIZ"; */
+"9Me-8P-nIZ.footerTitle" = "Vyhledávací pole se automaticky zobrazí po otevření databáze.";
+
+/* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9Me-8P-nIZ"; */
+"9Me-8P-nIZ.headerTitle" = "Po otevření";
+
+/* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
+"A5N-B3-t3t.headerTitle" = "Premium";
+
+/* Class = "UILabel"; text = "App Protection"; ObjectID = "abS-AH-iFO"; Note = "Settings section: protection of the app from unauthorized access"; */
+"abS-AH-iFO.text" = "Ochrana aplikace";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Bk0-Xf-O7B"; */
+"Bk0-Xf-O7B.title" = "Nastavení";
+
+/* Class = "UILabel"; text = "Review KeePassium"; ObjectID = "c5H-hS-sU3"; Note = "Action: write an app review on the App Store"; */
+"c5H-hS-sU3.text" = "Napište recenzi";
+
+/* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
+"cBS-jW-dHU.headerTitle" = "Podpora";
+
+/* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
+"coD-Om-Vfm.text" = "Záloha databáze";
+
+/* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
+"DNo-Rs-0EP.text" = "O aplikaci";
+
+/* Class = "UILabel"; text = "Master keys, key files"; ObjectID = "FHp-ns-ke9"; Note = "Subtitle/details for `Data Protection`"; */
+"FHp-ns-ke9.text" = "Hlavní klíče, soubory s klíčem";
+
+/* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
+"HCe-A3-eG6.text" = "Prémiová verze";
+
+/* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
+"HjD-9G-X8p.headerTitle" = "Záloha";
+
+/* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
+"hui-xG-chj.headerTitle" = "Správa přístupu";
+
+/* Class = "UILabel"; text = "Rate KeePassium on the App Store"; ObjectID = "HYe-lP-dCp"; Note = "Subtitle for `Review KeePassium`"; */
+"HYe-lP-dCp.text" = "Ohodnoťte aplikaci v App Store";
+
+/* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
+"oxG-N8-1ld.text" = "Přejít na Premium";
+
+/* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
+"PpA-oZ-kr2.text" = "Diagnostické zprávy";
+
+/* Class = "UILabel"; text = "For expert troubleshooting"; ObjectID = "qhK-lw-bGy"; Note = "Subtitle for `Diagnostic Log`. Keep it short."; */
+"qhK-lw-bGy.text" = "Pro řešení problémů";
+
+/* Class = "UILabel"; text = "Contact Us"; ObjectID = "QlM-VS-hle"; Note = "Action"; */
+"QlM-VS-hle.text" = "Napište nám";
+
+/* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
+"RNK-fS-Fvx.text" = "Návrhy? Problémy? Dejte nám vědět!";
+
+/* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
+"T2Z-oa-zJR.text" = "Automatické vyplňování";
+
+/* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
+"UNl-Hc-Ref.text" = "Ochrana dat";
+
+/* Class = "UILabel"; text = "Start with Search"; ObjectID = "yuN-Ls-o9d"; */
+"yuN-Ls-o9d.text" = "Začít s vyhledáváním";
+
+/* Class = "UITableViewSection"; headerTitle = "AutoFill"; ObjectID = "ZFi-ss-fUa"; */
+"ZFi-ss-fUa.headerTitle" = "Automatické vyplňování";
+
+/* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
+"zUh-Sn-3ya.text" = "Správa předplatného";
+

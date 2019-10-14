@@ -28,6 +28,7 @@ class UserNameHelper {
         var allEntries = [Entry]()
         database.root?.collectAllEntries(to: &allEntries)
         let allUserNames = allEntries
+            .filter { !$0.isDeleted }
             .compactMap { $0.userName}
             .filter { $0.isNotEmpty && ($0 != defaultUserName) }
         

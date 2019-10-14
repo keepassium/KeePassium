@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [1.03.37] - 2019-09-25
+
+### Added
+
+- Swedish translation [thanks, Patrik Thunström]
+- Czech translation [thanks, Tomáš Piešťanský, Marcel Piestansky, and Radek Weis]
+- If current database is inaccessible due to new iOS 13 permissions, the app will suggest to re-add the database [thanks, Patrik]
+
+### Removed:
+
+- Beta will not show the "Now in the App Store" button anymore
+
+### Fixed
+
+- Database unlock errors were not always shown
+- Now VoiceOver will automatically announce database unlocking errors
+- Deleted entries are now excluded from username suggestions
+
+
 ## [1.02.36] - 2019-09-17
 
 ### Fixed

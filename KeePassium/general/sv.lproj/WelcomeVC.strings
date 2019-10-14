@@ -1,0 +1,12 @@
+/* Class = "UIViewController"; title = "Welcome"; ObjectID = "1Nc-wz-Yqq"; Note = "Onboarding screen shown on first launch"; */
+"1Nc-wz-Yqq.title" = "Välkommen";
+
+/* Class = "UIButton"; normalTitle = "Create New Database"; ObjectID = "4wh-8O-5Ch"; */
+"4wh-8O-5Ch.normalTitle" = "Skapa ny databas";
+
+/* Class = "UILabel"; text = "KeePassium stores your passwords, credit cards and other information in an encrypted file (database). \nYou can have multiple databases, for example to separate work, family and personal accounts."; ObjectID = "PgB-6p-H0t"; */
+"PgB-6p-H0t.text" = "KeePassium lagrar dina lösenord, kreditkort och annan information i en krypterad fil (databas).\nDu kan ha flera databaser, till exempel för att dela upp konton för arbete, familj och personlig användning.";
+
+/* Class = "UIButton"; normalTitle = "Add Existing Database"; ObjectID = "ZKW-2f-Xkz"; */
+"ZKW-2f-Xkz.normalTitle" = "Lägg till existerande databas";
+

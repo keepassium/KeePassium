@@ -126,6 +126,11 @@ public enum LString {
         "KeePass database should not be used as key file. Please pick a different file.",
         comment: "Warning message when the user tries to use a database as a key file"
     )
+    public static let tryToReAddFile = NSLocalizedString(
+        "[File/PermissionDenied] Try to remove the file from the app, then add it again.",
+        value: "Try to remove the file from the app, then add it again.",
+        comment: "A suggestion shown after specific file errors (either databases or key files)."
+    )
     
 
     public static let databaseStatusLoading = NSLocalizedString(

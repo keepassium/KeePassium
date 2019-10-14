@@ -1,0 +1,252 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "Lås upp";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "Lås upp KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Använd PIN-kod";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "För att uppgradera öppna KeePassium från din hemskärm.";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Premiumuppgradering";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Vald fil \"%@\" verkar inte vara en databas.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Skapa databas";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Skapa databas";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "Misslyckades att radera databasfilen";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Radera databasfil?\nSäkerställ att du har en backup.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "Laddar...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "Huvudnyckel ändrades";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "Öppna databas";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "Stäng";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Ta bort databasen från fillistan?\nFilen kommer inte raderas, och du kan lägga till den igen vid ett senare tillfälle.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "Klar";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "Sparar...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "Nyckelfil-fel: %@";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisk logg har kopierats till urklipp.";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "Visa diagnostisk logg";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "Bifogade filer";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "Skapa konto";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Fältnamn";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "Anteckningar";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "Lösenord";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "Titel";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "Användarnamn";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "Nytt konto";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "Skapad";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "Lagringsplats";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "Filnamn";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "Filstorlek";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "Senast redigerad";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "Fel";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "Avbryt";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "Kontakta oss";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "Radera";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "Överge";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "Avfärda";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "Klar";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "Redigera";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "Exportera";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "OK";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "Byt namn";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "Ersätt";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "Visa detaljer";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "Är du säker?";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Släng osparade ändringar?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "Det finns osparade ändringar";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "Radera";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "Ta bort";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "Exporteringsfel";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "Importeringsfel";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "Fel";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "Nyckelringsfel";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "Varning";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "Skapa grupp";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "Skapa grupp";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "Redigera grupp";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "Ny grupp";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Radera nyckelfil?\nSäkerställ att du har en backup.";
+
+/* News title for beta testers: the app is now available on the App Store. */
+"[News/2019/08/BetaTransition/title] Now on the App Store!" = "Nu på App Store!";
+
+/* Title of an announcement [expiryDateFormatted: String] */
+"[News/2019/08/SpecialPricesExpire/title] Early bird promo ends %@" = "Early bird-rabatten avslutas %@";
+
+/* Message shown when opening an announcement in AutoFill */
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "Vänligen öppna huvudappen för hela nyheten.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Uppgradera till premium";
+
+/* Description/advertisement for the `Biometric Unlock` premium feature */
+"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "Kom snabbt åt dina lösenord med hjälp av Face ID/Touch ID i premiumversionen.";
+
+/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
+"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Biometrisk upplåsning";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Spara tid på att ange krångliga huvudlösenord – håll dina databaser öppna längre i premiumversionen.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Långa databastimeouts";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Växla enkelt mellan databaser i premiumversionen.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Flera databaser";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Förhandsgranska bilder och dokument direkt i appen, i premiumversionen.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "Förhandsgranska bilagor";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "Visa lösenord";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(Vänligen beskriv problemet här)";
+
+/* Action/button to add database to the app */
+"Add Database" = "Lägg till databas";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "Välj databas";
+
+/* Action/button */
+"Import Database" = "Importera databas";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "KeePass databaser ska inte användas som nyckelfiler. Var vänlig välj en annan fil.";
+

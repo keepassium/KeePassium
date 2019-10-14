@@ -1,0 +1,24 @@
+/* Class = "UILabel"; text = "In-memory Protection"; ObjectID = "0pb-xb-fuf"; Note = "Label for a switch, equivalent to KeePass' own `Enable in-memory protection` for custom entry fields."; */
+"0pb-xb-fuf.text" = "Minnesskydd";
+
+/* Class = "UITableViewCell"; CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Custom field editor"; ObjectID = "CcF-c8-r4M"; */
+"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Editor för egna fält";
+
+/* Class = "UISwitch"; eox-My-Hns.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "In-memory Protection"; ObjectID = "eox-My-Hns"; Note = "Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."; */
+"eox-My-Hns.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Minnesskydd";
+
+/* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "HcW-rc-pdR"; */
+"HcW-rc-pdR.normalTitle" = "Byt ikon";
+
+/* Class = "UIBarButtonItem"; HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Add Custom Field"; ObjectID = "HGI-xq-zUf"; */
+"HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Lägg till eget fält";
+
+/* Class = "UINavigationItem"; title = "Edit Entry"; ObjectID = "l3s-Bv-fA1"; */
+"l3s-Bv-fA1.title" = "Redigera konto";
+
+/* Class = "UIButton"; z2C-wo-jYf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Randomize password"; ObjectID = "z2C-wo-jYf"; Note = "Action/button to generate new password"; */
+"z2C-wo-jYf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Slumpa lösenord";
+
+/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "z2C-wo-jYf"; Note = "Action/button to generate new password"; */
+"z2C-wo-jYf.normalTitle" = "Slumpa";
+

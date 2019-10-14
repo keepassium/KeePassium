@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
+"9UZ-FK-v73.text" = "Žádný soubor s klíčem";
+
+/* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
+"leO-vH-qBX.text" = "Použít pouze heslo";
+
+/* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
+"Lod-RE-tcd.title" = "Přidat soubor s klíčem";
+
+/* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
+"r85-yz-wYI.title" = "Soubory s klíčem";
+

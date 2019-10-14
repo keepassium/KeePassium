@@ -127,7 +127,12 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         databaseIconImage.image = UIImage.databaseIcon(for: databaseRef)
         databaseNameLabel.text = databaseRef.info.fileName
         if databaseRef.info.hasError {
-            showErrorMessage(databaseRef.info.errorMessage)
+            let text = databaseRef.info.errorMessage
+            if databaseRef.info.hasPermissionError257 {
+                showErrorMessage(text, suggestion: LString.tryToReAddFile)
+            } else {
+                showErrorMessage(text)
+            }
         }
         
         let associatedKeyFileRef = Settings.current
@@ -192,14 +197,17 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     }
     
 
-    func showErrorMessage(_ message: String?, details: String?=nil) {
-        guard let message = message else { return }
+    func showErrorMessage(_ text: String?, details: String?=nil, suggestion: String?=nil) {
+        guard let text = text else { return }
+        let message = [text, details, suggestion]
+            .compactMap{ return $0 }
+            .joined(separator: "\n")
+        errorLabel.text = message
+        Diag.error(message)
+        UIAccessibility.post(notification: .layoutChanged, argument: errorLabel)
         
-        if let details = details {
-            errorLabel.text = " \(message)\n\(details) "
-        } else {
-            errorLabel.text = message
-        }
+        guard errorMessagePanel.isHidden else { return }
+        
         UIView.animate(
             withDuration: 0.3,
             delay: 0.0,
@@ -217,6 +225,8 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     }
     
     func hideErrorMessage(animated: Bool) {
+        guard !errorMessagePanel.isHidden else { return }
+
         if animated {
             UIView.animate(
                 withDuration: 0.3,

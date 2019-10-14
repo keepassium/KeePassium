@@ -10,9 +10,15 @@ import UIKit
 
 public struct FileInfo {
     public var fileName: String
-    public var hasError: Bool { return errorMessage != nil}
-    public var errorMessage: String?
-    
+    public var hasError: Bool { return error != nil}
+    public var errorMessage: String? { return error?.localizedDescription }
+    public var error: Error?
+
+    public var hasPermissionError257: Bool {
+        guard let nsError = error as NSError? else { return false }
+        return (nsError.domain == "NSCocoaErrorDomain") && (nsError.code == 257)
+    }
+
     public var fileSize: Int64?
     public var creationDate: Date?
     public var modificationDate: Date?
@@ -80,6 +86,12 @@ public class URLReference: Equatable, Codable {
             [.canonicalPathKey, .nameKey, .fileSizeKey,
             .creationDateKey, .contentModificationDateKey]
         )
+        let isAccessed = url.startAccessingSecurityScopedResource()
+        defer {
+            if isAccessed {
+                url.stopAccessingSecurityScopedResource()
+            }
+        }
         data = try url.bookmarkData(
             options: [], 
             includingResourceValuesForKeys: resourceKeys,
@@ -107,7 +119,11 @@ public class URLReference: Equatable, Codable {
     
     public func resolve() throws -> URL {
         var isStale = false
-        let url = try URL(resolvingBookmarkData: data, bookmarkDataIsStale: &isStale)
+        let url = try URL(
+            resolvingBookmarkData: data,
+            options: [URL.BookmarkResolutionOptions.withoutUI],
+            relativeTo: nil,
+            bookmarkDataIsStale: &isStale)
         return url
     }
     
@@ -130,14 +146,14 @@ public class URLReference: Equatable, Codable {
             }
             result = FileInfo(
                 fileName: url.lastPathComponent,
-                errorMessage: nil,
+                error: nil,
                 fileSize: url.fileSize,
                 creationDate: url.fileCreationDate,
                 modificationDate: url.fileModificationDate)
         } catch {
             result = FileInfo(
                 fileName: "?",
-                errorMessage: error.localizedDescription,
+                error: error,
                 fileSize: nil,
                 creationDate: nil,
                 modificationDate: nil)

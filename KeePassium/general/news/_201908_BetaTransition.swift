@@ -9,9 +9,9 @@
 import UIKit
 
 class _201908_BetaTransitionNews: NewsItem {
-    let key = "201908_SpecialPricesExpire"
+    let key = "201908_BetaTransition"
     
-    let isCurrent = true 
+    let isCurrent = false 
     
     var title = NSLocalizedString(
         "[News/2019/08/BetaTransition/title] Now on the App Store!",

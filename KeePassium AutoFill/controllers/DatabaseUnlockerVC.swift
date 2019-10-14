@@ -62,8 +62,16 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         }
     }
     
-    func showErrorMessage(text: String) {
+    func showErrorMessage(_ text: String, reason: String?=nil, suggestion: String?=nil) {
+        let text = [text, reason, suggestion]
+            .compactMap { return $0 } 
+            .joined(separator: "\n")
         errorMessageLabel.text = text
+        Diag.error(text)
+        UIAccessibility.post(notification: .announcement, argument: text)
+
+        guard errorMessagePanel.isHidden else { return }
+
         UIView.animate(
             withDuration: 0.3,
             delay: 0.0,
@@ -81,6 +89,8 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
     
     func hideErrorMessage(animated: Bool) {
+        guard !errorMessagePanel.isHidden else { return }
+
         if animated {
             UIView.animate(
                 withDuration: 0.3,
@@ -104,7 +114,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
 
     func showMasterKeyInvalid(message: String) {
-        showErrorMessage(text: message)
+        showErrorMessage(message)
     }
     
     func refresh() {
@@ -161,7 +171,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
                     comment: "Error message related to key file. [errorDetails: String]"),
                 errorDetails)
             Diag.warning(errorMessage)
-            showErrorMessage(text: errorMessage)
+            showErrorMessage(errorMessage)
             keyFileField.text = ""
         } else {
             Diag.info("Key file set successfully")

@@ -1,0 +1,9 @@
+/* Class = "UIBarButtonItem"; title = "Lock Database"; ObjectID = "dPB-bK-tzh"; Note = "Action "; */
+"dPB-bK-tzh.title" = "Zamknout databázi";
+
+/* Class = "UILabel"; text = "Nothing suitable found."; ObjectID = "NSB-dG-jRN"; Note = "Placeholder text for empty search results."; */
+"NSB-dG-jRN.text" = "Nenalezeny žádné výsledky.";
+
+/* Class = "UILabel"; text = "Related Entries"; ObjectID = "yLY-eZ-iAh"; Note = "Title of a list of entries similar to (but not exactly matching) the search query."; */
+"yLY-eZ-iAh.text" = "Související záznamy";
+

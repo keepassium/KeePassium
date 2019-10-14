@@ -1,0 +1,30 @@
+/* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
+"5Dg-KX-m7a.footerTitle" = "Om du anger fel PIN-Kod för AppLock kommer KeePassium stänga alla databaser och rensa alla huvudnycklar från nyckelkedjan.";
+
+/* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
+"5Dg-KX-m7a.headerTitle" = "Fel pinkod";
+
+/* Class = "UILabel"; text = "Protect Databases"; ObjectID = "6Pk-35-Fx6"; */
+"6Pk-35-Fx6.text" = "Skydda databaser";
+
+/* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
+"7ae-8I-LiQ.footerTitle" = "Tillåt biometrisk autentisering som ett snabbt (men mindre säkert) alternativ till AppLock PIN-kod.";
+
+/* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
+"7ae-8I-LiQ.headerTitle" = "Biometri";
+
+/* Class = "UITableViewSection"; footerTitle = "Protect KeePassium from unauthorized access."; ObjectID = "aBx-Ee-bMk"; Note = "Explanation for the `Enable AppLock` option."; */
+"aBx-Ee-bMk.footerTitle" = "Skydda KeePassium från otillåtna användare.";
+
+/* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
+"Ef4-Jw-xeO.text" = "Timeout";
+
+/* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
+"IS1-Lb-MFy.text" = "Aktivera AppLock";
+
+/* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
+"m50-fl-4tu.footerTitle" = "Appen kommer automatiskt låsas efter denna tidsperiod.";
+
+/* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
+"U5m-je-MhO.title" = "Appskydd";
+

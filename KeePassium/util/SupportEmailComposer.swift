@@ -12,6 +12,7 @@ import KeePassiumLib
 
 class SupportEmailComposer: NSObject {
     private let freeSupportEmail = "support@keepassium.com"
+    private let betaSupportEmail = "beta@keepassium.com"
     private let premiumSupportEmail = "premium-support@keepassium.com"
     
     typealias CompletionHandler = ((Bool)->Void)
@@ -47,6 +48,10 @@ class SupportEmailComposer: NSObject {
     }
     
     private func getSupportEmail() -> String {
+        if Settings.current.isTestEnvironment {
+            return betaSupportEmail
+        }
+        
         let premiumStatus = PremiumManager.shared.status
         switch premiumStatus {
         case .initialGracePeriod,

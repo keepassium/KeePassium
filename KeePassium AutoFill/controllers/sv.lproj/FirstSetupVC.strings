@@ -1,0 +1,15 @@
+/* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
+"enW-gs-tra.normalTitle" = "Lägg till databas";
+
+/* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
+"P0M-N3-ynf.text" = "Var vänlig och lägg till databaserna och nyckelfilerna igen om du vill använda funktionen Autofyll.";
+
+/* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
+"pIl-6L-Msp.text" = "Autofyll Uppstart";
+
+/* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
+"rzY-Ci-bd9.title" = "KeePassium";
+
+/* Class = "UITextView"; text = "The AutoFill cannot automatically access the files you already have in the main KeePassium app.\n\nWhy? Behind the scenes, the system treats AutoFill as a separate app, independent from the main KeePassium process. For security reasons, an app cannot simply access any external files – unless you explicitly link these files to that app. Thus the system guarantees that the app can only access the few files you allowed it to.\n\nAs a result, both AutoFill and the main KeePassium app need to be given their own permissions for each external file. Luckily, this is a one-time procedure."; ObjectID = "UAW-0G-N5G"; */
+"UAW-0G-N5G.text" = "Autofyll kan inte komma åt filerna du redan lagt till i KeePassium-appen automatiskt.\n\nVarför? Bakom kulisserna hanterar systemet Auotfyll som en separat app, som är oberoende från huvudprocessen. Av säkerhetsskäl kan inte en app komma åt externa filer – om du inte uttryckligen ger appen tillstånd till detta. På så sätt garanterar systemet att appen endast kan komma åt filer du ger tillåtelse till.\n\nDetta leder till att både Autofyll och huvudappen för KeePassium behöver ges tillstånd för varje extern fil som ska användas. Som tur är behöver detta bara göras en gång.";
+
