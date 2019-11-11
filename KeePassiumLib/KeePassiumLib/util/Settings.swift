@@ -82,6 +82,8 @@ public class Settings {
         case autoFillFinishedOK
         case copyTOTPOnAutoFill
         
+        case hapticFeedbackEnabled
+        
         case passwordGeneratorLength
         case passwordGeneratorIncludeLowerCase
         case passwordGeneratorIncludeUpperCase
@@ -842,6 +844,10 @@ public class Settings {
         postChangeNotification(changedKey: Keys.keyFileAssociations)
     }
     
+    public func forgetKeyFile(for databaseRef: URLReference) {
+        setKeyFileForDatabase(databaseRef: databaseRef, keyFileRef: nil)
+    }
+    
     public func forgetKeyFile(_ keyFileRef: URLReference) {
         guard isKeepKeyFileAssociations else { return }
         var db2key = Dictionary<String, Data>()
@@ -1131,7 +1137,22 @@ public class Settings {
                 key: .copyTOTPOnAutoFill)
         }
     }
-
+    
+    public var isHapticFeedbackEnabled: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.hapticFeedbackEnabled.rawValue)
+                as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isHapticFeedbackEnabled,
+                newValue: newValue,
+                key: .hapticFeedbackEnabled)
+        }
+    }
+    
     
     public var passwordGeneratorLength: Int {
         get {

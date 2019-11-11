@@ -44,6 +44,11 @@ class MainCoordinator: NSObject, Coordinator {
         watchdog = Watchdog.shared 
         super.init()
 
+        #if PREPAID_VERSION
+        BusinessModel.type = .prepaid
+        #else
+        BusinessModel.type = .freemium
+        #endif
         SettingsMigrator.processAppLaunch(with: Settings.current)
         Diag.info(AppInfo.description)
 
@@ -197,11 +202,13 @@ class MainCoordinator: NSObject, Coordinator {
     func removeDatabase(_ urlRef: URLReference) {
         FileKeeper.shared.removeExternalReference(urlRef, fileType: .database)
         try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef)
+        Settings.current.forgetKeyFile(for: urlRef)
         refreshFileList()
     }
     
     func deleteDatabase(_ urlRef: URLReference) {
         try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef)
+        Settings.current.forgetKeyFile(for: urlRef)
         do {
             try FileKeeper.shared.deleteFile(urlRef, fileType: .database, ignoreErrors: false)
         } catch {
@@ -690,7 +697,7 @@ extension MainCoordinator: WatchdogDelegate {
                 Diag.info("Biometric auth successful")
                 DispatchQueue.main.async {
                     [weak self] in
-                    self?.watchdog.unlockApp(fromAnotherWindow: true)
+                    self?.watchdog.unlockApp()
                 }
             } else {
                 Diag.warning("Biometric auth failed [message: \(authError?.localizedDescription ?? "nil")]")
@@ -712,8 +719,10 @@ extension MainCoordinator: PasscodeInputDelegate {
     func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
         do {
             if try Keychain.shared.isAppPasscodeMatch(passcode) { 
-                watchdog.unlockApp(fromAnotherWindow: false)
+                HapticFeedback.play(.appUnlocked)
+                watchdog.unlockApp()
             } else {
+                HapticFeedback.play(.wrongPassword)
                 sender.animateWrongPassccode()
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
                     try? Keychain.shared.removeAllDatabaseKeys() 

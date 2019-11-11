@@ -64,14 +64,19 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         }
     }
     
-    func showErrorMessage(_ text: String, reason: String?=nil, suggestion: String?=nil) {
+    func showErrorMessage(
+        _ text: String,
+        reason: String?=nil,
+        suggestion: String?=nil,
+        haptics: HapticFeedback.Kind?=nil
+    ) {
         let text = [text, reason, suggestion]
             .compactMap { return $0 } 
             .joined(separator: "\n")
         errorMessageLabel.text = text
         Diag.error(text)
         UIAccessibility.post(notification: .announcement, argument: text)
-
+        
         guard errorMessagePanel.isHidden else { return }
 
         UIView.animate(
@@ -86,6 +91,9 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             completion: {
                 [weak self] (finished) in
                 self?.errorMessagePanel.shake()
+                if let hapticsKind = haptics {
+                    HapticFeedback.play(hapticsKind)
+                }
             }
         )
     }
@@ -116,7 +124,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
 
     func showMasterKeyInvalid(message: String) {
-        showErrorMessage(message)
+        showErrorMessage(message, haptics: .wrongPassword)
     }
     
     func refresh() {

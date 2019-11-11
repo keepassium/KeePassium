@@ -195,7 +195,12 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     }
     
 
-    func showErrorMessage(_ text: String?, details: String?=nil, suggestion: String?=nil) {
+    func showErrorMessage(
+        _ text: String?,
+        details: String?=nil,
+        suggestion: String?=nil,
+        haptics: HapticFeedback.Kind?=nil
+    ) {
         guard let text = text else { return }
         let message = [text, details, suggestion]
             .compactMap{ return $0 }
@@ -218,6 +223,9 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             completion: {
                 [weak self] (finished) in
                 self?.errorMessagePanel.shake()
+                if let hapticsKind = haptics {
+                    HapticFeedback.play(hapticsKind)
+                }
             }
         )
     }
@@ -467,7 +475,8 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
         try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
         refresh()
         hideProgressOverlay()
-        showErrorMessage(message)
+        
+        showErrorMessage(message, haptics: .wrongPassword)
         maybeFocusOnPassword()
     }
     
@@ -475,6 +484,7 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
         DatabaseManager.shared.removeObserver(self)
         hideProgressOverlay()
         
+        HapticFeedback.play(.databaseUnlocked)
         
         if Settings.current.isRememberDatabaseKey {
             do {
@@ -492,10 +502,10 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
 
     func databaseManager(database urlRef: URLReference, loadingError message: String, reason: String?) {
         DatabaseManager.shared.removeObserver(self)
-        try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
         refresh()
         hideProgressOverlay()
-        showErrorMessage(message, details: reason)
+        
+        showErrorMessage(message, details: reason, haptics: .error)
         maybeFocusOnPassword()
     }
 }

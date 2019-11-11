@@ -160,21 +160,7 @@ extension PremiumCoordinator: PremiumManagerDelegate {
     
     func purchaseSucceeded(_ product: InAppProduct, in premiumManager: PremiumManager) {
         setPurchasing(false)
-        let thankYouAlert = UIAlertController(
-            title: NSLocalizedString(
-                "[Premium/Upgrade/Success/title] Thank You",
-                value: "Thank You",
-                comment: "Title of the message shown after a successful in-app purchase"),
-            message: NSLocalizedString(
-                "[Premium/Upgrade/Success/text] Upgrade successful, enjoy the app!",
-                value: "Upgrade successful, enjoy the app!",
-                comment: "Text of the message shown after successful in-app purchase"),
-            preferredStyle: .alert)
-        let okAction = UIAlertAction(title: LString.actionOK, style: .default) { [weak self] _ in
-            self?.finish(animated: true, completion: nil)
-        }
-        thankYouAlert.addAction(okAction)
-        premiumVC.present(thankYouAlert, animated: true, completion: nil)
+        SKStoreReviewController.requestReview()
     }
     
     func purchaseDeferred(in premiumManager: PremiumManager) {

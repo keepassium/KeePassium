@@ -28,6 +28,8 @@
 				<string>com.markmcguill.strongbox.kdb</string>
 				<string>com.markmcguill.strongbox.kdbx</string>
 				<string>be.kyuran.kypass.kdb</string>
+				<string>com.maxep.mikee.kdb</string>
+				<string>com.maxep.mikee.kdbx</string>
 			</array>
 		</dict>
 		<dict>
@@ -224,6 +226,26 @@
 			<array/>
 			<key>UTTypeIdentifier</key>
 			<string>com.markmcguill.strongbox.kdbx</string>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.maxep.mikee.kdb</string>
+			</array>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.maxep.mikee.kdb</string>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.maxep.mikee.kdbx</string>
+			</array>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.maxep.mikee.kdbx</string>
 		</dict>
 		<dict>
 			<key>UTTypeIdentifier</key>

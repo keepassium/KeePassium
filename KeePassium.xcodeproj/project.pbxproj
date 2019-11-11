@@ -68,6 +68,10 @@
 		752BB12520F089B30070FAC0 /* SettingsItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752BB12420F089B30070FAC0 /* SettingsItemListVC.swift */; };
 		752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
 		7532A24D21C5A035005DF56F /* KeyFileChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */; };
+		753507A023783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
+		753507A123783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
+		753507A223783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
+		753507A323783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
 		753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
 		753F924B22905621005E496F /* PremiumUpgradeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924A22905621005E496F /* PremiumUpgradeHelper.swift */; };
 		753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
@@ -528,6 +532,7 @@
 		752BB12420F089B30070FAC0 /* SettingsItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemListVC.swift; sourceTree = "<group>"; };
 		752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataProtectionVC.swift; sourceTree = "<group>"; };
 		7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileChooserVC.swift; sourceTree = "<group>"; };
+		7535079F23783729003B65C9 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		753F924A22905621005E496F /* PremiumUpgradeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUpgradeHelper.swift; sourceTree = "<group>"; };
 		753F924D2290705D005E496F /* SKProduct+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+extension.swift"; sourceTree = "<group>"; };
@@ -1189,6 +1194,7 @@
 				75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */,
 				75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */,
 				758544632351FE8D000D5E5E /* UIFont+monospace.swift */,
+				7535079F23783729003B65C9 /* HapticFeedback.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1754,6 +1760,7 @@
 				750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */,
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
+				753507A123783729003B65C9 /* HapticFeedback.swift in Sources */,
 				75779865223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
@@ -1850,6 +1857,7 @@
 				7546FBC120BFB8DD00C5D834 /* WelcomeVC.swift in Sources */,
 				758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */,
 				7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */,
+				753507A023783729003B65C9 /* HapticFeedback.swift in Sources */,
 				758BF0D820D1B1DA00897C83 /* ValidatingTextField.swift in Sources */,
 				754BF09A20984DEE00E3A292 /* UnlockDatabaseVC.swift in Sources */,
 				7578488F22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift in Sources */,
@@ -1946,6 +1954,7 @@
 				75B38C3C233E5B7C006BDEFC /* WelcomeVC.swift in Sources */,
 				75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */,
 				75B38C3E233E5B7C006BDEFC /* SettingsAppLockVC.swift in Sources */,
+				753507A223783729003B65C9 /* HapticFeedback.swift in Sources */,
 				75B38C3F233E5B7C006BDEFC /* ValidatingTextField.swift in Sources */,
 				75B38C40233E5B7C006BDEFC /* UnlockDatabaseVC.swift in Sources */,
 				75B38C41233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.swift in Sources */,
@@ -1997,6 +2006,7 @@
 				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
 				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,
 				75D7DF9A233E5E310029AD87 /* UIView+extension.swift in Sources */,
+				753507A323783729003B65C9 /* HapticFeedback.swift in Sources */,
 				75D7DF9B233E5E310029AD87 /* ProgressViewHost.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
@@ -2761,12 +2771,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.06;
+				MARKETING_VERSION = 1.07;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -2785,12 +2795,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.06;
+				MARKETING_VERSION = 1.07;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.KeePassium-AutoFill";
@@ -2926,7 +2936,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -2934,7 +2944,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.06;
+				MARKETING_VERSION = 1.07;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MAIN_APP";
@@ -2951,7 +2961,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -2959,7 +2969,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.06;
+				MARKETING_VERSION = 1.07;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = MAIN_APP;
@@ -2976,7 +2986,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -2984,7 +2994,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.06;
+				MARKETING_VERSION = 1.07;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MAIN_APP PREPAID_VERSION";
@@ -3001,7 +3011,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3009,7 +3019,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.06;
+				MARKETING_VERSION = 1.07;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "MAIN_APP PREPAID_VERSION";
@@ -3025,12 +3035,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.06;
+				MARKETING_VERSION = 1.07;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -3049,12 +3059,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.06;
+				MARKETING_VERSION = 1.07;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.pro.KeePassium-AutoFill";

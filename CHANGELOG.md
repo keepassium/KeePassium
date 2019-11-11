@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [1.07.43] - 2019-11-10
+
+### Added
+
+- Haptic feedback for some UI actions
+
+### Changed
+
+- Won't force-erase the master key from keychain on database errors [thanks, Silunare]
+
+### Fixed
+
+- With passcode-only AppLock, database list flashed visible on launch [thanks, Joseph]
+- AppLock worked intermittently on iOS 13.2 (#72) [thanks, loblawbob]
+- Compatibility with other installed KeePass apps [thanks, Philippe]
+- Removing key file associations when deleting a database [thanks, M.H.]
+- Premium features missing in Pro version's AutoFill [thanks, J.B.]
+
+
 ## [1.06.42] - 2019-10-18
 
 ### Changed
