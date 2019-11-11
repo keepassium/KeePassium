@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.06.42] - 2019-10-18
+
+### Changed
+
+- "Database timeout" option now defaults to Never instead of 1 hour.
+
+### Fixed
+
+- Fix layout of the item counter in group viewer [thanks, Simone]
+
+
 ## [1.06.41] - 2019-10-14
 
 ### Added
