@@ -1,5 +1,5 @@
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "CbK-f7-To5"; Note = "Action"; */
-"CbK-f7-To5.title" = "Añadir la base de datos";
+"CbK-f7-To5.title" = "Añadir base de datos";
 
 /* Class = "UILabel"; text = "No recent databases"; ObjectID = "fXt-kp-oSe"; */
 "fXt-kp-oSe.text" = "No hay bases de datos recientes";

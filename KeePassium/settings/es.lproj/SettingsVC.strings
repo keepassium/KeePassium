@@ -20,7 +20,7 @@
 "cBS-jW-dHU.headerTitle" = "Soporte técnico";
 
 /* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
-"coD-Om-Vfm.text" = "Copia de seguridad de la base de datos";
+"coD-Om-Vfm.text" = "Copias de seguridad";
 
 /* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
 "DNo-Rs-0EP.text" = "Acerca de KeePassium";
@@ -53,7 +53,7 @@
 "QlM-VS-hle.text" = "Contáctanos";
 
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
-"RNK-fS-Fvx.text" = "¿Sugerencias? ¿Problemas? ¡Haznoslo saber!";
+"RNK-fS-Fvx.text" = "¿Sugerencias? ¿Problemas? ¡Háznoslo saber!";
 
 /* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
 "T2Z-oa-zJR.text" = "Autocompletar contraseñas";

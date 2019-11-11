@@ -5,7 +5,7 @@
 "e1v-nv-Mst.normalTitle" = "Borrar contraseñas maestras";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "Una vez desbloqueada una base de datos, la clave maestra se puede almacenar en la cadena de claves segura del iPhone (KeyChain). La próxima vez, KeePassium utilizará esa clave para no introducir la contraseña maestra completa de nuevo. \n\n(Las claves maestras se borran automáticamente al cumplirse el tiempo de espera de la base de datos.)";
+"Faj-km-pM5.footerTitle" = "Una vez abierta una base de datos, la clave maestra se puede almacenar en la cadena de claves segura del iPhone (KeyChain). La próxima vez, KeePassium utilizará esa clave para no introducir la contraseña maestra completa de nuevo. \n\n(Las claves maestras se borran automáticamente al cumplirse el tiempo de espera de la base de datos.)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Desbloqueo rápido";
@@ -23,7 +23,7 @@
 "IZZ-aM-g2i.title" = "Protección de datos";
 
 /* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
-"JHl-o7-xHI.text" = "Recordar los archivos de claves";
+"JHl-o7-xHI.text" = "Recordar archivos de claves";
 
 /* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
 "Mxu-GP-FmN.footerTitle" = "Recordar y seleccionar automáticamente el último archivo de clave usado para cada base de datos. Limpiar las asociaciones no afecta a los archivos.";
@@ -41,5 +41,5 @@
 "SSu-Sr-MCg.text" = "Tiempo de espera del portapapeles";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Tiempo de espera de bases de datos";
+"weX-SZ-IDB.text" = "Tiempo de espera";
 

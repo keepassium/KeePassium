@@ -1,8 +1,8 @@
 /* Class = "UIButton"; normalTitle = "Unlock"; ObjectID = "89h-8b-LRO"; */
-"89h-8b-LRO.normalTitle" = "Desbloquear";
+"89h-8b-LRO.normalTitle" = "Abrir";
 
 /* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "bxv-kR-0w1"; */
-"bxv-kR-0w1.title" = "Desbloquear la base de datos";
+"bxv-kR-0w1.title" = "Abrir base de datos";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "Dnl-vm-GMg"; */
 "Dnl-vm-GMg.placeholder" = "Sin archivo de clave";

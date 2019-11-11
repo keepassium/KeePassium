@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.07.44] - 2019-11-11
+
+### Changed
+
+- Databases with a stored master key will unlock automatically when appropriate.
+
+
 ## [1.07.43] - 2019-11-10
 
 ### Added

@@ -17,7 +17,7 @@
 "nBI-OF-9iV.footerTitle" = "Antes de guardar una base de datos, KeePassium hará una copia automática por seguridad.";
 
 /* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
-"nSy-3u-0xW.title" = "Copia de seguridad de bases de datos";
+"nSy-3u-0xW.title" = "Copias de seguridad";
 
 /* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
 "XeH-7q-aad.footerTitle" = "Las copias de seguridad se muestran junto a los archivos originales.";

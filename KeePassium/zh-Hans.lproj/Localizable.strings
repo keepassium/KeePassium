@@ -163,6 +163,9 @@
 /* Action to start editing an entry */
 "[Entry/View] Edit Entry" = "编辑条目";
 
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "建立时间";
 
@@ -265,6 +268,9 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "删除密钥文件?\n 请确保您有备份文件!";
 
+/* Title of an announcement about the Pro version */
+"[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
+
 /* Message shown when opening an announcement in AutoFill */
 "[News/AutoFill/stubText] Please open the main app for the full announcement." = "请打开主程序获得完整的公告。";
 
@@ -348,12 +354,6 @@
 
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "很抱歉";
-
-/* Text of the message shown after successful in-app purchase */
-"[Premium/Upgrade/Success/text] Upgrade successful, enjoy the app!" = "升级成功, 享受它!";
-
-/* Title of the message shown after a successful in-app purchase */
-"[Premium/Upgrade/Success/title] Thank You" = "感恩";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "程序已使用: %1$@/月, 大约%2$@/年";

@@ -2,7 +2,7 @@
 "CuN-tE-lAG.placeholder" = "Contraseña";
 
 /* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "eAa-Z5-pdq"; Note = "Title of the database unlocker dialog."; */
-"eAa-Z5-pdq.title" = "Desbloquear base de datos";
+"eAa-Z5-pdq.title" = "Abrir base de datos";
 
 /* Class = "UILabel"; text = "Database was closed by a timer."; ObjectID = "epu-yU-Lyg"; Note = "Notification message shown by database lock timer."; */
 "epu-yU-Lyg.text" = "La aplicación cerró la base de datos.";
@@ -14,7 +14,7 @@
 "K3Y-ON-C19.text" = "Usar la clave maestra almacenada.";
 
 /* Class = "UIButton"; normalTitle = "Unlock"; ObjectID = "l45-hq-1lr"; */
-"l45-hq-1lr.normalTitle" = "Desbloquear";
+"l45-hq-1lr.normalTitle" = "Abrir";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "mYY-hP-3vH"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
 "mYY-hP-3vH.placeholder" = "Sin archivo de clave";

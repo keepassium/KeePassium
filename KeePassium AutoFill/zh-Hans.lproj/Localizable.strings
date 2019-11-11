@@ -97,6 +97,9 @@
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "新条目";
 
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "建立时间";
 
@@ -195,6 +198,9 @@
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "删除密钥文件?\n 请确保您有备份文件!";
+
+/* Title of an announcement about the Pro version */
+"[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
 
 /* Message shown when opening an announcement in AutoFill */
 "[News/AutoFill/stubText] Please open the main app for the full announcement." = "请打开主程序获得完整的公告。";

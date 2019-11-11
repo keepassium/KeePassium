@@ -158,7 +158,7 @@
 "[Database2/Loading/Error] Error unpacking database: %@" = "解壓縮資料庫時出錯: %@";
 
 /* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
-"[Database2/Loading/Warning/missingBinaries]" = "某些條目的附件缺少資料, 這是資料庫早期損壞的跡象，最有可能是上次使用的應用程序(%1$@)。KeePassium將保留空的附件，但無法恢復它們。您應該從備份副本還原資料庫。 \n\n缺少附件：%2$@";
+"[Database2/Loading/Warning/missingBinaries]" = "某些條目的附件缺少資料, 這是資料庫早期損壞的跡象，最有可能是上次使用的應用程式(%1$@)。KeePassium將保留空的附件，但無法恢復它們。您應該從備份副本還原資料庫。 \n\n缺少附件：%2$@";
 
 /* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
 "[Database2/Loading/Warning/namelessAttachments]" = "有些條目有附件沒有名字。這是資料庫早期損壞的跡象。\n\n 請查看以下條目中的附件(及其歷史記錄)：\n%@";
@@ -167,7 +167,7 @@
 "[Database2/Loading/Warning/namelessCustomFields]" = "某些條目具有空名稱的自定義字段。這是資料庫早期損壞的跡象。請檢查以下條目：\n\n%@";
 
 /* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
-"[Database2/Loading/Warning/unusedAttachments]" = "資料庫包含一些未在任何條目中使用的附件。最有可能的是，它們已被上次使用的應用程序(%@) 遺忘。但是，這也可能是資料庫早期損壞的跡象。在更改任何內容之前,\n請確保資料庫已經備份。";
+"[Database2/Loading/Warning/unusedAttachments]" = "資料庫包含一些未在任何條目中使用的附件。最有可能的是，它們已被上次使用的應用程式(%@) 遺忘。但是，這也可能是資料庫早期損壞的跡象。在更改任何內容之前,\n請確保資料庫已經備份。";
 
 /* Progress bar status */
 "[Database2/Progress] Loading database" = "載入資料庫";
@@ -281,13 +281,13 @@
 "[Progress/CancellationReason] Cancelled by user" = "已被使用者取消";
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
-"[Progress/CancellationReason/lowMemory]" = "沒有足夠的記憶體供繼續程序繼續。\n較大的資料庫或過於消耗記憶體的資料庫設置(Argon2記憶體參數) 可能會發生這種情況。";
+"[Progress/CancellationReason/lowMemory]" = "沒有足夠的記憶體供繼續程式繼續。\n較大的資料庫或過於消耗記憶體的資料庫設置(Argon2記憶體參數) 可能會發生這種情況。";
 
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
-"[Settings/AppLockTimeout/description] After last interaction" = "經過多久沒操作";
+"[Settings/AppLockTimeout/description] After last interaction" = "沒操作應用程式";
 
 /* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
-"[Settings/AppLockTimeout/description] After leaving the app" = "退出程序後";
+"[Settings/AppLockTimeout/description] After leaving the app" = "離開程式後";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
 "[Settings/AppLockTimeout/fullTitle] Immediately" = "立刻";
@@ -311,7 +311,7 @@
 "[Settings/ClipboardTimeout/shortTitle] Never" = "永不";
 
 /* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
-"[Settings/DatabaseLockTimeout/description] When leaving the app" = "退出程序時";
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "離開程式時";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
 "[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "立刻";

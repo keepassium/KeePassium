@@ -164,7 +164,7 @@
 "[Entry/View] Edit Entry" = "Editar entrada";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Prueba a eliminar el archivo de la aplicación e inténtalo de nuevo.";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Fecha de creación";
@@ -296,7 +296,7 @@
 "[Premium/Benefits/MultiDB/details]" = "Agrega múltiples bases de datos y cambia rápidamente entre ellas.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/MultiDB/title]" = "Sincronizar con el equipo";
+"[Premium/Benefits/MultiDB/title]" = "Sincroniza con tu equipo";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/Support/details]" = "El apoyo de la comunidad no implica ninguna obligación. Con premium, obtienes respuestas y soluciones directamente del desarrollador.";
@@ -305,7 +305,7 @@
 "[Premium/Benefits/Support/title]" = "Habla con un soporte técnico que se preocupa";
 
 /* Status: special premium for beta-testing environment is active */
-"[Premium/status] Beta testing" = "Probando la versión beta";
+"[Premium/status] Beta testing" = "Prueba la versión beta";
 
 /* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
 "[Premium/status] Expired %@ ago. Please renew." = "Expirado hace %@. Por favor, renueva la suscripción.";
@@ -354,12 +354,6 @@
 
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "Lo siento";
-
-/* Text of the message shown after successful in-app purchase */
-"[Premium/Upgrade/Success/text] Upgrade successful, enjoy the app!" = "Actualización hecha con éxito, ¡disfruta de KeePassium!";
-
-/* Title of the message shown after a successful in-app purchase */
-"[Premium/Upgrade/Success/title] Thank You" = "Gracias";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Uso de KeePassium: %1$@/mes, que es alrededor de %2$@/año.";

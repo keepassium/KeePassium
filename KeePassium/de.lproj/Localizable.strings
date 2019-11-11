@@ -163,6 +163,9 @@
 /* Action to start editing an entry */
 "[Entry/View] Edit Entry" = "Eintrag bearbeiten";
 
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Erstellungsdatum";
 
@@ -265,6 +268,9 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Schlüsseldatei löschen?\n Stellen Sie sicher, dass Sie ein Backup haben.";
 
+/* Title of an announcement about the Pro version */
+"[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
+
 /* Message shown when opening an announcement in AutoFill */
 "[News/AutoFill/stubText] Please open the main app for the full announcement." = "Bitte öffnen Sie die Haupt-App für die vollständige Ankündigung.";
 
@@ -348,12 +354,6 @@
 
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "Sorry";
-
-/* Text of the message shown after successful in-app purchase */
-"[Premium/Upgrade/Success/text] Upgrade successful, enjoy the app!" = "Upgrade erfolgreich, genieße die App!";
-
-/* Title of the message shown after a successful in-app purchase */
-"[Premium/Upgrade/Success/title] Thank You" = "Vielen Dank";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "App ist nützlich: %1$@/Monat, das sind etwa %2$@/Jahr.";
