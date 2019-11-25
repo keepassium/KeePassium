@@ -45,7 +45,11 @@ public class DatabaseManager {
 
     
     
-    public func closeDatabase(completion callback: (() -> Void)?=nil, clearStoredKey: Bool) {
+    public func closeDatabase(
+        clearStoredKey: Bool,
+        ignoreErrors: Bool,
+        completion callback: ((String?) -> Void)?)
+    {
         guard database != nil else { return }
         Diag.debug("Will close database")
 
@@ -56,18 +60,39 @@ public class DatabaseManager {
         serialDispatchQueue.async {
             guard let dbDoc = self.databaseDocument else { return }
             
-            dbDoc.close(successHandler: {
-                guard let dbRef = self.databaseRef else { assertionFailure(); return }
-                self.notifyDatabaseWillClose(database: dbRef)
-                self.databaseDocument = nil
-                self.databaseRef = nil
-                self.notifyDatabaseDidClose(database: dbRef)
-                Diag.info("Database closed")
-                callback?()
-            }, errorHandler: { errorMessage in
-                Diag.warning("Failed to save database document [message: \(String(describing: errorMessage))]")
-            })
+            let completionSemaphore = DispatchSemaphore(value: 0)
+            
+            DispatchQueue.main.async {
+                dbDoc.close(successHandler: { 
+                    self.handleDatabaseClosing()
+                    callback?(nil)
+                    completionSemaphore.signal()
+                }, errorHandler: { errorMessage in 
+                    Diag.error("Failed to save database document [message: \(String(describing: errorMessage))]")
+                    let adjustedErrorMessage: String?
+                    if ignoreErrors {
+                        Diag.warning("Ignoring errors and closing anyway")
+                        self.handleDatabaseClosing()
+                        adjustedErrorMessage = nil
+                    } else {
+                        adjustedErrorMessage = errorMessage
+                    }
+                    callback?(adjustedErrorMessage)
+                    completionSemaphore.signal()
+                })
+            }
+            completionSemaphore.wait()
         }
+    }
+    
+    private func handleDatabaseClosing() {
+        guard let dbRef = self.databaseRef else { assertionFailure(); return }
+        
+        self.notifyDatabaseWillClose(database: dbRef)
+        self.databaseDocument = nil
+        self.databaseRef = nil
+        self.notifyDatabaseDidClose(database: dbRef)
+        Diag.info("Database closed")
     }
 
     public func startLoadingDatabase(

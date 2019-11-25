@@ -126,7 +126,19 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         
         if DatabaseManager.shared.isDatabaseOpen {
             if parent == nil && group.isRoot {
-                DatabaseManager.shared.closeDatabase(clearStoredKey: false)
+                DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: false) {
+                    [weak self] (errorMessage) in
+                    if let errorMessage = errorMessage {
+                        let errorAlert = UIAlertController.make(
+                            title: LString.titleError,
+                            message: errorMessage,
+                            cancelButtonTitle: LString.actionDismiss)
+                        self?.navigationController?
+                            .present(errorAlert, animated: true, completion: nil)
+                    } else {
+                        Diag.debug("Database locked on leaving the root group")
+                    }
+                }
             }
         }
         super.didMove(toParent: parent)
@@ -185,7 +197,18 @@ open class ViewGroupVC: UITableViewController, Refreshable {
                 comment: "Action: lock database"),
             style: .cancel,
             handler: { (action) in
-                DatabaseManager.shared.closeDatabase(clearStoredKey: true)
+                DatabaseManager.shared.closeDatabase(clearStoredKey: true, ignoreErrors: false) {
+                    [weak self] (errorMessage) in
+                    if let errorMessage = errorMessage {
+                        let errorAlert = UIAlertController.make(
+                            title: LString.titleError,
+                            message: errorMessage,
+                            cancelButtonTitle: LString.actionDismiss)
+                        self?.present(errorAlert, animated: true, completion: nil)
+                    } else {
+                        Diag.debug("Database locked from a loading warning")
+                    }
+                }
             }
         )
         alert.addAction(continueAction)
@@ -639,7 +662,18 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         let confirmationAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let lockDatabaseAction = UIAlertAction(title: LString.actionLockDatabase, style: .destructive) {
             (action) in
-            DatabaseManager.shared.closeDatabase(clearStoredKey: true)
+            DatabaseManager.shared.closeDatabase(clearStoredKey: true, ignoreErrors: false) {
+                [weak self] (errorMessage) in
+                if let errorMessage = errorMessage {
+                    let errorAlert = UIAlertController.make(
+                        title: LString.titleError,
+                        message: errorMessage,
+                        cancelButtonTitle: LString.actionDismiss)
+                    self?.present(errorAlert, animated: true, completion: nil)
+                } else {
+                    Diag.debug("Database locked on user request")
+                }
+            }
         }
         let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
         confirmationAlert.addAction(lockDatabaseAction)

@@ -77,7 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 mode: isOpenInPlace ? .openInPlace : .import)
         }
         
-        DatabaseManager.shared.closeDatabase(clearStoredKey: false)
+        DatabaseManager.shared.closeDatabase(
+            clearStoredKey: false,
+            ignoreErrors: true,
+            completion: nil)
         return true
     }
 }
@@ -250,7 +253,10 @@ extension AppDelegate: PasscodeInputDelegate {
                 sender.animateWrongPassccode()
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
                     try? Keychain.shared.removeAllDatabaseKeys()
-                    DatabaseManager.shared.closeDatabase(clearStoredKey: true)
+                    DatabaseManager.shared.closeDatabase(
+                        clearStoredKey: true,
+                        ignoreErrors: true,
+                        completion: nil)
                 }
             }
         } catch {
