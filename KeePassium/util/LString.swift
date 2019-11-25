@@ -153,6 +153,11 @@ public enum LString {
         value: "Close",
         comment: "Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database."
     )
+    public static let actionLockDatabase = NSLocalizedString(
+        "[Database/Opened/action] Lock Database",
+        value: "Lock Database",
+        comment: "Action/button to lock current database (the next time, it will ask for the master key)."
+    )
 
     
     public static let messageUnsavedChanges = NSLocalizedString(

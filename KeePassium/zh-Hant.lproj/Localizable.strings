@@ -76,6 +76,9 @@
 /* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
 "[Database/Opened/action] Close" = "關閉";
 
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "鎖定資料庫";
+
 /* Action: lock database */
 "[Database/Opened/Warning/action] Close Database" = "關閉資料庫";
 

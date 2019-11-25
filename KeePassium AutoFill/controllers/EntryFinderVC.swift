@@ -231,9 +231,22 @@ class EntryFinderVC: UITableViewController {
         searchController.searchBar.becomeFirstResponder()
     }
     
-    @IBAction func didPressLockDatabase(_ sender: Any) {
+    @IBAction func didPressLockDatabase(_ sender: UIBarButtonItem) {
         Watchdog.shared.restart()
-        delegate?.entryFinderShouldLockDatabase(self)
+        let confirmationAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let lockDatabaseAction = UIAlertAction(title: LString.actionLockDatabase, style: .destructive) {
+            [weak self](action) in
+            guard let self = self else { return }
+            self.delegate?.entryFinderShouldLockDatabase(self)
+        }
+        let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        confirmationAlert.addAction(lockDatabaseAction)
+        confirmationAlert.addAction(cancelAction)
+        confirmationAlert.modalPresentationStyle = .popover
+        if let popover = confirmationAlert.popoverPresentationController {
+            popover.barButtonItem = sender
+        }
+        present(confirmationAlert, animated: true, completion: nil)
     }
 }
 

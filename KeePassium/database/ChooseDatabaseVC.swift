@@ -107,6 +107,12 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
 
         if databaseRefs.isEmpty {
             databaseUnlocker = nil
+            let rootNavVC = splitViewController?.viewControllers.last as? UINavigationController
+            let detailNavVC = rootNavVC?.topViewController as? UINavigationController
+            let topDetailVC = detailNavVC?.topViewController
+            if topDetailVC is WelcomeVC {
+                return
+            }
             let welcomeVC = WelcomeVC.make(delegate: self)
             let wrapperNavVC = UINavigationController(rootViewController: welcomeVC)
             showDetailViewController(wrapperNavVC, sender: self)
@@ -308,6 +314,10 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     
     private func didSelectDatabase(urlRef: URLReference) {
         Settings.current.startupDatabase = urlRef
+        if databaseUnlocker != nil {
+            databaseUnlocker?.databaseRef = urlRef
+            return
+        }
         let unlockDatabaseVC = UnlockDatabaseVC.make(databaseRef: urlRef)
         showDetailViewController(unlockDatabaseVC, sender: self)
         databaseUnlocker = unlockDatabaseVC

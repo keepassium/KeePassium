@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
         AppGroup.applicationShared = application
         SettingsMigrator.processAppLaunch(with: Settings.current)
+        SystemIssueDetector.scanForIssues()
         Diag.info(AppInfo.description)
         PremiumManager.shared.startObservingTransactions()
         

@@ -20,6 +20,7 @@ extension UILabel {
                     .strikethroughColor: self.textColor.withAlphaComponent(0.7)])
             self.attributedText = attributedText
         } else {
+            self.attributedText = nil
             self.text = text
         }
     }
