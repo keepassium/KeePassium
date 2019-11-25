@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.08.47] - 2019-11-25
+
+### Changed
+
+- Auto-unlock databases whenever possible (2nd attempt)
+
+
 ## [1.08.46] - 2019-11-25
 
 ### Fixed

@@ -34,6 +34,9 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     private var keyFileRef: URLReference?
     private var fileKeeperNotifications: FileKeeperNotifications!
+    
+    var isAutoUnlockEnabled = true
+    fileprivate var isAutomaticUnlock = false
 
     static func make(databaseRef: URLReference) -> UnlockDatabaseVC {
         let vc = UnlockDatabaseVC.instantiateFromStoryboard()
@@ -78,6 +81,9 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         super.viewWillAppear(animated)
         refreshPremiumStatus()
         refresh()
+        if isMovingToParent && canAutoUnlock() {
+            showProgressOverlay(animated: false)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +96,12 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             object: nil)
         onAppDidBecomeActive()
         
+        if isMovingToParent && canAutoUnlock() {
+            DispatchQueue.main.async { [weak self] in
+                self?.tryToUnlockDatabase(isAutomaticUnlock: true)
+            }
+        }
+
         if FileKeeper.shared.hasPendingFileOperations {
             processPendingFileOperations()
         }
@@ -283,11 +295,12 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     }
 
     private var progressOverlay: ProgressOverlay?
-    fileprivate func showProgressOverlay() {
+    fileprivate func showProgressOverlay(animated: Bool) {
+        guard progressOverlay == nil else { return }
         progressOverlay = ProgressOverlay.addTo(
             keyboardAdjView,
             title: LString.databaseStatusLoading,
-            animated: true)
+            animated: animated)
         progressOverlay?.isCancellable = true
         
         if let leftNavController = splitViewController?.viewControllers.first as? UINavigationController,
@@ -297,10 +310,10 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         navigationItem.hidesBackButton = true
     }
     
-    fileprivate func hideProgressOverlay() {
+    fileprivate func hideProgressOverlay(quickly: Bool) {
         UIView.animateKeyframes(
-            withDuration: 0.2,
-            delay: 0.0,
+            withDuration: quickly ? 0.2 : 0.6,
+            delay: quickly ? 0.0 : 0.6,
             options: [.beginFromCurrentState],
             animations: {
                 [weak self] in
@@ -338,7 +351,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     }
     
     @IBAction func didPressUnlock(_ sender: Any) {
-        tryToUnlockDatabase()
+        tryToUnlockDatabase(isAutomaticUnlock: false)
     }
     
     private var premiumCoordinator: PremiumCoordinator?
@@ -350,8 +363,16 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     }
     
     
-    func tryToUnlockDatabase() {
+    func canAutoUnlock() -> Bool {
+        guard isAutoUnlockEnabled else { return false }
+        guard let splitVC = splitViewController, splitVC.isCollapsed else { return false }
+        let hasKey: Bool = (try? DatabaseManager.shared.hasKey(for: databaseRef)) ?? true
+        return hasKey
+    }
+    
+    func tryToUnlockDatabase(isAutomaticUnlock: Bool) {
         Diag.clear()
+        self.isAutomaticUnlock = isAutomaticUnlock
         let password = passwordField.text ?? ""
         passwordField.resignFirstResponder()
         hideWatchdogTimeoutMessage(animated: true)
@@ -370,6 +391,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             }
         } catch {
             Diag.error(error.localizedDescription)
+            hideProgressOverlay(quickly: true) 
             showErrorMessage(error.localizedDescription)
         }
     }
@@ -385,7 +407,13 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         {
             fatalError("No leftNavController?!")
         }
-        leftNavController.show(viewGroupVC, sender: self)
+        if leftNavController.topViewController is UnlockDatabaseVC {
+            var viewControllers = leftNavController.viewControllers
+            viewControllers[viewControllers.count - 1] = viewGroupVC
+            leftNavController.setViewControllers(viewControllers, animated: true)
+        } else {
+            leftNavController.show(viewGroupVC, sender: self)
+        }
     }
 }
 
@@ -423,7 +451,7 @@ extension UnlockDatabaseVC: KeyFileChooserDelegate {
 extension UnlockDatabaseVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.passwordField {
-            tryToUnlockDatabase()
+            tryToUnlockDatabase(isAutomaticUnlock: false)
         }
         return true
     }
@@ -455,14 +483,14 @@ extension UnlockDatabaseVC: UITextFieldDelegate {
 extension UnlockDatabaseVC: DatabaseManagerObserver {
     func databaseManager(willLoadDatabase urlRef: URLReference) {
         self.passwordField.text = "" 
-        showProgressOverlay()
+        showProgressOverlay(animated: true)
     }
     
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
         DatabaseManager.shared.removeObserver(self)
         try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
         refresh()
-        hideProgressOverlay()
+        hideProgressOverlay(quickly: true)
         maybeFocusOnPassword()
     }
     
@@ -474,7 +502,7 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
         DatabaseManager.shared.removeObserver(self)
         try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
         refresh()
-        hideProgressOverlay()
+        hideProgressOverlay(quickly: true)
         
         showErrorMessage(message, haptics: .wrongPassword)
         maybeFocusOnPassword()
@@ -482,7 +510,6 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
     
     func databaseManager(didLoadDatabase urlRef: URLReference, warnings: DatabaseLoadingWarnings) {
         DatabaseManager.shared.removeObserver(self)
-        hideProgressOverlay()
         
         HapticFeedback.play(.databaseUnlocked)
         
@@ -491,20 +518,18 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
                 try DatabaseManager.shared.rememberDatabaseKey() 
             } catch {
                 Diag.error("Failed to remember database key [message: \(error.localizedDescription)]")
-                let errorAlert = UIAlertController.make(
-                    title: LString.titleKeychainError,
-                    message: error.localizedDescription)
-                present(errorAlert, animated: true, completion: nil)
             }
         }
+        hideProgressOverlay(quickly: false)
         showDatabaseRoot(loadingWarnings: warnings)
     }
 
     func databaseManager(database urlRef: URLReference, loadingError message: String, reason: String?) {
         DatabaseManager.shared.removeObserver(self)
         refresh()
-        hideProgressOverlay()
+        hideProgressOverlay(quickly: true)
         
+        isAutoUnlockEnabled = false
         showErrorMessage(message, details: reason, haptics: .error)
         maybeFocusOnPassword()
     }
