@@ -9,7 +9,8 @@
 import KeePassiumLib
 
 protocol KeyFileChooserDelegate: class {
-    func keyFileChooser(_ sender: KeyFileChooserVC, didSelectFile urlRef: URLReference?)
+    func didPressAddKeyFile(in keyFileChooser: KeyFileChooserVC, popoverAnchor: PopoverAnchor)
+    func didSelectFile(in keyFileChooser: KeyFileChooserVC, urlRef: URLReference?)
 }
 
 class KeyFileChooserVC: UITableViewController, Refreshable {
@@ -18,7 +19,6 @@ class KeyFileChooserVC: UITableViewController, Refreshable {
         static let keyFile = "KeyFileCell"
     }
 
-    weak var coordinator: MainCoordinator?
     weak var delegate: KeyFileChooserDelegate?
 
     var keyFileRefs = [URLReference]()
@@ -122,16 +122,17 @@ class KeyFileChooserVC: UITableViewController, Refreshable {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row > 0 else {
-            delegate?.keyFileChooser(self, didSelectFile: nil)
+            delegate?.didSelectFile(in: self, urlRef: nil)
             return
         }
         
         let selectedFileIndex = indexPath.row - 1
-        delegate?.keyFileChooser(self, didSelectFile: keyFileRefs[selectedFileIndex])
+        delegate?.didSelectFile(in: self, urlRef: keyFileRefs[selectedFileIndex])
     }
     
-    @IBAction func didPressAddKeyFile(_ sender: Any) {
-        coordinator?.addKeyFile()
+    @IBAction func didPressAddKeyFile(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressAddKeyFile(in: self, popoverAnchor: popoverAnchor)
     }
     
     func didPressRemoveKeyFile(at indexPath: IndexPath) {

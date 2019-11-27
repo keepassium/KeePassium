@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfT-SG-IdV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfT-SG-IdV">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,13 +11,13 @@
         <!--Databases-->
         <scene sceneID="2Uz-Z4-ZqM">
             <objects>
-                <tableViewController storyboardIdentifier="DatabaseChooserVC" modalTransitionStyle="crossDissolve" id="sfT-SG-IdV" customClass="DatabaseChooserVC" customModule="KeePassium_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DatabaseChooserVC" modalTransitionStyle="crossDissolve" id="sfT-SG-IdV" customClass="DatabaseChooserVC" customModule="KeePassiumPro_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j87-X8-qsR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" textLabel="gs3-2C-fts" detailTextLabel="wKG-yp-SZt" imageView="uJr-zo-xUb" style="IBUITableViewCellStyleSubtitle" id="aPc-lF-R7F" customClass="DatabaseFileListCell" customModule="KeePassium_AutoFill" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" textLabel="gs3-2C-fts" detailTextLabel="wKG-yp-SZt" imageView="uJr-zo-xUb" style="IBUITableViewCellStyleSubtitle" id="aPc-lF-R7F" customClass="DatabaseFileListCell" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="57.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aPc-lF-R7F" id="rEz-tF-rru">
@@ -92,7 +92,7 @@
                                 <fragment content="Action"/>
                             </attributedString>
                             <connections>
-                                <action selector="didPressAddDatabase:" destination="sfT-SG-IdV" id="GuG-Sx-O7f"/>
+                                <action selector="didPressAddDatabase:" destination="sfT-SG-IdV" id="awm-nj-fj2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -109,7 +109,7 @@
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

@@ -8,13 +8,17 @@
 
 import UIKit
 
+protocol FirstSetupDelegate: class {
+    func didPressCancel(in firstSetup: FirstSetupVC)
+    func didPressAddDatabase(in firstSetup: FirstSetupVC, at popoverAnchor: PopoverAnchor)
+}
 class FirstSetupVC: UIViewController {
     
-    private weak var coordinator: MainCoordinator?
+    private weak var delegate: FirstSetupDelegate?
     
-    static func make(coordinator: MainCoordinator) -> FirstSetupVC {
+    static func make(delegate: FirstSetupDelegate?=nil) -> FirstSetupVC {
         let vc = FirstSetupVC.instantiateFromStoryboard()
-        vc.coordinator = coordinator
+        vc.delegate = delegate
         return vc
     }
     
@@ -24,10 +28,11 @@ class FirstSetupVC: UIViewController {
     }
     
     @IBAction func didPressCancelButton(_ sender: Any) {
-        coordinator?.dismissAndQuit()
+        delegate?.didPressCancel(in: self)
     }
     
-    @IBAction func didPressAddDatabase(_ sender: Any) {
-        coordinator?.addDatabase()
+    @IBAction func didPressAddDatabase(_ sender: UIButton) {
+        let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
+        delegate?.didPressAddDatabase(in: self, at: popoverAnchor)
     }
 }

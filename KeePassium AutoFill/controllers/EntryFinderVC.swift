@@ -58,6 +58,10 @@ class EntryFinderVC: UITableViewController {
     private var searchResults = FuzzySearchResults(exactMatch: [], partialMatch: [])
     private var searchController: UISearchController! 
     private var manualSearchButton: UIBarButtonItem! 
+    
+    private var shouldAutoSelectFirstMatch: Bool = false
+    private var tapGestureRecognizer: UITapGestureRecognizer?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,12 +76,23 @@ class EntryFinderVC: UITableViewController {
 
         refreshDatabaseName()
         updateSearchCriteria()
+        if shouldAutoSelectFirstMatch {
+            setupAutoSelectCancellation()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(false, animated: true)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if shouldAutoSelectFirstMatch {
+            simulateFirstRowSelection()
+        }
+    }
+    
     
     private func setupSearch() {
         searchController = UISearchController(searchResultsController: nil)
@@ -104,6 +119,10 @@ class EntryFinderVC: UITableViewController {
         if !automaticResults.isEmpty {
             searchResults = automaticResults
             tableView.reloadData()
+            if automaticResults.hasPerfectMatch {
+                shouldAutoSelectFirstMatch = true
+                return
+            }
             return
         }
     
@@ -118,6 +137,40 @@ class EntryFinderVC: UITableViewController {
         navigationItem.title = databaseName
     }
 
+    
+    func setupAutoSelectCancellation() {
+        assert(tapGestureRecognizer == nil)
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleTableViewTapped)
+        )
+        tableView.addGestureRecognizer(tapGestureRecognizer)
+        self.tapGestureRecognizer = tapGestureRecognizer
+    }
+    
+    @objc private func handleTableViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+        shouldAutoSelectFirstMatch = false
+        gestureRecognizer.isEnabled = false
+    }
+    
+    private func simulateFirstRowSelection() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
+            guard let self = self else { return }
+            if self.shouldAutoSelectFirstMatch {
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            } else {
+                self.tableView.deselectRow(at: indexPath, animated: false)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) { [weak self] in
+            guard let self = self else { return }
+            guard self.shouldAutoSelectFirstMatch else { return } 
+            self.tableView(self.tableView, didSelectRowAt: indexPath)
+        }
+    }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if searchResults.isEmpty {

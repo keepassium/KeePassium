@@ -89,6 +89,10 @@
 		7547C9E82348D89A004B159C /* PremiumProVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547C9E72348D89A004B159C /* PremiumProVC.swift */; };
 		7547C9E92348D89A004B159C /* PremiumProVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7547C9E72348D89A004B159C /* PremiumProVC.swift */; };
 		7547C9EA234900B3004B159C /* PremiumProVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7547C9D4234804B5004B159C /* PremiumProVC.storyboard */; };
+		75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754804FA238E51AF0068C863 /* PopoverAnchor.swift */; };
+		75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754804FA238E51AF0068C863 /* PopoverAnchor.swift */; };
+		75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754804FA238E51AF0068C863 /* PopoverAnchor.swift */; };
+		75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754804FA238E51AF0068C863 /* PopoverAnchor.swift */; };
 		7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
 		754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
 		754BF0882082A6BD00E3A292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0862082A6BD00E3A292 /* Main.storyboard */; };
@@ -550,6 +554,7 @@
 		7547C9E42348D472004B159C /* PremiumContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumContainerVC.swift; sourceTree = "<group>"; };
 		7547C9E72348D89A004B159C /* PremiumProVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumProVC.swift; sourceTree = "<group>"; };
 		7547C9EB234900FE004B159C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PremiumProVC.storyboard; sourceTree = "<group>"; };
+		754804FA238E51AF0068C863 /* PopoverAnchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnchor.swift; sourceTree = "<group>"; };
 		7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedTextField.swift; sourceTree = "<group>"; };
 		754BF07B2082A6BD00E3A292 /* KeePassium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeePassium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		754BF07E2082A6BD00E3A292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1183,6 +1188,7 @@
 				7546FBD820C3A3F600C5D834 /* Watchdog.swift */,
 				753A3EE920D3776D00A1CF70 /* Refreshable.swift */,
 				75779863223023D3006671BD /* ProgressViewHost.swift */,
+				754804FA238E51AF0068C863 /* PopoverAnchor.swift */,
 				75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */,
 				75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */,
 				756FF64320BAB20300FF890B /* UIColor+namedColors.swift */,
@@ -1738,6 +1744,7 @@
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
+				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				7532A24D21C5A035005DF56F /* KeyFileChooserVC.swift in Sources */,
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
@@ -1841,6 +1848,7 @@
 				75D3A3AF21BAE53F00255FC3 /* DatabaseFileListCell.swift in Sources */,
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
 				7546FBC320BFC03700C5D834 /* RootNavigationVC.swift in Sources */,
+				75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75EA64182098FC0500DDB941 /* ChooseDatabaseVC.swift in Sources */,
 				75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				75C94C5F20B4BAB0004FA29D /* ViewEntryFilesVC.swift in Sources */,
@@ -1939,6 +1947,7 @@
 				75B38C25233E5B7C006BDEFC /* DatabaseFileListCell.swift in Sources */,
 				75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */,
 				75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */,
+				75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75B38C28233E5B7C006BDEFC /* ChooseDatabaseVC.swift in Sources */,
 				75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */,
 				75B38C2A233E5B7C006BDEFC /* ViewEntryFilesVC.swift in Sources */,
@@ -1987,6 +1996,7 @@
 				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
+				75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75D7DF80233E5E310029AD87 /* KeyFileChooserVC.swift in Sources */,
 				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
 				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
@@ -2781,7 +2791,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2805,7 +2815,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2946,7 +2956,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -2971,7 +2981,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -2996,7 +3006,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3021,7 +3031,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3045,7 +3055,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3069,7 +3079,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.08.48] - 2019-11-27
+
+### Added
+
+- AutoFill will automatically select the found entry, if there is only one (closes #76) [thanks, Igor]
+
+### Fixed
+
+- A possible fix for the file picker issues in AutoFill (#79) [thanks, Thorsten]
+
+
 ## [1.08.47] - 2019-11-25
 
 ### Changed

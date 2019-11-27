@@ -10,7 +10,7 @@ import KeePassiumLib
 
 protocol DatabaseChooserDelegate: class {
     func databaseChooserShouldCancel(_ sender: DatabaseChooserVC)
-    func databaseChooserShouldAddDatabase(_ sender: DatabaseChooserVC)
+    func databaseChooserShouldAddDatabase(_ sender: DatabaseChooserVC, popoverAnchor: PopoverAnchor)
     func databaseChooser(_ sender: DatabaseChooserVC, didSelectDatabase urlRef: URLReference)
     func databaseChooser(_ sender: DatabaseChooserVC, shouldDeleteDatabase urlRef: URLReference)
     func databaseChooser(_ sender: DatabaseChooserVC, shouldRemoveDatabase urlRef: URLReference)
@@ -76,9 +76,10 @@ class DatabaseChooserVC: UITableViewController, Refreshable {
         delegate?.databaseChooserShouldCancel(self)
     }
     
-    @IBAction func didPressAddDatabase(_ sender: Any) {
+    @IBAction func didPressAddDatabase(_ sender: UIBarButtonItem) {
         Watchdog.shared.restart()
-        delegate?.databaseChooserShouldAddDatabase(self)
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.databaseChooserShouldAddDatabase(self, popoverAnchor: popoverAnchor)
     }
     
     @objc func didLongPressTableView(_ gestureRecognizer: UILongPressGestureRecognizer) {

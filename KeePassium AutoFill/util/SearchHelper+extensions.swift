@@ -16,6 +16,12 @@ struct FuzzySearchResults {
     var partialMatch: SearchResults
     
     var isEmpty: Bool { return exactMatch.isEmpty && partialMatch.isEmpty }
+    
+    var hasPerfectMatch: Bool {
+        guard partialMatch.isEmpty && (exactMatch.count == 1) else { return false }
+        let firstGroup = exactMatch.first!
+        return firstGroup.entries.count == 1
+    }
 }
 
 extension SearchHelper {
