@@ -35,10 +35,6 @@ public extension Settings {
         return isKeepKeyFileAssociations
     }
     
-    func premiumGetKeyFileForDatabase(databaseRef: URLReference) -> URLReference? {
-        return getKeyFileForDatabase(databaseRef: databaseRef)
-    }
-    
     func isAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
         switch status {
         case .initialGracePeriod,

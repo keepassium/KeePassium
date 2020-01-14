@@ -35,6 +35,8 @@ enum ImageAsset: String {
     case premiumBenefitPreview = "premium-benefit-preview"
     case premiumBenefitSupport = "premium-benefit-support"
     case premiumBenefitShiny = "premium-benefit-shiny"
+    case expandRowCellAccessory = "expand-row-cellaccessory"
+    case collapseRowCellAccessory = "collapse-row-cellaccessory"
 }
 
 extension UIImage {

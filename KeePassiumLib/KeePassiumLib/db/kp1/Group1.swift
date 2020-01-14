@@ -65,14 +65,14 @@ public class Group1: Group {
         return name == Group1.backupGroupName
     }
     
-    override public func clone() -> Group {
+    override public func clone(makeNewUUID: Bool) -> Group {
         let copy = Group1(database: database)
-        apply(to: copy)
+        apply(to: copy, makeNewUUID: makeNewUUID)
         return copy
     }
     
-    public func apply(to target: Group1) {
-        super.apply(to: target)
+    public func apply(to target: Group1, makeNewUUID: Bool) {
+        super.apply(to: target, makeNewUUID: makeNewUUID)
         
         target.id = id
         target.level = level

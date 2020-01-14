@@ -37,10 +37,11 @@ public class Keychain {
     
     private static let accessGroup: String? = nil
     private enum Service: String {
-        static let allValues: [Service] = [.general, .databaseKeys, .premium]
+        static let allValues: [Service] = [.general, .databaseKeys, databaseSettings, .premium]
         
         case general = "KeePassium"
         case databaseKeys = "KeePassium.dbKeys"
+        case databaseSettings = "KeePassium.dbSettings"
         case premium = "KeePassium.premium"
     }
     private let appPasscodeAccount = "appPasscode"
@@ -48,6 +49,11 @@ public class Keychain {
     private let premiumProductAccount = "premiumProductID"
     
     private init() {
+        cleanupObsoleteKeys()
+    }
+    
+    private func cleanupObsoleteKeys() {
+        try? remove(service: .databaseKeys, account: nil)
     }
     
     
@@ -151,32 +157,31 @@ public class Keychain {
         try remove(service: .general, account: appPasscodeAccount) 
     }
     
-
-    public func setDatabaseKey(databaseRef: URLReference, key: SecureByteArray) throws {
-        guard !databaseRef.info.hasError else { return }
-        
-        let account = databaseRef.info.fileName
-        try set(service: .databaseKeys, account: account, data: key.asData) 
-    }
-
-    public func getDatabaseKey(databaseRef: URLReference) throws -> SecureByteArray? {
-        guard !databaseRef.info.hasError else { return nil }
-        
-        let account = databaseRef.info.fileName
-        guard let data = try get(service: .databaseKeys, account: account) else {
+    
+    internal func getDatabaseSettings(for databaseRef: URLReference) throws -> DatabaseSettings? {
+        guard !databaseRef.info.hasError else {
+            Diag.warning("Database with an error, cannot load DB-specific settings")
             return nil
         }
-        return SecureByteArray(data: data)
-    }
 
-    public func removeDatabaseKey(databaseRef: URLReference) throws {
-        guard !databaseRef.info.hasError else { return }
-        let account = databaseRef.info.fileName
-        try remove(service: .databaseKeys, account: account)
+        guard let account = databaseRef.getDescriptor() else { return nil }
+        if let data = try get(service: .databaseSettings, account: account) { 
+            return DatabaseSettings.deserialize(from: data)
+        }
+        return nil
     }
     
-    public func removeAllDatabaseKeys() throws {
-        try remove(service: .databaseKeys, account: nil)
+    internal func setDatabaseSettings(_ dbSettings: DatabaseSettings, for databaseRef: URLReference) throws {
+        guard !databaseRef.info.hasError else { return }
+        
+        let data = dbSettings.serialize()
+        guard let account = databaseRef.getDescriptor() else { return }
+        try set(service: .databaseSettings, account: account, data: data)
+    }
+    
+    internal func removeDatabaseSettings(for databaseRef: URLReference) throws {
+        guard let account = databaseRef.getDescriptor() else { return }
+        try remove(service: .databaseSettings, account: account) 
     }
     
     

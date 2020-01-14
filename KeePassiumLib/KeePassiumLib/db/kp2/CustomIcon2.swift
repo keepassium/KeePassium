@@ -46,10 +46,10 @@ public class CustomIcon2: Eraseable {
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "CustomIcon/*")
             }
         }
-        guard let _uuid = xmlUUID else {
-            Diag.error("Missing CustomIcon/UUID")
-            throw Xml2.ParsingError.malformedValue(tag: "CustomIcon/UUID", value: nil)
+        if xmlUUID == nil {
+            Diag.warning("Missing CustomIcon/UUID. Will generate a new one.")
         }
+        let _uuid = xmlUUID ?? UUID()
         guard let _data = xmlData else {
             Diag.error("Missing CustomIcon/Data")
             throw Xml2.ParsingError.malformedValue(tag: "CustomIcon/Data", value: nil)

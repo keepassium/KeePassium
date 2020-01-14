@@ -64,6 +64,10 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         }
     }
     
+    public func clearPasswordField() {
+        passwordField.text = ""
+    }
+    
     func showErrorMessage(
         _ text: String,
         reason: String?=nil,
@@ -147,9 +151,8 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             databaseLocationIconImage.image = UIImage.databaseIcon(for: dbRef)
         }
         
-        let associatedKeyFileRef = Settings.current
-            .premiumGetKeyFileForDatabase(databaseRef: dbRef)
-        if let associatedKeyFileRef = associatedKeyFileRef {
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: dbRef)
+        if let associatedKeyFileRef = dbSettings?.associatedKeyFile {
             let allAvailableKeyFiles = FileKeeper.shared
                 .getAllReferences(fileType: .keyFile, includeBackup: false)
             if let availableKeyFileRef = associatedKeyFileRef
@@ -166,7 +169,9 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         hideErrorMessage(animated: false)
 
         guard let databaseRef = databaseRef else { return }
-        Settings.current.setKeyFileForDatabase(databaseRef: databaseRef, keyFileRef: keyFileRef)
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
+            dbSettings.maybeSetAssociatedKeyFile(keyFileRef)
+        }
         
         guard let fileInfo = urlRef?.info else {
             Diag.debug("No key file selected")
@@ -244,7 +249,6 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             database: databaseRef,
             password: passwordField.text ?? "",
             keyFile: keyFileRef)
-        passwordField.text = "" 
     }
     
     @IBAction func didPressAnouncementButton(_ sender: Any) {

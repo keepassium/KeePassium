@@ -66,26 +66,18 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     }
     
     @IBAction func didPressClearMasterKeys(_ sender: Any) {
-        do {
-            try Keychain.shared.removeAllDatabaseKeys() 
-            let confirmationAlert = UIAlertController.make(
-                title: NSLocalizedString(
-                    "[Settings/ClearMasterKeys/Cleared/title] Cleared",
-                    value: "Cleared",
-                    comment: "Title of the success message for `Clear Master Keys` button"),
-                message: NSLocalizedString(
-                    "[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted.",
-                    value: "All master keys have been deleted.",
-                    comment: "Text of the success message for `Clear Master Keys` button"),
-                cancelButtonTitle: LString.actionOK)
-            present(confirmationAlert, animated: true, completion: nil)
-        } catch {
-            let errorAlert = UIAlertController.make(
-                title: LString.titleKeychainError,
-                message: error.localizedDescription,
-                cancelButtonTitle: LString.actionDismiss)
-            present(errorAlert, animated: true, completion: nil)
-        }
+        DatabaseSettingsManager.shared.eraseAllMasterKeys()
+        let confirmationAlert = UIAlertController.make(
+            title: NSLocalizedString(
+                "[Settings/ClearMasterKeys/Cleared/title] Cleared",
+                value: "Cleared",
+                comment: "Title of the success message for `Clear Master Keys` button"),
+            message: NSLocalizedString(
+                "[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted.",
+                value: "All master keys have been deleted.",
+                comment: "Text of the success message for `Clear Master Keys` button"),
+            cancelButtonTitle: LString.actionOK)
+        present(confirmationAlert, animated: true, completion: nil)
     }
     
     @IBAction func didToggleRememberUsedKeyFiles(_ sender: UISwitch) {

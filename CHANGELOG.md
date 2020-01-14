@@ -1,5 +1,32 @@
 #CHANGELOG
 
+## [1.09.49] - 2020-01-14
+
+### Added
+
+- Move/copy groups and entries to other groups (closes #48)
+- Long-press menu for files, groups and entries
+- Highlight digits and special symbols in stored passwords [thanks, Sean]
+- Support for Steam TOTP with GAuth URI format (closes #85) [thanks, Nu11u5]
+- Support for TOTP based on SHA-256 and SHA-512 (closes #81) [thanks, Walter]
+- "Add Key File" button to key file pickers [thanks, Ron]
+
+### Changed
+
+- Use local URLs for local files, instead of resolving bookmarks (related #71, #88)
+- Preserve the entered master password after DB unlock errors [thanks, Bertrand]
+
+### Fixed
+
+- Occassional freezing at "Loading... 0%" (fixes #88) [thanks, everyone]
+- An attempt to fix random freezing when accessing local files on iOS 13 (#71)
+- AutoFill FaceID loop on 13.1.3 (closes #74 again) [thanks, Quinn]
+- Add missing special symbols in password generator [thanks, Justen]
+- "Failed to open file" error after creating a new database [thanks, Craig]
+- Loading MiniKeePass DBs with minor issues (missing custom icon UUIDs and group timestamps) [thanks, everyone]
+- Overly wide popovers on iPadOS 13
+
+
 ## [1.08.48] - 2019-11-27
 
 ### Added

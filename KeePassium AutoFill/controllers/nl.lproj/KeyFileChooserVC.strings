@@ -7,6 +7,9 @@
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
 "Lod-RE-tcd.title" = "Voeg sleutelbestand toe";
 
+/* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
+"Omh-Sn-jl2.normalTitle" = "Voeg sleutelbestand toe";
+
 /* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
 "r85-yz-wYI.title" = "Sleutelbestanden";
 

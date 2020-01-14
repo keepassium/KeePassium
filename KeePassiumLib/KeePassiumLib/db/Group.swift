@@ -8,12 +8,11 @@
 
 import Foundation
 
-public class Group: Eraseable {
+public class Group: DatabaseItem, Eraseable {
     public static let defaultIconID = IconID.folder
     public static let defaultOpenIconID = IconID.folderOpen
     
     public weak var database: Database?
-    public weak var parent: Group?
     public var uuid: UUID
     public var iconID: IconID
     public var name: String
@@ -40,7 +39,6 @@ public class Group: Eraseable {
 
     init(database: Database?) {
         self.database = database
-        parent = nil
         
         uuid = UUID.ZERO
         iconID = Group.defaultIconID
@@ -57,6 +55,8 @@ public class Group: Eraseable {
         lastModificationTime = now
         lastAccessTime = now
         expiryTime = now
+        
+        super.init()
     }
     deinit {
         erase()
@@ -82,12 +82,30 @@ public class Group: Eraseable {
         expiryTime = now
     }
     
-    public func clone() -> Group {
+    public func clone(makeNewUUID: Bool) -> Group {
         fatalError("Pure virtual method")
     }
     
-    public func apply(to target: Group) {
-        target.uuid = uuid
+    public func deepClone(makeNewUUIDs: Bool) -> Group {
+        let selfCopy = clone(makeNewUUID: makeNewUUIDs) 
+        groups.forEach {
+            let subgroupDeepCopy = $0.deepClone(makeNewUUIDs: makeNewUUIDs)
+            selfCopy.add(group: subgroupDeepCopy)
+        }
+        entries.forEach {
+            let entryClone = $0.clone(makeNewUUID: makeNewUUIDs)
+            selfCopy.add(entry: entryClone)
+        }
+        return selfCopy
+    }
+
+    
+    public func apply(to target: Group, makeNewUUID: Bool) {
+        if makeNewUUID {
+            target.uuid = UUID()
+        } else {
+            target.uuid = uuid
+        }
         target.iconID = iconID
         target.name = name
         target.notes = notes
@@ -112,9 +130,17 @@ public class Group: Eraseable {
     }
     
     public func add(group: Group) {
+        assert(group !== self)
         group.parent = self
         groups.append(group)
+        group.deepSetDeleted(self.isDeleted)
         isChildrenModified = true
+    }
+    
+    public func deepSetDeleted(_ isDeleted: Bool) {
+        self.isDeleted = isDeleted
+        groups.forEach { $0.deepSetDeleted(isDeleted) }
+        entries.forEach { $0.isDeleted = isDeleted }
     }
     
     public func remove(group: Group) {
@@ -141,12 +167,11 @@ public class Group: Eraseable {
         entry.parent = nil
         isChildrenModified = true
     }
-
-    public func moveEntry(entry: Entry) {
-        if let oldParent = entry.parent {
-            oldParent.remove(entry: entry)
-        }
-        self.add(entry: entry)
+    
+    public func move(to newGroup: Group) {
+        guard parent !== newGroup else { return }
+        parent?.remove(group: self)
+        newGroup.add(group: self)
     }
 
     public func findGroup(byUUID uuid: UUID) -> Group? {

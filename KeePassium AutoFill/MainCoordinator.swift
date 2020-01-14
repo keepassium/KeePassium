@@ -211,14 +211,12 @@ class MainCoordinator: NSObject, Coordinator {
     
     func removeDatabase(_ urlRef: URLReference) {
         FileKeeper.shared.removeExternalReference(urlRef, fileType: .database)
-        try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef)
-        Settings.current.forgetKeyFile(for: urlRef)
+        DatabaseSettingsManager.shared.removeSettings(for: urlRef)
         refreshFileList()
     }
     
     func deleteDatabase(_ urlRef: URLReference) {
-        try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef)
-        Settings.current.forgetKeyFile(for: urlRef)
+        DatabaseSettingsManager.shared.removeSettings(for: urlRef)
         do {
             try FileKeeper.shared.deleteFile(urlRef, fileType: .database, ignoreErrors: false)
         } catch {
@@ -236,18 +234,13 @@ class MainCoordinator: NSObject, Coordinator {
     }
 
     func showDatabaseFileInfo(fileRef: URLReference) {
-        let databaseInfoVC = FileInfoVC.make(urlRef: fileRef, popoverSource: nil)
+        let databaseInfoVC = FileInfoVC.make(urlRef: fileRef, at: nil)
         navigationController.pushViewController(databaseInfoVC, animated: true)
     }
 
     func showDatabaseUnlocker(database: URLReference, animated: Bool, completion: (()->Void)?) {
-        let storedDatabaseKey: SecureByteArray?
-        do {
-            storedDatabaseKey = try Keychain.shared.getDatabaseKey(databaseRef: database)
-        } catch {
-            storedDatabaseKey = nil
-            Diag.warning("Keychain error [message: \(error.localizedDescription)]")
-        }
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: database)
+        let storedDatabaseKey = dbSettings?.masterKey
         
         let vc = DatabaseUnlockerVC.instantiateFromStoryboard()
         vc.delegate = self
@@ -446,12 +439,12 @@ extension MainCoordinator: DatabaseManagerObserver {
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
         guard let databaseUnlockerVC = navigationController.topViewController
             as? DatabaseUnlockerVC else { return }
-        do {
-            try Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
-        } catch {
-            Diag.warning("Failed to remove database key [message: \(error.localizedDescription)]")
+        
+        DatabaseSettingsManager.shared.updateSettings(for: urlRef) { (dbSettings) in
+            dbSettings.clearMasterKey()
         }
         Settings.current.isAutoFillFinishedOK = true
+        databaseUnlockerVC.clearPasswordField()
         databaseUnlockerVC.hideProgressOverlay()
     }
     
@@ -490,6 +483,10 @@ extension MainCoordinator: DatabaseManagerObserver {
             }
         }
         guard let database = DatabaseManager.shared.database else { fatalError() }
+
+        guard let databaseUnlockerVC = navigationController.topViewController
+            as? DatabaseUnlockerVC else { return }
+        databaseUnlockerVC.clearPasswordField()
 
         Settings.current.isAutoFillFinishedOK = true
         showDatabaseContent(database: database, databaseRef: urlRef)
@@ -757,7 +754,7 @@ extension MainCoordinator: PasscodeInputDelegate {
                 HapticFeedback.play(.wrongPassword)
                 sender.animateWrongPassccode()
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
-                    try? Keychain.shared.removeAllDatabaseKeys() 
+                    DatabaseSettingsManager.shared.eraseAllMasterKeys()
                     DatabaseManager.shared.closeDatabase(
                         clearStoredKey: true,
                         ignoreErrors: true,

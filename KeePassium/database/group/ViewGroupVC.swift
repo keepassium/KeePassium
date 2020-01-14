@@ -447,6 +447,16 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
     }
 
+    func getItem(at indexPath: IndexPath) -> DatabaseItem? {
+        if let entry = getEntry(at: indexPath) {
+            return entry
+        }
+        if let group = getGroup(at: indexPath) {
+            return group
+        }
+        return nil
+    }
+    
     func handleItemSelection(indexPath: IndexPath?) {
         guard let indexPath = indexPath else {
             shownEntry = nil
@@ -505,12 +515,21 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
         deleteAction.backgroundColor = UIColor.destructiveTint
      
+        let menuAction = UITableViewRowAction(style: .default, title: "...")
+        {
+            [unowned self] (_,_) in
+            self.setEditing(false, animated: true)
+            self.showActionsForItem(at: indexPath)
+        }
+        menuAction.backgroundColor = UIColor.lightGray
+        
         var allowedActions = [deleteAction]
         if let entry = getEntry(at: indexPath) {
             if !entry.isDeleted { allowedActions.append(editAction) }
         } else if let group = getGroup(at: indexPath) {
             if !group.isDeleted { allowedActions.append(editAction) }
         }
+        allowedActions.append(menuAction)
         return allowedActions
     }
     
@@ -530,8 +549,96 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
         return true
     }
+    
+    private func canMove(_ group: Group) -> Bool {
+        guard !group.isRoot else { return false }
+        
+        if let group1 = group as? Group1,
+            let database1 = group1.database as? Database1,
+            group1 === database1.getBackupGroup(createIfMissing: false)
+        {
+            return false
+        }
+        return true
+    }
+    
+    private func canMove(_ entry: Entry) -> Bool {
+        return true
+    }
 
 
+    func showActionsForItem(at indexPath: IndexPath) {
+        let actions = getActionsForItem(at: indexPath)
+        guard !actions.isEmpty else { return }
+        
+        let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actions.forEach {
+            menu.addAction($0)
+        }
+        let pa = PopoverAnchor(tableView: tableView, at: indexPath)
+        if let popover = menu.popoverPresentationController {
+            pa.apply(to: popover)
+        }
+        present(menu, animated: true)
+    }
+    
+    func getActionsForItem(at indexPath: IndexPath) -> [UIAlertAction] {
+        let editAction = UIAlertAction(
+            title: LString.actionEdit,
+            style: .default,
+            handler: { [weak self] alertAction in
+                self?.onEditItemAction(at: indexPath)
+            }
+        )
+        let deleteAction = UIAlertAction(
+            title: LString.actionDelete,
+            style: .destructive,
+            handler: { [weak self] alertAction in
+                self?.onDeleteItemAction(at: indexPath)
+            }
+        )
+        let moveAction = UIAlertAction(
+            title: LString.actionMove,
+            style: .default,
+            handler: { [weak self] alertAction in
+                self?.onRelocateItemAction(at: indexPath, mode: .move)
+            }
+        )
+        let copyAction = UIAlertAction(
+            title: LString.actionCopy,
+            style: .default,
+            handler: { [weak self] alertAction in
+                self?.onRelocateItemAction(at: indexPath, mode: .copy)
+            }
+        )
+        let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        
+        var actions = [UIAlertAction]()
+        if let entry = getEntry(at: indexPath) {
+            if !entry.isDeleted {
+                actions.append(editAction)
+            }
+            if canMove(entry) {
+                actions.append(moveAction)
+                actions.append(copyAction)
+            }
+            actions.append(deleteAction)
+            actions.append(cancelAction)
+        }
+        if let group = getGroup(at: indexPath) {
+            if !group.isDeleted {
+                actions.append(editAction)
+            }
+            if canMove(group) {
+                actions.append(moveAction)
+                actions.append(copyAction)
+            }
+            actions.append(deleteAction)
+            actions.append(cancelAction)
+        }
+        return actions
+    }
+    
     @objc func onCreateNewItemAction(sender: UIBarButtonItem) {
         let addItemSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let createGroupAction = UIAlertAction(title: LString.actionCreateGroup, style: .default)
@@ -647,6 +754,27 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
     }
     
+
+    var itemRelocationCoordinator: ItemRelocationCoordinator?
+    
+    func onRelocateItemAction(at indexPath: IndexPath, mode: ItemRelocationMode) {
+        guard let database = group?.database else { return }
+        
+        assert(itemRelocationCoordinator == nil)
+        itemRelocationCoordinator = ItemRelocationCoordinator(
+            database: database,
+            mode: mode,
+            parentViewController: self)
+        itemRelocationCoordinator?.delegate = self
+        
+        if let selectedItem = getItem(at: indexPath) {
+            itemRelocationCoordinator?.itemsToRelocate = [Weak(selectedItem)]
+        } else {
+            assertionFailure()
+        }
+        itemRelocationCoordinator?.start()
+    }
+
     @IBAction func didPressItemListSettings(_ sender: Any) {
         let itemListSettingsVC = SettingsItemListVC.make(
             barPopoverSource: sender as? UIBarButtonItem)
@@ -699,8 +827,8 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         guard gestureRecognizer.state == .began,
             let indexPath = tableView.indexPathForRow(at: point),
             tableView(tableView, canEditRowAt: indexPath),
-            let cell = tableView.cellForRow(at: indexPath) else { return }
-        cell.demoShowEditActions(lastActionColor: UIColor.destructiveTint)
+            let _ = tableView.cellForRow(at: indexPath) else { return }
+        showActionsForItem(at: indexPath)
     }
     
     
@@ -833,5 +961,12 @@ extension ViewGroupVC: UISearchResultsUpdating {
 extension ViewGroupVC: UISearchControllerDelegate {
     public func didDismissSearchController(_ searchController: UISearchController) {
         refresh()
+    }
+}
+
+extension ViewGroupVC: ItemRelocationCoordinatorDelegate {
+    func didFinish(_ coordinator: ItemRelocationCoordinator) {
+        assert(itemRelocationCoordinator != nil)
+        itemRelocationCoordinator = nil
     }
 }

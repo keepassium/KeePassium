@@ -127,6 +127,9 @@
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Kontakta oss";
 
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "Kopiera";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Radera";
 
@@ -144,6 +147,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportera";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "Flytta";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";

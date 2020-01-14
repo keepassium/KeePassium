@@ -80,15 +80,15 @@ public class Entry1: Entry {
         super.erase()
     }
     
-    override public func clone() -> Entry {
+    override public func clone(makeNewUUID: Bool) -> Entry {
         let newEntry = Entry1(database: self.database)
-        apply(to: newEntry)
+        apply(to: newEntry, makeNewUUID: makeNewUUID)
 
         return newEntry
     }
 
-    func apply(to target: Entry1) {
-        super.apply(to: target)
+    func apply(to target: Entry1, makeNewUUID: Bool) {
+        super.apply(to: target, makeNewUUID: makeNewUUID)
     }
     
     func load(from stream: ByteArray.InputStream) throws {
@@ -285,9 +285,8 @@ public class Entry1: Entry {
     }
     
     override public func backupState() {
-        let copy = self.clone()
+        let copy = self.clone(makeNewUUID: true)
 
-        copy.uuid = UUID()
         database?.delete(entry: copy) 
     }
     

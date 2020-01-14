@@ -24,8 +24,9 @@ public struct FileInfo {
     public var modificationDate: Date?
 }
 
-public class URLReference: Equatable, Codable {
-
+public class URLReference: Equatable, Codable, CustomDebugStringConvertible {
+    public typealias Descriptor = String
+    
     public enum Location: Int, Codable, CustomStringConvertible {
         public static let allValues: [Location] =
             [.internalDocuments, .internalBackup, .internalInbox, .external]
@@ -73,30 +74,35 @@ public class URLReference: Equatable, Codable {
     }
     
     private let data: Data
-    lazy private(set) var hash: ByteArray = CryptoManager.sha256(of: ByteArray(data: data))
+    lazy private(set) var hash: ByteArray = getHash()
     public let location: Location
+    private var url: URL?
     
     private enum CodingKeys: String, CodingKey {
         case data = "data"
         case location = "location"
+        case url = "url"
     }
     
     public init(from url: URL, location: Location) throws {
-        let resourceKeys = Set<URLResourceKey>(
-            [.canonicalPathKey, .nameKey, .fileSizeKey,
-            .creationDateKey, .contentModificationDateKey]
-        )
         let isAccessed = url.startAccessingSecurityScopedResource()
         defer {
             if isAccessed {
                 url.stopAccessingSecurityScopedResource()
             }
         }
-        data = try url.bookmarkData(
-            options: [], 
-            includingResourceValuesForKeys: resourceKeys,
-            relativeTo: nil) 
+        self.url = url
         self.location = location
+        if location.isInternal {
+            data = Data() 
+            hash = ByteArray(data: url.dataRepresentation).sha256
+        } else {
+            data = try url.bookmarkData(
+                options: [.minimalBookmark],
+                includingResourceValuesForKeys: nil,
+                relativeTo: nil) 
+            hash = ByteArray(data: data).sha256
+        }
     }
 
     public static func == (lhs: URLReference, rhs: URLReference) -> Bool {
@@ -106,7 +112,7 @@ public class URLReference: Equatable, Codable {
                 let rightURL = try? rhs.resolve() else { return false }
             return leftURL == rightURL
         } else {
-            return lhs.hash == rhs.hash
+            return !lhs.hash.isEmpty && (lhs.hash == rhs.hash)
         }
     }
     
@@ -114,17 +120,54 @@ public class URLReference: Equatable, Codable {
         return try! JSONEncoder().encode(self)
     }
     public static func deserialize(from data: Data) -> URLReference? {
-        return try? JSONDecoder().decode(URLReference.self, from: data)
+        guard let ref = try? JSONDecoder().decode(URLReference.self, from: data) else {
+            return nil
+        }
+        ref.hash = ref.getHash()
+        return ref
+    }
+    
+    public var debugDescription: String {
+        return " ‣ Location: \(location)\n" +
+            " ‣ URL: \(url?.relativeString ?? "nil")\n" +
+            " ‣ data: \(data.count) bytes"
+    }
+    
+    
+    private func getHash() -> ByteArray {
+        guard location.isInternal else {
+            return ByteArray(data: data).sha256
+        }
+
+        do {
+            let _url = try resolve()
+            return ByteArray(data: _url.dataRepresentation).sha256
+        } catch {
+            Diag.warning("Failed to resolve the URL: \(error.localizedDescription)")
+            return ByteArray() 
+        }
     }
     
     public func resolve() throws -> URL {
+        if let url = url, location.isInternal {
+            return url
+        }
+        
         var isStale = false
-        let url = try URL(
+        let resolvedUrl = try URL(
             resolvingBookmarkData: data,
             options: [URL.BookmarkResolutionOptions.withoutUI],
             relativeTo: nil,
             bookmarkDataIsStale: &isStale)
-        return url
+        self.url = resolvedUrl
+        return resolvedUrl
+    }
+    
+    public func getDescriptor() -> Descriptor? {
+        guard !info.hasError else {
+            return nil
+        }
+        return info.fileName
     }
     
     public lazy var info: FileInfo = getInfo()

@@ -31,6 +31,18 @@ extension UIColor {
     static var auxiliaryText: UIColor {
         return UIColor(named: "AuxiliaryText") ?? .darkGray
     }
+    static var disabledText: UIColor {
+        return UIColor(named: "DisabledText") ?? .darkGray
+    }
+    static var passwordLetters: UIColor {
+        return primaryText
+    }
+    static var passwordDigits: UIColor {
+        return UIColor(named: "PasswordDigits") ?? .systemBlue
+    }
+    static var passwordSymbols: UIColor {
+        return UIColor(named: "PasswordSymbols") ?? .systemRed
+    }
 
     
     static let systemRed = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)

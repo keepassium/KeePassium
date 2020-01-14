@@ -50,6 +50,16 @@ public enum LString {
         value: "Rename",
         comment: "Action/button to rename an item"
     )
+    public static let actionMove = NSLocalizedString(
+        "[Generic] Move",
+        value: "Move",
+        comment: "Action/button to move an item (to another group/folder/etc)"
+    )
+    public static let actionCopy = NSLocalizedString(
+        "[Generic] Copy",
+        value: "Copy",
+        comment: "Action/button to move an item (to another group/folder/etc)"
+    )
     public static let actionDone = NSLocalizedString(
         "[Generic] Done",
         value: "Done",
@@ -207,7 +217,6 @@ public enum LString {
         value: "Edit Group",
         comment: "Title of a form for editing a group"
     )
-
     public static let actionCreateEntry = NSLocalizedString(
         "[Entry/Create/action] Create Entry",
         value: "Create Entry",

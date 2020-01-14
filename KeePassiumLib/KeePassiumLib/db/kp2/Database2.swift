@@ -42,9 +42,9 @@ public class Database2: Database {
             case .parsingError(let reason):
                 return String.localizedStringWithFormat(
                     NSLocalizedString(
-                        "[Database2/FormatError] Cannot parse database. %s",
+                        "[Database2/FormatError] Cannot parse database. %@",
                         bundle: Bundle.framework,
-                        value: "Cannot parse database. %s",
+                        value: "Cannot parse database. %@",
                         comment: "Error message. Parsing refers to the analysis/understanding of file content. [reason: String]"),
                     reason)
             case .blockIDMismatch:
@@ -154,6 +154,7 @@ public class Database2: Database {
     }
     
     override public func load(
+        dbFileName: String,
         dbFileData: ByteArray,
         compositeKey: SecureByteArray,
         warnings: DatabaseLoadingWarnings
@@ -215,7 +216,9 @@ public class Database2: Database {
             
             try load(xmlData: xmlData, warnings: warnings) 
             
-            propagateDeletedStatus()
+            if let backupGroup = getBackupGroup(createIfMissing: false) {
+                backupGroup.deepSetDeleted(true)
+            }
             
             checkAttachmentsIntegrity(warnings: warnings)
             
@@ -536,16 +539,6 @@ public class Database2: Database {
         }
     }
     
-    private func propagateDeletedStatus() {
-        if let backupGroup = getBackupGroup(createIfMissing: false) {
-            var deletedGroups = [Group2]() as [Group]
-            var deletedEntries = [Entry2]() as [Entry]
-            backupGroup.collectAllChildren(groups: &deletedGroups, entries: &deletedEntries)
-            deletedGroups.forEach { $0.isDeleted = true }
-            deletedEntries.forEach { $0.isDeleted = true }
-        }
-    }
-    
     func deriveMasterKey(compositeKey: SecureByteArray, cipher: DataCipher) throws {
         Diag.debug("Start key derivation")
         progress.addChild(header.kdf.initProgress(), withPendingUnitCount: ProgressSteps.keyDerivation)
@@ -583,6 +576,7 @@ public class Database2: Database {
         if createIfMissing {
             let backupGroup = meta.createRecycleBinGroup()
             root.add(group: backupGroup)
+            backupGroup.isDeleted = true
             Diag.verbose("RecycleBin group created")
             return backupGroup
         }
@@ -1148,7 +1142,7 @@ public class Database2: Database {
             let backupGroup = getBackupGroup(createIfMissing: meta.isRecycleBinEnabled)
         {
             entry.accessed()
-            backupGroup.moveEntry(entry: entry)
+            entry.move(to: backupGroup)
         } else {
             Diag.debug("Backup disabled, removing permanently.")
             addDeletedObject(uuid: entry.uuid)

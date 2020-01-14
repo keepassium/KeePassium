@@ -20,7 +20,7 @@ public class PasswordGenerator {
     public static let charSetDigits: Set<String> =
         ["0","1","2","3","4","5","6","7","8","9"]
     public static let charSetSpecials: Set<String> = [
-        "`","~","!","@","#","$","%","^","&","*","_","+","(",")","[","]",
+        "`","~","!","@","#","$","%","^","&","*","_","-","+","=","(",")","[","]",
         "{","}","<",">","\\","|",":",";",",",".","?","/","'","\""]
     public static let charSetLookAlike: Set<String> =
         ["I","l","|","1","0","O","S","5"]

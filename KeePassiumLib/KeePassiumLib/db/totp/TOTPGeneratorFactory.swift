@@ -62,11 +62,11 @@ fileprivate class GAuthFormat: SingleFieldFormat {
     static let timeStepParam = "period"
     static let lengthParam = "digits"
     static let algorithmParam = "algorithm"
+    static let issuerParam = "issuer"
     
     static let defaultTimeStep = 30
     static let defaultLength = 6
-    static let defaultAlgorithm = "SHA1"
-    
+    static let defaultAlgorithm = TOTPHashAlgorithm.sha1
     
     static func isMatching(scheme: String?, host: String?) -> Bool {
         return scheme == GAuthFormat.scheme
@@ -93,16 +93,23 @@ fileprivate class GAuthFormat: SingleFieldFormat {
             return nil
         }
         
-        if let algorithm = params[algorithmParam],
-            algorithm.caseInsensitiveCompare(defaultAlgorithm) != .orderedSame
-        {
-            Diag.warning("OTP algorithm is not supported [algorithm: \(algorithm)]")
-            return nil
-        }
-        
         guard let timeStep = Int(params[timeStepParam] ?? "\(defaultTimeStep)") else {
             Diag.warning("OTP parameter cannot be parsed [parameter: \(timeStepParam)]")
             return nil
+        }
+        
+        let isSteam = uriComponents.path.starts(with: "/Steam:") || (params[issuerParam] == "Steam")
+        if isSteam {
+            return TOTPGeneratorSteam(seed: ByteArray(data: seedData), timeStep: timeStep)
+        }
+        
+        var algorithm: TOTPHashAlgorithm?
+        if let algorithmString = params[algorithmParam] {
+            guard let _algorithm = TOTPHashAlgorithm.fromString(algorithmString) else {
+                Diag.warning("OTP algorithm is not supported [algorithm: \(algorithmString)]")
+                return nil
+            }
+            algorithm = _algorithm
         }
         
         guard let length = Int(params[lengthParam] ?? "\(defaultLength)") else {
@@ -113,7 +120,8 @@ fileprivate class GAuthFormat: SingleFieldFormat {
         return TOTPGeneratorRFC6238(
             seed: ByteArray(data: seedData),
             timeStep: timeStep,
-            length: length)
+            length: length,
+            hashAlgorithm: algorithm ?? defaultAlgorithm)
     }
 }
 
@@ -126,7 +134,7 @@ fileprivate class KeeOtpFormat: SingleFieldFormat {
     
     static let defaultTimeStep = 30
     static let defaultLength = 6
-    static let defaultAlgorithm = "sha1"
+    static let defaultAlgorithm = TOTPHashAlgorithm.sha1
     static let supportedType = "totp"
     
     static func isMatching(scheme: String?, host: String?) -> Bool {
@@ -156,11 +164,13 @@ fileprivate class KeeOtpFormat: SingleFieldFormat {
             return nil
         }
         
-        if let algorithm = params[algorithmParam],
-            algorithm.caseInsensitiveCompare(defaultAlgorithm) != .orderedSame
-        {
-            Diag.warning("OTP algorithm is not supported [algorithm: \(algorithm)]")
-            return nil
+        var algorithm: TOTPHashAlgorithm?
+        if let algorithmString = params[algorithmParam] {
+            guard let _algorithm = TOTPHashAlgorithm.fromString(algorithmString) else {
+                Diag.warning("OTP algorithm is not supported [algorithm: \(algorithmString)]")
+                return nil
+            }
+            algorithm = _algorithm
         }
         
         guard let timeStep = Int(params[timeStepParam] ?? "\(defaultTimeStep)") else {
@@ -176,7 +186,8 @@ fileprivate class KeeOtpFormat: SingleFieldFormat {
         return TOTPGeneratorRFC6238(
             seed: ByteArray(data: seedData),
             timeStep: timeStep,
-            length: length)
+            length: length,
+            hashAlgorithm: algorithm ?? defaultAlgorithm)
     }
 }
 
@@ -207,7 +218,12 @@ fileprivate class SplitFieldFormat {
         }
         
         if let length = Int(settings[1]) {
-            return TOTPGeneratorRFC6238(seed: seed, timeStep: timeStep, length: length)
+            return TOTPGeneratorRFC6238(
+                seed: seed,
+                timeStep: timeStep,
+                length: length,
+                hashAlgorithm: .sha1
+            )
         } else if settings[1] == TOTPGeneratorSteam.typeSymbol {
             return TOTPGeneratorSteam(seed: seed, timeStep: timeStep)
         } else {

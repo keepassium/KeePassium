@@ -167,7 +167,7 @@
 "[Entry/View] Edit Entry" = "Eintrag bearbeiten";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Versuchen Sie die Datei aus der App zu entfernen und fügen Sie sie erneut hinzu.";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Erstellungsdatum";
@@ -187,11 +187,17 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Fehler";
 
+/* Title of the dialog for picking the destination group for move/copy operations */
+"[General/DestinationGroup/title] Choose a Destination" = "Speicherort wählen";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Abbrechen";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Kontakt";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "Kopieren";
 
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Löschen";
@@ -210,6 +216,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportieren";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "Verschieben";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";

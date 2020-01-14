@@ -160,6 +160,47 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         tableView.reloadData()
     }
     
+    private func getDeleteActionName(for urlRef: URLReference) -> String {
+        let fileInfo = urlRef.getInfo()
+        if urlRef.location == .external || fileInfo.hasError {
+            return LString.actionRemoveFile
+        } else {
+            return LString.actionDeleteFile
+        }
+    }
+    
+    private func showActions(for indexPath: IndexPath) {
+        let urlRef = databaseRefs[indexPath.row]
+        let exportAction = UIAlertAction(
+            title: LString.actionExport,
+            style: .default,
+            handler: { [weak self] alertAction in
+                self?.didPressExportDatabase(at: indexPath)
+            }
+        )
+        let deleteAction = UIAlertAction(
+            title: getDeleteActionName(for: urlRef),
+            style: .destructive,
+            handler: { [weak self] alertAction in
+                self?.didPressDeleteDatabase(at: indexPath)
+            }
+        )
+        let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        
+        let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        menu.addAction(exportAction)
+        menu.addAction(deleteAction)
+        menu.addAction(cancelAction)
+        
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        if let popover = menu.popoverPresentationController {
+            popoverAnchor.apply(to: popover)
+            popover.permittedArrowDirections = [.left]
+        }
+        present(menu, animated: true)
+    }
+    
+    
     
     @IBAction func didPressSortButton(_ sender: Any) {
         let vc = SettingsFileSortingVC.make(popoverFromBar: sender as? UIBarButtonItem)
@@ -181,9 +222,9 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         let point = gestureRecognizer.location(in: tableView)
         guard gestureRecognizer.state == .began,
             let indexPath = tableView.indexPathForRow(at: point),
-            tableView(tableView, canEditRowAt: indexPath),
-            let cell = tableView.cellForRow(at: indexPath) else { return }
-        cell.demoShowEditActions(lastActionColor: UIColor.destructiveTint)
+            tableView(tableView, canEditRowAt: indexPath)
+            else { return }
+        showActions(for: indexPath)
     }
 
     @IBAction func didPressAddDatabase(_ sender: Any) {
@@ -329,8 +370,7 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
             Settings.current.startupDatabase = nil
         }
 
-        try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
-        Settings.current.forgetKeyFile(for: urlRef)
+        DatabaseSettingsManager.shared.removeSettings(for: urlRef)
         do {
             let fileInfo = urlRef.getInfo()
             try FileKeeper.shared.deleteFile(
@@ -351,8 +391,7 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         if urlRef == Settings.current.startupDatabase {
             Settings.current.startupDatabase = nil
         }
-        try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
-        Settings.current.forgetKeyFile(for: urlRef)
+        DatabaseSettingsManager.shared.removeSettings(for: urlRef)
         FileKeeper.shared.removeExternalReference(urlRef, fileType: .database)
     }
     
@@ -409,8 +448,8 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
         let urlRef = databaseRefs[indexPath.row]
-        guard let cell = tableView.cellForRow(at: indexPath) else { assertionFailure(); return }
-        let databaseInfoVC = FileInfoVC.make(urlRef: urlRef, popoverSource: cell)
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let databaseInfoVC = FileInfoVC.make(urlRef: urlRef, at: popoverAnchor)
         present(databaseInfoVC, animated: true, completion: nil)
     }
     
@@ -434,17 +473,9 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         shareAction.backgroundColor = UIColor.actionTint
         
         let urlRef = databaseRefs[indexPath.row]
-        let fileInfo = urlRef.getInfo()
-        let deleteActionTitle: String
-        if urlRef.location == .external || fileInfo.hasError {
-            deleteActionTitle = LString.actionRemoveFile
-        } else {
-            deleteActionTitle = LString.actionDeleteFile
-        }
-        
         let deleteAction = UITableViewRowAction(
             style: .destructive,
-            title: deleteActionTitle)
+            title: getDeleteActionName(for: urlRef))
         {
             [unowned self] (_,_) in
             self.setEditing(false, animated: true)

@@ -32,7 +32,15 @@ struct PopoverAnchor {
         self.sourceRect = sourceRect
     }
     
-    public func apply(to popover: UIPopoverPresentationController) {
+    init(tableView: UITableView, at indexPath: IndexPath) {
+        self.kind = .viewRect
+        self.barButtonItem = nil
+        self.sourceView = tableView
+        self.sourceRect = tableView.rectForRow(at: indexPath)
+    }
+    
+    public func apply(to popover: UIPopoverPresentationController?) {
+        guard let popover = popover else { return }
         switch kind {
         case .barButton:
             assert(barButtonItem != nil)

@@ -119,6 +119,7 @@ open class Database: Eraseable {
     }
     
     public func load(
+        dbFileName: String,
         dbFileData: ByteArray,
         compositeKey: SecureByteArray,
         warnings: DatabaseLoadingWarnings

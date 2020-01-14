@@ -51,14 +51,18 @@ public class DatabaseManager {
         completion callback: ((String?) -> Void)?)
     {
         guard database != nil else { return }
-        Diag.debug("Will close database")
+        Diag.verbose("Will queue close database")
 
         if clearStoredKey, let urlRef = databaseRef {
-            try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef)
+            DatabaseSettingsManager.shared.updateSettings(for: urlRef) { (dbSettings) in
+                dbSettings.clearMasterKey()
+                Diag.verbose("Master key cleared")
+            }
         }
 
         serialDispatchQueue.async {
             guard let dbDoc = self.databaseDocument else { return }
+            Diag.debug("Will close database")
             
             let completionSemaphore = DispatchSemaphore(value: 0)
             
@@ -100,14 +104,17 @@ public class DatabaseManager {
         password: String,
         keyFile keyFileRef: URLReference?)
     {
+        Diag.verbose("Will queue load database")
         serialDispatchQueue.async {
             self._loadDatabase(dbRef: dbRef, compositeKey: nil, password: password, keyFileRef: keyFileRef)
         }
     }
     
     public func startLoadingDatabase(database dbRef: URLReference, compositeKey: SecureByteArray) {
+        Diag.verbose("Will queue load database")
+        let compositeKeyClone = compositeKey.secureClone()
         serialDispatchQueue.async {
-            self._loadDatabase(dbRef: dbRef, compositeKey: compositeKey, password: "", keyFileRef: nil)
+            self._loadDatabase(dbRef: dbRef, compositeKey: compositeKeyClone, password: "", keyFileRef: nil)
         }
     }
     
@@ -141,19 +148,15 @@ public class DatabaseManager {
 
     public func rememberDatabaseKey(onlyIfExists: Bool = false) throws {
         guard let databaseRef = databaseRef, let database = database else { return }
-        
-        if onlyIfExists {
-            guard try hasKey(for: databaseRef) else { return }
+        let dsm = DatabaseSettingsManager.shared
+        let dbSettings = dsm.getOrMakeSettings(for: databaseRef)
+        if onlyIfExists && !dbSettings.hasMasterKey {
+            return
         }
-        try Keychain.shared.setDatabaseKey(
-            databaseRef: databaseRef,
-            key: database.compositeKey)
-        Diag.info("Database key saved in keychain.")
-    }
-    
-    public func hasKey(for databaseRef: URLReference) throws -> Bool {
-        let key = try Keychain.shared.getDatabaseKey(databaseRef: databaseRef)
-        return key != nil
+        
+        Diag.info("Saving database key in keychain.")
+        dbSettings.setMasterKey(database.compositeKey)
+        dsm.setSettings(dbSettings, for: databaseRef)
     }
     
     public func startSavingDatabase() {
@@ -737,6 +740,7 @@ fileprivate class DatabaseLoader {
             progress.addChild(db.initProgress(), withPendingUnitCount: ProgressSteps.decryptDatabase)
             Diag.info("Loading database")
             try db.load(
+                dbFileName: dbDoc.fileURL.lastPathComponent,
                 dbFileData: dbDoc.encryptedData,
                 compositeKey: compositeKey,
                 warnings: warnings

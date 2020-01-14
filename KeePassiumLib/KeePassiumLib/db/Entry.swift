@@ -60,11 +60,10 @@ public class EntryField: Eraseable {
     }
 }
 
-public class Entry: Eraseable {
+public class Entry: DatabaseItem, Eraseable {
     public static let defaultIconID = IconID.key
     
     public weak var database: Database?
-    public weak var parent: Group?
     public var uuid: UUID
     public var iconID: IconID
 
@@ -110,7 +109,6 @@ public class Entry: Eraseable {
     
     init(database: Database?) {
         self.database = database
-        parent = nil
         attachments = []
         fields = []
 
@@ -123,6 +121,8 @@ public class Entry: Eraseable {
         lastModificationTime = now
         lastAccessTime = now
         expiryTime = now
+        
+        super.init()
         
         canExpire = false
         populateStandardFields()
@@ -192,12 +192,16 @@ public class Entry: Eraseable {
         }
     }
 
-    public func clone() -> Entry {
+    public func clone(makeNewUUID: Bool) -> Entry {
         fatalError("Pure virtual method")
     }
     
-    public func apply(to target: Entry) {
-        target.uuid = uuid
+    public func apply(to target: Entry, makeNewUUID: Bool) {
+        if makeNewUUID {
+            target.uuid = UUID()
+        } else {
+            target.uuid = uuid
+        }
         target.iconID = iconID
         target.isDeleted = isDeleted
         target.lastModificationTime = lastModificationTime
@@ -230,6 +234,12 @@ public class Entry: Eraseable {
     
     public func deleteWithoutBackup() {
         parent?.remove(entry: self)
+    }
+    
+    public func move(to newGroup: Group) {
+        guard newGroup !== parent else { return }
+        parent?.remove(entry: self)
+        newGroup.add(entry: self)
     }
     
     public func getGroupPath() -> String {

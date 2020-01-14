@@ -217,7 +217,15 @@ class ProtectedFieldCellDecorator: ViewableFieldCellDecorator {
             completion: {
                 [weak self] _ in
                 guard let _self = self else { return }
-                cell.valueText.text = _self.getUserVisibleValue()
+                let value = _self.getUserVisibleValue()
+                if cell.field?.isValueHidden ?? true {
+                    cell.valueText.attributedText = nil
+                    cell.valueText.text = value
+                } else {
+                    cell.valueText.attributedText = PasswordStringHelper.decorate(
+                        value ?? "",
+                        font: cell.valueText.font)
+                }
                 cell.delegate?.cellHeightDidChange(cell)
                 UIView.animate(
                     withDuration: 0.2,

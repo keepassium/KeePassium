@@ -252,7 +252,7 @@ extension AppDelegate: PasscodeInputDelegate {
                 HapticFeedback.play(.wrongPassword)
                 sender.animateWrongPassccode()
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
-                    try? Keychain.shared.removeAllDatabaseKeys()
+                    DatabaseSettingsManager.shared.eraseAllMasterKeys()
                     DatabaseManager.shared.closeDatabase(
                         clearStoredKey: true,
                         ignoreErrors: true,

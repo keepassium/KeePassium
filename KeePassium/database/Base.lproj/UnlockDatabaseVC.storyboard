@@ -260,7 +260,7 @@
                                     <constraint firstItem="epu-yU-Lyg" firstAttribute="trailing" secondItem="cdl-k8-gTg" secondAttribute="trailingMargin" id="NJc-XI-9Ke"/>
                                     <constraint firstItem="ids-lQ-2kH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="PWT-hX-C8u"/>
                                     <constraint firstItem="kpI-3v-C4a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="gPQ-TK-edf"/>
-                                    <constraint firstItem="kpI-3v-C4a" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ids-lQ-2kH" secondAttribute="bottom" id="gUD-N3-wMe"/>
+                                    <constraint firstItem="kpI-3v-C4a" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ids-lQ-2kH" secondAttribute="bottom" constant="4" id="gUD-N3-wMe"/>
                                     <constraint firstItem="G3Q-hY-M1b" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="bottom" constant="8" id="gih-9n-0TA"/>
                                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="trailing" id="iPw-bZ-jul"/>
                                     <constraint firstItem="Dr0-TU-sMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="mbo-7y-lJ6"/>

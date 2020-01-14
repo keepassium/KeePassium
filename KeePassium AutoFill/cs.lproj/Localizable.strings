@@ -127,6 +127,9 @@
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Napište nám";
 
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "Kopírovat";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Odstranit";
 
@@ -144,6 +147,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportovat";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "Přesunout";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";

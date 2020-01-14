@@ -140,6 +140,7 @@ public class Database1: Database {
     }
     
     override public func load(
+        dbFileName: String,
         dbFileData: ByteArray,
         compositeKey: SecureByteArray,
         warnings: DatabaseLoadingWarnings
@@ -162,7 +163,7 @@ public class Database1: Database {
                 throw DatabaseError.invalidKey
             }
             
-            try loadContent(data: decryptedData) 
+            try loadContent(data: decryptedData, dbFileName: dbFileName)
             Diag.debug("Content loaded OK")
 
             self.compositeKey = compositeKey
@@ -194,7 +195,7 @@ public class Database1: Database {
         masterKey = SecureByteArray(ByteArray.concat(header.masterSeed, transformedKey).sha256)
     }
     
-    private func loadContent(data: ByteArray) throws {
+    private func loadContent(data: ByteArray, dbFileName: String) throws {
         let stream = data.asInputStream()
         stream.open()
         defer { stream.close() }
@@ -242,7 +243,7 @@ public class Database1: Database {
         let _root = Group1(database: self)
         _root.level = -1 
         _root.iconID = Group.defaultIconID 
-        _root.name = "/" // TODO: give the "virtual" root group a more meaningful name
+        _root.name = dbFileName
         self.root = _root
         
         var parentGroup = _root
@@ -267,6 +268,7 @@ public class Database1: Database {
                 group.add(entry: entry)
             }
         }
+        backupGroup?.deepSetDeleted(true)
     }
     
     func decrypt(data: ByteArray) throws -> ByteArray {
@@ -395,7 +397,7 @@ public class Database1: Database {
         group.collectAllEntries(to: &subEntries)
         
         subEntries.forEach { (entry) in
-            backupGroup.moveEntry(entry: entry)
+            entry.move(to: backupGroup)
             entry.accessed()
         }
         Diag.debug("Delete group OK")
@@ -413,7 +415,7 @@ public class Database1: Database {
         }
         
         entry.accessed()
-        backupGroup.moveEntry(entry: entry)
+        entry.move(to: backupGroup)
         Diag.info("Delete entry OK")
     }
     

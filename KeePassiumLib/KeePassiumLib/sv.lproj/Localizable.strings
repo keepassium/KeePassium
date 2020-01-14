@@ -101,7 +101,7 @@
 "[Database2/backupGroupName] Recycle Bin" = "Papperskorg";
 
 /* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
-"[Database2/FormatError] Cannot parse database. %s" = "Kunde inte tolka databasen. %s";
+"[Database2/FormatError] Cannot parse database. %@" = "Kunde inte tolka databasen. %@";
 
 /* Error message [blockIndex: Int] */
 "[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Skadad databasfil (block %d har negativ storlek)";

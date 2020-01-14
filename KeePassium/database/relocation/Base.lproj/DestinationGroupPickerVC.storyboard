@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--{Database Name}-->
+        <scene sceneID="0To-bW-YDD">
+            <objects>
+                <tableViewController storyboardIdentifier="DestinationGroupPickerVC" id="H7A-yj-ZNo" customClass="DestinationGroupPickerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="j7o-nQ-Dn4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="20" reuseIdentifier="GroupCell" id="YvK-qJ-VKA" customClass="DestinationGroupPickerCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="51"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YvK-qJ-VKA" id="0Sn-Ia-Pw7">
+                                    <rect key="frame" x="0.0" y="0.0" width="293" height="51"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/kpbIcon48" translatesAutoresizingMaskIntoConstraints="NO" id="Zin-P3-RgK">
+                                            <rect key="frame" x="16" y="11" width="29" height="29"/>
+                                            <color key="tintColor" name="IconTint"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="SKe-fp-H6m"/>
+                                                <constraint firstAttribute="width" secondItem="Zin-P3-RgK" secondAttribute="height" multiplier="1:1" id="ny8-x5-gC9"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="{Group Name}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypt-ow-bC3">
+                                            <rect key="frame" x="61" y="15.5" width="109" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="#bc-ignore!"/>
+                                            </attributedString>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{nItems}" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le2-Lc-g8a">
+                                            <rect key="frame" x="221" y="15.5" width="64" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
+                                            <nil key="highlightedColor"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="#bc-ignore!"/>
+                                            </attributedString>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="le2-Lc-g8a" secondAttribute="trailing" id="6L1-FX-HFq"/>
+                                        <constraint firstItem="Ypt-ow-bC3" firstAttribute="leading" secondItem="Zin-P3-RgK" secondAttribute="trailing" constant="16" id="I3o-fG-8tj"/>
+                                        <constraint firstItem="le2-Lc-g8a" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0Sn-Ia-Pw7" secondAttribute="topMargin" constant="4" id="KAt-VZ-A8Z"/>
+                                        <constraint firstItem="le2-Lc-g8a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ypt-ow-bC3" secondAttribute="trailing" constant="16" id="MoO-eb-jCB"/>
+                                        <constraint firstItem="Ypt-ow-bC3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0Sn-Ia-Pw7" secondAttribute="topMargin" constant="4" id="QRc-82-ggQ"/>
+                                        <constraint firstItem="Zin-P3-RgK" firstAttribute="leading" secondItem="0Sn-Ia-Pw7" secondAttribute="leadingMargin" id="RLM-6z-Gof"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="le2-Lc-g8a" secondAttribute="bottom" constant="4" id="jpu-Q3-3h8"/>
+                                        <constraint firstItem="le2-Lc-g8a" firstAttribute="centerY" secondItem="0Sn-Ia-Pw7" secondAttribute="centerY" id="kN9-N2-ejn"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Ypt-ow-bC3" secondAttribute="bottom" constant="4" id="kdg-ga-xGQ"/>
+                                        <constraint firstItem="Zin-P3-RgK" firstAttribute="centerY" secondItem="0Sn-Ia-Pw7" secondAttribute="centerY" id="lb5-xJ-xAX"/>
+                                        <constraint firstItem="Ypt-ow-bC3" firstAttribute="centerY" secondItem="0Sn-Ia-Pw7" secondAttribute="centerY" id="tNb-za-dAI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconView" destination="Zin-P3-RgK" id="qdw-WI-C70"/>
+                                    <outlet property="leftConstraint" destination="RLM-6z-Gof" id="Qo5-kZ-fv6"/>
+                                    <outlet property="subtitleLabel" destination="le2-Lc-g8a" id="mbL-Ww-UJt"/>
+                                    <outlet property="titleLabel" destination="Ypt-ow-bC3" id="UMv-gt-AIh"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="H7A-yj-ZNo" id="Rle-DA-8zo"/>
+                            <outlet property="delegate" destination="H7A-yj-ZNo" id="lN3-ek-c8T"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="{Database Name}" id="t1g-Uj-JUq">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tcC-AS-3N1">
+                            <connections>
+                                <action selector="didPressCancelButton:" destination="H7A-yj-ZNo" id="y6m-EX-sou"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="zLH-Pd-Hlr">
+                            <connections>
+                                <action selector="didPressDoneButton:" destination="H7A-yj-ZNo" id="G1B-BX-akA"/>
+                            </connections>
+                        </barButtonItem>
+                        <attributedString key="userComments">
+                            <fragment content="#bc-ignore!"/>
+                        </attributedString>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="doneButton" destination="zLH-Pd-Hlr" id="1n4-sC-3vN"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7I-x5-DYT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="db-icons/kpbIcon48" width="29" height="29"/>
+        <namedColor name="AuxiliaryText">
+            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

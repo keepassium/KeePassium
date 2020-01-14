@@ -47,33 +47,37 @@ public final class CryptoManager {
         return merged.sha512
     }
     
-    public static func hmacSHA256(data: ByteArray, key: ByteArray) -> ByteArray {
-        assert(key.count == CC_SHA256_BLOCK_BYTES)
-        
-        let out = ByteArray(count: SHA256_SIZE)
-        data.withBytes{ dataBytes in
-            key.withBytes{ keyBytes in
-                out.withMutableBytes { (outBytes: inout [UInt8]) in
-                    CCHmac(
-                        CCHmacAlgorithm(kCCHmacAlgSHA256),
-                        keyBytes, keyBytes.count,
-                        dataBytes, dataBytes.count,
-                        &outBytes
-                    )
-                }
-            }
-        }
+    public static func hmacSHA1(data: ByteArray, key: ByteArray) -> ByteArray {
+        let out = ByteArray(count: Int(CC_SHA1_DIGEST_LENGTH))
+        hmacSHA(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA1), data: data, key: key, out: out)
         return out
     }
     
-    public static func hmacSHA1(data: ByteArray, key: ByteArray) -> ByteArray {
-        
-        let out = ByteArray(count: SHA1_SIZE)
+    public static func hmacSHA256(data: ByteArray, key: ByteArray) -> ByteArray {
+        assert(key.count == CC_SHA256_BLOCK_BYTES)
+        let out = ByteArray(count: Int(CC_SHA256_DIGEST_LENGTH))
+        hmacSHA(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA256), data: data, key: key, out: out)
+        return out
+    }
+    
+    public static func hmacSHA512(data: ByteArray, key: ByteArray) -> ByteArray {
+        assert(key.count == CC_SHA512_BLOCK_BYTES)
+        let out = ByteArray(count: Int(CC_SHA512_DIGEST_LENGTH))
+        hmacSHA(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA512), data: data, key: key, out: out)
+        return out
+    }
+    
+    private static func hmacSHA(
+        algorithm: CCHmacAlgorithm,
+        data: ByteArray,
+        key: ByteArray,
+        out: ByteArray)
+    {
         data.withBytes{ dataBytes in
             key.withBytes{ keyBytes in
                 out.withMutableBytes { (outBytes: inout [UInt8]) in
                     CCHmac(
-                        CCHmacAlgorithm(kCCHmacAlgSHA1),
+                        algorithm,
                         keyBytes, keyBytes.count,
                         dataBytes, dataBytes.count,
                         &outBytes
@@ -81,7 +85,6 @@ public final class CryptoManager {
                 }
             }
         }
-        return out
     }
     
     public static func addPadding(data: ByteArray, blockSize: Int) {

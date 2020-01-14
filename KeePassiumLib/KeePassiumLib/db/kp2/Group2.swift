@@ -48,14 +48,14 @@ public class Group2: Group {
         customData.erase()
     }
     
-    override public func clone() -> Group {
+    override public func clone(makeNewUUID: Bool) -> Group {
         let copy = Group2(database: database)
-        apply(to: copy)
+        apply(to: copy, makeNewUUID: makeNewUUID)
         return copy
     }
     
-    func apply(to target: Group2) {
-        super.apply(to: target)
+    func apply(to target: Group2, makeNewUUID: Bool) {
+        super.apply(to: target, makeNewUUID: makeNewUUID)
         
         target.isExpanded = isExpanded
         target.customIconUUID = customIconUUID
@@ -113,6 +113,7 @@ public class Group2: Group {
         
         let db2: Database2 = database as! Database2
         let meta: Meta2 = db2.meta
+        var isRecycleBin = false
         
         for tag in xml.children {
             switch tag.name {
@@ -120,7 +121,7 @@ public class Group2: Group {
                 self.uuid = UUID(base64Encoded: tag.value) ?? UUID.ZERO
                 if uuid == meta.recycleBinGroupUUID && meta.isRecycleBinEnabled {
                     Diag.verbose("Is a backup group")
-                    self.isDeleted = true 
+                    isRecycleBin = true
                 }
             case Xml2.name:
                 self.name = tag.value ?? ""
@@ -166,60 +167,61 @@ public class Group2: Group {
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "Group/*")
             }
         }
+        if isRecycleBin {
+            deepSetDeleted(true)
+        }
     }
     
+    private func parseTimestamp(value: String?, tag: String, fallbackToEpoch: Bool) throws -> Date {
+        if (value == nil || value!.isEmpty) && fallbackToEpoch {
+            Diag.warning("\(tag) is empty, will use 1970-01-01 instead")
+            return Date(timeIntervalSince1970: 0.0)
+        }
+        let db = database as! Database2
+        guard let time = db.xmlStringToDate(value) else {
+            Diag.error("Cannot parse \(tag) as Date")
+            throw Xml2.ParsingError.malformedValue(
+                tag: tag,
+                value: value)
+        }
+        return time
+    }
     
     func loadTimes(xml: AEXMLElement) throws {
         assert(xml.name == Xml2.times)
         Diag.verbose("Loading XML: group times")
         
-        let db = database as! Database2
         for tag in xml.children {
             switch tag.name {
             case Xml2.lastModificationTime:
-                guard let time = db.xmlStringToDate(tag.value) else {
-                    Diag.error("Cannot parse Group/Times/LastModificationTime as Date")
-                    throw Xml2.ParsingError.malformedValue(
-                        tag: "Group/Times/LastModificationTime",
-                        value: tag.value)
-                }
-                lastModificationTime = time
+                lastModificationTime = try parseTimestamp(
+                    value: tag.value,
+                    tag: "Group/Times/LastModificationTime",
+                    fallbackToEpoch: true)
             case Xml2.creationTime:
-                guard let time = db.xmlStringToDate(tag.value) else {
-                    Diag.error("Cannot parse Group/Times/CreationTime as Date")
-                    throw Xml2.ParsingError.malformedValue(
-                        tag: "Group/Times/CreationTime",
-                        value: tag.value)
-                }
-                creationTime = time
+                creationTime = try parseTimestamp(
+                    value: tag.value,
+                    tag: "Group/Times/CreationTime",
+                    fallbackToEpoch: true)
             case Xml2.lastAccessTime:
-                guard let time = db.xmlStringToDate(tag.value) else {
-                    Diag.error("Cannot parse Group/Times/LastAccessTime as Date")
-                    throw Xml2.ParsingError.malformedValue(
-                        tag: "Group/Times/LastAccessTime",
-                        value: tag.value)
-                }
-                lastAccessTime = time
+                lastAccessTime = try parseTimestamp(
+                    value: tag.value,
+                    tag: "Group/Times/LastAccessTime",
+                    fallbackToEpoch: true)
             case Xml2.expiryTime:
-                guard let time = db.xmlStringToDate(tag.value) else {
-                    Diag.error("Cannot parse Group/Times/ExpiryTime as Date")
-                    throw Xml2.ParsingError.malformedValue(
-                        tag: "Group/Times/ExpiryTime",
-                        value: tag.value)
-                }
-                expiryTime = time
+                expiryTime = try parseTimestamp(
+                    value: tag.value,
+                    tag: "Group/Times/ExpiryTime",
+                    fallbackToEpoch: true)
             case Xml2.expires:
                 canExpire = Bool(string: tag.value)
             case Xml2.usageCount:
                 usageCount = UInt32(tag.value) ?? 0
             case Xml2.locationChanged:
-                guard let time = db.xmlStringToDate(tag.value) else {
-                    Diag.error("Cannot parse Group/Times/LocationChanged as Date")
-                    throw Xml2.ParsingError.malformedValue(
-                        tag: "Group/Times/LocationChanged",
-                        value: tag.value)
-                }
-                locationChangedTime = time
+                locationChangedTime = try parseTimestamp(
+                    value: tag.value,
+                    tag: "Group/Times/LocationChanged",
+                    fallbackToEpoch: true)
             default:
                 Diag.error("Unexpected XML tag in Group/Times: \(tag.name)")
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "Group/Times/*")

@@ -29,7 +29,7 @@
 "[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "Ungültiger KDF-Parameter: %1$@ - %2$@. Datei beschädigt?";
 
 /* Error message about random number generator. [errorCode: Int] */
-"[CryptoError] Random number generator error (code %d)" = "Zufallsnummer-Generator-Fehler (Code %d)";
+"[CryptoError] Random number generator error (code %d)" = "Zufallszahl-Generator-Fehler (Code %d)";
 
 /* Error message about Twofish cipher. [errorCode: Int] */
 "[CryptoError] Twofish cipher error (code %d)" = "Twofish Chiffrerfehler (Code %d)";
@@ -47,7 +47,7 @@
 "[Database/Load/Error] Cannot open key file" = "Schlüsseldatei kann nicht geöffnet werden";
 
 /* Error shown when both master password and key file are empty */
-"[Database/Load/Error] Please provide at least a password or a key file" = "Bitte geben Sie mindestens ein Passwort ein oder eine Schlüsseldatei an";
+"[Database/Load/Error] Please provide at least a password or a key file" = "Bitte nutzen Sie mindestens ein Passwort oder eine Schlüsseldatei";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Unbekanntes Datenbankformat";
@@ -65,19 +65,19 @@
 "[Database/Unlock/Error] Failed to open key file" = "Schlüsseldatei konnte nicht geöffnet werden";
 
 /* Error message */
-"[Database/Unlock/Error] Password and key file are both empty." = "Passwort ist leer und es ist keine Schlüsseldatei angegeben.";
+"[Database/Unlock/Error] Password and key file are both empty." = "Passwortfeld ist leer und es wurde keine Schlüsseldatei angegeben.";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "Datenbank-Datei ist beschädigt.";
 
 /* Error message [fieldName: String] */
-"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Fehler beim Parsen des Feldes %@. Datenbankdatei fehlerhaft?";
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Fehler beim Parsen des Feldes %@. Datenbankdatei beschädigt?";
 
 /* Error message */
-"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Eintrag außerhalb einer Gruppe gefunden. Korrupte Datenbankdatei?";
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Eintrag außerhalb einer Gruppe gefunden. Datenbankdatei beschädigt?";
 
 /* Error message */
-"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Unerwartetes Ende der Datei. Korrupte Datenbankdatei?";
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Unerwartetes Ende der Datei. Datenbankdatei beschädigt?";
 
 /* Error message when reading database header */
 "[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Header Lesefehler. Datenbankdatei beschädigt?";
@@ -101,7 +101,7 @@
 "[Database2/backupGroupName] Recycle Bin" = "Papierkorb";
 
 /* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
-"[Database2/FormatError] Cannot parse database. %s" = "Datenbank kann nicht analysiert werden. %s";
+"[Database2/FormatError] Cannot parse database. %@" = "Datenbank kann nicht analysiert werden. %@";
 
 /* Error message [blockIndex: Int] */
 "[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Fehlerhafte Datenbankdatei (Block %d hat negative Größe)";
@@ -128,7 +128,7 @@
 "[Database2/Header2/Error] Header field %@ is corrupted." = "Header-Feld %@ ist beschädigt.";
 
 /* Error message */
-"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Header Hash-Fehler. Datenbankdatei möglicherweise beschädigt?";
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Header Hash-Fehler. Datenbankdatei beschädigt?";
 
 /* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
 "[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Header HMAC-Fehler. Datenbankdatei möglicherweise beschädigt?";

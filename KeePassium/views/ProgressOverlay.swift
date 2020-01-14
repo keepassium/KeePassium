@@ -11,6 +11,8 @@ import KeePassiumLib
 
 @IBDesignable
 class ProgressOverlay: UIView {
+    typealias UnresponsiveCancelHandler = () -> ()
+    
     public var title: String? { 
         didSet { statusLabel.text = title }
     }
@@ -23,6 +25,11 @@ class ProgressOverlay: UIView {
             cancelButton.isEnabled = newValue
         }
     }
+    
+    public var unresponsiveCancelHandler: UnresponsiveCancelHandler? 
+    
+    private var cancelPressCounter = 0
+    private let cancelCountConsideredUnresponsive = 3
     
     private var statusLabel: UILabel!
     private var percentLabel: UILabel!
@@ -137,5 +144,10 @@ class ProgressOverlay: UIView {
     @objc
     private func didPressCancel(_ sender: UIButton) {
         progress?.cancel()
+        cancelPressCounter += 1
+        if cancelPressCounter >= cancelCountConsideredUnresponsive {
+            unresponsiveCancelHandler?()
+            cancelPressCounter = 0
+        }
     }
 }

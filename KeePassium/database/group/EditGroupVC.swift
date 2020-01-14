@@ -106,12 +106,12 @@ class EditGroupVC: UIViewController, Refreshable {
     
     func rememberOriginalState() {
         guard let group = group else { fatalError() }
-        originalGroup = group.clone()
+        originalGroup = group.clone(makeNewUUID: false)
     }
     
     func restoreOriginalState() {
         if let group = group, let originalGroup = originalGroup {
-            originalGroup.apply(to: group)
+            originalGroup.apply(to: group, makeNewUUID: false)
         }
     }
     

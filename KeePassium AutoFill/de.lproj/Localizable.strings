@@ -14,7 +14,7 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
-"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Um zu aktualisieren, bitte KeePassium von Ihrem Homescreen manuell öffnen.";
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Um zu aktualisieren, öffnen Sie bitte KeePassium manuell von Ihrem Home-Bildschirm aus.";
 
 /* Title of a message related to upgrading to the premium version */
 "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Premium-Upgrade";
@@ -44,7 +44,7 @@
 "[Database/Loading/Status] Loading..." = "Lade...";
 
 /* Notification after changing database master key */
-"[Database/MasterKey/changed] Master key successfully changed" = "Master Key erfolgreich gelöscht";
+"[Database/MasterKey/changed] Master key successfully changed" = "Hauptschlüssel erfolgreich geändert";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Datenbank öffnen";
@@ -101,7 +101,7 @@
 "[Entry/New/defaultTitle] New Entry" = "Neuer Eintrag";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Versuchen Sie die Datei aus der App zu entfernen und fügen Sie sie erneut hinzu.";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Erstellungsdatum";
@@ -127,6 +127,9 @@
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Kontakt";
 
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "Kopieren";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Löschen";
 
@@ -144,6 +147,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportieren";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "Verschieben";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";

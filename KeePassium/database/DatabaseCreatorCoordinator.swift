@@ -240,12 +240,12 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
     
     func databaseManager(didSaveDatabase urlRef: URLReference) {
         DatabaseManager.shared.removeObserver(self)
-        databaseCreatorVC.hideProgressView()
         DatabaseManager.shared.closeDatabase(
             clearStoredKey: true,
             ignoreErrors: false,
             completion: { [weak self] (errorMessage) in
                 if let errorMessage = errorMessage {
+                    self?.databaseCreatorVC.hideProgressView()
                     let errorAlert = UIAlertController.make(
                         title: LString.titleError,
                         message: errorMessage,
@@ -280,6 +280,8 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
 
 extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        databaseCreatorVC.hideProgressView()
+        
         if let initialTopController = self.initialTopController {
             self.navigationController.popToViewController(initialTopController, animated: false)
         }
@@ -291,6 +293,10 @@ extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
         didPickDocumentsAt urls: [URL])
     {
         guard let url = urls.first else { return }
-        addCreatedDatabase(at: url)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { 
+            self.databaseCreatorVC.hideProgressView()
+            self.addCreatedDatabase(at: url)
+        }
     }
 }

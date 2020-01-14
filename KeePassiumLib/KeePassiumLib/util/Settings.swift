@@ -817,56 +817,6 @@ public class Settings {
         }
     }
     
-    public func getKeyFileForDatabase(databaseRef: URLReference) -> URLReference? {
-        guard let db2key = UserDefaults.appGroupShared
-            .dictionary(forKey: Keys.keyFileAssociations.rawValue) else { return nil }
-        
-        let databaseID = databaseRef.info.fileName
-        if let keyFileRefData = db2key[databaseID] as? Data {
-            return URLReference.deserialize(from: keyFileRefData)
-        } else { 
-            return nil
-        }
-    }
-    
-    public func setKeyFileForDatabase(databaseRef: URLReference, keyFileRef: URLReference?) {
-        guard isKeepKeyFileAssociations else { return }
-        var db2key: Dictionary<String, Data> = [:]
-        if let storedDict = UserDefaults.appGroupShared
-            .dictionary(forKey: Keys.keyFileAssociations.rawValue)
-        {
-            for (storedDatabaseID, storedKeyFileRefData) in storedDict {
-                guard let storedKeyFileRefData = storedKeyFileRefData as? Data else { continue }
-                db2key[storedDatabaseID] = storedKeyFileRefData
-            }
-        }
-        
-        let databaseID = databaseRef.info.fileName
-        db2key[databaseID] = keyFileRef?.serialize()
-        UserDefaults.appGroupShared.setValue(db2key, forKey: Keys.keyFileAssociations.rawValue)
-        postChangeNotification(changedKey: Keys.keyFileAssociations)
-    }
-    
-    public func forgetKeyFile(for databaseRef: URLReference) {
-        setKeyFileForDatabase(databaseRef: databaseRef, keyFileRef: nil)
-    }
-    
-    public func forgetKeyFile(_ keyFileRef: URLReference) {
-        guard isKeepKeyFileAssociations else { return }
-        var db2key = Dictionary<String, Data>()
-        if let storedDict = UserDefaults.appGroupShared
-            .dictionary(forKey: Keys.keyFileAssociations.rawValue)
-        {
-            for (storedDatabaseID, storedKeyFileRefData) in storedDict {
-                guard let storedKeyFileRefData = storedKeyFileRefData as? Data else { continue }
-                if keyFileRef != URLReference.deserialize(from: storedKeyFileRefData) {
-                    db2key[storedDatabaseID] = storedKeyFileRefData
-                }
-            }
-        }
-        UserDefaults.appGroupShared.setValue(db2key, forKey: Keys.keyFileAssociations.rawValue)
-    }
-    
     public func removeAllKeyFileAssociations() {
         UserDefaults.appGroupShared.setValue(
             Dictionary<String, Data>(),
@@ -944,10 +894,10 @@ public class Settings {
         }
     }
     
-    public var isAffectedByAutoFillFaceIDLoop_iOS_13_2_3 = false
+    public var isAffectedByAutoFillFaceIDLoop_iOS_13_1_3 = false
     
-    public func maybeFixAutoFillFaceIDLoop_iOS_13_2_3(_ timeout: AppLockTimeout) -> AppLockTimeout {
-        if isAffectedByAutoFillFaceIDLoop_iOS_13_2_3 && timeout == .immediately {
+    public func maybeFixAutoFillFaceIDLoop_iOS_13_1_3(_ timeout: AppLockTimeout) -> AppLockTimeout {
+        if isAffectedByAutoFillFaceIDLoop_iOS_13_1_3 && timeout == .immediately {
             return .after1second
         } else {
             return timeout
@@ -960,9 +910,9 @@ public class Settings {
                 .object(forKey: Keys.appLockTimeout.rawValue) as? Int,
                 let timeout = AppLockTimeout(rawValue: rawValue)
             {
-                return maybeFixAutoFillFaceIDLoop_iOS_13_2_3(timeout)
+                return maybeFixAutoFillFaceIDLoop_iOS_13_1_3(timeout)
             }
-            return maybeFixAutoFillFaceIDLoop_iOS_13_2_3(AppLockTimeout.immediately)
+            return maybeFixAutoFillFaceIDLoop_iOS_13_1_3(AppLockTimeout.immediately)
         }
         set {
             let oldValue = appLockTimeout

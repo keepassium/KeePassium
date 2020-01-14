@@ -100,6 +100,9 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             DispatchQueue.main.async { [weak self] in
                 self?.tryToUnlockDatabase(isAutomaticUnlock: true)
             }
+        } else {
+            hideProgressOverlay(quickly: true)
+            refreshInputMode()
         }
 
         if FileKeeper.shared.hasPendingFileOperations {
@@ -115,6 +118,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         } else {
             hideWatchdogTimeoutMessage(animated: false)
         }
+        refreshInputMode()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -145,9 +149,8 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             }
         }
         
-        let associatedKeyFileRef = Settings.current
-            .premiumGetKeyFileForDatabase(databaseRef: databaseRef)
-        if let associatedKeyFileRef = associatedKeyFileRef {
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
+        if let associatedKeyFileRef = dbSettings?.associatedKeyFile {
             let allAvailableKeyFiles = FileKeeper.shared
                 .getAllReferences(fileType: .keyFile, includeBackup: false)
             if let availableKeyFileRef = associatedKeyFileRef
@@ -173,9 +176,11 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     }
     
     private func refreshInputMode() {
-        let isDatabaseKeyStored = try? DatabaseManager.shared.hasKey(for: databaseRef)
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
+        let isDatabaseKeyStored = dbSettings?.hasMasterKey ?? false
+        Diag.verbose("isDatabaseKeyStored: \(isDatabaseKeyStored)")
         
-        let shouldInputMasterKey = !(isDatabaseKeyStored ?? false)
+        let shouldInputMasterKey = !isDatabaseKeyStored
         masterKeyKnownLabel.isHidden = shouldInputMasterKey
         inputPanel.isHidden = !shouldInputMasterKey
     }
@@ -184,6 +189,10 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         if !inputPanel.isHidden {
             passwordField.becomeFirstResponder()
         }
+    }
+    
+    private func clearPasswordField() {
+        passwordField.text = ""
     }
     
     
@@ -302,6 +311,11 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             title: LString.databaseStatusLoading,
             animated: animated)
         progressOverlay?.isCancellable = true
+        progressOverlay?.unresponsiveCancelHandler = { [weak self] in
+            guard let self = self else { return }
+            let diagInfoVC = ViewDiagnosticsVC.make()
+            self.present(diagInfoVC, animated: true, completion: nil)
+        }
         
         if let leftNavController = splitViewController?.viewControllers.first as? UINavigationController,
             let chooseDatabaseVC = leftNavController.topViewController as? ChooseDatabaseVC {
@@ -366,33 +380,39 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     func canAutoUnlock() -> Bool {
         guard isAutoUnlockEnabled else { return false }
         guard let splitVC = splitViewController, splitVC.isCollapsed else { return false }
-        let hasKey: Bool = (try? DatabaseManager.shared.hasKey(for: databaseRef)) ?? true
+        
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
+        let hasKey = dbSettings?.hasMasterKey ?? false
+        Diag.verbose("canAutoUnlock: \(hasKey)")
         return hasKey
     }
     
     func tryToUnlockDatabase(isAutomaticUnlock: Bool) {
         Diag.clear()
+        Diag.verbose("Will try to unlock database [automatically: \(isAutomaticUnlock)]")
         self.isAutomaticUnlock = isAutomaticUnlock
         let password = passwordField.text ?? ""
         passwordField.resignFirstResponder()
         hideWatchdogTimeoutMessage(animated: true)
         DatabaseManager.shared.addObserver(self)
-        
-        do {
-            if let databaseKey = try Keychain.shared.getDatabaseKey(databaseRef: databaseRef) {
-                DatabaseManager.shared.startLoadingDatabase(
-                    database: databaseRef,
-                    compositeKey: databaseKey)
-            } else {
-                DatabaseManager.shared.startLoadingDatabase(
-                    database: databaseRef,
-                    password: password,
-                    keyFile: keyFileRef)
+
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
+        if let databaseKey = dbSettings?.masterKey {
+            DatabaseManager.shared.startLoadingDatabase(
+                database: databaseRef,
+                compositeKey: databaseKey.secureClone())
+        } else {
+            guard !isAutomaticUnlock else {
+                Diag.debug("Aborting auto-unlock, there is no stored key")
+                refreshInputMode()
+                hideProgressOverlay(quickly: true)
+                return
             }
-        } catch {
-            Diag.error(error.localizedDescription)
-            hideProgressOverlay(quickly: true) 
-            showErrorMessage(error.localizedDescription)
+
+            DatabaseManager.shared.startLoadingDatabase(
+                database: databaseRef,
+                password: password,
+                keyFile: keyFileRef)
         }
     }
     
@@ -420,7 +440,9 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
 extension UnlockDatabaseVC: KeyFileChooserDelegate {
     func setKeyFile(urlRef: URLReference?) {
         keyFileRef = urlRef
-        Settings.current.setKeyFileForDatabase(databaseRef: databaseRef, keyFileRef: keyFileRef)
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
+            dbSettings.maybeSetAssociatedKeyFile(keyFileRef)
+        }
 
         guard let fileInfo = urlRef?.info else {
             Diag.debug("No key file selected")
@@ -482,14 +504,17 @@ extension UnlockDatabaseVC: UITextFieldDelegate {
 
 extension UnlockDatabaseVC: DatabaseManagerObserver {
     func databaseManager(willLoadDatabase urlRef: URLReference) {
-        self.passwordField.text = "" 
         showProgressOverlay(animated: true)
     }
     
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
         DatabaseManager.shared.removeObserver(self)
-        try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
+        DatabaseSettingsManager.shared.updateSettings(for: urlRef) { (dbSettings) in
+            dbSettings.clearMasterKey()
+        }
+        
         refresh()
+        clearPasswordField()
         hideProgressOverlay(quickly: true)
         maybeFocusOnPassword()
     }
@@ -500,7 +525,9 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
     
     func databaseManager(database urlRef: URLReference, invalidMasterKey message: String) {
         DatabaseManager.shared.removeObserver(self)
-        try? Keychain.shared.removeDatabaseKey(databaseRef: urlRef) 
+        DatabaseSettingsManager.shared.updateSettings(for: urlRef) { (dbSettings) in
+            dbSettings.clearMasterKey()
+        }
         refresh()
         hideProgressOverlay(quickly: true)
         
@@ -520,6 +547,7 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
                 Diag.error("Failed to remember database key [message: \(error.localizedDescription)]")
             }
         }
+        clearPasswordField()
         hideProgressOverlay(quickly: false)
         showDatabaseRoot(loadingWarnings: warnings)
     }

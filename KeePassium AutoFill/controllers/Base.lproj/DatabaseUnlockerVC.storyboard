@@ -198,7 +198,7 @@
                                     <constraint firstItem="66o-BC-gwg" firstAttribute="top" secondItem="YUw-D5-oyJ" secondAttribute="bottom" constant="16" id="YPN-Bb-ccx"/>
                                     <constraint firstItem="i0B-8N-nM0" firstAttribute="centerY" secondItem="66o-BC-gwg" secondAttribute="centerY" id="dSY-ts-aEq"/>
                                     <constraint firstItem="QNs-Fg-BB8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fAZ-VX-s1Y" secondAttribute="leadingMargin" id="fe7-Qr-Ynk"/>
-                                    <constraint firstItem="YUw-D5-oyJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QNs-Fg-BB8" secondAttribute="bottom" id="ftC-HR-biD"/>
+                                    <constraint firstItem="YUw-D5-oyJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QNs-Fg-BB8" secondAttribute="bottom" constant="4" id="ftC-HR-biD"/>
                                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="YUw-D5-oyJ" secondAttribute="trailing" id="gVV-A4-UAE"/>
                                     <constraint firstItem="Q5g-RY-uXD" firstAttribute="centerY" secondItem="fAZ-VX-s1Y" secondAttribute="centerY" priority="250" id="gaS-ck-Wc3"/>
                                     <constraint firstItem="i0B-8N-nM0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fAZ-VX-s1Y" secondAttribute="leading" constant="8" id="m4A-7S-ULI"/>
