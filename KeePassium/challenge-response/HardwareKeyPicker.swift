@@ -30,7 +30,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         YubiKey(interface: .mfi, slot: .slot2)]
 
     private enum Section: Int {
-        static let allValues = [.noHardwareKey, yubiKeyNFC, yubiKeyMFI]
+        static let allValues = [.noHardwareKey, yubiKeyNFC]
         case noHardwareKey
         case yubiKeyNFC
         case yubiKeyMFI
@@ -49,6 +49,10 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     private var isMFIAvailable = false
     
     private var isChoiceMade = false
+    
+    #if MAIN_APP
+    private let premiumUpgradeHelper = PremiumUpgradeHelper()
+    #endif
     
     
     public static func create(delegate: HardwareKeyPickerDelegate?=nil) -> HardwareKeyPicker {
@@ -118,6 +122,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         }
         return super.tableView(tableView, titleForFooterInSection: section)
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let section = Section(rawValue: indexPath.section) else {
             fatalError()
@@ -177,8 +182,24 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         case .yubiKeyMFI:
             selectedKey = mfiKeys[indexPath.row]
         }
+    
+        #if MAIN_APP
+        if selectedKey != nil {
+            premiumUpgradeHelper.performActionOrOfferUpgrade(.canUseHardwareKeys, in: self) {
+                [weak self] in
+                self?.didSelectKey(selectedKey!)
+            }
+        } else {
+            didSelectKey(selectedKey)
+        }
+        #elseif AUTOFILL_EXT
+        assertionFailure("How did you end up here?")
+        #endif
+    }
+    
+    private func didSelectKey(_ key: YubiKey?) {
         isChoiceMade = true
-        delegate?.didSelectKey(yubiKey: selectedKey, in: self)
+        delegate?.didSelectKey(yubiKey: key, in: self)
         dismiss(animated: true, completion: nil)
     }
 }

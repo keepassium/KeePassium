@@ -32,6 +32,12 @@ extension PremiumFeature {
                 "[PremiumFeature/Preview/title] Preview Attachments",
                 value: "Preview Attachments",
                 comment: "Title of a premium feature: ability to preview some attached files directly in the app (In Title Case)")
+        case .canUseHardwareKeys:
+            return NSLocalizedString(
+                "[PremiumFeature/HardwareKeys/title] Hardware Keys",
+                value: "Hardware Keys",
+                comment: "Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case)")
+
         }
     }
     
@@ -57,6 +63,11 @@ extension PremiumFeature {
                 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version.",
                 value: "Preview images and documents directly in the app, in the premium version.",
                 comment: "Description/advertisement for the `Preview Attachments` premium feature")
+        case .canUseHardwareKeys:
+            return NSLocalizedString(
+                "[PremiumFeature/HardwareKeys/description]",
+                value: "Strengthen your security with hardware keys (YubiKey) in the premium version.",
+                comment: "Description/advertisement for the `Hardware Keys` premium feature")
         }
     }
 }

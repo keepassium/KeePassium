@@ -98,7 +98,19 @@ class PremiumVC: UIViewController {
             value: "Tired of typing your master password? Keep your database open longer and unlock it with one tap.",
             comment: "Explanation of the premium feature")
         benefitsStackView.addArrangedSubview(databaseTimeoutBenefit)
-        
+
+        let hardwareKeysBenefit = PremiumBenefitView(frame: CGRect.zero)
+        hardwareKeysBenefit.image = UIImage(asset: .premiumBenefitHardwareKeys)
+        hardwareKeysBenefit.title = NSLocalizedString(
+            "[Premium/Benefits/HardwareKeys/title]",
+            value: "Use hardware keys",
+            comment: "Title of a premium feature")
+        hardwareKeysBenefit.subtitle = NSLocalizedString(
+            "[Premium/Benefits/HardwareKeys/details]",
+            value: "Protect your secrets with a hardware key, such as YubiKey.",
+            comment: "Explanation of the premium feature")
+        benefitsStackView.addArrangedSubview(hardwareKeysBenefit)
+
         let previewBenefit = PremiumBenefitView(frame: CGRect.zero)
         previewBenefit.image = UIImage(asset: .premiumBenefitPreview)
         previewBenefit.title = NSLocalizedString(

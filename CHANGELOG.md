@@ -1,13 +1,27 @@
 #CHANGELOG
 
+## [1.09.52] - 2020-01-17
+
+### Changed
+
+- Made YubiKey support availably only in premium version
+
+### Removed
+
+- MFi interface (while pending registration)
+
+
 ## [1.09.51] - 2020-01-15
 
-- Internal beta release
+### Added
 
-## [1.09.50] - 2020-01-14
+- YubiKey support (compatible with KeePassXC)
 
-- Internal beta release
-- Invalid: missing camera usage description
+
+## [1.09.50] - 2020-01-14 [REJECTED]
+
+- Rejected by Apple: missing camera usage description
+- Added: YubiKey support (compatible with KeePassXC)
 
 
 ## [1.09.49] - 2020-01-14

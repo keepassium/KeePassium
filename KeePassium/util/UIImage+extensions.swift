@@ -33,6 +33,7 @@ enum ImageAsset: String {
     case premiumBenefitMultiDB = "premium-benefit-multidb"
     case premiumBenefitDBTimeout = "premium-benefit-db-timeout"
     case premiumBenefitPreview = "premium-benefit-preview"
+    case premiumBenefitHardwareKeys = "premium-benefit-yubikey"
     case premiumBenefitSupport = "premium-benefit-support"
     case premiumBenefitShiny = "premium-benefit-shiny"
     case expandRowCellAccessory = "expand-row-cellaccessory"
