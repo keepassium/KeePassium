@@ -2,19 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UISupportedExternalAccessoryProtocols</key>
-	<array>
-		<string>com.yubico.ylp</string>
-	</array>
-	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
-	<array>
-		<string>A000000527471117</string>
-		<string>A0000006472F0001</string>
-		<string>A0000005272101</string>
-		<string>A000000308</string>
-		<string>A000000527200101</string>
-        <string>A0000005272001</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -89,12 +76,14 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
+	<key>NFCReaderUsageDescription</key>
+	<string>KeePassium needs access to NFC to communicate with your YubiKey.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>KeePassium needs the camera to scan QR codes.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use FaceID to unlock KeePassium</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>KeePassium needs permission to export files to your Photo Library.</string>
-    <key>NFCReaderUsageDescription</key>
-    <string>KeePassium needs access to NFC to communicate with your YubiKey.</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -104,6 +93,10 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+	</array>
+	<key>UISupportedExternalAccessoryProtocols</key>
+	<array>
+		<string>com.yubico.ylp</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
@@ -274,6 +267,15 @@
 				</array>
 			</dict>
 		</dict>
+	</array>
+	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+	<array>
+		<string>A000000527471117</string>
+		<string>A0000006472F0001</string>
+		<string>A0000005272101</string>
+		<string>A000000308</string>
+		<string>A000000527200101</string>
+		<string>A0000005272001</string>
 	</array>
 </dict>
 </plist>
