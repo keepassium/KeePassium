@@ -1,10 +1,18 @@
 #CHANGELOG
 
+## [1.10.53] - 2020-01-19
+
+### Fixed
+
+- Version bump for AppStore publication
+- Parsing problematic timestamps in DBs written by KeePassDX (Kunzisoft/KeePassDX#415)
+
+
 ## [1.09.52] - 2020-01-17
 
 ### Changed
 
-- Made YubiKey support availably only in premium version
+- YubiKey support is now available only in premium version
 
 ### Removed
 

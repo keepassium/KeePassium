@@ -254,11 +254,12 @@ public class Database2: Database {
     }
     
     func xmlStringToDate(_ string: String?) -> Date? {
+        let trimmedString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
         switch header.formatVersion {
         case .v3:
-            return Date(iso8601string: string)
+            return Date(iso8601string: trimmedString)
         case .v4:
-            return Date(base64Encoded: string)
+            return Date(base64Encoded: trimmedString)
         }
     }
     
