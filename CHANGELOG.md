@@ -1,5 +1,11 @@
 #CHANGELOG
 
+## [1.09.50] - 2020-01-14
+
+- Internal beta release
+- Invalid: missing camera usage description
+
+
 ## [1.09.49] - 2020-01-14
 
 ### Added

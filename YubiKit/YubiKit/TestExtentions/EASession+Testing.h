@@ -1,0 +1,32 @@
+// Copyright 2018-2019 Yubico AB
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#import <Foundation/Foundation.h>
+#import <ExternalAccessory/ExternalAccessory.h>
+#import "EAAccessory+Testing.h"
+
+@protocol YKFEASessionProtocol<NSObject>
+
+@property (nonatomic, readonly, nullable) id<YKFEAAccessoryProtocol> accessory;
+@property (nonatomic, readonly, nullable) NSString *protocolString;
+@property (nonatomic, readonly, nullable) NSInputStream *inputStream;
+@property (nonatomic, readonly, nullable) NSOutputStream *outputStream;
+
+@end
+
+/*
+ Allows to define a EASession property as id<YKFEASessionProtocol> to facilitate dependecy injection.
+ */
+@interface EASession()<YKFEASessionProtocol>
+@end

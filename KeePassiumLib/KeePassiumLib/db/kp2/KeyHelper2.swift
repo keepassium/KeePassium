@@ -18,28 +18,35 @@ final class KeyHelper2: KeyHelper {
         return SecureByteArray(data: Data(password.utf8))
     }
     
-    override func makeCompositeKey(passwordData: ByteArray, keyFileData: ByteArray) -> SecureByteArray {
+    override func combineComponents(
+        passwordData: SecureByteArray,
+        keyFileData: ByteArray
+    ) -> SecureByteArray {
         let hasPassword = !passwordData.isEmpty
         let hasKeyFile = !keyFileData.isEmpty
-
+        
         precondition(hasPassword || hasKeyFile)
         
-        let preKey: ByteArray
-        if hasPassword && hasKeyFile {
-            Diag.info("Using password and key file")
-            preKey = SecureByteArray.concat(
-                passwordData.sha256,
-                processKeyFile(keyFileData: keyFileData))
-        } else if hasPassword {
-            Diag.info("Using password only")
-            preKey = passwordData.sha256
-        } else if hasKeyFile {
-            Diag.info("Using key file only")
-            preKey = processKeyFile(keyFileData: keyFileData)
-        } else {
-            fatalError("Both password and key file are empty after being checked.")
+        var preKey = SecureByteArray()
+        if hasPassword {
+            Diag.info("Using password")
+            preKey = SecureByteArray.concat(preKey, passwordData.sha256)
         }
-        return SecureByteArray(preKey.sha256)
+        if hasKeyFile {
+            Diag.info("Using key file")
+            preKey = SecureByteArray.concat(
+                preKey,
+                processKeyFile(keyFileData: keyFileData)
+            )
+        }
+        if preKey.isEmpty {
+            fatalError("All key components are empty after being checked.")
+        }
+        return preKey 
+    }
+    
+    override func getKey(fromCombinedComponents combinedComponents: SecureByteArray) -> SecureByteArray {
+        return combinedComponents.sha256
     }
     
     internal override func processXmlKeyFile(keyFileData: ByteArray) -> SecureByteArray? {

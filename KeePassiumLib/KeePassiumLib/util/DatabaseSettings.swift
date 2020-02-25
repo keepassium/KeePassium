@@ -21,11 +21,14 @@ public class DatabaseSettings: Eraseable, Codable {
     public var accessMode: AccessMode
     
     public var isRememberMasterKey: Bool?
-    public private(set) var masterKey: SecureByteArray?
+    public private(set) var masterKey: CompositeKey?
     public var hasMasterKey: Bool { return masterKey != nil }
     
     public var isRememberKeyFile: Bool?
     public private(set) var associatedKeyFile: URLReference?
+    
+    public var isRememberHardwareKey: Bool?
+    public private(set) var associatedYubiKey: YubiKey?
 
     private enum CodingKeys: String, CodingKey {
         case databaseRef
@@ -34,6 +37,8 @@ public class DatabaseSettings: Eraseable, Codable {
         case masterKey
         case isRememberKeyFile
         case associatedKeyFile
+        case isRememberHardwareKey
+        case associatedYubiKey
     }
     
     init(for databaseRef: URLReference) {
@@ -68,14 +73,14 @@ public class DatabaseSettings: Eraseable, Codable {
         return result
     }
 
-    public func setMasterKey(_ key: SecureByteArray) {
-        masterKey = key.secureClone()
+    public func setMasterKey(_ key: CompositeKey) {
+        masterKey = key.clone()
     }
     
-    public func maybeSetMasterKey(_ key: SecureByteArray) {
-        if isRememberKeyFile ?? Settings.current.isRememberDatabaseKey {
-            setMasterKey(key)
-        }
+    public func maybeSetMasterKey(_ key: CompositeKey) {
+        guard isRememberKeyFile ?? Settings.current.isRememberDatabaseKey else { return }
+        guard key.state >= .combinedComponents else { return }
+        setMasterKey(key)
     }
 
     public func clearMasterKey() {
@@ -88,9 +93,17 @@ public class DatabaseSettings: Eraseable, Codable {
     }
     
     public func maybeSetAssociatedKeyFile(_ urlRef: URLReference?) {
-        if isRememberKeyFile ?? Settings.current.isKeepKeyFileAssociations {
-            setAssociatedKeyFile(urlRef)
-        }
+        guard isRememberKeyFile ?? Settings.current.isKeepKeyFileAssociations else { return }
+        setAssociatedKeyFile(urlRef)
+    }
+
+    public func setAssociatedYubiKey(_ yubiKey: YubiKey?) {
+        associatedYubiKey = yubiKey
+    }
+
+    public func maybeSetAssociatedYubiKey(_ yubiKey: YubiKey?) {
+        guard isRememberHardwareKey ?? Settings.current.isKeepHardwareKeyAssociations else { return }
+        setAssociatedYubiKey(yubiKey)
     }
 }
 

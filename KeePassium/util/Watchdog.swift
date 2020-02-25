@@ -59,6 +59,7 @@ class Watchdog {
     
     private var appLockTimer: Timer?
     private var databaseLockTimer: Timer?
+    private var isIgnoringMinimizationOnce = false
     
     init() {
         NotificationCenter.default.addObserver(
@@ -82,7 +83,12 @@ class Watchdog {
         print("App did become active")
         restartAppTimer()
         restartDatabaseTimer()
-        maybeLockSomething()
+        if isIgnoringMinimizationOnce {
+            Diag.debug("Self-backgrounding ignored.")
+            isIgnoringMinimizationOnce = false
+        } else {
+            maybeLockSomething()
+        }
         delegate?.hideAppCover(self)
     }
     
@@ -97,13 +103,13 @@ class Watchdog {
         if delegate.isAppLocked { return }
 
         let databaseTimeout = Settings.current.premiumDatabaseLockTimeout
-        if databaseTimeout == .immediately {
+        if databaseTimeout == .immediately && !isIgnoringMinimizationOnce {
             Diag.debug("Going to background: Database Lock engaged")
             engageDatabaseLock()
         }
         
         let appTimeout = Settings.current.appLockTimeout
-        if appTimeout.triggerMode == .appMinimized {
+        if appTimeout.triggerMode == .appMinimized && !isIgnoringMinimizationOnce {
             Diag.debug("Going to background: App Lock engaged")
             Watchdog.shared.restart() 
         }
@@ -130,6 +136,11 @@ class Watchdog {
         if isShouldEngageDatabaseLock() {
             engageDatabaseLock()
         }
+    }
+    
+    open func ignoreMinimizationOnce() {
+        assert(!isIgnoringMinimizationOnce)
+        isIgnoringMinimizationOnce = true
     }
     
     open func restart() {

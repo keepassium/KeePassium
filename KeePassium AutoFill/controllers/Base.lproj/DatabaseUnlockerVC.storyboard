@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxv-kR-0w1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxv-kR-0w1">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -124,7 +124,7 @@
                                                     <constraint firstAttribute="height" constant="2" id="rNj-qR-5f7"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dnl-vm-GMg">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dnl-vm-GMg" customClass="KeyFileTextField" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="46" width="264" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Sao-Cr-ebW"/>
@@ -224,7 +224,7 @@
                         <outlet property="errorMessageLabel" destination="dID-zL-AtZ" id="yty-hV-df1"/>
                         <outlet property="errorMessagePanel" destination="Crk-4o-Fqu" id="WOd-6g-If7"/>
                         <outlet property="inputPanel" destination="Q5g-RY-uXD" id="6S7-1l-TIX"/>
-                        <outlet property="keyFileField" destination="Dnl-vm-GMg" id="frD-BC-dbG"/>
+                        <outlet property="keyFileField" destination="Dnl-vm-GMg" id="k6z-2m-zpB"/>
                         <outlet property="passwordField" destination="U6j-Ph-AWS" id="eKJ-Bd-ciZ"/>
                         <outlet property="unlockButton" destination="89h-8b-LRO" id="f59-RP-Gbr"/>
                     </connections>

@@ -62,6 +62,13 @@ final class Argon2KDF: KeyDerivationFunction {
         return progress
     }
     
+    func getChallenge(_ params: KDFParams) throws -> ByteArray {
+        guard let salt = params.getValue(key: Argon2KDF.saltParam)?.asByteArray() else {
+            throw CryptoError.invalidKDFParam(kdfName: name, paramName: AESKDF.transformSeedParam)
+        }
+        return salt
+    }
+    
     func randomize(params: inout KDFParams) throws { 
         let salt = try CryptoManager.getRandomBytes(count: 32)
         params.setValue(key: Argon2KDF.saltParam, value: VarDict.TypedValue(value: salt))

@@ -61,7 +61,8 @@ public class Settings {
         case startupDatabase
         case rememberDatabaseKey
         case keepKeyFileAssociations
-        case keyFileAssociations
+        case keepHardwareKeyAssociations
+        case hardwareKeyAssociations
 
         case appLockEnabled
         case biometricAppLockEnabled
@@ -809,7 +810,7 @@ public class Settings {
             let oldValue = isKeepKeyFileAssociations
             UserDefaults.appGroupShared.set(newValue, forKey: Keys.keepKeyFileAssociations.rawValue)
             if !newValue {
-                removeAllKeyFileAssociations()
+                DatabaseSettingsManager.shared.forgetAllKeyFiles()
             }
             if newValue != oldValue {
                 postChangeNotification(changedKey: Keys.keepKeyFileAssociations)
@@ -817,12 +818,26 @@ public class Settings {
         }
     }
     
-    public func removeAllKeyFileAssociations() {
-        UserDefaults.appGroupShared.setValue(
-            Dictionary<String, Data>(),
-            forKey: Keys.keyFileAssociations.rawValue)
+    public var isKeepHardwareKeyAssociations: Bool {
+        get {
+            if contains(key: Keys.keepHardwareKeyAssociations) {
+                return UserDefaults.appGroupShared.bool(forKey: Keys.keepHardwareKeyAssociations.rawValue)
+            } else {
+                return true
+            }
+        }
+        set {
+            let oldValue = isKeepHardwareKeyAssociations
+            UserDefaults.appGroupShared.set(newValue, forKey: Keys.keepHardwareKeyAssociations.rawValue)
+            if !newValue {
+                DatabaseSettingsManager.shared.forgetAllHardwareKeys()
+            }
+            if newValue != oldValue {
+                postChangeNotification(changedKey: Keys.keepHardwareKeyAssociations)
+            }
+        }
     }
-
+    
     
     public var isAppLockEnabled: Bool {
         get {

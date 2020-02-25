@@ -8,8 +8,8 @@
 
 import Foundation
 
-public class ByteArray: Eraseable, Codable {
-    
+public class ByteArray: Eraseable, Codable, CustomDebugStringConvertible {
+
     public class InputStream {
         fileprivate let base: Foundation.InputStream
         var hasBytesAvailable: Bool { return base.hasBytesAvailable }
@@ -137,6 +137,10 @@ public class ByteArray: Eraseable, Codable {
         return ByteArray(bytes: self.bytes[range])
     }
 
+    public var debugDescription: String {
+        return asHexString
+    }
+    
     public init() {
         bytes = []
     }
@@ -349,6 +353,7 @@ extension ByteArray: Hashable {
 
 public class SecureByteArray: ByteArray {
     override public var sha256: SecureByteArray { return SecureByteArray(CryptoManager.sha256(of: self)) }
+    override public var sha512: SecureByteArray { return SecureByteArray(CryptoManager.sha512(of: self)) }
 
     override convenience public init() {
         self.init(bytes: [])
@@ -356,7 +361,7 @@ public class SecureByteArray: ByteArray {
     convenience public init(_ source: ByteArray) {
         self.init(bytes: source.bytesCopy())
     }
-    override private init(bytes: [UInt8]) {
+    override public init(bytes: [UInt8]) {
         super.init(bytes: bytes)
         self.bytes.withUnsafeBufferPointer { (ptr) -> Void in
             mlock(ptr.baseAddress, ptr.count)

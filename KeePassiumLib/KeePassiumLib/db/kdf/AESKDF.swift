@@ -48,6 +48,14 @@ class AESKDF: KeyDerivationFunction {
         return progress
     }
     
+    
+    func getChallenge(_ params: KDFParams) throws -> ByteArray {
+        guard let transformSeed = params.getValue(key: AESKDF.transformSeedParam)?.asByteArray() else {
+            throw CryptoError.invalidKDFParam(kdfName: name, paramName: AESKDF.transformSeedParam)
+        }
+        return transformSeed
+    }
+    
     func randomize(params: inout KDFParams) throws {
         let transformSeed = try CryptoManager.getRandomBytes(count: SHA256_SIZE)
         params.setValue(

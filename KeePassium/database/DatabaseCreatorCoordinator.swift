@@ -76,10 +76,12 @@ class DatabaseCreatorCoordinator: NSObject {
             return
         }
         
+        let _challengeHandler = ChallengeResponseManager.makeHandler(for: databaseCreatorVC.yubiKey)
         DatabaseManager.shared.createDatabase(
             databaseURL: tmpFileURL,
             password: databaseCreatorVC.password,
             keyFile: databaseCreatorVC.keyFile,
+            challengeHandler: _challengeHandler,
             template: { [weak self] (rootGroup2) in
                 rootGroup2.name = fileName // override default "/" with a meaningful name
                 self?.addTemplateItems(to: rootGroup2)
@@ -218,6 +220,13 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
         let keyFileChooser = ChooseKeyFileVC.make(popoverSourceView: popoverSource, delegate: self)
         navigationController.present(keyFileChooser, animated: true, completion: nil)
     }
+    
+    func didPressPickHardwareKey(
+        in databaseCreatorVC: DatabaseCreatorVC,
+        at popoverAnchor: PopoverAnchor)
+    {
+        showHardwareKeyPicker(at: popoverAnchor)
+    }
 }
 
 extension DatabaseCreatorCoordinator: KeyFileChooserDelegate {
@@ -297,6 +306,36 @@ extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { 
             self.databaseCreatorVC.hideProgressView()
             self.addCreatedDatabase(at: url)
+        }
+    }
+}
+
+extension DatabaseCreatorCoordinator: HardwareKeyPickerDelegate {
+    func showHardwareKeyPicker(at popoverAnchor: PopoverAnchor) {
+        let hardwareKeyPicker = HardwareKeyPicker.create(delegate: self)
+        hardwareKeyPicker.modalPresentationStyle = .popover
+        if let popover = hardwareKeyPicker.popoverPresentationController {
+            popoverAnchor.apply(to: popover)
+            popover.delegate = hardwareKeyPicker.dismissablePopoverDelegate
+        }
+        hardwareKeyPicker.key = databaseCreatorVC.yubiKey
+        databaseCreatorVC.present(hardwareKeyPicker, animated: true, completion: nil)
+    }
+
+    func didDismiss(_ picker: HardwareKeyPicker) {
+    }
+    
+    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
+        setYubiKey(yubiKey)
+        databaseCreatorVC.becomeFirstResponder()
+    }
+    
+    func setYubiKey(_ yubiKey: YubiKey?) {
+        databaseCreatorVC.yubiKey = yubiKey
+        if let _yubiKey = yubiKey {
+            Diag.info("Hardware key selected [key: \(_yubiKey)]")
+        } else {
+            Diag.info("No hardware key selected")
         }
     }
 }

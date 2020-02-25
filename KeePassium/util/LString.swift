@@ -282,4 +282,15 @@ public enum LString {
         "[Support/template] (Please describe the problem here)",
         value: "(Please describe the problem here)",
         comment: "Template text of a bug report email")
+    
+    
+    public static let dontUseYubikey = NSLocalizedString(
+        "[YubiKey] Don't use YubiKey",
+        value: "Without YubiKey",
+        comment: "Selector choice: don't use YubiKey to encrypt/decrypt database")
+    
+    public static let useYubikeySlotN = NSLocalizedString(
+        "[YubiKey] Use YubiKey Slot %d",
+        value: "Use YubiKey Slot %d",
+        comment: "Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int]")
 }

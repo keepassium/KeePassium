@@ -135,14 +135,14 @@ public class Database1: Database {
         return Header1.isSignatureMatches(data: data)
     }
 
-    override public func changeCompositeKey(to newKey: SecureByteArray) {
+    override public func changeCompositeKey(to newKey: CompositeKey) {
         compositeKey = newKey
     }
     
     override public func load(
         dbFileName: String,
         dbFileData: ByteArray,
-        compositeKey: SecureByteArray,
+        compositeKey: CompositeKey,
         warnings: DatabaseLoadingWarnings
     ) throws {
         Diag.info("Loading KP1 database")
@@ -173,14 +173,22 @@ public class Database1: Database {
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
             throw DatabaseError.loadError(reason: error.localizedDescription)
+        } catch let error as ChallengeResponseError {
+            Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")
+            throw DatabaseError.loadError(reason: error.localizedDescription)
         } catch let error as FormatError {
             Diag.error("Format error [reason: \(error.localizedDescription)]")
             throw DatabaseError.loadError(reason: error.localizedDescription)
         } 
     }
     
-    func deriveMasterKey(compositeKey: SecureByteArray) throws {
+    func deriveMasterKey(compositeKey: CompositeKey) throws {
         Diag.debug("Start key derivation")
+        
+        guard compositeKey.challengeHandler == nil else {
+            throw ChallengeResponseError.notSupportedByDatabaseFormat
+        }
+        
         let kdf = AESKDF()
         progress.addChild(kdf.initProgress(), withPendingUnitCount: ProgressSteps.keyDerivation)
         let kdfParams = kdf.defaultParams
@@ -191,8 +199,24 @@ public class Database1: Database {
             key: AESKDF.transformRoundsParam,
             value: VarDict.TypedValue(value: UInt64(header.transformRounds)))
         
-        let transformedKey = try kdf.transform(key: compositeKey, params: kdfParams)
-        masterKey = SecureByteArray(ByteArray.concat(header.masterSeed, transformedKey).sha256)
+        let combinedComponents: SecureByteArray
+        if compositeKey.state == .processedComponents {
+            combinedComponents = keyHelper.combineComponents(
+                passwordData: compositeKey.passwordData!, 
+                keyFileData: compositeKey.keyFileData!    
+            )
+            compositeKey.setCombinedStaticComponents(combinedComponents)
+        } else if compositeKey.state >= .combinedComponents {
+            combinedComponents = compositeKey.combinedStaticComponents! 
+        } else {
+            preconditionFailure("Unexpected key state")
+        }
+        
+        let keyToTransform = keyHelper.getKey(fromCombinedComponents: combinedComponents)
+        let transformedKey = try kdf.transform(key: keyToTransform, params: kdfParams)
+        let secureMasterSeed = SecureByteArray(header.masterSeed)
+        masterKey = SecureByteArray.concat(secureMasterSeed, transformedKey).sha256
+        compositeKey.setFinalKey(masterKey)
     }
     
     private func loadContent(data: ByteArray, dbFileName: String) throws {
@@ -353,6 +377,10 @@ public class Database1: Database {
             outStream.write(data: encryptedContent)
             return outStream.data!
         } catch let error as CryptoError {
+            Diag.error("Crypto error [reason: \(error.localizedDescription)]")
+            throw DatabaseError.saveError(reason: error.localizedDescription)
+        } catch let error as ChallengeResponseError {
+            Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")
             throw DatabaseError.saveError(reason: error.localizedDescription)
         } 
     }

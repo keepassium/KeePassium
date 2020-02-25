@@ -89,7 +89,7 @@ open class Database: Eraseable {
 
     public internal(set) var progress = ProgressEx()
 
-    internal var compositeKey = SecureByteArray()
+    internal var compositeKey = CompositeKey.empty
     
     public func initProgress() -> ProgressEx {
         progress = ProgressEx()
@@ -121,7 +121,7 @@ open class Database: Eraseable {
     public func load(
         dbFileName: String,
         dbFileData: ByteArray,
-        compositeKey: SecureByteArray,
+        compositeKey: CompositeKey,
         warnings: DatabaseLoadingWarnings
     ) throws {
         fatalError("Pure virtual method")
@@ -131,7 +131,7 @@ open class Database: Eraseable {
         fatalError("Pure virtual method")
     }
     
-    public func changeCompositeKey(to newKey: SecureByteArray) {
+    public func changeCompositeKey(to newKey: CompositeKey) {
         fatalError("Pure virtual method")
     }
     

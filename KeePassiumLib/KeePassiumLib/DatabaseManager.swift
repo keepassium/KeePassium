@@ -36,6 +36,9 @@ public class DatabaseManager {
     public var isDatabaseOpen: Bool { return database != nil }
     
     private var databaseDocument: DatabaseDocument?
+    private var databaseLoader: DatabaseLoader?
+    private var databaseSaver: DatabaseSaver?
+    
     private var serialDispatchQueue = DispatchQueue(
         label: "com.keepassium.DatabaseManager",
         qos: .userInitiated)
@@ -102,28 +105,29 @@ public class DatabaseManager {
     public func startLoadingDatabase(
         database dbRef: URLReference,
         password: String,
-        keyFile keyFileRef: URLReference?)
+        keyFile keyFileRef: URLReference?,
+        challengeHandler: ChallengeHandler?)
     {
         Diag.verbose("Will queue load database")
+        let compositeKey = CompositeKey(
+            password: password,
+            keyFileRef: keyFileRef,
+            challengeHandler: challengeHandler
+        )
         serialDispatchQueue.async {
-            self._loadDatabase(dbRef: dbRef, compositeKey: nil, password: password, keyFileRef: keyFileRef)
+            self._loadDatabase(dbRef: dbRef, compositeKey: compositeKey)
         }
     }
     
-    public func startLoadingDatabase(database dbRef: URLReference, compositeKey: SecureByteArray) {
+    public func startLoadingDatabase(database dbRef: URLReference, compositeKey: CompositeKey) {
         Diag.verbose("Will queue load database")
-        let compositeKeyClone = compositeKey.secureClone()
+        let compositeKeyClone = compositeKey.clone()
         serialDispatchQueue.async {
-            self._loadDatabase(dbRef: dbRef, compositeKey: compositeKeyClone, password: "", keyFileRef: nil)
+            self._loadDatabase(dbRef: dbRef, compositeKey: compositeKeyClone)
         }
     }
     
-    private func _loadDatabase(
-        dbRef: URLReference,
-        compositeKey: SecureByteArray?,
-        password: String,
-        keyFileRef: URLReference?)
-    {
+    private func _loadDatabase(dbRef: URLReference, compositeKey: CompositeKey) {
         precondition(database == nil, "Can only load one database at a time")
 
         Diag.info("Will load database")
@@ -131,19 +135,19 @@ public class DatabaseManager {
         progress.totalUnitCount = ProgressSteps.all
         progress.completedUnitCount = 0
         
-        let dbLoader = DatabaseLoader(
+        precondition(databaseLoader == nil)
+        databaseLoader = DatabaseLoader(
             dbRef: dbRef,
             compositeKey: compositeKey,
-            password: password,
-            keyFileRef: keyFileRef,
             progress: progress,
-            completion: databaseLoaded)
-        dbLoader.load()
+            completion: databaseLoaderFinished)
+        databaseLoader!.load()
     }
     
-    private func databaseLoaded(_ dbDoc: DatabaseDocument, _ dbRef: URLReference) {
-        self.databaseDocument = dbDoc
+    private func databaseLoaderFinished(_ dbRef: URLReference, _ dbDoc: DatabaseDocument?) {
         self.databaseRef = dbRef
+        self.databaseDocument = dbDoc
+        self.databaseLoader = nil
     }
 
     public func rememberDatabaseKey(onlyIfExists: Bool = false) throws {
@@ -171,7 +175,10 @@ public class DatabaseManager {
         }
     }
     
-    private func _saveDatabase(_ dbDoc: DatabaseDocument, dbRef: URLReference) {
+    private func _saveDatabase(
+        _ dbDoc: DatabaseDocument,
+        dbRef: URLReference)
+    {
         precondition(database != nil, "No database to save")
         Diag.info("Saving database")
         
@@ -180,18 +187,20 @@ public class DatabaseManager {
         progress.completedUnitCount = 0
         notifyDatabaseWillSave(database: dbRef)
         
-        let dbSaver = DatabaseSaver(
+        precondition(databaseSaver == nil)
+        databaseSaver = DatabaseSaver(
             databaseDocument: dbDoc,
             databaseRef: dbRef,
             progress: progress,
-            completion: databaseSaved)
-        dbSaver.save()
+            completion: databaseSaverFinished)
+        databaseSaver!.save()
     }
     
-    private func databaseSaved(_ dbDoc: DatabaseDocument) {
+    private func databaseSaverFinished(_ urlRef: URLReference, _ dbDoc: DatabaseDocument) {
+        databaseSaver = nil
     }
     
-    public func changeCompositeKey(to newKey: SecureByteArray) {
+    public func changeCompositeKey(to newKey: CompositeKey) {
         database?.changeCompositeKey(to: newKey)
         Diag.info("Database composite key changed")
     }
@@ -200,7 +209,8 @@ public class DatabaseManager {
         keyHelper: KeyHelper,
         password: String,
         keyFile keyFileRef: URLReference?,
-        success successHandler: @escaping((_ combinedKey: SecureByteArray) -> Void),
+        challengeHandler: ChallengeHandler?,
+        success successHandler: @escaping((_ compositeKey: CompositeKey) -> Void),
         error errorHandler: @escaping((_ errorMessage: String) -> Void))
     {
         let dataReadyHandler = { (keyFileData: ByteArray) -> Void in
@@ -214,10 +224,11 @@ public class DatabaseManager {
                     comment: "Error message"))
                 return
             }
-            let compositeKey = keyHelper.makeCompositeKey(
-                passwordData: passwordData,
-                keyFileData: keyFileData)
             Diag.debug("New composite key created successfully")
+            let compositeKey = CompositeKey(
+                passwordData: passwordData,
+                keyFileData: keyFileData,
+                challengeHandler: challengeHandler)
             successHandler(compositeKey)
         }
         
@@ -256,6 +267,7 @@ public class DatabaseManager {
         databaseURL: URL,
         password: String,
         keyFile: URLReference?,
+        challengeHandler: ChallengeHandler?,
         template templateSetupHandler: @escaping (Group2) -> Void,
         success successHandler: @escaping () -> Void,
         error errorHandler: @escaping ((String?) -> Void))
@@ -272,6 +284,7 @@ public class DatabaseManager {
             keyHelper: db2.keyHelper,
             password: password,
             keyFile: keyFile,
+            challengeHandler: challengeHandler,
             success: { 
                 (newCompositeKey) in
                 DatabaseManager.shared.changeCompositeKey(to: newCompositeKey)
@@ -492,28 +505,25 @@ public class DatabaseManager {
 
 
 fileprivate class DatabaseLoader {
+    typealias CompletionHandler = (URLReference, DatabaseDocument?) -> Void
+    
     private let dbRef: URLReference
-    private let compositeKey: SecureByteArray?
-    private let password: String
-    private let keyFileRef: URLReference?
+    private let compositeKey: CompositeKey
     private let progress: ProgressEx
     private var progressKVO: NSKeyValueObservation?
     private unowned var notifier: DatabaseManager
     private let warnings: DatabaseLoadingWarnings
-    private let completion: ((DatabaseDocument, URLReference) -> Void)
+    private let completion: CompletionHandler
     
     init(
         dbRef: URLReference,
-        compositeKey: SecureByteArray?,
-        password: String,
-        keyFileRef: URLReference?,
+        compositeKey: CompositeKey,
         progress: ProgressEx,
-        completion: @escaping((DatabaseDocument, URLReference) -> Void))
+        completion: @escaping(CompletionHandler))
     {
+        assert(compositeKey.state != .empty)
         self.dbRef = dbRef
         self.compositeKey = compositeKey
-        self.password = password
-        self.keyFileRef = keyFileRef
         self.progress = progress
         self.completion = completion
         self.warnings = DatabaseLoadingWarnings()
@@ -597,6 +607,7 @@ fileprivate class DatabaseLoader {
                     value: "Cannot find database file",
                     comment: "Error message"),
                 reason: error.localizedDescription)
+            completion(dbRef, nil)
             endBackgroundTask()
             return
         }
@@ -624,6 +635,7 @@ fileprivate class DatabaseLoader {
                         value: "Cannot open database file",
                         comment: "Error message"),
                     reason: errorMessage)
+                self.completion(self.dbRef, nil)
                 self.endBackgroundTask()
             }
         )
@@ -644,19 +656,21 @@ fileprivate class DatabaseLoader {
                     value: "Unrecognized database format",
                     comment: "Error message"),
                 reason: nil)
+            completion(dbRef, nil)
             endBackgroundTask()
             return
         }
         
         dbDoc.database = db
-        if let compositeKey = compositeKey {
+        guard compositeKey.state == .rawComponents else {
+            
             progress.completedUnitCount += ProgressSteps.readKeyFile
             Diag.info("Using a ready composite key")
-            onCompositeKeyReady(dbDoc: dbDoc, compositeKey: compositeKey)
+            onCompositeKeyComponentsProcessed(dbDoc: dbDoc, compositeKey: compositeKey)
             return
         }
         
-        if let keyFileRef = keyFileRef {
+        if let keyFileRef = compositeKey.keyFileRef {
             Diag.debug("Loading key file")
             progress.localizedDescription = NSLocalizedString(
                 "[Database/Progress] Loading key file...",
@@ -679,6 +693,7 @@ fileprivate class DatabaseLoader {
                         value: "Cannot find key file",
                         comment: "Error message"),
                     reason: error.localizedDescription)
+                completion(dbRef, nil)
                 endBackgroundTask()
                 return
             }
@@ -701,6 +716,7 @@ fileprivate class DatabaseLoader {
                             value: "Cannot open key file",
                             comment: "Error message"),
                         reason: error.localizedDescription)
+                    self.completion(self.dbRef, nil)
                     self.endBackgroundTask()
                 }
             )
@@ -714,7 +730,7 @@ fileprivate class DatabaseLoader {
         
         progress.completedUnitCount += ProgressSteps.readKeyFile
         let keyHelper = database.keyHelper
-        let passwordData = keyHelper.getPasswordData(password: password)
+        let passwordData = keyHelper.getPasswordData(password: compositeKey.password)
         if passwordData.isEmpty && keyFileData.isEmpty {
             Diag.error("Both password and key file are empty")
             stopObservingProgress()
@@ -725,16 +741,16 @@ fileprivate class DatabaseLoader {
                     bundle: Bundle.framework,
                     value: "Please provide at least a password or a key file",
                     comment: "Error shown when both master password and key file are empty"))
+            completion(dbRef, nil)
             endBackgroundTask()
             return
         }
-        let compositeKey = keyHelper.makeCompositeKey(
-            passwordData: passwordData,
-            keyFileData: keyFileData)
-        onCompositeKeyReady(dbDoc: dbDoc, compositeKey: compositeKey)
+        compositeKey.setProcessedComponents(passwordData: passwordData, keyFileData: keyFileData)
+        onCompositeKeyComponentsProcessed(dbDoc: dbDoc, compositeKey: compositeKey)
     }
     
-    func onCompositeKeyReady(dbDoc: DatabaseDocument, compositeKey: SecureByteArray) {
+    func onCompositeKeyComponentsProcessed(dbDoc: DatabaseDocument, compositeKey: CompositeKey) {
+        assert(compositeKey.state >= .processedComponents)
         guard let db = dbDoc.database else { fatalError() }
         do {
             progress.addChild(db.initProgress(), withPendingUnitCount: ProgressSteps.decryptDatabase)
@@ -743,18 +759,18 @@ fileprivate class DatabaseLoader {
                 dbFileName: dbDoc.fileURL.lastPathComponent,
                 dbFileData: dbDoc.encryptedData,
                 compositeKey: compositeKey,
-                warnings: warnings
-            )
+                warnings: warnings)
             Diag.info("Database loaded OK")
             progress.localizedDescription = NSLocalizedString(
                 "[Database/Progress] Done",
                 bundle: Bundle.framework,
                 value: "Done",
                 comment: "Progress status: finished loading database")
-            completion(dbDoc, dbRef)
+            completion(dbRef, dbDoc)
             stopObservingProgress()
             notifier.notifyDatabaseDidLoad(database: dbRef, warnings: warnings)
             endBackgroundTask()
+            
         } catch let error as DatabaseError {
             dbDoc.database = nil
             dbDoc.close(completionHandler: nil)
@@ -772,18 +788,18 @@ fileprivate class DatabaseLoader {
                     isCancelled: progress.isCancelled,
                     message: error.localizedDescription,
                     reason: error.failureReason)
-                endBackgroundTask()
             case .invalidKey:
                 Diag.error("Invalid master key. [message: \(error.localizedDescription)]")
                 stopObservingProgress()
                 notifier.notifyDatabaseInvalidMasterKey(
                     database: dbRef,
                     message: error.localizedDescription)
-                endBackgroundTask()
             case .saveError:
                 Diag.error("saveError while loading?!")
                 fatalError("Database saving error while loading?!")
             }
+            completion(dbRef, nil)
+            endBackgroundTask()
         } catch let error as ProgressInterruption {
             dbDoc.database = nil
             dbDoc.close(completionHandler: nil)
@@ -805,9 +821,11 @@ fileprivate class DatabaseLoader {
                         message: error.localizedDescription,
                         reason: nil)
                 }
+                completion(dbRef, nil)
                 endBackgroundTask()
             }
         } catch {
+            assertionFailure("Unprocessed exception")
             dbDoc.database = nil
             dbDoc.close(completionHandler: nil)
             Diag.error("Unexpected error [message: \(error.localizedDescription)]")
@@ -817,6 +835,7 @@ fileprivate class DatabaseLoader {
                 isCancelled: progress.isCancelled,
                 message: error.localizedDescription,
                 reason: nil)
+            completion(dbRef, nil)
             endBackgroundTask()
         }
     }
@@ -824,18 +843,20 @@ fileprivate class DatabaseLoader {
 
 
 fileprivate class DatabaseSaver {
+    typealias CompletionHandler = (URLReference, DatabaseDocument) -> Void
+    
     private let dbDoc: DatabaseDocument
     private let dbRef: URLReference
     private let progress: ProgressEx
     private var progressKVO: NSKeyValueObservation?
     private unowned var notifier: DatabaseManager
-    private let completion: ((DatabaseDocument) -> Void)
+    private let completion: CompletionHandler
 
     init(
         databaseDocument dbDoc: DatabaseDocument,
         databaseRef dbRef: URLReference,
         progress: ProgressEx,
-        completion: @escaping((DatabaseDocument) -> Void))
+        completion: @escaping(CompletionHandler))
     {
         assert(dbDoc.documentState.contains(.normal))
         self.dbDoc = dbDoc
@@ -890,6 +911,7 @@ fileprivate class DatabaseSaver {
     
     func save() {
         guard let database = dbDoc.database else { fatalError("Database is nil") }
+        
         startBackgroundTask()
         startObservingProgress()
         do {
@@ -912,7 +934,7 @@ fileprivate class DatabaseSaver {
                     Diag.info("Database saved OK")
                     self.stopObservingProgress()
                     self.notifier.notifyDatabaseDidSave(database: self.dbRef)
-                    self.completion(self.dbDoc)
+                    self.completion(self.dbRef, self.dbDoc)
                     self.endBackgroundTask()
                 },
                 errorHandler: {
@@ -924,6 +946,7 @@ fileprivate class DatabaseSaver {
                         isCancelled: self.progress.isCancelled,
                         message: errorMessage ?? "",
                         reason: nil)
+                    self.completion(self.dbRef, self.dbDoc)
                     self.endBackgroundTask()
                 }
             )
@@ -940,6 +963,7 @@ fileprivate class DatabaseSaver {
                 isCancelled: progress.isCancelled,
                 message: error.localizedDescription,
                 reason: error.failureReason)
+            completion(dbRef, dbDoc)
             endBackgroundTask()
         } catch let error as ProgressInterruption {
             stopObservingProgress()
@@ -960,6 +984,7 @@ fileprivate class DatabaseSaver {
                         message: error.localizedDescription,
                         reason: nil)
                 }
+                completion(dbRef, dbDoc)
                 endBackgroundTask()
             }
         } catch { 
@@ -970,6 +995,7 @@ fileprivate class DatabaseSaver {
                 isCancelled: progress.isCancelled,
                 message: error.localizedDescription,
                 reason: nil)
+            completion(dbRef, dbDoc)
             endBackgroundTask()
         }
     }

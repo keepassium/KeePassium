@@ -102,7 +102,7 @@ public class Database2: Database {
     public var customIcons: [UUID: CustomIcon2] { return meta.customIcons }
     public var defaultUserName: String { return meta.defaultUserName }
     private var cipherKey = SecureByteArray()
-    private var hmacKey = ByteArray()
+    private var hmacKey = SecureByteArray()
     private var deletedObjects: ContiguousArray<DeletedObject2> = []
     
     override public var keyHelper: KeyHelper { return _keyHelper }
@@ -156,7 +156,7 @@ public class Database2: Database {
     override public func load(
         dbFileName: String,
         dbFileData: ByteArray,
-        compositeKey: SecureByteArray,
+        compositeKey: CompositeKey,
         warnings: DatabaseLoadingWarnings
     ) throws {
         Diag.info("Loading KP2 database")
@@ -231,6 +231,9 @@ public class Database2: Database {
             throw DatabaseError.loadError(reason: error.localizedDescription)
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
+            throw DatabaseError.loadError(reason: error.localizedDescription)
+        } catch let error as ChallengeResponseError {
+            Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")
             throw DatabaseError.loadError(reason: error.localizedDescription)
         } catch let error as FormatError {
             Diag.error("Format error [reason: \(error.localizedDescription)]")
@@ -539,18 +542,59 @@ public class Database2: Database {
         }
     }
     
-    func deriveMasterKey(compositeKey: SecureByteArray, cipher: DataCipher) throws {
+    func deriveMasterKey(compositeKey: CompositeKey, cipher: DataCipher) throws {
         Diag.debug("Start key derivation")
         progress.addChild(header.kdf.initProgress(), withPendingUnitCount: ProgressSteps.keyDerivation)
-        let transformedKey = try header.kdf.transform(key: compositeKey, params: header.kdfParams)
-        let joinedKey = ByteArray.concat(header.masterSeed, transformedKey)
+        
+        var combinedComponents: SecureByteArray
+        if compositeKey.state == .processedComponents {
+            combinedComponents = keyHelper.combineComponents(
+                passwordData: compositeKey.passwordData!, 
+                keyFileData: compositeKey.keyFileData!    
+            )
+            compositeKey.setCombinedStaticComponents(combinedComponents)
+        } else if compositeKey.state >= .combinedComponents {
+            combinedComponents = compositeKey.combinedStaticComponents! 
+        } else {
+            preconditionFailure("Unexpected key state")
+        }
+        
+        let secureMasterSeed = SecureByteArray(header.masterSeed)
+        let joinedKey: SecureByteArray
+        switch header.formatVersion {
+        case .v3:
+            
+            let keyToTransform = keyHelper.getKey(fromCombinedComponents: combinedComponents)
+            
+            let transformedKey = try header.kdf.transform(
+                key: keyToTransform,
+                params: header.kdfParams)
+            
+            let challengeResponse = try compositeKey.getResponse(challenge: secureMasterSeed) 
+            joinedKey = SecureByteArray.concat(secureMasterSeed, challengeResponse, transformedKey)
+        case .v4:
+            
+            let challenge = try header.kdf.getChallenge(header.kdfParams) 
+            let secureChallenge = SecureByteArray(challenge)
+
+            let challengeResponse = try compositeKey.getResponse(challenge: secureChallenge) 
+            combinedComponents = SecureByteArray.concat(combinedComponents, challengeResponse)
+            
+            let keyToTransform = keyHelper.getKey(fromCombinedComponents: combinedComponents)
+            
+            let transformedKey = try header.kdf.transform(
+                key: keyToTransform,
+                params: header.kdfParams)
+            joinedKey = SecureByteArray.concat(secureMasterSeed, transformedKey)
+        }
         self.cipherKey = cipher.resizeKey(key: joinedKey)
-        let one = ByteArray(bytes: [1])
-        self.hmacKey = ByteArray.concat(joinedKey, one).sha512
+        let one = SecureByteArray(bytes: [1])
+        self.hmacKey = SecureByteArray.concat(joinedKey, one).sha512
+        compositeKey.setFinalKey(hmacKey)
     }
     
-    override public func changeCompositeKey(to newKey: SecureByteArray) {
-        compositeKey = newKey
+    override public func changeCompositeKey(to newKey: CompositeKey) {
+        compositeKey = newKey.clone()
     }
     
     override public func getBackupGroup(createIfMissing: Bool) -> Group? {
@@ -818,6 +862,9 @@ public class Database2: Database {
             Diag.debug("Key derivation OK")
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
+            throw DatabaseError.saveError(reason: error.localizedDescription)
+        } catch let error as ChallengeResponseError {
+            Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")
             throw DatabaseError.saveError(reason: error.localizedDescription)
         }
 

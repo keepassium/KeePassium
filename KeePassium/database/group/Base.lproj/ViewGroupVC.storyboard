@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rxg-rI-fqC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rxg-rI-fqC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -67,14 +67,14 @@
                                 </attributedString>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" id="MoA-V2-ZR5" customClass="GroupViewListCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="115" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="115" width="375" height="51.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MoA-V2-ZR5" id="rfV-hX-YdO">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="51"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="348" height="51.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/kpbIcon48" translatesAutoresizingMaskIntoConstraints="NO" id="raf-Bf-GLo">
-                                            <rect key="frame" x="16" y="11" width="29" height="29"/>
+                                            <rect key="frame" x="16" y="11" width="29.5" height="29.5"/>
                                             <color key="tintColor" name="IconTint"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="raf-Bf-GLo" secondAttribute="height" multiplier="1:1" id="HHG-4b-tQV"/>
@@ -82,7 +82,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="{Group Name}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uR-HK-1Dd">
-                                            <rect key="frame" x="61" y="15.5" width="109" height="20.5"/>
+                                            <rect key="frame" x="61.5" y="15.5" width="109" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
@@ -103,6 +103,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="ttY-yZ-yRg" secondAttribute="trailing" id="3v4-43-FUA"/>
                                         <constraint firstItem="ttY-yZ-yRg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="topMargin" constant="4" id="EqS-jc-DJF"/>
+                                        <constraint firstItem="raf-Bf-GLo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="topMargin" id="Ttz-S5-UxA"/>
                                         <constraint firstItem="raf-Bf-GLo" firstAttribute="leading" secondItem="rfV-hX-YdO" secondAttribute="leadingMargin" id="W0W-gF-7gb"/>
                                         <constraint firstItem="7uR-HK-1Dd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="topMargin" constant="4" id="YO5-cY-mfX"/>
                                         <constraint firstItem="7uR-HK-1Dd" firstAttribute="centerY" secondItem="rfV-hX-YdO" secondAttribute="centerY" id="f8U-SN-xJe"/>
@@ -112,6 +113,7 @@
                                         <constraint firstItem="ttY-yZ-yRg" firstAttribute="centerY" secondItem="rfV-hX-YdO" secondAttribute="centerY" id="nP8-K0-43f"/>
                                         <constraint firstItem="ttY-yZ-yRg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7uR-HK-1Dd" secondAttribute="trailing" constant="16" id="qge-Ze-pDx"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="ttY-yZ-yRg" secondAttribute="bottom" constant="4" id="qsC-0h-wnl"/>
+                                        <constraint firstItem="raf-Bf-GLo" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="bottomMargin" id="zKw-7Q-MzU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -121,7 +123,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryCell" id="mqP-Mr-NTh" customClass="GroupViewListCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="166" width="375" height="57.5"/>
+                                <rect key="frame" x="0.0" y="166.5" width="375" height="57.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mqP-Mr-NTh" id="gG2-77-V2H">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
@@ -138,7 +140,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zQD-hA-ZaY">
                                             <rect key="frame" x="61" y="11.5" width="298" height="35"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="{Entry Title}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-aR-wD3">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" ambiguous="YES" text="{Entry Title}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-aR-wD3">
                                                     <rect key="frame" x="0.0" y="0.0" width="298" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -147,7 +149,7 @@
                                                         <fragment content="#bc-ignore!"/>
                                                     </attributedString>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Entry Subtitle}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Db-9q-PM7">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="{Entry Subtitle}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Db-9q-PM7">
                                                     <rect key="frame" x="0.0" y="20.5" width="298" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -162,11 +164,13 @@
                                     <constraints>
                                         <constraint firstItem="XYa-LO-MrH" firstAttribute="centerY" secondItem="gG2-77-V2H" secondAttribute="centerY" id="3EO-rV-jrv"/>
                                         <constraint firstItem="zQD-hA-ZaY" firstAttribute="centerY" secondItem="gG2-77-V2H" secondAttribute="centerY" id="VBS-cs-wY3"/>
+                                        <constraint firstItem="XYa-LO-MrH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gG2-77-V2H" secondAttribute="topMargin" id="aFq-fh-RIH"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="zQD-hA-ZaY" secondAttribute="trailing" id="df6-V5-uJz"/>
                                         <constraint firstItem="XYa-LO-MrH" firstAttribute="leading" secondItem="gG2-77-V2H" secondAttribute="leadingMargin" id="hlr-Ut-vxA"/>
                                         <constraint firstItem="zQD-hA-ZaY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gG2-77-V2H" secondAttribute="topMargin" id="iQa-5B-Tin"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="zQD-hA-ZaY" secondAttribute="bottom" id="p1W-qP-61o"/>
                                         <constraint firstItem="zQD-hA-ZaY" firstAttribute="leading" secondItem="XYa-LO-MrH" secondAttribute="trailing" constant="16" id="sAj-yu-Kl5"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XYa-LO-MrH" secondAttribute="bottom" id="vEF-xS-qsV"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -304,13 +308,13 @@
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DisabledText">
-            <color white="0.42300000786781311" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.75300002098083496" green="0.75300002098083496" blue="0.75300002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="IconTint">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
     <color key="tintColor" name="ActionTint"/>

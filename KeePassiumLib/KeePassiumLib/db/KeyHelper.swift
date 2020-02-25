@@ -12,7 +12,11 @@ public class KeyHelper {
     public static let compositeKeyLength = 32
     internal let keyFileKeyLength = 32
     
-    public func makeCompositeKey(passwordData: ByteArray, keyFileData: ByteArray) -> SecureByteArray {
+    public func combineComponents(passwordData: SecureByteArray, keyFileData: ByteArray) -> SecureByteArray {
+        fatalError("Pure virtual method")
+    }
+    
+    public func getKey(fromCombinedComponents combinedComponents: SecureByteArray) -> SecureByteArray {
         fatalError("Pure virtual method")
     }
     

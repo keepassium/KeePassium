@@ -105,11 +105,19 @@
 		754BF08A2082A6BD00E3A292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */; };
 		754BF09A20984DEE00E3A292 /* UnlockDatabaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF09920984DEE00E3A292 /* UnlockDatabaseVC.swift */; };
+		754D7C09238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
+		754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
+		754D7C0B238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
+		754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
+		754D7C1C238C3553005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
+		754D7C1D238C355B005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
 		754DE31220A5C4A4002ED5F9 /* ChooseKeyFileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */; };
 		7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */; };
 		7550D242215D792000360E0C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
 		75514A3420DF5B6200202340 /* EditEntryFieldsCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75514A3320DF5B6200202340 /* EditEntryFieldsCells.swift */; };
+		7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */; };
+		7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */; };
 		755B862E23054FA200E9FC83 /* AboutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863023054FA200E9FC83 /* AboutVC.storyboard */; };
 		755B863123054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863423054FAD00E9FC83 /* PasscodeInputVC.storyboard */; };
 		755B863223054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863423054FAD00E9FC83 /* PasscodeInputVC.storyboard */; };
@@ -148,6 +156,14 @@
 		7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488522C165C900BBEF9A /* SettingsBackupVC.swift */; };
 		7578488F22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */; };
+		757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
+		757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
+		757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
+		757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
+		757ADC4A23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */; };
+		757ADC4B23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */; };
+		757ADC4C23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */; };
+		757ADC4D23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */; };
 		757ADC5023A5180600D708D2 /* DismissablePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4E23A5180600D708D2 /* DismissablePopover.swift */; };
 		757ADC5123A5180600D708D2 /* DismissablePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4E23A5180600D708D2 /* DismissablePopover.swift */; };
 		757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4E23A5180600D708D2 /* DismissablePopover.swift */; };
@@ -589,6 +605,9 @@
 		754BF08C2082A6BD00E3A292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		754BF08E2082A6BD00E3A292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		754BF09920984DEE00E3A292 /* UnlockDatabaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockDatabaseVC.swift; sourceTree = "<group>"; };
+		754D7C08238C2135005652E1 /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
+		754D7C18238C2C0E005652E1 /* libYubiKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYubiKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		754D7C1E238C384A005652E1 /* KeePassium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeePassium-Bridging-Header.h"; sourceTree = "<group>"; };
 		754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseKeyFileVC.swift; sourceTree = "<group>"; };
 		7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMasterKeyVC.swift; sourceTree = "<group>"; };
 		7550D231215D758800360E0C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
@@ -596,6 +615,7 @@
 		75514A3320DF5B6200202340 /* EditEntryFieldsCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryFieldsCells.swift; sourceTree = "<group>"; };
 		75530C8E233E603000EC557E /* KeePassiumLibPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75530C94233E604E00EC557E /* KeePassiumLibPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeResponseManager.swift; sourceTree = "<group>"; };
 		755B862F23054FA200E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AboutVC.storyboard; sourceTree = "<group>"; };
 		755B863323054FAD00E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PasscodeInputVC.storyboard; sourceTree = "<group>"; };
 		755B863623054FBF00E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewDiagnosticsVC.storyboard; sourceTree = "<group>"; };
@@ -637,6 +657,8 @@
 		7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+demoEditActions.swift"; sourceTree = "<group>"; };
 		7578488522C165C900BBEF9A /* SettingsBackupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupVC.swift; sourceTree = "<group>"; };
 		7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupTimeoutPickerVC.swift; sourceTree = "<group>"; };
+		757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareKeyPicker.swift; sourceTree = "<group>"; };
+		757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HardwareKeyPicker.storyboard; sourceTree = "<group>"; };
 		757ADC4E23A5180600D708D2 /* DismissablePopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissablePopover.swift; sourceTree = "<group>"; };
 		757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableNavigationController.swift; sourceTree = "<group>"; };
 		757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDatabaseTimeoutVC.swift; sourceTree = "<group>"; };
@@ -1051,6 +1073,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754D7C1C238C3553005652E1 /* libYubiKit.a in Frameworks */,
 				75FEC2232175292C0034334B /* KeePassiumLib.framework in Frameworks */,
 				7550D242215D792000360E0C /* AuthenticationServices.framework in Frameworks */,
 				75CD363F21521FAF0018AF46 /* LocalAuthentication.framework in Frameworks */,
@@ -1062,6 +1085,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754D7C1D238C355B005652E1 /* libYubiKit.a in Frameworks */,
 				75B38C4D233E5B7C006BDEFC /* AuthenticationServices.framework in Frameworks */,
 				7598963F2341590300DF39AA /* KeePassiumLib.framework in Frameworks */,
 				75B38C4E233E5B7C006BDEFC /* LocalAuthentication.framework in Frameworks */,
@@ -1084,6 +1108,7 @@
 		16DE7C3A873A37E1B4636309 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				754D7C18238C2C0E005652E1 /* libYubiKit.a */,
 				751146E5233F9E2900443BCD /* KeePassiumLib.framework */,
 				751146E2233F9E1500443BCD /* KeePassiumLib.framework */,
 				75530C94233E604E00EC557E /* KeePassiumLibPro.framework */,
@@ -1179,6 +1204,7 @@
 		754BF0722082A6BD00E3A292 = {
 			isa = PBXGroup;
 			children = (
+				754D7C1E238C384A005652E1 /* KeePassium-Bridging-Header.h */,
 				754BF07D2082A6BD00E3A292 /* KeePassium */,
 				750CFBC921BA9ACD00E62B09 /* KeePassium AutoFill */,
 				754BF07C2082A6BD00E3A292 /* Products */,
@@ -1201,6 +1227,7 @@
 			isa = PBXGroup;
 			children = (
 				758BF0D920D21EE500897C83 /* general */,
+				757ADC4323A1045C00D708D2 /* challenge-response */,
 				756FF64720BAB56A00FF890B /* database */,
 				753F9247229055E1005E496F /* premium */,
 				7546FBC420C1024200C5D834 /* settings */,
@@ -1342,6 +1369,16 @@
 			path = backup;
 			sourceTree = "<group>";
 		};
+		757ADC4323A1045C00D708D2 /* challenge-response */ = {
+			isa = PBXGroup;
+			children = (
+				7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */,
+				757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */,
+				757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */,
+			);
+			path = "challenge-response";
+			sourceTree = "<group>";
+		};
 		758BF0D920D21EE500897C83 /* general */ = {
 			isa = PBXGroup;
 			children = (
@@ -1383,6 +1420,7 @@
 				7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */,
 				7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */,
 				7573FD8A2321664F00DCDA5A /* MultilineButton.swift */,
+				754D7C08238C2135005652E1 /* KeyFileTextField.swift */,
 				757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */,
 				757ADC4E23A5180600D708D2 /* DismissablePopover.swift */,
 			);
@@ -1612,6 +1650,7 @@
 				751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */,
 				751E0D3B2309B01A0088BB10 /* DiagnosticsViewerVC.storyboard in Resources */,
 				75802632222EBC3800F4525F /* ProgressVC.storyboard in Resources */,
+				757ADC4B23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
 				750CFBCE21BA9ACD00E62B09 /* MainInterface.storyboard in Resources */,
 				755B863923054FC700E9FC83 /* WelcomeVC.storyboard in Resources */,
 				755E7D9F232008300010E199 /* Localizable.strings in Resources */,
@@ -1629,6 +1668,7 @@
 				7533030F23C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */,
 				751E0D102309AF4C0088BB10 /* ViewEntryHistoryVC.storyboard in Resources */,
 				751E0D132309AF540088BB10 /* ChooseDatabaseVC.storyboard in Resources */,
+				757ADC4A23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
 				755B862E23054FA200E9FC83 /* AboutVC.storyboard in Resources */,
 				754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */,
 				751E0CEF2309AE920088BB10 /* SettingsBackupVC.storyboard in Resources */,
@@ -1678,6 +1718,7 @@
 				7533031023C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */,
 				75B38C51233E5B7C006BDEFC /* ViewEntryHistoryVC.storyboard in Resources */,
 				75B38C52233E5B7C006BDEFC /* ChooseDatabaseVC.storyboard in Resources */,
+				757ADC4C23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
 				75B38C53233E5B7C006BDEFC /* AboutVC.storyboard in Resources */,
 				75B38C54233E5B7C006BDEFC /* LaunchScreen.storyboard in Resources */,
 				75B38C55233E5B7C006BDEFC /* SettingsBackupVC.storyboard in Resources */,
@@ -1732,6 +1773,7 @@
 				75D7DFB0233E5E310029AD87 /* EntryFinderVC.storyboard in Resources */,
 				75D7DFB1233E5E310029AD87 /* DiagnosticsViewerVC.storyboard in Resources */,
 				75D7DFB3233E5E310029AD87 /* ProgressVC.storyboard in Resources */,
+				757ADC4D23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
 				75D7DFB4233E5E310029AD87 /* MainInterface.storyboard in Resources */,
 				75D7DFB5233E5E310029AD87 /* WelcomeVC.storyboard in Resources */,
 				75D7DFB6233E5E310029AD87 /* Localizable.strings in Resources */,
@@ -1799,6 +1841,7 @@
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
 				75CBAB9F21C1671F00B8AFE2 /* MainCoordinator.swift in Sources */,
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
+				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* DatabaseFileListCell.swift in Sources */,
 				7523F71521C94DD90025C706 /* DiagnosticsViewerVC.swift in Sources */,
@@ -1819,6 +1862,7 @@
 				75E446CA2330307300E24E70 /* Xcode11GM_LocalizedLabel.swift in Sources */,
 				75802635222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
+				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
 				750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */,
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
@@ -1888,6 +1932,7 @@
 				754DE31220A5C4A4002ED5F9 /* ChooseKeyFileVC.swift in Sources */,
 				757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */,
+				754D7C09238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				75D1674A21464333005E33C3 /* AboutVC.swift in Sources */,
 				750C683220D767F6001A6AA0 /* EditEntryVC.swift in Sources */,
 				75151D3323268AB300F3C411 /* UILabel+strikethrough.swift in Sources */,
@@ -1937,7 +1982,9 @@
 				75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */,
 				75A5312823C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
 				75F4ACFC21776F4800B22D8B /* LString.swift in Sources */,
+				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
 				750D127E20CF071600BE0CCE /* EditGroupVC.swift in Sources */,
+				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
@@ -1994,6 +2041,7 @@
 				75B38C16233E5B7C006BDEFC /* ChooseKeyFileVC.swift in Sources */,
 				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */,
+				754D7C0B238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */,
 				75B38C1A233E5B7C006BDEFC /* EditEntryVC.swift in Sources */,
 				75B38C1B233E5B7C006BDEFC /* UILabel+strikethrough.swift in Sources */,
@@ -2043,7 +2091,9 @@
 				75B38C42233E5B7C006BDEFC /* UIAlertController+extensions.swift in Sources */,
 				75A5312923C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
 				75B38C43233E5B7C006BDEFC /* LString.swift in Sources */,
+				7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */,
 				75B38C44233E5B7C006BDEFC /* EditGroupVC.swift in Sources */,
+				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
 				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
@@ -2069,6 +2119,7 @@
 				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
 				75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */,
 				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
+				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
 				75D7DF86233E5E310029AD87 /* DatabaseFileListCell.swift in Sources */,
 				75D7DF87233E5E310029AD87 /* DiagnosticsViewerVC.swift in Sources */,
@@ -2089,6 +2140,7 @@
 				75D7DF94233E5E310029AD87 /* Xcode11GM_LocalizedLabel.swift in Sources */,
 				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
+				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
 				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
 				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,
@@ -2869,7 +2921,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2893,7 +2945,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2962,9 +3014,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_ENABLE_BATCH_MODE = NO;
@@ -3018,8 +3072,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -3034,19 +3090,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_UNROLL_LOOPS = YES;
+				HEADER_SEARCH_PATHS = "../YubiKit/**";
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.09;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MAIN_APP";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KeePassium-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3059,19 +3117,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_UNROLL_LOOPS = YES;
+				HEADER_SEARCH_PATHS = "../YubiKit/**";
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.09;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = MAIN_APP;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KeePassium-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3084,19 +3144,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_UNROLL_LOOPS = YES;
+				HEADER_SEARCH_PATHS = "../YubiKit/**";
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.09;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MAIN_APP PREPAID_VERSION";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KeePassium-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3109,19 +3171,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_UNROLL_LOOPS = YES;
+				HEADER_SEARCH_PATHS = "../YubiKit/**";
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.09;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "MAIN_APP PREPAID_VERSION";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KeePassium-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3133,7 +3197,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3157,7 +3221,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

@@ -13,8 +13,12 @@ protocol DatabaseUnlockerDelegate: class {
         _ sender: DatabaseUnlockerVC,
         database: URLReference,
         password: String,
-        keyFile: URLReference?)
+        keyFile: URLReference?,
+        yubiKey: YubiKey?)
     func didPressNewsItem(in databaseUnlocker: DatabaseUnlockerVC, newsItem: NewsItem)
+    func didPressSelectHardwareKey(
+        in databaseUnlocker: DatabaseUnlockerVC,
+        at popoverAnchor: PopoverAnchor)
 }
 
 class DatabaseUnlockerVC: UIViewController, Refreshable {
@@ -26,7 +30,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     @IBOutlet weak var databaseFileNameLabel: UILabel!
     @IBOutlet weak var inputPanel: UIView!
     @IBOutlet weak var passwordField: ProtectedTextField!
-    @IBOutlet weak var keyFileField: UITextField!
+    @IBOutlet weak var keyFileField: KeyFileTextField!
     @IBOutlet weak var announcementButton: UIButton!
     @IBOutlet weak var unlockButton: UIButton!
     
@@ -37,6 +41,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         didSet { refresh() }
     }
     private(set) var keyFileRef: URLReference?
+    private(set) var yubiKey: YubiKey?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +55,17 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         
         refresh()
         
-        keyFileField.delegate = self
         passwordField.delegate = self
+        keyFileField.delegate = self
+        
+        keyFileField.yubikeyHandler = {
+            [weak self] (field) in
+            guard let self = self else { return }
+            let popoverAnchor = PopoverAnchor(
+                sourceView: self.keyFileField,
+                sourceRect: self.keyFileField.bounds)
+            self.delegate?.didPressSelectHardwareKey(in: self, at: popoverAnchor)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -161,6 +175,25 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
                 setKeyFile(urlRef: availableKeyFileRef)
             }
         }
+
+        if let associatedYubiKey = dbSettings?.associatedYubiKey {
+            setYubiKey(associatedYubiKey)
+        }
+    }
+    
+    func setYubiKey(_ yubiKey: YubiKey?) {
+        self.yubiKey = yubiKey
+        keyFileField.isYubiKeyActive = (yubiKey != nil)
+
+        guard let databaseRef = databaseRef else { assertionFailure(); return }
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
+            dbSettings.maybeSetAssociatedYubiKey(yubiKey)
+        }
+        if let _yubiKey = yubiKey {
+            Diag.info("Hardware key selected [key: \(_yubiKey)]")
+        } else {
+            Diag.info("No hardware key selected")
+        }
     }
     
     func setKeyFile(urlRef: URLReference?) {
@@ -248,7 +281,8 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             self,
             database: databaseRef,
             password: passwordField.text ?? "",
-            keyFile: keyFileRef)
+            keyFile: keyFileRef,
+            yubiKey: yubiKey)
     }
     
     @IBAction func didPressAnouncementButton(_ sender: Any) {

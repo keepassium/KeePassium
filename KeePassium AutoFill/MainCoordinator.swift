@@ -141,30 +141,46 @@ class MainCoordinator: NSObject, Coordinator {
         (topVC as? KeyFileChooserVC)?.refresh()
     }
     
-    private func tryToUnlockDatabase(
-        database: URLReference,
-        password: String,
-        keyFile: URLReference?)
+    
+    private func challengeHandler(
+        challenge: SecureByteArray,
+        responseHandler: @escaping ResponseHandler)
     {
-        Settings.current.isAutoFillFinishedOK = false
-        
-        isLoadingUsingStoredDatabaseKey = false
-        DatabaseManager.shared.startLoadingDatabase(
-            database: database,
-            password: password,
-            keyFile: keyFile)
+        Diag.warning("YubiKey is not available in AutoFill")
+        responseHandler(SecureByteArray(), .notAvailableInAutoFill)
     }
     
     private func tryToUnlockDatabase(
         database: URLReference,
-        compositeKey: SecureByteArray)
+        password: String,
+        keyFile: URLReference?,
+        yubiKey: YubiKey?)
     {
         Settings.current.isAutoFillFinishedOK = false
         
+        let _challengeHandler = (yubiKey != nil) ? challengeHandler : nil
+        isLoadingUsingStoredDatabaseKey = false
+        DatabaseManager.shared.startLoadingDatabase(
+            database: database,
+            password: password,
+            keyFile: keyFile,
+            challengeHandler: _challengeHandler
+        )
+    }
+    
+    private func tryToUnlockDatabase(
+        database: URLReference,
+        compositeKey: CompositeKey,
+        yubiKey: YubiKey?)
+    {
+        Settings.current.isAutoFillFinishedOK = false
+        
+        compositeKey.challengeHandler = (yubiKey != nil) ? challengeHandler : nil
         isLoadingUsingStoredDatabaseKey = true
         DatabaseManager.shared.startLoadingDatabase(
             database: database,
-            compositeKey: compositeKey)
+            compositeKey: compositeKey
+        )
     }
     
     
@@ -250,7 +266,11 @@ class MainCoordinator: NSObject, Coordinator {
         navigationController.pushViewController(vc, animated: animated)
         completion?()
         if let storedDatabaseKey = storedDatabaseKey {
-            tryToUnlockDatabase(database: database, compositeKey: storedDatabaseKey)
+            tryToUnlockDatabase(
+                database: database,
+                compositeKey: storedDatabaseKey,
+                yubiKey: dbSettings?.associatedYubiKey
+            )
         }
     }
     
@@ -394,14 +414,43 @@ extension MainCoordinator: DatabaseUnlockerDelegate {
         _ sender: DatabaseUnlockerVC,
         database: URLReference,
         password: String,
-        keyFile: URLReference?)
+        keyFile: URLReference?,
+        yubiKey: YubiKey?)
     {
         watchdog.restart()
-        tryToUnlockDatabase(database: database, password: password, keyFile: keyFile)
+        tryToUnlockDatabase(
+            database: database,
+            password: password,
+            keyFile: keyFile,
+            yubiKey: yubiKey)
+    }
+    
+    func didPressSelectHardwareKey(in databaseUnlocker: DatabaseUnlockerVC, at popoverAnchor: PopoverAnchor) {
+        let hardwareKeyPicker = HardwareKeyPicker.create(delegate: self)
+        hardwareKeyPicker.modalPresentationStyle = .popover
+        if let popover = hardwareKeyPicker.popoverPresentationController {
+            popoverAnchor.apply(to: popover)
+            popover.delegate = hardwareKeyPicker.dismissablePopoverDelegate
+        }
+        hardwareKeyPicker.key = databaseUnlocker.yubiKey
+        navigationController.present(hardwareKeyPicker, animated: true, completion: nil)
     }
     
     func didPressNewsItem(in databaseUnlocker: DatabaseUnlockerVC, newsItem: NewsItem) {
         newsItem.show(in: databaseUnlocker)
+    }
+}
+
+extension MainCoordinator: HardwareKeyPickerDelegate {
+    func didDismiss(_ picker: HardwareKeyPicker) {
+    }
+    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
+        watchdog.restart()
+        if let databaseUnlockerVC = navigationController.topViewController as? DatabaseUnlockerVC {
+            databaseUnlockerVC.setYubiKey(yubiKey)
+        } else {
+            assertionFailure()
+        }
     }
 }
 

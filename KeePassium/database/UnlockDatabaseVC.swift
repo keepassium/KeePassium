@@ -13,7 +13,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     @IBOutlet private weak var databaseNameLabel: UILabel!
     @IBOutlet private weak var inputPanel: UIView!
     @IBOutlet private weak var passwordField: UITextField!
-    @IBOutlet private weak var keyFileField: UITextField!
+    @IBOutlet private weak var keyFileField: KeyFileTextField!
     @IBOutlet private weak var keyboardAdjView: UIView!
     @IBOutlet private weak var errorMessagePanel: UIView!
     @IBOutlet private weak var errorLabel: UILabel!
@@ -21,6 +21,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     @IBOutlet private weak var watchdogTimeoutLabel: UILabel!
     @IBOutlet private weak var databaseIconImage: UIImageView!
     @IBOutlet weak var masterKeyKnownLabel: UILabel!
+    @IBOutlet weak var lockDatabaseButton: UIButton!
     @IBOutlet weak var getPremiumButton: UIButton!
     @IBOutlet weak var announcementButton: UIButton!
     
@@ -33,6 +34,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     }
     
     private var keyFileRef: URLReference?
+    private var yubiKey: YubiKey?
     private var fileKeeperNotifications: FileKeeperNotifications!
     
     var isAutoUnlockEnabled = true
@@ -59,10 +61,19 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
 
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
-        
+
         watchdogTimeoutLabel.alpha = 0.0
         errorMessagePanel.alpha = 0.0
         errorMessagePanel.isHidden = true
+        
+        keyFileField.yubikeyHandler = {
+            [weak self] (field) in
+            guard let self = self else { return }
+            let popoverAnchor = PopoverAnchor(
+                sourceView: self.keyFileField,
+                sourceRect: self.keyFileField.bounds)
+            self.showHardwareKeyPicker(at: popoverAnchor)
+        }
 
         passwordField.inputAssistantItem.leadingBarButtonGroups = []
         passwordField.inputAssistantItem.trailingBarButtonGroups = []
@@ -159,6 +170,9 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
                 setKeyFile(urlRef: availableKeyFileRef)
             }
         }
+        if let associatedYubiKey = dbSettings?.associatedYubiKey {
+            setYubiKey(associatedYubiKey)
+        }
         refreshNews()
         refreshInputMode()
     }
@@ -182,6 +196,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         
         let shouldInputMasterKey = !isDatabaseKeyStored
         masterKeyKnownLabel.isHidden = shouldInputMasterKey
+        lockDatabaseButton.isHidden = masterKeyKnownLabel.isHidden
         inputPanel.isHidden = !shouldInputMasterKey
     }
 
@@ -194,6 +209,19 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     private func clearPasswordField() {
         passwordField.text = ""
     }
+    
+    
+    func showHardwareKeyPicker(at popoverAnchor: PopoverAnchor) {
+        let hardwareKeyPicker = HardwareKeyPicker.create(delegate: self)
+        hardwareKeyPicker.modalPresentationStyle = .popover
+        if let popover = hardwareKeyPicker.popoverPresentationController {
+            popoverAnchor.apply(to: popover)
+            popover.delegate = hardwareKeyPicker.dismissablePopoverDelegate
+        }
+        hardwareKeyPicker.key = yubiKey
+        present(hardwareKeyPicker, animated: true, completion: nil)
+    }
+    
     
     
     private var newsItem: NewsItem?
@@ -368,6 +396,13 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         tryToUnlockDatabase(isAutomaticUnlock: false)
     }
     
+    @IBAction func didPressLockDatabase(_ sender: Any) {
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) {
+            $0.clearMasterKey()
+        }
+        refreshInputMode()
+    }
+    
     private var premiumCoordinator: PremiumCoordinator?
     @IBAction func didPressUpgradeToPremium(_ sender: Any) {
         assert(premiumCoordinator == nil)
@@ -395,12 +430,14 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         passwordField.resignFirstResponder()
         hideWatchdogTimeoutMessage(animated: true)
         DatabaseManager.shared.addObserver(self)
-
+        
+        let _challengeHandler = ChallengeResponseManager.makeHandler(for: yubiKey)
         let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
         if let databaseKey = dbSettings?.masterKey {
+            databaseKey.challengeHandler = _challengeHandler
             DatabaseManager.shared.startLoadingDatabase(
                 database: databaseRef,
-                compositeKey: databaseKey.secureClone())
+                compositeKey: databaseKey)
         } else {
             guard !isAutomaticUnlock else {
                 Diag.debug("Aborting auto-unlock, there is no stored key")
@@ -408,11 +445,11 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
                 hideProgressOverlay(quickly: true)
                 return
             }
-
             DatabaseManager.shared.startLoadingDatabase(
                 database: databaseRef,
                 password: password,
-                keyFile: keyFileRef)
+                keyFile: keyFileRef,
+                challengeHandler: _challengeHandler)
         }
     }
     
@@ -433,6 +470,29 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             leftNavController.setViewControllers(viewControllers, animated: true)
         } else {
             leftNavController.show(viewGroupVC, sender: self)
+        }
+    }
+}
+
+extension UnlockDatabaseVC: HardwareKeyPickerDelegate {
+    func didDismiss(_ picker: HardwareKeyPicker) {
+    }
+    
+    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
+        setYubiKey(yubiKey)
+    }
+    
+    func setYubiKey(_ yubiKey: YubiKey?) {
+        self.yubiKey = yubiKey
+        keyFileField.isYubiKeyActive = (yubiKey != nil)
+
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
+            dbSettings.maybeSetAssociatedYubiKey(yubiKey)
+        }
+        if let _yubiKey = yubiKey {
+            Diag.info("Hardware key selected [key: \(_yubiKey)]")
+        } else {
+            Diag.info("No hardware key selected")
         }
     }
 }

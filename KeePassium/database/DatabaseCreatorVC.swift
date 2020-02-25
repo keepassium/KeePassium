@@ -13,6 +13,9 @@ protocol DatabaseCreatorDelegate: class {
     func didPressCancel(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressContinue(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, popoverSource: UIView)
+    func didPressPickHardwareKey(
+        in databaseCreatorVC: DatabaseCreatorVC,
+        at popoverAnchor: PopoverAnchor)
 }
 
 class DatabaseCreatorVC: UIViewController {
@@ -24,10 +27,15 @@ class DatabaseCreatorVC: UIViewController {
             showKeyFile(keyFile)
         }
     }
+    public var yubiKey: YubiKey? {
+        didSet {
+            keyFileField?.isYubiKeyActive = (yubiKey != nil)
+        }
+    }
 
     @IBOutlet weak var fileNameField: ValidatingTextField!
     @IBOutlet weak var passwordField: ProtectedTextField!
-    @IBOutlet weak var keyFileField: WatchdogAwareTextField!
+    @IBOutlet weak var keyFileField: KeyFileTextField!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet var errorMessagePanel: UIView!
     @IBOutlet weak var errorLabel: UILabel!
@@ -60,6 +68,16 @@ class DatabaseCreatorVC: UIViewController {
         passwordField.validityDelegate = self
         passwordField.delegate = self
         keyFileField.delegate = self
+        
+        keyFileField.yubikeyHandler = {
+            [weak self] (field) in
+            guard let self = self else { return }
+            let popoverAnchor = PopoverAnchor(
+                sourceView: self.keyFileField,
+                sourceRect: self.keyFileField.bounds)
+            self.delegate?.didPressPickHardwareKey(in: self, at: popoverAnchor)
+        }
+        keyFileField.isYubiKeyActive = (yubiKey != nil)
         
         passwordField.becomeFirstResponder()
     }
