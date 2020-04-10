@@ -17,7 +17,7 @@
 "c5H-hS-sU3.text" = "KeePassium bewerten";
 
 /* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
-"cBS-jW-dHU.headerTitle" = "unterstützen";
+"cBS-jW-dHU.headerTitle" = "Unterstützen";
 
 /* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
 "coD-Om-Vfm.text" = "Datenbank-Backup";

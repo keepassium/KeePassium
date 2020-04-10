@@ -67,9 +67,6 @@
 /* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
 "JRy-jy-KXb.text" = "Лицензия GPL";
 
-/* Class = "UILabel"; text = "Any questions? We have answers."; ObjectID = "jzd-La-4YT"; */
-"jzd-La-4YT.text" = "Есть вопросы? У нас есть ответы.";
-
 /* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern, автор Daniel Beaton";
 

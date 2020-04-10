@@ -57,7 +57,7 @@ class ItemRelocationCoordinator: Coordinator {
             let currentGroup = self?.itemsToRelocate.first?.value?.parent
             self?.groupPicker.expandGroup(currentGroup)
         }
-
+                
         DatabaseManager.shared.addObserver(self)
     }
     
@@ -94,28 +94,32 @@ class ItemRelocationCoordinator: Coordinator {
     }
     
     private func moveItems(to destinationGroup: Group) {
-        for item in itemsToRelocate {
-            if let entry = item.value as? Entry {
+        for weakItem in itemsToRelocate {
+            guard let strongItem = weakItem.value else { continue }
+            if let entry = strongItem as? Entry {
                 entry.move(to: destinationGroup)
-            } else if let group = item.value as? Group {
+            } else if let group = strongItem as? Group {
                 group.move(to: destinationGroup)
             } else {
                 assertionFailure()
             }
+            strongItem.touch(.accessed, updateParents: true)
         }
     }
 
     private func copyItems(to destinationGroup: Group) {
-        for item in itemsToRelocate {
-            if let entry = item.value as? Entry {
+        for weakItem in itemsToRelocate {
+            guard let strongItem = weakItem.value else { continue }
+            if let entry = strongItem as? Entry {
                 let cloneEntry = entry.clone(makeNewUUID: true)
                 cloneEntry.move(to: destinationGroup)
-            } else if let group = item.value as? Group {
+            } else if let group = strongItem as? Group {
                 let cloneGroup = group.deepClone(makeNewUUIDs: true)
                 cloneGroup.move(to: destinationGroup)
             } else {
                 assertionFailure()
             }
+            strongItem.touch(.accessed, updateParents: true)
         }
     }
     

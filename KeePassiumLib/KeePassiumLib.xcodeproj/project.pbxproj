@@ -133,6 +133,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7502613D243E970000C47F4F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7505E8CA2236C93300E5202E /* TOTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGenerator.swift; sourceTree = "<group>"; };
 		7505E8CE2236ED6E00E5202E /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		7505E8D02236FA0F00E5202E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -685,6 +686,7 @@
 				cs,
 				sv,
 				es,
+				fr,
 			);
 			mainGroup = 75D0C7602174AF1F00C64C93;
 			productRefGroup = 75D0C76B2174AF1F00C64C93 /* Products */;
@@ -859,6 +861,7 @@
 				75FDEF1D233ABE7800F17C26 /* cs */,
 				75FDEF49233ABED700F17C26 /* sv */,
 				75AC35BB23549D6C00B60614 /* es */,
+				7502613D243E970000C47F4F /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

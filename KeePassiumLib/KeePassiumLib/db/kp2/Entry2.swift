@@ -350,9 +350,14 @@ public class Entry2: Entry {
         maintainHistorySize()
     }
 
-    override public func accessed() {
-        super.accessed()
+    override public func touch(_ mode: DatabaseItem.TouchMode, updateParents: Bool = true) {
         usageCount += 1
+        super.touch(mode, updateParents: updateParents)
+    }
+    
+    override public func move(to newGroup: Group) {
+        super.move(to: newGroup)
+        locationChangedTime = Date.now
     }
     
     func load(

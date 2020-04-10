@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
+import KeePassiumLib
 
 class RootSplitVC: UISplitViewController, UISplitViewControllerDelegate {
 
@@ -27,5 +27,32 @@ class RootSplitVC: UISplitViewController, UISplitViewControllerDelegate {
             return true 
         }
         return false
+    }
+}
+
+extension RootSplitVC: FileKeeperDelegate {
+    func shouldResolveImportConflict(
+        target: URL,
+        handler: @escaping (FileKeeper.ConflictResolution) -> Void)
+    {
+        let fileName = target.lastPathComponent
+        let choiceAlert = UIAlertController(
+            title: fileName,
+            message: LString.fileAlreadyExists,
+            preferredStyle: .alert)
+        let actionOverwrite = UIAlertAction(title: LString.actionOverwrite, style: .destructive) {
+            (action) in
+            handler(.overwrite)
+        }
+        let actionRename = UIAlertAction(title: LString.actionRename, style: .default) { (action) in
+            handler(.rename)
+        }
+        let actionAbort = UIAlertAction(title: LString.actionCancel, style: .cancel) { (action) in
+            handler(.abort)
+        }
+        choiceAlert.addAction(actionOverwrite)
+        choiceAlert.addAction(actionRename)
+        choiceAlert.addAction(actionAbort)
+        present(choiceAlert, animated: true)
     }
 }

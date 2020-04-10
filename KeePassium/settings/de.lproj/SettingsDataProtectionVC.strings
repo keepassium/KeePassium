@@ -32,7 +32,7 @@
 "Mxu-GP-FmN.headerTitle" = "Schlüsseldatei";
 
 /* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.footerTitle" = "Schließt alle Datenbanken und entfernt alle Schlüssel nach der festgelegten Zeit";
+"neJ-eG-TV7.footerTitle" = "Schließt alle Datenbanken und entfernt alle Schlüssel nach der festgelegten Zeit.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
 "neJ-eG-TV7.headerTitle" = "Automatisch sperren";

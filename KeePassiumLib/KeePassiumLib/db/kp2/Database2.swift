@@ -596,6 +596,7 @@ public class Database2: Database {
     
     override public func changeCompositeKey(to newKey: CompositeKey) {
         compositeKey = newKey.clone()
+        meta.masterKeyChangedTime = Date.now
     }
     
     override public func getBackupGroup(createIfMissing: Bool) -> Group? {
@@ -1153,10 +1154,8 @@ public class Database2: Database {
         let moveOnly = !group.isDeleted && meta.isRecycleBinEnabled
         if moveOnly, let backupGroup = getBackupGroup(createIfMissing: meta.isRecycleBinEnabled) {
             Diag.debug("Moving group to RecycleBin")
-            parentGroup.remove(group: group)
-            backupGroup.add(group: group)
-            group.accessed()
-            group.locationChangedTime = Date.now
+            group.move(to: backupGroup) 
+            group.touch(.accessed, updateParents: false)
             
             group.isDeleted = true
             subGroups.forEach { $0.isDeleted = true }
@@ -1189,8 +1188,8 @@ public class Database2: Database {
         if meta.isRecycleBinEnabled,
             let backupGroup = getBackupGroup(createIfMissing: meta.isRecycleBinEnabled)
         {
-            entry.accessed()
-            entry.move(to: backupGroup)
+            entry.move(to: backupGroup) 
+            entry.touch(.accessed)
         } else {
             Diag.debug("Backup disabled, removing permanently.")
             addDeletedObject(uuid: entry.uuid)

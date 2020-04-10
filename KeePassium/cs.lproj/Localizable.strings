@@ -188,7 +188,7 @@
 "[FileInfo/Field/valueError] Error" = "Chyba";
 
 /* Title of the dialog for picking the destination group for move/copy operations */
-"[General/DestinationGroup/title] Choose a Destination" = "Choose a Destination";
+"[General/DestinationGroup/title] Choose a Destination" = "Vyberte cíl";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Zrušit";

@@ -50,6 +50,11 @@ public enum LString {
         value: "Rename",
         comment: "Action/button to rename an item"
     )
+    public static let actionOverwrite = NSLocalizedString(
+        "[Generic] Overwrite",
+        value: "Overwrite",
+        comment: "Action/button to replace/overwrite an item"
+    )
     public static let actionMove = NSLocalizedString(
         "[Generic] Move",
         value: "Move",
@@ -140,6 +145,11 @@ public enum LString {
         "[File/PermissionDenied] Try to remove the file from the app, then add it again.",
         value: "Try to remove the file from the app, then add it again.",
         comment: "A suggestion shown after specific file errors (either databases or key files)."
+    )
+    public static let fileAlreadyExists = NSLocalizedString(
+        "[Generic/File/title] File already exists",
+        value: "File already exists",
+        comment: "Message shown when trying to copy into an existing file."
     )
     
 

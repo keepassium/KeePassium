@@ -1,5 +1,31 @@
 #CHANGELOG
 
+## [1.11.54] - 2020-04-10
+
+### Added
+
+- French translation
+- When importing a database, the app will ask whether to overwrite the existing database (closes #91)
+
+### Changed
+
+- When you delete a file, it is no longer moved to the trash but deleted outright. (Moving to trash seems to fail randomly; so sometimes it was impossible to delete a file.)
+
+### Fixed
+
+- Always treat password fields as protected (libkeepass/pykeepass#194) [thanks, Robin]
+- Changed master key was not remembered when it should have been
+- Adding databases with mixed-case extensions, such as all-caps .KDBX [thanks, Thorsten]
+- When moving groups/entries, their timestamps were updated incorrectly, and the move was rolled back when merging with an earlier version of the database [thanks, Daniel]
+- Updating master key modification timestamp once it's been changed
+- Sometimes it was impossible to delete files
+- Infinite clipboard timeout was treated as immediate [thanks, Andreas]
+- Backup files are no longer counted towards free 1-database limit
+- Hard-coded absolute path in contents.xcworkspacedata (fixes #90)
+- Showing and re-hiding a password sometimes produced colored asterisks
+- Minor translation fixes
+
+
 ## [1.10.53] - 2020-01-19
 
 ### Fixed

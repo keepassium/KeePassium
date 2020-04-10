@@ -1,0 +1,9 @@
+/* Class = "UINavigationItem"; title = "Diagnostic Info"; ObjectID = "1D0-qD-Wj1"; */
+"1D0-qD-Wj1.title" = "Informations de diagnostic";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "icR-uK-cyC"; Note = "Action: clear diagnostic log"; */
+"icR-uK-cyC.title" = "Nettoyé";
+
+/* Class = "UIBarButtonItem"; title = "Contact Support"; ObjectID = "uAJ-Ui-Jkx"; Note = "Action: write an email to support"; */
+"uAJ-Ui-Jkx.title" = "Contacter le support technique";
+

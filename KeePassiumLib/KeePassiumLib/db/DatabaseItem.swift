@@ -8,6 +8,11 @@
 
 
 open class DatabaseItem {
+    public enum TouchMode {
+        case accessed
+        case modified
+    }
+    
     public weak var parent: Group?
     
     public func isAncestor(of item: DatabaseItem) -> Bool {
@@ -19,5 +24,9 @@ open class DatabaseItem {
             parent = parent?.parent
         }
         return false
+    }
+    
+    public func touch(_ mode: TouchMode, updateParents: Bool = true) {
+        fatalError("Pure abstract method")
     }
 }

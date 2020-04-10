@@ -194,12 +194,14 @@ public class Group: DatabaseItem, Eraseable {
         fatalError("Pure virtual method")
     }
     
-    public func accessed() {
+    override public func touch(_ mode: DatabaseItem.TouchMode, updateParents: Bool = true) {
         lastAccessTime = Date.now
-    }
-    public func modified() {
-        accessed()
-        lastModificationTime = Date.now
+        if mode == .modified {
+            lastModificationTime = Date.now
+        }
+        if updateParents {
+            parent?.touch(mode, updateParents: true)
+        }
     }
 
     public func collectAllChildren(groups: inout Array<Group>, entries: inout Array<Entry>) {

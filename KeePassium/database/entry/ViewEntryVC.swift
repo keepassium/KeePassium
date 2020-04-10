@@ -29,6 +29,7 @@ class ViewEntryVC: UIViewController, Refreshable {
         viewEntryVC.entry = entry
         viewEntryVC.isHistoryMode = historyMode
         viewEntryVC.refresh()
+        entry.touch(.accessed)
         if !historyMode {
             let navVC = UINavigationController(rootViewController: viewEntryVC)
             return navVC

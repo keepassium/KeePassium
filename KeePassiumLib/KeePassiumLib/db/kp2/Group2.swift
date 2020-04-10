@@ -93,11 +93,16 @@ public class Group2: Group {
         return newGroup
     }
     
-    override public func accessed() {
-        super.accessed()
+    override public func touch(_ mode: DatabaseItem.TouchMode, updateParents: Bool = true) {
         usageCount += 1
+        super.touch(mode, updateParents: updateParents)
     }
 
+    override public func move(to newGroup: Group) {
+        super.move(to: newGroup)
+        self.locationChangedTime = Date.now
+    }
+    
     func load(
         xml: AEXMLElement,
         streamCipher: StreamCipher,

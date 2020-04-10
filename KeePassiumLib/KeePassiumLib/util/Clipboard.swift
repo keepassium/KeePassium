@@ -32,7 +32,7 @@ public class Clipboard {
     }
     
     private func insert(items: [[String: Any]], timeout: Double?) {
-        if let timeout = timeout {
+        if let timeout = timeout, timeout > 0.0 {
             UIPasteboard.general.setItems(
                 items,
                 options: [

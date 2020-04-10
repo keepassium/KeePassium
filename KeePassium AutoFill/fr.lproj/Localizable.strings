@@ -1,0 +1,261 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "Déverrouiller";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "Débloquer KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Utiliser le code d'accès";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC →123";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Pour mettre à jour, veuillez ouvrir manuellement KeePassium à partir de votre écran d'accueil.";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Mise à niveau Premium";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Le fichier sélectionné \"%@\" ne semble pas être une base de données.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Créer une base de données";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Créer une base de données";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "Échec de la suppression du fichier de la base de données";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Supprimer le fichier de la base de données?\n Assurez-vous d'avoir une sauvegarde.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "Chargement en cours…";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "La clé principale a été modifiée avec succès";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "Ouvrir une base de données";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "Fermer";
+
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "Verrouiller la base de données";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Retirer la base de données de la liste ?\n Le fichier restera intact et vous pourrez l'ajouter plus tard.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "Fait";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "Sauvegarde...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "Erreur de fichier de clé: %@";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Le journal de diagnostic a été copié dans le presse-papiers.";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "Afficher les journaux de diagnostic";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "Fichiers joints";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "Créer une entrée";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Nom du champ";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "Remarques";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "Mot de passe";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "Titre";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "Nom d'utilisateur";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "Nouvelle entrée";
+
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Essayez de supprimer le fichier de l'application, puis ajoutez-le à nouveau.";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "Date de création";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "Emplacement du fichier";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "Nom du fichier";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "Taille Du Fichier";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "Date de dernière modification";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "Erreur";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "Annuler";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "Contactez-nous";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "Copier";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "Supprimer";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "Annuler";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "Ignorer";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "Fait";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "Éditer";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "Exporter";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "Déplacer";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "OK";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "Renommer";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "Remplacer";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "Voir les détails";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "Êtes-vous certain ?";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Annuler les modifications non enregistrées ?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "Il y a des modifications non enregistrées";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "Supprimer";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "Dissocier";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "Erreur d'exportation";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "Erreur d'importation";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "Erreur";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "Erreur du trousseau";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "Avertissement";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "Créer un groupe";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "Créer un groupe";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "Modifier le Groupe";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "Nouveau groupe";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Supprimer le fichier clé?\n Assurez-vous d'avoir une sauvegarde.";
+
+/* Title of an announcement about the Pro version */
+"[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
+
+/* Message shown when opening an announcement in AutoFill */
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "Veuillez ouvrir l'application principale pour l'annonce complète.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Passer à la version Premium";
+
+/* Description/advertisement for the `Biometric Unlock` premium feature */
+"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "Accédez rapidement à vos mots de passe en utilisant Face ID/Touch ID dans la version Premium.";
+
+/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
+"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Déverrouillage biométrique";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Gagnez du temps en entrant vos mots de passe principaux complexes — gardez votre base de données ouverte plus longtemps dans la version premium.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Délai d'attente long de la base de données";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Basculer facilement entre les bases de données dans la version premium.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Bases de données multiples";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Aperçu des images et des documents directement dans l'application, dans la version premium.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "Aperçu des pièces jointes";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "Afficher le mot de passe";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(Veuillez décrire le problème ici)";
+
+/* Action/button to add database to the app */
+"Add Database" = "Ajouter une base de données";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "Choisir la base de données";
+
+/* Action/button */
+"Import Database" = "Importer une base de données";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "La base de données KeePass ne doit pas être utilisée comme fichier clé. Veuillez choisir un autre fichier.";
+

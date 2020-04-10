@@ -98,7 +98,8 @@ class EditEntryVC: UITableViewController, Refreshable {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
         
-        entry?.accessed()
+        entry?.touch(.accessed)
+        
         refresh()
         if mode == .create {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8)
@@ -297,7 +298,7 @@ class EditEntryVC: UITableViewController, Refreshable {
     
     func applyChangesAndSaveDatabase() {
         guard let entry = entry else { return }
-        entry.modified()
+        entry.touch(.modified, updateParents: false)
         view.endEditing(true)
         DatabaseManager.shared.addObserver(self)
         DatabaseManager.shared.startSavingDatabase()

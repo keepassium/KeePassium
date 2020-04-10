@@ -426,7 +426,7 @@ public class Database1: Database {
         
         subEntries.forEach { (entry) in
             entry.move(to: backupGroup)
-            entry.accessed()
+            entry.touch(.accessed, updateParents: false)
         }
         Diag.debug("Delete group OK")
     }
@@ -442,8 +442,8 @@ public class Database1: Database {
             return
         }
         
-        entry.accessed()
         entry.move(to: backupGroup)
+        entry.touch(.accessed, updateParents: false)
         Diag.info("Delete entry OK")
     }
     

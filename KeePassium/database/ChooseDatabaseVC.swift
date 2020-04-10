@@ -228,7 +228,8 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     }
 
     @IBAction func didPressAddDatabase(_ sender: Any) {
-        if databaseRefs.count > 0 {
+        let nonBackupDatabaseRefs = databaseRefs.filter { $0.location != .internalBackup }
+        if nonBackupDatabaseRefs.count > 0 {
             premiumUpgradeHelper.performActionOrOfferUpgrade(.canUseMultipleDatabases, in: self) {
                 [weak self] in
                 self?.handleDidPressAddDatabase()

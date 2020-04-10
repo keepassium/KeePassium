@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/andrei/Dropbox/Projects/XCode/KeePassium/KeePassiumLib/KeePassiumLib.xcodeproj">
+      location = "group:KeePassiumLib/KeePassiumLib.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:YubiKit/YubiKit.xcodeproj">

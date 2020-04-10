@@ -2,7 +2,7 @@
 "2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Hilfe";
 
 /* Class = "UILabel"; text = "No database files"; ObjectID = "5Md-DB-C5P"; Note = "Placeholder shown when there are no database files available"; */
-"5Md-DB-C5P.text" = "keine Datenbank";
+"5Md-DB-C5P.text" = "Keine Datenbank";
 
 /* Class = "UIBarButtonItem"; lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "lnO-nD-gvh"; Note = "Action: show sorting settings of database files"; */
 "lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Sortieren nach";

@@ -24,7 +24,7 @@ class ViewableFieldCellFactory {
         
         if field is TOTPViewableField {
             cell.decorator = TOTPFieldCellDecorator(cell: cell)
-        } else if field.isProtected {
+        } else if field.isProtected || (field.internalName == EntryField.password) {
             cell.decorator = ProtectedFieldCellDecorator(cell: cell)
         } else {
             cell.decorator = URLFieldCellDecorator(cell: cell)
@@ -221,6 +221,7 @@ class ProtectedFieldCellDecorator: ViewableFieldCellDecorator {
                 if cell.field?.isValueHidden ?? true {
                     cell.valueText.attributedText = nil
                     cell.valueText.text = value
+                    cell.valueText.textColor = .primaryText
                 } else {
                     cell.valueText.attributedText = PasswordStringHelper.decorate(
                         value ?? "",

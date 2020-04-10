@@ -1,0 +1,15 @@
+/* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
+"enW-gs-tra.normalTitle" = "Ajouter une base de données";
+
+/* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
+"P0M-N3-ynf.text" = "Veuillez ajouter à nouveau les bases de données et les fichiers clés que vous souhaitez utiliser avec la fonction Remplissage automatique.";
+
+/* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
+"pIl-6L-Msp.text" = "AutoFill Setup";
+
+/* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
+"rzY-Ci-bd9.title" = "KeePassium";
+
+/* Class = "UITextView"; text = "The AutoFill cannot automatically access the files you already have in the main KeePassium app.\n\nWhy? Behind the scenes, the system treats AutoFill as a separate app, independent from the main KeePassium process. For security reasons, an app cannot simply access any external files – unless you explicitly link these files to that app. Thus the system guarantees that the app can only access the few files you allowed it to.\n\nAs a result, both AutoFill and the main KeePassium app need to be given their own permissions for each external file. Luckily, this is a one-time procedure."; ObjectID = "UAW-0G-N5G"; */
+"UAW-0G-N5G.text" = "Le remplissage automatique ne peut pas accéder automatiquement aux fichiers que vous avez déjà dans l'application principale KeePassium.\n\nPourquoi? Derrière les scènes, le système traite le remplissage automatique comme une application séparée, indépendante du processus KeePassium principal. Pour des raisons de sécurité, une application ne peut pas simplement accéder à des fichiers externes, à moins que vous ne liez explicitement ces fichiers à cette application. Ainsi, le système garantit que l'application ne peut accéder qu'aux quelques fichiers que vous avez autorisés.\n\nEn conséquence, le remplissage automatique et l'application principale KeePassium doivent avoir leurs propres permissions pour chaque fichier externe. Heureusement, il s'agit d'une procédure unique.";
+

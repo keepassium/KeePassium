@@ -37,7 +37,7 @@ public enum FileType {
     case keyFile
 
     init(for url: URL) {
-        if FileType.DatabaseExtensions.all.contains(url.pathExtension) {
+        if FileType.DatabaseExtensions.all.contains(url.pathExtension.localizedLowercase) {
             self = .database
         } else {
             self = .keyFile
@@ -45,6 +45,6 @@ public enum FileType {
     }
 
     public static func isDatabaseFile(url: URL) -> Bool {
-        return DatabaseExtensions.all.contains(url.pathExtension)
+        return DatabaseExtensions.all.contains(url.pathExtension.localizedLowercase)
     }
 }

@@ -1,0 +1,357 @@
+/* Type of keyboard to show for App Lock passcode: letters and digits. */
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "Alphanumérique";
+
+/* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "Numérique";
+
+/* Progress status */
+"[Cipher/Progress] Decrypting" = "Déchiffrement";
+
+/* Progress status */
+"[Cipher/Progress] Encrypting" = "Chiffrement";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES decryption error (code %d)" = "Erreur de déchiffrement AES (code %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES encryption error (code %d)" = "Erreur de chiffrement AES (code %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES initialization error (code %d)" = "Erreur d'initialisation AES (code %d)";
+
+/* Error message about Argon2 hashing function. [errorCode: Int] */
+"[CryptoError] Argon2 hashing error (code %d)" = "Erreur de hachage Argon2 (code %d)";
+
+/* Error message about PKCS7 padding. [errorCode: Int] */
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "Remplissage de données invalide (code %d). Fichier corrompu ?";
+
+/* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "Paramètre KDF invalide : %1$@ - %2$@. Fichier corrompu ?";
+
+/* Error message about random number generator. [errorCode: Int] */
+"[CryptoError] Random number generator error (code %d)" = "Erreur du générateur de nombre aléatoire (code %d)";
+
+/* Error message about Twofish cipher. [errorCode: Int] */
+"[CryptoError] Twofish cipher error (code %d)" = "Erreur Twofish cipher (code %d)";
+
+/* Error message */
+"[Database/Load/Error] Cannot find database file" = "KeePassiumLib/en. lproj/Localizable. strings\n[Base de données/Chargement/Erreur] Le fichier de base de données n'a pas été trouvé\nMessage d'erreur:\nFichier: KeePassiumLib. xliff";
+
+/* Error message */
+"[Database/Load/Error] Cannot find key file" = "KeePassiumLib/en. lproj/Localizable. strings\n[Base de données/Chargement/Erreur] Impossible de trouver le fichier clé\nMessage d'erreur:\nFichier: KeePassiumLib. xliff";
+
+/* Error message */
+"[Database/Load/Error] Cannot open database file" = "KeePassiumLib/en. lproj/Localizable. strings\n[Base de données/Chargement/Erreur] Impossible d'ouvrir le fichierr de base de données\nMessage d'erreur\nFichier: KeePassiumLib. xliff";
+
+/* Error message */
+"[Database/Load/Error] Cannot open key file" = "Impossible d'ouvrir le fichier de clé";
+
+/* Error shown when both master password and key file are empty */
+"[Database/Load/Error] Please provide at least a password or a key file" = "Veuillez fournir au moins un mot de passe ou un fichier clé";
+
+/* Error message */
+"[Database/Load/Error] Unrecognized database format" = "Format de la base de données non reconnu";
+
+/* Progress status: finished loading database */
+"[Database/Progress] Done" = "Fait";
+
+/* Progress bar status */
+"[Database/Progress] Loading database file..." = "Chargement de la bases de données...";
+
+/* Progress status */
+"[Database/Progress] Loading key file..." = "Chargement du fichier de clé...";
+
+/* Error message */
+"[Database/Unlock/Error] Failed to open key file" = "Impossible d'ouvrir le fichier de clé";
+
+/* Error message */
+"[Database/Unlock/Error] Password and key file are both empty." = "Le mot de passe et le fichier de clé sont tous deux vides.";
+
+/* Error message */
+"[Database1/FormatError] Database file is corrupted." = "Le fichier de base de données est corrompu.";
+
+/* Error message [fieldName: String] */
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Erreur lors de l'analyse du champ %@. Fichier de base de données corrompu ?";
+
+/* Error message */
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Une entrée a été trouvée en dehors d'un groupe. Fichier de base de données corrompu ?";
+
+/* Error message */
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Fin de fichier inattendue. Fichier de base de données corrompu?";
+
+/* Error message when reading database header */
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Erreur de lecture de l'en-tête. Fichier de la base de données corrompu?";
+
+/* Error message. [flagsHexString: String] */
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Chiffrement non pris en charge. (Code : %@)";
+
+/* Error message when opening a database. [version: String] */
+"[Database1/Header1/Error] Unsupported database format version: %@." = "Version du format de base de données non prise en charge : %@.";
+
+/* Error message when opening a database */
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Mauvaise signature de fichier. Pas une base de données KeePass ?";
+
+/* Status message: collecting database items into a single package */
+"[Database1/Progress] Packing the content" = "Emballer le contenu";
+
+/* Status message: processing the content of a database */
+"[Database1/Progress] Parsing content" = "Analyse du contenu";
+
+/* Name of a group which contains deleted entries */
+"[Database2/backupGroupName] Recycle Bin" = "Corbeille";
+
+/* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
+"[Database2/FormatError] Cannot parse database. %@" = "Impossible d'analyser la base de données. %@";
+
+/* Error message [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Fichier de base de données corrompu (le bloc %d a une taille négative)";
+
+/* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Fichier de base de données corrompu (hash incompatible dans le bloc %d)";
+
+/* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Fichier de base de données corrompu (HMAC incompatible avec le bloc %d)";
+
+/* Error message about Gzip compression algorithm. [reason: String] */
+"[Database2/FormatError] Gzip error: %@" = "Erreur Gzip : %@";
+
+/* Error message: wrong ID of a data block */
+"[Database2/FormatError] Unexpected block ID." = "ID de bloc inattendu.";
+
+/* Error message */
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "Fin de fichier inattendue. Fichier corrompu?";
+
+/* Error message when saving a database. [reason: String] */
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "Impossible de décompresser les données de pièce jointe : %@";
+
+/* Error message, with the name of problematic field. [fieldName: String] */
+"[Database2/Header2/Error] Header field %@ is corrupted." = "Le champ d'en-tête %@ est corrompu.";
+
+/* Error message */
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Incompatibilité de hachage de l'en-tête. Fichier de base corrompu ?";
+
+/* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Incompatibilité HMAC de l'en-tête. Fichier de la base de données corrompu ?";
+
+/* Error message when reading database header */
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "Erreur de lecture de l'en-tête. Fichier de la base de données corrompu?";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Unknown compression algorithm." = "Algorithme de compression inconnu.";
+
+/* Error message. [uuidHexString: String] */
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "Chiffrement de données non pris en charge : %@";
+
+/* Error message when opening a database. [version: String] */
+"[Database2/Header2/Error] Unsupported database format version: %@." = "Version du format de base de données non prise en charge : %@.";
+
+/* Error message when opening a database. [id: UInt32] */
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Chiffrement de flux interne non pris en charge (ID %d)";
+
+/* Error message about Key Derivation Function. [uuidString: String] */
+"[Database2/Header2/Error] Unsupported KDF: %@" = "KDF non pris en charge : %@";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Mauvaise signature de fichier. Pas une base de données KeePass ?";
+
+/* Error message about Gzip compression algorithm. [errorMessage: String] */
+"[Database2/Loading/Error] Error unpacking database: %@" = "Erreur lors de la décompression de la base de données : %@";
+
+/* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
+"[Database2/Loading/Warning/missingBinaries]" = "Les pièces jointes de certaines entrées ont des données manquante. Ceci est un signe de corruption de la base de données, probablement par la dernière application utilisée (%1$@). KeePassium conservera les pièces jointes vides, mais ne pourra pas les restaurer. Vous devez restaurer votre base de données à partir d'une copie de sauvegarde. \n\nPièces jointes manquantes : %2$@";
+
+/* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
+"[Database2/Loading/Warning/namelessAttachments]" = "Certaines entrées ont des pièces jointes sans nom. Ceci est un signe d'une base de données ayant été corrompue.\n\n Veuillez consulter les fichiers joints dans les entrées suivantes (et leur historique):\n%@";
+
+/* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
+"[Database2/Loading/Warning/namelessCustomFields]" = "Certaines entrées ont des champs personnalisés avec des noms vides. Cela peut être un signe de corruption de données. Veuillez vérifier ces entrées :\n\n%@";
+
+/* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
+"[Database2/Loading/Warning/unusedAttachments]" = "La base de données contient des pièces jointes qui ne sont utilisées dans aucune entrée. Très probablement, ils ont été oubliés par la dernière application (%@). Cependant, cela peut également être un signe de corruption des données. \nVeuillez vous assurer d'avoir une sauvegarde de votre base de données avant de changer quoi que ce soit.";
+
+/* Progress bar status */
+"[Database2/Progress] Loading database" = "Chargement de la bases de données";
+
+/* Progress bar status */
+"[Database2/Progress] Reading database content" = "Lecture du contenu de la base de données";
+
+/* Progress bar status */
+"[Database2/Progress] Writing encrypted blocks" = "Écriture de blocs chiffrés";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Data compression error: %@" = "Erreur de compression de données : %@";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Encryption error: %@" = "Erreur de chiffrement : %@";
+
+/* Error message about XML parsing. [value: String, tag: String] */
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "Valeur '%1$@' malformée dans %2$@";
+
+/* Error message about XML parsing. [tag: String] */
+"[Database2/Xml2/ParsingError] Nil value in %@" = "Valeur Nulle dans %@";
+
+/* Error message about XML parsing */
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "Pas un XML KeePass";
+
+/* Error message about XML parsing. [actualTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Balise inattendue '%@'";
+
+/* Error message about XML parsing. [actualTag: String, expectedTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "Balise inattendue '%1$@' (au lieu de '%2$@')";
+
+/* Generic error while parsing XML. [errorDetails: String] */
+"[Database2/Xml2/ParsingError] XML error: %@" = "Erreur XML : %@";
+
+/* Error message while opening a database */
+"[DatabaseError] Cannot open database" = "Impossible d'ouvrir la base de données";
+
+/* Error message while saving a database */
+"[DatabaseError] Cannot save database" = "Impossible de sauvegarder la base de données";
+
+/* Error message: user provided a wrong master key for decryption. */
+"[DatabaseError] Invalid password or key file" = "Mot de passe ou clé de fichier incorrect";
+
+/* A very generic error message */
+"[FileDocument] Unexpected file error, please contact us." = "Une erreur inattendue est survenue, veuillez contacter le support technique.";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to delete file. Reason: %@" = "Échec de la suppression du fichier. Raison : %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to import file. Reason: %@" = "Échec de l'import du fichier. Raison : %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to open file. Reason: %@" = "Échec de l'ouverture du fichier. Raison : %@";
+
+/* Error message: tried to import URL which does not point to a file */
+"[FileKeeper] Not a file URL" = "Pas une URL de fichier";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Date de création (plus ancien en premier)";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Date de création (Récent en premier)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Date de modification (plus ancien en premier)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Date de création (Récent en premier)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
+"[FilesSortOrder/longTitle] Name (A..Z)" = "Nom (A..Z)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
+"[FilesSortOrder/longTitle] Name (Z..A)" = "Nom (Z..A)";
+
+/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
+"[FilesSortOrder/longTitle] No Sorting" = "Aucun tri";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Par Date de Création (Nouveau..Ancien)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Par Date de Création (Ancien..Nouveau)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Par Date de Modification (Nouveau..Ancien)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Par Date de Modification (Old..Nouveau)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "Par titre (A..Z)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "Par titre (Z..A)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
+"[GroupSortOrder/longTitle] No Sorting" = "Aucun tri";
+
+/* Status message: processing of the master key is in progress */
+"[KDF/Progress] Processing the master key" = "Traitement de la clé principale";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "Erreur de trousseau (code %d) ";
+
+/* Error message about system keychain. */
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Erreur trousseau: format de données inattendu";
+
+/* Explanation/notification when a long-running operation was cancelled by user */
+"[Progress/CancellationReason] Cancelled by user" = "Annulé par l'utilisateur";
+
+/* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
+"[Progress/CancellationReason/lowMemory]" = "Mémoire insuffisante pour continuer.\nCela peut se produire avec des bases de données volumineuse ou des paramètres de base de données trop ambitieux (paramètre de mémoire Argon2).";
+
+/* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
+"[Settings/AppLockTimeout/description] After last interaction" = "Après la dernière interaction";
+
+/* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
+"[Settings/AppLockTimeout/description] After leaving the app" = "Après avoir quitté l'application";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "Immédiatement";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/fullTitle] Never" = "Jamais";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "Immédiatement";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/shortTitle] Never" = "Jamais";
+
+/* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "Pour toujours";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/fullTitle] Never" = "Jamais";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/shortTitle] Never" = "Jamais";
+
+/* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "En quittant l'application";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "Immédiatement";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "Jamais";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "Immédiatement";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "Jamais";
+
+/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Dernière modification";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
+"[Settings/EntryListDetail/longTitle] None" = "Aucune";
+
+/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
+"[Settings/EntryListDetail/longTitle] Notes" = "Remarques";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
+"[Settings/EntryListDetail/longTitle] Password" = "Mot de passe";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
+"[Settings/EntryListDetail/longTitle] URL" = "URL";
+
+/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
+"[Settings/EntryListDetail/longTitle] User Name" = "Nom d'utilisateur";
+
+/* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
+"[URLReference/Location] Cloud storage / Another app" = "Stockage Cloud / Une autre application";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
+"[URLReference/Location] Internal backup" = "Sauvegarde interne";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
+"[URLReference/Location] Internal inbox" = "Boîte de réception interne";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
+"[URLReference/Location] Local copy" = "Copie locale";
+

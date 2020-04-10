@@ -1,0 +1,15 @@
+/* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
+"9UZ-FK-v73.text" = "Aucun fichier-clé";
+
+/* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
+"leO-vH-qBX.text" = "Utiliser uniquement le mot de passe";
+
+/* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
+"Lod-RE-tcd.title" = "Ajouter un fichier clé";
+
+/* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
+"Omh-Sn-jl2.normalTitle" = "Ajouter un fichier clé";
+
+/* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
+"r85-yz-wYI.title" = "Fichiers clé";
+
