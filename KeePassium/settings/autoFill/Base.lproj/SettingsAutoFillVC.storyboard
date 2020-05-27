@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ei6-22-NXN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ei6-22-NXN">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -168,10 +168,60 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Automatic search" footerTitle="When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically." id="jYl-ks-dFG" userLabel="Automatic search">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="R2t-YZ-TJF">
+                                        <rect key="frame" x="0.0" y="339" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R2t-YZ-TJF" id="Gjp-69-EKT">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Fill-in the perfect result automatically" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDb-aU-Mmf">
+                                                    <rect key="frame" x="61" y="11" width="186" height="22"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Title of an option: copy one-time password to clipboard when using AutoFill"/>
+                                                    </attributedString>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dg8-cp-hCR">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didTogglePerfectMatch:" destination="ei6-22-NXN" eventType="valueChanged" id="qLI-XC-yKS"/>
+                                                    </connections>
+                                                </switch>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-autofill-perfect-match-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="1FP-jM-b2u">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="oty-FA-yX4"/>
+                                                        <constraint firstAttribute="height" constant="29" id="ubm-CV-5tE"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dg8-cp-hCR" secondAttribute="bottom" constant="6" id="Me4-7s-0EP"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="WDb-aU-Mmf" secondAttribute="bottom" id="SKv-J0-AQa"/>
+                                                <constraint firstItem="WDb-aU-Mmf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gjp-69-EKT" secondAttribute="topMargin" id="W8V-eG-g9q"/>
+                                                <constraint firstItem="dg8-cp-hCR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gjp-69-EKT" secondAttribute="top" constant="6" id="amh-77-riZ"/>
+                                                <constraint firstItem="1FP-jM-b2u" firstAttribute="centerY" secondItem="Gjp-69-EKT" secondAttribute="centerY" id="bqy-Kg-3NJ"/>
+                                                <constraint firstItem="1FP-jM-b2u" firstAttribute="leading" secondItem="Gjp-69-EKT" secondAttribute="leadingMargin" id="dFo-bc-uq4"/>
+                                                <constraint firstItem="WDb-aU-Mmf" firstAttribute="centerY" secondItem="Gjp-69-EKT" secondAttribute="centerY" priority="750" id="ghv-QF-oU1"/>
+                                                <constraint firstItem="dg8-cp-hCR" firstAttribute="leading" secondItem="WDb-aU-Mmf" secondAttribute="trailing" constant="8" id="hXE-7V-mVw"/>
+                                                <constraint firstItem="dg8-cp-hCR" firstAttribute="centerY" secondItem="Gjp-69-EKT" secondAttribute="centerY" priority="750" id="kcV-4e-us6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dg8-cp-hCR" secondAttribute="trailing" id="qRX-Mj-ett"/>
+                                                <constraint firstItem="WDb-aU-Mmf" firstAttribute="leading" secondItem="1FP-jM-b2u" secondAttribute="trailing" constant="16" id="qlu-Xa-tVB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="One-time passwords" footerTitle="When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you." id="XYL-1l-Jx6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="GKe-BK-Kaa">
-                                        <rect key="frame" x="0.0" y="339" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="490.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GKe-BK-Kaa" id="vYX-KL-3FJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -226,6 +276,7 @@
                     </tableView>
                     <connections>
                         <outlet property="copyTOTPSwitch" destination="x6e-9m-Rum" id="ouZ-8X-2PX"/>
+                        <outlet property="perfectMatchSwitch" destination="dg8-cp-hCR" id="cdQ-vS-hbF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2l-oi-8Cm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -239,6 +290,7 @@
         <image name="autofill-setup-3" width="29" height="29"/>
         <image name="autofill-setup-4" width="29" height="29"/>
         <image name="autofill-setup-5" width="29" height="29"/>
+        <image name="settings-autofill-perfect-match-listitem" width="29" height="29"/>
         <image name="settings-clipboard-timeout-listitem" width="29" height="29"/>
         <namedColor name="IconTint">
             <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

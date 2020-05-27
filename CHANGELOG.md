@@ -1,5 +1,19 @@
 #CHANGELOG
 
+
+## [1.11.56] - 2020-04-16
+
+### Added
+
+- Auto-unlock the last used database on iPad like on iPhone (if allowed by the settings and on first launch only) [thanks, everyone]
+- New setting: whether AutoFill should automatically proceed when there is only one suitable entry (related #76) [thanks, Nicolai]
+
+### Fixed
+
+- Now it is possible to edit/move Recycle Bin in .kdbx databases [thanks, Amnuay]
+- Sometimes it was not possible to select databases from Google Drive [thanks, K.B.]
+
+
 ## [1.11.55] - 2020-04-11
 
 ### Added

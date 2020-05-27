@@ -525,11 +525,13 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         menuAction.backgroundColor = UIColor.lightGray
         
         var allowedActions = [deleteAction]
-        if let entry = getEntry(at: indexPath) {
-            if !entry.isDeleted { allowedActions.append(editAction) }
-        } else if let group = getGroup(at: indexPath) {
-            if !group.isDeleted { allowedActions.append(editAction) }
+        if let entry = getEntry(at: indexPath), canEdit(entry) {
+            allowedActions.append(editAction)
         }
+        if let group = getGroup(at: indexPath), canEdit(group) {
+            allowedActions.append(editAction)
+        }
+        
         allowedActions.append(menuAction)
         return allowedActions
     }
@@ -565,6 +567,19 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     
     private func canMove(_ entry: Entry) -> Bool {
         return true
+    }
+
+    private func canEdit(_ group: Group) -> Bool {
+        let isRecycleBin = (group === group.database?.getBackupGroup(createIfMissing: false))
+        if isRecycleBin {
+            let isEditable = group is Group2
+            return isEditable
+        }
+        return !group.isDeleted
+    }
+    
+    private func canEdit(_ entry: Entry) -> Bool {
+        return !entry.isDeleted
     }
 
 
@@ -616,7 +631,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         
         var actions = [UIAlertAction]()
         if let entry = getEntry(at: indexPath) {
-            if !entry.isDeleted {
+            if canEdit(entry) {
                 actions.append(editAction)
             }
             if canMove(entry) {
@@ -627,7 +642,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             actions.append(cancelAction)
         }
         if let group = getGroup(at: indexPath) {
-            if !group.isDeleted {
+            if canEdit(group) {
                 actions.append(editAction)
             }
             if canMove(group) {

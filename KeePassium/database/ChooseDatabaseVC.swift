@@ -45,6 +45,8 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     
     private let premiumUpgradeHelper = PremiumUpgradeHelper()
     
+    private var isJustLaunched = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,7 +89,10 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
             )
         }
         databaseUnlocker = nil
-        updateDetailView(onlyInTwoPaneMode: true)
+        if !isJustLaunched {
+            updateDetailView(onlyInTwoPaneMode: true)
+        }
+        isJustLaunched = false
         settingsNotifications.startObserving()
         fileKeeperNotifications.startObserving()
         processPendingFileOperations()
@@ -361,6 +366,7 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
             return
         }
         let unlockDatabaseVC = UnlockDatabaseVC.make(databaseRef: urlRef)
+        unlockDatabaseVC.isJustLaunched = isJustLaunched 
         showDetailViewController(unlockDatabaseVC, sender: self)
         databaseUnlocker = unlockDatabaseVC
     }

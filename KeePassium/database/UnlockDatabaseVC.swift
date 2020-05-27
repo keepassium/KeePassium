@@ -37,6 +37,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     private var yubiKey: YubiKey?
     private var fileKeeperNotifications: FileKeeperNotifications!
     
+    var isJustLaunched = false 
     var isAutoUnlockEnabled = true
     fileprivate var isAutomaticUnlock = false
 
@@ -414,7 +415,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     func canAutoUnlock() -> Bool {
         guard isAutoUnlockEnabled else { return false }
-        guard let splitVC = splitViewController, splitVC.isCollapsed else { return false }
+        guard let splitVC = splitViewController, splitVC.isCollapsed else { return isJustLaunched }
         
         let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
         let hasKey = dbSettings?.hasMasterKey ?? false

@@ -123,7 +123,7 @@ class EntryFinderVC: UITableViewController {
             searchResults = automaticResults
             tableView.reloadData()
             if automaticResults.hasPerfectMatch {
-                shouldAutoSelectFirstMatch = true
+                shouldAutoSelectFirstMatch = Settings.current.autoFillPerfectMatch
                 return
             }
             return

@@ -212,6 +212,13 @@
 			<dict/>
 		</dict>
 		<dict>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>kdb</string>
+				<key>public.mime-type</key>
+				<string>application/strongbox</string>
+			</dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>com.markmcguill.strongbox.kdb</string>
@@ -222,6 +229,13 @@
 			<string>com.markmcguill.strongbox.kdb</string>
 		</dict>
 		<dict>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>kdbx</string>
+				<key>public.mime-type</key>
+				<string>application/strongbox</string>
+			</dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>com.markmcguill.strongbox.kdbx</string>
