@@ -22,10 +22,13 @@ typealias SearchResults = [GroupedEntries]
 class SearchHelper {
     
     func find(database: Database, searchText: String) -> SearchResults {
+        let settings = Settings.current
         let words = searchText.split(separator: " " as Character)
         let query = SearchQuery(
             includeSubgroups: true,
             includeDeleted: false,
+            includeFieldNames: settings.isSearchFieldNames,
+            includeProtectedValues: settings.isSearchProtectedValues,
             text: searchText,
             textWords: words)
         let scoredEntries = performSearch(in: database, query: query)

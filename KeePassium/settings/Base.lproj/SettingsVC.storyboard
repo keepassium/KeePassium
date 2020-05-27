@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lJf-1X-3im">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lJf-1X-3im">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,22 +12,22 @@
         <scene sceneID="SzJ-C8-aGb">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsVC" id="lJf-1X-3im" customClass="SettingsVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="gHy-5y-KxE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="gHy-5y-KxE">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Premium" id="A5N-B3-t3t">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="oxG-N8-1ld" detailTextLabel="WM2-qq-lMN" imageView="9Th-1r-9rf" style="IBUITableViewCellStyleSubtitle" id="GlN-nS-7Gp">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="oxG-N8-1ld" detailTextLabel="WM2-qq-lMN" imageView="9Th-1r-9rf" style="IBUITableViewCellStyleSubtitle" id="GlN-nS-7Gp">
+                                        <rect key="frame" x="0.0" y="55.5" width="400" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GlN-nS-7Gp" id="Yte-by-8bU">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Upgrade to Premium" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="oxG-N8-1ld" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="5" width="158.5" height="20.5"/>
+                                                    <rect key="frame" x="64" y="9" width="158.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -38,7 +38,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Upgrade subtitle}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="WM2-qq-lMN">
-                                                    <rect key="frame" x="60" y="25.5" width="104" height="14.5"/>
+                                                    <rect key="frame" x="64" y="32.5" width="104" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -48,22 +48,22 @@
                                                     </attributedString>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-premium-trial-listitem" id="9Th-1r-9rf">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="14.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="HCe-A3-eG6" detailTextLabel="LHz-DF-ZST" imageView="isF-Hb-vkq" style="IBUITableViewCellStyleSubtitle" id="dqj-hN-QMF">
-                                        <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="HCe-A3-eG6" detailTextLabel="LHz-DF-ZST" imageView="isF-Hb-vkq" style="IBUITableViewCellStyleSubtitle" id="dqj-hN-QMF">
+                                        <rect key="frame" x="0.0" y="113.5" width="400" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dqj-hN-QMF" id="8sU-Ub-6aq">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Premium Version" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="HCe-A3-eG6" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="5" width="129.5" height="20.5"/>
+                                                    <rect key="frame" x="64" y="9" width="129.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -77,7 +77,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Renews on 1 Jan 1970}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="LHz-DF-ZST">
-                                                    <rect key="frame" x="60" y="25.5" width="133.5" height="14.5"/>
+                                                    <rect key="frame" x="64" y="32.5" width="133.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -87,22 +87,22 @@
                                                     </attributedString>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-premium-listitem" id="isF-Hb-vkq">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="14.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="zUh-Sn-3ya" imageView="EoX-I8-RDT" style="IBUITableViewCellStyleDefault" id="mLw-8H-ker">
-                                        <rect key="frame" x="0.0" y="143.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="zUh-Sn-3ya" imageView="EoX-I8-RDT" style="IBUITableViewCellStyleDefault" id="mLw-8H-ker">
+                                        <rect key="frame" x="0.0" y="171.5" width="400" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mLw-8H-ker" id="yyj-iV-DIO">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Manage Subscriptions" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="zUh-Sn-3ya" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="225" height="44"/>
+                                                    <rect key="frame" x="64" y="0.0" width="297" height="52"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -116,7 +116,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-premium-manage-listitem" id="EoX-I8-RDT">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="11.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
@@ -125,64 +125,17 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Start" footerTitle="After opening a database, automatically show the search field." id="9Me-8P-nIZ">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ZYx-qR-HIe">
-                                        <rect key="frame" x="0.0" y="251" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZYx-qR-HIe" id="4VU-x6-B16">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="3Nt-pT-cdk">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
-                                                    <color key="tintColor" name="IconTint"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="29" id="Sg3-Vt-b9r"/>
-                                                        <constraint firstAttribute="width" constant="29" id="jmy-A4-tka"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Start with Search" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuN-Ls-o9d">
-                                                    <rect key="frame" x="61" y="12" width="186" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" name="PrimaryText"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="462-mb-sqA">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="didChangeStartWithSearch:" destination="lJf-1X-3im" eventType="valueChanged" id="cs5-DG-ase"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="462-mb-sqA" secondAttribute="bottom" constant="6" id="Cbe-Eu-YrD"/>
-                                                <constraint firstItem="3Nt-pT-cdk" firstAttribute="centerY" secondItem="4VU-x6-B16" secondAttribute="centerY" id="GVT-F0-hpI"/>
-                                                <constraint firstItem="yuN-Ls-o9d" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4VU-x6-B16" secondAttribute="topMargin" id="HLG-HB-gAm"/>
-                                                <constraint firstItem="462-mb-sqA" firstAttribute="centerY" secondItem="4VU-x6-B16" secondAttribute="centerY" id="QBf-Pq-RvD"/>
-                                                <constraint firstItem="462-mb-sqA" firstAttribute="leading" secondItem="yuN-Ls-o9d" secondAttribute="trailing" constant="8" id="X8x-XF-VKT"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="yuN-Ls-o9d" secondAttribute="bottom" id="aHo-5p-iRE"/>
-                                                <constraint firstItem="462-mb-sqA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4VU-x6-B16" secondAttribute="top" constant="6" id="dC6-BJ-Tz9"/>
-                                                <constraint firstItem="3Nt-pT-cdk" firstAttribute="leading" secondItem="4VU-x6-B16" secondAttribute="leadingMargin" id="jv2-Hq-wee"/>
-                                                <constraint firstItem="yuN-Ls-o9d" firstAttribute="centerY" secondItem="4VU-x6-B16" secondAttribute="centerY" priority="250" id="kux-l1-xJ0"/>
-                                                <constraint firstItem="yuN-Ls-o9d" firstAttribute="leading" secondItem="3Nt-pT-cdk" secondAttribute="trailing" constant="16" id="wHn-YZ-5tA"/>
-                                                <constraint firstItem="462-mb-sqA" firstAttribute="trailing" secondItem="4VU-x6-B16" secondAttribute="trailingMargin" id="yNo-OD-RBQ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="AutoFill" footerTitle="" id="ZFi-ss-fUa" userLabel="AutoFill">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="T2Z-oa-zJR" imageView="qDA-BD-PWt" style="IBUITableViewCellStyleDefault" id="pyA-hM-seE" userLabel="AutoFill">
-                                        <rect key="frame" x="0.0" y="386.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="T2Z-oa-zJR" imageView="qDA-BD-PWt" style="IBUITableViewCellStyleDefault" id="pyA-hM-seE" userLabel="AutoFill">
+                                        <rect key="frame" x="0.0" y="286.5" width="400" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pyA-hM-seE" id="qDh-XA-qCg">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="AutoFill Passwords" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="T2Z-oa-zJR" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="225" height="44"/>
+                                                    <rect key="frame" x="64" y="0.0" width="297" height="52"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -193,7 +146,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-autofill-listitem" id="qDA-BD-PWt">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="11.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
@@ -202,17 +155,99 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Search" footerTitle="" id="qEE-z7-pd0">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="GLr-Uf-Kln" imageView="j7V-Yp-p9a" style="IBUITableViewCellStyleDefault" id="CcB-N8-LYg" userLabel="Search">
+                                        <rect key="frame" x="0.0" y="406" width="400" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CcB-N8-LYg" id="VtY-VU-YNe">
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Search" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="GLr-Uf-Kln">
+                                                    <rect key="frame" x="64" y="0.0" width="297" height="52"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Section title in settings"/>
+                                                    </attributedString>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="search-listitem" id="j7V-Yp-p9a">
+                                                    <rect key="frame" x="20" y="11.5" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                                <attributedString key="userComments">
+                                    <fragment content="Section title in settings"/>
+                                </attributedString>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Start" footerTitle="" id="9yn-W3-FDl">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="SQ2-Ya-JQz" userLabel="Auto-open Previous Database">
+                                        <rect key="frame" x="0.0" y="525.5" width="400" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SQ2-Ya-JQz" id="X4C-OQ-zGr">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-start-reopen-database-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="YbR-lN-ZAl">
+                                                    <rect key="frame" x="20" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="ljB-ce-5NP"/>
+                                                        <constraint firstAttribute="height" constant="29" id="pwB-R6-4sb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Auto-open the Previous Database" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="756-sL-G2t">
+                                                    <rect key="frame" x="65" y="12" width="258" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Option in settings: whether to open the last used database automatically on start."/>
+                                                    </attributedString>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BcP-n3-Glw">
+                                                    <rect key="frame" x="331" y="10" width="51" height="24"/>
+                                                    <connections>
+                                                        <action selector="didToggleAutoUnlockStartupDatabase:" destination="lJf-1X-3im" eventType="valueChanged" id="RJF-OX-JRE"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BcP-n3-Glw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="X4C-OQ-zGr" secondAttribute="top" constant="10" id="1r8-du-yZ8"/>
+                                                <constraint firstItem="756-sL-G2t" firstAttribute="leading" secondItem="YbR-lN-ZAl" secondAttribute="trailing" constant="16" id="EON-IK-agP"/>
+                                                <constraint firstItem="YbR-lN-ZAl" firstAttribute="leading" secondItem="X4C-OQ-zGr" secondAttribute="leadingMargin" id="GLw-kv-6vL"/>
+                                                <constraint firstItem="756-sL-G2t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="X4C-OQ-zGr" secondAttribute="topMargin" id="GOq-0T-FFJ"/>
+                                                <constraint firstItem="BcP-n3-Glw" firstAttribute="leading" secondItem="756-sL-G2t" secondAttribute="trailing" constant="8" id="IrS-qF-bqC"/>
+                                                <constraint firstItem="BcP-n3-Glw" firstAttribute="trailing" secondItem="X4C-OQ-zGr" secondAttribute="trailingMargin" id="QzA-G7-mgc"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BcP-n3-Glw" secondAttribute="bottom" constant="10" id="W85-nl-Ur7"/>
+                                                <constraint firstItem="YbR-lN-ZAl" firstAttribute="centerY" secondItem="X4C-OQ-zGr" secondAttribute="centerY" id="cHm-ww-9Zz"/>
+                                                <constraint firstItem="756-sL-G2t" firstAttribute="centerY" secondItem="X4C-OQ-zGr" secondAttribute="centerY" priority="250" id="qyS-jl-ptX"/>
+                                                <constraint firstItem="BcP-n3-Glw" firstAttribute="centerY" secondItem="X4C-OQ-zGr" secondAttribute="centerY" id="xjs-Ka-KCu"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="756-sL-G2t" secondAttribute="bottom" id="y6k-cw-2r2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Access Control" id="hui-xG-chj" userLabel="App Safety">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="abS-AH-iFO" detailTextLabel="SrV-ib-V2E" imageView="sn7-tb-XmD" style="IBUITableViewCellStyleSubtitle" id="bPA-Wc-g4R">
-                                        <rect key="frame" x="0.0" y="490.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="abS-AH-iFO" detailTextLabel="SrV-ib-V2E" imageView="sn7-tb-XmD" style="IBUITableViewCellStyleSubtitle" id="bPA-Wc-g4R">
+                                        <rect key="frame" x="0.0" y="629.5" width="400" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bPA-Wc-g4R" id="WXq-1X-VG8">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="App Protection" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="abS-AH-iFO" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="5" width="114.5" height="20.5"/>
+                                                    <rect key="frame" x="64" y="9" width="114.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -226,12 +261,12 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-app-lock-listitem" id="sn7-tb-XmD">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="14.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{App Lock, Touch ID, timeout}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="SrV-ib-V2E">
-                                                    <rect key="frame" x="60" y="25.5" width="168.5" height="14.5"/>
+                                                    <rect key="frame" x="64" y="32.5" width="168.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -243,15 +278,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="UNl-Hc-Ref" detailTextLabel="FHp-ns-ke9" imageView="3RZ-HK-oao" style="IBUITableViewCellStyleSubtitle" id="rD3-1z-wKc" userLabel="Data Safety">
-                                        <rect key="frame" x="0.0" y="534.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="UNl-Hc-Ref" detailTextLabel="FHp-ns-ke9" imageView="3RZ-HK-oao" style="IBUITableViewCellStyleSubtitle" id="rD3-1z-wKc" userLabel="Data Safety">
+                                        <rect key="frame" x="0.0" y="687.5" width="400" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rD3-1z-wKc" id="lP5-L0-pTo">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Data Protection" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="UNl-Hc-Ref" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="5" width="119.5" height="20.5"/>
+                                                    <rect key="frame" x="64" y="9" width="119.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -265,12 +300,12 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-database-protection-listitem" id="3RZ-HK-oao">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="14.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Master keys, key files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="FHp-ns-ke9" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="25.5" width="121.5" height="14.5"/>
+                                                    <rect key="frame" x="64" y="32.5" width="121.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -290,15 +325,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Backup" id="HjD-9G-X8p">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" tag="70" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="coD-Om-Vfm" imageView="NaE-pd-mUb" style="IBUITableViewCellStyleDefault" id="v6d-Ag-heE" userLabel="Data Backup Cell">
-                                        <rect key="frame" x="0.0" y="634.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="70" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="coD-Om-Vfm" imageView="NaE-pd-mUb" style="IBUITableViewCellStyleDefault" id="v6d-Ag-heE" userLabel="Data Backup Cell">
+                                        <rect key="frame" x="0.0" y="801" width="400" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v6d-Ag-heE" id="EbI-MV-DyE">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Database Backup" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="coD-Om-Vfm" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="225" height="44"/>
+                                                    <rect key="frame" x="64" y="0.0" width="297" height="52"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -312,7 +347,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-backup-listitem" id="NaE-pd-mUb">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="11.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
@@ -323,15 +358,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Support" id="cBS-jW-dHU">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" tag="70" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="QlM-VS-hle" detailTextLabel="RNK-fS-Fvx" imageView="LZW-Tf-LiZ" style="IBUITableViewCellStyleSubtitle" id="UmW-JW-qMs">
-                                        <rect key="frame" x="0.0" y="734.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="70" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="QlM-VS-hle" detailTextLabel="RNK-fS-Fvx" imageView="LZW-Tf-LiZ" style="IBUITableViewCellStyleSubtitle" id="UmW-JW-qMs">
+                                        <rect key="frame" x="0.0" y="908.5" width="400" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UmW-JW-qMs" id="PAH-7H-PLZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Contact Us" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="QlM-VS-hle" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="5" width="86" height="20.5"/>
+                                                    <rect key="frame" x="64" y="9" width="86" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -345,7 +380,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Suggestions? Problems? Let us know!" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="RNK-fS-Fvx" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="25.5" width="213.5" height="14.5"/>
+                                                    <rect key="frame" x="64" y="32.5" width="213.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -359,22 +394,22 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="email-us-listitem" id="LZW-Tf-LiZ">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="14.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PpA-oZ-kr2" detailTextLabel="qhK-lw-bGy" imageView="khe-dH-O9L" style="IBUITableViewCellStyleSubtitle" id="LFP-f4-LpI" userLabel="Diagnostic Log Cell">
-                                        <rect key="frame" x="0.0" y="778.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PpA-oZ-kr2" detailTextLabel="qhK-lw-bGy" imageView="khe-dH-O9L" style="IBUITableViewCellStyleSubtitle" id="LFP-f4-LpI" userLabel="Diagnostic Log Cell">
+                                        <rect key="frame" x="0.0" y="966.5" width="400" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LFP-f4-LpI" id="2mk-GN-MHl">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Diagnostic Log" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="PpA-oZ-kr2" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="5" width="114" height="20.5"/>
+                                                    <rect key="frame" x="64" y="9" width="114" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -388,7 +423,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="For expert troubleshooting" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="qhK-lw-bGy" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="25.5" width="151" height="14.5"/>
+                                                    <rect key="frame" x="64" y="32.5" width="151" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -402,22 +437,22 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="diagnostics-listitem" id="khe-dH-O9L">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="14.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="c5H-hS-sU3" detailTextLabel="HYe-lP-dCp" imageView="MMj-kh-hkT" style="IBUITableViewCellStyleSubtitle" id="yxc-eD-Hxa">
-                                        <rect key="frame" x="0.0" y="822.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="c5H-hS-sU3" detailTextLabel="HYe-lP-dCp" imageView="MMj-kh-hkT" style="IBUITableViewCellStyleSubtitle" id="yxc-eD-Hxa">
+                                        <rect key="frame" x="0.0" y="1024.5" width="400" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yxc-eD-Hxa" id="F9P-9O-w0c">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Review KeePassium" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="c5H-hS-sU3" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="5" width="151.5" height="20.5"/>
+                                                    <rect key="frame" x="64" y="9" width="151.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -431,7 +466,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Rate KeePassium on the App Store" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="HYe-lP-dCp" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="25.5" width="196" height="14.5"/>
+                                                    <rect key="frame" x="64" y="32.5" width="196" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -445,22 +480,22 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="app-rating-listitem" id="MMj-kh-hkT">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="14.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DNo-Rs-0EP" imageView="zxE-9P-EpX" style="IBUITableViewCellStyleDefault" id="7mL-Oc-jtm">
-                                        <rect key="frame" x="0.0" y="866.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DNo-Rs-0EP" imageView="zxE-9P-EpX" style="IBUITableViewCellStyleDefault" id="7mL-Oc-jtm">
+                                        <rect key="frame" x="0.0" y="1082.5" width="400" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7mL-Oc-jtm" id="yww-UZ-yiW">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="About KeePassium" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="DNo-Rs-0EP" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="225" height="44"/>
+                                                    <rect key="frame" x="64" y="0.0" width="297" height="52"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -471,7 +506,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="help-about-listitem" id="zxE-9P-EpX">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="20" y="11.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
@@ -494,11 +529,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="320" height="1000"/>
+                    <size key="freeformSize" width="400" height="1000"/>
                     <connections>
                         <outlet property="aboutAppCell" destination="7mL-Oc-jtm" id="TSR-A5-4oN"/>
                         <outlet property="appSafetyCell" destination="bPA-Wc-g4R" id="hjA-F2-UAv"/>
                         <outlet property="autoFillCell" destination="pyA-hM-seE" id="Geo-bn-JRB"/>
+                        <outlet property="autoUnlockStartupDatabaseSwitch" destination="BcP-n3-Glw" id="CLC-Rs-h8f"/>
                         <outlet property="contactSupportCell" destination="UmW-JW-qMs" id="L9T-iS-tio"/>
                         <outlet property="dataBackupCell" destination="v6d-Ag-heE" id="66r-rF-FlI"/>
                         <outlet property="dataSafetyCell" destination="rD3-1z-wKc" id="NOP-dI-5CW"/>
@@ -507,7 +543,7 @@
                         <outlet property="premiumStatusCell" destination="dqj-hN-QMF" id="ApE-iB-TeI"/>
                         <outlet property="premiumTrialCell" destination="GlN-nS-7Gp" id="e8x-Ch-veP"/>
                         <outlet property="rateTheAppCell" destination="yxc-eD-Hxa" id="Zjt-Oz-jyK"/>
-                        <outlet property="startWithSearchSwitch" destination="462-mb-sqA" id="KLE-6g-fNh"/>
+                        <outlet property="searchCell" destination="CcB-N8-LYg" id="LSG-qR-vsD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bp-j8-u3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -528,6 +564,7 @@
         <image name="settings-premium-listitem" width="29" height="29"/>
         <image name="settings-premium-manage-listitem" width="29" height="29"/>
         <image name="settings-premium-trial-listitem" width="29" height="29"/>
+        <image name="settings-start-reopen-database-listitem" width="29" height="29"/>
         <namedColor name="AuxiliaryText">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

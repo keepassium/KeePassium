@@ -414,7 +414,9 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     
     func canAutoUnlock() -> Bool {
-        guard isAutoUnlockEnabled else { return false }
+        guard isAutoUnlockEnabled && Settings.current.isAutoUnlockStartupDatabase else {
+            return false
+        }
         guard let splitVC = splitViewController, splitVC.isCollapsed else { return isJustLaunched }
         
         let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)

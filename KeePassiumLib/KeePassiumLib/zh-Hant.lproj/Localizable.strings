@@ -5,22 +5,22 @@
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "數字";
 
 /* Error message when the challenge-response communication has been cancelled by the user. */
-"[ChallengeResponseError] cancelled" = "Cancelled by the user.";
+"[ChallengeResponseError] cancelled" = "已被使用者取消。";
 
 /* Error message when the hardware key is not plugged in. */
-"[ChallengeResponseError] keyNotConnected" = "Hardware key is not connected.";
+"[ChallengeResponseError] keyNotConnected" = "硬體金鑰沒有連結。";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "Hardware keys are not available in AutoFill.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "硬體金鑰不支持自動填充。";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardware keys are not supported by this database format.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "硬體金鑰不支持這個資料庫格式。";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
-"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "This device or iOS version does not support hardware keys (%@)";
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "這個設備或iOS版本不支持硬體金鑰 (%@)";
 
 /* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
-"[ChallengeResponseError] slotNotConfigured" = "Hardware key is not configured for challenge-response.";
+"[ChallengeResponseError] slotNotConfigured" = "硬體金鑰沒有設置用於挑戰響應的認證。";
 
 /* Progress status */
 "[Cipher/Progress] Decrypting" = "解密中";

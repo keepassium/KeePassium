@@ -319,7 +319,9 @@ extension EntryFinderVC: UISearchResultsUpdating {
         Watchdog.shared.restart()
         guard let searchText = searchController.searchBar.text,
             let database = database else { return }
-        searchResults.exactMatch = searchHelper.find(database: database, searchText: searchText)
+        searchResults.exactMatch = searchHelper
+            .find(database: database, searchText: searchText)
+            .excludingNonAutoFillableEntries()
         searchResults.partialMatch = []
         sortSearchResults()
         tableView.reloadData()

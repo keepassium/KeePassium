@@ -110,13 +110,8 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
     }
     
     func setupCell() {
-        let nameFont = UIFont.systemFont(ofSize: 15, weight: .thin)
-        let nameFontMetrics = UIFontMetrics(forTextStyle: .subheadline)
-        nameLabel.font = nameFontMetrics.scaledFont(for: nameFont)
-        
-        let valueFont = UIFont(name: "Menlo", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        let valueFontMetrics = UIFontMetrics(forTextStyle: .body)
-        valueText.font = valueFontMetrics.scaledFont(for: valueFont)
+        nameLabel.font = UIFont.systemFont(ofSize: 15, forTextStyle: .subheadline, weight: .thin)        
+        valueText.font = UIFont.monospaceFont(forTextStyle: .body)
         
         nameLabel.text = field?.visibleName
         valueText.text = getUserVisibleValue()

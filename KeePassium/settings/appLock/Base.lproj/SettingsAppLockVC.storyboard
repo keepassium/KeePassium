@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U5m-je-MhO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U5m-je-MhO">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +33,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3af-il-hAW">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
                                                     <connections>
                                                         <action selector="didChangeAppLockEnabledSwitch:" destination="U5m-je-MhO" eventType="valueChanged" id="3bE-NB-RfJ"/>
                                                     </connections>
@@ -50,8 +50,8 @@
                                             <constraints>
                                                 <constraint firstItem="IS1-Lb-MFy" firstAttribute="centerY" secondItem="tII-pX-NuJ" secondAttribute="centerY" priority="250" id="3eM-h8-KT9"/>
                                                 <constraint firstItem="3af-il-hAW" firstAttribute="trailing" secondItem="tII-pX-NuJ" secondAttribute="trailingMargin" id="4Ut-gK-BZf"/>
-                                                <constraint firstItem="3af-il-hAW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tII-pX-NuJ" secondAttribute="top" constant="6" id="CoG-xf-dPM"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3af-il-hAW" secondAttribute="bottom" constant="6" id="Lrl-6h-aAr"/>
+                                                <constraint firstItem="3af-il-hAW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tII-pX-NuJ" secondAttribute="top" constant="10" id="CoG-xf-dPM"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3af-il-hAW" secondAttribute="bottom" constant="10" id="Lrl-6h-aAr"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="IS1-Lb-MFy" secondAttribute="bottom" id="QUI-Lw-vq4"/>
                                                 <constraint firstItem="8Uj-yt-PUw" firstAttribute="centerY" secondItem="tII-pX-NuJ" secondAttribute="centerY" id="TV1-0u-zEB"/>
                                                 <constraint firstItem="3af-il-hAW" firstAttribute="leading" secondItem="IS1-Lb-MFy" secondAttribute="trailing" constant="8" id="VMK-04-rVy"/>
@@ -86,7 +86,7 @@
                                                     </attributedString>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BEv-H7-38c">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
                                                     <connections>
                                                         <action selector="didToggleBiometricsSwitch:" destination="U5m-je-MhO" eventType="valueChanged" id="U22-gR-hnA"/>
                                                     </connections>
@@ -101,7 +101,7 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="BEv-H7-38c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="k5A-l1-01Y" secondAttribute="top" constant="6" id="4Zy-kn-iCZ"/>
+                                                <constraint firstItem="BEv-H7-38c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="k5A-l1-01Y" secondAttribute="top" constant="10" id="4Zy-kn-iCZ"/>
                                                 <constraint firstItem="BEv-H7-38c" firstAttribute="trailing" secondItem="k5A-l1-01Y" secondAttribute="trailingMargin" id="EuQ-zp-fgr"/>
                                                 <constraint firstItem="Fez-6g-oyk" firstAttribute="leading" secondItem="Qtt-Tp-tnl" secondAttribute="trailing" constant="16" id="MwJ-Jo-Odx"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Fez-6g-oyk" secondAttribute="bottom" id="SeY-5S-rLQ"/>
@@ -109,7 +109,7 @@
                                                 <constraint firstItem="Fez-6g-oyk" firstAttribute="centerY" secondItem="k5A-l1-01Y" secondAttribute="centerY" priority="250" id="fKS-eC-oA8"/>
                                                 <constraint firstItem="BEv-H7-38c" firstAttribute="centerY" secondItem="k5A-l1-01Y" secondAttribute="centerY" priority="750" id="koz-wx-cXz"/>
                                                 <constraint firstItem="Qtt-Tp-tnl" firstAttribute="centerY" secondItem="k5A-l1-01Y" secondAttribute="centerY" id="pfu-EX-1DC"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BEv-H7-38c" secondAttribute="bottom" constant="6" id="tN3-Dc-P5J"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BEv-H7-38c" secondAttribute="bottom" constant="10" id="tN3-Dc-P5J"/>
                                                 <constraint firstItem="Fez-6g-oyk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="k5A-l1-01Y" secondAttribute="topMargin" id="yMZ-V1-ZW4"/>
                                                 <constraint firstItem="Qtt-Tp-tnl" firstAttribute="leading" secondItem="k5A-l1-01Y" secondAttribute="leadingMargin" id="z63-eB-dLI"/>
                                             </constraints>
@@ -122,15 +122,15 @@
                             </tableViewSection>
                             <tableViewSection footerTitle="The app will automatically lock up after this time." id="m50-fl-4tu">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ef4-Jw-xeO" detailTextLabel="FWz-EI-KaZ" imageView="VMH-qU-wJg" style="IBUITableViewCellStyleValue1" id="DtW-MQ-6ly">
-                                        <rect key="frame" x="0.0" y="267" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ef4-Jw-xeO" detailTextLabel="FWz-EI-KaZ" imageView="VMH-qU-wJg" style="IBUITableViewCellStyleValue1" id="DtW-MQ-6ly">
+                                        <rect key="frame" x="0.0" y="267" width="320" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DtW-MQ-6ly" id="sU6-P0-VnC">
-                                            <rect key="frame" x="0.0" y="0.0" width="292.5" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Timeout" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Ef4-Jw-xeO" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="12" width="63" height="20.5"/>
+                                                    <rect key="frame" x="60" y="16" width="63" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -144,7 +144,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Detail}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="FWz-EI-KaZ">
-                                                    <rect key="frame" x="231" y="13" width="53.5" height="19.5"/>
+                                                    <rect key="frame" x="231.5" y="17" width="53.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -154,7 +154,7 @@
                                                     </attributedString>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="settings-app-lock-timeout-listitem" id="VMH-qU-wJg">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="16" y="11.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
@@ -166,7 +166,7 @@
                             <tableViewSection headerTitle="Wrong Passcode" footerTitle="If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain." id="5Dg-KX-m7a">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="QlD-uB-XaI" userLabel="Lock Database On Failed Passcode Cell">
-                                        <rect key="frame" x="0.0" y="402.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="410.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QlD-uB-XaI" id="EJO-oS-RvY">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -179,7 +179,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLg-ic-wmL">
-                                                    <rect key="frame" x="255" y="8" width="51" height="28"/>
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
                                                     <connections>
                                                         <action selector="didChangeLockDatabasesOnFailedPasscodeSwitch:" destination="U5m-je-MhO" eventType="valueChanged" id="H2o-Wt-gpV"/>
                                                     </connections>
@@ -196,9 +196,9 @@
                                             <constraints>
                                                 <constraint firstItem="cLg-ic-wmL" firstAttribute="trailing" secondItem="EJO-oS-RvY" secondAttribute="trailingMargin" id="5A6-uW-2fu"/>
                                                 <constraint firstItem="6Pk-35-Fx6" firstAttribute="centerY" secondItem="EJO-oS-RvY" secondAttribute="centerY" priority="250" id="8hp-um-Dgt"/>
-                                                <constraint firstItem="cLg-ic-wmL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EJO-oS-RvY" secondAttribute="top" constant="8" id="99q-8u-UnZ"/>
+                                                <constraint firstItem="cLg-ic-wmL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EJO-oS-RvY" secondAttribute="top" constant="10" id="99q-8u-UnZ"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="6Pk-35-Fx6" secondAttribute="bottom" id="EWx-V6-MZG"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cLg-ic-wmL" secondAttribute="bottom" constant="8" id="IVr-0R-259"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cLg-ic-wmL" secondAttribute="bottom" constant="10" id="IVr-0R-259"/>
                                                 <constraint firstItem="7A0-DS-UtO" firstAttribute="leading" secondItem="EJO-oS-RvY" secondAttribute="leadingMargin" id="Nga-qL-kE6"/>
                                                 <constraint firstItem="6Pk-35-Fx6" firstAttribute="leading" secondItem="7A0-DS-UtO" secondAttribute="trailing" constant="16" id="OE9-oM-CB2"/>
                                                 <constraint firstItem="cLg-ic-wmL" firstAttribute="leading" secondItem="6Pk-35-Fx6" secondAttribute="trailing" constant="8" id="PHs-TA-Xiy"/>

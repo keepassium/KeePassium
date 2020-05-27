@@ -19,15 +19,15 @@
                         <sections>
                             <tableViewSection headerTitle="Initial Setup" id="r0b-qe-g8J">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="K3a-Mc-VCg" imageView="aKY-W7-zTh" style="IBUITableViewCellStyleDefault" id="Wxg-wS-lmL">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="K3a-Mc-VCg" imageView="aKY-W7-zTh" style="IBUITableViewCellStyleDefault" id="Wxg-wS-lmL">
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wxg-wS-lmL" id="l6P-kx-ixb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Open device settings" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="K3a-Mc-VCg" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="244" height="44"/>
+                                                    <rect key="frame" x="60" y="0.0" width="244" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -41,22 +41,22 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="autofill-setup-1" id="aKY-W7-zTh">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="16" y="10.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="7SF-2E-uTg" imageView="cHS-w1-daC" style="IBUITableViewCellStyleDefault" id="CaR-2a-54I">
-                                        <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="7SF-2E-uTg" imageView="cHS-w1-daC" style="IBUITableViewCellStyleDefault" id="CaR-2a-54I">
+                                        <rect key="frame" x="0.0" y="105.5" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CaR-2a-54I" id="WDH-6Q-cJ5">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Tap &quot;Passwords &amp; Accounts&quot;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="7SF-2E-uTg" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="244" height="44"/>
+                                                    <rect key="frame" x="60" y="0.0" width="244" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -70,22 +70,22 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="autofill-setup-2" id="cHS-w1-daC">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="16" y="10.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="UzV-Ht-rGx" imageView="5dv-Pe-Dyy" style="IBUITableViewCellStyleDefault" id="tKL-2p-NOi">
-                                        <rect key="frame" x="0.0" y="143.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="UzV-Ht-rGx" imageView="5dv-Pe-Dyy" style="IBUITableViewCellStyleDefault" id="tKL-2p-NOi">
+                                        <rect key="frame" x="0.0" y="155.5" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tKL-2p-NOi" id="9uw-Cc-vPv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Tap &quot;AutoFill Passwords&quot;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="UzV-Ht-rGx" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="244" height="44"/>
+                                                    <rect key="frame" x="60" y="0.0" width="244" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -99,22 +99,22 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="autofill-setup-3" id="5dv-Pe-Dyy">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="16" y="10.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="X2u-c9-gwU" imageView="htt-Zy-a4u" style="IBUITableViewCellStyleDefault" id="oj0-Pv-9aK">
-                                        <rect key="frame" x="0.0" y="187.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="X2u-c9-gwU" imageView="htt-Zy-a4u" style="IBUITableViewCellStyleDefault" id="oj0-Pv-9aK">
+                                        <rect key="frame" x="0.0" y="205.5" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oj0-Pv-9aK" id="JHf-F8-pxz">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Turn on &quot;AutoFill Passwords&quot;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="X2u-c9-gwU" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="244" height="44"/>
+                                                    <rect key="frame" x="60" y="0.0" width="244" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
@@ -126,7 +126,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="autofill-setup-4" id="htt-Zy-a4u">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="16" y="10.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -136,15 +136,15 @@
                                             </attributedString>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" textLabel="caI-eV-WlU" imageView="xx5-4P-3bA" style="IBUITableViewCellStyleDefault" id="CMk-6u-wue">
-                                        <rect key="frame" x="0.0" y="231.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" textLabel="caI-eV-WlU" imageView="xx5-4P-3bA" style="IBUITableViewCellStyleDefault" id="CMk-6u-wue">
+                                        <rect key="frame" x="0.0" y="255.5" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CMk-6u-wue" id="usj-u1-ZKI">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Select &quot;KeePassium&quot;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="caI-eV-WlU" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="0.0" width="212" height="44"/>
+                                                    <rect key="frame" x="60" y="0.0" width="212" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -155,7 +155,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="autofill-setup-5" id="xx5-4P-3bA">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="16" y="10.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -171,7 +171,7 @@
                             <tableViewSection headerTitle="Automatic search" footerTitle="When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically." id="jYl-ks-dFG" userLabel="Automatic search">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="R2t-YZ-TJF">
-                                        <rect key="frame" x="0.0" y="339" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="369" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R2t-YZ-TJF" id="Gjp-69-EKT">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -187,7 +187,7 @@
                                                     </attributedString>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dg8-cp-hCR">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
                                                     <connections>
                                                         <action selector="didTogglePerfectMatch:" destination="ei6-22-NXN" eventType="valueChanged" id="qLI-XC-yKS"/>
                                                     </connections>
@@ -202,10 +202,10 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dg8-cp-hCR" secondAttribute="bottom" constant="6" id="Me4-7s-0EP"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dg8-cp-hCR" secondAttribute="bottom" constant="10" id="Me4-7s-0EP"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="WDb-aU-Mmf" secondAttribute="bottom" id="SKv-J0-AQa"/>
                                                 <constraint firstItem="WDb-aU-Mmf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gjp-69-EKT" secondAttribute="topMargin" id="W8V-eG-g9q"/>
-                                                <constraint firstItem="dg8-cp-hCR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gjp-69-EKT" secondAttribute="top" constant="6" id="amh-77-riZ"/>
+                                                <constraint firstItem="dg8-cp-hCR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gjp-69-EKT" secondAttribute="top" constant="10" id="amh-77-riZ"/>
                                                 <constraint firstItem="1FP-jM-b2u" firstAttribute="centerY" secondItem="Gjp-69-EKT" secondAttribute="centerY" id="bqy-Kg-3NJ"/>
                                                 <constraint firstItem="1FP-jM-b2u" firstAttribute="leading" secondItem="Gjp-69-EKT" secondAttribute="leadingMargin" id="dFo-bc-uq4"/>
                                                 <constraint firstItem="WDb-aU-Mmf" firstAttribute="centerY" secondItem="Gjp-69-EKT" secondAttribute="centerY" priority="750" id="ghv-QF-oU1"/>
@@ -221,7 +221,7 @@
                             <tableViewSection headerTitle="One-time passwords" footerTitle="When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you." id="XYL-1l-Jx6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="GKe-BK-Kaa">
-                                        <rect key="frame" x="0.0" y="490.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="520.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GKe-BK-Kaa" id="vYX-KL-3FJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -237,7 +237,7 @@
                                                     </attributedString>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x6e-9m-Rum">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
                                                     <connections>
                                                         <action selector="didToggleCopyTOTP:" destination="ei6-22-NXN" eventType="valueChanged" id="bYo-32-pDq"/>
                                                     </connections>
@@ -254,10 +254,10 @@
                                             <constraints>
                                                 <constraint firstItem="go1-Nt-isQ" firstAttribute="centerY" secondItem="vYX-KL-3FJ" secondAttribute="centerY" priority="750" id="CgV-BV-hgy"/>
                                                 <constraint firstItem="8Ep-US-vGn" firstAttribute="leading" secondItem="vYX-KL-3FJ" secondAttribute="leadingMargin" id="JSb-Kx-wW1"/>
-                                                <constraint firstItem="x6e-9m-Rum" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vYX-KL-3FJ" secondAttribute="top" constant="6" id="Mdh-0F-4HQ"/>
+                                                <constraint firstItem="x6e-9m-Rum" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vYX-KL-3FJ" secondAttribute="top" constant="10" id="Mdh-0F-4HQ"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="go1-Nt-isQ" secondAttribute="bottom" id="Peb-eZ-xbH"/>
                                                 <constraint firstItem="8Ep-US-vGn" firstAttribute="centerY" secondItem="vYX-KL-3FJ" secondAttribute="centerY" id="XTs-fU-gP7"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="x6e-9m-Rum" secondAttribute="bottom" constant="6" id="XqB-mr-F9O"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="x6e-9m-Rum" secondAttribute="bottom" constant="10" id="XqB-mr-F9O"/>
                                                 <constraint firstItem="go1-Nt-isQ" firstAttribute="leading" secondItem="8Ep-US-vGn" secondAttribute="trailing" constant="16" id="jq1-2u-a5c"/>
                                                 <constraint firstItem="go1-Nt-isQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vYX-KL-3FJ" secondAttribute="topMargin" id="nGq-Kv-Ll8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="x6e-9m-Rum" secondAttribute="trailing" id="nmm-gW-Yqf"/>

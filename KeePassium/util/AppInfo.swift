@@ -29,10 +29,8 @@ class AppInfo {
     }
 
     public static var description: String {
-        if Settings.current.isTestEnvironment {
-            return "\(name) v\(version).\(build) beta (iOS \(UIDevice.current.systemVersion))"
-        } else {
-            return "\(name) v\(version).\(build) (iOS \(UIDevice.current.systemVersion))"
-        }
+        let deviceInfo = "\(UIDevice.current.model), iOS \(UIDevice.current.systemVersion)"
+        let betaMark = Settings.current.isTestEnvironment ? "-beta" : ""
+        return "\(name) v\(version).\(build)\(betaMark) (\(deviceInfo))"
     }
 }

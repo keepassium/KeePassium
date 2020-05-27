@@ -36,6 +36,12 @@ public class ProgressEx: Progress {
         set { localizedDescription = newValue }
     }
     
+    public override var localizedDescription: String! {
+        didSet {
+            parent?.localizedDescription = localizedDescription
+        }
+    }
+    
     public private(set) var cancellationReason: CancellationReason = .userRequest {
         didSet {
             children.forEach {
@@ -48,8 +54,9 @@ public class ProgressEx: Progress {
     
     private weak var parent: ProgressEx?
     
-    override public init(parent parentProgressOrNil: Progress?,
-                  userInfo userInfoOrNil: [ProgressUserInfoKey : Any]? = nil)
+    override public init(
+        parent parentProgressOrNil: Progress?,
+        userInfo userInfoOrNil: [ProgressUserInfoKey : Any]? = nil)
     {
         super.init(parent: parentProgressOrNil, userInfo: userInfoOrNil)
     }

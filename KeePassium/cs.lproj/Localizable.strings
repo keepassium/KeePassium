@@ -227,7 +227,7 @@
 "[Generic] OK" = "OK";
 
 /* Action/button to replace/overwrite an item */
-"[Generic] Overwrite" = "Overwrite";
+"[Generic] Overwrite" = "Přepsat";
 
 /* Action/button to rename an item */
 "[Generic] Rename" = "Přejmenovat";
@@ -239,7 +239,7 @@
 "[Generic] Show Details" = "Zobrazit podrobnosti";
 
 /* Checkbox/Button to show a text field in its full size */
-"[Generic] Show more" = "Show more";
+"[Generic] Show more" = "Zobrazit více";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Jste si jisti?";

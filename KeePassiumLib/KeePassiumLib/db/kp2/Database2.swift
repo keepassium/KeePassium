@@ -162,12 +162,12 @@ public class Database2: Database {
         Diag.info("Loading KP2 database")
         progress.completedUnitCount = 0
         progress.totalUnitCount = ProgressSteps.all
-        progress.localizedAdditionalDescription = NSLocalizedString(
+        progress.localizedDescription = NSLocalizedString(
             "[Database2/Progress] Loading database",
             bundle: Bundle.framework,
             value: "Loading database",
             comment: "Progress bar status")
-        
+
         do {
             try header.read(data: dbFileData) 
             Diag.debug("Header read OK [format: \(header.formatVersion)]")
@@ -194,6 +194,11 @@ public class Database2: Database {
             Diag.verbose("== DB2 progress CP3: \(progress.completedUnitCount)")
             
             if header.isCompressed {
+                progress.localizedDescription = NSLocalizedString(
+                    "[Database2/Progress/decompressing]",
+                    bundle: Bundle.framework,
+                    value: "Decompressing database",
+                    comment: "Progress bar status: un-zipping the database content")
                 Diag.debug("Inflating Gzip data")
                 decryptedData = try decryptedData.gunzipped() 
             } else {
@@ -220,6 +225,11 @@ public class Database2: Database {
                 backupGroup.deepSetDeleted(true)
             }
             
+            progress.localizedDescription = NSLocalizedString(
+                "[Database2/Progress/integrityCheck]",
+                bundle: Bundle.framework,
+                value: "Checking integrity",
+                comment: "Progress bar status")
             checkAttachmentsIntegrity(warnings: warnings)
             
             checkCustomFieldsIntegrity(warnings: warnings)
@@ -300,7 +310,7 @@ public class Database2: Database {
         let allBlocksData = ByteArray(capacity: blockBytesCount)
         let readingProgress = ProgressEx()
         readingProgress.totalUnitCount = Int64(blockBytesCount)
-        readingProgress.localizedAdditionalDescription = NSLocalizedString(
+        readingProgress.localizedDescription = NSLocalizedString(
             "[Database2/Progress] Reading database content",
             bundle: Bundle.framework,
             value: "Reading database content",
@@ -374,7 +384,7 @@ public class Database2: Database {
         var blockID: UInt32 = 0
         let readingProgress = ProgressEx()
         readingProgress.totalUnitCount = Int64(decryptedData.count - startData.count)
-        readingProgress.localizedAdditionalDescription = NSLocalizedString(
+        readingProgress.localizedDescription = NSLocalizedString(
             "[Database2/Progress] Reading database content",
             bundle: Bundle.framework,
             value: "Reading database content",
@@ -462,6 +472,11 @@ public class Database2: Database {
         parsingOptions.parserSettings.shouldTrimWhitespace = false
         do {
             Diag.debug("Parsing XML")
+            progress.localizedDescription = NSLocalizedString(
+                "[Database2/Progress/parsingXML]",
+                bundle: Bundle.framework,
+                value: "Parsing database",
+                comment: "Progress bar status: parsing decrypted XML content")
             let xmlDoc = try AEXMLDocument(xml: xmlData.asData, options: parsingOptions)
             if let xmlError = xmlDoc.error {
                 Diag.error("Cannot parse XML: \(xmlError.localizedDescription)")
@@ -969,7 +984,7 @@ public class Database2: Database {
         
         let writeProgress = ProgressEx()
         writeProgress.totalUnitCount = Int64(data.count)
-        writeProgress.localizedAdditionalDescription = NSLocalizedString(
+        writeProgress.localizedDescription = NSLocalizedString(
             "[Database2/Progress] Writing encrypted blocks",
             bundle: Bundle.framework,
             value: "Writing encrypted blocks",
@@ -1067,7 +1082,7 @@ public class Database2: Database {
         var blockStart: Int = 0
         var blockID: UInt32 = 0
         let writingProgress = ProgressEx()
-        writingProgress.localizedAdditionalDescription = NSLocalizedString(
+        writingProgress.localizedDescription = NSLocalizedString(
             "[Database2/Progress] Writing encrypted blocks",
             bundle: Bundle.framework,
             value: "Writing encrypted blocks",
@@ -1180,6 +1195,7 @@ public class Database2: Database {
         }
         
         if entry.isDeleted {
+            Diag.debug("Already in Backup, removing permanently")
             addDeletedObject(uuid: entry.uuid)
             parentGroup.remove(entry: entry)
             return

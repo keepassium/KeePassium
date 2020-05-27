@@ -158,7 +158,7 @@
 "[Generic] OK" = "OK";
 
 /* Action/button to replace/overwrite an item */
-"[Generic] Overwrite" = "Overwrite";
+"[Generic] Overwrite" = "Přepsat";
 
 /* Action/button to rename an item */
 "[Generic] Rename" = "Přejmenovat";

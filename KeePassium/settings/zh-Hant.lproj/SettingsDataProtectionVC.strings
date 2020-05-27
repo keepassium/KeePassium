@@ -5,10 +5,10 @@
 "e1v-nv-Mst.normalTitle" = "清除主金鑰";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "Hide passwords and other protected fields behind asterisks (recommended).";
+"e6Y-AP-hag.footerTitle" = "隱藏密碼與其他受保護的欄位在星號後面（推薦）。";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.headerTitle" = "Protected Fields";
+"e6Y-AP-hag.headerTitle" = "受保護的欄位";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.footerTitle" = "當解鎖資料庫時, 主金鑰將會安全的保存在系統鑰匙圈中。在下次登入KeePassium 將會自動使用該金鑰檔案, 所以您無須再輸入您完整的主密碼。\n\n(主金鑰將在資料庫逾時時自動刪除。)";
@@ -17,7 +17,7 @@
 "Faj-km-pM5.headerTitle" = "快速解鎖";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Use Universal Clipboard to copy and paste between your Apple devices.";
+"g9a-rJ-4WJ.footerTitle" = "使用通用剪貼板在你的蘋果設備之間複製和貼上。";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.footerTitle" = "當您複製任何東西, KeePassium 會在稍後自動的為您清除剪貼簿。";
@@ -47,7 +47,7 @@
 "neJ-eG-TV7.headerTitle" = "自動鎖定";
 
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
-"pid-k2-idJ.text" = "Hide Passwords";
+"pid-k2-idJ.text" = "隱藏密碼";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "剪貼簿逾時";
@@ -56,5 +56,5 @@
 "weX-SZ-IDB.text" = "資料庫逾時";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
-"YL6-U9-FM6.text" = "Universal Clipboard";
+"YL6-U9-FM6.text" = "通用剪貼板";
 

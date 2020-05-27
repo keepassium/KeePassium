@@ -1,9 +1,3 @@
-/* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "9Me-8P-nIZ"; */
-"9Me-8P-nIZ.footerTitle" = "Efter databasen öppnats, visa automatiskt sökfältet.";
-
-/* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9Me-8P-nIZ"; */
-"9Me-8P-nIZ.headerTitle" = "Start";
-
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
 "A5N-B3-t3t.headerTitle" = "Premium";
 
@@ -60,9 +54,6 @@
 
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "Dataskydd";
-
-/* Class = "UILabel"; text = "Start with Search"; ObjectID = "yuN-Ls-o9d"; */
-"yuN-Ls-o9d.text" = "Börja med sök";
 
 /* Class = "UITableViewSection"; headerTitle = "AutoFill"; ObjectID = "ZFi-ss-fUa"; */
 "ZFi-ss-fUa.headerTitle" = "Autofyll";

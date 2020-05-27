@@ -5,10 +5,10 @@
 "e1v-nv-Mst.normalTitle" = "Master Keys löschen";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "Hide passwords and other protected fields behind asterisks (recommended).";
+"e6Y-AP-hag.footerTitle" = "Verstecke Passwörter und andere geschützte Felder hinter Sternchen (empfohlen).";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.headerTitle" = "Protected Fields";
+"e6Y-AP-hag.headerTitle" = "Geschützte Felder";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.footerTitle" = "Sobald Sie eine Datenbank entsperren, kann der Master-Schlüssel im sicheren Schlüsselbund des Gerätes gespeichert werden. Das nächste Mal wird KeePassium diesen Schlüssel verwenden, damit Sie Ihr volles Master-Passwort nicht erneut eingeben müssen. \n\n(Master-Schlüssel werden automatisch auf der Datenbank-Zeitüberschreitung gelöscht.)";
@@ -17,7 +17,7 @@
 "Faj-km-pM5.headerTitle" = "Schnelles Entsperren";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Use Universal Clipboard to copy and paste between your Apple devices.";
+"g9a-rJ-4WJ.footerTitle" = "Verwenden Sie Universal Zwischenablage zum Kopieren und Einfügen zwischen Ihren Apple-Geräten.";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.footerTitle" = "Wenn Sie etwas kopieren, wird KeePassium Ihre Zwischenablage nach einiger Zeit automatisch löschen.";
@@ -47,7 +47,7 @@
 "neJ-eG-TV7.headerTitle" = "Automatisch sperren";
 
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
-"pid-k2-idJ.text" = "Hide Passwords";
+"pid-k2-idJ.text" = "Passwörter ausblenden";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Zwischenablage löschen nach";
@@ -56,5 +56,5 @@
 "weX-SZ-IDB.text" = "Datenbank schließen nach";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
-"YL6-U9-FM6.text" = "Universal Clipboard";
+"YL6-U9-FM6.text" = "Allgemeine Zwischenablage";
 

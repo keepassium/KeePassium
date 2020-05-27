@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +36,7 @@
                                                     </attributedString>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C3i-cd-qyP">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
                                                     <connections>
                                                         <action selector="didToggleEnableDatabaseBackup:" destination="nSy-3u-0xW" eventType="valueChanged" id="7rh-cv-tmj"/>
                                                     </connections>
@@ -52,8 +52,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="BJ7-eQ-JOc" secondAttribute="bottom" id="H87-Hb-4GS"/>
-                                                <constraint firstItem="C3i-cd-qyP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2cm-BA-x2x" secondAttribute="top" constant="6" id="JxA-fx-Cgp"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C3i-cd-qyP" secondAttribute="bottom" constant="6" id="RVX-8q-hHv"/>
+                                                <constraint firstItem="C3i-cd-qyP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2cm-BA-x2x" secondAttribute="top" constant="10" id="JxA-fx-Cgp"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C3i-cd-qyP" secondAttribute="bottom" constant="10" id="RVX-8q-hHv"/>
                                                 <constraint firstItem="fMb-2L-wBk" firstAttribute="leading" secondItem="2cm-BA-x2x" secondAttribute="leadingMargin" id="TvG-tU-Dh5"/>
                                                 <constraint firstItem="C3i-cd-qyP" firstAttribute="leading" secondItem="BJ7-eQ-JOc" secondAttribute="trailing" constant="8" id="VT0-zD-a3i"/>
                                                 <constraint firstItem="BJ7-eQ-JOc" firstAttribute="leading" secondItem="fMb-2L-wBk" secondAttribute="trailing" constant="16" id="gUy-r2-X3P"/>
@@ -89,19 +89,19 @@
                                                     </attributedString>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQZ-OX-Wt1">
-                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
                                                     <connections>
                                                         <action selector="didToggleShowBackupFiles:" destination="nSy-3u-0xW" eventType="valueChanged" id="Qu0-vF-HeJ"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gQZ-OX-Wt1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="q8H-9i-H0G" secondAttribute="top" constant="6" id="6VF-sN-cov"/>
+                                                <constraint firstItem="gQZ-OX-Wt1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="q8H-9i-H0G" secondAttribute="top" constant="10" id="6VF-sN-cov"/>
                                                 <constraint firstItem="aEK-cJ-9bc" firstAttribute="leading" secondItem="q8H-9i-H0G" secondAttribute="leadingMargin" id="AJJ-zj-JGz"/>
                                                 <constraint firstItem="gQZ-OX-Wt1" firstAttribute="centerY" secondItem="q8H-9i-H0G" secondAttribute="centerY" priority="750" id="J34-0i-hyz"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="aEK-cJ-9bc" secondAttribute="bottom" id="M5i-Eb-CQT"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gQZ-OX-Wt1" secondAttribute="trailing" id="Mg0-Fq-hiQ"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gQZ-OX-Wt1" secondAttribute="bottom" constant="6" id="Veu-R6-d3u"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gQZ-OX-Wt1" secondAttribute="bottom" constant="10" id="Veu-R6-d3u"/>
                                                 <constraint firstItem="gQZ-OX-Wt1" firstAttribute="leading" secondItem="aEK-cJ-9bc" secondAttribute="trailing" constant="8" id="eaP-N2-rAP"/>
                                                 <constraint firstItem="aEK-cJ-9bc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="q8H-9i-H0G" secondAttribute="topMargin" id="rRa-Le-62s"/>
                                                 <constraint firstItem="aEK-cJ-9bc" firstAttribute="centerY" secondItem="q8H-9i-H0G" secondAttribute="centerY" priority="250" id="vmv-Kr-K47"/>
@@ -115,15 +115,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Periodic cleanup" footerTitle="KeePassium can automatically delete old backup files to free up some storage space." id="B3L-Dk-Uq3" userLabel="Backup Maintenance">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="G42-gR-eKm" detailTextLabel="PKe-6p-Ssr" imageView="Ohh-2R-oTa" style="IBUITableViewCellStyleValue1" id="ljV-dR-Ihl">
-                                        <rect key="frame" x="0.0" y="294.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="G42-gR-eKm" detailTextLabel="PKe-6p-Ssr" imageView="Ohh-2R-oTa" style="IBUITableViewCellStyleValue1" id="ljV-dR-Ihl">
+                                        <rect key="frame" x="0.0" y="294.5" width="320" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ljV-dR-Ihl" id="Apj-dQ-zIf">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Keep Backup Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="G42-gR-eKm" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="60" y="12" width="140" height="20.5"/>
+                                                    <rect key="frame" x="60" y="16" width="140" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -137,7 +137,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{N days}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="PKe-6p-Ssr">
-                                                    <rect key="frame" x="220" y="12" width="65" height="20.5"/>
+                                                    <rect key="frame" x="220" y="16" width="65" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -147,7 +147,7 @@
                                                     </attributedString>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-backup-duration-listitem" id="Ohh-2R-oTa">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <rect key="frame" x="16" y="11.5" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                 </imageView>
@@ -155,7 +155,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="sJf-8e-FM0">
-                                        <rect key="frame" x="0.0" y="338.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="346.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sJf-8e-FM0" id="Xwy-hZ-bIT">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

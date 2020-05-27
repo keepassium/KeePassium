@@ -8,5 +8,5 @@
 "M9Q-v8-e6Q.placeholder" = "沒有金鑰檔案";
 
 /* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "SHG-X2-fHH"; Note = "Placeholder: the second text field for changing the master password"; */
-"SHG-X2-fHH.placeholder" = "Repeat Password";
+"SHG-X2-fHH.placeholder" = "請重複輸入密碼";
 

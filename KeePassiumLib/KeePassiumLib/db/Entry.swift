@@ -47,13 +47,18 @@ public class EntryField: Eraseable {
         isProtected = false
     }
     
-    public func contains(word: Substring) -> Bool {
+    public func contains(
+        word: Substring,
+        includeFieldNames: Bool,
+        includeProtectedValues: Bool
+    ) -> Bool {
         guard name != EntryField.password else { return false } 
         
-        if name.localizedCaseInsensitiveContains(word) {
+        if includeFieldNames && name.localizedCaseInsensitiveContains(word) {
             return true
         }
-        if !isProtected && value.localizedCaseInsensitiveContains(word) {
+        let includeFieldValue = !isProtected || includeProtectedValues
+        if includeFieldValue && value.localizedCaseInsensitiveContains(word) {
             return true
         }
         return false
@@ -259,8 +264,11 @@ public class Entry: DatabaseItem, Eraseable {
         for word in query.textWords {
             var wordFound = false
             for field in fields {
-                if field.contains(word: word) {
-                    wordFound = true
+                wordFound = field.contains(
+                    word: word,
+                    includeFieldNames: query.includeFieldNames,
+                    includeProtectedValues: query.includeProtectedValues)
+                if wordFound {
                     break
                 }
             }

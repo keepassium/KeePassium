@@ -50,6 +50,9 @@ public enum DatabaseError: LocalizedError {
 public struct SearchQuery {
     public var includeSubgroups: Bool
     public var includeDeleted: Bool
+    public var includeFieldNames: Bool
+    public var includeProtectedValues: Bool
+    
     public var text: String {
         didSet {
             textWords = text.split(separator: " ")
@@ -57,10 +60,17 @@ public struct SearchQuery {
     }
     public var textWords: Array<Substring>
     public init(
-        includeSubgroups: Bool, includeDeleted: Bool, text: String, textWords: Array<Substring>)
+        includeSubgroups: Bool,
+        includeDeleted: Bool,
+        includeFieldNames: Bool,
+        includeProtectedValues: Bool,
+        text: String,
+        textWords: Array<Substring>)
     {
         self.includeSubgroups = includeSubgroups
         self.includeDeleted = includeDeleted
+        self.includeFieldNames = includeFieldNames
+        self.includeProtectedValues = includeProtectedValues
         self.text = text
         self.textWords = textWords
     }

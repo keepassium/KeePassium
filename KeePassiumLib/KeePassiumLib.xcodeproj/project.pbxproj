@@ -14,7 +14,6 @@
 		75134CFC23C0F02C0065CD10 /* DatabaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */; };
 		751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CDD2309A3420088BB10 /* Localizable.strings */; };
 		751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E0D67230D12660088BB10 /* Bundle+extensions.swift */; };
-		75205FA3239BDB6700C1DEAA /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75205FA2239BDB6700C1DEAA /* DatabaseSettings.swift */; };
 		75205FA5239C01CF00C1DEAA /* DatabaseSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */; };
 		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
@@ -26,6 +25,7 @@
 		759896432341CED300DF39AA /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759896422341CED300DF39AA /* BusinessModel.swift */; };
 		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
 		75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677A229045A60097C693 /* PremiumFeature.swift */; };
+		75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B8608B2475E2F800C5E6C0 /* LString.swift */; };
 		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
 		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B862174F02F00F7DEF2 /* salsa20.c */; };
@@ -162,6 +162,7 @@
 		75AC534A2326FCDB000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC53A1232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		75AC53A2232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		75B8608B2475E2F800C5E6C0 /* LString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
 		75D09B862174F02F00F7DEF2 /* salsa20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = salsa20.c; sourceTree = "<group>"; };
@@ -463,6 +464,7 @@
 		75D09BFC2174F77000F7DEF2 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				75B8608B2475E2F800C5E6C0 /* LString.swift */,
 				75F4ACEE217749DB00B22D8B /* AppGroup.swift */,
 				75EA2D1621B2FB4000826FC6 /* Diag.swift */,
 				75F4ACE72177485D00B22D8B /* Settings.swift */,
@@ -774,6 +776,7 @@
 				75D09C2F2174F77000F7DEF2 /* Date+extension.swift in Sources */,
 				75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */,
 				751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */,
+				75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */,
 				75D09C312174F77000F7DEF2 /* Eraser.swift in Sources */,
 				75D09BDE2174F76500F7DEF2 /* ref.c in Sources */,
 				75D09C202174F77000F7DEF2 /* Header2.swift in Sources */,
@@ -832,7 +835,6 @@
 				75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
 				75F4ACE32177469500B22D8B /* FileDocument.swift in Sources */,
-				75205FA3239BDB6700C1DEAA /* DatabaseSettings.swift in Sources */,
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,
 				75F4ACE22177469500B22D8B /* DatabaseDocument.swift in Sources */,
 				7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */,

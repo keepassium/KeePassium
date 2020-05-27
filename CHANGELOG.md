@@ -1,5 +1,28 @@
 #CHANGELOG
 
+## [1.12.59] - 2020-05-26
+
+### Added
+
+- New setting: whether to auto-unlock the last used database [thanks, Stanislav and Niklas]
+- New settings: whether to search in field names and in protected values [thanks, Paolo]
+- After copying a field, you can also quickly share it to other apps
+- More detailed loading progress messages for .kdbx databases
+- Entries marked as non-autofillable in KeePassXC won't appear in AutoFill (closes #100) [thanks, Igor]
+
+### Changed
+
+- Refined accessibility: respect the "bold text" system setting
+- Support email template now includes device type (iPhone/iPad)
+
+### Fixed
+
+- Animation of the "Copied" overlay when switching between fields
+- With extra-large font, group names appeared trimmed by height
+- Don't show AppLock setup prompt if master keys are not stored
+- Minor layout and wording improvements in the settings
+
+
 ## [1.12.58] - 2020-05-10
 
 ### Added

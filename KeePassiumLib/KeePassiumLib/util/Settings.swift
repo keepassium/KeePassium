@@ -59,6 +59,7 @@ public class Settings {
         case backupFilesVisible
 
         case startupDatabase
+        case autoUnlockStartupDatabase
         case rememberDatabaseKey
         case keepKeyFileAssociations
         case keepHardwareKeyAssociations
@@ -74,11 +75,14 @@ public class Settings {
         case clipboardTimeout
         case universalClipboardEnabled
 
-        case startWithSearch
         case groupSortOrder
         case entryListDetail
         case entryViewerPage
         case hideProtectedFields
+        
+        case startWithSearch
+        case searchFieldNames
+        case searchProtectedValues
 
         case backupDatabaseOnSave
         case backupKeepingDuration
@@ -787,6 +791,21 @@ public class Settings {
         }
     }
     
+    public var isAutoUnlockStartupDatabase: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.autoUnlockStartupDatabase.rawValue)
+                as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isAutoUnlockStartupDatabase,
+                newValue: newValue,
+                key: .autoUnlockStartupDatabase)
+        }
+    }
+    
     public var isRememberDatabaseKey: Bool {
         get {
             let stored = UserDefaults.appGroupShared
@@ -999,21 +1018,6 @@ public class Settings {
     }
     
     
-    public var isStartWithSearch: Bool {
-        get {
-            let stored = UserDefaults.appGroupShared
-                .object(forKey: Keys.startWithSearch.rawValue)
-                as? Bool
-            return stored ?? false
-        }
-        set {
-            updateAndNotify(
-                oldValue: isStartWithSearch,
-                newValue: newValue,
-                key: .startWithSearch)
-        }
-    }
-    
     public var groupSortOrder: GroupSortOrder {
         get {
             if let rawValue = UserDefaults.appGroupShared
@@ -1077,6 +1081,52 @@ public class Settings {
                 oldValue: isHideProtectedFields,
                 newValue: newValue,
                 key: Keys.hideProtectedFields)
+        }
+    }
+    
+    
+    public var isStartWithSearch: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.startWithSearch.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isStartWithSearch,
+                newValue: newValue,
+                key: .startWithSearch)
+        }
+    }
+
+    public var isSearchFieldNames: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.searchFieldNames.rawValue)
+                as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isSearchFieldNames,
+                newValue: newValue,
+                key: .searchFieldNames)
+        }
+    }
+    
+    public var isSearchProtectedValues: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.searchProtectedValues.rawValue)
+                as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isSearchProtectedValues,
+                newValue: newValue,
+                key: .searchProtectedValues)
         }
     }
     

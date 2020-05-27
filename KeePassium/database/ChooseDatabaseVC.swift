@@ -118,7 +118,10 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     func updateDetailView(onlyInTwoPaneMode: Bool) {
         refresh()
 
-        if onlyInTwoPaneMode && (splitViewController?.isCollapsed ?? true) { return }
+        let isTwoPaneMode = !(splitViewController?.isCollapsed ?? true)
+        if onlyInTwoPaneMode && !isTwoPaneMode {
+            return
+        }
 
         if databaseRefs.isEmpty {
             databaseUnlocker = nil
@@ -142,8 +145,11 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
             }
         }
         
+        let canAutoSelectDatabase = isTwoPaneMode || Settings.current.isAutoUnlockStartupDatabase
+        
         guard let startDatabase = Settings.current.startupDatabase,
-            let selRow = databaseRefs.index(of: startDatabase) else
+            let selRow = databaseRefs.index(of: startDatabase),
+            canAutoSelectDatabase else
         {
             tableView.selectRow(at: nil, animated: true, scrollPosition: .none)
             return
@@ -176,7 +182,9 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     }
     
     private func shouldShowAppLockSetup() -> Bool {
-        return !Settings.current.isAppLockEnabled
+        let settings = Settings.current
+        let isDataVulnerable = settings.isRememberDatabaseKey && !settings.isAppLockEnabled
+        return isDataVulnerable
     }
     
     
@@ -570,8 +578,13 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
 
 extension ChooseDatabaseVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
-        if key == .filesSortOrder || key == .backupFilesVisible {
+        switch key {
+        case .filesSortOrder, .backupFilesVisible:
             refresh()
+        case .appLockEnabled, .rememberDatabaseKey:
+            tableView.reloadSections([0], with: .automatic)
+        default:
+            break
         }
     }
 }

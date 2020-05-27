@@ -104,7 +104,7 @@
 "[Entry/New/defaultTitle] New Entry" = "新條目";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "嘗試從應用程序中刪除文件，然後再次添加。";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "建立時間";
@@ -158,7 +158,7 @@
 "[Generic] OK" = "確定";
 
 /* Action/button to replace/overwrite an item */
-"[Generic] Overwrite" = "Overwrite";
+"[Generic] Overwrite" = "覆寫";
 
 /* Action/button to rename an item */
 "[Generic] Rename" = "重新命名";
@@ -170,7 +170,7 @@
 "[Generic] Show Details" = "顯示詳細資訊";
 
 /* Checkbox/Button to show a text field in its full size */
-"[Generic] Show more" = "Show more";
+"[Generic] Show more" = "顯示更多";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "您確定嗎？";
@@ -191,7 +191,7 @@
 "[Generic/File/title] Export Error" = "匯出錯誤";
 
 /* Message shown when trying to copy into an existing file. */
-"[Generic/File/title] File already exists" = "File already exists";
+"[Generic/File/title] File already exists" = "檔案已經存在";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "匯入錯誤";
@@ -218,10 +218,10 @@
 "[Group/New/defaultName] New Group" = "新建群組";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "硬體金鑰不支持自動填充。";
 
 /* Master key/unlock option: don't use hardware keys */
-"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+"[HardwareKey/None] No Hardware Key" = "沒有硬體金鑰";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
@@ -239,10 +239,10 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "升級到高級版";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";
+"[PremiumFeature/HardwareKeys/description]" = "高級版本的硬體金鑰 (YubiKey) 提高了安全性。";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
-"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardware Keys";
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "硬體金鑰";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "節省輸入複雜主密碼的時間 - 在高級版中保持資料庫打開更長時間。";
@@ -269,16 +269,16 @@
 "[Support/template] (Please describe the problem here)" = "(請在此處描述問題)";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
-"[YubiKey] Don't use YubiKey" = "Without YubiKey";
+"[YubiKey] Don't use YubiKey" = "不使用YubiKey";
 
 /* Call for action: insert YubiKey 5Ci to the Lightning port */
-"[YubiKey] Insert the key" = "Insert the key";
+"[YubiKey] Insert the key" = "插入金鑰";
 
 /* Call for action: touch the sides of YubiKey 5Ci to continue */
-"[YubiKey] Touch the key" = "Touch the key";
+"[YubiKey] Touch the key" = "觸摸金鑰";
 
 /* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
-"[YubiKey] Use YubiKey Slot %d" = "Use YubiKey Slot %d";
+"[YubiKey] Use YubiKey Slot %d" = "使用YubiKey Slot %d";
 
 /* Action/button to add database to the app */
 "Add Database" = "添加資料庫";
