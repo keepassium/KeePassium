@@ -195,6 +195,14 @@
 		758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */; };
 		758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
 		7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
+		759894B724620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
+		759894B824620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
+		759894B924620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
+		759894BA24620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
+		759894BC24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
+		759894BD24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
+		759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
+		759894BF24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
 		7598963F2341590300DF39AA /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
 		759896402341590300DF39AA /* KeePassiumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599636F22E112E50004BC85 /* Attachment+extensions.swift */; };
@@ -450,6 +458,10 @@
 		75ED429D2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429F2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard */; };
 		75ED42A42313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */; };
 		75ED42A92313C20A003DE72E /* SettingsItemListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42AB2313C20A003DE72E /* SettingsItemListVC.storyboard */; };
+		75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
+		75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
+		75F28787245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
+		75F28788245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
 		75F4ACFC21776F4800B22D8B /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACFB21776F4800B22D8B /* LString.swift */; };
 		75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
 		75FEC2232175292C0034334B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
@@ -761,6 +773,8 @@
 		758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareTextField.swift; sourceTree = "<group>"; };
 		758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCreatorVC.swift; sourceTree = "<group>"; };
 		7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppTimeoutVC.swift; sourceTree = "<group>"; };
+		759894B624620AF6006B6709 /* FileExportHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExportHelper.swift; sourceTree = "<group>"; };
+		759894BB24620D33006B6709 /* FileDestructionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDestructionHelper.swift; sourceTree = "<group>"; };
 		7599636F22E112E50004BC85 /* Attachment+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Attachment+extensions.swift"; sourceTree = "<group>"; };
 		759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitVC.swift; sourceTree = "<group>"; };
 		75A26773228E7D200097C693 /* PremiumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumVC.swift; sourceTree = "<group>"; };
@@ -1057,6 +1071,8 @@
 		75ED42B12315896C003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
 		75F15C9F233E512F001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F15CA2233E5399001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFIKeyActionSheetView.swift; sourceTree = "<group>"; };
+		75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFIKeyActionSheetView.xib; sourceTree = "<group>"; };
 		75F4ACBF2175F7A400B22D8B /* DiagLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiagLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F4ACFB21776F4800B22D8B /* LString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75F5CACC20BD18320056C969 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
@@ -1343,6 +1359,8 @@
 				75F4ACFB21776F4800B22D8B /* LString.swift */,
 				75679ACA22F8095F00372301 /* AppInfo.swift */,
 				7546FBD820C3A3F600C5D834 /* Watchdog.swift */,
+				759894B624620AF6006B6709 /* FileExportHelper.swift */,
+				759894BB24620D33006B6709 /* FileDestructionHelper.swift */,
 				753A3EE920D3776D00A1CF70 /* Refreshable.swift */,
 				75779863223023D3006671BD /* ProgressViewHost.swift */,
 				754804FA238E51AF0068C863 /* PopoverAnchor.swift */,
@@ -1460,6 +1478,7 @@
 		757ADC4323A1045C00D708D2 /* challenge-response */ = {
 			isa = PBXGroup;
 			children = (
+				75F2877F245D646B00F03657 /* MFIKeyActionSheet */,
 				7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */,
 				757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */,
 				757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */,
@@ -1554,6 +1573,15 @@
 				751E0D3D2309B01A0088BB10 /* DiagnosticsViewerVC.storyboard */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		75F2877F245D646B00F03657 /* MFIKeyActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */,
+				75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */,
+			);
+			path = MFIKeyActionSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1760,6 +1788,7 @@
 				751E0D132309AF540088BB10 /* ChooseDatabaseVC.storyboard in Resources */,
 				757ADC4A23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
 				755B862E23054FA200E9FC83 /* AboutVC.storyboard in Resources */,
+				75F28787245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */,
 				754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */,
 				751E0CEF2309AE920088BB10 /* SettingsBackupVC.storyboard in Resources */,
 				755E7DA2232008300010E199 /* Localizable.strings in Resources */,
@@ -1810,6 +1839,7 @@
 				75B38C52233E5B7C006BDEFC /* ChooseDatabaseVC.storyboard in Resources */,
 				757ADC4C23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
 				75B38C53233E5B7C006BDEFC /* AboutVC.storyboard in Resources */,
+				75F28788245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */,
 				75B38C54233E5B7C006BDEFC /* LaunchScreen.storyboard in Resources */,
 				75B38C55233E5B7C006BDEFC /* SettingsBackupVC.storyboard in Resources */,
 				75B38C56233E5B7C006BDEFC /* Localizable.strings in Resources */,
@@ -1923,6 +1953,7 @@
 				753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */,
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
+				759894B824620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				7532A24D21C5A035005DF56F /* KeyFileChooserVC.swift in Sources */,
@@ -1953,6 +1984,7 @@
 				75802635222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
 				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
+				759894BD24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
 				750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */,
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
@@ -1988,6 +2020,7 @@
 				752BB12520F089B30070FAC0 /* SettingsItemListVC.swift in Sources */,
 				752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */,
 				751BE253211C395D0071050A /* ViewDiagnosticsVC.swift in Sources */,
+				759894B724620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75E4CA5D232C455D00EB6805 /* UserNameHelper.swift in Sources */,
 				7561850320E033DB00EEFAEE /* WatchdogAwareTextView.swift in Sources */,
 				75D3AEB523BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */,
@@ -2011,11 +2044,13 @@
 				75E446C92330307300E24E70 /* Xcode11GM_LocalizedLabel.swift in Sources */,
 				75781A2D20CA3D7A00BE474F /* SettingsFileSortingVC.swift in Sources */,
 				752B1E9320E8AA070073AABD /* EditableField.swift in Sources */,
+				759894BC24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				756FF64420BAB20300FF890B /* UIColor+namedColors.swift in Sources */,
 				75B5FB7B20D61BC000D402D9 /* ViewableEntryFieldFactory.swift in Sources */,
 				7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */,
 				75CA919A20E90C3700B286F0 /* EntryChangeObserver+Notifier.swift in Sources */,
 				75C94C6120B4BAC4004FA29D /* ViewEntryHistoryVC.swift in Sources */,
+				75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75802634222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75E7612122DE7A9800397D8C /* PremiumBenefitView.swift in Sources */,
 				7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */,
@@ -2097,6 +2132,7 @@
 				75B38BF7233E5B7C006BDEFC /* SettingsItemListVC.swift in Sources */,
 				75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */,
 				75B38BF9233E5B7C006BDEFC /* ViewDiagnosticsVC.swift in Sources */,
+				759894B924620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */,
 				75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */,
 				75D3AEB623BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */,
@@ -2120,11 +2156,13 @@
 				75B38C0B233E5B7C006BDEFC /* Xcode11GM_LocalizedLabel.swift in Sources */,
 				75B38C0C233E5B7C006BDEFC /* SettingsFileSortingVC.swift in Sources */,
 				75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */,
+				759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				75B38C0E233E5B7C006BDEFC /* UIColor+namedColors.swift in Sources */,
 				75B38C0F233E5B7C006BDEFC /* ViewableEntryFieldFactory.swift in Sources */,
 				75B38C10233E5B7C006BDEFC /* UITableViewCell+extension.swift in Sources */,
 				75B38C11233E5B7C006BDEFC /* EntryChangeObserver+Notifier.swift in Sources */,
 				75B38C12233E5B7C006BDEFC /* ViewEntryHistoryVC.swift in Sources */,
+				75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */,
 				75B38C14233E5B7C006BDEFC /* PremiumBenefitView.swift in Sources */,
 				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
@@ -2201,6 +2239,7 @@
 				75D7DF7C233E5E310029AD87 /* SKProduct+extension.swift in Sources */,
 				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
+				759894BA24620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
 				75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75D7DF80233E5E310029AD87 /* KeyFileChooserVC.swift in Sources */,
@@ -2231,6 +2270,7 @@
 				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
 				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,
+				759894BF24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
 				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
 				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,
@@ -3099,12 +3139,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 58;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -3123,12 +3163,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 58;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.KeePassium-AutoFill";
@@ -3268,7 +3308,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 58;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3277,7 +3317,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3295,7 +3335,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 58;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3304,7 +3344,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3322,7 +3362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 58;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3331,7 +3371,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3349,7 +3389,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 58;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3358,7 +3398,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3375,12 +3415,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 58;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -3399,12 +3439,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 58;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.pro.KeePassium-AutoFill";

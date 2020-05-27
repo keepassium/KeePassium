@@ -70,6 +70,12 @@ public enum LString {
         value: "Done",
         comment: "Action/button to finish (editing) and keep changes"
     )
+    public static let actionShowMore = NSLocalizedString(
+        "[Generic] Show more",
+        value: "Show more",
+        comment: "Checkbox/Button to show a text field in its full size"
+    )
+
     public static let actionShowDetails = NSLocalizedString(
         "[Generic] Show Details",
         value: "Show Details",
@@ -303,4 +309,14 @@ public enum LString {
         "[YubiKey] Use YubiKey Slot %d",
         value: "Use YubiKey Slot %d",
         comment: "Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int]")
+
+    public static let insertMFIYubikey = NSLocalizedString(
+        "[YubiKey] Insert the key",
+        value: "Insert the key",
+        comment: "Call for action: insert YubiKey 5Ci to the Lightning port")
+
+    public static let touchMFIYubikey = NSLocalizedString(
+        "[YubiKey] Touch the key",
+        value: "Touch the key",
+        comment: "Call for action: touch the sides of YubiKey 5Ci to continue")
 }

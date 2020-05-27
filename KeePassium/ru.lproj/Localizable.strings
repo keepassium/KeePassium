@@ -103,6 +103,9 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Проблема с ключевым файлом: %@";
 
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
+
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Выбрать";
 
@@ -188,7 +191,7 @@
 "[FileInfo/Field/valueError] Error" = "Ошибка";
 
 /* Title of the dialog for picking the destination group for move/copy operations */
-"[General/DestinationGroup/title] Choose a Destination" = "Выберите, куда сохранить";
+"[General/DestinationGroup/title] Choose a Destination" = "Выберите папку назначения";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Отменить";
@@ -223,6 +226,9 @@
 /* Action/button: generic OK */
 "[Generic] OK" = "ОК";
 
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "Перезаписать";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Переименовать";
 
@@ -231,6 +237,9 @@
 
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Подробности";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "Развернуть";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Вы уверены?";
@@ -249,6 +258,9 @@
 
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "Ошибка Экспорта";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "Файл уже существует";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Ошибка Импорта";
@@ -274,6 +286,15 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Новая Группа";
 
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Аппаратные ключи не доступны в Автозаполнении.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "Без аппаратного ключа";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey слот %d";
+
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "По умолчанию (KeePass)";
 
@@ -297,6 +318,12 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/DatabaseTimeout/title]" = "Экономьте своё время";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/HardwareKeys/details]" = "Защитите свои секреты аппаратным ключом, таким как YubiKey.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/HardwareKeys/title]" = "Используйте аппаратные ключи";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/Maintenance/details]" = "Поддержите дальнейшее развитие KeePassium — классной программы без шпионажа и рекламы.";
@@ -370,11 +397,11 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Приложение полезно %1$@/месяц, т.е. около %2$@/год.";
 
-/* Description/advertisement for the `Biometric Unlock` premium feature */
-"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "Быстрый доступ к паролям с помощью Face ID/Touch ID в премиум-версии.";
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "Укрепите свою безопасность с помощью аппаратных ключей (YubiKey) в премиум-версии.";
 
-/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
-"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Биометрическая Разблокировка";
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Аппаратные ключи";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Экономьте время на вводе сложных мастер-паролей — держите базу открытой дольше в премиум-версии.";
@@ -447,6 +474,18 @@
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Опишите проблему)";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "Без YubiKey";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "Вставьте ключ";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "Прикоснитесь к ключу";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "Использовать YubiKey слот %d";
 
 /* Action/button to add database to the app */
 "Add Database" = "Добавить Базу Паролей";

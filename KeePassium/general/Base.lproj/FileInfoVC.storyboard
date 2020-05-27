@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cu8-bv-TEu">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cu8-bv-TEu">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="4Ew-Bj-PoK" userLabel="Footer">
+                            <rect key="frame" x="0.0" y="136" width="375" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7rb-qk-Xie">
+                                    <rect key="frame" x="8" y="24" width="359" height="32"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lGw-9V-syE">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="32"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DWC-wm-aMy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="175.5" height="32"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="Export" image="export-listitem">
+                                                        <color key="titleColor" name="ActionTint"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didPressExport:" destination="Cu8-bv-TEu" eventType="touchUpInside" id="0yY-rZ-9WP"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NlK-W5-RAo">
+                                                    <rect key="frame" x="183.5" y="0.0" width="175.5" height="32"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="tintColor" name="DestructiveTint"/>
+                                                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="{Delete/Remove}" image="delete-item-listitem">
+                                                        <color key="titleColor" name="DestructiveTint"/>
+                                                    </state>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                    <connections>
+                                                        <action selector="didPressDelete:" destination="Cu8-bv-TEu" eventType="touchUpInside" id="z3i-r2-PLw"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="lGw-9V-syE" firstAttribute="top" secondItem="7rb-qk-Xie" secondAttribute="top" id="0uk-LU-MkL"/>
+                                        <constraint firstAttribute="trailing" secondItem="lGw-9V-syE" secondAttribute="trailing" id="iBm-w6-qwE"/>
+                                        <constraint firstItem="lGw-9V-syE" firstAttribute="leading" secondItem="7rb-qk-Xie" secondAttribute="leading" id="jH9-IT-DbG"/>
+                                        <constraint firstAttribute="bottom" secondItem="lGw-9V-syE" secondAttribute="bottom" id="oQT-uh-beB"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="7rb-qk-Xie" firstAttribute="top" secondItem="4Ew-Bj-PoK" secondAttribute="topMargin" constant="16" id="LTC-Gk-eUe"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="7rb-qk-Xie" secondAttribute="bottom" constant="16" id="Zis-rX-A7H"/>
+                                <constraint firstItem="7rb-qk-Xie" firstAttribute="leading" secondItem="4Ew-Bj-PoK" secondAttribute="leadingMargin" id="cKD-Wh-uA1"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="7rb-qk-Xie" secondAttribute="trailing" id="tDb-Wv-T21"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileInfoCell" rowHeight="80" id="2BH-aM-idj" customClass="FileInfoCell" customModule="KeePassium" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
@@ -75,6 +131,10 @@
                         </connections>
                     </tableView>
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="350"/>
+                    <connections>
+                        <outlet property="deleteButton" destination="NlK-W5-RAo" id="xIa-lx-J8R"/>
+                        <outlet property="exportButton" destination="DWC-wm-aMy" id="rKc-9D-fkf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXL-NQ-04D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,6 +142,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="delete-item-listitem" width="29" height="29"/>
+        <image name="export-listitem" width="29" height="29"/>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DestructiveTint">
+            <color red="0.91900002956390381" green="0.24799999594688416" blue="0.14599999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>

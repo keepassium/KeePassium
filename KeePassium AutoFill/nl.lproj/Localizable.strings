@@ -67,6 +67,9 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Sleutelbestandsfout: %@";
 
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
+
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisch logbestand is gekopieerd naar het klembord.";
 
@@ -154,6 +157,9 @@
 /* Action/button: generic OK */
 "[Generic] OK" = "Oké";
 
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "Overwrite";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Wijzig naam";
 
@@ -162,6 +168,9 @@
 
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Toon details";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "Show more";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Weet je het zeker?";
@@ -180,6 +189,9 @@
 
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "Exporteerfout";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "File already exists";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Importeerfout";
@@ -205,6 +217,15 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nieuwe groep";
 
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";
 
@@ -217,11 +238,11 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Upgrade naar Premium";
 
-/* Description/advertisement for the `Biometric Unlock` premium feature */
-"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "In de Premium-versie kun je snel toegang krijgen tot je wachtwoorden met Face ID en/of Touch ID.";
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";
 
-/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
-"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Biometrische ontgrendeling";
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardware Keys";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Bespaar tijd bij het invoeren van complexe hoofdwachtwoorden — in de Premium-versie kun je je databank langer open houden.";
@@ -246,6 +267,18 @@
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(beschrijf hier het probleem)";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "Without YubiKey";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "Insert the key";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "Touch the key";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "Use YubiKey Slot %d";
 
 /* Action/button to add database to the app */
 "Add Database" = "Voeg databank toe";

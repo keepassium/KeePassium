@@ -137,13 +137,8 @@ class SettingsAppLockVC: UITableViewController, Refreshable {
     
     @IBAction func didToggleBiometricsSwitch(_ sender: UISwitch) {
         let isSwitchOn = sender.isOn
+        Settings.current.isBiometricAppLockEnabled = isSwitchOn
         refresh()
-        premiumUpgradeHelper.performActionOrOfferUpgrade(.canUseBiometricAppLock, in: self) {
-            [weak self] in
-            guard let self = self else { return }
-            Settings.current.isBiometricAppLockEnabled = isSwitchOn
-            self.refresh()
-        }
     }
 }
 

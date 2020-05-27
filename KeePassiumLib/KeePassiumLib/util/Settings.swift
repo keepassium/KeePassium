@@ -70,12 +70,15 @@ public class Settings {
         case recentUserActivityTimestamp
         case appLockTimeout
         case databaseLockTimeout
+        
         case clipboardTimeout
+        case universalClipboardEnabled
 
         case startWithSearch
         case groupSortOrder
         case entryListDetail
         case entryViewerPage
+        case hideProtectedFields
 
         case backupDatabaseOnSave
         case backupKeepingDuration
@@ -960,6 +963,7 @@ public class Settings {
         }
     }
     
+    
     public var clipboardTimeout: ClipboardTimeout {
         get {
             if let rawValue = UserDefaults.appGroupShared
@@ -976,6 +980,21 @@ public class Settings {
             if newValue != oldValue {
                 postChangeNotification(changedKey: Keys.clipboardTimeout)
             }
+        }
+    }
+    
+    public var isUniversalClipboardEnabled: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.universalClipboardEnabled.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isUniversalClipboardEnabled,
+                newValue: newValue,
+                key: .universalClipboardEnabled)
         }
     }
     
@@ -1044,6 +1063,20 @@ public class Settings {
                 oldValue: entryViewerPage,
                 newValue: newValue,
                 key: Keys.entryViewerPage)
+        }
+    }
+    
+    public var isHideProtectedFields: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.hideProtectedFields.rawValue) as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isHideProtectedFields,
+                newValue: newValue,
+                key: Keys.hideProtectedFields)
         }
     }
     

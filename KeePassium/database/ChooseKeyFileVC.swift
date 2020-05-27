@@ -236,7 +236,11 @@ class ChooseKeyFileVC: UITableViewController, Refreshable {
     {
         let urlRef = urlRefs[indexPath.row - 1]
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        let databaseInfoVC = FileInfoVC.make(urlRef: urlRef, at: popoverAnchor)
+        let databaseInfoVC = FileInfoVC.make(urlRef: urlRef, fileType: .keyFile, at: popoverAnchor)
+        databaseInfoVC.canExport = true
+        databaseInfoVC.onDismiss = {
+            databaseInfoVC.dismiss(animated: true, completion: nil)
+        }
         present(databaseInfoVC, animated: true, completion: nil)
     }
     

@@ -2,7 +2,7 @@
 "enW-gs-tra.normalTitle" = "Datenbank hinzufügen";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
-"P0M-N3-ynf.text" = "Wenn sie die AutoFill-Funktion nutzen wollen fügen die bitte die Datenbank und Schlüsseldatei erneut hinzu.";
+"P0M-N3-ynf.text" = "Wenn Sie die AutoFill-Funktion nutzen wollen, fügen Sie bitte die Datenbank und Schlüsseldatei erneut hinzu.";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
 "pIl-6L-Msp.text" = "Setup für automatisches Ausfüllen";

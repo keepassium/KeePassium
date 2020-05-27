@@ -1,5 +1,29 @@
 #CHANGELOG
 
+## [1.12.58] - 2020-05-10
+
+### Added
+
+- App Lock setup is now part of initial onboarding [thanks, everyone]
+- Added animated prompts to insert/touch YubiKey 5Ci key
+- New setting: show protected fields (off by default) (closes #95) [thanks, Jerry & Jeffrey]
+- New setting: use Universal Clipboard (off by default) [thanks, Daniel]
+- Added file operation buttons to the File Info dialog [thanks, Dirk]
+- The notes field is expandable now
+
+### Changed
+
+- Updated/refined some translations
+
+### Fixed
+
+- Parsing of misformatted ISO 8601 timestamps (sometimes created by MiniKeePass) [thanks, everyone]
+- Biometric auth asked for a premium upgrade under a heavy use [thanks, Theo]
+- Import conflict resolution dialog did not appear for key files
+- Groups and entries always appeared as non-expiring in v1 databases [thanks, Stefan]
+- Layout of the hardware key picker on iPad
+
+
 ## [1.11.57] - 2020-04-16
 
 ### Added

@@ -62,7 +62,7 @@
 "UNl-Hc-Ref.text" = "Protezione dei dati";
 
 /* Class = "UILabel"; text = "Start with Search"; ObjectID = "yuN-Ls-o9d"; */
-"yuN-Ls-o9d.text" = "Inizia la Ricerca";
+"yuN-Ls-o9d.text" = "Mostra campo Cerca";
 
 /* Class = "UITableViewSection"; headerTitle = "AutoFill"; ObjectID = "ZFi-ss-fUa"; */
 "ZFi-ss-fUa.headerTitle" = "Riempimento Automatico";

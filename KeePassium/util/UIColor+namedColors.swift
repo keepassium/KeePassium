@@ -44,6 +44,16 @@ extension UIColor {
         return UIColor(named: "PasswordSymbols") ?? .systemRed
     }
 
+
+    
+    static let mfiKeyActionSheetIdleColor: UIColor = .white
+    
+    static let mfiKeyActionSheetTouchColor =
+        UIColor(red: 186/255, green: 233/255, blue: 80/255, alpha: 1)
+    
+    static let mfiKeyActionSheetProcessingColor =
+        UIColor(red: 118/255, green: 214/255, blue: 255/255, alpha: 1)
+
     
     static let systemRed = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)
     static let systemOrange = UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)

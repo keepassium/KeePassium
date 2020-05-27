@@ -4,11 +4,20 @@
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
 "e1v-nv-Mst.normalTitle" = "Удалить Мастер-Ключи";
 
+/* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.footerTitle" = "Скрывать пароли и другие защищённый поля за звёздочками (рекомендуется).";
+
+/* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.headerTitle" = "Защищённые поля";
+
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.footerTitle" = "При открытии базы паролей, её мастер-ключ будет сохранён в связке ключей устройства. В следующий раз KeePassium использует этот мастер-ключ, чтобы Вам не пришлось заново вводить свой основной пароль. \n\n(Запомненные мастер-ключи автоматически удаляются при автоматическом закрытии баз.)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Быстрый Доступ";
+
+/* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
+"g9a-rJ-4WJ.footerTitle" = "Используйте универсальный буфер обмена для копирования и вставки между вашими устройствами Apple.";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.footerTitle" = "После копирования, KeePassium автоматически очистит буфер обмена через некоторое время.";
@@ -37,9 +46,15 @@
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
 "neJ-eG-TV7.headerTitle" = "Автоматическое Закрытие";
 
+/* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
+"pid-k2-idJ.text" = "Скрывать пароли";
+
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Очистка Буфера Обмена";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
 "weX-SZ-IDB.text" = "Задержка до Закрытия Баз";
+
+/* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
+"YL6-U9-FM6.text" = "Универсальный буфер обмена";
 

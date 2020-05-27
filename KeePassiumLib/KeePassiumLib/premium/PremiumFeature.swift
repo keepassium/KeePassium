@@ -9,7 +9,6 @@
 public enum PremiumFeature: Int {
     public static let all: [PremiumFeature] = [
         .canUseMultipleDatabases, 
-        .canUseBiometricAppLock, 
         .canUseLongDatabaseTimeouts, 
         .canPreviewAttachments, 
         .canUseHardwareKeys
@@ -17,8 +16,6 @@ public enum PremiumFeature: Int {
     
     case canUseMultipleDatabases = 0
 
-    case canUseBiometricAppLock = 1
-    
     case canUseLongDatabaseTimeouts = 2
     
     case canPreviewAttachments = 3
@@ -29,8 +26,6 @@ public enum PremiumFeature: Int {
         switch self {
         case .canUseMultipleDatabases:
             return status == .subscribed || status == .lapsed
-        case .canUseBiometricAppLock:
-            return status != .freeHeavyUse
         case .canUseLongDatabaseTimeouts:
             return status == .subscribed || status == .lapsed
         case .canPreviewAttachments:

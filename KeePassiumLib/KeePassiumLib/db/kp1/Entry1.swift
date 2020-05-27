@@ -40,7 +40,7 @@ public class Entry1: Entry {
     override public var isSupportsMultipleAttachments: Bool { return false }
     
     override public var canExpire: Bool {
-        get { return expiryTime == Date.kp1Never }
+        get { return expiryTime != Date.kp1Never }
         set {
             let never = Date.kp1Never
             if newValue {

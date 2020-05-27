@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -134,7 +134,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Clipboard" footerTitle="When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time." id="hnI-Q8-Ixm" userLabel="Pasteboard Timeout">
+                            <tableViewSection headerTitle="Clipboard" footerTitle="When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time." id="hnI-Q8-Ixm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="SSu-Sr-MCg" detailTextLabel="xPd-ot-oqe" imageView="KN4-NG-3Iw" style="IBUITableViewCellStyleValue1" id="pl7-TW-G1h" userLabel="Clipboard Timeout Cell">
                                         <rect key="frame" x="0.0" y="466.5" width="320" height="44"/>
@@ -174,11 +174,105 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection footerTitle="Use Universal Clipboard to copy and paste between your Apple devices." id="g9a-rJ-4WJ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="2o6-DM-GCk" userLabel="Use Universal Clilpboard">
+                                        <rect key="frame" x="0.0" y="590.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2o6-DM-GCk" id="euh-0J-9KN">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-clipboard-universal-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="bIA-sn-kaC">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="MSm-bI-ZaK"/>
+                                                        <constraint firstAttribute="width" constant="29" id="ywO-kO-mdr"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Universal Clipboard" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YL6-U9-FM6">
+                                                    <rect key="frame" x="61" y="12" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16U-9b-Jx7">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleUniversalClipboardSwitch:" destination="IZZ-aM-g2i" eventType="valueChanged" id="tYw-dg-Q2N"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bIA-sn-kaC" firstAttribute="leading" secondItem="euh-0J-9KN" secondAttribute="leadingMargin" id="5M5-XL-vuj"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="16U-9b-Jx7" secondAttribute="bottom" constant="6" id="7fo-ov-4CC"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="YL6-U9-FM6" secondAttribute="bottom" id="BEm-Lp-fzF"/>
+                                                <constraint firstItem="16U-9b-Jx7" firstAttribute="trailing" secondItem="euh-0J-9KN" secondAttribute="trailingMargin" id="Elo-ij-iBx"/>
+                                                <constraint firstItem="YL6-U9-FM6" firstAttribute="centerY" secondItem="euh-0J-9KN" secondAttribute="centerY" priority="250" id="MC1-Q6-HSj"/>
+                                                <constraint firstItem="YL6-U9-FM6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="euh-0J-9KN" secondAttribute="topMargin" id="TCf-kP-DTI"/>
+                                                <constraint firstItem="16U-9b-Jx7" firstAttribute="centerY" secondItem="euh-0J-9KN" secondAttribute="centerY" priority="750" id="Zm3-z1-n6D"/>
+                                                <constraint firstItem="16U-9b-Jx7" firstAttribute="leading" secondItem="YL6-U9-FM6" secondAttribute="trailing" constant="8" id="ghe-Lq-qdn"/>
+                                                <constraint firstItem="bIA-sn-kaC" firstAttribute="centerY" secondItem="euh-0J-9KN" secondAttribute="centerY" id="iDS-68-N1u"/>
+                                                <constraint firstItem="16U-9b-Jx7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="euh-0J-9KN" secondAttribute="top" constant="6" id="t0f-HF-PzD"/>
+                                                <constraint firstItem="YL6-U9-FM6" firstAttribute="leading" secondItem="bIA-sn-kaC" secondAttribute="trailing" constant="16" id="vHp-El-8GV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Protected Fields" footerTitle="Hide passwords and other protected fields behind asterisks (recommended)." id="e6Y-AP-hag">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="xy0-l4-jX5" userLabel="Hide Protected Fields">
+                                        <rect key="frame" x="0.0" y="726" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xy0-l4-jX5" id="SV3-RM-NaN">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-hide-passwords-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="o8u-9Y-Vtd">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="QmV-aV-UWL"/>
+                                                        <constraint firstAttribute="width" constant="29" id="rYc-E4-at5"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Hide Passwords" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pid-k2-idJ">
+                                                    <rect key="frame" x="61" y="12" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCE-bC-bHe">
+                                                    <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleHideProtectedFieldsSwitch:" destination="IZZ-aM-g2i" eventType="valueChanged" id="q2v-vF-xNa"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="o8u-9Y-Vtd" firstAttribute="centerY" secondItem="SV3-RM-NaN" secondAttribute="centerY" id="1LL-B2-YOc"/>
+                                                <constraint firstItem="pid-k2-idJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SV3-RM-NaN" secondAttribute="topMargin" id="AXR-iL-U3r"/>
+                                                <constraint firstItem="JCE-bC-bHe" firstAttribute="leading" secondItem="pid-k2-idJ" secondAttribute="trailing" constant="8" id="AvC-PM-LNd"/>
+                                                <constraint firstItem="pid-k2-idJ" firstAttribute="leading" secondItem="o8u-9Y-Vtd" secondAttribute="trailing" constant="16" id="LEK-bF-VEu"/>
+                                                <constraint firstItem="JCE-bC-bHe" firstAttribute="centerY" secondItem="SV3-RM-NaN" secondAttribute="centerY" priority="750" id="RGm-7w-SNF"/>
+                                                <constraint firstItem="o8u-9Y-Vtd" firstAttribute="leading" secondItem="SV3-RM-NaN" secondAttribute="leadingMargin" id="Sdt-Yv-f7I"/>
+                                                <constraint firstItem="JCE-bC-bHe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SV3-RM-NaN" secondAttribute="top" constant="6" id="hiq-9I-He1"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="pid-k2-idJ" secondAttribute="bottom" id="pvA-TC-sqH"/>
+                                                <constraint firstItem="pid-k2-idJ" firstAttribute="centerY" secondItem="SV3-RM-NaN" secondAttribute="centerY" priority="250" id="qyk-eT-P5Q"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JCE-bC-bHe" secondAttribute="bottom" constant="6" id="wBQ-Em-8sg"/>
+                                                <constraint firstItem="JCE-bC-bHe" firstAttribute="trailing" secondItem="SV3-RM-NaN" secondAttribute="trailingMargin" id="zXa-SL-PON"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Key Files" id="Mxu-GP-FmN" userLabel="Key File Associations">
                                 <string key="footerTitle">Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="qrz-wG-vpS">
-                                        <rect key="frame" x="0.0" y="618" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="861.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qrz-wG-vpS" id="cEF-MG-8iD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -221,7 +315,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="63r-C0-jmV">
-                                        <rect key="frame" x="0.0" y="662" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="905.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="63r-C0-jmV" id="54K-xz-dwY">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -261,8 +355,10 @@
                         <outlet property="clearMasterKeysButton" destination="e1v-nv-Mst" id="uRo-08-UjQ"/>
                         <outlet property="clipboardTimeoutCell" destination="pl7-TW-G1h" id="kdi-rO-dBh"/>
                         <outlet property="databaseTimeoutCell" destination="7gS-TC-EzJ" id="3Ue-ZN-LSr"/>
+                        <outlet property="hideProtectedFieldsSwitch" destination="JCE-bC-bHe" id="P1i-9e-mLQ"/>
                         <outlet property="rememberMasterKeysSwitch" destination="xIS-oe-VeS" id="3aO-D6-Lhz"/>
                         <outlet property="rememberUsedKeyFiles" destination="p4I-y6-xzA" id="Yx9-zT-Cc0"/>
+                        <outlet property="universalClipboardSwitch" destination="16U-9b-Jx7" id="fJg-kL-Mgl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0h-PX-haA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,7 +368,9 @@
     </scenes>
     <resources>
         <image name="settings-clipboard-timeout-listitem" width="29" height="29"/>
+        <image name="settings-clipboard-universal-listitem" width="29" height="29"/>
         <image name="settings-database-timeout-listitem" width="29" height="29"/>
+        <image name="settings-hide-passwords-listitem" width="29" height="29"/>
         <image name="settings-remember-keyfiles-listitem" width="29" height="29"/>
         <image name="settings-remember-master-keys-listitem" width="29" height="29"/>
         <namedColor name="AuxiliaryText">

@@ -17,11 +17,6 @@ extension PremiumFeature {
                 "[PremiumFeature/MultiDB/title] Multiple Databases",
                 value: "Multiple Databases",
                 comment: "Title of a premium feature: ability to use multiple databases (In Title Case)")
-        case .canUseBiometricAppLock:
-            return NSLocalizedString(
-                "[PremiumFeature/BiometricAppLock/title] Biometric Unlock",
-                value: "Biometric Unlock",
-                comment: "Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case)")
         case .canUseLongDatabaseTimeouts:
             return NSLocalizedString(
                 "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts",
@@ -48,11 +43,6 @@ extension PremiumFeature {
                 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version.",
                 value: "Easily switch between databases in the premium version.",
                 comment: "Description/advertisement for the `Multiple Databases` premium feature")
-        case .canUseBiometricAppLock:
-            return NSLocalizedString(
-                "[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version.",
-                value: "Quickly access your passwords using Face ID/Touch ID in the premium version.",
-                comment: "Description/advertisement for the `Biometric Unlock` premium feature")
         case .canUseLongDatabaseTimeouts:
             return NSLocalizedString(
                 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version.",

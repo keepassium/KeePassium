@@ -73,7 +73,7 @@ class ViewDiagnosticsVC: UITableViewController, Refreshable {
     }
     
     @IBAction func didPressCompose(_ sender: Any) {
-        SupportEmailComposer.show(subject: .problem) {
+        SupportEmailComposer.show(subject: .problem, parent: self) {
             [weak self] (success) in
             self?.dismiss(animated: true, completion: nil)
         }

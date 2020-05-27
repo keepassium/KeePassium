@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,6 +77,47 @@
                                 </tableViewCellContentView>
                                 <color key="tintColor" name="ActionTint"/>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AppLockSetupCell" id="P0I-MZ-5qs" userLabel="AppLockSetupCell" customClass="AppLockSetupCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="129" width="375" height="139"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P0I-MZ-5qs" id="UIb-k0-Rcp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="139"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Protect KeePassium from unauthorized access." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R68-cy-5mz">
+                                            <rect key="frame" x="16" y="15" width="343" height="42.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="Explanation for the `Enable AppLock` button."/>
+                                            </attributedString>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hmv-DA-BgM" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                            <rect key="frame" x="96.5" y="65.5" width="182" height="58.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <state key="normal" title="Enable AppLock" image="settings-app-lock-listitem">
+                                                <color key="titleColor" name="ActionTint"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="didPressButton:" destination="P0I-MZ-5qs" eventType="touchUpInside" id="oZf-1R-hAc"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" name="ListBackground"/>
+                                    <constraints>
+                                        <constraint firstItem="hmv-DA-BgM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UIb-k0-Rcp" secondAttribute="leadingMargin" constant="8" id="2hN-xN-2iX"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hmv-DA-BgM" secondAttribute="trailing" constant="8" id="6Mp-nS-hIz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="R68-cy-5mz" secondAttribute="trailing" id="LuD-a8-qgU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hmv-DA-BgM" secondAttribute="bottom" constant="4" id="QgL-T9-KvD"/>
+                                        <constraint firstItem="hmv-DA-BgM" firstAttribute="top" secondItem="R68-cy-5mz" secondAttribute="bottom" constant="8" id="a27-7X-joZ"/>
+                                        <constraint firstItem="hmv-DA-BgM" firstAttribute="centerX" secondItem="UIb-k0-Rcp" secondAttribute="centerXWithinMargins" id="jcg-tC-gg1"/>
+                                        <constraint firstItem="R68-cy-5mz" firstAttribute="top" secondItem="UIb-k0-Rcp" secondAttribute="topMargin" constant="4" id="q9l-Ue-Ypr"/>
+                                        <constraint firstItem="R68-cy-5mz" firstAttribute="leading" secondItem="UIb-k0-Rcp" secondAttribute="leadingMargin" id="x10-c8-r1Z"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="vWt-yt-cgE" id="jkr-PS-PtV"/>
@@ -143,13 +184,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7yP-IW-NS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1457" y="-38"/>
+            <point key="canvasLocation" x="-1458.4000000000001" y="-38.23088455772114"/>
         </scene>
     </scenes>
     <resources>
         <image name="create-item-toolbar" width="25" height="25"/>
         <image name="database-local-listitem" width="29" height="29"/>
         <image name="help-about-toolbar" width="25" height="25"/>
+        <image name="settings-app-lock-listitem" width="29" height="29"/>
         <image name="settings-toolbar" width="25" height="25"/>
         <image name="sort-order-toolbar" width="25" height="25"/>
         <namedColor name="ActionTint">
@@ -160,6 +202,9 @@
         </namedColor>
         <namedColor name="IconTint">
             <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ListBackground">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

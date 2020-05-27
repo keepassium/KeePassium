@@ -10,6 +10,12 @@
 /* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
 "go1-Nt-isQ.text" = "Копировать одноразовый пароль";
 
+/* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
+"jYl-ks-dFG.footerTitle" = "Когда Автозаполнение находит только одну, идеально подходящую, запись — эта запись будет выбрана автоматически.";
+
+/* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
+"jYl-ks-dFG.headerTitle" = "Автоматический поиск";
+
 /* Class = "UILabel"; text = "Open device settings"; ObjectID = "K3a-Mc-VCg"; Note = "Step 1"; */
 "K3a-Mc-VCg.text" = "Откройте системные настройки";
 
@@ -18,6 +24,9 @@
 
 /* Class = "UILabel"; text = "Tap \"AutoFill Passwords\""; ObjectID = "UzV-Ht-rGx"; Note = "Step 3. Must match system's translation."; */
 "UzV-Ht-rGx.text" = "Нажмите \"Автозаполнять пароли\"";
+
+/* Class = "UILabel"; text = "Fill-in the perfect result automatically"; ObjectID = "WDb-aU-Mmf"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
+"WDb-aU-Mmf.text" = "Автоматически вставлять идеальный вариант";
 
 /* Class = "UILabel"; text = "Turn on \"AutoFill Passwords\""; ObjectID = "X2u-c9-gwU"; */
 "X2u-c9-gwU.text" = "Включите \"Автозаполнение паролей\"";

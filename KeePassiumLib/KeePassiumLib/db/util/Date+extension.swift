@@ -23,6 +23,14 @@ public extension Date {
         return formatter
     }()
     
+    private static let miniKeePassDateFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss z"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
+
     static internal let secondsBetweenSwiftAndDotNetReferenceDates = Int64(63113904000)
 
     init?(iso8601string string: String?) {
@@ -30,6 +38,8 @@ public extension Date {
         if let date = Date.iso8601DateFormatter.date(from: string) {
             self = date
         } else if let date = Date.iso8601DateFormatterWithFractionalSeconds.date(from: string) {
+            self = date
+        } else if let date = Date.miniKeePassDateFormatter.date(from: string) {
             self = date
         } else {
             return nil

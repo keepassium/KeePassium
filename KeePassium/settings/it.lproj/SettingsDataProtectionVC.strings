@@ -4,11 +4,20 @@
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
 "e1v-nv-Mst.normalTitle" = "Cancella Chiavi Master";
 
+/* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.footerTitle" = "Hide passwords and other protected fields behind asterisks (recommended).";
+
+/* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.headerTitle" = "Protected Fields";
+
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.footerTitle" = "Una volta sbloccato un database, la sua chiave principale può essere memorizzata nel portachiavi sicuro del dispositivo. La prossima volta, KeePassium userà quella chiave in modo da non dover digitare nuovamente la password principale. \n\n(Le chiavi Master vengono cancellate automaticamente al timeout del database.)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Sblocco rapido";
+
+/* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
+"g9a-rJ-4WJ.footerTitle" = "Use Universal Clipboard to copy and paste between your Apple devices.";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.footerTitle" = "Quando copia qualsiasi cosa, KeePassium cancellerà automaticamente gli appunti (pasteboard) dopo qualche tempo.";
@@ -37,9 +46,15 @@
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
 "neJ-eG-TV7.headerTitle" = "Blocco automatico";
 
+/* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
+"pid-k2-idJ.text" = "Hide Passwords";
+
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Timeout degli appunti";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
 "weX-SZ-IDB.text" = "Timeout Database";
+
+/* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
+"YL6-U9-FM6.text" = "Universal Clipboard";
 

@@ -9,10 +9,18 @@
 import UIKit
 import KeePassiumLib
 
+class AppLockSetupCell: UITableViewCell {
+    var buttonHandler: (() -> Void)?
+    @IBAction func didPressButton(_ sender: Any) {
+        buttonHandler?()
+    }
+}
+
 class ChooseDatabaseVC: UITableViewController, Refreshable {
-    private enum CellID {
-        static let fileItem = "FileItemCell"
-        static let noFiles = "NoFilesCell"
+    private enum CellID: String {
+        case fileItem = "FileItemCell"
+        case noFiles = "NoFilesCell"
+        case appLockSetup = "AppLockSetupCell"
     }
     @IBOutlet weak var addDatabaseBarButton: UIBarButtonItem!
     
@@ -54,6 +62,8 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableView.automaticDimension
         
         fileKeeperNotifications = FileKeeperNotifications(observer: self)
         settingsNotifications = SettingsNotifications(observer: self)
@@ -165,6 +175,11 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         tableView.reloadData()
     }
     
+    private func shouldShowAppLockSetup() -> Bool {
+        return !Settings.current.isAppLockEnabled
+    }
+    
+    
     private func getDeleteActionName(for urlRef: URLReference) -> String {
         let fileInfo = urlRef.getInfo()
         if urlRef.location == .external || fileInfo.hasError {
@@ -175,6 +190,9 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
     }
     
     private func showActions(for indexPath: IndexPath) {
+        let cellType = getCellType(for: indexPath)
+        guard cellType == .fileItem else { return }
+        
         let urlRef = databaseRefs[indexPath.row]
         let exportAction = UIAlertAction(
             title: LString.actionExport,
@@ -221,6 +239,15 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         tableView.selectRow(at: nil, animated: true, scrollPosition: .none)
         let aboutVC = AboutVC.make()
         showDetailViewController(aboutVC, sender: self)
+    }
+    
+    func didPressAppLockSetup() {
+        let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
+        passcodeInputVC.delegate = self
+        passcodeInputVC.mode = .setup
+        passcodeInputVC.modalPresentationStyle = .formSheet
+        passcodeInputVC.isCancelAllowed = true
+        present(passcodeInputVC, animated: true, completion: nil)
     }
     
     @objc func didLongPressTableView(_ gestureRecognizer: UILongPressGestureRecognizer) {
@@ -421,8 +448,27 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         return 1
     }
 
+    func numberOfRows() -> Int {
+        let contentCellCount = max(databaseRefs.count, 1)
+        if shouldShowAppLockSetup() {
+            return contentCellCount + 1
+        } else {
+            return contentCellCount
+        }
+    }
+    
+    private func getCellType(for indexPath: IndexPath) -> CellID {
+        if indexPath.row < databaseRefs.count {
+            return .fileItem
+        }
+        if shouldShowAppLockSetup() && indexPath.row == (numberOfRows() - 1) {
+            return .appLockSetup
+        }
+        return .noFiles
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return databaseRefs.count
+        return numberOfRows()
     }
 
     override func tableView(
@@ -430,38 +476,66 @@ class ChooseDatabaseVC: UITableViewController, Refreshable {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell
     {
-        guard databaseRefs.count > 0 else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellID.noFiles, for: indexPath)
+        let cellType = getCellType(for: indexPath)
+        switch cellType {
+        case .noFiles:
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
+            return cell
+        case .fileItem:
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
+                as! DatabaseFileListCell
+            cell.urlRef = databaseRefs[indexPath.row]
+            return cell
+        case .appLockSetup:
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
+                as! AppLockSetupCell
+            cell.buttonHandler = { [weak self] in
+                self?.didPressAppLockSetup()
+            }
             return cell
         }
-   
-        let cell = tableView
-            .dequeueReusableCell(withIdentifier: CellID.fileItem, for: indexPath)
-            as! DatabaseFileListCell
-        cell.urlRef = databaseRefs[indexPath.row]
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if splitViewController?.isCollapsed ?? false {
             tableView.deselectRow(at: indexPath, animated: true)
         }
-        let selectedRef = databaseRefs[indexPath.row]
-        didSelectDatabase(urlRef: selectedRef)
+        switch getCellType(for: indexPath) {
+        case .noFiles:
+            break
+        case .fileItem:
+            let selectedRef = databaseRefs[indexPath.row]
+            didSelectDatabase(urlRef: selectedRef)
+        case .appLockSetup:
+            break
+        }
     }
     
     override func tableView(
         _ tableView: UITableView,
         accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
+        let cellType = getCellType(for: indexPath)
+        guard cellType == .fileItem else {
+            assertionFailure()
+            return
+        }
         let urlRef = databaseRefs[indexPath.row]
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        let databaseInfoVC = FileInfoVC.make(urlRef: urlRef, at: popoverAnchor)
+        let databaseInfoVC = FileInfoVC.make(urlRef: urlRef, fileType: .database, at: popoverAnchor)
+        databaseInfoVC.canExport = true
+        databaseInfoVC.onDismiss = {
+            databaseInfoVC.dismiss(animated: true, completion: nil)
+        }
         present(databaseInfoVC, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        let canEdit = getCellType(for: indexPath) == .fileItem
+        return canEdit
     }
     
     override func tableView(
@@ -581,5 +655,36 @@ extension ChooseDatabaseVC: WelcomeDelegate {
 
     func didPressAddExistingDatabase(in welcomeVC: WelcomeVC) {
         didPressOpenDatabase()
+    }
+}
+
+extension ChooseDatabaseVC: PasscodeInputDelegate {
+    func passcodeInputDidCancel(_ sender: PasscodeInputVC) {
+        Settings.current.isAppLockEnabled = false
+        sender.dismiss(animated: true, completion: nil)
+        tableView.reloadData()
+    }
+    
+    func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
+        return passcode.count > 0
+    }
+    
+    func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
+        sender.dismiss(animated: true) {
+            [weak self] in
+            do {
+                try Keychain.shared.setAppPasscode(passcode)
+                let settings = Settings.current
+                settings.isAppLockEnabled = true
+                settings.isBiometricAppLockEnabled = true
+                self?.tableView.reloadData()
+            } catch {
+                Diag.error(error.localizedDescription)
+                let alert = UIAlertController.make(
+                    title: LString.titleKeychainError,
+                    message: error.localizedDescription)
+                self?.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }

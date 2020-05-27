@@ -7,6 +7,9 @@
 /* Class = "UILabel"; text = "Database was closed by a timer."; ObjectID = "epu-yU-Lyg"; Note = "Notification message shown by database lock timer."; */
 "epu-yU-Lyg.text" = "Databank is gesloten door een timer.";
 
+/* Class = "UIButton"; normalTitle = "Lock Database"; ObjectID = "gji-1x-co5"; */
+"gji-1x-co5.normalTitle" = "Vergrendel databank";
+
 /* Class = "UIButton"; normalTitle = "Upgrade to Premium"; ObjectID = "i6N-fq-JbM"; Note = "Action: open upgrade screen. Please avoid money-related words like 'buy' or 'purchase'.  If there is no good translation for the 'Upgrade' call for action, it's ok to replace it with 'get', or even reduce the phrase to  'Premium'."; */
 "i6N-fq-JbM.normalTitle" = "Upgrade naar Premium";
 

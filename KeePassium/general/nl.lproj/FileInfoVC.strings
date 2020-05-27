@@ -1,3 +1,6 @@
 /* Class = "UITableViewController"; title = "File Info"; ObjectID = "Cu8-bv-TEu"; */
 "Cu8-bv-TEu.title" = "Bestandsinformatie";
 
+/* Class = "UIButton"; normalTitle = "Export"; ObjectID = "DWC-wm-aMy"; */
+"DWC-wm-aMy.normalTitle" = "Exporteer";
+

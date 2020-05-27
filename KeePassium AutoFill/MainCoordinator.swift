@@ -250,7 +250,11 @@ class MainCoordinator: NSObject, Coordinator {
     }
 
     func showDatabaseFileInfo(fileRef: URLReference) {
-        let databaseInfoVC = FileInfoVC.make(urlRef: fileRef, at: nil)
+        let databaseInfoVC = FileInfoVC.make(urlRef: fileRef, fileType: .database, at: nil)
+        databaseInfoVC.canExport = true
+        databaseInfoVC.onDismiss = { [weak self] in
+            self?.navigationController.popViewController(animated: true)
+        }
         navigationController.pushViewController(databaseInfoVC, animated: true)
     }
 

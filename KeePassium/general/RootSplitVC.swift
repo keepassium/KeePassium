@@ -53,6 +53,7 @@ extension RootSplitVC: FileKeeperDelegate {
         choiceAlert.addAction(actionOverwrite)
         choiceAlert.addAction(actionRename)
         choiceAlert.addAction(actionAbort)
-        present(choiceAlert, animated: true)
+        let topModalVC = self.presentedViewController ?? self
+        topModalVC.present(choiceAlert, animated: true)
     }
 }

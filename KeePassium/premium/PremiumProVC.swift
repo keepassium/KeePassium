@@ -38,6 +38,6 @@ class PremiumProVC: UIViewController {
         delegate?.didPressOpenInAppStore(self)
     }
     @IBAction func didPressContactSupport(_ sender: Any) {
-        SupportEmailComposer.show(subject: .proUpgrade)
+        SupportEmailComposer.show(subject: .proUpgrade, parent: self)
     }
 }

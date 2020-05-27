@@ -38,7 +38,7 @@
 "[Database/Delete] Failed to delete database file" = "Löschen der Datenbank fehlgeschlagen";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
-"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Datenbank-Datei löschen?\n Stellen Sie sicher, dass Sie eine ihre Daten gesichert haben.";
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Datenbankdatei löschen?\n Stellen Sie sicher, dass Sie ein Backup haben.";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Lade...";
@@ -66,6 +66,9 @@
 
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Schlüsseldatei Fehler: %@";
+
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Das Diagnoseprotokoll wurde in die Zwischenablage kopiert.";
@@ -154,6 +157,9 @@
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";
 
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "Overwrite";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Umbenennen";
 
@@ -163,11 +169,14 @@
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Zeige Details";
 
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "Show more";
+
 /* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "Bist du sicher?";
+"[Generic/ConfirmDelete/title] Are you sure?" = "Sind Sie sicher?";
 
 /* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Ungespeicherte Änderungen verwerfen?";
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Nicht gespeicherte Änderungen verwerfen?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Es gibt nicht gespeicherte Änderungen";
@@ -180,6 +189,9 @@
 
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "Export Fehler";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "File already exists";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Fehler beim Import";
@@ -205,8 +217,17 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Neue Gruppe";
 
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
+
 /* Message to confirm deletion of a key file. */
-"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Schlüssel-Datei löschen?\n Stellen Sie sicher, dass Sie ihre Daten gesichert haben.";
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Schlüsseldatei löschen?\n Stellen Sie sicher, dass Sie ein Backup haben.";
 
 /* Title of an announcement about the Pro version */
 "[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
@@ -217,11 +238,11 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Auf Premium aktualisieren";
 
-/* Description/advertisement for the `Biometric Unlock` premium feature */
-"[PremiumFeature/BiometricAppLock/description] Quickly access your passwords using Face ID/Touch ID in the premium version." = "Zugriff auf Ihre Passwörter mit Hilfe von Face ID/Touch ID in der Premium-Version.";
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";
 
-/* Title of a premium feature: ability to use Touch ID / Face ID in AppLock settings (In Title Case) */
-"[PremiumFeature/BiometricAppLock/title] Biometric Unlock" = "Biometrische Entsperrung";
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardware Keys";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Sparen Sie Zeit, beim Eingeben komplexer Master-Passwörter — halten Sie Ihre Datenbank länger offen mit der Premium-Version.";
@@ -246,6 +267,18 @@
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Bitte beschreiben Sie das Problem hier)";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "Without YubiKey";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "Insert the key";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "Touch the key";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "Use YubiKey Slot %d";
 
 /* Action/button to add database to the app */
 "Add Database" = "Datenbank hinzufügen";

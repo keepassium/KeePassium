@@ -4,6 +4,9 @@
 /* Class = "UILabel"; text = "No database files"; ObjectID = "5Md-DB-C5P"; Note = "Placeholder shown when there are no database files available"; */
 "5Md-DB-C5P.text" = "Keine Datenbank";
 
+/* Class = "UIButton"; normalTitle = "Enable AppLock"; ObjectID = "hmv-DA-BgM"; */
+"hmv-DA-BgM.normalTitle" = "Appsperre aktivieren";
+
 /* Class = "UIBarButtonItem"; lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "lnO-nD-gvh"; Note = "Action: show sorting settings of database files"; */
 "lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Sortieren nach";
 
@@ -12,6 +15,9 @@
 
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
 "qPq-UR-uZs.title" = "Datenbank hinzufügen";
+
+/* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
+"R68-cy-5mz.text" = "Schützen Sie KeePassium vor unbefugten Zugriffen.";
 
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
 "UI0-Lh-wTj.title" = "Datenbanken";

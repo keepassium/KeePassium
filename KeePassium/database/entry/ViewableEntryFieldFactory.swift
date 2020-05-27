@@ -29,6 +29,7 @@ protocol ViewableField: class {
     
     var isValueHidden: Bool { get set }
 
+    var isHeightConstrained: Bool { get set }
 }
 
 extension ViewableField {
@@ -58,7 +59,9 @@ class BasicViewableField: ViewableField {
     var isFixed: Bool { return field?.isStandardField ?? false }
 
     var isValueHidden: Bool
-
+    
+    var isHeightConstrained: Bool
+    
     var isEditable: Bool { return true }
     
     convenience init(field: EntryField, isValueHidden: Bool) {
@@ -68,6 +71,7 @@ class BasicViewableField: ViewableField {
     init(fieldOrNil field: EntryField?, isValueHidden: Bool) {
         self.field = field
         self.isValueHidden = isValueHidden
+        self.isHeightConstrained = true
     }
 }
 

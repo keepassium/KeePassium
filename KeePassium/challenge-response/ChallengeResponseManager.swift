@@ -9,16 +9,18 @@
 import KeePassiumLib
 
 fileprivate let YUBIKEY_SUCCESS: UInt16 = 0x9000
+fileprivate let YUBIKEY_MFI_TOUCH_TIMEOUT: UInt16 = 0x6985
 
 class ChallengeResponseManager {
     static let instance = ChallengeResponseManager()
     
     private var accessorySessionStateObservation: NSKeyValueObservation?
-    private var accessoryConnectedStateObservation: NSKeyValueObservation?
     private var nfcSessionStateObservation: NSKeyValueObservation?
     
     public private(set) var supportsNFC = false
     public private(set) var supportsMFI = false
+    
+    private var mfiKeyActionSheetView: MFIKeyActionSheetView? 
     
     private var challenge: SecureByteArray?
     private var responseHandler: ResponseHandler?
@@ -34,7 +36,6 @@ class ChallengeResponseManager {
 
     deinit {
         accessorySessionStateObservation = nil
-        accessoryConnectedStateObservation = nil
         nfcSessionStateObservation = nil
     }
     
@@ -100,15 +101,21 @@ class ChallengeResponseManager {
         case .open:
             print("Accessory session -> open")
             queue.async { [weak self] in
-                guard let key = self?.currentKey else { assertionFailure(); return }
-                self?.performChallengeResponse(keySession, slot: key.slot)
+                guard let self = self else { return }
+                guard let key = self.currentKey else { assertionFailure(); return }
+                self.presentMFIActionSheet(state: .touchKey, message: LString.touchMFIYubikey, delay: 0.7, completion: { })
+                self.performChallengeResponse(keySession, slot: key.slot)
                 keySession.stopSessionSync()
             }
         case .closing:
             print("Accessory session -> closing")
         case .closed:
             print("Accessory session -> closed")
-            accessoryConnectedStateObservation = nil 
+            keySession.cancelCommands()
+            dismissMFIActionSheet(delayed: false, completion: { })
+            if !isResponseSent {
+                returnError(.cancelled)
+            }
         }
     }
     
@@ -183,10 +190,13 @@ class ChallengeResponseManager {
         }
         currentKey = yubiKey
         let keySession = YubiKitManager.shared.accessorySession
-        if keySession.isKeyConnected {
-            keySession.startSessionSync()
-        } else {
-            returnError(.keyNotConnected)
+        keySession.startSession()
+        if !keySession.isKeyConnected {
+            presentMFIActionSheet(
+                state: .insertKey,
+                message: LString.insertMFIYubikey,
+                completion: { }
+            )
         }
     }
     
@@ -227,6 +237,8 @@ class ChallengeResponseManager {
         let accessorySession = YubiKitManager.shared.accessorySession
         if accessorySession.sessionState == .opening || accessorySession.sessionState == .open {
             accessorySession.stopSession()
+        } else {
+            accessorySession.cancelCommands()
         }
     }
     
@@ -238,6 +250,32 @@ class ChallengeResponseManager {
         nfcSession.stopIso7816Session()
     }
     
+    
+    private class RawResponseParser {
+        private var response: Data
+        
+        init(response: Data) {
+            self.response = response
+        }
+        
+        var statusCode: UInt16 {
+            get {
+                guard response.count >= 2 else {
+                    return 0
+                }
+                return UInt16(response[response.count - 2]) << 8 + UInt16(response[response.count - 1])
+            }
+        }
+        
+        var responseData: Data? {
+            get {
+                guard response.count > 2 else {
+                    return nil
+                }
+                return response.subdata(in: 0..<response.count - 2)
+            }
+        }
+    }
     
     private func performChallengeResponse(
         _ accessorySession: YKFAccessorySession,
@@ -294,16 +332,14 @@ class ChallengeResponseManager {
             let responseParser = RawResponseParser(response: response!)
             let statusCode = responseParser.statusCode
             if statusCode == YUBIKEY_SUCCESS {
-                guard let responseData = responseParser.responseData else {
+                guard let _ = responseParser.responseData else {
                     let message = "YubiKey response is empty"
                     Diag.error(message)
                     self.returnError(.communicationError(message: message))
                     return
                 }
-                let responseHexString = ByteArray(data: responseData).asHexString
-                print("Applet selection result: \(responseHexString)") 
             } else {
-                let message = "YubiKey select applet failed with code \(String(format: "%04X", statusCode))"
+                let message = "YubiKey select applet failed with code 0x\(String(format: "%04X", statusCode))"
                 Diag.error(message)
                 self.returnError(.communicationError(message: message))
             }
@@ -341,14 +377,17 @@ class ChallengeResponseManager {
                     self.returnError(.keyNotConfigured)
                     return
                 }
-                let responseHexString = ByteArray(data: responseData).asHexString
-                print("Response: \(responseHexString)") 
                 let response = SecureByteArray(data: responseData)
                 self.returnResponse(response)
             } else {
                 let message = "YubiKey challenge failed with code \(String(format: "%04X", statusCode))"
                 Diag.error(message)
-                self.returnError(.communicationError(message: message))
+                switch statusCode {
+                case YUBIKEY_MFI_TOUCH_TIMEOUT:
+                    self.returnError(.cancelled)
+                default:
+                    self.returnError(.communicationError(message: message))
+                }
             }
         }
     }
@@ -361,31 +400,73 @@ class ChallengeResponseManager {
             return 0x38
         }
     }
-}
-
-
-fileprivate class RawResponseParser {
-    private var response: Data
-
-    init(response: Data) {
-        self.response = response
+    
+    
+    enum MFIKeyInteractionViewState {
+        case insertKey
+        case touchKey
+        case processing
     }
     
-    var statusCode: UInt16 {
-        get {
-            guard response.count >= 2 else {
-                return 0
+    private func presentMFIActionSheet(
+        state: MFIKeyInteractionViewState,
+        message: String,
+        delay: TimeInterval = 0.0,
+        completion: @escaping ()->Void)
+    {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            guard self.mfiKeyActionSheetView == nil else {
+                self.setMFIActionSheet(state: state, message: message)
+                completion()
+                return
             }
-            return UInt16(response[response.count - 2]) << 8 + UInt16(response[response.count - 1])
+            self.mfiKeyActionSheetView = MFIKeyActionSheetView.loadViewFromNib()
+            guard let actionSheet = self.mfiKeyActionSheetView,
+                let parentView = UIApplication.shared.keyWindow
+                else { fatalError() }
+            actionSheet.delegate = self
+            actionSheet.frame = parentView.bounds
+            parentView.addSubview(actionSheet)
+            actionSheet.present(animated: true, delay: delay, completion: completion)
+            self.setMFIActionSheet(state: state, message: message)
         }
     }
     
-    var responseData: Data? {
-        get {
-            guard response.count > 2 else {
-                return nil
+    private func dismissMFIActionSheet(delayed: Bool, completion: @escaping ()->Void = {}) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            guard let actionSheet = self.mfiKeyActionSheetView else {
+                completion()
+                return
             }
-            return response.subdata(in: 0..<response.count - 2)
+            actionSheet.dismiss(animated:true, delayed: delayed) {
+                [weak self] in
+                guard let self = self else { return }
+                self.mfiKeyActionSheetView?.removeFromSuperview()
+                self.mfiKeyActionSheetView = nil
+                completion()
+            }
+        }
+    }
+    
+    private func setMFIActionSheet(state: MFIKeyInteractionViewState, message: String) {
+        guard let actionSheet = mfiKeyActionSheetView else { return }
+        switch state {
+        case .insertKey:
+            actionSheet.animateInsertKey(message: message)
+        case .touchKey:
+            actionSheet.animateTouchKey(message: message)
+        case .processing:
+            actionSheet.animateProcessing(message: message)
+        }
+    }
+}
+
+extension ChallengeResponseManager: MFIKeyActionSheetViewDelegate {
+    func mfiKeyActionSheetDidDismiss(_ actionSheet: MFIKeyActionSheetView) {
+        dismissMFIActionSheet(delayed: false) { [weak self] in
+            self?.returnError(.cancelled)
         }
     }
 }

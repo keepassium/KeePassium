@@ -187,6 +187,11 @@ extension ViewEntryFieldsVC: ViewableFieldCellDelegate {
         tableView.endUpdates()
     }
     
+    func cellDidExpand(_ cell: ViewableFieldCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
     func didTapCellValue(_ cell: ViewableFieldCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         tableView(tableView, didSelectRowAt: indexPath)

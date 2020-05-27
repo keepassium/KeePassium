@@ -34,13 +34,33 @@ class FileInfoCell: UITableViewCell {
 }
 
 class FileInfoVC: UITableViewController {
-    private var fields = [(String, String)]()
+    @IBOutlet weak var exportButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
+    public var onDismiss: (()->())?
+    
+    public var canExport: Bool = false {
+        didSet {
+            setupButtons()
+        }
+    }
+    
+    private var fields = [(String, String)]()
+    private var urlRef: URLReference!
+    private var fileType: FileType!
+
     private var dismissablePopoverDelegate = DismissablePopover()
     
-    public static func make(urlRef: URLReference, at popoverAnchor: PopoverAnchor?) -> FileInfoVC {
+    public static func make(
+        urlRef: URLReference,
+        fileType: FileType,
+        at popoverAnchor: PopoverAnchor?
+        ) -> FileInfoVC
+    {
         let vc = FileInfoVC.instantiateFromStoryboard()
         vc.setupFields(urlRef: urlRef)
+        vc.urlRef = urlRef
+        vc.fileType = fileType
         
         guard let popoverAnchor = popoverAnchor else {
             return vc
@@ -119,6 +139,8 @@ class FileInfoVC: UITableViewController {
         super.viewWillAppear(animated)
         
         tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        
+        setupButtons()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -139,6 +161,12 @@ class FileInfoVC: UITableViewController {
         self.preferredContentSize = preferredSize
     }
 
+    func setupButtons() {
+        exportButton?.isHidden = !canExport
+        let destructiveAction = DestructiveFileAction.get(for: urlRef.location)
+        deleteButton?.setTitle(destructiveAction.title, for: .normal)
+    }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -162,5 +190,28 @@ class FileInfoVC: UITableViewController {
         cell.name = fields[fieldIndex].0
         cell.value = fields[fieldIndex].1
         return cell
+    }
+
+    
+    @IBAction func didPressExport(_ sender: UIButton) {
+        let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
+        FileExportHelper.showFileExportSheet(urlRef, at: popoverAnchor, parent: self)
+    }
+    
+    @IBAction func didPressDelete(_ sender: UIButton) {
+        let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
+        FileDestructionHelper.destroyFile(
+            urlRef,
+            fileType: fileType,
+            withConfirmation: true,
+            at: popoverAnchor,
+            parent: self,
+            completion: { [weak self] (success) in
+                if success {
+                    self?.onDismiss?()
+                } else {
+                }
+            }
+        )
     }
 }

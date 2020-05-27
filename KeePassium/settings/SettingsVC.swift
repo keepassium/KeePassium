@@ -193,7 +193,7 @@ class SettingsVC: UITableViewController, Refreshable {
             let viewer = ViewDiagnosticsVC.make()
             show(viewer, sender: self)
         case contactSupportCell:
-            SupportEmailComposer.show(subject: .supportRequest)
+            SupportEmailComposer.show(subject: .supportRequest, parent: self)
         case rateTheAppCell:
             AppStoreHelper.writeReview()
         case aboutAppCell:

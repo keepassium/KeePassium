@@ -4,11 +4,20 @@
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
 "e1v-nv-Mst.normalTitle" = "清除主密钥";
 
+/* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.footerTitle" = "Hide passwords and other protected fields behind asterisks (recommended).";
+
+/* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.headerTitle" = "Protected Fields";
+
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.footerTitle" = "当解锁数据库时, 主密钥将会安全的保存在系统钥匙圈中。在下次登入KeePassium 将会自动使用该密钥文件, 所以您无须再输入您完整的主密码。\n\n(主密钥将在数据库超时时自动删除。)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "快速解锁";
+
+/* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
+"g9a-rJ-4WJ.footerTitle" = "Use Universal Clipboard to copy and paste between your Apple devices.";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.footerTitle" = "当您复制任何东西, KeePassium 会在稍后自动的为您清除剪贴板。";
@@ -37,9 +46,15 @@
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
 "neJ-eG-TV7.headerTitle" = "自动锁定";
 
+/* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
+"pid-k2-idJ.text" = "Hide Passwords";
+
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "剪贴板超时";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
 "weX-SZ-IDB.text" = "数据库超时";
+
+/* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
+"YL6-U9-FM6.text" = "Universal Clipboard";
 

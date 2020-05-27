@@ -52,6 +52,9 @@
 /* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
 "hDU-6p-Bzr.text" = "Реализцаия алгоритма Rijndael, автор Szymon Stefanek";
 
+/* Class = "UILabel"; text = "Apache 2.0 license"; ObjectID = "ht7-pj-Dbb"; */
+"ht7-pj-Dbb.text" = "Лицензия Apache 2.0";
+
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "hVm-qH-TAI"; */
 "hVm-qH-TAI.text" = "CC BY 3.0";
 
@@ -123,4 +126,7 @@
 
 /* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
 "wYr-Ya-qAP.text" = "Иконка системных настроек от Vicons Design";
+
+/* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
+"Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK от Yubico AB";
 

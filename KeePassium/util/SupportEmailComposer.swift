@@ -23,16 +23,18 @@ class SupportEmailComposer: NSObject {
     
     typealias CompletionHandler = ((Bool)->Void)
     private let completionHandler: CompletionHandler?
+    private weak var parent: UIViewController?
     private var subject = ""
     private var content = ""
     
-    private init(subject: String, content: String, completionHandler: CompletionHandler?) {
+    private init(subject: String, content: String, parent: UIViewController, completionHandler: CompletionHandler?) {
         self.completionHandler = completionHandler
         self.subject = subject
         self.content = content
+        self.parent = parent
     }
     
-    static func show(subject: Subject, completion: CompletionHandler?=nil) {
+    static func show(subject: Subject, parent: UIViewController, completion: CompletionHandler?=nil) {
         let subjectText = "\(AppInfo.name) - \(subject.rawValue)" 
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
         
@@ -50,6 +52,7 @@ class SupportEmailComposer: NSObject {
         let instance = SupportEmailComposer(
             subject: subjectText,
             content: contentText,
+            parent: parent,
             completionHandler: completion)
         
         instance.openSystemEmailComposer()
@@ -87,7 +90,30 @@ class SupportEmailComposer: NSObject {
             Diag.error("Failed to create mailto URL")
             return
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: self.completionHandler)
+        let app = UIApplication.shared
+        guard app.canOpenURL(url) else {
+            showExportSheet(for: url, completion: self.completionHandler)
+            return
+        }
+        app.open(url, options: [:]) { success in 
+            if success {
+                self.completionHandler?(success)
+            } else {
+                self.showExportSheet(for: url, completion: self.completionHandler)
+            }
+        }
+    }
+    
+    private func showExportSheet(for url: URL, completion: CompletionHandler?) {
+        guard let parent = parent else {
+            completion?(false)
+            return
+        }
+        
+        let exportSheet = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        parent.present(exportSheet, animated: true) {
+            completion?(true)
+        }
     }
 }
 

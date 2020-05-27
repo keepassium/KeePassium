@@ -5,7 +5,7 @@
 "5Dg-KX-m7a.headerTitle" = "Codice di accesso errato";
 
 /* Class = "UILabel"; text = "Protect Databases"; ObjectID = "6Pk-35-Fx6"; */
-"6Pk-35-Fx6.text" = "Protezione i database";
+"6Pk-35-Fx6.text" = "Protezione database";
 
 /* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
 "7ae-8I-LiQ.footerTitle" = "Consente l'autenticazione biometrica come alternativa rapida (ma meno sicura) al codice di sicurezza di AppLock.";
