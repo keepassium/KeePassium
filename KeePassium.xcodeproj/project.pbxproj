@@ -598,6 +598,50 @@
 		7547C9EB234900FE004B159C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PremiumProVC.storyboard; sourceTree = "<group>"; };
 		754804FA238E51AF0068C863 /* PopoverAnchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnchor.swift; sourceTree = "<group>"; };
 		7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedTextField.swift; sourceTree = "<group>"; };
+		754A322B24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		754A322C24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		754A322D24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
+		754A322E24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		754A322F24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
+		754A323024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		754A323124426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		754A323224426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
+		754A323324426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
+		754A323424426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EditEntryVC.strings; sourceTree = "<group>"; };
+		754A323524426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
+		754A323624426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
+		754A323724426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ChooseDatabaseVC.strings; sourceTree = "<group>"; };
+		754A323824426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ChooseIconVC.strings; sourceTree = "<group>"; };
+		754A323924426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsFileSortingVC.strings; sourceTree = "<group>"; };
+		754A323A24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
+		754A323B24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EditGroupVC.strings; sourceTree = "<group>"; };
+		754A323C24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/UnlockDatabaseVC.strings; sourceTree = "<group>"; };
+		754A323D24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ViewEntryVC.strings; sourceTree = "<group>"; };
+		754A323E24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DiagnosticsViewerVC.strings; sourceTree = "<group>"; };
+		754A323F24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsDatabaseTimeoutVC.strings; sourceTree = "<group>"; };
+		754A324024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
+		754A324124426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
+		754A324224426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
+		754A324324426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
+		754A324424426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
+		754A324524426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
+		754A324624426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
+		754A324724426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/AboutVC.strings; sourceTree = "<group>"; };
+		754A324824426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ViewEntryFilesVC.strings; sourceTree = "<group>"; };
+		754A324924426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
+		754A324A24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ViewEntryHistoryVC.strings; sourceTree = "<group>"; };
+		754A324B24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ViewDiagnosticsVC.strings; sourceTree = "<group>"; };
+		754A324C24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/WelcomeVC.strings; sourceTree = "<group>"; };
+		754A324D24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PremiumContainerVC.strings; sourceTree = "<group>"; };
+		754A324E24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
+		754A324F24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PremiumVC.strings; sourceTree = "<group>"; };
+		754A325024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsVC.strings; sourceTree = "<group>"; };
+		754A325124426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
+		754A325224426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PremiumProVC.strings; sourceTree = "<group>"; };
+		754A325324426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
+		754A325424426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PasswordGeneratorVC.strings; sourceTree = "<group>"; };
+		754A325524426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
+		754A325624426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		754BF07B2082A6BD00E3A292 /* KeePassium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeePassium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		754BF07E2082A6BD00E3A292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		754BF0872082A6BD00E3A292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1668,6 +1712,7 @@
 				sv,
 				es,
 				fr,
+				it,
 			);
 			mainGroup = 754BF0722082A6BD00E3A292;
 			productRefGroup = 754BF07C2082A6BD00E3A292 /* Products */;
@@ -2246,6 +2291,7 @@
 				75FDEF55233ABEEC00F17C26 /* sv */,
 				75AC35C723549DE700B60614 /* es */,
 				756B2442243F74E000AA121A /* fr */,
+				754A323A24426AA300632B39 /* it */,
 			);
 			name = SettingsDataProtectionVC.storyboard;
 			sourceTree = "<group>";
@@ -2263,6 +2309,7 @@
 				75FDEF58233ABEEC00F17C26 /* sv */,
 				75AC35CA23549DE700B60614 /* es */,
 				756B2441243F74E000AA121A /* fr */,
+				754A323924426AA300632B39 /* it */,
 			);
 			name = SettingsFileSortingVC.storyboard;
 			sourceTree = "<group>";
@@ -2280,6 +2327,7 @@
 				75FDEF6F233ABEEC00F17C26 /* sv */,
 				75AC35E123549DE700B60614 /* es */,
 				756B2458243F74E000AA121A /* fr */,
+				754A325024426AA300632B39 /* it */,
 			);
 			name = SettingsVC.storyboard;
 			sourceTree = "<group>";
@@ -2297,6 +2345,7 @@
 				75FDEF59233ABEEC00F17C26 /* sv */,
 				75AC35CB23549DE700B60614 /* es */,
 				756B243E243F74E000AA121A /* fr */,
+				754A323624426AA300632B39 /* it */,
 			);
 			name = SettingsBackupVC.storyboard;
 			sourceTree = "<group>";
@@ -2314,6 +2363,7 @@
 				75FDEF54233ABEEC00F17C26 /* sv */,
 				75AC35C623549DE700B60614 /* es */,
 				756B243D243F74E000AA121A /* fr */,
+				754A323524426AA300632B39 /* it */,
 			);
 			name = SettingsAppLockVC.storyboard;
 			sourceTree = "<group>";
@@ -2331,6 +2381,7 @@
 				75FDEF66233ABEEC00F17C26 /* sv */,
 				75AC35D723549DE700B60614 /* es */,
 				756B244E243F74E000AA121A /* fr */,
+				754A324624426AA300632B39 /* it */,
 			);
 			name = SettingsAutoFillVC.storyboard;
 			sourceTree = "<group>";
@@ -2348,6 +2399,7 @@
 				75FDEF6E233ABEEC00F17C26 /* sv */,
 				75AC35E023549DE700B60614 /* es */,
 				756B2457243F74E000AA121A /* fr */,
+				754A324F24426AA300632B39 /* it */,
 			);
 			name = PremiumVC.storyboard;
 			sourceTree = "<group>";
@@ -2365,6 +2417,7 @@
 				75FDEF61233ABEEC00F17C26 /* sv */,
 				75AC35D123549DE700B60614 /* es */,
 				756B2449243F74E000AA121A /* fr */,
+				754A324124426AA300632B39 /* it */,
 			);
 			name = ViewGroupVC.storyboard;
 			sourceTree = "<group>";
@@ -2382,6 +2435,7 @@
 				75FDEF5A233ABEEC00F17C26 /* sv */,
 				75AC35CC23549DE700B60614 /* es */,
 				756B2443243F74E000AA121A /* fr */,
+				754A323B24426AA300632B39 /* it */,
 			);
 			name = EditGroupVC.storyboard;
 			sourceTree = "<group>";
@@ -2399,6 +2453,7 @@
 				75FDEF53233ABEEC00F17C26 /* sv */,
 				75AC35C523549DE700B60614 /* es */,
 				756B243C243F74E000AA121A /* fr */,
+				754A323424426AA300632B39 /* it */,
 			);
 			name = EditEntryVC.storyboard;
 			sourceTree = "<group>";
@@ -2416,6 +2471,7 @@
 				75FDEF72233ABEEC00F17C26 /* sv */,
 				75AC35E523549DE700B60614 /* es */,
 				756B245C243F74E000AA121A /* fr */,
+				754A325424426AA300632B39 /* it */,
 			);
 			name = PasswordGeneratorVC.storyboard;
 			sourceTree = "<group>";
@@ -2433,6 +2489,7 @@
 				75FDEF5C233ABEEC00F17C26 /* sv */,
 				75AC35CE23549DE700B60614 /* es */,
 				756B2445243F74E000AA121A /* fr */,
+				754A323D24426AA300632B39 /* it */,
 			);
 			name = ViewEntryVC.storyboard;
 			sourceTree = "<group>";
@@ -2450,6 +2507,7 @@
 				75FDEF51233ABEEC00F17C26 /* sv */,
 				75AC35C323549DE700B60614 /* es */,
 				756B243A243F74E000AA121A /* fr */,
+				754A323224426AA300632B39 /* it */,
 			);
 			name = ViewEntryFieldsVC.storyboard;
 			sourceTree = "<group>";
@@ -2467,6 +2525,7 @@
 				75FDEF68233ABEEC00F17C26 /* sv */,
 				75AC35D923549DE700B60614 /* es */,
 				756B2450243F74E000AA121A /* fr */,
+				754A324824426AA300632B39 /* it */,
 			);
 			name = ViewEntryFilesVC.storyboard;
 			sourceTree = "<group>";
@@ -2484,6 +2543,7 @@
 				75FDEF6A233ABEEC00F17C26 /* sv */,
 				75AC35DB23549DE700B60614 /* es */,
 				756B2452243F74E000AA121A /* fr */,
+				754A324A24426AA300632B39 /* it */,
 			);
 			name = ViewEntryHistoryVC.storyboard;
 			sourceTree = "<group>";
@@ -2501,6 +2561,7 @@
 				75FDEF56233ABEEC00F17C26 /* sv */,
 				75AC35C823549DE700B60614 /* es */,
 				756B243F243F74E000AA121A /* fr */,
+				754A323724426AA300632B39 /* it */,
 			);
 			name = ChooseDatabaseVC.storyboard;
 			sourceTree = "<group>";
@@ -2518,6 +2579,7 @@
 				75FDEF63233ABEEC00F17C26 /* sv */,
 				75AC35D423549DE700B60614 /* es */,
 				756B244B243F74E000AA121A /* fr */,
+				754A324324426AA300632B39 /* it */,
 			);
 			name = ChooseKeyFileVC.storyboard;
 			sourceTree = "<group>";
@@ -2535,6 +2597,7 @@
 				75FDEF4E233ABEEC00F17C26 /* sv */,
 				75AC35BE23549DE700B60614 /* es */,
 				756B2437243F74E000AA121A /* fr */,
+				754A322F24426AA300632B39 /* it */,
 			);
 			name = ChangeMasterKeyVC.storyboard;
 			sourceTree = "<group>";
@@ -2552,6 +2615,7 @@
 				75FDEF5B233ABEEC00F17C26 /* sv */,
 				75AC35CD23549DE700B60614 /* es */,
 				756B2444243F74E000AA121A /* fr */,
+				754A323C24426AA300632B39 /* it */,
 			);
 			name = UnlockDatabaseVC.storyboard;
 			sourceTree = "<group>";
@@ -2569,6 +2633,7 @@
 				75FDEF6D233ABEEC00F17C26 /* sv */,
 				75AC35DF23549DE700B60614 /* es */,
 				756B2456243F74E000AA121A /* fr */,
+				754A324E24426AA300632B39 /* it */,
 			);
 			name = DatabaseCreatorVC.storyboard;
 			sourceTree = "<group>";
@@ -2586,6 +2651,7 @@
 				75FDEF57233ABEEC00F17C26 /* sv */,
 				75AC35C923549DE700B60614 /* es */,
 				756B2440243F74E000AA121A /* fr */,
+				754A323824426AA300632B39 /* it */,
 			);
 			name = ChooseIconVC.storyboard;
 			sourceTree = "<group>";
@@ -2603,6 +2669,7 @@
 				75FDEF4C233ABEEC00F17C26 /* sv */,
 				75AC35E723549DE700B60614 /* es */,
 				756B2435243F74E000AA121A /* fr */,
+				754A322D24426AA300632B39 /* it */,
 			);
 			name = FileInfoVC.storyboard;
 			sourceTree = "<group>";
@@ -2620,6 +2687,7 @@
 				75FDEF52233ABEEC00F17C26 /* sv */,
 				75AC35C423549DE700B60614 /* es */,
 				756B243B243F74E000AA121A /* fr */,
+				754A323324426AA300632B39 /* it */,
 			);
 			name = CrashReportVC.storyboard;
 			sourceTree = "<group>";
@@ -2637,6 +2705,7 @@
 				75FDEF69233ABEEC00F17C26 /* sv */,
 				75AC35DA23549DE700B60614 /* es */,
 				756B2451243F74E000AA121A /* fr */,
+				754A324924426AA300632B39 /* it */,
 			);
 			name = FirstSetupVC.storyboard;
 			sourceTree = "<group>";
@@ -2654,6 +2723,7 @@
 				75FDEF65233ABEEC00F17C26 /* sv */,
 				75AC35D623549DE700B60614 /* es */,
 				756B244D243F74E000AA121A /* fr */,
+				754A324524426AA300632B39 /* it */,
 			);
 			name = DatabaseChooserVC.storyboard;
 			sourceTree = "<group>";
@@ -2671,6 +2741,7 @@
 				75FDEF70233ABEEC00F17C26 /* sv */,
 				75AC35E223549DE700B60614 /* es */,
 				756B2459243F74E000AA121A /* fr */,
+				754A325124426AA300632B39 /* it */,
 			);
 			name = DatabaseUnlockerVC.storyboard;
 			sourceTree = "<group>";
@@ -2688,6 +2759,7 @@
 				75FDEF60233ABEEC00F17C26 /* sv */,
 				75AC35D223549DE700B60614 /* es */,
 				756B2448243F74E000AA121A /* fr */,
+				754A324024426AA300632B39 /* it */,
 			);
 			name = EntryFinderVC.storyboard;
 			sourceTree = "<group>";
@@ -2705,6 +2777,7 @@
 				75FDEF50233ABEEC00F17C26 /* sv */,
 				75AC35C023549DE700B60614 /* es */,
 				756B2438243F74E000AA121A /* fr */,
+				754A323024426AA300632B39 /* it */,
 			);
 			name = KeyFileChooserVC.storyboard;
 			sourceTree = "<group>";
@@ -2722,6 +2795,7 @@
 				75FDEF5D233ABEEC00F17C26 /* sv */,
 				75AC35CF23549DE700B60614 /* es */,
 				756B2446243F74E000AA121A /* fr */,
+				754A323E24426AA300632B39 /* it */,
 			);
 			name = DiagnosticsViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -2747,6 +2821,7 @@
 				756C4CC8234A41F8003F7E52 /* zh-Hant */,
 				75AC35E323549DE700B60614 /* es */,
 				756B245A243F74E000AA121A /* fr */,
+				754A325224426AA300632B39 /* it */,
 			);
 			name = PremiumProVC.storyboard;
 			sourceTree = "<group>";
@@ -2780,6 +2855,7 @@
 				75FDEF67233ABEEC00F17C26 /* sv */,
 				75AC35D823549DE700B60614 /* es */,
 				756B244F243F74E000AA121A /* fr */,
+				754A324724426AA300632B39 /* it */,
 			);
 			name = AboutVC.storyboard;
 			sourceTree = "<group>";
@@ -2797,6 +2873,7 @@
 				75FDEF73233ABEEC00F17C26 /* sv */,
 				75AC35E623549DE700B60614 /* es */,
 				756B245D243F74E000AA121A /* fr */,
+				754A325524426AA300632B39 /* it */,
 			);
 			name = PasscodeInputVC.storyboard;
 			sourceTree = "<group>";
@@ -2814,6 +2891,7 @@
 				75FDEF6B233ABEEC00F17C26 /* sv */,
 				75AC35DC23549DE700B60614 /* es */,
 				756B2453243F74E000AA121A /* fr */,
+				754A324B24426AA300632B39 /* it */,
 			);
 			name = ViewDiagnosticsVC.storyboard;
 			sourceTree = "<group>";
@@ -2831,6 +2909,7 @@
 				75FDEF6C233ABEEC00F17C26 /* sv */,
 				75AC35DE23549DE700B60614 /* es */,
 				756B2455243F74E000AA121A /* fr */,
+				754A324C24426AA300632B39 /* it */,
 			);
 			name = WelcomeVC.storyboard;
 			sourceTree = "<group>";
@@ -2847,6 +2926,7 @@
 				75FDEF4A233ABEEC00F17C26 /* sv */,
 				75AC35BC23549DE700B60614 /* es */,
 				756B2433243F74E000AA121A /* fr */,
+				754A322B24426AA300632B39 /* it */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2863,6 +2943,7 @@
 				75FDEF4B233ABEEC00F17C26 /* sv */,
 				75AC35BD23549DE700B60614 /* es */,
 				756B2434243F74E000AA121A /* fr */,
+				754A322C24426AA300632B39 /* it */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2879,6 +2960,7 @@
 				75FDEF4D233ABEEC00F17C26 /* sv */,
 				75AC35BF23549DE700B60614 /* es */,
 				756B2436243F74E000AA121A /* fr */,
+				754A322E24426AA300632B39 /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2895,6 +2977,7 @@
 				75FDEF4F233ABEEC00F17C26 /* sv */,
 				75AC35C223549DE700B60614 /* es */,
 				756B2439243F74E000AA121A /* fr */,
+				754A323124426AA300632B39 /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2912,6 +2995,7 @@
 				756C4CDA234A49DA003F7E52 /* sv */,
 				75AC35DD23549DE700B60614 /* es */,
 				756B2454243F74E000AA121A /* fr */,
+				754A324D24426AA300632B39 /* it */,
 			);
 			name = PremiumContainerVC.storyboard;
 			sourceTree = "<group>";
@@ -2929,6 +3013,7 @@
 				75FDEF64233ABEEC00F17C26 /* sv */,
 				75AC35D523549DE700B60614 /* es */,
 				756B244C243F74E000AA121A /* fr */,
+				754A324424426AA300632B39 /* it */,
 			);
 			name = SettingsAppTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -2946,6 +3031,7 @@
 				75FDEF74233ABEEC00F17C26 /* sv */,
 				75AC35C123549DE700B60614 /* es */,
 				756B245E243F74E000AA121A /* fr */,
+				754A325624426AA300632B39 /* it */,
 			);
 			name = SettingsBackupTimeoutPickerVC.storyboard;
 			sourceTree = "<group>";
@@ -2963,6 +3049,7 @@
 				75FDEF5F233ABEEC00F17C26 /* sv */,
 				75AC35D023549DE700B60614 /* es */,
 				756B2447243F74E000AA121A /* fr */,
+				754A323F24426AA300632B39 /* it */,
 			);
 			name = SettingsDatabaseTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -2980,6 +3067,7 @@
 				75FDEF71233ABEEC00F17C26 /* sv */,
 				75AC35E423549DE700B60614 /* es */,
 				756B245B243F74E000AA121A /* fr */,
+				754A325324426AA300632B39 /* it */,
 			);
 			name = SettingsClipboardTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -2997,6 +3085,7 @@
 				75FDEF62233ABEEC00F17C26 /* sv */,
 				75AC35D323549DE700B60614 /* es */,
 				756B244A243F74E000AA121A /* fr */,
+				754A324224426AA300632B39 /* it */,
 			);
 			name = SettingsItemListVC.storyboard;
 			sourceTree = "<group>";
@@ -3010,7 +3099,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3034,7 +3123,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3179,7 +3268,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3206,7 +3295,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3233,7 +3322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3260,7 +3349,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3286,7 +3375,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3310,7 +3399,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

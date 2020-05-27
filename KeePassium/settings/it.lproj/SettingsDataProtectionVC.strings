@@ -1,0 +1,45 @@
+/* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
+"3uV-Zs-RRo.normalTitle" = "Cancella le associazioni dei File Chiave";
+
+/* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
+"e1v-nv-Mst.normalTitle" = "Cancella Chiavi Master";
+
+/* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.footerTitle" = "Una volta sbloccato un database, la sua chiave principale può essere memorizzata nel portachiavi sicuro del dispositivo. La prossima volta, KeePassium userà quella chiave in modo da non dover digitare nuovamente la password principale. \n\n(Le chiavi Master vengono cancellate automaticamente al timeout del database.)";
+
+/* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.headerTitle" = "Sblocco rapido";
+
+/* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.footerTitle" = "Quando copia qualsiasi cosa, KeePassium cancellerà automaticamente gli appunti (pasteboard) dopo qualche tempo.";
+
+/* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.headerTitle" = "Appunti";
+
+/* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
+"INJ-Cy-Tfo.text" = "Ricorda Chiavi Master";
+
+/* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
+"IZZ-aM-g2i.title" = "Protezione dei dati";
+
+/* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
+"JHl-o7-xHI.text" = "Ricorda File Chiave";
+
+/* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.footerTitle" = "Ricorda e seleziona automaticamente l'ultimo file chiave usato per ogni database. Cancellare le associazioni non influisce sui file.";
+
+/* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.headerTitle" = "File Chiave";
+
+/* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.footerTitle" = "Il timeout del database chiude tutti i database aperti e cancella qualsiasi chiave master ricordata dopo un certo tempo.";
+
+/* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.headerTitle" = "Blocco automatico";
+
+/* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
+"SSu-Sr-MCg.text" = "Timeout degli appunti";
+
+/* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
+"weX-SZ-IDB.text" = "Timeout Database";
+

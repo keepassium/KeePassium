@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.11.55] - 2020-04-11
+
+### Added
+
+- Italian translation
+
+
 ## [1.11.54] - 2020-04-10
 
 ### Added
