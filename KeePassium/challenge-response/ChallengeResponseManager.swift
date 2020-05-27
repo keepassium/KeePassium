@@ -56,7 +56,7 @@ class ChallengeResponseManager {
     
     
     private func initSessionObservers() {
-        supportsMFI = false
+        supportsMFI = YubiKitDeviceCapabilities.supportsMFIAccessoryKey
         if supportsMFI {
             initMFISessionObserver()
         }

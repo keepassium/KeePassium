@@ -1,5 +1,11 @@
 #CHANGELOG
 
+## [1.11.57] - 2020-04-16
+
+### Added
+
+- Re-added support for YubiKey 5Ci (and other YubiKeys with MFi interface)
+
 
 ## [1.11.56] - 2020-04-16
 
