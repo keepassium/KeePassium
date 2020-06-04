@@ -11,7 +11,7 @@
 "e6Y-AP-hag.headerTitle" = "Geschützte Felder";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "Sobald Sie eine Datenbank entsperren, kann der Master-Schlüssel im sicheren Schlüsselbund des Gerätes gespeichert werden. Das nächste Mal wird KeePassium diesen Schlüssel verwenden, damit Sie Ihr volles Master-Passwort nicht erneut eingeben müssen. \n\n(Master-Schlüssel werden automatisch auf der Datenbank-Zeitüberschreitung gelöscht.)";
+"Faj-km-pM5.footerTitle" = "Sobald Sie eine Datenbank entsperren, kann der Master-Schlüssel im sicheren Schlüsselbund des Gerätes gespeichert werden. Das nächste Mal wird KeePassium diesen Schlüssel verwenden, damit Sie Ihr volles Master-Passwort nicht erneut eingeben müssen. \n\n(Master-Schlüssel werden automatisch bei Datenbank-Zeitüberschreitung gelöscht.)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Schnelles Entsperren";
