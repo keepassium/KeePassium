@@ -5,7 +5,7 @@
 "[AppLock/Biometric/Hint] Unlock KeePassium" = "Открыть KeePassium";
 
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
-"[AppLock/cancelBiometricAuth] Use Passcode" = "Использовать Код Доступа";
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Использовать код доступа";
 
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→АБВ";
@@ -26,7 +26,7 @@
 "[Database/Create] Please enter a password or choose a key file." = "Введите пароль или выберите ключевой файл.";
 
 /* Action/button to create a new database */
-"[Database/Create/action] Create Database" = "Создать Базу Паролей";
+"[Database/Create/action] Create Database" = "Создать базу паролей";
 
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Здесь можно оставить заметки.";
@@ -35,7 +35,7 @@
 "[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
 
 /* Title for a sample entry */
-"[Database/Create/TemplateEntry/title] Sample Entry" = "Новая Запись";
+"[Database/Create/TemplateEntry/title] Sample Entry" = "Новая запись";
 
 /* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
 "[Database/Create/TemplateEntry/userName] john.smith" = "ivan.petrov";
@@ -59,7 +59,7 @@
 "[Database/Create/TemplateGroup/title] OS" = "Система";
 
 /* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Создать Базу Паролей";
+"[Database/Create/title] Create Database" = "Создать базу паролей";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Удалить файл базы паролей?\nУбедитесь, что у вас есть резервная копия.";
@@ -71,19 +71,19 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "Мастер-ключ успешно изменён";
 
 /* Action/button */
-"[Database/Open/action] Open Database" = "Открыть Базу Паролей";
+"[Database/Open/action] Open Database" = "Открыть базу паролей";
 
 /* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
 "[Database/Opened/action] Close" = "Закрыть";
 
 /* Action/button to lock current database (the next time, it will ask for the master key). */
-"[Database/Opened/action] Lock Database" = "Закрыть Базу Паролей";
+"[Database/Opened/action] Lock Database" = "Закрыть базу паролей";
 
 /* Action: lock database */
-"[Database/Opened/Warning/action] Close Database" = "Закрыть Базу Паролей";
+"[Database/Opened/Warning/action] Close Database" = "Закрыть базу паролей";
 
 /* Action: ignore warnings and proceed to work with the database */
-"[Database/Opened/Warning/action] Ignore and Continue" = "Пропустить и Продолжить";
+"[Database/Opened/Warning/action] Ignore and Continue" = "Пропустить и продолжить";
 
 /* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
 "[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "Последние изменения в базе паролей были сделаны: %@";
@@ -110,13 +110,13 @@
 "[EditEntry/UserName/choose]" = "Выбрать";
 
 /* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "Прикреплённые Файлы";
+"[Entry/Attachments/title] Attached Files" = "Прикреплённые файлы";
 
 /* Action/button to create a new entry in the current group */
-"[Entry/Create/action] Create Entry" = "Создать Запись";
+"[Entry/Create/action] Create Entry" = "Создать запись";
 
 /* Default name of a newly created entry field */
-"[Entry/Edit/CreateField/defaultName] Field Name" = "Название Поля";
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Название поля";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Заметки";
@@ -143,55 +143,55 @@
 "[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "В этой базе каждая запись может иметь только один прикреплённый файл, и он уже есть.";
 
 /* Title of a dialog for renaming an attached file */
-"[Entry/Files/Rename/title] Rename File" = "Переименовать Файл";
+"[Entry/Files/Rename/title] Rename File" = "Переименовать файл";
 
 /* Title of a field with entry creation date and time */
-"[Entry/History] Creation Date" = "Дата Создания";
+"[Entry/History] Creation Date" = "Дата создания";
 
 /* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
-"[Entry/History] Expiry Date" = "Дата Окончания";
+"[Entry/History] Expiry Date" = "Дата окончания";
 
 /* Title of a field with date and time when the entry was last accessed/viewed */
-"[Entry/History] Last Access Date" = "Дата Последнего Доступа";
+"[Entry/History] Last Access Date" = "Дата последнего доступа";
 
 /* Title of a field with entry's last modification date and time */
-"[Entry/History] Last Modification Date" = "Дата Последнего Изменения";
+"[Entry/History] Last Modification Date" = "Дата последнего изменения";
 
 /* Title of a list with previous versions/revisions of an entry. */
-"[Entry/History] Previous Versions" = "Предыдущие Версии";
+"[Entry/History] Previous Versions" = "Предыдущие версии";
 
 /* Expiry Date of an entry which does not expire. */
 "[Entry/History/ExpiryDate] Never" = "Никогда";
 
 /* Default title of a new entry */
-"[Entry/New/defaultTitle] New Entry" = "Новая Запись";
+"[Entry/New/defaultTitle] New Entry" = "Новая запись";
 
 /* Action to start editing an entry */
-"[Entry/View] Edit Entry" = "Изменить Запись";
+"[Entry/View] Edit Entry" = "Изменить запись";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Попробуйте убрать файл из приложения, затем добавить его снова.";
 
 /* Field title */
-"[FileInfo/Field/title] Creation Date" = "Дата Создания";
+"[FileInfo/Field/title] Creation Date" = "Дата создания";
 
 /* Field title */
-"[FileInfo/Field/title] File Location" = "Местонахождение Файла";
+"[FileInfo/Field/title] File Location" = "Местонахождение файла";
 
 /* Field title */
-"[FileInfo/Field/title] File Name" = "Имя Файла";
+"[FileInfo/Field/title] File Name" = "Имя файла";
 
 /* Field title */
-"[FileInfo/Field/title] File Size" = "Размер Файла";
+"[FileInfo/Field/title] File Size" = "Размер файла";
 
 /* Field title */
-"[FileInfo/Field/title] Last Modification Date" = "Дата Последнего Изменения";
+"[FileInfo/Field/title] Last Modification Date" = "Дата последнего изменения";
 
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Ошибка";
 
 /* Title of the dialog for picking the destination group for move/copy operations */
-"[General/DestinationGroup/title] Choose a Destination" = "Выберите папку назначения";
+"[General/DestinationGroup/title] Choose a Destination" = "Выберите, куда сохранить";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Отменить";
@@ -257,34 +257,34 @@
 "[Generic/File] Remove" = "Убрать";
 
 /* Title of an error message about file export */
-"[Generic/File/title] Export Error" = "Ошибка Экспорта";
+"[Generic/File/title] Export Error" = "Ошибка экспорта";
 
 /* Message shown when trying to copy into an existing file. */
 "[Generic/File/title] File already exists" = "Файл уже существует";
 
 /* Title of an error message about file import */
-"[Generic/File/title] Import Error" = "Ошибка Импорта";
+"[Generic/File/title] Import Error" = "Ошибка импорта";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Ошибка";
 
 /* Title of an error message about iOS system keychain */
-"[Generic/title] Keychain Error" = "Ошибка Связки Ключей";
+"[Generic/title] Keychain Error" = "Ошибка связки ключей";
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "Внимание";
 
 /* Action/button to create a new sub-group in the current group */
-"[Group/Create/action] Create Group" = "Создать Группу";
+"[Group/Create/action] Create Group" = "Создать группу";
 
 /* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Создать Группу";
+"[Group/Create/title] Create Group" = "Создать группу";
 
 /* Title of a form for editing a group */
-"[Group/Edit/title] Edit Group" = "Изменить Группу";
+"[Group/Edit/title] Edit Group" = "Изменить группу";
 
 /* Default name of a new group */
-"[Group/New/defaultName] New Group" = "Новая Группа";
+"[Group/New/defaultName] New Group" = "Новая группа";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Аппаратные ключи не доступны в Автозаполнении.";
@@ -326,7 +326,7 @@
 "[Premium/Benefits/HardwareKeys/title]" = "Используйте аппаратные ключи";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/Maintenance/details]" = "Поддержите дальнейшее развитие KeePassium — классной программы без шпионажа и рекламы.";
+"[Premium/Benefits/Maintenance/details]" = "Поддержите развитие KeePassium без рекламы.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/Maintenance/title]" = "Вперёд и вверх";
@@ -359,7 +359,7 @@
 "[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Хм, нет доступных покупок. Такого быть не должно, пожалуйста, свяжитесь с поддержкой.";
 
 /* Action/button to start choosing premium versions and possibly buying one */
-"[Premium/Upgrade/action] Upgrade to Premium" = "Перейти на Премиум";
+"[Premium/Upgrade/action] Upgrade to Premium" = "Купить полную версию";
 
 /* Message shown when in-app purchase is deferred until parental approval. */
 "[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent" = "Спасибо! Вы можете использовать KeePassium, пока покупка ожидает родительского подтверждения.";
@@ -386,7 +386,7 @@
 "[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "Обновление прошло успешно, приятной работы!";
 
 /* Title of the message shown after in-app purchase was successfully restored */
-"[Premium/Upgrade/Restored/title] Purchase Restored" = "Покупки Восстановлены";
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "Покупки восстановлены";
 
 /* Text of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "Не нашлось покупок, которые могут быть восстановлены.";
@@ -398,7 +398,7 @@
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Приложение полезно %1$@/месяц, т.е. около %2$@/год.";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Укрепите свою безопасность с помощью аппаратных ключей (YubiKey) в премиум-версии.";
+"[PremiumFeature/HardwareKeys/description]" = "Укрепите свою безопасность с помощью аппаратных ключей (YubiKey) в полной версии.";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Аппаратные ключи";
@@ -407,22 +407,22 @@
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Экономьте время на вводе сложных мастер-паролей — держите базу открытой дольше в премиум-версии.";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Отложенное Закрытие Баз";
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Отложенное закрытие баз";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Переключайтесь между базами легко и быстро в премиум-версии.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
-"[PremiumFeature/MultiDB/title] Multiple Databases" = "Несколько Баз Паролей";
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Несколько баз паролей";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Просматривайте изображения и документы непосредственно в приложении – в премиум-версии.";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Просмотр Прикреплённых Файлов";
+"[PremiumFeature/Preview/title] Preview Attachments" = "Просмотр прикреплённых файлов";
 
 /* Action/button to make password visible as plain-text */
-"[ProtectedTextField] Show Password" = "Показать Пароль";
+"[ProtectedTextField] Show Password" = "Показать пароль";
 
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "Использовать %@";
@@ -467,7 +467,7 @@
 "[Settings/FileLists/Sorting/title] Sorting" = "Сортировка";
 
 /* Title of a settings section: which entry field to show along with entry title */
-"[Settings/GroupViewer] Entry Subtitle" = "Показывать Под Записями";
+"[Settings/GroupViewer] Entry Subtitle" = "Показывать под записями";
 
 /* Title of a settings section: sort order of groups and entries in a list */
 "[Settings/GroupViewer] Sort Order" = "Сортировка";
@@ -488,13 +488,13 @@
 "[YubiKey] Use YubiKey Slot %d" = "Использовать YubiKey слот %d";
 
 /* Action/button to add database to the app */
-"Add Database" = "Добавить Базу Паролей";
+"Add Database" = "Добавить базу паролей";
 
 /* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "Выбрать Базу Паролей";
+"Choose Database" = "Выбрать базу паролей";
 
 /* Action/button */
-"Import Database" = "Импортировать Базу Паролей";
+"Import Database" = "Импортировать базу паролей";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "База паролей KeePass не должна использоваться в качестве ключевого файла. Выберите другой файл.";

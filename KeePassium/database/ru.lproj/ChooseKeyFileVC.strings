@@ -1,12 +1,12 @@
 /* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "8aU-C3-c3r"; */
-"8aU-C3-c3r.normalTitle" = "Добавить Ключевой Файл";
+"8aU-C3-c3r.normalTitle" = "Добавить ключевой файл";
 
 /* Class = "UINavigationItem"; title = "Choose Key File"; ObjectID = "dAQ-9p-8Y9"; */
-"dAQ-9p-8Y9.title" = "Ключевые Файлы";
+"dAQ-9p-8Y9.title" = "Ключевые файлы";
 
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "Ftb-fa-Dvb"; Note = "Explanation of the default option in key file picker: don't use key files."; */
 "Ftb-fa-Dvb.text" = "Использовать только пароль";
 
 /* Class = "UILabel"; text = "No Key File"; ObjectID = "tGm-oo-awN"; Note = "Title of the default option in key file picker: don't use key files."; */
-"tGm-oo-awN.text" = "Без Ключевого Файла";
+"tGm-oo-awN.text" = "Без ключевого файла";
 

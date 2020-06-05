@@ -2,19 +2,19 @@
 "0pb-xb-fuf.text" = "Защищённое поле";
 
 /* Class = "UITableViewCell"; CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Custom field editor"; ObjectID = "CcF-c8-r4M"; */
-"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Редактор Поля";
+"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Редактор поля";
 
 /* Class = "UISwitch"; eox-My-Hns.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "In-memory Protection"; ObjectID = "eox-My-Hns"; Note = "Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."; */
 "eox-My-Hns.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Защищённое поле";
 
 /* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "HcW-rc-pdR"; */
-"HcW-rc-pdR.normalTitle" = "Сменить Иконку";
+"HcW-rc-pdR.normalTitle" = "Сменить иконку";
 
 /* Class = "UIBarButtonItem"; HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Add Custom Field"; ObjectID = "HGI-xq-zUf"; */
-"HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Добавить Поле";
+"HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Добавить поле";
 
 /* Class = "UINavigationItem"; title = "Edit Entry"; ObjectID = "l3s-Bv-fA1"; */
-"l3s-Bv-fA1.title" = "Изменить Запись";
+"l3s-Bv-fA1.title" = "Изменить запись";
 
 /* Class = "UIButton"; z2C-wo-jYf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Randomize password"; ObjectID = "z2C-wo-jYf"; Note = "Action/button to generate new password"; */
 "z2C-wo-jYf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Сгенерировать случайный пароль";

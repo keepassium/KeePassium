@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RZt-EW-TGN">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search-->
+        <scene sceneID="ojf-Uw-bF3">
+            <objects>
+                <tableViewController storyboardIdentifier="SettingsSearchVC" title="Search" id="RZt-EW-TGN" customClass="SettingsSearchVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="16c-sG-xi6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection footerTitle="After opening a database, automatically show the search field." id="DJr-hC-DMT">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="V7S-8A-yH1">
+                                        <rect key="frame" x="0.0" y="17.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V7S-8A-yH1" id="LSw-b8-YgK">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="thS-im-vDD">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="7CO-iQ-UOa"/>
+                                                        <constraint firstAttribute="height" constant="29" id="eaO-UR-30p"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Start with Search" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0v-f7-D4Y">
+                                                    <rect key="frame" x="61" y="12" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaC-Ja-s6W">
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
+                                                    <connections>
+                                                        <action selector="didToggleStartWithSearch:" destination="RZt-EW-TGN" eventType="valueChanged" id="Yvw-JB-ezf"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="q0v-f7-D4Y" secondAttribute="bottom" id="FMt-Q7-WeV"/>
+                                                <constraint firstItem="eaC-Ja-s6W" firstAttribute="centerY" secondItem="LSw-b8-YgK" secondAttribute="centerY" id="GDv-tz-agU"/>
+                                                <constraint firstItem="thS-im-vDD" firstAttribute="centerY" secondItem="LSw-b8-YgK" secondAttribute="centerY" id="JNQ-JJ-Upk"/>
+                                                <constraint firstItem="eaC-Ja-s6W" firstAttribute="leading" secondItem="q0v-f7-D4Y" secondAttribute="trailing" constant="8" id="JPa-Sc-BZe"/>
+                                                <constraint firstItem="eaC-Ja-s6W" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LSw-b8-YgK" secondAttribute="top" constant="10" id="TwI-qU-yCN"/>
+                                                <constraint firstItem="thS-im-vDD" firstAttribute="leading" secondItem="LSw-b8-YgK" secondAttribute="leadingMargin" id="cqM-az-mun"/>
+                                                <constraint firstItem="eaC-Ja-s6W" firstAttribute="trailing" secondItem="LSw-b8-YgK" secondAttribute="trailingMargin" id="faa-w8-xug"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eaC-Ja-s6W" secondAttribute="bottom" constant="10" id="fil-a8-M9U"/>
+                                                <constraint firstItem="q0v-f7-D4Y" firstAttribute="centerY" secondItem="LSw-b8-YgK" secondAttribute="centerY" priority="250" id="zEp-5z-Cw4"/>
+                                                <constraint firstItem="q0v-f7-D4Y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LSw-b8-YgK" secondAttribute="topMargin" id="zfa-OH-lC8"/>
+                                                <constraint firstItem="q0v-f7-D4Y" firstAttribute="leading" secondItem="thS-im-vDD" secondAttribute="trailing" constant="16" id="zqQ-Z3-dr6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                                <attributedString key="userComments">
+                                    <fragment content="A section in search-related settings: what happens when the app is just started or database is just opened."/>
+                                </attributedString>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Search Scope" footerTitle="" id="Io8-uP-3lF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Jti-wu-o0O" userLabel="Search in Field Names">
+                                        <rect key="frame" x="0.0" y="153" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jti-wu-o0O" id="Ukc-Mx-j56">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Search in Field Names" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCm-E4-L3m">
+                                                    <rect key="frame" x="16" y="12" width="231" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="An switch in settings: whether to include entry field names in search procedure."/>
+                                                    </attributedString>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P4x-6S-BGw">
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
+                                                    <connections>
+                                                        <action selector="didToggleSearchFieldNames:" destination="RZt-EW-TGN" eventType="valueChanged" id="Y0e-Yy-ioc"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P4x-6S-BGw" firstAttribute="trailing" secondItem="Ukc-Mx-j56" secondAttribute="trailingMargin" id="9DA-yH-i3V"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cCm-E4-L3m" secondAttribute="bottom" id="DBi-cd-Hgw"/>
+                                                <constraint firstItem="P4x-6S-BGw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ukc-Mx-j56" secondAttribute="top" constant="10" id="EEB-KG-QVG"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="P4x-6S-BGw" secondAttribute="bottom" constant="10" id="OIY-re-H6k"/>
+                                                <constraint firstItem="P4x-6S-BGw" firstAttribute="leading" secondItem="cCm-E4-L3m" secondAttribute="trailing" constant="8" id="YRc-jo-fsw"/>
+                                                <constraint firstItem="cCm-E4-L3m" firstAttribute="leading" secondItem="Ukc-Mx-j56" secondAttribute="leadingMargin" id="c4A-89-lvX"/>
+                                                <constraint firstItem="cCm-E4-L3m" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ukc-Mx-j56" secondAttribute="topMargin" id="ffe-uQ-f6u"/>
+                                                <constraint firstItem="cCm-E4-L3m" firstAttribute="centerY" secondItem="Ukc-Mx-j56" secondAttribute="centerY" priority="250" id="qhS-6D-FQn"/>
+                                                <constraint firstItem="P4x-6S-BGw" firstAttribute="centerY" secondItem="Ukc-Mx-j56" secondAttribute="centerY" id="st6-KH-EDn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="D3M-hL-ERx" userLabel="Search in Protected Value">
+                                        <rect key="frame" x="0.0" y="197" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D3M-hL-ERx" id="5dO-eh-A29">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Search in Protected Values" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrQ-5g-wj0">
+                                                    <rect key="frame" x="16" y="12" width="231" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="An switch in settings: whether to include protected field values in search procedure."/>
+                                                    </attributedString>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIo-qK-dL6">
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
+                                                    <connections>
+                                                        <action selector="didToggleSearchProtectedValues:" destination="RZt-EW-TGN" eventType="valueChanged" id="8OS-3D-O8Z"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yIo-qK-dL6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5dO-eh-A29" secondAttribute="top" constant="10" id="4FS-W2-V4X"/>
+                                                <constraint firstItem="LrQ-5g-wj0" firstAttribute="leading" secondItem="5dO-eh-A29" secondAttribute="leadingMargin" id="6zK-E1-mal"/>
+                                                <constraint firstItem="yIo-qK-dL6" firstAttribute="centerY" secondItem="5dO-eh-A29" secondAttribute="centerY" id="B2W-tl-SKP"/>
+                                                <constraint firstItem="yIo-qK-dL6" firstAttribute="leading" secondItem="LrQ-5g-wj0" secondAttribute="trailing" constant="8" id="Je2-PF-6G3"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yIo-qK-dL6" secondAttribute="bottom" constant="10" id="T9S-iH-h1I"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="LrQ-5g-wj0" secondAttribute="bottom" id="Xfd-nX-gU4"/>
+                                                <constraint firstItem="LrQ-5g-wj0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5dO-eh-A29" secondAttribute="topMargin" id="cK5-w2-NHL"/>
+                                                <constraint firstItem="LrQ-5g-wj0" firstAttribute="centerY" secondItem="5dO-eh-A29" secondAttribute="centerY" priority="250" id="ghP-FW-QiC"/>
+                                                <constraint firstItem="yIo-qK-dL6" firstAttribute="trailing" secondItem="5dO-eh-A29" secondAttribute="trailingMargin" id="pyc-yW-E0d"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                                <attributedString key="userComments">
+                                    <fragment content="A section in search-related settings: which fields to include in search."/>
+                                </attributedString>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="RZt-EW-TGN" id="pKN-8t-pee"/>
+                            <outlet property="delegate" destination="RZt-EW-TGN" id="kSI-NI-Wu3"/>
+                        </connections>
+                    </tableView>
+                    <attributedString key="userComments">
+                        <fragment content="Section title in settings"/>
+                    </attributedString>
+                    <connections>
+                        <outlet property="searchFieldNamesSwitch" destination="P4x-6S-BGw" id="Aks-RE-Vwn"/>
+                        <outlet property="searchProtectedValuesSwitch" destination="yIo-qK-dL6" id="XST-8t-mfJ"/>
+                        <outlet property="startWithSearchSwitch" destination="eaC-Ja-s6W" id="tzt-gB-kr4"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnx-hY-Vyw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="162"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="search-listitem" width="29" height="29"/>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

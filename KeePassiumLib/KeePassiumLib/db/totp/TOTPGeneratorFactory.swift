@@ -63,6 +63,7 @@ fileprivate class GAuthFormat: SingleFieldFormat {
     static let lengthParam = "digits"
     static let algorithmParam = "algorithm"
     static let issuerParam = "issuer"
+    static let encoderParam = "encoder" 
     
     static let defaultTimeStep = 30
     static let defaultLength = 6
@@ -98,7 +99,9 @@ fileprivate class GAuthFormat: SingleFieldFormat {
             return nil
         }
         
-        let isSteam = uriComponents.path.starts(with: "/Steam:") || (params[issuerParam] == "Steam")
+        let isSteam = uriComponents.path.starts(with: "/Steam:") ||
+            (params[issuerParam] == "Steam") ||
+            (params[encoderParam] == "steam")
         if isSteam {
             return TOTPGeneratorSteam(seed: ByteArray(data: seedData), timeStep: timeStep)
         }

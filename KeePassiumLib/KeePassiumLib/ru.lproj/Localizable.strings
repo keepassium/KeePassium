@@ -79,6 +79,9 @@
 /* Progress status */
 "[Database/Progress] Loading key file..." = "Загрузка ключевого файла...";
 
+/* Progress status */
+"[Database/Progress/resolving]" = "Соединение с хранилищем...";
+
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Не удалось открыть ключевой файл";
 
@@ -196,6 +199,15 @@
 /* Progress bar status */
 "[Database2/Progress] Writing encrypted blocks" = "Запись шифрованных блоков";
 
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "Распаковка базы паролей";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "Проверка целостности";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "Разбор базы паролей";
+
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "Ошибка сжатия данных: %@";
 
@@ -245,16 +257,16 @@
 "[FileKeeper] Not a file URL" = "Не файловый URL";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Дата Создания (Начиная со Старых)";
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Дата создания (начиная со старых)";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Дата Создания (Начиная с Новых)";
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Дата создания (начиная с новых)";
 
 /* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Дата Изменения (Начиная со Старых)";
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Дата изменения (начиная со старых)";
 
 /* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Дата Изменения (Начиная с Новых)";
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Дата изменения (начиная с новых)";
 
 /* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
 "[FilesSortOrder/longTitle] Name (A..Z)" = "Имя (А..я)";
@@ -266,22 +278,22 @@
 "[FilesSortOrder/longTitle] No Sorting" = "Не сортировать";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "По Дате Создания (Новые..Старые)";
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "По дате создания (новые..старые)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "По Дате Создания (Старые..Новые)";
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "По дате создания (старые..новые)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "По Дате Изменения (Новые..Старые)";
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "По дате изменения (новые..старые)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "По Дате Изменения (Старые..Новые)";
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "По дате изменения (старые..новые)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "По Названию (А..я)";
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "По названию (А..я)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "По Названию (я..А)";
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "По названию (я..А)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
 "[GroupSortOrder/longTitle] No Sorting" = "Не сортировать";
@@ -290,10 +302,10 @@
 "[KDF/Progress] Processing the master key" = "Подготовка мастер-ключа";
 
 /* Generic error message about system keychain. [errorCode: Int] */
-"[KeychainError/generic] Keychain error (code %d) " = "Ошибка при работе со Связкой Ключей (код %d) ";
+"[KeychainError/generic] Keychain error (code %d) " = "Ошибка при работе со связкой ключей (код %d) ";
 
 /* Error message about system keychain. */
-"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Ошибка при работе со Связкой Ключей: неожиданный формат данных";
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Ошибка при работе со связкой ключей: неожиданный формат данных";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Отменено пользователем";
@@ -344,7 +356,7 @@
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Никогда";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Дата Изменения";
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Дата изменения";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Нет";

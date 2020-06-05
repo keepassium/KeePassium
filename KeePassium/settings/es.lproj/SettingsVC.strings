@@ -1,3 +1,9 @@
+/* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9yn-W3-FDl"; Note = "Section in settings: settings that define what happens when the app is started."; */
+"9yn-W3-FDl.headerTitle" = "Al iniciar la aplicación";
+
+/* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
+"756-sL-G2t.text" = "Abrir automáticamente la base de datos previa";
+
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
 "A5N-B3-t3t.headerTitle" = "Premium";
 
@@ -22,6 +28,9 @@
 /* Class = "UILabel"; text = "Master keys, key files"; ObjectID = "FHp-ns-ke9"; Note = "Subtitle/details for `Data Protection`"; */
 "FHp-ns-ke9.text" = "Claves maestras, archivos de claves";
 
+/* Class = "UILabel"; text = "Search"; ObjectID = "GLr-Uf-Kln"; Note = "Section title in settings"; */
+"GLr-Uf-Kln.text" = "Buscar";
+
 /* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
 "HCe-A3-eG6.text" = "Versión premium";
 
@@ -39,6 +48,9 @@
 
 /* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
 "PpA-oZ-kr2.text" = "Registro de diagnóstico";
+
+/* Class = "UITableViewSection"; headerTitle = "Search"; ObjectID = "qEE-z7-pd0"; Note = "Section title in settings"; */
+"qEE-z7-pd0.headerTitle" = "Buscar";
 
 /* Class = "UILabel"; text = "For expert troubleshooting"; ObjectID = "qhK-lw-bGy"; Note = "Subtitle for `Diagnostic Log`. Keep it short."; */
 "qhK-lw-bGy.text" = "Solucionar problemas de expertos";

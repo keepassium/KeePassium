@@ -1,0 +1,18 @@
+/* Class = "UILabel"; text = "Search in Field Names"; ObjectID = "cCm-E4-L3m"; Note = "An switch in settings: whether to include entry field names in search procedure."; */
+"cCm-E4-L3m.text" = "Suche in Feldnamen";
+
+/* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "DJr-hC-DMT"; Note = "A section in search-related settings: what happens when the app is just started or database is just opened."; */
+"DJr-hC-DMT.footerTitle" = "Nach dem Öffnen einer Datenbank automatisch das Suchfeld anzeigen.";
+
+/* Class = "UITableViewSection"; headerTitle = "Search Scope"; ObjectID = "Io8-uP-3lF"; Note = "A section in search-related settings: which fields to include in search."; */
+"Io8-uP-3lF.headerTitle" = "Suchbereich";
+
+/* Class = "UILabel"; text = "Search in Protected Values"; ObjectID = "LrQ-5g-wj0"; Note = "An switch in settings: whether to include protected field values in search procedure."; */
+"LrQ-5g-wj0.text" = "In geschützten Werten suchen";
+
+/* Class = "UILabel"; text = "Start with Search"; ObjectID = "q0v-f7-D4Y"; */
+"q0v-f7-D4Y.text" = "Beim Start Suchfeld öffnen";
+
+/* Class = "UITableViewController"; title = "Search"; ObjectID = "RZt-EW-TGN"; Note = "Section title in settings"; */
+"RZt-EW-TGN.title" = "Suche";
+

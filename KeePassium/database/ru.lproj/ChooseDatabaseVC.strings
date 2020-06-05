@@ -14,11 +14,11 @@
 "oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Настройки";
 
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
-"qPq-UR-uZs.title" = "Добавить Базу";
+"qPq-UR-uZs.title" = "Добавить базу паролей";
 
 /* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
 "R68-cy-5mz.text" = "Защищает KeePassium от посторонних глаз.";
 
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
-"UI0-Lh-wTj.title" = "Базы Паролей";
+"UI0-Lh-wTj.title" = "Базы паролей";
 

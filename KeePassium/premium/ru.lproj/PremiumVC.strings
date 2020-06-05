@@ -1,12 +1,12 @@
 /* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "Dfd-LU-ij4"; */
-"Dfd-LU-ij4.normalTitle" = "Политика Конфиденциальности";
+"Dfd-LU-ij4.normalTitle" = "Политика конфиденциальности";
 
 /* Class = "UILabel"; text = "Payment will be charged to your Apple ID account at the confirmation of purchase. \n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. \n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase."; ObjectID = "Rkk-oi-8fO"; Note = "Standard conditions text mandated by Apple."; */
 "Rkk-oi-8fO.text" = "Платёж будет снят с вашего счёта Apple ID после подтверждения покупки. \n\nПодписка автоматически возобновляется, если не отменена минимум за 24 часа до конца текущего периода. Платёж за обновление подписки будет снят с Вашего счёта в течение суток до конца текущего периода. \n\nВы можете изменить или отменить свои подписки, зайдя в настройки своего аккаунта в App Store после покупки.";
 
 /* Class = "UIButton"; normalTitle = "Terms and Conditions"; ObjectID = "ujr-9f-eco"; */
-"ujr-9f-eco.normalTitle" = "Условия и Положения";
+"ujr-9f-eco.normalTitle" = "Условия и положения";
 
 /* Class = "UIButton"; normalTitle = "Restore Purchases"; ObjectID = "yss-Xu-2XK"; */
-"yss-Xu-2XK.normalTitle" = "Восстановить Покупки";
+"yss-Xu-2XK.normalTitle" = "Восстановить покупки";
 

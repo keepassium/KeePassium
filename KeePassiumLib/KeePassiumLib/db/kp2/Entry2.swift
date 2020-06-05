@@ -46,7 +46,7 @@ public class EntryField2: EntryField {
         
         
         var key: String?
-        var value: String?
+        var value: String? = ""
         var isProtected: Bool = false
         for tag in xml.children {
             switch tag.name {
@@ -59,6 +59,9 @@ public class EntryField2: EntryField {
                         Diag.verbose("Decrypting field value")
                         let plainData = try streamCipher.decrypt(data: encData, progress: nil)
                         value = plainData.toString(using: .utf8) 
+                        if value == nil {
+                            Diag.warning("Failed to decrypt field value")
+                        }
                     }
                 } else {
                     value = tag.value ?? ""

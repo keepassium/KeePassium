@@ -79,6 +79,9 @@
 /* Progress status */
 "[Database/Progress] Loading key file..." = "Schlüsseldatei wird geladen...";
 
+/* Progress status */
+"[Database/Progress/resolving]" = "Kontaktiere den Speicheranbieter...";
+
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Schlüsseldatei konnte nicht geöffnet werden";
 
@@ -195,6 +198,15 @@
 
 /* Progress bar status */
 "[Database2/Progress] Writing encrypted blocks" = "Verschlüsselte Blöcke werden geschrieben";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "Dekomprimiere Datenbank";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "Integrität wird überprüft";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "Lade Datenbank";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "Datenkomprimierungsfehler: %@";

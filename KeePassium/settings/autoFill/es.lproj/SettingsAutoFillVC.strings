@@ -11,10 +11,10 @@
 "go1-Nt-isQ.text" = "Copiar OTP al portapapeles";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.footerTitle" = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically.";
+"jYl-ks-dFG.footerTitle" = "Si el sistema de autocompletar encuentra sólo una entrada que coincide, pegará automáticamente usuario y contraseña.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.headerTitle" = "Automatic search";
+"jYl-ks-dFG.headerTitle" = "Búsqueda automática";
 
 /* Class = "UILabel"; text = "Open device settings"; ObjectID = "K3a-Mc-VCg"; Note = "Step 1"; */
 "K3a-Mc-VCg.text" = "Abre «Ajustes» de iOS";
@@ -26,7 +26,7 @@
 "UzV-Ht-rGx.text" = "Toca «Autocompletado de contraseñas»";
 
 /* Class = "UILabel"; text = "Fill-in the perfect result automatically"; ObjectID = "WDb-aU-Mmf"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"WDb-aU-Mmf.text" = "Fill-in the perfect result automatically";
+"WDb-aU-Mmf.text" = "Autocompletar automáticamente con entrada inequívoca";
 
 /* Class = "UILabel"; text = "Turn on \"AutoFill Passwords\""; ObjectID = "X2u-c9-gwU"; */
 "X2u-c9-gwU.text" = "Habilita «Autocompletar contraseñas»";

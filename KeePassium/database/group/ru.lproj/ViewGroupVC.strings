@@ -1,11 +1,11 @@
 /* Class = "UIBarButtonItem"; 9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Lock Database"; ObjectID = "9KV-rC-1XL"; */
-"9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Закрыть Базу";
+"9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Закрыть базу";
 
 /* Class = "UIBarButtonItem"; M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "M5a-Ld-ZXd"; */
 "M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Сортировка";
 
 /* Class = "UIBarButtonItem"; qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Change Master Key"; ObjectID = "qkh-6K-yQW"; */
-"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Сменить Основной Пароль";
+"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Сменить мастер-ключ";
 
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
 "QXa-eN-7am.text" = "Эта группа пуста";

@@ -236,6 +236,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
+                                <attributedString key="userComments">
+                                    <fragment content="Section in settings: settings that define what happens when the app is started."/>
+                                </attributedString>
                             </tableViewSection>
                             <tableViewSection headerTitle="Access Control" id="hui-xG-chj" userLabel="App Safety">
                                 <cells>

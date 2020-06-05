@@ -1,5 +1,18 @@
 #CHANGELOG
 
+## [1.12.60] - 2020-06-04
+
+### Changed
+
+- Updated DE/ES/RU translations
+
+### Fixed
+
+- Database file descriptions were shown in the system in wrong language (fixes #103) [thanks, majijiwi]
+- Load entries with missing field values, treat them as empty [thanks, Oliver]
+- Support Steam TOTP configured in KeePassXC with the "encoder" parameter (closes #101) [thanks, Manan] 
+- Added search settings to localizable resources
+
 ## [1.12.59] - 2020-05-26
 
 ### Added

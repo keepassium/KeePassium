@@ -1,5 +1,5 @@
 /* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
-"enW-gs-tra.normalTitle" = "Добавить Базу Паролей";
+"enW-gs-tra.normalTitle" = "Добавить базу паролей";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
 "P0M-N3-ynf.text" = "Для использования в Автозаполнении, пожалуйста добавьте базы паролей и ключевые файлы ещё раз.";

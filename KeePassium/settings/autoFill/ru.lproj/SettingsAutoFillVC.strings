@@ -20,7 +20,7 @@
 "K3a-Mc-VCg.text" = "Откройте системные настройки";
 
 /* Class = "UITableViewSection"; headerTitle = "Initial Setup"; ObjectID = "r0b-qe-g8J"; */
-"r0b-qe-g8J.headerTitle" = "Начальная Настройка";
+"r0b-qe-g8J.headerTitle" = "Предварительная настройка";
 
 /* Class = "UILabel"; text = "Tap \"AutoFill Passwords\""; ObjectID = "UzV-Ht-rGx"; Note = "Step 3. Must match system's translation."; */
 "UzV-Ht-rGx.text" = "Нажмите \"Автозаполнять пароли\"";

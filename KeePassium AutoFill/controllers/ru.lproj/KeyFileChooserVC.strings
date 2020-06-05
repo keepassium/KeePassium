@@ -1,15 +1,15 @@
 /* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
-"9UZ-FK-v73.text" = "Без Ключевого Файла";
+"9UZ-FK-v73.text" = "Без ключевого файла";
 
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
 "leO-vH-qBX.text" = "Использовать только пароль";
 
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
-"Lod-RE-tcd.title" = "Добавить Ключевой Файл";
+"Lod-RE-tcd.title" = "Добавить ключевой файл";
 
 /* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
-"Omh-Sn-jl2.normalTitle" = "Добавить Ключевой Файл";
+"Omh-Sn-jl2.normalTitle" = "Добавить ключевой файл";
 
 /* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
-"r85-yz-wYI.title" = "Ключевые Файлы";
+"r85-yz-wYI.title" = "Ключевые файлы";
 
