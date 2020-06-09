@@ -1,5 +1,18 @@
 #CHANGELOG
 
+## [1.12.61] - 2020-06-09
+
+### Changed
+
+- Updated CZ/FR/SV translations
+- Refined animation when adding a custom field
+
+### Fixed
+
+- Progress bar sometimes appeared misplaced [thanks, Michael]
+- Excessive text view change notifications (fixes #107) [thanks, Michael]
+
+
 ## [1.12.60] - 2020-06-04
 
 ### Changed

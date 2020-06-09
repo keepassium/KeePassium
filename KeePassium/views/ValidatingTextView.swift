@@ -34,16 +34,6 @@ class ValidatingTextView: WatchdogAwareTextView {
     private var wasValid: Bool?
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onTextChanged),
-            name: UITextView.textDidChangeNotification,
-            object: self)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(
-            self, name: UITextView.textDidChangeNotification, object: nil)
     }
     
     @objc

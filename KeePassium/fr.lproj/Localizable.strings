@@ -227,7 +227,7 @@
 "[Generic] OK" = "OK";
 
 /* Action/button to replace/overwrite an item */
-"[Generic] Overwrite" = "Overwrite";
+"[Generic] Overwrite" = "Écraser";
 
 /* Action/button to rename an item */
 "[Generic] Rename" = "Renommer";
@@ -239,7 +239,7 @@
 "[Generic] Show Details" = "Voir les détails";
 
 /* Checkbox/Button to show a text field in its full size */
-"[Generic] Show more" = "Show more";
+"[Generic] Show more" = "Plus";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Êtes-vous certain ?";
@@ -260,7 +260,7 @@
 "[Generic/File/title] Export Error" = "Erreur d'exportation";
 
 /* Message shown when trying to copy into an existing file. */
-"[Generic/File/title] File already exists" = "File already exists";
+"[Generic/File/title] File already exists" = "Le fichier existe déjà";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Erreur d'importation";
@@ -287,13 +287,13 @@
 "[Group/New/defaultName] New Group" = "Nouveau groupe";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Les clés materielles ne sont pas disponibles dans AutoFill.";
 
 /* Master key/unlock option: don't use hardware keys */
-"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+"[HardwareKey/None] No Hardware Key" = "Pas de Clé Matériel";
 
 /* Master key/unlock option: use given slot of YubiKey */
-"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "Emplacement YubiKey %d";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Par défaut (KeePass)";
@@ -320,10 +320,10 @@
 "[Premium/Benefits/DatabaseTimeout/title]" = "Gagnez du temps";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/HardwareKeys/details]" = "Protect your secrets with a hardware key, such as YubiKey.";
+"[Premium/Benefits/HardwareKeys/details]" = "Protégez vos mots de passe avec une clé matérielle, comme YubiKey.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/HardwareKeys/title]" = "Use hardware keys";
+"[Premium/Benefits/HardwareKeys/title]" = "Utiliser des clés materielles";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/Maintenance/details]" = "Gardez KeePassium amélioré, maintenu et sans publicité.";
@@ -398,10 +398,10 @@
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Application utile : %1$@/mois, soit environ %2$@/an.";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";
+"[PremiumFeature/HardwareKeys/description]" = "Renforcez votre sécurité avec des clés matérielles (YubiKey) dans la version premium.";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
-"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardware Keys";
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Clés matérielles";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Gagnez du temps en entrant vos mots de passe principaux complexes — gardez votre base de données ouverte plus longtemps dans la version premium.";
@@ -476,16 +476,16 @@
 "[Support/template] (Please describe the problem here)" = "(Veuillez décrire le problème ici)";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
-"[YubiKey] Don't use YubiKey" = "Without YubiKey";
+"[YubiKey] Don't use YubiKey" = "Sans YubiKey";
 
 /* Call for action: insert YubiKey 5Ci to the Lightning port */
-"[YubiKey] Insert the key" = "Insert the key";
+"[YubiKey] Insert the key" = "Insérez la clé";
 
 /* Call for action: touch the sides of YubiKey 5Ci to continue */
-"[YubiKey] Touch the key" = "Touch the key";
+"[YubiKey] Touch the key" = "Toucher la clé";
 
 /* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
-"[YubiKey] Use YubiKey Slot %d" = "Use YubiKey Slot %d";
+"[YubiKey] Use YubiKey Slot %d" = "Utiliser l'emplacement YubiKey %d";
 
 /* Action/button to add database to the app */
 "Add Database" = "Ajouter une base de données";

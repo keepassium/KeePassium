@@ -170,7 +170,7 @@
 "[Generic] Show Details" = "Zobrazit podrobnosti";
 
 /* Checkbox/Button to show a text field in its full size */
-"[Generic] Show more" = "Show more";
+"[Generic] Show more" = "Zobrazit více";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Jste si jisti?";
@@ -191,7 +191,7 @@
 "[Generic/File/title] Export Error" = "Export selhal";
 
 /* Message shown when trying to copy into an existing file. */
-"[Generic/File/title] File already exists" = "File already exists";
+"[Generic/File/title] File already exists" = "Soubor již existuje";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Import selhal";
@@ -218,10 +218,10 @@
 "[Group/New/defaultName] New Group" = "Nová skupina";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarový Klíč není možné použít pro automatické vyplňování.";
 
 /* Master key/unlock option: don't use hardware keys */
-"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+"[HardwareKey/None] No Hardware Key" = "Žádný Hardwarový Klíč";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";

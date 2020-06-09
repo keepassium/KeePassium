@@ -141,21 +141,12 @@ class ChangeMasterKeyVC: UIViewController {
     }
     
     fileprivate func hideProgressOverlay() {
-        UIView.animateKeyframes(
-            withDuration: 0.2,
-            delay: 0.0,
-            options: [.beginFromCurrentState],
-            animations: {
-                [weak self] in
-                self?.progressOverlay?.alpha = 0.0
-            },
-            completion: {
-                [weak self] finished in
-                guard let _self = self else { return }
-                _self.progressOverlay?.removeFromSuperview()
-                _self.progressOverlay = nil
-            }
-        )
+        progressOverlay?.dismiss(animated: true) {
+            [weak self] finished in
+            guard let self = self else { return }
+            self.progressOverlay?.removeFromSuperview()
+            self.progressOverlay = nil
+        }
         if #available(iOS 13, *) {
             isModalInPresentation = false
         }

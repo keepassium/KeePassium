@@ -2,7 +2,7 @@
 "6Mx-Oh-6m0.accessibilityHint" = "Expands a text field to its full height";
 
 /* Class = "UIButton"; accessibilityLabel = "Show more"; ObjectID = "6Mx-Oh-6m0"; */
-"6Mx-Oh-6m0.accessibilityLabel" = "Show more";
+"6Mx-Oh-6m0.accessibilityLabel" = "Zobrazit více";
 
 /* Class = "UILabel"; text = "Copied"; ObjectID = "vLP-Zc-bUc"; Note = "Confirmation message: field value has been copied to clipboard."; */
 "vLP-Zc-bUc.text" = "Zkopírováno";

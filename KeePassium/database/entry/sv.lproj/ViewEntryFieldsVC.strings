@@ -1,8 +1,8 @@
 /* Class = "UIButton"; accessibilityHint = "Expands a text field to its full height"; ObjectID = "6Mx-Oh-6m0"; */
-"6Mx-Oh-6m0.accessibilityHint" = "Expands a text field to its full height";
+"6Mx-Oh-6m0.accessibilityHint" = "Utökar ett textfält till sin fulla höjd";
 
 /* Class = "UIButton"; accessibilityLabel = "Show more"; ObjectID = "6Mx-Oh-6m0"; */
-"6Mx-Oh-6m0.accessibilityLabel" = "Show more";
+"6Mx-Oh-6m0.accessibilityLabel" = "Visa mer";
 
 /* Class = "UILabel"; text = "Copied"; ObjectID = "vLP-Zc-bUc"; Note = "Confirmation message: field value has been copied to clipboard."; */
 "vLP-Zc-bUc.text" = "Kopierad";

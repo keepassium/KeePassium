@@ -5,10 +5,10 @@
 "CFBundleName" = "KeePassium";
 
 /* (No Comment) */
-"KeePass Database (kdb)" = "KeePass database (kdb)";
+"KeePass Database (kdb)" = "KeePass Database (kdb)";
 
 /* (No Comment) */
-"KeePass Database (kdbx)" = "KeePass database (kdbx)";
+"KeePass Database (kdbx)" = "KeePass Database (kdbx)";
 
 /* Privacy - NFC Scan Usage Description */
 "NFCReaderUsageDescription" = "KeePassium needs access to NFC to communicate with your YubiKey.";

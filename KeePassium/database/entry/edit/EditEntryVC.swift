@@ -180,10 +180,18 @@ class EditEntryVC: UITableViewController, Refreshable {
         tableView.beginUpdates()
         tableView.insertRows(at: [newIndexPath], with: .fade)
         tableView.endUpdates()
-        tableView.scrollToRow(at: newIndexPath, at: .top, animated: false) 
-        let insertedCell = tableView.cellForRow(at: newIndexPath)
-        insertedCell?.becomeFirstResponder()
-        (insertedCell as? EditEntryCustomFieldCell)?.selectNameText()
+        
+        UIView.animate(
+            withDuration: 0.3,
+            animations: { [self] in
+                self.tableView.scrollToRow(at: newIndexPath, at: .top, animated: false) 
+            },
+            completion: { [weak self] finished in
+                let insertedCell = self?.tableView.cellForRow(at: newIndexPath)
+                insertedCell?.becomeFirstResponder()
+                (insertedCell as? EditEntryCustomFieldCell)?.selectNameText()
+            }
+        )
         
         isModified = true
         revalidate()
@@ -312,7 +320,7 @@ class EditEntryVC: UITableViewController, Refreshable {
             isModalInPresentation = true 
         }
         savingOverlay = ProgressOverlay.addTo(
-            view,
+            navigationController?.view ?? self.view,
             title: LString.databaseStatusSaving,
             animated: true)
         savingOverlay?.isCancellable = true
@@ -321,8 +329,7 @@ class EditEntryVC: UITableViewController, Refreshable {
     private func hideSavingOverlay() {
         guard savingOverlay != nil else { return }
         navigationController?.setNavigationBarHidden(false, animated: true)
-        savingOverlay?.dismiss(animated: true)
-        {
+        savingOverlay?.dismiss(animated: true) {
             [weak self] (finished) in
             guard let _self = self else { return }
             _self.savingOverlay?.removeFromSuperview()

@@ -5,22 +5,22 @@
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numerisk";
 
 /* Error message when the challenge-response communication has been cancelled by the user. */
-"[ChallengeResponseError] cancelled" = "Cancelled by the user.";
+"[ChallengeResponseError] cancelled" = "Avbrutet av användaren.";
 
 /* Error message when the hardware key is not plugged in. */
-"[ChallengeResponseError] keyNotConnected" = "Hardware key is not connected.";
+"[ChallengeResponseError] keyNotConnected" = "Hårdvarunyckel är inte ansluten.";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "Hardware keys are not available in AutoFill.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "Hårdvarunycklar är ej tillgängliga i Autofyll.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardware keys are not supported by this database format.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hårdvarunycklar stöds inte av detta databasformat.";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
-"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "This device or iOS version does not support hardware keys (%@)";
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Denna enhet eller iOS-version stöder inte hårdvarunycklar (%@)";
 
 /* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
-"[ChallengeResponseError] slotNotConfigured" = "Hardware key is not configured for challenge-response.";
+"[ChallengeResponseError] slotNotConfigured" = "Hårdvarunyckeln är inte konfigurerad för challenge-response.";
 
 /* Progress status */
 "[Cipher/Progress] Decrypting" = "Dekrypterar";
@@ -78,6 +78,9 @@
 
 /* Progress status */
 "[Database/Progress] Loading key file..." = "Laddar nyckelfil...";
+
+/* Progress status */
+"[Database/Progress/resolving]" = "Kontaktar lagringsleverantör...";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Misslyckades med att öppna nyckelfil";
@@ -195,6 +198,15 @@
 
 /* Progress bar status */
 "[Database2/Progress] Writing encrypted blocks" = "Skriver krypterade block";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "Packar upp databasen";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "Kontrollerar integritet";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "Tolkar databas";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "Kompressionsfel: %@";

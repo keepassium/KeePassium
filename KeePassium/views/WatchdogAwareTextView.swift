@@ -20,12 +20,12 @@ class WatchdogAwareTextView: UITextView {
             self,
             selector: #selector(onTextChanged),
             name: UITextView.textDidChangeNotification,
-            object: nil)
+            object: self)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(
-            self, name: UITextView.textDidChangeNotification, object: nil)
+            self, name: UITextView.textDidChangeNotification, object: self)
     }
     
     @objc

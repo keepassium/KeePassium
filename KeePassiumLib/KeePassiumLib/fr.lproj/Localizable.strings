@@ -5,22 +5,22 @@
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numérique";
 
 /* Error message when the challenge-response communication has been cancelled by the user. */
-"[ChallengeResponseError] cancelled" = "Cancelled by the user.";
+"[ChallengeResponseError] cancelled" = "Annulé par l'utilisateur.";
 
 /* Error message when the hardware key is not plugged in. */
-"[ChallengeResponseError] keyNotConnected" = "Hardware key is not connected.";
+"[ChallengeResponseError] keyNotConnected" = "La clé matérielle n'est pas connectée.";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "Hardware keys are not available in AutoFill.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "Les clés materielles ne sont pas disponibles dans AutoFill.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardware keys are not supported by this database format.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Les clés matérielles ne sont pas prises en charge par ce format de base de données.";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
-"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "This device or iOS version does not support hardware keys (%@)";
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Cette version de l'appareil ou d'iOS ne prend pas en charge les clés matérielles (%@)";
 
 /* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
-"[ChallengeResponseError] slotNotConfigured" = "Hardware key is not configured for challenge-response.";
+"[ChallengeResponseError] slotNotConfigured" = "La clé matérielle n'est pas configurée pour le challenge-response.";
 
 /* Progress status */
 "[Cipher/Progress] Decrypting" = "Déchiffrement";
@@ -78,6 +78,9 @@
 
 /* Progress status */
 "[Database/Progress] Loading key file..." = "Chargement du fichier de clé...";
+
+/* Progress status */
+"[Database/Progress/resolving]" = "Contact avec le fournisseur de stockage...";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Impossible d'ouvrir le fichier de clé";
@@ -195,6 +198,15 @@
 
 /* Progress bar status */
 "[Database2/Progress] Writing encrypted blocks" = "Écriture de blocs chiffrés";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "Décompression de la base de données";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "Vérification de l'intégrité";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "Analyse de la base de données";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "Erreur de compression de données : %@";

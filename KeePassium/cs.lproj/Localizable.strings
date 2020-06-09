@@ -260,7 +260,7 @@
 "[Generic/File/title] Export Error" = "Export selhal";
 
 /* Message shown when trying to copy into an existing file. */
-"[Generic/File/title] File already exists" = "File already exists";
+"[Generic/File/title] File already exists" = "Soubor již existuje";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Import selhal";
@@ -290,7 +290,7 @@
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
 
 /* Master key/unlock option: don't use hardware keys */
-"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+"[HardwareKey/None] No Hardware Key" = "Žádný Hardwarový Klíč";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";

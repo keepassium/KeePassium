@@ -104,7 +104,7 @@
 "[Entry/New/defaultTitle] New Entry" = "Nytt konto";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Försök att ta bort filen från appen, lägg sedan till den igen.";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Skapad";
@@ -158,7 +158,7 @@
 "[Generic] OK" = "OK";
 
 /* Action/button to replace/overwrite an item */
-"[Generic] Overwrite" = "Overwrite";
+"[Generic] Overwrite" = "Skriv över";
 
 /* Action/button to rename an item */
 "[Generic] Rename" = "Byt namn";
@@ -170,7 +170,7 @@
 "[Generic] Show Details" = "Visa detaljer";
 
 /* Checkbox/Button to show a text field in its full size */
-"[Generic] Show more" = "Show more";
+"[Generic] Show more" = "Visa mer";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Är du säker?";
@@ -191,7 +191,7 @@
 "[Generic/File/title] Export Error" = "Exporteringsfel";
 
 /* Message shown when trying to copy into an existing file. */
-"[Generic/File/title] File already exists" = "File already exists";
+"[Generic/File/title] File already exists" = "Filen finns redan";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Importeringsfel";
@@ -218,16 +218,16 @@
 "[Group/New/defaultName] New Group" = "Ny grupp";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hårdvarunycklar är ej tillgängliga i Autofyll.";
 
 /* Master key/unlock option: don't use hardware keys */
-"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+"[HardwareKey/None] No Hardware Key" = "Ingen hårdvarunyckel";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
 
 /* Message to confirm deletion of a key file. */
-"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Radera nyckelfil?\nSäkerställ att du har en backup.";
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Radera nyckelfil?\nSe till att du har en säkerhetskopia.";
 
 /* Title of an announcement about the Pro version */
 "[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
@@ -239,10 +239,10 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "Uppgradera till premium";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";
+"[PremiumFeature/HardwareKeys/description]" = "Öka säkerheten med hårdvarunycklar (YubiKey) i premiumversionen.";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
-"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardware Keys";
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hårdvarunycklar";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Spara tid på att ange krångliga huvudlösenord – håll dina databaser öppna längre i premiumversionen.";
@@ -269,16 +269,16 @@
 "[Support/template] (Please describe the problem here)" = "(Vänligen beskriv problemet här)";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
-"[YubiKey] Don't use YubiKey" = "Without YubiKey";
+"[YubiKey] Don't use YubiKey" = "Utan YubiKey";
 
 /* Call for action: insert YubiKey 5Ci to the Lightning port */
-"[YubiKey] Insert the key" = "Insert the key";
+"[YubiKey] Insert the key" = "Sätt i nyckeln";
 
 /* Call for action: touch the sides of YubiKey 5Ci to continue */
-"[YubiKey] Touch the key" = "Touch the key";
+"[YubiKey] Touch the key" = "Tryck på nyckeln";
 
 /* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
-"[YubiKey] Use YubiKey Slot %d" = "Use YubiKey Slot %d";
+"[YubiKey] Use YubiKey Slot %d" = "Använd YubiKey Slot %d";
 
 /* Action/button to add database to the app */
 "Add Database" = "Lägg till databas";

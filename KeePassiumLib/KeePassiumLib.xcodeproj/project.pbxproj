@@ -20,7 +20,6 @@
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
 		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
-		755E7DA7232021460010E199 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7DA5232021460010E199 /* InfoPlist.strings */; };
 		757CB44223993E48000867F0 /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CB44123993E48000867F0 /* DatabaseSettings.swift */; };
 		759896432341CED300DF39AA /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759896422341CED300DF39AA /* BusinessModel.swift */; };
 		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
@@ -150,17 +149,13 @@
 		754A322A244269F500632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754D7C0D238C26A7005652E1 /* YubiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YubiKey.swift; path = ../../../../../../projects/xcode/KeePassium/KeePassiumLib/KeePassiumLib/util/YubiKey.swift; sourceTree = "<group>"; };
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
-		755E7DA6232021460010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		757CB44123993E48000867F0 /* DatabaseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
 		759896422341CED300DF39AA /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BusinessModel.swift; path = ../../../../../../projects/xcode/KeePassium/KeePassiumLib/KeePassiumLib/premium/BusinessModel.swift; sourceTree = "<group>"; };
 		75A2676F228DAC430097C693 /* PremiumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManager.swift; sourceTree = "<group>"; };
 		75A2677A229045A60097C693 /* PremiumFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeature.swift; sourceTree = "<group>"; };
 		75AC35BB23549D6C00B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75AC53472326FCC6000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75AC53482326FCC6000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75AC53492326FCDB000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		75AC534A2326FCDB000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		75AC53A1232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		75AC53A2232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75B8608B2475E2F800C5E6C0 /* LString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
@@ -569,7 +564,6 @@
 				75D09BAD2174F3E600F7DEF2 /* KeePassiumLib.m */,
 				75D09BAC2174F3E600F7DEF2 /* KeePassiumLib.modulemap */,
 				75D0C76E2174AF1F00C64C93 /* Info.plist */,
-				755E7DA5232021460010E199 /* InfoPlist.strings */,
 				751E0CDD2309A3420088BB10 /* Localizable.strings */,
 			);
 			path = KeePassiumLib;
@@ -708,7 +702,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				75D09BDD2174F76500F7DEF2 /* LICENSE in Resources */,
-				755E7DA7232021460010E199 /* InfoPlist.strings in Resources */,
 				751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,17 +862,6 @@
 				754A322A244269F500632B39 /* it */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		755E7DA5232021460010E199 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				755E7DA6232021460010E199 /* ru */,
-				75AC53472326FCC6000AA4FB /* nl */,
-				75AC53492326FCDB000AA4FB /* zh-Hant */,
-				75AC53A1232766EB000AA4FB /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
