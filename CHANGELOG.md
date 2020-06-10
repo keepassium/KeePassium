@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.13.62] - 2020-06-09
+
+### Changed
+
+- Version number only (because App Store Connect insist on an increase)
+
+
 ## [1.12.61] - 2020-06-09
 
 ### Changed
