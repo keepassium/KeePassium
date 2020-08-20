@@ -33,7 +33,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No Key File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="tGm-oo-awN" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No Key File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="tGm-oo-awN">
                                             <rect key="frame" x="60" y="8" width="85.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -42,12 +42,8 @@
                                             <attributedString key="userComments">
                                                 <fragment content="Title of the default option in key file picker: don't use key files."/>
                                             </attributedString>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="tGm-oo-awN.text"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="ChooseKeyFileVC"/>
-                                            </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use only password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Ftb-fa-Dvb" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use only password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Ftb-fa-Dvb">
                                             <rect key="frame" x="60" y="31.5" width="114.5" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
@@ -56,10 +52,6 @@
                                             <attributedString key="userComments">
                                                 <fragment content="Explanation of the default option in key file picker: don't use key files."/>
                                             </attributedString>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="Ftb-fa-Dvb.text"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="ChooseKeyFileVC"/>
-                                            </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="no-keyfile-listitem" id="eXO-Cx-wIH">
                                             <rect key="frame" x="16" y="14.5" width="29" height="29"/>

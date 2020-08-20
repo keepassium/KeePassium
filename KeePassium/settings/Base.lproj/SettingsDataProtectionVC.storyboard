@@ -103,16 +103,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="293" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Database Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="weX-SZ-IDB" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Database Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="weX-SZ-IDB">
                                                     <rect key="frame" x="60" y="16" width="140" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="weX-SZ-IDB.text"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="SettingsDataProtectionVC"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Detail}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="beV-Hv-Qdr">
                                                     <rect key="frame" x="231.5" y="17" width="53.5" height="19.5"/>
@@ -198,16 +194,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="293" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Clipboard Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="SSu-Sr-MCg" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Clipboard Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="SSu-Sr-MCg">
                                                     <rect key="frame" x="60" y="16" width="141.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="SSu-Sr-MCg.text"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="SettingsDataProtectionVC"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-clipboard-timeout-listitem" id="KN4-NG-3Iw">
                                                     <rect key="frame" x="16" y="11.5" width="29" height="29"/>
@@ -229,7 +221,8 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Use Universal Clipboard to copy and paste between your Apple devices." id="g9a-rJ-4WJ">
+                            <tableViewSection id="g9a-rJ-4WJ">
+                                <string key="footerTitle">Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="2o6-DM-GCk" userLabel="Use Universal Clilpboard">
                                         <rect key="frame" x="0.0" y="650.5" width="320" height="44"/>
@@ -279,7 +272,7 @@
                             <tableViewSection headerTitle="Protected Fields" footerTitle="Hide passwords and other protected fields behind asterisks (recommended)." id="e6Y-AP-hag">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="xy0-l4-jX5" userLabel="Hide Protected Fields">
-                                        <rect key="frame" x="0.0" y="786" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="818" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xy0-l4-jX5" id="SV3-RM-NaN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -327,7 +320,7 @@
                                 <string key="footerTitle">Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="qrz-wG-vpS">
-                                        <rect key="frame" x="0.0" y="921.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="953.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qrz-wG-vpS" id="cEF-MG-8iD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -370,7 +363,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="63r-C0-jmV">
-                                        <rect key="frame" x="0.0" y="965.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="997.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="63r-C0-jmV" id="54K-xz-dwY">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

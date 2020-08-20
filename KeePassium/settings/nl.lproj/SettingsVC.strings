@@ -2,7 +2,7 @@
 "9yn-W3-FDl.headerTitle" = "Start";
 
 /* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
-"756-sL-G2t.text" = "Auto-open the Previous Database";
+"756-sL-G2t.text" = "Open automatisch de vorige databank";
 
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
 "A5N-B3-t3t.headerTitle" = "Premium";
@@ -29,7 +29,7 @@
 "FHp-ns-ke9.text" = "Hoofdsleutels, sleutelbestanden";
 
 /* Class = "UILabel"; text = "Search"; ObjectID = "GLr-Uf-Kln"; Note = "Section title in settings"; */
-"GLr-Uf-Kln.text" = "Search";
+"GLr-Uf-Kln.text" = "Zoek";
 
 /* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
 "HCe-A3-eG6.text" = "Premium-versie";
@@ -49,9 +49,6 @@
 /* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
 "PpA-oZ-kr2.text" = "Diagnostisch logbestand";
 
-/* Class = "UITableViewSection"; headerTitle = "Search"; ObjectID = "qEE-z7-pd0"; Note = "Section title in settings"; */
-"qEE-z7-pd0.headerTitle" = "Search";
-
 /* Class = "UILabel"; text = "For expert troubleshooting"; ObjectID = "qhK-lw-bGy"; Note = "Subtitle for `Diagnostic Log`. Keep it short."; */
 "qhK-lw-bGy.text" = "Voor probleemoplossing van deskundigen";
 
@@ -64,11 +61,11 @@
 /* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
 "T2Z-oa-zJR.text" = "Vul wachtwoorden automatisch in";
 
+/* Class = "UILabel"; text = "App Icon"; ObjectID = "TUE-Aw-fJl"; Note = "Section in settings: icon for the app"; */
+"TUE-Aw-fJl.text" = "App pictogram";
+
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "Gegevensbescherming";
-
-/* Class = "UITableViewSection"; headerTitle = "AutoFill"; ObjectID = "ZFi-ss-fUa"; */
-"ZFi-ss-fUa.headerTitle" = "Autom. aanvullen";
 
 /* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
 "zUh-Sn-3ya.text" = "Beheer abonnementen";

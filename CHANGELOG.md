@@ -1,5 +1,39 @@
 #CHANGELOG
 
+## [1.14.68] - 2020-08-04
+
+### Added
+
+- Customizable app icon
+- Offline fallback option: KeePassium maintains a backup copy of the last loaded/saved version of database
+
+### Changed
+
+- Default app icon changed to Atom Blue (freemium) and Atom Black (Pro)
+- By default, backups are now kept for 2 months instead of forever
+- More detailed file location description for internal files
+- Code: switched to KeePassium's own, checked fork of TPInAppReceipt
+- AppLock setup reminder can be dismissed [thanks, Dan]
+- Minor UI refinements here and there
+- Updated DE/FR/JA/NL/RU translations [thanks, everyone]
+
+### Removed
+
+- Xcode11GM_LocalizedLabel, an obsolete workaround for #60
+
+### Fixed
+
+- Excessive caching of file attributes (size, timestamps)
+- After transferring to a new device, AppLock did not always accept the correct passcode [thanks, Kirsten]
+- Add note that Universal Clipboard timeout on external devices is fixed at 2 minutes [thanks, Christian]
+- Backup files with non-standard extensions were not shown
+- Tapping the "Show backup files" could change the file sort order instead
+- Sporadic crash immediately after loading a database
+- AutoFill Setup smallprint always appeared in English
+- Return key behavior when changing DB master key
+- Hardware key picker is localized now
+
+
 ## [1.14.67] - 2020-07-25
 
 ### Changed

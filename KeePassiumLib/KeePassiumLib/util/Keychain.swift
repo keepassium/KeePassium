@@ -136,6 +136,7 @@ public class Keychain {
     public func setAppPasscode(_ passcode: String) throws {
         let dataHash = ByteArray(utf8String: passcode).sha256.asData
         try set(service: .general, account: appPasscodeAccount, data: dataHash) 
+        Settings.current.notifyAppLockEnabledChanged()
     }
 
     public func isAppPasscodeSet() throws -> Bool {
@@ -155,6 +156,7 @@ public class Keychain {
 
     public func removeAppPasscode() throws {
         try remove(service: .general, account: appPasscodeAccount) 
+        Settings.current.notifyAppLockEnabledChanged()
     }
     
     

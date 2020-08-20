@@ -39,6 +39,7 @@ enum ImageAsset: String {
     case premiumBenefitDBTimeout = "premium-benefit-db-timeout"
     case premiumBenefitPreview = "premium-benefit-preview"
     case premiumBenefitHardwareKeys = "premium-benefit-yubikey"
+    case premiumBenefitCustomAppIcons = "premium-benefit-custom-appicons"
     case premiumBenefitSupport = "premium-benefit-support"
     case premiumBenefitShiny = "premium-benefit-shiny"
     case premiumConditionCheckedListitem = "premium-condition-checked-listitem"

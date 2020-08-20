@@ -25,6 +25,9 @@
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
 "aqX-J9-IzD.text" = "Překlad od přispěvovatelů pro KeePassium";
 
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
+"AWg-lI-BfC.text" = "Licence MIT";
+
 /* Class = "UILabel"; text = "Twofish implementation by Niels Ferguson"; ObjectID = "axY-gm-XNr"; */
 "axY-gm-XNr.text" = "Twofish Implementation by Niels Ferguson";
 
@@ -84,6 +87,9 @@
 
 /* Class = "UILabel"; text = "CC0 license"; ObjectID = "o9e-qb-mMw"; */
 "o9e-qb-mMw.text" = "Licence CC0";
+
+/* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
+"OaP-Bl-5vR.text" = "TPInAppReceipt by Pavel Tikhonenko";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
 "QV5-N8-NRt.text" = "Public domain";

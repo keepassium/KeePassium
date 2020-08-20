@@ -58,7 +58,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="There are no attached files" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="W86-tp-bfF" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="There are no attached files" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="W86-tp-bfF">
                                             <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -67,10 +67,6 @@
                                             <attributedString key="userComments">
                                                 <fragment content="Placeholder shown when there are no attached files in the entry."/>
                                             </attributedString>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="W86-tp-bfF.text"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="ViewEntryFilesVC"/>
-                                            </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -82,7 +78,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Add File" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="bgK-Q6-nzE" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Add File" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="bgK-Q6-nzE">
                                             <rect key="frame" x="60" y="0.0" width="299" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -91,10 +87,6 @@
                                             <attributedString key="userComments">
                                                 <fragment content="Action: attach a file to the entry."/>
                                             </attributedString>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="bgK-Q6-nzE.text"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="ViewEntryFilesVC"/>
-                                            </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="create-attachment-listitem" id="XnV-a4-8Mp">
                                             <rect key="frame" x="16" y="11" width="29" height="29"/>

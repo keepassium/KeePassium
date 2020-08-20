@@ -101,6 +101,8 @@ public class Settings {
         case passwordGeneratorIncludeDigits
         case passwordGeneratorIncludeLookAlike
         case passcodeKeyboardType
+        
+        case hideAppLockSetupReminder
     }
 
     fileprivate enum Notifications {
@@ -381,13 +383,14 @@ public class Settings {
     
     public enum BackupKeepingDuration: Int {
         public static let allValues: [BackupKeepingDuration] = [
-            .forever, _1year, _6months, _4weeks, _1week, _1day, _4hours, _1hour
+            .forever, _1year, _6months, _2months, _4weeks, _1week, _1day, _4hours, _1hour
         ]
         case _1hour = 3600
         case _4hours = 14400
         case _1day = 86400
         case _1week = 604_800
         case _4weeks = 2_419_200
+        case _2months = 5_270_400
         case _6months = 15_552_000
         case _1year = 31_536_000
         case forever
@@ -868,17 +871,13 @@ public class Settings {
     
     public var isAppLockEnabled: Bool {
         get {
-            let stored = UserDefaults.appGroupShared
-                .object(forKey: Keys.appLockEnabled.rawValue)
-                as? Bool
-            return stored ?? false
+            let hasPasscode = try? Keychain.shared.isAppPasscodeSet() 
+            return hasPasscode ?? false
         }
-        set {
-            updateAndNotify(
-                oldValue: isAppLockEnabled,
-                newValue: newValue,
-                key: .appLockEnabled)
-        }
+    }
+    
+    internal func notifyAppLockEnabledChanged() {
+        postChangeNotification(changedKey: .appLockEnabled)
     }
     
     public var isBiometricAppLockEnabled: Bool {
@@ -1149,7 +1148,13 @@ public class Settings {
         }
     }
     
-    
+
+    public var isBackupDatabaseOnLoad: Bool {
+        get {
+            return isBackupDatabaseOnSave
+        }
+    }
+
     public var isBackupDatabaseOnSave: Bool {
         get {
             let stored = UserDefaults.appGroupShared
@@ -1173,7 +1178,7 @@ public class Settings {
             {
                 return timeout
             }
-            return BackupKeepingDuration.forever
+            return BackupKeepingDuration._2months
         }
         set {
             let oldValue = backupKeepingDuration
@@ -1234,6 +1239,7 @@ public class Settings {
         }
     }
 
+    
     public var isHapticFeedbackEnabled: Bool {
         get {
             let stored = UserDefaults.appGroupShared
@@ -1248,7 +1254,22 @@ public class Settings {
                 key: .hapticFeedbackEnabled)
         }
     }
-    
+
+    public var isHideAppLockSetupReminder: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.hideAppLockSetupReminder.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isHideAppLockSetupReminder,
+                newValue: newValue,
+                key: .hideAppLockSetupReminder)
+        }
+    }
+
     
     public var passwordGeneratorLength: Int {
         get {

@@ -22,6 +22,9 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "Caller ID: %@";
 
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "L'AutoFill non può accedere automaticamente ai file che hai già nell'app principale di KeePassium\n\nPerché? Dietro le quinte, il sistema tratta AutoFill come un'app separata, indipendente dal processo principale di KeePassium. Per ragioni di sicurezza, un’app non può semplicemente accedere a qualsiasi file esterno – a meno che non si collegino esplicitamente questi file a questa app. Pertanto, il sistema garantisce che l'applicazione possa accedere solo ai file che hai autorizzato.\n\nDi conseguenza, sia AutoFill che l'app principale di KeePassium devono avere le autorizzazioni necessarie per ogni file esterno. Fortunatamente si tratta di una procedura unica.";
+
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
 
@@ -109,6 +112,12 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Prova a rimuovere il file dall'app, quindi aggiungilo di nuovo.";
 
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Backup";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Data Creazione";
 
@@ -127,11 +136,17 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Errore";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Annullare";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Contattaci";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Continue";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Copia";
@@ -237,6 +252,9 @@
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Passa a Premium";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";

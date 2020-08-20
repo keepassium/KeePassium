@@ -96,6 +96,9 @@ class SettingsFileSortingVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 1 else {
+            return
+        }
         let cellValue = Settings.FilesSortOrder.allValues[indexPath.row]
         Settings.current.filesSortOrder = cellValue
         tableView.reloadData()

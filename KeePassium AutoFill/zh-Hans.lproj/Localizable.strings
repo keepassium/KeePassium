@@ -20,7 +20,10 @@
 "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "升级高级版";
 
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
-"[AutoFill/Search/callerID]" = "Caller ID: %@";
+"[AutoFill/Search/callerID]" = "呼叫ID: %@";
+
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "自动填充功能无法自动访问主KeePassium应用程序中已有的数据库。\n\n为什么？ 在系统后台，系统将自动填充视为一个独立的应用程序，独立于主要的KeePassium处理程序。 出于安全原因，应用程序无法简单地访问任何外部文件 - 除非您明确将这些文件添加到该应用程序。系统安全特性保证应用程序只能访问您允许的少数文件。\n\n因此，需要为自动填充和KeePassium应用程序赋予所需的数据库文件以及密钥文件权限。 幸运的是，这只要设置一次。";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -71,7 +74,7 @@
 "[Database/Unlock] Key file error: %@" = "密钥文件异常: %@";
 
 /* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
+"[Database/Unlock] YubiKey" = "YubiKey 令牌设备验证";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "诊断日志复制到剪贴板成功。";
@@ -107,7 +110,13 @@
 "[Entry/New/defaultTitle] New Entry" = "新条目";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Try to remove the file from the app, then add it again.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "尝试从应用中删除该文件，然后重新添加它。";
+
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "备份";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "建立时间";
@@ -127,11 +136,17 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "错误";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "取消";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "联系我们";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Continue";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "复制";
@@ -161,7 +176,7 @@
 "[Generic] OK" = "确定";
 
 /* Action/button to replace/overwrite an item */
-"[Generic] Overwrite" = "Overwrite";
+"[Generic] Overwrite" = "覆盖";
 
 /* Action/button to rename an item */
 "[Generic] Rename" = "重新命名";
@@ -173,7 +188,7 @@
 "[Generic] Show Details" = "显示详细信息";
 
 /* Checkbox/Button to show a text field in its full size */
-"[Generic] Show more" = "Show more";
+"[Generic] Show more" = "显示更多";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "您确定吗？";
@@ -194,7 +209,7 @@
 "[Generic/File/title] Export Error" = "汇出错误";
 
 /* Message shown when trying to copy into an existing file. */
-"[Generic/File/title] File already exists" = "File already exists";
+"[Generic/File/title] File already exists" = "文件已存在";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "汇入错误";
@@ -221,10 +236,10 @@
 "[Group/New/defaultName] New Group" = "新建群组";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "硬件密钥在自动填充中不可用。";
 
 /* Master key/unlock option: don't use hardware keys */
-"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+"[HardwareKey/None] No Hardware Key" = "没有硬件密钥";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
@@ -233,22 +248,25 @@
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "删除密钥文件?\n 请确保您有备份文件!";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
-"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "从列表中删除密钥文件？\n 该文件将保持完整，您可以稍后重新添加。";
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "升级到高级版";
 
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
+
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+"[PremiumFeature/Generic/description]" = "你找到了一个高级功能！升级到高级版并享受最好的KeePassium。";
 
 /* A generic title of a premium feature */
-"[PremiumFeature/Generic/title]" = "Premium Feature";
+"[PremiumFeature/Generic/title]" = "高级版功能";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";
+"[PremiumFeature/HardwareKeys/description]" = "在高级版中使用硬件密钥 (Yubikey) 加强您的安全。";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
-"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardware Keys";
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "硬件密钥";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "节省输入复杂主密码的时间 - 在高级版中保持数据库打开更长时间。";
@@ -275,16 +293,16 @@
 "[Support/template] (Please describe the problem here)" = "(请在此处描述问题)";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
-"[YubiKey] Don't use YubiKey" = "Without YubiKey";
+"[YubiKey] Don't use YubiKey" = "不使用YubiKey";
 
 /* Call for action: insert YubiKey 5Ci to the Lightning port */
-"[YubiKey] Insert the key" = "Insert the key";
+"[YubiKey] Insert the key" = "导入密钥";
 
 /* Call for action: touch the sides of YubiKey 5Ci to continue */
-"[YubiKey] Touch the key" = "Touch the key";
+"[YubiKey] Touch the key" = "触摸密钥";
 
 /* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
-"[YubiKey] Use YubiKey Slot %d" = "Use YubiKey Slot %d";
+"[YubiKey] Use YubiKey Slot %d" = "使用 YubiKey Slot %d";
 
 /* Action/button to add database to the app */
 "Add Database" = "添加数据库";

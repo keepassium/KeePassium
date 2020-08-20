@@ -22,6 +22,9 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "Caller ID: %@";
 
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "Автозаполнение не может автоматически открывать файлы, уже добавленные в основное приложение.\n\nПочему? С точки зрения системы, Автозаполнение — это отдельное приложение, независимое от основного. В целях безопасности, приложение не может просто так открывать файлы в других приложениях, если только пользователь не свяжет эти файлы с этим приложением. Таким образом система гарантирует, что приложения могут работать только с несколькими специально выбранными файлами.\n\nВ результате, и Автозаполнение, и основное приложение должны получить \"отдельные приглашения\" для работы с каждым внешним файлом. К счастью, эта процедура нужна только один раз.";
+
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
 
@@ -109,6 +112,12 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Попробуйте убрать файл из приложения, затем добавить его снова.";
 
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Резервирование";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Не удалось обновить атрибуты файла.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Дата создания";
 
@@ -127,11 +136,17 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Ошибка";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Исключить из резервной копии iCloud/iTunes";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Отменить";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Связаться с нами";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Продолжить";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Копировать";
@@ -238,6 +253,9 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Купить полную версию";
 
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Другая иконка приложения";
+
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Вы нашли премиум-функцию! Подключите KeePassium Premium и пользуйтесь всеми возможностями программы.";
 
@@ -245,25 +263,25 @@
 "[PremiumFeature/Generic/title]" = "Премиум-функция";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Укрепите свою безопасность с помощью аппаратных ключей (YubiKey) в полной версии.";
+"[PremiumFeature/HardwareKeys/description]" = "Укрепите свою безопасность с помощью аппаратных ключей (YubiKey) в премиум-версии приложения.";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Аппаратные ключи";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Экономьте время на вводе сложных мастер-паролей — держите базу открытой дольше в полной версии приложения.";
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Экономьте время на вводе сложных мастер-паролей — держите базу открытой дольше в премиум-версии приложения.";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
 "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Отложенное закрытие баз";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
-"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Переключайтесь между базами легко и быстро в полной версии приложения.";
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Переключайтесь между базами легко и быстро в премиум-версии.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Несколько баз паролей";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Просматривайте изображения и документы непосредственно в приложении – в полной версии.";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Просматривайте изображения и документы прямо в премиум-версии программы.";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "Просмотр прикреплённых файлов";

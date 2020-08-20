@@ -172,6 +172,12 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Попробуйте убрать файл из приложения, затем добавить его снова.";
 
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Резервирование";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Не удалось обновить атрибуты файла.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Дата создания";
 
@@ -190,6 +196,9 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Ошибка";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Исключить из резервной копии iCloud/iTunes";
+
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Выберите, куда сохранить";
 
@@ -198,6 +207,9 @@
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Связаться с нами";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Продолжить";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Копировать";
@@ -309,6 +321,12 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Просмотр без следа";
+
+/* Explanation of a premium feature */
+"[Premium/Benefits/CustomAppIcon/details]" = "Сделайте иконку приложения уникальной, привычной — или вообще замаскируйте KeePassium под калькулятор.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/CustomAppIcon/title]" = "Смените иконку приложения";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "Надоело вводить основной пароль? Держите вашу базу паролей открытой дольше, и разблокируйте её одним нажатием.";
@@ -439,6 +457,9 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Приложение полезно %1$@/месяц, т.е. около %2$@/год.";
 
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Другая иконка приложения";
+
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Вы нашли премиум-функцию! Подключите KeePassium Premium и пользуйтесь всеми возможностями программы.";
 
@@ -446,7 +467,7 @@
 "[PremiumFeature/Generic/title]" = "Премиум-функция";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Укрепите свою безопасность с помощью аппаратных ключей (YubiKey) в полной версии.";
+"[PremiumFeature/HardwareKeys/description]" = "Укрепите свою защиту с помощью аппаратных ключей (YubiKey) в премиум-версии приложения.";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Аппаратные ключи";
@@ -464,7 +485,7 @@
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Несколько баз паролей";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Просматривайте изображения и документы непосредственно в приложении – в премиум-версии.";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Просматривайте изображения и документы прямо в премиум-версии программы.";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "Просмотр прикреплённых файлов";

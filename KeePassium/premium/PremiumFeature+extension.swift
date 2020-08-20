@@ -43,6 +43,11 @@ extension PremiumFeature {
                 comment: "Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case)")
         case .canKeepMasterKeyOnDatabaseTimeout:
             return genericPremiumFeatureTitle
+        case .canChangeAppIcon:
+            return NSLocalizedString(
+                "[PremiumFeature/CustomAppIcons/title]",
+                value: "Custom App Icons",
+                comment: "Title of a premium feature: ability to change the app icon")
         }
     }
     
@@ -69,6 +74,8 @@ extension PremiumFeature {
                 value: "Strengthen your security with hardware keys (YubiKey) in the premium version.",
                 comment: "Description/advertisement for the `Hardware Keys` premium feature")
         case .canKeepMasterKeyOnDatabaseTimeout:
+            return genericPremiumFeatureDescription
+        case .canChangeAppIcon:
             return genericPremiumFeatureDescription
         }
     }

@@ -130,11 +130,23 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard let _section = Section(rawValue: section) else { assertionFailure(); return nil }
 
-        if _section == .noHardwareKey && !AppGroup.isMainApp {
-            return NSLocalizedString(
-                "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill.",
-                value: "Hardware keys are not available in AutoFill.",
-                comment: "A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI).")
+        switch _section {
+        case .noHardwareKey:
+            if !AppGroup.isMainApp {
+                return NSLocalizedString(
+                    "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill.",
+                    value: "Hardware keys are not available in AutoFill.",
+                    comment: "A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI).")
+            }
+        case .yubiKeyNFC:
+            guard #available(iOS 13, *) else {
+                return NSLocalizedString(
+                    "[HardwareKey/NFC/OS too old]",
+                    value: "NFC requires iOS 13 or later.",
+                    comment: "A notification that NFC (Near Field Communication) interface is not supported by the current iOS version.")
+            }
+        default:
+            break
         }
         return super.tableView(tableView, titleForFooterInSection: section)
     }

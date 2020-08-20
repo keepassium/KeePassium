@@ -22,6 +22,9 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "Caller ID: %@";
 
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "Autocompletar (AutoFill) no puede acceder automáticamente a los archivos de la aplicación principal de KeePassium.\n\n¿Por qué? Internamente, el sistema trata AutoFill como una aplicación separada, independiente del proceso principal de KeePassium. Por razones de seguridad, una aplicación no puede simplemente acceder a ningún archivo externo, a menos que se vinculen explícitamente estos archivos con esa aplicación. Así, el sistema garantiza que la aplicación sólo puede acceder a los archivos permitidos.\n\nComo resultado, tanto la aplicación de AutoFill como la aplicación principal de KeePassium deben recibir sus propios permisos para cada archivo externo. Afortunadamente, sólo se necesita hacerlo una vez por cada nueva base de datos.";
+
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Reconocimiento facial";
 
@@ -109,6 +112,12 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Prueba a eliminar el archivo de la aplicación e inténtalo de nuevo.";
 
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Copia de seguridad";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Fecha de creación";
 
@@ -127,11 +136,17 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Error";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Cancelar";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Contáctanos";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Continue";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Copiar";
@@ -237,6 +252,9 @@
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Actualizar a Premium";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";

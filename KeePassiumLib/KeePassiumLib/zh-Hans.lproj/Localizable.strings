@@ -5,22 +5,22 @@
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "数字";
 
 /* Error message when the challenge-response communication has been cancelled by the user. */
-"[ChallengeResponseError] cancelled" = "Cancelled by the user.";
+"[ChallengeResponseError] cancelled" = "已被用户取消。";
 
 /* Error message when the hardware key is not plugged in. */
-"[ChallengeResponseError] keyNotConnected" = "Hardware key is not connected.";
+"[ChallengeResponseError] keyNotConnected" = "硬件密钥未连接。";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "Hardware keys are not available in AutoFill.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "硬件密钥在自动填充中不可用。";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardware keys are not supported by this database format.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "硬件密钥不支持此数据库格式。";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
-"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "This device or iOS version does not support hardware keys (%@)";
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "此设备或 iOS 版本不支持硬件密钥 (%@)";
 
 /* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
-"[ChallengeResponseError] slotNotConfigured" = "Hardware key is not configured for challenge-response.";
+"[ChallengeResponseError] slotNotConfigured" = "硬件密钥没有为挑战响应配置。";
 
 /* Progress status */
 "[Cipher/Progress] Decrypting" = "解密中";
@@ -77,13 +77,13 @@
 "[Database/Progress] Loading key file..." = "载入密钥文件中...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "加载数据库文件...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "正在生成备份副本...";
 
 /* Progress status */
-"[Database/Progress/resolving]" = "Contacting storage provider...";
+"[Database/Progress/resolving]" = "正在联系存储提供商...";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "无法打开密钥文件";
@@ -203,13 +203,13 @@
 "[Database2/Progress] Writing encrypted blocks" = "写入加密区块";
 
 /* Progress bar status: un-zipping the database content */
-"[Database2/Progress/decompressing]" = "Decompressing database";
+"[Database2/Progress/decompressing]" = "解压缩数据库";
 
 /* Progress bar status */
-"[Database2/Progress/integrityCheck]" = "Checking integrity";
+"[Database2/Progress/integrityCheck]" = "正在检查完整性";
 
 /* Progress bar status: parsing decrypted XML content */
-"[Database2/Progress/parsingXML]" = "Parsing database";
+"[Database2/Progress/parsingXML]" = "正在解析数据库";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "数据压缩错误: %@";
@@ -244,20 +244,32 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "错误的密码或者密钥文件";
 
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "Storage provider is not available. Please check whether it is installed and logged in to your account.";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ is not available. Please check whether it is installed and logged in to your account.";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Network storage is disconnected.";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB drive is disconnected.";
+
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "KeePassium内部错误，请告诉我们。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "存储提供商没有响应。";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@没有响应。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "存储提供商没有响应。";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@没有响应。";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "删除文件错误。原因:%@";
@@ -290,16 +302,16 @@
 "[FileProvider/Google Drive/name]" = "Google Drive";
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
-"[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+"[FileProvider/iCloud Drive/name]" = "iCloud 云盘";
 
 /* Localized name of the storage service: Nextcloud (https://nextcloud.com) */
 "[FileProvider/Nextcloud/name]" = "Nextcloud";
 
 /* Localized name of the local on-device storage, as shown in the Files app. */
-"[FileProvider/On My iPad/name]" = "On My iPad";
+"[FileProvider/On My iPad/name]" = "在我的 iPad 上";
 
 /* Localized name of the local on-device storage, as shown in the Files app. */
-"[FileProvider/On My iPhone/name]" = "On My iPhone";
+"[FileProvider/On My iPhone/name]" = "在我的 iPhone 上";
 
 /* Localized name of the storage service: OneDrive (https://onedrive.com) */
 "[FileProvider/OneDrive/name]" = "OneDrive";
@@ -317,7 +329,7 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB server";
+"[FileProvider/SMB/name]" = "SMB 服务器";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -326,13 +338,13 @@
 "[FileProvider/Synology Drive/name]" = "Synology Drive";
 
 /* Localized name of the storage service: Synology DS file (https://apps.apple.com/us/app/ds-file/id416751772) */
-"[FileProvider/Synology DS file/name]" = "Synology DS file";
+"[FileProvider/Synology DS file/name]" = "Synology DS 文件";
 
 /* Localized name of the storage service: Tresorit (https://tresorit.com) */
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "U 盘";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";

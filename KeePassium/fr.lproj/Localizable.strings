@@ -172,6 +172,12 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Essayez de supprimer le fichier de l'application, puis ajoutez-le à nouveau.";
 
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Sauvegarde";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Échec de la mise à jour des attributs de fichier.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Date de création";
 
@@ -190,6 +196,9 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Erreur";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Exclure de la sauvegarde iCloud/iTunes";
+
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Choisissez la destination";
 
@@ -198,6 +207,9 @@
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Contactez-nous";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Continuer";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Copier";
@@ -302,13 +314,19 @@
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Supprimer le fichier clé?\n Assurez-vous d'avoir une sauvegarde.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
-"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Retirer le fichier de clé de la liste ?\n Le fichier restera intact et vous pourrez l'ajouter plus tard.";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Prévisualiser les fichiers attachés directement dans KeePassium et ne laisser aucune trace dans d'autres applications. (Fonctionne avec des images, des documents, des archives et plus.)";
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Aperçu sans trace";
+
+/* Explanation of a premium feature */
+"[Premium/Benefits/CustomAppIcon/details]" = "Donnez à KeePassium un aspect unique, familier, ou déguisez-le en calculatrice - le choix vous appartient.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/CustomAppIcon/title]" = "Changer l'icône de l'application";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "Fatigué de taper votre mot de passe maître ? Gardez votre base de données ouverte plus longtemps et débloquez-la en un seul clic.";
@@ -329,55 +347,55 @@
 "[Premium/Benefits/MultiDB/title]" = "Synchroniser avec l'équipe";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Negative/header] " = "What you are missing";
+"[Premium/Benefits/Negative/header] " = "Ce qui vous manque";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Positive/header] " = "What you get";
+"[Premium/Benefits/Positive/header] " = "Ce que vous obtenez";
 
 /* Call to action: continue using the free version */
-"[Premium/CallToAction/free]" = "Continue Testing";
+"[Premium/CallToAction/free]" = "Poursuivre les tests";
 
 /* Call to action: start free trial */
-"[Premium/CallToAction/startTrial]" = "Try it free";
+"[Premium/CallToAction/startTrial]" = "L'essayer gratuitement";
 
 /* Call to action: upgrade to premium */
-"[Premium/CallToAction/upgradeNow]" = "Upgrade Now";
+"[Premium/CallToAction/upgradeNow]" = "Mettre à niveau maintenant";
 
 /* What's included in a price plan: 1 year of support via email */
-"[Premium/Price Plan/Conditions/1 year email support]" = "One year of email support";
+"[Premium/Price Plan/Conditions/1 year email support]" = "Un an d'assistance par e-mail";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/all premium features]" = "All premium features";
+"[Premium/Price Plan/Conditions/all premium features]" = "Toutes les fonctionnalités Premium";
 
 /* What's included in a free plan: support via forums (as opposed to email support) */
-"[Premium/Price Plan/Conditions/community support]" = "Customer support: Online forums";
+"[Premium/Price Plan/Conditions/community support]" = "Support client : forums en ligne";
 
 /* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
-"[Premium/Price Plan/Conditions/current premium features]" = "Current premium features";
+"[Premium/Price Plan/Conditions/current premium features]" = "Fonctionnalités Premium actuelles";
 
 /* What's included in a price plan: support via email */
-"[Premium/Price Plan/Conditions/email support]" = "Customer support: Email";
+"[Premium/Price Plan/Conditions/email support]" = "Support client : E-mail";
 
 /* What's included in a free plan: reminders that the version is free */
-"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium reminders";
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Rappels Freemium";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
-"[Premium/Price Plan/Conditions/future premium features]" = "Future premium features";
+"[Premium/Price Plan/Conditions/future premium features]" = "Fonctionnalités Premium futures";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
-"[Premium/Price Plan/Conditions/perpetual fallback]" = "Rent-to-own license (Perpetual fallback license)";
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Licence en location avec option d'achat (licence supplétive perpétuelle)";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates and bug fixes";
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Mises à jour et correctifs";
 
 /* Price of the free pricing plan */
-"[Premium/Price Plan/Free/price]" = "Free";
+"[Premium/Price Plan/Free/price]" = "Gratuit";
 
 /* Name of the free pricing plan */
-"[Premium/Price Plan/Free/title]" = "Free";
+"[Premium/Price Plan/Free/title]" = "Gratuit";
 
 /* Marks the default pricing plan */
-"[Premium/Price Plan/popular]" = "Popular";
+"[Premium/Price Plan/popular]" = "Populaire";
 
 /* Status: special premium for beta-testing environment is active */
 "[Premium/status] Beta testing" = "Fonctionnalités Beta";
@@ -395,7 +413,7 @@
 "[Premium/Subscription/Legal/text]" = "\nLe paiement sera prélevé sur votre compte Apple au moment de la confirmation de l’achat.\n\nL’abonnement est renouvelé automatiquement à moins qu’il ne soit annulé au moins 24 heures avant la fin de la période en cours. Le renouvellement sera prélevé sur votre compte dans les 24 heures précédant la fin de la période en cours. \n\nVous pouvez gérer et annuler vos abonnements depuis les paramètres du compte dans l’App Store, une fois l’achat réalisé.\n";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
-"[Premium/Trial/trial then price]" = "%1$@ free, then %2$@";
+"[Premium/Trial/trial then price]" = "%1$@ gratuit, puis %2$@";
 
 /* Error message: AppStore returned no available in-app purchase options */
 "[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, il n'y a aucune mise à jour disponible. Cela ne devrait pas se produire, veuillez contacter le support.";
@@ -416,7 +434,7 @@
 "[Premium/Upgrade/price] %@ once" = "%@ une fois";
 
 /* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
-"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / month";
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@/mois";
 
 /* Status message when downloading available in-app purchases */
 "[Premium/Upgrade/Progress] Contacting AppStore..." = "Contacter l'App Store...";
@@ -439,11 +457,14 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Application utile : %1$@/mois, soit environ %2$@/an.";
 
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Icônes personnalisées d'applications";
+
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+"[PremiumFeature/Generic/description]" = "Vous avez trouvé une fonctionnalité premium ! Passez à la version premium et profitez de KeePassium à son meilleur.";
 
 /* A generic title of a premium feature */
-"[PremiumFeature/Generic/title]" = "Premium Feature";
+"[PremiumFeature/Generic/title]" = "Fonctionnalité Premium";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
 "[PremiumFeature/HardwareKeys/description]" = "Renforcez votre sécurité avec des clés matérielles (YubiKey) dans la version premium.";

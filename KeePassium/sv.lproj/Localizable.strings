@@ -172,6 +172,12 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Försök att ta bort filen från appen, lägg sedan till den igen.";
 
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Backup";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Skapad";
 
@@ -190,6 +196,9 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Fel";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Välj en målmapp";
 
@@ -198,6 +207,9 @@
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Kontakta oss";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Continue";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopiera";
@@ -309,6 +321,12 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Förhandsgranska utan ett spår";
+
+/* Explanation of a premium feature */
+"[Premium/Benefits/CustomAppIcon/details]" = "Make KeePassium look unique, familiar, or disguise it as a calculator — the choice is yours.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/CustomAppIcon/title]" = "Change app icon";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "Trött på att skriva in ditt huvudlösenord? Håll din databas öppen längre och lås upp den med en tryckning.";
@@ -438,6 +456,9 @@
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Appen är användbar: %1$@/månad, det är cirka %2$@/år.";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";

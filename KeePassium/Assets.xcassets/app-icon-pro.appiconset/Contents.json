@@ -1,115 +1,112 @@
 {
   "images" : [
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "icon-pro-20@2.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "20x20"
     },
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "icon-pro-20@3.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "size" : "20x20"
     },
     {
-      "size" : "29x29",
+      "filename" : "appicon-atom-black_iPhoneSettings_29@2x.png",
       "idiom" : "iphone",
-      "filename" : "icon-pro-29@2-1.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "29x29"
     },
     {
-      "size" : "29x29",
+      "filename" : "appicon-atom-black_iPhoneSettings_29@3x.png",
       "idiom" : "iphone",
-      "filename" : "icon-pro-29@3.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "size" : "29x29"
     },
     {
-      "size" : "40x40",
+      "filename" : "appicon-atom-black_iPhoneSpotlight_40@2x.png",
       "idiom" : "iphone",
-      "filename" : "icon-pro-40@2-1.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "40x40"
     },
     {
-      "size" : "40x40",
+      "filename" : "appicon-atom-black_iPhoneSpotlight_40@3x.png",
       "idiom" : "iphone",
-      "filename" : "icon-pro-40@3.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "size" : "40x40"
     },
     {
-      "size" : "60x60",
+      "filename" : "appicon-atom-black_iPhoneApp_60@2x.png",
       "idiom" : "iphone",
-      "filename" : "icon-pro-60@2.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "60x60"
     },
     {
-      "size" : "60x60",
+      "filename" : "appicon-atom-black_iPhoneApp_60@3x.png",
       "idiom" : "iphone",
-      "filename" : "icon-pro-60@3.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "size" : "60x60"
     },
     {
       "idiom" : "ipad",
-      "size" : "20x20",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "20x20"
     },
     {
-      "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "icon-pro-20@2-1.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "20x20"
     },
     {
-      "size" : "29x29",
+      "filename" : "appicon-atom-black_iPadSettings_29.png",
       "idiom" : "ipad",
-      "filename" : "icon-pro-29@1.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "29x29"
     },
     {
-      "size" : "29x29",
+      "filename" : "appicon-atom-black_iPadSettings_29@2x.png",
       "idiom" : "ipad",
-      "filename" : "icon-pro-29@2.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "29x29"
     },
     {
-      "size" : "40x40",
+      "filename" : "appicon-atom-black_iPadSpotlight_40.png",
       "idiom" : "ipad",
-      "filename" : "icon-pro-40@1.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "40x40"
     },
     {
-      "size" : "40x40",
+      "filename" : "appicon-atom-black_iPadSpotlight_40@2x.png",
       "idiom" : "ipad",
-      "filename" : "icon-pro-40@2.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "40x40"
     },
     {
-      "size" : "76x76",
+      "filename" : "appicon-atom-black_iPadApp_76.png",
       "idiom" : "ipad",
-      "filename" : "icon-pro-76@1.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "76x76"
     },
     {
-      "size" : "76x76",
+      "filename" : "appicon-atom-black_iPadApp_76@2x.png",
       "idiom" : "ipad",
-      "filename" : "icon-pro-76@2.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "76x76"
     },
     {
-      "size" : "83.5x83.5",
+      "filename" : "appicon-atom-black_iPadProApp_83.5@2x.png",
       "idiom" : "ipad",
-      "filename" : "icon-pro-83.5@2.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "83.5x83.5"
     },
     {
-      "size" : "1024x1024",
+      "filename" : "appicon-atom-black_1024@1x.png",
       "idiom" : "ios-marketing",
-      "filename" : "icon-pro-1024.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "1024x1024"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

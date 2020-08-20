@@ -77,10 +77,10 @@
 "[Database/Progress] Loading key file..." = "キーファイルを読み込み中...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "データベースをダウンロード中...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "バックアップを作成中...";
 
 /* Progress status */
 "[Database/Progress/resolving]" = "ストレージに接続中...";
@@ -244,20 +244,32 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "パスワードまたはキーファイルが無効です";
 
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "ストレージが利用できません。アプリがインストールされログインしているか確認してください。";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@が利用できません。アプリがインストールされログインしているか確認してください。";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "ネットワークストレージが切断されました。";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USBドライブが切断されました。";
+
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "KeePassium内部エラーです。サポートにお問い合わせください。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "ストレージが応答しません。";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ は応答しません。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "ストレージが応答しません。";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ は応答しません。";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "ファイルを削除できません: %@";
@@ -296,10 +308,10 @@
 "[FileProvider/Nextcloud/name]" = "Nextcloud";
 
 /* Localized name of the local on-device storage, as shown in the Files app. */
-"[FileProvider/On My iPad/name]" = "On My iPad";
+"[FileProvider/On My iPad/name]" = "このiPad内";
 
 /* Localized name of the local on-device storage, as shown in the Files app. */
-"[FileProvider/On My iPhone/name]" = "On My iPhone";
+"[FileProvider/On My iPhone/name]" = "このiPhone内";
 
 /* Localized name of the storage service: OneDrive (https://onedrive.com) */
 "[FileProvider/OneDrive/name]" = "OneDrive";
@@ -317,7 +329,7 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB server";
+"[FileProvider/SMB/name]" = "SMBサーバー";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -332,7 +344,7 @@
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "USBドライブ";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";

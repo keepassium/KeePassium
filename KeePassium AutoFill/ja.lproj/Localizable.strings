@@ -22,6 +22,9 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "呼出先ID: %@";
 
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "自動入力は、メインアプリ内のファイルに勝手にはアクセスできません。\n\nなぜか。自動入力は、メインアプリとは別のアプリとして扱われており、安全のため、外部のファイルにアクセスできない仕組みになっています。ユーザーが明示的に指定したファイルに限定されるのです。こうすることで、ユーザーが許可したファイルにしかアプリがアクセスできないことが保証されています。\n\nその結果、メインアプリと自動入力はそれぞれ別々にファイルアクセスの許可を必要とします。ただ、これは一度すれば済む手続きです。";
+
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
 
@@ -109,6 +112,12 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "ファイルをアプリから一旦削除して、再度追加してみてください。";
 
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "バックアップ";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "ファイル属性の更新に失敗しました。";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "作成日";
 
@@ -127,11 +136,17 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "エラー";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "iCloud/iTunesのバックアップから除外";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "キャンセル";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "お問い合わせ";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "続ける";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "コピー";
@@ -237,6 +252,9 @@
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Premiumにアップグレード";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "アプリのアイコン変更";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "プレミアム機能を見つけました！プレミアム版にアップグレードすると、KeePassiumを最高の状態でお使いいただけます。";

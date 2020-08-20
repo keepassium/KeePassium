@@ -35,37 +35,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No Key File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="9UZ-FK-v73" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No Key File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="9UZ-FK-v73">
                                             <rect key="frame" x="60" y="9" width="85.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="9UZ-FK-v73.text"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="KeyFileChooserVC"/>
-                                            </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="no-keyfile-listitem" id="mtg-wq-fAX">
                                             <rect key="frame" x="16" y="14" width="29" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="tintColor" name="IconTint"/>
                                         </imageView>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use only password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="leO-vH-qBX" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use only password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="leO-vH-qBX">
                                             <rect key="frame" x="60" y="32.5" width="107" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" name="AuxiliaryText"/>
                                             <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="leO-vH-qBX.text"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="KeyFileChooserVC"/>
-                                            </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KeyFileCell" id="bN7-mQ-yah" customClass="FileListCell" customModule="KeePassium" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KeyFileCell" id="bN7-mQ-yah" customClass="FileListCell" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="85.5" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bN7-mQ-yah" id="8rf-Nh-a9R">

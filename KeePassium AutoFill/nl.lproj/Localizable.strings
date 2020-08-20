@@ -20,7 +20,10 @@
 "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Premium-upgrade";
 
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
-"[AutoFill/Search/callerID]" = "Caller ID: %@";
+"[AutoFill/Search/callerID]" = "Gespreksidentiteit: %@";
+
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "AutoFill kan niet automatisch toegang krijgen tot de bestanden die je al hebt in de KeePassium-app.\n\nWaarom? Achter de schermen behandelt het systeem AutoFill als een aparte app, onafhankelijk van het KeePassium-proces. Om veiligheidsredenen kan een app niet eenvoudig externe bestanden openen, tenzij je deze bestanden expliciet koppelt aan de app. Het systeem garandeert zo dat de app alleen toegang heeft tot de weinige bestanden die je hebt aangegeven.\n\nAls gevolg hiervan moeten zowel AutoFill als de KeePassium-app hun eigen machtigingen krijgen voor elk extern bestand. Gelukkig is dit een eenmalige procedure.";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -109,6 +112,12 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Probeer het bestand uit de app te verwijderen en voeg het dan opnieuw toe.";
 
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Back-up";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Kan bestandsattributen niet bijwerken.";
+
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Aanmaakdatum";
 
@@ -127,11 +136,17 @@
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Fout";
 
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Uitsluiten van iCloud/iTunes back-up";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Annuleer";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Neem contact op";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Doorgaan";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopiëren";
@@ -161,7 +176,7 @@
 "[Generic] OK" = "Oké";
 
 /* Action/button to replace/overwrite an item */
-"[Generic] Overwrite" = "Overwrite";
+"[Generic] Overwrite" = "Overschrijf";
 
 /* Action/button to rename an item */
 "[Generic] Rename" = "Wijzig naam";
@@ -173,7 +188,7 @@
 "[Generic] Show Details" = "Toon details";
 
 /* Checkbox/Button to show a text field in its full size */
-"[Generic] Show more" = "Show more";
+"[Generic] Show more" = "Toon meer";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Weet je het zeker?";
@@ -194,7 +209,7 @@
 "[Generic/File/title] Export Error" = "Exporteerfout";
 
 /* Message shown when trying to copy into an existing file. */
-"[Generic/File/title] File already exists" = "File already exists";
+"[Generic/File/title] File already exists" = "Bestand bestaat al";
 
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Importeerfout";
@@ -221,34 +236,37 @@
 "[Group/New/defaultName] New Group" = "Nieuwe groep";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarematige sleutels zijn niet beschikbaar in automatisch aanvullen.";
 
 /* Master key/unlock option: don't use hardware keys */
-"[HardwareKey/None] No Hardware Key" = "No Hardware Key";
+"[HardwareKey/None] No Hardware Key" = "Geen hardwarematige sleutel";
 
 /* Master key/unlock option: use given slot of YubiKey */
-"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey-sleuf %d";
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
-"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Wil het sleutelbestand verwijderen van de lijst?\n De sleutel blijft bewaard en je kunt deze later weer toevoegen.";
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Upgrade naar Premium";
 
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Aangepaste app-pictogrammen";
+
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+"[PremiumFeature/Generic/description]" = "Je hebt een premium-functie gevonden! Upgrade naar premium en geniet nóg meer van KeePassium.";
 
 /* A generic title of a premium feature */
-"[PremiumFeature/Generic/title]" = "Premium Feature";
+"[PremiumFeature/Generic/title]" = "Premium-functie";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";
+"[PremiumFeature/HardwareKeys/description]" = "Versterk je beveiliging met hardwarematige sleutels (YubiKey) in de premium-versie.";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
-"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardware Keys";
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardwarematige sleutels";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Bespaar tijd bij het invoeren van complexe hoofdwachtwoorden — in de Premium-versie kun je je databank langer open houden.";
@@ -275,16 +293,16 @@
 "[Support/template] (Please describe the problem here)" = "(beschrijf hier het probleem)";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
-"[YubiKey] Don't use YubiKey" = "Without YubiKey";
+"[YubiKey] Don't use YubiKey" = "Zonder YubiKey";
 
 /* Call for action: insert YubiKey 5Ci to the Lightning port */
-"[YubiKey] Insert the key" = "Insert the key";
+"[YubiKey] Insert the key" = "Plug de sleutel in";
 
 /* Call for action: touch the sides of YubiKey 5Ci to continue */
-"[YubiKey] Touch the key" = "Touch the key";
+"[YubiKey] Touch the key" = "Raak de sleutel aan";
 
 /* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
-"[YubiKey] Use YubiKey Slot %d" = "Use YubiKey Slot %d";
+"[YubiKey] Use YubiKey Slot %d" = "Gebruik YubiKey-sleuf %d";
 
 /* Action/button to add database to the app */
 "Add Database" = "Voeg databank toe";

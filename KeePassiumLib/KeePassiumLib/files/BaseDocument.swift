@@ -40,36 +40,28 @@ public class BaseDocument: UIDocument, Synchronizable {
     }
     
     public func open(withTimeout timeout: TimeInterval, _ callback: @escaping OpenCallback) {
-        execute(
-            withTimeout: BaseDocument.timeout,
-            on: BaseDocument.backgroundQueue,
-            slowAsyncOperation: {
-                [weak self] (_ notifyAndCheckIfCanProceed: @escaping ()->Bool) -> () in
-                self?.superOpen {
-                    [weak self] (success) in
-                    guard let self = self else { return }
-
-                    guard notifyAndCheckIfCanProceed() else {
-                        self.close(completionHandler: nil)
-                        return
-                    }
-                    if let error = self.error {
-                        callback(.failure(error))
-                    } else {
-                        callback(.success(self.data))
-                    }
+        BaseDocument.backgroundQueue.addOperation {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            var hasTimedOut = false
+            super.open { [self] (success) in
+                semaphore.signal()
+                if hasTimedOut {
+                    self.close(completionHandler: nil)
                 }
-                
-            }, onSuccess: {
-            }, onTimeout: {
-                self.error = .timeout(fileProvider: self.fileProvider)
-                callback(.failure(.timeout(fileProvider: self.fileProvider)))
             }
-        )
-    }
-
-    private func superOpen(_ callback: @escaping (_ success: Bool)->()) {
-        super.open(completionHandler: callback)
+            if semaphore.wait(timeout: .now() + timeout) == .timedOut {
+                hasTimedOut = true
+                callback(.failure(.timeout(fileProvider: self.fileProvider)))
+                return
+            }
+            
+            if let error = self.error {
+                callback(.failure(error))
+            } else {
+                callback(.success(self.data))
+            }
+        }
     }
     
     override public func contents(forType typeName: String) throws -> Any {

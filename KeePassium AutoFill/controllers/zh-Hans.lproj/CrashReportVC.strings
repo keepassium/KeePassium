@@ -2,8 +2,8 @@
 "ebS-pB-Qan.title" = "关闭";
 
 /* Class = "UILabel"; text = "It seems that AutoFill did not close correctly the last time. \n\nThis can happen with large databases or memory-demanding database settings (Argon2).\n\nPlease contact us if you need help with this."; ObjectID = "kmV-si-Nrg"; */
-"kmV-si-Nrg.text" = "看起来在最后一次使用自动填充没有正确的关闭。\n\n对于较大型的数据库或需要内存的数据库格式(Argon2)，可能会发生这种情况。\n\n如果您需要帮助，请与我们联系。";
+"kmV-si-Nrg.text" = "上一次自动填充似乎没有正确地关闭。 \n\n这可能会发生在大型数据库或要求内存的数据库设置(Argon2)。\n\n如果您需要帮助，请联系我们。";
 
 /* Class = "UINavigationItem"; title = "We are sorry"; ObjectID = "zvf-PV-5l4"; */
-"zvf-PV-5l4.title" = "我们很抱歉";
+"zvf-PV-5l4.title" = "我们非常抱歉";
 

@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "TPInAppReceipt",
-        "repositoryURL": "https://github.com/tikhop/TPInAppReceipt",
+        "repositoryURL": "https://github.com/keepassium/TPInAppReceipt",
         "state": {
           "branch": null,
           "revision": "24d16d30b7ff583601a03cdd47e57dadf086fdbd",

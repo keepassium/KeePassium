@@ -9,12 +9,31 @@
 import UIKit
 import KeePassiumLib
 
+
+protocol AppLockSetupCellDelegate: class {
+    func didPressEnableAppLock(in cell: AppLockSetupCell)
+    func didPressClose(in cell: AppLockSetupCell)
+}
+
 class AppLockSetupCell: UITableViewCell {
-    var buttonHandler: (() -> Void)?
-    @IBAction func didPressButton(_ sender: Any) {
-        buttonHandler?()
+    @IBOutlet weak var dismissButton: UIButton!
+
+    weak var delegate: AppLockSetupCellDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        dismissButton.accessibilityLabel = LString.actionDismiss
+    }
+    
+    @IBAction func didPressEnableAppLock(_ sender: Any) {
+        delegate?.didPressEnableAppLock(in: self)
+    }
+    
+    @IBAction func didPressClose(_ sender: UIButton) {
+        delegate?.didPressClose(in: self)
     }
 }
+
 
 class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
     
@@ -221,6 +240,9 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
     
     private func shouldShowAppLockSetup() -> Bool {
         let settings = Settings.current
+        if settings.isHideAppLockSetupReminder {
+            return false
+        }
         let isDataVulnerable = settings.isRememberDatabaseKey && !settings.isAppLockEnabled
         return isDataVulnerable
     }
@@ -512,9 +534,7 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
             let cell = tableView
                 .dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
                 as! AppLockSetupCell
-            cell.buttonHandler = { [weak self] in
-                self?.didPressAppLockSetup()
-            }
+            cell.delegate = self
             return cell
         }
     }
@@ -678,7 +698,13 @@ extension ChooseDatabaseVC: WelcomeDelegate {
 
 extension ChooseDatabaseVC: PasscodeInputDelegate {
     func passcodeInputDidCancel(_ sender: PasscodeInputVC) {
-        Settings.current.isAppLockEnabled = false
+        do {
+            try Keychain.shared.removeAppPasscode() 
+        } catch {
+            Diag.error(error.localizedDescription)
+            showErrorAlert(error, title: LString.titleKeychainError)
+            return
+        }
         sender.dismiss(animated: true, completion: nil)
         tableView.reloadData()
     }
@@ -692,14 +718,23 @@ extension ChooseDatabaseVC: PasscodeInputDelegate {
             [weak self] in
             do {
                 try Keychain.shared.setAppPasscode(passcode)
-                let settings = Settings.current
-                settings.isAppLockEnabled = true
-                settings.isBiometricAppLockEnabled = true
+                Settings.current.isBiometricAppLockEnabled = true
                 self?.tableView.reloadData()
             } catch {
                 Diag.error(error.localizedDescription)
                 self?.showErrorAlert(error, title: LString.titleKeychainError)
             }
         }
+    }
+}
+
+extension ChooseDatabaseVC: AppLockSetupCellDelegate {
+    func didPressClose(in cell: AppLockSetupCell) {
+        Settings.current.isHideAppLockSetupReminder = true
+        tableView.reloadSections([0], with: .automatic)
+    }
+    
+    func didPressEnableAppLock(in cell: AppLockSetupCell) {
+        didPressAppLockSetup()
     }
 }

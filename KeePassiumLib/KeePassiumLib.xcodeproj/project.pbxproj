@@ -19,6 +19,7 @@
 		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
+		754CADAD24D8568800AC655F /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 754CADAC24D8568800AC655F /* TPInAppReceipt */; };
 		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
 		757CB44223993E48000867F0 /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CB44123993E48000867F0 /* DatabaseSettings.swift */; };
@@ -133,7 +134,6 @@
 		75F4ACF321774A6400B22D8B /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACF121774A6300B22D8B /* Clipboard.swift */; };
 		75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACF221774A6300B22D8B /* URL+extensions.swift */; };
 		75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F594B7221BDC51001729FD /* SettingsMigrator.swift */; };
-		75F74AB824BF496F0071281E /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 75F74AB724BF496F0071281E /* TPInAppReceipt */; };
 		75F74ABA24C082F90071281E /* ReceiptAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74AB924C082F90071281E /* ReceiptAnalyzer.swift */; };
 		75F74ABC24C0EF370071281E /* IARError+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74ABB24C0EF370071281E /* IARError+description.swift */; };
 /* End PBXBuildFile section */
@@ -290,7 +290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75F74AB824BF496F0071281E /* TPInAppReceipt in Frameworks */,
+				754CADAD24D8568800AC655F /* TPInAppReceipt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +671,7 @@
 			);
 			name = KeePassiumLib;
 			packageProductDependencies = (
-				75F74AB724BF496F0071281E /* TPInAppReceipt */,
+				754CADAC24D8568800AC655F /* TPInAppReceipt */,
 			);
 			productName = KeePassiumLib;
 			productReference = 75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */;
@@ -714,7 +714,7 @@
 			);
 			mainGroup = 75D0C7602174AF1F00C64C93;
 			packageReferences = (
-				75F74AB624BF496F0071281E /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
+				754CADAB24D8568800AC655F /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
 			);
 			productRefGroup = 75D0C76B2174AF1F00C64C93 /* Products */;
 			projectDirPath = "";
@@ -1105,9 +1105,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		75F74AB624BF496F0071281E /* XCRemoteSwiftPackageReference "TPInAppReceipt" */ = {
+		754CADAB24D8568800AC655F /* XCRemoteSwiftPackageReference "TPInAppReceipt" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tikhop/TPInAppReceipt";
+			repositoryURL = "https://github.com/keepassium/TPInAppReceipt";
 			requirement = {
 				kind = exactVersion;
 				version = 2.6.1;
@@ -1116,9 +1116,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		75F74AB724BF496F0071281E /* TPInAppReceipt */ = {
+		754CADAC24D8568800AC655F /* TPInAppReceipt */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 75F74AB624BF496F0071281E /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
+			package = 754CADAB24D8568800AC655F /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
 /* End XCSwiftPackageProductDependency section */

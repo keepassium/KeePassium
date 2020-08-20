@@ -110,15 +110,11 @@ class SettingsAppLockVC: UITableViewController, Refreshable {
     
     @IBAction func didChangeAppLockEnabledSwitch(_ sender: Any) {
         if !appLockEnabledSwitch.isOn {
-            Settings.current.isAppLockEnabled = false
             do {
                 try Keychain.shared.removeAppPasscode() 
             } catch {
                 Diag.error(error.localizedDescription)
-                let alert = UIAlertController.make(
-                    title: LString.titleKeychainError,
-                    message: error.localizedDescription)
-                present(alert, animated: true, completion: nil)
+                showErrorAlert(error, title: LString.titleKeychainError)
             }
         } else {
             let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
@@ -151,9 +147,14 @@ extension SettingsAppLockVC: SettingsObserver {
 
 extension SettingsAppLockVC: PasscodeInputDelegate {
     func passcodeInputDidCancel(_ sender: PasscodeInputVC) {
-        Settings.current.isAppLockEnabled = false
+        do {
+            try Keychain.shared.removeAppPasscode()
+        } catch {
+            Diag.error(error.localizedDescription)
+            showErrorAlert(error, title: LString.titleKeychainError)
+            return
+        }
         passcodeInputVC?.dismiss(animated: true, completion: nil)
-        refresh()
     }
     
     func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
@@ -165,7 +166,6 @@ extension SettingsAppLockVC: PasscodeInputDelegate {
             [weak self] in
             do {
                 try Keychain.shared.setAppPasscode(passcode)
-                Settings.current.isAppLockEnabled = true
             } catch {
                 Diag.error(error.localizedDescription)
                 let alert = UIAlertController.make(

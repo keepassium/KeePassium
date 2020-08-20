@@ -5,22 +5,22 @@
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numeriek";
 
 /* Error message when the challenge-response communication has been cancelled by the user. */
-"[ChallengeResponseError] cancelled" = "Cancelled by the user.";
+"[ChallengeResponseError] cancelled" = "Afgebroken door gebruiker.";
 
 /* Error message when the hardware key is not plugged in. */
-"[ChallengeResponseError] keyNotConnected" = "Hardware key is not connected.";
+"[ChallengeResponseError] keyNotConnected" = "De hardwarematige sleutel is niet aangekoppeld.";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "Hardware keys are not available in AutoFill.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "Hardwarematige sleutels zijn niet beschikbaar in AutoFill.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardware keys are not supported by this database format.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardwarematige sleutels worden niet ondersteund door dit databankformaat.";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
-"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "This device or iOS version does not support hardware keys (%@)";
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Dit apparaat of deze iOS-versie ondersteunt geen hardwarematige sleutels (%@)";
 
 /* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
-"[ChallengeResponseError] slotNotConfigured" = "Hardware key is not configured for challenge-response.";
+"[ChallengeResponseError] slotNotConfigured" = "De hardwarematige sleutel is niet ingesteld voor actie-authenticatie.";
 
 /* Progress status */
 "[Cipher/Progress] Decrypting" = "Ontsleutelen";
@@ -77,13 +77,13 @@
 "[Database/Progress] Loading key file..." = "Bezig met laden van sleutelbestand...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "Bezig met ophalen van databankbestand...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "Bezig met samenstellen van back-up...";
 
 /* Progress status */
-"[Database/Progress/resolving]" = "Contacting storage provider...";
+"[Database/Progress/resolving]" = "Bezig met verbinden met opslagdienst...";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Kan sleutelbestand niet openen";
@@ -203,13 +203,13 @@
 "[Database2/Progress] Writing encrypted blocks" = "Bezig met wegschrijven van versleutelde blokken";
 
 /* Progress bar status: un-zipping the database content */
-"[Database2/Progress/decompressing]" = "Decompressing database";
+"[Database2/Progress/decompressing]" = "Bezig met decomprimeren van databank";
 
 /* Progress bar status */
-"[Database2/Progress/integrityCheck]" = "Checking integrity";
+"[Database2/Progress/integrityCheck]" = "Bezig met integriteitscontrole";
 
 /* Progress bar status: parsing decrypted XML content */
-"[Database2/Progress/parsingXML]" = "Parsing database";
+"[Database2/Progress/parsingXML]" = "Bezig met verwerken van databank";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "Fout bij gegevenscompressie: %@";
@@ -244,20 +244,32 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Ongeldig wachtwoord of sleutelbestand";
 
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "Opslag provider is niet beschikbaar. Controleer of deze is geïnstalleerd en dat uw account is ingelogd.";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ is niet beschikbaar. Controleer of deze is geïnstalleerd en dat uw account is ingelogd.";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Netwerkopslag is niet verbonden.";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB-schijf is niet verbonden.";
+
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "Interne KeePassium-fout. Meld dit aan ons.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "De opslagdienst reageert niet.";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ reageert niet.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "De opslagdienst reageert niet.";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ reageert niet.";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Kan bestand niet verwijderen. Reden: %@";
@@ -317,7 +329,7 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB server";
+"[FileProvider/SMB/name]" = "SMB-server";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -332,7 +344,7 @@
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "USB-schijf";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";

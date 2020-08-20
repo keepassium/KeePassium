@@ -49,9 +49,6 @@
 /* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
 "PpA-oZ-kr2.text" = "Journal de diagnostic";
 
-/* Class = "UITableViewSection"; headerTitle = "Search"; ObjectID = "qEE-z7-pd0"; Note = "Section title in settings"; */
-"qEE-z7-pd0.headerTitle" = "Recherche";
-
 /* Class = "UILabel"; text = "For expert troubleshooting"; ObjectID = "qhK-lw-bGy"; Note = "Subtitle for `Diagnostic Log`. Keep it short."; */
 "qhK-lw-bGy.text" = "Résolution de problèmes pour expert";
 
@@ -64,11 +61,11 @@
 /* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
 "T2Z-oa-zJR.text" = "Remplissage automatique des mots de passe";
 
+/* Class = "UILabel"; text = "App Icon"; ObjectID = "TUE-Aw-fJl"; Note = "Section in settings: icon for the app"; */
+"TUE-Aw-fJl.text" = "Icône d'application";
+
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "Protection des données";
-
-/* Class = "UITableViewSection"; headerTitle = "AutoFill"; ObjectID = "ZFi-ss-fUa"; */
-"ZFi-ss-fUa.headerTitle" = "Remplissage automatique";
 
 /* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
 "zUh-Sn-3ya.text" = "Gérer les abonnements";

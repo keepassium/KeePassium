@@ -287,13 +287,17 @@ public class FileKeeper {
     func scanLocalDirectory(_ dirURL: URL, fileType: FileType) -> [URLReference] {
         var refs: [URLReference] = []
         let location = getLocation(for: dirURL)
+        assert(location != .external, "This should be used only on local directories.")
+        
+        let isIgnoreFileType = (location == .internalBackup)
         do {
             let dirContents = try FileManager.default.contentsOfDirectory(
                 at: dirURL,
                 includingPropertiesForKeys: nil,
                 options: [])
             for url in dirContents {
-                if !url.isDirectory && FileType(for: url) == fileType {
+                let isFileTypeMatch = isIgnoreFileType || FileType(for: url) == fileType
+                if isFileTypeMatch && !url.isDirectory {
                     let urlRef = try URLReference(from: url, location: location)
                     refs.append(urlRef)
                 }
@@ -674,7 +678,12 @@ public class FileKeeper {
     }
     
     
-    func makeBackup(nameTemplate: String, contents: ByteArray) {
+    enum BackupMode {
+        case latest
+        case timestamped
+    }
+    
+    func makeBackup(nameTemplate: String, mode: BackupMode, contents: ByteArray) {
         guard !contents.isEmpty else {
             Diag.info("No data to backup.")
             return
@@ -683,7 +692,28 @@ public class FileKeeper {
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         guard let nameTemplateURL = URL(string: encodedNameTemplate) else { return }
         
-        deleteExpiredBackupFiles()
+        let timestamp: Date
+        let fileNameSuffix: String
+        switch mode {
+        case .latest:
+            timestamp = Date.now
+            fileNameSuffix = ".latest"
+        case .timestamped:
+            timestamp = Date.now - 1.0
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd_HHmmss"
+            fileNameSuffix = "_" + dateFormatter.string(from: timestamp)
+        }
+        
+        let baseFileName = nameTemplateURL
+            .deletingPathExtension()
+            .absoluteString
+            .removingPercentEncoding  
+            ?? nameTemplate           
+        let backupFileURL = backupDirURL
+            .appendingPathComponent(baseFileName + fileNameSuffix, isDirectory: false)
+            .appendingPathExtension(nameTemplateURL.pathExtension)
         
         let fileManager = FileManager.default
         do {
@@ -691,28 +721,19 @@ public class FileKeeper {
                 at: backupDirURL,
                 withIntermediateDirectories: true,
                 attributes: nil)
-
-            let timestamp = Date.now - 1.0
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd_HHmmss"
-            let timestampStr = dateFormatter.string(from: timestamp)
-
-            let baseFileName = nameTemplateURL
-                .deletingPathExtension()
-                .absoluteString
-                .removingPercentEncoding  
-                ?? nameTemplate           
-            let baseFileExt = nameTemplateURL.pathExtension
-            let backupFileURL = backupDirURL
-                .appendingPathComponent(baseFileName + "_" + timestampStr, isDirectory: false)
-                .appendingPathExtension(baseFileExt)
-            try contents.asData.write(to: backupFileURL, options: .atomic)
             
+            try contents.asData.write(to: backupFileURL, options: .atomic)
             try fileManager.setAttributes(
                 [FileAttributeKey.creationDate: timestamp,
                  FileAttributeKey.modificationDate: timestamp],
                 ofItemAtPath: backupFileURL.path)
-            Diag.info("Backup copy created OK")
+
+            switch mode {
+            case .latest:
+                Diag.info("Latest backup updated OK")
+            case .timestamped:
+                Diag.info("Backup copy created OK")
+            }
         } catch {
             Diag.warning("Failed to make backup copy [error: \(error.localizedDescription)]")
         }

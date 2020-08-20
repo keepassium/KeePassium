@@ -99,6 +99,17 @@ struct PricingPlanBenefit {
             value: "Preview attached files directly in KeePassium and leave no traces in other apps. (Works with images, documents, archives and more.)",
             comment: "Explanation of the premium feature")
     )
+    static let customAppIcons = PricingPlanBenefit(
+        image: .premiumBenefitCustomAppIcons,
+        title: NSLocalizedString(
+            "[Premium/Benefits/CustomAppIcon/title]",
+            value: "Change app icon",
+            comment: "Title of a premium feature"),
+        description: NSLocalizedString(
+            "[Premium/Benefits/CustomAppIcon/details]",
+            value: "Make KeePassium look unique, familiar, or disguise it as a calculator — the choice is yours.",
+            comment: "Explanation of a premium feature")
+    )
 }
 
 class PricingPlanFactory {
@@ -175,6 +186,7 @@ class FreePricingPlan: PricingPlan {
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = nil
     }
@@ -234,6 +246,7 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -259,6 +272,7 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -284,6 +298,7 @@ class PricingPlanPremiumForever: RealPricingPlan {
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = nil
     }

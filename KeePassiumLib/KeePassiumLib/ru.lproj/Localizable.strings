@@ -244,6 +244,18 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Неверный пароль или ключевой файл";
 
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "Хранилище файлов недоступно. Убедитесь, что соответствующее приложение установлено и подключено к вашему аккаунту.";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ недоступен. Убедитесь, что соответствующее приложение установлено и подключено к вашему аккаунту.";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Сетевое хранилище не подключено.";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB-накопитель не подключен.";
+
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Внутренняя ошибка KeePassium. Пожалуйста, сообщите нам об этом.";
 

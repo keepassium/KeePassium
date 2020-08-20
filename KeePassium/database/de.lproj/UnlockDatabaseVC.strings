@@ -10,9 +10,6 @@
 /* Class = "UIButton"; normalTitle = "Lock Database"; ObjectID = "gji-1x-co5"; */
 "gji-1x-co5.normalTitle" = "Datenbank sperren";
 
-/* Class = "UIButton"; normalTitle = "Upgrade to Premium"; ObjectID = "i6N-fq-JbM"; Note = "Action: open upgrade screen. Please avoid money-related words like 'buy' or 'purchase'.  If there is no good translation for the 'Upgrade' call for action, it's ok to replace it with 'get', or even reduce the phrase to  'Premium'."; */
-"i6N-fq-JbM.normalTitle" = "Auf Premium aktualisieren";
-
 /* Class = "UILabel"; text = "Will use the remembered master key."; ObjectID = "K3Y-ON-C19"; Note = "Hint shown below the Unlock button, when not asking for master password/key file."; */
 "K3Y-ON-C19.text" = "Letzter gespeicherter Master Key wird verwendet.";
 

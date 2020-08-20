@@ -69,49 +69,4 @@ public extension Synchronizable {
             }
         }
     }
-
-    
-    func execute(
-        withTimeout timeout: TimeInterval,
-        on queue: OperationQueue,
-        slowAsyncOperation: @escaping (_ notifyAndCheckIfCanProceed: @escaping ()->Bool)->(),
-        onSuccess: @escaping ()->(),
-        onTimeout: @escaping ()->())
-    {
-        assert(timeout >= TimeInterval.zero)
-        queue.addOperation { [self] in 
-            assert(!Thread.isMainThread)
-            
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            var isCancelled = false
-            var isFinished = false
-            slowAsyncOperation { [weak self] in
-                guard let self = self else {
-                    return false 
-                }
-                semaphore.signal()
-                self.synchronized {
-                    if !isCancelled {
-                        isFinished = true
-                    }
-                }
-                return isFinished 
-            }
-            
-            if semaphore.wait(timeout: .now() + timeout) == .timedOut {
-                self.synchronized {
-                    if !isFinished {
-                        isCancelled = true
-                    }
-                }
-            }
-            
-            if isFinished {
-                onSuccess()
-            } else {
-                onTimeout()
-            }
-        }
-    }
 }

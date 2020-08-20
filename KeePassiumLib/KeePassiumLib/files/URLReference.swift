@@ -364,44 +364,53 @@ public class URLReference:
             }
             self.registerInfoRefreshRequest(.completed)
             switch result {
+            case .success(_):
+                self.readFileInfo(url: url, completion: callback)
             case .failure(let fileAccessError):
                 DispatchQueue.main.async { 
                     self.error = fileAccessError
                     callback(.failure(fileAccessError))
                 }
-            case .success(_):
-                let attributeKeys: Set<URLResourceKey> = [
-                    .fileSizeKey,
-                    .creationDateKey,
-                    .contentModificationDateKey,
-                    .isExcludedFromBackupKey,
-                    .ubiquitousItemDownloadingStatusKey,
-                ]
-                let attributes: URLResourceValues
-                do {
-                    attributes = try url.resourceValues(forKeys: attributeKeys)
-                } catch {
-                    Diag.error("Failed to get file info [reason: \(error.localizedDescription)]")
-                    let fileAccessError = FileAccessError.systemError(error)
-                    DispatchQueue.main.async { 
-                        self.error = fileAccessError
-                        callback(.failure(fileAccessError))
-                    }
-                    return
-                }
-
-                let latestInfo = FileInfo(
-                    fileName: url.lastPathComponent,
-                    fileSize: Int64(attributes.fileSize ?? -1),
-                    creationDate: attributes.creationDate,
-                    modificationDate: attributes.contentModificationDate,
-                    isExcludedFromBackup: attributes.isExcludedFromBackup ?? false)
-                self.cachedInfo = latestInfo
-                DispatchQueue.main.async {
-                    self.error = nil
-                    callback(.success(latestInfo))
-                }
             }
+        }
+    }
+    
+    private func readFileInfo(url: URL, completion callback: @escaping InfoCallback) {
+        assert(!Thread.isMainThread)
+        let attributeKeys: Set<URLResourceKey> = [
+            .fileSizeKey,
+            .creationDateKey,
+            .contentModificationDateKey,
+            .isExcludedFromBackupKey,
+            .ubiquitousItemDownloadingStatusKey,
+        ]
+
+        var urlWithFreshAttributes = url
+        urlWithFreshAttributes.removeAllCachedResourceValues()
+        
+        let attributes: URLResourceValues
+        do {
+            attributes = try urlWithFreshAttributes.resourceValues(forKeys: attributeKeys)
+        } catch {
+            Diag.error("Failed to get file info [reason: \(error.localizedDescription)]")
+            let fileAccessError = FileAccessError.systemError(error)
+            DispatchQueue.main.async { 
+                self.error = fileAccessError
+                callback(.failure(fileAccessError))
+            }
+            return
+        }
+        
+        let latestInfo = FileInfo(
+            fileName: urlWithFreshAttributes.lastPathComponent,
+            fileSize: Int64(attributes.fileSize ?? -1),
+            creationDate: attributes.creationDate,
+            modificationDate: attributes.contentModificationDate,
+            isExcludedFromBackup: attributes.isExcludedFromBackup ?? false)
+        self.cachedInfo = latestInfo
+        DispatchQueue.main.async {
+            self.error = nil
+            callback(.success(latestInfo))
         }
     }
     

@@ -5,10 +5,10 @@
 "e1v-nv-Mst.normalTitle" = "Wis hoofdsleutels";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "Hide passwords and other protected fields behind asterisks (recommended).";
+"e6Y-AP-hag.footerTitle" = "Maskeer wachtwoorden en andere beveiligde velden met jokertekens (aanbevolen).";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.headerTitle" = "Protected Fields";
+"e6Y-AP-hag.headerTitle" = "Beveiligde velden";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.footerTitle" = "Zodra je een databank ontgrendelt, kan de hoofdsleutel worden opgeslagen in de beveiligde sleutelhanger van het systeem. De eerstvolgende keer gebruikt KeePassium deze sleutel zodat je je volledige hoofdwachtwoord niet opnieuw hoeft te typen. \n\n(de hoofdsleutels worden automatisch gewist bij een databanktime-out)";
@@ -17,10 +17,10 @@
 "Faj-km-pM5.headerTitle" = "Snel ontgrendelen";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Use Universal Clipboard to copy and paste between your Apple devices.";
+"g9a-rJ-4WJ.footerTitle" = "Gebruik het universele klembord om te kopiëren en plakken tussen je Apple-apparaten.";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
-"gTm-F6-EDQ.text" = "Clear Master Keys on Timeout";
+"gTm-F6-EDQ.text" = "Wis hoofdsleutels bij time-out";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.footerTitle" = "Als je iets kopieert, dan wist KeePassium na enige tijd automatisch je klembord.";
@@ -50,7 +50,7 @@
 "neJ-eG-TV7.headerTitle" = "Vergrendel automatisch";
 
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
-"pid-k2-idJ.text" = "Hide Passwords";
+"pid-k2-idJ.text" = "Verberg wachtwoorden";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Klembordtime-out";
@@ -59,5 +59,5 @@
 "weX-SZ-IDB.text" = "Databanktime-out";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
-"YL6-U9-FM6.text" = "Universal Clipboard";
+"YL6-U9-FM6.text" = "Universeel klembord";
 

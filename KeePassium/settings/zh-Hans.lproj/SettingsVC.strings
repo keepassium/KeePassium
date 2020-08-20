@@ -1,8 +1,8 @@
 /* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9yn-W3-FDl"; Note = "Section in settings: settings that define what happens when the app is started."; */
-"9yn-W3-FDl.headerTitle" = "Start";
+"9yn-W3-FDl.headerTitle" = "启动";
 
 /* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
-"756-sL-G2t.text" = "Auto-open the Previous Database";
+"756-sL-G2t.text" = "自动打开之前的数据库";
 
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
 "A5N-B3-t3t.headerTitle" = "高级版";
@@ -29,7 +29,7 @@
 "FHp-ns-ke9.text" = "主密钥, 密钥文件";
 
 /* Class = "UILabel"; text = "Search"; ObjectID = "GLr-Uf-Kln"; Note = "Section title in settings"; */
-"GLr-Uf-Kln.text" = "Search";
+"GLr-Uf-Kln.text" = "搜索​​​​";
 
 /* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
 "HCe-A3-eG6.text" = "高级版本";
@@ -49,9 +49,6 @@
 /* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
 "PpA-oZ-kr2.text" = "诊断日志";
 
-/* Class = "UITableViewSection"; headerTitle = "Search"; ObjectID = "qEE-z7-pd0"; Note = "Section title in settings"; */
-"qEE-z7-pd0.headerTitle" = "Search";
-
 /* Class = "UILabel"; text = "For expert troubleshooting"; ObjectID = "qhK-lw-bGy"; Note = "Subtitle for `Diagnostic Log`. Keep it short."; */
 "qhK-lw-bGy.text" = "用于给作者排除故障";
 
@@ -64,11 +61,11 @@
 /* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
 "T2Z-oa-zJR.text" = "自动填写密码";
 
+/* Class = "UILabel"; text = "App Icon"; ObjectID = "TUE-Aw-fJl"; Note = "Section in settings: icon for the app"; */
+"TUE-Aw-fJl.text" = "App Icon";
+
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "数据保护";
-
-/* Class = "UITableViewSection"; headerTitle = "AutoFill"; ObjectID = "ZFi-ss-fUa"; */
-"ZFi-ss-fUa.headerTitle" = "自动填入功能";
 
 /* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
 "zUh-Sn-3ya.text" = "管理订阅";

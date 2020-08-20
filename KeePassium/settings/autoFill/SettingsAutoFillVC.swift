@@ -13,6 +13,7 @@ class SettingsAutoFillVC: UITableViewController {
 
     @IBOutlet weak var copyTOTPSwitch: UISwitch!
     @IBOutlet weak var perfectMatchSwitch: UISwitch!
+    @IBOutlet weak var appIconImage: UIImageView!
     
     private var settingsNotifications: SettingsNotifications!
 
@@ -37,6 +38,7 @@ class SettingsAutoFillVC: UITableViewController {
         let settings = Settings.current
         copyTOTPSwitch.isOn = settings.isCopyTOTPOnAutoFill
         perfectMatchSwitch.isOn = settings.autoFillPerfectMatch
+        appIconImage.image = AppIcon.current
     }
     
     

@@ -28,6 +28,12 @@
 		7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
 		75151D3323268AB300F3C411 /* UILabel+strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */; };
 		75151D3423268AB300F3C411 /* UILabel+strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */; };
+		751A564F24CCD3C0001227D6 /* AppIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */; };
+		751A565024CCD3C0001227D6 /* AppIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */; };
+		751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565124CCD3CD001227D6 /* AppIconPicker.swift */; };
+		751A565324CCD3CD001227D6 /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565124CCD3CD001227D6 /* AppIconPicker.swift */; };
+		751A565524CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */; };
+		751A565624CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */; };
 		751BE253211C395D0071050A /* ViewDiagnosticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BE252211C395D0071050A /* ViewDiagnosticsVC.swift */; };
 		751E0CE62309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */; };
 		751E0CE92309AE860088BB10 /* SettingsFileSortingVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEB2309AE860088BB10 /* SettingsFileSortingVC.storyboard */; };
@@ -161,10 +167,6 @@
 		757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
 		757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
 		757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
-		757ADC4A23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */; };
-		757ADC4B23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */; };
-		757ADC4C23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */; };
-		757ADC4D23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */; };
 		757ADC5023A5180600D708D2 /* DismissablePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4E23A5180600D708D2 /* DismissablePopover.swift */; };
 		757ADC5123A5180600D708D2 /* DismissablePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4E23A5180600D708D2 /* DismissablePopover.swift */; };
 		757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4E23A5180600D708D2 /* DismissablePopover.swift */; };
@@ -190,6 +192,10 @@
 		75839A90246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */; };
 		75839A91246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */; };
 		7584B3F120DD908A0086C094 /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
+		7584CEF024D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
+		7584CEF124D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
+		7584CEF224D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
+		7584CEF324D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
 		758544642351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
 		758544652351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
 		758544662351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
@@ -209,6 +215,88 @@
 		758BF0D820D1B1DA00897C83 /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */; };
 		758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */; };
 		758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
+		758FC10F24CEF71F00BAD35C /* appicon-info_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0D824CEF71500BAD35C /* appicon-info_iPadProApp_83.5@2x.png */; };
+		758FC11024CEF71F00BAD35C /* appicon-info_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0D824CEF71500BAD35C /* appicon-info_iPadProApp_83.5@2x.png */; };
+		758FC11124CEF72000BAD35C /* appicon-info_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0D924CEF71500BAD35C /* appicon-info_iPadApp_76.png */; };
+		758FC11224CEF72000BAD35C /* appicon-info_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0D924CEF71500BAD35C /* appicon-info_iPadApp_76.png */; };
+		758FC11324CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */; };
+		758FC11424CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */; };
+		758FC11524CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DB24CEF71500BAD35C /* appicon-classic-free_iPadApp_76@2x.png */; };
+		758FC11624CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DB24CEF71500BAD35C /* appicon-classic-free_iPadApp_76@2x.png */; };
+		758FC11724CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DC24CEF71500BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png */; };
+		758FC11824CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DC24CEF71500BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png */; };
+		758FC11924CEF72000BAD35C /* appicon-atom-blue_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DD24CEF71500BAD35C /* appicon-atom-blue_iPadApp_76.png */; };
+		758FC11A24CEF72000BAD35C /* appicon-atom-blue_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DD24CEF71500BAD35C /* appicon-atom-blue_iPadApp_76.png */; };
+		758FC11B24CEF72000BAD35C /* appicon-classic-free_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DE24CEF71500BAD35C /* appicon-classic-free_iPadApp_76.png */; };
+		758FC11C24CEF72000BAD35C /* appicon-classic-free_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DE24CEF71500BAD35C /* appicon-classic-free_iPadApp_76.png */; };
+		758FC11D24CEF72000BAD35C /* appicon-info_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DF24CEF71600BAD35C /* appicon-info_iPhoneApp_60@3x.png */; };
+		758FC11E24CEF72000BAD35C /* appicon-info_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DF24CEF71600BAD35C /* appicon-info_iPhoneApp_60@3x.png */; };
+		758FC11F24CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E024CEF71600BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png */; };
+		758FC12024CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E024CEF71600BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png */; };
+		758FC12524CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E324CEF71600BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png */; };
+		758FC12624CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E324CEF71600BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png */; };
+		758FC12924CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E524CEF71700BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png */; };
+		758FC12A24CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E524CEF71700BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png */; };
+		758FC12B24CEF72000BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E624CEF71700BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png */; };
+		758FC12C24CEF72000BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E624CEF71700BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png */; };
+		758FC12D24CEF72000BAD35C /* appicon-info_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E724CEF71700BAD35C /* appicon-info_iPadApp_76@2x.png */; };
+		758FC12E24CEF72000BAD35C /* appicon-info_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E724CEF71700BAD35C /* appicon-info_iPadApp_76@2x.png */; };
+		758FC12F24CEF72000BAD35C /* appicon-atom-black_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E824CEF71700BAD35C /* appicon-atom-black_iPadApp_76.png */; };
+		758FC13024CEF72000BAD35C /* appicon-atom-black_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E824CEF71700BAD35C /* appicon-atom-black_iPadApp_76.png */; };
+		758FC13124CEF72000BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E924CEF71700BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png */; };
+		758FC13224CEF72000BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E924CEF71700BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png */; };
+		758FC13324CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EA24CEF71700BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png */; };
+		758FC13424CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EA24CEF71700BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png */; };
+		758FC13724CEF72000BAD35C /* appicon-calc_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EC24CEF71800BAD35C /* appicon-calc_iPadProApp_83.5@2x.png */; };
+		758FC13824CEF72000BAD35C /* appicon-calc_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EC24CEF71800BAD35C /* appicon-calc_iPadProApp_83.5@2x.png */; };
+		758FC13B24CEF72000BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EE24CEF71800BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png */; };
+		758FC13C24CEF72000BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EE24CEF71800BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png */; };
+		758FC13D24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EF24CEF71800BAD35C /* appicon-calc_iPhoneApp_60@2x.png */; };
+		758FC13E24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EF24CEF71800BAD35C /* appicon-calc_iPhoneApp_60@2x.png */; };
+		758FC13F24CEF72000BAD35C /* appicon-atom-white_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F024CEF71900BAD35C /* appicon-atom-white_iPadApp_76@2x.png */; };
+		758FC14024CEF72000BAD35C /* appicon-atom-white_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F024CEF71900BAD35C /* appicon-atom-white_iPadApp_76@2x.png */; };
+		758FC14124CEF72000BAD35C /* appicon-classic-pro_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F124CEF71900BAD35C /* appicon-classic-pro_iPadApp_76@2x.png */; };
+		758FC14224CEF72000BAD35C /* appicon-classic-pro_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F124CEF71900BAD35C /* appicon-classic-pro_iPadApp_76@2x.png */; };
+		758FC14524CEF72000BAD35C /* appicon-atom-black_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F324CEF71900BAD35C /* appicon-atom-black_iPadApp_76@2x.png */; };
+		758FC14624CEF72000BAD35C /* appicon-atom-black_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F324CEF71900BAD35C /* appicon-atom-black_iPadApp_76@2x.png */; };
+		758FC14724CEF72000BAD35C /* appicon-atom-white_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F424CEF71A00BAD35C /* appicon-atom-white_iPadApp_76.png */; };
+		758FC14824CEF72000BAD35C /* appicon-atom-white_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F424CEF71A00BAD35C /* appicon-atom-white_iPadApp_76.png */; };
+		758FC14924CEF72000BAD35C /* appicon-calc_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F524CEF71A00BAD35C /* appicon-calc_iPhoneApp_60@3x.png */; };
+		758FC14A24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F524CEF71A00BAD35C /* appicon-calc_iPhoneApp_60@3x.png */; };
+		758FC14B24CEF72000BAD35C /* appicon-keepass_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F624CEF71A00BAD35C /* appicon-keepass_iPadApp_76@2x.png */; };
+		758FC14C24CEF72000BAD35C /* appicon-keepass_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F624CEF71A00BAD35C /* appicon-keepass_iPadApp_76@2x.png */; };
+		758FC14D24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F724CEF71A00BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png */; };
+		758FC14E24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F724CEF71A00BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png */; };
+		758FC14F24CEF72000BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F824CEF71A00BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png */; };
+		758FC15024CEF72000BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F824CEF71A00BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png */; };
+		758FC15124CEF72000BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F924CEF71B00BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png */; };
+		758FC15224CEF72000BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F924CEF71B00BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png */; };
+		758FC15324CEF72000BAD35C /* appicon-keepass_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0FA24CEF71B00BAD35C /* appicon-keepass_iPadApp_76.png */; };
+		758FC15424CEF72000BAD35C /* appicon-keepass_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0FA24CEF71B00BAD35C /* appicon-keepass_iPadApp_76.png */; };
+		758FC15724CEF72000BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0FC24CEF71B00BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png */; };
+		758FC15824CEF72000BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0FC24CEF71B00BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png */; };
+		758FC15924CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0FD24CEF71B00BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png */; };
+		758FC15A24CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0FD24CEF71B00BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png */; };
+		758FC15F24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10024CEF71C00BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png */; };
+		758FC16024CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10024CEF71C00BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png */; };
+		758FC16324CEF72000BAD35C /* appicon-calc_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10224CEF71D00BAD35C /* appicon-calc_iPadApp_76.png */; };
+		758FC16424CEF72000BAD35C /* appicon-calc_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10224CEF71D00BAD35C /* appicon-calc_iPadApp_76.png */; };
+		758FC16524CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10324CEF71D00BAD35C /* appicon-classic-pro_iPadApp_76.png */; };
+		758FC16624CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10324CEF71D00BAD35C /* appicon-classic-pro_iPadApp_76.png */; };
+		758FC16724CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10424CEF71D00BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png */; };
+		758FC16824CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10424CEF71D00BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png */; };
+		758FC17324CEF72000BAD35C /* appicon-calc_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10A24CEF71E00BAD35C /* appicon-calc_iPadApp_76@2x.png */; };
+		758FC17424CEF72000BAD35C /* appicon-calc_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10A24CEF71E00BAD35C /* appicon-calc_iPadApp_76@2x.png */; };
+		758FC17524CEF72000BAD35C /* appicon-atom-blue_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10B24CEF71F00BAD35C /* appicon-atom-blue_iPadApp_76@2x.png */; };
+		758FC17624CEF72000BAD35C /* appicon-atom-blue_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10B24CEF71F00BAD35C /* appicon-atom-blue_iPadApp_76@2x.png */; };
+		758FC17724CEF72000BAD35C /* appicon-info_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10C24CEF71F00BAD35C /* appicon-info_iPhoneApp_60@2x.png */; };
+		758FC17824CEF72000BAD35C /* appicon-info_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10C24CEF71F00BAD35C /* appicon-info_iPhoneApp_60@2x.png */; };
+		758FC17924CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10D24CEF71F00BAD35C /* appicon-keepass_iPhoneApp_60@2x.png */; };
+		758FC17A24CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10D24CEF71F00BAD35C /* appicon-keepass_iPhoneApp_60@2x.png */; };
+		758FC17B24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10E24CEF71F00BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png */; };
+		758FC17C24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10E24CEF71F00BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png */; };
+		758FC18D24CF254000BAD35C /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FC18C24CF254000BAD35C /* AppIcon.swift */; };
+		758FC18E24CF254000BAD35C /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FC18C24CF254000BAD35C /* AppIcon.swift */; };
 		7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
 		759894B724620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
 		759894B824620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
@@ -269,7 +357,6 @@
 		75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599636F22E112E50004BC85 /* Attachment+extensions.swift */; };
 		75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */; };
 		75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
-		75B38C0B233E5B7C006BDEFC /* Xcode11GM_LocalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */; };
 		75B38C0C233E5B7C006BDEFC /* SettingsFileSortingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */; };
 		75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B1E9220E8AA070073AABD /* EditableField.swift */; };
 		75B38C0E233E5B7C006BDEFC /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
@@ -437,7 +524,6 @@
 		75D7DF91233E5E310029AD87 /* SearchHelper+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */; };
 		75D7DF92233E5E310029AD87 /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
 		75D7DF93233E5E310029AD87 /* FirstSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */; };
-		75D7DF94233E5E310029AD87 /* Xcode11GM_LocalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */; };
 		75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75802633222ED11D00F4525F /* ProgressVC.swift */; };
 		75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
 		75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
@@ -475,8 +561,6 @@
 		75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
 		75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
 		75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
-		75E446C92330307300E24E70 /* Xcode11GM_LocalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */; };
-		75E446CA2330307300E24E70 /* Xcode11GM_LocalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */; };
 		75E4CA5D232C455D00EB6805 /* UserNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */; };
 		75EA64182098FC0500DDB941 /* ChooseDatabaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* ChooseDatabaseVC.swift */; };
 		75ED428923132A80003DE72E /* SettingsAppTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */; };
@@ -573,6 +657,9 @@
 		751146E5233F9E2900443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressAwareNavigationController.swift; sourceTree = "<group>"; };
 		75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+strikethrough.swift"; sourceTree = "<group>"; };
+		751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppIconPicker.storyboard; sourceTree = "<group>"; };
+		751A565124CCD3CD001227D6 /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
+		751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconSwitcherCoordinator.swift; sourceTree = "<group>"; };
 		751B99AE2315B4EF002AA609 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		751B99B22315B56D002AA609 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		751B99B62315B736002AA609 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
@@ -815,7 +902,6 @@
 		7578488522C165C900BBEF9A /* SettingsBackupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupVC.swift; sourceTree = "<group>"; };
 		7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupTimeoutPickerVC.swift; sourceTree = "<group>"; };
 		757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareKeyPicker.swift; sourceTree = "<group>"; };
-		757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HardwareKeyPicker.storyboard; sourceTree = "<group>"; };
 		757ADC4E23A5180600D708D2 /* DismissablePopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissablePopover.swift; sourceTree = "<group>"; };
 		757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableNavigationController.swift; sourceTree = "<group>"; };
 		757CFD7A24892E28001CD231 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -827,6 +913,18 @@
 		75802633222ED11D00F4525F /* ProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVC.swift; sourceTree = "<group>"; };
 		75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSearchVC.swift; sourceTree = "<group>"; };
 		7584B3F020DD908A0086C094 /* UITextView+border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+border.swift"; sourceTree = "<group>"; };
+		7584CEF424D208E80063B421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HardwareKeyPicker.storyboard; sourceTree = "<group>"; };
+		7584CEF724D208EC0063B421 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/HardwareKeyPicker.strings"; sourceTree = "<group>"; };
+		7584CEF924D208F00063B421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/HardwareKeyPicker.strings"; sourceTree = "<group>"; };
+		7584CEFB24D208F20063B421 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		7584CEFD24D208F40063B421 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		7584CEFF24D208F60063B421 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		7584CF0124D208F80063B421 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		7584CF0324D208F90063B421 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		7584CF0524D208FB0063B421 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		7584CF0724D208FD0063B421 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		7584CF0924D208FF0063B421 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		7584CF0B24D209000063B421 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
 		758544632351FE8D000D5E5E /* UIFont+monospace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+monospace.swift"; sourceTree = "<group>"; };
 		758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingPlanPickerVC.swift; sourceTree = "<group>"; };
 		758BAD9B24B53AC600CC9265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PricingPlanPickerVC.storyboard; sourceTree = "<group>"; };
@@ -847,6 +945,47 @@
 		758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatingTextField.swift; sourceTree = "<group>"; };
 		758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareTextField.swift; sourceTree = "<group>"; };
 		758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCreatorVC.swift; sourceTree = "<group>"; };
+		758FC0D824CEF71500BAD35C /* appicon-info_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-info_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
+		758FC0D924CEF71500BAD35C /* appicon-info_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-info_iPadApp_76.png"; sourceTree = "<group>"; };
+		758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-keepass_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
+		758FC0DB24CEF71500BAD35C /* appicon-classic-free_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-free_iPadApp_76@2x.png"; sourceTree = "<group>"; };
+		758FC0DC24CEF71500BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-white_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
+		758FC0DD24CEF71500BAD35C /* appicon-atom-blue_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-blue_iPadApp_76.png"; sourceTree = "<group>"; };
+		758FC0DE24CEF71500BAD35C /* appicon-classic-free_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-free_iPadApp_76.png"; sourceTree = "<group>"; };
+		758FC0DF24CEF71600BAD35C /* appicon-info_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-info_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
+		758FC0E024CEF71600BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-free_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
+		758FC0E324CEF71600BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-pro_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
+		758FC0E524CEF71700BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-blue_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
+		758FC0E624CEF71700BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-keepass_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
+		758FC0E724CEF71700BAD35C /* appicon-info_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-info_iPadApp_76@2x.png"; sourceTree = "<group>"; };
+		758FC0E824CEF71700BAD35C /* appicon-atom-black_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-black_iPadApp_76.png"; sourceTree = "<group>"; };
+		758FC0E924CEF71700BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-black_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
+		758FC0EA24CEF71700BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-free_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
+		758FC0EC24CEF71800BAD35C /* appicon-calc_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-calc_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
+		758FC0EE24CEF71800BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-pro_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
+		758FC0EF24CEF71800BAD35C /* appicon-calc_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-calc_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
+		758FC0F024CEF71900BAD35C /* appicon-atom-white_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-white_iPadApp_76@2x.png"; sourceTree = "<group>"; };
+		758FC0F124CEF71900BAD35C /* appicon-classic-pro_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-pro_iPadApp_76@2x.png"; sourceTree = "<group>"; };
+		758FC0F324CEF71900BAD35C /* appicon-atom-black_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-black_iPadApp_76@2x.png"; sourceTree = "<group>"; };
+		758FC0F424CEF71A00BAD35C /* appicon-atom-white_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-white_iPadApp_76.png"; sourceTree = "<group>"; };
+		758FC0F524CEF71A00BAD35C /* appicon-calc_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-calc_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
+		758FC0F624CEF71A00BAD35C /* appicon-keepass_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-keepass_iPadApp_76@2x.png"; sourceTree = "<group>"; };
+		758FC0F724CEF71A00BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-white_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
+		758FC0F824CEF71A00BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-free_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
+		758FC0F924CEF71B00BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-blue_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
+		758FC0FA24CEF71B00BAD35C /* appicon-keepass_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-keepass_iPadApp_76.png"; sourceTree = "<group>"; };
+		758FC0FC24CEF71B00BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-white_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
+		758FC0FD24CEF71B00BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-pro_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
+		758FC10024CEF71C00BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-black_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
+		758FC10224CEF71D00BAD35C /* appicon-calc_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-calc_iPadApp_76.png"; sourceTree = "<group>"; };
+		758FC10324CEF71D00BAD35C /* appicon-classic-pro_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-pro_iPadApp_76.png"; sourceTree = "<group>"; };
+		758FC10424CEF71D00BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-blue_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
+		758FC10A24CEF71E00BAD35C /* appicon-calc_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-calc_iPadApp_76@2x.png"; sourceTree = "<group>"; };
+		758FC10B24CEF71F00BAD35C /* appicon-atom-blue_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-blue_iPadApp_76@2x.png"; sourceTree = "<group>"; };
+		758FC10C24CEF71F00BAD35C /* appicon-info_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-info_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
+		758FC10D24CEF71F00BAD35C /* appicon-keepass_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-keepass_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
+		758FC10E24CEF71F00BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-black_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
+		758FC18C24CF254000BAD35C /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppTimeoutVC.swift; sourceTree = "<group>"; };
 		759894B624620AF6006B6709 /* FileExportHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExportHelper.swift; sourceTree = "<group>"; };
 		759894BB24620D33006B6709 /* FileDestructionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDestructionHelper.swift; sourceTree = "<group>"; };
@@ -1061,7 +1200,6 @@
 		75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoReloader.swift; sourceTree = "<group>"; };
 		75E371932108CA08002602BD /* ProgressOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverlay.swift; sourceTree = "<group>"; };
-		75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xcode11GM_LocalizedLabel.swift; sourceTree = "<group>"; };
 		75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameHelper.swift; sourceTree = "<group>"; };
 		75E4CA5E232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75E4CA5F232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1323,6 +1461,63 @@
 			path = "KeePassium AutoFill";
 			sourceTree = "<group>";
 		};
+		751A564D24CCD375001227D6 /* appearance */ = {
+			isa = PBXGroup;
+			children = (
+				751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */,
+				751A565124CCD3CD001227D6 /* AppIconPicker.swift */,
+				751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */,
+			);
+			path = appearance;
+			sourceTree = "<group>";
+		};
+		751A565724CCE0F8001227D6 /* app-icons */ = {
+			isa = PBXGroup;
+			children = (
+				758FC0E824CEF71700BAD35C /* appicon-atom-black_iPadApp_76.png */,
+				758FC0F324CEF71900BAD35C /* appicon-atom-black_iPadApp_76@2x.png */,
+				758FC0E924CEF71700BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png */,
+				758FC10024CEF71C00BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png */,
+				758FC10E24CEF71F00BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png */,
+				758FC0DD24CEF71500BAD35C /* appicon-atom-blue_iPadApp_76.png */,
+				758FC10B24CEF71F00BAD35C /* appicon-atom-blue_iPadApp_76@2x.png */,
+				758FC0F924CEF71B00BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png */,
+				758FC0E524CEF71700BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png */,
+				758FC10424CEF71D00BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png */,
+				758FC0F424CEF71A00BAD35C /* appicon-atom-white_iPadApp_76.png */,
+				758FC0F024CEF71900BAD35C /* appicon-atom-white_iPadApp_76@2x.png */,
+				758FC0FC24CEF71B00BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png */,
+				758FC0DC24CEF71500BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png */,
+				758FC0F724CEF71A00BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png */,
+				758FC10224CEF71D00BAD35C /* appicon-calc_iPadApp_76.png */,
+				758FC10A24CEF71E00BAD35C /* appicon-calc_iPadApp_76@2x.png */,
+				758FC0EC24CEF71800BAD35C /* appicon-calc_iPadProApp_83.5@2x.png */,
+				758FC0EF24CEF71800BAD35C /* appicon-calc_iPhoneApp_60@2x.png */,
+				758FC0F524CEF71A00BAD35C /* appicon-calc_iPhoneApp_60@3x.png */,
+				758FC0DE24CEF71500BAD35C /* appicon-classic-free_iPadApp_76.png */,
+				758FC0DB24CEF71500BAD35C /* appicon-classic-free_iPadApp_76@2x.png */,
+				758FC0F824CEF71A00BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png */,
+				758FC0EA24CEF71700BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png */,
+				758FC0E024CEF71600BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png */,
+				758FC10324CEF71D00BAD35C /* appicon-classic-pro_iPadApp_76.png */,
+				758FC0F124CEF71900BAD35C /* appicon-classic-pro_iPadApp_76@2x.png */,
+				758FC0EE24CEF71800BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png */,
+				758FC0E324CEF71600BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png */,
+				758FC0FD24CEF71B00BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png */,
+				758FC0D924CEF71500BAD35C /* appicon-info_iPadApp_76.png */,
+				758FC0E724CEF71700BAD35C /* appicon-info_iPadApp_76@2x.png */,
+				758FC0D824CEF71500BAD35C /* appicon-info_iPadProApp_83.5@2x.png */,
+				758FC10C24CEF71F00BAD35C /* appicon-info_iPhoneApp_60@2x.png */,
+				758FC0DF24CEF71600BAD35C /* appicon-info_iPhoneApp_60@3x.png */,
+				758FC0FA24CEF71B00BAD35C /* appicon-keepass_iPadApp_76.png */,
+				758FC0F624CEF71A00BAD35C /* appicon-keepass_iPadApp_76@2x.png */,
+				758FC0E624CEF71700BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png */,
+				758FC10D24CEF71F00BAD35C /* appicon-keepass_iPhoneApp_60@2x.png */,
+				758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */,
+			);
+			path = "app-icons";
+			sourceTree = "<group>";
+		};
 		7533032523C52AB600F38CC7 /* relocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1353,6 +1548,7 @@
 		7546FBC420C1024200C5D834 /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				751A564D24CCD375001227D6 /* appearance */,
 				75065A3122C41B2200958243 /* autoFill */,
 				75C3800F217A0497006F74C2 /* appLock */,
 				7578488722C16D7D00BBEF9A /* backup */,
@@ -1399,6 +1595,7 @@
 		754BF07D2082A6BD00E3A292 /* KeePassium */ = {
 			isa = PBXGroup;
 			children = (
+				751A565724CCE0F8001227D6 /* app-icons */,
 				758BF0D920D21EE500897C83 /* general */,
 				757ADC4323A1045C00D708D2 /* challenge-response */,
 				756FF64720BAB56A00FF890B /* database */,
@@ -1449,7 +1646,6 @@
 				75B24DD421C523AE003C9486 /* SearchHelper.swift */,
 				7599636F22E112E50004BC85 /* Attachment+extensions.swift */,
 				75151D3223268AB300F3C411 /* UILabel+strikethrough.swift */,
-				75E446C82330307300E24E70 /* Xcode11GM_LocalizedLabel.swift */,
 				758544632351FE8D000D5E5E /* UIFont+monospace.swift */,
 				7535079F23783729003B65C9 /* HapticFeedback.swift */,
 				75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */,
@@ -1457,6 +1653,7 @@
 				75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */,
 				759BC62B2487FE5200E88111 /* URLReference+extensions.swift */,
 				7537FEBD249D7B950028A653 /* Settings+extensions.swift */,
+				758FC18C24CF254000BAD35C /* AppIcon.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1554,7 +1751,7 @@
 				75F2877F245D646B00F03657 /* MFIKeyActionSheet */,
 				7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */,
 				757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */,
-				757ADC4923A12DD100D708D2 /* HardwareKeyPicker.storyboard */,
+				7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */,
 			);
 			path = "challenge-response";
 			sourceTree = "<group>";
@@ -1793,9 +1990,11 @@
 						};
 					};
 					75B38BEF233E5B7C006BDEFC = {
+						LastSwiftMigration = 1150;
 						ProvisioningStyle = Automatic;
 					};
 					75D7DF7A233E5E310029AD87 = {
+						LastSwiftMigration = 1150;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1845,7 +2044,7 @@
 				751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */,
 				751E0D3B2309B01A0088BB10 /* DiagnosticsViewerVC.storyboard in Resources */,
 				75802632222EBC3800F4525F /* ProgressVC.storyboard in Resources */,
-				757ADC4B23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
+				7584CEF124D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */,
 				750CFBCE21BA9ACD00E62B09 /* MainInterface.storyboard in Resources */,
 				755B863923054FC700E9FC83 /* WelcomeVC.storyboard in Resources */,
 				755E7D9F232008300010E199 /* Localizable.strings in Resources */,
@@ -1860,47 +2059,88 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				758FC15324CEF72000BAD35C /* appicon-keepass_iPadApp_76.png in Resources */,
 				7533030F23C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */,
 				751E0D102309AF4C0088BB10 /* ViewEntryHistoryVC.storyboard in Resources */,
 				751E0D132309AF540088BB10 /* ChooseDatabaseVC.storyboard in Resources */,
-				757ADC4A23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
+				7584CEF024D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */,
 				755B862E23054FA200E9FC83 /* AboutVC.storyboard in Resources */,
 				75F28787245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */,
 				754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */,
 				751E0CEF2309AE920088BB10 /* SettingsBackupVC.storyboard in Resources */,
 				755E7DA2232008300010E199 /* Localizable.strings in Resources */,
+				758FC16324CEF72000BAD35C /* appicon-calc_iPadApp_76.png in Resources */,
+				758FC14524CEF72000BAD35C /* appicon-atom-black_iPadApp_76@2x.png in Resources */,
+				758FC15724CEF72000BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */,
 				751E0D162309AF5D0088BB10 /* ChooseKeyFileVC.storyboard in Resources */,
 				75ED42A92313C20A003DE72E /* SettingsItemListVC.storyboard in Resources */,
 				751E0D222309AFAC0088BB10 /* ChooseIconVC.storyboard in Resources */,
+				758FC11F24CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */,
 				75ED428923132A80003DE72E /* SettingsAppTimeoutVC.storyboard in Resources */,
 				751E0D0A2309AF380088BB10 /* ViewEntryFieldsVC.storyboard in Resources */,
+				758FC15F24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */,
 				75ED429223133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
+				758FC17724CEF72000BAD35C /* appicon-info_iPhoneApp_60@2x.png in Resources */,
+				758FC14B24CEF72000BAD35C /* appicon-keepass_iPadApp_76@2x.png in Resources */,
+				758FC11924CEF72000BAD35C /* appicon-atom-blue_iPadApp_76.png in Resources */,
 				755B863523054FBF00E9FC83 /* ViewDiagnosticsVC.storyboard in Resources */,
+				758FC13124CEF72000BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */,
 				751E0D012309AF1B0088BB10 /* EditEntryVC.storyboard in Resources */,
+				758FC13724CEF72000BAD35C /* appicon-calc_iPadProApp_83.5@2x.png in Resources */,
 				751E0D192309AF620088BB10 /* ChangeMasterKeyVC.storyboard in Resources */,
 				751E0D072309AF250088BB10 /* ViewEntryVC.storyboard in Resources */,
+				758FC15924CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png in Resources */,
+				758FC15124CEF72000BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png in Resources */,
+				758FC17924CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@2x.png in Resources */,
+				751A564F24CCD3C0001227D6 /* AppIconPicker.storyboard in Resources */,
+				758FC11D24CEF72000BAD35C /* appicon-info_iPhoneApp_60@3x.png in Resources */,
+				758FC13B24CEF72000BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png in Resources */,
 				751E0D1F2309AF6B0088BB10 /* DatabaseCreatorVC.storyboard in Resources */,
+				758FC10F24CEF71F00BAD35C /* appicon-info_iPadProApp_83.5@2x.png in Resources */,
 				755E7D9C232008300010E199 /* InfoPlist.strings in Resources */,
 				755B863823054FC700E9FC83 /* WelcomeVC.storyboard in Resources */,
 				751E0CFB2309AF0D0088BB10 /* ViewGroupVC.storyboard in Resources */,
+				758FC14D24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
+				758FC14124CEF72000BAD35C /* appicon-classic-pro_iPadApp_76@2x.png in Resources */,
+				758FC17324CEF72000BAD35C /* appicon-calc_iPadApp_76@2x.png in Resources */,
+				758FC12F24CEF72000BAD35C /* appicon-atom-black_iPadApp_76.png in Resources */,
 				751E0D042309AF210088BB10 /* PasswordGeneratorVC.storyboard in Resources */,
+				758FC12524CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png in Resources */,
+				758FC11124CEF72000BAD35C /* appicon-info_iPadApp_76.png in Resources */,
+				758FC17524CEF72000BAD35C /* appicon-atom-blue_iPadApp_76@2x.png in Resources */,
 				75802631222EBC3800F4525F /* ProgressVC.storyboard in Resources */,
 				754BF08A2082A6BD00E3A292 /* Assets.xcassets in Resources */,
+				758FC16724CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png in Resources */,
 				755B863123054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */,
+				758FC13F24CEF72000BAD35C /* appicon-atom-white_iPadApp_76@2x.png in Resources */,
 				754BF0882082A6BD00E3A292 /* Main.storyboard in Resources */,
 				758BAD9724B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */,
+				758FC14924CEF72000BAD35C /* appicon-calc_iPhoneApp_60@3x.png in Resources */,
+				758FC11524CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */,
 				751E0CF22309AEB00088BB10 /* SettingsAppLockVC.storyboard in Resources */,
 				751E0CFE2309AF150088BB10 /* EditGroupVC.storyboard in Resources */,
+				758FC16524CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */,
+				758FC13324CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
 				751E0D0D2309AF400088BB10 /* ViewEntryFilesVC.storyboard in Resources */,
+				758FC13D24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@2x.png in Resources */,
+				758FC12924CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */,
 				751E0D252309AFBA0088BB10 /* FileInfoVC.storyboard in Resources */,
 				75C38045217A3204006F74C2 /* PlaceholderVC.storyboard in Resources */,
+				758FC12D24CEF72000BAD35C /* appicon-info_iPadApp_76@2x.png in Resources */,
 				75ED429D2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard in Resources */,
+				758FC17B24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png in Resources */,
+				758FC14724CEF72000BAD35C /* appicon-atom-white_iPadApp_76.png in Resources */,
 				751E0CE92309AE860088BB10 /* SettingsFileSortingVC.storyboard in Resources */,
+				758FC11324CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@3x.png in Resources */,
+				758FC12B24CEF72000BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png in Resources */,
+				758FC11B24CEF72000BAD35C /* appicon-classic-free_iPadApp_76.png in Resources */,
 				752F5887247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */,
+				758FC11724CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */,
 				751E0CF52309AEBB0088BB10 /* SettingsAutoFillVC.storyboard in Resources */,
 				751E0D1C2309AF670088BB10 /* UnlockDatabaseVC.storyboard in Resources */,
 				75ED42A42313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard in Resources */,
 				751E0CE62309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard in Resources */,
+				758FC14F24CEF72000BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png in Resources */,
 				751E0CEC2309AE8D0088BB10 /* SettingsVC.storyboard in Resources */,
 				75C3802D217A2650006F74C2 /* AppCoverVC.storyboard in Resources */,
 			);
@@ -1910,47 +2150,88 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				758FC15424CEF72000BAD35C /* appicon-keepass_iPadApp_76.png in Resources */,
 				7533031023C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */,
 				75B38C51233E5B7C006BDEFC /* ViewEntryHistoryVC.storyboard in Resources */,
 				75B38C52233E5B7C006BDEFC /* ChooseDatabaseVC.storyboard in Resources */,
-				757ADC4C23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
+				7584CEF224D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */,
 				75B38C53233E5B7C006BDEFC /* AboutVC.storyboard in Resources */,
 				75F28788245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */,
 				75B38C54233E5B7C006BDEFC /* LaunchScreen.storyboard in Resources */,
 				75B38C55233E5B7C006BDEFC /* SettingsBackupVC.storyboard in Resources */,
 				75B38C56233E5B7C006BDEFC /* Localizable.strings in Resources */,
+				758FC16424CEF72000BAD35C /* appicon-calc_iPadApp_76.png in Resources */,
+				758FC14624CEF72000BAD35C /* appicon-atom-black_iPadApp_76@2x.png in Resources */,
+				758FC15824CEF72000BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */,
 				75B38C57233E5B7C006BDEFC /* ChooseKeyFileVC.storyboard in Resources */,
 				75B38C58233E5B7C006BDEFC /* SettingsItemListVC.storyboard in Resources */,
 				75B38C59233E5B7C006BDEFC /* ChooseIconVC.storyboard in Resources */,
+				758FC12024CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */,
 				75B38C5A233E5B7C006BDEFC /* SettingsAppTimeoutVC.storyboard in Resources */,
 				75B38C5B233E5B7C006BDEFC /* ViewEntryFieldsVC.storyboard in Resources */,
+				758FC16024CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */,
 				75B38C5C233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
+				758FC17824CEF72000BAD35C /* appicon-info_iPhoneApp_60@2x.png in Resources */,
+				758FC14C24CEF72000BAD35C /* appicon-keepass_iPadApp_76@2x.png in Resources */,
+				758FC11A24CEF72000BAD35C /* appicon-atom-blue_iPadApp_76.png in Resources */,
 				75B38C5D233E5B7C006BDEFC /* ViewDiagnosticsVC.storyboard in Resources */,
+				758FC13224CEF72000BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */,
 				75B38C5E233E5B7C006BDEFC /* EditEntryVC.storyboard in Resources */,
+				758FC13824CEF72000BAD35C /* appicon-calc_iPadProApp_83.5@2x.png in Resources */,
 				75B38C5F233E5B7C006BDEFC /* ChangeMasterKeyVC.storyboard in Resources */,
 				75B38C60233E5B7C006BDEFC /* ViewEntryVC.storyboard in Resources */,
+				758FC15A24CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png in Resources */,
+				758FC15224CEF72000BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png in Resources */,
+				758FC17A24CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@2x.png in Resources */,
+				751A565024CCD3C0001227D6 /* AppIconPicker.storyboard in Resources */,
+				758FC11E24CEF72000BAD35C /* appicon-info_iPhoneApp_60@3x.png in Resources */,
+				758FC13C24CEF72000BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png in Resources */,
 				75B38C61233E5B7C006BDEFC /* DatabaseCreatorVC.storyboard in Resources */,
+				758FC11024CEF71F00BAD35C /* appicon-info_iPadProApp_83.5@2x.png in Resources */,
 				75B38C62233E5B7C006BDEFC /* InfoPlist.strings in Resources */,
 				75B38C64233E5B7C006BDEFC /* WelcomeVC.storyboard in Resources */,
 				75B38C65233E5B7C006BDEFC /* ViewGroupVC.storyboard in Resources */,
+				758FC14E24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
+				758FC14224CEF72000BAD35C /* appicon-classic-pro_iPadApp_76@2x.png in Resources */,
+				758FC17424CEF72000BAD35C /* appicon-calc_iPadApp_76@2x.png in Resources */,
+				758FC13024CEF72000BAD35C /* appicon-atom-black_iPadApp_76.png in Resources */,
 				75B38C66233E5B7C006BDEFC /* PasswordGeneratorVC.storyboard in Resources */,
+				758FC12624CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png in Resources */,
+				758FC11224CEF72000BAD35C /* appicon-info_iPadApp_76.png in Resources */,
+				758FC17624CEF72000BAD35C /* appicon-atom-blue_iPadApp_76@2x.png in Resources */,
 				75B38C67233E5B7C006BDEFC /* ProgressVC.storyboard in Resources */,
 				75B38C68233E5B7C006BDEFC /* Assets.xcassets in Resources */,
+				758FC16824CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png in Resources */,
 				75B38C69233E5B7C006BDEFC /* PasscodeInputVC.storyboard in Resources */,
+				758FC14024CEF72000BAD35C /* appicon-atom-white_iPadApp_76@2x.png in Resources */,
 				75B38C6A233E5B7C006BDEFC /* Main.storyboard in Resources */,
 				758BAD9824B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */,
+				758FC14A24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@3x.png in Resources */,
+				758FC11624CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */,
 				75B38C6C233E5B7C006BDEFC /* SettingsAppLockVC.storyboard in Resources */,
 				75B38C6D233E5B7C006BDEFC /* EditGroupVC.storyboard in Resources */,
+				758FC16624CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */,
+				758FC13424CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
 				75B38C6E233E5B7C006BDEFC /* ViewEntryFilesVC.storyboard in Resources */,
+				758FC13E24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@2x.png in Resources */,
+				758FC12A24CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */,
 				75B38C6F233E5B7C006BDEFC /* FileInfoVC.storyboard in Resources */,
 				75B38C70233E5B7C006BDEFC /* PlaceholderVC.storyboard in Resources */,
+				758FC12E24CEF72000BAD35C /* appicon-info_iPadApp_76@2x.png in Resources */,
 				75B38C71233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.storyboard in Resources */,
+				758FC17C24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png in Resources */,
+				758FC14824CEF72000BAD35C /* appicon-atom-white_iPadApp_76.png in Resources */,
 				75B38C72233E5B7C006BDEFC /* SettingsFileSortingVC.storyboard in Resources */,
+				758FC11424CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@3x.png in Resources */,
+				758FC12C24CEF72000BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png in Resources */,
+				758FC11C24CEF72000BAD35C /* appicon-classic-free_iPadApp_76.png in Resources */,
 				752F5888247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */,
+				758FC11824CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */,
 				75B38C73233E5B7C006BDEFC /* SettingsAutoFillVC.storyboard in Resources */,
 				75B38C74233E5B7C006BDEFC /* UnlockDatabaseVC.storyboard in Resources */,
 				75B38C75233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.storyboard in Resources */,
 				75B38C76233E5B7C006BDEFC /* SettingsDataProtectionVC.storyboard in Resources */,
+				758FC15024CEF72000BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png in Resources */,
 				75B38C77233E5B7C006BDEFC /* SettingsVC.storyboard in Resources */,
 				75B38C78233E5B7C006BDEFC /* AppCoverVC.storyboard in Resources */,
 			);
@@ -1968,7 +2249,7 @@
 				75D7DFB0233E5E310029AD87 /* EntryFinderVC.storyboard in Resources */,
 				75D7DFB1233E5E310029AD87 /* DiagnosticsViewerVC.storyboard in Resources */,
 				75D7DFB3233E5E310029AD87 /* ProgressVC.storyboard in Resources */,
-				757ADC4D23A12DD100D708D2 /* HardwareKeyPicker.storyboard in Resources */,
+				7584CEF324D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */,
 				75D7DFB4233E5E310029AD87 /* MainInterface.storyboard in Resources */,
 				75D7DFB5233E5E310029AD87 /* WelcomeVC.storyboard in Resources */,
 				75D7DFB6233E5E310029AD87 /* Localizable.strings in Resources */,
@@ -2057,7 +2338,6 @@
 				7575B24922D8476300B84B3F /* SearchHelper+extensions.swift in Sources */,
 				750CFBDC21BAD7FF00E62B09 /* UIColor+namedColors.swift in Sources */,
 				75CBABA121C16CD000B8AFE2 /* FirstSetupVC.swift in Sources */,
-				75E446CA2330307300E24E70 /* Xcode11GM_LocalizedLabel.swift in Sources */,
 				75802635222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
 				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
@@ -2095,10 +2375,12 @@
 			files = (
 				75679ACE22FD897000372301 /* NewsCenter.swift in Sources */,
 				758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */,
+				751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */,
 				7584B3F120DD908A0086C094 /* UITextView+border.swift in Sources */,
 				752BB12520F089B30070FAC0 /* SettingsItemListVC.swift in Sources */,
 				752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */,
+				751A565524CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
 				751BE253211C395D0071050A /* ViewDiagnosticsVC.swift in Sources */,
 				759894B724620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75E4CA5D232C455D00EB6805 /* UserNameHelper.swift in Sources */,
@@ -2125,9 +2407,9 @@
 				758BADB224B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
 				7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */,
 				7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */,
+				758FC18D24CF254000BAD35C /* AppIcon.swift in Sources */,
 				750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */,
 				75679ACB22F8095F00372301 /* AppInfo.swift in Sources */,
-				75E446C92330307300E24E70 /* Xcode11GM_LocalizedLabel.swift in Sources */,
 				75781A2D20CA3D7A00BE474F /* SettingsFileSortingVC.swift in Sources */,
 				752B1E9320E8AA070073AABD /* EditableField.swift in Sources */,
 				759894BC24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
@@ -2215,10 +2497,12 @@
 			files = (
 				75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */,
 				75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */,
+				751A565324CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */,
 				75B38BF6233E5B7C006BDEFC /* UITextView+border.swift in Sources */,
 				75B38BF7233E5B7C006BDEFC /* SettingsItemListVC.swift in Sources */,
 				75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */,
+				751A565624CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
 				75B38BF9233E5B7C006BDEFC /* ViewDiagnosticsVC.swift in Sources */,
 				759894B924620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */,
@@ -2245,9 +2529,9 @@
 				758BADB324B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
 				75B38C07233E5B7C006BDEFC /* ChangeMasterKeyVC.swift in Sources */,
 				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
+				758FC18E24CF254000BAD35C /* AppIcon.swift in Sources */,
 				75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */,
 				75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */,
-				75B38C0B233E5B7C006BDEFC /* Xcode11GM_LocalizedLabel.swift in Sources */,
 				75B38C0C233E5B7C006BDEFC /* SettingsFileSortingVC.swift in Sources */,
 				75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */,
 				759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
@@ -2365,7 +2649,6 @@
 				75D7DF91233E5E310029AD87 /* SearchHelper+extensions.swift in Sources */,
 				75D7DF92233E5E310029AD87 /* UIColor+namedColors.swift in Sources */,
 				75D7DF93233E5E310029AD87 /* FirstSetupVC.swift in Sources */,
-				75D7DF94233E5E310029AD87 /* Xcode11GM_LocalizedLabel.swift in Sources */,
 				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
 				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,
@@ -3146,6 +3429,25 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7584CEF424D208E80063B421 /* Base */,
+				7584CEF724D208EC0063B421 /* zh-Hans */,
+				7584CEF924D208F00063B421 /* zh-Hant */,
+				7584CEFB24D208F20063B421 /* cs */,
+				7584CEFD24D208F40063B421 /* nl */,
+				7584CEFF24D208F60063B421 /* fr */,
+				7584CF0124D208F80063B421 /* de */,
+				7584CF0324D208F90063B421 /* it */,
+				7584CF0524D208FB0063B421 /* ja */,
+				7584CF0724D208FD0063B421 /* ru */,
+				7584CF0924D208FF0063B421 /* es */,
+				7584CF0B24D209000063B421 /* sv */,
+			);
+			name = HardwareKeyPicker.storyboard;
+			sourceTree = "<group>";
+		};
 		758BAD9A24B53ABF00CC9265 /* PricingPlanPickerVC.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3269,7 +3571,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3293,7 +3595,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3438,7 +3740,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3465,7 +3767,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3492,7 +3794,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3507,7 +3809,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MAIN_APP PREPAID_VERSION";
 				SWIFT_OBJC_BRIDGING_HEADER = "KeePassium-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3519,7 +3821,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3534,7 +3836,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "MAIN_APP PREPAID_VERSION";
 				SWIFT_OBJC_BRIDGING_HEADER = "KeePassium-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3545,7 +3847,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3558,7 +3860,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG AUTOFILL_EXT PREPAID_VERSION";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3569,7 +3871,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3581,7 +3883,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "AUTOFILL_EXT PREPAID_VERSION";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

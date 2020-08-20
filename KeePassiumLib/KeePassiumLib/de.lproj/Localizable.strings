@@ -77,10 +77,10 @@
 "[Database/Progress] Loading key file..." = "Schlüsseldatei wird geladen...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "Datenbankdatei wird heruntergeladen …";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "Sicherungskopie wird erstellt …";
 
 /* Progress status */
 "[Database/Progress/resolving]" = "Kontaktiere den Speicheranbieter...";
@@ -244,20 +244,32 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Ungültiges Passwort oder Schlüsseldatei";
 
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "Der Speicheranbieter ist nicht verfügbar. Bitte überprüfen Sie, ob er installiert und in Ihrem Konto angemeldet ist.";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ ist nicht verfügbar. Bitte überprüfen Sie, ob der Anbieter installiert und in Ihrem Konto angemeldet ist.";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Netzwerkspeicher nicht verbunden.";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB-Laufwerk nicht verbunden.";
+
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "Interner KeePassium-Fehler. Bitte teilen Sie uns dies mit.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "Speicheranbieter reagiert nicht.";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ reagiert nicht.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "Speicheranbieter reagiert nicht.";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ reagiert nicht.";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Fehler beim Löschen der Datei. Grund: %@";
@@ -317,7 +329,7 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB server";
+"[FileProvider/SMB/name]" = "SMB-Server";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -332,7 +344,7 @@
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "USB-Speichergerät";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";

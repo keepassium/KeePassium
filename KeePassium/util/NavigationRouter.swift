@@ -13,10 +13,18 @@ public class NavigationRouter: NSObject {
     
     public private(set) var navigationController: UINavigationController
     private var popHandlers = [ObjectIdentifier: PopHandler]()
+    private weak var oldDelegate: UINavigationControllerDelegate?
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        oldDelegate = navigationController.delegate
         super.init()
+
+        navigationController.delegate = self
+    }
+    
+    deinit {
+        navigationController.delegate = oldDelegate
     }
     
     public func push(_ viewController: UIViewController, animated: Bool, onPop popHandler: PopHandler?) {
@@ -60,5 +68,9 @@ extension NavigationRouter: UINavigationControllerDelegate {
             !navigationController.viewControllers.contains(fromVC)
             else { return }
         triggerAndRemovePopHandler(for: fromVC)
+        oldDelegate?.navigationController?(
+            navigationController,
+            didShow: viewController,
+            animated: true)
     }
 }
