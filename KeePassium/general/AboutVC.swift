@@ -28,6 +28,8 @@ class AboutVC: UITableViewController {
         100: "https://github.com/P-H-C/phc-winner-argon2",
         110: "https://cr.yp.to/salsa20.html",
         120: "http://www.cartotype.com/downloads/twofish/twofish.cpp",
+        122: "https://github.com/Yubico/yubikit-ios",
+        125: "https://github.com/tikhop/TPInAppReceipt",
         130: "https://github.com/1024jp/GzipSwift",
         140: "https://github.com/norio-nomura/Base32",
         150: "https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift",

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NLN-lQ-bh5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NLN-lQ-bh5">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -602,7 +602,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="120" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Xee-Y1-Dcw" detailTextLabel="ht7-pj-Dbb" style="IBUITableViewCellStyleSubtitle" id="NvP-27-RWG">
+                                    <tableViewCell clipsSubviews="YES" tag="122" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Xee-Y1-Dcw" detailTextLabel="ht7-pj-Dbb" style="IBUITableViewCellStyleSubtitle" id="NvP-27-RWG">
                                         <rect key="frame" x="0.0" y="934" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NvP-27-RWG" id="iMV-l8-834">
@@ -634,8 +634,40 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="130" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="sDW-ws-pQf" detailTextLabel="sCk-Se-Vvo" style="IBUITableViewCellStyleSubtitle" id="hgk-A2-Kep">
+                                    <tableViewCell clipsSubviews="YES" tag="125" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="OaP-Bl-5vR" detailTextLabel="AWg-lI-BfC" style="IBUITableViewCellStyleSubtitle" id="vtE-re-aiP">
                                         <rect key="frame" x="0.0" y="978" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vtE-re-aiP" id="yRV-79-Ffe">
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="TPInAppReceipt by Pavel Tikhonenko" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="OaP-Bl-5vR" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="5" width="284.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="Xee-Y1-Dcw.text"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="AboutVC"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="MIT license" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="AWg-lI-BfC" customClass="Xcode11GM_LocalizedLabel" customModule="KeePassium" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="25.5" width="64.5" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="l10nKey" value="ht7-pj-Dbb.text"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="l10nTable" value="AboutVC"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" tag="130" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="sDW-ws-pQf" detailTextLabel="sCk-Se-Vvo" style="IBUITableViewCellStyleSubtitle" id="hgk-A2-Kep">
+                                        <rect key="frame" x="0.0" y="1022" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hgk-A2-Kep" id="PUy-yj-ft0">
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
@@ -667,7 +699,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="140" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9MZ-zt-75x" detailTextLabel="bAq-tq-nuY" style="IBUITableViewCellStyleSubtitle" id="zt4-9d-vXZ">
-                                        <rect key="frame" x="0.0" y="1022" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1066" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zt4-9d-vXZ" id="1xx-Wn-dB2">
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
@@ -699,7 +731,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="150" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="vg0-6M-OIq" detailTextLabel="dMv-Zw-y7y" style="IBUITableViewCellStyleSubtitle" id="y2c-za-TPk">
-                                        <rect key="frame" x="0.0" y="1066" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1110" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y2c-za-TPk" id="Hhg-CF-9R1">
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
@@ -753,9 +785,13 @@
             <point key="canvasLocation" x="-1460.625" y="-775.35211267605632"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="ActionTint"/>
     <resources>
         <image name="app-rating-listitem" width="29" height="29"/>
         <image name="email-us-listitem" width="29" height="29"/>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="AuxiliaryText">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -766,5 +802,4 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
-    <color key="tintColor" name="ActionTint"/>
 </document>

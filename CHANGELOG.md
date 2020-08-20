@@ -1,5 +1,21 @@
 #CHANGELOG
 
+## [1.14.67] - 2020-07-25
+
+### Changed
+
+- More human-friendly messages about missing file provider
+- Replaced problematic NSFileCoordinator calls with UIDocument ones
+- Refined purchase dialog UI on iPad
+- Updated Japanese translation [thanks, miyar520]
+
+### Fixed
+
+- Fixed persistent timeouts when using Google Drive, DS file and some other clouds. [thanks, everyone]
+- Fixed freezing when there are many backup files (fixes #114) [thanks, Paul]
+- Added missing credits for Yubico Mobile SDK and TPInAppReceipt library
+
+
 ## [1.14.66] - 2020-07-18
 
 ### Added

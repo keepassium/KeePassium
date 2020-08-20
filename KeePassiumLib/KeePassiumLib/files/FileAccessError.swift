@@ -17,6 +17,8 @@ public enum FileAccessError: LocalizedError {
     
     case fileProviderDoesNotRespond(fileProvider: FileProvider?)
     
+    case fileProviderNotFound(fileProvider: FileProvider?)
+    
     case systemError(_ originalError: Error?)
     
     public var errorDescription: String? {
@@ -64,6 +66,38 @@ public enum FileAccessError: LocalizedError {
                     value: "Storage provider does not respond.",
                     comment: "Error message: storage provider app (e.g. Google Drive) does not respond to requests.")
             }
+        case .fileProviderNotFound(let fileProvider):
+            if let fileProvider = fileProvider {
+                switch fileProvider {
+                case .smbShare:
+                    return NSLocalizedString(
+                            "[FileAccessError/FileProvider/NotFound/smbShare]",
+                            bundle: Bundle.framework,
+                            value: "Network storage is disconnected.",
+                            comment: "Error message: the required network drive is not connected.")
+                case .usbDrive:
+                    return NSLocalizedString(
+                            "[FileAccessError/FileProvider/NotFound/usbDrive]",
+                            bundle: Bundle.framework,
+                            value: "USB drive is disconnected.",
+                            comment: "Error message: there is no USB drive connected to the device.")
+                default:
+                    return String.localizedStringWithFormat(
+                        NSLocalizedString(
+                            "[FileAccessError/FileProvider/NotFound/other]",
+                            bundle: Bundle.framework,
+                            value: "%@ is not available. Please check whether it is installed and logged in to your account.",
+                            comment: "Error message: storage provider app was logged out or uninstalled [fileProviderName: String]."),
+                        fileProvider.localizedName
+                    )
+                }
+            } else {
+                return NSLocalizedString(
+                    "[FileAccessError/FileProvider/NotFound/generic]",
+                    bundle: Bundle.framework,
+                    value: "Storage provider is not available. Please check whether it is installed and logged in to your account.",
+                    comment: "Error message: storage provider app was logged out or uninstalled.")
+            }
         case .systemError(let originalError):
             return originalError?.localizedDescription
         }
@@ -82,6 +116,10 @@ public enum FileAccessError: LocalizedError {
         case ("NSCocoaErrorDomain", 4097): fallthrough
         case ("NSCocoaErrorDomain", 4099):
             return .fileProviderDoesNotRespond(fileProvider: fileProvider)
+            
+        case ("NSFileProviderInternalErrorDomain", 0):
+            return .fileProviderNotFound(fileProvider: fileProvider)
+            
         default:
             return .systemError(originalError)
         }

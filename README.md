@@ -38,6 +38,7 @@ KeePassium is a commercial open source app. The "commercial" part gives you a we
 * Easy switching between multiple databases
 * And more:
 	- Viewing TOTP codes (both RFC-6238 and Steam TOTP)
+	- YubiKey challenge-response support
 	- File attachments
 	- Custom fields
 	- Custom icons
@@ -118,6 +119,8 @@ The project would not be the same without some third-party components:
 	- [Argon2](https://github.com/P-H-C/phc-winner-argon2) by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves (CC0 license)
 	- [ChaCha20 & Salsa20](https://cr.yp.to/salsa20.html) implementation by D. J. Bernstein (public domain)
 	- [Twofish](http://www.cartotype.com/downloads/twofish/twofish.cpp) implementation by Niels Ferguson (custom very permissive license).
+	- [Yubico Mobile iOS SDK](https://github.com/Yubico/yubikit-ios) by Yubico AB (Apache 2.0 license)
+	- [TPInAppReceipt](https://github.com/tikhop/TPInAppReceipt) by Pavel Tikhonenko (MIT license)
 	- [GzipSwift](https://github.com/1024jp/GzipSwift) by 1024jp (MIT license)
 	- [Base32 for Swift](https://github.com/norio-nomura/Base32) by Norio Nomura (MIT license)
 	- [KeyboardLayoutConstraint](https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift) by James Tang (MIT license)
@@ -128,7 +131,7 @@ To avoid backdoors in third-party code, it has been checked by the main develope
 
 KeePassium Password Manager
 
-Copyright ©2018–2019 [Andrei Popleteev](http://popleteev.com).
+Copyright ©2018–2020 [Andrei Popleteev](http://popleteev.com).
 
 KeePassium is a commercial open-source app, available under the  [GPLv3 license](https://choosealicense.com/licenses/gpl-3.0/). Our intention is to provide the maximal possible transparency: you can personally audit the code and build your own binary. 
 

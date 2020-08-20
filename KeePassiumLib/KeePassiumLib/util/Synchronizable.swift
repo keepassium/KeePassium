@@ -73,13 +73,13 @@ public extension Synchronizable {
     
     func execute(
         withTimeout timeout: TimeInterval,
-        on queue: DispatchQueue,
+        on queue: OperationQueue,
         slowAsyncOperation: @escaping (_ notifyAndCheckIfCanProceed: @escaping ()->Bool)->(),
         onSuccess: @escaping ()->(),
         onTimeout: @escaping ()->())
     {
         assert(timeout >= TimeInterval.zero)
-        queue.async { [self] in 
+        queue.addOperation { [self] in 
             assert(!Thread.isMainThread)
             
             let semaphore = DispatchSemaphore(value: 0)

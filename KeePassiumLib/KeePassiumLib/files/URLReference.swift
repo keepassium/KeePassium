@@ -113,10 +113,6 @@ public class URLReference:
     
     public private(set) var fileProvider: FileProvider?
     
-    fileprivate static let staticFileCoordinator = FileCoordinator()
-    
-    fileprivate let fileCoordinator = FileCoordinator()
-    
     fileprivate let backgroundQueue = DispatchQueue(
         label: "com.keepassium.URLReference",
         qos: .background,
@@ -201,38 +197,30 @@ public class URLReference:
         completion callback: @escaping CreateCallback)
     {
         let isAccessed = url.startAccessingSecurityScopedResource()
-        
-        if tryCreate(for: url, location: location, callbackOnError: false, callback: callback) {
-            print("URL bookmarked on stage 1")
+        defer {
             if isAccessed {
                 url.stopAccessingSecurityScopedResource()
             }
+        }
+
+        if tryCreate(for: url, location: location, callbackOnError: false, callback: callback) {
+            print("URL bookmarked on stage 1")
             return
         }
-        
-        let readingIntentOptions: NSFileCoordinator.ReadingOptions = [
-            .withoutChanges, 
-            .resolvesSymbolicLink 
-        ]
-        staticFileCoordinator.coordinateReading(
-            at: url,
-            fileProvider: nil, 
-            options: readingIntentOptions,
-            timeout: URLReference.defaultTimeout)
-        {
-            (fileAccessError) in
+
+        let tmpDoc = BaseDocument(fileURL: url, fileProvider: nil)
+        tmpDoc.open(withTimeout: URLReference.defaultTimeout) { (result) in
             defer {
-                if isAccessed {
-                    url.stopAccessingSecurityScopedResource()
-                }
+                tmpDoc.close(completionHandler: nil)
             }
-            guard fileAccessError == nil else {
+            switch result {
+            case .success(_):
+                tryCreate(for: url, location: location, callbackOnError: true, callback: callback)
+            case .failure(let fileAccessError):
                 DispatchQueue.main.async {
-                    callback(.failure(fileAccessError!))
+                    callback(.failure(fileAccessError))
                 }
-                return
             }
-            tryCreate(for: url, location: location, callbackOnError: true, callback: callback)
         }
     }
     
@@ -366,40 +354,53 @@ public class URLReference:
 
         let isAccessed = url.startAccessingSecurityScopedResource()
         
-        let readingIntentOptions: NSFileCoordinator.ReadingOptions = [
-            .resolvesSymbolicLink 
-        ]
-        fileCoordinator.coordinateReading(
-            at: url,
-            fileProvider: fileProvider,
-            options: readingIntentOptions,
-            timeout: URLReference.defaultTimeout)
-        {
-            (fileAccessError) in 
+        let tmpDoc = BaseDocument(fileURL: url, fileProvider: fileProvider)
+        tmpDoc.open(withTimeout: URLReference.defaultTimeout) { [self] (result) in
             defer {
                 if isAccessed {
                     url.stopAccessingSecurityScopedResource()
                 }
+                tmpDoc.close(completionHandler: nil)
             }
-
             self.registerInfoRefreshRequest(.completed)
-            guard fileAccessError == nil else {
+            switch result {
+            case .failure(let fileAccessError):
                 DispatchQueue.main.async { 
                     self.error = fileAccessError
-                    callback(.failure(fileAccessError!))
+                    callback(.failure(fileAccessError))
                 }
-                return
-            }
-            let latestInfo = FileInfo(
-                fileName: url.lastPathComponent,
-                fileSize: url.fileSize,
-                creationDate: url.fileCreationDate,
-                modificationDate: url.fileModificationDate,
-                isExcludedFromBackup: url.isExcludedFromBackup)
-            self.cachedInfo = latestInfo
-            DispatchQueue.main.async {
-                self.error = nil
-                callback(.success(latestInfo))
+            case .success(_):
+                let attributeKeys: Set<URLResourceKey> = [
+                    .fileSizeKey,
+                    .creationDateKey,
+                    .contentModificationDateKey,
+                    .isExcludedFromBackupKey,
+                    .ubiquitousItemDownloadingStatusKey,
+                ]
+                let attributes: URLResourceValues
+                do {
+                    attributes = try url.resourceValues(forKeys: attributeKeys)
+                } catch {
+                    Diag.error("Failed to get file info [reason: \(error.localizedDescription)]")
+                    let fileAccessError = FileAccessError.systemError(error)
+                    DispatchQueue.main.async { 
+                        self.error = fileAccessError
+                        callback(.failure(fileAccessError))
+                    }
+                    return
+                }
+
+                let latestInfo = FileInfo(
+                    fileName: url.lastPathComponent,
+                    fileSize: Int64(attributes.fileSize ?? -1),
+                    creationDate: attributes.creationDate,
+                    modificationDate: attributes.contentModificationDate,
+                    isExcludedFromBackup: attributes.isExcludedFromBackup ?? false)
+                self.cachedInfo = latestInfo
+                DispatchQueue.main.async {
+                    self.error = nil
+                    callback(.success(latestInfo))
+                }
             }
         }
     }

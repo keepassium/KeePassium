@@ -20,7 +20,7 @@
 "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "プレミアム版へのアップグレード";
 
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
-"[AutoFill/Search/callerID]" = "Caller ID: %@";
+"[AutoFill/Search/callerID]" = "呼出先ID: %@";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -233,16 +233,16 @@
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "キーファイルを削除しますか？\n バックアップがあることを確認してください。";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
-"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "キーファイルを一覧から削除しますか？ファイルの本体はそのまま残りますので、後で再度追加できます。";
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Premiumにアップグレード";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+"[PremiumFeature/Generic/description]" = "プレミアム機能を見つけました！プレミアム版にアップグレードすると、KeePassiumを最高の状態でお使いいただけます。";
 
 /* A generic title of a premium feature */
-"[PremiumFeature/Generic/title]" = "Premium Feature";
+"[PremiumFeature/Generic/title]" = "プレミアム機能";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
 "[PremiumFeature/HardwareKeys/description]" = "プレミアム版ではハードウェアの鍵 (YubiKey) を使って安全性を強化できます。";
