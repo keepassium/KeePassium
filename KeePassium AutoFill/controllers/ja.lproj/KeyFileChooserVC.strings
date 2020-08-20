@@ -1,0 +1,15 @@
+/* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
+"9UZ-FK-v73.text" = "キーファイルがありません";
+
+/* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
+"leO-vH-qBX.text" = "パスワードのみを使用";
+
+/* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
+"Lod-RE-tcd.title" = "キーファイルを追加";
+
+/* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
+"Omh-Sn-jl2.normalTitle" = "キーファイルを追加";
+
+/* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
+"r85-yz-wYI.title" = "キーファイル";
+

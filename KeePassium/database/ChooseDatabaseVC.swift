@@ -614,7 +614,9 @@ extension ChooseDatabaseVC: FileKeeperObserver {
     }
 
     func fileKeeperHasPendingOperation() {
-        processPendingFileOperations()
+        if isViewLoaded {
+            processPendingFileOperations()
+        }
     }
 }
 

@@ -1,0 +1,294 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "ロックを解除";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "KeePassiumのロックを解除";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "パスコードを使用";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "アップグレードするには、ホーム画面から KeePassium を手動で起動してください。";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "プレミアム版へのアップグレード";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "ファイル \"%@\" はデータベースではないようです。";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "データベースを作成";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "データベースを作成";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "データベースの削除に失敗しました";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "データベースを削除しますか？\n バックアップがあることを確認してください。";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "読み込み中...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "マスターキーを変更しました";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "データベースを開く";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "閉じる";
+
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "データベースをロック";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "データベースを一覧から削除しますか？\n ファイルはそのまま残り、後で再度追加できます。";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "完了";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "保存中...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "キーファイルのエラー: %@";
+
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "診断ログをクリップボードにコピーしました。";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "診断ログを表示";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "添付ファイル";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "エントリーを作成";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "項目名";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "メモ";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "パスワード";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "タイトル";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "ユーザー名";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "新規エントリー";
+
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "ファイルをアプリから一旦削除して、再度追加してみてください。";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "作成日";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "ファイルの場所";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "ファイル名";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "ファイルサイズ";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "変更日";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "エラー";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "キャンセル";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "お問い合わせ";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "コピー";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "削除";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "終了";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "閉じる";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "完了";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "編集";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "共有";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "移動";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "OK";
+
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "上書き";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "名前を変更";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "置換";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "詳細を表示";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "さらに表示";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "よろしいですか？";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "保存せずに終了しますか？";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "保存していない変更があります";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "削除";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "削除";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "共有エラー";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "ファイルは既に存在します";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "読み込みエラー";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "エラー";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "キーチェーンエラー";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "警告";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "グループを作成";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "グループを作成";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "グループを編集";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "新規グループ";
+
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "ハードウェアキーは自動入力では使用できません。";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "ハードウェアキーがありません";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey スロット %d";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "キーファイルを削除しますか？\n バックアップがあることを確認してください。";
+
+/* Title of an announcement about the Pro version */
+"[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
+
+/* Message shown when opening an announcement in AutoFill */
+"[News/AutoFill/stubText] Please open the main app for the full announcement." = "アナウンスの全文を見るにはメインアプリを開いてください。";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Premiumにアップグレード";
+
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "プレミアム版ではハードウェアの鍵 (YubiKey) を使って安全性を強化できます。";
+
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "ハードウェアキー";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "マスターパスワードの入力時間を節約します：プレミアム版ではもっと長い時間データベースを開けたままにできます。";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "長時間経過後のデータベースのタイムアウト";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "プレミアム版ではデータベースの切り替えが簡単にできます。";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "複数データベース";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "プレミアム版では画像や文書を直接アプリ内部で見ることができます。";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "添付ファイルのプレビュー";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "パスワードを表示";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "（トラブルの内容を記述してください）";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "YubiKeyなし";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "キーを挿入してください";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "キーにタッチしてください";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "YubiKey スロット %d を使用";
+
+/* Action/button to add database to the app */
+"Add Database" = "データベースを追加";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "データベースを選択";
+
+/* Action/button */
+"Import Database" = "データベースを読み込む";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "KeePassのデータベースをキーファイルとして使わないでください。違うファイルを選んでください。";
+

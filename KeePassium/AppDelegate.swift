@@ -52,14 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        showAppCoverScreen()
-        return true
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
         let rootVC = window?.rootViewController as? FileKeeperDelegate
         assert(rootVC != nil, "FileKeeper needs a delegate")
         FileKeeper.shared.delegate = rootVC
+
+        showAppCoverScreen()
+        return true
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

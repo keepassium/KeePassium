@@ -16,6 +16,7 @@
 		751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E0D67230D12660088BB10 /* Bundle+extensions.swift */; };
 		751F90A9247748A300A7418F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751F90A8247748A300A7418F /* Result.swift */; };
 		75205FA5239C01CF00C1DEAA /* DatabaseSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */; };
+		7532821724A8048B00A71F87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7532821524A8048B00A71F87 /* InfoPlist.strings */; };
 		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
@@ -149,6 +150,8 @@
 		751F90A8247748A300A7418F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		75205FA2239BDB6700C1DEAA /* DatabaseSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
 		75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsManager.swift; sourceTree = "<group>"; };
+		7532821624A8048B00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7532821824A8048B00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7538167D22B15FC7000FA4BD /* Settings+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+premium.swift"; sourceTree = "<group>"; };
 		75384B9822CCB76800157598 /* UsageMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageMonitor.swift; sourceTree = "<group>"; };
 		75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResponse.swift; sourceTree = "<group>"; };
@@ -576,6 +579,7 @@
 				75D09BAD2174F3E600F7DEF2 /* KeePassiumLib.m */,
 				75D09BAC2174F3E600F7DEF2 /* KeePassiumLib.modulemap */,
 				75D0C76E2174AF1F00C64C93 /* Info.plist */,
+				7532821524A8048B00A71F87 /* InfoPlist.strings */,
 				751E0CDD2309A3420088BB10 /* Localizable.strings */,
 			);
 			path = KeePassiumLib;
@@ -700,6 +704,7 @@
 				es,
 				fr,
 				it,
+				ja,
 			);
 			mainGroup = 75D0C7602174AF1F00C64C93;
 			productRefGroup = 75D0C76B2174AF1F00C64C93 /* Products */;
@@ -717,6 +722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75D09BDD2174F76500F7DEF2 /* LICENSE in Resources */,
+				7532821724A8048B00A71F87 /* InfoPlist.strings in Resources */,
 				751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -880,8 +886,17 @@
 				75AC35BB23549D6C00B60614 /* es */,
 				7502613D243E970000C47F4F /* fr */,
 				754A322A244269F500632B39 /* it */,
+				7532821824A8048B00A71F87 /* ja */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		7532821524A8048B00A71F87 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7532821624A8048B00A71F87 /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

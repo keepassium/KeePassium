@@ -188,7 +188,7 @@
 "[Generic/File] Remove" = "Entfernen";
 
 /* Title of an error message about file export */
-"[Generic/File/title] Export Error" = "Export Fehler";
+"[Generic/File/title] Export Error" = "Export-Fehler";
 
 /* Message shown when trying to copy into an existing file. */
 "[Generic/File/title] File already exists" = "Datei existiert bereits";

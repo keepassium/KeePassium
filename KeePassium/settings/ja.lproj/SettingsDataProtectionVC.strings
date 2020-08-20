@@ -1,60 +1,60 @@
 /* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
-"3uV-Zs-RRo.normalTitle" = "Schlüsseldatei-Verbindungen löschen";
+"3uV-Zs-RRo.normalTitle" = "キーファイルの関連付けを削除";
 
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
-"e1v-nv-Mst.normalTitle" = "Master Keys löschen";
+"e1v-nv-Mst.normalTitle" = "マスターキーをクリア";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "Verstecke Passwörter und andere geschützte Felder hinter Sternchen (empfohlen).";
+"e6Y-AP-hag.footerTitle" = "パスワードや他の保護データを星印で隠す (推奨)。";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.headerTitle" = "Geschützte Felder";
+"e6Y-AP-hag.headerTitle" = "保護されたフィールド";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "Sobald Sie eine Datenbank entsperren, kann der Master-Schlüssel im sicheren Schlüsselbund des Gerätes gespeichert werden. Das nächste Mal wird KeePassium diesen Schlüssel verwenden, damit Sie Ihr volles Master-Passwort nicht erneut eingeben müssen. \n\n(Master-Schlüssel werden automatisch bei Datenbank-Zeitüberschreitung gelöscht.)";
+"Faj-km-pM5.footerTitle" = "データベースのロックを解除すると、そのマスターキーはデバイス内の安全なキーチェーンに保存できます。 次回はそのキーが使われるため、マスターパスワードを再び入力する必要はありません。 \n\n(マスターキーはデータベースがタイムアウトするときに自動的に消去されます。)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.headerTitle" = "Schnelles Entsperren";
+"Faj-km-pM5.headerTitle" = "クイック解錠";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Verwenden Sie Universal Zwischenablage zum Kopieren und Einfügen zwischen Ihren Apple-Geräten.";
+"g9a-rJ-4WJ.footerTitle" = "ユニバーサルクリップボードを使って、コピー＆ペーストをAppleデバイス間で行う。";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.footerTitle" = "Wenn Sie etwas kopieren, wird KeePassium Ihre Zwischenablage nach einiger Zeit automatisch löschen.";
+"hnI-Q8-Ixm.footerTitle" = "コピーの後、クリップボード (コピー内容) の消去を一定時間後に自動的に行います。";
 
 /* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.headerTitle" = "Zwischenablage";
+"hnI-Q8-Ixm.headerTitle" = "クリップボード";
 
 /* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
-"INJ-Cy-Tfo.text" = "Master-Schlüssel merken";
+"INJ-Cy-Tfo.text" = "マスターキーを保存する";
 
 /* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
-"IZZ-aM-g2i.title" = "Datenschutz";
+"IZZ-aM-g2i.title" = "データの保護";
 
 /* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
-"JHl-o7-xHI.text" = "Schlüsseldateien merken";
+"JHl-o7-xHI.text" = "キーファイルを保存する";
 
 /* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.footerTitle" = "Automatisch die zuletzt verwendete Schlüsseldatei für jede Datenbank eintragen. Das Löschen des Eintrags löscht die Dateien nicht.";
+"Mxu-GP-FmN.footerTitle" = "最後に使用したキーファイルをデータベースごとに覚えておいて、自動的に選択します。関連付けをクリアしてもファイルには影響ありません。";
 
 /* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.headerTitle" = "Schlüsseldatei";
+"Mxu-GP-FmN.headerTitle" = "キーファイル";
 
 /* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.footerTitle" = "Schließt alle Datenbanken und entfernt alle Schlüssel nach der festgelegten Zeit.";
+"neJ-eG-TV7.footerTitle" = "データベースがタイムアウトすると、一定時間後には、開いているデータベースをすべて閉じ、保存したマスターキーもすべて消去します。";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.headerTitle" = "Automatisch sperren";
+"neJ-eG-TV7.headerTitle" = "自動ロック";
 
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
-"pid-k2-idJ.text" = "Passwörter ausblenden";
+"pid-k2-idJ.text" = "パスワードを隠す";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "Zwischenablage löschen nach";
+"SSu-Sr-MCg.text" = "クリップボードのタイムアウト";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Datenbank schließen nach";
+"weX-SZ-IDB.text" = "データベースのタイムアウト";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
-"YL6-U9-FM6.text" = "Allgemeine Zwischenablage";
+"YL6-U9-FM6.text" = "ユニバーサルクリップボード";
 

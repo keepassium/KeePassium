@@ -35,25 +35,27 @@ extension RootSplitVC: FileKeeperDelegate {
         target: URL,
         handler: @escaping (FileKeeper.ConflictResolution) -> Void)
     {
-        let fileName = target.lastPathComponent
-        let choiceAlert = UIAlertController(
-            title: fileName,
-            message: LString.fileAlreadyExists,
-            preferredStyle: .alert)
-        let actionOverwrite = UIAlertAction(title: LString.actionOverwrite, style: .destructive) {
-            (action) in
-            handler(.overwrite)
+        DispatchQueue.main.async { 
+            let fileName = target.lastPathComponent
+            let choiceAlert = UIAlertController(
+                title: fileName,
+                message: LString.fileAlreadyExists,
+                preferredStyle: .alert)
+            let actionOverwrite = UIAlertAction(title: LString.actionOverwrite, style: .destructive) {
+                (action) in
+                handler(.overwrite)
+            }
+            let actionRename = UIAlertAction(title: LString.actionRename, style: .default) { (action) in
+                handler(.rename)
+            }
+            let actionAbort = UIAlertAction(title: LString.actionCancel, style: .cancel) { (action) in
+                handler(.abort)
+            }
+            choiceAlert.addAction(actionOverwrite)
+            choiceAlert.addAction(actionRename)
+            choiceAlert.addAction(actionAbort)
+            let topModalVC = self.presentedViewController ?? self
+            topModalVC.present(choiceAlert, animated: true)
         }
-        let actionRename = UIAlertAction(title: LString.actionRename, style: .default) { (action) in
-            handler(.rename)
-        }
-        let actionAbort = UIAlertAction(title: LString.actionCancel, style: .cancel) { (action) in
-            handler(.abort)
-        }
-        choiceAlert.addAction(actionOverwrite)
-        choiceAlert.addAction(actionRename)
-        choiceAlert.addAction(actionAbort)
-        let topModalVC = self.presentedViewController ?? self
-        topModalVC.present(choiceAlert, animated: true)
     }
 }

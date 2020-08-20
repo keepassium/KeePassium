@@ -57,7 +57,10 @@ public class DatabaseManager {
         ignoreErrors: Bool,
         completion callback: ((FileAccessError?) -> Void)?)
     {
-        guard database != nil else { return }
+        guard database != nil else {
+            callback?(nil)
+            return
+        }
         Diag.verbose("Will queue close database")
 
         if clearStoredKey, let urlRef = databaseRef {
@@ -68,7 +71,12 @@ public class DatabaseManager {
         }
 
         serialDispatchQueue.async {
-            guard let dbDoc = self.databaseDocument else { return }
+            guard let dbDoc = self.databaseDocument else {
+                DispatchQueue.main.async {
+                    callback?(nil)
+                }
+                return
+            }
             Diag.debug("Will close database")
             
             let completionSemaphore = DispatchSemaphore(value: 0)

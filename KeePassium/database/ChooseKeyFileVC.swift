@@ -71,9 +71,7 @@ class ChooseKeyFileVC: UITableViewController, Refreshable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         fileKeeperNotifications.startObserving()
-        if FileKeeper.shared.hasPendingFileOperations {
-            processPendingFileOperations()
-        }
+        processPendingFileOperations()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -352,7 +350,9 @@ extension ChooseKeyFileVC: FileKeeperObserver {
     }
     
     func fileKeeperHasPendingOperation() {
-        processPendingFileOperations()
+        if isViewLoaded {
+            processPendingFileOperations()
+        }
     }
     
     func fileKeeper(didRemoveFile urlRef: URLReference, fileType: FileType) {

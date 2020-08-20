@@ -1,5 +1,22 @@
 #CHANGELOG
 
+## [1.14.64] - 2020-06-28
+
+### Added
+
+- Japanese translation [thanks, Hiroto Sakai and miyar520]
+
+### Changed
+
+- Refined sorting: files with errors are always listed last
+- [TestFlight only] the "[no leftNavController](https://github.com/keepassium/KeePassium/blob/46a3c09d8a00ebd0c82d8707ba89b9ecbd273de7/KeePassium/database/UnlockDatabaseVC.swift#L468)" crash will produce a debug log file
+- Updated German translation [thanks, Sebastian]
+
+### Fixed
+
+- Crash when importing an already existing file [thanks, Marc]
+
+
 ## [1.14.63] - 2020-06-21
 
 ### Added

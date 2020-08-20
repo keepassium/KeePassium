@@ -452,7 +452,7 @@
 "[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted." = "Alle Master Keys wurden gelöscht.";
 
 /* Title of the success message for `Clear Master Keys` button */
-"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "Bereinigt";
+"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "Gelöscht";
 
 /* Description of the clipboard/pasteboard timeout. */
 "[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "Wenn Sie etwas kopieren, wird KeePassium Ihre Zwischenablage nach dieser Zeit automatisch löschen.";

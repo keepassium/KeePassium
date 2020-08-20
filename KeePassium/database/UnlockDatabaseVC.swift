@@ -462,9 +462,14 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             return
         }
         let viewGroupVC = ViewGroupVC.make(group: database.root, loadingWarnings: loadingWarnings)
-        guard let leftNavController =
-            splitViewController?.viewControllers.first as? UINavigationController else
+        guard let splitVC = splitViewController,
+            let firstVC = splitVC.viewControllers.first,
+            let leftNavController = firstVC as? UINavigationController else
         {
+            let splitVC = splitViewController
+            let firstVC = splitViewController?.viewControllers.first
+            Diag.writeToPersistentLog("splitVC: \(splitVC.debugDescription)\nfirstVC: \(firstVC.debugDescription)")
+            
             fatalError("No leftNavController?!")
         }
         if leftNavController.topViewController is UnlockDatabaseVC {
@@ -634,7 +639,9 @@ extension UnlockDatabaseVC: FileKeeperObserver {
     }
 
     func fileKeeperHasPendingOperation() {
-        processPendingFileOperations()
+        if isViewLoaded {
+            processPendingFileOperations()
+        }
     }
 
     private func processPendingFileOperations() {

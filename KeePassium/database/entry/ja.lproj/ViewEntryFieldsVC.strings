@@ -1,0 +1,9 @@
+/* Class = "UIButton"; accessibilityHint = "Expands a text field to its full height"; ObjectID = "6Mx-Oh-6m0"; */
+"6Mx-Oh-6m0.accessibilityHint" = "テキスト欄をその高さまで拡大します。";
+
+/* Class = "UIButton"; accessibilityLabel = "Show more"; ObjectID = "6Mx-Oh-6m0"; */
+"6Mx-Oh-6m0.accessibilityLabel" = "さらに表示";
+
+/* Class = "UILabel"; text = "Copied"; ObjectID = "vLP-Zc-bUc"; Note = "Confirmation message: field value has been copied to clipboard."; */
+"vLP-Zc-bUc.text" = "コピーしました";
+

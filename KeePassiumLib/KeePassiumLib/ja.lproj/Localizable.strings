@@ -1,0 +1,381 @@
+/* Type of keyboard to show for App Lock passcode: letters and digits. */
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "英数字";
+
+/* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "数字";
+
+/* Error message when the challenge-response communication has been cancelled by the user. */
+"[ChallengeResponseError] cancelled" = "ユーザーにキャンセルされました。";
+
+/* Error message when the hardware key is not plugged in. */
+"[ChallengeResponseError] keyNotConnected" = "ハードウェアキーが接続されていません。";
+
+/* Error message when trying to use challenge-response hardware in AutoFill. */
+"[ChallengeResponseError] notAvailableInAutoFill" = "ハードウェアキーは自動入力では使用できません。";
+
+/* Error message when trying to use challenge-response with a kdb database. */
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "ハードウェアキーはこのデータベース形式ではサポートされていません。";
+
+/* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "このデバイスまたはiOSはハードウェアキーをサポートしていません (%@)";
+
+/* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
+"[ChallengeResponseError] slotNotConfigured" = "ハードウェアキーがチャレンジ/レスポンス認証に設定されていません。";
+
+/* Progress status */
+"[Cipher/Progress] Decrypting" = "復号中";
+
+/* Progress status */
+"[Cipher/Progress] Encrypting" = "暗号化中";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES decryption error (code %d)" = "AES 復号エラー (コード %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES encryption error (code %d)" = "AES 暗号化エラー (コード %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES initialization error (code %d)" = "AES初期化エラー (コード %d)";
+
+/* Error message about Argon2 hashing function. [errorCode: Int] */
+"[CryptoError] Argon2 hashing error (code %d)" = "Argon2ハッシュ化エラー (コード %d)";
+
+/* Error message about PKCS7 padding. [errorCode: Int] */
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "無効なデータパディング (コード %d) ファイルが破損？";
+
+/* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "無効なKDFパラメータ: %1$@ - %2$@ ファイルが破損？";
+
+/* Error message about random number generator. [errorCode: Int] */
+"[CryptoError] Random number generator error (code %d)" = "乱数生成エラー (コード %d)";
+
+/* Error message about Twofish cipher. [errorCode: Int] */
+"[CryptoError] Twofish cipher error (code %d)" = "Twofish暗号化エラー (コード %d)";
+
+/* Error message */
+"[Database/Load/Error] Cannot find database file" = "データベースが見つかりません";
+
+/* Error message */
+"[Database/Load/Error] Cannot find key file" = "キーファイルが見つかりません";
+
+/* Error message */
+"[Database/Load/Error] Cannot open database file" = "データベースを開けません";
+
+/* Error message */
+"[Database/Load/Error] Cannot open key file" = "キーファイルを開けません";
+
+/* Error shown when both master password and key file are empty */
+"[Database/Load/Error] Please provide at least a password or a key file" = "パスワードまたはキーファイルを入力してください";
+
+/* Error message */
+"[Database/Load/Error] Unrecognized database format" = "不明なデータベース形式です";
+
+/* Progress status: finished loading database */
+"[Database/Progress] Done" = "完了";
+
+/* Progress status */
+"[Database/Progress] Loading key file..." = "キーファイルを読み込み中...";
+
+/* Progress status */
+"[Database/Progress/resolving]" = "ストレージに接続中...";
+
+/* Error message */
+"[Database/Unlock/Error] Failed to open key file" = "キーファイルを開けませんでした";
+
+/* Error message */
+"[Database/Unlock/Error] Password and key file are both empty." = "パスワードとキーファイルのいずれも指定されていません。";
+
+/* Error message */
+"[Database1/FormatError] Database file is corrupted." = "データベースが破損しています。";
+
+/* Error message [fieldName: String] */
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "フィールド %@ の解析エラー。 DBが破損？";
+
+/* Error message */
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "グループに属さないエントリーがあります。DBが破損？";
+
+/* Error message */
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "予期しないファイルの終了です。DBが破損？";
+
+/* Error message when reading database header */
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "ヘッダー読み込みエラー。DBが破損？";
+
+/* Error message. [flagsHexString: String] */
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "未サポートの暗号方式 (コード: %@)";
+
+/* Error message when opening a database. [version: String] */
+"[Database1/Header1/Error] Unsupported database format version: %@." = "未サポートのDB形式のバージョン: %@";
+
+/* Error message when opening a database */
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "不正なシグネチャです。KeePassのDBではない？";
+
+/* Status message: collecting database items into a single package */
+"[Database1/Progress] Packing the content" = "コンテンツをパッケージング中";
+
+/* Status message: processing the content of a database */
+"[Database1/Progress] Parsing content" = "コンテンツを解析中";
+
+/* Name of a group which contains deleted entries */
+"[Database2/backupGroupName] Recycle Bin" = "ゴミ箱";
+
+/* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
+"[Database2/FormatError] Cannot parse database. %@" = "データベースを解析できません。 %@";
+
+/* Error message [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "データベース破損（負のサイズ ブロック %d）";
+
+/* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "データベース破損（ハッシュ不一致 ブロック%d）";
+
+/* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "データベース破損（HMAC不一致 ブロック%d）";
+
+/* Error message about Gzip compression algorithm. [reason: String] */
+"[Database2/FormatError] Gzip error: %@" = "Gzipエラー: %@";
+
+/* Error message: wrong ID of a data block */
+"[Database2/FormatError] Unexpected block ID." = "予期しないブロックIDです。";
+
+/* Error message */
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "予期しないファイルの終了です。DBが破損？";
+
+/* Error message when saving a database. [reason: String] */
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "添付データの展開に失敗しました: %@";
+
+/* Error message, with the name of problematic field. [fieldName: String] */
+"[Database2/Header2/Error] Header field %@ is corrupted." = "ヘッダーフィールド %@ が破損しています。";
+
+/* Error message */
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "ヘッダーのハッシュが一致しません。DBが破損？";
+
+/* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "ヘッダーHMACが一致しません。DBが破損？";
+
+/* Error message when reading database header */
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "ヘッダー読み込みエラー。DBが破損？";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Unknown compression algorithm." = "不明な圧縮アルゴリズムです。";
+
+/* Error message. [uuidHexString: String] */
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "未サポートのデータ暗号化: %@";
+
+/* Error message when opening a database. [version: String] */
+"[Database2/Header2/Error] Unsupported database format version: %@." = "未サポートのDB形式のバージョン: %@";
+
+/* Error message when opening a database. [id: UInt32] */
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "未サポートの内部ストリーム暗号化 (ID %d)";
+
+/* Error message about Key Derivation Function. [uuidString: String] */
+"[Database2/Header2/Error] Unsupported KDF: %@" = "未サポートのKDF: %@";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "不正なシグネチャです。KeePassのDBではない？";
+
+/* Error message about Gzip compression algorithm. [errorMessage: String] */
+"[Database2/Loading/Error] Error unpacking database: %@" = "データベースの展開エラー: %@";
+
+/* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
+"[Database2/Loading/Warning/missingBinaries]" = "いくつかのエントリーの添付ファイルのデータが空です。これはデータベース破損の兆候で、おそらく最後に使用したApp (%1$@) によるものです。KeePassiumは空の添付ファイルを保持できても復元はできません。データベースをバックアップから復元してください。 \n\n対象の添付ファイル: %2$@";
+
+/* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
+"[Database2/Loading/Warning/namelessAttachments]" = "名前がない添付ファイルがあります。これはデータベースの破損の兆候です。\n\n 次のエントリー（過去バージョンを含む）の添付ファイルを確認してください:\n%@";
+
+/* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
+"[Database2/Loading/Warning/namelessCustomFields]" = "名前がないカスタムフィールドがあります。これはデータ破損の兆候です。次のエントリーを確認してください:\n\n%@";
+
+/* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
+"[Database2/Loading/Warning/unusedAttachments]" = "このデータベースにはどのエントリーのものでも無い添付ファイルがあります。通常は最後に使ったApp (%@) が削除します。これはデータベースの破損の兆候です。 \nデータベースを変更する前にバックアップを作成することを推奨します。";
+
+/* Progress bar status */
+"[Database2/Progress] Loading database" = "データベースを読み込み中";
+
+/* Progress bar status */
+"[Database2/Progress] Reading database content" = "コンテンツを読み込み中";
+
+/* Progress bar status */
+"[Database2/Progress] Writing encrypted blocks" = "ブロックを書き込み中";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "データベースを展開中";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "整合性をチェック中";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "データベースを解析中";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Data compression error: %@" = "データ圧縮エラー: %@";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Encryption error: %@" = "暗号化エラー: %@";
+
+/* Error message about XML parsing. [value: String, tag: String] */
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "不正な値 '%1$@' が %2$@ に存在";
+
+/* Error message about XML parsing. [tag: String] */
+"[Database2/Xml2/ParsingError] Nil value in %@" = "%@ に値が無い";
+
+/* Error message about XML parsing */
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "KeePass XMLではありません";
+
+/* Error message about XML parsing. [actualTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "予期しないタグ '%@'";
+
+/* Error message about XML parsing. [actualTag: String, expectedTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "予期しないタグ '%1$@'（正しくは '%2$@'）";
+
+/* Generic error while parsing XML. [errorDetails: String] */
+"[Database2/Xml2/ParsingError] XML error: %@" = "XMLエラー: %@";
+
+/* Error message while opening a database */
+"[DatabaseError] Cannot open database" = "データベースを開けません";
+
+/* Error message while saving a database */
+"[DatabaseError] Cannot save database" = "データベースを保存できません";
+
+/* Error message: user provided a wrong master key for decryption. */
+"[DatabaseError] Invalid password or key file" = "パスワードまたはキーファイルが無効です";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to delete file. Reason: %@" = "ファイルを削除できません: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to import file. Reason: %@" = "ファイルを読み込めません: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to open file. Reason: %@" = "ファイルを開けません: %@";
+
+/* Error message: tried to import URL which does not point to a file */
+"[FileKeeper] Not a file URL" = "ファイルがありません";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "作成日（古い順）";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "作成日（新しい順）";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "変更日（古い順）";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "変更日（新しい順）";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
+"[FilesSortOrder/longTitle] Name (A..Z)" = "名前（昇順）";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
+"[FilesSortOrder/longTitle] Name (Z..A)" = "名前（降順）";
+
+/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
+"[FilesSortOrder/longTitle] No Sorting" = "並び替えない";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "作成日（新しい順）";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "作成日（古い順）";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "変更日（新しい順）";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "変更日（古い順）";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "名前（昇順）";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "名前（降順）";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
+"[GroupSortOrder/longTitle] No Sorting" = "並び替えない";
+
+/* Status message: processing of the master key is in progress */
+"[KDF/Progress] Processing the master key" = "マスターキーを処理中";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "キーチェーンエラー (コード %d) ";
+
+/* Error message about system keychain. */
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "キーチェーンエラー: 予期しないデータ形式";
+
+/* Explanation/notification when a long-running operation was cancelled by user */
+"[Progress/CancellationReason] Cancelled by user" = "ユーザーにキャンセルされました";
+
+/* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
+"[Progress/CancellationReason/lowMemory]" = "メモリが不足しています。\nこれは大きなデータベースやメモリを多く使う設定（Argon2のメモリ）で発生します。";
+
+/* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
+"[Settings/AppLockTimeout/description] After last interaction" = "最後に操作した後";
+
+/* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
+"[Settings/AppLockTimeout/description] After leaving the app" = "Appを切り替えた後";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "即時";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/fullTitle] Never" = "しない";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "即時";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/shortTitle] Never" = "しない";
+
+/* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "無期限";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/fullTitle] Never" = "しない";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/shortTitle] Never" = "しない";
+
+/* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "Appを切り替える時";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "即時";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "しない";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "即時";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "しない";
+
+/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "変更日";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
+"[Settings/EntryListDetail/longTitle] None" = "未設定";
+
+/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
+"[Settings/EntryListDetail/longTitle] Notes" = "メモ";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
+"[Settings/EntryListDetail/longTitle] Password" = "パスワード";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
+"[Settings/EntryListDetail/longTitle] URL" = "URL";
+
+/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
+"[Settings/EntryListDetail/longTitle] User Name" = "ユーザー名";
+
+/* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
+"[URLReference/Location] Cloud storage / Another app" = "クラウドストレージ / 他のアプリ";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
+"[URLReference/Location] Internal backup" = "内部バックアップ";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
+"[URLReference/Location] Internal inbox" = "内部inbox";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
+"[URLReference/Location] Local copy" = "ローカルコピー";
+
