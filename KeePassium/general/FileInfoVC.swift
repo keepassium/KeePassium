@@ -243,12 +243,20 @@ class FileInfoVC: UITableViewController {
             return urlRef.location.description
         }
         
+        var components = [String]()
         switch urlRef.location {
         case .external:
-            return fileProvider.localizedName
+            components.append(fileProvider.localizedName)
+            let isInTrash = urlRef.getCachedInfoSync(canFetch: false)?.isInTrash
+            if isInTrash ?? false {
+                components.append(LString.trashDirectoryName)
+            }
         case .internalDocuments, .internalBackup, .internalInbox:
-            return urlRef.location.description
+            components.append(fileProvider.localizedName)
+            components.append(AppInfo.name)
+            components.append(urlRef.location.description)
         }
+        return components.joined(separator: " → ")
     }
     
     private func updateDynamicFields(from fileInfo: FileInfo) {

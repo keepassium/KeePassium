@@ -290,6 +290,11 @@ public enum LString {
 
     
     
+    public static let trashDirectoryName = NSLocalizedString(
+        "[Generic/Directory/Recently Deleted/name]",
+        value: "Recently Deleted",
+        comment: "Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app"
+    )
     public static let titleExcludeFromBackup = NSLocalizedString(
         "[FileInfo/isExcludedFromBackup/title]",
         value: "Exclude From iCloud/iTunes Backup",

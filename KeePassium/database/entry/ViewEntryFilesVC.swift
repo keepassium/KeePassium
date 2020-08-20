@@ -423,11 +423,15 @@ extension ViewEntryFilesVC: UIDocumentPickerDelegate {
             guard let self = self else { return }
             switch result {
             case .success(let docData):
-                self.addAttachment(name: url.lastPathComponent, data: docData)
+                DispatchQueue.main.async { [self] in
+                    self.addAttachment(name: url.lastPathComponent, data: docData)
+                }
             case .failure(let fileAccessError):
                 Diag.error("Failed to open source file [message: \(fileAccessError.localizedDescription)]")
-                self.progressViewHost?.hideProgressView() 
-                self.showErrorAlert(fileAccessError)
+                DispatchQueue.main.async { [self] in
+                    self.progressViewHost?.hideProgressView() 
+                    self.showErrorAlert(fileAccessError)
+                }
             }
         }
     }

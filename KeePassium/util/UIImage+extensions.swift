@@ -23,6 +23,7 @@ enum ImageAsset: String {
     case sortOrderAscToolbar = "sort-order-asc-toolbar"
     case sortOrderDescToolbar = "sort-order-desc-toolbar"
     case databaseBackupListitem = "database-backup-listitem"
+    case databaseTrashedListitem = "database-trashed-listitem"
     case fileProviderGenericListitem = "fp-generic-listitem"
     case fileProviderOnMyIPadListitem = "fp-on-ipad-listitem"
     case fileProviderOnMyIPhoneListitem = "fp-on-iphone-listitem"

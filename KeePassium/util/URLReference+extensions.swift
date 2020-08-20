@@ -22,7 +22,7 @@ extension URLReference {
     private func getDatabaseIcon() -> UIImage {
         switch self.location {
         case .external:
-            return fileProvider?.icon ?? UIImage(asset: .fileProviderGenericListitem)
+            return getExternalDatabaseIcon()
         case .internalDocuments, .internalInbox:
             if UIDevice.current.userInterfaceIdiom == .pad {
                 return UIImage.init(asset: .fileProviderOnMyIPadListitem)
@@ -32,5 +32,18 @@ extension URLReference {
         case .internalBackup:
             return UIImage(asset: .databaseBackupListitem)
         }
+    }
+    
+    private func getExternalDatabaseIcon() -> UIImage {
+        guard let _fileProvider = fileProvider else {
+            return UIImage(asset: .fileProviderGenericListitem)
+        }
+        if _fileProvider == .localStorage,
+            let _fileInfo = self.getCachedInfoSync(canFetch: false),
+            _fileInfo.isInTrash
+        {
+            return UIImage(asset: .databaseTrashedListitem)
+        }
+        return _fileProvider.icon ?? UIImage(asset: .fileProviderGenericListitem)
     }
 }

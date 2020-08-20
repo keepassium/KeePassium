@@ -29,6 +29,18 @@ public extension URL {
         return res?.isExcludedFromBackup
     }
     
+    var isInTrashDirectory: Bool {
+        do {
+            let fileManager = FileManager.default
+            var relationship = FileManager.URLRelationship.other
+            try fileManager.getRelationship(&relationship, of: .trashDirectory, in: [], toItemAt: self)
+            return relationship == .contains
+        } catch {
+            let isSimpleNameMatch = self.pathComponents.contains(".Trash")
+            return isSimpleNameMatch
+        }
+    }
+    
     @discardableResult
     mutating func setExcludedFromBackup(_ isExcluded: Bool) -> Bool {
         var values = URLResourceValues()

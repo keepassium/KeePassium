@@ -44,17 +44,16 @@ class FileListCell: UITableViewCell {
     
     var accessoryTapHandler: ((FileListCell)->())? 
     fileprivate(set) var fileType: FileType!
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupCell()
-    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
     
     private func setupCell() {
+        if #available(iOS 13, *) {
+            spinner.style = .medium
+        }
         let fileInfoButton = FileInfoAccessoryButton()
         accessoryView = fileInfoButton
         fileInfoButton.addTarget(

@@ -1,5 +1,19 @@
 #CHANGELOG
 
+## [1.14.69] - 2020-08-11
+
+### Added
+
+- Special icon for databases in Trash (Recently Deleted) folder
+
+### Fixed
+
+- Crash after updating the app (iPad) [thanks, everyone]
+- Crash when adding an entry attachment	[thanks, Sophie]
+- File refresh spinner were invisible in dark mode
+- Some icons in the settings
+
+
 ## [1.14.68] - 2020-08-04
 
 ### Added

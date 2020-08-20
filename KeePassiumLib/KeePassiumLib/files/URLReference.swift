@@ -14,6 +14,7 @@ public struct FileInfo {
     public var creationDate: Date?
     public var modificationDate: Date?
     public var isExcludedFromBackup: Bool?
+    public var isInTrash: Bool
 }
 
 public class URLReference:
@@ -406,7 +407,8 @@ public class URLReference:
             fileSize: Int64(attributes.fileSize ?? -1),
             creationDate: attributes.creationDate,
             modificationDate: attributes.contentModificationDate,
-            isExcludedFromBackup: attributes.isExcludedFromBackup ?? false)
+            isExcludedFromBackup: attributes.isExcludedFromBackup ?? false,
+            isInTrash: url.isInTrashDirectory)
         self.cachedInfo = latestInfo
         DispatchQueue.main.async {
             self.error = nil
