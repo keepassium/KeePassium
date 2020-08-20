@@ -15,6 +15,11 @@ public enum LString {
         value: "OK",
         comment: "Action/button: generic OK"
     )
+    public static let actionContinue = NSLocalizedString(
+        "[Generic] Continue",
+        value: "Continue",
+        comment: "Action/button to proceed with the action"
+    )
     public static let actionCancel = NSLocalizedString(
         "[Generic] Cancel",
         value: "Cancel",
@@ -217,7 +222,11 @@ public enum LString {
         value: "Create Database",
         comment: "Title of a form for creating a database"
     )
-
+    public static let warningNonDatabaseExtension = NSLocalizedString(
+        "[Database/Add] Selected file \"%@\" does not look like a database.",
+        value: "Selected file \"%@\" does not look like a database.",
+        comment: "Warning when trying to add a random file as a database. [fileName: String]")
+    
     public static let actionCreateGroup = NSLocalizedString(
         "[Group/Create/action] Create Group",
         value: "Create Group",
@@ -279,6 +288,24 @@ public enum LString {
         comment: "Name of an entry field"
     )
 
+    
+    
+    public static let titleExcludeFromBackup = NSLocalizedString(
+        "[FileInfo/isExcludedFromBackup/title]",
+        value: "Exclude From iCloud/iTunes Backup",
+        comment: "Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>`"
+    )
+    public static let titleBackupSettings = NSLocalizedString(
+        "[FileInfo/Backup/header]",
+        value: "Backup",
+        comment: "Section header: file backup settings"
+    )
+
+    public static let errorFailedToChangeFileAttributes = NSLocalizedString(
+        "[FileInfo/Error/failed to change attributes]",
+        value: "Failed to update file attributes.",
+        comment: "Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc)"
+    )
     
     public static let titleTouchID  = NSLocalizedString(
         "[AppLock/Biometric/Hint] Unlock KeePassium",

@@ -93,6 +93,10 @@ public class PremiumManager: NSObject {
 #endif
 
     
+    public private(set) var isTrialAvailable: Bool = true
+    
+    public private(set) var fallbackDate: Date? = nil
+    
     public enum Status {
         case initialGracePeriod
         case subscribed
@@ -226,6 +230,15 @@ public class PremiumManager: NSObject {
     }
     
     
+    public func reloadReceipt(withLogging: Bool=false) {
+        guard BusinessModel.type == .freemium else { return }
+        let receiptAnalyzer = ReceiptAnalyzer()
+        receiptAnalyzer.loadReceipt()
+        self.isTrialAvailable = !receiptAnalyzer.containsTrial
+        self.fallbackDate = receiptAnalyzer.fallbackDate
+    }
+    
+    
     public func isAvailable(feature: PremiumFeature) -> Bool {
         return feature.isAvailable(in: status)
     }
@@ -280,6 +293,7 @@ public class PremiumManager: NSObject {
     
     
     public func startObservingTransactions() {
+        reloadReceipt()
         SKPaymentQueue.default().add(self)
     }
     
@@ -333,6 +347,7 @@ extension PremiumManager: SKPaymentTransactionObserver {
         _ queue: SKPaymentQueue,
         updatedTransactions transactions: [SKPaymentTransaction])
     {
+        reloadReceipt()
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased:
@@ -349,6 +364,9 @@ extension PremiumManager: SKPaymentTransactionObserver {
             case .deferred:
                 delegate?.purchaseDeferred(in: self)
                 break
+            @unknown default:
+                Diag.warning("Unknown transaction state")
+                assertionFailure()
             }
         }
     }
@@ -362,6 +380,7 @@ extension PremiumManager: SKPaymentTransactionObserver {
     }
 
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        ReceiptAnalyzer.logPurchaseHistory()
         Diag.debug("Finished restoring purchases")
         delegate?.purchaseRestoringFinished(in: self)
     }

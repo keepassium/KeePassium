@@ -42,6 +42,28 @@ public extension URL {
         return res?.isDirectory ?? false
     }
     
+    var isExcludedFromBackup: Bool? {
+        let res = try? resourceValues(forKeys: [.isExcludedFromBackupKey])
+        return res?.isExcludedFromBackup
+    }
+    
+    @discardableResult
+    mutating func setExcludedFromBackup(_ isExcluded: Bool) -> Bool {
+        var values = URLResourceValues()
+        values.isExcludedFromBackup = isExcluded
+        do {
+            try setResourceValues(values)
+            if isExcludedFromBackup != nil && isExcludedFromBackup! == isExcluded {
+                return true
+            }
+            Diag.warning("Failed to change backup attribute: the modification did not last.")
+            return false
+        } catch {
+            Diag.warning("Failed to change backup attribute [reason: \(error.localizedDescription)]")
+            return false
+        }
+    }
+    
     var redacted: URL {
         let isDirectory = self.isDirectory
         return self.deletingLastPathComponent().appendingPathComponent("_redacted_", isDirectory: isDirectory)

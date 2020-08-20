@@ -22,32 +22,33 @@ extension SKProduct {
         return formatter.string(from: price) ?? String(format: "%.2f", price)
     }
     
-    var trialDays: Int? {
+    var localizedTrialDuration: String? {
         guard #available(iOS 11.2, *),
             let period = introductoryPrice?.subscriptionPeriod else { return nil }
+
+        var dateComponents = DateComponents()
+        let timeFormatter = DateComponentsFormatter()
         switch period.unit {
         case .day:
-            return period.numberOfUnits
+            dateComponents.setValue(period.numberOfUnits, for: .day)
+            timeFormatter.allowedUnits = [.day]
         case .week:
-            return 7 * period.numberOfUnits
+            dateComponents.setValue(7 * period.numberOfUnits, for: .day)
+            timeFormatter.allowedUnits = [.day]
         case .month:
-            return 31 * period.numberOfUnits
+            dateComponents.setValue(period.numberOfUnits, for: .month)
+            timeFormatter.allowedUnits = [.month]
         case .year:
-            return 365 * period.numberOfUnits
+            dateComponents.setValue(period.numberOfUnits, for: .year)
+            timeFormatter.allowedUnits = [.year]
+        @unknown default:
+            assertionFailure()
+            return nil 
         }
-    }
-    
-    var localizedTrialDuration: String? {
-        guard let trialDays = self.trialDays else { return nil }
         
-        var dateComponents = DateComponents()
-        dateComponents.setValue(trialDays, for: .day)
-        
-        let timeFormatter = DateComponentsFormatter()
-        timeFormatter.allowedUnits = [.day]
         timeFormatter.unitsStyle = .full
         timeFormatter.maximumUnitCount = 1
-        timeFormatter.formattingContext = .middleOfSentence
+        timeFormatter.formattingContext = .beginningOfSentence 
         timeFormatter.zeroFormattingBehavior = .dropAll
         return timeFormatter.string(from: dateComponents)
     }

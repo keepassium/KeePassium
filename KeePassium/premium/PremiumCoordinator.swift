@@ -138,11 +138,7 @@ extension PremiumCoordinator: PremiumManagerDelegate {
     }
     
     func purchaseFailed(with error: Error, in premiumManager: PremiumManager) {
-        let errorAlert = UIAlertController.make(
-            title: LString.titleError,
-            message: error.localizedDescription,
-            cancelButtonTitle: LString.actionDismiss)
-        planPicker.present(errorAlert, animated: true, completion: nil)
+        planPicker.showErrorAlert(error)
         setPurchasing(false)
     }
     

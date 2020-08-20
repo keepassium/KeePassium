@@ -80,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if inputURL.scheme != AppGroup.appURLScheme {
                 FileKeeper.shared.prepareToAddFile(
                     url: inputURL,
+                    fileType: nil, 
                     mode: isOpenInPlace ? .openInPlace : .import)
             }
         }

@@ -222,12 +222,9 @@ extension ChangeMasterKeyVC: KeyFileChooserDelegate {
             return
         }
         
-        if let errorMessage = keyFileRef.error?.localizedDescription {
+        if let error = keyFileRef.error {
             keyFileField.text = ""
-            let errorAlert = UIAlertController.make(
-                title: LString.titleError,
-                message: errorMessage)
-            present(errorAlert, animated: true, completion: nil)
+            showErrorAlert(error)
         } else {
             keyFileField.text = keyFileRef.visibleFileName
         }

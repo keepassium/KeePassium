@@ -576,34 +576,20 @@ extension MainCoordinator: UIDocumentPickerDelegate {
     }
     
     private func addDatabaseURL(_ url: URL) {
-        guard FileType.isDatabaseFile(url: url) else {
-            let fileName = url.lastPathComponent
-            let errorAlert = UIAlertController.make(
-                title: LString.titleWarning,
-                message: String.localizedStringWithFormat(
-                    NSLocalizedString(
-                        "[Database/Add] Selected file \"%@\" does not look like a database.",
-                        value: "Selected file \"%@\" does not look like a database.",
-                        comment: "Warning when trying to add a random file as a database. [fileName: String]"),
-                    fileName),
-                cancelButtonTitle: LString.actionOK)
-            navigationController.present(errorAlert, animated: true, completion: nil)
-            return
+        FileAddingHelper.ensureDatabaseFile(url: url, parent: navigationController) {
+            [weak self] (url) in
+            FileKeeper.shared.prepareToAddFile(url: url, fileType: .database, mode: .openInPlace)
+            FileKeeper.shared.processPendingOperations(
+                success: { [weak self] (urlRef) in
+                    guard let self = self else { return }
+                    self.navigationController.popToRootViewController(animated: true)
+                    self.refreshFileList()
+                },
+                error: { [weak self] (error) in
+                    self?.navigationController.showErrorAlert(error)
+                }
+            )
         }
-        
-        FileKeeper.shared.prepareToAddFile(url: url, mode: .openInPlace)
-        FileKeeper.shared.processPendingOperations(
-            success: { (urlRef) in
-                self.navigationController.popToRootViewController(animated: true)
-                self.refreshFileList()
-            },
-            error: { (error) in
-                let alert = UIAlertController.make(
-                    title: LString.titleError,
-                    message: error.localizedDescription)
-                self.navigationController.present(alert, animated: true, completion: nil)
-            }
-        )
     }
 
     private func addKeyFileURL(_ url: URL) {
@@ -616,16 +602,13 @@ extension MainCoordinator: UIDocumentPickerDelegate {
             return
         }
 
-        FileKeeper.shared.prepareToAddFile(url: url, mode: .openInPlace)
+        FileKeeper.shared.prepareToAddFile(url: url, fileType: .keyFile, mode: .openInPlace)
         FileKeeper.shared.processPendingOperations(
             success: { [weak self] (urlRef) in
                 self?.refreshFileList()
             },
             error: { [weak self] (error) in
-                let alert = UIAlertController.make(
-                    title: LString.titleError,
-                    message: error.localizedDescription)
-                self?.navigationController.present(alert, animated: true, completion: nil)
+                self?.navigationController.showErrorAlert(error)
             }
         )
     }
@@ -691,11 +674,7 @@ extension MainCoordinator: EntryFinderDelegate {
             ignoreErrors: false,
             completion: { [weak self] (error) in
                 if let error = error {
-                    let errorAlert = UIAlertController.make(
-                        title: LString.titleError,
-                        message: error.localizedDescription,
-                        cancelButtonTitle: LString.actionDismiss)
-                    self?.navigationController.present(errorAlert, animated: true, completion: nil)
+                    self?.navigationController.showErrorAlert(error)
                 } else {
                     self?.navigationController.popToRootViewController(animated: true)
                 }
@@ -831,10 +810,7 @@ extension MainCoordinator: PasscodeInputDelegate {
             }
         } catch {
             Diag.error(error.localizedDescription)
-            let alert = UIAlertController.make(
-                title: LString.titleKeychainError,
-                message: error.localizedDescription)
-            sender.present(alert, animated: true, completion: nil)
+            sender.showErrorAlert(error, title: LString.titleKeychainError)
         }
     }
     

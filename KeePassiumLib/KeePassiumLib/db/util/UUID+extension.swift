@@ -45,6 +45,6 @@ extension UUID {
     internal func base64EncodedString() -> String {
         var bytes = [UInt8](repeating: 0, count: 16)
         (self as NSUUID).getBytes(&bytes)
-        return Data(bytes: bytes).base64EncodedString()
+        return Data(bytes).base64EncodedString()
     }
 }

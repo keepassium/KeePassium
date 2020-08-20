@@ -152,7 +152,7 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
         let canAutoSelectDatabase = isTwoPaneMode || Settings.current.isAutoUnlockStartupDatabase
         
         guard let startDatabase = Settings.current.startupDatabase,
-            let selRow = databaseRefs.index(of: startDatabase),
+            let selRow = databaseRefs.firstIndex(of: startDatabase),
             canAutoSelectDatabase else
         {
             tableView.selectRow(at: nil, animated: true, scrollPosition: .none)
@@ -434,10 +434,7 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
             refresh()
         } catch {
             Diag.error("Failed to delete database file [reason: \(error.localizedDescription)]")
-            let errorAlert = UIAlertController.make(
-                title: LString.titleError,
-                message: error.localizedDescription)
-            present(errorAlert, animated: true, completion: nil)
+            showErrorAlert(error)
         }
     }
     
@@ -452,13 +449,8 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
     private func processPendingFileOperations() {
         FileKeeper.shared.processPendingOperations(
             success: nil,
-            error: {
-                [weak self] (error) in
-                guard let _self = self else { return }
-                let alert = UIAlertController.make(
-                    title: LString.titleError,
-                    message: error.localizedDescription)
-                _self.present(alert, animated: true, completion: nil)
+            error: { [weak self] (error) in
+                self?.showErrorAlert(error)
             }
         )
     }
@@ -638,32 +630,19 @@ extension ChooseDatabaseVC: UIDocumentPickerDelegate {
         didPickDocumentsAt urls: [URL])
     {
         guard let url = urls.first else { return }
-        guard FileType.isDatabaseFile(url: url) else {
-            let fileName = url.lastPathComponent
-            let errorMessage = String.localizedStringWithFormat(
-                NSLocalizedString(
-                    "[Database/Add] Selected file \"%@\" does not look like a database.",
-                    value: "Selected file \"%@\" does not look like a database.",
-                    comment: "Warning when trying to add a random file as a database. [fileName: String]"),
-                fileName)
-            let errorAlert = UIAlertController.make(
-                title: LString.titleWarning,
-                message: errorMessage,
-                cancelButtonTitle: LString.actionOK)
-            present(errorAlert, animated: true, completion: nil)
-            return
+        FileAddingHelper.ensureDatabaseFile(url: url, parent: self) { [weak self] (url) in
+            guard let self = self else { return }
+            switch controller.documentPickerMode {
+            case .open:
+                FileKeeper.shared.prepareToAddFile(url: url, fileType: .database, mode: .openInPlace)
+            case .import:
+                FileKeeper.shared.prepareToAddFile(url: url, fileType: .database, mode: .import)
+            default:
+                assertionFailure("Unexpected document picker mode")
+            }
+            self.processPendingFileOperations()
+            self.navigationController?.popToViewController(self, animated: true) 
         }
-        
-        switch controller.documentPickerMode {
-        case .open:
-            FileKeeper.shared.prepareToAddFile(url: url, mode: .openInPlace)
-        case .import:
-            FileKeeper.shared.prepareToAddFile(url: url, mode: .import)
-        default:
-            assertionFailure("Unexpected document picker mode")
-        }
-        processPendingFileOperations()
-        navigationController?.popToViewController(self, animated: true) 
     }
 }
 
@@ -719,10 +698,7 @@ extension ChooseDatabaseVC: PasscodeInputDelegate {
                 self?.tableView.reloadData()
             } catch {
                 Diag.error(error.localizedDescription)
-                let alert = UIAlertController.make(
-                    title: LString.titleKeychainError,
-                    message: error.localizedDescription)
-                self?.present(alert, animated: true, completion: nil)
+                self?.showErrorAlert(error, title: LString.titleKeychainError)
             }
         }
     }

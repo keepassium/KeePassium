@@ -87,6 +87,10 @@
 		753F924B22905621005E496F /* PremiumUpgradeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924A22905621005E496F /* PremiumUpgradeHelper.swift */; };
 		753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
+		753FE83524C1A9A400063FBB /* UIViewController+errorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753FE83424C1A9A400063FBB /* UIViewController+errorAlert.swift */; };
+		753FE83624C1A9A400063FBB /* UIViewController+errorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753FE83424C1A9A400063FBB /* UIViewController+errorAlert.swift */; };
+		753FE83724C1A9A400063FBB /* UIViewController+errorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753FE83424C1A9A400063FBB /* UIViewController+errorAlert.swift */; };
+		753FE83824C1A9A400063FBB /* UIViewController+errorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753FE83424C1A9A400063FBB /* UIViewController+errorAlert.swift */; };
 		7542D2422129640F00C8A926 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542D2412129640F00C8A926 /* String+extensions.swift */; };
 		7546FBC120BFB8DD00C5D834 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC020BFB8DD00C5D834 /* WelcomeVC.swift */; };
 		7546FBC320BFC03700C5D834 /* RootNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */; };
@@ -136,6 +140,10 @@
 		75679ACE22FD897000372301 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
 		75679ACF22FD897000372301 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
 		756AE9D320CF8B5E00995846 /* ChooseIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE9D220CF8B5E00995846 /* ChooseIconVC.swift */; };
+		756B15CF24C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
+		756B15D024C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
+		756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
+		756B15D224C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756FF64420BAB20300FF890B /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
 		7573FD8B2321664F00DCDA5A /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
 		7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
@@ -670,6 +678,7 @@
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		753F924A22905621005E496F /* PremiumUpgradeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUpgradeHelper.swift; sourceTree = "<group>"; };
 		753F924D2290705D005E496F /* SKProduct+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+extension.swift"; sourceTree = "<group>"; };
+		753FE83424C1A9A400063FBB /* UIViewController+errorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+errorAlert.swift"; sourceTree = "<group>"; };
 		7542D2412129640F00C8A926 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		7546FBC020BFB8DD00C5D834 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationVC.swift; sourceTree = "<group>"; };
@@ -754,6 +763,7 @@
 		75679ACA22F8095F00372301 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		75679ACD22FD896F00372301 /* NewsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCenter.swift; sourceTree = "<group>"; };
 		756AE9D220CF8B5E00995846 /* ChooseIconVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseIconVC.swift; sourceTree = "<group>"; };
+		756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAddingHelper.swift; sourceTree = "<group>"; };
 		756B2433243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		756B2434243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		756B2435243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
@@ -1420,6 +1430,7 @@
 				7546FBD820C3A3F600C5D834 /* Watchdog.swift */,
 				759894B624620AF6006B6709 /* FileExportHelper.swift */,
 				759894BB24620D33006B6709 /* FileDestructionHelper.swift */,
+				756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */,
 				753A3EE920D3776D00A1CF70 /* Refreshable.swift */,
 				75779863223023D3006671BD /* ProgressViewHost.swift */,
 				754804FA238E51AF0068C863 /* PopoverAnchor.swift */,
@@ -1429,6 +1440,7 @@
 				755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */,
 				7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */,
 				75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */,
+				753FE83424C1A9A400063FBB /* UIViewController+errorAlert.swift */,
 				7542D2412129640F00C8A926 /* String+extensions.swift */,
 				7523F71C21C98D620025C706 /* SupportEmailComposer.swift */,
 				75CD364021537A310018AF46 /* AppStoreHelper.swift */,
@@ -1738,6 +1750,7 @@
 				TargetAttributes = {
 					750CFBC621BA9ACD00E62B09 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1150;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1753,7 +1766,7 @@
 					};
 					754BF07A2082A6BD00E3A292 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1150;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -2025,6 +2038,7 @@
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
 				75CBAB9F21C1671F00B8AFE2 /* MainCoordinator.swift in Sources */,
 				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
+				756B15D024C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
@@ -2055,6 +2069,7 @@
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
 				7537FEBF249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				753507A123783729003B65C9 /* HapticFeedback.swift in Sources */,
+				753FE83624C1A9A400063FBB /* UIViewController+errorAlert.swift in Sources */,
 				75779865223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
@@ -2146,6 +2161,7 @@
 				7546FBC320BFC03700C5D834 /* RootNavigationVC.swift in Sources */,
 				75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75EA64182098FC0500DDB941 /* ChooseDatabaseVC.swift in Sources */,
+				753FE83524C1A9A400063FBB /* UIViewController+errorAlert.swift in Sources */,
 				75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				75C94C5F20B4BAB0004FA29D /* ViewEntryFilesVC.swift in Sources */,
 				7542D2422129640F00C8A926 /* String+extensions.swift in Sources */,
@@ -2159,6 +2175,7 @@
 				75A2677D22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
 				75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */,
 				7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */,
+				756B15CF24C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
 				75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */,
 				7546FBD920C3A3F600C5D834 /* Watchdog.swift in Sources */,
 				75CA73912144381200ADAD64 /* KeyboardLayoutConstraint.swift in Sources */,
@@ -2264,6 +2281,7 @@
 				75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */,
 				75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75B38C28233E5B7C006BDEFC /* ChooseDatabaseVC.swift in Sources */,
+				753FE83724C1A9A400063FBB /* UIViewController+errorAlert.swift in Sources */,
 				75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */,
 				75B38C2A233E5B7C006BDEFC /* ViewEntryFilesVC.swift in Sources */,
 				75B38C2B233E5B7C006BDEFC /* String+extensions.swift in Sources */,
@@ -2277,6 +2295,7 @@
 				75B38C31233E5B7C006BDEFC /* PremiumFeature+extension.swift in Sources */,
 				75B38C32233E5B7C006BDEFC /* PlaceholderVC.swift in Sources */,
 				75B38C33233E5B7C006BDEFC /* SettingsBackupVC.swift in Sources */,
+				756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
 				75B38C34233E5B7C006BDEFC /* SettingsAutoFillVC.swift in Sources */,
 				75B38C35233E5B7C006BDEFC /* Watchdog.swift in Sources */,
 				75B38C36233E5B7C006BDEFC /* KeyboardLayoutConstraint.swift in Sources */,
@@ -2327,6 +2346,7 @@
 				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
 				75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
+				756B15D224C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
 				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
@@ -2357,6 +2377,7 @@
 				75D7DF9A233E5E310029AD87 /* UIView+extension.swift in Sources */,
 				7537FEC1249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				753507A323783729003B65C9 /* HapticFeedback.swift in Sources */,
+				753FE83824C1A9A400063FBB /* UIViewController+errorAlert.swift in Sources */,
 				75D7DF9B233E5E310029AD87 /* ProgressViewHost.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
@@ -3248,7 +3269,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3261,7 +3282,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG AUTOFILL_EXT";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3272,7 +3293,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3284,7 +3305,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = AUTOFILL_EXT;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3417,7 +3438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3432,7 +3453,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MAIN_APP";
 				SWIFT_OBJC_BRIDGING_HEADER = "KeePassium-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3444,7 +3465,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3459,7 +3480,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = MAIN_APP;
 				SWIFT_OBJC_BRIDGING_HEADER = "KeePassium-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3471,7 +3492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3498,7 +3519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3524,7 +3545,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3548,7 +3569,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

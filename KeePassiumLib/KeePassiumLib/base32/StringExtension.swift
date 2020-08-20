@@ -32,7 +32,7 @@ extension String {
     /// Data never nil
     internal var dataUsingUTF8StringEncoding: Data {
         return utf8CString.withUnsafeBufferPointer {
-            return Data(bytes: $0.dropLast().map { UInt8.init($0) })
+            return Data($0.dropLast().map { UInt8.init($0) })
         }
     }
     

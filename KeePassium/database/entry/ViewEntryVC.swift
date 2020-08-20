@@ -201,7 +201,7 @@ extension ViewEntryVC: UIPageViewControllerDelegate {
     {
         if finished && completed {
             guard let selectedVC = pageViewController.viewControllers?.first,
-                let selectedIndex = pages.index(of: selectedVC) else { return }
+                let selectedIndex = pages.firstIndex(of: selectedVC) else { return }
             previousViewControllers.first?.didMove(toParent: nil)
             selectedVC.didMove(toParent: pagesViewController)
             currentPageIndex = selectedIndex
@@ -218,7 +218,7 @@ extension ViewEntryVC: UIPageViewControllerDataSource {
         viewControllerBefore viewController: UIViewController
         ) -> UIViewController?
     {
-        guard let vcIndex = pages.index(of: viewController) else { return nil }
+        guard let vcIndex = pages.firstIndex(of: viewController) else { return nil }
         if vcIndex > 0 {
             return pages[vcIndex - 1]
         } else {
@@ -231,7 +231,7 @@ extension ViewEntryVC: UIPageViewControllerDataSource {
         viewControllerAfter viewController: UIViewController
         ) -> UIViewController?
     {
-        guard let vcIndex = pages.index(of: viewController) else { return nil }
+        guard let vcIndex = pages.firstIndex(of: viewController) else { return nil }
         if vcIndex < pages.count - 1 {
             return pages[vcIndex + 1]
         } else {

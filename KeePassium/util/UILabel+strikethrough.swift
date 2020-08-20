@@ -15,7 +15,7 @@ extension UILabel {
             let attributedText = NSAttributedString(
                 string: text,
                 attributes: [
-                    .font: self.font,
+                    .font: self.font as UIFont,
                     .strikethroughStyle: NSUnderlineStyle.single.rawValue,
                     .strikethroughColor: self.textColor.withAlphaComponent(0.7)])
             self.attributedText = attributedText

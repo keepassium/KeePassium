@@ -1,5 +1,19 @@
 #CHANGELOG
 
+## [1.14.66] - 2020-07-18
+
+### Added
+
+- "Exclude from iCloud/iTunes backup" option for local files (closes #97) [thanks, everyone]
+- Free trial period for premium subscriptions
+
+### Changed
+
+- Accepting databases with any file extension (closes #113) [thanks, everyone]
+- Removed premium upgrade button from DB unlock screen
+- Upgraded to Swift 5
+
+
 ## [1.14.65] - 2020-07-14
 
 ### Added

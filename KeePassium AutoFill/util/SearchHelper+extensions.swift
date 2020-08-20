@@ -40,6 +40,8 @@ extension SearchHelper {
             case .URL:
                 let partialResults = performSearch(in: database, url: si.identifier)
                 relevantEntries.append(contentsOf: partialResults)
+            @unknown default:
+                assertionFailure()
             }
         }
         

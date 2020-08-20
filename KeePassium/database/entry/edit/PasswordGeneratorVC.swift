@@ -97,10 +97,7 @@ class PasswordGeneratorVC: UITableViewController, Refreshable {
             )
         } catch {
             Diag.error("RNG error [message: \(error.localizedDescription)]")
-            let alert = UIAlertController.make(
-                title: LString.titleError,
-                message: error.localizedDescription)
-            present(alert, animated: true)
+            showErrorAlert(error)
         }
     }
     

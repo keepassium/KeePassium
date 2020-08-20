@@ -102,10 +102,7 @@ class FileDestructionHelper {
         } catch {
             Diag.error("Failed to delete file [type: \(fileType), reason: \(error.localizedDescription)]")
             completion?(false)
-            let errorAlert = UIAlertController.make(
-                title: LString.titleError,
-                message: error.localizedDescription)
-            parent.present(errorAlert, animated: true, completion: nil)
+            parent.showErrorAlert(error)
         }
     }
 }

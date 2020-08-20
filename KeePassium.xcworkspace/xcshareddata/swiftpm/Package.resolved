@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "TPInAppReceipt",
+        "repositoryURL": "https://github.com/tikhop/TPInAppReceipt",
+        "state": {
+          "branch": null,
+          "revision": "24d16d30b7ff583601a03cdd47e57dadf086fdbd",
+          "version": "2.6.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

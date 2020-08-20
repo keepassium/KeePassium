@@ -96,6 +96,7 @@ public class FileKeeper {
     
     private var urlToOpen: URL?
     private var openMode: OpenMode = .openInPlace
+    private var pendingFileType: FileType?
     private var pendingOperationGroup = DispatchGroup()
     
     fileprivate let docDirURL: URL
@@ -253,7 +254,7 @@ public class FileKeeper {
     public func removeExternalReference(_ urlRef: URLReference, fileType: FileType) {
         Diag.debug("Removing URL reference [fileType: \(fileType)]")
         var refs = getStoredReferences(fileType: fileType, forExternalFiles: true)
-        if let index = refs.index(of: urlRef) {
+        if let index = refs.firstIndex(of: urlRef) {
             refs.remove(at: index)
             storeReferences(refs, fileType: fileType, forExternalFiles: true)
             FileKeeperNotifier.notifyFileRemoved(urlRef: urlRef, fileType: fileType)
@@ -306,20 +307,22 @@ public class FileKeeper {
     
     public func addFile(
         url: URL,
+        fileType: FileType?,
         mode: OpenMode,
         success successHandler: ((URLReference)->Void)?,
         error errorHandler: ((FileKeeperError)->Void)?)
     {
-        prepareToAddFile(url: url, mode: mode, notify: false)
+        prepareToAddFile(url: url, fileType: fileType, mode: mode, notify: false)
         processPendingOperations(success: successHandler, error: errorHandler)
     }
     
-    public func prepareToAddFile(url: URL, mode: OpenMode, notify: Bool=true) {
+    public func prepareToAddFile(url: URL, fileType: FileType?, mode: OpenMode, notify: Bool=true) {
         Diag.debug("Preparing to add file [mode: \(mode)]")
         let origURL = url
         let actualURL = origURL.resolvingSymlinksInPath()
         print("\n originURL: \(origURL) \n actualURL: \(actualURL) \n")
         self.urlToOpen = origURL
+        self.pendingFileType = fileType
         self.openMode = mode
         if notify {
             FileKeeperNotifier.notifyPendingFileOperation()
@@ -337,8 +340,21 @@ public class FileKeeper {
         guard let sourceURL = urlToOpen else { return }
         urlToOpen = nil
 
+        let fileType = pendingFileType ?? FileType(for: sourceURL)
+        pendingFileType = nil
+
         Diag.debug("Will process pending file operations")
 
+        let mainQueueSuccessHandler: (URLReference)->Void = { (urlRef) in
+            DispatchQueue.main.async {
+                successHandler?(urlRef)
+            }
+        }
+        let mainQueueErrorHandler: (FileKeeperError)->Void = { (error) in
+            DispatchQueue.main.async {
+                errorHandler?(error)
+            }
+        }
         guard sourceURL.isFileURL else {
             Diag.error("Tried to import a non-file URL: \(sourceURL.redacted)")
             let messageNotAFileURL = NSLocalizedString(
@@ -349,39 +365,38 @@ public class FileKeeper {
             switch openMode {
             case .import:
                 let importError = FileKeeperError.importError(reason: messageNotAFileURL)
-                errorHandler?(importError)
+                mainQueueErrorHandler(importError)
                 return
             case .openInPlace:
                 let openError = FileKeeperError.openError(reason: messageNotAFileURL)
-                errorHandler?(openError)
+                mainQueueErrorHandler(openError)
                 return
             }
         }
         
         
-        let fileType = FileType(for: sourceURL)
         let location = getLocation(for: sourceURL)
         switch location {
         case .external:
             processExternalFile(
                 url: sourceURL,
                 fileType: fileType,
-                success: successHandler,
-                error: errorHandler)
+                success: mainQueueSuccessHandler,
+                error: mainQueueErrorHandler)
         case .internalDocuments, .internalBackup:
             processInternalFile(
                 url: sourceURL,
                 fileType: fileType,
                 location: location,
-                success: successHandler,
-                error: errorHandler)
+                success: mainQueueSuccessHandler,
+                error: mainQueueErrorHandler)
         case .internalInbox:
             processInboxFile(
                 url: sourceURL,
                 fileType: fileType,
                 location: location,
-                success: successHandler,
-                error: errorHandler)
+                success: mainQueueSuccessHandler,
+                error: mainQueueErrorHandler)
         }
     }
     

@@ -32,25 +32,29 @@ import Foundation
 
 public func base32Encode(_ data: Data) -> String {
     return data.withUnsafeBytes {
-        base32encode(UnsafeRawPointer($0), data.count, alphabetEncodeTable)
+        base32encode($0.baseAddress!, $0.count, alphabetEncodeTable)
     }
 }
 
 public func base32HexEncode(_ data: Data) -> String {
     return data.withUnsafeBytes {
-        base32encode(UnsafeRawPointer($0), data.count, extendedHexAlphabetEncodeTable)
+        base32encode($0.baseAddress!, $0.count, extendedHexAlphabetEncodeTable)
     }
 }
 
 public func base32DecodeToData(_ string: String) -> Data? {
     return base32decode(string, alphabetDecodeTable).flatMap {
-        Data(bytes: UnsafePointer<UInt8>($0), count: $0.count)
+        $0.withUnsafeBufferPointer {
+            Data(bytes: $0.baseAddress!, count: $0.count)
+        }
     }
 }
 
 public func base32HexDecodeToData(_ string: String) -> Data? {
     return base32decode(string, extendedHexAlphabetDecodeTable).flatMap {
-        Data(bytes: UnsafePointer<UInt8>($0), count: $0.count)
+        $0.withUnsafeBufferPointer {
+            Data(bytes: $0.baseAddress!, count: $0.count)
+        }
     }
 }
 
@@ -224,18 +228,10 @@ private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int
     
     // return
     if let base32Encoded = String(validatingUTF8: resultBuffer) {
-#if swift(>=4.1)
         resultBuffer.deallocate()
-#else
-        resultBuffer.deallocate(capacity: resultBufferSize)
-#endif
         return base32Encoded
     } else {
-#if swift(>=4.1)
         resultBuffer.deallocate()
-#else
-        resultBuffer.deallocate(capacity: resultBufferSize)
-#endif
         fatalError("internal error")
     }
 }
@@ -266,7 +262,7 @@ let extendedHexAlphabetDecodeTable: [UInt8] = [
     __,__,__,__, __,__,__,__, __,__,__,__, __,__,__,__,  // 0x00 - 0x0F
     __,__,__,__, __,__,__,__, __,__,__,__, __,__,__,__,  // 0x10 - 0x1F
     __,__,__,__, __,__,__,__, __,__,__,__, __,__,__,__,  // 0x20 - 0x2F
-     0, 1, 2, 3,  4, 5, 6, 7,  8, 9,__,__, __,__,__,__,  // 0x30 - 0x3F
+    0, 1, 2, 3,  4, 5, 6, 7,  8, 9,__,__, __,__,__,__,  // 0x30 - 0x3F
     __,10,11,12, 13,14,15,16, 17,18,19,20, 21,22,23,24,  // 0x40 - 0x4F
     25,26,27,28, 29,30,31,__, __,__,__,__, __,__,__,__,  // 0x50 - 0x5F
     __,10,11,12, 13,14,15,16, 17,18,19,20, 21,22,23,24,  // 0x60 - 0x6F
@@ -305,7 +301,7 @@ private func base32decode(_ string: String, _ table: [UInt8]) -> [UInt8]? {
     
     // validate string
     let leastPaddingLength = getLeastPaddingLength(string)
-    if let index = string.unicodeScalars.index(where: {$0.value > 0xff || table[Int($0.value)] > 31}) {
+    if let index = string.unicodeScalars.firstIndex(where: {$0.value > 0xff || table[Int($0.value)] > 31}) {
         // index points padding "=" or invalid character that table does not contain.
         let pos = string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: index)
         // if pos points padding "=", it's valid.

@@ -108,6 +108,7 @@ class PricingPlanFactory {
             Diag.error("IAP with unrecognized product ID [id: \(product.productIdentifier)]")
             return nil
         }
+        
         switch iapProduct {
         case .betaForever:
             return nil
@@ -132,7 +133,7 @@ class PricingPlan {
     fileprivate(set) var localizedPrice: String
     fileprivate(set) var localizedPriceWithPeriod: String?
     
-    var callToAction: String { return getCallToAction() }
+    fileprivate(set) var callToAction: String
     fileprivate(set) var ctaSubtitle: String?
     
     fileprivate(set) var conditions: [PricingPlanCondition]
@@ -146,18 +147,11 @@ class PricingPlan {
         self.price = 0
         self.localizedPrice = ""
         self.localizedPriceWithPeriod = nil
+        self.callToAction = LString.premiumCallToActionUpgradeNow
         self.ctaSubtitle = nil
         self.conditions = []
         self.benefits = []
         self.smallPrint = nil
-    }
-    
-    func getCallToAction() -> String {
-        if isFree {
-            return LString.premiumCallToActionFree
-        } else {
-            return LString.premiumCallToActionUpgradeNow
-        }
     }
 }
 
@@ -168,6 +162,7 @@ class FreePricingPlan: PricingPlan {
         self.isFree = true
         self.localizedPrice = LString.premiumFreePlanPrice
         self.localizedPriceWithPeriod = nil
+        self.callToAction = LString.premiumCallToActionFree
         self.conditions = [
             PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
             PricingPlanCondition(kind: .freemiumReminders, isIncluded: true, moreInfo: .none),
@@ -195,6 +190,29 @@ class RealPricingPlan: PricingPlan {
         self.isFree = (product.price == 0)
         self.price = product.price
         self.localizedPrice = product.localizedPrice
+        self.localizedPriceWithPeriod = nil
+    }
+    
+    fileprivate func maybeOfferTrial() {
+        guard #available(iOS 11.2, *) else {
+            return
+        }
+        guard PremiumManager.shared.isTrialAvailable else {
+            return
+        }
+        guard let localizedTrialDuration = product.localizedTrialDuration else {
+            return
+        }
+        guard let localizedPriceWithPeriod = localizedPriceWithPeriod else {
+            assertionFailure("Need a subscription price")
+            return
+        }
+        callToAction = LString.premiumCallToActionStartTrial
+        ctaSubtitle = String.localizedStringWithFormat(
+            LString.trialConditionsTemplate, // "%@ free, then %@",
+            localizedTrialDuration,
+            localizedPriceWithPeriod
+        )
     }
 }
 
@@ -204,6 +222,7 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
         
         self.localizedPriceWithPeriod =
             String.localizedStringWithFormat(LString.priceTemplateMonthly, localizedPrice)
+        self.callToAction = LString.premiumCallToActionUpgradeNow
         self.ctaSubtitle = nil
         self.conditions = [
             PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
@@ -217,6 +236,7 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
         ]
         self.smallPrint = LString.subscriptionConditions
+        self.maybeOfferTrial() 
     }
 }
 
@@ -227,6 +247,7 @@ class PricingPlanPremiumYearly: RealPricingPlan {
         isDefault = true
         self.localizedPriceWithPeriod =
             String.localizedStringWithFormat(LString.priceTemplateYearly, localizedPrice)
+        self.callToAction = LString.premiumCallToActionUpgradeNow
         self.ctaSubtitle = nil
         self.conditions = [
             PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
@@ -240,6 +261,7 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
         ]
         self.smallPrint = LString.subscriptionConditions
+        self.maybeOfferTrial() 
     }
 }
 
@@ -248,6 +270,7 @@ class PricingPlanPremiumForever: RealPricingPlan {
         super.init(product)
         
         self.localizedPriceWithPeriod = localizedPrice
+        self.callToAction = LString.premiumCallToActionUpgradeNow
         self.ctaSubtitle = nil
         self.conditions = [
             PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),

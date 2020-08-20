@@ -196,7 +196,7 @@ public class Entry: DatabaseItem, Eraseable {
     }
     
     public func removeField(_ field: EntryField) {
-        if let index = fields.index(where: {$0 === field}) {
+        if let index = fields.firstIndex(where: {$0 === field}) {
             fields.remove(at: index)
         }
     }
@@ -297,7 +297,7 @@ public class Entry: DatabaseItem, Eraseable {
 
 extension Array where Element == Entry {
     mutating func remove(_ entry: Entry) {
-        if let index = index(where: {$0 === entry}) {
+        if let index = firstIndex(where: {$0 === entry}) {
             remove(at: index)
         }
     }

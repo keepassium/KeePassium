@@ -33,6 +33,23 @@ class FileInfoCell: UITableViewCell {
     }
 }
 
+protocol FileInfoSwitchCellDelegate: class {
+    func didToggleSwitch(in cell: FileInfoSwitchCell, theSwitch: UISwitch)
+}
+class FileInfoSwitchCell: UITableViewCell {
+    static let storyboardID = "SwitchCell"
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var theSwitch: UISwitch!
+    
+    weak var delegate: FileInfoSwitchCellDelegate?
+    
+    @IBAction func didToggleSwitch(_ sender: UISwitch) {
+        delegate?.didToggleSwitch(in: self, theSwitch: sender)
+    }
+}
+
 class FileInfoVC: UITableViewController {
     @IBOutlet weak var exportButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
@@ -48,6 +65,12 @@ class FileInfoVC: UITableViewController {
     private var fields = [(String, String)]()
     private var urlRef: URLReference!
     private var fileType: FileType!
+    private var isExcludedFromBackup: Bool? 
+    private var isShowExcludeFromBackupSwitch: Bool {
+        let isLocalFile = urlRef.location.isInternal ||
+            (urlRef.fileProvider != nil && urlRef.fileProvider == .localStorage)
+        return isLocalFile && isExcludedFromBackup != nil
+    }
 
     private var dismissablePopoverDelegate = DismissablePopover()
     
@@ -143,11 +166,17 @@ class FileInfoVC: UITableViewController {
         change: [NSKeyValueChangeKey : Any]?,
         context: UnsafeMutableRawPointer?)
     {
-        var preferredSize = tableView.contentSize
+        var preferredSize = CGSize(
+            width: max(tableView.contentSize.width, self.preferredContentSize.width),
+            height: max(tableView.contentSize.height, self.preferredContentSize.height)
+        )
         if #available(iOS 13, *) {
             preferredSize.width = 400
         }
-        self.preferredContentSize = preferredSize
+        
+        DispatchQueue.main.async { [self] in
+            self.preferredContentSize = preferredSize
+        }
     }
 
     func setupButtons() {
@@ -161,24 +190,41 @@ class FileInfoVC: UITableViewController {
     func refresh() {
         refreshFixedFields()
         tableView.reloadData()
-        
+        let oldSectionCount = tableView.numberOfSections
+
         urlRef.refreshInfo { [weak self] result in
             guard let self = self else { return }
             self.fields.removeAll(keepingCapacity: true)
             self.refreshFixedFields()
             switch result {
             case .success(let fileInfo):
-                self.addFields(from: fileInfo)
+                self.updateDynamicFields(from: fileInfo)
             case .failure(let accessError):
                 self.fields.append((
                     FieldTitle.error,
                     accessError.localizedDescription
                 ))
             }
-            self.tableView.reloadSections([0], with: .fade) 
-            if let refreshControl = self.tableView.refreshControl, refreshControl.isRefreshing {
+            
+            let newSectionCount = self.numberOfSections(in: self.tableView)
+            if newSectionCount > oldSectionCount {
+                self.tableView.performBatchUpdates({
+                    self.tableView.reloadSections([0], with: .fade)
+                    self.tableView.insertSections([1], with: .fade)
+                }, completion: nil)
+            } else if newSectionCount < oldSectionCount {
+                self.tableView.performBatchUpdates({
+                    self.tableView.deleteSections([1], with: .fade)
+                    self.tableView.reloadSections([0], with: .automatic)
+                }, completion: nil)
+            } else {
+                let sections = IndexSet(integersIn: 0..<newSectionCount)
+                self.tableView.reloadSections(sections, with: .none)
+            }
+            
+            if let refreshControl = self.refreshControl, refreshControl.isRefreshing {
                 refreshControl.endRefreshing()
-                self.tableView.refreshControl = nil
+                self.refreshControl = nil 
             }
         }
     }
@@ -199,7 +245,7 @@ class FileInfoVC: UITableViewController {
         return urlRef.location.description
     }
     
-    private func addFields(from fileInfo: FileInfo) {
+    private func updateDynamicFields(from fileInfo: FileInfo) {
         if let fileSize = fileInfo.fileSize {
             fields.append((
                 FieldTitle.fileSize,
@@ -224,31 +270,84 @@ class FileInfoVC: UITableViewController {
                     timeStyle: .medium)
             ))
         }
+        self.isExcludedFromBackup = fileInfo.isExcludedFromBackup
     }
     
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if isShowExcludeFromBackupSwitch {
+            return 2
+        } else {
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fields.count
+        switch section {
+        case 0:
+            return fields.count
+        case 1:
+            return isShowExcludeFromBackupSwitch ? 1 : 0
+        default:
+            assertionFailure()
+            return 0
+        }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.1
+        } else {
+            return super.tableView(tableView, heightForHeaderInSection: section)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 && tableView.numberOfSections == 1 {
+            return 0.1
+        }
+        if section == 1 {
+            return 0.1
+        }
+        return super.tableView(tableView, heightForHeaderInSection: section)
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            return LString.titleBackupSettings
+        default:
+            return super.tableView(tableView, titleForHeaderInSection: section)
+        }
+    }
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: FileInfoCell.storyboardID,
-            for: indexPath)
-            as! FileInfoCell
-        
-        let fieldIndex = indexPath.row
-        cell.name = fields[fieldIndex].0
-        cell.value = fields[fieldIndex].1
-        return cell
+        if indexPath.section == 0 {
+            let fieldIndex = indexPath.row
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: FileInfoCell.storyboardID,
+                for: indexPath)
+                as! FileInfoCell
+            
+            cell.name = fields[fieldIndex].0
+            cell.value = fields[fieldIndex].1
+            return cell
+        } else {
+            assert(isExcludedFromBackup != nil)
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: FileInfoSwitchCell.storyboardID,
+                for: indexPath)
+                as! FileInfoSwitchCell
+            cell.delegate = self
+            cell.titleLabel.text = LString.titleExcludeFromBackup
+            cell.theSwitch.isOn = isExcludedFromBackup ?? cell.theSwitch.isOn
+            return cell
+        }
     }
 
     
@@ -272,5 +371,30 @@ class FileInfoVC: UITableViewController {
                 }
             }
         )
+    }
+}
+
+extension FileInfoVC: FileInfoSwitchCellDelegate {
+    func didToggleSwitch(in cell: FileInfoSwitchCell, theSwitch: UISwitch) {
+        setExcludedFromBackup(theSwitch.isOn)
+    }
+    
+    private func setExcludedFromBackup(_ isExcluded: Bool) {
+        urlRef.resolveAsync(timeout: 1.0) {[weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(var url):
+                if url.setExcludedFromBackup(isExcluded) {
+                    Diag.info("File is \(isExcluded ? "" : "not ")excluded from iTunes/iCloud backup")
+                } else {
+                    Diag.error("Failed to change file attributes.")
+                    self.showErrorAlert(LString.errorFailedToChangeFileAttributes)
+                }
+            case .failure(let error):
+                Diag.error(error.localizedDescription)
+                self.showErrorAlert(error)
+            }
+            self.refresh()
+        }
     }
 }

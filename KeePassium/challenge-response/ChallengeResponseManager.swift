@@ -116,6 +116,8 @@ class ChallengeResponseManager {
             if !isResponseSent {
                 returnError(.cancelled)
             }
+        @unknown default:
+            fatalError()
         }
     }
     
@@ -139,6 +141,8 @@ class ChallengeResponseManager {
             if !isResponseSent {
                 returnError(.cancelled)
             }
+        @unknown default:
+            assertionFailure()
         }
     }
     

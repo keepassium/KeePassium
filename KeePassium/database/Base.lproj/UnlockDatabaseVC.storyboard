@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ids-lQ-2kH" userLabel="NotificationButtons">
-                                        <rect key="frame" x="153" y="0.0" width="159" height="66"/>
+                                        <rect key="frame" x="259" y="0.0" width="53" height="33"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APT-2C-WiG" userLabel="Announcement Button">
-                                                <rect key="frame" x="0.0" y="0.0" width="159" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <state key="normal" title="{news}"/>
                                                 <attributedString key="userComments">
@@ -32,19 +32,6 @@
                                                 </attributedString>
                                                 <connections>
                                                     <action selector="didPressAnouncementButton:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="GMp-M3-1uX"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6N-fq-JbM">
-                                                <rect key="frame" x="0.0" y="33" width="159" height="33"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <state key="normal" title="Upgrade to Premium"/>
-                                                <attributedString key="userComments">
-                                                    <fragment>
-                                                        <string key="content">Action: open upgrade screen. Please avoid money-related words like 'buy' or 'purchase'.  If there is no good translation for the 'Upgrade' call for action, it's ok to replace it with 'get', or even reduce the phrase to  'Premium'.</string>
-                                                    </fragment>
-                                                </attributedString>
-                                                <connections>
-                                                    <action selector="didPressUpgradeToPremium:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="i0V-29-l6q"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -302,7 +289,6 @@
                         <outlet property="errorDetailButton" destination="nrD-QC-R8N" id="Hdc-k4-pl1"/>
                         <outlet property="errorLabel" destination="d2U-7y-vCm" id="Tfd-pH-JMJ"/>
                         <outlet property="errorMessagePanel" destination="1da-3k-RQm" id="XSq-Rx-ZNa"/>
-                        <outlet property="getPremiumButton" destination="i6N-fq-JbM" id="ptX-SW-qPO"/>
                         <outlet property="inputPanel" destination="3xv-vB-0Jn" id="dpu-5T-Uzb"/>
                         <outlet property="keyFileField" destination="mYY-hP-3vH" id="ITo-zF-Ead"/>
                         <outlet property="keyboardAdjView" destination="cdl-k8-gTg" id="gDU-xh-QP9"/>

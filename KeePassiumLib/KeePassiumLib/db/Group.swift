@@ -247,7 +247,7 @@ public class Group: DatabaseItem, Eraseable {
 
 extension Array where Element == Group {
     mutating func remove(_ group: Group) {
-        if let index = index(where: {$0 === group}) {
+        if let index = firstIndex(where: {$0 === group}) {
             remove(at: index)
         }
     }
