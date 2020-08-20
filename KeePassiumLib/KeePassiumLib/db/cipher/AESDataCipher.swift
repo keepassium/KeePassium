@@ -17,15 +17,11 @@ final class AESDataCipher: DataCipher {
     var initialVectorSize: Int { return kCCBlockSizeAES128 }
     var keySize: Int { return kCCKeySizeAES256 }
 
-    private var progress = ProgressEx()
+    internal var progress = ProgressEx()
 
     init() {
     }
     
-    func initProgress() -> ProgressEx {
-        progress = ProgressEx()
-        return progress
-    }
     func encrypt(plainText data: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {
         assert(key.count == kCCKeySizeAES256)
         assert(iv.count == kCCBlockSizeAES128)

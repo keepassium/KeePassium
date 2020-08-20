@@ -26,6 +26,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     
     @IBOutlet fileprivate weak var groupIconView: UIImageView!
     @IBOutlet fileprivate weak var groupTitleLabel: UILabel!
+    @IBOutlet weak var sortOrderButton: UIBarButtonItem!
     
     weak var group: Group? {
         didSet {
@@ -128,11 +129,11 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         if DatabaseManager.shared.isDatabaseOpen {
             if parent == nil && group.isRoot {
                 DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: false) {
-                    [weak self] (errorMessage) in
-                    if let errorMessage = errorMessage {
+                    [weak self] (error) in
+                    if let error = error {
                         let errorAlert = UIAlertController.make(
                             title: LString.titleError,
-                            message: errorMessage,
+                            message: error.localizedDescription,
                             cancelButtonTitle: LString.actionDismiss)
                         self?.navigationController?
                             .present(errorAlert, animated: true, completion: nil)
@@ -200,11 +201,11 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             style: .cancel,
             handler: { (action) in
                 DatabaseManager.shared.closeDatabase(clearStoredKey: true, ignoreErrors: false) {
-                    [weak self] (errorMessage) in
-                    if let errorMessage = errorMessage {
+                    [weak self] (error) in
+                    if let error = error {
                         let errorAlert = UIAlertController.make(
                             title: LString.titleError,
-                            message: errorMessage,
+                            message: error.localizedDescription,
                             cancelButtonTitle: LString.actionDismiss)
                         self?.present(errorAlert, animated: true, completion: nil)
                     } else {
@@ -245,6 +246,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
 
     
     func refresh() {
+        refreshSortOrderButton()
         if isSearchActive {
             updateSearchResults(for: searchController)
         } else {
@@ -270,6 +272,9 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
     }
     
+    private func refreshSortOrderButton() {
+        sortOrderButton.image = Settings.current.groupSortOrder.toolbarIcon
+    }
 
     override open func numberOfSections(in tableView: UITableView) -> Int {
         if isSearchActive {
@@ -806,11 +811,11 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         let lockDatabaseAction = UIAlertAction(title: LString.actionLockDatabase, style: .destructive) {
             (action) in
             DatabaseManager.shared.closeDatabase(clearStoredKey: true, ignoreErrors: false) {
-                [weak self] (errorMessage) in
-                if let errorMessage = errorMessage {
+                [weak self] (error) in
+                if let error = error {
                     let errorAlert = UIAlertController.make(
                         title: LString.titleError,
-                        message: errorMessage,
+                        message: error.localizedDescription,
                         cancelButtonTitle: LString.actionDismiss)
                     self?.present(errorAlert, animated: true, completion: nil)
                 } else {
@@ -923,7 +928,12 @@ extension ViewGroupVC: DatabaseManagerObserver {
 
 extension ViewGroupVC: SettingsObserver {
     public func settingsDidChange(key: Settings.Keys) {
-        if key == .entryListDetail || key == .groupSortOrder {
+        let isRelevantChange =
+                key == .entryListDetail ||
+                key == .groupSortOrder ||
+                key == .searchFieldNames ||
+                key == .searchProtectedValues
+        if isRelevantChange {
             refresh()
         }
     }

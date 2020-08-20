@@ -1,5 +1,34 @@
 #CHANGELOG
 
+## [1.14.63] - 2020-06-21
+
+### Added
+
+- More detailed storage location of files
+- Wait animation while waiting to access files (#92, #109)
+- AutoFill will show the Caller ID (calling app domain or URL) [thanks, Markus]
+- File Info dialog for key files in AutoFill
+- Export and Remove buttons to File Info dialog
+
+### Changed
+
+- More detailed load/save progress messages
+- More recognizable "sort order" icon
+- Added extended diagnostics for DSfile's "7b226572726f7222" issue
+
+### Fixed
+
+- Added a 5-second timeout to all file operations (fixes #92,#109)
+- File Info dialog now loads asynchronously [thanks, Tim]
+- More reliable refreshing of file lists (each file independently)
+- Handling DB settings/keys when the target file is missing
+- KDB root group appeared expired (fixes #108) [thanks, Stefan]
+- App crashed when selecting "Enable AppLock" reminder with VoiceOver [thanks, Dickson]
+- Refresh entry viewer after dismissing entry editor [thanks, Felix]
+- Refresh search results after changing search settings [thanks, Paolo]
+- Standard field names are excluded from search [thanks, Paolo]
+
+
 ## [1.13.62] - 2020-06-09
 
 ### Changed

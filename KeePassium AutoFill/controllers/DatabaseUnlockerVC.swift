@@ -154,15 +154,14 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             databaseFileNameLabel.text = ""
             return
         }
-        let fileInfo = dbRef.info
-        if let errorMessage = fileInfo.errorMessage {
+        if let errorMessage = dbRef.error?.localizedDescription {
             databaseFileNameLabel.text = errorMessage
             databaseFileNameLabel.textColor = UIColor.errorMessage
             databaseLocationIconImage.image = nil
         } else {
-            databaseFileNameLabel.text = fileInfo.fileName
+            databaseFileNameLabel.text = dbRef.visibleFileName
             databaseFileNameLabel.textColor = UIColor.primaryText
-            databaseLocationIconImage.image = UIImage.databaseIcon(for: dbRef)
+            databaseLocationIconImage.image = dbRef.getIcon(fileType: .database)
         }
         
         let dbSettings = DatabaseSettingsManager.shared.getSettings(for: dbRef)
@@ -197,7 +196,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
     
     func setKeyFile(urlRef: URLReference?) {
-        keyFileRef = urlRef
+        self.keyFileRef = urlRef
         
         hideErrorMessage(animated: false)
 
@@ -206,12 +205,12 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             dbSettings.maybeSetAssociatedKeyFile(keyFileRef)
         }
         
-        guard let fileInfo = urlRef?.info else {
+        guard let keyFileRef = urlRef else {
             Diag.debug("No key file selected")
             keyFileField.text = ""
             return
         }
-        if let errorDetails = fileInfo.errorMessage {
+        if let errorDetails = keyFileRef.error?.localizedDescription {
             let errorMessage = String.localizedStringWithFormat(
                 NSLocalizedString(
                     "[Database/Unlock] Key file error: %@",
@@ -223,7 +222,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             keyFileField.text = ""
         } else {
             Diag.info("Key file set successfully")
-            keyFileField.text = fileInfo.fileName
+            keyFileField.text = keyFileRef.visibleFileName
         }
     }
     

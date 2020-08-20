@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfT-SG-IdV">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfT-SG-IdV">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,49 +17,81 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" textLabel="gs3-2C-fts" detailTextLabel="wKG-yp-SZt" imageView="uJr-zo-xUb" style="IBUITableViewCellStyleSubtitle" id="aPc-lF-R7F" customClass="DatabaseFileListCell" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="57.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" id="lUY-8n-80Q" customClass="FileListCell" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aPc-lF-R7F" id="rEz-tF-rru">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="57.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lUY-8n-80Q" id="Uo1-QF-R7H">
+                                    <rect key="frame" x="0.0" y="0.0" width="280" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Database File Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="gs3-2C-fts">
-                                            <rect key="frame" x="60" y="9" width="165" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" name="PrimaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{File Attributes}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="wKG-yp-SZt">
-                                            <rect key="frame" x="60" y="32.5" width="88.5" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <color key="textColor" name="AuxiliaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="database-local-listitem" id="uJr-zo-xUb">
-                                            <rect key="frame" x="16" y="14" width="29" height="29"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="50X-yJ-NAT">
+                                            <rect key="frame" x="16" y="17" width="29" height="29"/>
+                                            <color key="tintColor" name="IconTint"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="50X-yJ-NAT" secondAttribute="height" multiplier="1:1" id="GjA-PX-oDq"/>
+                                                <constraint firstAttribute="height" constant="29" id="Wx5-h2-Wbn"/>
+                                            </constraints>
                                         </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uXk-lN-lCR">
+                                            <rect key="frame" x="61" y="11.5" width="211" height="40.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="{Database File Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVR-PU-ZpA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="211" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jbm-Ip-uoL">
+                                                    <rect key="frame" x="0.0" y="20.5" width="211" height="20"/>
+                                                    <subviews>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0OB-YK-8lH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        </activityIndicatorView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="{File Attributes}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-p5-jEu">
+                                                            <rect key="frame" x="28" y="0.0" width="183" height="20"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <attributedString key="userComments">
+                                                                <fragment content="#bc-ignore!"/>
+                                                            </attributedString>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="uXk-lN-lCR" secondAttribute="trailing" id="4HV-gx-lc7"/>
+                                        <constraint firstItem="50X-yJ-NAT" firstAttribute="leading" secondItem="Uo1-QF-R7H" secondAttribute="leadingMargin" id="DMo-rZ-ZAh"/>
+                                        <constraint firstItem="uXk-lN-lCR" firstAttribute="centerY" secondItem="Uo1-QF-R7H" secondAttribute="centerY" id="Pad-Qj-zdt"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uXk-lN-lCR" secondAttribute="bottom" id="RuZ-js-9iW"/>
+                                        <constraint firstItem="50X-yJ-NAT" firstAttribute="centerY" secondItem="Uo1-QF-R7H" secondAttribute="centerY" id="VcK-H8-1VE"/>
+                                        <constraint firstItem="50X-yJ-NAT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Uo1-QF-R7H" secondAttribute="topMargin" id="Zyh-j6-BOg"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="50X-yJ-NAT" secondAttribute="bottom" id="cqe-yT-Kj4"/>
+                                        <constraint firstItem="uXk-lN-lCR" firstAttribute="leading" secondItem="50X-yJ-NAT" secondAttribute="trailing" constant="16" id="gbi-8z-Kex"/>
+                                        <constraint firstItem="uXk-lN-lCR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Uo1-QF-R7H" secondAttribute="topMargin" id="vjR-MM-dtl"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="fileDetailLabel" destination="TPe-p5-jEu" id="uI8-Lb-ZKa"/>
+                                    <outlet property="fileIconView" destination="50X-yJ-NAT" id="FPE-o2-Mce"/>
+                                    <outlet property="fileNameLabel" destination="YVR-PU-ZpA" id="KfW-7I-cfq"/>
+                                    <outlet property="spinner" destination="0OB-YK-8lH" id="3YS-K7-zRv"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoFilesCell" id="rNs-5c-DZV" userLabel="NoFilesCell">
-                                <rect key="frame" x="0.0" y="85.5" width="320" height="43"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rNs-5c-DZV" id="OX6-CW-PNo">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="No recent databases" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXt-kp-oSe">
-                                            <rect key="frame" x="16" y="11.5" width="288" height="20.5"/>
+                                            <rect key="frame" x="80.5" y="11.5" width="159" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
@@ -68,9 +100,9 @@
                                     <constraints>
                                         <constraint firstItem="fXt-kp-oSe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OX6-CW-PNo" secondAttribute="topMargin" id="GoI-oa-cJp"/>
                                         <constraint firstItem="fXt-kp-oSe" firstAttribute="centerX" secondItem="OX6-CW-PNo" secondAttribute="centerX" id="PoB-sH-02P"/>
-                                        <constraint firstItem="fXt-kp-oSe" firstAttribute="leading" secondItem="OX6-CW-PNo" secondAttribute="leadingMargin" id="VlT-lx-bTi"/>
+                                        <constraint firstItem="fXt-kp-oSe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OX6-CW-PNo" secondAttribute="leadingMargin" id="VlT-lx-bTi"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="fXt-kp-oSe" secondAttribute="bottom" id="rBP-Mc-d41"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="fXt-kp-oSe" secondAttribute="trailing" id="u5f-Dg-ApM"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="fXt-kp-oSe" secondAttribute="trailing" id="u5f-Dg-ApM"/>
                                         <constraint firstItem="fXt-kp-oSe" firstAttribute="centerY" secondItem="OX6-CW-PNo" secondAttribute="centerY" id="wH0-Q8-EWF"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -104,12 +136,15 @@
     </scenes>
     <resources>
         <image name="create-item-toolbar" width="25" height="25"/>
-        <image name="database-local-listitem" width="29" height="29"/>
+        <image name="fp-generic-listitem" width="29" height="29"/>
         <namedColor name="AuxiliaryText">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="PrimaryText">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

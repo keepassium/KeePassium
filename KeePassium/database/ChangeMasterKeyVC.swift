@@ -33,8 +33,8 @@ class ChangeMasterKeyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        databaseNameLabel.text = databaseRef.info.fileName
-        databaseIcon.image = UIImage.databaseIcon(for: databaseRef)
+        databaseNameLabel.text = databaseRef.visibleFileName
+        databaseIcon.image = databaseRef.getIcon(fileType: .database)
         
         passwordField.invalidBackgroundColor = nil
         repeatPasswordField.invalidBackgroundColor = nil
@@ -222,14 +222,14 @@ extension ChangeMasterKeyVC: KeyFileChooserDelegate {
             return
         }
         
-        if let errorMessage = keyFileRef.info.errorMessage {
+        if let errorMessage = keyFileRef.error?.localizedDescription {
             keyFileField.text = ""
             let errorAlert = UIAlertController.make(
                 title: LString.titleError,
                 message: errorMessage)
             present(errorAlert, animated: true, completion: nil)
         } else {
-            keyFileField.text = keyFileRef.info.fileName
+            keyFileField.text = keyFileRef.visibleFileName
         }
     }
 }

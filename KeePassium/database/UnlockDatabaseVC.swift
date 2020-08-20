@@ -150,11 +150,11 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     func refresh() {
         guard isViewLoaded else { return }
         
-        databaseIconImage.image = UIImage.databaseIcon(for: databaseRef)
-        databaseNameLabel.text = databaseRef.info.fileName
-        if databaseRef.info.hasError {
-            let text = databaseRef.info.errorMessage
-            if databaseRef.info.hasPermissionError257 {
+        databaseIconImage.image = databaseRef.getIcon(fileType: .database)
+        databaseNameLabel.text = databaseRef.visibleFileName
+        if databaseRef.hasError {
+            let text = databaseRef.error?.localizedDescription
+            if databaseRef.hasPermissionError257 {
                 showErrorMessage(text, suggestion: LString.tryToReAddFile)
             } else {
                 showErrorMessage(text)
@@ -502,17 +502,17 @@ extension UnlockDatabaseVC: HardwareKeyPickerDelegate {
 
 extension UnlockDatabaseVC: KeyFileChooserDelegate {
     func setKeyFile(urlRef: URLReference?) {
-        keyFileRef = urlRef
+        self.keyFileRef = urlRef
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
             dbSettings.maybeSetAssociatedKeyFile(keyFileRef)
         }
 
-        guard let fileInfo = urlRef?.info else {
+        guard let keyFileRef = keyFileRef else {
             Diag.debug("No key file selected")
             keyFileField.text = ""
             return
         }
-        if let errorDetails = fileInfo.errorMessage {
+        if let errorDetails = keyFileRef.error?.localizedDescription {
             let errorMessage = String.localizedStringWithFormat(
                 NSLocalizedString(
                     "[Database/Unlock] Key file error: %@",
@@ -524,7 +524,7 @@ extension UnlockDatabaseVC: KeyFileChooserDelegate {
             keyFileField.text = ""
         } else {
             Diag.info("Key file set successfully")
-            keyFileField.text = fileInfo.fileName
+            keyFileField.text = keyFileRef.visibleFileName
         }
     }
     

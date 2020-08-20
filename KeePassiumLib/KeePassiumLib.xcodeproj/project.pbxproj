@@ -14,6 +14,7 @@
 		75134CFC23C0F02C0065CD10 /* DatabaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */; };
 		751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CDD2309A3420088BB10 /* Localizable.strings */; };
 		751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E0D67230D12660088BB10 /* Bundle+extensions.swift */; };
+		751F90A9247748A300A7418F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751F90A8247748A300A7418F /* Result.swift */; };
 		75205FA5239C01CF00C1DEAA /* DatabaseSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */; };
 		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
@@ -25,6 +26,10 @@
 		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
 		75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677A229045A60097C693 /* PremiumFeature.swift */; };
 		75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B8608B2475E2F800C5E6C0 /* LString.swift */; };
+		75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1432481B2FA0017B980 /* FileProvider.swift */; };
+		75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01EFE2474AC290099698C /* Synchronizable.swift */; };
+		75C01F01247553540099698C /* FileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01F00247553540099698C /* FileCoordinator.swift */; };
+		75C01F03247554EA0099698C /* FileAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01F02247554EA0099698C /* FileAccessError.swift */; };
 		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
 		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B862174F02F00F7DEF2 /* salsa20.c */; };
@@ -118,7 +123,7 @@
 		75F4ACE02177469500B22D8B /* FileKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD92177469500B22D8B /* FileKeeper.swift */; };
 		75F4ACE12177469500B22D8B /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDA2177469500B22D8B /* FileType.swift */; };
 		75F4ACE22177469500B22D8B /* DatabaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDB2177469500B22D8B /* DatabaseDocument.swift */; };
-		75F4ACE32177469500B22D8B /* FileDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDC2177469500B22D8B /* FileDocument.swift */; };
+		75F4ACE32177469500B22D8B /* BaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDC2177469500B22D8B /* BaseDocument.swift */; };
 		75F4ACE42177469500B22D8B /* FileKeeperObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */; };
 		75F4ACE52177469500B22D8B /* URLReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDE2177469500B22D8B /* URLReference.swift */; };
 		75F4ACEA2177485D00B22D8B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACE72177485D00B22D8B /* Settings.swift */; };
@@ -141,6 +146,7 @@
 		751E0CDE2309A3420088BB10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		751E0D63230B49190088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		751E0D67230D12660088BB10 /* Bundle+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+extensions.swift"; sourceTree = "<group>"; };
+		751F90A8247748A300A7418F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		75205FA2239BDB6700C1DEAA /* DatabaseSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
 		75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsManager.swift; sourceTree = "<group>"; };
 		7538167D22B15FC7000FA4BD /* Settings+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+premium.swift"; sourceTree = "<group>"; };
@@ -158,6 +164,10 @@
 		75AC534A2326FCDB000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC53A2232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75B8608B2475E2F800C5E6C0 /* LString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
+		75BFB1432481B2FA0017B980 /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
+		75C01EFE2474AC290099698C /* Synchronizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
+		75C01F00247553540099698C /* FileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCoordinator.swift; sourceTree = "<group>"; };
+		75C01F02247554EA0099698C /* FileAccessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAccessError.swift; sourceTree = "<group>"; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
 		75D09B862174F02F00F7DEF2 /* salsa20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = salsa20.c; sourceTree = "<group>"; };
@@ -256,7 +266,7 @@
 		75F4ACD92177469500B22D8B /* FileKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileKeeper.swift; sourceTree = "<group>"; };
 		75F4ACDA2177469500B22D8B /* FileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		75F4ACDB2177469500B22D8B /* DatabaseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseDocument.swift; sourceTree = "<group>"; };
-		75F4ACDC2177469500B22D8B /* FileDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDocument.swift; sourceTree = "<group>"; };
+		75F4ACDC2177469500B22D8B /* BaseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDocument.swift; sourceTree = "<group>"; };
 		75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileKeeperObserver.swift; sourceTree = "<group>"; };
 		75F4ACDE2177469500B22D8B /* URLReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLReference.swift; sourceTree = "<group>"; };
 		75F4ACE72177485D00B22D8B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -478,6 +488,8 @@
 				75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */,
 				754D7C0D238C26A7005652E1 /* YubiKey.swift */,
 				757CB44123993E48000867F0 /* DatabaseSettings.swift */,
+				75C01EFE2474AC290099698C /* Synchronizable.swift */,
+				751F90A8247748A300A7418F /* Result.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -584,9 +596,12 @@
 				75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */,
 				75F4ACDA2177469500B22D8B /* FileType.swift */,
 				75F4ACDB2177469500B22D8B /* DatabaseDocument.swift */,
-				75F4ACDC2177469500B22D8B /* FileDocument.swift */,
+				75F4ACDC2177469500B22D8B /* BaseDocument.swift */,
 				75F4ACD82177469500B22D8B /* TemporaryFileURL.swift */,
 				75F4ACDE2177469500B22D8B /* URLReference.swift */,
+				75BFB1432481B2FA0017B980 /* FileProvider.swift */,
+				75C01F00247553540099698C /* FileCoordinator.swift */,
+				75C01F02247554EA0099698C /* FileAccessError.swift */,
 			);
 			path = files;
 			sourceTree = "<group>";
@@ -745,6 +760,7 @@
 				75D09C2D2174F77000F7DEF2 /* VarDict.swift in Sources */,
 				75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */,
 				75F4ACD6217745B300B22D8B /* DatabaseManagerObserver.swift in Sources */,
+				75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */,
 				75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */,
 				75D09C1F2174F77000F7DEF2 /* Attachment.swift in Sources */,
 				75D09C362174F77000F7DEF2 /* FixedWidthInteger+extension.swift in Sources */,
@@ -783,6 +799,7 @@
 				75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */,
 				75F4ACEC2177485D00B22D8B /* Weak.swift in Sources */,
 				75D09C1D2174F77000F7DEF2 /* KDFParams.swift in Sources */,
+				75C01F01247553540099698C /* FileCoordinator.swift in Sources */,
 				75D09BE42174F76500F7DEF2 /* encoding.c in Sources */,
 				75D09BE62174F76500F7DEF2 /* Argon2.swift in Sources */,
 				75F4ACE52177469500B22D8B /* URLReference.swift in Sources */,
@@ -809,6 +826,7 @@
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
 				75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */,
+				751F90A9247748A300A7418F /* Result.swift in Sources */,
 				75D09C412174F77000F7DEF2 /* Database1.swift in Sources */,
 				75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */,
 				75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */,
@@ -825,9 +843,10 @@
 				75D09C402174F77000F7DEF2 /* Eraseable.swift in Sources */,
 				75D4080523952FD40042122A /* CompositeKey.swift in Sources */,
 				75D09C5C2174F81900F7DEF2 /* Error.swift in Sources */,
+				75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */,
 				75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
-				75F4ACE32177469500B22D8B /* FileDocument.swift in Sources */,
+				75F4ACE32177469500B22D8B /* BaseDocument.swift in Sources */,
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,
 				75F4ACE22177469500B22D8B /* DatabaseDocument.swift in Sources */,
 				7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */,
@@ -837,6 +856,7 @@
 				75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */,
 				75D09C5F2174F81900F7DEF2 /* Document.swift in Sources */,
 				75D09C372174F77000F7DEF2 /* KeyHelper.swift in Sources */,
+				75C01F03247554EA0099698C /* FileAccessError.swift in Sources */,
 				75A26770228DAC440097C693 /* PremiumManager.swift in Sources */,
 				75D09BAF2174F3E600F7DEF2 /* KeePassiumLib.m in Sources */,
 				75D09C252174F77000F7DEF2 /* Entry2.swift in Sources */,

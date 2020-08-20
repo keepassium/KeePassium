@@ -17,17 +17,12 @@ final class TwofishDataCipher: DataCipher {
     var initialVectorSize: Int { return Twofish.blockSize }
     var keySize: Int { return 32 }
     
-    private var progress = ProgressEx()
+    internal var progress = ProgressEx()
     
     private let isPaddingLikelyMessedUp: Bool
     
     init(isPaddingLikelyMessedUp: Bool) {
         self.isPaddingLikelyMessedUp = isPaddingLikelyMessedUp
-    }
-
-    func initProgress() -> ProgressEx {
-        progress = ProgressEx()
-        return progress
     }
 
     func encrypt(plainText data: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {

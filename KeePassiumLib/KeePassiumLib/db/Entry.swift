@@ -54,9 +54,13 @@ public class EntryField: Eraseable {
     ) -> Bool {
         guard name != EntryField.password else { return false } 
         
-        if includeFieldNames && name.localizedCaseInsensitiveContains(word) {
+        if includeFieldNames
+            && !isStandardField
+            && name.localizedCaseInsensitiveContains(word)
+        {
             return true
         }
+        
         let includeFieldValue = !isProtected || includeProtectedValues
         if includeFieldValue && value.localizedCaseInsensitiveContains(word) {
             return true

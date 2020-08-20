@@ -44,6 +44,7 @@ class EntryFinderVC: UITableViewController {
         static let nothingFound = "NothingFoundCell"
     }
     @IBOutlet var separatorView: UIView!
+    @IBOutlet var searchCriteriaLabel: UILabel!
     
     weak var database: Database?
     weak var delegate: EntryFinderDelegate?
@@ -115,6 +116,21 @@ class EntryFinderVC: UITableViewController {
     private func updateSearchCriteria() {
         guard isViewLoaded, let database = database else { return }
         
+        var callerID = "?"
+        if !serviceIdentifiers.isEmpty {
+            callerID = serviceIdentifiers
+                .map { $0.identifier }
+                .joined(separator: " | ")
+        }
+        searchCriteriaLabel.text = String.localizedStringWithFormat(
+            NSLocalizedString(
+                "[AutoFill/Search/callerID]",
+                value: "Caller ID: %@",
+                comment: "An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String]"),
+            callerID
+        )
+        tableView.tableFooterView = searchCriteriaLabel
+
         let automaticResults = searchHelper.find(
             database: database,
             serviceIdentifiers: serviceIdentifiers

@@ -16,7 +16,7 @@ class FileExportHelper {
         parent: UIViewController)
     {
         do {
-            let url = try urlRef.resolve()
+            let url = try urlRef.resolveSync()
             let exportSheet = UIActivityViewController(
                 activityItems: [url],
                 applicationActivities: nil)

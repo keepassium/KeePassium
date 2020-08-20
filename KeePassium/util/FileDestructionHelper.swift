@@ -39,8 +39,7 @@ public enum DestructiveFileAction {
         case (.database, .delete):
             return LString.confirmDatabaseDeletion
         case (.keyFile, .remove):
-            assertionFailure("Why are you here?")
-            return LString.confirmKeyFileDeletion
+            return LString.confirmKeyFileRemoval
         case (.keyFile, .delete):
             return LString.confirmKeyFileDeletion
         }
@@ -59,8 +58,7 @@ class FileDestructionHelper {
         parent: UIViewController,
         completion: CompletionHandler?)
     {
-        let info = urlRef.getInfo()
-        if info.hasError {
+        if urlRef.hasError {
             destroyFileNow(
                 urlRef,
                 fileType: fileType,
@@ -71,7 +69,7 @@ class FileDestructionHelper {
         
         let action = DestructiveFileAction.get(for: urlRef.location)
         let confirmationAlert = UIAlertController.make(
-            title: info.fileName,
+            title: urlRef.visibleFileName,
             message: action.getConfirmationText(for: fileType),
             cancelButtonTitle: LString.actionCancel)
             .addAction(title: action.title, style: .destructive) { alert in
@@ -98,7 +96,7 @@ class FileDestructionHelper {
             case .remove:
                 fileKeeper.removeExternalReference(urlRef, fileType: fileType)
             case .delete:
-                try fileKeeper.deleteFile(urlRef, fileType: fileType, ignoreErrors: urlRef.info.hasError)
+                try fileKeeper.deleteFile(urlRef, fileType: fileType, ignoreErrors: urlRef.hasError)
             }
             completion?(true)
         } catch {

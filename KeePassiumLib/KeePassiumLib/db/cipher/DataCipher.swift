@@ -8,11 +8,13 @@
 
 import Foundation
 
-protocol DataCipher {
+protocol DataCipher: class {
     var uuid: UUID { get }
     var initialVectorSize: Int { get }
     var keySize: Int { get }
     var name: String { get }
+    
+    var progress: ProgressEx { get set }
     
     func initProgress() -> ProgressEx
     
@@ -23,6 +25,11 @@ protocol DataCipher {
 }
 
 extension DataCipher {
+    
+    func initProgress() -> ProgressEx {
+        progress = ProgressEx()
+        return progress
+    }
     
     func resizeKey(key: ByteArray) -> SecureByteArray {
         assert(key.count > 0)

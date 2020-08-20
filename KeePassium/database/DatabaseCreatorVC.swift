@@ -110,17 +110,17 @@ class DatabaseCreatorVC: UIViewController {
         return passwordField.becomeFirstResponder()
     }
     
-    private func showKeyFile(_ keyFile: URLReference?) {
-        guard let info = keyFile?.getInfo() else {
+    private func showKeyFile(_ keyFileRef: URLReference?) {
+        guard let keyFileRef = keyFileRef else {
             keyFileField.text = nil
             return
         }
         
-        if info.hasError {
-            keyFileField.text = info.errorMessage
+        if keyFileRef.hasError {
+            keyFileField.text = keyFileRef.error?.localizedDescription
             keyFileField.textColor = .errorMessage
         } else {
-            keyFileField.text = info.fileName
+            keyFileField.text = keyFileRef.visibleFileName
             keyFileField.textColor = .primaryText
         }
         setError(message: nil, animated: true)

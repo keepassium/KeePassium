@@ -41,44 +41,72 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" textLabel="WaS-AB-IgR" detailTextLabel="JX7-iv-1Ow" imageView="zFJ-7B-3yd" style="IBUITableViewCellStyleSubtitle" id="Q0w-X9-p1d" customClass="DatabaseFileListCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.5" width="375" height="57.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" id="vFB-ft-SKS" userLabel="FileItemCell" customClass="FileListCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.5" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q0w-X9-p1d" id="8jx-mN-Boh">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="57.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vFB-ft-SKS" id="XQp-IY-Ue4">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Database File Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="WaS-AB-IgR">
-                                            <rect key="frame" x="60" y="9" width="165" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" name="PrimaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{File Attributes}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="JX7-iv-1Ow">
-                                            <rect key="frame" x="60" y="32.5" width="88.5" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <color key="textColor" name="AuxiliaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="database-local-listitem" id="zFJ-7B-3yd">
-                                            <rect key="frame" x="16" y="14" width="29" height="29"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="4cs-i4-8Si">
+                                            <rect key="frame" x="16" y="17" width="29" height="29"/>
                                             <color key="tintColor" name="IconTint"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="8z4-YP-LNG"/>
+                                                <constraint firstAttribute="width" secondItem="4cs-i4-8Si" secondAttribute="height" multiplier="1:1" id="uer-N2-GTs"/>
+                                            </constraints>
                                         </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lBd-mX-l14">
+                                            <rect key="frame" x="61" y="11.5" width="266" height="40.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="{Database File Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWy-ey-805">
+                                                    <rect key="frame" x="0.0" y="0.0" width="266" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d08-i0-dTY">
+                                                    <rect key="frame" x="0.0" y="20.5" width="266" height="20"/>
+                                                    <subviews>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WJR-7L-1rw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        </activityIndicatorView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="{File Attributes}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2W-10-GnE">
+                                                            <rect key="frame" x="28" y="0.0" width="238" height="20"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <attributedString key="userComments">
+                                                                <fragment content="#bc-ignore!"/>
+                                                            </attributedString>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4cs-i4-8Si" firstAttribute="leading" secondItem="XQp-IY-Ue4" secondAttribute="leadingMargin" id="1gb-Tg-Vd2"/>
+                                        <constraint firstItem="lBd-mX-l14" firstAttribute="centerY" secondItem="XQp-IY-Ue4" secondAttribute="centerY" id="8ke-wT-g69"/>
+                                        <constraint firstItem="lBd-mX-l14" firstAttribute="leading" secondItem="4cs-i4-8Si" secondAttribute="trailing" constant="16" id="BZ1-Re-93H"/>
+                                        <constraint firstItem="4cs-i4-8Si" firstAttribute="centerY" secondItem="XQp-IY-Ue4" secondAttribute="centerY" id="KkM-sP-gpw"/>
+                                        <constraint firstItem="lBd-mX-l14" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XQp-IY-Ue4" secondAttribute="topMargin" id="M5X-cJ-7qj"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="lBd-mX-l14" secondAttribute="trailing" id="SAZ-Yx-zjA"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="lBd-mX-l14" secondAttribute="bottom" id="xSF-9k-9jd"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <color key="tintColor" name="ActionTint"/>
+                                <connections>
+                                    <outlet property="fileDetailLabel" destination="y2W-10-GnE" id="irX-RM-Kqz"/>
+                                    <outlet property="fileIconView" destination="4cs-i4-8Si" id="cRx-j5-Jkh"/>
+                                    <outlet property="fileNameLabel" destination="rWy-ey-805" id="0w3-kD-0hx"/>
+                                    <outlet property="spinner" destination="WJR-7L-1rw" id="hbF-1D-EV9"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AppLockSetupCell" id="P0I-MZ-5qs" userLabel="AppLockSetupCell" customClass="AppLockSetupCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="129" width="375" height="139"/>
+                                <rect key="frame" x="0.0" y="134.5" width="375" height="139"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P0I-MZ-5qs" id="UIb-k0-Rcp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="139"/>
@@ -86,6 +114,9 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Protect KeePassium from unauthorized access." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R68-cy-5mz">
                                             <rect key="frame" x="16" y="15" width="343" height="42.5"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                            </accessibility>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
@@ -180,6 +211,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="addDatabaseBarButton" destination="qPq-UR-uZs" id="a7h-6a-Mnv"/>
+                        <outlet property="sortOrderButton" destination="lnO-nD-gvh" id="JWF-cH-xup"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7yP-IW-NS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,7 +221,7 @@
     </scenes>
     <resources>
         <image name="create-item-toolbar" width="25" height="25"/>
-        <image name="database-local-listitem" width="29" height="29"/>
+        <image name="fp-generic-listitem" width="29" height="29"/>
         <image name="help-about-toolbar" width="25" height="25"/>
         <image name="settings-app-lock-listitem" width="29" height="29"/>
         <image name="settings-toolbar" width="25" height="25"/>

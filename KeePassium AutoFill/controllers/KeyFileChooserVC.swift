@@ -11,6 +11,7 @@ import KeePassiumLib
 protocol KeyFileChooserDelegate: class {
     func didPressAddKeyFile(in keyFileChooser: KeyFileChooserVC, popoverAnchor: PopoverAnchor)
     func didSelectFile(in keyFileChooser: KeyFileChooserVC, urlRef: URLReference?)
+    func didPressFileInfo(in keyFileChooser: KeyFileChooserVC, for urlRef: URLReference)
 }
 
 class KeyFileChooserVC: UITableViewController, Refreshable {
@@ -44,13 +45,19 @@ class KeyFileChooserVC: UITableViewController, Refreshable {
 
     @objc func refresh() {
         keyFileRefs = FileKeeper.shared.getAllReferences(fileType: .keyFile, includeBackup: false)
-        fileInfoReloader.reload(keyFileRefs) { [weak self] in
-            guard let self = self else { return }
-            self.sortFileList()
-            if self.refreshControl?.isRefreshing ?? false {
-                self.refreshControl?.endRefreshing()
+        fileInfoReloader.getInfo(
+            for: keyFileRefs,
+            update: { [weak self] (ref) in
+                self?.tableView.reloadData()
+            },
+            completion: { [weak self] in
+                self?.sortFileList()
+                if let refreshControl = self?.refreshControl, refreshControl.isRefreshing {
+                    refreshControl.endRefreshing()
+                }
             }
-        }
+        )
+        tableView.reloadData()
     }
     
     fileprivate func sortFileList() {
@@ -68,7 +75,11 @@ class KeyFileChooserVC: UITableViewController, Refreshable {
         return keyFileRefs.count + 1
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
         guard indexPath.row != 0 else {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: CellID.noKeyFile,
@@ -76,29 +87,27 @@ class KeyFileChooserVC: UITableViewController, Refreshable {
             return cell
         }
 
-        let cell = tableView.dequeueReusableCell(
+        let cell = FileListCellFactory.dequeueReusableCell(
+            from: tableView,
             withIdentifier: CellID.keyFile,
-            for: indexPath)
-        let fileIndex = indexPath.row - 1
-        let fileInfo = keyFileRefs[fileIndex].info
-        cell.textLabel?.text = fileInfo.fileName
-        guard !fileInfo.hasError else {
-            cell.detailTextLabel?.text = fileInfo.errorMessage
-            cell.detailTextLabel?.textColor = UIColor.errorMessage
-            return cell
+            for: indexPath,
+            for: .keyFile)
+        let keyFileRef = keyFileRefs[indexPath.row - 1]
+        cell.showInfo(from: keyFileRef)
+        cell.isAnimating = keyFileRef.isRefreshingInfo
+        cell.accessoryTapHandler = { [weak self, indexPath] cell in
+            guard let self = self else { return }
+            self.tableView(self.tableView, accessoryButtonTappedForRowWith: indexPath)
         }
-        
-        if let lastModifiedDate = fileInfo.modificationDate {
-            let timestampString = DateFormatter.localizedString(
-                from: lastModifiedDate,
-                dateStyle: .long,
-                timeStyle: .medium)
-            cell.detailTextLabel?.text = timestampString
-        } else {
-            cell.detailTextLabel?.text = nil
-        }
-        
         return cell
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        accessoryButtonTappedForRowWith indexPath: IndexPath)
+    {
+        let urlRef = keyFileRefs[indexPath.row - 1]
+        delegate?.didPressFileInfo(in: self, for: urlRef)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

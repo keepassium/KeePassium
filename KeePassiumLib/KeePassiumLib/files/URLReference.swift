@@ -10,21 +10,18 @@ import UIKit
 
 public struct FileInfo {
     public var fileName: String
-    public var hasError: Bool { return error != nil}
-    public var errorMessage: String? { return error?.localizedDescription }
-    public var error: Error?
-
-    public var hasPermissionError257: Bool {
-        guard let nsError = error as NSError? else { return false }
-        return (nsError.domain == "NSCocoaErrorDomain") && (nsError.code == 257)
-    }
-
     public var fileSize: Int64?
     public var creationDate: Date?
     public var modificationDate: Date?
 }
 
-public class URLReference: Equatable, Codable, CustomDebugStringConvertible {
+public class URLReference:
+    Equatable,
+    Hashable,
+    Codable,
+    CustomDebugStringConvertible,
+    Synchronizable
+{
     public typealias Descriptor = String
     
     public enum Location: Int, Codable, CustomStringConvertible {
@@ -73,16 +70,65 @@ public class URLReference: Equatable, Codable, CustomDebugStringConvertible {
         }
     }
     
+    public static let defaultTimeout: TimeInterval = 5.0
+    
+    public var visibleFileName: String { return url?.lastPathComponent ?? "?" }
+    
+    public private(set) var error: FileAccessError?
+    public var hasError: Bool { return error != nil}
+    
+    public var hasPermissionError257: Bool {
+        guard let nsError = error as NSError? else { return false }
+        return (nsError.domain == "NSCocoaErrorDomain") && (nsError.code == 257)
+    }
+    
     private let data: Data
-    lazy private(set) var hash: ByteArray = getHash()
     public let location: Location
-    private var url: URL?
+    
+    internal var bookmarkedURL: URL?
+    internal var cachedURL: URL?
+    internal var resolvedURL: URL?
+    
+    internal var originalURL: URL? {
+        return bookmarkedURL ?? cachedURL
+    }
+
+    internal var url: URL? {
+        return resolvedURL ?? cachedURL ?? bookmarkedURL
+    }
+    
+    
+    public var isRefreshingInfo: Bool {
+        let result = synchronized {
+            return (self.infoRefreshRequestCount > 0)
+        }
+        return result
+    }
+
+    private var infoRefreshRequestCount = 0
+
+    private var cachedInfo: FileInfo?
+    
+    
+    public private(set) var fileProvider: FileProvider?
+    
+    fileprivate static let staticFileCoordinator = FileCoordinator()
+    
+    fileprivate let fileCoordinator = FileCoordinator()
+    
+    fileprivate let backgroundQueue = DispatchQueue(
+        label: "com.keepassium.URLReference",
+        qos: .background,
+        attributes: [.concurrent])
+    
+    
     
     private enum CodingKeys: String, CodingKey {
         case data = "data"
         case location = "location"
-        case url = "url"
+        case cachedURL = "url"
     }
+    
     
     public init(from url: URL, location: Location) throws {
         let isAccessed = url.startAccessingSecurityScopedResource()
@@ -91,127 +137,423 @@ public class URLReference: Equatable, Codable, CustomDebugStringConvertible {
                 url.stopAccessingSecurityScopedResource()
             }
         }
-        self.url = url
+        cachedURL = url
+        bookmarkedURL = url
         self.location = location
         if location.isInternal {
             data = Data() 
-            hash = ByteArray(data: url.dataRepresentation).sha256
         } else {
             data = try url.bookmarkData(
                 options: [.minimalBookmark],
                 includingResourceValuesForKeys: nil,
                 relativeTo: nil) 
-            hash = ByteArray(data: data).sha256
         }
+        processReference()
     }
 
     public static func == (lhs: URLReference, rhs: URLReference) -> Bool {
         guard lhs.location == rhs.location else { return false }
-        if lhs.location.isInternal {
-            guard let leftURL = try? lhs.resolve(),
-                let rightURL = try? rhs.resolve() else { return false }
-            return leftURL == rightURL
-        } else {
-            return !lhs.hash.isEmpty && (lhs.hash == rhs.hash)
+        guard let lhsOriginalURL = lhs.originalURL, let rhsOriginalURL = rhs.originalURL else {
+            assertionFailure()
+            Diag.debug("Original URL of the file is nil.")
+            return false
         }
+        return lhsOriginalURL == rhsOriginalURL
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(location)
+        guard let originalURL = originalURL else {
+            assertionFailure()
+            return
+        }
+        hasher.combine(originalURL)
     }
     
     public func serialize() -> Data {
         return try! JSONEncoder().encode(self)
     }
+    
     public static func deserialize(from data: Data) -> URLReference? {
         guard let ref = try? JSONDecoder().decode(URLReference.self, from: data) else {
             return nil
         }
-        ref.hash = ref.getHash()
+        ref.processReference()
         return ref
     }
     
     public var debugDescription: String {
         return " ‣ Location: \(location)\n" +
-            " ‣ URL: \(url?.relativeString ?? "nil")\n" +
+            " ‣ bookmarkedURL: \(bookmarkedURL?.relativeString ?? "nil")\n" +
+            " ‣ cachedURL: \(cachedURL?.relativeString ?? "nil")\n" +
+            " ‣ resolvedURL: \(resolvedURL?.relativeString ?? "nil")\n" +
+            " ‣ fileProvider: \(fileProvider?.id ?? "nil")\n" +
             " ‣ data: \(data.count) bytes"
     }
     
     
-    private func getHash() -> ByteArray {
-        guard location.isInternal else {
-            return ByteArray(data: data).sha256
-        }
+    public typealias CreateCallback = (Result<URLReference, FileAccessError>) -> ()
 
-        do {
-            let _url = try resolve()
-            return ByteArray(data: _url.dataRepresentation).sha256
-        } catch {
-            Diag.warning("Failed to resolve the URL: \(error.localizedDescription)")
-            return ByteArray() 
-        }
-    }
-    
-    public func resolve() throws -> URL {
-        if let url = url, location.isInternal {
-            return url
+    public static func create(
+        for url: URL,
+        location: URLReference.Location,
+        completion callback: @escaping CreateCallback)
+    {
+        let isAccessed = url.startAccessingSecurityScopedResource()
+        
+        if tryCreate(for: url, location: location, callbackOnError: false, callback: callback) {
+            print("URL bookmarked on stage 1")
+            if isAccessed {
+                url.stopAccessingSecurityScopedResource()
+            }
+            return
         }
         
-        var isStale = false
-        let resolvedUrl = try URL(
-            resolvingBookmarkData: data,
-            options: [URL.BookmarkResolutionOptions.withoutUI],
-            relativeTo: nil,
-            bookmarkDataIsStale: &isStale)
-        self.url = resolvedUrl
-        return resolvedUrl
-    }
-    
-    public func getDescriptor() -> Descriptor? {
-        guard !info.hasError else {
-            return nil
-        }
-        return info.fileName
-    }
-    
-    public lazy var info: FileInfo = getInfo()
-    
-    public func getInfo() -> FileInfo {
-        refreshInfo()
-        return info
-    }
-    
-    public func refreshInfo() {
-        let result: FileInfo
-        do {
-            let url = try resolve()
-            let isAccessed = url.startAccessingSecurityScopedResource()
+        let readingIntentOptions: NSFileCoordinator.ReadingOptions = [
+            .withoutChanges, 
+            .resolvesSymbolicLink 
+        ]
+        staticFileCoordinator.coordinateReading(
+            at: url,
+            options: readingIntentOptions,
+            timeout: URLReference.defaultTimeout)
+        {
+            (fileAccessError) in
             defer {
                 if isAccessed {
                     url.stopAccessingSecurityScopedResource()
                 }
             }
-            result = FileInfo(
+            guard fileAccessError == nil else {
+                DispatchQueue.main.async {
+                    callback(.failure(fileAccessError!))
+                }
+                return
+            }
+            tryCreate(for: url, location: location, callbackOnError: true, callback: callback)
+        }
+    }
+    
+    @discardableResult
+    private static func tryCreate(
+        for url: URL,
+        location: URLReference.Location,
+        callbackOnError: Bool = false,
+        callback: @escaping CreateCallback
+    ) -> Bool {
+        do {
+            let urlRef = try URLReference(from: url, location: location)
+            DispatchQueue.main.async {
+                callback(.success(urlRef))
+            }
+            return true
+        } catch {
+            if callbackOnError {
+                DispatchQueue.main.async {
+                    callback(.failure(.accessError(error)))
+                }
+            }
+            return false
+        }
+    }
+    
+    
+    public typealias ResolveCallback = (Result<URL, FileAccessError>) -> ()
+    
+    public func resolveAsync(
+        timeout: TimeInterval = URLReference.defaultTimeout,
+        callback: @escaping ResolveCallback)
+    {
+        execute(
+            withTimeout: URLReference.defaultTimeout,
+            on: backgroundQueue,
+            slowSyncOperation: { () -> Result<URL, Error> in
+                do {
+                    let url = try self.resolveSync()
+                    return .success(url)
+                } catch {
+                    return .failure(error)
+                }
+            },
+            onSuccess: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let url):
+                    self.error = nil
+                    self.dispatchMain {
+                        callback(.success(url))
+                    }
+                case .failure(let error):
+                    self.error = .accessError(error)
+                    self.dispatchMain {
+                        callback(.failure(.accessError(error)))
+                    }
+                }
+            },
+            onTimeout: { [self] in
+                self.error = FileAccessError.timeout
+                self.dispatchMain {
+                    callback(.failure(FileAccessError.timeout))
+                }
+            }
+        )
+    }
+    
+    
+    public typealias InfoCallback = (Result<FileInfo, FileAccessError>) -> ()
+    
+    private enum InfoRefreshRequestState {
+        case added
+        case completed
+    }
+    
+    private func registerInfoRefreshRequest(_ state: InfoRefreshRequestState) {
+        synchronized { [self] in
+            switch state {
+            case .added:
+                self.infoRefreshRequestCount += 1
+            case .completed:
+                self.infoRefreshRequestCount -= 1
+            }
+        }
+    }
+    
+    public func getCachedInfo(canFetch: Bool, completion callback: @escaping InfoCallback) {
+        if let info = cachedInfo {
+            DispatchQueue.main.async {
+                callback(.success(info))
+            }
+        } else {
+            guard canFetch else {
+                let error: FileAccessError = self.error ?? .noInfoAvailable
+                callback(.failure(error))
+                return
+            }
+            refreshInfo(completion: callback)
+        }
+    }
+    
+    
+    public func refreshInfo(
+        timeout: TimeInterval = URLReference.defaultTimeout,
+        completion callback: @escaping InfoCallback)
+    {
+        registerInfoRefreshRequest(.added)
+        resolveAsync(timeout: timeout) {
+            [self] (result) in 
+            switch result {
+            case .success(let url):
+                self.backgroundQueue.async { 
+                    self.refreshInfo(for: url, completion: callback)
+                }
+            case .failure(let error):
+                self.registerInfoRefreshRequest(.completed)
+                self.error = error
+                callback(.failure(error))
+            }
+        }
+    }
+    
+    private func refreshInfo(for url: URL, completion callback: @escaping InfoCallback) {
+        assert(!Thread.isMainThread)
+
+        let isAccessed = url.startAccessingSecurityScopedResource()
+        
+        let readingIntentOptions: NSFileCoordinator.ReadingOptions = [
+            .resolvesSymbolicLink 
+        ]
+        fileCoordinator.coordinateReading(
+            at: url,
+            options: readingIntentOptions,
+            timeout: URLReference.defaultTimeout)
+        {
+            (fileAccessError) in 
+            defer {
+                if isAccessed {
+                    url.stopAccessingSecurityScopedResource()
+                }
+            }
+
+            self.registerInfoRefreshRequest(.completed)
+            guard fileAccessError == nil else {
+                DispatchQueue.main.async { 
+                    self.error = fileAccessError
+                    callback(.failure(fileAccessError!))
+                }
+                return
+            }
+            let latestInfo = FileInfo(
                 fileName: url.lastPathComponent,
-                error: nil,
                 fileSize: url.fileSize,
                 creationDate: url.fileCreationDate,
                 modificationDate: url.fileModificationDate)
-        } catch {
-            result = FileInfo(
-                fileName: "?",
-                error: error,
-                fileSize: nil,
-                creationDate: nil,
-                modificationDate: nil)
+            self.cachedInfo = latestInfo
+            DispatchQueue.main.async {
+                self.error = nil
+                callback(.success(latestInfo))
+            }
         }
-        self.info = result
+    }
+    
+    
+    public func resolveSync() throws -> URL {
+        if location.isInternal, let cachedURL = self.cachedURL {
+            return cachedURL
+        }
+        
+        var isStale = false
+        let _resolvedURL = try URL(
+            resolvingBookmarkData: data,
+            options: [URL.BookmarkResolutionOptions.withoutUI],
+            relativeTo: nil,
+            bookmarkDataIsStale: &isStale)
+        self.resolvedURL = _resolvedURL
+        return _resolvedURL
+    }
+    
+    public func getDescriptor() -> Descriptor? {
+        if let resolvedFileName = resolvedURL?.lastPathComponent {
+            return resolvedFileName
+        }
+        if let cachedFileName = cachedURL?.lastPathComponent {
+            return cachedFileName
+        }
+        return bookmarkedURL?.lastPathComponent
+    }
+    
+    public func getCachedInfoSync(canFetch: Bool) -> FileInfo? {
+        if cachedInfo == nil && canFetch {
+            refreshInfoSync()
+        }
+        return cachedInfo
+    }
+    
+    public func getInfoSync() -> FileInfo? {
+        refreshInfoSync()
+        return cachedInfo
+    }
+    
+    private func refreshInfoSync() {
+        let semaphore = DispatchSemaphore(value: 0)
+        backgroundQueue.async { [self] in
+            self.refreshInfo { _ in
+                semaphore.signal()
+            }
+        }
+        semaphore.wait()
     }
     
     public func find(in refs: [URLReference], fallbackToNamesake: Bool=false) -> URLReference? {
         if let exactMatchIndex = refs.firstIndex(of: self) {
             return refs[exactMatchIndex]
         }
+        
         if fallbackToNamesake {
-            let fileName = self.info.fileName
-            return refs.first(where: { $0.info.fileName == fileName })
+            guard let fileName = self.cachedInfo?.fileName else {
+                return nil
+            }
+            return refs.first(where: { $0.cachedInfo?.fileName == fileName })
         }
         return nil
     }
+    
+    
+    fileprivate func processReference() {
+        guard !data.isEmpty else {
+            if location.isInternal {
+                fileProvider = .localStorage
+            }
+            return
+        }
+        
+        func getRecordValue(data: ByteArray, fpOffset: Int) -> String? {
+            let contentBytes = data[fpOffset..<data.count]
+            let contentStream = contentBytes.asInputStream()
+            contentStream.open()
+            defer { contentStream.close() }
+            guard let recLength = contentStream.readUInt32(),
+                let _ = contentStream.readUInt32(),
+                let recBytes = contentStream.read(count: Int(recLength)),
+                let utf8String = recBytes.toString(using: .utf8)
+                else { return nil }
+            return utf8String
+        }
+        
+        func extractFileProviderID(_ fullString: String) -> String? {
+            let regexp = try! NSRegularExpression(
+                pattern: #"fileprovider\:#?([a-zA-Z0-9\.\-\_]+)"#,
+                options: [])
+            let fullRange = NSRange(fullString.startIndex..<fullString.endIndex, in: fullString)
+            guard let match = regexp.firstMatch(in: fullString, options: [], range: fullRange),
+                let foundRange = Range(match.range(at: 1), in: fullString)
+                else { return nil }
+            return String(fullString[foundRange])
+        }
+        
+        func extractBookmarkedURLString(_ sandboxInfoString: String) -> String? {
+            let infoTokens = sandboxInfoString.split(separator: ";")
+            guard let lastToken = infoTokens.last else { return nil }
+            return String(lastToken)
+        }
+        
+        let data = ByteArray(data: self.data)
+        guard data.count > 0 else { return }
+        let stream = data.asInputStream()
+        stream.open()
+        defer { stream.close() }
+        
+        stream.skip(count: 12)
+        guard let contentOffset32 = stream.readUInt32() else { return }
+        let contentOffset = Int(contentOffset32)
+        stream.skip(count: contentOffset - 12 - 4)
+        guard let firstTOC32 = stream.readUInt32() else { return }
+        stream.skip(count: Int(firstTOC32) - 4 + 4*4)
+        
+        var _fileProviderID: String?
+        var _sandboxBookmarkedURLString: String?
+        var _hackyBookmarkedURLString: String?
+        var _volumePath: String?
+        guard let recordCount = stream.readUInt32() else { return }
+        for _ in 0..<recordCount {
+            guard let recordID = stream.readUInt32(),
+                let offset = stream.readUInt64()
+                else { return }
+            switch recordID {
+            case 0x2002:
+                _volumePath = getRecordValue(data: data, fpOffset: contentOffset + Int(offset))
+            case 0x2070: 
+                guard let fullFileProviderString =
+                    getRecordValue(data: data, fpOffset: contentOffset + Int(offset))
+                    else { continue }
+                _fileProviderID = extractFileProviderID(fullFileProviderString)
+            case 0xF080: 
+                guard let sandboxInfoString =
+                    getRecordValue(data: data, fpOffset: contentOffset + Int(offset))
+                    else { continue }
+                _sandboxBookmarkedURLString = extractBookmarkedURLString(sandboxInfoString)
+            case 0x800003E8: 
+                _hackyBookmarkedURLString =
+                    getRecordValue(data: data, fpOffset: contentOffset + Int(offset))
+            default:
+                continue
+            }
+        }
+        
+        if let volumePath = _volumePath,
+            let hackyURLString = _hackyBookmarkedURLString,
+            !hackyURLString.starts(with: volumePath)
+        {
+            _hackyBookmarkedURLString = nil
+        }
+        if let urlString = _sandboxBookmarkedURLString ?? _hackyBookmarkedURLString {
+            self.bookmarkedURL = URL(fileURLWithPath: urlString)
+        }
+        if let fileProviderID = _fileProviderID {
+            self.fileProvider = FileProvider(rawValue: fileProviderID)
+        } else {
+            assertionFailure()
+            self.fileProvider = nil
+        }
+    }
+
 }

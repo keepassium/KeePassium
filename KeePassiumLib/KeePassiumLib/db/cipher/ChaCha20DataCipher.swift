@@ -16,14 +16,9 @@ final class ChaCha20DataCipher: DataCipher {
     
     var initialVectorSize: Int { return 12 } 
     var keySize: Int { return 32 }
-    private var progress = ProgressEx()
+    internal var progress = ProgressEx()
 
     init() {
-    }
-    
-    func initProgress() -> ProgressEx {
-        progress = ProgressEx()
-        return progress
     }
     
     func encrypt(plainText: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {

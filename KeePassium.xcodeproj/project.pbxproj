@@ -80,6 +80,10 @@
 		753507A123783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
 		753507A223783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
 		753507A323783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
+		7537FEBE249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
+		7537FEBF249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
+		7537FEC0249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
+		7537FEC1249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
 		753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
 		753F924B22905621005E496F /* PremiumUpgradeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924A22905621005E496F /* PremiumUpgradeHelper.swift */; };
 		753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
@@ -210,6 +214,10 @@
 		7598963F2341590300DF39AA /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
 		759896402341590300DF39AA /* KeePassiumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599636F22E112E50004BC85 /* Attachment+extensions.swift */; };
+		759BC62C2487FE5200E88111 /* URLReference+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BC62B2487FE5200E88111 /* URLReference+extensions.swift */; };
+		759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BC62B2487FE5200E88111 /* URLReference+extensions.swift */; };
+		759BC62E2487FE5200E88111 /* URLReference+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BC62B2487FE5200E88111 /* URLReference+extensions.swift */; };
+		759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BC62B2487FE5200E88111 /* URLReference+extensions.swift */; };
 		759BCEB02144E6E8002FC18B /* RootSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */; };
 		75A26774228E7D200097C693 /* PremiumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A26773228E7D200097C693 /* PremiumVC.swift */; };
 		75A26776228F02C80097C693 /* PremiumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A26775228F02C70097C693 /* PremiumCoordinator.swift */; };
@@ -276,7 +284,7 @@
 		75B38C21233E5B7C006BDEFC /* ChooseIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE9D220CF8B5E00995846 /* ChooseIconVC.swift */; };
 		75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDC20C3ACFD00C5D834 /* KPApplication.swift */; };
 		75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
-		75B38C25233E5B7C006BDEFC /* DatabaseFileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */; };
+		75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
 		75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */; };
 		75B38C28233E5B7C006BDEFC /* ChooseDatabaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* ChooseDatabaseVC.swift */; };
@@ -362,6 +370,14 @@
 		75B5FB7720D53EA700D402D9 /* ViewEntryFieldsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */; };
 		75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75B5FB7B20D61BC000D402D9 /* ViewableEntryFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */; };
+		75BFB13F2481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
+		75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
+		75BFB1412481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
+		75BFB1422481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
+		75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
+		75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
+		75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
+		75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75C11F1E22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
 		75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
 		75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
@@ -385,8 +401,8 @@
 		75CFBE2A21C2BDDF0029A80A /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
 		75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
 		75D1674A21464333005E33C3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1674921464333005E33C3 /* AboutVC.swift */; };
-		75D3A3AF21BAE53F00255FC3 /* DatabaseFileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */; };
-		75D3A3B121BAE66F00255FC3 /* DatabaseFileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */; };
+		75D3A3AF21BAE53F00255FC3 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
+		75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75D3AEB523BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3AEB423BDD582003028FB /* DestinationGroupPickerVC.swift */; };
 		75D3AEB623BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3AEB423BDD582003028FB /* DestinationGroupPickerVC.swift */; };
 		75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5D4002235CD720003CD55 /* CrashReportVC.swift */; };
@@ -400,7 +416,7 @@
 		75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9E21C1671F00B8AFE2 /* MainCoordinator.swift */; };
 		75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
 		75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
-		75D7DF86233E5E310029AD87 /* DatabaseFileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */; };
+		75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75D7DF87233E5E310029AD87 /* DiagnosticsViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71421C94DD90025C706 /* DiagnosticsViewerVC.swift */; };
 		75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		75D7DF89233E5E310029AD87 /* EntryFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */; };
@@ -610,6 +626,7 @@
 		7533031123C52A1500F38CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DestinationGroupPickerVC.storyboard; sourceTree = "<group>"; };
 		753376F023CA650C00603F4A /* PasswordStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordStringHelper.swift; sourceTree = "<group>"; };
 		7535079F23783729003B65C9 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
+		7537FEBD249D7B950028A653 /* Settings+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+extensions.swift"; sourceTree = "<group>"; };
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		753F924A22905621005E496F /* PremiumUpgradeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUpgradeHelper.swift; sourceTree = "<group>"; };
 		753F924D2290705D005E496F /* SKProduct+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+extension.swift"; sourceTree = "<group>"; };
@@ -793,6 +810,7 @@
 		759894B624620AF6006B6709 /* FileExportHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExportHelper.swift; sourceTree = "<group>"; };
 		759894BB24620D33006B6709 /* FileDestructionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDestructionHelper.swift; sourceTree = "<group>"; };
 		7599636F22E112E50004BC85 /* Attachment+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Attachment+extensions.swift"; sourceTree = "<group>"; };
+		759BC62B2487FE5200E88111 /* URLReference+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLReference+extensions.swift"; sourceTree = "<group>"; };
 		759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitVC.swift; sourceTree = "<group>"; };
 		75A26773228E7D200097C693 /* PremiumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumVC.swift; sourceTree = "<group>"; };
 		75A26775228F02C70097C693 /* PremiumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCoordinator.swift; sourceTree = "<group>"; };
@@ -978,6 +996,8 @@
 		75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFieldsVC.swift; sourceTree = "<group>"; };
 		75B5FB7820D6101100D402D9 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewableEntryFieldFactory.swift; sourceTree = "<group>"; };
+		75BFB13E2481553D0017B980 /* DynamicFileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFileList.swift; sourceTree = "<group>"; };
+		75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileProvider+extensions.swift"; sourceTree = "<group>"; };
 		75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+biometrics.swift"; sourceTree = "<group>"; };
 		75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
 		75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppCoverVC.storyboard; sourceTree = "<group>"; };
@@ -996,7 +1016,7 @@
 		75CD364021537A310018AF46 /* AppStoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreHelper.swift; sourceTree = "<group>"; };
 		75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUnlockerVC.swift; sourceTree = "<group>"; };
 		75D1674921464333005E33C3 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
-		75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFileListCell.swift; sourceTree = "<group>"; };
+		75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListCell.swift; sourceTree = "<group>"; };
 		75D3AEB423BDD582003028FB /* DestinationGroupPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationGroupPickerVC.swift; sourceTree = "<group>"; };
 		75D5D4002235CD720003CD55 /* CrashReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportVC.swift; sourceTree = "<group>"; };
 		75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassiumPro AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1402,6 +1422,9 @@
 				7535079F23783729003B65C9 /* HapticFeedback.swift */,
 				75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */,
 				75A5312223C0D35500900ED1 /* NavigationRouter.swift */,
+				75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */,
+				759BC62B2487FE5200E88111 /* URLReference+extensions.swift */,
+				7537FEBD249D7B950028A653 /* Settings+extensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1467,7 +1490,7 @@
 				7533032523C52AB600F38CC7 /* relocation */,
 				756FF64620BAB55000FF890B /* group */,
 				756FF64520BAB52C00FF890B /* entry */,
-				75D3A3AE21BAE53F00255FC3 /* DatabaseFileListCell.swift */,
+				75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */,
 				75EA64172098FC0500DDB941 /* ChooseDatabaseVC.swift */,
 				751E0D152309AF540088BB10 /* ChooseDatabaseVC.storyboard */,
 				754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */,
@@ -1549,6 +1572,7 @@
 				754D7C08238C2135005652E1 /* KeyFileTextField.swift */,
 				757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */,
 				757ADC4E23A5180600D708D2 /* DismissablePopover.swift */,
+				75BFB13E2481553D0017B980 /* DynamicFileList.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1982,10 +2006,11 @@
 				75A5312423C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
 				75CBAB9F21C1671F00B8AFE2 /* MainCoordinator.swift in Sources */,
+				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
-				75D3A3B121BAE66F00255FC3 /* DatabaseFileListCell.swift in Sources */,
+				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
 				7523F71521C94DD90025C706 /* DiagnosticsViewerVC.swift in Sources */,
 				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */,
@@ -2007,9 +2032,11 @@
 				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				759894BD24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
+				75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */,
 				750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */,
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
+				7537FEBF249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				753507A123783729003B65C9 /* HapticFeedback.swift in Sources */,
 				75779865223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
@@ -2019,6 +2046,7 @@
 				7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */,
 				753376F223CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				750CFC0721BAD98B00E62B09 /* LString.swift in Sources */,
+				75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75151D3423268AB300F3C411 /* UILabel+strikethrough.swift in Sources */,
 				757ADC5123A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75A2677E22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
@@ -2053,10 +2081,13 @@
 				757ADC5023A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */,
 				7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */,
+				759BC62C2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
+				75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */,
 				75514A3420DF5B6200202340 /* EditEntryFieldsCells.swift in Sources */,
+				75BFB13F2481553D0017B980 /* DynamicFileList.swift in Sources */,
 				759BCEB02144E6E8002FC18B /* RootSplitVC.swift in Sources */,
 				7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */,
 				7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */,
@@ -2092,7 +2123,7 @@
 				756AE9D320CF8B5E00995846 /* ChooseIconVC.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
 				7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */,
-				75D3A3AF21BAE53F00255FC3 /* DatabaseFileListCell.swift in Sources */,
+				75D3A3AF21BAE53F00255FC3 /* FileListCell.swift in Sources */,
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
 				7546FBC320BFC03700C5D834 /* RootNavigationVC.swift in Sources */,
 				75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
@@ -2100,6 +2131,7 @@
 				75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				75C94C5F20B4BAB0004FA29D /* ViewEntryFilesVC.swift in Sources */,
 				7542D2422129640F00C8A926 /* String+extensions.swift in Sources */,
+				7537FEBE249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */,
 				75C11F1E22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
 				7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */,
@@ -2166,10 +2198,13 @@
 				757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75B38C00233E5B7C006BDEFC /* UIViewController+storyboard.swift in Sources */,
 				75B38C01233E5B7C006BDEFC /* FileInfoVC.swift in Sources */,
+				759BC62E2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
+				75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */,
 				75B38C05233E5B7C006BDEFC /* EditEntryFieldsCells.swift in Sources */,
+				75BFB1412481553D0017B980 /* DynamicFileList.swift in Sources */,
 				75B38C06233E5B7C006BDEFC /* RootSplitVC.swift in Sources */,
 				75B38C07233E5B7C006BDEFC /* ChangeMasterKeyVC.swift in Sources */,
 				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
@@ -2205,7 +2240,7 @@
 				75B38C21233E5B7C006BDEFC /* ChooseIconVC.swift in Sources */,
 				75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */,
 				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
-				75B38C25233E5B7C006BDEFC /* DatabaseFileListCell.swift in Sources */,
+				75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */,
 				75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */,
 				75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */,
 				75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
@@ -2213,6 +2248,7 @@
 				75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */,
 				75B38C2A233E5B7C006BDEFC /* ViewEntryFilesVC.swift in Sources */,
 				75B38C2B233E5B7C006BDEFC /* String+extensions.swift in Sources */,
+				7537FEC0249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				75B38C2C233E5B7C006BDEFC /* ProgressOverlay.swift in Sources */,
 				75B38C2D233E5B7C006BDEFC /* LAContext+biometrics.swift in Sources */,
 				75B38C2E233E5B7C006BDEFC /* ValidatingTextView.swift in Sources */,
@@ -2270,10 +2306,11 @@
 				75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
 				75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */,
+				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
-				75D7DF86233E5E310029AD87 /* DatabaseFileListCell.swift in Sources */,
+				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
 				75D7DF87233E5E310029AD87 /* DiagnosticsViewerVC.swift in Sources */,
 				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
 				75D7DF89233E5E310029AD87 /* EntryFinderVC.swift in Sources */,
@@ -2295,9 +2332,11 @@
 				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				759894BF24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
+				75BFB1422481553D0017B980 /* DynamicFileList.swift in Sources */,
 				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
 				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,
 				75D7DF9A233E5E310029AD87 /* UIView+extension.swift in Sources */,
+				7537FEC1249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				753507A323783729003B65C9 /* HapticFeedback.swift in Sources */,
 				75D7DF9B233E5E310029AD87 /* ProgressViewHost.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
@@ -2307,6 +2346,7 @@
 				75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */,
 				753376F423CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				75D7DFA2233E5E310029AD87 /* LString.swift in Sources */,
+				75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75D7DFA3233E5E310029AD87 /* UILabel+strikethrough.swift in Sources */,
 				757ADC5323A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */,
@@ -3181,12 +3221,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -3205,12 +3245,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.KeePassium-AutoFill";
@@ -3350,7 +3390,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3359,7 +3399,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3377,7 +3417,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3386,7 +3426,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3404,7 +3444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3413,7 +3453,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3431,7 +3471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3440,7 +3480,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3457,12 +3497,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -3481,12 +3521,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.pro.KeePassium-AutoFill";

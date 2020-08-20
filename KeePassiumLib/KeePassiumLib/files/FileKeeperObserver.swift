@@ -20,7 +20,7 @@ public extension FileKeeperObserver {
     func fileKeeperHasPendingOperation() {}
 }
 
-public class FileKeeperNotifications {
+public class FileKeeperNotifications: Synchronizable {
     private weak var observer: FileKeeperObserver?
     
     public init(observer: FileKeeperObserver) {
@@ -60,7 +60,9 @@ public class FileKeeperNotifications {
             let fileType = userInfo[FileKeeperNotifier.UserInfoKeys.fileTypeKey] as? FileType else {
                 fatalError("FileKeeper notification: something is missing")
         }
-        observer?.fileKeeper(didAddFile: urlRef, fileType: fileType)
+        dispatchMain { [self] in
+            self.observer?.fileKeeper(didAddFile: urlRef, fileType: fileType)
+        }
     }
     
     @objc private func didRemoveFile(_ notification: Notification) {
@@ -69,12 +71,15 @@ public class FileKeeperNotifications {
             let fileType = userInfo[FileKeeperNotifier.UserInfoKeys.fileTypeKey] as? FileType else {
                 fatalError("FileKeeper notification: something is missing")
         }
-        
-        observer?.fileKeeper(didRemoveFile: urlRef, fileType: fileType)
+        dispatchMain { [self] in
+            self.observer?.fileKeeper(didRemoveFile: urlRef, fileType: fileType)
+        }
     }
     
     @objc private func gotPendingOperation(_ notification: Notification) {
-        observer?.fileKeeperHasPendingOperation()
+        dispatchMain {
+            self.observer?.fileKeeperHasPendingOperation()
+        }
     }
 }
 
