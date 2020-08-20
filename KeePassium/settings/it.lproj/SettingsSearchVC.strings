@@ -1,21 +1,18 @@
+/* Class = "UILabel"; text = "Search in Field Names"; ObjectID = "cCm-E4-L3m"; Note = "An switch in settings: whether to include entry field names in search procedure."; */
+"cCm-E4-L3m.text" = "Search in Field Names";
 
-/* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "DJr-hC-DMT"; */
+/* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "DJr-hC-DMT"; Note = "A section in search-related settings: what happens when the app is just started or database is just opened."; */
 "DJr-hC-DMT.footerTitle" = "After opening a database, automatically show the search field.";
 
-/* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "DJr-hC-DMT"; */
-"DJr-hC-DMT.headerTitle" = "Start";
-
-/* Class = "UITableViewSection"; headerTitle = "Search Scope"; ObjectID = "Io8-uP-3lF"; Note = "Section title in settings: which fields to include in search."; */
+/* Class = "UITableViewSection"; headerTitle = "Search Scope"; ObjectID = "Io8-uP-3lF"; Note = "A section in search-related settings: which fields to include in search."; */
 "Io8-uP-3lF.headerTitle" = "Search Scope";
 
 /* Class = "UILabel"; text = "Search in Protected Values"; ObjectID = "LrQ-5g-wj0"; Note = "An switch in settings: whether to include protected field values in search procedure."; */
 "LrQ-5g-wj0.text" = "Search in Protected Values";
 
+/* Class = "UILabel"; text = "Start with Search"; ObjectID = "q0v-f7-D4Y"; */
+"q0v-f7-D4Y.text" = "Start with Search";
+
 /* Class = "UITableViewController"; title = "Search"; ObjectID = "RZt-EW-TGN"; Note = "Section title in settings"; */
 "RZt-EW-TGN.title" = "Search";
 
-/* Class = "UILabel"; text = "Search in Field Names"; ObjectID = "cCm-E4-L3m"; Note = "An switch in settings: whether to include entry field names in search procedure."; */
-"cCm-E4-L3m.text" = "Search in Field Names";
-
-/* Class = "UILabel"; text = "Start with Search"; ObjectID = "q0v-f7-D4Y"; */
-"q0v-f7-D4Y.text" = "Start with Search";

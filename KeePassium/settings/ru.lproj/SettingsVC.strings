@@ -44,7 +44,7 @@
 "HYe-lP-dCp.text" = "Написать отзыв в App Store";
 
 /* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
-"oxG-N8-1ld.text" = "Купить полную версию";
+"oxG-N8-1ld.text" = "Включить Премиум";
 
 /* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
 "PpA-oZ-kr2.text" = "Диагностика";

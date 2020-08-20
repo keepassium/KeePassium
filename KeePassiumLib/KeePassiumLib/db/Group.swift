@@ -27,6 +27,10 @@ public class Group: DatabaseItem, Eraseable {
     }
     public var isDeleted: Bool
     
+    public var isIncludeEntriesInSearch: Bool {
+        return true 
+    }
+    
     private var isChildrenModified: Bool
     public var groups = [Group]()
     public var entries = [Entry]()
@@ -230,6 +234,9 @@ public class Group: DatabaseItem, Eraseable {
             }
         }
         
+        guard isIncludeEntriesInSearch else {
+            return
+        }
         for entry in entries {
             if entry.matches(query: query) {
                 result.append(entry)

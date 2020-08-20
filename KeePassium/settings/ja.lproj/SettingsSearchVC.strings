@@ -2,7 +2,7 @@
 "cCm-E4-L3m.text" = "フィールド名で検索";
 
 /* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "DJr-hC-DMT"; Note = "A section in search-related settings: what happens when the app is just started or database is just opened."; */
-"DJr-hC-DMT.footerTitle" = "データベースを開いた後、検索欄を自動的に表示します。";
+"DJr-hC-DMT.footerTitle" = "データベースを開くと自動的に検索欄を表示します。";
 
 /* Class = "UITableViewSection"; headerTitle = "Search Scope"; ObjectID = "Io8-uP-3lF"; Note = "A section in search-related settings: which fields to include in search."; */
 "Io8-uP-3lF.headerTitle" = "検索範囲";

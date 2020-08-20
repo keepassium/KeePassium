@@ -75,16 +75,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Diag.info("Opened with URL: \(inputURL.redacted) [inPlace: \(isOpenInPlace)]")
         
-        if inputURL.scheme != AppGroup.appURLScheme {
-            FileKeeper.shared.prepareToAddFile(
-                url: inputURL,
-                mode: isOpenInPlace ? .openInPlace : .import)
+        DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: true) {
+            (fileAccessError) in
+            if inputURL.scheme != AppGroup.appURLScheme {
+                FileKeeper.shared.prepareToAddFile(
+                    url: inputURL,
+                    mode: isOpenInPlace ? .openInPlace : .import)
+            }
         }
         
-        DatabaseManager.shared.closeDatabase(
-            clearStoredKey: false,
-            ignoreErrors: true,
-            completion: nil)
         return true
     }
 }

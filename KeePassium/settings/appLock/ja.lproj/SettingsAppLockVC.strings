@@ -23,7 +23,7 @@
 "IS1-Lb-MFy.text" = "アプリをロック";
 
 /* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
-"m50-fl-4tu.footerTitle" = "指定した時間が経過するとアプリを自動的にロックします。";
+"m50-fl-4tu.footerTitle" = "指定時間後に自動的にアプリをロックします。";
 
 /* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
 "U5m-je-MhO.title" = "アプリの保護";

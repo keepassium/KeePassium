@@ -23,7 +23,6 @@ public enum InAppProduct: String {
     case forever2 = "com.keepassium.ios.iap.forever.2"
     case montlySubscription = "com.keepassium.ios.iap.subscription.1month"
     case yearlySubscription = "com.keepassium.ios.iap.subscription.1year"
-    case yearlyBusinessSubscription = "com.keepassium.ios.iap.subscription.1year.business"
     
     public var period: Period {
         return InAppProduct.period(productIdentifier: self.rawValue)
@@ -36,25 +35,11 @@ public enum InAppProduct: String {
              .betaForever:
             return false
         case .montlySubscription,
-             .yearlySubscription,
-             .yearlyBusinessSubscription:
+             .yearlySubscription:
             return true
         }
     }
     
-    public var hasPrioritySupport: Bool {
-        switch self {
-        case .yearlyBusinessSubscription:
-            return true
-        case .forever,
-             .forever2,
-             .betaForever,
-             .montlySubscription,
-             .yearlySubscription:
-            return false
-        }
-    }
-
     public static func period(productIdentifier: String) -> Period {
         if productIdentifier.contains(".forever") {
             return .oneTime
@@ -276,8 +261,7 @@ public class PremiumManager: NSObject {
     private let purchaseableProductIDs = Set<String>([
         InAppProduct.forever2.rawValue,
         InAppProduct.montlySubscription.rawValue,
-        InAppProduct.yearlySubscription.rawValue,
-        InAppProduct.yearlyBusinessSubscription.rawValue])
+        InAppProduct.yearlySubscription.rawValue])
     
     private var productsRequest: SKProductsRequest?
 

@@ -36,16 +36,11 @@ extension NewsItem {
 class NewsCenter {
     public static let shared = NewsCenter()
     
-    let proVersionReleaseNews = _201910_ProVersionReleaseNews()
-    
     public func getTopItem() -> NewsItem? {
         if Settings.current.isTestEnvironment {
         } else {
         }
         
-        if proVersionReleaseNews.isCurrent && !proVersionReleaseNews.isHidden {
-            return proVersionReleaseNews
-        }
         return nil
     }
 }

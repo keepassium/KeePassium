@@ -1,5 +1,27 @@
 #CHANGELOG
 
+## [1.14.65] - 2020-07-14
+
+### Added
+
+- New "Clear master keys on database timeout" switch to close-but-not-lock databases in multi-device scenarios [thanks, Niklas]
+- New UI for premium upgrade
+
+### Changed
+
+- Increased file timeout from 5 to 15 seconds [thanks, everyone]
+- More human-friendly error messages when cloud provider does not respond
+- Updated Japanese and Russian translation [thanks, miyar520]
+- Minor UI improvements throughout
+
+### Fixed
+
+- Crash on cold launch with an argument [thanks, Helmut]
+- Jumpy pull-to-refresh animation [thanks, Sebastian]
+- Respect the "Search enabled" flag of KP2 groups [thanks, David]
+- Disabled search and auto-type in newly created Recycle Bin
+
+
 ## [1.14.64] - 2020-06-28
 
 ### Added

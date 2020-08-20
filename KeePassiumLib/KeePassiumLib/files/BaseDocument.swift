@@ -17,11 +17,20 @@ public class BaseDocument: UIDocument, Synchronizable {
     public internal(set) var error: FileAccessError?
     public var errorMessage: String? { error?.localizedDescription }
     public var hasError: Bool { return error != nil }
+    public internal(set) var fileProvider: FileProvider?
     
     private let backgroundQueue = DispatchQueue(
         label: "com.keepassium.Document",
         qos: .default,
         attributes: [.concurrent])
+    
+    public convenience init(fileURL url: URL, fileProvider: FileProvider?) {
+        self.init(fileURL: url)
+        self.fileProvider = fileProvider
+    }
+    private override init(fileURL url: URL) {
+        super.init(fileURL: url)
+    }
     
     public func open(_ callback: @escaping OpenCallback) {
         self.open(withTimeout: BaseDocument.timeout, callback)
@@ -50,8 +59,8 @@ public class BaseDocument: UIDocument, Synchronizable {
                 
             }, onSuccess: {
             }, onTimeout: {
-                self.error = .timeout
-                callback(.failure(.timeout))
+                self.error = .timeout(fileProvider: self.fileProvider)
+                callback(.failure(.timeout(fileProvider: self.fileProvider)))
             }
         )
     }
@@ -112,7 +121,7 @@ public class BaseDocument: UIDocument, Synchronizable {
     }
     
     override public func handleError(_ error: Error, userInteractionPermitted: Bool) {
-        self.error = .accessError(error)
+        self.error = FileAccessError.make(from: error, fileProvider: fileProvider)
         super.handleError(error, userInteractionPermitted: userInteractionPermitted)
     }
 }

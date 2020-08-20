@@ -197,8 +197,8 @@ public enum LString {
         comment: "Message to confirm deletion of a key file."
     )
     public static let confirmKeyFileRemoval = NSLocalizedString(
-        "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will removain intact an you can add it again later.",
-        value: "Remove key file from the list?\n The file will removain intact an you can add it again later.",
+        "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later.",
+        value: "Remove key file from the list?\n The file will remain intact and you can add it again later.",
         comment: "Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.)"
     )
     public static let confirmDatabaseDeletion = NSLocalizedString(

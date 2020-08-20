@@ -73,11 +73,14 @@
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Fertig";
 
-/* Progress bar status */
-"[Database/Progress] Loading database file..." = "Datenbank wird geladen...";
-
 /* Progress status */
 "[Database/Progress] Loading key file..." = "Schlüsseldatei wird geladen...";
+
+/* Database loading status: fetching the database file from disk/cloud */
+"[Database/Progress/downloading]" = "Downloading database file...";
+
+/* Database saving status: making a local backup copy of the database */
+"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
 
 /* Progress status */
 "[Database/Progress/resolving]" = "Kontaktiere den Speicheranbieter...";
@@ -241,8 +244,20 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Ungültiges Passwort oder Schlüsseldatei";
 
-/* A very generic error message */
-"[FileDocument] Unexpected file error, please contact us." = "Unerwarteter Dateifehler, bitte kontaktieren Sie uns.";
+/* Error message shown when there's internal inconsistency in KeePassium. */
+"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
+"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+
+/* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
+"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+
+/* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Fehler beim Löschen der Datei. Grund: %@";
@@ -255,6 +270,72 @@
 
 /* Error message: tried to import URL which does not point to a file */
 "[FileKeeper] Not a file URL" = "Keine Datei-URL";
+
+/* Localized name of the storage service: Amerigo (https://www.amerigo-app.com) */
+"[FileProvider/Amerigo/name]" = "Amerigo";
+
+/* Localized name of the storage service: Box (https://box.com) */
+"[FileProvider/Box/name]" = "Box";
+
+/* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
+"[FileProvider/Boxcryptor/name]" = "Boxcryptor";
+
+/* Localized name of the storage service: Dropbox (https://dropbox.com) */
+"[FileProvider/Dropbox/name]" = "Dropbox";
+
+/* Localized name of the storage service: FE File Explorer (https://apps.apple.com/app/fe-file-explorer-file-manager/id510282524) */
+"[FileProvider/FE File Explorer/name]" = "FE File Explorer";
+
+/* Localized name of the storage service: Google Drive (https://drive.google.com) */
+"[FileProvider/Google Drive/name]" = "Google Drive";
+
+/* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
+"[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: Nextcloud (https://nextcloud.com) */
+"[FileProvider/Nextcloud/name]" = "Nextcloud";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPad/name]" = "Auf meinem iPad";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPhone/name]" = "Auf meinem iPhone";
+
+/* Localized name of the storage service: OneDrive (https://onedrive.com) */
+"[FileProvider/OneDrive/name]" = "OneDrive";
+
+/* Localized name of the storage service: ownCloud (https://owncloud.com) */
+"[FileProvider/ownCloud/name]" = "ownCloud";
+
+/* Localized name of the storage service: pCloud (https://pcloud.com) */
+"[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
+"[FileProvider/Readdle Documents/name]" = "Documents von Readdle";
+
+/* Localized name of the storage service: Resilio Sync (https://https://apps.apple.com/us/app/id1126282325) */
+"[FileProvider/Resilio Sync/name]" = "Resilio Sync";
+
+/* Localized name of the storage service: SMB server (network share) via native iOS integration. */
+"[FileProvider/SMB/name]" = "SMB server";
+
+/* Localized name of the storage service: Sync.com (https://sync.com) */
+"[FileProvider/sync.com/name]" = "Sync.com";
+
+/* Localized name of the storage service: Synology Drive (https://apps.apple.com/us/app/synology-drive/id1267275421) */
+"[FileProvider/Synology Drive/name]" = "Synology Drive";
+
+/* Localized name of the storage service: Synology DS file (https://apps.apple.com/us/app/ds-file/id416751772) */
+"[FileProvider/Synology DS file/name]" = "Synology DS file";
+
+/* Localized name of the storage service: Tresorit (https://tresorit.com) */
+"[FileProvider/Tresorit/name]" = "Tresorit";
+
+/* Localized name of the storage service: local USB drive (native iOS integration) */
+"[FileProvider/USB drive/name]" = "USB drive";
+
+/* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
+"[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
 "[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Erstellungsdatum (älteste zuerst)";

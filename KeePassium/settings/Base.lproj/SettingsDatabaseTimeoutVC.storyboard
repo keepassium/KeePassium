@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="26a-m8-zQP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="26a-m8-zQP">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,35 +17,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Qm3-L8-H6o" detailTextLabel="upe-QV-YH8" style="IBUITableViewCellStyleSubtitle" id="CCj-pQ-Y6C">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="IeB-Q0-dTr" customClass="SettingsDatabaseTimeoutCell" customModule="KeePassium" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="57.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CCj-pQ-Y6C" id="TXz-gg-x5n">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IeB-Q0-dTr" id="Y2y-oC-tPV">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Title}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Qm3-L8-H6o">
-                                            <rect key="frame" x="16" y="9" width="45.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" name="PrimaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Subtitle}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="upe-QV-YH8">
-                                            <rect key="frame" x="16" y="32.5" width="53" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <color key="textColor" name="AuxiliaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="stg-WQ-EVu">
+                                            <rect key="frame" x="16" y="11.5" width="53" height="35"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Title}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOf-Bp-iIT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="53" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Subtitle}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Beo-Vy-wZ8">
+                                                    <rect key="frame" x="0.0" y="20.5" width="53" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="premium-feature-badge" translatesAutoresizingMaskIntoConstraints="NO" id="cab-pJ-MC0">
+                                            <rect key="frame" x="330" y="14.5" width="29" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="29" id="AUp-X0-cXA"/>
+                                                <constraint firstAttribute="width" secondItem="cab-pJ-MC0" secondAttribute="height" multiplier="1:1" id="Oej-ug-ei5"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="stg-WQ-EVu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Y2y-oC-tPV" secondAttribute="topMargin" id="1LO-VB-hJu"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="stg-WQ-EVu" secondAttribute="bottom" id="37c-IZ-YmM"/>
+                                        <constraint firstItem="stg-WQ-EVu" firstAttribute="leading" secondItem="Y2y-oC-tPV" secondAttribute="leadingMargin" id="SlT-aI-XZb"/>
+                                        <constraint firstItem="cab-pJ-MC0" firstAttribute="centerY" secondItem="Y2y-oC-tPV" secondAttribute="centerY" id="W2V-Fn-NHg"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="cab-pJ-MC0" secondAttribute="trailing" id="iPf-cD-zd9"/>
+                                        <constraint firstItem="cab-pJ-MC0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="stg-WQ-EVu" secondAttribute="trailing" constant="8" id="jdx-CQ-CEE"/>
+                                        <constraint firstItem="stg-WQ-EVu" firstAttribute="centerY" secondItem="Y2y-oC-tPV" secondAttribute="centerY" priority="250" id="mAu-GS-tgF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="detailLabel" destination="Beo-Vy-wZ8" id="7zU-VS-5oO"/>
+                                    <outlet property="premiumBadge" destination="cab-pJ-MC0" id="eJ6-OV-4WN"/>
+                                    <outlet property="textLabel" destination="DOf-Bp-iIT" id="XiD-pD-czc"/>
+                                    <outlet property="titleLabel" destination="DOf-Bp-iIT" id="g44-ip-f87"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -59,10 +84,15 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68b-Jf-t2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1592" y="806"/>
+            <point key="canvasLocation" x="1591.2" y="805.54722638680664"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="ActionTint"/>
     <resources>
+        <image name="premium-feature-badge" width="25" height="25"/>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="AuxiliaryText">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -70,5 +100,4 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
-    <color key="tintColor" name="ActionTint"/>
 </document>

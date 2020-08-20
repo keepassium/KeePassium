@@ -414,7 +414,10 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     
     func canAutoUnlock() -> Bool {
-        guard isAutoUnlockEnabled && Settings.current.isAutoUnlockStartupDatabase else {
+        guard isAutoUnlockEnabled &&
+            Settings.current.isAutoUnlockStartupDatabase &&
+            !FileKeeper.shared.hasPendingFileOperations else
+        {
             return false
         }
         guard let splitVC = splitViewController, splitVC.isCollapsed else { return isJustLaunched }

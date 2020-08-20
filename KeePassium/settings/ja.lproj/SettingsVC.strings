@@ -5,7 +5,7 @@
 "756-sL-G2t.text" = "前回使ったデータベースを自動的に開く";
 
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
-"A5N-B3-t3t.headerTitle" = "Premium";
+"A5N-B3-t3t.headerTitle" = "プレミアム";
 
 /* Class = "UILabel"; text = "App Protection"; ObjectID = "abS-AH-iFO"; Note = "Settings section: protection of the app from unauthorized access"; */
 "abS-AH-iFO.text" = "アプリの保護";
@@ -38,7 +38,7 @@
 "HjD-9G-X8p.headerTitle" = "バックアップ";
 
 /* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
-"hui-xG-chj.headerTitle" = "アクセスコントロール";
+"hui-xG-chj.headerTitle" = "アクセス管理";
 
 /* Class = "UILabel"; text = "Rate KeePassium on the App Store"; ObjectID = "HYe-lP-dCp"; Note = "Subtitle for `Review KeePassium`"; */
 "HYe-lP-dCp.text" = "App StoreでKeePassiumを評価する";

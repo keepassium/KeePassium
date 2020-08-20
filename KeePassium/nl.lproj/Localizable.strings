@@ -301,11 +301,8 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";
 
-/* Title of an announcement about the Pro version */
-"[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
-
-/* Message shown when opening an announcement in AutoFill */
-"[News/AutoFill/stubText] Please open the main app for the full announcement." = "Open de app om de volledige aankondiging te lezen.";
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Bekijk bijlagen direct in KeePassium en laat geen sporen achter in andere apps. (werkt met afbeeldingen, documenten, archieven en nog veel meer)";
@@ -326,22 +323,61 @@
 "[Premium/Benefits/HardwareKeys/title]" = "Use hardware keys";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/Maintenance/details]" = "Zorg ervoor dat KeePassium verbetert, onderhouden en reclamevrij blijft.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/Maintenance/title]" = "Maak goed gebruik van de app";
-
-/* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Voeg meerdere databanken toe en schakel snel over.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/MultiDB/title]" = "Synchroniseer met het team";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/Support/details]" = "Gemeenschapsondersteuning kent geen verplichtingen. Met premium krijg je je antwoorden en oplossingen rechtstreeks aangeleverd door de ontwikkelaar.";
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "What you are missing";
 
-/* Title of a premium feature */
-"[Premium/Benefits/Support/title]" = "Praat met een team dat écht om je geeft";
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "What you get";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "Continue Testing";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "Try it free";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "Upgrade Now";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "One year of email support";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "All premium features";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "Customer support: Online forums";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "Current premium features";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "Customer support: Email";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium reminders";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "Future premium features";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Rent-to-own license (Perpetual fallback license)";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates and bug fixes";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "Free";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "Free";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "Popular";
 
 /* Status: special premium for beta-testing environment is active */
 "[Premium/status] Beta testing" = "Bètatesten";
@@ -355,6 +391,12 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "Permanent geldig";
 
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\nDe betaling wordt in rekening gebracht op je Apple ID-account bij de bevestiging van de aankoop. \n\nHet abonnement wordt automatisch verlengd, tenzij het ten minste 24 uur voor het einde van de huidige periode wordt geannuleerd. Je account wordt binnen 24 uur voor het einde van de huidige periode belast. \n\nJe kunt je abonnementen beheren en annuleren door na aankoop naar je accountinstellingen te gaan in de App Store.\n";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ free, then %2$@";
+
 /* Error message: AppStore returned no available in-app purchase options */
 "[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, er zijn geen upgrades beschikbaar. Dit mag niet gebeuren; neem contact op met ons ondersteuningsteam.";
 
@@ -364,9 +406,6 @@
 /* Message shown when in-app purchase is deferred until parental approval. */
 "[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent" = "Bedankt! Je kunt KeePassium gebruiken terwijl er wordt gewacht op goedkeuring van een ouder.";
 
-/* Description of a premium option. Lowercase. For example 'Business Premium / with priority support'. */
-"[Premium/Upgrade/description] with priority support" = "ondersteuning met hoge prioriteit";
-
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@/maand";
 
@@ -375,6 +414,9 @@
 
 /* Product price for once-and-forever premium. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ once" = "eenmalig %@";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / month";
 
 /* Status message when downloading available in-app purchases */
 "[Premium/Upgrade/Progress] Contacting AppStore..." = "Bezig met openen van App Store...";
@@ -396,6 +438,12 @@
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "App is nuttig: %1$@/maand - dat is ongeveer %2$@/jaar.";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "Premium Feature";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
 "[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";

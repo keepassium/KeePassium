@@ -19,8 +19,11 @@
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
 "g9a-rJ-4WJ.footerTitle" = "ユニバーサルクリップボードを使って、コピー＆ペーストをAppleデバイス間で行う。";
 
+/* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
+"gTm-F6-EDQ.text" = "Clear Master Keys on Timeout";
+
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.footerTitle" = "コピーの後、クリップボード (コピー内容) の消去を一定時間後に自動的に行います。";
+"hnI-Q8-Ixm.footerTitle" = "コピーの後、クリップボード (コピー内容) を指定時間後に自動的に消去します。";
 
 /* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.headerTitle" = "クリップボード";
@@ -32,7 +35,7 @@
 "IZZ-aM-g2i.title" = "データの保護";
 
 /* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
-"JHl-o7-xHI.text" = "キーファイルを保存する";
+"JHl-o7-xHI.text" = "キーファイルを記憶する";
 
 /* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
 "Mxu-GP-FmN.footerTitle" = "最後に使用したキーファイルをデータベースごとに覚えておいて、自動的に選択します。関連付けをクリアしてもファイルには影響ありません。";

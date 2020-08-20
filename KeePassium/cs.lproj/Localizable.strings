@@ -301,11 +301,8 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Opravdu chcete odstranit soubor s klíčem?\nUjistěte se, že jej máte zálohovaný.";
 
-/* Title of an announcement about the Pro version */
-"[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
-
-/* Message shown when opening an announcement in AutoFill */
-"[News/AutoFill/stubText] Please open the main app for the full announcement." = "Pro zhlédnutí celé zprávy prosím otevřete hlavní aplikaci.";
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Na vaše přílohy můžete nahlížet přímo zde v aplikaci a nezanechávat tak stopy v jiných aplikacích. (Náhled podporuje obrázky, dokumenty, archivované soubory a další.)";
@@ -326,22 +323,61 @@
 "[Premium/Benefits/HardwareKeys/title]" = "Use hardware keys";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/Maintenance/details]" = "Pomozte udržet KeePassium vylepšovaný, udržovaný a bez reklam.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/Maintenance/title]" = "Udržujte stálý lesk";
-
-/* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Přidejte více databází a přepínejte se mezi nimi rychleji.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/MultiDB/title]" = "Synchronizujte s týmem";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/Support/details]" = "Komunitní podpora není závazná. S prémiem získáte odpovědi a řešení přímo od vývojáře.";
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "What you are missing";
 
-/* Title of a premium feature */
-"[Premium/Benefits/Support/title]" = "Promluvte si s podporou";
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "What you get";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "Continue Testing";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "Try it free";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "Upgrade Now";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "One year of email support";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "All premium features";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "Customer support: Online forums";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "Current premium features";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "Customer support: Email";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium reminders";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "Future premium features";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Rent-to-own license (Perpetual fallback license)";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates and bug fixes";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "Free";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "Free";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "Popular";
 
 /* Status: special premium for beta-testing environment is active */
 "[Premium/status] Beta testing" = "Beta testování";
@@ -355,6 +391,12 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "Platný navždy";
 
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\nPlatba bude účtována na váš Apple účet při potvrzení koupě.\n\nPředplatné se automaticky obnoví, pokud nebude zrušeno nejméně 24 hodin před koncem aktuálního období. Platba za obnovení předplatného bude stržena až 24 hodin před vypršením aktuálního období.\n\nSvé předplatné můžete spravovat v nastavení účtu v App Store.\n";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ free, then %2$@";
+
 /* Error message: AppStore returned no available in-app purchase options */
 "[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, není k dispozici žádný upgrade. To by se nemělo stát, prosím kontaktujte podporu.";
 
@@ -364,9 +406,6 @@
 /* Message shown when in-app purchase is deferred until parental approval. */
 "[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent" = "Děkujeme! Můžete používat KeePassium, ale nákup musí schválit rodiče";
 
-/* Description of a premium option. Lowercase. For example 'Business Premium / with priority support'. */
-"[Premium/Upgrade/description] with priority support" = "s prioritní podporou";
-
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / měsíc";
 
@@ -375,6 +414,9 @@
 
 /* Product price for once-and-forever premium. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ once" = "%@ jednorázově";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / month";
 
 /* Status message when downloading available in-app purchases */
 "[Premium/Upgrade/Progress] Contacting AppStore..." = "Kontaktování AppStore...";
@@ -396,6 +438,12 @@
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplikace používána %1$@/měsíc, což je %2$@/ročně.";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "Premium Feature";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
 "[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";

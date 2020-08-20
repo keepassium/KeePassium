@@ -19,6 +19,9 @@
 /* Title of a message related to upgrading to the premium version */
 "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "升级高级版";
 
+/* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
+"[AutoFill/Search/callerID]" = "Caller ID: %@";
+
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
 
@@ -229,14 +232,17 @@
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "删除密钥文件?\n 请确保您有备份文件!";
 
-/* Title of an announcement about the Pro version */
-"[News/2019/10/ProVersionReleaseNews/title] KeePassium Pro" = "KeePassium Pro";
-
-/* Message shown when opening an announcement in AutoFill */
-"[News/AutoFill/stubText] Please open the main app for the full announcement." = "请打开主程序获得完整的公告。";
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "升级到高级版";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "Premium Feature";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
 "[PremiumFeature/HardwareKeys/description]" = "Strengthen your security with hardware keys (YubiKey) in the premium version.";

@@ -6,8 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-public enum FileProvider: RawRepresentable, Hashable {
-    public typealias RawValue = String
+public enum FileProvider: Hashable {
 
     private static let providerByID: [String: FileProvider] = [
         "com.apple.FileProvider.LocalStorage": .localStorage,
@@ -33,9 +32,8 @@ public enum FileProvider: RawRepresentable, Hashable {
         "com.apple.filesystems.UserFS.FileProvider": .usbDrive,
         "ru.yandex.disk.filesext": .yandexDisk
     ]
-    private static let idByProvider = Dictionary(
-        uniqueKeysWithValues: FileProvider.providerByID.map { ($1, $0) }
-    )
+    private static let idByProvider: [FileProvider: String] =
+            Dictionary(uniqueKeysWithValues: FileProvider.providerByID.map { ($1, $0) })
 
     case amerigo
     case amerigoFree
@@ -62,7 +60,9 @@ public enum FileProvider: RawRepresentable, Hashable {
     case localStorage
     case other(id: String)
     
-    public var rawValue: String {
+    public var rawValue: String { return id }
+    
+    public var id: String {
         switch self {
         case .other(let id):
             return id
@@ -70,8 +70,6 @@ public enum FileProvider: RawRepresentable, Hashable {
             return FileProvider.idByProvider[self]!
         }
     }
-    
-    public var id: String { return rawValue }
     
     public init(rawValue: String) {
         if let provider = FileProvider.providerByID[rawValue] {

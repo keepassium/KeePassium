@@ -35,11 +35,33 @@ public extension Settings {
         return isKeepKeyFileAssociations
     }
     
+    var premiumIsLockDatabasesOnTimeout: Bool {
+        let actualValue = Settings.current.isLockDatabasesOnTimeout
+        if PremiumManager.shared.isAvailable(feature: .canKeepMasterKeyOnDatabaseTimeout) {
+            return actualValue
+        } else {
+            return true
+        }
+    }
+    
     func isAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
         switch status {
         case .initialGracePeriod,
              .freeLightUse:
             return timeout <= Settings.lightUseDatabaseLockTimeout
+        case .freeHeavyUse:
+            return timeout <= Settings.heavyUseDatabaseLockTimeout && timeout != .never
+        case .subscribed,
+             .lapsed:
+            return true
+        }
+    }
+    
+    func isShownAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
+        switch status {
+        case .initialGracePeriod,
+             .freeLightUse:
+            return timeout <= Settings.lightUseDatabaseLockTimeout && timeout != .never
         case .freeHeavyUse:
             return timeout <= Settings.heavyUseDatabaseLockTimeout && timeout != .never
         case .subscribed,

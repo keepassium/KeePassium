@@ -22,6 +22,12 @@ extension UIColor {
     static var destructiveText: UIColor {
         return UIColor(named: "DestructiveText") ?? .white
     }
+    static var highlightTint: UIColor {
+        return UIColor(named: "HighlightTint") ?? UIColor.systemRed
+    }
+    static var highglightText: UIColor {
+        return UIColor(named: "HighlightText") ?? .white
+    }
     static var errorMessage: UIColor {
         return UIColor.systemRed
     }

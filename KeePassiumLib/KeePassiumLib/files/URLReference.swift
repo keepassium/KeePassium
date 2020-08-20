@@ -70,7 +70,7 @@ public class URLReference:
         }
     }
     
-    public static let defaultTimeout: TimeInterval = 5.0
+    public static let defaultTimeout: TimeInterval = 15.0
     
     public var visibleFileName: String { return url?.lastPathComponent ?? "?" }
     
@@ -215,6 +215,7 @@ public class URLReference:
         ]
         staticFileCoordinator.coordinateReading(
             at: url,
+            fileProvider: nil, 
             options: readingIntentOptions,
             timeout: URLReference.defaultTimeout)
         {
@@ -250,7 +251,8 @@ public class URLReference:
         } catch {
             if callbackOnError {
                 DispatchQueue.main.async {
-                    callback(.failure(.accessError(error)))
+                    let fileAccessError = FileAccessError.make(from: error, fileProvider: nil)
+                    callback(.failure(fileAccessError))
                 }
             }
             return false
@@ -284,16 +286,20 @@ public class URLReference:
                         callback(.success(url))
                     }
                 case .failure(let error):
-                    self.error = .accessError(error)
+                    let fileAccessError = FileAccessError.make(
+                        from: error,
+                        fileProvider: self.fileProvider
+                    )
+                    self.error = fileAccessError
                     self.dispatchMain {
-                        callback(.failure(.accessError(error)))
+                        callback(.failure(fileAccessError))
                     }
                 }
             },
             onTimeout: { [self] in
-                self.error = FileAccessError.timeout
+                self.error = FileAccessError.timeout(fileProvider: self.fileProvider)
                 self.dispatchMain {
-                    callback(.failure(FileAccessError.timeout))
+                    callback(.failure(FileAccessError.timeout(fileProvider: self.fileProvider)))
                 }
             }
         )
@@ -364,6 +370,7 @@ public class URLReference:
         ]
         fileCoordinator.coordinateReading(
             at: url,
+            fileProvider: fileProvider,
             options: readingIntentOptions,
             timeout: URLReference.defaultTimeout)
         {

@@ -19,6 +19,9 @@
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
 "g9a-rJ-4WJ.footerTitle" = "使用通用剪貼板在你的蘋果設備之間複製和貼上。";
 
+/* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
+"gTm-F6-EDQ.text" = "Clear Master Keys on Timeout";
+
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.footerTitle" = "當您複製任何東西, KeePassium 會在稍後自動的為您清除剪貼簿。";
 

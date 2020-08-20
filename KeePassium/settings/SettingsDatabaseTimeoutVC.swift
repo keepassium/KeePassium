@@ -9,9 +9,15 @@
 import UIKit
 import KeePassiumLib
 
-class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
-    private let cellID = "Cell"
+class SettingsDatabaseTimeoutCell: UITableViewCell {
+    static let storyboardID = "Cell"
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var premiumBadge: UIImageView!
+}
 
+class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
     private var premiumUpgradeHelper = PremiumUpgradeHelper()
     private var premiumStatus: PremiumManager.Status = .initialGracePeriod
     
@@ -60,11 +66,19 @@ class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        let cell = tableView
+            .dequeueReusableCell(
+                withIdentifier: SettingsDatabaseTimeoutCell.storyboardID,
+                for: indexPath)
+            as! SettingsDatabaseTimeoutCell
+            
         let timeout = Settings.DatabaseLockTimeout.allValues[indexPath.row]
-        cell.textLabel?.text = timeout.fullTitle
-        cell.detailTextLabel?.text = timeout.description
-        if timeout == Settings.current.premiumDatabaseLockTimeout {
+        cell.titleLabel?.text = timeout.fullTitle
+        cell.detailLabel?.text = timeout.description
+        let settings = Settings.current
+        let isAvailable = settings.isShownAvailable(timeout: timeout, for: premiumStatus)
+        cell.premiumBadge.isHidden = isAvailable
+        if timeout == settings.premiumDatabaseLockTimeout {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none

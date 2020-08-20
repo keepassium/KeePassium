@@ -426,6 +426,7 @@ public class FileKeeper {
             }
             importFile(
                 url: sourceURL,
+                fileProvider: nil, 
                 success: { (url) in
                     do {
                         let urlRef = try URLReference(
@@ -457,21 +458,25 @@ public class FileKeeper {
         success successHandler: ((URLReference) -> Void)?,
         error errorHandler: ((FileKeeperError) -> Void)?)
     {
-        importFile(url: sourceURL, success: { url in
-            do {
-                let urlRef = try URLReference(from: url, location: location)
-                if fileType == .database {
-                    Settings.current.startupDatabase = urlRef
+        importFile(
+            url: sourceURL,
+            fileProvider: FileProvider.localStorage,
+            success: { url in
+                do {
+                    let urlRef = try URLReference(from: url, location: location)
+                    if fileType == .database {
+                        Settings.current.startupDatabase = urlRef
+                    }
+                    FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
+                    Diag.info("Inbox file added successfully [fileType: \(fileType)]")
+                    successHandler?(urlRef)
+                } catch {
+                    Diag.error("Failed to import inbox file [type: \(fileType), message: \(error.localizedDescription)]")
+                    let importError = FileKeeperError.importError(reason: error.localizedDescription)
+                    errorHandler?(importError)
                 }
-                FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
-                Diag.info("Inbox file added successfully [fileType: \(fileType)]")
-                successHandler?(urlRef)
-            } catch {
-                Diag.error("Failed to import inbox file [type: \(fileType), message: \(error.localizedDescription)]")
-                let importError = FileKeeperError.importError(reason: error.localizedDescription)
-                errorHandler?(importError)
-            }
-        }, error: errorHandler)
+            },
+            error: errorHandler)
     }
     
     
@@ -529,6 +534,7 @@ public class FileKeeper {
     
     private func importFile(
         url sourceURL: URL,
+        fileProvider: FileProvider?,
         success successHandler: ((URL) -> Void)?,
         error errorHandler: ((FileKeeperError)->Void)?)
     {
@@ -543,7 +549,7 @@ public class FileKeeper {
         }
         
         Diag.debug("Will import a file")
-        let doc = BaseDocument(fileURL: sourceURL)
+        let doc = BaseDocument(fileURL: sourceURL, fileProvider: fileProvider)
         doc.open { [self] result in 
             switch result {
             case .success(let docData):

@@ -252,7 +252,7 @@ public class DatabaseManager {
         keyFileRef.resolveAsync { result in 
             switch result {
             case .success(let keyFileURL):
-                let keyDoc = BaseDocument(fileURL: keyFileURL)
+                let keyDoc = BaseDocument(fileURL: keyFileURL, fileProvider: keyFileRef.fileProvider)
                 keyDoc.open { result in
                     switch result {
                     case .success(let keyFileData):
@@ -284,7 +284,7 @@ public class DatabaseManager {
         guard let root2 = db2.root as? Group2 else { fatalError() }
         templateSetupHandler(root2)
 
-        self.databaseDocument = DatabaseDocument(fileURL: databaseURL)
+        self.databaseDocument = DatabaseDocument(fileURL: databaseURL, fileProvider: nil)
         self.databaseDocument!.database = db2
         DatabaseManager.createCompositeKey(
             keyHelper: db2.keyHelper,
@@ -628,7 +628,7 @@ fileprivate class DatabaseLoader: ProgressObserver {
         dbRef.resolveAsync { result in 
             switch result {
             case .success(let dbURL):
-                self.onDatabaseURLResolved(url: dbURL)
+                self.onDatabaseURLResolved(url: dbURL, fileProvider: self.dbRef.fileProvider)
             case .failure(let accessError):
                 self.onDatabaseURLResolveError(accessError)
             }
@@ -647,8 +647,8 @@ fileprivate class DatabaseLoader: ProgressObserver {
         endBackgroundTask()
     }
     
-    private func onDatabaseURLResolved(url: URL) {
-        let dbDoc = DatabaseDocument(fileURL: url)
+    private func onDatabaseURLResolved(url: URL, fileProvider: FileProvider?) {
+        let dbDoc = DatabaseDocument(fileURL: url, fileProvider: fileProvider)
         progress.status = LString.Progress.loadingDatabaseFile
         dbDoc.open { [weak self] (result) in
             guard let self = self else { return }
@@ -709,7 +709,10 @@ fileprivate class DatabaseLoader: ProgressObserver {
         keyFileRef.resolveAsync { result in 
             switch result {
             case .success(let keyFileURL):
-                self.onKeyFileURLResolved(url: keyFileURL, dbDoc: dbDoc)
+                self.onKeyFileURLResolved(
+                    url: keyFileURL,
+                    fileProvider: keyFileRef.fileProvider,
+                    dbDoc: dbDoc)
             case .failure(let accessError):
                 self.onKeyFileURLResolveError(accessError)
             }
@@ -728,8 +731,8 @@ fileprivate class DatabaseLoader: ProgressObserver {
         endBackgroundTask()
     }
 
-    private func onKeyFileURLResolved(url: URL, dbDoc: DatabaseDocument) {
-        let keyDoc = BaseDocument(fileURL: url)
+    private func onKeyFileURLResolved(url: URL, fileProvider: FileProvider?, dbDoc: DatabaseDocument) {
+        let keyDoc = BaseDocument(fileURL: url, fileProvider: fileProvider)
         keyDoc.open { [weak self] result in
             guard let self = self else { return }
             switch result {

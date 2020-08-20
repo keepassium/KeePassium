@@ -20,6 +20,7 @@ class FileCoordinator: NSFileCoordinator, Synchronizable {
     
     public func coordinateReading(
         at url: URL,
+        fileProvider: FileProvider?,
         options: NSFileCoordinator.ReadingOptions,
         timeout: TimeInterval,
         callback: @escaping ReadingCallback)
@@ -38,7 +39,7 @@ class FileCoordinator: NSFileCoordinator, Synchronizable {
                         return
                     }
                     if let error = error {
-                        callback(.accessError(error))
+                        callback(FileAccessError.make(from: error, fileProvider: fileProvider))
                     } else {
                         callback(nil)
                     }
@@ -46,7 +47,7 @@ class FileCoordinator: NSFileCoordinator, Synchronizable {
                 
             }, onSuccess: {
             }, onTimeout: {
-                callback(.timeout)
+                callback(.timeout(fileProvider: fileProvider))
             }
         )
     }

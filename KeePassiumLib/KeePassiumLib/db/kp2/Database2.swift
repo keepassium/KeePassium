@@ -638,6 +638,8 @@ public class Database2: Database {
             let backupGroup = meta.createRecycleBinGroup()
             root.add(group: backupGroup)
             backupGroup.isDeleted = true
+            backupGroup.isSearchingEnabled = false
+            backupGroup.isAutoTypeEnabled = false
             Diag.verbose("RecycleBin group created")
             return backupGroup
         }

@@ -19,6 +19,16 @@ public class Group2: Group {
     public var locationChangedTime: Date
     public var customData: CustomData2 
     
+    override public var isIncludeEntriesInSearch: Bool {
+        if let isSearchingEnabled = isSearchingEnabled {
+            return isSearchingEnabled
+        }
+        guard let parent2 = parent as? Group2 else {
+            return true
+        }
+        return parent2.isIncludeEntriesInSearch
+    }
+    
     override init(database: Database?) {
         isExpanded = true
         customIconUUID = UUID.ZERO

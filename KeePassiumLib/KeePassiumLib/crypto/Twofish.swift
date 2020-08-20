@@ -97,12 +97,15 @@ public final class Twofish {
             var block = Array<UInt8>(repeating: 0, count: Twofish.blockSize)
             for iBlock in 0..<nBlocks {
                 let blockStartPos = iBlock * Twofish.blockSize
-                Twofish_decrypt(&internalKey, &dataBytes + blockStartPos, &block)
-                for i in 0..<Twofish.blockSize {
-                    block[i] ^= iv[i]
+                dataBytes.withUnsafeMutableBufferPointer {
+                    (buffer: inout UnsafeMutableBufferPointer) in
+                    Twofish_decrypt(&internalKey, buffer.baseAddress! + blockStartPos, &block)
+                    for i in 0..<Twofish.blockSize {
+                        block[i] ^= iv[i]
+                    }
+                    memcpy(&iv, buffer.baseAddress! + blockStartPos, Twofish.blockSize)
+                    memcpy(buffer.baseAddress! + blockStartPos, &block, Twofish.blockSize)
                 }
-                memcpy(&iv, &dataBytes + blockStartPos, Twofish.blockSize)
-                memcpy(&dataBytes + blockStartPos, &block, Twofish.blockSize)
                 if (iBlock % 100 == 0) {
                     progress?.completedUnitCount += 1
                     if progress?.isCancelled ?? false { break }
