@@ -290,7 +290,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KbM-fP-ht6" userLabel="Footer Stack View">
                                                                     <rect key="frame" x="8" y="348.33333333333331" width="236" height="63.666666666666686"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6qT-UV-P49" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6qT-UV-P49" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="236" height="44"/>
                                                                             <color key="backgroundColor" name="ActionTint"/>
                                                                             <constraints>

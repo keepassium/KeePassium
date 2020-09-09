@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.15.71] - 2020-08-28
+
+### Fixed
+
+- Moved trial conditions text to the purchase button itself (requested by AppStore reviewer)
+
+
 ## [1.15.70] - 2020-08-27
 
 ### Added
