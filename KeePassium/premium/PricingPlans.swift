@@ -222,7 +222,6 @@ class RealPricingPlan: PricingPlan {
             assertionFailure("Need a subscription price")
             return
         }
-        callToAction = LString.premiumCallToActionStartTrial
         ctaSubtitle = String.localizedStringWithFormat(
             LString.trialConditionsTemplate, // "%@ free, then %@",
             localizedTrialDuration,

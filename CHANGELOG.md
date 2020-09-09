@@ -1,10 +1,17 @@
 #CHANGELOG
 
+## [1.15.72] - 2020-08-28
+
+### Fixed
+
+- Replaced "Try it free" with "Upgrade now" to address AppStore reviewer's comment
+
+
 ## [1.15.71] - 2020-08-28
 
 ### Fixed
 
-- Moved trial conditions text to the purchase button itself (requested by AppStore reviewer)
+- Moved trial conditions to the purchase button itself (to address AppStore reviewer's comment)
 
 
 ## [1.15.70] - 2020-08-27

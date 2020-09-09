@@ -56,10 +56,10 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXP-XU-bGL" userLabel="TableViewWrapper">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="252" height="340.33333333333331"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="252" height="334"/>
                                                                     <subviews>
                                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9iF-HK-hUc">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="252" height="340.33333333333331"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="252" height="334"/>
                                                                             <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <prototypes>
                                                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TitleCell" id="Vtp-v7-ygP" customClass="PricingPlanTitleCell" customModule="KeePassium" customModuleProvider="target">
@@ -281,17 +281,26 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEe-4O-2U3" userLabel="Bottom Gradient" customClass="GradientSeparatorView" customModule="KeePassium" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="324.33333333333331" width="252" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="318" width="252" height="16"/>
                                                                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="16" id="nCI-aM-Nju"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KbM-fP-ht6" userLabel="Footer Stack View">
-                                                                    <rect key="frame" x="8" y="348.33333333333331" width="236" height="63.666666666666686"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KbM-fP-ht6" userLabel="Footer Stack View">
+                                                                    <rect key="frame" x="8" y="342" width="236" height="70"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6qT-UV-P49" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="236" height="44"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Call for action footer}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wQ-G1-ZOk">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="236" height="18"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                            <attributedString key="userComments">
+                                                                                <fragment content="#bc-ignore!"/>
+                                                                            </attributedString>
+                                                                        </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6qT-UV-P49" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="26" width="236" height="44"/>
                                                                             <color key="backgroundColor" name="ActionTint"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="LHv-fe-CFs"/>
@@ -311,15 +320,6 @@
                                                                                 <action selector="didPressPurchaseButton:" destination="vX4-f0-IL0" eventType="touchUpInside" id="VJ9-J6-pHz"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Call for action footer}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wQ-G1-ZOk">
-                                                                            <rect key="frame" x="0.0" y="48" width="236" height="15.666666666666664"/>
-                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                                            <color key="textColor" name="AuxiliaryText"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                            <attributedString key="userComments">
-                                                                                <fragment content="#bc-ignore!"/>
-                                                                            </attributedString>
-                                                                        </label>
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>

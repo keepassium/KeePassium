@@ -96,53 +96,13 @@ class PricingPlanCollectionCell: UICollectionViewCell {
             purchaseButton.backgroundColor = .actionTint
             purchaseButton.tintColor = .actionText
         }
-        let title = makeButtonTitle(
-            title: pricingPlan.callToAction,
-            subtitle: pricingPlan.ctaSubtitle
-        )
-        purchaseButton.setAttributedTitle(title, for: .normal)
+        purchaseButton.setTitle(pricingPlan.callToAction, for: .normal)
         purchaseButton.isEnabled = isPurchaseEnabled
 
-        footerLabel.text = nil 
-        footerLabel.isHidden = true 
+        footerLabel.text = pricingPlan.ctaSubtitle
+        footerLabel.isHidden = (pricingPlan.ctaSubtitle?.isEmpty ?? true)
         tableView.dataSource = self
         tableView.reloadData()
-    }
-    
-    
-    func makeButtonTitle(title: String, subtitle: String?) -> NSAttributedString {
-        let buttonTitle = NSMutableAttributedString(string: "")
-        
-        let titleFont = UIFont.preferredFont(forTextStyle: .body)
-        
-        let titleParagraphStyle = NSMutableParagraphStyle()
-        titleParagraphStyle.paragraphSpacing = 0.0
-        titleParagraphStyle.alignment = .center
-        let attributedTitle = NSMutableAttributedString(
-            string: title,
-            attributes: [
-                NSAttributedString.Key.font: titleFont,
-                NSAttributedString.Key.paragraphStyle: titleParagraphStyle
-            ]
-        )
-        buttonTitle.append(attributedTitle)
-        
-        guard let subtitle = subtitle else {
-            return buttonTitle
-        }
-        
-        let subtitleParagraphStyle = NSMutableParagraphStyle()
-        subtitleParagraphStyle.paragraphSpacingBefore = 6.0
-        subtitleParagraphStyle.alignment = .center
-        let attributedPrice = NSMutableAttributedString(
-            string: "\n" + subtitle,
-            attributes: [
-                NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote),
-                NSAttributedString.Key.paragraphStyle: subtitleParagraphStyle
-            ]
-        )
-        buttonTitle.append(attributedPrice)
-        return buttonTitle
     }
     
     
