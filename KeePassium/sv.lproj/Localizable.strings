@@ -305,7 +305,7 @@
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hårdvarunycklar är ej tillgängliga i Autofyll.";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+"[HardwareKey/NFC/OS too old]" = "NFC kräver iOS 13 eller senare.";
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Ingen hårdvarunyckel";
@@ -371,10 +371,10 @@
 "[Premium/CallToAction/upgradeNow]" = "Uppgradera Nu";
 
 /* Name of the permanent/never-ending license. */
-"[Premium/perpetualLicense]" = "Perpetual license";
+"[Premium/perpetualLicense]" = "Evig licens";
 
 /* [formattedDate: String] */
-"[Premium/PerpetualLicense/status]" = "You have a perpetual license for all the versions before %@.";
+"[Premium/PerpetualLicense/status]" = "Du har en evig licens för alla versioner innan %@.";
 
 /* What's included in a price plan: 1 year of support via email */
 "[Premium/Price Plan/Conditions/1 year email support]" = "Ett år support via e-post";

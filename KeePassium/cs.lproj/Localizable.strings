@@ -305,7 +305,7 @@
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarové klíče není možné použít pro automatické vyplňování.";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+"[HardwareKey/NFC/OS too old]" = "NFC vyžaduje iOS 13 nebo novější.";
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Žádný hardwarový klíč";
@@ -371,10 +371,10 @@
 "[Premium/CallToAction/upgradeNow]" = "Upgradovat nyní";
 
 /* Name of the permanent/never-ending license. */
-"[Premium/perpetualLicense]" = "Perpetual license";
+"[Premium/perpetualLicense]" = "Trvalá licence";
 
 /* [formattedDate: String] */
-"[Premium/PerpetualLicense/status]" = "You have a perpetual license for all the versions before %@.";
+"[Premium/PerpetualLicense/status]" = "Máte trvalou licenci pro všechny verze před %@.";
 
 /* What's included in a price plan: 1 year of support via email */
 "[Premium/Price Plan/Conditions/1 year email support]" = "Jeden rok e-mailové podpory";
@@ -392,7 +392,7 @@
 "[Premium/Price Plan/Conditions/email support]" = "Zákaznická podpora: e-mail";
 
 /* What's included in a free plan: reminders that the version is free */
-"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium připomínky";
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Připomenutí bezplatné verze";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "Budoucí prémiové funkce";

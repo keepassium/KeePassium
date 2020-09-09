@@ -1,24 +1,24 @@
 {
   "images" : [
     {
+      "filename" : "trash-29.png",
       "idiom" : "universal",
-      "filename" : "Trash Can.png",
       "scale" : "1x"
     },
     {
+      "filename" : "trash-29@2x.png",
       "idiom" : "universal",
-      "filename" : "Trash Can-1.png",
       "scale" : "2x"
     },
     {
+      "filename" : "trash-29@3x.png",
       "idiom" : "universal",
-      "filename" : "Trash Can-2.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   },
   "properties" : {
     "template-rendering-intent" : "template"

@@ -257,7 +257,7 @@
 "[Generic/ConfirmDelete/title] Are you sure?" = "Weet je het zeker?";
 
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
-"[Generic/Directory/Recently Deleted/name]" = "Recent verwijderd";
+"[Generic/Directory/Recently Deleted/name]" = "Onlangs verwijderd";
 
 /* Notification text when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Verwerp niet-opgeslagen wijzigingen?";
@@ -305,7 +305,7 @@
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarematige sleutels zijn niet beschikbaar in automatisch aanvullen.";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+"[HardwareKey/NFC/OS too old]" = "NFC vereist iOS 13 of hoger.";
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Geen hardwarematige sleutel";
@@ -371,10 +371,10 @@
 "[Premium/CallToAction/upgradeNow]" = "Upgrade nu";
 
 /* Name of the permanent/never-ending license. */
-"[Premium/perpetualLicense]" = "Perpetual license";
+"[Premium/perpetualLicense]" = "Eeuwigdurende licentie";
 
 /* [formattedDate: String] */
-"[Premium/PerpetualLicense/status]" = "You have a perpetual license for all the versions before %@.";
+"[Premium/PerpetualLicense/status]" = "Je hebt een eeuwigdurende licentie voor alle versies vóór %@.";
 
 /* What's included in a price plan: 1 year of support via email */
 "[Premium/Price Plan/Conditions/1 year email support]" = "Eén jaar e-mailondersteuning";

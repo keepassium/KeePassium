@@ -27,10 +27,17 @@ public struct HelpArticle {
         }
         do {
             var d: NSDictionary? = nil
-            let content = try NSAttributedString(
+            let content = try NSMutableAttributedString(
                 url: url,
                 options: [.documentType: NSAttributedString.DocumentType.html],
                 documentAttributes: &d)
+            if #available(iOS 13, *) {
+                content.addAttribute(
+                    .foregroundColor,
+                    value: UIColor.primaryText,
+                    range: NSRange(0..<content.length)
+                )
+            }
             return HelpArticle(content: content)
         } catch {
             Diag.error("Failed to load help article file [reason: \(error.localizedDescription)]")

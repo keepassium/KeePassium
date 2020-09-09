@@ -1,24 +1,24 @@
 {
   "images" : [
     {
+      "filename" : "export-29.png",
       "idiom" : "universal",
-      "filename" : "Upload-2.png",
       "scale" : "1x"
     },
     {
+      "filename" : "export-29@2x.png",
       "idiom" : "universal",
-      "filename" : "Upload-1.png",
       "scale" : "2x"
     },
     {
+      "filename" : "export-29@3x.png",
       "idiom" : "universal",
-      "filename" : "Upload.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   },
   "properties" : {
     "template-rendering-intent" : "template"

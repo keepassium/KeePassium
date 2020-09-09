@@ -1,5 +1,22 @@
 #CHANGELOG
 
+## [1.16.73] - 2020-08-31
+
+### Added
+
+- Change entry text size with a zoom gesture [thanks, Rick and Thomas]
+
+### Changed
+
+- Refined: preserving the expanded/collapsed state of the Notes field [thanks, Arjan and Thomas]
+- Improved Export and Trash icons [thanks, Ivo]
+- Updated translations [thanks, everyone]
+
+### Fixed
+
+- Help article text was black in dark mode [thanks, Christian]
+
+
 ## [1.15.72] - 2020-08-28
 
 ### Fixed

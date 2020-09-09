@@ -17,7 +17,7 @@
 "Faj-km-pM5.headerTitle" = "Sblocco rapido";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes.";
+"g9a-rJ-4WJ.footerTitle" = "Usa gli Appunti Universali per copiare e incollare tra i tuoi dispositivi Apple. Su dispositivi esterni, gli appunti vengono cancellati dopo due minuti.";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
 "gTm-F6-EDQ.text" = "Clear Master Keys on Timeout";

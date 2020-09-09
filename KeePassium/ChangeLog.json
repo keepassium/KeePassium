@@ -1,6 +1,32 @@
 {
     "sections": [
         {
+            "version": "1.16",
+            "releaseDate": "2020-08-31T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Change entry text size with a zoom gesture [thanks, Rick and Thomas]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: preserving the expanded/collapsed state of the Notes field [thanks, Arjan and Thomas]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved Export and Trash icons [thanks, Ivo]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Updated translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Help article text was black in dark mode [thanks, Christian]",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.15",
             "releaseDate": "2020-08-27T00:00:00Z",
             "items": [
