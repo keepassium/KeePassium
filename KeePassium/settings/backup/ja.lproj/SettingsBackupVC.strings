@@ -8,7 +8,7 @@
 "B3L-Dk-Uq3.headerTitle" = "定期的なクリーンアップ";
 
 /* Class = "UILabel"; text = "Make Backup Copies"; ObjectID = "BJ7-eQ-JOc"; Note = "Settings option: backup databases before saving them"; */
-"BJ7-eQ-JOc.text" = "バックアップコピーを作成";
+"BJ7-eQ-JOc.text" = "バックアップを作成";
 
 /* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
 "G42-gR-eKm.text" = "バックアップを保持";
@@ -20,5 +20,5 @@
 "nSy-3u-0xW.title" = "データベースのバックアップ";
 
 /* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
-"XeH-7q-aad.footerTitle" = "バックアップのコピーを元のファイルと一緒に表示します。";
+"XeH-7q-aad.footerTitle" = "バックアップを元のファイルと一緒に表示します。";
 

@@ -53,13 +53,13 @@
 "[CryptoError] Twofish cipher error (code %d)" = "Erreur Twofish cipher (code %d)";
 
 /* Error message */
-"[Database/Load/Error] Cannot find database file" = "KeePassiumLib/en. lproj/Localizable. strings\n[Base de données/Chargement/Erreur] Le fichier de base de données n'a pas été trouvé\nMessage d'erreur:\nFichier: KeePassiumLib. xliff";
+"[Database/Load/Error] Cannot find database file" = "Le fichier de base de données n'a pas été trouvé";
 
 /* Error message */
-"[Database/Load/Error] Cannot find key file" = "KeePassiumLib/en. lproj/Localizable. strings\n[Base de données/Chargement/Erreur] Impossible de trouver le fichier clé\nMessage d'erreur:\nFichier: KeePassiumLib. xliff";
+"[Database/Load/Error] Cannot find key file" = "Impossible de trouver le fichier clé";
 
 /* Error message */
-"[Database/Load/Error] Cannot open database file" = "KeePassiumLib/en. lproj/Localizable. strings\n[Base de données/Chargement/Erreur] Impossible d'ouvrir le fichierr de base de données\nMessage d'erreur\nFichier: KeePassiumLib. xliff";
+"[Database/Load/Error] Cannot open database file" = "Impossible d'ouvrir le fichierr de base de données";
 
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Impossible d'ouvrir le fichier de clé";

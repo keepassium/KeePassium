@@ -150,7 +150,27 @@
 		756B15D024C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756B15D224C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
+		756FC99B24F45B13007F9920 /* perpetual-fallback-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */; };
+		756FC99C24F45B13007F9920 /* perpetual-fallback-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */; };
+		756FC99D24F45B13007F9920 /* perpetual-fallback-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */; };
+		756FC99E24F45B13007F9920 /* perpetual-fallback-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */; };
 		756FF64420BAB20300FF890B /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
+		7572664B24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572664A24CB15530099B6E1 /* HelpViewerCoordinator.swift */; };
+		7572664C24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572664A24CB15530099B6E1 /* HelpViewerCoordinator.swift */; };
+		7572664D24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572664A24CB15530099B6E1 /* HelpViewerCoordinator.swift */; };
+		7572664E24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572664A24CB15530099B6E1 /* HelpViewerCoordinator.swift */; };
+		7572665024CB17410099B6E1 /* HelpViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572664F24CB17410099B6E1 /* HelpViewerVC.swift */; };
+		7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572664F24CB17410099B6E1 /* HelpViewerVC.swift */; };
+		7572665224CB17410099B6E1 /* HelpViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572664F24CB17410099B6E1 /* HelpViewerVC.swift */; };
+		7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572664F24CB17410099B6E1 /* HelpViewerVC.swift */; };
+		7572665524CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7572665424CB18520099B6E1 /* HelpViewerVC.storyboard */; };
+		7572665624CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7572665424CB18520099B6E1 /* HelpViewerVC.storyboard */; };
+		7572665724CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7572665424CB18520099B6E1 /* HelpViewerVC.storyboard */; };
+		7572665824CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7572665424CB18520099B6E1 /* HelpViewerVC.storyboard */; };
+		7572665A24CB1B500099B6E1 /* HelpArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572665924CB1B500099B6E1 /* HelpArticle.swift */; };
+		7572665B24CB1B500099B6E1 /* HelpArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572665924CB1B500099B6E1 /* HelpArticle.swift */; };
+		7572665C24CB1B500099B6E1 /* HelpArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572665924CB1B500099B6E1 /* HelpArticle.swift */; };
+		7572665D24CB1B500099B6E1 /* HelpArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572665924CB1B500099B6E1 /* HelpArticle.swift */; };
 		7573FD8B2321664F00DCDA5A /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
 		7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
 		7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
@@ -163,6 +183,16 @@
 		7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488522C165C900BBEF9A /* SettingsBackupVC.swift */; };
 		7578488F22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */; };
+		7579A06424F072AE00C98F24 /* AppHistoryViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7579A06324F072AE00C98F24 /* AppHistoryViewerVC.storyboard */; };
+		7579A06524F072AE00C98F24 /* AppHistoryViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7579A06324F072AE00C98F24 /* AppHistoryViewerVC.storyboard */; };
+		7579A06724F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */; };
+		7579A06824F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */; };
+		7579A06A24F074D500C98F24 /* AppHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06924F074D500C98F24 /* AppHistory.swift */; };
+		7579A06B24F074D500C98F24 /* AppHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06924F074D500C98F24 /* AppHistory.swift */; };
+		7579A06D24F0787700C98F24 /* ChangeLog.json in Resources */ = {isa = PBXBuildFile; fileRef = 7579A06C24F0787700C98F24 /* ChangeLog.json */; };
+		7579A06E24F0787700C98F24 /* ChangeLog.json in Resources */ = {isa = PBXBuildFile; fileRef = 7579A06C24F0787700C98F24 /* ChangeLog.json */; };
+		7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06F24F1C55B00C98F24 /* AppHistoryCoordinator.swift */; };
+		7579A07124F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06F24F1C55B00C98F24 /* AppHistoryCoordinator.swift */; };
 		757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
 		757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
 		757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */; };
@@ -893,7 +923,12 @@
 		756B245D243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		756B245E243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		756D15602129AFB60052C728 /* KeePassium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium.entitlements; sourceTree = "<group>"; };
+		756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "perpetual-fallback-license.html"; sourceTree = "<group>"; };
 		756FF64320BAB20300FF890B /* UIColor+namedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+namedColors.swift"; sourceTree = "<group>"; };
+		7572664A24CB15530099B6E1 /* HelpViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewerCoordinator.swift; sourceTree = "<group>"; };
+		7572664F24CB17410099B6E1 /* HelpViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewerVC.swift; sourceTree = "<group>"; };
+		7572665424CB18520099B6E1 /* HelpViewerVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HelpViewerVC.storyboard; sourceTree = "<group>"; };
+		7572665924CB1B500099B6E1 /* HelpArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpArticle.swift; sourceTree = "<group>"; };
 		7573FD8A2321664F00DCDA5A /* MultilineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
 		7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHelper+extensions.swift"; sourceTree = "<group>"; };
 		75779863223023D3006671BD /* ProgressViewHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewHost.swift; sourceTree = "<group>"; };
@@ -901,6 +936,11 @@
 		7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+demoEditActions.swift"; sourceTree = "<group>"; };
 		7578488522C165C900BBEF9A /* SettingsBackupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupVC.swift; sourceTree = "<group>"; };
 		7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupTimeoutPickerVC.swift; sourceTree = "<group>"; };
+		7579A06324F072AE00C98F24 /* AppHistoryViewerVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppHistoryViewerVC.storyboard; sourceTree = "<group>"; };
+		7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHistoryViewerVC.swift; sourceTree = "<group>"; };
+		7579A06924F074D500C98F24 /* AppHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHistory.swift; sourceTree = "<group>"; };
+		7579A06C24F0787700C98F24 /* ChangeLog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChangeLog.json; sourceTree = "<group>"; };
+		7579A06F24F1C55B00C98F24 /* AppHistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHistoryCoordinator.swift; sourceTree = "<group>"; };
 		757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareKeyPicker.swift; sourceTree = "<group>"; };
 		757ADC4E23A5180600D708D2 /* DismissablePopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissablePopover.swift; sourceTree = "<group>"; };
 		757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableNavigationController.swift; sourceTree = "<group>"; };
@@ -1595,6 +1635,7 @@
 		754BF07D2082A6BD00E3A292 /* KeePassium */ = {
 			isa = PBXGroup;
 			children = (
+				756FC99424F453CF007F9920 /* resources */,
 				751A565724CCE0F8001227D6 /* app-icons */,
 				758BF0D920D21EE500897C83 /* general */,
 				757ADC4323A1045C00D708D2 /* challenge-response */,
@@ -1614,6 +1655,7 @@
 				754BF08E2082A6BD00E3A292 /* Info.plist */,
 				755E7DA0232008300010E199 /* Localizable.strings */,
 				755E7D9A232008300010E199 /* InfoPlist.strings */,
+				7579A06C24F0787700C98F24 /* ChangeLog.json */,
 			);
 			path = KeePassium;
 			sourceTree = "<group>";
@@ -1681,6 +1723,14 @@
 			path = news;
 			sourceTree = "<group>";
 		};
+		756FC99424F453CF007F9920 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		756FF64520BAB52C00FF890B /* entry */ = {
 			isa = PBXGroup;
 			children = (
@@ -1745,6 +1795,17 @@
 			path = backup;
 			sourceTree = "<group>";
 		};
+		7579A06224F0728F00C98F24 /* changelog */ = {
+			isa = PBXGroup;
+			children = (
+				7579A06324F072AE00C98F24 /* AppHistoryViewerVC.storyboard */,
+				7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */,
+				7579A06924F074D500C98F24 /* AppHistory.swift */,
+				7579A06F24F1C55B00C98F24 /* AppHistoryCoordinator.swift */,
+			);
+			path = changelog;
+			sourceTree = "<group>";
+		};
 		757ADC4323A1045C00D708D2 /* challenge-response */ = {
 			isa = PBXGroup;
 			children = (
@@ -1759,7 +1820,9 @@
 		758BF0D920D21EE500897C83 /* general */ = {
 			isa = PBXGroup;
 			children = (
+				7590798224CB1400008F34EC /* help */,
 				75679AD022FD963200372301 /* news */,
+				7579A06224F0728F00C98F24 /* changelog */,
 				759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */,
 				7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */,
 				75D1674921464333005E33C3 /* AboutVC.swift */,
@@ -1782,6 +1845,17 @@
 				75802630222EBC3800F4525F /* ProgressVC.storyboard */,
 			);
 			path = general;
+			sourceTree = "<group>";
+		};
+		7590798224CB1400008F34EC /* help */ = {
+			isa = PBXGroup;
+			children = (
+				7572664A24CB15530099B6E1 /* HelpViewerCoordinator.swift */,
+				7572664F24CB17410099B6E1 /* HelpViewerVC.swift */,
+				7572665424CB18520099B6E1 /* HelpViewerVC.storyboard */,
+				7572665924CB1B500099B6E1 /* HelpArticle.swift */,
+			);
+			path = help;
 			sourceTree = "<group>";
 		};
 		75AD9FB3212EE35300F49C23 /* views */ = {
@@ -2042,6 +2116,7 @@
 				755B863223054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */,
 				75C51454234A792B00B44512 /* Assets.xcassets in Resources */,
 				751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */,
+				756FC99C24F45B13007F9920 /* perpetual-fallback-license.html in Resources */,
 				751E0D3B2309B01A0088BB10 /* DiagnosticsViewerVC.storyboard in Resources */,
 				75802632222EBC3800F4525F /* ProgressVC.storyboard in Resources */,
 				7584CEF124D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */,
@@ -2052,6 +2127,7 @@
 				751E0D2C2309AFE90088BB10 /* FirstSetupVC.storyboard in Resources */,
 				751E0D382309B0120088BB10 /* KeyFileChooserVC.storyboard in Resources */,
 				751E0D262309AFBA0088BB10 /* FileInfoVC.storyboard in Resources */,
+				7572665624CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2065,6 +2141,7 @@
 				751E0D132309AF540088BB10 /* ChooseDatabaseVC.storyboard in Resources */,
 				7584CEF024D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */,
 				755B862E23054FA200E9FC83 /* AboutVC.storyboard in Resources */,
+				7579A06424F072AE00C98F24 /* AppHistoryViewerVC.storyboard in Resources */,
 				75F28787245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */,
 				754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */,
 				751E0CEF2309AE920088BB10 /* SettingsBackupVC.storyboard in Resources */,
@@ -2082,6 +2159,7 @@
 				75ED429223133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
 				758FC17724CEF72000BAD35C /* appicon-info_iPhoneApp_60@2x.png in Resources */,
 				758FC14B24CEF72000BAD35C /* appicon-keepass_iPadApp_76@2x.png in Resources */,
+				7579A06D24F0787700C98F24 /* ChangeLog.json in Resources */,
 				758FC11924CEF72000BAD35C /* appicon-atom-blue_iPadApp_76.png in Resources */,
 				755B863523054FBF00E9FC83 /* ViewDiagnosticsVC.storyboard in Resources */,
 				758FC13124CEF72000BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */,
@@ -2126,6 +2204,8 @@
 				758FC12924CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */,
 				751E0D252309AFBA0088BB10 /* FileInfoVC.storyboard in Resources */,
 				75C38045217A3204006F74C2 /* PlaceholderVC.storyboard in Resources */,
+				756FC99B24F45B13007F9920 /* perpetual-fallback-license.html in Resources */,
+				7572665524CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */,
 				758FC12D24CEF72000BAD35C /* appicon-info_iPadApp_76@2x.png in Resources */,
 				75ED429D2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard in Resources */,
 				758FC17B24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png in Resources */,
@@ -2156,6 +2236,7 @@
 				75B38C52233E5B7C006BDEFC /* ChooseDatabaseVC.storyboard in Resources */,
 				7584CEF224D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */,
 				75B38C53233E5B7C006BDEFC /* AboutVC.storyboard in Resources */,
+				7579A06524F072AE00C98F24 /* AppHistoryViewerVC.storyboard in Resources */,
 				75F28788245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */,
 				75B38C54233E5B7C006BDEFC /* LaunchScreen.storyboard in Resources */,
 				75B38C55233E5B7C006BDEFC /* SettingsBackupVC.storyboard in Resources */,
@@ -2173,6 +2254,7 @@
 				75B38C5C233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
 				758FC17824CEF72000BAD35C /* appicon-info_iPhoneApp_60@2x.png in Resources */,
 				758FC14C24CEF72000BAD35C /* appicon-keepass_iPadApp_76@2x.png in Resources */,
+				7579A06E24F0787700C98F24 /* ChangeLog.json in Resources */,
 				758FC11A24CEF72000BAD35C /* appicon-atom-blue_iPadApp_76.png in Resources */,
 				75B38C5D233E5B7C006BDEFC /* ViewDiagnosticsVC.storyboard in Resources */,
 				758FC13224CEF72000BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */,
@@ -2217,6 +2299,8 @@
 				758FC12A24CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */,
 				75B38C6F233E5B7C006BDEFC /* FileInfoVC.storyboard in Resources */,
 				75B38C70233E5B7C006BDEFC /* PlaceholderVC.storyboard in Resources */,
+				756FC99D24F45B13007F9920 /* perpetual-fallback-license.html in Resources */,
+				7572665724CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */,
 				758FC12E24CEF72000BAD35C /* appicon-info_iPadApp_76@2x.png in Resources */,
 				75B38C71233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.storyboard in Resources */,
 				758FC17C24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png in Resources */,
@@ -2247,6 +2331,7 @@
 				75D7DFAF233E5E310029AD87 /* PasscodeInputVC.storyboard in Resources */,
 				75C51455234A792C00B44512 /* Assets.xcassets in Resources */,
 				75D7DFB0233E5E310029AD87 /* EntryFinderVC.storyboard in Resources */,
+				756FC99E24F45B13007F9920 /* perpetual-fallback-license.html in Resources */,
 				75D7DFB1233E5E310029AD87 /* DiagnosticsViewerVC.storyboard in Resources */,
 				75D7DFB3233E5E310029AD87 /* ProgressVC.storyboard in Resources */,
 				7584CEF324D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */,
@@ -2257,6 +2342,7 @@
 				75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */,
 				75D7DFB9233E5E310029AD87 /* KeyFileChooserVC.storyboard in Resources */,
 				75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */,
+				7572665824CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2316,6 +2402,7 @@
 				7532A24D21C5A035005DF56F /* KeyFileChooserVC.swift in Sources */,
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				75A5312423C0D35500900ED1 /* NavigationRouter.swift in Sources */,
+				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
 				75CBAB9F21C1671F00B8AFE2 /* MainCoordinator.swift in Sources */,
 				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
@@ -2344,6 +2431,7 @@
 				759894BD24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
 				75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */,
+				7572664C24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */,
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
@@ -2360,6 +2448,7 @@
 				750CFC0721BAD98B00E62B09 /* LString.swift in Sources */,
 				75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75151D3423268AB300F3C411 /* UILabel+strikethrough.swift in Sources */,
+				7572665B24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				757ADC5123A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75A2677E22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
 				750CFBDA21BAD7FF00E62B09 /* KeyboardLayoutConstraint.swift in Sources */,
@@ -2378,6 +2467,7 @@
 				751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */,
 				7584B3F120DD908A0086C094 /* UITextView+border.swift in Sources */,
+				7579A06724F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
 				752BB12520F089B30070FAC0 /* SettingsItemListVC.swift in Sources */,
 				752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */,
 				751A565524CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
@@ -2405,6 +2495,7 @@
 				759BCEB02144E6E8002FC18B /* RootSplitVC.swift in Sources */,
 				759992F024B6140D006CC379 /* LString+premium.swift in Sources */,
 				758BADB224B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
+				7572665024CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */,
 				7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */,
 				758FC18D24CF254000BAD35C /* AppIcon.swift in Sources */,
@@ -2430,6 +2521,7 @@
 				75D1674A21464333005E33C3 /* AboutVC.swift in Sources */,
 				750C683220D767F6001A6AA0 /* EditEntryVC.swift in Sources */,
 				75151D3323268AB300F3C411 /* UILabel+strikethrough.swift in Sources */,
+				7572664B24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				755E9C4D20BE5DC200FD7C7A /* UIImage+extensions.swift in Sources */,
 				75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */,
 				7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */,
@@ -2479,12 +2571,15 @@
 				75F4ACFC21776F4800B22D8B /* LString.swift in Sources */,
 				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
 				750D127E20CF071600BE0CCE /* EditGroupVC.swift in Sources */,
+				7579A06A24F074D500C98F24 /* AppHistory.swift in Sources */,
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
+				7572665A24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */,
+				7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
 				75B59A6823887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,
 				757ADC5423A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
@@ -2500,6 +2595,7 @@
 				751A565324CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */,
 				75B38BF6233E5B7C006BDEFC /* UITextView+border.swift in Sources */,
+				7579A06824F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
 				75B38BF7233E5B7C006BDEFC /* SettingsItemListVC.swift in Sources */,
 				75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */,
 				751A565624CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
@@ -2527,6 +2623,7 @@
 				75B38C06233E5B7C006BDEFC /* RootSplitVC.swift in Sources */,
 				759992F124B6140D006CC379 /* LString+premium.swift in Sources */,
 				758BADB324B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
+				7572665224CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75B38C07233E5B7C006BDEFC /* ChangeMasterKeyVC.swift in Sources */,
 				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
 				758FC18E24CF254000BAD35C /* AppIcon.swift in Sources */,
@@ -2552,6 +2649,7 @@
 				75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */,
 				75B38C1A233E5B7C006BDEFC /* EditEntryVC.swift in Sources */,
 				75B38C1B233E5B7C006BDEFC /* UILabel+strikethrough.swift in Sources */,
+				7572664D24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				75B38C1C233E5B7C006BDEFC /* UIImage+extensions.swift in Sources */,
 				75B38C1D233E5B7C006BDEFC /* UIView+extension.swift in Sources */,
 				75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */,
@@ -2601,12 +2699,15 @@
 				75B38C43233E5B7C006BDEFC /* LString.swift in Sources */,
 				7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */,
 				75B38C44233E5B7C006BDEFC /* EditGroupVC.swift in Sources */,
+				7579A06B24F074D500C98F24 /* AppHistory.swift in Sources */,
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
+				7572665C24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */,
+				7579A07124F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
 				75B59A6A23887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				75B38C4A233E5B7C006BDEFC /* main.swift in Sources */,
 				757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
@@ -2627,6 +2728,7 @@
 				75D7DF80233E5E310029AD87 /* KeyFileChooserVC.swift in Sources */,
 				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
 				75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */,
+				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
 				75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
@@ -2655,6 +2757,7 @@
 				759894BF24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
 				75BFB1422481553D0017B980 /* DynamicFileList.swift in Sources */,
+				7572664E24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
 				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,
 				75D7DF9A233E5E310029AD87 /* UIView+extension.swift in Sources */,
@@ -2671,6 +2774,7 @@
 				75D7DFA2233E5E310029AD87 /* LString.swift in Sources */,
 				75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75D7DFA3233E5E310029AD87 /* UILabel+strikethrough.swift in Sources */,
+				7572665D24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				757ADC5323A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */,
 				75D7DFA5233E5E310029AD87 /* KeyboardLayoutConstraint.swift in Sources */,
@@ -3571,12 +3675,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.14;
+				MARKETING_VERSION = 1.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -3595,12 +3699,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.14;
+				MARKETING_VERSION = 1.15;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.KeePassium-AutoFill";
@@ -3740,7 +3844,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3749,7 +3853,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.14;
+				MARKETING_VERSION = 1.15;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3767,7 +3871,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3776,7 +3880,7 @@
 				INFOPLIST_FILE = KeePassium/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.14;
+				MARKETING_VERSION = 1.15;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3794,7 +3898,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3803,7 +3907,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.14;
+				MARKETING_VERSION = 1.15;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3821,7 +3925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -3830,7 +3934,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.14;
+				MARKETING_VERSION = 1.15;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3847,12 +3951,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.14;
+				MARKETING_VERSION = 1.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -3871,12 +3975,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.14;
+				MARKETING_VERSION = 1.15;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.pro.KeePassium-AutoFill";

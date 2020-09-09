@@ -2,7 +2,7 @@
 "CuN-tE-lAG.placeholder" = "パスワード";
 
 /* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "eAa-Z5-pdq"; Note = "Title of the database unlocker dialog."; */
-"eAa-Z5-pdq.title" = "データベースを開ける";
+"eAa-Z5-pdq.title" = "データベースをアンロック";
 
 /* Class = "UILabel"; text = "Database was closed by a timer."; ObjectID = "epu-yU-Lyg"; Note = "Notification message shown by database lock timer."; */
 "epu-yU-Lyg.text" = "タイマーがデータベースを閉じました。";

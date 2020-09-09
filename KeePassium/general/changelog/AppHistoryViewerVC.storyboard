@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--What's New-->
+        <scene sceneID="NPt-Mf-NX6">
+            <objects>
+                <tableViewController storyboardIdentifier="AppHistoryViewerVC" title="What's New" id="9Zh-Kk-7yq" customClass="AppHistoryViewerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="OuE-Vw-nrN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogItemCell" id="gJl-34-RXI" userLabel="LogItemCell" customClass="AppHistoryItemCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="42"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gJl-34-RXI" id="9RU-rD-x1J">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="{Detail}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5J-1z-JKZ">
+                                            <rect key="frame" x="250.5" y="11.5" width="53.5" height="19.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
+                                            <nil key="highlightedColor"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="#bc-ignore!"/>
+                                            </attributedString>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Title}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b92-Zs-oKL">
+                                            <rect key="frame" x="16" y="11.5" width="43.5" height="19.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="#bc-ignore!"/>
+                                            </attributedString>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="b92-Zs-oKL" secondAttribute="bottom" id="29L-es-al1"/>
+                                        <constraint firstItem="D5J-1z-JKZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9RU-rD-x1J" secondAttribute="topMargin" id="8kJ-et-q0M"/>
+                                        <constraint firstItem="b92-Zs-oKL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9RU-rD-x1J" secondAttribute="topMargin" id="Fgv-0E-gZO"/>
+                                        <constraint firstItem="D5J-1z-JKZ" firstAttribute="centerY" secondItem="b92-Zs-oKL" secondAttribute="centerY" id="MoH-c1-hET"/>
+                                        <constraint firstItem="b92-Zs-oKL" firstAttribute="centerY" secondItem="9RU-rD-x1J" secondAttribute="centerY" id="hke-a9-LeF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="D5J-1z-JKZ" secondAttribute="trailing" id="qkT-1P-fLJ"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="D5J-1z-JKZ" secondAttribute="bottom" id="ruw-wl-6SM"/>
+                                        <constraint firstItem="b92-Zs-oKL" firstAttribute="leading" secondItem="9RU-rD-x1J" secondAttribute="leadingMargin" id="uWO-Xb-KpF"/>
+                                        <constraint firstItem="D5J-1z-JKZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="b92-Zs-oKL" secondAttribute="trailing" constant="8" id="vw2-OQ-peY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="detailLabel" destination="D5J-1z-JKZ" id="y3d-IW-V2e"/>
+                                    <outlet property="titleLabel" destination="b92-Zs-oKL" id="YrH-2t-oth"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FallbackCell" textLabel="f1G-Tl-xxh" imageView="VlI-ZS-WeJ" style="IBUITableViewCellStyleDefault" id="AyK-MM-Go4" userLabel="FallbackHeaderCell" customClass="AppHistoryFallbackCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="97.5" width="320" height="50.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AyK-MM-Go4" id="ObX-TI-8qh">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Perpetual license status}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="f1G-Tl-xxh">
+                                            <rect key="frame" x="60" y="0.0" width="244" height="50.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <nil key="highlightedColor"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="#bc-ignore!"/>
+                                            </attributedString>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="premium-condition-checked-listitem" id="VlI-ZS-WeJ">
+                                            <rect key="frame" x="16" y="10.5" width="29" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9Zh-Kk-7yq" id="k8R-ij-thW"/>
+                            <outlet property="delegate" destination="9Zh-Kk-7yq" id="W2G-xL-asu"/>
+                        </connections>
+                    </tableView>
+                    <attributedString key="userComments">
+                        <fragment content="Title of the app version history screen"/>
+                    </attributedString>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yBC-13-Eg4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152" y="93"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="premium-condition-checked-listitem" width="29" height="29"/>
+        <namedColor name="AuxiliaryText">
+            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

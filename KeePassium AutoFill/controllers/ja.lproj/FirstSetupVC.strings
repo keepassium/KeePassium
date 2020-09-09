@@ -2,7 +2,7 @@
 "enW-gs-tra.normalTitle" = "データベースを追加";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
-"P0M-N3-ynf.text" = "自動入力を使いたいデータベースとキーファイルをもう一度追加してください。";
+"P0M-N3-ynf.text" = "自動入力で使用するデータベースとキーファイルをもう一度追加してください。";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
 "pIl-6L-Msp.text" = "自動入力を設定";

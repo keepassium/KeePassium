@@ -304,11 +304,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "硬體金鑰不支持自動填充。";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "沒有硬體金鑰";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "幫助";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "默認(KeePass)";
@@ -363,6 +369,12 @@
 
 /* Call to action: upgrade to premium */
 "[Premium/CallToAction/upgradeNow]" = "Upgrade Now";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Perpetual license";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "You have a perpetual license for all the versions before %@.";
 
 /* What's included in a price plan: 1 year of support via email */
 "[Premium/Price Plan/Conditions/1 year email support]" = "One year of email support";

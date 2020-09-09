@@ -16,8 +16,8 @@
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "快速解鎖";
 
-/* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "使用通用剪貼板在你的蘋果設備之間複製和貼上。";
+/* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
+"g9a-rJ-4WJ.footerTitle" = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes.";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
 "gTm-F6-EDQ.text" = "Clear Master Keys on Timeout";

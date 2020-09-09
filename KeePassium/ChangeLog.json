@@ -1,0 +1,852 @@
+{
+    "sections": [
+        {
+            "version": "1.15",
+            "releaseDate": "2020-08-27T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Perpetual fallback license for subscriptions (rent-to-own license)",
+                    "type": 0
+                },
+                {
+                    "title": "🧩 Added: App history screen (What's New)",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: The search is no longer sensitive to diacritics, unless you use diacritics in the query. (For example, \"hello\" would find both \"héllo\" and \"héllö\", whereas \"héllo\" would find \"héllo\" but not \"héllö\".) [thanks, hunhejj]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Haptic feedback in AutoFill after pasting the credentials",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Updating broken references to external files [thanks, Paul]",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.14",
+            "releaseDate": "2020-08-19T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Free trial for premium subscriptions",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Automatic backup of the latest opened database version",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: \"Exclude from iCloud/iTunes backup\" option for local files",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Alternative app icons",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: Japanese translation [thanks, Hiroto Sakai and miyar520]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Possibility to preserve stored master keys on database timeout [thanks, Niklas]",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: Detailed info about database location",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Info about the calling app in AutoFill [thanks, Markus]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: File Info dialog for key files in AutoFill",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Default app icon",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: You can add database files with any extension [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Better handling of slow/unresponsive storage providers",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: More detailed load/save progress messages",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: More human-friendly error messages",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Clarified that Universal Clipboard timeout on external devices is fixed at 2 minutes [thanks, Christian]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: File Info dialog contents",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: By default, automatic backups are stored for 2 months instead of forever",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: AppLock setup reminder can be dismissed [thanks, Dan]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Updated translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Occasional freezing and crashing on start",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Freezing while accessing remote files",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Freezing when there are many backup files [thanks, Paul]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Excessive caching of file attributes, such as size and timestamps",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash when selecting \"Enable AppLock\" reminder with VoiceOver [thanks, Dickson]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash when adding an entry attachment [thanks, Sophie]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash on cold launch with an argument [thanks, Helmut]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash when importing an already existing file [thanks, Marc]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: After transferring to a new device, AppLock did not always accept the correct passcode [thanks, Kirsten]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Sporadic crash immediately after loading a database",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Return key behavior when changing DB master key",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Jumpy pull-to-refresh animation [thanks, Sebastian]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Respect the \"Search enabled\" flag of .kdbx groups [thanks, David]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Default properties of newly created Recycle Bin groups",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Added 15-second timeout to all file operations",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Handling database settings/stored keys when the target file is missing",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: KDB root group appeared expired [thanks, Stefan]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Refresh entry viewer after dismissing entry editor [thanks, Felix]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Refresh search results after changing search settings [thanks, Paolo]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Standard field names are excluded from search [thanks, Paolo]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Missing credits for Yubico Mobile SDK and TPInAppReceipt library",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Localization of some screens",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Minor UI fixes here and there",
+                    "type": 1
+                },
+            ]
+        },
+        {
+            "version": "1.13",
+            "releaseDate": "2020-06-10T00:00:00Z",
+            "items": [
+                {
+                    "title": "🐞 Fixed: custom field changes sometimes were not saved [thanks, Michael]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: progress bar sometimes appeared misplaced [thanks, Michael]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Updated CZ/FR/SV localizations",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.12",
+            "releaseDate": "2020-06-09T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Support for YubiKey 5Ci",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: App Lock setup is now part of initial onboarding [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: The notes field is expandable now",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: New setting - whether to auto-unlock the last used database [thanks, Stanislav and Niklas]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: New settings - whether to search in field names and in protected values [thanks, Paolo]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: New setting - show protected fields (off by default) [thanks, Jerry & Jeffrey]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: New setting - use Universal Clipboard (off by default) [thanks, Daniel]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: After copying a field, you can also quickly share it to other apps",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Entries marked as non-autofillable in KeePassXC won't appear in AutoFill [thanks, Igor]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: File Export/Delete operations in the File Info dialog [thanks, Dirk]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Detailed loading progress messages for .kdbx databases",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Improved loading of MiniKeePass databases",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Better accessibility - respect the \"bold text\" system setting",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Support email template now includes device type (iPhone/iPad)",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Updated translations",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: With extra-large font, group names appeared trimmed by height",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Biometric auth asked for a premium upgrade under a heavy use [thanks, Theo]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Parsing of misformatted timestamps sometimes produced by MiniKeePass [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Import conflict resolution dialog did not appear for key files",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Groups and entries always appeared as non-expiring in v1 databases [thanks, Stefan]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Database file descriptions were shown in the system in wrong language [thanks, majijiwi]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Load entries with missing field values, treat them as empty [thanks, Oliver]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Support Steam TOTP configured in KeePassXC with the \"encoder\" parameter [thanks, Manan]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Minor UI fixes here and there",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.11",
+            "releaseDate": "2020-04-22T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: When importing a database, the app will ask whether to overwrite the existing file [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: New setting - whether AutoFill should auto-proceed when there is only one suitable entry [thanks, Nicolai]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: French translation [thanks, Steph31700 and Robin Chamberlin]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Italian translation [thanks, iWally and spaccapirlin]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: When you delete a file, it is deleted permanently instead of moving to trash (sometimes trashing failed silently)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Auto-unlock the last used database also on iPads (if allowed by settings) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: It was impossible to edit/move Recycle Bin group in .kdbx databases [thanks, Amnuay]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Sometimes it was not possible to select databases from Google Drive [thanks, K.B.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Always treat password fields as protected [thanks, Robin]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Adding databases with mixed-case extensions [thanks, Thorsten]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Changed master key was not remembered when it should have been",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Merging of databases with moved groups/entries [thanks, Daniel]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Infinite Clipboard Timeout was treated as immediate [thanks, Andreas]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Merging of databases with changed master key",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Sometimes it was impossible to delete files",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Backup files should not count towards free DB limit",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Colored asterisks after re-hiding passwords",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Minor localization fixes",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.10",
+            "releaseDate": "2020-01-30T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: YubiKey support (Compatible with KeePassXC, NFC keys, iOS 13+)",
+                    "type": 2
+                }
+            ]
+        },
+        {
+            "version": "1.09",
+            "releaseDate": "2020-01-17T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Move/copy groups and entries to other groups",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Long-press menu for files, groups and entries",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Highlight digits and special symbols in stored passwords [thanks, Sean]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Support for Steam TOTP with GAuth URI format [thanks, Nu11u5]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Support for TOTP based on SHA-256 and SHA-512 [thanks, Walter]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: \"Add Key File\" button to key file pickers [thanks, Ron]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Preserve the entered master password after DB unlock errors [thanks, Bertrand]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Occassional freezing at \"Loading... 0%\" [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: occasional freezing when accessing local files on iOS 13",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill FaceID loop on iOS 13.1.3 [thanks, Quinn]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Add missing symbols to the password generator [thanks, Justen]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: \"Failed to open file\" error after creating a new database [thanks, Craig]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Loading MiniKeePass DBs with minor issues [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Overly wide popovers on iPadOS 13",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.08",
+            "releaseDate": "2019-11-29T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Improved: Unlock button be gone! Auto-unlock databases whenever possible.",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: AutoFill will automatically select the only entry [thanks, Igor]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: added a confirmation dialog when locking database manually [thanks, Tim]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill stuck in FaceID loop on iOS 13.2.3 [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Improved handling of databases that close slowly",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Sometimes entries incorrectly appeared as expired [thanks, Felix]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Double unlock screen after database creation [thanks, magebarf]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Repetitive Welcome screen after clearing backup files [thanks, Chris]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Other minor refinements and fixes",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.07",
+            "releaseDate": "2019-11-16T00:00:00Z",
+            "items": [
+                {
+                    "title": "🐞 Fixed: AppLock did not always work on iOS 13.2 [thanks, loblawbob]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: With passcode-only AppLock, database list flashed visible on launch [thanks, Joseph]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: haptic feedback for some UI actions",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Won't force-erase the master key from keychain on database errors [thanks, Silunare]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: compatibility with other installed KeePass apps [thanks, Philippe]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: when deleting a database, the key file association is now also removed [thanks, M.H.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: premium features missing in Pro version's AutoFill [thanks, J.B.]",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.06",
+            "releaseDate": "2019-10-22T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Spanish translation",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Default Database Timeout is now Never instead of 1 hour",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: support of larger font sizes",
+                    "type": 1
+                },
+                {
+                    "title": "Other bug fixes and improvements",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.05",
+            "releaseDate": "2019-10-08T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: KeePassium Pro edition, compatible with Family Sharing",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: On iPadOS 13, the app showed an empty screen",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Search bar did not autofocus in AutoFill (iOS 13) [thanks, tunger]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Premium Upgrade screen was not available to premium users",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Database timeout could have been set to 'Never' in free version",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: colors in the Premium Upgrade screen",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.04",
+            "releaseDate": "2019-10-03T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Swedish translation [thanks, Patrik Thunström]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Czech translation [thanks, Tomáš Piešťanský, Marcel Piestansky, and Radek Weis]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: If current database is inaccessible due to new iOS 13 permissions, the app will suggest to re-add the database [thanks, Patrik]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Database unlock errors were not always shown",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: VoiceOver will automatically announce database unlocking errors",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Deleted entries are now excluded from username suggestions",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AppLock passcode colors in dark mode [thanks, Joseph and Chris]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Dismissing the AppLock setup dialog with a gesture (iOS 13)",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.02",
+            "releaseDate": "2019-09-22T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: iOS 13 dark mode",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: In entry editor, you can quickly pick a random or a frequently used username [thanks, Mike]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: German translation [thanks, Lukas Wolfsteiner and @cpktmpkt]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Dutch translation [thanks, Heimen Stoffels]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Chinese Simplified and Traditional translations [thanks, 3374575857]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Russian translation",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Expired items now shown in strikethrough font and with original icons",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: New entries are pre-filled with a default user name from database settings (if any) [thanks, Mike]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Added a \"Repeat password\" field to the Change Master Key dialog [thanks, A.G.]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Accessibility of the entry Notes field [thanks, Adrian]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Search controller did not show up on iOS 13",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Entry timestamps were not visible on iOS 13",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Dismissing dialogs with a gesture on iOS 13",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Premium upgrade did not work on iOS 13",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Custom fields could interfere with the fixed ones [thanks, Michael]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Minor UI fixes and improvements [thanks, S.Y., KK9 and raymond127]",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.01",
+            "releaseDate": "2019-08-14T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: In-app announcements about the AppStore release and early-bird promo",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Associated the app with keepassium.com domain, to allow auto-filling master passwords from Keychain",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Detection whether running in TestFlight (beta) or App Store (production) environment",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Added app version to About screen and diagnostic log [thanks, Marcel]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: AutoFill now also searches for full URL in custom fields [thanks, Dragonblitz10]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Hiding visible passwords when leaving the app [thanks, V.M.]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Running in TestFlight automatically enables premium features",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Switched to prettier version numbering: major.minor.build",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Incomplete loading of AutoType sequences [thanks, Silun]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Fixed broken App Store links [thanks, Patrik]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Don't show usage stats in premium version (they are frozen anyway)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Entry sorting in AutoFill [thanks, rderensy]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill did not understand domain-name only URLs [thanks, Brett]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Accessibility labels in entry editor and for Add Database buttons [thanks, Adrian]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Creating a new database also created an empty backup file [thanks, Phani]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Jumpy/squished footer in Settings [thanks, Patrik]",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.0.30",
+            "releaseDate": "2019-07-29T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Refined: Extended TOTP support",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Improved VoiceOver accessibility",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 A few minor bug fixes and improvements",
+                    "type": 1
+                }
+            ]
+        },
+        {
+            "version": "1.0",
+            "releaseDate": "2019-07-23T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Switching between multiple databases",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: Unlimited database timeout",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: In-app attachment preview",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: Biometric app protection",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Password AutoFill (iOS 12+)",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Composite master keys",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Loading and saving kdb/kdbx3/kdbx4 files",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Argon2, AES, ChaCha20, Salsa20, Twofish algorithms",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: View TOTP (time-based one-time passwords) created by KeePassXC (RFC6238 and Steam TOTP)",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Preserving database master key in keychain",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: App, database and clipboard timeout",
+                    "type": 1
+                }
+            ]
+        }
+    ]
+}

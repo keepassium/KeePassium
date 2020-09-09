@@ -2,16 +2,16 @@
 "cCm-E4-L3m.text" = "フィールド名で検索";
 
 /* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "DJr-hC-DMT"; Note = "A section in search-related settings: what happens when the app is just started or database is just opened."; */
-"DJr-hC-DMT.footerTitle" = "データベースを開くと自動的に検索欄を表示します。";
+"DJr-hC-DMT.footerTitle" = "データベースを開いた後、自動的に検索欄を表示します。";
 
 /* Class = "UITableViewSection"; headerTitle = "Search Scope"; ObjectID = "Io8-uP-3lF"; Note = "A section in search-related settings: which fields to include in search."; */
 "Io8-uP-3lF.headerTitle" = "検索範囲";
 
 /* Class = "UILabel"; text = "Search in Protected Values"; ObjectID = "LrQ-5g-wj0"; Note = "An switch in settings: whether to include protected field values in search procedure."; */
-"LrQ-5g-wj0.text" = "保護されたデータも検索する";
+"LrQ-5g-wj0.text" = "保護されたデータを検索";
 
 /* Class = "UILabel"; text = "Start with Search"; ObjectID = "q0v-f7-D4Y"; */
-"q0v-f7-D4Y.text" = "検索で開始";
+"q0v-f7-D4Y.text" = "起動時に検索";
 
 /* Class = "UITableViewController"; title = "Search"; ObjectID = "RZt-EW-TGN"; Note = "Section title in settings"; */
 "RZt-EW-TGN.title" = "検索";

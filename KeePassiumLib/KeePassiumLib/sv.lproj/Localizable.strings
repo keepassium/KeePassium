@@ -77,10 +77,10 @@
 "[Database/Progress] Loading key file..." = "Laddar nyckelfil...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "Laddar ner databasfil...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "Skapar säkerhetskopia...";
 
 /* Progress status */
 "[Database/Progress/resolving]" = "Kontaktar lagringsleverantör...";
@@ -245,31 +245,31 @@
 "[DatabaseError] Invalid password or key file" = "Felaktigt lösenord eller nyckelfil";
 
 /* Error message: storage provider app was logged out or uninstalled. */
-"[FileAccessError/FileProvider/NotFound/generic]" = "Storage provider is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/generic]" = "Lagringsleverantören är inte tillgänglig. Kontrollera att appen är installerad och inloggad på ditt konto.";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
-"[FileAccessError/FileProvider/NotFound/other]" = "%@ is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ är inte tillgänglig. Kontrollera att den är installerad och inloggad på ditt konto.";
 
 /* Error message: the required network drive is not connected. */
-"[FileAccessError/FileProvider/NotFound/smbShare]" = "Network storage is disconnected.";
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Nätverkslagring är inte ansluten.";
 
 /* Error message: there is no USB drive connected to the device. */
-"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB drive is disconnected.";
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB-enheten är frånkopplad.";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "Internt KeePassium-fel, var vänlig och rapportera det till oss.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "Lagringsleverantören svarar inte.";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ svarar inte.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "Lagringsleverantören svarar inte.";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ svarar inte.";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Misslyckades att radera filen. Anledning: %@";
@@ -329,7 +329,7 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB server";
+"[FileProvider/SMB/name]" = "SMB-server";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -344,7 +344,7 @@
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "USB-enhet";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";

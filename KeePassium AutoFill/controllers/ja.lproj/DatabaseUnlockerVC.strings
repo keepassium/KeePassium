@@ -2,7 +2,7 @@
 "89h-8b-LRO.normalTitle" = "ロックを解除";
 
 /* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "bxv-kR-0w1"; */
-"bxv-kR-0w1.title" = "データベースを開ける";
+"bxv-kR-0w1.title" = "データベースをアンロック";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "Dnl-vm-GMg"; */
 "Dnl-vm-GMg.placeholder" = "キーファイルがありません";

@@ -176,7 +176,7 @@
 "[FileInfo/Backup/header]" = "Backup";
 
 /* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
-"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
+"[FileInfo/Error/failed to change attributes]" = "Impossibile aggiornare gli attributi del file.";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Data Creazione";
@@ -197,7 +197,7 @@
 "[FileInfo/Field/valueError] Error" = "Errore";
 
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
-"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+"[FileInfo/isExcludedFromBackup/title]" = "Escludi da iCloud/iTunes Backup";
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Scegli una Destinazione";
@@ -209,7 +209,7 @@
 "[Generic] Contact Us" = "Contattaci";
 
 /* Action/button to proceed with the action */
-"[Generic] Continue" = "Continue";
+"[Generic] Continue" = "Prosegui";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Copia";
@@ -304,11 +304,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "No Hardware Key";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Aiuto";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Predefinito (KeePass)";
@@ -326,10 +332,10 @@
 "[Premium/Benefits/AttachmentPreview/title]" = "Anteprima senza traccia";
 
 /* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Make KeePassium look unique, familiar, or disguise it as a calculator — the choice is yours.";
+"[Premium/Benefits/CustomAppIcon/details]" = "Modifica l'aspetto di KeePassium rendendolo unico, familiare, o mascherarlo come una calcolatrice — la scelta è vostra.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Change app icon";
+"[Premium/Benefits/CustomAppIcon/title]" = "Modifica icona app";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "Stanco di digitare la password principale? Tieni il database aperto più a lungo e sbloccalo con un tocco.";
@@ -359,10 +365,16 @@
 "[Premium/CallToAction/free]" = "Continue Testing";
 
 /* Call to action: start free trial */
-"[Premium/CallToAction/startTrial]" = "Try it free";
+"[Premium/CallToAction/startTrial]" = "Prova gratuita";
 
 /* Call to action: upgrade to premium */
-"[Premium/CallToAction/upgradeNow]" = "Upgrade Now";
+"[Premium/CallToAction/upgradeNow]" = "Aggiorna subito";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Perpetual license";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "You have a perpetual license for all the versions before %@.";
 
 /* What's included in a price plan: 1 year of support via email */
 "[Premium/Price Plan/Conditions/1 year email support]" = "One year of email support";
@@ -383,7 +395,7 @@
 "[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium reminders";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
-"[Premium/Price Plan/Conditions/future premium features]" = "Future premium features";
+"[Premium/Price Plan/Conditions/future premium features]" = "Tutte le funzioni Premium future";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "Rent-to-own license (Perpetual fallback license)";
@@ -392,10 +404,10 @@
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates and bug fixes";
 
 /* Price of the free pricing plan */
-"[Premium/Price Plan/Free/price]" = "Free";
+"[Premium/Price Plan/Free/price]" = "Gratis";
 
 /* Name of the free pricing plan */
-"[Premium/Price Plan/Free/title]" = "Free";
+"[Premium/Price Plan/Free/title]" = "Gratis";
 
 /* Marks the default pricing plan */
 "[Premium/Price Plan/popular]" = "Popular";
@@ -437,7 +449,7 @@
 "[Premium/Upgrade/price] %@ once" = "%@ una volta";
 
 /* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
-"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / month";
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / mese";
 
 /* Status message when downloading available in-app purchases */
 "[Premium/Upgrade/Progress] Contacting AppStore..." = "Stiamo contattando AppStore...";
@@ -461,7 +473,7 @@
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "App. utile: %1$@/ mese, circa %2$@/anno.";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
+"[PremiumFeature/CustomAppIcons/title]" = "Icone App Personalizzate";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";

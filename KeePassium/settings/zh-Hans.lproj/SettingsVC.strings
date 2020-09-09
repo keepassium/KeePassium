@@ -55,6 +55,9 @@
 /* Class = "UILabel"; text = "Contact Us"; ObjectID = "QlM-VS-hle"; Note = "Action"; */
 "QlM-VS-hle.text" = "联系我们";
 
+/* Class = "UILabel"; text = "What's New"; ObjectID = "RlK-RW-8Ld"; Note = "Action: open app history page (change log)"; */
+"RlK-RW-8Ld.text" = "What's New";
+
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
 "RNK-fS-Fvx.text" = "建议? 问题? 让我们知道!";
 

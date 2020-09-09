@@ -88,6 +88,8 @@ extension SearchHelper {
         guard let rootGroup = database.root else { return [] }
         rootGroup.collectAllEntries(to: &allEntries)
         
+        let compareOptions: String.CompareOptions = [.caseInsensitive]
+        
         let relevantEntries = allEntries
             .filter { (entry) in
                 if let group2 = entry.parent as? Group2 {
@@ -99,7 +101,11 @@ extension SearchHelper {
             .map { (entry) in
                 return ScoredEntry(
                     entry: entry,
-                    similarityScore: getSimilarity(domain: domain, entry: entry)
+                    similarityScore: getSimilarity(
+                        domain: domain,
+                        entry: entry,
+                        options: compareOptions
+                    )
                 )
             }
             .filter { $0.similarityScore > 0.0 }
@@ -122,10 +128,10 @@ extension SearchHelper {
         return 0.0
     }
     
-    private func getSimilarity(domain: String, entry: Entry) -> Double {
+    private func getSimilarity(domain: String, entry: Entry, options: String.CompareOptions) -> Double {
         let urlScore = howSimilar(domain: domain, with: URL.guessFrom(malformedString: entry.url))
-        let titleScore = entry.title.localizedCaseInsensitiveContains(domain) ? 0.8 : 0.0
-        let notesScore = entry.notes.localizedCaseInsensitiveContains(domain) ? 0.5 : 0.0
+        let titleScore = entry.title.localizedContains(domain, options: options) ? 0.8 : 0.0
+        let notesScore = entry.notes.localizedContains(domain, options: options) ? 0.5 : 0.0
         
         if let entry2 = entry as? Entry2 {
             let altURLScore = howSimilar(
@@ -139,7 +145,7 @@ extension SearchHelper {
             let extraFieldScores: [Double] = entry2.fields
                 .filter { !$0.isStandardField }
                 .map { (field) in
-                    return field.value.localizedCaseInsensitiveContains(domain) ? 0.5 : 0.0
+                    return field.value.localizedContains(domain, options: options) ? 0.5 : 0.0
             }
             return max(maxScoreSoFar, extraFieldScores.max() ?? 0.0)
         } else {

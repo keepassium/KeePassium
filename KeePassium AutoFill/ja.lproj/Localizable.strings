@@ -110,7 +110,7 @@
 "[Entry/New/defaultTitle] New Entry" = "新規エントリー";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "ファイルをアプリから一旦削除して、再度追加してみてください。";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Appからファイルを削除し、もう一度追加してみてください。";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "バックアップ";
@@ -193,6 +193,9 @@
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "よろしいですか？";
 
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "最近削除した項目";
+
 /* Notification text when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/text] Discard unsaved changes?" = "保存せずに終了しますか？";
 
@@ -238,11 +241,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "ハードウェアキーは自動入力では使用できません。";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFCはiOS 13以降が必要です。";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "ハードウェアキーがありません";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey スロット %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "ヘルプ";
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "キーファイルを削除しますか？\n バックアップがあることを確認してください。";
@@ -251,10 +260,10 @@
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "キーファイルを一覧から削除しますか？ファイルの本体はそのまま残りますので、後で再度追加できます。";
 
 /* Action/button to start choosing premium versions and possibly buying one */
-"[Premium/Upgrade/action] Upgrade to Premium" = "Premiumにアップグレード";
+"[Premium/Upgrade/action] Upgrade to Premium" = "プレミアム版にアップグレード";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "アプリのアイコン変更";
+"[PremiumFeature/CustomAppIcons/title]" = "Appのアイコンの変更";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "プレミアム機能を見つけました！プレミアム版にアップグレードすると、KeePassiumを最高の状態でお使いいただけます。";
@@ -281,7 +290,7 @@
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "複数データベース";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "プレミアム版では画像や文書を直接アプリ内部で見ることができます。";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "プレミアム版では画像や文書を直接Appで見ることができます。";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "添付ファイルのプレビュー";
@@ -314,5 +323,5 @@
 "Import Database" = "データベースを読み込む";
 
 /* Warning message when the user tries to use a database as a key file */
-"KeePass database should not be used as key file. Please pick a different file." = "KeePassのデータベースをキーファイルとして使わないでください。違うファイルを選んでください。";
+"KeePass database should not be used as key file. Please pick a different file." = "KeePassのデータベースをキーファイルとして使用しないでください。別のファイルを選択してください。";
 

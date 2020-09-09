@@ -5,22 +5,22 @@
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numerická";
 
 /* Error message when the challenge-response communication has been cancelled by the user. */
-"[ChallengeResponseError] cancelled" = "Cancelled by the user.";
+"[ChallengeResponseError] cancelled" = "Zrušeno uživatelem.";
 
 /* Error message when the hardware key is not plugged in. */
-"[ChallengeResponseError] keyNotConnected" = "Hardware key is not connected.";
+"[ChallengeResponseError] keyNotConnected" = "Hardwarový klíč není připojen.";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "Hardware keys are not available in AutoFill.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "Hardwarové klíče není možné použít pro automatické vyplňování.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardware keys are not supported by this database format.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardwarové klíče nejsou v tomto formátu databáze podporovány.";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
-"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "This device or iOS version does not support hardware keys (%@)";
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Toto zařízení nebo verze iOS nepodporuje hardwarové klíče (%@)";
 
 /* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
-"[ChallengeResponseError] slotNotConfigured" = "Hardware key is not configured for challenge-response.";
+"[ChallengeResponseError] slotNotConfigured" = "Hardwarový klíč není nakonfigurován pro challenge-response.";
 
 /* Progress status */
 "[Cipher/Progress] Decrypting" = "Dešifrování";
@@ -77,13 +77,13 @@
 "[Database/Progress] Loading key file..." = "Načítání klíčového souboru...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "Stahování databázového souboru...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "Vytváření zálohy...";
 
 /* Progress status */
-"[Database/Progress/resolving]" = "Contacting storage provider...";
+"[Database/Progress/resolving]" = "Kontaktování poskytovatele úložiště...";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Otevření klíčového souboru se nezdařilo";
@@ -203,13 +203,13 @@
 "[Database2/Progress] Writing encrypted blocks" = "Zápis šifrovaných bloků";
 
 /* Progress bar status: un-zipping the database content */
-"[Database2/Progress/decompressing]" = "Decompressing database";
+"[Database2/Progress/decompressing]" = "Dekomprimování databáze";
 
 /* Progress bar status */
-"[Database2/Progress/integrityCheck]" = "Checking integrity";
+"[Database2/Progress/integrityCheck]" = "Kontrola integrity";
 
 /* Progress bar status: parsing decrypted XML content */
-"[Database2/Progress/parsingXML]" = "Parsing database";
+"[Database2/Progress/parsingXML]" = "Analýza databáze";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "Chyba komprese dat: %@";
@@ -245,31 +245,31 @@
 "[DatabaseError] Invalid password or key file" = "Chybné heslo nebo klíčový soubor";
 
 /* Error message: storage provider app was logged out or uninstalled. */
-"[FileAccessError/FileProvider/NotFound/generic]" = "Storage provider is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/generic]" = "Poskytovatel úložiště není k dispozici. Zkontrolujte, zda je nainstalován a přihlášen k vašemu účtu.";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
-"[FileAccessError/FileProvider/NotFound/other]" = "%@ is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ není k dispozici. Zkontrolujte, zda je nainstalován a přihlášen k vašemu účtu.";
 
 /* Error message: the required network drive is not connected. */
-"[FileAccessError/FileProvider/NotFound/smbShare]" = "Network storage is disconnected.";
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Síťové úložiště je odpojeno.";
 
 /* Error message: there is no USB drive connected to the device. */
-"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB drive is disconnected.";
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB disk je odpojen.";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "Interní chyba v KeePassium, prosím, řekněte nám o ní.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "Poskytovatel úložiště neodpovídá.";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ neodpovídá.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "Poskytovatel úložiště neodpovídá.";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ neodpovídá.";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Nepodařilo se odstranit soubor. Důvod: %@";
@@ -344,7 +344,7 @@
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "USB jednotka";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";

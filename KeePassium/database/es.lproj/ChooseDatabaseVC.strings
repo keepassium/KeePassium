@@ -22,3 +22,6 @@
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
 "UI0-Lh-wTj.title" = "Bases de datos";
 
+/* Class = "UIButton"; accessibilityLabel = "Close"; ObjectID = "zIk-Pe-sKK"; */
+"zIk-Pe-sKK.accessibilityLabel" = "Cerrar";
+

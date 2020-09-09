@@ -170,7 +170,7 @@
 "[Entry/View] Edit Entry" = "エントリーを編集";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "アプリからファイルを削除し、もう一度追加してみてください。";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Appからファイルを削除し、もう一度追加してみてください。";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "バックアップ";
@@ -304,11 +304,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "ハードウェアキーは自動入力では使用できません。";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFCはiOS 13以降が必要です。";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "ハードウェアキーがありません";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey スロット %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "ヘルプ";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "デフォルト (KeePass)";
@@ -320,7 +326,7 @@
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "キーファイルを一覧から削除しますか？ファイルの本体はそのまま残りますので、後で再度追加できます。";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "添付ファイルを直接アプリ内で表示するので、他のアプリに痕跡を残しません。(画像や文書、圧縮ファイルなどで有効です。)";
+"[Premium/Benefits/AttachmentPreview/details]" = "添付ファイルを直接Appで表示するので、他のAppに痕跡を残しません。(画像や文書、圧縮ファイルなどで有効です。)";
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "痕跡を残さず閲覧";
@@ -329,7 +335,7 @@
 "[Premium/Benefits/CustomAppIcon/details]" = "KeePassiumの装いを独特にできますし、電卓に偽装させてもいい。お好みで選べます。";
 
 /* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "アプリのアイコン変更";
+"[Premium/Benefits/CustomAppIcon/title]" = "Appのアイコンを変更";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "マスターパスワードの入力にうんざりですか？ もっと長時間データベースが開いたままにできて、ロック解除がワンタッチで可能になります。";
@@ -364,11 +370,17 @@
 /* Call to action: upgrade to premium */
 "[Premium/CallToAction/upgradeNow]" = "今すぐアップグレードする";
 
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "永久ライセンス";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "%@ 以前のすべてのバージョンの永久ライセンスをお持ちです。";
+
 /* What's included in a price plan: 1 year of support via email */
 "[Premium/Price Plan/Conditions/1 year email support]" = "1年間のEメールサポート";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/all premium features]" = "プレミアム版の全機能";
+"[Premium/Price Plan/Conditions/all premium features]" = "プレミアム版のすべての機能";
 
 /* What's included in a free plan: support via forums (as opposed to email support) */
 "[Premium/Price Plan/Conditions/community support]" = "カスタマーサポート: オンラインフォーラム";
@@ -422,7 +434,7 @@
 "[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "アップグレードがありません。サポートにお問い合わせください。";
 
 /* Action/button to start choosing premium versions and possibly buying one */
-"[Premium/Upgrade/action] Upgrade to Premium" = "Premiumにアップグレード";
+"[Premium/Upgrade/action] Upgrade to Premium" = "プレミアム版にアップグレード";
 
 /* Message shown when in-app purchase is deferred until parental approval. */
 "[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent" = "ありがとうございます！ KeePassiumはお使いいただけますが、保護者の方に購入の承認をお願いしておきます。";
@@ -446,7 +458,7 @@
 "[Premium/Upgrade/Progress] Purchasing..." = "購入中...";
 
 /* Text of the message shown after in-app purchase was successfully restored */
-"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "アップグレードに成功しました。アプリをお楽しみください！";
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "アップグレードに成功しました。Appをお楽しみください！";
 
 /* Title of the message shown after in-app purchase was successfully restored */
 "[Premium/Upgrade/Restored/title] Purchase Restored" = "購入が復元されました";
@@ -458,10 +470,10 @@
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "申し訳ありません";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
-"[Premium/usage] App being useful: %@/month, that is around %@/year." = "アプリが役立っています: %1$@/月、約%2$@/年。";
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "Appの使用実績: %1$@/月、約%2$@/年";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "アプリのアイコン変更";
+"[PremiumFeature/CustomAppIcons/title]" = "Appのアイコンの変更";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "プレミアム機能を見つけました！プレミアム版にアップグレードすると、KeePassiumを最高の状態でお使いいただけます。";
@@ -488,7 +500,7 @@
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "複数のデータベース";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "プレミアム版では画像や文書を直接アプリ内部で見ることができます。";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "プレミアム版では画像や文書を直接Appで見ることができます。";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "添付ファイルのプレビュー";
@@ -500,10 +512,10 @@
 "[Settings/AppLock/Biometric/title] Use %@" = "%@ を使用";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
-"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "アプリのロック、%@、タイムアウト";
+"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Appロック、%@、タイムアウト";
 
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
-"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "アプリのロック、パスコード、タイムアウト";
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Appロック、パスコード、タイムアウト";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "すべてのバックアップを削除 (%d)";
@@ -530,7 +542,7 @@
 "[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "コピーした後、クリップボード (コピー内容) を指定時間後に自動的に消去します。";
 
 /* Description of the Database Lock Timeout */
-"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "アプリがしばらく使われていない場合、安全のためにデータベースを閉じます。再開するにはマスターパスワードを再度入力してください。";
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Appがしばらく使われていない場合、安全のためにデータベースを閉じます。再開するにはマスターパスワードを再度入力してください。";
 
 /* Title of a settings section about making backup files */
 "[Settings/FileLists/Backup/title] Backup" = "バックアップ";
@@ -569,5 +581,5 @@
 "Import Database" = "データベースを読み込む";
 
 /* Warning message when the user tries to use a database as a key file */
-"KeePass database should not be used as key file. Please pick a different file." = "KeePassのデータベースをキーファイルとして使わないでください。違うファイルを選んでください。";
+"KeePass database should not be used as key file. Please pick a different file." = "KeePassのデータベースをキーファイルとして使用しないでください。別のファイルを選択してください。";
 

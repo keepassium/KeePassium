@@ -18,4 +18,25 @@ extension String {
     var utf8data: Data {
         return self.data(using: .utf8)! 
     }
+    
+    
+    public func localizedContains<T: StringProtocol>(
+        _ other: T,
+        options: String.CompareOptions = [])
+        -> Bool
+    {
+        let position = range(
+            of: other,
+            options: options,
+            locale: Locale.current)
+        return position != nil
+    }
+    
+    public func containsDiacritics() -> Bool {
+        let withoutDiacritics = self.folding(
+            options: [.diacriticInsensitive],
+            locale: Locale.current)
+        let result = self.compare(withoutDiacritics, options: .literal, range: nil, locale: nil)
+        return result != .orderedSame
+    }
 }

@@ -248,7 +248,7 @@
 "[FileAccessError/FileProvider/NotFound/generic]" = "Storage provider is not available. Please check whether it is installed and logged in to your account.";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
-"[FileAccessError/FileProvider/NotFound/other]" = "%@ is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ no está disponible. Por favor, comprueba si está instalado y inicia sesión en tu cuenta.";
 
 /* Error message: the required network drive is not connected. */
 "[FileAccessError/FileProvider/NotFound/smbShare]" = "Network storage is disconnected.";
@@ -263,13 +263,13 @@
 "[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ no responde.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "El proveedor de almacenamiento no responde.";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ no responde.";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "No se pudo eliminar el archivo. Motivo: %@";

@@ -48,22 +48,21 @@ public enum DatabaseError: LocalizedError {
 }
 
 public struct SearchQuery {
-    public var includeSubgroups: Bool
-    public var includeDeleted: Bool
-    public var includeFieldNames: Bool
-    public var includeProtectedValues: Bool
+    public let includeSubgroups: Bool
+    public let includeDeleted: Bool
+    public let includeFieldNames: Bool
+    public let includeProtectedValues: Bool
+    public let compareOptions: String.CompareOptions
     
-    public var text: String {
-        didSet {
-            textWords = text.split(separator: " ")
-        }
-    }
-    public var textWords: Array<Substring>
+    public let text: String
+    public let textWords: Array<Substring>
+    
     public init(
         includeSubgroups: Bool,
         includeDeleted: Bool,
         includeFieldNames: Bool,
         includeProtectedValues: Bool,
+        compareOptions: String.CompareOptions,
         text: String,
         textWords: Array<Substring>)
     {
@@ -71,8 +70,9 @@ public struct SearchQuery {
         self.includeDeleted = includeDeleted
         self.includeFieldNames = includeFieldNames
         self.includeProtectedValues = includeProtectedValues
+        self.compareOptions = compareOptions
         self.text = text
-        self.textWords = textWords
+        self.textWords = text.split(separator: " ")
     }
 }
 
@@ -86,10 +86,6 @@ public class DatabaseLoadingWarnings {
         databaseGenerator = nil
         messages = []
     }
-}
-
-public protocol DatabaseProgressDelegate {
-    func databaseProgressChanged(percent: Int)
 }
 
 open class Database: Eraseable {

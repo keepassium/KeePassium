@@ -193,6 +193,9 @@
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "¿Estás seguro?";
 
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "Recién eliminado";
+
 /* Notification text when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/text] Discard unsaved changes?" = "¿Descartar los cambios no guardados?";
 
@@ -238,11 +241,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Las llaves físicas como YubiKey no están disponibles con Autocompletar.";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Sin llave física";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "Unidad de YubiKey %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Ayuda";
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "¿Eliminar el archivo de clave?\n Asegúrate de tener una copia de seguridad.";

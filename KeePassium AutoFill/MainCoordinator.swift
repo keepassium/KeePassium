@@ -128,9 +128,10 @@ class MainCoordinator: NSObject, Coordinator {
         }
         
         let passwordCredential = ASPasswordCredential(user: entry.userName, password: entry.password)
-        rootController.extensionContext.completeRequest(
-            withSelectedCredential: passwordCredential,
-            completionHandler: nil)
+        rootController.extensionContext.completeRequest(withSelectedCredential: passwordCredential) {
+            (expired) in
+            HapticFeedback.play(.credentialsPasted)
+        }
         Settings.current.isAutoFillFinishedOK = true
         cleanup()
     }

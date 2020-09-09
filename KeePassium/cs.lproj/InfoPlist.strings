@@ -11,10 +11,10 @@
 "KeePass Database (kdbx)" = "KeePass databáze (kdbx)";
 
 /* Privacy - NFC Scan Usage Description */
-"NFCReaderUsageDescription" = "KeePassium needs access to NFC to communicate with your YubiKey.";
+"NFCReaderUsageDescription" = "KeePassium potřebuje přístup k NFC pro komunikaci s vaším YubiKey.";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "KeePassium needs the camera to scan QR codes.";
+"NSCameraUsageDescription" = "KeePassium potřebuje přístup k fotoaparátu pro skenování QR kódů.";
 
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Používat FaceID k odemčení KeePassium";

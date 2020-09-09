@@ -15,6 +15,18 @@ public class NavigationRouter: NSObject {
     private var popHandlers = [ObjectIdentifier: PopHandler]()
     private weak var oldDelegate: UINavigationControllerDelegate?
     
+    static func createPopover(at popoverAnchor: PopoverAnchor) -> NavigationRouter {
+        let navVC = UINavigationController()
+        let router = NavigationRouter(navVC)
+        navVC.modalPresentationStyle = .popover
+        navVC.presentationController?.delegate = router
+        if let popover = navVC.popoverPresentationController {
+            popoverAnchor.apply(to: popover)
+            popover.delegate = router
+        }
+        return router
+    }
+
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         oldDelegate = navigationController.delegate
@@ -72,5 +84,22 @@ extension NavigationRouter: UINavigationControllerDelegate {
             navigationController,
             didShow: viewController,
             animated: true)
+    }
+}
+
+extension NavigationRouter: UIPopoverPresentationControllerDelegate {
+    public func presentationController(
+        _ controller: UIPresentationController,
+        viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle
+    ) -> UIViewController?
+    {
+        return nil // "keep existing"
+    }
+}
+
+extension NavigationRouter: UIAdaptivePresentationControllerDelegate {
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        popToRoot(animated: false)
+        pop(animated: false) 
     }
 }

@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [1.15.70] - 2020-08-27
+
+### Added
+
+- Perpetual fallback license for subscriptions (a.k.a. "rent-to-own license")
+- App history screen (What's New)
+
+### Changed
+
+- Improved search with diacritics: insensitive to diacritics, unless you use diacritics in the query (closes #118) [thanks, hunhejj]
+- Improved haptic feedback in AutoFill
+- Updated translations [thanks, everyone]
+
+### Fixed 
+
+- Replacing broken references to external files failed sometimes [thanks, Paul]
+- Relative project file paths on GitHub (thanks, @mj)
+
+
 ## [1.14.69] - 2020-08-11
 
 ### Added

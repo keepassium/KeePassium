@@ -412,12 +412,17 @@ public class FileKeeper {
     {
         switch fileType {
         case .database:
-            if let urlRef = findStoredExternalReferenceFor(url: sourceURL, fileType: fileType) {
-                Settings.current.startupDatabase = urlRef
-                FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
-                Diag.info("Added already known external file, deduplicating.")
-                successHandler?(urlRef)
-                return
+            if let existingRef = findStoredExternalReferenceFor(url: sourceURL, fileType: fileType) {
+                if existingRef.error == nil {
+                    Settings.current.startupDatabase = existingRef
+                    FileKeeperNotifier.notifyFileAdded(urlRef: existingRef, fileType: fileType)
+                    Diag.info("Added already known external file, deduplicating.")
+                    successHandler?(existingRef)
+                    return
+                } else {
+                    Diag.debug("Removing the old broken reference.")
+                    removeExternalReference(existingRef, fileType: fileType)
+                }
             }
             addExternalFileRef(
                 url: sourceURL,

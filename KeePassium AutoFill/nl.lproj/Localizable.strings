@@ -193,6 +193,9 @@
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Weet je het zeker?";
 
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "Recent verwijderd";
+
 /* Notification text when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Verwerp niet-opgeslagen wijzigingen?";
 
@@ -238,11 +241,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarematige sleutels zijn niet beschikbaar in automatisch aanvullen.";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Geen hardwarematige sleutel";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey-sleuf %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Hulp";
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";

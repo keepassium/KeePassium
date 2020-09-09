@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.footerTitle" = "アプリをロックするパスコードを間違えると、KeePassiumはすべてのデータベースを閉じ、すべてのマスターキーをキーチェーンから消去します。";
+"5Dg-KX-m7a.footerTitle" = "Appをロックするパスコードを間違えると、KeePassiumはすべてのデータベースを閉じ、すべてのマスターキーをキーチェーンから消去します。";
 
 /* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
 "5Dg-KX-m7a.headerTitle" = "パスコードを間違ったとき";
@@ -8,7 +8,7 @@
 "6Pk-35-Fx6.text" = "データベースを保護";
 
 /* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.footerTitle" = "アプリをロックするパスコードの代わりとして、素速い (が安全性は劣る) 生体認証を許可する。";
+"7ae-8I-LiQ.footerTitle" = "Appロックでパスコードの代わりに動作の速い（が安全性は劣る）生体認証を使用します。";
 
 /* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
 "7ae-8I-LiQ.headerTitle" = "生体認証";
@@ -20,11 +20,11 @@
 "Ef4-Jw-xeO.text" = "タイムアウト";
 
 /* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
-"IS1-Lb-MFy.text" = "アプリをロック";
+"IS1-Lb-MFy.text" = "Appロックを使用";
 
 /* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
-"m50-fl-4tu.footerTitle" = "指定時間後に自動的にアプリをロックします。";
+"m50-fl-4tu.footerTitle" = "指定時間後に自動的にAppをロックします。";
 
 /* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
-"U5m-je-MhO.title" = "アプリの保護";
+"U5m-je-MhO.title" = "Appの保護";
 

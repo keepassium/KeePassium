@@ -13,6 +13,7 @@ class HapticFeedback {
     enum Kind {
         case appUnlocked
         case databaseUnlocked
+        case credentialsPasted
         case wrongPassword
         case error
     }
@@ -24,6 +25,9 @@ class HapticFeedback {
         case .appUnlocked, .databaseUnlocked:
             let tactileGenerator = UIImpactFeedbackGenerator()
             tactileGenerator.impactOccurred()
+        case .credentialsPasted:
+            let tactileGenerator = UINotificationFeedbackGenerator()
+            tactileGenerator.notificationOccurred(.success)
         case .wrongPassword:
             let tactileGenerator = UINotificationFeedbackGenerator()
             tactileGenerator.notificationOccurred(.warning)

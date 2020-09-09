@@ -240,7 +240,7 @@ public class PremiumManager: NSObject {
     
     
     public func isAvailable(feature: PremiumFeature) -> Bool {
-        return feature.isAvailable(in: status)
+        return feature.isAvailable(in: status, fallbackDate: fallbackDate)
     }
     
     

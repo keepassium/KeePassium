@@ -28,20 +28,40 @@ public enum PremiumFeature: Int {
     
     case canChangeAppIcon = 6
     
-    public func isAvailable(in status: PremiumManager.Status) -> Bool {
+    public func isAvailable(in status: PremiumManager.Status, fallbackDate: Date?) -> Bool {
+        let isEntitled = status == .subscribed ||
+            status == .lapsed ||
+            wasAvailable(before: fallbackDate)
+        
+        switch self {
+        case .canUseMultipleDatabases,
+             .canUseLongDatabaseTimeouts,
+             .canUseHardwareKeys,
+             .canKeepMasterKeyOnDatabaseTimeout,
+             .canChangeAppIcon:
+            return isEntitled
+        case .canPreviewAttachments:
+            return isEntitled || (status != .freeHeavyUse)
+        }
+    }
+    
+    private func wasAvailable(before fallbackDate: Date?) -> Bool {
+        guard let date = fallbackDate else {
+            return false
+        }
         switch self {
         case .canUseMultipleDatabases:
-            return status == .subscribed || status == .lapsed
+            return date > Date(iso8601string: "2019-07-31T00:00:00Z")!
         case .canUseLongDatabaseTimeouts:
-            return status == .subscribed || status == .lapsed
+            return date > Date(iso8601string: "2019-07-31T00:00:00Z")!
         case .canPreviewAttachments:
-            return status != .freeHeavyUse
+            return date > Date(iso8601string: "2019-07-31T00:00:00Z")!
         case .canUseHardwareKeys:
-            return status == .subscribed || status == .lapsed
+            return date > Date(iso8601string: "2020-01-14T00:00:00Z")!
         case .canKeepMasterKeyOnDatabaseTimeout:
-            return status == .subscribed || status == .lapsed
+            return date > Date(iso8601string: "2020-07-14T00:00:00Z")!
         case .canChangeAppIcon:
-            return status == .subscribed || status == .lapsed
+            return date > Date(iso8601string: "2020-08-04T00:00:00Z")!
         }
     }
 }

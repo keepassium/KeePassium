@@ -195,7 +195,7 @@
 
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Ошибка";
-    
+
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
 "[FileInfo/isExcludedFromBackup/title]" = "Исключить из резервной копии iCloud/iTunes";
 
@@ -304,11 +304,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Аппаратные ключи не доступны в Автозаполнении.";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC требует iOS 13 или более поздней версии.";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Без аппаратного ключа";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey слот %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Помощь";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "По умолчанию (KeePass)";
@@ -363,6 +369,12 @@
 
 /* Call to action: upgrade to premium */
 "[Premium/CallToAction/upgradeNow]" = "Включить Премиум";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Постоянная лицензия";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "У вас постоянная лицензия для всех версий, выпущенных до %@.";
 
 /* What's included in a price plan: 1 year of support via email */
 "[Premium/Price Plan/Conditions/1 year email support]" = "Год поддержки по электронной почте";

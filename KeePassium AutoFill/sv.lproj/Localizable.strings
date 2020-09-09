@@ -20,7 +20,7 @@
 "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Premiumuppgradering";
 
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
-"[AutoFill/Search/callerID]" = "Caller ID: %@";
+"[AutoFill/Search/callerID]" = "Anrops-ID: %@";
 
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Autofyll kan inte komma åt filerna du redan lagt till i KeePassium-appen automatiskt.\n\nVarför? Bakom kulisserna hanterar systemet Auotfyll som en separat app, som är oberoende från huvudprocessen. Av säkerhetsskäl kan inte en app komma åt externa filer – om du inte uttryckligen ger appen tillstånd till detta. På så sätt garanterar systemet att appen endast kan komma åt filer du ger tillåtelse till.\n\nDetta leder till att både Autofyll och huvudappen för KeePassium behöver ges tillstånd för varje extern fil som ska användas. Som tur är behöver detta bara göras en gång.";
@@ -116,7 +116,7 @@
 "[FileInfo/Backup/header]" = "Backup";
 
 /* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
-"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
+"[FileInfo/Error/failed to change attributes]" = "Uppdatering av filattribut misslyckades.";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Skapad";
@@ -137,7 +137,7 @@
 "[FileInfo/Field/valueError] Error" = "Fel";
 
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
-"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+"[FileInfo/isExcludedFromBackup/title]" = "Exkludera från säkerhetskopiering till iCloud/iTunes";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Avbryt";
@@ -146,7 +146,7 @@
 "[Generic] Contact Us" = "Kontakta oss";
 
 /* Action/button to proceed with the action */
-"[Generic] Continue" = "Continue";
+"[Generic] Continue" = "Fortsätt";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopiera";
@@ -193,6 +193,9 @@
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Är du säker?";
 
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "Senast raderade";
+
 /* Notification text when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Släng osparade ändringar?";
 
@@ -238,29 +241,35 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hårdvarunycklar är ej tillgängliga i Autofyll.";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Ingen hårdvarunyckel";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
 
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Hjälp";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Radera nyckelfil?\nSe till att du har en säkerhetskopia.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
-"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Ta bort nyckelfil från listan?\n Filen kommer vara kvar oförändrad och du kan lägga till den igen senare.";
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Uppgradera till premium";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
+"[PremiumFeature/CustomAppIcons/title]" = "Valbara app-ikoner";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+"[PremiumFeature/Generic/description]" = "Du har hittat en premiumfunktion! Uppgradera till premium och upplev KeePassium när det är som bäst.";
 
 /* A generic title of a premium feature */
-"[PremiumFeature/Generic/title]" = "Premium Feature";
+"[PremiumFeature/Generic/title]" = "Premiumfunktion";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
 "[PremiumFeature/HardwareKeys/description]" = "Öka säkerheten med hårdvarunycklar (YubiKey) i premiumversionen.";

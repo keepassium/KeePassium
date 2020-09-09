@@ -56,7 +56,7 @@
 "hDU-6p-Bzr.text" = "Rijndael implementation by Szymon Stefanek";
 
 /* Class = "UILabel"; text = "Apache 2.0 license"; ObjectID = "ht7-pj-Dbb"; */
-"ht7-pj-Dbb.text" = "Apache 2.0 license";
+"ht7-pj-Dbb.text" = "Licence Apache 2.0";
 
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "hVm-qH-TAI"; */
 "hVm-qH-TAI.text" = "CC BY 3.0";
@@ -134,5 +134,5 @@
 "wYr-Ya-qAP.text" = "System settings icon by Vicons Design";
 
 /* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
-"Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK by Yubico AB";
+"Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK od Yubico AB";
 

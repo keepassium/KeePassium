@@ -2,7 +2,7 @@
 "7bL-fQ-OUc.headerTitle" = "フィードバック";
 
 /* Class = "UILabel"; text = "Proprietary license"; ObjectID = "7cl-Fc-8Nf"; */
-"7cl-Fc-8Nf.text" = "私有ライセンス";
+"7cl-Fc-8Nf.text" = "Proprietary license";
 
 /* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
 "7id-QT-w26.text" = "Icons by Icons8";
@@ -83,7 +83,7 @@
 "muG-xI-muo.headerTitle" = "クレジット";
 
 /* Class = "UITableViewController"; title = "About"; ObjectID = "NLN-lQ-bh5"; */
-"NLN-lQ-bh5.title" = "このアプリについて";
+"NLN-lQ-bh5.title" = "このAppについて";
 
 /* Class = "UILabel"; text = "CC0 license"; ObjectID = "o9e-qb-mMw"; */
 "o9e-qb-mMw.text" = "CC0 license";
@@ -116,7 +116,7 @@
 "SOX-Re-yl9.text" = "Linecons by Andrian Valeanu";
 
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
-"TOl-DA-gYc.text" = "サポートに連絡";
+"TOl-DA-gYc.text" = "お問い合わせ";
 
 /* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
 "tOr-N9-2UY.text" = "Feather icons by Cole Bemis";

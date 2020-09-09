@@ -23,7 +23,7 @@
 "[AutoFill/Search/callerID]" = "Caller ID: %@";
 
 /* No comment provided by engineer. */
-"[AutoFill/Setup/footer]" = "L'AutoFill non può accedere automaticamente ai file che hai già nell'app principale di KeePassium\n\nPerché? Dietro le quinte, il sistema tratta AutoFill come un'app separata, indipendente dal processo principale di KeePassium. Per ragioni di sicurezza, un’app non può semplicemente accedere a qualsiasi file esterno – a meno che non si collegino esplicitamente questi file a questa app. Pertanto, il sistema garantisce che l'applicazione possa accedere solo ai file che hai autorizzato.\n\nDi conseguenza, sia AutoFill che l'app principale di KeePassium devono avere le autorizzazioni necessarie per ogni file esterno. Fortunatamente si tratta di una procedura unica.";
+"[AutoFill/Setup/footer]" = "L'AutoFill non può accedere automaticamente ai file che hai già nell'app principale di KeePassium\n\nPerché? Dietro le quinte, il sistema tratta AutoFill come un'app separata, indipendente dal processo principale di KeePassium. Per ragioni di sicurezza, un’app non può semplicemente accedere a qualsiasi file esterno – a meno che non si colleghino esplicitamente questi file all'app. Pertanto, il sistema garantisce che l'applicazione possa accedere solo ai file che hai autorizzato.\n\nDi conseguenza, sia AutoFill che l'app principale di KeePassium devono avere le autorizzazioni necessarie per ogni file esterno. Fortunatamente si tratta di una procedura da eseguire una tantum.";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -116,7 +116,7 @@
 "[FileInfo/Backup/header]" = "Backup";
 
 /* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
-"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
+"[FileInfo/Error/failed to change attributes]" = "Impossibile aggiornare gli attributi del file.";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "Data Creazione";
@@ -137,7 +137,7 @@
 "[FileInfo/Field/valueError] Error" = "Errore";
 
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
-"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+"[FileInfo/isExcludedFromBackup/title]" = "Escludi da iCloud/iTunes Backup";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Annullare";
@@ -146,7 +146,7 @@
 "[Generic] Contact Us" = "Contattaci";
 
 /* Action/button to proceed with the action */
-"[Generic] Continue" = "Continue";
+"[Generic] Continue" = "Prosegui";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Copia";
@@ -193,6 +193,9 @@
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Sei sicuro?";
 
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "Eliminati di recente";
+
 /* Notification text when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Ignorare le modifiche non salvate?";
 
@@ -238,11 +241,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardware keys are not available in AutoFill.";
 
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "No Hardware Key";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Aiuto";
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Eliminare il file chiave?\n Assicurati di avere un backup.";
@@ -254,7 +263,7 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "Passa a Premium";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
+"[PremiumFeature/CustomAppIcons/title]" = "Icone App Personalizzate";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";

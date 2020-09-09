@@ -24,11 +24,20 @@ class SearchHelper {
     func find(database: Database, searchText: String) -> SearchResults {
         let settings = Settings.current
         let words = searchText.split(separator: " " as Character)
+        
+        let compareOptions: String.CompareOptions
+        if searchText.containsDiacritics() {
+            compareOptions = [.caseInsensitive]
+        } else {
+            compareOptions = [.caseInsensitive, .diacriticInsensitive]
+        }
+        
         let query = SearchQuery(
             includeSubgroups: true,
             includeDeleted: false,
             includeFieldNames: settings.isSearchFieldNames,
             includeProtectedValues: settings.isSearchProtectedValues,
+            compareOptions: compareOptions,
             text: searchText,
             textWords: words)
         let scoredEntries = performSearch(in: database, query: query)

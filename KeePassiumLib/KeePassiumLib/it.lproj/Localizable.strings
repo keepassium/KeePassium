@@ -245,16 +245,16 @@
 "[DatabaseError] Invalid password or key file" = "Password o file chiave non validi";
 
 /* Error message: storage provider app was logged out or uninstalled. */
-"[FileAccessError/FileProvider/NotFound/generic]" = "Storage provider is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/generic]" = "Lo Storage provider non è disponibile. Verificare che sia installato e collegato con il vostro account.";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
-"[FileAccessError/FileProvider/NotFound/other]" = "%@ is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ non è disponibile. Controllare che sia installato e connesso al vostro account.";
 
 /* Error message: the required network drive is not connected. */
-"[FileAccessError/FileProvider/NotFound/smbShare]" = "Network storage is disconnected.";
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "L'archivio di rete è disconnesso.";
 
 /* Error message: there is no USB drive connected to the device. */
-"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB drive is disconnected.";
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "L'unità USB è disconnessa.";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
