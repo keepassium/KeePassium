@@ -22,7 +22,7 @@ public class BaseDocument: UIDocument, Synchronizable {
     fileprivate static let backgroundQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.name = "com.keepassium.Document"
-        queue.qualityOfService = .default
+        queue.qualityOfService = .background
         queue.maxConcurrentOperationCount = 8
         return queue
     }()

@@ -16,6 +16,9 @@ extension UIColor {
     static var actionText: UIColor {
         return UIColor(named: "ActionText") ?? .white
     }
+    static var iconTint: UIColor {
+        return UIColor(named: "iconTint") ?? UIColor.systemBlue
+    }
     static var destructiveTint: UIColor {
         return UIColor(named: "DestructiveTint") ?? UIColor.systemRed
     }

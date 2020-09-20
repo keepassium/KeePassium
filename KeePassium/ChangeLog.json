@@ -1,6 +1,68 @@
 {
     "sections": [
         {
+            "version": "1.17",
+            "releaseDate": "2020-09-19T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Refined: Suggest re-adding the database if it is missing on iOS 14.",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Keep the .latest backup file regardless of its age",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Added a Copy button to Caller ID in AutoFill [thanks, Adam]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Show a spinner when mass-deleting backup files",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Increased the max length of generated passwords to 100 [thanks, u/ReevaluateAdNauseam]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Freezing when there are hundreds of backup files [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Recognizing storage providers on iOS 14",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Opening files with unregistered extensions [thanks, Kevin]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Displaying of long (multi-line) Caller ID [thanks, Adam]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: App icon picker UI on iOS 12 [thanks, dragonblitz10]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Backup files were shown as external ones sometimes",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Opening kdbx4 with UInt32 transformRounds [thanks, Mitchell]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed(hopefully): text missing in entry viewer [thanks, Lionel and Jean-Marc]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Splash screen background color in dark mode",
+                    "type": 1
+                },
+            ]
+        },
+        {
             "version": "1.16",
             "releaseDate": "2020-08-31T00:00:00Z",
             "items": [

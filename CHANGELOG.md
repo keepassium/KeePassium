@@ -1,5 +1,28 @@
 #CHANGELOG
 
+## [1.17.74] - 2020-09-19
+
+### Changed
+ 
+- (iOS 14) Suggesting to re-add the database if it seems missing.
+- Keeping the .latest backup file regardless of its age
+- Refined CallerID in AutoFill to make it easier to copy [thanks, Adam]
+- Showing a wait animation when deleting many backup files
+- Increased the max length of generated passwords to 100 [thanks, u/ReevaluateAdNauseam]
+
+### Fixed
+
+- Recognizing storage providers on iOS 14
+- Freezing when there are hundreds of backup files (related #109) [thanks, everyone]
+- Opening files with unregistered extensions [thanks, Kevin]
+- Displaying multi-line Caller ID URLs in AutoFill [thanks, Adam]
+- App icon picker UI on iOS 12 (closes #123) [thanks, dragonblitz10]
+- Sometimes backup files were shown as external ones
+- Opening kdbx4 files with UInt32 transformRounds (keeweb/keeweb#1598) [thanks, Mitchell]
+- Hopefully fixed: text missing in entry viewer [thanks, Lionel and Jean-Marc]
+- Splash screen background color in dark mode
+
+
 ## [1.16.73] - 2020-08-31
 
 ### Added

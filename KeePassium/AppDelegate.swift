@@ -115,16 +115,17 @@ extension AppDelegate: WatchdogDelegate {
         let _appCoverWindow = UIWindow(frame: UIScreen.main.bounds)
         _appCoverWindow.screen = UIScreen.main
         _appCoverWindow.windowLevel = UIWindow.Level.alert
-        let coverVC = AppCoverVC.make()
-        
-        UIView.performWithoutAnimation {
-            _appCoverWindow.rootViewController = coverVC
-            _appCoverWindow.makeKeyAndVisible()
-        }
         self.appCoverWindow = _appCoverWindow
-        print("App cover shown")
-        
-        coverVC.view.snapshotView(afterScreenUpdates: true)
+
+        let coverVC = AppCoverVC.make()
+        DispatchQueue.main.async { [_appCoverWindow, coverVC] in
+            UIView.performWithoutAnimation {
+                _appCoverWindow.rootViewController = coverVC
+                _appCoverWindow.makeKeyAndVisible()
+            }
+            print("App cover shown")
+            coverVC.view.snapshotView(afterScreenUpdates: true)
+        }
     }
     
     private func hideAppCoverScreen() {

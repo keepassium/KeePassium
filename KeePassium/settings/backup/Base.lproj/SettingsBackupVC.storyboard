@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="AkD-Ud-4f0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="" footerTitle="Before saving a database, KeePassium will automatically make a copy, just in case." id="nBI-OF-9iV" userLabel="Enable Backup">
                                 <cells>
@@ -123,7 +123,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Keep Backup Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="G42-gR-eKm">
-                                                    <rect key="frame" x="60" y="16" width="140" height="20.5"/>
+                                                    <rect key="frame" x="60" y="16" width="139" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -133,7 +133,7 @@
                                                     </attributedString>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{N days}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="PKe-6p-Ssr">
-                                                    <rect key="frame" x="220" y="16" width="65" height="20.5"/>
+                                                    <rect key="frame" x="220.5" y="16" width="64.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -157,26 +157,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-mN-5RB" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="55" y="15" width="210" height="14"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                    <color key="tintColor" name="DestructiveTint"/>
-                                                    <state key="normal" title="{Delete ALL Backup Files (1)}"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="#bc-ignore!"/>
-                                                    </attributedString>
-                                                    <connections>
-                                                        <action selector="didPressDeleteAllBackupFiles:" destination="nSy-3u-0xW" eventType="touchUpInside" id="6hJ-fX-5bk"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Uwg-mR-8ef">
+                                                    <rect key="frame" x="55" y="15" width="210" height="13.5"/>
+                                                    <subviews>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="PNJ-6Y-QYU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="13.5"/>
+                                                        </activityIndicatorView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-mN-5RB" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="210" height="13.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                            <color key="tintColor" name="DestructiveTint"/>
+                                                            <state key="normal" title="{Delete ALL Backup Files (1)}"/>
+                                                            <attributedString key="userComments">
+                                                                <fragment content="#bc-ignore!"/>
+                                                            </attributedString>
+                                                            <connections>
+                                                                <action selector="didPressDeleteAllBackupFiles:" destination="nSy-3u-0xW" eventType="touchUpInside" id="6hJ-fX-5bk"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="RXF-mN-5RB" firstAttribute="centerY" secondItem="Xwy-hZ-bIT" secondAttribute="centerY" id="7dM-ET-4cS"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="RXF-mN-5RB" secondAttribute="bottom" constant="4" id="Pv9-eG-1dp"/>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="RXF-mN-5RB" secondAttribute="trailing" id="g0d-g1-JPd"/>
-                                                <constraint firstItem="RXF-mN-5RB" firstAttribute="centerX" secondItem="Xwy-hZ-bIT" secondAttribute="centerX" id="gB3-uu-mG3"/>
-                                                <constraint firstItem="RXF-mN-5RB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xwy-hZ-bIT" secondAttribute="leadingMargin" id="hSh-yY-cR7"/>
-                                                <constraint firstItem="RXF-mN-5RB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Xwy-hZ-bIT" secondAttribute="topMargin" constant="4" id="sNh-cT-LnM"/>
+                                                <constraint firstItem="Uwg-mR-8ef" firstAttribute="centerY" secondItem="Xwy-hZ-bIT" secondAttribute="centerY" id="6ER-b4-6qM"/>
+                                                <constraint firstItem="Uwg-mR-8ef" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Xwy-hZ-bIT" secondAttribute="topMargin" constant="4" id="9gd-9v-IGZ"/>
+                                                <constraint firstItem="Uwg-mR-8ef" firstAttribute="centerX" secondItem="Xwy-hZ-bIT" secondAttribute="centerX" id="Bmv-bD-Wk4"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Uwg-mR-8ef" secondAttribute="bottom" constant="4" id="OlK-vj-5Mx"/>
+                                                <constraint firstItem="Uwg-mR-8ef" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xwy-hZ-bIT" secondAttribute="leadingMargin" id="YEP-o2-5B2"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Uwg-mR-8ef" secondAttribute="trailing" id="urp-xW-5ne"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -192,6 +200,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="backupDeletionSpinner" destination="PNJ-6Y-QYU" id="KaD-2f-GLJ"/>
                         <outlet property="backupDurationCell" destination="ljV-dR-Ihl" id="jnT-OS-Id5"/>
                         <outlet property="deleteAllBackupsButton" destination="RXF-mN-5RB" id="xUb-IE-XBT"/>
                         <outlet property="enableDatabaseBackupSwitch" destination="C3i-cd-qyP" id="Wzl-9s-eTN"/>
@@ -218,5 +227,8 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

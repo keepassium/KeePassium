@@ -107,12 +107,28 @@ public class VarDict: Eraseable {
             return Int32(data: data)
         }
         func asUInt64() -> UInt64? {
-            guard type == .UInt64 else { return nil }
-            return UInt64(data: data)
+            switch type {
+            case .UInt64:
+                return UInt64(data: data)
+            case .UInt32:
+                if let uint32 = asUInt32() {
+                    return UInt64(exactly: uint32)
+                }
+            default: break
+            }
+            return nil
         }
         func asInt64() -> Int64? {
-            guard type == .Int64 else { return nil }
-            return Int64(data: data)
+            switch type {
+            case .Int64:
+                return Int64(data: data)
+            case .Int32:
+                if let int32 = asInt32() {
+                    return Int64(exactly: int32)
+                }
+            default: break
+            }
+            return nil
         }
         func asString() -> String? {
             guard type == .String else { return nil }

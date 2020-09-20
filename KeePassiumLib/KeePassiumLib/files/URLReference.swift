@@ -81,7 +81,16 @@ public class URLReference:
     
     public var hasPermissionError257: Bool {
         guard let nsError = error as NSError? else { return false }
-        return (nsError.domain == "NSCocoaErrorDomain") && (nsError.code == 257)
+        return (nsError.domain == NSCocoaErrorDomain) && (nsError.code == 257)
+    }
+    
+    public var isFileMissingIOS14: Bool {
+        guard #available(iOS 14, *), location == .external else {
+            return false
+        }
+        guard let underlyingError = error?.underlyingError,
+              let nsError = underlyingError as NSError? else { return false }
+        return (nsError.domain == NSCocoaErrorDomain) && (nsError.code == 4)
     }
     
     private let data: Data
@@ -114,7 +123,7 @@ public class URLReference:
     
     public private(set) var fileProvider: FileProvider?
     
-    fileprivate let backgroundQueue = DispatchQueue(
+    fileprivate static let backgroundQueue = DispatchQueue(
         label: "com.keepassium.URLReference",
         qos: .background,
         attributes: [.concurrent])
@@ -258,7 +267,7 @@ public class URLReference:
     {
         execute(
             withTimeout: URLReference.defaultTimeout,
-            on: backgroundQueue,
+            on: URLReference.backgroundQueue,
             slowSyncOperation: { () -> Result<URL, Error> in
                 do {
                     let url = try self.resolveSync()
@@ -339,7 +348,7 @@ public class URLReference:
             [self] (result) in 
             switch result {
             case .success(let url):
-                self.backgroundQueue.async { 
+                URLReference.backgroundQueue.async { 
                     self.refreshInfo(for: url, completion: callback)
                 }
             case .failure(let error):
@@ -456,7 +465,7 @@ public class URLReference:
     
     private func refreshInfoSync() {
         let semaphore = DispatchSemaphore(value: 0)
-        backgroundQueue.async { [self] in
+        URLReference.backgroundQueue.async { [self] in
             self.refreshInfo { _ in
                 semaphore.signal()
             }
@@ -501,14 +510,25 @@ public class URLReference:
         }
         
         func extractFileProviderID(_ fullString: String) -> String? {
-            let regexp = try! NSRegularExpression(
-                pattern: #"fileprovider\:#?([a-zA-Z0-9\.\-\_]+)"#,
-                options: [])
+            
+            let regExpressions: [NSRegularExpression] = [
+                try! NSRegularExpression(
+                    pattern: #"fileprovider\:#?([a-zA-Z0-9\.\-\_]+)"#,
+                    options: []),
+                try! NSRegularExpression(
+                    pattern: #"fp\:/.*?/([a-zA-Z0-9\.\-\_]+)/"#,
+                    options: [])
+            ]
+
             let fullRange = NSRange(fullString.startIndex..<fullString.endIndex, in: fullString)
-            guard let match = regexp.firstMatch(in: fullString, options: [], range: fullRange),
-                let foundRange = Range(match.range(at: 1), in: fullString)
-                else { return nil }
-            return String(fullString[foundRange])
+            for regexp in regExpressions {
+                if let match = regexp.firstMatch(in: fullString, options: [], range: fullRange),
+                   let foundRange = Range(match.range(at: 1), in: fullString)
+                {
+                    return String(fullString[foundRange])
+                }
+            }
+            return nil
         }
         
         func extractBookmarkedURLString(_ sandboxInfoString: String) -> String? {

@@ -29,6 +29,7 @@ class EditGroupVC: UIViewController, Refreshable {
     }
     private var mode: Mode = .edit
     
+    private var itemIconPickerCoordinator: ItemIconPickerCoordinator?
     
     static func make(
         mode: Mode,
@@ -75,6 +76,7 @@ class EditGroupVC: UIViewController, Refreshable {
     }
     
     deinit {
+        itemIconPickerCoordinator = nil
         DatabaseManager.shared.removeObserver(self)
     }
     
@@ -85,20 +87,18 @@ class EditGroupVC: UIViewController, Refreshable {
             nameTextField.selectAll(nil)
         }
     }
-    
+        
     func refresh() {
         nameTextField.text = group.name
         let icon = UIImage.kpIcon(forGroup: group)
         imageView.image = icon
     }
     
-    func dismissPopover(animated: Bool, completion: (() -> Void)?) {
+    func dismissPopover(animated: Bool) {
         resignFirstResponder()
-        if let navVC = navigationController {
-            navVC.dismiss(animated: animated, completion: completion)
-        } else {
-            dismiss(animated: animated, completion: completion)
-        }
+        dismiss(animated: animated, completion: { [self] in 
+            self.itemIconPickerCoordinator = nil
+        })
     }
 
     
@@ -123,7 +123,7 @@ class EditGroupVC: UIViewController, Refreshable {
         case .edit:
             restoreOriginalState()
         }
-        dismissPopover(animated: true, completion: nil)
+        dismissPopover(animated: true)
     }
     
     @IBAction func didPressDone(_ sender: Any) {
@@ -138,8 +138,7 @@ class EditGroupVC: UIViewController, Refreshable {
     }
     
     @IBAction func didPressChangeIcon(_ sender: Any) {
-        let chooseIconVC = ChooseIconVC.make(selectedIconID: group.iconID, delegate: self)
-        navigationController?.pushViewController(chooseIconVC, animated: true)
+        showIconPicker()
     }
     
 
@@ -188,7 +187,7 @@ extension EditGroupVC: DatabaseManagerObserver {
 
     func databaseManager(didSaveDatabase urlRef: URLReference) {
         hideSavingOverlay()
-        self.dismissPopover(animated: true, completion: nil)
+        self.dismissPopover(animated: true)
         if let group = group {
             delegate?.groupEditor(groupDidChange: group)
             GroupChangeNotifications.post(groupDidChange: group)
@@ -222,12 +221,23 @@ extension EditGroupVC: DatabaseManagerObserver {
     }
 }
 
-extension EditGroupVC: IconChooserDelegate {
-    func iconChooser(didChooseIcon iconID: IconID?) {
-        if let iconID = iconID {
-            group.iconID = iconID
-            imageView.image = UIImage.kpIcon(forGroup: group)
+extension EditGroupVC: ItemIconPickerCoordinatorDelegate {
+    func showIconPicker() {
+        assert(itemIconPickerCoordinator == nil)
+        
+        guard let navVC = navigationController else { assertionFailure(); return }
+        let router = NavigationRouter(navVC)
+        itemIconPickerCoordinator = ItemIconPickerCoordinator(router: router)
+        itemIconPickerCoordinator!.dismissHandler = { [self] (coordinator) in
+            self.itemIconPickerCoordinator = nil
         }
+        itemIconPickerCoordinator!.delegate = self
+        itemIconPickerCoordinator!.start(selectedIconID: group.iconID)
+    }
+    
+    func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator) {
+        group.iconID = standardIcon
+        imageView.image = UIImage.kpIcon(forGroup: group)
     }
 }
 

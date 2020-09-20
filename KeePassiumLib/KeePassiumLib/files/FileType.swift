@@ -13,6 +13,7 @@ public enum FileType {
     
     public static let databaseUTIs = [
         "public.data", "public.content", 
+        "public.item", 
         "com.keepassium.kdb", "com.keepassium.kdbx",
         "com.maxep.mikee.kdb", "com.maxep.mikee.kdbx", 
         "com.jflan.MiniKeePass.kdb", "com.jflan.MiniKeePass.kdbx",

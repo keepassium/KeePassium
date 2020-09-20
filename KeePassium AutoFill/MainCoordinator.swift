@@ -530,7 +530,7 @@ extension MainCoordinator: DatabaseManagerObserver {
         Settings.current.isAutoFillFinishedOK = true
         databaseUnlockerVC.hideProgressOverlay()
         
-        if urlRef.hasPermissionError257 {
+        if urlRef.hasPermissionError257 || urlRef.isFileMissingIOS14 {
             databaseUnlockerVC.showErrorMessage(
                 message,
                 reason: reason,

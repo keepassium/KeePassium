@@ -110,11 +110,11 @@ public enum FileAccessError: LocalizedError {
             [fileProvider: \(fileProvider?.id ?? "nil"), systemError: \(nsError.debugDescription)]
             """)
         switch (nsError.domain, nsError.code) {
-        case ("NSCocoaErrorDomain", 4101):
+        case (NSCocoaErrorDomain, 4101):
             fallthrough
             
-        case ("NSCocoaErrorDomain", 4097): fallthrough
-        case ("NSCocoaErrorDomain", 4099):
+        case (NSCocoaErrorDomain, 4097): fallthrough
+        case (NSCocoaErrorDomain, 4099):
             return .fileProviderDoesNotRespond(fileProvider: fileProvider)
             
         case ("NSFileProviderInternalErrorDomain", 0):
@@ -122,6 +122,15 @@ public enum FileAccessError: LocalizedError {
             
         default:
             return .systemError(originalError)
+        }
+    }
+    
+    public var underlyingError: Error? {
+        switch self {
+        case .systemError(let originalError):
+            return originalError
+        default:
+            return nil
         }
     }
 }

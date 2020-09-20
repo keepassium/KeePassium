@@ -37,6 +37,31 @@ class EntryFinderCell: UITableViewCell {
     }
 }
 
+class CallerIDView: UIView {
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var copyButton: UIButton!
+    
+    typealias CopyHandler = (CallerIDView) -> Void
+    var copyHandler: CopyHandler? = nil
+    
+    @IBAction func didPressCopyButton(_ sender: Any) {
+        copyHandler?(self)
+    }
+    
+    func blink() {
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.0,
+            options: .curveEaseOut,
+            animations: {
+                self.textLabel.alpha = 0.3
+            },
+            completion: { finished in
+                self.textLabel.alpha = 1.0
+            }
+        )
+    }
+}
 
 class EntryFinderVC: UITableViewController {
     private enum CellID {
@@ -44,7 +69,7 @@ class EntryFinderVC: UITableViewController {
         static let nothingFound = "NothingFoundCell"
     }
     @IBOutlet var separatorView: UIView!
-    @IBOutlet var searchCriteriaLabel: UILabel!
+    @IBOutlet var callerIDView: CallerIDView!
     
     weak var database: Database?
     weak var delegate: EntryFinderDelegate?
@@ -122,14 +147,21 @@ class EntryFinderVC: UITableViewController {
                 .map { $0.identifier }
                 .joined(separator: " | ")
         }
-        searchCriteriaLabel.text = String.localizedStringWithFormat(
+        callerIDView.copyButton.isHidden = serviceIdentifiers.isEmpty
+        callerIDView.textLabel.text = String.localizedStringWithFormat(
             NSLocalizedString(
                 "[AutoFill/Search/callerID]",
                 value: "Caller ID: %@",
                 comment: "An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String]"),
             callerID
         )
-        tableView.tableFooterView = searchCriteriaLabel
+        callerIDView.copyHandler = { view in
+            Clipboard.general.insert(
+                text: callerID,
+                timeout: TimeInterval(Settings.current.clipboardTimeout.seconds))
+            view.blink()
+        }
+        tableView.tableFooterView = callerIDView
 
         let automaticResults = searchHelper.find(
             database: database,

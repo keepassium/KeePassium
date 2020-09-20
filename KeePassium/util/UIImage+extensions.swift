@@ -32,7 +32,6 @@ enum ImageAsset: String {
     case unhideAccessory = "unhide-accessory"
     case hideListitem = "hide-listitem"
     case unhideListitem = "unhide-listitem"
-    case copyToClipboardAccessory = "copy-to-clipboard-accessory"
     case biometryTouchIDListitem = "touch-id-listitem"
     case biometryFaceIDListitem = "face-id-listitem"
     case premiumFeatureBadge = "premium-feature-badge"

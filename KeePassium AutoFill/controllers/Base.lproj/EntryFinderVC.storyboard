@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -14,7 +14,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="EntryFinderVC" title="{Database Name}" modalTransitionStyle="crossDissolve" id="14C-rX-ove" customClass="EntryFinderVC" customModule="KeePassiumPro_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="o0d-5d-uRM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -99,6 +99,7 @@
                             <outlet property="delegate" destination="14C-rX-ove" id="2OG-pR-By0"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="CJJ-ej-rR1"/>
                         <barButtonItem title="Lock Database" image="lock-database-toolbar" id="dPB-bK-tzh">
@@ -116,7 +117,7 @@
                         <fragment content="#bc-ignore!"/>
                     </attributedString>
                     <connections>
-                        <outlet property="searchCriteriaLabel" destination="htW-Ur-suD" id="H2Z-N3-ST5"/>
+                        <outlet property="callerIDView" destination="RyZ-eQ-uNG" id="3hC-Yp-Xcp"/>
                         <outlet property="separatorView" destination="sx0-Sw-ZEC" id="8wD-mr-bhz"/>
                     </connections>
                 </tableViewController>
@@ -125,7 +126,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Related Entries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLY-eZ-iAh">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Related Entries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLY-eZ-iAh">
                             <rect key="frame" x="65.5" y="54.5" width="109" height="19.5"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                             <color key="textColor" name="AuxiliaryText"/>
@@ -162,18 +163,50 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="MkU-Zb-Trn"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="htW-Ur-suD" userLabel="searchCriteriaFooter">
-                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                <view contentMode="scaleToFill" id="RyZ-eQ-uNG" customClass="CallerIDView" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="68"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                    <color key="textColor" name="AuxiliaryText"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" layoutMarginsFollowReadableWidth="YES" text="{Footer}" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htW-Ur-suD" userLabel="searchCriteriaFooter">
+                            <rect key="frame" x="80.5" y="0.0" width="49.5" height="68"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                            <color key="textColor" name="AuxiliaryText"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="center" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3k-M1-4iI">
+                            <rect key="frame" x="138" y="19.5" width="29" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="29" id="Y5h-Vy-Ef9"/>
+                                <constraint firstAttribute="width" secondItem="S3k-M1-4iI" secondAttribute="height" multiplier="1:1" id="ZzI-kH-dNO"/>
+                            </constraints>
+                            <state key="normal" image="copy-to-clipboard-toolbar"/>
+                            <connections>
+                                <action selector="didPressCopyButton:" destination="RyZ-eQ-uNG" eventType="touchUpInside" id="JsO-ol-Ova"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="S3k-M1-4iI" firstAttribute="centerY" secondItem="htW-Ur-suD" secondAttribute="centerY" id="0VZ-Kf-o1o"/>
+                        <constraint firstItem="htW-Ur-suD" firstAttribute="centerX" secondItem="RyZ-eQ-uNG" secondAttribute="centerX" priority="250" constant="-15" id="5Ws-yz-Lwj"/>
+                        <constraint firstItem="htW-Ur-suD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ALm-jF-92N" secondAttribute="leading" id="DCU-uh-Azn"/>
+                        <constraint firstItem="htW-Ur-suD" firstAttribute="bottom" secondItem="ALm-jF-92N" secondAttribute="bottom" id="H6y-gV-hhR"/>
+                        <constraint firstItem="S3k-M1-4iI" firstAttribute="leading" secondItem="htW-Ur-suD" secondAttribute="trailing" constant="8" id="kXN-6b-eIw"/>
+                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="S3k-M1-4iI" secondAttribute="trailing" id="mEx-3t-dnK"/>
+                        <constraint firstItem="htW-Ur-suD" firstAttribute="top" secondItem="ALm-jF-92N" secondAttribute="top" id="xYl-rj-nvO"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="ALm-jF-92N"/>
+                    <connections>
+                        <outlet property="copyButton" destination="S3k-M1-4iI" id="z7e-RW-Pmr"/>
+                        <outlet property="textLabel" destination="htW-Ur-suD" id="spM-Tp-utL"/>
+                    </connections>
+                </view>
             </objects>
             <point key="canvasLocation" x="-190" y="207"/>
         </scene>
     </scenes>
     <resources>
+        <image name="copy-to-clipboard-toolbar" width="25" height="25"/>
         <image name="db-icons/kpbIcon00" width="29" height="29"/>
         <image name="lock-database-toolbar" width="25" height="25"/>
         <namedColor name="AuxiliaryText">
