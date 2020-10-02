@@ -28,6 +28,7 @@ class MainCoordinator: NSObject, Coordinator {
     fileprivate var passcodeInputController: PasscodeInputVC?
     fileprivate var isBiometricAuthShown = false
     fileprivate var isPasscodeInputShown = false
+    fileprivate var canUseFinalKey = true
     
     init(rootController: CredentialProviderViewController) {
         self.rootController = rootController
@@ -161,6 +162,7 @@ class MainCoordinator: NSObject, Coordinator {
         
         let _challengeHandler = (yubiKey != nil) ? challengeHandler : nil
         isLoadingUsingStoredDatabaseKey = false
+        canUseFinalKey = false 
         DatabaseManager.shared.startLoadingDatabase(
             database: database,
             password: password,
@@ -172,15 +174,18 @@ class MainCoordinator: NSObject, Coordinator {
     private func tryToUnlockDatabase(
         database: URLReference,
         compositeKey: CompositeKey,
-        yubiKey: YubiKey?)
+        yubiKey: YubiKey?,
+        canUseFinalKey: Bool)
     {
         Settings.current.isAutoFillFinishedOK = false
         
         compositeKey.challengeHandler = (yubiKey != nil) ? challengeHandler : nil
         isLoadingUsingStoredDatabaseKey = true
+        self.canUseFinalKey = canUseFinalKey
         DatabaseManager.shared.startLoadingDatabase(
             database: database,
-            compositeKey: compositeKey
+            compositeKey: compositeKey,
+            canUseFinalKey: canUseFinalKey
         )
     }
     
@@ -228,12 +233,11 @@ class MainCoordinator: NSObject, Coordinator {
     
     func removeDatabase(_ urlRef: URLReference) {
         FileKeeper.shared.removeExternalReference(urlRef, fileType: .database)
-        DatabaseSettingsManager.shared.removeSettings(for: urlRef)
+        DatabaseSettingsManager.shared.removeSettings(for: urlRef, onlyIfUnused: true)
         refreshFileList()
     }
     
     func deleteDatabase(_ urlRef: URLReference) {
-        DatabaseSettingsManager.shared.removeSettings(for: urlRef)
         do {
             try FileKeeper.shared.deleteFile(urlRef, fileType: .database, ignoreErrors: false)
         } catch {
@@ -247,6 +251,7 @@ class MainCoordinator: NSObject, Coordinator {
                 cancelButtonTitle: LString.actionDismiss)
             navigationController.present(alert, animated: true, completion: nil)
         }
+        DatabaseSettingsManager.shared.removeSettings(for: urlRef, onlyIfUnused: true)
         refreshFileList()
     }
 
@@ -275,7 +280,8 @@ class MainCoordinator: NSObject, Coordinator {
             tryToUnlockDatabase(
                 database: database,
                 compositeKey: storedDatabaseKey,
-                yubiKey: dbSettings?.associatedYubiKey
+                yubiKey: dbSettings?.associatedYubiKey,
+                canUseFinalKey: PremiumManager.shared.isAvailable(feature: .canUseExpressUnlock)
             )
         }
     }
@@ -383,8 +389,11 @@ extension MainCoordinator: DatabaseChooserDelegate {
     
     func databaseChooserShouldAddDatabase(_ sender: DatabaseChooserVC, popoverAnchor: PopoverAnchor) {
         watchdog.restart()
-        let nonBackupDatabaseRefs = sender.databaseRefs.filter { $0.location != .internalBackup }
-        if nonBackupDatabaseRefs.count > 0 {
+        let existingNonBackupDatabaseRefs = sender.databaseRefs.filter {
+            ($0.location != .internalBackup) && 
+                !($0.hasPermissionError257 || $0.isFileMissingIOS14) 
+        }
+        if existingNonBackupDatabaseRefs.count > 0 {
             if PremiumManager.shared.isAvailable(feature: .canUseMultipleDatabases) {
                 addDatabase(popoverAnchor: popoverAnchor)
             } else {
@@ -519,9 +528,23 @@ extension MainCoordinator: DatabaseManagerObserver {
     func databaseManager(database urlRef: URLReference, invalidMasterKey message: String) {
         guard let databaseUnlockerVC = navigationController.topViewController
             as? DatabaseUnlockerVC else { return }
+
         Settings.current.isAutoFillFinishedOK = true
-        databaseUnlockerVC.hideProgressOverlay()
-        databaseUnlockerVC.showMasterKeyInvalid(message: message)
+        if canUseFinalKey,
+           let dbSettings = DatabaseSettingsManager.shared.getSettings(for: urlRef),
+           let compositeKey = dbSettings.masterKey
+        {
+            canUseFinalKey = false
+            tryToUnlockDatabase(
+                database: urlRef,
+                compositeKey: compositeKey,
+                yubiKey: dbSettings.associatedYubiKey,
+                canUseFinalKey: false
+            )
+        } else {
+            databaseUnlockerVC.hideProgressOverlay()
+            databaseUnlockerVC.showMasterKeyInvalid(message: message)
+        }
     }
     
     func databaseManager(database urlRef: URLReference, loadingError message: String, reason: String?) {

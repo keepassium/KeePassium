@@ -1,5 +1,26 @@
 #CHANGELOG
 
+## [1.18.75] - 2020-10-01
+
+### Added
+
+- [Premium] Express unlock using the stored decryption key. This also allows opening YubiKey-protected databases in AutoFill.
+
+### Changed
+
+- Free version won't count broken databases towards the free DB limit
+- Added detection of Stratospherix FileBrowser file provider
+- Refined local storage icons
+
+### Fixed
+
+- Slow decryption of databases (fixes #128) [thanks, everyone]
+- Preserve DB settings on DB deletion, if another DB uses them [thanks, Tim]
+- Crash when unselecting a YubiKey in AutoFill
+- Detection of file access permission error
+- Delete .latest backups when manually deleting all backups via settings
+
+
 ## [1.17.74] - 2020-09-19
 
 ### Changed

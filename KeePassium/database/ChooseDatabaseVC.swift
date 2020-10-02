@@ -327,8 +327,11 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
     }
 
     @IBAction func didPressAddDatabase(_ sender: Any) {
-        let nonBackupDatabaseRefs = databaseRefs.filter { $0.location != .internalBackup }
-        if nonBackupDatabaseRefs.count > 0 {
+        let existingNonBackupDatabaseRefs = databaseRefs.filter {
+            ($0.location != .internalBackup) && 
+                !($0.hasPermissionError257 || $0.isFileMissingIOS14) 
+        }
+        if existingNonBackupDatabaseRefs.count > 0 {
             premiumUpgradeHelper.performActionOrOfferUpgrade(.canUseMultipleDatabases, in: self) {
                 [weak self] in
                 self?.handleDidPressAddDatabase()
@@ -447,7 +450,6 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
             Settings.current.startupDatabase = nil
         }
 
-        DatabaseSettingsManager.shared.removeSettings(for: urlRef)
         do {
             try FileKeeper.shared.deleteFile(
                 urlRef,
@@ -458,14 +460,15 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
             Diag.error("Failed to delete database file [reason: \(error.localizedDescription)]")
             showErrorAlert(error)
         }
+        DatabaseSettingsManager.shared.removeSettings(for: urlRef, onlyIfUnused: true)
     }
     
     private func removeDatabaseFile(urlRef: URLReference) {
         if urlRef == Settings.current.startupDatabase {
             Settings.current.startupDatabase = nil
         }
-        DatabaseSettingsManager.shared.removeSettings(for: urlRef)
         FileKeeper.shared.removeExternalReference(urlRef, fileType: .database)
+        DatabaseSettingsManager.shared.removeSettings(for: urlRef, onlyIfUnused: true)
     }
     
     private func processPendingFileOperations() {

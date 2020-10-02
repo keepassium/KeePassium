@@ -760,7 +760,9 @@ public class FileKeeper {
     
     public func deleteExpiredBackupFiles() {
         Diag.debug("Will perform backup maintenance")
-        deleteBackupFiles(olderThan: Settings.current.backupKeepingDuration.seconds)
+        deleteBackupFiles(
+            olderThan: Settings.current.backupKeepingDuration.seconds,
+            keepLatest: true)
         Diag.info("Backup maintenance completed")
     }
 
@@ -796,11 +798,11 @@ public class FileKeeper {
         return fileName.hasSuffix(backupLatestSuffix)
     }
     
-    public func deleteBackupFiles(olderThan maxAge: TimeInterval) {
+    public func deleteBackupFiles(olderThan maxAge: TimeInterval, keepLatest: Bool) {
         let allBackupFileRefs = getBackupFiles()
         let now = Date.now
         for fileRef in allBackupFileRefs {
-            if isLatestBackupFile(fileRef) {
+            if keepLatest && isLatestBackupFile(fileRef) {
                 continue
             }
             getBackupFileDate(fileRef) { [weak self] fileDate in

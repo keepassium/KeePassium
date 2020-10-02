@@ -39,8 +39,13 @@ public class BaseDocument: UIDocument, Synchronizable {
         self.open(withTimeout: BaseDocument.timeout, callback)
     }
     
-    public func open(withTimeout timeout: TimeInterval, _ callback: @escaping OpenCallback) {
-        BaseDocument.backgroundQueue.addOperation {
+    public func open(
+        withTimeout timeout: TimeInterval = BaseDocument.timeout,
+        queue: OperationQueue? = nil,
+        _ callback: @escaping OpenCallback)
+    {
+        let operationQueue = queue ?? BaseDocument.backgroundQueue
+        operationQueue.addOperation {
             let semaphore = DispatchSemaphore(value: 0)
             
             var hasTimedOut = false

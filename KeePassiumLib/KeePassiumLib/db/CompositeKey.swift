@@ -35,6 +35,7 @@ public class CompositeKey: Codable {
     internal private(set) var combinedStaticComponents: SecureByteArray?
     
     internal private(set) var finalKey: SecureByteArray?
+    internal private(set) var cipherKey: SecureByteArray?
     
     
     init() {
@@ -95,6 +96,7 @@ public class CompositeKey: Codable {
         case passwordData
         case keyFileData
         case combinedStaticComponents = "staticComponents"
+        case cipherKey
         case finalKey
     }
     
@@ -120,6 +122,7 @@ public class CompositeKey: Codable {
         clone.passwordData = self.passwordData?.secureClone()
         clone.keyFileData = self.keyFileData?.clone()
         clone.combinedStaticComponents = self.combinedStaticComponents?.secureClone()
+        clone.cipherKey = self.cipherKey?.secureClone()
         clone.finalKey = self.finalKey?.secureClone()
         clone.state = self.state
         return clone
@@ -133,6 +136,8 @@ public class CompositeKey: Codable {
         
         self.password.erase()
         self.keyFileRef = nil
+        self.cipherKey?.erase()
+        self.cipherKey = nil
         self.finalKey?.erase()
         self.finalKey = nil
     }
@@ -149,14 +154,26 @@ public class CompositeKey: Codable {
         self.keyFileData?.erase()
         self.keyFileData = nil
         
+        self.cipherKey?.erase()
+        self.cipherKey = nil
         self.finalKey?.erase()
         self.finalKey = nil
     }
     
-    func setFinalKey(_ finalKey: SecureByteArray) {
+    func setFinalKeys(_ finalKey: SecureByteArray, _ cipherKey: SecureByteArray?) {
         assert(state >= .combinedComponents)
+        self.cipherKey = cipherKey?.secureClone()
         self.finalKey = finalKey.secureClone()
         state = .final
+    }
+    
+    func eraseFinalKeys() {
+        guard state >= .final else { return }
+        state = .combinedComponents
+        cipherKey?.erase()
+        cipherKey = nil
+        finalKey?.erase()
+        finalKey = nil
     }
     
     func getResponse(challenge: SecureByteArray) throws -> SecureByteArray  {

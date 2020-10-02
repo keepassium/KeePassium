@@ -25,9 +25,12 @@ extension URLReference {
             return getExternalDatabaseIcon()
         case .internalDocuments, .internalInbox:
             if UIDevice.current.userInterfaceIdiom == .pad {
-                return UIImage.init(asset: .fileProviderOnMyIPadListitem)
+                return UIImage(asset: .fileProviderOnMyIPadListitem)
+            }
+            if UIDevice.current.hasHomeButton() {
+                return UIImage(asset: .fileProviderOnMyIPhoneListitem)
             } else {
-                return UIImage.init(asset: .fileProviderOnMyIPhoneListitem)
+                return UIImage(asset: .fileProviderOnMyIPhoneXListitem)
             }
         case .internalBackup:
             return UIImage(asset: .databaseBackupListitem)

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "iphone_icons8_mod_29.png",
+      "filename" : "iphonex_icons8_mod_29.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "iphone_icons8_mod_29@2x.png",
+      "filename" : "iphonex_icons8_mod_29@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "iphone_icons8_mod_29@3x.png",
+      "filename" : "iphonex_icons8_mod_29@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -80,7 +80,7 @@ public class URLReference:
     public var hasError: Bool { return error != nil}
     
     public var hasPermissionError257: Bool {
-        guard let nsError = error as NSError? else { return false }
+        guard let nsError = error?.underlyingError as NSError? else { return false }
         return (nsError.domain == NSCocoaErrorDomain) && (nsError.code == 257)
     }
     

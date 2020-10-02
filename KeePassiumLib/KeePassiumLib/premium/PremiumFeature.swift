@@ -28,6 +28,8 @@ public enum PremiumFeature: Int {
     
     case canChangeAppIcon = 6
     
+    case canUseExpressUnlock = 7
+    
     public func isAvailable(in status: PremiumManager.Status, fallbackDate: Date?) -> Bool {
         let isEntitled = status == .subscribed ||
             status == .lapsed ||
@@ -38,7 +40,8 @@ public enum PremiumFeature: Int {
              .canUseLongDatabaseTimeouts,
              .canUseHardwareKeys,
              .canKeepMasterKeyOnDatabaseTimeout,
-             .canChangeAppIcon:
+             .canChangeAppIcon,
+             .canUseExpressUnlock:
             return isEntitled
         case .canPreviewAttachments:
             return isEntitled || (status != .freeHeavyUse)
@@ -62,6 +65,8 @@ public enum PremiumFeature: Int {
             return date > Date(iso8601string: "2020-07-14T00:00:00Z")!
         case .canChangeAppIcon:
             return date > Date(iso8601string: "2020-08-04T00:00:00Z")!
+        case .canUseExpressUnlock:
+            return date > Date(iso8601string: "2020-10-01T00:00:00Z")!
         }
     }
 }

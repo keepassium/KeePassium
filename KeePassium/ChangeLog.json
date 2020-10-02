@@ -1,6 +1,48 @@
 {
     "sections": [
         {
+            "version": "1.18",
+            "releaseDate": "2020-10-01T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Express unlock using the stored decryption key. This also allows opening YubiKey-protected databases in AutoFill.",
+                    "type": 2
+                },
+                {
+                    "title": "🛠 Refined: Free version won't count broken databases towards the free DB limit",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Add Stratospherix FileBrowser file provider",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Show local storage icons with/without home button, as appropriate",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Slow decryption of databases (fixes #128) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Preserve DB settings on DB deletion, if another DB uses them [thanks, Tim]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash when unselecting a YubiKey in AutoFill",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Detection of file access permission error",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Delete .latest backups when manually deleting all backups via settings",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.17",
             "releaseDate": "2020-09-19T00:00:00Z",
             "items": [

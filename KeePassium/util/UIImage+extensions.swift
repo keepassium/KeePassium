@@ -27,6 +27,7 @@ enum ImageAsset: String {
     case fileProviderGenericListitem = "fp-generic-listitem"
     case fileProviderOnMyIPadListitem = "fp-on-ipad-listitem"
     case fileProviderOnMyIPhoneListitem = "fp-on-iphone-listitem"
+    case fileProviderOnMyIPhoneXListitem = "fp-on-iphonex-listitem"
     case keyFileListitem = "keyfile-listitem"
     case hideAccessory = "hide-accessory"
     case unhideAccessory = "unhide-accessory"

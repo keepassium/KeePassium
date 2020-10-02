@@ -25,6 +25,7 @@ public enum FileProvider: Hashable {
         "com.readdle.ReaddleDocsIPad.DocsExtFileProvider": .readdleDocuments,
         "com.resilio.sync.fileprovider": .resilioSync,
         "com.apple.SMBClientProvider.FileProvider": .smbShare,
+        "com.stratospherix.filebrowser.DocumentProviderFileProvider": .stratospherixFileBrowser,
         "com.sync.mobileapp.NewFileProvider": .syncCom,
         "com.synology.DSdrive.FileProvider": .synologyDrive,
         "com.synology.DSfile.ExtFileProvider": .synologyDSfile,
@@ -50,6 +51,7 @@ public enum FileProvider: Hashable {
     case readdleDocuments
     case resilioSync
     case smbShare
+    case stratospherixFileBrowser
     case syncCom
     case synologyDrive
     case synologyDSfile
@@ -166,6 +168,12 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "SMB server",
                 comment: "Localized name of the storage service: SMB server (network share) via native iOS integration.")
+        case .stratospherixFileBrowser:
+            return NSLocalizedString(
+                "[FileProvider/Stratospherix FileBrowser/name]",
+                bundle: Bundle.framework,
+                value: "FileBrowser",
+                comment: "Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545)")
         case .syncCom:
             return NSLocalizedString(
                 "[FileProvider/sync.com/name]",

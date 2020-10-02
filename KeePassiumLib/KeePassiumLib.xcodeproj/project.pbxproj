@@ -26,6 +26,9 @@
 		759896432341CED300DF39AA /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759896422341CED300DF39AA /* BusinessModel.swift */; };
 		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
 		75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677A229045A60097C693 /* PremiumFeature.swift */; };
+		75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */; };
+		75B5F7F5251B7BE100E444F0 /* DatabaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F4251B7BE100E444F0 /* DatabaseLoader.swift */; };
+		75B5F7F8251B7CC700E444F0 /* ProgressObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */; };
 		75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B8608B2475E2F800C5E6C0 /* LString.swift */; };
 		75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1432481B2FA0017B980 /* FileProvider.swift */; };
 		75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01EFE2474AC290099698C /* Synchronizable.swift */; };
@@ -116,6 +119,7 @@
 		75D09C622174F89A00F7DEF2 /* ProgressEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C612174F89A00F7DEF2 /* ProgressEx.swift */; };
 		75D0C77B2174AF2000C64C93 /* KeePassiumLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D4080523952FD40042122A /* CompositeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4080423952FD40042122A /* CompositeKey.swift */; };
+		75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */; };
 		75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA2D1621B2FB4000826FC6 /* Diag.swift */; };
 		75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD12177456200B22D8B /* PasswordGenerator.swift */; };
 		75F4ACD5217745B300B22D8B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD3217745B300B22D8B /* DatabaseManager.swift */; };
@@ -167,6 +171,9 @@
 		75AC53482326FCC6000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75AC534A2326FCDB000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC53A2232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+extensions.swift"; sourceTree = "<group>"; };
+		75B5F7F4251B7BE100E444F0 /* DatabaseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoader.swift; sourceTree = "<group>"; };
+		75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressObserver.swift; sourceTree = "<group>"; };
 		75B8608B2475E2F800C5E6C0 /* LString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75BFB1432481B2FA0017B980 /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
 		75C01EFE2474AC290099698C /* Synchronizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
@@ -261,6 +268,7 @@
 		75D0C76E2174AF1F00C64C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75D4080423952FD40042122A /* CompositeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeKey.swift; sourceTree = "<group>"; };
 		75E4CA89232D0B2200EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaver.swift; sourceTree = "<group>"; };
 		75EA2D1621B2FB4000826FC6 /* Diag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diag.swift; sourceTree = "<group>"; };
 		75F4ACC1217743BF00B22D8B /* DiagLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiagLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F4ACD12177456200B22D8B /* PasswordGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
@@ -487,6 +495,7 @@
 				75F4ACF121774A6300B22D8B /* Clipboard.swift */,
 				75D09C612174F89A00F7DEF2 /* ProgressEx.swift */,
 				75D09C032174F77000F7DEF2 /* ProgressInterruption.swift */,
+				75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */,
 				75F4ACD12177456200B22D8B /* PasswordGenerator.swift */,
 				75F4ACED217749DB00B22D8B /* UserDefaults+appGroupShared.swift */,
 				75F4ACF221774A6300B22D8B /* URL+extensions.swift */,
@@ -500,6 +509,7 @@
 				75C01EFE2474AC290099698C /* Synchronizable.swift */,
 				751F90A8247748A300A7418F /* Result.swift */,
 				75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */,
+				75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -580,6 +590,8 @@
 				75D09C4B2174F81900F7DEF2 /* GzipSwift */,
 				75D09BFC2174F77000F7DEF2 /* util */,
 				75F4ACD3217745B300B22D8B /* DatabaseManager.swift */,
+				75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */,
+				75B5F7F4251B7BE100E444F0 /* DatabaseLoader.swift */,
 				75F4ACD4217745B300B22D8B /* DatabaseManagerObserver.swift */,
 				75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */,
 				75D09BAB2174F3E500F7DEF2 /* KeePassiumLib-prefix.pch */,
@@ -791,6 +803,7 @@
 				75D09C392174F77000F7DEF2 /* TwofishDataCipher.swift in Sources */,
 				75D09C2B2174F77000F7DEF2 /* Meta2.swift in Sources */,
 				75D09C1E2174F77000F7DEF2 /* Argon2KDF.swift in Sources */,
+				75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */,
 				750935C4235219B900A362C8 /* Observable.swift in Sources */,
 				75D09C3A2174F77000F7DEF2 /* DataCipher.swift in Sources */,
 				75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */,
@@ -799,6 +812,7 @@
 				75D09C222174F77000F7DEF2 /* CustomData2.swift in Sources */,
 				75D09C242174F77000F7DEF2 /* Attachment2.swift in Sources */,
 				75D09C232174F77000F7DEF2 /* Database2.swift in Sources */,
+				75B5F7F5251B7BE100E444F0 /* DatabaseLoader.swift in Sources */,
 				75D09C2F2174F77000F7DEF2 /* Date+extension.swift in Sources */,
 				75F74ABA24C082F90071281E /* ReceiptAnalyzer.swift in Sources */,
 				75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */,
@@ -837,8 +851,10 @@
 				75D09C602174F81900F7DEF2 /* Parser.swift in Sources */,
 				75D09C3E2174F77000F7DEF2 /* StreamCipherFactory.swift in Sources */,
 				75D09C2A2174F77000F7DEF2 /* DeletedObject2.swift in Sources */,
+				75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */,
 				75D09C462174F77000F7DEF2 /* KeyHelper1.swift in Sources */,
 				759896432341CED300DF39AA /* BusinessModel.swift in Sources */,
+				75B5F7F8251B7CC700E444F0 /* ProgressObserver.swift in Sources */,
 				75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */,
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
@@ -961,6 +977,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LLVM_LTO = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1013,6 +1030,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1020,6 +1038,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LLVM_LTO = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

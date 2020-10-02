@@ -189,6 +189,12 @@ public class Database1: Database {
             throw ChallengeResponseError.notSupportedByDatabaseFormat
         }
         
+        if compositeKey.state == .final,
+           let _masterKey = compositeKey.finalKey {
+            self.masterKey = _masterKey
+            return
+        }
+        
         let kdf = AESKDF()
         progress.addChild(kdf.initProgress(), withPendingUnitCount: ProgressSteps.keyDerivation)
         let kdfParams = kdf.defaultParams
@@ -216,7 +222,7 @@ public class Database1: Database {
         let transformedKey = try kdf.transform(key: keyToTransform, params: kdfParams)
         let secureMasterSeed = SecureByteArray(header.masterSeed)
         masterKey = SecureByteArray.concat(secureMasterSeed, transformedKey).sha256
-        compositeKey.setFinalKey(masterKey)
+        compositeKey.setFinalKeys(masterKey, nil)
     }
     
     private func loadContent(data: ByteArray, dbFileName: String) throws {

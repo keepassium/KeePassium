@@ -221,7 +221,8 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             didSelectKey(selectedKey)
         }
         #elseif AUTOFILL_EXT
-        assertionFailure("How did you end up here?")
+        assert(selectedKey == nil, "How did you end up here?")
+        didSelectKey(selectedKey)
         #endif
     }
     

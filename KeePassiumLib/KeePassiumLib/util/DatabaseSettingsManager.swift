@@ -15,8 +15,13 @@ public class DatabaseSettingsManager {
     }
     
     public func getSettings(for databaseRef: URLReference) -> DatabaseSettings? {
+        guard let databaseDescriptor = databaseRef.getDescriptor() else {
+            Diag.warning("Cannot get database descriptor")
+            return nil
+        }
+
         do {
-            if let dbSettings = try Keychain.shared.getDatabaseSettings(for: databaseRef) { 
+            if let dbSettings = try Keychain.shared.getDatabaseSettings(for: databaseDescriptor) { 
                 return dbSettings
             }
             return nil
@@ -35,8 +40,13 @@ public class DatabaseSettingsManager {
     }
     
     public func setSettings(_ dbSettings: DatabaseSettings, for databaseRef: URLReference) {
+        guard let databaseDescriptor = databaseRef.getDescriptor() else {
+            Diag.warning("Cannot get database descriptor")
+            return
+        }
+        
         do {
-            try Keychain.shared.setDatabaseSettings(dbSettings, for: databaseRef) 
+            try Keychain.shared.setDatabaseSettings(dbSettings, for: databaseDescriptor) 
         } catch {
             Diag.error(error.localizedDescription)
         }
@@ -48,9 +58,24 @@ public class DatabaseSettingsManager {
         setSettings(dbSettings, for: databaseRef)
     }
     
-    public func removeSettings(for databaseRef: URLReference) {
+    public func removeSettings(for databaseRef: URLReference, onlyIfUnused: Bool) {
+        guard let databaseDescriptor = databaseRef.getDescriptor() else {
+            Diag.warning("Cannot get database descriptor")
+            return
+        }
+        
+        if onlyIfUnused {
+            let allDatabaseDescriptors = FileKeeper.shared.getAllReferences(
+                fileType: .database,
+                includeBackup: true)
+                .map { $0.getDescriptor() }
+            if allDatabaseDescriptors.contains(databaseDescriptor) {
+                return
+            }
+        }
+        
         do {
-            try Keychain.shared.removeDatabaseSettings(for: databaseRef)
+            try Keychain.shared.removeDatabaseSettings(for: databaseDescriptor)
         } catch {
             Diag.error(error.localizedDescription)
         }

@@ -48,6 +48,8 @@ extension PremiumFeature {
                 "[PremiumFeature/CustomAppIcons/title]",
                 value: "Custom App Icons",
                 comment: "Title of a premium feature: ability to change the app icon")
+        case .canUseExpressUnlock:
+            return genericPremiumFeatureTitle
         }
     }
     
@@ -73,9 +75,9 @@ extension PremiumFeature {
                 "[PremiumFeature/HardwareKeys/description]",
                 value: "Strengthen your security with hardware keys (YubiKey) in the premium version.",
                 comment: "Description/advertisement for the `Hardware Keys` premium feature")
-        case .canKeepMasterKeyOnDatabaseTimeout:
-            return genericPremiumFeatureDescription
-        case .canChangeAppIcon:
+        case .canKeepMasterKeyOnDatabaseTimeout,
+             .canChangeAppIcon,
+             .canUseExpressUnlock:
             return genericPremiumFeatureDescription
         }
     }

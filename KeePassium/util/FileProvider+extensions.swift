@@ -48,6 +48,7 @@ extension FileProvider {
         case .feFileExplorer: fallthrough
         case .readdleDocuments: fallthrough
         case .resilioSync:    fallthrough
+        case .stratospherixFileBrowser: fallthrough
         case .syncCom:        fallthrough
         case .tresorit:       fallthrough
         case .yandexDisk:     fallthrough

@@ -16,16 +16,7 @@ enum DatabaseLockReason {
 fileprivate enum ProgressSteps {
     static let start: Int64 = -1 
     static let all: Int64 = 100 
-    
-    static let didReadDatabaseFile: Int64 = -1
-    static let didReadKeyFile: Int64 = -1
-    static let willDecryptDatabase: Int64 = 0
-    static let didDecryptDatabase: Int64 = 100
 
-    static let willMakeBackup: Int64 = -1
-    static let willEncryptDatabase: Int64 = 0
-    static let didEncryptDatabase: Int64 = 90
-    static let didWriteDatabase: Int64 = 100
 }
 
 
@@ -132,9 +123,17 @@ public class DatabaseManager {
         }
     }
     
-    public func startLoadingDatabase(database dbRef: URLReference, compositeKey: CompositeKey) {
+    public func startLoadingDatabase(
+        database dbRef: URLReference,
+        compositeKey: CompositeKey,
+        canUseFinalKey: Bool)
+    {
         Diag.verbose("Will queue load database")
+        
         let compositeKeyClone = compositeKey.clone()
+        if !canUseFinalKey {
+            compositeKeyClone.eraseFinalKeys()
+        }
         serialDispatchQueue.async {
             self._loadDatabase(dbRef: dbRef, compositeKey: compositeKeyClone)
         }
@@ -153,14 +152,8 @@ public class DatabaseManager {
             dbRef: dbRef,
             compositeKey: compositeKey,
             progress: progress,
-            completion: databaseLoaderFinished)
+            delegate: self)
         databaseLoader!.load()
-    }
-    
-    private func databaseLoaderFinished(_ dbRef: URLReference, _ dbDoc: DatabaseDocument?) {
-        self.databaseRef = dbRef
-        self.databaseDocument = dbDoc
-        self.databaseLoader = nil
     }
 
     public func rememberDatabaseKey(onlyIfExists: Bool = false) throws {
@@ -198,20 +191,16 @@ public class DatabaseManager {
         progress = ProgressEx()
         progress.totalUnitCount = ProgressSteps.all
         progress.completedUnitCount = ProgressSteps.start
-        notifyDatabaseWillSave(database: dbRef)
         
         precondition(databaseSaver == nil)
         databaseSaver = DatabaseSaver(
             databaseDocument: dbDoc,
             databaseRef: dbRef,
             progress: progress,
-            completion: databaseSaverFinished)
+            delegate: self)
         databaseSaver!.save()
     }
     
-    private func databaseSaverFinished(_ urlRef: URLReference, _ dbDoc: DatabaseDocument) {
-        databaseSaver = nil
-    }
     
     public func changeCompositeKey(to newKey: CompositeKey) {
         database?.changeCompositeKey(to: newKey)
@@ -321,7 +310,7 @@ public class DatabaseManager {
 
     }
     
-    fileprivate static func shouldUpdateLatestBackup(for dbRef: URLReference) -> Bool {
+    internal static func shouldUpdateLatestBackup(for dbRef: URLReference) -> Bool {
         switch dbRef.location {
         case .external, .internalDocuments:
             return true
@@ -354,136 +343,7 @@ public class DatabaseManager {
         }
     }
 
-
-    fileprivate func notifyDatabaseWillLoad(database urlRef: URLReference) {
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(willLoadDatabase: urlRef)
-                }
-            }
-        }
-    }
     
-    fileprivate func notifyDatabaseDidLoad(
-        database urlRef: URLReference,
-        warnings: DatabaseLoadingWarnings)
-    {
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(didLoadDatabase: urlRef, warnings: warnings)
-                }
-            }
-        }
-    }
-    
-    fileprivate func notifyOperationCancelled(database urlRef: URLReference) {
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(database: urlRef, isCancelled: true)
-                }
-            }
-        }
-    }
-
-    fileprivate func notifyProgressDidChange(database urlRef: URLReference, progress: ProgressEx) {
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(progressDidChange: progress)
-                }
-            }
-        }
-    }
-
-    
-    fileprivate func notifyDatabaseLoadError(
-        database urlRef: URLReference,
-        isCancelled: Bool,
-        message: String,
-        reason: String?)
-    {
-        if isCancelled {
-            notifyOperationCancelled(database: urlRef)
-            return
-        }
-        
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(
-                        database: urlRef,
-                        loadingError: message,
-                        reason: reason)
-                }
-            }
-        }
-    }
-    
-    fileprivate func notifyDatabaseInvalidMasterKey(database urlRef: URLReference, message: String) {
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(database: urlRef, invalidMasterKey: message)
-                }
-            }
-        }
-    }
-    
-    fileprivate func notifyDatabaseWillSave(database urlRef: URLReference) {
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(willSaveDatabase: urlRef)
-                }
-            }
-        }
-    }
-    
-    fileprivate func notifyDatabaseDidSave(database urlRef: URLReference) {
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(didSaveDatabase: urlRef)
-                }
-            }
-        }
-    }
-    
-    fileprivate func notifyDatabaseSaveError(
-        database urlRef: URLReference,
-        isCancelled: Bool,
-        message: String,
-        reason: String?)
-    {
-        if isCancelled {
-            notifyOperationCancelled(database: urlRef)
-            return
-        }
-
-        notificationQueue.async { 
-            for (_, observer) in self.observers {
-                guard let strongObserver = observer.observer else { continue }
-                DispatchQueue.main.async {
-                    strongObserver.databaseManager(
-                        database: urlRef,
-                        savingError: message,
-                        reason: reason)
-                }
-            }
-        }
-    }
-
     fileprivate func notifyDatabaseWillCreate(database urlRef: URLReference) {
         notificationQueue.async { 
             for (_, observer) in self.observers {
@@ -518,543 +378,175 @@ public class DatabaseManager {
     }
 }
 
-
-fileprivate class ProgressObserver {
-    internal let progress: ProgressEx
-    private var progressFractionKVO: NSKeyValueObservation?
-    private var progressDescriptionKVO: NSKeyValueObservation?
-    
-    init(progress: ProgressEx) {
-        self.progress = progress
-    }
-    
-    func startObservingProgress() {
-        assert(progressFractionKVO == nil && progressDescriptionKVO == nil)
-        progressFractionKVO = progress.observe(
-            \.fractionCompleted,
-            options: [.new],
-            changeHandler: {
-                [weak self] (progress, _) in
-                self?.progressDidChange(progress: progress)
-            }
-        )
-        progressDescriptionKVO = progress.observe(
-            \.localizedDescription,
-            options: [.new],
-            changeHandler: {
-                [weak self] (progress, _) in
-                self?.progressDidChange(progress: progress)
-            }
-        )
-    }
-    
-    func stopObservingProgress() {
-        assert(progressFractionKVO != nil && progressDescriptionKVO != nil)
-        progressFractionKVO?.invalidate()
-        progressDescriptionKVO?.invalidate()
-        progressFractionKVO = nil
-        progressDescriptionKVO = nil
-    }
-    
-    func progressDidChange(progress: ProgressEx) {
-        assertionFailure("Override this")
-    }
-}
-
-
-fileprivate class DatabaseLoader: ProgressObserver {
-    typealias CompletionHandler = (URLReference, DatabaseDocument?) -> Void
-    
-    private let dbRef: URLReference
-    private let compositeKey: CompositeKey
-    private unowned var notifier: DatabaseManager
-    private let warnings: DatabaseLoadingWarnings
-    private let completion: CompletionHandler
-    
-    init(
-        dbRef: URLReference,
-        compositeKey: CompositeKey,
-        progress: ProgressEx,
-        completion: @escaping(CompletionHandler))
+fileprivate extension DatabaseManager {
+    func databaseOperationProgressDidChange(
+        database dbRef: URLReference,
+        progress: ProgressEx)
     {
-        assert(compositeKey.state != .empty)
-        self.dbRef = dbRef
-        self.compositeKey = compositeKey
-        self.completion = completion
-        self.warnings = DatabaseLoadingWarnings()
-        self.notifier = DatabaseManager.shared
-        super.init(progress: progress)
-    }
-
-    private func initDatabase(signature data: ByteArray) -> Database? {
-        if Database1.isSignatureMatches(data: data) {
-            Diag.info("DB signature: KPv1")
-            return Database1()
-        } else if Database2.isSignatureMatches(data: data) {
-            Diag.info("DB signature: KPv2")
-            return Database2()
-        } else {
-            Diag.info("DB signature: no match")
-            return nil
-        }
-    }
-    
-    
-    private var backgroundTask: UIBackgroundTaskIdentifier?
-    private func startBackgroundTask() {
-        guard let appShared = AppGroup.applicationShared else { return }
-        
-        print("Starting background task")
-        backgroundTask = appShared.beginBackgroundTask(withName: "DatabaseLoading") {
-            Diag.warning("Background task expired, loading cancelled")
-            self.progress.cancel()
-            self.endBackgroundTask()
-        }
-    }
-    
-    private func endBackgroundTask() {
-        guard let appShared = AppGroup.applicationShared else { return }
-        
-        guard let bgTask = backgroundTask else { return }
-        print("ending background task")
-        backgroundTask = nil
-        appShared.endBackgroundTask(bgTask)
-    }
-    
-    
-    override func progressDidChange(progress: ProgressEx) {
-        notifier.notifyProgressDidChange(
-            database: dbRef,
-            progress: progress)
-    }
-    
-    
-    func load() {
-        startBackgroundTask()
-        startObservingProgress()
-        notifier.notifyDatabaseWillLoad(database: dbRef)
-        progress.status = LString.Progress.contactingStorageProvider
-        dbRef.resolveAsync { result in 
-            switch result {
-            case .success(let dbURL):
-                self.onDatabaseURLResolved(url: dbURL, fileProvider: self.dbRef.fileProvider)
-            case .failure(let accessError):
-                self.onDatabaseURLResolveError(accessError)
-            }
-        }
-    }
-
-    private func onDatabaseURLResolveError(_ error: FileAccessError) {
-        Diag.error("Failed to resolve database URL reference [error: \(error.localizedDescription)]")
-        stopObservingProgress()
-        notifier.notifyDatabaseLoadError(
-            database: dbRef,
-            isCancelled: progress.isCancelled,
-            message: LString.Error.cannotFindDatabaseFile,
-            reason: error.localizedDescription)
-        completion(dbRef, nil)
-        endBackgroundTask()
-    }
-    
-    private func onDatabaseURLResolved(url: URL, fileProvider: FileProvider?) {
-        let dbDoc = DatabaseDocument(fileURL: url, fileProvider: fileProvider)
-        progress.status = LString.Progress.loadingDatabaseFile
-        dbDoc.open { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let docData):
-                self.onDatabaseDocumentOpened(dbDoc: dbDoc, data: docData)
-            case .failure(let fileAccessError):
-                Diag.error("Failed to open database document [error: \(fileAccessError.localizedDescription)]")
-                self.stopObservingProgress()
-                self.notifier.notifyDatabaseLoadError(
-                    database: self.dbRef,
-                    isCancelled: self.progress.isCancelled,
-                    message: LString.Error.cannotOpenDatabaseFile,
-                    reason: fileAccessError.localizedDescription)
-                self.completion(self.dbRef, nil)
-                self.endBackgroundTask()
-            }
-        }
-    }
-    
-    private func onDatabaseDocumentOpened(dbDoc: DatabaseDocument, data: ByteArray) {
-        progress.completedUnitCount = ProgressSteps.didReadDatabaseFile
-        
-        guard let db = initDatabase(signature: data) else {
-            let hexPrefix = data.prefix(8).asHexString
-            Diag.error("Unrecognized database format [firstBytes: \(hexPrefix)]")
-            if hexPrefix == "7b226572726f7222" {
-                let fullResponse = String(data: data.asData, encoding: .utf8) ?? "nil"
-                Diag.debug("Full error content for DS file: \(fullResponse)")
-            }
-            stopObservingProgress()
-            notifier.notifyDatabaseLoadError(
-                database: dbRef,
-                isCancelled: progress.isCancelled,
-                message: LString.Error.unrecognizedDatabaseFormat,
-                reason: nil)
-            completion(dbRef, nil)
-            endBackgroundTask()
-            return
-        }
-        
-        dbDoc.database = db
-        guard compositeKey.state == .rawComponents else {
-            
-            progress.completedUnitCount = ProgressSteps.didReadKeyFile
-            Diag.info("Using a ready composite key")
-            onCompositeKeyComponentsProcessed(dbDoc: dbDoc, compositeKey: compositeKey)
-            return
-        }
-        
-        guard let keyFileRef = compositeKey.keyFileRef else {
-            onKeyFileDataReady(dbDoc: dbDoc, keyFileData: ByteArray())
-            return
-        }
-        
-        Diag.debug("Loading key file")
-        progress.localizedDescription = LString.Progress.loadingKeyFile
-        keyFileRef.resolveAsync { result in 
-            switch result {
-            case .success(let keyFileURL):
-                self.onKeyFileURLResolved(
-                    url: keyFileURL,
-                    fileProvider: keyFileRef.fileProvider,
-                    dbDoc: dbDoc)
-            case .failure(let accessError):
-                self.onKeyFileURLResolveError(accessError)
-            }
-        }
-    }
-    
-    private func onKeyFileURLResolveError(_ error: FileAccessError) {
-        Diag.error("Failed to resolve key file URL reference [error: \(error.localizedDescription)]")
-        stopObservingProgress()
-        notifier.notifyDatabaseLoadError(
-            database: dbRef,
-            isCancelled: progress.isCancelled,
-            message: LString.Error.cannotFindKeyFile,
-            reason: error.localizedDescription)
-        completion(dbRef, nil)
-        endBackgroundTask()
-    }
-
-    private func onKeyFileURLResolved(url: URL, fileProvider: FileProvider?, dbDoc: DatabaseDocument) {
-        let keyDoc = BaseDocument(fileURL: url, fileProvider: fileProvider)
-        keyDoc.open { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let docData):
-                self.onKeyFileDataReady(dbDoc: dbDoc, keyFileData: docData)
-            case .failure(let fileAccessError):
-                Diag.error("Failed to open key file [error: \(fileAccessError.localizedDescription)]")
-                self.stopObservingProgress()
-                self.notifier.notifyDatabaseLoadError(
-                    database: self.dbRef,
-                    isCancelled: self.progress.isCancelled,
-                    message: LString.Error.cannotOpenKeyFile,
-                    reason: fileAccessError.localizedDescription)
-                self.completion(self.dbRef, nil)
-                self.endBackgroundTask()
-            }
-        }
-    }
-    
-    private func onKeyFileDataReady(dbDoc: DatabaseDocument, keyFileData: ByteArray) {
-        guard let database = dbDoc.database else { fatalError() }
-        
-        progress.completedUnitCount = ProgressSteps.didReadKeyFile
-        let keyHelper = database.keyHelper
-        let passwordData = keyHelper.getPasswordData(password: compositeKey.password)
-        if passwordData.isEmpty && keyFileData.isEmpty {
-            Diag.error("Both password and key file are empty")
-            stopObservingProgress()
-            notifier.notifyDatabaseInvalidMasterKey(
-                database: dbRef,
-                message: LString.Error.needPasswordOrKeyFile)
-            completion(dbRef, nil)
-            endBackgroundTask()
-            return
-        }
-        compositeKey.setProcessedComponents(passwordData: passwordData, keyFileData: keyFileData)
-        onCompositeKeyComponentsProcessed(dbDoc: dbDoc, compositeKey: compositeKey)
-    }
-        
-    func onCompositeKeyComponentsProcessed(dbDoc: DatabaseDocument, compositeKey: CompositeKey) {
-        assert(compositeKey.state >= .processedComponents)
-        guard let db = dbDoc.database else { fatalError() }
-        
-        progress.completedUnitCount = ProgressSteps.willDecryptDatabase
-        let remainingUnitCount = ProgressSteps.didDecryptDatabase - ProgressSteps.willDecryptDatabase
-        do {
-            progress.addChild(db.initProgress(), withPendingUnitCount: remainingUnitCount)
-            Diag.info("Loading database")
-            try db.load(
-                dbFileName: dbDoc.fileURL.lastPathComponent,
-                dbFileData: dbDoc.data,
-                compositeKey: compositeKey,
-                warnings: warnings)
-            Diag.info("Database loaded OK")
-            
-            let shouldUpdateBackup = Settings.current.isBackupDatabaseOnLoad
-                    && DatabaseManager.shouldUpdateLatestBackup(for: dbRef)
-            if shouldUpdateBackup {
-                Diag.debug("Updating latest backup")
-                progress.status = LString.Progress.makingDatabaseBackup
-                assert(dbRef.url != nil)
-                FileKeeper.shared.makeBackup(
-                    nameTemplate: dbRef.url?.lastPathComponent ?? "Backup",
-                    mode: .latest,
-                    contents: dbDoc.data)
-            }
-            
-            progress.completedUnitCount = ProgressSteps.all
-            progress.localizedDescription = LString.Progress.done
-            completion(dbRef, dbDoc)
-            stopObservingProgress()
-            notifier.notifyDatabaseDidLoad(database: dbRef, warnings: warnings)
-            endBackgroundTask()
-            
-        } catch let error as DatabaseError {
-            dbDoc.database = nil
-            dbDoc.close(completionHandler: nil)
-            switch error {
-            case .loadError:
-                Diag.error("""
-                        Database load error. [
-                            isCancelled: \(progress.isCancelled),
-                            message: \(error.localizedDescription),
-                            reason: \(String(describing: error.failureReason))]
-                    """)
-                stopObservingProgress()
-                notifier.notifyDatabaseLoadError(
-                    database: dbRef,
-                    isCancelled: progress.isCancelled,
-                    message: error.localizedDescription,
-                    reason: error.failureReason)
-            case .invalidKey:
-                Diag.error("Invalid master key. [message: \(error.localizedDescription)]")
-                stopObservingProgress()
-                notifier.notifyDatabaseInvalidMasterKey(
-                    database: dbRef,
-                    message: error.localizedDescription)
-            case .saveError:
-                Diag.error("saveError while loading?!")
-                fatalError("Database saving error while loading?!")
-            }
-            completion(dbRef, nil)
-            endBackgroundTask()
-        } catch let error as ProgressInterruption {
-            dbDoc.database = nil
-            dbDoc.close(completionHandler: nil)
-            switch error {
-            case .cancelled(let reason):
-                Diag.info("Database loading was cancelled. [reason: \(reason.localizedDescription)]")
-                stopObservingProgress()
-                switch reason {
-                case .userRequest:
-                    notifier.notifyDatabaseLoadError(
-                        database: dbRef,
-                        isCancelled: true,
-                        message: error.localizedDescription,
-                        reason: error.failureReason)
-                case .lowMemoryWarning:
-                    notifier.notifyDatabaseLoadError(
-                        database: dbRef,
-                        isCancelled: false,
-                        message: error.localizedDescription,
-                        reason: nil)
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(progressDidChange: progress)
                 }
-                completion(dbRef, nil)
-                endBackgroundTask()
             }
-        } catch {
-            assertionFailure("Unprocessed exception")
-            dbDoc.database = nil
-            dbDoc.close(completionHandler: nil)
-            Diag.error("Unexpected error [message: \(error.localizedDescription)]")
-            stopObservingProgress()
-            notifier.notifyDatabaseLoadError(
-                database: dbRef,
-                isCancelled: progress.isCancelled,
-                message: error.localizedDescription,
-                reason: nil)
-            completion(dbRef, nil)
-            endBackgroundTask()
+        }
+    }
+    
+    func databaseOperationCancelled(database dbRef: URLReference) {
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(database: dbRef, isCancelled: true)
+                }
+            }
         }
     }
 }
 
-
-fileprivate class DatabaseSaver: ProgressObserver {
-    typealias CompletionHandler = (URLReference, DatabaseDocument) -> Void
-    
-    private let dbDoc: DatabaseDocument
-    private let dbRef: URLReference
-    private var progressKVO: NSKeyValueObservation?
-    private unowned var notifier: DatabaseManager
-    private let completion: CompletionHandler
-
-    init(
-        databaseDocument dbDoc: DatabaseDocument,
-        databaseRef dbRef: URLReference,
-        progress: ProgressEx,
-        completion: @escaping(CompletionHandler))
+extension DatabaseManager: DatabaseLoaderDelegate {
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        willLoadDatabase dbRef: URLReference)
     {
-        assert(dbDoc.documentState.contains(.normal))
-        self.dbDoc = dbDoc
-        self.dbRef = dbRef
-        notifier = DatabaseManager.shared
-        self.completion = completion
-        super.init(progress: progress)
-    }
-    
-    
-    private var backgroundTask: UIBackgroundTaskIdentifier?
-    private func startBackgroundTask() {
-        guard let appShared = AppGroup.applicationShared else { return }
-        
-        print("Starting background task")
-        backgroundTask = appShared.beginBackgroundTask(withName: "DatabaseSaving") {
-            self.progress.cancel()
-            self.endBackgroundTask()
-        }
-    }
-    
-    private func endBackgroundTask() {
-        guard let appShared = AppGroup.applicationShared else { return }
-        
-        guard let bgTask = backgroundTask else { return }
-        backgroundTask = nil
-        appShared.endBackgroundTask(bgTask)
-    }
-    
-    
-    override func progressDidChange(progress: ProgressEx) {
-        notifier.notifyProgressDidChange(
-            database: dbRef,
-            progress: progress)
-    }
-    
-    
-    func save() {
-        guard let database = dbDoc.database else { fatalError("Database is nil") }
-
-        startBackgroundTask()
-        startObservingProgress()
-        do {
-            if Settings.current.isBackupDatabaseOnSave {
-                progress.completedUnitCount = ProgressSteps.willMakeBackup
-                progress.status = LString.Progress.makingDatabaseBackup
-                
-                assert(dbRef.url != nil)
-                let nameTemplate = dbRef.url?.lastPathComponent ?? "Backup"
-                FileKeeper.shared.makeBackup(
-                    nameTemplate: nameTemplate,
-                    mode: .timestamped,
-                    contents: dbDoc.data)
-            }
-
-            Diag.info("Encrypting database")
-            progress.completedUnitCount = ProgressSteps.willEncryptDatabase
-            let encryptionUnitCount = ProgressSteps.didEncryptDatabase - ProgressSteps.willEncryptDatabase
-            progress.addChild(
-                database.initProgress(),
-                withPendingUnitCount: encryptionUnitCount)
-            let outData = try database.save() 
-            progress.completedUnitCount = ProgressSteps.didEncryptDatabase
-            
-            Diag.info("Writing database document")
-            dbDoc.data = outData
-            dbDoc.save { [self] result in 
-                switch result {
-                case .success:
-                    self.progress.status = LString.Progress.done
-                    self.progress.completedUnitCount = ProgressSteps.didWriteDatabase
-                    Diag.info("Database saved OK")
-                    self.updateLatestBackup(with: outData)
-                    self.stopObservingProgress()
-                    self.notifier.notifyDatabaseDidSave(database: self.dbRef)
-                    self.completion(self.dbRef, self.dbDoc)
-                    self.endBackgroundTask()
-                case .failure(let fileAccessError):
-                    Diag.error("Database saving error. [message: \(fileAccessError.localizedDescription)]")
-                    self.stopObservingProgress()
-                    self.notifier.notifyDatabaseSaveError(
-                        database: self.dbRef,
-                        isCancelled: self.progress.isCancelled,
-                        message: fileAccessError.localizedDescription,
-                        reason: nil)
-                    self.completion(self.dbRef, self.dbDoc)
-                    self.endBackgroundTask()
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(willLoadDatabase: dbRef)
                 }
             }
-        } catch let error as DatabaseError {
-            Diag.error("""
-                Database saving error. [
-                    isCancelled: \(progress.isCancelled),
-                    message: \(error.localizedDescription),
-                    reason: \(String(describing: error.failureReason))]
-                """)
-            stopObservingProgress()
-            notifier.notifyDatabaseSaveError(
-                database: dbRef,
-                isCancelled: progress.isCancelled,
-                message: error.localizedDescription,
-                reason: error.failureReason)
-            completion(dbRef, dbDoc)
-            endBackgroundTask()
-        } catch let error as ProgressInterruption {
-            stopObservingProgress()
-            switch error {
-            case .cancelled(let reason):
-                Diag.error("Database saving was cancelled. [reason: \(reason.localizedDescription)]")
-                switch reason {
-                case .userRequest:
-                    notifier.notifyDatabaseSaveError(
-                        database: dbRef,
-                        isCancelled: true,
-                        message: error.localizedDescription,
-                        reason: nil)
-                case .lowMemoryWarning:
-                    notifier.notifyDatabaseSaveError(
-                        database: dbRef,
-                        isCancelled: false,
-                        message: error.localizedDescription,
-                        reason: nil)
-                }
-                completion(dbRef, dbDoc)
-                endBackgroundTask()
-            }
-        } catch { 
-            Diag.error("Database saving error. [isCancelled: \(progress.isCancelled), message: \(error.localizedDescription)]")
-            stopObservingProgress()
-            notifier.notifyDatabaseSaveError(
-                database: dbRef,
-                isCancelled: progress.isCancelled,
-                message: error.localizedDescription,
-                reason: nil)
-            completion(dbRef, dbDoc)
-            endBackgroundTask()
         }
     }
     
-    private func updateLatestBackup(with data: ByteArray) {
-        guard Settings.current.isBackupDatabaseOnSave,
-            DatabaseManager.shouldUpdateLatestBackup(for: dbRef) else
-        {
-            return
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didChangeProgress progress: ProgressEx,
+        for dbRef: URLReference)
+    {
+        databaseOperationProgressDidChange(database: dbRef, progress: progress)
+    }
+    
+    func databaseLoader(_ databaseLoader: DatabaseLoader, didCancelLoading dbRef: URLReference) {
+        databaseOperationCancelled(database: dbRef)
+    }
+    
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didFailLoading dbRef: URLReference,
+        withInvalidMasterKeyMessage message: String)
+    {
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(database: dbRef, invalidMasterKey: message)
+                }
+            }
         }
-        
-        Diag.debug("Updating latest backup")
-        progress.status = LString.Progress.makingDatabaseBackup
-        
-        assert(dbRef.url != nil)
-        let nameTemplate = dbRef.url?.lastPathComponent ?? "Backup"
-        FileKeeper.shared.makeBackup(
-            nameTemplate: nameTemplate,
-            mode: .latest,
-            contents: data)
+    }
+    
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didFailLoading dbRef: URLReference,
+        message: String,
+        reason: String?)
+    {
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(
+                        database: dbRef,
+                        loadingError: message,
+                        reason: reason)
+                }
+            }
+        }
+    }
+    
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didLoadDatabase dbRef: URLReference,
+        withWarnings warnings: DatabaseLoadingWarnings)
+    {
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(didLoadDatabase: dbRef, warnings: warnings)
+                }
+            }
+        }
+    }
+    
+    func databaseLoaderDidFinish(
+        _ databaseLoader: DatabaseLoader,
+        for dbRef: URLReference,
+        withResult databaseDocument: DatabaseDocument?)
+    {
+        self.databaseRef = dbRef
+        self.databaseDocument = databaseDocument
+        self.databaseLoader = nil
+    }
+}
+
+extension DatabaseManager: DatabaseSaverDelegate {
+    func databaseSaver(_ databaseSaver: DatabaseSaver, willSaveDatabase dbRef: URLReference) {
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(willSaveDatabase: dbRef)
+                }
+            }
+        }
+    }
+    
+    func databaseSaver(
+        _ databaseSaver: DatabaseSaver,
+        didChangeProgress progress: ProgressEx,
+        for dbRef: URLReference)
+    {
+        databaseOperationProgressDidChange(database: dbRef, progress: progress)
+    }
+    
+    func databaseSaver(_ databaseSaver: DatabaseSaver, didCancelSaving dbRef: URLReference) {
+        databaseOperationCancelled(database: dbRef)
+    }
+    
+    func databaseSaver(_ databaseSaver: DatabaseSaver, didSaveDatabase dbRef: URLReference) {
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(didSaveDatabase: dbRef)
+                }
+            }
+        }
+    }
+    
+    func databaseSaver(
+        _ databaseSaver: DatabaseSaver,
+        didFailSaving dbRef: URLReference,
+        message: String,
+        reason: String?)
+    {
+        notificationQueue.async { 
+            for (_, observer) in self.observers {
+                guard let strongObserver = observer.observer else { continue }
+                DispatchQueue.main.async {
+                    strongObserver.databaseManager(
+                        database: dbRef,
+                        savingError: message,
+                        reason: reason)
+                }
+            }
+        }
+    }
+    
+    func databaseSaverDidFinish(_ databaseSaver: DatabaseSaver, for dbRef: URLReference) {
+        self.databaseSaver = nil
     }
 }

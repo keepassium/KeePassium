@@ -85,10 +85,6 @@ class FileDestructionHelper {
         parent: UIViewController,
         completion: CompletionHandler?)
     {
-        if fileType == .database {
-            DatabaseSettingsManager.shared.removeSettings(for: urlRef)
-        }
-
         let action = DestructiveFileAction.get(for: urlRef.location)
         let fileKeeper = FileKeeper.shared
         do {
@@ -97,6 +93,9 @@ class FileDestructionHelper {
                 fileKeeper.removeExternalReference(urlRef, fileType: fileType)
             case .delete:
                 try fileKeeper.deleteFile(urlRef, fileType: fileType, ignoreErrors: urlRef.hasError)
+            }
+            if fileType == .database {
+                DatabaseSettingsManager.shared.removeSettings(for: urlRef, onlyIfUnused: true)
             }
             completion?(true)
         } catch {
