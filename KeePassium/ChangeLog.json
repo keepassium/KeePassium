@@ -1,6 +1,24 @@
 {
     "sections": [
         {
+            "version": "1.19",
+            "releaseDate": "2020-10-03T00:00:00Z",
+            "items": [
+                {
+                    "title": "🐞 Fixed: Possible database corruption on save in v1.18 (fixes #130)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: URL fields not recognized on iOS 14 if default browser is not Safari (fixes #129) [thanks, Ivo]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Express unlock made available in the free version.",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.18",
             "releaseDate": "2020-10-01T00:00:00Z",
             "items": [

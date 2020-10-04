@@ -152,7 +152,7 @@ public class Database1: Database {
             try header.read(data: dbFileData) 
             Diag.debug("Header read OK")
             
-            try deriveMasterKey(compositeKey: compositeKey)
+            try deriveMasterKey(compositeKey: compositeKey, canUseFinalKey: true)
             Diag.debug("Key derivation OK")
             
             let dbWithoutHeader = dbFileData.suffix(from: header.count)
@@ -182,14 +182,15 @@ public class Database1: Database {
         } 
     }
     
-    func deriveMasterKey(compositeKey: CompositeKey) throws {
+    func deriveMasterKey(compositeKey: CompositeKey, canUseFinalKey: Bool) throws {
         Diag.debug("Start key derivation")
         
         guard compositeKey.challengeHandler == nil else {
             throw ChallengeResponseError.notSupportedByDatabaseFormat
         }
         
-        if compositeKey.state == .final,
+        if canUseFinalKey,
+           compositeKey.state == .final,
            let _masterKey = compositeKey.finalKey {
             self.masterKey = _masterKey
             return
@@ -370,7 +371,7 @@ public class Database1: Database {
             header.contentHash = contentData.sha256
         
             try header.randomizeSeeds() 
-            try deriveMasterKey(compositeKey: self.compositeKey)
+            try deriveMasterKey(compositeKey: self.compositeKey, canUseFinalKey: false)
             Diag.debug("Key derivation OK")
             
             let encryptedContent = try encrypt(data: contentData)

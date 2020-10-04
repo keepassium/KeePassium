@@ -246,6 +246,12 @@
 	<string>KeePassium needs permission to export files to your Photo Library.</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>https</string>
+        <string>http</string>
+        <string>ftp</string>
+    </array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

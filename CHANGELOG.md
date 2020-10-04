@@ -1,5 +1,17 @@
 #CHANGELOG
 
+## [1.18.76] - 2020-10-03
+
+### Changed
+
+- Enabled express unlock in the free version.
+
+### Fixed
+
+- Possible database corruption on save in v1.18 (fixes #130) [thanks, everyone]
+- URL fields not recognized on iOS 14 if default browser is not Safari (fixes #129) [thanks, Ivo]
+
+
 ## [1.18.75] - 2020-10-01
 
 ### Added

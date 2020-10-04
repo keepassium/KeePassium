@@ -40,11 +40,12 @@ public enum PremiumFeature: Int {
              .canUseLongDatabaseTimeouts,
              .canUseHardwareKeys,
              .canKeepMasterKeyOnDatabaseTimeout,
-             .canChangeAppIcon,
-             .canUseExpressUnlock:
+             .canChangeAppIcon:
             return isEntitled
         case .canPreviewAttachments:
             return isEntitled || (status != .freeHeavyUse)
+        case .canUseExpressUnlock:
+            return true 
         }
     }
     

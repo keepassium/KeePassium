@@ -173,7 +173,10 @@ public class Database2: Database {
             Diag.debug("Header read OK [format: \(header.formatVersion)]")
             Diag.verbose("== DB2 progress CP1: \(progress.completedUnitCount)")
             
-            try deriveMasterKey(compositeKey: compositeKey, cipher: header.dataCipher)
+            try deriveMasterKey(
+                compositeKey: compositeKey,
+                cipher: header.dataCipher,
+                canUseFinalKey: true)
             Diag.debug("Key derivation OK")
             Diag.verbose("== DB2 progress CP2: \(progress.completedUnitCount)")
             
@@ -558,11 +561,12 @@ public class Database2: Database {
         }
     }
     
-    func deriveMasterKey(compositeKey: CompositeKey, cipher: DataCipher) throws {
+    func deriveMasterKey(compositeKey: CompositeKey, cipher: DataCipher, canUseFinalKey: Bool) throws {
         Diag.debug("Start key derivation")
         progress.addChild(header.kdf.initProgress(), withPendingUnitCount: ProgressSteps.keyDerivation)
 
-        if compositeKey.state == .final,
+        if canUseFinalKey,
+           compositeKey.state == .final,
            let _cipherKey = compositeKey.cipherKey, 
            let _hmacKey = compositeKey.finalKey
         {
@@ -886,7 +890,10 @@ public class Database2: Database {
         do {
             try header.randomizeSeeds() 
             Diag.debug("Seeds randomized OK")
-            try deriveMasterKey(compositeKey: compositeKey, cipher: header.dataCipher)
+            try deriveMasterKey(
+                compositeKey: compositeKey,
+                cipher: header.dataCipher,
+                canUseFinalKey: false)
             Diag.debug("Key derivation OK")
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
