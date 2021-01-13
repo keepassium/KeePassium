@@ -48,7 +48,9 @@ extension PremiumFeature {
                 "[PremiumFeature/CustomAppIcons/title]",
                 value: "Custom App Icons",
                 comment: "Title of a premium feature: ability to change the app icon")
-        case .canUseExpressUnlock:
+        case .canUseExpressUnlock,
+             .canViewFieldReferences:
+            assertionFailure("Implicit feature, no upgrade notice required")
             return genericPremiumFeatureTitle
         }
     }
@@ -77,7 +79,8 @@ extension PremiumFeature {
                 comment: "Description/advertisement for the `Hardware Keys` premium feature")
         case .canKeepMasterKeyOnDatabaseTimeout,
              .canChangeAppIcon,
-             .canUseExpressUnlock:
+             .canUseExpressUnlock,
+             .canViewFieldReferences:
             return genericPremiumFeatureDescription
         }
     }

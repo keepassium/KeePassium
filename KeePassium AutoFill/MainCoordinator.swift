@@ -79,7 +79,9 @@ class MainCoordinator: NSObject, Coordinator {
                 completion: nil)
         }
 
-        PremiumManager.shared.usageMonitor.startInterval()
+        let premiumManager = PremiumManager.shared
+        premiumManager.reloadReceipt()
+        premiumManager.usageMonitor.startInterval()
 
         rootController.present(pageController, animated: false, completion: nil)
         startMainFlow()
@@ -128,7 +130,9 @@ class MainCoordinator: NSObject, Coordinator {
             )
         }
         
-        let passwordCredential = ASPasswordCredential(user: entry.userName, password: entry.password)
+        let passwordCredential = ASPasswordCredential(
+            user: entry.resolvedUserName,
+            password: entry.resolvedPassword)        
         rootController.extensionContext.completeRequest(withSelectedCredential: passwordCredential) {
             (expired) in
             HapticFeedback.play(.credentialsPasted)
@@ -391,7 +395,7 @@ extension MainCoordinator: DatabaseChooserDelegate {
         watchdog.restart()
         let existingNonBackupDatabaseRefs = sender.databaseRefs.filter {
             ($0.location != .internalBackup) && 
-                !($0.hasPermissionError257 || $0.isFileMissingIOS14) 
+                !($0.hasPermissionError257 || $0.hasFileMissingError) 
         }
         if existingNonBackupDatabaseRefs.count > 0 {
             if PremiumManager.shared.isAvailable(feature: .canUseMultipleDatabases) {
@@ -534,6 +538,7 @@ extension MainCoordinator: DatabaseManagerObserver {
            let dbSettings = DatabaseSettingsManager.shared.getSettings(for: urlRef),
            let compositeKey = dbSettings.masterKey
         {
+            Diag.info("Express unlock failed, retrying with key derivation")
             canUseFinalKey = false
             tryToUnlockDatabase(
                 database: urlRef,
@@ -553,7 +558,7 @@ extension MainCoordinator: DatabaseManagerObserver {
         Settings.current.isAutoFillFinishedOK = true
         databaseUnlockerVC.hideProgressOverlay()
         
-        if urlRef.hasPermissionError257 || urlRef.isFileMissingIOS14 {
+        if urlRef.hasPermissionError257 || urlRef.hasFileMissingError {
             databaseUnlockerVC.showErrorMessage(
                 message,
                 reason: reason,

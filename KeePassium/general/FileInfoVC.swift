@@ -172,9 +172,10 @@ class FileInfoVC: UITableViewController {
         )
         if #available(iOS 13, *) {
             preferredSize.width = 400
-        }
-        
-        DispatchQueue.main.async { [self] in
+            DispatchQueue.main.async { [self] in
+                self.preferredContentSize = preferredSize
+            }
+        } else {
             self.preferredContentSize = preferredSize
         }
     }

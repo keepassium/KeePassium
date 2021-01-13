@@ -371,7 +371,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
                 as! GroupViewListCell
             setupCell(
                 entryCell,
-                title: entry.title,
+                title: entry.resolvedTitle,
                 subtitle: getDetailInfo(forEntry: entry),
                 image: UIImage.kpIcon(forEntry: entry),
                 isExpired: entry.isExpired)
@@ -396,13 +396,14 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         case .none:
             return nil
         case .userName:
-            return entry.userName
+            return entry.getField(with: EntryField.userName)?.premiumDecoratedValue
         case .password:
-            return entry.password
+            return entry.getField(with: EntryField.password)?.premiumDecoratedValue
         case .url:
-            return entry.url
+            return entry.getField(with: EntryField.url)?.premiumDecoratedValue
         case .notes:
-            return entry.notes
+            return entry.getField(with: EntryField.notes)?
+                .premiumDecoratedValue
                 .replacingOccurrences(of: "\r", with: " ")
                 .replacingOccurrences(of: "\n", with: " ")
         case .lastModifiedDate:

@@ -192,7 +192,7 @@ public class ByteArray: Eraseable, Codable, CustomDebugStringConvertible {
         }
     }
     
-    convenience public init?(hexString string: String) {
+    convenience public init?<T: StringProtocol>(hexString string: T) {
         func decodeNibble(u: UInt16) -> UInt8? {
             switch(u) {
             case 0x30 ... 0x39:

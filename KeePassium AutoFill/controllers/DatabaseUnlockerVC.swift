@@ -229,6 +229,10 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     private(set) var progressOverlay: ProgressOverlay?
 
     public func showProgressOverlay(animated: Bool) {
+        guard progressOverlay == nil else {
+            progressOverlay?.title = LString.databaseStatusLoading
+            return
+        }
         navigationItem.hidesBackButton = true
         progressOverlay = ProgressOverlay.addTo(
             self.view,

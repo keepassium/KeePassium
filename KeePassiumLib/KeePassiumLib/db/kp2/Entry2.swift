@@ -13,12 +13,16 @@ public class EntryField2: EntryField {
     public var isEmpty: Bool {
         return name.isEmpty && value.isEmpty
     }
-    override init(name: String, value: String, isProtected: Bool) {
-        super.init(name: name, value: value, isProtected: isProtected)
-    }
     
     override public func clone() -> EntryField {
-        return EntryField2(name: self.name, value: self.value, isProtected: self.isProtected)
+        let clone = EntryField2(
+            name: name,
+            value: value,
+            isProtected: isProtected,
+            resolvedValue: resolvedValueInternal,
+            resolveStatus: resolveStatus
+        )
+        return clone
     }
     
     func applyProtectionFlag(from meta: Meta2) {

@@ -31,10 +31,15 @@ extension UIFont {
         -> UIFont
     {
         var font: UIFont
-        if UIAccessibility.isBoldTextEnabled {
-            font = UIFont(name: "Menlo-Bold", size: size) ?? UIFont.boldSystemFont(ofSize: size)
+        if #available(iOS 13, *) {
+            let weight: Weight = UIAccessibility.isBoldTextEnabled ? .bold : .regular
+            font = UIFont.monospacedSystemFont(ofSize: size, weight: weight)
         } else {
-            font = UIFont(name: "Menlo", size: size) ?? UIFont.systemFont(ofSize: size)
+            if UIAccessibility.isBoldTextEnabled {
+                font = UIFont(name: "Menlo-Bold", size: size) ?? UIFont.boldSystemFont(ofSize: size)
+            } else {
+                font = UIFont(name: "Menlo", size: size) ?? UIFont.systemFont(ofSize: size)
+            }
         }
         let fontMetrics = UIFontMetrics(forTextStyle: style)
         return fontMetrics.scaledFont(for: font)

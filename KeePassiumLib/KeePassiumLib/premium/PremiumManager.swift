@@ -91,7 +91,10 @@ public class PremiumManager: NSObject {
     private let lapsePeriodInSeconds: TimeInterval = 2 * 24 * 60 * 60 
     private let heavyUseThreshold: TimeInterval = 8 * 60 * 60 / 12 
 #endif
+    
+    private let premiumSupportDuration: TimeInterval = 365 * 24 * 60 * 60 
 
+    
     
     public private(set) var isTrialAvailable: Bool = true
     
@@ -165,7 +168,7 @@ public class PremiumManager: NSObject {
         }
         
         if status != previousStatus {
-            Diag.info("Premium subscription status changed [was: \(previousStatus), now: \(status)]")
+            Diag.info("Premium status has changed [was: \(previousStatus), now: \(status)]")
             notifyStatusChanged()
         }
     }
@@ -230,12 +233,48 @@ public class PremiumManager: NSObject {
     }
     
     
-    public func reloadReceipt(withLogging: Bool=false) {
+    public func reloadReceipt() {
         guard BusinessModel.type == .freemium else { return }
-        let receiptAnalyzer = ReceiptAnalyzer()
-        receiptAnalyzer.loadReceipt()
-        self.isTrialAvailable = !receiptAnalyzer.containsTrial
-        self.fallbackDate = receiptAnalyzer.fallbackDate
+        
+        let oldFallbackDate = fallbackDate
+        if AppGroup.isMainApp {
+            let receiptAnalyzer = ReceiptAnalyzer()
+            receiptAnalyzer.loadReceipt()
+            isTrialAvailable = !receiptAnalyzer.containsTrial
+            fallbackDate = receiptAnalyzer.fallbackDate
+            do {
+                try Keychain.shared.setPremiumFallbackDate(fallbackDate) 
+            } catch {
+                Diag.warning("Failed to store premium fallback date [message: \(error.localizedDescription)]")
+            }
+        } else { 
+            do {
+                fallbackDate = try Keychain.shared.getPremiumFallbackDate()  
+            } catch {
+                Diag.warning("Failed to retrieve premium fallback date [message: \(error.localizedDescription)]")
+            }
+        }
+        
+        if let newFallbackDate = fallbackDate, newFallbackDate != oldFallbackDate {
+            Diag.info("Premium fallback date changed to \(fallbackDate!.iso8601String())")
+            notifyStatusChanged()
+        }
+    }
+    
+    public func isPremiumSupportAvailable() -> Bool {
+        switch status {
+        case .subscribed,
+             .lapsed:
+            return true
+        case .initialGracePeriod,
+             .freeLightUse,
+             .freeHeavyUse:
+            if let fallbackDate = fallbackDate {
+                let supportExpiryDate = fallbackDate.addingTimeInterval(premiumSupportDuration)
+                return supportExpiryDate < .now
+            }
+            return false
+        }
     }
     
     

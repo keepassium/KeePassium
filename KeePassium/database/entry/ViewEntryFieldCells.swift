@@ -20,7 +20,7 @@ class ViewableFieldCellFactory {
         let shouldHideField =
             (field.isProtected || (field.internalName == EntryField.password))
             && Settings.current.isHideProtectedFields
-        let isOpenableURL = field.value?.isOpenableURL ?? false
+        let isOpenableURL = field.resolvedValue?.isOpenableURL ?? false
         
         let cell: ViewableFieldCell
         if field is TOTPViewableField {
@@ -119,7 +119,7 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
     }
 
     func getUserVisibleValue() -> String? {
-        return field?.value
+        return field?.decoratedValue
     }
     
     @objc func didTapValueTextView(_ sender: UITextView) {
@@ -218,7 +218,7 @@ class ProtectedFieldCell: ViewableFieldCell {
     
     override func getUserVisibleValue() -> String? {
         guard let field = field else { return nil }
-        return field.isValueHidden ? hiddenValueMask : field.value
+        return field.isValueHidden ? hiddenValueMask : field.decoratedValue
     }
     
     private func refreshTextView() {

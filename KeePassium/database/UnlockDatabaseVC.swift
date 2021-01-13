@@ -162,7 +162,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         databaseNameLabel.text = databaseRef.visibleFileName
         if databaseRef.hasError {
             let text = databaseRef.error?.localizedDescription
-            if databaseRef.hasPermissionError257 || databaseRef.isFileMissingIOS14 {
+            if databaseRef.hasPermissionError257 || databaseRef.hasFileMissingError {
                 showErrorMessage(text, suggestion: LString.tryToReAddFile)
             } else {
                 showErrorMessage(text)
@@ -625,7 +625,7 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
         hideProgressOverlay(quickly: true)
         
         isAutoUnlockEnabled = false
-        if databaseRef.hasPermissionError257 || databaseRef.isFileMissingIOS14 {
+        if databaseRef.hasPermissionError257 || databaseRef.hasFileMissingError {
             showErrorMessage(
                 message,
                 details: reason,

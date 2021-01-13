@@ -75,10 +75,57 @@ internal enum LString {
             bundle: Bundle.framework,
             value: "Making backup copy...",
             comment: "Database saving status: making a local backup copy of the database")
+        static let resolvingFieldReferences = NSLocalizedString(
+            "[Database/Progress/resolvingFieldReferences]",
+            bundle: Bundle.framework,
+            value: "Resolving field references…",
+            comment: "Database loading/saving status: replacing field references with their values")
         static let done = NSLocalizedString(
             "[Database/Progress] Done",
             bundle: Bundle.framework,
             value: "Done",
             comment: "Progress status: finished loading database")
+        
+        static let database1ParsingContent = NSLocalizedString(
+            "[Database1/Progress] Parsing content",
+            bundle: Bundle.framework,
+            value: "Parsing content",
+            comment: "Status message: processing the content of a database")
+        static let database1PackingContent = NSLocalizedString(
+            "[Database1/Progress] Packing the content",
+            bundle: Bundle.framework,
+            value: "Packing the content",
+            comment: "Status message: collecting database items into a single package")
+        
+        static let database2LoadingDatabase = NSLocalizedString(
+            "[Database2/Progress] Loading database",
+            bundle: Bundle.framework,
+            value: "Loading database",
+            comment: "Progress bar status")
+        static let database2DecompressingDatabase = NSLocalizedString(
+            "[Database2/Progress/decompressing]",
+            bundle: Bundle.framework,
+            value: "Decompressing database",
+            comment: "Progress bar status: un-zipping the database content")
+        static let database2IntegrityCheck = NSLocalizedString(
+            "[Database2/Progress/integrityCheck]",
+            bundle: Bundle.framework,
+            value: "Checking integrity",
+            comment: "Progress bar status")
+        static let database2ReadingContent = NSLocalizedString(
+            "[Database2/Progress] Reading database content",
+            bundle: Bundle.framework,
+            value: "Reading database content",
+            comment: "Progress bar status")
+        static let database2ParsingXML = NSLocalizedString(
+            "[Database2/Progress/parsingXML]",
+            bundle: Bundle.framework,
+            value: "Parsing database",
+            comment: "Progress bar status: parsing decrypted XML content")
+        static let database2WritingBlocks = NSLocalizedString(
+            "[Database2/Progress] Writing encrypted blocks",
+            bundle: Bundle.framework,
+            value: "Writing encrypted blocks",
+            comment: "Progress bar status")
     }
 }

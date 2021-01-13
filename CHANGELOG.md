@@ -1,6 +1,25 @@
 #CHANGELOG
 
-## [1.18.76] - 2020-10-03
+## [1.20.77] - 2020-10-21
+
+### Added
+
+- Entry field references, resolved and displayed (closes #77)
+
+### Changed
+
+- Refined: iOS 13+ will use system's monospaced font (SF Mono) instead of Menlo
+
+### Fixed
+
+- Excluded unavailable DBs from single-DB limit (related #125) [thanks, rederensy]
+- AutoFill did not recognize the premium fallback date [thanks, Pablo]
+- "YubiKey not available" was not always shown in AutoFill [thanks, Markus]
+- File info dialog controls were unresponsive on iPadOS 12.4 [thanks, u/chrie1]
+- Minor UI issues
+
+
+## [1.19.76] - 2020-10-03
 
 ### Changed
 

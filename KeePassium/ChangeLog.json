@@ -1,6 +1,40 @@
 {
     "sections": [
         {
+            "version": "1.20",
+            "releaseDate": "2020-10-21T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Entry field references, resolved and displayed",
+                    "type": 2
+                },
+                {
+                    "title": "🛠 Refined: iOS 13+ will use system's monospaced font (SF Mono) instead of Menlo.",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill did not recognize the premium fallback date [thanks, Pablo]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Excluded unavailable DBs from single-DB limit (related #125) [thanks, rederensy]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: \"YubiKey not available\" was not always shown in AutoFill [thanks, Markus]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: File info dialog controls were unresponsive on iPadOS 12.4 [thanks, u/chrie1]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI issues",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.19",
             "releaseDate": "2020-10-03T00:00:00Z",
             "items": [

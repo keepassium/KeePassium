@@ -14,6 +14,17 @@ public enum PremiumFeature: Int {
         .canUseHardwareKeys,    
         .canKeepMasterKeyOnDatabaseTimeout, 
         .canChangeAppIcon,
+        .canViewFieldReferences
+    ]
+    public static let introductionDate: [PremiumFeature : Date] = [
+        .canUseMultipleDatabases: Date(iso8601string: "2019-07-31T00:00:00Z")!,
+        .canUseLongDatabaseTimeouts: Date(iso8601string: "2019-07-31T00:00:00Z")!,
+        .canPreviewAttachments: Date(iso8601string: "2019-07-31T00:00:00Z")!,
+        .canUseHardwareKeys: Date(iso8601string: "2020-01-14T00:00:00Z")!,
+        .canKeepMasterKeyOnDatabaseTimeout: Date(iso8601string: "2020-07-14T00:00:00Z")!,
+        .canChangeAppIcon: Date(iso8601string: "2020-08-04T00:00:00Z")!,
+        .canUseExpressUnlock: Date(iso8601string: "2020-10-01T00:00:00Z")!,
+        .canViewFieldReferences: Date(iso8601string: "2020-10-16T00:00:00Z")!,
     ]
     
     case canUseMultipleDatabases = 0
@@ -30,6 +41,8 @@ public enum PremiumFeature: Int {
     
     case canUseExpressUnlock = 7
     
+    case canViewFieldReferences = 8
+    
     public func isAvailable(in status: PremiumManager.Status, fallbackDate: Date?) -> Bool {
         let isEntitled = status == .subscribed ||
             status == .lapsed ||
@@ -40,7 +53,8 @@ public enum PremiumFeature: Int {
              .canUseLongDatabaseTimeouts,
              .canUseHardwareKeys,
              .canKeepMasterKeyOnDatabaseTimeout,
-             .canChangeAppIcon:
+             .canChangeAppIcon,
+             .canViewFieldReferences:
             return isEntitled
         case .canPreviewAttachments:
             return isEntitled || (status != .freeHeavyUse)
@@ -53,21 +67,10 @@ public enum PremiumFeature: Int {
         guard let date = fallbackDate else {
             return false
         }
-        switch self {
-        case .canUseMultipleDatabases:
-            return date > Date(iso8601string: "2019-07-31T00:00:00Z")!
-        case .canUseLongDatabaseTimeouts:
-            return date > Date(iso8601string: "2019-07-31T00:00:00Z")!
-        case .canPreviewAttachments:
-            return date > Date(iso8601string: "2019-07-31T00:00:00Z")!
-        case .canUseHardwareKeys:
-            return date > Date(iso8601string: "2020-01-14T00:00:00Z")!
-        case .canKeepMasterKeyOnDatabaseTimeout:
-            return date > Date(iso8601string: "2020-07-14T00:00:00Z")!
-        case .canChangeAppIcon:
-            return date > Date(iso8601string: "2020-08-04T00:00:00Z")!
-        case .canUseExpressUnlock:
-            return date > Date(iso8601string: "2020-10-01T00:00:00Z")!
+        guard let introductionDate = PremiumFeature.introductionDate[self] else {
+            assertionFailure("No introduction date for the feature \(self)")
+            return false
         }
+        return date > introductionDate
     }
 }

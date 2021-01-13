@@ -24,6 +24,7 @@
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
 		757CB44223993E48000867F0 /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CB44123993E48000867F0 /* DatabaseSettings.swift */; };
 		759896432341CED300DF39AA /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759896422341CED300DF39AA /* BusinessModel.swift */; };
+		759A321B252DC1E7001A1623 /* EntryFieldReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A321A252DC1E7001A1623 /* EntryFieldReference.swift */; };
 		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
 		75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677A229045A60097C693 /* PremiumFeature.swift */; };
 		75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */; };
@@ -119,6 +120,7 @@
 		75D09C622174F89A00F7DEF2 /* ProgressEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C612174F89A00F7DEF2 /* ProgressEx.swift */; };
 		75D0C77B2174AF2000C64C93 /* KeePassiumLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D4080523952FD40042122A /* CompositeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4080423952FD40042122A /* CompositeKey.swift */; };
+		75DBD04A253A525E00538B8F /* EntryField+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD049253A525E00538B8F /* EntryField+premium.swift */; };
 		75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */; };
 		75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA2D1621B2FB4000826FC6 /* Diag.swift */; };
 		75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD12177456200B22D8B /* PasswordGenerator.swift */; };
@@ -165,6 +167,7 @@
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
 		757CB44123993E48000867F0 /* DatabaseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
 		759896422341CED300DF39AA /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
+		759A321A252DC1E7001A1623 /* EntryFieldReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldReference.swift; sourceTree = "<group>"; };
 		75A2676F228DAC430097C693 /* PremiumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManager.swift; sourceTree = "<group>"; };
 		75A2677A229045A60097C693 /* PremiumFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeature.swift; sourceTree = "<group>"; };
 		75AC35BB23549D6C00B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -267,6 +270,7 @@
 		75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeePassiumLib.h; sourceTree = "<group>"; };
 		75D0C76E2174AF1F00C64C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75D4080423952FD40042122A /* CompositeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeKey.swift; sourceTree = "<group>"; };
+		75DBD049253A525E00538B8F /* EntryField+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryField+premium.swift"; sourceTree = "<group>"; };
 		75E4CA89232D0B2200EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaver.swift; sourceTree = "<group>"; };
 		75EA2D1621B2FB4000826FC6 /* Diag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diag.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 				75F74AB924C082F90071281E /* ReceiptAnalyzer.swift */,
 				75A2677A229045A60097C693 /* PremiumFeature.swift */,
 				7538167D22B15FC7000FA4BD /* Settings+premium.swift */,
+				75DBD049253A525E00538B8F /* EntryField+premium.swift */,
 				75384B9822CCB76800157598 /* UsageMonitor.swift */,
 				759896422341CED300DF39AA /* BusinessModel.swift */,
 				75F74ABB24C0EF370071281E /* IARError+description.swift */,
@@ -449,6 +454,7 @@
 				75D09BED2174F77000F7DEF2 /* Attachment.swift */,
 				75D09BFB2174F77000F7DEF2 /* IconID.swift */,
 				75D4080423952FD40042122A /* CompositeKey.swift */,
+				759A321A252DC1E7001A1623 /* EntryFieldReference.swift */,
 			);
 			path = db;
 			sourceTree = "<group>";
@@ -830,6 +836,7 @@
 				75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */,
 				75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */,
 				75F4ACEC2177485D00B22D8B /* Weak.swift in Sources */,
+				75DBD04A253A525E00538B8F /* EntryField+premium.swift in Sources */,
 				75D09C1D2174F77000F7DEF2 /* KDFParams.swift in Sources */,
 				75D09BE42174F76500F7DEF2 /* encoding.c in Sources */,
 				75D09BE62174F76500F7DEF2 /* Argon2.swift in Sources */,
@@ -879,6 +886,7 @@
 				75C8471924FAE7B60064A4EC /* Comparable+extensions.swift in Sources */,
 				75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */,
 				75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */,
+				759A321B252DC1E7001A1623 /* EntryFieldReference.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
 				75F4ACE32177469500B22D8B /* BaseDocument.swift in Sources */,
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,

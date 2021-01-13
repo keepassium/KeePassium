@@ -84,13 +84,19 @@ public class URLReference:
         return (nsError.domain == NSCocoaErrorDomain) && (nsError.code == 257)
     }
     
-    public var isFileMissingIOS14: Bool {
-        guard #available(iOS 14, *), location == .external else {
+    public var hasFileMissingError: Bool {
+        guard location == .external,
+              let underlyingError = error?.underlyingError,
+              let nsError = underlyingError as NSError? else { return false }
+        
+        switch nsError.domain {
+        case NSCocoaErrorDomain:
+            return nsError.code == CocoaError.Code.fileNoSuchFile.rawValue
+        case NSFileProviderErrorDomain:
+            return nsError.code == NSFileProviderError.noSuchItem.rawValue
+        default:
             return false
         }
-        guard let underlyingError = error?.underlyingError,
-              let nsError = underlyingError as NSError? else { return false }
-        return (nsError.domain == NSCocoaErrorDomain) && (nsError.code == 4)
     }
     
     private let data: Data

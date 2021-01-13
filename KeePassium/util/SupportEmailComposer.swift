@@ -63,15 +63,10 @@ class SupportEmailComposer: NSObject {
             return betaSupportEmail
         }
         
-        let premiumStatus = PremiumManager.shared.status
-        switch premiumStatus {
-        case .initialGracePeriod,
-             .freeLightUse,
-             .freeHeavyUse:
-            return freeSupportEmail
-        case .subscribed,
-             .lapsed:
+        if PremiumManager.shared.isPremiumSupportAvailable() {
             return premiumSupportEmail
+        } else {
+            return freeSupportEmail
         }
     }
     

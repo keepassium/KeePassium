@@ -47,6 +47,7 @@ public class Keychain {
     private let appPasscodeAccount = "appPasscode"
     private let premiumExpiryDateAccount = "premiumExpiryDate"
     private let premiumProductAccount = "premiumProductID"
+    private let premiumFallbackDateAccount = "premiumFallbackDate"
     
     private init() {
         cleanupObsoleteKeys()
@@ -213,5 +214,26 @@ public class Keychain {
             let productIDString = String(data: data, encoding: .utf8) else { return nil }
         guard let product = InAppProduct(rawValue: productIDString) else { return nil }
         return product
+    }
+    
+    internal func setPremiumFallbackDate(_ date: Date?) throws {
+        guard let date = date else {
+            try remove(service: .premium, account: premiumFallbackDateAccount)
+            return
+        }
+
+        let timestampBytes = UInt64(date.timeIntervalSinceReferenceDate).data
+        try set(service: .premium, account: premiumFallbackDateAccount, data: timestampBytes.asData)
+    }
+    
+    internal func getPremiumFallbackDate() throws -> Date? {
+        guard let data = try get(service: .premium, account: premiumFallbackDateAccount) else {
+            return nil
+        }
+        guard let timestamp = UInt64(data: ByteArray(data: data)) else {
+            assertionFailure()
+            return nil
+        }
+        return Date(timeIntervalSinceReferenceDate: Double(timestamp))
     }
 }
