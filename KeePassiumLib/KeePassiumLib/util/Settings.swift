@@ -70,6 +70,7 @@ public class Settings {
         case lockAllDatabasesOnFailedPasscode
         case recentUserActivityTimestamp
         case appLockTimeout
+        case lockAppOnLaunch
         case databaseLockTimeout
         case lockDatabasesOnTimeout
         
@@ -88,6 +89,7 @@ public class Settings {
 
         case backupDatabaseOnSave
         case backupKeepingDuration
+        case excludeBackupFilesFromSystemBackup
         
         case autoFillFinishedOK
         case copyTOTPOnAutoFill
@@ -647,33 +649,50 @@ public class Settings {
         }
 
         public func compare(_ lhs: URLReference, _ rhs: URLReference) -> Bool {
-            guard let lhsInfo = lhs.getCachedInfoSync(canFetch: false) else { return false }
-            guard let rhsInfo = rhs.getCachedInfoSync(canFetch: false) else { return true }
-            
             switch self {
             case .noSorting:
                 return false
             case .nameAsc:
-                return lhsInfo.fileName.localizedCaseInsensitiveCompare(rhsInfo.fileName) == .orderedAscending
+                return compareFileNames(lhs, rhs, criteria: .orderedAscending)
             case .nameDesc:
-                return lhsInfo.fileName.localizedCaseInsensitiveCompare(rhsInfo.fileName) == .orderedDescending
+                return compareFileNames(lhs, rhs, criteria: .orderedDescending)
             case .creationTimeAsc:
-                guard let date1 = lhsInfo.creationDate else { return true }
-                guard let date2 = rhsInfo.creationDate else { return false }
-                return date1.compare(date2) == .orderedAscending
+                return compareCreationTimes(lhs, rhs, criteria: .orderedAscending)
             case .creationTimeDesc:
-                guard let date1 = lhsInfo.creationDate else { return true }
-                guard let date2 = rhsInfo.creationDate else { return false }
-                return date1.compare(date2) == .orderedDescending
+                return compareCreationTimes(lhs, rhs, criteria: .orderedDescending)
             case .modificationTimeAsc:
-                guard let date1 = lhsInfo.modificationDate else { return true}
-                guard let date2 = rhsInfo.modificationDate else { return false }
-                return date1.compare(date2) == .orderedAscending
+                return compareModificationTimes(lhs, rhs, criteria: .orderedAscending)
             case .modificationTimeDesc:
-                guard let date1 = lhsInfo.modificationDate else { return true }
-                guard let date2 = rhsInfo.modificationDate else { return false }
-                return date1.compare(date2) == .orderedDescending
+                return compareModificationTimes(lhs, rhs, criteria: .orderedDescending)
             }
+        }
+        
+        private func compareFileNames(_ lhs: URLReference, _ rhs: URLReference, criteria: ComparisonResult) -> Bool {
+            let lhsInfo = lhs.getCachedInfoSync(canFetch: false)
+            guard let lhsName = lhsInfo?.fileName ?? lhs.url?.lastPathComponent else {
+                return false
+            }
+            let rhsInfo = rhs.getCachedInfoSync(canFetch: false)
+            guard let rhsName = rhsInfo?.fileName ?? rhs.url?.lastPathComponent else {
+                return true
+            }
+            return lhsName.localizedCaseInsensitiveCompare(rhsName) == criteria
+        }
+        
+        private func compareCreationTimes(_ lhs: URLReference, _ rhs: URLReference, criteria: ComparisonResult) -> Bool {
+            guard let lhsInfo = lhs.getCachedInfoSync(canFetch: false) else { return false }
+            guard let rhsInfo = rhs.getCachedInfoSync(canFetch: false) else { return true }
+            guard let lhsDate = lhsInfo.creationDate else { return true }
+            guard let rhsDate = rhsInfo.creationDate else { return false }
+            return lhsDate.compare(rhsDate) == criteria
+        }
+        
+        private func compareModificationTimes(_ lhs: URLReference, _ rhs: URLReference, criteria: ComparisonResult) -> Bool {
+            guard let lhsInfo = lhs.getCachedInfoSync(canFetch: false) else { return false }
+            guard let rhsInfo = rhs.getCachedInfoSync(canFetch: false) else { return true }
+            guard let lhsDate = lhsInfo.modificationDate else { return true }
+            guard let rhsDate = rhsInfo.modificationDate else { return false }
+            return lhsDate.compare(rhsDate) == criteria
         }
     }
     
@@ -966,6 +985,21 @@ public class Settings {
         }
     }
     
+    public var isLockAppOnLaunch: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.lockAppOnLaunch.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isLockAppOnLaunch,
+                newValue: newValue,
+                key: .lockAppOnLaunch)
+        }
+    }
+    
     public var databaseLockTimeout: DatabaseLockTimeout {
         get {
             if let rawValue = UserDefaults.appGroupShared
@@ -1204,6 +1238,21 @@ public class Settings {
             if newValue != oldValue {
                 postChangeNotification(changedKey: Keys.backupKeepingDuration)
             }
+        }
+    }
+    
+    public var isExcludeBackupFilesFromSystemBackup: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.excludeBackupFilesFromSystemBackup.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isExcludeBackupFilesFromSystemBackup,
+                newValue: newValue,
+                key: .excludeBackupFilesFromSystemBackup)
         }
     }
     

@@ -44,7 +44,7 @@ extension HelpViewerCoordinator: HelpViewerDelegate {
     }
     
     func didPressShare(at popoverAnchor: PopoverAnchor, in viewController: HelpViewerVC) {
-        guard let text = viewController.bodyLabel.attributedText else {
+        guard let text = viewController.bodyTextView.attributedText else {
             assertionFailure()
             return
         }

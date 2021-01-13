@@ -5,7 +5,7 @@
 "7cl-Fc-8Nf.text" = "專有許可證";
 
 /* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
-"7id-QT-w26.text" = "圖標 來自 Icons8";
+"7id-QT-w26.text" = "Icons 來自 Icons8";
 
 /* Class = "UILabel"; text = "Ionicons by Ionic"; ObjectID = "9lh-fA-Xgx"; */
 "9lh-fA-Xgx.text" = "Ionicons 來自 Ionic";
@@ -34,8 +34,8 @@
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "bAq-tq-nuY"; */
 "bAq-tq-nuY.text" = "MIT 授權許可";
 
-/* Class = "UILabel"; text = "©2020 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
-"bmf-Ed-H4x.text" = "©2020 Andrei Popleteev";
+/* Class = "UILabel"; text = "©2021 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
+"bmf-Ed-H4x.text" = "©2021 Andrei Popleteev";
 
 /* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
 "CNI-b8-7Da.text" = "KeePass 來自 Dominik Reichl";
@@ -89,7 +89,7 @@
 "o9e-qb-mMw.text" = "CC0 授權";
 
 /* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
-"OaP-Bl-5vR.text" = "TPInAppReceipt by Pavel Tikhonenko";
+"OaP-Bl-5vR.text" = "TPInAppReceipt 來自 Pavel Tikhonenko";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
 "QV5-N8-NRt.text" = "公有領域";
@@ -131,7 +131,7 @@
 "Wuj-Uw-baK.text" = "KeePassium";
 
 /* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
-"wYr-Ya-qAP.text" = "系統設置圖標 來自 Vicons Design";
+"wYr-Ya-qAP.text" = "System settings 來自 Vicons Design";
 
 /* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
 "Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK 來自 Yubico AB";

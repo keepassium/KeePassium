@@ -1,0 +1,327 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "فتح القفل";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "فتح قفل KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "استخدم كلمة مرور";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "للترقية، يرجى فتح KeePassium يدويا من شاشة الهاتف الرئيسية.";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "ترقية للإصدار المميز";
+
+/* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
+"[AutoFill/Search/callerID]" = "هوية الطلب: %@";
+
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "التعبئة التلقائية لا يمكنها الوصول تلقائياً إلى الملفات التي لديك بالفعل في تطبيق KeePassium الرئيسي.\n\nلماذا؟ وراء المشاهد، يتعامل النظام مع التعبئة التلقائية كتطبيق منفصل، مستقل عن عملية KeePassium الرئيسية. لأسباب أمنية، لا يمكن لأي تطبيق الوصول ببساطة إلى أي ملفات خارجية - ما لم تقم بربط هذه الملفات فعلياً بهذا التطبيق. وبالتالي يضمن النظام أن التطبيق يمكنه فقط الوصول إلى الملفات القليلة التي سُمح له بها.\n\nونتيجة لذلك، يجب إعطاء كل من تطبيق التعبئة التلقائية و KeePassium الاذونات الخاصة لكل ملف خارجي. لحسن الحظ، هذا إجراء لمرة واحدة فقط.";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "الملف المُحدد \"%@\" لا يبدو كقاعدة بيانات.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Create Database";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Create Database";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "فشل في حذف قاعدة البيانات";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "حذف ملف قاعدة البيانات؟\nتأكد من أن يكون لديك نسخة احتياطية.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "جاري التحميل...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "تم تغيير المفتاح الرئيس بنجاح";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "فتح قاعدة البيانات";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "إغلاق";
+
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "قفل قاعدة البيانات";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "إزالة قاعدة البيانات من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته مرة أخرى لاحقاً.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "تمّ الحفظ";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "جاري الحفظ...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "خطأ في ملف المفتاح: %@";
+
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "تمّ نسخ سجل التشخيص إلى الحافظة.";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "إظهار سجل التشخيص";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "المرفقات";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "إنشاء سجل";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "اسم الحقل";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "مُلاحظات";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "كلمة المرور";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "العنوان";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "عنوان URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "اسم المستخدم";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "سجل جديد";
+
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "حاول إزالة الملف من التطبيق، ثم أضفه مرة أخرى.";
+
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "النسخ الاحتياطية";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "تعذّر تعديل سمات الملف.";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "تاريخ الإنشاء";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "موقع الملف";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "اسم الملف";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "حجم الملف";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "تاريخ آخر تعديل";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "خطأ";
+
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "استبعد من النسخ الاحتياطي لـ iCloud/iTunes";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "إلغاء";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "تواصل معنا";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "المتابعة";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "نسخ";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "حذف";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "تجاهل";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "إخفاء";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "تم";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "حرّر";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "تصدير";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "نقل";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "حسناً";
+
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "الكتابة فوق الملف";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "إعادة التسمية";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "إستبدال";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "عرض التفاصيل";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "عرض المزيد";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "هل أنت متأكد؟";
+
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "سلة المحذوفات";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "هل تريد تجاهل التغييرات الغير محفوظة؟";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "هناك تغييرات غير محفوظة";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "حذف";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "إزالة";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "خطأ في التصدير";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "الملف موجود مسبقا";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "خطأ في الاستيراد";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "خطأ";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "خطأ في سلسلة المفاتيح";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "تحذير";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "إنشاء مجموعة";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "إنشاء مجموعة";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "تحرير المجموعة";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "مجموعة جديدة";
+
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "مفاتيح الأجهزة غير مُتاحة في التعبئة التلقائية.";
+
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "الـNFC يتطلب إصدار ios 13 أو اجدد.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "عدم استخدام جهاز مفاتيح";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "منفذ YubiKey %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "المساعدة";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "حذف ملف المفتاح؟\n تأكد أن لديك نسخة احتياطية.";
+
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "إزالة ملف المفتاح من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته لاحقاً مرة أخرى.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "الترقية للمميز";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "تخصيص أيقونة التطبيق";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "لقد وجدت ميزة مدفوعة! قم بالترقية إلى المميز والاستمتاع بـ KeePassium في أفضل حالاتها.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "ميزة مدفوعة";
+
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "عزز أمانك باستخدام مفاتيح الأجهزة (YubiKey) في الإصدار المميز.";
+
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "حهاز مفاتيح";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "وفر وقت إدخال كلمات المرور الرئيسة المعقدة الخاصة بك - ابقي قاعدة البيانات الخاصة بك مفتوحة لفترة أطول في الإصدار المميز.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "مهلة أطول لقاعدة البيانات";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "التبديل بسهولة بين قواعد البيانات في النسخة المميزة.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "قواعد بيانات متعددة";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "معاينة الصور والمستندات مباشرة من التطبيق، في الإصدار المميز.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "معاينة المرفقات";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "إظهار كلمة المرور";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(يرجى وصف المشكلة هنا)";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "بدون YubiKey";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "أدخل المفتاح";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "المس المفتاح";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "استخدم منفذ YubiKey %d";
+
+/* Action/button to add database to the app */
+"Add Database" = "إضافة قاعدة بيانات";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "اختيار قاعدة بيانات";
+
+/* Action/button */
+"Import Database" = "إستيراد قاعدة البيانات";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "لا ينبغي استخدام ملف قاعدة بيانات KeePass كملف مفتاح. الرجاء اختيار ملف مختلف.";
+

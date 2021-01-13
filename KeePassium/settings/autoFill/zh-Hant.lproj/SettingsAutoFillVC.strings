@@ -8,7 +8,7 @@
 "ei6-22-NXN.title" = "自動填入功能";
 
 /* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"go1-Nt-isQ.text" = "複製 一次性密碼OTP 到剪貼簿";
+"go1-Nt-isQ.text" = "複製 一次性密碼OTP 到剪貼板";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.footerTitle" = "當自動填入只找到一個並且完整匹配的條目時 - 該條目將會被自動貼上。";

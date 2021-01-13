@@ -16,6 +16,7 @@ class SettingsBackupVC: UITableViewController {
     @IBOutlet weak var backupDurationCell: UITableViewCell!
     @IBOutlet weak var deleteAllBackupsButton: UIButton!
     @IBOutlet weak var backupDeletionSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var excludeFromSystemBackupSwitch: UISwitch!
     
     private var settingsNotifications: SettingsNotifications!
     private var fileKeeperNotifications: FileKeeperNotifications!
@@ -51,6 +52,7 @@ class SettingsBackupVC: UITableViewController {
         let backupFileCount = FileKeeper.shared.getBackupFiles().count
         enableDatabaseBackupSwitch.isOn = settings.isBackupDatabaseOnSave
         showBackupFilesSwitch.isOn = settings.isBackupFilesVisible
+        excludeFromSystemBackupSwitch.isOn = settings.isExcludeBackupFilesFromSystemBackup
         backupDurationCell.detailTextLabel?.text = settings.backupKeepingDuration.shortTitle
         if backupFileCount > 0 {
             deleteAllBackupsButton.isEnabled = true
@@ -98,6 +100,17 @@ class SettingsBackupVC: UITableViewController {
         let durationPicker = SettingsBackupTimeoutPickerVC.create(delegate: self)
         show(durationPicker, sender: self)
     }
+
+    @IBAction func didToggleExcludeFromSystemBackup(_ sender: UISwitch) {
+        let isExclude = excludeFromSystemBackupSwitch.isOn
+        Settings.current.isExcludeBackupFilesFromSystemBackup = isExclude
+        
+        excludeFromSystemBackupSwitch.isEnabled = false
+        DispatchQueue.main.async { [weak self] in
+            self?.applyExcludeFromSystemBackup(isExclude)
+            self?.excludeFromSystemBackupSwitch.isEnabled = true
+        }
+    }
     
     @IBAction func didPressDeleteAllBackupFiles(_ sender: Any) {
         let confirmationAlert = UIAlertController.make(
@@ -127,6 +140,22 @@ class SettingsBackupVC: UITableViewController {
             self.backupDeletionSpinner.isHidden = true
             self.refresh()
         }
+    }
+    
+    private func applyExcludeFromSystemBackup(_ isExclude: Bool) {
+        let backupFileRefs = FileKeeper.shared.getBackupFiles()
+        var successCounter = 0
+        for ref in backupFileRefs {
+            guard var url = try? ref.resolveSync() else {
+                continue
+            }
+            guard url.setExcludedFromBackup(isExclude) else {
+                Diag.debug("Failed to exclude backup file from backup [file: \(url.lastPathComponent)]")
+                continue
+            }
+            successCounter += 1
+        }
+        Diag.info("Backup files \(isExclude ? "excluded from" : "included to") system backup [total: \(backupFileRefs.count), changed: \(successCounter)]")
     }
 }
 

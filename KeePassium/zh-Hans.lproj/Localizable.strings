@@ -436,9 +436,6 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "升级到高级版";
 
-/* Message shown when in-app purchase is deferred until parental approval. */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent" = "感恩您! 您可以使用KeePassium 直到父母批准购买。";
-
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / 月";
 

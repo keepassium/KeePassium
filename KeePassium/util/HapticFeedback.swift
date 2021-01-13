@@ -13,6 +13,8 @@ class HapticFeedback {
     enum Kind {
         case appUnlocked
         case databaseUnlocked
+        case contextMenuOpened
+        case copiedToClipboard
         case credentialsPasted
         case wrongPassword
         case error
@@ -22,9 +24,12 @@ class HapticFeedback {
         guard Settings.current.isHapticFeedbackEnabled else { return }
         
         switch kind {
-        case .appUnlocked, .databaseUnlocked:
+        case .appUnlocked, .databaseUnlocked, .contextMenuOpened:
             let tactileGenerator = UIImpactFeedbackGenerator()
             tactileGenerator.impactOccurred()
+        case .copiedToClipboard:
+            let tactileGenerator = UISelectionFeedbackGenerator()
+            tactileGenerator.selectionChanged()
         case .credentialsPasted:
             let tactileGenerator = UINotificationFeedbackGenerator()
             tactileGenerator.notificationOccurred(.success)

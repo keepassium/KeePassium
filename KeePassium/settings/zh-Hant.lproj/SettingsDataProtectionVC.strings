@@ -17,16 +17,16 @@
 "Faj-km-pM5.headerTitle" = "快速解鎖";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes.";
+"g9a-rJ-4WJ.footerTitle" = "使用「通用剪貼板」在 Apple 裝置之間拷貝與貼上內容，在外部設備的剪貼板將在兩分鐘後清除。";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
-"gTm-F6-EDQ.text" = "Clear Master Keys on Timeout";
+"gTm-F6-EDQ.text" = "逾時後清除主金鑰";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.footerTitle" = "當您複製任何東西, KeePassium 會在稍後自動的為您清除剪貼簿。";
+"hnI-Q8-Ixm.footerTitle" = "當您複製任何東西, KeePassium 會在稍後自動的為您清除剪貼板。";
 
 /* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.headerTitle" = "剪貼簿";
+"hnI-Q8-Ixm.headerTitle" = "剪貼板";
 
 /* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
 "INJ-Cy-Tfo.text" = "記住主金鑰";

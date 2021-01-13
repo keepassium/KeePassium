@@ -18,7 +18,6 @@ class UserNameHelper {
             namesLeft -= 1
         }
         result.append(contentsOf: getUniqueUserNames(from: database).prefix(namesLeft - 1))
-        result.append(UserNameGenerator.generate())
         return result
     }
     
@@ -52,8 +51,12 @@ class UserNameHelper {
         }
     }
     
+    static func getRandomUserName() -> String {
+        return UserNameGenerator.generate()
+    }
+    
     private class UserNameGenerator {
-        static let vocals = ["a","e","i","o","u"]
+        static let vowels = ["a","e","i","o","u"]
         static let consonants = ["b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z"]
         
         static func generate(length: Int = 8) -> String {
@@ -73,7 +76,7 @@ class UserNameHelper {
                 if i % 2 == 0 {
                     chars.append(consonants[Int(randomIndices[i]) % consonants.count])
                 } else {
-                    chars.append(vocals[Int(randomIndices[i]) % vocals.count])
+                    chars.append(vowels[Int(randomIndices[i]) % vowels.count])
                 }
             }
             return chars.joined()

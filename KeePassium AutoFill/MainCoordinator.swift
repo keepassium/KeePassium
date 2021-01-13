@@ -753,7 +753,7 @@ extension MainCoordinator: WatchdogDelegate {
             animated: true,
             completion: { [weak self] (finished) in
                 passcodeInputVC.shouldActivateKeyboard = false
-                self?.showBiometricAuth()
+                self?.maybeShowBiometricAuth()
             }
         )
         self.passcodeInputController = passcodeInputVC
@@ -788,17 +788,27 @@ extension MainCoordinator: WatchdogDelegate {
         return context.canEvaluatePolicy(policy, error: nil)
     }
     
-    private func showBiometricAuth() {
+    private func maybeShowBiometricAuth() {
         guard isBiometricAuthAvailable() else {
             isBiometricAuthShown = false
             return
         }
-
+        
+        if #available(iOS 14, *) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                self?.actuallyShowBiometrics()
+            }
+        } else {
+            actuallyShowBiometrics()
+        }
+    }
+    
+    private func actuallyShowBiometrics() {
         let context = LAContext()
         let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
         context.localizedFallbackTitle = "" // hide "Enter Password" fallback; nil won't work
         context.localizedCancelTitle = LString.actionUsePasscode
-        
+
         Diag.debug("Biometric auth: showing request")
         context.evaluatePolicy(policy, localizedReason: LString.titleTouchID) {
             [weak self](authSuccessful, authError) in
@@ -849,7 +859,7 @@ extension MainCoordinator: PasscodeInputDelegate {
     }
     
     func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {
-        showBiometricAuth()
+        maybeShowBiometricAuth()
     }
 }
 
@@ -869,5 +879,11 @@ extension MainCoordinator: FirstSetupDelegate {
     
     func didPressAddDatabase(in firstSetup: FirstSetupVC, at popoverAnchor: PopoverAnchor) {
         addDatabase(popoverAnchor: popoverAnchor)
+    }
+    
+    func didPressSkip(in firstSetup: FirstSetupVC) {
+        watchdog.restart()
+        navigationController.popToRootViewController(animated: true)
+        refreshFileList()
     }
 }

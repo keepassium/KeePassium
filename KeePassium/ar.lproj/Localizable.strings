@@ -1,0 +1,582 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "فتح القفل";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "فتح قفل KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "استخدم كلمة مرور";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "بصمة الوجه";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "الملف المحدد \"%@\" لا يبدو كقاعدة بيانات.";
+
+/* Hint shown when both password and key file are empty. */
+"[Database/Create] Please enter a password or choose a key file." = "الرجاء إدخال كلمة مرور أو اختيار ملف مفتاح.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "إنشاء قاعدة بيانات";
+
+/* Note for a sample entry */
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "يمكنك أيضا تخزين بعض الملاحظات، إذا أردت.";
+
+/* Password for a sample entry. Translation is optional. */
+"[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
+
+/* Title for a sample entry */
+"[Database/Create/TemplateEntry/title] Sample Entry" = "مِثال للسجل";
+
+/* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
+"[Database/Create/TemplateEntry/userName] john.smith" = "فلان الفلاني";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Email" = "البريد الإلكتروني";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Finance" = "مالية";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] General" = "عام";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Internet" = "شبكة الإنترنت";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Network" = "الشبكة";
+
+/* Predefined `Operating system` group in a new database */
+"[Database/Create/TemplateGroup/title] OS" = "نظام التشغيل";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "إنشاء قاعدة بيانات";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "حذف ملف قاعدة البيانات؟\n تأكد من أن يكون لديك نسخة احتياطية.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "جاري التحميل...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "تم تغيير المفتاح الرئيس بنجاح";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "فتح قاعدة البيانات";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "إغلاق";
+
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "قفل قاعدة البيانات";
+
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "إغلاق قاعدة البيانات";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "تجاهل والمتابعة";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "آخر تعديل لقاعدة البيانات كان بواسطة: %@";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "قاعدة البيانات الخاصة بك جاهزة، ولكن هناك مشكلة.";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "إزالة قاعدة البيانات من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته لاحقاً مرة أخرى.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "تمّ الحفظ";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "جاري الحفظ...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "خطأ في ملف المفتاح: %@";
+
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Action: choose a username from a list */
+"[EditEntry/UserName/choose]" = "اختر";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "المرفقات";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "إنشاء سجل";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "اسم الحقل";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "ملاحظات";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "كلمة المرور";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "العنوان";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "عنوان URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "اسم المستخدم";
+
+/* Status message: loading file to be attached to an entry */
+"[Entry/Files/Add] Loading attachment file" = "إضافة ملف مرفق";
+
+/* Confirmation message to replace an existing entry attachment with a new one. */
+"[Entry/Files/Add] Replace existing attachment?" = "استبدال الملف المرفق الحالي؟";
+
+/* Explanation for replacing the only attachment of KeePass1 entry */
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "قاعدة البيانات هذه تدعم مرفقا واحدا فقط لكل سجل، وهناك بالفعل مرفق.";
+
+/* Title of a dialog for renaming an attached file */
+"[Entry/Files/Rename/title] Rename File" = "إعادة تسمية الملف";
+
+/* Title of a field with entry creation date and time */
+"[Entry/History] Creation Date" = "تاريخ الإنشاء";
+
+/* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
+"[Entry/History] Expiry Date" = "تاريخ الانتهاء";
+
+/* Title of a field with date and time when the entry was last accessed/viewed */
+"[Entry/History] Last Access Date" = "تاريخ الوصول الأخير";
+
+/* Title of a field with entry's last modification date and time */
+"[Entry/History] Last Modification Date" = "تاريخ آخر تعديل";
+
+/* Title of a list with previous versions/revisions of an entry. */
+"[Entry/History] Previous Versions" = "الإصدارات السابقة";
+
+/* Expiry Date of an entry which does not expire. */
+"[Entry/History/ExpiryDate] Never" = "ابداً";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "سجل جديد";
+
+/* Action to start editing an entry */
+"[Entry/View] Edit Entry" = "تحرير السجل";
+
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "حاول إزالة الملف من التطبيق، ثم أضفه مرة أخرى.";
+
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "النسخ الاحتياطية";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "تعذّر تعديل سمات الملف.";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "تاريخ الإنشاء";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "موقع الملف";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "اسم الملف";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "حجم الملف";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "تاريخ آخر تعديل";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "خطأ";
+
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "استبعد من النسخ الاحتياطي لـ iCloud/iTunes";
+
+/* Title of the dialog for picking the destination group for move/copy operations */
+"[General/DestinationGroup/title] Choose a Destination" = "اختر وجهة";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "إلغاء";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "تواصل معنا";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "المتابعة";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "نسخ";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "حذف";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "تجاهل";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "إخفاء";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "تمّ";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "حرّر";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "تصدير";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "نقل";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "حسناً";
+
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "الكتابة فوق الملف";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "إعادة التسمية";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "إستبدال";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "عرض التفاصيل";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "عرض المزيد";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "هل أنت متأكد؟";
+
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "سلة المحذوفات";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "هل تريد تجاهل التغييرات الغير محفوظة؟";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "هناك تغييرات غير محفوظة";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "حذف";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "إزالة";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "خطأ في التصدير";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "الملف موجود مسبقا";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "خطأ في الاستيراد";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "خطأ";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "خطأ في سلسلة المفاتيح";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "تحذير";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "إنشاء مجموعة";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "إنشاء مجموعة";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "تحرير المجموعة";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "مجموعة جديدة";
+
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "أجهزة المفاتيح غير مُتاحة في التعبئة التلقائية.";
+
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "الـNFC يتطلب إصدار ios 13 أو اجدد.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "عدم استخدام جهاز مفاتيح";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "منفذ YubiKey %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "المساعدة";
+
+/* Name of an entry/group category (visual style): default one, like in KeePass */
+"[ItemCategory] Default (KeePass)" = "الافتراضي (KeePass)";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "حذف ملف المفتاح؟\n تأكد أن لديك نسخة احتياطية.";
+
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "إزالة ملف المفتاح من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته لاحقاً مرة أخرى.";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/AttachmentPreview/details]" = "معاينة الملفات المرفقة مباشرة في KeePassium ولا تترك أي أثر في تطبيقات أخرى. (يعمل مع الصور والمستندات والأرشيف والمزيد)";
+
+/* Title of a premium feature */
+"[Premium/Benefits/AttachmentPreview/title]" = "معاينة بدون أثر";
+
+/* Explanation of a premium feature */
+"[Premium/Benefits/CustomAppIcon/details]" = "اجعل KeePassium يبدو فريداً، مألوفاً، أو متخفياً كآلة حاسبة - الخيار لك.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/CustomAppIcon/title]" = "تغيير ايقونة التطبيق";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/DatabaseTimeout/details]" = "تعبت من كتابة كلمة المرور الرئيسة؟ حافظ على فتح قاعدة البيانات الخاصة بك لفترة أطول لفتحها بنقرة واحدة.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/DatabaseTimeout/title]" = "احفظ وقتك";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/HardwareKeys/details]" = "قم بحماية أسرارك بمفتاح الأجهزة، مثل YubiKey.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/HardwareKeys/title]" = "استخدام أجهزة المفاتيح";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/MultiDB/details]" = "إضافة قواعد بيانات متعددة والتنقل بسرعة بينهم.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/MultiDB/title]" = "المزامنة مع الفريق";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "ما الذي تفقده";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "ما تحصل عليه";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "الاستمرار في التجريب";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "جرب مجاناً";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "قم بالترقية الان";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "الترخيص الدائم";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "لديك ترخيص دائم لجميع الإصدارات قبل %@.";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "سنة واحدة من الدعم بالبريد الإلكتروني";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "جميع المزايا المدفوعة";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "دعم العملاء: المنتديات عبر الإنترنت";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "الميزات الحالية";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "دعم العملاء: البريد الإلكتروني";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "تذكير فريميوم(Freemium)";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "مزايا مميزة للمستقبل";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "رخصة الإيجار المنتهي بالتملك (رخصة احتياطية دائمة)";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "التحديثات وإصلاح الأخطاء";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "مجاناً";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "مجاناً";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "رائج";
+
+/* Status: special premium for beta-testing environment is active */
+"[Premium/status] Beta testing" = "اختبار إصدار البيتا";
+
+/* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
+"[Premium/status] Expired %@ ago. Please renew." = "انتهت صلاحيتها منذ %@ جدد من فضلك.";
+
+/* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
+"[Premium/status] Next renewal on %@" = "التجديد التالي في %@";
+
+/* Status: validity period of once-and-forever premium */
+"[Premium/status] Valid forever" = "صالحة للأبد";
+
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\nسوف يتم اقتطاع المبلغ من حساب Apple ID عند تأكيد الشراء. \n\nيتجدد الاشتراك تلقائيًا إلا إذا قمت بالإلغاء في غضون 24 ساعة على الأقل قبل انتهاء فترة الاشتراك الحالية. وسوف يتم خصم المبلغ من حسابك نظير التجديد في غضون فترة 24 ساعة قبل نهاية الفترة الحالية. \n\nيمكنك إدارة اشتراكاتك وإلغائها بالذهاب إلى إعدادات الحساب في متجر التطبيقات بعد الشراء.\n";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ مجاناً، ثم %2$@";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "همم، لا توجد ترقيات متوفرة. هذا يجب ألا يحدث، يرجى الاتصال بالدعم.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "الترقية للمميز";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@ / شهر";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@/ سنة";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "%@ مرة واحدة";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / شهر";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "جاري الاتصال بـ AppStore...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "جاري الشراء...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "تم الترقية بنجاح، استمتع بالتطبيق!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "تم استعادة عملية الشراء";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "لا توجد أي عملية شراء سابقة يمكن استعادتها.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "نآسف";
+
+/* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "التطبيق كان مفيد: %1$@ في الشهر، أي حوالي %2$@ في السنة.";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "تخصيص أيقونة التطبيق";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "لقد وجدت ميزة مدفوعة! قم بالترقية إلى المميز والاستمتاع بـ KeePassium في أفضل حالاتها.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "ميزة مدفوعة";
+
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "عزز أمانك باستخدام مفاتيح الأجهزة (YubiKey) في الإصدار المميز.";
+
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "حهاز مفاتيح";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "وفر وقت إدخال كلمات المرور الرئيسة المعقدة الخاصة بك - ابقي قاعدة البيانات الخاصة بك مفتوحة لفترة أطول في الإصدار المميز.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "مهلة أطول لقاعدة البيانات";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "التبديل بسهولة بين قواعد البيانات في النسخة المميزة.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "قواعد بيانات متعددة";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "معاينة الصور والمستندات مباشرة من التطبيق، في الإصدار المميز.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "معاينة المرفقات";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "إظهار كلمة المرور";
+
+/* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
+"[Settings/AppLock/Biometric/title] Use %@" = "استخدم %@";
+
+/* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
+"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "قفل التطبيق، %@، مهلة الخروج";
+
+/* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "قفل التطبيق، كلمة المرور، مهلة الخروج";
+
+/* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
+"[Settings/Backup] Delete ALL Backup Files (%d)" = "حذف جميع ملفات النسخ الاحتياطي (%d)";
+
+/* Status message: there are no backup files to delete */
+"[Settings/Backup] No Backup Files Found" = "لم يتم العثور على ملفات نسخ احتياطي";
+
+/* Confirmation dialog message to delete all backup files */
+"[Settings/Backup/Delete/title] Delete all backup files?" = "حذف جميع ملفات النسخ الاحتياطي؟";
+
+/* Text of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed." = "لقد أزيلت الرابطة بين ملفات المفاتيح وقواعد البيانات.";
+
+/* Title of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/title] Cleared" = "تم المسح";
+
+/* Text of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted." = "تم حذف جميع المفاتيح الرئيسة.";
+
+/* Title of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "تم المسح";
+
+/* Description of the clipboard/pasteboard timeout. */
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "عند نسخ بعض النصوص من السجلات، سيحذف التطبيق تلقائياً الحافظة الخاصة بك بعد هذا الوقت.";
+
+/* Description of the Database Lock Timeout */
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "إذا كنت لا تتفاعل مع التطبيق لبعض الوقت، فسيتم إغلاق قاعدة البيانات لسلامتك. لفتحها، سوف تحتاج إلى إدخال كلمة المرور الرئيسة مرة أخرى.";
+
+/* Title of a settings section about making backup files */
+"[Settings/FileLists/Backup/title] Backup" = "النسخ الاحتياطية";
+
+/* Title of a settings section about file order in lists */
+"[Settings/FileLists/Sorting/title] Sorting" = "الفرز";
+
+/* Title of a settings section: which entry field to show along with entry title */
+"[Settings/GroupViewer] Entry Subtitle" = "وصف السجل";
+
+/* Title of a settings section: sort order of groups and entries in a list */
+"[Settings/GroupViewer] Sort Order" = "طريقة الفرز";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(يرجى وصف المشكلة هنا)";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "بدون YubiKey";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "أدخل المفتاح";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "المس المفتاح";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "استخدم منفذ YubiKey %d";
+
+/* Action/button to add database to the app */
+"Add Database" = "إضافة قاعدة بيانات";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "اختيار قاعدة بيانات";
+
+/* Action/button */
+"Import Database" = "إستيراد قاعدة البيانات";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "لا ينبغي استخدام ملف قاعدة بيانات KeePass كمفتاح رئيس. الرجاء اختيار ملف مختلف.";
+

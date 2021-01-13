@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,50 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oms-MX-WFO">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hrf-fC-IQQ">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnb-WM-hir" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="52.333333333333336"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Article body}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvc-BY-xlT">
-                                                <rect key="frame" x="16" y="24" width="343" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <color key="textColor" name="PrimaryText"/>
-                                                <nil key="highlightedColor"/>
-                                                <attributedString key="userComments">
-                                                    <fragment content="#bc-ignore!"/>
-                                                </attributedString>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="Pvc-BY-xlT" firstAttribute="top" secondItem="vnb-WM-hir" secondAttribute="topMargin" constant="16" id="KNs-iQ-AQV"/>
-                                            <constraint firstItem="Pvc-BY-xlT" firstAttribute="leading" secondItem="vnb-WM-hir" secondAttribute="leadingMargin" constant="8" id="dYL-gz-In8"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="Pvc-BY-xlT" secondAttribute="bottom" id="igU-9Q-T7E"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Pvc-BY-xlT" secondAttribute="trailing" constant="8" id="z2j-v3-xq6"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="vnb-WM-hir" firstAttribute="leading" secondItem="Oms-MX-WFO" secondAttribute="leading" id="1pE-Bh-4mK"/>
-                                    <constraint firstItem="vnb-WM-hir" firstAttribute="width" secondItem="Oms-MX-WFO" secondAttribute="width" id="5zk-KT-BUz"/>
-                                    <constraint firstAttribute="trailing" secondItem="vnb-WM-hir" secondAttribute="trailing" id="EPh-ZP-Xfw"/>
-                                    <constraint firstItem="vnb-WM-hir" firstAttribute="top" secondItem="Oms-MX-WFO" secondAttribute="top" id="WRc-wN-gmu"/>
-                                    <constraint firstAttribute="bottom" secondItem="vnb-WM-hir" secondAttribute="bottom" id="aRF-tU-wqv"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="yVw-va-gYq"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="VVj-pj-ZoC"/>
-                            </scrollView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" name="PrimaryText"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Lvw-o3-YSc" firstAttribute="trailing" secondItem="Oms-MX-WFO" secondAttribute="trailing" id="HKe-Ef-2sE"/>
-                            <constraint firstItem="Oms-MX-WFO" firstAttribute="top" secondItem="Lvw-o3-YSc" secondAttribute="top" id="dcs-YL-XIT"/>
-                            <constraint firstItem="Lvw-o3-YSc" firstAttribute="bottom" secondItem="Oms-MX-WFO" secondAttribute="bottom" id="iws-K6-gT0"/>
-                            <constraint firstItem="Oms-MX-WFO" firstAttribute="leading" secondItem="Lvw-o3-YSc" secondAttribute="leading" id="pMb-Ur-pwV"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Lvw-o3-YSc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lvw-o3-YSc" firstAttribute="trailing" secondItem="Hrf-fC-IQQ" secondAttribute="trailing" id="39d-5I-NG7"/>
+                            <constraint firstItem="Lvw-o3-YSc" firstAttribute="bottom" secondItem="Hrf-fC-IQQ" secondAttribute="bottom" id="GSC-1d-Q7v"/>
+                            <constraint firstItem="Hrf-fC-IQQ" firstAttribute="leading" secondItem="Lvw-o3-YSc" secondAttribute="leading" id="WfU-7f-hfH"/>
+                            <constraint firstItem="Hrf-fC-IQQ" firstAttribute="top" secondItem="Lvw-o3-YSc" secondAttribute="top" id="win-yo-CKt"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="{Title}" id="0AG-6E-cim">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kP7-lx-KWR">
@@ -72,7 +47,7 @@
                         </attributedString>
                     </navigationItem>
                     <connections>
-                        <outlet property="bodyLabel" destination="Pvc-BY-xlT" id="Ljk-08-YSm"/>
+                        <outlet property="bodyTextView" destination="Hrf-fC-IQQ" id="MZ1-bj-UER"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKz-cq-zaW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -84,5 +59,8 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -77,13 +77,13 @@
 "[Database/Progress] Loading key file..." = "載入金鑰檔案中...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "下載資料庫檔案...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "製作備份副本...";
 
 /* Progress status */
-"[Database/Progress/resolving]" = "Contacting storage provider...";
+"[Database/Progress/resolving]" = "正在請求空間提供商...";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "無法打開金鑰檔案";
@@ -95,7 +95,7 @@
 "[Database1/FormatError] Database file is corrupted." = "資料庫檔案損毀。";
 
 /* Error message [fieldName: String] */
-"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "解析 %@ 字段錯誤。資料庫檔案損壞?";
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "解析 %@ 欄位錯誤。資料庫檔案損壞?";
 
 /* Error message */
 "[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "在群組外找到條目。資料庫檔案損壞?";
@@ -149,7 +149,7 @@
 "[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "解壓縮附件的資料失敗:%@";
 
 /* Error message, with the name of problematic field. [fieldName: String] */
-"[Database2/Header2/Error] Header field %@ is corrupted." = "標頭字段 %@ 已損壞。";
+"[Database2/Header2/Error] Header field %@ is corrupted." = "標頭欄位 %@ 已損壞。";
 
 /* Error message */
 "[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "標頭哈希值不匹配。資料庫檔案損壞?";
@@ -188,7 +188,7 @@
 "[Database2/Loading/Warning/namelessAttachments]" = "有些條目有附件沒有名字。這是資料庫早期損壞的跡象。\n\n 請查看以下條目中的附件(及其歷史記錄)：\n%@";
 
 /* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
-"[Database2/Loading/Warning/namelessCustomFields]" = "某些條目具有空名稱的自定義字段。這是資料庫早期損壞的跡象。請檢查以下條目：\n\n%@";
+"[Database2/Loading/Warning/namelessCustomFields]" = "某些條目具有空名稱的自定義欄位。這是資料庫早期損壞的跡象。請檢查以下條目：\n\n%@";
 
 /* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
 "[Database2/Loading/Warning/unusedAttachments]" = "資料庫包含一些未在任何條目中使用的附件。最有可能的是，它們已被上次使用的應用程式(%@) 遺忘。但是，這也可能是資料庫早期損壞的跡象。在更改任何內容之前,\n請確保資料庫已經備份。";
@@ -203,13 +203,13 @@
 "[Database2/Progress] Writing encrypted blocks" = "寫入加密區塊";
 
 /* Progress bar status: un-zipping the database content */
-"[Database2/Progress/decompressing]" = "Decompressing database";
+"[Database2/Progress/decompressing]" = "解壓縮資料庫";
 
 /* Progress bar status */
-"[Database2/Progress/integrityCheck]" = "Checking integrity";
+"[Database2/Progress/integrityCheck]" = "完整性檢查";
 
 /* Progress bar status: parsing decrypted XML content */
-"[Database2/Progress/parsingXML]" = "Parsing database";
+"[Database2/Progress/parsingXML]" = "解析資料庫";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "資料壓縮錯誤: %@";
@@ -245,31 +245,31 @@
 "[DatabaseError] Invalid password or key file" = "錯誤的密碼或者金鑰檔案";
 
 /* Error message: storage provider app was logged out or uninstalled. */
-"[FileAccessError/FileProvider/NotFound/generic]" = "Storage provider is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/generic]" = "儲存空間提供商不可用，請確認是否安裝並登入帳號。";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
-"[FileAccessError/FileProvider/NotFound/other]" = "%@ is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ 不可用，請確認是否安裝並登入帳號。";
 
 /* Error message: the required network drive is not connected. */
-"[FileAccessError/FileProvider/NotFound/smbShare]" = "Network storage is disconnected.";
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "網路儲存空間已斷開連接。";
 
 /* Error message: there is no USB drive connected to the device. */
-"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB drive is disconnected.";
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB 隨身碟已斷開連接。";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "KeePassium 內部錯誤，請告知我們。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "儲存空間提供商沒有回應。";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ 沒有回應。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "儲存空間提供商沒有回應。";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ 沒有回應。";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "刪除檔案錯誤。原因:%@";
@@ -299,7 +299,7 @@
 "[FileProvider/FE File Explorer/name]" = "FE File Explorer";
 
 /* Localized name of the storage service: Google Drive (https://drive.google.com) */
-"[FileProvider/Google Drive/name]" = "Google Drive";
+"[FileProvider/Google Drive/name]" = "Google 雲端硬碟";
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
@@ -308,10 +308,10 @@
 "[FileProvider/Nextcloud/name]" = "Nextcloud";
 
 /* Localized name of the local on-device storage, as shown in the Files app. */
-"[FileProvider/On My iPad/name]" = "On My iPad";
+"[FileProvider/On My iPad/name]" = "我的 iPad";
 
 /* Localized name of the local on-device storage, as shown in the Files app. */
-"[FileProvider/On My iPhone/name]" = "On My iPhone";
+"[FileProvider/On My iPhone/name]" = "我的 iPhone";
 
 /* Localized name of the storage service: OneDrive (https://onedrive.com) */
 "[FileProvider/OneDrive/name]" = "OneDrive";
@@ -329,7 +329,7 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB server";
+"[FileProvider/SMB/name]" = "SMB 伺服器";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -344,7 +344,7 @@
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "USB 隨身碟";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";

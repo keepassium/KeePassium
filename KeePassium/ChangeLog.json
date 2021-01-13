@@ -1,6 +1,140 @@
 {
     "sections": [
         {
+            "version": "1.21",
+            "releaseDate": "2021-01-10T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Premium subscriptions now support Family Sharing",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Support for Argon2id and .keyx key file format (KeePass 2.47) [thanks, Dominik]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: VoiceOver: added \"Copy Field\" accessibility actions in group viewer [thanks, Adam]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: VoiceOver: added Open URL and Share URL accessibility actions for URL fields",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: An option to exclude automatic backup files from iTunes/iCloud Backup [thanks, Patrick]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Option \"Lock on App Launch\" (settings → App Protection → Timeout) [thanks, Paul]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Arabic translation [thanks, ZER0-X and Ali Madan]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Polish translation [thanks, Michał and qxtno]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Portugese (Brasilian) translation [thanks, Éctor Moreira]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: VoiceOver: better descriptions for groups",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Added a warning when opening database from Recently Deleted [thanks, u/opticillusion]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: It is possible to skip AutoFill setup now [thanks, Michael]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Refined perpetual fallback license text and made it shorter",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Added detection of QNAP Qfile file provider",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Clear master keys when Remember switch is turned off",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Added \"Pro\" to About screen of the Pro version [thanks, Glenn]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Updated all translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Removed excessive animation when sorting files [thanjks, Vadim and Alan]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: KeePassium won't ask for AppStore review if the user barely used the app [thanks, Timothy]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Sometimes associated key file was not selected [thanks, Robert]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: In case of database load error, AutoFill won't ask to re-enter the password [thanks, Tim]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Adding key files with unrecognized/dynamic UTIs [thanks, Daniel]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Added a debug \"Reset entry text scale to default\" button at the end of About screen (related #132)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Made entry field text depend on system font size (possibly fixes #132)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: iOS 14: could access selected text menu through the passcode screen [thanks, Jacob]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: VoiceOver: added missing labels to several buttons [thanks, Fabrice and Adam]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: VoiceOver: improved accessibility of settings that require premium",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: VoiceOver: support email address is accessible now [thanks, Adam]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: iOS 14: Keyboard was missing in AutoFill after cancelling biometric prompt — partial fix (#133)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: iOS 14: fixed opening mailto: links in alternative mail clients [thanks, Gianfranco]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: User name generator: made the random option visually distinct [thanks, Daz]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI improvements here and there",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.20",
             "releaseDate": "2020-11-12T00:00:00Z",
             "items": [

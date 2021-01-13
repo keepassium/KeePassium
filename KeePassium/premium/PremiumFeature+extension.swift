@@ -8,15 +8,6 @@
 
 import KeePassiumLib
 
-fileprivate let genericPremiumFeatureTitle = NSLocalizedString(
-    "[PremiumFeature/Generic/title]",
-    value: "Premium Feature",
-    comment: "A generic title of a premium feature")
-fileprivate let genericPremiumFeatureDescription = NSLocalizedString(
-    "[PremiumFeature/Generic/description]",
-    value: "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.",
-    comment: "A generic description of a premium feature")
-
 extension PremiumFeature {
     
     public var titleName: String {
@@ -42,7 +33,7 @@ extension PremiumFeature {
                 value: "Hardware Keys",
                 comment: "Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case)")
         case .canKeepMasterKeyOnDatabaseTimeout:
-            return genericPremiumFeatureTitle
+            return LString.premiumFeatureGenericTitle
         case .canChangeAppIcon:
             return NSLocalizedString(
                 "[PremiumFeature/CustomAppIcons/title]",
@@ -51,7 +42,7 @@ extension PremiumFeature {
         case .canUseExpressUnlock,
              .canViewFieldReferences:
             assertionFailure("Implicit feature, no upgrade notice required")
-            return genericPremiumFeatureTitle
+            return LString.premiumFeatureGenericTitle
         }
     }
     
@@ -81,7 +72,7 @@ extension PremiumFeature {
              .canChangeAppIcon,
              .canUseExpressUnlock,
              .canViewFieldReferences:
-            return genericPremiumFeatureDescription
+            return LString.premiumFeatureGenericDescription
         }
     }
 }

@@ -78,6 +78,10 @@ class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
         let settings = Settings.current
         let isAvailable = settings.isShownAvailable(timeout: timeout, for: premiumStatus)
         cell.premiumBadge.isHidden = isAvailable
+        cell.accessibilityLabel = AccessibilityHelper.decorateAccessibilityLabel(
+            premiumFeature: cell.titleLabel?.text,
+            isEnabled: isAvailable)
+        
         if timeout == settings.premiumDatabaseLockTimeout {
             cell.accessoryType = .checkmark
         } else {

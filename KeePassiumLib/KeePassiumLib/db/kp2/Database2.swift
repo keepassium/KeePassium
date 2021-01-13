@@ -251,6 +251,9 @@ public class Database2: Database {
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
             throw DatabaseError.loadError(reason: error.localizedDescription)
+        } catch let error as KeyFileError {
+            Diag.error("Key file error [reason: \(error.localizedDescription)]")
+            throw DatabaseError.loadError(reason: error.localizedDescription)
         } catch let error as ChallengeResponseError {
             Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")
             throw DatabaseError.loadError(reason: error.localizedDescription)
@@ -572,10 +575,10 @@ public class Database2: Database {
         progress.addChild(header.kdf.initProgress(), withPendingUnitCount: ProgressSteps.keyDerivation)
         var combinedComponents: SecureByteArray
         if compositeKey.state == .processedComponents {
-            combinedComponents = keyHelper.combineComponents(
+            combinedComponents = try keyHelper.combineComponents(
                 passwordData: compositeKey.passwordData!, 
                 keyFileData: compositeKey.keyFileData!    
-            )
+            ) 
             compositeKey.setCombinedStaticComponents(combinedComponents)
         } else if compositeKey.state >= .combinedComponents {
             combinedComponents = compositeKey.combinedStaticComponents! 
@@ -885,6 +888,9 @@ public class Database2: Database {
             Diag.debug("Key derivation OK")
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
+            throw DatabaseError.saveError(reason: error.localizedDescription)
+        } catch let error as KeyFileError {
+            Diag.error("Key file error [reason: \(error.localizedDescription)]")
             throw DatabaseError.saveError(reason: error.localizedDescription)
         } catch let error as ChallengeResponseError {
             Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")

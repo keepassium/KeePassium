@@ -151,6 +151,7 @@ extension AppDelegate: WatchdogDelegate {
     
     private func hideAppLockScreen() {
         guard isAppLockVisible else { return }
+        self.window?.makeKeyAndVisible()
         appLockWindow?.resignKey()
         appLockWindow?.isHidden = true
         appLockWindow = nil
@@ -167,9 +168,10 @@ extension AppDelegate: WatchdogDelegate {
         let _appLockWindow = UIWindow(frame: UIScreen.main.bounds)
         _appLockWindow.screen = UIScreen.main
         _appLockWindow.windowLevel = UIWindow.Level.alert
-        UIView.performWithoutAnimation {
+        UIView.performWithoutAnimation { [weak self] in
             _appLockWindow.rootViewController = passcodeInputVC
             _appLockWindow.makeKeyAndVisible()
+            self?.window?.isHidden = true
         }
         passcodeInputVC.view.accessibilityViewIsModal = true
         passcodeInputVC.view.snapshotView(afterScreenUpdates: true)

@@ -22,7 +22,11 @@ class ViewEntryVC: UIViewController, Refreshable {
     private var entryChangeNotifications: EntryChangeNotifications!
     private var progressOverlay: ProgressOverlay?
     private var pages = [UIViewController]()
-    private var currentPageIndex = 0
+    private var currentPageIndex = 0 {
+        didSet {
+            Settings.current.entryViewerPage = currentPageIndex
+        }
+    }
 
     static func make(with entry: Entry, historyMode: Bool = false) -> UIViewController {
         let viewEntryVC = ViewEntryVC.instantiateFromStoryboard()
@@ -83,7 +87,6 @@ class ViewEntryVC: UIViewController, Refreshable {
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-        Settings.current.entryViewerPage = pageSelector.selectedSegmentIndex
         entryChangeNotifications.stopObserving()
         super.viewDidDisappear(animated)
     }

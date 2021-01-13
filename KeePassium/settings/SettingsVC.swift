@@ -124,6 +124,8 @@ class SettingsVC: UITableViewController, Refreshable {
                     comment: "Settings: subtitle of the `App Protection` section when biometric auth is not available.")
         }
         refreshPremiumStatus()
+        
+        contactSupportCell.accessibilityValue = SupportEmailComposer.getSupportEmail()
     }
     
     

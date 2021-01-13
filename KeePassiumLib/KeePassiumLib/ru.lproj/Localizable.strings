@@ -11,7 +11,7 @@
 "[ChallengeResponseError] keyNotConnected" = "Аппаратный ключ не подключён.";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "Аппаратные ключи не доступны в Автозаполнении.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "Аппаратные ключи недоступны в Автозаполнении.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
 "[ChallengeResponseError] notSupportedByDatabaseFormat" = "Аппаратные ключи не поддерживаются этим форматом базы паролей.";
@@ -65,7 +65,7 @@
 "[Database/Load/Error] Cannot open key file" = "Не удалось открыть ключевой файл";
 
 /* Error shown when both master password and key file are empty */
-"[Database/Load/Error] Please provide at least a password or a key file" = "Пожалуйста укажите пароль или ключевой файл";
+"[Database/Load/Error] Please provide at least a password or a key file" = "Укажите пароль или ключевой файл";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Неизвестный формат базы";
@@ -128,7 +128,7 @@
 "[Database2/FormatError] Cannot parse database. %@" = "Не удалось разобрать базу паролей. %@";
 
 /* Error message [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Файл с базой паролей повреждён (блок %d имеет отрицательный размер)";
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Файл с базой паролей повреждён (у блока %d отрицательный размер)";
 
 /* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
 "[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Файл с базой паролей повреждён (неверный хеш в блоке %d)";
@@ -173,7 +173,7 @@
 "[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Неподдерживаемый поточный шифр (ID %d)";
 
 /* Error message about Key Derivation Function. [uuidString: String] */
-"[Database2/Header2/Error] Unsupported KDF: %@" = "Незнакомая функция формирования ключа (KDF): %@";
+"[Database2/Header2/Error] Unsupported KDF: %@" = "Неподдерживаемая функция формирования ключа (KDF): %@";
 
 /* Error message when opening a database */
 "[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Неверная сигнатура файла. Это точно база KeePass?";
@@ -182,7 +182,7 @@
 "[Database2/Loading/Error] Error unpacking database: %@" = "Ошибка при распаковке базы: %@";
 
 /* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
-"[Database2/Loading/Warning/missingBinaries]" = "Прикреплённые файлы в некоторых записях не имеют содержимого. Это признак повреждения базы паролей, возможно последним использованным приложением (%1$@). KeePassium оставит эти пустые прикреплённые файлы, но не может восстановить их. Советуем восстановить базу из резервной копии.\n\nОтсутствующие прикреплённые файлы: %2$@";
+"[Database2/Loading/Warning/missingBinaries]" = "Прикреплённые файлы в некоторых записях не имеют содержимого. Это признак повреждения базы паролей, возможно, последним использованным приложением (%1$@). KeePassium оставит эти пустые прикреплённые файлы, но не сможет восстановить их. Советуем восстановить базу из резервной копии.\n\nОтсутствующие прикреплённые файлы: %2$@";
 
 /* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
 "[Database2/Loading/Warning/namelessAttachments]" = "Некоторые записи содержат прикреплённые файлы без имени. Это признак повреждённой базы паролей.\n\nПроверьте прикреплённые файлы в следующих записях (и их прошлых версиях):\n%@";
@@ -254,7 +254,7 @@
 "[FileAccessError/FileProvider/NotFound/smbShare]" = "Сетевое хранилище не подключено.";
 
 /* Error message: there is no USB drive connected to the device. */
-"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB-накопитель не подключен.";
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB-накопитель не подключён.";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Внутренняя ошибка KeePassium. Пожалуйста, сообщите нам об этом.";
@@ -329,7 +329,7 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB сервер";
+"[FileProvider/SMB/name]" = "SMB-сервер";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -404,7 +404,7 @@
 "[Progress/CancellationReason] Cancelled by user" = "Отменено пользователем";
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
-"[Progress/CancellationReason/lowMemory]" = "Не хватило памяти.\nВозможно, база слишком велика или требует очень много памяти (для Argon2).";
+"[Progress/CancellationReason/lowMemory]" = "Недостаточно памяти.\nВозможно, база слишком велика или требует очень много памяти (для Argon2).";
 
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "После бездействия";

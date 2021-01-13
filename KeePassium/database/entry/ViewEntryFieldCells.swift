@@ -112,10 +112,13 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
     func setupCell() {
         let textScale = Settings.current.textScale
         nameLabel.font = UIFont.systemFont(ofSize: 15 * textScale, forTextStyle: .subheadline, weight: .thin)
+        nameLabel.adjustsFontForContentSizeCategory = true
         valueText.font = UIFont.monospaceFont(ofSize: 17 * textScale, forTextStyle: .body)
+        valueText.adjustsFontForContentSizeCategory = true
         
         nameLabel.text = field?.visibleName
         valueText.text = getUserVisibleValue()
+        accessibilityHint = LString.hintDoubleTapToCopyToClipboard
     }
 
     func getUserVisibleValue() -> String? {
@@ -139,6 +142,8 @@ class OpenURLAccessoryButton: UIButton {
         super.init(frame: CGRect(x: 0, y: 0, width: 44, height: 80))
         setImage(UIImage(asset: .openURLCellAccessory), for: .normal)
         contentMode = .scaleAspectFit
+
+        accessibilityLabel = LString.actionOpenURL
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
@@ -165,14 +170,28 @@ class URLFieldCell: ViewableFieldCell {
             target: self,
             action: #selector(handleLongPressURLButton))
         openURLButton.addGestureRecognizer(longTapRecognizer)
-        
         accessoryView = openURLButton
-        accessoryType = .detailButton
+        
+        let openURLAction = UIAccessibilityCustomAction(
+            name: LString.actionOpenURL,
+            target: self,
+            selector: #selector(didPressOpenURLButton))
+        let shareAction = UIAccessibilityCustomAction(
+            name: LString.actionShare,
+            target: self,
+            selector: #selector(didPressShare(_:)))
+        accessibilityCustomActions = [openURLAction, shareAction]
+        valueText.accessibilityTraits = .link
     }
     
     @objc
     private func handleLongPressURLButton(_ gestureRecognizer: UILongPressGestureRecognizer) {
         guard gestureRecognizer.state == .began else { return }
+        didPressShare(gestureRecognizer)
+    }
+    
+    @objc
+    private func didPressShare(_ sender: Any) {
         delegate?.didLongTapAccessoryButton(self)
     }
     
@@ -191,7 +210,10 @@ class ToggleVisibilityAccessoryButton: UIButton {
         setImage(UIImage(asset: .hideListitem), for: .selected)
         setImage(UIImage(asset: .hideListitem), for: .highlighted)
         contentMode = .scaleAspectFit
+        
+        accessibilityLabel = LString.actionShowInPlainText
     }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
     }
@@ -210,7 +232,6 @@ class ProtectedFieldCell: ViewableFieldCell {
         theButton.isSelected = !(field?.isValueHidden ?? true)
         valueText.isSelectable = theButton.isSelected
         accessoryView = theButton
-        accessoryType = .detailButton
         toggleButton = theButton
         
         refreshTextView()

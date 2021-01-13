@@ -176,7 +176,7 @@
 "[FileInfo/Backup/header]" = "備份";
 
 /* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
-"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
+"[FileInfo/Error/failed to change attributes]" = "更新文件屬性失敗。";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "建立時間";
@@ -197,7 +197,7 @@
 "[FileInfo/Field/valueError] Error" = "錯誤";
 
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
-"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+"[FileInfo/isExcludedFromBackup/title]" = "從iCloud / iTunes備份中排除";
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "選擇目的地";
@@ -209,7 +209,7 @@
 "[Generic] Contact Us" = "聯繫我們";
 
 /* Action/button to proceed with the action */
-"[Generic] Continue" = "Continue";
+"[Generic] Continue" = "繼續";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "複製";
@@ -305,7 +305,7 @@
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "硬體金鑰不支持自動填充。";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+"[HardwareKey/NFC/OS too old]" = "NFC 需要 iOS 13 或更高版本。";
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "沒有硬體金鑰";
@@ -323,7 +323,7 @@
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "刪除金鑰文件?\n 請確保您有備份檔案!";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
-"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Remove key file from the list?\n The file will remain intact and you can add it again later.";
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "從列表中刪除金要檔案?\n 不會對檔案進行更改或刪除，您可以稍後添加回來。";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "直接在KeePassium上預覽附件, 並且不留痕跡。(適用於圖像, 文檔, 檔案等。)";
@@ -332,10 +332,10 @@
 "[Premium/Benefits/AttachmentPreview/title]" = "無痕預覽";
 
 /* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Make KeePassium look unique, familiar, or disguise it as a calculator — the choice is yours.";
+"[Premium/Benefits/CustomAppIcon/details]" = "讓 KeePassium 看起來獨特，熟悉或偽裝成計算機 - 由您選擇。";
 
 /* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Change app icon";
+"[Premium/Benefits/CustomAppIcon/title]" = "變更應用程式圖示";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "厭倦了輸入您的主密碼？保持資料庫打開時間更長, 只需輕輕一按即可解鎖。";
@@ -356,61 +356,61 @@
 "[Premium/Benefits/MultiDB/title]" = "與團隊同步";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Negative/header] " = "What you are missing";
+"[Premium/Benefits/Negative/header] " = "缺少了什麼功能";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Positive/header] " = "What you get";
+"[Premium/Benefits/Positive/header] " = "擁有了什麼功能";
 
 /* Call to action: continue using the free version */
-"[Premium/CallToAction/free]" = "Continue Testing";
+"[Premium/CallToAction/free]" = "繼續使用免費版";
 
 /* Call to action: start free trial */
-"[Premium/CallToAction/startTrial]" = "Try it free";
+"[Premium/CallToAction/startTrial]" = "免費試用";
 
 /* Call to action: upgrade to premium */
-"[Premium/CallToAction/upgradeNow]" = "Upgrade Now";
+"[Premium/CallToAction/upgradeNow]" = "立刻升級";
 
 /* Name of the permanent/never-ending license. */
-"[Premium/perpetualLicense]" = "Perpetual license";
+"[Premium/perpetualLicense]" = "終生訂閱";
 
 /* [formattedDate: String] */
-"[Premium/PerpetualLicense/status]" = "You have a perpetual license for all the versions before %@.";
+"[Premium/PerpetualLicense/status]" = "在 %@ 之前，你擁有一個所有功能的終生訂閱。";
 
 /* What's included in a price plan: 1 year of support via email */
-"[Premium/Price Plan/Conditions/1 year email support]" = "One year of email support";
+"[Premium/Price Plan/Conditions/1 year email support]" = "一年的電子郵件支援服務";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/all premium features]" = "All premium features";
+"[Premium/Price Plan/Conditions/all premium features]" = "所有進階版功能";
 
 /* What's included in a free plan: support via forums (as opposed to email support) */
-"[Premium/Price Plan/Conditions/community support]" = "Customer support: Online forums";
+"[Premium/Price Plan/Conditions/community support]" = "客戶服務: 線上論壇";
 
 /* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
-"[Premium/Price Plan/Conditions/current premium features]" = "Current premium features";
+"[Premium/Price Plan/Conditions/current premium features]" = "當前進階功能";
 
 /* What's included in a price plan: support via email */
-"[Premium/Price Plan/Conditions/email support]" = "Customer support: Email";
+"[Premium/Price Plan/Conditions/email support]" = "客戶服務: 電子郵件";
 
 /* What's included in a free plan: reminders that the version is free */
-"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium reminders";
+"[Premium/Price Plan/Conditions/freemium reminders]" = "進階功能提醒";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
-"[Premium/Price Plan/Conditions/future premium features]" = "Future premium features";
+"[Premium/Price Plan/Conditions/future premium features]" = "未來進階功能";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
-"[Premium/Price Plan/Conditions/perpetual fallback]" = "Rent-to-own license (Perpetual fallback license)";
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "永久後備許可證";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates and bug fixes";
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "更新和錯誤修復";
 
 /* Price of the free pricing plan */
-"[Premium/Price Plan/Free/price]" = "Free";
+"[Premium/Price Plan/Free/price]" = "免費";
 
 /* Name of the free pricing plan */
-"[Premium/Price Plan/Free/title]" = "Free";
+"[Premium/Price Plan/Free/title]" = "免費";
 
 /* Marks the default pricing plan */
-"[Premium/Price Plan/popular]" = "Popular";
+"[Premium/Price Plan/popular]" = "熱門";
 
 /* Status: special premium for beta-testing environment is active */
 "[Premium/status] Beta testing" = "測試版本";
@@ -428,16 +428,13 @@
 "[Premium/Subscription/Legal/text]" = "\n在確認購買時，將會從您的Apple ID帳戶中收取付款。 \n\n除非在到期前至少24小時取消，否則訂閱會自動續訂。您的帳戶將在到期前24小時內收取續訂費用。 \n\n您可以在購買後轉到App Store上的帳戶設置來管理和取消訂閱。\n";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
-"[Premium/Trial/trial then price]" = "%1$@ free, then %2$@";
+"[Premium/Trial/trial then price]" = "%1$@ 天免費，之後 %2$@";
 
 /* Error message: AppStore returned no available in-app purchase options */
 "[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "沒有可用的升級, 這不應該發生, 請聯繫技術支持。";
 
 /* Action/button to start choosing premium versions and possibly buying one */
-"[Premium/Upgrade/action] Upgrade to Premium" = "升級到高級版";
-
-/* Message shown when in-app purchase is deferred until parental approval. */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent" = "感恩您! 您可以使用KeePassium 直到父母批准購買。";
+"[Premium/Upgrade/action] Upgrade to Premium" = "升級到進階版";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / 月";
@@ -449,7 +446,7 @@
 "[Premium/Upgrade/price] %@ once" = "%@ 一次性付費";
 
 /* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
-"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / month";
+"[Premium/Upgrade/price] around %@ / month" = "%@ / 一個月";
 
 /* Status message when downloading available in-app purchases */
 "[Premium/Upgrade/Progress] Contacting AppStore..." = "獲取購買結果...";
@@ -473,34 +470,34 @@
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "程式已使用: %1$@/月, 大約%2$@/年";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
+"[PremiumFeature/CustomAppIcons/title]" = "自定義應用程序圖標";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.";
+"[PremiumFeature/Generic/description]" = "你發現了一個進階版功能! 立即訂閱進階版並享受更好的KeePassium 。";
 
 /* A generic title of a premium feature */
-"[PremiumFeature/Generic/title]" = "Premium Feature";
+"[PremiumFeature/Generic/title]" = "進階版功能";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "高級版本的硬體金鑰 (YubiKey) 提高了安全性。";
+"[PremiumFeature/HardwareKeys/description]" = "進階版本的硬體金鑰 (YubiKey) 提高了安全性。";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "硬體金鑰";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "節省輸入複雜主密碼的時間 - 在高級版中保持資料庫打開更長時間。";
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "節省輸入複雜主密碼的時間 - 在進階版中保持資料庫打開更長時間。";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
 "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "更長的資料庫逾時時間";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
-"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在高級版本中快速切換多個資料庫。";
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在進階版本中快速切換多個資料庫。";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "多個資料庫";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級高級版支持直接在程式中預覽圖像和文檔。";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級進階版支持直接在程式中預覽圖像和文檔。";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "附件預覽";

@@ -13,6 +13,7 @@ public struct HelpArticle {
     
     public enum Key: String {
         case perpetualFallbackLicense = "perpetual-fallback-license"
+        case appStoreFamilySharingProgramme = "appstore-family-sharing"
     }
     
     public func rendered() -> NSAttributedString {

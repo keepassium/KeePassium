@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -113,10 +113,64 @@
                                     <fragment content="Explanation for the `Show Backup Files` option"/>
                                 </attributedString>
                             </tableViewSection>
+                            <tableViewSection headerTitle="iTunes and iCloud Backup" id="fst-lq-BDl" userLabel="iTunes and iCloud Backup">
+                                <string key="footerTitle">Defines whether backup databases created by KeePassium should be excluded from iCloud/iTunes backup. Applies to all the existing and future backup files.</string>
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="dtR-0P-FQI">
+                                        <rect key="frame" x="0.0" y="294.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dtR-0P-FQI" id="e7K-ZY-kUe">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exclude Backup Files from System Backup" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qs6-uS-gdS">
+                                                    <rect key="frame" x="61" y="11" width="186" height="22"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Settings option, on/off"/>
+                                                    </attributedString>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PUU-Z3-1Tr">
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
+                                                    <connections>
+                                                        <action selector="didToggleExcludeFromSystemBackup:" destination="nSy-3u-0xW" eventType="valueChanged" id="GMj-Wa-QHn"/>
+                                                    </connections>
+                                                </switch>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-icloud-backup-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="pvX-2y-zf5">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="NX9-UA-kYK"/>
+                                                        <constraint firstAttribute="width" constant="29" id="PTX-bV-e41"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pvX-2y-zf5" firstAttribute="leading" secondItem="e7K-ZY-kUe" secondAttribute="leadingMargin" id="6Lz-9F-qBs"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PUU-Z3-1Tr" secondAttribute="bottom" constant="10" id="6St-kK-jSe"/>
+                                                <constraint firstItem="Qs6-uS-gdS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="e7K-ZY-kUe" secondAttribute="topMargin" id="MGu-vg-chc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PUU-Z3-1Tr" secondAttribute="trailing" id="RF0-Vp-ZVn"/>
+                                                <constraint firstItem="Qs6-uS-gdS" firstAttribute="leading" secondItem="pvX-2y-zf5" secondAttribute="trailing" constant="16" id="a0H-ZD-6CP"/>
+                                                <constraint firstItem="pvX-2y-zf5" firstAttribute="centerY" secondItem="e7K-ZY-kUe" secondAttribute="centerY" id="b7f-vX-Duj"/>
+                                                <constraint firstItem="PUU-Z3-1Tr" firstAttribute="centerY" secondItem="e7K-ZY-kUe" secondAttribute="centerY" priority="750" id="hO4-T4-AQc"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Qs6-uS-gdS" secondAttribute="bottom" id="ina-4F-Tyz"/>
+                                                <constraint firstItem="Qs6-uS-gdS" firstAttribute="centerY" secondItem="e7K-ZY-kUe" secondAttribute="centerY" priority="250" id="kCo-NH-kPz"/>
+                                                <constraint firstItem="PUU-Z3-1Tr" firstAttribute="leading" secondItem="Qs6-uS-gdS" secondAttribute="trailing" constant="8" id="o3l-Tf-Wa0"/>
+                                                <constraint firstItem="PUU-Z3-1Tr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="e7K-ZY-kUe" secondAttribute="top" constant="10" id="ue5-1x-OQb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                                <attributedString key="userComments">
+                                    <fragment content="Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"/>
+                                </attributedString>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Periodic cleanup" footerTitle="KeePassium can automatically delete old backup files to free up some storage space." id="B3L-Dk-Uq3" userLabel="Backup Maintenance">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="G42-gR-eKm" detailTextLabel="PKe-6p-Ssr" imageView="Ohh-2R-oTa" style="IBUITableViewCellStyleValue1" id="ljV-dR-Ihl">
-                                        <rect key="frame" x="0.0" y="294.5" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="462" width="320" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ljV-dR-Ihl" id="Apj-dQ-zIf">
                                             <rect key="frame" x="0.0" y="0.0" width="293" height="52"/>
@@ -151,7 +205,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="sJf-8e-FM0">
-                                        <rect key="frame" x="0.0" y="346.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="514" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sJf-8e-FM0" id="Xwy-hZ-bIT">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -204,6 +258,7 @@
                         <outlet property="backupDurationCell" destination="ljV-dR-Ihl" id="jnT-OS-Id5"/>
                         <outlet property="deleteAllBackupsButton" destination="RXF-mN-5RB" id="xUb-IE-XBT"/>
                         <outlet property="enableDatabaseBackupSwitch" destination="C3i-cd-qyP" id="Wzl-9s-eTN"/>
+                        <outlet property="excludeFromSystemBackupSwitch" destination="PUU-Z3-1Tr" id="KQF-zX-lz3"/>
                         <outlet property="showBackupFilesSwitch" destination="gQZ-OX-Wt1" id="6NG-Ci-gF5"/>
                     </connections>
                 </tableViewController>
@@ -213,6 +268,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="no-icloud-backup-listitem" width="29" height="29"/>
         <image name="settings-backup-duration-listitem" width="29" height="29"/>
         <image name="settings-backup-listitem" width="29" height="29"/>
         <namedColor name="AuxiliaryText">

@@ -6,6 +6,8 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
+import Foundation
+
 extension LString {
     
     public static let errorNoPurchasesAvailable = NSLocalizedString(
@@ -24,6 +26,14 @@ You can manage and cancel your subscriptions by going to your account settings o
 """,
         comment: "Subscription conditions")
     
+    public static let premiumFeatureGenericTitle = NSLocalizedString(
+        "[PremiumFeature/Generic/title]",
+        value: "Premium Feature",
+        comment: "A generic title of a premium feature")
+    public static let premiumFeatureGenericDescription = NSLocalizedString(
+        "[PremiumFeature/Generic/description]",
+        value: "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.",
+        comment: "A generic description of a premium feature")
     
 
     public static let premiumFreePlanTitle = NSLocalizedString(
@@ -106,6 +116,10 @@ You can manage and cancel your subscriptions by going to your account settings o
         "[Premium/Price Plan/Conditions/perpetual fallback]",
         value: "Rent-to-own license (Perpetual fallback license)",
         comment: "What's included in a price plan. Please leave `perpetual fallback license` in English.")
+    public static let planConditionFamilySharing = NSLocalizedString(
+        "[Premium/Price Plan/Conditions/family sharing]",
+        value: "Family Sharing",
+        comment: "Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/")
 
     
     public static let premiumCallToActionFree = NSLocalizedString(
@@ -131,9 +145,9 @@ You can manage and cancel your subscriptions by going to your account settings o
         value: "Purchasing...",
         comment: "Status: in-app purchase started")
     public static let statusDeferredPurchase = NSLocalizedString(
-        "[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval from a parent",
-        value: "Thank you! You can use KeePassium while purchase is awaiting approval from a parent",
-        comment: "Message shown when in-app purchase is deferred until parental approval.")
+        "[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval.",
+        value: "Thank you! You can use KeePassium while purchase is awaiting approval.",
+        comment: "Message shown when in-app purchase is deferred until approval (parental or corporate).")
 
 
     

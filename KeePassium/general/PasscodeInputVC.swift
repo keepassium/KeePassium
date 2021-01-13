@@ -134,14 +134,8 @@ class PasscodeInputVC: UIViewController {
         }
     }
     
-    override var canBecomeFirstResponder: Bool {
-        return passcodeTextField.canBecomeFirstResponder
-    }
-    
-    @discardableResult
-    func showKeyboard() -> Bool {
-        let result = passcodeTextField.becomeFirstResponder()
-        return result
+    func showKeyboard() {
+        passcodeTextField.becomeFirstResponder()
     }
     
     private func setKeyboardType(_ type: Settings.PasscodeKeyboardType) {

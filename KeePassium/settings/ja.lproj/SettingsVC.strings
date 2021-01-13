@@ -56,7 +56,7 @@
 "QlM-VS-hle.text" = "お問い合わせ";
 
 /* Class = "UILabel"; text = "What's New"; ObjectID = "RlK-RW-8Ld"; Note = "Action: open app history page (change log)"; */
-"RlK-RW-8Ld.text" = "新着情報";
+"RlK-RW-8Ld.text" = "バージョン履歴";
 
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
 "RNK-fS-Fvx.text" = "改善提案や問題点を報告する";

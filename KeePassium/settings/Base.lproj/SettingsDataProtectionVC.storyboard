@@ -128,8 +128,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="5Fq-CG-7iL">
-                                        <rect key="frame" x="0.0" y="367" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="5Fq-CG-7iL" userLabel="Lock Database on Timeout Cell">
+                                        <rect key="frame" x="0.0" y="383" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Fq-CG-7iL" id="WV2-IR-7yU">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -404,6 +404,7 @@
                         <outlet property="clipboardTimeoutCell" destination="pl7-TW-G1h" id="kdi-rO-dBh"/>
                         <outlet property="databaseTimeoutCell" destination="7gS-TC-EzJ" id="3Ue-ZN-LSr"/>
                         <outlet property="hideProtectedFieldsSwitch" destination="JCE-bC-bHe" id="P1i-9e-mLQ"/>
+                        <outlet property="lockDatabaseOnTimeoutLabel" destination="gTm-F6-EDQ" id="Bw0-Cg-oOg"/>
                         <outlet property="lockDatabaseOnTimeoutPremiumBadge" destination="8yB-X8-xqJ" id="ZNY-Xy-3a2"/>
                         <outlet property="lockDatabaseOnTimeoutSwitch" destination="sSh-Tr-5oQ" id="t5k-4w-FGE"/>
                         <outlet property="rememberMasterKeysSwitch" destination="xIS-oe-VeS" id="3aO-D6-Lhz"/>

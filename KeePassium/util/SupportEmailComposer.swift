@@ -11,9 +11,9 @@ import MessageUI
 import KeePassiumLib
 
 class SupportEmailComposer: NSObject {
-    private let freeSupportEmail = "support@keepassium.com"
-    private let betaSupportEmail = "beta@keepassium.com"
-    private let premiumSupportEmail = "premium-support@keepassium.com"
+    private static let freeSupportEmail = "support@keepassium.com"
+    private static let betaSupportEmail = "beta@keepassium.com"
+    private static let premiumSupportEmail = "premium-support@keepassium.com"
     
     enum Subject: String { 
         case problem = "Problem"
@@ -58,7 +58,7 @@ class SupportEmailComposer: NSObject {
         instance.openSystemEmailComposer()
     }
     
-    private func getSupportEmail() -> String {
+    internal static func getSupportEmail() -> String {
         if Settings.current.isTestEnvironment {
             return betaSupportEmail
         }
@@ -73,14 +73,15 @@ class SupportEmailComposer: NSObject {
     private func showEmailComposer() {
         let emailComposerVC = MFMailComposeViewController()
         emailComposerVC.mailComposeDelegate = self
-        emailComposerVC.setToRecipients([getSupportEmail()])
+        emailComposerVC.setToRecipients([SupportEmailComposer.getSupportEmail()])
         emailComposerVC.setSubject(subject)
         emailComposerVC.setMessageBody(content, isHTML: false)
     }
     
     private func openSystemEmailComposer() {
         let body = content.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
-        let mailtoUrl = "mailto:\(getSupportEmail())?subject=\(subject)&body=\(body)"
+        let email = SupportEmailComposer.getSupportEmail()
+        let mailtoUrl = "mailto:\(email)?subject=\(subject)&body=\(body)"
         guard let url = URL(string: mailtoUrl) else {
             Diag.error("Failed to create mailto URL")
             return

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="dFU-3I-gpw" customClass="SwitchCell" customModule="KeePassium" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dFU-3I-gpw" id="2sB-oa-VlP">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNR-sa-YJo">
+                        <rect key="frame" x="349" y="22" width="51" height="31"/>
+                        <connections>
+                            <action selector="didToggleSwitch:" destination="dFU-3I-gpw" eventType="valueChanged" id="7mM-tS-maP"/>
+                        </connections>
+                    </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="{Title}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om6-Gu-EDw">
+                        <rect key="frame" x="16" y="27.5" width="325" height="20.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <color key="textColor" name="PrimaryText"/>
+                        <nil key="highlightedColor"/>
+                        <attributedString key="userComments">
+                            <fragment content="#bc-ignore!"/>
+                        </attributedString>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HNR-sa-YJo" secondAttribute="bottom" constant="10" id="3oG-NL-S2J"/>
+                    <constraint firstItem="HNR-sa-YJo" firstAttribute="leading" secondItem="Om6-Gu-EDw" secondAttribute="trailing" constant="8" id="9VT-Bm-aHY"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Om6-Gu-EDw" secondAttribute="bottom" id="COO-h6-aUg"/>
+                    <constraint firstItem="Om6-Gu-EDw" firstAttribute="centerY" secondItem="2sB-oa-VlP" secondAttribute="centerY" priority="250" id="KhH-X9-6OA"/>
+                    <constraint firstItem="Om6-Gu-EDw" firstAttribute="leading" secondItem="2sB-oa-VlP" secondAttribute="leadingMargin" id="RPs-p8-OcE"/>
+                    <constraint firstItem="HNR-sa-YJo" firstAttribute="centerY" secondItem="2sB-oa-VlP" secondAttribute="centerY" id="TvL-gR-9Xa"/>
+                    <constraint firstItem="HNR-sa-YJo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2sB-oa-VlP" secondAttribute="top" constant="10" id="hVk-Ty-gQq"/>
+                    <constraint firstItem="Om6-Gu-EDw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2sB-oa-VlP" secondAttribute="topMargin" id="mGm-1J-2Pb"/>
+                    <constraint firstItem="HNR-sa-YJo" firstAttribute="trailing" secondItem="2sB-oa-VlP" secondAttribute="trailingMargin" id="qmo-d5-z99"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="theSwitch" destination="HNR-sa-YJo" id="In9-Wc-ckU"/>
+                <outlet property="titleLabel" destination="Om6-Gu-EDw" id="pcF-bX-cLX"/>
+            </connections>
+            <point key="canvasLocation" x="151.875" y="-30.1056338028169"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

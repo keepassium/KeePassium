@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "Enter passcode"; ObjectID = "3mQ-t6-0ty"; Note = "Call for action above the passcode text field"; */
+"3mQ-t6-0ty.text" = "Wprowadź kod";
+
+/* Class = "UINavigationItem"; title = "Unlock KeePassium"; ObjectID = "P3J-3c-ucU"; */
+"P3J-3c-ucU.title" = "Odblokuj KeePassium";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "z0x-Rz-Nfj"; */
+"z0x-Rz-Nfj.normalTitle" = "Anuluj";
+
+/* Class = "UITextField"; placeholder = "Passcode"; ObjectID = "ZTd-Zj-qAs"; Note = "Placeholder text in the AppLock passcode field"; */
+"ZTd-Zj-qAs.placeholder" = "Kod";
+

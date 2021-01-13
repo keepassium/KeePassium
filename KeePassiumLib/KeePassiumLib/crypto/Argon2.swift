@@ -11,23 +11,44 @@ import Foundation
 public final class Argon2 {
     public static let version: UInt32 = 0x13
     
+    public struct Params {
+        let salt: ByteArray
+        let parallelism: UInt32
+        let memoryKiB: UInt32
+        let iterations: UInt32
+        let version: UInt32
+    }
+    
+    public enum PrimitiveType {
+        case argon2d
+        case argon2id
+        
+        var rawValue: argon2_type {
+            let result: argon2_type
+            switch self {
+            case .argon2d:
+                result = Argon2_d
+            case .argon2id:
+                result = Argon2_id
+            }
+            return result
+        }
+    }
+    
     private init() {
     }
     
     public static func hash(
         data pwd: ByteArray,
-        salt: ByteArray,
-        parallelism nThreads: UInt32,
-        memoryKiB m_cost: UInt32,
-        iterations t_cost: UInt32,
-        version: UInt32,
+        params: Params,
+        type: PrimitiveType,
         progress: ProgressEx?
         ) throws -> ByteArray
     {
 
         var isAbortProcessing: UInt8 = 0
         
-        progress?.totalUnitCount = Int64(t_cost)
+        progress?.totalUnitCount = Int64(params.iterations)
         progress?.completedUnitCount = 0
         let progressKVO = progress?.observe(
             \.isCancelled,
@@ -39,41 +60,50 @@ public final class Argon2 {
                 isAbortProcessing = 1
             }
         )
+        
+        let progressCallback: progress_fptr!   
+        let progressObject: UnsafeRawPointer?  
+        
+        if let progress = progress {
+            progressObject = UnsafeRawPointer(Unmanaged.passUnretained(progress).toOpaque())
+            progressCallback = {
+                (pass: UInt32, observer: Optional<UnsafeRawPointer>) -> Int32 in
+                guard let observer = observer else { return 0 /* continue hashing */ }
+                let progress = Unmanaged<Progress>.fromOpaque(observer).takeUnretainedValue()
+                progress.completedUnitCount = Int64(pass)
+                let isShouldStop: Int32 = progress.isCancelled ? 1 : 0
+                return isShouldStop
+            }
+        } else {
+            progressObject = nil
+            progressCallback = nil
+        }
+        
         FLAG_clear_internal_memory = 1
         var outBytes = [UInt8](repeating: 0, count: 32)
         let statusCode = pwd.withBytes {
             (pwdBytes) in
-            return salt.withBytes {
+            return params.salt.withBytes {
                 (saltBytes) -> Int32 in
-                guard let progress = progress else {
-                    return argon2_hash(
-                        t_cost, m_cost, nThreads, pwdBytes, pwdBytes.count,
-                        saltBytes, saltBytes.count, &outBytes, outBytes.count,
-                        nil, 0, Argon2_d, version, nil, nil, &isAbortProcessing)
-                }
-                
-                let progressPtr = UnsafeRawPointer(Unmanaged.passUnretained(progress).toOpaque())
-                
-                
                 return argon2_hash(
-                    t_cost, m_cost, nThreads, pwdBytes, pwdBytes.count,
-                    saltBytes, saltBytes.count, &outBytes, outBytes.count,
-                    nil, 0, Argon2_d, version,
-                    {
-                        (pass: UInt32, observer: Optional<UnsafeRawPointer>) -> Int32 in
-                        guard let observer = observer else { return 0 /* continue hashing */ }
-                        let progress = Unmanaged<Progress>.fromOpaque(observer).takeUnretainedValue()
-                        progress.completedUnitCount = Int64(pass)
-                        let isShouldStop: Int32 = progress.isCancelled ? 1 : 0
-                        return isShouldStop
-                    },
-                    progressPtr,
-                    &isAbortProcessing)
+                    params.iterations,  
+                    params.memoryKiB,   
+                    params.parallelism, 
+                    pwdBytes, pwdBytes.count,   
+                    saltBytes, saltBytes.count, 
+                    &outBytes, outBytes.count,  
+                    nil, 0,             
+                    type.rawValue,      
+                    params.version,     
+                    progressCallback,   
+                    progressObject,     
+                    &isAbortProcessing  
+                )
             }
         }
         progressKVO?.invalidate()
         if let progress = progress {
-            progress.completedUnitCount = Int64(t_cost) 
+            progress.completedUnitCount = Int64(params.iterations) 
             if progress.isCancelled {
                 throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
             }

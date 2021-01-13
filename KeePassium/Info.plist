@@ -248,6 +248,7 @@
 	<true/>
     <key>LSApplicationQueriesSchemes</key>
     <array>
+        <string>mailto</string>
         <string>https</string>
         <string>http</string>
         <string>ftp</string>

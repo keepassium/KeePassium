@@ -8,7 +8,7 @@
 "ei6-22-NXN.title" = "Автозаполнение";
 
 /* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"go1-Nt-isQ.text" = "Копировать одноразовый пароль";
+"go1-Nt-isQ.text" = "Скопировать одноразовый пароль";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.footerTitle" = "Когда Автозаполнение находит только одну, идеально подходящую, запись — эта запись будет выбрана автоматически.";
@@ -26,7 +26,7 @@
 "UzV-Ht-rGx.text" = "Нажмите \"Автозаполнять пароли\"";
 
 /* Class = "UILabel"; text = "Fill-in the perfect result automatically"; ObjectID = "WDb-aU-Mmf"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"WDb-aU-Mmf.text" = "Автоматически вставлять идеальный вариант";
+"WDb-aU-Mmf.text" = "Автоматически подставлять идеальный вариант";
 
 /* Class = "UILabel"; text = "Turn on \"AutoFill Passwords\""; ObjectID = "X2u-c9-gwU"; */
 "X2u-c9-gwU.text" = "Включите \"Автозаполнение паролей\"";

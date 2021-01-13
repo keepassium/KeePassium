@@ -2,7 +2,7 @@
 "enW-gs-tra.normalTitle" = "Добавить базу паролей";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
-"P0M-N3-ynf.text" = "Для использования в Автозаполнении, пожалуйста добавьте базы паролей и ключевые файлы ещё раз.";
+"P0M-N3-ynf.text" = "Для использования в Автозаполнении, добавьте базы паролей и ключевые файлы ещё раз.";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
 "pIl-6L-Msp.text" = "Настройка Автозаполнения";

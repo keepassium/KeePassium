@@ -1,0 +1,9 @@
+/* Class = "UIButton"; accessibilityHint = "Expands a text field to its full height"; ObjectID = "6Mx-Oh-6m0"; */
+"6Mx-Oh-6m0.accessibilityHint" = "توسيع حقل النص إلى ارتفاعه الكامل";
+
+/* Class = "UIButton"; accessibilityLabel = "Show more"; ObjectID = "6Mx-Oh-6m0"; */
+"6Mx-Oh-6m0.accessibilityLabel" = "عرض المزيد";
+
+/* Class = "UILabel"; text = "Copied"; ObjectID = "vLP-Zc-bUc"; Note = "Confirmation message: field value has been copied to clipboard."; */
+"vLP-Zc-bUc.text" = "تم النسخ!";
+

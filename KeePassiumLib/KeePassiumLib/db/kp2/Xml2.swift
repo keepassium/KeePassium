@@ -163,6 +163,7 @@ internal struct Xml2 {
     
     static let keyFile = "KeyFile"
     static let version = "Version"
+    static let hash = "Hash"
 
     static let _true = "True"
     static let _false = "False"

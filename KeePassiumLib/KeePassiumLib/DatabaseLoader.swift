@@ -331,6 +331,17 @@ public class DatabaseLoader: ProgressObserver {
                     contents: dbDoc.data)
             }
             
+            if let dbFileInfo = dbRef.getCachedInfoSync(canFetch: false),
+               dbFileInfo.isInTrash
+            {
+                let warning = String.localizedStringWithFormat(
+                    LString.Warning.fileIsInTrashTemplate,
+                    dbFileInfo.fileName
+                )
+                Diag.warning(warning)
+                warnings.messages.insert(warning, at: 0)
+            }
+
             progress.completedUnitCount = ProgressSteps.all
             progress.localizedDescription = LString.Progress.done
             delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: dbDoc)

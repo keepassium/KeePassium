@@ -2,5 +2,5 @@
 "bgK-Q6-nzE.text" = "Добавить файл";
 
 /* Class = "UILabel"; text = "There are no attached files"; ObjectID = "W86-tp-bfF"; Note = "Placeholder shown when there are no attached files in the entry."; */
-"W86-tp-bfF.text" = "Присоединённых файлов нет";
+"W86-tp-bfF.text" = "Нет прикреплённых файлов";
 

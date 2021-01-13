@@ -405,21 +405,33 @@ extension EditEntryVC: EditableFieldCellDelegate {
         
         let textField = userNameCell.textField!
         textField.becomeFirstResponder()
-        let handler = { (action: UIAlertAction) in
-            self.isModified = true
-            field.value = action.title
-            userNameCell.textField.text = action.title
-            cell.validate()
-        }
 
         let nameChooser = UIAlertController(
             title: LString.fieldUserName,
             message: nil,
             preferredStyle: .actionSheet)
-        for userName in UserNameHelper.getUserNameSuggestions(from: database, count: 5) {
-            let action = UIAlertAction(title: userName, style: .default, handler: handler)
+        for userName in UserNameHelper.getUserNameSuggestions(from: database, count: 4) {
+            let action = UIAlertAction(title: userName, style: .default) {
+                [weak self, weak field, weak userNameCell] (action: UIAlertAction) in
+                self?.isModified = true
+                field?.value = userName
+                userNameCell?.textField.text = userName
+                userNameCell?.validate()
+            }
             nameChooser.addAction(action)
         }
+        
+        let randomUserName = UserNameHelper.getRandomUserName()
+        let randomTitle = LString.directionAwareConcatenate(["🎲", " ", randomUserName])
+        let randomUserNameAction = UIAlertAction(title: randomTitle, style: .default) {
+            [weak self, weak field, weak userNameCell] (action: UIAlertAction) in
+            self?.isModified = true
+            field?.value = randomUserName
+            userNameCell?.textField.text = randomUserName
+            userNameCell?.validate()
+        }
+        nameChooser.addAction(randomUserNameAction)
+        
         nameChooser.addAction(
             UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil))
         

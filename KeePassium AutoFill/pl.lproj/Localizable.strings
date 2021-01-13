@@ -1,0 +1,327 @@
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "Odblokuj";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "Odblokuj KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Użyj kodu dostępu";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Aby przejść na premium, otwórz KeePassium ręcznie z ekranu głównego.";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Aktualizacja Premium";
+
+/* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
+"[AutoFill/Search/callerID]" = "Caller ID: %@";
+
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "Autouzupełnianie nie może automatycznie uzyskać dostępu do plików znajdujących się w głównej aplikacji KeePassium.\n\nDlaczego? System traktuje Autouzupełnianie jako oddzielną aplikację, niezależną do głównego procesu KeePassium. Ze względów bezpieczeństwa aplikacja nie może mieć dostępu do zewnętrznych plików - chyba, że celowo dołączysz te pliki do tej aplikacji. To gwarantuje, że aplikacja może mieć dostęp do tylko plików, na które zezwolisz.\n\nW rezultacie zarówno Autouzupełnianie, jak i główna aplikacja KeePassium, muszą otrzymać własne uprawnienia do zewnętrznego pliku. Na szczęście jest to jednorazowa procedura.";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Wybrany plik \"%@\" nie wygląda na bazę danych.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Utwórz bazę danych";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Utwórz bazę danych";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "Nie udało się usunąć pliku bazy danych";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Usunąć plik bazy danych?\n Upewnij się, że masz kopię zapasową.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "Trwa ładowanie...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "Klucz główny pomyślnie zmieniony";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "Otwórz bazę danych";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "Zamknij";
+
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "Zablokuj bazę danych";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Usunąć bazę danych z listy?\n Plik pozostanie nienaruszony i możesz go dodać później.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "Gotowe";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "Zapisywanie...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "Błąd pliku klucza: %@";
+
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Log diagnostyczny został skopiowany do schowka.";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "Pokaż logi diagnostyczne";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "Dołączone pliki";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "Utwórz wpis";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Nazwa pola";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "Notatki";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "Hasło";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "Tytuł";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "Adres URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "Nazwa użytkownika";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "Nowy wpis";
+
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Spróbuj usunąć plik z aplikacji, a następnie dodać go ponownie.";
+
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Kopia zapasowa";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Nie udało się zaktualizować atrybutów pliku.";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "Data utworzenia";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "Lokalizacja pliku";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "Nazwa pliku";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "Rozmiar pliku";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "Data ostatniej modyfikacji";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "Błąd";
+
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Wyklucz z kopii zapasowej iCloud/iTunes";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "Anuluj";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "Skontaktuj się z nami";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Dalej";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "Kopiuj";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "Skasuj";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "Odrzuć";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "Odrzuć";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "Gotowe";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "Edytuj";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "Eksportuj";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "Przenieś";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "OK";
+
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "Zastąp";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "Zmień nazwę";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "Zastąp";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "Pokaż szczegóły";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "Pokaż więcej";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "Jesteś pewien?";
+
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "Ostatnio usunięte";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Odrzucić niezapisane zmiany?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "Istnieją niezapisane zmiany";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "Skasuj";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "Usuń";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "Błąd eksportu";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "Plik już istnieje";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "Błąd importu";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "Błąd";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "Błąd pęku kluczy";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "Ostrzeżenie";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "Utwórz grupę";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "Utwórz grupę";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "Edytuj grupę";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "Nowa grupa";
+
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Klucz sprzętowy nie jest dostępny dla Autouzupełniania.";
+
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC wymaga iOS 13 lub nowszego.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "Brak klucza sprzętowego";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "Gniazdo YubiKey %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Pomoc";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Usunąć plik klucza?\n Upewnij się, że masz kopię zapasową.";
+
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Usunąć plik klucza z listy?\n Plik pozostanie nienaruszony i możesz go dodać później.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Uaktualnij do Premium";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Dostosuj ikonę";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "Znalazłeś funkcję premium! Zaktualizuj do wersji premium i ciesz się wszystkimi możliwościami KeePassium.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "Funkcja Premium";
+
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "Wzmocnij bezpieczeństwo z pomocą klucza sprzętowego (YubiKey) w wersji premium.";
+
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Klucz sprzętowy";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Oszczędź czas na wpisywaniu złożonego hasła - trzymaj swoją bazę otwartą dłużej w wersji premium.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Dłuższy czas nieaktywności";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Łatwe przełączanie pomiędzy bazami w wersji premium.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Wiele baz";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Podgląd obrazów i dokumentów bezpośrednio w aplikacji w wersji premium.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "Podgląd załączników";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "Pokaż hasło";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(Tutaj proszę opisać problem)";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "Bez YubiKey";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "Włóż klucz";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "Dotknij klucza";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "Użyj gniazda YubiKey %d";
+
+/* Action/button to add database to the app */
+"Add Database" = "Dodaj bazę";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "Wybierz bazę danych";
+
+/* Action/button */
+"Import Database" = "Import bazy danych";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "Baza danych KeePass nie powinna być używana jako plik kluczowy. Proszę wybrać inny plik.";
+

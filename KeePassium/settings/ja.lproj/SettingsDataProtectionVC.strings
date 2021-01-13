@@ -17,7 +17,7 @@
 "Faj-km-pM5.headerTitle" = "クイック解錠";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "ユニバーサルクリップボードを使用すれば、お使いのAppleデバイス間でコピー＆ペーストが出来ます。外部デバイスでは、このクリップボードは2分後に消去されます。";
+"g9a-rJ-4WJ.footerTitle" = "ユニバーサルクリップボードなら、お使いのAppleデバイス間でコピー＆ペーストできます。外部デバイスではクリップボードは2分後に消去されます。";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
 "gTm-F6-EDQ.text" = "タイムアウト時にマスターキーを消去";

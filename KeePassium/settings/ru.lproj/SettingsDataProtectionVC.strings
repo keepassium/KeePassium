@@ -5,13 +5,13 @@
 "e1v-nv-Mst.normalTitle" = "Удалить мастер-ключи";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "Скрывать пароли и другие защищённый поля за звёздочками (рекомендуется).";
+"e6Y-AP-hag.footerTitle" = "Скрывать пароли и другие защищённые поля звёздочками (рекомендуется).";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
 "e6Y-AP-hag.headerTitle" = "Защищённые поля";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "При открытии базы паролей, её мастер-ключ будет сохранён в связке ключей устройства. В следующий раз KeePassium использует этот мастер-ключ, чтобы Вам не пришлось заново вводить свой основной пароль. \n\n(Запомненные мастер-ключи автоматически удаляются при автоматическом закрытии баз.)";
+"Faj-km-pM5.footerTitle" = "При открытии базы паролей её мастер-ключ будет сохранён в связке ключей устройства. В следующий раз KeePassium использует этот мастер-ключ, чтобы вам не пришлось заново вводить мастер-пароль. \n\n(Запомненные мастер-ключи автоматически удаляются при автоматическом закрытии баз.)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Быстрый доступ";
@@ -23,7 +23,7 @@
 "gTm-F6-EDQ.text" = "Удалять мастер-ключи по истечении задержки";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.footerTitle" = "После копирования, KeePassium автоматически очистит буфер обмена через некоторое время.";
+"hnI-Q8-Ixm.footerTitle" = "После копирования KeePassium автоматически очистит буфер обмена через некоторое время.";
 
 /* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.headerTitle" = "Буфер обмена";

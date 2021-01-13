@@ -485,10 +485,10 @@ public class URLReference:
         }
         
         if fallbackToNamesake {
-            guard let fileName = self.cachedInfo?.fileName else {
+            guard let fileName = self.url?.lastPathComponent else {
                 return nil
             }
-            return refs.first(where: { $0.cachedInfo?.fileName == fileName })
+            return refs.first(where: { $0.url?.lastPathComponent == fileName })
         }
         return nil
     }

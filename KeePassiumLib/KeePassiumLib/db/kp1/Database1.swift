@@ -174,6 +174,9 @@ public class Database1: Database {
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
             throw DatabaseError.loadError(reason: error.localizedDescription)
+        } catch let error as KeyFileError {
+            Diag.error("Key file error [reason: \(error.localizedDescription)]")
+            throw DatabaseError.loadError(reason: error.localizedDescription)
         } catch let error as ChallengeResponseError {
             Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")
             throw DatabaseError.loadError(reason: error.localizedDescription)
@@ -211,10 +214,10 @@ public class Database1: Database {
         
         let combinedComponents: SecureByteArray
         if compositeKey.state == .processedComponents {
-            combinedComponents = keyHelper.combineComponents(
+            combinedComponents = try keyHelper.combineComponents(
                 passwordData: compositeKey.passwordData!, 
                 keyFileData: compositeKey.keyFileData!    
-            )
+            ) 
             compositeKey.setCombinedStaticComponents(combinedComponents)
         } else if compositeKey.state >= .combinedComponents {
             combinedComponents = compositeKey.combinedStaticComponents! 
@@ -392,6 +395,9 @@ public class Database1: Database {
             return outStream.data!
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
+            throw DatabaseError.saveError(reason: error.localizedDescription)
+        } catch let error as KeyFileError {
+            Diag.error("Key file error [reason: \(error.localizedDescription)]")
             throw DatabaseError.saveError(reason: error.localizedDescription)
         } catch let error as ChallengeResponseError {
             Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")

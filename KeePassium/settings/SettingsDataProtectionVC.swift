@@ -18,6 +18,7 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @IBOutlet weak var clearKeyFileAssociationsButton: UIButton!
     
     @IBOutlet weak var databaseTimeoutCell: UITableViewCell!
+    @IBOutlet weak var lockDatabaseOnTimeoutLabel: UILabel!
     @IBOutlet weak var lockDatabaseOnTimeoutSwitch: UISwitch!
     @IBOutlet weak var lockDatabaseOnTimeoutPremiumBadge: UIImageView!
     
@@ -59,8 +60,17 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
         universalClipboardSwitch.isOn = settings.isUniversalClipboardEnabled
         hideProtectedFieldsSwitch.isOn = settings.isHideProtectedFields
         databaseTimeoutCell.detailTextLabel?.text = settings.premiumDatabaseLockTimeout.shortTitle
+        
         lockDatabaseOnTimeoutSwitch.isOn = settings.premiumIsLockDatabasesOnTimeout
-        lockDatabaseOnTimeoutPremiumBadge.isHidden = PremiumManager.shared.isAvailable(feature: .canKeepMasterKeyOnDatabaseTimeout)
+        let canKeepMasterKeyOnDatabaseTimeout =
+            PremiumManager.shared.isAvailable(feature: .canKeepMasterKeyOnDatabaseTimeout)
+        lockDatabaseOnTimeoutPremiumBadge.isHidden = canKeepMasterKeyOnDatabaseTimeout
+        lockDatabaseOnTimeoutLabel.accessibilityLabel =
+            AccessibilityHelper.decorateAccessibilityLabel(
+                premiumFeature: lockDatabaseOnTimeoutLabel.text,
+                isEnabled: canKeepMasterKeyOnDatabaseTimeout
+            )
+        
         clipboardTimeoutCell.detailTextLabel?.text = settings.clipboardTimeout.shortTitle
     }
     
@@ -70,8 +80,12 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     
     
     @IBAction func didToggleRememberMasterKeys(_ sender: UISwitch) {
-        Settings.current.isRememberDatabaseKey = rememberMasterKeysSwitch.isOn
+        let isRemember = rememberMasterKeysSwitch.isOn
+        Settings.current.isRememberDatabaseKey = isRemember
         refresh()
+        if !isRemember {
+            didPressClearMasterKeys(self)
+        }
     }
     
     @IBAction func didPressClearMasterKeys(_ sender: Any) {

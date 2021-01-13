@@ -56,7 +56,13 @@ class AppIconPicker: UITableViewController, Refreshable {
         let appIcon = appIcons[indexPath.row]
         cell.iconView?.image = UIImage(named: appIcon.asset)
         cell.titleLabel?.text = appIcon.name
-        cell.premiumBadge.isHidden = !isRequiresPurchase(appIcon)
+        
+        let isAvailable = !isRequiresPurchase(appIcon)
+        cell.premiumBadge.isHidden = isAvailable
+        cell.accessibilityLabel = AccessibilityHelper.decorateAccessibilityLabel(
+            premiumFeature: appIcon.name,
+            isEnabled: isAvailable
+        )
         
         let isCurrent = (UIApplication.shared.alternateIconName == appIcon.key)
         cell.accessoryType = isCurrent ? .checkmark : .none

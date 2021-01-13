@@ -1,11 +1,11 @@
 /* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9yn-W3-FDl"; Note = "Section in settings: settings that define what happens when the app is started."; */
-"9yn-W3-FDl.headerTitle" = "Start";
+"9yn-W3-FDl.headerTitle" = "啟動時";
 
 /* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
-"756-sL-G2t.text" = "Auto-open the Previous Database";
+"756-sL-G2t.text" = "自動開啟上次使用的資料庫";
 
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
-"A5N-B3-t3t.headerTitle" = "高級版";
+"A5N-B3-t3t.headerTitle" = "進階版";
 
 /* Class = "UILabel"; text = "App Protection"; ObjectID = "abS-AH-iFO"; Note = "Settings section: protection of the app from unauthorized access"; */
 "abS-AH-iFO.text" = "應用保護";
@@ -29,10 +29,10 @@
 "FHp-ns-ke9.text" = "主金鑰, 金鑰文件";
 
 /* Class = "UILabel"; text = "Search"; ObjectID = "GLr-Uf-Kln"; Note = "Section title in settings"; */
-"GLr-Uf-Kln.text" = "Search";
+"GLr-Uf-Kln.text" = "搜尋";
 
 /* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
-"HCe-A3-eG6.text" = "高級版本";
+"HCe-A3-eG6.text" = "進階版本";
 
 /* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
 "HjD-9G-X8p.headerTitle" = "備份";
@@ -44,7 +44,7 @@
 "HYe-lP-dCp.text" = "在App Store 上給 KeePassium 評分。";
 
 /* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
-"oxG-N8-1ld.text" = "升級到高級版";
+"oxG-N8-1ld.text" = "升級到進階版";
 
 /* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
 "PpA-oZ-kr2.text" = "診斷日誌";
@@ -56,7 +56,7 @@
 "QlM-VS-hle.text" = "聯繫我們";
 
 /* Class = "UILabel"; text = "What's New"; ObjectID = "RlK-RW-8Ld"; Note = "Action: open app history page (change log)"; */
-"RlK-RW-8Ld.text" = "What's New";
+"RlK-RW-8Ld.text" = "更新了什麼";
 
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
 "RNK-fS-Fvx.text" = "建議? 問題? 讓我們知道!";
@@ -65,7 +65,7 @@
 "T2Z-oa-zJR.text" = "自動填寫密碼";
 
 /* Class = "UILabel"; text = "App Icon"; ObjectID = "TUE-Aw-fJl"; Note = "Section in settings: icon for the app"; */
-"TUE-Aw-fJl.text" = "App Icon";
+"TUE-Aw-fJl.text" = "應用程式圖示";
 
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "資料保護";

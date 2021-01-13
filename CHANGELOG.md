@@ -1,5 +1,49 @@
 #CHANGELOG
 
+## [1.21.79] - 2021-01-10
+
+### Added 
+
+- Premium subscriptions now support Family Sharing
+- Support for Argon2id and .keyx key file format (KeePass 2.47) [thanks, Dominik]
+- VoiceOver: added "Copy Field" accessibility actions in group viewer [thanks, Adam]
+- VoiceOver: added Open URL and Share URL accessibility actions for URL fields
+- An option to exclude automatic backup files from iTunes/iCloud Backup [thanks, Patrick]
+- Option "Lock on App Launch" (settings → App Protection → Timeout) [thanks, Paul]
+- Arabic translation [thanks, ZER0-X and Ali Madan]
+- Polish translation [thanks, Michał and qxtno]
+- Portugese (Brasilian) translation [thanks, Éctor Moreira]
+
+### Refined
+
+- VoiceOver: better descriptions for groups
+- Added a warning when opening database from Recently Deleted [thanks, u/opticillusion]
+- It is possible to skip AutoFill setup now [thanks, Michael]
+- Refined perpetual fallback license text and made it shorter
+- Added detection of QNAP Qfile file provider
+- Clear master keys when Remember switch is turned off
+- Added "Pro" to About screen of the Pro version [thanks, Glenn]
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- Removed excessive animation when sorting files [thanjks, Vadim and Alan]
+- KeePassium won't ask for AppStore review if the user barely used the app [thanks, Timothy]
+- Sometimes associated key file was not selected [thanks, Robert]
+- In case of database load error, AutoFill won't ask to re-enter the password [thanks, Tim]
+- Adding key files with unrecognized/dynamic UTIs [thanks, Daniel]
+- Added a debug "Reset entry text scale to default" button at the end of About screen (related #132)
+- Made entry field text depend on system font size (possibly fixes #132)
+- iOS 14: could access selected text menu through the passcode screen [thanks, Jacob]
+- VoiceOver: added missing labels to several buttons [thanks, Fabrice and Adam]
+- VoiceOver: improved accessibility of settings that require premium
+- VoiceOver: support email address is accessible now [thanks, Adam]
+- iOS 14: Keyboard was missing in AutoFill after cancelling biometric prompt — partial fix (#133)
+- iOS 14: fixed opening mailto: links in alternative mail clients [thanks, Gianfranco]
+- User name generator: made the random option visually distinct [thanks, Daz]
+- Minor UI improvements here and there
+
+
 ## [1.20.78] - 2020-11-12
 
 ### Changed

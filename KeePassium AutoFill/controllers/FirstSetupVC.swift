@@ -11,7 +11,9 @@ import UIKit
 protocol FirstSetupDelegate: class {
     func didPressCancel(in firstSetup: FirstSetupVC)
     func didPressAddDatabase(in firstSetup: FirstSetupVC, at popoverAnchor: PopoverAnchor)
+    func didPressSkip(in firstSetup: FirstSetupVC)
 }
+
 class FirstSetupVC: UIViewController {
     @IBOutlet weak var footerTextView: UITextView!
     
@@ -40,5 +42,9 @@ class FirstSetupVC: UIViewController {
     @IBAction func didPressAddDatabase(_ sender: UIButton) {
         let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
         delegate?.didPressAddDatabase(in: self, at: popoverAnchor)
+    }
+    
+    @IBAction func didPressSkip(_ sender: UIButton) {
+        delegate?.didPressSkip(in: self)
     }
 }

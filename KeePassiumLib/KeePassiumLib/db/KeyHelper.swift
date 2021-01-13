@@ -12,7 +12,10 @@ public class KeyHelper {
     public static let compositeKeyLength = 32
     internal let keyFileKeyLength = 32
     
-    public func combineComponents(passwordData: SecureByteArray, keyFileData: ByteArray) -> SecureByteArray {
+    public func combineComponents(
+        passwordData: SecureByteArray,
+        keyFileData: ByteArray
+    ) throws -> SecureByteArray {
         fatalError("Pure virtual method")
     }
     
@@ -24,7 +27,7 @@ public class KeyHelper {
         fatalError("Pure virtual method")
     }
     
-    public func processKeyFile(keyFileData: ByteArray) -> SecureByteArray {
+    public func processKeyFile(keyFileData: ByteArray) throws -> SecureByteArray {
         assert(!keyFileData.isEmpty, "keyFileData cannot be empty here")
 
         if keyFileData.count == keyFileKeyLength {
@@ -40,7 +43,7 @@ public class KeyHelper {
             }
         }
         
-        if let key = processXmlKeyFile(keyFileData: keyFileData) {
+        if let key = try processXmlKeyFile(keyFileData: keyFileData) {
             Diag.debug("Key file format is: XML")
             return key
         }
@@ -49,7 +52,7 @@ public class KeyHelper {
         return SecureByteArray(keyFileData.sha256)
     }
     
-    public func processXmlKeyFile(keyFileData: ByteArray) -> SecureByteArray? {
+    public func processXmlKeyFile(keyFileData: ByteArray) throws -> SecureByteArray? {
         return nil
     }
 }

@@ -245,19 +245,19 @@ final class Header2: Eraseable {
         dataCipher = ChaCha20DataCipher()
         fields[.cipherID] = dataCipher.uuid.data
         
-        kdf = Argon2KDF()
+        kdf = Argon2dKDF()
         kdfParams = kdf.defaultParams
         let iterations: UInt64 = 100
         let memory: UInt64 = 1*1024*1024
         let parallelism: UInt32 = 2
         kdfParams.setValue(
-            key: Argon2KDF.iterationsParam,
+            key: AbstractArgon2KDF.iterationsParam,
             value: VarDict.TypedValue(value: iterations))
         kdfParams.setValue(
-            key: Argon2KDF.memoryParam,
+            key: AbstractArgon2KDF.memoryParam,
             value: VarDict.TypedValue(value: memory))
         kdfParams.setValue(
-            key: Argon2KDF.parallelismParam,
+            key: AbstractArgon2KDF.parallelismParam,
             value: VarDict.TypedValue(value: parallelism))
         fields[.kdfParameters] = kdfParams.data!
         

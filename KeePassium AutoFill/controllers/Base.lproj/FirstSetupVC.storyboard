@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sWN-0A-UAO">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sWN-0A-UAO">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enW-gs-tra">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enW-gs-tra">
                                 <rect key="frame" x="47.5" y="124" width="280" height="44"/>
                                 <color key="backgroundColor" name="ActionTint"/>
                                 <constraints>
@@ -43,13 +44,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="AutoFill Setup" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIl-6L-Msp">
-                                <rect key="frame" x="104" y="16" width="167.5" height="33.5"/>
+                                <rect key="frame" x="103.5" y="16" width="168" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" name="PrimaryText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" editable="NO" text="{Footer text}" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAW-0G-N5G">
-                                <rect key="frame" x="16" y="184" width="343" height="475"/>
+                                <rect key="frame" x="16" y="184" width="343" height="435"/>
                                 <color key="textColor" name="AuxiliaryText"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -57,25 +58,39 @@
                                     <fragment content="#bc-ignore!"/>
                                 </attributedString>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gck-9R-sGq">
+                                <rect key="frame" x="327" y="627" width="32" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <state key="normal" title="Skip"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Action: skip setup and proceed to the next step."/>
+                                </attributedString>
+                                <connections>
+                                    <action selector="didPressSkip:" destination="sWN-0A-UAO" eventType="touchUpInside" id="Vud-ek-N5b"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5e5-l3-iUK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="UAW-0G-N5G" secondAttribute="trailing" id="2aT-B7-zvB"/>
                             <constraint firstItem="enW-gs-tra" firstAttribute="centerX" secondItem="6Rn-iq-uS6" secondAttribute="centerX" id="3BI-MT-oAH"/>
                             <constraint firstItem="P0M-N3-ynf" firstAttribute="leading" secondItem="6Rn-iq-uS6" secondAttribute="leadingMargin" id="46e-Fg-gsa"/>
                             <constraint firstItem="pIl-6L-Msp" firstAttribute="centerX" secondItem="6Rn-iq-uS6" secondAttribute="centerX" id="500-zb-49a"/>
+                            <constraint firstItem="Gck-9R-sGq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Rn-iq-uS6" secondAttribute="leadingMargin" id="8KC-ng-mMq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gck-9R-sGq" secondAttribute="trailing" id="F2b-ks-GvR"/>
+                            <constraint firstItem="Gck-9R-sGq" firstAttribute="top" secondItem="UAW-0G-N5G" secondAttribute="bottom" constant="8" id="Gnc-gX-tdH"/>
                             <constraint firstItem="P0M-N3-ynf" firstAttribute="top" secondItem="pIl-6L-Msp" secondAttribute="bottom" constant="16" id="Gr4-4Q-84M"/>
                             <constraint firstItem="UAW-0G-N5G" firstAttribute="leading" secondItem="6Rn-iq-uS6" secondAttribute="leadingMargin" id="K1O-i8-Tdi"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="pIl-6L-Msp" secondAttribute="trailing" id="MeA-EH-DYV"/>
                             <constraint firstItem="pIl-6L-Msp" firstAttribute="top" secondItem="5e5-l3-iUK" secondAttribute="top" constant="16" id="NHu-pE-VGg"/>
-                            <constraint firstItem="5e5-l3-iUK" firstAttribute="bottom" secondItem="UAW-0G-N5G" secondAttribute="bottom" constant="8" id="Vt6-jd-8aN"/>
+                            <constraint firstItem="5e5-l3-iUK" firstAttribute="bottom" secondItem="Gck-9R-sGq" secondAttribute="bottom" constant="8" id="VNh-Lq-Jt4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P0M-N3-ynf" secondAttribute="trailing" id="XaH-ti-MBW"/>
                             <constraint firstItem="enW-gs-tra" firstAttribute="top" secondItem="P0M-N3-ynf" secondAttribute="bottom" constant="16" id="cFv-aB-XZz"/>
                             <constraint firstItem="UAW-0G-N5G" firstAttribute="centerX" secondItem="6Rn-iq-uS6" secondAttribute="centerX" id="eVH-h7-Xn6"/>
                             <constraint firstItem="pIl-6L-Msp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Rn-iq-uS6" secondAttribute="leadingMargin" id="erw-Gm-AKb"/>
                             <constraint firstItem="UAW-0G-N5G" firstAttribute="top" secondItem="enW-gs-tra" secondAttribute="bottom" constant="16" id="zjH-pK-aKO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="5e5-l3-iUK"/>
                     </view>
                     <navigationItem key="navigationItem" title="KeePassium" id="rzY-Ci-bd9">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mez-Ai-igU">
@@ -90,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rlG-d8-aMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97.5" y="108.80281690140845"/>
+            <point key="canvasLocation" x="96.799999999999997" y="108.39580209895054"/>
         </scene>
     </scenes>
     <resources>
@@ -106,5 +121,8 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -1,0 +1,24 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "KeePassium";
+
+/* Bundle name */
+"CFBundleName" = "KeePassium";
+
+/* (No Comment) */
+"KeePass Database (kdb)" = "Baza KeePass (kdb)";
+
+/* (No Comment) */
+"KeePass Database (kdbx)" = "Baza KeeKass (kdbx)";
+
+/* Privacy - NFC Scan Usage Description */
+"NFCReaderUsageDescription" = "KeePassium potrzebuje dostępu do NFC, aby komunikować się z YubiKey.";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "KeePassium potrzebuje aparatu aby skanować kody QR.";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Użyj FaceID, aby odblokować KeePassium";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "KeePassium potrzebuje pozwolenia na eksportowanie plików do Twojej biblioteki zdjęć.";
+

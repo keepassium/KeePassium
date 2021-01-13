@@ -14,7 +14,8 @@ protocol PricingPlanPickerDelegate: class {
     func didPressCancel(in viewController: PricingPlanPickerVC)
     func didPressRestorePurchases(in viewController: PricingPlanPickerVC)
     func didPressBuy(product: SKProduct, in viewController: PricingPlanPickerVC)
-    func didPressPerpetualFallbackInfo(
+    func didPressHelpButton(
+        for helpReference: PricingPlanCondition.HelpReference,
         at popoverAnchor: PopoverAnchor,
         in viewController: PricingPlanPickerVC)
 }
@@ -251,14 +252,16 @@ extension PricingPlanPickerVC: PricingPlanCollectionCellDelegate {
         delegate?.didPressBuy(product: realPricingPlan.product, in: self)
     }
     
-    func didPressPerpetualFallbackInfo(
+    func didPressHelpButton(
         in cell: PricingPlanConditionCell,
         with pricingPlan: PricingPlan)
     {
+        let helpReference = cell.helpReference
         let popoverAnchor = PopoverAnchor(
             sourceView: cell.detailButton,
             sourceRect: cell.detailButton.bounds)
-        delegate?.didPressPerpetualFallbackInfo(
+        delegate?.didPressHelpButton(
+            for: helpReference,
             at: popoverAnchor,
             in: self)
     }

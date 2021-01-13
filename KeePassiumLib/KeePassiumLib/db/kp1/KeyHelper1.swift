@@ -23,7 +23,7 @@ class KeyHelper1: KeyHelper {
     override func combineComponents(
         passwordData: SecureByteArray,
         keyFileData: ByteArray
-    ) -> SecureByteArray {
+    ) throws -> SecureByteArray {
         let hasPassword = !passwordData.isEmpty
         let hasKeyFile = !keyFileData.isEmpty
         
@@ -31,14 +31,14 @@ class KeyHelper1: KeyHelper {
             Diag.info("Using password and key file")
             let preKey = SecureByteArray.concat(
                 passwordData.sha256,
-                processKeyFile(keyFileData: keyFileData))
+                try processKeyFile(keyFileData: keyFileData)) 
             return preKey.sha256
         } else if hasPassword {
             Diag.info("Using password")
             return passwordData.sha256
         } else if hasKeyFile {
             Diag.info("Using key file")
-            return processKeyFile(keyFileData: keyFileData) 
+            return try processKeyFile(keyFileData: keyFileData) 
         } else {
             Diag.warning("Both password and key file are empty after being checked.")
             return SecureByteArray().sha256
@@ -49,7 +49,7 @@ class KeyHelper1: KeyHelper {
         return combinedComponents 
     }
     
-    override func processXmlKeyFile(keyFileData: ByteArray) -> SecureByteArray? {
+    override func processXmlKeyFile(keyFileData: ByteArray) throws -> SecureByteArray? {
         return nil
     }
 }

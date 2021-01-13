@@ -84,10 +84,12 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             handleItemSelection(indexPath: nil)
         }
 
-        navigationItem.setRightBarButton(UIBarButtonItem(
+        let createItemButton = UIBarButtonItem(
             image: UIImage(asset: .createItemToolbar),
             style: .plain, target: self,
-            action: #selector(onCreateNewItemAction)), animated: false)
+            action: #selector(onCreateNewItemAction))
+        createItemButton.accessibilityLabel = LString.actionCreate
+        navigationItem.setRightBarButton(createItemButton, animated: false)
         
         isActivateSearch = Settings.current.isStartWithSearch && (group?.isRoot ?? false)
         
@@ -333,7 +335,9 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             title: entry.resolvedTitle,
             subtitle: getDetailInfo(forEntry: entry),
             image: UIImage.kpIcon(forEntry: entry),
-            isExpired: entry.isExpired)
+            isExpired: entry.isExpired,
+            itemCount: nil)
+        setupAccessibilityActions(entryCell, entry: entry)
         return entryCell
     }
     
@@ -351,12 +355,14 @@ open class ViewGroupVC: UITableViewController, Refreshable {
                 withIdentifier: CellID.group,
                 for: indexPath)
                 as! GroupViewListCell
+            let itemCount = group.groups.count + group.entries.count
             setupCell(
                 groupCell,
                 title: group.name,
-                subtitle: "\(group.groups.count + group.entries.count)",
+                subtitle: "\(itemCount)",
                 image: UIImage.kpIcon(forGroup: group),
-                isExpired: group.isExpired)
+                isExpired: group.isExpired,
+                itemCount: itemCount)
             return groupCell
         } else {
             let entryIndex = indexPath.row - groupsSorted.count
@@ -374,7 +380,9 @@ open class ViewGroupVC: UITableViewController, Refreshable {
                 title: entry.resolvedTitle,
                 subtitle: getDetailInfo(forEntry: entry),
                 image: UIImage.kpIcon(forEntry: entry),
-                isExpired: entry.isExpired)
+                isExpired: entry.isExpired,
+                itemCount: nil)
+            setupAccessibilityActions(entryCell, entry: entry)
             return entryCell
         }
     }
@@ -384,11 +392,44 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         title: String,
         subtitle: String?,
         image: UIImage?,
-        isExpired: Bool)
+        isExpired: Bool,
+        itemCount: Int?)
     {
         cell.titleLabel.setText(title, strikethrough: isExpired)
         cell.subtitleLabel?.setText(subtitle, strikethrough: isExpired)
         cell.iconView?.image = image
+        
+        if itemCount != nil {
+            cell.accessibilityLabel = String.localizedStringWithFormat(
+                LString.titleGroupDescriptionTemplate,
+                title)
+        }
+    }
+    
+    private func setupAccessibilityActions(_ cell: GroupViewListCell, entry: Entry) {
+        guard #available(iOS 13, *) else { return }
+        
+        var actions = [UIAccessibilityCustomAction]()
+        
+        let nonTitleFields = entry.fields.filter { $0.name != EntryField.title }
+        nonTitleFields.reversed().forEach { (field) in
+            let actionName = String.localizedStringWithFormat(
+                LString.actionCopyToClipboardTemplate,
+                field.name)
+            let action = UIAccessibilityCustomAction(name: actionName) {
+                [weak field] _ -> Bool in
+                if let fieldValue = field?.resolvedValue {
+                    Clipboard.general.insert(fieldValue)
+                    UIAccessibility.post(
+                        notification: .announcement,
+                        argument: LString.titleCopiedToClipboard
+                    )
+                }
+                return true
+            }
+            actions.append(action)
+        }
+        cell.accessibilityCustomActions = actions
     }
 
     func getDetailInfo(forEntry entry: Entry) -> String? {
@@ -493,34 +534,35 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         return getEntry(at: indexPath) != nil || getGroup(at: indexPath) != nil
     }
 
-    override open func tableView(
+    open override func tableView(
         _ tableView: UITableView,
-        editActionsForRowAt indexPath: IndexPath
-        ) -> [UITableViewRowAction]?
-    {
-        let editAction = UITableViewRowAction(style: .default, title: LString.actionEdit)
-        {
-            [unowned self] (_,_) in
-            self.setEditing(false, animated: true)
-            self.onEditItemAction(at: indexPath)
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: LString.actionEdit) {
+            [weak self] (_, _, completion) in
+            self?.onEditItemAction(at: indexPath)
+            completion(true)
         }
         editAction.backgroundColor = UIColor.actionTint
+        editAction.image = UIImage(asset: .editItemToolbar)
         
-        let deleteAction = UITableViewRowAction(style: .destructive, title: LString.actionDelete)
+        let deleteAction = UIContextualAction(style: .destructive, title: LString.actionDelete)
         {
-            [unowned self] (_,_) in
-            self.setEditing(false, animated: true)
-            self.onDeleteItemAction(at: indexPath)
+            [weak self] (_, _, completion) in
+            self?.onDeleteItemAction(at: indexPath)
+            completion(false)
         }
         deleteAction.backgroundColor = UIColor.destructiveTint
-     
-        let menuAction = UITableViewRowAction(style: .default, title: "...")
+        deleteAction.image = UIImage(asset: .deleteItemToolbar)
+
+        let menuAction = UIContextualAction(style: .normal, title: LString.titleMoreActions)
         {
-            [unowned self] (_,_) in
-            self.setEditing(false, animated: true)
-            self.showActionsForItem(at: indexPath)
+            [weak self] (_, _, completion) in
+            self?.showActionsForItem(at: indexPath)
+            completion(true)
         }
         menuAction.backgroundColor = UIColor.lightGray
+        menuAction.image = UIImage(asset: .moreActionsToolbar)
         
         var allowedActions = [deleteAction]
         if let entry = getEntry(at: indexPath), canEdit(entry) {
@@ -531,7 +573,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         }
         
         allowedActions.append(menuAction)
-        return allowedActions
+        return UISwipeActionsConfiguration(actions: allowedActions)
     }
     
     

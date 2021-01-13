@@ -10,9 +10,11 @@ import UIKit
 import KeePassiumLib
 
 class AboutVC: UITableViewController {
+    @IBOutlet weak var appTitleLabel: UILabel!
     @IBOutlet weak var contactSupportCell: UITableViewCell!
     @IBOutlet weak var writeReviewCell: UITableViewCell!
     @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var resetTextScaleCell: UITableViewCell!
     
     let cellTagToURL: [Int: String] = [
         10: "https://github.com/keepassium/KeePassium-L10n",
@@ -45,11 +47,17 @@ class AboutVC: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         
+        var versionParts = ["v\(AppInfo.version).\(AppInfo.build)"]
         if Settings.current.isTestEnvironment {
-            versionLabel.text = "v\(AppInfo.version).\(AppInfo.build) beta"
+            versionParts.append("beta")
         } else {
-            versionLabel.text = "v\(AppInfo.version).\(AppInfo.build)"
+            if BusinessModel.type == .prepaid {
+                versionParts.append("Pro")
+            }
         }
+        versionLabel.text = versionParts.joined(separator: " ")
+        
+        contactSupportCell.detailTextLabel?.text = SupportEmailComposer.getSupportEmail()
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -68,6 +76,12 @@ class AboutVC: UITableViewController {
             SupportEmailComposer.show(subject: .supportRequest, parent: self)
         case writeReviewCell:
             AppStoreHelper.writeReview()
+        case resetTextScaleCell:
+            Settings.current.textScale = 1.0
+            Diag.info("Text scale reset to 1.0")
+            resetTextScaleCell.detailTextLabel?.text = "Done!" 
+            tableView.beginUpdates()
+            tableView.endUpdates()
         default:
             if let urlString = cellTagToURL[selectedCell.tag], let url = URL(string: urlString) {
                 AppGroup.applicationShared?.open(url, options: [:], completionHandler: nil)
