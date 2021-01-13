@@ -286,7 +286,7 @@ public class DatabaseLoader: ProgressObserver {
         progress.completedUnitCount = ProgressSteps.didReadKeyFile
         let keyHelper = database.keyHelper
         let passwordData = keyHelper.getPasswordData(password: compositeKey.password)
-        if passwordData.isEmpty && keyFileData.isEmpty {
+        if passwordData.isEmpty && keyFileData.isEmpty && compositeKey.challengeHandler == nil {
             Diag.error("Both password and key file are empty")
             stopObservingProgress()
             delegate?.databaseLoader(

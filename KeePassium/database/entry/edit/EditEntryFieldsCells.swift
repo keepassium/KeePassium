@@ -24,7 +24,7 @@ class EditableFieldCellFactory {
             if field.isMultiline {
                 cellStoryboardID = EditEntryMultiLineCell.storyboardID
             } else {
-                if field.isProtected {
+                if field.isProtected || (field.internalName == EntryField.password) {
                     cellStoryboardID = EditEntrySingleLineProtectedCell.storyboardID
                 } else {
                     cellStoryboardID = EditEntrySingleLineCell.storyboardID

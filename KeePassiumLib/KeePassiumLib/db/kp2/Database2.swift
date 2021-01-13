@@ -223,18 +223,25 @@ public class Database2: Database {
             progress.localizedDescription = LString.Progress.database2IntegrityCheck
             
             assert(root != nil)
-            var allEntries = [Entry]()
-            root?.collectAllEntries(to: &allEntries)
+            var allCurrentEntries = [Entry]()
+            root?.collectAllEntries(to: &allCurrentEntries) 
+
+            var allEntriesPlusHistory = [Entry](reserveCapacity: allCurrentEntries.count * 4)
+            allCurrentEntries.forEach { entry in
+                allEntriesPlusHistory.append(entry)
+                guard let entry2 = entry as? Entry2 else { assertionFailure(); return }
+                allEntriesPlusHistory.append(contentsOf: entry2.history)
+            }
             
-            checkAttachmentsIntegrity(allEntries: allEntries, warnings: warnings)
-
-            checkCustomFieldsIntegrity(allEntries: allEntries, warnings: warnings)
-
             resolveReferences(
-                allEntries: allEntries,
+                allEntries: allEntriesPlusHistory,
                 parentProgress: progress,
                 pendingProgressUnits: ProgressSteps.resolvingReferences
             )
+
+            checkAttachmentsIntegrity(allEntries: allCurrentEntries, warnings: warnings)
+
+            checkCustomFieldsIntegrity(allEntries: allCurrentEntries, warnings: warnings)
 
             Diag.debug("Content loaded OK")
             Diag.verbose("== DB2 progress CP5: \(progress.completedUnitCount)")
@@ -757,7 +764,7 @@ public class Database2: Database {
             return
         }
         let listOfEntryNames = affectedEntries
-            .compactMap { $0.getGroupPath() + "/" + $0.title } 
+            .compactMap { $0.getGroupPath() + "/" + $0.resolvedTitle } 
             .map { "\"\($0)\"" } 
             .joined(separator: "\n ") 
         
@@ -782,7 +789,7 @@ public class Database2: Database {
         guard problematicEntries.count > 0 else { return }
         
         let entryPaths = problematicEntries
-            .map { entry in "'\(entry.title)' in '\(entry.getGroupPath())'" }
+            .map { entry in "'\(entry.resolvedTitle)' in '\(entry.getGroupPath())'" }
             .joined(separator: "\n")
         let warningMessage = String.localizedStringWithFormat(
             NSLocalizedString(

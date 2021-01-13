@@ -124,6 +124,7 @@ extension AppDelegate: WatchdogDelegate {
                 _appCoverWindow.makeKeyAndVisible()
             }
             print("App cover shown")
+            coverVC.view.accessibilityViewIsModal = true
             coverVC.view.snapshotView(afterScreenUpdates: true)
         }
     }
@@ -170,6 +171,7 @@ extension AppDelegate: WatchdogDelegate {
             _appLockWindow.rootViewController = passcodeInputVC
             _appLockWindow.makeKeyAndVisible()
         }
+        passcodeInputVC.view.accessibilityViewIsModal = true
         passcodeInputVC.view.snapshotView(afterScreenUpdates: true)
         
         self.appLockWindow = _appLockWindow

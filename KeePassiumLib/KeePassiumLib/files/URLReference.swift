@@ -593,7 +593,7 @@ public class URLReference:
             _hackyBookmarkedURLString = nil
         }
         if let urlString = _sandboxBookmarkedURLString ?? _hackyBookmarkedURLString {
-            self.bookmarkedURL = URL(fileURLWithPath: urlString)
+            self.bookmarkedURL = URL(fileURLWithPath: urlString, isDirectory: false)
         }
         if let fileProviderID = _fileProviderID {
             self.fileProvider = FileProvider(rawValue: fileProviderID)

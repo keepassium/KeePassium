@@ -363,7 +363,7 @@ public class Database1: Database {
             Diag.debug("Writing meta-stream entries")
             for metaEntry in metaStreamEntries {
                 metaEntry.write(to: contentStream)
-                print("Wrote a meta-stream entry: \(metaEntry.notes)")
+                print("Wrote a meta-stream entry: \(metaEntry.rawNotes)")
                 packingProgress.completedUnitCount += 1
                 if packingProgress.isCancelled {
                     throw ProgressInterruption.cancelled(reason: packingProgress.cancellationReason)

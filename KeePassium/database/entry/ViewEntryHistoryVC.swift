@@ -148,7 +148,7 @@ class ViewEntryHistoryVC: UITableViewController, Refreshable {
             if entry2.history.count > 0 {
                 let historyItem = entry2.history[indexPath.row]
                 cell = tableView.dequeueReusableCell(withIdentifier: CellID.historyItem, for: indexPath)
-                cell.textLabel?.setText(historyItem.title, strikethrough: historyItem.isExpired)
+                cell.textLabel?.setText(historyItem.resolvedTitle, strikethrough: historyItem.isExpired)
                 cell.detailTextLabel?.text = dateFormatter.string(from: historyItem.lastModificationTime)
             } else {
                 cell = tableView.dequeueReusableCell(withIdentifier: CellID.emptyHistory, for: indexPath)

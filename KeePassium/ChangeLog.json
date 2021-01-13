@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.20",
-            "releaseDate": "2020-10-21T00:00:00Z",
+            "releaseDate": "2020-11-12T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Entry field references, resolved and displayed",
@@ -10,6 +10,10 @@
                 },
                 {
                     "title": "🛠 Refined: iOS 13+ will use system's monospaced font (SF Mono) instead of Menlo.",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Unlocking databases protected only by YubiKey (without password and key file) [thanks, Stefan]",
                     "type": 1
                 },
                 {
@@ -26,6 +30,30 @@
                 },
                 {
                     "title": "🐞 Fixed: File info dialog controls were unresponsive on iPadOS 12.4 [thanks, u/chrie1]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Sometimes keyboard did not show up in AutoFill on iOS 14 (#133) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Always treat password fields as protected (related libkeepass/pykeepass#194) [thanks, Ilya]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Prevent VoiceOver from looking behind the passcode/cover windows on iOS 14 [thanks, Stéphane]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Unavailable file provider (e.g. SMB) could cause app freezing [thanks, Nicole]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Unresolved field values for newly created fields",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Using resolved field values througout the app",
                     "type": 1
                 },
                 {

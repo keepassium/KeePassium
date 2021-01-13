@@ -21,7 +21,7 @@ public class EntryField: Eraseable {
     public var name: String
     public var value: String {
         didSet {
-            resolvedValueInternal = nil
+            resolvedValueInternal = value
         }
     }
     public var isProtected: Bool
@@ -157,44 +157,44 @@ public class Entry: DatabaseItem, Eraseable {
     public var isSupportsExtraFields: Bool { get { return false } }
     public var isSupportsMultipleAttachments: Bool { return false }
 
-    public var title: String {
-        get{ return getField(with: EntryField.title)?.value ?? "" }
+    public var rawTitle: String {
+        get{ return getField(EntryField.title)?.value ?? "" }
         set { setField(name: EntryField.title, value: newValue) }
     }
     public var resolvedTitle: String {
-        get{ return getField(with: EntryField.title)?.resolvedValue ?? "" }
+        get{ return getField(EntryField.title)?.resolvedValue ?? "" }
     }
-    
-    public var userName: String {
-        get{ return getField(with: EntryField.userName)?.value ?? "" }
+
+    public var rawUserName: String {
+        get{ return getField(EntryField.userName)?.value ?? "" }
         set { setField(name: EntryField.userName, value: newValue) }
     }
     public var resolvedUserName: String {
-        get{ return getField(with: EntryField.userName)?.resolvedValue ?? "" }
+        get{ return getField(EntryField.userName)?.resolvedValue ?? "" }
     }
-    
-    public var password: String {
-        get{ return getField(with: EntryField.password)?.value ?? "" }
+
+    public var rawPassword: String {
+        get{ return getField(EntryField.password)?.value ?? "" }
         set { setField(name: EntryField.password, value: newValue) }
     }
     public var resolvedPassword: String {
-        get{ return getField(with: EntryField.password)?.resolvedValue ?? "" }
+        get{ return getField(EntryField.password)?.resolvedValue ?? "" }
     }
-    
-    public var url: String {
-        get{ return getField(with: EntryField.url)?.value ?? "" }
+
+    public var rawURL: String {
+        get{ return getField(EntryField.url)?.value ?? "" }
         set { setField(name: EntryField.url, value: newValue) }
     }
     public var resolvedURL: String {
-        get{ return getField(with: EntryField.url)?.resolvedValue ?? "" }
+        get{ return getField(EntryField.url)?.resolvedValue ?? "" }
     }
 
-    public var notes: String {
-        get{ return getField(with: EntryField.notes)?.value ?? "" }
+    public var rawNotes: String {
+        get{ return getField(EntryField.notes)?.value ?? "" }
         set { setField(name: EntryField.notes, value: newValue) }
     }
     public var resolvedNotes: String {
-        get{ return getField(with: EntryField.notes)?.resolvedValue ?? "" }
+        get{ return getField(EntryField.notes)?.resolvedValue ?? "" }
     }
     
     public internal(set) var creationTime: Date
@@ -210,7 +210,7 @@ public class Entry: DatabaseItem, Eraseable {
     
     public var attachments: Array<Attachment>
     
-    public var description: String { return "Entry[\(title)]" }
+    public var description: String { return "Entry[\(rawTitle)]" }
     
     init(database: Database?) {
         self.database = database
@@ -274,20 +274,19 @@ public class Entry: DatabaseItem, Eraseable {
     }
     
     public func setField(name: String, value: String, isProtected: Bool? = nil) {
-        for field in fields {
-            if field.name == name {
-                field.value = value
-                if let isProtected = isProtected {
-                    field.isProtected = isProtected
-                } else {
-                }
-                return
+        if let field = fields.first { $0.name == name } {
+            field.value = value
+            if let isProtected = isProtected {
+                field.isProtected = isProtected
+            } else {
             }
+            return
         }
+
         fields.append(makeEntryField(name: name, value: value, isProtected: isProtected ?? false))
     }
 
-    public func getField<T: StringProtocol>(with name: T) -> EntryField? {
+    public func getField<T: StringProtocol>(_ name: T) -> EntryField? {
         return fields.first(where: {
             $0.name.compare(name) == .orderedSame
         })

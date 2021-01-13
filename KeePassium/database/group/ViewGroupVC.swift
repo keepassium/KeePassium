@@ -330,7 +330,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             as! GroupViewListCell
         setupCell(
             entryCell,
-            title: entry.title,
+            title: entry.resolvedTitle,
             subtitle: getDetailInfo(forEntry: entry),
             image: UIImage.kpIcon(forEntry: entry),
             isExpired: entry.isExpired)
@@ -396,13 +396,13 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         case .none:
             return nil
         case .userName:
-            return entry.getField(with: EntryField.userName)?.premiumDecoratedValue
+            return entry.getField(EntryField.userName)?.premiumDecoratedValue
         case .password:
-            return entry.getField(with: EntryField.password)?.premiumDecoratedValue
+            return entry.getField(EntryField.password)?.premiumDecoratedValue
         case .url:
-            return entry.getField(with: EntryField.url)?.premiumDecoratedValue
+            return entry.getField(EntryField.url)?.premiumDecoratedValue
         case .notes:
-            return entry.getField(with: EntryField.notes)?
+            return entry.getField(EntryField.notes)?
                 .premiumDecoratedValue
                 .replacingOccurrences(of: "\r", with: " ")
                 .replacingOccurrences(of: "\n", with: " ")
@@ -748,7 +748,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         
         if let targetEntry = getEntry(at: indexPath) {
             let isDeletingShownEntry = (targetEntry === shownEntry)
-            confirmationAlert.title = targetEntry.title
+            confirmationAlert.title = targetEntry.resolvedTitle
             let deleteAction = UIAlertAction(title: LString.actionDelete, style: .destructive)
             {
                 [weak self] _ in

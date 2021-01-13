@@ -118,7 +118,7 @@ public class Diag {
     }
 
     private static func prettifyFileName(_ fName: String) -> String {
-        let url = URL(fileURLWithPath: fName)
+        let url = URL(fileURLWithPath: fName, isDirectory: false)
         return url.lastPathComponent
     }
     

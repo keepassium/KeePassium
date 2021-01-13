@@ -27,8 +27,6 @@ class KeyHelper1: KeyHelper {
         let hasPassword = !passwordData.isEmpty
         let hasKeyFile = !keyFileData.isEmpty
         
-        precondition(hasPassword || hasKeyFile)
-        
         if hasPassword && hasKeyFile {
             Diag.info("Using password and key file")
             let preKey = SecureByteArray.concat(
@@ -42,7 +40,8 @@ class KeyHelper1: KeyHelper {
             Diag.info("Using key file")
             return processKeyFile(keyFileData: keyFileData) 
         } else {
-            fatalError("Both password and key file are empty after being checked.")
+            Diag.warning("Both password and key file are empty after being checked.")
+            return SecureByteArray().sha256
         }
     }
     

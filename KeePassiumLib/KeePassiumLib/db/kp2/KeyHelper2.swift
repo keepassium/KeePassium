@@ -25,8 +25,6 @@ final class KeyHelper2: KeyHelper {
         let hasPassword = !passwordData.isEmpty
         let hasKeyFile = !keyFileData.isEmpty
         
-        precondition(hasPassword || hasKeyFile)
-        
         var preKey = SecureByteArray()
         if hasPassword {
             Diag.info("Using password")
@@ -40,7 +38,7 @@ final class KeyHelper2: KeyHelper {
             )
         }
         if preKey.isEmpty {
-            fatalError("All key components are empty after being checked.")
+            Diag.warning("All key components are empty after being checked.")
         }
         return preKey 
     }

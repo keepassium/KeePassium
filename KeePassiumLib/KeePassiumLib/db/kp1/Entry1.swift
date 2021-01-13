@@ -56,13 +56,13 @@ public class Entry1: Entry {
     
     var isMetaStream: Bool {
         guard let att = getAttachment() else { return false }
-        if notes.isEmpty { return false }
+        if rawNotes.isEmpty { return false }
         
         return (iconID == MetaStreamID.iconID) &&
             (att.name == MetaStreamID.attName) &&
-            (userName == MetaStreamID.userName) &&
-            (url == MetaStreamID.url) &&
-            (title == MetaStreamID.title)
+            (rawUserName == MetaStreamID.userName) &&
+            (rawURL == MetaStreamID.url) &&
+            (rawTitle == MetaStreamID.title)
     }
 
     override init(database: Database?) {
@@ -148,7 +148,7 @@ public class Entry1: Entry {
                 guard let string = data.toString() else {
                     throw Database1.FormatError.corruptedField(fieldName: "Entry/Title")
                 }
-                self.title = string
+                setField(name: EntryField.title, value: string)
             case .url:
                 guard let data = stream.read(count: fieldSize) else {
                     throw Database1.FormatError.prematureDataEnd
@@ -157,7 +157,7 @@ public class Entry1: Entry {
                 guard let string = data.toString() else {
                     throw Database1.FormatError.corruptedField(fieldName: "Entry/URL")
                 }
-                self.url = string
+                setField(name: EntryField.url, value: string)
             case .username:
                 guard let data = stream.read(count: fieldSize) else {
                     throw Database1.FormatError.prematureDataEnd
@@ -166,7 +166,7 @@ public class Entry1: Entry {
                 guard let string = data.toString() else {
                     throw Database1.FormatError.corruptedField(fieldName: "Entry/UserName")
                 }
-                self.userName = string
+                setField(name: EntryField.userName, value: string)
             case .password:
                 guard let data = stream.read(count: fieldSize) else {
                     throw Database1.FormatError.prematureDataEnd
@@ -175,7 +175,7 @@ public class Entry1: Entry {
                 guard let string = data.toString() else {
                     throw Database1.FormatError.corruptedField(fieldName: "Entry/Password")
                 }
-                self.password = string
+                setField(name: EntryField.password, value: string)
             case .notes:
                 guard let data = stream.read(count: fieldSize) else {
                     throw Database1.FormatError.prematureDataEnd
@@ -184,7 +184,7 @@ public class Entry1: Entry {
                 guard let string = data.toString() else {
                     throw Database1.FormatError.corruptedField(fieldName: "Entry/Notes")
                 }
-                self.notes = string
+                setField(name: EntryField.notes, value: string)
             case .creationTime:
                 guard let rawTimeData = stream.read(count: Date.kp1TimestampSize) else {
                     throw Database1.FormatError.prematureDataEnd
@@ -265,11 +265,11 @@ public class Entry1: Entry {
         writeField(fieldID: .uuid, data: uuid.data)
         writeField(fieldID: .groupID, data: groupID.data)
         writeField(fieldID: .iconID, data: iconID.rawValue.data)
-        writeField(fieldID: .title, data: ByteArray(utf8String: title), addTrailingZero: true)
-        writeField(fieldID: .url, data: ByteArray(utf8String: url), addTrailingZero: true)
-        writeField(fieldID: .username, data: ByteArray(utf8String: userName), addTrailingZero: true)
-        writeField(fieldID: .password, data: ByteArray(utf8String: password), addTrailingZero: true)
-        writeField(fieldID: .notes, data: ByteArray(utf8String: notes), addTrailingZero: true)
+        writeField(fieldID: .title, data: ByteArray(utf8String: rawTitle), addTrailingZero: true)
+        writeField(fieldID: .url, data: ByteArray(utf8String: rawURL), addTrailingZero: true)
+        writeField(fieldID: .username, data: ByteArray(utf8String: rawUserName), addTrailingZero: true)
+        writeField(fieldID: .password, data: ByteArray(utf8String: rawPassword), addTrailingZero: true)
+        writeField(fieldID: .notes, data: ByteArray(utf8String: rawNotes), addTrailingZero: true)
         writeField(fieldID: .creationTime, data: creationTime.asKP1Bytes())
         writeField(fieldID: .lastModifiedTime, data: lastModificationTime.asKP1Bytes())
         writeField(fieldID: .lastAccessTime, data: lastAccessTime.asKP1Bytes())

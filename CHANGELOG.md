@@ -1,5 +1,21 @@
 #CHANGELOG
 
+## [1.20.78] - 2020-11-12
+
+### Changed
+
+- Refined: Allow unlocking databases protected only by YubiKey [thanks, Stefan]
+
+### Fixed
+
+- Sometimes keyboard did not show up in AutoFill on iOS 14 (#133) [thanks, everyone]
+- Always treat password fields as protected (related libkeepass/pykeepass#194) [thanks, Ilya]
+- Prevent VoiceOver from looking behind the passcode/cover windows on iOS 14 [thanks, Stéphane]
+- Unavailable file provider (e.g. SMB) could cause app freezing [thanks, Nicole]
+- Unresolved field values for newly created fields
+- Using resolved field values througout the app
+
+
 ## [1.20.77] - 2020-10-21
 
 ### Added

@@ -55,9 +55,9 @@ class EditEntryVC: UITableViewController, Refreshable {
         
         if let newEntry2 = newEntry as? Entry2, let group2 = group as? Group2 {
             newEntry2.customIconUUID = group2.customIconUUID
-            newEntry2.userName = (group2.database as? Database2)?.defaultUserName ?? ""
+            newEntry2.rawUserName = (group2.database as? Database2)?.defaultUserName ?? ""
         }
-        newEntry.title = LString.defaultNewEntryName
+        newEntry.rawTitle = LString.defaultNewEntryName
         return make(mode: .create, entry: newEntry, popoverSource: popoverSource, delegate: delegate)
     }
     
@@ -346,7 +346,7 @@ class EditEntryVC: UITableViewController, Refreshable {
 
 extension EditEntryVC: ValidatingTextFieldDelegate {
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
-        entry?.title = text
+        entry?.rawTitle = text
         isModified = true
     }
     

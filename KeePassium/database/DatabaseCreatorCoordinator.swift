@@ -144,20 +144,20 @@ class DatabaseCreatorCoordinator: NSObject {
         
         let sampleEntry = rootGroup.createEntry()
         sampleEntry.iconID = .key
-        sampleEntry.title = NSLocalizedString(
+        sampleEntry.rawTitle = NSLocalizedString(
             "[Database/Create/TemplateEntry/title] Sample Entry",
             value: "Sample Entry",
             comment: "Title for a sample entry")
-        sampleEntry.userName = NSLocalizedString(
+        sampleEntry.rawUserName = NSLocalizedString(
             "[Database/Create/TemplateEntry/userName] john.smith",
             value: "john.smith",
             comment: "User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language).")
-        sampleEntry.password = NSLocalizedString(
+        sampleEntry.rawPassword = NSLocalizedString(
             "[Database/Create/TemplateEntry/password] pa$$word",
             value: "pa$$word",
             comment: "Password for a sample entry. Translation is optional.")
-        sampleEntry.url = "https://keepassium.com" 
-        sampleEntry.notes = NSLocalizedString(
+        sampleEntry.rawURL = "https://keepassium.com" 
+        sampleEntry.rawNotes = NSLocalizedString(
             "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like.",
             value: "You can also store some notes, if you like.",
             comment: "Note for a sample entry")

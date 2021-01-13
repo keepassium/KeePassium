@@ -29,7 +29,7 @@ class UserNameHelper {
         database.root?.collectAllEntries(to: &allEntries)
         let allUserNames = allEntries
             .filter { !$0.isDeleted }
-            .compactMap { $0.userName}
+            .compactMap { $0.resolvedUserName}
             .filter { $0.isNotEmpty && ($0 != defaultUserName) }
         
         var usageCount = [String: Int]()

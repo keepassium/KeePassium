@@ -741,13 +741,18 @@ extension MainCoordinator: WatchdogDelegate {
         passcodeInputVC.isCancelAllowed = true
         passcodeInputVC.isBiometricsAllowed = shouldUseBiometrics
         passcodeInputVC.modalTransitionStyle = .crossDissolve
-        passcodeInputVC.shouldActivateKeyboard = !shouldUseBiometrics
+        if #available(iOS 14, *) {
+            passcodeInputVC.shouldActivateKeyboard = true
+        } else {
+            passcodeInputVC.shouldActivateKeyboard = !shouldUseBiometrics
+        }
         
         pageController.setViewControllers(
             [passcodeInputVC],
             direction: .reverse,
             animated: true,
             completion: { [weak self] (finished) in
+                passcodeInputVC.shouldActivateKeyboard = false
                 self?.showBiometricAuth()
             }
         )
@@ -808,7 +813,7 @@ extension MainCoordinator: WatchdogDelegate {
                 Diag.warning("Biometric auth failed [message: \(authError?.localizedDescription ?? "nil")]")
                 DispatchQueue.main.async {
                     [weak self] in
-                    self?.passcodeInputController?.becomeFirstResponder()
+                    self?.passcodeInputController?.showKeyboard()
                 }
             }
         }
