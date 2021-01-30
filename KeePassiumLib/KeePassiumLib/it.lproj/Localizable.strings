@@ -8,19 +8,19 @@
 "[ChallengeResponseError] cancelled" = "Annullato dall'utente.";
 
 /* Error message when the hardware key is not plugged in. */
-"[ChallengeResponseError] keyNotConnected" = "Hardware key is not connected.";
+"[ChallengeResponseError] keyNotConnected" = "La chiave hardware non è collegata.";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "Hardware keys are not available in AutoFill.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "Le chiavi hardware non sono disponibili in modalità Riempimento automatico.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardware keys are not supported by this database format.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Le chiavi hardware non sono supportate da questo formato di database.";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
-"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "This device or iOS version does not support hardware keys (%@)";
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Questo dispositivo o questa versione di iOS non supporta le chiavi hardware (%@)";
 
 /* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
-"[ChallengeResponseError] slotNotConfigured" = "Hardware key is not configured for challenge-response.";
+"[ChallengeResponseError] slotNotConfigured" = "La chiave hardware non è configurata per la procedura challenge/response.";
 
 /* Progress status */
 "[Cipher/Progress] Decrypting" = "Decifratura";
@@ -77,13 +77,16 @@
 "[Database/Progress] Loading key file..." = "Caricamento key file...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "Download del file di database...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "Creazione della copia di backup...";
 
 /* Progress status */
-"[Database/Progress/resolving]" = "Contacting storage provider...";
+"[Database/Progress/resolving]" = "Contatto del provider di archiviazione...";
+
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "Risoluzione dei riferimenti campo…";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Impossibile aprire il file chiave";
@@ -203,13 +206,13 @@
 "[Database2/Progress] Writing encrypted blocks" = "Scrittura blocchi crittografati";
 
 /* Progress bar status: un-zipping the database content */
-"[Database2/Progress/decompressing]" = "Decompressing database";
+"[Database2/Progress/decompressing]" = "Decompressione del database";
 
 /* Progress bar status */
-"[Database2/Progress/integrityCheck]" = "Checking integrity";
+"[Database2/Progress/integrityCheck]" = "Verifica dell'integrità";
 
 /* Progress bar status: parsing decrypted XML content */
-"[Database2/Progress/parsingXML]" = "Parsing database";
+"[Database2/Progress/parsingXML]" = "Analisi del database";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "Errore di compressione dati: %@";
@@ -244,6 +247,12 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Password o file chiave non validi";
 
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "'%@' si trova nella cartella Eliminati di recente e potrebbe essere eliminato a breve. Per preservare i tuoi dati, sposta il file in una posizione più permanente.";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "Questo è un database di backup temporaneo. Può essere eliminato automaticamente senza preavviso. Non usarlo come database principale.";
+
 /* Error message: storage provider app was logged out or uninstalled. */
 "[FileAccessError/FileProvider/NotFound/generic]" = "Lo Storage provider non è disponibile. Verificare che sia installato e collegato con il vostro account.";
 
@@ -257,19 +266,19 @@
 "[FileAccessError/FileProvider/NotFound/usbDrive]" = "L'unità USB è disconnessa.";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "Errore interno di KeePassium, ti preghiamo di inviarci una segnalazione in merito.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "Il provider di archiviazione non risponde.";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
-"[FileAccessError/NoResponse/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ non risponde.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
-"[FileAccessError/Timeout/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/Timeout/genericFileProvider]" = "Il provider di archiviazione non risponde.";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
-"[FileAccessError/Timeout/knownFileProvider]" = "%@ does not respond.";
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ non risponde.";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Impossibile cancellare il file. Motivo: %@";
@@ -322,6 +331,9 @@
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
 
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
 /* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
 "[FileProvider/Readdle Documents/name]" = "Documents di Readdle";
 
@@ -329,7 +341,10 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB server";
+"[FileProvider/SMB/name]" = "Server SMB";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -344,7 +359,7 @@
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "Memoria USB";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
@@ -399,6 +414,12 @@
 
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Errore Portachiavi: formato dati inatteso";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "File chiave corrotto";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "Formato di file chiave non supportato";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Operazione annullata dall'utente";

@@ -85,6 +85,9 @@
 /* Progress status */
 "[Database/Progress/resolving]" = "Kontaktar lagringsleverantör...";
 
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "Löser fältreferenser…";
+
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Misslyckades med att öppna nyckelfil";
 
@@ -244,6 +247,12 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Felaktigt lösenord eller nyckelfil";
 
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "'%@' finns i Nyligen borttagna och kanske snart tas bort. För att bevara dina data kan du flytta filen till en mer permanent plats.";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "Det här är en temporär säkerhetskopierad databas. Den kan tas bort automatiskt utan varning. Använd den inte som din huvuddatabas.";
+
 /* Error message: storage provider app was logged out or uninstalled. */
 "[FileAccessError/FileProvider/NotFound/generic]" = "Lagringsleverantören är inte tillgänglig. Kontrollera att appen är installerad och inloggad på ditt konto.";
 
@@ -322,6 +331,9 @@
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
 
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
 /* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
 "[FileProvider/Readdle Documents/name]" = "Documents by Readdle";
 
@@ -330,6 +342,9 @@
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
 "[FileProvider/SMB/name]" = "SMB-server";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -399,6 +414,12 @@
 
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Nyckelring-fel: Oväntat dataformat";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "Nyckelfilen är skadad";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "Format för nyckelfil stöds inte";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Avbrutet av användaren";

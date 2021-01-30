@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Dubbeltryck för att kopiera till urklipp";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Lås upp";
 
@@ -30,6 +33,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "Kopiera %@";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Kopierad";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "Vald fil \"%@\" verkar inte vara en databas.";
@@ -112,6 +121,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Försök att ta bort filen från appen, lägg sedan till den igen.";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Lägg till filen igen";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Backup";
 
@@ -151,6 +163,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopiera";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Skapa";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Radera";
 
@@ -169,11 +184,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportera";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Läs mer…";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Fler åtgärder";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "Flytta";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "Öppna URL";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Skriv över";
@@ -184,8 +208,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "Ersätt";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Dela";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Visa detaljer";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Visa i oformaterad text";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Visa mer";
@@ -226,6 +256,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varning";
 
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, grupp";
+
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Skapa grupp";
 
@@ -259,14 +292,134 @@
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Ta bort nyckelfil från listan?\n Filen kommer vara kvar oförändrad och du kan lägga till den igen senare.";
 
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "Vad du går miste om";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "Vad du får";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Köp nu";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "Fortsätt prova";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "Prova gratis";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "Uppgradera Nu";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Hantera prenumerationer";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Evig licens";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "Du har en evig licens för alla versioner innan %@.";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "Ett år support via e-post";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "Alla premiumfunktioner";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "Kundsupport: Online-forum";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "Nuvarande premiumfunktioner";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "Kundsupport: E-post";
+
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Familjedelning";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium-påminnelser";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Premiumfunktioner som läggs till i framtiden måste köpas för fullt pris.";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "Framtida premiumfunktioner";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Hyrlicens (Perpetual fallback license)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Prenumeration som ett köp";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Uppdateringar och buggfixar";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "Gratis";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "Gratis";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "Populär";
+
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\nBetalning kommer att debiteras ditt Apple-konto vid bekräftelse av köpet.\n\nPrenumerationen förnyas automatiskt om inte avbokning sker minst 24 timmar före utgången av den aktuella perioden. Kontot kommer debiteras för förnyelsen inom de sista 24-timmarna före den aktuella perioden tar slut.\n\nDu kan hantera och avsluta din prenumeration genom att gå till Kontoinställningar i App Store efter ditt köp.\n";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ gratis, sedan %2$@";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, det finns inga uppgraderingar tillgängliga. Detta ska inte hända, var vänlig kontakta supporten.";
+
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Uppgradera till premium";
+
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Kontrollera om du måste avbryta din gamla prenumeration.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Tack! Du kan använda KeePassium innan köpet bekräftas av en målsman.";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@ / månad";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@ / år";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "%@ engångsbetalning";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / månad";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "Kontaktar App Store...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "Köper...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "Uppgraderingen lyckades, njut nu av appen!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "Köp återställt";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "Inga tidigare köp kunde återställas.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "Förlåt";
+
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Tack för köpet!";
 
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Valbara app-ikoner";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "Du har hittat en premiumfunktion! Uppgradera till premium och upplev KeePassium när det är som bäst.";
+"[PremiumFeature/Generic/description]" = "Uppgradera till premium och upplev KeePassium när det är som bäst.";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "Premiumfunktion";

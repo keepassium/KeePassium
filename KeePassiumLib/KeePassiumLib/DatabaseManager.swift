@@ -215,11 +215,22 @@ public class DatabaseManager {
         success successHandler: @escaping((_ compositeKey: CompositeKey) -> Void),
         error errorHandler: @escaping((_ errorMessage: String) -> Void))
     {
+        let mainQueueSuccessHandler: (_ compositeKey: CompositeKey)->Void = { (compositeKey) in
+            DispatchQueue.main.async {
+                successHandler(compositeKey)
+            }
+        }
+        let mainQueueErrorHandler: (_ errorMessage: String)->Void = { (errorMessage) in
+            DispatchQueue.main.async {
+                errorHandler(errorMessage)
+            }
+        }
+        
         let dataReadyHandler = { (keyFileData: ByteArray) -> Void in
             let passwordData = keyHelper.getPasswordData(password: password)
-            if passwordData.isEmpty && keyFileData.isEmpty {
+            if passwordData.isEmpty && keyFileData.isEmpty && challengeHandler == nil {
                 Diag.error("Password and key file are both empty")
-                errorHandler(LString.Error.passwordAndKeyFileAreBothEmpty)
+                mainQueueErrorHandler(LString.Error.passwordAndKeyFileAreBothEmpty)
                 return
             }
             do {
@@ -231,15 +242,15 @@ public class DatabaseManager {
                     staticComponents: staticComponents,
                     challengeHandler: challengeHandler)
                 Diag.debug("New composite key created successfully")
-                successHandler(compositeKey)
+                mainQueueSuccessHandler(compositeKey)
             } catch let error as KeyFileError {
                 Diag.error("Key file error [reason: \(error.localizedDescription)]")
-                errorHandler(error.localizedDescription)
+                mainQueueErrorHandler(error.localizedDescription)
             } catch {
                 let message = "Caught unrecognized exception" 
                 assertionFailure(message)
                 Diag.error(message)
-                errorHandler(message)
+                mainQueueErrorHandler(message)
             }
         }
         
@@ -258,12 +269,12 @@ public class DatabaseManager {
                         dataReadyHandler(keyFileData)
                     case .failure(let fileAccessError):
                         Diag.error("Failed to open key file [error: \(fileAccessError.localizedDescription)]")
-                        errorHandler(LString.Error.failedToOpenKeyFile)
+                        mainQueueErrorHandler(LString.Error.failedToOpenKeyFile)
                     }
                 }
             case .failure(let accessError):
                 Diag.error("Failed to open key file [error: \(accessError.localizedDescription)]")
-                errorHandler(LString.Error.failedToOpenKeyFile)
+                mainQueueErrorHandler(LString.Error.failedToOpenKeyFile)
             }
         }
     }

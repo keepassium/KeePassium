@@ -157,13 +157,21 @@ public class URLReference:
             data = Data() 
         } else {
             data = try url.bookmarkData(
-                options: [.minimalBookmark],
+                options: URLReference.getBookmarkCreationOptions(),
                 includingResourceValuesForKeys: nil,
                 relativeTo: nil) 
         }
         processReference()
     }
 
+    private static func getBookmarkCreationOptions() -> URL.BookmarkCreationOptions {
+        if ProcessInfo.isRunningOnMac {
+            return []
+        } else {
+            return [.minimalBookmark]
+        }
+    }
+    
     public static func == (lhs: URLReference, rhs: URLReference) -> Bool {
         guard lhs.location == rhs.location else { return false }
         guard let lhsOriginalURL = lhs.originalURL, let rhsOriginalURL = rhs.originalURL else {
@@ -598,9 +606,12 @@ public class URLReference:
         if let fileProviderID = _fileProviderID {
             self.fileProvider = FileProvider(rawValue: fileProviderID)
         } else {
+            if ProcessInfo.isRunningOnMac {
+                self.fileProvider = .localStorage
+                return
+            }
             assertionFailure()
             self.fileProvider = nil
         }
     }
-
 }

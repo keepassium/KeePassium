@@ -219,21 +219,30 @@ public enum FileProvider: Hashable {
                 value: "Yandex.Disk",
                 comment: "Localized name of the storage service: Yandex.Disk (https://disk.yandex.com)")
         case .localStorage:
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                return NSLocalizedString(
-                    "[FileProvider/On My iPad/name]",
-                    bundle: Bundle.framework,
-                    value: "On My iPad",
-                    comment: "Localized name of the local on-device storage, as shown in the Files app.")
-            } else {
-                return NSLocalizedString(
-                    "[FileProvider/On My iPhone/name]",
-                    bundle: Bundle.framework,
-                    value: "On My iPhone",
-                    comment: "Localized name of the local on-device storage, as shown in the Files app.")
-            }
+            return getLocalStorageName()
         case .other(let id):
             return id
         }
+    }
+    
+    private func getLocalStorageName() -> String {
+        guard UIDevice.current.userInterfaceIdiom == .pad else {
+            return NSLocalizedString(
+                "[FileProvider/On My iPhone/name]",
+                bundle: Bundle.framework,
+                value: "On My iPhone",
+                comment: "Localized name of the local on-device storage, as shown in the Files app.")
+        }
+        
+        if ProcessInfo.isRunningOnMac {
+            return "macOS" 
+        } else {
+            return NSLocalizedString(
+                "[FileProvider/On My iPad/name]",
+                bundle: Bundle.framework,
+                value: "On My iPad",
+                comment: "Localized name of the local on-device storage, as shown in the Files app.")
+        }
+
     }
 }

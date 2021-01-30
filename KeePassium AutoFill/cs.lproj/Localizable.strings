@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Dvojitým poklepáním zkopírujete do schránky";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Odemknout";
 
@@ -30,6 +33,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "Kopírovat %@";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Zkopírováno";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "Vybraný soubor \"%@\" nevypadá jako databáze.";
@@ -112,6 +121,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Zkuste soubor z aplikace odebrat a poté znovu přidat.";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Přidejte soubor znovu";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Záloha";
 
@@ -151,6 +163,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopírovat";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Vytvořit";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Odstranit";
 
@@ -169,11 +184,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportovat";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Více informací…";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Další akce";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "Přesunout";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "Otevřít URL";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Přepsat";
@@ -184,8 +208,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "Nahradit";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Sdílet";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Zobrazit podrobnosti";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Zobrazit jako prostý text";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Zobrazit více";
@@ -226,6 +256,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varování";
 
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, skupina";
+
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Vytvořit skupinu";
 
@@ -259,14 +292,134 @@
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Odebrat soubor s klíčem ze seznamu?\nSoubor zůstane neporušený a později jej budete moci znovu přidat.";
 
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "Co vám chybí";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "Co obdržíte";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Koupit nyní";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "Pokračovat v testování";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "Vyzkoušejte zdarma";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "Upgradovat nyní";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Správa předplatného";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Trvalá licence";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "Máte trvalou licenci pro všechny verze před %@.";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "Jeden rok e-mailové podpory";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "Všechny prémiové funkce";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "Zákaznická podpora: online fóra";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "Současné prémiové funkce";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "Zákaznická podpora: e-mail";
+
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Rodinné sdílení";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Připomenutí bezplatné verze";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Budoucí prémiové funkce by vyžadovaly nový nákup za plnou cenu.";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "Budoucí prémiové funkce";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Po roce předplatného zůstanou současné prémiové funkce (Perpetual fallback license)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Předplatné jako nákup";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Aktualizace a opravy chyb";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "Zdarma";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "Zdarma";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "Oblíbené";
+
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\nPlatba bude účtována na váš Apple účet při potvrzení koupě.\n\nPředplatné se automaticky obnoví, pokud nebude zrušeno nejméně 24 hodin před koncem aktuálního období. Platba za obnovení předplatného bude stržena až 24 hodin před vypršením aktuálního období.\n\nSvé předplatné můžete spravovat v nastavení účtu v App Store.\n";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ zdarma, pak %2$@";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, není k dispozici žádný upgrade. To by se nemělo stát, prosím kontaktujte podporu.";
+
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Přejít na Premium";
+
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Zkontrolujte si prosím, zda nepotřebujete zrušit své staré předplatné.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Děkujeme! KeePassium můžete používat, ale nákup čeká na schválení.";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@ / měsíc";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@ / rok";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "%@ jednorázově";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / měsíc";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "Kontaktování AppStore...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "Nakupování...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "Upgrade proběhl úspěšně, užijte si aplikaci!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "Nákup obnoven";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "Předchozí nákup nelze obnovit.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "Omlouváme se";
+
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Děkujeme vám za nákup!";
 
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Vlastní ikony aplikace";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "Našli jste prémiovou funkci! Upgradujte na Premium a užijte si KeePassium se všemi funkcemi.";
+"[PremiumFeature/Generic/description]" = "Upgradujte na Premium a užijte si KeePassium se všemi funkcemi.";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "Prémiová funkce";

@@ -328,6 +328,7 @@ extension DatabaseCreatorCoordinator: HardwareKeyPickerDelegate {
     func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
         setYubiKey(yubiKey)
         databaseCreatorVC.becomeFirstResponder()
+        databaseCreatorVC.setError(message: nil, animated: false)
     }
     
     func setYubiKey(_ yubiKey: YubiKey?) {

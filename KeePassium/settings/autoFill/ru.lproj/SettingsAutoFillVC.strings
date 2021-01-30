@@ -11,7 +11,7 @@
 "go1-Nt-isQ.text" = "Скопировать одноразовый пароль";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.footerTitle" = "Когда Автозаполнение находит только одну, идеально подходящую, запись — эта запись будет выбрана автоматически.";
+"jYl-ks-dFG.footerTitle" = "Когда Автозаполнение находит только одну, идеально подходящую, запись, эта запись будет выбрана автоматически.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "Автоматический поиск";

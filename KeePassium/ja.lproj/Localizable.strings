@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "ダブルタップでクリップボードにコピー";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "ロックを解除";
 
@@ -18,6 +21,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "%@ をコピー";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "コピーしました";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "ファイル \"%@\" はデータベースではないようです。";
@@ -172,6 +181,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Appからファイルを削除し、もう一度追加してみてください。";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "ファイルをもう一度追加";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "バックアップ";
 
@@ -214,6 +226,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "コピー";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "作成";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "削除";
 
@@ -232,11 +247,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "共有";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "詳細...";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "その他のアクション";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "移動";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "URLを開く";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "上書き";
@@ -247,8 +271,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "置換";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "共有";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "詳細を表示";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "プレーンテキストで表示";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "さらに表示";
@@ -288,6 +318,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "警告";
+
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, グループ";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "グループを作成";
@@ -361,6 +394,15 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "できること";
 
+/* Explanation of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/details]" = "同じ情報のコピーを作成する代わりに、他のエントリの情報を表示するためにフィールド参照を使用します。";
+
+/* Title of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/title]" = "フィールド参照を表示";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "今すぐ購入";
+
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "テストを続ける";
 
@@ -369,6 +411,9 @@
 
 /* Call to action: upgrade to premium */
 "[Premium/CallToAction/upgradeNow]" = "今すぐアップグレードする";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "サブスクリプションを管理";
 
 /* Name of the permanent/never-ending license. */
 "[Premium/perpetualLicense]" = "永久ライセンス";
@@ -391,14 +436,23 @@
 /* What's included in a price plan: support via email */
 "[Premium/Price Plan/Conditions/email support]" = "カスタマーサポート: Eメール";
 
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Apple ファミリー共有";
+
 /* What's included in a free plan: reminders that the version is free */
 "[Premium/Price Plan/Conditions/freemium reminders]" = "無料版のリマインダー";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "今後追加されるプレミアム機能には、新たな購入が必要になります。";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "今後のプレミアム機能";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "購入選択権付リース (perpetual fallback license)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "サブスクリプションを購入";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "更新とバグ修正";
@@ -436,6 +490,12 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "プレミアム版にアップグレード";
 
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "古いサブスクリプションの解約が必要ないかご確認ください。";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "ありがとうございます！購入が承認されるまでの間も、KeePassiumを使用できます。";
+
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / 月";
 
@@ -466,6 +526,9 @@
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "申し訳ありません";
 
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "ご購入ありがとうございます！";
+
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Appの使用実績: %1$@/月、約%2$@/年";
 
@@ -473,7 +536,7 @@
 "[PremiumFeature/CustomAppIcons/title]" = "Appのアイコンの変更";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "プレミアム機能を見つけました！プレミアム版にアップグレードすると、KeePassiumを最高の状態でお使いいただけます。";
+"[PremiumFeature/Generic/description]" = "プレミアム版にアップグレードすると、KeePassiumを最高の状態でお使いいただけます。";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "プレミアム機能";
@@ -507,6 +570,12 @@
 
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "%@ を使用";
+
+/* Explanation for the `Lock on App Launch` setting */
+"[Settings/AppLock/LockOnLaunch/description]" = "Appを強制終了したりデバイスを再起動した時にKeePassiumがロックされるようにします。";
+
+/* Setting switch: whether to lock the app after it was terminated and relaunched. */
+"[Settings/AppLock/LockOnLaunch/title]" = "起動時にロック";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Appロック、%@、タイムアウト";

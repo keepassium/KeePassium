@@ -2,14 +2,14 @@
     "sections": [
         {
             "version": "1.21",
-            "releaseDate": "2021-01-21T00:00:00Z",
+            "releaseDate": "2021-01-30T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Premium subscriptions now support Family Sharing",
+                    "title": "🧩 Added: Support for Argon2id and .keyx key file format (KeePass 2.47) [thanks, Dominik]",
                     "type": 1
                 },
                 {
-                    "title": "🧩 Added: Support for Argon2id and .keyx key file format (KeePass 2.47) [thanks, Dominik]",
+                    "title": "🧩 Added: Premium subscriptions now support Family Sharing",
                     "type": 1
                 },
                 {
@@ -49,11 +49,19 @@
                     "type": 1
                 },
                 {
+                    "title": "🛠 Refined: Allow changing master keys to YubiKey-only (no password, no key file)",
+                    "type": 1
+                },
+                {
                     "title": "🛠 Refined: Added a warning when opening database from Recently Deleted [thanks, u/opticillusion]",
                     "type": 1
                 },
                 {
                     "title": "🛠 Refined: Added a warning when opening a backup database",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Loading warnings include DB generator name only when it matters",
                     "type": 1
                 },
                 {
@@ -78,6 +86,10 @@
                 },
                 {
                     "title": "🛠 Refined: Added \"Pro\" to About screen of the Pro version [thanks, Glenn]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Storage provider icon/name when running as iOS app on macOS",
                     "type": 1
                 },
                 {
@@ -142,6 +154,22 @@
                 },
                 {
                     "title": "🐞 Fixed: User name generator: made the random option visually distinct [thanks, Daz]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Version parsing of XML key files (fixes #143) [thanks, Kenneth and Ty]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash when creating DB with empty password and key file [thanks, Doug]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: File reference error when running as iOS app on macOS [thanks, u/SmugAlien]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: File provider assertion when running as iOS app on macOS ",
                     "type": 1
                 },
                 {

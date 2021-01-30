@@ -38,7 +38,7 @@ public final class CryptoManager {
             Diag.warning("Failed to generate random bytes [count: \(count), status: \(status)]")
             throw CryptoError.rngError(code: Int(status))
         }
-        return output 
+        return output
     }
     
     public static func getHMACKey64(key: ByteArray, blockIndex: UInt64) -> ByteArray {

@@ -10,6 +10,12 @@
 /* Class = "UILabel"; text = "Make Backup Copies"; ObjectID = "BJ7-eQ-JOc"; Note = "Settings option: backup databases before saving them"; */
 "BJ7-eQ-JOc.text" = "Skapa backupkopior";
 
+/* Class = "UITableViewSection"; footerTitle = "Defines whether backup databases created by KeePassium should be excluded from iCloud/iTunes backup. Applies to all the existing and future backup files."; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
+"fst-lq-BDl.footerTitle" = "Definierar om säkerhetskopierade databaser som skapats av KeePassium ska uteslutas från iCloud/iTunes-säkerhetskopior. Gäller alla befintliga och framtida säkerhetskopieringsfiler.";
+
+/* Class = "UITableViewSection"; headerTitle = "iTunes and iCloud Backup"; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
+"fst-lq-BDl.headerTitle" = "Säkerhetskopiering av iTunes och iCloud";
+
 /* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
 "G42-gR-eKm.text" = "Spara backupkopior";
 
@@ -18,6 +24,9 @@
 
 /* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
 "nSy-3u-0xW.title" = "Databasbackup";
+
+/* Class = "UILabel"; text = "Exclude Backup Files from System Backup"; ObjectID = "Qs6-uS-gdS"; Note = "Settings option, on/off"; */
+"Qs6-uS-gdS.text" = "Exkludera säkerhetskopieringsfiler från säkerhetskopiering av systemet";
 
 /* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
 "XeH-7q-aad.footerTitle" = "Backupkopior kommer visas sida vid sida med originalfilerna.";

@@ -161,7 +161,9 @@ class DatabaseCreatorVC: UIViewController {
     
     @IBAction func didPressContinue(_ sender: Any) {
         let hasPassword = passwordField.text?.isNotEmpty ?? false
-        guard hasPassword || (keyFile != nil) else {
+        let hasKeyFile = keyFile != nil
+        let hasYubiKey = yubiKey != nil
+        guard hasPassword || hasKeyFile || hasYubiKey else {
             setError(
                 message: NSLocalizedString(
                     "[Database/Create] Please enter a password or choose a key file.",

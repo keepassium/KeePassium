@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Dubbeltikken om naar klembord te kopiëren";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Ontgrendel";
 
@@ -30,6 +33,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "%@ kopiëren";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Gekopieerd";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "Het geselecteerde bestand ('%@') lijkt geen databank te zijn.";
@@ -112,6 +121,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Probeer het bestand uit de app te verwijderen en voeg het dan opnieuw toe.";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Voeg het bestand opnieuw toe";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Back-up";
 
@@ -151,6 +163,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopiëren";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Maken";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Verwijder";
 
@@ -169,11 +184,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exporteer";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Meer informatie";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Meer acties";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "Verplaatsen";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "Oké";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "URL openen";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Overschrijf";
@@ -184,8 +208,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "Vervang";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Delen";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Toon details";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Tonen in tekst zonder opmaak";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Toon meer";
@@ -226,6 +256,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Waarschuwing";
 
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, groep";
+
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Maak groep";
 
@@ -259,14 +292,134 @@
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Wil het sleutelbestand verwijderen van de lijst?\n De sleutel blijft bewaard en je kunt deze later weer toevoegen.";
 
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "Wat je mist";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "Wat je krijgt";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Nu kopen";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "Ga door met uitproberen";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "Probeer het gratis";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "Upgrade nu";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Abonnementen beheren";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Eeuwigdurende licentie";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "Je hebt een eeuwigdurende licentie voor alle versies vóór %@.";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "Eén jaar e-mailondersteuning";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "Alle premium-functies";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "Klantenondersteuning: online-fora";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "Huidige premium-functies";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "Klantenondersteuning: e-mail";
+
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Delen met gezin";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium-herinneringen";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Voor premiumfuncties die in de toekomst worden toegevoegd, is een nieuwe aankoop voor de volledige prijs vereist.";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "Toekomstige premium-functies";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Bruikleenlicentie (terugvallicentie)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Abonnement in de vorm van een aankoop";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates en foutoplossingen";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "Gratis";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "Gratis";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "Populair";
+
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\nDe betaling wordt in rekening gebracht op je Apple ID-account bij de bevestiging van de aankoop. \n\nHet abonnement wordt automatisch verlengd, tenzij het ten minste 24 uur voor het einde van de huidige periode wordt geannuleerd. Je account wordt binnen 24 uur voor het einde van de huidige periode belast. \n\nJe kunt je abonnementen beheren en annuleren door na aankoop naar je accountinstellingen te gaan in de App Store.\n";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ gratis, daarna %2$@";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, er zijn geen upgrades beschikbaar. Dit mag niet gebeuren; neem contact op met ons ondersteuningsteam.";
+
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Upgrade naar Premium";
+
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Controleer of u uw oude abonnement moet opzeggen.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Bedankt! U kunt KeePassium gebruiken terwijl de aankoop wordt goedgekeurd.";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@/maand";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@/jaar";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "eenmalig %@";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@/maand";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "Bezig met openen van App Store...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "Bezig met aanschaffen...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "Upgrade geslaagd; geniet van de app!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "Aankoop hersteld";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "Geen te herstellen aankoop.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "Sorry";
+
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Bedankt voor uw aankoop!";
 
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Aangepaste app-pictogrammen";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "Je hebt een premium-functie gevonden! Upgrade naar premium en geniet nóg meer van KeePassium.";
+"[PremiumFeature/Generic/description]" = "Upgrade naar premium en geniet nóg meer van KeePassium.";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "Premium-functie";

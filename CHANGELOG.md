@@ -1,5 +1,22 @@
 #CHANGELOG
 
+## [1.21.81] - 2021-01-30
+
+### Refined
+
+- Allow changing master keys to YubiKey-only (no password, no key file)
+- Storage provider icon/name when running as iOS app on macOS
+- Loading warnings include DB generator name only when it matters
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- Version parsing of XML key files (fixes #143) [thanks, Kenneth and Ty]
+- File provider assertion when running as iOS app on macOS 
+- File reference error when running as iOS app on macOS [thanks, u/SmugAlien]
+- Crash when creating DB with empty password and key file [thanks, Doug]
+
+
 ## [1.21.80] - 2021-01-21
 
 ### Added

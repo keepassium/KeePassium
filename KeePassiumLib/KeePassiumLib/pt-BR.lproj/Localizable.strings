@@ -85,6 +85,9 @@
 /* Progress status */
 "[Database/Progress/resolving]" = "Conectando ao serviço de armazenamento...";
 
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "Obtendo valores das referências…";
+
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Falha ao abrir o arquivo de chave";
 
@@ -244,6 +247,12 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Senha ou arquivo de chave inválidos";
 
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "'%@' está na pasta Apagados Recentemente e pode eliminado em breve. Para salvar seus dados, mova o arquivo para outra pasta.";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "Esta é uma cópia temporária do banco de dados. Ela pode ser apagada automaticamente sem aviso. Não a use como banco de dados principal.";
+
 /* Error message: storage provider app was logged out or uninstalled. */
 "[FileAccessError/FileProvider/NotFound/generic]" = "Serviço de armazenamento indisponível. Verifique se o aplicativo deste está instalado e conectado à sua conta.";
 
@@ -322,6 +331,9 @@
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
 
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
 /* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
 "[FileProvider/Readdle Documents/name]" = "Documents da Readdle";
 
@@ -330,6 +342,9 @@
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
 "[FileProvider/SMB/name]" = "Servidor SMB";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -399,6 +414,12 @@
 
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Erro nas chaves do sistema: formato de dados inesperado";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "Arquivo de chave corrompido";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "Formato de arquivo de chave não suportado";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Cancelado pelo usuário";

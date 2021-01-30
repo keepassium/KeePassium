@@ -5,10 +5,10 @@
 "e1v-nv-Mst.normalTitle" = "Cancella Chiavi Master";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "Hide passwords and other protected fields behind asterisks (recommended).";
+"e6Y-AP-hag.footerTitle" = "Nascondi le password e altri campi protetti con degli asterischi (raccomandato).";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.headerTitle" = "Protected Fields";
+"e6Y-AP-hag.headerTitle" = "Campi protetti";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.footerTitle" = "Una volta sbloccato un database, la sua chiave principale può essere memorizzata nel portachiavi sicuro del dispositivo. La prossima volta, KeePassium userà quella chiave in modo da non dover digitare nuovamente la password principale. \n\n(Le chiavi Master vengono cancellate automaticamente al timeout del database.)";
@@ -20,7 +20,7 @@
 "g9a-rJ-4WJ.footerTitle" = "Usa gli Appunti Universali per copiare e incollare tra i tuoi dispositivi Apple. Su dispositivi esterni, gli appunti vengono cancellati dopo due minuti.";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
-"gTm-F6-EDQ.text" = "Clear Master Keys on Timeout";
+"gTm-F6-EDQ.text" = "Cancella le chiavi principali dopo il timeout";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.footerTitle" = "Quando copia qualsiasi cosa, KeePassium cancellerà automaticamente gli appunti (pasteboard) dopo qualche tempo.";
@@ -50,7 +50,10 @@
 "neJ-eG-TV7.headerTitle" = "Blocco automatico";
 
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
-"pid-k2-idJ.text" = "Hide Passwords";
+"pid-k2-idJ.text" = "Nascondi password";
+
+/* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
+"siQ-LK-GXZ.text" = "Chiavi di crittografia derivate dalla cache";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Timeout degli appunti";
@@ -59,5 +62,11 @@
 "weX-SZ-IDB.text" = "Timeout Database";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
-"YL6-U9-FM6.text" = "Universal Clipboard";
+"YL6-U9-FM6.text" = "Appunti universali";
+
+/* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.footerTitle" = "Le chiavi in cache consentono a KeePassium di saltare la derivazione delle chiavi e le scansioni di YubiKey ove possibile. ";
+
+/* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.headerTitle" = "Avanzate";
 

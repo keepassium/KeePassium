@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Dubbeltryck för att kopiera till urklipp";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Lås upp";
 
@@ -18,6 +21,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "Kopiera %@";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Kopierad";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "Vald fil \"%@\" verkar inte vara en databas.";
@@ -172,6 +181,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Försök att ta bort filen från appen, lägg sedan till den igen.";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Lägg till filen igen";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Backup";
 
@@ -214,6 +226,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopiera";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Skapa";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Radera";
 
@@ -232,11 +247,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportera";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Läs mer…";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Fler åtgärder";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "Flytta";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "Öppna URL";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Skriv över";
@@ -247,8 +271,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "Ersätt";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Dela";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Visa detaljer";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Visa i oformaterad text";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Visa mer";
@@ -288,6 +318,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varning";
+
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, grupp";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Skapa grupp";
@@ -361,6 +394,15 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Vad du får";
 
+/* Explanation of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/details]" = "Använd fältreferenser för att visa information från andra poster istället för att skapa flera kopior med samma information.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/title]" = "Visa fältreferenser";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Köp nu";
+
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "Fortsätt prova";
 
@@ -369,6 +411,9 @@
 
 /* Call to action: upgrade to premium */
 "[Premium/CallToAction/upgradeNow]" = "Uppgradera Nu";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Hantera prenumerationer";
 
 /* Name of the permanent/never-ending license. */
 "[Premium/perpetualLicense]" = "Evig licens";
@@ -391,14 +436,23 @@
 /* What's included in a price plan: support via email */
 "[Premium/Price Plan/Conditions/email support]" = "Kundsupport: E-post";
 
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Familjedelning";
+
 /* What's included in a free plan: reminders that the version is free */
 "[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium-påminnelser";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Premiumfunktioner som läggs till i framtiden måste köpas för fullt pris.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "Framtida premiumfunktioner";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "Hyrlicens (Perpetual fallback license)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Prenumeration som ett köp";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "Uppdateringar och buggfixar";
@@ -436,6 +490,12 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Uppgradera till premium";
 
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Kontrollera om du måste avbryta din gamla prenumeration.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Tack! Du kan använda KeePassium innan köpet bekräftas av en målsman.";
+
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / månad";
 
@@ -466,6 +526,9 @@
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "Förlåt";
 
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Tack för köpet!";
+
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Appen är användbar: %1$@/månad, det är cirka %2$@/år.";
 
@@ -473,7 +536,7 @@
 "[PremiumFeature/CustomAppIcons/title]" = "Valbar app-ikon";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "Du har hittat en premiumfunktion! Uppgradera till premium och upplev KeePassium när det är som bäst.";
+"[PremiumFeature/Generic/description]" = "Uppgradera till premium och upplev KeePassium när det är som bäst.";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "Premiumfunktion";
@@ -507,6 +570,12 @@
 
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "Använd %@";
+
+/* Explanation for the `Lock on App Launch` setting */
+"[Settings/AppLock/LockOnLaunch/description]" = "Låser KeePassium efter att du tvingar att stänga appen eller starta om enheten.";
+
+/* Setting switch: whether to lock the app after it was terminated and relaunched. */
+"[Settings/AppLock/LockOnLaunch/title]" = "Lås vid programstart";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "App Lock, %@, timeout";

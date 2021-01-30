@@ -63,12 +63,17 @@ final class KeyHelper2: KeyHelper {
             Diag.warning("Missing version in XML key file")
             return nil
         }
+        guard let majorVersionString = version.split(separator: ".").first,
+              let majorVersion = Int(majorVersionString) else {
+            Diag.warning("Misformatted key file version [version: \(version)]")
+            return nil
+        }
 
-        switch version {
-        case "2.0":
+        switch majorVersion {
+        case 2:
             let result = try processXMLFileVersion2(xml) 
             return result
-        case "1.0":
+        case 1:
             let result = try processXMLFileVersion1(xml) 
             return result
         default:

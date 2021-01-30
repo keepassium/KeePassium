@@ -1,6 +1,9 @@
 /* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
 "enW-gs-tra.normalTitle" = "添加資料庫";
 
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "Gck-9R-sGq"; Note = "Action: skip setup and proceed to the next step."; */
+"Gck-9R-sGq.normalTitle" = "Skip";
+
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
 "P0M-N3-ynf.text" = "請重新添加資料庫以及金鑰檔案用於使用系統自動填充的功能。";
 

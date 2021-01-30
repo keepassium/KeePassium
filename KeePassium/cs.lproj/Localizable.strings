@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Dvojitým poklepáním zkopírujete do schránky";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Odemknout";
 
@@ -18,6 +21,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "Kopírovat %@";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Zkopírováno";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "Vybraný soubor \"%@\" nevypadá jako databáze.";
@@ -172,6 +181,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Zkuste soubor z aplikace odebrat a poté znovu přidat.";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Přidejte soubor znovu";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Záloha";
 
@@ -214,6 +226,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopírovat";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Vytvořit";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Odstranit";
 
@@ -232,11 +247,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportovat";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Více informací…";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Další akce";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "Přesunout";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "Otevřít URL";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Přepsat";
@@ -247,8 +271,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "Nahradit";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Sdílet";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Zobrazit podrobnosti";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Zobrazit jako prostý text";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Zobrazit více";
@@ -288,6 +318,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varování";
+
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, skupina";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Vytvořit skupinu";
@@ -335,7 +368,7 @@
 "[Premium/Benefits/CustomAppIcon/details]" = "Zvolte si pro KeePassium unikátní ikonu nebo ji třeba maskujte jako kalkulačku – volba je na vás.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Změnit ikonu aplikace";
+"[Premium/Benefits/CustomAppIcon/title]" = "Změňte ikonu aplikace";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "Unavuje vás neustále zadávat hlavní heslo? Mějte svou databázi otevřenou po delší dobu a odemkněte ji jedním klepnutím.";
@@ -361,6 +394,15 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Co obdržíte";
 
+/* Explanation of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/details]" = "Pomocí odkazů na pole můžete zobrazit informace z jiných záznamů namísto vytváření dalších kopií stejných informací.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/title]" = "Zobrazit odkazy na pole";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Koupit nyní";
+
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "Pokračovat v testování";
 
@@ -369,6 +411,9 @@
 
 /* Call to action: upgrade to premium */
 "[Premium/CallToAction/upgradeNow]" = "Upgradovat nyní";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Správa předplatného";
 
 /* Name of the permanent/never-ending license. */
 "[Premium/perpetualLicense]" = "Trvalá licence";
@@ -391,14 +436,23 @@
 /* What's included in a price plan: support via email */
 "[Premium/Price Plan/Conditions/email support]" = "Zákaznická podpora: e-mail";
 
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Rodinné sdílení";
+
 /* What's included in a free plan: reminders that the version is free */
 "[Premium/Price Plan/Conditions/freemium reminders]" = "Připomenutí bezplatné verze";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Budoucí prémiové funkce by vyžadovaly nový nákup za plnou cenu.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "Budoucí prémiové funkce";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
-"[Premium/Price Plan/Conditions/perpetual fallback]" = "Rent-to-own license (Perpetual fallback license)";
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Po roce předplatného zůstanou současné prémiové funkce (Perpetual fallback license)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Předplatné jako nákup";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "Aktualizace a opravy chyb";
@@ -436,6 +490,12 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Přejít na Premium";
 
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Zkontrolujte si prosím, zda nepotřebujete zrušit své staré předplatné.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Děkujeme! KeePassium můžete používat, ale nákup čeká na schválení.";
+
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / měsíc";
 
@@ -466,6 +526,9 @@
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "Omlouváme se";
 
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Děkujeme vám za nákup!";
+
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplikace používána %1$@/měsíc, což je %2$@/ročně.";
 
@@ -473,7 +536,7 @@
 "[PremiumFeature/CustomAppIcons/title]" = "Vlastní ikony aplikace";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "Našli jste prémiovou funkci! Upgradujte na Premium a užijte si KeePassium se všemi funkcemi.";
+"[PremiumFeature/Generic/description]" = "Upgradujte na Premium a užijte si KeePassium se všemi funkcemi.";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "Prémiová funkce";
@@ -507,6 +570,12 @@
 
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "Používat %@";
+
+/* Explanation for the `Lock on App Launch` setting */
+"[Settings/AppLock/LockOnLaunch/description]" = "Zajišťuje uzamčení KeePassia po vynuceném zavření aplikace nebo restartování zařízení.";
+
+/* Setting switch: whether to lock the app after it was terminated and relaunched. */
+"[Settings/AppLock/LockOnLaunch/title]" = "Zamknout při spuštění aplikace";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Zámek, %@, časový limit";

@@ -56,6 +56,12 @@ class ChangeMasterKeyVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         passwordField.becomeFirstResponder()
+        refresh()
+    }
+    
+    func refresh() {
+        let allValid = passwordField.isValid && repeatPasswordField.isValid && keyFileField.isValid
+        navigationItem.rightBarButtonItem?.isEnabled = allValid
     }
     
     
@@ -191,7 +197,8 @@ extension ChangeMasterKeyVC: ValidatingTextFieldDelegate {
         case passwordField, keyFileField:
             let gotPassword = passwordField.text?.isNotEmpty ?? false
             let gotKeyFile = keyFileRef != nil
-            return gotPassword || gotKeyFile
+            let gotYubiKey = yubiKey != nil
+            return gotPassword || gotKeyFile || gotYubiKey
         case repeatPasswordField:
             let isPasswordsMatch = (passwordField.text == repeatPasswordField.text)
             UIView.animate(withDuration: 0.5) {
@@ -210,8 +217,7 @@ extension ChangeMasterKeyVC: ValidatingTextFieldDelegate {
     }
     
     func validatingTextField(_ sender: ValidatingTextField, validityDidChange isValid: Bool) {
-        let allValid = passwordField.isValid && repeatPasswordField.isValid && keyFileField.isValid
-        navigationItem.rightBarButtonItem?.isEnabled = allValid
+        refresh()
     }
 }
 
@@ -233,6 +239,7 @@ extension ChangeMasterKeyVC: KeyFileChooserDelegate {
         } else {
             keyFileField.text = keyFileRef.visibleFileName
         }
+        refresh()
     }
 }
 
@@ -255,6 +262,7 @@ extension ChangeMasterKeyVC: HardwareKeyPickerDelegate {
         } else {
             Diag.info("No hardware key selected")
         }
+        refresh()
     }
 }
 

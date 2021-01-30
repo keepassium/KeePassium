@@ -154,14 +154,17 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     private func showLoadingWarnings(_ warnings: DatabaseLoadingWarnings) {
         guard !warnings.isEmpty else { return }
         
-        let lastUsedAppName = warnings.databaseGenerator ?? ""
-        let footerLine = String.localizedStringWithFormat(
+        var message = warnings.messages.joined(separator: "\n\n")
+        if warnings.isGeneratorImportant {
+            let lastUsedAppName = warnings.databaseGenerator ?? ""
+            let footerLine = String.localizedStringWithFormat(
                 NSLocalizedString(
                     "[Database/Opened/Warning/lastEdited] Database was last edited by: %@",
                     value: "Database was last edited by: %@",
                     comment: "Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String]"),
                 lastUsedAppName)
-        let message = warnings.messages.joined(separator: "\n\n") + "\n\n" + footerLine
+            message += "\n\n" + footerLine
+        }
         
         let alert = UIAlertController(
             title: NSLocalizedString(

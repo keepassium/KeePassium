@@ -23,7 +23,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>keepassium</string>
-        <string>mailto</string>
+		<string>mailto</string>
 	</array>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>

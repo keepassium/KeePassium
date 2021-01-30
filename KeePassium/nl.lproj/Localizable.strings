@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Dubbeltikken om naar klembord te kopiëren";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Ontgrendel";
 
@@ -18,6 +21,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "%@ kopiëren";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Gekopieerd";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "Het geselecteerde bestand ('%@') lijkt geen databank te zijn.";
@@ -172,6 +181,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Probeer het bestand uit de app te verwijderen en voeg het dan opnieuw toe.";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Voeg het bestand opnieuw toe";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Back-up";
 
@@ -214,6 +226,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopiëren";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Maken";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Verwijder";
 
@@ -232,11 +247,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exporteer";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Meer informatie";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Meer acties";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "Verplaatsen";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "Oké";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "URL openen";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Overschrijf";
@@ -247,8 +271,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "Vervang";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Delen";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Toon details";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Tonen in tekst zonder opmaak";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Toon meer";
@@ -288,6 +318,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "Waarschuwing";
+
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, groep";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Maak groep";
@@ -361,6 +394,15 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Wat je krijgt";
 
+/* Explanation of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/details]" = "Gebruik veldverwijzingen om informatie van andere items weer te geven, in plaats van meerdere kopieën van dezelfde informatie te maken.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/title]" = "Veldverwijzingen tonen";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Nu kopen";
+
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "Ga door met uitproberen";
 
@@ -369,6 +411,9 @@
 
 /* Call to action: upgrade to premium */
 "[Premium/CallToAction/upgradeNow]" = "Upgrade nu";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Abonnementen beheren";
 
 /* Name of the permanent/never-ending license. */
 "[Premium/perpetualLicense]" = "Eeuwigdurende licentie";
@@ -391,14 +436,23 @@
 /* What's included in a price plan: support via email */
 "[Premium/Price Plan/Conditions/email support]" = "Klantenondersteuning: e-mail";
 
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Delen met gezin";
+
 /* What's included in a free plan: reminders that the version is free */
 "[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium-herinneringen";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Voor premiumfuncties die in de toekomst worden toegevoegd, is een nieuwe aankoop voor de volledige prijs vereist.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "Toekomstige premium-functies";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "Bruikleenlicentie (terugvallicentie)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Abonnement in de vorm van een aankoop";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates en foutoplossingen";
@@ -436,6 +490,12 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Upgrade naar Premium";
 
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Controleer of u uw oude abonnement moet opzeggen.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Bedankt! U kunt KeePassium gebruiken terwijl de aankoop wordt goedgekeurd.";
+
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@/maand";
 
@@ -466,6 +526,9 @@
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "Sorry";
 
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Bedankt voor uw aankoop!";
+
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "App is nuttig: %1$@/maand - dat is ongeveer %2$@/jaar.";
 
@@ -473,7 +536,7 @@
 "[PremiumFeature/CustomAppIcons/title]" = "Aangepaste app-pictogrammen";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "Je hebt een premium-functie gevonden! Upgrade naar premium en geniet nóg meer van KeePassium.";
+"[PremiumFeature/Generic/description]" = "Upgrade naar premium en geniet nóg meer van KeePassium.";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "Premium-functie";
@@ -507,6 +570,12 @@
 
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "Gebruik %@";
+
+/* Explanation for the `Lock on App Launch` setting */
+"[Settings/AppLock/LockOnLaunch/description]" = "Zorgt ervoor dat KeePassium is vergrendeld nadat u de app gedwongen hebt afgesloten of het apparaat opnieuw opstart.";
+
+/* Setting switch: whether to lock the app after it was terminated and relaunched. */
+"[Settings/AppLock/LockOnLaunch/title]" = "Vergrendelen bij het starten van de app";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "App-vergrendeling, %@, time-out";

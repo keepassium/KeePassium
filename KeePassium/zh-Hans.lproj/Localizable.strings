@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Double tap to copy to clipboard";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "解锁";
 
@@ -18,6 +21,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "Copy %@";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "已复制";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "您选定的文件 \"%@\" 看起来不像是个数据库文件。";
@@ -172,6 +181,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "尝试从应用中删除该文件，然后重新添加它。";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Add the file again";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "备份";
 
@@ -214,6 +226,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "复制";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Create";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "删除";
 
@@ -232,11 +247,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "汇出";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Learn more…";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "More Actions";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "移动";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "确定";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "Open URL";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "覆盖";
@@ -247,8 +271,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "替换";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Share";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "显示详细信息";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Show In Plain Text";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "显示更多";
@@ -288,6 +318,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "警告";
+
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, Group";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "建立群组";
@@ -361,6 +394,15 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "您得到的内容";
 
+/* Explanation of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/details]" = "Use field references to show information from other entries, instead of creating multiple copies of the same information.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/title]" = "Show field references";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Buy Now";
+
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "继续测试";
 
@@ -369,6 +411,9 @@
 
 /* Call to action: upgrade to premium */
 "[Premium/CallToAction/upgradeNow]" = "立即升级";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Manage subscriptions";
 
 /* Name of the permanent/never-ending license. */
 "[Premium/perpetualLicense]" = "Perpetual license";
@@ -391,14 +436,23 @@
 /* What's included in a price plan: support via email */
 "[Premium/Price Plan/Conditions/email support]" = "用户支持：电子邮件";
 
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "家人共享";
+
 /* What's included in a free plan: reminders that the version is free */
 "[Premium/Price Plan/Conditions/freemium reminders]" = "免费版提醒";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Premium features added in the future would require a new purchase at full price.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "高级版未来功能";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "共享许可证(Perpetual backbacking licse)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Subscription as a purchase";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "更新和漏洞修复";
@@ -436,6 +490,12 @@
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "升级到高级版";
 
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Please check if you need to cancel your old subscription.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Thank you! You can use KeePassium while purchase is awaiting approval.";
+
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / 月";
 
@@ -466,6 +526,9 @@
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "很抱歉";
 
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Thank you for the purchase!";
+
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "程序已使用: %1$@/月, 大约%2$@/年";
 
@@ -473,7 +536,7 @@
 "[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "你找到了一个高级功能！升级到高级版并享受最好的KeePassium。";
+"[PremiumFeature/Generic/description]" = "升级到高级版并享受最好的KeePassium。";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "高级版功能";
@@ -507,6 +570,12 @@
 
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "使用 %@";
+
+/* Explanation for the `Lock on App Launch` setting */
+"[Settings/AppLock/LockOnLaunch/description]" = "Ensures KeePassium is locked after you force-close the app or restart the device.";
+
+/* Setting switch: whether to lock the app after it was terminated and relaunched. */
+"[Settings/AppLock/LockOnLaunch/title]" = "Lock on App Launch";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "应用锁定,%@, 超时";

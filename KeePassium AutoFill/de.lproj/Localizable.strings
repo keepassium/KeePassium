@@ -1,3 +1,6 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Doppeltippen, um in die Zwischenablage zu kopieren";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Entsperren";
 
@@ -30,6 +33,12 @@
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "%@ kopieren";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Kopiert";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "Die ausgewählte Datei \"%@\" sieht nicht wie eine Datenbank aus.";
@@ -112,6 +121,9 @@
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Versuchen Sie die Datei aus der App zu entfernen und fügen Sie sie erneut hinzu.";
 
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Datei erneut hinzufügen";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Backup";
 
@@ -151,6 +163,9 @@
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "Kopieren";
 
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Hinzufügen";
+
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Löschen";
 
@@ -169,11 +184,20 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportieren";
 
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Mehr erfahren …";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Weitere Aktionen";
+
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "Verschieben";
 
 /* Action/button: generic OK */
 "[Generic] OK" = "OK";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "URL öffnen";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Überschreiben";
@@ -184,8 +208,14 @@
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "Ersetzen";
 
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Teilen";
+
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Zeige Details";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "In Klartext anzeigen";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Mehr anzeigen";
@@ -226,6 +256,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Warnung";
 
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, Gruppe";
+
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Gruppe hinzufügen";
 
@@ -242,7 +275,7 @@
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwareschlüssel sind in AutoFill nicht verfügbar.";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+"[HardwareKey/NFC/OS too old]" = "NFC benötigt iOS 13 oder höher.";
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Kein Hardware-Schlüssel";
@@ -259,14 +292,134 @@
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Schlüsseldatei aus der Liste entfernen?\n Die Datei bleibt erhalten und Sie können sie später erneut hinzufügen.";
 
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "Nicht mit dabei";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "Profitieren Sie von";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Jetzt kaufen";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "Testphase fortsetzen";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "Kostenlos testen";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "Jetzt upgraden";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Abos verwalten";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Unbefristete Lizenz";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "Sie haben eine unbefristete Lizenz für alle Versionen vor %@.";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "Ein Jahr E-Mail-Support";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "Alle Premiumfunktionen";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "Kundensupport: Online-Foren";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "Aktuelle Premiumfunktionen";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "Kundensupport: E-Mail";
+
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Familienfreigabe";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium-Erinnerungen";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Premium-Funktionen, die in Zukunft hinzugefügt werden, erfordern einen Neukauf zum vollen Preis.";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "Künftige Premiumfunktionen";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Mietkauf (Perpetual Fallback License)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Abonnement als Kauf";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates und Fehlerbehebungen";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "Kostenlos";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "Kostenlos";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "Beliebt";
+
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\nDer Kaufpreis wird bei der Kaufbestätigung über Ihr Apple ID-Konto abgerechnet. \n\nDas Abonnement verlängert sich automatisch, wenn es nicht mindestens 24 Stunden vor Ablauf der aktuellen Laufzeit gekündigt wird. Die Verlängerungsgebühr wird innerhalb von 24 Stunden vor Ablauf der aktuellen Laufzeit über Ihr Konto abgerechnet. \n\nSie können Ihre Abonnements verwalten und kündigen, indem Sie nach dem Kauf Ihre Kontoeinstellungen im App Store aufrufen.\n";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ kostenlos, dann %2$@";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, es sind keine Upgrades verfügbar. Dies sollte nicht passieren, bitte kontaktieren Sie den Support.";
+
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Auf Premium aktualisieren";
+
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Bitte überprüfen Sie, ob Sie Ihr altes Abonnement kündigen müssen.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Vielen Dank! Sie können KeePassium verwenden, während auf die Kaufbestätigung gewartet wird.";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@ / Monat";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@ / Jahr";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "%@ einmalig";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / Monat";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "Verbindung zum AppStore...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "Kaufvorgang...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "Upgrade erfolgreich, genieße die App!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "Kauf wiederhergestellt";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "Kein vorheriger Kauf konnte wiederhergestellt werden.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "Sorry";
+
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Vielen Dank für den Kauf!";
 
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Eigene App-Symbole";
 
 /* A generic description of a premium feature */
-"[PremiumFeature/Generic/description]" = "Sie haben eine Premiumfunktion gefunden! Upgraden Sie auf Premium und genießen Sie KeePassium in vollen Zügen.";
+"[PremiumFeature/Generic/description]" = "Upgraden Sie auf Premium und genießen Sie KeePassium in vollen Zügen.";
 
 /* A generic title of a premium feature */
 "[PremiumFeature/Generic/title]" = "Premiumfunktion";

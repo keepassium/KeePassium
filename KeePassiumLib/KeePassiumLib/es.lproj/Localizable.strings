@@ -77,13 +77,16 @@
 "[Database/Progress] Loading key file..." = "Cargando archivo de clave ...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Downloading database file...";
+"[Database/Progress/downloading]" = "Descargando base de datos...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "Making backup copy...";
+"[Database/Progress/makingDatabaseBackup]" = "Creando copia de copia de seguridad...";
 
 /* Progress status */
 "[Database/Progress/resolving]" = "Contactando con el proveedor de almacenamiento ...";
+
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "Determinando campos de referencia…";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Error al abrir archivo de clave";
@@ -244,23 +247,29 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Contraseña o archivo de clave incorrecto";
 
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "%@ está ubicado en Eliminados Recientemente y puede ser eliminado en cualquier momento. Para preservar la información, cambie el archivo a una ubicación más permanente.";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "Esta es una base de datos transitoria. Puede ser eliminada automáticamente sin previo aviso. No la utilice como su base de datos principal.";
+
 /* Error message: storage provider app was logged out or uninstalled. */
-"[FileAccessError/FileProvider/NotFound/generic]" = "Storage provider is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/generic]" = "El proveedor de almacenamiento no está disponible. Compruebe si está instalado y si ha iniciado sesión en el sistema.";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
 "[FileAccessError/FileProvider/NotFound/other]" = "%@ no está disponible. Por favor, comprueba si está instalado y inicia sesión en tu cuenta.";
 
 /* Error message: the required network drive is not connected. */
-"[FileAccessError/FileProvider/NotFound/smbShare]" = "Network storage is disconnected.";
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "El almacenamiento en red está desconectado.";
 
 /* Error message: there is no USB drive connected to the device. */
-"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB drive is disconnected.";
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "El dispositivo USB está desconectado.";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "Internal KeePassium error, please tell us about it.";
+"[FileAccessError/internalError]" = "Error interno en KeePassium, póngase en contacto con nosotros.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
-"[FileAccessError/NoResponse/genericFileProvider]" = "Storage provider does not respond.";
+"[FileAccessError/NoResponse/genericFileProvider]" = "El proveedor de almacenamiento no responde.";
 
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
 "[FileAccessError/NoResponse/knownFileProvider]" = "%@ no responde.";
@@ -322,6 +331,9 @@
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
 
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
 /* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
 "[FileProvider/Readdle Documents/name]" = "Documents de Readdle";
 
@@ -329,7 +341,10 @@
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
-"[FileProvider/SMB/name]" = "SMB server";
+"[FileProvider/SMB/name]" = "Servidor SMB";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
 
 /* Localized name of the storage service: Sync.com (https://sync.com) */
 "[FileProvider/sync.com/name]" = "Sync.com";
@@ -344,7 +359,7 @@
 "[FileProvider/Tresorit/name]" = "Tresorit";
 
 /* Localized name of the storage service: local USB drive (native iOS integration) */
-"[FileProvider/USB drive/name]" = "USB drive";
+"[FileProvider/USB drive/name]" = "Dispositivo USB";
 
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
@@ -399,6 +414,12 @@
 
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Error en la cadena de claves: formato de datos inesperado";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "El archivo de clave está dañado";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "El formato del archivo de clave es incompatible";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Cancelado por el usuario";

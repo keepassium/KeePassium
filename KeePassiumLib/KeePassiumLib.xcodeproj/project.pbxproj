@@ -122,6 +122,7 @@
 		75D09C622174F89A00F7DEF2 /* ProgressEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C612174F89A00F7DEF2 /* ProgressEx.swift */; };
 		75D0C77B2174AF2000C64C93 /* KeePassiumLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D4080523952FD40042122A /* CompositeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4080423952FD40042122A /* CompositeKey.swift */; };
+		75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */; };
 		75DBD04A253A525E00538B8F /* EntryField+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD049253A525E00538B8F /* EntryField+premium.swift */; };
 		75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */; };
 		75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA2D1621B2FB4000826FC6 /* Diag.swift */; };
@@ -290,6 +291,7 @@
 		75D0C76D2174AF1F00C64C93 /* KeePassiumLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeePassiumLib.h; sourceTree = "<group>"; };
 		75D0C76E2174AF1F00C64C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75D4080423952FD40042122A /* CompositeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeKey.swift; sourceTree = "<group>"; };
+		75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+extensions.swift"; sourceTree = "<group>"; };
 		75DBD049253A525E00538B8F /* EntryField+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryField+premium.swift"; sourceTree = "<group>"; };
 		75E4CA89232D0B2200EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaver.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				751F90A8247748A300A7418F /* Result.swift */,
 				75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */,
 				75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */,
+				75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -841,6 +844,7 @@
 				75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */,
 				75F4ACD5217745B300B22D8B /* DatabaseManager.swift in Sources */,
 				75D09C212174F77000F7DEF2 /* Binary2.swift in Sources */,
+				75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */,
 				75D09C222174F77000F7DEF2 /* CustomData2.swift in Sources */,
 				756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */,
 				75D09C242174F77000F7DEF2 /* Attachment2.swift in Sources */,

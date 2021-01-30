@@ -52,6 +52,9 @@
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
 "pid-k2-idJ.text" = "Dölj lösenord";
 
+/* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
+"siQ-LK-GXZ.text" = "Krypteringsnycklar härledda från cache";
+
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Timeout för urklipp";
 
@@ -60,4 +63,10 @@
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "Universal Clipboard";
+
+/* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.footerTitle" = "Cachelagrade nycklar tillåter KeePassium att hoppa över nyckelhärledning och YubiKey-skanningar när det är möjligt. ";
+
+/* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.headerTitle" = "Avancerat";
 
