@@ -32,8 +32,13 @@ You can manage and cancel your subscriptions by going to your account settings o
         comment: "A generic title of a premium feature")
     public static let premiumFeatureGenericDescription = NSLocalizedString(
         "[PremiumFeature/Generic/description]",
-        value: "You have found a premium feature! Upgrade to premium and enjoy KeePassium at its best.",
+        value: "Upgrade to Premium and enjoy KeePassium at its best.",
         comment: "A generic description of a premium feature")
+    
+    public static let actionManageSubscriptions = NSLocalizedString(
+        "[Premium/ManageSubscriptions/action]",
+        value: "Manage subscriptions",
+        comment: "Action: open AppStore subscription management page")
     
 
     public static let premiumFreePlanTitle = NSLocalizedString(
@@ -116,10 +121,18 @@ You can manage and cancel your subscriptions by going to your account settings o
         "[Premium/Price Plan/Conditions/perpetual fallback]",
         value: "Rent-to-own license (Perpetual fallback license)",
         comment: "What's included in a price plan. Please leave `perpetual fallback license` in English.")
+    public static let planConditionSubscriptionAsPurchase = NSLocalizedString(
+        "[Premium/Price Plan/Conditions/subscription as purchase]",
+        value: "Subscription as a purchase",
+        comment: "What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/")
     public static let planConditionFamilySharing = NSLocalizedString(
         "[Premium/Price Plan/Conditions/family sharing]",
         value: "Family Sharing",
         comment: "Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/")
+    public static let planConditionFullPriceUpgrade = NSLocalizedString(
+        "[Premium/Price Plan/Conditions/full price upgrade]",
+        value: "Premium features added in the future would require a new purchase at full price.",
+        comment: "Upgrade conditions for current-version premium purchase.")
 
     
     public static let premiumCallToActionFree = NSLocalizedString(
@@ -134,6 +147,10 @@ You can manage and cancel your subscriptions by going to your account settings o
         "[Premium/CallToAction/upgradeNow]",
         value: "Upgrade Now",
         comment: "Call to action: upgrade to premium")
+    public static let premiumCallToActionBuyNow = NSLocalizedString(
+        "[Premium/CallToAction/buyNow]",
+        value: "Buy Now",
+        comment: "Call to action")
 
     
     public static let statusContactingAppStore = NSLocalizedString(
@@ -149,6 +166,15 @@ You can manage and cancel your subscriptions by going to your account settings o
         value: "Thank you! You can use KeePassium while purchase is awaiting approval.",
         comment: "Message shown when in-app purchase is deferred until approval (parental or corporate).")
 
+    
+    public static let titlePurchaseSuccess = NSLocalizedString(
+        "[Premium/Upgrade/Success/thankYou]",
+        value: "Thank you for the purchase!",
+        comment: "Message shown after buying or subscribing.")
+    public static let messageCancelOldSubscriptions = NSLocalizedString(
+        "[Premium/Upgrade/cancelOngoingSubscription]",
+        value: "Please check if you need to cancel your old subscription.",
+        comment: "Message shown after buying a lifetime version.")
 
     
     public static let titlePurchaseRestored = NSLocalizedString(

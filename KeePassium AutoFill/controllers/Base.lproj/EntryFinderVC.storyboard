@@ -172,6 +172,9 @@
                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                             <color key="textColor" name="AuxiliaryText"/>
                             <nil key="highlightedColor"/>
+                            <attributedString key="userComments">
+                                <fragment content="#bc-ignore!"/>
+                            </attributedString>
                         </label>
                         <button opaque="NO" contentMode="center" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3k-M1-4iI">
                             <rect key="frame" x="138" y="19.5" width="29" height="29"/>

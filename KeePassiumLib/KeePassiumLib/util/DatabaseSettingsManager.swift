@@ -134,4 +134,16 @@ public class DatabaseSettingsManager {
             setSettings(dbSettings, for: dbRef)
         }
     }
+    
+    public func eraseAllFinalKeys() {
+        let allDatabaseRefs = FileKeeper.shared.getAllReferences(
+            fileType: .database,
+            includeBackup: true
+        )
+        for dbRef in allDatabaseRefs {
+            guard let dbSettings = getSettings(for: dbRef) else { continue }
+            dbSettings.clearFinalKey()
+            setSettings(dbSettings, for: dbRef)
+        }
+    }
 }

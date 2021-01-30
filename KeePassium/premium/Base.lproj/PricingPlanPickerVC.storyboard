@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +38,7 @@
                                                 </attributedString>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                         <edgeInsets key="layoutMargins" top="4" left="8" bottom="4" right="8"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Rng-i2-FCe" userLabel="CollectionWrapper">
@@ -45,7 +46,7 @@
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DHw-Tm-Wbg">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="612.66666666666663"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <collectionViewLayout key="collectionViewLayout" id="DqF-Nq-DUa" customClass="PricingPlanCollectionLayout" customModule="KeePassium" customModuleProvider="target"/>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PricingPlanCollectionCell" id="vX4-f0-IL0" customClass="PricingPlanCollectionCell" customModule="KeePassium" customModuleProvider="target">
@@ -60,7 +61,7 @@
                                                                     <subviews>
                                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9iF-HK-hUc">
                                                                             <rect key="frame" x="0.0" y="0.0" width="252" height="334"/>
-                                                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                                             <prototypes>
                                                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TitleCell" id="Vtp-v7-ygP" customClass="PricingPlanTitleCell" customModule="KeePassium" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="55.333332061767578" width="252" height="132.33332824707031"/>
@@ -100,7 +101,10 @@
                                                                                                 <rect key="frame" x="16" y="27.333333333333336" width="220" height="77.666666666666657"/>
                                                                                                 <subviews>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="{Title}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIy-Yk-0kz" userLabel="Title">
-                                                                                                        <rect key="frame" x="87.333333333333329" y="0.0" width="45.666666666666671" height="20.333333333333332"/>
+                                                                                                        <rect key="frame" x="87.666666666666671" y="0.0" width="45.000000000000014" height="20.333333333333332"/>
+                                                                                                        <accessibility key="accessibilityConfiguration">
+                                                                                                            <accessibilityTraits key="traits" staticText="YES" header="YES"/>
+                                                                                                        </accessibility>
                                                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                                                         <color key="textColor" name="AuxiliaryText"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -130,7 +134,7 @@
                                                                                             </stackView>
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mw-3H-531" userLabel="Separator">
                                                                                                 <rect key="frame" x="16" y="123.33333333333333" width="220" height="1"/>
-                                                                                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                <color key="backgroundColor" systemColor="separatorColor"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="1" id="czm-og-xzI"/>
                                                                                                 </constraints>
@@ -151,6 +155,9 @@
                                                                                             <constraint firstAttribute="trailing" secondItem="rvc-pP-gih" secondAttribute="trailing" constant="-6" id="zCu-7I-tdj"/>
                                                                                         </constraints>
                                                                                     </tableViewCellContentView>
+                                                                                    <accessibility key="accessibilityConfiguration">
+                                                                                        <accessibilityTraits key="traits" summaryElement="YES" header="YES"/>
+                                                                                    </accessibility>
                                                                                     <connections>
                                                                                         <outlet property="highlightLabel" destination="cEd-4Y-m9a" id="Rfc-nC-VL5"/>
                                                                                         <outlet property="highlightPanel" destination="rvc-pP-gih" id="lTc-r7-aud"/>
@@ -175,7 +182,7 @@
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Condition}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juk-xI-Nbg" userLabel="Title Label">
-                                                                                                <rect key="frame" x="52.999999999999993" y="8.9999999999999982" width="81.333333333333314" height="19.333333333333329"/>
+                                                                                                <rect key="frame" x="53.000000000000007" y="8.9999999999999982" width="81.666666666666686" height="19.333333333333329"/>
                                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                                                 <color key="textColor" name="PrimaryText"/>
                                                                                                 <nil key="highlightedColor"/>
@@ -184,7 +191,7 @@
                                                                                                 </attributedString>
                                                                                             </label>
                                                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qy-XG-UQT" userLabel="Detail Button">
-                                                                                                <rect key="frame" x="142.33333333333334" y="6.6666666666666661" width="24.333333333333343" height="23.666666666666671"/>
+                                                                                                <rect key="frame" x="142.66666666666666" y="6.6666666666666661" width="24.333333333333343" height="23.666666666666671"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                                 <color key="tintColor" name="ActionTint"/>
                                                                                                 <connections>
@@ -232,7 +239,7 @@
                                                                                                 <rect key="frame" x="53" y="11" width="183" height="38"/>
                                                                                                 <subviews>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="{Benefit Title}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0i-gI-Jb4" userLabel="Title Label">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="110" height="20.333333333333332"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="109.33333333333333" height="20.333333333333332"/>
                                                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                                                         <color key="textColor" name="PrimaryText"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -272,7 +279,7 @@
                                                                             </prototypes>
                                                                         </tableView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="bottom" secondItem="9iF-HK-hUc" secondAttribute="bottom" id="DdN-xe-By9"/>
                                                                         <constraint firstAttribute="trailing" secondItem="9iF-HK-hUc" secondAttribute="trailing" id="Ld2-zp-QRW"/>
@@ -282,7 +289,7 @@
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEe-4O-2U3" userLabel="Bottom Gradient" customClass="GradientSeparatorView" customModule="KeePassium" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="318" width="252" height="16"/>
-                                                                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" systemColor="separatorColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="16" id="nCI-aM-Nju"/>
                                                                     </constraints>
@@ -299,7 +306,7 @@
                                                                                 <fragment content="#bc-ignore!"/>
                                                                             </attributedString>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6qT-UV-P49" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6qT-UV-P49" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="26" width="236" height="44"/>
                                                                             <color key="backgroundColor" name="ActionTint"/>
                                                                             <constraints>
@@ -323,7 +330,7 @@
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="WXP-XU-bGL" secondAttribute="trailing" id="AfD-dJ-zVa"/>
                                                                 <constraint firstAttribute="trailing" secondItem="gEe-4O-2U3" secondAttribute="trailing" id="EZ7-dQ-THw"/>
@@ -338,7 +345,7 @@
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                    <color key="value" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="value" systemColor="separatorColor"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                     <real key="value" value="1"/>
@@ -358,7 +365,7 @@
                                                 </cells>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="DHw-Tm-Wbg" secondAttribute="trailing" id="4m9-Uj-TSr"/>
                                             <constraint firstItem="DHw-Tm-Wbg" firstAttribute="top" secondItem="Rng-i2-FCe" secondAttribute="top" id="I0A-np-OkT"/>
@@ -366,7 +373,7 @@
                                             <constraint firstItem="DHw-Tm-Wbg" firstAttribute="leading" secondItem="Rng-i2-FCe" secondAttribute="leading" id="mXN-QD-V40"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="j7c-Gd-QEh" userLabel="Restore Purchases Button" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="j7c-Gd-QEh" userLabel="Restore Purchases Button" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="668" width="414" height="40"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <color key="tintColor" name="ActionTint"/>
@@ -378,7 +385,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f3M-nh-HoU" userLabel="Footer">
                                         <rect key="frame" x="0.0" y="708" width="414" height="28"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NSz-U1-2ye" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NSz-U1-2ye" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="203" height="28"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="tintColor" name="ActionTint"/>
@@ -387,7 +394,7 @@
                                                     <action selector="didPressTerms:" destination="R3A-LD-8BE" eventType="touchUpInside" id="QOO-sI-fL1"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fC2-en-cOo" userLabel="Privacy Policy" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fC2-en-cOo" userLabel="Privacy Policy" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                                 <rect key="frame" x="211" y="0.0" width="203" height="28"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="tintColor" name="ActionTint"/>
@@ -401,14 +408,14 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="Kmt-xm-cCJ"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="q33-jL-fgN" firstAttribute="leading" secondItem="Kmt-xm-cCJ" secondAttribute="leading" id="73E-HY-Y4n"/>
                             <constraint firstItem="Kmt-xm-cCJ" firstAttribute="trailing" secondItem="q33-jL-fgN" secondAttribute="trailing" id="KIX-i5-1Nv"/>
                             <constraint firstItem="q33-jL-fgN" firstAttribute="top" secondItem="Kmt-xm-cCJ" secondAttribute="top" id="UcA-Sc-KWO"/>
                             <constraint firstItem="Kmt-xm-cCJ" firstAttribute="bottom" secondItem="q33-jL-fgN" secondAttribute="bottom" id="pAY-JC-8ik"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Kmt-xm-cCJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Premium" id="LNd-e9-YY7">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="U8O-hP-2p8">
@@ -454,5 +461,17 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

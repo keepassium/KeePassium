@@ -13,7 +13,10 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
 
     @IBOutlet weak var rememberMasterKeysSwitch: UISwitch!
     @IBOutlet weak var clearMasterKeysButton: UIButton!
-    
+    @IBOutlet weak var rememberFinalKeysSwitch: UISwitch!
+    @IBOutlet weak var rememberFinalKeysLabel: UILabel!
+    @IBOutlet weak var rememberFinalKeysCell: UITableViewCell!
+
     @IBOutlet weak var rememberUsedKeyFiles: UISwitch!
     @IBOutlet weak var clearKeyFileAssociationsButton: UIButton!
     
@@ -56,6 +59,9 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     func refresh() {
         let settings = Settings.current
         rememberMasterKeysSwitch.isOn = settings.isRememberDatabaseKey
+        rememberFinalKeysSwitch.isEnabled = settings.isRememberDatabaseKey
+        rememberFinalKeysSwitch.isOn = settings.isRememberDatabaseFinalKey
+        
         rememberUsedKeyFiles.isOn = settings.premiumIsKeepKeyFileAssociations
         universalClipboardSwitch.isOn = settings.isUniversalClipboardEnabled
         hideProtectedFieldsSwitch.isOn = settings.isHideProtectedFields
@@ -85,6 +91,17 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
         refresh()
         if !isRemember {
             didPressClearMasterKeys(self)
+        }
+    }
+    
+    @IBAction func didToggleRememberFinalKeys(_ sender: UISwitch) {
+        let isRemember = rememberFinalKeysSwitch.isOn
+        Settings.current.isRememberDatabaseFinalKey = isRemember
+        refresh()
+        if !isRemember {
+            rememberFinalKeysLabel.flashColor(to: .destructiveTint, duration: 0.7)
+            DatabaseSettingsManager.shared.eraseAllFinalKeys()
+            Diag.info("Final keys erased successfully")
         }
     }
     

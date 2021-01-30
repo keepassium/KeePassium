@@ -48,8 +48,22 @@ final class KeyHelper2: KeyHelper {
     }
     
     internal override func processXmlKeyFile(keyFileData: ByteArray) throws -> SecureByteArray? {
-        let xml = try AEXMLDocument(xml: keyFileData.asData)
-        let version = xml[Xml2.keyFile][Xml2.meta][Xml2.version].value
+        let xml: AEXMLDocument
+        do {
+            xml = try AEXMLDocument(xml: keyFileData.asData)
+        } catch {
+            return nil
+        }
+        
+        let versionElement = xml[Xml2.keyFile][Xml2.meta][Xml2.version]
+        if versionElement.error != nil {
+            return nil
+        }
+        guard let version = versionElement.value else {
+            Diag.warning("Missing version in XML key file")
+            return nil
+        }
+
         switch version {
         case "2.0":
             let result = try processXMLFileVersion2(xml) 
@@ -58,6 +72,7 @@ final class KeyHelper2: KeyHelper {
             let result = try processXMLFileVersion1(xml) 
             return result
         default:
+            Diag.error("Unsupported XML key file format [version: \(version)]")
             throw KeyFileError.unsupportedFormat
         }
     }

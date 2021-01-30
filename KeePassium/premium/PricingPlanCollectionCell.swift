@@ -33,6 +33,21 @@ class PricingPlanConditionCell: UITableViewCell {
     @IBOutlet weak var detailButton: UIButton!
     var helpReference: PricingPlanCondition.HelpReference = .none
     
+    var isChecked: Bool = false {
+        didSet {
+            if isChecked {
+                checkmarkImage?.image = UIImage(asset: .premiumConditionCheckedListitem)
+                checkmarkImage?.tintColor = .primaryText
+                titleLabel?.textColor = .primaryText
+                accessibilityTraits.remove(.notEnabled)
+            } else {
+                checkmarkImage?.image = UIImage(asset: .premiumConditionUncheckedListitem)
+                checkmarkImage?.tintColor = .disabledText
+                titleLabel?.textColor = .disabledText
+                accessibilityTraits.insert(.notEnabled)
+            }
+        }
+    }
     @IBAction func didPressDetailButton(_ sender: UIButton) {
         assert(helpReference != .none)
         delegate?.didPressDetailButton(in: self)
@@ -226,15 +241,7 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
             as! PricingPlanConditionCell
         cell.delegate = self
         cell.titleLabel?.text = condition.localizedTitle
-        if condition.isIncluded {
-            cell.checkmarkImage?.image = UIImage(asset: .premiumConditionCheckedListitem)
-            cell.checkmarkImage?.tintColor = .primaryText
-            cell.titleLabel.textColor = .primaryText
-        } else {
-            cell.checkmarkImage?.image = UIImage(asset: .premiumConditionUncheckedListitem)
-            cell.checkmarkImage?.tintColor = .disabledText
-            cell.titleLabel.textColor = .disabledText
-        }
+        cell.isChecked = condition.isIncluded
         
         cell.helpReference = condition.moreInfo
         cell.detailButton.isHidden = (condition.moreInfo == .none)

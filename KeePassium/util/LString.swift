@@ -115,7 +115,12 @@ public enum LString {
         value: "Contact Us",
         comment: "Action/button to write an email to support"
     )
-
+    public static let actionLearnMore = NSLocalizedString(
+        "[Generic] Learn more",
+        value: "Learn more…",
+        comment: "Action/button to view more help/info about some topic"
+    )
+    
     public static let actionDeleteFile = NSLocalizedString(
         "[Generic/File] Delete",
         value: "Delete",
@@ -181,6 +186,11 @@ public enum LString {
         "[File/PermissionDenied] Try to remove the file from the app, then add it again.",
         value: "Try to remove the file from the app, then add it again.",
         comment: "A suggestion shown after specific file errors (either databases or key files)."
+    )
+    public static let actionReAddFile = NSLocalizedString(
+        "[File/Re-add/title]",
+        value: "Add the file again",
+        comment: "Action: re-add (a broken) database or key file to the app."
     )
     public static let fileAlreadyExists = NSLocalizedString(
         "[Generic/File/title] File already exists",

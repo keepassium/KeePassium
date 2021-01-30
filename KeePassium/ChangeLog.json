@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.21",
-            "releaseDate": "2021-01-10T00:00:00Z",
+            "releaseDate": "2021-01-21T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Premium subscriptions now support Family Sharing",
@@ -29,6 +29,10 @@
                     "type": 1
                 },
                 {
+                    "title": "🧩 Added: Option \"Remember Derived Master Keys\" (allows enforcing YubiKey scan) [thanks, Simon]",
+                    "type": 1
+                },
+                {
                     "title": "🧩 Added: Arabic translation [thanks, ZER0-X and Ali Madan]",
                     "type": 1
                 },
@@ -49,6 +53,10 @@
                     "type": 1
                 },
                 {
+                    "title": "🛠 Refined: Added a warning when opening a backup database",
+                    "type": 1
+                },
+                {
                     "title": "🛠 Refined: It is possible to skip AutoFill setup now [thanks, Michael]",
                     "type": 1
                 },
@@ -65,11 +73,19 @@
                     "type": 1
                 },
                 {
+                    "title": "🛠 Refined: After a one-time purchase, show a reminder to cancel the old subscription",
+                    "type": 1
+                },
+                {
                     "title": "🛠 Refined: Added \"Pro\" to About screen of the Pro version [thanks, Glenn]",
                     "type": 1
                 },
                 {
                     "title": "🛠 Refined: Updated all translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: In certain conditions, it was possible to open database after a timeout (fixes #140) [thanks, Don]",
                     "type": 1
                 },
                 {

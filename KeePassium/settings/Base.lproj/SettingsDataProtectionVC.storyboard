@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Bpw-6U-LVJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Quick Unlock" id="Faj-km-pM5" userLabel="Master Keys">
                                 <string key="footerTitle">Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. 
@@ -72,7 +72,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-nv-Mst" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-nv-Mst" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                                     <rect key="frame" x="94" y="15" width="132" height="14"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="tintColor" name="DestructiveTint"/>
@@ -97,14 +97,14 @@
                             <tableViewSection headerTitle="Automatic Lock" footerTitle="Database timeout closes any opened databases and clears any remembered master keys after some time." id="neJ-eG-TV7" userLabel="Timeout">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="weX-SZ-IDB" detailTextLabel="beV-Hv-Qdr" imageView="kwU-PJ-9tl" style="IBUITableViewCellStyleValue1" id="7gS-TC-EzJ">
-                                        <rect key="frame" x="0.0" y="315" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="331" width="320" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7gS-TC-EzJ" id="3iu-pK-y97">
                                             <rect key="frame" x="0.0" y="0.0" width="293" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Database Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="weX-SZ-IDB">
-                                                    <rect key="frame" x="60" y="16" width="140" height="20.5"/>
+                                                    <rect key="frame" x="60" y="16" width="139.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -144,23 +144,23 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Clear Master Keys on Timeout" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTm-F6-EDQ">
-                                                    <rect key="frame" x="61" y="11" width="158.5" height="21.5"/>
+                                                    <rect key="frame" x="61" y="11" width="153" height="21.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Tol-4N-vjf">
-                                                    <rect key="frame" x="227.5" y="10" width="76.5" height="23.5"/>
+                                                    <rect key="frame" x="222" y="6.5" width="82" height="31"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="premium-feature-badge" translatesAutoresizingMaskIntoConstraints="NO" id="8yB-X8-xqJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="23.5" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="1" width="29" height="29"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="8yB-X8-xqJ" secondAttribute="height" multiplier="1:1" id="kfC-it-kzc"/>
                                                                 <constraint firstAttribute="width" constant="29" id="nn3-2K-EDk"/>
                                                             </constraints>
                                                         </imageView>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSh-Tr-5oQ">
-                                                            <rect key="frame" x="27.5" y="0.0" width="51" height="23.5"/>
+                                                            <rect key="frame" x="33" y="0.0" width="51" height="31"/>
                                                             <connections>
                                                                 <action selector="didToggleLockDatabasesOnTimeoutSwitch:" destination="IZZ-aM-g2i" eventType="valueChanged" id="00J-7H-JZU"/>
                                                             </connections>
@@ -171,13 +171,13 @@
                                             <constraints>
                                                 <constraint firstItem="gTm-F6-EDQ" firstAttribute="leading" secondItem="0Tb-sh-39n" secondAttribute="trailing" constant="16" id="9lF-ay-5JF"/>
                                                 <constraint firstItem="Tol-4N-vjf" firstAttribute="leading" secondItem="gTm-F6-EDQ" secondAttribute="trailing" constant="8" id="KYO-nu-hbm"/>
-                                                <constraint firstItem="Tol-4N-vjf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WV2-IR-7yU" secondAttribute="top" constant="10" id="WC5-tF-xA2"/>
+                                                <constraint firstItem="Tol-4N-vjf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WV2-IR-7yU" secondAttribute="top" priority="750" constant="10" id="WC5-tF-xA2"/>
                                                 <constraint firstItem="0Tb-sh-39n" firstAttribute="leading" secondItem="WV2-IR-7yU" secondAttribute="leadingMargin" id="YjH-Gw-0Gy"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="gTm-F6-EDQ" secondAttribute="bottom" id="eTU-Tr-g0u"/>
                                                 <constraint firstItem="gTm-F6-EDQ" firstAttribute="centerY" secondItem="WV2-IR-7yU" secondAttribute="centerY" priority="250" id="ftQ-1q-2Cm"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Tol-4N-vjf" secondAttribute="trailing" id="hkf-ug-PZe"/>
-                                                <constraint firstItem="Tol-4N-vjf" firstAttribute="centerY" secondItem="WV2-IR-7yU" secondAttribute="centerY" priority="250" id="ias-vZ-B7x"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Tol-4N-vjf" secondAttribute="bottom" constant="10" id="ih0-2k-lFP"/>
+                                                <constraint firstItem="Tol-4N-vjf" firstAttribute="centerY" secondItem="WV2-IR-7yU" secondAttribute="centerY" id="ias-vZ-B7x"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Tol-4N-vjf" secondAttribute="bottom" priority="750" constant="10" id="ih0-2k-lFP"/>
                                                 <constraint firstItem="0Tb-sh-39n" firstAttribute="centerY" secondItem="WV2-IR-7yU" secondAttribute="centerY" id="kZJ-pm-Pyh"/>
                                                 <constraint firstItem="gTm-F6-EDQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WV2-IR-7yU" secondAttribute="topMargin" id="lVS-O6-Pkp"/>
                                             </constraints>
@@ -188,14 +188,14 @@
                             <tableViewSection headerTitle="Clipboard" footerTitle="When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time." id="hnI-Q8-Ixm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="SSu-Sr-MCg" detailTextLabel="xPd-ot-oqe" imageView="KN4-NG-3Iw" style="IBUITableViewCellStyleValue1" id="pl7-TW-G1h" userLabel="Clipboard Timeout Cell">
-                                        <rect key="frame" x="0.0" y="518.5" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="534.5" width="320" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pl7-TW-G1h" id="Wfm-hG-PH6">
                                             <rect key="frame" x="0.0" y="0.0" width="293" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Clipboard Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="SSu-Sr-MCg">
-                                                    <rect key="frame" x="60" y="16" width="141.5" height="20.5"/>
+                                                    <rect key="frame" x="60" y="16" width="140.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
@@ -225,7 +225,7 @@
                                 <string key="footerTitle">Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="2o6-DM-GCk" userLabel="Use Universal Clilpboard">
-                                        <rect key="frame" x="0.0" y="650.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="666.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2o6-DM-GCk" id="euh-0J-9KN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -272,7 +272,7 @@
                             <tableViewSection headerTitle="Protected Fields" footerTitle="Hide passwords and other protected fields behind asterisks (recommended)." id="e6Y-AP-hag">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="xy0-l4-jX5" userLabel="Hide Protected Fields">
-                                        <rect key="frame" x="0.0" y="818" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="834" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xy0-l4-jX5" id="SV3-RM-NaN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -320,7 +320,7 @@
                                 <string key="footerTitle">Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="qrz-wG-vpS">
-                                        <rect key="frame" x="0.0" y="953.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="969.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qrz-wG-vpS" id="cEF-MG-8iD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -363,13 +363,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="63r-C0-jmV">
-                                        <rect key="frame" x="0.0" y="997.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="1013.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="63r-C0-jmV" id="54K-xz-dwY">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uV-Zs-RRo" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uV-Zs-RRo" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                                     <rect key="frame" x="63" y="15" width="194" height="14"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="tintColor" name="DestructiveTint"/>
@@ -391,6 +391,59 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Advanced" footerTitle="Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. " id="Zqb-p5-Ft8">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="qjB-0Y-b5L">
+                                        <rect key="frame" x="0.0" y="1165" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qjB-0Y-b5L" id="wQh-sf-qDA">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-remember-master-keys-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="g6c-fu-Gfv">
+                                                    <rect key="frame" x="8" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="aG3-h1-Uxs"/>
+                                                        <constraint firstAttribute="width" constant="29" id="ykK-F6-Vhd"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Cache Derived Encryption Keys" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siQ-LK-GXZ">
+                                                    <rect key="frame" x="53" y="11" width="202" height="22"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Setting: preserve (cache) calculated database keys"/>
+                                                    </attributedString>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wD7-lf-bW7">
+                                                    <rect key="frame" x="263" y="10" width="51" height="24"/>
+                                                    <connections>
+                                                        <action selector="didToggleRememberFinalKeys:" destination="IZZ-aM-g2i" eventType="valueChanged" id="4EL-kj-qld"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="g6c-fu-Gfv" firstAttribute="leading" secondItem="wQh-sf-qDA" secondAttribute="leadingMargin" id="2kM-FZ-Qec"/>
+                                                <constraint firstItem="siQ-LK-GXZ" firstAttribute="leading" secondItem="g6c-fu-Gfv" secondAttribute="trailing" constant="16" id="4wX-h5-zPm"/>
+                                                <constraint firstItem="wD7-lf-bW7" firstAttribute="centerY" secondItem="wQh-sf-qDA" secondAttribute="centerY" priority="750" id="7xH-0I-F6R"/>
+                                                <constraint firstItem="wD7-lf-bW7" firstAttribute="trailing" secondItem="wQh-sf-qDA" secondAttribute="trailingMargin" id="EgQ-Lu-NHi"/>
+                                                <constraint firstItem="wD7-lf-bW7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wQh-sf-qDA" secondAttribute="top" constant="10" id="FEc-U1-H9b"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wD7-lf-bW7" secondAttribute="bottom" constant="10" id="Quh-jJ-Ocm"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="siQ-LK-GXZ" secondAttribute="bottom" id="XGt-WX-AwK"/>
+                                                <constraint firstItem="g6c-fu-Gfv" firstAttribute="centerY" secondItem="wQh-sf-qDA" secondAttribute="centerY" id="he3-1y-9q8"/>
+                                                <constraint firstItem="siQ-LK-GXZ" firstAttribute="centerY" secondItem="wQh-sf-qDA" secondAttribute="centerY" priority="250" id="iBK-1l-rgf"/>
+                                                <constraint firstItem="wD7-lf-bW7" firstAttribute="leading" secondItem="siQ-LK-GXZ" secondAttribute="trailing" constant="8" id="nkr-Nh-9fj"/>
+                                                <constraint firstItem="siQ-LK-GXZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wQh-sf-qDA" secondAttribute="topMargin" id="yH9-iu-EOJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                                <attributedString key="userComments">
+                                    <fragment content="Section title: advanced/expert settings"/>
+                                </attributedString>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="IZZ-aM-g2i" id="saX-Ms-ENf"/>
@@ -407,6 +460,9 @@
                         <outlet property="lockDatabaseOnTimeoutLabel" destination="gTm-F6-EDQ" id="Bw0-Cg-oOg"/>
                         <outlet property="lockDatabaseOnTimeoutPremiumBadge" destination="8yB-X8-xqJ" id="ZNY-Xy-3a2"/>
                         <outlet property="lockDatabaseOnTimeoutSwitch" destination="sSh-Tr-5oQ" id="t5k-4w-FGE"/>
+                        <outlet property="rememberFinalKeysCell" destination="qjB-0Y-b5L" id="azM-5k-98q"/>
+                        <outlet property="rememberFinalKeysLabel" destination="siQ-LK-GXZ" id="Ckc-4k-YEe"/>
+                        <outlet property="rememberFinalKeysSwitch" destination="wD7-lf-bW7" id="MyD-Db-rbq"/>
                         <outlet property="rememberMasterKeysSwitch" destination="xIS-oe-VeS" id="3aO-D6-Lhz"/>
                         <outlet property="rememberUsedKeyFiles" destination="p4I-y6-xzA" id="Yx9-zT-Cc0"/>
                         <outlet property="universalClipboardSwitch" destination="16U-9b-Jx7" id="fJg-kL-Mgl"/>
@@ -437,5 +493,8 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -1,5 +1,23 @@
 #CHANGELOG
 
+## [1.21.80] - 2021-01-21
+
+### Added
+
+- Expert setting "Remember Derived Master Keys" (allows enforcing YubiKey scan) [thanks, Simon]
+
+### Refined
+
+- Show a warning when opening a temporary backup database 
+- Improved accessibility of the premium upgrade screen
+- After a one-time purchase, remind to cancel ongoing subscriptions
+
+### Fixed
+
+- Processing of key files [thanks, everyone]
+- In some conditions, it was possible to open database after a timeout (fixes #140) [thanks, Don]
+
+
 ## [1.21.79] - 2021-01-10
 
 ### Added 

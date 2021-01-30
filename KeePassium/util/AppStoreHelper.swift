@@ -37,4 +37,17 @@ class AppStoreHelper {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
+
+    #if MAIN_APP
+    static func openSubscriptionManagement() {
+        guard let url = URL(string: "itms-apps://apps.apple.com/account/subscriptions") else {
+            assertionFailure();
+            return
+        }
+        let application = UIApplication.shared
+        if application.canOpenURL(url) {
+            application.open(url, options: [:])
+        }
+    }
+    #endif
 }

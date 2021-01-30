@@ -26,6 +26,7 @@ class PremiumCoordinator: NSObject, Coordinator {
     
     private var availablePricingPlans = [PricingPlan]()
     private var isProductsRefreshed: Bool = false
+    private var hadSubscriptionBeforePurchase = false
     
     init(presentingViewController: UIViewController) {
         self.premiumManager = PremiumManager.shared
@@ -160,13 +161,30 @@ extension PremiumCoordinator: PremiumManagerDelegate {
     func purchaseStarted(in premiumManager: PremiumManager) {
         planPicker.showMessage(LString.statusPurchasing)
         setPurchasing(true)
+        hadSubscriptionBeforePurchase = premiumManager.getPremiumProduct()?.isSubscription ?? false
     }
     
     func purchaseSucceeded(_ product: InAppProduct, in premiumManager: PremiumManager) {
         setPurchasing(false)
-        let usage = premiumManager.usageMonitor.getAppUsageDuration(.perMonth)
-        if usage > 10 * 60.0 {
-            SKStoreReviewController.requestReview()
+        if hadSubscriptionBeforePurchase {
+            let existingSubscriptionAlert = UIAlertController.make(
+                title: LString.titlePurchaseSuccess,
+                message: LString.messageCancelOldSubscriptions,
+                cancelButtonTitle: LString.actionDismiss)
+            let manageSubscriptionAction = UIAlertAction(
+                title: LString.actionManageSubscriptions,
+                style: .default)
+            {
+                (action) in
+                AppStoreHelper.openSubscriptionManagement()
+            }
+            existingSubscriptionAlert.addAction(manageSubscriptionAction)
+            planPicker.present(existingSubscriptionAlert, animated: true, completion: nil)
+        } else {
+            let usage = premiumManager.usageMonitor.getAppUsageDuration(.perMonth)
+            if usage > 10 * 60.0 {
+                SKStoreReviewController.requestReview()
+            }
         }
     }
     

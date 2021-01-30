@@ -302,6 +302,26 @@ public class DatabaseLoader: ProgressObserver {
         onCompositeKeyComponentsProcessed(dbDoc: dbDoc, compositeKey: compositeKey)
     }
     
+    private func addFileLocationWarnings(to warnings: DatabaseLoadingWarnings) {
+        guard let dbFileInfo = dbRef.getCachedInfoSync(canFetch: false) else {
+            return
+        }
+        
+        if dbFileInfo.isInTrash {
+            let trashWarning = String.localizedStringWithFormat(
+                LString.Warning.fileIsInTrashTemplate,
+                dbFileInfo.fileName
+            )
+            Diag.warning(trashWarning)
+            warnings.messages.insert(trashWarning, at: 0)
+        }
+        if dbRef.location == .internalBackup {
+            let temporaryBackupWarning = LString.Warning.temporaryBackupDatabase
+            Diag.warning(temporaryBackupWarning)
+            warnings.messages.insert(temporaryBackupWarning, at: 0)
+        }
+    }
+    
     func onCompositeKeyComponentsProcessed(dbDoc: DatabaseDocument, compositeKey: CompositeKey) {
         assert(compositeKey.state >= .processedComponents)
         guard let db = dbDoc.database else { fatalError() }
@@ -331,16 +351,7 @@ public class DatabaseLoader: ProgressObserver {
                     contents: dbDoc.data)
             }
             
-            if let dbFileInfo = dbRef.getCachedInfoSync(canFetch: false),
-               dbFileInfo.isInTrash
-            {
-                let warning = String.localizedStringWithFormat(
-                    LString.Warning.fileIsInTrashTemplate,
-                    dbFileInfo.fileName
-                )
-                Diag.warning(warning)
-                warnings.messages.insert(warning, at: 0)
-            }
+            addFileLocationWarnings(to: warnings)
 
             progress.completedUnitCount = ProgressSteps.all
             progress.localizedDescription = LString.Progress.done

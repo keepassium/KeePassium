@@ -61,6 +61,10 @@ internal enum LString {
             value: "'%@' is located in Recently Deleted and might be deleted soon. To preserve your data, move the file to a more permanent location.",
             comment: "Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String]"
         )
+        public static let temporaryBackupDatabase = NSLocalizedString(
+            "[File/TemporaryBackup/warning]",
+            value: "This is a temporary backup database. It can be automatically deleted without a warning. Don't use it as your main database.",
+            comment: "Notification when user opens an in-app backup database.")
     }
     
     

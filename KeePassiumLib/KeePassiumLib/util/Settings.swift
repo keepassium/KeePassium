@@ -61,6 +61,7 @@ public class Settings {
         case startupDatabase
         case autoUnlockStartupDatabase
         case rememberDatabaseKey
+        case rememberDatabaseFinalKey
         case keepKeyFileAssociations
         case keepHardwareKeyAssociations
         case hardwareKeyAssociations
@@ -848,6 +849,22 @@ public class Settings {
                 key: .rememberDatabaseKey)
         }
     }
+
+    public var isRememberDatabaseFinalKey: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.rememberDatabaseFinalKey.rawValue)
+                as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isRememberDatabaseFinalKey,
+                newValue: newValue,
+                key: .rememberDatabaseFinalKey)
+        }
+    }
+
     
     public var isKeepKeyFileAssociations: Bool {
         get {
