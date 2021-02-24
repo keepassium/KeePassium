@@ -1,5 +1,31 @@
 #CHANGELOG
 
+## [1.22.82] - 2021-02-20
+
+### Added
+
+- Appearance settings page
+- Icons from KeePass (Nuvola) and KeePassXC (Icons8)
+- "Copy to Clipboard" button to diagnostic viewer [thanks, Eugene]
+- "Change Passcode" button in settings
+
+### Improved
+
+- Instructions in Passcode Input dialog
+- Clarified license terms for KeePassium (Roundicons) icons
+- Text size moved from zoom gesture to Appearance settings (fixes #132)
+- Tech debt: adopting coordinators instead of massive view controllers (ongoing)
+- Tech debt: unified Diagnostics Viewer
+- Minor improvements for Mac Catalyst (#82)
+- Updated TPInAppReceipt to 3.0.1
+
+### Fixed
+
+- Database lock timeout was not always respected on iOS 14.4 [thanks, Don and Marinus]
+- Crash on iOS 14.4 when cancelling entry creation [thanks, Sandu]
+- Crash on iPad when there is no default email client [thanks, Florian]
+
+
 ## [1.21.81] - 2021-01-30
 
 ### Refined
