@@ -58,9 +58,25 @@ enum ImageAsset: String {
     case yubikeyMFIKey = "yubikey-mfi-key"
 }
 
+enum SystemImageName: String {
+    case ellipsisCircle = "ellipsis.circle"
+    case pencil = "pencil"
+    case squareAndPencil = "square.and.pencil"
+    case squareAndArrowUp = "square.and.arrow.up"
+    case trash = "trash"
+}
+
 extension UIImage {
     convenience init(asset: ImageAsset) {
         self.init(named: asset.rawValue)! 
+    }
+    
+    static func get(_ systemImageName: SystemImageName) -> UIImage? {
+        if #available(iOS 13, *) {
+            return UIImage(systemName: systemImageName.rawValue)
+        } else {
+            return UIImage(named: systemImageName.rawValue)
+        }
     }
     
     static func kpIcon(forEntry entry: Entry, iconSet: DatabaseIconSet?=nil) -> UIImage? {
