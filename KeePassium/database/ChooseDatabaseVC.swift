@@ -597,6 +597,7 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
             self?.didPressExportDatabase(at: indexPath)
             completion(true)
         }
+        shareAction.image = UIImage.get(.squareAndArrowUp)
         shareAction.backgroundColor = UIColor.actionTint
         
         let urlRef = databaseRefs[indexPath.row]

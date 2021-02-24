@@ -271,6 +271,7 @@ class ChooseKeyFileVC: UITableViewController, Refreshable {
                 completion(false) 
             }
         }
+        deleteAction.image = UIImage.get(.trash)
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 

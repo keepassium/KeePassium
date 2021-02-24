@@ -193,6 +193,7 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
                 }
             }
         )
+        deleteAction.image = UIImage.get(.trash)
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }

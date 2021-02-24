@@ -549,7 +549,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             completion(true)
         }
         editAction.backgroundColor = UIColor.actionTint
-        editAction.image = UIImage(asset: .editItemToolbar)
+        editAction.image = UIImage.get(.squareAndPencil)
         
         let deleteAction = UIContextualAction(style: .destructive, title: LString.actionDelete)
         {
@@ -562,7 +562,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             }
         }
         deleteAction.backgroundColor = UIColor.destructiveTint
-        deleteAction.image = UIImage(asset: .deleteItemToolbar)
+        deleteAction.image = UIImage.get(.trash)
 
         let menuAction = UIContextualAction(style: .normal, title: LString.titleMoreActions)
         {
@@ -571,7 +571,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             completion(true)
         }
         menuAction.backgroundColor = UIColor.lightGray
-        menuAction.image = UIImage(asset: .moreActionsToolbar)
+        menuAction.image = UIImage.get(.ellipsisCircle)
         
         var allowedActions = [deleteAction]
         if let entry = getEntry(at: indexPath), canEdit(entry) {
