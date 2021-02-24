@@ -1,6 +1,68 @@
 {
     "sections": [
         {
+            "version": "1.22",
+            "releaseDate": "2021-02-20T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Appearance settings page",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Icons from KeePass (Nuvola) and KeePassXC (Icons8)",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: \"Copy to Clipboard\" button to diagnostic viewer [thanks, Eugene]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: \"Change Passcode\" button in settings",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Instructions in Passcode Input dialog",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Clarified license terms for KeePassium (Roundicons) icons",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Text size moved from zoom gesture to Appearance settings (fixes #132)",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Tech debt: adopting coordinators instead of massive view controllers (ongoing)",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Tech debt: unified Diagnostics Viewer",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Minor improvements for Mac Catalyst (#82)",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Updated TPInAppReceipt to 3.0.1",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Database lock timeout was not always respected on iOS 14.4 [thanks, Don and Marinus]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash on iOS 14.4 when cancelling entry creation [thanks, Sandu]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash on iPad when there is no default email client [thanks, Florian]",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.21",
             "releaseDate": "2021-01-30T00:00:00Z",
             "items": [
