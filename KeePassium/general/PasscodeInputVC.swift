@@ -74,9 +74,6 @@ class PasscodeInputVC: UIViewController {
             action: #selector(didPressCancelButton))
         navigationItem.leftBarButtonItem = cancelButton
         
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            switchKeyboardButton.isHidden = true
-        }
         setKeyboardType(Settings.current.passcodeKeyboardType)
     }
     
