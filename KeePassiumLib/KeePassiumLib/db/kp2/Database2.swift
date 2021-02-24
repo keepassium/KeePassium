@@ -226,7 +226,8 @@ public class Database2: Database {
             var allCurrentEntries = [Entry]()
             root?.collectAllEntries(to: &allCurrentEntries) 
 
-            var allEntriesPlusHistory = [Entry](reserveCapacity: allCurrentEntries.count * 4)
+            var allEntriesPlusHistory = [Entry]()
+            allEntriesPlusHistory.reserveCapacity(allCurrentEntries.count * 4) 
             allCurrentEntries.forEach { entry in
                 allEntriesPlusHistory.append(entry)
                 guard let entry2 = entry as? Entry2 else { assertionFailure(); return }
