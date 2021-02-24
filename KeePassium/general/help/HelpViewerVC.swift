@@ -21,6 +21,7 @@ class HelpViewerVC: UIViewController {
             refresh()
         }
     }
+    private var contentSizeObservation: NSKeyValueObservation?
     
     
     public static func create() -> HelpViewerVC {
@@ -38,6 +39,10 @@ class HelpViewerVC: UIViewController {
         bodyTextView.textContainerInset.left = 8
         bodyTextView.textContainerInset.right = 8
 
+        contentSizeObservation = bodyTextView.observe(\.contentSize, options: [.new]) {
+            [weak self] (textView, change) in
+            self?.preferredContentSize = textView.contentSize
+        }
         refresh()
     }
     

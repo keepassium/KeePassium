@@ -18,9 +18,6 @@ protocol Coordinator: class {
     func addChildCoordinator(_ coordinator: Coordinator)
     func removeChildCoordinator(_ coordinator: Coordinator)
     
-    func addChildCoordinator(_ coordinator: Coordinator)
-    func removeChildCoordinator(_ coordinator: Coordinator)
-    
     func start()
 }
 
