@@ -136,17 +136,7 @@ public enum LString {
         value: "Remove",
         comment: "Action/button to remove a file from the app (the file remains, but the app forgets about it)"
     )
-
-    public static let actionUnlock = NSLocalizedString(
-        "[AppLock] Unlock",
-        value: "Unlock",
-        comment: "Action/button to unlock the App Lock with passcode"
-    )
-    public static let actionUsePasscode = NSLocalizedString(
-        "[AppLock/cancelBiometricAuth] Use Passcode",
-        value: "Use Passcode",
-        comment: "Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode."
-    )
+    
     public static let actionUpgradeToPremium = NSLocalizedString(
         "[Premium/Upgrade/action] Upgrade to Premium",
         value: "Upgrade to Premium",
@@ -201,6 +191,43 @@ public enum LString {
         "[Generic/File/title] File already exists",
         value: "File already exists",
         comment: "Message shown when trying to copy into an existing file."
+    )
+    
+    
+    public static let actionUnlock = NSLocalizedString(
+        "[AppLock] Unlock",
+        value: "Unlock",
+        comment: "Action/button to unlock the App Lock with passcode"
+    )
+    public static let actionUsePasscode = NSLocalizedString(
+        "[AppLock/cancelBiometricAuth] Use Passcode",
+        value: "Use Passcode",
+        comment: "Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode."
+    )
+    public static let actionChangePasscode = NSLocalizedString(
+        "[AppLock/changePasscode]",
+        value: "Change Passcode",
+        comment: "Action/button to modify the existing AppLock passcode."
+    )
+    public static let titleNewPasscodeSaved = NSLocalizedString(
+        "[AppLock/passcodeUpdated/title]",
+        value: "Passcode updated successfully.",
+        comment: "Notification that the modified AppLock passcode has been saved."
+    )
+    public static let actionSavePasscode = NSLocalizedString(
+        "[AppLock/savePasscode]",
+        value: "Save Passcode",
+        comment: "Action/button to save new or edited AppLock passcode."
+    )
+    public static let titleSetupAppPasscode = NSLocalizedString(
+        "[AppLock/SetupPasscode/callToAction]",
+        value: "Protect KeePassium from unauthorized access",
+        comment: "Call to action in the passcode input dialog."
+    )
+    public static let titleUnlockTheApp = NSLocalizedString(
+        "[AppLock/EnterPasscode/callToAction]",
+        value: "Unlock KeePassium",
+        comment: "Call to action in the passcode input dialog."
     )
     
     public static let actionCopyToClipboardTemplate = NSLocalizedString(

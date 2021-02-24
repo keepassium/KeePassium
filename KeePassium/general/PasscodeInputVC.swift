@@ -35,12 +35,14 @@ class PasscodeInputVC: UIViewController {
         case verification
     }
     
+    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var passcodeTextField: ProtectedTextField!
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var switchKeyboardButton: UIButton!
     @IBOutlet weak var useBiometricsButton: UIButton!
     @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
+    @IBOutlet weak var instructionsToCancelButtonConstraint: NSLayoutConstraint!
     
     public var mode: Mode = .setup
     public var shouldActivateKeyboard = true
@@ -68,23 +70,21 @@ class PasscodeInputVC: UIViewController {
         passcodeTextField.validityDelegate = self
         passcodeTextField.isWatchdogAware = (mode != .verification) 
 
-        let cancelButton = UIBarButtonItem(
-            barButtonSystemItem: .cancel,
-            target: self,
-            action: #selector(didPressCancelButton))
-        navigationItem.leftBarButtonItem = cancelButton
+        switch mode {
+        case .setup:
+            instructionsLabel.text = LString.titleSetupAppPasscode
+            mainButton.setTitle(LString.actionSavePasscode, for: .normal)
+        case .verification:
+            instructionsLabel.text = LString.titleUnlockTheApp
+            mainButton.setTitle(LString.actionUnlock, for: .normal)
+        }
+        cancelButton.isHidden = !isCancelAllowed
+        instructionsToCancelButtonConstraint.isActive = isCancelAllowed
         
         setKeyboardType(Settings.current.passcodeKeyboardType)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        switch mode {
-        case .setup:
-            mainButton.setTitle(LString.actionDone, for: .normal)
-        case .verification:
-            mainButton.setTitle(LString.actionUnlock, for: .normal)
-        }
-        cancelButton.isHidden = !isCancelAllowed
         mainButton.isEnabled = passcodeTextField.isValid
         refreshBiometricsButton()
         

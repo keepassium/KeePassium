@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KmH-Rg-WCs">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KmH-Rg-WCs">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,13 +14,13 @@
             <objects>
                 <viewController storyboardIdentifier="PasscodeInputVC" id="KmH-Rg-WCs" customClass="PasscodeInputVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZhN-Z7-r4d">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9P-fB-zfA" userLabel="KeyboardAdjView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0x-Rz-Nfj">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0x-Rz-Nfj">
                                         <rect key="frame" x="8" y="8" width="66" height="36"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <color key="tintColor" name="ActionTint"/>
@@ -29,18 +30,18 @@
                                             <action selector="didPressCancelButton:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="nDF-m5-NUc"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter passcode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-t6-0ty">
-                                        <rect key="frame" x="60" y="233.5" width="119" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Enter passcode to protect KeePassium}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-t6-0ty">
+                                        <rect key="frame" x="47.5" y="44" width="319.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" name="PrimaryText"/>
                                         <nil key="highlightedColor"/>
                                         <attributedString key="userComments">
-                                            <fragment content="Call for action above the passcode text field"/>
+                                            <fragment content="#bc-ignore!"/>
                                         </attributedString>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTd-Zj-qAs" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="262" width="200" height="44"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <rect key="frame" x="107" y="387" width="200" height="44"/>
+                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="1bo-cl-ZZV"/>
                                             <constraint firstAttribute="height" constant="44" id="LsL-gj-gZm"/>
@@ -63,11 +64,11 @@
                                             <action selector="didChangePasscodeField:" destination="KmH-Rg-WCs" eventType="valueChanged" id="pX1-3Y-Vtf"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-Q7-JRa">
-                                        <rect key="frame" x="60" y="314" width="200" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-Q7-JRa" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                        <rect key="frame" x="107" y="439" width="200" height="44"/>
                                         <color key="backgroundColor" name="ActionTint"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="nSI-oU-RRJ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="nSI-oU-RRJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="tintColor" name="ActionText"/>
@@ -84,8 +85,8 @@
                                             <action selector="didPressMainButton:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="sq4-iI-f2q"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5U-FH-tld">
-                                        <rect key="frame" x="8" y="536" width="156" height="32"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5U-FH-tld">
+                                        <rect key="frame" x="8" y="786" width="156" height="32"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" title="{Switch to passphrase}">
@@ -98,8 +99,8 @@
                                             <action selector="didPressSwitchKeyboard:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="AYY-AQ-iAB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCs-4z-c3c">
-                                        <rect key="frame" x="246" y="494" width="74" height="74"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCs-4z-c3c">
+                                        <rect key="frame" x="369" y="773" width="45" height="45"/>
                                         <color key="tintColor" name="ActionTint"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" image="touch-id-listitem"/>
@@ -113,32 +114,35 @@
                                     <constraint firstAttribute="trailing" secondItem="HCs-4z-c3c" secondAttribute="trailing" id="7Be-KN-hvf"/>
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="bottom" secondItem="u9P-fB-zfA" secondAttribute="bottom" id="823-Ip-2VZ"/>
                                     <constraint firstItem="HCs-4z-c3c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f5U-FH-tld" secondAttribute="trailing" constant="8" id="8tP-tl-c4e"/>
+                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="AWb-Wr-Asf"/>
+                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="centerX" secondItem="ZTd-Zj-qAs" secondAttribute="centerX" id="ELh-TK-cnn"/>
                                     <constraint firstItem="HCs-4z-c3c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i2Z-Q7-JRa" secondAttribute="bottom" constant="8" id="EyR-0E-U82"/>
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i2Z-Q7-JRa" secondAttribute="bottom" constant="8" id="Spy-RJ-M1U"/>
                                     <constraint firstItem="i2Z-Q7-JRa" firstAttribute="top" secondItem="ZTd-Zj-qAs" secondAttribute="bottom" constant="8" id="VU5-Db-Ufe"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="Xb4-tK-S3a"/>
                                     <constraint firstItem="i2Z-Q7-JRa" firstAttribute="width" secondItem="ZTd-Zj-qAs" secondAttribute="width" id="ZUp-1T-Qgl"/>
+                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="top" priority="250" constant="16" id="b92-nV-xCo"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerY" secondItem="u9P-fB-zfA" secondAttribute="centerY" priority="750" id="dBk-f7-19f"/>
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="dZt-k0-KDh"/>
                                     <constraint firstItem="i2Z-Q7-JRa" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="f6B-2H-YvR"/>
-                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ZTd-Zj-qAs" secondAttribute="trailing" id="hpE-ef-9Q9"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="topMargin" id="lZx-Sc-BwX"/>
-                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="leading" secondItem="ZTd-Zj-qAs" secondAttribute="leading" id="mPJ-oe-aIm"/>
-                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z0x-Rz-Nfj" secondAttribute="bottom" id="muI-ci-wh6"/>
+                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="z0x-Rz-Nfj" secondAttribute="bottom" priority="750" id="muI-ci-wh6"/>
                                     <constraint firstAttribute="bottom" secondItem="HCs-4z-c3c" secondAttribute="bottom" id="nZM-7R-WIi"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="r0g-ql-wUj"/>
-                                    <constraint firstItem="ZTd-Zj-qAs" firstAttribute="top" secondItem="3mQ-t6-0ty" secondAttribute="bottom" constant="8" id="zHd-pZ-S22"/>
+                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="top" id="rei-9A-IvX"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3mQ-t6-0ty" secondAttribute="trailing" id="sQS-fD-2eK"/>
+                                    <constraint firstItem="ZTd-Zj-qAs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3mQ-t6-0ty" secondAttribute="bottom" constant="8" id="zHd-pZ-S22"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="B1T-XF-h6z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u9P-fB-zfA" firstAttribute="top" secondItem="ZhN-Z7-r4d" secondAttribute="topMargin" id="TC8-je-hHv"/>
                             <constraint firstItem="u9P-fB-zfA" firstAttribute="leading" secondItem="ZhN-Z7-r4d" secondAttribute="leading" id="Uq1-PM-FNg"/>
                             <constraint firstAttribute="trailing" secondItem="u9P-fB-zfA" secondAttribute="trailing" id="abg-Iv-vhR"/>
                             <constraint firstAttribute="bottomMargin" secondItem="u9P-fB-zfA" secondAttribute="bottom" id="fpU-27-8NR" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="B1T-XF-h6z"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Unlock KeePassium" id="P3J-3c-ucU">
@@ -146,6 +150,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="z0x-Rz-Nfj" id="JGh-R2-I7U"/>
+                        <outlet property="instructionsLabel" destination="3mQ-t6-0ty" id="AtL-ka-xVR"/>
+                        <outlet property="instructionsToCancelButtonConstraint" destination="muI-ci-wh6" id="stZ-Mn-YCw"/>
                         <outlet property="keyboardLayoutConstraint" destination="fpU-27-8NR" id="dUe-Rv-mtz"/>
                         <outlet property="mainButton" destination="i2Z-Q7-JRa" id="A8G-LI-2JU"/>
                         <outlet property="passcodeTextField" destination="ZTd-Zj-qAs" id="CYO-9J-fW4"/>
@@ -172,5 +178,11 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
