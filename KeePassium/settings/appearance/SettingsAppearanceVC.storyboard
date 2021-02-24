@@ -97,16 +97,16 @@
                                                     </attributedString>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MAG-tY-N1o">
-                                                    <rect key="frame" x="14" y="33" width="251" height="1"/>
+                                                    <rect key="frame" x="14" y="33" width="243" height="1"/>
                                                     <connections>
                                                         <action selector="didChangeTextScale:" destination="4mh-X8-Byq" eventType="valueChanged" id="XXo-su-Sql"/>
                                                     </connections>
                                                 </slider>
                                                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5U9-NZ-sJe">
-                                                    <rect key="frame" x="271" y="18.5" width="33" height="29"/>
+                                                    <rect key="frame" x="271" y="12.5" width="41" height="41"/>
                                                     <accessibility key="accessibilityConfiguration" label="Reset text size to default"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                    <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="4"/>
+                                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                                     <state key="normal" image="zoom-original-toolbar">
                                                         <color key="titleColor" name="ActionTint"/>
                                                     </state>
@@ -122,10 +122,10 @@
                                                 <constraint firstItem="MAG-tY-N1o" firstAttribute="top" secondItem="QbO-y9-3wb" secondAttribute="bottom" constant="8" id="1nQ-gW-bGC"/>
                                                 <constraint firstItem="QbO-y9-3wb" firstAttribute="leading" secondItem="f6W-QG-JTM" secondAttribute="leadingMargin" id="3A9-0n-Kxl"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="QbO-y9-3wb" secondAttribute="trailing" id="Cmc-RU-dTy"/>
-                                                <constraint firstItem="5U9-NZ-sJe" firstAttribute="leading" secondItem="MAG-tY-N1o" secondAttribute="trailing" constant="8" id="DRw-Pl-22A"/>
+                                                <constraint firstItem="5U9-NZ-sJe" firstAttribute="leading" secondItem="MAG-tY-N1o" secondAttribute="trailing" constant="16" id="DRw-Pl-22A"/>
                                                 <constraint firstItem="QbO-y9-3wb" firstAttribute="top" secondItem="f6W-QG-JTM" secondAttribute="topMargin" id="KnE-CB-Ehg"/>
                                                 <constraint firstItem="5U9-NZ-sJe" firstAttribute="centerY" secondItem="MAG-tY-N1o" secondAttribute="centerY" id="NkW-Ma-cCT"/>
-                                                <constraint firstItem="5U9-NZ-sJe" firstAttribute="trailing" secondItem="f6W-QG-JTM" secondAttribute="trailingMargin" id="PzS-yC-P3Q"/>
+                                                <constraint firstItem="5U9-NZ-sJe" firstAttribute="trailing" secondItem="f6W-QG-JTM" secondAttribute="trailingMargin" constant="8" id="PzS-yC-P3Q"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="MAG-tY-N1o" secondAttribute="bottom" id="WpY-w6-i5o"/>
                                                 <constraint firstItem="MAG-tY-N1o" firstAttribute="leading" secondItem="f6W-QG-JTM" secondAttribute="leadingMargin" id="vZD-bZ-i0V"/>
                                             </constraints>
