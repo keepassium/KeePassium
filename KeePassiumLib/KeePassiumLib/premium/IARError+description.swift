@@ -30,6 +30,8 @@ extension IARError.ReceiptInitializationFailureReason: LocalizedError {
             return "App Store receipt not found."
         case .pkcs7ParsingError:
             return "PKCS7 parsing error."
+        case .dataIsInvalid:
+            return "Receipt data is invalid."
         }
     }
 }
@@ -42,9 +44,9 @@ extension IARError.ValidationFailureReason: LocalizedError {
             return "Hash validation."
         case .signatureValidation(reason: let reason):
             return "Signature validation. \(reason.localizedDescription)"
-        case .bundleIdentifierVefirication:
+        case .bundleIdentifierVerification:
             return "Bundle identifier verification."
-        case .bundleVersionVefirication:
+        case .bundleVersionVerification:
             return "Bundle version verification."
         }
     }

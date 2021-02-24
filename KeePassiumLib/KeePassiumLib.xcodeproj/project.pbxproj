@@ -19,8 +19,8 @@
 		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
+		7544570425CAE2D50011386C /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 7544570325CAE2D50011386C /* TPInAppReceipt */; };
 		754ABE9C25AB898B00B98A63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 754ABE9A25AB898B00B98A63 /* InfoPlist.strings */; };
-		754CADAD24D8568800AC655F /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 754CADAC24D8568800AC655F /* TPInAppReceipt */; };
 		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
 		756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AFD5C258B4C510072BEEF /* KeyFileError.swift */; };
@@ -325,7 +325,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				754CADAD24D8568800AC655F /* TPInAppReceipt in Frameworks */,
+				7544570425CAE2D50011386C /* TPInAppReceipt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,7 +715,7 @@
 			);
 			name = KeePassiumLib;
 			packageProductDependencies = (
-				754CADAC24D8568800AC655F /* TPInAppReceipt */,
+				7544570325CAE2D50011386C /* TPInAppReceipt */,
 			);
 			productName = KeePassiumLib;
 			productReference = 75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */;
@@ -761,7 +761,7 @@
 			);
 			mainGroup = 75D0C7602174AF1F00C64C93;
 			packageReferences = (
-				754CADAB24D8568800AC655F /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
+				7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
 			);
 			productRefGroup = 75D0C76B2174AF1F00C64C93 /* Products */;
 			projectDirPath = "";
@@ -1189,20 +1189,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		754CADAB24D8568800AC655F /* XCRemoteSwiftPackageReference "TPInAppReceipt" */ = {
+		7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/keepassium/TPInAppReceipt";
 			requirement = {
-				kind = exactVersion;
-				version = 2.6.1;
+				branch = keepassium;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		754CADAC24D8568800AC655F /* TPInAppReceipt */ = {
+		7544570325CAE2D50011386C /* TPInAppReceipt */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 754CADAB24D8568800AC655F /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
+			package = 7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
 /* End XCSwiftPackageProductDependency section */
