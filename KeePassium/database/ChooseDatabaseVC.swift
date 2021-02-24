@@ -91,10 +91,11 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
         fileKeeperNotifications = FileKeeperNotifications(observer: self)
         settingsNotifications = SettingsNotifications(observer: self)
         
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        self.refreshControl = refreshControl
-        
+        if !ProcessInfo.isRunningOnMac {
+            let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+            self.refreshControl = refreshControl
+        }
         clearsSelectionOnViewWillAppear = false
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(

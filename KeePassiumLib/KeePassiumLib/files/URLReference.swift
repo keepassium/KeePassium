@@ -89,14 +89,23 @@ public class URLReference:
               let underlyingError = error?.underlyingError,
               let nsError = underlyingError as NSError? else { return false }
         
-        switch nsError.domain {
-        case NSCocoaErrorDomain:
-            return nsError.code == CocoaError.Code.fileNoSuchFile.rawValue
-        case NSFileProviderErrorDomain:
-            return nsError.code == NSFileProviderError.noSuchItem.rawValue
-        default:
-            return false
-        }
+        #if targetEnvironment(macCatalyst)
+            switch nsError.domain {
+            case NSCocoaErrorDomain:
+                return nsError.code == CocoaError.Code.fileNoSuchFile.rawValue
+            default:
+                return false
+            }
+        #else
+            switch nsError.domain {
+            case NSCocoaErrorDomain:
+                return nsError.code == CocoaError.Code.fileNoSuchFile.rawValue
+            case NSFileProviderErrorDomain:
+                return nsError.code == NSFileProviderError.noSuchItem.rawValue
+            default:
+                return false
+            }
+        #endif
     }
     
     private let data: Data
