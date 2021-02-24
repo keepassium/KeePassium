@@ -1,4 +1,15 @@
 KeePassium icons are based on "Bold outline icons" by Roundicons,
-available under a proprietary license.
+used under the terms of their proprietary "extended" license.
+
+License terms at the time of purchase:
+https://web.archive.org/web/20140612093901/http://roundicons.com:80/usage-license
+
+For the purpose of that license, the open source version of KeePassium is a 
+"template" that anyone can use to build a version of KeePassium. The icons 
+distributed in raster (non-vector) format, strictly as part of KeePassium, 
+are thus covered by the project's license.
+
+If you want to use Bold Outline Icons separately from KeePassium,
+you might need to acquire your own license from Roundicons:
 
 https://roundicons.com/boldicons-outline-icons-set/
