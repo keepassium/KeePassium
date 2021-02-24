@@ -318,9 +318,3 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         delegate?.didSelectGroup(selectedGroup, in: self)
     }
 }
-
-extension DestinationGroupPickerVC: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        didPressCancelButton(self)
-    }
-}

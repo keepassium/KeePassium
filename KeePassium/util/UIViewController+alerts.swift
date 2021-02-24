@@ -21,10 +21,15 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func showNotification(_ message: String) {
+    func showNotification(
+        _ message: String,
+        title: String?=nil,
+        buttonTitle: String?=LString.actionDismiss
+    ) {
         let alert = UIAlertController.make(
-            title: nil,
-            message: message)
+            title: title,
+            message: message,
+            cancelButtonTitle: buttonTitle)
         present(alert, animated: true, completion: nil)
     }
 }

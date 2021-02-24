@@ -213,39 +213,3 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
         return true
     }
 }
-
-extension DatabaseCreatorVC: ProgressViewHost {
-    
-    func showProgressView(title: String, allowCancelling: Bool) {
-        if progressOverlay != nil {
-            progressOverlay?.title = title
-            progressOverlay?.isCancellable = allowCancelling
-            return
-        }
-        navigationItem.hidesBackButton = true
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        continueButton.isEnabled = false
-        progressOverlay = ProgressOverlay.addTo(
-            containerView,
-            title: title,
-            animated: true)
-        progressOverlay?.isCancellable = allowCancelling
-    }
-    
-    func updateProgressView(with progress: ProgressEx) {
-        progressOverlay?.update(with: progress)
-    }
-    
-    func hideProgressView() {
-        guard progressOverlay != nil else { return }
-        navigationItem.hidesBackButton = false
-        navigationItem.rightBarButtonItem?.isEnabled = true
-        continueButton.isEnabled = true
-        progressOverlay?.dismiss(animated: true) {
-            [weak self] (finished) in
-            guard let _self = self else { return }
-            _self.progressOverlay?.removeFromSuperview()
-            _self.progressOverlay = nil
-        }
-    }
-}

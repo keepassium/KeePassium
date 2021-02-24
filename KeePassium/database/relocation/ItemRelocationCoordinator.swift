@@ -14,36 +14,32 @@ public enum ItemRelocationMode {
 }
 
 protocol ItemRelocationCoordinatorDelegate: class {
-    func didFinish(_ coordinator: ItemRelocationCoordinator)
+    func didRelocateItems(in coordinator: ItemRelocationCoordinator)
 }
 
 class ItemRelocationCoordinator: Coordinator {
-    
     var childCoordinators = [Coordinator]()
+    var dismissHandler: CoordinatorDismissHandler?
     
     public weak var delegate: ItemRelocationCoordinatorDelegate?
     
-    public let parentViewController: UIViewController
+    private let router: NavigationRouter
+    
     private weak var database: Database?
     private let mode: ItemRelocationMode
-    public var itemsToRelocate = [Weak<DatabaseItem>]()
+    private var itemsToRelocate = [Weak<DatabaseItem>]()
     
-    private let navigationController: UINavigationController
     private var groupPicker: DestinationGroupPickerVC
     private weak var destinationGroup: Group?
-    private var savingProgressOverlay: ProgressOverlay?
     
-    init(database: Database, mode: ItemRelocationMode, parentViewController: UIViewController) {
+    init(router: NavigationRouter, database: Database, mode: ItemRelocationMode, itemsToRelocate: [Weak<DatabaseItem>]) {
+        self.router = router
         self.database = database
         self.mode = mode
-        self.parentViewController = parentViewController
+        self.itemsToRelocate = itemsToRelocate
 
         let groupPicker = DestinationGroupPickerVC.create(mode: mode)
         self.groupPicker = groupPicker
-        navigationController = UINavigationController(rootViewController: groupPicker)
-        navigationController.modalPresentationStyle = .pageSheet
-        
-        navigationController.presentationController?.delegate = groupPicker
         groupPicker.delegate = self
     }
     
@@ -53,28 +49,40 @@ class ItemRelocationCoordinator: Coordinator {
     }
     
     func start() {
-        guard let database = database,
-            let rootGroup = database.root
-            else { return }
+        guard let rootGroup = database?.root else {
+            assertionFailure();
+            return
+        }
 
         groupPicker.rootGroup = rootGroup
-        parentViewController.present(navigationController, animated: true) { [weak self] in
-            let currentGroup = self?.itemsToRelocate.first?.value?.parent
-            self?.groupPicker.expandGroup(currentGroup)
+        
+        if router.navigationController.topViewController == nil {
+            let leftButton = UIBarButtonItem(
+                barButtonSystemItem: .cancel,
+                target: self,
+                action: #selector(didPressDismissButton))
+            groupPicker.navigationItem.leftBarButtonItem = leftButton
         }
-                
-        DatabaseManager.shared.addObserver(self)
+        router.push(groupPicker, animated: true, onPop: {
+            [weak self] (viewController) in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
+            self.dismissHandler?(self)
+        })
+
+        let currentGroup = itemsToRelocate.first?.value?.parent
+        groupPicker.expandGroup(currentGroup)
     }
     
-    func stop() {
-        DatabaseManager.shared.removeObserver(self)
-        navigationController.dismiss(animated: true) { 
-            self.delegate?.didFinish(self)
-        }
+    @objc private func didPressDismissButton() {
+        router.dismiss(animated: true)
     }
-    
+        
     private func isAllowedDestination(_ group: Group) -> Bool {
-        guard let database = group.database else { return false }
+        guard let database = group.database else {
+            assertionFailure()
+            return false
+        }
         
         if let database1 = group.database as? Database1,
             let root1 = database1.root,
@@ -110,6 +118,7 @@ class ItemRelocationCoordinator: Coordinator {
             }
             strongItem.touch(.accessed, updateParents: true)
         }
+        delegate?.didRelocateItems(in: self)
     }
 
     private func copyItems(to destinationGroup: Group) {
@@ -126,6 +135,7 @@ class ItemRelocationCoordinator: Coordinator {
             }
             strongItem.touch(.accessed, updateParents: true)
         }
+        delegate?.didRelocateItems(in: self)
     }
     
     private func notifyContentChanged() {
@@ -143,19 +153,20 @@ class ItemRelocationCoordinator: Coordinator {
     }
     
     private func showDiagnostics() {
-        let router = NavigationRouter(navigationController)
-        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
         diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }
         addChildCoordinator(diagnosticsViewerCoordinator)
         diagnosticsViewerCoordinator.start()
+        router.present(modalRouter, animated: true, completion: nil)
     }
 }
 
 extension ItemRelocationCoordinator: DestinationGroupPickerDelegate {
     func didPressCancel(in groupPicker: DestinationGroupPickerVC) {
-        stop()
+        router.pop(viewController: groupPicker, animated: true)
     }
     
     func shouldSelectGroup(_ group: Group, in groupPicker: DestinationGroupPickerVC) -> Bool {
@@ -170,64 +181,32 @@ extension ItemRelocationCoordinator: DestinationGroupPickerDelegate {
         case .copy:
             copyItems(to: group)
         }
+        DatabaseManager.shared.addObserver(self)
         DatabaseManager.shared.startSavingDatabase()
     }
 }
 
-extension ItemRelocationCoordinator: ProgressViewHost {
-    
-    func showSavingProgressView() {
-        showProgressView(title: LString.databaseStatusSaving, allowCancelling: false)
-    }
-    public func showProgressView(title: String, allowCancelling: Bool) {
-        assert(savingProgressOverlay == nil)
-        savingProgressOverlay = ProgressOverlay.addTo(
-            navigationController.view,
-            title: title,
-            animated: true)
-        savingProgressOverlay?.isCancellable = allowCancelling
-        if #available(iOS 13, *) {
-            navigationController.isModalInPresentation = true
-        }
-        navigationController.setNavigationBarHidden(true, animated: true)
-    }
-    
-    public func updateProgressView(with progress: ProgressEx) {
-        savingProgressOverlay?.update(with: progress)
-    }
-    
-    public func hideProgressView() {
-        guard savingProgressOverlay != nil else { return }
-        navigationController.setNavigationBarHidden(false, animated: true)
-        if #available(iOS 13, *) {
-            navigationController.isModalInPresentation = false
-        }
-        savingProgressOverlay?.dismiss(animated: true) {
-            [weak self] (finished) in
-            guard let self = self else { return }
-            self.savingProgressOverlay?.removeFromSuperview()
-            self.savingProgressOverlay = nil
-        }
-    }
-}
+
 
 extension ItemRelocationCoordinator: DatabaseManagerObserver {
     func databaseManager(willSaveDatabase urlRef: URLReference) {
-        showSavingProgressView()
+        router.showProgressView(title: LString.databaseStatusSaving, allowCancelling: false)
     }
 
     func databaseManager(progressDidChange progress: ProgressEx) {
-        updateProgressView(with: progress)
+        router.updateProgressView(with: progress)
     }
 
     func databaseManager(didSaveDatabase urlRef: URLReference) {
-        hideProgressView()
+        DatabaseManager.shared.removeObserver(self)
+        router.hideProgressView()
         notifyContentChanged()
-        stop()
+        router.pop(viewController: groupPicker, animated: true)
     }
     
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        hideProgressView()
+        DatabaseManager.shared.removeObserver(self)
+        router.hideProgressView()
     }
 
     func databaseManager(
@@ -235,7 +214,8 @@ extension ItemRelocationCoordinator: DatabaseManagerObserver {
         savingError message: String,
         reason: String?)
     {
-        hideProgressView()
+        DatabaseManager.shared.removeObserver(self)
+        router.hideProgressView()
         showError(message: message, reason: reason)
     }
     
@@ -252,6 +232,6 @@ extension ItemRelocationCoordinator: DatabaseManagerObserver {
         }
         errorAlert.addAction(showDetailsAction)
 
-        navigationController.present(errorAlert, animated: true, completion: nil)
+        groupPicker.present(errorAlert, animated: true, completion: nil)
     }
 }

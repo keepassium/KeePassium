@@ -10,9 +10,7 @@ import KeePassiumLib
 
 class DatabaseIconSetSwitcherCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
-    
-    typealias DismissHandler = (DatabaseIconSetSwitcherCoordinator) -> Void
-    var dismissHandler: DismissHandler?
+    var dismissHandler: CoordinatorDismissHandler?
     
     private let router: NavigationRouter
     private let picker: DatabaseIconSetPicker

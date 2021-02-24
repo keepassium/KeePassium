@@ -64,12 +64,18 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     private var entryChangeNotifications: EntryChangeNotifications!
     private var settingsNotifications: SettingsNotifications!
 
+    var itemRelocationCoordinator: ItemRelocationCoordinator?
+    
     static func make(group: Group?, loadingWarnings: DatabaseLoadingWarnings?=nil) -> ViewGroupVC {
         let viewGroupVC = ViewGroupVC.instantiateFromStoryboard()
         viewGroupVC.group = group
         viewGroupVC.loadingWarnings = loadingWarnings
         group?.touch(.accessed)
         return viewGroupVC
+    }
+    
+    deinit {
+        itemRelocationCoordinator = nil
     }
     
     override open func viewDidLoad() {
@@ -818,36 +824,41 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     }
     
 
-    var itemRelocationCoordinator: ItemRelocationCoordinator?
-    
     func onRelocateItemAction(at indexPath: IndexPath, mode: ItemRelocationMode) {
         guard let database = group?.database else { return }
-        
+
+        guard let selectedItem = getItem(at: indexPath) else {
+            Diag.warning("No items selected for relocation")
+            assertionFailure()
+            return
+        }
+
         assert(itemRelocationCoordinator == nil)
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         itemRelocationCoordinator = ItemRelocationCoordinator(
+            router: modalRouter,
             database: database,
             mode: mode,
-            parentViewController: self)
-        itemRelocationCoordinator?.delegate = self
-        
-        if let selectedItem = getItem(at: indexPath) {
-            itemRelocationCoordinator?.itemsToRelocate = [Weak(selectedItem)]
-        } else {
-            assertionFailure()
+            itemsToRelocate: [Weak(selectedItem)])
+        itemRelocationCoordinator?.dismissHandler = { [weak self] coordinator in
+            self?.itemRelocationCoordinator = nil
         }
+        itemRelocationCoordinator?.delegate = self
         itemRelocationCoordinator?.start()
+        modalRouter.present(in: self, animated: true, completion: nil)
     }
 
     var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
     func showDiagnostics() {
         assert(diagnosticsViewerCoordinator == nil)
-        let router = NavigationRouter.createModal(style: .formSheet)
-        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
         diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
             self?.diagnosticsViewerCoordinator = nil
         }
         diagnosticsViewerCoordinator!.start()
-        present(router.navigationController, animated: true, completion: nil)
+        modalRouter.present(in: self, animated: true, completion: nil)
     }
     
     @IBAction func didPressItemListSettings(_ sender: Any) {
@@ -1044,8 +1055,7 @@ extension ViewGroupVC: UISearchControllerDelegate {
 }
 
 extension ViewGroupVC: ItemRelocationCoordinatorDelegate {
-    func didFinish(_ coordinator: ItemRelocationCoordinator) {
-        assert(itemRelocationCoordinator != nil)
-        itemRelocationCoordinator = nil
+    func didRelocateItems(in coordinator: ItemRelocationCoordinator) {
+        refresh()
     }
 }

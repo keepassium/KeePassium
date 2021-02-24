@@ -10,9 +10,7 @@ import KeePassiumLib
 
 class DiagnosticsViewerCoordinator: NSObject, Coordinator {
     var childCoordinators = [Coordinator]()
-    
-    typealias DismissHandler = (DiagnosticsViewerCoordinator) -> Void
-    var dismissHandler: DismissHandler?
+    var dismissHandler: CoordinatorDismissHandler?
     
     private var router: NavigationRouter
     private var diagnosticsViewerVC: DiagnosticsViewerVC

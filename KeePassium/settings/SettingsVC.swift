@@ -304,9 +304,14 @@ class SettingsVC: UITableViewController, Refreshable {
     private var premiumCoordinator: PremiumCoordinator? 
     func didPressUpgradeToPremium() {
         assert(premiumCoordinator == nil)
-        premiumCoordinator = PremiumCoordinator(presentingViewController: self)
-        premiumCoordinator!.delegate = self
+        let modalRouter = NavigationRouter.createModal(
+            style: PremiumCoordinator.desiredModalPresentationStyle)
+        premiumCoordinator = PremiumCoordinator(router: modalRouter)
+        premiumCoordinator!.dismissHandler = { [weak self] (coordinator) in
+            self?.premiumCoordinator = nil
+        }
         premiumCoordinator!.start()
+        modalRouter.present(in: self, animated: true, completion: nil)
     }
     
     func didPressManageSubscription() {
@@ -459,12 +464,6 @@ extension SettingsVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
         guard key != .recentUserActivityTimestamp else { return }
         refresh()
-    }
-}
-
-extension SettingsVC: PremiumCoordinatorDelegate {
-    func didFinish(_ premiumCoordinator: PremiumCoordinator) {
-        self.premiumCoordinator = nil
     }
 }
 

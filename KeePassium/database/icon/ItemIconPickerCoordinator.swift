@@ -14,9 +14,7 @@ protocol ItemIconPickerCoordinatorDelegate: class {
 
 class ItemIconPickerCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
-    
-    typealias DismissHandler = (ItemIconPickerCoordinator) -> Void
-    var dismissHandler: DismissHandler?
+    var dismissHandler: CoordinatorDismissHandler?
     
     weak var delegate: ItemIconPickerCoordinatorDelegate?
     

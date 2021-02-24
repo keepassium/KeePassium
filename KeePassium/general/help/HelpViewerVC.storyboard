@@ -37,11 +37,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="{Title}" id="0AG-6E-cim">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kP7-lx-KWR">
-                            <connections>
-                                <action selector="didPressCancel:" destination="RjN-Il-tzx" id="4rH-B4-s4Y"/>
-                            </connections>
-                        </barButtonItem>
                         <attributedString key="userComments">
                             <fragment content="#bc-ignore!"/>
                         </attributedString>

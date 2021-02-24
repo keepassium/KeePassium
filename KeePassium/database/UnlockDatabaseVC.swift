@@ -336,13 +336,13 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     func showDiagnostics() {
         assert(diagnosticsViewerCoordinator == nil)
-        let router = NavigationRouter.createModal(style: .formSheet)
-        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
         diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
             self?.diagnosticsViewerCoordinator = nil
         }
         diagnosticsViewerCoordinator!.start()
-        present(router.navigationController, animated: true, completion: nil)
+        modalRouter.present(in: self, animated: true, completion: nil)
     }
 
     private var progressOverlay: ProgressOverlay?

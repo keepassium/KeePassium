@@ -17,12 +17,10 @@ protocol DatabaseCreatorCoordinatorDelegate: class {
 
 class DatabaseCreatorCoordinator: NSObject, Coordinator {
     var childCoordinators = [Coordinator]()
-    
+    var dismissHandler: CoordinatorDismissHandler?
+
     weak var delegate: DatabaseCreatorCoordinatorDelegate?
-    
-    typealias DismissHandler = (DatabaseCreatorCoordinator) -> Void
-    var dismissHandler: DismissHandler?
-    
+
     private let router: NavigationRouter
     private let databaseCreatorVC: DatabaseCreatorVC
     
@@ -235,6 +233,19 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
         addChildCoordinator(diagnosticsViewerCoordinator)
         diagnosticsViewerCoordinator.start()
     }
+    
+    
+    private func showSavingProgress() {
+        databaseCreatorVC.continueButton.isEnabled = false
+        router.showProgressView(
+            title: LString.databaseStatusSaving,
+            allowCancelling: true)
+    }
+    
+    private func hideProgress() {
+        databaseCreatorVC.continueButton.isEnabled = true
+        router.hideProgressView()
+    }
 }
 
 extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
@@ -272,13 +283,11 @@ extension DatabaseCreatorCoordinator: KeyFileChooserDelegate {
 
 extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
     func databaseManager(willSaveDatabase urlRef: URLReference) {
-        databaseCreatorVC.showProgressView(
-            title: LString.databaseStatusSaving,
-            allowCancelling: true)
+        showSavingProgress()
     }
     
     func databaseManager(progressDidChange progress: ProgressEx) {
-        databaseCreatorVC.updateProgressView(with: progress)
+        router.updateProgressView(with: progress)
     }
     
     func databaseManager(didSaveDatabase urlRef: URLReference) {
@@ -287,9 +296,10 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
             clearStoredKey: true,
             ignoreErrors: false,
             completion: { [weak self] (error) in
+                guard let self = self else { return }
                 if let error = error {
-                    self?.databaseCreatorVC.hideProgressView()
-                    self?.databaseCreatorVC.showErrorAlert(error)
+                    self.hideProgress()
+                    self.databaseCreatorVC.showErrorAlert(error)
                 } else {
                     DispatchQueue.main.async { [weak self] in
                         self?.pickTargetLocation(for: urlRef)
@@ -302,13 +312,13 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
         DatabaseManager.shared.removeObserver(self)
         DatabaseManager.shared.abortDatabaseCreation()
-        self.databaseCreatorVC.hideProgressView()
+        hideProgress()
     }
     
     func databaseManager(database urlRef: URLReference, savingError message: String, reason: String?) {
         DatabaseManager.shared.removeObserver(self)
         DatabaseManager.shared.abortDatabaseCreation()
-        databaseCreatorVC.hideProgressView()
+        hideProgress()
         if let reason = reason {
             databaseCreatorVC.setError(message: "\(message)\n\(reason)", animated: true)
         } else {
@@ -319,7 +329,7 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
 
 extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        databaseCreatorVC.hideProgressView()
+        hideProgress()
         
         router.pop(viewController: databaseCreatorVC, animated: true)
     }
@@ -330,8 +340,10 @@ extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
     {
         guard let url = urls.first else { return }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { 
-            self.databaseCreatorVC.hideProgressView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            [weak self] in
+            guard let self = self else { return }
+            self.hideProgress()
             self.addCreatedDatabase(at: url)
         }
     }

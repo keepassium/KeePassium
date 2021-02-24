@@ -13,7 +13,8 @@ import LocalAuthentication
 
 class MainCoordinator: NSObject, Coordinator {
     var childCoordinators = [Coordinator]()
-
+    var dismissHandler: CoordinatorDismissHandler? 
+    
     unowned var rootController: CredentialProviderViewController
     var pageController: UIPageViewController
     var navigationController: UINavigationController

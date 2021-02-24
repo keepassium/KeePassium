@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
+import KeePassiumLib
 
 public class NavigationRouter: NSObject {
     public typealias PopHandler = ((UIViewController) -> ())
@@ -14,6 +14,28 @@ public class NavigationRouter: NSObject {
     public private(set) var navigationController: UINavigationController
     private var popHandlers = [ObjectIdentifier: PopHandler]()
     private weak var oldDelegate: UINavigationControllerDelegate?
+    
+    private var progressOverlay: ProgressOverlay?
+    private var wasModalInPresentation = false
+    private var wasNavigationBarHidden = false
+    
+    public var isModalInPresentation: Bool {
+        get {
+            guard #available(iOS 13, *) else {
+                return false
+            }
+            return navigationController.isModalInPresentation
+        }
+        set {
+            if #available(iOS 13, *) {
+                navigationController.isModalInPresentation = newValue
+            }
+        }
+    }
+    
+    public var isHorizontallyCompact: Bool {
+        return navigationController.traitCollection.horizontalSizeClass == .compact
+    }
     
     static func createModal(
         style: UIModalPresentationStyle,
@@ -46,6 +68,18 @@ public class NavigationRouter: NSObject {
         navigationController.dismiss(animated: animated, completion: { [self] in
             self.popAll(animated: animated)
         })
+    }
+    
+    public func present(_ router: NavigationRouter, animated: Bool, completion: (()->Void)?) {
+        router.present(in: self.navigationController, animated: true, completion: completion)
+    }
+    
+    public func present(
+        in viewController: UIViewController,
+        animated: Bool,
+        completion: (()->Void)?)
+    {
+        viewController.present(self.navigationController, animated: true, completion: completion)
     }
     
     public func push(_ viewController: UIViewController, animated: Bool, onPop popHandler: PopHandler?) {
@@ -136,5 +170,45 @@ extension NavigationRouter: UIPopoverPresentationControllerDelegate {
 extension NavigationRouter: UIAdaptivePresentationControllerDelegate {
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         popAll(animated: false)
+    }
+}
+
+
+extension NavigationRouter: ProgressViewHost {
+    public func showProgressView(title: String, allowCancelling: Bool) {
+        if progressOverlay != nil {
+            progressOverlay?.title = title
+            progressOverlay?.isCancellable = allowCancelling
+            return
+        }
+        progressOverlay = ProgressOverlay.addTo(
+            navigationController.view,
+            title: title,
+            animated: true)
+        progressOverlay?.isCancellable = allowCancelling
+        if #available(iOS 13, *) {
+            wasModalInPresentation = navigationController.isModalInPresentation
+            navigationController.isModalInPresentation = true
+        }
+        wasNavigationBarHidden = navigationController.isNavigationBarHidden
+        navigationController.setNavigationBarHidden(true, animated: true)
+    }
+    
+    public func updateProgressView(with progress: ProgressEx) {
+        progressOverlay?.update(with: progress)
+    }
+    
+    public func hideProgressView() {
+        guard progressOverlay != nil else { return }
+        navigationController.setNavigationBarHidden(wasNavigationBarHidden, animated: true)
+        if #available(iOS 13, *) {
+            navigationController.isModalInPresentation = wasModalInPresentation
+        }
+        progressOverlay?.dismiss(animated: true) {
+            [weak self] (finished) in
+            guard let self = self else { return }
+            self.progressOverlay?.removeFromSuperview()
+            self.progressOverlay = nil
+        }
     }
 }

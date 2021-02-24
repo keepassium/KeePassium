@@ -16,6 +16,9 @@ public class PremiumUpgradeHelper {
     init() {
     }
     
+    deinit {
+        premiumCoordinator = nil
+    }
     
     public func performActionOrOfferUpgrade(
         _ feature: PremiumFeature,
@@ -39,11 +42,16 @@ public class PremiumUpgradeHelper {
             style: .default,
             handler: { [weak self] _ in
                 guard let self = self else { return }
-                self.premiumCoordinator = PremiumCoordinator(
-                    presentingViewController: viewController
-                )
-                self.premiumCoordinator?.delegate = self
+                assert(self.premiumCoordinator == nil)
+                
+                let modalRouter = NavigationRouter.createModal(
+                    style: PremiumCoordinator.desiredModalPresentationStyle)
+                self.premiumCoordinator = PremiumCoordinator(router: modalRouter)
+                self.premiumCoordinator?.dismissHandler = { [weak self] coordinator in
+                    self?.premiumCoordinator = nil
+                }
                 self.premiumCoordinator?.start()
+                modalRouter.present(in: viewController, animated: true, completion: nil)
             }
         )
         let cancelAction = UIAlertAction(
@@ -55,11 +63,5 @@ public class PremiumUpgradeHelper {
         alertVC.addAction(cancelAction)
         
         viewController.present(alertVC, animated: true, completion: nil)
-    }
-}
-
-extension PremiumUpgradeHelper: PremiumCoordinatorDelegate {
-    func didFinish(_ premiumCoordinator: PremiumCoordinator) {
-        self.premiumCoordinator = nil
     }
 }

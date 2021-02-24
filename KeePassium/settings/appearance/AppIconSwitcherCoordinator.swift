@@ -10,9 +10,7 @@ import KeePassiumLib
 
 class AppIconSwitcherCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
-    
-    typealias DismissHandler = (AppIconSwitcherCoordinator) -> Void
-    var dismissHandler: DismissHandler?
+    var dismissHandler: CoordinatorDismissHandler?
     
     private let router: NavigationRouter
     private let picker: AppIconPicker

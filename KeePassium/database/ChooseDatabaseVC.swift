@@ -380,14 +380,14 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
     func didPressCreateDatabase() {
         assert(databaseCreatorCoordinator == nil)
         
-        let router = NavigationRouter.createModal(style: .formSheet)
-        databaseCreatorCoordinator = DatabaseCreatorCoordinator(router: router)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        databaseCreatorCoordinator = DatabaseCreatorCoordinator(router: modalRouter)
         databaseCreatorCoordinator!.delegate = self
         databaseCreatorCoordinator?.dismissHandler = { [weak self] coordinator in
             self?.databaseCreatorCoordinator = nil
         }
         databaseCreatorCoordinator!.start()
-        present(router.navigationController, animated: true)
+        modalRouter.present(in: self, animated: true, completion: nil)
     }
 
     func didPressExportDatabase(at indexPath: IndexPath) {

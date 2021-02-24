@@ -8,8 +8,15 @@
 
 import UIKit
 
+typealias CoordinatorDismissHandler = (Coordinator) -> Void
+
 protocol Coordinator: class {
     var childCoordinators: [Coordinator] { get set }
+
+    var dismissHandler: CoordinatorDismissHandler? { get set }
+    
+    func addChildCoordinator(_ coordinator: Coordinator)
+    func removeChildCoordinator(_ coordinator: Coordinator)
     
     func addChildCoordinator(_ coordinator: Coordinator)
     func removeChildCoordinator(_ coordinator: Coordinator)

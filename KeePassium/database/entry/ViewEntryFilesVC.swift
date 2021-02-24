@@ -79,13 +79,13 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     
     private func showDiagnostics() {
         assert(diagnosticsViewerCoordinator == nil)
-        let router = NavigationRouter.createModal(style: .pageSheet)
-        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        let modalRouter = NavigationRouter.createModal(style: .pageSheet)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
         diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
             self?.diagnosticsViewerCoordinator = nil
         }
         diagnosticsViewerCoordinator!.start()
-        present(router.navigationController, animated: true, completion: nil)
+        modalRouter.present(in: self, animated: true, completion: nil)
     }
     
 

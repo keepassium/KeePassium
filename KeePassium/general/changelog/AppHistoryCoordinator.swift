@@ -10,9 +10,7 @@ import KeePassiumLib
 
 class AppHistoryCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
-    
-    typealias DismissHandler = (AppHistoryCoordinator) -> Void
-    var dismissHandler: DismissHandler?
+    var dismissHandler: CoordinatorDismissHandler?
     
     private let router: NavigationRouter
     private let viewer: AppHistoryViewerVC
