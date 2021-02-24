@@ -47,6 +47,11 @@ class ItemRelocationCoordinator: Coordinator {
         groupPicker.delegate = self
     }
     
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
     func start() {
         guard let database = database,
             let rootGroup = database.root
@@ -136,6 +141,16 @@ class ItemRelocationCoordinator: Coordinator {
             GroupChangeNotifications.post(groupDidChange: destinationGroup)
         }
     }
+    
+    private func showDiagnostics() {
+        let router = NavigationRouter(navigationController)
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        addChildCoordinator(diagnosticsViewerCoordinator)
+        diagnosticsViewerCoordinator.start()
+    }
 }
 
 extension ItemRelocationCoordinator: DestinationGroupPickerDelegate {
@@ -221,19 +236,22 @@ extension ItemRelocationCoordinator: DatabaseManagerObserver {
         reason: String?)
     {
         hideProgressView()
-
-        let errorAlert = UIAlertController(title: message, message: reason, preferredStyle: .alert)
+        showError(message: message, reason: reason)
+    }
+    
+    private func showError(message: String, reason: String?) {
+        let errorAlert = UIAlertController.make(
+            title: message,
+            message: reason,
+            cancelButtonTitle: LString.actionDismiss
+        )
+        
         let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
             [weak self] _ in
-            let diagnosticsViewer = ViewDiagnosticsVC.make()
-            self?.navigationController.present(diagnosticsViewer, animated: true, completion: nil)
+            self?.showDiagnostics()
         }
-        let cancelAction = UIAlertAction(
-            title: LString.actionDismiss,
-            style: .cancel,
-            handler: nil)
         errorAlert.addAction(showDetailsAction)
-        errorAlert.addAction(cancelAction)
+
         navigationController.present(errorAlert, animated: true, completion: nil)
     }
 }

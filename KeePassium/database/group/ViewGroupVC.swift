@@ -838,6 +838,18 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         itemRelocationCoordinator?.start()
     }
 
+    var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
+    func showDiagnostics() {
+        assert(diagnosticsViewerCoordinator == nil)
+        let router = NavigationRouter.createModal(style: .formSheet)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
+            self?.diagnosticsViewerCoordinator = nil
+        }
+        diagnosticsViewerCoordinator!.start()
+        present(router.navigationController, animated: true, completion: nil)
+    }
+    
     @IBAction func didPressItemListSettings(_ sender: Any) {
         let itemListSettingsVC = SettingsItemListVC.make(
             barPopoverSource: sender as? UIBarButtonItem)
@@ -947,15 +959,17 @@ extension ViewGroupVC: DatabaseManagerObserver {
         DatabaseManager.shared.removeObserver(self)
         refresh()
         hideSavingOverlay()
-
+        
+        showError(message: message, reason: reason)
+    }
+    
+    private func showError(message: String, reason: String?) {
         let errorAlert = UIAlertController(title: message, message: reason, preferredStyle: .alert)
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default)
-        {
+        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
             [weak self] _ in
-            self?.present(ViewDiagnosticsVC.make(), animated: true, completion: nil)
+            self?.showDiagnostics()
         }
-        let dismissAction = UIAlertAction(title: LString.actionDismiss, style: .cancel)
-        {
+        let dismissAction = UIAlertAction(title: LString.actionDismiss, style: .cancel) {
             [weak self] _ in
             self?.refresh()
         }

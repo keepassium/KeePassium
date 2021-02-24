@@ -30,6 +30,7 @@ class EditGroupVC: UIViewController, Refreshable {
     private var mode: Mode = .edit
     
     private var itemIconPickerCoordinator: ItemIconPickerCoordinator?
+    private var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
     
     static func make(
         mode: Mode,
@@ -77,6 +78,7 @@ class EditGroupVC: UIViewController, Refreshable {
     
     deinit {
         itemIconPickerCoordinator = nil
+        diagnosticsViewerCoordinator = nil
         DatabaseManager.shared.removeObserver(self)
     }
     
@@ -94,11 +96,27 @@ class EditGroupVC: UIViewController, Refreshable {
         imageView.image = icon
     }
     
-    func dismissPopover(animated: Bool) {
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         resignFirstResponder()
-        dismiss(animated: animated, completion: { [self] in 
-            self.itemIconPickerCoordinator = nil
+        super.dismiss(animated: flag, completion: { [weak self] in
+            self?.itemIconPickerCoordinator = nil
+            self?.diagnosticsViewerCoordinator = nil
+            completion?()
         })
+    }
+
+    private func showDiagnostics() {
+        assert(diagnosticsViewerCoordinator == nil)
+        guard let navigationController = self.navigationController else {
+            assertionFailure()
+            return
+        }
+        let router = NavigationRouter(navigationController)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
+            self?.diagnosticsViewerCoordinator = nil
+        }
+        diagnosticsViewerCoordinator!.start()
     }
 
     
@@ -123,7 +141,7 @@ class EditGroupVC: UIViewController, Refreshable {
         case .edit:
             restoreOriginalState()
         }
-        dismissPopover(animated: true)
+        dismiss(animated: true)
     }
     
     @IBAction func didPressDone(_ sender: Any) {
@@ -187,11 +205,11 @@ extension EditGroupVC: DatabaseManagerObserver {
 
     func databaseManager(didSaveDatabase urlRef: URLReference) {
         hideSavingOverlay()
-        self.dismissPopover(animated: true)
         if let group = group {
             delegate?.groupEditor(groupDidChange: group)
             GroupChangeNotifications.post(groupDidChange: group)
         }
+        self.dismiss(animated: true)
     }
     
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
@@ -204,19 +222,20 @@ extension EditGroupVC: DatabaseManagerObserver {
         reason: String?)
     {
         hideSavingOverlay()
-
-        let errorAlert = UIAlertController(title: message, message: reason, preferredStyle: .alert)
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default)
-        {
-            [unowned self] _ in
-            self.present(ViewDiagnosticsVC.make(), animated: true, completion: nil)
+        showError(message: message, reason: reason)
+    }
+    
+    private func showError(message: String, reason: String?) {
+        let errorAlert = UIAlertController.make(
+            title: message,
+            message: reason,
+            cancelButtonTitle: LString.actionDismiss)
+        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
+            [weak self] _ in
+            self?.showDiagnostics()
         }
-        let cancelAction = UIAlertAction(
-            title: LString.actionDismiss,
-            style: .cancel,
-            handler: nil)
         errorAlert.addAction(showDetailsAction)
-        errorAlert.addAction(cancelAction)
+        
         present(errorAlert, animated: true, completion: nil)
     }
 }
@@ -228,8 +247,8 @@ extension EditGroupVC: ItemIconPickerCoordinatorDelegate {
         guard let navVC = navigationController else { assertionFailure(); return }
         let router = NavigationRouter(navVC)
         itemIconPickerCoordinator = ItemIconPickerCoordinator(router: router)
-        itemIconPickerCoordinator!.dismissHandler = { [self] (coordinator) in
-            self.itemIconPickerCoordinator = nil
+        itemIconPickerCoordinator!.dismissHandler = { [weak self] (coordinator) in
+            self?.itemIconPickerCoordinator = nil
         }
         itemIconPickerCoordinator!.delegate = self
         itemIconPickerCoordinator!.start(selectedIconID: group.iconID)

@@ -220,6 +220,9 @@
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Contáctanos";
 
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "Contactar con el soporte técnico";
+
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "Continuar";
 

@@ -20,4 +20,11 @@ extension UIViewController {
             message: message)
         present(alert, animated: true, completion: nil)
     }
+    
+    func showNotification(_ message: String) {
+        let alert = UIAlertController.make(
+            title: nil,
+            message: message)
+        present(alert, animated: true, completion: nil)
+    }
 }

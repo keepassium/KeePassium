@@ -23,6 +23,8 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     private var progressViewHost: ProgressViewHost?
     private var exportController: UIDocumentInteractionController!
 
+    private var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
+    
     static func make(
         with entry: Entry?,
         historyMode: Bool,
@@ -60,6 +62,10 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
         refresh()
     }
     
+    deinit {
+        diagnosticsViewerCoordinator = nil
+    }
+    
     func refresh() {
         tableView.reloadData()
         if tableView.isEditing {
@@ -69,6 +75,17 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
             editButton.title = LString.actionEdit
             editButton.style = .plain
         }
+    }
+    
+    private func showDiagnostics() {
+        assert(diagnosticsViewerCoordinator == nil)
+        let router = NavigationRouter.createModal(style: .pageSheet)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
+            self?.diagnosticsViewerCoordinator = nil
+        }
+        diagnosticsViewerCoordinator!.start()
+        present(router.navigationController, animated: true, completion: nil)
     }
     
 
@@ -393,16 +410,17 @@ extension ViewEntryFilesVC: DatabaseManagerObserver {
     {
         DatabaseManager.shared.removeObserver(self)
         progressViewHost?.hideProgressView()
-        
+        showError(message: message, reason: reason)
+    }
+    
+    private func showError(message: String, reason: String?) {
         let errorAlert = UIAlertController.make(
             title: message,
             message: reason,
             cancelButtonTitle: LString.actionDismiss)
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default)
-        {
+        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
             [weak self] _ in
-            let diagnosticsVC = ViewDiagnosticsVC.instantiateFromStoryboard()
-            self?.present(diagnosticsVC, animated: true, completion: nil)
+            self?.showDiagnostics()
         }
         errorAlert.addAction(showDetailsAction)
         present(errorAlert, animated: true, completion: nil)

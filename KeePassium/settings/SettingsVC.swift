@@ -94,12 +94,14 @@ class SettingsVC: UITableViewController, Refreshable {
     }
     
     deinit {
+        diagnosticsViewerCoordinator = nil
         appHistoryCoordinator = nil
         premiumCoordinator = nil
     }
     
     func dismissPopover(animated: Bool) {
         self.dismiss(animated: animated) { [self] in 
+            self.diagnosticsViewerCoordinator = nil
             self.appHistoryCoordinator = nil
             self.premiumCoordinator = nil
         }
@@ -220,8 +222,7 @@ class SettingsVC: UITableViewController, Refreshable {
         case appHistoryCell:
             didPressShowAppHistory()
         case diagnosticLogCell:
-            let viewer = ViewDiagnosticsVC.make()
-            show(viewer, sender: self)
+            didPressShowDiagnostics()
         case contactSupportCell:
             let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
             SupportEmailComposer.show(subject: .supportRequest, parent: self, popoverAnchor: popoverAnchor)
@@ -287,6 +288,16 @@ class SettingsVC: UITableViewController, Refreshable {
             self?.appHistoryCoordinator = nil
         }
         appHistoryCoordinator!.start()
+    }
+    
+    var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
+    func didPressShowDiagnostics() {
+        assert(diagnosticsViewerCoordinator == nil)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
+            self?.diagnosticsViewerCoordinator = nil
+        }
+        diagnosticsViewerCoordinator!.start()
     }
     
     

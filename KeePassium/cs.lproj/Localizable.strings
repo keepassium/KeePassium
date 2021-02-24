@@ -220,6 +220,9 @@
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Napište nám";
 
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "Kontaktovat podporu";
+
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "Pokračovat";
 

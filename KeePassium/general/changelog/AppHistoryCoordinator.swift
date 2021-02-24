@@ -22,10 +22,18 @@ class AppHistoryCoordinator: Coordinator {
         viewer = AppHistoryViewerVC.instantiateFromStoryboard()
     }
     
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
     func start() {
         let appHistory = AppHistory.load(from: "ChangeLog")
         viewer.appHistory = appHistory
-        router.push(viewer, animated: true, onPop: { [self] (viewController) in 
+        router.push(viewer, animated: true, onPop: {
+            [weak self] (viewController) in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
     }

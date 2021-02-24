@@ -220,6 +220,9 @@
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Kontakta oss";
 
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "Kontakta Support";
+
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "Fortsätt";
 

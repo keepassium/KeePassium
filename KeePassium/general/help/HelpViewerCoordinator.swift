@@ -28,11 +28,18 @@ class HelpViewerCoordinator: NSObject, Coordinator {
         helpViewerVC.delegate = self
     }
     
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
     func start() {
         assert(article != nil)
         helpViewerVC.content = article
         router.push(helpViewerVC, animated: true, onPop: {
-            [self] (viewController) in 
+            [weak self] (viewController) in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
     }

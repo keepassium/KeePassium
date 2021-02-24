@@ -38,21 +38,35 @@ class DiagnosticsViewerCell: UITableViewCell {
 
 protocol DiagnosticsViewerDelegate: class {
     func didPressCopy(in diagnosticsViewer: DiagnosticsViewerVC, text: String)
+    func didPressContactSupport(in diagnosticsViewer: DiagnosticsViewerVC, text: String)
 }
 
-class DiagnosticsViewerVC: UITableViewController {
-    private var items: [Diag.Item] = []
+class DiagnosticsViewerVC: UITableViewController, Refreshable {
+    private var items: [Diag.Item] = [] {
+        didSet {
+            refresh()
+        }
+    }
 
-    @IBOutlet weak var composeButton: UIBarButtonItem!
     @IBOutlet weak var copyButton: UIBarButtonItem!
+    @IBOutlet weak var contactButton: UIBarButtonItem!
     
     weak var delegate: DiagnosticsViewerDelegate?
     
+    public static func create() -> DiagnosticsViewerVC {
+        return DiagnosticsViewerVC.instantiateFromStoryboard()
+    }
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tableView.rowHeight = UITableView.automaticDimension
         items = Diag.itemsSnapshot()
-        super.viewDidLoad()
 
+        contactButton.title = LString.actionContactSupport
+        copyButton.accessibilityLabel = LString.actionCopy
+        
+        refresh()
         if items.count > 0 {
             let lastRowIndexPath = IndexPath(row: items.count - 1, section: 0)
             DispatchQueue.main.async { 
@@ -61,12 +75,22 @@ class DiagnosticsViewerVC: UITableViewController {
         }
     }
     
+    func refresh() {
+        guard isViewLoaded else { return }
+        tableView.reloadData()
+    }
     
     
     @IBAction func didPressCopy(_ sender: Any) {
         Watchdog.shared.restart()
         let logText = Diag.toString()
         delegate?.didPressCopy(in: self, text: logText)
+    }
+    
+    @IBAction func didPressContactSupport(_ sender: Any) {
+        Watchdog.shared.restart()
+        let logText = Diag.toString()
+        delegate?.didPressContactSupport(in: self, text: logText)
     }
     
     

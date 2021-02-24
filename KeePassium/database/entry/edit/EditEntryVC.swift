@@ -38,6 +38,7 @@ class EditEntryVC: UITableViewController, Refreshable {
     private var mode: Mode = .edit
     
     var itemIconPickerCoordinator: ItemIconPickerCoordinator? 
+    var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
     
     static func make(
         createInGroup group: Group,
@@ -115,8 +116,17 @@ class EditEntryVC: UITableViewController, Refreshable {
     
     deinit {
         itemIconPickerCoordinator = nil
+        diagnosticsViewerCoordinator = nil
     }
     
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        resignFirstResponder()
+        super.dismiss(animated: flag, completion: { [weak self] in
+            self?.itemIconPickerCoordinator = nil
+            self?.diagnosticsViewerCoordinator = nil
+            completion?()
+        })
+    }
     
     private var originalEntry: Entry? 
     
@@ -312,6 +322,20 @@ class EditEntryVC: UITableViewController, Refreshable {
         navigationItem.rightBarButtonItem?.isEnabled = isAllFieldsValid
     }
     
+    private func showDiagnostics() {
+        assert(diagnosticsViewerCoordinator == nil)
+        guard let navigationController = self.navigationController else {
+            assertionFailure()
+            return
+        }
+        let router = NavigationRouter(navigationController)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
+            self?.diagnosticsViewerCoordinator = nil
+        }
+        diagnosticsViewerCoordinator!.start()
+    }
+    
     
     func applyChangesAndSaveDatabase() {
         guard let entry = entry else { return }
@@ -472,8 +496,8 @@ extension EditEntryVC: ItemIconPickerCoordinatorDelegate {
         
         let router = NavigationRouter(navigationController!)
         itemIconPickerCoordinator = ItemIconPickerCoordinator(router: router)
-        itemIconPickerCoordinator!.dismissHandler = { [self] (coordinator) in
-            self.itemIconPickerCoordinator = nil
+        itemIconPickerCoordinator!.dismissHandler = { [weak self] (coordinator) in
+            self?.itemIconPickerCoordinator = nil
         }
         itemIconPickerCoordinator!.delegate = self
         itemIconPickerCoordinator!.start(selectedIconID: entry?.iconID)
@@ -494,6 +518,10 @@ extension EditEntryVC: DatabaseManagerObserver {
         showSavingOverlay()
     }
     
+    func databaseManager(progressDidChange progress: ProgressEx) {
+        savingOverlay?.update(with: progress)
+    }
+
     func databaseManager(didSaveDatabase urlRef: URLReference) {
         DatabaseManager.shared.removeObserver(self)
         hideSavingOverlay()
@@ -516,23 +544,20 @@ extension EditEntryVC: DatabaseManagerObserver {
     {
         DatabaseManager.shared.removeObserver(self)
         hideSavingOverlay()
-        
+        showError(message: message, reason: reason)
+    }
+    
+    private func showError(message: String, reason: String?) {
         let errorAlert = UIAlertController.make(
             title: message,
             message: reason,
             cancelButtonTitle: LString.actionDismiss)
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default)
-        {
+        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
             [weak self] _ in
-            let diagnosticsVC = ViewDiagnosticsVC.make()
-            self?.present(diagnosticsVC, animated: true, completion: nil)
+            self?.showDiagnostics()
         }
         errorAlert.addAction(showDetailsAction)
         present(errorAlert, animated: true, completion: nil)
-    }
-    
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        savingOverlay?.update(with: progress)
     }
 }
 

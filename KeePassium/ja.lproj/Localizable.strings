@@ -220,6 +220,9 @@
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "お問い合わせ";
 
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "お問い合わせ";
+
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "続ける";
 

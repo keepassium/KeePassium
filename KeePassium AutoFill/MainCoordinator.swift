@@ -313,9 +313,13 @@ class MainCoordinator: NSObject, Coordinator {
     }
     
     func showDiagnostics() {
-        let vc = DiagnosticsViewerVC.instantiateFromStoryboard()
-        vc.delegate = self
-        navigationController.pushViewController(vc, animated: true)
+        let router = NavigationRouter(navigationController)
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator.dismissHandler = { [weak self] (coordinator) in
+            self?.removeChildCoordinator(coordinator)
+        }
+        addChildCoordinator(diagnosticsViewerCoordinator)
+        diagnosticsViewerCoordinator.start()
     }
     
     func showDatabaseContent(database: Database, databaseRef: URLReference) {
@@ -350,26 +354,16 @@ class MainCoordinator: NSObject, Coordinator {
     }
     
     func showUpgradeOptions(from viewController: UIViewController) {
-        guard openURL(AppGroup.upgradeToPremiumURL) else {
-            Diag.warning("Failed to open main app")
-            showManualUpgradeMessage()
-            return
+        let urlOpener = URLOpener(rootController)
+        urlOpener.open(url: AppGroup.upgradeToPremiumURL) {
+            [self] (success) in
+            if !success {
+                Diag.warning("Failed to open main app")
+                showManualUpgradeMessage()
+            }
         }
     }
 
-    @objc func openURL(_ url: URL) -> Bool {
-        var responder: UIResponder? = rootController
-        while responder != nil {
-            guard let application = responder as? UIApplication else {
-                responder = responder?.next
-                continue
-            }
-            let result = application.perform(#selector(openURL(_:)), with: url)
-            return result != nil
-        }
-        return false
-    }
-    
     func showManualUpgradeMessage() {
         let manualUpgradeAlert = UIAlertController.make(
             title: NSLocalizedString(
@@ -709,20 +703,6 @@ extension MainCoordinator: EntryFinderDelegate {
                 }
             }
         )
-    }
-}
-
-extension MainCoordinator: DiagnosticsViewerDelegate {
-    func didPressCopy(in diagnosticsViewer: DiagnosticsViewerVC, text: String) {
-        Clipboard.general.insert(text: text, timeout: nil)
-        let infoAlert = UIAlertController.make(
-            title: nil,
-            message: NSLocalizedString(
-                "[Diagnostics] Diagnostic log has been copied to clipboard.",
-                value: "Diagnostic log has been copied to clipboard.",
-                comment: "Notification/confirmation message"),
-            cancelButtonTitle: LString.actionOK)
-        navigationController.present(infoAlert, animated: true, completion: nil)
     }
 }
 

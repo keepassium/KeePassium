@@ -220,6 +220,9 @@
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Neem contact op";
 
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "Neem contact op met ons ondersteuningsteam";
+
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "Doorgaan";
 

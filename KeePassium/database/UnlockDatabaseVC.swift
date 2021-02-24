@@ -42,12 +42,18 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     var isAutoUnlockEnabled = true
     fileprivate var isAutomaticUnlock = false
 
+    private var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
+    
     private var isViewAppeared = false
     
     static func make(databaseRef: URLReference) -> UnlockDatabaseVC {
         let vc = UnlockDatabaseVC.instantiateFromStoryboard()
         vc.databaseRef = databaseRef
         return vc
+    }
+    
+    deinit {
+        diagnosticsViewerCoordinator = nil
     }
     
     override func viewDidLoad() {
@@ -327,6 +333,17 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             watchdogTimeoutLabel.alpha = 0.0
         }
     }
+    
+    func showDiagnostics() {
+        assert(diagnosticsViewerCoordinator == nil)
+        let router = NavigationRouter.createModal(style: .formSheet)
+        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
+            self?.diagnosticsViewerCoordinator = nil
+        }
+        diagnosticsViewerCoordinator!.start()
+        present(router.navigationController, animated: true, completion: nil)
+    }
 
     private var progressOverlay: ProgressOverlay?
     fileprivate func showProgressOverlay(animated: Bool) {
@@ -337,9 +354,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             animated: animated)
         progressOverlay?.isCancellable = true
         progressOverlay?.unresponsiveCancelHandler = { [weak self] in
-            guard let self = self else { return }
-            let diagInfoVC = ViewDiagnosticsVC.make()
-            self.present(diagInfoVC, animated: true, completion: nil)
+            self?.showDiagnostics()
         }
         
         if let leftNavController = splitViewController?.viewControllers.first as? UINavigationController,
@@ -385,8 +400,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     
     @IBAction func didPressErrorDetails(_ sender: Any) {
-        let diagInfoVC = ViewDiagnosticsVC.make()
-        present(diagInfoVC, animated: true, completion: nil)
+        showDiagnostics()
     }
     
     @IBAction func didPressUnlock(_ sender: Any) {

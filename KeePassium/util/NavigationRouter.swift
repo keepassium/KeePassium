@@ -15,13 +15,16 @@ public class NavigationRouter: NSObject {
     private var popHandlers = [ObjectIdentifier: PopHandler]()
     private weak var oldDelegate: UINavigationControllerDelegate?
     
-    static func createPopover(at popoverAnchor: PopoverAnchor) -> NavigationRouter {
+    static func createModal(
+        style: UIModalPresentationStyle,
+        at popoverAnchor: PopoverAnchor? = nil
+    ) -> NavigationRouter {
         let navVC = UINavigationController()
         let router = NavigationRouter(navVC)
-        navVC.modalPresentationStyle = .popover
+        navVC.modalPresentationStyle = style
         navVC.presentationController?.delegate = router
         if let popover = navVC.popoverPresentationController {
-            popoverAnchor.apply(to: popover)
+            popoverAnchor?.apply(to: popover)
             popover.delegate = router
         }
         return router
@@ -37,6 +40,12 @@ public class NavigationRouter: NSObject {
     
     deinit {
         navigationController.delegate = oldDelegate
+    }
+    
+    public func dismiss(animated: Bool) {
+        navigationController.dismiss(animated: animated, completion: { [self] in
+            self.popAll(animated: animated)
+        })
     }
     
     public func push(_ viewController: UIViewController, animated: Bool, onPop popHandler: PopHandler?) {
@@ -57,8 +66,26 @@ public class NavigationRouter: NSObject {
         }
     }
     
+    public func popTo(viewController: UIViewController, animated: Bool) {
+        navigationController.popToViewController(viewController, animated: true)
+    }
+    
+    public func pop(viewController: UIViewController, animated: Bool) {
+        let isPushed = navigationController.viewControllers.contains(viewController)
+        guard isPushed else {
+            return
+        }
+        popTo(viewController: viewController, animated: animated)
+        pop(animated: animated) 
+    }
+    
     public func popToRoot(animated: Bool) {
         navigationController.popToRootViewController(animated: animated)
+    }
+    
+    fileprivate func popAll(animated: Bool) {
+        popToRoot(animated: false)
+        pop(animated: false) 
     }
     
     fileprivate func triggerAndRemovePopHandler(for viewController: UIViewController) {
@@ -85,6 +112,15 @@ extension NavigationRouter: UINavigationControllerDelegate {
             didShow: viewController,
             animated: true)
     }
+    
+    public func navigationController(
+        _ navigationController: UINavigationController,
+        willShow viewController: UIViewController,
+        animated: Bool)
+    {
+        let shouldShowToolbar = (viewController.toolbarItems?.count ?? 0) > 0
+        navigationController.setToolbarHidden(!shouldShowToolbar, animated: true)
+    }
 }
 
 extension NavigationRouter: UIPopoverPresentationControllerDelegate {
@@ -99,7 +135,6 @@ extension NavigationRouter: UIPopoverPresentationControllerDelegate {
 
 extension NavigationRouter: UIAdaptivePresentationControllerDelegate {
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        popToRoot(animated: false)
-        pop(animated: false) 
+        popAll(animated: false)
     }
 }

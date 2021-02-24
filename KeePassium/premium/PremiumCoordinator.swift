@@ -44,6 +44,11 @@ class PremiumCoordinator: NSObject, Coordinator {
         planPicker.delegate = self
     }
     
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
     func start() {
         self.start(tryRestoringPurchasesFirst: false)
     }
@@ -61,10 +66,6 @@ class PremiumCoordinator: NSObject, Coordinator {
         } else {
             refreshAvailableProducts()
         }
-    }
-    
-    deinit {
-        childCoordinators.removeAll()
     }
     
     fileprivate func restorePurchases() {
@@ -105,7 +106,7 @@ class PremiumCoordinator: NSObject, Coordinator {
     }
     
     func finish(animated: Bool, completion: (() -> Void)?) {
-        self.childCoordinators.removeAll()
+        removeAllChildCoordinators()
         navigationController.dismiss(animated: animated) { [weak self] in
             guard let self = self else { return }
             self.delegate?.didFinish(self)
@@ -144,15 +145,14 @@ extension PremiumCoordinator: PricingPlanPickerDelegate {
             return
         }
         
-        let router = NavigationRouter.createPopover(at: popoverAnchor)
+        let router = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         let helpViewerCoordinator = HelpViewerCoordinator(router: router)
-        helpViewerCoordinator.dismissHandler = { [self] (coordinator) in
-            self.childCoordinators.removeLast()
-            assert(self.childCoordinators.isEmpty)
+        helpViewerCoordinator.dismissHandler = { [weak self] (coordinator) in
+            self?.removeChildCoordinator(coordinator)
         }
         helpViewerCoordinator.article = HelpArticle.load(helpReference.articleKey)
         helpViewerCoordinator.start()
-        childCoordinators.append(helpViewerCoordinator)
+        addChildCoordinator(helpViewerCoordinator)
         planPicker.present(router.navigationController, animated: true, completion: nil)
     }
 }

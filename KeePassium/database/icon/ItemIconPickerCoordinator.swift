@@ -29,13 +29,21 @@ class ItemIconPickerCoordinator: Coordinator {
         iconPicker.delegate = self
     }
     
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
     func start() {
         start(selectedIconID: nil)
     }
     
     func start(selectedIconID: IconID?) {
         iconPicker.selectedIconID = selectedIconID
-        router.push(iconPicker, animated: true, onPop: { [self] (viewController) in 
+        router.push(iconPicker, animated: true, onPop: {
+            [weak self] (viewController) in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
     }

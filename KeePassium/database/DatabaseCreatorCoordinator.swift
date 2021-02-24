@@ -13,28 +13,50 @@ protocol DatabaseCreatorCoordinatorDelegate: class {
     func didCreateDatabase(
         in databaseCreatorCoordinator: DatabaseCreatorCoordinator,
         database urlRef: URLReference)
-    func didPressCancel(in databaseCreatorCoordinator: DatabaseCreatorCoordinator)
 }
 
-class DatabaseCreatorCoordinator: NSObject {
+class DatabaseCreatorCoordinator: NSObject, Coordinator {
+    var childCoordinators = [Coordinator]()
+    
     weak var delegate: DatabaseCreatorCoordinatorDelegate?
     
-    private let navigationController: UINavigationController
-    private weak var initialTopController: UIViewController?
+    typealias DismissHandler = (DatabaseCreatorCoordinator) -> Void
+    var dismissHandler: DismissHandler?
+    
+    private let router: NavigationRouter
     private let databaseCreatorVC: DatabaseCreatorVC
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-        self.initialTopController = navigationController.topViewController
-        
+    init(router: NavigationRouter) {
+        self.router = router
         databaseCreatorVC = DatabaseCreatorVC.create()
         super.init()
 
         databaseCreatorVC.delegate = self
     }
     
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
     func start() {
-        navigationController.pushViewController(databaseCreatorVC, animated: true)
+        if router.navigationController.topViewController == nil {
+            let leftButton = UIBarButtonItem(
+                barButtonSystemItem: .cancel,
+                target: self,
+                action: #selector(didPressDismissButton))
+            databaseCreatorVC.navigationItem.leftBarButtonItem = leftButton
+        }
+        router.push(databaseCreatorVC, animated: true, onPop: {
+            [weak self] (viewController) in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
+            self.dismissHandler?(self)
+        })
+    }
+    
+    @objc private func didPressDismissButton() {
+        router.dismiss(animated: true)
     }
     
 
@@ -174,8 +196,8 @@ class DatabaseCreatorCoordinator: NSObject {
             switch result {
             case .success(let tmpURL):
                 let picker = UIDocumentPickerViewController(url: tmpURL, in: .exportToService)
-                picker.modalPresentationStyle = self.navigationController.modalPresentationStyle
                 picker.delegate = self
+                picker.modalPresentationStyle = self.router.navigationController.modalPresentationStyle
                 self.databaseCreatorVC.present(picker, animated: true, completion: nil)
             case .failure(let error):
                 Diag.error("Failed to resolve temporary DB reference [message: \(error.localizedDescription)]")
@@ -191,11 +213,9 @@ class DatabaseCreatorCoordinator: NSObject {
             fileType: .database,
             mode: .openInPlace,
             success: { [weak self] (addedRef) in
-                guard let _self = self else { return }
-                if let initialTopController = _self.initialTopController {
-                    _self.navigationController.popToViewController(initialTopController, animated: true)
-                }
-                _self.delegate?.didCreateDatabase(in: _self, database: addedRef)
+                guard let self = self else { return }
+                self.router.pop(viewController: self.databaseCreatorVC, animated: true)
+                self.delegate?.didCreateDatabase(in: self, database: addedRef)
             },
             error: { [weak self] (fileKeeperError) in
                 Diag.error("Failed to add created file [mesasge: \(fileKeeperError.localizedDescription)]")
@@ -206,23 +226,33 @@ class DatabaseCreatorCoordinator: NSObject {
             }
         )
     }
+    
+    private func showDiagnostics() {
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        addChildCoordinator(diagnosticsViewerCoordinator)
+        diagnosticsViewerCoordinator.start()
+    }
 }
 
 extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
     func didPressCancel(in databaseCreatorVC: DatabaseCreatorVC) {
-        if let initialTopController = self.initialTopController {
-            navigationController.popToViewController(initialTopController, animated: true)
-        }
-        delegate?.didPressCancel(in: self)
+        router.pop(viewController: databaseCreatorVC, animated: true)
     }
     
     func didPressContinue(in databaseCreatorVC: DatabaseCreatorVC) {
         instantiateDatabase(fileName: databaseCreatorVC.databaseFileName)
     }
     
+    func didPressErrorDetails(in databaseCreatorVC: DatabaseCreatorVC) {
+        showDiagnostics()
+    }
+    
     func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, popoverSource: UIView) {
         let keyFileChooser = ChooseKeyFileVC.make(popoverSourceView: popoverSource, delegate: self)
-        navigationController.present(keyFileChooser, animated: true, completion: nil)
+        databaseCreatorVC.present(keyFileChooser, animated: true, completion: nil)
     }
     
     func didPressPickHardwareKey(
@@ -259,7 +289,7 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
             completion: { [weak self] (error) in
                 if let error = error {
                     self?.databaseCreatorVC.hideProgressView()
-                    self?.navigationController.showErrorAlert(error)
+                    self?.databaseCreatorVC.showErrorAlert(error)
                 } else {
                     DispatchQueue.main.async { [weak self] in
                         self?.pickTargetLocation(for: urlRef)
@@ -291,10 +321,7 @@ extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         databaseCreatorVC.hideProgressView()
         
-        if let initialTopController = self.initialTopController {
-            self.navigationController.popToViewController(initialTopController, animated: false)
-        }
-        self.delegate?.didPressCancel(in: self)
+        router.pop(viewController: databaseCreatorVC, animated: true)
     }
     
     func documentPicker(

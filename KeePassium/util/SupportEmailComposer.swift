@@ -100,6 +100,15 @@ class SupportEmailComposer: NSObject {
             Diag.error("Failed to create mailto URL")
             return
         }
+        
+        let urlOpener: URLOpener
+        #if MAIN_APP
+        urlOpener = URLOpener(UIApplication.shared)
+        #else
+        urlOpener = URLOpener(parent)
+        #endif
+        
+        
         let app = UIApplication.shared
         guard app.canOpenURL(url) else {
             showExportSheet(for: url, completion: self.completionHandler)

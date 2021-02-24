@@ -12,6 +12,7 @@ import KeePassiumLib
 protocol DatabaseCreatorDelegate: class {
     func didPressCancel(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressContinue(in databaseCreatorVC: DatabaseCreatorVC)
+    func didPressErrorDetails(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, popoverSource: UIView)
     func didPressPickHardwareKey(
         in databaseCreatorVC: DatabaseCreatorVC,
@@ -155,8 +156,7 @@ class DatabaseCreatorVC: UIViewController {
     }
     
     @IBAction func didPressErrorDetails(_ sender: Any) {
-        let diagInfoVC = ViewDiagnosticsVC.make()
-        present(diagInfoVC, animated: true, completion: nil)
+        delegate?.didPressErrorDetails(in: self)
     }
     
     @IBAction func didPressContinue(_ sender: Any) {
