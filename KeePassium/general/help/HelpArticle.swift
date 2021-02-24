@@ -30,7 +30,10 @@ public struct HelpArticle {
             var d: NSDictionary? = nil
             let content = try NSMutableAttributedString(
                 url: url,
-                options: [.documentType: NSAttributedString.DocumentType.html],
+                options: [
+                    .documentType: NSAttributedString.DocumentType.html,
+                    .characterEncoding: String.Encoding.utf8.rawValue
+                ],
                 documentAttributes: &d)
             if #available(iOS 13, *) {
                 content.addAttribute(
