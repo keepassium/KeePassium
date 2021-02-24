@@ -249,7 +249,7 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
     }
     
     
-    private func getDeleteActionName(for urlRef: URLReference) -> String {
+    private func getDestructiveActionTitle(for urlRef: URLReference) -> String {
         if urlRef.location == .external || urlRef.hasError {
             return LString.actionRemoveFile
         } else {
@@ -270,7 +270,7 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
             }
         )
         let deleteAction = UIAlertAction(
-            title: getDeleteActionName(for: urlRef),
+            title: getDestructiveActionTitle(for: urlRef),
             style: .destructive,
             handler: { [weak self] alertAction in
                 self?.didPressDeleteDatabase(at: indexPath)
@@ -585,34 +585,36 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
     
     override func tableView(
         _ tableView: UITableView,
-        editActionsForRowAt indexPath: IndexPath
-        ) -> [UITableViewRowAction]?
-    {
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
         guard indexPath.row < databaseRefs.count else {
             return nil
         }
-        let shareAction = UITableViewRowAction(
-            style: .default,
-            title: LString.actionExport)
-        {
-            [unowned self] (_,_) in
-            self.setEditing(false, animated: true)
-            self.didPressExportDatabase(at: indexPath)
+
+        let shareAction = UIContextualAction(style: .normal, title: LString.actionExport) {
+            [weak self] (action, sourceView, completion) in
+            self?.setEditing(false, animated: true)
+            self?.didPressExportDatabase(at: indexPath)
+            completion(true)
         }
         shareAction.backgroundColor = UIColor.actionTint
         
         let urlRef = databaseRefs[indexPath.row]
-        let deleteAction = UITableViewRowAction(
+        let destructiveAction = UIContextualAction(
             style: .destructive,
-            title: getDeleteActionName(for: urlRef))
+            title: getDestructiveActionTitle(for: urlRef))
         {
-            [unowned self] (_,_) in
-            self.setEditing(false, animated: true)
-            self.didPressDeleteDatabase(at: indexPath)
+            [weak self] (action, sourceView, completion) in
+            self?.setEditing(false, animated: true)
+            self?.didPressDeleteDatabase(at: indexPath)
+            completion(true)
         }
-        deleteAction.backgroundColor = UIColor.destructiveTint
+        destructiveAction.backgroundColor = UIColor.destructiveTint
         
-        return [deleteAction, shareAction]
+        let swipeActionsConfiguration = UISwipeActionsConfiguration(
+            actions: [destructiveAction, shareAction]
+        )
+        return swipeActionsConfiguration
     }
 }
 

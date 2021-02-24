@@ -19,4 +19,18 @@ class KPApplication: UIApplication {
             break
         }
     }
+
+    internal func showNetworkActivityIndicator() {
+        if #available(macCatalyst 13.0, *) {
+        } else {
+            isNetworkActivityIndicatorVisible = true
+        }
+    }
+    
+    internal func hideNetworkActivityIndicator() {
+        if #available(macCatalyst 13.0, *) {
+        } else {
+            isNetworkActivityIndicatorVisible = false
+        }
+    }
 }

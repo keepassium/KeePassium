@@ -181,30 +181,31 @@ class DatabaseChooserVC: UITableViewController, DynamicFileList, Refreshable {
     
     override func tableView(
         _ tableView: UITableView,
-        editActionsForRowAt indexPath: IndexPath
-        ) -> [UITableViewRowAction]?
-    {
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
         Watchdog.shared.restart()
         guard databaseRefs.count > 0 else { return nil }
         
         let urlRef = databaseRefs[indexPath.row]
-        let isInternalFile = urlRef.location.isInternal
-        let deleteAction = UITableViewRowAction(
+        let destructiveFileAction = DestructiveFileAction.get(for: urlRef.location)
+        let deleteAction = UIContextualAction(
             style: .destructive,
-            title: isInternalFile ? LString.actionDeleteFile : LString.actionRemoveFile)
+            title: destructiveFileAction.title)
         {
-            [weak self] (_,_) in
-            guard let _self = self else { return }
-            _self.setEditing(false, animated: true)
-            if isInternalFile {
-                _self.delegate?.databaseChooser(_self, shouldDeleteDatabase: urlRef)
-            } else {
-                _self.delegate?.databaseChooser(_self, shouldRemoveDatabase: urlRef)
+            [weak self] (action, sourceView, completion) in
+            guard let self = self else { return }
+            self.setEditing(false, animated: true)
+            switch destructiveFileAction {
+            case .delete:
+                self.delegate?.databaseChooser(self, shouldDeleteDatabase: urlRef)
+            case .remove:
+                self.delegate?.databaseChooser(self, shouldRemoveDatabase: urlRef)
             }
+            completion(true)
         }
         deleteAction.backgroundColor = UIColor.destructiveTint
         
-        return [deleteAction]
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
     private func showActions(for indexPath: IndexPath) {

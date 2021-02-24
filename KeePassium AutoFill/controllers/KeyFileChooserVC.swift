@@ -129,18 +129,18 @@ class KeyFileChooserVC: UITableViewController, Refreshable {
 
     override func tableView(
         _ tableView: UITableView,
-        editActionsForRowAt indexPath: IndexPath
-        ) -> [UITableViewRowAction]?
-    {
-        let removeAction = UITableViewRowAction(
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let removeAction = UIContextualAction(
             style: .destructive,
             title: LString.actionRemoveFile)
         {
-            [unowned self] (rowAction, indexPath) in
-            self.setEditing(false, animated: true)
-            self.didPressRemoveKeyFile(at: indexPath)
+            [weak self] (action, sourceView, completion) in
+            self?.setEditing(false, animated: true)
+            self?.didPressRemoveKeyFile(at: indexPath)
+            completion(true)
         }
-        return [removeAction]
+        return UISwipeActionsConfiguration(actions: [removeAction])
     }
     
     

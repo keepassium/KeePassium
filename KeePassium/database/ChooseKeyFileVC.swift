@@ -259,18 +259,15 @@ class ChooseKeyFileVC: UITableViewController, Refreshable {
     
     override func tableView(
         _ tableView: UITableView,
-        editActionsForRowAt indexPath: IndexPath
-        ) -> [UITableViewRowAction]?
-    {
-        let deleteAction = UITableViewRowAction(
-            style: .destructive,
-            title: LString.actionDelete)
-        {
-            [unowned self] _,_ in
-            self.setEditing(false, animated: true)
-            self.didPressDeleteKeyFile(at: indexPath)
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {    
+        let deleteAction = UIContextualAction(style: .destructive, title: LString.actionDelete) {
+            [weak self] (action, sourceView, completion) in
+            self?.setEditing(false, animated: true)
+            self?.didPressDeleteKeyFile(at: indexPath)
+            completion(true)
         }
-        return [deleteAction]
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 
 

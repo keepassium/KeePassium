@@ -179,18 +179,18 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     
     override func tableView(
         _ tableView: UITableView,
-        editActionsForRowAt indexPath: IndexPath
-        ) -> [UITableViewRowAction]?
-    {
-        let deleteAction = UITableViewRowAction(
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(
             style: .destructive,
             title: LString.actionDeleteFile,
-            handler: { [weak self] (rowAction, indexPath) in
+            handler: { [weak self] (action, sourceView, completion) in
                 self?.didPressDeleteAttachment(at: indexPath)
+                completion(true)
             }
         )
         
-        return [deleteAction]
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
     override func tableView(

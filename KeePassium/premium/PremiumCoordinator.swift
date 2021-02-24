@@ -52,7 +52,7 @@ class PremiumCoordinator: NSObject, Coordinator {
         premiumManager.delegate = self
         self.presentingViewController.present(navigationController, animated: true, completion: nil)
         
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        (UIApplication.shared as! KPApplication).showNetworkActivityIndicator()
         
         planPicker.isPurchaseEnabled = false
         
@@ -74,7 +74,7 @@ class PremiumCoordinator: NSObject, Coordinator {
     fileprivate func refreshAvailableProducts() {
         premiumManager.requestAvailableProducts() {
             [weak self] (products, error) in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            (UIApplication.shared as! KPApplication).hideNetworkActivityIndicator()
             guard let self = self else { return }
             
             self.planPicker.isPurchaseEnabled = true
