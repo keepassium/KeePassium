@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Appearance-->
+        <scene sceneID="aKh-TC-lJx">
+            <objects>
+                <tableViewController storyboardIdentifier="SettingsAppearanceVC" title="Appearance" id="4mh-X8-Byq" customClass="SettingsAppearanceVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="RGN-nh-Dp1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="" id="Sc2-r0-Toe">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fSx-Do-lgu" imageView="eeb-bc-aya" style="IBUITableViewCellStyleDefault" id="yBx-ZL-DDR" userLabel="App Icon">
+                                        <rect key="frame" x="0.0" y="39.5" width="320" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yBx-ZL-DDR" id="f59-C7-fgC">
+                                            <rect key="frame" x="0.0" y="0.0" width="293" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="App Icon" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="fSx-Do-lgu" userLabel="App Icon">
+                                                    <rect key="frame" x="60" y="0.0" width="225" height="52"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Section in settings: icon for the app"/>
+                                                    </attributedString>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-app-icon-listitem" id="eeb-bc-aya">
+                                                    <rect key="frame" x="16" y="11.5" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Entry Viewer" id="MsA-Cd-czb">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wGS-Nq-9TY">
+                                        <rect key="frame" x="0.0" y="147.5" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wGS-Nq-9TY" id="f6W-QG-JTM">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="{Text size}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbO-y9-3wb">
+                                                    <rect key="frame" x="16" y="11" width="78.5" height="14"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <bool key="isElement" value="NO"/>
+                                                    </accessibility>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MAG-tY-N1o">
+                                                    <rect key="frame" x="14" y="33" width="251" height="1"/>
+                                                    <connections>
+                                                        <action selector="didChangeTextScale:" destination="4mh-X8-Byq" eventType="valueChanged" id="XXo-su-Sql"/>
+                                                    </connections>
+                                                </slider>
+                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5U9-NZ-sJe">
+                                                    <rect key="frame" x="271" y="18.5" width="33" height="29"/>
+                                                    <accessibility key="accessibilityConfiguration" label="Reset text size to default"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="4"/>
+                                                    <state key="normal" image="zoom-original-toolbar">
+                                                        <color key="titleColor" name="ActionTint"/>
+                                                    </state>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Action: set text size to standard size"/>
+                                                    </attributedString>
+                                                    <connections>
+                                                        <action selector="didPressResetTextScale:" destination="4mh-X8-Byq" eventType="touchUpInside" id="Zai-tX-HHl"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MAG-tY-N1o" firstAttribute="top" secondItem="QbO-y9-3wb" secondAttribute="bottom" constant="8" id="1nQ-gW-bGC"/>
+                                                <constraint firstItem="QbO-y9-3wb" firstAttribute="leading" secondItem="f6W-QG-JTM" secondAttribute="leadingMargin" id="3A9-0n-Kxl"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="QbO-y9-3wb" secondAttribute="trailing" id="Cmc-RU-dTy"/>
+                                                <constraint firstItem="5U9-NZ-sJe" firstAttribute="leading" secondItem="MAG-tY-N1o" secondAttribute="trailing" constant="8" id="DRw-Pl-22A"/>
+                                                <constraint firstItem="QbO-y9-3wb" firstAttribute="top" secondItem="f6W-QG-JTM" secondAttribute="topMargin" id="KnE-CB-Ehg"/>
+                                                <constraint firstItem="5U9-NZ-sJe" firstAttribute="centerY" secondItem="MAG-tY-N1o" secondAttribute="centerY" id="NkW-Ma-cCT"/>
+                                                <constraint firstItem="5U9-NZ-sJe" firstAttribute="trailing" secondItem="f6W-QG-JTM" secondAttribute="trailingMargin" id="PzS-yC-P3Q"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="MAG-tY-N1o" secondAttribute="bottom" id="WpY-w6-i5o"/>
+                                                <constraint firstItem="MAG-tY-N1o" firstAttribute="leading" secondItem="f6W-QG-JTM" secondAttribute="leadingMargin" id="vZD-bZ-i0V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Protected Fields" footerTitle="Hide passwords and other protected fields behind asterisks (recommended)." id="Lh3-CB-Urp">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="LFD-J8-PP9" userLabel="Hide Protected Fields">
+                                        <rect key="frame" x="0.0" y="291" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LFD-J8-PP9" id="dNo-I4-XUP">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-hide-passwords-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="hX2-R8-ftf">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="Oc3-mW-qWK"/>
+                                                        <constraint firstAttribute="width" constant="29" id="Z10-ba-Idv"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Hide Passwords" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usg-hF-eLK">
+                                                    <rect key="frame" x="61" y="12" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lxT-1h-16d">
+                                                    <rect key="frame" x="255" y="10" width="51" height="24"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="usg-hF-eLK" secondAttribute="bottom" id="85B-wQ-v3O"/>
+                                                <constraint firstItem="usg-hF-eLK" firstAttribute="leading" secondItem="hX2-R8-ftf" secondAttribute="trailing" constant="16" id="96s-kQ-vIh"/>
+                                                <constraint firstItem="lxT-1h-16d" firstAttribute="centerY" secondItem="dNo-I4-XUP" secondAttribute="centerY" priority="750" id="BLd-as-aTm"/>
+                                                <constraint firstItem="lxT-1h-16d" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dNo-I4-XUP" secondAttribute="top" constant="10" id="D49-1H-rEA"/>
+                                                <constraint firstItem="lxT-1h-16d" firstAttribute="trailing" secondItem="dNo-I4-XUP" secondAttribute="trailingMargin" id="LXU-qr-iR5"/>
+                                                <constraint firstItem="hX2-R8-ftf" firstAttribute="centerY" secondItem="dNo-I4-XUP" secondAttribute="centerY" id="QaD-vJ-tII"/>
+                                                <constraint firstItem="usg-hF-eLK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dNo-I4-XUP" secondAttribute="topMargin" id="bjr-JK-bQk"/>
+                                                <constraint firstItem="hX2-R8-ftf" firstAttribute="leading" secondItem="dNo-I4-XUP" secondAttribute="leadingMargin" id="izZ-Oj-B3k"/>
+                                                <constraint firstItem="usg-hF-eLK" firstAttribute="centerY" secondItem="dNo-I4-XUP" secondAttribute="centerY" priority="250" id="j93-u5-LRK"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lxT-1h-16d" secondAttribute="bottom" constant="10" id="k4d-kf-jDG"/>
+                                                <constraint firstItem="lxT-1h-16d" firstAttribute="leading" secondItem="usg-hF-eLK" secondAttribute="trailing" constant="8" id="thC-An-ZxM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="4mh-X8-Byq" id="iCa-Rn-LxY"/>
+                            <outlet property="delegate" destination="4mh-X8-Byq" id="fRG-6l-5a4"/>
+                        </connections>
+                    </tableView>
+                    <attributedString key="userComments">
+                        <fragment content="Settings for user interface appearance (text size, icons, etc)"/>
+                    </attributedString>
+                    <connections>
+                        <outlet property="appIconCell" destination="yBx-ZL-DDR" id="RYs-eO-fHy"/>
+                        <outlet property="entryTextScaleSlider" destination="MAG-tY-N1o" id="sbQ-Ul-HnG"/>
+                        <outlet property="hideProtectedFieldsSwitch" destination="lxT-1h-16d" id="EuR-3p-SOM"/>
+                        <outlet property="textScaleLabel" destination="QbO-y9-3wb" id="M3O-B6-3rr"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rC-IL-HqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93.75" y="-23.239436619718312"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings-app-icon-listitem" width="29" height="29"/>
+        <image name="settings-hide-passwords-listitem" width="29" height="29"/>
+        <image name="zoom-original-toolbar" width="25" height="25"/>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="IconTint">
+            <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

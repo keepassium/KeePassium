@@ -609,6 +609,10 @@
 		75D7DFB9233E5E310029AD87 /* KeyFileChooserVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFileChooserVC.storyboard */; };
 		75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
 		75D7DFC7233E5E8C0029AD87 /* KeePassiumPro AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		75DACE6E2573B33900A110DD /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DACE6D2573B33900A110DD /* SettingsAppearanceVC.storyboard */; };
+		75DACE6F2573B33900A110DD /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DACE6D2573B33900A110DD /* SettingsAppearanceVC.storyboard */; };
+		75DACE732573B49700A110DD /* SettingsAppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */; };
+		75DACE742573B49700A110DD /* SettingsAppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */; };
 		75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */; };
 		75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
 		75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
@@ -1397,6 +1401,8 @@
 		75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassiumPro AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7DFC0233E5E630029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7DFC4233E5E870029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75DACE6D2573B33900A110DD /* SettingsAppearanceVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsAppearanceVC.storyboard; sourceTree = "<group>"; };
+		75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppearanceVC.swift; sourceTree = "<group>"; };
 		75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoReloader.swift; sourceTree = "<group>"; };
 		75E371932108CA08002602BD /* ProgressOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverlay.swift; sourceTree = "<group>"; };
@@ -1667,6 +1673,8 @@
 				751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */,
 				751A565124CCD3CD001227D6 /* AppIconPicker.swift */,
 				751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */,
+				75DACE6D2573B33900A110DD /* SettingsAppearanceVC.storyboard */,
+				75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */,
 			);
 			path = appearance;
 			sourceTree = "<group>";
@@ -2357,6 +2365,7 @@
 				751E0D072309AF250088BB10 /* ViewEntryVC.storyboard in Resources */,
 				758FC15924CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png in Resources */,
 				758FC15124CEF72000BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png in Resources */,
+				75DACE6E2573B33900A110DD /* SettingsAppearanceVC.storyboard in Resources */,
 				758FC17924CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@2x.png in Resources */,
 				751A564F24CCD3C0001227D6 /* AppIconPicker.storyboard in Resources */,
 				758FC11D24CEF72000BAD35C /* appicon-info_iPhoneApp_60@3x.png in Resources */,
@@ -2454,6 +2463,7 @@
 				75B38C60233E5B7C006BDEFC /* ViewEntryVC.storyboard in Resources */,
 				758FC15A24CEF72000BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png in Resources */,
 				758FC15224CEF72000BAD35C /* appicon-atom-blue_iPadProApp_83.5@2x.png in Resources */,
+				75DACE6F2573B33900A110DD /* SettingsAppearanceVC.storyboard in Resources */,
 				758FC17A24CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@2x.png in Resources */,
 				751A565024CCD3C0001227D6 /* AppIconPicker.storyboard in Resources */,
 				758FC11E24CEF72000BAD35C /* appicon-info_iPhoneApp_60@3x.png in Resources */,
@@ -2759,6 +2769,7 @@
 				758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */,
 				7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */,
 				75A5312123C0D2D400900ED1 /* Coordinator.swift in Sources */,
+				75DACE732573B49700A110DD /* SettingsAppearanceVC.swift in Sources */,
 				753507A023783729003B65C9 /* HapticFeedback.swift in Sources */,
 				758BF0D820D1B1DA00897C83 /* ValidatingTextField.swift in Sources */,
 				754BF09A20984DEE00E3A292 /* UnlockDatabaseVC.swift in Sources */,
@@ -2891,6 +2902,7 @@
 				75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */,
 				75B38C3E233E5B7C006BDEFC /* SettingsAppLockVC.swift in Sources */,
 				75A5312023C0D2D300900ED1 /* Coordinator.swift in Sources */,
+				75DACE742573B49700A110DD /* SettingsAppearanceVC.swift in Sources */,
 				753507A223783729003B65C9 /* HapticFeedback.swift in Sources */,
 				75B38C3F233E5B7C006BDEFC /* ValidatingTextField.swift in Sources */,
 				75B38C40233E5B7C006BDEFC /* UnlockDatabaseVC.swift in Sources */,

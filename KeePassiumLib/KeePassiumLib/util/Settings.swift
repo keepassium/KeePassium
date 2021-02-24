@@ -1352,7 +1352,7 @@ public class Settings {
         }
     }
 
-    private let textScaleAllowedRange: ClosedRange<CGFloat> = 0.5...2.0
+    public let textScaleAllowedRange: ClosedRange<CGFloat> = 0.5...2.0
     
     public var textScale: CGFloat {
         get {
