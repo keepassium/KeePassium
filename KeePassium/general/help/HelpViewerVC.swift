@@ -38,7 +38,11 @@ class HelpViewerVC: UIViewController {
         bodyTextView.textContainerInset.top = 16
         bodyTextView.textContainerInset.left = 8
         bodyTextView.textContainerInset.right = 8
-
+        
+        bodyTextView.linkTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.actionTint
+        ]
+        
         contentSizeObservation = bodyTextView.observe(\.contentSize, options: [.new]) {
             [weak self] (textView, change) in
             self?.preferredContentSize = textView.contentSize
