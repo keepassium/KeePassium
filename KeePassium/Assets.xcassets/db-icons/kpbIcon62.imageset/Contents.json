@@ -2,22 +2,25 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "kpIcon62@1.png",
+      "filename" : "kpbIcon62@1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "kpIcon62@2.png",
+      "filename" : "kpbIcon62@2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "kpIcon62@3.png",
+      "filename" : "kpbIcon62@3.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }
