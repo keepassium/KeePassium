@@ -223,7 +223,8 @@ class SettingsVC: UITableViewController, Refreshable {
             let viewer = ViewDiagnosticsVC.make()
             show(viewer, sender: self)
         case contactSupportCell:
-            SupportEmailComposer.show(subject: .supportRequest, parent: self)
+            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            SupportEmailComposer.show(subject: .supportRequest, parent: self, popoverAnchor: popoverAnchor)
         case rateTheAppCell:
             AppStoreHelper.writeReview()
         case aboutAppCell:

@@ -89,7 +89,7 @@
                                 <fragment content="Action: write an email to support"/>
                             </attributedString>
                             <connections>
-                                <action selector="didPressCompose:" destination="Nez-AA-Sck" id="xl6-mg-kdF"/>
+                                <action selector="didPressCompose:" destination="Nez-AA-Sck" id="GL4-64-fDb"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>

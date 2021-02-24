@@ -184,9 +184,11 @@ open class ViewGroupVC: UITableViewController, Refreshable {
             title: LString.actionContactUs,
             style: .default,
             handler: { (action) in
+                let popoverAnchor = PopoverAnchor(sourceView: self.view, sourceRect: self.view.frame)
                 SupportEmailComposer.show(
                     subject: .problem,
                     parent: self,
+                    popoverAnchor: popoverAnchor,
                     completion: { (isSent) in
                         alert.dismiss(animated: false, completion: nil)
                     }

@@ -75,7 +75,8 @@ class AboutVC: UITableViewController {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         switch selectedCell {
         case contactSupportCell:
-            SupportEmailComposer.show(subject: .supportRequest, parent: self)
+            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            SupportEmailComposer.show(subject: .supportRequest, parent: self, popoverAnchor: popoverAnchor)
         case writeReviewCell:
             AppStoreHelper.writeReview()
         case resetTextScaleCell:

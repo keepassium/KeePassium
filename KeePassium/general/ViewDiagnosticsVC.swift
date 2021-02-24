@@ -72,8 +72,9 @@ class ViewDiagnosticsVC: UITableViewController, Refreshable {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func didPressCompose(_ sender: Any) {
-        SupportEmailComposer.show(subject: .problem, parent: self) {
+    @IBAction func didPressCompose(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        SupportEmailComposer.show(subject: .problem, parent: self, popoverAnchor: popoverAnchor) {
             [weak self] (success) in
             self?.dismiss(animated: true, completion: nil)
         }
