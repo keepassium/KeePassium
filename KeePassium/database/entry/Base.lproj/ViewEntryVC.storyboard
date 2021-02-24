@@ -64,7 +64,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DPz-iF-IQQ" userLabel="H Stack View">
                                     <rect key="frame" x="90" y="7.5" width="132.5" height="29"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/kpbIcon55" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-3F-HHC">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/db-icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-3F-HHC">
                                             <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
                                             <color key="tintColor" name="PrimaryText"/>
                                             <constraints>
@@ -128,7 +128,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="db-icons/kpbIcon55" width="29" height="29"/>
+        <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <image name="edit-item-toolbar" width="25" height="25"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

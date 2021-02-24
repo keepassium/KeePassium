@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/kpbIcon48" translatesAutoresizingMaskIntoConstraints="NO" id="7lM-kE-WVJ">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/db-icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="7lM-kE-WVJ">
                                 <rect key="frame" x="16" y="8" width="29" height="29"/>
                                 <color key="tintColor" name="IconTint"/>
                                 <gestureRecognizers/>
@@ -99,7 +99,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="db-icons/kpbIcon48" width="29" height="29"/>
+        <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
