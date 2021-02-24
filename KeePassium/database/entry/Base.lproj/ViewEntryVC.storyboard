@@ -112,7 +112,6 @@
                             </constraints>
                             <viewLayoutGuide key="safeArea" id="FcN-vT-Wi4"/>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="edit-item-toolbar" id="AMq-qK-vzZ"/>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="P3O-53-The" id="o2M-PV-VDm"/>

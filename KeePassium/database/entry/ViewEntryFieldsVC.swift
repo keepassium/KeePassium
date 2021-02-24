@@ -106,11 +106,7 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
 
         copiedCellView.delegate = self
         
-        editButton.image = UIImage(asset: .editItemToolbar)
-        editButton.title = NSLocalizedString(
-            "[Entry/View] Edit Entry",
-            value: "Edit Entry",
-            comment: "Action to start editing an entry")
+        editButton.title = LString.actionEdit
         editButton.target = self
         editButton.action = #selector(onEditAction)
         editButton.accessibilityIdentifier = "edit_entry_button" 
