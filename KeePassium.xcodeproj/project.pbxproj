@@ -27,6 +27,10 @@
 		750CFC0921BADBA500E62B09 /* DatabaseChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFC0821BADBA500E62B09 /* DatabaseChooserVC.swift */; };
 		750D127E20CF071600BE0CCE /* EditGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D127D20CF071600BE0CCE /* EditGroupVC.swift */; };
 		751146E6233F9E2900443BCD /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751146E5233F9E2900443BCD /* KeePassiumLib.framework */; };
+		7513992B25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
+		7513992C25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
+		7513992D25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
+		7513992E25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
 		7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
 		75151D3323268AB300F3C411 /* UILabel+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+extensions.swift */; };
 		75151D3423268AB300F3C411 /* UILabel+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+extensions.swift */; };
@@ -732,6 +736,7 @@
 		750D127D20CF071600BE0CCE /* EditGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupVC.swift; sourceTree = "<group>"; };
 		751146E2233F9E1500443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751146E5233F9E2900443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7513992625DDD46B00D22DBB /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressAwareNavigationController.swift; sourceTree = "<group>"; };
 		75151D3223268AB300F3C411 /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
 		751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppIconPicker.storyboard; sourceTree = "<group>"; };
@@ -1911,6 +1916,7 @@
 		756FC99424F453CF007F9920 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				7513992625DDD46B00D22DBB /* default.css */,
 				756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */,
 				756AFD62258CF4E40072BEEF /* appstore-family-sharing.html */,
 			);
@@ -2340,6 +2346,7 @@
 				75BE064825DB1A9C00B34CC0 /* DiagnosticsViewerVC.storyboard in Resources */,
 				755B863923054FC700E9FC83 /* WelcomeVC.storyboard in Resources */,
 				755E7D9F232008300010E199 /* Localizable.strings in Resources */,
+				7513992C25DDD46C00D22DBB /* default.css in Resources */,
 				751E0D292309AFE50088BB10 /* CrashReportVC.storyboard in Resources */,
 				751E0D2C2309AFE90088BB10 /* FirstSetupVC.storyboard in Resources */,
 				751E0D382309B0120088BB10 /* KeyFileChooserVC.storyboard in Resources */,
@@ -2353,6 +2360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				758FC15324CEF72000BAD35C /* appicon-keepass_iPadApp_76.png in Resources */,
+				7513992B25DDD46C00D22DBB /* default.css in Resources */,
 				7533030F23C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */,
 				751E0D102309AF4C0088BB10 /* ViewEntryHistoryVC.storyboard in Resources */,
 				751E0D132309AF540088BB10 /* ChooseDatabaseVC.storyboard in Resources */,
@@ -2452,6 +2460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				758FC15424CEF72000BAD35C /* appicon-keepass_iPadApp_76.png in Resources */,
+				7513992D25DDD46C00D22DBB /* default.css in Resources */,
 				7533031023C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */,
 				75B38C51233E5B7C006BDEFC /* ViewEntryHistoryVC.storyboard in Resources */,
 				75B38C52233E5B7C006BDEFC /* ChooseDatabaseVC.storyboard in Resources */,
@@ -2565,6 +2574,7 @@
 				75BE064A25DB1A9C00B34CC0 /* DiagnosticsViewerVC.storyboard in Resources */,
 				75D7DFB5233E5E310029AD87 /* WelcomeVC.storyboard in Resources */,
 				75D7DFB6233E5E310029AD87 /* Localizable.strings in Resources */,
+				7513992E25DDD46C00D22DBB /* default.css in Resources */,
 				75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */,
 				75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */,
 				75D7DFB9233E5E310029AD87 /* KeyFileChooserVC.storyboard in Resources */,
