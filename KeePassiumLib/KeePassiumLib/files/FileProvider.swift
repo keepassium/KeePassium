@@ -25,6 +25,7 @@ public enum FileProvider: Hashable {
         "com.qnap.qfile.FileProvider": .qnapQFile,
         "com.readdle.ReaddleDocsIPad.DocsExtFileProvider": .readdleDocuments,
         "com.resilio.sync.fileprovider": .resilioSync,
+        "com.seafile.seafilePro.SeafFileProvider": seafilePro,
         "com.apple.SMBClientProvider.FileProvider": .smbShare,
         "com.stratospherix.filebrowser.DocumentProviderFileProvider": .stratospherixFileBrowser,
         "com.sync.mobileapp.NewFileProvider": .syncCom,
@@ -52,6 +53,7 @@ public enum FileProvider: Hashable {
     case qnapQFile
     case readdleDocuments
     case resilioSync
+    case seafilePro
     case smbShare
     case stratospherixFileBrowser
     case syncCom
@@ -170,6 +172,12 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "Resilio Sync",
                 comment: "Localized name of the storage service: Resilio Sync (https://https://apps.apple.com/us/app/id1126282325)")
+        case .seafilePro:
+            return NSLocalizedString(
+                "[FileProvider/Seafile Pro/name]",
+                bundle: Bundle.framework,
+                value: "Seafile Pro",
+                comment: "Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512)")
         case .smbShare:
             return NSLocalizedString(
                 "[FileProvider/SMB/name]",

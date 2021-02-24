@@ -45,6 +45,7 @@ extension FileProvider {
         case .qnapQFile:      fallthrough
         case .readdleDocuments: fallthrough
         case .resilioSync:    fallthrough
+        case .seafilePro:     fallthrough
         case .stratospherixFileBrowser: fallthrough
         case .syncCom:        fallthrough
         case .tresorit:       fallthrough
