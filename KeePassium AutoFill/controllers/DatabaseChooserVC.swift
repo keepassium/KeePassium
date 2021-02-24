@@ -201,6 +201,11 @@ class DatabaseChooserVC: UITableViewController, DynamicFileList, Refreshable {
             case .remove:
                 self.delegate?.databaseChooser(self, shouldRemoveDatabase: urlRef)
             }
+            if #available(iOS 13, *) {
+                completion(true)
+            } else {
+                completion(false) 
+            }
             completion(true)
         }
         deleteAction.backgroundColor = UIColor.destructiveTint

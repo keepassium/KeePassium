@@ -555,7 +555,11 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         {
             [weak self] (_, _, completion) in
             self?.onDeleteItemAction(at: indexPath)
-            completion(false)
+            if #available(iOS 13, *) {
+                completion(true)
+            } else {
+                completion(false) 
+            }
         }
         deleteAction.backgroundColor = UIColor.destructiveTint
         deleteAction.image = UIImage(asset: .deleteItemToolbar)

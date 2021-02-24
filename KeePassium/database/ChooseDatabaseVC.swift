@@ -607,7 +607,11 @@ class ChooseDatabaseVC: UITableViewController, DynamicFileList, Refreshable {
             [weak self] (action, sourceView, completion) in
             self?.setEditing(false, animated: true)
             self?.didPressDeleteDatabase(at: indexPath)
-            completion(true)
+            if #available(iOS 13, *) {
+                completion(true)
+            } else {
+                completion(false) 
+            }
         }
         destructiveAction.backgroundColor = UIColor.destructiveTint
         

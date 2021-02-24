@@ -186,7 +186,11 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
             title: LString.actionDeleteFile,
             handler: { [weak self] (action, sourceView, completion) in
                 self?.didPressDeleteAttachment(at: indexPath)
-                completion(true)
+                if #available(iOS 13, *) {
+                    completion(true)
+                } else {
+                    completion(false) 
+                }
             }
         )
         

@@ -138,7 +138,11 @@ class KeyFileChooserVC: UITableViewController, Refreshable {
             [weak self] (action, sourceView, completion) in
             self?.setEditing(false, animated: true)
             self?.didPressRemoveKeyFile(at: indexPath)
-            completion(true)
+            if #available(iOS 13, *) {
+                completion(true)
+            } else {
+                completion(false) 
+            }
         }
         return UISwipeActionsConfiguration(actions: [removeAction])
     }
