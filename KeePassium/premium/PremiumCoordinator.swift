@@ -166,7 +166,7 @@ extension PremiumCoordinator: PremiumManagerDelegate {
     
     func purchaseSucceeded(_ product: InAppProduct, in premiumManager: PremiumManager) {
         setPurchasing(false)
-        if hadSubscriptionBeforePurchase {
+        if hadSubscriptionBeforePurchase && !product.isSubscription {
             let existingSubscriptionAlert = UIAlertController.make(
                 title: LString.titlePurchaseSuccess,
                 message: LString.messageCancelOldSubscriptions,
