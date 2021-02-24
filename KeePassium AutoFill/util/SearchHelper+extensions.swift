@@ -68,7 +68,7 @@ extension SearchHelper {
                 if let group2 = entry.parent as? Group2 {
                     return group2.isSearchingEnabled ?? true
                 } else {
-                    return true
+                    return !entry.isDeleted
                 }
             }
             .map { (entry) in
@@ -95,7 +95,7 @@ extension SearchHelper {
                 if let group2 = entry.parent as? Group2 {
                     return group2.isSearchingEnabled ?? true
                 } else {
-                    return true
+                    return !entry.isDeleted
                 }
             }
             .map { (entry) in
