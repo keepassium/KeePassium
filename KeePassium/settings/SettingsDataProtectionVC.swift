@@ -59,6 +59,7 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     func refresh() {
         let settings = Settings.current
         rememberMasterKeysSwitch.isOn = settings.isRememberDatabaseKey
+        rememberFinalKeysCell.setEnabled(settings.isRememberDatabaseKey)
         rememberFinalKeysSwitch.isEnabled = settings.isRememberDatabaseKey
         rememberFinalKeysSwitch.isOn = settings.isRememberDatabaseFinalKey
         
