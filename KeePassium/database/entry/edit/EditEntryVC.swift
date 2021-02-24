@@ -243,7 +243,10 @@ class EditEntryVC: UITableViewController, Refreshable {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell
     {
-        guard let entry = entry else { fatalError() }
+        guard let entry = entry else {
+            assertionFailure();
+            return UITableViewCell()
+        }
         
         let fieldNumber = indexPath.row
         let field = fields[fieldNumber]
