@@ -78,6 +78,7 @@ public class Settings {
         case clipboardTimeout
         case universalClipboardEnabled
 
+        case databaseIconSet
         case groupSortOrder
         case entryListDetail
         case entryViewerPage
@@ -487,7 +488,7 @@ public class Settings {
             }
         }
     }
-
+    
     public enum GroupSortOrder: Int {
         public static let allValues = [
             noSorting,
@@ -1088,6 +1089,21 @@ public class Settings {
         }
     }
     
+    
+    public var databaseIconSet: DatabaseIconSet {
+        get {
+            if let rawValue = UserDefaults.appGroupShared
+                .object(forKey: Keys.databaseIconSet.rawValue) as? Int,
+               let iconSet = DatabaseIconSet(rawValue: rawValue)
+            {
+                return iconSet
+            }
+            return DatabaseIconSet.keepassium
+        }
+        set {
+            updateAndNotify(oldValue: databaseIconSet.rawValue, newValue: newValue.rawValue, key: .databaseIconSet)
+        }
+    }
     
     public var groupSortOrder: GroupSortOrder {
         get {

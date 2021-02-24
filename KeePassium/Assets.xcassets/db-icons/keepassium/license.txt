@@ -1,0 +1,4 @@
+KeePassium icons are based on "Bold outline icons" by Roundicons,
+available under a proprietary license.
+
+https://roundicons.com/boldicons-outline-icons-set/

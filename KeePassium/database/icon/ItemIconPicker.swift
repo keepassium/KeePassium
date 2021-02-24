@@ -59,10 +59,14 @@ class ItemIconPicker: UICollectionViewController {
     public var delegate: ItemIconPickerDelegate?
     public var selectedIconID: IconID?
     
+    private var iconSet: DatabaseIconSet?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = false
         collectionView.allowsSelection = true
+        
+        iconSet = Settings.current.databaseIconSet
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,8 +105,8 @@ class ItemIconPicker: UICollectionViewController {
             withReuseIdentifier: cellID,
             for: indexPath)
             as! ItemIconPickerCell
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let kpIcon = UIImage.kpIcon(forID: IconID.all[indexPath.row]) {
+        DispatchQueue.global(qos: .userInitiated).async { [self] in
+            if let kpIcon = self.iconSet?.getIcon(IconID.all[indexPath.row]) {
                 DispatchQueue.main.async {
                     cell.imageView.image = kpIcon
                 }

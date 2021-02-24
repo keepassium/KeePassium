@@ -618,6 +618,16 @@
 		75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
 		75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
 		75E4CA5D232C455D00EB6805 /* UserNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */; };
+		75E60AD725CF3B570089219C /* DatabaseIconSetPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75E60AD625CF3B570089219C /* DatabaseIconSetPicker.storyboard */; };
+		75E60AD825CF3B570089219C /* DatabaseIconSetPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75E60AD625CF3B570089219C /* DatabaseIconSetPicker.storyboard */; };
+		75E60ADC25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60ADB25CF3C880089219C /* DatabaseIconSetPicker.swift */; };
+		75E60ADD25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60ADB25CF3C880089219C /* DatabaseIconSetPicker.swift */; };
+		75E60AE525CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */; };
+		75E60AE625CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */; };
+		75E60AE725CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */; };
+		75E60AE825CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */; };
+		75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
+		75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
 		75EA64182098FC0500DDB941 /* ChooseDatabaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* ChooseDatabaseVC.swift */; };
 		75ED428923132A80003DE72E /* SettingsAppTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */; };
 		75ED429223133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */; };
@@ -1448,6 +1458,10 @@
 		75E4CA86232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PasswordGeneratorVC.strings; sourceTree = "<group>"; };
 		75E4CA87232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75E4CA88232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
+		75E60AD625CF3B570089219C /* DatabaseIconSetPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DatabaseIconSetPicker.storyboard; sourceTree = "<group>"; };
+		75E60ADB25CF3C880089219C /* DatabaseIconSetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSetPicker.swift; sourceTree = "<group>"; };
+		75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseIconSet+assets.swift"; sourceTree = "<group>"; };
+		75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSetSwitcherCoordinator.swift; sourceTree = "<group>"; };
 		75EA64172098FC0500DDB941 /* ChooseDatabaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDatabaseVC.swift; sourceTree = "<group>"; };
 		75ED4245230EB877003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75ED4246230EB892003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AboutVC.strings; sourceTree = "<group>"; };
@@ -1675,6 +1689,9 @@
 				751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */,
 				75DACE6D2573B33900A110DD /* SettingsAppearanceVC.storyboard */,
 				75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */,
+				75E60AD625CF3B570089219C /* DatabaseIconSetPicker.storyboard */,
+				75E60ADB25CF3C880089219C /* DatabaseIconSetPicker.swift */,
+				75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */,
 			);
 			path = appearance;
 			sourceTree = "<group>";
@@ -1845,6 +1862,7 @@
 				75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */,
 				75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */,
 				756FF64320BAB20300FF890B /* UIColor+namedColors.swift */,
+				75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */,
 				755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */,
 				7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */,
 				75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */,
@@ -2384,6 +2402,7 @@
 				758FC11124CEF72000BAD35C /* appicon-info_iPadApp_76.png in Resources */,
 				758FC17524CEF72000BAD35C /* appicon-atom-blue_iPadApp_76@2x.png in Resources */,
 				75802631222EBC3800F4525F /* ProgressVC.storyboard in Resources */,
+				75E60AD725CF3B570089219C /* DatabaseIconSetPicker.storyboard in Resources */,
 				754BF08A2082A6BD00E3A292 /* Assets.xcassets in Resources */,
 				758FC16724CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png in Resources */,
 				755B863123054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */,
@@ -2482,6 +2501,7 @@
 				758FC11224CEF72000BAD35C /* appicon-info_iPadApp_76.png in Resources */,
 				758FC17624CEF72000BAD35C /* appicon-atom-blue_iPadApp_76@2x.png in Resources */,
 				75B38C67233E5B7C006BDEFC /* ProgressVC.storyboard in Resources */,
+				75E60AD825CF3B570089219C /* DatabaseIconSetPicker.storyboard in Resources */,
 				75B38C68233E5B7C006BDEFC /* Assets.xcassets in Resources */,
 				758FC16824CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png in Resources */,
 				75B38C69233E5B7C006BDEFC /* PasscodeInputVC.storyboard in Resources */,
@@ -2659,6 +2679,7 @@
 				75A2677E22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
 				750CFBDA21BAD7FF00E62B09 /* KeyboardLayoutConstraint.swift in Sources */,
 				750CFBDE21BAD7FF00E62B09 /* UIViewController+storyboard.swift in Sources */,
+				75E60AE625CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				758544652351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,
 				750CFBDD21BAD7FF00E62B09 /* UIImage+extensions.swift in Sources */,
 			);
@@ -2781,7 +2802,9 @@
 				75F4ACFC21776F4800B22D8B /* LString.swift in Sources */,
 				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
 				750D127E20CF071600BE0CCE /* EditGroupVC.swift in Sources */,
+				75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
 				758CA5442569B9EA0034EF10 /* SwitchCell.swift in Sources */,
+				75E60ADC25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */,
 				7579A06A24F074D500C98F24 /* AppHistory.swift in Sources */,
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */,
@@ -2794,6 +2817,7 @@
 				75B59A6823887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,
 				757ADC5423A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
+				75E60AE525CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2914,7 +2938,9 @@
 				75B38C43233E5B7C006BDEFC /* LString.swift in Sources */,
 				7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */,
 				75B38C44233E5B7C006BDEFC /* EditGroupVC.swift in Sources */,
+				75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
 				758CA5462569B9EA0034EF10 /* SwitchCell.swift in Sources */,
+				75E60ADD25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */,
 				7579A06B24F074D500C98F24 /* AppHistory.swift in Sources */,
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */,
@@ -2927,6 +2953,7 @@
 				75B59A6A23887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				75B38C4A233E5B7C006BDEFC /* main.swift in Sources */,
 				757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
+				75E60AE725CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2998,6 +3025,7 @@
 				75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */,
 				75D7DFA5233E5E310029AD87 /* KeyboardLayoutConstraint.swift in Sources */,
 				75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */,
+				75E60AE825CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				758544672351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,
 				75D7DFA7233E5E310029AD87 /* UIImage+extensions.swift in Sources */,
 			);

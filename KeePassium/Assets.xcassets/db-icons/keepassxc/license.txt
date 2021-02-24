@@ -1,0 +1,81 @@
+KeePassXC icons are based on SVG files published by Wolfram Roesler and KeePassXC team 
+(https://github.com/keepassxreboot/keepassxc/pull/4699).
+The following list shows credits for each icon by its ID.
+
+Copyright: Icons8 team 
+License: MIT
+Source: https://github.com/icons8/flat-color-icons
+	00
+	01
+	02
+	03
+	04
+	05
+	06
+	08
+	09
+	10
+	11
+	12
+	13
+	14
+	15
+	16
+	19
+	20
+	21
+	22
+	23
+	24
+	25
+	28
+	29
+	30
+	31
+	32
+	33
+	34
+	36
+	39
+	40
+	41
+	42
+	43
+	47
+	48
+	49
+	50
+	55
+	56
+	57
+	58
+	59
+	60
+	62
+	63
+	65
+	67
+	68
+
+License: CC0-1.0 Universal
+Source: https://github.com/paomedia/small-n-flat
+	07
+	17
+	18
+	26
+	27
+	35
+	38
+	44
+	51
+	52
+	54
+	66
+
+Copyright: 2020 KeePassXC Team <team@keepassxc.org>
+License: MIT
+	37
+	45
+	46
+	53
+	61

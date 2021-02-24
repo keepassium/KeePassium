@@ -965,7 +965,8 @@ extension ViewGroupVC: SettingsObserver {
                 key == .entryListDetail ||
                 key == .groupSortOrder ||
                 key == .searchFieldNames ||
-                key == .searchProtectedValues
+                key == .searchProtectedValues ||
+                key == .databaseIconSet
         if isRelevantChange {
             refresh()
         }

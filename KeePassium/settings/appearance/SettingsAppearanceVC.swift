@@ -11,15 +11,19 @@ import KeePassiumLib
 class SettingsAppearanceVC: UITableViewController {
     
     @IBOutlet weak var appIconCell: UITableViewCell!
+    @IBOutlet weak var databaseIconsCell: UITableViewCell!
+    
     @IBOutlet weak var textScaleLabel: UILabel!
     @IBOutlet weak var entryTextScaleSlider: UISlider!
     @IBOutlet weak var hideProtectedFieldsSwitch: UISwitch!
     
     weak var router: NavigationRouter?
     private var appIconSwitcherCoordinator: AppIconSwitcherCoordinator?
-
+    private var databaseIconSwitcherCoordinator: DatabaseIconSetSwitcherCoordinator?
+    
     deinit {
         appIconSwitcherCoordinator = nil
+        databaseIconSwitcherCoordinator = nil
     }
     
     override func viewDidLoad() {
@@ -56,6 +60,8 @@ class SettingsAppearanceVC: UITableViewController {
             },
             completion: nil
         )
+        
+        databaseIconsCell.imageView?.image = settings.databaseIconSet.getIcon(.key)
     }
     
     
@@ -69,6 +75,8 @@ class SettingsAppearanceVC: UITableViewController {
         switch cell {
         case appIconCell:
             showAppIconSettings()
+        case databaseIconsCell:
+            showDatabaseIconSwitcher()
         default:
             break
         }
@@ -92,5 +100,15 @@ class SettingsAppearanceVC: UITableViewController {
             self?.appIconSwitcherCoordinator = nil
         }
         appIconSwitcherCoordinator!.start()
+    }
+    
+    private func showDatabaseIconSwitcher() {
+        assert(databaseIconSwitcherCoordinator == nil)
+        guard let router = router else { assertionFailure(); return }
+        databaseIconSwitcherCoordinator = DatabaseIconSetSwitcherCoordinator(router: router)
+        databaseIconSwitcherCoordinator!.dismissHandler = { [weak self] (coordinator) in
+            self?.databaseIconSwitcherCoordinator = nil
+        }
+        databaseIconSwitcherCoordinator!.start()
     }
 }

@@ -63,28 +63,25 @@ extension UIImage {
         self.init(named: asset.rawValue)! 
     }
     
-    static func kpIcon(forID iconID: IconID) -> UIImage? {
-        return UIImage(named: String(format: "db-icons/kpbIcon%02d", iconID.rawValue))
-    }
-    
-    static func kpIcon(forEntry entry: Entry) -> UIImage? {
+    static func kpIcon(forEntry entry: Entry, iconSet: DatabaseIconSet?=nil) -> UIImage? {
         if let entry2 = entry as? Entry2,
             let db2 = entry2.database as? Database2,
             let customIcon2 = db2.customIcons[entry2.customIconUUID],
             let image = UIImage(data: customIcon2.data.asData) {
             return image
         }
-        return kpIcon(forID: entry.iconID)
+        let _iconSet = iconSet ?? Settings.current.databaseIconSet
+        return _iconSet.getIcon(entry.iconID)
     }
     
-    static func kpIcon(forGroup group: Group) -> UIImage? {
+    static func kpIcon(forGroup group: Group, iconSet: DatabaseIconSet?=nil) -> UIImage? {
         if let group2 = group as? Group2,
             let db2 = group2.database as? Database2,
             let customIcon2 = db2.customIcons[group2.customIconUUID],
             let image = UIImage(data: customIcon2.data.asData) {
             return image
         }
-        return kpIcon(forID: group.iconID)
+        let _iconSet = iconSet ?? Settings.current.databaseIconSet
+        return _iconSet.getIcon(group.iconID)
     }
-    
 }

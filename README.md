@@ -111,8 +111,10 @@ The project would not be the same without some third-party components:
 	- [Ionicons](http://ionicons.com) by Ionic (MIT license)
 	- [Linecons](https://designmodo.com/linecons-free/) by Andrian Valeanu (CC-BY-ND 3.0 license)
 	- [Fancy deboss pattern](http://subtlepatterns.com) by Daniel Beaton (CC-BY-3.0 when downloaded)
+	- [Icons8 icons](https://icons8.com/icons) ([paid license](https://icons8.com/paid-license-99), can also be used [with attribution](https://icons8.com/license) only)
 	- [System settings icon](https://www.iconfinder.com/icons/2697651/apple_configuration_control_gear_preferences_setting_settings_icon) by Vicons Design (CC-BY 3.0 license)
 	- [Bold outline icons](https://roundicons.com/boldicons-outline-icons-set/) by Round Icons ([commercial license](https://roundicons.com/usage-license/)). They cannot be shared and have been replaced with standard KeePass icons from the [Nuvola icon set](https://en.wikipedia.org/wiki/Nuvola) by David Vignoni (LGPL v2.1).
+	- [KeePassXC icons](https://github.com/keepassxreboot/keepassxc/pull/4699) by KeePassXC team (MIT license).
 * Code:
 	- [AEXML](https://github.com/tadija/AEXML) by Marko Tadić (MIT license) 	
 	- Rijndael implementation by Szymon Stefanek (public domain)
