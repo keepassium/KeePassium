@@ -82,7 +82,7 @@ class Watchdog {
     }
     
     internal func didBecomeActive() {
-        print("App did become active")
+        Diag.debug("App did become active")
         restartAppTimer()
         restartDatabaseTimer()
         if isIgnoringMinimizationOnce {
@@ -99,7 +99,7 @@ class Watchdog {
     }
     
     internal func willResignActive() {
-        print("App will resign active")
+        Diag.debug("App will resign active")
         guard let delegate = delegate else { return }
         delegate.showAppCover(self)
         if delegate.isAppLocked { return }

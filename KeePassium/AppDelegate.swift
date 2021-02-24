@@ -57,6 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FileKeeper.shared.delegate = rootVC
 
         showAppCoverScreen()
+        
+        watchdog.didBecomeActive()
         return true
     }
     
