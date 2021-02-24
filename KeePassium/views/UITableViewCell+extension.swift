@@ -14,5 +14,10 @@ extension UITableViewCell {
         let alpha: CGFloat = isEnabled ? 1.0 : 0.43
         contentView.alpha = alpha
         isUserInteractionEnabled = isEnabled
+        if isEnabled {
+            accessibilityTraits.remove(.notEnabled)
+        } else {
+            accessibilityTraits.insert(.notEnabled)
+        }
     }
 }
