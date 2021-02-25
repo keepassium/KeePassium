@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.22",
-            "releaseDate": "2021-02-20T00:00:00Z",
+            "releaseDate": "2021-02-25T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Appearance settings page",
@@ -58,6 +58,10 @@
                 },
                 {
                     "title": "🐞 Fixed: Crash on iPad when there is no default email client [thanks, Florian]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Filter out invalid low-order ASCII characters from pasted/loaded data (fixes #148) [thanks, Mirko]",
                     "type": 1
                 }
             ]
