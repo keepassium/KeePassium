@@ -331,6 +331,12 @@ public extension String {
             escaped = escaped.replacingOccurrences(of: char, with: echar, options: .literal)
         }
         
+        // remove low-order ASCII characters, if any.
+        // (They should not be here anyway, as they are invalid in XML.)
+        escaped.removeAll {
+            ($0.asciiValue ?? UInt8.max) < 0x20
+        }
+        
         return escaped
     }
     
