@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.22.83] - 2021-02-25
+
+### Fixed
+
+- Filter out invalid low-order ASCII characters from pasted/loaded data (fixes #148) [thanks, Mirko]
+
+
 ## [1.22.82] - 2021-02-20
 
 ### Added
