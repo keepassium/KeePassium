@@ -1,5 +1,5 @@
 /* Suggestion/hint for available user action */
-"[Accessibility] Double tap to copy to clipboard" = "Double tap to copy to clipboard";
+"[Accessibility] Double tap to copy to clipboard" = "انقر بشكل مزدوج للنسخ إلى الحافظة";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "فتح القفل";
@@ -23,7 +23,7 @@
 "[BiometricAuthType] Touch ID" = "Touch ID";
 
 /* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
-"[Clipboard/Copy/namedValue]" = "Copy %@";
+"[Clipboard/Copy/namedValue]" = "نسخ %@";
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "تم النسخ!";
@@ -32,13 +32,13 @@
 "[Database/Add] Selected file \"%@\" does not look like a database." = "الملف المحدد \"%@\" لا يبدو كقاعدة بيانات.";
 
 /* Hint shown when both password and key file are empty. */
-"[Database/Create] Please enter a password or choose a key file." = "الرجاء إدخال كلمة مرور أو اختيار ملف مفتاح.";
+"[Database/Create] Please enter a password or choose a key file." = "يُرجى إدخال كلمة مرور أو اختيار ملف مفتاح.";
 
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "إنشاء قاعدة بيانات";
 
 /* Note for a sample entry */
-"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "يمكنك أيضا تخزين بعض الملاحظات، إذا أردت.";
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "يُمكنك أيضًا تخزين بعض المُلاحظات، إذا أحببت.";
 
 /* Password for a sample entry. Translation is optional. */
 "[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
@@ -179,10 +179,10 @@
 "[Entry/View] Edit Entry" = "تحرير السجل";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "حاول إزالة الملف من التطبيق، ثم أضفه مرة أخرى.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "حاول إزالة الملف من التطبيق، ثم أضفه مرة أُخرى.";
 
 /* Action: re-add (a broken) database or key file to the app. */
-"[File/Re-add/title]" = "Add the file again";
+"[File/Re-add/title]" = "إضافة الملف مرة أُخرى";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "النسخ الاحتياطية";
@@ -230,7 +230,7 @@
 "[Generic] Copy" = "نسخ";
 
 /* Action/button to create an item (entry, group, file — depending on context) */
-"[Generic] Create" = "Create";
+"[Generic] Create" = "إنشاء";
 
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "حذف";
@@ -239,7 +239,7 @@
 "[Generic] Discard" = "تجاهل";
 
 /* Action/button to close an error message. */
-"[Generic] Dismiss" = "إخفاء";
+"[Generic] Dismiss" = "تجاهُل";
 
 /* Action/button to finish (editing) and keep changes */
 "[Generic] Done" = "تمّ";
@@ -251,10 +251,10 @@
 "[Generic] Export" = "تصدير";
 
 /* Action/button to view more help/info about some topic */
-"[Generic] Learn more" = "Learn more…";
+"[Generic] Learn more" = "اعرف المزيد…";
 
 /* Checkbox/Button to show additional actions */
-"[Generic] More Actions" = "More Actions";
+"[Generic] More Actions" = "المزيد من الإجراءات";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "نقل";
@@ -263,7 +263,7 @@
 "[Generic] OK" = "حسناً";
 
 /* Action/button to open URL in the appropriate app (usually, web browser) */
-"[Generic] Open URL" = "Open URL";
+"[Generic] Open URL" = "فتح عنوان URL";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "الكتابة فوق الملف";
@@ -275,19 +275,19 @@
 "[Generic] Replace" = "إستبدال";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
-"[Generic] Share" = "Share";
+"[Generic] Share" = "مُشاركة";
 
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "عرض التفاصيل";
 
 /* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
-"[Generic] Show In Plain Text" = "Show In Plain Text";
+"[Generic] Show In Plain Text" = "إظهار في هيئة نص عادي";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "عرض المزيد";
 
 /* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "هل أنت متأكد؟";
+"[Generic/ConfirmDelete/title] Are you sure?" = "هل أنتَ مُتأكد؟";
 
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "سلة المحذوفات";
@@ -323,7 +323,7 @@
 "[Generic/title] Warning" = "تحذير";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
-"[Group/a11y/description]" = "%@, Group";
+"[Group/a11y/description]" = "%@، مجموعة";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "إنشاء مجموعة";
@@ -365,7 +365,7 @@
 "[Premium/Benefits/AttachmentPreview/details]" = "معاينة الملفات المرفقة مباشرة في KeePassium ولا تترك أي أثر في تطبيقات أخرى. (يعمل مع الصور والمستندات والأرشيف والمزيد)";
 
 /* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "معاينة بدون أثر";
+"[Premium/Benefits/AttachmentPreview/title]" = "المُعاينة بدون أثر";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "اجعل KeePassium يبدو فريداً، مألوفاً، أو متخفياً كآلة حاسبة - الخيار لك.";
@@ -389,7 +389,7 @@
 "[Premium/Benefits/MultiDB/details]" = "إضافة قواعد بيانات متعددة والتنقل بسرعة بينهم.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/MultiDB/title]" = "المزامنة مع الفريق";
+"[Premium/Benefits/MultiDB/title]" = "المُزامنة مع الفريق";
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "ما الذي تفقده";
@@ -398,13 +398,13 @@
 "[Premium/Benefits/Positive/header] " = "ما تحصل عليه";
 
 /* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Use field references to show information from other entries, instead of creating multiple copies of the same information.";
+"[Premium/Benefits/ViewFieldReferences/details]" = "استخدام المراجع لإظهار المعلومات من إدخالات أخرى، بدلاً من إنشاء نسخ متعددة من نفس المعلومات.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Show field references";
+"[Premium/Benefits/ViewFieldReferences/title]" = "إظهار مراجع الحقل";
 
 /* Call to action */
-"[Premium/CallToAction/buyNow]" = "Buy Now";
+"[Premium/CallToAction/buyNow]" = "إشتري الآن";
 
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "الاستمرار في التجريب";
@@ -416,7 +416,7 @@
 "[Premium/CallToAction/upgradeNow]" = "قم بالترقية الان";
 
 /* Action: open AppStore subscription management page */
-"[Premium/ManageSubscriptions/action]" = "Manage subscriptions";
+"[Premium/ManageSubscriptions/action]" = "إدارة الإشتراكات";
 
 /* Name of the permanent/never-ending license. */
 "[Premium/perpetualLicense]" = "الترخيص الدائم";
@@ -431,7 +431,7 @@
 "[Premium/Price Plan/Conditions/all premium features]" = "جميع المزايا المدفوعة";
 
 /* What's included in a free plan: support via forums (as opposed to email support) */
-"[Premium/Price Plan/Conditions/community support]" = "دعم العملاء: المنتديات عبر الإنترنت";
+"[Premium/Price Plan/Conditions/community support]" = "دعم العملاء: المُنتديات على الإنترنت";
 
 /* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
 "[Premium/Price Plan/Conditions/current premium features]" = "الميزات الحالية";
@@ -440,13 +440,13 @@
 "[Premium/Price Plan/Conditions/email support]" = "دعم العملاء: البريد الإلكتروني";
 
 /* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
-"[Premium/Price Plan/Conditions/family sharing]" = "Family Sharing";
+"[Premium/Price Plan/Conditions/family sharing]" = "مُشاركة العائلة";
 
 /* What's included in a free plan: reminders that the version is free */
 "[Premium/Price Plan/Conditions/freemium reminders]" = "تذكير فريميوم(Freemium)";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "Premium features added in the future would require a new purchase at full price.";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "قد تتطلب الميزات المميزة المضافة في المستقبل عملية شراء جديدة بالسعر الكامل.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "مزايا مميزة للمستقبل";
@@ -455,7 +455,7 @@
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "رخصة الإيجار المنتهي بالتملك (رخصة احتياطية دائمة)";
 
 /* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
-"[Premium/Price Plan/Conditions/subscription as purchase]" = "Subscription as a purchase";
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "الاشتراك عن طريق الشراء";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "التحديثات وإصلاح الأخطاء";
@@ -488,16 +488,16 @@
 "[Premium/Trial/trial then price]" = "%1$@ مجاناً، ثم %2$@";
 
 /* Error message: AppStore returned no available in-app purchase options */
-"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "همم، لا توجد ترقيات متوفرة. هذا يجب ألا يحدث، يرجى الاتصال بالدعم.";
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "همم، لا تُوجد ترقيات مُتوفرة. هذا يجب ألا يحدث، يُرجى الاتصال بالدعم.";
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "الترقية للمميز";
 
 /* Message shown after buying a lifetime version. */
-"[Premium/Upgrade/cancelOngoingSubscription]" = "Please check if you need to cancel your old subscription.";
+"[Premium/Upgrade/cancelOngoingSubscription]" = "الرجاء التحقُّق مما إذا كنتَ بحاجة إلى إلغاء اشتراكك القديم.";
 
 /* Message shown when in-app purchase is deferred until approval (parental or corporate). */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Thank you! You can use KeePassium while purchase is awaiting approval.";
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "شكرًا لك! يُمكنك استخدام KeePassium أثناء انتظار الموافقة على عملية الشراء.";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / شهر";
@@ -518,7 +518,7 @@
 "[Premium/Upgrade/Progress] Purchasing..." = "جاري الشراء...";
 
 /* Text of the message shown after in-app purchase was successfully restored */
-"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "تم الترقية بنجاح، استمتع بالتطبيق!";
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "تمَّت الترقية بنجاح، استمتع بالتطبيق!";
 
 /* Title of the message shown after in-app purchase was successfully restored */
 "[Premium/Upgrade/Restored/title] Purchase Restored" = "تم استعادة عملية الشراء";
@@ -530,7 +530,7 @@
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "نآسف";
 
 /* Message shown after buying or subscribing. */
-"[Premium/Upgrade/Success/thankYou]" = "Thank you for the purchase!";
+"[Premium/Upgrade/Success/thankYou]" = "شكرا لك على الشراء!";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "التطبيق كان مفيد: %1$@ في الشهر، أي حوالي %2$@ في السنة.";
@@ -560,25 +560,25 @@
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "التبديل بسهولة بين قواعد البيانات في النسخة المميزة.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
-"[PremiumFeature/MultiDB/title] Multiple Databases" = "قواعد بيانات متعددة";
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "قواعد بيانات مُتعدِدة";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "معاينة الصور والمستندات مباشرة من التطبيق، في الإصدار المميز.";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "معاينة المرفقات";
+"[PremiumFeature/Preview/title] Preview Attachments" = "مُعاينة المُرفقات";
 
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "إظهار كلمة المرور";
 
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
-"[Settings/AppLock/Biometric/title] Use %@" = "استخدم %@";
+"[Settings/AppLock/Biometric/title] Use %@" = "استخدام %@";
 
 /* Explanation for the `Lock on App Launch` setting */
-"[Settings/AppLock/LockOnLaunch/description]" = "Ensures KeePassium is locked after you force-close the app or restart the device.";
+"[Settings/AppLock/LockOnLaunch/description]" = "يضمن قفل KeePassium بعد إغلاق التطبيق بالقوة أو إعادة تشغيل الجهاز.";
 
 /* Setting switch: whether to lock the app after it was terminated and relaunched. */
-"[Settings/AppLock/LockOnLaunch/title]" = "Lock on App Launch";
+"[Settings/AppLock/LockOnLaunch/title]" = "قفل عند تشغيل التطبيق";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "قفل التطبيق، %@، مهلة الخروج";
@@ -593,7 +593,7 @@
 "[Settings/Backup] No Backup Files Found" = "لم يتم العثور على ملفات نسخ احتياطي";
 
 /* Confirmation dialog message to delete all backup files */
-"[Settings/Backup/Delete/title] Delete all backup files?" = "حذف جميع ملفات النسخ الاحتياطي؟";
+"[Settings/Backup/Delete/title] Delete all backup files?" = "حذف جميع ملفات النَسخ الاحتياطي؟";
 
 /* Text of the success message for `Clear Key File Associations` button */
 "[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed." = "لقد أزيلت الرابطة بين ملفات المفاتيح وقواعد البيانات.";
@@ -626,7 +626,7 @@
 "[Settings/GroupViewer] Sort Order" = "طريقة الفرز";
 
 /* Template text of a bug report email */
-"[Support/template] (Please describe the problem here)" = "(يرجى وصف المشكلة هنا)";
+"[Support/template] (Please describe the problem here)" = "(يُرجى وصف المُشكلة هُنا)";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "بدون YubiKey";
@@ -635,7 +635,7 @@
 "[YubiKey] Insert the key" = "أدخل المفتاح";
 
 /* Call for action: touch the sides of YubiKey 5Ci to continue */
-"[YubiKey] Touch the key" = "المس المفتاح";
+"[YubiKey] Touch the key" = "المَس المفتاح";
 
 /* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
 "[YubiKey] Use YubiKey Slot %d" = "استخدم منفذ YubiKey %d";

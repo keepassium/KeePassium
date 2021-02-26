@@ -473,7 +473,7 @@
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "変更日";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
-"[Settings/EntryListDetail/longTitle] None" = "未設定";
+"[Settings/EntryListDetail/longTitle] None" = "なし";
 
 /* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
 "[Settings/EntryListDetail/longTitle] Notes" = "メモ";

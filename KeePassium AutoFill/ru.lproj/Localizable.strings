@@ -416,7 +416,7 @@
 "[Premium/Upgrade/Success/thankYou]" = "Спасибо за покупку!";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Другая иконка приложения";
+"[PremiumFeature/CustomAppIcons/title]" = "Другой значок приложения";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Перейдите на полную версию KeePassium и пользуйтесь всеми возможностями программы.";

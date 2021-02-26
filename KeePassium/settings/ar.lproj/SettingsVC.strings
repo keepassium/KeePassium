@@ -2,7 +2,7 @@
 "9yn-W3-FDl.headerTitle" = "البداية";
 
 /* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
-"756-sL-G2t.text" = "فتح قاعدة البيانات السابقة تلقائياً";
+"756-sL-G2t.text" = "الفتح التلقائي لقاعدة البيانات السابقة";
 
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
 "A5N-B3-t3t.headerTitle" = "المميز";
@@ -14,7 +14,7 @@
 "Bk0-Xf-O7B.title" = "الإعدادات";
 
 /* Class = "UILabel"; text = "Review KeePassium"; ObjectID = "c5H-hS-sU3"; Note = "Action: write an app review on the App Store"; */
-"c5H-hS-sU3.text" = "مراجعة KeePassium";
+"c5H-hS-sU3.text" = "مُراجعة KeePassium";
 
 /* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
 "cBS-jW-dHU.headerTitle" = "الدعم الفني";
@@ -23,7 +23,7 @@
 "coD-Om-Vfm.text" = "النسخ الاحتياطي لقاعدة البيانات";
 
 /* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
-"DNo-Rs-0EP.text" = "حول KeePassium";
+"DNo-Rs-0EP.text" = "حَول KeePassium";
 
 /* Class = "UILabel"; text = "Master keys, key files"; ObjectID = "FHp-ns-ke9"; Note = "Subtitle/details for `Data Protection`"; */
 "FHp-ns-ke9.text" = "المفاتيح الرئيسة وملفات المفاتيح";
@@ -32,7 +32,7 @@
 "GLr-Uf-Kln.text" = "البحث";
 
 /* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
-"HCe-A3-eG6.text" = "النسخة المميزة";
+"HCe-A3-eG6.text" = "النُسخة المُمَيَزة";
 
 /* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
 "HjD-9G-X8p.headerTitle" = "النسخ الاحتياطية";
@@ -42,6 +42,9 @@
 
 /* Class = "UILabel"; text = "Rate KeePassium on the App Store"; ObjectID = "HYe-lP-dCp"; Note = "Subtitle for `Review KeePassium`"; */
 "HYe-lP-dCp.text" = "قيّم KeePassium على متجر التطبيقات";
+
+/* Class = "UILabel"; text = "{Renews on 1 Jan 1970}"; ObjectID = "LHz-DF-ZST"; Note = "#bc-ignore!"; */
+"LHz-DF-ZST.text" = "{Renews on 1 Jan 1970}";
 
 /* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
 "oxG-N8-1ld.text" = "الترقية للمميز";
@@ -61,14 +64,17 @@
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
 "RNK-fS-Fvx.text" = "اقتراحات؟ مشاكل؟ دعنا نعلم!";
 
+/* Class = "UILabel"; text = "{App Lock, Touch ID, timeout}"; ObjectID = "SrV-ib-V2E"; Note = "#bc-ignore!"; */
+"SrV-ib-V2E.text" = "{App Lock, Touch ID, timeout}";
+
 /* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
 "T2Z-oa-zJR.text" = "التعبئة التلقائية لكلمات المرور";
 
-/* Class = "UILabel"; text = "App Icon"; ObjectID = "TUE-Aw-fJl"; Note = "Section in settings: icon for the app"; */
-"TUE-Aw-fJl.text" = "أيقونة التطبيق";
-
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "حماية البيانات";
+
+/* Class = "UILabel"; text = "{Upgrade subtitle}"; ObjectID = "WM2-qq-lMN"; Note = "#bc-ignore!"; */
+"WM2-qq-lMN.text" = "{Upgrade subtitle}";
 
 /* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
 "zUh-Sn-3ya.text" = "إدارة الاشتراكات";

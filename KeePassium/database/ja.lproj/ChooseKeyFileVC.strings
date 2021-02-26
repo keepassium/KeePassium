@@ -1,6 +1,9 @@
 /* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "8aU-C3-c3r"; */
 "8aU-C3-c3r.normalTitle" = "キーファイルを追加";
 
+/* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "9PC-8d-5Xf"; Note = "#bc-ignore!"; */
+"9PC-8d-5Xf.text" = "{Database File Name}";
+
 /* Class = "UINavigationItem"; title = "Choose Key File"; ObjectID = "dAQ-9p-8Y9"; */
 "dAQ-9p-8Y9.title" = "キーファイルを選択";
 
@@ -9,4 +12,7 @@
 
 /* Class = "UILabel"; text = "No Key File"; ObjectID = "tGm-oo-awN"; Note = "Title of the default option in key file picker: don't use key files."; */
 "tGm-oo-awN.text" = "キーファイルがありません";
+
+/* Class = "UILabel"; text = "{File Attributes}"; ObjectID = "thx-qt-2LZ"; Note = "#bc-ignore!"; */
+"thx-qt-2LZ.text" = "{File Attributes}";
 

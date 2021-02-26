@@ -1,3 +1,6 @@
+/* Class = "UITableViewSection"; headerTitle = "Troubleshooting"; ObjectID = "0mb-N7-JBa"; Note = "#bc-ignore!"; */
+"0mb-N7-JBa.headerTitle" = "Troubleshooting";
+
 /* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
 "7bL-fQ-OUc.headerTitle" = "ردود الأفعال";
 
@@ -20,7 +23,7 @@
 "Aig-jg-p8B.text" = "رخصة MIT";
 
 /* Class = "UILabel"; text = "Do you like what you see?"; ObjectID = "AMd-x7-PDa"; Note = "First part of the 'Do you like what you see? / Leave an App Store review.\""; */
-"AMd-x7-PDa.text" = "هل تحب ما تراه؟";
+"AMd-x7-PDa.text" = "هل يعجبك ما تراه؟";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
 "aqX-J9-IzD.text" = "التَرجمة العَربية مِن قِبل @ZER0-X";
@@ -36,6 +39,9 @@
 
 /* Class = "UILabel"; text = "©2021 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
 "bmf-Ed-H4x.text" = "©2021 Andrei Popleteev";
+
+/* Class = "UILabel"; text = "Reset entry text size to default"; ObjectID = "bTY-d6-puv"; Note = "#bc-ignore!"; */
+"bTY-d6-puv.text" = "Reset entry text size to default";
 
 /* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
 "CNI-b8-7Da.text" = "KeePass من قِبل Dominik Reichl";
@@ -72,6 +78,9 @@
 
 /* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
 "JRy-jy-KXb.text" = "رخصة GPL";
+
+/* Class = "UILabel"; text = "{info@keepassium.com}"; ObjectID = "kae-Kb-5ZU"; Note = "#bc-ignore!"; */
+"kae-Kb-5ZU.text" = "{info@keepassium.com}";
 
 /* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern مِن قِبل Daniel Beaton";
@@ -123,6 +132,9 @@
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "uiw-Qh-pNp.text" = "اترك مراجعة في متجر التطبيقات.";
+
+/* Class = "UILabel"; text = "{v1.0.123}"; ObjectID = "vDg-fF-8ty"; Note = "#bc-ignore!"; */
+"vDg-fF-8ty.text" = "{v1.0.123}";
 
 /* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
 "vg0-6M-OIq.text" = "قيود تخطيط لوحة المفاتيح مِن قِبل James Tang";

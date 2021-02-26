@@ -1,0 +1,9 @@
+/* Class = "UILabel"; text = "{nItems}"; ObjectID = "le2-Lc-g8a"; Note = "#bc-ignore!"; */
+"le2-Lc-g8a.text" = "{nItems}";
+
+/* Class = "UINavigationItem"; title = "{Database Name}"; ObjectID = "t1g-Uj-JUq"; Note = "#bc-ignore!"; */
+"t1g-Uj-JUq.title" = "{Database Name}";
+
+/* Class = "UILabel"; text = "{Group Name}"; ObjectID = "Ypt-ow-bC3"; Note = "#bc-ignore!"; */
+"Ypt-ow-bC3.text" = "{Group Name}";
+

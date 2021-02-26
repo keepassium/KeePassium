@@ -63,6 +63,7 @@ internal enum LString {
         )
         public static let temporaryBackupDatabase = NSLocalizedString(
             "[File/TemporaryBackup/warning]",
+            bundle: Bundle.framework,
             value: "This is a temporary backup database. It can be automatically deleted without a warning. Don't use it as your main database.",
             comment: "Notification when user opens an in-app backup database.")
     }

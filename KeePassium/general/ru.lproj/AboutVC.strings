@@ -1,3 +1,6 @@
+/* Class = "UITableViewSection"; headerTitle = "Troubleshooting"; ObjectID = "0mb-N7-JBa"; Note = "#bc-ignore!"; */
+"0mb-N7-JBa.headerTitle" = "Troubleshooting";
+
 /* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
 "7bL-fQ-OUc.headerTitle" = "Обратная связь";
 
@@ -5,7 +8,7 @@
 "7cl-Fc-8Nf.text" = "Коммерческая лицензия";
 
 /* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
-"7id-QT-w26.text" = "Иконки от Icons8";
+"7id-QT-w26.text" = "Значки от Icons8";
 
 /* Class = "UILabel"; text = "Ionicons by Ionic"; ObjectID = "9lh-fA-Xgx"; */
 "9lh-fA-Xgx.text" = "Ionicons от Ionic";
@@ -36,6 +39,9 @@
 
 /* Class = "UILabel"; text = "©2021 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
 "bmf-Ed-H4x.text" = "©2021 Андрей Поплетеев";
+
+/* Class = "UILabel"; text = "Reset entry text size to default"; ObjectID = "bTY-d6-puv"; Note = "#bc-ignore!"; */
+"bTY-d6-puv.text" = "Reset entry text size to default";
 
 /* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
 "CNI-b8-7Da.text" = "KeePass, автор Dominik Reichl";
@@ -72,6 +78,9 @@
 
 /* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
 "JRy-jy-KXb.text" = "Лицензия GPL";
+
+/* Class = "UILabel"; text = "{info@keepassium.com}"; ObjectID = "kae-Kb-5ZU"; Note = "#bc-ignore!"; */
+"kae-Kb-5ZU.text" = "{info@keepassium.com}";
 
 /* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern, автор Daniel Beaton";
@@ -119,10 +128,13 @@
 "TOl-DA-gYc.text" = "Напишите нам";
 
 /* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
-"tOr-N9-2UY.text" = "Иконки Feather, автор Cole Bemis";
+"tOr-N9-2UY.text" = "Значки Feather, автор Cole Bemis";
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "uiw-Qh-pNp.text" = "Оставьте отзыв в App Store.";
+
+/* Class = "UILabel"; text = "{v1.0.123}"; ObjectID = "vDg-fF-8ty"; Note = "#bc-ignore!"; */
+"vDg-fF-8ty.text" = "{v1.0.123}";
 
 /* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
 "vg0-6M-OIq.text" = "KeyboardLayoutConstraint, автор James Tang";
@@ -131,7 +143,7 @@
 "Wuj-Uw-baK.text" = "KeePassium";
 
 /* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
-"wYr-Ya-qAP.text" = "Иконка системных настроек от Vicons Design";
+"wYr-Ya-qAP.text" = "Значок системных настроек от Vicons Design";
 
 /* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
 "Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK от Yubico AB";

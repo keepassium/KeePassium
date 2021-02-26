@@ -43,6 +43,9 @@
 /* Class = "UILabel"; text = "Rate KeePassium on the App Store"; ObjectID = "HYe-lP-dCp"; Note = "Subtitle for `Review KeePassium`"; */
 "HYe-lP-dCp.text" = "Valora KeePassium en la AppStore";
 
+/* Class = "UILabel"; text = "{Renews on 1 Jan 1970}"; ObjectID = "LHz-DF-ZST"; Note = "#bc-ignore!"; */
+"LHz-DF-ZST.text" = "{Renews on 1 Jan 1970}";
+
 /* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
 "oxG-N8-1ld.text" = "Actualizar a Premium";
 
@@ -61,14 +64,17 @@
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
 "RNK-fS-Fvx.text" = "¿Sugerencias? ¿Problemas? ¡Háznoslo saber!";
 
+/* Class = "UILabel"; text = "{App Lock, Touch ID, timeout}"; ObjectID = "SrV-ib-V2E"; Note = "#bc-ignore!"; */
+"SrV-ib-V2E.text" = "{App Lock, Touch ID, timeout}";
+
 /* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
 "T2Z-oa-zJR.text" = "Autocompletar contraseñas";
 
-/* Class = "UILabel"; text = "App Icon"; ObjectID = "TUE-Aw-fJl"; Note = "Section in settings: icon for the app"; */
-"TUE-Aw-fJl.text" = "Icono de la App";
-
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "Protección de datos";
+
+/* Class = "UILabel"; text = "{Upgrade subtitle}"; ObjectID = "WM2-qq-lMN"; Note = "#bc-ignore!"; */
+"WM2-qq-lMN.text" = "{Upgrade subtitle}";
 
 /* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
 "zUh-Sn-3ya.text" = "Administrar suscripciones";

@@ -4,3 +4,6 @@
 /* Class = "UILabel"; text = "Show Backup Files"; ObjectID = "pp5-eX-yPx"; Note = "Settings switch: whether to include backup copies in the file list"; */
 "pp5-eX-yPx.text" = "Pokaż kopie zapasowe";
 
+/* Class = "UILabel"; text = "{Prototype Sorting Cell}"; ObjectID = "xy9-Tf-Yi6"; Note = "#bc-ignore!"; */
+"xy9-Tf-Yi6.text" = "{Prototype Sorting Cell}";
+

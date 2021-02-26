@@ -14,7 +14,7 @@
 "NFCReaderUsageDescription" = "KeePassium يحتاج للوصول إلى NFC للتواصل مع YubiKey.";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "KeePassium يحتاج إلى الكاميرا لمسح رموز QR.";
+"NSCameraUsageDescription" = "KeePassium يحتاج إلى الكاميرا لمسح رموز الاستجابة السريعة.";
 
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "استخدم مُعرف الوجه (FaceID) لفتح KeePassium";

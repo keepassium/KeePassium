@@ -19,6 +19,12 @@
 /* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
 "Ef4-Jw-xeO.text" = "Časový limit";
 
+/* Class = "UILabel"; text = "{Use Touch ID / Face ID}"; ObjectID = "Fez-6g-oyk"; Note = "#bc-ignore!"; */
+"Fez-6g-oyk.text" = "{Use Touch ID / Face ID}";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "FWz-EI-KaZ"; Note = "#bc-ignore!"; */
+"FWz-EI-KaZ.text" = "{Detail}";
+
 /* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
 "IS1-Lb-MFy.text" = "Zapnout zámek";
 

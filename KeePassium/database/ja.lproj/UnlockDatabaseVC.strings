@@ -1,5 +1,11 @@
+/* Class = "UIButton"; normalTitle = "{news}"; ObjectID = "APT-2C-WiG"; Note = "#bc-ignore!"; */
+"APT-2C-WiG.normalTitle" = "{news}";
+
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "CuN-tE-lAG"; Note = "Placeholder: database password"; */
 "CuN-tE-lAG.placeholder" = "パスワード";
+
+/* Class = "UILabel"; text = "{Error message}"; ObjectID = "d2U-7y-vCm"; Note = "#bc-ignore!"; */
+"d2U-7y-vCm.text" = "{Error message}";
 
 /* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "eAa-Z5-pdq"; Note = "Title of the database unlocker dialog."; */
 "eAa-Z5-pdq.title" = "データベースをアンロック";
@@ -15,6 +21,9 @@
 
 /* Class = "UIButton"; normalTitle = "Unlock"; ObjectID = "l45-hq-1lr"; */
 "l45-hq-1lr.normalTitle" = "ロックを解除";
+
+/* Class = "UILabel"; text = "{Database file name}"; ObjectID = "LsQ-5N-nP3"; Note = "#bc-ignore!"; */
+"LsQ-5N-nP3.text" = "{Database file name}";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "mYY-hP-3vH"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
 "mYY-hP-3vH.placeholder" = "キーファイルがありません";

@@ -4,6 +4,9 @@
 /* Class = "UIButton"; accessibilityLabel = "Show Diagnostics"; ObjectID = "bNa-R0-f67"; */
 "bNa-R0-f67.accessibilityLabel" = "显示诊断结果";
 
+/* Class = "UINavigationItem"; title = "{Create Database}"; ObjectID = "dhd-je-Doc"; Note = "#bc-ignore!"; */
+"dhd-je-Doc.title" = "{Create Database}";
+
 /* Class = "UIButton"; normalTitle = "Save Database"; ObjectID = "h6C-CG-RVI"; Note = "Action: save the new database (will show a file picker dialog)."; */
 "h6C-CG-RVI.normalTitle" = "保存数据库";
 
@@ -15,6 +18,9 @@
 
 /* Class = "UILabel"; text = "Master Key"; ObjectID = "VjQ-di-Ilx"; Note = "Common title for the password/key file fields."; */
 "VjQ-di-Ilx.text" = "主密码";
+
+/* Class = "UILabel"; text = "{Error message}"; ObjectID = "wb0-s2-V8n"; Note = "#bc-ignore!"; */
+"wb0-s2-V8n.text" = "{Error message}";
 
 /* Class = "UITextField"; placeholder = "e.g. MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
 "XNL-lc-2Ti.placeholder" = "例如:我的密码";

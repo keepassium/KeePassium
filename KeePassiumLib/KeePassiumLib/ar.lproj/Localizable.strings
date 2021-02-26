@@ -1,11 +1,11 @@
 /* Type of keyboard to show for App Lock passcode: letters and digits. */
-"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "أبجدي رقمي";
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "أبجدي عددي";
 
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
-"[AppLock/Passcode/KeyboardType/title] Numeric" = "رقمي";
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "عددي";
 
 /* Error message when the challenge-response communication has been cancelled by the user. */
-"[ChallengeResponseError] cancelled" = "تمّ الإلغاء بواسطة المستخدم.";
+"[ChallengeResponseError] cancelled" = "تمّ الإلغاء بواسطة المُستخدم.";
 
 /* Error message when the hardware key is not plugged in. */
 "[ChallengeResponseError] keyNotConnected" = "جهاز المفتاح غير متصل.";
@@ -14,25 +14,25 @@
 "[ChallengeResponseError] notAvailableInAutoFill" = "أجهزة المفاتيح غير مُتاحة في التعبئة التلقائية.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "أجهزة المفاتيح غير مدعومة بصيغة قاعدة البيانات هذه.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "أجهزة المفاتيح غير مدعومة في صيغة قاعدة البيانات هذه.";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
 "[ChallengeResponseError] notSupportedByDeviceOrSystem" = "هذا الجهاز أو إصدار iOS لا يدعم أجهزة المفاتيح (%@)";
 
 /* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
-"[ChallengeResponseError] slotNotConfigured" = "لم يتم تكوين جهاز المفاتيح للاستجابة للتحدي.";
+"[ChallengeResponseError] slotNotConfigured" = "لم يتم تكوين جهاز المفاتيح للاستجابة إلى التحدي.";
 
 /* Progress status */
-"[Cipher/Progress] Decrypting" = "جاري فك التشفير";
+"[Cipher/Progress] Decrypting" = "يجري فكّ التعمية";
 
 /* Progress status */
-"[Cipher/Progress] Encrypting" = "جاري التشفير";
+"[Cipher/Progress] Encrypting" = "التعمية جارية";
 
 /* Error message about AES cipher. [errorCode: Int] */
-"[CryptoError] AES decryption error (code %d)" = "خطأ في فك تشفير AES (الرمز %d)";
+"[CryptoError] AES decryption error (code %d)" = "خطأ في فك تعمية AES (الرمز %d)";
 
 /* Error message about AES cipher. [errorCode: Int] */
-"[CryptoError] AES encryption error (code %d)" = "خطأ في تشفير AES (الرمز %d)";
+"[CryptoError] AES encryption error (code %d)" = "خطأ في تعمية AES (الرمز %d)";
 
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES initialization error (code %d)" = "خطأ في تهيئة AES (الرمز %d)";
@@ -50,49 +50,49 @@
 "[CryptoError] Random number generator error (code %d)" = "خطأ في تكوين رقم عشوائي (الرمز %d)";
 
 /* Error message about Twofish cipher. [errorCode: Int] */
-"[CryptoError] Twofish cipher error (code %d)" = "خطأ في التشفير الثنائي (الرمز %d)";
+"[CryptoError] Twofish cipher error (code %d)" = "خطأ في التعمية الثُنائية (الرمز %d)";
 
 /* Error message */
-"[Database/Load/Error] Cannot find database file" = "لا يمكن العثور على ملف قاعدة البيانات";
+"[Database/Load/Error] Cannot find database file" = "يتعذَّر العثور على ملف قاعدة البيانات";
 
 /* Error message */
-"[Database/Load/Error] Cannot find key file" = "لا يمكن العثور على ملف المفتاح";
+"[Database/Load/Error] Cannot find key file" = "يتعذَّر العثور على ملف المفتاح";
 
 /* Error message */
-"[Database/Load/Error] Cannot open database file" = "لا يمكن فتح ملف قاعدة البيانات";
+"[Database/Load/Error] Cannot open database file" = "يتعذَّر فتح ملف قاعدة البيانات";
 
 /* Error message */
-"[Database/Load/Error] Cannot open key file" = "لا يمكن فتح ملف المفتاح";
+"[Database/Load/Error] Cannot open key file" = "يتعذَّر فتح ملف المفتاح";
 
 /* Error shown when both master password and key file are empty */
-"[Database/Load/Error] Please provide at least a password or a key file" = "الرجاء تعيين كلمة مرور أو ملف مفتاح على الأقل";
+"[Database/Load/Error] Please provide at least a password or a key file" = "يُرجى تعيِّين كلمة مرور أو ملف مفتاح على الأقل";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "صيغة قاعدة البيانات غير معترف بها";
 
 /* Progress status: finished loading database */
-"[Database/Progress] Done" = "تمّ التحميل";
+"[Database/Progress] Done" = "تمَّ التحميل";
 
 /* Progress status */
-"[Database/Progress] Loading key file..." = "جاري تحميل ملف المفتاح...";
+"[Database/Progress] Loading key file..." = "يجري تحميل ملف المفتاح...";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "جاري تحميل ملف قاعدة البيانات...";
+"[Database/Progress/downloading]" = "يجري تنزيل ملف قاعدة البيانات...";
 
 /* Database saving status: making a local backup copy of the database */
-"[Database/Progress/makingDatabaseBackup]" = "جاري إنشاء نسخة احتياطية...";
+"[Database/Progress/makingDatabaseBackup]" = "يجري إنشاء نسخة احتياطية...";
 
 /* Progress status */
-"[Database/Progress/resolving]" = "جاري الاتصال بخدمة التخزين...";
+"[Database/Progress/resolving]" = "يجري الاتصال بخدمة التخزين...";
 
 /* Database loading/saving status: replacing field references with their values */
-"[Database/Progress/resolvingFieldReferences]" = "Resolving field references…";
+"[Database/Progress/resolvingFieldReferences]" = "يجري حل مراجع الحقول…";
 
 /* Error message */
-"[Database/Unlock/Error] Failed to open key file" = "فشل في فتح ملف المفتاح";
+"[Database/Unlock/Error] Failed to open key file" = "فشل فتح ملف المفتاح";
 
 /* Error message */
-"[Database/Unlock/Error] Password and key file are both empty." = "كلمة المرور وملف المفتاح فارغان.";
+"[Database/Unlock/Error] Password and key file are both empty." = "كلمة المرور وملف المفتاح كِلاهُما فارغان.";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "ملف قاعدة البيانات تالف.";
@@ -101,7 +101,7 @@
 "[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "خطأ في تحليل الحقل %@. ملف قاعدة البيانات تالف؟";
 
 /* Error message */
-"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "تم العثور على سجل خارج أي مجموعة. ملف قاعدة البيانات تالف؟";
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "تمَّ العثور على سجل خارج أي مجموعة. ملف قاعدة البيانات تالف؟";
 
 /* Error message */
 "[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "نهاية غير متوقعة للملف. ملف قاعدة البيانات تالف؟";
@@ -110,13 +110,13 @@
 "[Database1/Header1/Error] Header reading error. DB file corrupt?" = "خطأ في قراءة الترويسة. ملف قاعدة البيانات تالف؟";
 
 /* Error message. [flagsHexString: String] */
-"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "تشفير غير مدعوم. (الرمز: %@)";
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "تعمية غير مدعومة. (الرمز: %@)";
 
 /* Error message when opening a database. [version: String] */
 "[Database1/Header1/Error] Unsupported database format version: %@." = "صيغة قاعدة البيانات غير مدعومة الاصدار: %@.";
 
 /* Error message when opening a database */
-"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "توقيع الملف خاطئ. ليست قاعدة بيانات KeePass ؟";
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "توقيع الملف خاطئ. ليست قاعدة بيانات KeePass؟";
 
 /* Status message: collecting database items into a single package */
 "[Database1/Progress] Packing the content" = "تجميع المحتوى";
@@ -125,31 +125,31 @@
 "[Database1/Progress] Parsing content" = "تحليل المحتوى";
 
 /* Name of a group which contains deleted entries */
-"[Database2/backupGroupName] Recycle Bin" = "سلة المحذوفات";
+"[Database2/backupGroupName] Recycle Bin" = "سلَّة المحذوفات";
 
 /* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
-"[Database2/FormatError] Cannot parse database. %@" = "لا يمكن تحليل قاعدة البيانات. %@";
+"[Database2/FormatError] Cannot parse database. %@" = "يتعذَّر تحليل قاعدة البيانات. %@";
 
 /* Error message [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "ملف قاعدة البيانات تالف (الكتلة %d لها حجم سالب)";
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "ملف قاعدة بيانات تالف (الكتلة %d لها حجم سالب)";
 
 /* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "ملف قاعدة البيانات تالف (عدم تطابق التجزئة في الكتلة %d)";
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "ملف قاعدة بيانات تالف (عدم تطابق التجزئة في الكتلة %d)";
 
 /* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "ملف قاعدة البيانات تالف (عدم تطابق HMAC في الكتلة %d)";
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "ملف قاعدة بيانات تالف (عدم تطابق HMAC في الكتلة %d)";
 
 /* Error message about Gzip compression algorithm. [reason: String] */
 "[Database2/FormatError] Gzip error: %@" = "خطأ Gzip: %@";
 
 /* Error message: wrong ID of a data block */
-"[Database2/FormatError] Unexpected block ID." = "مُعرف كتلة غير متوقع.";
+"[Database2/FormatError] Unexpected block ID." = "مُعرِّف كتلة غير متوقع.";
 
 /* Error message */
 "[Database2/FormatError] Unexpected end of file. Corrupted file?" = "نهاية غير متوقعة للملف. الملف تالف؟";
 
 /* Error message when saving a database. [reason: String] */
-"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "فشل فك ضغط البيانات المرفقة: %@";
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "فشل فك ضغط البيانات المُرفقة: %@";
 
 /* Error message, with the name of problematic field. [fieldName: String] */
 "[Database2/Header2/Error] Header field %@ is corrupted." = "حقل الترويسة %@ تالف.";
@@ -167,7 +167,7 @@
 "[Database2/Header2/Error] Unknown compression algorithm." = "خوارزمية ضغط غير معروفة.";
 
 /* Error message. [uuidHexString: String] */
-"[Database2/Header2/Error] Unsupported data cipher: %@" = "تشفر بيانات غير مدعوم: %@";
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "تعمية بيانات غير مدعومة: %@";
 
 /* Error message when opening a database. [version: String] */
 "[Database2/Header2/Error] Unsupported database format version: %@." = "صيغة قاعدة البيانات غير مدعومة الاصدار: %@.";
@@ -179,37 +179,37 @@
 "[Database2/Header2/Error] Unsupported KDF: %@" = "KDF غير مدعوم: %@";
 
 /* Error message when opening a database */
-"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "توقيع الملف خاطئ. ليست قاعدة بيانات KeePass ؟";
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "توقيع الملف خاطئ. ليست قاعدة بيانات KeePass؟";
 
 /* Error message about Gzip compression algorithm. [errorMessage: String] */
 "[Database2/Loading/Error] Error unpacking database: %@" = "خطأ في فك حزم قاعدة البيانات: %@";
 
 /* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
-"[Database2/Loading/Warning/missingBinaries]" = "المرفقات في بعض السجلات مفقودة. هذه علامة على تلف قاعدة البيانات، على الأرجح من قبل آخر تطبيق مستخدم (%1$@).\nKeePassium سيحتفظ بالمرفقات الفارغة، ولكن لا يمكن استعادتها. يجب عليك استعادة قاعدة البيانات الخاصة بك من نسخة احتياطية.\n\nالمرفقات المفقودة: %2$@";
+"[Database2/Loading/Warning/missingBinaries]" = "المُرفقات في بعض السجلات مفقودة. هذه علامة على تلف قاعدة البيانات، على الأرجح من قِبَل آخر تطبيق مُستخدَم (%1$@).\nسيحتفظ KeePassium بالمُرفقات الفارِغة، ولكن لا يُمكن استعادتها. يجبُ عليك استعادة قاعدة البيانات الخاصة بك من نُسخة احتياطية.\n\nالمرفقات المفقودة: %2$@";
 
 /* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
-"[Database2/Loading/Warning/namelessAttachments]" = "بعض السجلات تحتوي على مرفقات بدون اسم. هذه علامة على تلف قاعدة البيانات السابقة.\n\nالرجاء مراجعة الملفات المرفقة في التأريخ والسجلات التالية:\n%@";
+"[Database2/Loading/Warning/namelessAttachments]" = "بعض السجلات تحتوي على مُرفقات بغير اسم. هذه علامة على تلف قاعدة البيانات السابقة.\n\nالرجاء مُراجعة الملفات المُرفقة في التأريخ والسجلات التالية:\n%@";
 
 /* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
-"[Database2/Loading/Warning/namelessCustomFields]" = "بعض السجلات تحتوي على حقل(حقول) مخصصة مع اسماء فارغة. يمكن أن يكون هذا علامة على تلف البيانات. يرجى التحقق من هذه الإدخالات:\n\n%@";
+"[Database2/Loading/Warning/namelessCustomFields]" = "بعض السجلات تحتوي على حقل/حقول مُخصَّصة مع اسماء فارِغة. يُمكن أن يكون هذا علامة على تلف البيانات. يرجى التحقُّق من هذه الإدخالات:\n\n%@";
 
 /* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
-"[Database2/Loading/Warning/unusedAttachments]" = "تحتوي قاعدة البيانات على بعض المرفقات التي لا تستخدم في أي سجل. على الأرجح، تم نسيانها من قبل آخر تطبيق مستخدم (%@). ومع ذلك، يمكن أن يكون هذا أيضا علامة على تلف البيانات.\nالرجاء التأكد من وجود نسخة احتياطية من قاعدة البيانات الخاصة بك قبل تغيير أي شيء.";
+"[Database2/Loading/Warning/unusedAttachments]" = "تحوي قاعدة البيانات بعض المُرفقات التي لا تُستخدم في أي سجل. على الأرجح، تمَّ نسيانها من قِبَل آخر تطبيق مُستخدم (%@). ومع ذلك، يمكن أن يكون هذا أيضا علامة على تلف البيانات.\nالرجاء التأكد من وجود نسخة احتياطية من قاعدة البيانات الخاصة بك قبل تغيير أي شيء.";
 
 /* Progress bar status */
 "[Database2/Progress] Loading database" = "تحميل قاعدة البيانات";
 
 /* Progress bar status */
-"[Database2/Progress] Reading database content" = "قراءة محتوى قاعدة البيانات";
+"[Database2/Progress] Reading database content" = "قراءة مُحتوى قاعدة البيانات";
 
 /* Progress bar status */
-"[Database2/Progress] Writing encrypted blocks" = "كتابة كتل مشفرة";
+"[Database2/Progress] Writing encrypted blocks" = "كتابة كُتَل مُعمَّاة";
 
 /* Progress bar status: un-zipping the database content */
-"[Database2/Progress/decompressing]" = "جاري فك ضغط قاعدة البيانات";
+"[Database2/Progress/decompressing]" = "يجري فك ضغط قاعدة البيانات";
 
 /* Progress bar status */
-"[Database2/Progress/integrityCheck]" = "التحقق من سلامة الملف";
+"[Database2/Progress/integrityCheck]" = "التحقُّق مِن سلامة الملف";
 
 /* Progress bar status: parsing decrypted XML content */
 "[Database2/Progress/parsingXML]" = "تحليل قاعدة البيانات";
@@ -218,7 +218,7 @@
 "[Database2/Saving/Error] Data compression error: %@" = "خطأ في ضغط البيانات: %@";
 
 /* Error message while saving a database. [errorDescription: String] */
-"[Database2/Saving/Error] Encryption error: %@" = "خطأ في التشفير: %@";
+"[Database2/Saving/Error] Encryption error: %@" = "خطأ في التعمية: %@";
 
 /* Error message about XML parsing. [value: String, tag: String] */
 "[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "قيمة مشوهة '%1$@' في %2$@";
@@ -239,34 +239,34 @@
 "[Database2/Xml2/ParsingError] XML error: %@" = "خطأ XML: %@";
 
 /* Error message while opening a database */
-"[DatabaseError] Cannot open database" = "لا يمكن فتح قاعدة البيانات";
+"[DatabaseError] Cannot open database" = "يتعذَّر فتح قاعدة البيانات";
 
 /* Error message while saving a database */
-"[DatabaseError] Cannot save database" = "لا يمكن حفظ قاعدة البيانات";
+"[DatabaseError] Cannot save database" = "يتعذَّر حفظ قاعدة البيانات";
 
 /* Error message: user provided a wrong master key for decryption. */
-"[DatabaseError] Invalid password or key file" = "كلمة المرور أو ملف المفتاح غير صالح";
+"[DatabaseError] Invalid password or key file" = "كلمة المرور غير صالحة أو ملف المفتاح غير صالح";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
-"[File/In Trash/warning]" = "'%@' is located in Recently Deleted and might be deleted soon. To preserve your data, move the file to a more permanent location.";
+"[File/In Trash/warning]" = "إنَّ '%@' موجود في \"المحذوفة مؤخرًا\" وقد يتمُّ حذفه قريبًا. للحِفاظ على بياناتك، انقل المَلف إلى موقع أكثر ديمومة.";
 
 /* Notification when user opens an in-app backup database. */
-"[File/TemporaryBackup/warning]" = "This is a temporary backup database. It can be automatically deleted without a warning. Don't use it as your main database.";
+"[File/TemporaryBackup/warning]" = "هذه عِبارة عن قاعدة بيانات احتياطية مؤقتة. يُمكن أن تُحذَف تلقائيًا دون سابق إنذار. لا تستخدمها كقاعدة بياناتك الرئيسة.";
 
 /* Error message: storage provider app was logged out or uninstalled. */
-"[FileAccessError/FileProvider/NotFound/generic]" = "خدمة التخزين غير متوفرة. الرجاء التحقق مما إذا كانت مثبتة وتم تسجيل الدخول إلى حسابك.";
+"[FileAccessError/FileProvider/NotFound/generic]" = "خدمة التخزين غير متوفرة. الرجاء التحقُّق مما إذا كانت مثبَّتة وقد تمَّ تسجيل الدخول إلى حسابك.";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
-"[FileAccessError/FileProvider/NotFound/other]" = "%@ غير متوفرة. الرجاء التحقق مما إذا كانت مثبتة وتم تسجيل الدخول إلى حسابك.";
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ غير متوفرة. الرجاء التحقُّق مما إذا كانت مثبَّتة وقد تمَّ تسجيل الدخول إلى حسابك.";
 
 /* Error message: the required network drive is not connected. */
-"[FileAccessError/FileProvider/NotFound/smbShare]" = "وحدة التخزين الشبكية غير متصلة.";
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "وحدة التخزين الشبكية غير مُتَّصلة.";
 
 /* Error message: there is no USB drive connected to the device. */
-"[FileAccessError/FileProvider/NotFound/usbDrive]" = "وحدة USB غير متصلة.";
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "وحدة USB غير مُتَّصلة.";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
-"[FileAccessError/internalError]" = "خطأ داخلي في KeePassium، الرجاء إعلامنا بذلك.";
+"[FileAccessError/internalError]" = "خطأ داخلي في KeePassium، يُرجى إعلامنا بذلك.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "مزود خدمة التخزين لا يستجيب.";
@@ -281,16 +281,16 @@
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ لا يستجيب.";
 
 /* Error message [reason: String] */
-"[FileKeeper] Failed to delete file. Reason: %@" = "فشل في حذف الملف. السبب: %@";
+"[FileKeeper] Failed to delete file. Reason: %@" = "فشل حذف الملف. السبب: %@";
 
 /* Error message [reason: String] */
-"[FileKeeper] Failed to import file. Reason: %@" = "فشل في استيراد الملف. السبب: %@";
+"[FileKeeper] Failed to import file. Reason: %@" = "فشل استيراد الملف. السبب: %@";
 
 /* Error message [reason: String] */
-"[FileKeeper] Failed to open file. Reason: %@" = "فشل في فتح الملف. السبب: %@";
+"[FileKeeper] Failed to open file. Reason: %@" = "فشل فتح الملف. السبب: %@";
 
 /* Error message: tried to import URL which does not point to a file */
-"[FileKeeper] Not a file URL" = "ليس رابط URL لملف";
+"[FileKeeper] Not a file URL" = "ليس رابط URL لِمَلف";
 
 /* Localized name of the storage service: Amerigo (https://www.amerigo-app.com) */
 "[FileProvider/Amerigo/name]" = "Amerigo";
@@ -407,7 +407,7 @@
 "[GroupSortOrder/longTitle] No Sorting" = "بدون فرز";
 
 /* Status message: processing of the master key is in progress */
-"[KDF/Progress] Processing the master key" = "معالجة المفتاح الرئيس";
+"[KDF/Progress] Processing the master key" = "مُعالجة المفتاح الرئيس";
 
 /* Generic error message about system keychain. [errorCode: Int] */
 "[KeychainError/generic] Keychain error (code %d) " = "خطأ في سلسلة المفاتيح (الرمز %d) ";
@@ -416,16 +416,16 @@
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "خطأ في سلسلة المفاتيح: صيغة بيانات غير متوقع";
 
 /* Error message when the key file is misformatted or damaged */
-"[KeyFileError/Corrupted/title]" = "Key file is corrupted";
+"[KeyFileError/Corrupted/title]" = "ملف المفتاح تالِف";
 
 /* Error message: unsupported/unknown format of a key file */
-"[KeyFileError/UnsupportedFormat/title]" = "Unsupported key file format";
+"[KeyFileError/UnsupportedFormat/title]" = "ملف مفتاح غير مدعوم";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
-"[Progress/CancellationReason] Cancelled by user" = "تمّ الإلغاء مِن قِبل المستخدم";
+"[Progress/CancellationReason] Cancelled by user" = "أُلغي مِن قِبَل المُستخدِم";
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
-"[Progress/CancellationReason/lowMemory]" = "الذاكرة غير كافية للاستمرار.\nيمكن أن يحدث هذا مع قواعد البيانات الكبيرة أو إعدادات قاعدة بيانات عالية للغاية (معامل الذاكرة Argon2).";
+"[Progress/CancellationReason/lowMemory]" = "الذاكِرة غير كافية للاِستمرار.\nيُمكِن حُدوث هذا مع قواعد البيانات الكبيرة أو إعدادات قاعدة بيانات عالية للغاية (مُعامل الذاكرة Argon2).";
 
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "بعد آخر تفاعل";
@@ -437,37 +437,37 @@
 "[Settings/AppLockTimeout/fullTitle] Immediately" = "فورًا";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
-"[Settings/AppLockTimeout/fullTitle] Never" = "ابداً";
+"[Settings/AppLockTimeout/fullTitle] Never" = "ابدًا";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
 "[Settings/AppLockTimeout/shortTitle] Immediately" = "فورًا";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
-"[Settings/AppLockTimeout/shortTitle] Never" = "ابداً";
+"[Settings/AppLockTimeout/shortTitle] Never" = "ابدًا";
 
 /* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
 "[Settings/BackupKeepingDuration/shortTitle] Forever" = "إلى الأبد";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
-"[Settings/ClipboardTimeout/fullTitle] Never" = "ابداً";
+"[Settings/ClipboardTimeout/fullTitle] Never" = "ابدًا";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
-"[Settings/ClipboardTimeout/shortTitle] Never" = "ابداً";
+"[Settings/ClipboardTimeout/shortTitle] Never" = "ابدًا";
 
 /* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
-"[Settings/DatabaseLockTimeout/description] When leaving the app" = "عِندَ مغادرة التطبيق";
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "عِندَ مُغادرة التطبيق";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
 "[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "فورًا";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
-"[Settings/DatabaseLockTimeout/fullTitle] Never" = "ابداً";
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "ابدًا";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
 "[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "فورًا";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
-"[Settings/DatabaseLockTimeout/shortTitle] Never" = "ابداً";
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "ابدًا";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "تاريخ آخر تعديل";
@@ -476,7 +476,7 @@
 "[Settings/EntryListDetail/longTitle] None" = "لا شيء";
 
 /* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "الملاحظات";
+"[Settings/EntryListDetail/longTitle] Notes" = "المُلاحظات";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
 "[Settings/EntryListDetail/longTitle] Password" = "كلمة المرور";
@@ -485,17 +485,17 @@
 "[Settings/EntryListDetail/longTitle] URL" = "عنوان URL";
 
 /* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "اسم المستخدم";
+"[Settings/EntryListDetail/longTitle] User Name" = "اسم المُستخدِم";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
-"[URLReference/Location] Cloud storage / Another app" = "التخزين السحابي/تطبيق آخر";
+"[URLReference/Location] Cloud storage / Another app" = "التخزين السحابي / تطبيق آخر";
 
 /* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
-"[URLReference/Location] Internal backup" = "النسخ الاحتياطية الداخلية";
+"[URLReference/Location] Internal backup" = "النُسَخ الاحتياطيَّة الدَّاخليَّة";
 
 /* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
-"[URLReference/Location] Internal inbox" = "الملفات الداخلية الواردة";
+"[URLReference/Location] Internal inbox" = "الملفَّات الدَّاخليِّة الوارِدة";
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
-"[URLReference/Location] Local copy" = "النسخة المحلية";
+"[URLReference/Location] Local copy" = "النُسَخة المحلية";
 

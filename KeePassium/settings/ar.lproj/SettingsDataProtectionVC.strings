@@ -1,14 +1,17 @@
 /* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
 "3uV-Zs-RRo.normalTitle" = "حذف ملفات المفاتيح المرتبطة";
 
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "beV-Hv-Qdr"; Note = "#bc-ignore!"; */
+"beV-Hv-Qdr.text" = "{Detail}";
+
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
 "e1v-nv-Mst.normalTitle" = "مسح المفاتيح الرئيسة";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "إخفاء كلمات المرور وغيرها من الحقول المحمية خلف النجمة (مستحسن).";
+"e6Y-AP-hag.footerTitle" = "إخفاء كلمات المرور وغيرها من الحقول المحمية خلف النُجُوم (مُستَحسَن).";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.headerTitle" = "الحقول المحمية";
+"e6Y-AP-hag.headerTitle" = "الحُقُول المَحمية";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.footerTitle" = "بمجرد فتح قاعدة بيانات، يمكن تخزين المفتاح الرئيس في سلسلة المفاتيح الآمنة للجهاز. في المرة القادمة، سيستخدم KeePassium هذا المفتاح حتى لا تضطر إلى كتابة كلمة المرور الرئيسة الكاملة مرة أخرى. \n\n(يتم مسح المفاتيح الرئيسة تلقائياً في مهلة قاعدة البيانات.)";
@@ -17,7 +20,7 @@
 "Faj-km-pM5.headerTitle" = "الفتح سريع";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "استخدم الحافظة العامة لنسخ ولصق بين أجهزة Apple الخاصة بك. على الأجهزة الخارجية، يتم مسح هذه الحافظة بعد دقيقتين.";
+"g9a-rJ-4WJ.footerTitle" = "استخدام الحافظة العامة للنسخ والصق بين أجهزة Apple الخاصة بك. على الأجهزة الخارجية، يتم مسح هذه الحافظة بعد دقيقتين.";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
 "gTm-F6-EDQ.text" = "مسح المفاتيح الرئيسة عند انتهاء المهلة";
@@ -38,7 +41,7 @@
 "JHl-o7-xHI.text" = "تذكر ملفات المفاتيح";
 
 /* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.footerTitle" = "تذكر وحدد تلقائياً آخر ملف مفتاح مستخدم لكل قاعدة بيانات. مسح الروابط لا يؤثر على الملفات.";
+"Mxu-GP-FmN.footerTitle" = "التذكُّر والتَّحديد التلقائي لآخر مَلف مفتاح مُستخدَم لكُل قاعدة بيانات. مَسح الروابط لا يؤثر على الملفات.";
 
 /* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
 "Mxu-GP-FmN.headerTitle" = "ملفات المفاتيح";
@@ -53,20 +56,23 @@
 "pid-k2-idJ.text" = "إخفاء كلمات المرور";
 
 /* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
-"siQ-LK-GXZ.text" = "Cache Derived Encryption Keys";
+"siQ-LK-GXZ.text" = "مفاتيح التشفير المشتقة من ذاكرة التخزين المؤقت";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "مهلة الحافظة";
+"SSu-Sr-MCg.text" = "مُهلَة الحافظة";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "مهلة قاعدة البيانات";
+"weX-SZ-IDB.text" = "مُهلَة قاعدة البيانات";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
+"xPd-ot-oqe.text" = "{Detail}";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "الحافظة العامة";
 
 /* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
-"Zqb-p5-Ft8.footerTitle" = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. ";
+"Zqb-p5-Ft8.footerTitle" = "تسمح المفاتيح المخزنة مؤقتًا لـKeePassium أن يتخطي اشتقاق المفتاح ومسح YubiKey كلما أمكن ذلك. ";
 
 /* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
-"Zqb-p5-Ft8.headerTitle" = "Advanced";
+"Zqb-p5-Ft8.headerTitle" = "مُتقدِم";
 

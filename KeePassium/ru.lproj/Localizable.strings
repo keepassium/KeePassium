@@ -371,7 +371,7 @@
 "[Premium/Benefits/CustomAppIcon/details]" = "Сделайте иконку приложения уникальной, привычной — или вообще замаскируйте KeePassium под калькулятор.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Смените иконку приложения";
+"[Premium/Benefits/CustomAppIcon/title]" = "Смените значок приложения";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "Надоело вводить мастер-пароль? Держите базу паролей открытой дольше и разблокируйте её одним нажатием.";
@@ -536,7 +536,7 @@
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Приложение полезно %1$@/месяц, т.е. около %2$@/год.";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Другая иконка приложения";
+"[PremiumFeature/CustomAppIcons/title]" = "Другой значок приложения";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Перейдите на полную версию KeePassium и пользуйтесь всеми возможностями программы.";

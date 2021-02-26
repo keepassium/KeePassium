@@ -1,5 +1,10 @@
 /* Class = "UILabel"; text = "Enter passcode"; ObjectID = "3mQ-t6-0ty"; Note = "Call for action above the passcode text field"; */
 "3mQ-t6-0ty.text" = "Wprowadź kod";
+/* Class = "UIButton"; normalTitle = "{Switch to passphrase}"; ObjectID = "f5U-FH-tld"; Note = "#bc-ignore!"; */
+"f5U-FH-tld.normalTitle" = "{Switch to passphrase}";
+
+/* Class = "UIButton"; normalTitle = "{Unlock / Save}"; ObjectID = "i2Z-Q7-JRa"; Note = "#bc-ignore!"; */
+"i2Z-Q7-JRa.normalTitle" = "{Unlock / Save}";
 
 /* Class = "UINavigationItem"; title = "Unlock KeePassium"; ObjectID = "P3J-3c-ucU"; */
 "P3J-3c-ucU.title" = "Odblokuj KeePassium";
