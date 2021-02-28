@@ -131,7 +131,7 @@ final class Meta2: Eraseable {
         historyMaxSize = Meta2.defaultHistoryMaxSize
         lastSelectedGroupUUID = UUID.ZERO
         lastTopVisibleGroupUUID = UUID.ZERO
-        customData = CustomData2()
+        customData = CustomData2(database: database)
         customIcons = []
     }
     deinit {

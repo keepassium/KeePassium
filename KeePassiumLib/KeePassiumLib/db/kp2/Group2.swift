@@ -38,7 +38,7 @@ public class Group2: Group {
         lastTopVisibleEntryUUID = UUID.ZERO
         usageCount = 0
         locationChangedTime = Date.now
-        customData = CustomData2()
+        customData = CustomData2(database: database)
         super.init(database: database)
     }
     deinit {

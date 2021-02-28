@@ -8,38 +8,53 @@
 
 import Foundation
 
-public class CustomData2: Collection, Eraseable {
-    public typealias Dict = Dictionary<String, String>
+public class CustomData2: Eraseable {
     
-    public var startIndex: Dict.Index { return dict.startIndex }
-    public var endIndex: Dict.Index { return dict.endIndex }
-    public subscript(position: Dict.Index) -> Dict.Iterator.Element { return dict[position] }
-    public subscript(bounds: Range<Dict.Index>) -> Dict.SubSequence { return dict[bounds] }
-    public var indices: Dict.Indices { return dict.indices }
-    public subscript(key: String) -> String? {
-        get { return dict[key] }
-        set { dict[key] = newValue }
-    }
-    public func index(after i: Dict.Index) -> Dict.Index {
-        return dict.index(after: i)
-    }
-    public func makeIterator() -> Dict.Iterator {
-        return dict.makeIterator()
+    public typealias Dict = Dictionary<Key, Item>
+    
+    public typealias Key = String
+    
+    public class Item: Eraseable {
+        public var value: String
+        public var lastModificationTime: Date? 
+        
+        init(value: String, lastModificationTime: Date?) {
+            self.value = value
+            self.lastModificationTime = lastModificationTime
+        }
+        
+        deinit {
+            erase()
+        }
+        
+        public func erase() {
+            value.erase()
+            lastModificationTime = nil
+        }
     }
     
     private var dict: Dict
-    init() {
+    private weak var database: Database?
+    
+    init(database: Database?) {
         dict = [:]
+        self.database = database
     }
+    
     deinit {
         erase()
     }
+    
     public func erase() {
         dict.removeAll() 
     }
+    
     internal func clone() -> CustomData2 {
-        let copy = CustomData2()
-        copy.dict = self.dict 
+        let copy = CustomData2(database: database)
+        copy.dict.reserveCapacity(self.dict.capacity)
+        self.dict.forEach { (key, value) in
+            copy.dict.updateValue(value, forKey: key)
+        }
         return copy
     }
     
@@ -50,7 +65,7 @@ public class CustomData2: Collection, Eraseable {
         for tag in xml.children {
             switch tag.name {
             case Xml2.item:
-                try loadItem(xml: tag, streamCipher: streamCipher)
+                try loadItem(xml: tag, streamCipher: streamCipher, xmlParentName: xmlParentName)
                 Diag.verbose("Item loaded OK")
             default:
                 Diag.error("Unexpected XML tag in CustomData: \(tag.name)")
@@ -61,17 +76,24 @@ public class CustomData2: Collection, Eraseable {
         }
     }
     
-    private func loadItem(xml: AEXMLElement, streamCipher: StreamCipher,
-                          xmlParentName: String = "?") throws {
+    private func loadItem(
+        xml: AEXMLElement,
+        streamCipher: StreamCipher,
+        xmlParentName: String = "?") throws
+    {
         assert(xml.name == Xml2.item)
         var key: String?
         var value: String?
+        var optionalTimestamp: Date? 
         for tag in xml.children {
             switch tag.name {
             case Xml2.key:
                 key = tag.value ?? ""
             case Xml2.value:
-                value = tag.value ?? "" 
+                value = tag.value ?? ""
+            case Xml2.lastModificationTime:
+                let database = self.database as! Database2
+                optionalTimestamp = database.xmlStringToDate(tag.value)
             default:
                 Diag.error("Unexpected XML tag in CustomData/Item: \(tag.name)")
                 throw Xml2.ParsingError.unexpectedTag(
@@ -80,18 +102,18 @@ public class CustomData2: Collection, Eraseable {
             }
         }
         guard let _key = key else {
-            Diag.error("Missing /CustomData/Item/Key")
+            Diag.error("Missing \(xmlParentName)/CustomData/Item/Key")
             throw Xml2.ParsingError.malformedValue(
                 tag: xmlParentName + "/CustomData/Item/Key",
                 value: nil)
         }
         guard let _value = value else {
-            Diag.error("Missing /CustomData/Item/Value")
+            Diag.error("Missing \(xmlParentName)/CustomData/Item/Value")
             throw Xml2.ParsingError.malformedValue(
                 tag: xmlParentName + "/CustomData/Item/Value",
                 value: nil)
         }
-        dict[_key] = _value
+        dict[_key] = Item(value: _value, lastModificationTime: optionalTimestamp)
     }
     
     
@@ -102,11 +124,35 @@ public class CustomData2: Collection, Eraseable {
             return xml
         }
         
-        for dictItem in dict {
+        for keyValuePair in dict {
             let xmlItem = xml.addChild(name: Xml2.item)
-            xmlItem.addChild(name: Xml2.key, value: dictItem.key)
-            xmlItem.addChild(name: Xml2.value, value: dictItem.value)
+            xmlItem.addChild(name: Xml2.key, value: keyValuePair.key)
+            let item = keyValuePair.value
+            xmlItem.addChild(name: Xml2.value, value: item.value)
+            if let timestamp = item.lastModificationTime {
+                let database = self.database as! Database2
+                let timestampString = database.xmlDateToString(timestamp)
+                xmlItem.addChild(name: Xml2.lastModificationTime, value: timestampString)
+            }
         }
         return xml
+    }
+}
+
+extension CustomData2: Collection {
+    public var startIndex: Dict.Index { return dict.startIndex }
+    public var endIndex: Dict.Index { return dict.endIndex }
+    public subscript(position: Dict.Index) -> Dict.Iterator.Element { return dict[position] }
+    public subscript(bounds: Range<Dict.Index>) -> Dict.SubSequence { return dict[bounds] }
+    public var indices: Dict.Indices { return dict.indices }
+    public subscript(key: Key) -> Item? {
+        get { return dict[key] }
+        set { dict[key] = newValue }
+    }
+    public func index(after i: Dict.Index) -> Dict.Index {
+        return dict.index(after: i)
+    }
+    public func makeIterator() -> Dict.Iterator {
+        return dict.makeIterator()
     }
 }

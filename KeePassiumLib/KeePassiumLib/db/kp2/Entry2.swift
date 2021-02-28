@@ -266,7 +266,7 @@ public class Entry2: Entry {
         backgroundColor = ""
         overrideURL = ""
         tags = ""
-        customData = CustomData2()
+        customData = CustomData2(database: database)
         super.init(database: database)
     }
     deinit {
