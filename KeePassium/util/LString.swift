@@ -305,6 +305,16 @@ public enum LString {
         value: "Create Database",
         comment: "Title of a form for creating a database"
     )
+    public static let titleRememberYourPassword = NSLocalizedString(
+        "[Database/MasterKey/RememberYourPassword/title]",
+        value: "Remember your database password",
+        comment: "Imperative/recommendation: title of a warning when changing database password."
+    )
+    public static let warningRememberYourPassword = NSLocalizedString(
+        "[Database/MasterKey/RememberYourPassword/text]",
+        value: "If you ever forget it, you won't be able to access your data. There is no password reset option.",
+        comment: "A warning shown when changing database password. Is preceded with `Remember your database password`."
+    )
     public static let warningNonDatabaseExtension = NSLocalizedString(
         "[Database/Add] Selected file \"%@\" does not look like a database.",
         value: "Selected file \"%@\" does not look like a database.",

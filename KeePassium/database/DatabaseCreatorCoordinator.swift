@@ -23,6 +23,7 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
 
     private let router: NavigationRouter
     private let databaseCreatorVC: DatabaseCreatorVC
+    private var isPasswordResetWarningShown = false
     
     init(router: NavigationRouter) {
         self.router = router
@@ -254,7 +255,22 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
     }
     
     func didPressContinue(in databaseCreatorVC: DatabaseCreatorVC) {
-        instantiateDatabase(fileName: databaseCreatorVC.databaseFileName)
+        if isPasswordResetWarningShown {
+            instantiateDatabase(fileName: databaseCreatorVC.databaseFileName)
+        } else {
+            isPasswordResetWarningShown = true
+            let alert = UIAlertController(
+                title: LString.titleRememberYourPassword,
+                message: LString.warningRememberYourPassword,
+                preferredStyle: .alert)
+                .addAction(title: LString.actionCancel, style: .cancel, handler: nil)
+                .addAction(title: LString.actionContinue, style: .default) {
+                    [weak self] action in
+                    self?.didPressContinue(in: databaseCreatorVC)
+                }
+            databaseCreatorVC.present(alert, animated: true, completion: nil)
+            return
+        }
     }
     
     func didPressErrorDetails(in databaseCreatorVC: DatabaseCreatorVC) {
