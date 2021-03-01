@@ -137,6 +137,7 @@ internal struct Xml2 {
     static let lastTopVisibleEntry = "LastTopVisibleEntry"
     static let usageCount = "UsageCount"
     static let locationChanged = "LocationChanged"
+    static let previousParentGroup = "PreviousParentGroup"
     static let foregroundColor = "ForegroundColor"
     static let backgroundColor = "BackgroundColor"
     static let overrideURL = "OverrideURL"

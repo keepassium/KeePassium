@@ -495,7 +495,12 @@ public class Database2: Database {
             for tag in xmlDoc.root.children {
                 switch tag.name {
                 case Xml2.meta:
-                    try meta.load(xml: tag, streamCipher: header.streamCipher, warnings: warnings)
+                    try meta.load(
+                        xml: tag,
+                        formatVersion: header.formatVersion,
+                        streamCipher: header.streamCipher,
+                        warnings: warnings
+                    ) 
                     
                     if meta.headerHash != nil && (header.hash != meta.headerHash!) {
                         Diag.error("KP2v3 meta meta hash mismatch")
@@ -537,7 +542,12 @@ public class Database2: Database {
         for tag in xml.children {
             switch tag.name {
             case Xml2.group:
-                try root.load(xml: tag, streamCipher: header.streamCipher, warnings: warnings)
+                try root.load(
+                    xml: tag,
+                    formatVersion: header.formatVersion,
+                    streamCipher: header.streamCipher,
+                    warnings: warnings
+                ) 
             case Xml2.deletedObjects:
                 try loadDeletedObjects(xml: tag)
             default:
@@ -1137,12 +1147,18 @@ public class Database2: Database {
         
         let xmlMain = AEXMLElement(name: Xml2.keePassFile)
         let xmlDoc = AEXMLDocument(root: xmlMain, options: options)
-        xmlMain.addChild(try meta.toXml(streamCipher: header.streamCipher))
+        xmlMain.addChild(
+            try meta.toXml(streamCipher: header.streamCipher, formatVersion: header.formatVersion)
+        ) 
         Diag.verbose("XML generation: Meta OK")
         
         let xmlRoot = xmlMain.addChild(name: Xml2.root)
         let root2 = root! as! Group2
-        xmlRoot.addChild(try root2.toXml(streamCipher: header.streamCipher))
+        let rootXML = try root2.toXml(
+            formatVersion: header.formatVersion,
+            streamCipher: header.streamCipher
+        ) 
+        xmlRoot.addChild(rootXML)
         Diag.verbose("XML generation: Root group OK")
         
         let xmlDeletedObjects = xmlRoot.addChild(name: Xml2.deletedObjects)

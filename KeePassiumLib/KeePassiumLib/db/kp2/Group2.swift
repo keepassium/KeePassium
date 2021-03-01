@@ -17,6 +17,7 @@ public class Group2: Group {
     public var lastTopVisibleEntryUUID: UUID
     public var usageCount: UInt32
     public var locationChangedTime: Date
+    public var previousParentGroupUUID: UUID 
     public var customData: CustomData2 
     
     override public var isIncludeEntriesInSearch: Bool {
@@ -38,6 +39,7 @@ public class Group2: Group {
         lastTopVisibleEntryUUID = UUID.ZERO
         usageCount = 0
         locationChangedTime = Date.now
+        previousParentGroupUUID = UUID.ZERO
         customData = CustomData2(database: database)
         super.init(database: database)
     }
@@ -55,6 +57,7 @@ public class Group2: Group {
         lastTopVisibleEntryUUID.erase()
         usageCount = 0
         locationChangedTime = Date.now
+        previousParentGroupUUID.erase()
         customData.erase()
     }
     
@@ -79,6 +82,7 @@ public class Group2: Group {
         targetGroup2.lastTopVisibleEntryUUID = lastTopVisibleEntryUUID
         targetGroup2.usageCount = usageCount
         targetGroup2.locationChangedTime = locationChangedTime
+        targetGroup2.previousParentGroupUUID = previousParentGroupUUID
         targetGroup2.customData = customData.clone()
     }
     
@@ -117,12 +121,14 @@ public class Group2: Group {
     }
 
     override public func move(to newGroup: Group) {
+        previousParentGroupUUID = parent?.uuid ?? UUID.ZERO
         super.move(to: newGroup)
         self.locationChangedTime = Date.now
     }
     
     func load(
         xml: AEXMLElement,
+        formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
         warnings: DatabaseLoadingWarnings
         ) throws
@@ -171,18 +177,31 @@ public class Group2: Group {
                 self.isSearchingEnabled = Bool(optString: tag.value) // value can be "True"/"False"/"null"
             case Xml2.lastTopVisibleEntry:
                 self.lastTopVisibleEntryUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
+            case Xml2.previousParentGroup:
+                assert(formatVersion >= .v4_1)
+                self.previousParentGroupUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.customData:
                 assert(formatVersion >= .v4)
                 try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Group")
                 Diag.verbose("Custom data loaded OK")
             case Xml2.group:
                 let subGroup = Group2(database: database)
-                try subGroup.load(xml: tag, streamCipher: streamCipher, warnings: warnings)
+                try subGroup.load(
+                    xml: tag,
+                    formatVersion: formatVersion,
+                    streamCipher: streamCipher,
+                    warnings: warnings
+                ) 
                 self.add(group: subGroup)
                 Diag.verbose("Subgroup loaded OK")
             case Xml2.entry:
                 let entry = Entry2(database: database)
-                try entry.load(xml: tag, streamCipher: streamCipher, warnings: warnings)
+                try entry.load(
+                    xml: tag,
+                    formatVersion: formatVersion,
+                    streamCipher: streamCipher,
+                    warnings: warnings
+                ) 
                 self.add(entry: entry)
                 Diag.verbose("Entry loaded OK")
             default:
@@ -252,7 +271,10 @@ public class Group2: Group {
         }
     }
     
-    func toXml(streamCipher: StreamCipher) throws -> AEXMLElement {
+    func toXml(
+        formatVersion: Database2.FormatVersion,
+        streamCipher: StreamCipher
+    ) throws -> AEXMLElement {
         Diag.verbose("Generating XML: group")
         let xmlGroup = AEXMLElement(name: Xml2.group)
         xmlGroup.addChild(name: Xml2.uuid, value: uuid.base64EncodedString())
@@ -316,7 +338,11 @@ public class Group2: Group {
             name: Xml2.lastTopVisibleEntry,
             value: lastTopVisibleEntryUUID.base64EncodedString())
 
-        if db2.header.formatVersion == .v4 && !customData.isEmpty{
+        if formatVersion >= .v4_1 && previousParentGroupUUID != UUID.ZERO {
+            xmlGroup.addChild(
+                name: Xml2.previousParentGroup,
+                value: previousParentGroupUUID.base64EncodedString())
+        }
         
         if formatVersion >= .v4 && !customData.isEmpty{
             xmlGroup.addChild(customData.toXml())
@@ -324,12 +350,13 @@ public class Group2: Group {
         
         for entry in entries {
             let entry2 = entry as! Entry2
-            xmlGroup.addChild(try entry2.toXml(streamCipher: streamCipher))
+            let entryXML = try entry2.toXml(formatVersion: formatVersion, streamCipher: streamCipher)
+            xmlGroup.addChild(entryXML)
         }
 
         for group in groups {
             let group2 = group as! Group2
-            let groupXML = try group2.toXml(streamCipher: streamCipher)
+            let groupXML = try group2.toXml(formatVersion: formatVersion, streamCipher: streamCipher)
             xmlGroup.addChild(groupXML)
         }
         return xmlGroup

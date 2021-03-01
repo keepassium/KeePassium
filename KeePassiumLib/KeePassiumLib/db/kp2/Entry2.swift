@@ -253,6 +253,7 @@ public class Entry2: Entry {
     public var backgroundColor: String
     public var overrideURL: String
     public var tags: String
+    public var previousParentGroupUUID: UUID 
     public var customData: CustomData2 
     
     override init(database: Database?) {
@@ -266,6 +267,7 @@ public class Entry2: Entry {
         backgroundColor = ""
         overrideURL = ""
         tags = ""
+        previousParentGroupUUID = UUID.ZERO
         customData = CustomData2(database: database)
         super.init(database: database)
     }
@@ -284,6 +286,7 @@ public class Entry2: Entry {
         backgroundColor.erase()
         overrideURL.erase()
         tags.erase()
+        previousParentGroupUUID.erase()
         customData.erase()
         super.erase()
     }
@@ -314,6 +317,7 @@ public class Entry2: Entry {
         targetEntry2.canExpire = self.canExpire
         targetEntry2.usageCount = self.usageCount
         targetEntry2.locationChangedTime = self.locationChangedTime
+        targetEntry2.previousParentGroupUUID = self.previousParentGroupUUID
         targetEntry2.customData = self.customData.clone()
 
         targetEntry2.history.removeAll()
@@ -368,12 +372,14 @@ public class Entry2: Entry {
     }
     
     override public func move(to newGroup: Group) {
+        previousParentGroupUUID = parent?.uuid ?? UUID.ZERO
         super.move(to: newGroup)
         locationChangedTime = Date.now
     }
     
     func load(
         xml: AEXMLElement,
+        formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
         warnings: DatabaseLoadingWarnings
         ) throws
@@ -430,12 +436,20 @@ public class Entry2: Entry {
             case Xml2.autoType:
                 try autoType.load(xml: tag, streamCipher: streamCipher)
                 Diag.verbose("Entry autotype loaded OK")
+            case Xml2.previousParentGroup:
+                assert(formatVersion >= .v4_1)
+                previousParentGroupUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.customData: 
                 assert(formatVersion >= .v4)
                 try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Entry")
                 Diag.verbose("Entry custom data loaded OK")
             case Xml2.history:
-                try loadHistory(xml: tag, streamCipher: streamCipher, warnings: warnings)
+                try loadHistory(
+                    xml: tag,
+                    formatVersion: formatVersion,
+                    streamCipher: streamCipher,
+                    warnings: warnings
+                ) 
                 Diag.verbose("Entry history loaded OK")
             default:
                 Diag.error("Unexpected XML tag in Entry: \(tag.name)")
@@ -523,6 +537,7 @@ public class Entry2: Entry {
 
     func loadHistory(
         xml: AEXMLElement,
+        formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
         warnings: DatabaseLoadingWarnings
         ) throws
@@ -533,7 +548,12 @@ public class Entry2: Entry {
             switch tag.name {
             case Xml2.entry:
                 let histEntry = Entry2(database: database)
-                try histEntry.load(xml: tag, streamCipher: streamCipher, warnings: warnings)
+                try histEntry.load(
+                    xml: tag,
+                    formatVersion: formatVersion,
+                    streamCipher: streamCipher,
+                    warnings: warnings
+                ) 
                 history.append(histEntry)
                 Diag.verbose("Entry history item loaded OK")
             default:
@@ -543,7 +563,10 @@ public class Entry2: Entry {
         }
     }
     
-    func toXml(streamCipher: StreamCipher) throws -> AEXMLElement {
+    func toXml(
+        formatVersion: Database2.FormatVersion,
+        streamCipher: StreamCipher
+    ) throws -> AEXMLElement {
         Diag.verbose("Generating XML: entry")
         let db2 = database as! Database2
         let meta: Meta2 = db2.meta
@@ -595,6 +618,12 @@ public class Entry2: Entry {
         }
         xmlEntry.addChild(autoType.toXml())
         
+        if formatVersion >= .v4_1 && previousParentGroupUUID != UUID.ZERO {
+            xmlEntry.addChild(
+                name: Xml2.previousParentGroup,
+                value: previousParentGroupUUID.base64EncodedString())
+        }
+        
         if formatVersion >= .v4 && !customData.isEmpty{
             xmlEntry.addChild(customData.toXml())
         }
@@ -602,7 +631,9 @@ public class Entry2: Entry {
         if !history.isEmpty {
             let xmlHistory = xmlEntry.addChild(name: Xml2.history)
             for histEntry in history {
-                xmlHistory.addChild(try histEntry.toXml(streamCipher: streamCipher))
+                xmlHistory.addChild(
+                    try histEntry.toXml(formatVersion: formatVersion, streamCipher: streamCipher)
+                ) 
             }
         }
         return xmlEntry
