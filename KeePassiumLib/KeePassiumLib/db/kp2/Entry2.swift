@@ -431,6 +431,7 @@ public class Entry2: Entry {
                 try autoType.load(xml: tag, streamCipher: streamCipher)
                 Diag.verbose("Entry autotype loaded OK")
             case Xml2.customData: 
+                assert(formatVersion >= .v4)
                 try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Entry")
                 Diag.verbose("Entry custom data loaded OK")
             case Xml2.history:
@@ -594,7 +595,7 @@ public class Entry2: Entry {
         }
         xmlEntry.addChild(autoType.toXml())
         
-        if db2.header.formatVersion == .v4 && !customData.isEmpty{
+        if formatVersion >= .v4 && !customData.isEmpty{
             xmlEntry.addChild(customData.toXml())
         }
         

@@ -174,6 +174,7 @@ final class Meta2: Eraseable {
     
     func load(
         xml: AEXMLElement,
+        formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
         warnings: DatabaseLoadingWarnings
     ) throws {
@@ -181,7 +182,6 @@ final class Meta2: Eraseable {
         Diag.verbose("Loading XML: meta")
         erase()
         
-        let formatVersion = database.header.formatVersion
         for tag in xml.children {
             switch tag.name {
             case Xml2.generator:
@@ -189,7 +189,7 @@ final class Meta2: Eraseable {
                 warnings.databaseGenerator = tag.value 
                 Diag.info("Database was last edited by: \(generator)")
             case Xml2.settingsChanged: 
-                guard formatVersion == .v4 else {
+                guard formatVersion >= .v4 else {
                     Diag.error("Found \(tag.name) tag in non-V4 database")
                     throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: nil)
                 }
@@ -250,7 +250,7 @@ final class Meta2: Eraseable {
             case Xml2.lastTopVisibleGroup:
                 self.lastTopVisibleGroupUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.binaries:
-                try loadBinaries(xml: tag, streamCipher: streamCipher)
+                try loadBinaries(xml: tag, formatVersion: formatVersion, streamCipher: streamCipher)
                 Diag.verbose("Binaries loaded OK [count: \(database.binaries.count)]")
             case Xml2.customData:
                 try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Meta")
@@ -281,10 +281,14 @@ final class Meta2: Eraseable {
         }
     }
     
-    func loadBinaries(xml: AEXMLElement, streamCipher: StreamCipher) throws {
+    func loadBinaries(
+        xml: AEXMLElement,
+        formatVersion: Database2.FormatVersion,
+        streamCipher: StreamCipher
+    ) throws {
         assert(xml.name == Xml2.binaries)
         Diag.verbose("Loading XML: meta binaries")
-        guard database.header.formatVersion == .v3 else {
+        guard formatVersion == .v3 else {
             if let tag = xml.children.first {
                 Diag.error("Unexpected XML content in V4 Meta/Binaries: \(tag.name)")
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: nil)
@@ -341,18 +345,20 @@ final class Meta2: Eraseable {
         self.recycleBinChangedTime = Date.now
     }
     
-    func toXml(streamCipher: StreamCipher) throws -> AEXMLElement {
+    func toXml(
+        streamCipher: StreamCipher,
+        formatVersion: Database2.FormatVersion
+    ) throws -> AEXMLElement {
         Diag.verbose("Generating XML: meta")
         let xmlMeta = AEXMLElement(name: Xml2.meta)
         xmlMeta.addChild(name: Xml2.generator, value: Meta2.generatorName)
         
-        let formatVersion = database.header.formatVersion
         switch formatVersion {
         case .v3:
             if let headerHash = headerHash {
                 xmlMeta.addChild(name: Xml2.headerHash, value: headerHash.base64EncodedString())
             }
-        case .v4:
+        case .v4, .v4_1:
             xmlMeta.addChild(
                 name: Xml2.settingsChanged,
                 value: settingsChangedTime.base64EncodedString())

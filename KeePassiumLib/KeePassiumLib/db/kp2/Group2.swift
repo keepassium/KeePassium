@@ -172,7 +172,7 @@ public class Group2: Group {
             case Xml2.lastTopVisibleEntry:
                 self.lastTopVisibleEntryUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.customData:
-                assert(db2.header.formatVersion == .v4)
+                assert(formatVersion >= .v4)
                 try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Group")
                 Diag.verbose("Custom data loaded OK")
             case Xml2.group:
@@ -317,6 +317,8 @@ public class Group2: Group {
             value: lastTopVisibleEntryUUID.base64EncodedString())
 
         if db2.header.formatVersion == .v4 && !customData.isEmpty{
+        
+        if formatVersion >= .v4 && !customData.isEmpty{
             xmlGroup.addChild(customData.toXml())
         }
         

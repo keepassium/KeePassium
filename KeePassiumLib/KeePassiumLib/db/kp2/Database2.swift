@@ -10,9 +10,10 @@ import Foundation
 
 public class Database2: Database {
     
-    public enum FormatVersion {
+    public enum FormatVersion: Comparable {
         case v3
         case v4
+        case v4_1
     }
     
     public enum FormatError: LocalizedError {
@@ -184,7 +185,7 @@ public class Database2: Database {
                 decryptedData = try decryptBlocksV3(
                     data: dbWithoutHeader,
                     cipher: header.dataCipher)
-            case .v4:
+            case .v4, .v4_1:
                 decryptedData = try decryptBlocksV4(
                     data: dbWithoutHeader,
                     cipher: header.dataCipher)
@@ -206,7 +207,7 @@ public class Database2: Database {
             switch header.formatVersion {
             case .v3:
                 xmlData = decryptedData
-            case .v4:
+            case .v4, .v4_1:
                 let innerHeaderSize = try header.readInner(data: decryptedData) 
                 xmlData = decryptedData.suffix(from: innerHeaderSize)
                 Diag.debug("Inner header read OK")
@@ -281,7 +282,7 @@ public class Database2: Database {
         switch header.formatVersion {
         case .v3:
             return Date(iso8601string: trimmedString)
-        case .v4:
+        case .v4, .v4_1:
             return Date(base64Encoded: trimmedString)
         }
     }
@@ -290,7 +291,7 @@ public class Database2: Database {
         switch header.formatVersion {
         case .v3:
             return date.iso8601String()
-        case .v4:
+        case .v4, .v4_1:
             return date.base64EncodedString()
         }
     }
@@ -600,7 +601,7 @@ public class Database2: Database {
             
             let challengeResponse = try compositeKey.getResponse(challenge: secureMasterSeed) 
             joinedKey = SecureByteArray.concat(secureMasterSeed, challengeResponse, transformedKey)
-        case .v4:
+        case .v4, .v4_1:
             
             let challenge = try header.kdf.getChallenge(header.kdfParams) 
             let secureChallenge = SecureByteArray(challenge)
@@ -920,7 +921,7 @@ public class Database2: Database {
         switch formatVersion {
         case .v3:
             try encryptBlocksV3(to: outStream, xmlData: xmlData) 
-        case .v4:
+        case .v4, .v4_1:
             try encryptBlocksV4(to: outStream, xmlData: xmlData) 
         }
         Diag.debug("Content encryption OK")
