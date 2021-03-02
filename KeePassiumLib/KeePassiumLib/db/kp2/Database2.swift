@@ -10,10 +10,21 @@ import Foundation
 
 public class Database2: Database {
     
-    public enum FormatVersion: Comparable {
+    public enum FormatVersion: Comparable, CustomStringConvertible {
         case v3
         case v4
         case v4_1
+        
+        public var description: String {
+            switch self {
+            case .v3:
+                return "v3"
+            case .v4:
+                return "v4"
+            case .v4_1:
+                return "v4.1"
+            }
+        }
     }
     
     public enum FormatError: LocalizedError {
