@@ -643,11 +643,15 @@ final class Header2: Eraseable {
         case .v3:
             headerStream.write(value: Header2.fileVersion3)
             writeV3(stream: headerStream)
-            Diag.verbose("KP2v3 header written OK")
-        case .v4, .v4_1:
+            Diag.verbose("kdbx3 header written OK")
+        case .v4:
             headerStream.write(value: Header2.fileVersion4)
             writeV4(stream: headerStream)
-            Diag.verbose("KP2v4 header written OK")
+            Diag.verbose("kdbx4 header written OK")
+        case .v4_1:
+            headerStream.write(value: Header2.fileVersion4_1)
+            writeV4(stream: headerStream)
+            Diag.verbose("kdbx4.1 header written OK")
         }
         
         let headerData = headerStream.data!
