@@ -717,7 +717,7 @@ final class Header2: Eraseable {
         assert(formatVersion >= .v4)
         guard let protectedStreamKey = protectedStreamKey else { fatalError() }
         
-        Diag.verbose("Writing KP2v4 inner header")
+        Diag.verbose("Writing kdbx4 inner header")
         stream.write(value: InnerFieldID.innerRandomStreamID.rawValue) 
         stream.write(value: UInt32(MemoryLayout.size(ofValue: innerStreamAlgorithm.rawValue))) 
         stream.write(value: innerStreamAlgorithm.rawValue) 

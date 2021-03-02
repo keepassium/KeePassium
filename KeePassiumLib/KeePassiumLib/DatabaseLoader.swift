@@ -83,10 +83,10 @@ public class DatabaseLoader: ProgressObserver {
     
     private func initDatabase(signature data: ByteArray) -> Database? {
         if Database1.isSignatureMatches(data: data) {
-            Diag.info("DB signature: KPv1")
+            Diag.info("DB signature: KDB")
             return Database1()
         } else if Database2.isSignatureMatches(data: data) {
-            Diag.info("DB signature: KPv2")
+            Diag.info("DB signature: KDBX")
             return Database2()
         } else {
             Diag.info("DB signature: no match")

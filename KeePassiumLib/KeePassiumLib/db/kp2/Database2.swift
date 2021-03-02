@@ -172,7 +172,7 @@ public class Database2: Database {
         compositeKey: CompositeKey,
         warnings: DatabaseLoadingWarnings
     ) throws {
-        Diag.info("Loading KP2 database")
+        Diag.info("Loading KDBX database")
         progress.completedUnitCount = 0
         progress.totalUnitCount = ProgressSteps.all
         progress.localizedDescription = LString.Progress.database2LoadingDatabase
@@ -514,7 +514,7 @@ public class Database2: Database {
                     ) 
                     
                     if meta.headerHash != nil && (header.hash != meta.headerHash!) {
-                        Diag.error("KP2v3 meta meta hash mismatch")
+                        Diag.error("kdbx3 meta meta hash mismatch")
                         throw Header2.HeaderError.hashMismatch
                     }
                     Diag.verbose("Meta loaded OK")
@@ -896,7 +896,7 @@ public class Database2: Database {
     }
     
     override public func save() throws -> ByteArray {
-        Diag.info("Saving KP2 database")
+        Diag.info("Saving KDBX database")
         assert(root != nil, "Load or create a DB before saving.")
         
         progress.totalUnitCount = ProgressSteps.all
@@ -960,7 +960,7 @@ public class Database2: Database {
     }
     
     internal func encryptBlocksV4(to outStream: ByteArray.OutputStream, xmlData: ByteArray) throws {
-        Diag.debug("Encrypting KP2v4 blocks")
+        Diag.debug("Encrypting kdbx4 blocks")
         outStream.write(data: header.hash)
         outStream.write(data: header.getHMAC(key: hmacKey))
 
@@ -1023,7 +1023,7 @@ public class Database2: Database {
     }
     
     internal func writeAsBlocksV4(to blockStream: ByteArray.OutputStream, data: ByteArray) throws {
-        Diag.debug("Writing KP2v4 blocks")
+        Diag.debug("Writing kdbx4 blocks")
         let defaultBlockSize  = 1024 * 1024 
         var blockStart: Int = 0
         var blockIndex: UInt64 = 0
@@ -1063,7 +1063,7 @@ public class Database2: Database {
     }
     
     internal func encryptBlocksV3(to outStream: ByteArray.OutputStream, xmlData: ByteArray) throws {
-        Diag.debug("Encrypting KP2v3 blocks")
+        Diag.debug("Encrypting kdbx3 blocks")
         let dataToSplit: ByteArray
         if header.isCompressed {
             do {
@@ -1119,7 +1119,7 @@ public class Database2: Database {
     }
     
     internal func splitToBlocksV3(to stream: ByteArray.OutputStream, data inData: ByteArray) throws {
-        Diag.verbose("Will split to KP2v3 blocks")
+        Diag.verbose("Will split to kdbx3 blocks")
         let defaultBlockSize = 1024 * 1024 
         var blockStart: Int = 0
         var blockID: UInt32 = 0
