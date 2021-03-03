@@ -127,6 +127,7 @@ class EntryFinderVC: UITableViewController {
         searchController.searchBar.searchBarStyle = .default
         searchController.searchBar.returnKeyType = .search
         searchController.searchBar.barStyle = .default
+        searchController.searchBar.delegate = self
         
         if #available(iOS 12.0, *) {
         } else {
@@ -358,6 +359,29 @@ extension EntryFinderVC: UISearchControllerDelegate {
     func didPresentSearchController(_ searchController: UISearchController) {
         DispatchQueue.main.async {
             searchController.searchBar.becomeFirstResponder()
+        }
+    }
+}
+
+extension EntryFinderVC: UISearchBarDelegate {
+    private func acceptFirstEntry(from searchResults: SearchResults) {
+        assert(!searchResults.isEmpty)
+        guard let firstGroup = searchResults.first,
+              let firstEntry = firstGroup.entries.first
+        else {
+            assertionFailure()
+            return
+        }
+        delegate?.entryFinder(self, didSelectEntry: firstEntry.entry)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchResults.exactMatch.count > 0 {
+            acceptFirstEntry(from: searchResults.exactMatch)
+        } else if searchResults.partialMatch.count > 0 {
+            acceptFirstEntry(from: searchResults.partialMatch)
+        } else {
+            HapticFeedback.play(.error)
         }
     }
 }
