@@ -84,7 +84,18 @@ class MainCoordinator: NSObject, Coordinator {
         premiumManager.reloadReceipt()
         premiumManager.usageMonitor.startInterval()
 
-        rootController.present(pageController, animated: false, completion: nil)
+        let pageView = pageController.view!
+        rootController.view.addSubview(pageView)
+        pageView.translatesAutoresizingMaskIntoConstraints = false
+        rootController.view.addConstraints([
+            pageView.leadingAnchor.constraint(equalTo: pageView.superview!.leadingAnchor),
+            pageView.trailingAnchor.constraint(equalTo: pageView.superview!.trailingAnchor),
+            pageView.topAnchor.constraint(equalTo: pageView.superview!.topAnchor),
+            pageView.bottomAnchor.constraint(equalTo: pageView.superview!.bottomAnchor)
+        ])
+        rootController.addChild(pageController)
+        pageController.didMove(toParent: rootController)
+
         startMainFlow()
     }
 
