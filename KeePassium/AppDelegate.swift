@@ -12,6 +12,8 @@ import LocalAuthentication
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let helpURL = URL(string: "https://keepassium.com/faq")!
+
     var window: UIWindow?
     fileprivate var watchdog: Watchdog
     fileprivate var appCoverWindow: UIWindow?
@@ -88,6 +90,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        switch action {
+        case #selector(showHelp(_:)):
+            return true
+        default:
+            return super.canPerformAction(action, withSender: sender)
+        }
+    }
+    
+    @objc
+    func showHelp(_ sender: Any) {
+        UIApplication.shared.open(helpURL, options: [:], completionHandler: nil)
+    }
+
+    @available(iOS 13, *)
+    override func buildMenu(with builder: UIMenuBuilder) {
+        builder.remove(menu: .file)
+        builder.remove(menu: .edit)
+        builder.remove(menu: .format)
     }
 }
 
