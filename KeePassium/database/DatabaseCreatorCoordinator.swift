@@ -331,15 +331,26 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
         hideProgress()
     }
     
-    func databaseManager(database urlRef: URLReference, savingError message: String, reason: String?) {
+    func databaseManager(
+        database urlRef: URLReference,
+        savingError error: Error,
+        data: ByteArray?)
+    {
         DatabaseManager.shared.removeObserver(self)
         DatabaseManager.shared.abortDatabaseCreation()
         hideProgress()
-        if let reason = reason {
-            databaseCreatorVC.setError(message: "\(message)\n\(reason)", animated: true)
-        } else {
-            databaseCreatorVC.setError(message: message, animated: true)
+        
+        guard let localizedError = error as? LocalizedError else {
+            databaseCreatorVC.setError(message: error.localizedDescription, animated: true)
+            return
         }
+        let errorMessageParts = [
+            localizedError.localizedDescription,
+            localizedError.failureReason,
+            localizedError.recoverySuggestion
+        ]
+        let errorMessage = errorMessageParts.compactMap { $0 }.joined(separator: "\n")
+        databaseCreatorVC.setError(message: errorMessage, animated: true)
     }
 }
 

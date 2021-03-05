@@ -11,6 +11,8 @@ import Foundation
 public class TemporaryFileURL {
     public private(set) var url: URL
     
+    private var isErased = false
+    
     public init(fileName: String) throws {
         let fileManager = FileManager.default
         let tmpFileDir = fileManager.temporaryDirectory
@@ -31,9 +33,13 @@ public class TemporaryFileURL {
         cleanup()
     }
     
-    private func cleanup() {
+    public func cleanup() {
+        guard !isErased else {
+            return
+        }
         Diag.verbose("Will remove temporary file")
         try? FileManager.default.removeItem(at: url)
+        isErased = true
         Diag.debug("Temporary file removed")
     }
 }

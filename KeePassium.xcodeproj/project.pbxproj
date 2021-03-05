@@ -264,6 +264,8 @@
 		758CA5462569B9EA0034EF10 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758CA5432569B9EA0034EF10 /* SwitchCell.swift */; };
 		758CA5472569B9EA0034EF10 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758CA5432569B9EA0034EF10 /* SwitchCell.swift */; };
 		758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
+		758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
+		758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
 		758FC10F24CEF71F00BAD35C /* appicon-info_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0D824CEF71500BAD35C /* appicon-info_iPadProApp_83.5@2x.png */; };
 		758FC11024CEF71F00BAD35C /* appicon-info_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0D824CEF71500BAD35C /* appicon-info_iPadProApp_83.5@2x.png */; };
 		758FC11124CEF72000BAD35C /* appicon-info_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0D924CEF71500BAD35C /* appicon-info_iPadApp_76.png */; };
@@ -1185,6 +1187,7 @@
 		758CA53C2569B9960034EF10 /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		758CA5432569B9EA0034EF10 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCreatorVC.swift; sourceTree = "<group>"; };
+		758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaving.swift; sourceTree = "<group>"; };
 		758FC0D824CEF71500BAD35C /* appicon-info_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-info_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
 		758FC0D924CEF71500BAD35C /* appicon-info_iPadApp_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-info_iPadApp_76.png"; sourceTree = "<group>"; };
 		758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-keepass_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
@@ -2016,6 +2019,7 @@
 				751E0D1E2309AF670088BB10 /* UnlockDatabaseVC.storyboard */,
 				758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */,
 				751E0D212309AF6B0088BB10 /* DatabaseCreatorVC.storyboard */,
+				758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -2873,6 +2877,7 @@
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
+				758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				7572665A24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
@@ -3014,6 +3019,7 @@
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
+				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				7572665C24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,

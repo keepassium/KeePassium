@@ -18,7 +18,12 @@ protocol DatabaseSaverDelegate: class {
     
     func databaseSaver(_ databaseSaver: DatabaseSaver, didSaveDatabase dbRef: URLReference)
     
-    func databaseSaver(_ databaseSaver: DatabaseSaver, didFailSaving dbRef: URLReference, message: String, reason: String?)
+    func databaseSaver(
+        _ databaseSaver: DatabaseSaver,
+        didFailSaving dbRef: URLReference,
+        error: Error,
+        data: ByteArray?
+    )
     
     func databaseSaverDidFinish(
         _ databaseSaver: DatabaseSaver,
@@ -112,7 +117,7 @@ public class DatabaseSaver: ProgressObserver {
             
             Diag.info("Writing database document")
             dbDoc.data = outData
-            dbDoc.save { [self] result in 
+            dbDoc.save { [self, outData] result in 
                 switch result {
                 case .success:
                     self.progress.status = LString.Progress.done
@@ -132,8 +137,8 @@ public class DatabaseSaver: ProgressObserver {
                         self.delegate?.databaseSaver(
                             self,
                             didFailSaving: self.dbRef,
-                            message: fileAccessError.localizedDescription,
-                            reason: nil)
+                            error: fileAccessError,
+                            data: outData)
                     }
                     self.delegate?.databaseSaverDidFinish(self, for: self.dbRef)
                     self.endBackgroundTask()
@@ -153,8 +158,8 @@ public class DatabaseSaver: ProgressObserver {
                 delegate?.databaseSaver(
                     self,
                     didFailSaving: dbRef,
-                    message: error.localizedDescription,
-                    reason: error.failureReason
+                    error: error,
+                    data: nil
                 )
             }
             delegate?.databaseSaverDidFinish(self, for: dbRef)
@@ -171,8 +176,8 @@ public class DatabaseSaver: ProgressObserver {
                     delegate?.databaseSaver(
                         self,
                         didFailSaving: dbRef,
-                        message: error.localizedDescription,
-                        reason: nil
+                        error: error,
+                        data: nil
                     )
                 }
                 delegate?.databaseSaverDidFinish(self, for: dbRef)
@@ -187,8 +192,8 @@ public class DatabaseSaver: ProgressObserver {
                 delegate?.databaseSaver(
                     self,
                     didFailSaving: dbRef,
-                    message: error.localizedDescription,
-                    reason: nil
+                    error: error,
+                    data: nil
                 )
             }
             delegate?.databaseSaverDidFinish(self, for: dbRef)

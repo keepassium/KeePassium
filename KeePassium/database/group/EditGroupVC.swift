@@ -13,7 +13,7 @@ protocol EditGroupDelegate: class {
     func groupEditor(groupDidChange: Group)
 }
 
-class EditGroupVC: UIViewController, Refreshable {
+class EditGroupVC: UIViewController, DatabaseSaving, Refreshable {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: ValidatingTextField!
     
@@ -28,6 +28,8 @@ class EditGroupVC: UIViewController, Refreshable {
         case edit
     }
     private var mode: Mode = .edit
+    
+    internal var databaseExporterTemporaryURL: TemporaryFileURL?
     
     private var itemIconPickerCoordinator: ItemIconPickerCoordinator?
     private var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
@@ -218,25 +220,19 @@ extension EditGroupVC: DatabaseManagerObserver {
 
     func databaseManager(
         database urlRef: URLReference,
-        savingError message: String,
-        reason: String?)
+        savingError error: Error,
+        data: ByteArray?)
     {
         hideSavingOverlay()
-        showError(message: message, reason: reason)
-    }
-    
-    private func showError(message: String, reason: String?) {
-        let errorAlert = UIAlertController.make(
-            title: message,
-            message: reason,
-            cancelButtonTitle: LString.actionDismiss)
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
-            [weak self] _ in
-            self?.showDiagnostics()
-        }
-        errorAlert.addAction(showDetailsAction)
-        
-        present(errorAlert, animated: true, completion: nil)
+        showDatabaseSavingError(
+            error,
+            fileName: urlRef.visibleFileName,
+            diagnosticsHandler: { [weak self] in
+                self?.showDiagnostics()
+            },
+            exportableData: data,
+            parent: self
+        )
     }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-class ViewEntryFilesVC: UITableViewController, Refreshable {
+class ViewEntryFilesVC: UITableViewController, DatabaseSaving, Refreshable {
     private enum CellID {
         static let fileItem = "FileItemCell"
         static let noFiles = "NoFilesCell"
@@ -23,6 +23,8 @@ class ViewEntryFilesVC: UITableViewController, Refreshable {
     private var progressViewHost: ProgressViewHost?
     private var exportController: UIDocumentInteractionController!
 
+    internal var databaseExporterTemporaryURL: TemporaryFileURL?
+    
     private var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
     
     static func make(
@@ -405,25 +407,18 @@ extension ViewEntryFilesVC: DatabaseManagerObserver {
 
     func databaseManager(
         database urlRef: URLReference,
-        savingError message: String,
-        reason: String?)
+        savingError error: Error,
+        data: ByteArray?)
     {
         DatabaseManager.shared.removeObserver(self)
         progressViewHost?.hideProgressView()
-        showError(message: message, reason: reason)
-    }
-    
-    private func showError(message: String, reason: String?) {
-        let errorAlert = UIAlertController.make(
-            title: message,
-            message: reason,
-            cancelButtonTitle: LString.actionDismiss)
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
-            [weak self] _ in
-            self?.showDiagnostics()
-        }
-        errorAlert.addAction(showDetailsAction)
-        present(errorAlert, animated: true, completion: nil)
+        showDatabaseSavingError(
+            error,
+            fileName: urlRef.visibleFileName,
+            diagnosticsHandler: { [weak self] in self?.showDiagnostics()},
+            exportableData: data,
+            parent: self
+        )
     }
 }
 

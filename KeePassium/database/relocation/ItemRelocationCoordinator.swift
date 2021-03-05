@@ -17,7 +17,8 @@ protocol ItemRelocationCoordinatorDelegate: class {
     func didRelocateItems(in coordinator: ItemRelocationCoordinator)
 }
 
-class ItemRelocationCoordinator: Coordinator {
+class ItemRelocationCoordinator: Coordinator, DatabaseSaving {
+    
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     
@@ -31,6 +32,8 @@ class ItemRelocationCoordinator: Coordinator {
     
     private var groupPicker: DestinationGroupPickerVC
     private weak var destinationGroup: Group?
+    
+    var databaseExporterTemporaryURL: TemporaryFileURL?
     
     init(router: NavigationRouter, database: Database, mode: ItemRelocationMode, itemsToRelocate: [Weak<DatabaseItem>]) {
         self.router = router
@@ -211,12 +214,20 @@ extension ItemRelocationCoordinator: DatabaseManagerObserver {
 
     func databaseManager(
         database urlRef: URLReference,
-        savingError message: String,
-        reason: String?)
+        savingError error: Error,
+        data: ByteArray?)
     {
         DatabaseManager.shared.removeObserver(self)
         router.hideProgressView()
-        showError(message: message, reason: reason)
+        showDatabaseSavingError(
+            error,
+            fileName: urlRef.visibleFileName,
+            diagnosticsHandler: { [weak self] in
+                self?.showDiagnostics()
+            },
+            exportableData: data,
+            parent: router.navigationController
+        )
     }
     
     private func showError(message: String, reason: String?) {

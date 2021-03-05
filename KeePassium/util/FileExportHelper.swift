@@ -9,21 +9,16 @@
 import KeePassiumLib
 
 class FileExportHelper {
-    
+
     public static func showFileExportSheet(
         _ urlRef: URLReference,
         at popoverAnchor: PopoverAnchor,
-        parent: UIViewController)
+        parent: UIViewController,
+        completion: UIActivityViewController.CompletionWithItemsHandler?=nil)
     {
         do {
             let url = try urlRef.resolveSync()
-            let exportSheet = UIActivityViewController(
-                activityItems: [url],
-                applicationActivities: nil)
-            if let popover = exportSheet.popoverPresentationController {
-                popoverAnchor.apply(to: popover)
-            }
-            parent.present(exportSheet, animated: true, completion: nil)
+            FileExportHelper.showFileExportSheet(url, at: popoverAnchor, parent: parent, completion: completion)
         } catch {
             Diag.error("Failed to resolve URL reference [message: \(error.localizedDescription)]")
             let alert = UIAlertController.make(
@@ -31,5 +26,21 @@ class FileExportHelper {
                 message: error.localizedDescription)
             parent.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    public static func showFileExportSheet(
+        _ url: URL,
+        at popoverAnchor: PopoverAnchor,
+        parent: UIViewController,
+        completion: UIActivityViewController.CompletionWithItemsHandler?=nil)
+    {
+        let exportSheet = UIActivityViewController(
+            activityItems: [url],
+            applicationActivities: nil)
+        exportSheet.completionWithItemsHandler = completion
+        if let popover = exportSheet.popoverPresentationController {
+            popoverAnchor.apply(to: popover)
+        }
+        parent.present(exportSheet, animated: true, completion: nil)
     }
 }

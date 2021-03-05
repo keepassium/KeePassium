@@ -9,7 +9,8 @@
 import UIKit
 import KeePassiumLib
 
-class ChangeMasterKeyVC: UIViewController {
+class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
+   
     @IBOutlet weak var keyboardAdjView: UIView!
     @IBOutlet weak var databaseNameLabel: UILabel!
     @IBOutlet weak var databaseIcon: UIImageView!
@@ -21,6 +22,8 @@ class ChangeMasterKeyVC: UIViewController {
     private var databaseRef: URLReference!
     private var keyFileRef: URLReference?
     private var yubiKey: YubiKey?
+    
+    internal var databaseExporterTemporaryURL: TemporaryFileURL?
     
     static func make(dbRef: URLReference) -> UIViewController {
         let vc = ChangeMasterKeyVC.instantiateFromStoryboard()
@@ -296,13 +299,17 @@ extension ChangeMasterKeyVC: DatabaseManagerObserver {
     
     func databaseManager(
         database urlRef: URLReference,
-        savingError message: String,
-        reason: String?)
+        savingError error: Error,
+        data: ByteArray?)
     {
-        let errorAlert = UIAlertController.make(title: message, message: reason)
-        present(errorAlert, animated: true, completion: nil)
-        
+        showDatabaseSavingError(
+            error,
+            fileName: urlRef.visibleFileName,
+            diagnosticsHandler: nil,
+            exportableData: data,
+            parent: self)
         DatabaseManager.shared.removeObserver(self)
         hideProgressOverlay()
     }
+    
 }

@@ -13,7 +13,7 @@ protocol EditEntryFieldsDelegate: class {
     func entryEditor(entryDidChange entry: Entry)
 }
 
-final class EditEntryVC: UITableViewController, Refreshable {
+final class EditEntryVC: UITableViewController, DatabaseSaving, ProgressViewHost, Refreshable {
     @IBOutlet private weak var addFieldButton: UIBarButtonItem!
     @IBOutlet private weak var scanOTPButton: UIButton!
 
@@ -42,6 +42,8 @@ final class EditEntryVC: UITableViewController, Refreshable {
     
     var itemIconPickerCoordinator: ItemIconPickerCoordinator? 
     var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
+    
+    internal var databaseExporterTemporaryURL: TemporaryFileURL?
     
     static func make(
         createInGroup group: Group,
@@ -409,28 +411,33 @@ final class EditEntryVC: UITableViewController, Refreshable {
         DatabaseManager.shared.startSavingDatabase()
     }
 
+    
     private var savingOverlay: ProgressOverlay?
     
-    private func showSavingOverlay() {
+    func showProgressView(title: String, allowCancelling: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
         if #available(iOS 13, *) {
             isModalInPresentation = true 
         }
         savingOverlay = ProgressOverlay.addTo(
             navigationController?.view ?? self.view,
-            title: LString.databaseStatusSaving,
+            title: title,
             animated: true)
-        savingOverlay?.isCancellable = true
+        savingOverlay?.isCancellable = allowCancelling
     }
     
-    private func hideSavingOverlay() {
+    func updateProgressView(with progress: ProgressEx) {
+        savingOverlay?.update(with: progress)
+    }
+    
+    func hideProgressView() {
         guard savingOverlay != nil else { return }
         navigationController?.setNavigationBarHidden(false, animated: true)
         savingOverlay?.dismiss(animated: true) {
             [weak self] (finished) in
-            guard let _self = self else { return }
-            _self.savingOverlay?.removeFromSuperview()
-            _self.savingOverlay = nil
+            guard let self = self else { return }
+            self.savingOverlay?.removeFromSuperview()
+            self.savingOverlay = nil
         }
     }
 }
@@ -579,16 +586,16 @@ extension EditEntryVC: ItemIconPickerCoordinatorDelegate {
 
 extension EditEntryVC: DatabaseManagerObserver {
     func databaseManager(willSaveDatabase urlRef: URLReference) {
-        showSavingOverlay()
+        showProgressView(title: LString.databaseStatusSaving, allowCancelling: true)
     }
     
     func databaseManager(progressDidChange progress: ProgressEx) {
-        savingOverlay?.update(with: progress)
+        updateProgressView(with: progress)
     }
 
     func databaseManager(didSaveDatabase urlRef: URLReference) {
         DatabaseManager.shared.removeObserver(self)
-        hideSavingOverlay()
+        hideProgressView()
         if let entry = self.entry {
             delegate?.entryEditor(entryDidChange: entry)
             EntryChangeNotifications.post(entryDidChange: entry)
@@ -598,30 +605,25 @@ extension EditEntryVC: DatabaseManagerObserver {
     
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
         DatabaseManager.shared.removeObserver(self)
-        hideSavingOverlay()
+        hideProgressView()
     }
     
     func databaseManager(
         database urlRef: URLReference,
-        savingError message: String,
-        reason: String?)
+        savingError error: Error,
+        data: ByteArray?)
     {
         DatabaseManager.shared.removeObserver(self)
-        hideSavingOverlay()
-        showError(message: message, reason: reason)
-    }
-    
-    private func showError(message: String, reason: String?) {
-        let errorAlert = UIAlertController.make(
-            title: message,
-            message: reason,
-            cancelButtonTitle: LString.actionDismiss)
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
-            [weak self] _ in
-            self?.showDiagnostics()
-        }
-        errorAlert.addAction(showDetailsAction)
-        present(errorAlert, animated: true, completion: nil)
+        hideProgressView()
+        showDatabaseSavingError(
+            error,
+            fileName: urlRef.visibleFileName,
+            diagnosticsHandler: { [weak self] in
+                self?.showDiagnostics()
+            },
+            exportableData: data,
+            parent: self
+        )
     }
 }
 

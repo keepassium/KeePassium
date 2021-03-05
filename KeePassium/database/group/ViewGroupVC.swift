@@ -15,7 +15,7 @@ class GroupViewListCell: UITableViewCell {
     @IBOutlet weak var subtitleLabel: UILabel!
 }
 
-open class ViewGroupVC: UITableViewController, Refreshable {
+open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost, Refreshable {
     
     private enum CellID {
         static let emptyGroup = "EmptyGroupCell"
@@ -27,7 +27,7 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     @IBOutlet fileprivate weak var groupIconView: UIImageView!
     @IBOutlet fileprivate weak var groupTitleLabel: UILabel!
     @IBOutlet weak var sortOrderButton: UIBarButtonItem!
-    
+
     weak var group: Group? {
         didSet {
             if let group = group {
@@ -64,6 +64,8 @@ open class ViewGroupVC: UITableViewController, Refreshable {
     private var entryChangeNotifications: EntryChangeNotifications!
     private var settingsNotifications: SettingsNotifications!
 
+    var databaseExporterTemporaryURL: TemporaryFileURL?
+    
     var itemRelocationCoordinator: ItemRelocationCoordinator?
     
     static func make(group: Group?, loadingWarnings: DatabaseLoadingWarnings?=nil) -> ViewGroupVC {
@@ -922,23 +924,28 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         DatabaseManager.shared.startSavingDatabase()
     }
     
+    
     private var savingOverlay: ProgressOverlay?
     
-    private func showSavingOverlay() {
+    public func showProgressView(title: String, allowCancelling: Bool) {
         guard let splitVC = splitViewController else { fatalError() }
         savingOverlay = ProgressOverlay.addTo(
             splitVC.view,
-            title: LString.databaseStatusSaving,
+            title: title,
             animated: true)
-        savingOverlay?.isCancellable = false
+        savingOverlay?.isCancellable = allowCancelling
     }
     
-    private func hideSavingOverlay() {
+    public func updateProgressView(with progress: ProgressEx) {
+        savingOverlay?.update(with: progress)
+    }
+    
+    public func hideProgressView() {
         savingOverlay?.dismiss(animated: true) {
             [weak self] finished in
-            guard let _self = self else { return }
-            _self.savingOverlay?.removeFromSuperview()
-            _self.savingOverlay = nil
+            guard let self = self else { return }
+            self.savingOverlay?.removeFromSuperview()
+            self.savingOverlay = nil
         }
     }
 }
@@ -946,35 +953,43 @@ open class ViewGroupVC: UITableViewController, Refreshable {
 extension ViewGroupVC: DatabaseManagerObserver {
     
     public func databaseManager(willSaveDatabase urlRef: URLReference) {
-        showSavingOverlay()
+        showProgressView(title: LString.databaseStatusSaving, allowCancelling: false)
     }
     
     public func databaseManager(didSaveDatabase urlRef: URLReference) {
         DatabaseManager.shared.removeObserver(self)
         refresh()
-        hideSavingOverlay()
+        hideProgressView()
     }
     
     public func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
         DatabaseManager.shared.removeObserver(self)
         refresh()
-        hideSavingOverlay()
+        hideProgressView()
     }
 
     public func databaseManager(progressDidChange progress: ProgressEx) {
-        savingOverlay?.update(with: progress)
+        updateProgressView(with: progress)
     }
 
     public func databaseManager(
         database urlRef: URLReference,
-        savingError message: String,
-        reason: String?)
-    {
+        savingError error: Error,
+        data: ByteArray?
+    ) {
         DatabaseManager.shared.removeObserver(self)
         refresh()
-        hideSavingOverlay()
+        hideProgressView()
         
-        showError(message: message, reason: reason)
+        showDatabaseSavingError(
+            error,
+            fileName: urlRef.visibleFileName,
+            diagnosticsHandler: { [weak self] in
+                self?.showDiagnostics()
+            },
+            exportableData: data,
+            parent: self
+        )
     }
     
     private func showError(message: String, reason: String?) {

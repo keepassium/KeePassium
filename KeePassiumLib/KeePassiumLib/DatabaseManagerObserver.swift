@@ -20,7 +20,10 @@ public protocol DatabaseManagerObserver: class {
     
     func databaseManager(willSaveDatabase urlRef: URLReference)
     func databaseManager(didSaveDatabase urlRef: URLReference)
-    func databaseManager(database urlRef: URLReference, savingError message: String, reason: String?)
+    func databaseManager(
+        database urlRef: URLReference,
+        savingError error: Error,
+        data: ByteArray?)
 
     func databaseManager(willCreateDatabase urlRef: URLReference)
 
@@ -38,7 +41,10 @@ public extension DatabaseManagerObserver {
     func databaseManager(database urlRef: URLReference, invalidMasterKey message: String) {}
     func databaseManager(willSaveDatabase urlRef: URLReference) {}
     func databaseManager(didSaveDatabase urlRef: URLReference) {}
-    func databaseManager(database urlRef: URLReference, savingError message: String, reason: String?) {}
+    func databaseManager(
+        database urlRef: URLReference,
+        savingError error: Error,
+        data: ByteArray?) {}
     func databaseManager(willCreateDatabase urlRef: URLReference) {}
     func databaseManager(willCloseDatabase urlRef: URLReference) {}
     func databaseManager(didCloseDatabase urlRef: URLReference) {}

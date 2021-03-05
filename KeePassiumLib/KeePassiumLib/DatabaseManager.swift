@@ -551,17 +551,17 @@ extension DatabaseManager: DatabaseSaverDelegate {
     func databaseSaver(
         _ databaseSaver: DatabaseSaver,
         didFailSaving dbRef: URLReference,
-        message: String,
-        reason: String?)
-    {
+        error: Error,
+        data: ByteArray?
+    ) {
         notificationQueue.async { 
             for (_, observer) in self.observers {
                 guard let strongObserver = observer.observer else { continue }
                 DispatchQueue.main.async {
                     strongObserver.databaseManager(
                         database: dbRef,
-                        savingError: message,
-                        reason: reason)
+                        savingError: error,
+                        data: data)
                 }
             }
         }
