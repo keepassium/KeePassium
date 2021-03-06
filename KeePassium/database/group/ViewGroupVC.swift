@@ -234,7 +234,10 @@ open class ViewGroupVC: UITableViewController, Refreshable {
         searchController.searchBar.searchBarStyle = .default
         searchController.searchBar.returnKeyType = .search
         searchController.searchBar.barStyle = .default
-        searchController.dimsBackgroundDuringPresentation = false
+        if #available(iOS 13, *) {
+        } else {
+            searchController.dimsBackgroundDuringPresentation = false
+        }
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.delegate = self

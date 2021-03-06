@@ -427,7 +427,7 @@ class ChallengeResponseManager {
             }
             self.mfiKeyActionSheetView = MFIKeyActionSheetView.loadViewFromNib()
             guard let actionSheet = self.mfiKeyActionSheetView,
-                let parentView = UIApplication.shared.keyWindow
+                let parentView = UIApplication.shared.getKeyWindow()
                 else { fatalError() }
             actionSheet.delegate = self
             actionSheet.frame = parentView.bounds

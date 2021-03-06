@@ -11,6 +11,9 @@ import UIKit
 extension UIDevice {
     
     public func hasHomeButton() -> Bool {
+        #if targetEnvironment(macCatalyst)
+        return false
+        #else
         if #available(iOS 11.0, *) {
             guard let keyWindow = AppGroup.applicationShared?.keyWindow else {
                 return false
@@ -18,5 +21,6 @@ extension UIDevice {
             return keyWindow.safeAreaInsets.bottom.isZero
         }
         return true
+        #endif
     }
 }

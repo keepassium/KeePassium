@@ -102,9 +102,13 @@ class ProgressOverlay: UIView {
     }
     
     private func setupViews() {
-        backgroundColor = UIColor.groupTableViewBackground
-
-        spinner = UIActivityIndicatorView(style: .gray)
+        if #available(iOS 13, *) {
+            backgroundColor = UIColor.systemGroupedBackground
+            spinner = UIActivityIndicatorView(style: .medium)
+        } else {
+            backgroundColor = UIColor.groupTableViewBackground
+            spinner = UIActivityIndicatorView(style: .gray)
+        }
         spinner.hidesWhenStopped = false
         spinner.isHidden = false
         spinner.alpha = 0.0
