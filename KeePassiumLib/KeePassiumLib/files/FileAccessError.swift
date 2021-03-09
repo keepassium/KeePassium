@@ -114,6 +114,38 @@ public enum FileAccessError: LocalizedError {
         }
     }
     
+    public var failureReason: String? {
+        switch self {
+        case .targetFileIsReadOnly(let fileProvider):
+            if fileProvider == .oneDrive {
+                return NSLocalizedString(
+                    "[FileAccessError/OneDriveReadOnly/reason]",
+                    bundle: Bundle.framework,
+                    value: "Microsoft has recently switched OneDrive integration with iOS to read-only mode. Temporarily, they say.",
+                    comment: "Explanation of a file writing error"
+                )
+            }
+        default:
+            break
+        }
+        return nil
+    }
+    
+    public var recoverySuggestion: String? {
+        switch self {
+        case .targetFileIsReadOnly:
+            return NSLocalizedString(
+                "[FileAccessError/OneDriveReadOnly/recoverySuggestion]",
+                bundle: Bundle.framework,
+                value: "Use the Export option to save file to another location.",
+                comment: "Suggestion for error recovery"
+            )
+        default:
+            break
+        }
+        return nil
+    }
+    
     public static func make(from originalError: Error, fileProvider: FileProvider?) -> FileAccessError {
         let nsError = originalError as NSError
         Diag.error("""
