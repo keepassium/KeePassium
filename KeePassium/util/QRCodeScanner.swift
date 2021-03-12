@@ -25,11 +25,15 @@ final class YubiKitQRCodeScanner: QRCodeScanner {
         session.scanQrCode(withPresenter: presenter) { (data, error) in
             if let error = error {
                 completion(.failure(error))
+                return
             }
 
             if let data = data {
                 completion(.success(data))
+                return
             }
+
+            print("Invalid state with no data and no error")
         }
     }
 }
