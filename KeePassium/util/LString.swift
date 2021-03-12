@@ -463,6 +463,12 @@ public enum LString {
         value: "Scanned QR code is not a valid OTP seed",
         comment: "Error shown when scanned QR code cannot be used for OTP"
     )
+
+    public static let otpQRCodeOverwriteWrning = NSLocalizedString(
+        "[EditEntry/OTP/Scan/OverwriteWarning]",
+        value: "You already have the OTP field set up for this entry. Scaning a new QR code will overwrite the current OTP value.",
+        comment: "Error shown when scanned QR code cannot be used for OTP"
+    )
     
     public static func directionAwareConcatenate(_ parts: [String]) -> String {
         if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {

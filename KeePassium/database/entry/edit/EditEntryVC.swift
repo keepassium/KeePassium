@@ -164,6 +164,23 @@ final class EditEntryVC: UITableViewController, Refreshable {
             return
         }
 
+        guard let otpField = fields.first(where: { $0.internalName == EntryField.otp }), let value = otpField.value, !value.isEmpty else {
+            scanQRCode()
+            return
+        }
+
+        let choiceAlert = UIAlertController(
+            title: LString.titleWarning,
+            message: LString.otpQRCodeOverwriteWrning,
+            preferredStyle: .alert)
+        choiceAlert.addAction(UIAlertAction(title: LString.actionOverwrite, style: .destructive) { [weak self] (action) in
+            self?.scanQRCode()
+        })
+        choiceAlert.addAction(UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil))
+        present(choiceAlert, animated: true, completion: nil)
+    }
+
+    private func scanQRCode() {
         qrCodeScanner.scanQrCode(presenter: self) { [weak self] result in
             switch result {
             case let .failure(error):
