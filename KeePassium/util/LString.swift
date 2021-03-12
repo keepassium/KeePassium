@@ -451,7 +451,12 @@ public enum LString {
         "[YubiKey] Touch the key",
         value: "Touch the key",
         comment: "Call for action: touch the sides of YubiKey 5Ci to continue")
-    
+
+    public static let scanQRforOTPButtonTitle = NSLocalizedString(
+        "[EditEntry/OTP/scan]",
+        value: "Scan QR code to setup OTP",
+        comment: "Call for action: scan QR code to be used as OTP"
+    )
     
     public static func directionAwareConcatenate(_ parts: [String]) -> String {
         if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {

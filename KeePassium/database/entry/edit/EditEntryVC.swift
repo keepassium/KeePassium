@@ -13,9 +13,10 @@ protocol EditEntryFieldsDelegate: class {
     func entryEditor(entryDidChange entry: Entry)
 }
 
-class EditEntryVC: UITableViewController, Refreshable {
-    @IBOutlet weak var addFieldButton: UIBarButtonItem!
-    
+final class EditEntryVC: UITableViewController, Refreshable {
+    @IBOutlet private weak var addFieldButton: UIBarButtonItem!
+    @IBOutlet private weak var scanOTPButton: UIButton!
+
     private weak var entry: Entry? {
         didSet {
             rememberOriginalState()
@@ -36,6 +37,8 @@ class EditEntryVC: UITableViewController, Refreshable {
         case edit
     }
     private var mode: Mode = .edit
+
+    private let qrCodeScanner = YubiKitQRCodeScanner()
     
     var itemIconPickerCoordinator: ItemIconPickerCoordinator? 
     var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
@@ -99,6 +102,12 @@ class EditEntryVC: UITableViewController, Refreshable {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
+
+        if !qrCodeScanner.deviceSupportsQRScanning {
+            tableView.tableFooterView = nil
+        }
+
+        scanOTPButton.setTitle(LString.scanQRforOTPButtonTitle, for: .normal)
         
         entry?.touch(.accessed)
         
@@ -150,8 +159,35 @@ class EditEntryVC: UITableViewController, Refreshable {
         }
     }
 
-    
-    @IBAction func onCancelAction(_ sender: Any) {
+    @IBAction private func onScanOTPAction(_ sender: Any) {
+        guard qrCodeScanner.deviceSupportsQRScanning else {
+            return
+        }
+
+        qrCodeScanner.scanQrCode(presenter: self) { [weak self] result in
+            switch result {
+            case let .failure(error):
+                self?.showError(message: error.localizedDescription, reason: nil)
+            case let .success(data):
+                self?.setOTPCode(data: data)
+            }
+        }
+    }
+
+    private func setOTPCode(data: String) {
+        guard let entry = entry, let database = entry.database else {
+            Diag.error("Invalid state with missing entry or database")
+            return
+        }
+
+        entry.setTOTPField(value: data)
+        isModified = true
+        // to make sure the OTP field is shown when it previously was not
+        fields = EditableFieldFactory.makeAll(from: entry, in: database)
+        refresh()
+    }
+
+    @IBAction private func onCancelAction(_ sender: Any) {
         if isModified {
             let alertController = UIAlertController(
                 title: nil,
