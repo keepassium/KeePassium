@@ -17,6 +17,9 @@ public class EntryField: Eraseable {
     public static let standardNames = [title, userName, password, url, notes]
     
     public static let totp = "TOTP"
+    public static var otp: String {
+        return SingleFieldFormat.fieldName
+    }
 
     public var name: String
     public var value: String {
@@ -287,7 +290,7 @@ public class Entry: DatabaseItem, Eraseable {
     }
 
     public func setTOTPField(value: String) {
-        setField(name: "otp", value: value, isProtected: true)
+        setField(name: EntryField.otp, value: value, isProtected: true)
     }
 
     public func getField<T: StringProtocol>(_ name: T) -> EntryField? {

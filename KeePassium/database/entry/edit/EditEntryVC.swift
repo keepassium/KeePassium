@@ -188,7 +188,7 @@ final class EditEntryVC: UITableViewController, Refreshable {
         entry.setTOTPField(value: data)
         isModified = true
 
-        if !fields.contains(where: { $0.internalName == "otp" }) {
+        if !fields.contains(where: { $0.internalName == EntryField.otp }) {
             fields = EditableFieldFactory.makeAll(from: entry, in: database)
         }
         refresh()
