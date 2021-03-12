@@ -213,10 +213,6 @@ public class Database2: Database {
             }
             
             try removeGarbageAfterXML(data: xmlData) 
-            
-            xmlData.withMutableBytes { bytes in
-                bytes.removeAll { $0 < 0x20 }
-            }
 
             try load(xmlData: xmlData, warnings: warnings) 
             
