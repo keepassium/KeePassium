@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KeePassiumLib
 
 protocol QRCodeScanner: AnyObject {
     var deviceSupportsQRScanning: Bool { get }
@@ -22,18 +23,22 @@ final class YubiKitQRCodeScanner: QRCodeScanner {
     private let session = YKFQRReaderSession()
 
     func scanQrCode(presenter: UIViewController, completion: @escaping (Result<String, Error>) -> Void) {
+        Diag.debug("Showing QR code scanner")
+
         session.scanQrCode(withPresenter: presenter) { (data, error) in
             if let error = error {
+                Diag.error("Scaning QR code failed with \(error)")
                 completion(.failure(error))
                 return
             }
 
             if let data = data {
+                Diag.debug("QR code scanning successful")
                 completion(.success(data))
                 return
             }
 
-            print("Invalid state with no data and no error")
+            Diag.error("Invalid state with no data and no error")
         }
     }
 }
