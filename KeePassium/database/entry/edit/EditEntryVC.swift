@@ -187,8 +187,10 @@ final class EditEntryVC: UITableViewController, Refreshable {
 
         entry.setTOTPField(value: data)
         isModified = true
-        // to make sure the OTP field is shown when it previously was not
-        fields = EditableFieldFactory.makeAll(from: entry, in: database)
+
+        if !fields.contains(where: { $0.internalName == "otp" }) {
+            fields = EditableFieldFactory.makeAll(from: entry, in: database)
+        }
         refresh()
     }
 
