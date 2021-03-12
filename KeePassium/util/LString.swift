@@ -457,6 +457,12 @@ public enum LString {
         value: "Scan QR code to setup OTP",
         comment: "Call for action: scan QR code to be used as OTP"
     )
+
+    public static let otpQRCodeNotValid = NSLocalizedString(
+        "[EditEntry/OTP/Scan/InvalidData]",
+        value: "Scanned QR code is not a valid OTP seed",
+        comment: "Error shown when scanned QR code cannot be used for OTP"
+    )
     
     public static func directionAwareConcatenate(_ parts: [String]) -> String {
         if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {

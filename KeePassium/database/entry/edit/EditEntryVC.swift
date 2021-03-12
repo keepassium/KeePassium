@@ -175,6 +175,11 @@ final class EditEntryVC: UITableViewController, Refreshable {
     }
 
     private func setOTPCode(data: String) {
+        guard TOTPGeneratorFactory.isValid(data) else {
+            showError(message: LString.otpQRCodeNotValid, reason: nil)
+            return
+        }
+
         guard let entry = entry, let database = entry.database else {
             Diag.error("Invalid state with missing entry or database")
             return
