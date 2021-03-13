@@ -24,9 +24,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-zk-w7B">
-                                    <rect key="frame" x="24" y="0.0" width="242" height="32"/>
+                                    <rect key="frame" x="24" y="0.0" width="255" height="32"/>
                                     <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="-4" maxY="0.0"/>
-                                    <state key="normal" title="Scan QR code to setup OTP" image="SF_qrcode_viewfinder">
+                                    <state key="normal" title="{Scan QR code to setup OTP}" image="SF_qrcode_viewfinder">
                                         <color key="titleColor" name="ActionTint"/>
                                     </state>
                                     <connections>
