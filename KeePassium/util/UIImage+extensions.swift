@@ -65,6 +65,7 @@ enum SystemImageName: String {
     case squareAndPencil = "square.and.pencil"
     case squareAndArrowUp = "square.and.arrow.up"
     case trash = "trash"
+    case qrcode = "qrcode"
 }
 
 extension UIImage {
