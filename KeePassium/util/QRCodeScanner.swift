@@ -41,6 +41,7 @@ final class YubiKitQRCodeScanner: QRCodeScanner {
             }
 
             Diag.error("Invalid state with no data and no error")
+            assertionFailure()
         }
     }
 }
