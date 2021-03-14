@@ -460,7 +460,7 @@ public enum LString {
 
     public static let otpQRCodeNotValid = NSLocalizedString(
         "[EditEntry/OTP/Scan/InvalidData]",
-        value: "Scanned QR code is not a valid OTP seed",
+        value: "This QR code is not suitable for OTP setup.",
         comment: "Error shown when scanned QR code cannot be used for OTP"
     )
 
