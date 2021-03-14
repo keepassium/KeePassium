@@ -6,12 +6,12 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
+import KeePassiumLib
 
 extension UIViewController {
     
     func showErrorAlert(_ error: Error, title: String?=nil) {
-        showErrorAlert(error.localizedDescription)
+        showErrorAlert(error.localizedDescription, title: title)
     }
     
     func showErrorAlert(_ message: String, title: String?=nil) {
@@ -23,13 +23,19 @@ extension UIViewController {
     
     func showNotification(
         _ message: String,
-        title: String?=nil,
-        buttonTitle: String?=LString.actionDismiss
-    ) {
-        let alert = UIAlertController.make(
+        title: String?=nil)
+    {
+        var hostView: UIView = self.view
+        if hostView is UITableView, let navVC = self.navigationController {
+            hostView = navVC.view
+        }
+        hostView.makeToast(
+            message,
+            duration: 2.0,
+            position: .top,
             title: title,
-            message: message,
-            cancelButtonTitle: buttonTitle)
-        present(alert, animated: true, completion: nil)
+            image: nil,
+            completion: nil
+        )
     }
 }

@@ -192,10 +192,7 @@ extension SettingsAppLockVC: PasscodeInputDelegate {
             do {
                 try Keychain.shared.setAppPasscode(passcode)
                 if !self.isInitialPasscodeSetup {
-                    self.showNotification(
-                        LString.titleNewPasscodeSaved,
-                        buttonTitle: LString.actionOK
-                    )
+                    self.showNotification(LString.titleNewPasscodeSaved)
                 }
             } catch {
                 Diag.error(error.localizedDescription)

@@ -190,7 +190,7 @@ final class EditEntryVC: UITableViewController, DatabaseSaving, ProgressViewHost
         qrCodeScanner.scanQRCode(presenter: self) { [weak self] result in
             switch result {
             case let .failure(error):
-                self?.showError(message: error.localizedDescription, reason: nil)
+                self?.showNotification(error.localizedDescription)
             case let .success(data):
                 self?.setOTPCode(data: data)
             }
@@ -199,7 +199,7 @@ final class EditEntryVC: UITableViewController, DatabaseSaving, ProgressViewHost
 
     private func setOTPCode(data: String) {
         guard TOTPGeneratorFactory.isValid(data) else {
-            showError(message: LString.otpQRCodeNotValid, reason: nil)
+            showNotification(LString.otpQRCodeNotValid)
             return
         }
 

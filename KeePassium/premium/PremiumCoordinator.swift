@@ -206,11 +206,7 @@ extension PremiumCoordinator: PremiumManagerDelegate {
             if !isProductsRefreshed {
                 refreshAvailableProducts()
             }
-            planPicker.showNotification(
-                LString.errorNoPreviousPurchaseToRestore,
-                title: LString.titleRestorePurchaseError,
-                buttonTitle: LString.actionOK
-            )
+            planPicker.showNotification(LString.errorNoPreviousPurchaseToRestore)
         }
     }
     

@@ -37,6 +37,7 @@ class AboutVC: UITableViewController {
         130: "https://github.com/1024jp/GzipSwift",
         140: "https://github.com/norio-nomura/Base32",
         150: "https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift",
+        160: "https://github.com/scalessec/Toast-Swift",
     ]
     
     static func make() -> UIViewController {
