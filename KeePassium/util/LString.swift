@@ -467,7 +467,7 @@ public enum LString {
     public static let otpQRCodeOverwriteWrning = NSLocalizedString(
         "[EditEntry/OTP/Scan/OverwriteWarning]",
         value: "You already have the OTP field set up for this entry. Scaning a new QR code will overwrite the current OTP value.",
-        comment: "Error shown when scanned QR code cannot be used for OTP"
+        comment: "Message to confirm user intentions"
     )
     
     public static func directionAwareConcatenate(_ parts: [String]) -> String {
