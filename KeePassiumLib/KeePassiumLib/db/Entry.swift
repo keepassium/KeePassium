@@ -17,9 +17,7 @@ public class EntryField: Eraseable {
     public static let standardNames = [title, userName, password, url, notes]
     
     public static let totp = "TOTP"
-    public static var otp: String {
-        return SingleFieldFormat.fieldName
-    }
+    public static let otp = "otp"
 
     public var name: String
     public var value: String {
@@ -407,4 +405,3 @@ extension Array where Element == Entry {
         }
     }
 }
-
