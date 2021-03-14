@@ -164,7 +164,10 @@ final class EditEntryVC: UITableViewController, Refreshable {
             return
         }
 
-        guard let otpField = fields.first(where: { $0.internalName == EntryField.otp }), let value = otpField.value, !value.isEmpty else {
+        guard let otpField = fields.first(where: { $0.internalName == EntryField.otp }),
+              let value = otpField.value,
+              !value.isEmpty
+        else {
             scanQRCode()
             return
         }
