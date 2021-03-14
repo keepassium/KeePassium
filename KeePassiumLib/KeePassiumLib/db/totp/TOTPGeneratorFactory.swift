@@ -54,7 +54,7 @@ public class TOTPGeneratorFactory {
 
 
 
-class SingleFieldFormat {
+fileprivate class SingleFieldFormat {
     static let fieldName = "otp"
 }
 
