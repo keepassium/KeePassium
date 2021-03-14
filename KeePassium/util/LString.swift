@@ -464,7 +464,7 @@ public enum LString {
         comment: "Error shown when scanned QR code cannot be used for OTP"
     )
 
-    public static let otpQRCodeOverwriteWrning = NSLocalizedString(
+    public static let otpQRCodeOverwriteWarning = NSLocalizedString(
         "[EditEntry/OTP/Scan/OverwriteWarning]",
         value: "One-time password is already configured for this entry. Do you want to overwrite it?",
         comment: "Message to confirm user intentions"

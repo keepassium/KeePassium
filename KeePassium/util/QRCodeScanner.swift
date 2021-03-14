@@ -24,7 +24,7 @@ final class YubiKitQRCodeScanner: QRCodeScanner {
 
     private let session = YKFQRReaderSession()
 
-    func scanQrCode(presenter: UIViewController, completion: @escaping (Result<String, Error>) -> Void) {
+    func scanQRCode(presenter: UIViewController, completion: @escaping (Result<String, Error>) -> Void) {
         Diag.debug("Showing QR code scanner")
 
         session.scanQrCode(withPresenter: presenter) { (data, error) in

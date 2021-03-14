@@ -287,10 +287,6 @@ public class Entry: DatabaseItem, Eraseable {
         fields.append(makeEntryField(name: name, value: value, isProtected: isProtected ?? false))
     }
 
-    public func setTOTPField(value: String) {
-        setField(name: EntryField.otp, value: value, isProtected: true)
-    }
-
     public func getField<T: StringProtocol>(_ name: T) -> EntryField? {
         return fields.first(where: {
             $0.name.compare(name) == .orderedSame

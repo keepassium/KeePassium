@@ -107,7 +107,7 @@ final class EditEntryVC: UITableViewController, Refreshable {
             tableView.tableFooterView = nil
         }
 
-        scanOTPButton.setTitle(LString.scanQRforOTPButtonTitle, for: .normal)
+        scanOTPButton.setTitle(LString.otpScanQRCodeForSetup, for: .normal)
         
         entry?.touch(.accessed)
         
@@ -184,7 +184,7 @@ final class EditEntryVC: UITableViewController, Refreshable {
     }
 
     private func scanQRCode() {
-        qrCodeScanner.scanQrCode(presenter: self) { [weak self] result in
+        qrCodeScanner.scanQRCode(presenter: self) { [weak self] result in
             switch result {
             case let .failure(error):
                 self?.showError(message: error.localizedDescription, reason: nil)
@@ -205,7 +205,7 @@ final class EditEntryVC: UITableViewController, Refreshable {
             return
         }
 
-        entry.setTOTPField(value: data)
+        entry.setField(name: EntryField.otp, value: data, isProtected: true)
         isModified = true
 
         if !fields.contains(where: { $0.internalName == EntryField.otp }) {
