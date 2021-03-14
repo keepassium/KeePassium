@@ -32,7 +32,14 @@ public class TOTPGeneratorFactory {
     }
     
     private static func parseSingleFieldFormat(_ paramString: String) -> TOTPGenerator? {
-        guard let uriComponents = URLComponents(string: paramString) else {
+        guard let encodedParamString = paramString.addingPercentEncoding(
+                withAllowedCharacters: .urlQueryAllowed)
+        else {
+            Diag.warning("Failed to percent-encode the OTP param string")
+            return nil
+        }
+        
+        guard let uriComponents = URLComponents(string: encodedParamString) else {
             Diag.warning("Unexpected OTP field format")
             return nil
         }
