@@ -198,7 +198,7 @@ final class EditEntryVC: UITableViewController, Refreshable {
         }
 
         guard let entry = entry, let database = entry.database else {
-            Diag.warning("Not saving scanned OTP code because the entry or database is altready nil")
+            Diag.warning("Not saving scanned OTP code because the entry or database is already nil")
             return
         }
 
