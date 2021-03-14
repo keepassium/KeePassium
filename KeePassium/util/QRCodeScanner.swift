@@ -14,7 +14,7 @@ import KeePassiumLib
 protocol QRCodeScanner: AnyObject {
     var deviceSupportsQRScanning: Bool { get }
 
-    func scanQrCode(presenter: UIViewController, completion: @escaping (Result<String, Error>) -> Void)
+    func scanQRCode(presenter: UIViewController, completion: @escaping (Result<String, Error>) -> Void)
 }
 
 final class YubiKitQRCodeScanner: QRCodeScanner {
