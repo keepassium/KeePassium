@@ -29,7 +29,7 @@ final class YubiKitQRCodeScanner: QRCodeScanner {
 
         session.scanQrCode(withPresenter: presenter) { (data, error) in
             if let error = error {
-                Diag.error("Scaning QR code failed with \(error)")
+                Diag.error("Scanning QR code failed [message: \(error.localizedDescription)]")
                 completion(.failure(error))
                 return
             }
