@@ -452,7 +452,7 @@ public enum LString {
         value: "Touch the key",
         comment: "Call for action: touch the sides of YubiKey 5Ci to continue")
 
-    public static let scanQRforOTPButtonTitle = NSLocalizedString(
+    public static let otpScanQRCodeForSetup = NSLocalizedString(
         "[EditEntry/OTP/scan]",
         value: "Scan QR code to setup one-time password (OTP)",
         comment: "Call for action. Acronym `OTP` should not be translated."
