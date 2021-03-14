@@ -454,8 +454,8 @@ public enum LString {
 
     public static let scanQRforOTPButtonTitle = NSLocalizedString(
         "[EditEntry/OTP/scan]",
-        value: "Scan QR code to setup OTP",
-        comment: "Call for action: scan QR code to be used as OTP"
+        value: "Scan QR code to setup one-time password (OTP)",
+        comment: "Call for action. Acronym `OTP` should not be translated."
     )
 
     public static let otpQRCodeNotValid = NSLocalizedString(
