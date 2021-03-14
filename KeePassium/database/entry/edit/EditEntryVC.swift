@@ -171,7 +171,7 @@ final class EditEntryVC: UITableViewController, Refreshable {
 
         let choiceAlert = UIAlertController(
             title: LString.titleWarning,
-            message: LString.otpQRCodeOverwriteWrning,
+            message: LString.otpQRCodeOverwriteWarning,
             preferredStyle: .alert)
         choiceAlert.addAction(UIAlertAction(title: LString.actionOverwrite, style: .destructive) { [weak self] (action) in
             self?.scanQRCode()
