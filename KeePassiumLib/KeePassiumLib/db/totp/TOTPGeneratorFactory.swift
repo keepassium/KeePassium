@@ -46,12 +46,16 @@ public class TOTPGeneratorFactory {
         Diag.warning("Unrecognized OTP field format")
         return nil
     }
+
+    public static func isValid(_ paramString: String) -> Bool {
+        return parseSingleFieldFormat(paramString) != nil
+    }
 }
 
 
 
 fileprivate class SingleFieldFormat {
-    static let fieldName = "otp"
+    static let fieldName = EntryField.otp
 }
 
 fileprivate class GAuthFormat: SingleFieldFormat {

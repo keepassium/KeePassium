@@ -13,9 +13,10 @@ protocol EditEntryFieldsDelegate: class {
     func entryEditor(entryDidChange entry: Entry)
 }
 
-class EditEntryVC: UITableViewController, Refreshable {
-    @IBOutlet weak var addFieldButton: UIBarButtonItem!
-    
+final class EditEntryVC: UITableViewController, Refreshable {
+    @IBOutlet private weak var addFieldButton: UIBarButtonItem!
+    @IBOutlet private weak var scanOTPButton: UIButton!
+
     private weak var entry: Entry? {
         didSet {
             rememberOriginalState()
@@ -36,6 +37,8 @@ class EditEntryVC: UITableViewController, Refreshable {
         case edit
     }
     private var mode: Mode = .edit
+
+    private let qrCodeScanner = YubiKitQRCodeScanner()
     
     var itemIconPickerCoordinator: ItemIconPickerCoordinator? 
     var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
@@ -99,6 +102,12 @@ class EditEntryVC: UITableViewController, Refreshable {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
+
+        if !qrCodeScanner.deviceSupportsQRScanning {
+            tableView.tableFooterView = nil
+        }
+
+        scanOTPButton.setTitle(LString.otpScanQRCodeForSetup, for: .normal)
         
         entry?.touch(.accessed)
         
@@ -150,8 +159,62 @@ class EditEntryVC: UITableViewController, Refreshable {
         }
     }
 
-    
-    @IBAction func onCancelAction(_ sender: Any) {
+    @IBAction private func onScanOTPAction(_ sender: Any) {
+        guard qrCodeScanner.deviceSupportsQRScanning else {
+            return
+        }
+
+        guard let otpField = fields.first(where: { $0.internalName == EntryField.otp }),
+              let value = otpField.value,
+              !value.isEmpty
+        else {
+            scanQRCode()
+            return
+        }
+
+        let choiceAlert = UIAlertController(
+            title: LString.titleWarning,
+            message: LString.otpQRCodeOverwriteWarning,
+            preferredStyle: .alert)
+        choiceAlert.addAction(UIAlertAction(title: LString.actionOverwrite, style: .destructive) { [weak self] (action) in
+            self?.scanQRCode()
+        })
+        choiceAlert.addAction(UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil))
+        present(choiceAlert, animated: true, completion: nil)
+    }
+
+    private func scanQRCode() {
+        qrCodeScanner.scanQRCode(presenter: self) { [weak self] result in
+            switch result {
+            case let .failure(error):
+                self?.showError(message: error.localizedDescription, reason: nil)
+            case let .success(data):
+                self?.setOTPCode(data: data)
+            }
+        }
+    }
+
+    private func setOTPCode(data: String) {
+        guard TOTPGeneratorFactory.isValid(data) else {
+            showError(message: LString.otpQRCodeNotValid, reason: nil)
+            return
+        }
+
+        guard let entry = entry, let database = entry.database else {
+            Diag.warning("Not saving scanned OTP code because the entry or database is already nil")
+            return
+        }
+
+        entry.setField(name: EntryField.otp, value: data, isProtected: true)
+        isModified = true
+
+        if !fields.contains(where: { $0.internalName == EntryField.otp }) {
+            fields = EditableFieldFactory.makeAll(from: entry, in: database)
+        }
+        refresh()
+    }
+
+    @IBAction private func onCancelAction(_ sender: Any) {
         if isModified {
             let alertController = UIAlertController(
                 title: nil,
