@@ -15,7 +15,7 @@ class GroupViewListCell: UITableViewCell {
     @IBOutlet weak var subtitleLabel: UILabel!
 }
 
-open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost, Refreshable {
+final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, ProgressViewHost, Refreshable {
     
     private enum CellID {
         static let emptyGroup = "EmptyGroupCell"
@@ -80,7 +80,7 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         itemRelocationCoordinator = nil
     }
     
-    override open func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableView.automaticDimension
@@ -105,17 +105,12 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         entryChangeNotifications = EntryChangeNotifications(observer: self)
         settingsNotifications = SettingsNotifications(observer: self)
         
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(
-            target: self,
-            action: #selector(didLongPressTableView))
-        tableView.addGestureRecognizer(longPressGestureRecognizer)
-        
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
     }
     
-    override open func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         entryChangeNotifications.startObserving()
@@ -133,7 +128,7 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         }
     }
     
-    open override func didMove(toParent parent: UIViewController?) {
+    override func didMove(toParent parent: UIViewController?) {
         guard let group = group else { return }
         
         if DatabaseManager.shared.isDatabaseOpen {
@@ -151,7 +146,7 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         super.didMove(toParent: parent)
     }
 
-    override open func viewDidDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         settingsNotifications.stopObserving()
         groupChangeNotifications.stopObserving()
         entryChangeNotifications.stopObserving()
@@ -285,7 +280,7 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         sortOrderButton.image = Settings.current.groupSortOrder.toolbarIcon
     }
 
-    override open func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if isSearchActive {
             return searchResults.isEmpty ? 1 : searchResults.count
         } else {
@@ -293,7 +288,7 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         }
     }
 
-    override open func tableView(
+    override func tableView(
         _ tableView: UITableView,
         titleForHeaderInSection section: Int) -> String?
     {
@@ -304,7 +299,7 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         }
     }
     
-    override open func tableView(
+    override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int
     {
@@ -323,7 +318,7 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         }
     }
 
-    override open func tableView(
+    override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -471,7 +466,7 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         }
     }
     
-    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isSearchActive {
             handleItemSelection(indexPath: indexPath)
         } else {
@@ -543,59 +538,6 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         }
     }
     
-    override open func tableView(
-        _ tableView: UITableView,
-        canEditRowAt indexPath: IndexPath) -> Bool
-    {
-        return getEntry(at: indexPath) != nil || getGroup(at: indexPath) != nil
-    }
-
-    open override func tableView(
-        _ tableView: UITableView,
-        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-    ) -> UISwipeActionsConfiguration? {
-        let editAction = UIContextualAction(style: .normal, title: LString.actionEdit) {
-            [weak self] (_, _, completion) in
-            self?.onEditItemAction(at: indexPath)
-            completion(true)
-        }
-        editAction.backgroundColor = UIColor.actionTint
-        editAction.image = UIImage.get(.squareAndPencil)
-        
-        let deleteAction = UIContextualAction(style: .destructive, title: LString.actionDelete)
-        {
-            [weak self] (_, _, completion) in
-            self?.onDeleteItemAction(at: indexPath)
-            if #available(iOS 13, *) {
-                completion(true)
-            } else {
-                completion(false) 
-            }
-        }
-        deleteAction.backgroundColor = UIColor.destructiveTint
-        deleteAction.image = UIImage.get(.trash)
-
-        let menuAction = UIContextualAction(style: .normal, title: LString.titleMoreActions)
-        {
-            [weak self] (_, _, completion) in
-            self?.showActionsForItem(at: indexPath)
-            completion(true)
-        }
-        menuAction.backgroundColor = UIColor.lightGray
-        menuAction.image = UIImage.get(.ellipsisCircle)
-        
-        var allowedActions = [deleteAction]
-        if let entry = getEntry(at: indexPath), canEdit(entry) {
-            allowedActions.append(editAction)
-        }
-        if let group = getGroup(at: indexPath), canEdit(group) {
-            allowedActions.append(editAction)
-        }
-        
-        allowedActions.append(menuAction)
-        return UISwipeActionsConfiguration(actions: allowedActions)
-    }
-    
     
     private func canCreateGroupHere() -> Bool {
         guard let group = group else { return false }
@@ -642,54 +584,59 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         return !entry.isDeleted
     }
 
-
-    func showActionsForItem(at indexPath: IndexPath) {
-        let actions = getActionsForItem(at: indexPath)
-        guard !actions.isEmpty else { return }
-        
-        let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actions.forEach {
-            menu.addAction($0)
-        }
-        let pa = PopoverAnchor(tableView: tableView, at: indexPath)
-        if let popover = menu.popoverPresentationController {
-            pa.apply(to: popover)
-        }
-        present(menu, animated: true)
-    }
     
-    func getActionsForItem(at indexPath: IndexPath) -> [UIAlertAction] {
-        let editAction = UIAlertAction(
+    override func getContextActionsForRow(at indexPath: IndexPath, forSwipe: Bool) -> [TableRowAction] {
+        guard getItem(at: indexPath) != nil else {
+            return []
+        }
+        
+        let editAction = TableRowAction(
             title: LString.actionEdit,
+            imageName: .squareAndPencil,
             style: .default,
-            handler: { [weak self] alertAction in
+            color: UIColor.actionTint,
+            handler: { [weak self, indexPath] in
                 self?.onEditItemAction(at: indexPath)
             }
         )
-        let deleteAction = UIAlertAction(
+        let deleteAction = TableRowAction(
             title: LString.actionDelete,
+            imageName: .trash,
             style: .destructive,
-            handler: { [weak self] alertAction in
+            color: UIColor.destructiveTint,
+            handler: { [weak self, indexPath] in
                 self?.onDeleteItemAction(at: indexPath)
             }
         )
-        let moveAction = UIAlertAction(
+        
+        if forSwipe {
+            if let entry = getEntry(at: indexPath), canEdit(entry) {
+                return [deleteAction, editAction]
+            }
+            if let group = getGroup(at: indexPath), canEdit(group) {
+                return [deleteAction, editAction]
+            }
+            return [deleteAction]
+        }
+        
+        let moveAction = TableRowAction(
             title: LString.actionMove,
+            imageName: .folder,
             style: .default,
-            handler: { [weak self] alertAction in
+            handler: { [weak self, indexPath] in
                 self?.onRelocateItemAction(at: indexPath, mode: .move)
             }
         )
-        let copyAction = UIAlertAction(
+        let copyAction = TableRowAction(
             title: LString.actionCopy,
+            imageName: .docOnDoc,
             style: .default,
-            handler: { [weak self] alertAction in
+            handler: { [weak self, indexPath] in
                 self?.onRelocateItemAction(at: indexPath, mode: .copy)
             }
         )
-        let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        
-        var actions = [UIAlertAction]()
+
+        var actions = [TableRowAction]()
         if let entry = getEntry(at: indexPath) {
             if canEdit(entry) {
                 actions.append(editAction)
@@ -699,7 +646,6 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
                 actions.append(copyAction)
             }
             actions.append(deleteAction)
-            actions.append(cancelAction)
         }
         if let group = getGroup(at: indexPath) {
             if canEdit(group) {
@@ -710,11 +656,11 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
                 actions.append(copyAction)
             }
             actions.append(deleteAction)
-            actions.append(cancelAction)
         }
         return actions
     }
     
+
     @objc func onCreateNewItemAction(sender: UIBarButtonItem) {
         let addItemSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let createGroupAction = UIAlertAction(title: LString.actionCreateGroup, style: .default)
@@ -907,15 +853,6 @@ open class ViewGroupVC: UITableViewController, DatabaseSaving, ProgressViewHost,
         }
         let vc = ChangeMasterKeyVC.make(dbRef: dbRef)
         present(vc, animated: true, completion: nil)
-    }
-    
-    @objc func didLongPressTableView(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        let point = gestureRecognizer.location(in: tableView)
-        guard gestureRecognizer.state == .began,
-            let indexPath = tableView.indexPathForRow(at: point),
-            tableView(tableView, canEditRowAt: indexPath),
-            let _ = tableView.cellForRow(at: indexPath) else { return }
-        showActionsForItem(at: indexPath)
     }
     
     

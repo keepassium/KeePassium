@@ -69,6 +69,10 @@
 		751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */; };
 		751E0D382309B0120088BB10 /* KeyFileChooserVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFileChooserVC.storyboard */; };
 		7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71C21C98D620025C706 /* SupportEmailComposer.swift */; };
+		75267CFE25FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
+		75267CFF25FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
+		75267D0025FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
+		75267D0125FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
 		7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAE8211416170093B117 /* SettingsAppLockVC.swift */; };
 		7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
@@ -788,6 +792,7 @@
 		751E0D5B2309B0520088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75209D73231B1C760010E142 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/WelcomeVC.strings; sourceTree = "<group>"; };
 		7523F71C21C98D620025C706 /* SupportEmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportEmailComposer.swift; sourceTree = "<group>"; };
+		75267CFD25FF75E300A1CC95 /* TableRowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowAction.swift; sourceTree = "<group>"; };
 		7527CC5125F51DFD000E8661 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
 		7527CC5225F52005000E8661 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
 		7527CC5325F52020000E8661 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
@@ -1932,6 +1937,7 @@
 				75BE05F925DAA5A200B34CC0 /* URLOpener.swift */,
 				75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */,
 				75DDA56525F3E19900708750 /* UIWindow+extensions.swift */,
+				75267CFD25FF75E300A1CC95 /* TableRowAction.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2697,6 +2703,7 @@
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
+				75267CFF25FF75E300A1CC95 /* TableRowAction.swift in Sources */,
 				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				75814FD325F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
 				75BC562A2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
@@ -2855,6 +2862,7 @@
 				757FB3CA21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				7573FD8B2321664F00DCDA5A /* MultilineButton.swift in Sources */,
 				7546FBC120BFB8DD00C5D834 /* WelcomeVC.swift in Sources */,
+				75267CFE25FF75E300A1CC95 /* TableRowAction.swift in Sources */,
 				758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */,
 				7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */,
 				75A5312123C0D2D400900ED1 /* Coordinator.swift in Sources */,
@@ -3017,6 +3025,7 @@
 				75E60ADD25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */,
 				7579A06B24F074D500C98F24 /* AppHistory.swift in Sources */,
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
+				75267D0025FF75E300A1CC95 /* TableRowAction.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
@@ -3059,6 +3068,7 @@
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
 				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
+				75267D0125FF75E300A1CC95 /* TableRowAction.swift in Sources */,
 				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
 				75814FD525F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
 				75BC562C2581872B002B4395 /* AccessibilityHelper.swift in Sources */,

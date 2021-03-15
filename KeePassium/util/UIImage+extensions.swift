@@ -61,6 +61,7 @@ enum ImageAsset: String {
 enum SystemImageName: String {
     case docOnDoc = "doc.on.doc"
     case ellipsisCircle = "ellipsis.circle"
+    case folder = "folder"
     case pencil = "pencil"
     case qrcode = "qrcode"
     case squareAndPencil = "square.and.pencil"
