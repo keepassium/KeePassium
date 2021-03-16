@@ -24,6 +24,8 @@
 	<array>
 		<string>group.com.keepassium</string>
 	</array>
+	<key>com.apple.security.files.user-selected.read-write</key>
+	<true/>
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)com.keepassium.SharedItems</string>
