@@ -11,7 +11,6 @@ import UIKit
 class MultilineButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel?.textAlignment = .center
         titleLabel?.lineBreakMode = .byWordWrapping
         titleLabel?.numberOfLines = 0
     }

@@ -30,12 +30,14 @@ final class YubiKitQRCodeScanner: QRCodeScanner {
         session.scanQrCode(withPresenter: presenter) { (data, error) in
             if let error = error {
                 Diag.error("Scanning QR code failed [message: \(error.localizedDescription)]")
+                HapticFeedback.play(.error)
                 completion(.failure(error))
                 return
             }
 
             if let data = data {
                 Diag.debug("QR code scanning successful")
+                HapticFeedback.play(.qrCodeScanned)
                 completion(.success(data))
                 return
             }

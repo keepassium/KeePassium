@@ -107,7 +107,7 @@ final class EditEntryVC: UITableViewController, Refreshable {
             tableView.tableFooterView = nil
         }
 
-        scanOTPButton.setTitle(LString.otpScanQRCodeForSetup, for: .normal)
+        scanOTPButton.setTitle(LString.otpSetupOTPAction, for: .normal)
         
         entry?.touch(.accessed)
         
@@ -176,10 +176,11 @@ final class EditEntryVC: UITableViewController, Refreshable {
             title: LString.titleWarning,
             message: LString.otpQRCodeOverwriteWarning,
             preferredStyle: .alert)
-        choiceAlert.addAction(UIAlertAction(title: LString.actionOverwrite, style: .destructive) { [weak self] (action) in
+        choiceAlert.addAction(title: LString.actionOverwrite, style: .destructive) {
+            [weak self] (action) in
             self?.scanQRCode()
-        })
-        choiceAlert.addAction(UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil))
+        }
+        choiceAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
         present(choiceAlert, animated: true, completion: nil)
     }
 

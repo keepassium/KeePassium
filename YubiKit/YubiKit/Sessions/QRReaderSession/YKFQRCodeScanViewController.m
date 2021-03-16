@@ -166,7 +166,6 @@
         return;
     }
     
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     [self.delegate qrCodeScanViewController:self didScanPayload:payload];
     
     YKFLogInfo(@"QR code scanned with value: %@", payload);

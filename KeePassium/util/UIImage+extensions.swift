@@ -62,10 +62,10 @@ enum SystemImageName: String {
     case docOnDoc = "doc.on.doc"
     case ellipsisCircle = "ellipsis.circle"
     case pencil = "pencil"
+    case qrcode = "qrcode"
     case squareAndPencil = "square.and.pencil"
     case squareAndArrowUp = "square.and.arrow.up"
     case trash = "trash"
-    case qrcode = "qrcode"
 }
 
 extension UIImage {

@@ -20,11 +20,11 @@
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ad1-Rf-HyL">
-                            <rect key="frame" x="0.0" y="821.33334350585938" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="821.33334350585938" width="414" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-zk-w7B" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                    <rect key="frame" x="24.000000000000014" y="0.0" width="244.33333333333337" height="32"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-zk-w7B" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                    <rect key="frame" x="16.000000000000014" y="8" width="244.33333333333337" height="21"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                     <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="-4" maxY="0.0"/>
                                     <state key="normal" title="{Scan QR code to setup OTP}" image="qrcode" catalog="system">
@@ -37,10 +37,10 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="1Nq-zk-w7B" secondAttribute="bottom" constant="12" id="A5O-rV-uth"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1Nq-zk-w7B" secondAttribute="bottom" id="A5O-rV-uth"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1Nq-zk-w7B" secondAttribute="trailing" constant="20" symbolic="YES" id="Bey-aP-cPa"/>
-                                <constraint firstItem="1Nq-zk-w7B" firstAttribute="leading" secondItem="ad1-Rf-HyL" secondAttribute="leading" constant="24" id="Hji-Ty-Xw8"/>
-                                <constraint firstItem="1Nq-zk-w7B" firstAttribute="top" secondItem="ad1-Rf-HyL" secondAttribute="top" id="RtH-1H-rzd"/>
+                                <constraint firstItem="1Nq-zk-w7B" firstAttribute="leading" secondItem="ad1-Rf-HyL" secondAttribute="leadingMargin" constant="8" id="Hji-Ty-Xw8"/>
+                                <constraint firstItem="1Nq-zk-w7B" firstAttribute="top" secondItem="ad1-Rf-HyL" secondAttribute="topMargin" id="RtH-1H-rzd"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -457,7 +457,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWU-SY-Plz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4146.3999999999996" y="1255.3223388305848"/>
+            <point key="canvasLocation" x="4146.376811594203" y="1254.6195652173915"/>
         </scene>
     </scenes>
     <color key="tintColor" name="ActionTint"/>

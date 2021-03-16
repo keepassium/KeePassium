@@ -452,20 +452,20 @@ public enum LString {
         value: "Touch the key",
         comment: "Call for action: touch the sides of YubiKey 5Ci to continue")
 
-    public static let otpScanQRCodeForSetup = NSLocalizedString(
-        "[EditEntry/OTP/scan]",
-        value: "Scan QR code to setup one-time password (OTP)",
+    public static let otpSetupOTPAction = NSLocalizedString(
+        "[OTP/Setup]",
+        value: "Setup one-time password (OTP)",
         comment: "Call for action. Acronym `OTP` should not be translated."
     )
 
     public static let otpQRCodeNotValid = NSLocalizedString(
-        "[EditEntry/OTP/Scan/InvalidData]",
+        "[OTP/Scan/InvalidData]",
         value: "This QR code is not suitable for OTP setup.",
         comment: "Error shown when scanned QR code cannot be used for OTP"
     )
 
     public static let otpQRCodeOverwriteWarning = NSLocalizedString(
-        "[EditEntry/OTP/Scan/OverwriteWarning]",
+        "[OTP/Scan/OverwriteWarning]",
         value: "One-time password is already configured for this entry. Do you want to overwrite it?",
         comment: "Message to confirm user intentions"
     )

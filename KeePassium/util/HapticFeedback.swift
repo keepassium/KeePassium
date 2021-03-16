@@ -18,6 +18,7 @@ class HapticFeedback {
         case credentialsPasted
         case wrongPassword
         case error
+        case qrCodeScanned
     }
     
     static func play(_ kind: Kind) {
@@ -39,6 +40,9 @@ class HapticFeedback {
         case .error:
             let tactileGenerator = UINotificationFeedbackGenerator()
             tactileGenerator.notificationOccurred(.warning)
+        case .qrCodeScanned:
+            let tactileGenerator = UINotificationFeedbackGenerator()
+            tactileGenerator.notificationOccurred(.success)
         }
     }
     
