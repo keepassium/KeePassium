@@ -40,7 +40,7 @@ extension DatabaseSaving {
         let errorAlert = UIAlertController.make(
             title: error.localizedDescription,
             message: getErrorDetails(error),
-            cancelButtonTitle: LString.actionDismiss)
+            dismissButtonTitle: LString.actionDismiss)
         if let diagnosticsHandler = diagnosticsHandler {
             errorAlert.addAction(title: LString.actionShowDetails, style: .default) { _ in
                 diagnosticsHandler()

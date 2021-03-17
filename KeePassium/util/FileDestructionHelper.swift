@@ -71,7 +71,7 @@ class FileDestructionHelper {
         let confirmationAlert = UIAlertController.make(
             title: urlRef.visibleFileName,
             message: action.getConfirmationText(for: fileType),
-            cancelButtonTitle: LString.actionCancel)
+            dismissButtonTitle: LString.actionCancel)
             .addAction(title: action.title, style: .destructive) { alert in
                 destroyFileNow(urlRef, fileType: fileType, parent: parent, completion: completion)
             }

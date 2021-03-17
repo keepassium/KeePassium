@@ -13,15 +13,10 @@ extension UIAlertController {
     static func make(
         title: String?,
         message: String?,
-        cancelButtonTitle: String? = nil
-        ) -> UIAlertController
-    {
+        dismissButtonTitle: String = LString.actionDismiss
+    ) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(
-            title: cancelButtonTitle ?? LString.actionDismiss,
-            style: .cancel,
-            handler: nil
-        )
+        alert.addAction(title: dismissButtonTitle, style: .cancel, handler: nil)
         return alert
     }
     
@@ -30,8 +25,7 @@ extension UIAlertController {
         title: String?,
         style: UIAlertAction.Style,
         handler: ((UIAlertAction) -> Void)?
-        ) -> UIAlertController
-    {
+    ) -> UIAlertController {
         let action = UIAlertAction(title: title, style: style, handler: handler)
         self.addAction(action)
         return self

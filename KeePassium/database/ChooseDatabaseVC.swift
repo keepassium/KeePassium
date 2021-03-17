@@ -372,7 +372,7 @@ class ChooseDatabaseVC: TableViewControllerWithContext, DynamicFileList, Refresh
         let confirmationAlert = UIAlertController.make(
             title: urlRef.visibleFileName,
             message: message,
-            cancelButtonTitle: LString.actionCancel)
+            dismissButtonTitle: LString.actionCancel)
         confirmationAlert.addAction(destructiveAction)
         present(confirmationAlert, animated: true, completion: nil)
     }

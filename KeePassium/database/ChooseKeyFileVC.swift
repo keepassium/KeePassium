@@ -146,7 +146,7 @@ class ChooseKeyFileVC: UITableViewController, Refreshable {
             let confirmDeletionAlert = UIAlertController.make(
                 title: urlRef.visibleFileName,
                 message: LString.confirmKeyFileDeletion,
-                cancelButtonTitle: LString.actionCancel)
+                dismissButtonTitle: LString.actionCancel)
             let deleteAction = UIAlertAction(title: LString.actionDelete, style: .destructive)
             {
                 [unowned self] _ in
@@ -330,7 +330,7 @@ extension ChooseKeyFileVC: UIDocumentPickerDelegate {
             let alertVC = UIAlertController.make(
                 title: LString.titleWarning,
                 message: LString.dontUseDatabaseAsKeyFile,
-                cancelButtonTitle: LString.actionOK)
+                dismissButtonTitle: LString.actionOK)
             present(alertVC, animated: true, completion: nil)
             return
         }

@@ -27,7 +27,7 @@ class FileAddingHelper {
                 message: String.localizedStringWithFormat(
                     LString.warningNonDatabaseExtension,
                     fileName),
-                cancelButtonTitle: LString.actionCancel)
+                dismissButtonTitle: LString.actionCancel)
             let continueAction = UIAlertAction(
                 title: LString.actionContinue,
                 style: .default,

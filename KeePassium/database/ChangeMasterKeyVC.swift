@@ -124,12 +124,8 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
             },
             error: {
                 [weak self] (_ errorMessage: String) -> Void in
-                guard let _self = self else { return }
                 Diag.error("Failed to create new composite key [message: \(errorMessage)]")
-                let errorAlert = UIAlertController.make(
-                    title: LString.titleError,
-                    message: errorMessage)
-                _self.present(errorAlert, animated: true, completion: nil)
+                self?.showErrorAlert(errorMessage, title: LString.titleError)
             }
         )
     }
@@ -282,7 +278,7 @@ extension ChangeMasterKeyVC: DatabaseManagerObserver {
             let alert = UIAlertController.make(
                 title: LString.databaseStatusSavingDone,
                 message: LString.masterKeySuccessfullyChanged,
-                cancelButtonTitle: LString.actionOK)
+                dismissButtonTitle: LString.actionOK)
             parentVC?.present(alert, animated: true, completion: nil)
         })
     }

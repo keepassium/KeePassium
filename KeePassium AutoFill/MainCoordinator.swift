@@ -258,14 +258,14 @@ class MainCoordinator: NSObject, Coordinator {
             try FileKeeper.shared.deleteFile(urlRef, fileType: .database, ignoreErrors: false)
         } catch {
             Diag.error("Failed to delete database file [message: \(error.localizedDescription)]")
-            let alert = UIAlertController.make(
+            navigationController.showErrorAlert(
+                error,
                 title: NSLocalizedString(
                     "[Database/Delete] Failed to delete database file",
                     value: "Failed to delete database file",
-                    comment: "Title of an error message"),
-                message: error.localizedDescription,
-                cancelButtonTitle: LString.actionDismiss)
-            navigationController.present(alert, animated: true, completion: nil)
+                    comment: "Title of an error message"
+                )
+            )
         }
         DatabaseSettingsManager.shared.removeSettings(for: urlRef, onlyIfUnused: true)
         refreshFileList()
@@ -386,7 +386,7 @@ class MainCoordinator: NSObject, Coordinator {
                 "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen.",
                 value: "To upgrade, please manually open KeePassium from your home screen.",
                 comment: "Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version."),
-            cancelButtonTitle: LString.actionOK)
+            dismissButtonTitle: LString.actionOK)
         navigationController.present(manualUpgradeAlert, animated: true, completion: nil)
     }
 }
@@ -629,11 +629,11 @@ extension MainCoordinator: UIDocumentPickerDelegate {
 
     private func addKeyFileURL(_ url: URL) {
         if FileType.isDatabaseFile(url: url) {
-            let errorAlert = UIAlertController.make(
+            let warningAlert = UIAlertController.make(
                 title: LString.titleWarning,
                 message: LString.dontUseDatabaseAsKeyFile,
-                cancelButtonTitle: LString.actionOK)
-            navigationController.present(errorAlert, animated: true, completion: nil)
+                dismissButtonTitle: LString.actionOK)
+            navigationController.present(warningAlert, animated: true, completion: nil)
             return
         }
 

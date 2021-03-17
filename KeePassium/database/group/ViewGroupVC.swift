@@ -928,21 +928,6 @@ extension ViewGroupVC: DatabaseManagerObserver {
             parent: self
         )
     }
-    
-    private func showError(message: String, reason: String?) {
-        let errorAlert = UIAlertController(title: message, message: reason, preferredStyle: .alert)
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
-            [weak self] _ in
-            self?.showDiagnostics()
-        }
-        let dismissAction = UIAlertAction(title: LString.actionDismiss, style: .cancel) {
-            [weak self] _ in
-            self?.refresh()
-        }
-        errorAlert.addAction(showDetailsAction)
-        errorAlert.addAction(dismissAction)
-        present(errorAlert, animated: true, completion: nil)
-    }
 }
 
 extension ViewGroupVC: SettingsObserver {

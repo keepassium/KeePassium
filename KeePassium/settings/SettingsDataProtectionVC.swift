@@ -117,7 +117,7 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
                 "[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted.",
                 value: "All master keys have been deleted.",
                 comment: "Text of the success message for `Clear Master Keys` button"),
-            cancelButtonTitle: LString.actionOK)
+            dismissButtonTitle: LString.actionOK)
         present(confirmationAlert, animated: true, completion: nil)
     }
     
@@ -137,7 +137,7 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
                 "[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed.",
                 value: "Associations between key files and databases have been removed.",
                 comment: "Text of the success message for `Clear Key File Associations` button"),
-            cancelButtonTitle: LString.actionOK)
+            dismissButtonTitle: LString.actionOK)
         present(confirmationAlert, animated: true, completion: nil)
     }
     

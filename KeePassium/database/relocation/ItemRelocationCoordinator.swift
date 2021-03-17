@@ -229,20 +229,4 @@ extension ItemRelocationCoordinator: DatabaseManagerObserver {
             parent: router.navigationController
         )
     }
-    
-    private func showError(message: String, reason: String?) {
-        let errorAlert = UIAlertController.make(
-            title: message,
-            message: reason,
-            cancelButtonTitle: LString.actionDismiss
-        )
-        
-        let showDetailsAction = UIAlertAction(title: LString.actionShowDetails, style: .default) {
-            [weak self] _ in
-            self?.showDiagnostics()
-        }
-        errorAlert.addAction(showDetailsAction)
-
-        groupPicker.present(errorAlert, animated: true, completion: nil)
-    }
 }

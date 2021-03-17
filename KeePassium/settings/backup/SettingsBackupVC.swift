@@ -119,7 +119,7 @@ class SettingsBackupVC: UITableViewController {
                 value: "Delete all backup files?",
                 comment: "Confirmation dialog message to delete all backup files"),
             message: nil,
-            cancelButtonTitle: LString.actionCancel)
+            dismissButtonTitle: LString.actionCancel)
         let deleteAction = UIAlertAction(
             title: LString.actionDelete,
             style: .destructive,

@@ -165,7 +165,7 @@ extension PremiumCoordinator: PremiumManagerDelegate {
             let existingSubscriptionAlert = UIAlertController.make(
                 title: LString.titlePurchaseSuccess,
                 message: LString.messageCancelOldSubscriptions,
-                cancelButtonTitle: LString.actionDismiss)
+                dismissButtonTitle: LString.actionDismiss)
             let manageSubscriptionAction = UIAlertAction(
                 title: LString.actionManageSubscriptions,
                 style: .default)
