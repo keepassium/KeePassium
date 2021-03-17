@@ -176,10 +176,10 @@ extension PremiumCoordinator: PremiumManagerDelegate {
             existingSubscriptionAlert.addAction(manageSubscriptionAction)
             planPicker.present(existingSubscriptionAlert, animated: true, completion: nil)
         } else {
-            let usage = premiumManager.usageMonitor.getAppUsageDuration(.perMonth)
-            if usage > 10 * 60.0 {
-                SKStoreReviewController.requestReview()
-            }
+            StoreReviewSuggester.maybeShowAppReview(
+                appVersion: AppInfo.version,
+                occasion: .didPurchasePremium
+            )
         }
     }
     

@@ -19,6 +19,8 @@ extension UIViewController {
             title: title ?? LString.titleError,
             message: message)
         present(alert, animated: true, completion: nil)
+        
+        StoreReviewSuggester.registerEvent(.trouble)
     }
     
     func showNotification(

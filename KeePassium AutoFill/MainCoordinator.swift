@@ -100,6 +100,8 @@ class MainCoordinator: NSObject, Coordinator {
     }
 
     fileprivate func startMainFlow() {
+        StoreReviewSuggester.registerEvent(.sessionStart)
+        
         let isPreviouslyCrashed = !Settings.current.isAutoFillFinishedOK
         if isPreviouslyCrashed {
             showCrashReport()
@@ -207,6 +209,8 @@ class MainCoordinator: NSObject, Coordinator {
     
     
     func showCrashReport() {
+        StoreReviewSuggester.registerEvent(.trouble)
+        
         let vc = CrashReportVC.instantiateFromStoryboard()
         vc.delegate = self
         navigationController.pushViewController(vc, animated: false)
@@ -836,6 +840,7 @@ extension MainCoordinator: PasscodeInputDelegate {
             } else {
                 HapticFeedback.play(.wrongPassword)
                 sender.animateWrongPassccode()
+                StoreReviewSuggester.registerEvent(.trouble)
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
                     DatabaseSettingsManager.shared.eraseAllMasterKeys()
                     DatabaseManager.shared.closeDatabase(

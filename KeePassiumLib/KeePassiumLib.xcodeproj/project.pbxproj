@@ -33,6 +33,7 @@
 		75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */; };
 		75B5F7F5251B7BE100E444F0 /* DatabaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F4251B7BE100E444F0 /* DatabaseLoader.swift */; };
 		75B5F7F8251B7CC700E444F0 /* ProgressObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */; };
+		75B813D425FA6FD000A86B7C /* StoreReviewSuggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */; };
 		75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B8608B2475E2F800C5E6C0 /* LString.swift */; };
 		75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1432481B2FA0017B980 /* FileProvider.swift */; };
 		75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01EFE2474AC290099698C /* Synchronizable.swift */; };
@@ -200,6 +201,7 @@
 		75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+extensions.swift"; sourceTree = "<group>"; };
 		75B5F7F4251B7BE100E444F0 /* DatabaseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoader.swift; sourceTree = "<group>"; };
 		75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressObserver.swift; sourceTree = "<group>"; };
+		75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewSuggester.swift; sourceTree = "<group>"; };
 		75B8608B2475E2F800C5E6C0 /* LString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75BFB1432481B2FA0017B980 /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
 		75C01EFE2474AC290099698C /* Synchronizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 				75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */,
 				75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */,
 				753E9A6125FEBE2F00541121 /* Toast.swift */,
+				75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -929,6 +932,7 @@
 				75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */,
 				75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */,
 				75D09C422174F77000F7DEF2 /* Header1.swift in Sources */,
+				75B813D425FA6FD000A86B7C /* StoreReviewSuggester.swift in Sources */,
 				75D09BD22174F76500F7DEF2 /* ChaCha20.swift in Sources */,
 				75D09C3D2174F77000F7DEF2 /* AESDataCipher.swift in Sources */,
 				75D09C452174F77000F7DEF2 /* Entry1.swift in Sources */,

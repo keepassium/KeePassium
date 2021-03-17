@@ -126,6 +126,12 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
             showLoadingWarnings(warnings)
             loadingWarnings = nil 
         }
+        
+        if group?.parent == nil { 
+            StoreReviewSuggester.maybeShowAppReview(
+                appVersion: AppInfo.version,
+                occasion: .didOpenDatabase)
+        }
     }
     
     override func didMove(toParent parent: UIViewController?) {
@@ -219,6 +225,8 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
         alert.addAction(lockDatabaseAction)
         alert.addAction(contactUsAction)
         present(alert, animated: true, completion: nil)
+        
+        StoreReviewSuggester.registerEvent(.trouble)
     }
         
     
@@ -963,12 +971,14 @@ extension ViewGroupVC: EditEntryFieldsDelegate {
 extension ViewGroupVC: EntryChangeObserver {
     func entryDidChange(entry: Entry) {
         refresh()
+        StoreReviewSuggester.maybeShowAppReview(appVersion: AppInfo.version, occasion: .didEditItem)
     }
 }
 
 extension ViewGroupVC: GroupChangeObserver {
     func groupDidChange(group: Group) {
         refresh()
+        StoreReviewSuggester.maybeShowAppReview(appVersion: AppInfo.version, occasion: .didEditItem)
     }
 }
 

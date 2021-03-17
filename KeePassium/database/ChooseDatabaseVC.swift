@@ -339,6 +339,8 @@ class ChooseDatabaseVC: TableViewControllerWithContext, DynamicFileList, Refresh
     }
         
     func didPressDeleteDatabase(at indexPath: IndexPath) {
+        StoreReviewSuggester.registerEvent(.trouble)
+        
         let urlRef = databaseRefs[indexPath.row]
         if urlRef.hasError {
             removeDatabaseFile(urlRef: urlRef)

@@ -280,6 +280,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
                 }
             }
         )
+        StoreReviewSuggester.registerEvent(.trouble)
     }
     
     func hideErrorMessage(animated: Bool) {

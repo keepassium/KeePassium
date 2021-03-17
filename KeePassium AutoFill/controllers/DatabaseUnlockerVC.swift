@@ -114,6 +114,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
                 }
             }
         )
+        StoreReviewSuggester.registerEvent(.trouble)
     }
     
     func hideErrorMessage(animated: Bool) {

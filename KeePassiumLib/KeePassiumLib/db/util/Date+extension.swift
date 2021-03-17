@@ -64,4 +64,10 @@ public extension Date {
             secondsSinceSwiftReferenceDate + Date.secondsBetweenSwiftAndDotNetReferenceDates
         return secondsSinceDotNetReferenceDate.data.base64EncodedString()
     }
+    
+    var iso8601WeekOfYear: Int {
+        let isoCalendar = Calendar(identifier: .iso8601)
+        let dateComponents = isoCalendar.dateComponents([.weekOfYear], from: self)
+        return dateComponents.weekOfYear ?? 0
+    }
 }

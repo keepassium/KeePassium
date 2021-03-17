@@ -36,6 +36,7 @@ extension DatabaseSaving {
         exportableData: ByteArray?,
         parent viewController: UIViewController
     ) {
+        StoreReviewSuggester.registerEvent(.trouble)
         
         let errorAlert = UIAlertController.make(
             title: error.localizedDescription,

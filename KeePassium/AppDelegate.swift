@@ -61,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         showAppCoverScreen()
         
         watchdog.didBecomeActive()
+        StoreReviewSuggester.registerEvent(.sessionStart)
         return true
     }
     
@@ -286,6 +287,7 @@ extension AppDelegate: PasscodeInputDelegate {
             } else {
                 HapticFeedback.play(.wrongPassword)
                 sender.animateWrongPassccode()
+                StoreReviewSuggester.registerEvent(.trouble)
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
                     DatabaseSettingsManager.shared.eraseAllMasterKeys()
                     DatabaseManager.shared.closeDatabase(
