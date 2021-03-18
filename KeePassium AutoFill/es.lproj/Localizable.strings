@@ -10,11 +10,26 @@
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Usar código";
 
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "Cambiar código de acceso";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "Desbloquear KeePassium";
+
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123 → ABC";
 
 /* Action: change keyboard type to enter PIN numbers */
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC → 123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "Código de acceso actualizado correctamente.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "Guardar código de acceso";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "Protege KeePassium de accesos no autorizados";
 
 /* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
 "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Para actualizar, inicia KeePassium manualmente desde el icono de aplicación.";
@@ -60,6 +75,12 @@
 
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Clave maestra cambiada correctamente";
+
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "Si lo olvida, no podrá acceder a sus datos. No hay opción para restablecer la contraseña.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "Recordar la contraseña de la base de datos";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Abrir base de datos";
@@ -153,6 +174,9 @@
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Cancelar";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "Contacta con el soporte técnico";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Contáctanos";

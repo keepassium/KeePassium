@@ -11,7 +11,7 @@
 "lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Sort Order";
 
 /* Class = "UIBarButtonItem"; oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Settings"; ObjectID = "oee-CI-r2x"; Note = "Action: show app settings"; */
-"oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Settings";
+"oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ajustes";
 
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
 "qPq-UR-uZs.title" = "Adicionar banco de dados";

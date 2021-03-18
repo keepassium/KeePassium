@@ -1,6 +1,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dubbeltryck för att kopiera till urklipp";
 
+/* Title of a setting option: font size */
+"[Appearance/TextSize/title]" = "Textstorlek";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Lås upp";
 
@@ -10,11 +13,26 @@
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Använd PIN-kod";
 
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "Ändra pinkod";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "Lås upp KeePassium";
+
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
 
 /* Action: change keyboard type to enter PIN numbers */
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "Pinkoden uppdaterades.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "Spara pinkod";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "Skydda KeePassium från obehörig åtkomst";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -79,6 +97,12 @@
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Huvudnyckel ändrades";
 
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "Om du glömmer det kommer du inte att kunna komma åt din data igen. Det finns ingen möjlighet att återställa lösenordet.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "Kom ihåg lösenordet för databasen";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "Öppna databas";
 
@@ -114,6 +138,9 @@
 
 /* Action/button to setup YubiKey key component */
 "[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisk logg har kopierats till urklipp.";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Välj";
@@ -175,9 +202,6 @@
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Nytt konto";
 
-/* Action to start editing an entry */
-"[Entry/View] Edit Entry" = "Redigera konto";
-
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Försök att ta bort filen från appen, lägg sedan till den igen.";
 
@@ -218,10 +242,10 @@
 "[Generic] Cancel" = "Avbryt";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Us" = "Kontakta oss";
+"[Generic] Contact Support" = "Kontakta Support";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Support" = "Kontakta Support";
+"[Generic] Contact Us" = "Kontakta oss";
 
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "Fortsätt";

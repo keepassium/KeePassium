@@ -1,6 +1,9 @@
 /* Class = "UILabel"; text = "In-memory Protection"; ObjectID = "0pb-xb-fuf"; Note = "Label for a switch, equivalent to KeePass' own `Enable in-memory protection` for custom entry fields."; */
 "0pb-xb-fuf.text" = "字段保护(该字段的值同密码显示*号)";
 
+/* Class = "UITextView"; accessibilityLabel = "Custom field value"; ObjectID = "7iU-ut-hd7"; */
+"7iU-ut-hd7.accessibilityLabel" = "Custom field value";
+
 /* Class = "UITextView"; text = "{Multi-line field value. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.}"; ObjectID = "7iU-ut-hd7"; */
 "7iU-ut-hd7.text" = "{Multi-line field value. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.}";
 
@@ -10,17 +13,20 @@
 /* Class = "UITableViewCell"; CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Custom field editor"; ObjectID = "CcF-c8-r4M"; */
 "CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "编辑自定义字段";
 
-/* Class = "UISwitch"; accessibilityLabel = "In-memory Protection"; ObjectID = "eox-My-Hns"; Note = "Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."; */
-"eox-My-Hns.accessibilityLabel" = "字段保护(该字段的值同密码显示*号)";
-
 /* Class = "UILabel"; text = "{Field Name}"; ObjectID = "CN9-CU-AJF"; Note = "#bc-ignore!"; */
 "CN9-CU-AJF.text" = "{Field Name}";
+
+/* Class = "UITextField"; accessibilityLabel = "Custom field name"; ObjectID = "ecN-Xd-ff5"; */
+"ecN-Xd-ff5.accessibilityLabel" = "Custom field name";
 
 /* Class = "UITextField"; placeholder = "Field Name"; ObjectID = "ecN-Xd-ff5"; */
 "ecN-Xd-ff5.placeholder" = "域名";
 
 /* Class = "UITextField"; text = "{Field Name}"; ObjectID = "ecN-Xd-ff5"; */
 "ecN-Xd-ff5.text" = "{Field Name}";
+
+/* Class = "UISwitch"; accessibilityLabel = "In-memory Protection"; ObjectID = "eox-My-Hns"; Note = "Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."; */
+"eox-My-Hns.accessibilityLabel" = "字段保护(该字段的值同密码显示*号)";
 
 /* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "HcW-rc-pdR"; */
 "HcW-rc-pdR.normalTitle" = "变更图示";
@@ -33,6 +39,9 @@
 
 /* Class = "UINavigationItem"; title = "Edit Entry"; ObjectID = "l3s-Bv-fA1"; */
 "l3s-Bv-fA1.title" = "编辑条目";
+
+/* Class = "UITextField"; accessibilityLabel = "Entry title"; ObjectID = "mGc-If-zfn"; */
+"mGc-If-zfn.accessibilityLabel" = "Entry title";
 
 /* Class = "UITextField"; placeholder = "Entry Title"; ObjectID = "mGc-If-zfn"; */
 "mGc-If-zfn.placeholder" = "Entry Title";

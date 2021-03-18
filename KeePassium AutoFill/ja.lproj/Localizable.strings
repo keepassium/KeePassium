@@ -10,11 +10,26 @@
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
 "[AppLock/cancelBiometricAuth] Use Passcode" = "パスコードを使用";
 
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "パスコードを変更";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "KeePassiumのロックを解除";
+
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
 
 /* Action: change keyboard type to enter PIN numbers */
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "パスコードが更新されました。";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "パスコードを保存";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "KeePassiumを不正なアクセスから保護します。";
 
 /* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
 "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "アップグレードするには、ホーム画面から KeePassium を手動で起動してください。";
@@ -60,6 +75,12 @@
 
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "マスターキーを変更しました";
+
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "パスワードを忘れるとデータにアクセスできなくなります。パスワードリセットオプションはありません。";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "データベースのパスワードを記憶";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "データベースを開く";
@@ -153,6 +174,9 @@
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "キャンセル";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "お問い合わせ";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "お問い合わせ";

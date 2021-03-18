@@ -1,5 +1,8 @@
+/* Class = "UIBarButtonItem"; title = "{Contact Support}"; ObjectID = "Bti-aV-bQB"; Note = "#bc-ignore!"; */
+"Bti-aV-bQB.title" = "{Contact Support}";
+
 /* Class = "UINavigationItem"; title = "Diagnostics"; ObjectID = "Ura-k4-GXq"; */
-"Ura-k4-GXq.title" = "诊断信息";
+"Ura-k4-GXq.title" = "Diagnostics";
 
 /* Class = "UILabel"; text = "{Diagnostic message}"; ObjectID = "vlS-RX-RUW"; Note = "#bc-ignore!"; */
 "vlS-RX-RUW.text" = "{Diagnostic message}";

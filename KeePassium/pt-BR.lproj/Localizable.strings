@@ -1,6 +1,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Toque duas vezes para copiar";
 
+/* Title of a setting option: font size */
+"[Appearance/TextSize/title]" = "Text Size";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Desbloquear";
 
@@ -10,11 +13,26 @@
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Digitar o código";
 
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "Change Passcode";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "Desbloquear KeePassium";
+
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
 
 /* Action: change keyboard type to enter PIN numbers */
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "Save Passcode";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -79,6 +97,12 @@
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Chave-mestra alterada com sucesso";
 
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "Abrir banco de dados";
 
@@ -114,6 +138,9 @@
 
 /* Action/button to setup YubiKey key component */
 "[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "O registro de diagnóstico foi copiado para a área de transferência.";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Escolher";
@@ -175,9 +202,6 @@
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Nova Entrada";
 
-/* Action to start editing an entry */
-"[Entry/View] Edit Entry" = "Editar entrada";
-
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Tente retirar o arquivo do aplicativo e adicioná-lo de novo.";
 
@@ -216,6 +240,9 @@
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Cancelar";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "Contact Support";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Contate-nos";

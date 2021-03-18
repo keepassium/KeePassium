@@ -2,7 +2,7 @@
 "2iK-ct-ygq.text" = "Database File Name";
 
 /* Class = "UIButton"; accessibilityLabel = "Show Diagnostics"; ObjectID = "bNa-R0-f67"; */
-"bNa-R0-f67.accessibilityLabel" = "Show Diagnostics";
+"bNa-R0-f67.accessibilityLabel" = "Mostrar Diagnósticos";
 
 /* Class = "UINavigationItem"; title = "{Create Database}"; ObjectID = "dhd-je-Doc"; Note = "#bc-ignore!"; */
 "dhd-je-Doc.title" = "{Create Database}";

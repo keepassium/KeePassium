@@ -274,6 +274,15 @@
 /* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
 "[FileAccessError/NoResponse/knownFileProvider]" = "%@ は応答しません。";
 
+/* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
+"[FileAccessError/NoWritePermission/title]" = "ファイルを保存できません (%@)";
+
+/* Explanation of a file writing error */
+"[FileAccessError/OneDriveReadOnly/reason]" = "最近、MicrosoftはOneDriveのiOS統合を読み取り専用に変更しました。これは一時的なものだとされています。";
+
+/* Suggestion for error recovery */
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "共有メニューを使用して、別の場所に保存してください。";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "ストレージが応答しません。";
 
@@ -339,6 +348,9 @@
 
 /* Localized name of the storage service: Resilio Sync (https://https://apps.apple.com/us/app/id1126282325) */
 "[FileProvider/Resilio Sync/name]" = "Resilio Sync";
+
+/* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
+"[FileProvider/Seafile Pro/name]" = "Seafile Pro";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
 "[FileProvider/SMB/name]" = "SMBサーバー";

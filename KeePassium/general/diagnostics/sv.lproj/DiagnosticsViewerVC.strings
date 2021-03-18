@@ -1,3 +1,6 @@
+/* Class = "UIBarButtonItem"; title = "{Contact Support}"; ObjectID = "Bti-aV-bQB"; Note = "#bc-ignore!"; */
+"Bti-aV-bQB.title" = "{Contact Support}";
+
 /* Class = "UINavigationItem"; title = "Diagnostics"; ObjectID = "Ura-k4-GXq"; */
 "Ura-k4-GXq.title" = "Diagnostik";
 

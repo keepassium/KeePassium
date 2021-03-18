@@ -1,6 +1,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Double tap to copy to clipboard";
 
+/* Title of a setting option: font size */
+"[Appearance/TextSize/title]" = "Text Size";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "解锁";
 
@@ -10,11 +13,26 @@
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
 "[AppLock/cancelBiometricAuth] Use Passcode" = "使用应用解锁密码";
 
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "Change Passcode";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "解锁 KeePassium";
+
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
 
 /* Action: change keyboard type to enter PIN numbers */
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "Save Passcode";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -79,6 +97,12 @@
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "主密码修改成功";
 
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "打开数据库";
 
@@ -114,6 +138,9 @@
 
 /* Action/button to setup YubiKey key component */
 "[Database/Unlock] YubiKey" = "YubiKey 令牌设备验证";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "诊断日志复制到剪贴板成功。";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "选择";
@@ -175,9 +202,6 @@
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "新条目";
 
-/* Action to start editing an entry */
-"[Entry/View] Edit Entry" = "编辑条目";
-
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "尝试从应用中删除该文件，然后重新添加它。";
 
@@ -218,10 +242,10 @@
 "[Generic] Cancel" = "取消";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Us" = "联系我们";
+"[Generic] Contact Support" = "联络支持团队";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Support" = "联络支持团队";
+"[Generic] Contact Us" = "联系我们";
 
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "Continue";

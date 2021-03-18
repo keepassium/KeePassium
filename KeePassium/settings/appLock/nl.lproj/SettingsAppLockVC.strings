@@ -34,3 +34,6 @@
 /* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
 "U5m-je-MhO.title" = "App-beveiliging";
 
+/* Class = "UILabel"; text = "{Change Passcode}"; ObjectID = "wzW-GR-02W"; Note = "#bc-ignore!"; */
+"wzW-GR-02W.text" = "{Change Passcode}";
+

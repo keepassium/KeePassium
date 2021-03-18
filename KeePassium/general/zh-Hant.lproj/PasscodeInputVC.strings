@@ -1,5 +1,6 @@
-/* Class = "UILabel"; text = "Enter passcode"; ObjectID = "3mQ-t6-0ty"; Note = "Call for action above the passcode text field"; */
-"3mQ-t6-0ty.text" = "輸入解鎖密碼";
+/* Class = "UILabel"; text = "{Enter passcode to protect KeePassium}"; ObjectID = "3mQ-t6-0ty"; Note = "#bc-ignore!"; */
+"3mQ-t6-0ty.text" = "{Enter passcode to protect KeePassium}";
+
 /* Class = "UIButton"; normalTitle = "{Switch to passphrase}"; ObjectID = "f5U-FH-tld"; Note = "#bc-ignore!"; */
 "f5U-FH-tld.normalTitle" = "{Switch to passphrase}";
 

@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.footerTitle" = "Wenn Sie einen falschen AppLock-Passcode eingeben, wird KeePassium alle Datenbanken schließen und alle Master-Schlüssel aus der Schlüsselbund löschen.";
+"5Dg-KX-m7a.footerTitle" = "Wenn Sie einen falschen AppLock-Passcode eingeben, wird KeePassium alle Datenbanken schließen und alle Master-Schlüssel aus dem Schlüsselbund löschen.";
 
 /* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
 "5Dg-KX-m7a.headerTitle" = "Falscher Zugangscode";
@@ -33,4 +33,7 @@
 
 /* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
 "U5m-je-MhO.title" = "Zugangsschutz";
+
+/* Class = "UILabel"; text = "{Change Passcode}"; ObjectID = "wzW-GR-02W"; Note = "#bc-ignore!"; */
+"wzW-GR-02W.text" = "{Change Passcode}";
 

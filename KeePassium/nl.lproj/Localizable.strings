@@ -1,6 +1,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dubbeltikken om naar klembord te kopiëren";
 
+/* Title of a setting option: font size */
+"[Appearance/TextSize/title]" = "Tekstgrootte";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Ontgrendel";
 
@@ -10,11 +13,26 @@
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Gebruik toegangscode";
 
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "Toegangscode wijzigen";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "Ontgrendel KeePassium";
+
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
 
 /* Action: change keyboard type to enter PIN numbers */
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "Toegangscode bijgewerkt.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "Toegangscode opslaan";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "Bescherm KeePassium tegen ongeautoriseerde toegang";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -79,6 +97,12 @@
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Hoofdsleutel is gewijzigd";
 
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "Als u het ooit vergeet, hebt u geen toegang meer tot uw gegevens. Er is geen optie om het wachtwoord te resetten.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "Onthoud uw databasewachtwoord";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "Open databank";
 
@@ -114,6 +138,9 @@
 
 /* Action/button to setup YubiKey key component */
 "[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisch logbestand is gekopieerd naar het klembord.";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Kies";
@@ -175,9 +202,6 @@
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Nieuw item";
 
-/* Action to start editing an entry */
-"[Entry/View] Edit Entry" = "Bewerk item";
-
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Probeer het bestand uit de app te verwijderen en voeg het dan opnieuw toe.";
 
@@ -218,10 +242,10 @@
 "[Generic] Cancel" = "Annuleer";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Us" = "Neem contact op";
+"[Generic] Contact Support" = "Neem contact op met ons ondersteuningsteam";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Support" = "Neem contact op met ons ondersteuningsteam";
+"[Generic] Contact Us" = "Neem contact op";
 
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "Doorgaan";

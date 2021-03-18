@@ -1,6 +1,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Нажмите дважды, чтобы скопировать в буфер обмена";
 
+/* Title of a setting option: font size */
+"[Appearance/TextSize/title]" = "Размер текста";
+
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Открыть";
 
@@ -10,11 +13,26 @@
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Использовать код доступа";
 
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "Изменить код доступа";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "Открыть KeePassium";
+
 /* Action: change keyboard type to enter alphanumeric passphrases */
 "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→АБВ";
 
 /* Action: change keyboard type to enter PIN numbers */
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "АБВ→123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "Код доступа успешно обновлён.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "Сохранить код доступа";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "Защитить KeePassium от несанкционированного доступа";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -79,6 +97,12 @@
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Мастер-ключ успешно изменён";
 
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "Если вы забудете его, то не сможете получить доступ к своим данным. Восстановить этот пароль невозможно.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "Запомните пароль от базы";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "Открыть базу паролей";
 
@@ -114,6 +138,9 @@
 
 /* Action/button to setup YubiKey key component */
 "[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Журнал диагностики скопирован в буфер обмена.";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Выбрать";
@@ -175,9 +202,6 @@
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Новая запись";
 
-/* Action to start editing an entry */
-"[Entry/View] Edit Entry" = "Изменить запись";
-
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Попробуйте убрать файл из приложения, а затем добавить его снова.";
 
@@ -218,10 +242,10 @@
 "[Generic] Cancel" = "Отменить";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Us" = "Связаться с нами";
+"[Generic] Contact Support" = "Напишите нам";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Support" = "Написать в поддержку";
+"[Generic] Contact Us" = "Связаться с нами";
 
 /* Action/button to proceed with the action */
 "[Generic] Continue" = "Продолжить";

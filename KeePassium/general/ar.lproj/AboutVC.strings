@@ -67,6 +67,9 @@
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "hVm-qH-TAI"; */
 "hVm-qH-TAI.text" = "CC BY 4.0";
 
+/* Class = "UILabel"; text = "Icons by KeePassXC team"; ObjectID = "hW0-fR-mIf"; */
+"hW0-fR-mIf.text" = "Icons by KeePassXC team";
+
 /* Class = "UILabel"; text = "CC BY-ND 3.0"; ObjectID = "iKy-z5-Ox7"; */
 "iKy-z5-Ox7.text" = "CC BY-ND 3.0";
 
@@ -75,6 +78,9 @@
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "JgR-60-OMp"; */
 "JgR-60-OMp.text" = "مجال عام";
+
+/* Class = "UILabel"; text = "LGPL license"; ObjectID = "JjJ-GT-eoX"; */
+"JjJ-GT-eoX.text" = "LGPL license";
 
 /* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
 "JRy-jy-KXb.text" = "رخصة GPL";
@@ -139,6 +145,9 @@
 /* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
 "vg0-6M-OIq.text" = "قيود تخطيط لوحة المفاتيح مِن قِبل James Tang";
 
+/* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
+"VuB-ng-Uii.text" = "Nuvola icons by David Vignoni";
+
 /* Class = "UILabel"; text = "KeePassium"; ObjectID = "Wuj-Uw-baK"; */
 "Wuj-Uw-baK.text" = "KeePassium";
 
@@ -147,4 +156,7 @@
 
 /* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
 "Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK مِن قِبل Yubico AB";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "Z7s-Ch-895"; */
+"Z7s-Ch-895.text" = "رخصة MIT";
 
