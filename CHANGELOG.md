@@ -1,5 +1,30 @@
 #CHANGELOG
 
+## [1.22.84] - 2021-03-19
+
+### Added
+
+- Setup one-time passwords (TOTP) with QR codes (closes #24) [thanks, Igor]
+
+### Improved
+
+- Better-looking context menus (iOS 13+)
+- Less important messages are shown as subtle popups (toasts)
+- More informative messages if database saving fails (looking at you, OneDrive)
+- If database saving failed, the app will offer to save it elsewhere
+- Pressing Enter in AutoFill search will select the first result
+- On database creation, remind the user to remember the password
+- More balanced App Store review prompts
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- Regression in 1.22.83 beta destroyed TAB/CR/LF characters on save (related #148)
+- Some accessibility labels were not translated
+- macOS: AutoFill disappeared immediately on show (fixes #147)
+- macOS: Minor UI issues here and there [thanks, everyone]
+
+
 ## [1.22.83] - 2021-02-25
 
 ### Fixed

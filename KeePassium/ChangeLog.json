@@ -2,8 +2,12 @@
     "sections": [
         {
             "version": "1.22",
-            "releaseDate": "2021-02-25T00:00:00Z",
+            "releaseDate": "2021-03-19T00:00:00Z",
             "items": [
+                {
+                    "title": "🧩 Added: Setup one-time passwords (OTP) with QR codes [thanks, Igor]",
+                    "type": 1
+                },
                 {
                     "title": "🧩 Added: Appearance settings page",
                     "type": 1
@@ -21,11 +25,7 @@
                     "type": 1
                 },
                 {
-                    "title": "🛠 Refined: Instructions in Passcode Input dialog",
-                    "type": 1
-                },
-                {
-                    "title": "🛠 Refined: Clarified license terms for KeePassium (Roundicons) icons",
+                    "title": "🛠 Refined: Better-looking context menus (iOS 13+)",
                     "type": 1
                 },
                 {
@@ -33,19 +33,27 @@
                     "type": 1
                 },
                 {
-                    "title": "🛠 Refined: Tech debt: adopting coordinators instead of massive view controllers (ongoing)",
+                    "title": "🛠 Refined: Better handling of database saving errors",
                     "type": 1
                 },
                 {
-                    "title": "🛠 Refined: Tech debt: unified Diagnostics Viewer",
+                    "title": "🛠 Refined: Less important messages are shown as subtle popups (toasts)",
                     "type": 1
                 },
                 {
-                    "title": "🛠 Refined: Minor improvements for Mac Catalyst (#82)",
+                    "title": "🛠 Refined: Pressing Enter in AutoFill search will select the first result",
                     "type": 1
                 },
                 {
-                    "title": "🛠 Refined: Updated TPInAppReceipt to 3.0.1",
+                    "title": "🛠 Refined: More balanced App Store review prompts",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Various improvements for macOS version (#82)",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Refined: Updated all translations [thanks, everyone]",
                     "type": 1
                 },
                 {
@@ -62,6 +70,14 @@
                 },
                 {
                     "title": "🐞 Fixed: Filter out invalid low-order ASCII characters from pasted/loaded data (fixes #148) [thanks, Mirko]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: AutoFill disappeared immediately on show (fixes #147) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: minor UI issues here and there",
                     "type": 1
                 }
             ]
