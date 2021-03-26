@@ -26,12 +26,19 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     
     internal var databaseExporterTemporaryURL: TemporaryFileURL?
     
+    private var keyFilePickerCoordinator: KeyFilePickerCoordinator?
+    
     static func make(dbRef: URLReference) -> UIViewController {
         let vc = ChangeMasterKeyVC.instantiateFromStoryboard()
         vc.databaseRef = dbRef
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = .formSheet
         return navVC
+    }
+    
+    deinit {
+        assert(keyFilePickerCoordinator == nil)
+        keyFilePickerCoordinator = nil
     }
     
     override func viewDidLoad() {
@@ -149,6 +156,23 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
         )
     }
     
+    func showKeyFilePicker(at popoverAnchor: PopoverAnchor) {
+        guard keyFilePickerCoordinator == nil else {
+            assertionFailure()
+            Diag.warning("Key file picker is already shown")
+            return
+        }
+        
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter, addingMode: .import)
+        keyFilePickerCoordinator!.dismissHandler = { [weak self] coordinator in
+            self?.keyFilePickerCoordinator = nil
+        }
+        keyFilePickerCoordinator!.delegate = self
+        keyFilePickerCoordinator!.start()
+        present(modalRouter, animated: true, completion: nil)
+    }
+    
     
     private var progressOverlay: ProgressOverlay?
     fileprivate func showProgressOverlay() {
@@ -198,14 +222,14 @@ extension ChangeMasterKeyVC: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField === keyFileField {
             passwordField.becomeFirstResponder()
-            let keyFileChooserVC = ChooseKeyFileVC.make(
-                popoverSourceView: keyFileField,
-                delegate: self)
-            present(keyFileChooserVC, animated: true, completion: nil)
+            let popoverAnchor = PopoverAnchor(sourceView: keyFileField, sourceRect: keyFileField.bounds)
+            showKeyFilePicker(at: popoverAnchor)
+            return false 
         }
+        return true
     }
 }
 
@@ -239,8 +263,20 @@ extension ChangeMasterKeyVC: ValidatingTextFieldDelegate {
     }
 }
 
-extension ChangeMasterKeyVC: KeyFileChooserDelegate {
-    func onKeyFileSelected(urlRef: URLReference?) {
+
+
+extension ChangeMasterKeyVC: KeyFilePickerCoordinatorDelegate {
+    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
+        setKeyFile(keyFile)
+    }
+    
+    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
+        if self.keyFileRef == keyFile {
+            setKeyFile(nil)
+        }
+    }
+
+    func setKeyFile(_ urlRef: URLReference?) {
         keyFileRef = urlRef
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
             dbSettings.maybeSetAssociatedKeyFile(keyFileRef)

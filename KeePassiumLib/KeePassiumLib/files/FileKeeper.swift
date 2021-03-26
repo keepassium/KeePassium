@@ -407,26 +407,50 @@ public class FileKeeper {
         }
     }
     
+    
+    private func maybeProcessExistingExternalFile(
+        url sourceURL: URL,
+        fileType: FileType,
+        success successHandler: ((URLReference) -> Void)?,
+        error errorHandler: ((FileKeeperError) -> Void)?
+    ) -> Bool {
+        guard let existingRef = findStoredExternalReferenceFor(url: sourceURL, fileType: fileType)
+        else {
+            return false 
+        }
+        
+        if existingRef.error == nil {
+            if fileType == .database {
+                Settings.current.startupDatabase = existingRef
+            }
+            FileKeeperNotifier.notifyFileAdded(urlRef: existingRef, fileType: fileType)
+            Diag.info("Added already known external file, deduplicating.")
+            successHandler?(existingRef)
+            return true 
+        } else {
+            Diag.debug("Removing the old broken reference.")
+            removeExternalReference(existingRef, fileType: fileType)
+            return false 
+        }
+    }
+    
     private func processExternalFile(
         url sourceURL: URL,
         fileType: FileType,
         success successHandler: ((URLReference) -> Void)?,
         error errorHandler: ((FileKeeperError) -> Void)?)
     {
+        let isProcessed = maybeProcessExistingExternalFile(
+            url: sourceURL,
+            fileType: fileType,
+            success: successHandler,
+            error: errorHandler)
+        guard !isProcessed else {
+            return
+        }
+        
         switch fileType {
         case .database:
-            if let existingRef = findStoredExternalReferenceFor(url: sourceURL, fileType: fileType) {
-                if existingRef.error == nil {
-                    Settings.current.startupDatabase = existingRef
-                    FileKeeperNotifier.notifyFileAdded(urlRef: existingRef, fileType: fileType)
-                    Diag.info("Added already known external file, deduplicating.")
-                    successHandler?(existingRef)
-                    return
-                } else {
-                    Diag.debug("Removing the old broken reference.")
-                    removeExternalReference(existingRef, fileType: fileType)
-                }
-            }
             addExternalFileRef(
                 url: sourceURL,
                 fileType: fileType,

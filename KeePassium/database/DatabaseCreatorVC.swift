@@ -13,7 +13,9 @@ protocol DatabaseCreatorDelegate: class {
     func didPressCancel(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressContinue(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressErrorDetails(in databaseCreatorVC: DatabaseCreatorVC)
-    func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, popoverSource: UIView)
+    func didPressPickKeyFile(
+        in databaseCreatorVC: DatabaseCreatorVC,
+        at popoverAnchor: PopoverAnchor)
     func didPressPickHardwareKey(
         in databaseCreatorVC: DatabaseCreatorVC,
         at popoverAnchor: PopoverAnchor)
@@ -200,7 +202,8 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
         if textField === keyFileField {
             setError(message: nil, animated: true)
             passwordField.becomeFirstResponder()
-            delegate?.didPressPickKeyFile(in: self, popoverSource: textField)
+            let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+            delegate?.didPressPickKeyFile(in: self, at: popoverAnchor)
             return false
         }
         return true

@@ -16,7 +16,13 @@ protocol DatabaseUnlockerDelegate: class {
         keyFile: URLReference?,
         yubiKey: YubiKey?)
     func didPressNewsItem(in databaseUnlocker: DatabaseUnlockerVC, newsItem: NewsItem)
+    func didPressSelectKeyFile(
+        in databaseUnlocker: DatabaseUnlockerVC,
+        at popoverAnchor: PopoverAnchor)
     func didPressSelectHardwareKey(
+        in databaseUnlocker: DatabaseUnlockerVC,
+        at popoverAnchor: PopoverAnchor)
+    func didPressShowDiagnostics(
         in databaseUnlocker: DatabaseUnlockerVC,
         at popoverAnchor: PopoverAnchor)
 }
@@ -34,7 +40,6 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     @IBOutlet weak var announcementButton: UIButton!
     @IBOutlet weak var unlockButton: UIButton!
     
-    weak var coordinator: MainCoordinator?
     weak var delegate: DatabaseUnlockerDelegate?
     var shouldAutofocus = false
     var databaseRef: URLReference? {
@@ -172,7 +177,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             if let availableKeyFileRef = associatedKeyFileRef
                 .find(in: allAvailableKeyFiles, fallbackToNamesake: true)
             {
-                setKeyFile(urlRef: availableKeyFileRef)
+                setKeyFile(availableKeyFileRef)
             }
         }
 
@@ -196,8 +201,8 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         }
     }
     
-    func setKeyFile(urlRef: URLReference?) {
-        self.keyFileRef = urlRef
+    func setKeyFile(_ fileRef: URLReference?) {
+        self.keyFileRef = fileRef
         
         hideErrorMessage(animated: false)
 
@@ -206,7 +211,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             dbSettings.maybeSetAssociatedKeyFile(keyFileRef)
         }
         
-        guard let keyFileRef = urlRef else {
+        guard let keyFileRef = fileRef else {
             Diag.debug("No key file selected")
             keyFileField.text = ""
             return
@@ -273,9 +278,10 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
     
     
-    @IBAction func didPressErrorDetailsButton(_ sender: Any) {
+    @IBAction func didPressErrorDetailsButton(_ sender: UIButton) {
         Watchdog.shared.restart()
-        coordinator?.showDiagnostics()
+        let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
+        delegate?.didPressShowDiagnostics(in: self, at: popoverAnchor)
     }
     
     @IBAction func didPressUnlock(_ sender: Any) {
@@ -296,12 +302,15 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
 }
 
 extension DatabaseUnlockerVC: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         Watchdog.shared.restart()
         if textField === keyFileField {
-            coordinator?.selectKeyFile()
             passwordField.becomeFirstResponder()
+            let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+            delegate?.didPressSelectKeyFile(in: self, at: popoverAnchor)
+            return false 
         }
+        return true
     }
     
     func textField(

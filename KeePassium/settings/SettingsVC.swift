@@ -311,7 +311,7 @@ class SettingsVC: UITableViewController, Refreshable {
             self?.premiumCoordinator = nil
         }
         premiumCoordinator!.start()
-        modalRouter.present(in: self, animated: true, completion: nil)
+        present(modalRouter, animated: true, completion: nil)
     }
     
     func didPressManageSubscription() {

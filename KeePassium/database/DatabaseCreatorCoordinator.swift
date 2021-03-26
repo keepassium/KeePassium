@@ -277,9 +277,19 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
         showDiagnostics()
     }
     
-    func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, popoverSource: UIView) {
-        let keyFileChooser = ChooseKeyFileVC.make(popoverSourceView: popoverSource, delegate: self)
-        databaseCreatorVC.present(keyFileChooser, animated: true, completion: nil)
+    func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, at popoverAnchor: PopoverAnchor) {
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let keyFilePickerCoordinator = KeyFilePickerCoordinator(
+            router: modalRouter,
+            addingMode: .import
+        )
+        addChildCoordinator(keyFilePickerCoordinator)
+        keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        keyFilePickerCoordinator.delegate = self
+        keyFilePickerCoordinator.start()
+        router.present(modalRouter, animated: true, completion: nil)
     }
     
     func didPressPickHardwareKey(
@@ -290,9 +300,19 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
     }
 }
 
-extension DatabaseCreatorCoordinator: KeyFileChooserDelegate {
-    func onKeyFileSelected(urlRef: URLReference?) {
-        databaseCreatorVC.keyFile = urlRef
+extension DatabaseCreatorCoordinator: KeyFilePickerCoordinatorDelegate {
+    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
+        setKeyFile(keyFile)
+    }
+    
+    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
+        if databaseCreatorVC.keyFile == keyFile {
+            setKeyFile(nil)
+        }
+    }
+
+    func setKeyFile(_ fileRef: URLReference?) {
+        databaseCreatorVC.keyFile = fileRef
         databaseCreatorVC.becomeFirstResponder()
     }
 }

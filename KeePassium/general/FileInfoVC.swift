@@ -54,7 +54,7 @@ class FileInfoVC: UITableViewController {
     @IBOutlet weak var exportButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
-    public var onDismiss: (()->())?
+    public var didDeleteCallback: (()->Void)?
     
     public var canExport: Bool = false {
         didSet {
@@ -372,7 +372,7 @@ class FileInfoVC: UITableViewController {
             parent: self,
             completion: { [weak self] (success) in
                 if success {
-                    self?.onDismiss?()
+                    self?.didDeleteCallback?()
                 } else {
                 }
             }

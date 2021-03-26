@@ -54,7 +54,7 @@ class FileDestructionHelper {
         _ urlRef: URLReference,
         fileType: FileType,
         withConfirmation: Bool,
-        at popoverAnchor: PopoverAnchor,
+        at popoverAnchor: PopoverAnchor?,
         parent: UIViewController,
         completion: CompletionHandler?)
     {
@@ -75,6 +75,7 @@ class FileDestructionHelper {
             .addAction(title: action.title, style: .destructive) { alert in
                 destroyFileNow(urlRef, fileType: fileType, parent: parent, completion: completion)
             }
+        popoverAnchor?.apply(to: confirmationAlert.popoverPresentationController)
         parent.present(confirmationAlert, animated: true, completion: nil)
     }
     

@@ -87,7 +87,7 @@ class ViewEntryFilesVC: UITableViewController, DatabaseSaving, Refreshable {
             self?.diagnosticsViewerCoordinator = nil
         }
         diagnosticsViewerCoordinator!.start()
-        modalRouter.present(in: self, animated: true, completion: nil)
+        present(modalRouter, animated: true, completion: nil)
     }
     
 

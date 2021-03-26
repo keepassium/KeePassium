@@ -329,7 +329,7 @@ class ChooseDatabaseVC: TableViewControllerWithContext, DynamicFileList, Refresh
             self?.databaseCreatorCoordinator = nil
         }
         databaseCreatorCoordinator!.start()
-        modalRouter.present(in: self, animated: true, completion: nil)
+        present(modalRouter, animated: true, completion: nil)
     }
 
     func didPressExportDatabase(at indexPath: IndexPath) {
@@ -517,22 +517,14 @@ class ChooseDatabaseVC: TableViewControllerWithContext, DynamicFileList, Refresh
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         let databaseInfoVC = FileInfoVC.make(urlRef: urlRef, fileType: .database, at: popoverAnchor)
         databaseInfoVC.canExport = true
-        databaseInfoVC.onDismiss = { [weak self, weak databaseInfoVC] in
+        databaseInfoVC.didDeleteCallback = { [weak self, weak databaseInfoVC] in
             self?.refresh()
             databaseInfoVC?.dismiss(animated: true, completion: nil)
         }
         present(databaseInfoVC, animated: true, completion: nil)
     }
     
-    
-    private func getDestructiveActionTitle(for urlRef: URLReference) -> String {
-        if urlRef.location == .external || urlRef.hasError {
-            return LString.actionRemoveFile
-        } else {
-            return LString.actionDeleteFile
-        }
-    }
-    
+       
     override func getContextActionsForRow(
         at indexPath: IndexPath,
         forSwipe: Bool
@@ -551,8 +543,10 @@ class ChooseDatabaseVC: TableViewControllerWithContext, DynamicFileList, Refresh
                 self?.didPressExportDatabase(at: indexPath)
             }
         )
+        
+        let destructiveActionTitle = DestructiveFileAction.get(for: urlRef.location).title
         let destructiveAction = TableRowAction(
-            title: getDestructiveActionTitle(for: urlRef),
+            title: destructiveActionTitle,
             imageName: .trash,
             style: .destructive,
             color: UIColor.destructiveTint,

@@ -22,8 +22,8 @@ class MainCoordinator: NSObject, Coordinator {
     var serviceIdentifiers = [ASCredentialServiceIdentifier]()
     fileprivate var isLoadingUsingStoredDatabaseKey = false
     
+    fileprivate weak var databaseUnlockerVC: DatabaseUnlockerVC?
     fileprivate weak var addDatabasePicker: UIDocumentPickerViewController?
-    fileprivate weak var addKeyFilePicker: UIDocumentPickerViewController?
     
     fileprivate var watchdog: Watchdog
     fileprivate var passcodeInputController: PasscodeInputVC?
@@ -158,7 +158,6 @@ class MainCoordinator: NSObject, Coordinator {
     private func refreshFileList() {
         guard let topVC = navigationController.topViewController else { return }
         (topVC as? DatabaseChooserVC)?.refresh()
-        (topVC as? KeyFileChooserVC)?.refresh()
     }
     
     
@@ -278,9 +277,9 @@ class MainCoordinator: NSObject, Coordinator {
     func showDatabaseFileInfo(in databaseChooser: DatabaseChooserVC, for fileRef: URLReference) {
         let databaseInfoVC = FileInfoVC.make(urlRef: fileRef, fileType: .database, at: nil)
         databaseInfoVC.canExport = true
-        databaseInfoVC.onDismiss = { [weak self, weak databaseChooser] in
+        databaseInfoVC.didDeleteCallback = { [weak self, weak databaseChooser] in
             databaseChooser?.refresh()
-            self?.navigationController.popViewController(animated: true)
+            self?.navigationController.popViewController(animated: true) 
         }
         navigationController.pushViewController(databaseInfoVC, animated: true)
     }
@@ -291,10 +290,10 @@ class MainCoordinator: NSObject, Coordinator {
         
         let vc = DatabaseUnlockerVC.instantiateFromStoryboard()
         vc.delegate = self
-        vc.coordinator = self
         vc.databaseRef = database
         vc.shouldAutofocus = (storedDatabaseKey == nil)
         navigationController.pushViewController(vc, animated: animated)
+        databaseUnlockerVC = vc
         completion?()
         if let storedDatabaseKey = storedDatabaseKey {
             tryToUnlockDatabase(
@@ -306,26 +305,19 @@ class MainCoordinator: NSObject, Coordinator {
         }
     }
     
-    func addKeyFile(popoverAnchor: PopoverAnchor) {
-        let picker = UIDocumentPickerViewController(documentTypes: FileType.keyFileUTIs, in: .open)
-        picker.delegate = self
-        if let popover = picker.popoverPresentationController {
-            popoverAnchor.apply(to: popover)
+    func selectKeyFile(at popoverAnchor: PopoverAnchor) {
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let keyFilePickerCoordinator = KeyFilePickerCoordinator(
+            router: modalRouter,
+            addingMode: .openInPlace
+        )
+        addChildCoordinator(keyFilePickerCoordinator)
+        keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
         }
-        navigationController.topViewController?.present(picker, animated: true, completion: nil)
-        
-        addKeyFilePicker = picker
-    }
-    
-    func removeKeyFile(_ urlRef: URLReference) {
-        FileKeeper.shared.removeExternalReference(urlRef, fileType: .keyFile)
-        refreshFileList()
-    }
-    
-    func selectKeyFile() {
-        let vc = KeyFileChooserVC.instantiateFromStoryboard()
-        vc.delegate = self
-        navigationController.pushViewController(vc, animated: true)
+        keyFilePickerCoordinator.delegate = self
+        keyFilePickerCoordinator.start()
+        navigationController.present(modalRouter, animated: true, completion: nil)
     }
     
     func showDiagnostics() {
@@ -455,7 +447,10 @@ extension MainCoordinator: DatabaseUnlockerDelegate {
             yubiKey: yubiKey)
     }
     
-    func didPressSelectHardwareKey(in databaseUnlocker: DatabaseUnlockerVC, at popoverAnchor: PopoverAnchor) {
+    func didPressSelectHardwareKey(
+        in databaseUnlocker: DatabaseUnlockerVC,
+        at popoverAnchor: PopoverAnchor)
+    {
         let hardwareKeyPicker = HardwareKeyPicker.create(delegate: self)
         hardwareKeyPicker.modalPresentationStyle = .popover
         if let popover = hardwareKeyPicker.popoverPresentationController {
@@ -466,6 +461,20 @@ extension MainCoordinator: DatabaseUnlockerDelegate {
         navigationController.present(hardwareKeyPicker, animated: true, completion: nil)
     }
     
+    func didPressSelectKeyFile(
+        in databaseUnlocker: DatabaseUnlockerVC,
+        at popoverAnchor: PopoverAnchor)
+    {
+        selectKeyFile(at: popoverAnchor)
+    }
+    
+    func didPressShowDiagnostics(
+        in databaseUnlocker: DatabaseUnlockerVC,
+        at popoverAnchor: PopoverAnchor)
+    {
+        showDiagnostics()
+    }
+
     func didPressNewsItem(in databaseUnlocker: DatabaseUnlockerVC, newsItem: NewsItem) {
         newsItem.show(in: databaseUnlocker)
     }
@@ -484,32 +493,25 @@ extension MainCoordinator: HardwareKeyPickerDelegate {
     }
 }
 
-extension MainCoordinator: KeyFileChooserDelegate {
-    
-    func didSelectFile(in keyFileChooser: KeyFileChooserVC, urlRef: URLReference?) {
+extension MainCoordinator: KeyFilePickerCoordinatorDelegate {
+    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
         watchdog.restart()
-        navigationController.popViewController(animated: true) 
-        if let databaseUnlockerVC = navigationController.topViewController as? DatabaseUnlockerVC {
-            databaseUnlockerVC.setKeyFile(urlRef: urlRef)
-        } else {
+        guard let databaseUnlockerVC = databaseUnlockerVC else {
             assertionFailure()
+            return
         }
+        databaseUnlockerVC.setKeyFile(keyFile)
     }
     
-    func didPressFileInfo(in keyFileChooser: KeyFileChooserVC, for urlRef: URLReference) {
+    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
         watchdog.restart()
-        let keyFileInfoVC = FileInfoVC.make(urlRef: urlRef, fileType: .keyFile, at: nil)
-        keyFileInfoVC.canExport = false
-        keyFileInfoVC.onDismiss = { [weak self, weak keyFileChooser] in
-            keyFileChooser?.refresh()
-            self?.navigationController.popViewController(animated: true)
+        guard let databaseUnlockerVC = databaseUnlockerVC else {
+            assertionFailure()
+            return
         }
-        navigationController.pushViewController(keyFileInfoVC, animated: true)
-    }
-    
-    func didPressAddKeyFile(in keyFileChooser: KeyFileChooserVC, popoverAnchor: PopoverAnchor) {
-        watchdog.restart()
-        addKeyFile(popoverAnchor: popoverAnchor)
+        if databaseUnlockerVC.keyFileRef == keyFile {
+            databaseUnlockerVC.setKeyFile(nil)
+        }
     }
 }
 
@@ -609,8 +611,8 @@ extension MainCoordinator: UIDocumentPickerDelegate {
         guard let url = urls.first else { return }
         if controller === addDatabasePicker {
             addDatabaseURL(url)
-        } else if controller === addKeyFilePicker {
-            addKeyFileURL(url)
+        } else {
+            assertionFailure()
         }
     }
     
@@ -629,27 +631,6 @@ extension MainCoordinator: UIDocumentPickerDelegate {
                 }
             )
         }
-    }
-
-    private func addKeyFileURL(_ url: URL) {
-        if FileType.isDatabaseFile(url: url) {
-            let warningAlert = UIAlertController.make(
-                title: LString.titleWarning,
-                message: LString.dontUseDatabaseAsKeyFile,
-                dismissButtonTitle: LString.actionOK)
-            navigationController.present(warningAlert, animated: true, completion: nil)
-            return
-        }
-
-        FileKeeper.shared.prepareToAddFile(url: url, fileType: .keyFile, mode: .openInPlace)
-        FileKeeper.shared.processPendingOperations(
-            success: { [weak self] (urlRef) in
-                self?.refreshFileList()
-            },
-            error: { [weak self] (error) in
-                self?.navigationController.showErrorAlert(error)
-            }
-        )
     }
 }
 
@@ -673,7 +654,6 @@ extension MainCoordinator: LongPressAwareNavigationControllerDelegate {
     func didLongPressLeftSide(in navigationController: LongPressAwareNavigationController) {
         guard let topVC = navigationController.topViewController else { return }
         guard topVC is DatabaseChooserVC
-            || topVC is KeyFileChooserVC
             || topVC is DatabaseUnlockerVC
             || topVC is EntryFinderVC
             || topVC is FirstSetupVC else { return }

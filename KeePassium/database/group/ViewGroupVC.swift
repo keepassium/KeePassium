@@ -805,7 +805,7 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
         }
         itemRelocationCoordinator?.delegate = self
         itemRelocationCoordinator?.start()
-        modalRouter.present(in: self, animated: true, completion: nil)
+        present(modalRouter, animated: true, completion: nil)
     }
 
     var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
@@ -817,7 +817,7 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
             self?.diagnosticsViewerCoordinator = nil
         }
         diagnosticsViewerCoordinator!.start()
-        modalRouter.present(in: self, animated: true, completion: nil)
+        present(modalRouter, animated: true, completion: nil)
     }
     
     @IBAction func didPressItemListSettings(_ sender: Any) {

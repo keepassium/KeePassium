@@ -71,15 +71,16 @@ public class NavigationRouter: NSObject {
     }
     
     public func present(_ router: NavigationRouter, animated: Bool, completion: (()->Void)?) {
-        router.present(in: self.navigationController, animated: true, completion: completion)
+        navigationController.present(router, animated: true, completion: completion)
     }
     
+
     public func present(
-        in viewController: UIViewController,
+        _ viewController: UIViewController,
         animated: Bool,
         completion: (()->Void)?)
     {
-        viewController.present(self.navigationController, animated: true, completion: completion)
+        navigationController.present(viewController, animated: true, completion: completion)
     }
     
     public func push(_ viewController: UIViewController, animated: Bool, onPop popHandler: PopHandler?) {
@@ -210,5 +211,11 @@ extension NavigationRouter: ProgressViewHost {
             self.progressOverlay?.removeFromSuperview()
             self.progressOverlay = nil
         }
+    }
+}
+
+extension UIViewController {
+    func present(_ router: NavigationRouter, animated: Bool, completion: (()->Void)?) {
+        present(router.navigationController, animated: true, completion: completion)
     }
 }

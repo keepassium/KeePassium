@@ -55,7 +55,6 @@
 		751E0D0D2309AF400088BB10 /* ViewEntryFilesVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0F2309AF400088BB10 /* ViewEntryFilesVC.storyboard */; };
 		751E0D102309AF4C0088BB10 /* ViewEntryHistoryVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D122309AF4C0088BB10 /* ViewEntryHistoryVC.storyboard */; };
 		751E0D132309AF540088BB10 /* ChooseDatabaseVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D152309AF540088BB10 /* ChooseDatabaseVC.storyboard */; };
-		751E0D162309AF5D0088BB10 /* ChooseKeyFileVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D182309AF5D0088BB10 /* ChooseKeyFileVC.storyboard */; };
 		751E0D192309AF620088BB10 /* ChangeMasterKeyVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1B2309AF620088BB10 /* ChangeMasterKeyVC.storyboard */; };
 		751E0D1C2309AF670088BB10 /* UnlockDatabaseVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1E2309AF670088BB10 /* UnlockDatabaseVC.storyboard */; };
 		751E0D1F2309AF6B0088BB10 /* DatabaseCreatorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D212309AF6B0088BB10 /* DatabaseCreatorVC.storyboard */; };
@@ -67,7 +66,7 @@
 		751E0D2F2309AFED0088BB10 /* DatabaseChooserVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D312309AFED0088BB10 /* DatabaseChooserVC.storyboard */; };
 		751E0D322309AFF30088BB10 /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D342309AFF30088BB10 /* DatabaseUnlockerVC.storyboard */; };
 		751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */; };
-		751E0D382309B0120088BB10 /* KeyFileChooserVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFileChooserVC.storyboard */; };
+		751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71C21C98D620025C706 /* SupportEmailComposer.swift */; };
 		75267CFE25FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
 		75267CFF25FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
@@ -81,7 +80,7 @@
 		752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
 		752F5887247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */; };
 		752F5888247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */; };
-		7532A24D21C5A035005DF56F /* KeyFileChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */; };
+		7532A24D21C5A035005DF56F /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		7533030F23C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7533031223C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard */; };
 		7533031023C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7533031223C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard */; };
 		753376F123CA650C00603F4A /* PasswordStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753376F023CA650C00603F4A /* PasswordStringHelper.swift */; };
@@ -127,7 +126,6 @@
 		754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
 		754D7C1C238C3553005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
 		754D7C1D238C355B005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
-		754DE31220A5C4A4002ED5F9 /* ChooseKeyFileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */; };
 		7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */; };
 		7550D242215D792000360E0C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
@@ -160,6 +158,16 @@
 		756B15D024C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756B15D224C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
+		756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
+		756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
+		756F3645260E9670005A35DA /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
+		756F3646260E9671005A35DA /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
+		756F364A260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
+		756F364B260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
+		756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
+		756F364D260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
+		756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
+		756F365926112A3B005A35DA /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
 		756FC99B24F45B13007F9920 /* perpetual-fallback-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */; };
 		756FC99C24F45B13007F9920 /* perpetual-fallback-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */; };
 		756FC99D24F45B13007F9920 /* perpetual-fallback-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */; };
@@ -360,9 +368,7 @@
 		759894B924620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
 		759894BA24620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
 		759894BC24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
-		759894BD24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
 		759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
-		759894BF24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
 		7598963F2341590300DF39AA /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
 		759896402341590300DF39AA /* KeePassiumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599636F22E112E50004BC85 /* Attachment+extensions.swift */; };
@@ -422,7 +428,6 @@
 		75B38C12233E5B7C006BDEFC /* ViewEntryHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C6020B4BAC4004FA29D /* ViewEntryHistoryVC.swift */; };
 		75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75802633222ED11D00F4525F /* ProgressVC.swift */; };
 		75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
-		75B38C16233E5B7C006BDEFC /* ChooseKeyFileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */; };
 		75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */; };
 		75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1674921464333005E33C3 /* AboutVC.swift */; };
@@ -480,7 +485,6 @@
 		75B38C54233E5B7C006BDEFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */; };
 		75B38C55233E5B7C006BDEFC /* SettingsBackupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF12309AE920088BB10 /* SettingsBackupVC.storyboard */; };
 		75B38C56233E5B7C006BDEFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7DA0232008300010E199 /* Localizable.strings */; };
-		75B38C57233E5B7C006BDEFC /* ChooseKeyFileVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D182309AF5D0088BB10 /* ChooseKeyFileVC.storyboard */; };
 		75B38C58233E5B7C006BDEFC /* SettingsItemListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42AB2313C20A003DE72E /* SettingsItemListVC.storyboard */; };
 		75B38C59233E5B7C006BDEFC /* ItemIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D242309AFAC0088BB10 /* ItemIconPicker.storyboard */; };
 		75B38C5A233E5B7C006BDEFC /* SettingsAppTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */; };
@@ -585,7 +589,7 @@
 		75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5D4002235CD720003CD55 /* CrashReportVC.swift */; };
 		75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
-		75D7DF80233E5E310029AD87 /* KeyFileChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */; };
+		75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */; };
 		75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
 		75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9E21C1671F00B8AFE2 /* MainCoordinator.swift */; };
@@ -633,7 +637,7 @@
 		75D7DFB6233E5E310029AD87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7D9D232008300010E199 /* Localizable.strings */; };
 		75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2B2309AFE50088BB10 /* CrashReportVC.storyboard */; };
 		75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2E2309AFE90088BB10 /* FirstSetupVC.storyboard */; };
-		75D7DFB9233E5E310029AD87 /* KeyFileChooserVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFileChooserVC.storyboard */; };
+		75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
 		75D7DFC7233E5E8C0029AD87 /* KeePassiumPro AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		75DACE732573B49700A110DD /* SettingsAppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */; };
@@ -776,7 +780,6 @@
 		751E0D0E2309AF400088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewEntryFilesVC.storyboard; sourceTree = "<group>"; };
 		751E0D112309AF4C0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewEntryHistoryVC.storyboard; sourceTree = "<group>"; };
 		751E0D142309AF540088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChooseDatabaseVC.storyboard; sourceTree = "<group>"; };
-		751E0D172309AF5D0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChooseKeyFileVC.storyboard; sourceTree = "<group>"; };
 		751E0D1A2309AF620088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChangeMasterKeyVC.storyboard; sourceTree = "<group>"; };
 		751E0D1D2309AF670088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UnlockDatabaseVC.storyboard; sourceTree = "<group>"; };
 		751E0D202309AF6B0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatabaseCreatorVC.storyboard; sourceTree = "<group>"; };
@@ -787,7 +790,7 @@
 		751E0D302309AFED0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatabaseChooserVC.storyboard; sourceTree = "<group>"; };
 		751E0D332309AFF30088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatabaseUnlockerVC.storyboard; sourceTree = "<group>"; };
 		751E0D362309AFFC0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EntryFinderVC.storyboard; sourceTree = "<group>"; };
-		751E0D392309B0120088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/KeyFileChooserVC.storyboard; sourceTree = "<group>"; };
+		751E0D392309B0120088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/KeyFilePickerVC.storyboard; sourceTree = "<group>"; };
 		751E0D412309B04F0088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
 		751E0D5B2309B0520088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75209D73231B1C760010E142 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/WelcomeVC.strings; sourceTree = "<group>"; };
@@ -830,7 +833,7 @@
 		7532821B24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		7532821C24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7532821D24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
-		7532821E24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		7532821E24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		7532821F24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7532822024A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		7532822124A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -848,7 +851,6 @@
 		7532822E24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		7532822F24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		7532823024A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		7532823124A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		7532823224A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		7532823324A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		7532823424A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -865,7 +867,7 @@
 		7532824324A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		7532824424A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
 		7532824524A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
-		7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileChooserVC.swift; sourceTree = "<group>"; };
+		7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFilePickerVC.swift; sourceTree = "<group>"; };
 		7533031123C52A1500F38CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DestinationGroupPickerVC.storyboard; sourceTree = "<group>"; };
 		753376F023CA650C00603F4A /* PasswordStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordStringHelper.swift; sourceTree = "<group>"; };
 		7535079F23783729003B65C9 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
@@ -889,7 +891,7 @@
 		754A322D24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		754A322E24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754A322F24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
-		754A323024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		754A323024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		754A323124426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754A323224426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		754A323324426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -907,7 +909,6 @@
 		754A324024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		754A324124426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		754A324224426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		754A324324426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		754A324424426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		754A324524426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		754A324624426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -928,7 +929,7 @@
 		754ABEA125AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		754ABEA225AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
 		754ABEA325AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		754ABEA425AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		754ABEA425AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		754ABEA525AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754ABEA625AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		754ABEA725AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -945,7 +946,6 @@
 		754ABEB325AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		754ABEB425AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		754ABEB525AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		754ABEB625AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		754ABEB725AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		754ABEB825AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		754ABEB925AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -970,7 +970,7 @@
 		754ABED525AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
 		754ABED625AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		754ABED725AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		754ABED825AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		754ABED825AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		754ABED925AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754ABEDA25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		754ABEDB25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -987,7 +987,6 @@
 		754ABEE725AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		754ABEE825AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		754ABEE925AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		754ABEEA25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		754ABEEB25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		754ABEEC25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		754ABEED25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/AboutVC.strings; sourceTree = "<group>"; };
@@ -1010,7 +1009,7 @@
 		754ABF0125AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		754ABF0225AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		754ABF0325AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ChangeMasterKeyVC.strings"; sourceTree = "<group>"; };
-		754ABF0425AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/KeyFileChooserVC.strings"; sourceTree = "<group>"; };
+		754ABF0425AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/KeyFilePickerVC.strings"; sourceTree = "<group>"; };
 		754ABF0525AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		754ABF0625AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		754ABF0725AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsBackupVC.strings"; sourceTree = "<group>"; };
@@ -1029,7 +1028,6 @@
 		754ABF1525AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/EntryFinderVC.strings"; sourceTree = "<group>"; };
 		754ABF1625AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ViewGroupVC.strings"; sourceTree = "<group>"; };
 		754ABF1725AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsItemListVC.strings"; sourceTree = "<group>"; };
-		754ABF1825AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ChooseKeyFileVC.strings"; sourceTree = "<group>"; };
 		754ABF1925AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsAppTimeoutVC.strings"; sourceTree = "<group>"; };
 		754ABF1A25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/DatabaseChooserVC.strings"; sourceTree = "<group>"; };
 		754ABF1B25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsAutoFillVC.strings"; sourceTree = "<group>"; };
@@ -1059,7 +1057,6 @@
 		754D7C08238C2135005652E1 /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
 		754D7C18238C2C0E005652E1 /* libYubiKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYubiKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		754D7C1E238C384A005652E1 /* KeePassium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeePassium-Bridging-Header.h"; sourceTree = "<group>"; };
-		754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseKeyFileVC.swift; sourceTree = "<group>"; };
 		754E74C2260677A70043BBDB /* KeePassium-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KeePassium-macOS.entitlements"; sourceTree = "<group>"; };
 		754E74CB26067B730043BBDB /* KeePassium_AutoFill-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KeePassium_AutoFill-macOS.entitlements"; sourceTree = "<group>"; };
 		7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMasterKeyVC.swift; sourceTree = "<group>"; };
@@ -1076,7 +1073,7 @@
 		755E7D9B232008300010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		755E7D9E232008300010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		755E7DA1232008300010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		755E7DA4232019770010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		755E7DA4232019770010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extensions.swift"; sourceTree = "<group>"; };
 		7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareTextView.swift; sourceTree = "<group>"; };
 		7561850420E0379F00EEFAEE /* ValidatingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatingTextView.swift; sourceTree = "<group>"; };
@@ -1091,7 +1088,7 @@
 		756B2435243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		756B2436243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		756B2437243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
-		756B2438243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		756B2438243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		756B2439243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		756B243A243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		756B243B243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -1109,7 +1106,6 @@
 		756B2448243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		756B2449243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		756B244A243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		756B244B243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		756B244C243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		756B244D243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		756B244E243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -1127,6 +1123,7 @@
 		756B245E243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		756D15602129AFB60052C728 /* KeePassium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium.entitlements; sourceTree = "<group>"; };
 		756D78DD25F58D67003E080E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
+		756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFilePickerCoordinator.swift; sourceTree = "<group>"; };
 		756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "perpetual-fallback-license.html"; sourceTree = "<group>"; };
 		756FF64320BAB20300FF890B /* UIColor+namedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+namedColors.swift"; sourceTree = "<group>"; };
 		7572664A24CB15530099B6E1 /* HelpViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewerCoordinator.swift; sourceTree = "<group>"; };
@@ -1258,7 +1255,7 @@
 		75AC35BD23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75AC35BE23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
 		75AC35BF23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75AC35C023549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		75AC35C023549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75AC35C123549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75AC35C223549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75AC35C323549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
@@ -1277,7 +1274,6 @@
 		75AC35D123549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		75AC35D223549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75AC35D323549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		75AC35D423549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		75AC35D523549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75AC35D623549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		75AC35D723549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -1299,7 +1295,7 @@
 		75AC534E2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75AC534F2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		75AC53502326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
-		75AC53512326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		75AC53512326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75AC53522326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		75AC53532326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75AC53542326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EditEntryVC.strings; sourceTree = "<group>"; };
@@ -1316,7 +1312,6 @@
 		75AC53612326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75AC53622326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		75AC53632326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		75AC53642326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		75AC53652326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75AC53662326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		75AC53672326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -1338,7 +1333,7 @@
 		75AC53792326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC537A2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FileInfoVC.strings"; sourceTree = "<group>"; };
 		75AC537B2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ChangeMasterKeyVC.strings"; sourceTree = "<group>"; };
-		75AC537C2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/KeyFileChooserVC.strings"; sourceTree = "<group>"; };
+		75AC537C2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/KeyFilePickerVC.strings"; sourceTree = "<group>"; };
 		75AC537D2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ViewEntryFieldsVC.strings"; sourceTree = "<group>"; };
 		75AC537E2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CrashReportVC.strings"; sourceTree = "<group>"; };
 		75AC537F2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EditEntryVC.strings"; sourceTree = "<group>"; };
@@ -1355,7 +1350,6 @@
 		75AC538C2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryFinderVC.strings"; sourceTree = "<group>"; };
 		75AC538D2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ViewGroupVC.strings"; sourceTree = "<group>"; };
 		75AC538E2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsItemListVC.strings"; sourceTree = "<group>"; };
-		75AC538F2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ChooseKeyFileVC.strings"; sourceTree = "<group>"; };
 		75AC53902326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsAppTimeoutVC.strings"; sourceTree = "<group>"; };
 		75AC53912326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DatabaseChooserVC.strings"; sourceTree = "<group>"; };
 		75AC53922326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsAutoFillVC.strings"; sourceTree = "<group>"; };
@@ -1377,7 +1371,7 @@
 		75AC53A62327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC53A72327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FileInfoVC.strings"; sourceTree = "<group>"; };
 		75AC53A82327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ChangeMasterKeyVC.strings"; sourceTree = "<group>"; };
-		75AC53A92327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/KeyFileChooserVC.strings"; sourceTree = "<group>"; };
+		75AC53A92327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/KeyFilePickerVC.strings"; sourceTree = "<group>"; };
 		75AC53AA2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ViewEntryFieldsVC.strings"; sourceTree = "<group>"; };
 		75AC53AB2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CrashReportVC.strings"; sourceTree = "<group>"; };
 		75AC53AC2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EditEntryVC.strings"; sourceTree = "<group>"; };
@@ -1394,7 +1388,6 @@
 		75AC53B92327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryFinderVC.strings"; sourceTree = "<group>"; };
 		75AC53BA2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ViewGroupVC.strings"; sourceTree = "<group>"; };
 		75AC53BB2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsItemListVC.strings"; sourceTree = "<group>"; };
-		75AC53BC2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ChooseKeyFileVC.strings"; sourceTree = "<group>"; };
 		75AC53BD2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAppTimeoutVC.strings"; sourceTree = "<group>"; };
 		75AC53BE2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DatabaseChooserVC.strings"; sourceTree = "<group>"; };
 		75AC53BF2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAutoFillVC.strings"; sourceTree = "<group>"; };
@@ -1480,7 +1473,7 @@
 		75E4CA61232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75E4CA62232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
 		75E4CA63232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75E4CA64232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		75E4CA64232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75E4CA65232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		75E4CA66232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75E4CA67232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EditEntryVC.strings; sourceTree = "<group>"; };
@@ -1497,7 +1490,6 @@
 		75E4CA74232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75E4CA75232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		75E4CA76232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		75E4CA77232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		75E4CA78232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75E4CA79232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		75E4CA7A232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -1530,7 +1522,6 @@
 		75ED426E23116FB9003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ViewEntryFilesVC.strings; sourceTree = "<group>"; };
 		75ED427023117062003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ViewEntryHistoryVC.strings; sourceTree = "<group>"; };
 		75ED42742311727A003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ChooseDatabaseVC.strings; sourceTree = "<group>"; };
-		75ED4276231173E3003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		75ED427823117569003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
 		75ED427C231177C8003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/UnlockDatabaseVC.strings; sourceTree = "<group>"; };
 		75ED428023117EAE003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
@@ -1564,7 +1555,7 @@
 		75FDEF21233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75FDEF22233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
 		75FDEF23233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75FDEF24233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		75FDEF24233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75FDEF25233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		75FDEF26233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75FDEF27233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EditEntryVC.strings; sourceTree = "<group>"; };
@@ -1581,7 +1572,6 @@
 		75FDEF34233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75FDEF35233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		75FDEF36233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		75FDEF37233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		75FDEF38233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75FDEF39233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75FDEF3A233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
@@ -1603,7 +1593,7 @@
 		75FDEF4D233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75FDEF4E233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
 		75FDEF4F233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75FDEF50233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/KeyFileChooserVC.strings; sourceTree = "<group>"; };
+		75FDEF50233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75FDEF51233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
 		75FDEF52233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75FDEF53233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EditEntryVC.strings; sourceTree = "<group>"; };
@@ -1620,7 +1610,6 @@
 		75FDEF60233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75FDEF61233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
 		75FDEF62233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
-		75FDEF63233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ChooseKeyFileVC.strings; sourceTree = "<group>"; };
 		75FDEF64233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75FDEF65233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
 		75FDEF66233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -1969,6 +1958,16 @@
 			path = news;
 			sourceTree = "<group>";
 		};
+		756F363C260E963B005A35DA /* key-file */ = {
+			isa = PBXGroup;
+			children = (
+				7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */,
+				756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */,
+				751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */,
+			);
+			path = "key-file";
+			sourceTree = "<group>";
+		};
 		756FC99424F453CF007F9920 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -2013,6 +2012,7 @@
 		756FF64720BAB56A00FF890B /* database */ = {
 			isa = PBXGroup;
 			children = (
+				756F363C260E963B005A35DA /* key-file */,
 				75BE091D25098F3500C436C2 /* icon */,
 				7533032523C52AB600F38CC7 /* relocation */,
 				756FF64620BAB55000FF890B /* group */,
@@ -2020,8 +2020,6 @@
 				75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */,
 				75EA64172098FC0500DDB941 /* ChooseDatabaseVC.swift */,
 				751E0D152309AF540088BB10 /* ChooseDatabaseVC.storyboard */,
-				754DE31120A5C4A4002ED5F9 /* ChooseKeyFileVC.swift */,
-				751E0D182309AF5D0088BB10 /* ChooseKeyFileVC.storyboard */,
 				7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */,
 				751E0D1B2309AF620088BB10 /* ChangeMasterKeyVC.storyboard */,
 				750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */,
@@ -2190,8 +2188,6 @@
 				751E0D342309AFF30088BB10 /* DatabaseUnlockerVC.storyboard */,
 				75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */,
 				751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */,
-				7532A24C21C5A035005DF56F /* KeyFileChooserVC.swift */,
-				751E0D3A2309B0120088BB10 /* KeyFileChooserVC.storyboard */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -2406,7 +2402,7 @@
 				7513992C25DDD46C00D22DBB /* default.css in Resources */,
 				751E0D292309AFE50088BB10 /* CrashReportVC.storyboard in Resources */,
 				751E0D2C2309AFE90088BB10 /* FirstSetupVC.storyboard in Resources */,
-				751E0D382309B0120088BB10 /* KeyFileChooserVC.storyboard in Resources */,
+				751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */,
 				751E0D262309AFBA0088BB10 /* FileInfoVC.storyboard in Resources */,
 				7572665624CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */,
 			);
@@ -2431,7 +2427,6 @@
 				758FC16324CEF72000BAD35C /* appicon-calc_iPadApp_76.png in Resources */,
 				758FC14524CEF72000BAD35C /* appicon-atom-black_iPadApp_76@2x.png in Resources */,
 				758FC15724CEF72000BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */,
-				751E0D162309AF5D0088BB10 /* ChooseKeyFileVC.storyboard in Resources */,
 				75ED42A92313C20A003DE72E /* SettingsItemListVC.storyboard in Resources */,
 				751E0D222309AFAC0088BB10 /* ItemIconPicker.storyboard in Resources */,
 				758FC11F24CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */,
@@ -2459,6 +2454,7 @@
 				751E0D1F2309AF6B0088BB10 /* DatabaseCreatorVC.storyboard in Resources */,
 				758FC10F24CEF71F00BAD35C /* appicon-info_iPadProApp_83.5@2x.png in Resources */,
 				755E7D9C232008300010E199 /* InfoPlist.strings in Resources */,
+				756F3645260E9670005A35DA /* KeyFilePickerVC.storyboard in Resources */,
 				755B863823054FC700E9FC83 /* WelcomeVC.storyboard in Resources */,
 				751E0CFB2309AF0D0088BB10 /* ViewGroupVC.storyboard in Resources */,
 				758FC14D24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
@@ -2531,7 +2527,6 @@
 				758FC16424CEF72000BAD35C /* appicon-calc_iPadApp_76.png in Resources */,
 				758FC14624CEF72000BAD35C /* appicon-atom-black_iPadApp_76@2x.png in Resources */,
 				758FC15824CEF72000BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */,
-				75B38C57233E5B7C006BDEFC /* ChooseKeyFileVC.storyboard in Resources */,
 				75B38C58233E5B7C006BDEFC /* SettingsItemListVC.storyboard in Resources */,
 				75B38C59233E5B7C006BDEFC /* ItemIconPicker.storyboard in Resources */,
 				758FC12024CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */,
@@ -2559,6 +2554,7 @@
 				75B38C61233E5B7C006BDEFC /* DatabaseCreatorVC.storyboard in Resources */,
 				758FC11024CEF71F00BAD35C /* appicon-info_iPadProApp_83.5@2x.png in Resources */,
 				75B38C62233E5B7C006BDEFC /* InfoPlist.strings in Resources */,
+				756F3646260E9671005A35DA /* KeyFilePickerVC.storyboard in Resources */,
 				75B38C64233E5B7C006BDEFC /* WelcomeVC.storyboard in Resources */,
 				75B38C65233E5B7C006BDEFC /* ViewGroupVC.storyboard in Resources */,
 				758FC14E24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
@@ -2634,7 +2630,7 @@
 				7513992E25DDD46C00D22DBB /* default.css in Resources */,
 				75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */,
 				75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */,
-				75D7DFB9233E5E310029AD87 /* KeyFileChooserVC.storyboard in Resources */,
+				75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */,
 				75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */,
 				7572665824CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */,
 			);
@@ -2694,7 +2690,7 @@
 				758BADB624B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
-				7532A24D21C5A035005DF56F /* KeyFileChooserVC.swift in Sources */,
+				7532A24D21C5A035005DF56F /* KeyFilePickerVC.swift in Sources */,
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				75A5312423C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
@@ -2727,7 +2723,7 @@
 				75802635222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
 				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
-				759894BD24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
+				756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
 				75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */,
 				7572664C24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
@@ -2748,6 +2744,7 @@
 				75BE064025DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				753376F223CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				750CFC0721BAD98B00E62B09 /* LString.swift in Sources */,
+				756F364B260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75151D3423268AB300F3C411 /* UILabel+extensions.swift in Sources */,
 				7572665B24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
@@ -2785,12 +2782,14 @@
 				75C94C5720B373BA004FA29D /* ViewGroupVC.swift in Sources */,
 				753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */,
 				757ADC5023A5180600D708D2 /* DismissablePopover.swift in Sources */,
+				756F364A260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				758BAD9524B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
 				75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */,
 				7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */,
 				759BC62C2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
+				756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */,
 				75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */,
 				75BC56292581872B002B4395 /* AccessibilityHelper.swift in Sources */,
@@ -2821,7 +2820,6 @@
 				75802634222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75839A90246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
 				7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */,
-				754DE31220A5C4A4002ED5F9 /* ChooseKeyFileVC.swift in Sources */,
 				757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */,
 				754D7C09238C2135005652E1 /* KeyFileTextField.swift in Sources */,
@@ -2928,12 +2926,14 @@
 				75B38BFE233E5B7C006BDEFC /* ViewGroupVC.swift in Sources */,
 				75B38BFF233E5B7C006BDEFC /* SKProduct+extension.swift in Sources */,
 				757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */,
+				756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				758BAD9624B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
 				75B38C00233E5B7C006BDEFC /* UIViewController+storyboard.swift in Sources */,
 				75B38C01233E5B7C006BDEFC /* FileInfoVC.swift in Sources */,
 				759BC62E2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
+				756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */,
 				75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */,
 				75BC562B2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
@@ -2963,7 +2963,6 @@
 				75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */,
 				75839A91246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
 				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
-				75B38C16233E5B7C006BDEFC /* ChooseKeyFileVC.swift in Sources */,
 				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */,
 				754D7C0B238C2135005652E1 /* KeyFileTextField.swift in Sources */,
@@ -3059,7 +3058,7 @@
 				758BADB824B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
 				75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
-				75D7DF80233E5E310029AD87 /* KeyFileChooserVC.swift in Sources */,
+				75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */,
 				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
 				75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
@@ -3092,7 +3091,7 @@
 				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
 				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,
-				759894BF24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
+				756F365926112A3B005A35DA /* FileDestructionHelper.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
 				75BFB1422481553D0017B980 /* DynamicFileList.swift in Sources */,
 				7572664E24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
@@ -3113,6 +3112,7 @@
 				75BE064225DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				753376F423CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				75D7DFA2233E5E310029AD87 /* LString.swift in Sources */,
+				756F364D260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75D7DFA3233E5E310029AD87 /* UILabel+extensions.swift in Sources */,
 				7572665D24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
@@ -3480,28 +3480,6 @@
 			name = ChooseDatabaseVC.storyboard;
 			sourceTree = "<group>";
 		};
-		751E0D182309AF5D0088BB10 /* ChooseKeyFileVC.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				751E0D172309AF5D0088BB10 /* Base */,
-				75ED4276231173E3003DE72E /* ru */,
-				75AC53642326FE6E000AA4FB /* nl */,
-				75AC538F2326FF7E000AA4FB /* zh-Hant */,
-				75AC53BC2327674B000AA4FB /* zh-Hans */,
-				75E4CA77232D0B0F00EB6805 /* de */,
-				75FDEF37233ABE9A00F17C26 /* cs */,
-				75FDEF63233ABEEC00F17C26 /* sv */,
-				75AC35D423549DE700B60614 /* es */,
-				756B244B243F74E000AA121A /* fr */,
-				754A324324426AA300632B39 /* it */,
-				7532823124A804A000A71F87 /* ja */,
-				754ABEB625AB8A5900B98A63 /* ar */,
-				754ABEEA25AB95D300B98A63 /* pl */,
-				754ABF1825AB969000B98A63 /* pt-BR */,
-			);
-			name = ChooseKeyFileVC.storyboard;
-			sourceTree = "<group>";
-		};
 		751E0D1B2309AF620088BB10 /* ChangeMasterKeyVC.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3722,7 +3700,7 @@
 			name = EntryFinderVC.storyboard;
 			sourceTree = "<group>";
 		};
-		751E0D3A2309B0120088BB10 /* KeyFileChooserVC.storyboard */ = {
+		751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				751E0D392309B0120088BB10 /* Base */,
@@ -3741,7 +3719,7 @@
 				754ABED825AB95D300B98A63 /* pl */,
 				754ABF0425AB968F00B98A63 /* pt-BR */,
 			);
-			name = KeyFileChooserVC.storyboard;
+			name = KeyFilePickerVC.storyboard;
 			sourceTree = "<group>";
 		};
 		752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */ = {

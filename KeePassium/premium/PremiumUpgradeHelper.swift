@@ -51,7 +51,7 @@ public class PremiumUpgradeHelper {
                     self?.premiumCoordinator = nil
                 }
                 self.premiumCoordinator?.start()
-                modalRouter.present(in: viewController, animated: true, completion: nil)
+                viewController.present(modalRouter, animated: true, completion: nil)
             }
         )
         let cancelAction = UIAlertAction(
