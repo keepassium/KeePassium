@@ -231,7 +231,7 @@ public class Settings {
             immediately, /*after5seconds, after15seconds, */after30seconds,
             after1minute, after2minutes, after5minutes, after10minutes,
             after30minutes, after1hour, after2hours, after4hours, after8hours,
-            after24hours, never]
+            after24hours, after7days, never]
         case never = -1
         case immediately = 0
         case after5seconds = 5
@@ -247,6 +247,7 @@ public class Settings {
         case after4hours = 14400
         case after8hours = 28800
         case after24hours = 86400
+        case after7days = 604800
 
         public var seconds: Int {
             return self.rawValue
@@ -272,7 +273,7 @@ public class Settings {
                     comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately'")
             default:
                 let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.allowedUnits = [.weekOfMonth, .day, .hour, .minute, .second]
                 formatter.collapsesLargestUnit = true
                 formatter.maximumUnitCount = 2
                 formatter.unitsStyle = .full
@@ -299,7 +300,7 @@ public class Settings {
                     comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately'")
             default:
                 let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.allowedUnits = [.weekOfMonth, .day, .hour, .minute, .second]
                 formatter.collapsesLargestUnit = true
                 formatter.maximumUnitCount = 2
                 formatter.unitsStyle = .brief
