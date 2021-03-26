@@ -339,6 +339,12 @@ public extension UIView {
         
         activeToasts.add(toast)
         self.addSubview(toast)
+
+        if let announcementText = toast.accessibilityLabel {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                UIAccessibility.post(notification: .announcement, argument: announcementText)
+            }
+        }
         
         UIView.animate(withDuration: ToastManager.shared.style.fadeDuration, delay: 0.0, options: [.curveEaseOut, .allowUserInteraction], animations: {
             toast.alpha = 1.0
@@ -514,9 +520,9 @@ public extension UIView {
             wrapperView.addSubview(imageView)
         }
         
+        wrapperView.accessibilityLabel = [title, message].compactMap { $0 }.joined(separator: ".")
         return wrapperView
     }
-    
 }
 
 
