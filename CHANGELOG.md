@@ -1,5 +1,17 @@
 #CHANGELOG
 
+## [1.23.85] - 2021-03-29
+
+### Improved
+
+- Added "1 week" database timeout option [thanks, as]
+
+### Fixed
+
+- Fixed processing of OTP parameters defined as otpauth URL [thanks, Marcel]
+- VoiceOver will announce toast notifications
+
+
 ## [1.22.84] - 2021-03-19
 
 ### Added

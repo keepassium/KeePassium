@@ -1,6 +1,24 @@
 {
     "sections": [
         {
+            "version": "1.23",
+            "releaseDate": "2021-03-29T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Refined: Added \"1 week\" database timeout option [thanks, as]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Processing of OTP parameters defined as otpauth URL [thanks, Marcel]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: VoiceOver will announce toast notifications",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.22",
             "releaseDate": "2021-03-19T00:00:00Z",
             "items": [
