@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ymj-cN-i1q">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ymj-cN-i1q">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -54,7 +54,7 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRQ-hf-Pd2" userLabel="Separator1">
                                                 <rect key="frame" x="0.0" y="44" width="250" height="2"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="fWO-s6-Q3h"/>
                                                 </constraints>
@@ -74,7 +74,7 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHO-Fw-vsa" userLabel="Separator2">
                                                 <rect key="frame" x="0.0" y="90" width="250" height="2"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Zy2-rC-4aE"/>
                                                 </constraints>
@@ -92,7 +92,7 @@
                                                 </attributedString>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="BRQ-hf-Pd2" secondAttribute="trailing" id="5rB-nM-Y3M"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="M9Q-v8-e6Q" secondAttribute="trailing" id="A4k-x6-sc4"/>
@@ -127,7 +127,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="xCb-0U-HF5" firstAttribute="centerX" secondItem="3zV-VG-oSJ" secondAttribute="centerX" id="1ql-z9-NFf"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lzF-lh-Cod" secondAttribute="trailing" constant="8" id="8Ua-5d-1bn"/>
@@ -147,6 +147,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="t5n-gM-kxn"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3zV-VG-oSJ" firstAttribute="trailing" secondItem="t5n-gM-kxn" secondAttribute="trailing" id="Lg1-nR-REW"/>
@@ -154,7 +155,6 @@
                             <constraint firstItem="3zV-VG-oSJ" firstAttribute="top" secondItem="t5n-gM-kxn" secondAttribute="top" id="USG-8y-SS6"/>
                             <constraint firstItem="t5n-gM-kxn" firstAttribute="bottom" secondItem="3zV-VG-oSJ" secondAttribute="bottom" priority="750" id="UgZ-pn-tp1" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="t5n-gM-kxn"/>
                     </view>
                     <navigationItem key="navigationItem" title="Change Master Key" id="JKD-iF-iwA">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pGz-3W-LJl">
@@ -186,15 +186,24 @@
             <point key="canvasLocation" x="757.5" y="-1100.7042253521126"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="ActionTint"/>
     <resources>
         <image name="database-cloud-listitem" width="29" height="29"/>
         <image name="warning-accessory" width="25" height="25"/>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="ErrorBackground">
             <color red="0.91900002956390381" green="0.24799999594688416" blue="0.14599999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
-    <color key="tintColor" name="ActionTint"/>
 </document>
