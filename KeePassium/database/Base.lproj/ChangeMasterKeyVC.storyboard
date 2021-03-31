@@ -175,6 +175,7 @@
                         <outlet property="databaseIcon" destination="a4q-gk-OB4" id="6Nm-70-GcT"/>
                         <outlet property="databaseNameLabel" destination="lzF-lh-Cod" id="N9a-Vq-Gch"/>
                         <outlet property="keyFileField" destination="M9Q-v8-e6Q" id="xBo-vx-X6f"/>
+                        <outlet property="keyboardAdjConstraint" destination="UgZ-pn-tp1" id="Nbt-71-UpU"/>
                         <outlet property="keyboardAdjView" destination="3zV-VG-oSJ" id="3Zm-Ve-fk5"/>
                         <outlet property="passwordField" destination="hYP-f0-K1s" id="4U6-kt-6H4"/>
                         <outlet property="passwordMismatchImage" destination="R8Q-C7-aGF" id="jcM-Yz-cE2"/>

@@ -18,6 +18,7 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     @IBOutlet weak var repeatPasswordField: ValidatingTextField!
     @IBOutlet weak var keyFileField: KeyFileTextField!
     @IBOutlet weak var passwordMismatchImage: UIImageView!
+    @IBOutlet weak var keyboardAdjConstraint: KeyboardLayoutConstraint!
     
     private var databaseRef: URLReference!
     private var keyFileRef: URLReference?
@@ -58,6 +59,7 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        updateKeyboardLayoutConstraints()
         passwordField.becomeFirstResponder()
         refresh()
     }
@@ -65,6 +67,23 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     func refresh() {
         let allValid = passwordField.isValid && repeatPasswordField.isValid && keyFileField.isValid
         navigationItem.rightBarButtonItem?.isEnabled = allValid
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        DispatchQueue.main.async { [weak self] in
+            self?.updateKeyboardLayoutConstraints()
+        }
+    }
+    
+    private func updateKeyboardLayoutConstraints() {
+        if let window = view.window {
+            let viewTop = view.convert(view.frame.origin, to: window).y
+            let viewHeight = view.frame.height
+            let windowHeight = window.frame.height
+            let viewBottomOffset = windowHeight - (viewTop + viewHeight)
+            keyboardAdjConstraint.viewOffset = viewBottomOffset
+        }
     }
     
     
