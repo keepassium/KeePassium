@@ -158,6 +158,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lxT-1h-16d">
                                                     <rect key="frame" x="255" y="10" width="51" height="24"/>
+                                                    <connections>
+                                                        <action selector="didToggleHideProtectedFieldsSwitch:" destination="4mh-X8-Byq" eventType="valueChanged" id="xxf-gp-kc6"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>

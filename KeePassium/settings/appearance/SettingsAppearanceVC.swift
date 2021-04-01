@@ -92,6 +92,11 @@ class SettingsAppearanceVC: UITableViewController {
         refresh()
     }
     
+    @IBAction func didToggleHideProtectedFieldsSwitch(_ sender: UISwitch) {
+        Settings.current.isHideProtectedFields = hideProtectedFieldsSwitch.isOn
+        refresh()
+    }
+    
     private func showAppIconSettings() {
         assert(appIconSwitcherCoordinator == nil)
         guard let router = router else { assertionFailure(); return }
