@@ -16,6 +16,11 @@ protocol ItemIconPickerDelegate {
     func didPressImportIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
 }
 
+final class ItemIconPickerSectionHeader: UICollectionReusableView {
+    @IBOutlet weak var separator: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+}
+
 final class ItemIconPickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
@@ -220,12 +225,13 @@ final class ItemIconPicker: UICollectionViewController, Refreshable {
 
         switch SectionID(rawValue: indexPath.section) {
         case .standard:
-            sectionHeader.title = LString.itemIconPickerStandardIcons
+            sectionHeader.titleLabel.text = LString.itemIconPickerStandardIcons
         case .custom:
-            sectionHeader.title = LString.itemIconPickerCustomIcons
+            sectionHeader.titleLabel.text = LString.itemIconPickerCustomIcons
         default:
             assertionFailure()
         }
+        sectionHeader.separator.isHidden = (indexPath.section == 0)
         return sectionHeader
     }
     
@@ -253,5 +259,29 @@ final class ItemIconPicker: UICollectionViewController, Refreshable {
             )
         }
         refresh()
+    }
+}
+
+extension ItemIconPicker: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
+        let header = self.collectionView(
+            collectionView,
+            viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader,
+            at: IndexPath(row: 0, section: section))
+            as! ItemIconPickerSectionHeader
+        
+        let horizontalMargins = collectionView.layoutMargins.left + collectionView.layoutMargins.right
+        let targetWidth = collectionView.bounds.width - horizontalMargins
+        var requiredLabelSize = header.titleLabel.sizeThatFits(
+            CGSize(width: targetWidth, height: .greatestFiniteMagnitude)
+        )
+        let verticalMargins = CGFloat(8 + 8)
+        requiredLabelSize.height += verticalMargins
+        return requiredLabelSize
     }
 }
