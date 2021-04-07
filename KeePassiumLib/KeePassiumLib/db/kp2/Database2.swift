@@ -100,7 +100,7 @@ public class Database2: Database {
     private(set) var header: Header2!
     private(set) var meta: Meta2!
     public var binaries: [Binary2.ID: Binary2] = [:]
-    public var customIcons: [UUID: CustomIcon2] { return meta.customIcons }
+    public var customIcons: [CustomIcon2] { return meta.customIcons }
     public var defaultUserName: String { return meta.defaultUserName }
     private var cipherKey = SecureByteArray()
     private var hmacKey = SecureByteArray()
@@ -1243,5 +1243,19 @@ public class Database2: Database {
         }
 
         return Attachment2(name: name, isCompressed: false, data: data)
+    }
+
+
+    @discardableResult
+    public func addCustomIcon(pngData: ByteArray) -> CustomIcon2 {
+        let candidateHash = pngData.sha256
+        if let existingIcon = customIcons.first(where: { $0.data.sha256 == candidateHash }) {
+            return existingIcon
+        }
+        
+        let newCustomIcon = CustomIcon2(uuid: UUID(), data: pngData)
+        meta.addCustomIcon(newCustomIcon)
+        Diag.debug("Custom icon added OK")
+        return newCustomIcon
     }
 }

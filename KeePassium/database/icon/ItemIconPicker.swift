@@ -11,13 +11,15 @@ import KeePassiumLib
 
 protocol ItemIconPickerDelegate {
     func didPressCancel(in viewController: ItemIconPicker)
-    func didSelectIcon(iconID: IconID?, in viewController: ItemIconPicker)
+    func didSelect(standardIcon iconID: IconID, in viewController: ItemIconPicker)
+    func didSelect(customIcon uuid: UUID, in viewController: ItemIconPicker)
+    func didPressImportIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
 }
 
-public class ItemIconPickerCell: UICollectionViewCell {
+final class ItemIconPickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
-    public override var isSelected: Bool {
+    override var isSelected: Bool {
         get { return super.isSelected }
         set {
             super.isSelected = newValue
@@ -25,7 +27,7 @@ public class ItemIconPickerCell: UICollectionViewCell {
         }
     }
     
-    public override var isHighlighted: Bool {
+    override var isHighlighted: Bool {
         get { return super.isHighlighted }
         set {
             super.isHighlighted = newValue
@@ -33,9 +35,10 @@ public class ItemIconPickerCell: UICollectionViewCell {
         }
     }
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
     }
+
     private func refresh() {
         let layer = contentView.layer
         if isHighlighted {
@@ -53,39 +56,72 @@ public class ItemIconPickerCell: UICollectionViewCell {
     }
 }
 
-class ItemIconPicker: UICollectionViewController {
+final class ItemIconPicker: UICollectionViewController, Refreshable {
     private let cellID = "IconCell"
+    private let headerCellID = "SectionHeader"
 
-    public var delegate: ItemIconPickerDelegate?
-    public var selectedIconID: IconID?
+    private enum SectionID: Int {
+        static let all: [SectionID] = [.standard, .custom]
+        
+        case standard = 0
+        case custom = 1
+    }
     
-    private var iconSet: DatabaseIconSet?
+    var delegate: ItemIconPickerDelegate?
+    var customIcons = [CustomIcon2]()
+    
+    var isImportAllowed = true
+
+    private let standardIconSet: DatabaseIconSet = Settings.current.databaseIconSet
+    private var selectedPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = false
         collectionView.allowsSelection = true
-        
-        iconSet = Settings.current.databaseIconSet
+
+        if isImportAllowed {
+            let importIconButton = UIBarButtonItem(
+                image: UIImage(asset: .createItemToolbar),
+                style: .plain,
+                target: self,
+                action: #selector(didPressImportIcon))
+            navigationItem.setRightBarButton(importIconButton, animated: false)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let selectedIconID = selectedIconID {
-            let selIndexPath = IndexPath(row: Int(selectedIconID.rawValue), section: 0)
-            collectionView.selectItem(
-                at: selIndexPath, animated: true,
-                scrollPosition: .centeredVertically)
+
+        guard let selectedPath = selectedPath else {
+            return
         }
+
+        collectionView.selectItem(
+            at: selectedPath, animated: true,
+            scrollPosition: .centeredVertically)
+    }
+    
+    func refresh() {
+        collectionView.reloadData()
     }
     
     
-    @IBAction func didPressCancel(_ sender: UIBarButtonItem) {
+    @IBAction private func didPressCancel(_ sender: UIBarButtonItem) {
         delegate?.didPressCancel(in: self)
     }
     
 
+    @objc private func didPressImportIcon(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressImportIcon(in: self, at: popoverAnchor)
+    }
+
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if customIcons.count > 0 {
+            return SectionID.all.count
+        }
         return 1
     }
 
@@ -93,7 +129,15 @@ class ItemIconPicker: UICollectionViewController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int
     {
-        return IconID.all.count
+        switch SectionID(rawValue: section) {
+        case .standard:
+            return IconID.all.count
+        case .custom:
+            return customIcons.count
+        default:
+            assertionFailure()
+            return 0
+        }
     }
 
     override func collectionView(
@@ -105,14 +149,34 @@ class ItemIconPicker: UICollectionViewController {
             withReuseIdentifier: cellID,
             for: indexPath)
             as! ItemIconPickerCell
-        DispatchQueue.global(qos: .userInitiated).async { [self] in
-            if let kpIcon = self.iconSet?.getIcon(IconID.all[indexPath.row]) {
-                DispatchQueue.main.async {
-                    cell.imageView.image = kpIcon
+        DispatchQueue.global(qos: .userInitiated).async {
+            [standardIconSet, customIcons] in
+            let kpIcon: UIImage?
+            switch SectionID(rawValue: indexPath.section) {
+            case .standard:
+                kpIcon = standardIconSet.getIcon(IconID.all[indexPath.row])
+            case .custom:
+                let iconBytes = customIcons[indexPath.row].data
+                kpIcon = UIImage(data: iconBytes.asData)
+            default:
+                assertionFailure()
+                kpIcon = nil
+            }
+
+            DispatchQueue.main.async {
+                let viewSize = cell.imageView.bounds
+                if let iconSize = kpIcon?.size,
+                   (iconSize.width > viewSize.width || iconSize.height > viewSize.height)
+                {
+                    cell.imageView.contentMode = .scaleAspectFit
+                } else {
+                    cell.imageView.contentMode = .center
                 }
+                cell.imageView.image = kpIcon
             }
         }
-        if let selectedRow = selectedIconID?.rawValue, selectedRow == indexPath.row {
+        
+        if let selectedPath = selectedPath, selectedPath == indexPath {
             cell.isHighlighted = true
         } else {
             cell.isHighlighted = false
@@ -124,9 +188,69 @@ class ItemIconPicker: UICollectionViewController {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath)
     {
-        if indexPath.row < IconID.all.count {
+        switch SectionID(rawValue: indexPath.section) {
+        case .standard:
+            guard indexPath.row < IconID.all.count else {
+                return
+            }
             let selectedIconID = IconID.all[indexPath.row]
-            delegate?.didSelectIcon(iconID: selectedIconID, in: self)
+            delegate?.didSelect(standardIcon: selectedIconID, in: self)
+        case .custom:
+            guard indexPath.row < customIcons.count else {
+                return
+            }
+            let selectedIcon = customIcons[indexPath.row]
+            delegate?.didSelect(customIcon: selectedIcon.uuid, in: self)
+        default:
+            assertionFailure()
         }
+    }
+
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: headerCellID,
+            for: indexPath)
+            as! ItemIconPickerSectionHeader
+
+        switch SectionID(rawValue: indexPath.section) {
+        case .standard:
+            sectionHeader.title = LString.itemIconPickerDefaultIcons
+        case .custom:
+            sectionHeader.title = LString.itemIconPickerCustomIcons
+        default:
+            assertionFailure()
+        }
+        return sectionHeader
+    }
+    
+    func selectIcon(for item: DatabaseItem?) {
+        guard let item = item else {
+            selectedPath = nil
+            refresh()
+            return
+        }
+
+        if let iconID = (item as? Group)?.iconID ?? (item as? Entry)?.iconID {
+            selectedPath = IndexPath(
+                row: Int(iconID.rawValue),
+                section: SectionID.standard.rawValue
+            )
+        }
+
+        let customIconUUID = (item as? Group2)?.customIconUUID ?? (item as? Entry2)?.customIconUUID
+        if let uuid = customIconUUID,
+           let iconIndex = customIcons.firstIndex(where: { $0.uuid == uuid })
+        {
+            selectedPath = IndexPath(
+                row: iconIndex,
+                section: SectionID.custom.rawValue
+            )
+        }
+        refresh()
     }
 }

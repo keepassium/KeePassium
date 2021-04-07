@@ -240,18 +240,31 @@ extension EditGroupVC: ItemIconPickerCoordinatorDelegate {
     func showIconPicker() {
         assert(itemIconPickerCoordinator == nil)
         
+        guard let database = DatabaseManager.shared.database else { return }
         guard let navVC = navigationController else { assertionFailure(); return }
+        
         let router = NavigationRouter(navVC)
-        itemIconPickerCoordinator = ItemIconPickerCoordinator(router: router)
+        itemIconPickerCoordinator = ItemIconPickerCoordinator(router: router, database: database)
+        itemIconPickerCoordinator!.item = group
         itemIconPickerCoordinator!.dismissHandler = { [weak self] (coordinator) in
             self?.itemIconPickerCoordinator = nil
         }
         itemIconPickerCoordinator!.delegate = self
-        itemIconPickerCoordinator!.start(selectedIconID: group.iconID)
+        itemIconPickerCoordinator!.start()
     }
     
     func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator) {
         group.iconID = standardIcon
+        if let group2 = group as? Group2 {
+            group2.customIconUUID = .ZERO
+        }
+        imageView.image = UIImage.kpIcon(forGroup: group)
+    }
+
+    func didSelectIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator) {
+        guard let group2 = group as? Group2 else { return }
+
+        group2.customIconUUID = customIcon
         imageView.image = UIImage.kpIcon(forGroup: group)
     }
 }
@@ -274,7 +287,6 @@ extension EditGroupVC: UITextFieldDelegate {
         return true
     }
 }
-
 
 extension EditGroupVC: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {

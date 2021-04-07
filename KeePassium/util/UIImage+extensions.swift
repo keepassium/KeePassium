@@ -85,7 +85,7 @@ extension UIImage {
     static func kpIcon(forEntry entry: Entry, iconSet: DatabaseIconSet?=nil) -> UIImage? {
         if let entry2 = entry as? Entry2,
             let db2 = entry2.database as? Database2,
-            let customIcon2 = db2.customIcons[entry2.customIconUUID],
+            let customIcon2 = db2.customIcons.first(where: { $0.uuid == entry2.customIconUUID }),
             let image = UIImage(data: customIcon2.data.asData) {
             return image
         }
@@ -96,11 +96,28 @@ extension UIImage {
     static func kpIcon(forGroup group: Group, iconSet: DatabaseIconSet?=nil) -> UIImage? {
         if let group2 = group as? Group2,
             let db2 = group2.database as? Database2,
-            let customIcon2 = db2.customIcons[group2.customIconUUID],
+            let customIcon2 = db2.customIcons.first(where: { $0.uuid == group2.customIconUUID }),
             let image = UIImage(data: customIcon2.data.asData) {
             return image
         }
         let _iconSet = iconSet ?? Settings.current.databaseIconSet
         return _iconSet.getIcon(group.iconID)
+    }
+
+    func downscalingToSquare(maxSide: CGFloat) -> UIImage? {
+        let targetSide: CGFloat
+        if size.width > maxSide && size.height > maxSide {
+            targetSide = maxSide
+        } else {
+            targetSide = min(size.width, size.height)
+        }
+        
+        let targetSize = CGSize(width: targetSide, height: targetSide)
+        UIGraphicsBeginImageContextWithOptions(targetSize, false, self.scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: targetSide, height: targetSide))
+        let resized = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resized
     }
 }

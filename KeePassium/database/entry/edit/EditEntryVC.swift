@@ -53,14 +53,9 @@ final class EditEntryVC: UITableViewController, DatabaseSaving, ProgressViewHost
     {
         let newEntry = group.createEntry()
         newEntry.populateStandardFields()
-        if group.iconID == Group.defaultIconID || group.iconID == Group.defaultOpenIconID {
-            newEntry.iconID = Entry.defaultIconID
-        } else {
-            newEntry.iconID = group.iconID
-        }
+
         
         if let newEntry2 = newEntry as? Entry2, let group2 = group as? Group2 {
-            newEntry2.customIconUUID = group2.customIconUUID
             newEntry2.rawUserName = (group2.database as? Database2)?.defaultUserName ?? ""
         }
         newEntry.rawTitle = LString.defaultNewEntryName
@@ -189,9 +184,9 @@ final class EditEntryVC: UITableViewController, DatabaseSaving, ProgressViewHost
     private func scanQRCode() {
         qrCodeScanner.scanQRCode(presenter: self) { [weak self] result in
             switch result {
-            case let .failure(error):
+            case .failure(let error):
                 self?.showNotification(error.localizedDescription)
-            case let .success(data):
+            case .success(let data):
                 self?.setOTPCode(data: data)
             }
         }
@@ -457,7 +452,6 @@ extension EditEntryVC: ValidatingTextFieldDelegate {
     }
 }
 
-
 extension EditEntryVC: EditableFieldCellDelegate {
     func didPressButton(field: EditableField, in cell: EditableFieldCell) {
         if cell is EditEntryTitleCell {
@@ -564,14 +558,21 @@ extension EditEntryVC: EditableFieldCellDelegate {
 extension EditEntryVC: ItemIconPickerCoordinatorDelegate {
     func showIconPicker(at popoverAnchor: PopoverAnchor) {
         assert(itemIconPickerCoordinator == nil)
+        guard let entry = entry,
+              let database = entry.database
+        else {
+            assertionFailure()
+            return
+        }
         
         let router = NavigationRouter(navigationController!)
-        itemIconPickerCoordinator = ItemIconPickerCoordinator(router: router)
+        itemIconPickerCoordinator = ItemIconPickerCoordinator(router: router, database: database)
+        itemIconPickerCoordinator!.item = entry
         itemIconPickerCoordinator!.dismissHandler = { [weak self] (coordinator) in
             self?.itemIconPickerCoordinator = nil
         }
         itemIconPickerCoordinator!.delegate = self
-        itemIconPickerCoordinator!.start(selectedIconID: entry?.iconID)
+        itemIconPickerCoordinator!.start()
     }
     
     func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator) {
@@ -579,6 +580,26 @@ extension EditEntryVC: ItemIconPickerCoordinatorDelegate {
         guard standardIcon != entry.iconID else { return }
         
         entry.iconID = standardIcon
+        if let entry2 = entry as? Entry2 {
+            entry2.customIconUUID = .ZERO
+        }
+
+        isModified = true
+        refresh()
+    }
+
+    func didSelectIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator) {
+        guard let entry = entry else { return }
+        guard let entry2 = entry as? Entry2 else {
+            assertionFailure();
+            return
+        }
+        
+        guard entry2.customIconUUID != customIcon else {
+            return
+        }
+
+        entry2.customIconUUID = customIcon
         isModified = true
         refresh()
     }

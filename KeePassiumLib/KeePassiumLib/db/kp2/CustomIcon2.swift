@@ -19,6 +19,10 @@ public class CustomIcon2: Eraseable {
         uuid = UUID.ZERO
         data = ByteArray()
     }
+    public init(uuid: UUID, data: ByteArray) {
+        self.uuid = uuid
+        self.data = data
+    }
     deinit {
         erase()
     }

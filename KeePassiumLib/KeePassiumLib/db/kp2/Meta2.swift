@@ -103,7 +103,7 @@ final class Meta2: Eraseable {
     private(set) var lastSelectedGroupUUID: UUID
     private(set) var lastTopVisibleGroupUUID: UUID
     private(set) var customData: CustomData2
-    private(set) var customIcons: [UUID: CustomIcon2]
+    private(set) var customIcons: [CustomIcon2]
     
     init(database: Database2) {
         self.database = database
@@ -132,7 +132,7 @@ final class Meta2: Eraseable {
         lastSelectedGroupUUID = UUID.ZERO
         lastTopVisibleGroupUUID = UUID.ZERO
         customData = CustomData2()
-        customIcons = [:]
+        customIcons = []
     }
     deinit {
         erase()
@@ -164,7 +164,7 @@ final class Meta2: Eraseable {
         lastSelectedGroupUUID.erase()
         lastTopVisibleGroupUUID.erase()
         customData.erase()
-        customIcons.removeAll() 
+        customIcons.erase()
     }
     
     func loadDefaultValuesV4() {
@@ -270,7 +270,7 @@ final class Meta2: Eraseable {
             case Xml2.icon:
                 let icon = CustomIcon2()
                 try icon.load(xml: tag) 
-                customIcons[icon.uuid] = icon
+                customIcons.append(icon)
                 Diag.verbose("Custom icon loaded OK")
             default:
                 Diag.error("Unexpected XML tag in Meta/CustomIcons: \(tag.name)")
@@ -438,7 +438,7 @@ final class Meta2: Eraseable {
             return nil
         } else {
             let xmlCustomIcons = AEXMLElement(name: Xml2.customIcons)
-            for customIcon in customIcons.values {
+            for customIcon in customIcons {
                 xmlCustomIcons.addChild(customIcon.toXml())
             }
             return xmlCustomIcons
@@ -468,5 +468,9 @@ final class Meta2: Eraseable {
         masterKeyChangedTime = time
         recycleBinChangedTime = time
         entryTemplatesGroupChangedTime = time
+    }
+    
+    func addCustomIcon(_ icon: CustomIcon2) {
+        customIcons.append(icon)
     }
 }

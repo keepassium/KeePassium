@@ -64,18 +64,22 @@ public class Group2: Group {
         return copy
     }
     
-    func apply(to target: Group2, makeNewUUID: Bool) {
+    override public func apply(to target: Group, makeNewUUID: Bool) {
         super.apply(to: target, makeNewUUID: makeNewUUID)
-        
-        target.isExpanded = isExpanded
-        target.customIconUUID = customIconUUID
-        target.defaultAutoTypeSequence = defaultAutoTypeSequence
-        target.isAutoTypeEnabled = isAutoTypeEnabled
-        target.isSearchingEnabled = isSearchingEnabled
-        target.lastTopVisibleEntryUUID = lastTopVisibleEntryUUID
-        target.usageCount = usageCount
-        target.locationChangedTime = locationChangedTime
-        target.customData = customData.clone()
+        guard let targetGroup2 = target as? Group2 else {
+            Diag.warning("Tried to apply group state to unexpected group class")
+            assertionFailure()
+            return
+        }
+        targetGroup2.isExpanded = isExpanded
+        targetGroup2.customIconUUID = customIconUUID
+        targetGroup2.defaultAutoTypeSequence = defaultAutoTypeSequence
+        targetGroup2.isAutoTypeEnabled = isAutoTypeEnabled
+        targetGroup2.isSearchingEnabled = isSearchingEnabled
+        targetGroup2.lastTopVisibleEntryUUID = lastTopVisibleEntryUUID
+        targetGroup2.usageCount = usageCount
+        targetGroup2.locationChangedTime = locationChangedTime
+        targetGroup2.customData = customData.clone()
     }
     
     override public func createEntry() -> Entry {
@@ -86,6 +90,7 @@ public class Group2: Group {
         if iconID != Group.defaultIconID && iconID != Group.defaultOpenIconID {
             newEntry.iconID = self.iconID
         }
+        newEntry.customIconUUID = self.customIconUUID
         
         self.add(entry: newEntry)
         return newEntry

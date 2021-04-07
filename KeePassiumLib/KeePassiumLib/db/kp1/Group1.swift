@@ -76,12 +76,16 @@ public class Group1: Group {
         return copy
     }
     
-    public func apply(to target: Group1, makeNewUUID: Bool) {
+    override public func apply(to target: Group, makeNewUUID: Bool) {
         super.apply(to: target, makeNewUUID: makeNewUUID)
-        
-        target.id = id
-        target.level = level
-        target.flags = flags
+        guard let targetGroup1 = target as? Group1 else {
+            Diag.warning("Tried to apply group state to unexpected group class")
+            assertionFailure()
+            return
+        }
+        targetGroup1.id = id
+        targetGroup1.level = level
+        targetGroup1.flags = flags
     }
     
     override public func add(group: Group) {
@@ -105,9 +109,7 @@ public class Group1: Group {
         let newEntry = Entry1(database: database)
         newEntry.uuid = UUID()
         
-        if self.iconID == Group.defaultIconID {
-            newEntry.iconID = Entry.defaultIconID
-        } else {
+        if self.iconID != Group.defaultIconID && self.iconID != Group.defaultOpenIconID {
             newEntry.iconID = self.iconID
         }
         

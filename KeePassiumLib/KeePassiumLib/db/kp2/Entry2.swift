@@ -296,25 +296,30 @@ public class Entry2: Entry {
         return newEntry
     }
 
-    func apply(to target: Entry2, makeNewUUID: Bool) {
+    override public func apply(to target: Entry, makeNewUUID: Bool) {
         super.apply(to: target, makeNewUUID: makeNewUUID)
-        target.customIconUUID = self.customIconUUID
-        target.foregroundColor = self.foregroundColor
-        target.backgroundColor = self.backgroundColor
-        target.overrideURL = self.overrideURL
-        target.tags = self.tags
+        guard let targetEntry2 = target as? Entry2 else {
+            Diag.warning("Tried to apply entry state to unexpected entry class")
+            assertionFailure()
+            return
+        }
+        targetEntry2.customIconUUID = self.customIconUUID
+        targetEntry2.foregroundColor = self.foregroundColor
+        targetEntry2.backgroundColor = self.backgroundColor
+        targetEntry2.overrideURL = self.overrideURL
+        targetEntry2.tags = self.tags
         
-        target.autoType = self.autoType.clone()
+        targetEntry2.autoType = self.autoType.clone()
         
-        target.canExpire = self.canExpire
-        target.usageCount = self.usageCount
-        target.locationChangedTime = self.locationChangedTime
-        target.customData = self.customData.clone()
+        targetEntry2.canExpire = self.canExpire
+        targetEntry2.usageCount = self.usageCount
+        targetEntry2.locationChangedTime = self.locationChangedTime
+        targetEntry2.customData = self.customData.clone()
 
-        target.history.removeAll()
+        targetEntry2.history.removeAll()
         for histEntry in history {
             let histEntryClone = histEntry.clone(makeNewUUID: makeNewUUID) as! Entry2
-            target.history.append(histEntryClone)
+            targetEntry2.history.append(histEntryClone)
         }
     }
     

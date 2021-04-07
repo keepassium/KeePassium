@@ -90,8 +90,13 @@ public class Entry1: Entry {
         return newEntry
     }
 
-    func apply(to target: Entry1, makeNewUUID: Bool) {
-        super.apply(to: target, makeNewUUID: makeNewUUID)
+    override public func apply(to target: Entry, makeNewUUID: Bool) {
+        super.apply(to: target, makeNewUUID: makeNewUUID) 
+        guard target is Entry1 else {
+            Diag.warning("Tried to apply entry state to unexpected entry class")
+            assertionFailure()
+            return
+        }
     }
     
     func load(from stream: ByteArray.InputStream) throws {

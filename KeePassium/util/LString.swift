@@ -479,6 +479,24 @@ public enum LString {
         value: "One-time password is already configured for this entry. Do you want to overwrite it?",
         comment: "Message to confirm user intentions"
     )
+
+    public static let itemIconPickerDefaultIcons = NSLocalizedString(
+        "[EditEntry/ItemIconPicker/Scan/DefaultIcons]",
+        value: "Default icons",
+        comment: "Default icons section title in the Item Icon Picker"
+    )
+
+    public static let itemIconPickerCustomIcons = NSLocalizedString(
+        "[EditEntry/ItemIconPicker/CustomIcons]",
+        value: "Custom icons",
+        comment: "Custom icons section title in the Item Icon Picker"
+    )
+
+    public static let itemIconPickerError = NSLocalizedString(
+        "[EditEntry/ItemIconPicker/Error]",
+        value: "Failed to load selected image",
+        comment: "Error message when processing selected image fails"
+    )
     
     public static func directionAwareConcatenate(_ parts: [String]) -> String {
         if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
