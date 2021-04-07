@@ -86,6 +86,7 @@ final class ItemIconPicker: UICollectionViewController, Refreshable {
                 style: .plain,
                 target: self,
                 action: #selector(didPressImportIcon))
+            importIconButton.accessibilityLabel = LString.actionAddCustomIcon
             navigationItem.setRightBarButton(importIconButton, animated: false)
         }
     }

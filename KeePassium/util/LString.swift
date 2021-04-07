@@ -496,6 +496,10 @@ public enum LString {
         "[EditEntry/ItemIconPicker/Error]",
         value: "Failed to load selected image",
         comment: "Error message when processing selected image fails"
+    public static let actionAddCustomIcon = NSLocalizedString(
+        "[Database/CustomIcon/add]",
+        value: "Add Custom Icon",
+        comment: "Action: add/import an image as a custom icon"
     )
     
     public static func directionAwareConcatenate(_ parts: [String]) -> String {
