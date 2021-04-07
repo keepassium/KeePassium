@@ -462,6 +462,7 @@ public enum LString {
         value: "Touch the key",
         comment: "Call for action: touch the sides of YubiKey 5Ci to continue")
 
+    
     public static let otpSetupOTPAction = NSLocalizedString(
         "[OTP/Setup]",
         value: "Setup one-time password (OTP)",
@@ -480,22 +481,19 @@ public enum LString {
         comment: "Message to confirm user intentions"
     )
 
-    public static let itemIconPickerDefaultIcons = NSLocalizedString(
-        "[EditEntry/ItemIconPicker/Scan/DefaultIcons]",
-        value: "Default icons",
-        comment: "Default icons section title in the Item Icon Picker"
+    
+    public static let itemIconPickerStandardIcons = NSLocalizedString(
+        "[ItemIconPicker/StandardIcons]",
+        value: "Standard Icons",
+        comment: "Title of a list with standard/default icons for groups and entries"
     )
 
     public static let itemIconPickerCustomIcons = NSLocalizedString(
-        "[EditEntry/ItemIconPicker/CustomIcons]",
-        value: "Custom icons",
-        comment: "Custom icons section title in the Item Icon Picker"
+        "[ItemIconPicker/CustomIcons]",
+        value: "Custom Icons",
+        comment: "Title of a list with custom (user-imported) icons for groups and entries"
     )
 
-    public static let itemIconPickerError = NSLocalizedString(
-        "[EditEntry/ItemIconPicker/Error]",
-        value: "Failed to load selected image",
-        comment: "Error message when processing selected image fails"
     public static let actionAddCustomIcon = NSLocalizedString(
         "[Database/CustomIcon/add]",
         value: "Add Custom Icon",

@@ -115,8 +115,8 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
                 if let iconImage = image?.downscalingToSquare(maxSide: maxSide) {
                     self.addCustomIcon(iconImage)
                 }
-            case .failure:
-                viewController.showErrorAlert(LString.itemIconPickerError)
+            case .failure(let error):
+                viewController.showErrorAlert(error, title: LString.titleError)
             }
         }
     }

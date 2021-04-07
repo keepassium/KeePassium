@@ -220,7 +220,7 @@ final class ItemIconPicker: UICollectionViewController, Refreshable {
 
         switch SectionID(rawValue: indexPath.section) {
         case .standard:
-            sectionHeader.title = LString.itemIconPickerDefaultIcons
+            sectionHeader.title = LString.itemIconPickerStandardIcons
         case .custom:
             sectionHeader.title = LString.itemIconPickerCustomIcons
         default:
