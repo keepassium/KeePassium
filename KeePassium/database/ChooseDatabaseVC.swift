@@ -35,7 +35,7 @@ class AppLockSetupCell: UITableViewCell {
 }
 
 
-class ChooseDatabaseVC: TableViewControllerWithContext, DynamicFileList, Refreshable {
+class ChooseDatabaseVC: TableViewControllerWithContextActions, DynamicFileList, Refreshable {
     
     private enum CellID: String {
         case fileItem = "FileItemCell"
@@ -528,13 +528,13 @@ class ChooseDatabaseVC: TableViewControllerWithContext, DynamicFileList, Refresh
     override func getContextActionsForRow(
         at indexPath: IndexPath,
         forSwipe: Bool
-    ) -> [TableRowAction] {
+    ) -> [ContextualAction] {
         let cellType = getCellType(for: indexPath)
         let isEditableRow = cellType == .fileItem
         guard isEditableRow else { return [] }
 
         let urlRef = databaseRefs[indexPath.row]
-        let exportAction = TableRowAction(
+        let exportAction = ContextualAction(
             title: LString.actionExport,
             imageName: .squareAndArrowUp,
             style: .default,
@@ -545,7 +545,7 @@ class ChooseDatabaseVC: TableViewControllerWithContext, DynamicFileList, Refresh
         )
         
         let destructiveActionTitle = DestructiveFileAction.get(for: urlRef.location).title
-        let destructiveAction = TableRowAction(
+        let destructiveAction = ContextualAction(
             title: destructiveActionTitle,
             imageName: .trash,
             style: .destructive,

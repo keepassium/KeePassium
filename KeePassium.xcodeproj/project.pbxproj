@@ -68,10 +68,10 @@
 		751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */; };
 		751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71C21C98D620025C706 /* SupportEmailComposer.swift */; };
-		75267CFE25FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
-		75267CFF25FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
-		75267D0025FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
-		75267D0125FF75E300A1CC95 /* TableRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* TableRowAction.swift */; };
+		75267CFE25FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
+		75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
+		75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
+		75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
 		7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAE8211416170093B117 /* SettingsAppLockVC.swift */; };
 		7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
@@ -525,6 +525,10 @@
 		75B5FB7720D53EA700D402D9 /* ViewEntryFieldsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */; };
 		75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75B5FB7B20D61BC000D402D9 /* ViewableEntryFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */; };
+		75B786FD261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */; };
+		75B786FE261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */; };
+		75B786FF261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */; };
+		75B78700261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */; };
 		75BC562125818563002B4395 /* LString+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759992EF24B6140D006CC379 /* LString+premium.swift */; };
 		75BC562425818564002B4395 /* LString+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759992EF24B6140D006CC379 /* LString+premium.swift */; };
 		75BC56292581872B002B4395 /* AccessibilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC56282581872B002B4395 /* AccessibilityHelper.swift */; };
@@ -797,7 +801,7 @@
 		751E0D5B2309B0520088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75209D73231B1C760010E142 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/WelcomeVC.strings; sourceTree = "<group>"; };
 		7523F71C21C98D620025C706 /* SupportEmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportEmailComposer.swift; sourceTree = "<group>"; };
-		75267CFD25FF75E300A1CC95 /* TableRowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowAction.swift; sourceTree = "<group>"; };
+		75267CFD25FF75E300A1CC95 /* ContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualAction.swift; sourceTree = "<group>"; };
 		7527CC5125F51DFD000E8661 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
 		7527CC5225F52005000E8661 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
 		7527CC5325F52020000E8661 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
@@ -1414,6 +1418,7 @@
 		75B5FB7620D53EA700D402D9 /* ViewEntryFieldsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFieldsVC.swift; sourceTree = "<group>"; };
 		75B5FB7820D6101100D402D9 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewableEntryFieldFactory.swift; sourceTree = "<group>"; };
+		75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerWithContextActions.swift; sourceTree = "<group>"; };
 		75BC56282581872B002B4395 /* AccessibilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityHelper.swift; sourceTree = "<group>"; };
 		75BD8CB825F58EA700877033 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		75BD8CBA25F58ED700877033 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -1894,6 +1899,7 @@
 			isa = PBXGroup;
 			children = (
 				75BC562725818702002B4395 /* a11y */,
+				75B78705261F8979005BE7B7 /* context-menu */,
 				753376F023CA650C00603F4A /* PasswordStringHelper.swift */,
 				75F4ACFB21776F4800B22D8B /* LString.swift */,
 				75679ACA22F8095F00372301 /* AppInfo.swift */,
@@ -1933,7 +1939,6 @@
 				75BE05F925DAA5A200B34CC0 /* URLOpener.swift */,
 				75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */,
 				75DDA56525F3E19900708750 /* UIWindow+extensions.swift */,
-				75267CFD25FF75E300A1CC95 /* TableRowAction.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2137,6 +2142,15 @@
 				7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		75B78705261F8979005BE7B7 /* context-menu */ = {
+			isa = PBXGroup;
+			children = (
+				75267CFD25FF75E300A1CC95 /* ContextualAction.swift */,
+				75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */,
+			);
+			path = "context-menu";
 			sourceTree = "<group>";
 		};
 		75BC562725818702002B4395 /* a11y */ = {
@@ -2695,6 +2709,7 @@
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				7532A24D21C5A035005DF56F /* KeyFilePickerVC.swift in Sources */,
+				75B786FE261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				75A5312423C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
@@ -2707,7 +2722,7 @@
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
-				75267CFF25FF75E300A1CC95 /* TableRowAction.swift in Sources */,
+				75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				75814FD325F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
 				75BC562A2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
@@ -2802,6 +2817,7 @@
 				759BCEB02144E6E8002FC18B /* RootSplitVC.swift in Sources */,
 				759992F024B6140D006CC379 /* LString+premium.swift in Sources */,
 				75DDA56625F3E19900708750 /* UIWindow+extensions.swift in Sources */,
+				75B786FD261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				758BADB224B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
 				7572665024CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */,
@@ -2869,7 +2885,7 @@
 				757FB3CA21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				7573FD8B2321664F00DCDA5A /* MultilineButton.swift in Sources */,
 				7546FBC120BFB8DD00C5D834 /* WelcomeVC.swift in Sources */,
-				75267CFE25FF75E300A1CC95 /* TableRowAction.swift in Sources */,
+				75267CFE25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */,
 				7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */,
 				75A5312123C0D2D400900ED1 /* Coordinator.swift in Sources */,
@@ -2947,6 +2963,7 @@
 				75B38C06233E5B7C006BDEFC /* RootSplitVC.swift in Sources */,
 				759992F124B6140D006CC379 /* LString+premium.swift in Sources */,
 				75DDA56725F3E19900708750 /* UIWindow+extensions.swift in Sources */,
+				75B786FF261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				758BADB324B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
 				7572665224CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75B38C07233E5B7C006BDEFC /* ChangeMasterKeyVC.swift in Sources */,
@@ -3034,7 +3051,7 @@
 				75E60ADD25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */,
 				7579A06B24F074D500C98F24 /* AppHistory.swift in Sources */,
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
-				75267D0025FF75E300A1CC95 /* TableRowAction.swift in Sources */,
+				75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
@@ -3065,6 +3082,7 @@
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
 				75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */,
+				75B78700261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
 				75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
@@ -3077,7 +3095,7 @@
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
 				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
-				75267D0125FF75E300A1CC95 /* TableRowAction.swift in Sources */,
+				75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
 				75814FD525F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
 				75BC562C2581872B002B4395 /* AccessibilityHelper.swift in Sources */,

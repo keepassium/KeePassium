@@ -15,8 +15,12 @@ class GroupViewListCell: UITableViewCell {
     @IBOutlet weak var subtitleLabel: UILabel!
 }
 
-final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, ProgressViewHost, Refreshable {
-    
+final class ViewGroupVC:
+    TableViewControllerWithContextActions,
+    DatabaseSaving,
+    ProgressViewHost,
+    Refreshable
+{
     private enum CellID {
         static let emptyGroup = "EmptyGroupCell"
         static let group = "GroupCell"
@@ -593,12 +597,15 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
     }
 
     
-    override func getContextActionsForRow(at indexPath: IndexPath, forSwipe: Bool) -> [TableRowAction] {
+    override func getContextActionsForRow(
+        at indexPath: IndexPath,
+        forSwipe: Bool
+    ) -> [ContextualAction] {
         guard getItem(at: indexPath) != nil else {
             return []
         }
         
-        let editAction = TableRowAction(
+        let editAction = ContextualAction(
             title: LString.actionEdit,
             imageName: .squareAndPencil,
             style: .default,
@@ -607,7 +614,7 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
                 self?.onEditItemAction(at: indexPath)
             }
         )
-        let deleteAction = TableRowAction(
+        let deleteAction = ContextualAction(
             title: LString.actionDelete,
             imageName: .trash,
             style: .destructive,
@@ -627,7 +634,7 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
             return [deleteAction]
         }
         
-        let moveAction = TableRowAction(
+        let moveAction = ContextualAction(
             title: LString.actionMove,
             imageName: .folder,
             style: .default,
@@ -635,7 +642,7 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
                 self?.onRelocateItemAction(at: indexPath, mode: .move)
             }
         )
-        let copyAction = TableRowAction(
+        let copyAction = ContextualAction(
             title: LString.actionCopy,
             imageName: .docOnDoc,
             style: .default,
@@ -644,7 +651,7 @@ final class ViewGroupVC: TableViewControllerWithContext, DatabaseSaving, Progres
             }
         )
 
-        var actions = [TableRowAction]()
+        var actions = [ContextualAction]()
         if let entry = getEntry(at: indexPath) {
             if canEdit(entry) {
                 actions.append(editAction)

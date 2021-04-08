@@ -21,7 +21,7 @@ protocol KeyFilePickerDelegate: class {
         at popoverAnchor: PopoverAnchor)
 }
 
-class KeyFilePickerVC: TableViewControllerWithContext, Refreshable {
+class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable {
     private enum CellID {
         static let noKeyFile = "NoKeyFileCell"
         static let keyFile = "KeyFileCell"
@@ -204,13 +204,16 @@ class KeyFilePickerVC: TableViewControllerWithContext, Refreshable {
         delegate?.didPressRemoveOrDeleteFile(in: self, keyFile: fileRef, at: popoverAnchor)
     }
     
-    override func getContextActionsForRow(at indexPath: IndexPath, forSwipe: Bool) -> [TableRowAction] {
+    override func getContextActionsForRow(
+        at indexPath: IndexPath,
+        forSwipe: Bool
+    ) -> [ContextualAction] {
         guard let fileRef = getFileForRow(at: indexPath) else {
             return []
         }
         
         let destructiveActionTitle = DestructiveFileAction.get(for: fileRef.location).title
-        let destructiveAction = TableRowAction(
+        let destructiveAction = ContextualAction(
             title: destructiveActionTitle,
             imageName: .trash,
             style: .destructive,
