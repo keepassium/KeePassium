@@ -14,6 +14,7 @@ protocol ItemIconPickerDelegate {
     func didSelect(standardIcon iconID: IconID, in viewController: ItemIconPicker)
     func didSelect(customIcon uuid: UUID, in viewController: ItemIconPicker)
     func didPressImportIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
+    func didDelete(customIcon uuid: UUID, in viewController: ItemIconPicker)
 }
 
 final class ItemIconPickerSectionHeader: UICollectionReusableView {
@@ -61,7 +62,7 @@ final class ItemIconPickerCell: UICollectionViewCell {
     }
 }
 
-final class ItemIconPicker: UICollectionViewController, Refreshable {
+final class ItemIconPicker: CollectionViewControllerWithContextActions, Refreshable {
     private let cellID = "IconCell"
     private let headerCellID = "SectionHeader"
 
@@ -121,6 +122,29 @@ final class ItemIconPicker: UICollectionViewController, Refreshable {
     @objc private func didPressImportIcon(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressImportIcon(in: self, at: popoverAnchor)
+    }
+    
+    override func getContextActionsForItem(at indexPath: IndexPath) -> [ContextualAction] {
+        guard SectionID(rawValue: indexPath.section) == .some(.custom) else {
+            return []
+        }
+        let iconIndex = indexPath.item
+        guard iconIndex >= 0 && iconIndex < customIcons.count else {
+            return []
+        }
+        
+        let deleteAction = ContextualAction(
+            title: LString.actionDelete,
+            imageName: .trash,
+            style: .destructive,
+            color: .destructiveTint,
+            handler: { [weak self] in
+                guard let self = self else { return }
+                let targetIcon = self.customIcons[iconIndex]
+                self.delegate?.didDelete(customIcon: targetIcon.uuid, in: self)
+            }
+        )
+        return [deleteAction]
     }
 
     

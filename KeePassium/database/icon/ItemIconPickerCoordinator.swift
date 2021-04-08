@@ -67,6 +67,7 @@ class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
         iconPicker.refresh()
     }
     
+    
     private func addCustomIcon(_ image: UIImage) {
         guard let db2 = database as? Database2 else {
             assertionFailure()
@@ -79,6 +80,16 @@ class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
         db2.addCustomIcon(pngData: ByteArray(data: pngData))
         refresh()
         saveDatabase()
+    }
+    
+    private func deleteCustomIcon(uuid: UUID) {
+        guard let db2 = database as? Database2 else {
+            assertionFailure()
+            return
+        }
+        db2.deleteCustomIcon(uuid: uuid)
+        saveDatabase()
+        refresh() 
     }
     
     private func saveDatabase() {
@@ -102,7 +113,11 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
         delegate?.didSelectIcon(customIcon: uuid, in: self)
         router.pop(animated: true)
     }
-        
+    
+    func didDelete(customIcon uuid: UUID, in viewController: ItemIconPicker) {
+        deleteCustomIcon(uuid: uuid)
+    }
+    
     func didPressImportIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor) {
         if photoPicker == nil {
             photoPicker = PhotoPickerFactory.makePhotoPicker()

@@ -473,4 +473,8 @@ final class Meta2: Eraseable {
     func addCustomIcon(_ icon: CustomIcon2) {
         customIcons.append(icon)
     }
+    
+    func deleteCustomIcon(uuid: UUID) {
+        customIcons.removeAll(where: { $0.uuid == uuid })
+    }
 }

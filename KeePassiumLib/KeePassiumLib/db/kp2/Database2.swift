@@ -1258,4 +1258,15 @@ public class Database2: Database {
         Diag.debug("Custom icon added OK")
         return newCustomIcon
     }
+    
+    @discardableResult
+    public func deleteCustomIcon(uuid: UUID) -> Bool {
+        guard customIcons.contains(where: { $0.uuid == uuid }) else {
+            Diag.warning("Tried to delete non-existent custom icon")
+            return false
+        }
+        meta.deleteCustomIcon(uuid: uuid)
+        Diag.debug("Custom icon deleted OK")
+        return true
+    }
 }
