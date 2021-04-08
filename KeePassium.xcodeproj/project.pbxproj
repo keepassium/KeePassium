@@ -529,6 +529,10 @@
 		75B786FE261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */; };
 		75B786FF261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */; };
 		75B78700261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */; };
+		75B7870E261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B7870D261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift */; };
+		75B7870F261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B7870D261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift */; };
+		75B78710261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B7870D261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift */; };
+		75B78711261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B7870D261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift */; };
 		75BC562125818563002B4395 /* LString+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759992EF24B6140D006CC379 /* LString+premium.swift */; };
 		75BC562425818564002B4395 /* LString+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759992EF24B6140D006CC379 /* LString+premium.swift */; };
 		75BC56292581872B002B4395 /* AccessibilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC56282581872B002B4395 /* AccessibilityHelper.swift */; };
@@ -1419,6 +1423,7 @@
 		75B5FB7820D6101100D402D9 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewableEntryFieldFactory.swift; sourceTree = "<group>"; };
 		75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerWithContextActions.swift; sourceTree = "<group>"; };
+		75B7870D261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewControllerWithContextActions.swift; sourceTree = "<group>"; };
 		75BC56282581872B002B4395 /* AccessibilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityHelper.swift; sourceTree = "<group>"; };
 		75BD8CB825F58EA700877033 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		75BD8CBA25F58ED700877033 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -2149,6 +2154,7 @@
 			children = (
 				75267CFD25FF75E300A1CC95 /* ContextualAction.swift */,
 				75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */,
+				75B7870D261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift */,
 			);
 			path = "context-menu";
 			sourceTree = "<group>";
@@ -2734,6 +2740,7 @@
 				7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */,
 				750CFBD921BAD7FF00E62B09 /* Refreshable.swift in Sources */,
 				757FB3D021F9C52600F016FA /* UITableViewCell+extension.swift in Sources */,
+				75B7870F261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				758CA5452569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75CFBE2A21C2BDDF0029A80A /* DatabaseUnlockerVC.swift in Sources */,
 				7575B24922D8476300B84B3F /* SearchHelper+extensions.swift in Sources */,
@@ -2865,6 +2872,7 @@
 				75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				75BE091F2509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */,
 				75C94C5F20B4BAB0004FA29D /* ViewEntryFilesVC.swift in Sources */,
+				75B7870E261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				7542D2422129640F00C8A926 /* String+extensions.swift in Sources */,
 				7537FEBE249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */,
@@ -3011,6 +3019,7 @@
 				75BE09202509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */,
 				75B38C2A233E5B7C006BDEFC /* ViewEntryFilesVC.swift in Sources */,
 				75B38C2B233E5B7C006BDEFC /* String+extensions.swift in Sources */,
+				75B78710261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				7537FEC0249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				75B38C2C233E5B7C006BDEFC /* ProgressOverlay.swift in Sources */,
 				75B38C2D233E5B7C006BDEFC /* LAContext+biometrics.swift in Sources */,
@@ -3107,6 +3116,7 @@
 				75D7DF8D233E5E310029AD87 /* MultilineButton.swift in Sources */,
 				75D7DF8E233E5E310029AD87 /* Refreshable.swift in Sources */,
 				75D7DF8F233E5E310029AD87 /* UITableViewCell+extension.swift in Sources */,
+				75B78711261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				758CA5472569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75D7DF90233E5E310029AD87 /* DatabaseUnlockerVC.swift in Sources */,
 				75D7DF91233E5E310029AD87 /* SearchHelper+extensions.swift in Sources */,

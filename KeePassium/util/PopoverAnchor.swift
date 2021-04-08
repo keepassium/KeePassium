@@ -39,6 +39,13 @@ struct PopoverAnchor {
         self.sourceRect = tableView.rectForRow(at: indexPath)
     }
     
+    init(collectionView: UICollectionView, at indexPath: IndexPath) {
+        self.kind = .viewRect
+        self.barButtonItem = nil
+        self.sourceView = collectionView
+        self.sourceRect = collectionView.layoutAttributesForItem(at: indexPath)?.frame
+    }
+    
     public func apply(to popover: UIPopoverPresentationController?) {
         guard let popover = popover else { return }
         switch kind {
@@ -48,7 +55,7 @@ struct PopoverAnchor {
         case .viewRect:
             assert(sourceView != nil && sourceRect != nil)
             popover.sourceView = sourceView
-            popover.sourceRect = sourceRect!
+            popover.sourceRect = sourceRect ?? CGRect.zero
         }
     }
 }
