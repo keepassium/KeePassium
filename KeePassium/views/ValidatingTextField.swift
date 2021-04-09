@@ -62,9 +62,9 @@ class ValidatingTextField: UITextField {
         } else if (wasValid ?? true) { 
             backgroundColor = invalidBackgroundColor
         }
-        if isValid != wasValid {
+        if (wasValid == nil) || (isValid != wasValid) {
+            wasValid = isValid
             validityDelegate?.validatingTextField(self, validityDidChange: isValid)
         }
-        wasValid = isValid
     }
 }

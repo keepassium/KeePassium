@@ -71,6 +71,7 @@ final class ViewGroupVC:
     var databaseExporterTemporaryURL: TemporaryFileURL?
     
     var itemRelocationCoordinator: ItemRelocationCoordinator?
+    var groupEditorCoordinator: GroupEditorCoordinator?
     
     static func make(group: Group?, loadingWarnings: DatabaseLoadingWarnings?=nil) -> ViewGroupVC {
         let viewGroupVC = ViewGroupVC.instantiateFromStoryboard()
@@ -678,10 +679,9 @@ final class ViewGroupVC:
 
     @objc func onCreateNewItemAction(sender: UIBarButtonItem) {
         let addItemSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let createGroupAction = UIAlertAction(title: LString.actionCreateGroup, style: .default)
-        {
+        let createGroupAction = UIAlertAction(title: LString.actionCreateGroup, style: .default) {
             [weak self] _ in
-            self?.onCreateGroupAction()
+            self?.createGroup()
         }
         createGroupAction.isEnabled = canCreateGroupHere()
         
@@ -705,17 +705,6 @@ final class ViewGroupVC:
         present(addItemSheet, animated: true, completion: nil)
     }
 
-    func onCreateGroupAction() {
-        Diag.info("Will create group")
-        guard let parentGroup = self.group else { return }
-        let editGroupVC = EditGroupVC.make(
-            mode: .create,
-            group: parentGroup,
-            popoverSource: nil,
-            delegate: nil)
-        present(editGroupVC, animated: true, completion: nil)
-    }
-
     func onCreateEntryAction() {
         Diag.info("Will create entry")
         guard let group = group else { return }
@@ -730,12 +719,8 @@ final class ViewGroupVC:
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
         if let selectedGroup = getGroup(at: indexPath) {
-            let editGroupVC = EditGroupVC.make(
-                mode: .edit,
-                group: selectedGroup,
-                popoverSource: cell,
-                delegate: nil)
-            present(editGroupVC, animated: true, completion: nil)
+            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            editGroup(selectedGroup, at: popoverAnchor)
             return
         }
         
@@ -868,6 +853,42 @@ final class ViewGroupVC:
         }
         let vc = ChangeMasterKeyVC.make(dbRef: dbRef)
         present(vc, animated: true, completion: nil)
+    }
+    
+    
+    private func editGroup(_ group: Group, at popoverAnchor: PopoverAnchor) {
+        Diag.info("Will edit group")
+        showGroupEditor(for: group, at: popoverAnchor)
+    }
+    
+    private func createGroup() {
+        Diag.info("Will create group")
+        showGroupEditor(for: nil, at: nil)
+    }
+    
+    private func showGroupEditor(for groupToEdit: Group?, at popoverAnchor: PopoverAnchor?) {
+        assert(groupEditorCoordinator == nil)
+        guard let parent = self.group,
+              let database = parent.database
+        else {
+            Diag.warning("Database or parent group are not defined")
+            assertionFailure()
+            return
+        }
+        
+        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
+        let groupEditorCoordinator = GroupEditorCoordinator(
+            router: modalRouter,
+            database: database,
+            parent: parent,
+            target: groupToEdit)
+        groupEditorCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.groupEditorCoordinator = nil
+        }
+        groupEditorCoordinator.delegate = self
+        groupEditorCoordinator.start()
+        self.groupEditorCoordinator = groupEditorCoordinator
+        navigationController?.present(modalRouter, animated: true, completion: nil)
     }
     
     
@@ -1013,6 +1034,12 @@ extension ViewGroupVC: UISearchControllerDelegate {
 
 extension ViewGroupVC: ItemRelocationCoordinatorDelegate {
     func didRelocateItems(in coordinator: ItemRelocationCoordinator) {
+        refresh()
+    }
+}
+
+extension ViewGroupVC: GroupEditorCoordinatorDelegate {
+    func didUpdateGroup(_ group: Group, in coordinator: GroupEditorCoordinator) {
         refresh()
     }
 }

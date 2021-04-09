@@ -190,11 +190,11 @@ public class Group: DatabaseItem, Eraseable {
         return nil
     }
 
-    public func createEntry() -> Entry {
+    public func createEntry(detached: Bool = false) -> Entry {
         fatalError("Pure virtual method")
     }
     
-    public func createGroup() -> Group {
+    public func createGroup(detached: Bool = false) -> Group {
         fatalError("Pure virtual method")
     }
     

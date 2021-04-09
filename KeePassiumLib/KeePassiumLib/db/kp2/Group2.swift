@@ -82,7 +82,7 @@ public class Group2: Group {
         targetGroup2.customData = customData.clone()
     }
     
-    override public func createEntry() -> Entry {
+    override public func createEntry(detached: Bool = false) -> Entry {
         let newEntry = Entry2(database: database)
         newEntry.uuid = UUID()
         newEntry.isDeleted = self.isDeleted
@@ -92,19 +92,22 @@ public class Group2: Group {
         }
         newEntry.customIconUUID = self.customIconUUID
         
-        self.add(entry: newEntry)
+        if !detached {
+            self.add(entry: newEntry)
+        }
         return newEntry
     }
     
-    override public func createGroup() -> Group {
+    override public func createGroup(detached: Bool = false) -> Group {
         let newGroup = Group2(database: database)
         newGroup.uuid = UUID()
         newGroup.iconID = self.iconID
         newGroup.customIconUUID = self.customIconUUID
         newGroup.isDeleted = self.isDeleted
         
-        self.add(group: newGroup)
-        
+        if !detached {
+            self.add(group: newGroup)
+        }
         return newGroup
     }
     

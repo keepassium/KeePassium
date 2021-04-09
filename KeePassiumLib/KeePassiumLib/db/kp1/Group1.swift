@@ -105,7 +105,7 @@ public class Group1: Group {
         (entry as! Entry1).groupID = -1
     }
     
-    override public func createEntry() -> Entry {
+    override public func createEntry(detached: Bool = false) -> Entry {
         let newEntry = Entry1(database: database)
         newEntry.uuid = UUID()
         
@@ -121,11 +121,13 @@ public class Group1: Group {
         newEntry.expiryTime = Date.kp1Never
         
         newEntry.groupID = self.id
-        self.add(entry: newEntry)
+        if !detached {
+            self.add(entry: newEntry)
+        }
         return newEntry
     }
     
-    override public func createGroup() -> Group {
+    override public func createGroup(detached: Bool = false) -> Group {
         let newGroup = Group1(database: database)
         newGroup.uuid = UUID()
         newGroup.flags = 0
@@ -141,7 +143,9 @@ public class Group1: Group {
         newGroup.expiryTime = Date.kp1Never
         
         newGroup.level = self.level + 1
-        self.add(group: newGroup)
+        if !detached {
+            self.add(group: newGroup)
+        }
         return newGroup
     }
     
