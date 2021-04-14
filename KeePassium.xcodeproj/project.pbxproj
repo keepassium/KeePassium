@@ -1959,8 +1959,6 @@
 				750C683120D767F6001A6AA0 /* EditEntryVC.swift */,
 				751E0D032309AF1B0088BB10 /* EditEntryVC.storyboard */,
 				75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */,
-				757EF2F420EB3D1C0024AACD /* PasswordGeneratorVC.swift */,
-				751E0D062309AF210088BB10 /* PasswordGeneratorVC.storyboard */,
 				75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */,
 			);
 			path = edit;
@@ -2082,6 +2080,15 @@
 			path = "challenge-response";
 			sourceTree = "<group>";
 		};
+		7588B6C02627319700F5D372 /* password-generator */ = {
+			isa = PBXGroup;
+			children = (
+				757EF2F420EB3D1C0024AACD /* PasswordGeneratorVC.swift */,
+				751E0D062309AF210088BB10 /* PasswordGeneratorVC.storyboard */,
+			);
+			path = "password-generator";
+			sourceTree = "<group>";
+		};
 		758BF0D920D21EE500897C83 /* general */ = {
 			isa = PBXGroup;
 			children = (
@@ -2089,6 +2096,7 @@
 				7590798224CB1400008F34EC /* help */,
 				75679AD022FD963200372301 /* news */,
 				7579A06224F0728F00C98F24 /* changelog */,
+				7588B6C02627319700F5D372 /* password-generator */,
 				759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */,
 				7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */,
 				75D1674921464333005E33C3 /* AboutVC.swift */,
