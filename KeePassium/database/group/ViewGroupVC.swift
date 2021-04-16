@@ -72,6 +72,7 @@ final class ViewGroupVC:
     
     var itemRelocationCoordinator: ItemRelocationCoordinator?
     var groupEditorCoordinator: GroupEditorCoordinator?
+    var entryFieldEditorCoordinator: EntryFieldEditorCoordinator?
     
     static func make(group: Group?, loadingWarnings: DatabaseLoadingWarnings?=nil) -> ViewGroupVC {
         let viewGroupVC = ViewGroupVC.instantiateFromStoryboard()
@@ -83,6 +84,8 @@ final class ViewGroupVC:
     
     deinit {
         itemRelocationCoordinator = nil
+        groupEditorCoordinator = nil
+        entryFieldEditorCoordinator = nil
     }
     
     override func viewDidLoad() {
@@ -685,10 +688,10 @@ final class ViewGroupVC:
         }
         createGroupAction.isEnabled = canCreateGroupHere()
         
-        let createEntryAction = UIAlertAction(title: LString.actionCreateEntry, style: .default)
-        {
+        let createEntryAction = UIAlertAction(title: LString.actionCreateEntry, style: .default) {
             [weak self] _ in
-            self?.onCreateEntryAction()
+            self?.createEntry()
+            
         }
         createEntryAction.isEnabled = canCreateEntryHere()
         
@@ -704,32 +707,15 @@ final class ViewGroupVC:
         }
         present(addItemSheet, animated: true, completion: nil)
     }
-
-    func onCreateEntryAction() {
-        Diag.info("Will create entry")
-        guard let group = group else { return }
-        let editEntryVC = EditEntryVC.make(
-            createInGroup: group,
-            popoverSource: nil,
-            delegate: self)
-        present(editEntryVC, animated: true, completion: nil)
-    }
     
     func onEditItemAction(at indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         if let selectedGroup = getGroup(at: indexPath) {
-            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
             editGroup(selectedGroup, at: popoverAnchor)
             return
         }
-        
         if let selectedEntry = getEntry(at: indexPath) {
-            let editEntryVC = EditEntryVC.make(
-                entry: selectedEntry,
-                popoverSource: cell,
-                delegate: nil)
-            present(editEntryVC, animated: true, completion: nil)
+            editEntry(selectedEntry, at: popoverAnchor)
             return
         }
     }
@@ -891,6 +877,43 @@ final class ViewGroupVC:
         navigationController?.present(modalRouter, animated: true, completion: nil)
     }
     
+    private func editEntry(_ entry: Entry, at popoverAnchor: PopoverAnchor) {
+        Diag.info("Will edit entry")
+        showEntryEditor(for: entry, at: popoverAnchor)
+    }
+    
+    private func createEntry() {
+        Diag.info("Will create entry")
+        showEntryEditor(for: nil, at: nil)
+    }
+    
+    private func showEntryEditor(for entryToEdit: Entry?, at popoverAnchor: PopoverAnchor?) {
+        assert(entryFieldEditorCoordinator == nil)
+        guard let parent = self.group,
+              let database = parent.database
+        else {
+            Diag.warning("Database or parent group are not definted")
+            assertionFailure()
+            return
+        }
+        
+        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
+        let entryFieldEditorCoordinator = EntryFieldEditorCoordinator(
+            router: modalRouter,
+            database: database,
+            parent: parent,
+            target: entryToEdit
+        )
+        entryFieldEditorCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.entryFieldEditorCoordinator = nil
+        }
+        entryFieldEditorCoordinator.delegate = self
+        entryFieldEditorCoordinator.start()
+        modalRouter.dismissAttemptDelegate = entryFieldEditorCoordinator
+        self.entryFieldEditorCoordinator = entryFieldEditorCoordinator
+        navigationController?.present(modalRouter, animated: true, completion: nil)
+    }
+    
     
     func saveDatabase() {
         DatabaseManager.shared.addObserver(self)
@@ -980,22 +1003,6 @@ extension ViewGroupVC: SettingsObserver {
     }
 }
 
-extension ViewGroupVC: EditEntryFieldsDelegate {
-    func entryEditor(entryDidChange entry: Entry) {
-        refresh()
-        
-        guard let splitVC = splitViewController else { fatalError() }
-        
-        if !splitVC.isCollapsed,
-            let entryIndex = entriesSorted.firstIndex(where: { $0.value === entry })
-        {
-            let indexPath = IndexPath(row: groupsSorted.count + entryIndex, section: 0)
-            handleItemSelection(indexPath: indexPath)
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none) 
-        }
-    }
-}
-
 extension ViewGroupVC: EntryChangeObserver {
     func entryDidChange(entry: Entry) {
         refresh()
@@ -1041,5 +1048,21 @@ extension ViewGroupVC: ItemRelocationCoordinatorDelegate {
 extension ViewGroupVC: GroupEditorCoordinatorDelegate {
     func didUpdateGroup(_ group: Group, in coordinator: GroupEditorCoordinator) {
         refresh()
+    }
+}
+
+extension ViewGroupVC: EntryFieldEditorCoordinatorDelegate {
+    func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {
+        refresh()
+        
+        guard let splitVC = splitViewController else { fatalError() }
+        
+        if !splitVC.isCollapsed,
+            let entryIndex = entriesSorted.firstIndex(where: { $0.value === entry })
+        {
+            let indexPath = IndexPath(row: groupsSorted.count + entryIndex, section: 0)
+            handleItemSelection(indexPath: indexPath)
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none) 
+        }
     }
 }

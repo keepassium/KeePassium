@@ -12,7 +12,7 @@
         <!--Edit Entry-->
         <scene sceneID="dEd-KK-5Fq">
             <objects>
-                <tableViewController storyboardIdentifier="EditEntryVC" id="dyC-HY-kh4" customClass="EditEntryVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EntryFieldEditorVC" id="dyC-HY-kh4" customClass="EntryFieldEditorVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zyf-Cf-svH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,18 +20,18 @@
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ad1-Rf-HyL">
-                            <rect key="frame" x="0.0" y="821.33334350585938" width="414" height="60"/>
+                            <rect key="frame" x="0.0" y="822" width="414" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-zk-w7B" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                    <rect key="frame" x="16.000000000000014" y="8" width="244.33333333333337" height="21"/>
+                                    <rect key="frame" x="15.999999999999986" y="8" width="244.66666666666663" height="21"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                     <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="-4" maxY="0.0"/>
                                     <state key="normal" title="{Scan QR code to setup OTP}" image="qrcode" catalog="system">
                                         <color key="titleColor" name="ActionTint"/>
                                     </state>
                                     <connections>
-                                        <action selector="onScanOTPAction:" destination="dyC-HY-kh4" eventType="touchUpInside" id="T8A-Ra-IA9"/>
+                                        <action selector="didPressSetupTOTP:" destination="dyC-HY-kh4" eventType="touchUpInside" id="a6P-lO-UIq"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -44,7 +44,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" id="GLB-1c-KE8" customClass="EditEntryTitleCell" customModule="KeePassium" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" id="GLB-1c-KE8" customClass="EntryFieldEditorTitleCell" customModule="KeePassium" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GLB-1c-KE8" id="9Es-ir-laV">
@@ -104,11 +104,11 @@
                                     <outlet property="titleTextField" destination="mGc-If-zfn" id="Wgt-4Z-iil"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineCell" id="fOA-rA-t9w" customClass="EditEntrySingleLineCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="112" width="414" height="84.333335876464844"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineCell" id="fOA-rA-t9w" customClass="EntryFieldEditorSingleLineCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="112" width="414" height="84.666664123535156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fOA-rA-t9w" id="fv0-vc-xOU">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84.333335876464844"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84.666664123535156"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zo6-9v-QQD" userLabel="Separator">
@@ -119,7 +119,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Field Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN9-CU-AJF">
-                                            <rect key="frame" x="20" y="11.999999999999998" width="89" height="19.333333333333329"/>
+                                            <rect key="frame" x="20" y="12.000000000000002" width="89" height="19.666666666666671"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
@@ -131,7 +131,7 @@
                                             </attributedString>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Value}" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zr2-BH-wQ3" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="39.333333333333336" width="374" height="34.000000000000007"/>
+                                            <rect key="frame" x="20" y="39.666666666666664" width="374" height="33.999999999999993"/>
                                             <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="JcH-Or-9Cf"/>
@@ -144,7 +144,7 @@
                                             </attributedString>
                                         </textField>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-MK-Ca2">
-                                            <rect key="frame" x="334" y="4" width="60" height="35.333333333333336"/>
+                                            <rect key="frame" x="334" y="4" width="60" height="35.666666666666664"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <state key="normal" title="{Button}">
                                                 <color key="titleColor" name="ActionTint"/>
@@ -180,11 +180,11 @@
                                     <outlet property="titleLabel" destination="CN9-CU-AJF" id="W1O-DL-4V6"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineProtectedCell" id="Kw5-lo-PXD" customClass="EditEntrySingleLineProtectedCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="196.33333587646484" width="414" height="84.333335876464844"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineProtectedCell" id="Kw5-lo-PXD" customClass="EntryFieldEditorSingleLineProtectedCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="196.66666412353516" width="414" height="84.666664123535156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kw5-lo-PXD" id="n4E-7U-Owp">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84.333335876464844"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84.666664123535156"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="903-Pj-kT9" userLabel="Separator">
@@ -195,7 +195,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="{Field Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-4o-MBS">
-                                            <rect key="frame" x="20" y="11.999999999999998" width="89" height="19.333333333333329"/>
+                                            <rect key="frame" x="20" y="12.000000000000002" width="89" height="19.666666666666671"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
@@ -207,7 +207,7 @@
                                             </attributedString>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Field Value}" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ro2-Xv-zrw" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="39.333333333333336" width="374" height="34.000000000000007"/>
+                                            <rect key="frame" x="20" y="39.666666666666664" width="374" height="33.999999999999993"/>
                                             <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="8RP-zF-9wp"/>
@@ -220,7 +220,7 @@
                                             </attributedString>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-wo-jYf">
-                                            <rect key="frame" x="313" y="4" width="81" height="35.333333333333336"/>
+                                            <rect key="frame" x="313" y="4" width="81" height="35.666666666666664"/>
                                             <accessibility key="accessibilityConfiguration" identifier="randomize_button"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <state key="normal" title="Randomize">
@@ -261,8 +261,8 @@
                                     <outlet property="titleLabel" destination="kN4-4o-MBS" id="h1b-82-aP7"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MultiLineCell" id="5Ke-qE-K1F" customClass="EditEntryMultiLineCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="280.66667175292969" width="414" height="254.66667175292969"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MultiLineCell" id="5Ke-qE-K1F" customClass="EntryFieldEditorMultiLineCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="281.33332824707031" width="414" height="254.66667175292969"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ke-qE-K1F" id="MDp-Cu-Sys">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="254.66667175292969"/>
@@ -320,8 +320,8 @@
                                     <outlet property="titleLabel" destination="mYx-OE-79H" id="wof-BP-yiC"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomFieldCell" id="CcF-c8-r4M" customClass="EditEntryCustomFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="535.33334350585938" width="414" height="258"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomFieldCell" id="CcF-c8-r4M" customClass="EntryFieldEditorCustomFieldCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="536" width="414" height="258"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CcF-c8-r4M" id="8k8-If-CEX">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="258"/>
@@ -412,13 +412,13 @@
                     <navigationItem key="navigationItem" title="Edit Entry" id="l3s-Bv-fA1" userLabel="Edit Entry">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pJ7-8j-CZA">
                             <connections>
-                                <action selector="onCancelAction:" destination="dyC-HY-kh4" id="HbE-tw-28V"/>
+                                <action selector="didPressCancel:" destination="dyC-HY-kh4" id="bFu-Eh-1kr"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem style="done" systemItem="done" id="urr-zn-2MK">
                                 <connections>
-                                    <action selector="onSaveAction:" destination="dyC-HY-kh4" id="MPz-Hx-N6f"/>
+                                    <action selector="didPressDone:" destination="dyC-HY-kh4" id="TRF-qL-mGh"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="HGI-xq-zUf">
@@ -435,6 +435,7 @@
                     <size key="freeformSize" width="414" height="900"/>
                     <connections>
                         <outlet property="addFieldButton" destination="HGI-xq-zUf" id="aPE-l1-Fw7"/>
+                        <outlet property="doneButton" destination="urr-zn-2MK" id="KNL-EB-lsB"/>
                         <outlet property="scanOTPButton" destination="1Nq-zk-w7B" id="ii9-pd-TVP"/>
                     </connections>
                 </tableViewController>

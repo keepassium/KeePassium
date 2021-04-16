@@ -8,13 +8,19 @@
 
 import KeePassiumLib
 
+public protocol NavigationRouterDismissAttemptDelegate: AnyObject {
+    func didAttemptToDismiss(navigationRouter: NavigationRouter)
+}
+
 public class NavigationRouter: NSObject {
     public typealias PopHandler = ((UIViewController) -> ())
     
     public private(set) var navigationController: UINavigationController
     private var popHandlers = [ObjectIdentifier: PopHandler]()
     private weak var oldDelegate: UINavigationControllerDelegate?
-    
+
+    weak var dismissAttemptDelegate: NavigationRouterDismissAttemptDelegate? = nil
+
     private var progressOverlay: ProgressOverlay?
     private var wasModalInPresentation = false
     private var wasNavigationBarHidden = false
@@ -83,7 +89,11 @@ public class NavigationRouter: NSObject {
         navigationController.present(viewController, animated: true, completion: completion)
     }
     
-    public func push(_ viewController: UIViewController, animated: Bool, onPop popHandler: PopHandler?) {
+    public func push(
+        _ viewController: UIViewController,
+        animated: Bool,
+        onPop popHandler: PopHandler?
+    ) {
         if let popHandler = popHandler {
             let id = ObjectIdentifier(viewController)
             popHandlers[id] = popHandler
@@ -169,6 +179,12 @@ extension NavigationRouter: UIPopoverPresentationControllerDelegate {
 }
 
 extension NavigationRouter: UIAdaptivePresentationControllerDelegate {
+    public func presentationControllerDidAttemptToDismiss(
+        _ presentationController: UIPresentationController
+    ) {
+        dismissAttemptDelegate?.didAttemptToDismiss(navigationRouter: self)
+    }
+    
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         popAll(animated: false)
     }

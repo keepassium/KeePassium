@@ -52,6 +52,11 @@ final class GroupEditorCoordinator: Coordinator, DatabaseSaving {
         }
     }
     
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
     func start() {
         router.push(groupEditorVC, animated: true, onPop: {
             [weak self] (viewController) in

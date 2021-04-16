@@ -89,6 +89,8 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
     private var isHistoryMode = false
     private var sortedFields: [ViewableField] = []
     private var entryChangeNotifications: EntryChangeNotifications!
+    
+    private var entryFieldEditorCoordinator: EntryFieldEditorCoordinator?
 
     static func make(with entry: Entry?, historyMode: Bool) -> ViewEntryFieldsVC {
         let viewEntryFieldsVC = ViewEntryFieldsVC.instantiateFromStoryboard()
@@ -108,7 +110,7 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
         
         editButton.title = LString.actionEdit
         editButton.target = self
-        editButton.action = #selector(onEditAction)
+        editButton.action = #selector(didPressEdit)
         editButton.accessibilityIdentifier = "edit_entry_button" 
 
         entryChangeNotifications = EntryChangeNotifications(observer: self)
@@ -116,6 +118,10 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
         refresh()
     }
 
+    deinit {
+        entryFieldEditorCoordinator = nil
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         editButton.isEnabled = !(entry?.isDeleted ?? true)
@@ -145,10 +151,32 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
     }
     
     
-    @objc func onEditAction() {
-        guard let entry = entry else { return }
-        let editEntryFieldsVC = EditEntryVC.make(entry: entry, popoverSource: nil, delegate: nil)
-        present(editEntryFieldsVC, animated: true, completion: nil)
+    @objc func didPressEdit() {
+        assert(entryFieldEditorCoordinator == nil)
+        guard let entry = entry,
+              let parent = entry.parent,
+              let database = parent.database
+        else {
+            Diag.warning("Entry, parent group or database are undefined")
+            assertionFailure()
+            return
+        }
+        
+        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: nil)
+        let entryFieldEditorCoordinator = EntryFieldEditorCoordinator(
+            router: modalRouter,
+            database: database,
+            parent: parent,
+            target: entry
+        )
+        entryFieldEditorCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.entryFieldEditorCoordinator = nil
+        }
+        entryFieldEditorCoordinator.delegate = self
+        entryFieldEditorCoordinator.start()
+        modalRouter.dismissAttemptDelegate = entryFieldEditorCoordinator
+        self.entryFieldEditorCoordinator = entryFieldEditorCoordinator
+        present(modalRouter, animated: true, completion: nil)
     }
     
 
@@ -260,5 +288,11 @@ extension ViewEntryFieldsVC: FieldCopiedViewDelegate {
         let popoverAnchor = PopoverAnchor(sourceView: view, sourceRect: view.bounds)
         popoverAnchor.apply(to: activityController.popoverPresentationController)
         present(activityController, animated: true)
+    }
+}
+
+extension ViewEntryFieldsVC: EntryFieldEditorCoordinatorDelegate {
+    func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {
+        refresh()
     }
 }
