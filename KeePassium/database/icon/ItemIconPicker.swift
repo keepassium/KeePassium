@@ -187,7 +187,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
                 kpIcon = standardIconSet.getIcon(IconID.all[indexPath.row])
             case .custom:
                 let iconBytes = customIcons[indexPath.row].data
-                kpIcon = UIImage(data: iconBytes.asData)
+                kpIcon = UIImage(data: iconBytes.asData)?.withGradientUnderlay()
             default:
                 assertionFailure()
                 kpIcon = nil

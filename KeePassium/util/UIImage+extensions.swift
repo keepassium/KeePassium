@@ -86,8 +86,9 @@ extension UIImage {
         if let entry2 = entry as? Entry2,
             let db2 = entry2.database as? Database2,
             let customIcon2 = db2.customIcons.first(where: { $0.uuid == entry2.customIconUUID }),
-            let image = UIImage(data: customIcon2.data.asData) {
-            return image
+            let image = UIImage(data: customIcon2.data.asData)
+        {
+            return image.withGradientUnderlay()
         }
         let _iconSet = iconSet ?? Settings.current.databaseIconSet
         return _iconSet.getIcon(entry.iconID)
@@ -97,13 +98,14 @@ extension UIImage {
         if let group2 = group as? Group2,
             let db2 = group2.database as? Database2,
             let customIcon2 = db2.customIcons.first(where: { $0.uuid == group2.customIconUUID }),
-            let image = UIImage(data: customIcon2.data.asData) {
-            return image
+            let image = UIImage(data: customIcon2.data.asData)
+        {
+            return image.withGradientUnderlay()
         }
         let _iconSet = iconSet ?? Settings.current.databaseIconSet
         return _iconSet.getIcon(group.iconID)
     }
-
+    
     func downscalingToSquare(maxSide: CGFloat) -> UIImage? {
         let targetSide: CGFloat
         if size.width > maxSide && size.height > maxSide {
@@ -119,5 +121,44 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return resized
+    }
+    
+    func withGradientUnderlay() -> UIImage? {
+        guard #available(iOS 13, *) else {
+            return self
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        let colors = [
+            CGColor(gray: 1.0, alpha: 0.2),
+            CGColor(gray: 1.0, alpha: 0.05),
+            CGColor(gray: 1.0, alpha: 0.0),
+        ]
+        guard let gradient = CGGradient(
+                colorsSpace: CGColorSpaceCreateDeviceGray(),
+                colors: colors as CFArray,
+                locations: [0.0, 0.9, 1.0])
+        else {
+            return nil
+        }
+        let center = CGPoint(x: size.width / 2, y: size.height / 2)
+        let radius = max(size.width, size.height) / 2
+        context.drawRadialGradient(
+            gradient,
+            startCenter: center,
+            startRadius: 0.0,
+            endCenter: center,
+            endRadius: radius,
+            options: CGGradientDrawingOptions.drawsBeforeStartLocation
+        )
+
+        self.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let composed = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return composed
     }
 }
