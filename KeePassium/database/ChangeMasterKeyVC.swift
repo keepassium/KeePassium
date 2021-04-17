@@ -277,10 +277,7 @@ extension ChangeMasterKeyVC: KeyFilePickerCoordinatorDelegate {
     }
 
     func setKeyFile(_ urlRef: URLReference?) {
-        keyFileRef = urlRef
-        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
-            dbSettings.maybeSetAssociatedKeyFile(keyFileRef)
-        }
+        self.keyFileRef = urlRef
         
         guard let keyFileRef = urlRef else {
             keyFileField.text = ""
@@ -308,9 +305,6 @@ extension ChangeMasterKeyVC: HardwareKeyPickerDelegate {
         self.yubiKey = yubiKey
         keyFileField.isYubiKeyActive = (yubiKey != nil)
 
-        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
-            dbSettings.maybeSetAssociatedYubiKey(yubiKey)
-        }
         if let _yubiKey = yubiKey {
             Diag.info("Hardware key selected [key: \(_yubiKey)]")
         } else {
