@@ -27,7 +27,7 @@ class RootNavigationVC: UINavigationController, UINavigationControllerDelegate {
         willShow viewController: UIViewController,
         animated: Bool)
     {
-        let showBottomToolbar = viewController is ViewGroupVC || viewController is DatabasePickerVC
+        let showBottomToolbar = viewController is GroupViewerVC || viewController is DatabasePickerVC
         navigationController.isToolbarHidden = !showBottomToolbar
     }
 
@@ -37,7 +37,7 @@ class RootNavigationVC: UINavigationController, UINavigationControllerDelegate {
         var hasReachedViewGroupVC = false
         var popToVC: UIViewController?
         for vc in viewControllers.reversed() {
-            let isViewGroupVC = vc is ViewGroupVC
+            let isViewGroupVC = vc is GroupViewerVC
             if !hasReachedViewGroupVC && isViewGroupVC {
                 hasReachedViewGroupVC = true
             }

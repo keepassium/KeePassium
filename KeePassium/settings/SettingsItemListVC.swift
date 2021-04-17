@@ -31,16 +31,6 @@ class SettingsItemListVC: UITableViewController, Refreshable {
         }
     }
     
-    static func make(barPopoverSource: UIBarButtonItem?) -> UIViewController {
-        let vc = SettingsItemListVC.instantiateFromStoryboard()
-        
-        let navVC = UINavigationController(rootViewController: vc)
-        navVC.modalPresentationStyle = .popover
-        if let popover = navVC.popoverPresentationController {
-            popover.barButtonItem = barPopoverSource
-        }
-        return navVC
-    }
 
     func refresh() {
         tableView.reloadData()

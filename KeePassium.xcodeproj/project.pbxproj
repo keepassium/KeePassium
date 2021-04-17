@@ -415,7 +415,7 @@
 		75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */; };
 		75B38BFC233E5B7C006BDEFC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC520C1027700C5D834 /* SettingsVC.swift */; };
 		75B38BFD233E5B7C006BDEFC /* PasswordGeneratorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757EF2F420EB3D1C0024AACD /* PasswordGeneratorVC.swift */; };
-		75B38BFE233E5B7C006BDEFC /* ViewGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5620B373BA004FA29D /* ViewGroupVC.swift */; };
+		75B38BFE233E5B7C006BDEFC /* GroupViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5620B373BA004FA29D /* GroupViewerVC.swift */; };
 		75B38BFF233E5B7C006BDEFC /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		75B38C00233E5B7C006BDEFC /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		75B38C01233E5B7C006BDEFC /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
@@ -581,7 +581,7 @@
 		75C51454234A792B00B44512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		75C51455234A792C00B44512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
-		75C94C5720B373BA004FA29D /* ViewGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5620B373BA004FA29D /* ViewGroupVC.swift */; };
+		75C94C5720B373BA004FA29D /* GroupViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5620B373BA004FA29D /* GroupViewerVC.swift */; };
 		75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5A20B4B8C2004FA29D /* ViewEntryVC.swift */; };
 		75C94C5F20B4BAB0004FA29D /* ViewEntryFilesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5E20B4BAB0004FA29D /* ViewEntryFilesVC.swift */; };
 		75C94C6120B4BAC4004FA29D /* ViewEntryHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C6020B4BAC4004FA29D /* ViewEntryHistoryVC.swift */; };
@@ -686,6 +686,10 @@
 		75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
 		75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
 		75EA64182098FC0500DDB941 /* DatabasePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */; };
+		75EC7BFD262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */; };
+		75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */; };
+		75EC7C04262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */; };
+		75EC7C05262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */; };
 		75ED428923132A80003DE72E /* SettingsAppTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */; };
 		75ED429223133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */; };
 		75ED429D2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429F2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard */; };
@@ -1624,7 +1628,7 @@
 		75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceholderVC.storyboard; sourceTree = "<group>"; };
 		75C4491925F58F2600477558 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+extensions.swift"; sourceTree = "<group>"; };
-		75C94C5620B373BA004FA29D /* ViewGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGroupVC.swift; sourceTree = "<group>"; };
+		75C94C5620B373BA004FA29D /* GroupViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewerVC.swift; sourceTree = "<group>"; };
 		75C94C5A20B4B8C2004FA29D /* ViewEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryVC.swift; sourceTree = "<group>"; };
 		75C94C5E20B4BAB0004FA29D /* ViewEntryFilesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFilesVC.swift; sourceTree = "<group>"; };
 		75C94C6020B4BAC4004FA29D /* ViewEntryHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryHistoryVC.swift; sourceTree = "<group>"; };
@@ -1697,6 +1701,8 @@
 		75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseIconSet+assets.swift"; sourceTree = "<group>"; };
 		75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSetSwitcherCoordinator.swift; sourceTree = "<group>"; };
 		75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePickerVC.swift; sourceTree = "<group>"; };
+		75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewerCoordinator.swift; sourceTree = "<group>"; };
+		75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoadingWarningsVC.swift; sourceTree = "<group>"; };
 		75ED4245230EB877003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75ED4246230EB892003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75ED4249230EF063003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
@@ -2241,7 +2247,7 @@
 		756FF64620BAB55000FF890B /* group */ = {
 			isa = PBXGroup;
 			children = (
-				75C94C5620B373BA004FA29D /* ViewGroupVC.swift */,
+				75C94C5620B373BA004FA29D /* GroupViewerVC.swift */,
 				751E0CFD2309AF0D0088BB10 /* ViewGroupVC.storyboard */,
 				750D127D20CF071600BE0CCE /* GroupEditorVC.swift */,
 				751E0D002309AF150088BB10 /* GroupEditorVC.storyboard */,
@@ -2271,6 +2277,8 @@
 				751E0D212309AF6B0088BB10 /* DatabaseCreatorVC.storyboard */,
 				758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */,
 				75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */,
+				75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */,
+				75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -3057,7 +3065,7 @@
 				75A5312323C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				7546FBC620C1027700C5D834 /* SettingsVC.swift in Sources */,
 				757EF2F520EB3D1C0024AACD /* PasswordGeneratorVC.swift in Sources */,
-				75C94C5720B373BA004FA29D /* ViewGroupVC.swift in Sources */,
+				75C94C5720B373BA004FA29D /* GroupViewerVC.swift in Sources */,
 				753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */,
 				757ADC5023A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				756F364A260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
@@ -3088,6 +3096,7 @@
 				75679ACB22F8095F00372301 /* AppInfo.swift in Sources */,
 				75781A2D20CA3D7A00BE474F /* SettingsFileSortingVC.swift in Sources */,
 				752B1E9320E8AA070073AABD /* EditableField.swift in Sources */,
+				75EC7C04262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */,
 				759894BC24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				756FF64420BAB20300FF890B /* UIColor+namedColors.swift in Sources */,
 				75D76131262CC19700B1DE7F /* MainCoordinator.swift in Sources */,
@@ -3100,6 +3109,7 @@
 				75C94C6120B4BAC4004FA29D /* ViewEntryHistoryVC.swift in Sources */,
 				75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75802634222ED11D00F4525F /* ProgressVC.swift in Sources */,
+				75EC7BFD262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				75839A90246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
 				7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */,
 				757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */,
@@ -3213,7 +3223,7 @@
 				75A5312523C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				75B38BFC233E5B7C006BDEFC /* SettingsVC.swift in Sources */,
 				75B38BFD233E5B7C006BDEFC /* PasswordGeneratorVC.swift in Sources */,
-				75B38BFE233E5B7C006BDEFC /* ViewGroupVC.swift in Sources */,
+				75B38BFE233E5B7C006BDEFC /* GroupViewerVC.swift in Sources */,
 				75B38BFF233E5B7C006BDEFC /* SKProduct+extension.swift in Sources */,
 				757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
@@ -3244,6 +3254,7 @@
 				75B38C0C233E5B7C006BDEFC /* SettingsFileSortingVC.swift in Sources */,
 				75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */,
 				759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
+				75EC7C05262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75B38C0E233E5B7C006BDEFC /* UIColor+namedColors.swift in Sources */,
 				75BE05ED25DA86F200B34CC0 /* DiagnosticsViewerCoordinator.swift in Sources */,
 				75D76132262CC19700B1DE7F /* MainCoordinator.swift in Sources */,
@@ -3256,6 +3267,7 @@
 				75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */,
 				75839A91246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
+				75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
 				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */,

@@ -101,6 +101,19 @@ public class NavigationRouter: NSObject {
         navigationController.pushViewController(viewController, animated: animated)
     }
     
+    public func resetRoot(
+        _ viewController: UIViewController,
+        animated: Bool,
+        onPop popHandler: PopHandler?
+    ) {
+        popToRoot(animated: animated)
+        let oldRootVC = navigationController.viewControllers.first
+        navigationController.setViewControllers([viewController], animated: false)
+        if oldRootVC != nil {
+            triggerAndRemovePopHandler(for: oldRootVC!)
+        }
+    }
+    
     public func pop(animated: Bool) {
         let isLastVC = (navigationController.viewControllers.count == 1)
         if isLastVC {

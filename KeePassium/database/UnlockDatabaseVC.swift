@@ -488,7 +488,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
             assertionFailure()
             return
         }
-        let viewGroupVC = ViewGroupVC.make(group: database.root, loadingWarnings: loadingWarnings)
+        let viewGroupVC = GroupViewerVC.make(group: database.root, loadingWarnings: loadingWarnings)
         guard let splitVC = splitViewController,
             let firstVC = splitVC.viewControllers.first,
             let leftNavController = firstVC as? UINavigationController else
