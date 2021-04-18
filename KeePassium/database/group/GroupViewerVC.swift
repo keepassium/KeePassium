@@ -127,16 +127,6 @@ final class GroupViewerVC:
         return searchController.isActive && (searchController.searchBar.text?.isNotEmpty ?? false)
     }
     
-    var itemRelocationCoordinator: ItemRelocationCoordinator?
-    var groupEditorCoordinator: GroupEditorCoordinator?
-    var entryFieldEditorCoordinator: EntryFieldEditorCoordinator?
-    
-    deinit {
-        itemRelocationCoordinator = nil
-        groupEditorCoordinator = nil
-        entryFieldEditorCoordinator = nil
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
