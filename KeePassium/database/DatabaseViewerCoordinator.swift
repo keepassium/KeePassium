@@ -48,7 +48,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     }
     
     private var progressOverlay: ProgressOverlay?
-    private let settingsNotifications: SettingsNotifications
+    private var settingsNotifications: SettingsNotifications!
     var databaseExporterTemporaryURL: TemporaryFileURL?
     
     init(
@@ -65,8 +65,6 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         self.database = database
         self.databaseRef = databaseRef
         self.loadingWarnings = loadingWarnings
-        
-        settingsNotifications = SettingsNotifications(observer: self)
     }
     
     deinit {
@@ -77,6 +75,8 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     }
     
     func start() {
+        settingsNotifications = SettingsNotifications(observer: self)
+
         showGroup(database.root)
         showEntry(nil)
         
