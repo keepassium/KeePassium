@@ -36,6 +36,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     private let primaryRouter: NavigationRouter
     private let secondaryRouter: NavigationRouter
     private let database: Database
+    private let databaseRef: URLReference
     private let loadingWarnings: DatabaseLoadingWarnings?
     
     private weak var currentGroup: Group?
@@ -55,12 +56,14 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         primaryRouter: NavigationRouter,
         secondaryRouter: NavigationRouter,
         database: Database,
+        databaseRef: URLReference,
         loadingWarnings: DatabaseLoadingWarnings?
     ) {
         self.splitViewController = splitViewController
         self.primaryRouter = primaryRouter
         self.secondaryRouter = secondaryRouter
         self.database = database
+        self.databaseRef = databaseRef
         self.loadingWarnings = loadingWarnings
         
         settingsNotifications = SettingsNotifications(observer: self)
@@ -205,7 +208,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     ) {
         Diag.info("Will change master key")
         
-        let vc = ChangeMasterKeyVC.make(dbRef: dbRef)
+        let vc = ChangeMasterKeyVC.make(dbRef: databaseRef)
         viewController.present(vc, animated: true, completion: nil)
     }
     
