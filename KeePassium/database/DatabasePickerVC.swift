@@ -366,7 +366,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let shouldKeepSelection = delegate?.shouldKeepSelection(in: self) ?? true
-        if shouldKeepSelection {
+        if !shouldKeepSelection {
             tableView.deselectRow(at: indexPath, animated: true)
         }
         
