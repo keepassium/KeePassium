@@ -66,14 +66,19 @@ final class MainCoordinator: Coordinator {
         DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: true) {
             (fileAccessError) in
             if url.scheme != AppGroup.appURLScheme {
-                FileKeeper.shared.prepareToAddFile(
+                FileKeeper.shared.addFile(
                     url: url,
                     fileType: nil, 
-                    mode: openInPlace ? .openInPlace : .import
+                    mode: openInPlace ? .openInPlace : .import,
+                    success: { _ in
+                    },
+                    error: { [weak self] fileKeeperError in
+                        Diag.error(fileKeeperError.localizedDescription)
+                        self?.rootSplitVC.showErrorAlert(fileKeeperError)
+                    }
                 )
             }
         }
-
     }
 }
 
