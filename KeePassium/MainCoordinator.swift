@@ -55,8 +55,14 @@ final class MainCoordinator: Coordinator {
         watchdog.didBecomeActive()
         StoreReviewSuggester.registerEvent(.sessionStart)
 
-        let dbPickerVC = ChooseDatabaseVC.instantiateFromStoryboard()
-        primaryRouter.push(dbPickerVC, animated: false, onPop: nil)
+        let databasePickerCoordinator = DatabasePickerCoordinator(router: primaryRouter)
+        databasePickerCoordinator.delegate = self
+        databasePickerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        databasePickerCoordinator.start()
+        addChildCoordinator(databasePickerCoordinator)
+        
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
         secondaryRouter.push(placeholderVC, animated: false, onPop: nil)
     }
@@ -309,5 +315,14 @@ extension MainCoordinator: FileKeeperDelegate {
             let topModalVC = self.rootSplitVC.presentedViewController ?? self.rootSplitVC
             topModalVC.present(choiceAlert, animated: true)
         }
+    }
+}
+
+extension MainCoordinator: DatabasePickerCoordinatorDelegate {
+    func didSelectDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator) {
+    }
+    
+    func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool {
+        return !rootSplitVC.isCollapsed
     }
 }
