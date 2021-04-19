@@ -603,6 +603,8 @@
 		75D76139262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */; };
 		75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */; };
 		75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */; };
+		75D76154262E1E9000B1DE7F /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76153262E1E9000B1DE7F /* SettingsCoordinator.swift */; };
+		75D76155262E1E9000B1DE7F /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76153262E1E9000B1DE7F /* SettingsCoordinator.swift */; };
 		75D7DF7C233E5E310029AD87 /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5D4002235CD720003CD55 /* CrashReportVC.swift */; };
@@ -1633,6 +1635,7 @@
 		75D76130262CC19700B1DE7F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePickerCoordinator.swift; sourceTree = "<group>"; };
 		75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
+		75D76153262E1E9000B1DE7F /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassiumPro AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7DFC0233E5E630029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7DFC4233E5E870029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2051,6 +2054,7 @@
 				751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */,
 				75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */,
 				752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */,
+				75D76153262E1E9000B1DE7F /* SettingsCoordinator.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -3133,6 +3137,7 @@
 				75DACE732573B49700A110DD /* SettingsAppearanceVC.swift in Sources */,
 				753507A023783729003B65C9 /* HapticFeedback.swift in Sources */,
 				758BF0D820D1B1DA00897C83 /* ValidatingTextField.swift in Sources */,
+				75D76154262E1E9000B1DE7F /* SettingsCoordinator.swift in Sources */,
 				754BF09A20984DEE00E3A292 /* UnlockDatabaseVC.swift in Sources */,
 				7578488F22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift in Sources */,
 				753376F123CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
@@ -3285,6 +3290,7 @@
 				753507A223783729003B65C9 /* HapticFeedback.swift in Sources */,
 				75B38C3F233E5B7C006BDEFC /* ValidatingTextField.swift in Sources */,
 				75B38C40233E5B7C006BDEFC /* UnlockDatabaseVC.swift in Sources */,
+				75D76155262E1E9000B1DE7F /* SettingsCoordinator.swift in Sources */,
 				75B38C41233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.swift in Sources */,
 				753376F323CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				758544662351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,

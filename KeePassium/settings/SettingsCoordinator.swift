@@ -1,0 +1,241 @@
+//  KeePassium Password Manager
+//  Copyright © 2021 Andrei Popleteev <info@keepassium.com>
+//
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact the author.
+
+import KeePassiumLib
+
+final class SettingsCoordinator: Coordinator, Refreshable {
+    var childCoordinators = [Coordinator]()
+    
+    var dismissHandler: CoordinatorDismissHandler?
+    
+    private let router: NavigationRouter
+    private let settingsVC: SettingsVC
+    private let settingsNotifications: SettingsNotifications
+    
+    init(router: NavigationRouter) {
+        self.router = router
+        settingsVC = SettingsVC.instantiateFromStoryboard()
+        settingsNotifications = SettingsNotifications()
+        
+        settingsNotifications.observer = self
+        settingsVC.delegate = self
+    }
+    
+    deinit {
+        settingsNotifications.stopObserving()
+        
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
+    func start() {
+        setupDoneButton(in: settingsVC)
+        router.push(settingsVC, animated: true, onPop: { [weak self] viewController in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
+            self.dismissHandler?(self)
+        })
+        settingsNotifications.startObserving()
+    }
+    
+    private func setupDoneButton(in viewController: UIViewController) {
+        guard router.navigationController.topViewController == nil else {
+            return
+        }
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(didPressDismiss))
+        viewController.navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    @objc
+    private func didPressDismiss(_ sender: UIBarButtonItem) {
+        router.dismiss(animated: true)
+    }
+    
+    func refresh() {
+        guard let topVC = router.navigationController.topViewController,
+              let topRefreshable = topVC as? Refreshable
+        else {
+            return
+        }
+        topRefreshable.refresh()
+    }
+}
+
+extension SettingsCoordinator {
+    private func showUpgradeToPremiumPage() {
+        let modalRouter = NavigationRouter.createModal(
+            style: PremiumCoordinator.desiredModalPresentationStyle
+        )
+        let premiumCoordinator = PremiumCoordinator(router: modalRouter)
+        premiumCoordinator.dismissHandler = { [weak self] (coordinator) in
+            self?.removeChildCoordinator(coordinator)
+        }
+        premiumCoordinator.start()
+        addChildCoordinator(premiumCoordinator)
+
+        router.present(modalRouter, animated: true, completion: nil)
+    }
+    
+    private func showAppHistoryPage() {
+        let appHistoryCoordinator = AppHistoryCoordinator(router: router)
+        appHistoryCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        appHistoryCoordinator.start()
+        addChildCoordinator(appHistoryCoordinator)
+    }
+    
+    private func showAppearanceSettingsPage() {
+        let appearanceVC = SettingsAppearanceVC.instantiateFromStoryboard()
+        appearanceVC.delegate = self
+        router.push(appearanceVC, animated: true, onPop: nil)
+    }
+    
+    private func showSearchSettingsPage() {
+        let searchSettingsVC = SettingsSearchVC.instantiateFromStoryboard()
+        router.push(searchSettingsVC, animated: true, onPop: nil)
+    }
+    
+    private func showAutoFillSettingsPage() {
+        let autoFillSettingsVC = SettingsAutoFillVC.instantiateFromStoryboard()
+        router.push(autoFillSettingsVC, animated: true, onPop: nil)
+    }
+    
+    private func showAppProtectionSettingsPage() {
+        let appLockSettingsVC = SettingsAppLockVC.instantiateFromStoryboard()
+        router.push(appLockSettingsVC, animated: true, onPop: nil)
+    }
+    
+    private func showDataProtectionSettingsPage() {
+        let dataProtectionSettingsVC = SettingsDataProtectionVC.instantiateFromStoryboard()
+        dataProtectionSettingsVC.delegate = self
+        router.push(dataProtectionSettingsVC, animated: true, onPop: nil)
+    }
+    
+    private func showBackupSettingsPage() {
+        let dataBackupSettingsVC = SettingsBackupVC.instantiateFromStoryboard()
+        router.push(dataBackupSettingsVC, animated: true, onPop: nil)
+    }
+    
+    private func showDiagnosticsPage() {
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
+        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        diagnosticsViewerCoordinator.start()
+        addChildCoordinator(diagnosticsViewerCoordinator)
+    }
+    
+    private func showAboutAppPage() {
+        let aboutCoordinator = AboutCoordinator(router: router)
+        aboutCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        aboutCoordinator.start()
+        addChildCoordinator(aboutCoordinator)
+    }
+    
+    private func showAppIconSettingsPage() {
+        let appIconSwitcherCoordinator = AppIconSwitcherCoordinator(router: router)
+        appIconSwitcherCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        appIconSwitcherCoordinator.start()
+        addChildCoordinator(appIconSwitcherCoordinator)
+    }
+    
+    private func showDatabaseIconsSettingsPage() {
+        let databaseIconSwitcherCoordinator = DatabaseIconSetSwitcherCoordinator(router: router)
+        databaseIconSwitcherCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        databaseIconSwitcherCoordinator.start()
+        addChildCoordinator(databaseIconSwitcherCoordinator)
+    }
+}
+
+extension SettingsCoordinator: SettingsObserver {
+    func settingsDidChange(key: Settings.Keys) {
+        guard key != .recentUserActivityTimestamp else {
+            return
+        }
+        refresh()
+    }
+}
+
+extension SettingsCoordinator: SettingsViewControllerDelegate {
+    func didPressUpgradeToPremium(in viewController: SettingsVC) {
+        showUpgradeToPremiumPage()
+    }
+    
+    func didPressManageSubscription(in viewController: SettingsVC) {
+        AppStoreHelper.openSubscriptionManagement()
+    }
+    
+    func didPressShowAppHistory(in viewController: SettingsVC) {
+        showAppHistoryPage()
+    }
+    
+    func didPressAppearanceSettings(in viewController: SettingsVC) {
+        showAppearanceSettingsPage()
+    }
+    
+    func didPressSearchSettings(in viewController: SettingsVC) {
+        showSearchSettingsPage()
+    }
+    
+    func didPressAutoFillSettings(in viewController: SettingsVC) {
+        showAutoFillSettingsPage()
+    }
+    
+    func didPressAppProtectionSettings(in viewController: SettingsVC) {
+        showAppProtectionSettingsPage()
+    }
+    
+    func didPressDataProtectionSettings(in viewController: SettingsVC) {
+        showDataProtectionSettingsPage()
+    }
+    
+    func didPressBackupSettings(in viewController: SettingsVC) {
+        showBackupSettingsPage()
+    }
+
+    func didPressShowDiagnostics(in viewController: SettingsVC) {
+        showDiagnosticsPage()
+    }
+    
+    func didPressContactSupport(at popoverAnchor: PopoverAnchor, in viewController: SettingsVC) {
+        SupportEmailComposer.show(
+            subject: .supportRequest,
+            parent: viewController,
+            popoverAnchor: popoverAnchor
+        )
+    }
+    
+    func didPressAboutApp(in viewController: SettingsVC) {
+        showAboutAppPage()
+    }
+}
+
+extension SettingsCoordinator: SettingsAppearanceViewControllerDelegate {
+    func didPressAppIconSettings(in viewController: SettingsAppearanceVC) {
+        showAppIconSettingsPage()
+    }
+    
+    func didPressDatabaseIconsSettings(in viewController: SettingsAppearanceVC) {
+        showDatabaseIconsSettingsPage()
+    }
+}
+
+extension SettingsCoordinator: SettingsDataProtectionViewControllerDelegate {
+    
+}

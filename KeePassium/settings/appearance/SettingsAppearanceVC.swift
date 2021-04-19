@@ -8,23 +8,21 @@
 
 import KeePassiumLib
 
-class SettingsAppearanceVC: UITableViewController {
+protocol SettingsAppearanceViewControllerDelegate: AnyObject {
+    func didPressAppIconSettings(in viewController: SettingsAppearanceVC)
+    func didPressDatabaseIconsSettings(in viewController: SettingsAppearanceVC)
+}
+
+final class SettingsAppearanceVC: UITableViewController {
     
-    @IBOutlet weak var appIconCell: UITableViewCell!
-    @IBOutlet weak var databaseIconsCell: UITableViewCell!
+    @IBOutlet private weak var appIconCell: UITableViewCell!
+    @IBOutlet private weak var databaseIconsCell: UITableViewCell!
     
-    @IBOutlet weak var textScaleLabel: UILabel!
-    @IBOutlet weak var entryTextScaleSlider: UISlider!
-    @IBOutlet weak var hideProtectedFieldsSwitch: UISwitch!
+    @IBOutlet private weak var textScaleLabel: UILabel!
+    @IBOutlet private weak var entryTextScaleSlider: UISlider!
+    @IBOutlet private weak var hideProtectedFieldsSwitch: UISwitch!
     
-    weak var router: NavigationRouter?
-    private var appIconSwitcherCoordinator: AppIconSwitcherCoordinator?
-    private var databaseIconSwitcherCoordinator: DatabaseIconSetSwitcherCoordinator?
-    
-    deinit {
-        appIconSwitcherCoordinator = nil
-        databaseIconSwitcherCoordinator = nil
-    }
+    weak var delegate: SettingsAppearanceViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,9 +72,9 @@ class SettingsAppearanceVC: UITableViewController {
         }
         switch cell {
         case appIconCell:
-            showAppIconSettings()
+            delegate?.didPressAppIconSettings(in: self)
         case databaseIconsCell:
-            showDatabaseIconSwitcher()
+            delegate?.didPressDatabaseIconsSettings(in: self)
         default:
             break
         }
@@ -95,25 +93,5 @@ class SettingsAppearanceVC: UITableViewController {
     @IBAction func didToggleHideProtectedFieldsSwitch(_ sender: UISwitch) {
         Settings.current.isHideProtectedFields = hideProtectedFieldsSwitch.isOn
         refresh()
-    }
-    
-    private func showAppIconSettings() {
-        assert(appIconSwitcherCoordinator == nil)
-        guard let router = router else { assertionFailure(); return }
-        appIconSwitcherCoordinator = AppIconSwitcherCoordinator(router: router)
-        appIconSwitcherCoordinator!.dismissHandler = { [weak self] (coordinator) in
-            self?.appIconSwitcherCoordinator = nil
-        }
-        appIconSwitcherCoordinator!.start()
-    }
-    
-    private func showDatabaseIconSwitcher() {
-        assert(databaseIconSwitcherCoordinator == nil)
-        guard let router = router else { assertionFailure(); return }
-        databaseIconSwitcherCoordinator = DatabaseIconSetSwitcherCoordinator(router: router)
-        databaseIconSwitcherCoordinator!.dismissHandler = { [weak self] (coordinator) in
-            self?.databaseIconSwitcherCoordinator = nil
-        }
-        databaseIconSwitcherCoordinator!.start()
     }
 }

@@ -6,34 +6,49 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
 import LocalAuthentication
 
-class SettingsVC: UITableViewController, Refreshable {
+protocol SettingsViewControllerDelegate: AnyObject {
+    func didPressUpgradeToPremium(in viewController: SettingsVC)
+    func didPressManageSubscription(in viewController: SettingsVC)
+    func didPressShowAppHistory(in viewController: SettingsVC)
+ 
+    func didPressAppearanceSettings(in viewController: SettingsVC)
+    func didPressSearchSettings(in viewController: SettingsVC)
+    func didPressAutoFillSettings(in viewController: SettingsVC)
+    func didPressAppProtectionSettings(in viewController: SettingsVC)
+    func didPressDataProtectionSettings(in viewController: SettingsVC)
+    func didPressBackupSettings(in viewController: SettingsVC)
+    
+    func didPressShowDiagnostics(in viewController: SettingsVC)
+    func didPressContactSupport(at popoverAnchor: PopoverAnchor, in viewController: SettingsVC)
+    func didPressAboutApp(in viewController: SettingsVC)
+}
 
-    @IBOutlet weak var appSafetyCell: UITableViewCell!
-    @IBOutlet weak var dataSafetyCell: UITableViewCell!
-    @IBOutlet weak var dataBackupCell: UITableViewCell!
-    @IBOutlet weak var autoFillCell: UITableViewCell!
+final class SettingsVC: UITableViewController, Refreshable {
+
+    @IBOutlet private weak var appSafetyCell: UITableViewCell!
+    @IBOutlet private weak var dataSafetyCell: UITableViewCell!
+    @IBOutlet private weak var dataBackupCell: UITableViewCell!
+    @IBOutlet private weak var autoFillCell: UITableViewCell!
     
-    @IBOutlet weak var searchCell: UITableViewCell!
-    @IBOutlet weak var autoUnlockStartupDatabaseSwitch: UISwitch!
-    @IBOutlet weak var appearanceCell: UITableViewCell!
+    @IBOutlet private weak var searchCell: UITableViewCell!
+    @IBOutlet private weak var autoUnlockStartupDatabaseSwitch: UISwitch!
+    @IBOutlet private weak var appearanceCell: UITableViewCell!
     
-    @IBOutlet weak var diagnosticLogCell: UITableViewCell!
-    @IBOutlet weak var contactSupportCell: UITableViewCell!
-    @IBOutlet weak var rateTheAppCell: UITableViewCell!
-    @IBOutlet weak var aboutAppCell: UITableViewCell!
+    @IBOutlet private weak var diagnosticLogCell: UITableViewCell!
+    @IBOutlet private weak var contactSupportCell: UITableViewCell!
+    @IBOutlet private weak var rateTheAppCell: UITableViewCell!
+    @IBOutlet private weak var aboutAppCell: UITableViewCell!
     
-    @IBOutlet weak var premiumTrialCell: UITableViewCell!
-    @IBOutlet weak var premiumStatusCell: UITableViewCell!
-    @IBOutlet weak var manageSubscriptionCell: UITableViewCell!
-    @IBOutlet weak var appHistoryCell: UITableViewCell!
+    @IBOutlet private weak var premiumTrialCell: UITableViewCell!
+    @IBOutlet private weak var premiumStatusCell: UITableViewCell!
+    @IBOutlet private weak var manageSubscriptionCell: UITableViewCell!
+    @IBOutlet private weak var appHistoryCell: UITableViewCell!
     
-    private var settingsNotifications: SettingsNotifications!
+    weak var delegate: SettingsViewControllerDelegate?
     
-    private var router: NavigationRouter! 
     private var isPremiumSectionHidden = false
     
     private enum CellIndexPath {
@@ -44,26 +59,13 @@ class SettingsVC: UITableViewController, Refreshable {
         static let appHistoryCell = IndexPath(row: 3, section: premiumSectionIndex)
     }
     private var hiddenIndexPaths = Set<IndexPath>()
-    
-    static func make(popoverFromBar barButtonSource: UIBarButtonItem?=nil) -> UIViewController {
-        let vc = SettingsVC.instantiateFromStoryboard()
-        
-        let navVC = UINavigationController(rootViewController: vc)
-        navVC.modalPresentationStyle = .popover
-        if let popover = navVC.popoverPresentationController {
-            popover.barButtonItem = barButtonSource
-        }
-        navVC.presentationController?.delegate = vc
-        vc.router = NavigationRouter(navVC)
-        return navVC
-    }
 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
         
-        settingsNotifications = SettingsNotifications(observer: self)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(refreshPremiumStatus),
@@ -77,34 +79,19 @@ class SettingsVC: UITableViewController, Refreshable {
             setPremiumCellVisibility(appHistoryCell, isHidden: true)
         }
         refreshPremiumStatus()
-        #if DEBUG
-        premiumTrialCell.accessoryType = .detailButton
-        #endif
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: PremiumManager.statusUpdateNotification,
+            object: nil
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        settingsNotifications.startObserving()
         refresh()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        settingsNotifications.stopObserving()
-        super.viewWillDisappear(animated)
-    }
-    
-    deinit {
-        diagnosticsViewerCoordinator = nil
-        appHistoryCoordinator = nil
-        premiumCoordinator = nil
-    }
-    
-    func dismissPopover(animated: Bool) {
-        self.dismiss(animated: animated) { [self] in 
-            self.diagnosticsViewerCoordinator = nil
-            self.appHistoryCoordinator = nil
-            self.premiumCoordinator = nil
-        }
     }
     
     func refresh() {
@@ -194,63 +181,42 @@ class SettingsVC: UITableViewController, Refreshable {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         switch selectedCell {
         case appSafetyCell:
-            let appLockSettingsVC = SettingsAppLockVC.instantiateFromStoryboard()
-            show(appLockSettingsVC, sender: self)
+            delegate?.didPressAppProtectionSettings(in: self)
         case autoFillCell:
-            let autoFillSettingsVC = SettingsAutoFillVC.instantiateFromStoryboard()
-            show(autoFillSettingsVC, sender: self)
+            delegate?.didPressAutoFillSettings(in: self)
         case dataSafetyCell:
-            let dataProtectionSettingsVC = SettingsDataProtectionVC.instantiateFromStoryboard()
-            show(dataProtectionSettingsVC, sender: self)
+            delegate?.didPressDataProtectionSettings(in: self)
         case searchCell:
-            let searchSettingsVC = SettingsSearchVC.instantiateFromStoryboard()
-            show(searchSettingsVC, sender: self)
+            delegate?.didPressSearchSettings(in: self)
         case appearanceCell:
-            showAppearanceSettings()
+            delegate?.didPressAppearanceSettings(in: self)
         case dataBackupCell:
-            let dataBackupSettingsVC = SettingsBackupVC.instantiateFromStoryboard()
-            show(dataBackupSettingsVC, sender: self)
-        case premiumStatusCell:
-            didPressUpgradeToPremium()
-        case premiumTrialCell:
-            didPressUpgradeToPremium()
+            delegate?.didPressBackupSettings(in: self)
+        case premiumStatusCell,
+             premiumTrialCell:
+            delegate?.didPressUpgradeToPremium(in: self)
         case manageSubscriptionCell:
-            didPressManageSubscription()
+            delegate?.didPressManageSubscription(in: self)
         case appHistoryCell:
-            didPressShowAppHistory()
+            delegate?.didPressShowAppHistory(in: self)
         case diagnosticLogCell:
-            didPressShowDiagnostics()
+            delegate?.didPressShowDiagnostics(in: self)
         case contactSupportCell:
-            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-            SupportEmailComposer.show(subject: .supportRequest, parent: self, popoverAnchor: popoverAnchor)
+            delegate?.didPressContactSupport(at: popoverAnchor, in: self)
         case rateTheAppCell:
             AppStoreHelper.writeReview()
         case aboutAppCell:
-            showAboutScreen()
+            delegate?.didPressAboutApp(in: self)
         default:
             break
         }
     }
-    
-    override func tableView(
-        _ tableView: UITableView,
-        accessoryButtonTappedForRowWith indexPath: IndexPath)
-    {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        switch cell {
-#if DEBUG
-        case premiumStatusCell, premiumTrialCell:
-            didPressUpgradeToPremium()
-            refreshPremiumStatus()
-#endif
-        default:
-            assertionFailure() 
-        }
-    }
-    
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard section == CellIndexPath.premiumSectionIndex else {
@@ -264,67 +230,8 @@ class SettingsVC: UITableViewController, Refreshable {
         }
     }
     
-    @IBAction func doneButtonTapped(_ sender: Any) {
-        dismissPopover(animated: true)
-    }
-    
     @IBAction func didToggleAutoUnlockStartupDatabase(_ sender: UISwitch) {
         Settings.current.isAutoUnlockStartupDatabase = sender.isOn
-    }
-    
-    
-    private func showAppearanceSettings() {
-        let appearanceVC = SettingsAppearanceVC.instantiateFromStoryboard()
-        appearanceVC.router = router
-        router.push(appearanceVC, animated: true, onPop: nil)
-    }
-    
-    var appHistoryCoordinator: AppHistoryCoordinator?
-    func didPressShowAppHistory() {
-        assert(appHistoryCoordinator == nil)
-        appHistoryCoordinator = AppHistoryCoordinator(router: router)
-        appHistoryCoordinator!.dismissHandler = { [weak self] coordinator in
-            self?.appHistoryCoordinator = nil
-        }
-        appHistoryCoordinator!.start()
-    }
-    
-    var diagnosticsViewerCoordinator: DiagnosticsViewerCoordinator?
-    func didPressShowDiagnostics() {
-        assert(diagnosticsViewerCoordinator == nil)
-        diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
-        diagnosticsViewerCoordinator!.dismissHandler = { [weak self] coordinator in
-            self?.diagnosticsViewerCoordinator = nil
-        }
-        diagnosticsViewerCoordinator!.start()
-    }
-    
-    var aboutCoordinator: AboutCoordinator?
-    private func showAboutScreen() {
-        assert(aboutCoordinator == nil)
-        aboutCoordinator = AboutCoordinator(router: router)
-        aboutCoordinator!.dismissHandler = { [weak self] coordinator in
-            self?.aboutCoordinator = nil
-        }
-        aboutCoordinator!.start()
-    }
-    
-    
-    private var premiumCoordinator: PremiumCoordinator? 
-    func didPressUpgradeToPremium() {
-        assert(premiumCoordinator == nil)
-        let modalRouter = NavigationRouter.createModal(
-            style: PremiumCoordinator.desiredModalPresentationStyle)
-        premiumCoordinator = PremiumCoordinator(router: modalRouter)
-        premiumCoordinator!.dismissHandler = { [weak self] (coordinator) in
-            self?.premiumCoordinator = nil
-        }
-        premiumCoordinator!.start()
-        present(modalRouter, animated: true, completion: nil)
-    }
-    
-    func didPressManageSubscription() {
-        AppStoreHelper.openSubscriptionManagement()
     }
     
     
@@ -466,20 +373,6 @@ class SettingsVC: UITableViewController, Refreshable {
             monthlyUsage,
             annualUsage)
         return appUsageDescription
-    }
-}
-
-extension SettingsVC: SettingsObserver {
-    func settingsDidChange(key: Settings.Keys) {
-        guard key != .recentUserActivityTimestamp else { return }
-        refresh()
-    }
-}
-
- 
-extension SettingsVC: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        dismissPopover(animated: false)
     }
 }
 

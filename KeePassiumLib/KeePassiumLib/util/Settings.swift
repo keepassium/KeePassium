@@ -13,9 +13,9 @@ public protocol SettingsObserver: class {
 }
 
 public class SettingsNotifications {
-    private weak var observer: SettingsObserver?
+    public weak var observer: SettingsObserver?
     
-    public init(observer: SettingsObserver) {
+    public init(observer: SettingsObserver? = nil) {
         self.observer = observer
     }
     
