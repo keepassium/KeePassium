@@ -10,8 +10,6 @@ import KeePassiumLib
 
 protocol DatabasePickerCoordinatorDelegate: AnyObject {
     func didSelectDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator)
-    func didAddDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator)
-    func didRemoveDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator)
     
     func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool
 }
