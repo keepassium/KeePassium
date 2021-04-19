@@ -118,7 +118,6 @@
 		75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754804FA238E51AF0068C863 /* PopoverAnchor.swift */; };
 		7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
 		754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
-		754BF0882082A6BD00E3A292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0862082A6BD00E3A292 /* Main.storyboard */; };
 		754BF08A2082A6BD00E3A292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */; };
 		754BF09A20984DEE00E3A292 /* UnlockDatabaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF09920984DEE00E3A292 /* UnlockDatabaseVC.swift */; };
@@ -507,7 +506,6 @@
 		75B38C67233E5B7C006BDEFC /* ProgressVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75802630222EBC3800F4525F /* ProgressVC.storyboard */; };
 		75B38C68233E5B7C006BDEFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		75B38C69233E5B7C006BDEFC /* PasscodeInputVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863423054FAD00E9FC83 /* PasscodeInputVC.storyboard */; };
-		75B38C6A233E5B7C006BDEFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0862082A6BD00E3A292 /* Main.storyboard */; };
 		75B38C6C233E5B7C006BDEFC /* SettingsAppLockVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */; };
 		75B38C6D233E5B7C006BDEFC /* GroupEditorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D002309AF150088BB10 /* GroupEditorVC.storyboard */; };
 		75B38C6E233E5B7C006BDEFC /* ViewEntryFilesVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0F2309AF400088BB10 /* ViewEntryFilesVC.storyboard */; };
@@ -1204,7 +1202,6 @@
 		754ABF2C25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsBackupTimeoutPickerVC.strings"; sourceTree = "<group>"; };
 		754BF07B2082A6BD00E3A292 /* KeePassium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeePassium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		754BF07E2082A6BD00E3A292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		754BF0872082A6BD00E3A292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		754BF0892082A6BD00E3A292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		754BF08C2082A6BD00E3A292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		754BF08E2082A6BD00E3A292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2094,7 +2091,6 @@
 				75D76130262CC19700B1DE7F /* MainCoordinator.swift */,
 				75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */,
 				7546FBDA20C3AC5E00C5D834 /* main.swift */,
-				754BF0862082A6BD00E3A292 /* Main.storyboard */,
 				754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */,
 				754BF0892082A6BD00E3A292 /* Assets.xcassets */,
 				756D15602129AFB60052C728 /* KeePassium.entitlements */,
@@ -2717,7 +2713,6 @@
 				758FC16724CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png in Resources */,
 				755B863123054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */,
 				758FC13F24CEF72000BAD35C /* appicon-atom-white_iPadApp_76@2x.png in Resources */,
-				754BF0882082A6BD00E3A292 /* Main.storyboard in Resources */,
 				758BAD9724B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */,
 				758FC14924CEF72000BAD35C /* appicon-calc_iPhoneApp_60@3x.png in Resources */,
 				75BE064725DB1A9C00B34CC0 /* DiagnosticsViewerVC.storyboard in Resources */,
@@ -2817,7 +2812,6 @@
 				758FC16824CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@3x.png in Resources */,
 				75B38C69233E5B7C006BDEFC /* PasscodeInputVC.storyboard in Resources */,
 				758FC14024CEF72000BAD35C /* appicon-atom-white_iPadApp_76@2x.png in Resources */,
-				75B38C6A233E5B7C006BDEFC /* Main.storyboard in Resources */,
 				758BAD9824B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */,
 				758FC14A24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@3x.png in Resources */,
 				75BE064925DB1A9C00B34CC0 /* DiagnosticsViewerVC.storyboard in Resources */,
@@ -4140,14 +4134,6 @@
 				7534381E2643FE6F0032D284 /* ko */,
 			);
 			name = DestinationGroupPickerVC.storyboard;
-			sourceTree = "<group>";
-		};
-		754BF0862082A6BD00E3A292 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				754BF0872082A6BD00E3A292 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */ = {
