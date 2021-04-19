@@ -10,8 +10,8 @@ import KeePassiumLib
 
 class FileAddingHelper {
     
-    public static func ensureDatabaseFile(
-        url: URL,
+    public static func ensureFileIsDatabase(
+        _ url: URL,
         parent: UIViewController,
         handler: @escaping (URL)->Void)
     {

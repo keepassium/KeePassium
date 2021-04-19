@@ -617,7 +617,7 @@ extension MainCoordinator: UIDocumentPickerDelegate {
     }
     
     private func addDatabaseURL(_ url: URL) {
-        FileAddingHelper.ensureDatabaseFile(url: url, parent: navigationController) {
+        FileAddingHelper.ensureFileIsDatabase(url, parent: navigationController) {
             [weak self] (url) in
             FileKeeper.shared.prepareToAddFile(url: url, fileType: .database, mode: .openInPlace)
             FileKeeper.shared.processPendingOperations(
