@@ -1,0 +1,132 @@
+//  KeePassium Password Manager
+//  Copyright © 2021 Andrei Popleteev <info@keepassium.com>
+//
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact the author.
+
+import KeePassiumLib
+
+final class DataProtectionSettingsCoordinator: Coordinator, Refreshable {
+    var childCoordinators = [Coordinator]()
+    
+    var dismissHandler: CoordinatorDismissHandler?
+    
+    private let router: NavigationRouter
+    private let dataProtectionSettingsVC: SettingsDataProtectionVC
+    
+    init(router: NavigationRouter) {
+        self.router = router
+        dataProtectionSettingsVC = SettingsDataProtectionVC.instantiateFromStoryboard()
+        dataProtectionSettingsVC.delegate = self
+    }
+    
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
+    func start() {
+        router.push(dataProtectionSettingsVC, animated: true, onPop: {
+            [weak self] viewController in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
+            self.dismissHandler?(self)
+        })
+        startObservingPremiumStatus(#selector(premiumStatusDidChange))
+    }
+    
+    @objc
+    private func premiumStatusDidChange() {
+        refresh()
+    }
+    
+    func refresh() {
+        guard let topVC = router.navigationController.topViewController,
+              let topRefreshable = topVC as? Refreshable
+        else {
+            return
+        }
+        topRefreshable.refresh()
+    }
+}
+
+extension DataProtectionSettingsCoordinator {
+    private func showDatabaseTimeoutSettingsPage() {
+        let databaseTimeoutVC = SettingsDatabaseTimeoutVC.instantiateFromStoryboard()
+        databaseTimeoutVC.delegate = self
+        router.push(databaseTimeoutVC, animated: true, onPop: nil)
+    }
+    
+    private func showClipboardTimeoutSettingsPage() {
+        let clipboardTimeoutVC = SettingsClipboardTimeoutVC.instantiateFromStoryboard()
+        clipboardTimeoutVC.delegate = self
+        router.push(clipboardTimeoutVC, animated: true, onPop: nil)
+    }
+    
+    private func maybeSetLockDatabasesOnTimeout(_ value: Bool, in viewController: UIViewController) {
+        performPremiumActionOrOfferUpgrade(
+            for: .canKeepMasterKeyOnDatabaseTimeout,
+            in: viewController,
+            actionHandler: {
+                Settings.current.isLockDatabasesOnTimeout = value
+                refresh()
+            }
+        )
+    }
+}
+
+extension DataProtectionSettingsCoordinator: SettingsDataProtectionViewCoordinatorDelegate {
+    func didPressDatabaseTimeout(in viewController: SettingsDataProtectionVC) {
+        showDatabaseTimeoutSettingsPage()
+    }
+    
+    func didPressClipboardTimeout(in viewController: SettingsDataProtectionVC) {
+        showClipboardTimeoutSettingsPage()
+    }
+    
+    func didToggleLockDatabasesOnTimeout(
+        newValue: Bool,
+        in viewController: SettingsDataProtectionVC
+    ) {
+        maybeSetLockDatabasesOnTimeout(newValue, in: viewController)
+    }
+}
+
+extension DataProtectionSettingsCoordinator: SettingsDatabaseTimeoutViewControllerDelegate {
+    func didSelectTimeout(
+        _ timeout: Settings.DatabaseLockTimeout,
+        in viewController: SettingsDatabaseTimeoutVC
+    ) {
+        performPremiumActionOrOfferUpgrade(
+            for: .canUseLongDatabaseTimeouts,
+            in: viewController,
+            actionHandler: {
+                finishDatabaseTimeoutSelection(timeout, in: viewController)
+            }
+        )
+    }
+    
+    private func finishDatabaseTimeoutSelection(
+        _ timeout: Settings.DatabaseLockTimeout,
+        in viewController: SettingsDatabaseTimeoutVC
+    ) {
+        Settings.current.databaseLockTimeout = timeout
+        viewController.refresh()
+        
+        Watchdog.shared.restart() 
+
+        DispatchQueue.main.async { [weak router] in
+            router?.pop(viewController: viewController, animated: true)
+        }
+    }
+}
+
+extension DataProtectionSettingsCoordinator: SettingsClipboardTimeoutViewControllerDelegate {
+    func didFinishSelection(in viewController: SettingsClipboardTimeoutVC) {
+        DispatchQueue.main.async { [weak router] in
+            router?.pop(viewController: viewController, animated: true)
+        }
+    }
+}

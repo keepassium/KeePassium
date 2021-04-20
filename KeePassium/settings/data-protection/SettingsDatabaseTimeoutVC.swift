@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-class SettingsDatabaseTimeoutCell: UITableViewCell {
+final class SettingsDatabaseTimeoutCell: UITableViewCell {
     static let storyboardID = "Cell"
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -17,31 +17,26 @@ class SettingsDatabaseTimeoutCell: UITableViewCell {
     @IBOutlet weak var premiumBadge: UIImageView!
 }
 
-class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
-    private var premiumUpgradeHelper = PremiumUpgradeHelper()
+protocol SettingsDatabaseTimeoutViewControllerDelegate: AnyObject {
+    func didSelectTimeout(
+        _ timeout: Settings.DatabaseLockTimeout,
+        in viewController: SettingsDatabaseTimeoutVC
+    )
+}
+
+final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
     private var premiumStatus: PremiumManager.Status = .initialGracePeriod
     
-    public static func make() -> UIViewController {
-        return SettingsDatabaseTimeoutVC.instantiateFromStoryboard()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(refreshPremiumStatus),
-            name: PremiumManager.statusUpdateNotification,
-            object: nil)
-        refreshPremiumStatus()
+    weak var delegate: SettingsDatabaseTimeoutViewControllerDelegate?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh()
     }
     
     func refresh() {
-        tableView.reloadData()
-    }
-
-    @objc func refreshPremiumStatus() {
         premiumStatus = PremiumManager.shared.status
-        refresh()
+        tableView.reloadData()
     }
     
 
@@ -66,10 +61,9 @@ class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell
     {
-        let cell = tableView
-            .dequeueReusableCell(
-                withIdentifier: SettingsDatabaseTimeoutCell.storyboardID,
-                for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingsDatabaseTimeoutCell.storyboardID,
+            for: indexPath)
             as! SettingsDatabaseTimeoutCell
             
         let timeout = Settings.DatabaseLockTimeout.allValues[indexPath.row]
@@ -93,19 +87,6 @@ class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let timeout = Settings.DatabaseLockTimeout.allValues[indexPath.row]
-        if Settings.current.isAvailable(timeout: timeout, for: premiumStatus) {
-            applyTimeoutAndDismiss(timeout)
-        } else {
-            premiumUpgradeHelper.offerUpgrade(.canUseLongDatabaseTimeouts, in: self)
-        }
-    }
-    
-    private func applyTimeoutAndDismiss(_ timeout: Settings.DatabaseLockTimeout) {
-        Settings.current.databaseLockTimeout = timeout
-        Watchdog.shared.restart() 
-        self.refresh()
-        DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
-        }
+        delegate?.didSelectTimeout(timeout, in: self)
     }
 }

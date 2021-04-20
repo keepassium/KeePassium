@@ -9,29 +9,36 @@
 import UIKit
 import KeePassiumLib
 
-class SettingsDataProtectionVC: UITableViewController, Refreshable {
+protocol SettingsDataProtectionViewCoordinatorDelegate: AnyObject {
+    func didPressDatabaseTimeout(in viewController: SettingsDataProtectionVC)
+    func didPressClipboardTimeout(in viewController: SettingsDataProtectionVC)
+    func didToggleLockDatabasesOnTimeout(newValue: Bool, in viewController: SettingsDataProtectionVC)
+}
 
-    @IBOutlet weak var rememberMasterKeysSwitch: UISwitch!
-    @IBOutlet weak var clearMasterKeysButton: UIButton!
-    @IBOutlet weak var rememberFinalKeysSwitch: UISwitch!
-    @IBOutlet weak var rememberFinalKeysLabel: UILabel!
-    @IBOutlet weak var rememberFinalKeysCell: UITableViewCell!
+final class SettingsDataProtectionVC: UITableViewController, Refreshable {
 
-    @IBOutlet weak var rememberUsedKeyFiles: UISwitch!
-    @IBOutlet weak var clearKeyFileAssociationsButton: UIButton!
+    @IBOutlet private weak var rememberMasterKeysSwitch: UISwitch!
+    @IBOutlet private weak var clearMasterKeysButton: UIButton!
+    @IBOutlet private weak var rememberFinalKeysSwitch: UISwitch!
+    @IBOutlet private weak var rememberFinalKeysLabel: UILabel!
+    @IBOutlet private weak var rememberFinalKeysCell: UITableViewCell!
+
+    @IBOutlet private weak var rememberUsedKeyFiles: UISwitch!
+    @IBOutlet private weak var clearKeyFileAssociationsButton: UIButton!
     
-    @IBOutlet weak var databaseTimeoutCell: UITableViewCell!
-    @IBOutlet weak var lockDatabaseOnTimeoutLabel: UILabel!
-    @IBOutlet weak var lockDatabaseOnTimeoutSwitch: UISwitch!
-    @IBOutlet weak var lockDatabaseOnTimeoutPremiumBadge: UIImageView!
+    @IBOutlet private weak var databaseTimeoutCell: UITableViewCell!
+    @IBOutlet private weak var lockDatabaseOnTimeoutLabel: UILabel!
+    @IBOutlet private weak var lockDatabaseOnTimeoutSwitch: UISwitch!
+    @IBOutlet private weak var lockDatabaseOnTimeoutPremiumBadge: UIImageView!
     
-    @IBOutlet weak var clipboardTimeoutCell: UITableViewCell!
-    @IBOutlet weak var universalClipboardSwitch: UISwitch!
+    @IBOutlet private weak var clipboardTimeoutCell: UITableViewCell!
+    @IBOutlet private weak var universalClipboardSwitch: UISwitch!
     
-    @IBOutlet weak var hideProtectedFieldsSwitch: UISwitch!
+    @IBOutlet private weak var hideProtectedFieldsSwitch: UISwitch!
+    
+    weak var delegate: SettingsDataProtectionViewCoordinatorDelegate?
     
     private var settingsNotifications: SettingsNotifications!
-    private var premiumUpgradeHelper = PremiumUpgradeHelper()
     
     
     override func viewDidLoad() {
@@ -142,24 +149,17 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
     }
     
     @objc func didPressDatabaseTimeout(_ sender: Any) {
-        let databaseTimeoutVC = SettingsDatabaseTimeoutVC.make()
-        show(databaseTimeoutVC, sender: self)
+        delegate?.didPressDatabaseTimeout(in: self)
     }
     
     @IBAction func didToggleLockDatabasesOnTimeoutSwitch(_ sender: UISwitch) {
-        premiumUpgradeHelper.performActionOrOfferUpgrade(
-            .canKeepMasterKeyOnDatabaseTimeout,
-            in: self,
-            actionHandler: { [sender] in
-                Settings.current.isLockDatabasesOnTimeout = sender.isOn
-            }
-        )
+        assert(delegate != nil, "This won't work without a delegate")
+        delegate?.didToggleLockDatabasesOnTimeout(newValue: sender.isOn, in: self)
         refresh()
     }
     
     func didPressClipboardTimeout(_ sender: Any) {
-        let clipboardTimeoutVC = SettingsClipboardTimeoutVC.make()
-        show(clipboardTimeoutVC, sender: self)
+        delegate?.didPressClipboardTimeout(in: self)
     }
 
     @IBAction func didToggleUniversalClipboardSwitch(_ sender: UISwitch) {
@@ -178,9 +178,9 @@ class SettingsDataProtectionVC: UITableViewController, Refreshable {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         switch selectedCell {
         case databaseTimeoutCell:
-            didPressDatabaseTimeout(selectedCell)
+            delegate?.didPressDatabaseTimeout(in: self)
         case clipboardTimeoutCell:
-            didPressClipboardTimeout(selectedCell)
+            delegate?.didPressClipboardTimeout(in: self)
         default:
             break
         }

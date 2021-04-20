@@ -116,9 +116,12 @@ extension SettingsCoordinator {
     }
     
     private func showDataProtectionSettingsPage() {
-        let dataProtectionSettingsVC = SettingsDataProtectionVC.instantiateFromStoryboard()
-        dataProtectionSettingsVC.delegate = self
-        router.push(dataProtectionSettingsVC, animated: true, onPop: nil)
+        let dataProtectionSettingsCoordinator = DataProtectionSettingsCoordinator(router: router)
+        dataProtectionSettingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        dataProtectionSettingsCoordinator.start()
+        addChildCoordinator(dataProtectionSettingsCoordinator)
     }
     
     private func showBackupSettingsPage() {
@@ -234,8 +237,4 @@ extension SettingsCoordinator: SettingsAppearanceViewControllerDelegate {
     func didPressDatabaseIconsSettings(in viewController: SettingsAppearanceVC) {
         showDatabaseIconsSettingsPage()
     }
-}
-
-extension SettingsCoordinator: SettingsDataProtectionViewControllerDelegate {
-    
 }

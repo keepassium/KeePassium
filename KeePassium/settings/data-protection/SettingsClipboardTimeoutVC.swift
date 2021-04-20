@@ -6,14 +6,20 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
 
-class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
+protocol SettingsClipboardTimeoutViewControllerDelegate: AnyObject {
+    func didFinishSelection(in viewController: SettingsClipboardTimeoutVC)
+}
+
+final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
     private let cellID = "Cell"
     
-    public static func make() -> UIViewController {
-        return SettingsClipboardTimeoutVC.instantiateFromStoryboard()
+    weak var delegate: SettingsClipboardTimeoutViewControllerDelegate?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh()
     }
 
     func refresh() {
@@ -53,10 +59,12 @@ class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let timeout = Settings.ClipboardTimeout.allValues[indexPath.row]
+        didSelectTimeout(timeout)
+    }
+    
+    private func didSelectTimeout(_ timeout: Settings.ClipboardTimeout) {
         Settings.current.clipboardTimeout = timeout
         refresh()
-        DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
-        }
+        delegate?.didFinishSelection(in: self)
     }
 }

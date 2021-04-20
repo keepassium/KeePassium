@@ -72,6 +72,8 @@
 		75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
 		75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
 		75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
+		7527FAB3262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */; };
+		7527FAB4262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */; };
 		7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAE8211416170093B117 /* SettingsAppLockVC.swift */; };
 		7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
@@ -833,6 +835,7 @@
 		7527CC5F25F52D96000E8661 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DestinationGroupPickerVC.strings"; sourceTree = "<group>"; };
 		7527CC6025F52DA5000E8661 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DestinationGroupPickerVC.strings"; sourceTree = "<group>"; };
 		7527E6CC25F58E6800CB9AA0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
+		7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoVC.swift; sourceTree = "<group>"; };
 		7529D8C92643FEF100363B02 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
 		7529EAE8211416170093B117 /* SettingsAppLockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppLockVC.swift; sourceTree = "<group>"; };
@@ -2012,6 +2015,7 @@
 		7527FAAF262F712F00623849 /* data-protection */ = {
 			isa = PBXGroup;
 			children = (
+				7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */,
 				752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */,
 				751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */,
 				757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */,
@@ -3168,6 +3172,7 @@
 				75C94C5B20B4B8C2004FA29D /* ViewEntryVC.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
+				7527FAB3262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				7572665A24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
@@ -3322,6 +3327,7 @@
 				75B38C46233E5B7C006BDEFC /* ViewEntryVC.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
+				7527FAB4262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				7572665C24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
