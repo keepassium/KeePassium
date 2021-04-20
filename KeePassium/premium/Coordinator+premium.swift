@@ -10,6 +10,15 @@ import KeePassiumLib
 
 extension Coordinator {
     
+    func startObservingPremiumStatus(_ selector: Selector) {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: selector,
+            name: PremiumManager.statusUpdateNotification,
+            object: nil)
+    }
+    
+    
     func performPremiumActionOrOfferUpgrade(
         for feature: PremiumFeature,
         in viewController: UIViewController,

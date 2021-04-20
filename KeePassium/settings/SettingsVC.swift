@@ -66,11 +66,6 @@ final class SettingsVC: UITableViewController, Refreshable {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(refreshPremiumStatus),
-            name: PremiumManager.statusUpdateNotification,
-            object: nil)
         if BusinessModel.type == .prepaid {
             isPremiumSectionHidden = true
             setPremiumCellVisibility(premiumTrialCell, isHidden: true)
@@ -78,15 +73,6 @@ final class SettingsVC: UITableViewController, Refreshable {
             setPremiumCellVisibility(manageSubscriptionCell, isHidden: true)
             setPremiumCellVisibility(appHistoryCell, isHidden: true)
         }
-        refreshPremiumStatus()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(
-            self,
-            name: PremiumManager.statusUpdateNotification,
-            object: nil
-        )
     }
     
     override func viewWillAppear(_ animated: Bool) {

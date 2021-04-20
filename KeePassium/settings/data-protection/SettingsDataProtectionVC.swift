@@ -45,11 +45,6 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
         settingsNotifications = SettingsNotifications(observer: self)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(refreshPremiumStatus),
-            name: PremiumManager.statusUpdateNotification,
-            object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,10 +81,6 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
             )
         
         clipboardTimeoutCell.detailTextLabel?.text = settings.clipboardTimeout.shortTitle
-    }
-    
-    @objc func refreshPremiumStatus() {
-        refresh()
     }
     
     

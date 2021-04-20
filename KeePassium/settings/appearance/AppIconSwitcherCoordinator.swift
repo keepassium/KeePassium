@@ -14,7 +14,6 @@ class AppIconSwitcherCoordinator: Coordinator {
     
     private let router: NavigationRouter
     private let picker: AppIconPicker
-    private let premiumUpgradeHelper = PremiumUpgradeHelper()
     
     init(router: NavigationRouter) {
         self.router = router
@@ -34,14 +33,10 @@ class AppIconSwitcherCoordinator: Coordinator {
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(refreshPremiumStatus),
-            name: PremiumManager.statusUpdateNotification,
-            object: nil)
+        startObservingPremiumStatus(#selector(premiumStatusDidChange))
     }
     
-    @objc private func refreshPremiumStatus() {
+    @objc private func premiumStatusDidChange() {
         picker.refresh()
     }
 }
@@ -50,7 +45,7 @@ extension AppIconSwitcherCoordinator: AppIconPickerDelegate {
     func didSelectIcon(_ appIcon: AppIcon, in appIconPicker: AppIconPicker) {
         assert(UIApplication.shared.supportsAlternateIcons)
         if AppIcon.isPremium(appIcon) {
-            premiumUpgradeHelper.performActionOrOfferUpgrade(.canChangeAppIcon, in: picker) {
+            performPremiumActionOrOfferUpgrade(for: .canChangeAppIcon, in: picker) {
                 [weak self] in
                 self?.setAppIcon(appIcon)
             }

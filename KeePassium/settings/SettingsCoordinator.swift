@@ -41,6 +41,7 @@ final class SettingsCoordinator: Coordinator, Refreshable {
             self.dismissHandler?(self)
         })
         settingsNotifications.startObserving()
+        startObservingPremiumStatus(#selector(premiumStatusDidChange))
     }
     
     private func setupDoneButton(in viewController: UIViewController) {
@@ -60,6 +61,11 @@ final class SettingsCoordinator: Coordinator, Refreshable {
         router.dismiss(animated: true)
     }
     
+    @objc
+    private func premiumStatusDidChange() {
+        refresh()
+    }
+    
     func refresh() {
         guard let topVC = router.navigationController.topViewController,
               let topRefreshable = topVC as? Refreshable
@@ -71,20 +77,6 @@ final class SettingsCoordinator: Coordinator, Refreshable {
 }
 
 extension SettingsCoordinator {
-    private func showUpgradeToPremiumPage() {
-        let modalRouter = NavigationRouter.createModal(
-            style: PremiumCoordinator.desiredModalPresentationStyle
-        )
-        let premiumCoordinator = PremiumCoordinator(router: modalRouter)
-        premiumCoordinator.dismissHandler = { [weak self] (coordinator) in
-            self?.removeChildCoordinator(coordinator)
-        }
-        premiumCoordinator.start()
-        addChildCoordinator(premiumCoordinator)
-
-        router.present(modalRouter, animated: true, completion: nil)
-    }
-    
     private func showAppHistoryPage() {
         let appHistoryCoordinator = AppHistoryCoordinator(router: router)
         appHistoryCoordinator.dismissHandler = { [weak self] coordinator in
@@ -177,7 +169,7 @@ extension SettingsCoordinator: SettingsObserver {
 
 extension SettingsCoordinator: SettingsViewControllerDelegate {
     func didPressUpgradeToPremium(in viewController: SettingsVC) {
-        showUpgradeToPremiumPage()
+        showPremiumUpgrade(in: settingsVC)
     }
     
     func didPressManageSubscription(in viewController: SettingsVC) {
