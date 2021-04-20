@@ -110,12 +110,9 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
             databasePickerVC.showAddDatabaseOptions(at: popoverAnchor)
             return
         }
-        
-        let premiumManager = PremiumManager.shared
-        if premiumManager.isAvailable(feature: .canUseMultipleDatabases) {
-            self.databasePickerVC.showAddDatabaseOptions(at: popoverAnchor)
-        } else {
-            requirePremiumUpgrade(for: .canPreviewAttachments, in: viewController)
+        performPremiumActionOrOfferUpgrade(for: .canUseMultipleDatabases, in: viewController) {
+            [weak self] in
+            self?.databasePickerVC.showAddDatabaseOptions(at: popoverAnchor)
         }
     }
     
@@ -179,33 +176,6 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
             databaseInfoVC?.dismiss(animated: true, completion: nil)
         }
         viewController.present(databaseInfoVC, animated: true, completion: nil)
-    }
-    
-    private func requirePremiumUpgrade(for feature: PremiumFeature, in viewController: UIViewController) {
-        let upgradeNotice = UIAlertController(
-            title: feature.titleName,
-            message: feature.upgradeNoticeText,
-            preferredStyle: .alert
-        )
-        upgradeNotice.addAction(title: LString.actionUpgradeToPremium, style: .default) {
-            [weak self] _ in
-            self?.showPremiumUpgrade()
-        }
-        upgradeNotice.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        viewController.present(upgradeNotice, animated: true, completion: nil)
-    }
-    
-    private func showPremiumUpgrade() {
-        let modalRouter = NavigationRouter.createModal(
-            style: PremiumCoordinator.desiredModalPresentationStyle
-        )
-        let premiumCoordinator = PremiumCoordinator(router: modalRouter)
-        premiumCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
-        premiumCoordinator.start()
-        router.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(premiumCoordinator)
     }
 }
 
