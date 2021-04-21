@@ -103,8 +103,12 @@ extension SettingsCoordinator {
     }
     
     private func showAppProtectionSettingsPage() {
-        let appLockSettingsVC = SettingsAppLockVC.instantiateFromStoryboard()
-        router.push(appLockSettingsVC, animated: true, onPop: nil)
+        let appProtectionSettingsCoordinator = AppProtectionSettingsCoordinator(router: router)
+        appProtectionSettingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        appProtectionSettingsCoordinator.start()
+        addChildCoordinator(appProtectionSettingsCoordinator)
     }
     
     private func showDataProtectionSettingsPage() {

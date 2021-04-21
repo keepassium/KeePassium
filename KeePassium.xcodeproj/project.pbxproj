@@ -129,6 +129,8 @@
 		754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
 		754D7C1C238C3553005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
 		754D7C1D238C355B005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
+		754E40862630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
+		754E40872630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
 		7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */; };
 		7550D242215D792000360E0C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
@@ -1218,6 +1220,7 @@
 		754D7C08238C2135005652E1 /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
 		754D7C18238C2C0E005652E1 /* libYubiKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYubiKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		754D7C1E238C384A005652E1 /* KeePassium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeePassium-Bridging-Header.h"; sourceTree = "<group>"; };
+		754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		754E74C2260677A70043BBDB /* KeePassium-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KeePassium-macOS.entitlements"; sourceTree = "<group>"; };
 		754E74CB26067B730043BBDB /* KeePassium_AutoFill-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KeePassium_AutoFill-macOS.entitlements"; sourceTree = "<group>"; };
 		7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMasterKeyVC.swift; sourceTree = "<group>"; };
@@ -2427,6 +2430,7 @@
 		75C3800F217A0497006F74C2 /* app-protection */ = {
 			isa = PBXGroup;
 			children = (
+				754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */,
 				7529EAE8211416170093B117 /* SettingsAppLockVC.swift */,
 				751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */,
 				7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */,
@@ -3140,6 +3144,7 @@
 				7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				75BE063F25DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				756B15CF24C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
+				754E40862630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */,
 				7546FBD920C3A3F600C5D834 /* Watchdog.swift in Sources */,
 				75CA73912144381200ADAD64 /* KeyboardLayoutConstraint.swift in Sources */,
@@ -3295,6 +3300,7 @@
 				7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
 				75B38C34233E5B7C006BDEFC /* SettingsAutoFillVC.swift in Sources */,
+				754E40872630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75B38C35233E5B7C006BDEFC /* Watchdog.swift in Sources */,
 				75B38C36233E5B7C006BDEFC /* KeyboardLayoutConstraint.swift in Sources */,
 				75B38C38233E5B7C006BDEFC /* PremiumCoordinator.swift in Sources */,
