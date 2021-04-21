@@ -2059,7 +2059,7 @@
 			children = (
 				751A564D24CCD375001227D6 /* appearance */,
 				75065A3122C41B2200958243 /* autoFill */,
-				75C3800F217A0497006F74C2 /* appLock */,
+				75C3800F217A0497006F74C2 /* app-protection */,
 				7527FAAF262F712F00623849 /* data-protection */,
 				7578488722C16D7D00BBEF9A /* backup */,
 				7546FBC520C1027700C5D834 /* SettingsVC.swift */,
@@ -2424,7 +2424,7 @@
 			path = icon;
 			sourceTree = "<group>";
 		};
-		75C3800F217A0497006F74C2 /* appLock */ = {
+		75C3800F217A0497006F74C2 /* app-protection */ = {
 			isa = PBXGroup;
 			children = (
 				7529EAE8211416170093B117 /* SettingsAppLockVC.swift */,
@@ -2432,7 +2432,7 @@
 				7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */,
 				75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */,
 			);
-			path = appLock;
+			path = "app-protection";
 			sourceTree = "<group>";
 		};
 		75CBABA421C16DD400B8AFE2 /* controllers */ = {

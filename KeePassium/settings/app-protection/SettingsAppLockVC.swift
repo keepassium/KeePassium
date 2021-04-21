@@ -27,8 +27,6 @@ class SettingsAppLockVC: UITableViewController, Refreshable {
     private var passcodeInputVC: PasscodeInputVC?
     private var isInitialPasscodeSetup = true
     
-    private var premiumUpgradeHelper = PremiumUpgradeHelper()
-    
     private enum Sections: Int {
         static let allValues: [Sections] = [.passcode, .biometrics, .timeout, .protectDatabases]
         case passcode = 0
@@ -45,11 +43,6 @@ class SettingsAppLockVC: UITableViewController, Refreshable {
         changePasscodeCell.textLabel?.text = LString.actionChangePasscode
         
         settingsNotifications = SettingsNotifications(observer: self)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(refreshPremiumStatus),
-            name: PremiumManager.statusUpdateNotification,
-            object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -98,10 +91,6 @@ class SettingsAppLockVC: UITableViewController, Refreshable {
         lockDatabasesOnFailedPasscodeCell.setEnabled(isAppLockEnabled)
         biometricsCell.setEnabled(isAppLockEnabled && isBiometricsSupported)
         biometricsSwitch.isEnabled = isAppLockEnabled && isBiometricsSupported
-    }
-
-    @objc func refreshPremiumStatus() {
-        refresh()
     }
     
     
