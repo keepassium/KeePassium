@@ -9,42 +9,41 @@
 import KeePassiumLib
 
 protocol DatabaseUnlockerDelegate: class {
-    func databaseUnlockerShouldUnlock(
-        _ sender: DatabaseUnlockerVC,
-        database: URLReference,
-        password: String,
-        keyFile: URLReference?,
-        yubiKey: YubiKey?)
-    func didPressNewsItem(in databaseUnlocker: DatabaseUnlockerVC, newsItem: NewsItem)
     func didPressSelectKeyFile(
-        in databaseUnlocker: DatabaseUnlockerVC,
-        at popoverAnchor: PopoverAnchor)
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabaseUnlockerVC)
+    
     func didPressSelectHardwareKey(
-        in databaseUnlocker: DatabaseUnlockerVC,
-        at popoverAnchor: PopoverAnchor)
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabaseUnlockerVC)
+    
+    func didPressUnlock(in viewController: DatabaseUnlockerVC)
+    
     func didPressShowDiagnostics(
-        in databaseUnlocker: DatabaseUnlockerVC,
-        at popoverAnchor: PopoverAnchor)
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabaseUnlockerVC)
 }
 
-class DatabaseUnlockerVC: UIViewController, Refreshable {
+final class DatabaseUnlockerVC: UIViewController, Refreshable {
 
-    @IBOutlet weak var errorMessagePanel: UIView!
-    @IBOutlet weak var errorMessageLabel: UILabel!
-    @IBOutlet weak var errorDetailsButton: UIButton!
-    @IBOutlet weak var databaseLocationIconImage: UIImageView!
-    @IBOutlet weak var databaseFileNameLabel: UILabel!
-    @IBOutlet weak var inputPanel: UIView!
-    @IBOutlet weak var passwordField: ProtectedTextField!
-    @IBOutlet weak var keyFileField: KeyFileTextField!
-    @IBOutlet weak var announcementButton: UIButton!
-    @IBOutlet weak var unlockButton: UIButton!
+    @IBOutlet private weak var errorMessagePanel: UIView!
+    @IBOutlet private weak var errorMessageLabel: UILabel!
+    @IBOutlet private weak var errorDetailsButton: UIButton!
+    @IBOutlet private weak var databaseLocationIconImage: UIImageView!
+    @IBOutlet private weak var databaseFileNameLabel: UILabel!
+    @IBOutlet private weak var inputPanel: UIView!
+    @IBOutlet private weak var passwordField: ProtectedTextField!
+    @IBOutlet private weak var keyFileField: KeyFileTextField!
+    @IBOutlet private weak var announcementButton: UIButton!
+    @IBOutlet private weak var unlockButton: UIButton!
     
     weak var delegate: DatabaseUnlockerDelegate?
     var shouldAutofocus = false
-    var databaseRef: URLReference? {
+    var databaseRef: URLReference! {
         didSet { refresh() }
     }
+    
+    var password: String { return passwordField?.text ?? "" }
     private(set) var keyFileRef: URLReference?
     private(set) var yubiKey: YubiKey?
     
@@ -69,7 +68,7 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
             let popoverAnchor = PopoverAnchor(
                 sourceView: self.keyFileField,
                 sourceRect: self.keyFileField.bounds)
-            self.delegate?.didPressSelectHardwareKey(in: self, at: popoverAnchor)
+            self.delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
         }
     }
     
@@ -151,26 +150,26 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         showErrorMessage(message, haptics: .wrongPassword)
     }
     
+    func maybeFocusOnPassword() {
+        if !passwordField.isHidden {
+            passwordField.becomeFirstResponder()
+        }
+    }
+    
     func refresh() {
         guard isViewLoaded else { return }
-        refreshNews()
         
-        guard let dbRef = databaseRef else {
-            databaseLocationIconImage.image = nil
-            databaseFileNameLabel.text = ""
-            return
-        }
-        if let errorMessage = dbRef.error?.localizedDescription {
+        if let errorMessage = databaseRef.error?.localizedDescription {
             databaseFileNameLabel.text = errorMessage
             databaseFileNameLabel.textColor = UIColor.errorMessage
             databaseLocationIconImage.image = nil
         } else {
-            databaseFileNameLabel.text = dbRef.visibleFileName
+            databaseFileNameLabel.text = databaseRef.visibleFileName
             databaseFileNameLabel.textColor = UIColor.primaryText
-            databaseLocationIconImage.image = dbRef.getIcon(fileType: .database)
+            databaseLocationIconImage.image = databaseRef.getIcon(fileType: .database)
         }
         
-        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: dbRef)
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
         if let associatedKeyFileRef = dbSettings?.associatedKeyFile {
             let allAvailableKeyFiles = FileKeeper.shared
                 .getAllReferences(fileType: .keyFile, includeBackup: false)
@@ -190,7 +189,6 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         self.yubiKey = yubiKey
         keyFileField.isYubiKeyActive = (yubiKey != nil)
 
-        guard let databaseRef = databaseRef else { assertionFailure(); return }
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
             dbSettings.maybeSetAssociatedYubiKey(yubiKey)
         }
@@ -206,7 +204,6 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         
         hideErrorMessage(animated: false)
 
-        guard let databaseRef = databaseRef else { return }
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { (dbSettings) in
             dbSettings.maybeSetAssociatedKeyFile(keyFileRef)
         }
@@ -232,72 +229,17 @@ class DatabaseUnlockerVC: UIViewController, Refreshable {
         }
     }
     
-    private(set) var progressOverlay: ProgressOverlay?
-
-    public func showProgressOverlay(animated: Bool) {
-        guard progressOverlay == nil else {
-            progressOverlay?.title = LString.databaseStatusLoading
-            return
-        }
-        navigationItem.hidesBackButton = true
-        progressOverlay = ProgressOverlay.addTo(
-            self.view,
-            title: LString.databaseStatusLoading,
-            animated: animated)
-    }
-    
-    public func updateProgress(with progress: ProgressEx) {
-        progressOverlay?.update(with: progress)
-    }
-    
-    public func hideProgressOverlay() {
-        navigationItem.hidesBackButton = false
-        progressOverlay?.dismiss(animated: true) {
-            [weak self] (finished) in
-            guard finished, let _self = self else { return }
-            _self.progressOverlay?.removeFromSuperview()
-            _self.progressOverlay = nil
-        }
-    }
-
-    
-    
-    private var newsItem: NewsItem?
-    
-    private func refreshNews() {
-        let nc = NewsCenter.shared
-        if let newsItem = nc.getTopItem() {
-            announcementButton.titleLabel?.numberOfLines = 0
-            announcementButton.setTitle(newsItem.title, for: .normal)
-            announcementButton.isHidden = false
-            self.newsItem = newsItem
-        } else {
-            announcementButton.isHidden = true
-            self.newsItem = nil
-        }
-    }
-    
     
     @IBAction func didPressErrorDetailsButton(_ sender: UIButton) {
         Watchdog.shared.restart()
         let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
-        delegate?.didPressShowDiagnostics(in: self, at: popoverAnchor)
+        delegate?.didPressShowDiagnostics(at: popoverAnchor, in: self)
     }
     
     @IBAction func didPressUnlock(_ sender: Any) {
         Watchdog.shared.restart()
-        guard let databaseRef = databaseRef else { return }
-        delegate?.databaseUnlockerShouldUnlock(
-            self,
-            database: databaseRef,
-            password: passwordField.text ?? "",
-            keyFile: keyFileRef,
-            yubiKey: yubiKey)
-    }
-    
-    @IBAction func didPressAnouncementButton(_ sender: Any) {
-        guard let newsItem = newsItem else { return }
-        delegate?.didPressNewsItem(in: self, newsItem: newsItem)
+        passwordField.resignFirstResponder()
+        delegate?.didPressUnlock(in: self)
     }
 }
 
@@ -307,7 +249,7 @@ extension DatabaseUnlockerVC: UITextFieldDelegate {
         if textField === keyFileField {
             passwordField.becomeFirstResponder()
             let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
-            delegate?.didPressSelectKeyFile(in: self, at: popoverAnchor)
+            delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
             return false 
         }
         return true

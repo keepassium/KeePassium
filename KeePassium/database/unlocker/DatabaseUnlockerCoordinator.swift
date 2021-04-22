@@ -1,0 +1,303 @@
+//  KeePassium Password Manager
+//  Copyright © 2021 Andrei Popleteev <info@keepassium.com>
+//
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact the author.
+
+import KeePassiumLib
+
+typealias DatabaseUnlockResult = Result<Database, Error>
+
+protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
+    func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator)
+    func didNotUnlockDatabase(
+        _ fileRef: URLReference,
+        with message: String?,
+        reason: String?,
+        in coordinator: DatabaseUnlockerCoordinator
+    )
+    func didUnlockDatabase(
+        _ fileRef: URLReference,
+        database: Database,
+        warnings: DatabaseLoadingWarnings,
+        in coordinator: DatabaseUnlockerCoordinator
+    )
+}
+
+final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
+    var childCoordinators = [Coordinator]()
+    var dismissHandler: CoordinatorDismissHandler?
+    weak var delegate: DatabaseUnlockerCoordinatorDelegate?
+    
+    private let router: NavigationRouter
+    private let databaseUnlockerVC: DatabaseUnlockerVC
+    
+    private var databaseRef: URLReference
+    private var selectedKeyFileRef: URLReference?
+    private var selectedHardwareKey: YubiKey?
+    
+    private var canUseFinalKey = true
+    
+    init(router: NavigationRouter, databaseRef: URLReference) {
+        self.router = router
+        databaseUnlockerVC = DatabaseUnlockerVC.instantiateFromStoryboard()
+        self.databaseRef = databaseRef
+        databaseUnlockerVC.delegate = self
+    }
+    
+    deinit {
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
+    func start() {
+        router.push(databaseUnlockerVC, animated: true, onPop: { [weak self] viewController in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
+            self.dismissHandler?(self)
+        })
+    }
+    
+    func refresh() {
+        databaseUnlockerVC.refresh()
+    }
+    
+    func setDatabase(_ fileRef: URLReference) {
+        databaseRef = fileRef
+        databaseUnlockerVC.databaseRef = fileRef
+        refresh()
+    }
+}
+
+extension DatabaseUnlockerCoordinator {
+    private func showDiagnostics(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
+        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        diagnosticsViewerCoordinator.start()
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(diagnosticsViewerCoordinator)
+    }
+    
+    private func selectKeyFile(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let keyFilePickerCoordinator = KeyFilePickerCoordinator(
+            router: modalRouter,
+            addingMode: .openInPlace
+        )
+        keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        keyFilePickerCoordinator.delegate = self
+        keyFilePickerCoordinator.start()
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(keyFilePickerCoordinator)
+    }
+    
+    private func selectHardwareKey(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let hardwareKeyPicker = HardwareKeyPicker.instantiateFromStoryboard()
+        hardwareKeyPicker.delegate = self
+        hardwareKeyPicker.key = selectedHardwareKey
+        viewController.present(modalRouter, animated: true, completion: nil)
+    }
+    
+    private func setKeyFile(_ fileRef: URLReference?) {
+        selectedKeyFileRef = fileRef
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
+            dbSettings.maybeSetAssociatedKeyFile(fileRef)
+        }
+
+        databaseUnlockerVC.setKeyFile(fileRef)
+        databaseUnlockerVC.refresh()
+    }
+    
+    private func setHardwareKey(_ yubiKey: YubiKey?) {
+        selectedHardwareKey = yubiKey
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
+            dbSettings.maybeSetAssociatedYubiKey(yubiKey)
+        }
+        if let _yubiKey = yubiKey {
+            Diag.info("Hardware key selected [key: \(_yubiKey)]")
+        } else {
+            Diag.info("No hardware key selected")
+        }
+        
+        databaseUnlockerVC.setYubiKey(yubiKey)
+        databaseUnlockerVC.refresh()
+    }
+    
+    #if AUTOFILL_EXT
+    private func challengeHandlerForAutoFill(
+        challenge: SecureByteArray,
+        responseHandler: @escaping ResponseHandler)
+    {
+        Diag.warning("YubiKey is not available in AutoFill")
+        responseHandler(SecureByteArray(), .notAvailableInAutoFill)
+    }
+    #endif
+    
+    private func tryToUnlockDatabase() {
+        Diag.clear()
+
+        delegate?.willUnlockDatabase(databaseRef, in: self)
+        
+        #if AUTOFILL_EXT
+        let challengeHandler = challengeHandlerForAutoFill
+        #elseif MAIN_APP
+        let challengeHandler = ChallengeResponseManager.makeHandler(for: selectedHardwareKey)
+        #endif
+        
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
+        if let databaseKey = dbSettings?.masterKey {
+            databaseKey.challengeHandler = challengeHandler
+            DatabaseManager.shared.startLoadingDatabase(
+                database: databaseRef,
+                compositeKey: databaseKey,
+                canUseFinalKey: canUseFinalKey)
+        } else {
+            canUseFinalKey = false 
+            let password = databaseUnlockerVC.password
+            DatabaseManager.shared.startLoadingDatabase(
+                database: databaseRef,
+                password: password,
+                keyFile: selectedKeyFileRef,
+                challengeHandler: challengeHandler)
+        }
+    }
+}
+
+extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
+    func didPressSelectKeyFile(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabaseUnlockerVC
+    ) {
+        selectKeyFile(at: popoverAnchor, in: viewController)
+    }
+    
+    func didPressSelectHardwareKey(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabaseUnlockerVC
+    ) {
+        selectHardwareKey(at: popoverAnchor, in: viewController)
+    }
+    
+    func didPressUnlock(in viewController: DatabaseUnlockerVC) {
+        tryToUnlockDatabase()
+    }
+
+    func didPressShowDiagnostics(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabaseUnlockerVC
+    ) {
+        showDiagnostics(at: popoverAnchor, in: viewController)
+    }
+}
+
+extension DatabaseUnlockerCoordinator: KeyFilePickerCoordinatorDelegate {
+    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
+        setKeyFile(keyFile)
+    }
+    
+    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
+        if keyFile == selectedKeyFileRef {
+            setKeyFile(nil)
+        }
+        databaseUnlockerVC.refresh()
+    }
+}
+
+extension DatabaseUnlockerCoordinator: HardwareKeyPickerDelegate {
+    func didDismiss(_ picker: HardwareKeyPicker) {
+    }
+    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
+        setHardwareKey(yubiKey)
+    }
+}
+
+extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
+    func databaseManager(willLoadDatabase urlRef: URLReference) {
+        router.showProgressView(title: LString.databaseStatusLoading, allowCancelling: true)
+    }
+    
+    func databaseManager(progressDidChange progress: ProgressEx) {
+        router.updateProgressView(with: progress)
+    }
+    
+    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
+        DatabaseManager.shared.removeObserver(self)
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
+            dbSettings.clearMasterKey()
+        }
+        databaseUnlockerVC.refresh()
+        databaseUnlockerVC.clearPasswordField()
+        router.hideProgressView()
+        
+        databaseUnlockerVC.maybeFocusOnPassword()
+        
+        delegate?.didNotUnlockDatabase(databaseRef, with: nil, reason: nil, in: self)
+    }
+    
+    func databaseManager(database urlRef: URLReference, invalidMasterKey message: String) {
+        DatabaseManager.shared.removeObserver(self)
+        if canUseFinalKey {
+            Diag.info("Express unlock failed, retrying slow")
+            canUseFinalKey = false
+            tryToUnlockDatabase()
+        } else {
+            DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
+                dbSettings.clearMasterKey()
+            }
+            databaseUnlockerVC.refresh()
+            router.hideProgressView()
+            
+            databaseUnlockerVC.showErrorMessage(message, haptics: .wrongPassword)
+            databaseUnlockerVC.maybeFocusOnPassword()
+        }
+        delegate?.didNotUnlockDatabase(databaseRef, with: message, reason: nil, in: self)
+    }
+    
+    func databaseManager(database urlRef: URLReference, loadingError message: String, reason: String?) {
+        DatabaseManager.shared.removeObserver(self)
+        databaseUnlockerVC.refresh()
+        router.hideProgressView()
+        
+        if databaseRef.hasPermissionError257 || databaseRef.hasFileMissingError {
+            databaseUnlockerVC.showErrorMessage(
+                message,
+                reason: reason,
+                suggestion: LString.tryToReAddFile,
+                haptics: .error
+            )
+        } else {
+            databaseUnlockerVC.showErrorMessage(message, reason: reason, haptics: .error)
+        }
+        databaseUnlockerVC.maybeFocusOnPassword()
+    }
+    
+    func databaseManager(didLoadDatabase urlRef: URLReference, warnings: DatabaseLoadingWarnings) {
+        DatabaseManager.shared.removeObserver(self)
+        HapticFeedback.play(.databaseUnlocked)
+        
+        let database = DatabaseManager.shared.database!
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
+            dbSettings.maybeSetMasterKey(of: database)
+        }
+        databaseUnlockerVC.clearPasswordField()
+        router.hideProgressView()
+        delegate?.didUnlockDatabase(databaseRef, database: database, warnings: warnings, in: self)
+    }
+}
