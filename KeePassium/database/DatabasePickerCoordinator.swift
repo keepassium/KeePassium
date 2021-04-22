@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 protocol DatabasePickerCoordinatorDelegate: AnyObject {
-    func didSelectDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator)
+    func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator)
     
     func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool
 }
@@ -61,6 +61,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         selectedDatabase = fileRef
         Settings.current.startupDatabase = fileRef
         databasePickerVC.selectDatabase(fileRef, animated: animated)
+        delegate?.didSelectDatabase(fileRef, in: self)
     }
     
     private func showAboutScreen(

@@ -485,68 +485,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         }
     }
     
-    private func showDatabase(loadingWarnings: DatabaseLoadingWarnings) {
-        assert(databaseViewerCoordinator == nil)
-        
-        guard let splitVC = splitViewController,
-              let primaryVC = splitViewController?.viewControllers.first,
-              let secondaryVC = splitViewController?.viewControllers.last,
-              let primaryNavVC = primaryVC as? UINavigationController,
-              let secondaryNavVC = secondaryVC as? UINavigationController
-        else {
-            Diag.error("Unexpected navigation structure")
-            assertionFailure()
-            return
-        }
-        
-        guard let database = DatabaseManager.shared.database,
-              let databaseRef = DatabaseManager.shared.databaseRef
-        else {
-            Diag.error("Database is not ready")
-            assertionFailure()
-            return
-        }
-        
-        let databaseViewerCoordinator = DatabaseViewerCoordinator(
-            splitViewController: splitVC,
-            primaryRouter: NavigationRouter(primaryNavVC),
-            secondaryRouter: NavigationRouter(secondaryNavVC),
-            database: database,
-            databaseRef: databaseRef,
-            loadingWarnings: loadingWarnings
-        )
-        databaseViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.databaseViewerCoordinator = nil
-        }
-        databaseViewerCoordinator.delegate = self
-        databaseViewerCoordinator.start()
-        self.databaseViewerCoordinator = databaseViewerCoordinator
-    }
     
-    func showDatabaseRoot(loadingWarnings: DatabaseLoadingWarnings) {
-        guard let database = DatabaseManager.shared.database else {
-            assertionFailure()
-            return
-        }
-        let viewGroupVC = GroupViewerVC.make(group: database.root, loadingWarnings: loadingWarnings)
-        guard let splitVC = splitViewController,
-            let firstVC = splitVC.viewControllers.first,
-            let leftNavController = firstVC as? UINavigationController else
-        {
-            let splitVC = splitViewController
-            let firstVC = splitViewController?.viewControllers.first
-            Diag.writeToPersistentLog("splitVC: \(splitVC.debugDescription)\nfirstVC: \(firstVC.debugDescription)")
-            
-            fatalError("No leftNavController?!")
-        }
-        if leftNavController.topViewController is UnlockDatabaseVC {
-            var viewControllers = leftNavController.viewControllers
-            viewControllers[viewControllers.count - 1] = viewGroupVC
-            leftNavController.setViewControllers(viewControllers, animated: true)
-        } else {
-            leftNavController.show(viewGroupVC, sender: self)
-        }
-    }
 }
 
 extension UnlockDatabaseVC: HardwareKeyPickerDelegate {
@@ -694,7 +633,6 @@ extension UnlockDatabaseVC: DatabaseManagerObserver {
         }
         clearPasswordField()
         hideProgressOverlay(quickly: false)
-        showDatabase(loadingWarnings: warnings)
     }
 
     func databaseManager(database urlRef: URLReference, loadingError message: String, reason: String?) {

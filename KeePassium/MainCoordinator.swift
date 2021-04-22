@@ -20,7 +20,8 @@ final class MainCoordinator: Coordinator {
     
     private let rootSplitVC: RootSplitVC
     private let primaryRouter: NavigationRouter
-    private let secondaryRouter: NavigationRouter
+    private let placeholderRouter: NavigationRouter
+    private var databaseUnlockerRouter: NavigationRouter?
     private let watchdog: Watchdog
     
     fileprivate var appCoverWindow: UIWindow?
@@ -35,12 +36,15 @@ final class MainCoordinator: Coordinator {
     
     init(rootSplitViewController: RootSplitVC) {
         self.rootSplitVC = rootSplitViewController
-        
+
         let primaryNavVC = UINavigationController()
         let secondaryNavVC = UINavigationController()
         rootSplitVC.viewControllers = [primaryNavVC, secondaryNavVC]
         primaryRouter = NavigationRouter(primaryNavVC)
-        secondaryRouter = NavigationRouter(secondaryNavVC)
+        
+        let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
+        let navController = UINavigationController(rootViewController: placeholderVC)
+        placeholderRouter = NavigationRouter(navController)
         
         watchdog = Watchdog()
         watchdog.delegate = self
@@ -94,31 +98,72 @@ extension MainCoordinator {
     private func setDatabase(_ databaseRef: URLReference?) {
         self.selectedDatabaseRef = databaseRef
         guard let databaseRef = databaseRef else {
-            let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
-            secondaryRouter.push(placeholderVC, animated: false, onPop: nil)
+            showPlaceholder()
             return
         }
         
-        var dbUnlocker: DatabaseUnlockerCoordinator
-        if let existingDBUnlocker = childCoordinators.first(where: { $0 is DatabaseUnlockerCoordinator }) {
-            dbUnlocker = existingDBUnlocker as! DatabaseUnlockerCoordinator
-        } else {
-            let newDBUnlockerCoordinator = DatabaseUnlockerCoordinator(
-                router: secondaryRouter,
-                databaseRef: databaseRef
-            )
-            newDBUnlockerCoordinator.dismissHandler = { [weak self] coordinator in
-                self?.removeChildCoordinator(coordinator)
-            }
-            newDBUnlockerCoordinator.delegate = self
-            newDBUnlockerCoordinator.start()
-            addChildCoordinator(newDBUnlockerCoordinator)
-            
-            dbUnlocker = newDBUnlockerCoordinator
-        }
+        let dbUnlocker = showDatabaseUnlocker(databaseRef)
         dbUnlocker.setDatabase(databaseRef)
     }
     
+    private func showPlaceholder() {
+        rootSplitVC.showDetailViewController(placeholderRouter.navigationController, sender: self)
+        childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
+    }
+    
+    private func showDatabaseUnlocker(_ databaseRef: URLReference) -> DatabaseUnlockerCoordinator {
+        if let existingDBUnlocker = childCoordinators.first(where: { $0 is DatabaseUnlockerCoordinator }) {
+            return existingDBUnlocker as! DatabaseUnlockerCoordinator
+        }
+        
+        if databaseUnlockerRouter == nil {
+            let navVC = UINavigationController()
+            databaseUnlockerRouter = NavigationRouter(navVC)
+        }
+        let router = databaseUnlockerRouter! 
+        
+        let newDBUnlockerCoordinator = DatabaseUnlockerCoordinator(
+            router: router,
+            databaseRef: databaseRef
+        )
+        newDBUnlockerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        newDBUnlockerCoordinator.delegate = self
+        newDBUnlockerCoordinator.start()
+        addChildCoordinator(newDBUnlockerCoordinator)
+
+        rootSplitVC.showDetailViewController(router.navigationController, sender: self)
+        return newDBUnlockerCoordinator
+    }
+    
+    
+    private func showDatabaseViewer(
+        _ fileRef: URLReference,
+        database: Database,
+        warnings: DatabaseLoadingWarnings
+    ) {
+        guard let secondaryRouter = databaseUnlockerRouter else {
+            Diag.warning("Secondary router is nil")
+            assertionFailure()
+            return
+        }
+        
+        let databaseViewerCoordinator = DatabaseViewerCoordinator(
+            splitViewController: rootSplitVC,
+            primaryRouter: primaryRouter,
+            secondaryRouter: secondaryRouter,
+            database: database,
+            databaseRef: fileRef,
+            loadingWarnings: warnings
+        )
+        databaseViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        databaseViewerCoordinator.delegate = self
+        databaseViewerCoordinator.start()
+        addChildCoordinator(databaseViewerCoordinator)
+    }
 }
 
 extension MainCoordinator: WatchdogDelegate {
@@ -351,7 +396,7 @@ extension MainCoordinator: FileKeeperDelegate {
 }
 
 extension MainCoordinator: DatabasePickerCoordinatorDelegate {
-    func didSelectDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator) {
+    func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator) {
         setDatabase(fileRef)
     }
     
@@ -378,5 +423,11 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         warnings: DatabaseLoadingWarnings,
         in coordinator: DatabaseUnlockerCoordinator
     ) {
+        showDatabaseViewer(fileRef, database: database, warnings: warnings)
+    }
+}
+
+extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
+    func didLeaveDatabase(in coordinator: DatabaseViewerCoordinator) {
     }
 }

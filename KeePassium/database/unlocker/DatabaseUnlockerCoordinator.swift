@@ -154,6 +154,7 @@ extension DatabaseUnlockerCoordinator {
         Diag.clear()
 
         delegate?.willUnlockDatabase(databaseRef, in: self)
+        DatabaseManager.shared.addObserver(self)
         
         #if AUTOFILL_EXT
         let challengeHandler = challengeHandlerForAutoFill
