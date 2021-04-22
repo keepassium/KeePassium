@@ -31,6 +31,8 @@ final class MainCoordinator: Coordinator {
     fileprivate let biometricAuthReuseDuration = TimeInterval(1.5)
     fileprivate var lastSuccessfulBiometricAuthTime: Date = .distantPast
     
+    private var selectedDatabaseRef: URLReference?
+    
     init(rootSplitViewController: RootSplitVC) {
         self.rootSplitVC = rootSplitViewController
         
@@ -63,8 +65,7 @@ final class MainCoordinator: Coordinator {
         databasePickerCoordinator.start()
         addChildCoordinator(databasePickerCoordinator)
         
-        let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
-        secondaryRouter.push(placeholderVC, animated: false, onPop: nil)
+        setDatabase(nil)
     }
     
     public func processIncomingURL(_ url: URL, openInPlace: Bool) {
@@ -88,6 +89,37 @@ final class MainCoordinator: Coordinator {
     }
 }
 
+extension MainCoordinator {
+    
+    private func setDatabase(_ databaseRef: URLReference?) {
+        self.selectedDatabaseRef = databaseRef
+        guard let databaseRef = databaseRef else {
+            let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
+            secondaryRouter.push(placeholderVC, animated: false, onPop: nil)
+            return
+        }
+        
+        var dbUnlocker: DatabaseUnlockerCoordinator
+        if let existingDBUnlocker = childCoordinators.first(where: { $0 is DatabaseUnlockerCoordinator }) {
+            dbUnlocker = existingDBUnlocker as! DatabaseUnlockerCoordinator
+        } else {
+            let newDBUnlockerCoordinator = DatabaseUnlockerCoordinator(
+                router: secondaryRouter,
+                databaseRef: databaseRef
+            )
+            newDBUnlockerCoordinator.dismissHandler = { [weak self] coordinator in
+                self?.removeChildCoordinator(coordinator)
+            }
+            newDBUnlockerCoordinator.delegate = self
+            newDBUnlockerCoordinator.start()
+            addChildCoordinator(newDBUnlockerCoordinator)
+            
+            dbUnlocker = newDBUnlockerCoordinator
+        }
+        dbUnlocker.setDatabase(databaseRef)
+    }
+    
+}
 
 extension MainCoordinator: WatchdogDelegate {
     var isAppCoverVisible: Bool {
@@ -320,9 +352,31 @@ extension MainCoordinator: FileKeeperDelegate {
 
 extension MainCoordinator: DatabasePickerCoordinatorDelegate {
     func didSelectDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator) {
+        setDatabase(fileRef)
     }
     
     func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool {
         return !rootSplitVC.isCollapsed
+    }
+}
+
+extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
+    func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
+    }
+    
+    func didNotUnlockDatabase(
+        _ fileRef: URLReference,
+        with message: String?,
+        reason: String?,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) {
+    }
+    
+    func didUnlockDatabase(
+        _ fileRef: URLReference,
+        database: Database,
+        warnings: DatabaseLoadingWarnings,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) {
     }
 }
