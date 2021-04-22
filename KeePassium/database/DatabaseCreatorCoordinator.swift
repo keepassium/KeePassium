@@ -396,22 +396,22 @@ extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
     }
 }
 
-extension DatabaseCreatorCoordinator: HardwareKeyPickerDelegate {
+extension DatabaseCreatorCoordinator: HardwareKeyPickerCoordinatorDelegate {
     func showHardwareKeyPicker(at popoverAnchor: PopoverAnchor) {
-        let hardwareKeyPicker = HardwareKeyPicker.create(delegate: self)
-        hardwareKeyPicker.modalPresentationStyle = .popover
-        if let popover = hardwareKeyPicker.popoverPresentationController {
-            popoverAnchor.apply(to: popover)
-            popover.delegate = hardwareKeyPicker.dismissablePopoverDelegate
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: modalRouter)
+        hardwareKeyPickerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
         }
-        hardwareKeyPicker.key = databaseCreatorVC.yubiKey
-        databaseCreatorVC.present(hardwareKeyPicker, animated: true, completion: nil)
-    }
+        hardwareKeyPickerCoordinator.delegate = self
+        hardwareKeyPickerCoordinator.setSelectedKey(databaseCreatorVC.yubiKey)
+        hardwareKeyPickerCoordinator.start()
+        databaseCreatorVC.present(modalRouter, animated: true, completion: nil)
 
-    func didDismiss(_ picker: HardwareKeyPicker) {
+        addChildCoordinator(hardwareKeyPickerCoordinator)
     }
     
-    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
+    func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
         setYubiKey(yubiKey)
         databaseCreatorVC.becomeFirstResponder()
         databaseCreatorVC.setError(message: nil, animated: false)

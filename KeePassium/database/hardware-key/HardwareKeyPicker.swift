@@ -9,14 +9,13 @@
 import KeePassiumLib
 
 protocol HardwareKeyPickerDelegate: class {
-    func didDismiss(_ picker: HardwareKeyPicker)
-    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker)
+    func didSelectKey(_ yubiKey: YubiKey?, in picker: HardwareKeyPicker)
 }
 
 class HardwareKeyPicker: UITableViewController, Refreshable {
     weak var delegate: HardwareKeyPickerDelegate?
     
-    public var key: YubiKey? {
+    public var selectedKey: YubiKey? {
         didSet { refresh() }
     }
     
@@ -48,18 +47,6 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     private var isNFCAvailable = false
     private var isMFIAvailable = false
     
-    private var isChoiceMade = false
-    
-    #if MAIN_APP
-    private let premiumUpgradeHelper = PremiumUpgradeHelper()
-    #endif
-    
-    
-    public static func create(delegate: HardwareKeyPickerDelegate?=nil) -> HardwareKeyPicker {
-        let vc = HardwareKeyPicker.instantiateFromStoryboard()
-        vc.delegate = delegate
-        return vc
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,9 +64,6 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     override func viewWillDisappear(_ animated: Bool) {
         tableView.removeObserver(self, forKeyPath: "contentSize")
         super.viewWillDisappear(animated)
-        if !isChoiceMade {
-            delegate?.didDismiss(self)
-        }
     }
     
     override func observeValue(
@@ -174,7 +158,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             cell.isUserInteractionEnabled = isMFIAvailable
         }
         cell.textLabel?.text = getKeyDescription(key)
-        cell.accessoryType = (key == self.key) ? .checkmark : .none
+        cell.accessoryType = (key == selectedKey) ? .checkmark : .none
         return cell
     }
     
@@ -201,7 +185,6 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             return
         }
         
-        let selectedKey: YubiKey?
         switch section {
         case .noHardwareKey:
             selectedKey = nil
@@ -210,26 +193,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         case .yubiKeyMFI:
             selectedKey = mfiKeys[indexPath.row]
         }
-    
-        #if MAIN_APP
-        if selectedKey != nil {
-            premiumUpgradeHelper.performActionOrOfferUpgrade(.canUseHardwareKeys, in: self) {
-                [weak self] in
-                self?.didSelectKey(selectedKey!)
-            }
-        } else {
-            didSelectKey(selectedKey)
-        }
-        #elseif AUTOFILL_EXT
-        assert(selectedKey == nil, "How did you end up here?")
-        didSelectKey(selectedKey)
-        #endif
-    }
-    
-    private func didSelectKey(_ key: YubiKey?) {
-        isChoiceMade = true
-        delegate?.didSelectKey(yubiKey: key, in: self)
-        dismiss(animated: true, completion: nil)
+        delegate?.didSelectKey(selectedKey, in: self)
     }
 }
 

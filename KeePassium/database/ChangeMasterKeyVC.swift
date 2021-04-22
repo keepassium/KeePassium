@@ -26,6 +26,7 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     
     internal var databaseExporterTemporaryURL: TemporaryFileURL?
     
+    private var hardwareKeyPickerCoordinator: HardwareKeyPickerCoordinator?
     private var keyFilePickerCoordinator: KeyFilePickerCoordinator?
     
     static func make(dbRef: URLReference) -> UIViewController {
@@ -38,7 +39,9 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     
     deinit {
         assert(keyFilePickerCoordinator == nil)
+        assert(hardwareKeyPickerCoordinator == nil)
         keyFilePickerCoordinator = nil
+        hardwareKeyPickerCoordinator = nil
     }
     
     override func viewDidLoad() {
@@ -101,19 +104,24 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
             let popoverAnchor = PopoverAnchor(
                 sourceView: self.keyFileField,
                 sourceRect: self.keyFileField.bounds)
-            self.showYubiKeyPicker(at: popoverAnchor)
+            self.showHardwareKeyPicker(at: popoverAnchor)
         }
     }
     
-    private func showYubiKeyPicker(at popoverAnchor: PopoverAnchor) {
-        let hardwareKeyPicker = HardwareKeyPicker.create(delegate: self)
-        hardwareKeyPicker.modalPresentationStyle = .popover
-        if let popover = hardwareKeyPicker.popoverPresentationController {
-            popoverAnchor.apply(to: popover)
-            popover.delegate = hardwareKeyPicker.dismissablePopoverDelegate
+    private func showHardwareKeyPicker(at popoverAnchor: PopoverAnchor) {
+        assert(hardwareKeyPickerCoordinator == nil)
+        
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: modalRouter)
+        hardwareKeyPickerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.hardwareKeyPickerCoordinator = nil
         }
-        hardwareKeyPicker.key = yubiKey
-        present(hardwareKeyPicker, animated: true, completion: nil)
+        hardwareKeyPickerCoordinator.delegate = self
+        hardwareKeyPickerCoordinator.setSelectedKey(yubiKey)
+        hardwareKeyPickerCoordinator.start()
+        present(modalRouter, animated: true, completion: nil)
+        
+        self.hardwareKeyPickerCoordinator = hardwareKeyPickerCoordinator
     }
     
     
@@ -294,10 +302,8 @@ extension ChangeMasterKeyVC: KeyFilePickerCoordinatorDelegate {
     }
 }
 
-extension ChangeMasterKeyVC: HardwareKeyPickerDelegate {
-    func didDismiss(_ picker: HardwareKeyPicker) {
-    }
-    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
+extension ChangeMasterKeyVC: HardwareKeyPickerCoordinatorDelegate {
+    func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
         setYubiKey(yubiKey)
     }
     

@@ -709,6 +709,10 @@
 		75F28788245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
 		75F4ACFC21776F4800B22D8B /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACFB21776F4800B22D8B /* LString.swift */; };
 		75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
+		75FCCF842631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
+		75FCCF852631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
+		75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
+		75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FEC2232175292C0034334B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
 		F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */; };
 /* End PBXBuildFile section */
@@ -1751,6 +1755,7 @@
 		75F4ACBF2175F7A400B22D8B /* DiagLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiagLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F4ACFB21776F4800B22D8B /* LString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75F5CACC20BD18320056C969 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareKeyPickerCoordinator.swift; sourceTree = "<group>"; };
 		75FCA9342638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75FCA9352638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75FCA9362638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -2505,6 +2510,7 @@
 			children = (
 				757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */,
 				7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */,
+				75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */,
 			);
 			path = "hardware-key";
 			sourceTree = "<group>";
@@ -3067,6 +3073,7 @@
 				75A2677E22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
 				750CFBDA21BAD7FF00E62B09 /* KeyboardLayoutConstraint.swift in Sources */,
 				750CFBDE21BAD7FF00E62B09 /* UIViewController+storyboard.swift in Sources */,
+				75FCCF852631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75E60AE625CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				758544652351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,
 				750CFBDD21BAD7FF00E62B09 /* UIImage+extensions.swift in Sources */,
@@ -3227,6 +3234,7 @@
 				75B59A6823887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,
 				757ADC5423A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
+				75FCCF842631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75BE05FA25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75814FD225F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
 				75E60AE525CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
@@ -3387,6 +3395,7 @@
 				75B59A6A23887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				75B38C4A233E5B7C006BDEFC /* main.swift in Sources */,
 				757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
+				75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75BE05FC25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75814FD425F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
 				75E60AE725CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
@@ -3470,6 +3479,7 @@
 				75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */,
 				75D7DFA5233E5E310029AD87 /* KeyboardLayoutConstraint.swift in Sources */,
 				75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */,
+				75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75E60AE825CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				758544672351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,
 				75D7DFA7233E5E310029AD87 /* UIImage+extensions.swift in Sources */,

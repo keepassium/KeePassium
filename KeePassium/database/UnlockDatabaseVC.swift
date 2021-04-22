@@ -219,14 +219,6 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
     
     
     func showHardwareKeyPicker(at popoverAnchor: PopoverAnchor) {
-        let hardwareKeyPicker = HardwareKeyPicker.create(delegate: self)
-        hardwareKeyPicker.modalPresentationStyle = .popover
-        if let popover = hardwareKeyPicker.popoverPresentationController {
-            popoverAnchor.apply(to: popover)
-            popover.delegate = hardwareKeyPicker.dismissablePopoverDelegate
-        }
-        hardwareKeyPicker.key = yubiKey
-        present(hardwareKeyPicker, animated: true, completion: nil)
     }
     
     
@@ -492,7 +484,7 @@ extension UnlockDatabaseVC: HardwareKeyPickerDelegate {
     func didDismiss(_ picker: HardwareKeyPicker) {
     }
     
-    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
+    func didSelectKey(_ yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
         setYubiKey(yubiKey)
     }
     

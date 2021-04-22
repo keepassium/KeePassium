@@ -109,10 +109,15 @@ extension DatabaseUnlockerCoordinator {
         in viewController: UIViewController
     ) {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let hardwareKeyPicker = HardwareKeyPicker.instantiateFromStoryboard()
-        hardwareKeyPicker.delegate = self
-        hardwareKeyPicker.key = selectedHardwareKey
+        let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: modalRouter)
+        hardwareKeyPickerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        hardwareKeyPickerCoordinator.delegate = self
+        hardwareKeyPickerCoordinator.setSelectedKey(selectedHardwareKey)
+        hardwareKeyPickerCoordinator.start()
         viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(hardwareKeyPickerCoordinator)
     }
     
     private func setKeyFile(_ fileRef: URLReference?) {
@@ -221,10 +226,8 @@ extension DatabaseUnlockerCoordinator: KeyFilePickerCoordinatorDelegate {
     }
 }
 
-extension DatabaseUnlockerCoordinator: HardwareKeyPickerDelegate {
-    func didDismiss(_ picker: HardwareKeyPicker) {
-    }
-    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
+extension DatabaseUnlockerCoordinator: HardwareKeyPickerCoordinatorDelegate {
+    func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
         setHardwareKey(yubiKey)
     }
 }
