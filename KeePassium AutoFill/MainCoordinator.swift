@@ -22,7 +22,6 @@ class MainCoordinator: NSObject, Coordinator {
     var serviceIdentifiers = [ASCredentialServiceIdentifier]()
     fileprivate var isLoadingUsingStoredDatabaseKey = false
     
-    fileprivate weak var databaseUnlockerVC: DatabaseUnlockerVC?
     fileprivate weak var addDatabasePicker: UIDocumentPickerViewController?
     
     fileprivate var watchdog: Watchdog
@@ -60,7 +59,6 @@ class MainCoordinator: NSObject, Coordinator {
     }
     
     deinit {
-        DatabaseManager.shared.removeObserver(self)
     }
 
     func start() {
@@ -69,7 +67,6 @@ class MainCoordinator: NSObject, Coordinator {
             ignoreErrors: true,
             completion: nil)
         
-        DatabaseManager.shared.addObserver(self)
         
         watchdog.didBecomeActive()
         if !isAppLockVisible {
@@ -117,7 +114,6 @@ class MainCoordinator: NSObject, Coordinator {
     
     func cleanup() {
         PremiumManager.shared.usageMonitor.stopInterval()
-        DatabaseManager.shared.removeObserver(self)
         DatabaseManager.shared.closeDatabase(
             clearStoredKey: false,
             ignoreErrors: true,
@@ -285,40 +281,8 @@ class MainCoordinator: NSObject, Coordinator {
     }
 
     func showDatabaseUnlocker(database: URLReference, animated: Bool, completion: (()->Void)?) {
-        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: database)
-        let storedDatabaseKey = dbSettings?.masterKey
-        
-        let vc = DatabaseUnlockerVC.instantiateFromStoryboard()
-        vc.delegate = self
-        vc.databaseRef = database
-        vc.shouldAutofocus = (storedDatabaseKey == nil)
-        navigationController.pushViewController(vc, animated: animated)
-        databaseUnlockerVC = vc
-        completion?()
-        if let storedDatabaseKey = storedDatabaseKey {
-            tryToUnlockDatabase(
-                database: database,
-                compositeKey: storedDatabaseKey,
-                yubiKey: dbSettings?.associatedYubiKey,
-                canUseFinalKey: PremiumManager.shared.isAvailable(feature: .canUseExpressUnlock)
-            )
-        }
     }
     
-    func selectKeyFile(at popoverAnchor: PopoverAnchor) {
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let keyFilePickerCoordinator = KeyFilePickerCoordinator(
-            router: modalRouter,
-            addingMode: .openInPlace
-        )
-        addChildCoordinator(keyFilePickerCoordinator)
-        keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
-        keyFilePickerCoordinator.delegate = self
-        keyFilePickerCoordinator.start()
-        navigationController.present(modalRouter, animated: true, completion: nil)
-    }
     
     func showDiagnostics() {
         let router = NavigationRouter(navigationController)
@@ -431,175 +395,8 @@ extension MainCoordinator: DatabaseChooserDelegate {
     }
 }
 
-extension MainCoordinator: DatabaseUnlockerDelegate {
-    func databaseUnlockerShouldUnlock(
-        _ sender: DatabaseUnlockerVC,
-        database: URLReference,
-        password: String,
-        keyFile: URLReference?,
-        yubiKey: YubiKey?)
-    {
-        watchdog.restart()
-        tryToUnlockDatabase(
-            database: database,
-            password: password,
-            keyFile: keyFile,
-            yubiKey: yubiKey)
-    }
-    
-    func didPressSelectHardwareKey(
-        in databaseUnlocker: DatabaseUnlockerVC,
-        at popoverAnchor: PopoverAnchor)
-    {
-        let hardwareKeyPicker = HardwareKeyPicker.create(delegate: self)
-        hardwareKeyPicker.modalPresentationStyle = .popover
-        if let popover = hardwareKeyPicker.popoverPresentationController {
-            popoverAnchor.apply(to: popover)
-            popover.delegate = hardwareKeyPicker.dismissablePopoverDelegate
-        }
-        hardwareKeyPicker.key = databaseUnlocker.yubiKey
-        navigationController.present(hardwareKeyPicker, animated: true, completion: nil)
-    }
-    
-    func didPressSelectKeyFile(
-        in databaseUnlocker: DatabaseUnlockerVC,
-        at popoverAnchor: PopoverAnchor)
-    {
-        selectKeyFile(at: popoverAnchor)
-    }
-    
-    func didPressShowDiagnostics(
-        in databaseUnlocker: DatabaseUnlockerVC,
-        at popoverAnchor: PopoverAnchor)
-    {
-        showDiagnostics()
-    }
 
-    func didPressNewsItem(in databaseUnlocker: DatabaseUnlockerVC, newsItem: NewsItem) {
-        newsItem.show(in: databaseUnlocker)
-    }
-}
 
-extension MainCoordinator: HardwareKeyPickerDelegate {
-    func didDismiss(_ picker: HardwareKeyPicker) {
-    }
-    func didSelectKey(yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
-        watchdog.restart()
-        if let databaseUnlockerVC = navigationController.topViewController as? DatabaseUnlockerVC {
-            databaseUnlockerVC.setYubiKey(yubiKey)
-        } else {
-            assertionFailure()
-        }
-    }
-}
-
-extension MainCoordinator: KeyFilePickerCoordinatorDelegate {
-    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
-        watchdog.restart()
-        guard let databaseUnlockerVC = databaseUnlockerVC else {
-            assertionFailure()
-            return
-        }
-        databaseUnlockerVC.setKeyFile(keyFile)
-    }
-    
-    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
-        watchdog.restart()
-        guard let databaseUnlockerVC = databaseUnlockerVC else {
-            assertionFailure()
-            return
-        }
-        if databaseUnlockerVC.keyFileRef == keyFile {
-            databaseUnlockerVC.setKeyFile(nil)
-        }
-    }
-}
-
-extension MainCoordinator: DatabaseManagerObserver {
-    
-    func databaseManager(willLoadDatabase urlRef: URLReference) {
-        guard let databaseUnlockerVC = navigationController.topViewController
-            as? DatabaseUnlockerVC else { return }
-        databaseUnlockerVC.showProgressOverlay(animated: !isLoadingUsingStoredDatabaseKey)
-    }
-
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        guard let databaseUnlockerVC = navigationController.topViewController
-            as? DatabaseUnlockerVC else { return }
-        databaseUnlockerVC.updateProgress(with: progress)
-    }
-    
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        guard let databaseUnlockerVC = navigationController.topViewController
-            as? DatabaseUnlockerVC else { return }
-        
-        DatabaseSettingsManager.shared.updateSettings(for: urlRef) { (dbSettings) in
-            dbSettings.clearMasterKey()
-        }
-        Settings.current.isAutoFillFinishedOK = true
-        databaseUnlockerVC.clearPasswordField()
-        databaseUnlockerVC.hideProgressOverlay()
-    }
-    
-    func databaseManager(database urlRef: URLReference, invalidMasterKey message: String) {
-        guard let databaseUnlockerVC = navigationController.topViewController
-            as? DatabaseUnlockerVC else { return }
-
-        Settings.current.isAutoFillFinishedOK = true
-        if canUseFinalKey,
-           let dbSettings = DatabaseSettingsManager.shared.getSettings(for: urlRef),
-           let compositeKey = dbSettings.masterKey
-        {
-            Diag.info("Express unlock failed, retrying with key derivation")
-            canUseFinalKey = false
-            tryToUnlockDatabase(
-                database: urlRef,
-                compositeKey: compositeKey,
-                yubiKey: dbSettings.associatedYubiKey,
-                canUseFinalKey: false
-            )
-        } else {
-            databaseUnlockerVC.hideProgressOverlay()
-            databaseUnlockerVC.showMasterKeyInvalid(message: message)
-        }
-    }
-    
-    func databaseManager(database urlRef: URLReference, loadingError message: String, reason: String?) {
-        guard let databaseUnlockerVC = navigationController.topViewController
-            as? DatabaseUnlockerVC else { return }
-        Settings.current.isAutoFillFinishedOK = true
-        databaseUnlockerVC.hideProgressOverlay()
-        
-        if urlRef.hasPermissionError257 || urlRef.hasFileMissingError {
-            databaseUnlockerVC.showErrorMessage(
-                message,
-                reason: reason,
-                suggestion: LString.tryToReAddFile)
-        } else {
-            databaseUnlockerVC.showErrorMessage(message, reason: reason)
-        }
-    }
-    
-    func databaseManager(didLoadDatabase urlRef: URLReference, warnings: DatabaseLoadingWarnings) {
-        
-        
-        if Settings.current.isRememberDatabaseKey {
-            do {
-                try DatabaseManager.shared.rememberDatabaseKey() 
-            } catch {
-                Diag.warning("Failed to remember database key [message: \(error.localizedDescription)]")
-            }
-        }
-        guard let database = DatabaseManager.shared.database else { fatalError() }
-
-        guard let databaseUnlockerVC = navigationController.topViewController
-            as? DatabaseUnlockerVC else { return }
-        databaseUnlockerVC.clearPasswordField()
-
-        Settings.current.isAutoFillFinishedOK = true
-        showDatabaseContent(database: database, databaseRef: urlRef)
-    }
-}
 
 extension MainCoordinator: UIDocumentPickerDelegate {
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
