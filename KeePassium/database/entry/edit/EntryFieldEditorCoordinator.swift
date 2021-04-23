@@ -339,6 +339,15 @@ extension EntryFieldEditorCoordinator: ItemIconPickerCoordinatorDelegate {
         isModified = true
         refresh()
     }
+    
+    func didDeleteIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator) {
+        if let entry2 = entry as? Entry2,
+           entry2.customIconUUID == customIcon
+        {
+            delegate?.didUpdateEntry(entry, in: self)
+            refresh()
+        }
+    }
 }
 
 extension EntryFieldEditorCoordinator: DatabaseManagerObserver {

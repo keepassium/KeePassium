@@ -11,6 +11,7 @@ import KeePassiumLib
 protocol ItemIconPickerCoordinatorDelegate: class {
     func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator)
     func didSelectIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator)
+    func didDeleteIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator)
 }
 
 class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
@@ -89,6 +90,7 @@ class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
         }
         db2.deleteCustomIcon(uuid: uuid)
         saveDatabase()
+        delegate?.didDeleteIcon(customIcon: uuid, in: self)
         refresh() 
     }
     

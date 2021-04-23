@@ -142,6 +142,15 @@ extension GroupEditorCoordinator: ItemIconPickerCoordinatorDelegate {
         group2.customIconUUID = customIcon
         refresh()
     }
+    
+    func didDeleteIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator) {
+        if let group2 = group as? Group2,
+           group2.customIconUUID == customIcon
+        {
+            delegate?.didUpdateGroup(group, in: self)
+            refresh()
+        }
+    }
 }
 
 extension GroupEditorCoordinator: DatabaseManagerObserver {
