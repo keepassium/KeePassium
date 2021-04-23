@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ValidatingTextFieldDelegate {
+protocol ValidatingTextFieldDelegate: AnyObject {
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String)
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool
     func validatingTextField(_ sender: ValidatingTextField, validityDidChange isValid: Bool)
@@ -22,7 +22,19 @@ extension ValidatingTextFieldDelegate {
 
 class ValidatingTextField: UITextField {
     
-    var validityDelegate: ValidatingTextFieldDelegate?
+    private weak var externalDelegate: UITextFieldDelegate?
+    override var delegate: UITextFieldDelegate? {
+        didSet {
+            if delegate === self {
+                return
+            } else {
+                externalDelegate = delegate
+                delegate = self
+            }
+        }
+    }
+    
+    weak var validityDelegate: ValidatingTextFieldDelegate?
     
     
     @IBInspectable var invalidBackgroundColor: UIColor? = UIColor.red.withAlphaComponent(0.2)
@@ -43,6 +55,7 @@ class ValidatingTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         validBackgroundColor = backgroundColor
+        delegate = self
         addTarget(self, action: #selector(onEditingChanged), for: .editingChanged)
     }
     
@@ -66,5 +79,56 @@ class ValidatingTextField: UITextField {
             wasValid = isValid
             validityDelegate?.validatingTextField(self, validityDidChange: isValid)
         }
+    }
+}
+
+extension ValidatingTextField: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return externalDelegate?.textFieldShouldBeginEditing?(textField) ?? true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        externalDelegate?.textFieldDidBeginEditing?(textField)
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return externalDelegate?.textFieldShouldEndEditing?(textField) ?? true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        externalDelegate?.textFieldDidEndEditing?(textField, reason: reason)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        externalDelegate?.textFieldDidEndEditing?(textField)
+    }
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        DispatchQueue.main.async { [weak self] in
+            self?.onEditingChanged(textField: textField)
+        }
+        let result = externalDelegate?.textField?(
+            textField,
+            shouldChangeCharactersIn: range,
+            replacementString: string
+        )
+        return result ?? true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return externalDelegate?.textFieldShouldClear?(textField) ?? true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return externalDelegate?.textFieldShouldReturn?(textField) ?? true
+    }
+    
+    @available(iOS 13, *)
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        externalDelegate?.textFieldDidChangeSelection?(textField)
     }
 }
