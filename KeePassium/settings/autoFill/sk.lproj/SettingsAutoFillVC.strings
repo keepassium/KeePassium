@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Tap \"Passwords & Accounts\""; ObjectID = "7SF-2E-uTg"; Note = "Step 2. Must match system's translation."; */
+"7SF-2E-uTg.text" = "Kliknite na \"Heslá a účty\"";
+
+/* Class = "UILabel"; text = "Select \"KeePassium\""; ObjectID = "caI-eV-WlU"; */
+"caI-eV-WlU.text" = "Vyberte \"KeePassium\"";
+
+/* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
+"ei6-22-NXN.title" = "Automatické vyplňovanie";
+
+/* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
+"go1-Nt-isQ.text" = "Kopírovať jednorazové heslo";
+
+/* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
+"jYl-ks-dFG.footerTitle" = "Keď bude nájdený iba jeden, presne zodpovedajúci záznam, tak sa tento záznam vloží automaticky.";
+
+/* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
+"jYl-ks-dFG.headerTitle" = "Automatické vyhľadávanie";
+
+/* Class = "UILabel"; text = "Open device settings"; ObjectID = "K3a-Mc-VCg"; Note = "Step 1"; */
+"K3a-Mc-VCg.text" = "Otvorte nastavenia zariadenia";
+
+/* Class = "UITableViewSection"; headerTitle = "Initial Setup"; ObjectID = "r0b-qe-g8J"; */
+"r0b-qe-g8J.headerTitle" = "Počiatočné nastavenie";
+
+/* Class = "UILabel"; text = "Tap \"AutoFill Passwords\""; ObjectID = "UzV-Ht-rGx"; Note = "Step 3. Must match system's translation."; */
+"UzV-Ht-rGx.text" = "Kliknite na \"Vyplňovanie hesiel\"";
+
+/* Class = "UILabel"; text = "Fill-in the perfect result automatically"; ObjectID = "WDb-aU-Mmf"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
+"WDb-aU-Mmf.text" = "Vyplniť presné výsledky automaticky";
+
+/* Class = "UILabel"; text = "Turn on \"AutoFill Passwords\""; ObjectID = "X2u-c9-gwU"; */
+"X2u-c9-gwU.text" = "Zapnite \"Automatické vyplňovanie hesiel\"";
+
+/* Class = "UITableViewSection"; footerTitle = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you."; ObjectID = "XYL-1l-Jx6"; */
+"XYL-1l-Jx6.footerTitle" = "Akonáhle aplikácia automaticky vyplní používateľské meno a heslo, môže tiež pre vás skopírovať aj jednorazové heslo (OTP).";
+
+/* Class = "UITableViewSection"; headerTitle = "One-time passwords"; ObjectID = "XYL-1l-Jx6"; */
+"XYL-1l-Jx6.headerTitle" = "Jednorázové heslá";
+

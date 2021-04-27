@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "{History Entry Subtitle}"; ObjectID = "bPL-8Z-oet"; Note = "#bc-ignore!"; */
+"bPL-8Z-oet.text" = "{History Entry Subtitle}";
+
+/* Class = "UILabel"; text = "There are no previous versions"; ObjectID = "bzL-mr-Hrz"; Note = "Placeholder text shown when the entry does not have previous versions/revisions (has never been changed)"; */
+"bzL-mr-Hrz.text" = "Žiadne predchádzajúce verzie";
+
+/* Class = "UILabel"; text = "{Timestamp}"; ObjectID = "E9b-9K-I4D"; Note = "#bc-ignore!"; */
+"E9b-9K-I4D.text" = "{Timestamp}";
+
+/* Class = "UILabel"; text = "{History Entry Title}"; ObjectID = "RUE-Cg-Lxv"; Note = "#bc-ignore!"; */
+"RUE-Cg-Lxv.text" = "{History Entry Title}";
+

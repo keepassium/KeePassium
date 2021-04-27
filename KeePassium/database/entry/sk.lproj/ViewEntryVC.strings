@@ -1,0 +1,15 @@
+/* Class = "UILabel"; text = "{Entry Title}"; ObjectID = "1XK-tJ-aQW"; Note = "#bc-ignore!"; */
+"1XK-tJ-aQW.text" = "{Entry Title}";
+
+/* Class = "UILabel"; text = "{Timestamp}"; ObjectID = "dT5-IW-ZsZ"; Note = "#bc-ignore!"; */
+"dT5-IW-ZsZ.text" = "{Timestamp}";
+
+/* Class = "UISegmentedControl"; g9A-4w-Dsa.segmentTitles[0] = "General"; ObjectID = "g9A-4w-Dsa"; */
+"g9A-4w-Dsa.segmentTitles[0]" = "Všeobecné";
+
+/* Class = "UISegmentedControl"; g9A-4w-Dsa.segmentTitles[1] = "Files"; ObjectID = "g9A-4w-Dsa"; */
+"g9A-4w-Dsa.segmentTitles[1]" = "Súbory";
+
+/* Class = "UISegmentedControl"; g9A-4w-Dsa.segmentTitles[2] = "History"; ObjectID = "g9A-4w-Dsa"; */
+"g9A-4w-Dsa.segmentTitles[2]" = "História";
+

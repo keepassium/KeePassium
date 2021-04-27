@@ -1,0 +1,9 @@
+/* Class = "UITableViewController"; title = "Database Timeout"; ObjectID = "26a-m8-zQP"; Note = "Title of a list of database timeouts, linked to Settings/Data Protection/Database Timeout."; */
+"26a-m8-zQP.title" = "Časový limit databázy";
+
+/* Class = "UILabel"; text = "{Subtitle}"; ObjectID = "Beo-Vy-wZ8"; Note = "#bc-ignore!"; */
+"Beo-Vy-wZ8.text" = "{Subtitle}";
+
+/* Class = "UILabel"; text = "{Title}"; ObjectID = "DOf-Bp-iIT"; Note = "#bc-ignore!"; */
+"DOf-Bp-iIT.text" = "{Title}";
+

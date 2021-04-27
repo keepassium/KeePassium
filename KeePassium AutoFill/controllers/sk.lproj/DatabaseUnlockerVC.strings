@@ -1,0 +1,21 @@
+/* Class = "UILabel"; text = "{Database file name}"; ObjectID = "66o-BC-gwg"; Note = "#bc-ignore!"; */
+"66o-BC-gwg.text" = "{Database file name}";
+
+/* Class = "UIButton"; normalTitle = "Unlock"; ObjectID = "89h-8b-LRO"; */
+"89h-8b-LRO.normalTitle" = "Odomknúť";
+
+/* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "bxv-kR-0w1"; */
+"bxv-kR-0w1.title" = "Odomknúť databázu";
+
+/* Class = "UILabel"; text = "{Error message}"; ObjectID = "dID-zL-AtZ"; Note = "#bc-ignore!"; */
+"dID-zL-AtZ.text" = "{Error message}";
+
+/* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "Dnl-vm-GMg"; */
+"Dnl-vm-GMg.placeholder" = "Žiadny súbor s kľúčom";
+
+/* Class = "UIButton"; normalTitle = "{News announcement}"; ObjectID = "hrv-DG-D6F"; Note = "#bc-ignore!"; */
+"hrv-DG-D6F.normalTitle" = "{News announcement}";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "U6j-Ph-AWS"; */
+"U6j-Ph-AWS.placeholder" = "Heslo";
+

@@ -1,0 +1,513 @@
+/* Type of keyboard to show for App Lock passcode: letters and digits. */
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "Alfanumerické";
+
+/* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "Numerická";
+
+/* Error message when the challenge-response communication has been cancelled by the user. */
+"[ChallengeResponseError] cancelled" = "Zrušené užívateľom.";
+
+/* Error message when the hardware key is not plugged in. */
+"[ChallengeResponseError] keyNotConnected" = "Hardvérový kľúč nie je pripojený.";
+
+/* Error message when trying to use challenge-response hardware in AutoFill. */
+"[ChallengeResponseError] notAvailableInAutoFill" = "Hardvérové ​​kľúče nie sú dostupné pre automatické vyplňovanie.";
+
+/* Error message when trying to use challenge-response with a kdb database. */
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardvérové kľúče nie sú podporované v tomto formáte databázy.";
+
+/* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Toto zariadenie alebo verzia iOS nepodporuje hardvérové kľúče (%@)";
+
+/* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
+"[ChallengeResponseError] slotNotConfigured" = "Hardvérový kľúč nie je nakonfigurovaný pre challenge-response.";
+
+/* Progress status */
+"[Cipher/Progress] Decrypting" = "Dešifrovanie";
+
+/* Progress status */
+"[Cipher/Progress] Encrypting" = "Šifrovanie";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES decryption error (code %d)" = "Chyba AES dešifrovania (kód %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES encryption error (code %d)" = "Chyba AES šifrovania (kód %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES initialization error (code %d)" = "Chyba AES inicializácie (kód %d)";
+
+/* Error message about Argon2 hashing function. [errorCode: Int] */
+"[CryptoError] Argon2 hashing error (code %d)" = "Chyba Argon2 funkcie hash (kód %d)";
+
+/* Error message about PKCS7 padding. [errorCode: Int] */
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "Neplatné vyplnenie dát (kód %d). Poškodený súbor?";
+
+/* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "Neplatný parameter KDF: %1$@ - %2$@. Poškodený súbor?";
+
+/* Error message about random number generator. [errorCode: Int] */
+"[CryptoError] Random number generator error (code %d)" = "Chyba generátora náhodných čísel (kód %d)";
+
+/* Error message about Twofish cipher. [errorCode: Int] */
+"[CryptoError] Twofish cipher error (code %d)" = "Chyba šifry Twofish (kód %d)";
+
+/* Error message */
+"[Database/Load/Error] Cannot find database file" = "Nenájdený databázový súbor";
+
+/* Error message */
+"[Database/Load/Error] Cannot find key file" = "Súbor s kľúčom nenájdený";
+
+/* Error message */
+"[Database/Load/Error] Cannot open database file" = "Nedá sa otvoriť databázový súbor";
+
+/* Error message */
+"[Database/Load/Error] Cannot open key file" = "Nedá sa otvoriť súbor s kľúčom";
+
+/* Error shown when both master password and key file are empty */
+"[Database/Load/Error] Please provide at least a password or a key file" = "Prosím, vložte heslo alebo súbor s kľúčom";
+
+/* Error message */
+"[Database/Load/Error] Unrecognized database format" = "Nerozpoznaný formát databázy";
+
+/* Progress status: finished loading database */
+"[Database/Progress] Done" = "Hotovo";
+
+/* Progress status */
+"[Database/Progress] Loading key file..." = "Načítava sa súbor s kľúčom...";
+
+/* Database loading status: fetching the database file from disk/cloud */
+"[Database/Progress/downloading]" = "Sťahuje sa databázový súbor...";
+
+/* Database saving status: making a local backup copy of the database */
+"[Database/Progress/makingDatabaseBackup]" = "Vytvára sa záloha...";
+
+/* Progress status */
+"[Database/Progress/resolving]" = "Kontaktuje sa poskytovateľ úložiska...";
+
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "Riešenie odkazov na pole…";
+
+/* Error message */
+"[Database/Unlock/Error] Failed to open key file" = "Nepodarilo sa otvoriť súbor s kľúčom";
+
+/* Error message */
+"[Database/Unlock/Error] Password and key file are both empty." = "Heslo a súbor s kľúčom sú prázdne.";
+
+/* Error message */
+"[Database1/FormatError] Database file is corrupted." = "Databáza je poškodená.";
+
+/* Error message [fieldName: String] */
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Chyba analyzovania poľa %@. Poškodená databáza?";
+
+/* Error message */
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Našiel sa záznam mimo akejkoľvek skupiny. Poškodený súbor DB?";
+
+/* Error message */
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Neočakávaný koniec súboru. Poškodená databáza?";
+
+/* Error message when reading database header */
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Chyba čítania hlavičky. Poškodená databáza?";
+
+/* Error message. [flagsHexString: String] */
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Nepodporovaná šifra (kód: %@)";
+
+/* Error message when opening a database. [version: String] */
+"[Database1/Header1/Error] Unsupported database format version: %@." = "Nepodporovaná verzia formátu databázy: %@.";
+
+/* Error message when opening a database */
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Chybný podpis súboru. Je to KeePass databáza?";
+
+/* Status message: collecting database items into a single package */
+"[Database1/Progress] Packing the content" = "Balenie obsahu";
+
+/* Status message: processing the content of a database */
+"[Database1/Progress] Parsing content" = "Analýza obsahu";
+
+/* Name of a group which contains deleted entries */
+"[Database2/backupGroupName] Recycle Bin" = "Odpadkový kôš";
+
+/* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
+"[Database2/FormatError] Cannot parse database. %@" = "Databázu nie je možné analyzovať. %@";
+
+/* Error message [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Poškodená databáza (blok %d má zápornú veľkosť)";
+
+/* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Poškodená databáza (nesúlad hash v bloku %d)";
+
+/* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Poškodená databáza (nezhoda HMAC v bloku %d)";
+
+/* Error message about Gzip compression algorithm. [reason: String] */
+"[Database2/FormatError] Gzip error: %@" = "Chyba Gzip: %@";
+
+/* Error message: wrong ID of a data block */
+"[Database2/FormatError] Unexpected block ID." = "Neočakávané blok ID.";
+
+/* Error message */
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "Neočakávaný koniec súboru. Poškodený súbor?";
+
+/* Error message when saving a database. [reason: String] */
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "Nepodarilo sa dekomprimovať prílohu: %@";
+
+/* Error message, with the name of problematic field. [fieldName: String] */
+"[Database2/Header2/Error] Header field %@ is corrupted." = "Hlavička poľa %@ je poškodená.";
+
+/* Error message */
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Nesúlad hash hlavičky. Poškodená databáza?";
+
+/* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Nesúlad hlavičky HMAC. Poškodená databáza?";
+
+/* Error message when reading database header */
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "Chyba čítania hlavičky. Poškodená databáza?";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Unknown compression algorithm." = "Neznámy kompresný algoritmus.";
+
+/* Error message. [uuidHexString: String] */
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "Nepodporovaná dátová šifra: %@";
+
+/* Error message when opening a database. [version: String] */
+"[Database2/Header2/Error] Unsupported database format version: %@." = "Nepodporovaná verzia formátu databázy: %@.";
+
+/* Error message when opening a database. [id: UInt32] */
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Nepodporovaný vnútorný tok šifry (ID %d)";
+
+/* Error message about Key Derivation Function. [uuidString: String] */
+"[Database2/Header2/Error] Unsupported KDF: %@" = "Nepodporovaný KDF: %@";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Chybný podpis súboru. Je to KeePass databáza?";
+
+/* Error message about Gzip compression algorithm. [errorMessage: String] */
+"[Database2/Loading/Error] Error unpacking database: %@" = "Chyba pri rozbaľovaní databázy: %@";
+
+/* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
+"[Database2/Loading/Warning/missingBinaries]" = "Prílohám niektorých záznamov chýbajú dáta. To môže znamenať poškodenie databázy, pravdepodobne pri poslednom použití aplikácie (%1$@). KeePassium uchováva prázdne prílohy, ale nemôže ich obnoviť. Mali by ste obnoviť svoju databáze zo záložnej kópie. \n\nChýbajúce prílohy: %2$@";
+
+/* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
+"[Database2/Loading/Warning/namelessAttachments]" = "Niektoré záznamy majú prílohy bez názvu. To môže znamenať predchádzajúce poškodenie databázy.\n\n Prosím skontrolujte prílohy v nasledujúcich záznamoch (aj ich históriu):\n%@";
+
+/* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
+"[Database2/Loading/Warning/namelessCustomFields]" = "Niektoré záznamy majú vlastné polia s nevyplneným názvom. Môže to znamenať poškodenie dát. Prosím skontrolujte tieto záznamy:\n\n%@";
+
+/* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
+"[Database2/Loading/Warning/unusedAttachments]" = "Databáza obsahuje niektoré prílohy, ktoré nie sú použité v žiadnom zázname. Pravdepodobne boli zabudnuté pri poslednom použití aplikácie (%@). Avšak môže to byť tiež známkou poškodenia dát. \nPredtým, ako niečo zmeníte, nezabudnite si prosím zálohovať svoju databázu.";
+
+/* Progress bar status */
+"[Database2/Progress] Loading database" = "Načítanie databázy";
+
+/* Progress bar status */
+"[Database2/Progress] Reading database content" = "Čítanie obsahu databázy";
+
+/* Progress bar status */
+"[Database2/Progress] Writing encrypted blocks" = "Zapisovanie šifrovaných blokov";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "Dekompresia databázy";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "Kontrola integrity";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "Analýza databázy";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Data compression error: %@" = "Chyba kompresie dát: %@";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Encryption error: %@" = "Chyba šifrovania: %@";
+
+/* Error message about XML parsing. [value: String, tag: String] */
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "Poškodená hodnota '%1$@' in %2$@";
+
+/* Error message about XML parsing. [tag: String] */
+"[Database2/Xml2/ParsingError] Nil value in %@" = "Nulová hodnota v %@";
+
+/* Error message about XML parsing */
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "Nie je to KeePass XML";
+
+/* Error message about XML parsing. [actualTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Neočakávaný štítok '%@'";
+
+/* Error message about XML parsing. [actualTag: String, expectedTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "Neočakávaný štítok '%1$@' (namiesto '%2$@')";
+
+/* Generic error while parsing XML. [errorDetails: String] */
+"[Database2/Xml2/ParsingError] XML error: %@" = "Chyba XML: %@";
+
+/* Error message while opening a database */
+"[DatabaseError] Cannot open database" = "Databáza sa nedá otvoriť";
+
+/* Error message while saving a database */
+"[DatabaseError] Cannot save database" = "Databáza sa nedá uložiť";
+
+/* Error message: user provided a wrong master key for decryption. */
+"[DatabaseError] Invalid password or key file" = "Chybné heslo alebo súbor s kľúčom";
+
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "'%@' je umiestnený v nedávno zmazaných súboroch a môže byť čoskoro odstránený. Ak chcete súbor zachovať, presuňte ho na trvalejšie miesto.";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "Toto je dočasná záložný databáza. Môže byť automaticky a bez varovania vymazaná. Nepoužívajte ju ako svoju hlavnú databázu.";
+
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "Poskytovateľ úložiska nie je k dispozícii. Skontrolujte prosím, či je nainštalovaný a prihlásený k vášmu účtu.";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ nie je k dispozícii. Skontrolujte prosím, či je nainštalovaný a prihlásený k vášmu účtu.";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Sieťové úložisko je odpojené.";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB disk je odpojený.";
+
+/* Error message shown when there's internal inconsistency in KeePassium. */
+"[FileAccessError/internalError]" = "Interná chyba v aplikácii KeePassium, prosím, povedzte nám o nej.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
+"[FileAccessError/NoResponse/genericFileProvider]" = "Poskytovateľ úložiska neodpovedá.";
+
+/* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ neodpovedá.";
+
+/* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
+"[FileAccessError/NoWritePermission/title]" = "Súbor (%@) sa nedá uložiť";
+
+/* Explanation of a file writing error */
+"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft nedávno prepol integráciu OneDrive s iOS do režimu iba na čítanie. Tvrdí, že dočasne.";
+
+/* Suggestion for error recovery */
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Použite možnosť Export na uloženie súboru do inej lokácie.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
+"[FileAccessError/Timeout/genericFileProvider]" = "Poskytovateľ úložiska neodpovedá.";
+
+/* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ neodpovedá.";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to delete file. Reason: %@" = "Nepodarilo sa vymazať súbor. Dôvod: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to import file. Reason: %@" = "Nepodarilo sa naimportovať súbor. Dôvod: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to open file. Reason: %@" = "Nepodarilo sa otvoriť súbor. Dôvod: %@";
+
+/* Error message: tried to import URL which does not point to a file */
+"[FileKeeper] Not a file URL" = "Nesprávny odkaz";
+
+/* Localized name of the storage service: Amerigo (https://www.amerigo-app.com) */
+"[FileProvider/Amerigo/name]" = "Amerigo";
+
+/* Localized name of the storage service: Box (https://box.com) */
+"[FileProvider/Box/name]" = "Box";
+
+/* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
+"[FileProvider/Boxcryptor/name]" = "Boxcryptor";
+
+/* Localized name of the storage service: Dropbox (https://dropbox.com) */
+"[FileProvider/Dropbox/name]" = "Dropbox";
+
+/* Localized name of the storage service: FE File Explorer (https://apps.apple.com/app/fe-file-explorer-file-manager/id510282524) */
+"[FileProvider/FE File Explorer/name]" = "FE File Explorer";
+
+/* Localized name of the storage service: Google Drive (https://drive.google.com) */
+"[FileProvider/Google Drive/name]" = "Google Drive";
+
+/* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
+"[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: Nextcloud (https://nextcloud.com) */
+"[FileProvider/Nextcloud/name]" = "Nextcloud";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPad/name]" = "Na mojom iPade";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPhone/name]" = "Na mojom iPhone";
+
+/* Localized name of the storage service: OneDrive (https://onedrive.com) */
+"[FileProvider/OneDrive/name]" = "OneDrive";
+
+/* Localized name of the storage service: ownCloud (https://owncloud.com) */
+"[FileProvider/ownCloud/name]" = "ownCloud";
+
+/* Localized name of the storage service: pCloud (https://pcloud.com) */
+"[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
+/* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
+"[FileProvider/Readdle Documents/name]" = "Documents by Readdle";
+
+/* Localized name of the storage service: Resilio Sync (https://https://apps.apple.com/us/app/id1126282325) */
+"[FileProvider/Resilio Sync/name]" = "Resilio Sync";
+
+/* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
+"[FileProvider/Seafile Pro/name]" = "Seafile Pro";
+
+/* Localized name of the storage service: SMB server (network share) via native iOS integration. */
+"[FileProvider/SMB/name]" = "SMB server";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
+
+/* Localized name of the storage service: Sync.com (https://sync.com) */
+"[FileProvider/sync.com/name]" = "Sync.com";
+
+/* Localized name of the storage service: Synology Drive (https://apps.apple.com/us/app/synology-drive/id1267275421) */
+"[FileProvider/Synology Drive/name]" = "Synology Drive";
+
+/* Localized name of the storage service: Synology DS file (https://apps.apple.com/us/app/ds-file/id416751772) */
+"[FileProvider/Synology DS file/name]" = "Synology DS file";
+
+/* Localized name of the storage service: Tresorit (https://tresorit.com) */
+"[FileProvider/Tresorit/name]" = "Tresorit";
+
+/* Localized name of the storage service: local USB drive (native iOS integration) */
+"[FileProvider/USB drive/name]" = "USB disk";
+
+/* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
+"[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Dátum vytvorenia (od najstaršieho)";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Dátum vytvorenia (od najnovšieho)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Dátum úpravy (od najstaršieho)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Dátum úpravy (od najnovšieho)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
+"[FilesSortOrder/longTitle] Name (A..Z)" = "Názov (A..Z)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
+"[FilesSortOrder/longTitle] Name (Z..A)" = "Názov (Z..A)";
+
+/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
+"[FilesSortOrder/longTitle] No Sorting" = "Bez zoradenia";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Podľa dátumu vytvorenia (nové..staré)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Podľa dátumu vytvorenia (staré..nové)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Podľa dátumu úpravy (nové..staré)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Podľa dátumu úpravy (staré..nové)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "Podľa názvu (A..Z)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "Podľa názvu (Z..A)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
+"[GroupSortOrder/longTitle] No Sorting" = "Bez zoradenia";
+
+/* Status message: processing of the master key is in progress */
+"[KDF/Progress] Processing the master key" = "Spracováva sa hlavný kľúč";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "Chyba kľúčenky (kód %d) ";
+
+/* Error message about system keychain. */
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Chyba kľúčenky: neočakávaný formát dát";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "Súbor s kľúčom je poškodený";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "Nepodporovaný formát súboru s kľúčom";
+
+/* Explanation/notification when a long-running operation was cancelled by user */
+"[Progress/CancellationReason] Cancelled by user" = "Zrušené používateľom";
+
+/* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
+"[Progress/CancellationReason/lowMemory]" = "Nedostatok pamäte pre pokračovanie.\nToto sa môže stať pri veľkých databázach alebo s príliš ambicióznym nastavením databázy (Argon2).";
+
+/* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
+"[Settings/AppLockTimeout/description] After last interaction" = "Po poslednej interakcii";
+
+/* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
+"[Settings/AppLockTimeout/description] After leaving the app" = "Po odchode z tejto aplikácie";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "Okamžite";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/fullTitle] Never" = "Nikdy";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "Okamžite";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/shortTitle] Never" = "Nikdy";
+
+/* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "Navždy";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/fullTitle] Never" = "Nikdy";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/shortTitle] Never" = "Nikdy";
+
+/* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "Keď opustíte aplikáciu";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "Okamžite";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "Nikdy";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "Okamžite";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "Nikdy";
+
+/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Dátum poslednej úpravy";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
+"[Settings/EntryListDetail/longTitle] None" = "Žiadny";
+
+/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
+"[Settings/EntryListDetail/longTitle] Notes" = "Poznámky";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
+"[Settings/EntryListDetail/longTitle] Password" = "Heslo";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
+"[Settings/EntryListDetail/longTitle] URL" = "Adresa URL";
+
+/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
+"[Settings/EntryListDetail/longTitle] User Name" = "Užívateľské meno";
+
+/* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
+"[URLReference/Location] Cloud storage / Another app" = "Cloudové úložisko / ďalšie aplikácie";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
+"[URLReference/Location] Internal backup" = "Interná záloha";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
+"[URLReference/Location] Internal inbox" = "Interná schránka";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
+"[URLReference/Location] Local copy" = "Lokálna kópia";
+

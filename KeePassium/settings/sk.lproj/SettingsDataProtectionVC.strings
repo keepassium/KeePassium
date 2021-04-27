@@ -1,0 +1,78 @@
+/* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
+"3uV-Zs-RRo.normalTitle" = "Vymazať zapamätané asociácie";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "beV-Hv-Qdr"; Note = "#bc-ignore!"; */
+"beV-Hv-Qdr.text" = "{Detail}";
+
+/* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
+"e1v-nv-Mst.normalTitle" = "Vymazať hlavné kľúče";
+
+/* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.footerTitle" = "Maskovať heslá a ďalšie chránená polia hviezdičkami (odporúčané).";
+
+/* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.headerTitle" = "Chránené polia";
+
+/* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.footerTitle" = "Akonáhle odomknete databázu pomocou hlavného kľúča, aplikácia si ho uloží do kľúčenky na vašom zariadení. Pri ďalšom odomykaní databázy bude uložený kľúč použitý a vy ho tak nebudete musieť zadávať znova.\n\n(Zapamätané hlavné kľúče sú automaticky zmazané, akonáhle vyprší časový limit databázy.)";
+
+/* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.headerTitle" = "Rýchle odomknutie";
+
+/* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
+"g9a-rJ-4WJ.footerTitle" = "Použite univerzálny schránku na kopírovanie a vkladanie medzi vašimi Apple zariadeniami. Na externých zariadeniach je táto schránka vymazaná po dvoch minútach.";
+
+/* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
+"gTm-F6-EDQ.text" = "Vymazať hlavný kľúč po vypršaní časového limitu";
+
+/* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.footerTitle" = "Ak skopírujete nejaké údaje z databázy, aplikácia automaticky vymaže obsah schránky po zvolenej dobe.";
+
+/* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.headerTitle" = "Schránka";
+
+/* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
+"INJ-Cy-Tfo.text" = "Zapamätať si hlavný kľúč";
+
+/* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
+"IZZ-aM-g2i.title" = "Ochrana dát";
+
+/* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
+"JHl-o7-xHI.text" = "Pamätať si súbory s kľúčom";
+
+/* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.footerTitle" = "Aplikácia si zapamätá naposledy použitý súbor s kľúčom pre každú databázu a vy ho tak nebudete musieť opakovane vyberať. Vymazanie asociácii neovplyvní žiadne súbory.";
+
+/* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.headerTitle" = "Súbory s kľúčom";
+
+/* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.footerTitle" = "Opatrenie, ktoré po zvolenej dobe uzavrie všetky otvorené databázy a zmaže všetky uložené hlavné kľúče.";
+
+/* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.headerTitle" = "Automatický zámok";
+
+/* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
+"pid-k2-idJ.text" = "Maskovať heslá";
+
+/* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
+"siQ-LK-GXZ.text" = "Šifrovacie kľúče odvodené z vyrovnávacej pamäte";
+
+/* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
+"SSu-Sr-MCg.text" = "Časový limit schránky";
+
+/* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
+"weX-SZ-IDB.text" = "Časový limit databázy";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
+"xPd-ot-oqe.text" = "{Detail}";
+
+/* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
+"YL6-U9-FM6.text" = "Univerzálna schránka";
+
+/* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.footerTitle" = "Kľúče vo vyrovnávajúcej pamäti umožňujú aplikácii KeePassium preskočiť derivácie kľúčov a skenovanie YubiKey, kedykoľvek je to možné. ";
+
+/* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.headerTitle" = "Pokročilé";
+

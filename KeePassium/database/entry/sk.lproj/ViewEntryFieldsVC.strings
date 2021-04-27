@@ -1,0 +1,39 @@
+/* Class = "UITextView"; text = "{Field Value}"; ObjectID = "1r1-bD-3m7"; Note = "#bc-ignore!"; */
+"1r1-bD-3m7.text" = "{Field Value}";
+
+/* Class = "UITextView"; text = "{Field Value}"; ObjectID = "4Cc-vV-vTv"; Note = "#bc-ignore!"; */
+"4Cc-vV-vTv.text" = "{Field Value}";
+
+/* Class = "UIButton"; accessibilityHint = "Expands a text field to its full height"; ObjectID = "6Mx-Oh-6m0"; */
+"6Mx-Oh-6m0.accessibilityHint" = "Rozšíri textové pole na jeho plnú výšku";
+
+/* Class = "UIButton"; accessibilityLabel = "Show more"; ObjectID = "6Mx-Oh-6m0"; */
+"6Mx-Oh-6m0.accessibilityLabel" = "Zobraziť viac";
+
+/* Class = "UILabel"; text = "{ViewableFieldCell}"; ObjectID = "46A-ga-B85"; Note = "#bc-ignore!"; */
+"46A-ga-B85.text" = "{ViewableFieldCell}";
+
+/* Class = "UILabel"; text = "{Field Name}"; ObjectID = "jZZ-fa-lax"; Note = "#bc-ignore!"; */
+"jZZ-fa-lax.text" = "{Field Name}";
+
+/* Class = "UILabel"; text = "{ViewableFieldCell}"; ObjectID = "L5V-vy-3To"; Note = "#bc-ignore!"; */
+"L5V-vy-3To.text" = "{ViewableFieldCell}";
+
+/* Class = "UITextView"; text = "{Field Value}"; ObjectID = "Lyz-4O-dvw"; Note = "#bc-ignore!"; */
+"Lyz-4O-dvw.text" = "{Field Value}";
+
+/* Class = "UITextView"; text = "{Field Value}"; ObjectID = "p7x-lw-Hyn"; Note = "#bc-ignore!"; */
+"p7x-lw-Hyn.text" = "{Field Value}";
+
+/* Class = "UILabel"; text = "{Field Name}"; ObjectID = "pBf-im-hEw"; Note = "#bc-ignore!"; */
+"pBf-im-hEw.text" = "{Field Name}";
+
+/* Class = "UILabel"; text = "Copied"; ObjectID = "vLP-Zc-bUc"; Note = "Confirmation message: field value has been copied to clipboard."; */
+"vLP-Zc-bUc.text" = "Skopírované";
+
+/* Class = "UILabel"; text = "{ViewableFieldCell}"; ObjectID = "weL-29-hO1"; Note = "#bc-ignore!"; */
+"weL-29-hO1.text" = "{ViewableFieldCell}";
+
+/* Class = "UITextView"; text = "{Field Value}"; ObjectID = "wfh-AY-t3P"; Note = "#bc-ignore!"; */
+"wfh-AY-t3P.text" = "{Field Value}";
+

@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ASN1Swift",
+        "repositoryURL": "https://github.com/keepassium/ASN1Swift",
+        "state": {
+          "branch": null,
+          "revision": "b53bee03a942623db25afc5bfb80227b2cb3b425",
+          "version": "1.2.4"
+        }
+      },
+      {
+        "package": "TPInAppReceipt",
+        "repositoryURL": "https://github.com/keepassium/TPInAppReceipt",
+        "state": {
+          "branch": "keepassium",
+          "revision": "6630e3858f0d0a5803cede6f82afeaed5f5de7b6",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

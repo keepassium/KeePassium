@@ -1,0 +1,6 @@
+/* Class = "UITableViewController"; title = "Keep Backup Files"; ObjectID = "atf-ra-KMC"; Note = "Dialog for selecting the duration of keeping the backup copies."; */
+"atf-ra-KMC.title" = "Uchovávať záložné súbory";
+
+/* Class = "UILabel"; text = "{Title}"; ObjectID = "P5f-gZ-frj"; Note = "#bc-ignore!"; */
+"P5f-gZ-frj.text" = "{Title}";
+
