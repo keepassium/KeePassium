@@ -11,7 +11,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Digitar o código";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Change Passcode";
+"[AppLock/changePasscode]" = "Mudar senha do aplicativo";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "Desbloquear KeePassium";
@@ -23,13 +23,13 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+"[AppLock/passcodeUpdated/title]" = "Senha do aplicativo atualizada com sucesso.";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Save Passcode";
+"[AppLock/savePasscode]" = "Salvar senha do app";
 
 /* Call to action in the passcode input dialog. */
-"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
+"[AppLock/SetupPasscode/callToAction]" = "Proteja KeePassium contra acesso não autorizado";
 
 /* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
 "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Para continuar, por favor, abra o KeePassium manualmente a partir da tela inicial.";
@@ -77,10 +77,10 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "Chave-mestra alterada com sucesso";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+"[Database/MasterKey/RememberYourPassword/text]" = "Caso a esqueça, não conseguirá acessar seus dados. Não há modo de redefinir a senha.";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+"[Database/MasterKey/RememberYourPassword/title]" = "Lembre-se da sua senha-mestra";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Abrir banco de dados";
@@ -176,7 +176,7 @@
 "[Generic] Cancel" = "Cancelar";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Support" = "Contact Support";
+"[Generic] Contact Support" = "Contate Suporte";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Contate-nos";
@@ -356,7 +356,7 @@
 "[Premium/Price Plan/Conditions/current premium features]" = "Recursos premium atuais";
 
 /* What's included in a price plan: support via email */
-"[Premium/Price Plan/Conditions/email support]" = "Suporte: via e-mail";
+"[Premium/Price Plan/Conditions/email support]" = "Suporte: por e-mail";
 
 /* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
 "[Premium/Price Plan/Conditions/family sharing]" = "Compartilhamento familiar";
@@ -371,13 +371,13 @@
 "[Premium/Price Plan/Conditions/future premium features]" = "Recursos premium futuros";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
-"[Premium/Price Plan/Conditions/perpetual fallback]" = "Rent-to-own license (Perpetual fallback license)";
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Licença Alugue e Tenha (Perpetual fallback license)";
 
 /* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
-"[Premium/Price Plan/Conditions/subscription as purchase]" = "Subscription as a purchase";
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Assinatura como compra";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates and bug fixes";
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Atualizações e correções de erros";
 
 /* Price of the free pricing plan */
 "[Premium/Price Plan/Free/price]" = "Grátis";
@@ -389,7 +389,7 @@
 "[Premium/Price Plan/popular]" = "Popular";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nPayment will be charged to your Apple ID account at the confirmation of purchase.\n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.\n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.\n";
+"[Premium/Subscription/Legal/text]" = "\nO valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do aplicativo.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.\n";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ grátis, depois %2$@";
@@ -401,10 +401,10 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "Atualizar para Premium";
 
 /* Message shown after buying a lifetime version. */
-"[Premium/Upgrade/cancelOngoingSubscription]" = "Please check if you need to cancel your old subscription.";
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Por favor, verifique se você precisa cancelar sua assinatura anterior.";
 
 /* Message shown when in-app purchase is deferred until approval (parental or corporate). */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Thank you! You can use KeePassium while purchase is awaiting approval.";
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Obrigado! Você pode usar KeePassium enquanto a compra aguarda aprovação.";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@/mês";
@@ -437,7 +437,7 @@
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "Desculpe";
 
 /* Message shown after buying or subscribing. */
-"[Premium/Upgrade/Success/thankYou]" = "Thank you for the purchase!";
+"[Premium/Upgrade/Success/thankYou]" = "Obrigado por sua compra!";
 
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Ícones Personalizados";

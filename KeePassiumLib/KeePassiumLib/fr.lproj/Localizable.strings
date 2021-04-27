@@ -59,7 +59,7 @@
 "[Database/Load/Error] Cannot find key file" = "Impossible de trouver le fichier clé";
 
 /* Error message */
-"[Database/Load/Error] Cannot open database file" = "Impossible d'ouvrir le fichierr de base de données";
+"[Database/Load/Error] Cannot open database file" = "Impossible d'ouvrir le fichier de base de données";
 
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Impossible d'ouvrir le fichier de clé";
@@ -104,10 +104,10 @@
 "[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Une entrée a été trouvée en dehors d'un groupe. Fichier de base de données corrompu ?";
 
 /* Error message */
-"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Fin de fichier inattendue. Fichier de base de données corrompu?";
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Fin de fichier inattendue. Fichier de base de données corrompu ?";
 
 /* Error message when reading database header */
-"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Erreur de lecture de l'en-tête. Fichier de la base de données corrompu?";
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Erreur de lecture de l'en-tête. Fichier de la base de données corrompu ?";
 
 /* Error message. [flagsHexString: String] */
 "[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Chiffrement non pris en charge. (Code : %@)";
@@ -377,19 +377,19 @@
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Date de création (plus ancien en premier)";
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Date de création (ancien en premier)";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Date de création (Récent en premier)";
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Date de création (récent en premier)";
 
 /* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Date de modification (plus ancien en premier)";
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Date de modification (ancien en premier)";
 
 /* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Date de création (Récent en premier)";
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Date de création (récent en premier)";
 
 /* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "Nom (A..Z)";
+"[FilesSortOrder/longTitle] Name (A..Z)" = "Nom (A—Z)";
 
 /* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
 "[FilesSortOrder/longTitle] Name (Z..A)" = "Nom (Z..A)";
@@ -398,19 +398,19 @@
 "[FilesSortOrder/longTitle] No Sorting" = "Aucun tri";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Par Date de Création (Nouveau..Ancien)";
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Par date de création (nouveau—ancien)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Par Date de Création (Ancien..Nouveau)";
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Par date de création (ancien—nouveau)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Par Date de modification (Nouveau..Ancien)";
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Par date de modification (nouveau—ancien)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Par date de modification (Ancien..Nouveau)";
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Par date de modification (ancien—nouveau)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "Par titre (A..Z)";
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "Par titre (A—Z)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
 "[GroupSortOrder/longTitle] By Title (Z..A)" = "Par titre (Z..A)";

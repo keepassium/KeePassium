@@ -2,7 +2,7 @@
 "[Accessibility] Double tap to copy to clipboard" = "Toque duas vezes para copiar";
 
 /* Title of a setting option: font size */
-"[Appearance/TextSize/title]" = "Text Size";
+"[Appearance/TextSize/title]" = "Tamanho do texto";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Desbloquear";
@@ -14,7 +14,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Digitar o código";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Change Passcode";
+"[AppLock/changePasscode]" = "Mudar senha do aplicativo";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "Desbloquear KeePassium";
@@ -26,13 +26,13 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+"[AppLock/passcodeUpdated/title]" = "Senha do aplicativo atualizada com sucesso.";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Save Passcode";
+"[AppLock/savePasscode]" = "Salvar senha do app";
 
 /* Call to action in the passcode input dialog. */
-"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
+"[AppLock/SetupPasscode/callToAction]" = "Proteja KeePassium contra acesso não autorizado";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -44,7 +44,7 @@
 "[Clipboard/Copy/namedValue]" = "Copiar %@";
 
 /* Notification: an item has been copied to clipboard */
-"[Clipboard/Copy/notification]" = "Copied";
+"[Clipboard/Copy/notification]" = "Copiado";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
 "[Database/Add] Selected file \"%@\" does not look like a database." = "O arquivo selecionado \"%@\" não parece ser um banco de dados.";
@@ -56,7 +56,7 @@
 "[Database/Create/action] Create Database" = "Criar banco de dados";
 
 /* Note for a sample entry */
-"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "You can also store some notes, if you like.";
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Você também pode armazenar algumas anotações, se quiser.";
 
 /* Password for a sample entry. Translation is optional. */
 "[Database/Create/TemplateEntry/password] pa$$word" = "senh4";
@@ -98,10 +98,10 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "Chave-mestra alterada com sucesso";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+"[Database/MasterKey/RememberYourPassword/text]" = "Caso a esqueça, não conseguirá acessar seus dados. Não há modo de redefinir a senha.";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+"[Database/MasterKey/RememberYourPassword/title]" = "Lembre-se da sua senha-mestra";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Abrir banco de dados";
@@ -113,16 +113,16 @@
 "[Database/Opened/action] Lock Database" = "Bloquear banco de dados";
 
 /* Action: lock database */
-"[Database/Opened/Warning/action] Close Database" = "Close Database";
+"[Database/Opened/Warning/action] Close Database" = "Fechar banco de dados";
 
 /* Action: ignore warnings and proceed to work with the database */
-"[Database/Opened/Warning/action] Ignore and Continue" = "Ignore and Continue";
+"[Database/Opened/Warning/action] Ignore and Continue" = "Ignorar e continuar";
 
 /* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
-"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "Database was last edited by: %@";
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "Banco de dados editado por último em: %@";
 
 /* Title of a warning message, shown after opening a problematic database */
-"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Your database is ready, but there was an issue.";
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "O seu banco de dados está pronto, mas houve um problema.";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Esquecer esse banco de dados?\n O arquivo permanecerá intacto e você poderá adicioná-lo de novo depois.";
@@ -242,7 +242,7 @@
 "[Generic] Cancel" = "Cancelar";
 
 /* Action/button to write an email to support */
-"[Generic] Contact Support" = "Contact Support";
+"[Generic] Contact Support" = "Contate Suporte";
 
 /* Action/button to write an email to support */
 "[Generic] Contact Us" = "Contate-nos";
@@ -422,10 +422,10 @@
 "[Premium/Benefits/Positive/header] " = "Você aproveita";
 
 /* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Use field references to show information from other entries, instead of creating multiple copies of the same information.";
+"[Premium/Benefits/ViewFieldReferences/details]" = "Use referências para mostrar informações de outras entradas, em vez de criar várias cópias dos mesmos dados.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Show field references";
+"[Premium/Benefits/ViewFieldReferences/title]" = "Mostrar referências em campos";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Compre agora";
@@ -449,40 +449,40 @@
 "[Premium/PerpetualLicense/status]" = "Você tem uma licença perpétua para todas as versões anteriores à %@.";
 
 /* What's included in a price plan: 1 year of support via email */
-"[Premium/Price Plan/Conditions/1 year email support]" = "One year of email support";
+"[Premium/Price Plan/Conditions/1 year email support]" = "Um ano de suporte via e-mail";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/all premium features]" = "All premium features";
+"[Premium/Price Plan/Conditions/all premium features]" = "Todos os recursos premium";
 
 /* What's included in a free plan: support via forums (as opposed to email support) */
-"[Premium/Price Plan/Conditions/community support]" = "Customer support: Online forums";
+"[Premium/Price Plan/Conditions/community support]" = "Suporte: fórum on-line";
 
 /* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
-"[Premium/Price Plan/Conditions/current premium features]" = "Current premium features";
+"[Premium/Price Plan/Conditions/current premium features]" = "Recursos premium atuais";
 
 /* What's included in a price plan: support via email */
-"[Premium/Price Plan/Conditions/email support]" = "Customer support: Email";
+"[Premium/Price Plan/Conditions/email support]" = "Suporte: via e-mail";
 
 /* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
 "[Premium/Price Plan/Conditions/family sharing]" = "Compartilhamento familiar";
 
 /* What's included in a free plan: reminders that the version is free */
-"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium reminders";
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Lembretes freemium";
 
 /* Upgrade conditions for current-version premium purchase. */
 "[Premium/Price Plan/Conditions/full price upgrade]" = "Recursos premium adicionados no futuro exigirão uma nova compra pelo valor cheio vigente.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
-"[Premium/Price Plan/Conditions/future premium features]" = "Future premium features";
+"[Premium/Price Plan/Conditions/future premium features]" = "Recursos premium futuros";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
-"[Premium/Price Plan/Conditions/perpetual fallback]" = "Rent-to-own license (Perpetual fallback license)";
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Licença Alugue e Tenha (Perpetual fallback license)";
 
 /* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
-"[Premium/Price Plan/Conditions/subscription as purchase]" = "Subscription as a purchase";
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Assinatura como compra";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates and bug fixes";
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Atualizações e correções de erros";
 
 /* Price of the free pricing plan */
 "[Premium/Price Plan/Free/price]" = "Grátis";
@@ -506,7 +506,7 @@
 "[Premium/status] Valid forever" = "Válido para sempre";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nPayment will be charged to your Apple ID account at the confirmation of purchase.\n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.\n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.\n";
+"[Premium/Subscription/Legal/text]" = "\nO valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do aplicativo.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.\n";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ grátis, depois %2$@";
@@ -518,10 +518,10 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "Atualizar para Premium";
 
 /* Message shown after buying a lifetime version. */
-"[Premium/Upgrade/cancelOngoingSubscription]" = "Please check if you need to cancel your old subscription.";
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Por favor, verifique se você precisa cancelar sua assinatura anterior.";
 
 /* Message shown when in-app purchase is deferred until approval (parental or corporate). */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Thank you! You can use KeePassium while purchase is awaiting approval.";
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Obrigado! Você pode usar KeePassium enquanto a compra aguarda aprovação.";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@/mês";
@@ -554,7 +554,7 @@
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "Desculpe";
 
 /* Message shown after buying or subscribing. */
-"[Premium/Upgrade/Success/thankYou]" = "Thank you for the purchase!";
+"[Premium/Upgrade/Success/thankYou]" = "Obrigado por sua compra!";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplicativo sendo útil: %1$@/mês, aproximadamente %2$@/ano.";
@@ -599,10 +599,10 @@
 "[Settings/AppLock/Biometric/title] Use %@" = "Usar %@";
 
 /* Explanation for the `Lock on App Launch` setting */
-"[Settings/AppLock/LockOnLaunch/description]" = "Ensures KeePassium is locked after you force-close the app or restart the device.";
+"[Settings/AppLock/LockOnLaunch/description]" = "Garante o bloqueio do KeePassium após encerramento forçado ou reinício do dispositivo.";
 
 /* Setting switch: whether to lock the app after it was terminated and relaunched. */
-"[Settings/AppLock/LockOnLaunch/title]" = "Lock on App Launch";
+"[Settings/AppLock/LockOnLaunch/title]" = "Bloquear ao iniciar";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Bloqueio do aplicativo, %@, limite de tempo";
@@ -632,22 +632,22 @@
 "[Settings/ClearMasterKeys/Cleared/title] Cleared" = "Limpo";
 
 /* Description of the clipboard/pasteboard timeout. */
-"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time.";
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "Ao copiar texto de uma entrada, KeePassium limpará automaticamente a área de transferência após o tempo definido.";
 
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Se você não interagir com o aplicativo por certo tempo, o banco de dados será fechado para sua segurança. Para abri-lo, será preciso a senha-mestra novamente.";
 
 /* Title of a settings section about making backup files */
-"[Settings/FileLists/Backup/title] Backup" = "Backup";
+"[Settings/FileLists/Backup/title] Backup" = "Cópias de segurança";
 
 /* Title of a settings section about file order in lists */
-"[Settings/FileLists/Sorting/title] Sorting" = "Sorting";
+"[Settings/FileLists/Sorting/title] Sorting" = "Ordenar por";
 
 /* Title of a settings section: which entry field to show along with entry title */
-"[Settings/GroupViewer] Entry Subtitle" = "Entry Subtitle";
+"[Settings/GroupViewer] Entry Subtitle" = "Subtítulo da entrada";
 
 /* Title of a settings section: sort order of groups and entries in a list */
-"[Settings/GroupViewer] Sort Order" = "Sort Order";
+"[Settings/GroupViewer] Sort Order" = "Ordenar";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Por favor, descreva o problema aqui.)";

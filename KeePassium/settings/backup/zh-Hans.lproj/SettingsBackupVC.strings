@@ -11,10 +11,10 @@
 "BJ7-eQ-JOc.text" = "创建备份副本";
 
 /* Class = "UITableViewSection"; footerTitle = "Defines whether backup databases created by KeePassium should be excluded from iCloud/iTunes backup. Applies to all the existing and future backup files."; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
-"fst-lq-BDl.footerTitle" = "Defines whether backup databases created by KeePassium should be excluded from iCloud/iTunes backup. Applies to all the existing and future backup files.";
+"fst-lq-BDl.footerTitle" = "定义是否将 KeePassium 创建的备份数据库在iCloud/iTunes 备份中排除。应用于所有现有和未来的备份文件。";
 
 /* Class = "UITableViewSection"; headerTitle = "iTunes and iCloud Backup"; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
-"fst-lq-BDl.headerTitle" = "iTunes and iCloud Backup";
+"fst-lq-BDl.headerTitle" = "iTunes 与 iCloud 备份";
 
 /* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
 "G42-gR-eKm.text" = "保留备份文件";
@@ -29,7 +29,7 @@
 "PKe-6p-Ssr.text" = "{N days}";
 
 /* Class = "UILabel"; text = "Exclude Backup Files from System Backup"; ObjectID = "Qs6-uS-gdS"; Note = "Settings option, on/off"; */
-"Qs6-uS-gdS.text" = "Exclude Backup Files from System Backup";
+"Qs6-uS-gdS.text" = "从系统备份中排除备份文件";
 
 /* Class = "UIButton"; normalTitle = "{Delete ALL Backup Files (1)}"; ObjectID = "RXF-mN-5RB"; Note = "#bc-ignore!"; */
 "RXF-mN-5RB.normalTitle" = "{Delete ALL Backup Files (1)}";

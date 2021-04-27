@@ -44,7 +44,7 @@
 "mGc-If-zfn.accessibilityLabel" = "エントリーのタイトル";
 
 /* Class = "UITextField"; placeholder = "Entry Title"; ObjectID = "mGc-If-zfn"; */
-"mGc-If-zfn.placeholder" = "Entry Title";
+"mGc-If-zfn.placeholder" = "エントリーのタイトル";
 
 /* Class = "UITextField"; text = "{Entry Title}"; ObjectID = "mGc-If-zfn"; */
 "mGc-If-zfn.text" = "{Entry Title}";

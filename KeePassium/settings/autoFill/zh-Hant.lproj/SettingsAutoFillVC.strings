@@ -11,7 +11,7 @@
 "go1-Nt-isQ.text" = "複製 一次性密碼OTP 到剪貼板";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.footerTitle" = "當自動填入只找到一個並且完整匹配的條目時 - 該條目將會被自動貼上。";
+"jYl-ks-dFG.footerTitle" = "當自動填入只找到一個並且完整匹配的項目時 - 該項目將會被自動貼上。";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "自動搜尋";

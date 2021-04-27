@@ -68,7 +68,7 @@
 "hVm-qH-TAI.text" = "CC BY 3.0";
 
 /* Class = "UILabel"; text = "Icons by KeePassXC team"; ObjectID = "hW0-fR-mIf"; */
-"hW0-fR-mIf.text" = "Icons by KeePassXC team";
+"hW0-fR-mIf.text" = "Icons 來自 KeePassXC 團隊";
 
 /* Class = "UILabel"; text = "CC BY-ND 3.0"; ObjectID = "iKy-z5-Ox7"; */
 "iKy-z5-Ox7.text" = "CC BY-ND 3.0";
@@ -80,7 +80,7 @@
 "JgR-60-OMp.text" = "公有領域";
 
 /* Class = "UILabel"; text = "LGPL license"; ObjectID = "JjJ-GT-eoX"; */
-"JjJ-GT-eoX.text" = "LGPL license";
+"JjJ-GT-eoX.text" = "LGPL 授權許可";
 
 /* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
 "JRy-jy-KXb.text" = "GPL 授權許可";
@@ -146,7 +146,7 @@
 "vg0-6M-OIq.text" = "KeyboardLayoutConstraint 來自 James Tang";
 
 /* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
-"VuB-ng-Uii.text" = "Nuvola icons by David Vignoni";
+"VuB-ng-Uii.text" = "Nuvola icons 來自 David Vignoni";
 
 /* Class = "UILabel"; text = "KeePassium"; ObjectID = "Wuj-Uw-baK"; */
 "Wuj-Uw-baK.text" = "KeePassium";

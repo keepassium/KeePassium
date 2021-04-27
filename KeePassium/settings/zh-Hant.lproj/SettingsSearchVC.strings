@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "Search in Field Names"; ObjectID = "cCm-E4-L3m"; Note = "An switch in settings: whether to include entry field names in search procedure."; */
-"cCm-E4-L3m.text" = "搜索欄位名稱";
+"cCm-E4-L3m.text" = "搜索字段名稱";
 
 /* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "DJr-hC-DMT"; Note = "A section in search-related settings: what happens when the app is just started or database is just opened."; */
 "DJr-hC-DMT.footerTitle" = "打開資料庫時自動顯示搜尋欄位。";

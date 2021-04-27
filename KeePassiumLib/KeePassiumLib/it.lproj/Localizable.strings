@@ -281,7 +281,7 @@
 "[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft ha recentemente cambiato l'integrazione di OneDrive con iOS in modalità di sola lettura. Microsoft ha confermato che si tratta di una modifica temporanea.";
 
 /* Suggestion for error recovery */
-"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Usa l'opzione Esporta per salvare il file in un'altra posizione.";
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Utilizzare l'opzione Esporta per salvare il file in un'altra posizione.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Il provider di archiviazione non risponde.";

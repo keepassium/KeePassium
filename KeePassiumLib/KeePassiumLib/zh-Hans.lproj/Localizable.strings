@@ -86,7 +86,7 @@
 "[Database/Progress/resolving]" = "正在联系存储提供商...";
 
 /* Database loading/saving status: replacing field references with their values */
-"[Database/Progress/resolvingFieldReferences]" = "Resolving field references…";
+"[Database/Progress/resolvingFieldReferences]" = "正在解析字段引用…";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "无法打开密钥文件";
@@ -248,22 +248,22 @@
 "[DatabaseError] Invalid password or key file" = "错误的密码或者密钥文件";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
-"[File/In Trash/warning]" = "'%@' is located in Recently Deleted and might be deleted soon. To preserve your data, move the file to a more permanent location.";
+"[File/In Trash/warning]" = "'%@'位于“最近删除”，可能很快被删除。要保存您的数据，请移动文件到一个永久的位置。";
 
 /* Notification when user opens an in-app backup database. */
-"[File/TemporaryBackup/warning]" = "This is a temporary backup database. It can be automatically deleted without a warning. Don't use it as your main database.";
+"[File/TemporaryBackup/warning]" = "这是一个临时备份数据库。它可以在没有警告的情况下自动删除。不要使用它作为您的主数据库。";
 
 /* Error message: storage provider app was logged out or uninstalled. */
-"[FileAccessError/FileProvider/NotFound/generic]" = "Storage provider is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/generic]" = "存储提供商不可用。请检查是否已安装并登录到您的帐户。";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
-"[FileAccessError/FileProvider/NotFound/other]" = "%@ is not available. Please check whether it is installed and logged in to your account.";
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ 不可用。请检查它是否已安装并登录到您的帐户。";
 
 /* Error message: the required network drive is not connected. */
-"[FileAccessError/FileProvider/NotFound/smbShare]" = "Network storage is disconnected.";
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "网络存储已断开连接。";
 
 /* Error message: there is no USB drive connected to the device. */
-"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB drive is disconnected.";
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB驱动器已断开连接。";
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "KeePassium内部错误，请告诉我们。";
@@ -275,13 +275,13 @@
 "[FileAccessError/NoResponse/knownFileProvider]" = "%@没有响应。";
 
 /* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
-"[FileAccessError/NoWritePermission/title]" = "Cannot save file (%@)";
+"[FileAccessError/NoWritePermission/title]" = "无法保存文件 （%@）";
 
 /* Explanation of a file writing error */
-"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft has recently switched OneDrive integration with iOS to read-only mode. Temporarily, they say.";
+"[FileAccessError/OneDriveReadOnly/reason]" = "微软最近将 OneDrive 与 iOS 档案的整合设定为仅读模式。";
 
 /* Suggestion for error recovery */
-"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use the Export option to save file to another location.";
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "使用导出选项将文件保存到其他位置。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "存储提供商没有响应。";
@@ -428,10 +428,10 @@
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "钥匙圈错误: 意外的数据格式";
 
 /* Error message when the key file is misformatted or damaged */
-"[KeyFileError/Corrupted/title]" = "Key file is corrupted";
+"[KeyFileError/Corrupted/title]" = "密钥文件已损坏";
 
 /* Error message: unsupported/unknown format of a key file */
-"[KeyFileError/UnsupportedFormat/title]" = "Unsupported key file format";
+"[KeyFileError/UnsupportedFormat/title]" = "不支持的密钥文件格式";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "已被使用者取消";

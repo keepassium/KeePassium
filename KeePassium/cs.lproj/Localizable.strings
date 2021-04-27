@@ -2,7 +2,7 @@
 "[Accessibility] Double tap to copy to clipboard" = "Dvojitým poklepáním zkopírujete do schránky";
 
 /* Title of a setting option: font size */
-"[Appearance/TextSize/title]" = "Text Size";
+"[Appearance/TextSize/title]" = "Velikost písma";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Odemknout";
@@ -14,7 +14,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Použít kód aplikace";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Change Passcode";
+"[AppLock/changePasscode]" = "Změnit přístupový kód";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "Odemknout KeePassium";
@@ -26,13 +26,13 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+"[AppLock/passcodeUpdated/title]" = "Přístupový kód byl úspěšně aktualizován.";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Save Passcode";
+"[AppLock/savePasscode]" = "Uložit přístupový kód";
 
 /* Call to action in the passcode input dialog. */
-"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
+"[AppLock/SetupPasscode/callToAction]" = "Chraňte KeePassium před neoprávněným přístupem";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -98,10 +98,10 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "Hlavní klíč k databázi úspěšně změněn";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+"[Database/MasterKey/RememberYourPassword/text]" = "Pokud ho někdy zapomenete, nebudete mít přístup k vašim datům. Neexistuje žádná možnost pro obnovení hesla.";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+"[Database/MasterKey/RememberYourPassword/title]" = "Zapamatujte si své heslo k databázi";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Otevřít databázi";

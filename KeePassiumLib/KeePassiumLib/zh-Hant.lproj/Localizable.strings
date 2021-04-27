@@ -86,7 +86,7 @@
 "[Database/Progress/resolving]" = "正在請求空間提供商...";
 
 /* Database loading/saving status: replacing field references with their values */
-"[Database/Progress/resolvingFieldReferences]" = "Resolving field references…";
+"[Database/Progress/resolvingFieldReferences]" = "解析字段引用…";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "無法打開金鑰檔案";
@@ -98,7 +98,7 @@
 "[Database1/FormatError] Database file is corrupted." = "資料庫檔案損毀。";
 
 /* Error message [fieldName: String] */
-"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "解析 %@ 欄位錯誤。資料庫檔案損壞?";
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "解析 %@ 字段錯誤。資料庫檔案損壞?";
 
 /* Error message */
 "[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "在群組外找到條目。資料庫檔案損壞?";
@@ -152,7 +152,7 @@
 "[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "解壓縮附件的資料失敗:%@";
 
 /* Error message, with the name of problematic field. [fieldName: String] */
-"[Database2/Header2/Error] Header field %@ is corrupted." = "標頭欄位 %@ 已損壞。";
+"[Database2/Header2/Error] Header field %@ is corrupted." = "標頭字段 %@ 已損壞。";
 
 /* Error message */
 "[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "標頭哈希值不匹配。資料庫檔案損壞?";
@@ -191,10 +191,10 @@
 "[Database2/Loading/Warning/namelessAttachments]" = "有些條目有附件沒有名字。這是資料庫早期損壞的跡象。\n\n 請查看以下條目中的附件(及其歷史記錄)：\n%@";
 
 /* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
-"[Database2/Loading/Warning/namelessCustomFields]" = "某些條目具有空名稱的自定義欄位。這是資料庫早期損壞的跡象。請檢查以下條目：\n\n%@";
+"[Database2/Loading/Warning/namelessCustomFields]" = "某些項目具有空名稱的自定義字段。這是資料庫早期損壞的跡象。請檢查以下項目：\n\n%@";
 
 /* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
-"[Database2/Loading/Warning/unusedAttachments]" = "資料庫包含一些未在任何條目中使用的附件。最有可能的是，它們已被上次使用的應用程式(%@) 遺忘。但是，這也可能是資料庫早期損壞的跡象。在更改任何內容之前,\n請確保資料庫已經備份。";
+"[Database2/Loading/Warning/unusedAttachments]" = "資料庫包含一些未在任何項目中使用的附件。最有可能的是，它們已被上次使用的應用程式(%@) 遺忘。但是，這也可能是資料庫早期損壞的跡象。在更改任何內容之前, 請確保資料庫已經備份。";
 
 /* Progress bar status */
 "[Database2/Progress] Loading database" = "載入資料庫";
@@ -248,10 +248,10 @@
 "[DatabaseError] Invalid password or key file" = "錯誤的密碼或者金鑰檔案";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
-"[File/In Trash/warning]" = "'%@' is located in Recently Deleted and might be deleted soon. To preserve your data, move the file to a more permanent location.";
+"[File/In Trash/warning]" = "“%@” 位於 “最近刪除” 中，可能很快就會被刪除。要保留數據，請將文件移到永久的位置。";
 
 /* Notification when user opens an in-app backup database. */
-"[File/TemporaryBackup/warning]" = "This is a temporary backup database. It can be automatically deleted without a warning. Don't use it as your main database.";
+"[File/TemporaryBackup/warning]" = "這是一個備份的資料庫，將會自動被刪除而不會提示，請勿將它視為主要的資料庫。";
 
 /* Error message: storage provider app was logged out or uninstalled. */
 "[FileAccessError/FileProvider/NotFound/generic]" = "儲存空間提供商不可用，請確認是否安裝並登入帳號。";
@@ -275,13 +275,13 @@
 "[FileAccessError/NoResponse/knownFileProvider]" = "%@ 沒有回應。";
 
 /* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
-"[FileAccessError/NoWritePermission/title]" = "Cannot save file (%@)";
+"[FileAccessError/NoWritePermission/title]" = "無法儲存檔案（%@）";
 
 /* Explanation of a file writing error */
-"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft has recently switched OneDrive integration with iOS to read-only mode. Temporarily, they say.";
+"[FileAccessError/OneDriveReadOnly/reason]" = "微軟最近將 OneDrive 與 iOS 檔案的整合設定為僅讀模式。";
 
 /* Suggestion for error recovery */
-"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use the Export option to save file to another location.";
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "使用 匯出 按鈕將檔案儲存到其他地方。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "儲存空間提供商沒有回應。";
@@ -428,10 +428,10 @@
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "鑰匙圈錯誤: 意外的資料格式";
 
 /* Error message when the key file is misformatted or damaged */
-"[KeyFileError/Corrupted/title]" = "Key file is corrupted";
+"[KeyFileError/Corrupted/title]" = "金鑰檔案已損壞";
 
 /* Error message: unsupported/unknown format of a key file */
-"[KeyFileError/UnsupportedFormat/title]" = "Unsupported key file format";
+"[KeyFileError/UnsupportedFormat/title]" = "不支援的金鑰檔案格式";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "已被使用者取消";

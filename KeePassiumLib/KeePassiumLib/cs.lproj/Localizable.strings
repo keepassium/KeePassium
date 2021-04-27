@@ -275,13 +275,13 @@
 "[FileAccessError/NoResponse/knownFileProvider]" = "%@ neodpovídá.";
 
 /* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
-"[FileAccessError/NoWritePermission/title]" = "Cannot save file (%@)";
+"[FileAccessError/NoWritePermission/title]" = "Soubor (%@) nelze uložit";
 
 /* Explanation of a file writing error */
-"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft has recently switched OneDrive integration with iOS to read-only mode. Temporarily, they say.";
+"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft nedávno přepnul integraci OneDrive s iOS do režimu jen pro čtení. Říká, že dočasně.";
 
 /* Suggestion for error recovery */
-"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use the Export option to save file to another location.";
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Použijte možnost Export pro uložení souboru do jiné lokace.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Poskytovatel úložiště neodpovídá.";

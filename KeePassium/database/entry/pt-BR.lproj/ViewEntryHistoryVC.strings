@@ -2,7 +2,7 @@
 "bPL-8Z-oet.text" = "{History Entry Subtitle}";
 
 /* Class = "UILabel"; text = "There are no previous versions"; ObjectID = "bzL-mr-Hrz"; Note = "Placeholder text shown when the entry does not have previous versions/revisions (has never been changed)"; */
-"bzL-mr-Hrz.text" = "There are no previous versions";
+"bzL-mr-Hrz.text" = "Não há versões anteriores";
 
 /* Class = "UILabel"; text = "{Timestamp}"; ObjectID = "E9b-9K-I4D"; Note = "#bc-ignore!"; */
 "E9b-9K-I4D.text" = "{Timestamp}";

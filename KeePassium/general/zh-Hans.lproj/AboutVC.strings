@@ -68,7 +68,7 @@
 "hVm-qH-TAI.text" = "CC BY 3.0";
 
 /* Class = "UILabel"; text = "Icons by KeePassXC team"; ObjectID = "hW0-fR-mIf"; */
-"hW0-fR-mIf.text" = "Icons by KeePassXC team";
+"hW0-fR-mIf.text" = "Icons 来自 KeePassXC team";
 
 /* Class = "UILabel"; text = "CC BY-ND 3.0"; ObjectID = "iKy-z5-Ox7"; */
 "iKy-z5-Ox7.text" = "CC BY-ND 3.0";
@@ -80,7 +80,7 @@
 "JgR-60-OMp.text" = "公有领域";
 
 /* Class = "UILabel"; text = "LGPL license"; ObjectID = "JjJ-GT-eoX"; */
-"JjJ-GT-eoX.text" = "LGPL license";
+"JjJ-GT-eoX.text" = "LGPL 许可证";
 
 /* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
 "JRy-jy-KXb.text" = "GPL 授权许可";
@@ -104,7 +104,7 @@
 "o9e-qb-mMw.text" = "CC0 授权";
 
 /* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
-"OaP-Bl-5vR.text" = "TPInAppReceipt by Pavel Tikhonenko";
+"OaP-Bl-5vR.text" = "TPInApprecipt 来自 Pavel Tikhonenko";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
 "QV5-N8-NRt.text" = "公有领域";
@@ -146,7 +146,7 @@
 "vg0-6M-OIq.text" = "KeyboardLayoutConstraint 来自 James Tang";
 
 /* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
-"VuB-ng-Uii.text" = "Nuvola icons by David Vignoni";
+"VuB-ng-Uii.text" = "Nuvola icons 来自 David Vignoni";
 
 /* Class = "UILabel"; text = "KeePassium"; ObjectID = "Wuj-Uw-baK"; */
 "Wuj-Uw-baK.text" = "KeePassium";

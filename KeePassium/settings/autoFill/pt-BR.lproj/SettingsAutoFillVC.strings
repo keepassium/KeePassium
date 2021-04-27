@@ -1,8 +1,8 @@
 /* Class = "UILabel"; text = "Tap \"Passwords & Accounts\""; ObjectID = "7SF-2E-uTg"; Note = "Step 2. Must match system's translation."; */
-"7SF-2E-uTg.text" = "Tap \"Passwords & Accounts\"";
+"7SF-2E-uTg.text" = "Toque em \"Senhas\"";
 
 /* Class = "UILabel"; text = "Select \"KeePassium\""; ObjectID = "caI-eV-WlU"; */
-"caI-eV-WlU.text" = "Select \"KeePassium\"";
+"caI-eV-WlU.text" = "Selecione \"KeePassium\"";
 
 /* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
 "ei6-22-NXN.title" = "Preenchimento automático";
@@ -11,29 +11,29 @@
 "go1-Nt-isQ.text" = "Copiar código de uso único p/ área transf.";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.footerTitle" = "Quando o preenchimento automático encontrar uma única entrada perfeita, esta será colada automaticamente.";
+"jYl-ks-dFG.footerTitle" = "Quando o preenchimento automático encontrar uma só entrada com correspondência exata ao login em andamento, esta será usada sem pedir confirmação.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "Busca automática";
 
 /* Class = "UILabel"; text = "Open device settings"; ObjectID = "K3a-Mc-VCg"; Note = "Step 1"; */
-"K3a-Mc-VCg.text" = "Open device settings";
+"K3a-Mc-VCg.text" = "Abra o app Ajustes";
 
 /* Class = "UITableViewSection"; headerTitle = "Initial Setup"; ObjectID = "r0b-qe-g8J"; */
 "r0b-qe-g8J.headerTitle" = "Configuração inicial";
 
 /* Class = "UILabel"; text = "Tap \"AutoFill Passwords\""; ObjectID = "UzV-Ht-rGx"; Note = "Step 3. Must match system's translation."; */
-"UzV-Ht-rGx.text" = "Tap \"AutoFill Passwords\"";
+"UzV-Ht-rGx.text" = "Toque em \"Preencher Senhas\"";
 
 /* Class = "UILabel"; text = "Fill-in the perfect result automatically"; ObjectID = "WDb-aU-Mmf"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"WDb-aU-Mmf.text" = "Fill-in the perfect result automatically";
+"WDb-aU-Mmf.text" = "Usar automaticamente o resultado perfeito";
 
 /* Class = "UILabel"; text = "Turn on \"AutoFill Passwords\""; ObjectID = "X2u-c9-gwU"; */
-"X2u-c9-gwU.text" = "Turn on \"AutoFill Passwords\"";
+"X2u-c9-gwU.text" = "Ative \"Preencher Senhas\"";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you."; ObjectID = "XYL-1l-Jx6"; */
-"XYL-1l-Jx6.footerTitle" = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you.";
+"XYL-1l-Jx6.footerTitle" = "Ao preencher nome de usuário e senha, o código de uso único (OTP) pode ser copiado para que você o cole no campo adequado.";
 
 /* Class = "UITableViewSection"; headerTitle = "One-time passwords"; ObjectID = "XYL-1l-Jx6"; */
-"XYL-1l-Jx6.headerTitle" = "One-time passwords";
+"XYL-1l-Jx6.headerTitle" = "Códigos de uso único";
 

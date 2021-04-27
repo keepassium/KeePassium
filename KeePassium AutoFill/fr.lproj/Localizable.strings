@@ -41,7 +41,7 @@
 "[AutoFill/Search/callerID]" = "ID de l'appelant : %@";
 
 /* No comment provided by engineer. */
-"[AutoFill/Setup/footer]" = "Le remplissage automatique ne peut pas accéder automatiquement aux fichiers que vous avez déjà dans l'application principale KeePassium.\n\nPourquoi? Derrière les scènes, le système traite le remplissage automatique comme une application séparée, indépendante du processus KeePassium principal. Pour des raisons de sécurité, une application ne peut pas simplement accéder à des fichiers externes, à moins que vous ne liez explicitement ces fichiers à cette application. Ainsi, le système garantit que l'application ne peut accéder qu'aux quelques fichiers que vous avez autorisés.\n\nEn conséquence, le remplissage automatique et l'application principale KeePassium doivent avoir leurs propres permissions pour chaque fichier externe. Heureusement, il s'agit d'une procédure unique.";
+"[AutoFill/Setup/footer]" = "Le remplissage automatique ne peut pas accéder automatiquement aux fichiers que vous avez déjà dans l'application principale KeePassium.\n\nPourquoi ? En coulisse, le système traite le remplissage automatique comme une application séparée, indépendante du processus principal de KeePassium. Pour des raisons de sécurité, une application ne peut pas simplement accéder à des fichiers externes, à moins que vous ne liez explicitement ces fichiers à cette application. Ainsi, le système garantit que l'application ne peut accéder qu'aux quelques fichiers que vous avez autorisés.\n\nEn conséquence, le remplissage automatique et l'application principale KeePassium doivent avoir leurs propres permissions pour chaque fichier externe. Heureusement, il s'agit d'une procédure unique.";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -68,7 +68,7 @@
 "[Database/Delete] Failed to delete database file" = "Échec de la suppression du fichier de la base de données";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
-"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Supprimer le fichier de la base de données?\n Assurez-vous d'avoir une sauvegarde.";
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Supprimer le fichier de la base de données ?\nAssurez-vous d'avoir une sauvegarde.";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Chargement en cours…";

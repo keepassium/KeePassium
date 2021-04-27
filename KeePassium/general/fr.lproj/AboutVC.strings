@@ -23,7 +23,7 @@
 "Aig-jg-p8B.text" = "Licence MIT";
 
 /* Class = "UILabel"; text = "Do you like what you see?"; ObjectID = "AMd-x7-PDa"; Note = "First part of the 'Do you like what you see? / Leave an App Store review.\""; */
-"AMd-x7-PDa.text" = "Vous aimez ce que vous voyez?";
+"AMd-x7-PDa.text" = "Vous aimez ce que vous voyez ?";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
 "aqX-J9-IzD.text" = "Traduction par les contributeurs de KeePassium";

@@ -248,7 +248,7 @@
 "[DatabaseError] Invalid password or key file" = "Senha ou arquivo de chave inválidos";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
-"[File/In Trash/warning]" = "'%@' está na pasta Apagados Recentemente e pode eliminado em breve. Para salvar seus dados, mova o arquivo para outra pasta.";
+"[File/In Trash/warning]" = "'%@' está na pasta Apagados Recentemente e pode ser eliminado em breve. Para salvar seus dados, mova o arquivo para outra pasta.";
 
 /* Notification when user opens an in-app backup database. */
 "[File/TemporaryBackup/warning]" = "Esta é uma cópia temporária do banco de dados. Ela pode ser apagada automaticamente sem aviso. Não a use como banco de dados principal.";
@@ -275,13 +275,13 @@
 "[FileAccessError/NoResponse/knownFileProvider]" = "%@ não está respondendo.";
 
 /* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
-"[FileAccessError/NoWritePermission/title]" = "Cannot save file (%@)";
+"[FileAccessError/NoWritePermission/title]" = "Não pôde salvar o arquivo (%@)";
 
 /* Explanation of a file writing error */
-"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft has recently switched OneDrive integration with iOS to read-only mode. Temporarily, they say.";
+"[FileAccessError/OneDriveReadOnly/reason]" = "Recentemente, a Microsoft tornou apenas-leitura a integração do OneDrive com o iOS. Temporariamente, dizem eles.";
 
 /* Suggestion for error recovery */
-"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use the Export option to save file to another location.";
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use a opção Exportar para salvar este arquivo em outro local.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "O serviço de armazenamento não está respondendo.";

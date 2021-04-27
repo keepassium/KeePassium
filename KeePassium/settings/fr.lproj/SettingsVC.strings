@@ -17,7 +17,7 @@
 "Bk0-Xf-O7B.title" = "Réglages";
 
 /* Class = "UILabel"; text = "Review KeePassium"; ObjectID = "c5H-hS-sU3"; Note = "Action: write an app review on the App Store"; */
-"c5H-hS-sU3.text" = "Evaluer KeePassium";
+"c5H-hS-sU3.text" = "Évaluer KeePassium";
 
 /* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
 "cBS-jW-dHU.headerTitle" = "Assistance technique";
@@ -44,7 +44,7 @@
 "hui-xG-chj.headerTitle" = "Contrôle des accès";
 
 /* Class = "UILabel"; text = "Rate KeePassium on the App Store"; ObjectID = "HYe-lP-dCp"; Note = "Subtitle for `Review KeePassium`"; */
-"HYe-lP-dCp.text" = "Evaluez l'application sur «App Store»";
+"HYe-lP-dCp.text" = "Évaluez-nous sur l'App Store";
 
 /* Class = "UILabel"; text = "{Renews on 1 Jan 1970}"; ObjectID = "LHz-DF-ZST"; Note = "#bc-ignore!"; */
 "LHz-DF-ZST.text" = "{Renews on 1 Jan 1970}";
@@ -65,7 +65,7 @@
 "RlK-RW-8Ld.text" = "Les nouveautés";
 
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
-"RNK-fS-Fvx.text" = "Des suggestions ? Des problèmes? Faites-le nous savoir !";
+"RNK-fS-Fvx.text" = "Des suggestions ? Des problèmes ? Faites-le nous savoir !";
 
 /* Class = "UILabel"; text = "{App Lock, Touch ID, timeout}"; ObjectID = "SrV-ib-V2E"; Note = "#bc-ignore!"; */
 "SrV-ib-V2E.text" = "{App Lock, Touch ID, timeout}";

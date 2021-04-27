@@ -2,7 +2,7 @@
 "9yn-W3-FDl.headerTitle" = "启动";
 
 /* Class = "UILabel"; text = "Appearance"; ObjectID = "32P-LG-SHa"; Note = "Section in settings: visual style of app elements"; */
-"32P-LG-SHa.text" = "Appearance";
+"32P-LG-SHa.text" = "界面外观";
 
 /* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
 "756-sL-G2t.text" = "自动打开之前的数据库";
@@ -62,7 +62,7 @@
 "QlM-VS-hle.text" = "联系我们";
 
 /* Class = "UILabel"; text = "What's New"; ObjectID = "RlK-RW-8Ld"; Note = "Action: open app history page (change log)"; */
-"RlK-RW-8Ld.text" = "What's New";
+"RlK-RW-8Ld.text" = "更新了什么";
 
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
 "RNK-fS-Fvx.text" = "建议? 问题? 让我们知道!";

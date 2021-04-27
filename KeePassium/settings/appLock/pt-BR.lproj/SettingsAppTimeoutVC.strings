@@ -1,5 +1,5 @@
 /* Class = "UITableViewController"; title = "App Lock Timeout"; ObjectID = "5MH-wG-EYd"; */
-"5MH-wG-EYd.title" = "App Lock Timeout";
+"5MH-wG-EYd.title" = "Bloquear app";
 
 /* Class = "UILabel"; text = "{Timeout Title}"; ObjectID = "h3T-Lh-kgE"; Note = "#bc-ignore!"; */
 "h3T-Lh-kgE.text" = "{Timeout Title}";

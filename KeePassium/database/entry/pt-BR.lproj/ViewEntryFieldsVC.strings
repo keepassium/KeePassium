@@ -5,7 +5,7 @@
 "4Cc-vV-vTv.text" = "{Field Value}";
 
 /* Class = "UIButton"; accessibilityHint = "Expands a text field to its full height"; ObjectID = "6Mx-Oh-6m0"; */
-"6Mx-Oh-6m0.accessibilityHint" = "Expands a text field to its full height";
+"6Mx-Oh-6m0.accessibilityHint" = "Expande o campo de texto para sua altura total";
 
 /* Class = "UIButton"; accessibilityLabel = "Show more"; ObjectID = "6Mx-Oh-6m0"; */
 "6Mx-Oh-6m0.accessibilityLabel" = "Mostrar mais";
@@ -29,7 +29,7 @@
 "pBf-im-hEw.text" = "{Field Name}";
 
 /* Class = "UILabel"; text = "Copied"; ObjectID = "vLP-Zc-bUc"; Note = "Confirmation message: field value has been copied to clipboard."; */
-"vLP-Zc-bUc.text" = "Copied";
+"vLP-Zc-bUc.text" = "Copiado";
 
 /* Class = "UILabel"; text = "{ViewableFieldCell}"; ObjectID = "weL-29-hO1"; Note = "#bc-ignore!"; */
 "weL-29-hO1.text" = "{ViewableFieldCell}";

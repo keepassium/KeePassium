@@ -1,5 +1,5 @@
 /* Suggestion/hint for available user action */
-"[Accessibility] Double tap to copy to clipboard" = "Double tap to copy to clipboard";
+"[Accessibility] Double tap to copy to clipboard" = "双击复制到剪贴板";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "解锁";
@@ -11,7 +11,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "使用应用解锁密码";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Change Passcode";
+"[AppLock/changePasscode]" = "修改应用解锁密码";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "解锁 KeePassium";
@@ -23,13 +23,13 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+"[AppLock/passcodeUpdated/title]" = "更新应用解锁密码成功";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Save Passcode";
+"[AppLock/savePasscode]" = "保存应用解锁密码";
 
 /* Call to action in the passcode input dialog. */
-"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
+"[AppLock/SetupPasscode/callToAction]" = "保护 KeePassium 免受未经授权的访问";
 
 /* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
 "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "如果要升级，请从主屏幕右上角+号中, 手动打开升级接口。";
@@ -50,7 +50,7 @@
 "[BiometricAuthType] Touch ID" = "Touch ID";
 
 /* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
-"[Clipboard/Copy/namedValue]" = "Copy %@";
+"[Clipboard/Copy/namedValue]" = "复制 %@";
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "已复制";
@@ -77,10 +77,10 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "主密码修改成功";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+"[Database/MasterKey/RememberYourPassword/text]" = "如果您忘记了它，您将无法访问您的数据。并且没有密码重置选项。";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+"[Database/MasterKey/RememberYourPassword/title]" = "请记住您的数据库密码";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "打开数据库";
@@ -143,13 +143,13 @@
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "尝试从应用中删除该文件，然后重新添加它。";
 
 /* Action: re-add (a broken) database or key file to the app. */
-"[File/Re-add/title]" = "Add the file again";
+"[File/Re-add/title]" = "再次添加文件";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "备份";
 
 /* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
-"[FileInfo/Error/failed to change attributes]" = "Failed to update file attributes.";
+"[FileInfo/Error/failed to change attributes]" = "更新文件属性失败。";
 
 /* Field title */
 "[FileInfo/Field/title] Creation Date" = "建立时间";
@@ -170,7 +170,7 @@
 "[FileInfo/Field/valueError] Error" = "错误";
 
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
-"[FileInfo/isExcludedFromBackup/title]" = "Exclude From iCloud/iTunes Backup";
+"[FileInfo/isExcludedFromBackup/title]" = "从 iCloud/iTunes 中排除备份";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "取消";
@@ -182,13 +182,13 @@
 "[Generic] Contact Us" = "联系我们";
 
 /* Action/button to proceed with the action */
-"[Generic] Continue" = "Continue";
+"[Generic] Continue" = "继续";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Copy" = "复制";
 
 /* Action/button to create an item (entry, group, file — depending on context) */
-"[Generic] Create" = "Create";
+"[Generic] Create" = "创建";
 
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "删除";
@@ -209,10 +209,10 @@
 "[Generic] Export" = "汇出";
 
 /* Action/button to view more help/info about some topic */
-"[Generic] Learn more" = "Learn more…";
+"[Generic] Learn more" = "了解更多";
 
 /* Checkbox/Button to show additional actions */
-"[Generic] More Actions" = "More Actions";
+"[Generic] More Actions" = "更多动作";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "移动";
@@ -221,7 +221,7 @@
 "[Generic] OK" = "确定";
 
 /* Action/button to open URL in the appropriate app (usually, web browser) */
-"[Generic] Open URL" = "Open URL";
+"[Generic] Open URL" = "打开链接";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "覆盖";
@@ -233,13 +233,13 @@
 "[Generic] Replace" = "替换";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
-"[Generic] Share" = "Share";
+"[Generic] Share" = "分享";
 
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "显示详细信息";
 
 /* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
-"[Generic] Show In Plain Text" = "Show In Plain Text";
+"[Generic] Show In Plain Text" = "以纯文本形式查看";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "显示更多";
@@ -281,7 +281,7 @@
 "[Generic/title] Warning" = "警告";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
-"[Group/a11y/description]" = "%@, Group";
+"[Group/a11y/description]" = "%@, 群组";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "建立群组";
@@ -299,7 +299,7 @@
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "硬件密钥在自动填充中不可用。";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC requires iOS 13 or later.";
+"[HardwareKey/NFC/OS too old]" = "NFC 需要 iOS 13 或更高版本。";
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "没有硬件密钥";
@@ -323,7 +323,7 @@
 "[Premium/Benefits/Positive/header] " = "您得到的内容";
 
 /* Call to action */
-"[Premium/CallToAction/buyNow]" = "Buy Now";
+"[Premium/CallToAction/buyNow]" = "立即购买";
 
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "继续测试";
@@ -335,13 +335,13 @@
 "[Premium/CallToAction/upgradeNow]" = "立即升级";
 
 /* Action: open AppStore subscription management page */
-"[Premium/ManageSubscriptions/action]" = "Manage subscriptions";
+"[Premium/ManageSubscriptions/action]" = "管理订阅";
 
 /* Name of the permanent/never-ending license. */
-"[Premium/perpetualLicense]" = "Perpetual license";
+"[Premium/perpetualLicense]" = "终生订阅";
 
 /* [formattedDate: String] */
-"[Premium/PerpetualLicense/status]" = "You have a perpetual license for all the versions before %@.";
+"[Premium/PerpetualLicense/status]" = "在 %@ 之前，您拥有一个所有功能的终身订阅。";
 
 /* What's included in a price plan: 1 year of support via email */
 "[Premium/Price Plan/Conditions/1 year email support]" = "一年的电子邮件支持";
@@ -365,7 +365,7 @@
 "[Premium/Price Plan/Conditions/freemium reminders]" = "免费版提醒";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "Premium features added in the future would require a new purchase at full price.";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "将来添加的高级功能需要全额购买。";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "高级版未来功能";
@@ -374,7 +374,7 @@
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "共享许可证(Perpetual backbacking licse)";
 
 /* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
-"[Premium/Price Plan/Conditions/subscription as purchase]" = "Subscription as a purchase";
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "视为购买的订阅";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "更新和漏洞修复";
@@ -401,10 +401,10 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "升级到高级版";
 
 /* Message shown after buying a lifetime version. */
-"[Premium/Upgrade/cancelOngoingSubscription]" = "Please check if you need to cancel your old subscription.";
+"[Premium/Upgrade/cancelOngoingSubscription]" = "请检查您是否需要取消您的旧订阅。";
 
 /* Message shown when in-app purchase is deferred until approval (parental or corporate). */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Thank you! You can use KeePassium while purchase is awaiting approval.";
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "谢谢！您可以在 KeePassium 等待批准时使用。";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / 月";
@@ -437,10 +437,10 @@
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "很抱歉";
 
 /* Message shown after buying or subscribing. */
-"[Premium/Upgrade/Success/thankYou]" = "Thank you for the purchase!";
+"[Premium/Upgrade/Success/thankYou]" = "感谢您的购买";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Custom App Icons";
+"[PremiumFeature/CustomAppIcons/title]" = "自定义图标";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "升级到高级版并享受最好的KeePassium。";

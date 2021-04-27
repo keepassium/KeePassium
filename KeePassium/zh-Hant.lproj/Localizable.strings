@@ -1,8 +1,8 @@
 /* Suggestion/hint for available user action */
-"[Accessibility] Double tap to copy to clipboard" = "Double tap to copy to clipboard";
+"[Accessibility] Double tap to copy to clipboard" = "點兩下複製至剪貼板";
 
 /* Title of a setting option: font size */
-"[Appearance/TextSize/title]" = "Text Size";
+"[Appearance/TextSize/title]" = "文字大小";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "解鎖";
@@ -14,7 +14,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "使用應用解鎖密碼";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Change Passcode";
+"[AppLock/changePasscode]" = "更改應用解鎖密碼";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "解鎖 KeePassium";
@@ -26,13 +26,13 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+"[AppLock/passcodeUpdated/title]" = "更改應用解鎖密碼成功。";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Save Passcode";
+"[AppLock/savePasscode]" = "保存應用解鎖密碼";
 
 /* Call to action in the passcode input dialog. */
-"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
+"[AppLock/SetupPasscode/callToAction]" = "保護KeePassium免受未經授權的訪問";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -41,7 +41,7 @@
 "[BiometricAuthType] Touch ID" = "Touch ID";
 
 /* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
-"[Clipboard/Copy/namedValue]" = "Copy %@";
+"[Clipboard/Copy/namedValue]" = "拷貝 %@";
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "已複製";
@@ -53,7 +53,7 @@
 "[Database/Create] Please enter a password or choose a key file." = "請輸入一個密碼或者選擇一個金鑰檔案。";
 
 /* Action/button to create a new database */
-"[Database/Create/action] Create Database" = "創建新的資料庫";
+"[Database/Create/action] Create Database" = "新建資料庫";
 
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "如果您願意, 您也可以填寫一些備註。";
@@ -62,7 +62,7 @@
 "[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
 
 /* Title for a sample entry */
-"[Database/Create/TemplateEntry/title] Sample Entry" = "條目樣本";
+"[Database/Create/TemplateEntry/title] Sample Entry" = "項目樣本";
 
 /* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
 "[Database/Create/TemplateEntry/userName] john.smith" = "小明";
@@ -86,7 +86,7 @@
 "[Database/Create/TemplateGroup/title] OS" = "作業系統";
 
 /* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "創建新的資料庫";
+"[Database/Create/title] Create Database" = "新建資料庫";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "刪除資料庫文件?\n 請確保您有備份檔案!";
@@ -98,10 +98,10 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "主密碼修改成功";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+"[Database/MasterKey/RememberYourPassword/text]" = "如果您忘記了密碼，將無法訪問資料庫中的任何資料，並且沒有重置密碼的選項。";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+"[Database/MasterKey/RememberYourPassword/title]" = "請記住資料庫的密碼";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "打開資料庫";
@@ -149,10 +149,10 @@
 "[Entry/Attachments/title] Attached Files" = "附件";
 
 /* Action/button to create a new entry in the current group */
-"[Entry/Create/action] Create Entry" = "創建新條目";
+"[Entry/Create/action] Create Entry" = "新建項目";
 
 /* Default name of a newly created entry field */
-"[Entry/Edit/CreateField/defaultName] Field Name" = "欄位名稱";
+"[Entry/Edit/CreateField/defaultName] Field Name" = "字段名稱";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "備註";
@@ -176,7 +176,7 @@
 "[Entry/Files/Add] Replace existing attachment?" = "替換現有的附件？";
 
 /* Explanation for replacing the only attachment of KeePass1 entry */
-"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "此資料庫每個條目僅支持一個附件, 且它已經有一個附件了。";
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "此資料庫每個項目僅支持一個附件, 且它已經有一個附件了。";
 
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "重新命名檔案";
@@ -200,13 +200,13 @@
 "[Entry/History/ExpiryDate] Never" = "從不";
 
 /* Default title of a new entry */
-"[Entry/New/defaultTitle] New Entry" = "新條目";
+"[Entry/New/defaultTitle] New Entry" = "新項目";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "嘗試從應用程序中刪除文件，然後再次添加。";
 
 /* Action: re-add (a broken) database or key file to the app. */
-"[File/Re-add/title]" = "Add the file again";
+"[File/Re-add/title]" = "再次添加檔案";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "備份";
@@ -254,7 +254,7 @@
 "[Generic] Copy" = "複製";
 
 /* Action/button to create an item (entry, group, file — depending on context) */
-"[Generic] Create" = "Create";
+"[Generic] Create" = "新建";
 
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "刪除";
@@ -275,10 +275,10 @@
 "[Generic] Export" = "匯出";
 
 /* Action/button to view more help/info about some topic */
-"[Generic] Learn more" = "Learn more…";
+"[Generic] Learn more" = "詳細資訊…";
 
 /* Checkbox/Button to show additional actions */
-"[Generic] More Actions" = "More Actions";
+"[Generic] More Actions" = "更多操作";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "移動";
@@ -287,7 +287,7 @@
 "[Generic] OK" = "確定";
 
 /* Action/button to open URL in the appropriate app (usually, web browser) */
-"[Generic] Open URL" = "Open URL";
+"[Generic] Open URL" = "開啟網址";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "覆寫";
@@ -299,13 +299,13 @@
 "[Generic] Replace" = "替換";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
-"[Generic] Share" = "Share";
+"[Generic] Share" = "分享";
 
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "顯示詳細資訊";
 
 /* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
-"[Generic] Show In Plain Text" = "Show In Plain Text";
+"[Generic] Show In Plain Text" = "以純文字檢視";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "顯示更多";
@@ -347,13 +347,13 @@
 "[Generic/title] Warning" = "警告";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
-"[Group/a11y/description]" = "%@, Group";
+"[Group/a11y/description]" = "%@, 群組";
 
 /* Action/button to create a new sub-group in the current group */
-"[Group/Create/action] Create Group" = "建立群組";
+"[Group/Create/action] Create Group" = "新建群組";
 
 /* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "建立群組";
+"[Group/Create/title] Create Group" = "新建群組";
 
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "編輯群組";
@@ -422,13 +422,13 @@
 "[Premium/Benefits/Positive/header] " = "擁有了什麼功能";
 
 /* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Use field references to show information from other entries, instead of creating multiple copies of the same information.";
+"[Premium/Benefits/ViewFieldReferences/details]" = "使用字段引用其他項目中的資訊，而不是創建同樣的多個副本。";
 
 /* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Show field references";
+"[Premium/Benefits/ViewFieldReferences/title]" = "顯示字段引用";
 
 /* Call to action */
-"[Premium/CallToAction/buyNow]" = "Buy Now";
+"[Premium/CallToAction/buyNow]" = "立即購買";
 
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "繼續使用免費版";
@@ -440,7 +440,7 @@
 "[Premium/CallToAction/upgradeNow]" = "立刻升級";
 
 /* Action: open AppStore subscription management page */
-"[Premium/ManageSubscriptions/action]" = "Manage subscriptions";
+"[Premium/ManageSubscriptions/action]" = "管理訂閱方案";
 
 /* Name of the permanent/never-ending license. */
 "[Premium/perpetualLicense]" = "終生訂閱";
@@ -470,7 +470,7 @@
 "[Premium/Price Plan/Conditions/freemium reminders]" = "進階功能提醒";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "Premium features added in the future would require a new purchase at full price.";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "未來添加的進階特性將需要以全額重新訂閱。";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "未來進階功能";
@@ -479,7 +479,7 @@
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "永久後備許可證";
 
 /* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
-"[Premium/Price Plan/Conditions/subscription as purchase]" = "Subscription as a purchase";
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "視為購買的訂閱";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "更新和錯誤修復";
@@ -518,10 +518,10 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "升級到進階版";
 
 /* Message shown after buying a lifetime version. */
-"[Premium/Upgrade/cancelOngoingSubscription]" = "Please check if you need to cancel your old subscription.";
+"[Premium/Upgrade/cancelOngoingSubscription]" = "請檢查是否需要取消舊的訂閱。";
 
 /* Message shown when in-app purchase is deferred until approval (parental or corporate). */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Thank you! You can use KeePassium while purchase is awaiting approval.";
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "感恩您! 您可以使用KeePassium 直到批准購買。";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / 月";
@@ -554,13 +554,13 @@
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "很抱歉";
 
 /* Message shown after buying or subscribing. */
-"[Premium/Upgrade/Success/thankYou]" = "Thank you for the purchase!";
+"[Premium/Upgrade/Success/thankYou]" = "感謝您的購買！";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "程式已使用: %1$@/月, 大約%2$@/年";
 
 /* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "自定義應用程序圖標";
+"[PremiumFeature/CustomAppIcons/title]" = "自定義應用程序圖示";
 
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "立即訂閱進階版並享受更好的KeePassium 。";
@@ -599,10 +599,10 @@
 "[Settings/AppLock/Biometric/title] Use %@" = "使用 %@";
 
 /* Explanation for the `Lock on App Launch` setting */
-"[Settings/AppLock/LockOnLaunch/description]" = "Ensures KeePassium is locked after you force-close the app or restart the device.";
+"[Settings/AppLock/LockOnLaunch/description]" = "在重新啟動設備與強制關閉應用程式之前，確保 KeePassium 已經鎖定。";
 
 /* Setting switch: whether to lock the app after it was terminated and relaunched. */
-"[Settings/AppLock/LockOnLaunch/title]" = "Lock on App Launch";
+"[Settings/AppLock/LockOnLaunch/title]" = "應用程式啟動鎖定";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "應用鎖定,%@, 逾時";
@@ -632,7 +632,7 @@
 "[Settings/ClearMasterKeys/Cleared/title] Cleared" = "已清除";
 
 /* Description of the clipboard/pasteboard timeout. */
-"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "如果您從條目中複製了文本, 會在稍後自動地清理您的剪貼簿。";
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "假設您從項目中複製了文本, 會在稍後自動地清理您的剪貼板。";
 
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "如果您在一段時間內沒有與KeePassium程式交互, 資料庫將會自動關閉, 以確保您的安全。如果重新打開KeePassium程式您需要重新輸入主密碼。";
@@ -644,7 +644,7 @@
 "[Settings/FileLists/Sorting/title] Sorting" = "排序";
 
 /* Title of a settings section: which entry field to show along with entry title */
-"[Settings/GroupViewer] Entry Subtitle" = "條目副標題";
+"[Settings/GroupViewer] Entry Subtitle" = "項目副標題";
 
 /* Title of a settings section: sort order of groups and entries in a list */
 "[Settings/GroupViewer] Sort Order" = "排序順序";

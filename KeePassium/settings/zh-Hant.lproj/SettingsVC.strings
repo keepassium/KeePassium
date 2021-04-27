@@ -2,7 +2,7 @@
 "9yn-W3-FDl.headerTitle" = "啟動時";
 
 /* Class = "UILabel"; text = "Appearance"; ObjectID = "32P-LG-SHa"; Note = "Section in settings: visual style of app elements"; */
-"32P-LG-SHa.text" = "Appearance";
+"32P-LG-SHa.text" = "界面外觀";
 
 /* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
 "756-sL-G2t.text" = "自動開啟上次使用的資料庫";

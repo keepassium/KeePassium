@@ -11,7 +11,7 @@
 "A8h-F7-ipn.text" = "{Group subtitle}";
 
 /* Class = "UIBarButtonItem"; M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "M5a-Ld-ZXd"; */
-"M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Sort Order";
+"M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ordenar";
 
 /* Class = "UILabel"; text = "{Entry Title}"; ObjectID = "OjW-aR-wD3"; Note = "#bc-ignore!"; */
 "OjW-aR-wD3.text" = "{Entry Title}";
@@ -20,13 +20,13 @@
 "qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Mudar Chave-Mestra";
 
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
-"QXa-eN-7am.text" = "This group is empty";
+"QXa-eN-7am.text" = "Este grupo está vazio";
 
 /* Class = "UIBarButtonItem"; rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Settings"; ObjectID = "rF3-mC-kj1"; */
 "rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ajustes";
 
 /* Class = "UILabel"; text = "No entries found"; ObjectID = "tpA-i1-ah8"; */
-"tpA-i1-ah8.text" = "No entries found";
+"tpA-i1-ah8.text" = "Nenhuma entrada encontrada";
 
 /* Class = "UILabel"; text = "{nItems}"; ObjectID = "ttY-yZ-yRg"; Note = "#bc-ignore!"; */
 "ttY-yZ-yRg.text" = "{nItems}";
