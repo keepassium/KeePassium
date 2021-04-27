@@ -1,0 +1,15 @@
+/* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "CbK-f7-To5"; Note = "Action"; */
+"CbK-f7-To5.title" = "เพิ่มฐานข้อมูล";
+
+/* Class = "UILabel"; text = "No recent databases"; ObjectID = "fXt-kp-oSe"; */
+"fXt-kp-oSe.text" = "ไม่มีฐานข้อมูลที่ผ่านมา";
+
+/* Class = "UILabel"; text = "{File Attributes}"; ObjectID = "TPe-p5-jEu"; Note = "#bc-ignore!"; */
+"TPe-p5-jEu.text" = "{File Attributes}";
+
+/* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "YVR-PU-ZpA"; Note = "#bc-ignore!"; */
+"YVR-PU-ZpA.text" = "{Database File Name}";
+
+/* Class = "UINavigationItem"; title = "Databases"; ObjectID = "Zun-me-VzS"; */
+"Zun-me-VzS.title" = "ฐานข้อมูล";
+

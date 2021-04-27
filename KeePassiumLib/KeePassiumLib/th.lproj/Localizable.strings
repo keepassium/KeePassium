@@ -1,0 +1,513 @@
+/* Type of keyboard to show for App Lock passcode: letters and digits. */
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "ตัวอักษรและตัวเลข";
+
+/* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "ตัวเลข";
+
+/* Error message when the challenge-response communication has been cancelled by the user. */
+"[ChallengeResponseError] cancelled" = "ถูกยกเลิกโดยผู้ใช้งาน";
+
+/* Error message when the hardware key is not plugged in. */
+"[ChallengeResponseError] keyNotConnected" = "ยังไม่ได้เชื่อมต่อฮาร์ดแวร์คีย์";
+
+/* Error message when trying to use challenge-response hardware in AutoFill. */
+"[ChallengeResponseError] notAvailableInAutoFill" = "ฮาร์ดแวร์คีย์ไม่สามารถใช้ในการป้อนรหัสผ่านอัตโนมัติได้";
+
+/* Error message when trying to use challenge-response with a kdb database. */
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "ฮาร์ดแวร์คีย์ไม่รองรับฟอร์แมทฐานข้อมูลนี้";
+
+/* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "อุปกรณ์หรือ iOS เวอร์ชันนี้ ไม่รองรับฮาร์ดแวร์คีย์ (%@)";
+
+/* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
+"[ChallengeResponseError] slotNotConfigured" = "ฮาร์ดแวร์คีย์ยังไม่ได้ตั้งค่าให้สร้างความท้าทายในการตอบสนอง";
+
+/* Progress status */
+"[Cipher/Progress] Decrypting" = "กำลังถอดรหัส";
+
+/* Progress status */
+"[Cipher/Progress] Encrypting" = "กำลังเข้ารหัส";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES decryption error (code %d)" = "AES decryption error (code %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES encryption error (code %d)" = "AES encryption error (code %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES initialization error (code %d)" = "AES initialization error (code %d)";
+
+/* Error message about Argon2 hashing function. [errorCode: Int] */
+"[CryptoError] Argon2 hashing error (code %d)" = "Argon2 hashing error (code %d)";
+
+/* Error message about PKCS7 padding. [errorCode: Int] */
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "Invalid data padding (code %d). File corrupt?";
+
+/* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "Invalid KDF parameter: %1$@ - %2$@. File corrupt?";
+
+/* Error message about random number generator. [errorCode: Int] */
+"[CryptoError] Random number generator error (code %d)" = "Random number generator error (code %d)";
+
+/* Error message about Twofish cipher. [errorCode: Int] */
+"[CryptoError] Twofish cipher error (code %d)" = "Twofish cipher error (code %d)";
+
+/* Error message */
+"[Database/Load/Error] Cannot find database file" = "ไม่สามารถหาฐานข้อมูลได้";
+
+/* Error message */
+"[Database/Load/Error] Cannot find key file" = "ไม่สามารถหาไฟล์กุญแจได้";
+
+/* Error message */
+"[Database/Load/Error] Cannot open database file" = "ไม่สามารถเปิดไฟล์ฐานข้อมูลได้";
+
+/* Error message */
+"[Database/Load/Error] Cannot open key file" = "ไม่สามารถเปิดไฟล์กุญแจได้";
+
+/* Error shown when both master password and key file are empty */
+"[Database/Load/Error] Please provide at least a password or a key file" = "โปรดใส่รหัสผ่าน หรือไม่ก็ไฟล์กุญแจ";
+
+/* Error message */
+"[Database/Load/Error] Unrecognized database format" = "ฟอร์แมทฐานข้อมูลที่ไม่รู้จัก";
+
+/* Progress status: finished loading database */
+"[Database/Progress] Done" = "เสร็จ";
+
+/* Progress status */
+"[Database/Progress] Loading key file..." = "กำลังโหลดไฟล์กุญแจ...";
+
+/* Database loading status: fetching the database file from disk/cloud */
+"[Database/Progress/downloading]" = "กำลังโหลดไฟล์ฐานข้อมูล...";
+
+/* Database saving status: making a local backup copy of the database */
+"[Database/Progress/makingDatabaseBackup]" = "กำลังทำสำเนาข้อมูลสำรอง...";
+
+/* Progress status */
+"[Database/Progress/resolving]" = "กำลังเชื่อมต่อระบบจัดเก็บข้อมูล...";
+
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "กำลังแก้ช่องอ้างอิง...";
+
+/* Error message */
+"[Database/Unlock/Error] Failed to open key file" = "ไม่สามารถเปิดไฟล์กุญแจได้";
+
+/* Error message */
+"[Database/Unlock/Error] Password and key file are both empty." = "รหัสผ่านและไฟล์กุญแจว่างเปล่า";
+
+/* Error message */
+"[Database1/FormatError] Database file is corrupted." = "ไฟล์ฐานข้อมูลได้รับความเสียหาย";
+
+/* Error message [fieldName: String] */
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "มีข้อผิดพลาดในช่อง %@. ไฟล์ฐานข้อมูลเสียหายใช่ไหม?";
+
+/* Error message */
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "พบรายการที่ไม่อยู่ในกลุ่มใด ไฟล์ฐานข้อมูลเสียหายใช่ไหม?";
+
+/* Error message */
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "ไฟล์ส่วนท้ายไม่ถูกต้อง ไฟล์ฐานข้อมูลเสียหายใช่ไหม?";
+
+/* Error message when reading database header */
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "ไฟล์ส่วนหัวไม่ถูกต้อง ไฟล์ฐานข้อมูลเสียหายใช่ไหม?";
+
+/* Error message. [flagsHexString: String] */
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Unsupported cipher. (Code: %@)";
+
+/* Error message when opening a database. [version: String] */
+"[Database1/Header1/Error] Unsupported database format version: %@." = "ไม่รองรับฟอร์แมทฐานข้อมูลเวอร์ชัน: %@.";
+
+/* Error message when opening a database */
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "ไฟล์ลายเซ็นไม่ถูกต้อง ไม่ใช่ฐานข้อมูล KeePass ใช่หรือไม่?";
+
+/* Status message: collecting database items into a single package */
+"[Database1/Progress] Packing the content" = "กำลังห่อข้อมูล";
+
+/* Status message: processing the content of a database */
+"[Database1/Progress] Parsing content" = "กำลังแยกวิเคราะห์ข้อมูล";
+
+/* Name of a group which contains deleted entries */
+"[Database2/backupGroupName] Recycle Bin" = "ถังขยะ";
+
+/* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
+"[Database2/FormatError] Cannot parse database. %@" = "ไม่สามารถแยกวิเคราะห์ฐานข้อมูล %@";
+
+/* Error message [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Corrupted database file (block %d has negative size)";
+
+/* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Corrupted database file (hash mismatch in block %d)";
+
+/* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Corrupted database file (HMAC mismatch in block %d)";
+
+/* Error message about Gzip compression algorithm. [reason: String] */
+"[Database2/FormatError] Gzip error: %@" = "Gzip error: %@";
+
+/* Error message: wrong ID of a data block */
+"[Database2/FormatError] Unexpected block ID." = "Unexpected block ID.";
+
+/* Error message */
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "ไฟล์ส่วนท้ายไม่ถูกต้อง ไฟล์ฐานข้อมูลเสียหายใช่ไหม?";
+
+/* Error message when saving a database. [reason: String] */
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "ไม่สามารถบีบอัดไฟล์แนบ: %@";
+
+/* Error message, with the name of problematic field. [fieldName: String] */
+"[Database2/Header2/Error] Header field %@ is corrupted." = "Header field %@ is corrupted.";
+
+/* Error message */
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Header hash mismatch. DB file corrupt?";
+
+/* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Header HMAC mismatch. DB file corrupt?";
+
+/* Error message when reading database header */
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "ไฟล์ส่วนหัวไม่ถูกต้อง ไฟล์ฐานข้อมูลเสียหายใช่ไหม?";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Unknown compression algorithm." = "ไม่ทราบอัลกอริทึมบีบอัด";
+
+/* Error message. [uuidHexString: String] */
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "Unsupported data cipher: %@";
+
+/* Error message when opening a database. [version: String] */
+"[Database2/Header2/Error] Unsupported database format version: %@." = "ไม่รองรับฟอร์แมทฐานข้อมูลเวอร์ชัน: %@.";
+
+/* Error message when opening a database. [id: UInt32] */
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Unsupported inner stream cipher (ID %d)";
+
+/* Error message about Key Derivation Function. [uuidString: String] */
+"[Database2/Header2/Error] Unsupported KDF: %@" = "ไม่รองรับ KDF: %@";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "ไฟล์ลายเซ็นไม่ถูกต้อง ไม่ใช่ฐานข้อมูล KeePass ใช่หรือไม่?";
+
+/* Error message about Gzip compression algorithm. [errorMessage: String] */
+"[Database2/Loading/Error] Error unpacking database: %@" = "ไม่สามารถคลายฐานข้อมูลได้: %@";
+
+/* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
+"[Database2/Loading/Warning/missingBinaries]" = "ไฟล์แนบของบางรายการมีข้อมูลหายไป เป็นเหตุให้ฐานข้อมูลเสียหาย น่าจะเกิดขึ้นตอนการใช้แอปครั้งล่าสุด (%1$@) KeePassium จะเก็บไฟล์แนบเปล่าไว้ แต่ไม่สามารถเรียกคืนกลับมาได้ คุณควรเรียกคืนฐานข้อมูลออกมาจากที่สำรองเอาไว้แล้ว\n\nไฟล์แนบที่หายไป: %2$@";
+
+/* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
+"[Database2/Loading/Warning/namelessAttachments]" = "บางรายการที่มีไฟล์แนบโดยไม่ได้ตั้งชื่อ จะเป็นสัญญาณว่าฐานข้อมูลเดิมมีความเสียหาย\n\nโปรดทบทวนดูไฟล์แนบตามรายการข้างล่าง (และประวัติของมัน):\n%@";
+
+/* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
+"[Database2/Loading/Warning/namelessCustomFields]" = "บางรายการมีช่องที่กำหนดเองด้วยการไม่ได้ตั้งชื่อไว้ จะเป็นสัญญาณว่าข้อมูลมีความเสียหาย โปรดตรวจสอบรายการดังต่อไปนี้:\n\n%@";
+
+/* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
+"[Database2/Loading/Warning/unusedAttachments]" = "ฐานข้อมูลที่มีไฟล์แนบบางไฟล์ จะไม่สามารถใช้กับรายการใด ๆ ได้ มีความเป็นไปได้ว่าพวกมันถูกลืมทิ้งไว้หลังจากใช้แอปครั้งล่าสุด (%@) อย่างไรก็ตาม สิ่งนี้จะเป็นสัญญาณว่าข้อมูลจะมีความเสียหาย\nโปรดตรวจสอบว่าฐานข้อมูลได้สำรองข้อมูลไว้แล้วก่อนการเปลี่ยนแปลงใด ๆ";
+
+/* Progress bar status */
+"[Database2/Progress] Loading database" = "กำลังโหลดฐานข้อมูล";
+
+/* Progress bar status */
+"[Database2/Progress] Reading database content" = "กำลังอ่านเนื้อหาในฐานข้อมูล";
+
+/* Progress bar status */
+"[Database2/Progress] Writing encrypted blocks" = "Writing encrypted blocks";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "กำลังคลายการบีบอัดฐานข้อมูล";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "กำลังตรวจสอบความสมบูรณ์";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "กำลังแจกแจงฐานข้อมูล";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Data compression error: %@" = "Data compression error: %@";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Encryption error: %@" = "Encryption error: %@";
+
+/* Error message about XML parsing. [value: String, tag: String] */
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "Malformed value '%1$@' in %2$@";
+
+/* Error message about XML parsing. [tag: String] */
+"[Database2/Xml2/ParsingError] Nil value in %@" = "Nil value in %@";
+
+/* Error message about XML parsing */
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "Not a KeePass XML";
+
+/* Error message about XML parsing. [actualTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Unexpected tag '%@'";
+
+/* Error message about XML parsing. [actualTag: String, expectedTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "Unexpected tag '%1$@' (instead of '%2$@')";
+
+/* Generic error while parsing XML. [errorDetails: String] */
+"[Database2/Xml2/ParsingError] XML error: %@" = "XML error: %@";
+
+/* Error message while opening a database */
+"[DatabaseError] Cannot open database" = "ไม่สามารถเปิดฐานข้อมูลได้";
+
+/* Error message while saving a database */
+"[DatabaseError] Cannot save database" = "ไม่สามารถบันทึกฐานข้อมูลได้";
+
+/* Error message: user provided a wrong master key for decryption. */
+"[DatabaseError] Invalid password or key file" = "รหัสผ่านหรือไฟล์กุญแจไม่ถูกต้อง";
+
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "'%@' ถูกเก็บไว้ที่ที่เพิ่งลบล่าสุด และอาจจะถูกลบไปในเร็ว ๆ นี้ หากต้องการเก็บข้อมูลไว้ ให้เก็บไฟล์ไปยังที่สำหรับจัดเก็บถาวรกว่านี้";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "นี่คือการสำรองฐานข้อมูลชั่วคราว มันจะถูกลบโดยอัตโนมัติโดยไม่มีการแจ้งไว้\nอย่าใช้มันเป็นฐานข้อมูลหลักของคุณ";
+
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "ระบบจัดเก็บข้อมูลยังใช้งานไม่ได้ โปรดตรวจสอบว่ามันติดตั้งและมีการเข้าสู่ระบบเรียบร้อยแล้ว";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ ไม่สามารถใช้งานได้ โปรดตรวจสอบว่ามันติดตั้งและมีการเข้าสู่ระบบเรียบร้อยแล้ว";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "ยังไม่ได้เชื่อมต่อที่จัดเก็บข้อมูลในเครือข่าย";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "ยังไม่ได้เชื่อมต่อไดรฟ์ USB";
+
+/* Error message shown when there's internal inconsistency in KeePassium. */
+"[FileAccessError/internalError]" = "ภายใน KeePassium มีปัญหา โปรดบอกรายละเอียดเกี่ยวกับมันหน่อย";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
+"[FileAccessError/NoResponse/genericFileProvider]" = "ระบบจัดเก็บข้อมูลไม่ตอบสนอง";
+
+/* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ ไม่ตอบสนอง";
+
+/* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
+"[FileAccessError/NoWritePermission/title]" = "ไม่สามารถบันทึกไฟล์ (%@)";
+
+/* Explanation of a file writing error */
+"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft ได้เปลี่ยนการเชื่อม OneDrive ให้ iOS อ่านได้อย่างเดียว\nแค่ชั่วคราวเขาบอก";
+
+/* Suggestion for error recovery */
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "ใช้ตัวเลือกส่งออกเพื่อบันทึกไฟล์ไปยังที่อื่น";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
+"[FileAccessError/Timeout/genericFileProvider]" = "ระบบจัดเก็บข้อมูลไม่ตอบสนอง";
+
+/* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ ไม่ตอบสนอง";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to delete file. Reason: %@" = "ไม่สามารถลบไฟล์ด้วยเหตุผล: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to import file. Reason: %@" = "ไม่สามารถนำเข้าไฟล์ด้วยเหตุผล: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to open file. Reason: %@" = "ไม่สามารถเปิดไฟล์ด้วยเหตุผล: %@";
+
+/* Error message: tried to import URL which does not point to a file */
+"[FileKeeper] Not a file URL" = "ไม่ใช่ไฟล์ URL";
+
+/* Localized name of the storage service: Amerigo (https://www.amerigo-app.com) */
+"[FileProvider/Amerigo/name]" = "Amerigo";
+
+/* Localized name of the storage service: Box (https://box.com) */
+"[FileProvider/Box/name]" = "Box";
+
+/* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
+"[FileProvider/Boxcryptor/name]" = "Boxcryptor";
+
+/* Localized name of the storage service: Dropbox (https://dropbox.com) */
+"[FileProvider/Dropbox/name]" = "Dropbox";
+
+/* Localized name of the storage service: FE File Explorer (https://apps.apple.com/app/fe-file-explorer-file-manager/id510282524) */
+"[FileProvider/FE File Explorer/name]" = "FE File Explorer";
+
+/* Localized name of the storage service: Google Drive (https://drive.google.com) */
+"[FileProvider/Google Drive/name]" = "Google Drive";
+
+/* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
+"[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: Nextcloud (https://nextcloud.com) */
+"[FileProvider/Nextcloud/name]" = "Nextcloud";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPad/name]" = "ใน iPad ของฉัน";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPhone/name]" = "ใน iPhone ของฉัน";
+
+/* Localized name of the storage service: OneDrive (https://onedrive.com) */
+"[FileProvider/OneDrive/name]" = "OneDrive";
+
+/* Localized name of the storage service: ownCloud (https://owncloud.com) */
+"[FileProvider/ownCloud/name]" = "ownCloud";
+
+/* Localized name of the storage service: pCloud (https://pcloud.com) */
+"[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
+/* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
+"[FileProvider/Readdle Documents/name]" = "Documents by Readdle";
+
+/* Localized name of the storage service: Resilio Sync (https://https://apps.apple.com/us/app/id1126282325) */
+"[FileProvider/Resilio Sync/name]" = "Resilio Sync";
+
+/* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
+"[FileProvider/Seafile Pro/name]" = "Seafile Pro";
+
+/* Localized name of the storage service: SMB server (network share) via native iOS integration. */
+"[FileProvider/SMB/name]" = "SMB server";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
+
+/* Localized name of the storage service: Sync.com (https://sync.com) */
+"[FileProvider/sync.com/name]" = "Sync.com";
+
+/* Localized name of the storage service: Synology Drive (https://apps.apple.com/us/app/synology-drive/id1267275421) */
+"[FileProvider/Synology Drive/name]" = "Synology Drive";
+
+/* Localized name of the storage service: Synology DS file (https://apps.apple.com/us/app/ds-file/id416751772) */
+"[FileProvider/Synology DS file/name]" = "Synology DS file";
+
+/* Localized name of the storage service: Tresorit (https://tresorit.com) */
+"[FileProvider/Tresorit/name]" = "Tresorit";
+
+/* Localized name of the storage service: local USB drive (native iOS integration) */
+"[FileProvider/USB drive/name]" = "ไดรฟ์ USB";
+
+/* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
+"[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "วันที่สร้าง (เก่าที่สุดมาก่อน)";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "วันที่สร้าง (ล่าสุดมาก่อน)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "วันที่แก้ไข (เก่าที่สุดมาก่อน)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "วันที่แก้ไข (ล่าสุดมาก่อน)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
+"[FilesSortOrder/longTitle] Name (A..Z)" = "ชื่อ (A..Z)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
+"[FilesSortOrder/longTitle] Name (Z..A)" = "ชื่อ (Z..A)";
+
+/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
+"[FilesSortOrder/longTitle] No Sorting" = "ไม่จัดเรียง";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "ตามวันที่สร้าง (ใหม่..เก่า)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "ตามวันที่สร้าง (เก่า..ใหม่)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "ตามวันที่แก้ไข (ใหม่..เก่า)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "ตามวันที่แก้ไข (เก่า..ใหม่)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "ตามชื่อ (A..Z)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "ตามชื่อ (Z..A)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
+"[GroupSortOrder/longTitle] No Sorting" = "ไม่จัดเรียง";
+
+/* Status message: processing of the master key is in progress */
+"[KDF/Progress] Processing the master key" = "กำลังประมวลผลกุญแจหลัก";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "Keychain error (code %d) ";
+
+/* Error message about system keychain. */
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "พวงกุญแจผิดพลาด: ไม่ทราบฟอร์แมทของข้อมูล";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "ไฟล์กุญแจเสียหาย";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "ไม่รองรับฟอร์แมทของไฟล์กุญแจ";
+
+/* Explanation/notification when a long-running operation was cancelled by user */
+"[Progress/CancellationReason] Cancelled by user" = "ถูกยกเลิกโดยผู้ใช้งาน";
+
+/* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
+"[Progress/CancellationReason/lowMemory]" = "หน่วยความจำไม่พอที่จะไปต่อได้\nสิ่งนี้สามารถเกิดขึ้นได้ถ้าฐานข้อมูลมีขนาดใหญ่เกินไปหรือการตั้งค่าฐานข้อมูลที่ยุ่งยาก (Argon2 memory parameter)";
+
+/* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
+"[Settings/AppLockTimeout/description] After last interaction" = "หลังจากการแตะต้องครั้งสุดท้าย";
+
+/* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
+"[Settings/AppLockTimeout/description] After leaving the app" = "หลังจากออกแอป";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "ทันที";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/fullTitle] Never" = "ตลอดไป";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "ทันที";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/shortTitle] Never" = "ตลอดไป";
+
+/* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "ตลอดไป";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/fullTitle] Never" = "ตลอดไป";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/shortTitle] Never" = "ตลอดไป";
+
+/* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "ขณะออกจากแอป";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "ทันที";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "ตลอดไป";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "ทันที";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "ตลอดไป";
+
+/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "วันที่แก้ไขครั้งล่าสุด";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
+"[Settings/EntryListDetail/longTitle] None" = "ไม่มี";
+
+/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
+"[Settings/EntryListDetail/longTitle] Notes" = "หมายเหตุ";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
+"[Settings/EntryListDetail/longTitle] Password" = "รหัสผ่าน";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
+"[Settings/EntryListDetail/longTitle] URL" = "URL";
+
+/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
+"[Settings/EntryListDetail/longTitle] User Name" = "ชื่อผู้ใช้งาน";
+
+/* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
+"[URLReference/Location] Cloud storage / Another app" = "ที่จัดเก็บในคลาวด์ / แอปอื่น";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
+"[URLReference/Location] Internal backup" = "ข้อมูลสำรองภายใน";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
+"[URLReference/Location] Internal inbox" = "อินบอกภายใน";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
+"[URLReference/Location] Local copy" = "สำเนาภายใน";
+

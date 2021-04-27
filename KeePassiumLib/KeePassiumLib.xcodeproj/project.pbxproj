@@ -305,6 +305,8 @@
 		75E60AE025CF5D310089219C /* DatabaseIconSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSet.swift; sourceTree = "<group>"; };
 		75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaver.swift; sourceTree = "<group>"; };
 		75EA2D1621B2FB4000826FC6 /* Diag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diag.swift; sourceTree = "<group>"; };
+		75F21C252638010B0048F26F /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		75F21C262638010B0048F26F /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75F4ACD12177456200B22D8B /* PasswordGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		75F4ACD3217745B300B22D8B /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		75F4ACD4217745B300B22D8B /* DatabaseManagerObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManagerObserver.swift; sourceTree = "<group>"; };
@@ -795,6 +797,7 @@
 				"pt-BR",
 				sk,
 				tr,
+				th,
 			);
 			mainGroup = 75D0C7602174AF1F00C64C93;
 			packageReferences = (
@@ -998,6 +1001,7 @@
 				754ABF2E25AB969800B98A63 /* pt-BR */,
 				75271963263800A800D68A32 /* sk */,
 				75261DA2263800DA00EE2ED9 /* tr */,
+				75F21C262638010B0048F26F /* th */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1021,6 +1025,7 @@
 				754ABF3125AB976E00B98A63 /* zh-Hans */,
 				75271962263800A800D68A32 /* sk */,
 				75261DA1263800DA00EE2ED9 /* tr */,
+				75F21C252638010B0048F26F /* th */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

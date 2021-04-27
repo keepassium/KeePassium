@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Show Backup Files"; ObjectID = "aEK-cJ-9bc"; Note = "Settings option: whether to show backup copies in the list of database files"; */
+"aEK-cJ-9bc.text" = "แสดงไฟล์สำรองข้อมูล";
+
+/* Class = "UITableViewSection"; footerTitle = "KeePassium can automatically delete old backup files to free up some storage space."; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
+"B3L-Dk-Uq3.footerTitle" = "KeePassium สามารถลบไฟล์สำรองเก่าให้อัตโนมัติ เพื่อประหยัดพื้นที่ให้มากขึ้น";
+
+/* Class = "UITableViewSection"; headerTitle = "Periodic cleanup"; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
+"B3L-Dk-Uq3.headerTitle" = "รอบการทำความสะอาด";
+
+/* Class = "UILabel"; text = "Make Backup Copies"; ObjectID = "BJ7-eQ-JOc"; Note = "Settings option: backup databases before saving them"; */
+"BJ7-eQ-JOc.text" = "สร้างสำเนาการสำรองข้อมูล";
+
+/* Class = "UITableViewSection"; footerTitle = "Defines whether backup databases created by KeePassium should be excluded from iCloud/iTunes backup. Applies to all the existing and future backup files."; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
+"fst-lq-BDl.footerTitle" = "กำหนดให้ไม่ว่าฐานข้อมูลสำรองที่สร้างโดย KeePassium ควรเว้นไว้ไม่ให้ iCloud/iTunes มาสำรอง แล้วนำไปใช้กับฐานข้อมูลอื่นที่มีอยู่แล้วและไฟล์สำรองอื่นในอนาคต";
+
+/* Class = "UITableViewSection"; headerTitle = "iTunes and iCloud Backup"; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
+"fst-lq-BDl.headerTitle" = "การสำรองข้อมูล iTunes และ iCloud";
+
+/* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
+"G42-gR-eKm.text" = "พยายามสำรองข้อมูลไว้";
+
+/* Class = "UITableViewSection"; footerTitle = "Before saving a database, KeePassium will automatically make a copy, just in case."; ObjectID = "nBI-OF-9iV"; Note = "Explanation for the `Make Backup Copies` option"; */
+"nBI-OF-9iV.footerTitle" = "ก่อนบันทึกฐานข้อมูล KeePassium จะทำสำเนาให้อัตโนมัติ ในกรณีที่เปิดใช้งาน";
+
+/* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
+"nSy-3u-0xW.title" = "สำรองฐานข้อมูล";
+
+/* Class = "UILabel"; text = "{N days}"; ObjectID = "PKe-6p-Ssr"; Note = "#bc-ignore!"; */
+"PKe-6p-Ssr.text" = "{N days}";
+
+/* Class = "UILabel"; text = "Exclude Backup Files from System Backup"; ObjectID = "Qs6-uS-gdS"; Note = "Settings option, on/off"; */
+"Qs6-uS-gdS.text" = "เว้นไม่ให้ระบบเครื่องมาสำรองข้อมูลในไฟล์สำรองในแอป";
+
+/* Class = "UIButton"; normalTitle = "{Delete ALL Backup Files (1)}"; ObjectID = "RXF-mN-5RB"; Note = "#bc-ignore!"; */
+"RXF-mN-5RB.normalTitle" = "{Delete ALL Backup Files (1)}";
+
+/* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
+"XeH-7q-aad.footerTitle" = "สำเนาของข้อมูลสำรองจะปรากฎมาพร้อม ๆ กับไฟล์ต้นฉบับ";
+

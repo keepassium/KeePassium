@@ -1,0 +1,33 @@
+/* Class = "UILabel"; text = "Database File Name"; ObjectID = "2iK-ct-ygq"; */
+"2iK-ct-ygq.text" = "ชื่อไฟล์ฐานข้อมูล";
+
+/* Class = "UIButton"; accessibilityLabel = "Show Diagnostics"; ObjectID = "bNa-R0-f67"; */
+"bNa-R0-f67.accessibilityLabel" = "แสดงการวินิจฉัย";
+
+/* Class = "UINavigationItem"; title = "{Create Database}"; ObjectID = "dhd-je-Doc"; Note = "#bc-ignore!"; */
+"dhd-je-Doc.title" = "{Create Database}";
+
+/* Class = "UIButton"; normalTitle = "Save Database"; ObjectID = "h6C-CG-RVI"; Note = "Action: save the new database (will show a file picker dialog)."; */
+"h6C-CG-RVI.normalTitle" = "บันทึกฐานข้อมูล";
+
+/* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "pvt-FS-0Yx"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
+"pvt-FS-0Yx.placeholder" = "ไม่มีไฟล์กุญแจ";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "uHk-Yt-mBh"; Note = "Placeholder: master password of the database"; */
+"uHk-Yt-mBh.placeholder" = "รหัสผ่าน";
+
+/* Class = "UILabel"; text = "Master Key"; ObjectID = "VjQ-di-Ilx"; Note = "Common title for the password/key file fields."; */
+"VjQ-di-Ilx.text" = "กุญแจหลัก";
+
+/* Class = "UILabel"; text = "{Error message}"; ObjectID = "wb0-s2-V8n"; Note = "#bc-ignore!"; */
+"wb0-s2-V8n.text" = "{Error message}";
+
+/* Class = "UITextField"; placeholder = "e.g. MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
+"XNL-lc-2Ti.placeholder" = "อย่างเช่น รหัสของฉัน";
+
+/* Class = "UITextField"; text = "MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
+"XNL-lc-2Ti.text" = "รหัสของฉัน";
+
+/* Class = "UILabel"; text = "Will use kdbx4 format (Argon2+ChaCha20)"; ObjectID = "XVR-1N-ywy"; Note = "Hint about the default format of new databases."; */
+"XVR-1N-ywy.text" = "จะใช้ kdbx4 ในรูปแบบฟอร์แมท (Argon2+ChaCha20)";
+

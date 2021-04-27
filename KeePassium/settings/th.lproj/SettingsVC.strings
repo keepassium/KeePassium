@@ -1,0 +1,84 @@
+/* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9yn-W3-FDl"; Note = "Section in settings: settings that define what happens when the app is started."; */
+"9yn-W3-FDl.headerTitle" = "เริ่มต้น";
+
+/* Class = "UILabel"; text = "Appearance"; ObjectID = "32P-LG-SHa"; Note = "Section in settings: visual style of app elements"; */
+"32P-LG-SHa.text" = "ภาพลักษณ์";
+
+/* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
+"756-sL-G2t.text" = "ตั้งให้เปิดฐานข้อมูลที่ผ่านมาอัตโนมัติ";
+
+/* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
+"A5N-B3-t3t.headerTitle" = "พรีเมียม";
+
+/* Class = "UILabel"; text = "App Protection"; ObjectID = "abS-AH-iFO"; Note = "Settings section: protection of the app from unauthorized access"; */
+"abS-AH-iFO.text" = "การป้องกันแอป";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Bk0-Xf-O7B"; */
+"Bk0-Xf-O7B.title" = "การตั้งค่า";
+
+/* Class = "UILabel"; text = "Review KeePassium"; ObjectID = "c5H-hS-sU3"; Note = "Action: write an app review on the App Store"; */
+"c5H-hS-sU3.text" = "แสดงความคิดเห็น KeePassium";
+
+/* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
+"cBS-jW-dHU.headerTitle" = "สนับสนุน";
+
+/* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
+"coD-Om-Vfm.text" = "สำรองฐานข้อมูล";
+
+/* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
+"DNo-Rs-0EP.text" = "เกี่ยวกับ KeePassium";
+
+/* Class = "UILabel"; text = "Master keys, key files"; ObjectID = "FHp-ns-ke9"; Note = "Subtitle/details for `Data Protection`"; */
+"FHp-ns-ke9.text" = "กุญแจหลัก, ไฟล์กุญแจ";
+
+/* Class = "UILabel"; text = "Search"; ObjectID = "GLr-Uf-Kln"; Note = "Section title in settings"; */
+"GLr-Uf-Kln.text" = "ค้นหา";
+
+/* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
+"HCe-A3-eG6.text" = "แบบพรีเมี่ยม";
+
+/* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
+"HjD-9G-X8p.headerTitle" = "การสำรองข้อมูล";
+
+/* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
+"hui-xG-chj.headerTitle" = "ควบคุมการเข้าถึง";
+
+/* Class = "UILabel"; text = "Rate KeePassium on the App Store"; ObjectID = "HYe-lP-dCp"; Note = "Subtitle for `Review KeePassium`"; */
+"HYe-lP-dCp.text" = "ให้คะแนน KeePassium ใน App Store";
+
+/* Class = "UILabel"; text = "{Renews on 1 Jan 1970}"; ObjectID = "LHz-DF-ZST"; Note = "#bc-ignore!"; */
+"LHz-DF-ZST.text" = "{Renews on 1 Jan 1970}";
+
+/* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
+"oxG-N8-1ld.text" = "อัพเกรดเป็นพรีเมียม";
+
+/* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
+"PpA-oZ-kr2.text" = "บันทึกการวินิจฉัย";
+
+/* Class = "UILabel"; text = "For expert troubleshooting"; ObjectID = "qhK-lw-bGy"; Note = "Subtitle for `Diagnostic Log`. Keep it short."; */
+"qhK-lw-bGy.text" = "สำหรับการแก้ไขปัญหาโดยผู้เชี่ยวชาญ";
+
+/* Class = "UILabel"; text = "Contact Us"; ObjectID = "QlM-VS-hle"; Note = "Action"; */
+"QlM-VS-hle.text" = "ติดต่อเรา";
+
+/* Class = "UILabel"; text = "What's New"; ObjectID = "RlK-RW-8Ld"; Note = "Action: open app history page (change log)"; */
+"RlK-RW-8Ld.text" = "มีอะไรใหม่ ๆ";
+
+/* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
+"RNK-fS-Fvx.text" = "คำแนะนำ? ปัญหา? บอกให้เรารู้เลย!";
+
+/* Class = "UILabel"; text = "{App Lock, Touch ID, timeout}"; ObjectID = "SrV-ib-V2E"; Note = "#bc-ignore!"; */
+"SrV-ib-V2E.text" = "{App Lock, Touch ID, timeout}";
+
+/* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
+"T2Z-oa-zJR.text" = "การป้อนรหัสผ่านอัตโนมัติ";
+
+/* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
+"UNl-Hc-Ref.text" = "ปกป้องข้อมูล";
+
+/* Class = "UILabel"; text = "{Upgrade subtitle}"; ObjectID = "WM2-qq-lMN"; Note = "#bc-ignore!"; */
+"WM2-qq-lMN.text" = "{Upgrade subtitle}";
+
+/* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
+"zUh-Sn-3ya.text" = "จัดการการสมัครรับ";
+

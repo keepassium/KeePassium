@@ -1,0 +1,78 @@
+/* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
+"3uV-Zs-RRo.normalTitle" = "ล้างไฟล์กุญแจที่เชื่อมไว้";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "beV-Hv-Qdr"; Note = "#bc-ignore!"; */
+"beV-Hv-Qdr.text" = "{Detail}";
+
+/* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
+"e1v-nv-Mst.normalTitle" = "ล้างรหัสผ่านหลัก";
+
+/* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.footerTitle" = "ซ่อนรหัสผ่านและช่องใส่ข้อมูลต่าง ๆ ให้ปลอดภัยอยู่หลังเครื่องหมายดอกจัน (แนะนำให้ใช้)";
+
+/* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.headerTitle" = "ส่วนการป้องกัน";
+
+/* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.footerTitle" = "เมื่อคุณปลดล็อกฐานข้อมูลแล้ว กุญแจหลักจะถูกเก็บไว้ในพวงกุญแจในเครื่องที่ปลอดภัย ในครั้งต่อไป KeePassium จะใช้รหัสนั้นโดยที่คุณไม่ต้องพิมพ์รหัสผ่านหลักอีก\n\n(กุญแจหลักจะถูกล้างอัตโนมัติเมื่อหมดเวลาใช้งานฐานข้อมูล)";
+
+/* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.headerTitle" = "ปลดล็อกด่วน";
+
+/* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
+"g9a-rJ-4WJ.footerTitle" = "ใช้คลิปบอร์ดกลางเพื่อคัดลอกและวางข้ามกันระหว่างอุปกรณ์ Apple และในอุปกรณ์ภายนอกอื่น ๆ จะถูกล้างคลิปบอร์ดออกทันทีภายในสองนาที";
+
+/* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
+"gTm-F6-EDQ.text" = "ล้างรหัสผ่านหลักเมื่อเวลาอายุ";
+
+/* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.footerTitle" = "เมื่อใดที่คุณคัดลอก KeePassium จะล้างคลิปบอร์ดให้อัตโนมัติหลังจากคัดลอกไปชั่วครู่";
+
+/* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.headerTitle" = "คลิปบอร์ด";
+
+/* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
+"INJ-Cy-Tfo.text" = "จำรหัสผ่านหลัก";
+
+/* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
+"IZZ-aM-g2i.title" = "ปกป้องข้อมูล";
+
+/* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
+"JHl-o7-xHI.text" = "จำไฟล์กุญแจ";
+
+/* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.footerTitle" = "จดจำและเลือกไฟล์กุญแจล่าสุดอัตโนมัติของแต่ละฐานข้อมูล การล้างการเชื่อมถึงต่าง ๆ จะไม่กระทบต่อตัวไฟล์";
+
+/* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.headerTitle" = "ไฟล์กุญแจ";
+
+/* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.footerTitle" = "การหมดเวลาใช้งานฐานข้อมูลจะปิดฐานข้อมูลทุกตัวที่เปิดทิ้งไว้และกุญแจหลักจะถูกล้างหลังจากนั้นสักครู่";
+
+/* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.headerTitle" = "ล็อกอัตโนมัติ";
+
+/* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
+"pid-k2-idJ.text" = "ซ่อนรหัสผ่าน";
+
+/* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
+"siQ-LK-GXZ.text" = "คีย์เข้ารหัสที่บันทึกไว้";
+
+/* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
+"SSu-Sr-MCg.text" = "เวลาหมดอายุของคลิปบอร์ด";
+
+/* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
+"weX-SZ-IDB.text" = "เวลาหมดการใช้งานของฐานข้อมูล";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
+"xPd-ot-oqe.text" = "{Detail}";
+
+/* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
+"YL6-U9-FM6.text" = "คลิปบอร์ดกลาง";
+
+/* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.footerTitle" = "สำเนาคีย์ที่เก็บไว้ จะช่วยให้ KeePassium ข้ามการดึงคีย์เพื่อกลับมาใช้ใหม่ และการสแกนของ YubiKey เท่าที่ทำได้ ";
+
+/* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.headerTitle" = "ขั้นสูง";
+
