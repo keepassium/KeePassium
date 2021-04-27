@@ -18,6 +18,7 @@ public class Group2: Group {
     public var usageCount: UInt32
     public var locationChangedTime: Date
     public var previousParentGroupUUID: UUID 
+    public var tags: String 
     public var customData: CustomData2 
     
     override public var isIncludeEntriesInSearch: Bool {
@@ -40,6 +41,7 @@ public class Group2: Group {
         usageCount = 0
         locationChangedTime = Date.now
         previousParentGroupUUID = UUID.ZERO
+        tags = ""
         customData = CustomData2(database: database)
         super.init(database: database)
     }
@@ -58,6 +60,7 @@ public class Group2: Group {
         usageCount = 0
         locationChangedTime = Date.now
         previousParentGroupUUID.erase()
+        tags = ""
         customData.erase()
     }
     
@@ -83,6 +86,7 @@ public class Group2: Group {
         targetGroup2.usageCount = usageCount
         targetGroup2.locationChangedTime = locationChangedTime
         targetGroup2.previousParentGroupUUID = previousParentGroupUUID
+        targetGroup2.tags = tags
         targetGroup2.customData = customData.clone()
     }
     
@@ -180,6 +184,9 @@ public class Group2: Group {
             case Xml2.previousParentGroup:
                 assert(formatVersion >= .v4_1)
                 self.previousParentGroupUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
+            case Xml2.tags:
+                assert(formatVersion >= .v4_1)
+                self.tags = tag.value ?? ""
             case Xml2.customData:
                 assert(formatVersion >= .v4)
                 try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Group")
@@ -338,10 +345,13 @@ public class Group2: Group {
             name: Xml2.lastTopVisibleEntry,
             value: lastTopVisibleEntryUUID.base64EncodedString())
 
-        if formatVersion >= .v4_1 && previousParentGroupUUID != UUID.ZERO {
-            xmlGroup.addChild(
-                name: Xml2.previousParentGroup,
-                value: previousParentGroupUUID.base64EncodedString())
+        if formatVersion >= .v4_1 {
+            if previousParentGroupUUID != UUID.ZERO {
+                xmlGroup.addChild(
+                    name: Xml2.previousParentGroup,
+                    value: previousParentGroupUUID.base64EncodedString())
+            }
+            xmlGroup.addChild(name: Xml2.tags, value: tags)
         }
         
         if formatVersion >= .v4 && !customData.isEmpty{
