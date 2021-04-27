@@ -254,6 +254,7 @@ public class Entry2: Entry {
     public var overrideURL: String
     public var tags: String
     public var previousParentGroupUUID: UUID 
+    public var qualityCheck: Bool 
     public var customData: CustomData2 
     
     override init(database: Database?) {
@@ -268,6 +269,7 @@ public class Entry2: Entry {
         overrideURL = ""
         tags = ""
         previousParentGroupUUID = UUID.ZERO
+        qualityCheck = true
         customData = CustomData2(database: database)
         super.init(database: database)
     }
@@ -287,6 +289,7 @@ public class Entry2: Entry {
         overrideURL.erase()
         tags.erase()
         previousParentGroupUUID.erase()
+        qualityCheck = true
         customData.erase()
         super.erase()
     }
@@ -318,6 +321,7 @@ public class Entry2: Entry {
         targetEntry2.usageCount = self.usageCount
         targetEntry2.locationChangedTime = self.locationChangedTime
         targetEntry2.previousParentGroupUUID = self.previousParentGroupUUID
+        targetEntry2.qualityCheck = self.qualityCheck
         targetEntry2.customData = self.customData.clone()
 
         targetEntry2.history.removeAll()
@@ -439,6 +443,9 @@ public class Entry2: Entry {
             case Xml2.previousParentGroup:
                 assert(formatVersion >= .v4_1)
                 previousParentGroupUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
+            case Xml2.qualityCheck:
+                assert(formatVersion >= .v4_1)
+                qualityCheck = Bool(optString: tag.value) ?? true
             case Xml2.customData: 
                 assert(formatVersion >= .v4)
                 try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Entry")
@@ -618,10 +625,16 @@ public class Entry2: Entry {
         }
         xmlEntry.addChild(autoType.toXml())
         
-        if formatVersion >= .v4_1 && previousParentGroupUUID != UUID.ZERO {
-            xmlEntry.addChild(
-                name: Xml2.previousParentGroup,
-                value: previousParentGroupUUID.base64EncodedString())
+        if formatVersion >= .v4_1 {
+            if previousParentGroupUUID != UUID.ZERO {
+                xmlEntry.addChild(
+                    name: Xml2.previousParentGroup,
+                    value: previousParentGroupUUID.base64EncodedString()
+                )
+            }
+            if !qualityCheck {
+                xmlEntry.addChild(name: Xml2.qualityCheck, value: Xml2._false)
+            }
         }
         
         if formatVersion >= .v4 && !customData.isEmpty{

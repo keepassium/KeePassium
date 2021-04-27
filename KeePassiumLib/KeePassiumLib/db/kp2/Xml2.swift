@@ -129,6 +129,7 @@ internal struct Xml2 {
     static let value = "Value"
     static let protected = "Protected"
     static let ref = "Ref"
+    static let qualityCheck = "QualityCheck"
     
     static let isExpanded = "IsExpanded"
     static let defaultAutoTypeSequence = "DefaultAutoTypeSequence" 
