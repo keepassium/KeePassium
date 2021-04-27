@@ -1,6 +1,56 @@
 {
     "sections": [
         {
+            "version": "1.24",
+            "releaseDate": "2021-04-26T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Possibility to add and select custom icons for groups and entries (closes #84) [thanks, Igor]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Slovak translation [thanks, onegin1]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Thai translation [thanks, poonnawit]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Turkish translation [thanks, ofmelnik]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Visibility of black custom icons in dark mode [thanks, Jon]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Tech debt: internal improvements to streamline further development",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Editor changes were not detected in some rare cases",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Updating associated key components only after successful DB save [thanks, Doug]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: \"Hide Passwords\" switch in Appearance settings did not work [thanks, Greg]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI issues",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.23",
             "releaseDate": "2021-03-29T00:00:00Z",
             "items": [

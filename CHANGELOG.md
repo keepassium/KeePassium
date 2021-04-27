@@ -1,5 +1,28 @@
 #CHANGELOG
 
+## [1.24.86] - 2021-04-26
+
+### Added
+
+- Possibilty to add and select custom icons for groups and entries (closes #84) [thanks, Igor]
+- Slovak translation [thanks, onegin1]
+- Thai translation [thanks, poonnawit]
+- Turkish translation [thanks, ofmelnik]
+
+### Improved
+
+- Visibility of black custom icons in dark mode [thanks, Jon]
+- Updated all translations [thanks, everyone]
+- Tech debt: internal improvements to streamline further development
+
+### Fixed
+
+- Editor changes were not detected in some rare cases
+- Updating associated key components only after successful DB save [thanks, Doug]
+- "Hide Passwords" switch in Appearance settings did not work [thanks, Greg]
+- Minor UI fixes
+
+
 ## [1.23.85] - 2021-03-29
 
 ### Improved
