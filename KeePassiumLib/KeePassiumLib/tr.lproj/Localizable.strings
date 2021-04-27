@@ -1,0 +1,513 @@
+/* Type of keyboard to show for App Lock passcode: letters and digits. */
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "Alfanümerik";
+
+/* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "Nümerik";
+
+/* Error message when the challenge-response communication has been cancelled by the user. */
+"[ChallengeResponseError] cancelled" = "Kullanıcı tarafından iptal edildi.";
+
+/* Error message when the hardware key is not plugged in. */
+"[ChallengeResponseError] keyNotConnected" = "Donanım anahtarı bulunamadı.";
+
+/* Error message when trying to use challenge-response hardware in AutoFill. */
+"[ChallengeResponseError] notAvailableInAutoFill" = "Donanım anahtarı, otomatik doldurmada kullanılamaz.";
+
+/* Error message when trying to use challenge-response with a kdb database. */
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Donanım anahtarları bu veritabanı formatında desteklenmemektedir.";
+
+/* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Bu cihaz ya da mevcut iOS sürümünüz donanım anahtarını desteklememektedir (%@)";
+
+/* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
+"[ChallengeResponseError] slotNotConfigured" = "Donanım anahtarı, sorgulama-yanıt için yapılandırılmamış.";
+
+/* Progress status */
+"[Cipher/Progress] Decrypting" = "Şifre çözülüyor";
+
+/* Progress status */
+"[Cipher/Progress] Encrypting" = "Şifreleniyor";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES decryption error (code %d)" = "AES şifre çözme hatası (%d kodu)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES encryption error (code %d)" = "AES şifreleme hatası (%d kodu)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES initialization error (code %d)" = "AES başlatma hatası (%d kodu)";
+
+/* Error message about Argon2 hashing function. [errorCode: Int] */
+"[CryptoError] Argon2 hashing error (code %d)" = "Argon2 şifre yaratma hatası (%d kodu)";
+
+/* Error message about PKCS7 padding. [errorCode: Int] */
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "Geçersiz veri izi (%d kodu). Dosya bozuk olabilir mi?";
+
+/* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "Geçersiz KDF parametresi: %1$@ - %2$@. Dosya bozuk olabilir mi?";
+
+/* Error message about random number generator. [errorCode: Int] */
+"[CryptoError] Random number generator error (code %d)" = "Rastgele sayı üretme hatası (%d kodu)";
+
+/* Error message about Twofish cipher. [errorCode: Int] */
+"[CryptoError] Twofish cipher error (code %d)" = "Twofish şifre hatası (%d kodu)";
+
+/* Error message */
+"[Database/Load/Error] Cannot find database file" = "Veritabanı dosyası bulunamadı";
+
+/* Error message */
+"[Database/Load/Error] Cannot find key file" = "Anahtar dosya bulunamadı";
+
+/* Error message */
+"[Database/Load/Error] Cannot open database file" = "Veritabanı dosyası bulunamadı";
+
+/* Error message */
+"[Database/Load/Error] Cannot open key file" = "Anahtar dosya açılamadı";
+
+/* Error shown when both master password and key file are empty */
+"[Database/Load/Error] Please provide at least a password or a key file" = "Lütfen en az bir şifre veya anahtar dosyası ayarlayın";
+
+/* Error message */
+"[Database/Load/Error] Unrecognized database format" = "Bilinmeyen veri tabanı biçimi";
+
+/* Progress status: finished loading database */
+"[Database/Progress] Done" = "Bitti!";
+
+/* Progress status */
+"[Database/Progress] Loading key file..." = "Anahtar dosya yükleniyor...";
+
+/* Database loading status: fetching the database file from disk/cloud */
+"[Database/Progress/downloading]" = "Veritabanı dosyası indiriliyor...";
+
+/* Database saving status: making a local backup copy of the database */
+"[Database/Progress/makingDatabaseBackup]" = "Yedek dosyası yaratılıyor...";
+
+/* Progress status */
+"[Database/Progress/resolving]" = "Yer sağlayıcınızla irtibata geçiliyor...";
+
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "Alan referansları çözümleniyor…";
+
+/* Error message */
+"[Database/Unlock/Error] Failed to open key file" = "Anahtar dosyası açılamadı";
+
+/* Error message */
+"[Database/Unlock/Error] Password and key file are both empty." = "Şifre ve anahtar dosyasından her ikisi de boş.";
+
+/* Error message */
+"[Database1/FormatError] Database file is corrupted." = "Veritabanı dosyası bozuk.";
+
+/* Error message [fieldName: String] */
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "%@ alanı ayrıştırılırken hata oluştu. Veritabanı dosyası bozuk olabilir mi?";
+
+/* Error message */
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Herhangi bir grubun dışında bir girdi bulundu. Veritabanı dosyası bozuk olabilir mi?";
+
+/* Error message */
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Beklenmedik dosya uzantısı. Veritabanı dosyası bozuk olabilir mi?";
+
+/* Error message when reading database header */
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Başlık okuma hatası. Veritabanı dosyası bozuk olabilir mi?";
+
+/* Error message. [flagsHexString: String] */
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Desteklenmeyen şifre. (%@ kodu)";
+
+/* Error message when opening a database. [version: String] */
+"[Database1/Header1/Error] Unsupported database format version: %@." = "Desteklenmeyen veritabanı biçimi sürümü: %@.";
+
+/* Error message when opening a database */
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Yanlış dosya imzası. KeePass veritabanı değil mi?";
+
+/* Status message: collecting database items into a single package */
+"[Database1/Progress] Packing the content" = "İçerik paketleniyor";
+
+/* Status message: processing the content of a database */
+"[Database1/Progress] Parsing content" = "İçerik analiz ediliyor";
+
+/* Name of a group which contains deleted entries */
+"[Database2/backupGroupName] Recycle Bin" = "Çöp Kutusu";
+
+/* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
+"[Database2/FormatError] Cannot parse database. %@" = "Veritabanı çözümlenemiyor. %@";
+
+/* Error message [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Bozuk veritabanı dosyası (%d bloğunun boyutu sıfırın altında)";
+
+/* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Bozuk veritabanı dosyası (%d bloğundaki şifre yaratma uyuşmazlığı)";
+
+/* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Bozuk veritabanı dosyası (%d bloğunda HMAC uyuşmazlığı)";
+
+/* Error message about Gzip compression algorithm. [reason: String] */
+"[Database2/FormatError] Gzip error: %@" = "Gzip hatası: %@";
+
+/* Error message: wrong ID of a data block */
+"[Database2/FormatError] Unexpected block ID." = "Beklenmeyen blok kimliği.";
+
+/* Error message */
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "Beklenmedik dosya uzantısı. Veritabanı dosyası bozuk olabilir mi?";
+
+/* Error message when saving a database. [reason: String] */
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "Bağlı dosyalar açılamadı: %@";
+
+/* Error message, with the name of problematic field. [fieldName: String] */
+"[Database2/Header2/Error] Header field %@ is corrupted." = "%@ üstbilgi alanı bozuk.";
+
+/* Error message */
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Başlık şifre yaratma uyumsuzluğu. Veritabanı dosyası bozuk olabilir mi?";
+
+/* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Başlık HMAC uyuşmazlığı. Veritabanı dosyası bozuk olabilir mi?";
+
+/* Error message when reading database header */
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "Başlık okuma hatası. Veritabanı dosyası bozuk olabilir mi?";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Unknown compression algorithm." = "Bilinmeyen sıkıştırma algoritması.";
+
+/* Error message. [uuidHexString: String] */
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "Desteklenmeyen veri şifresi: %@";
+
+/* Error message when opening a database. [version: String] */
+"[Database2/Header2/Error] Unsupported database format version: %@." = "Desteklenmeyen veritabanı biçimi sürümü: %@.";
+
+/* Error message when opening a database. [id: UInt32] */
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Desteklenmeyen iç akış şifresi (ID %d)";
+
+/* Error message about Key Derivation Function. [uuidString: String] */
+"[Database2/Header2/Error] Unsupported KDF: %@" = "Desteklenmeyen KDF: %@";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Yanlış dosya imzası. KeePass veritabanı değil mi?";
+
+/* Error message about Gzip compression algorithm. [errorMessage: String] */
+"[Database2/Loading/Error] Error unpacking database: %@" = "Veritabanını açarken hata oluştu: %@";
+
+/* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
+"[Database2/Loading/Warning/missingBinaries]" = "Bazı girdilerin eklerinde dosya eksiği var gibi görünüyor. Bu büyük olasılıkla son kullanılan uygulama tarafından (%1$@) veritabanınızın bozulduğunun bir işaretidir. KeePassium veritabanını bu haliyle korur, ama kayıp verileri geri alamaz. Eksik dosyalara ulaşmak için veritabanınızı önceki bir yedek kopyadan geri yüklemelisiniz.\n\nEksik dosya: %2$@";
+
+/* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
+"[Database2/Loading/Warning/namelessAttachments]" = "Bazı girdilerin içinde isimsiz ekler bulundu. Bu veritabanınızın daha önceden tahribata uğramış olduğunu gösterir.\n\n Lütfen aşağıdaki girdilerin eklerine (ve geçmişlerine) göz atın: %@";
+
+/* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
+"[Database2/Loading/Warning/namelessCustomFields]" = "Bazı girdilerin içinde isimsiz alan(lar) tespit edildi. Bu verilerinizin tahribata uğramış olabileceği anlamına gelir. Lütfen bu girdileri kontrol edin:\n\n%@";
+
+/* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
+"[Database2/Loading/Warning/unusedAttachments]" = "Bu veritabanının içinde, hiçbir girdide gözükmeyen bazı ekler bulunuyor. Büyük ihtimalle daha önce kullanılan uygulama tarafından silinememişler (%@). Ama bu verilerinizin tahribata uğradığı anlamına da gelebilir. Lütfen herhangi bir değişiklik yapmadan önce veritabanınızın yedeğini alın.";
+
+/* Progress bar status */
+"[Database2/Progress] Loading database" = "Veritabanı yükleniyor";
+
+/* Progress bar status */
+"[Database2/Progress] Reading database content" = "Veritabanı içeriği okunuyor";
+
+/* Progress bar status */
+"[Database2/Progress] Writing encrypted blocks" = "Şifreli bloklar yazılıyor";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "Sıkıştırılmış veritabanı açılıyor";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "Dosya bütünlüğü denetleniyor";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "Veritabanı analiz ediliyor";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Data compression error: %@" = "Veri sıkıştırma hatası: %@";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Encryption error: %@" = "Şifreleme hatası: %@";
+
+/* Error message about XML parsing. [value: String, tag: String] */
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "%2$@'de %1$@ hatalı değer";
+
+/* Error message about XML parsing. [tag: String] */
+"[Database2/Xml2/ParsingError] Nil value in %@" = "%@'de geçersiz değer";
+
+/* Error message about XML parsing */
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "KeePass XML dosyası değil";
+
+/* Error message about XML parsing. [actualTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "'%@' Beklenmeyen bir etiket";
+
+/* Error message about XML parsing. [actualTag: String, expectedTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "('%2$@' 'nin yerine) '%1$@' 'de beklenmeyen etiket";
+
+/* Generic error while parsing XML. [errorDetails: String] */
+"[Database2/Xml2/ParsingError] XML error: %@" = "XML hatası: %@";
+
+/* Error message while opening a database */
+"[DatabaseError] Cannot open database" = "Veritabanı açılamadı";
+
+/* Error message while saving a database */
+"[DatabaseError] Cannot save database" = "Veritabanı kaydedilemedi";
+
+/* Error message: user provided a wrong master key for decryption. */
+"[DatabaseError] Invalid password or key file" = "Hatalı şifre ya da anahtar dosya";
+
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "'%@' isimli dosya, yakın zamanda silinenler arasında ve buradan da yakında silinebilir. Verinizi tutmak için çöp kutusundan başka bir yere taşıyın.";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "Bu geçici yedekleme veritabanıdır. Herhangi bir uyarı vermeden kendiliğinden silinebilir. Bunu ana veritabanınız olarak kullanmayın.";
+
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "Yer sağlayıcınıza ulaşılamıyor. Yer sağlayıcınızın programının yüklü olup olmadığını, yüklüyor programa giriş yapıp yapmadığınızı kontrol edin.";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@'a ulaşılamıyor. Lütfen programın yüklü olup olmadığını, yüklüyse giriş yapıp yapmadığınızı kontrol edin.";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Ağ üzerinde veri sağlama hizmeti şu an bağlı değil.";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB bellek şu an bağlı değil.";
+
+/* Error message shown when there's internal inconsistency in KeePassium. */
+"[FileAccessError/internalError]" = "KeePassium bir hatayla karşılaştı, lütfen bunun hakkında bize bilgi verin.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
+"[FileAccessError/NoResponse/genericFileProvider]" = "Yer sağlayıcısı cevap vermiyor.";
+
+/* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ cevap vermiyor.";
+
+/* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
+"[FileAccessError/NoWritePermission/title]" = "(%@) dosyası kaydedilemiyor.";
+
+/* Explanation of a file writing error */
+"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft yaptığı son değişiklikle OneDrive'ın iOS entegrasyonunu sadece salt okunur olarak değiştirdiğini duyurdu. Bu durumun geçici olacağını söylüyorlar.";
+
+/* Suggestion for error recovery */
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Dosyayı farklı bir konuma kaydetmek istiyorsanız \"Dışa Aktar\" seçeneğini kullanın.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
+"[FileAccessError/Timeout/genericFileProvider]" = "Yer sağlayıcısı cevap vermiyor.";
+
+/* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ cevap vermiyor.";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to delete file. Reason: %@" = "%@'ten dolayı dosya silinemedi.";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to import file. Reason: %@" = "%@'ten dolayı dosya içe aktarılamadı.";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to open file. Reason: %@" = "%@'ten dolayı dosya açılamadı.";
+
+/* Error message: tried to import URL which does not point to a file */
+"[FileKeeper] Not a file URL" = "Bir dosya URL'si değil";
+
+/* Localized name of the storage service: Amerigo (https://www.amerigo-app.com) */
+"[FileProvider/Amerigo/name]" = "Amerigo";
+
+/* Localized name of the storage service: Box (https://box.com) */
+"[FileProvider/Box/name]" = "Box";
+
+/* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
+"[FileProvider/Boxcryptor/name]" = "Boxcryptor";
+
+/* Localized name of the storage service: Dropbox (https://dropbox.com) */
+"[FileProvider/Dropbox/name]" = "Dropbox";
+
+/* Localized name of the storage service: FE File Explorer (https://apps.apple.com/app/fe-file-explorer-file-manager/id510282524) */
+"[FileProvider/FE File Explorer/name]" = "FE File Explorer";
+
+/* Localized name of the storage service: Google Drive (https://drive.google.com) */
+"[FileProvider/Google Drive/name]" = "Google Drive";
+
+/* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
+"[FileProvider/iCloud Drive/name]" = "iCloud";
+
+/* Localized name of the storage service: Nextcloud (https://nextcloud.com) */
+"[FileProvider/Nextcloud/name]" = "Nextcloud";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPad/name]" = "iPad";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPhone/name]" = "iPhone";
+
+/* Localized name of the storage service: OneDrive (https://onedrive.com) */
+"[FileProvider/OneDrive/name]" = "OneDrive";
+
+/* Localized name of the storage service: ownCloud (https://owncloud.com) */
+"[FileProvider/ownCloud/name]" = "ownCloud";
+
+/* Localized name of the storage service: pCloud (https://pcloud.com) */
+"[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
+/* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
+"[FileProvider/Readdle Documents/name]" = "Readdle Dökümanları";
+
+/* Localized name of the storage service: Resilio Sync (https://https://apps.apple.com/us/app/id1126282325) */
+"[FileProvider/Resilio Sync/name]" = "Resilio Sync";
+
+/* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
+"[FileProvider/Seafile Pro/name]" = "Seafile Pro";
+
+/* Localized name of the storage service: SMB server (network share) via native iOS integration. */
+"[FileProvider/SMB/name]" = "SMB server";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
+
+/* Localized name of the storage service: Sync.com (https://sync.com) */
+"[FileProvider/sync.com/name]" = "Sync.com";
+
+/* Localized name of the storage service: Synology Drive (https://apps.apple.com/us/app/synology-drive/id1267275421) */
+"[FileProvider/Synology Drive/name]" = "Synology Drive";
+
+/* Localized name of the storage service: Synology DS file (https://apps.apple.com/us/app/ds-file/id416751772) */
+"[FileProvider/Synology DS file/name]" = "Synology DS dosyası";
+
+/* Localized name of the storage service: Tresorit (https://tresorit.com) */
+"[FileProvider/Tresorit/name]" = "Tresorit";
+
+/* Localized name of the storage service: local USB drive (native iOS integration) */
+"[FileProvider/USB drive/name]" = "USB Bellek";
+
+/* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
+"[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Oluşturma Tarihi (En Eski En Önce)";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Oluşturma Tarihi (En Yeni En Önce)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Değiştirilme tarihi (En Eski En Önce)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Değiştirilme Tarihi (En Yeni En Önce)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
+"[FilesSortOrder/longTitle] Name (A..Z)" = "İsim (A...Z)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
+"[FilesSortOrder/longTitle] Name (Z..A)" = "İsim (Z...A)";
+
+/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
+"[FilesSortOrder/longTitle] No Sorting" = "Sıralama yok";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Oluşturma tarihine göre (Yeniden Eskiye)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Oluşturma tarihine göre (Eskiden Yeniye)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Değiştirilme tarihine göre (Yeniden Eskiye)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Değiştirilme tarihine göre (Eskiden Yeniye)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "Başlığa göre (A...Z)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "Başlığa göre (Z...A)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
+"[GroupSortOrder/longTitle] No Sorting" = "Sıralama yok";
+
+/* Status message: processing of the master key is in progress */
+"[KDF/Progress] Processing the master key" = "Ana şifre işleniyor";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "Anahtar zinciri hatası (%d kodu) ";
+
+/* Error message about system keychain. */
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Anahtar zinciri hatası: beklenmeyen veri formatı";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "Anahtar dosya bozuk";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "Desteklenmeyen anahtar dosya formatı";
+
+/* Explanation/notification when a long-running operation was cancelled by user */
+"[Progress/CancellationReason] Cancelled by user" = "Kullanıcı tarafından iptal edildi";
+
+/* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
+"[Progress/CancellationReason/lowMemory]" = "Devam etmek için yeterli hafıza yok. Ya veritabanınız çok büyük ya da veritabanı ayarlarınız çok komplike (Argon2 bellek parametresi).";
+
+/* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
+"[Settings/AppLockTimeout/description] After last interaction" = "Son etkileşimden sonra";
+
+/* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
+"[Settings/AppLockTimeout/description] After leaving the app" = "Uygulamadan çıktıktan sonra";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "Hemen";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/fullTitle] Never" = "Asla";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "Hemen";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/shortTitle] Never" = "Asla";
+
+/* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "Her zaman";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/fullTitle] Never" = "Asla";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/shortTitle] Never" = "Hiçbir zaman";
+
+/* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "Uygulamadan çıkarken";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "Hemen";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "Hiçbir zaman";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "Hemen";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "Hiçbir zaman";
+
+/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Son Değiştirilme Tarihi";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
+"[Settings/EntryListDetail/longTitle] None" = "Hiç biri";
+
+/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
+"[Settings/EntryListDetail/longTitle] Notes" = "Notlar";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
+"[Settings/EntryListDetail/longTitle] Password" = "Şifre";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
+"[Settings/EntryListDetail/longTitle] URL" = "URL";
+
+/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
+"[Settings/EntryListDetail/longTitle] User Name" = "Kullanıcı Adı";
+
+/* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
+"[URLReference/Location] Cloud storage / Another app" = "Bulut Depolama / Başka bir uygulama";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
+"[URLReference/Location] Internal backup" = "Sistem içi yedek";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
+"[URLReference/Location] Internal inbox" = "Sistem içi gelenler";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
+"[URLReference/Location] Local copy" = "Yerel kopya";
+

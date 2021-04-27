@@ -1,0 +1,42 @@
+/* Class = "UILabel"; text = "{Call for action footer}"; ObjectID = "0wQ-G1-ZOk"; Note = "#bc-ignore!"; */
+"0wQ-G1-ZOk.text" = "{Call for action footer}";
+
+/* Class = "UIButton"; normalTitle = "{Call for Action}"; ObjectID = "6qT-UV-P49"; Note = "#bc-ignore!"; */
+"6qT-UV-P49.normalTitle" = "{Call for Action}";
+
+/* Class = "UILabel"; text = "{Status / error}"; ObjectID = "9f1-at-zbB"; Note = "#bc-ignore!"; */
+"9f1-at-zbB.text" = "{Status / error}";
+
+/* Class = "UILabel"; text = "{Title}"; ObjectID = "AIy-Yk-0kz"; Note = "#bc-ignore!"; */
+"AIy-Yk-0kz.text" = "{Title}";
+
+/* Class = "UILabel"; text = "{Popular}"; ObjectID = "cEd-4Y-m9a"; Note = "#bc-ignore!"; */
+"cEd-4Y-m9a.text" = "{Popular}";
+
+/* Class = "UILabel"; text = "{Subtitle}"; ObjectID = "EPx-ht-aWH"; Note = "#bc-ignore!"; */
+"EPx-ht-aWH.text" = "{Subtitle}";
+
+/* Class = "UILabel"; text = "{Benefit Title}"; ObjectID = "f0i-gI-Jb4"; Note = "#bc-ignore!"; */
+"f0i-gI-Jb4.text" = "{Benefit Title}";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "fC2-en-cOo"; */
+"fC2-en-cOo.normalTitle" = "Gizlilik Politikası";
+
+/* Class = "UIButton"; normalTitle = "Already purchased?"; ObjectID = "j7c-Gd-QEh"; */
+"j7c-Gd-QEh.normalTitle" = "Zaten satın aldınız mı?";
+
+/* Class = "UILabel"; text = "{Condition}"; ObjectID = "juk-xI-Nbg"; Note = "#bc-ignore!"; */
+"juk-xI-Nbg.text" = "{Condition}";
+
+/* Class = "UINavigationItem"; title = "Premium"; ObjectID = "LNd-e9-YY7"; */
+"LNd-e9-YY7.title" = "Premium";
+
+/* Class = "UIButton"; normalTitle = "Terms and Conditions"; ObjectID = "NSz-U1-2ye"; */
+"NSz-U1-2ye.normalTitle" = "Hizmet Koşulları ve Kullanım Şartları";
+
+/* Class = "UILabel"; text = "{Price}"; ObjectID = "osi-an-u9s"; Note = "#bc-ignore!"; */
+"osi-an-u9s.text" = "{Price}";
+
+/* Class = "UILabel"; text = "{Subprice}"; ObjectID = "zkd-iK-aqd"; Note = "#bc-ignore!"; */
+"zkd-iK-aqd.text" = "{Subprice}";
+

@@ -1,0 +1,33 @@
+/* Class = "UIButton"; normalTitle = "{news}"; ObjectID = "APT-2C-WiG"; Note = "#bc-ignore!"; */
+"APT-2C-WiG.normalTitle" = "{news}";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CuN-tE-lAG"; Note = "Placeholder: database password"; */
+"CuN-tE-lAG.placeholder" = "Şifre";
+
+/* Class = "UILabel"; text = "{Error message}"; ObjectID = "d2U-7y-vCm"; Note = "#bc-ignore!"; */
+"d2U-7y-vCm.text" = "{Error message}";
+
+/* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "eAa-Z5-pdq"; Note = "Title of the database unlocker dialog."; */
+"eAa-Z5-pdq.title" = "Veritabanının Kilidini Aç";
+
+/* Class = "UILabel"; text = "Database was closed by a timer."; ObjectID = "epu-yU-Lyg"; Note = "Notification message shown by database lock timer."; */
+"epu-yU-Lyg.text" = "Veritabanı bir zaman sayacı tarafından kapatıldı.";
+
+/* Class = "UIButton"; normalTitle = "Lock Database"; ObjectID = "gji-1x-co5"; */
+"gji-1x-co5.normalTitle" = "Veritabanını Kilitle";
+
+/* Class = "UILabel"; text = "Will use the remembered master key."; ObjectID = "K3Y-ON-C19"; Note = "Hint shown below the Unlock button, when not asking for master password/key file."; */
+"K3Y-ON-C19.text" = "Hatırlanan ana anahtar kullanacak.";
+
+/* Class = "UIButton"; normalTitle = "Unlock"; ObjectID = "l45-hq-1lr"; */
+"l45-hq-1lr.normalTitle" = "Kilidi aç";
+
+/* Class = "UILabel"; text = "{Database file name}"; ObjectID = "LsQ-5N-nP3"; Note = "#bc-ignore!"; */
+"LsQ-5N-nP3.text" = "{Database file name}";
+
+/* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "mYY-hP-3vH"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
+"mYY-hP-3vH.placeholder" = "Anahtar Dosyası Yok";
+
+/* Class = "UIButton"; accessibilityLabel = "Show Diagnostics"; ObjectID = "nrD-QC-R8N"; Note = "Action to show detailed diagnostics about the current error."; */
+"nrD-QC-R8N.accessibilityLabel" = "Tanıları Göster";
+

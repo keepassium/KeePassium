@@ -1,0 +1,9 @@
+/* Class = "UITextField"; placeholder = "Group Name"; ObjectID = "jea-zX-9LD"; */
+"jea-zX-9LD.placeholder" = "Grup Adı";
+
+/* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "vz5-tj-l9g"; */
+"vz5-tj-l9g.normalTitle" = "Simge Değiştir";
+
+/* Class = "UIViewController"; title = "{Create/Edit Group}"; ObjectID = "W6c-47-p86"; Note = "#bc-ignore!"; */
+"W6c-47-p86.title" = "{Create/Edit Group}";
+

@@ -1,0 +1,6 @@
+/* Class = "UINavigationItem"; title = "List Settings"; ObjectID = "Gyy-12-KPC"; */
+"Gyy-12-KPC.title" = "Ayar Listesi";
+
+/* Class = "UILabel"; text = "{Title}"; ObjectID = "Tg9-yL-fCJ"; Note = "#bc-ignore!"; */
+"Tg9-yL-fCJ.text" = "{Title}";
+

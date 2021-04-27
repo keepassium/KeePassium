@@ -1,0 +1,21 @@
+/* Class = "UILabel"; text = "{Entry Title}"; ObjectID = "1xY-Ij-CPq"; Note = "#bc-ignore!"; */
+"1xY-Ij-CPq.text" = "{Entry Title}";
+
+/* Class = "UITableViewController"; title = "{Database Name}"; ObjectID = "14C-rX-ove"; Note = "#bc-ignore!"; */
+"14C-rX-ove.title" = "{Database Name}";
+
+/* Class = "UIBarButtonItem"; title = "Lock Database"; ObjectID = "dPB-bK-tzh"; Note = "Action "; */
+"dPB-bK-tzh.title" = "Veritabanını Kilitle";
+
+/* Class = "UILabel"; text = "{Footer}"; ObjectID = "htW-Ur-suD"; Note = "#bc-ignore!"; */
+"htW-Ur-suD.text" = "{Footer}";
+
+/* Class = "UILabel"; text = "Nothing suitable found."; ObjectID = "NSB-dG-jRN"; Note = "Placeholder text for empty search results."; */
+"NSB-dG-jRN.text" = "Uygun bir şey bulunamadı.";
+
+/* Class = "UILabel"; text = "{Entry Subtitle}"; ObjectID = "weo-eb-woU"; Note = "#bc-ignore!"; */
+"weo-eb-woU.text" = "{Entry Subtitle}";
+
+/* Class = "UILabel"; text = "Related Entries"; ObjectID = "yLY-eZ-iAh"; Note = "Title of a list of entries similar to (but not exactly matching) the search query."; */
+"yLY-eZ-iAh.text" = "Benzer Girişler";
+

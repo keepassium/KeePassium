@@ -1,0 +1,12 @@
+/* Class = "UIViewController"; title = "Welcome"; ObjectID = "1Nc-wz-Yqq"; Note = "Onboarding screen shown on first launch"; */
+"1Nc-wz-Yqq.title" = "Hoş geldiniz";
+
+/* Class = "UIButton"; normalTitle = "Create New Database"; ObjectID = "4wh-8O-5Ch"; */
+"4wh-8O-5Ch.normalTitle" = "Yeni Bir Veritabanı Oluşturun";
+
+/* Class = "UILabel"; text = "KeePassium stores your passwords, credit cards and other information in an encrypted file (database). \nYou can have multiple databases, for example to separate work, family and personal accounts."; ObjectID = "PgB-6p-H0t"; */
+"PgB-6p-H0t.text" = "KeePassium şifrelerinizi, kredi kartlarınızı ve diğer bilgilerinizi şifrelenmiş bir dosyada (veritabanı) saklar. Birden fazla veritabanınız olabilir. Ör: işi, aileyi, kişisel bilgilerinizi ayrı ayrı tutmak için.";
+
+/* Class = "UIButton"; normalTitle = "Add Existing Database"; ObjectID = "ZKW-2f-Xkz"; */
+"ZKW-2f-Xkz.normalTitle" = "Varolan Bir Veritabanını Ekle";
+

@@ -1,0 +1,504 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Kopyalamak için çift tıkla";
+
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "Kilidi aç";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "KeePassium'un Kilidini Aç";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Pin Kodu Kullan";
+
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "Şifreyi Değiştir";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "KeePassium'un Kilidini Aç";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "Şifre güncelleme başarılı.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "Şifreyi Kaydet";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "KeePassium'u yetkisiz girişlerden koruyun";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Yükseltme işlemi için lütfen KeePassium'u ana ekrandan manuel olarak açın.";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Piremiuma Yükselt";
+
+/* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
+"[AutoFill/Search/callerID]" = "Caller ID: %@";
+
+/* No comment provided by engineer. */
+"[AutoFill/Setup/footer]" = "Otomatik Doldurma, ana KeePassium uygulamasında halihazırda var olan bilgilere otomatik olarak erişemez.\n\nPeki neden? Arka plandaki işleyişte; sistem Otomatik Doldurmayı ana KeePassium uygulamasından bağımsız apayrı bir uygulama gibi görmekte. Güvenlik kaynaklı sebeplerden ötürü, siz spesifik olarak aralarında bağıntı kurup izin vermedikçe; bir uygulama hiçbir dış dosyaya kolayca erişemez. Böylece sistem, uygulamanın sadece sizin izin verdiğiniz dosyalara erişebildiğini garanti eder.\n\nSonuç olarak, hem Otomatik Doldurma hem de KeePassium uygulaması veritabanınızı okumak ve değiştirmek için ayrı ayrı yetkilendirilmeye ihtiyaç duyar. Şükür ki, bu tek seferlik bir bürokrasidir.";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "%@'yı kopyala";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Kopyalandı";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Seçili dosya \"%@\" veritabanına benzemiyor.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Veritabanı Oluştur";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Veritabanı Oluştur";
+
+/* Title of an error message */
+"[Database/Delete] Failed to delete database file" = "Veritabanı dosyası silinemedi";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Veritabanı dosyasını sil?\n  Bir yedeğiniz olduğundan emin olun.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "Yükleniyor...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "Ana anahtar başarıyla değiştirildi";
+
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "Eğer olur da unutursanız; verilerinize bir daha erişemeyeceksiniz. Şifre sıfırlama gibi bir imkanın olmadığını aklınızda bulundurun.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "Veritabanı şifrenizi unutmayın";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "Veritabanını Aç";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "Kapat";
+
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "Veritabanını Kilitle";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Veritabanı listeden silinsin mi?\n Dosya sağlam kalır ve daha sonra tekrar ekleyebilirsiniz.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "Bitti!";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "Kaydediliyor...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "Anahtar Dosya Hatası: %@";
+
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Tanılama günlüğü panoya kopyalandı.";
+
+/* Action/button to show internal diagnostic log */
+"[Diagnostics] Show Diagnostic Log" = "Tanılama Günlüğünü Göster";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "Bağımlı Dosyalar";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "Kayıt Oluştur";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Alan Adı";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "Notlar";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "Parola";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "Başlık";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "Kullanıcı Adı";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "Yeni Kayıt";
+
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Dosyayı uygulamadan silmeyi ve sonra geri eklemeyi deneyin.";
+
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Dosyayı tekrar ekleyin";
+
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Yedekle";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Öznitelikler güncellenemedi.";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "Oluşturma Tarihi";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "Dosya Konumu";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "Dosya Adı";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "Dosya Boyutu";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "Son Değişiklik Tarihi";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "Hata";
+
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "iCloud / iTunes Yedeklemesine Dahil Etme";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "İptal";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "Destekle İletişim";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "İletişime Geçin";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Devam Et";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "Kopyala";
+
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Oluştur";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "Sil";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "Kaldır";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "Reddet";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "Bitti!";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "Düzenle";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "Dışa Aktar";
+
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Daha fazla bilgi için…";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Diğer İşlemler";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "Taşı";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "Tamam";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "URL'yi aç";
+
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "Üzerine Yaz";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "Yeniden Adlandır";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "Değiştir";
+
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Paylaş";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "Ayrıntıları Göster";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Metin Olarak Göster";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "Daha fazla göster";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "Emin misiniz?";
+
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "Çöp Kutusu";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Son değişiklikler yok sayılsın mı?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "Kaydedilmemiş değişiklikler var";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "Sil";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "Kaldır";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "Dışa Aktarım Hatası";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "Dosya zaten mevcut";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "İçe Aktarım Hatası";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "Hata";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "Anahtar Dizilim Hatası";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "Dikkat";
+
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, Grup";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "Grup Oluştur";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "Grup Oluştur";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "Grubu Düzenle";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "Yeni Grup";
+
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Donanım anahtarı, otomatik doldurmada kullanılamaz.";
+
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC, iOS 13 veya sonrasını gerektirir.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "Donanım Anahtarı Yok";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Yardım";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Anahtar dosya silinsin mi? \n Yedeğini aldığınızdan emin olun.";
+
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Veritabanı listeden silinsin mi?\n\n(Sadece gördüğünüz listeden silinir. Bulut hizmetinizden veya cihazınızdan silinmez.) Daha sonra tekrar ekleyebilirsiniz.";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "Neleri kaçırıyorsunuz??";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "Ne elde edeceksiniz?";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Hemen Satın Alın";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "Ücretsiz Devam Et";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "Premium Denemeyi Başlat";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "Şimdi Premium'a Geç";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Aboneliğini Yönet";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Ömür Boyu Lisans";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "%@'ten önceki tüm versiyonlar için \"Ömür Boyu Lisans\"ınız var.";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "1 Yıl Boyunca e-mail Desteği";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "Tüm Premium Özellikler";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "Müşteri hizmetleri: Online Forumlar";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "Mevcut Premium Özellikler";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "Müşteri hizmetleri: e-mail";
+
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Aile Paylaşımı";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Ücretsiz Kullanıma Dair Hatırlatma";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Gelecekte eklenecek tüm Premium özellikler; her defasında tekrar tekrar satın almayı gerektirecek.";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "Gelecekteki Premium Özellikler";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Kiralama lisansı (Perpetual fallback license)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Satın alma aboneliği";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Güncellemeler ve Hata Düzeltmeleri";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "Bedava";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "Ücretsiz Plan";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "Varsayılan";
+
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\nSatın alma onaylandığında Apple Kimliğinden ödeme tahsil edilecektir. Geçerli abonelik dönemi bitmeden en az 24 saat önceden otomatik yenileme özelliği kapatılmazsa abonelik otomatik olarak yenilenir. Mevcut abonelik döneminin bitmesine 24 saat kala hesabından yenileme ücreti tahsil edilir. Satın almadan sonra App Store’da hesap ayarlarına giderek aboneliklerini yönetebilir ve iptal edebilirsin.\n";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ ücretsiz, sonrasında %2$@";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, yükseltme hazır değil. Bu olmamalıydı, lütfen desteğe başvurun.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Premium'a Yükselt";
+
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Lütfen eski aboneliğinizi iptal etmeniz gerekiyor mu kontrol edin.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Teşekkürler! Biz ödeme onayını beklerken, siz KeePassium'un Premium özellikleri keşfetmeye başlayabilirsiniz.";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "Ayda %@";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "Yılda %@";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "Tek seferlik %@";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ ayda %@";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "AppStore'a bağlanılıyor...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "Satın alınıyor...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "Tüm ödemeler geri yüklendi, uygulamanın tadını çıkarın!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "Satın alma geri yüklendi";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "Tüm önceki ödemeler geri yüklendi. Fakat bu uygulamayı daha önce satın almamışsınız.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "Üzgünüz";
+
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Ödemeniz için çok teşekkürler!";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Özelleştirilebilir Uygulama Simgeleri";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "Premium'a geçin ve KeePassium'un tüm avantajlarından yararlanın.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "Premium Özellik";
+
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "Premium versiyonda; güvenliğinizi donanım anahtarları (YubiKey) kullanarak artırın.";
+
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Donanım Anahtarları";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Karmaşık ana şifrelerinizi girerken zaman kazanın; premium sürümde veritabanınızı daha uzun süre açık tutun.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Uzun Süreli Veritabanı Zaman Aşımları";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Premium versiyonda veritabanları arasında kolayca geçiş yapın.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Çoklu Veritabanı";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Premium sürümde görüntüleri ve belgeleri doğrudan uygulamada önizleyin.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "Bağlılıkları Önizle";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "Şifreyi Göster";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(Lütfen sorunu burada açıklayın)";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "YubiKey olmadan";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "Anahtarı Yerleştirin";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "Anahtara Dokunun";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "YubiKey Slot %d'i kullan";
+
+/* Action/button to add database to the app */
+"Add Database" = "Veritabanı Ekle";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "Veritabanı Seç";
+
+/* Action/button */
+"Import Database" = "Veritabanını İçe Aktar";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "KeePass veritabanı anahtar dosya olarak kullanılmamalıdır. Lütfen farklı bir dosya seçin.";
+

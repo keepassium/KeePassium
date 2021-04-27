@@ -1,0 +1,9 @@
+/* Class = "UITableViewController"; title = "File Sorting"; ObjectID = "87L-KA-IeR"; Note = "Settings page"; */
+"87L-KA-IeR.title" = "Dosya Sıralama";
+
+/* Class = "UILabel"; text = "Show Backup Files"; ObjectID = "pp5-eX-yPx"; Note = "Settings switch: whether to include backup copies in the file list"; */
+"pp5-eX-yPx.text" = "Yedek Dosyaları Göster";
+
+/* Class = "UILabel"; text = "{Prototype Sorting Cell}"; ObjectID = "xy9-Tf-Yi6"; Note = "#bc-ignore!"; */
+"xy9-Tf-Yi6.text" = "{Prototype Sorting Cell}";
+
