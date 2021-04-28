@@ -1300,6 +1300,7 @@ public class Database2: Database {
             return false
         }
         meta.deleteCustomIcon(uuid: uuid)
+        deletedObjects.append(DeletedObject2(database: self, uuid: uuid))
         removeUnusedCustomIconRefs()
         Diag.debug("Custom icon deleted OK")
         return true
@@ -1343,6 +1344,7 @@ extension Database2: Database2XMLTimeFormatter {
 
 private extension Group2 {
     func enforceCustomIconUUID(isValid validValues: Set<UUID>) {
+        guard customIconUUID != UUID.ZERO else { return }
         if !validValues.contains(self.customIconUUID) {
             customIconUUID = UUID.ZERO
         }
@@ -1351,6 +1353,7 @@ private extension Group2 {
 
 private extension Entry2 {
     func enforceCustomIconUUID(isValid validValues: Set<UUID>) {
+        guard customIconUUID != UUID.ZERO else { return }
         if !validValues.contains(customIconUUID) {
             customIconUUID = UUID.ZERO
         }

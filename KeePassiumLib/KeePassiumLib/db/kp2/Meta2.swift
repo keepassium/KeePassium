@@ -229,7 +229,7 @@ final class Meta2: Eraseable {
                 try memoryProtection.load(xml: tag)
                 Diag.verbose("Memory protection loaded OK")
             case Xml2.customIcons:
-                try loadCustomIcons(xml: tag)
+                try loadCustomIcons(xml: tag, timeParser: timeParser)
                 Diag.verbose("Custom icons loaded OK [count: \(customIcons.count)]")
             case Xml2.recycleBinEnabled:
                 self.isRecycleBinEnabled = Bool(string: tag.value)
@@ -268,14 +268,14 @@ final class Meta2: Eraseable {
         }
     }
     
-    func loadCustomIcons(xml: AEXMLElement) throws {
+    func loadCustomIcons(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
         assert(xml.name == Xml2.customIcons)
         Diag.verbose("Loading XML: custom icons")
         for tag in xml.children {
             switch tag.name {
             case Xml2.icon:
                 let icon = CustomIcon2()
-                try icon.load(xml: tag) 
+                try icon.load(xml: tag, timeParser: timeParser) 
                 customIcons.append(icon)
                 Diag.verbose("Custom icon loaded OK")
             default:
@@ -460,7 +460,7 @@ final class Meta2: Eraseable {
             let xmlCustomIcons = AEXMLElement(name: Xml2.customIcons)
             for customIcon in customIcons {
                 xmlCustomIcons.addChild(
-                    customIcon.toXml(formatVersion: formatVersion)
+                    customIcon.toXml(formatVersion: formatVersion, timeFormatter: timeFormatter)
                 )
             }
             return xmlCustomIcons
