@@ -1300,8 +1300,21 @@ public class Database2: Database {
             return false
         }
         meta.deleteCustomIcon(uuid: uuid)
+        removeUnusedCustomIconRefs()
         Diag.debug("Custom icon deleted OK")
         return true
+    }
+    
+    private func removeUnusedCustomIconRefs() {
+        let knownIconUUIDs = Set<UUID>(customIcons.map { $0.uuid })
+        root?.applyToAllChildren(
+            groupHandler: { group in
+                (group as! Group2).enforceCustomIconUUID(isValid: knownIconUUIDs)
+            },
+            entryHandler: { entry in
+                (entry as! Entry2).enforceCustomIconUUID(isValid: knownIconUUIDs)
+            }
+        )
     }
 }
 
@@ -1327,3 +1340,24 @@ extension Database2: Database2XMLTimeFormatter {
         }
     }
 }
+
+private extension Group2 {
+    func enforceCustomIconUUID(isValid validValues: Set<UUID>) {
+        if !validValues.contains(self.customIconUUID) {
+            customIconUUID = UUID.ZERO
+        }
+    }
+}
+
+private extension Entry2 {
+    func enforceCustomIconUUID(isValid validValues: Set<UUID>) {
+        if !validValues.contains(customIconUUID) {
+            customIconUUID = UUID.ZERO
+        }
+        history.forEach { historyEntry in
+            historyEntry.enforceCustomIconUUID(isValid: validValues)
+        }
+    }
+}
+
+

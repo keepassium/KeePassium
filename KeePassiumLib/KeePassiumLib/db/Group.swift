@@ -216,6 +216,14 @@ public class Group: DatabaseItem, Eraseable {
         entries.append(contentsOf: self.entries)
     }
     
+    public func applyToAllChildren(groupHandler: ((Group)->Void)?, entryHandler: ((Entry)->Void)?) {
+        groupHandler?(self)
+        entries.forEach { entryHandler?($0) }
+        groups.forEach {
+            $0.applyToAllChildren(groupHandler: groupHandler, entryHandler: entryHandler)
+        }
+    }
+    
     public func collectAllEntries(to entries: inout Array<Entry>) {
         for group in self.groups {
             group.collectAllEntries(to: &entries)
