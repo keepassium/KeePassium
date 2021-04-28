@@ -30,21 +30,16 @@ public class DeletedObject2: Eraseable {
         deletionTime = Date.now
     }
     
-    func load(xml: AEXMLElement) throws {
+    func load(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
         assert(xml.name == Xml2.deletedObject)
         Diag.verbose("Loading XML: deleted object")
-        guard let database = database else {
-            assertionFailure("Database is nil")
-            Diag.warning("Database is nil")
-            return 
-        }
         erase()
         for tag in xml.children {
             switch tag.name {
             case Xml2.uuid:
                 self.uuid = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.deletionTime:
-                guard let deletionTime = database.xmlStringToDate(tag.value) else {
+                guard let deletionTime = timeParser.xmlStringToDate(tag.value) else {
                     Diag.error("Cannot parse DeletedObject/DeletionTime as Date")
                     throw Xml2.ParsingError.malformedValue(
                         tag: "DeletedObject/DeletionTime",
@@ -60,16 +55,11 @@ public class DeletedObject2: Eraseable {
         }
     }
     
-    func toXml() -> AEXMLElement {
+    func toXml(timeFormatter: Database2XMLTimeFormatter) -> AEXMLElement {
         Diag.verbose("Generating XML: deleted object")
         let xml = AEXMLElement(name: Xml2.deletedObject)
-        guard let database = database else {
-            assertionFailure("Database is nil")
-            Diag.warning("Database is nil")
-            return xml
-        }
         xml.addChild(name: Xml2.uuid, value: uuid.base64EncodedString())
-        xml.addChild(name: Xml2.deletionTime, value: database.xmlDateToString(deletionTime))
+        xml.addChild(name: Xml2.deletionTime, value: timeFormatter.dateToXMLString(deletionTime))
         return xml
     }
 }

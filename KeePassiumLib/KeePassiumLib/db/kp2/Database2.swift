@@ -8,8 +8,14 @@
 
 import Foundation
 
+protocol Database2XMLTimeFormatter {
+    func dateToXMLString(_ date: Date) -> String
+}
+protocol Database2XMLTimeParser {
+    func xmlStringToDate(_ string: String?) -> Date?
+}
+
 public class Database2: Database {
-    
     public enum FormatVersion: Comparable, CustomStringConvertible {
         case v3
         case v4
@@ -226,7 +232,7 @@ public class Database2: Database {
             
             try removeGarbageAfterXML(data: xmlData) 
 
-            try load(xmlData: xmlData, warnings: warnings) 
+            try load(xmlData: xmlData, timeParser: self, warnings: warnings)
             
             if let backupGroup = getBackupGroup(createIfMissing: false) {
                 backupGroup.deepSetDeleted(true)
@@ -286,25 +292,6 @@ public class Database2: Database {
         }
         
         self.compositeKey = compositeKey
-    }
-    
-    func xmlStringToDate(_ string: String?) -> Date? {
-        let trimmedString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
-        switch header.formatVersion {
-        case .v3:
-            return Date(iso8601string: trimmedString)
-        case .v4, .v4_1:
-            return Date(base64Encoded: trimmedString)
-        }
-    }
-    
-    func xmlDateToString(_ date: Date) -> String {
-        switch header.formatVersion {
-        case .v3:
-            return date.iso8601String()
-        case .v4, .v4_1:
-            return date.base64EncodedString()
-        }
     }
     
     func decryptBlocksV4(data: ByteArray, cipher: DataCipher) throws -> ByteArray {
@@ -483,7 +470,11 @@ public class Database2: Database {
         data.trim(toCount: _closingTagIndex + finalTagSize)
     }
 
-    func load(xmlData: ByteArray, warnings: DatabaseLoadingWarnings) throws {
+    func load(
+        xmlData: ByteArray,
+        timeParser: Database2XMLTimeParser,
+        warnings: DatabaseLoadingWarnings
+    ) throws {
         var parsingOptions = AEXMLOptions()
         parsingOptions.documentHeader.standalone = "yes"
         parsingOptions.parserSettings.shouldTrimWhitespace = false
@@ -510,6 +501,7 @@ public class Database2: Database {
                         xml: tag,
                         formatVersion: header.formatVersion,
                         streamCipher: header.streamCipher,
+                        timeParser: self,
                         warnings: warnings
                     ) 
                     
@@ -519,7 +511,12 @@ public class Database2: Database {
                     }
                     Diag.verbose("Meta loaded OK")
                 case Xml2.root:
-                    try loadRoot(xml: tag, root: rootGroup, warnings: warnings)
+                    try loadRoot(
+                        xml: tag,
+                        root: rootGroup,
+                        timeParser: timeParser,
+                        warnings: warnings
+                    ) 
                     Diag.verbose("XML root loaded OK")
                 default:
                     throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "KeePassFile/*")
@@ -545,9 +542,9 @@ public class Database2: Database {
     internal func loadRoot(
         xml: AEXMLElement,
         root: Group2,
+        timeParser: Database2XMLTimeParser,
         warnings: DatabaseLoadingWarnings
-        ) throws
-    {
+    ) throws {
         assert(xml.name == Xml2.root)
         Diag.debug("Loading XML root")
         for tag in xml.children {
@@ -557,23 +554,27 @@ public class Database2: Database {
                     xml: tag,
                     formatVersion: header.formatVersion,
                     streamCipher: header.streamCipher,
+                    timeParser: timeParser,
                     warnings: warnings
                 ) 
             case Xml2.deletedObjects:
-                try loadDeletedObjects(xml: tag)
+                try loadDeletedObjects(xml: tag, timeParser: timeParser)
             default:
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "Root/*")
             }
         }
     }
     
-    private func loadDeletedObjects(xml: AEXMLElement) throws {
+    private func loadDeletedObjects(
+        xml: AEXMLElement,
+        timeParser: Database2XMLTimeParser
+    ) throws {
         assert(xml.name == Xml2.deletedObjects)
         for tag in xml.children {
             switch tag.name {
             case Xml2.deletedObject:
                 let deletedObject = DeletedObject2(database: self)
-                try deletedObject.load(xml: tag)
+                try deletedObject.load(xml: tag, timeParser: timeParser)
                 deletedObjects.append(deletedObject)
             default:
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "DeletedObjects/*")
@@ -935,7 +936,7 @@ public class Database2: Database {
         header.write(to: outStream) 
 
         meta.headerHash = header.hash
-        let xmlString = try self.toXml().xml 
+        let xmlString = try self.toXml(timeFormatter: self).xml 
         let xmlData = ByteArray(utf8String: xmlString)
         Diag.debug("XML generation OK")
 
@@ -1149,7 +1150,7 @@ public class Database2: Database {
         writingProgress.completedUnitCount = writingProgress.totalUnitCount
     }
     
-    func toXml() throws -> AEXMLDocument {
+    func toXml(timeFormatter: Database2XMLTimeFormatter) throws -> AEXMLDocument {
         Diag.debug("Will generate XML")
         var options = AEXMLOptions()
         options.documentHeader.encoding = "utf-8"
@@ -1159,7 +1160,11 @@ public class Database2: Database {
         let xmlMain = AEXMLElement(name: Xml2.keePassFile)
         let xmlDoc = AEXMLDocument(root: xmlMain, options: options)
         xmlMain.addChild(
-            try meta.toXml(streamCipher: header.streamCipher, formatVersion: header.formatVersion)
+            try meta.toXml(
+                streamCipher: header.streamCipher,
+                formatVersion: header.formatVersion,
+                timeFormatter: timeFormatter
+            )
         ) 
         Diag.verbose("XML generation: Meta OK")
         
@@ -1167,14 +1172,15 @@ public class Database2: Database {
         let root2 = root! as! Group2
         let rootXML = try root2.toXml(
             formatVersion: header.formatVersion,
-            streamCipher: header.streamCipher
+            streamCipher: header.streamCipher,
+            timeFormatter: timeFormatter
         ) 
         xmlRoot.addChild(rootXML)
         Diag.verbose("XML generation: Root group OK")
         
         let xmlDeletedObjects = xmlRoot.addChild(name: Xml2.deletedObjects)
         for deletedObject in deletedObjects {
-            xmlDeletedObjects.addChild(deletedObject.toXml())
+            xmlDeletedObjects.addChild(deletedObject.toXml(timeFormatter: timeFormatter))
         }
         return xmlDoc
     }
@@ -1296,5 +1302,28 @@ public class Database2: Database {
         meta.deleteCustomIcon(uuid: uuid)
         Diag.debug("Custom icon deleted OK")
         return true
+    }
+}
+
+extension Database2: Database2XMLTimeParser {
+    func xmlStringToDate(_ string: String?) -> Date? {
+        let trimmedString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
+        switch header.formatVersion {
+        case .v3:
+            return Date(iso8601string: trimmedString)
+        case .v4, .v4_1:
+            return Date(base64Encoded: trimmedString)
+        }
+    }
+}
+
+extension Database2: Database2XMLTimeFormatter {
+    func dateToXMLString(_ date: Date) -> String {
+        switch header.formatVersion {
+        case .v3:
+            return date.iso8601String()
+        case .v4, .v4_1:
+            return date.base64EncodedString()
+        }
     }
 }

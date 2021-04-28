@@ -385,9 +385,9 @@ public class Entry2: Entry {
         xml: AEXMLElement,
         formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
+        timeParser: Database2XMLTimeParser,
         warnings: DatabaseLoadingWarnings
-        ) throws
-    {
+    ) throws {
         assert(xml.name == Xml2.entry)
         Diag.verbose("Loading XML: entry")
         
@@ -435,7 +435,7 @@ public class Entry2: Entry {
                 attachments.append(att)
                 Diag.verbose("Entry attachment loaded OK")
             case Xml2.times:
-                try loadTimes(xml: tag)
+                try loadTimes(xml: tag, timeParser: timeParser)
                 Diag.verbose("Entry times loaded OK")
             case Xml2.autoType:
                 try autoType.load(xml: tag, streamCipher: streamCipher)
@@ -448,13 +448,18 @@ public class Entry2: Entry {
                 qualityCheck = Bool(optString: tag.value) ?? true
             case Xml2.customData: 
                 assert(formatVersion >= .v4)
-                try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Entry")
+                try customData.load(
+                    xml: tag,
+                    streamCipher: streamCipher,
+                    timeParser: timeParser,
+                    xmlParentName: "Entry")
                 Diag.verbose("Entry custom data loaded OK")
             case Xml2.history:
                 try loadHistory(
                     xml: tag,
                     formatVersion: formatVersion,
                     streamCipher: streamCipher,
+                    timeParser: timeParser,
                     warnings: warnings
                 ) 
                 Diag.verbose("Entry history loaded OK")
@@ -465,16 +470,15 @@ public class Entry2: Entry {
         }
     }
     
-    func loadTimes(xml: AEXMLElement) throws {
+    func loadTimes(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
         assert(xml.name == Xml2.times)
         Diag.verbose("Loading XML: entry times")
-        let db = database as! Database2
         
         var optionalExpiryTime: Date?
         for tag in xml.children {
             switch tag.name {
             case Xml2.lastModificationTime:
-                guard let time = db.xmlStringToDate(tag.value) else {
+                guard let time = timeParser.xmlStringToDate(tag.value) else {
                     Diag.error("Cannot parse Entry/Times/LastModificationTime as Date")
                      throw Xml2.ParsingError.malformedValue(
                         tag: "Entry/Times/LastModificationTime",
@@ -482,7 +486,7 @@ public class Entry2: Entry {
                 }
                 lastModificationTime = time
             case Xml2.creationTime:
-                guard let time = db.xmlStringToDate(tag.value) else {
+                guard let time = timeParser.xmlStringToDate(tag.value) else {
                     Diag.error("Cannot parse Entry/Times/CreationTime as Date")
                     throw Xml2.ParsingError.malformedValue(
                         tag: "Entry/Times/CreationTime",
@@ -490,7 +494,7 @@ public class Entry2: Entry {
                 }
                 creationTime = time
             case Xml2.lastAccessTime:
-                guard let time = db.xmlStringToDate(tag.value) else {
+                guard let time = timeParser.xmlStringToDate(tag.value) else {
                     Diag.error("Cannot parse Entry/Times/LastAccessTime as Date")
                     throw Xml2.ParsingError.malformedValue(
                         tag: "Entry/Times/LastAccessTime",
@@ -503,7 +507,7 @@ public class Entry2: Entry {
                     optionalExpiryTime = nil 
                     continue
                 }
-                guard let time = db.xmlStringToDate(tagValue) else {
+                guard let time = timeParser.xmlStringToDate(tagValue) else {
                     Diag.error("Cannot parse Entry/Times/ExpiryTime as Date")
                     throw Xml2.ParsingError.malformedValue(
                         tag: "Entry/Times/ExpiryTime",
@@ -515,7 +519,7 @@ public class Entry2: Entry {
             case Xml2.usageCount:
                 usageCount = UInt32(tag.value) ?? 0
             case Xml2.locationChanged:
-                guard let time = db.xmlStringToDate(tag.value) else {
+                guard let time = timeParser.xmlStringToDate(tag.value) else {
                     Diag.error("Cannot parse Entry/Times/LocationChanged as Date")
                     throw Xml2.ParsingError.malformedValue(
                         tag: "Entry/Times/LocationChanged",
@@ -546,6 +550,7 @@ public class Entry2: Entry {
         xml: AEXMLElement,
         formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
+        timeParser: Database2XMLTimeParser,
         warnings: DatabaseLoadingWarnings
         ) throws
     {
@@ -559,6 +564,7 @@ public class Entry2: Entry {
                     xml: tag,
                     formatVersion: formatVersion,
                     streamCipher: streamCipher,
+                    timeParser: timeParser,
                     warnings: warnings
                 ) 
                 history.append(histEntry)
@@ -572,11 +578,11 @@ public class Entry2: Entry {
     
     func toXml(
         formatVersion: Database2.FormatVersion,
-        streamCipher: StreamCipher
+        streamCipher: StreamCipher,
+        timeFormatter: Database2XMLTimeFormatter
     ) throws -> AEXMLElement {
         Diag.verbose("Generating XML: entry")
-        let db2 = database as! Database2
-        let meta: Meta2 = db2.meta
+        let meta: Meta2 = (database as! Database2).meta
         
         let xmlEntry = AEXMLElement(name: Xml2.entry)
         xmlEntry.addChild(name: Xml2.uuid, value: uuid.base64EncodedString())
@@ -594,16 +600,16 @@ public class Entry2: Entry {
         let xmlTimes = AEXMLElement(name: Xml2.times)
         xmlTimes.addChild(
             name: Xml2.creationTime,
-            value: db2.xmlDateToString(creationTime))
+            value: timeFormatter.dateToXMLString(creationTime))
         xmlTimes.addChild(
             name: Xml2.lastModificationTime,
-            value: db2.xmlDateToString(lastModificationTime))
+            value: timeFormatter.dateToXMLString(lastModificationTime))
         xmlTimes.addChild(
             name: Xml2.lastAccessTime,
-            value: db2.xmlDateToString(lastAccessTime))
+            value: timeFormatter.dateToXMLString(lastAccessTime))
         xmlTimes.addChild(
             name: Xml2.expiryTime,
-            value: db2.xmlDateToString(expiryTime))
+            value: timeFormatter.dateToXMLString(expiryTime))
         xmlTimes.addChild(
             name: Xml2.expires,
             value: canExpire ? Xml2._true : Xml2._false)
@@ -612,7 +618,7 @@ public class Entry2: Entry {
             value: String(usageCount))
         xmlTimes.addChild(
             name: Xml2.locationChanged,
-            value: db2.xmlDateToString(locationChangedTime))
+            value: timeFormatter.dateToXMLString(locationChangedTime))
         xmlEntry.addChild(xmlTimes)
         
         for field in fields {
@@ -638,15 +644,19 @@ public class Entry2: Entry {
         }
         
         if formatVersion >= .v4 && !customData.isEmpty{
-            xmlEntry.addChild(customData.toXml())
+            xmlEntry.addChild(customData.toXml(timeFormatter: timeFormatter))
         }
         
         if !history.isEmpty {
             let xmlHistory = xmlEntry.addChild(name: Xml2.history)
             for histEntry in history {
                 xmlHistory.addChild(
-                    try histEntry.toXml(formatVersion: formatVersion, streamCipher: streamCipher)
-                ) 
+                    try histEntry.toXml(
+                        formatVersion: formatVersion,
+                        streamCipher: streamCipher,
+                        timeFormatter: timeFormatter
+                    )
+                )
             }
         }
         return xmlEntry

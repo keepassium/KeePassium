@@ -58,14 +58,24 @@ public class CustomData2: Eraseable {
         return copy
     }
     
-    func load(xml: AEXMLElement, streamCipher: StreamCipher, xmlParentName: String) throws {
+    func load(
+        xml: AEXMLElement,
+        streamCipher: StreamCipher,
+        timeParser: Database2XMLTimeParser,
+        xmlParentName: String
+    ) throws {
         assert(xml.name == Xml2.customData)
         Diag.verbose("Loading XML: custom data")
         erase()
         for tag in xml.children {
             switch tag.name {
             case Xml2.item:
-                try loadItem(xml: tag, streamCipher: streamCipher, xmlParentName: xmlParentName)
+                try loadItem(
+                    xml: tag,
+                    streamCipher: streamCipher,
+                    timeParser: timeParser,
+                    xmlParentName: xmlParentName
+                )
                 Diag.verbose("Item loaded OK")
             default:
                 Diag.error("Unexpected XML tag in CustomData: \(tag.name)")
@@ -79,6 +89,7 @@ public class CustomData2: Eraseable {
     private func loadItem(
         xml: AEXMLElement,
         streamCipher: StreamCipher,
+        timeParser: Database2XMLTimeParser,
         xmlParentName: String = "?") throws
     {
         assert(xml.name == Xml2.item)
@@ -92,8 +103,7 @@ public class CustomData2: Eraseable {
             case Xml2.value:
                 value = tag.value ?? ""
             case Xml2.lastModificationTime:
-                let database = self.database as! Database2
-                optionalTimestamp = database.xmlStringToDate(tag.value)
+                optionalTimestamp = timeParser.xmlStringToDate(tag.value)
             default:
                 Diag.error("Unexpected XML tag in CustomData/Item: \(tag.name)")
                 throw Xml2.ParsingError.unexpectedTag(
@@ -117,7 +127,7 @@ public class CustomData2: Eraseable {
     }
     
     
-    func toXml() -> AEXMLElement {
+    func toXml(timeFormatter: Database2XMLTimeFormatter) -> AEXMLElement {
         Diag.verbose("Generating XML: custom data")
         let xml = AEXMLElement(name: Xml2.customData)
         if dict.isEmpty {
@@ -130,8 +140,7 @@ public class CustomData2: Eraseable {
             let item = keyValuePair.value
             xmlItem.addChild(name: Xml2.value, value: item.value)
             if let timestamp = item.lastModificationTime {
-                let database = self.database as! Database2
-                let timestampString = database.xmlDateToString(timestamp)
+                let timestampString = timeFormatter.dateToXMLString(timestamp)
                 xmlItem.addChild(name: Xml2.lastModificationTime, value: timestampString)
             }
         }

@@ -134,9 +134,9 @@ public class Group2: Group {
         xml: AEXMLElement,
         formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
+        timeParser: Database2XMLTimeParser,
         warnings: DatabaseLoadingWarnings
-        ) throws
-    {
+    ) throws {
         assert(xml.name == Xml2.group)
         Diag.verbose("Loading XML: group")
         
@@ -169,7 +169,7 @@ public class Group2: Group {
             case Xml2.customIconUUID:
                 self.customIconUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.times:
-                try loadTimes(xml: tag)
+                try loadTimes(xml: tag, timeParser: timeParser)
                 Diag.verbose("Group times loaded OK")
             case Xml2.isExpanded:
                 self.isExpanded = Bool(string: tag.value)
@@ -189,7 +189,12 @@ public class Group2: Group {
                 self.tags = tag.value ?? ""
             case Xml2.customData:
                 assert(formatVersion >= .v4)
-                try customData.load(xml: tag, streamCipher: streamCipher, xmlParentName: "Group")
+                try customData.load(
+                    xml: tag,
+                    streamCipher: streamCipher,
+                    timeParser: timeParser,
+                    xmlParentName: "Group"
+                )
                 Diag.verbose("Custom data loaded OK")
             case Xml2.group:
                 let subGroup = Group2(database: database)
@@ -197,6 +202,7 @@ public class Group2: Group {
                     xml: tag,
                     formatVersion: formatVersion,
                     streamCipher: streamCipher,
+                    timeParser: timeParser,
                     warnings: warnings
                 ) 
                 self.add(group: subGroup)
@@ -207,6 +213,7 @@ public class Group2: Group {
                     xml: tag,
                     formatVersion: formatVersion,
                     streamCipher: streamCipher,
+                    timeParser: timeParser,
                     warnings: warnings
                 ) 
                 self.add(entry: entry)
@@ -221,13 +228,17 @@ public class Group2: Group {
         }
     }
     
-    private func parseTimestamp(value: String?, tag: String, fallbackToEpoch: Bool) throws -> Date {
+    private func parseTimestamp(
+        value: String?,
+        tag: String,
+        fallbackToEpoch: Bool,
+        timeParser: Database2XMLTimeParser
+    ) throws -> Date {
         if (value == nil || value!.isEmpty) && fallbackToEpoch {
             Diag.warning("\(tag) is empty, will use 1970-01-01 instead")
             return Date(timeIntervalSince1970: 0.0)
         }
-        let db = database as! Database2
-        guard let time = db.xmlStringToDate(value) else {
+        guard let time = timeParser.xmlStringToDate(value) else {
             Diag.error("Cannot parse \(tag) as Date")
             throw Xml2.ParsingError.malformedValue(
                 tag: tag,
@@ -236,7 +247,7 @@ public class Group2: Group {
         return time
     }
     
-    func loadTimes(xml: AEXMLElement) throws {
+    func loadTimes(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
         assert(xml.name == Xml2.times)
         Diag.verbose("Loading XML: group times")
         
@@ -246,22 +257,26 @@ public class Group2: Group {
                 lastModificationTime = try parseTimestamp(
                     value: tag.value,
                     tag: "Group/Times/LastModificationTime",
-                    fallbackToEpoch: true)
+                    fallbackToEpoch: true,
+                    timeParser: timeParser)
             case Xml2.creationTime:
                 creationTime = try parseTimestamp(
                     value: tag.value,
                     tag: "Group/Times/CreationTime",
-                    fallbackToEpoch: true)
+                    fallbackToEpoch: true,
+                    timeParser: timeParser)
             case Xml2.lastAccessTime:
                 lastAccessTime = try parseTimestamp(
                     value: tag.value,
                     tag: "Group/Times/LastAccessTime",
-                    fallbackToEpoch: true)
+                    fallbackToEpoch: true,
+                    timeParser: timeParser)
             case Xml2.expiryTime:
                 expiryTime = try parseTimestamp(
                     value: tag.value,
                     tag: "Group/Times/ExpiryTime",
-                    fallbackToEpoch: true)
+                    fallbackToEpoch: true,
+                    timeParser: timeParser)
             case Xml2.expires:
                 canExpire = Bool(string: tag.value)
             case Xml2.usageCount:
@@ -270,7 +285,8 @@ public class Group2: Group {
                 locationChangedTime = try parseTimestamp(
                     value: tag.value,
                     tag: "Group/Times/LocationChanged",
-                    fallbackToEpoch: true)
+                    fallbackToEpoch: true,
+                    timeParser: timeParser)
             default:
                 Diag.error("Unexpected XML tag in Group/Times: \(tag.name)")
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "Group/Times/*")
@@ -280,7 +296,8 @@ public class Group2: Group {
     
     func toXml(
         formatVersion: Database2.FormatVersion,
-        streamCipher: StreamCipher
+        streamCipher: StreamCipher,
+        timeFormatter: Database2XMLTimeFormatter
     ) throws -> AEXMLElement {
         Diag.verbose("Generating XML: group")
         let xmlGroup = AEXMLElement(name: Xml2.group)
@@ -294,20 +311,19 @@ public class Group2: Group {
                 value: customIconUUID.base64EncodedString())
         }
         
-        let db2 = database as! Database2
         let xmlTimes = AEXMLElement(name: Xml2.times)
         xmlTimes.addChild(
             name: Xml2.creationTime,
-            value: db2.xmlDateToString(creationTime))
+            value: timeFormatter.dateToXMLString(creationTime))
         xmlTimes.addChild(
             name: Xml2.lastModificationTime,
-            value: db2.xmlDateToString(lastModificationTime))
+            value: timeFormatter.dateToXMLString(lastModificationTime))
         xmlTimes.addChild(
             name: Xml2.lastAccessTime,
-            value: db2.xmlDateToString(lastAccessTime))
+            value: timeFormatter.dateToXMLString(lastAccessTime))
         xmlTimes.addChild(
             name: Xml2.expiryTime,
-            value: db2.xmlDateToString(expiryTime))
+            value: timeFormatter.dateToXMLString(expiryTime))
         xmlTimes.addChild(
             name: Xml2.expires,
             value: canExpire ? Xml2._true : Xml2._false)
@@ -316,7 +332,7 @@ public class Group2: Group {
             value: String(usageCount))
         xmlTimes.addChild(
             name: Xml2.locationChanged,
-            value: db2.xmlDateToString(locationChangedTime))
+            value: timeFormatter.dateToXMLString(locationChangedTime))
         xmlGroup.addChild(xmlTimes)
         xmlGroup.addChild(
             name: Xml2.isExpanded,
@@ -355,18 +371,25 @@ public class Group2: Group {
         }
         
         if formatVersion >= .v4 && !customData.isEmpty{
-            xmlGroup.addChild(customData.toXml())
+            xmlGroup.addChild(customData.toXml(timeFormatter: timeFormatter))
         }
         
         for entry in entries {
             let entry2 = entry as! Entry2
-            let entryXML = try entry2.toXml(formatVersion: formatVersion, streamCipher: streamCipher)
+            let entryXML = try entry2.toXml(
+                formatVersion: formatVersion,
+                streamCipher: streamCipher,
+                timeFormatter: timeFormatter
+            ) 
             xmlGroup.addChild(entryXML)
         }
 
         for group in groups {
             let group2 = group as! Group2
-            let groupXML = try group2.toXml(formatVersion: formatVersion, streamCipher: streamCipher)
+            let groupXML = try group2.toXml(
+                formatVersion: formatVersion,
+                streamCipher: streamCipher,
+                timeFormatter: timeFormatter)
             xmlGroup.addChild(groupXML)
         }
         return xmlGroup
