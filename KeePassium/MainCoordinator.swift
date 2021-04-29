@@ -70,7 +70,8 @@ final class MainCoordinator: Coordinator {
         databasePickerCoordinator.start()
         addChildCoordinator(databasePickerCoordinator)
         
-        setDatabase(nil)
+        let startupDatabase = Settings.current.startupDatabase
+        databasePickerCoordinator.selectDatabase(startupDatabase, animated: false)
     }
     
     public func processIncomingURL(_ url: URL, openInPlace: Bool) {
