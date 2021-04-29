@@ -432,6 +432,9 @@ extension DatabaseViewerCoordinator: ProgressViewHost {
             title: title,
             animated: true)
         progressOverlay?.isCancellable = allowCancelling
+        progressOverlay?.unresponsiveCancelHandler = { [weak self] in
+            self?.showDiagnostics()
+        }
     }
     
     public func updateProgressView(with progress: ProgressEx) {

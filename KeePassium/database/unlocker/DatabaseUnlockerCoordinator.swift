@@ -38,7 +38,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     private var selectedKeyFileRef: URLReference?
     private var selectedHardwareKey: YubiKey?
     
-    private var canUseFinalKey = true
+    private var mayUseFinalKey = true
     
     init(router: NavigationRouter, databaseRef: URLReference) {
         self.router = router
@@ -67,6 +67,28 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     func setDatabase(_ fileRef: URLReference) {
         databaseRef = fileRef
         databaseUnlockerVC.databaseRef = fileRef
+        
+        guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef) else {
+            refresh()
+            return
+        }
+        
+        if let associatedKeyFileRef = dbSettings.associatedKeyFile {
+            let allKeyFiles = FileKeeper.shared.getAllReferences(
+                fileType: .keyFile,
+                includeBackup: false)
+            let matchingKeyFile = associatedKeyFileRef.find(
+                in: allKeyFiles,
+                fallbackToNamesake: true)
+            setKeyFile(matchingKeyFile) 
+        } else {
+            setKeyFile(nil)
+        }
+
+        let associatedYubiKey = dbSettings.associatedYubiKey
+        setHardwareKey(associatedYubiKey) 
+        
+        mayUseFinalKey = true
         refresh()
     }
 }
@@ -125,7 +147,7 @@ extension DatabaseUnlockerCoordinator {
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
             dbSettings.maybeSetAssociatedKeyFile(fileRef)
         }
-
+        
         databaseUnlockerVC.setKeyFile(fileRef)
         databaseUnlockerVC.refresh()
     }
@@ -134,13 +156,7 @@ extension DatabaseUnlockerCoordinator {
         selectedHardwareKey = yubiKey
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
             dbSettings.maybeSetAssociatedYubiKey(yubiKey)
-        }
-        if let _yubiKey = yubiKey {
-            Diag.info("Hardware key selected [key: \(_yubiKey)]")
-        } else {
-            Diag.info("No hardware key selected")
-        }
-        
+        }        
         databaseUnlockerVC.setYubiKey(yubiKey)
         databaseUnlockerVC.refresh()
     }
@@ -155,10 +171,19 @@ extension DatabaseUnlockerCoordinator {
     }
     #endif
     
+    public func canUnlockAutomatically() -> Bool {
+        guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef) else {
+            return false
+        }
+        return dbSettings.hasMasterKey
+    }
+    
     private func tryToUnlockDatabase() {
         Diag.clear()
 
         delegate?.willUnlockDatabase(databaseRef, in: self)
+
+        databaseUnlockerVC.hideErrorMessage(animated: true)
         DatabaseManager.shared.addObserver(self)
         
         #if AUTOFILL_EXT
@@ -173,15 +198,21 @@ extension DatabaseUnlockerCoordinator {
             DatabaseManager.shared.startLoadingDatabase(
                 database: databaseRef,
                 compositeKey: databaseKey,
-                canUseFinalKey: canUseFinalKey)
+                canUseFinalKey: mayUseFinalKey)
         } else {
-            canUseFinalKey = false 
+            mayUseFinalKey = false 
             let password = databaseUnlockerVC.password
             DatabaseManager.shared.startLoadingDatabase(
                 database: databaseRef,
                 password: password,
                 keyFile: selectedKeyFileRef,
                 challengeHandler: challengeHandler)
+        }
+    }
+    
+    private func eraseMasterKey() {
+        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) {
+            $0.clearMasterKey()
         }
     }
 }
@@ -200,11 +231,18 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
     ) {
         selectHardwareKey(at: popoverAnchor, in: viewController)
     }
-    
+
+    func canUnlockAutomatically(_ viewController: DatabaseUnlockerVC) -> Bool {
+        return canUnlockAutomatically()
+    }
     func didPressUnlock(in viewController: DatabaseUnlockerVC) {
         tryToUnlockDatabase()
     }
 
+    func didPressLock(in viewController: DatabaseUnlockerVC) {
+        eraseMasterKey()
+    }
+    
     func didPressShowDiagnostics(
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC
@@ -215,11 +253,13 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
 
 extension DatabaseUnlockerCoordinator: KeyFilePickerCoordinatorDelegate {
     func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
+        databaseUnlockerVC.hideErrorMessage(animated: false)
         setKeyFile(keyFile)
     }
     
     func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
         if keyFile == selectedKeyFileRef {
+            databaseUnlockerVC.hideErrorMessage(animated: false)
             setKeyFile(nil)
         }
         databaseUnlockerVC.refresh()
@@ -228,6 +268,7 @@ extension DatabaseUnlockerCoordinator: KeyFilePickerCoordinatorDelegate {
 
 extension DatabaseUnlockerCoordinator: HardwareKeyPickerCoordinatorDelegate {
     func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
+        databaseUnlockerVC.hideErrorMessage(animated: false)
         setHardwareKey(yubiKey)
     }
 }
@@ -257,9 +298,9 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
     
     func databaseManager(database urlRef: URLReference, invalidMasterKey message: String) {
         DatabaseManager.shared.removeObserver(self)
-        if canUseFinalKey {
+        if mayUseFinalKey {
             Diag.info("Express unlock failed, retrying slow")
-            canUseFinalKey = false
+            mayUseFinalKey = false
             tryToUnlockDatabase()
         } else {
             DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in

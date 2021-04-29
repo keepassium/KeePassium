@@ -429,5 +429,14 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
 
 extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
     func didLeaveDatabase(in coordinator: DatabaseViewerCoordinator) {
+        Diag.debug("Did leave database")
+        DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: true) {
+            [weak self] error in
+            guard let self = self else { return }
+            self.setDatabase(self.selectedDatabaseRef)
+            if let error = error {
+                self.rootSplitVC.showErrorAlert(error)
+            }
+        }
     }
 }
