@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias YubiHandler = ((KeyFileTextField)->Void)
+typealias YubiHandler = ((KeyFileTextField, PopoverAnchor)->Void)
 
 class KeyFileTextField: ValidatingTextField {
     private let horizontalInsets = CGFloat(8.0)
@@ -70,7 +70,8 @@ class KeyFileTextField: ValidatingTextField {
             height: yubiKeyOffImage.size.height + 2 * verticalInsets)
     }
     
-    @objc private func didPressYubiButton(_ sender: Any) {
-        self.yubikeyHandler?(self)
+    @objc private func didPressYubiButton(_ sender: UIButton) {
+        let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
+        self.yubikeyHandler?(self, popoverAnchor)
     }
 }

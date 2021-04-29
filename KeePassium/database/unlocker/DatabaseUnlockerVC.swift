@@ -63,11 +63,8 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         keyFileField.delegate = self
         
         keyFileField.yubikeyHandler = {
-            [weak self] (field) in
+            [weak self] (field, popoverAnchor) in
             guard let self = self else { return }
-            let popoverAnchor = PopoverAnchor(
-                sourceView: self.keyFileField,
-                sourceRect: self.keyFileField.bounds)
             self.delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
         }
     }

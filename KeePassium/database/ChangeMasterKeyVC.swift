@@ -99,11 +99,8 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     
     private func setupHardwareKeyPicker() {
         keyFileField.yubikeyHandler = {
-            [weak self] (field) in
+            [weak self] (field, popoverAnchor) in
             guard let self = self else { return }
-            let popoverAnchor = PopoverAnchor(
-                sourceView: self.keyFileField,
-                sourceRect: self.keyFileField.bounds)
             self.showHardwareKeyPicker(at: popoverAnchor)
         }
     }
