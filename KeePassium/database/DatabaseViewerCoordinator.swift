@@ -279,7 +279,9 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         }
         itemRelocationCoordinator.delegate = self
         itemRelocationCoordinator.start()
+        
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(itemRelocationCoordinator)
     }
     
     func saveDatabase() {
