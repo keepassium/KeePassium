@@ -191,8 +191,7 @@ extension MainCoordinator: UISplitViewControllerDelegate {
         _ splitViewController: UISplitViewController,
         collapseSecondary secondaryViewController: UIViewController,
         onto primaryViewController: UIViewController
-        ) -> Bool
-    {
+    ) -> Bool {
         if secondaryViewController is PlaceholderVC {
             return true 
         }
@@ -204,6 +203,26 @@ extension MainCoordinator: UISplitViewControllerDelegate {
         }
            
         return false
+    }
+
+    func splitViewController(
+        _ splitViewController: UISplitViewController,
+        separateSecondaryFrom primaryViewController: UIViewController
+    ) -> UIViewController? {
+        if databaseViewerRouter != nil {
+            return databaseViewerRouter?.navigationController
+        }
+        if databaseUnlockerRouter != nil {
+            return databaseUnlockerRouter?.navigationController
+        }
+        return placeholderRouter.navigationController
+    }
+
+    func primaryViewController(forExpanding splitViewController: UISplitViewController) -> UIViewController? {
+        return primaryRouter.navigationController
+    }
+    func primaryViewController(forCollapsing splitViewController: UISplitViewController) -> UIViewController? {
+        return primaryRouter.navigationController
     }
 }
 
