@@ -47,7 +47,7 @@ final class MainCoordinator: Coordinator {
         let navController = UINavigationController(rootViewController: placeholderVC)
         placeholderRouter = NavigationRouter(navController)
         
-        watchdog = Watchdog()
+        watchdog = Watchdog.shared
         watchdog.delegate = self
     }
     
