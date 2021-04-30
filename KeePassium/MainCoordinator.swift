@@ -23,7 +23,7 @@ final class MainCoordinator: Coordinator {
     private let placeholderRouter: NavigationRouter
     private var databaseUnlockerRouter: NavigationRouter?
     private var databaseViewerRouter: NavigationRouter?
-    
+
     private let watchdog: Watchdog
     fileprivate var appCoverWindow: UIWindow?
     fileprivate var appLockWindow: UIWindow?
@@ -35,8 +35,8 @@ final class MainCoordinator: Coordinator {
     
     private var selectedDatabaseRef: URLReference?
     
-    init(rootSplitViewController: RootSplitVC) {
-        self.rootSplitVC = rootSplitViewController
+    init(window: UIWindow) {
+        self.rootSplitVC = RootSplitVC()
 
         let primaryNavVC = UINavigationController()
         let secondaryNavVC = UINavigationController()
@@ -49,6 +49,9 @@ final class MainCoordinator: Coordinator {
         
         watchdog = Watchdog.shared
         watchdog.delegate = self
+        
+        rootSplitVC.delegate = self
+        window.rootViewController = rootSplitVC
     }
     
     func start() {
@@ -109,7 +112,9 @@ extension MainCoordinator {
     }
     
     private func showPlaceholder() {
-        rootSplitVC.showDetailViewController(placeholderRouter.navigationController, sender: self)
+        if !rootSplitVC.isCollapsed {
+            rootSplitVC.showDetailViewController(placeholderRouter.navigationController, sender: self)
+        }
         childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
         databaseUnlockerRouter = nil
         databaseViewerRouter = nil
@@ -178,6 +183,27 @@ extension MainCoordinator {
         
         databaseUnlockerRouter = nil
         childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
+    }
+}
+
+extension MainCoordinator: UISplitViewControllerDelegate {
+    func splitViewController(
+        _ splitViewController: UISplitViewController,
+        collapseSecondary secondaryViewController: UIViewController,
+        onto primaryViewController: UIViewController
+        ) -> Bool
+    {
+        if secondaryViewController is PlaceholderVC {
+            return true 
+        }
+        if let secondaryNavVC = secondaryViewController as? UINavigationController,
+           let topSecondary = secondaryNavVC.topViewController,
+           topSecondary is PlaceholderVC
+        {
+            return true 
+        }
+           
+        return false
     }
 }
 

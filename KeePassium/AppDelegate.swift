@@ -22,21 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         initAppGlobals(application)
 
-        window = UIWindow(frame: UIScreen.main.bounds)
+        let window = UIWindow(frame: UIScreen.main.bounds)
         if #available(iOS 13, *) {
             let args = ProcessInfo.processInfo.arguments
             if args.contains("darkMode") {
-                window?.overrideUserInterfaceStyle = .dark
+                window.overrideUserInterfaceStyle = .dark
             }
         }
 
-        let rootSplitVC = RootSplitVC()
-        mainCoordinator = MainCoordinator(rootSplitViewController: rootSplitVC)
+        mainCoordinator = MainCoordinator(window: window)
         mainCoordinator.start()
+        window.makeKeyAndVisible()
         
-        window?.rootViewController = rootSplitVC
-        window?.makeKeyAndVisible()
-        
+        self.window = window
         return true
     }
     

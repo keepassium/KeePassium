@@ -14,19 +14,6 @@ class RootSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         super.viewDidLoad()
         
         self.preferredDisplayMode = .allVisible
-        self.delegate = self
-    }
-    
-    func splitViewController(
-        _ splitViewController: UISplitViewController,
-        collapseSecondary secondaryViewController: UIViewController,
-        onto primaryViewController: UIViewController
-        ) -> Bool
-    {
-        if secondaryViewController is PlaceholderVC {
-            return true 
-        }
-        return false
     }
 }
 
