@@ -518,7 +518,6 @@ final class GroupViewerVC:
         } else if let entry = getEntry(at: indexPath) {
             permissions = delegate?.getActionPermissions(for: entry) ?? DatabaseItemActionPermissions()
         } else {
-            assertionFailure("Unknown item type")
             return []
         }
         
