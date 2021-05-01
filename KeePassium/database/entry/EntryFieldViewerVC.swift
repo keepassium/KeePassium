@@ -6,25 +6,24 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
-import MobileCoreServices
 import KeePassiumLib
 
-
 protocol FieldCopiedViewDelegate: class {
-    func didPressExport(in view: FieldCopiedView, field: ViewableField)
+    func didPressExport(for indexPath: IndexPath, from view: FieldCopiedView)
 }
 
 class FieldCopiedView: UIView {
-    weak var delegate: FieldCopiedViewDelegate?
-    weak var field: ViewableField?
+    var indexPath: IndexPath!
     
     weak var hidingTimer: Timer?
+    weak var delegate: FieldCopiedViewDelegate?
     
     public func show(in tableView: UITableView, at indexPath: IndexPath) {
         hide(animated: false)
         
         guard let cell = tableView.cellForRow(at: indexPath) else { assertionFailure(); return }
+        self.indexPath = indexPath
+        
         self.frame = cell.bounds
         self.layoutIfNeeded()
         cell.addSubview(self)
@@ -74,23 +73,37 @@ class FieldCopiedView: UIView {
     }
     
     @IBAction func didPressExport(_ sender: UIButton) {
-        guard let field = field else { return }
-        delegate?.didPressExport(in: self, field: field)
+        delegate?.didPressExport(for: indexPath, from: self)
     }
 }
 
 
-class EntryFieldViewerVC: UITableViewController, Refreshable {
-    @IBOutlet weak var copiedCellView: FieldCopiedView!
+protocol EntryFieldViewerDelegate: AnyObject {
+    func canEditEntry(in viewController: EntryFieldViewerVC) -> Bool
+    func didPressCopyField(
+        text: String,
+        from viewableField: ViewableField,
+        in viewController: EntryFieldViewerVC)
+    func didPressExportField(
+        text: String,
+        from viewableField: ViewableField,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFieldViewerVC)
+    
+    func didPressEdit(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldViewerVC)
+}
+
+final class EntryFieldViewerVC: UITableViewController, Refreshable {
+    @IBOutlet private weak var copiedCellView: FieldCopiedView!
+    
+    weak var delegate: EntryFieldViewerDelegate?
     
     private let editButton = UIBarButtonItem()
 
     private weak var entry: Entry?
     private var isHistoryMode = false
+    private var category = ItemCategory.default
     private var sortedFields: [ViewableField] = []
-    private var entryChangeNotifications: EntryChangeNotifications!
-    
-    private var entryFieldEditorCoordinator: EntryFieldEditorCoordinator?
 
     static func make(with entry: Entry?, historyMode: Bool) -> EntryFieldViewerVC {
         let viewEntryFieldsVC = EntryFieldViewerVC.instantiateFromStoryboard()
@@ -113,70 +126,50 @@ class EntryFieldViewerVC: UITableViewController, Refreshable {
         editButton.action = #selector(didPressEdit)
         editButton.accessibilityIdentifier = "edit_entry_button" 
 
-        entryChangeNotifications = EntryChangeNotifications(observer: self)
-        entry?.touch(.accessed)
         refresh()
     }
-
-    deinit {
-        entryFieldEditorCoordinator = nil
-    }
-    
+  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        editButton.isEnabled = !(entry?.isDeleted ?? true)
+        editButton.isEnabled = delegate?.canEditEntry(in: self) ?? false
         navigationItem.rightBarButtonItem = isHistoryMode ? nil : editButton
-        entryChangeNotifications.startObserving()
         refresh()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        entryChangeNotifications.stopObserving()
-        super.viewWillDisappear(animated)
-    }
 
-    func refresh() {
-        guard let entry = entry, let database = entry.database else { return }
-        
-        let category = ItemCategory.get(for: entry)
-        let fields = ViewableEntryFieldFactory.makeAll(
-            from: entry,
-            in: database,
-            excluding: [.title, .emptyValues]
-        )
+    func setFields(_ fields: [ViewableField], category: ItemCategory) {
+        self.category = category
         self.sortedFields = fields.sorted {
             return category.compare($0.internalName, $1.internalName)
         }
+        refresh()
+    }
+    
+    func refresh() {
+        guard isViewLoaded else { return }
         tableView.reloadData()
     }
     
     
-    @objc func didPressEdit() {
-        assert(entryFieldEditorCoordinator == nil)
-        guard let entry = entry,
-              let parent = entry.parent,
-              let database = parent.database
-        else {
-            Diag.warning("Entry, parent group or database are undefined")
-            assertionFailure()
-            return
+    @objc func didPressEdit(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressEdit(at: popoverAnchor, in: self)
+    }
+    
+    private func didTapRow(at indexPath: IndexPath) {
+        let fieldNumber = indexPath.row
+        let field = sortedFields[fieldNumber]
+        guard let text = field.resolvedValue else { return }
+
+        delegate?.didPressCopyField(text: text, from: field, in: self)
+        animateCopyingToClipboard(at: indexPath)
+    }
+    
+    func animateCopyingToClipboard(at indexPath: IndexPath) {
+        HapticFeedback.play(.copiedToClipboard)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.copiedCellView.show(in: self.tableView, at: indexPath)
         }
-        
-        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: nil)
-        let entryFieldEditorCoordinator = EntryFieldEditorCoordinator(
-            router: modalRouter,
-            database: database,
-            parent: parent,
-            target: entry
-        )
-        entryFieldEditorCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.entryFieldEditorCoordinator = nil
-        }
-        entryFieldEditorCoordinator.delegate = self
-        entryFieldEditorCoordinator.start()
-        modalRouter.dismissAttemptDelegate = entryFieldEditorCoordinator
-        self.entryFieldEditorCoordinator = entryFieldEditorCoordinator
-        present(modalRouter, animated: true, completion: nil)
     }
     
 
@@ -193,8 +186,7 @@ class EntryFieldViewerVC: UITableViewController, Refreshable {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell
     {
-        let fieldNumber = indexPath.row
-        let field = sortedFields[fieldNumber]
+        let field = getField(at: indexPath)
         let cell = ViewableFieldCellFactory.dequeueAndConfigureCell(
             from: tableView,
             for: indexPath,
@@ -203,33 +195,16 @@ class EntryFieldViewerVC: UITableViewController, Refreshable {
         return cell
     }
     
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    private func getField(at indexPath: IndexPath) -> ViewableField {
         let fieldNumber = indexPath.row
         let field = sortedFields[fieldNumber]
-        guard let text = field.resolvedValue else { return }
-
-        Clipboard.general.insert(text)
-        entry?.touch(.accessed)
-        animateCopyToClipboard(indexPath: indexPath, field: field)
+        return field
     }
     
-    func animateCopyToClipboard(indexPath: IndexPath, field: ViewableField) {
-        copiedCellView.field = field
-        HapticFeedback.play(.copiedToClipboard)
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.copiedCellView.show(in: self.tableView, at: indexPath)
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didTapRow(at: indexPath)
     }
 }
-
-extension EntryFieldViewerVC: EntryChangeObserver {
-    func entryDidChange(entry: Entry) {
-        refresh()
-    }
-}
-
 
 extension EntryFieldViewerVC: ViewableFieldCellDelegate {    
     func cellHeightDidChange(_ cell: ViewableFieldCell) {
@@ -254,27 +229,22 @@ extension EntryFieldViewerVC: ViewableFieldCellDelegate {
     }
     
     func didLongTapAccessoryButton(_ cell: ViewableFieldCell) {
-        guard let value = cell.field?.resolvedValue else { return }
-        guard let accessoryView = cell.accessoryView else { return }
+        guard let field = cell.field,
+              let value = field.resolvedValue,
+              let accessoryView = cell.accessoryView
+        else {
+            return
+        }
         
         HapticFeedback.play(.contextMenuOpened)
-        
-        var items: [Any] = [value]
-        if value.isOpenableURL, let url = URL(string: value) {
-            items = [url]
-        }
-        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        if let popover = activityVC.popoverPresentationController {
-            popover.sourceView = accessoryView
-            popover.sourceRect = accessoryView.bounds
-        }
-        present(activityVC, animated: true)
+        let popoverAnchor = PopoverAnchor(sourceView: accessoryView, sourceRect: accessoryView.bounds)
+        delegate?.didPressExportField(text: value, from: field, at: popoverAnchor, in: self)
     }
 }
 
-
 extension EntryFieldViewerVC: FieldCopiedViewDelegate {
-    func didPressExport(in view: FieldCopiedView, field: ViewableField) {
+    func didPressExport(for indexPath: IndexPath, from view: FieldCopiedView) {
+        let field = getField(at: indexPath)
         guard let value = field.resolvedValue else {
             assertionFailure()
             return
@@ -282,17 +252,7 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
         view.hide(animated: true)
 
         HapticFeedback.play(.contextMenuOpened)
-        let activityController = UIActivityViewController(
-            activityItems: [value],
-            applicationActivities: nil)
-        let popoverAnchor = PopoverAnchor(sourceView: view, sourceRect: view.bounds)
-        popoverAnchor.apply(to: activityController.popoverPresentationController)
-        present(activityController, animated: true)
-    }
-}
-
-extension EntryFieldViewerVC: EntryFieldEditorCoordinatorDelegate {
-    func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {
-        refresh()
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressExportField(text: value, from: field, at: popoverAnchor, in: self)
     }
 }

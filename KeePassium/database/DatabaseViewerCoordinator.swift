@@ -172,8 +172,18 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             secondaryRouter.resetRoot(placeholderVC, animated: false, onPop: nil)
             return
         }
-        let viewEntryVC = ViewEntryVC.make(with: entry)
-        secondaryRouter.resetRoot(viewEntryVC, animated: false, onPop: nil)
+        
+        let entryViewerCoordinator = EntryViewerCoordinator(
+            entry: entry,
+            database: database,
+            router: secondaryRouter
+        )
+        entryViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        entryViewerCoordinator.delegate = self
+        entryViewerCoordinator.start()
+        addChildCoordinator(entryViewerCoordinator)
     }
     
     
@@ -491,6 +501,12 @@ extension DatabaseViewerCoordinator: DatabaseManagerObserver {
             exportableData: data,
             parent: getPresenterForModals()
         )
+    }
+}
+
+extension DatabaseViewerCoordinator: EntryViewerCoordinatorDelegate {
+    func didUpdateEntry(_ entry: Entry, in coordinator: EntryViewerCoordinator) {
+        refresh()
     }
 }
 
