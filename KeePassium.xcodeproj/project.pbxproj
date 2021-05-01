@@ -97,6 +97,8 @@
 		7537FEC0249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
 		7537FEC1249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
 		753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
+		753DF2C1263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
+		753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
 		753F924B22905621005E496F /* PremiumUpgradeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924A22905621005E496F /* PremiumUpgradeHelper.swift */; };
 		753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
@@ -1041,6 +1043,7 @@
 		7538040C25F58C80005C5D32 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		753F293E2643FEF800F0413A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
+		753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewerCoordinator.swift; sourceTree = "<group>"; };
 		753F924A22905621005E496F /* PremiumUpgradeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUpgradeHelper.swift; sourceTree = "<group>"; };
 		753F924D2290705D005E496F /* SKProduct+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+extension.swift"; sourceTree = "<group>"; };
 		753FE83424C1A9A400063FBB /* UIViewController+alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alerts.swift"; sourceTree = "<group>"; };
@@ -2184,13 +2187,13 @@
 		75514A3220DF5B2400202340 /* edit */ = {
 			isa = PBXGroup;
 			children = (
+				7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */,
 				752B1E9220E8AA070073AABD /* EditableField.swift */,
 				75514A3320DF5B6200202340 /* EntryFieldEditorCells.swift */,
 				750C683120D767F6001A6AA0 /* EntryFieldEditorVC.swift */,
 				751E0D032309AF1B0088BB10 /* EntryFieldEditorVC.storyboard */,
 				75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */,
 				75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */,
-				7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */,
 			);
 			path = edit;
 			sourceTree = "<group>";
@@ -2227,6 +2230,7 @@
 			isa = PBXGroup;
 			children = (
 				75514A3220DF5B2400202340 /* edit */,
+				753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */,
 				75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */,
 				75B5FB7820D6101100D402D9 /* ItemCategory.swift */,
 				75C94C5A20B4B8C2004FA29D /* ViewEntryVC.swift */,
@@ -2268,13 +2272,13 @@
 				75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */,
 				75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */,
 				751E0D152309AF540088BB10 /* DatabasePickerVC.storyboard */,
+				75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */,
 				7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */,
 				751E0D1B2309AF620088BB10 /* ChangeMasterKeyVC.storyboard */,
 				750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */,
 				758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */,
 				751E0D212309AF6B0088BB10 /* DatabaseCreatorVC.storyboard */,
 				758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */,
-				75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */,
 				75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */,
 				75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */,
 			);
@@ -3083,6 +3087,7 @@
 				75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */,
 				75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
+				753DF2C1263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
 				75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */,
 				75BC56292581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75514A3420DF5B6200202340 /* EntryFieldEditorCells.swift in Sources */,
@@ -3243,6 +3248,7 @@
 				75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */,
 				75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
+				753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
 				75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */,
 				75BC562B2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75B38C05233E5B7C006BDEFC /* EntryFieldEditorCells.swift in Sources */,
