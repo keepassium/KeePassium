@@ -92,13 +92,25 @@ public class NavigationRouter: NSObject {
     public func push(
         _ viewController: UIViewController,
         animated: Bool,
+        replacePlaceholder: Bool = false,
         onPop popHandler: PopHandler?
     ) {
         if let popHandler = popHandler {
             let id = ObjectIdentifier(viewController)
             popHandlers[id] = popHandler
         }
-        navigationController.pushViewController(viewController, animated: animated)
+        
+        if replacePlaceholder,
+           let topVC = navigationController.topViewController,
+           topVC.isPlaceholder
+        {
+            var viewControllers = navigationController.viewControllers
+            viewControllers[viewControllers.count - 1] = viewController
+            navigationController.setViewControllers(viewControllers, animated: animated)
+            triggerAndRemovePopHandler(for: topVC)
+        } else {
+            navigationController.pushViewController(viewController, animated: animated)
+        }
     }
     
     public func resetRoot(

@@ -20,8 +20,8 @@ final class EntryViewerCoordinator: Coordinator, Refreshable {
     var dismissHandler: CoordinatorDismissHandler?
     private let router: NavigationRouter
     
-    private let database: Database
-    private let entry: Entry
+    private var database: Database
+    private var entry: Entry
     
     private let fieldViewerVC: EntryFieldViewerVC
     
@@ -41,7 +41,7 @@ final class EntryViewerCoordinator: Coordinator, Refreshable {
     
     func start() {
         entry.touch(.accessed)
-        router.push(fieldViewerVC, animated: true, onPop: {
+        router.push(fieldViewerVC, animated: false, replacePlaceholder: true, onPop: {
             [weak self] viewController in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
@@ -49,7 +49,13 @@ final class EntryViewerCoordinator: Coordinator, Refreshable {
         })
         refresh()
     }
-       
+    
+    public func setEntry(_ entry: Entry, database: Database) {
+        self.entry = entry
+        self.database = database
+        refresh()
+    }
+    
     func refresh() {
         let category = ItemCategory.get(for: entry)
         let fields = ViewableEntryFieldFactory.makeAll(

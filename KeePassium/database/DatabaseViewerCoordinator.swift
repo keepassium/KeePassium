@@ -147,6 +147,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             guard let self = self else { return }
             self.currentGroup = previousGroup
             if previousGroup == nil { 
+                self.showEntry(nil) 
                 self.dismissHandler?(self)
                 self.delegate?.didLeaveDatabase(in: self)
             }
@@ -170,6 +171,13 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         guard let entry = entry else {
             let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
             secondaryRouter.resetRoot(placeholderVC, animated: false, onPop: nil)
+            childCoordinators.removeAll(where: { $0 is EntryViewerCoordinator })
+            return
+        }
+        
+        if let existingCoordinator = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
+            let entryViewerCoordinator = existingCoordinator as! EntryViewerCoordinator 
+            entryViewerCoordinator.setEntry(entry, database: database)
             return
         }
         
