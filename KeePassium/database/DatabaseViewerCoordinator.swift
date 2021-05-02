@@ -177,14 +177,16 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         
         if let existingCoordinator = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
             let entryViewerCoordinator = existingCoordinator as! EntryViewerCoordinator 
-            entryViewerCoordinator.setEntry(entry, database: database)
+            entryViewerCoordinator.setEntry(entry, database: database, isHistoryEntry: false)
             return
         }
         
         let entryViewerCoordinator = EntryViewerCoordinator(
             entry: entry,
             database: database,
-            router: secondaryRouter
+            isHistoryEntry: false,
+            router: secondaryRouter,
+            progressHost: self 
         )
         entryViewerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
@@ -445,6 +447,11 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
 
 extension DatabaseViewerCoordinator: ProgressViewHost {
     public func showProgressView(title: String, allowCancelling: Bool) {
+        if progressOverlay != nil {
+            progressOverlay?.title = title
+            progressOverlay?.isCancellable = allowCancelling
+            return
+        }
         progressOverlay = ProgressOverlay.addTo(
             splitViewController.view,
             title: title,

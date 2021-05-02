@@ -100,17 +100,10 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     
     private let editButton = UIBarButtonItem()
 
-    private weak var entry: Entry?
     private var isHistoryMode = false
     private var category = ItemCategory.default
     private var sortedFields: [ViewableField] = []
 
-    static func make(with entry: Entry?, historyMode: Bool) -> EntryFieldViewerVC {
-        let viewEntryFieldsVC = EntryFieldViewerVC.instantiateFromStoryboard()
-        viewEntryFieldsVC.entry = entry
-        viewEntryFieldsVC.isHistoryMode = historyMode
-        return viewEntryFieldsVC
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,8 +124,6 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        editButton.isEnabled = delegate?.canEditEntry(in: self) ?? false
-        navigationItem.rightBarButtonItem = isHistoryMode ? nil : editButton
         refresh()
     }
 
@@ -146,6 +137,8 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     
     func refresh() {
         guard isViewLoaded else { return }
+        editButton.isEnabled = delegate?.canEditEntry(in: self) ?? false
+        navigationItem.rightBarButtonItem = isHistoryMode ? nil : editButton
         tableView.reloadData()
     }
     

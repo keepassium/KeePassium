@@ -22,7 +22,7 @@ public class TemporaryFileURL {
             try fileManager.createDirectory(
                 at: tmpFileDir,
                 withIntermediateDirectories: true,
-                attributes: nil)
+                attributes: nil) 
         } catch {
             Diag.error("Failed to create temporary file [error: \(error.localizedDescription)]")
             throw error

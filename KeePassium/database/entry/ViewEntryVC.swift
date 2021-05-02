@@ -48,12 +48,6 @@ class ViewEntryVC: UIViewController, Refreshable {
         super.viewDidLoad()
         guard let entry = entry else { return }
         
-        pages.append(EntryFieldViewerVC.make(with: entry, historyMode: isHistoryMode))
-        pages.append(EntryFileViewerVC.make(
-            with: entry,
-            historyMode: isHistoryMode,
-            progressViewHost: self))
-        pages.append(ViewEntryHistoryVC.make(with: entry, historyMode: isHistoryMode))
         
         pagesViewController = UIPageViewController(
             transitionStyle: .scroll,
