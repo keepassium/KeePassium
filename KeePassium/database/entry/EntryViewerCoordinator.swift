@@ -13,6 +13,14 @@ protocol EntryViewerCoordinatorDelegate: AnyObject {
 }
 
 final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refreshable {
+    private enum Pages: Int {
+        static let count = 3
+        
+        case fields = 0
+        case files = 1
+        case history = 2
+    }
+    
     var childCoordinators = [Coordinator]()
 
     weak var delegate: EntryViewerCoordinatorDelegate?
@@ -24,14 +32,16 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     private var entry: Entry
     private var isHistoryEntry: Bool
     
+    private let pagesVC: EntryViewerPagesVC
+    
     private let fieldViewerVC: EntryFieldViewerVC
     private let fileViewerVC: EntryFileViewerVC
     private let historyViewerVC: EntryHistoryViewerVC
     
-    
     private var filePreviewController = UIDocumentInteractionController()
     private var fileExportTemporaryURL: TemporaryFileURL?
     
+    private let settingsNotifications: SettingsNotifications
     private weak var progressHost: ProgressViewHost?
     var databaseExporterTemporaryURL: TemporaryFileURL?
     
@@ -47,26 +57,34 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         self.isHistoryEntry = isHistoryEntry
         self.router = router
         self.progressHost = progressHost
+        settingsNotifications = SettingsNotifications()
         
         fieldViewerVC = EntryFieldViewerVC.instantiateFromStoryboard()
         fileViewerVC = EntryFileViewerVC.instantiateFromStoryboard()
         historyViewerVC = EntryHistoryViewerVC.instantiateFromStoryboard()
+        pagesVC = EntryViewerPagesVC.instantiateFromStoryboard()
         
         super.init()
 
         fieldViewerVC.delegate = self
         fileViewerVC.delegate = self
         historyViewerVC.delegate = self
+        pagesVC.dataSource = self
+
+        settingsNotifications.observer = self
     }
     
     deinit {
+        settingsNotifications.stopObserving()
+        
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
     
     func start() {
+        settingsNotifications.startObserving()
         entry.touch(.accessed)
-        router.push(historyViewerVC, animated: isHistoryEntry, replacePlaceholder: true, onPop: {
+        router.push(pagesVC, animated: isHistoryEntry, replacePlaceholder: true, onPop: {
             [weak self] viewController in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
@@ -97,6 +115,43 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         fileViewerVC.setAttachments(entry.attachments, animated: animated)
         
         historyViewerVC.setEntryHistory(from: entry, isHistoryEntry: isHistoryEntry)
+        pagesVC.setEntryProperties(from: entry, isHistoryEntry: isHistoryEntry)
+        pagesVC.refresh()
+    }
+}
+
+extension EntryViewerCoordinator: EntryViewerPagesDataSource {
+    func getPageCount(for viewController: EntryViewerPagesVC) -> Int {
+        return Pages.count
+    }
+    
+    func getPage(index: Int, for viewController: EntryViewerPagesVC) -> UIViewController? {
+        guard let page = Pages(rawValue: index) else {
+            return nil
+        }
+        
+        switch page {
+        case .fields:
+            return fieldViewerVC
+        case .files:
+            return fileViewerVC
+        case .history:
+            return historyViewerVC
+        }
+    }
+    
+    func getPageIndex(of page: UIViewController, for viewController: EntryViewerPagesVC) -> Int? {
+        switch page {
+        case fieldViewerVC:
+            return Pages.fields.rawValue
+        case fileViewerVC:
+            return Pages.files.rawValue
+        case historyViewerVC:
+            return Pages.history.rawValue
+        default:
+            assertionFailure("Unexpected page VC")
+            return nil
+        }
     }
 }
 
@@ -456,5 +511,14 @@ extension EntryViewerCoordinator: DatabaseManagerObserver {
             exportableData: data,
             parent: router.navigationController 
         )
+    }
+}
+
+extension EntryViewerCoordinator: SettingsObserver {
+    func settingsDidChange(key: Settings.Keys) {
+        guard key != .recentUserActivityTimestamp else {
+            return
+        }
+        refresh()
     }
 }

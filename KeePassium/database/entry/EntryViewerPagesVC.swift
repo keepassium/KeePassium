@@ -8,45 +8,38 @@
 
 import KeePassiumLib
 
+protocol EntryViewerPagesDataSource: AnyObject {
+    func getPageCount(for viewController: EntryViewerPagesVC) -> Int
+    func getPage(index: Int, for viewController: EntryViewerPagesVC) -> UIViewController?
+    func getPageIndex(of page: UIViewController, for viewController: EntryViewerPagesVC) -> Int?
+}
+
 final class EntryViewerPagesVC: UIViewController, Refreshable {
-    @IBOutlet weak var pageSelector: UISegmentedControl!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var titleImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    var pagesViewController: UIPageViewController! 
+
+    @IBOutlet private weak var pageSelector: UISegmentedControl!
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var titleImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
     
-    private weak var entry: Entry?
-    private var isHistoryMode = false
-    private var entryChangeNotifications: EntryChangeNotifications!
-    private var settingsNotifications: SettingsNotifications!
+    public weak var dataSource: EntryViewerPagesDataSource?
+
+    private var isHistoryEntry = false
+    private var entryIcon: UIImage?
+    private var resolvedEntryTitle = ""
+    private var isEntryExpired = false
+    private var entryLastModificationTime = Date.distantPast
     
-    private var progressOverlay: ProgressOverlay?
-    private var pages = [UIViewController]()
+    private var pagesViewController: UIPageViewController! 
     private var currentPageIndex = 0 {
         didSet {
             Settings.current.entryViewerPage = currentPageIndex
         }
     }
-
-    static func make(with entry: Entry, historyMode: Bool = false) -> UIViewController {
-        let viewEntryVC = EntryViewerPagesVC.instantiateFromStoryboard()
-        viewEntryVC.entry = entry
-        viewEntryVC.isHistoryMode = historyMode
-        viewEntryVC.refresh()
-        entry.touch(.accessed)
-        if !historyMode {
-            let navVC = UINavigationController(rootViewController: viewEntryVC)
-            return navVC
-        } else {
-            return viewEntryVC
-        }
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let entry = entry else { return }
-        
         
         pagesViewController = UIPageViewController(
             transitionStyle: .scroll,
@@ -60,33 +53,20 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         pagesViewController.view.frame = containerView.bounds
         containerView.addSubview(pagesViewController.view)
         pagesViewController.didMove(toParent: self)
-
-        settingsNotifications = SettingsNotifications(observer: self)
-        entryChangeNotifications = EntryChangeNotifications(observer: self)
-        refresh()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        assert(dataSource != nil, "dataSource must be defined")
         refresh()
-
         switchTo(page: Settings.current.entryViewerPage)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        entryChangeNotifications.startObserving()
-        settingsNotifications.startObserving()
 
         navigationItem.rightBarButtonItem =
             pagesViewController.viewControllers?.first?.navigationItem.rightBarButtonItem
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        settingsNotifications.stopObserving()
-        entryChangeNotifications.stopObserving()
-        super.viewDidDisappear(animated)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -94,7 +74,23 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         refresh()
     }
     
-    private func switchTo(page index: Int) {
+    public func setEntryProperties(from entry: Entry, isHistoryEntry: Bool) {
+        entryIcon = UIImage.kpIcon(forEntry: entry)
+        resolvedEntryTitle = entry.resolvedTitle
+        isEntryExpired = entry.isExpired
+        entryLastModificationTime = entry.lastModificationTime
+        self.isHistoryEntry = isHistoryEntry
+        refresh()
+    }
+    
+    public func switchTo(page index: Int) {
+        guard let dataSource = dataSource,
+              let targetPageVC = dataSource.getPage(index: index, for: self)
+        else {
+            assertionFailure()
+            return
+        }
+        
         let direction: UIPageViewController.NavigationDirection
         if index >= currentPageIndex {
             direction = .forward
@@ -102,7 +98,6 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             direction = .reverse
         }
 
-        let targetPageVC = pages[index]
         let previousPageVC = pagesViewController.viewControllers?.first
         previousPageVC?.willMove(toParent: nil)
         targetPageVC.willMove(toParent: pagesViewController)
@@ -127,20 +122,20 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         switchTo(page: pageSelector.selectedSegmentIndex)
     }
 
+    
     func refresh() {
-        guard let entry = entry,
-              isViewLoaded else { return }
-        titleLabel.setText(entry.resolvedTitle, strikethrough: entry.isExpired)
-        titleImageView?.image = UIImage.kpIcon(forEntry: entry)
-        if isHistoryMode {
+        guard isViewLoaded else { return }
+        titleLabel.setText(resolvedEntryTitle, strikethrough: isEntryExpired)
+        titleImageView?.image = entryIcon
+        if isHistoryEntry {
             if traitCollection.horizontalSizeClass == .compact {
                 subtitleLabel?.text = DateFormatter.localizedString(
-                    from: entry.lastModificationTime,
+                    from: entryLastModificationTime,
                     dateStyle: .medium,
                     timeStyle: .short)
             } else {
                 subtitleLabel?.text = DateFormatter.localizedString(
-                    from: entry.lastModificationTime,
+                    from: entryLastModificationTime,
                     dateStyle: .full,
                     timeStyle: .medium)
             }
@@ -154,102 +149,49 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
     }
 }
 
-extension EntryViewerPagesVC: EntryChangeObserver {
-    func entryDidChange(entry: Entry) {
-        refresh()
-    }
-}
-
-extension EntryViewerPagesVC: SettingsObserver {
-    func settingsDidChange(key: Settings.Keys) {
-        guard key != .recentUserActivityTimestamp else {
-            return
-        }
-        refresh()
-    }
-}
-
-
-extension EntryViewerPagesVC: ProgressViewHost {
-    func showProgressView(title: String, allowCancelling: Bool) {
-        if progressOverlay != nil {
-            progressOverlay?.title = title
-            progressOverlay?.isCancellable = allowCancelling
-            return
-        }
-        
-        navigationItem.hidesBackButton = true
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        let fullScreenView = splitViewController?.view 
-        progressOverlay = ProgressOverlay.addTo(
-            fullScreenView ?? self.view,
-            title: title,
-            animated: true)
-        progressOverlay?.isCancellable = allowCancelling
-    }
-    
-    func updateProgressView(with progress: ProgressEx) {
-        progressOverlay?.update(with: progress)
-    }
-    
-    func hideProgressView() {
-        guard progressOverlay != nil else { return }
-        navigationItem.hidesBackButton = false
-        navigationItem.rightBarButtonItem?.isEnabled = true
-        progressOverlay?.dismiss(animated: true) {
-            [weak self] (finished) in
-            guard let _self = self else { return }
-            _self.progressOverlay?.removeFromSuperview()
-            _self.progressOverlay = nil
-        }
-    }
-}
-
-
 extension EntryViewerPagesVC: UIPageViewControllerDelegate {
     func pageViewController(
         _ pageViewController: UIPageViewController,
         didFinishAnimating finished: Bool,
         previousViewControllers: [UIViewController],
-        transitionCompleted completed: Bool)
-    {
-        if finished && completed {
-            guard let selectedVC = pageViewController.viewControllers?.first,
-                let selectedIndex = pages.firstIndex(of: selectedVC) else { return }
-            previousViewControllers.first?.didMove(toParent: nil)
-            selectedVC.didMove(toParent: pagesViewController)
-            currentPageIndex = selectedIndex
-            pageSelector.selectedSegmentIndex = selectedIndex
-            navigationItem.rightBarButtonItem = selectedVC.navigationItem.rightBarButtonItem
+        transitionCompleted completed: Bool
+    ) {
+        guard finished && completed else { return }
+
+        guard let dataSource = dataSource,
+              let selectedVC = pageViewController.viewControllers?.first,
+              let selectedIndex = dataSource.getPageIndex(of: selectedVC, for: self)
+        else {
+            return
         }
+        
+        previousViewControllers.first?.didMove(toParent: nil)
+        selectedVC.didMove(toParent: pagesViewController)
+        currentPageIndex = selectedIndex
+        pageSelector.selectedSegmentIndex = selectedIndex
+        navigationItem.rightBarButtonItem = selectedVC.navigationItem.rightBarButtonItem
     }
 }
-
 
 extension EntryViewerPagesVC: UIPageViewControllerDataSource {
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
-        ) -> UIViewController?
-    {
-        guard let vcIndex = pages.firstIndex(of: viewController) else { return nil }
-        if vcIndex > 0 {
-            return pages[vcIndex - 1]
-        } else {
+    ) -> UIViewController? {
+        guard let index = dataSource?.getPageIndex(of: viewController, for: self) else {
             return nil
         }
+        return dataSource?.getPage(index: index - 1, for: self)
     }
     
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
-        ) -> UIViewController?
-    {
-        guard let vcIndex = pages.firstIndex(of: viewController) else { return nil }
-        if vcIndex < pages.count - 1 {
-            return pages[vcIndex + 1]
-        } else {
+    ) -> UIViewController? {
+        guard let index = dataSource?.getPageIndex(of: viewController, for: self) else {
             return nil
         }
+        
+        return dataSource?.getPage(index: index + 1, for: self)
     }
 }
