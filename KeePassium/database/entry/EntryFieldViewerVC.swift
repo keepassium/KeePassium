@@ -103,7 +103,6 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     private var isHistoryEntry = false
     private var category = ItemCategory.default
     private var sortedFields: [ViewableField] = []
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
