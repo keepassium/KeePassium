@@ -26,6 +26,8 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     
     private let fieldViewerVC: EntryFieldViewerVC
     private let fileViewerVC: EntryFileViewerVC
+    private let historyViewerVC: EntryHistoryViewerVC
+    
     
     private var filePreviewController = UIDocumentInteractionController()
     private var fileExportTemporaryURL: TemporaryFileURL?
@@ -49,11 +51,13 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         
         fieldViewerVC = EntryFieldViewerVC.instantiateFromStoryboard()
         fileViewerVC = EntryFileViewerVC.instantiateFromStoryboard()
+        historyViewerVC = EntryHistoryViewerVC.instantiateFromStoryboard()
         
         super.init()
 
         fieldViewerVC.delegate = self
         fileViewerVC.delegate = self
+        historyViewerVC.delegate = self
     }
     
     deinit {
@@ -63,7 +67,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     
     func start() {
         entry.touch(.accessed)
-        router.push(fileViewerVC, animated: false, replacePlaceholder: true, onPop: {
+        router.push(historyViewerVC, animated: isHistoryEntry, replacePlaceholder: true, onPop: {
             [weak self] viewController in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
@@ -92,6 +96,8 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         )
         fieldViewerVC.setFields(fields, category: category)
         fileViewerVC.setAttachments(entry.attachments, animated: animated)
+        
+        historyViewerVC.setEntryHistory(from: entry, isHistoryEntry: isHistoryEntry)
     }
 }
 
@@ -266,6 +272,21 @@ extension EntryViewerCoordinator {
         addChildCoordinator(entryFieldEditorCoordinator)
     }
     
+    private func showHistoryEntry(_ entry: Entry) {
+        let historyEntryViewerCoordinator = EntryViewerCoordinator(
+            entry: entry,
+            database: database,
+            isHistoryEntry: true,
+            router: router
+        )
+        historyEntryViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        historyEntryViewerCoordinator.delegate = self
+        historyEntryViewerCoordinator.start()
+        addChildCoordinator(historyEntryViewerCoordinator)
+    }
+    
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .pageSheet)
         let diagnosticsCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
@@ -385,6 +406,17 @@ extension EntryViewerCoordinator: UIDocumentInteractionControllerDelegate {
     }
 }
 
+extension EntryViewerCoordinator: EntryHistoryViewerDelegate {
+    func didSelectHistoryEntry(_ entry: Entry, in viewController: EntryHistoryViewerVC) {
+        showHistoryEntry(entry)
+    }
+}
+
+extension EntryViewerCoordinator: EntryViewerCoordinatorDelegate {
+    func didUpdateEntry(_ entry: Entry, in coordinator: EntryViewerCoordinator) {
+        assertionFailure("History entries cannot be modified")
+    }
+}
 
 extension EntryViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {

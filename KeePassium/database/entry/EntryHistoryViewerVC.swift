@@ -8,9 +8,11 @@
 
 import KeePassiumLib
 
-class EntryHistoryViewerVC: UITableViewController, Refreshable {
-    private weak var entry: Entry?
-    private var isHistoryMode = false
+protocol EntryHistoryViewerDelegate: AnyObject {
+    func didSelectHistoryEntry(_ entry: Entry, in viewController: EntryHistoryViewerVC)
+}
+
+final class EntryHistoryViewerVC: UITableViewController, Refreshable {
 
     private let numberOfFixedTimestamps = 4 
     private enum Section: Int { 
@@ -25,13 +27,31 @@ class EntryHistoryViewerVC: UITableViewController, Refreshable {
         static let emptyHistory = "EmptyHistoryCell"
         static let historyItem = "HistoryItemCell"
     }
+
+    weak var delegate: EntryHistoryViewerDelegate?
+    
+    private var canExpire = false
+    private var expiryTime = Date.distantPast
+    private var creationTime = Date.distantPast
+    private var lastModificationTime = Date.distantPast
+    private var lastAccessTime = Date.distantPast
+    
+    private var historyEntries: [Entry]?
     private let dateFormatter = DateFormatter()
     
-    static func make(with entry: Entry?, historyMode: Bool) -> EntryHistoryViewerVC {
-        let viewEntryHistoryVC = EntryHistoryViewerVC.instantiateFromStoryboard()
-        viewEntryHistoryVC.entry = entry
-        viewEntryHistoryVC.isHistoryMode = historyMode
-        return viewEntryHistoryVC
+    public func setEntryHistory(from entry: Entry, isHistoryEntry: Bool) {
+        canExpire = entry.canExpire
+        expiryTime = entry.expiryTime
+        creationTime = entry.creationTime
+        lastModificationTime = entry.lastModificationTime
+        lastAccessTime = entry.lastAccessTime
+
+        if let entry2 = entry as? Entry2 {
+            historyEntries = isHistoryEntry ? nil : entry2.history
+        } else {
+            historyEntries = nil
+        }
+        refresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,18 +71,17 @@ class EntryHistoryViewerVC: UITableViewController, Refreshable {
         tableView.reloadData()
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        refresh()
+    }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if entry is Entry1 {
+        if historyEntries != nil {
+            return numberOfFixedTimestamps + 1
+        } else {
             return numberOfFixedTimestamps
-        } else if entry is Entry2 {
-            if isHistoryMode {
-                return numberOfFixedTimestamps
-            } else {
-                return numberOfFixedTimestamps + 1
-            }
-        } else { 
-            return 0
         }
     }
 
@@ -70,14 +89,15 @@ class EntryHistoryViewerVC: UITableViewController, Refreshable {
         if section < numberOfFixedTimestamps {
             return 1
         } else {
-            let entry2 = entry as! Entry2
-            return max(1, entry2.history.count) // need at least one to show "there's no history"
+            return max(1, historyEntries?.count ?? 0) // need at least one to show "there's no history"
         }
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let section = Section(rawValue: section) else { assertionFailure(); return nil }
-        switch section {
+    override func tableView(
+        _ tableView: UITableView,
+        titleForHeaderInSection section: Int
+    ) -> String? {
+        switch Section(rawValue: section)! {
         case .expiryTime:
             return NSLocalizedString(
                 "[Entry/History] Expiry Date",
@@ -106,66 +126,64 @@ class EntryHistoryViewerVC: UITableViewController, Refreshable {
         }
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        refresh()
-    }
-    
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
-        ) -> UITableViewCell
-    {
-        guard let entry = entry else { fatalError() }
-        guard let section = Section(rawValue: indexPath.section) else {
-            fatalError("Unexpected section ID")
-        }
-        
-        let cell: UITableViewCell
-        switch section {
+    ) -> UITableViewCell {
+        switch Section(rawValue: indexPath.section)! {
         case .expiryTime:
-            cell = tableView.dequeueReusableCell(withIdentifier: CellID.fixedTimestamp, for: indexPath)
-            if entry.canExpire {
-                cell.textLabel?.text = dateFormatter.string(from: entry.expiryTime)
-            } else {
-                cell.textLabel?.text = NSLocalizedString(
-                    "[Entry/History/ExpiryDate] Never",
-                    value: "Never",
-                    comment: "Expiry Date of an entry which does not expire.")
-            }
+            return setupTimestampCell(indexPath: indexPath, timestamp: canExpire ? expiryTime : nil)
         case .creationTime:
-            cell = tableView.dequeueReusableCell(withIdentifier: CellID.fixedTimestamp, for: indexPath)
-            cell.textLabel?.text = dateFormatter.string(from: entry.creationTime)
+            return setupTimestampCell(indexPath: indexPath, timestamp: creationTime)
         case .lastModificationTime:
-            cell = tableView.dequeueReusableCell(withIdentifier: CellID.fixedTimestamp, for: indexPath)
-            cell.textLabel?.text = dateFormatter.string(from: entry.lastModificationTime)
+            return setupTimestampCell(indexPath: indexPath, timestamp: lastModificationTime)
         case .lastAccessTime:
-            cell = tableView.dequeueReusableCell(withIdentifier: CellID.fixedTimestamp, for: indexPath)
-            cell.textLabel?.text = dateFormatter.string(from: entry.lastAccessTime)
+            return setupTimestampCell(indexPath: indexPath, timestamp: lastAccessTime)
         case .previousVersions:
-            let entry2 = entry as! Entry2
-            if entry2.history.count > 0 {
-                let historyItem = entry2.history[indexPath.row]
-                cell = tableView.dequeueReusableCell(withIdentifier: CellID.historyItem, for: indexPath)
-                cell.textLabel?.setText(historyItem.resolvedTitle, strikethrough: historyItem.isExpired)
-                cell.detailTextLabel?.text = dateFormatter.string(from: historyItem.lastModificationTime)
-            } else {
-                cell = tableView.dequeueReusableCell(withIdentifier: CellID.emptyHistory, for: indexPath)
-            }
+            return setupHistoryEntryCell(indexPath: indexPath)
+        }
+    }
+
+    private func setupTimestampCell(indexPath: IndexPath, timestamp: Date?) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: CellID.fixedTimestamp,
+            for: indexPath
+        )
+        if let timestamp = timestamp {
+            cell.textLabel?.text = dateFormatter.string(from: timestamp)
+        } else {
+            cell.textLabel?.text = NSLocalizedString(
+                "[Entry/History/ExpiryDate] Never",
+                value: "Never",
+                comment: "Expiry Date of an entry which does not expire.")
         }
         return cell
     }
+    
+    private func setupHistoryEntryCell(indexPath: IndexPath) -> UITableViewCell {
+        guard let historyEntries = historyEntries,
+              historyEntries.count > 0
+        else {
+            return tableView.dequeueReusableCell(withIdentifier: CellID.emptyHistory, for: indexPath)
+        }
+        let historyEntry = historyEntries[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.historyItem, for: indexPath)
+        cell.textLabel?.setText(historyEntry.resolvedTitle, strikethrough: historyEntry.isExpired)
+        cell.detailTextLabel?.text = dateFormatter.string(from: historyEntry.lastModificationTime)
+        return cell
+    }
 
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let entry2 = entry as? Entry2 else { return }
         guard let section = Section(rawValue: indexPath.section),
-            section == .previousVersions else { return }
+              section == .previousVersions,
+              let historyEntries = historyEntries,
+              indexPath.row < historyEntries.count
+        else {
+            return
+        }
         
-        let entryIndex = indexPath.row
-        guard entryIndex < entry2.history.count else { return }
-        
-        let historyEntry = entry2.history[entryIndex]
-        let vc = ViewEntryVC.make(with: historyEntry, historyMode: true)
-        self.show(vc, sender: self)
+        let selectedHistoryEntry = historyEntries[indexPath.row]
+        delegate?.didSelectHistoryEntry(selectedHistoryEntry, in: self)
     }
 }
