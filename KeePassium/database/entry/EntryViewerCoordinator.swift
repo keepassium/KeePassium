@@ -93,7 +93,16 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         refresh()
     }
     
+    public func dismiss(animated: Bool) {
+        router.pop(viewController: pagesVC, animated: animated)
+    }
+    
     public func setEntry(_ entry: Entry, database: Database, isHistoryEntry: Bool) {
+        if let existingEntryViewerCoo = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
+            let historyEntryViewer = existingEntryViewerCoo as! EntryViewerCoordinator
+            historyEntryViewer.dismiss(animated: true)
+        }
+        
         self.entry = entry
         self.database = database
         self.isHistoryEntry = isHistoryEntry
