@@ -68,7 +68,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         refresh()
     }
     
-    public func setAttachments(_ attachments: [Attachment], animated: Bool) {
+    public func setContents(_ attachments: [Attachment], animated: Bool) {
         self.attachments = attachments
         refresh(animated: animated)
     }

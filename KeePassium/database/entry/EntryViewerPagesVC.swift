@@ -74,7 +74,7 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         refresh()
     }
     
-    public func setEntryProperties(from entry: Entry, isHistoryEntry: Bool) {
+    public func setContents(from entry: Entry, isHistoryEntry: Bool) {
         entryIcon = UIImage.kpIcon(forEntry: entry)
         resolvedEntryTitle = entry.resolvedTitle
         isEntryExpired = entry.isExpired

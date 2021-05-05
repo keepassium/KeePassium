@@ -111,11 +111,10 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
             in: database,
             excluding: [.title, .emptyValues]
         )
-        fieldViewerVC.setFields(fields, category: category)
-        fileViewerVC.setAttachments(entry.attachments, animated: animated)
-        
-        historyViewerVC.setEntryHistory(from: entry, isHistoryEntry: isHistoryEntry)
-        pagesVC.setEntryProperties(from: entry, isHistoryEntry: isHistoryEntry)
+        fieldViewerVC.setContents(fields, category: category, isHistoryEntry: isHistoryEntry)
+        fileViewerVC.setContents(entry.attachments, animated: animated)
+        historyViewerVC.setContents(from: entry, isHistoryEntry: isHistoryEntry)
+        pagesVC.setContents(from: entry, isHistoryEntry: isHistoryEntry)
         pagesVC.refresh()
     }
 }

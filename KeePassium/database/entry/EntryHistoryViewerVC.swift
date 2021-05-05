@@ -39,7 +39,7 @@ final class EntryHistoryViewerVC: UITableViewController, Refreshable {
     private var historyEntries: [Entry]?
     private let dateFormatter = DateFormatter()
     
-    public func setEntryHistory(from entry: Entry, isHistoryEntry: Bool) {
+    public func setContents(from entry: Entry, isHistoryEntry: Bool) {
         canExpire = entry.canExpire
         expiryTime = entry.expiryTime
         creationTime = entry.creationTime

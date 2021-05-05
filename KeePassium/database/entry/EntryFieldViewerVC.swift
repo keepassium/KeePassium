@@ -100,7 +100,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     
     private let editButton = UIBarButtonItem()
 
-    private var isHistoryMode = false
+    private var isHistoryEntry = false
     private var category = ItemCategory.default
     private var sortedFields: [ViewableField] = []
 
@@ -127,7 +127,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         refresh()
     }
 
-    func setFields(_ fields: [ViewableField], category: ItemCategory) {
+    func setContents(_ fields: [ViewableField], category: ItemCategory, isHistoryEntry: Bool) {
         self.category = category
         self.sortedFields = fields.sorted {
             return category.compare($0.internalName, $1.internalName)
@@ -138,7 +138,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     func refresh() {
         guard isViewLoaded else { return }
         editButton.isEnabled = delegate?.canEditEntry(in: self) ?? false
-        navigationItem.rightBarButtonItem = isHistoryMode ? nil : editButton
+        navigationItem.rightBarButtonItem = isHistoryEntry ? nil : editButton
         tableView.reloadData()
     }
     
