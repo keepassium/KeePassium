@@ -40,14 +40,13 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         database: Database,
         isHistoryEntry: Bool,
         router: NavigationRouter,
-        progressHost: ProgressViewHost? = nil
+        progressHost: ProgressViewHost
     ) {
         self.entry = entry
         self.database = database
         self.isHistoryEntry = isHistoryEntry
         self.router = router
-        
-        self.progressHost = progressHost ?? router
+        self.progressHost = progressHost
         
         fieldViewerVC = EntryFieldViewerVC.instantiateFromStoryboard()
         fileViewerVC = EntryFileViewerVC.instantiateFromStoryboard()
@@ -273,11 +272,14 @@ extension EntryViewerCoordinator {
     }
     
     private func showHistoryEntry(_ entry: Entry) {
+        guard let progressHost = progressHost else { return }
+        
         let historyEntryViewerCoordinator = EntryViewerCoordinator(
             entry: entry,
             database: database,
             isHistoryEntry: true,
-            router: router
+            router: router,
+            progressHost: progressHost
         )
         historyEntryViewerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
