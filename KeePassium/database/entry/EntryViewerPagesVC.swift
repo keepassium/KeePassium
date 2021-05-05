@@ -33,7 +33,9 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
     private var pagesViewController: UIPageViewController! 
     private var currentPageIndex = 0 {
         didSet {
-            Settings.current.entryViewerPage = currentPageIndex
+            if !isHistoryEntry {
+                Settings.current.entryViewerPage = currentPageIndex
+            }
         }
     }
     
@@ -59,7 +61,11 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         super.viewWillAppear(animated)
         assert(dataSource != nil, "dataSource must be defined")
         refresh()
-        switchTo(page: Settings.current.entryViewerPage)
+        if isHistoryEntry {
+            switchTo(page: 0)
+        } else {
+            switchTo(page: Settings.current.entryViewerPage)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
