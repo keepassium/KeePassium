@@ -149,9 +149,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let sourceCell = tableView.cellForRow(at: indexPath) else { return }
-        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         tableView.deselectRow(at: indexPath, animated: true)
         
         let row = indexPath.row

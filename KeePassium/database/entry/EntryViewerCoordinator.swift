@@ -364,7 +364,7 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         in viewController: EntryFileViewerVC
     ) {
         attachment.name = newName
-        fileViewerVC.refresh()
+        viewController.refresh()
         saveDatabase()
     }
     
@@ -422,7 +422,7 @@ extension EntryViewerCoordinator: EntryViewerCoordinatorDelegate {
 
 extension EntryViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {
-        fieldViewerVC.refresh()
+        refresh()
         delegate?.didUpdateEntry(entry, in: self)
     }
 }
