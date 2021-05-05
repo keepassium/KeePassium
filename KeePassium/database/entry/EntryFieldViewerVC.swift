@@ -128,6 +128,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     }
 
     func setContents(_ fields: [ViewableField], category: ItemCategory, isHistoryEntry: Bool) {
+        self.isHistoryEntry = isHistoryEntry
         self.category = category
         self.sortedFields = fields.sorted {
             return category.compare($0.internalName, $1.internalName)
