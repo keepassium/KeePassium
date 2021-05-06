@@ -434,6 +434,13 @@ public class Database1: Database {
             return
         }
         
+        if group === self.backupGroup {
+            parentGroup.remove(group: group)
+            self.backupGroup = nil
+            Diag.info("Deleted Backup group")
+            return
+        }
+        
         guard let backupGroup = getBackupGroup(createIfMissing: true) else {
             Diag.warning("Cannot delete group: no backup group")
             return
