@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "KeePassium 자동 완성";
+
+/* Bundle name */
+"CFBundleName" = "KeePassium 자동 완성";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "KeePassium 잠금 해제에 Face ID 사용";
+

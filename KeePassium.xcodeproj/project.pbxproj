@@ -972,6 +972,51 @@
 		75339585263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
 		75339586263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/PricingPlanPickerVC.strings; sourceTree = "<group>"; };
 		75339587263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
+		753438002643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		753438012643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		753438022643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ChangeMasterKeyVC.strings; sourceTree = "<group>"; };
+		753438032643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
+		753438042643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		753438052643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
+		753438062643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		753438072643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ViewEntryFieldsVC.strings; sourceTree = "<group>"; };
+		753438082643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
+		753438092643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
+		7534380A2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
+		7534380B2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
+		7534380C2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ChooseDatabaseVC.strings; sourceTree = "<group>"; };
+		7534380D2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsFileSortingVC.strings; sourceTree = "<group>"; };
+		7534380E2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/UnlockDatabaseVC.strings; sourceTree = "<group>"; };
+		7534380F2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ViewEntryVC.strings; sourceTree = "<group>"; };
+		753438102643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsDatabaseTimeoutVC.strings; sourceTree = "<group>"; };
+		753438112643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
+		753438122643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ViewGroupVC.strings; sourceTree = "<group>"; };
+		753438132643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
+		753438142643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
+		753438152643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
+		753438162643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DatabaseChooserVC.strings; sourceTree = "<group>"; };
+		753438172643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AboutVC.strings; sourceTree = "<group>"; };
+		753438182643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
+		753438192643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DiagnosticsViewerVC.strings; sourceTree = "<group>"; };
+		7534381A2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
+		7534381B2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ViewEntryHistoryVC.strings; sourceTree = "<group>"; };
+		7534381C2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ViewEntryFilesVC.strings; sourceTree = "<group>"; };
+		7534381D2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
+		7534381E2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
+		7534381F2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/WelcomeVC.strings; sourceTree = "<group>"; };
+		753438202643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PasswordGeneratorVC.strings; sourceTree = "<group>"; };
+		753438212643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
+		753438222643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsVC.strings; sourceTree = "<group>"; };
+		753438232643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/GroupEditorVC.strings; sourceTree = "<group>"; };
+		753438242643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		753438252643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
+		753438262643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
+		753438272643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
+		753438282643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
+		753438292643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
+		7534382A2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
+		7534382B2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PricingPlanPickerVC.strings; sourceTree = "<group>"; };
+		7534382C2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		7535079F23783729003B65C9 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		7537FEBD249D7B950028A653 /* Settings+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+extensions.swift"; sourceTree = "<group>"; };
 		7538040C25F58C80005C5D32 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -2554,6 +2599,7 @@
 				sk,
 				tr,
 				th,
+				ko,
 			);
 			mainGroup = 754BF0722082A6BD00E3A292;
 			productRefGroup = 754BF07C2082A6BD00E3A292 /* Products */;
@@ -3374,6 +3420,7 @@
 				75339567263800AA00341D24 /* sk */,
 				7531911D263800DC000A1119 /* tr */,
 				75FCA93F2638010D0070405A /* th */,
+				7534380B2643FE6E0032D284 /* ko */,
 			);
 			name = SettingsDataProtectionVC.storyboard;
 			sourceTree = "<group>";
@@ -3399,6 +3446,7 @@
 				75339569263800AA00341D24 /* sk */,
 				75319124263800DC000A1119 /* tr */,
 				75FCA9412638010D0070405A /* th */,
+				7534380D2643FE6E0032D284 /* ko */,
 			);
 			name = SettingsFileSortingVC.storyboard;
 			sourceTree = "<group>";
@@ -3424,6 +3472,7 @@
 				7533957D263800AA00341D24 /* sk */,
 				75319138263800DC000A1119 /* tr */,
 				75FCA9552638010D0070405A /* th */,
+				753438222643FE6F0032D284 /* ko */,
 			);
 			name = SettingsVC.storyboard;
 			sourceTree = "<group>";
@@ -3449,6 +3498,7 @@
 				75339565263800AA00341D24 /* sk */,
 				75319122263800DC000A1119 /* tr */,
 				75FCA93C2638010D0070405A /* th */,
+				753438052643FE6E0032D284 /* ko */,
 			);
 			name = SettingsBackupVC.storyboard;
 			sourceTree = "<group>";
@@ -3474,6 +3524,7 @@
 				75339566263800AA00341D24 /* sk */,
 				75319121263800DC000A1119 /* tr */,
 				75FCA93E2638010D0070405A /* th */,
+				7534380A2643FE6E0032D284 /* ko */,
 			);
 			name = SettingsAppLockVC.storyboard;
 			sourceTree = "<group>";
@@ -3499,6 +3550,7 @@
 				75339573263800AA00341D24 /* sk */,
 				7531912F263800DC000A1119 /* tr */,
 				75FCA94B2638010D0070405A /* th */,
+				753438182643FE6F0032D284 /* ko */,
 			);
 			name = SettingsAutoFillVC.storyboard;
 			sourceTree = "<group>";
@@ -3524,6 +3576,7 @@
 				7533956E263800AA00341D24 /* sk */,
 				75319129263800DC000A1119 /* tr */,
 				75FCA9452638010D0070405A /* th */,
+				753438122643FE6F0032D284 /* ko */,
 			);
 			name = ViewGroupVC.storyboard;
 			sourceTree = "<group>";
@@ -3549,6 +3602,7 @@
 				7533957E263800AA00341D24 /* sk */,
 				75319139263800DC000A1119 /* tr */,
 				75FCA9562638010D0070405A /* th */,
+				753438232643FE6F0032D284 /* ko */,
 			);
 			name = GroupEditorVC.storyboard;
 			sourceTree = "<group>";
@@ -3574,6 +3628,7 @@
 				75339583263800AA00341D24 /* sk */,
 				7531913E263800DC000A1119 /* tr */,
 				75FCA95B2638010D0070405A /* th */,
+				753438282643FE6F0032D284 /* ko */,
 			);
 			name = EntryFieldEditorVC.storyboard;
 			sourceTree = "<group>";
@@ -3599,6 +3654,7 @@
 				7533957B263800AA00341D24 /* sk */,
 				75319136263800DC000A1119 /* tr */,
 				75FCA9532638010D0070405A /* th */,
+				753438202643FE6F0032D284 /* ko */,
 			);
 			name = PasswordGeneratorVC.storyboard;
 			sourceTree = "<group>";
@@ -3624,6 +3680,7 @@
 				7533956B263800AA00341D24 /* sk */,
 				75319126263800DC000A1119 /* tr */,
 				75FCA9432638010D0070405A /* th */,
+				7534380F2643FE6E0032D284 /* ko */,
 			);
 			name = ViewEntryVC.storyboard;
 			sourceTree = "<group>";
@@ -3649,6 +3706,7 @@
 				75339563263800AA00341D24 /* sk */,
 				7531911E263800DC000A1119 /* tr */,
 				75FCA93B2638010D0070405A /* th */,
+				753438072643FE6E0032D284 /* ko */,
 			);
 			name = ViewEntryFieldsVC.storyboard;
 			sourceTree = "<group>";
@@ -3674,6 +3732,7 @@
 				75339579263800AA00341D24 /* sk */,
 				75319134263800DC000A1119 /* tr */,
 				75FCA9512638010D0070405A /* th */,
+				7534381C2643FE6F0032D284 /* ko */,
 			);
 			name = ViewEntryFilesVC.storyboard;
 			sourceTree = "<group>";
@@ -3699,6 +3758,7 @@
 				75339577263800AA00341D24 /* sk */,
 				75319132263800DC000A1119 /* tr */,
 				75FCA94F2638010D0070405A /* th */,
+				7534381B2643FE6F0032D284 /* ko */,
 			);
 			name = ViewEntryHistoryVC.storyboard;
 			sourceTree = "<group>";
@@ -3724,6 +3784,7 @@
 				75339568263800AA00341D24 /* sk */,
 				75319123263800DC000A1119 /* tr */,
 				75FCA9402638010D0070405A /* th */,
+				7534380C2643FE6E0032D284 /* ko */,
 			);
 			name = ChooseDatabaseVC.storyboard;
 			sourceTree = "<group>";
@@ -3749,6 +3810,7 @@
 				7533955E263800AA00341D24 /* sk */,
 				7531911A263800DC000A1119 /* tr */,
 				75FCA9372638010D0070405A /* th */,
+				753438022643FE6E0032D284 /* ko */,
 			);
 			name = ChangeMasterKeyVC.storyboard;
 			sourceTree = "<group>";
@@ -3774,6 +3836,7 @@
 				7533956A263800AA00341D24 /* sk */,
 				75319125263800DC000A1119 /* tr */,
 				75FCA9422638010D0070405A /* th */,
+				7534380E2643FE6E0032D284 /* ko */,
 			);
 			name = UnlockDatabaseVC.storyboard;
 			sourceTree = "<group>";
@@ -3799,6 +3862,7 @@
 				7533957C263800AA00341D24 /* sk */,
 				75319137263800DC000A1119 /* tr */,
 				75FCA9542638010D0070405A /* th */,
+				753438212643FE6F0032D284 /* ko */,
 			);
 			name = DatabaseCreatorVC.storyboard;
 			sourceTree = "<group>";
@@ -3824,6 +3888,7 @@
 				75339584263800AA00341D24 /* sk */,
 				7531913F263800DC000A1119 /* tr */,
 				75FCA95C2638010D0070405A /* th */,
+				753438292643FE6F0032D284 /* ko */,
 			);
 			name = ItemIconPicker.storyboard;
 			sourceTree = "<group>";
@@ -3849,6 +3914,7 @@
 				7533955F263800AA00341D24 /* sk */,
 				75319142263800DC000A1119 /* tr */,
 				75FCA9392638010D0070405A /* th */,
+				753438032643FE6E0032D284 /* ko */,
 			);
 			name = FileInfoVC.storyboard;
 			sourceTree = "<group>";
@@ -3874,6 +3940,7 @@
 				75339564263800AA00341D24 /* sk */,
 				7531911F263800DC000A1119 /* tr */,
 				75FCA93D2638010D0070405A /* th */,
+				753438082643FE6E0032D284 /* ko */,
 			);
 			name = CrashReportVC.storyboard;
 			sourceTree = "<group>";
@@ -3899,6 +3966,7 @@
 				75339576263800AA00341D24 /* sk */,
 				75319131263800DC000A1119 /* tr */,
 				75FCA94E2638010D0070405A /* th */,
+				7534381A2643FE6F0032D284 /* ko */,
 			);
 			name = FirstSetupVC.storyboard;
 			sourceTree = "<group>";
@@ -3924,6 +3992,7 @@
 				75339572263800AA00341D24 /* sk */,
 				7531912D263800DC000A1119 /* tr */,
 				75FCA94A2638010D0070405A /* th */,
+				753438162643FE6F0032D284 /* ko */,
 			);
 			name = DatabaseChooserVC.storyboard;
 			sourceTree = "<group>";
@@ -3949,6 +4018,7 @@
 				75339580263800AA00341D24 /* sk */,
 				7531913B263800DC000A1119 /* tr */,
 				75FCA9582638010D0070405A /* th */,
+				753438252643FE6F0032D284 /* ko */,
 			);
 			name = DatabaseUnlockerVC.storyboard;
 			sourceTree = "<group>";
@@ -3974,6 +4044,7 @@
 				7533956D263800AA00341D24 /* sk */,
 				75319128263800DC000A1119 /* tr */,
 				75FCA9462638010D0070405A /* th */,
+				753438112643FE6F0032D284 /* ko */,
 			);
 			name = EntryFinderVC.storyboard;
 			sourceTree = "<group>";
@@ -3999,6 +4070,7 @@
 				7533956F263800AA00341D24 /* sk */,
 				7531912A263800DC000A1119 /* tr */,
 				75FCA9472638010D0070405A /* th */,
+				753438132643FE6F0032D284 /* ko */,
 			);
 			name = KeyFilePickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4024,6 +4096,7 @@
 				75339585263800AA00341D24 /* sk */,
 				75319140263800DC000A1119 /* tr */,
 				75FCA95D2638010D0070405A /* th */,
+				7534382A2643FE6F0032D284 /* ko */,
 			);
 			name = SettingsSearchVC.storyboard;
 			sourceTree = "<group>";
@@ -4049,6 +4122,7 @@
 				75339578263800AA00341D24 /* sk */,
 				75319133263800DC000A1119 /* tr */,
 				75FCA9502638010D0070405A /* th */,
+				7534381E2643FE6F0032D284 /* ko */,
 			);
 			name = DestinationGroupPickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4090,6 +4164,7 @@
 				75339574263800AA00341D24 /* sk */,
 				7531912E263800DC000A1119 /* tr */,
 				75FCA9492638010D0070405A /* th */,
+				753438172643FE6F0032D284 /* ko */,
 			);
 			name = AboutVC.storyboard;
 			sourceTree = "<group>";
@@ -4115,6 +4190,7 @@
 				75339582263800AA00341D24 /* sk */,
 				7531913D263800DC000A1119 /* tr */,
 				75FCA95A2638010D0070405A /* th */,
+				753438272643FE6F0032D284 /* ko */,
 			);
 			name = PasscodeInputVC.storyboard;
 			sourceTree = "<group>";
@@ -4140,6 +4216,7 @@
 				7533957A263800AA00341D24 /* sk */,
 				75319135263800DC000A1119 /* tr */,
 				75FCA9522638010D0070405A /* th */,
+				7534381F2643FE6F0032D284 /* ko */,
 			);
 			name = WelcomeVC.storyboard;
 			sourceTree = "<group>";
@@ -4165,6 +4242,7 @@
 				7533955C263800AA00341D24 /* sk */,
 				75319117263800DC000A1119 /* tr */,
 				75FCA9342638010D0070405A /* th */,
+				753438002643FE6E0032D284 /* ko */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -4190,6 +4268,7 @@
 				7533955D263800AA00341D24 /* sk */,
 				75319118263800DC000A1119 /* tr */,
 				75FCA9352638010D0070405A /* th */,
+				753438012643FE6E0032D284 /* ko */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -4214,6 +4293,7 @@
 				75339560263800AA00341D24 /* sk */,
 				7531911B263800DC000A1119 /* tr */,
 				75FCA9382638010D0070405A /* th */,
+				753438042643FE6E0032D284 /* ko */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4238,6 +4318,7 @@
 				75339562263800AA00341D24 /* sk */,
 				7531911C263800DC000A1119 /* tr */,
 				75FCA93A2638010D0070405A /* th */,
+				753438062643FE6E0032D284 /* ko */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4260,6 +4341,7 @@
 				7575EB192633014E00782CDE /* ru */,
 				7575EB1B2633014F00782CDE /* sv */,
 				7575EB1D2633015000782CDE /* es */,
+				7534381D2643FE6F0032D284 /* ko */,
 			);
 			name = AppHistoryViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -4285,6 +4367,7 @@
 				7533957F263800AA00341D24 /* sk */,
 				7531913A263800DC000A1119 /* tr */,
 				75FCA9572638010D0070405A /* th */,
+				753438242643FE6F0032D284 /* ko */,
 			);
 			name = HardwareKeyPicker.storyboard;
 			sourceTree = "<group>";
@@ -4310,6 +4393,7 @@
 				75339586263800AA00341D24 /* sk */,
 				75319141263800DC000A1119 /* tr */,
 				75FCA95E2638010D0070405A /* th */,
+				7534382B2643FE6F0032D284 /* ko */,
 			);
 			name = PricingPlanPickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4336,6 +4420,7 @@
 				75339561263800AA00341D24 /* sk */,
 				75319119263800DC000A1119 /* tr */,
 				75FCA9362638010D0070405A /* th */,
+				753438092643FE6E0032D284 /* ko */,
 			);
 			name = SettingsAppearanceVC.storyboard;
 			sourceTree = "<group>";
@@ -4361,6 +4446,7 @@
 				75339575263800AA00341D24 /* sk */,
 				75319130263800DC000A1119 /* tr */,
 				75FCA94D2638010D0070405A /* th */,
+				753438192643FE6F0032D284 /* ko */,
 			);
 			name = DiagnosticsViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -4386,6 +4472,7 @@
 				75339571263800AA00341D24 /* sk */,
 				7531912C263800DC000A1119 /* tr */,
 				75FCA94C2638010D0070405A /* th */,
+				753438152643FE6F0032D284 /* ko */,
 			);
 			name = SettingsAppTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -4411,6 +4498,7 @@
 				75339587263800AA00341D24 /* sk */,
 				75319120263800DC000A1119 /* tr */,
 				75FCA95F2638010D0070405A /* th */,
+				7534382C2643FE6F0032D284 /* ko */,
 			);
 			name = SettingsBackupTimeoutPickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4436,6 +4524,7 @@
 				7533956C263800AA00341D24 /* sk */,
 				75319127263800DC000A1119 /* tr */,
 				75FCA9442638010D0070405A /* th */,
+				753438102643FE6F0032D284 /* ko */,
 			);
 			name = SettingsDatabaseTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -4461,6 +4550,7 @@
 				75339581263800AA00341D24 /* sk */,
 				7531913C263800DC000A1119 /* tr */,
 				75FCA9592638010D0070405A /* th */,
+				753438262643FE6F0032D284 /* ko */,
 			);
 			name = SettingsClipboardTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -4486,6 +4576,7 @@
 				75339570263800AA00341D24 /* sk */,
 				7531912B263800DC000A1119 /* tr */,
 				75FCA9482638010D0070405A /* th */,
+				753438142643FE6F0032D284 /* ko */,
 			);
 			name = SettingsItemListVC.storyboard;
 			sourceTree = "<group>";

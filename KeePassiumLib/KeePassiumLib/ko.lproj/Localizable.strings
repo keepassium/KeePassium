@@ -1,0 +1,513 @@
+/* Type of keyboard to show for App Lock passcode: letters and digits. */
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "영문자 및 숫자";
+
+/* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "숫자";
+
+/* Error message when the challenge-response communication has been cancelled by the user. */
+"[ChallengeResponseError] cancelled" = "사용자에 의해 취소됨.";
+
+/* Error message when the hardware key is not plugged in. */
+"[ChallengeResponseError] keyNotConnected" = "하드웨어 키가 연결되지 않았습니다.";
+
+/* Error message when trying to use challenge-response hardware in AutoFill. */
+"[ChallengeResponseError] notAvailableInAutoFill" = "하드웨어 키는 자동 완성에서 사용할 수 없습니다.";
+
+/* Error message when trying to use challenge-response with a kdb database. */
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "하드웨어 키가 이 데이터베이스 포맷에서 지원되지 않습니다.";
+
+/* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "이 기기 혹은 iOS 버전에서 하드웨어 키를 지원하지 않습니다. (%@)";
+
+/* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
+"[ChallengeResponseError] slotNotConfigured" = "하드웨어 키가 도전-응답 작업에 사용되도록 구성되지 않았습니다.";
+
+/* Progress status */
+"[Cipher/Progress] Decrypting" = "복호화 중";
+
+/* Progress status */
+"[Cipher/Progress] Encrypting" = "암호화 중";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES decryption error (code %d)" = "AES 복호화 오류 (코드 %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES encryption error (code %d)" = "AES 암호화 오류 (코드 %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES initialization error (code %d)" = "AES 초기화 오류 (코드 %d)";
+
+/* Error message about Argon2 hashing function. [errorCode: Int] */
+"[CryptoError] Argon2 hashing error (code %d)" = "Argon2 해싱 오류 (코드 %d)";
+
+/* Error message about PKCS7 padding. [errorCode: Int] */
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "유효하지 않은 데이터 패딩 (코드 %d). 손상된 파일인 것 같습니다.";
+
+/* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "유효하지 않은 KDF 파라미터: %1$@ - %2$@. 손상된 파일인 것 같습니다.";
+
+/* Error message about random number generator. [errorCode: Int] */
+"[CryptoError] Random number generator error (code %d)" = "랜덤 숫자 생성기 오류 (코드 %d)";
+
+/* Error message about Twofish cipher. [errorCode: Int] */
+"[CryptoError] Twofish cipher error (code %d)" = "Twofish 사이퍼 오류 (코드 %d)";
+
+/* Error message */
+"[Database/Load/Error] Cannot find database file" = "데이터베이스 파일을 찾을 수 없습니다";
+
+/* Error message */
+"[Database/Load/Error] Cannot find key file" = "키 파일을 찾을 수 없습니다";
+
+/* Error message */
+"[Database/Load/Error] Cannot open database file" = "데이터베이스 파일을 열 수 없습니다";
+
+/* Error message */
+"[Database/Load/Error] Cannot open key file" = "키 파일을 열 수 없습니다";
+
+/* Error shown when both master password and key file are empty */
+"[Database/Load/Error] Please provide at least a password or a key file" = "패스워드나 키 파일을 제공해주시기 바랍니다.";
+
+/* Error message */
+"[Database/Load/Error] Unrecognized database format" = "데이터베이스 포맷이 인식되지 않음";
+
+/* Progress status: finished loading database */
+"[Database/Progress] Done" = "완료";
+
+/* Progress status */
+"[Database/Progress] Loading key file..." = "키 파일 불러오는 중...";
+
+/* Database loading status: fetching the database file from disk/cloud */
+"[Database/Progress/downloading]" = "데이터베이스 파일 다운로드 중...";
+
+/* Database saving status: making a local backup copy of the database */
+"[Database/Progress/makingDatabaseBackup]" = "백업 파일 생성 중...";
+
+/* Progress status */
+"[Database/Progress/resolving]" = "저장 공간 제공자 연결 중...";
+
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "필드 레퍼런스 분석 중…";
+
+/* Error message */
+"[Database/Unlock/Error] Failed to open key file" = "키 파일을 열 수 없습니다";
+
+/* Error message */
+"[Database/Unlock/Error] Password and key file are both empty." = "패스워드와 키 파일 항목이 공란입니다.";
+
+/* Error message */
+"[Database1/FormatError] Database file is corrupted." = "데이터베이스 파일이 손상되었습니다.";
+
+/* Error message [fieldName: String] */
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "필드 %@ 해석 오류. 손상된 데이터베이스 파일인 것 같습니다.";
+
+/* Error message */
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "어떠한 그룹에도 속하지 않은 항목 발견. 손상된 데이터베이스 파일인 것 같습니다.";
+
+/* Error message */
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "예상되지 않은 파일의 끝. 손상된 데이터베이스 파일인 것 같습니다.";
+
+/* Error message when reading database header */
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "헤더 읽기 오류. 손상된 데이터베이스 파일인 것 같습니다.";
+
+/* Error message. [flagsHexString: String] */
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "지원되지 않는 사이퍼입니다. (코드: %@)";
+
+/* Error message when opening a database. [version: String] */
+"[Database1/Header1/Error] Unsupported database format version: %@." = "지원되지 않는 데이터베이스 포맷 버전: %@.";
+
+/* Error message when opening a database */
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "파일 시그니처가 잘못되었습니다. KeePass 데이터베이스가 맞는지 확인해주세요.";
+
+/* Status message: collecting database items into a single package */
+"[Database1/Progress] Packing the content" = "콘텐츠 패키징 중";
+
+/* Status message: processing the content of a database */
+"[Database1/Progress] Parsing content" = "콘텐츠 구문 분석 중";
+
+/* Name of a group which contains deleted entries */
+"[Database2/backupGroupName] Recycle Bin" = "삭제한 항목";
+
+/* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
+"[Database2/FormatError] Cannot parse database. %@" = "데이터베이스를 구문 분석할 수 없습니다. %@";
+
+/* Error message [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "손상된 데이터베이스 파일 (블록 %d이(가) 음수 크기임)";
+
+/* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "손상된 데이터베이스 파일 (블록 %d에서 해시 불일치)";
+
+/* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "손상된 데이터베이스 파일 (블록 %d에서 HMAC 불일치)";
+
+/* Error message about Gzip compression algorithm. [reason: String] */
+"[Database2/FormatError] Gzip error: %@" = "Gzip 오류: %@";
+
+/* Error message: wrong ID of a data block */
+"[Database2/FormatError] Unexpected block ID." = "예상되지 않은 블록 ID입니다.";
+
+/* Error message */
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "예상되지 않은 파일의 끝. 손상된 파일인 것 같습니다.";
+
+/* Error message when saving a database. [reason: String] */
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "첨부 파일 데이터 압축 해제 실패: %@";
+
+/* Error message, with the name of problematic field. [fieldName: String] */
+"[Database2/Header2/Error] Header field %@ is corrupted." = "헤더 필드 %@가 손상되었습니다.";
+
+/* Error message */
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "헤더 해시 불일치. 손상된 데이터베이스 파일인 것 같습니다.";
+
+/* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "헤더 HMAC 불일치. 손상된 데이터베이스 파일인 것 같습니다.";
+
+/* Error message when reading database header */
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "헤더 읽기 오류. 손상된 데이터베이스 파일인 것 같습니다.";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Unknown compression algorithm." = "알 수 없는 압축 알고리즘입니다.";
+
+/* Error message. [uuidHexString: String] */
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "지원되지 않는 데이터 사이퍼: %@";
+
+/* Error message when opening a database. [version: String] */
+"[Database2/Header2/Error] Unsupported database format version: %@." = "지원되지 않는 데이터베이스 포맷 버전: %@.";
+
+/* Error message when opening a database. [id: UInt32] */
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "지원되지 않는 내부 스트림 사이퍼 (ID %d)";
+
+/* Error message about Key Derivation Function. [uuidString: String] */
+"[Database2/Header2/Error] Unsupported KDF: %@" = "지원되지 않는 KDF: %@";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "파일 시그니처가 잘못되었습니다. KeePass 데이터베이스가 맞는지 확인해주세요.";
+
+/* Error message about Gzip compression algorithm. [errorMessage: String] */
+"[Database2/Loading/Error] Error unpacking database: %@" = "데이터베이스 패키징 해제 중 오류: %@";
+
+/* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
+"[Database2/Loading/Warning/missingBinaries]" = "일부 항목의 첨부 파일의 데이터가 발견되지 않았습니다. 이는 마지막으로 사용한 앱(%1$@)에 의해 데이터베이스가 손상된 것일 수 있습니다. KeePassium은 이 데이터를 복구할 수는 없지만, 첨부 파일을 비운 채로 보존할 것입니다. 사용자는 백업본을 이용해 데이터베이스를 복원해야 합니다. \n\n데이터가 발견되지 않은 첨부 파일: %2$@";
+
+/* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
+"[Database2/Loading/Warning/namelessAttachments]" = "일부 항목에서 이름이 없는 첨부 파일을 발견했습니다. 데이터베이스가 손상되었을 수 있습니다.\n\n 다음 항목에 첨부된 파일과 첨부 파일의 기록을 확인해 보시기 바랍니다. : %@";
+
+/* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
+"[Database2/Loading/Warning/namelessCustomFields]" = "일부 항목에 이름이 없는 사용자 지정 필드가 발견되었습니다. 데이터베이스가 손상되었을 수 있습니다. 다음 항목을 확인해 보시기 바랍니다. :\n\n%@";
+
+/* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
+"[Database2/Loading/Warning/unusedAttachments]" = "이 데이터베이스는 어떠한 항목에도 포함되지 않은 첨부 파일을 포함하고 있습니다. 대다수의 경우 마지막으로 사용한 앱(%@)에서 “잊혀진” 것이지만, 데이터 손상의 지표일 수도 있습니다. \n데이터베이스에 변경 사항이 생길 때마다 백업본을 만들어두는 것을 잊지 마세요.";
+
+/* Progress bar status */
+"[Database2/Progress] Loading database" = "데이터베이스 불러오는 중";
+
+/* Progress bar status */
+"[Database2/Progress] Reading database content" = "데이터베이스 콘텐츠 읽는 중";
+
+/* Progress bar status */
+"[Database2/Progress] Writing encrypted blocks" = "압호화된 블럭 작성 중";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "데이터베이스 압축 해제 중";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "무결성 확인 중";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "데이터베이스 구문 분석 중";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Data compression error: %@" = "데이터 압축 오류: %@";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Encryption error: %@" = "암호화 오류: %@";
+
+/* Error message about XML parsing. [value: String, tag: String] */
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "%2$@에서 잘못된 값 ‘%1$@’";
+
+/* Error message about XML parsing. [tag: String] */
+"[Database2/Xml2/ParsingError] Nil value in %@" = "%@에 nil 값";
+
+/* Error message about XML parsing */
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "KeePass XML이 아닙니다";
+
+/* Error message about XML parsing. [actualTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "예상되지 않은 태그 ‘%@‘";
+
+/* Error message about XML parsing. [actualTag: String, expectedTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "예상되지 않은 태그 ‘%1$@’ (‘%2$@‘이(가) 예상됨)";
+
+/* Generic error while parsing XML. [errorDetails: String] */
+"[Database2/Xml2/ParsingError] XML error: %@" = "XML 오류: %@";
+
+/* Error message while opening a database */
+"[DatabaseError] Cannot open database" = "데이터베이스를 열 수 없습니다";
+
+/* Error message while saving a database */
+"[DatabaseError] Cannot save database" = "데이터베이스를 저장할 수 없습니다";
+
+/* Error message: user provided a wrong master key for decryption. */
+"[DatabaseError] Invalid password or key file" = "잘못된 비밀번호 또는 키 파일입니다";
+
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "’%@‘은(는) ‘최근 삭제된 항목’에 있으며 곧 삭제될 것입니다. 데이터를 보존하려면 파일을 영구적인 위치로 이동해주시기 바랍니다.";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "임시 백업 데이터베이스입니다. 추후 경고 없이 자동으로 삭제될 수 있으니, 사용자의 메인 데이터베이스로 사용하지 마세요.";
+
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "저장 공간 제공자를 현재 사용할 수 없습니다. 앱이 설치되어 있는지, 또는 사용자 계정에 로그인되어 있는지 확인해주세요.";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@을(를) 현재 사용할 수 없습니다. 앱이 설치되어 있는지, 또는 사용자 계정에 로그인되어 있는지 확인해주세요.";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "네트워크 저장 공간이 연결되어 있지 않습니다.";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB 드라이브가 연결되어 있지 않습니다.";
+
+/* Error message shown when there's internal inconsistency in KeePassium. */
+"[FileAccessError/internalError]" = "내부 KeePassium 오류. 개발자에게 오류 내용을 알려주세요.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
+"[FileAccessError/NoResponse/genericFileProvider]" = "저장 공간 제공자가 응답이 없습니다.";
+
+/* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@이(가) 응답이 없습니다.";
+
+/* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
+"[FileAccessError/NoWritePermission/title]" = "파일 저장 실패 (%@)";
+
+/* Explanation of a file writing error */
+"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft가 최근에 OneDrive의 iOS 통합을 “임시로” 읽기 전용 모드로 전환했습니다.";
+
+/* Suggestion for error recovery */
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "내보내기 옵션을 사용하여 다른 위치에 파일을 저장하세요.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
+"[FileAccessError/Timeout/genericFileProvider]" = "저장 공간 제공자가 응답이 없습니다.";
+
+/* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
+"[FileAccessError/Timeout/knownFileProvider]" = "%@이(가) 응답이 없습니다.";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to delete file. Reason: %@" = "파일 삭제 실패. 사유: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to import file. Reason: %@" = "파일 불러오기 실패. 사유: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to open file. Reason: %@" = "파일 열기 실패. 사유: %@";
+
+/* Error message: tried to import URL which does not point to a file */
+"[FileKeeper] Not a file URL" = "파일 URL이 아님";
+
+/* Localized name of the storage service: Amerigo (https://www.amerigo-app.com) */
+"[FileProvider/Amerigo/name]" = "Amerigo";
+
+/* Localized name of the storage service: Box (https://box.com) */
+"[FileProvider/Box/name]" = "Box";
+
+/* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
+"[FileProvider/Boxcryptor/name]" = "Boxcryptor";
+
+/* Localized name of the storage service: Dropbox (https://dropbox.com) */
+"[FileProvider/Dropbox/name]" = "Dropbox";
+
+/* Localized name of the storage service: FE File Explorer (https://apps.apple.com/app/fe-file-explorer-file-manager/id510282524) */
+"[FileProvider/FE File Explorer/name]" = "FE File Explorer";
+
+/* Localized name of the storage service: Google Drive (https://drive.google.com) */
+"[FileProvider/Google Drive/name]" = "Google 드라이브";
+
+/* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
+"[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: Nextcloud (https://nextcloud.com) */
+"[FileProvider/Nextcloud/name]" = "Nextcloud";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPad/name]" = "나의 iPad";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPhone/name]" = "나의 iPhone";
+
+/* Localized name of the storage service: OneDrive (https://onedrive.com) */
+"[FileProvider/OneDrive/name]" = "OneDrive";
+
+/* Localized name of the storage service: ownCloud (https://owncloud.com) */
+"[FileProvider/ownCloud/name]" = "ownCloud";
+
+/* Localized name of the storage service: pCloud (https://pcloud.com) */
+"[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
+/* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
+"[FileProvider/Readdle Documents/name]" = "Documents by Readdle";
+
+/* Localized name of the storage service: Resilio Sync (https://https://apps.apple.com/us/app/id1126282325) */
+"[FileProvider/Resilio Sync/name]" = "Resilio Sync";
+
+/* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
+"[FileProvider/Seafile Pro/name]" = "Seafile Pro";
+
+/* Localized name of the storage service: SMB server (network share) via native iOS integration. */
+"[FileProvider/SMB/name]" = "SMB 서버";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
+
+/* Localized name of the storage service: Sync.com (https://sync.com) */
+"[FileProvider/sync.com/name]" = "Sync.com";
+
+/* Localized name of the storage service: Synology Drive (https://apps.apple.com/us/app/synology-drive/id1267275421) */
+"[FileProvider/Synology Drive/name]" = "Synology Drive";
+
+/* Localized name of the storage service: Synology DS file (https://apps.apple.com/us/app/ds-file/id416751772) */
+"[FileProvider/Synology DS file/name]" = "Synology DS file";
+
+/* Localized name of the storage service: Tresorit (https://tresorit.com) */
+"[FileProvider/Tresorit/name]" = "Tresorit";
+
+/* Localized name of the storage service: local USB drive (native iOS integration) */
+"[FileProvider/USB drive/name]" = "USB 드라이브";
+
+/* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
+"[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "생성 일자 (오래된 항목 우선)";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "생성 일자 (최근 항목 우선)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "수정 일자 (오래된 항목 우선)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "수정 일자 (최근 항목 우선)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
+"[FilesSortOrder/longTitle] Name (A..Z)" = "이름 (오름차순)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
+"[FilesSortOrder/longTitle] Name (Z..A)" = "이름 (내림차순)";
+
+/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
+"[FilesSortOrder/longTitle] No Sorting" = "정렬하지 않음";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "생성 일자 (내림차순)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "생성 일자 (오름차순)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "수정 일자 (내림차순)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "수정 일자 (오름차순)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "제목 (오름차순)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "제목 (내림차순)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
+"[GroupSortOrder/longTitle] No Sorting" = "정렬하지 않음";
+
+/* Status message: processing of the master key is in progress */
+"[KDF/Progress] Processing the master key" = "마스터 키 처리 중";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "키체인 오류 (코드 %d) ";
+
+/* Error message about system keychain. */
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "키체인 오류: 예상되지 않은 데이터 포맷";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "손상된 키 파일입니다";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "지원되지 않는 키 파일 포맷입니다";
+
+/* Explanation/notification when a long-running operation was cancelled by user */
+"[Progress/CancellationReason] Cancelled by user" = "사용자에 의해 취소됨";
+
+/* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
+"[Progress/CancellationReason/lowMemory]" = "메모리가 부족하여 계속 진행할 수 없습니다.\n이 현상은 규모가 큰 데이터베이스를 처리할 때나 Argon2 메모리 파라미터와 같은 데이터베이스 설정을 과도하게 설정한 경우 발생할 수 있습니다.";
+
+/* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
+"[Settings/AppLockTimeout/description] After last interaction" = "마지막 상호작용 후";
+
+/* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
+"[Settings/AppLockTimeout/description] After leaving the app" = "앱을 벗어난 후";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "즉시";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/fullTitle] Never" = "잠그지 않음";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "즉시";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/shortTitle] Never" = "잠그지 않음";
+
+/* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "영구 저장";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/fullTitle] Never" = "지우지 않음";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/shortTitle] Never" = "지우지 않음";
+
+/* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "앱을 벗어나는 즉시";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "즉시";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "잠그지 않음";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "즉시";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "잠그지 않음";
+
+/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "마지막 수정 일자";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
+"[Settings/EntryListDetail/longTitle] None" = "없음";
+
+/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
+"[Settings/EntryListDetail/longTitle] Notes" = "메모";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
+"[Settings/EntryListDetail/longTitle] Password" = "패스워드";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
+"[Settings/EntryListDetail/longTitle] URL" = "URL";
+
+/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
+"[Settings/EntryListDetail/longTitle] User Name" = "사용자 이름";
+
+/* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
+"[URLReference/Location] Cloud storage / Another app" = "클라우드 저장소 / 기타 앱";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
+"[URLReference/Location] Internal backup" = "내부 백업";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
+"[URLReference/Location] Internal inbox" = "내부 인박스";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
+"[URLReference/Location] Local copy" = "로컬 복사본";
+

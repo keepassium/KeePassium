@@ -1,0 +1,12 @@
+/* Class = "UIViewController"; title = "Welcome"; ObjectID = "1Nc-wz-Yqq"; Note = "Onboarding screen shown on first launch"; */
+"1Nc-wz-Yqq.title" = "환영합니다!";
+
+/* Class = "UIButton"; normalTitle = "Create New Database"; ObjectID = "4wh-8O-5Ch"; */
+"4wh-8O-5Ch.normalTitle" = "새로운 데이터베이스 생성";
+
+/* Class = "UILabel"; text = "KeePassium stores your passwords, credit cards and other information in an encrypted file (database). \nYou can have multiple databases, for example to separate work, family and personal accounts."; ObjectID = "PgB-6p-H0t"; */
+"PgB-6p-H0t.text" = "KeePassium은 암호화된 파일(데이터베이스)에 사용자의 패스워드나 신용카드 등의 정보를 저장합니다. \n분리된 업무용, 가족용, 개인 계정용 등과 같이 다수의 데이터베이스를 사용하실 수도 있습니다.";
+
+/* Class = "UIButton"; normalTitle = "Add Existing Database"; ObjectID = "ZKW-2f-Xkz"; */
+"ZKW-2f-Xkz.normalTitle" = "기존 데이터베이스 추가";
+

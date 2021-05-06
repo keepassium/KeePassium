@@ -1,0 +1,21 @@
+/* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
+"9UZ-FK-v73.text" = "키 파일 없음";
+
+/* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "jCW-yW-0I5"; Note = "#bc-ignore!"; */
+"jCW-yW-0I5.text" = "{Database File Name}";
+
+/* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
+"leO-vH-qBX.text" = "패스워드만 사용";
+
+/* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
+"Lod-RE-tcd.title" = "키 파일 추가";
+
+/* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
+"Omh-Sn-jl2.normalTitle" = "키 파일 추가";
+
+/* Class = "UILabel"; text = "{File Attributes}"; ObjectID = "pn1-Yp-Bzr"; Note = "#bc-ignore!"; */
+"pn1-Yp-Bzr.text" = "{File Attributes}";
+
+/* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
+"r85-yz-wYI.title" = "키 파일";
+

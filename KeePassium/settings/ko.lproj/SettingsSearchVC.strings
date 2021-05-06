@@ -1,0 +1,18 @@
+/* Class = "UILabel"; text = "Search in Field Names"; ObjectID = "cCm-E4-L3m"; Note = "An switch in settings: whether to include entry field names in search procedure."; */
+"cCm-E4-L3m.text" = "필드 이름 검색";
+
+/* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "DJr-hC-DMT"; Note = "A section in search-related settings: what happens when the app is just started or database is just opened."; */
+"DJr-hC-DMT.footerTitle" = "데이터베이스를 열면 자동으로 검색 필드를 표시합니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "Search Scope"; ObjectID = "Io8-uP-3lF"; Note = "A section in search-related settings: which fields to include in search."; */
+"Io8-uP-3lF.headerTitle" = "검색 범위";
+
+/* Class = "UILabel"; text = "Search in Protected Values"; ObjectID = "LrQ-5g-wj0"; Note = "An switch in settings: whether to include protected field values in search procedure."; */
+"LrQ-5g-wj0.text" = "보호된 값 검색";
+
+/* Class = "UILabel"; text = "Start with Search"; ObjectID = "q0v-f7-D4Y"; */
+"q0v-f7-D4Y.text" = "검색으로 시작";
+
+/* Class = "UITableViewController"; title = "Search"; ObjectID = "RZt-EW-TGN"; Note = "Section title in settings"; */
+"RZt-EW-TGN.title" = "검색";
+

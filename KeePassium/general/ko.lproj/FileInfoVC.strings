@@ -1,0 +1,18 @@
+/* Class = "UITableViewController"; title = "File Info"; ObjectID = "Cu8-bv-TEu"; */
+"Cu8-bv-TEu.title" = "파일 정보";
+
+/* Class = "UIButton"; normalTitle = "Export"; ObjectID = "DWC-wm-aMy"; */
+"DWC-wm-aMy.normalTitle" = "내보내기";
+
+/* Class = "UIButton"; normalTitle = "{Delete/Remove}"; ObjectID = "NlK-W5-RAo"; Note = "#bc-ignore!"; */
+"NlK-W5-RAo.normalTitle" = "{Delete/Remove}";
+
+/* Class = "UILabel"; text = "{Field Value Il1O0}"; ObjectID = "qlF-up-4bN"; Note = "#bc-ignore!"; */
+"qlF-up-4bN.text" = "{Field Value Il1O0}";
+
+/* Class = "UILabel"; text = "{Field Name}"; ObjectID = "UOt-iw-18Z"; Note = "#bc-ignore!"; */
+"UOt-iw-18Z.text" = "{Field Name}";
+
+/* Class = "UILabel"; text = "{Switch title}"; ObjectID = "WTs-93-75r"; Note = "#bc-ignore!"; */
+"WTs-93-75r.text" = "{Switch title}";
+

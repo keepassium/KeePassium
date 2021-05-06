@@ -1,0 +1,33 @@
+/* Class = "UILabel"; text = "Database File Name"; ObjectID = "2iK-ct-ygq"; */
+"2iK-ct-ygq.text" = "데이터베이스 파일 이름";
+
+/* Class = "UIButton"; accessibilityLabel = "Show Diagnostics"; ObjectID = "bNa-R0-f67"; */
+"bNa-R0-f67.accessibilityLabel" = "진단 내용 보기";
+
+/* Class = "UINavigationItem"; title = "{Create Database}"; ObjectID = "dhd-je-Doc"; Note = "#bc-ignore!"; */
+"dhd-je-Doc.title" = "{Create Database}";
+
+/* Class = "UIButton"; normalTitle = "Save Database"; ObjectID = "h6C-CG-RVI"; Note = "Action: save the new database (will show a file picker dialog)."; */
+"h6C-CG-RVI.normalTitle" = "데이터베이스 저장";
+
+/* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "pvt-FS-0Yx"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
+"pvt-FS-0Yx.placeholder" = "키 파일 없음";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "uHk-Yt-mBh"; Note = "Placeholder: master password of the database"; */
+"uHk-Yt-mBh.placeholder" = "패스워드";
+
+/* Class = "UILabel"; text = "Master Key"; ObjectID = "VjQ-di-Ilx"; Note = "Common title for the password/key file fields."; */
+"VjQ-di-Ilx.text" = "마스터 키";
+
+/* Class = "UILabel"; text = "{Error message}"; ObjectID = "wb0-s2-V8n"; Note = "#bc-ignore!"; */
+"wb0-s2-V8n.text" = "{Error message}";
+
+/* Class = "UITextField"; placeholder = "e.g. MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
+"XNL-lc-2Ti.placeholder" = "예) MyPasswords";
+
+/* Class = "UITextField"; text = "MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
+"XNL-lc-2Ti.text" = "MyPasswords";
+
+/* Class = "UILabel"; text = "Will use kdbx4 format (Argon2+ChaCha20)"; ObjectID = "XVR-1N-ywy"; Note = "Hint about the default format of new databases."; */
+"XVR-1N-ywy.text" = "kdbx4 포맷 사용 (Argon2+ChaCha20)";
+

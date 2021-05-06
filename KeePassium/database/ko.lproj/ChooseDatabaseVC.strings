@@ -1,0 +1,33 @@
+/* Class = "UIBarButtonItem"; 2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Help"; ObjectID = "2o3-sG-Pcm"; Note = "Action: show help pages (at the moment shows the About screen)"; */
+"2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "도움말";
+
+/* Class = "UILabel"; text = "No database files"; ObjectID = "5Md-DB-C5P"; Note = "Placeholder shown when there are no database files available"; */
+"5Md-DB-C5P.text" = "데이터베이스 파일 없음";
+
+/* Class = "UIButton"; normalTitle = "Enable AppLock"; ObjectID = "hmv-DA-BgM"; */
+"hmv-DA-BgM.normalTitle" = "앱 잠금 활성화";
+
+/* Class = "UIBarButtonItem"; lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "lnO-nD-gvh"; Note = "Action: show sorting settings of database files"; */
+"lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "정렬 순서";
+
+/* Class = "UIBarButtonItem"; oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Settings"; ObjectID = "oee-CI-r2x"; Note = "Action: show app settings"; */
+"oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "설정";
+
+/* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
+"qPq-UR-uZs.title" = "데이터베이스 추가";
+
+/* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
+"R68-cy-5mz.text" = "허가되지 않은 접근으로부터 KeePassium 보호.";
+
+/* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "rWy-ey-805"; Note = "#bc-ignore!"; */
+"rWy-ey-805.text" = "{Database File Name}";
+
+/* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
+"UI0-Lh-wTj.title" = "데이터베이스";
+
+/* Class = "UILabel"; text = "{File Attributes}"; ObjectID = "y2W-10-GnE"; Note = "#bc-ignore!"; */
+"y2W-10-GnE.text" = "{File Attributes}";
+
+/* Class = "UIButton"; accessibilityLabel = "Close"; ObjectID = "zIk-Pe-sKK"; */
+"zIk-Pe-sKK.accessibilityLabel" = "닫기";
+

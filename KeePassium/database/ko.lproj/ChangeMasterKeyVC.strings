@@ -1,0 +1,15 @@
+/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "hYP-f0-K1s"; Note = "Placeholder: text field for changing the master password"; */
+"hYP-f0-K1s.placeholder" = "새로운 패스워드";
+
+/* Class = "UINavigationItem"; title = "Change Master Key"; ObjectID = "JKD-iF-iwA"; Note = "Title of the dialog for changing the database's master key."; */
+"JKD-iF-iwA.title" = "마스터 키 변경";
+
+/* Class = "UILabel"; text = "{Database file name}"; ObjectID = "lzF-lh-Cod"; Note = "#bc-ignore!"; */
+"lzF-lh-Cod.text" = "{Database file name}";
+
+/* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "M9Q-v8-e6Q"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
+"M9Q-v8-e6Q.placeholder" = "키 파일 없음";
+
+/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "SHG-X2-fHH"; Note = "Placeholder: the second text field for changing the master password"; */
+"SHG-X2-fHH.placeholder" = "패스워드 재입력";
+

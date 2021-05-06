@@ -1,0 +1,39 @@
+/* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
+"5Dg-KX-m7a.footerTitle" = "앱 잠금 비밀번호를 잘못 입력한 경우, KeePassium은 모든 데이터베이스를 닫고 키체인에 등록된 모든 마스터 키를 지웁니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
+"5Dg-KX-m7a.headerTitle" = "잘못된 비밀번호";
+
+/* Class = "UILabel"; text = "Protect Databases"; ObjectID = "6Pk-35-Fx6"; */
+"6Pk-35-Fx6.text" = "데이터베이스 보호";
+
+/* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
+"7ae-8I-LiQ.footerTitle" = "앱 잠금 비밀번호 대신 더 빠른 생체 인식 인증(덜 안전함)을 사용합니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
+"7ae-8I-LiQ.headerTitle" = "생체 인식";
+
+/* Class = "UITableViewSection"; footerTitle = "Protect KeePassium from unauthorized access."; ObjectID = "aBx-Ee-bMk"; Note = "Explanation for the `Enable AppLock` option."; */
+"aBx-Ee-bMk.footerTitle" = "허가되지 않은 접근으로부터 KeePassium 보호.";
+
+/* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
+"Ef4-Jw-xeO.text" = "시간 제한";
+
+/* Class = "UILabel"; text = "{Use Touch ID / Face ID}"; ObjectID = "Fez-6g-oyk"; Note = "#bc-ignore!"; */
+"Fez-6g-oyk.text" = "{Use Touch ID / Face ID}";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "FWz-EI-KaZ"; Note = "#bc-ignore!"; */
+"FWz-EI-KaZ.text" = "{Detail}";
+
+/* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
+"IS1-Lb-MFy.text" = "앱 잠금 활성화";
+
+/* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
+"m50-fl-4tu.footerTitle" = "지정된 시간 제한이 지나면 앱이 자동으로 잠깁니다.";
+
+/* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
+"U5m-je-MhO.title" = "앱 보호";
+
+/* Class = "UILabel"; text = "{Change Passcode}"; ObjectID = "wzW-GR-02W"; Note = "#bc-ignore!"; */
+"wzW-GR-02W.text" = "{Change Passcode}";
+

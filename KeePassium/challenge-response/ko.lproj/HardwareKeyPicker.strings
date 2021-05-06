@@ -1,0 +1,6 @@
+/* Class = "UITableViewController"; title = "Choose Hardware Key"; ObjectID = "fH6-bS-mDZ"; Note = "Title of the hardware key selector (e.g. for YubiKey)"; */
+"fH6-bS-mDZ.title" = "하드웨어 키 선택";
+
+/* Class = "UILabel"; text = "{Title}"; ObjectID = "v2F-pa-TaY"; Note = "#bc-ignore!"; */
+"v2F-pa-TaY.text" = "{Title}";
+

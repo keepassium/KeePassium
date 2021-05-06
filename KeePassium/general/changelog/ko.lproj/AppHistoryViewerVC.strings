@@ -1,0 +1,12 @@
+/* Class = "UITableViewController"; title = "What's New"; ObjectID = "9Zh-Kk-7yq"; Note = "Title of the app version history screen"; */
+"9Zh-Kk-7yq.title" = "변경 사항";
+
+/* Class = "UILabel"; text = "{Title}"; ObjectID = "b92-Zs-oKL"; Note = "#bc-ignore!"; */
+"b92-Zs-oKL.text" = "{Title}";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "D5J-1z-JKZ"; Note = "#bc-ignore!"; */
+"D5J-1z-JKZ.text" = "{Detail}";
+
+/* Class = "UILabel"; text = "{Perpetual license status}"; ObjectID = "f1G-Tl-xxh"; Note = "#bc-ignore!"; */
+"f1G-Tl-xxh.text" = "{Perpetual license status}";
+

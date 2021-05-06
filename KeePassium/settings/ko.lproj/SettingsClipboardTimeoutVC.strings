@@ -1,0 +1,6 @@
+/* Class = "UITableViewController"; title = "Clipboard Timeout"; ObjectID = "iJJ-jv-hhP"; Note = "TItle of a list of options, when to delete clipboard content. Alternative title \"Clear Clipboard\""; */
+"iJJ-jv-hhP.title" = "클립보드 시간 제한";
+
+/* Class = "UILabel"; text = "{Title}"; ObjectID = "MGj-Cs-cx5"; Note = "#bc-ignore!"; */
+"MGj-Cs-cx5.text" = "{Title}";
+

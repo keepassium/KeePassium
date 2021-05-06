@@ -1,0 +1,9 @@
+/* Class = "UITableViewController"; title = "App Lock Timeout"; ObjectID = "5MH-wG-EYd"; */
+"5MH-wG-EYd.title" = "앱 잠금 시간 제한";
+
+/* Class = "UILabel"; text = "{Timeout Title}"; ObjectID = "h3T-Lh-kgE"; Note = "#bc-ignore!"; */
+"h3T-Lh-kgE.text" = "{Timeout Title}";
+
+/* Class = "UILabel"; text = "{Timeout Subtitle}"; ObjectID = "Jto-EB-cZW"; Note = "#bc-ignore!"; */
+"Jto-EB-cZW.text" = "{Timeout Subtitle}";
+

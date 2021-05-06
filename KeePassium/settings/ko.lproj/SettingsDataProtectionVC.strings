@@ -1,0 +1,78 @@
+/* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
+"3uV-Zs-RRo.normalTitle" = "키 파일 연결 초기화";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "beV-Hv-Qdr"; Note = "#bc-ignore!"; */
+"beV-Hv-Qdr.text" = "{Detail}";
+
+/* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
+"e1v-nv-Mst.normalTitle" = "마스터 키 비우기";
+
+/* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.footerTitle" = "패스워드와 보호된 필드를 별표 문자로 숨기기 (권장).";
+
+/* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
+"e6Y-AP-hag.headerTitle" = "보호된 필드";
+
+/* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.footerTitle" = "데이터베이스를 처음 잠금 해제할 때, 마스터 키는 기기의 키체인에 보관되게 됩니다. 이후 KeePassium은 키체인에 보관된 키를 이용해 잠금 해제를 시도할 것이며 사용자는 마스터 패스워드를 다시 입력할 필요가 없어집니다. \n\n(마스터 키는 데이터베이스 시간 제한 도달 시 자동으로 비워집니다.)";
+
+/* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
+"Faj-km-pM5.headerTitle" = "빠른 잠금 해제";
+
+/* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
+"g9a-rJ-4WJ.footerTitle" = "공통 클립보드를 사용하면 사용자의 Apple 기기 간에 복사 및 붙여넣기가 가능해집니다. 외부 기기에서 이 클립보드의 데이터는 2분 후에 지워집니다.";
+
+/* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
+"gTm-F6-EDQ.text" = "시간 제한 도달 시 마스터 키 비우기";
+
+/* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.footerTitle" = "클립보드에 복사한 데이터가 있으면 지정한 시간 이후에 클립보드를 자동으로 비웁니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
+"hnI-Q8-Ixm.headerTitle" = "클립보드";
+
+/* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
+"INJ-Cy-Tfo.text" = "마스터 키 기억하기";
+
+/* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
+"IZZ-aM-g2i.title" = "데이터 보호";
+
+/* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
+"JHl-o7-xHI.text" = "키 파일 기억하기";
+
+/* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.footerTitle" = "각 데이터베이스마다 마지막으로 사용한 키 파일을 기억하고 자동으로 선택합니다. 연결 초기화는 파일에 아무런 수정을 가하지 않습니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
+"Mxu-GP-FmN.headerTitle" = "키 파일";
+
+/* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.footerTitle" = "데이터베이스 시간 제한은 지정한 시간 이후에 열려있는 모든 데이터베이스를 닫고 기억된 마스터 키를 비웁니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
+"neJ-eG-TV7.headerTitle" = "자동 잠금";
+
+/* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
+"pid-k2-idJ.text" = "패스워드 숨기기";
+
+/* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
+"siQ-LK-GXZ.text" = "파생된 암호화 키 캐싱";
+
+/* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
+"SSu-Sr-MCg.text" = "클립보드 시간 제한";
+
+/* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
+"weX-SZ-IDB.text" = "데이터베이스 시간 제한";
+
+/* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
+"xPd-ot-oqe.text" = "{Detail}";
+
+/* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
+"YL6-U9-FM6.text" = "공통 클립보드";
+
+/* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.footerTitle" = "캐시에 등록된 키는 가능한 경우 KeePassium이 키 파생 및 YubiKey 스캐닝을 건너뛰도록 해줍니다. ";
+
+/* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
+"Zqb-p5-Ft8.headerTitle" = "고급";
+

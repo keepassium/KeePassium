@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "Add File"; ObjectID = "bgK-Q6-nzE"; Note = "Action: attach a file to the entry."; */
+"bgK-Q6-nzE.text" = "파일 추가";
+
+/* Class = "UILabel"; text = "{File Size}"; ObjectID = "Kbg-2Y-UcU"; Note = "#bc-ignore!"; */
+"Kbg-2Y-UcU.text" = "{File Size}";
+
+/* Class = "UILabel"; text = "There are no attached files"; ObjectID = "W86-tp-bfF"; Note = "Placeholder shown when there are no attached files in the entry."; */
+"W86-tp-bfF.text" = "첨부된 파일이 없습니다";
+
+/* Class = "UILabel"; text = "{File Name}"; ObjectID = "WUw-Hm-GLz"; Note = "#bc-ignore!"; */
+"WUw-Hm-GLz.text" = "{File Name}";
+

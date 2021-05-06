@@ -1,0 +1,72 @@
+/* Class = "UILabel"; text = "In-memory Protection"; ObjectID = "0pb-xb-fuf"; Note = "Label for a switch, equivalent to KeePass' own `Enable in-memory protection` for custom entry fields."; */
+"0pb-xb-fuf.text" = "인메모리 보호";
+
+/* Class = "UIButton"; normalTitle = "{Scan QR code to setup OTP}"; ObjectID = "1Nq-zk-w7B"; */
+"1Nq-zk-w7B.normalTitle" = "{Scan QR code to setup OTP}";
+
+/* Class = "UITextView"; accessibilityLabel = "Custom field value"; ObjectID = "7iU-ut-hd7"; */
+"7iU-ut-hd7.accessibilityLabel" = "사용자 지정 필드 값";
+
+/* Class = "UITextView"; text = "{Multi-line field value. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.}"; ObjectID = "7iU-ut-hd7"; */
+"7iU-ut-hd7.text" = "{Multi-line field value. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.}";
+
+/* Class = "UITextView"; text = "{Multi-line field value. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.}"; ObjectID = "9e5-bz-qOo"; Note = "#bc-ignore!"; */
+"9e5-bz-qOo.text" = "{Multi-line field value. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.}";
+
+/* Class = "UITableViewCell"; CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Custom field editor"; ObjectID = "CcF-c8-r4M"; */
+"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "사용자 지정 필드 편집기";
+
+/* Class = "UILabel"; text = "{Field Name}"; ObjectID = "CN9-CU-AJF"; Note = "#bc-ignore!"; */
+"CN9-CU-AJF.text" = "{Field Name}";
+
+/* Class = "UITextField"; accessibilityLabel = "Custom field name"; ObjectID = "ecN-Xd-ff5"; */
+"ecN-Xd-ff5.accessibilityLabel" = "사용자 지정 필드 이름";
+
+/* Class = "UITextField"; placeholder = "Field Name"; ObjectID = "ecN-Xd-ff5"; */
+"ecN-Xd-ff5.placeholder" = "필드 이름";
+
+/* Class = "UITextField"; text = "{Field Name}"; ObjectID = "ecN-Xd-ff5"; */
+"ecN-Xd-ff5.text" = "{Field Name}";
+
+/* Class = "UISwitch"; accessibilityLabel = "In-memory Protection"; ObjectID = "eox-My-Hns"; Note = "Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."; */
+"eox-My-Hns.accessibilityLabel" = "인메모리 보호";
+
+/* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "HcW-rc-pdR"; */
+"HcW-rc-pdR.normalTitle" = "아이콘 변경";
+
+/* Class = "UIBarButtonItem"; HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Add Custom Field"; ObjectID = "HGI-xq-zUf"; */
+"HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "사용자 지정 필드 추가";
+
+/* Class = "UILabel"; text = "{Field Name}"; ObjectID = "kN4-4o-MBS"; Note = "#bc-ignore!"; */
+"kN4-4o-MBS.text" = "{Field Name}";
+
+/* Class = "UINavigationItem"; title = "Edit Entry"; ObjectID = "l3s-Bv-fA1"; */
+"l3s-Bv-fA1.title" = "항목 편집";
+
+/* Class = "UITextField"; accessibilityLabel = "Entry title"; ObjectID = "mGc-If-zfn"; */
+"mGc-If-zfn.accessibilityLabel" = "제목";
+
+/* Class = "UITextField"; placeholder = "Entry Title"; ObjectID = "mGc-If-zfn"; */
+"mGc-If-zfn.placeholder" = "제목";
+
+/* Class = "UITextField"; text = "{Entry Title}"; ObjectID = "mGc-If-zfn"; */
+"mGc-If-zfn.text" = "{Entry Title}";
+
+/* Class = "UILabel"; text = "{Field Name}"; ObjectID = "mYx-OE-79H"; Note = "#bc-ignore!"; */
+"mYx-OE-79H.text" = "{Field Name}";
+
+/* Class = "UITextField"; text = "{Field Value}"; ObjectID = "Ro2-Xv-zrw"; Note = "#bc-ignore!"; */
+"Ro2-Xv-zrw.text" = "{Field Value}";
+
+/* Class = "UIButton"; normalTitle = "{Button}"; ObjectID = "yxs-MK-Ca2"; Note = "#bc-ignore!"; */
+"yxs-MK-Ca2.normalTitle" = "{Button}";
+
+/* Class = "UIButton"; z2C-wo-jYf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Randomize password"; ObjectID = "z2C-wo-jYf"; Note = "Action/button to generate new password"; */
+"z2C-wo-jYf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "패스워드 랜덤 생성";
+
+/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "z2C-wo-jYf"; Note = "Action/button to generate new password"; */
+"z2C-wo-jYf.normalTitle" = "랜덤 생성";
+
+/* Class = "UITextField"; text = "{Field Value}"; ObjectID = "zr2-BH-wQ3"; Note = "#bc-ignore!"; */
+"zr2-BH-wQ3.text" = "{Field Value}";
+

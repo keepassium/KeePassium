@@ -1,0 +1,12 @@
+/* Class = "UIBarButtonItem"; title = "{Contact Support}"; ObjectID = "Bti-aV-bQB"; Note = "#bc-ignore!"; */
+"Bti-aV-bQB.title" = "{Contact Support}";
+
+/* Class = "UINavigationItem"; title = "Diagnostics"; ObjectID = "Ura-k4-GXq"; */
+"Ura-k4-GXq.title" = "진단 로그";
+
+/* Class = "UILabel"; text = "{Diagnostic message}"; ObjectID = "vlS-RX-RUW"; Note = "#bc-ignore!"; */
+"vlS-RX-RUW.text" = "{Diagnostic message}";
+
+/* Class = "UILabel"; text = "{file:line:function}"; ObjectID = "VTC-44-cgF"; Note = "#bc-ignore!"; */
+"VTC-44-cgF.text" = "{file:line:function}";
+

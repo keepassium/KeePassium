@@ -1,0 +1,168 @@
+/* Class = "UITableViewSection"; headerTitle = "Troubleshooting"; ObjectID = "0mb-N7-JBa"; Note = "#bc-ignore!"; */
+"0mb-N7-JBa.headerTitle" = "Troubleshooting";
+
+/* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
+"7bL-fQ-OUc.headerTitle" = "피드백";
+
+/* Class = "UILabel"; text = "Proprietary license"; ObjectID = "7cl-Fc-8Nf"; */
+"7cl-Fc-8Nf.text" = "사유 라이선스";
+
+/* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
+"7id-QT-w26.text" = "Icons ― Icons8";
+
+/* Class = "UILabel"; text = "Ionicons by Ionic"; ObjectID = "9lh-fA-Xgx"; */
+"9lh-fA-Xgx.text" = "Ionicons ― Ionic";
+
+/* Class = "UILabel"; text = "Base32 for Swift by Norio Nomura"; ObjectID = "9MZ-zt-75x"; */
+"9MZ-zt-75x.text" = "Swift용 Base32 ― Norio Nomura";
+
+/* Class = "UILabel"; text = "KeePassium does not collect any personal or analytical data nor share it with anyone."; ObjectID = "9wt-nj-TZW"; */
+"9wt-nj-TZW.text" = "KeePassium은 개인 정보나 통계 데이터를 수집하지 않으며, 타인 혹은 타 단체에 공유하지도 않습니다.";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
+"Aig-jg-p8B.text" = "MIT 라이선스";
+
+/* Class = "UILabel"; text = "Do you like what you see?"; ObjectID = "AMd-x7-PDa"; Note = "First part of the 'Do you like what you see? / Leave an App Store review.\""; */
+"AMd-x7-PDa.text" = "앱을 만족스럽게 사용하고 있나요?";
+
+/* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
+"aqX-J9-IzD.text" = "한국어 번역 ― somni (@somni_somni)";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
+"AWg-lI-BfC.text" = "MIT 라이선스";
+
+/* Class = "UILabel"; text = "Twofish implementation by Niels Ferguson"; ObjectID = "axY-gm-XNr"; */
+"axY-gm-XNr.text" = "Twofish 구현 ― Niels Ferguson";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "bAq-tq-nuY"; */
+"bAq-tq-nuY.text" = "MIT 라이선스";
+
+/* Class = "UILabel"; text = "©2021 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
+"bmf-Ed-H4x.text" = "© 2021 Andrei Popleteev";
+
+/* Class = "UILabel"; text = "Reset entry text size to default"; ObjectID = "bTY-d6-puv"; Note = "#bc-ignore!"; */
+"bTY-d6-puv.text" = "Reset entry text size to default";
+
+/* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
+"CNI-b8-7Da.text" = "KeePass ― Dominik Reichl";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
+"daJ-ma-jhe.text" = "MIT 라이선스";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "dMv-Zw-y7y"; */
+"dMv-Zw-y7y.text" = "MIT 라이선스";
+
+/* Class = "UILabel"; text = "Custom permissive license"; ObjectID = "EWy-OI-IxL"; */
+"EWy-OI-IxL.text" = "커스텀 퍼미시브 라이선스";
+
+/* Class = "UILabel"; text = "ChaCha20 & Salsa20 implementation by D. J. Bernstein"; ObjectID = "Ha8-Qv-0qg"; */
+"Ha8-Qv-0qg.text" = "ChaCha20 & Salsa20 구현 ― D. J. Bernstein";
+
+/* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
+"hDU-6p-Bzr.text" = "Rijndael 구현 ― Szymon Stefanek";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "hqP-9y-rXc"; */
+"hqP-9y-rXc.text" = "MIT 라이선스";
+
+/* Class = "UILabel"; text = "Apache 2.0 license"; ObjectID = "ht7-pj-Dbb"; */
+"ht7-pj-Dbb.text" = "Apache 2.0 라이선스";
+
+/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "hVm-qH-TAI"; */
+"hVm-qH-TAI.text" = "CC BY 3.0";
+
+/* Class = "UILabel"; text = "Icons by KeePassXC team"; ObjectID = "hW0-fR-mIf"; */
+"hW0-fR-mIf.text" = "아이콘 ― KeePassXC 팀";
+
+/* Class = "UILabel"; text = "CC BY-ND 3.0"; ObjectID = "iKy-z5-Ox7"; */
+"iKy-z5-Ox7.text" = "CC BY-ND 3.0";
+
+/* Class = "UITableViewSection"; headerTitle = "Privacy Policy"; ObjectID = "JbR-nf-D9o"; Note = "Section: privacy policy"; */
+"JbR-nf-D9o.headerTitle" = "개인정보처리방침";
+
+/* Class = "UILabel"; text = "Public domain"; ObjectID = "JgR-60-OMp"; */
+"JgR-60-OMp.text" = "퍼블릭 도메인";
+
+/* Class = "UILabel"; text = "LGPL license"; ObjectID = "JjJ-GT-eoX"; */
+"JjJ-GT-eoX.text" = "LGPL 라이선스";
+
+/* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
+"JRy-jy-KXb.text" = "GPL 라이선스";
+
+/* Class = "UILabel"; text = "{info@keepassium.com}"; ObjectID = "kae-Kb-5ZU"; Note = "#bc-ignore!"; */
+"kae-Kb-5ZU.text" = "{info@keepassium.com}";
+
+/* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
+"Kdg-Hz-XOQ.text" = "Fancy deboss pattern ― Daniel Beaton";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
+"lht-LP-o0Y.text" = "MIT 라이선스";
+
+/* Class = "UITableViewSection"; headerTitle = "Credits"; ObjectID = "muG-xI-muo"; Note = "Section: acknowledgements and thank-you notes"; */
+"muG-xI-muo.headerTitle" = "개발진 및 라이브러리";
+
+/* Class = "UITableViewController"; title = "About"; ObjectID = "NLN-lQ-bh5"; */
+"NLN-lQ-bh5.title" = "앱 정보";
+
+/* Class = "UILabel"; text = "CC0 license"; ObjectID = "o9e-qb-mMw"; */
+"o9e-qb-mMw.text" = "CC0 라이선스";
+
+/* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
+"OaP-Bl-5vR.text" = "TPInAppReceipt ― Pavel Tikhonenko";
+
+/* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
+"QV5-N8-NRt.text" = "퍼블릭 도메인";
+
+/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "Qz4-PJ-Tra"; */
+"Qz4-PJ-Tra.text" = "CC BY 3.0";
+
+/* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
+"r7M-Gb-1Xd.text" = "Toast-Swift ― Charles Scalesse";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
+"Rab-wf-OQe.text" = "MIT 라이선스";
+
+/* Class = "UILabel"; text = "Argon2 by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves"; ObjectID = "rDJ-4G-8Oz"; */
+"rDJ-4G-8Oz.text" = "Argon2 ― Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, Samuel Neves";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "sCk-Se-Vvo"; */
+"sCk-Se-Vvo.text" = "MIT 라이선스";
+
+/* Class = "UILabel"; text = "GzipSwift by 1024jp"; ObjectID = "sDW-ws-pQf"; */
+"sDW-ws-pQf.text" = "GzipSwift ― 1024jp";
+
+/* Class = "UILabel"; text = "AEXML by Marko Tadić"; ObjectID = "sI5-AG-Y6p"; */
+"sI5-AG-Y6p.text" = "AEXML ― Marko Tadić";
+
+/* Class = "UILabel"; text = "Linecons by Andrian Valeanu"; ObjectID = "SOX-Re-yl9"; */
+"SOX-Re-yl9.text" = "Linecons ― Andrian Valeanu";
+
+/* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
+"TOl-DA-gYc.text" = "지원 요청하기";
+
+/* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
+"tOr-N9-2UY.text" = "Feather 아이콘 ― Cole Bemis";
+
+/* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
+"uiw-Qh-pNp.text" = "App Store에 리뷰를 작성해주세요.";
+
+/* Class = "UILabel"; text = "{v1.0.123}"; ObjectID = "vDg-fF-8ty"; Note = "#bc-ignore!"; */
+"vDg-fF-8ty.text" = "{v1.0.123}";
+
+/* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
+"vg0-6M-OIq.text" = "KeyboardLayoutConstraint ― James Tang";
+
+/* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
+"VuB-ng-Uii.text" = "Nuvola 아이콘 ― David Vignoni";
+
+/* Class = "UILabel"; text = "KeePassium"; ObjectID = "Wuj-Uw-baK"; */
+"Wuj-Uw-baK.text" = "KeePassium";
+
+/* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
+"wYr-Ya-qAP.text" = "시스템 설정 아이콘 ― Vicons Design";
+
+/* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
+"Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK ― Yubico AB";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "Z7s-Ch-895"; */
+"Z7s-Ch-895.text" = "MIT 라이선스";
+

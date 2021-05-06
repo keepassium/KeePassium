@@ -1,0 +1,84 @@
+/* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9yn-W3-FDl"; Note = "Section in settings: settings that define what happens when the app is started."; */
+"9yn-W3-FDl.headerTitle" = "시작";
+
+/* Class = "UILabel"; text = "Appearance"; ObjectID = "32P-LG-SHa"; Note = "Section in settings: visual style of app elements"; */
+"32P-LG-SHa.text" = "모양";
+
+/* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
+"756-sL-G2t.text" = "이전 데이터베이스를 자동으로 열기";
+
+/* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
+"A5N-B3-t3t.headerTitle" = "프리미엄";
+
+/* Class = "UILabel"; text = "App Protection"; ObjectID = "abS-AH-iFO"; Note = "Settings section: protection of the app from unauthorized access"; */
+"abS-AH-iFO.text" = "앱 보호";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Bk0-Xf-O7B"; */
+"Bk0-Xf-O7B.title" = "설정";
+
+/* Class = "UILabel"; text = "Review KeePassium"; ObjectID = "c5H-hS-sU3"; Note = "Action: write an app review on the App Store"; */
+"c5H-hS-sU3.text" = "KeePassium 평가하기";
+
+/* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
+"cBS-jW-dHU.headerTitle" = "지원";
+
+/* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
+"coD-Om-Vfm.text" = "데이터베이스 백업";
+
+/* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
+"DNo-Rs-0EP.text" = "KeePassium 소개";
+
+/* Class = "UILabel"; text = "Master keys, key files"; ObjectID = "FHp-ns-ke9"; Note = "Subtitle/details for `Data Protection`"; */
+"FHp-ns-ke9.text" = "마스터 키, 키 파일";
+
+/* Class = "UILabel"; text = "Search"; ObjectID = "GLr-Uf-Kln"; Note = "Section title in settings"; */
+"GLr-Uf-Kln.text" = "검색";
+
+/* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
+"HCe-A3-eG6.text" = "프리미엄 버전";
+
+/* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
+"HjD-9G-X8p.headerTitle" = "백업";
+
+/* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
+"hui-xG-chj.headerTitle" = "접근 제어";
+
+/* Class = "UILabel"; text = "Rate KeePassium on the App Store"; ObjectID = "HYe-lP-dCp"; Note = "Subtitle for `Review KeePassium`"; */
+"HYe-lP-dCp.text" = "App Store에서 KeePassium 평가하기";
+
+/* Class = "UILabel"; text = "{Renews on 1 Jan 1970}"; ObjectID = "LHz-DF-ZST"; Note = "#bc-ignore!"; */
+"LHz-DF-ZST.text" = "{Renews on 1 Jan 1970}";
+
+/* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
+"oxG-N8-1ld.text" = "프리미엄으로 업그레이드";
+
+/* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
+"PpA-oZ-kr2.text" = "진단 로그";
+
+/* Class = "UILabel"; text = "For expert troubleshooting"; ObjectID = "qhK-lw-bGy"; Note = "Subtitle for `Diagnostic Log`. Keep it short."; */
+"qhK-lw-bGy.text" = "전문가용 문제 해결";
+
+/* Class = "UILabel"; text = "Contact Us"; ObjectID = "QlM-VS-hle"; Note = "Action"; */
+"QlM-VS-hle.text" = "문의하기";
+
+/* Class = "UILabel"; text = "What's New"; ObjectID = "RlK-RW-8Ld"; Note = "Action: open app history page (change log)"; */
+"RlK-RW-8Ld.text" = "변경 사항";
+
+/* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
+"RNK-fS-Fvx.text" = "문제가 있거나 제안하고 싶은게 있나요? 개발자에게 알려주세요!";
+
+/* Class = "UILabel"; text = "{App Lock, Touch ID, timeout}"; ObjectID = "SrV-ib-V2E"; Note = "#bc-ignore!"; */
+"SrV-ib-V2E.text" = "{App Lock, Touch ID, timeout}";
+
+/* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
+"T2Z-oa-zJR.text" = "자동 완성 패스워드";
+
+/* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
+"UNl-Hc-Ref.text" = "데이터 보호";
+
+/* Class = "UILabel"; text = "{Upgrade subtitle}"; ObjectID = "WM2-qq-lMN"; Note = "#bc-ignore!"; */
+"WM2-qq-lMN.text" = "{Upgrade subtitle}";
+
+/* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
+"zUh-Sn-3ya.text" = "구독 관리";
+

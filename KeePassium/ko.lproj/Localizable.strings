@@ -1,0 +1,696 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "두 번 탭하여 클립보드에 복사";
+
+/* Title of a setting option: font size */
+"[Appearance/TextSize/title]" = "글자 크기";
+
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "잠금 해제";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "KeePassium 잠금 해제";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "비밀번호 사용";
+
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "비밀번호 변경";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "KeePassium 잠금 해제";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "비밀번호가 성공적으로 업데이트되었습니다.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "비밀번호 저장";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "허가되지 않은 접근으로부터 KeePassium 보호";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
+
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "%@ 복사";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "복사됨";
+
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "선택한 파일 “%@“은(는) 데이터베이스 파일이 아닌 것 같습니다.";
+
+/* Hint shown when both password and key file are empty. */
+"[Database/Create] Please enter a password or choose a key file." = "패스워드를 입력하거나 키 파일을 선택하세요.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "데이터베이스 만들기";
+
+/* Note for a sample entry */
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "원하는 경우 메모를 추가하실 수 있습니다.";
+
+/* Password for a sample entry. Translation is optional. */
+"[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
+
+/* Title for a sample entry */
+"[Database/Create/TemplateEntry/title] Sample Entry" = "예시 항목";
+
+/* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
+"[Database/Create/TemplateEntry/userName] john.smith" = "홍길동";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Email" = "이메일";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Finance" = "금융";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] General" = "일반";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Internet" = "인터넷";
+
+/* Predefined group in a new database */
+"[Database/Create/TemplateGroup/title] Network" = "네트워크";
+
+/* Predefined `Operating system` group in a new database */
+"[Database/Create/TemplateGroup/title] OS" = "OS";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "데이터베이스 만들기";
+
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "사용자 지정 아이콘 추가";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "데이터베이스 파일을 삭제하시겠습니까?\n 백업을 생성해뒀는지 확인해주세요.";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "불러오는 중...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "마스터 키가 성공적으로 변경되었습니다";
+
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "패스워드를 잊어버리면 더 이상 데이터에 접근할 수 없게 됩니다. 패스워드를 리셋할 수 있는 방법은 없습니다.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "데이터베이스 패스워드를 기억해두세요!";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "데이터베이스 열기";
+
+/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
+"[Database/Opened/action] Close" = "닫기";
+
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "데이터베이스 잠그기";
+
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "데이터베이스 닫기";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "무시하고 계속하기";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "데이터베이스 최종 편집 앱/프로그램: %@";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "데이터베이스가 준비되었지만, 문제가 있습니다.";
+
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "데이터베이스를 목록에서 제거하시겠습니까?\n 원본 파일은 삭제되지 않으며, 나중에 목록에 다시 추가할 수 있습니다.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "완료";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "저장 중...";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "키 파일 오류: %@";
+
+/* Action/button to setup YubiKey key component */
+"[Database/Unlock] YubiKey" = "YubiKey";
+
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "진단 로그가 클립보드에 복사되었습니다.";
+
+/* Action: choose a username from a list */
+"[EditEntry/UserName/choose]" = "선택";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "첨부된 파일";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "항목 만들기";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "필드 이름";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "메모";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "패스워드";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "제목";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "사용자 이름";
+
+/* Status message: loading file to be attached to an entry */
+"[Entry/Files/Add] Loading attachment file" = "첨부 파일 불러오는 중";
+
+/* Confirmation message to replace an existing entry attachment with a new one. */
+"[Entry/Files/Add] Replace existing attachment?" = "기존 첨부 파일을 교체하시겠습니까?";
+
+/* Explanation for replacing the only attachment of KeePass1 entry */
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "이 데이터베이스는 항목 당 1개의 첨부 파일만 지원하지만, 첨부 파일이 이미 존재합니다.";
+
+/* Title of a dialog for renaming an attached file */
+"[Entry/Files/Rename/title] Rename File" = "파일 이름 변경";
+
+/* Title of a field with entry creation date and time */
+"[Entry/History] Creation Date" = "생성 일자";
+
+/* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
+"[Entry/History] Expiry Date" = "만료 일자";
+
+/* Title of a field with date and time when the entry was last accessed/viewed */
+"[Entry/History] Last Access Date" = "마지막 접근 일자";
+
+/* Title of a field with entry's last modification date and time */
+"[Entry/History] Last Modification Date" = "마지막 수정 일자";
+
+/* Title of a list with previous versions/revisions of an entry. */
+"[Entry/History] Previous Versions" = "이전 버전";
+
+/* Expiry Date of an entry which does not expire. */
+"[Entry/History/ExpiryDate] Never" = "잠그지 않음";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "새로운 항목";
+
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "파일을 앱에서 제거한 후, 다시 추가해보세요.";
+
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "파일을 다시 추가하세요";
+
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "백업";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "파일 속성 업데이트에 실패했습니다.";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "생성 일자";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "파일 경로";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "파일명";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "파일 크기";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "마지막 수정 일자";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "오류";
+
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "iCloud/iTunes 백업에서 제외";
+
+/* Title of the dialog for picking the destination group for move/copy operations */
+"[General/DestinationGroup/title] Choose a Destination" = "위치 선택";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "취소";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "지원 요청하기";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "문의하기";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "계속하기";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "복사";
+
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "생성";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "삭제";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "버리기";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "닫기";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "완료";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "편집";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "내보내기";
+
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "자세히 알아보기";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "추가 작업";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "이동";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "확인";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "URL 열기";
+
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "덮어쓰기";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "이름 바꾸기";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "교체";
+
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "공유";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "세부 정보 보기";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "평문 텍스트로 표시";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "더 보기";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "확실합니까?";
+
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "최근 삭제됨";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "저장되지 않은 변경 사항을 버리시겠습니까?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "저장되지 않은 변경 사항이 있습니다";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "삭제";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "제거";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "내보내기 오류";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "파일이 이미 존재합니다";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "가져오기 오류";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "오류";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "키체인 오류";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "경고";
+
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, 그룹";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "그룹 만들기";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "그룹 만들기";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "그룹 편집";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "새로운 그룹";
+
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "하드웨어 키는 자동 완성에서 사용할 수 없습니다.";
+
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC는 iOS 13 이상에서 지원됩니다.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "하드웨어 키 없음";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey 슬롯 %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "도움말";
+
+/* Name of an entry/group category (visual style): default one, like in KeePass */
+"[ItemCategory] Default (KeePass)" = "기본 (KeePass)";
+
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "사용자 지정 아이콘";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "기본 아이콘";
+
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "키 파일을 삭제하시겠습니까?\n 백업을 생성해뒀는지 확인해주세요.";
+
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "키 파일을 목록에서 제거하시겠습니까?\n 원본 파일은 삭제되지 않으며, 나중에 목록에 다시 추가할 수 있습니다.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "이 QR 코드는 OTP 설정에 사용되기에 적합하지 않습니다.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "일회용 비밀번호가 이미 이 항목에 구성되어 있습니다. 덮어쓰시겠습니까?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "일회용 비밀번호(OTP) 설정";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/AttachmentPreview/details]" = "다른 앱에 기록을 남기지 않고 KeePassium에서 첨부 파일을 미리 볼 수 있습니다. (이미지, 문서, 압축 파일 등 지원)";
+
+/* Title of a premium feature */
+"[Premium/Benefits/AttachmentPreview/title]" = "추적 없이 미리 보기";
+
+/* Explanation of a premium feature */
+"[Premium/Benefits/CustomAppIcon/details]" = "KeePassium의 모습을 익숙하거나 유니크하게, 또는 계산기의 모습을 흉내내도록 만듭니다. 선택은 사용자의 몫입니다.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/CustomAppIcon/title]" = "앱 아이콘 변경";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/DatabaseTimeout/details]" = "마스터 패스워드를 입력하기 귀찮나요? 데이터베이스를 더 오래 열어둘 수 있고 탭 한 번으로 잠금 해제할 수 있습니다.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/DatabaseTimeout/title]" = "시간 절약";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/HardwareKeys/details]" = "YubiKey와 같은 하드웨어 키로 비밀을 지키세요.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/HardwareKeys/title]" = "하드웨어 키 사용";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/MultiDB/details]" = "다양한 데이터베이스를 추가하고 데이터베이스 간에 빨리 전환할 수 있습니다.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/MultiDB/title]" = "팀과 데이터베이스 동기화";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "놓치고 있는 기능";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "얻을 수 있는 기능";
+
+/* Explanation of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/details]" = "같은 정보의 중복된 필드를 만들지 말고, 필드 레퍼런스를 사용하여 다른 항목의 필드 정보를 확인하세요.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/title]" = "필드 레퍼런스 표시";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "지금 구매";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "계속 무료 버전 사용";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "무료로 사용해보기";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "지금 업그레이드";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "구독 관리";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "영구 라이선스";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "%@보다 이전의 모든 버전에 대한 영구 라이선스를 소유하고 있습니다.";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "1년간 이메일 지원 제공";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "모든 프리미엄 기능";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "사용자 지원: 온라인 포럼";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "현재 프리미엄 기능";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "사용자 지원: 이메일";
+
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "가족 공유";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "프리미엄(Freemium) 알리미";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "향후 추가될 프리미엄 기능은 정가에 새로 구매할 것이 요구될 수 있습니다.";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "향후 프리미엄 기능들";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "렌탈 라이선스 (영구 라이선스 실패 대비용)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "구매로서의 구독";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "업데이트 및 버그 수정";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "무료";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "무료";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "인기";
+
+/* Status: special premium for beta-testing environment is active */
+"[Premium/status] Beta testing" = "베타 테스트";
+
+/* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
+"[Premium/status] Expired %@ ago. Please renew." = "%@ 전에 만료되었습니다. 갱신해 주시기 바랍니다.";
+
+/* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
+"[Premium/status] Next renewal on %@" = "%@에 갱신 예정";
+
+/* Status: validity period of once-and-forever premium */
+"[Premium/status] Valid forever" = "평생 유효";
+
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "\n구매가 확인되면 사용자의 Apple ID 계정을 통해 청구됩니다.\n\n구독은 현재 구독 기간이 종료되기 최소 24시간 전에 취소하지 않는 한 자동으로 갱신됩니다. 자동 갱신 시 현재 구독 기간이 종료되기 24시간 이내에 지불이 발생합니다.\n\n구독 구매 후, App Store의 계정 설정에서 구독을 관리하고 취소할 수 있습니다.";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ 무료 사용 후 %2$@";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "가능한 업그레이드가 없습니다. 이는 일어나서는 안되는 상황입니다. 개발자에게 문의해주시기 바랍니다.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "프리미엄으로 업그레이드";
+
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "이전에 구매한 구독이 있는지 확인해 주시기 바랍니다.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "감사합니다! 구매가 확정되기 전까지 계속해서 KeePassium을 사용하실 수 있습니다.";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@ / 월";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@ / 년";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "%@ 1회 지불";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@ / 월";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "App Store에 연결 중...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "결제 중...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "업그레이드가 성공적으로 완료되었습니다!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "구매 내역 복원됨";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "복구할 수 있는 이전 구매 내역이 없습니다.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "죄송합니다.";
+
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "구매해주셔서 감사합니다!";
+
+/* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "앱 사용 기간: %1$@/월 (%2$@/년)";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "사용자 지정 앱 아이콘";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "프리미엄 버전으로 업그레이드하고 KeePassium의 모든 기능을 사용해 보세요.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "프리미엄 기능";
+
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "프리미엄 버전에서 하드웨어 키(YubiKey)로 보안을 강화하세요.";
+
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "하드웨어 키";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "복잡한 마스터 패스워드를 입력하는데에 시간을 허비하지 마세요. 프리미엄 버전에선 데이터베이스를 더 오래 열어둘 수 있습니다.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "더 긴 데이터베이스 시간 제한";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "프리미엄 버전에서 데이터베이스 간에 쉽게 전환할 수 있습니다.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "다중 데이터베이스";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "프리미엄 버전에서, 앱에서 바로 이미지 및 문서를 미리 볼 수 있습니다.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "첨부 파일 미리보기";
+
+/* Action/button to make password visible as plain-text */
+"[ProtectedTextField] Show Password" = "패스워드 보이기";
+
+/* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
+"[Settings/AppLock/Biometric/title] Use %@" = "%@ 사용";
+
+/* Explanation for the `Lock on App Launch` setting */
+"[Settings/AppLock/LockOnLaunch/description]" = "KeePassium이 강제 종료되거나 기기를 재시동할 때 앱 잠금을 확실시하고 싶으시다면 이 설정을 활성화하세요.";
+
+/* Setting switch: whether to lock the app after it was terminated and relaunched. */
+"[Settings/AppLock/LockOnLaunch/title]" = "앱 실행 시 잠금";
+
+/* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
+"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "앱 잠금, %@, 시간 제한";
+
+/* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "앱 잠금, 비밀번호, 시간 제한";
+
+/* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
+"[Settings/Backup] Delete ALL Backup Files (%d)" = "모든 백업 파일 삭제 (%d개)";
+
+/* Status message: there are no backup files to delete */
+"[Settings/Backup] No Backup Files Found" = "백업 파일 없음";
+
+/* Confirmation dialog message to delete all backup files */
+"[Settings/Backup/Delete/title] Delete all backup files?" = "모든 백업 파일을 삭제하시겠습니까?";
+
+/* Text of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed." = "데이터베이스와 키 파일 간 연결이 초기화되었습니다.";
+
+/* Title of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/title] Cleared" = "초기화됨";
+
+/* Text of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted." = "모든 마스터 키가 삭제되었습니다.";
+
+/* Title of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "초기화됨";
+
+/* Description of the clipboard/pasteboard timeout. */
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "항목에서 일부 텍스트를 복사한 경우, 지정한 시간 이후에 클립보드를 자동으로 비웁니다.";
+
+/* Description of the Database Lock Timeout */
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "일정 시간동안 앱과 상호작용하지 않는 경우, 보안을 위해 데이터베이스를 자동으로 닫습니다. 데이터베이스를 열려면 마스터 패스워드를 다시 입력해야 합니다.";
+
+/* Title of a settings section about making backup files */
+"[Settings/FileLists/Backup/title] Backup" = "백업";
+
+/* Title of a settings section about file order in lists */
+"[Settings/FileLists/Sorting/title] Sorting" = "정렬";
+
+/* Title of a settings section: which entry field to show along with entry title */
+"[Settings/GroupViewer] Entry Subtitle" = "항목 요약";
+
+/* Title of a settings section: sort order of groups and entries in a list */
+"[Settings/GroupViewer] Sort Order" = "정렬 순서";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(여기에 문제에 대한 설명을 작성해주세요.)";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "YubiKey를 사용하지 않음";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "키 삽입";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "키 터치";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "YubiKey 슬롯 %d";
+
+/* Action/button to add database to the app */
+"Add Database" = "데이터베이스 추가";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "데이터베이스 선택";
+
+/* Action/button */
+"Import Database" = "데이터베이스 가져오기";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "KeePass 데이터베이스 파일은 키 파일로 사용될 수 없습니다. 다른 파일을 선택해주세요.";
+

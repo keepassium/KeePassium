@@ -1,0 +1,27 @@
+/* Class = "UITableViewController"; title = "Appearance"; ObjectID = "4mh-X8-Byq"; Note = "Settings for user interface appearance (text size, icons, etc)"; */
+"4mh-X8-Byq.title" = "모양";
+
+/* Class = "UILabel"; text = "Database Icons"; ObjectID = "4Yu-VJ-n8p"; Note = "Section in settings: icons for database"; */
+"4Yu-VJ-n8p.text" = "데이터베이스 아이콘";
+
+/* Class = "UIButton"; accessibilityLabel = "Reset text size to default"; ObjectID = "5U9-NZ-sJe"; Note = "Action: set text size to standard size"; */
+"5U9-NZ-sJe.accessibilityLabel" = "글자 크기를 기본값으로 초기화";
+
+/* Class = "UILabel"; text = "App Icon"; ObjectID = "fSx-Do-lgu"; Note = "Section in settings: icon for the app"; */
+"fSx-Do-lgu.text" = "앱 아이콘";
+
+/* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "Lh3-CB-Urp"; */
+"Lh3-CB-Urp.footerTitle" = "패스워드와 보호된 필드를 별표 문자로 숨기기 (권장).";
+
+/* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "Lh3-CB-Urp"; */
+"Lh3-CB-Urp.headerTitle" = "보호된 필드";
+
+/* Class = "UITableViewSection"; headerTitle = "Entry Viewer"; ObjectID = "MsA-Cd-czb"; */
+"MsA-Cd-czb.headerTitle" = "항목 뷰어";
+
+/* Class = "UILabel"; text = "{Text size}"; ObjectID = "QbO-y9-3wb"; Note = "#bc-ignore!"; */
+"QbO-y9-3wb.text" = "{Text size}";
+
+/* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "usg-hF-eLK"; */
+"usg-hF-eLK.text" = "패스워드 숨기기";
+

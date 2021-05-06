@@ -1,0 +1,18 @@
+/* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
+"enW-gs-tra.normalTitle" = "데이터베이스 추가";
+
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "Gck-9R-sGq"; Note = "Action: skip setup and proceed to the next step."; */
+"Gck-9R-sGq.normalTitle" = "건너뛰기";
+
+/* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
+"P0M-N3-ynf.text" = "자동 완성에서 사용할 데이터베이스 및 키 파일을 다시 추가해주세요.";
+
+/* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
+"pIl-6L-Msp.text" = "자동 완성 설정";
+
+/* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
+"rzY-Ci-bd9.title" = "KeePassium";
+
+/* Class = "UITextView"; text = "{Footer text}"; ObjectID = "UAW-0G-N5G"; Note = "#bc-ignore!"; */
+"UAW-0G-N5G.text" = "{Footer text}";
+

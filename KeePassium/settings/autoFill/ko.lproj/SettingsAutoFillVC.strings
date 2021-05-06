@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Tap \"Passwords & Accounts\""; ObjectID = "7SF-2E-uTg"; Note = "Step 2. Must match system's translation."; */
+"7SF-2E-uTg.text" = "”암호 및 계정” 또는 “암호” 설정 진입";
+
+/* Class = "UILabel"; text = "Select \"KeePassium\""; ObjectID = "caI-eV-WlU"; */
+"caI-eV-WlU.text" = "“KeePassium” 선택";
+
+/* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
+"ei6-22-NXN.title" = "자동 완성";
+
+/* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
+"go1-Nt-isQ.text" = "클립보드에 OTP 복사";
+
+/* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
+"jYl-ks-dFG.footerTitle" = "자동 완성이 완벽히 일치하는 단 하나의 항목을 찾은 경우, 항목의 데이터가 자동으로 붙여넣어집니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
+"jYl-ks-dFG.headerTitle" = "자동 검색";
+
+/* Class = "UILabel"; text = "Open device settings"; ObjectID = "K3a-Mc-VCg"; Note = "Step 1"; */
+"K3a-Mc-VCg.text" = "기기 설정 열기";
+
+/* Class = "UITableViewSection"; headerTitle = "Initial Setup"; ObjectID = "r0b-qe-g8J"; */
+"r0b-qe-g8J.headerTitle" = "기초 설정";
+
+/* Class = "UILabel"; text = "Tap \"AutoFill Passwords\""; ObjectID = "UzV-Ht-rGx"; Note = "Step 3. Must match system's translation."; */
+"UzV-Ht-rGx.text" = "”암호 자동 완성” 설정 진입";
+
+/* Class = "UILabel"; text = "Fill-in the perfect result automatically"; ObjectID = "WDb-aU-Mmf"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
+"WDb-aU-Mmf.text" = "완벽히 일치하는 항목으로 자동 채우기";
+
+/* Class = "UILabel"; text = "Turn on \"AutoFill Passwords\""; ObjectID = "X2u-c9-gwU"; */
+"X2u-c9-gwU.text" = "“암호 자동 완성” 활성화";
+
+/* Class = "UITableViewSection"; footerTitle = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you."; ObjectID = "XYL-1l-Jx6"; */
+"XYL-1l-Jx6.footerTitle" = "자동 완성으로 사용자 이름과 패스워드를 삽입할 때, 일회용 비밀번호(OTP)를 복사합니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "One-time passwords"; ObjectID = "XYL-1l-Jx6"; */
+"XYL-1l-Jx6.headerTitle" = "일회용 비밀번호";
+
