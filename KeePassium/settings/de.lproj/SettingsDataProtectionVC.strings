@@ -59,10 +59,10 @@
 "siQ-LK-GXZ.text" = "Cache abgeleitete Verschlüsselungsschlüssel";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "Zwischenablage löschen nach";
+"SSu-Sr-MCg.text" = "Zeitsperre für Zwischenablage";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Datenbank schließen nach";
+"weX-SZ-IDB.text" = "Zeitsperre für Datenbank";
 
 /* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
 "xPd-ot-oqe.text" = "{Detail}";

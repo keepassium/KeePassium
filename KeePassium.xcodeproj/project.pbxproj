@@ -826,6 +826,7 @@
 		7527CC6025F52DA5000E8661 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DestinationGroupPickerVC.strings"; sourceTree = "<group>"; };
 		7527E6CC25F58E6800CB9AA0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
 		7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoVC.swift; sourceTree = "<group>"; };
+		7529D8C92643FEF100363B02 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
 		7529EAE8211416170093B117 /* SettingsAppLockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppLockVC.swift; sourceTree = "<group>"; };
 		7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+extension.swift"; sourceTree = "<group>"; };
 		752B1E9220E8AA070073AABD /* EditableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableField.swift; sourceTree = "<group>"; };
@@ -1017,10 +1018,12 @@
 		7534382A2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
 		7534382B2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PricingPlanPickerVC.strings; sourceTree = "<group>"; };
 		7534382C2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
+		7534BFA12643FEF4001A3873 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
 		7535079F23783729003B65C9 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		7537FEBD249D7B950028A653 /* Settings+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+extensions.swift"; sourceTree = "<group>"; };
 		7538040C25F58C80005C5D32 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
+		753F293E2643FEF800F0413A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
 		753F924A22905621005E496F /* PremiumUpgradeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUpgradeHelper.swift; sourceTree = "<group>"; };
 		753F924D2290705D005E496F /* SKProduct+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+extension.swift"; sourceTree = "<group>"; };
 		753FE83424C1A9A400063FBB /* UIViewController+alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alerts.swift"; sourceTree = "<group>"; };
@@ -4342,6 +4345,9 @@
 				7575EB1B2633014F00782CDE /* sv */,
 				7575EB1D2633015000782CDE /* es */,
 				7534381D2643FE6F0032D284 /* ko */,
+				7529D8C92643FEF100363B02 /* sk */,
+				7534BFA12643FEF4001A3873 /* th */,
+				753F293E2643FEF800F0413A /* tr */,
 			);
 			name = AppHistoryViewerVC.storyboard;
 			sourceTree = "<group>";

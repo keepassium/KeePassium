@@ -88,8 +88,11 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Créer une base de données";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Ajouter une icône personnalisée";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
-"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Supprimer le fichier de la base de données?\n Assurez-vous d'avoir une sauvegarde.";
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Supprimer le fichier de la base de données ?\nAssurez-vous d'avoir une sauvegarde.";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Chargement en cours…";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Par défaut (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Icônes personnalisées";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Icônes standards";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Supprimer le fichier clé?\n Assurez-vous d'avoir une sauvegarde.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Retirer le fichier de clé de la liste ?\n Le fichier restera intact et vous pourrez l'ajouter plus tard.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "Ce code QR n'est pas adapté à la configuration OTP.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "Le mot de passe à usage unique est déjà configuré pour cette entrée. Voulez-vous le remplacer ?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Configurer le mot de passe à usage unique (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Prévisualiser les fichiers attachés directement dans KeePassium et ne laisser aucune trace dans d'autres applications. (Fonctionne avec des images, des documents, des archives et plus.)";
@@ -506,7 +524,7 @@
 "[Premium/status] Valid forever" = "Valable à vie";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nLe paiement sera prélevé sur votre compte Apple au moment de la confirmation de l’achat.\n\nL’abonnement est renouvelé automatiquement à moins qu’il ne soit annulé au moins 24 heures avant la fin de la période en cours. Le renouvellement sera prélevé sur votre compte dans les 24 heures précédant la fin de la période en cours. \n\nVous pouvez gérer et annuler vos abonnements depuis les paramètres du compte dans l’App Store, une fois l’achat réalisé.\n";
+"[Premium/Subscription/Legal/text]" = "Le paiement sera prélevé sur votre compte Apple au moment de la confirmation de l’achat.\n\nL’abonnement est renouvelé automatiquement à moins qu’il ne soit annulé au moins 24 heures avant la fin de la période en cours. Le renouvellement sera prélevé sur votre compte dans les 24 heures précédant la fin de la période en cours. \n\nVous pouvez gérer et annuler vos abonnements depuis les paramètres du compte dans l’App Store, une fois l’achat réalisé.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ gratuit, puis %2$@";

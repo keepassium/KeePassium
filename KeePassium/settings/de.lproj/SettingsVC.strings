@@ -38,7 +38,7 @@
 "HCe-A3-eG6.text" = "Premiumversion";
 
 /* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
-"HjD-9G-X8p.headerTitle" = "Sicherung";
+"HjD-9G-X8p.headerTitle" = "Backup";
 
 /* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
 "hui-xG-chj.headerTitle" = "Zugangskontrolle";
@@ -50,7 +50,7 @@
 "LHz-DF-ZST.text" = "{Renews on 1 Jan 1970}";
 
 /* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
-"oxG-N8-1ld.text" = "Auf Premium upgraden";
+"oxG-N8-1ld.text" = "Auf Premium aktualisieren";
 
 /* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
 "PpA-oZ-kr2.text" = "Diagnoseprotokolle anzeigen";

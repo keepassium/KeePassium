@@ -14,5 +14,5 @@
 "z0x-Rz-Nfj.normalTitle" = "Avbryt";
 
 /* Class = "UITextField"; placeholder = "Passcode"; ObjectID = "ZTd-Zj-qAs"; Note = "Placeholder text in the AppLock passcode field"; */
-"ZTd-Zj-qAs.placeholder" = "PIN-kod";
+"ZTd-Zj-qAs.placeholder" = "Lösenkod";
 

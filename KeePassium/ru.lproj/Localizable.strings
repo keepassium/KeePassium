@@ -88,6 +88,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Создать базу паролей";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Добавить свой значок";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Удалить файл базы паролей?\nУбедитесь, что у вас есть резервная копия.";
 
@@ -284,7 +287,7 @@
 "[Generic] Move" = "Переместить";
 
 /* Action/button: generic OK */
-"[Generic] OK" = "OK";
+"[Generic] OK" = "ОК";
 
 /* Action/button to open URL in the appropriate app (usually, web browser) */
 "[Generic] Open URL" = "Открыть URL";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "По умолчанию (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Свои значки";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Стандартные значки";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Удалить ключевой файл?\nУбедитесь, что у вас есть резервная копия.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Убрать ключевой файл из списка?\nФайл останется нетронутым, вы сможете добавить его позже.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "Этот QR-код не подходит для настройки одноразового пароля (OTP).";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "Одноразовый пароль уже настроен для этой записи. Заменить его?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Настроить одноразовый пароль (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Просматривайте прикреплённые файлы прямо в KeePassium, не оставляя следов в других приложениях. (Работает с изображениями, документами, архивами и другими файлами.)";
@@ -470,7 +488,7 @@
 "[Premium/Price Plan/Conditions/freemium reminders]" = "Напоминания о бесплатной версии";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "Премиум-функции, добавленные в будущем, потребуют новой покупки по полной цене.";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Будущие премиум-функции потребуют новой покупки по полной цене.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "Будущие премиум-функции";
@@ -506,7 +524,7 @@
 "[Premium/status] Valid forever" = "Навсегда";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nОплата будет снята с Вашего аккаунта Apple ID после подтверждения покупки. \n\nПодписка автоматически возобновляется, если не отменена минимум за 24 часа до конца текущего периода. Плата за продление подписки будет снята с Вашего счёта в течение суток до окончания текущего периода. \n\nВы можете изменить или отменить подписки, зайдя в настройки своего аккаунта в App Store после покупки.\n";
+"[Premium/Subscription/Legal/text]" = "\nОплата будет снята с вашего аккаунта Apple ID после подтверждения покупки. \n\nПодписка автоматически возобновляется, если не отменена хотя бы за 24 часа до конца текущего периода. Плата за продление подписки будет снята с вашего счёта в течение суток до окончания текущего периода. \n\nВы можете изменить или отменить подписки, зайдя в настройки своего аккаунта в App Store после покупки.\n";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ бесплатно, затем %2$@";
@@ -515,7 +533,7 @@
 "[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Нет доступных покупок. Такого быть не должно, свяжитесь со службой поддержки.";
 
 /* Action/button to start choosing premium versions and possibly buying one */
-"[Premium/Upgrade/action] Upgrade to Premium" = "Включить Премиум";
+"[Premium/Upgrade/action] Upgrade to Premium" = "Купить полную версию";
 
 /* Message shown after buying a lifetime version. */
 "[Premium/Upgrade/cancelOngoingSubscription]" = "Проверьте, не нужно ли отменить старую подписку.";
@@ -569,13 +587,13 @@
 "[PremiumFeature/Generic/title]" = "Премиум-функция";
 
 /* Description/advertisement for the `Hardware Keys` premium feature */
-"[PremiumFeature/HardwareKeys/description]" = "Усильте защиту с помощью аппаратных ключей (YubiKey) в премиум-версии приложения.";
+"[PremiumFeature/HardwareKeys/description]" = "Усильте безопасность с помощью аппаратных ключей (YubiKey) в премиум-версии приложения.";
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Аппаратные ключи";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Экономьте время на вводе сложных мастер-паролей — держите базу открытой дольше в премиум-версии.";
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Экономьте время на вводе сложных мастер-паролей — держите базу открытой дольше в премиум-версии приложения.";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
 "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Отложенное закрытие баз";

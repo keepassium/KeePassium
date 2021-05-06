@@ -22,3 +22,6 @@
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "KeePassium ต้องการการเข้าถึงเพื่อส่งออกไฟล์ไปยังคลังรูปภาพ";
 
+/* (No Comment) */
+"NSPhotoLibraryUsageDescription" = "KeePassium ต้องการเข้าถึงคลังรูปภาพเพื่อเพิ่มไอคอนที่กำหนดเองไปยังกลุ่มและรายการ";
+

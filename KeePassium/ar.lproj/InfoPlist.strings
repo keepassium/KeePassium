@@ -1,8 +1,8 @@
 /* Bundle display name */
-"CFBundleDisplayName" = "KeePassium";
+"CFBundleDisplayName" = "كِيّباسيوم";
 
 /* Bundle name */
-"CFBundleName" = "KeePassium";
+"CFBundleName" = "كِيّباسيوم";
 
 /* (No Comment) */
 "KeePass Database (kdb)" = "قاعد بيانات KeePass (kdb)";
@@ -21,4 +21,7 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "KeePassium يحتاج الإذن لتصدير الملفات إلى مكتبة الصور الخاصة بك.";
+
+/* (No Comment) */
+"NSPhotoLibraryUsageDescription" = "يحتاج KeePassium الوصول إلى مكتبة الصور لإضافة أيقونات مخصصة للمجموعات والمُدخلات";
 

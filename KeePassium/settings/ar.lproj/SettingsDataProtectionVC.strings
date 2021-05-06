@@ -71,7 +71,7 @@
 "YL6-U9-FM6.text" = "الحافظة العامة";
 
 /* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
-"Zqb-p5-Ft8.footerTitle" = "تسمح المفاتيح المخزنة مؤقتًا لـKeePassium أن يتخطي اشتقاق المفتاح ومسح YubiKey كلما أمكن ذلك. ";
+"Zqb-p5-Ft8.footerTitle" = "تسمح المفاتيح المخزنة مؤقتًا لـKeePassium بتخطي اشتقاق المفتاح ومسح YubiKey كلما أمكن ذلك. ";
 
 /* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
 "Zqb-p5-Ft8.headerTitle" = "مُتقدِم";

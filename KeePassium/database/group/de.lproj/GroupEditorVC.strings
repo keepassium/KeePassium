@@ -2,7 +2,7 @@
 "jea-zX-9LD.placeholder" = "Gruppenname";
 
 /* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "vz5-tj-l9g"; */
-"vz5-tj-l9g.normalTitle" = "Icon ändern";
+"vz5-tj-l9g.normalTitle" = "Symbol ändern";
 
 /* Class = "UIViewController"; title = "{Create/Edit Group}"; ObjectID = "W6c-47-p86"; Note = "#bc-ignore!"; */
 "W6c-47-p86.title" = "{Create/Edit Group}";

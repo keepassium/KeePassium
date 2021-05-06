@@ -23,7 +23,7 @@
 "cBS-jW-dHU.headerTitle" = "Destek";
 
 /* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
-"coD-Om-Vfm.text" = "Veritabanı Yedeklemesi";
+"coD-Om-Vfm.text" = "Veritabanı yedeği";
 
 /* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
 "DNo-Rs-0EP.text" = "KeePassium Hakkında";
@@ -74,7 +74,7 @@
 "T2Z-oa-zJR.text" = "Şifreleri Otomatik Doldurma";
 
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
-"UNl-Hc-Ref.text" = "Veri Güvenliği";
+"UNl-Hc-Ref.text" = "Veri Koruma";
 
 /* Class = "UILabel"; text = "{Upgrade subtitle}"; ObjectID = "WM2-qq-lMN"; Note = "#bc-ignore!"; */
 "WM2-qq-lMN.text" = "{Upgrade subtitle}";

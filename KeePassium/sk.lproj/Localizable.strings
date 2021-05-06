@@ -88,6 +88,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Vytvoriť databázu";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Pridaj vlastnú ikonu";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Vymazať databázový súbor?\n Uistite sa, že máte zálohu.";
 
@@ -110,7 +113,7 @@
 "[Database/Opened/action] Close" = "Zavrieť";
 
 /* Action/button to lock current database (the next time, it will ask for the master key). */
-"[Database/Opened/action] Lock Database" = "Uzamknúť Databázu";
+"[Database/Opened/action] Lock Database" = "Uzamknúť databázu";
 
 /* Action: lock database */
 "[Database/Opened/Warning/action] Close Database" = "Zatvoriť databázu";
@@ -266,7 +269,7 @@
 "[Generic] Dismiss" = "Zatvoriť";
 
 /* Action/button to finish (editing) and keep changes */
-"[Generic] Done" = "Potvrdiť";
+"[Generic] Done" = "Hotovo";
 
 /* Action/button to edit an item */
 "[Generic] Edit" = "Upraviť";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Predvolené (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Vlastné ikony";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Štandardné ikony";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Skutočne chcete odstrániť súbor s kľúčom?\n Uistite sa, že ho máte zálohovaný.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Odobrať súbor s kľúčom zo zoznamu?\n Súbor zostane neporušený a neskôr ho budete môcť znova pridať.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "Tento QR kód nie je vhodný na nastavenie OTP.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "Pre tento záznam je už nakonfigurované jednorazové heslo. Chcete ho prepísať?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Nastaviť jednorazové heslo (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Zobrazte si ukážku príloh priamo v aplikácii KeePassium a nezanechávajte stopy v iných aplikáciách. (Náhľad podporuje obrázky, dokumenty, archívy a ďalšie.)";
@@ -665,7 +683,7 @@
 "[YubiKey] Use YubiKey Slot %d" = "Použiť YubiKey slot %d";
 
 /* Action/button to add database to the app */
-"Add Database" = "Pridať Databázu";
+"Add Database" = "Pridať databázu";
 
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "Vybrať databázu";

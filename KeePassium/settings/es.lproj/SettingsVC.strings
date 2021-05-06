@@ -38,7 +38,7 @@
 "HCe-A3-eG6.text" = "Versión premium";
 
 /* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
-"HjD-9G-X8p.headerTitle" = "Copias de seguridad";
+"HjD-9G-X8p.headerTitle" = "Copia de seguridad";
 
 /* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
 "hui-xG-chj.headerTitle" = "Control de acceso";

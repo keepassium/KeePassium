@@ -64,6 +64,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Créer une base de données";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Ajouter une icône personnalisée";
+
 /* Title of an error message */
 "[Database/Delete] Failed to delete database file" = "Échec de la suppression du fichier de la base de données";
 
@@ -296,7 +299,7 @@
 "[Group/New/defaultName] New Group" = "Nouveau groupe";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Les clés materiels ne sont pas disponibles dans AutoFill.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Les clés materielles ne sont pas disponibles dans AutoFill.";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "NFC nécessite iOS 13 ou supérieur.";
@@ -310,11 +313,26 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Aide";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Icônes personnalisées";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Icônes standards";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Supprimer le fichier clé?\n Assurez-vous d'avoir une sauvegarde.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Retirer le fichier de clé de la liste ?\n Le fichier restera intact et vous pourrez l'ajouter plus tard.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "Ce code QR n'est pas adapté à la configuration OTP.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "Le mot de passe à usage unique est déjà configuré pour cette entrée. Voulez-vous le remplacer ?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Configurer le mot de passe à usage unique (OTP)";
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Ce qui vous manque";
@@ -389,7 +407,7 @@
 "[Premium/Price Plan/popular]" = "Populaire";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nLe paiement sera prélevé sur votre compte Apple au moment de la confirmation de l’achat.\n\nL’abonnement est renouvelé automatiquement à moins qu’il ne soit annulé au moins 24 heures avant la fin de la période en cours. Le renouvellement sera prélevé sur votre compte dans les 24 heures précédant la fin de la période en cours. \n\nVous pouvez gérer et annuler vos abonnements depuis les paramètres du compte dans l’App Store, une fois l’achat réalisé.\n";
+"[Premium/Subscription/Legal/text]" = "Le paiement sera prélevé sur votre compte Apple au moment de la confirmation de l’achat.\n\nL’abonnement est renouvelé automatiquement à moins qu’il ne soit annulé au moins 24 heures avant la fin de la période en cours. Le renouvellement sera prélevé sur votre compte dans les 24 heures précédant la fin de la période en cours. \n\nVous pouvez gérer et annuler vos abonnements depuis les paramètres du compte dans l’App Store, une fois l’achat réalisé.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ gratuit, puis %2$@";

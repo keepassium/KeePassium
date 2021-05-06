@@ -275,13 +275,13 @@
 "[FileAccessError/NoResponse/knownFileProvider]" = "%@ لا يستجيب.";
 
 /* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
-"[FileAccessError/NoWritePermission/title]" = "Cannot save file (%@)";
+"[FileAccessError/NoWritePermission/title]" = "يتعذَّر حفظ الملف (%@)";
 
 /* Explanation of a file writing error */
-"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft has recently switched OneDrive integration with iOS to read-only mode. Temporarily, they say.";
+"[FileAccessError/OneDriveReadOnly/reason]" = "لقد بدلت مايكروسوفت تكاملات OneDrive مع iOS إلى وضع القراءة-فقط. يقولون أن ذلك بشكل مؤقتًا.";
 
 /* Suggestion for error recovery */
-"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use the Export option to save file to another location.";
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "استخدم خيار التصدير لحفظ الملف في موقع آخر.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "مزود خدمة التخزين لا يستجيب.";

@@ -5,7 +5,7 @@
 "caI-eV-WlU.text" = "حدد \"KeePassium\"";
 
 /* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
-"ei6-22-NXN.title" = "الملء تلقائي";
+"ei6-22-NXN.title" = "ملء تلقائي";
 
 /* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
 "go1-Nt-isQ.text" = "نسخ OTP إلى الحافظة";

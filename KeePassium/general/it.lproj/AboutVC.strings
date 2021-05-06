@@ -61,6 +61,9 @@
 /* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
 "hDU-6p-Bzr.text" = "Implementazione di Rijndael di Szymon Stefanek";
 
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "hqP-9y-rXc"; */
+"hqP-9y-rXc.text" = "Licenza MIT";
+
 /* Class = "UILabel"; text = "Apache 2.0 license"; ObjectID = "ht7-pj-Dbb"; */
 "ht7-pj-Dbb.text" = "Licenza Apache 2.0";
 
@@ -107,10 +110,13 @@
 "OaP-Bl-5vR.text" = "TPInAppReceipt di Pavel Tikhonenko";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
-"QV5-N8-NRt.text" = "Dominio pubblico";
+"QV5-N8-NRt.text" = "Dominio Pubblico";
 
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "Qz4-PJ-Tra"; */
 "Qz4-PJ-Tra.text" = "CC BY 3.0";
+
+/* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
+"r7M-Gb-1Xd.text" = "Toast-Swift di Charles Scalesse";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
 "Rab-wf-OQe.text" = "Licenza MIT";

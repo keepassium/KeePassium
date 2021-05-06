@@ -11,7 +11,7 @@
 "P3J-3c-ucU.title" = "Открыть KeePassium";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "z0x-Rz-Nfj"; */
-"z0x-Rz-Nfj.normalTitle" = "Отмена";
+"z0x-Rz-Nfj.normalTitle" = "Отменить";
 
 /* Class = "UITextField"; placeholder = "Passcode"; ObjectID = "ZTd-Zj-qAs"; Note = "Placeholder text in the AppLock passcode field"; */
 "ZTd-Zj-qAs.placeholder" = "Код доступа";

@@ -22,3 +22,6 @@
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "KeePassium vyžaduje vaše povolenie na export súborov do vašej knižnice fotografií.";
 
+/* (No Comment) */
+"NSPhotoLibraryUsageDescription" = "KeePassium potrebuje prístup do knižnice fotografií, aby bolo možné pridávať vlastné ikony do skupín a záznamov";
+

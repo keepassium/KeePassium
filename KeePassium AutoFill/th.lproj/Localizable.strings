@@ -35,13 +35,13 @@
 "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "เพื่อที่จะอัพเกรด โปรดเข้าแอป KeePassium จากหน้าจอหลัก";
 
 /* Title of a message related to upgrading to the premium version */
-"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "อัพเกรดพรีเมียม";
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "อัพเกรดเป็นพรีเมียม";
 
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "Caller ID: %@";
 
 /* No comment provided by engineer. */
-"[AutoFill/Setup/footer]" = "การป้อนรหัสผ่านอัตโนมัติไม่สามารถเข้าถึงไฟล์ที่คุณมีอยู่แล้วในแอป KeePassium\n\nทำไมหรือ? เพราะระบบข้างหลังจะแยกการป้อนรหัสผ่านอัตโนมัติเป็นคนละแอปกัน ซึ่งจะมีความอิสระจากกระบวนการของ KeePassium เนื่องจากเหตุผลด้านความปลอดภัย แอปไม่สามารถเข้าถึงไฟล์ภายนอกได้ – เว้นว่าคุณจะลิงค์ไฟล์ให้แอปใช้ได้โดยตรง ดังนั้นสามารถยืนยันได้ว่า ระบบจะอนุญาตให้แอปเข้าถึงได้ไม่กี่ไฟล์ที่คุณอนุญาตไว้เท่านั้น\n\nจึงสรุปได้ว่า ทั้งการป้อนรหัสผ่านอัตโนมัติ และตัวแอป KeePassium จึงจำเป็นต้องให้สิทธิ์ในการเข้าถึงไฟล์ภายนอกแต่ละไฟล์ได้ โชคดีที่มันเป็นขั้นตอนที่ทำแค่ครั้งเดียวเท่านั้น";
+"[AutoFill/Setup/footer]" = "การป้อนรหัสผ่านอัตโนมัติไม่สามารถเข้าถึงไฟล์ที่คุณมีอยู่แล้วในแอป KeePassium\n\nทำไมหรือ? เพราะระบบข้างหลังจะแยกการป้อนรหัสผ่านอัตโนมัติเป็นคนละแอปกัน ซึ่งจะมีความอิสระจากกระบวนการของ KeePassium เนื่องจากเหตุผลด้านความปลอดภัย แอปไม่สามารถเข้าถึงไฟล์ภายนอกได้ – เว้นว่าคุณจะลิงค์ไฟล์ให้แอปใช้ได้โดยตรง ดังนั้นสามารถยืนยันได้ว่า ระบบจะอนุญาตให้แอปเข้าถึงเฉพาะไฟล์ที่คุณอนุญาตไว้เท่านั้น\n\nจึงสรุปได้ว่า ทั้งการป้อนรหัสผ่านอัตโนมัติ และตัวแอป KeePassium จำเป็นต้องให้สิทธิ์ในการเข้าถึงไฟล์ภายนอกแต่ละไฟล์ได้ โชคดีที่มันเป็นขั้นตอนที่ทำแค่ครั้งเดียวเท่านั้น";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -56,13 +56,16 @@
 "[Clipboard/Copy/notification]" = "คัดลอกแล้ว";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
-"[Database/Add] Selected file \"%@\" does not look like a database." = "ไฟล์ %@ ที่เลือกมา ดูไม่เหมือนฐานข้อมูล";
+"[Database/Add] Selected file \"%@\" does not look like a database." = "ไฟล์ \"%@\" ที่เลือกมา ดูไม่เหมือนฐานข้อมูล";
 
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "สร้างฐานข้อมูล";
 
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "สร้างฐานข้อมูล";
+
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "เพิ่มไอคอนที่กำหนดเอง";
 
 /* Title of an error message */
 "[Database/Delete] Failed to delete database file" = "ไม่สามารถลบไฟล์ฐานข้อมูล";
@@ -170,7 +173,7 @@
 "[FileInfo/Field/valueError] Error" = "ผิดพลาด";
 
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
-"[FileInfo/isExcludedFromBackup/title]" = "เว้นจากการสำรองข้อมูลด้วย iCloud/iTunes";
+"[FileInfo/isExcludedFromBackup/title]" = "ยกเว้นจากการสำรองข้อมูลด้วย iCloud/iTunes";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "ยกเลิก";
@@ -310,11 +313,26 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "ช่วยเหลือ";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "ไอคอนที่กำหนดเอง";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "ไอคอนมาตรฐาน";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "ลบไฟล์กุญแจหรือไม่?\n ตรวจสอบให้ดีว่าคุณกู้ไว้เรียบร้อยแล้ว";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
-"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "ลบไฟล์กุญแจออกจากรายการหรือไม่?\n ไฟล์จะยังคงเดิมและคุณยังสามารถเพิ่มไฟล์ได้ในภายหลัง";
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "ลบไฟล์กุญแจออกจากรายการหรือไม่?\n ไฟล์จะยังคงเดิมและคุณยังสามารถเพิ่มไฟล์ใหม่ได้ในภายหลัง";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "QR code นี้ไม่สามารถใช้กับการตั้ง OTP ได้";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "รายการนี้ได้ตั้งค่ารหัสผ่านแบบใช้ครั้งเดียวไว้แล้ว คุณต้องการเขียนทับหรือไม่?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "ตั้งค่ารหัสผ่านแบบใช้ครั้งเดียว (OTP)";
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "อะไรที่คุณยังไม่มี";
@@ -326,7 +344,7 @@
 "[Premium/CallToAction/buyNow]" = "ซื้อตอนนี้";
 
 /* Call to action: continue using the free version */
-"[Premium/CallToAction/free]" = "ทดลองใช้ต่อไป";
+"[Premium/CallToAction/free]" = "ทดสอบต่อไป";
 
 /* Call to action: start free trial */
 "[Premium/CallToAction/startTrial]" = "ลองใช้ฟรี";
@@ -365,7 +383,7 @@
 "[Premium/Price Plan/Conditions/freemium reminders]" = "แจ้งเตือนการใช้เวอร์ชันฟรี";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "คุณสมบัติพรีเมียมได้เพิ่มรอไว้สำหรับอนาคตเผื่อไว้สำหรับการซื้อเต็มราคา";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "คุณสมบัติพรีเมียมได้เพิ่มรอไว้ในอนาคตเผื่อไว้สำหรับการซื้อเต็มราคา";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "คุณสมบัติพรีเมียมในอนาคต";
@@ -431,7 +449,7 @@
 "[Premium/Upgrade/Restored/title] Purchase Restored" = "เรียกคืนการซื้อสำเร็จ";
 
 /* Text of an error message: there were no in-app purchases that can be restored */
-"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "ไม่มีการซื้อครั้งก่อนที่สามารถเรียกกลับมาใช้ได้";
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "ไม่มีการซื้อครั้งก่อนที่สามารถนำกลับมาใช้ได้";
 
 /* Title of an error message: there were no in-app purchases that can be restored */
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "ขออภัย";

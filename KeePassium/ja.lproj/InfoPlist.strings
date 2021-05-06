@@ -22,3 +22,6 @@
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "写真ライブラリにファイルをエクスポートするには権限をKeePassiumに与える必要があります。";
 
+/* (No Comment) */
+"NSPhotoLibraryUsageDescription" = "カスタムアイコンをグループやエントリに設定するには、写真へのアクセスをKeePassiumに与える必要があります。";
+

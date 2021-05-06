@@ -14,7 +14,7 @@
 "oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Nastavenie";
 
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
-"qPq-UR-uZs.title" = "Pridať Databázu";
+"qPq-UR-uZs.title" = "Pridať databázu";
 
 /* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
 "R68-cy-5mz.text" = "Chráňte KeePassium pred neoprávneným prístupom.";

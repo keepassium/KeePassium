@@ -11,7 +11,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "استخدم كلمة مرور";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Change Passcode";
+"[AppLock/changePasscode]" = "تغيير رمز المرور";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "فتح قفل KeePassium";
@@ -23,13 +23,13 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+"[AppLock/passcodeUpdated/title]" = "تمَّ تحديث رمز المرور بنجاح.";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Save Passcode";
+"[AppLock/savePasscode]" = "حفظ رمز المرور";
 
 /* Call to action in the passcode input dialog. */
-"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
+"[AppLock/SetupPasscode/callToAction]" = "احمِ KeePassium من الوصول غير المصرح به";
 
 /* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
 "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "للترقية، يرجى فتح KeePassium يدويا من شاشة الهاتف الرئيسية.";
@@ -64,6 +64,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "إنشاء قاعدة بيانات";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "إضافة أيقونة مُخصصة";
+
 /* Title of an error message */
 "[Database/Delete] Failed to delete database file" = "فشل في حذف قاعدة البيانات";
 
@@ -77,10 +80,10 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "تم تغيير المفتاح الرئيس بنجاح";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+"[Database/MasterKey/RememberYourPassword/text]" = "إذا نسيته، لن تتمكن من الوصول إلى بياناتك. لا يوجد خيار لإعادة تعيين كلمة المرور.";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+"[Database/MasterKey/RememberYourPassword/title]" = "تذكَّر كلمة مرور قاعدة البيانات الخاصة بك";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "فتح قاعدة البيانات";
@@ -89,13 +92,13 @@
 "[Database/Opened/action] Close" = "إغلاق";
 
 /* Action/button to lock current database (the next time, it will ask for the master key). */
-"[Database/Opened/action] Lock Database" = "قفل قاعدة البيانات";
+"[Database/Opened/action] Lock Database" = "قَفل قاعدة البيانات";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "إزالة قاعدة البيانات من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته مرة أخرى لاحقاً.";
 
 /* Status message: finished saving a database */
-"[Database/Saving/Status] Done" = "تمّ الحفظ";
+"[Database/Saving/Status] Done" = "تمَّ التحميل";
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "جاري الحفظ...";
@@ -122,7 +125,7 @@
 "[Entry/Edit/CreateField/defaultName] Field Name" = "اسم الحقل";
 
 /* Name of an entry field */
-"[Entry/Field/name] Notes" = "مُلاحظات";
+"[Entry/Field/name] Notes" = "المُلاحظات";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "كلمة المرور";
@@ -134,7 +137,7 @@
 "[Entry/Field/name] URL" = "عنوان URL";
 
 /* Name of an entry field */
-"[Entry/Field/name] User Name" = "اسم المستخدم";
+"[Entry/Field/name] User Name" = "اسم المُستخدِم";
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "سجل جديد";
@@ -200,7 +203,7 @@
 "[Generic] Dismiss" = "تجاهُل";
 
 /* Action/button to finish (editing) and keep changes */
-"[Generic] Done" = "تم";
+"[Generic] Done" = "تمَّ التحميل";
 
 /* Action/button to edit an item */
 "[Generic] Edit" = "حرّر";
@@ -296,7 +299,7 @@
 "[Group/New/defaultName] New Group" = "مجموعة جديدة";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "مفاتيح الأجهزة غير مُتاحة في التعبئة التلقائية.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "أجهزة المفاتيح غير مُتاحة في التعبئة التلقائية.";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "الـNFC يتطلب إصدار ios 13 أو اجدد.";
@@ -310,11 +313,26 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "المساعدة";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "أيقونات مُخصصة";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "الأيقونات القياسيَّة";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "حذف ملف المفتاح؟\n تأكد أن لديك نسخة احتياطية.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "إزالة ملف المفتاح من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته لاحقاً مرة أخرى.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "رمز الاستجابة السريعة هذا غير مُلائم لإعداد OTP.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "تمَّ بالفعل إعداد كلمة مرور لمرة واحدة لهذا المُدخل. هل تريد استبدالها؟";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "إعداد كلمة مرور لمرة واحدة (OTP)";
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "ما الذي تفقده";

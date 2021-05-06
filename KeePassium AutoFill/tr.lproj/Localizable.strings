@@ -64,6 +64,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Veritabanı Oluştur";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Add Custom Icon";
+
 /* Title of an error message */
 "[Database/Delete] Failed to delete database file" = "Veritabanı dosyası silinemedi";
 
@@ -125,7 +128,7 @@
 "[Entry/Field/name] Notes" = "Notlar";
 
 /* Name of an entry field */
-"[Entry/Field/name] Password" = "Parola";
+"[Entry/Field/name] Password" = "Şifre";
 
 /* Name of an entry field */
 "[Entry/Field/name] Title" = "Başlık";
@@ -310,17 +313,32 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Yardım";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Anahtar dosya silinsin mi? \n Yedeğini aldığınızdan emin olun.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Veritabanı listeden silinsin mi?\n\n(Sadece gördüğünüz listeden silinir. Bulut hizmetinizden veya cihazınızdan silinmez.) Daha sonra tekrar ekleyebilirsiniz.";
 
-/* List of premium benefits/advantages */
-"[Premium/Benefits/Negative/header] " = "Neleri kaçırıyorsunuz??";
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Setup one-time password (OTP)";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Positive/header] " = "Ne elde edeceksiniz?";
+"[Premium/Benefits/Negative/header] " = "Neleri kaçırıyorsunuz";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "Avantajlarınız";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Hemen Satın Alın";
@@ -383,10 +401,10 @@
 "[Premium/Price Plan/Free/price]" = "Bedava";
 
 /* Name of the free pricing plan */
-"[Premium/Price Plan/Free/title]" = "Ücretsiz Plan";
+"[Premium/Price Plan/Free/title]" = "Bedava";
 
 /* Marks the default pricing plan */
-"[Premium/Price Plan/popular]" = "Varsayılan";
+"[Premium/Price Plan/popular]" = "En Popüler";
 
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "\nSatın alma onaylandığında Apple Kimliğinden ödeme tahsil edilecektir. Geçerli abonelik dönemi bitmeden en az 24 saat önceden otomatik yenileme özelliği kapatılmazsa abonelik otomatik olarak yenilenir. Mevcut abonelik döneminin bitmesine 24 saat kala hesabından yenileme ücreti tahsil edilir. Satın almadan sonra App Store’da hesap ayarlarına giderek aboneliklerini yönetebilir ve iptal edebilirsin.\n";
@@ -416,7 +434,7 @@
 "[Premium/Upgrade/price] %@ once" = "Tek seferlik %@";
 
 /* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
-"[Premium/Upgrade/price] around %@ / month" = "≈ ayda %@";
+"[Premium/Upgrade/price] around %@ / month" = "≈ Ayda %@";
 
 /* Status message when downloading available in-app purchases */
 "[Premium/Upgrade/Progress] Contacting AppStore..." = "AppStore'a bağlanılıyor...";

@@ -88,6 +88,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Crea Database";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Add Custom Icon";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Eliminare il file di database?\n Assicurati di avere un backup.";
 
@@ -131,7 +134,7 @@
 "[Database/Saving/Status] Done" = "Completato";
 
 /* Status message: saving a database */
-"[Database/Saving/Status] Saving..." = "Salvataggio...";
+"[Database/Saving/Status] Saving..." = "Salvataggio in corso...";
 
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Errore file chiave: %@";
@@ -161,13 +164,13 @@
 "[Entry/Field/name] Password" = "Password";
 
 /* Name of an entry field */
-"[Entry/Field/name] Title" = "Oggetto";
+"[Entry/Field/name] Title" = "Titolo";
 
 /* Name of an entry field */
 "[Entry/Field/name] URL" = "URL";
 
 /* Name of an entry field */
-"[Entry/Field/name] User Name" = "Nome utente";
+"[Entry/Field/name] User Name" = "Nome Utente";
 
 /* Status message: loading file to be attached to an entry */
 "[Entry/Files/Add] Loading attachment file" = "Caricamento file allegato";
@@ -200,7 +203,7 @@
 "[Entry/History/ExpiryDate] Never" = "Mai";
 
 /* Default title of a new entry */
-"[Entry/New/defaultTitle] New Entry" = "Nuovo elemento";
+"[Entry/New/defaultTitle] New Entry" = "Nuova Voce";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Prova a rimuovere il file dall'app, quindi aggiungilo di nuovo.";
@@ -221,13 +224,13 @@
 "[FileInfo/Field/title] File Location" = "Posizione del File";
 
 /* Field title */
-"[FileInfo/Field/title] File Name" = "Nome file";
+"[FileInfo/Field/title] File Name" = "Nome File";
 
 /* Field title */
 "[FileInfo/Field/title] File Size" = "Dimensione File";
 
 /* Field title */
-"[FileInfo/Field/title] Last Modification Date" = "Data ultima modifica";
+"[FileInfo/Field/title] Last Modification Date" = "Data Ultima modifica";
 
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Errore";
@@ -323,25 +326,25 @@
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Ci sono modifiche non salvate";
 
 /* Action/button to delete a file (destroys the file forever) */
-"[Generic/File] Delete" = "Elimina";
+"[Generic/File] Delete" = "Eliminare";
 
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Rimuovere";
 
 /* Title of an error message about file export */
-"[Generic/File/title] Export Error" = "Errore di esportazione";
+"[Generic/File/title] Export Error" = "Errore Esportazione";
 
 /* Message shown when trying to copy into an existing file. */
 "[Generic/File/title] File already exists" = "Il file esiste già";
 
 /* Title of an error message about file import */
-"[Generic/File/title] Import Error" = "Errore di importazione";
+"[Generic/File/title] Import Error" = "Errore di Importazione";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Errore";
 
 /* Title of an error message about iOS system keychain */
-"[Generic/title] Keychain Error" = "Errore nel portachiavi";
+"[Generic/title] Keychain Error" = "Errore nel Portachiavi";
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "Attenzione";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Predefinito (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Eliminare il file chiave?\n Assicurati di avere un backup.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Rimuovere il file chiave dalla lista?\n Il file rimarrà integro e potrai aggiungerlo nuovamente in un secondo momento.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Setup one-time password (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Visualizza l'anteprima dei file allegati direttamente in KeePassium e non lasciare tracce in altre applicazioni. (Funziona con immagini, documenti, archivi e molto altro)";

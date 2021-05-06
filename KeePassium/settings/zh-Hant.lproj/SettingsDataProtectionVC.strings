@@ -59,10 +59,10 @@
 "siQ-LK-GXZ.text" = "快取加密金鑰";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "剪貼簿逾時";
+"SSu-Sr-MCg.text" = "剪貼板逾時";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "資料庫逾時";
+"weX-SZ-IDB.text" = "資料庫自動鎖定";
 
 /* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
 "xPd-ot-oqe.text" = "{Detail}";

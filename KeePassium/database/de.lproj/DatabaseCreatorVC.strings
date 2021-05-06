@@ -17,7 +17,7 @@
 "uHk-Yt-mBh.placeholder" = "Passwort";
 
 /* Class = "UILabel"; text = "Master Key"; ObjectID = "VjQ-di-Ilx"; Note = "Common title for the password/key file fields."; */
-"VjQ-di-Ilx.text" = "Hauptpasswort";
+"VjQ-di-Ilx.text" = "Hauptschlüssel";
 
 /* Class = "UILabel"; text = "{Error message}"; ObjectID = "wb0-s2-V8n"; Note = "#bc-ignore!"; */
 "wb0-s2-V8n.text" = "{Error message}";

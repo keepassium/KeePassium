@@ -1,6 +1,9 @@
 /* Class = "UILabel"; text = "In-memory Protection"; ObjectID = "0pb-xb-fuf"; Note = "Label for a switch, equivalent to KeePass' own `Enable in-memory protection` for custom entry fields."; */
 "0pb-xb-fuf.text" = "Protección en memoria";
 
+/* Class = "UIButton"; normalTitle = "{Scan QR code to setup OTP}"; ObjectID = "1Nq-zk-w7B"; */
+"1Nq-zk-w7B.normalTitle" = "{Scan QR code to setup OTP}";
+
 /* Class = "UITextView"; accessibilityLabel = "Custom field value"; ObjectID = "7iU-ut-hd7"; */
 "7iU-ut-hd7.accessibilityLabel" = "Valor de campo personalizado";
 

@@ -47,7 +47,7 @@
 "[Clipboard/Copy/notification]" = "คัดลอกแล้ว";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
-"[Database/Add] Selected file \"%@\" does not look like a database." = "ไฟล์ %@ ที่เลือกมา ดูไม่เหมือนฐานข้อมูล";
+"[Database/Add] Selected file \"%@\" does not look like a database." = "ไฟล์ \"%@\" ที่เลือกมา ดูไม่เหมือนฐานข้อมูล";
 
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "โปรดใส่รหัสผ่านหรือเลือกไฟล์กุญแจ";
@@ -88,8 +88,11 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "สร้างฐานข้อมูล";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "เพิ่มไอคอนที่กำหนดเอง";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
-"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "ลบไฟล์ฐานข้อมูลหรือไม่?\n ตรวจสอบให้ดีว่าคุณกู้ไว้เรียบร้อยแล้ว";
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "ลบไฟล์กุญแจหรือไม่?\n ตรวจสอบให้ดีว่าคุณกู้ไว้เรียบร้อยแล้ว";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "กำลังโหลด...";
@@ -98,7 +101,7 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "เปลี่ยนกุญแจหลักเรียบร้อยแล้ว";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "ถ้าคุณลืมมันไป คุณจะไม่สามารถเข้าถึงข้อมูลได้อีกต่อไป เพราะไม่มีวิธีใดที่จะรีเซ็ตรหัสผ่านได้";
+"[Database/MasterKey/RememberYourPassword/text]" = "หากคุณลืมมันไป คุณจะไม่สามารถเข้าถึงข้อมูลของคุณได้อีกต่อไป เพราะไม่มีวิธีใดที่จะรีเซ็ตรหัสผ่านได้";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "จำรหัสผ่านฐานข้อมูลของคุณ";
@@ -233,7 +236,7 @@
 "[FileInfo/Field/valueError] Error" = "ผิดพลาด";
 
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
-"[FileInfo/isExcludedFromBackup/title]" = "เว้นจากการสำรองข้อมูลด้วย iCloud/iTunes";
+"[FileInfo/isExcludedFromBackup/title]" = "ยกเว้นจากการสำรองข้อมูลด้วย iCloud/iTunes";
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "เลือกปลายทาง";
@@ -362,7 +365,7 @@
 "[Group/New/defaultName] New Group" = "สร้างกลุ่มใหม่";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "ฮาร์ดแวร์คีย์ไม่สามารถใช้การป้อนรหัสผ่านอัตโนมัติได้";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "ฮาร์ดแวร์คีย์ไม่สามารถใช้ในการป้อนรหัสผ่านอัตโนมัติได้";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "NFC ต้องการ iOS 13 ขึ้นไป";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "ค่าเริ่มต้น (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "ไอคอนที่กำหนดเอง";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "ไอคอนมาตรฐาน";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "ลบไฟล์กุญแจหรือไม่?\n ตรวจสอบให้ดีว่าคุณกู้ไว้เรียบร้อยแล้ว";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
-"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "ลบไฟล์กุญแจออกจากรายการหรือไม่?\n ไฟล์จะยังคงเดิมและคุณยังสามารถเพิ่มไฟล์ได้ในภายหลัง";
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "ลบไฟล์กุญแจออกจากรายการหรือไม่?\n ไฟล์จะยังคงเดิมและคุณยังสามารถเพิ่มไฟล์ใหม่ได้ในภายหลัง";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "QR code นี้ไม่สามารถใช้กับการตั้ง OTP ได้";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "รายการนี้ได้ตั้งค่ารหัสผ่านแบบใช้ครั้งเดียวไว้แล้ว คุณต้องการเขียนทับหรือไม่?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "ตั้งค่ารหัสผ่านแบบใช้ครั้งเดียว (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "แสดงตัวอย่างไฟล์แนบได้โดยตรงใน KeePassium และไม่ทิ้งร่องรอยให้แอปอื่นเห็น (ใช้กับรูปภาพ, เอกสาร, บันทึกสำคัญ และอื่น ๆ)";
@@ -470,7 +488,7 @@
 "[Premium/Price Plan/Conditions/freemium reminders]" = "แจ้งเตือนการใช้เวอร์ชันฟรี";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "คุณสมบัติพรีเมียมได้เพิ่มรอไว้สำหรับอนาคตเผื่อไว้สำหรับการซื้อเต็มราคา";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "คุณสมบัติพรีเมียมได้เพิ่มรอไว้ในอนาคตเผื่อไว้สำหรับการซื้อเต็มราคา";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "คุณสมบัติพรีเมียมในอนาคต";
@@ -575,7 +593,7 @@
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "ฮาร์ดแวร์คีย์";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "จะไม่เสียเวลาเพื่อใส่รหัสผ่านหลักที่มีความซับซ้อน — สามารถเปิดฐานข้อมูลทิ้งไว้นาน ๆ ได้เมื่อใช้เวอร์ชันพรีเมียม";
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "จะไม่เสียเวลาเพื่อมาใส่รหัสผ่านหลักที่มีความซับซ้อน — สามารถเปิดฐานข้อมูลทิ้งไว้นาน ๆ ได้เมื่อใช้เวอร์ชันพรีเมียม";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
 "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "ฐานข้อมูลที่หมดเวลาใช้ระยะเวลายาวนาน";

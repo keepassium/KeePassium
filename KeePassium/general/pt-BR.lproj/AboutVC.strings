@@ -26,7 +26,7 @@
 "AMd-x7-PDa.text" = "Gostando?";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "Traduzido por claitonjs e Éctor Moreira";
+"aqX-J9-IzD.text" = "Traduzido por Éctor Moreira e claitonjs";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
 "AWg-lI-BfC.text" = "Licença MIT";
@@ -60,6 +60,9 @@
 
 /* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
 "hDU-6p-Bzr.text" = "Implementação Rijndael por Szymon Stefanek";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "hqP-9y-rXc"; */
+"hqP-9y-rXc.text" = "Licença MIT";
 
 /* Class = "UILabel"; text = "Apache 2.0 license"; ObjectID = "ht7-pj-Dbb"; */
 "ht7-pj-Dbb.text" = "Licença Apache 2.0";
@@ -111,6 +114,9 @@
 
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "Qz4-PJ-Tra"; */
 "Qz4-PJ-Tra.text" = "CC BY 3.0";
+
+/* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
+"r7M-Gb-1Xd.text" = "Toast-Swift por Charles Scalesse";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
 "Rab-wf-OQe.text" = "Licença MIT";

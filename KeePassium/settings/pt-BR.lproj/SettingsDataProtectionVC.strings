@@ -59,10 +59,10 @@
 "siQ-LK-GXZ.text" = "Manter chaves criptográficas já processadas em cachê";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "Limite de tempo p/ área transf.";
+"SSu-Sr-MCg.text" = "Limite de tempo para colar";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Limite de tempo aberto";
+"weX-SZ-IDB.text" = "Limite de tempo p/ BD";
 
 /* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
 "xPd-ot-oqe.text" = "{Detail}";

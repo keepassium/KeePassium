@@ -2,7 +2,7 @@
 "[Accessibility] Double tap to copy to clipboard" = "انقر بشكل مزدوج للنسخ إلى الحافظة";
 
 /* Title of a setting option: font size */
-"[Appearance/TextSize/title]" = "Text Size";
+"[Appearance/TextSize/title]" = "حجم النص";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "فتح القفل";
@@ -14,7 +14,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "استخدم كلمة مرور";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Change Passcode";
+"[AppLock/changePasscode]" = "تغيير رمز المرور";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "فتح قفل KeePassium";
@@ -26,16 +26,16 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+"[AppLock/passcodeUpdated/title]" = "تمَّ تحديث رمز المرور بنجاح.";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Save Passcode";
+"[AppLock/savePasscode]" = "حفظ رمز المرور";
 
 /* Call to action in the passcode input dialog. */
-"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
+"[AppLock/SetupPasscode/callToAction]" = "احمِ KeePassium من الوصول غير المصرح به";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
-"[BiometricAuthType] Face ID" = "بصمة الوجه";
+"[BiometricAuthType] Face ID" = "Face ID";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
@@ -47,7 +47,7 @@
 "[Clipboard/Copy/notification]" = "تم النسخ!";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
-"[Database/Add] Selected file \"%@\" does not look like a database." = "الملف المحدد \"%@\" لا يبدو كقاعدة بيانات.";
+"[Database/Add] Selected file \"%@\" does not look like a database." = "الملف المُحدد \"%@\" لا يبدو كقاعدة بيانات.";
 
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "يُرجى إدخال كلمة مرور أو اختيار ملف مفتاح.";
@@ -88,8 +88,11 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "إنشاء قاعدة بيانات";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "إضافة أيقونة مُخصصة";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
-"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "حذف ملف قاعدة البيانات؟\n تأكد من أن يكون لديك نسخة احتياطية.";
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "حذف ملف قاعدة البيانات؟\nتأكد من أن يكون لديك نسخة احتياطية.";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "جاري التحميل...";
@@ -98,10 +101,10 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "تم تغيير المفتاح الرئيس بنجاح";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+"[Database/MasterKey/RememberYourPassword/text]" = "إذا نسيته، لن تتمكن من الوصول إلى بياناتك. لا يوجد خيار لإعادة تعيين كلمة المرور.";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+"[Database/MasterKey/RememberYourPassword/title]" = "تذكَّر كلمة مرور قاعدة البيانات الخاصة بك";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "فتح قاعدة البيانات";
@@ -110,7 +113,7 @@
 "[Database/Opened/action] Close" = "إغلاق";
 
 /* Action/button to lock current database (the next time, it will ask for the master key). */
-"[Database/Opened/action] Lock Database" = "قفل قاعدة البيانات";
+"[Database/Opened/action] Lock Database" = "قَفل قاعدة البيانات";
 
 /* Action: lock database */
 "[Database/Opened/Warning/action] Close Database" = "إغلاق قاعدة البيانات";
@@ -125,10 +128,10 @@
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "قاعدة البيانات الخاصة بك جاهزة، ولكن هناك مشكلة.";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
-"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "إزالة قاعدة البيانات من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته لاحقاً مرة أخرى.";
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "إزالة قاعدة البيانات من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته مرة أخرى لاحقاً.";
 
 /* Status message: finished saving a database */
-"[Database/Saving/Status] Done" = "تمّ الحفظ";
+"[Database/Saving/Status] Done" = "تمَّ التحميل";
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "جاري الحفظ...";
@@ -155,7 +158,7 @@
 "[Entry/Edit/CreateField/defaultName] Field Name" = "اسم الحقل";
 
 /* Name of an entry field */
-"[Entry/Field/name] Notes" = "ملاحظات";
+"[Entry/Field/name] Notes" = "المُلاحظات";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "كلمة المرور";
@@ -167,7 +170,7 @@
 "[Entry/Field/name] URL" = "عنوان URL";
 
 /* Name of an entry field */
-"[Entry/Field/name] User Name" = "اسم المستخدم";
+"[Entry/Field/name] User Name" = "اسم المُستخدِم";
 
 /* Status message: loading file to be attached to an entry */
 "[Entry/Files/Add] Loading attachment file" = "إضافة ملف مرفق";
@@ -197,7 +200,7 @@
 "[Entry/History] Previous Versions" = "الإصدارات السابقة";
 
 /* Expiry Date of an entry which does not expire. */
-"[Entry/History/ExpiryDate] Never" = "ابداً";
+"[Entry/History/ExpiryDate] Never" = "ابدًا";
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "سجل جديد";
@@ -266,7 +269,7 @@
 "[Generic] Dismiss" = "تجاهُل";
 
 /* Action/button to finish (editing) and keep changes */
-"[Generic] Done" = "تمّ";
+"[Generic] Done" = "تمَّ التحميل";
 
 /* Action/button to edit an item */
 "[Generic] Edit" = "حرّر";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "الافتراضي (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "أيقونات مُخصصة";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "الأيقونات القياسيَّة";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "حذف ملف المفتاح؟\n تأكد أن لديك نسخة احتياطية.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "إزالة ملف المفتاح من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته لاحقاً مرة أخرى.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "رمز الاستجابة السريعة هذا غير مُلائم لإعداد OTP.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "تمَّ بالفعل إعداد كلمة مرور لمرة واحدة لهذا المُدخل. هل تريد استبدالها؟";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "إعداد كلمة مرور لمرة واحدة (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "معاينة الملفات المرفقة مباشرة في KeePassium ولا تترك أي أثر في تطبيقات أخرى. (يعمل مع الصور والمستندات والأرشيف والمزيد)";
@@ -674,5 +692,5 @@
 "Import Database" = "إستيراد قاعدة البيانات";
 
 /* Warning message when the user tries to use a database as a key file */
-"KeePass database should not be used as key file. Please pick a different file." = "لا ينبغي استخدام ملف قاعدة بيانات KeePass كمفتاح رئيس. الرجاء اختيار ملف مختلف.";
+"KeePass database should not be used as key file. Please pick a different file." = "لا ينبغي استخدام ملف قاعدة بيانات KeePass كملف مفتاح. الرجاء اختيار ملف مختلف.";
 

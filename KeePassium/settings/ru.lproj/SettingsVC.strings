@@ -23,7 +23,7 @@
 "cBS-jW-dHU.headerTitle" = "Поддержка";
 
 /* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
-"coD-Om-Vfm.text" = "Резервное копирование";
+"coD-Om-Vfm.text" = "Резервирование";
 
 /* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
 "DNo-Rs-0EP.text" = "О программе";
@@ -50,7 +50,7 @@
 "LHz-DF-ZST.text" = "{Renews on 1 Jan 1970}";
 
 /* Class = "UILabel"; text = "Upgrade to Premium"; ObjectID = "oxG-N8-1ld"; */
-"oxG-N8-1ld.text" = "Включить Премиум";
+"oxG-N8-1ld.text" = "Купить полную версию";
 
 /* Class = "UILabel"; text = "Diagnostic Log"; ObjectID = "PpA-oZ-kr2"; Note = "Action: show diagnostic log"; */
 "PpA-oZ-kr2.text" = "Диагностика";
@@ -59,7 +59,7 @@
 "qhK-lw-bGy.text" = "Для решения проблем";
 
 /* Class = "UILabel"; text = "Contact Us"; ObjectID = "QlM-VS-hle"; Note = "Action"; */
-"QlM-VS-hle.text" = "Обратная связь";
+"QlM-VS-hle.text" = "Связаться с нами";
 
 /* Class = "UILabel"; text = "What's New"; ObjectID = "RlK-RW-8Ld"; Note = "Action: open app history page (change log)"; */
 "RlK-RW-8Ld.text" = "Что нового";

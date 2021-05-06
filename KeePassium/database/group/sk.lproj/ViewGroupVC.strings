@@ -5,7 +5,7 @@
 "7uR-HK-1Dd.text" = "{Group Name}";
 
 /* Class = "UIBarButtonItem"; 9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Lock Database"; ObjectID = "9KV-rC-1XL"; */
-"9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Uzamknúť Databázu";
+"9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Uzamknúť databázu";
 
 /* Class = "UILabel"; text = "{Group subtitle}"; ObjectID = "A8h-F7-ipn"; Note = "#bc-ignore!"; */
 "A8h-F7-ipn.text" = "{Group subtitle}";

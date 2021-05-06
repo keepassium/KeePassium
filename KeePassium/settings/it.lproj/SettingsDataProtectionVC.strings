@@ -59,7 +59,7 @@
 "siQ-LK-GXZ.text" = "Chiavi di crittografia derivate dalla cache";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "Timeout degli appunti";
+"SSu-Sr-MCg.text" = "Timeout memoria appunti";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
 "weX-SZ-IDB.text" = "Timeout Database";

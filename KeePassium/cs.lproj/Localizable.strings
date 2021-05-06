@@ -88,6 +88,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Vytvořit databázi";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Add Custom Icon";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Odstranit databázový soubor?\n Ujistěte se, že máte zálohu.";
 
@@ -164,7 +167,7 @@
 "[Entry/Field/name] Title" = "Název";
 
 /* Name of an entry field */
-"[Entry/Field/name] URL" = "Adresa";
+"[Entry/Field/name] URL" = "URL";
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Uživatelské jméno";
@@ -266,7 +269,7 @@
 "[Generic] Dismiss" = "Zavřít";
 
 /* Action/button to finish (editing) and keep changes */
-"[Generic] Done" = "Potvrdit";
+"[Generic] Done" = "Hotovo";
 
 /* Action/button to edit an item */
 "[Generic] Edit" = "Upravit";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Původní (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Opravdu chcete odstranit soubor s klíčem?\nUjistěte se, že jej máte zálohovaný.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Odebrat soubor s klíčem ze seznamu?\nSoubor zůstane neporušený a později jej budete moci znovu přidat.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Setup one-time password (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Na vaše přílohy můžete nahlížet přímo zde v aplikaci a nezanechávat tak stopy v jiných aplikacích. (Náhled podporuje obrázky, dokumenty, archivované soubory a další.)";

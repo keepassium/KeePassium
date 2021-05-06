@@ -5,7 +5,7 @@
 "14C-rX-ove.title" = "{Database Name}";
 
 /* Class = "UIBarButtonItem"; title = "Lock Database"; ObjectID = "dPB-bK-tzh"; Note = "Action "; */
-"dPB-bK-tzh.title" = "Zablokuj bazę danych";
+"dPB-bK-tzh.title" = "Zablokuj bazę";
 
 /* Class = "UILabel"; text = "{Footer}"; ObjectID = "htW-Ur-suD"; Note = "#bc-ignore!"; */
 "htW-Ur-suD.text" = "{Footer}";

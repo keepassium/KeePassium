@@ -11,10 +11,10 @@
 "7id-QT-w26.text" = "الأيقونات مِن قِبل Icons8";
 
 /* Class = "UILabel"; text = "Ionicons by Ionic"; ObjectID = "9lh-fA-Xgx"; */
-"9lh-fA-Xgx.text" = "Ionicons مِن قِبل Ionic";
+"9lh-fA-Xgx.text" = "أيقونات Ionicons بواسطة Ionic";
 
 /* Class = "UILabel"; text = "Base32 for Swift by Norio Nomura"; ObjectID = "9MZ-zt-75x"; */
-"9MZ-zt-75x.text" = "Base32 for Swift مِن قِبل Norio Nomura";
+"9MZ-zt-75x.text" = "أداة Base32 لـSwift بواسطة Norio Nomura";
 
 /* Class = "UILabel"; text = "KeePassium does not collect any personal or analytical data nor share it with anyone."; ObjectID = "9wt-nj-TZW"; */
 "9wt-nj-TZW.text" = "لا تجمع KeePassium أي بيانات شخصية أو تحليلية ولا تشاركها مع أي شخص.";
@@ -26,13 +26,13 @@
 "AMd-x7-PDa.text" = "هل يعجبك ما تراه؟";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "التَرجمة العَربية مِن قِبل @ZER0-X";
+"aqX-J9-IzD.text" = "التعريب بواسطة zer0-x";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
 "AWg-lI-BfC.text" = "رخصة MIT";
 
 /* Class = "UILabel"; text = "Twofish implementation by Niels Ferguson"; ObjectID = "axY-gm-XNr"; */
-"axY-gm-XNr.text" = "Twofish implementation مِن قِبل Niels Ferguson";
+"axY-gm-XNr.text" = "تنفيذ Twofish بواسطة Niels Ferguson";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "bAq-tq-nuY"; */
 "bAq-tq-nuY.text" = "رخصة MIT";
@@ -44,7 +44,7 @@
 "bTY-d6-puv.text" = "Reset entry text size to default";
 
 /* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
-"CNI-b8-7Da.text" = "KeePass من قِبل Dominik Reichl";
+"CNI-b8-7Da.text" = "برنامج KeePass بواسطة Dominik Reichl";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
 "daJ-ma-jhe.text" = "رخصة MIT";
@@ -56,10 +56,13 @@
 "EWy-OI-IxL.text" = "ترخيص إذن مخصص";
 
 /* Class = "UILabel"; text = "ChaCha20 & Salsa20 implementation by D. J. Bernstein"; ObjectID = "Ha8-Qv-0qg"; */
-"Ha8-Qv-0qg.text" = "HaCha20 و Salsa20 implementation مِن قِبل D. J. Bernstein";
+"Ha8-Qv-0qg.text" = "برنامج ChaCha20 وتنفيذ Salsa20 بواسطة D. J. Bernstein";
 
 /* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
-"hDU-6p-Bzr.text" = "Rijndael implementation مِن قِبل Szymon Stefanek";
+"hDU-6p-Bzr.text" = "تنفيذ Rijndael بواسطة Szymon Stefanek";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "hqP-9y-rXc"; */
+"hqP-9y-rXc.text" = "رخصة MIT";
 
 /* Class = "UILabel"; text = "Apache 2.0 license"; ObjectID = "ht7-pj-Dbb"; */
 "ht7-pj-Dbb.text" = "ترخيص Apache 2.0";
@@ -68,7 +71,7 @@
 "hVm-qH-TAI.text" = "CC BY 4.0";
 
 /* Class = "UILabel"; text = "Icons by KeePassXC team"; ObjectID = "hW0-fR-mIf"; */
-"hW0-fR-mIf.text" = "Icons by KeePassXC team";
+"hW0-fR-mIf.text" = "أيقونات بواسطة فريق KeePassXC";
 
 /* Class = "UILabel"; text = "CC BY-ND 3.0"; ObjectID = "iKy-z5-Ox7"; */
 "iKy-z5-Ox7.text" = "CC BY-ND 3.0";
@@ -80,7 +83,7 @@
 "JgR-60-OMp.text" = "مجال عام";
 
 /* Class = "UILabel"; text = "LGPL license"; ObjectID = "JjJ-GT-eoX"; */
-"JjJ-GT-eoX.text" = "LGPL license";
+"JjJ-GT-eoX.text" = "رخصة LGPL";
 
 /* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
 "JRy-jy-KXb.text" = "رخصة GPL";
@@ -89,7 +92,7 @@
 "kae-Kb-5ZU.text" = "{info@keepassium.com}";
 
 /* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
-"Kdg-Hz-XOQ.text" = "Fancy deboss pattern مِن قِبل Daniel Beaton";
+"Kdg-Hz-XOQ.text" = "نمط deboss الفاخر بواسطة Daniel Beaton";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
 "lht-LP-o0Y.text" = "رخصة MIT";
@@ -104,7 +107,7 @@
 "o9e-qb-mMw.text" = "ترخيص CC0";
 
 /* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
-"OaP-Bl-5vR.text" = "TPInAppReceipt مِن قِبل Pavel Tikhonenko";
+"OaP-Bl-5vR.text" = "أداة TPInAppReceipt بواسطة Pavel Tikhonenko";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
 "QV5-N8-NRt.text" = "مجال عام";
@@ -112,29 +115,32 @@
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "Qz4-PJ-Tra"; */
 "Qz4-PJ-Tra.text" = "CC BY 4.0";
 
+/* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
+"r7M-Gb-1Xd.text" = "إمتداد Toast-Swift بواسطة Charles Scalesse";
+
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
 "Rab-wf-OQe.text" = "رخصة MIT";
 
 /* Class = "UILabel"; text = "Argon2 by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves"; ObjectID = "rDJ-4G-8Oz"; */
-"rDJ-4G-8Oz.text" = "Argon2 مِن قِبل Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, و Samuel Neves";
+"rDJ-4G-8Oz.text" = "برمجية Argon2 بواسطة Daniel Dinu، Dmitry Khovratovich، Jean-Philippe Aumasson و Samuel Neves";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "sCk-Se-Vvo"; */
 "sCk-Se-Vvo.text" = "رخصة MIT";
 
 /* Class = "UILabel"; text = "GzipSwift by 1024jp"; ObjectID = "sDW-ws-pQf"; */
-"sDW-ws-pQf.text" = "GzipSwift مِن قِبل 1024jp";
+"sDW-ws-pQf.text" = "أداة GzipSwift بواسطة 1024jp";
 
 /* Class = "UILabel"; text = "AEXML by Marko Tadić"; ObjectID = "sI5-AG-Y6p"; */
-"sI5-AG-Y6p.text" = "AEXML مِن قِبل Marko Tadić";
+"sI5-AG-Y6p.text" = "مُحلل AEXML بواسطة Marko Tadić";
 
 /* Class = "UILabel"; text = "Linecons by Andrian Valeanu"; ObjectID = "SOX-Re-yl9"; */
-"SOX-Re-yl9.text" = "Linecons مِن قِبل Andrian Valeanu";
+"SOX-Re-yl9.text" = "أيقونات Linecons بواسطة Andrian Valeanu";
 
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
 "TOl-DA-gYc.text" = "التواصل مع الدعم";
 
 /* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
-"tOr-N9-2UY.text" = "Feather icons مِن قِبل Cole Bemis";
+"tOr-N9-2UY.text" = "أيقونات Feather بواسطة Cole Bemis";
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "uiw-Qh-pNp.text" = "اترك مراجعة في متجر التطبيقات.";
@@ -143,19 +149,19 @@
 "vDg-fF-8ty.text" = "{v1.0.123}";
 
 /* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
-"vg0-6M-OIq.text" = "قيود تخطيط لوحة المفاتيح مِن قِبل James Tang";
+"vg0-6M-OIq.text" = "قيود تخطيط لوحة المفاتيح بواسطة James Tang";
 
 /* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
-"VuB-ng-Uii.text" = "Nuvola icons by David Vignoni";
+"VuB-ng-Uii.text" = "أيقونات Nuvola بواسطة David Vignoni";
 
 /* Class = "UILabel"; text = "KeePassium"; ObjectID = "Wuj-Uw-baK"; */
-"Wuj-Uw-baK.text" = "KeePassium";
+"Wuj-Uw-baK.text" = "كِيّباسيوم";
 
 /* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
-"wYr-Ya-qAP.text" = "أيقونات إعدادات النظام مِن قِبل Vicons Design";
+"wYr-Ya-qAP.text" = "أيقونات إعدادات النظام بواسطة Vicons Design";
 
 /* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
-"Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK مِن قِبل Yubico AB";
+"Xee-Y1-Dcw.text" = "مكتبة Yubico Mobile iOS SDK بواسطة Yubico AB";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Z7s-Ch-895"; */
 "Z7s-Ch-895.text" = "رخصة MIT";

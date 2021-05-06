@@ -74,5 +74,5 @@
 "Zqb-p5-Ft8.footerTitle" = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. ";
 
 /* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
-"Zqb-p5-Ft8.headerTitle" = "Advanced";
+"Zqb-p5-Ft8.headerTitle" = "Zaawansowane";
 

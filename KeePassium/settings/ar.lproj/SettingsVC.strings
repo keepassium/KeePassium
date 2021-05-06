@@ -2,7 +2,7 @@
 "9yn-W3-FDl.headerTitle" = "البداية";
 
 /* Class = "UILabel"; text = "Appearance"; ObjectID = "32P-LG-SHa"; Note = "Section in settings: visual style of app elements"; */
-"32P-LG-SHa.text" = "Appearance";
+"32P-LG-SHa.text" = "المظهر";
 
 /* Class = "UILabel"; text = "Auto-open the Previous Database"; ObjectID = "756-sL-G2t"; Note = "Option in settings: whether to open the last used database automatically on start."; */
 "756-sL-G2t.text" = "الفتح التلقائي لقاعدة البيانات السابقة";

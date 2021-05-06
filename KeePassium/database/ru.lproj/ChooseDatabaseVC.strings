@@ -5,7 +5,7 @@
 "5Md-DB-C5P.text" = "Нет ни одной базы паролей";
 
 /* Class = "UIButton"; normalTitle = "Enable AppLock"; ObjectID = "hmv-DA-BgM"; */
-"hmv-DA-BgM.normalTitle" = "Включить защиту приложения";
+"hmv-DA-BgM.normalTitle" = "Использовать AppLock";
 
 /* Class = "UIBarButtonItem"; lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "lnO-nD-gvh"; Note = "Action: show sorting settings of database files"; */
 "lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Сортировка";
@@ -17,7 +17,7 @@
 "qPq-UR-uZs.title" = "Добавить базу паролей";
 
 /* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
-"R68-cy-5mz.text" = "Защитите KeePassium от посторонних глаз.";
+"R68-cy-5mz.text" = "Защищает KeePassium от посторонних глаз.";
 
 /* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "rWy-ey-805"; Note = "#bc-ignore!"; */
 "rWy-ey-805.text" = "{Database File Name}";

@@ -88,6 +88,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "新建資料庫";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Add Custom Icon";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "刪除資料庫文件?\n 請確保您有備份檔案!";
 
@@ -197,7 +200,7 @@
 "[Entry/History] Previous Versions" = "之前的版本";
 
 /* Expiry Date of an entry which does not expire. */
-"[Entry/History/ExpiryDate] Never" = "從不";
+"[Entry/History/ExpiryDate] Never" = "永不";
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "新項目";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "默認(KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "刪除金鑰文件?\n 請確保您有備份檔案!";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "從列表中刪除金要檔案?\n 不會對檔案進行更改或刪除，您可以稍後添加回來。";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Setup one-time password (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "直接在KeePassium上預覽附件, 並且不留痕跡。(適用於圖像, 文檔, 檔案等。)";
@@ -521,7 +539,7 @@
 "[Premium/Upgrade/cancelOngoingSubscription]" = "請檢查是否需要取消舊的訂閱。";
 
 /* Message shown when in-app purchase is deferred until approval (parental or corporate). */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "感恩您! 您可以使用KeePassium 直到批准購買。";
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "感恩您! 您可以使用 KeePassium 直到批准購買。";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / 月";

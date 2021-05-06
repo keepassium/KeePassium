@@ -1,8 +1,8 @@
 /* Suggestion/hint for available user action */
-"[Accessibility] Double tap to copy to clipboard" = "Double tap to copy to clipboard";
+"[Accessibility] Double tap to copy to clipboard" = "Dotknij dwukrotnie aby skopiować";
 
 /* Title of a setting option: font size */
-"[Appearance/TextSize/title]" = "Text Size";
+"[Appearance/TextSize/title]" = "Rozmiar tekstu";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Odblokuj";
@@ -14,7 +14,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Użyj kodu dostępu";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Change Passcode";
+"[AppLock/changePasscode]" = "Zmień kod dostępu";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "Odblokuj KeePassium";
@@ -26,13 +26,13 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Passcode updated successfully.";
+"[AppLock/passcodeUpdated/title]" = "Kod został zmieniony.";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Save Passcode";
+"[AppLock/savePasscode]" = "Zapisz kod";
 
 /* Call to action in the passcode input dialog. */
-"[AppLock/SetupPasscode/callToAction]" = "Protect KeePassium from unauthorized access";
+"[AppLock/SetupPasscode/callToAction]" = "Chroni KeePassium przed niepowołanym dostępem";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -41,7 +41,7 @@
 "[BiometricAuthType] Touch ID" = "Touch ID";
 
 /* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
-"[Clipboard/Copy/namedValue]" = "Copy %@";
+"[Clipboard/Copy/namedValue]" = "Kopiuj %@";
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "Skopiowano";
@@ -88,6 +88,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Utwórz bazę danych";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Dodaj niestandardową ikonę";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Usunąć plik bazy danych?\n Upewnij się, że masz kopię zapasową.";
 
@@ -98,10 +101,10 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "Klucz główny pomyślnie zmieniony";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "If you ever forget it, you won't be able to access your data. There is no password reset option.";
+"[Database/MasterKey/RememberYourPassword/text]" = "Jeżeli zapomnisz hasło, utracisz dostęp do danych. Hasła nie można zresetować.";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Remember your database password";
+"[Database/MasterKey/RememberYourPassword/title]" = "Zapamiętaj hasło do bazy";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Otwórz bazę danych";
@@ -110,7 +113,7 @@
 "[Database/Opened/action] Close" = "Zamknij";
 
 /* Action/button to lock current database (the next time, it will ask for the master key). */
-"[Database/Opened/action] Lock Database" = "Zablokuj bazę danych";
+"[Database/Opened/action] Lock Database" = "Zablokuj bazę";
 
 /* Action: lock database */
 "[Database/Opened/Warning/action] Close Database" = "Zamknij bazę";
@@ -206,7 +209,7 @@
 "[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Spróbuj usunąć plik z aplikacji, a następnie dodać go ponownie.";
 
 /* Action: re-add (a broken) database or key file to the app. */
-"[File/Re-add/title]" = "Add the file again";
+"[File/Re-add/title]" = "Dodaj plik ponownie";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Kopia zapasowa";
@@ -254,7 +257,7 @@
 "[Generic] Copy" = "Kopiuj";
 
 /* Action/button to create an item (entry, group, file — depending on context) */
-"[Generic] Create" = "Create";
+"[Generic] Create" = "Utwórz";
 
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Skasuj";
@@ -275,10 +278,10 @@
 "[Generic] Export" = "Eksportuj";
 
 /* Action/button to view more help/info about some topic */
-"[Generic] Learn more" = "Learn more…";
+"[Generic] Learn more" = "Dowiedz się więcej…";
 
 /* Checkbox/Button to show additional actions */
-"[Generic] More Actions" = "More Actions";
+"[Generic] More Actions" = "Więcej opcji";
 
 /* Action/button to move an item (to another group/folder/etc) */
 "[Generic] Move" = "Przenieś";
@@ -287,7 +290,7 @@
 "[Generic] OK" = "OK";
 
 /* Action/button to open URL in the appropriate app (usually, web browser) */
-"[Generic] Open URL" = "Open URL";
+"[Generic] Open URL" = "Otwórz URL";
 
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Zastąp";
@@ -299,13 +302,13 @@
 "[Generic] Replace" = "Zastąp";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
-"[Generic] Share" = "Share";
+"[Generic] Share" = "Udostępnij";
 
 /* Action/button to show additional information about an error or item */
 "[Generic] Show Details" = "Pokaż szczegóły";
 
 /* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
-"[Generic] Show In Plain Text" = "Show In Plain Text";
+"[Generic] Show In Plain Text" = "Pokaż jako tekst";
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Pokaż więcej";
@@ -347,7 +350,7 @@
 "[Generic/title] Warning" = "Ostrzeżenie";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
-"[Group/a11y/description]" = "%@, Group";
+"[Group/a11y/description]" = "%@, Grupa";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Utwórz grupę";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Domyślne (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Niestandardowe ikony";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Standardowe ikony";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Usunąć plik klucza?\n Upewnij się, że masz kopię zapasową.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Usunąć plik klucza z listy?\n Plik pozostanie nienaruszony i możesz go dodać później.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "Tego kodu QR nie można użyć dla OTP.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "Hasło jednorazowe jest już ustawione dla tego wpisu. Czy chcesz go nadpisać?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Ustaw hasło jednorazowe (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Podgląd załączników bezpośrednio w KeePassium bez zostawiania śladu w innych aplikacjach (zdjęć, dokumentów, archiwów i innych).";
@@ -428,7 +446,7 @@
 "[Premium/Benefits/ViewFieldReferences/title]" = "Show field references";
 
 /* Call to action */
-"[Premium/CallToAction/buyNow]" = "Buy Now";
+"[Premium/CallToAction/buyNow]" = "Kup teraz";
 
 /* Call to action: continue using the free version */
 "[Premium/CallToAction/free]" = "Testuj dalej";
@@ -440,7 +458,7 @@
 "[Premium/CallToAction/upgradeNow]" = "Uaktualnij teraz";
 
 /* Action: open AppStore subscription management page */
-"[Premium/ManageSubscriptions/action]" = "Manage subscriptions";
+"[Premium/ManageSubscriptions/action]" = "Zarządzaj subskrypcją";
 
 /* Name of the permanent/never-ending license. */
 "[Premium/perpetualLicense]" = "Licencja wieczysta";
@@ -506,7 +524,7 @@
 "[Premium/status] Valid forever" = "Ważne na zawsze";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nPo zakupię płatnością zostanie obciążone Twoje konto Apple ID. \n\nSubskrypcja odnawia się automatycznie, chyba że zostanie anulowana przynajmniej na 24 godziny przed końcem obecnego okresu. Twoje konto zostanie obciążone w ciągu 24 godzin przed upływem obecnego okresu.\n\nPo zakupie możesz zarządzać i anulować subskrypcję przechodząc do ustawień swojego konta w App Store.\n";
+"[Premium/Subscription/Legal/text]" = "\nPayment will be charged to your Apple ID account at the confirmation of purchase.\n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.\n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.\n";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ za darmo, potem %2$@";
@@ -554,7 +572,7 @@
 "[Premium/Upgrade/RestoreFailed/title] Sorry" = "Przepraszamy";
 
 /* Message shown after buying or subscribing. */
-"[Premium/Upgrade/Success/thankYou]" = "Thank you for the purchase!";
+"[Premium/Upgrade/Success/thankYou]" = "Dziękujemy za zakup!";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplikacja była używana: %1$@/miesiąc, to jest ok %2$@/rok.";
@@ -599,10 +617,10 @@
 "[Settings/AppLock/Biometric/title] Use %@" = "Użyj %@";
 
 /* Explanation for the `Lock on App Launch` setting */
-"[Settings/AppLock/LockOnLaunch/description]" = "Ensures KeePassium is locked after you force-close the app or restart the device.";
+"[Settings/AppLock/LockOnLaunch/description]" = "Zapewnia zablokowanie KeePassium po zamknięciu aplikacji lub restarcie urządzenia. ";
 
 /* Setting switch: whether to lock the app after it was terminated and relaunched. */
-"[Settings/AppLock/LockOnLaunch/title]" = "Lock on App Launch";
+"[Settings/AppLock/LockOnLaunch/title]" = "Blokada przy uruchomieniu";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Blokada aplikacji, %@, limit czasu";

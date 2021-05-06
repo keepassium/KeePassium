@@ -88,6 +88,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "データベースを作成";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "カスタムアイコンを追加";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "データベースを削除しますか？\n バックアップがあることを確認してください。";
 
@@ -98,7 +101,7 @@
 "[Database/MasterKey/changed] Master key successfully changed" = "マスターキーを変更しました";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
-"[Database/MasterKey/RememberYourPassword/text]" = "パスワードを忘れるとデータにアクセスできなくなります。パスワードリセットオプションはありません。";
+"[Database/MasterKey/RememberYourPassword/text]" = "パスワードを忘れてしまうと、データにはアクセスできなくなります。パスワードの再設定もできません。";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "データベースのパスワードを記憶";
@@ -134,7 +137,7 @@
 "[Database/Saving/Status] Saving..." = "保存中...";
 
 /* Error message related to key file. [errorDetails: String] */
-"[Database/Unlock] Key file error: %@" = "キーファイルエラー：%@";
+"[Database/Unlock] Key file error: %@" = "キーファイルのエラー: %@";
 
 /* Action/button to setup YubiKey key component */
 "[Database/Unlock] YubiKey" = "YubiKey";
@@ -197,7 +200,7 @@
 "[Entry/History] Previous Versions" = "以前のバージョン";
 
 /* Expiry Date of an entry which does not expire. */
-"[Entry/History/ExpiryDate] Never" = "無期限";
+"[Entry/History/ExpiryDate] Never" = "しない";
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "新規エントリー";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "デフォルト (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "カスタムアイコン";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "標準アイコン";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "キーファイルを削除しますか？\n バックアップがあることを確認してください。";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "キーファイルを一覧から削除しますか？ファイルの本体はそのまま残りますので、後で再度追加できます。";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "このQRコードは、ワンタイム・パスワードの設定に使えません。";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "ワンタイムパスワードはすでにこのエントリに設定されています。上書きしますか？";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "ワンタイム・パスワード (OTP) の設定";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "添付ファイルを直接Appで表示するので、他のAppに痕跡を残しません。(画像や文書、圧縮ファイルなどで有効です。)";
@@ -422,7 +440,7 @@
 "[Premium/Benefits/Positive/header] " = "できること";
 
 /* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "同じ情報のコピーを作成する代わりに、他のエントリの情報を表示するためにフィールド参照を使用します。";
+"[Premium/Benefits/ViewFieldReferences/details]" = "同じ内容のコピーを何個も作る代わりに、フィールドの参照を使って他エントリの情報を表示する。";
 
 /* Title of a premium feature */
 "[Premium/Benefits/ViewFieldReferences/title]" = "フィールド参照を表示";
@@ -575,16 +593,16 @@
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "ハードウェアキー";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "マスターパスワードの入力時間を節約します：プレミアム版ではもっと長い時間データベースを開けたままにできます。";
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "マスターパスワードの入力時間を節約できます：プレミアム版ではもっと長時間データベースを開いたままにできます。";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "長時間経過後のデータベースのタイムアウト";
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "長時間経過後のデータベースの自動ロック";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "プレミアム版ではデータベースの切り替えが簡単にできます。";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
-"[PremiumFeature/MultiDB/title] Multiple Databases" = "複数のデータベース";
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "複数データベース";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "プレミアム版では画像や文書を直接Appで見ることができます。";

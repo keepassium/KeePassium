@@ -5,7 +5,7 @@
 "89h-8b-LRO.normalTitle" = "Desbloquear";
 
 /* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "bxv-kR-0w1"; */
-"bxv-kR-0w1.title" = "Desbloquear banco de dados";
+"bxv-kR-0w1.title" = "Desbloquear Banco de Dados";
 
 /* Class = "UILabel"; text = "{Error message}"; ObjectID = "dID-zL-AtZ"; Note = "#bc-ignore!"; */
 "dID-zL-AtZ.text" = "{Error message}";

@@ -23,7 +23,7 @@
 "cBS-jW-dHU.headerTitle" = "Assistenza";
 
 /* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
-"coD-Om-Vfm.text" = "Database Backup";
+"coD-Om-Vfm.text" = "Backup Database";
 
 /* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
 "DNo-Rs-0EP.text" = "Info su KeePassium";

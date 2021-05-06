@@ -88,6 +88,9 @@
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Neue Datenbank erstellen";
 
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Add Custom Icon";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Datenbankdatei löschen?\n Stellen Sie sicher, dass Sie ein Backup haben.";
 
@@ -95,7 +98,7 @@
 "[Database/Loading/Status] Loading..." = "Lade...";
 
 /* Notification after changing database master key */
-"[Database/MasterKey/changed] Master key successfully changed" = "Master Key erfolgreich gelöscht";
+"[Database/MasterKey/changed] Master key successfully changed" = "Hauptschlüssel erfolgreich geändert";
 
 /* A warning shown when changing database password. Is preceded with `Remember your database password`. */
 "[Database/MasterKey/RememberYourPassword/text]" = "Falls Sie es einmal vergessen, können Sie nicht mehr auf Ihre Daten zugreifen. Es gibt keine Option zum Zurücksetzen des Passworts.";
@@ -311,13 +314,13 @@
 "[Generic] Show more" = "Mehr anzeigen";
 
 /* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "Bist du sicher?";
+"[Generic/ConfirmDelete/title] Are you sure?" = "Sind Sie sicher?";
 
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "Zuletzt gelöscht";
 
 /* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Ungespeicherte Änderungen verwerfen?";
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Nicht gespeicherte Änderungen verwerfen?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Es gibt nicht gespeicherte Änderungen";
@@ -329,7 +332,7 @@
 "[Generic/File] Remove" = "Entfernen";
 
 /* Title of an error message about file export */
-"[Generic/File/title] Export Error" = "Export Fehler";
+"[Generic/File/title] Export Error" = "Export-Fehler";
 
 /* Message shown when trying to copy into an existing file. */
 "[Generic/File/title] File already exists" = "Datei existiert bereits";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Standard (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Schlüsseldatei löschen?\n Stellen Sie sicher, dass Sie ein Backup haben.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Schlüsseldatei aus der Liste entfernen?\n Die Datei bleibt erhalten und Sie können sie später erneut hinzufügen.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Setup one-time password (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Vorschau der angehängten Dateien erfolgt direkt in KeePassium und hinterlässt keine Spuren in anderen Apps. (Funktioniert mit Bildern, Dokumenten, Archiven uvm.)";
@@ -629,7 +647,7 @@
 "[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted." = "Alle Master Keys wurden gelöscht.";
 
 /* Title of the success message for `Clear Master Keys` button */
-"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "Gelöscht";
+"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "Bereinigt";
 
 /* Description of the clipboard/pasteboard timeout. */
 "[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "Wenn Sie etwas kopieren, wird KeePassium Ihre Zwischenablage nach dieser Zeit automatisch löschen.";

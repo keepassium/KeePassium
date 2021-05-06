@@ -11,10 +11,10 @@
 "h6C-CG-RVI.normalTitle" = "حفظ قاعدة البيانات باسم";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "pvt-FS-0Yx"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
-"pvt-FS-0Yx.placeholder" = "عدم استخدام ملف مفتاح";
+"pvt-FS-0Yx.placeholder" = "لا يوجد ملف مفتاح";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "uHk-Yt-mBh"; Note = "Placeholder: master password of the database"; */
-"uHk-Yt-mBh.placeholder" = "كلمة المرور الرئيسة";
+"uHk-Yt-mBh.placeholder" = "كلمة المرور";
 
 /* Class = "UILabel"; text = "Master Key"; ObjectID = "VjQ-di-Ilx"; Note = "Common title for the password/key file fields."; */
 "VjQ-di-Ilx.text" = "‮المفتاح الرئيس";

@@ -5,7 +5,7 @@
 "[Appearance/TextSize/title]" = "Tamaño del texto";
 
 /* Action/button to unlock the App Lock with passcode */
-"[AppLock] Unlock" = "Desbloquear";
+"[AppLock] Unlock" = "Abrir";
 
 /* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
 "[AppLock/Biometric/Hint] Unlock KeePassium" = "Desbloquear KeePassium";
@@ -35,7 +35,7 @@
 "[AppLock/SetupPasscode/callToAction]" = "Protege KeePassium de accesos no autorizados";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
-"[BiometricAuthType] Face ID" = "Face ID";
+"[BiometricAuthType] Face ID" = "Reconocimiento facial";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Touch ID" = "Touch ID";
@@ -47,7 +47,7 @@
 "[Clipboard/Copy/notification]" = "Copiado";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
-"[Database/Add] Selected file \"%@\" does not look like a database." = "El archivo seleccionado \"%@\" no parece ser una base de datos.";
+"[Database/Add] Selected file \"%@\" does not look like a database." = "El archivo seleccionado «%@» no parece una base de datos.";
 
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Por favor, introduce una contraseña o selecciona un archivo de clave.";
@@ -87,6 +87,9 @@
 
 /* Title of a form for creating a database */
 "[Database/Create/title] Create Database" = "Crear base de datos";
+
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Add Custom Icon";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "¿Eliminar el archivo de base de datos?\n Asegúrate de tener una copia de seguridad.";
@@ -227,7 +230,7 @@
 "[FileInfo/Field/title] File Size" = "Tamaño del archivo";
 
 /* Field title */
-"[FileInfo/Field/title] Last Modification Date" = "Fecha de la última modificación";
+"[FileInfo/Field/title] Last Modification Date" = "Fecha de última modificación";
 
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Error";
@@ -317,13 +320,13 @@
 "[Generic/Directory/Recently Deleted/name]" = "Recién eliminado";
 
 /* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "¿Descartar cambios no guardados?";
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "¿Descartar los cambios no guardados?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Hay cambios sin guardar";
 
 /* Action/button to delete a file (destroys the file forever) */
-"[Generic/File] Delete" = "Borrar";
+"[Generic/File] Delete" = "Eliminar";
 
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Eliminar";
@@ -379,11 +382,26 @@
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Por defecto (KeePass)";
 
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "¿Eliminar el archivo de clave?\n Asegúrate de tener una copia de seguridad.";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "¿Desea eliminar el archivo de clave de la lista?\nEl archivo permanecerá intacto y lo podrá agregar nuevamente más tarde.";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Setup one-time password (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Vista previa de archivos adjuntos directamente en KeePassium para no dejar rastro en otras aplicaciones. (Funciona con imágenes, documentos, archivos y más.)";

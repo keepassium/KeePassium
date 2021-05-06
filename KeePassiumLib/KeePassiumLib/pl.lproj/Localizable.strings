@@ -248,10 +248,10 @@
 "[DatabaseError] Invalid password or key file" = "Nieprawidłowe hasło lub plik klucza";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
-"[File/In Trash/warning]" = "'%@' is located in Recently Deleted and might be deleted soon. To preserve your data, move the file to a more permanent location.";
+"[File/In Trash/warning]" = "'%@' został niedawno usunięty i może być wkrótce skasowany. Aby zachować dane, przenieś plik do bardziej trwałej lokalizacji.";
 
 /* Notification when user opens an in-app backup database. */
-"[File/TemporaryBackup/warning]" = "This is a temporary backup database. It can be automatically deleted without a warning. Don't use it as your main database.";
+"[File/TemporaryBackup/warning]" = "To jest tymczasowa kopia bazy. Może być automatycznie usunięta bez ostrzeżenia. Nie używaj jej jako bazy głównej.";
 
 /* Error message: storage provider app was logged out or uninstalled. */
 "[FileAccessError/FileProvider/NotFound/generic]" = "Dostawca magazynu nie jest dostępny. Sprawdź, czy aplikacja magazynu jest zainstalowana i czy jesteś w niej zalogowany.";
@@ -275,13 +275,13 @@
 "[FileAccessError/NoResponse/knownFileProvider]" = "%@ nie odpowiada.";
 
 /* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
-"[FileAccessError/NoWritePermission/title]" = "Cannot save file (%@)";
+"[FileAccessError/NoWritePermission/title]" = "Nie można zapisać pliku (%@)";
 
 /* Explanation of a file writing error */
-"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft has recently switched OneDrive integration with iOS to read-only mode. Temporarily, they say.";
+"[FileAccessError/OneDriveReadOnly/reason]" = "Microsoft zmienił integrację OneDrive dla systemu iOS w tryb tylko do odczytu. Mówią, że tymczasowo...";
 
 /* Suggestion for error recovery */
-"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use the Export option to save file to another location.";
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Użyj opcji eksportu, aby zapisać plik w innej lokalizacji.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Dostawca magazynu nie odpowiada.";
@@ -428,10 +428,10 @@
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Błąd pęku kluczy: nieoczekiwany format danych";
 
 /* Error message when the key file is misformatted or damaged */
-"[KeyFileError/Corrupted/title]" = "Key file is corrupted";
+"[KeyFileError/Corrupted/title]" = "Plik klucza jest uszkodzony";
 
 /* Error message: unsupported/unknown format of a key file */
-"[KeyFileError/UnsupportedFormat/title]" = "Unsupported key file format";
+"[KeyFileError/UnsupportedFormat/title]" = "Nieobsługiwany format pliku klucza";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Anulowane przez użytkownika";
