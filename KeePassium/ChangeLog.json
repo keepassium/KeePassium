@@ -2,10 +2,18 @@
     "sections": [
         {
             "version": "1.24",
-            "releaseDate": "2021-04-26T00:00:00Z",
+            "releaseDate": "2021-05-06T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Possibility to add and select custom icons for groups and entries (closes #84) [thanks, Igor]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Support for KDBX 4.1 format [thanks, Dominik]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Korean translation [thanks, somni]",
                     "type": 1
                 },
                 {
@@ -34,6 +42,10 @@
                 },
                 {
                     "title": "🐞 Fixed: Editor changes were not detected in some rare cases",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: In .kdb databases, deleted Backup group would get broken until DB reload",
                     "type": 1
                 },
                 {

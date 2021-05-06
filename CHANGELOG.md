@@ -1,5 +1,22 @@
 #CHANGELOG
 
+## [1.24.87] - 2021-05-06
+
+### Added
+
+- Support for KDBX 4.1 format [thanks, Dominik]
+- Korean translation [thanks, somni]
+
+### Improved
+
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- Regression in 1.24.86: entry history was not updated on save
+- In .kdb databases, deleted Backup group would get broken until DB reload
+
+
 ## [1.24.86] - 2021-04-26
 
 ### Added
