@@ -102,9 +102,11 @@ final class EntryFieldEditorCoordinator: Coordinator, DatabaseSaving {
         fieldEditorVC.view.endEditing(true)
         
         if let originalEntry = originalEntry {
-            originalEntryBeforeSaving = originalEntry.clone(makeNewUUID: false)
-            originalEntry.backupState()
-            entry.apply(to: originalEntry, makeNewUUID: false)
+            if originalEntryBeforeSaving == nil {
+                originalEntryBeforeSaving = originalEntry.clone(makeNewUUID: false)
+                originalEntry.backupState()
+            }
+            entry.applyPreservingHistory(to: originalEntry, makeNewUUID: false)
             rollbackPreSaveActions = { [weak self] in
                 guard let self = self else { return }
                 self.originalEntryBeforeSaving?.apply(to: self.originalEntry!, makeNewUUID: false)
@@ -398,5 +400,18 @@ extension EntryFieldEditorCoordinator: DatabaseManagerObserver {
             exportableData: data,
             parent: fieldEditorVC
         )
+    }
+}
+
+
+extension Entry {
+    public func applyPreservingHistory(to target: Entry, makeNewUUID: Bool) {
+        guard let target2 = target as? Entry2 else {
+            self.apply(to: target, makeNewUUID: makeNewUUID)
+            return
+        }
+        let originalHistory = target2.history
+        self.apply(to: target2, makeNewUUID: makeNewUUID)
+        target2.history = originalHistory
     }
 }
