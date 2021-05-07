@@ -6,10 +6,9 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
 
-class ViewEntryVC: UIViewController, Refreshable {
+final class EntryViewerPagesVC: UIViewController, Refreshable {
     @IBOutlet weak var pageSelector: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleImageView: UIImageView!
@@ -31,7 +30,7 @@ class ViewEntryVC: UIViewController, Refreshable {
     }
 
     static func make(with entry: Entry, historyMode: Bool = false) -> UIViewController {
-        let viewEntryVC = ViewEntryVC.instantiateFromStoryboard()
+        let viewEntryVC = EntryViewerPagesVC.instantiateFromStoryboard()
         viewEntryVC.entry = entry
         viewEntryVC.isHistoryMode = historyMode
         viewEntryVC.refresh()
@@ -155,13 +154,13 @@ class ViewEntryVC: UIViewController, Refreshable {
     }
 }
 
-extension ViewEntryVC: EntryChangeObserver {
+extension EntryViewerPagesVC: EntryChangeObserver {
     func entryDidChange(entry: Entry) {
         refresh()
     }
 }
 
-extension ViewEntryVC: SettingsObserver {
+extension EntryViewerPagesVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
         guard key != .recentUserActivityTimestamp else {
             return
@@ -171,7 +170,7 @@ extension ViewEntryVC: SettingsObserver {
 }
 
 
-extension ViewEntryVC: ProgressViewHost {
+extension EntryViewerPagesVC: ProgressViewHost {
     func showProgressView(title: String, allowCancelling: Bool) {
         if progressOverlay != nil {
             progressOverlay?.title = title
@@ -207,7 +206,7 @@ extension ViewEntryVC: ProgressViewHost {
 }
 
 
-extension ViewEntryVC: UIPageViewControllerDelegate {
+extension EntryViewerPagesVC: UIPageViewControllerDelegate {
     func pageViewController(
         _ pageViewController: UIPageViewController,
         didFinishAnimating finished: Bool,
@@ -227,7 +226,7 @@ extension ViewEntryVC: UIPageViewControllerDelegate {
 }
 
 
-extension ViewEntryVC: UIPageViewControllerDataSource {
+extension EntryViewerPagesVC: UIPageViewControllerDataSource {
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController

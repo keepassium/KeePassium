@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S0M-P8-Rfa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S0M-P8-Rfa">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View EntryVC-->
+        <!--Entry Viewer PagesVC-->
         <scene sceneID="Dqh-AI-0Zj">
             <objects>
-                <viewController storyboardIdentifier="ViewEntryVC" id="S0M-P8-Rfa" customClass="ViewEntryVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EntryViewerPagesVC" id="S0M-P8-Rfa" customClass="EntryViewerPagesVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rhT-YH-Zj0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3O-53-The">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </containerView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMH-EU-BBX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -44,7 +45,8 @@
                                 <color key="tintColor" name="ActionTint"/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="O2i-Ah-XJl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aMH-EU-BBX" firstAttribute="top" secondItem="O2i-Ah-XJl" secondAttribute="top" id="5w3-oc-f1U"/>
                             <constraint firstItem="P3O-53-The" firstAttribute="top" secondItem="aMH-EU-BBX" secondAttribute="bottom" id="GMR-1H-Ugc"/>
@@ -54,7 +56,6 @@
                             <constraint firstItem="O2i-Ah-XJl" firstAttribute="trailing" secondItem="P3O-53-The" secondAttribute="trailing" id="RAt-lO-Q0m"/>
                             <constraint firstItem="O2i-Ah-XJl" firstAttribute="bottom" secondItem="P3O-53-The" secondAttribute="bottom" id="tEt-6c-P2B"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="O2i-Ah-XJl"/>
                     </view>
                     <navigationItem key="navigationItem" id="aYD-Ph-1TF">
                         <view key="titleView" contentMode="scaleToFill" id="pal-Aw-CDU" userLabel="Entry Title Container">
@@ -62,7 +63,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DPz-iF-IQQ" userLabel="H Stack View">
-                                    <rect key="frame" x="90" y="7.5" width="132.5" height="29"/>
+                                    <rect key="frame" x="90.5" y="7.5" width="131.5" height="29"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/db-icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-3F-HHC">
                                             <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
@@ -73,10 +74,10 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oab-OF-lN0" userLabel="V Stack View">
-                                            <rect key="frame" x="37" y="0.0" width="95.5" height="29"/>
+                                            <rect key="frame" x="37" y="0.0" width="94.5" height="29"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="{Entry Title}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1XK-tJ-aQW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="94.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -88,7 +89,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="{Timestamp}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dT5-IW-ZsZ">
-                                                    <rect key="frame" x="0.0" y="20.5" width="95.5" height="8.5"/>
+                                                    <rect key="frame" x="0.0" y="20.5" width="94.5" height="8.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -104,13 +105,13 @@
                                     </constraints>
                                 </stackView>
                             </subviews>
+                            <viewLayoutGuide key="safeArea" id="FcN-vT-Wi4"/>
                             <constraints>
                                 <constraint firstItem="DPz-iF-IQQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FcN-vT-Wi4" secondAttribute="leading" id="6hF-4c-PCR"/>
                                 <constraint firstItem="DPz-iF-IQQ" firstAttribute="centerY" secondItem="pal-Aw-CDU" secondAttribute="centerY" id="EfM-rP-zMT"/>
                                 <constraint firstItem="FcN-vT-Wi4" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DPz-iF-IQQ" secondAttribute="trailing" id="aD3-fO-PvI"/>
                                 <constraint firstItem="DPz-iF-IQQ" firstAttribute="centerX" secondItem="pal-Aw-CDU" secondAttribute="centerX" id="tyw-JB-QKN"/>
                             </constraints>
-                            <viewLayoutGuide key="safeArea" id="FcN-vT-Wi4"/>
                         </view>
                     </navigationItem>
                     <connections>
@@ -126,18 +127,20 @@
             <point key="canvasLocation" x="2445" y="484.85915492957747"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="ActionTint"/>
     <resources>
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
-        <image name="edit-item-toolbar" width="25" height="25"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AuxiliaryText">
-            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
-    <color key="tintColor" name="ActionTint"/>
 </document>
