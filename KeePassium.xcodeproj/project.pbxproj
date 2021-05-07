@@ -2281,6 +2281,7 @@
 			children = (
 				754E4096263068EB003E4854 /* unlocker */,
 				756F363C260E963B005A35DA /* key-file */,
+				75FCCF802631D1A10025E86C /* hardware-key */,
 				75BE091D25098F3500C436C2 /* icon */,
 				7533032523C52AB600F38CC7 /* relocation */,
 				756FF64620BAB55000FF890B /* group */,
@@ -2330,8 +2331,6 @@
 			children = (
 				75F2877F245D646B00F03657 /* MFIKeyActionSheet */,
 				7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */,
-				757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */,
-				7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */,
 			);
 			path = "challenge-response";
 			sourceTree = "<group>";
@@ -2499,6 +2498,15 @@
 				75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */,
 			);
 			path = MFIKeyActionSheet;
+			sourceTree = "<group>";
+		};
+		75FCCF802631D1A10025E86C /* hardware-key */ = {
+			isa = PBXGroup;
+			children = (
+				757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */,
+				7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */,
+			);
+			path = "hardware-key";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
