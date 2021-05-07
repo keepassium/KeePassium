@@ -80,7 +80,7 @@ class FieldCopiedView: UIView {
 }
 
 
-class ViewEntryFieldsVC: UITableViewController, Refreshable {
+class EntryFieldViewerVC: UITableViewController, Refreshable {
     @IBOutlet weak var copiedCellView: FieldCopiedView!
     
     private let editButton = UIBarButtonItem()
@@ -92,8 +92,8 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
     
     private var entryFieldEditorCoordinator: EntryFieldEditorCoordinator?
 
-    static func make(with entry: Entry?, historyMode: Bool) -> ViewEntryFieldsVC {
-        let viewEntryFieldsVC = ViewEntryFieldsVC.instantiateFromStoryboard()
+    static func make(with entry: Entry?, historyMode: Bool) -> EntryFieldViewerVC {
+        let viewEntryFieldsVC = EntryFieldViewerVC.instantiateFromStoryboard()
         viewEntryFieldsVC.entry = entry
         viewEntryFieldsVC.isHistoryMode = historyMode
         return viewEntryFieldsVC
@@ -224,14 +224,14 @@ class ViewEntryFieldsVC: UITableViewController, Refreshable {
     }
 }
 
-extension ViewEntryFieldsVC: EntryChangeObserver {
+extension EntryFieldViewerVC: EntryChangeObserver {
     func entryDidChange(entry: Entry) {
         refresh()
     }
 }
 
 
-extension ViewEntryFieldsVC: ViewableFieldCellDelegate {    
+extension EntryFieldViewerVC: ViewableFieldCellDelegate {    
     func cellHeightDidChange(_ cell: ViewableFieldCell) {
         tableView.beginUpdates()
         tableView.endUpdates()
@@ -273,7 +273,7 @@ extension ViewEntryFieldsVC: ViewableFieldCellDelegate {
 }
 
 
-extension ViewEntryFieldsVC: FieldCopiedViewDelegate {
+extension EntryFieldViewerVC: FieldCopiedViewDelegate {
     func didPressExport(in view: FieldCopiedView, field: ViewableField) {
         guard let value = field.resolvedValue else {
             assertionFailure()
@@ -291,7 +291,7 @@ extension ViewEntryFieldsVC: FieldCopiedViewDelegate {
     }
 }
 
-extension ViewEntryFieldsVC: EntryFieldEditorCoordinatorDelegate {
+extension EntryFieldViewerVC: EntryFieldEditorCoordinatorDelegate {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {
         refresh()
     }

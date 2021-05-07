@@ -48,7 +48,7 @@ class ViewEntryVC: UIViewController, Refreshable {
         super.viewDidLoad()
         guard let entry = entry else { return }
         
-        pages.append(ViewEntryFieldsVC.make(with: entry, historyMode: isHistoryMode))
+        pages.append(EntryFieldViewerVC.make(with: entry, historyMode: isHistoryMode))
         pages.append(ViewEntryFilesVC.make(
             with: entry,
             historyMode: isHistoryMode,

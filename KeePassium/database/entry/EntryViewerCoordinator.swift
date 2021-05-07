@@ -19,12 +19,12 @@ final class EntryViewerCoordinator: Coordinator {
     private let router: NavigationRouter
     private var entry: Entry
     
-    private fieldViewerVC: ViewEntryFieldsVC
+    private fieldViewerVC: EntryFieldViewerVC
     
     init(router: NavigationRouter) {
         self.router = router
         
-        fieldViewerVC = ViewEntryFieldsVC.instantiateFromStoryboard()
+        fieldViewerVC = EntryFieldViewerVC.instantiateFromStoryboard()
         fieldViewerVC.delegate = self
     }
     
