@@ -361,7 +361,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         }
         
         if let leftNavController = splitViewController?.viewControllers.first as? UINavigationController,
-            let chooseDatabaseVC = leftNavController.topViewController as? ChooseDatabaseVC {
+            let chooseDatabaseVC = leftNavController.topViewController as? DatabasePickerVC {
                 chooseDatabaseVC.isEnabled = false
         }
         navigationItem.hidesBackButton = true
@@ -385,7 +385,7 @@ class UnlockDatabaseVC: UIViewController, Refreshable {
         )
         navigationItem.hidesBackButton = false
         if let leftNavController = splitViewController?.viewControllers.first as? UINavigationController,
-            let chooseDatabaseVC = leftNavController.topViewController as? ChooseDatabaseVC {
+            let chooseDatabaseVC = leftNavController.topViewController as? DatabasePickerVC {
             chooseDatabaseVC.isEnabled = true
         }
 

@@ -6,7 +6,6 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
 
 
@@ -35,7 +34,7 @@ class AppLockSetupCell: UITableViewCell {
 }
 
 
-class ChooseDatabaseVC: TableViewControllerWithContextActions, DynamicFileList, Refreshable {
+class DatabasePickerVC: TableViewControllerWithContextActions, DynamicFileList, Refreshable {
     
     private enum CellID: String {
         case fileItem = "FileItemCell"
@@ -559,7 +558,7 @@ class ChooseDatabaseVC: TableViewControllerWithContextActions, DynamicFileList, 
     }
 }
 
-extension ChooseDatabaseVC: SettingsObserver {
+extension DatabasePickerVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
         switch key {
         case .filesSortOrder, .backupFilesVisible:
@@ -572,7 +571,7 @@ extension ChooseDatabaseVC: SettingsObserver {
     }
 }
 
-extension ChooseDatabaseVC: FileKeeperObserver {
+extension DatabasePickerVC: FileKeeperObserver {
     func fileKeeper(didAddFile urlRef: URLReference, fileType: FileType) {
         guard fileType == .database else { return }
         Settings.current.startupDatabase = urlRef
@@ -591,7 +590,7 @@ extension ChooseDatabaseVC: FileKeeperObserver {
     }
 }
 
-extension ChooseDatabaseVC: UIDocumentPickerDelegate {
+extension DatabasePickerVC: UIDocumentPickerDelegate {
     func documentPicker(
         _ controller: UIDocumentPickerViewController,
         didPickDocumentsAt urls: [URL])
@@ -613,7 +612,7 @@ extension ChooseDatabaseVC: UIDocumentPickerDelegate {
     }
 }
 
-extension ChooseDatabaseVC: DatabaseCreatorCoordinatorDelegate {
+extension DatabasePickerVC: DatabaseCreatorCoordinatorDelegate {
     func didPressCancel(in databaseCreatorCoordinator: DatabaseCreatorCoordinator) {
         presentedViewController?.dismiss(animated: true) { 
             self.databaseCreatorCoordinator = nil
@@ -633,7 +632,7 @@ extension ChooseDatabaseVC: DatabaseCreatorCoordinatorDelegate {
     }
 }
 
-extension ChooseDatabaseVC: WelcomeDelegate {
+extension DatabasePickerVC: WelcomeDelegate {
     func didPressCreateDatabase(in welcomeVC: WelcomeVC) {
         didPressCreateDatabase()
     }
@@ -643,7 +642,7 @@ extension ChooseDatabaseVC: WelcomeDelegate {
     }
 }
 
-extension ChooseDatabaseVC: PasscodeInputDelegate {
+extension DatabasePickerVC: PasscodeInputDelegate {
     func passcodeInputDidCancel(_ sender: PasscodeInputVC) {
         do {
             try Keychain.shared.removeAppPasscode() 
@@ -675,7 +674,7 @@ extension ChooseDatabaseVC: PasscodeInputDelegate {
     }
 }
 
-extension ChooseDatabaseVC: AppLockSetupCellDelegate {
+extension DatabasePickerVC: AppLockSetupCellDelegate {
     func didPressClose(in cell: AppLockSetupCell) {
         Settings.current.isHideAppLockSetupReminder = true
         tableView.reloadSections([0], with: .automatic)

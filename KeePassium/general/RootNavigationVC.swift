@@ -27,7 +27,7 @@ class RootNavigationVC: UINavigationController, UINavigationControllerDelegate {
         willShow viewController: UIViewController,
         animated: Bool)
     {
-        let showBottomToolbar = viewController is ViewGroupVC || viewController is ChooseDatabaseVC
+        let showBottomToolbar = viewController is ViewGroupVC || viewController is DatabasePickerVC
         navigationController.isToolbarHidden = !showBottomToolbar
     }
 
