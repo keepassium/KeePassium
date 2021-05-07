@@ -63,8 +63,7 @@
                                                             <fragment content="Action to show detailed diagnostics about the current error."/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="didPressErrorDetails:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="edS-Y9-GT3"/>
-                                                            <action selector="didPressErrorDetailsButton:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="KO7-ee-aky"/>
+                                                            <action selector="didPressErrorDetailsButton:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="QgE-UT-MCn"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
