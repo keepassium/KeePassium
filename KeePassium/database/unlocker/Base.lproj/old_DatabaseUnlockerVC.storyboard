@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxv-kR-0w1">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxv-kR-0w1">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Unlock Database-->
         <scene sceneID="Iw4-YB-y36">
             <objects>
-                <viewController storyboardIdentifier="DatabaseUnlockerVC" title="Unlock Database" modalTransitionStyle="crossDissolve" id="bxv-kR-0w1" customClass="DatabaseUnlockerVC" customModule="KeePassiumPro_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DatabaseUnlockerVC_old" title="Unlock Database" modalTransitionStyle="crossDissolve" id="bxv-kR-0w1" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GNR-ie-eMS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QNs-Fg-BB8" userLabel="NotificationButtons">
-                                        <rect key="frame" x="138" y="0.0" width="174" height="33"/>
+                                        <rect key="frame" x="139" y="0.0" width="173" height="33"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrv-DG-D6F" userLabel="Announcement Button">
-                                                <rect key="frame" x="0.0" y="0.0" width="174" height="33"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrv-DG-D6F" userLabel="Announcement Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="173" height="33"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="tintColor" name="ActionTint"/>
                                                 <state key="normal" title="{News announcement}"/>
@@ -103,7 +103,7 @@
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Q5g-RY-uXD" userLabel="InputPanel">
                                         <rect key="frame" x="20" y="239" width="280" height="90"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U6j-Ph-AWS" customClass="ProtectedTextField" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U6j-Ph-AWS" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="0.0" width="264" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="6ym-0q-4Wx"/>
@@ -119,12 +119,12 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ry0-Ds-MM4" userLabel="Separator">
                                                 <rect key="frame" x="0.0" y="44" width="280" height="2"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="rNj-qR-5f7"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dnl-vm-GMg" customClass="KeyFileTextField" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dnl-vm-GMg" customClass="KeyFileTextField" customModule="KeePassium" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="46" width="264" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Sao-Cr-ebW"/>
@@ -139,7 +139,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Dnl-vm-GMg" firstAttribute="top" secondItem="Ry0-Ds-MM4" secondAttribute="bottom" id="4DG-5G-PTV"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Dnl-vm-GMg" secondAttribute="trailing" id="6nF-1E-ehI"/>
@@ -160,7 +160,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89h-8b-LRO" userLabel="Unlock">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89h-8b-LRO" userLabel="Unlock">
                                         <rect key="frame" x="20" y="337" width="280" height="44"/>
                                         <color key="backgroundColor" name="ActionTint"/>
                                         <constraints>
@@ -206,14 +206,14 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="IWv-PL-Eda"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IWv-PL-Eda" firstAttribute="trailing" secondItem="fAZ-VX-s1Y" secondAttribute="trailing" id="Bf0-le-JFo"/>
                             <constraint firstItem="fAZ-VX-s1Y" firstAttribute="top" secondItem="IWv-PL-Eda" secondAttribute="top" id="TLU-J1-ftW"/>
                             <constraint firstItem="fAZ-VX-s1Y" firstAttribute="leading" secondItem="IWv-PL-Eda" secondAttribute="leading" id="Tme-D6-MJh"/>
-                            <constraint firstItem="IWv-PL-Eda" firstAttribute="bottom" secondItem="fAZ-VX-s1Y" secondAttribute="bottom" priority="250" id="p1m-Aa-EAI" customClass="KeyboardLayoutConstraint" customModule="KeePassiumPro_AutoFill" customModuleProvider="target"/>
+                            <constraint firstItem="IWv-PL-Eda" firstAttribute="bottom" secondItem="fAZ-VX-s1Y" secondAttribute="bottom" priority="250" id="p1m-Aa-EAI" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="IWv-PL-Eda"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
@@ -251,5 +251,14 @@
         <namedColor name="WarningText">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
