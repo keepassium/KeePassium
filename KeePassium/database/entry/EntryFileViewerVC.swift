@@ -6,10 +6,9 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
 
-class ViewEntryFilesVC: UITableViewController, DatabaseSaving, Refreshable {
+final class EntryFileViewerVC: UITableViewController, DatabaseSaving, Refreshable {
     private enum CellID {
         static let fileItem = "FileItemCell"
         static let noFiles = "NoFilesCell"
@@ -31,8 +30,8 @@ class ViewEntryFilesVC: UITableViewController, DatabaseSaving, Refreshable {
         with entry: Entry?,
         historyMode: Bool,
         progressViewHost: ProgressViewHost?
-    ) -> ViewEntryFilesVC {
-        let viewEntryFilesVC = ViewEntryFilesVC.instantiateFromStoryboard()
+    ) -> EntryFileViewerVC {
+        let viewEntryFilesVC = EntryFileViewerVC.instantiateFromStoryboard()
         viewEntryFilesVC.entry = entry
         viewEntryFilesVC.isHistoryMode = historyMode
         viewEntryFilesVC.progressViewHost = progressViewHost
@@ -380,7 +379,7 @@ class ViewEntryFilesVC: UITableViewController, DatabaseSaving, Refreshable {
     }
 }
 
-extension ViewEntryFilesVC: DatabaseManagerObserver {
+extension EntryFileViewerVC: DatabaseManagerObserver {
     
     func databaseManager(willSaveDatabase urlRef: URLReference) {
         progressViewHost?.showProgressView(
@@ -422,7 +421,7 @@ extension ViewEntryFilesVC: DatabaseManagerObserver {
     }
 }
 
-extension ViewEntryFilesVC: UIDocumentPickerDelegate {
+extension EntryFileViewerVC: UIDocumentPickerDelegate {
     func documentPicker(
         _ controller: UIDocumentPickerViewController,
         didPickDocumentsAt urls: [URL])
@@ -472,7 +471,7 @@ extension ViewEntryFilesVC: UIDocumentPickerDelegate {
     }
 }
 
-extension ViewEntryFilesVC: UIDocumentInteractionControllerDelegate {
+extension EntryFileViewerVC: UIDocumentInteractionControllerDelegate {
     func documentInteractionControllerViewControllerForPreview(
         _ controller: UIDocumentInteractionController
         ) -> UIViewController

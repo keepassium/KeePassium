@@ -49,7 +49,7 @@ class ViewEntryVC: UIViewController, Refreshable {
         guard let entry = entry else { return }
         
         pages.append(EntryFieldViewerVC.make(with: entry, historyMode: isHistoryMode))
-        pages.append(ViewEntryFilesVC.make(
+        pages.append(EntryFileViewerVC.make(
             with: entry,
             historyMode: isHistoryMode,
             progressViewHost: self))
