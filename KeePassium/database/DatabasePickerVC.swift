@@ -121,6 +121,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = false
+        refresh()
     }
 
     override func viewDidAppear(_ animated: Bool) {
