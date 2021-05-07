@@ -183,7 +183,7 @@ extension DatabaseUnlockerCoordinator {
 
         delegate?.willUnlockDatabase(databaseRef, in: self)
 
-        databaseUnlockerVC.hideErrorMessage(animated: true)
+        databaseUnlockerVC.hideErrorMessage(animated: false)
         DatabaseManager.shared.addObserver(self)
         
         #if AUTOFILL_EXT
