@@ -2009,6 +2009,19 @@
 			path = "app-icons";
 			sourceTree = "<group>";
 		};
+		7527FAAF262F712F00623849 /* data-protection */ = {
+			isa = PBXGroup;
+			children = (
+				752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */,
+				751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */,
+				757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */,
+				75ED429F2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard */,
+				757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */,
+				75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */,
+			);
+			path = "data-protection";
+			sourceTree = "<group>";
+		};
 		7533032523C52AB600F38CC7 /* relocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -2043,19 +2056,14 @@
 				751A564D24CCD375001227D6 /* appearance */,
 				75065A3122C41B2200958243 /* autoFill */,
 				75C3800F217A0497006F74C2 /* appLock */,
+				7527FAAF262F712F00623849 /* data-protection */,
 				7578488722C16D7D00BBEF9A /* backup */,
 				7546FBC520C1027700C5D834 /* SettingsVC.swift */,
 				751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */,
 				75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */,
 				751E0CEB2309AE860088BB10 /* SettingsFileSortingVC.storyboard */,
-				757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */,
-				75ED429F2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard */,
-				757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */,
-				75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */,
 				752BB12420F089B30070FAC0 /* SettingsItemListVC.swift */,
 				75ED42AB2313C20A003DE72E /* SettingsItemListVC.storyboard */,
-				752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */,
-				751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */,
 				75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */,
 				752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */,
 				75D76153262E1E9000B1DE7F /* SettingsCoordinator.swift */,
