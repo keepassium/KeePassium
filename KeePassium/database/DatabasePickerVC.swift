@@ -143,7 +143,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         super.viewWillDisappear(animated)
     }
     
-    
 
     @objc
     private func didPullToRefresh() {
