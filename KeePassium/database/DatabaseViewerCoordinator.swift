@@ -217,9 +217,13 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
 
     private func showAppSettings(at popoverAnchor: PopoverAnchor, in viewController: UIViewController) {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let appSettingsVC = SettingsVC.instantiateFromStoryboard()
-        modalRouter.push(appSettingsVC, animated: false, onPop: nil)
+        let settingsCoordinator = SettingsCoordinator(router: modalRouter)
+        settingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        settingsCoordinator.start()
         viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(settingsCoordinator)
     }
     
     private func showMasterKeyChanger(
