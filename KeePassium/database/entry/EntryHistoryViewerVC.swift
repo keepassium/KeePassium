@@ -6,10 +6,9 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
 
-class ViewEntryHistoryVC: UITableViewController, Refreshable {
+class EntryHistoryViewerVC: UITableViewController, Refreshable {
     private weak var entry: Entry?
     private var isHistoryMode = false
 
@@ -28,8 +27,8 @@ class ViewEntryHistoryVC: UITableViewController, Refreshable {
     }
     private let dateFormatter = DateFormatter()
     
-    static func make(with entry: Entry?, historyMode: Bool) -> ViewEntryHistoryVC {
-        let viewEntryHistoryVC = ViewEntryHistoryVC.instantiateFromStoryboard()
+    static func make(with entry: Entry?, historyMode: Bool) -> EntryHistoryViewerVC {
+        let viewEntryHistoryVC = EntryHistoryViewerVC.instantiateFromStoryboard()
         viewEntryHistoryVC.entry = entry
         viewEntryHistoryVC.isHistoryMode = historyMode
         return viewEntryHistoryVC
