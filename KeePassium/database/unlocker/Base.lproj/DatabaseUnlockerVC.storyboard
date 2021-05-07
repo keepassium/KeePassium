@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eAa-Z5-pdq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eAa-Z5-pdq">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Unlock Database-->
         <scene sceneID="Bah-z1-kFB">
             <objects>
-                <viewController storyboardIdentifier="UnlockDatabaseVC" title="Unlock Database" modalTransitionStyle="flipHorizontal" id="eAa-Z5-pdq" customClass="UnlockDatabaseVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DatabaseUnlockerVC" title="Unlock Database" modalTransitionStyle="flipHorizontal" id="eAa-Z5-pdq" customClass="DatabaseUnlockerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bPc-V2-3Of">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ids-lQ-2kH" userLabel="NotificationButtons">
-                                        <rect key="frame" x="259" y="0.0" width="53" height="33"/>
+                                        <rect key="frame" x="260" y="0.0" width="52" height="33"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APT-2C-WiG" userLabel="Announcement Button">
-                                                <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APT-2C-WiG" userLabel="Announcement Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="52" height="33"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <state key="normal" title="{news}"/>
                                                 <attributedString key="userComments">
@@ -63,6 +64,7 @@
                                                         </attributedString>
                                                         <connections>
                                                             <action selector="didPressErrorDetails:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="edS-Y9-GT3"/>
+                                                            <action selector="didPressErrorDetailsButton:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="KO7-ee-aky"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -153,7 +155,7 @@
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="854-YG-tHO" userLabel="Separator">
                                                         <rect key="frame" x="0.0" y="44" width="280" height="2"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="2" id="1li-ig-vuf"/>
                                                         </constraints>
@@ -171,7 +173,7 @@
                                                         </attributedString>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="mYY-hP-3vH" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="11G-x2-VCX"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2QP-BY-ymU"/>
@@ -222,12 +224,12 @@
                                                     <fragment content="Hint shown below the Unlock button, when not asking for master password/key file."/>
                                                 </attributedString>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gji-1x-co5">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gji-1x-co5">
                                                 <rect key="frame" x="0.0" y="174" width="280" height="28"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <state key="normal" title="Lock Database"/>
                                                 <connections>
-                                                    <action selector="didPressLockDatabase:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="oFA-jn-sB0"/>
+                                                    <action selector="didPressLockDatabase:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="ZN0-Xl-x21"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -268,34 +270,33 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fjp-FI-lys"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cdl-k8-gTg" firstAttribute="leading" secondItem="fjp-FI-lys" secondAttribute="leading" id="D0r-G0-qVk"/>
                             <constraint firstItem="cdl-k8-gTg" firstAttribute="trailing" secondItem="fjp-FI-lys" secondAttribute="trailing" id="Okf-K9-G8m"/>
                             <constraint firstItem="fjp-FI-lys" firstAttribute="bottom" secondItem="cdl-k8-gTg" secondAttribute="bottom" priority="250" id="VaD-Ev-zg3" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
                             <constraint firstItem="cdl-k8-gTg" firstAttribute="top" secondItem="fjp-FI-lys" secondAttribute="top" id="dQA-ql-OqA"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="fjp-FI-lys"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <attributedString key="userComments">
                         <fragment content="Title of the database unlocker dialog."/>
                     </attributedString>
                     <connections>
-                        <outlet property="KeyFileField" destination="mYY-hP-3vH" id="e2c-j0-r8o"/>
-                        <outlet property="announcementButton" destination="APT-2C-WiG" id="xym-OS-G5j"/>
-                        <outlet property="databaseIconImage" destination="MLZ-P0-rnn" id="96A-DR-0Q0"/>
-                        <outlet property="databaseNameLabel" destination="LsQ-5N-nP3" id="nWY-4W-BPY"/>
-                        <outlet property="errorDetailButton" destination="nrD-QC-R8N" id="Hdc-k4-pl1"/>
-                        <outlet property="errorLabel" destination="d2U-7y-vCm" id="Tfd-pH-JMJ"/>
-                        <outlet property="errorMessagePanel" destination="1da-3k-RQm" id="XSq-Rx-ZNa"/>
-                        <outlet property="inputPanel" destination="3xv-vB-0Jn" id="dpu-5T-Uzb"/>
-                        <outlet property="keyFileField" destination="mYY-hP-3vH" id="ITo-zF-Ead"/>
-                        <outlet property="keyboardAdjView" destination="cdl-k8-gTg" id="gDU-xh-QP9"/>
-                        <outlet property="lockDatabaseButton" destination="gji-1x-co5" id="18J-2h-LcQ"/>
-                        <outlet property="masterKeyKnownLabel" destination="K3Y-ON-C19" id="biz-bo-isU"/>
-                        <outlet property="passwordField" destination="CuN-tE-lAG" id="8Cx-tM-tfp"/>
-                        <outlet property="watchdogTimeoutLabel" destination="epu-yU-Lyg" id="8Mz-oL-08S"/>
+                        <outlet property="announcementButton" destination="APT-2C-WiG" id="7Em-du-GAq"/>
+                        <outlet property="databaseFileNameLabel" destination="LsQ-5N-nP3" id="kqF-va-O1r"/>
+                        <outlet property="databaseLocationIconImage" destination="MLZ-P0-rnn" id="K9j-iw-h9N"/>
+                        <outlet property="errorDetailsButton" destination="nrD-QC-R8N" id="IiB-kb-MyA"/>
+                        <outlet property="errorMessageLabel" destination="d2U-7y-vCm" id="avP-cJ-UjQ"/>
+                        <outlet property="errorMessagePanel" destination="1da-3k-RQm" id="crB-lv-D3I"/>
+                        <outlet property="inputPanel" destination="3xv-vB-0Jn" id="yUX-DL-NZd"/>
+                        <outlet property="keyFileField" destination="mYY-hP-3vH" id="89z-Ta-JMu"/>
+                        <outlet property="lockDatabaseButton" destination="gji-1x-co5" id="dlm-uQ-hm3"/>
+                        <outlet property="lockedOnTimeoutLabel" destination="epu-yU-Lyg" id="3T0-0O-NWP"/>
+                        <outlet property="masterKeyKnownLabel" destination="K3Y-ON-C19" id="boH-5S-KlE"/>
+                        <outlet property="passwordField" destination="CuN-tE-lAG" id="7ce-ej-YEW"/>
+                        <outlet property="unlockButton" destination="l45-hq-1lr" id="9Uk-Uv-jJZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Juw-QX-Vel" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,7 +314,7 @@
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AuxiliaryText">
-            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -324,5 +325,14 @@
         <namedColor name="WarningText">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
