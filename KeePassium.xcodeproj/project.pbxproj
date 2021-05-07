@@ -131,6 +131,10 @@
 		754D7C1D238C355B005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
 		754E40862630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
 		754E40872630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
+		754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
+		754E408F263067DE003E4854 /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
+		754E4092263067E4003E4854 /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D342309AFF30088BB10 /* DatabaseUnlockerVC.storyboard */; };
+		754E4093263067E4003E4854 /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D342309AFF30088BB10 /* DatabaseUnlockerVC.storyboard */; };
 		7550D22B215CC99100360E0C /* ChangeMasterKeyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D22A215CC99100360E0C /* ChangeMasterKeyVC.swift */; };
 		7550D242215D792000360E0C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
@@ -2135,6 +2139,15 @@
 			path = KeePassium;
 			sourceTree = "<group>";
 		};
+		754E4096263068EB003E4854 /* unlocker */ = {
+			isa = PBXGroup;
+			children = (
+				75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */,
+				751E0D342309AFF30088BB10 /* DatabaseUnlockerVC.storyboard */,
+			);
+			path = unlocker;
+			sourceTree = "<group>";
+		};
 		754FCBAF20A86785004DA0E7 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -2260,6 +2273,7 @@
 		756FF64720BAB56A00FF890B /* database */ = {
 			isa = PBXGroup;
 			children = (
+				754E4096263068EB003E4854 /* unlocker */,
 				756F363C260E963B005A35DA /* key-file */,
 				75BE091D25098F3500C436C2 /* icon */,
 				7533032523C52AB600F38CC7 /* relocation */,
@@ -2456,8 +2470,6 @@
 				751E0D2E2309AFE90088BB10 /* FirstSetupVC.storyboard */,
 				750CFC0821BADBA500E62B09 /* DatabaseChooserVC.swift */,
 				751E0D312309AFED0088BB10 /* DatabaseChooserVC.storyboard */,
-				75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */,
-				751E0D342309AFF30088BB10 /* DatabaseUnlockerVC.storyboard */,
 				75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */,
 				751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */,
 			);
@@ -2712,6 +2724,7 @@
 				755E7DA2232008300010E199 /* Localizable.strings in Resources */,
 				758FC16324CEF72000BAD35C /* appicon-calc_iPadApp_76.png in Resources */,
 				758FC14524CEF72000BAD35C /* appicon-atom-black_iPadApp_76@2x.png in Resources */,
+				754E4092263067E4003E4854 /* DatabaseUnlockerVC.storyboard in Resources */,
 				758FC15724CEF72000BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */,
 				75ED42A92313C20A003DE72E /* SettingsItemListVC.storyboard in Resources */,
 				751E0D222309AFAC0088BB10 /* ItemIconPicker.storyboard in Resources */,
@@ -2811,6 +2824,7 @@
 				75B38C56233E5B7C006BDEFC /* Localizable.strings in Resources */,
 				758FC16424CEF72000BAD35C /* appicon-calc_iPadApp_76.png in Resources */,
 				758FC14624CEF72000BAD35C /* appicon-atom-black_iPadApp_76@2x.png in Resources */,
+				754E4093263067E4003E4854 /* DatabaseUnlockerVC.storyboard in Resources */,
 				758FC15824CEF72000BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */,
 				75B38C58233E5B7C006BDEFC /* SettingsItemListVC.storyboard in Resources */,
 				75B38C59233E5B7C006BDEFC /* ItemIconPicker.storyboard in Resources */,
@@ -3116,6 +3130,7 @@
 				75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */,
 				754D7C09238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				75D1674A21464333005E33C3 /* AboutVC.swift in Sources */,
+				754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */,
 				750C683220D767F6001A6AA0 /* EntryFieldEditorVC.swift in Sources */,
 				75151D3323268AB300F3C411 /* UILabel+extensions.swift in Sources */,
 				7572664B24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
@@ -3274,6 +3289,7 @@
 				754D7C0B238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */,
 				75B38C1A233E5B7C006BDEFC /* EntryFieldEditorVC.swift in Sources */,
+				754E408F263067DE003E4854 /* DatabaseUnlockerVC.swift in Sources */,
 				75B38C1B233E5B7C006BDEFC /* UILabel+extensions.swift in Sources */,
 				7572664D24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				75B38C1C233E5B7C006BDEFC /* UIImage+extensions.swift in Sources */,
