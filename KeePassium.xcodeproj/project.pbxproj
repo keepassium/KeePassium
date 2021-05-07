@@ -601,6 +601,8 @@
 		75D76132262CC19700B1DE7F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76130262CC19700B1DE7F /* MainCoordinator.swift */; };
 		75D76138262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */; };
 		75D76139262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */; };
+		75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */; };
+		75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */; };
 		75D7DF7C233E5E310029AD87 /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5D4002235CD720003CD55 /* CrashReportVC.swift */; };
@@ -1630,6 +1632,7 @@
 		75D5D4002235CD720003CD55 /* CrashReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportVC.swift; sourceTree = "<group>"; };
 		75D76130262CC19700B1DE7F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePickerCoordinator.swift; sourceTree = "<group>"; };
+		75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
 		75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassiumPro AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7DFC0233E5E630029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7DFC4233E5E870029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2294,6 +2297,7 @@
 		758BF0D920D21EE500897C83 /* general */ = {
 			isa = PBXGroup;
 			children = (
+				75D76146262DDDEC00B1DE7F /* about */,
 				75BE05DB25DA83DF00B34CC0 /* diagnostics */,
 				7590798224CB1400008F34EC /* help */,
 				75679AD022FD963200372301 /* news */,
@@ -2301,8 +2305,6 @@
 				7588B6C02627319700F5D372 /* password-generator */,
 				759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */,
 				7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */,
-				75D1674921464333005E33C3 /* AboutVC.swift */,
-				755B863023054FA200E9FC83 /* AboutVC.storyboard */,
 				7550D24B215FDEC500360E0C /* AppCoverVC.swift */,
 				75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */,
 				757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */,
@@ -2428,6 +2430,16 @@
 				751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		75D76146262DDDEC00B1DE7F /* about */ = {
+			isa = PBXGroup;
+			children = (
+				75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */,
+				75D1674921464333005E33C3 /* AboutVC.swift */,
+				755B863023054FA200E9FC83 /* AboutVC.storyboard */,
+			);
+			path = about;
 			sourceTree = "<group>";
 		};
 		75F2877F245D646B00F03657 /* MFIKeyActionSheet */ = {
@@ -3031,6 +3043,7 @@
 				759BC62C2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
+				75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */,
 				75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */,
@@ -3182,6 +3195,7 @@
 				759BC62E2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
+				75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */,
 				75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */,

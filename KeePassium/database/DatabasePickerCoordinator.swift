@@ -67,10 +67,13 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
-        let aboutVC = AboutVC.instantiateFromStoryboard()
-        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
-        modalRouter.push(aboutVC, animated: false, onPop: nil)
-        
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let aboutCoordinator = AboutCoordinator(router: modalRouter)
+        aboutCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        aboutCoordinator.start()
+        addChildCoordinator(aboutCoordinator)        
         viewController.present(modalRouter, animated: true, completion: nil)
     }
     

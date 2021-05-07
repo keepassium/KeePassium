@@ -9,12 +9,20 @@
 import UIKit
 import KeePassiumLib
 
-class AboutVC: UITableViewController {
-    @IBOutlet weak var appTitleLabel: UILabel!
-    @IBOutlet weak var contactSupportCell: UITableViewCell!
-    @IBOutlet weak var writeReviewCell: UITableViewCell!
-    @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var resetTextScaleCell: UITableViewCell!
+protocol AboutDelegate: AnyObject {
+    func didPressContactSupport(at popoverAnchor: PopoverAnchor, in viewController: AboutVC)
+    func didPressWriteReview(at popoverAnchor: PopoverAnchor, in viewController: AboutVC)
+    func didPressOpenLicense(url: URL, at popoverAnchor: PopoverAnchor, in viewController: AboutVC)
+}
+
+final class AboutVC: UITableViewController {
+    @IBOutlet private weak var appTitleLabel: UILabel!
+    @IBOutlet private weak var contactSupportCell: UITableViewCell!
+    @IBOutlet private weak var writeReviewCell: UITableViewCell!
+    @IBOutlet private weak var versionLabel: UILabel!
+    @IBOutlet private weak var resetTextScaleCell: UITableViewCell!
+    
+    weak var delegate: AboutDelegate?
     
     let cellTagToURL: [Int: String] = [
         10: "https://github.com/keepassium/KeePassium-L10n",
@@ -39,12 +47,7 @@ class AboutVC: UITableViewController {
         150: "https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift",
         160: "https://github.com/scalessec/Toast-Swift",
     ]
-    
-    static func make() -> UIViewController {
-        let vc = AboutVC.instantiateFromStoryboard()
-        return vc
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
@@ -74,12 +77,13 @@ class AboutVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
+        
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         switch selectedCell {
         case contactSupportCell:
-            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-            SupportEmailComposer.show(subject: .supportRequest, parent: self, popoverAnchor: popoverAnchor)
+            delegate?.didPressContactSupport(at: popoverAnchor, in: self)
         case writeReviewCell:
-            AppStoreHelper.writeReview()
+            delegate?.didPressWriteReview(at: popoverAnchor, in: self)
         case resetTextScaleCell:
             Settings.current.textScale = 1.0
             Diag.info("Text scale reset to 1.0")
@@ -88,7 +92,7 @@ class AboutVC: UITableViewController {
             tableView.endUpdates()
         default:
             if let urlString = cellTagToURL[selectedCell.tag], let url = URL(string: urlString) {
-                AppGroup.applicationShared?.open(url, options: [:], completionHandler: nil)
+                delegate?.didPressOpenLicense(url: url, at: popoverAnchor, in: self)
             }
         } 
     }

@@ -229,8 +229,7 @@ class SettingsVC: UITableViewController, Refreshable {
         case rateTheAppCell:
             AppStoreHelper.writeReview()
         case aboutAppCell:
-            let aboutVC = AboutVC.make()
-            show(aboutVC, sender: self)
+            showAboutScreen()
         default:
             break
         }
@@ -298,6 +297,16 @@ class SettingsVC: UITableViewController, Refreshable {
             self?.diagnosticsViewerCoordinator = nil
         }
         diagnosticsViewerCoordinator!.start()
+    }
+    
+    var aboutCoordinator: AboutCoordinator?
+    private func showAboutScreen() {
+        assert(aboutCoordinator == nil)
+        aboutCoordinator = AboutCoordinator(router: router)
+        aboutCoordinator!.dismissHandler = { [weak self] coordinator in
+            self?.aboutCoordinator = nil
+        }
+        aboutCoordinator!.start()
     }
     
     
