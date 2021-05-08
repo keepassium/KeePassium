@@ -232,8 +232,18 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     ) {
         Diag.info("Will change master key")
         
-        let vc = DatabaseKeyChangerVC.make(dbRef: databaseRef)
-        viewController.present(vc, animated: true, completion: nil)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
+        let databaseKeyChangeCoordinator = DatabaseKeyChangerCoordinator(
+            databaseRef: databaseRef,
+            router: modalRouter
+        )
+        databaseKeyChangeCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        databaseKeyChangeCoordinator.delegate = self
+        databaseKeyChangeCoordinator.start()
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(databaseKeyChangeCoordinator)
     }
     
     private func showGroupEditor(for groupToEdit: Group?, at popoverAnchor: PopoverAnchor?) {
@@ -547,5 +557,11 @@ extension DatabaseViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
 extension DatabaseViewerCoordinator: ItemRelocationCoordinatorDelegate {
     func didRelocateItems(in coordinator: ItemRelocationCoordinator) {
         refresh()
+    }
+}
+
+extension DatabaseViewerCoordinator: DatabaseKeyChangerCoordinatorDelegate {
+    func didChangeDatabaseKey(in coordinator: DatabaseKeyChangerCoordinator) {
+        getPresenterForModals().showNotification(LString.masterKeySuccessfullyChanged)
     }
 }

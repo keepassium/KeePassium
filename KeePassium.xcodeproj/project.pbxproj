@@ -266,6 +266,8 @@
 		758544652351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
 		758544662351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
 		758544672351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
+		75876B262646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */; };
+		75876B272646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */; };
 		7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */; };
 		7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */; };
 		758BAD9524B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */; };
@@ -1350,6 +1352,7 @@
 		7584CF0924D208FF0063B421 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
 		7584CF0B24D209000063B421 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
 		758544632351FE8D000D5E5E /* UIFont+monospace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+monospace.swift"; sourceTree = "<group>"; };
+		75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseKeyChangerCoordinator.swift; sourceTree = "<group>"; };
 		7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorCoordinator.swift; sourceTree = "<group>"; };
 		758AD0B425F58C3500864030 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
 		758AD0B625F58C4800864030 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
@@ -2283,6 +2286,7 @@
 				758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */,
 				75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */,
 				75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */,
+				75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -3162,6 +3166,7 @@
 				758BADBA24B5F8BF00CC9265 /* PricingPlans.swift in Sources */,
 				75D76159262ED2E200B1DE7F /* Coordinator+premium.swift in Sources */,
 				75A2677D22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
+				75876B262646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */,
 				75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */,
 				75D76138262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */,
 				7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */,
@@ -3323,6 +3328,7 @@
 				75B38C31233E5B7C006BDEFC /* PremiumFeature+extension.swift in Sources */,
 				75D7615A262ED2E200B1DE7F /* Coordinator+premium.swift in Sources */,
 				75B38C32233E5B7C006BDEFC /* PlaceholderVC.swift in Sources */,
+				75876B272646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */,
 				75B38C33233E5B7C006BDEFC /* SettingsBackupVC.swift in Sources */,
 				75D76139262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */,
 				75BE064125DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,

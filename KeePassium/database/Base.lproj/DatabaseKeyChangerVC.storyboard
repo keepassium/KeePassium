@@ -157,11 +157,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Change Master Key" id="JKD-iF-iwA">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pGz-3W-LJl">
-                            <connections>
-                                <action selector="didPressCancel:" destination="Ymj-cN-i1q" id="gpP-6N-MKt"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Udi-7K-crW">
                             <connections>
                                 <action selector="didPressSaveChanges:" destination="Ymj-cN-i1q" id="qev-tB-xiq"/>

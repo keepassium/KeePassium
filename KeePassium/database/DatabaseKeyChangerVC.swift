@@ -6,45 +6,39 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
 
-class DatabaseKeyChangerVC: UIViewController, DatabaseSaving {
+protocol DatabaseKeyChangerDelegate: AnyObject {
+    func didPressSelectKeyFile(at popoverAnchor: PopoverAnchor, in viewController: DatabaseKeyChangerVC)
+    func didPressSelectHardwareKey(at popoverAnchor: PopoverAnchor, in viewController: DatabaseKeyChangerVC)
+    func didPressSaveChanges(in viewController: DatabaseKeyChangerVC)
+}
+
+final class DatabaseKeyChangerVC: UIViewController {
    
-    @IBOutlet weak var keyboardAdjView: UIView!
-    @IBOutlet weak var databaseNameLabel: UILabel!
-    @IBOutlet weak var databaseIcon: UIImageView!
-    @IBOutlet weak var passwordField: ValidatingTextField!
-    @IBOutlet weak var repeatPasswordField: ValidatingTextField!
-    @IBOutlet weak var keyFileField: KeyFileTextField!
-    @IBOutlet weak var passwordMismatchImage: UIImageView!
-    @IBOutlet weak var keyboardAdjConstraint: KeyboardLayoutConstraint!
+    @IBOutlet private weak var keyboardAdjView: UIView!
+    @IBOutlet private weak var databaseNameLabel: UILabel!
+    @IBOutlet private weak var databaseIcon: UIImageView!
+    @IBOutlet private weak var passwordField: ValidatingTextField!
+    @IBOutlet private weak var repeatPasswordField: ValidatingTextField!
+    @IBOutlet private weak var keyFileField: KeyFileTextField!
+    @IBOutlet private weak var passwordMismatchImage: UIImageView!
+    @IBOutlet private weak var keyboardAdjConstraint: KeyboardLayoutConstraint!
     
+    weak var delegate: DatabaseKeyChangerDelegate?
+    
+    internal var password: String { return passwordField.text ?? ""}
+    internal private(set) var keyFileRef: URLReference?
+    internal private(set) var yubiKey: YubiKey?
     private var databaseRef: URLReference!
-    private var keyFileRef: URLReference?
-    private var yubiKey: YubiKey?
-    
-    internal var databaseExporterTemporaryURL: TemporaryFileURL?
-    
-    private var hardwareKeyPickerCoordinator: HardwareKeyPickerCoordinator?
-    private var keyFilePickerCoordinator: KeyFilePickerCoordinator?
-    
-    static func make(dbRef: URLReference) -> UIViewController {
+
+    static func make(for databaseRef: URLReference) -> DatabaseKeyChangerVC {
         let vc = DatabaseKeyChangerVC.instantiateFromStoryboard()
-        vc.databaseRef = dbRef
-        let navVC = UINavigationController(rootViewController: vc)
-        navVC.modalPresentationStyle = .formSheet
-        return navVC
+        vc.databaseRef = databaseRef
+        return vc
     }
-    
-    deinit {
-        assert(keyFilePickerCoordinator == nil)
-        assert(hardwareKeyPickerCoordinator == nil)
-        keyFilePickerCoordinator = nil
-        hardwareKeyPickerCoordinator = nil
-    }
-    
-    override func viewDidLoad() {
+
+   override func viewDidLoad() {
         super.viewDidLoad()
         
         databaseNameLabel.text = databaseRef.visibleFileName
@@ -65,6 +59,14 @@ class DatabaseKeyChangerVC: UIViewController, DatabaseSaving {
         view.layer.isOpaque = false
         
         navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    
+    private func setupHardwareKeyPicker() {
+        keyFileField.yubikeyHandler = {
+            [weak self] (field, popoverAnchor) in
+            guard let self = self else { return }
+            self.delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,115 +99,38 @@ class DatabaseKeyChangerVC: UIViewController, DatabaseSaving {
     }
     
     
-    private func setupHardwareKeyPicker() {
-        keyFileField.yubikeyHandler = {
-            [weak self] (field, popoverAnchor) in
-            guard let self = self else { return }
-            self.showHardwareKeyPicker(at: popoverAnchor)
-        }
-    }
-    
-    private func showHardwareKeyPicker(at popoverAnchor: PopoverAnchor) {
-        assert(hardwareKeyPickerCoordinator == nil)
+    func setKeyFile(_ urlRef: URLReference?) {
+        self.keyFileRef = urlRef
         
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: modalRouter)
-        hardwareKeyPickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.hardwareKeyPickerCoordinator = nil
+        guard let keyFileRef = urlRef else {
+            keyFileField.text = ""
+            return
         }
-        hardwareKeyPickerCoordinator.delegate = self
-        hardwareKeyPickerCoordinator.setSelectedKey(yubiKey)
-        hardwareKeyPickerCoordinator.start()
-        present(modalRouter, animated: true, completion: nil)
         
-        self.hardwareKeyPickerCoordinator = hardwareKeyPickerCoordinator
+        if let error = keyFileRef.error {
+            keyFileField.text = ""
+            showErrorAlert(error)
+        } else {
+            keyFileField.text = keyFileRef.visibleFileName
+        }
+        refresh()
     }
     
-    
-    @IBAction func didPressCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    func setYubiKey(_ yubiKey: YubiKey?) {
+        self.yubiKey = yubiKey
+        keyFileField.isYubiKeyActive = (yubiKey != nil)
+
+        if let _yubiKey = yubiKey {
+            Diag.info("Hardware key selected [key: \(_yubiKey)]")
+        } else {
+            Diag.info("No hardware key selected")
+        }
+        refresh()
     }
+    
     
     @IBAction func didPressSaveChanges(_ sender: Any) {
-        guard let db = DatabaseManager.shared.database else {
-            assertionFailure()
-            return
-        }
-        
-        let _challengeHandler = ChallengeResponseManager.makeHandler(for: yubiKey)
-        DatabaseManager.createCompositeKey(
-            keyHelper: db.keyHelper,
-            password: passwordField.text ?? "",
-            keyFile: keyFileRef,
-            challengeHandler: _challengeHandler,
-            success: {
-                [weak self] (_ newCompositeKey: CompositeKey) -> Void in
-                guard let self = self else { return }
-                let dbm = DatabaseManager.shared
-                dbm.changeCompositeKey(to: newCompositeKey)
-                DatabaseSettingsManager.shared.updateSettings(for: self.databaseRef) {
-                    [weak self] (dbSettings) in
-                    guard let self = self else { return }
-                    dbSettings.maybeSetMasterKey(newCompositeKey)
-                    dbSettings.maybeSetAssociatedKeyFile(self.keyFileRef)
-                    dbSettings.maybeSetAssociatedYubiKey(self.yubiKey)
-                }
-                dbm.addObserver(self)
-                dbm.startSavingDatabase()
-            },
-            error: {
-                [weak self] (_ errorMessage: String) -> Void in
-                Diag.error("Failed to create new composite key [message: \(errorMessage)]")
-                self?.showErrorAlert(errorMessage, title: LString.titleError)
-            }
-        )
-    }
-    
-    func showKeyFilePicker(at popoverAnchor: PopoverAnchor) {
-        guard keyFilePickerCoordinator == nil else {
-            assertionFailure()
-            Diag.warning("Key file picker is already shown")
-            return
-        }
-        
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter, addingMode: .import)
-        keyFilePickerCoordinator!.dismissHandler = { [weak self] coordinator in
-            self?.keyFilePickerCoordinator = nil
-        }
-        keyFilePickerCoordinator!.delegate = self
-        keyFilePickerCoordinator!.start()
-        present(modalRouter, animated: true, completion: nil)
-    }
-    
-    
-    private var progressOverlay: ProgressOverlay?
-    fileprivate func showProgressOverlay() {
-        progressOverlay = ProgressOverlay.addTo(
-            view, title: LString.databaseStatusSaving, animated: true)
-        progressOverlay?.isCancellable = true
-        
-        if #available(iOS 13, *) {
-            isModalInPresentation = true
-        }
-        navigationItem.leftBarButtonItem?.isEnabled = false
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        navigationItem.hidesBackButton = true
-    }
-    
-    fileprivate func hideProgressOverlay() {
-        progressOverlay?.dismiss(animated: true) {
-            [weak self] finished in
-            guard let self = self else { return }
-            self.progressOverlay?.removeFromSuperview()
-            self.progressOverlay = nil
-        }
-        if #available(iOS 13, *) {
-            isModalInPresentation = false
-        }
-        navigationItem.leftBarButtonItem?.isEnabled = true
-        navigationItem.rightBarButtonItem?.isEnabled = true
-        navigationItem.hidesBackButton = false
+        delegate?.didPressSaveChanges(in: self)
     }
 }
 
@@ -266,98 +191,4 @@ extension DatabaseKeyChangerVC: ValidatingTextFieldDelegate {
     func validatingTextField(_ sender: ValidatingTextField, validityDidChange isValid: Bool) {
         refresh()
     }
-}
-
-
-
-extension DatabaseKeyChangerVC: KeyFilePickerCoordinatorDelegate {
-    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
-        setKeyFile(keyFile)
-    }
-    
-    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
-        if self.keyFileRef == keyFile {
-            setKeyFile(nil)
-        }
-    }
-
-    func setKeyFile(_ urlRef: URLReference?) {
-        self.keyFileRef = urlRef
-        
-        guard let keyFileRef = urlRef else {
-            keyFileField.text = ""
-            return
-        }
-        
-        if let error = keyFileRef.error {
-            keyFileField.text = ""
-            showErrorAlert(error)
-        } else {
-            keyFileField.text = keyFileRef.visibleFileName
-        }
-        refresh()
-    }
-}
-
-extension DatabaseKeyChangerVC: HardwareKeyPickerCoordinatorDelegate {
-    func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
-        setYubiKey(yubiKey)
-    }
-    
-    func setYubiKey(_ yubiKey: YubiKey?) {
-        self.yubiKey = yubiKey
-        keyFileField.isYubiKeyActive = (yubiKey != nil)
-
-        if let _yubiKey = yubiKey {
-            Diag.info("Hardware key selected [key: \(_yubiKey)]")
-        } else {
-            Diag.info("No hardware key selected")
-        }
-        refresh()
-    }
-}
-
-extension DatabaseKeyChangerVC: DatabaseManagerObserver {
-    func databaseManager(willSaveDatabase urlRef: URLReference) {
-        showProgressOverlay()
-    }
-    
-    func databaseManager(didSaveDatabase urlRef: URLReference) {
-        DatabaseManager.shared.removeObserver(self)
-        hideProgressOverlay()
-        let parentVC = presentingViewController
-        dismiss(animated: true, completion: {
-            let alert = UIAlertController.make(
-                title: LString.databaseStatusSavingDone,
-                message: LString.masterKeySuccessfullyChanged,
-                dismissButtonTitle: LString.actionOK)
-            parentVC?.present(alert, animated: true, completion: nil)
-        })
-    }
-    
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        progressOverlay?.update(with: progress)
-    }
-    
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        Diag.info("Master key change cancelled")
-        DatabaseManager.shared.removeObserver(self)
-        hideProgressOverlay()
-    }
-    
-    func databaseManager(
-        database urlRef: URLReference,
-        savingError error: Error,
-        data: ByteArray?)
-    {
-        showDatabaseSavingError(
-            error,
-            fileName: urlRef.visibleFileName,
-            diagnosticsHandler: nil,
-            exportableData: data,
-            parent: self)
-        DatabaseManager.shared.removeObserver(self)
-        hideProgressOverlay()
-    }
-    
 }
