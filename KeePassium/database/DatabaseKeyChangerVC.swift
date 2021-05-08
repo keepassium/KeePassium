@@ -153,13 +153,15 @@ extension DatabaseKeyChangerVC: UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField === keyFileField {
             passwordField.becomeFirstResponder()
             let popoverAnchor = PopoverAnchor(sourceView: keyFileField, sourceRect: keyFileField.bounds)
-            showKeyFilePicker(at: popoverAnchor)
-            return false 
+            delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
         }
-        return true
     }
 }
 
