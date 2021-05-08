@@ -232,7 +232,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     ) {
         Diag.info("Will change master key")
         
-        let vc = ChangeMasterKeyVC.make(dbRef: databaseRef)
+        let vc = DatabaseKeyChangerVC.make(dbRef: databaseRef)
         viewController.present(vc, animated: true, completion: nil)
     }
     

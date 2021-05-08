@@ -12,7 +12,7 @@
         <!--Change Master Key-->
         <scene sceneID="eXI-X0-3mp">
             <objects>
-                <viewController storyboardIdentifier="ChangeMasterKeyVC" modalPresentationStyle="formSheet" hidesBottomBarWhenPushed="YES" id="Ymj-cN-i1q" customClass="ChangeMasterKeyVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DatabaseKeyChangerVC" modalPresentationStyle="formSheet" hidesBottomBarWhenPushed="YES" id="Ymj-cN-i1q" customClass="DatabaseKeyChangerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="58Q-hF-v4J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
+class DatabaseKeyChangerVC: UIViewController, DatabaseSaving {
    
     @IBOutlet weak var keyboardAdjView: UIView!
     @IBOutlet weak var databaseNameLabel: UILabel!
@@ -30,7 +30,7 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     private var keyFilePickerCoordinator: KeyFilePickerCoordinator?
     
     static func make(dbRef: URLReference) -> UIViewController {
-        let vc = ChangeMasterKeyVC.instantiateFromStoryboard()
+        let vc = DatabaseKeyChangerVC.instantiateFromStoryboard()
         vc.databaseRef = dbRef
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = .formSheet
@@ -209,7 +209,7 @@ class ChangeMasterKeyVC: UIViewController, DatabaseSaving {
     }
 }
 
-extension ChangeMasterKeyVC: UITextFieldDelegate {
+extension DatabaseKeyChangerVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case passwordField:
@@ -238,7 +238,7 @@ extension ChangeMasterKeyVC: UITextFieldDelegate {
     }
 }
 
-extension ChangeMasterKeyVC: ValidatingTextFieldDelegate {
+extension DatabaseKeyChangerVC: ValidatingTextFieldDelegate {
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         switch sender {
         case passwordField, keyFileField:
@@ -270,7 +270,7 @@ extension ChangeMasterKeyVC: ValidatingTextFieldDelegate {
 
 
 
-extension ChangeMasterKeyVC: KeyFilePickerCoordinatorDelegate {
+extension DatabaseKeyChangerVC: KeyFilePickerCoordinatorDelegate {
     func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
         setKeyFile(keyFile)
     }
@@ -299,7 +299,7 @@ extension ChangeMasterKeyVC: KeyFilePickerCoordinatorDelegate {
     }
 }
 
-extension ChangeMasterKeyVC: HardwareKeyPickerCoordinatorDelegate {
+extension DatabaseKeyChangerVC: HardwareKeyPickerCoordinatorDelegate {
     func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
         setYubiKey(yubiKey)
     }
@@ -317,7 +317,7 @@ extension ChangeMasterKeyVC: HardwareKeyPickerCoordinatorDelegate {
     }
 }
 
-extension ChangeMasterKeyVC: DatabaseManagerObserver {
+extension DatabaseKeyChangerVC: DatabaseManagerObserver {
     func databaseManager(willSaveDatabase urlRef: URLReference) {
         showProgressOverlay()
     }
