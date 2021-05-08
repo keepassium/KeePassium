@@ -126,13 +126,13 @@ public class NavigationRouter: NSObject {
         }
     }
     
-    public func pop(animated: Bool) {
+    public func pop(animated: Bool, completion: (()->Void)? = nil) {
         let isLastVC = (navigationController.viewControllers.count == 1)
         if isLastVC {
-            navigationController.dismiss(animated: animated, completion: nil)
+            navigationController.dismiss(animated: animated, completion: completion)
             triggerAndRemovePopHandler(for: navigationController.topViewController!) 
         } else {
-            navigationController.popViewController(animated: animated)
+            navigationController.popViewController(animated: animated, completion: completion)
         }
     }
     
@@ -258,5 +258,21 @@ extension NavigationRouter: ProgressViewHost {
 extension UIViewController {
     func present(_ router: NavigationRouter, animated: Bool, completion: (()->Void)?) {
         present(router.navigationController, animated: true, completion: completion)
+    }
+}
+
+extension UINavigationController {
+    func popViewController(animated: Bool, completion: (()->Void)?) {
+        popViewController(animated: animated)
+        
+        guard animated, let transitionCoordinator = transitionCoordinator else {
+            DispatchQueue.main.async {
+                completion?()
+            }
+            return
+        }
+        transitionCoordinator.animate(alongsideTransition: nil) { _ in
+            completion?()
+        }
     }
 }
