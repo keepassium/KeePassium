@@ -34,7 +34,8 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     var dismissHandler: CoordinatorDismissHandler?
 
     private let primaryRouter: NavigationRouter
-    private let secondaryRouter: NavigationRouter
+    private let placeholderRouter: NavigationRouter
+    private var entryViewerRouter: NavigationRouter?
     private let database: Database
     private let databaseRef: URLReference
     private let loadingWarnings: DatabaseLoadingWarnings?
@@ -42,7 +43,8 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     private weak var currentGroup: Group?
     private weak var currentEntry: Entry?
     
-    private let splitViewController: UISplitViewController
+    private let splitViewController: RootSplitVC
+    private weak var oldSplitDelegate: UISplitViewControllerDelegate?
     private var isSplitViewCollapsed: Bool {
         return splitViewController.isCollapsed
     }
@@ -52,19 +54,21 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     var databaseExporterTemporaryURL: TemporaryFileURL?
     
     init(
-        splitViewController: UISplitViewController,
+        splitViewController: RootSplitVC,
         primaryRouter: NavigationRouter,
-        secondaryRouter: NavigationRouter,
         database: Database,
         databaseRef: URLReference,
         loadingWarnings: DatabaseLoadingWarnings?
     ) {
         self.splitViewController = splitViewController
         self.primaryRouter = primaryRouter
-        self.secondaryRouter = secondaryRouter
         self.database = database
         self.databaseRef = databaseRef
         self.loadingWarnings = loadingWarnings
+        
+        let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
+        let placeholderWrapperVC = UINavigationController(rootViewController: placeholderVC)
+        self.placeholderRouter = NavigationRouter(placeholderWrapperVC)
     }
     
     deinit {
@@ -75,6 +79,9 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     }
     
     func start() {
+        oldSplitDelegate = splitViewController.delegate
+        splitViewController.delegate = self
+        
         settingsNotifications = SettingsNotifications(observer: self)
 
         showGroup(database.root)
@@ -92,10 +99,12 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     }
     
     func refresh() {
-        let topPrimaryVC = primaryRouter.navigationController.topViewController
-        let topSecondaryVC = secondaryRouter.navigationController.topViewController
-        (topPrimaryVC as? Refreshable)?.refresh()
-        (topSecondaryVC as? Refreshable)?.refresh()
+        if let topPrimaryVC = primaryRouter.navigationController.topViewController {
+            (topPrimaryVC as? Refreshable)?.refresh()
+        }
+        if let topSecondaryVC = entryViewerRouter?.navigationController.topViewController {
+            (topSecondaryVC as? Refreshable)?.refresh()
+        }
     }
     
     private func getPresenterForModals() -> UIViewController {
@@ -148,6 +157,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             self.currentGroup = previousGroup
             if previousGroup == nil { 
                 self.showEntry(nil) 
+                self.splitViewController.delegate = self.oldSplitDelegate
                 self.dismissHandler?(self)
                 self.delegate?.didLeaveDatabase(in: self)
             }
@@ -169,9 +179,11 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     private func showEntry(_ entry: Entry?) {
         currentEntry = entry
         guard let entry = entry else {
-            let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
-            secondaryRouter.resetRoot(placeholderVC, animated: false, onPop: nil)
+            if !splitViewController.isCollapsed {
+                splitViewController.setDetailRouter(placeholderRouter)
+            }
             childCoordinators.removeAll(where: { $0 is EntryViewerCoordinator })
+            entryViewerRouter = nil
             return
         }
         
@@ -181,19 +193,24 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             return
         }
         
+        let entryViewerRouter = NavigationRouter(UINavigationController())
         let entryViewerCoordinator = EntryViewerCoordinator(
             entry: entry,
             database: database,
             isHistoryEntry: false,
-            router: secondaryRouter,
+            router: entryViewerRouter,
             progressHost: self 
         )
         entryViewerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
+            self?.entryViewerRouter = nil
         }
         entryViewerCoordinator.delegate = self
         entryViewerCoordinator.start()
         addChildCoordinator(entryViewerCoordinator)
+        
+        self.entryViewerRouter = entryViewerRouter
+        splitViewController.setDetailRouter(entryViewerRouter)
     }
     
     
@@ -563,5 +580,35 @@ extension DatabaseViewerCoordinator: ItemRelocationCoordinatorDelegate {
 extension DatabaseViewerCoordinator: DatabaseKeyChangerCoordinatorDelegate {
     func didChangeDatabaseKey(in coordinator: DatabaseKeyChangerCoordinator) {
         getPresenterForModals().showNotification(LString.masterKeySuccessfullyChanged)
+    }
+}
+
+extension DatabaseViewerCoordinator: UISplitViewControllerDelegate {
+    func splitViewController(
+        _ splitViewController: UISplitViewController,
+        collapseSecondary secondaryViewController: UIViewController,
+        onto primaryViewController: UIViewController
+    ) -> Bool {
+        if secondaryViewController === placeholderRouter.navigationController {
+            return true 
+        }
+        return false
+    }
+
+    func splitViewController(
+        _ splitViewController: UISplitViewController,
+        separateSecondaryFrom primaryViewController: UIViewController
+    ) -> UIViewController? {
+        if let entryViewerRouter = entryViewerRouter {
+            return entryViewerRouter.navigationController
+        }
+        return placeholderRouter.navigationController
+    }
+
+    func primaryViewController(forExpanding splitViewController: UISplitViewController) -> UIViewController? {
+        return primaryRouter.navigationController
+    }
+    func primaryViewController(forCollapsing splitViewController: UISplitViewController) -> UIViewController? {
+        return primaryRouter.navigationController
     }
 }

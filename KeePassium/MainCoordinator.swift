@@ -22,7 +22,6 @@ final class MainCoordinator: Coordinator {
     private let primaryRouter: NavigationRouter
     private let placeholderRouter: NavigationRouter
     private var databaseUnlockerRouter: NavigationRouter?
-    private var databaseViewerRouter: NavigationRouter?
 
     private let watchdog: Watchdog
     fileprivate var appCoverWindow: UIWindow?
@@ -117,22 +116,20 @@ extension MainCoordinator {
         }
         childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
         databaseUnlockerRouter = nil
-        databaseViewerRouter = nil
     }
     
     private func showDatabaseUnlocker(_ databaseRef: URLReference) -> DatabaseUnlockerCoordinator {
-        if let existingDBUnlocker = childCoordinators.first(where: { $0 is DatabaseUnlockerCoordinator }) {
-            rootSplitVC.showDetailViewController(
-                databaseUnlockerRouter!.navigationController, 
-                sender: self)
-            databaseViewerRouter = nil
-            return existingDBUnlocker as! DatabaseUnlockerCoordinator
+        if let databaseUnlockerRouter = databaseUnlockerRouter {
+            rootSplitVC.setDetailRouter(databaseUnlockerRouter)
+            if let existingDBUnlocker = childCoordinators.first(where: { $0 is DatabaseUnlockerCoordinator }) {
+                return existingDBUnlocker as! DatabaseUnlockerCoordinator
+            } else {
+                Diag.warning("Internal inconsistency: router without coordinator")
+                assertionFailure()
+            }
         }
         
-        if databaseUnlockerRouter == nil {
-            let navVC = UINavigationController()
-            databaseUnlockerRouter = NavigationRouter(navVC)
-        }
+        databaseUnlockerRouter = NavigationRouter(UINavigationController())
         let router = databaseUnlockerRouter! 
         
         let newDBUnlockerCoordinator = DatabaseUnlockerCoordinator(
@@ -158,29 +155,28 @@ extension MainCoordinator {
         database: Database,
         warnings: DatabaseLoadingWarnings
     ) {
-        if databaseViewerRouter == nil {
-            databaseViewerRouter = NavigationRouter(UINavigationController())
-        }
-        let contentRouter = databaseViewerRouter! 
-        
         let databaseViewerCoordinator = DatabaseViewerCoordinator(
             splitViewController: rootSplitVC,
             primaryRouter: primaryRouter,
-            secondaryRouter: contentRouter,
             database: database,
             databaseRef: fileRef,
             loadingWarnings: warnings
         )
         databaseViewerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
-            self?.databaseViewerRouter = nil
         }
         databaseViewerCoordinator.delegate = self
         databaseViewerCoordinator.start()
         addChildCoordinator(databaseViewerCoordinator)
-        
-        rootSplitVC.showDetailViewController(contentRouter.navigationController, sender: self)
-        
+
+        if rootSplitVC.isCollapsed {
+            let routerNavController = databaseUnlockerRouter?.navigationController
+            let collapsedSplitNavController = routerNavController?.navigationController
+            collapsedSplitNavController?.viewControllers.removeAll {
+                $0 === databaseUnlockerRouter?.navigationController
+            }
+        }
+
         databaseUnlockerRouter = nil
         childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
     }
@@ -209,9 +205,6 @@ extension MainCoordinator: UISplitViewControllerDelegate {
         _ splitViewController: UISplitViewController,
         separateSecondaryFrom primaryViewController: UIViewController
     ) -> UIViewController? {
-        if databaseViewerRouter != nil {
-            return databaseViewerRouter?.navigationController
-        }
         if databaseUnlockerRouter != nil {
             return databaseUnlockerRouter?.navigationController
         }
@@ -493,7 +486,9 @@ extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
         DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: true) {
             [weak self] error in
             guard let self = self else { return }
-            self.setDatabase(self.selectedDatabaseRef)
+            if !self.rootSplitVC.isCollapsed {
+                self.setDatabase(self.selectedDatabaseRef)
+            }
             if let error = error {
                 self.rootSplitVC.showErrorAlert(error)
             }
