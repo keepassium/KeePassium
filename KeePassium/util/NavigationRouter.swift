@@ -23,7 +23,8 @@ public class NavigationRouter: NSObject {
 
     private var progressOverlay: ProgressOverlay?
     private var wasModalInPresentation = false
-    private var wasNavigationBarHidden = false
+    private var wasNavigationBarUserInteractionEnabled = true
+    private var oldNavigationBarAlpha = CGFloat(1.0)
     
     public var isModalInPresentation: Bool {
         get {
@@ -232,8 +233,14 @@ extension NavigationRouter: ProgressViewHost {
             wasModalInPresentation = navigationController.isModalInPresentation
             navigationController.isModalInPresentation = true
         }
-        wasNavigationBarHidden = navigationController.isNavigationBarHidden
-        navigationController.setNavigationBarHidden(true, animated: true)
+
+        let navigationBar = navigationController.navigationBar
+        oldNavigationBarAlpha = navigationBar.alpha
+        wasNavigationBarUserInteractionEnabled = navigationBar.isUserInteractionEnabled
+        navigationBar.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.3) {
+            navigationBar.alpha = 0.1
+        }
     }
     
     public func updateProgressView(with progress: ProgressEx) {
@@ -242,7 +249,12 @@ extension NavigationRouter: ProgressViewHost {
     
     public func hideProgressView() {
         guard progressOverlay != nil else { return }
-        navigationController.setNavigationBarHidden(wasNavigationBarHidden, animated: true)
+        let navigationBar = navigationController.navigationBar
+        UIView.animate(withDuration: 0.3) { [oldNavigationBarAlpha] in
+            navigationBar.alpha = oldNavigationBarAlpha
+        }
+        navigationBar.isUserInteractionEnabled = wasNavigationBarUserInteractionEnabled
+        
         if #available(iOS 13, *) {
             navigationController.isModalInPresentation = wasModalInPresentation
         }
