@@ -278,7 +278,7 @@
                             <constraint firstItem="cdl-k8-gTg" firstAttribute="top" secondItem="fjp-FI-lys" secondAttribute="top" id="dQA-ql-OqA"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <attributedString key="userComments">
                         <fragment content="Title of the database unlocker dialog."/>
                     </attributedString>
