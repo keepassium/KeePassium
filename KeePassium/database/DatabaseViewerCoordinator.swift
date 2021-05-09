@@ -42,6 +42,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     
     private weak var currentGroup: Group?
     private weak var currentEntry: Entry?
+    private weak var rootGroupViewer: GroupViewerVC?
     
     private let splitViewController: RootSplitVC
     private weak var oldSplitDelegate: UISplitViewControllerDelegate?
@@ -96,6 +97,13 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
                 appVersion: AppInfo.version,
                 occasion: .didOpenDatabase)
         }
+    }
+    
+    private func stop() {
+        guard let rootGroupViewer = rootGroupViewer else {
+            fatalError("No group viewer")
+        }
+        primaryRouter.pop(viewController: rootGroupViewer, animated: true)
     }
     
     func refresh() {
@@ -162,6 +170,10 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
                 self.delegate?.didLeaveDatabase(in: self)
             }
         })
+        
+        if rootGroupViewer == nil {
+            rootGroupViewer = groupViewerVC
+        }
     }
 
     private func selectEntry(_ entry: Entry?) {
@@ -221,6 +233,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
                 self?.getPresenterForModals().showErrorAlert(error)
             } else {
                 Diag.debug("Database locked [reason: \(reason)]")
+                self?.stop()
             }
         }
     }
