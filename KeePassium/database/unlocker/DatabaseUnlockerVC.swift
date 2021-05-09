@@ -63,6 +63,8 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         view.layer.isOpaque = false
         unlockButton.titleLabel?.adjustsFontForContentSizeCategory = true
         
+        announcementButton.isHidden = true 
+        
         lockedOnTimeoutLabel.isHidden = true
         errorMessagePanel.alpha = 0.0
         errorMessagePanel.isHidden = true
