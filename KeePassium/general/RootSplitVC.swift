@@ -15,5 +15,16 @@ class RootSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         
         self.preferredDisplayMode = .allVisible
     }
+    
+    public func setDetailRouter(_ router: NavigationRouter) {
+        if isCollapsed {
+            showDetailViewController(router.navigationController, sender: self)
+        } else {
+            var _viewControllers = viewControllers
+            _viewControllers = _viewControllers.dropLast()
+            _viewControllers.append(router.navigationController)
+            viewControllers = _viewControllers
+        }
+    }
 }
 
