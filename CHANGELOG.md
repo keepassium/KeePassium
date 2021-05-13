@@ -24,7 +24,7 @@
 - Possibilty to add and select custom icons for groups and entries (closes #84) [thanks, Igor]
 - Slovak translation [thanks, onegin1]
 - Thai translation [thanks, poonnawit]
-- Turkish translation [thanks, ofmelnik]
+- Turkish translation [thanks, ofmenlik]
 
 ### Improved
 
