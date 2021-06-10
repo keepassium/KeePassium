@@ -320,7 +320,6 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
 
 extension EntryFieldEditorCoordinator: ItemIconPickerCoordinatorDelegate {
     func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator) {
-        guard standardIcon != entry.iconID else { return }
         entry.iconID = standardIcon
         if let entry2 = entry as? Entry2 {
             entry2.customIconUUID = .ZERO
