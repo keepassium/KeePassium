@@ -144,10 +144,12 @@ final class GroupViewerVC:
         navigationItem.setRightBarButton(createItemButton, animated: false)
         
         isActivateSearch = Settings.current.isStartWithSearch && (group?.isRoot ?? false)
-        
-        searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
+        setupSearch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -155,17 +157,19 @@ final class GroupViewerVC:
 
         refresh()
         
-        DispatchQueue.main.async { [weak self] in
-            self?.setupSearch()
+        navigationItem.hidesSearchBarWhenScrolling = true
+        if isActivateSearch {
+            isActivateSearch = false 
+            DispatchQueue.main.async { [weak searchController] in
+                searchController?.searchBar.becomeFirstResponder()
+            }
         }
     }
     
     
     private func setupSearch() {
-        guard navigationItem.searchController != nil else {
-            assertionFailure()
-            return
-        }
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
 
         searchController.searchBar.searchBarStyle = .default
         searchController.searchBar.returnKeyType = .search
@@ -180,11 +184,6 @@ final class GroupViewerVC:
 
         definesPresentationContext = true
         searchController.searchResultsUpdater = self
-
-        if isActivateSearch {
-            isActivateSearch = false 
-            searchController.searchBar.becomeFirstResponder()
-        }
     }
     
     func refresh() {
