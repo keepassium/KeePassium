@@ -326,9 +326,7 @@ extension DatabasePickerCoordinator: DatabaseCreatorCoordinatorDelegate {
         in databaseCreatorCoordinator: DatabaseCreatorCoordinator,
         database urlRef: URLReference
     ) {
-        Settings.current.startupDatabase = urlRef
         selectDatabase(urlRef, animated: true)
-        delegate?.didSelectDatabase(urlRef, in: self)
     }
 }
 
