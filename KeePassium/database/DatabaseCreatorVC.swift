@@ -195,12 +195,21 @@ extension DatabaseCreatorVC: ValidatingTextFieldDelegate {
 }
 
 extension DatabaseCreatorVC: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField === keyFileField {
+            self.setEditing(false, animated: true)
             setError(message: nil, animated: true)
-            passwordField.becomeFirstResponder()
             let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
             delegate?.didPressPickKeyFile(in: self, at: popoverAnchor)
+        }
+    }
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        if textField === keyFileField { 
             return false
         }
         return true
