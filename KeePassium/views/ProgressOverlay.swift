@@ -64,7 +64,7 @@ class ProgressOverlay: UIView {
         if animated {
             overlay.alpha = 0.0
             parent.addSubview(overlay)
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn, .allowAnimatedContent], animations: {
                 overlay.alpha = 1.0
             }, completion: nil)
         } else {
@@ -94,7 +94,7 @@ class ProgressOverlay: UIView {
         UIView.animate(
             withDuration: 0.3,
             delay: 0,
-            options: [.curveEaseOut, .beginFromCurrentState],
+            options: [.curveEaseOut, .beginFromCurrentState, .allowAnimatedContent],
             animations: {
                 self.alpha = 0.0
             },
@@ -194,7 +194,8 @@ class ProgressOverlay: UIView {
     internal func update(with progress: ProgressEx) {
         statusLabel.text = progress.localizedDescription
         percentLabel.text = String(format: "%.0f%%", 100.0 * progress.fractionCompleted)
-        progressView.setProgress(Float(progress.fractionCompleted), animated: true)
+        let animate = progress.fractionCompleted < 0.99
+        progressView.setProgress(Float(progress.fractionCompleted), animated: animate)
         cancelButton.isEnabled = cancelButton.isEnabled && progress.isCancellable && !progress.isCancelled
         isAnimating = progress.isIndeterminate
         self.progress = progress

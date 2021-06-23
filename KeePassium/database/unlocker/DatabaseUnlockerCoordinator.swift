@@ -11,6 +11,10 @@ import KeePassiumLib
 typealias DatabaseUnlockResult = Result<Database, Error>
 
 protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
+    func shouldAutoUnlockDatabase(
+        _ fileRef: URLReference,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) -> Bool
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator)
     func didNotUnlockDatabase(
         _ fileRef: URLReference,
@@ -45,6 +49,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
         databaseUnlockerVC = DatabaseUnlockerVC.instantiateFromStoryboard()
         self.databaseRef = databaseRef
         databaseUnlockerVC.delegate = self
+        databaseUnlockerVC.shouldAutofocus = true
     }
     
     deinit {
@@ -171,13 +176,24 @@ extension DatabaseUnlockerCoordinator {
     }
     #endif
     
-    public func canUnlockAutomatically() -> Bool {
+    private func canUnlockAutomatically() -> Bool {
         guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef) else {
             return false
         }
         return dbSettings.hasMasterKey
     }
     
+    private func maybeUnlockAutomatically() {
+        guard canUnlockAutomatically() else {
+            return
+        }
+        guard delegate?.shouldAutoUnlockDatabase(databaseRef, in: self) ?? false else {
+            return
+        }
+        router.showProgressView(title: LString.databaseStatusLoading, allowCancelling: true, animated: false)
+        tryToUnlockDatabase()
+    }
+
     private func tryToUnlockDatabase() {
         Diag.clear()
 
@@ -218,6 +234,10 @@ extension DatabaseUnlockerCoordinator {
 }
 
 extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
+    func willAppear(viewController: DatabaseUnlockerVC) {
+        maybeUnlockAutomatically()
+    }
+    
     func didPressSelectKeyFile(
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC

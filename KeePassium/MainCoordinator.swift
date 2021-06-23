@@ -459,6 +459,13 @@ extension MainCoordinator: DatabasePickerCoordinatorDelegate {
 }
 
 extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
+    func shouldAutoUnlockDatabase(
+        _ fileRef: URLReference,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) -> Bool {
+        return rootSplitVC.isCollapsed
+    }
+    
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
     }
     

@@ -219,6 +219,9 @@ extension NavigationRouter: UIAdaptivePresentationControllerDelegate {
 
 extension NavigationRouter: ProgressViewHost {
     public func showProgressView(title: String, allowCancelling: Bool) {
+        showProgressView(title: title, allowCancelling: allowCancelling, animated: true)
+    }
+    public func showProgressView(title: String, allowCancelling: Bool, animated: Bool) {
         if progressOverlay != nil {
             progressOverlay?.title = title
             progressOverlay?.isCancellable = allowCancelling
@@ -227,7 +230,7 @@ extension NavigationRouter: ProgressViewHost {
         progressOverlay = ProgressOverlay.addTo(
             navigationController.view,
             title: title,
-            animated: true)
+            animated: animated)
         progressOverlay?.isCancellable = allowCancelling
         if #available(iOS 13, *) {
             wasModalInPresentation = navigationController.isModalInPresentation

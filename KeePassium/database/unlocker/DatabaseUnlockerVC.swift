@@ -9,6 +9,8 @@
 import KeePassiumLib
 
 protocol DatabaseUnlockerDelegate: class {
+    func willAppear(viewController: DatabaseUnlockerVC)
+    
     func didPressSelectKeyFile(
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC)
@@ -82,6 +84,11 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         
         setKeyFile(keyFileRef)
         setYubiKey(yubiKey)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        delegate?.willAppear(viewController: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
