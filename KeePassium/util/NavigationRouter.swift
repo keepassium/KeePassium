@@ -93,7 +93,7 @@ public class NavigationRouter: NSObject {
     public func push(
         _ viewController: UIViewController,
         animated: Bool,
-        replacePlaceholder: Bool = false,
+        replaceTopViewController: Bool = false,
         onPop popHandler: PopHandler?
     ) {
         if let popHandler = popHandler {
@@ -101,9 +101,8 @@ public class NavigationRouter: NSObject {
             popHandlers[id] = popHandler
         }
         
-        if replacePlaceholder,
-           let topVC = navigationController.topViewController,
-           topVC.isPlaceholder
+        if replaceTopViewController,
+           let topVC = navigationController.topViewController
         {
             var viewControllers = navigationController.viewControllers
             viewControllers[viewControllers.count - 1] = viewController

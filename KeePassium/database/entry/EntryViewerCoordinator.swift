@@ -84,12 +84,19 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     func start() {
         settingsNotifications.startObserving()
         entry.touch(.accessed)
-        router.push(pagesVC, animated: isHistoryEntry, replacePlaceholder: true, onPop: {
-            [weak self] viewController in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+        let topVC = router.navigationController.topViewController
+        let hasPlaceholderOnTop = topVC != nil && topVC is PlaceholderVC
+        router.push(
+            pagesVC,
+            animated: isHistoryEntry,
+            replaceTopViewController: hasPlaceholderOnTop,
+            onPop: {
+                [weak self] viewController in
+                guard let self = self else { return }
+                self.removeAllChildCoordinators()
+                self.dismissHandler?(self)
+            }
+        )
         refresh()
     }
     
