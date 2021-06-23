@@ -90,6 +90,19 @@ public class NavigationRouter: NSObject {
         navigationController.present(viewController, animated: true, completion: completion)
     }
     
+    public func prepareCustomTransition(
+        duration: CFTimeInterval = 0.5,
+        type: CATransitionType = .fade,
+        timingFunction: CAMediaTimingFunctionName = .linear
+    ) {
+        let transition = CATransition()
+        transition.duration = duration
+        transition.timingFunction = CAMediaTimingFunction(name: timingFunction)
+        transition.type = type
+        transition.isRemovedOnCompletion = true
+        navigationController.view.layer.add(transition, forKey: kCATransition)
+    }
+    
     public func push(
         _ viewController: UIViewController,
         animated: Bool,
