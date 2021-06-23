@@ -114,8 +114,7 @@ extension MainCoordinator {
         if !rootSplitVC.isCollapsed {
             rootSplitVC.showDetailViewController(placeholderRouter.navigationController, sender: self)
         }
-        childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
-        databaseUnlockerRouter = nil
+        deallocateDatabaseUnlocker()
     }
     
     private func showDatabaseUnlocker(_ databaseRef: URLReference) -> DatabaseUnlockerCoordinator {
@@ -169,14 +168,10 @@ extension MainCoordinator {
         databaseViewerCoordinator.start()
         addChildCoordinator(databaseViewerCoordinator)
 
-        if rootSplitVC.isCollapsed {
-            let routerNavController = databaseUnlockerRouter?.navigationController
-            let collapsedSplitNavController = routerNavController?.navigationController
-            collapsedSplitNavController?.viewControllers.removeAll {
-                $0 === databaseUnlockerRouter?.navigationController
-            }
-        }
-
+        deallocateDatabaseUnlocker()
+    }
+    
+    private func deallocateDatabaseUnlocker() {
         databaseUnlockerRouter = nil
         childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
     }

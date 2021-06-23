@@ -362,7 +362,7 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
             dbSettings.maybeSetMasterKey(of: database)
         }
         databaseUnlockerVC.clearPasswordField()
-        router.hideProgressView()
+        
         delegate?.didUnlockDatabase(databaseRef, database: database, warnings: warnings, in: self)
     }
 }

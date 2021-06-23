@@ -85,7 +85,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         
         settingsNotifications = SettingsNotifications(observer: self)
 
-        showGroup(database.root)
+        showGroup(database.root, replacingTopVC: splitViewController.isCollapsed)
         showEntry(nil)
         
         settingsNotifications.startObserving()
@@ -145,7 +145,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         addChildCoordinator(diagnosticsViewerCoordinator)
     }
     
-    private func showGroup(_ group: Group?) {
+    private func showGroup(_ group: Group?, replacingTopVC: Bool = false) {
         guard let group = group else {
             Diag.error("The group is nil")
             assertionFailure()
@@ -159,18 +159,32 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         let groupViewerVC = GroupViewerVC.instantiateFromStoryboard()
         groupViewerVC.delegate = self
         groupViewerVC.group = group
-        primaryRouter.push(groupViewerVC, animated: true, onPop: {
-            [weak self, previousGroup] viewController in
-            guard let self = self else { return }
-            self.currentGroup = previousGroup
-            if previousGroup == nil { 
-                self.showEntry(nil) 
-                self.splitViewController.delegate = self.oldSplitDelegate
-                self.dismissHandler?(self)
-                self.delegate?.didLeaveDatabase(in: self)
-            }
-        })
         
+        let isCustomTransition = replacingTopVC
+        if isCustomTransition {
+            primaryRouter.prepareCustomTransition(
+                duration: 0.3,
+                type: .fade,
+                timingFunction: .easeOut
+            )
+        }
+        primaryRouter.push(
+            groupViewerVC,
+            animated: !isCustomTransition,
+            replaceTopViewController: replacingTopVC,
+            onPop: {
+                [weak self, previousGroup] viewController in
+                guard let self = self else { return }
+                self.currentGroup = previousGroup
+                if previousGroup == nil { 
+                    self.showEntry(nil) 
+                    self.splitViewController.delegate = self.oldSplitDelegate
+                    self.dismissHandler?(self)
+                    self.delegate?.didLeaveDatabase(in: self)
+                }
+            }
+        )
+
         if rootGroupViewer == nil {
             rootGroupViewer = groupViewerVC
         }
