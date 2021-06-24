@@ -83,7 +83,8 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             _isEnabled = newValue
             let alpha: CGFloat = _isEnabled ? 1.0 : 0.5
             navigationController?.navigationBar.isUserInteractionEnabled = _isEnabled
-            navigationController?.navigationBar.alpha = alpha
+            navigationItem.leftBarButtonItems?.forEach { $0.isEnabled = _isEnabled }
+            navigationItem.rightBarButtonItems?.forEach { $0.isEnabled = _isEnabled }
             tableView.isUserInteractionEnabled = _isEnabled
             tableView.alpha = alpha
             if let toolbarItems = toolbarItems {
