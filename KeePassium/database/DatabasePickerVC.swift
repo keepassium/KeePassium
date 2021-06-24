@@ -128,15 +128,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let splitVC = splitViewController else { fatalError() }
-        if !splitVC.isCollapsed {
-            navigationItem.backBarButtonItem = UIBarButtonItem(
-                title: LString.actionCloseDatabase,
-                style: .plain,
-                target: nil,
-                action: nil
-            )
-        }
         settingsNotifications.startObserving()
         refresh()
     }
