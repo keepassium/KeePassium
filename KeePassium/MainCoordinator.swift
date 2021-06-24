@@ -495,8 +495,9 @@ extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
             [weak self] error in
             guard let self = self else { return }
             if !self.rootSplitVC.isCollapsed {
-                self.setDatabase(self.selectedDatabaseRef)
+                self.databasePickerCoordinator.selectDatabase(self.selectedDatabaseRef, animated: false)
             }
+            
             if let error = error {
                 self.rootSplitVC.showErrorAlert(error)
             }

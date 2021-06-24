@@ -95,6 +95,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     }
     
     private var databaseRefs: [URLReference] = []
+    private var selectedRef: URLReference?
     
     private var settingsNotifications: SettingsNotifications!
     
@@ -142,6 +143,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     override func viewWillDisappear(_ animated: Bool) {
         settingsNotifications.stopObserving()
         super.viewWillDisappear(animated)
+        selectedRef = nil
     }
     
 
@@ -187,22 +189,34 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         let fileSortOrder = Settings.current.filesSortOrder
         databaseRefs.sort { return fileSortOrder.compare($0, $1) }
         tableView.reloadData()
+        if let selectedRef = selectedRef,
+           delegate?.shouldKeepSelection(in: self) ?? false
+        {
+            selectDatabase(selectedRef, animated: false)
+        }
     }
     
     private func getIndexPath(for fileRef: URLReference) -> IndexPath? {
-        guard let fileIndex = databaseRefs.firstIndex(of: fileRef) else {
+        guard let originalInstance = fileRef.find(in: databaseRefs, fallbackToNamesake: false),
+              let fileIndex = databaseRefs.firstIndex(of: originalInstance)
+        else {
             return nil
         }
         return getIndexPath(for: fileIndex)
     }
     
     public func selectDatabase(_ fileRef: URLReference?, animated: Bool) {
+        selectedRef = fileRef
         if let fileRef = fileRef,
            let indexPathToSelect = getIndexPath(for: fileRef)
         {
-            tableView.selectRow(at: indexPathToSelect, animated: animated, scrollPosition: .middle)
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.selectRow(at: indexPathToSelect, animated: animated, scrollPosition: .none)
+            }
         } else {
-            tableView.selectRow(at: nil, animated: animated, scrollPosition: .none)
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.selectRow(at: nil, animated: animated, scrollPosition: .none)
+            }
         }
     }
     
@@ -366,8 +380,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let shouldKeepSelection = delegate?.shouldKeepSelection(in: self) ?? true
-        if !shouldKeepSelection {
-            tableView.deselectRow(at: indexPath, animated: true)
+        defer {
+            if !shouldKeepSelection {
+                tableView.deselectRow(at: indexPath, animated: true)
+                selectedRef = nil
+            }
         }
         
         switch getCellID(for: indexPath) {
@@ -375,6 +392,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             break
         case .fileItem:
             let selectedDatabaseRef = databaseRefs[indexPath.row]
+            selectedRef = selectedDatabaseRef
             delegate?.didSelectDatabase(selectedDatabaseRef, in: self)
         case .appLockSetup:
             break
