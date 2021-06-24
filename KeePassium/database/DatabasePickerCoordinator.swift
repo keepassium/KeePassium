@@ -57,6 +57,10 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     
     
+    public func setEnabled(_ enabled: Bool) {
+        databasePickerVC.isEnabled = enabled
+    }
+    
     public func selectDatabase(_ fileRef: URLReference?, animated: Bool) {
         selectedDatabase = fileRef
         Settings.current.startupDatabase = fileRef

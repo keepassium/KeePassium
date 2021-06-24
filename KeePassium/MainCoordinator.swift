@@ -22,6 +22,8 @@ final class MainCoordinator: Coordinator {
     private let primaryRouter: NavigationRouter
     private let placeholderRouter: NavigationRouter
     private var databaseUnlockerRouter: NavigationRouter?
+    
+    private var databasePickerCoordinator: DatabasePickerCoordinator!
 
     private let watchdog: Watchdog
     fileprivate var appCoverWindow: UIWindow?
@@ -64,7 +66,8 @@ final class MainCoordinator: Coordinator {
         watchdog.didBecomeActive()
         StoreReviewSuggester.registerEvent(.sessionStart)
 
-        let databasePickerCoordinator = DatabasePickerCoordinator(router: primaryRouter)
+        assert(databasePickerCoordinator == nil)
+        databasePickerCoordinator = DatabasePickerCoordinator(router: primaryRouter)
         databasePickerCoordinator.delegate = self
         databasePickerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
@@ -462,6 +465,7 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
     }
     
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
+        databasePickerCoordinator.setEnabled(false)
     }
     
     func didNotUnlockDatabase(
@@ -470,6 +474,7 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         reason: String?,
         in coordinator: DatabaseUnlockerCoordinator
     ) {
+        databasePickerCoordinator.setEnabled(true)
     }
     
     func didUnlockDatabase(
@@ -478,6 +483,7 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         warnings: DatabaseLoadingWarnings,
         in coordinator: DatabaseUnlockerCoordinator
     ) {
+        databasePickerCoordinator.setEnabled(true)
         showDatabaseViewer(fileRef, database: database, warnings: warnings)
     }
 }

@@ -99,6 +99,13 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
 }
 
 extension DatabaseUnlockerCoordinator {
+    private func disableNavigation() {
+        router.navigationController.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    private func enableNavigation() {
+        router.navigationController.navigationItem.setHidesBackButton(false, animated: true)
+    }
+    
     private func showDiagnostics(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
@@ -191,6 +198,8 @@ extension DatabaseUnlockerCoordinator {
             return
         }
         router.showProgressView(title: LString.databaseStatusLoading, allowCancelling: true, animated: false)
+        disableNavigation()
+        
         tryToUnlockDatabase()
     }
 
@@ -296,6 +305,7 @@ extension DatabaseUnlockerCoordinator: HardwareKeyPickerCoordinatorDelegate {
 extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
     func databaseManager(willLoadDatabase urlRef: URLReference) {
         router.showProgressView(title: LString.databaseStatusLoading, allowCancelling: true)
+        disableNavigation()
     }
     
     func databaseManager(progressDidChange progress: ProgressEx) {
@@ -310,6 +320,7 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         databaseUnlockerVC.refresh()
         databaseUnlockerVC.clearPasswordField()
         router.hideProgressView()
+        enableNavigation()
         
         databaseUnlockerVC.maybeFocusOnPassword()
         
@@ -328,6 +339,7 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
             }
             databaseUnlockerVC.refresh()
             router.hideProgressView()
+            enableNavigation()
             
             databaseUnlockerVC.showErrorMessage(message, haptics: .wrongPassword)
             databaseUnlockerVC.maybeFocusOnPassword()
@@ -339,6 +351,7 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         DatabaseManager.shared.removeObserver(self)
         databaseUnlockerVC.refresh()
         router.hideProgressView()
+        enableNavigation()
         
         if databaseRef.hasPermissionError257 || databaseRef.hasFileMissingError {
             databaseUnlockerVC.showErrorMessage(
@@ -351,6 +364,7 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
             databaseUnlockerVC.showErrorMessage(message, reason: reason, haptics: .error)
         }
         databaseUnlockerVC.maybeFocusOnPassword()
+        delegate?.didNotUnlockDatabase(databaseRef, with: message, reason: reason, in: self)
     }
     
     func databaseManager(didLoadDatabase urlRef: URLReference, warnings: DatabaseLoadingWarnings) {
