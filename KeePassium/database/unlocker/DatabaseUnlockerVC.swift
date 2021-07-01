@@ -43,6 +43,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     @IBOutlet private weak var masterKeyKnownLabel: UILabel!
     @IBOutlet weak var lockDatabaseButton: UIButton!
     @IBOutlet private weak var lockedOnTimeoutLabel: UILabel!
+    @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     
     weak var delegate: DatabaseUnlockerDelegate?
     var shouldAutofocus = false
@@ -64,6 +65,10 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
         unlockButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        
+        keyboardLayoutConstraint.layoutCallback = { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
         
         announcementButton.isHidden = true 
         

@@ -46,10 +46,12 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     
     init(router: NavigationRouter, databaseRef: URLReference) {
         self.router = router
-        databaseUnlockerVC = DatabaseUnlockerVC.instantiateFromStoryboard()
         self.databaseRef = databaseRef
+
+        databaseUnlockerVC = DatabaseUnlockerVC.instantiateFromStoryboard()
         databaseUnlockerVC.delegate = self
         databaseUnlockerVC.shouldAutofocus = true
+        databaseUnlockerVC.databaseRef = databaseRef
     }
     
     deinit {
@@ -168,7 +170,7 @@ extension DatabaseUnlockerCoordinator {
         selectedHardwareKey = yubiKey
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
             dbSettings.maybeSetAssociatedYubiKey(yubiKey)
-        }        
+        }
         databaseUnlockerVC.setYubiKey(yubiKey)
         databaseUnlockerVC.refresh()
     }
@@ -212,7 +214,7 @@ extension DatabaseUnlockerCoordinator {
         DatabaseManager.shared.addObserver(self)
         
         #if AUTOFILL_EXT
-        let challengeHandler = challengeHandlerForAutoFill
+        let challengeHandler = (selectedHardwareKey != nil) ? challengeHandlerForAutoFill : nil
         #elseif MAIN_APP
         let challengeHandler = ChallengeResponseManager.makeHandler(for: selectedHardwareKey)
         #endif

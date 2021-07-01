@@ -10,26 +10,22 @@ import AuthenticationServices
 
 class CredentialProviderViewController: ASCredentialProviderViewController {
 
-    var mainCoordinator: MainCoordinator? 
+    var autoFillCoordinator: AutoFillCoordinator! 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
-        view.layer.isOpaque = false
-        
-        mainCoordinator = MainCoordinator(rootController: self)
+        autoFillCoordinator = AutoFillCoordinator(rootController: self)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        mainCoordinator?.start()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        autoFillCoordinator?.start()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         Watchdog.shared.willResignActive()
-        mainCoordinator?.cleanup()
+        autoFillCoordinator?.cleanup()
         DispatchQueue.main.async {
             exit(0)
         }
@@ -45,7 +41,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
     }
     
     override func didReceiveMemoryWarning() {
-        mainCoordinator?.didReceiveMemoryWarning()
+        autoFillCoordinator?.handleMemoryWarning()
     }
     
     /*
@@ -54,7 +50,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
      prioritize the most relevant credentials in the list.
     */
     override func prepareCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
-        mainCoordinator?.serviceIdentifiers = serviceIdentifiers
+        autoFillCoordinator.serviceIdentifiers = serviceIdentifiers
     }
 
     /*

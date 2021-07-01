@@ -500,10 +500,12 @@ public enum LString {
         comment: "Action: add/import an image as a custom icon"
     )
     
+    #if MAIN_APP
     public static func directionAwareConcatenate(_ parts: [String]) -> String {
         if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
             return parts.reversed().joined()
         }
         return parts.joined()
     }
+    #endif
 }

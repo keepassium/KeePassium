@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--We are sorry-->
+        <!--Crash ReportVC-->
         <scene sceneID="ybW-Bm-tMV">
             <objects>
-                <viewController storyboardIdentifier="CrashReportVC" id="4Bx-SW-Cru" customClass="CrashReportVC" customModule="KeePassium_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CrashReportVC" id="4Bx-SW-Cru" customClass="CrashReportVC" customModule="KeePassiumPro_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JFy-Hg-CtU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmV-si-Nrg">
-                                <rect key="frame" x="16" y="16" width="343" height="174.5"/>
+                                <rect key="frame" x="16" y="16" width="288" height="150"/>
                                 <string key="text">It seems that AutoFill did not close correctly the last time. 
 
 This can happen with large databases or memory-demanding database settings (Argon2).
@@ -28,22 +29,33 @@ Please contact us if you need help with this.</string>
                                 <color key="textColor" name="PrimaryText"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1To-fA-tCt" customClass="MultilineButton" customModule="KeePassiumPro_AutoFill" customModuleProvider="target">
+                                <rect key="frame" x="16" y="176" width="79" height="28"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <state key="normal" title="{Learn more}"/>
+                                <attributedString key="userComments">
+                                    <fragment content="#bc-ignore!"/>
+                                </attributedString>
+                                <connections>
+                                    <action selector="didPressLearnMore:" destination="4Bx-SW-Cru" eventType="touchUpInside" id="RmH-F3-lZd"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="te6-OX-DTW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kmV-si-Nrg" firstAttribute="leading" secondItem="JFy-Hg-CtU" secondAttribute="leadingMargin" id="Fho-ds-Pvo"/>
+                            <constraint firstItem="1To-fA-tCt" firstAttribute="top" secondItem="kmV-si-Nrg" secondAttribute="bottom" constant="10" id="He2-MQ-P3A"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kmV-si-Nrg" secondAttribute="trailing" id="dGC-SM-QwN"/>
+                            <constraint firstItem="1To-fA-tCt" firstAttribute="leading" secondItem="kmV-si-Nrg" secondAttribute="leading" id="ecw-vf-sHK"/>
                             <constraint firstItem="kmV-si-Nrg" firstAttribute="top" secondItem="JFy-Hg-CtU" secondAttribute="topMargin" constant="16" id="uEk-ms-AEV"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="1To-fA-tCt" secondAttribute="trailing" id="w40-fe-TLn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="te6-OX-DTW"/>
                     </view>
-                    <navigationItem key="navigationItem" title="We are sorry" id="zvf-PV-5l4">
-                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="ebS-pB-Qan">
-                            <connections>
-                                <action selector="didPressDismiss:" destination="4Bx-SW-Cru" id="a6a-Li-GpC"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="zvf-PV-5l4"/>
+                    <connections>
+                        <outlet property="learnMoreButton" destination="1To-fA-tCt" id="OPE-5a-Ksg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRZ-3r-naz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,5 +66,8 @@ Please contact us if you need help with this.</string>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

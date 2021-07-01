@@ -255,8 +255,26 @@
 		75814FD425F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */; };
 		75814FD525F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */; };
 		7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
+		75838481268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75838480268B55BF000D2E8B /* UIViewController+subviews.swift */; };
+		75838482268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75838480268B55BF000D2E8B /* UIViewController+subviews.swift */; };
+		75838483268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75838480268B55BF000D2E8B /* UIViewController+subviews.swift */; };
+		75838484268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75838480268B55BF000D2E8B /* UIViewController+subviews.swift */; };
 		75839A90246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */; };
 		75839A91246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */; };
+		7583EA6C2685D1FA009969E7 /* DatabasePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */; };
+		7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */; };
+		7583EA722685D21F009969E7 /* DatabasePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D152309AF540088BB10 /* DatabasePickerVC.storyboard */; };
+		7583EA752685D220009969E7 /* DatabasePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D152309AF540088BB10 /* DatabasePickerVC.storyboard */; };
+		7583EA782685D223009969E7 /* DatabasePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */; };
+		7583EA7B2685D224009969E7 /* DatabasePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */; };
+		7583EA7E2685D34A009969E7 /* SettingsFileSortingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */; };
+		7583EA812685D34B009969E7 /* SettingsFileSortingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */; };
+		7583EA842685D34E009969E7 /* SettingsFileSortingVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEB2309AE860088BB10 /* SettingsFileSortingVC.storyboard */; };
+		7583EA852685D34F009969E7 /* SettingsFileSortingVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEB2309AE860088BB10 /* SettingsFileSortingVC.storyboard */; };
+		7583EA882685D371009969E7 /* Coordinator+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76158262ED2E200B1DE7F /* Coordinator+premium.swift */; };
+		7583EA8B2685D372009969E7 /* Coordinator+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76158262ED2E200B1DE7F /* Coordinator+premium.swift */; };
+		7583EA8F2685D720009969E7 /* AutoFillCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */; };
+		7583EA902685D720009969E7 /* AutoFillCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */; };
 		7584B3F120DD908A0086C094 /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
 		7584CEF024D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
 		7584CEF124D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
@@ -292,6 +310,10 @@
 		758CA5452569B9EA0034EF10 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758CA5432569B9EA0034EF10 /* SwitchCell.swift */; };
 		758CA5462569B9EA0034EF10 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758CA5432569B9EA0034EF10 /* SwitchCell.swift */; };
 		758CA5472569B9EA0034EF10 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758CA5432569B9EA0034EF10 /* SwitchCell.swift */; };
+		758D27212686174C006764C0 /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1E2309AF670088BB10 /* DatabaseUnlockerVC.storyboard */; };
+		758D27222686174C006764C0 /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1E2309AF670088BB10 /* DatabaseUnlockerVC.storyboard */; };
+		758D272426867931006764C0 /* EntryFinderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D272326867931006764C0 /* EntryFinderCoordinator.swift */; };
+		758D272526867931006764C0 /* EntryFinderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D272326867931006764C0 /* EntryFinderCoordinator.swift */; };
 		758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
 		758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
 		758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
@@ -597,7 +619,6 @@
 		75CA73912144381200ADAD64 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
 		75CA919A20E90C3700B286F0 /* EntryChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */; };
 		75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */; };
-		75CBAB9F21C1671F00B8AFE2 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9E21C1671F00B8AFE2 /* MainCoordinator.swift */; };
 		75CBABA121C16CD000B8AFE2 /* FirstSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */; };
 		75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75CD363F21521FAF0018AF46 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD363E21521FAE0018AF46 /* LocalAuthentication.framework */; };
@@ -627,7 +648,6 @@
 		75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */; };
 		75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
-		75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9E21C1671F00B8AFE2 /* MainCoordinator.swift */; };
 		75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
 		75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
 		75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
@@ -1337,7 +1357,9 @@
 		75802630222EBC3800F4525F /* ProgressVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProgressVC.storyboard; sourceTree = "<group>"; };
 		75802633222ED11D00F4525F /* ProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVC.swift; sourceTree = "<group>"; };
 		75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+keyWindow.swift"; sourceTree = "<group>"; };
+		75838480268B55BF000D2E8B /* UIViewController+subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+subviews.swift"; sourceTree = "<group>"; };
 		75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSearchVC.swift; sourceTree = "<group>"; };
+		7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillCoordinator.swift; sourceTree = "<group>"; };
 		7584B3F020DD908A0086C094 /* UITextView+border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+border.swift"; sourceTree = "<group>"; };
 		7584CEF424D208E80063B421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HardwareKeyPicker.storyboard; sourceTree = "<group>"; };
 		7584CEF724D208EC0063B421 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/HardwareKeyPicker.strings"; sourceTree = "<group>"; };
@@ -1376,6 +1398,7 @@
 		758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareTextField.swift; sourceTree = "<group>"; };
 		758CA53C2569B9960034EF10 /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		758CA5432569B9EA0034EF10 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		758D272326867931006764C0 /* EntryFinderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFinderCoordinator.swift; sourceTree = "<group>"; };
 		758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCreatorVC.swift; sourceTree = "<group>"; };
 		758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaving.swift; sourceTree = "<group>"; };
 		758FC0D824CEF71500BAD35C /* appicon-info_iPadProApp_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-info_iPadProApp_83.5@2x.png"; sourceTree = "<group>"; };
@@ -1634,7 +1657,6 @@
 		75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		75CBAB9E21C1671F00B8AFE2 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSetupVC.swift; sourceTree = "<group>"; };
 		75CD363E21521FAE0018AF46 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		75CD364021537A310018AF46 /* AppStoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreHelper.swift; sourceTree = "<group>"; };
@@ -1943,7 +1965,7 @@
 			children = (
 				75CBABA421C16DD400B8AFE2 /* controllers */,
 				75B24DD321C5239D003C9486 /* util */,
-				75CBAB9E21C1671F00B8AFE2 /* MainCoordinator.swift */,
+				7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */,
 				750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */,
 				750CFBCC21BA9ACD00E62B09 /* MainInterface.storyboard */,
 				750CFBCF21BA9ACD00E62B09 /* Info.plist */,
@@ -2164,6 +2186,7 @@
 				755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */,
 				7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */,
 				75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */,
+				75838480268B55BF000D2E8B /* UIViewController+subviews.swift */,
 				753FE83424C1A9A400063FBB /* UIViewController+alerts.swift */,
 				7542D2412129640F00C8A926 /* String+extensions.swift */,
 				7523F71C21C98D620025C706 /* SupportEmailComposer.swift */,
@@ -2464,6 +2487,7 @@
 				751E0D312309AFED0088BB10 /* DatabaseChooserVC.storyboard */,
 				75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */,
 				751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */,
+				758D272326867931006764C0 /* EntryFinderCoordinator.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -2685,6 +2709,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				755E7D99232008300010E199 /* InfoPlist.strings in Resources */,
+				7583EA722685D21F009969E7 /* DatabasePickerVC.storyboard in Resources */,
+				758D27212686174C006764C0 /* DatabaseUnlockerVC.storyboard in Resources */,
 				756AFD64258CF4E40072BEEF /* appstore-family-sharing.html in Resources */,
 				751E0D2F2309AFED0088BB10 /* DatabaseChooserVC.storyboard in Resources */,
 				755B863223054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */,
@@ -2697,6 +2723,7 @@
 				758CA53E2569B9960034EF10 /* SwitchCell.xib in Resources */,
 				75BE064825DB1A9C00B34CC0 /* DiagnosticsViewerVC.storyboard in Resources */,
 				755B863923054FC700E9FC83 /* WelcomeVC.storyboard in Resources */,
+				7583EA842685D34E009969E7 /* SettingsFileSortingVC.storyboard in Resources */,
 				755E7D9F232008300010E199 /* Localizable.strings in Resources */,
 				7513992C25DDD46C00D22DBB /* default.css in Resources */,
 				751E0D292309AFE50088BB10 /* CrashReportVC.storyboard in Resources */,
@@ -2910,6 +2937,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				75D7DFAD233E5E310029AD87 /* InfoPlist.strings in Resources */,
+				7583EA752685D220009969E7 /* DatabasePickerVC.storyboard in Resources */,
+				758D27222686174C006764C0 /* DatabaseUnlockerVC.storyboard in Resources */,
 				756AFD66258CF4E40072BEEF /* appstore-family-sharing.html in Resources */,
 				75D7DFAE233E5E310029AD87 /* DatabaseChooserVC.storyboard in Resources */,
 				75D7DFAF233E5E310029AD87 /* PasscodeInputVC.storyboard in Resources */,
@@ -2922,6 +2951,7 @@
 				758CA5402569B9960034EF10 /* SwitchCell.xib in Resources */,
 				75BE064A25DB1A9C00B34CC0 /* DiagnosticsViewerVC.storyboard in Resources */,
 				75D7DFB5233E5E310029AD87 /* WelcomeVC.storyboard in Resources */,
+				7583EA852685D34F009969E7 /* SettingsFileSortingVC.storyboard in Resources */,
 				75D7DFB6233E5E310029AD87 /* Localizable.strings in Resources */,
 				7513992E25DDD46C00D22DBB /* default.css in Resources */,
 				75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */,
@@ -2980,6 +3010,7 @@
 			files = (
 				75BC562425818564002B4395 /* LString+premium.swift in Sources */,
 				753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */,
+				75838482268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
 				759894B824620AF6006B6709 /* FileExportHelper.swift in Sources */,
@@ -2993,8 +3024,9 @@
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
-				75CBAB9F21C1671F00B8AFE2 /* MainCoordinator.swift in Sources */,
 				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
+				7583EA8F2685D720009969E7 /* AutoFillCoordinator.swift in Sources */,
+				7583EA782685D223009969E7 /* DatabasePickerCoordinator.swift in Sources */,
 				756B15D024C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
@@ -3013,6 +3045,7 @@
 				750CFBD921BAD7FF00E62B09 /* Refreshable.swift in Sources */,
 				757FB3D021F9C52600F016FA /* UITableViewCell+extension.swift in Sources */,
 				75B7870F261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
+				7583EA882685D371009969E7 /* Coordinator+premium.swift in Sources */,
 				758CA5452569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75CFBE2A21C2BDDF0029A80A /* DatabaseUnlockerVC.swift in Sources */,
 				7575B24922D8476300B84B3F /* SearchHelper+extensions.swift in Sources */,
@@ -3020,6 +3053,7 @@
 				75CBABA121C16CD000B8AFE2 /* FirstSetupVC.swift in Sources */,
 				75802635222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
+				758D272426867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
@@ -3036,9 +3070,11 @@
 				75779865223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				754E409926306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
+				7583EA6C2685D1FA009969E7 /* DatabasePickerVC.swift in Sources */,
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */,
+				7583EA7E2685D34A009969E7 /* SettingsFileSortingVC.swift in Sources */,
 				7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */,
 				75BE064025DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				753376F223CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
@@ -3145,6 +3181,7 @@
 				756AE9D320CF8B5E00995846 /* ItemIconPicker.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
 				7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */,
+				75838481268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				75D3A3AF21BAE53F00255FC3 /* FileListCell.swift in Sources */,
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
 				7546FBC320BFC03700C5D834 /* RootNavigationVC.swift in Sources */,
@@ -3307,6 +3344,7 @@
 				75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */,
 				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
 				75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */,
+				75838483268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */,
 				75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */,
 				75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
@@ -3389,6 +3427,7 @@
 			files = (
 				75BC562125818563002B4395 /* LString+premium.swift in Sources */,
 				75D7DF7C233E5E310029AD87 /* SKProduct+extension.swift in Sources */,
+				75838484268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
 				759894BA24620AF6006B6709 /* FileExportHelper.swift in Sources */,
@@ -3402,8 +3441,9 @@
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
 				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
-				75D7DF83233E5E310029AD87 /* MainCoordinator.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
+				7583EA902685D720009969E7 /* AutoFillCoordinator.swift in Sources */,
+				7583EA7B2685D224009969E7 /* DatabasePickerCoordinator.swift in Sources */,
 				756B15D224C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
 				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
@@ -3422,6 +3462,7 @@
 				75D7DF8E233E5E310029AD87 /* Refreshable.swift in Sources */,
 				75D7DF8F233E5E310029AD87 /* UITableViewCell+extension.swift in Sources */,
 				75B78711261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
+				7583EA8B2685D372009969E7 /* Coordinator+premium.swift in Sources */,
 				758CA5472569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75D7DF90233E5E310029AD87 /* DatabaseUnlockerVC.swift in Sources */,
 				75D7DF91233E5E310029AD87 /* SearchHelper+extensions.swift in Sources */,
@@ -3429,6 +3470,7 @@
 				75D7DF93233E5E310029AD87 /* FirstSetupVC.swift in Sources */,
 				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
+				758D272526867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				756F365926112A3B005A35DA /* FileDestructionHelper.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
@@ -3445,9 +3487,11 @@
 				75D7DF9B233E5E310029AD87 /* ProgressViewHost.swift in Sources */,
 				754E409B26306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
+				7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */,
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
 				75D7DFA0233E5E310029AD87 /* SearchHelper.swift in Sources */,
+				7583EA812685D34B009969E7 /* SettingsFileSortingVC.swift in Sources */,
 				75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */,
 				75BE064225DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				753376F423CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
@@ -4649,6 +4693,7 @@
 		750CFBD421BA9ACD00E62B09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium AutoFill/KeePassium_AutoFill-macOS.entitlements";
@@ -4677,6 +4722,7 @@
 		750CFBD521BA9ACD00E62B09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium AutoFill/KeePassium_AutoFill-macOS.entitlements";
@@ -4963,6 +5009,7 @@
 		75D7DFBC233E5E310029AD87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium AutoFill/KeePassium_AutoFill-macOS.entitlements";
@@ -4991,6 +5038,7 @@
 		75D7DFBD233E5E310029AD87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium AutoFill/KeePassium_AutoFill-macOS.entitlements";

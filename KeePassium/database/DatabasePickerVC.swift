@@ -37,14 +37,20 @@ class AppLockSetupCell: UITableViewCell {
 protocol DatabasePickerDelegate: AnyObject {
     func didPressSetupAppLock(in viewController: DatabasePickerVC)
     
+    #if MAIN_APP
     func didPressHelp(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressListOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
-    
+    #else
+    func didPressCancel(in viewController: DatabasePickerVC)
+    #endif
+
     func didPressAddDatabaseOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
-    func didPressCreateDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressAddExistingDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
-    
+    #if MAIN_APP
+    func didPressCreateDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
+    #endif
+
     func didPressExportDatabase(
         _ fileRef: URLReference,
         at popoverAnchor: PopoverAnchor,
@@ -60,6 +66,11 @@ protocol DatabasePickerDelegate: AnyObject {
         in viewController: DatabasePickerVC)
 
     func shouldKeepSelection(in viewController: DatabasePickerVC) -> Bool
+    
+    func getDefaultDatabase(
+        from databases: [URLReference],
+        in viewController: DatabasePickerVC)
+        -> URLReference?
     
     func didSelectDatabase(_ fileRef: URLReference, in viewController: DatabasePickerVC)
 }
@@ -95,7 +106,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
     }
     
-    private var databaseRefs: [URLReference] = []
+    private(set) var databaseRefs: [URLReference] = []
     private var selectedRef: URLReference?
     
     private var settingsNotifications: SettingsNotifications!
@@ -118,16 +129,28 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             self.refreshControl = refreshControl
         }
         clearsSelectionOnViewWillAppear = false
+        
+        #if AUTOFILL_EXT
+        let cancelBarButton = UIBarButtonItem(
+            barButtonSystemItem: .cancel,
+            target: self,
+            action: #selector(didPressCancel(_:)))
+        navigationItem.leftBarButtonItem = cancelBarButton
+        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isToolbarHidden = false
         refresh()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        #if MAIN_APP
+        navigationController?.setToolbarHidden(false, animated: false)
+        #else
+        navigationController?.setToolbarHidden(true, animated: false)
+        #endif
         settingsNotifications.startObserving()
         refresh()
     }
@@ -160,6 +183,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             fileType: .database,
             includeBackup: Settings.current.isBackupFilesVisible)
         sortFileList()
+        
+        if let defaultDatabase = delegate?.getDefaultDatabase(from: databaseRefs, in: self) {
+            selectDatabase(defaultDatabase, animated: false)
+            delegate?.didSelectDatabase(defaultDatabase, in: self)
+        }
 
         fileInfoReloader.getInfo(
             for: databaseRefs,
@@ -213,6 +241,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     }
     
     
+    #if MAIN_APP
     @IBAction func didPressSortButton(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressListOptions(at: popoverAnchor, in: self)
@@ -227,6 +256,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressHelp(at: popoverAnchor, in: self)
     }
+    #else
+    @objc func didPressCancel(_ sender: UIBarButtonItem) {
+        delegate?.didPressCancel(in: self)
+    }
+    #endif
     
     @IBAction func didPressAddDatabase(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
@@ -242,11 +276,13 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             self.delegate?.didPressAddExistingDatabase(at: popoverAnchor, in: self)
         }
         
+        #if MAIN_APP
         optionsSheet.addAction(title: LString.actionCreateDatabase, style: .default) {
             [weak self] _ in
             guard let self = self else { return }
             self.delegate?.didPressCreateDatabase(at: popoverAnchor, in: self)
         }
+        #endif
         
         optionsSheet.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
 

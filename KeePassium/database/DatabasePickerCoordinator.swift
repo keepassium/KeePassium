@@ -20,6 +20,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: DatabasePickerCoordinatorDelegate?
     private(set) var selectedDatabase: URLReference?
+    var shouldSelectDefaultDatabase = false
     
     private let router: NavigationRouter
     private let databasePickerVC: DatabasePickerVC
@@ -68,6 +69,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         delegate?.didSelectDatabase(fileRef, in: self)
     }
     
+    #if MAIN_APP
     private func showAboutScreen(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
@@ -81,6 +83,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         addChildCoordinator(aboutCoordinator)        
         viewController.present(modalRouter, animated: true, completion: nil)
     }
+    #endif
     
     private func showListOptions(
         at popoverAnchor: PopoverAnchor,
@@ -93,6 +96,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         viewController.present(modalRouter, animated: true, completion: nil)
     }
     
+    #if MAIN_APP
     private func showAppSettings(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
@@ -106,18 +110,27 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         addChildCoordinator(settingsCoordinator)
         viewController.present(modalRouter, animated: true, completion: nil)
     }
+    #endif
     
     private func maybeShowAddDatabaseOptions(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
         guard hasValidDatabases() else {
+            #if MAIN_APP
             databasePickerVC.showAddDatabaseOptions(at: popoverAnchor)
+            #else
+            addExistingDatabase(presenter: viewController)
+            #endif
             return
         }
         performPremiumActionOrOfferUpgrade(for: .canUseMultipleDatabases, in: viewController) {
             [weak self] in
+            #if MAIN_APP
             self?.databasePickerVC.showAddDatabaseOptions(at: popoverAnchor)
+            #else
+            self?.addExistingDatabase(presenter: viewController)
+            #endif
         }
     }
     
@@ -130,14 +143,14 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         return accessibleDatabaseRefs.count > 0
     }
     
-    private func addExistingDatabase() {
+    public func addExistingDatabase(presenter: UIViewController) {
         let documentPicker = UIDocumentPickerViewController(
             documentTypes: FileType.databaseUTIs,
             in: .open
         )
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = .pageSheet
-        databasePickerVC.present(documentPicker, animated: true, completion: nil)
+        presenter.present(documentPicker, animated: true, completion: nil)
     }
     
     private func addDatabaseFile(_ url: URL, mode: FileKeeper.OpenMode) {
@@ -156,6 +169,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         )
     }
 
+    #if MAIN_APP
     private func createDatabase() {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let databaseCreatorCoordinator = DatabaseCreatorCoordinator(router: modalRouter)
@@ -168,6 +182,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         databasePickerVC.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(databaseCreatorCoordinator)
     }
+    #endif
 
     private func showDatabaseInfo(
         _ fileRef: URLReference,
@@ -186,6 +201,34 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
 
 extension DatabasePickerCoordinator: DatabasePickerDelegate {
 
+    func getDefaultDatabase(
+        from databases: [URLReference],
+        in viewController: DatabasePickerVC
+    ) -> URLReference? {
+        defer {
+            shouldSelectDefaultDatabase = false
+        }
+        guard shouldSelectDefaultDatabase,
+              Settings.current.isAutoUnlockStartupDatabase
+        else {
+            return nil
+        }
+        
+        #if AUTOFILL_EXT
+        if databases.count == 1,
+           let defaultDatabase = databases.first
+        {
+            return defaultDatabase
+        }
+        #endif
+        if let startupDatabase = Settings.current.startupDatabase,
+           let defaultDatabase = startupDatabase.find(in: databases)
+        {
+            return defaultDatabase
+        }
+        return nil
+    }
+    
     func didPressAddDatabaseOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         maybeShowAddDatabaseOptions(at: popoverAnchor, in: viewController)
     }
@@ -199,10 +242,11 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         viewController.present(passcodeInputVC, animated: true, completion: nil)
     }
     
+    #if MAIN_APP
     func didPressHelp(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         showAboutScreen(at: popoverAnchor, in: viewController)
     }
-    
+        
     func didPressListOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         showListOptions(at: popoverAnchor, in: viewController)
     }
@@ -214,9 +258,14 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     func didPressCreateDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         createDatabase()
     }
+    #else
+    func didPressCancel(in viewController: DatabasePickerVC) {
+        router.pop(viewController: databasePickerVC, animated: true)
+    }
+    #endif
     
     func didPressAddExistingDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
-        addExistingDatabase()
+        addExistingDatabase(presenter: viewController)
     }
     
     func didPressExportDatabase(
@@ -325,6 +374,7 @@ extension DatabasePickerCoordinator: UIDocumentPickerDelegate {
     }
 }
 
+#if MAIN_APP
 extension DatabasePickerCoordinator: DatabaseCreatorCoordinatorDelegate {
     func didCreateDatabase(
         in databaseCreatorCoordinator: DatabaseCreatorCoordinator,
@@ -333,6 +383,7 @@ extension DatabasePickerCoordinator: DatabaseCreatorCoordinatorDelegate {
         selectDatabase(urlRef, animated: true)
     }
 }
+#endif
 
 extension DatabasePickerCoordinator: FileKeeperObserver {
     func fileKeeper(didAddFile urlRef: URLReference, fileType: FileType) {

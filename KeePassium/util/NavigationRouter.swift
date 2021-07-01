@@ -72,9 +72,17 @@ public class NavigationRouter: NSObject {
     }
     
     public func dismiss(animated: Bool) {
+        assert(navigationController.presentingViewController != nil)
         navigationController.dismiss(animated: animated, completion: { [self] in
             self.popAll(animated: animated)
         })
+    }
+    
+    public func dismissModals(animated: Bool, completion: (()->())?) {
+        guard navigationController.presentedViewController != nil else {
+            return
+        }
+        navigationController.dismiss(animated: animated, completion: completion)
     }
     
     public func present(_ router: NavigationRouter, animated: Bool, completion: (()->Void)?) {
@@ -253,7 +261,11 @@ extension NavigationRouter: ProgressViewHost {
         oldNavigationBarAlpha = navigationBar.alpha
         wasNavigationBarUserInteractionEnabled = navigationBar.isUserInteractionEnabled
         navigationBar.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.3) {
+        if animated {
+            UIView.animate(withDuration: 0.3) {
+                navigationBar.alpha = 0.1
+            }
+        } else {
             navigationBar.alpha = 0.1
         }
     }
@@ -263,9 +275,17 @@ extension NavigationRouter: ProgressViewHost {
     }
     
     public func hideProgressView() {
+        hideProgressView(animated: true)
+    }
+    
+    public func hideProgressView(animated: Bool) {
         guard progressOverlay != nil else { return }
         let navigationBar = navigationController.navigationBar
-        UIView.animate(withDuration: 0.3) { [oldNavigationBarAlpha] in
+        if animated {
+            UIView.animate(withDuration: 0.3) { [oldNavigationBarAlpha] in
+                navigationBar.alpha = oldNavigationBarAlpha
+            }
+        } else {
             navigationBar.alpha = oldNavigationBarAlpha
         }
         navigationBar.isUserInteractionEnabled = wasNavigationBarUserInteractionEnabled
@@ -273,7 +293,7 @@ extension NavigationRouter: ProgressViewHost {
         if #available(iOS 13, *) {
             navigationController.isModalInPresentation = wasModalInPresentation
         }
-        progressOverlay?.dismiss(animated: true) {
+        progressOverlay?.dismiss(animated: animated) {
             [weak self] (finished) in
             guard let self = self else { return }
             self.progressOverlay?.removeFromSuperview()

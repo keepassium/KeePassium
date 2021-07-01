@@ -64,9 +64,15 @@ class ProgressOverlay: UIView {
         if animated {
             overlay.alpha = 0.0
             parent.addSubview(overlay)
-            UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn, .allowAnimatedContent], animations: {
-                overlay.alpha = 1.0
-            }, completion: nil)
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: [.curveEaseIn, .allowAnimatedContent],
+                animations: {
+                    overlay.alpha = 1.0
+                },
+                completion: nil
+            )
         } else {
             parent.addSubview(overlay)
         }
@@ -91,14 +97,19 @@ class ProgressOverlay: UIView {
     
     
     func dismiss(animated: Bool, completion: ((Bool) -> Void)? = nil) {
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0,
-            options: [.curveEaseOut, .beginFromCurrentState, .allowAnimatedContent],
-            animations: {
-                self.alpha = 0.0
-            },
-            completion: completion)
+        if animated {
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: [.curveEaseOut, .beginFromCurrentState, .allowAnimatedContent],
+                animations: {
+                    self.alpha = 0.0
+                },
+                completion: completion)
+        } else {
+            self.alpha = 0.0
+            completion?(true)
+        }
     }
     
     private func setupViews() {

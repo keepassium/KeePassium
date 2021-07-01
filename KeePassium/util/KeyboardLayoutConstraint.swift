@@ -29,6 +29,10 @@ import UIKit
 @available(tvOS, unavailable)
 public class KeyboardLayoutConstraint: NSLayoutConstraint {
     
+    public typealias LayoutCallback = ()->()
+    
+    public var layoutCallback: LayoutCallback?
+    
     public var viewOffset: CGFloat = 0 {
         didSet {
             updateConstant()
@@ -71,6 +75,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         }
         
         self.updateConstant()
+        
         switch (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
                 userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)
         {
@@ -80,8 +85,11 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
                 withDuration: TimeInterval(duration.doubleValue),
                 delay: 0,
                 options: options,
-                animations: {
+                animations: { [weak self] in
+                    #if MAIN_APP
                     UIApplication.shared.getKeyWindow()?.layoutIfNeeded()
+                    #endif
+                    self?.layoutCallback?()
                     return
                 },
                 completion: nil)
@@ -95,7 +103,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         self.updateConstant()
         
         guard let userInfo = notification.userInfo else { return }
-            
+
         switch (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
                 userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)
         {
@@ -105,8 +113,11 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
                 withDuration: TimeInterval(duration.doubleValue),
                 delay: 0,
                 options: options,
-                animations: {
+                animations: { [weak self] in
+                    #if MAIN_APP
                     UIApplication.shared.getKeyWindow()?.layoutIfNeeded()
+                    #endif
+                    self?.layoutCallback?()
                     return
                 },
                 completion: nil)

@@ -17,10 +17,10 @@ struct FuzzySearchResults {
     
     var isEmpty: Bool { return exactMatch.isEmpty && partialMatch.isEmpty }
     
-    var hasPerfectMatch: Bool {
-        guard partialMatch.isEmpty && (exactMatch.count == 1) else { return false }
-        let firstGroup = exactMatch.first!
-        return firstGroup.entries.count == 1
+    var perfectMatch: Entry? {
+        guard partialMatch.isEmpty && (exactMatch.count == 1) else { return nil }
+        let firstGroup = exactMatch.first
+        return firstGroup?.entries.first?.entry
     }
 }
 

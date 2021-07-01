@@ -8,20 +8,28 @@
 
 import UIKit
 
-protocol CrashReportDelegate: class {
+protocol CrashReportDelegate: AnyObject {
     func didPressDismiss(in crashReport: CrashReportVC)
 }
 
-class CrashReportVC: UIViewController {
-
+final class CrashReportVC: UIViewController {
+    @IBOutlet weak var learnMoreButton: UIButton!
+    
     public weak var delegate: CrashReportDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        learnMoreButton.setTitle(LString.actionLearnMore, for: .normal)
     }
     
     @IBAction func didPressDismiss(_ sender: Any) {
         delegate?.didPressDismiss(in: self)
+    }
+    
+    @IBAction func didPressLearnMore(_ sender: UIButton) {
+        let helpUrl = URL(string: "https://keepassium.com/articles/autofill-memory-limits/")!
+        let urlOpener = URLOpener(self)
+        urlOpener.open(url: helpUrl)
     }
 }

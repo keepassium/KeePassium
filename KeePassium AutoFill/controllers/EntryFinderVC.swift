@@ -7,20 +7,20 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
-import AuthenticationServices
 
-protocol EntryFinderDelegate: class {
-    func entryFinder(_ sender: EntryFinderVC, didSelectEntry entry: Entry)
-    func entryFinderShouldLockDatabase(_ sender: EntryFinderVC)
+protocol EntryFinderDelegate: AnyObject {
+    func didLoadViewController(_ viewController: EntryFinderVC)
+    func didChangeSearchQuery(_ searchText: String, in viewController: EntryFinderVC)
+    func didSelectEntry(_ entry: Entry, in viewController: EntryFinderVC)
+    func didPressLockDatabase(in viewController: EntryFinderVC)
 }
 
-class EntryFinderCell: UITableViewCell {
+final class EntryFinderCell: UITableViewCell {
     fileprivate static let storyboardID = "EntryFinderCell"
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var iconView: UIImageView!
-    
     
     fileprivate var entry: Entry? {
         didSet {
@@ -37,7 +37,7 @@ class EntryFinderCell: UITableViewCell {
     }
 }
 
-class CallerIDView: UIView {
+final class CallerIDView: UIView {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var copyButton: UIButton!
     
@@ -63,7 +63,7 @@ class CallerIDView: UIView {
     }
 }
 
-class EntryFinderVC: UITableViewController {
+final class EntryFinderVC: UITableViewController {
     private enum CellID {
         static let entry = EntryFinderCell.storyboardID
         static let nothingFound = "NothingFoundCell"
@@ -71,27 +71,18 @@ class EntryFinderVC: UITableViewController {
     @IBOutlet var separatorView: UIView!
     @IBOutlet var callerIDView: CallerIDView!
     
-    weak var database: Database?
     weak var delegate: EntryFinderDelegate?
-    var databaseName: String? {
-        didSet{ refreshDatabaseName() }
-    }
-    var serviceIdentifiers = [ASCredentialServiceIdentifier]() {
-        didSet{ updateSearchCriteria() }
+
+    var callerID: String? {
+        didSet { refreshCallerID() }
     }
     
-    private var searchHelper = SearchHelper()
-    private var searchResults = FuzzySearchResults(exactMatch: [], partialMatch: [])
     private var searchController: UISearchController! 
     private var manualSearchButton: UIBarButtonItem! 
-    
-    private var shouldAutoSelectFirstMatch: Bool = false
-    private var tapGestureRecognizer: UITapGestureRecognizer?
-    
-
+    private var searchResults = FuzzySearchResults(exactMatch: [], partialMatch: [])
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.clearsSelectionOnViewWillAppear = false
         setupSearch()
 
         manualSearchButton = UIBarButtonItem(
@@ -99,24 +90,18 @@ class EntryFinderVC: UITableViewController {
             target: self,
             action: #selector(didPressManualSearch))
         navigationItem.rightBarButtonItem = manualSearchButton
-
-        refreshDatabaseName()
-        updateSearchCriteria()
-        if shouldAutoSelectFirstMatch {
-            setupAutoSelectCancellation()
-        }
+        delegate?.didLoadViewController(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setToolbarHidden(false, animated: true)
+        navigationController?.setToolbarHidden(false, animated: false)
+        refreshCallerID()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if shouldAutoSelectFirstMatch {
-            simulateFirstRowSelection()
-        }
+        navigationController?.navigationBar.isUserInteractionEnabled = true
     }
     
     
@@ -138,88 +123,62 @@ class EntryFinderVC: UITableViewController {
         searchController.delegate = self
         definesPresentationContext = true
     }
-    
-    private func updateSearchCriteria() {
-        guard isViewLoaded, let database = database else { return }
-        
-        var callerID = "?"
-        if !serviceIdentifiers.isEmpty {
-            callerID = serviceIdentifiers
-                .map { $0.identifier }
-                .joined(separator: " | ")
+
+    private func refreshCallerID() {
+        guard isViewLoaded else {
+            return
         }
-        callerIDView.copyButton.isHidden = serviceIdentifiers.isEmpty
+        
+        let hasCallerID = callerID?.isNotEmpty ?? false
+        callerIDView.copyButton.isHidden = !hasCallerID
+        let callerIDText = self.callerID ?? "?"
         callerIDView.textLabel.text = String.localizedStringWithFormat(
             NSLocalizedString(
                 "[AutoFill/Search/callerID]",
                 value: "Caller ID: %@",
                 comment: "An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String]"),
-            callerID
+            callerIDText
         )
-        callerIDView.copyHandler = { view in
+        callerIDView.copyHandler = { (view: CallerIDView) in
             Clipboard.general.insert(
-                text: callerID,
+                text: callerIDText,
                 timeout: TimeInterval(Settings.current.clipboardTimeout.seconds))
             view.blink()
         }
         tableView.tableFooterView = callerIDView
-
-        let automaticResults = searchHelper.find(
-            database: database,
-            serviceIdentifiers: serviceIdentifiers
-        )
-        if !automaticResults.isEmpty {
-            searchResults = automaticResults
-            tableView.reloadData()
-            if automaticResults.hasPerfectMatch {
-                shouldAutoSelectFirstMatch = Settings.current.autoFillPerfectMatch
-                return
-            }
-            return
-        }
+    }
     
-        updateSearchResults(for: searchController)
-        DispatchQueue.main.async {
+    public func setSearchResults(_ newResults: FuzzySearchResults) {
+        searchResults = newResults
+
+        let groupSortOrder = Settings.current.groupSortOrder
+        sort(&searchResults.exactMatch, sortOrder: groupSortOrder)
+        sort(&searchResults.partialMatch, sortOrder: groupSortOrder)
+
+        tableView.reloadData()
+    }
+    
+    private func sort(_ searchResults: inout SearchResults, sortOrder: Settings.GroupSortOrder) {
+        searchResults.sort { sortOrder.compare($0.group, $1.group) }
+        for i in 0..<searchResults.count {
+            searchResults[i].entries.sort { (scoredEntry1, scoredEntry2) in
+                if scoredEntry1.similarityScore == scoredEntry2.similarityScore {
+                    return sortOrder.compare(scoredEntry1.entry, scoredEntry2.entry)
+                } else {
+                    return (scoredEntry2.similarityScore > scoredEntry1.similarityScore)
+                }
+            }
+        }
+    }
+    
+    public func activateManualSearch() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.searchController.isActive = true
-        }
-    }
-    
-    func refreshDatabaseName() {
-        guard isViewLoaded else { return }
-        navigationItem.title = databaseName
-    }
-
-    
-    func setupAutoSelectCancellation() {
-        assert(tapGestureRecognizer == nil)
-        let tapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(handleTableViewTapped)
-        )
-        tableView.addGestureRecognizer(tapGestureRecognizer)
-        self.tapGestureRecognizer = tapGestureRecognizer
-    }
-    
-    @objc private func handleTableViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
-        shouldAutoSelectFirstMatch = false
-        gestureRecognizer.isEnabled = false
-    }
-    
-    private func simulateFirstRowSelection() {
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
-            guard let self = self else { return }
-            if self.shouldAutoSelectFirstMatch {
-                self.tableView.deselectRow(at: indexPath, animated: true)
-            } else {
-                self.tableView.deselectRow(at: indexPath, animated: false)
-            }
-        }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) { [weak self] in
-            guard let self = self else { return }
-            guard self.shouldAutoSelectFirstMatch else { return } 
-            self.tableView(self.tableView, didSelectRowAt: indexPath)
+            self.searchController.searchBar.becomeFirstResponder()
+            
+            let searchText = self.searchController.searchBar.text ?? ""
+            self.delegate?.didChangeSearchQuery(searchText, in: self)
         }
     }
     
@@ -253,7 +212,7 @@ class EntryFinderVC: UITableViewController {
         }
     }
     
-    override open func tableView(
+    override func tableView(
         _ tableView: UITableView,
         titleForHeaderInSection section: Int
         ) -> String?
@@ -320,20 +279,18 @@ class EntryFinderVC: UITableViewController {
         if section < nExactResults {
             let iExactResult = section
             let selectedEntry = searchResults.exactMatch[iExactResult].entries[indexPath.row].entry
-            delegate?.entryFinder(self, didSelectEntry: selectedEntry)
+            delegate?.didSelectEntry(selectedEntry, in: self)
         } else if section == nExactResults {
             assertionFailure("Should not be here")
         } else {
             let iPartialResult = section - nExactResults - 1
             let selectedEntry = searchResults.partialMatch[iPartialResult].entries[indexPath.row].entry
-            delegate?.entryFinder(self, didSelectEntry: selectedEntry)
+            delegate?.didSelectEntry(selectedEntry, in: self)
         }
     }
     
-    @objc func didPressManualSearch(_ sender: Any) {
-        serviceIdentifiers.removeAll()
-        updateSearchCriteria()
-        searchController.searchBar.becomeFirstResponder()
+    @IBAction func didPressManualSearch(_ sender: Any) {
+        activateManualSearch()
     }
     
     @IBAction func didPressLockDatabase(_ sender: UIBarButtonItem) {
@@ -342,7 +299,7 @@ class EntryFinderVC: UITableViewController {
         let lockDatabaseAction = UIAlertAction(title: LString.actionLockDatabase, style: .destructive) {
             [weak self](action) in
             guard let self = self else { return }
-            self.delegate?.entryFinderShouldLockDatabase(self)
+            self.delegate?.didPressLockDatabase(in: self)
         }
         let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
         confirmationAlert.addAction(lockDatabaseAction)
@@ -372,7 +329,7 @@ extension EntryFinderVC: UISearchBarDelegate {
             assertionFailure()
             return
         }
-        delegate?.entryFinder(self, didSelectEntry: firstEntry.entry)
+        delegate?.didSelectEntry(firstEntry.entry, in: self)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -389,32 +346,9 @@ extension EntryFinderVC: UISearchBarDelegate {
 extension EntryFinderVC: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
         Watchdog.shared.restart()
-        guard let searchText = searchController.searchBar.text,
-            let database = database else { return }
-        searchResults.exactMatch = searchHelper
-            .find(database: database, searchText: searchText)
-            .excludingNonAutoFillableEntries()
-        searchResults.partialMatch = []
-        sortSearchResults()
-        tableView.reloadData()
-    }
-
-    private func sortSearchResults() {
-        let groupSortOrder = Settings.current.groupSortOrder
-        sort(&searchResults.exactMatch, sortOrder: groupSortOrder)
-        sort(&searchResults.partialMatch, sortOrder: groupSortOrder)
-    }
-    
-    private func sort(_ searchResults: inout SearchResults, sortOrder: Settings.GroupSortOrder) {
-        searchResults.sort { sortOrder.compare($0.group, $1.group) }
-        for i in 0..<searchResults.count {
-            searchResults[i].entries.sort { (scoredEntry1, scoredEntry2) in
-                if scoredEntry1.similarityScore == scoredEntry2.similarityScore {
-                    return sortOrder.compare(scoredEntry1.entry, scoredEntry2.entry)
-                } else {
-                    return (scoredEntry2.similarityScore > scoredEntry1.similarityScore)
-                }
-            }
+        guard let searchText = searchController.searchBar.text else {
+            return
         }
+        delegate?.didChangeSearchQuery(searchText, in: self)
     }
 }

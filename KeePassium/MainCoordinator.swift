@@ -75,8 +75,8 @@ final class MainCoordinator: Coordinator {
         databasePickerCoordinator.start()
         addChildCoordinator(databasePickerCoordinator)
         
-        let startupDatabase = Settings.current.startupDatabase
-        databasePickerCoordinator.selectDatabase(startupDatabase, animated: false)
+        let isAutoUnlockStartupDatabase = Settings.current.isAutoUnlockStartupDatabase
+        databasePickerCoordinator.shouldSelectDefaultDatabase = isAutoUnlockStartupDatabase
     }
     
     public func processIncomingURL(_ url: URL, openInPlace: Bool) {
@@ -461,7 +461,7 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) -> Bool {
-        return rootSplitVC.isCollapsed
+        return rootSplitVC.isCollapsed && Settings.current.isAutoUnlockStartupDatabase
     }
     
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
