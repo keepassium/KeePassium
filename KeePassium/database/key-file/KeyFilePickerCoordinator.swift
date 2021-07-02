@@ -21,14 +21,12 @@ class KeyFilePickerCoordinator: NSObject, Coordinator {
     
     private var router: NavigationRouter
     private var keyFilePickerVC: KeyFilePickerVC
-    private var addingMode: FileKeeper.OpenMode = .openInPlace
     
-    init(router: NavigationRouter, addingMode: FileKeeper.OpenMode) {
+    init(router: NavigationRouter) {
         self.router = router
         keyFilePickerVC = KeyFilePickerVC.create()
         super.init()
         
-        self.addingMode = addingMode
         keyFilePickerVC.delegate = self
     }
     
@@ -133,6 +131,7 @@ extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
             return
         }
         
+        let addingMode: FileKeeper.OpenMode = FileKeeper.canAccessAppSandbox ? .import : .openInPlace
         let fileKeeper = FileKeeper.shared
         fileKeeper.addFile(
             url: url,

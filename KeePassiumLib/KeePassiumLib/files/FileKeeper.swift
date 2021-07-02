@@ -91,6 +91,14 @@ public class FileKeeper {
         static let externalKeyFiles = ".external.keyFiles"
     }
     
+    public static var canAccessAppSandbox: Bool {
+        if #available(iOS 14, *) {
+            return true
+        } else {
+            return AppGroup.isMainApp
+        }
+    }
+    
     private static let documentsDirectoryName = "Documents"
     private static let inboxDirectoryName = "Inbox"
     private static let backupDirectoryName = "Backup"
@@ -439,6 +447,7 @@ public class FileKeeper {
             processExternalFile(
                 url: sourceURL,
                 fileType: fileType,
+                openMode: openMode,
                 success: mainQueueSuccessHandler,
                 error: mainQueueErrorHandler)
         case .internalDocuments, .internalBackup:
@@ -488,6 +497,7 @@ public class FileKeeper {
     private func processExternalFile(
         url sourceURL: URL,
         fileType: FileType,
+        openMode: OpenMode,
         success successHandler: ((URLReference) -> Void)?,
         error errorHandler: ((FileKeeperError) -> Void)?)
     {
@@ -500,32 +510,18 @@ public class FileKeeper {
             return
         }
         
-        switch fileType {
-        case .database:
+        switch openMode {
+        case .openInPlace:
             addExternalFileRef(
                 url: sourceURL,
                 fileType: fileType,
                 success: { urlRef in
-                    Settings.current.startupDatabase = urlRef
                     FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
-                    Diag.info("External database added successfully")
+                    Diag.info("External file added successfully")
                     successHandler?(urlRef)
                 },
                 error: errorHandler)
-        case .keyFile:
-            guard AppGroup.isMainApp else {
-                addExternalFileRef(
-                    url: sourceURL,
-                    fileType: fileType,
-                    success: { (urlRef) in
-                        FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
-                        Diag.info("External key file added successfully")
-                        successHandler?(urlRef)
-                    },
-                    error: errorHandler
-                )
-                return 
-            }
+        case .import:
             importFile(
                 url: sourceURL,
                 fileProvider: nil, 
@@ -535,7 +531,7 @@ public class FileKeeper {
                             from: url,
                             location: self.getLocation(for: url))
                         FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
-                        Diag.info("External key file imported successfully")
+                        Diag.info("External file imported successfully")
                         successHandler?(urlRef)
                     } catch {
                         Diag.error("""

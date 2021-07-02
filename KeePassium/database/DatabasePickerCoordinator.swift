@@ -364,6 +364,7 @@ extension DatabasePickerCoordinator: UIDocumentPickerDelegate {
             case .open:
                 self.addDatabaseFile(url, mode: .openInPlace)
             case .import:
+                assertionFailure("This will misbehave in AutoFill before iOS 14")
                 self.addDatabaseFile(url, mode: .import)
             default:
                 Diag.warning("Unexpected document picker mode")

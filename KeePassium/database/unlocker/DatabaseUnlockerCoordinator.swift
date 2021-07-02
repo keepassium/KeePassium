@@ -127,10 +127,7 @@ extension DatabaseUnlockerCoordinator {
         in viewController: UIViewController
     ) {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let keyFilePickerCoordinator = KeyFilePickerCoordinator(
-            router: modalRouter,
-            addingMode: .openInPlace
-        )
+        let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
         keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }

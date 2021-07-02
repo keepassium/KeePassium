@@ -279,10 +279,7 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
     
     func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, at popoverAnchor: PopoverAnchor) {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let keyFilePickerCoordinator = KeyFilePickerCoordinator(
-            router: modalRouter,
-            addingMode: .import
-        )
+        let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
         addChildCoordinator(keyFilePickerCoordinator)
         keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
