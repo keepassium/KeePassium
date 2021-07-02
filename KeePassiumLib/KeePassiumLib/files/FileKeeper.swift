@@ -63,6 +63,8 @@ public class FileKeeper {
     }
 
     private enum UserDefaultsKey {
+        static let documentsDirURLReference = "documentsDirURLReference"
+        
         static var mainAppPrefix: String {
             if BusinessModel.type == .prepaid {
                 return "com.keepassium.pro.recentFiles"
@@ -72,6 +74,10 @@ public class FileKeeper {
         }
 
         static var autoFillExtensionPrefix: String {
+            if #available(iOS 14, *) {
+                return mainAppPrefix
+            }
+            
             if BusinessModel.type == .prepaid {
                 return "com.keepassium.pro.autoFill.recentFiles"
             } else {
@@ -110,10 +116,7 @@ public class FileKeeper {
     }
 
     private init() {
-        docDirURL = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)
-            .first!  
-            .standardizedFileURL
+        docDirURL = FileKeeper.getDocumentsDirectoryURL().standardizedFileURL
         inboxDirURL = docDirURL.appendingPathComponent(
             FileKeeper.inboxDirectoryName,
             isDirectory: true)
@@ -140,6 +143,59 @@ public class FileKeeper {
         deleteExpiredBackupFiles()
     }
 
+    private static func getDocumentsDirectoryURL() -> URL {
+        let dirFromFileManager = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first!  
+            .standardizedFileURL
+        if AppGroup.isMainApp {
+            storeURL(
+                dirFromFileManager,
+                location: .internalDocuments,
+                key: UserDefaultsKey.documentsDirURLReference
+            )
+            return dirFromFileManager
+        } else {
+            if #available(iOS 14, *) {
+                guard let docDirUrl = loadURL(key: UserDefaultsKey.documentsDirURLReference) else {
+                    Diag.warning("AutoFill does not know the main app's documents directory. Launch the main app to fix this.")
+                    return dirFromFileManager
+                }
+                return docDirUrl
+            }
+            return dirFromFileManager
+        }
+    }
+    
+    private static func storeURL(_ url: URL, location: URLReference.Location, key: String) {
+        URLReference.create(for: url, location: .internalDocuments) { result in
+            switch result {
+            case .success(let urlRef):
+                let data = urlRef.serialize()
+                UserDefaults.appGroupShared.set(data, forKey: key)
+            case .failure(let error):
+                assertionFailure("This should not happen")
+                Diag.warning("Failed to store URL reference [message: \(error.localizedDescription)]")
+            }
+        }
+    }
+    
+    private static func loadURL(key: String) -> URL? {
+        guard let urlReferenceData = UserDefaults.appGroupShared.data(forKey: key),
+              let urlReference = URLReference.deserialize(from: urlReferenceData)
+        else {
+            return nil
+        }
+        do {
+            let url = try urlReference.resolveSync() 
+            return url
+        } catch {
+            Diag.error("Failed to resolve URL [message: \(error.localizedDescription)]")
+            return nil
+        }
+    }
+    
+    
     fileprivate func getDirectory(for location: URLReference.Location) -> URL? {
         switch location {
         case .internalDocuments:
@@ -271,14 +327,9 @@ public class FileKeeper {
     public func getAllReferences(fileType: FileType, includeBackup: Bool) -> [URLReference] {
         var result: [URLReference] = []
         result.append(contentsOf:getStoredReferences(fileType: fileType, forExternalFiles: true))
-        if AppGroup.isMainApp {
-            let sandboxFileRefs = scanLocalDirectory(docDirURL, fileType: fileType)
-            storeReferences(sandboxFileRefs, fileType: fileType, forExternalFiles: false)
-            result.append(contentsOf: sandboxFileRefs)
-        } else {
-            result.append(contentsOf:
-                getStoredReferences(fileType: fileType, forExternalFiles: false))
-        }
+        
+        let internalDocumentFiles = scanLocalDirectory(docDirURL, fileType: fileType)
+        result.append(contentsOf: internalDocumentFiles)
 
         if includeBackup {
             let backupFileRefs = scanLocalDirectory(backupDirURL, fileType: fileType)

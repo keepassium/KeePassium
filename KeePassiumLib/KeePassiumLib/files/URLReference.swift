@@ -161,24 +161,37 @@ public class URLReference:
         }
         cachedURL = url
         bookmarkedURL = url
+        data = try URLReference.makeBookmarkData(for: url, location: location) 
         self.location = location
-        if location.isInternal {
-            data = Data() 
-        } else {
-            data = try url.bookmarkData(
-                options: URLReference.getBookmarkCreationOptions(),
-                includingResourceValuesForKeys: nil,
-                relativeTo: nil) 
-        }
         processReference()
     }
-
-    private static func getBookmarkCreationOptions() -> URL.BookmarkCreationOptions {
+    
+    private static func makeBookmarkData(for url: URL, location: Location) throws -> Data {
+        let result: Data
+        
+        let options: URL.BookmarkCreationOptions
         if ProcessInfo.isRunningOnMac {
-            return []
+            options = []
         } else {
-            return [.minimalBookmark]
+            options = [.minimalBookmark]
         }
+        
+        if #available(iOS 14, *) {
+            result = try url.bookmarkData(
+                options: options,
+                includingResourceValuesForKeys: nil,
+                relativeTo: nil) 
+        } else {
+            if location.isInternal {
+                result = Data() 
+            } else {
+                result = try url.bookmarkData(
+                    options: options,
+                    includingResourceValuesForKeys: nil,
+                    relativeTo: nil) 
+            }
+        }
+        return result
     }
     
     public static func == (lhs: URLReference, rhs: URLReference) -> Bool {
@@ -450,8 +463,11 @@ public class URLReference:
     
     
     public func resolveSync() throws -> URL {
-        if location.isInternal, let cachedURL = self.cachedURL {
-            return cachedURL
+        if #available(iOS 14, *) {
+        } else {
+            if location.isInternal, let cachedURL = self.cachedURL {
+                return cachedURL
+            }
         }
         
         var isStale = false
@@ -619,8 +635,12 @@ public class URLReference:
                 self.fileProvider = .localStorage
                 return
             }
-            assertionFailure()
-            self.fileProvider = nil
+            if #available(iOS 14, *) {
+                self.fileProvider = .localStorage
+            } else {
+                assertionFailure()
+                self.fileProvider = nil
+            }
         }
     }
 }
