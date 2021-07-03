@@ -697,6 +697,10 @@
 		75DDA56725F3E19900708750 /* UIWindow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDA56525F3E19900708750 /* UIWindow+extensions.swift */; };
 		75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
 		75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
+		75DE6779268F6F69003D4DCC /* BiometricsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */; };
+		75DE677A268F6F69003D4DCC /* BiometricsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */; };
+		75DE677B268F6F69003D4DCC /* BiometricsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */; };
+		75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */; };
 		75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
 		75E4CA5D232C455D00EB6805 /* UserNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */; };
 		75E60AD725CF3B570089219C /* DatabaseIconSetPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75E60AD625CF3B570089219C /* DatabaseIconSetPicker.storyboard */; };
@@ -1657,6 +1661,7 @@
 		75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75DDA56525F3E19900708750 /* UIWindow+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+extensions.swift"; sourceTree = "<group>"; };
 		75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoReloader.swift; sourceTree = "<group>"; };
+		75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsHelper.swift; sourceTree = "<group>"; };
 		75E371932108CA08002602BD /* ProgressOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverlay.swift; sourceTree = "<group>"; };
 		75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameHelper.swift; sourceTree = "<group>"; };
 		75E4CA5E232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2184,6 +2189,7 @@
 				75BE05F925DAA5A200B34CC0 /* URLOpener.swift */,
 				75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */,
 				75DDA56525F3E19900708750 /* UIWindow+extensions.swift */,
+				75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3042,6 +3048,7 @@
 				754E409926306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
 				7583EA6C2685D1FA009969E7 /* DatabasePickerVC.swift in Sources */,
+				75DE677A268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */,
@@ -3117,6 +3124,7 @@
 				758FC18D24CF254000BAD35C /* AppIcon.swift in Sources */,
 				F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */,
 				750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */,
+				75DE6779268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				75679ACB22F8095F00372301 /* AppInfo.swift in Sources */,
 				75781A2D20CA3D7A00BE474F /* SettingsFileSortingVC.swift in Sources */,
 				752B1E9320E8AA070073AABD /* EditableField.swift in Sources */,
@@ -3280,6 +3288,7 @@
 				758FC18E24CF254000BAD35C /* AppIcon.swift in Sources */,
 				75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */,
 				75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */,
+				75DE677B268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				75B38C0C233E5B7C006BDEFC /* SettingsFileSortingVC.swift in Sources */,
 				75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */,
 				759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
@@ -3458,6 +3467,7 @@
 				754E409B26306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
 				7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */,
+				75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
 				75D7DFA0233E5E310029AD87 /* SearchHelper.swift in Sources */,

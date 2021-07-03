@@ -19,6 +19,9 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if #available(iOS 14, *) {
+            cacheKeyboard()
+        }
         autoFillCoordinator?.start()
     }
     
@@ -42,6 +45,16 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
     
     override func didReceiveMemoryWarning() {
         autoFillCoordinator?.handleMemoryWarning()
+    }
+    
+    
+    @available(iOS 14, *)
+    private func cacheKeyboard() {
+        let textField = UITextField()
+        self.view.addSubview(textField)
+        textField.becomeFirstResponder()
+        textField.resignFirstResponder()
+        textField.removeFromSuperview()
     }
     
     /*

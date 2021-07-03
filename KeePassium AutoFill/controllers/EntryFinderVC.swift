@@ -175,7 +175,7 @@ final class EntryFinderVC: UITableViewController {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.searchController.isActive = true
-            self.searchController.searchBar.becomeFirstResponder()
+            self.searchController.searchBar.becomeFirstResponderWhenSafe()
             
             let searchText = self.searchController.searchBar.text ?? ""
             self.delegate?.didChangeSearchQuery(searchText, in: self)
@@ -315,7 +315,7 @@ final class EntryFinderVC: UITableViewController {
 extension EntryFinderVC: UISearchControllerDelegate {
     func didPresentSearchController(_ searchController: UISearchController) {
         DispatchQueue.main.async {
-            searchController.searchBar.becomeFirstResponder()
+            searchController.searchBar.becomeFirstResponderWhenSafe()
         }
     }
 }

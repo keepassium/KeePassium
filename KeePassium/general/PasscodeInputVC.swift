@@ -89,9 +89,7 @@ class PasscodeInputVC: UIViewController {
         refreshBiometricsButton()
         
         if shouldActivateKeyboard {
-            DispatchQueue.main.async { [self] in
-                self.passcodeTextField.becomeFirstResponder()
-            }
+            passcodeTextField.becomeFirstResponderWhenSafe()
         }
         super.viewWillAppear(animated)
     }
@@ -100,9 +98,7 @@ class PasscodeInputVC: UIViewController {
         super.viewDidAppear(animated)
         updateKeyboardLayoutConstraints()
         if shouldActivateKeyboard {
-            DispatchQueue.main.async { [self] in
-                self.passcodeTextField.becomeFirstResponder()
-            }
+            passcodeTextField.becomeFirstResponderWhenSafe()
         }
     }
     
@@ -131,8 +127,8 @@ class PasscodeInputVC: UIViewController {
         }
     }
     
-    func showKeyboard() {
-        passcodeTextField.becomeFirstResponder()
+    public func showKeyboard() {
+        passcodeTextField.becomeFirstResponderWhenSafe()
     }
     
     private func setKeyboardType(_ type: Settings.PasscodeKeyboardType) {

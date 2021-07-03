@@ -176,7 +176,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     
     func maybeFocusOnPassword() {
         if !inputPanel.isHidden {
-            passwordField.becomeFirstResponder()
+            passwordField.becomeFirstResponderWhenSafe()
         }
     }
     

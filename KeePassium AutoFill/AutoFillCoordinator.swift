@@ -206,11 +206,8 @@ extension AutoFillCoordinator: WatchdogDelegate {
         passcodeInputVC.isCancelAllowed = true
         passcodeInputVC.isBiometricsAllowed = shouldUseBiometrics
         passcodeInputVC.modalTransitionStyle = .crossDissolve
-        if #available(iOS 14, *) {
-            passcodeInputVC.shouldActivateKeyboard = true
-        } else {
-            passcodeInputVC.shouldActivateKeyboard = !shouldUseBiometrics
-        }
+
+        passcodeInputVC.shouldActivateKeyboard = !shouldUseBiometrics
 
         rootController.swapChildViewControllers(
             from: router.navigationController,
@@ -265,17 +262,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
             isBiometricAuthShown = false
             return
         }
-
-        if #available(iOS 14, *) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
-                self?.actuallyShowBiometrics()
-            }
-        } else {
-            actuallyShowBiometrics()
-        }
-    }
-
-    private func actuallyShowBiometrics() {
+        
         let context = LAContext()
         let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
         context.localizedFallbackTitle = "" // hide "Enter Password" fallback; nil won't work
@@ -284,6 +271,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
         Diag.debug("Biometric auth: showing request")
         context.evaluatePolicy(policy, localizedReason: LString.titleTouchID) {
             [weak self](authSuccessful, authError) in
+            BiometricsHelper.biometricPromptLastSeenTime = Date.now
             self?.isBiometricAuthShown = false
             if authSuccessful {
                 Diag.info("Biometric auth successful")
@@ -293,10 +281,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
                 }
             } else {
                 Diag.warning("Biometric auth failed [message: \(authError?.localizedDescription ?? "nil")]")
-                DispatchQueue.main.async {
-                    [weak self] in
-                    self?.passcodeInputController?.showKeyboard()
-                }
+                self?.passcodeInputController?.showKeyboard()
             }
         }
         isBiometricAuthShown = true
