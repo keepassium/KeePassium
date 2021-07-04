@@ -216,6 +216,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
         router.dismissModals(animated: false, completion: nil)
         passcodeInputVC.shouldActivateKeyboard = false
         maybeShowBiometricAuth()
+        passcodeInputVC.shouldActivateKeyboard = !isBiometricAuthShown
         self.passcodeInputController = passcodeInputVC
         isPasscodeInputShown = true
     }
