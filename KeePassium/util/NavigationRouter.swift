@@ -86,7 +86,7 @@ public class NavigationRouter: NSObject {
     }
     
     public func present(_ router: NavigationRouter, animated: Bool, completion: (()->Void)?) {
-        navigationController.present(router, animated: true, completion: completion)
+        navigationController.present(router, animated: animated, completion: completion)
     }
     
 
@@ -95,7 +95,7 @@ public class NavigationRouter: NSObject {
         animated: Bool,
         completion: (()->Void)?)
     {
-        navigationController.present(viewController, animated: true, completion: completion)
+        navigationController.present(viewController, animated: animated, completion: completion)
     }
     
     public func prepareCustomTransition(
@@ -141,7 +141,7 @@ public class NavigationRouter: NSObject {
     ) {
         popToRoot(animated: animated)
         let oldRootVC = navigationController.viewControllers.first
-        navigationController.setViewControllers([viewController], animated: false)
+        navigationController.setViewControllers([viewController], animated: animated)
         if oldRootVC != nil {
             triggerAndRemovePopHandler(for: oldRootVC!)
         }
@@ -158,7 +158,7 @@ public class NavigationRouter: NSObject {
     }
     
     public func popTo(viewController: UIViewController, animated: Bool) {
-        navigationController.popToViewController(viewController, animated: true)
+        navigationController.popToViewController(viewController, animated: animated)
     }
     
     public func pop(viewController: UIViewController, animated: Bool) {
@@ -175,8 +175,8 @@ public class NavigationRouter: NSObject {
     }
     
     fileprivate func popAll(animated: Bool) {
-        popToRoot(animated: false)
-        pop(animated: false) 
+        popToRoot(animated: animated)
+        pop(animated: animated) 
     }
     
     fileprivate func triggerAndRemovePopHandler(for viewController: UIViewController) {
@@ -201,7 +201,7 @@ extension NavigationRouter: UINavigationControllerDelegate {
         oldDelegate?.navigationController?(
             navigationController,
             didShow: viewController,
-            animated: true)
+            animated: animated)
     }
     
     public func navigationController(
@@ -210,7 +210,7 @@ extension NavigationRouter: UINavigationControllerDelegate {
         animated: Bool)
     {
         let shouldShowToolbar = (viewController.toolbarItems?.count ?? 0) > 0
-        navigationController.setToolbarHidden(!shouldShowToolbar, animated: true)
+        navigationController.setToolbarHidden(!shouldShowToolbar, animated: animated)
     }
 }
 
@@ -304,7 +304,7 @@ extension NavigationRouter: ProgressViewHost {
 
 extension UIViewController {
     func present(_ router: NavigationRouter, animated: Bool, completion: (()->Void)?) {
-        present(router.navigationController, animated: true, completion: completion)
+        present(router.navigationController, animated: animated, completion: completion)
     }
 }
 
