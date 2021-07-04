@@ -131,6 +131,7 @@ public class DatabaseLoader: ProgressObserver {
         startBackgroundTask()
         startObservingProgress()
         delegate?.databaseLoader(self, willLoadDatabase: dbRef)
+        Diag.info("Database file provider: \(dbRef.fileProvider?.localizedName ?? "nil")")
         progress.status = LString.Progress.contactingStorageProvider
         dbRef.resolveAsync { result in 
             switch result {
