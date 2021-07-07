@@ -10,7 +10,7 @@ import Foundation
 import KeePassiumLib
 
 public protocol ProgressViewHost: AnyObject {
-    func showProgressView(title: String, allowCancelling: Bool)
+    func showProgressView(title: String, allowCancelling: Bool, animated: Bool)
     func updateProgressView(with progress: ProgressEx)
-    func hideProgressView()
+    func hideProgressView(animated: Bool)
 }

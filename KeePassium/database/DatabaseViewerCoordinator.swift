@@ -504,7 +504,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
 }
 
 extension DatabaseViewerCoordinator: ProgressViewHost {
-    public func showProgressView(title: String, allowCancelling: Bool) {
+    public func showProgressView(title: String, allowCancelling: Bool, animated: Bool) {
         if progressOverlay != nil {
             progressOverlay?.title = title
             progressOverlay?.isCancellable = allowCancelling
@@ -513,7 +513,7 @@ extension DatabaseViewerCoordinator: ProgressViewHost {
         progressOverlay = ProgressOverlay.addTo(
             splitViewController.view,
             title: title,
-            animated: true)
+            animated: animated)
         progressOverlay?.isCancellable = allowCancelling
         progressOverlay?.unresponsiveCancelHandler = { [weak self] in
             self?.showDiagnostics()
@@ -525,8 +525,8 @@ extension DatabaseViewerCoordinator: ProgressViewHost {
         progressOverlay?.update(with: progress)
     }
     
-    public func hideProgressView() {
-        progressOverlay?.dismiss(animated: true) { [weak self] finished in
+    public func hideProgressView(animated: Bool) {
+        progressOverlay?.dismiss(animated: animated) { [weak self] finished in
             guard let self = self else { return }
             self.progressOverlay?.removeFromSuperview()
             self.progressOverlay = nil
@@ -537,7 +537,7 @@ extension DatabaseViewerCoordinator: ProgressViewHost {
 extension DatabaseViewerCoordinator: DatabaseManagerObserver {
     
     public func databaseManager(willSaveDatabase urlRef: URLReference) {
-        showProgressView(title: LString.databaseStatusSaving, allowCancelling: false)
+        showProgressView(title: LString.databaseStatusSaving, allowCancelling: false, animated: true)
     }
 
     public func databaseManager(progressDidChange progress: ProgressEx) {
@@ -547,13 +547,13 @@ extension DatabaseViewerCoordinator: DatabaseManagerObserver {
     public func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
         DatabaseManager.shared.removeObserver(self)
         refresh()
-        hideProgressView()
+        hideProgressView(animated: true)
     }
 
     public func databaseManager(didSaveDatabase urlRef: URLReference) {
         DatabaseManager.shared.removeObserver(self)
         refresh()
-        hideProgressView()
+        hideProgressView(animated: true)
     }
     
     public func databaseManager(
@@ -563,7 +563,7 @@ extension DatabaseViewerCoordinator: DatabaseManagerObserver {
     ) {
         DatabaseManager.shared.removeObserver(self)
         refresh()
-        hideProgressView()
+        hideProgressView(animated: true)
         
         showDatabaseSavingError(
             error,

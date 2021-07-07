@@ -187,7 +187,8 @@ extension EntryViewerCoordinator {
                 "[Entry/Files/Add] Loading attachment file",
                 value: "Loading attachment file",
                 comment: "Status message: loading file to be attached to an entry"),
-            allowCancelling: false)
+            allowCancelling: false,
+            animated: true)
         
         let doc = BaseDocument(fileURL: url, fileProvider: nil) 
         doc.open { [weak self] result in
@@ -201,7 +202,7 @@ extension EntryViewerCoordinator {
                 Diag.error("Failed to open file to be attached [message: \(fileAccessError.localizedDescription)]")
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    self.progressHost?.hideProgressView() 
+                    self.progressHost?.hideProgressView(animated: false) 
                     let vc = self.router.navigationController
                     vc.showErrorAlert(fileAccessError)
                 }
@@ -499,7 +500,11 @@ extension EntryViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
 
 extension EntryViewerCoordinator: DatabaseManagerObserver {
     func databaseManager(willSaveDatabase urlRef: URLReference) {
-        progressHost?.showProgressView(title: LString.databaseStatusSaving, allowCancelling: true)
+        progressHost?.showProgressView(
+            title: LString.databaseStatusSaving,
+            allowCancelling: true,
+            animated: true
+        )
     }
     
     func databaseManager(progressDidChange progress: ProgressEx) {
@@ -508,17 +513,17 @@ extension EntryViewerCoordinator: DatabaseManagerObserver {
     
     func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
         DatabaseManager.shared.removeObserver(self)
-        progressHost?.hideProgressView()
+        progressHost?.hideProgressView(animated: true)
     }
     
     func databaseManager(didSaveDatabase urlRef: URLReference) {
         DatabaseManager.shared.removeObserver(self)
-        progressHost?.hideProgressView()
+        progressHost?.hideProgressView(animated: true)
     }
     
     func databaseManager(database urlRef: URLReference, savingError error: Error, data: ByteArray?) {
         DatabaseManager.shared.removeObserver(self)
-        progressHost?.hideProgressView()
+        progressHost?.hideProgressView(animated: true)
         showDatabaseSavingError(
             error,
             fileName: urlRef.visibleFileName,
