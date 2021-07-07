@@ -127,7 +127,6 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
     func didLoadViewController(_ viewController: EntryFinderVC) {
         updateCallerID()
         setupAutomaticSearchResults()
-        router.hideProgressView(animated: true)
     }
     
     func didChangeSearchQuery(_ searchText: String, in viewController: EntryFinderVC) {

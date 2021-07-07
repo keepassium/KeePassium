@@ -59,6 +59,8 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     private(set) var keyFileRef: URLReference?
     private(set) var yubiKey: YubiKey?
     
+    private var progressOverlay: ProgressOverlay?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -293,5 +295,37 @@ extension DatabaseUnlockerVC: UITextFieldDelegate {
             return false
         }
         return true 
+    }
+}
+
+extension DatabaseUnlockerVC: ProgressViewHost {
+    public func showProgressView(title: String, allowCancelling: Bool, animated: Bool) {
+        if progressOverlay != nil {
+            progressOverlay?.title = title
+            progressOverlay?.isCancellable = allowCancelling
+            return
+        }
+        progressOverlay = ProgressOverlay.addTo(
+            view,
+            title: title,
+            animated: animated)
+        progressOverlay?.isCancellable = allowCancelling
+
+        navigationItem.setHidesBackButton(true, animated: animated)
+    }
+    
+    public func updateProgressView(with progress: ProgressEx) {
+        progressOverlay?.update(with: progress)
+    }
+    
+    public func hideProgressView(animated: Bool) {
+        guard progressOverlay != nil else { return }
+        navigationItem.setHidesBackButton(false, animated: animated)
+        progressOverlay?.dismiss(animated: animated) {
+            [weak self] (finished) in
+            guard let self = self else { return }
+            self.progressOverlay?.removeFromSuperview()
+            self.progressOverlay = nil
+        }
     }
 }

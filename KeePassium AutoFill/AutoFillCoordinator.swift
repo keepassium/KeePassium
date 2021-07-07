@@ -387,7 +387,6 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         in coordinator: DatabaseUnlockerCoordinator
     ) {
         Settings.current.isAutoFillFinishedOK = true 
-        router.hideProgressView(animated: true)
         showDatabaseViewer(fileRef, database: database, warnings: warnings)
     }
 }
