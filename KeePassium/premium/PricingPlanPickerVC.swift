@@ -9,7 +9,7 @@
 import KeePassiumLib
 import StoreKit
 
-protocol PricingPlanPickerDelegate: class {
+protocol PricingPlanPickerDelegate: AnyObject {
     func getAvailablePlans() -> [PricingPlan]
     func didPressCancel(in viewController: PricingPlanPickerVC)
     func didPressRestorePurchases(in viewController: PricingPlanPickerVC)

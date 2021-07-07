@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-protocol DatabaseCreatorDelegate: class {
+protocol DatabaseCreatorDelegate: AnyObject {
     func didPressCancel(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressContinue(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressErrorDetails(in databaseCreatorVC: DatabaseCreatorVC)

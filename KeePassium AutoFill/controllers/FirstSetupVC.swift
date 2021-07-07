@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FirstSetupDelegate: class {
+protocol FirstSetupDelegate: AnyObject {
     func didPressCancel(in firstSetup: FirstSetupVC)
     func didPressAddDatabase(in firstSetup: FirstSetupVC, at popoverAnchor: PopoverAnchor)
     func didPressSkip(in firstSetup: FirstSetupVC)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol DatabaseManagerObserver: class {
+public protocol DatabaseManagerObserver: AnyObject {
     func databaseManager(database urlRef: URLReference, isCancelled: Bool)
     
     func databaseManager(progressDidChange progress: ProgressEx)

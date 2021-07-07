@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-protocol DatabaseCreatorCoordinatorDelegate: class {
+protocol DatabaseCreatorCoordinatorDelegate: AnyObject {
     func didCreateDatabase(
         in databaseCreatorCoordinator: DatabaseCreatorCoordinator,
         database urlRef: URLReference)

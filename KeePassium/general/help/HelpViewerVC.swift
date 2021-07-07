@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol HelpViewerDelegate: class {
+protocol HelpViewerDelegate: AnyObject {
     func didPressShare(at popoverAnchor: PopoverAnchor, in viewController: HelpViewerVC)
 }
 

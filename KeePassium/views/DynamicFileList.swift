@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol DynamicFileList: class {
+protocol DynamicFileList: AnyObject {
     var sortingAnimationDuration: TimeInterval { get }
     
     var ongoingUpdateAnimations: Int { get set }

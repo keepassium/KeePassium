@@ -33,7 +33,7 @@ public enum TOTPHashAlgorithm {
     }
 }
 
-public protocol TOTPGenerator: class {
+public protocol TOTPGenerator: AnyObject {
     var elapsedTimeFraction: Float { get }
     
     func generate() -> String

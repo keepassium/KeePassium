@@ -10,7 +10,7 @@ import UIKit
 
 typealias CoordinatorDismissHandler = (Coordinator) -> Void
 
-protocol Coordinator: class {
+protocol Coordinator: AnyObject {
     var childCoordinators: [Coordinator] { get set }
 
     var dismissHandler: CoordinatorDismissHandler? { get set }

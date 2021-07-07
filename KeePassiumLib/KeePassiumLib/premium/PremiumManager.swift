@@ -56,7 +56,7 @@ public enum InAppProduct: String {
 
 
 
-public protocol PremiumManagerDelegate: class {
+public protocol PremiumManagerDelegate: AnyObject {
     func purchaseStarted(in premiumManager: PremiumManager)
     
     func purchaseSucceeded(_ product: InAppProduct, in premiumManager: PremiumManager)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DataCipher: class {
+protocol DataCipher: AnyObject {
     var uuid: UUID { get }
     var initialVectorSize: Int { get }
     var keySize: Int { get }

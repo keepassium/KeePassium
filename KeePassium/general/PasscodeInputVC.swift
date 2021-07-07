@@ -9,7 +9,7 @@
 import KeePassiumLib
 import LocalAuthentication
 
-protocol PasscodeInputDelegate: class {
+protocol PasscodeInputDelegate: AnyObject {
     func passcodeInputDidCancel(_ sender: PasscodeInputVC)
     
     func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool

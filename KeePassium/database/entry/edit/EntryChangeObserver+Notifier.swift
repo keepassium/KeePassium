@@ -9,7 +9,7 @@
 import Foundation
 import KeePassiumLib
 
-protocol EntryChangeObserver: class {
+protocol EntryChangeObserver: AnyObject {
     func entryDidChange(entry: Entry)
 }
 

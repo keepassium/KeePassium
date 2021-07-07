@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 
-protocol AppLockSetupCellDelegate: class {
+protocol AppLockSetupCellDelegate: AnyObject {
     func didPressEnableAppLock(in cell: AppLockSetupCell)
     func didPressClose(in cell: AppLockSetupCell)
 }

@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-protocol WatchdogDelegate: class {
+protocol WatchdogDelegate: AnyObject {
     var isAppCoverVisible: Bool { get }
     func showAppCover(_ sender: Watchdog)
     func hideAppCover(_ sender: Watchdog)

@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol KeyFilePickerDelegate: class {
+protocol KeyFilePickerDelegate: AnyObject {
     func didPressAddKeyFile(in keyFilePicker: KeyFilePickerVC, at popoverAnchor: PopoverAnchor)
     func didSelectFile(in keyFilePicker: KeyFilePickerVC, selectedFile: URLReference?)
     func didPressRemoveOrDeleteFile(

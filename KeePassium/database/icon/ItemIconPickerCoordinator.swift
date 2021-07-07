@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol ItemIconPickerCoordinatorDelegate: class {
+protocol ItemIconPickerCoordinatorDelegate: AnyObject {
     func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator)
     func didSelectIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator)
     func didDeleteIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator)

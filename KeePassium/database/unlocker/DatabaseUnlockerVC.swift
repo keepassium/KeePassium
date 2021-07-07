@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol DatabaseUnlockerDelegate: class {
+protocol DatabaseUnlockerDelegate: AnyObject {
     func willAppear(viewController: DatabaseUnlockerVC)
     
     func didPressSelectKeyFile(

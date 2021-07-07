@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol DatabaseIconSetPickerDelegate: class {
+protocol DatabaseIconSetPickerDelegate: AnyObject {
     func didSelect(iconSet: DatabaseIconSet, in picker: DatabaseIconSetPicker)
 }
 

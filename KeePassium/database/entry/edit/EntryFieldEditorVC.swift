@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-protocol EntryFieldEditorDelegate: class {
+protocol EntryFieldEditorDelegate: AnyObject {
     func didPressCancel(in viewController: EntryFieldEditorVC)
     func didPressDone(in viewController: EntryFieldEditorVC)
 

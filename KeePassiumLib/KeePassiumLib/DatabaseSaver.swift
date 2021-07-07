@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-protocol DatabaseSaverDelegate: class {
+protocol DatabaseSaverDelegate: AnyObject {
     func databaseSaver(_ databaseSaver: DatabaseSaver, willSaveDatabase dbRef: URLReference)
     
     func databaseSaver(

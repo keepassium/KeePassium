@@ -33,7 +33,7 @@ class FileInfoCell: UITableViewCell {
     }
 }
 
-protocol FileInfoSwitchCellDelegate: class {
+protocol FileInfoSwitchCellDelegate: AnyObject {
     func didToggleSwitch(in cell: FileInfoSwitchCell, theSwitch: UISwitch)
 }
 class FileInfoSwitchCell: UITableViewCell {

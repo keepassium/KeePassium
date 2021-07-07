@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol HardwareKeyPickerDelegate: class {
+protocol HardwareKeyPickerDelegate: AnyObject {
     func didSelectKey(_ yubiKey: YubiKey?, in picker: HardwareKeyPicker)
 }
 

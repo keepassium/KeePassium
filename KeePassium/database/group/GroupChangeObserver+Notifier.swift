@@ -9,7 +9,7 @@
 import Foundation
 import KeePassiumLib
 
-protocol GroupChangeObserver: class {
+protocol GroupChangeObserver: AnyObject {
     func groupDidChange(group: Group)
 }
 

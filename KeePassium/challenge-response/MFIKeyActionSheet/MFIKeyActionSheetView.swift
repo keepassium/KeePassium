@@ -45,7 +45,7 @@ class MFIKeyActionSheetViewConfiguration {
 }
 
 
-protocol MFIKeyActionSheetViewDelegate: class {
+protocol MFIKeyActionSheetViewDelegate: AnyObject {
     func mfiKeyActionSheetDidDismiss(_ actionSheet: MFIKeyActionSheetView)
 }
 

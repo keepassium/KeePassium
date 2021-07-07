@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-protocol SettingsBackupTimeoutPickerDelegate: class {
+protocol SettingsBackupTimeoutPickerDelegate: AnyObject {
     func didFinish(_ viewController: SettingsBackupTimeoutPickerVC)
 }
 

@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol DatabaseSaving: class {
+protocol DatabaseSaving: AnyObject {
     var databaseExporterTemporaryURL: TemporaryFileURL? { get set }
     
     func exportDataAsFile(

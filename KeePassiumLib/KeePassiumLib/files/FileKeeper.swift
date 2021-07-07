@@ -42,7 +42,7 @@ public enum FileKeeperError: LocalizedError {
     }
 }
 
-public protocol FileKeeperDelegate: class {
+public protocol FileKeeperDelegate: AnyObject {
     
     func shouldResolveImportConflict(
         target: URL,

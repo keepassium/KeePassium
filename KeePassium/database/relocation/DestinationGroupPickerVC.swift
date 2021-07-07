@@ -9,7 +9,7 @@
 import Foundation
 import KeePassiumLib
 
-protocol DestinationGroupPickerDelegate: class {
+protocol DestinationGroupPickerDelegate: AnyObject {
     func didPressCancel(in groupPicker: DestinationGroupPickerVC)
     func shouldSelectGroup(_ group: Group, in groupPicker: DestinationGroupPickerVC) -> Bool
     func didSelectGroup(_ group: Group, in groupPicker: DestinationGroupPickerVC)

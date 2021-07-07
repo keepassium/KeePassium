@@ -55,7 +55,7 @@ class EditableFieldCellFactory {
     }
 }
 
-internal protocol EditableFieldCellDelegate: class {
+internal protocol EditableFieldCellDelegate: AnyObject {
     func didChangeField(_ field: EditableField, in cell: EditableFieldCell)
     func didPressReturn(for field: EditableField, in cell: EditableFieldCell)
     func didPressButton(
@@ -64,7 +64,7 @@ internal protocol EditableFieldCellDelegate: class {
         in cell: EditableFieldCell)
 }
 
-internal protocol EditableFieldCell: class {
+internal protocol EditableFieldCell: AnyObject {
     var delegate: EditableFieldCellDelegate? { get set }
     var field: EditableField? { get set }
     func validate()

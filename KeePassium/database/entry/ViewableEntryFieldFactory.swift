@@ -12,7 +12,7 @@ import KeePassiumLib
 fileprivate let singlelineFields: [String] =
     [EntryField.title, EntryField.userName, EntryField.password, EntryField.url]
 
-protocol ViewableField: class {
+protocol ViewableField: AnyObject {
     var field: EntryField? { get set }
 
     var internalName: String { get }

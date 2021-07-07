@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol NewsItem: class {
+protocol NewsItem: AnyObject {
     var key: String { get }
     
     var title: String { get }

@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-protocol DatabaseLoaderDelegate: class {
+protocol DatabaseLoaderDelegate: AnyObject {
     func databaseLoader(_ databaseLoader: DatabaseLoader, willLoadDatabase dbRef: URLReference)
     
     func databaseLoader(

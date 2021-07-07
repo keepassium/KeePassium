@@ -6,14 +6,14 @@
 //  Copyright © 2019 Andrei Popleteev. All rights reserved.
 //
 
-public protocol Observer: class {
+public protocol Observer: AnyObject {
 }
 
 public struct Subscriber {
     weak var observer: Observer?
 }
 
-public protocol Observable: class {
+public protocol Observable: AnyObject {
     var subscribers: [ObjectIdentifier: Subscriber] { get set }
 }
 

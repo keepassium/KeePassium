@@ -56,7 +56,7 @@ class ViewableFieldCellFactory {
 }
 
 
-protocol ViewableFieldCellDelegate: class {
+protocol ViewableFieldCellDelegate: AnyObject {
     func cellHeightDidChange(_ cell: ViewableFieldCell)
     
     func cellDidExpand(_ cell: ViewableFieldCell)
@@ -74,7 +74,7 @@ extension ViewableFieldCellDelegate {
 }
 
 
-protocol ViewableFieldCellBase: class {
+protocol ViewableFieldCellBase: AnyObject {
     var nameLabel: UILabel! { get }
     var valueText: UITextView! { get }
     var valueScrollView: UIScrollView! { get }

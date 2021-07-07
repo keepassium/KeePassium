@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol AppIconPickerDelegate: class {
+protocol AppIconPickerDelegate: AnyObject {
     func didSelectIcon(_ appIcon: AppIcon, in appIconPicker: AppIconPicker)
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-protocol WelcomeDelegate: class {
+protocol WelcomeDelegate: AnyObject {
     func didPressCreateDatabase(in welcomeVC: WelcomeVC)
     func didPressAddExistingDatabase(in welcomeVC: WelcomeVC)
 }

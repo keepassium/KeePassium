@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-protocol GroupEditorDelegate: class {
+protocol GroupEditorDelegate: AnyObject {
     func didPressCancel(in groupEditor: GroupEditorVC)
     func didPressDone(in groupEditor: GroupEditorVC)
     func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in groupEditor: GroupEditorVC)

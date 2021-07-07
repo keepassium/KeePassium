@@ -13,7 +13,7 @@ public enum ItemRelocationMode {
     case copy
 }
 
-protocol ItemRelocationCoordinatorDelegate: class {
+protocol ItemRelocationCoordinatorDelegate: AnyObject {
     func didRelocateItems(in coordinator: ItemRelocationCoordinator)
 }
 

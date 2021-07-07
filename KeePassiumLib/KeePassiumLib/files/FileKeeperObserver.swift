@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol FileKeeperObserver: class {
+public protocol FileKeeperObserver: AnyObject {
     func fileKeeper(didAddFile urlRef: URLReference, fileType: FileType)
     func fileKeeper(didRemoveFile urlRef: URLReference, fileType: FileType)
     func fileKeeperHasPendingOperation()

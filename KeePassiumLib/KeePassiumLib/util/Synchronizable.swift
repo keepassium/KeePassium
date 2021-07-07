@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Synchronizable: class {
+public protocol Synchronizable: AnyObject {
     func synchronized<T>(_ handler: ()->(T)) -> T
 }
 

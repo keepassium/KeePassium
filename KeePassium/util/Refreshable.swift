@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Refreshable: class {
+protocol Refreshable: AnyObject {
     func refresh()
 }

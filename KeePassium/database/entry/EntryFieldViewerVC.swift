@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-protocol FieldCopiedViewDelegate: class {
+protocol FieldCopiedViewDelegate: AnyObject {
     func didPressExport(for indexPath: IndexPath, from view: FieldCopiedView)
 }
 

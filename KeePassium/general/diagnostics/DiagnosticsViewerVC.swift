@@ -36,7 +36,7 @@ class DiagnosticsViewerCell: UITableViewCell {
     }
 }
 
-protocol DiagnosticsViewerDelegate: class {
+protocol DiagnosticsViewerDelegate: AnyObject {
     func didPressCopy(in diagnosticsViewer: DiagnosticsViewerVC, text: String)
     func didPressContactSupport(in diagnosticsViewer: DiagnosticsViewerVC, text: String)
 }

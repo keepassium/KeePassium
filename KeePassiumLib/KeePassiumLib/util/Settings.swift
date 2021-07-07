@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SettingsObserver: class {
+public protocol SettingsObserver: AnyObject {
     func settingsDidChange(key: Settings.Keys)
 }
 
