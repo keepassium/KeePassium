@@ -95,6 +95,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        clearPasswordField()
         delegate?.willAppear(viewController: self)
     }
     
