@@ -170,7 +170,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
 
     #if MAIN_APP
-    private func createDatabase() {
+    public func createDatabase(presenter: UIViewController) {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let databaseCreatorCoordinator = DatabaseCreatorCoordinator(router: modalRouter)
         databaseCreatorCoordinator.delegate = self
@@ -179,7 +179,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         }
         databaseCreatorCoordinator.start()
         
-        databasePickerVC.present(modalRouter, animated: true, completion: nil)
+        presenter.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(databaseCreatorCoordinator)
     }
     #endif
@@ -256,7 +256,7 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     }
     
     func didPressCreateDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
-        createDatabase()
+        createDatabase(presenter: viewController)
     }
     #else
     func didPressCancel(in viewController: DatabasePickerVC) {

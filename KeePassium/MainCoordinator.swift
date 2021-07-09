@@ -75,6 +75,12 @@ final class MainCoordinator: Coordinator {
         databasePickerCoordinator.start()
         addChildCoordinator(databasePickerCoordinator)
         
+        showPlaceholder()
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.maybeShowOnboarding()
+        }
+        
         let isAutoUnlockStartupDatabase = Settings.current.isAutoUnlockStartupDatabase
         databasePickerCoordinator.shouldSelectDefaultDatabase = isAutoUnlockStartupDatabase
     }
@@ -111,6 +117,18 @@ extension MainCoordinator {
         
         let dbUnlocker = showDatabaseUnlocker(databaseRef)
         dbUnlocker.setDatabase(databaseRef)
+    }
+    
+    private func maybeShowOnboarding() {
+        let files = FileKeeper.shared.getAllReferences(fileType: .database, includeBackup: true)
+        guard files.isEmpty else {
+            return 
+        }
+        
+        let welcomeVC = WelcomeVC.make(delegate: self)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        modalRouter.push(welcomeVC, animated: false, onPop: nil)
+        rootSplitVC.present(modalRouter, animated: true, completion: nil)
     }
     
     private func showPlaceholder() {
@@ -411,6 +429,26 @@ extension MainCoordinator: PasscodeInputDelegate {
     func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {
         assert(canUseBiometrics)
         performBiometricUnlock()
+    }
+}
+
+extension MainCoordinator: WelcomeDelegate {
+    func didPressCreateDatabase(in welcomeVC: WelcomeVC) {
+        welcomeVC.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.databasePickerCoordinator.createDatabase(
+                presenter: self.rootSplitVC
+            )
+        }
+    }
+    
+    func didPressAddExistingDatabase(in welcomeVC: WelcomeVC) {
+        welcomeVC.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.databasePickerCoordinator.addExistingDatabase(
+                presenter: self.rootSplitVC
+            )
+        }
     }
 }
 
