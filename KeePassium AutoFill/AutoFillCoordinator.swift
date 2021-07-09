@@ -192,6 +192,16 @@ extension AutoFillCoordinator {
 }
 
 extension AutoFillCoordinator: WatchdogDelegate {
+    var isAppCoverVisible: Bool {
+        return false
+    }
+    
+    func showAppCover(_ sender: Watchdog) {
+    }
+    
+    func hideAppCover(_ sender: Watchdog) {
+    }
+    
     var isAppLockVisible: Bool {
         return isBiometricAuthShown || isPasscodeInputShown
     }

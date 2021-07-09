@@ -8,25 +8,29 @@
 
 import KeePassiumLib
 
+public enum DatabaseLockReason: CustomStringConvertible {
+    case userRequest
+    case loadingWarning
+    case databaseTimeout
+    
+    public var description: String {
+        switch self {
+        case .userRequest:
+            return "User request"
+        case .loadingWarning:
+            return "Loading warning"
+        case .databaseTimeout:
+            return "Database timeout"
+        }
+    }
+}
+
 protocol DatabaseViewerCoordinatorDelegate: AnyObject {
     func didLeaveDatabase(in coordinator: DatabaseViewerCoordinator)
 }
 
 final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     
-    private enum DatabaseLockReason: CustomStringConvertible {
-        case userRequest
-        case loadingWarning
-        
-        var description: String {
-            switch self {
-            case .userRequest:
-                return "User request"
-            case .loadingWarning:
-                return "Loading warning"
-            }
-        }
-    }
     
     var childCoordinators = [Coordinator]()
     
@@ -240,7 +244,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     }
     
     
-    private func lockDatabase(reason: DatabaseLockReason) {
+    public func lockDatabase(reason: DatabaseLockReason) {
         DatabaseManager.shared.closeDatabase(clearStoredKey: true, ignoreErrors: false) {
             [weak self] (error) in
             if let error = error {

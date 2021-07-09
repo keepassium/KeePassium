@@ -21,16 +21,6 @@ protocol WatchdogDelegate: AnyObject {
     func watchdogDidCloseDatabase(_ sender: Watchdog)
 }
 
-extension WatchdogDelegate {
-    var isAppCoverVisible: Bool { return false }
-    func showAppCover(_ sender: Watchdog) { }
-    func hideAppCover(_ sender: Watchdog) { }
-    var isAppLockVisible: Bool { return false }
-    func showAppLock(_ sender: Watchdog) { }
-    func hideAppLock(_ sender: Watchdog) { }
-    func watchdogDidCloseDatabase(_ sender: Watchdog) { }
-}
-
 fileprivate extension WatchdogDelegate {
     var isAppLocked: Bool {
         return isAppLockVisible

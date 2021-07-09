@@ -110,7 +110,6 @@
 		7544A187261610DE000C0492 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544A184261610DE000C0492 /* PhotoPicker.swift */; };
 		7544A188261610DE000C0492 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544A184261610DE000C0492 /* PhotoPicker.swift */; };
 		7546FBC120BFB8DD00C5D834 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC020BFB8DD00C5D834 /* WelcomeVC.swift */; };
-		7546FBC320BFC03700C5D834 /* RootNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */; };
 		7546FBC620C1027700C5D834 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC520C1027700C5D834 /* SettingsVC.swift */; };
 		7546FBD920C3A3F600C5D834 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
 		7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDA20C3AC5E00C5D834 /* main.swift */; };
@@ -482,7 +481,6 @@
 		75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
 		75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
-		75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */; };
 		75B38C28233E5B7C006BDEFC /* DatabasePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */; };
 		75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
 		75B38C2A233E5B7C006BDEFC /* EntryFileViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */; };
@@ -1067,7 +1065,6 @@
 		7542D2412129640F00C8A926 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		7544A184261610DE000C0492 /* PhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		7546FBC020BFB8DD00C5D834 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
-		7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationVC.swift; sourceTree = "<group>"; };
 		7546FBC520C1027700C5D834 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7546FBD820C3A3F600C5D834 /* Watchdog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watchdog.swift; sourceTree = "<group>"; };
 		7546FBDA20C3AC5E00C5D834 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -2346,7 +2343,6 @@
 				7579A06224F0728F00C98F24 /* changelog */,
 				7588B6C02627319700F5D372 /* password-generator */,
 				759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */,
-				7546FBC220BFC03700C5D834 /* RootNavigationVC.swift */,
 				7550D24B215FDEC500360E0C /* AppCoverVC.swift */,
 				75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */,
 				757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */,
@@ -3163,7 +3159,6 @@
 				75838481268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				75D3A3AF21BAE53F00255FC3 /* FileListCell.swift in Sources */,
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
-				7546FBC320BFC03700C5D834 /* RootNavigationVC.swift in Sources */,
 				75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75EA64182098FC0500DDB941 /* DatabasePickerVC.swift in Sources */,
 				753FE83524C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
@@ -3326,7 +3321,6 @@
 				75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */,
 				75838483268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */,
-				75B38C27233E5B7C006BDEFC /* RootNavigationVC.swift in Sources */,
 				75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75B38C28233E5B7C006BDEFC /* DatabasePickerVC.swift in Sources */,
 				753FE83724C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,

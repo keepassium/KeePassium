@@ -24,6 +24,7 @@ final class MainCoordinator: Coordinator {
     private var databaseUnlockerRouter: NavigationRouter?
     
     private var databasePickerCoordinator: DatabasePickerCoordinator!
+    private var databaseViewerCoordinator: DatabaseViewerCoordinator?
 
     private let watchdog: Watchdog
     fileprivate var appCoverWindow: UIWindow?
@@ -184,10 +185,12 @@ extension MainCoordinator {
         )
         databaseViewerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
+            self?.databaseViewerCoordinator = nil
         }
         databaseViewerCoordinator.delegate = self
         databaseViewerCoordinator.start()
         addChildCoordinator(databaseViewerCoordinator)
+        self.databaseViewerCoordinator = databaseViewerCoordinator
 
         deallocateDatabaseUnlocker()
     }
@@ -398,6 +401,10 @@ extension MainCoordinator: WatchdogDelegate {
         print("Biometrics background hidden")
     }
     
+    func watchdogDidCloseDatabase(_ sender: Watchdog) {
+        databaseViewerCoordinator?.lockDatabase(reason: .databaseTimeout)
+        
+    }
 }
 
 extension MainCoordinator: PasscodeInputDelegate {
