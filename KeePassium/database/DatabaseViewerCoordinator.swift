@@ -177,7 +177,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             animated: !isCustomTransition,
             replaceTopViewController: replacingTopVC,
             onPop: {
-                [weak self, previousGroup] viewController in
+                [weak self, previousGroup] in
                 guard let self = self else { return }
                 self.currentGroup = previousGroup
                 if previousGroup == nil { 

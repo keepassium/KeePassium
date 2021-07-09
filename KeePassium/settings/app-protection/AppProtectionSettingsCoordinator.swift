@@ -34,7 +34,7 @@ final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
     }
     
     func start() {
-        router.push(appProtectionSettingsVC, animated: true, onPop: { [weak self] viewController in
+        router.push(appProtectionSettingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

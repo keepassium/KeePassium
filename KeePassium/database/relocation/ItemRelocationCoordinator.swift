@@ -66,8 +66,7 @@ class ItemRelocationCoordinator: Coordinator, DatabaseSaving {
                 action: #selector(didPressDismissButton))
             groupPicker.navigationItem.leftBarButtonItem = leftButton
         }
-        router.push(groupPicker, animated: true, onPop: {
-            [weak self] (viewController) in
+        router.push(groupPicker, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

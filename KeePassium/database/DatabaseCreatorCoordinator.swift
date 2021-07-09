@@ -46,8 +46,7 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
                 action: #selector(didPressDismissButton))
             databaseCreatorVC.navigationItem.leftBarButtonItem = leftButton
         }
-        router.push(databaseCreatorVC, animated: true, onPop: {
-            [weak self] (viewController) in
+        router.push(databaseCreatorVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

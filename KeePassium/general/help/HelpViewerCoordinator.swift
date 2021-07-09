@@ -43,8 +43,7 @@ class HelpViewerCoordinator: NSObject, Coordinator {
             helpViewerVC.navigationItem.leftBarButtonItem = leftButton
         }
         
-        router.push(helpViewerVC, animated: true, onPop: {
-            [weak self] (viewController) in
+        router.push(helpViewerVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

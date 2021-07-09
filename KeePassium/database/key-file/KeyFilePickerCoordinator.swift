@@ -48,8 +48,7 @@ class KeyFilePickerCoordinator: NSObject, Coordinator {
             keyFilePickerVC.navigationItem.leftBarButtonItem = cancelButton
         }
         
-        router.push(keyFilePickerVC, animated: true, onPop: {
-            [weak self] viewController in
+        router.push(keyFilePickerVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

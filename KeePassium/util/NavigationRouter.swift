@@ -13,7 +13,7 @@ public protocol NavigationRouterDismissAttemptDelegate: AnyObject {
 }
 
 public class NavigationRouter: NSObject {
-    public typealias PopHandler = ((UIViewController) -> ())
+    public typealias PopHandler = (() -> ())
     
     public private(set) var navigationController: UINavigationController
     private var popHandlers = [ObjectIdentifier: PopHandler]()

@@ -79,8 +79,7 @@ final class EntryFieldEditorCoordinator: Coordinator, DatabaseSaving {
     }
     
     func start() {
-        router.push(fieldEditorVC, animated: true, onPop: {
-            [weak self] viewController in
+        router.push(fieldEditorVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

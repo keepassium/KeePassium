@@ -29,7 +29,7 @@ final class AboutCoordinator: Coordinator {
     
     func start() {
         setupDoneButton()
-        router.push(aboutVC, animated: true, onPop: { [weak self] viewController in
+        router.push(aboutVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

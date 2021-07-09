@@ -90,8 +90,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
             pagesVC,
             animated: isHistoryEntry,
             replaceTopViewController: hasPlaceholderOnTop,
-            onPop: {
-                [weak self] viewController in
+            onPop: { [weak self] in
                 guard let self = self else { return }
                 self.removeAllChildCoordinators()
                 self.dismissHandler?(self)

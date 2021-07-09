@@ -36,7 +36,7 @@ final class HardwareKeyPickerCoordinator: Coordinator, Refreshable {
     
     func start() {
         setupCancelButton(in: hardwareKeyPickerVC)
-        router.push(hardwareKeyPickerVC, animated: true, onPop: { [weak self] viewController in
+        router.push(hardwareKeyPickerVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

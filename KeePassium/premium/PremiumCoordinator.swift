@@ -45,8 +45,7 @@ class PremiumCoordinator: NSObject, Coordinator {
 
     func start(tryRestoringPurchasesFirst: Bool) {
         premiumManager.delegate = self
-        router.push(planPicker, animated: true, onPop: {
-            [weak self] (viewController) in
+        router.push(planPicker, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

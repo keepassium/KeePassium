@@ -44,8 +44,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     
     func start() {
-        router.push(databasePickerVC, animated: false, onPop: {
-            [weak self] viewController in
+        router.push(databasePickerVC, animated: false, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

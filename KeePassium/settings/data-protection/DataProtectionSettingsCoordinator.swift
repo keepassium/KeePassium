@@ -28,8 +28,7 @@ final class DataProtectionSettingsCoordinator: Coordinator, Refreshable {
     }
     
     func start() {
-        router.push(dataProtectionSettingsVC, animated: true, onPop: {
-            [weak self] viewController in
+        router.push(dataProtectionSettingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

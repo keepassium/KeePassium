@@ -35,7 +35,7 @@ final class SettingsCoordinator: Coordinator, Refreshable {
     
     func start() {
         setupDoneButton(in: settingsVC)
-        router.push(settingsVC, animated: true, onPop: { [weak self] viewController in
+        router.push(settingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

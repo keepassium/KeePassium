@@ -27,8 +27,7 @@ class AppIconSwitcherCoordinator: Coordinator {
     }
     
     func start() {
-        router.push(picker, animated: true, onPop: {
-            [weak self] (viewController) in
+        router.push(picker, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

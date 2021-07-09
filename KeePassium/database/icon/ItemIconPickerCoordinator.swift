@@ -52,8 +52,7 @@ class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
         refresh()
         iconPicker.selectIcon(for: item)
         
-        router.push(iconPicker, animated: true, onPop: {
-            [weak self] (viewController) in
+        router.push(iconPicker, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)

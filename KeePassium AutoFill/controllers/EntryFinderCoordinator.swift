@@ -64,8 +64,7 @@ final class EntryFinderCoordinator: Coordinator {
             entryFinderVC,
             animated: false, 
             replaceTopViewController: true,
-            onPop: {
-                [weak self] viewController in
+            onPop: { [weak self] in
                 guard let self = self else { return }
                 self.dismissHandler?(self)
                 self.delegate?.didLeaveDatabase(in: self)
