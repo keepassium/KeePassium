@@ -54,6 +54,9 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         return splitViewController.isCollapsed
     }
     
+    private var oldPrimaryRouterDetailDismissalHandler:
+        NavigationRouter.CollapsedDetailDismissalHandler?
+    
     private var progressOverlay: ProgressOverlay?
     private var settingsNotifications: SettingsNotifications!
     var databaseExporterTemporaryURL: TemporaryFileURL?
@@ -87,6 +90,14 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         oldSplitDelegate = splitViewController.delegate
         splitViewController.delegate = self
         
+        oldPrimaryRouterDetailDismissalHandler = primaryRouter.collapsedDetailDismissalHandler
+        primaryRouter.collapsedDetailDismissalHandler = { [weak self] dismissedVC in
+            guard let self = self else { return }
+            if dismissedVC === self.entryViewerRouter?.navigationController {
+                self.showEntry(nil)
+            }
+        }
+
         settingsNotifications = SettingsNotifications(observer: self)
 
         showGroup(database.root, replacingTopVC: splitViewController.isCollapsed)
@@ -183,6 +194,8 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
                 if previousGroup == nil { 
                     self.showEntry(nil) 
                     self.splitViewController.delegate = self.oldSplitDelegate
+                    self.primaryRouter.collapsedDetailDismissalHandler =
+                        self.oldPrimaryRouterDetailDismissalHandler
                     self.dismissHandler?(self)
                     self.delegate?.didLeaveDatabase(in: self)
                 }
@@ -212,14 +225,21 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             if !splitViewController.isCollapsed {
                 splitViewController.setDetailRouter(placeholderRouter)
             }
-            childCoordinators.removeAll(where: { $0 is EntryViewerCoordinator })
+            entryViewerRouter?.popAll()
             entryViewerRouter = nil
+            childCoordinators.removeAll(where: { $0 is EntryViewerCoordinator })
             return
         }
         
         if let existingCoordinator = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
             let entryViewerCoordinator = existingCoordinator as! EntryViewerCoordinator 
             entryViewerCoordinator.setEntry(entry, database: database, isHistoryEntry: false)
+            guard let entryViewerRouter = self.entryViewerRouter else {
+                Diag.error("Coordinator without a router, aborting")
+                assertionFailure()
+                return
+            }
+            splitViewController.setDetailRouter(entryViewerRouter)
             return
         }
         

@@ -14,11 +14,14 @@ public protocol NavigationRouterDismissAttemptDelegate: AnyObject {
 
 public class NavigationRouter: NSObject {
     public typealias PopHandler = (() -> ())
+    public typealias CollapsedDetailDismissalHandler = ((UIViewController) -> ())
     
     public private(set) var navigationController: UINavigationController
-    private var popHandlers = [ObjectIdentifier: PopHandler]()
+    private var popHandlers = [(ObjectIdentifier, PopHandler, String)]()
     private weak var oldDelegate: UINavigationControllerDelegate?
 
+    public var collapsedDetailDismissalHandler: CollapsedDetailDismissalHandler?
+    
     weak var dismissAttemptDelegate: NavigationRouterDismissAttemptDelegate? = nil
 
     private var progressOverlay: ProgressOverlay?
@@ -64,17 +67,21 @@ public class NavigationRouter: NSObject {
         oldDelegate = navigationController.delegate
         super.init()
 
-        navigationController.delegate = self
+        if oldDelegate !== self {
+            navigationController.delegate = self
+        }
     }
     
     deinit {
+        popAll() 
         navigationController.delegate = oldDelegate
     }
     
     public func dismiss(animated: Bool) {
         assert(navigationController.presentingViewController != nil)
-        navigationController.dismiss(animated: animated, completion: { [self] in
-            self.popAll(animated: animated)
+        navigationController.dismiss(animated: animated, completion: {
+            [self] in 
+            self.popAll()
         })
     }
     
@@ -119,7 +126,7 @@ public class NavigationRouter: NSObject {
     ) {
         if let popHandler = popHandler {
             let id = ObjectIdentifier(viewController)
-            popHandlers[id] = popHandler
+            popHandlers.append((id, popHandler, viewController.debugDescription))
         }
         
         if replaceTopViewController,
@@ -128,22 +135,9 @@ public class NavigationRouter: NSObject {
             var viewControllers = navigationController.viewControllers
             viewControllers[viewControllers.count - 1] = viewController
             navigationController.setViewControllers(viewControllers, animated: animated)
-            triggerAndRemovePopHandler(for: topVC)
+            firePopHandler(for: topVC)
         } else {
             navigationController.pushViewController(viewController, animated: animated)
-        }
-    }
-    
-    public func resetRoot(
-        _ viewController: UIViewController,
-        animated: Bool,
-        onPop popHandler: PopHandler?
-    ) {
-        popToRoot(animated: animated)
-        let oldRootVC = navigationController.viewControllers.first
-        navigationController.setViewControllers([viewController], animated: animated)
-        if oldRootVC != nil {
-            triggerAndRemovePopHandler(for: oldRootVC!)
         }
     }
     
@@ -151,7 +145,7 @@ public class NavigationRouter: NSObject {
         let isLastVC = (navigationController.viewControllers.count == 1)
         if isLastVC {
             navigationController.dismiss(animated: animated, completion: completion)
-            triggerAndRemovePopHandler(for: navigationController.topViewController!) 
+            firePopHandler(for: navigationController.topViewController!) 
         } else {
             navigationController.popViewController(animated: animated, completion: completion)
         }
@@ -167,37 +161,89 @@ public class NavigationRouter: NSObject {
             return
         }
         popTo(viewController: viewController, animated: animated)
-        pop(animated: animated) 
+        pop(animated: animated)
     }
     
     public func popToRoot(animated: Bool) {
         navigationController.popToRootViewController(animated: animated)
     }
     
-    fileprivate func popAll(animated: Bool) {
-        popToRoot(animated: animated)
-        pop(animated: animated) 
+    public func popAll() {
+        fireAllPopHandlers()
+        navigationController.setViewControllers([UIViewController()], animated: false)
+    }
+       
+    private func fireAllPopHandlers() {
+        while let (_, popHandler, _) = popHandlers.popLast() {
+            popHandler()
+        }
     }
     
-    fileprivate func triggerAndRemovePopHandler(for viewController: UIViewController) {
+    private func firePopHandler(for viewController: UIViewController) {
         let id = ObjectIdentifier(viewController)
-        if let popHandler = popHandlers[id] {
-            popHandler(viewController)
-            popHandlers.removeValue(forKey: id)
+        guard let index = popHandlers.lastIndex(where: { $0.0 == id }) else {
+            return
         }
+        let popHandler = popHandlers[index].1
+        popHandler()
+        popHandlers.remove(at: index)
+    }
+    
+    private func firePopHandlersBetween(
+        _ upper: UIViewController,
+        _ lower: UIViewController,
+        ignoreUpper: Bool
+    ) {
+        let upperID = ObjectIdentifier(upper)
+        let lowerID = ObjectIdentifier(lower)
+        guard (popHandlers.last?.0 == upperID) || ignoreUpper else {
+            return
+        }
+        guard let index = popHandlers.lastIndex(where: { $0.0 == lowerID }) else {
+            assertionFailure()
+            return
+        }
+        let handlersToPop = popHandlers.suffix(from: index + 1).reversed()
+        handlersToPop.forEach { (_id, _popHandler, _description) in
+            _popHandler()
+        }
+        popHandlers.removeLast(handlersToPop.count)
     }
 }
 
 extension NavigationRouter: UINavigationControllerDelegate {
+    private func isCollapsedSplitVC(_ viewController: UINavigationController) -> Bool {
+        let parentVC = viewController.parent
+        guard let splitVC = parentVC as? UISplitViewController else {
+            return false
+        }
+        let isCollapsed = splitVC.isCollapsed
+        return isCollapsed
+    }
+    
     public func navigationController(
         _ navigationController: UINavigationController,
         didShow viewController: UIViewController,
         animated: Bool)
     {
         guard let fromVC = navigationController.transitionCoordinator?.viewController(forKey: .from),
-            !navigationController.viewControllers.contains(fromVC)
-            else { return }
-        triggerAndRemovePopHandler(for: fromVC)
+              !navigationController.viewControllers.contains(fromVC),
+              !(fromVC is UISplitViewController) 
+        else {
+            oldDelegate?.navigationController?(
+                navigationController,
+                didShow: viewController,
+                animated: animated)
+            return
+        }
+        
+        let didDismissCollapsedDetailView =
+            isCollapsedSplitVC(navigationController) && (fromVC is UINavigationController)
+        if didDismissCollapsedDetailView {
+            collapsedDetailDismissalHandler?(fromVC)
+        }
+        
+        firePopHandlersBetween(fromVC, viewController, ignoreUpper: didDismissCollapsedDetailView)
         oldDelegate?.navigationController?(
             navigationController,
             didShow: viewController,
@@ -232,7 +278,7 @@ extension NavigationRouter: UIAdaptivePresentationControllerDelegate {
     }
     
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        popAll(animated: false)
+        popAll()
     }
 }
 
