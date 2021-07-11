@@ -401,9 +401,10 @@ extension MainCoordinator: WatchdogDelegate {
         print("Biometrics background hidden")
     }
     
-    func watchdogDidCloseDatabase(_ sender: Watchdog) {
-        databaseViewerCoordinator?.lockDatabase(reason: .databaseTimeout)
-        
+    func watchdogDidCloseDatabase(_ sender: Watchdog, when lockTimeout: Date) {
+        let intervalSinceLocked = -lockTimeout.timeIntervalSinceNow
+        let isLockedJustNow = intervalSinceLocked < 0.2
+        databaseViewerCoordinator?.lockDatabase(reason: .databaseTimeout, animated: isLockedJustNow)
     }
 }
 

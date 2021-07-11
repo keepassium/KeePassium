@@ -114,11 +114,11 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         }
     }
     
-    private func stop() {
+    private func stop(animated: Bool) {
         guard let rootGroupViewer = rootGroupViewer else {
             fatalError("No group viewer")
         }
-        primaryRouter.pop(viewController: rootGroupViewer, animated: true)
+        primaryRouter.pop(viewController: rootGroupViewer, animated: animated)
     }
     
     func refresh() {
@@ -142,7 +142,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             with: warnings,
             in: presentingVC,
             onLockDatabase: { [weak self] in
-                self?.lockDatabase(reason: .loadingWarning)
+                self?.lockDatabase(reason: .loadingWarning, animated: true)
             }
         )
         StoreReviewSuggester.registerEvent(.trouble)
@@ -264,15 +264,16 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     }
     
     
-    public func lockDatabase(reason: DatabaseLockReason) {
+    public func lockDatabase(reason: DatabaseLockReason, animated: Bool) {
         DatabaseManager.shared.closeDatabase(clearStoredKey: true, ignoreErrors: false) {
             [weak self] (error) in
             if let error = error {
+                Diag.error("Failed to close database: \(error.localizedDescription)")
                 self?.getPresenterForModals().showErrorAlert(error)
-            } else {
-                Diag.debug("Database locked [reason: \(reason)]")
-                self?.stop()
             }
+            
+            Diag.debug("Database locked [reason: \(reason)]")
+            self?.stop(animated: animated)
         }
     }
     
@@ -407,7 +408,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
         
     func didPressLockDatabase(in viewController: GroupViewerVC) {
-        lockDatabase(reason: .userRequest)
+        lockDatabase(reason: .userRequest, animated: true)
     }
 
     func didPressChangeMasterKey(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {

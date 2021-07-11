@@ -18,7 +18,7 @@ protocol WatchdogDelegate: AnyObject {
     func showAppLock(_ sender: Watchdog)
     func hideAppLock(_ sender: Watchdog)
 
-    func watchdogDidCloseDatabase(_ sender: Watchdog)
+    func watchdogDidCloseDatabase(_ sender: Watchdog, when lockTimestamp: Date)
 }
 
 fileprivate extension WatchdogDelegate {
@@ -34,17 +34,7 @@ class Watchdog {
         public static let appLockDidEngage = Notification.Name("com.keepassium.Watchdog.appLockDidEngage")
         public static let databaseLockDidEngage = Notification.Name("com.keepassium.Watchdog.databaseLockDidEngage")
     }
-    
-    public var isDatabaseTimeoutExpired: Bool {
-        if _isDatabaseTimeoutExpired {
-           _isDatabaseTimeoutExpired = false
-            return true
-        } else {
-            return false
-        }
-    }
-    private var _isDatabaseTimeoutExpired = false
-    
+       
     private var isAppLaunchHandled = false
     
     public weak var delegate: WatchdogDelegate?
@@ -97,7 +87,7 @@ class Watchdog {
         let databaseTimeout = Settings.current.premiumDatabaseLockTimeout
         if databaseTimeout == .immediately && !isIgnoringMinimizationOnce {
             Diag.debug("Going to background: Database Lock engaged")
-            engageDatabaseLock()
+            engageDatabaseLock(whenLocked: Date.now)
         }
         
         let appTimeout = Settings.current.appLockTimeout
@@ -121,12 +111,6 @@ class Watchdog {
     @objc private func maybeLockApp() {
         if isShouldEngageAppLock() {
             engageAppLock()
-        }
-    }
-    
-    @objc private func maybeLockDatabase() {
-        if isShouldEngageDatabaseLock() {
-            engageDatabaseLock()
         }
     }
     
@@ -168,20 +152,23 @@ class Watchdog {
         }
     }
     
-    private func isShouldEngageDatabaseLock() -> Bool {
+    @objc private func maybeLockDatabase() {
         let timeout = Settings.current.premiumDatabaseLockTimeout
         switch timeout {
         case .never:
-            return false
+            return
         case .immediately:
-            return true
+            engageDatabaseLock(whenLocked: Date.now)
+            return
         default:
-            let timestampOfRecentActivity = Settings.current
-                .recentUserActivityTimestamp
-                .timeIntervalSinceReferenceDate
-            let timestampNow = Date.now.timeIntervalSinceReferenceDate
-            let secondsPassed = timestampNow - timestampOfRecentActivity
-            return secondsPassed > Double(timeout.seconds)
+            break
+        }
+        let timestampOfRecentActivity = Settings.current.recentUserActivityTimestamp
+        let timestampNow = Date.now
+        let databaseLockTimestamp = timestampOfRecentActivity.addingTimeInterval(Double(timeout.seconds))
+        let shouldLock = timestampNow >= databaseLockTimestamp
+        if shouldLock {
+            engageDatabaseLock(whenLocked: databaseLockTimestamp)
         }
     }
     
@@ -234,7 +221,7 @@ class Watchdog {
         NotificationCenter.default.post(name: Watchdog.Notifications.appLockDidEngage, object: self)
     }
     
-    private func engageDatabaseLock() {
+    private func engageDatabaseLock(whenLocked lockTimestamp: Date) {
         Diag.info("Engaging Database Lock")
         self.databaseLockTimer?.invalidate()
         self.databaseLockTimer = nil
@@ -243,12 +230,13 @@ class Watchdog {
         if isLockDatabases {
             DatabaseSettingsManager.shared.eraseAllMasterKeys()
         }
+        let databaseLockTimestamp = Date.now
         DatabaseManager.shared.closeDatabase(
             clearStoredKey: isLockDatabases,
             ignoreErrors: true,
             completion: { 
                 (errorMessage) in 
-                self.delegate?.watchdogDidCloseDatabase(self)
+                self.delegate?.watchdogDidCloseDatabase(self, when: lockTimestamp)
                 NotificationCenter.default.post(
                     name: Watchdog.Notifications.databaseLockDidEngage,
                     object: self)

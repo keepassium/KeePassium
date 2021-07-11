@@ -235,7 +235,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
         dismissPasscodeAndContinue()
     }
 
-    func watchdogDidCloseDatabase(_ sender: Watchdog) {
+    func watchdogDidCloseDatabase(_ sender: Watchdog, when lockTimestamp: Date) {
         entryFinderCoordinator?.stop()
     }
 
