@@ -156,12 +156,17 @@ public class NavigationRouter: NSObject {
     }
     
     public func pop(viewController: UIViewController, animated: Bool) {
-        let isPushed = navigationController.viewControllers.contains(viewController)
-        guard isPushed else {
+        let viewControllers = navigationController.viewControllers
+        guard let index = viewControllers.firstIndex(of: viewController) else {
             return
         }
-        popTo(viewController: viewController, animated: animated)
-        pop(animated: animated)
+        
+        if index == 0 {
+            dismiss(animated: animated)
+        } else {
+            let previousVC = viewControllers[index - 1]
+            popTo(viewController: previousVC, animated: animated)
+        }
     }
     
     public func popToRoot(animated: Bool) {
