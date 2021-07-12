@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S0M-P8-Rfa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S0M-P8-Rfa">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -28,7 +28,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kMR-51-SFR"/>
                                     <barButtonItem style="plain" id="Hbr-1N-smQ">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="g9A-4w-Dsa">
-                                            <rect key="frame" x="43.5" y="6" width="288" height="32"/>
+                                            <rect key="frame" x="43" y="6" width="288" height="32"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="General"/>
@@ -57,69 +57,10 @@
                             <constraint firstItem="O2i-Ah-XJl" firstAttribute="bottom" secondItem="P3O-53-The" secondAttribute="bottom" id="tEt-6c-P2B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aYD-Ph-1TF">
-                        <view key="titleView" contentMode="scaleToFill" id="pal-Aw-CDU" userLabel="Entry Title Container">
-                            <rect key="frame" x="11" y="0.0" width="312.5" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DPz-iF-IQQ" userLabel="H Stack View">
-                                    <rect key="frame" x="90.5" y="7.5" width="131.5" height="29"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/db-icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-3F-HHC">
-                                            <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
-                                            <color key="tintColor" name="PrimaryText"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="mPe-3F-HHC" secondAttribute="height" multiplier="1:1" id="jey-6j-4nv"/>
-                                                <constraint firstAttribute="width" constant="29" id="xGc-c6-6HD"/>
-                                            </constraints>
-                                        </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oab-OF-lN0" userLabel="V Stack View">
-                                            <rect key="frame" x="37" y="0.0" width="94.5" height="29"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="{Entry Title}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1XK-tJ-aQW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="94.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="textColor" name="PrimaryText"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="#bc-ignore!"/>
-                                                    </attributedString>
-                                                    <variation key="heightClass=compact">
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    </variation>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="{Timestamp}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dT5-IW-ZsZ">
-                                                    <rect key="frame" x="0.0" y="20.5" width="94.5" height="8.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                    <color key="textColor" name="AuxiliaryText"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="#bc-ignore!"/>
-                                                    </attributedString>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="cfr-Dl-EO2"/>
-                                    </constraints>
-                                </stackView>
-                            </subviews>
-                            <viewLayoutGuide key="safeArea" id="FcN-vT-Wi4"/>
-                            <constraints>
-                                <constraint firstItem="DPz-iF-IQQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FcN-vT-Wi4" secondAttribute="leading" id="6hF-4c-PCR"/>
-                                <constraint firstItem="DPz-iF-IQQ" firstAttribute="centerY" secondItem="pal-Aw-CDU" secondAttribute="centerY" id="EfM-rP-zMT"/>
-                                <constraint firstItem="FcN-vT-Wi4" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DPz-iF-IQQ" secondAttribute="trailing" id="aD3-fO-PvI"/>
-                                <constraint firstItem="DPz-iF-IQQ" firstAttribute="centerX" secondItem="pal-Aw-CDU" secondAttribute="centerX" id="tyw-JB-QKN"/>
-                            </constraints>
-                        </view>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="aYD-Ph-1TF"/>
                     <connections>
                         <outlet property="containerView" destination="P3O-53-The" id="o2M-PV-VDm"/>
                         <outlet property="pageSelector" destination="g9A-4w-Dsa" id="ncW-Ng-P8i"/>
-                        <outlet property="subtitleLabel" destination="dT5-IW-ZsZ" id="cdr-OF-XfV"/>
-                        <outlet property="titleImageView" destination="mPe-3F-HHC" id="yXE-lX-31X"/>
-                        <outlet property="titleLabel" destination="1XK-tJ-aQW" id="Tfy-Rb-lkd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="diH-ch-EZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,15 +70,8 @@
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
-        <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="AuxiliaryText">
-            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="PrimaryText">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

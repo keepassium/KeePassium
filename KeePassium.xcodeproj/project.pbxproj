@@ -696,6 +696,14 @@
 		75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
 		75D7DFC7233E5E8C0029AD87 /* KeePassiumPro AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		75D99DE9269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */; };
+		75D99DEA269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */; };
+		75D99DEB269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */; };
+		75D99DEC269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */; };
+		75D99DEE269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */; };
+		75D99DEF269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */; };
+		75D99DF0269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */; };
+		75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */; };
 		75DACE732573B49700A110DD /* SettingsAppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */; };
 		75DACE742573B49700A110DD /* SettingsAppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */; };
 		75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */; };
@@ -1665,6 +1673,8 @@
 		75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassiumPro AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7DFC0233E5E630029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7DFC4233E5E870029AD87 /* KeePassiumLibPrepaid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPrepaid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutContraint+extensions.swift"; sourceTree = "<group>"; };
+		75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseItemTitleView.swift; sourceTree = "<group>"; };
 		75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppearanceVC.swift; sourceTree = "<group>"; };
 		75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75DDA56525F3E19900708750 /* UIWindow+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+extensions.swift"; sourceTree = "<group>"; };
@@ -2214,6 +2224,7 @@
 				7599636F22E112E50004BC85 /* Attachment+extensions.swift */,
 				75151D3223268AB300F3C411 /* UILabel+extensions.swift */,
 				758544632351FE8D000D5E5E /* UIFont+monospace.swift */,
+				75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */,
 				7535079F23783729003B65C9 /* HapticFeedback.swift */,
 				75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */,
 				75A5312223C0D35500900ED1 /* NavigationRouter.swift */,
@@ -2428,6 +2439,7 @@
 				758BADB424B5EAFF00CC9265 /* GradientSeparatorView.swift */,
 				758CA53C2569B9960034EF10 /* SwitchCell.xib */,
 				758CA5432569B9EA0034EF10 /* SwitchCell.swift */,
+				75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -3086,11 +3098,13 @@
 				75DE677A268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
+				75D99DEF269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */,
 				7583EA7E2685D34A009969E7 /* SettingsFileSortingVC.swift in Sources */,
 				7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */,
 				75BE064025DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				753376F223CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
+				75D99DEA269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				753DF2D0263E0EF20046F185 /* PlaceholderVC.swift in Sources */,
 				750CFC0721BAD98B00E62B09 /* LString.swift in Sources */,
 				756F364B260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
@@ -3250,9 +3264,11 @@
 				75F4ACFC21776F4800B22D8B /* LString.swift in Sources */,
 				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
 				750D127E20CF071600BE0CCE /* GroupEditorVC.swift in Sources */,
+				75D99DEE269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
 				758CA5442569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75E60ADC25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */,
+				75D99DE9269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				7579A06A24F074D500C98F24 /* AppHistory.swift in Sources */,
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* EntryViewerPagesVC.swift in Sources */,
@@ -3416,9 +3432,11 @@
 				7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */,
 				75B38C44233E5B7C006BDEFC /* GroupEditorVC.swift in Sources */,
 				75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
+				75D99DF0269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				758CA5462569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75E60ADD25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */,
 				7579A06B24F074D500C98F24 /* AppHistory.swift in Sources */,
+				75D99DEB269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* EntryViewerPagesVC.swift in Sources */,
@@ -3510,11 +3528,13 @@
 				75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
+				75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				75D7DFA0233E5E310029AD87 /* SearchHelper.swift in Sources */,
 				7583EA812685D34B009969E7 /* SettingsFileSortingVC.swift in Sources */,
 				75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */,
 				75BE064225DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				753376F423CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
+				75D99DEC269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				753DF2D3263E0EF30046F185 /* PlaceholderVC.swift in Sources */,
 				75D7DFA2233E5E310029AD87 /* LString.swift in Sources */,
 				756F364D260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,

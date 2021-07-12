@@ -18,9 +18,6 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
 
     @IBOutlet private weak var pageSelector: UISegmentedControl!
     @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var titleImageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var subtitleLabel: UILabel!
     
     public weak var dataSource: EntryViewerPagesDataSource?
 
@@ -29,6 +26,8 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
     private var resolvedEntryTitle = ""
     private var isEntryExpired = false
     private var entryLastModificationTime = Date.distantPast
+    
+    private var titleView = DatabaseItemTitleView()
     
     private var pagesViewController: UIPageViewController! 
     private var currentPageIndex = 0 {
@@ -42,6 +41,7 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.titleView = titleView
         
         pagesViewController = UIPageViewController(
             transitionStyle: .scroll,
@@ -127,27 +127,26 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
     @IBAction func didChangePage(_ sender: Any) {
         switchTo(page: pageSelector.selectedSegmentIndex)
     }
-
     
     func refresh() {
         guard isViewLoaded else { return }
-        titleLabel.setText(resolvedEntryTitle, strikethrough: isEntryExpired)
-        titleImageView?.image = entryIcon
+        titleView.titleLabel.setText(resolvedEntryTitle, strikethrough: isEntryExpired)
+        titleView.iconView.image = entryIcon
         if isHistoryEntry {
             if traitCollection.horizontalSizeClass == .compact {
-                subtitleLabel?.text = DateFormatter.localizedString(
+                titleView.subtitleLabel.text = DateFormatter.localizedString(
                     from: entryLastModificationTime,
                     dateStyle: .medium,
                     timeStyle: .short)
             } else {
-                subtitleLabel?.text = DateFormatter.localizedString(
+                titleView.subtitleLabel.text = DateFormatter.localizedString(
                     from: entryLastModificationTime,
                     dateStyle: .full,
                     timeStyle: .medium)
             }
-            subtitleLabel?.isHidden = false
+            titleView.subtitleLabel.isHidden = false
         } else {
-            subtitleLabel?.isHidden = true
+            titleView.subtitleLabel.isHidden = true
         }
         
         let currentPage = pagesViewController.viewControllers?.first

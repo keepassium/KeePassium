@@ -90,18 +90,16 @@ final class GroupViewerVC:
     
     weak var delegate: GroupViewerDelegate?
     
-    @IBOutlet private weak var groupIconView: UIImageView!
-    @IBOutlet private weak var groupTitleLabel: UILabel!
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
 
     weak var group: Group? {
         didSet {
             if let group = group {
-                groupTitleLabel.setText(group.name, strikethrough: group.isExpired)
-                groupIconView.image = UIImage.kpIcon(forGroup: group)
+                titleView.titleLabel.setText(group.name, strikethrough: group.isExpired)
+                titleView.iconView.image = UIImage.kpIcon(forGroup: group)
             } else {
-                groupTitleLabel.text = nil
-                groupIconView.image = nil
+                titleView.titleLabel.text = nil
+                titleView.iconView.image = nil
             }
             sortGroupItems()
         }
@@ -110,6 +108,8 @@ final class GroupViewerVC:
     var isGroupEmpty: Bool {
         return groupsSorted.isEmpty && entriesSorted.isEmpty
     }
+    
+    private var titleView = DatabaseItemTitleView()
     
     private var groupsSorted = Array<Weak<Group>>()
     private var entriesSorted = Array<Weak<Entry>>()
@@ -142,6 +142,8 @@ final class GroupViewerVC:
         )
         createItemButton.accessibilityLabel = LString.actionCreate
         navigationItem.setRightBarButton(createItemButton, animated: false)
+        
+        navigationItem.titleView = titleView
         
         isActivateSearch = Settings.current.isStartWithSearch && (group?.isRoot ?? false)
         setupSearch()
