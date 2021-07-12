@@ -41,14 +41,14 @@ final class MainCoordinator: Coordinator {
         self.rootSplitVC = RootSplitVC()
 
         let primaryNavVC = UINavigationController()
-        let secondaryNavVC = UINavigationController()
-        rootSplitVC.viewControllers = [primaryNavVC, secondaryNavVC]
         primaryRouter = NavigationRouter(primaryNavVC)
         
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
-        let navController = UINavigationController(rootViewController: placeholderVC)
-        placeholderRouter = NavigationRouter(navController)
-        
+        let placeholderNavVC = UINavigationController(rootViewController: placeholderVC)
+        placeholderRouter = NavigationRouter(placeholderNavVC)
+
+        rootSplitVC.viewControllers = [primaryNavVC, placeholderNavVC]
+
         watchdog = Watchdog.shared
         watchdog.delegate = self
         
@@ -134,7 +134,7 @@ extension MainCoordinator {
     
     private func showPlaceholder() {
         if !rootSplitVC.isCollapsed {
-            rootSplitVC.showDetailViewController(placeholderRouter.navigationController, sender: self)
+            rootSplitVC.setDetailRouter(placeholderRouter)
         }
         deallocateDatabaseUnlocker()
     }
@@ -165,7 +165,7 @@ extension MainCoordinator {
         newDBUnlockerCoordinator.start()
         addChildCoordinator(newDBUnlockerCoordinator)
 
-        rootSplitVC.showDetailViewController(router.navigationController, sender: self)
+        rootSplitVC.setDetailRouter(router)
         
         return newDBUnlockerCoordinator
     }

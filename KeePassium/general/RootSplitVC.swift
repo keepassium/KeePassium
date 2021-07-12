@@ -8,17 +8,24 @@
 
 import KeePassiumLib
 
-class RootSplitVC: UISplitViewController, UISplitViewControllerDelegate {
+class RootSplitVC: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.preferredDisplayMode = .allVisible
     }
     
     public func setDetailRouter(_ router: NavigationRouter) {
-        if isCollapsed {
-            showDetailViewController(router.navigationController, sender: self)
+        assert(viewControllers.count > 0) 
+        
+        if viewControllers.count == 1 {
+            let vc = viewControllers.first! 
+            guard let primaryNavVC = vc as? UINavigationController else {
+                Diag.warning("Expected UINavigationController, got \(vc.debugDescription) instead")
+                assertionFailure()
+                return
+            }
+            primaryNavVC.pushViewController(router.navigationController, animated: true)
         } else {
             var _viewControllers = viewControllers
             _viewControllers = _viewControllers.dropLast()
@@ -27,4 +34,3 @@ class RootSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         }
     }
 }
-
