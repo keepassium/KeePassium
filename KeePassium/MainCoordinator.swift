@@ -126,9 +126,15 @@ extension MainCoordinator {
             return 
         }
         
-        let welcomeVC = WelcomeVC.make(delegate: self)
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
-        modalRouter.push(welcomeVC, animated: false, onPop: nil)
+        let onboardingCoordinator = OnboardingCoordinator(router: modalRouter)
+        onboardingCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        onboardingCoordinator.delegate = self
+        onboardingCoordinator.start()
+        addChildCoordinator(onboardingCoordinator)
+        
         rootSplitVC.present(modalRouter, animated: true, completion: nil)
     }
     
@@ -440,23 +446,23 @@ extension MainCoordinator: PasscodeInputDelegate {
     }
 }
 
-extension MainCoordinator: WelcomeDelegate {
-    func didPressCreateDatabase(in welcomeVC: WelcomeVC) {
-        welcomeVC.dismiss(animated: true) { [weak self] in
+extension MainCoordinator: OnboardingCoordinatorDelegate {
+    func didPressCreateDatabase(in coordinator: OnboardingCoordinator) {
+        coordinator.dismiss(completion: { [weak self] in
             guard let self = self else { return }
             self.databasePickerCoordinator.createDatabase(
                 presenter: self.rootSplitVC
             )
-        }
+        })
     }
     
-    func didPressAddExistingDatabase(in welcomeVC: WelcomeVC) {
-        welcomeVC.dismiss(animated: true) { [weak self] in
+    func didPressAddExistingDatabase(in coordinator: OnboardingCoordinator) {
+        coordinator.dismiss(completion: { [weak self] in
             guard let self = self else { return }
             self.databasePickerCoordinator.addExistingDatabase(
                 presenter: self.rootSplitVC
             )
-        }
+        })
     }
 }
 

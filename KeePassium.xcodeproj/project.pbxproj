@@ -31,6 +31,8 @@
 		750E159E269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */; };
 		750E15A2269C4DE50040D599 /* SettingsItemListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E15A1269C4DE50040D599 /* SettingsItemListCoordinator.swift */; };
 		750E15A4269C4DE50040D599 /* SettingsItemListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E15A1269C4DE50040D599 /* SettingsItemListCoordinator.swift */; };
+		750E15A8269C95370040D599 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E15A7269C95370040D599 /* OnboardingCoordinator.swift */; };
+		750E15A9269C95370040D599 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E15A7269C95370040D599 /* OnboardingCoordinator.swift */; };
 		751146E6233F9E2900443BCD /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751146E5233F9E2900443BCD /* KeePassiumLib.framework */; };
 		7513992B25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
 		7513992C25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
@@ -820,6 +822,7 @@
 		750D127D20CF071600BE0CCE /* GroupEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorVC.swift; sourceTree = "<group>"; };
 		750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFileSortingCoordinator.swift; sourceTree = "<group>"; };
 		750E15A1269C4DE50040D599 /* SettingsItemListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemListCoordinator.swift; sourceTree = "<group>"; };
+		750E15A7269C95370040D599 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		751146E2233F9E1500443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751146E5233F9E2900443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7511722625F58DEB00F05D1A /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -1983,6 +1986,16 @@
 			path = "group-list";
 			sourceTree = "<group>";
 		};
+		750E15A6269C95140040D599 /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				7546FBC020BFB8DD00C5D834 /* WelcomeVC.swift */,
+				755B863B23054FC700E9FC83 /* WelcomeVC.storyboard */,
+				750E15A7269C95370040D599 /* OnboardingCoordinator.swift */,
+			);
+			path = onboarding;
+			sourceTree = "<group>";
+		};
 		751A564D24CCD375001227D6 /* appearance */ = {
 			isa = PBXGroup;
 			children = (
@@ -2366,6 +2379,7 @@
 				75BE05DB25DA83DF00B34CC0 /* diagnostics */,
 				7590798224CB1400008F34EC /* help */,
 				75679AD022FD963200372301 /* news */,
+				750E15A6269C95140040D599 /* onboarding */,
 				7579A06224F0728F00C98F24 /* changelog */,
 				7588B6C02627319700F5D372 /* password-generator */,
 				759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */,
@@ -2377,8 +2391,6 @@
 				751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */,
 				75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */,
 				75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */,
-				7546FBC020BFB8DD00C5D834 /* WelcomeVC.swift */,
-				755B863B23054FC700E9FC83 /* WelcomeVC.storyboard */,
 				75802633222ED11D00F4525F /* ProgressVC.swift */,
 				75802630222EBC3800F4525F /* ProgressVC.storyboard */,
 			);
@@ -3209,6 +3221,7 @@
 				75876B262646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */,
 				75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */,
 				75D76138262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */,
+				750E15A8269C95370040D599 /* OnboardingCoordinator.swift in Sources */,
 				7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */,
 				7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				75BE063F25DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
@@ -3374,6 +3387,7 @@
 				75876B272646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */,
 				75B38C33233E5B7C006BDEFC /* SettingsBackupVC.swift in Sources */,
 				75D76139262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */,
+				750E15A9269C95370040D599 /* OnboardingCoordinator.swift in Sources */,
 				75BE064125DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
