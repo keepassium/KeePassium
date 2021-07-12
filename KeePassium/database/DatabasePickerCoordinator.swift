@@ -88,10 +88,13 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
-        let listOptionsVC = SettingsFileSortingVC.instantiateFromStoryboard()
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        modalRouter.push(listOptionsVC, animated: false, onPop: nil)
-        
+        let settingsFileSortingCoordinator = SettingsFileSortingCoordinator(router: modalRouter)
+        settingsFileSortingCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        settingsFileSortingCoordinator.start()
+        addChildCoordinator(settingsFileSortingCoordinator)
         viewController.present(modalRouter, animated: true, completion: nil)
     }
     

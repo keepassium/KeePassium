@@ -25,6 +25,10 @@
 		750CFBDE21BAD7FF00E62B09 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		750CFC0721BAD98B00E62B09 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACFB21776F4800B22D8B /* LString.swift */; };
 		750D127E20CF071600BE0CCE /* GroupEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D127D20CF071600BE0CCE /* GroupEditorVC.swift */; };
+		750E159B269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */; };
+		750E159C269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */; };
+		750E159D269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */; };
+		750E159E269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */; };
 		751146E6233F9E2900443BCD /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751146E5233F9E2900443BCD /* KeePassiumLib.framework */; };
 		7513992B25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
 		7513992C25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
@@ -812,6 +816,7 @@
 		750CFBCF21BA9ACD00E62B09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		750CFBD021BA9ACD00E62B09 /* KeePassium_AutoFill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium_AutoFill.entitlements; sourceTree = "<group>"; };
 		750D127D20CF071600BE0CCE /* GroupEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorVC.swift; sourceTree = "<group>"; };
+		750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFileSortingCoordinator.swift; sourceTree = "<group>"; };
 		751146E2233F9E1500443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751146E5233F9E2900443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7511722625F58DEB00F05D1A /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -1955,6 +1960,16 @@
 			path = "KeePassium AutoFill";
 			sourceTree = "<group>";
 		};
+		750E1599269C3B2D0040D599 /* file-sorting */ = {
+			isa = PBXGroup;
+			children = (
+				75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */,
+				751E0CEB2309AE860088BB10 /* SettingsFileSortingVC.storyboard */,
+				750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */,
+			);
+			path = "file-sorting";
+			sourceTree = "<group>";
+		};
 		751A564D24CCD375001227D6 /* appearance */ = {
 			isa = PBXGroup;
 			children = (
@@ -2067,10 +2082,9 @@
 				75C3800F217A0497006F74C2 /* app-protection */,
 				7527FAAF262F712F00623849 /* data-protection */,
 				7578488722C16D7D00BBEF9A /* backup */,
+				750E1599269C3B2D0040D599 /* file-sorting */,
 				7546FBC520C1027700C5D834 /* SettingsVC.swift */,
 				751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */,
-				75781A2C20CA3D7A00BE474F /* SettingsFileSortingVC.swift */,
-				751E0CEB2309AE860088BB10 /* SettingsFileSortingVC.storyboard */,
 				752BB12420F089B30070FAC0 /* SettingsItemListVC.swift */,
 				75ED42AB2313C20A003DE72E /* SettingsItemListVC.storyboard */,
 				75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */,
@@ -3027,6 +3041,7 @@
 				75802635222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
 				758D272426867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
+				750E159C269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */,
 				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
@@ -3137,6 +3152,7 @@
 				75C94C6120B4BAC4004FA29D /* EntryHistoryViewerVC.swift in Sources */,
 				75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75802634222ED11D00F4525F /* ProgressVC.swift in Sources */,
+				750E159B269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */,
 				75EC7BFD262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				75839A90246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
 				7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */,
@@ -3300,6 +3316,7 @@
 				75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */,
 				75839A91246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
+				750E159D269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */,
 				75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
 				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
@@ -3444,6 +3461,7 @@
 				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
 				758D272526867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
+				750E159E269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */,
 				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				756F365926112A3B005A35DA /* FileDestructionHelper.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
