@@ -9,8 +9,22 @@
 import UIKit
 import KeePassiumLib
 
-class SettingsItemListVC: UITableViewController, Refreshable {
+protocol SettingsItemListDelegate: AnyObject {
+    func didChangeSortOrder(
+        to sortOrder: Settings.GroupSortOrder,
+        in viewController: SettingsItemListVC
+    )
+    func didChangeEntrySubtitle(
+        to entryListDetail: Settings.EntryListDetail,
+        in viewController: SettingsItemListVC
+    )
+}
+
+final class SettingsItemListVC: UITableViewController, Refreshable {
     private let cellID = "Cell"
+    
+    weak var delegate: SettingsItemListDelegate?
+    
     private enum Section: Int {
         static let allValues = [groupSorting, entrySubtitle]
         case entrySubtitle = 0
@@ -31,7 +45,6 @@ class SettingsItemListVC: UITableViewController, Refreshable {
         }
     }
     
-
     func refresh() {
         tableView.reloadData()
     }
@@ -79,6 +92,7 @@ class SettingsItemListVC: UITableViewController, Refreshable {
             assertionFailure()
             return cell
         }
+        
         switch section {
         case .groupSorting:
             let groupSorting = Settings.GroupSortOrder.allValues[indexPath.row]
@@ -108,9 +122,11 @@ class SettingsItemListVC: UITableViewController, Refreshable {
         
         switch section {
         case .groupSorting:
-            Settings.current.groupSortOrder = Settings.GroupSortOrder.allValues[indexPath.row]
+            let sortOrder = Settings.GroupSortOrder.allValues[indexPath.row]
+            delegate?.didChangeSortOrder(to: sortOrder, in: self)
         case .entrySubtitle:
-            Settings.current.entryListDetail = Settings.EntryListDetail.allValues[indexPath.row]
+            let listDetail = Settings.EntryListDetail.allValues[indexPath.row]
+            delegate?.didChangeEntrySubtitle(to: listDetail, in: self)
         }
         refresh()
     }

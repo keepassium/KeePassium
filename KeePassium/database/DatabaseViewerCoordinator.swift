@@ -277,10 +277,17 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         }
     }
     
-    private func showGroupListSettings(at popoverAnchor: PopoverAnchor, in viewController: UIViewController) {
+    private func showGroupListSettings(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let groupListSettingsVC = SettingsItemListVC.instantiateFromStoryboard()
-        modalRouter.push(groupListSettingsVC, animated: false, onPop: nil)
+        let listSettingsCoordinator = SettingsItemListCoordinator(router: modalRouter)
+        listSettingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        listSettingsCoordinator.start()
+        addChildCoordinator(listSettingsCoordinator)
         viewController.present(modalRouter, animated: true, completion: nil)
     }
 

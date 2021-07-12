@@ -29,6 +29,8 @@
 		750E159C269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */; };
 		750E159D269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */; };
 		750E159E269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */; };
+		750E15A2269C4DE50040D599 /* SettingsItemListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E15A1269C4DE50040D599 /* SettingsItemListCoordinator.swift */; };
+		750E15A4269C4DE50040D599 /* SettingsItemListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E15A1269C4DE50040D599 /* SettingsItemListCoordinator.swift */; };
 		751146E6233F9E2900443BCD /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751146E5233F9E2900443BCD /* KeePassiumLib.framework */; };
 		7513992B25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
 		7513992C25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
@@ -817,6 +819,7 @@
 		750CFBD021BA9ACD00E62B09 /* KeePassium_AutoFill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium_AutoFill.entitlements; sourceTree = "<group>"; };
 		750D127D20CF071600BE0CCE /* GroupEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorVC.swift; sourceTree = "<group>"; };
 		750E159A269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFileSortingCoordinator.swift; sourceTree = "<group>"; };
+		750E15A1269C4DE50040D599 /* SettingsItemListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemListCoordinator.swift; sourceTree = "<group>"; };
 		751146E2233F9E1500443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751146E5233F9E2900443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7511722625F58DEB00F05D1A /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -1970,6 +1973,16 @@
 			path = "file-sorting";
 			sourceTree = "<group>";
 		};
+		750E15A0269C4D430040D599 /* group-list */ = {
+			isa = PBXGroup;
+			children = (
+				752BB12420F089B30070FAC0 /* SettingsItemListVC.swift */,
+				75ED42AB2313C20A003DE72E /* SettingsItemListVC.storyboard */,
+				750E15A1269C4DE50040D599 /* SettingsItemListCoordinator.swift */,
+			);
+			path = "group-list";
+			sourceTree = "<group>";
+		};
 		751A564D24CCD375001227D6 /* appearance */ = {
 			isa = PBXGroup;
 			children = (
@@ -2083,10 +2096,9 @@
 				7527FAAF262F712F00623849 /* data-protection */,
 				7578488722C16D7D00BBEF9A /* backup */,
 				750E1599269C3B2D0040D599 /* file-sorting */,
+				750E15A0269C4D430040D599 /* group-list */,
 				7546FBC520C1027700C5D834 /* SettingsVC.swift */,
 				751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */,
-				752BB12420F089B30070FAC0 /* SettingsItemListVC.swift */,
-				75ED42AB2313C20A003DE72E /* SettingsItemListVC.storyboard */,
 				75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */,
 				752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */,
 				75D76153262E1E9000B1DE7F /* SettingsCoordinator.swift */,
@@ -3158,6 +3170,7 @@
 				7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */,
 				757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */,
+				750E15A2269C4DE50040D599 /* SettingsItemListCoordinator.swift in Sources */,
 				754D7C09238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				75D1674A21464333005E33C3 /* AboutVC.swift in Sources */,
 				754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */,
@@ -3322,6 +3335,7 @@
 				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */,
 				754D7C0B238C2135005652E1 /* KeyFileTextField.swift in Sources */,
+				750E15A4269C4DE50040D599 /* SettingsItemListCoordinator.swift in Sources */,
 				75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */,
 				75B38C1A233E5B7C006BDEFC /* EntryFieldEditorVC.swift in Sources */,
 				754E408F263067DE003E4854 /* DatabaseUnlockerVC.swift in Sources */,
