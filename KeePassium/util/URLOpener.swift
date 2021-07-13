@@ -34,8 +34,6 @@ class URLOpener: NSObject {
         url: URL,
         completionHandler: ((Bool)->Void)?=nil
     ) {
-        assert(!AppGroup.isMainApp, "Use UIApplication.openURL() instead")
-        
         #if MAIN_APP
         application?.open(url, options: [:], completionHandler: completionHandler)
         #else
