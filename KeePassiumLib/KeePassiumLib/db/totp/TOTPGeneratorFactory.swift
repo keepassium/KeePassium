@@ -32,7 +32,8 @@ public class TOTPGeneratorFactory {
     }
     
     private static func parseSingleFieldFormat(_ paramString: String) -> TOTPGenerator? {
-        guard let uriComponents = URLComponents(string: paramString) else {
+        let trimmedParamString = paramString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let uriComponents = URLComponents(string: trimmedParamString) else {
             Diag.warning("Unexpected OTP field format")
             return nil
         }
