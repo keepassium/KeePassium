@@ -33,6 +33,7 @@ struct ContextualAction {
         return UIAction(
             title: title,
             image: image,
+            attributes: (style == .destructive) ? [.destructive] : [],
             handler: { action in
                 handler()
             }
