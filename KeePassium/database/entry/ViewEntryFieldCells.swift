@@ -359,11 +359,38 @@ class ExpandableFieldCell: ViewableFieldCell {
 }
 
 
-class TOTPFieldCell: ViewableFieldCell {
+protocol DynamicFieldCell: ViewableFieldCell, Refreshable {
+    func startRefreshing()
+    func stopRefreshing()
+    
+}
+
+
+class TOTPFieldCell: ViewableFieldCell, DynamicFieldCell {
     override class var storyboardID: String { "TOTPFieldCell" }
     private let refreshInterval = 1.0
     
     @IBOutlet weak var progressView: UIProgressView!
+    
+    private var refreshTimer: Timer?
+    
+    deinit {
+        stopRefreshing()
+    }
+    
+    func startRefreshing() {
+        assert(refreshTimer == nil, "Already refreshing")
+        refresh()
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: refreshInterval, repeats: true) {
+            [weak self] _ in
+            self?.refresh()
+        }
+    }
+    
+    func stopRefreshing() {
+        refreshTimer?.invalidate()
+        refreshTimer = nil
+    }
     
     override func getUserVisibleValue() -> String? {
         guard var value = field?.value else { return nil }
@@ -383,26 +410,17 @@ class TOTPFieldCell: ViewableFieldCell {
         accessoryView = nil
         accessoryType = .none
         progressView.isHidden = false
-        refreshProgress()
-        scheduleRefresh()
+        refresh()
     }
     
-    private func scheduleRefresh() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + refreshInterval) {
-            [weak self] in
-            guard let self = self else { return }
-            self.valueText.text = self.getUserVisibleValue()
-            self.refreshProgress()
-            self.scheduleRefresh()
-        }
-    }
-    
-    private func refreshProgress() {
+    func refresh() {
         guard let totpViewableField = field as? TOTPViewableField else {
             assertionFailure()
             return
         }
         let progress = 1 - (totpViewableField.elapsedTimeFraction ?? 0.0)
         progressView.setProgress(progress, animated: true)
+
+        valueText.text = getUserVisibleValue()
     }
 }

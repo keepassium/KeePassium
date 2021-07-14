@@ -188,6 +188,26 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         return cell
     }
     
+    override func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        if let dynamicFieldCell = cell as? DynamicFieldCell {
+            dynamicFieldCell.startRefreshing()
+        }
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        didEndDisplaying cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        if let dynamicFieldCell = cell as? DynamicFieldCell {
+            dynamicFieldCell.stopRefreshing()
+        }
+    }
+    
     private func getField(at indexPath: IndexPath) -> ViewableField {
         let fieldNumber = indexPath.row
         let field = sortedFields[fieldNumber]
