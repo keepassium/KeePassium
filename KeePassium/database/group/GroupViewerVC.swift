@@ -10,11 +10,20 @@ import UIKit
 import KeePassiumLib
 
 struct DatabaseItemActionPermissions {
+    static let everythingForbidden = DatabaseItemActionPermissions(
+        canEditDatabase: false,
+        canCreateGroup: false,
+        canCreateEntry: false,
+        canEditItem: false,
+        canDeleteItem: false,
+        canMoveItem: false
+    )
+    var canEditDatabase = false
     var canCreateGroup = false
     var canCreateEntry = false
-    var canEdit = false
-    var canDelete = false
-    var canMove = false
+    var canEditItem = false
+    var canDeleteItem = false
+    var canMoveItem = false
 }
 
 protocol GroupViewerDelegate: AnyObject {
@@ -91,7 +100,8 @@ final class GroupViewerVC:
     weak var delegate: GroupViewerDelegate?
     
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
-
+    @IBOutlet weak var changeMasterKeyButton: UIBarButtonItem!
+    
     weak var group: Group? {
         didSet {
             if let group = group {
@@ -196,6 +206,7 @@ final class GroupViewerVC:
         createItemButton.isEnabled =
             actionPermissions.canCreateGroup ||
             actionPermissions.canCreateEntry
+        changeMasterKeyButton.isEnabled = actionPermissions.canEditDatabase
         
         if isSearchActive {
             updateSearchResults(for: searchController)
@@ -544,19 +555,19 @@ final class GroupViewerVC:
         var actions = [ContextualAction]()
         
         if forSwipe {
-            if permissions.canDelete {
+            if permissions.canDeleteItem {
                 actions.append(deleteAction)
             }
-            if permissions.canEdit {
+            if permissions.canEditItem {
                 actions.append(editAction)
             }
             return actions
         }
 
-        if permissions.canEdit {
+        if permissions.canEditItem {
             actions.append(editAction)
         }
-        if permissions.canMove {
+        if permissions.canMoveItem {
             let moveAction = ContextualAction(
                 title: LString.actionMove,
                 imageName: .folder,
@@ -576,7 +587,7 @@ final class GroupViewerVC:
             actions.append(moveAction)
             actions.append(copyAction)
         }
-        if permissions.canDelete {
+        if permissions.canDeleteItem {
             actions.append(deleteAction)
         }
         return actions

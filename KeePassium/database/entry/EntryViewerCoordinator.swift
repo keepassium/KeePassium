@@ -31,6 +31,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     private var database: Database
     private var entry: Entry
     private var isHistoryEntry: Bool
+    private var canEditEntry: Bool
     
     private let pagesVC: EntryViewerPagesVC
     
@@ -52,12 +53,14 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         entry: Entry,
         database: Database,
         isHistoryEntry: Bool,
+        canEditEntry: Bool,
         router: NavigationRouter,
         progressHost: ProgressViewHost
     ) {
         self.entry = entry
         self.database = database
         self.isHistoryEntry = isHistoryEntry
+        self.canEditEntry = canEditEntry
         self.router = router
         self.progressHost = progressHost
         settingsNotifications = SettingsNotifications()
@@ -106,7 +109,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         router.pop(viewController: pagesVC, animated: animated)
     }
     
-    public func setEntry(_ entry: Entry, database: Database, isHistoryEntry: Bool) {
+    public func setEntry(_ entry: Entry, database: Database, isHistoryEntry: Bool, canEditEntry: Bool) {
         if let existingEntryViewerCoo = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
             let historyEntryViewer = existingEntryViewerCoo as! EntryViewerCoordinator
             historyEntryViewer.dismiss(animated: true)
@@ -115,6 +118,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         self.entry = entry
         self.database = database
         self.isHistoryEntry = isHistoryEntry
+        self.canEditEntry = canEditEntry
         refresh()
     }
     
@@ -129,10 +133,24 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
             in: database,
             excluding: [.title, .emptyValues]
         )
-        fieldViewerVC.setContents(fields, category: category, isHistoryEntry: isHistoryEntry)
-        fileViewerVC.setContents(entry.attachments, animated: animated)
-        historyViewerVC.setContents(from: entry, isHistoryEntry: isHistoryEntry, animated: animated)
-        pagesVC.setContents(from: entry, isHistoryEntry: isHistoryEntry)
+        fieldViewerVC.setContents(
+            fields,
+            category: category,
+            isHistoryEntry: isHistoryEntry,
+            canEditEntry: canEditEntry)
+        fileViewerVC.setContents(
+            entry.attachments,
+            canEditEntry: canEditEntry,
+            animated: animated)
+        historyViewerVC.setContents(
+            from: entry,
+            isHistoryEntry: isHistoryEntry,
+            canEditEntry: canEditEntry,
+            animated: animated)
+        pagesVC.setContents(
+            from: entry,
+            isHistoryEntry: isHistoryEntry,
+            canEditEntry: canEditEntry)
         pagesVC.refresh()
     }
 }
@@ -174,6 +192,7 @@ extension EntryViewerCoordinator: EntryViewerPagesDataSource {
 
 extension EntryViewerCoordinator {
     private func showNewAttachmentPicker(in viewController: UIViewController) {
+        assert(canEditEntry)
         let picker = UIDocumentPickerViewController(
             documentTypes: FileType.attachmentUTIs,
             in: .import)
@@ -213,6 +232,7 @@ extension EntryViewerCoordinator {
     }
     
     private func addAttachment(name: String, data: ByteArray) {
+        assert(canEditEntry)
         entry.backupState()
         
         let newAttachment = database.makeAttachment(name: name, data: data)
@@ -320,6 +340,11 @@ extension EntryViewerCoordinator {
 
 extension EntryViewerCoordinator {
     private func showEntryFieldEditor() {
+        guard canEditEntry else {
+            assertionFailure()
+            Diag.warning("Tried to modify a non-editable entry")
+            return
+        }
         guard let parent = entry.parent else {
             Diag.warning("Entry's parent group is undefined")
             assertionFailure()
@@ -351,6 +376,7 @@ extension EntryViewerCoordinator {
             entry: entry,
             database: database,
             isHistoryEntry: true,
+            canEditEntry: false,
             router: router,
             progressHost: progressHost
         )
@@ -374,6 +400,11 @@ extension EntryViewerCoordinator {
     }
     
     private func saveDatabase() {
+        guard canEditEntry else {
+            Diag.warning("Tried to save non-editable entry, aborting")
+            assertionFailure()
+            return
+        }
         entry.touch(.modified, updateParents: false)
         
         delegate?.didUpdateEntry(entry, in: self)
@@ -385,14 +416,15 @@ extension EntryViewerCoordinator {
 }
 
 extension EntryViewerCoordinator: EntryFieldViewerDelegate {
-    func canEditEntry(in viewController: EntryFieldViewerVC) -> Bool {
-        return !entry.isDeleted
-    }
-    
     func didPressEdit(
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldViewerVC
     ) {
+        guard canEditEntry else {
+            Diag.warning("Tried to modify non-editable entry")
+            assertionFailure()
+            return
+        }
         showEntryFieldEditor()
     }
     
@@ -418,17 +450,18 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
 extension EntryViewerCoordinator: EntryFileViewerDelegate {
     
     func didPressAddFile(in viewController: EntryFileViewerVC) {
+        guard canEditEntry else {
+            Diag.warning("Tried to modify non-editable entry")
+            assertionFailure()
+            return
+        }
         showNewAttachmentPicker(in: viewController)
     }
     
     func shouldReplaceExistingFile(in viewController: EntryFileViewerVC) -> Bool {
-        assert(canEditFiles(in: viewController), "Asked to replace file in non-editable entry")
+        assert(canEditEntry, "Asked to replace file in non-editable entry")
         let canAddWithoutReplacement = entry.attachments.isEmpty || entry.isSupportsMultipleAttachments
         return !canAddWithoutReplacement
-    }
-    
-    func canEditFiles(in viewController: EntryFileViewerVC) -> Bool {
-        return !isHistoryEntry
     }
     
     func didRenameFile(
@@ -436,6 +469,7 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         to newName: String,
         in viewController: EntryFileViewerVC
     ) {
+        assert(canEditEntry)
         attachment.name = newName
         viewController.refresh()
         saveDatabase()
@@ -455,6 +489,7 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
     }
     
     func didPressDeleteFile(_ attachment: Attachment, in viewController: EntryFileViewerVC) {
+        assert(canEditEntry, "Tried to delete fiel from non-editable entry")
         entry.backupState()
         entry.attachments.removeAll(where: { $0 === attachment })
         refresh(animated: true)
@@ -485,6 +520,7 @@ extension EntryViewerCoordinator: EntryHistoryViewerDelegate {
     
     func didPressRestore(historyEntry: Entry2, in viewController: EntryHistoryViewerVC) {
         Diag.debug("Restoring historical entry")
+        assert(canEditEntry)
         guard let entry2 = entry as? Entry2 else {
             Diag.error("Unexpected entry format")
             assertionFailure()
@@ -499,8 +535,12 @@ extension EntryViewerCoordinator: EntryHistoryViewerDelegate {
         saveDatabase()
     }
     
-    func didPressDelete(historyEntries historyEntriesToDelete: [Entry2], in viewController: EntryHistoryViewerVC) {
+    func didPressDelete(
+        historyEntries historyEntriesToDelete: [Entry2],
+        in viewController: EntryHistoryViewerVC
+    ) {
         Diag.debug("Deleting historical entries")
+        assert(canEditEntry)
         guard let entry2 = entry as? Entry2 else {
             Diag.error("Unexpected entry format")
             assertionFailure()
@@ -536,6 +576,7 @@ extension EntryViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
 
 extension EntryViewerCoordinator: DatabaseManagerObserver {
     func databaseManager(willSaveDatabase urlRef: URLReference) {
+        assert(canEditEntry)
         progressHost?.showProgressView(
             title: LString.databaseStatusSaving,
             allowCancelling: true,

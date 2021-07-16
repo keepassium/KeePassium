@@ -22,6 +22,7 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
     public weak var dataSource: EntryViewerPagesDataSource?
 
     private var isHistoryEntry = false
+    private var canEditEntry = false
     private var entryIcon: UIImage?
     private var resolvedEntryTitle = ""
     private var isEntryExpired = false
@@ -80,12 +81,13 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         refresh()
     }
     
-    public func setContents(from entry: Entry, isHistoryEntry: Bool) {
+    public func setContents(from entry: Entry, isHistoryEntry: Bool, canEditEntry: Bool) {
         entryIcon = UIImage.kpIcon(forEntry: entry)
         resolvedEntryTitle = entry.resolvedTitle
         isEntryExpired = entry.isExpired
         entryLastModificationTime = entry.lastModificationTime
         self.isHistoryEntry = isHistoryEntry
+        self.canEditEntry = canEditEntry
         refresh()
     }
     

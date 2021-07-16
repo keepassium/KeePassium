@@ -42,6 +42,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     private var entryViewerRouter: NavigationRouter?
     private let database: Database
     private let databaseRef: URLReference
+    private let canEditDatabase: Bool
     private let loadingWarnings: DatabaseLoadingWarnings?
     
     private weak var currentGroup: Group?
@@ -66,12 +67,14 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         primaryRouter: NavigationRouter,
         database: Database,
         databaseRef: URLReference,
+        canEditDatabase: Bool,
         loadingWarnings: DatabaseLoadingWarnings?
     ) {
         self.splitViewController = splitViewController
         self.primaryRouter = primaryRouter
         self.database = database
         self.databaseRef = databaseRef
+        self.canEditDatabase = canEditDatabase
         self.loadingWarnings = loadingWarnings
         
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
@@ -233,7 +236,12 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         
         if let existingCoordinator = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
             let entryViewerCoordinator = existingCoordinator as! EntryViewerCoordinator 
-            entryViewerCoordinator.setEntry(entry, database: database, isHistoryEntry: false)
+            entryViewerCoordinator.setEntry(
+                entry,
+                database: database,
+                isHistoryEntry: false,
+                canEditEntry: canEditDatabase && !entry.isDeleted
+            )
             guard let entryViewerRouter = self.entryViewerRouter else {
                 Diag.error("Coordinator without a router, aborting")
                 assertionFailure()
@@ -248,6 +256,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             entry: entry,
             database: database,
             isHistoryEntry: false,
+            canEditEntry: canEditDatabase && !entry.isDeleted,
             router: entryViewerRouter,
             progressHost: self 
         )
@@ -498,9 +507,12 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
     
     func getActionPermissions(for group: Group) -> DatabaseItemActionPermissions {
+        guard canEditDatabase else {
+            return DatabaseItemActionPermissions.everythingForbidden
+        }
+        
         var result = DatabaseItemActionPermissions()
-        let isRecycleBin = (group === group.database?.getBackupGroup(createIfMissing: false))
-
+        result.canEditDatabase = true 
         result.canCreateGroup = !group.isDeleted
 
         if group is Group1 {
@@ -509,28 +521,34 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
             result.canCreateEntry = !group.isDeleted
         }
         
+        let isRecycleBin = (group === group.database?.getBackupGroup(createIfMissing: false))
         if isRecycleBin {
-            result.canEdit = group is Group2
+            result.canEditItem = group is Group2
         } else {
-            result.canEdit = !group.isDeleted
+            result.canEditItem = !group.isDeleted
         }
         
-        result.canDelete = !group.isRoot
+        result.canDeleteItem = !group.isRoot
         
-        result.canMove = !group.isRoot
+        result.canMoveItem = !group.isRoot
         if (group is Group1) && isRecycleBin {
-            result.canMove = false
+            result.canMoveItem = false
         }
         return result
     }
     
     func getActionPermissions(for entry: Entry) -> DatabaseItemActionPermissions {
+        guard canEditDatabase else {
+            return DatabaseItemActionPermissions.everythingForbidden
+        }
+        
         var result = DatabaseItemActionPermissions()
+        result.canEditDatabase = true 
         result.canCreateGroup = false
         result.canCreateEntry = false
-        result.canEdit = !entry.isDeleted
-        result.canDelete = true 
-        result.canMove = true
+        result.canEditItem = !entry.isDeleted
+        result.canDeleteItem = true 
+        result.canMoveItem = true
         return result
     }
 }

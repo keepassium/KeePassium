@@ -31,13 +31,14 @@ final class EntryHistoryTimestampCell: UITableViewCell {
 final class EntryHistoryItemCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    var restoreButton: UIButton! 
     
     var buttonHandler: (()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let restoreButton = UIButton()
+        restoreButton = UIButton()
         restoreButton.setImage(UIImage.get(.clockArrowCirclepath), for: .normal)
         restoreButton.accessibilityLabel = LString.actionRestore
         restoreButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
@@ -96,6 +97,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     }
     
     weak var delegate: EntryHistoryViewerDelegate?
+    private var canEditEntry = false
     
     private var canExpire = false
     private var expiryTime = Date.distantPast
@@ -108,7 +110,14 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     
     private var deleteBarButton: UIBarButtonItem! 
     
-    public func setContents(from entry: Entry, isHistoryEntry: Bool, animated: Bool) {
+    public func setContents(
+        from entry: Entry,
+        isHistoryEntry: Bool,
+        canEditEntry: Bool,
+        animated: Bool
+    ) {
+        self.canEditEntry = canEditEntry
+        
         canExpire = entry.canExpire
         expiryTime = entry.expiryTime
         creationTime = entry.creationTime
@@ -165,6 +174,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             dateFormatter.timeStyle = .long
         }
         
+        editButtonItem.isEnabled = canEditEntry
         if animated {
             let visibleSections = IndexSet(0..<numberOfSections(in: tableView))
             tableView.reloadSections(visibleSections, with: .automatic)
@@ -281,6 +291,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             as! EntryHistoryItemCell
         cell.titleLabel?.setText(historyEntry.resolvedTitle, strikethrough: historyEntry.isExpired)
         cell.subtitleLabel?.text = dateFormatter.string(from: historyEntry.lastModificationTime)
+        cell.restoreButton.isHidden = !canEditEntry
         cell.buttonHandler = { [weak self, indexPath] in
             guard let self = self else { return }
             self.tableView(self.tableView, accessoryButtonTappedForRowWith: indexPath)
@@ -302,6 +313,9 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard canEditEntry else {
+            return false
+        }
         switch Section(rawValue: indexPath.section)! {
         case .timestamps:
             return false
@@ -314,6 +328,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         _ tableView: UITableView,
         editingStyleForRowAt indexPath: IndexPath
     ) -> UITableViewCell.EditingStyle {
+        assert(canEditEntry)
         switch Section(rawValue: indexPath.section)! {
         case .timestamps:
             return .none
@@ -324,6 +339,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     
     
     override func setEditing(_ editing: Bool, animated: Bool) {
+        assert(canEditEntry || !editing)
         super.setEditing(editing, animated: animated)
         updateToolbar()
     }
@@ -395,8 +411,9 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     ) -> [ContextualAction] {
         guard let section = Section(rawValue: indexPath.section),
               section == .historyEntries,
-              let historyEntries = historyEntries,
-              indexPath.row < historyEntries.count
+              let historyEntries = historyEntries,  
+              indexPath.row < historyEntries.count, 
+              canEditEntry
         else {
             return []
         }
@@ -427,6 +444,11 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     }
     
     private func didPressRestoreHistoryEntry(index: Int) {
+        guard canEditEntry else {
+            Diag.warning("Tried to modify non-editable entry")
+            assertionFailure()
+            return
+        }
         guard let historyEntries = historyEntries else {
             assertionFailure("There are no history entries")
             return
@@ -436,6 +458,11 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     }
     
     private func didPressDeleteHistoryEntry(index: Int) {
+        guard canEditEntry else {
+            Diag.warning("Tried to modify non-editable entry")
+            assertionFailure()
+            return
+        }
         guard let historyEntries = historyEntries else {
             assertionFailure("There are no history entries")
             return
@@ -445,6 +472,11 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     }
     
     @objc private func didPressDeleteSelection(_ sender: AnyObject) {
+        guard canEditEntry else {
+            Diag.warning("Tried to modify non-editable entry")
+            assertionFailure()
+            return
+        }
         guard let historyEntries = historyEntries else {
             assertionFailure("There are no history entries")
             return
@@ -465,7 +497,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     
     private func updateToolbar() {
         let hasHistoryEntries = (historyEntries?.count ?? 0) > 0
-        deleteBarButton.isEnabled = isEditing && hasHistoryEntries
+        deleteBarButton.isEnabled = canEditEntry && isEditing && hasHistoryEntries
         if tableView.indexPathsForSelectedRows != nil {
             deleteBarButton.title = LString.actionDelete
         } else {

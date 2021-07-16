@@ -9,8 +9,6 @@
 import KeePassiumLib
 
 protocol EntryFileViewerDelegate: AnyObject {
-    func canEditFiles(in viewController: EntryFileViewerVC) -> Bool
-    
     func shouldReplaceExistingFile(in viewController: EntryFileViewerVC) -> Bool
     
     func didPressAddFile(in viewController: EntryFileViewerVC)
@@ -39,12 +37,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
     private var attachments = [Attachment]()
     private var editButton: UIBarButtonItem! 
 
-    private var canAddFiles: Bool {
-        return canEditFiles
-    }
-    private var canEditFiles: Bool {
-        return delegate?.canEditFiles(in: self) ?? false
-    }
+    private var canEditFiles = false
         
     
     override func viewDidLoad() {
@@ -69,8 +62,9 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         refresh()
     }
     
-    public func setContents(_ attachments: [Attachment], animated: Bool) {
+    public func setContents(_ attachments: [Attachment], canEditEntry: Bool, animated: Bool) {
         self.attachments = attachments
+        self.canEditFiles = canEditEntry
         refresh(animated: animated)
     }
     
@@ -105,7 +99,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var contentCellCount = max(1, attachments.count) // at least one for "Nothing here"
-        if canAddFiles {
+        if canEditFiles {
             contentCellCount += 1 // +1 for "Add File"
         }
         return contentCellCount
@@ -120,7 +114,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
             case 0:
                 return tableView.dequeueReusableCell(withIdentifier: CellID.noFiles, for: indexPath)
             case 1:
-                assert(canAddFiles)
+                assert(canEditFiles)
                 return tableView.dequeueReusableCell(withIdentifier: CellID.addFile, for: indexPath)
             default:
                 fatalError()
@@ -131,7 +125,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
             let att = attachments[indexPath.row]
             return makeAttachmentCell(att, for: indexPath)
         } else {
-            assert(canAddFiles)
+            assert(canEditFiles)
             return tableView.dequeueReusableCell(withIdentifier: CellID.addFile, for: indexPath)
         }
     }
@@ -163,7 +157,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
             }
         } else {
             guard row > 0 else { return } // skips "No files" stub
-            if canAddFiles {
+            if canEditFiles {
                 didPressAddAttachment()
             }
         }
@@ -173,13 +167,13 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         _ tableView: UITableView,
         editingStyleForRowAt indexPath: IndexPath
     ) -> UITableViewCell.EditingStyle {
+        assert(canEditFiles)
         let row = indexPath.row
         guard attachments.count > 0 else {
             switch row {
             case 0: // "nothing here"
                 return .none
             case 1: // "add file"
-                assert(canAddFiles)
                 return .insert
             default:
                 fatalError()
@@ -189,7 +183,6 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         if row < attachments.count {
             return .delete
         } else {
-            assert(canAddFiles)
             return .insert
         }
     }
@@ -212,6 +205,9 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
+        guard canEditFiles else {
+            return nil
+        }
         let attachment = attachments[indexPath.row]
         let deleteAction = UIContextualAction(
             style: .destructive,
@@ -235,6 +231,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         commit editingStyle: UITableViewCell.EditingStyle,
         forRowAt indexPath: IndexPath)
     {
+        assert(canEditFiles)
         if editingStyle == .insert {
             didPressAddAttachment()
         }
@@ -253,7 +250,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
 private extension EntryFileViewerVC {
     
     func didPressAddAttachment() {
-        guard canAddFiles else {
+        guard canEditFiles else {
             assertionFailure()
             return
         }
@@ -285,6 +282,7 @@ private extension EntryFileViewerVC {
     }
     
     func didPressRenameAttachment(at indexPath: IndexPath) {
+        assert(canEditFiles)
         let attachment = attachments[indexPath.row]
         
         let renameController = UIAlertController(
@@ -314,6 +312,7 @@ private extension EntryFileViewerVC {
     }
     
     private func didPressDeleteAttachment(_ attachment: Attachment) {
+        assert(canEditFiles)
         delegate?.didPressDeleteFile(attachment, in: self)
     }
 }

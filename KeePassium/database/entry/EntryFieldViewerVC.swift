@@ -79,7 +79,6 @@ class FieldCopiedView: UIView {
 
 
 protocol EntryFieldViewerDelegate: AnyObject {
-    func canEditEntry(in viewController: EntryFieldViewerVC) -> Bool
     func didPressCopyField(
         text: String,
         from viewableField: ViewableField,
@@ -101,6 +100,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     private let editButton = UIBarButtonItem()
 
     private var isHistoryEntry = false
+    private var canEditEntry = false
     private var category = ItemCategory.default
     private var sortedFields: [ViewableField] = []
     
@@ -127,8 +127,14 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         refresh()
     }
 
-    func setContents(_ fields: [ViewableField], category: ItemCategory, isHistoryEntry: Bool) {
+    func setContents(
+        _ fields: [ViewableField],
+        category: ItemCategory,
+        isHistoryEntry: Bool,
+        canEditEntry: Bool
+    ) {
         self.isHistoryEntry = isHistoryEntry
+        self.canEditEntry = canEditEntry
         self.category = category
         self.sortedFields = fields.sorted {
             return category.compare($0.internalName, $1.internalName)
@@ -138,13 +144,18 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     
     func refresh() {
         guard isViewLoaded else { return }
-        editButton.isEnabled = delegate?.canEditEntry(in: self) ?? false
-        navigationItem.rightBarButtonItem = isHistoryEntry ? nil : editButton
+        editButton.isEnabled = canEditEntry
+        navigationItem.rightBarButtonItem = editButton
         tableView.reloadData()
     }
     
     
     @objc func didPressEdit(_ sender: UIBarButtonItem) {
+        guard canEditEntry else {
+            Diag.warning("Tried to modify non-editable entry, aborting")
+            assertionFailure()
+            return
+        }
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressEdit(at: popoverAnchor, in: self)
     }

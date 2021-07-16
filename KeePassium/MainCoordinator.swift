@@ -182,11 +182,13 @@ extension MainCoordinator {
         database: Database,
         warnings: DatabaseLoadingWarnings
     ) {
+        let canEditDatabase = fileRef.location != .internalBackup
         let databaseViewerCoordinator = DatabaseViewerCoordinator(
             splitViewController: rootSplitVC,
             primaryRouter: primaryRouter,
             database: database,
             databaseRef: fileRef,
+            canEditDatabase: canEditDatabase,
             loadingWarnings: warnings
         )
         databaseViewerCoordinator.dismissHandler = { [weak self] coordinator in
