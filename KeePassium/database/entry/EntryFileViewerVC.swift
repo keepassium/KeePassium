@@ -162,7 +162,10 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
                 delegate?.didPressViewFile(attachments[row], at: popoverAnchor, in: self)
             }
         } else {
-            didPressAddAttachment()
+            guard row > 0 else { return } // skips "No files" stub
+            if canAddFiles {
+                didPressAddAttachment()
+            }
         }
     }
     

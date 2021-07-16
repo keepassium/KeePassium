@@ -331,12 +331,15 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let section = Section(rawValue: indexPath.section),
               section == .historyEntries,
-              let historyEntries = historyEntries,
-              indexPath.row < historyEntries.count
+              let historyEntries = historyEntries
         else {
             assertionFailure()
             return
         }
+        if historyEntries.isEmpty {
+            return
+        }
+        assert(indexPath.row < historyEntries.count)
 
         if tableView.isEditing {
             updateToolbar()
@@ -349,12 +352,15 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let section = Section(rawValue: indexPath.section),
               section == .historyEntries,
-              let historyEntries = historyEntries,
-              indexPath.row < historyEntries.count
+              let historyEntries = historyEntries
         else {
             assertionFailure()
             return
         }
+        if historyEntries.isEmpty {
+            return
+        }
+        assert(indexPath.row < historyEntries.count)
         
         if tableView.isEditing {
             updateToolbar()
@@ -367,12 +373,15 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     ) {
         guard let section = Section(rawValue: indexPath.section),
               section == .historyEntries,
-              let historyEntries = historyEntries,
-              indexPath.row < historyEntries.count
+              let historyEntries = historyEntries
         else {
             assertionFailure()
             return
         }
+        if historyEntries.isEmpty {
+            return
+        }
+        assert(indexPath.row < historyEntries.count)
         
         if isEditing {
             didPressRestoreHistoryEntry(index: indexPath.row)
@@ -385,7 +394,9 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         forSwipe: Bool
     ) -> [ContextualAction] {
         guard let section = Section(rawValue: indexPath.section),
-              section == .historyEntries
+              section == .historyEntries,
+              let historyEntries = historyEntries,
+              indexPath.row < historyEntries.count
         else {
             return []
         }
