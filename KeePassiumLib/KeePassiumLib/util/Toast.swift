@@ -422,7 +422,7 @@ public extension UIView {
         wrapperView.layer.cornerRadius = style.cornerRadius
         
         if style.displayShadow {
-            wrapperView.layer.shadowColor = UIColor.black.cgColor
+            wrapperView.layer.shadowColor = style.shadowColor.cgColor
             wrapperView.layer.shadowOpacity = style.shadowOpacity
             wrapperView.layer.shadowRadius = style.shadowRadius
             wrapperView.layer.shadowOffset = style.shadowOffset
@@ -430,6 +430,7 @@ public extension UIView {
         
         if let image = image {
             imageView = UIImageView(image: image)
+            imageView?.tintColor = style.titleColor
             imageView?.contentMode = .scaleAspectFit
             imageView?.frame = CGRect(x: style.horizontalPadding, y: style.verticalPadding, width: style.imageSize.width, height: style.imageSize.height)
         }

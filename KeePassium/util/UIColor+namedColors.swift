@@ -34,6 +34,9 @@ extension UIColor {
     static var errorMessage: UIColor {
         return UIColor.systemRed
     }
+    static var warningMessage: UIColor {
+        return UIColor.systemOrange
+    }
     static var primaryText: UIColor {
         return UIColor(named: "PrimaryText") ?? .black
     }

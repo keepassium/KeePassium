@@ -23,10 +23,7 @@ extension UIViewController {
         StoreReviewSuggester.registerEvent(.trouble)
     }
     
-    func showNotification(
-        _ message: String,
-        title: String?=nil)
-    {
+    private func getHostViewForToastNotifications() -> UIView {
         var hostVC: UIViewController = self
         if hostVC is UITableViewController, let navVC = self.navigationController {
             hostVC = navVC
@@ -34,13 +31,28 @@ extension UIViewController {
         if hostVC is UINavigationController, let splitVC = hostVC.splitViewController {
             hostVC = splitVC
         }
-        let hostView: UIView = hostVC.view
-        hostView.makeToast(
+        return hostVC.view
+    }
+    
+    func showNotification(
+        _ message: String,
+        title: String? = nil,
+        image: UIImage? = nil,
+        imageSize: CGSize? = nil,
+        duration: TimeInterval = 3.0)
+    {
+        var style = ToastStyle()
+        style.backgroundColor = .darkGray
+        if let imageSize = imageSize {
+            style.imageSize = imageSize
+        }
+        getHostViewForToastNotifications().makeToast(
             message,
-            duration: 2.0,
+            duration: duration,
             position: .top,
             title: title,
-            image: nil,
+            image: image,
+            style: style,
             completion: nil
         )
     }

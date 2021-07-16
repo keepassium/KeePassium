@@ -272,6 +272,11 @@ public enum LString {
         value: "Done",
         comment: "Status message: finished saving a database"
     )
+    public static let databaseIsReadOnly = NSLocalizedString(
+        "[Database/Loading/ReadOnly/text]",
+        value: "The database is read-only",
+        comment: "Message shown if current database cannot be edited"
+    )
     public static let actionCloseDatabase = NSLocalizedString(
         "[Database/Opened/action] Close",
         value: "Close",

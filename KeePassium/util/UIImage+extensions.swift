@@ -62,6 +62,7 @@ enum SystemImageName: String {
     case clockArrowCirclepath = "clock.arrow.circlepath"
     case docOnDoc = "doc.on.doc"
     case ellipsisCircle = "ellipsis.circle"
+    case exclamationMarkTriangle = "exclamationmark.triangle"
     case folder = "folder"
     case pencil = "pencil"
     case qrcode = "qrcode"

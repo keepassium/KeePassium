@@ -108,13 +108,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         
         settingsNotifications.startObserving()
         
-        if loadingWarnings != nil {
-            showLoadingWarnings(loadingWarnings!)
-        } else {
-            StoreReviewSuggester.maybeShowAppReview(
-                appVersion: AppInfo.version,
-                occasion: .didOpenDatabase)
-        }
+        showInitialMessages()
     }
     
     private func stop(animated: Bool) {
@@ -137,6 +131,23 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         return splitViewController
     }
     
+    private func showInitialMessages() {
+        if loadingWarnings != nil {
+            showLoadingWarnings(loadingWarnings!)
+        }
+        if !canEditDatabase {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak self] in
+                guard let self = self else { return }
+                self.showReadOnlyDatabaseNotification(in: self.getPresenterForModals())
+            }
+        }
+
+        StoreReviewSuggester.maybeShowAppReview(
+            appVersion: AppInfo.version,
+            occasion: .didOpenDatabase
+        )
+    }
+    
     private func showLoadingWarnings(_ warnings: DatabaseLoadingWarnings) {
         guard !warnings.isEmpty else { return }
         
@@ -149,6 +160,22 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             }
         )
         StoreReviewSuggester.registerEvent(.trouble)
+    }
+    
+    private func showReadOnlyDatabaseNotification(in toastHost: UIViewController) {
+        let image: UIImage?
+        if #available(iOS 13, *) {
+            image = UIImage(systemName: SystemImageName.exclamationMarkTriangle.rawValue)?
+                .withTintColor(UIColor.warningMessage, renderingMode: .alwaysOriginal)
+        } else {
+            image = UIImage.get(.exclamationMarkTriangle)
+        }
+        toastHost.showNotification(
+            LString.databaseIsReadOnly,
+            image: image,
+            imageSize: CGSize(width: 25, height: 25),
+            duration: 3.0
+        )
     }
     
     private func showDiagnostics() {
@@ -209,7 +236,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             rootGroupViewer = groupViewerVC
         }
     }
-
+    
     private func selectEntry(_ entry: Entry?) {
         guard let groupViewerVC = primaryRouter.navigationController.topViewController
                 as? GroupViewerVC
