@@ -37,6 +37,8 @@ final class MainCoordinator: Coordinator {
     
     private var selectedDatabaseRef: URLReference?
     
+    private var isInitialDatabase = true
+    
     init(window: UIWindow) {
         self.rootSplitVC = RootSplitVC()
 
@@ -515,11 +517,15 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) -> Bool {
-        return rootSplitVC.isCollapsed && Settings.current.isAutoUnlockStartupDatabase
+        guard Settings.current.isAutoUnlockStartupDatabase else {
+            return false
+        }
+        return rootSplitVC.isCollapsed || isInitialDatabase
     }
     
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
         databasePickerCoordinator.setEnabled(false)
+        isInitialDatabase = false
     }
     
     func didNotUnlockDatabase(
