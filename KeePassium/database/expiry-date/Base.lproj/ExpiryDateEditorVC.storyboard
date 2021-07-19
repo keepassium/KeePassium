@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Expiry Date EditorVC-->
+        <scene sceneID="cng-tw-5ZW">
+            <objects>
+                <viewController storyboardIdentifier="ExpiryDateEditorVC" id="qBF-HO-zvU" customClass="ExpiryDateEditorVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f7z-dD-vXp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-NW-WbG">
+                                <rect key="frame" x="16" y="0.0" width="288" height="216"/>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="3124090800">
+                                    <!--2099-12-31 11:00:00 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="didChangeDate:" destination="qBF-HO-zvU" eventType="valueChanged" id="LgO-nm-0R6"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" layoutMarginsFollowReadableWidth="YES" text="{In 6 months}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-dw-rb1">
+                                <rect key="frame" x="24" y="216" width="272" height="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <color key="textColor" name="AuxiliaryText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ac1-Qd-A9g">
+                                <rect key="frame" x="255" y="240" width="51" height="31"/>
+                                <connections>
+                                    <action selector="didToggleNeverExpiresSwitch:" destination="qBF-HO-zvU" eventType="valueChanged" id="IlK-f1-eEB"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="{Never}" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMO-s6-jEi">
+                                <rect key="frame" x="198" y="247" width="49" height="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" name="PrimaryText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWy-pa-ObH" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="16" y="241" width="59" height="29"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="{Presets}">
+                                    <color key="titleColor" name="ActionTint"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="p0o-19-TQq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ac1-Qd-A9g" firstAttribute="leading" secondItem="rMO-s6-jEi" secondAttribute="trailing" constant="8" symbolic="YES" id="0Lu-2m-Ubf"/>
+                            <constraint firstItem="l3J-dw-rb1" firstAttribute="top" secondItem="xgb-NW-WbG" secondAttribute="bottom" id="DH3-Qk-raD"/>
+                            <constraint firstItem="Ac1-Qd-A9g" firstAttribute="top" secondItem="l3J-dw-rb1" secondAttribute="bottom" constant="8" symbolic="YES" id="DJ9-Th-XCk"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="GWy-pa-ObH" secondAttribute="bottom" constant="8" id="FfY-fQ-uM4"/>
+                            <constraint firstItem="GWy-pa-ObH" firstAttribute="leading" secondItem="xgb-NW-WbG" secondAttribute="leading" id="K15-Av-VIi"/>
+                            <constraint firstItem="GWy-pa-ObH" firstAttribute="centerY" secondItem="Ac1-Qd-A9g" secondAttribute="centerY" id="K82-09-Blk"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rMO-s6-jEi" secondAttribute="bottom" constant="8" id="aps-FT-5oy"/>
+                            <constraint firstItem="xgb-NW-WbG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f7z-dD-vXp" secondAttribute="trailingMargin" id="dE5-7G-Uic"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ac1-Qd-A9g" secondAttribute="bottom" constant="16" id="iJG-Hw-iJb"/>
+                            <constraint firstItem="rMO-s6-jEi" firstAttribute="centerY" secondItem="Ac1-Qd-A9g" secondAttribute="centerY" id="iSV-DV-eWO"/>
+                            <constraint firstItem="l3J-dw-rb1" firstAttribute="leading" secondItem="xgb-NW-WbG" secondAttribute="leadingMargin" id="jPa-mE-D75"/>
+                            <constraint firstItem="l3J-dw-rb1" firstAttribute="trailing" secondItem="xgb-NW-WbG" secondAttribute="trailingMargin" id="jvC-he-gGw"/>
+                            <constraint firstItem="xgb-NW-WbG" firstAttribute="top" secondItem="f7z-dD-vXp" secondAttribute="topMargin" id="jx9-g7-NTB"/>
+                            <constraint firstItem="xgb-NW-WbG" firstAttribute="centerX" secondItem="f7z-dD-vXp" secondAttribute="centerX" id="oX4-fE-Rxq"/>
+                            <constraint firstItem="Ac1-Qd-A9g" firstAttribute="trailing" secondItem="xgb-NW-WbG" secondAttribute="trailing" id="t1J-Ld-cai"/>
+                            <constraint firstItem="rMO-s6-jEi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GWy-pa-ObH" secondAttribute="trailing" id="vE7-Au-uEp"/>
+                            <constraint firstItem="xgb-NW-WbG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f7z-dD-vXp" secondAttribute="leadingMargin" id="ziI-vB-Oms"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="059-SP-yXR">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="hX2-VY-4at">
+                            <connections>
+                                <action selector="didPressCancel:" destination="qBF-HO-zvU" id="zlN-4S-nXd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="LXt-4A-Rtf">
+                            <connections>
+                                <action selector="didPressDone:" destination="qBF-HO-zvU" id="S30-dL-puG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="xgb-NW-WbG" id="3Jo-OC-yhJ"/>
+                        <outlet property="doneButton" destination="LXt-4A-Rtf" id="CqJ-3y-SjJ"/>
+                        <outlet property="expiresLabel" destination="rMO-s6-jEi" id="c8G-1Z-HJ4"/>
+                        <outlet property="neverExpiresSwitch" destination="Ac1-Qd-A9g" id="NgG-Z8-qsI"/>
+                        <outlet property="presetButton" destination="GWy-pa-ObH" id="4vF-YT-wxj"/>
+                        <outlet property="remainingTimeLabel" destination="l3J-dw-rb1" id="vc7-4f-4Yz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QIk-7J-8SM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-866.25" y="156.33802816901408"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="ActionTint">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AuxiliaryText">
+            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -49,6 +49,9 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     }
     var databaseExporterTemporaryURL: TemporaryFileURL?
     
+    private var expiryDateEditorModalRouter: NavigationRouter?
+    
+    
     init(
         entry: Entry,
         database: Database,
@@ -388,6 +391,24 @@ extension EntryViewerCoordinator {
         addChildCoordinator(historyEntryViewerCoordinator)
     }
     
+    private func showExpiryDateEditor(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        assert(expiryDateEditorModalRouter == nil)
+        let modalRouter = NavigationRouter.createModal(style: .popover)
+        let expiryDateEditor = ExpiryDateEditorVC.instantiateFromStoryboard()
+        expiryDateEditor.delegate = self
+        expiryDateEditor.canExpire = entry.canExpire
+        expiryDateEditor.expiryDate = entry.expiryTime
+        popoverAnchor.apply(to: modalRouter.navigationController.popoverPresentationController)
+        modalRouter.push(expiryDateEditor, animated: false, onPop: { [weak self] in
+            self?.expiryDateEditorModalRouter = nil
+        })
+        viewController.present(modalRouter, animated: true, completion: nil)
+        expiryDateEditorModalRouter = modalRouter
+    }
+    
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .pageSheet)
         let diagnosticsCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
@@ -517,6 +538,12 @@ extension EntryViewerCoordinator: UIDocumentInteractionControllerDelegate {
 }
 
 extension EntryViewerCoordinator: EntryHistoryViewerDelegate {
+    func didPressEditExpiryDate(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryHistoryViewerVC
+    ) {
+        showExpiryDateEditor(at: popoverAnchor, in: viewController)
+    }
     
     func didPressRestore(historyEntry: Entry2, in viewController: EntryHistoryViewerVC) {
         Diag.debug("Restoring historical entry")
@@ -558,6 +585,26 @@ extension EntryViewerCoordinator: EntryHistoryViewerDelegate {
     
     func didSelectHistoryEntry(_ entry: Entry2, in viewController: EntryHistoryViewerVC) {
         showHistoryEntry(entry)
+    }
+}
+
+extension EntryViewerCoordinator: ExpiryDateEditorDelegate {
+    func didPressCancel(in viewController: ExpiryDateEditorVC) {
+        expiryDateEditorModalRouter?.dismiss(animated: true)
+        expiryDateEditorModalRouter = nil
+    }
+    
+    func didChangeExpiryDate(
+        _ expiryDate: Date,
+        canExpire: Bool,
+        in viewController: ExpiryDateEditorVC
+    ) {
+        expiryDateEditorModalRouter?.dismiss(animated: true)
+        expiryDateEditorModalRouter = nil
+        entry.expiryTime = expiryDate
+        entry.canExpire = canExpire
+        refresh(animated: true)
+        saveDatabase()
     }
 }
 

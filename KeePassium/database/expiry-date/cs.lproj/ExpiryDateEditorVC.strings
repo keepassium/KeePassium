@@ -1,0 +1,9 @@
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "059-SP-yXR"; */
+"059-SP-yXR.title" = "Title";
+
+/* Class = "UILabel"; text = "{That's N days from now}"; ObjectID = "l3J-dw-rb1"; */
+"l3J-dw-rb1.text" = "{That's N days from now}";
+
+/* Class = "UILabel"; text = "{Never}"; ObjectID = "rMO-s6-jEi"; */
+"rMO-s6-jEi.text" = "{Never}";

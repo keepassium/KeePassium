@@ -157,6 +157,11 @@ public enum LString {
         value: "More Actions",
         comment: "Checkbox/Button to show additional actions"
     )
+    public static let titlePresets = NSLocalizedString(
+        "[Generic/Presets]",
+        value: "Presets",
+        comment: "Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year')"
+    )
 
     public static let titleError = NSLocalizedString(
         "[Generic/title] Error",
@@ -408,6 +413,28 @@ public enum LString {
         comment: "Notification that an archived/historical item (e.g entry) has been successfully restored"
     )
 
+    
+    public static let expiryDateNever = NSLocalizedString(
+        "[Entry/History/ExpiryDate] Never",
+        value: "Never",
+        comment: "Expiry Date of an entry which does not expire.")
+    public static let itemExpiryDate = NSLocalizedString(
+        "[Entry/History] Expiry Date",
+        value: "Expiry Date",
+        comment: "Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value")
+    public static let itemCreationDate = NSLocalizedString(
+        "[Entry/History] Creation Date",
+        value: "Creation Date",
+        comment: "Title of a field with entry creation date and time")
+    public static let itemLastModificationDate = NSLocalizedString(
+        "[Entry/History] Last Modification Date",
+        value: "Last Modification Date",
+        comment: "Title of a field with entry's last modification date and time")
+    public static let itemLastAccessDate = NSLocalizedString(
+        "[Entry/History] Last Access Date",
+        value: "Last Access Date",
+        comment: "Title of a field with date and time when the entry was last accessed/viewed")
+    
     
     
     public static let trashDirectoryName = NSLocalizedString(

@@ -21,6 +21,10 @@ protocol EntryHistoryViewerDelegate: AnyObject {
         historyEntries historyEntriesToDelete: [Entry2],
         in viewController: EntryHistoryViewerVC
     )
+    func didPressEditExpiryDate(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryHistoryViewerVC
+    )
 }
 
 final class EntryHistoryTimestampCell: UITableViewCell {
@@ -73,25 +77,13 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         var title: String {
             switch self {
             case .expiryTime:
-                return NSLocalizedString(
-                    "[Entry/History] Expiry Date",
-                    value: "Expiry Date",
-                    comment: "Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value")
+                return LString.itemExpiryDate
             case .creationTime:
-                return NSLocalizedString(
-                    "[Entry/History] Creation Date",
-                    value: "Creation Date",
-                    comment: "Title of a field with entry creation date and time")
+                return LString.itemCreationDate
             case .lastModificationTime:
-                return NSLocalizedString(
-                    "[Entry/History] Last Modification Date",
-                    value: "Last Modification Date",
-                    comment: "Title of a field with entry's last modification date and time")
+                return LString.itemLastModificationDate
             case .lastAccessTime:
-                return NSLocalizedString(
-                    "[Entry/History] Last Access Date",
-                    value: "Last Access Date",
-                    comment: "Title of a field with date and time when the entry was last accessed/viewed")
+                return LString.itemLastAccessDate
             }
         }
     }
@@ -228,6 +220,10 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     ) -> IndexPath? {
         switch Section(rawValue: indexPath.section)! {
         case .timestamps:
+            let timestampType = TimestampType(rawValue: indexPath.row)!
+            if canEditEntry && timestampType == .expiryTime {
+                return indexPath
+            }
             return nil
         case .historyEntries:
             return indexPath
@@ -251,14 +247,15 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             withIdentifier: CellID.fixedTimestamp,
             for: indexPath)
             as! EntryHistoryTimestampCell
+        cell.accessoryType = .none
 
         let timestampType = TimestampType(rawValue: indexPath.row)! 
         cell.titleLabel.text = timestampType.title
-        
         let timestamp: Date?
         switch timestampType {
         case .expiryTime:
             timestamp = canExpire ? expiryTime : nil
+            cell.accessoryType = canEditEntry ? .disclosureIndicator : .none
         case .creationTime:
             timestamp = creationTime
         case .lastModificationTime:
@@ -270,10 +267,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         if let timestamp = timestamp {
             cell.valueLabel?.text = dateFormatter.string(from: timestamp)
         } else {
-            cell.valueLabel?.text = NSLocalizedString(
-                "[Entry/History/ExpiryDate] Never",
-                value: "Never",
-                comment: "Expiry Date of an entry which does not expire.")
+            cell.valueLabel?.text = LString.expiryDateNever
         }
         return cell
     }
@@ -345,23 +339,31 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let section = Section(rawValue: indexPath.section),
-              section == .historyEntries,
-              let historyEntries = historyEntries
-        else {
+        guard let section = Section(rawValue: indexPath.section) else {
             assertionFailure()
             return
         }
-        if historyEntries.isEmpty {
-            return
-        }
-        assert(indexPath.row < historyEntries.count)
-
-        if tableView.isEditing {
-            updateToolbar()
-        } else {
-            let selectedHistoryEntry = historyEntries[indexPath.row]
-            delegate?.didSelectHistoryEntry(selectedHistoryEntry, in: self)
+        
+        switch section {
+        case .timestamps:
+            let timestampType = TimestampType(rawValue: indexPath.row)!
+            if canEditEntry && timestampType == .expiryTime {
+                tableView.deselectRow(at: indexPath, animated: true)
+                didPressEditExpiryDate(at: indexPath)
+            }
+        case .historyEntries:
+            guard let historyEntries = historyEntries,
+                  historyEntries.count > 0
+            else {
+                return
+            }
+            assert(indexPath.row < historyEntries.count)
+            if tableView.isEditing {
+                updateToolbar()
+            } else {
+                let selectedHistoryEntry = historyEntries[indexPath.row]
+                delegate?.didSelectHistoryEntry(selectedHistoryEntry, in: self)
+            }
         }
     }
     
@@ -387,23 +389,31 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         _ tableView: UITableView,
         accessoryButtonTappedForRowWith indexPath: IndexPath
     ) {
-        guard let section = Section(rawValue: indexPath.section),
-              section == .historyEntries,
-              let historyEntries = historyEntries
-        else {
+        guard let section = Section(rawValue: indexPath.section) else {
             assertionFailure()
             return
         }
-        if historyEntries.isEmpty {
+        switch section {
+        case .timestamps:
             return
-        }
-        assert(indexPath.row < historyEntries.count)
-        
-        if isEditing {
-            didPressRestoreHistoryEntry(index: indexPath.row)
+        case .historyEntries:
+            guard let historyEntries = historyEntries,
+                  !historyEntries.isEmpty
+            else {
+                return
+            }
+            assert(indexPath.row < historyEntries.count)
+            if isEditing {
+                didPressRestoreHistoryEntry(index: indexPath.row)
+            }
         }
     }
     
+    
+    private func didPressEditExpiryDate(at indexPath: IndexPath) {
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressEditExpiryDate(at: popoverAnchor, in: self)
+    }
     
     override func getContextActionsForRow(
         at indexPath: IndexPath,
