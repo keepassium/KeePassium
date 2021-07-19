@@ -12,20 +12,20 @@ protocol EntryFileViewerDelegate: AnyObject {
     func shouldReplaceExistingFile(in viewController: EntryFileViewerVC) -> Bool
     
     func didPressAddFile(in viewController: EntryFileViewerVC)
-    func didRenameFile(
-        _ attachment: Attachment,
+    func didPressRename(
+        file attachment: Attachment,
         to newName: String,
         in viewController: EntryFileViewerVC
     )
-    func didPressViewFile(
-        _ attachment: Attachment,
+    func didPressView(
+        file attachment: Attachment,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFileViewerVC
     )
-    func didPressDeleteFile(_ attachment: Attachment, in viewController: EntryFileViewerVC)
+    func didPressDelete(files attachments: [Attachment], in viewController: EntryFileViewerVC)
 }
 
-final class EntryFileViewerVC: UITableViewController , Refreshable {
+final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshable {
     private enum CellID {
         static let fileItem = "FileItemCell"
         static let noFiles = "NoFilesCell"
@@ -35,20 +35,38 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
     weak var delegate: EntryFileViewerDelegate?
      
     private var attachments = [Attachment]()
-    private var editButton: UIBarButtonItem! 
 
     private var canEditFiles = false
-        
+
+    private var addFileBarButton: UIBarButtonItem! 
+    private var deleteFilesBarButton: UIBarButtonItem! 
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        editButton = UIBarButtonItem(
-            title: LString.actionEdit,
+        navigationItem.rightBarButtonItem = editButtonItem
+        tableView.allowsMultipleSelectionDuringEditing = true
+
+        addFileBarButton = UIBarButtonItem(
+            title: LString.actionAddAttachment,
             style: .plain,
             target: self,
-            action: #selector(didPressEdit))
-        toolbarItems = [] 
+            action: #selector(didPressAddAttachment(_:))
+        )
+        deleteFilesBarButton = UIBarButtonItem(
+            title: LString.actionDelete, 
+            style: .plain,
+            target: self,
+            action: #selector(confirmDeleteSelection(_:))
+        )
+        toolbarItems = [
+            addFileBarButton,
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            deleteFilesBarButton
+        ]
+        updateToolbar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,8 +76,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
     
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
-        tableView.isEditing = false
-        refresh()
+        setEditing(false, animated: false)
     }
     
     public func setContents(_ attachments: [Attachment], canEditEntry: Bool, animated: Bool) {
@@ -73,23 +90,13 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
     }
     
     func refresh(animated: Bool) {
-        guard isViewLoaded else { return }
-        editButton.isEnabled = canEditFiles
-        navigationItem.rightBarButtonItem = canEditFiles ? editButton : nil
-        
+        editButtonItem.isEnabled = canEditFiles
         if animated {
             tableView.reloadSections([0], with: .automatic) 
         } else {
             tableView.reloadData()
         }
-        
-        if tableView.isEditing {
-            editButton.title = LString.actionDone
-            editButton.style = .done
-        } else {
-            editButton.title = LString.actionEdit
-            editButton.style = .plain
-        }
+        updateToolbar()
     }
     
 
@@ -98,11 +105,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var contentCellCount = max(1, attachments.count) // at least one for "Nothing here"
-        if canEditFiles {
-            contentCellCount += 1 // +1 for "Add File"
-        }
-        return contentCellCount
+        return max(1, attachments.count) // at least one for "Nothing here"
     }
     
     override func tableView(
@@ -110,27 +113,18 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         if attachments.isEmpty {
-            switch indexPath.row {
-            case 0:
-                return tableView.dequeueReusableCell(withIdentifier: CellID.noFiles, for: indexPath)
-            case 1:
-                assert(canEditFiles)
-                return tableView.dequeueReusableCell(withIdentifier: CellID.addFile, for: indexPath)
-            default:
-                fatalError()
-            }
+            return tableView.dequeueReusableCell(withIdentifier: CellID.noFiles, for: indexPath)
         }
         
-        if indexPath.row < attachments.count {
-            let att = attachments[indexPath.row]
-            return makeAttachmentCell(att, for: indexPath)
-        } else {
-            assert(canEditFiles)
-            return tableView.dequeueReusableCell(withIdentifier: CellID.addFile, for: indexPath)
+        guard indexPath.row < attachments.count else {
+            assertionFailure()
+            return tableView.dequeueReusableCell(withIdentifier: CellID.noFiles, for: indexPath)
         }
+        let att = attachments[indexPath.row]
+        return setupAttachmentCell(att, for: indexPath)
     }
     
-    private func makeAttachmentCell(
+    private func setupAttachmentCell(
         _ attachment: Attachment,
         for indexPath: IndexPath
     ) -> UITableViewCell {
@@ -144,22 +138,27 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let row = indexPath.row
-        if row < attachments.count {
-            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-            if tableView.isEditing {
-                didPressRenameAttachment(at: indexPath)
-            } else {
-                delegate?.didPressViewFile(attachments[row], at: popoverAnchor, in: self)
-            }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < attachments.count else {
+            return // skip "empty list" row
+        }
+
+        if isEditing {
+            updateToolbar()
         } else {
-            guard row > 0 else { return } // skips "No files" stub
-            if canEditFiles {
-                didPressAddAttachment()
-            }
+            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            let attachment = attachments[indexPath.row]
+            delegate?.didPressView(file: attachment, at: popoverAnchor, in: self)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard indexPath.row < attachments.count else {
+            return
+        }
+        if isEditing {
+            updateToolbar()
         }
     }
     
@@ -168,23 +167,14 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         editingStyleForRowAt indexPath: IndexPath
     ) -> UITableViewCell.EditingStyle {
         assert(canEditFiles)
-        let row = indexPath.row
-        guard attachments.count > 0 else {
-            switch row {
-            case 0: // "nothing here"
-                return .none
-            case 1: // "add file"
-                return .insert
-            default:
-                fatalError()
-            }
+        if attachments.isEmpty {
+            return .none
         }
-        
-        if row < attachments.count {
-            return .delete
-        } else {
-            return .insert
+        guard indexPath.row < attachments.count else {
+            assertionFailure()
+            return .none
         }
+        return .delete
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -192,38 +182,39 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
             return false
         }
         
-        let row = indexPath.row
-        if row == 0 && attachments.isEmpty {
-            return false
-        } else {
-            return true
-        }
+        let isFileRow = !attachments.isEmpty && (indexPath.row < attachments.count)
+        return isFileRow
     }
     
     
-    override func tableView(
-        _ tableView: UITableView,
-        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-    ) -> UISwipeActionsConfiguration? {
+    override func getContextActionsForRow(
+        at indexPath: IndexPath,
+        forSwipe: Bool
+    ) -> [ContextualAction] {
         guard canEditFiles else {
-            return nil
+            return []
         }
-        let attachment = attachments[indexPath.row]
-        let deleteAction = UIContextualAction(
-            style: .destructive,
+        guard indexPath.row < attachments.count else {
+            return []
+        }
+        let deleteAction = ContextualAction(
             title: LString.actionDeleteFile,
-            handler: { [weak self] (action, sourceView, completion) in
-                self?.didPressDeleteAttachment(attachment)
-                if #available(iOS 13, *) {
-                    completion(true)
-                } else {
-                    completion(false) 
-                }
+            imageName: .trash,
+            style: .destructive,
+            handler: { [weak self] in
+                self?.didPressDeleteAttachment(at: indexPath)
             }
         )
-        deleteAction.image = UIImage.get(.trash)
         
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+        let renameFileAction = ContextualAction(
+            title: LString.actionRename,
+            imageName: .pencil,
+            style: .default,
+            handler: { [weak self] in
+                self?.didPressRenameAttachment(at: indexPath)
+            }
+        )
+        return [renameFileAction, deleteAction]
     }
     
     override func tableView(
@@ -232,24 +223,19 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
         forRowAt indexPath: IndexPath)
     {
         assert(canEditFiles)
-        if editingStyle == .insert {
-            didPressAddAttachment()
-        }
+        didPressDeleteAttachment(at: indexPath)
     }
-    
-    @objc func didPressEdit() {
-        guard canEditFiles else {
-            assertionFailure()
-            return
-        }
-        tableView.setEditing(!tableView.isEditing, animated: true)
-        refresh()
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        assert(canEditFiles || !editing)
+        super.setEditing(editing, animated: animated)
+        updateToolbar()
     }
 }
 
 private extension EntryFileViewerVC {
     
-    func didPressAddAttachment() {
+    @objc private func didPressAddAttachment(_ sender: AnyObject) {
         guard canEditFiles else {
             assertionFailure()
             return
@@ -281,7 +267,7 @@ private extension EntryFileViewerVC {
         present(replacementAlert, animated: true, completion: nil)
     }
     
-    func didPressRenameAttachment(at indexPath: IndexPath) {
+    private func didPressRenameAttachment(at indexPath: IndexPath) {
         assert(canEditFiles)
         let attachment = attachments[indexPath.row]
         
@@ -306,13 +292,55 @@ private extension EntryFileViewerVC {
                 Diag.warning("New attachment name is empty, ignoring")
                 return
             }
-            self.delegate?.didRenameFile(attachment, to: newName, in: self)
+            self.delegate?.didPressRename(file: attachment, to: newName, in: self)
         }
         present(renameController, animated: true, completion: nil)
     }
     
-    private func didPressDeleteAttachment(_ attachment: Attachment) {
+    private func didPressDeleteAttachment(at indexPath: IndexPath) {
         assert(canEditFiles)
-        delegate?.didPressDeleteFile(attachment, in: self)
+        let attachment = attachments[indexPath.row]
+        delegate?.didPressDelete(files: [attachment], in: self)
+    }
+    
+    @objc private func confirmDeleteSelection(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet)
+        alert.addAction(title: sender.title, style: .destructive) { [weak self] _ in
+            self?.didPressDeleteSelection()
+        }
+        alert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        popoverAnchor.apply(to: alert.popoverPresentationController)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func didPressDeleteSelection() {
+        assert(canEditFiles)
+        
+        let attachmentsToDelete: [Attachment]
+        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
+            Diag.debug("Deleting selected attachments")
+            attachmentsToDelete = selectedIndexPaths.map {
+                attachments[$0.row]
+            }
+        } else {
+            Diag.debug("Deleting all attachments")
+            attachmentsToDelete = attachments
+        }
+        delegate?.didPressDelete(files: attachmentsToDelete, in: self)
+    }
+    
+    private func updateToolbar() {
+        let hasAttachments = !attachments.isEmpty
+        addFileBarButton.isEnabled = canEditFiles
+        deleteFilesBarButton.isEnabled = canEditFiles && isEditing && hasAttachments
+        if tableView.indexPathsForSelectedRows != nil {
+            deleteFilesBarButton.title = LString.actionDelete
+        } else {
+            deleteFilesBarButton.title = LString.actionDeleteAll
+        }
     }
 }

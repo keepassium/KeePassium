@@ -485,8 +485,8 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         return !canAddWithoutReplacement
     }
     
-    func didRenameFile(
-        _ attachment: Attachment,
+    func didPressRename(
+        file attachment: Attachment,
         to newName: String,
         in viewController: EntryFileViewerVC
     ) {
@@ -496,8 +496,8 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         saveDatabase()
     }
     
-    func didPressViewFile(
-        _ attachment: Attachment,
+    func didPressView(
+        file attachment: Attachment,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFileViewerVC
     ) {
@@ -509,12 +509,21 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         }
     }
     
-    func didPressDeleteFile(_ attachment: Attachment, in viewController: EntryFileViewerVC) {
-        assert(canEditEntry, "Tried to delete fiel from non-editable entry")
+    func didPressDelete(
+        files attachmentsToDelete: [Attachment],
+        in viewController: EntryFileViewerVC
+    ) {
+        Diag.debug("Deleting attached files")
+        assert(canEditEntry, "Tried to delete file from non-editable entry")
+        
         entry.backupState()
-        entry.attachments.removeAll(where: { $0 === attachment })
+        let newAttachments = entry.attachments.compactMap { attachment -> Attachment? in
+            let shouldBeDeleted = attachmentsToDelete.contains(where: { $0 === attachment })
+            return shouldBeDeleted ? nil : attachment
+        }
+        entry.attachments = newAttachments
         refresh(animated: true)
-        Diag.info("Attachment deleted OK")
+        Diag.info("Attachments deleted OK")
 
         saveDatabase()
     }

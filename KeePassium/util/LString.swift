@@ -365,6 +365,11 @@ public enum LString {
         value: "Create Entry",
         comment: "Action/button to create a new entry in the current group"
     )
+    public static let actionAddAttachment = NSLocalizedString(
+        "[Entry/Attachment/add]",
+        value: "Add File",
+        comment: "Action/button to add a file to entry attachments"
+    )
     public static let defaultNewEntryName = NSLocalizedString(
         "[Entry/New/defaultTitle] New Entry",
         value: "New Entry",
