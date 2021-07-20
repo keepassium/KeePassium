@@ -65,19 +65,31 @@ private final class UIImagePickerControllerPhotoPicker:
             self?.completion?(.success(info[UIImagePickerController.InfoKey.originalImage] as? UIImage))
         }
     }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        completion?(.success(nil))
+    }
 }
 
 @available(iOS 14, *)
-private final class PHPickerViewControllerPhotoPicker: PhotoPicker, PHPickerViewControllerDelegate {
+private final class PHPickerViewControllerPhotoPicker:
+    NSObject,
+    PhotoPicker,
+    PHPickerViewControllerDelegate,
+    UIAdaptivePresentationControllerDelegate
+{
     let picker: PHPickerViewController
     var viewController: UIViewController?
     var completion: PhotoPickerCompletion?
 
-    init() {
+    override init() {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
         picker = PHPickerViewController(configuration: configuration)
+        super.init()
+        
         picker.delegate = self
+        picker.presentationController?.delegate = self
     }
 
     func pickImage(
@@ -117,5 +129,9 @@ private final class PHPickerViewControllerPhotoPicker: PhotoPicker, PHPickerView
                 }
             }
         }
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        completion?(.success(nil))
     }
 }
