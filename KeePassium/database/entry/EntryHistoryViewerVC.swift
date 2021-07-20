@@ -9,25 +9,92 @@
 import KeePassiumLib
 
 protocol EntryHistoryViewerDelegate: AnyObject {
-    func didSelectHistoryEntry(_ entry: Entry, in viewController: EntryHistoryViewerVC)
+    func didSelectHistoryEntry(
+        _ entry: Entry2,
+        in viewController: EntryHistoryViewerVC
+    )
+    func didPressRestore(
+        historyEntry entryToRestore: Entry2,
+        in viewController: EntryHistoryViewerVC
+    )
+    func didPressDelete(
+        historyEntries historyEntriesToDelete: [Entry2],
+        in viewController: EntryHistoryViewerVC
+    )
 }
 
-final class EntryHistoryViewerVC: UITableViewController, Refreshable {
+final class EntryHistoryTimestampCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+}
 
-    private let numberOfFixedTimestamps = 4 
+final class EntryHistoryItemCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
+    var buttonHandler: (()->Void)?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let restoreButton = UIButton()
+        restoreButton.setImage(UIImage.get(.clockArrowCirclepath), for: .normal)
+        restoreButton.accessibilityLabel = LString.actionRestore
+        restoreButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        restoreButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        editingAccessoryView = restoreButton
+    }
+    
+    @objc private func didTapButton(_ sender: AnyObject) {
+        buttonHandler?()
+    }
+}
+
+final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refreshable {
     private enum Section: Int { 
+        case timestamps = 0
+        case historyEntries = 1
+    }
+    
+    private enum CellID { 
+        static let fixedTimestamp = "TimestampCell"
+        static let emptyHistory = "EmptyHistoryCell"
+        static let historyItem = "HistoryItemCell"
+    }
+    
+    private enum TimestampType: Int {
+        static let all = [expiryTime, creationTime, lastModificationTime, lastAccessTime]
         case expiryTime = 0
         case creationTime = 1
         case lastModificationTime = 2
         case lastAccessTime = 3
-        case previousVersions = 4
+        
+        var title: String {
+            switch self {
+            case .expiryTime:
+                return NSLocalizedString(
+                    "[Entry/History] Expiry Date",
+                    value: "Expiry Date",
+                    comment: "Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value")
+            case .creationTime:
+                return NSLocalizedString(
+                    "[Entry/History] Creation Date",
+                    value: "Creation Date",
+                    comment: "Title of a field with entry creation date and time")
+            case .lastModificationTime:
+                return NSLocalizedString(
+                    "[Entry/History] Last Modification Date",
+                    value: "Last Modification Date",
+                    comment: "Title of a field with entry's last modification date and time")
+            case .lastAccessTime:
+                return NSLocalizedString(
+                    "[Entry/History] Last Access Date",
+                    value: "Last Access Date",
+                    comment: "Title of a field with date and time when the entry was last accessed/viewed")
+            }
+        }
     }
-    private enum CellID { 
-        static let fixedTimestamp = "FixedTimestampCell"
-        static let emptyHistory = "EmptyHistoryCell"
-        static let historyItem = "HistoryItemCell"
-    }
-
+    
     weak var delegate: EntryHistoryViewerDelegate?
     
     private var canExpire = false
@@ -36,10 +103,12 @@ final class EntryHistoryViewerVC: UITableViewController, Refreshable {
     private var lastModificationTime = Date.distantPast
     private var lastAccessTime = Date.distantPast
     
-    private var historyEntries: [Entry]?
+    private var historyEntries: [Entry2]?
     private let dateFormatter = DateFormatter()
     
-    public func setContents(from entry: Entry, isHistoryEntry: Bool) {
+    private var deleteBarButton: UIBarButtonItem! 
+    
+    public func setContents(from entry: Entry, isHistoryEntry: Bool, animated: Bool) {
         canExpire = entry.canExpire
         expiryTime = entry.expiryTime
         creationTime = entry.creationTime
@@ -51,16 +120,43 @@ final class EntryHistoryViewerVC: UITableViewController, Refreshable {
         } else {
             historyEntries = nil
         }
-        refresh()
+        refresh(animated: animated)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = editButtonItem
+        tableView.allowsMultipleSelectionDuringEditing = true
+        
+        deleteBarButton = UIBarButtonItem(
+            title: "", 
+            style: .plain,
+            target: self,
+            action: #selector(didPressDeleteSelection(_:))
+        )
+        toolbarItems = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            deleteBarButton
+        ]
+        updateToolbar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.rightBarButtonItem = nil
         refresh()
     }
     
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        setEditing(false, animated: false)
+    }
+    
     func refresh() {
+        refresh(animated: false)
+    }
+    
+    func refresh(animated: Bool) {
         if traitCollection.horizontalSizeClass == .compact {
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .medium
@@ -68,7 +164,14 @@ final class EntryHistoryViewerVC: UITableViewController, Refreshable {
             dateFormatter.dateStyle = .long
             dateFormatter.timeStyle = .long
         }
-        tableView.reloadData()
+        
+        if animated {
+            let visibleSections = IndexSet(0..<numberOfSections(in: tableView))
+            tableView.reloadSections(visibleSections, with: .automatic)
+        } else {
+            tableView.reloadData()
+        }
+        updateToolbar()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -79,16 +182,17 @@ final class EntryHistoryViewerVC: UITableViewController, Refreshable {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if historyEntries != nil {
-            return numberOfFixedTimestamps + 1
+            return 2
         } else {
-            return numberOfFixedTimestamps
+            return 1
         }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section < numberOfFixedTimestamps {
-            return 1
-        } else {
+        switch Section(rawValue: section)! {
+        case .timestamps:
+            return TimestampType.all.count
+        case .historyEntries:
             return max(1, historyEntries?.count ?? 0) // need at least one to show "there's no history"
         }
     }
@@ -98,27 +202,9 @@ final class EntryHistoryViewerVC: UITableViewController, Refreshable {
         titleForHeaderInSection section: Int
     ) -> String? {
         switch Section(rawValue: section)! {
-        case .expiryTime:
-            return NSLocalizedString(
-                "[Entry/History] Expiry Date",
-                value: "Expiry Date",
-                comment: "Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value")
-        case .creationTime:
-            return NSLocalizedString(
-                "[Entry/History] Creation Date",
-                value: "Creation Date",
-                comment: "Title of a field with entry creation date and time")
-        case .lastModificationTime:
-            return NSLocalizedString(
-                "[Entry/History] Last Modification Date",
-                value: "Last Modification Date",
-                comment: "Title of a field with entry's last modification date and time")
-        case .lastAccessTime:
-            return NSLocalizedString(
-                "[Entry/History] Last Access Date",
-                value: "Last Access Date",
-                comment: "Title of a field with date and time when the entry was last accessed/viewed")
-        case .previousVersions:
+        case .timestamps:
+            return nil
+        case .historyEntries:
             return NSLocalizedString(
                 "[Entry/History] Previous Versions",
                 value: "Previous Versions",
@@ -128,31 +214,53 @@ final class EntryHistoryViewerVC: UITableViewController, Refreshable {
     
     override func tableView(
         _ tableView: UITableView,
+        willSelectRowAt indexPath: IndexPath
+    ) -> IndexPath? {
+        switch Section(rawValue: indexPath.section)! {
+        case .timestamps:
+            return nil
+        case .historyEntries:
+            return indexPath
+        }
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         switch Section(rawValue: indexPath.section)! {
-        case .expiryTime:
-            return setupTimestampCell(indexPath: indexPath, timestamp: canExpire ? expiryTime : nil)
-        case .creationTime:
-            return setupTimestampCell(indexPath: indexPath, timestamp: creationTime)
-        case .lastModificationTime:
-            return setupTimestampCell(indexPath: indexPath, timestamp: lastModificationTime)
-        case .lastAccessTime:
-            return setupTimestampCell(indexPath: indexPath, timestamp: lastAccessTime)
-        case .previousVersions:
+        case .timestamps:
+            return setupTimestampCell(indexPath: indexPath)
+        case .historyEntries:
             return setupHistoryEntryCell(indexPath: indexPath)
         }
     }
-
-    private func setupTimestampCell(indexPath: IndexPath, timestamp: Date?) -> UITableViewCell {
+    
+    private func setupTimestampCell(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CellID.fixedTimestamp,
-            for: indexPath
-        )
+            for: indexPath)
+            as! EntryHistoryTimestampCell
+
+        let timestampType = TimestampType(rawValue: indexPath.row)! 
+        cell.titleLabel.text = timestampType.title
+        
+        let timestamp: Date?
+        switch timestampType {
+        case .expiryTime:
+            timestamp = canExpire ? expiryTime : nil
+        case .creationTime:
+            timestamp = creationTime
+        case .lastModificationTime:
+            timestamp = lastModificationTime
+        case .lastAccessTime:
+            timestamp = lastAccessTime
+        }
+        
         if let timestamp = timestamp {
-            cell.textLabel?.text = dateFormatter.string(from: timestamp)
+            cell.valueLabel?.text = dateFormatter.string(from: timestamp)
         } else {
-            cell.textLabel?.text = NSLocalizedString(
+            cell.valueLabel?.text = NSLocalizedString(
                 "[Entry/History/ExpiryDate] Never",
                 value: "Never",
                 comment: "Expiry Date of an entry which does not expire.")
@@ -167,23 +275,191 @@ final class EntryHistoryViewerVC: UITableViewController, Refreshable {
             return tableView.dequeueReusableCell(withIdentifier: CellID.emptyHistory, for: indexPath)
         }
         let historyEntry = historyEntries[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.historyItem, for: indexPath)
-        cell.textLabel?.setText(historyEntry.resolvedTitle, strikethrough: historyEntry.isExpired)
-        cell.detailTextLabel?.text = dateFormatter.string(from: historyEntry.lastModificationTime)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: CellID.historyItem,
+            for: indexPath)
+            as! EntryHistoryItemCell
+        cell.titleLabel?.setText(historyEntry.resolvedTitle, strikethrough: historyEntry.isExpired)
+        cell.subtitleLabel?.text = dateFormatter.string(from: historyEntry.lastModificationTime)
+        cell.buttonHandler = { [weak self, indexPath] in
+            guard let self = self else { return }
+            self.tableView(self.tableView, accessoryButtonTappedForRowWith: indexPath)
+        }
         return cell
     }
 
+    override func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        switch Section(rawValue: indexPath.section)! {
+        case .timestamps:
+            assertionFailure("Tried to modify non-editable cell")
+        case .historyEntries:
+            didPressDeleteHistoryEntry(index: indexPath.row)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        switch Section(rawValue: indexPath.section)! {
+        case .timestamps:
+            return false
+        case .historyEntries:
+            return (historyEntries?.count ?? 0) > 0
+        }
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        editingStyleForRowAt indexPath: IndexPath
+    ) -> UITableViewCell.EditingStyle {
+        switch Section(rawValue: indexPath.section)! {
+        case .timestamps:
+            return .none
+        case .historyEntries:
+            return .delete
+        }
+    }
+    
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        updateToolbar()
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let section = Section(rawValue: indexPath.section),
-              section == .previousVersions,
+              section == .historyEntries,
               let historyEntries = historyEntries,
               indexPath.row < historyEntries.count
         else {
+            assertionFailure()
+            return
+        }
+
+        if tableView.isEditing {
+            updateToolbar()
+        } else {
+            let selectedHistoryEntry = historyEntries[indexPath.row]
+            delegate?.didSelectHistoryEntry(selectedHistoryEntry, in: self)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section),
+              section == .historyEntries,
+              let historyEntries = historyEntries,
+              indexPath.row < historyEntries.count
+        else {
+            assertionFailure()
             return
         }
         
-        let selectedHistoryEntry = historyEntries[indexPath.row]
-        delegate?.didSelectHistoryEntry(selectedHistoryEntry, in: self)
+        if tableView.isEditing {
+            updateToolbar()
+        }
     }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        accessoryButtonTappedForRowWith indexPath: IndexPath
+    ) {
+        guard let section = Section(rawValue: indexPath.section),
+              section == .historyEntries,
+              let historyEntries = historyEntries,
+              indexPath.row < historyEntries.count
+        else {
+            assertionFailure()
+            return
+        }
+        
+        if isEditing {
+            didPressRestoreHistoryEntry(index: indexPath.row)
+        }
+    }
+    
+    
+    override func getContextActionsForRow(
+        at indexPath: IndexPath,
+        forSwipe: Bool
+    ) -> [ContextualAction] {
+        guard let section = Section(rawValue: indexPath.section),
+              section == .historyEntries
+        else {
+            return []
+        }
+        
+        let deleteAction = ContextualAction(
+            title: LString.actionDelete,
+            imageName: .trash,
+            style: .destructive,
+            color: .destructiveTint,
+            handler: { [weak self] in
+                self?.didPressDeleteHistoryEntry(index: indexPath.row)
+            }
+        )
+        if forSwipe {
+            return [deleteAction]
+        }
+
+        let restoreAction = ContextualAction(
+            title: LString.actionRestore,
+            imageName: .clockArrowCirclepath,
+            style: .default,
+            color: .actionTint,
+            handler: { [weak self] in
+                self?.didPressRestoreHistoryEntry(index: indexPath.row)
+            }
+        )
+        return [restoreAction, deleteAction]
+    }
+    
+    private func didPressRestoreHistoryEntry(index: Int) {
+        guard let historyEntries = historyEntries else {
+            assertionFailure("There are no history entries")
+            return
+        }
+        let entry = historyEntries[index]
+        delegate?.didPressRestore(historyEntry: entry, in: self)
+    }
+    
+    private func didPressDeleteHistoryEntry(index: Int) {
+        guard let historyEntries = historyEntries else {
+            assertionFailure("There are no history entries")
+            return
+        }
+        let entryToDelete = historyEntries[index]
+        delegate?.didPressDelete(historyEntries: [entryToDelete], in: self)
+    }
+    
+    @objc private func didPressDeleteSelection(_ sender: AnyObject) {
+        guard let historyEntries = historyEntries else {
+            assertionFailure("There are no history entries")
+            return
+        }
+        
+        let entriesToDelete: [Entry2]
+        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
+            Diag.debug("Deleting selected history entries")
+            entriesToDelete = selectedIndexPaths.map {
+                historyEntries[$0.row]
+            }
+        } else {
+            Diag.debug("Deleting all history entries")
+            entriesToDelete = historyEntries
+        }
+        delegate?.didPressDelete(historyEntries: entriesToDelete, in: self)
+    }
+    
+    private func updateToolbar() {
+        let hasHistoryEntries = (historyEntries?.count ?? 0) > 0
+        deleteBarButton.isEnabled = isEditing && hasHistoryEntries
+        if tableView.indexPathsForSelectedRows != nil {
+            deleteBarButton.title = LString.actionDelete
+        } else {
+            deleteBarButton.title = LString.actionDeleteAll
+        }
+    }
+    
 }

@@ -119,6 +119,9 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
                 self.currentPageIndex = index
                 self.navigationItem.rightBarButtonItem =
                     targetPageVC.navigationItem.rightBarButtonItem
+                
+                let toolbarItems = targetPageVC.toolbarItems
+                self.setToolbarItems(toolbarItems, animated: true)
             }
         )
         

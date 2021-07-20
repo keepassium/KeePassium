@@ -40,6 +40,11 @@ public enum LString {
         value: "Delete",
         comment: "Action/button to delete an item (destroys the item/file)"
     )
+    public static let actionDeleteAll = NSLocalizedString(
+        "[Generic] Delete All",
+        value: "Delete All",
+        comment: "Action/button to delete all relevant/selected items"
+    )
     public static let actionReplace = NSLocalizedString(
         "[Generic] Replace",
         value: "Replace",
@@ -54,6 +59,11 @@ public enum LString {
         "[Generic] Rename",
         value: "Rename",
         comment: "Action/button to rename an item"
+    )
+    public static let actionRestore = NSLocalizedString(
+        "[Generic] Restore",
+        value: "Restore",
+        comment: "Action/button to restore a backup/archived item in its original place"
     )
     public static let actionOverwrite = NSLocalizedString(
         "[Generic] Overwrite",
@@ -385,6 +395,12 @@ public enum LString {
         "[Entry/Field/name] Notes",
         value: "Notes",
         comment: "Name of an entry field"
+    )
+    
+    public static let previousItemVersionRestored = NSLocalizedString(
+        "[Item/History/Restored]",
+        value: "Previous version restored",
+        comment: "Notification that an archived/historical item (e.g entry) has been successfully restored"
     )
 
     

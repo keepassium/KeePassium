@@ -59,6 +59,7 @@ enum ImageAsset: String {
 }
 
 enum SystemImageName: String {
+    case clockArrowCirclepath = "clock.arrow.circlepath"
     case docOnDoc = "doc.on.doc"
     case ellipsisCircle = "ellipsis.circle"
     case folder = "folder"

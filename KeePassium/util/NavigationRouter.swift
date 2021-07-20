@@ -260,7 +260,7 @@ extension NavigationRouter: UINavigationControllerDelegate {
         willShow viewController: UIViewController,
         animated: Bool)
     {
-        let shouldShowToolbar = (viewController.toolbarItems?.count ?? 0) > 0
+        let shouldShowToolbar = viewController.toolbarItems != nil
         navigationController.setToolbarHidden(!shouldShowToolbar, animated: animated)
     }
 }

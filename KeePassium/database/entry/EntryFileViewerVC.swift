@@ -55,6 +55,7 @@ final class EntryFileViewerVC: UITableViewController , Refreshable {
             style: .plain,
             target: self,
             action: #selector(didPressEdit))
+        toolbarItems = [] 
     }
     
     override func viewWillAppear(_ animated: Bool) {

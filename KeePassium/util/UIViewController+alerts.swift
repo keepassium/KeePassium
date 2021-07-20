@@ -27,10 +27,14 @@ extension UIViewController {
         _ message: String,
         title: String?=nil)
     {
-        var hostView: UIView = self.view
-        if hostView is UITableView, let navVC = self.navigationController {
-            hostView = navVC.view
+        var hostVC: UIViewController = self
+        if hostVC is UITableViewController, let navVC = self.navigationController {
+            hostVC = navVC
         }
+        if hostVC is UINavigationController, let splitVC = hostVC.splitViewController {
+            hostVC = splitVC
+        }
+        let hostView: UIView = hostVC.view
         hostView.makeToast(
             message,
             duration: 2.0,

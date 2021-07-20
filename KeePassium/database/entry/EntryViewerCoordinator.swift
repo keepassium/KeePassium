@@ -43,6 +43,9 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     
     private let settingsNotifications: SettingsNotifications
     private weak var progressHost: ProgressViewHost?
+    private var toastHost: UIViewController {
+        router.navigationController
+    }
     var databaseExporterTemporaryURL: TemporaryFileURL?
     
     init(
@@ -128,7 +131,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         )
         fieldViewerVC.setContents(fields, category: category, isHistoryEntry: isHistoryEntry)
         fileViewerVC.setContents(entry.attachments, animated: animated)
-        historyViewerVC.setContents(from: entry, isHistoryEntry: isHistoryEntry)
+        historyViewerVC.setContents(from: entry, isHistoryEntry: isHistoryEntry, animated: animated)
         pagesVC.setContents(from: entry, isHistoryEntry: isHistoryEntry)
         pagesVC.refresh()
     }
@@ -479,7 +482,41 @@ extension EntryViewerCoordinator: UIDocumentInteractionControllerDelegate {
 }
 
 extension EntryViewerCoordinator: EntryHistoryViewerDelegate {
-    func didSelectHistoryEntry(_ entry: Entry, in viewController: EntryHistoryViewerVC) {
+    
+    func didPressRestore(historyEntry: Entry2, in viewController: EntryHistoryViewerVC) {
+        Diag.debug("Restoring historical entry")
+        guard let entry2 = entry as? Entry2 else {
+            Diag.error("Unexpected entry format")
+            assertionFailure()
+            return
+        }
+        entry2.backupState()
+        historyEntry.applyPreservingHistory(to: entry2, makeNewUUID: false)
+        entry2.touch(.modified)
+        refresh(animated: true)
+        Diag.info("Historical entry restored")
+        toastHost.showNotification(LString.previousItemVersionRestored)
+        saveDatabase()
+    }
+    
+    func didPressDelete(historyEntries historyEntriesToDelete: [Entry2], in viewController: EntryHistoryViewerVC) {
+        Diag.debug("Deleting historical entries")
+        guard let entry2 = entry as? Entry2 else {
+            Diag.error("Unexpected entry format")
+            assertionFailure()
+            return
+        }
+        let newHistory = entry2.history.compactMap { entry -> Entry2? in
+            let shouldBeDeleted = historyEntriesToDelete.contains(where: { $0 === entry })
+            return shouldBeDeleted ? nil : entry
+        }
+        entry2.history = newHistory
+        refresh(animated: true)
+        Diag.info("Historical entries deleted")
+        saveDatabase()
+    }
+    
+    func didSelectHistoryEntry(_ entry: Entry2, in viewController: EntryHistoryViewerVC) {
         showHistoryEntry(entry)
     }
 }

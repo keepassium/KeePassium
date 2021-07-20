@@ -118,6 +118,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         editButton.action = #selector(didPressEdit)
         editButton.accessibilityIdentifier = "edit_entry_button" 
 
+        toolbarItems = [] 
         refresh()
     }
   
