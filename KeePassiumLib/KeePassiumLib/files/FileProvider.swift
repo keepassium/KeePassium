@@ -13,7 +13,8 @@ public enum FileProvider: Hashable {
         "it.ideasolutions.amerigo.FileExtension": .amerigo,
         "it.ideasolutions.amerigo-free.FileExtension": .amerigoFree,
         "net.box.BoxNet.documentPickerFileProvider": .box,
-        "com.boxcryptor.ios.BoxcryptorDocumentProviderFileProvider": .boxcryptor,
+        "com.boxcryptor.ios.files": .boxcryptor,
+        "com.boxcryptor.ios.BoxcryptorDocumentProviderFileProvider": .boxcryptorLegacy2020,
         "com.getdropbox.Dropbox.FileProvider": .dropbox,
         "com.skyjos.fileexplorer.fileprovider": .feFileExplorer,
         "com.google.Drive.FileProviderExtension": .googleDrive,
@@ -42,6 +43,7 @@ public enum FileProvider: Hashable {
     case amerigoFree
     case box
     case boxcryptor
+    case boxcryptorLegacy2020
     case dropbox
     case feFileExplorer
     case googleDrive
@@ -100,7 +102,8 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "Box",
                 comment: "Localized name of the storage service: Box (https://box.com)")
-        case .boxcryptor:
+        case .boxcryptor,
+             .boxcryptorLegacy2020:
             return NSLocalizedString(
                 "[FileProvider/Boxcryptor/name]",
                 bundle: Bundle.framework,

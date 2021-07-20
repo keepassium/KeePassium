@@ -15,7 +15,8 @@ extension FileProvider {
             return getLocalStorageIcon()
         case .box:
             return UIImage(named: "fp-box-listitem")
-        case .boxcryptor:
+        case .boxcryptor,
+             .boxcryptorLegacy2020:
             return UIImage(named: "fp-boxcryptor-listitem")
         case .dropbox:
             return UIImage(named: "fp-dropbox-listitem")
