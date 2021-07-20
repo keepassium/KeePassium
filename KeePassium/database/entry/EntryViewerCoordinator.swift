@@ -41,6 +41,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     
     private var filePreviewController = UIDocumentInteractionController()
     private var fileExportTemporaryURL: TemporaryFileURL?
+    private var photoPicker: PhotoPicker? 
     
     private let settingsNotifications: SettingsNotifications
     private weak var progressHost: ProgressViewHost?
@@ -194,7 +195,7 @@ extension EntryViewerCoordinator: EntryViewerPagesDataSource {
 }
 
 extension EntryViewerCoordinator {
-    private func showNewAttachmentPicker(in viewController: UIViewController) {
+    private func showFileAttachmentPicker(in viewController: UIViewController) {
         assert(canEditEntry)
         let picker = UIDocumentPickerViewController(
             documentTypes: FileType.attachmentUTIs,
@@ -204,7 +205,41 @@ extension EntryViewerCoordinator {
         viewController.present(picker, animated: true, completion: nil)
     }
     
-    private func loadAttachment(from url: URL, success: @escaping (ByteArray)->Void) {
+    private func showPhotoAttachmentPicker(
+        fromCamera: Bool,
+        in viewController: UIViewController
+    ) {
+        assert(canEditEntry)
+        assert(photoPicker == nil)
+
+        if fromCamera {
+            photoPicker = PhotoPickerFactory.makeCameraPhotoPicker()
+        } else {
+            photoPicker = PhotoPickerFactory.makePhotoPicker()
+        }
+        photoPicker?.pickImage(from: viewController) { [weak self] result in
+            guard let self = self else { return }
+            self.photoPicker = nil
+            switch result {
+            case .success(let pickerImage):
+                guard let pickerImage = pickerImage else { 
+                    return
+                }
+                Diag.debug("Converting image data to jpeg")
+                guard let imageData = pickerImage.image.jpegData(compressionQuality: 0.9) else {
+                    Diag.error("Failed to conver image to JPEG")
+                    return
+                }
+                let fileName = (pickerImage.name ?? LString.defaultNewPhotoAttachmentName) + ".jpg"
+                self.addAttachment(name: fileName, data: ByteArray(data: imageData))
+            case .failure(let error):
+                Diag.error("Failed to add photo attachment [message: \(error.localizedDescription)]")
+                viewController.showErrorAlert(error)
+            }
+        }
+    }
+
+    private func loadAttachmentFile(from url: URL, success: @escaping (ByteArray)->Void) {
         Diag.info("Loading new attachment file")
         progressHost?.showProgressView(
             title: NSLocalizedString(
@@ -470,13 +505,26 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
 
 extension EntryViewerCoordinator: EntryFileViewerDelegate {
     
-    func didPressAddFile(in viewController: EntryFileViewerVC) {
+    func didPressAddFile(at popoverAnchor: PopoverAnchor, in viewController: EntryFileViewerVC) {
         guard canEditEntry else {
             Diag.warning("Tried to modify non-editable entry")
             assertionFailure()
             return
         }
-        showNewAttachmentPicker(in: viewController)
+        showFileAttachmentPicker(in: viewController)
+    }
+    
+    func didPressAddPhoto(
+        fromCamera: Bool,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFileViewerVC
+    ) {
+        guard canEditEntry else {
+            Diag.warning("Tried to modify non-editable entry")
+            assertionFailure()
+            return
+        }
+        showPhotoAttachmentPicker(fromCamera: fromCamera, in: viewController)
     }
     
     func shouldReplaceExistingFile(in viewController: EntryFileViewerVC) -> Bool {
@@ -532,7 +580,7 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
 extension EntryViewerCoordinator: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let url = urls.first else { return }
-        loadAttachment(from: url, success: { [weak self] (fileData) in
+        loadAttachmentFile(from: url, success: { [weak self] (fileData) in
             self?.addAttachment(name: url.lastPathComponent, data: fileData)
         })
     }

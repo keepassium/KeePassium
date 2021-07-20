@@ -370,6 +370,21 @@ public enum LString {
         value: "Add File",
         comment: "Action/button to add a file to entry attachments"
     )
+    public static let actionChooseFile = NSLocalizedString(
+        "[Entry/Attachment/chooseFile]",
+        value: "Choose File",
+        comment: "Action/button to pick a file from a list"
+    )
+    public static let actionChoosePhoto = NSLocalizedString(
+        "[Entry/Attachment/choosePhoto]",
+        value: "Choose Photo",
+        comment: "Action/button to select an (existing) photo from Photo Library"
+    )
+    public static let actionTakePhoto = NSLocalizedString(
+        "[Entry/Attachment/takePhoto]",
+        value: "Take Photo",
+        comment: "Action/button to take a new photo from camera"
+    )
     public static let defaultNewEntryName = NSLocalizedString(
         "[Entry/New/defaultTitle] New Entry",
         value: "New Entry",
@@ -378,8 +393,14 @@ public enum LString {
     public static let defaultNewCustomFieldName = NSLocalizedString(
         "[Entry/Edit/CreateField/defaultName] Field Name",
         value: "Field Name",
-        comment: "Default name of a newly created entry field")
-    
+        comment: "Default name of a newly created entry field"
+    )
+    public static let defaultNewPhotoAttachmentName = NSLocalizedString(
+        "[Entry/Attachment/Photo/defaultName]",
+        value: "Photo",
+        comment: "Default name for a photo attachment"
+    )
+
     public static let titleGroupDescriptionTemplate = NSLocalizedString(
         "[Group/a11y/description]",
         value: "%@, Group",

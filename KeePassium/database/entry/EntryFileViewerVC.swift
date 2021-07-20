@@ -11,7 +11,12 @@ import KeePassiumLib
 protocol EntryFileViewerDelegate: AnyObject {
     func shouldReplaceExistingFile(in viewController: EntryFileViewerVC) -> Bool
     
-    func didPressAddFile(in viewController: EntryFileViewerVC)
+    func didPressAddFile(at popoverAnchor: PopoverAnchor, in viewController: EntryFileViewerVC)
+    func didPressAddPhoto(
+        fromCamera: Bool,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFileViewerVC)
+    
     func didPressRename(
         file attachment: Attachment,
         to newName: String,
@@ -49,12 +54,18 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
         navigationItem.rightBarButtonItem = editButtonItem
         tableView.allowsMultipleSelectionDuringEditing = true
 
-        addFileBarButton = UIBarButtonItem(
-            title: LString.actionAddAttachment,
-            style: .plain,
-            target: self,
-            action: #selector(didPressAddAttachment(_:))
-        )
+        if #available(iOS 14, *) {
+            addFileBarButton = UIBarButtonItem(systemItem: .add)
+            addFileBarButton.accessibilityLabel = LString.actionAddAttachment
+            addFileBarButton.menu = makeAddAttachmentMenu()
+        } else {
+            addFileBarButton = UIBarButtonItem(
+                barButtonSystemItem: .add,
+                target: self,
+                action: #selector(didPressAddFileAttachment(_:))
+            )
+            addFileBarButton.accessibilityLabel = LString.actionAddAttachment
+        }
         deleteFilesBarButton = UIBarButtonItem(
             title: LString.actionDelete, 
             style: .plain,
@@ -97,6 +108,33 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
             tableView.reloadData()
         }
         updateToolbar()
+    }
+    
+    @available(iOS 14, *)
+    private func makeAddAttachmentMenu() -> UIMenu {
+        let chooseFileAction = UIAction(title: LString.actionChooseFile, image: UIImage.get(.folder)) {
+            [weak self] action in
+            self?.didPressAddFileAttachment(action)
+        }
+        let choosePhotoAction = UIAction(title: LString.actionChoosePhoto, image: UIImage.get(.photo)) {
+            [weak self] _ in
+            self?.didPressAddPhotoAttachment(fromCamera: false)
+        }
+        let takePhotoAction = UIAction(title: LString.actionTakePhoto, image: UIImage.get(.camera)) {
+            [weak self] _ in
+            self?.didPressAddPhotoAttachment(fromCamera: true)
+        }
+        
+        let menu = UIMenu(
+            title: "",
+            image: nil,
+            children: [
+                takePhotoAction,
+                choosePhotoAction,
+                chooseFileAction,
+            ]
+        )
+        return menu
     }
     
 
@@ -235,15 +273,28 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
 
 private extension EntryFileViewerVC {
     
-    @objc private func didPressAddAttachment(_ sender: AnyObject) {
-        guard canEditFiles else {
-            assertionFailure()
-            return
-        }
-        
+    @objc private func didPressAddFileAttachment(_ sender: AnyObject) {
+        assert(canEditFiles)
+        maybeConfirmReplacement(confirmed: { [weak self] in
+            guard let self = self else { return }
+            let popoverAnchor = PopoverAnchor(barButtonItem: self.addFileBarButton)
+            self.delegate?.didPressAddFile(at: popoverAnchor, in: self)
+        })
+    }
+    
+    private func didPressAddPhotoAttachment(fromCamera: Bool) {
+        assert(canEditFiles)
+        maybeConfirmReplacement(confirmed: { [weak self] in
+            guard let self = self else { return }
+            let popoverAnchor = PopoverAnchor(barButtonItem: self.addFileBarButton)
+            self.delegate?.didPressAddPhoto(fromCamera: fromCamera, at: popoverAnchor, in: self)
+        })
+    }
+    
+    private func maybeConfirmReplacement(confirmed confirmedHandler: @escaping ()->()) {
         let isReplacementRequired = delegate?.shouldReplaceExistingFile(in: self) ?? true
         guard isReplacementRequired else {
-            delegate?.didPressAddFile(in: self)
+            confirmedHandler()
             return
         }
         
@@ -258,11 +309,9 @@ private extension EntryFileViewerVC {
                 comment: "Explanation for replacing the only attachment of KeePass1 entry"),
             preferredStyle: .alert)
         replacementAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        replacementAlert.addAction(title: LString.actionReplace, style: .destructive) {
-            [weak self] _ in
-            guard let self = self else { return }
+        replacementAlert.addAction(title: LString.actionReplace, style: .destructive) { _ in
             Diag.debug("Will replace an existing attachment")
-            self.delegate?.didPressAddFile(in: self)
+            confirmedHandler()
         }
         present(replacementAlert, animated: true, completion: nil)
     }

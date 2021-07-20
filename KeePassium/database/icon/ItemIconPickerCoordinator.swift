@@ -126,9 +126,9 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
         photoPicker?.pickImage(from: iconPicker) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let image):
+            case .success(let pickerImage):
                 let maxSide = ItemIconPickerCoordinator.customIconMaxSide
-                if let iconImage = image?.downscalingToSquare(maxSide: maxSide) {
+                if let iconImage = pickerImage?.image.downscalingToSquare(maxSide: maxSide) {
                     self.addCustomIcon(iconImage)
                 }
             case .failure(let error):

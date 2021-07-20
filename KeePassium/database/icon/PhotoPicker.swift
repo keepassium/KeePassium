@@ -12,7 +12,28 @@ import Foundation
 import PhotosUI
 import KeePassiumLib
 
-typealias PhotoPickerCompletion = (Result<UIImage?, Error>) ->Void
+struct PhotoPickerImage {
+    var image: UIImage
+    var name: String?
+    
+    public static func from(_ info: [UIImagePickerController.InfoKey : Any]) -> PhotoPickerImage? {
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        else {
+            return nil
+        }
+        let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
+        return PhotoPickerImage(image: originalImage, name: imageURL?.lastPathComponent)
+    }
+    
+    public static func from(_ image: UIImage?, name: String?) -> PhotoPickerImage? {
+        guard let image = image else {
+            return nil
+        }
+        return PhotoPickerImage(image: image, name: name)
+    }
+}
+
+typealias PhotoPickerCompletion = (Result<PhotoPickerImage?, Error>) ->Void
 
 protocol PhotoPicker {
     func pickImage(from viewController: UIViewController, completion: @escaping PhotoPickerCompletion)
@@ -24,8 +45,12 @@ final class PhotoPickerFactory {
         if #available(iOS 14, *) {
             return PHPickerViewControllerPhotoPicker()
         } else {
-            return UIImagePickerControllerPhotoPicker()
+            return UIImagePickerControllerPhotoPicker(sourceType: .savedPhotosAlbum)
         }
+    }
+    
+    static func makeCameraPhotoPicker() -> PhotoPicker {
+        return UIImagePickerControllerPhotoPicker(sourceType: .camera)
     }
 }
 
@@ -38,9 +63,10 @@ private final class UIImagePickerControllerPhotoPicker:
     var completion: PhotoPickerCompletion?
     let imagePicker = UIImagePickerController()
 
-    override init() {
-        imagePicker.sourceType = .savedPhotosAlbum
+    init(sourceType: UIImagePickerController.SourceType) {
+        imagePicker.sourceType = sourceType
         imagePicker.allowsEditing = false
+        imagePicker.imageExportPreset = .compatible
         imagePicker.modalPresentationStyle = .overCurrentContext
 
         super.init()
@@ -62,7 +88,8 @@ private final class UIImagePickerControllerPhotoPicker:
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
         imagePicker.dismiss(animated: true) { [weak self] in
-            self?.completion?(.success(info[UIImagePickerController.InfoKey.originalImage] as? UIImage))
+            let pickedImage = PhotoPickerImage.from(info)
+            self?.completion?(.success(pickedImage))
         }
     }
     
@@ -123,9 +150,13 @@ private final class PHPickerViewControllerPhotoPicker:
                 return
             }
 
+            let pickedImage = PhotoPickerImage.from(
+                image as? UIImage,
+                name: result.itemProvider.suggestedName
+            )
             DispatchQueue.main.async { [weak self] in
                 self?.viewController?.dismiss(animated: true) { [weak self] in
-                    self?.completion?(.success(image as? UIImage))
+                    self?.completion?(.success(pickedImage))
                 }
             }
         }
