@@ -174,6 +174,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
 
     func showMasterKeyInvalid(message: String) {
+        passwordField.shake()
         showErrorMessage(message, haptics: .wrongPassword)
     }
     

@@ -336,7 +336,7 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
             databaseUnlockerVC.refresh()
             databaseUnlockerVC.hideProgressView(animated: true)
             
-            databaseUnlockerVC.showErrorMessage(message, haptics: .wrongPassword)
+            databaseUnlockerVC.showMasterKeyInvalid(message: message)
             databaseUnlockerVC.maybeFocusOnPassword()
         }
         delegate?.didNotUnlockDatabase(databaseRef, with: message, reason: nil, in: self)
