@@ -105,13 +105,9 @@ public extension UIView {
      @param completion The completion closure, executed after the toast view disappears.
             didTap will be `true` if the toast view was dismissed from a tap.
      */
-    func makeToast(_ message: String?, duration: TimeInterval = ToastManager.shared.duration, position: ToastPosition = ToastManager.shared.position, title: String? = nil, image: UIImage? = nil, style: ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Bool) -> Void)? = nil) {
-        do {
-            let toast = try toastViewForMessage(message, title: title, image: image, style: style)
-            showToast(toast, duration: duration, position: position, completion: completion)
-        } catch ToastError.missingParameters {
-            print("Error: message, title, and image are all nil")
-        } catch {}
+    func makeToast(_ message: String, duration: TimeInterval = ToastManager.shared.duration, position: ToastPosition = ToastManager.shared.position, title: String? = nil, image: UIImage? = nil, style: ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Bool) -> Void)? = nil) {
+        let toast = toastViewForMessage(message, title: title, image: image, style: style)
+        showToast(toast, duration: duration, position: position, completion: completion)
     }
     
     /**
@@ -126,13 +122,9 @@ public extension UIView {
      @param completion The completion closure, executed after the toast view disappears.
             didTap will be `true` if the toast view was dismissed from a tap.
      */
-    func makeToast(_ message: String?, duration: TimeInterval = ToastManager.shared.duration, point: CGPoint, title: String?, image: UIImage?, style: ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Bool) -> Void)?) {
-        do {
-            let toast = try toastViewForMessage(message, title: title, image: image, style: style)
-            showToast(toast, duration: duration, point: point, completion: completion)
-        } catch ToastError.missingParameters {
-            print("Error: message, title, and image cannot all be nil")
-        } catch {}
+    func makeToast(_ message: String, duration: TimeInterval = ToastManager.shared.duration, point: CGPoint, title: String?, image: UIImage?, style: ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Bool) -> Void)?) {
+        let toast = toastViewForMessage(message, title: title, image: image, action: nil, style: style)
+        showToast(toast, duration: duration, point: point, completion: completion)
     }
     
     
@@ -404,17 +396,20 @@ public extension UIView {
      @param title The title
      @param image The image
      @param style The style. The shared style will be used when nil
-     @throws `ToastError.missingParameters` when message, title, and image are all nil
      @return The newly created toast view
     */
-    func toastViewForMessage(_ message: String?, title: String?, image: UIImage?, style: ToastStyle) throws -> UIView {
-        guard message != nil || title != nil || image != nil else {
-            throw ToastError.missingParameters
-        }
+    func toastViewForMessage(
+        _ message: String,
+        title: String?,
+        image: UIImage?,
+        action: ToastAction? = nil,
+        style: ToastStyle
+    ) -> UIView {
         
-        var messageLabel: UILabel?
+        var messageLabel: UILabel
         var titleLabel: UILabel?
         var imageView: UIImageView?
+        var button: UIButton?
         
         let wrapperView = UIView()
         wrapperView.backgroundColor = style.backgroundColor
@@ -440,8 +435,8 @@ public extension UIView {
         if let imageView = imageView {
             imageRect.origin.x = style.horizontalPadding
             imageRect.origin.y = style.verticalPadding
-            imageRect.size.width = imageView.bounds.size.width
-            imageRect.size.height = imageView.bounds.size.height
+            imageRect.size.width = imageView.bounds.width
+            imageRect.size.height = imageView.bounds.height
         }
 
         if let title = title {
@@ -454,54 +449,105 @@ public extension UIView {
             titleLabel?.backgroundColor = UIColor.clear
             titleLabel?.text = title;
             
-            let maxTitleSize = CGSize(width: (self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width, height: self.bounds.size.height * style.maxHeightPercentage)
+            let maxTitleSize = CGSize(
+                width: (self.bounds.width * style.maxWidthPercentage) - imageRect.size.width,
+                height: self.bounds.height * style.maxHeightPercentage)
             let titleSize = titleLabel?.sizeThatFits(maxTitleSize)
             if let titleSize = titleSize {
                 titleLabel?.frame = CGRect(x: 0.0, y: 0.0, width: titleSize.width, height: titleSize.height)
             }
         }
         
-        if let message = message {
-            messageLabel = UILabel()
-            messageLabel?.text = message
-            messageLabel?.numberOfLines = style.messageNumberOfLines
-            messageLabel?.font = style.messageFont
-            messageLabel?.textAlignment = style.messageAlignment
-            messageLabel?.lineBreakMode = .byTruncatingTail;
-            messageLabel?.textColor = style.messageColor
-            messageLabel?.backgroundColor = UIColor.clear
-            
-            let maxMessageSize = CGSize(width: (self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width, height: self.bounds.size.height * style.maxHeightPercentage)
-            let messageSize = messageLabel?.sizeThatFits(maxMessageSize)
-            if let messageSize = messageSize {
-                let actualWidth = min(messageSize.width, maxMessageSize.width)
-                let actualHeight = min(messageSize.height, maxMessageSize.height)
-                messageLabel?.frame = CGRect(x: 0.0, y: 0.0, width: actualWidth, height: actualHeight)
-            }
-        }
-  
-        var titleRect = CGRect.zero
+        messageLabel = UILabel()
+        messageLabel.text = message
+        messageLabel.numberOfLines = style.messageNumberOfLines
+        messageLabel.font = style.messageFont
+        messageLabel.textAlignment = style.messageAlignment
+        messageLabel.lineBreakMode = .byTruncatingTail;
+        messageLabel.textColor = style.messageColor
+        messageLabel.backgroundColor = UIColor.clear
         
+        let maxMessageSize = CGSize(
+            width: (self.bounds.width * style.maxWidthPercentage) - imageRect.size.width,
+            height: self.bounds.height * style.maxHeightPercentage
+        )
+        let messageSize = messageLabel.sizeThatFits(maxMessageSize)
+        let actualWidth = min(messageSize.width, maxMessageSize.width)
+        let actualHeight = min(messageSize.height, maxMessageSize.height)
+        messageLabel.frame = CGRect(x: 0.0, y: 0.0, width: actualWidth, height: actualHeight)
+  
+        if let toastAction = action {
+            button = UIButton()
+            button?.setTitleColor(style.buttonColor, for: .normal)
+            button?.setTitle(toastAction.title, for: .normal)
+            button?.contentHorizontalAlignment = .trailing
+            let titleInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+            button?.titleEdgeInsets = titleInsets
+            button?.titleLabel?.font = style.buttonFont
+            button?.titleLabel?.numberOfLines = style.buttonNumberOfLines
+            button?.titleLabel?.lineBreakMode = .byWordWrapping
+            let maxButtonLabelSize = CGSize(
+                width: self.bounds.width * style.maxWidthPercentage - imageRect.width - titleInsets.left - titleInsets.right,
+                height: self.bounds.height * style.maxHeightPercentage - titleInsets.top - titleInsets.bottom
+            )
+            if let buttonSize = button?.titleLabel?.sizeThatFits(maxButtonLabelSize) {
+                button?.frame = CGRect(
+                    x: 0.0,
+                    y: 0.0,
+                    width: buttonSize.width + titleInsets.left + titleInsets.right,
+                    height: buttonSize.height + titleInsets.top + titleInsets.bottom)
+            }
+            button?.addTarget(toastAction.target, action: toastAction.action, for: .touchUpInside)
+        }
+        
+        var titleRect = CGRect.zero
+        titleRect.origin.x = imageRect.origin.x + imageRect.width + style.horizontalPadding
+        titleRect.origin.y = style.verticalPadding
         if let titleLabel = titleLabel {
-            titleRect.origin.x = imageRect.origin.x + imageRect.size.width + style.horizontalPadding
-            titleRect.origin.y = style.verticalPadding
-            titleRect.size.width = titleLabel.bounds.size.width
-            titleRect.size.height = titleLabel.bounds.size.height
+            titleRect.size.width = titleLabel.bounds.width
+            titleRect.size.height = titleLabel.bounds.height
         }
         
         var messageRect = CGRect.zero
+        messageRect.origin.x = imageRect.origin.x + imageRect.width + style.horizontalPadding
+        messageRect.origin.y = titleRect.origin.y + titleRect.height
+        if titleLabel != nil {
+            messageRect.origin.y += style.messageFont.xHeight
+        }
+        messageRect.size.width = messageLabel.bounds.width
+        messageRect.size.height = messageLabel.bounds.height
         
-        if let messageLabel = messageLabel {
-            messageRect.origin.x = imageRect.origin.x + imageRect.size.width + style.horizontalPadding
-            messageRect.origin.y = titleRect.origin.y + titleRect.size.height + style.verticalPadding
-            messageRect.size.width = messageLabel.bounds.size.width
-            messageRect.size.height = messageLabel.bounds.size.height
+        var buttonRect = CGRect.zero
+        if let button = button {
+            buttonRect.origin.x = imageRect.origin.x + imageRect.width + style.horizontalPadding
+            buttonRect.origin.y = messageRect.origin.y + messageRect.height
+            buttonRect.size.width = button.bounds.width
+            buttonRect.size.height = button.bounds.height
         }
         
-        let longerWidth = max(titleRect.size.width, messageRect.size.width)
-        let longerX = max(titleRect.origin.x, messageRect.origin.x)
-        let wrapperWidth = max((imageRect.size.width + (style.horizontalPadding * 2.0)), (longerX + longerWidth + style.horizontalPadding))
-        let wrapperHeight = max((messageRect.origin.y + messageRect.size.height + style.verticalPadding), (imageRect.size.height + (style.verticalPadding * 2.0)))
+        let longerWidth = max(
+            titleRect.width,
+            messageRect.width,
+            buttonRect.width
+        )
+        let longerX = max(
+            titleRect.origin.x,
+            messageRect.origin.x,
+            buttonRect.origin.x
+        )
+        let wrapperWidth = max(
+            imageRect.width + (style.horizontalPadding * 2.0),
+            longerX + longerWidth + style.horizontalPadding
+        )
+        
+        var contentHeight = messageRect.origin.y + messageRect.height + style.verticalPadding
+        if button != nil {
+            contentHeight = buttonRect.origin.y + buttonRect.height
+        }
+        let wrapperHeight = max(
+            contentHeight,
+            imageRect.size.height + (style.verticalPadding * 2.0)
+        )
         
         wrapperView.frame = CGRect(x: 0.0, y: 0.0, width: wrapperWidth, height: wrapperHeight)
         
@@ -511,13 +557,22 @@ public extension UIView {
             wrapperView.addSubview(titleLabel)
         }
         
-        if let messageLabel = messageLabel {
-            messageRect.size.width = longerWidth
-            messageLabel.frame = messageRect
-            wrapperView.addSubview(messageLabel)
+        if titleLabel == nil && button == nil {
+            messageRect.origin.y = (wrapperHeight - messageRect.height) / 2
+        }
+        messageRect.size.width = longerWidth
+        messageLabel.frame = messageRect
+        wrapperView.addSubview(messageLabel)
+        
+        if let button = button {
+            buttonRect.size.width = longerWidth
+            button.frame = buttonRect
+            wrapperView.addSubview(button)
         }
         
         if let imageView = imageView {
+            imageRect.origin.y = (wrapperHeight - imageRect.height) / 2
+            imageView.frame = imageRect
             wrapperView.addSubview(imageView)
         }
         
@@ -556,6 +611,8 @@ public struct ToastStyle {
     */
     public var messageColor: UIColor = .white
     
+    public var buttonColor: UIColor = .systemBlue
+    
     /**
      A percentage value from 0.0 to 1.0, representing the maximum width of the toast
      view relative to it's superview. Default is 0.8 (80% of the superview's width).
@@ -585,8 +642,7 @@ public struct ToastStyle {
     public var horizontalPadding: CGFloat = 10.0
     
     /**
-     The spacing from the vertical edge of the toast view to the content. When a title
-     is present, this is also used as the padding between the title and the message.
+     The spacing from the vertical edge of the toast view to the content.
      Default is 10.0. On iOS11+, this value is added added to the `safeAreaInset.top`
      and `safeAreaInsets.bottom`.
     */
@@ -597,15 +653,11 @@ public struct ToastStyle {
     */
     public var cornerRadius: CGFloat = 10.0;
     
-    /**
-     The title font. Default is `.boldSystemFont(16.0)`.
-    */
-    public var titleFont: UIFont = .boldSystemFont(ofSize: 16.0)
+    public var titleFont: UIFont = .preferredFont(forTextStyle: .headline)
     
-    /**
-     The message font. Default is `.systemFont(ofSize: 16.0)`.
-    */
-    public var messageFont: UIFont = .systemFont(ofSize: 16.0)
+    public var messageFont: UIFont = .preferredFont(forTextStyle: .callout)
+    
+    public var buttonFont: UIFont = .preferredFont(forTextStyle: .footnote)
     
     /**
      The title text alignment. Default is `NSTextAlignment.Left`.
@@ -626,6 +678,8 @@ public struct ToastStyle {
      The maximum number of lines for the message. The default is 0 (no limit).
     */
     public var messageNumberOfLines = 0
+    
+    public var buttonNumberOfLines = 0
     
     /**
      Enable or disable a shadow on the toast view. Default is `false`.
@@ -757,6 +811,19 @@ public enum ToastPosition {
         case .bottom:
             return CGPoint(x: superview.bounds.size.width / 2.0, y: (superview.bounds.size.height - (toast.frame.size.height / 2.0)) - bottomPadding)
         }
+    }
+}
+
+
+public struct ToastAction {
+    var title: String
+    var target: Any
+    var action: Selector
+    
+    public init(title: String, target: Any, action: Selector) {
+        self.title = title
+        self.target = target
+        self.action = action
     }
 }
 

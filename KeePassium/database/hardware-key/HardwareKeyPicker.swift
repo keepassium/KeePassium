@@ -164,17 +164,13 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     
     private func getKeyDescription(_ key: YubiKey?) -> String {
         guard let key = key else {
-            return NSLocalizedString(
-                "[HardwareKey/None] No Hardware Key",
-                value: "No Hardware Key",
-                comment: "Master key/unlock option: don't use hardware keys")
+            return LString.noHardwareKey
         }
         
-        let template = NSLocalizedString(
-            "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d",
-            value: "YubiKey Slot %d",
-            comment: "Master key/unlock option: use given slot of YubiKey")
-        let result = String.localizedStringWithFormat(template, key.slot.number)
+        let result = String.localizedStringWithFormat(
+            LString.yubikeySlotNTemplate,
+            key.slot.number
+        )
         return result
     }
     

@@ -516,6 +516,15 @@ public enum LString {
         comment: "Template text of a bug report email")
     
     
+    public static let noHardwareKey = NSLocalizedString(
+        "[HardwareKey/None] No Hardware Key",
+        value: "No Hardware Key",
+        comment: "Master key/unlock option: don't use hardware keys")
+    public static let yubikeySlotNTemplate = NSLocalizedString(
+        "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d",
+        value: "YubiKey Slot %d",
+        comment: "Master key/unlock option: use given slot of YubiKey")
+    
     public static let dontUseYubikey = NSLocalizedString(
         "[YubiKey] Don't use YubiKey",
         value: "Without YubiKey",

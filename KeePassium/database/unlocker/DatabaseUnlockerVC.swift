@@ -30,15 +30,12 @@ protocol DatabaseUnlockerDelegate: AnyObject {
 
 final class DatabaseUnlockerVC: UIViewController, Refreshable {
 
-    @IBOutlet private weak var errorMessagePanel: UIView!
-    @IBOutlet private weak var errorMessageLabel: UILabel!
-    @IBOutlet private weak var errorDetailsButton: UIButton!
     @IBOutlet private weak var databaseLocationIconImage: UIImageView!
     @IBOutlet private weak var databaseFileNameLabel: UILabel!
     @IBOutlet private weak var inputPanel: UIView!
     @IBOutlet private weak var passwordField: ProtectedTextField!
-    @IBOutlet private weak var keyFileField: KeyFileTextField!
-    @IBOutlet private weak var announcementButton: UIButton!
+    @IBOutlet private weak var keyFileField: ValidatingTextField!
+    @IBOutlet private weak var hardwareKeyField: ValidatingTextField!
     @IBOutlet private weak var unlockButton: UIButton!
     @IBOutlet private weak var masterKeyKnownLabel: UILabel!
     @IBOutlet weak var lockDatabaseButton: UIButton!
@@ -72,22 +69,14 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             self?.view.layoutIfNeeded()
         }
         
-        announcementButton.isHidden = true 
-        
         lockedOnTimeoutLabel.isHidden = true
-        errorMessagePanel.alpha = 0.0
-        errorMessagePanel.isHidden = true
         
         refresh()
         
         passwordField.delegate = self
         keyFileField.delegate = self
-        
-        keyFileField.yubikeyHandler = {
-            [weak self] (field, popoverAnchor) in
-            guard let self = self else { return }
-            self.delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
-        }
+        hardwareKeyField.delegate = self
+        hardwareKeyField.placeholder = LString.noHardwareKey
         
         setKeyFile(keyFileRef)
         setYubiKey(yubiKey)
@@ -122,55 +111,37 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         let text = [text, reason, suggestion]
             .compactMap { return $0 } 
             .joined(separator: "\n")
-        errorMessageLabel.text = text
         Diag.error(text)
         UIAccessibility.post(notification: .announcement, argument: text)
-        
-        guard errorMessagePanel.isHidden else { return }
 
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0.0,
-            options: .curveEaseIn,
-            animations: {
-                [weak self] in
-                self?.errorMessagePanel.alpha = 1.0
-                self?.errorMessagePanel.isHidden = false
-            },
-            completion: {
-                [weak self] (finished) in
-                self?.errorMessagePanel.shake()
-                if let hapticsKind = haptics {
-                    HapticFeedback.play(hapticsKind)
-                }
-            }
+        let warningIcon: UIImage
+        if #available(iOS 13, *) {
+            warningIcon = UIImage.get(.exclamationMarkTriangle)!.withTintColor(.warningMessage)
+        } else {
+            warningIcon = UIImage.get(.exclamationMarkTriangle)!
+        }
+        
+        var toastStyle = ToastStyle()
+        toastStyle.backgroundColor = .warningMessage
+        toastStyle.imageSize = CGSize(width: 29, height: 29)
+        toastStyle.displayShadow = false
+        let toastView = view.toastViewForMessage(
+            text,
+            title: nil,
+            image: warningIcon,
+            action: ToastAction(
+                title: LString.actionShowDetails,
+                target: self,
+                action: #selector(didPressErrorDetails(_:))),
+            style: toastStyle
         )
+        view.showToast(toastView, duration: 5, position: .top, completion: nil)
+
         StoreReviewSuggester.registerEvent(.trouble)
     }
     
     func hideErrorMessage(animated: Bool) {
-        guard !errorMessagePanel.isHidden else { return }
-
-        if animated {
-            UIView.animate(
-                withDuration: 0.3,
-                delay: 0.0,
-                options: .curveEaseOut,
-                animations: {
-                    [weak self] in
-                    self?.errorMessagePanel.alpha = 0.0
-                    self?.errorMessagePanel.isHidden = true
-                },
-                completion: {
-                    [weak self] (finished) in
-                    self?.errorMessageLabel.text = " "
-                }
-            )
-        } else {
-            errorMessagePanel.alpha = 0.0
-            errorMessagePanel.isHidden = true
-            errorMessageLabel.text = " "
-        }
+        view.hideToast()
     }
 
     func showMasterKeyInvalid(message: String) {
@@ -214,11 +185,11 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             return
         }
         
-        keyFileField.isYubiKeyActive = (yubiKey != nil)
-        
-        if let _yubiKey = yubiKey {
-            Diag.info("Hardware key selected [key: \(_yubiKey)]")
+        if let yubiKey = yubiKey {
+            hardwareKeyField.text = YubiKey.getTitle(for: yubiKey)
+            Diag.info("Hardware key selected [key: \(yubiKey)]")
         } else {
+            hardwareKeyField.text = nil // shows "No Hardware Key" placeholder
             Diag.info("No hardware key selected")
         }
     }
@@ -251,9 +222,9 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
     
     
-    @IBAction func didPressErrorDetailsButton(_ sender: UIButton) {
+    @objc private func didPressErrorDetails(_ sender: Any) {
         Watchdog.shared.restart()
-        let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
+        let popoverAnchor = PopoverAnchor(sourceView: inputPanel, sourceRect: inputPanel.bounds)
         delegate?.didPressShowDiagnostics(at: popoverAnchor, in: self)
     }
     
@@ -273,10 +244,14 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
 extension DatabaseUnlockerVC: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         Watchdog.shared.restart()
+        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
         if textField === keyFileField {
             passwordField.becomeFirstResponder()
-            let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
             delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
+            return false 
+        } else if textField === hardwareKeyField {
+            passwordField.becomeFirstResponder()
+            delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
             return false 
         }
         return true

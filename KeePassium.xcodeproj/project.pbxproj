@@ -741,6 +741,10 @@
 		75ED429D2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429F2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard */; };
 		75ED42A42313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */; };
 		75ED42A92313C20A003DE72E /* SettingsItemListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42AB2313C20A003DE72E /* SettingsItemListVC.storyboard */; };
+		75F0BE5326A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
+		75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
+		75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
+		75F0BE5626A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
 		75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
 		75F28787245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
@@ -1782,6 +1786,7 @@
 		75ED42AD2313C20F003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
 		75ED42AF2313C267003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75ED42B12315896C003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
+		75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YubiKey+extension.swift"; sourceTree = "<group>"; };
 		75F15C9F233E512F001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F15CA2233E5399001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFIKeyActionSheetView.swift; sourceTree = "<group>"; };
@@ -2227,6 +2232,7 @@
 		754FCBAF20A86785004DA0E7 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				75F0BE5126A9BD0E0076B636 /* hardware-key */,
 				75BC562725818702002B4395 /* a11y */,
 				75B78705261F8979005BE7B7 /* context-menu */,
 				753376F023CA650C00603F4A /* PasswordStringHelper.swift */,
@@ -2561,6 +2567,14 @@
 				755B863023054FA200E9FC83 /* AboutVC.storyboard */,
 			);
 			path = about;
+			sourceTree = "<group>";
+		};
+		75F0BE5126A9BD0E0076B636 /* hardware-key */ = {
+			isa = PBXGroup;
+			children = (
+				75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */,
+			);
+			path = "hardware-key";
 			sourceTree = "<group>";
 		};
 		75F2877F245D646B00F03657 /* MFIKeyActionSheet */ = {
@@ -3113,6 +3127,7 @@
 				75CBABA121C16CD000B8AFE2 /* FirstSetupVC.swift in Sources */,
 				75802635222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
+				75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				758D272426867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				750E159C269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */,
 				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
@@ -3298,6 +3313,7 @@
 				753376F123CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				758544642351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,
 				75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */,
+				75F0BE5326A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				75A5312823C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
 				75F4ACFC21776F4800B22D8B /* LString.swift in Sources */,
 				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
@@ -3467,6 +3483,7 @@
 				758544662351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,
 				75B38C42233E5B7C006BDEFC /* UIAlertController+extensions.swift in Sources */,
 				75A5312923C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
+				75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				75B38C43233E5B7C006BDEFC /* LString.swift in Sources */,
 				7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */,
 				75B38C44233E5B7C006BDEFC /* GroupEditorVC.swift in Sources */,
@@ -3545,6 +3562,7 @@
 				75D7DF93233E5E310029AD87 /* FirstSetupVC.swift in Sources */,
 				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
+				75F0BE5626A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				758D272526867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				750E159E269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */,
 				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,

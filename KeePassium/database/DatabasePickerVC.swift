@@ -97,11 +97,13 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             navigationItem.leftBarButtonItems?.forEach { $0.isEnabled = _isEnabled }
             navigationItem.rightBarButtonItems?.forEach { $0.isEnabled = _isEnabled }
             tableView.isUserInteractionEnabled = _isEnabled
-            tableView.alpha = alpha
             if let toolbarItems = toolbarItems {
                 for item in toolbarItems {
                     item.isEnabled = _isEnabled
                 }
+            }
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.tableView.alpha = alpha
             }
         }
     }
