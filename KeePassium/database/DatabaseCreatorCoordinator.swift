@@ -92,7 +92,7 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
         do {
             tmpFileURL = try createEmptyLocalFile(fileName: fileName)
         } catch {
-            databaseCreatorVC.setError(message: error.localizedDescription, animated: true)
+            databaseCreatorVC.showErrorMessage(error.localizedDescription, haptics: .error, animated: true)
             return
         }
         
@@ -110,7 +110,7 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
                 self?.startSavingDatabase()
             },
             error: { [weak self] (message) in
-                self?.databaseCreatorVC.setError(message: message, animated: true)
+                self?.databaseCreatorVC.showErrorMessage(message ?? "error", haptics: .error, animated: true)
             }
         )
     }
@@ -199,7 +199,7 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
                 self.databaseCreatorVC.present(picker, animated: true, completion: nil)
             case .failure(let error):
                 Diag.error("Failed to resolve temporary DB reference [message: \(error.localizedDescription)]")
-                self.databaseCreatorVC.setError(message: error.localizedDescription, animated: true)
+                self.databaseCreatorVC.showErrorMessage(error.localizedDescription, haptics: .error, animated: true)
             }
         }
     }
@@ -217,8 +217,9 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
             },
             error: { [weak self] (fileKeeperError) in
                 Diag.error("Failed to add created file [mesasge: \(fileKeeperError.localizedDescription)]")
-                self?.databaseCreatorVC.setError(
-                    message: fileKeeperError.localizedDescription,
+                self?.databaseCreatorVC.showErrorMessage(
+                    fileKeeperError.localizedDescription,
+                    haptics: .error,
                     animated: true
                 )
             }
@@ -357,7 +358,7 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
         hideProgress()
         
         guard let localizedError = error as? LocalizedError else {
-            databaseCreatorVC.setError(message: error.localizedDescription, animated: true)
+            databaseCreatorVC.showErrorMessage(error.localizedDescription, haptics: .error, animated: true)
             return
         }
         let errorMessageParts = [
@@ -366,7 +367,7 @@ extension DatabaseCreatorCoordinator: DatabaseManagerObserver {
             localizedError.recoverySuggestion
         ]
         let errorMessage = errorMessageParts.compactMap { $0 }.joined(separator: "\n")
-        databaseCreatorVC.setError(message: errorMessage, animated: true)
+        databaseCreatorVC.showErrorMessage(errorMessage, haptics: .error, animated: true)
     }
 }
 
@@ -410,7 +411,7 @@ extension DatabaseCreatorCoordinator: HardwareKeyPickerCoordinatorDelegate {
     func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
         setYubiKey(yubiKey)
         databaseCreatorVC.becomeFirstResponder()
-        databaseCreatorVC.setError(message: nil, animated: false)
+        databaseCreatorVC.hideErrorMessage(animated: false)
     }
     
     func setYubiKey(_ yubiKey: YubiKey?) {
