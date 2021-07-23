@@ -30,7 +30,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
     
     init(rootController: CredentialProviderViewController) {
         self.rootController = rootController
-        let navigationController = UINavigationController()
+        let navigationController = RouterNavigationController()
         navigationController.view.backgroundColor = .clear
         router = NavigationRouter(navigationController)
         

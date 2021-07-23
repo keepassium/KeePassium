@@ -12,11 +12,22 @@ public protocol NavigationRouterDismissAttemptDelegate: AnyObject {
     func didAttemptToDismiss(navigationRouter: NavigationRouter)
 }
 
-public class NavigationRouter: NSObject {
+final public class RouterNavigationController: UINavigationController {
+    fileprivate weak var router: NavigationRouter?
+
+    override public func viewDidDisappear(_ animated: Bool) {
+        if isBeingDismissed {
+            router?.popAll()
+        }
+        super.viewDidDisappear(animated)
+    }
+}
+
+final public class NavigationRouter: NSObject {
     public typealias PopHandler = (() -> ())
     public typealias CollapsedDetailDismissalHandler = ((UIViewController) -> ())
     
-    public private(set) var navigationController: UINavigationController
+    public private(set) var navigationController: RouterNavigationController
     private var popHandlers = [(ObjectIdentifier, PopHandler, String)]()
     private weak var oldDelegate: UINavigationControllerDelegate?
 
@@ -51,7 +62,7 @@ public class NavigationRouter: NSObject {
         style: UIModalPresentationStyle,
         at popoverAnchor: PopoverAnchor? = nil
     ) -> NavigationRouter {
-        let navVC = UINavigationController()
+        let navVC = RouterNavigationController()
         let router = NavigationRouter(navVC)
         navVC.modalPresentationStyle = style
         navVC.presentationController?.delegate = router
@@ -62,11 +73,12 @@ public class NavigationRouter: NSObject {
         return router
     }
 
-    init(_ navigationController: UINavigationController) {
+    init(_ navigationController: RouterNavigationController) {
         self.navigationController = navigationController
         oldDelegate = navigationController.delegate
         super.init()
 
+        navigationController.router = self
         if oldDelegate !== self {
             navigationController.delegate = self
         }

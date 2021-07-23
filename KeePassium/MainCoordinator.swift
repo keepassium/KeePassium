@@ -42,11 +42,11 @@ final class MainCoordinator: Coordinator {
     init(window: UIWindow) {
         self.rootSplitVC = RootSplitVC()
 
-        let primaryNavVC = UINavigationController()
+        let primaryNavVC = RouterNavigationController()
         primaryRouter = NavigationRouter(primaryNavVC)
         
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
-        let placeholderNavVC = UINavigationController(rootViewController: placeholderVC)
+        let placeholderNavVC = RouterNavigationController(rootViewController: placeholderVC)
         placeholderRouter = NavigationRouter(placeholderNavVC)
 
         rootSplitVC.viewControllers = [primaryNavVC, placeholderNavVC]
@@ -158,7 +158,7 @@ extension MainCoordinator {
             }
         }
         
-        databaseUnlockerRouter = NavigationRouter(UINavigationController())
+        databaseUnlockerRouter = NavigationRouter(RouterNavigationController())
         let router = databaseUnlockerRouter! 
         
         let newDBUnlockerCoordinator = DatabaseUnlockerCoordinator(

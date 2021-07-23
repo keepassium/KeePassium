@@ -78,7 +78,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         self.loadingWarnings = loadingWarnings
         
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
-        let placeholderWrapperVC = UINavigationController(rootViewController: placeholderVC)
+        let placeholderWrapperVC = RouterNavigationController(rootViewController: placeholderVC)
         self.placeholderRouter = NavigationRouter(placeholderWrapperVC)
     }
     
@@ -278,7 +278,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             return
         }
         
-        let entryViewerRouter = NavigationRouter(UINavigationController())
+        let entryViewerRouter = NavigationRouter(RouterNavigationController())
         let entryViewerCoordinator = EntryViewerCoordinator(
             entry: entry,
             database: database,
