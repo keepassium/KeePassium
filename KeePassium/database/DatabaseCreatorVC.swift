@@ -160,6 +160,7 @@ class DatabaseCreatorVC: UIViewController {
     }
     
     @IBAction func didPressErrorDetails(_ sender: Any) {
+        hideErrorMessage(animated: true)
         delegate?.didPressErrorDetails(in: self)
     }
     

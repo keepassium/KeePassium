@@ -224,6 +224,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     
     @objc private func didPressErrorDetails(_ sender: Any) {
         Watchdog.shared.restart()
+        hideErrorMessage(animated: true)
         let popoverAnchor = PopoverAnchor(sourceView: inputPanel, sourceRect: inputPanel.bounds)
         delegate?.didPressShowDiagnostics(at: popoverAnchor, in: self)
     }
