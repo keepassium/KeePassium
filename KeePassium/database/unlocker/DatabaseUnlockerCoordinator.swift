@@ -245,15 +245,24 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC
     ) {
-        selectKeyFile(at: popoverAnchor, in: viewController)
+        router.dismissModals(animated: false, completion: { [weak self] in
+            self?.selectKeyFile(at: popoverAnchor, in: viewController)
+        })
     }
     
     func didPressSelectHardwareKey(
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC
     ) {
-        selectHardwareKey(at: popoverAnchor, in: viewController)
+        router.dismissModals(animated: false, completion: { [weak self] in
+            self?.selectHardwareKey(at: popoverAnchor, in: viewController)
+        })
     }
+    
+    func shouldDismissPopovers(in viewController: DatabaseUnlockerVC) {
+        router.dismissModals(animated: false, completion: nil)
+    }
+    
 
     func canUnlockAutomatically(_ viewController: DatabaseUnlockerVC) -> Bool {
         return canUnlockAutomatically()

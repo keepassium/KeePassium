@@ -245,6 +245,7 @@
                     <connections>
                         <outlet property="databaseFileNameLabel" destination="LsQ-5N-nP3" id="kqF-va-O1r"/>
                         <outlet property="databaseLocationIconImage" destination="MLZ-P0-rnn" id="K9j-iw-h9N"/>
+                        <outlet property="fakeUserNameField" destination="Rb4-4d-9A9" id="XjJ-LG-77d"/>
                         <outlet property="hardwareKeyField" destination="IDJ-gO-5kR" id="MLb-iC-qnt"/>
                         <outlet property="inputPanel" destination="3xv-vB-0Jn" id="yUX-DL-NZd"/>
                         <outlet property="keyFileField" destination="mYY-hP-3vH" id="89z-Ta-JMu"/>

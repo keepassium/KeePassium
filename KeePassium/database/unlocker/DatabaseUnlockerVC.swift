@@ -14,10 +14,10 @@ protocol DatabaseUnlockerDelegate: AnyObject {
     func didPressSelectKeyFile(
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC)
-    
     func didPressSelectHardwareKey(
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC)
+    func shouldDismissPopovers(in viewController: DatabaseUnlockerVC)
     
     func canUnlockAutomatically(_ viewController: DatabaseUnlockerVC) -> Bool
     func didPressUnlock(in viewController: DatabaseUnlockerVC)
@@ -33,6 +33,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     @IBOutlet private weak var databaseLocationIconImage: UIImageView!
     @IBOutlet private weak var databaseFileNameLabel: UILabel!
     @IBOutlet private weak var inputPanel: UIView!
+    @IBOutlet private weak var fakeUserNameField: UITextField!
     @IBOutlet private weak var passwordField: ProtectedTextField!
     @IBOutlet private weak var keyFileField: ValidatingTextField!
     @IBOutlet private weak var hardwareKeyField: ValidatingTextField!
@@ -73,6 +74,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         
         refresh()
         
+        fakeUserNameField.delegate = self
         passwordField.delegate = self
         keyFileField.delegate = self
         hardwareKeyField.delegate = self
@@ -243,31 +245,66 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
 }
 
 extension DatabaseUnlockerVC: UITextFieldDelegate {
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         Watchdog.shared.restart()
+        guard textField !== fakeUserNameField else {
+            return false
+        }
+        
+        guard UIDevice.current.userInterfaceIdiom == .phone else {
+            return true
+        }
         let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
-        if textField === keyFileField {
-            passwordField.becomeFirstResponder()
+        switch textField {
+        case keyFileField:
+            hideErrorMessage(animated: true)
             delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
             return false 
-        } else if textField === hardwareKeyField {
-            passwordField.becomeFirstResponder()
+        case hardwareKeyField:
+            hideErrorMessage(animated: true)
             delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
             return false 
+        default:
+            break
         }
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        Watchdog.shared.restart()
+        guard UIDevice.current.userInterfaceIdiom != .phone else {
+            return
+        }
+        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+        switch textField {
+        case keyFileField:
+            hideErrorMessage(animated: true)
+            delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
+        case hardwareKeyField:
+            hideErrorMessage(animated: true)
+            delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
+        default:
+            hideErrorMessage(animated: true)
+            delegate?.shouldDismissPopovers(in: self)
+        }
     }
     
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
-        replacementString string: String) -> Bool
-    {
+        replacementString string: String
+    ) -> Bool {
+        Watchdog.shared.restart()
         hideErrorMessage(animated: true)
+        if textField === keyFileField || textField === hardwareKeyField {
+            return false
+        }
         return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        Watchdog.shared.restart()
         if textField === passwordField {
             didPressUnlock(textField)
             return false
