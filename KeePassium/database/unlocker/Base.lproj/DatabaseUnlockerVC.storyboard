@@ -17,211 +17,225 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-k8-gTg" userLabel="KeyboardAdjustingView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnY-o0-iC1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dr0-TU-sMX" userLabel="Database Name Panel">
-                                        <rect key="frame" x="75.5" y="113" width="163" height="29"/>
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-k8-gTg" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="434"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="MLZ-P0-rnn">
-                                                <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
-                                                <color key="tintColor" name="PrimaryText"/>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dr0-TU-sMX" userLabel="Database Name Panel">
+                                                <rect key="frame" x="75.5" y="113" width="163" height="29"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="MLZ-P0-rnn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
+                                                        <color key="tintColor" name="PrimaryText"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="29" id="8AS-4O-0qN"/>
+                                                            <constraint firstAttribute="height" constant="29" id="rUf-rV-WA6"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Database file name}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsQ-5N-nP3">
+                                                        <rect key="frame" x="37" y="0.0" width="126" height="29"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <color key="textColor" name="PrimaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="#bc-ignore!"/>
+                                                        </attributedString>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="29" id="8AS-4O-0qN"/>
-                                                    <constraint firstAttribute="height" constant="29" id="rUf-rV-WA6"/>
+                                                    <constraint firstItem="MLZ-P0-rnn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="top" id="7CX-rL-I7J"/>
+                                                    <constraint firstAttribute="trailing" secondItem="LsQ-5N-nP3" secondAttribute="trailing" id="90z-fh-qpv"/>
+                                                    <constraint firstItem="MLZ-P0-rnn" firstAttribute="centerY" secondItem="Dr0-TU-sMX" secondAttribute="centerY" id="9MK-W4-LSa"/>
+                                                    <constraint firstItem="LsQ-5N-nP3" firstAttribute="centerY" secondItem="Dr0-TU-sMX" secondAttribute="centerY" id="W6t-oy-prY"/>
+                                                    <constraint firstItem="MLZ-P0-rnn" firstAttribute="leading" secondItem="Dr0-TU-sMX" secondAttribute="leading" id="ftF-2v-Dxg"/>
+                                                    <constraint firstItem="LsQ-5N-nP3" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="top" priority="750" id="hHC-oX-5mt"/>
+                                                    <constraint firstAttribute="bottom" secondItem="LsQ-5N-nP3" secondAttribute="bottom" priority="750" id="q9D-Ew-QRU"/>
+                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MLZ-P0-rnn" secondAttribute="bottom" id="tNJ-ot-qsT"/>
+                                                    <constraint firstItem="LsQ-5N-nP3" firstAttribute="leading" secondItem="MLZ-P0-rnn" secondAttribute="trailing" constant="8" id="vHL-Ls-ulA"/>
                                                 </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Database file name}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsQ-5N-nP3">
-                                                <rect key="frame" x="37" y="0.0" width="126" height="29"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                <color key="textColor" name="PrimaryText"/>
-                                                <nil key="highlightedColor"/>
-                                                <attributedString key="userComments">
-                                                    <fragment content="#bc-ignore!"/>
-                                                </attributedString>
-                                            </label>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G3Q-hY-M1b">
+                                                <rect key="frame" x="20" y="150" width="280" height="268"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" text="Database was closed by a timer." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epu-yU-Lyg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                        <color key="textColor" name="AuxiliaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Notification message shown by database lock timer."/>
+                                                        </attributedString>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3xv-vB-0Jn">
+                                                        <rect key="frame" x="0.0" y="22.5" width="280" height="136"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuN-tE-lAG" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
+                                                                <rect key="frame" x="8" y="0.0" width="264" height="44"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="password_field"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="44" id="Ce1-pB-jMO"/>
+                                                                </constraints>
+                                                                <color key="textColor" name="PrimaryText"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="password"/>
+                                                                <attributedString key="userComments">
+                                                                    <fragment content="Placeholder: database password"/>
+                                                                </attributedString>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb4-4d-9A9" userLabel="Fake UserName Field for AutoFill (GitHub #41)">
+                                                                <rect key="frame" x="0.0" y="43" width="1" height="1"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="bz8-xB-a9q"/>
+                                                                    <constraint firstAttribute="width" constant="1" id="cJE-f5-fOt"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="854-YG-tHO" userLabel="Separator1">
+                                                                <rect key="frame" x="0.0" y="44" width="280" height="2"/>
+                                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="2" id="1li-ig-vuf"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYY-hP-3vH" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                                                <rect key="frame" x="8" y="46" width="264" height="44"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="44" id="zgu-ja-9pO"/>
+                                                                </constraints>
+                                                                <color key="textColor" name="PrimaryText"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                <attributedString key="userComments">
+                                                                    <fragment content="Placeholder: don't use key file (should match the No Key File option in key file picker)."/>
+                                                                </attributedString>
+                                                            </textField>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enR-VV-wge" userLabel="Separator2">
+                                                                <rect key="frame" x="0.0" y="90" width="280" height="2"/>
+                                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="2" id="XSL-rk-Giw"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="{No Hardware Key}" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDJ-gO-5kR" userLabel="Hardware Key Field" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                                                <rect key="frame" x="8" y="92" width="264" height="44"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="44" id="3Fk-na-nhL"/>
+                                                                </constraints>
+                                                                <color key="textColor" name="PrimaryText"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="mYY-hP-3vH" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="11G-x2-VCX"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2QP-BY-ymU"/>
+                                                            <constraint firstItem="IDJ-gO-5kR" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="6v4-TA-Atn"/>
+                                                            <constraint firstItem="CuN-tE-lAG" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="7YG-AI-dEZ"/>
+                                                            <constraint firstItem="Rb4-4d-9A9" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="8G5-w2-EBj"/>
+                                                            <constraint firstAttribute="width" priority="750" constant="280" id="FqB-Kn-Heq"/>
+                                                            <constraint firstAttribute="trailingMargin" secondItem="CuN-tE-lAG" secondAttribute="trailing" id="O1R-4o-zHz"/>
+                                                            <constraint firstItem="enR-VV-wge" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="Tx0-WI-l4b"/>
+                                                            <constraint firstItem="mYY-hP-3vH" firstAttribute="bottom" secondItem="enR-VV-wge" secondAttribute="top" id="Ujf-aa-ZgO"/>
+                                                            <constraint firstItem="854-YG-tHO" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="ayP-z8-IdO"/>
+                                                            <constraint firstItem="IDJ-gO-5kR" firstAttribute="top" secondItem="enR-VV-wge" secondAttribute="bottom" id="fhn-cp-BaB"/>
+                                                            <constraint firstAttribute="bottom" secondItem="IDJ-gO-5kR" secondAttribute="bottom" id="hwx-v8-LAy"/>
+                                                            <constraint firstItem="854-YG-tHO" firstAttribute="top" secondItem="Rb4-4d-9A9" secondAttribute="bottom" id="igJ-N8-90q"/>
+                                                            <constraint firstItem="CuN-tE-lAG" firstAttribute="top" secondItem="3xv-vB-0Jn" secondAttribute="top" id="kvI-is-rJb"/>
+                                                            <constraint firstItem="IDJ-gO-5kR" firstAttribute="trailing" secondItem="3xv-vB-0Jn" secondAttribute="trailingMargin" id="n6z-f3-Lwo"/>
+                                                            <constraint firstAttribute="trailing" secondItem="enR-VV-wge" secondAttribute="trailing" id="nVp-k1-dby"/>
+                                                            <constraint firstItem="854-YG-tHO" firstAttribute="top" secondItem="CuN-tE-lAG" secondAttribute="bottom" id="sZa-3K-Joh"/>
+                                                            <constraint firstItem="mYY-hP-3vH" firstAttribute="top" secondItem="854-YG-tHO" secondAttribute="bottom" id="v62-wO-G2n"/>
+                                                            <constraint firstAttribute="trailingMargin" secondItem="mYY-hP-3vH" secondAttribute="trailing" id="vA6-I9-AaR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="854-YG-tHO" secondAttribute="trailing" id="waV-xA-21s"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l45-hq-1lr" userLabel="Unlock">
+                                                        <rect key="frame" x="0.0" y="166.5" width="280" height="44"/>
+                                                        <color key="backgroundColor" name="ActionTint"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="unlock_button"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="vAF-Ke-xi5"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <color key="tintColor" name="ActionText"/>
+                                                        <state key="normal" title="Unlock"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="didPressUnlock:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="9kb-5G-Hvo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Will use the remembered master key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3Y-ON-C19">
+                                                        <rect key="frame" x="0.0" y="218.5" width="280" height="14.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                        <color key="textColor" name="AuxiliaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Hint shown below the Unlock button, when not asking for master password/key file."/>
+                                                        </attributedString>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gji-1x-co5">
+                                                        <rect key="frame" x="0.0" y="241" width="280" height="27"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                        <state key="normal" title="Lock Database"/>
+                                                        <connections>
+                                                            <action selector="didPressLockDatabase:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="ZN0-Xl-x21"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2vz-Ao-z4Z"/>
+                                                    <constraint firstAttribute="width" priority="750" constant="280" id="XJS-1Z-GxV"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="MLZ-P0-rnn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="top" id="7CX-rL-I7J"/>
-                                            <constraint firstAttribute="trailing" secondItem="LsQ-5N-nP3" secondAttribute="trailing" id="90z-fh-qpv"/>
-                                            <constraint firstItem="MLZ-P0-rnn" firstAttribute="centerY" secondItem="Dr0-TU-sMX" secondAttribute="centerY" id="9MK-W4-LSa"/>
-                                            <constraint firstItem="LsQ-5N-nP3" firstAttribute="centerY" secondItem="Dr0-TU-sMX" secondAttribute="centerY" id="W6t-oy-prY"/>
-                                            <constraint firstItem="MLZ-P0-rnn" firstAttribute="leading" secondItem="Dr0-TU-sMX" secondAttribute="leading" id="ftF-2v-Dxg"/>
-                                            <constraint firstItem="LsQ-5N-nP3" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="top" priority="750" id="hHC-oX-5mt"/>
-                                            <constraint firstAttribute="bottom" secondItem="LsQ-5N-nP3" secondAttribute="bottom" priority="750" id="q9D-Ew-QRU"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MLZ-P0-rnn" secondAttribute="bottom" id="tNJ-ot-qsT"/>
-                                            <constraint firstItem="LsQ-5N-nP3" firstAttribute="leading" secondItem="MLZ-P0-rnn" secondAttribute="trailing" constant="8" id="vHL-Ls-ulA"/>
+                                            <constraint firstItem="Dr0-TU-sMX" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" constant="-3" id="Bsv-T2-67i"/>
+                                            <constraint firstItem="Dr0-TU-sMX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="topMargin" id="YNh-YO-8Gg"/>
+                                            <constraint firstAttribute="bottom" secondItem="G3Q-hY-M1b" secondAttribute="bottom" constant="16" id="eOd-FT-9dX"/>
+                                            <constraint firstItem="G3Q-hY-M1b" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="bottom" constant="8" id="gih-9n-0TA"/>
+                                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="trailing" id="iPw-bZ-jul"/>
+                                            <constraint firstItem="Dr0-TU-sMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="mbo-7y-lJ6"/>
+                                            <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" id="yQN-7S-jaf"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G3Q-hY-M1b">
-                                        <rect key="frame" x="20" y="150" width="280" height="268"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" text="Database was closed by a timer." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epu-yU-Lyg">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                <color key="textColor" name="AuxiliaryText"/>
-                                                <nil key="highlightedColor"/>
-                                                <attributedString key="userComments">
-                                                    <fragment content="Notification message shown by database lock timer."/>
-                                                </attributedString>
-                                            </label>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3xv-vB-0Jn">
-                                                <rect key="frame" x="0.0" y="22.5" width="280" height="136"/>
-                                                <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuN-tE-lAG" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="0.0" width="264" height="44"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="password_field"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="Ce1-pB-jMO"/>
-                                                        </constraints>
-                                                        <color key="textColor" name="PrimaryText"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="password"/>
-                                                        <attributedString key="userComments">
-                                                            <fragment content="Placeholder: database password"/>
-                                                        </attributedString>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb4-4d-9A9" userLabel="Fake UserName Field for AutoFill (GitHub #41)">
-                                                        <rect key="frame" x="0.0" y="43" width="1" height="1"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="bz8-xB-a9q"/>
-                                                            <constraint firstAttribute="width" constant="1" id="cJE-f5-fOt"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="username"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="854-YG-tHO" userLabel="Separator">
-                                                        <rect key="frame" x="0.0" y="44" width="280" height="2"/>
-                                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="2" id="1li-ig-vuf"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYY-hP-3vH" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="46" width="264" height="44"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="zgu-ja-9pO"/>
-                                                        </constraints>
-                                                        <color key="textColor" name="PrimaryText"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                        <attributedString key="userComments">
-                                                            <fragment content="Placeholder: don't use key file (should match the No Key File option in key file picker)."/>
-                                                        </attributedString>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enR-VV-wge" userLabel="Separator">
-                                                        <rect key="frame" x="0.0" y="90" width="280" height="2"/>
-                                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="2" id="XSL-rk-Giw"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="{No Hardware Key}" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDJ-gO-5kR" userLabel="Hardware Key Field" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="92" width="264" height="44"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="3Fk-na-nhL"/>
-                                                        </constraints>
-                                                        <color key="textColor" name="PrimaryText"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                    </textField>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="mYY-hP-3vH" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="11G-x2-VCX"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2QP-BY-ymU"/>
-                                                    <constraint firstItem="IDJ-gO-5kR" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="6v4-TA-Atn"/>
-                                                    <constraint firstItem="CuN-tE-lAG" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="7YG-AI-dEZ"/>
-                                                    <constraint firstItem="Rb4-4d-9A9" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="8G5-w2-EBj"/>
-                                                    <constraint firstAttribute="width" priority="750" constant="280" id="FqB-Kn-Heq"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="CuN-tE-lAG" secondAttribute="trailing" id="O1R-4o-zHz"/>
-                                                    <constraint firstItem="enR-VV-wge" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="Tx0-WI-l4b"/>
-                                                    <constraint firstItem="mYY-hP-3vH" firstAttribute="bottom" secondItem="enR-VV-wge" secondAttribute="top" id="Ujf-aa-ZgO"/>
-                                                    <constraint firstItem="854-YG-tHO" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="ayP-z8-IdO"/>
-                                                    <constraint firstItem="IDJ-gO-5kR" firstAttribute="top" secondItem="enR-VV-wge" secondAttribute="bottom" id="fhn-cp-BaB"/>
-                                                    <constraint firstAttribute="bottom" secondItem="IDJ-gO-5kR" secondAttribute="bottom" id="hwx-v8-LAy"/>
-                                                    <constraint firstItem="854-YG-tHO" firstAttribute="top" secondItem="Rb4-4d-9A9" secondAttribute="bottom" id="igJ-N8-90q"/>
-                                                    <constraint firstItem="CuN-tE-lAG" firstAttribute="top" secondItem="3xv-vB-0Jn" secondAttribute="top" id="kvI-is-rJb"/>
-                                                    <constraint firstItem="IDJ-gO-5kR" firstAttribute="trailing" secondItem="3xv-vB-0Jn" secondAttribute="trailingMargin" id="n6z-f3-Lwo"/>
-                                                    <constraint firstAttribute="trailing" secondItem="enR-VV-wge" secondAttribute="trailing" id="nVp-k1-dby"/>
-                                                    <constraint firstItem="854-YG-tHO" firstAttribute="top" secondItem="CuN-tE-lAG" secondAttribute="bottom" id="sZa-3K-Joh"/>
-                                                    <constraint firstItem="mYY-hP-3vH" firstAttribute="top" secondItem="854-YG-tHO" secondAttribute="bottom" id="v62-wO-G2n"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="mYY-hP-3vH" secondAttribute="trailing" id="vA6-I9-AaR"/>
-                                                    <constraint firstAttribute="trailing" secondItem="854-YG-tHO" secondAttribute="trailing" id="waV-xA-21s"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l45-hq-1lr" userLabel="Unlock">
-                                                <rect key="frame" x="0.0" y="166.5" width="280" height="44"/>
-                                                <color key="backgroundColor" name="ActionTint"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="unlock_button"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="vAF-Ke-xi5"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <color key="tintColor" name="ActionText"/>
-                                                <state key="normal" title="Unlock"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="didPressUnlock:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="9kb-5G-Hvo"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Will use the remembered master key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3Y-ON-C19">
-                                                <rect key="frame" x="0.0" y="218.5" width="280" height="14.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                <color key="textColor" name="AuxiliaryText"/>
-                                                <nil key="highlightedColor"/>
-                                                <attributedString key="userComments">
-                                                    <fragment content="Hint shown below the Unlock button, when not asking for master password/key file."/>
-                                                </attributedString>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gji-1x-co5">
-                                                <rect key="frame" x="0.0" y="241" width="280" height="27"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                <state key="normal" title="Lock Database"/>
-                                                <connections>
-                                                    <action selector="didPressLockDatabase:" destination="eAa-Z5-pdq" eventType="touchUpInside" id="ZN0-Xl-x21"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2vz-Ao-z4Z"/>
-                                            <constraint firstAttribute="width" priority="750" constant="280" id="XJS-1Z-GxV"/>
-                                        </constraints>
-                                    </stackView>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="PSV-n9-eVQ"/>
                                 <constraints>
-                                    <constraint firstItem="Dr0-TU-sMX" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" constant="-3" id="Bsv-T2-67i"/>
-                                    <constraint firstItem="Dr0-TU-sMX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="topMargin" priority="750" id="YNh-YO-8Gg"/>
-                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="bottom" constant="8" id="gih-9n-0TA"/>
-                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="trailing" id="iPw-bZ-jul"/>
-                                    <constraint firstItem="Dr0-TU-sMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="mbo-7y-lJ6"/>
-                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerY" secondItem="cdl-k8-gTg" secondAttribute="centerY" priority="250" id="qdq-Nk-k5M"/>
-                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="top" id="sTd-Jp-xZI"/>
-                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" id="yQN-7S-jaf"/>
+                                    <constraint firstAttribute="bottom" secondItem="cdl-k8-gTg" secondAttribute="bottom" priority="250" id="6nK-KQ-K2D"/>
+                                    <constraint firstItem="cdl-k8-gTg" firstAttribute="top" secondItem="dnY-o0-iC1" secondAttribute="top" priority="750" id="G5z-VI-CqE"/>
+                                    <constraint firstAttribute="trailing" secondItem="cdl-k8-gTg" secondAttribute="trailing" id="InC-E1-qWy"/>
+                                    <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerY" secondItem="PSV-n9-eVQ" secondAttribute="centerY" priority="250" id="WbR-4u-g7T"/>
+                                    <constraint firstItem="cdl-k8-gTg" firstAttribute="leading" secondItem="dnY-o0-iC1" secondAttribute="leading" id="v0B-Bf-cnu"/>
+                                    <constraint firstItem="3xv-vB-0Jn" firstAttribute="centerX" secondItem="dnY-o0-iC1" secondAttribute="centerX" id="xSS-zL-hLe"/>
                                 </constraints>
-                            </view>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fjp-FI-lys"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cdl-k8-gTg" firstAttribute="leading" secondItem="fjp-FI-lys" secondAttribute="leading" id="D0r-G0-qVk"/>
-                            <constraint firstItem="cdl-k8-gTg" firstAttribute="trailing" secondItem="fjp-FI-lys" secondAttribute="trailing" id="Okf-K9-G8m"/>
-                            <constraint firstAttribute="bottom" secondItem="cdl-k8-gTg" secondAttribute="bottom" priority="250" id="VaD-Ev-zg3" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
-                            <constraint firstItem="cdl-k8-gTg" firstAttribute="top" secondItem="fjp-FI-lys" secondAttribute="top" id="dQA-ql-OqA"/>
+                            <constraint firstItem="dnY-o0-iC1" firstAttribute="top" secondItem="bPc-V2-3Of" secondAttribute="top" id="8pd-ry-Bpd"/>
+                            <constraint firstItem="dnY-o0-iC1" firstAttribute="leading" secondItem="bPc-V2-3Of" secondAttribute="leading" id="9v7-2t-C6p"/>
+                            <constraint firstAttribute="bottom" secondItem="dnY-o0-iC1" secondAttribute="bottom" id="QOA-Z2-DsV" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
+                            <constraint firstItem="cdl-k8-gTg" firstAttribute="width" secondItem="bPc-V2-3Of" secondAttribute="width" id="bi0-93-J7q"/>
+                            <constraint firstAttribute="trailing" secondItem="dnY-o0-iC1" secondAttribute="trailing" id="yiK-p5-v1m"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
@@ -234,7 +248,7 @@
                         <outlet property="hardwareKeyField" destination="IDJ-gO-5kR" id="MLb-iC-qnt"/>
                         <outlet property="inputPanel" destination="3xv-vB-0Jn" id="yUX-DL-NZd"/>
                         <outlet property="keyFileField" destination="mYY-hP-3vH" id="89z-Ta-JMu"/>
-                        <outlet property="keyboardLayoutConstraint" destination="VaD-Ev-zg3" id="JoH-zQ-lpa"/>
+                        <outlet property="keyboardLayoutConstraint" destination="QOA-Z2-DsV" id="kTX-kB-w8d"/>
                         <outlet property="lockDatabaseButton" destination="gji-1x-co5" id="dlm-uQ-hm3"/>
                         <outlet property="lockedOnTimeoutLabel" destination="epu-yU-Lyg" id="3T0-0O-NWP"/>
                         <outlet property="masterKeyKnownLabel" destination="K3Y-ON-C19" id="boH-5S-KlE"/>

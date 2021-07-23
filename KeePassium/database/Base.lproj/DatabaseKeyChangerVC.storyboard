@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cP-o2-ccW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cP-o2-ccW">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zV-VG-oSJ" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="252.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="391"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="a4q-gk-OB4">
-                                                <rect key="frame" x="60" y="16" width="29" height="29"/>
+                                                <rect key="frame" x="60" y="154.5" width="29" height="29"/>
                                                 <color key="tintColor" name="PrimaryText"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="29" id="CuK-iE-M22"/>
@@ -32,7 +32,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Database file name}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzF-lh-Cod">
-                                                <rect key="frame" x="97" y="22.5" width="126" height="16"/>
+                                                <rect key="frame" x="97" y="161" width="126" height="16"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                 <color key="textColor" name="PrimaryText"/>
                                                 <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                                                 </attributedString>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning-accessory" translatesAutoresizingMaskIntoConstraints="NO" id="R8Q-C7-aGF">
-                                                <rect key="frame" x="291" y="110" width="25" height="25"/>
+                                                <rect key="frame" x="291" y="248.5" width="25" height="25"/>
                                                 <color key="tintColor" name="ErrorBackground"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Kan-PS-gkg"/>
@@ -49,7 +49,7 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-0U-HF5" userLabel="InputPanel">
-                                                <rect key="frame" x="35" y="54.5" width="250" height="182"/>
+                                                <rect key="frame" x="35" y="193" width="250" height="182"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hYP-f0-K1s" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="0.0" width="234" height="44"/>
@@ -158,9 +158,9 @@
                                             <constraint firstItem="xCb-0U-HF5" firstAttribute="centerX" secondItem="3zV-VG-oSJ" secondAttribute="centerX" id="1ql-z9-NFf"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lzF-lh-Cod" secondAttribute="trailing" constant="8" id="8Ua-5d-1bn"/>
                                             <constraint firstItem="a4q-gk-OB4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3zV-VG-oSJ" secondAttribute="leading" constant="8" id="D7c-8A-GLW"/>
-                                            <constraint firstItem="lzF-lh-Cod" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3zV-VG-oSJ" secondAttribute="topMargin" priority="750" constant="8" id="KOG-uQ-LKd"/>
+                                            <constraint firstItem="lzF-lh-Cod" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3zV-VG-oSJ" secondAttribute="topMargin" constant="8" id="KOG-uQ-LKd"/>
                                             <constraint firstItem="lzF-lh-Cod" firstAttribute="centerX" secondItem="3zV-VG-oSJ" secondAttribute="centerX" id="NrT-LW-u0X"/>
-                                            <constraint firstItem="a4q-gk-OB4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3zV-VG-oSJ" secondAttribute="topMargin" priority="250" constant="8" id="P50-Yy-j9k"/>
+                                            <constraint firstItem="a4q-gk-OB4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3zV-VG-oSJ" secondAttribute="topMargin" constant="8" id="P50-Yy-j9k"/>
                                             <constraint firstItem="a4q-gk-OB4" firstAttribute="centerY" secondItem="lzF-lh-Cod" secondAttribute="centerY" id="Rz1-ft-9D6"/>
                                             <constraint firstItem="R8Q-C7-aGF" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="trailing" priority="250" constant="8" id="TX8-uP-9Zt"/>
                                             <constraint firstAttribute="bottom" secondItem="xCb-0U-HF5" secondAttribute="bottom" constant="16" id="UMJ-yU-Wv3"/>
@@ -173,8 +173,10 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="Scr-uZ-99z"/>
                                 <constraints>
-                                    <constraint firstItem="3zV-VG-oSJ" firstAttribute="top" secondItem="1cP-o2-ccW" secondAttribute="top" priority="250" id="lCB-Tq-E3A"/>
+                                    <constraint firstItem="xCb-0U-HF5" firstAttribute="centerY" secondItem="Scr-uZ-99z" secondAttribute="centerY" priority="250" id="GLv-7O-N6b"/>
+                                    <constraint firstItem="3zV-VG-oSJ" firstAttribute="top" secondItem="1cP-o2-ccW" secondAttribute="top" priority="750" id="lCB-Tq-E3A"/>
                                     <constraint firstItem="3zV-VG-oSJ" firstAttribute="leading" secondItem="1cP-o2-ccW" secondAttribute="leading" id="pMv-LV-uNW"/>
                                     <constraint firstAttribute="bottom" secondItem="3zV-VG-oSJ" secondAttribute="bottom" priority="250" id="pu1-Z5-GCt"/>
                                     <constraint firstAttribute="trailing" secondItem="3zV-VG-oSJ" secondAttribute="trailing" id="rNQ-oQ-vxZ"/>
@@ -185,7 +187,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1cP-o2-ccW" firstAttribute="leading" secondItem="58Q-hF-v4J" secondAttribute="leading" id="CDz-qe-e8F"/>
-                            <constraint firstItem="xCb-0U-HF5" firstAttribute="centerY" secondItem="3zV-VG-oSJ" secondAttribute="centerY" priority="250" id="IWY-wx-Q5S"/>
                             <constraint firstAttribute="trailing" secondItem="1cP-o2-ccW" secondAttribute="trailing" id="VVQ-8t-eqb"/>
                             <constraint firstItem="1cP-o2-ccW" firstAttribute="top" secondItem="58Q-hF-v4J" secondAttribute="top" id="YLy-tV-hUR"/>
                             <constraint firstAttribute="bottom" secondItem="1cP-o2-ccW" secondAttribute="bottom" id="gsD-jT-Tz7" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>

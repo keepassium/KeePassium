@@ -22,16 +22,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BU0-lv-Dei" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="366.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="458.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Database File Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iK-ct-ygq">
-                                                <rect key="frame" x="20" y="16" width="280" height="16"/>
+                                                <rect key="frame" x="20" y="108" width="280" height="16"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                 <color key="textColor" name="PrimaryText"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pxN-RE-FXX" userLabel="FileNamePanel">
-                                                <rect key="frame" x="20" y="40" width="280" height="44"/>
+                                                <rect key="frame" x="20" y="132" width="280" height="44"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="MyPasswords" placeholder="e.g. MyPasswords" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XNL-lc-2Ti" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="0.0" width="264" height="44"/>
@@ -60,7 +60,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Master Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjQ-di-Ilx">
-                                                <rect key="frame" x="20" y="100" width="280" height="16"/>
+                                                <rect key="frame" x="20" y="192" width="280" height="16"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                 <color key="textColor" name="PrimaryText"/>
                                                 <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                                                 </attributedString>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="sgR-8q-2o9" userLabel="MasterKeyPanel">
-                                                <rect key="frame" x="20" y="124" width="280" height="136"/>
+                                                <rect key="frame" x="20" y="216" width="280" height="136"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uHk-Yt-mBh" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="0.0" width="264" height="44"/>
@@ -150,7 +150,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6C-CG-RVI" userLabel="Save Database">
-                                                <rect key="frame" x="20" y="276" width="280" height="44"/>
+                                                <rect key="frame" x="20" y="368" width="280" height="44"/>
                                                 <color key="backgroundColor" name="ActionTint"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="1Ue-I0-Bid"/>
@@ -171,7 +171,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Will use kdbx4 format (Argon2+ChaCha20)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVR-1N-ywy">
-                                                <rect key="frame" x="20" y="328" width="280" height="14.5"/>
+                                                <rect key="frame" x="20" y="420" width="280" height="14.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" name="AuxiliaryText"/>
                                                 <nil key="highlightedColor"/>
@@ -194,19 +194,20 @@
                                             <constraint firstItem="XVR-1N-ywy" firstAttribute="top" secondItem="h6C-CG-RVI" secondAttribute="bottom" constant="8" id="dp1-Fc-krB"/>
                                             <constraint firstItem="pxN-RE-FXX" firstAttribute="top" secondItem="2iK-ct-ygq" secondAttribute="bottom" constant="8" id="eAd-A3-LfG"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="XVR-1N-ywy" secondAttribute="bottom" constant="16" id="eJ8-WX-gpu"/>
-                                            <constraint firstItem="uHk-Yt-mBh" firstAttribute="centerY" secondItem="BU0-lv-Dei" secondAttribute="centerY" priority="250" id="efg-QB-40s"/>
                                             <constraint firstItem="VjQ-di-Ilx" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="fBF-tg-cR1"/>
                                             <constraint firstItem="pxN-RE-FXX" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="g0d-yE-OIO"/>
                                             <constraint firstItem="sgR-8q-2o9" firstAttribute="centerX" secondItem="BU0-lv-Dei" secondAttribute="centerX" id="jcW-XN-kxz"/>
                                             <constraint firstItem="sgR-8q-2o9" firstAttribute="top" secondItem="VjQ-di-Ilx" secondAttribute="bottom" constant="8" id="pEk-Tz-Gp8"/>
                                             <constraint firstItem="pxN-RE-FXX" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="vFD-0a-9Fv"/>
-                                            <constraint firstItem="2iK-ct-ygq" firstAttribute="top" secondItem="BU0-lv-Dei" secondAttribute="top" constant="16" id="weq-5i-gfn"/>
+                                            <constraint firstItem="2iK-ct-ygq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BU0-lv-Dei" secondAttribute="top" constant="16" id="weq-5i-gfn"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="CWA-cO-6TL"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="BU0-lv-Dei" secondAttribute="bottom" priority="250" id="Or9-I0-q72"/>
-                                    <constraint firstItem="BU0-lv-Dei" firstAttribute="top" secondItem="UAC-3N-WvO" secondAttribute="top" priority="250" id="RDO-Ok-hGZ"/>
+                                    <constraint firstItem="pvt-FS-0Yx" firstAttribute="centerY" secondItem="CWA-cO-6TL" secondAttribute="centerY" priority="250" id="PXD-mh-Vom"/>
+                                    <constraint firstItem="BU0-lv-Dei" firstAttribute="top" secondItem="UAC-3N-WvO" secondAttribute="top" priority="750" id="RDO-Ok-hGZ"/>
                                     <constraint firstAttribute="trailing" secondItem="BU0-lv-Dei" secondAttribute="trailing" id="Srs-YG-f0H"/>
                                     <constraint firstItem="BU0-lv-Dei" firstAttribute="leading" secondItem="UAC-3N-WvO" secondAttribute="leading" id="Vh3-AI-nBI"/>
                                 </constraints>
