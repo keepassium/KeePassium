@@ -46,7 +46,7 @@ class DatabaseCreatorVC: UIViewController {
     @IBOutlet weak var keyFileField: ValidatingTextField!
     @IBOutlet weak var hardwareKeyField: ValidatingTextField!
     @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet var errorMessagePanel: UIView!
+    @IBOutlet weak var errorMessagePanel: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!

@@ -148,14 +148,22 @@ extension DatabaseKeyChangerCoordinator: DatabaseKeyChangerDelegate {
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseKeyChangerVC
     ) {
-        showKeyFilePicker(at: popoverAnchor)
+        router.dismissModals(animated: false, completion: { [weak self] in
+            self?.showKeyFilePicker(at: popoverAnchor)
+        })
     }
     
     func didPressSelectHardwareKey(
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseKeyChangerVC
     ) {
-        showHardwareKeyPicker(at: popoverAnchor)
+        router.dismissModals(animated: false, completion: { [weak self] in
+            self?.showHardwareKeyPicker(at: popoverAnchor)
+        })
+    }
+    
+    func shouldDismissPopovers(in viewController: DatabaseKeyChangerVC) {
+        router.dismissModals(animated: false, completion: nil)
     }
     
     func didPressSaveChanges(in viewController: DatabaseKeyChangerVC) {

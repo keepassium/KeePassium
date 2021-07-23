@@ -12,18 +12,20 @@ protocol DatabaseKeyChangerDelegate: AnyObject {
     func didPressSelectKeyFile(at popoverAnchor: PopoverAnchor, in viewController: DatabaseKeyChangerVC)
     func didPressSelectHardwareKey(at popoverAnchor: PopoverAnchor, in viewController: DatabaseKeyChangerVC)
     func didPressSaveChanges(in viewController: DatabaseKeyChangerVC)
+    func shouldDismissPopovers(in viewController: DatabaseKeyChangerVC)
 }
 
 final class DatabaseKeyChangerVC: UIViewController {
    
-    @IBOutlet private weak var keyboardAdjView: UIView!
     @IBOutlet private weak var databaseNameLabel: UILabel!
     @IBOutlet private weak var databaseIcon: UIImageView!
+    @IBOutlet private weak var inputPanel: UIView!
     @IBOutlet private weak var passwordField: ValidatingTextField!
     @IBOutlet private weak var repeatPasswordField: ValidatingTextField!
-    @IBOutlet private weak var keyFileField: KeyFileTextField!
+    @IBOutlet private weak var keyFileField: ValidatingTextField!
+    @IBOutlet private weak var hardwareKeyField: ValidatingTextField!
     @IBOutlet private weak var passwordMismatchImage: UIImageView!
-    @IBOutlet private weak var keyboardAdjConstraint: KeyboardLayoutConstraint!
+    @IBOutlet private weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     
     weak var delegate: DatabaseKeyChangerDelegate?
     
@@ -47,26 +49,21 @@ final class DatabaseKeyChangerVC: UIViewController {
         passwordField.invalidBackgroundColor = nil
         repeatPasswordField.invalidBackgroundColor = nil
         keyFileField.invalidBackgroundColor = nil
+        hardwareKeyField.invalidBackgroundColor = nil
         passwordField.delegate = self
         passwordField.validityDelegate = self
         repeatPasswordField.delegate = self
         repeatPasswordField.validityDelegate = self
         keyFileField.delegate = self
         keyFileField.validityDelegate = self
-        setupHardwareKeyPicker()
+        hardwareKeyField.delegate = self
+        hardwareKeyField.validityDelegate = self
+        hardwareKeyField.placeholder = LString.noHardwareKey
         
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
         
         navigationItem.rightBarButtonItem?.isEnabled = false
-    }
-    
-    private func setupHardwareKeyPicker() {
-        keyFileField.yubikeyHandler = {
-            [weak self] (field, popoverAnchor) in
-            guard let self = self else { return }
-            self.delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,8 +74,7 @@ final class DatabaseKeyChangerVC: UIViewController {
     }
     
     func refresh() {
-        let allValid = passwordField.isValid && repeatPasswordField.isValid && keyFileField.isValid
-        navigationItem.rightBarButtonItem?.isEnabled = allValid
+        navigationItem.rightBarButtonItem?.isEnabled = areAllFieldsValid()
     }
     
     override func viewDidLayoutSubviews() {
@@ -94,7 +90,7 @@ final class DatabaseKeyChangerVC: UIViewController {
             let viewHeight = view.frame.height
             let windowHeight = window.frame.height
             let viewBottomOffset = windowHeight - (viewTop + viewHeight)
-            keyboardAdjConstraint.viewOffset = viewBottomOffset
+            keyboardLayoutConstraint.viewOffset = viewBottomOffset
         }
     }
     
@@ -118,57 +114,21 @@ final class DatabaseKeyChangerVC: UIViewController {
     
     func setYubiKey(_ yubiKey: YubiKey?) {
         self.yubiKey = yubiKey
-        keyFileField.isYubiKeyActive = (yubiKey != nil)
 
-        if let _yubiKey = yubiKey {
-            Diag.info("Hardware key selected [key: \(_yubiKey)]")
+        if let yubiKey = yubiKey {
+            hardwareKeyField.text = YubiKey.getTitle(for: yubiKey)
+            Diag.info("Hardware key selected [key: \(yubiKey)]")
         } else {
+            hardwareKeyField.text = "" // use "No Hardware Key" placeholder
             Diag.info("No hardware key selected")
         }
         refresh()
     }
     
     
-    @IBAction func didPressSaveChanges(_ sender: Any) {
-        delegate?.didPressSaveChanges(in: self)
-    }
-}
-
-extension DatabaseKeyChangerVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    private func isFieldValid(_ textField: UITextField) -> Bool {
         switch textField {
-        case passwordField:
-            repeatPasswordField.becomeFirstResponder()
-        case repeatPasswordField:
-            if repeatPasswordField.isValid {
-                didPressSaveChanges(self)
-            } else {
-                repeatPasswordField.shake()
-                passwordMismatchImage.shake()
-            }
-        default:
-            break
-        }
-        return true
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField === keyFileField {
-            passwordField.becomeFirstResponder()
-            let popoverAnchor = PopoverAnchor(sourceView: keyFileField, sourceRect: keyFileField.bounds)
-            delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
-        }
-    }
-}
-
-extension DatabaseKeyChangerVC: ValidatingTextFieldDelegate {
-    func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
-        switch sender {
-        case passwordField, keyFileField:
+        case passwordField, keyFileField, hardwareKeyField:
             let gotPassword = passwordField.text?.isNotEmpty ?? false
             let gotKeyFile = keyFileRef != nil
             let gotYubiKey = yubiKey != nil
@@ -182,6 +142,106 @@ extension DatabaseKeyChangerVC: ValidatingTextFieldDelegate {
         default:
             return true
         }
+    }
+    
+    private func areAllFieldsValid() -> Bool {
+        let result = passwordField.isValid &&
+            repeatPasswordField.isValid &&
+            keyFileField.isValid &&
+            hardwareKeyField.isValid
+        return result
+    }
+    
+    private func shakeInvalidInputs() {
+        if areAllFieldsValid() {
+            assertionFailure("Everything is ok, why are we here?")
+            return
+        }
+        
+        if !repeatPasswordField.isValid { 
+            repeatPasswordField.shake()
+            passwordMismatchImage.shake()
+        } else { 
+            inputPanel.shake()
+            passwordMismatchImage.shake()
+        }
+    }
+        
+    
+    @IBAction func didPressSaveChanges(_ sender: Any) {
+        guard areAllFieldsValid() else {
+            Diag.warning("Not all fields are valid, cannot save")
+            return
+        }
+        delegate?.didPressSaveChanges(in: self)
+    }
+}
+
+extension DatabaseKeyChangerVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case passwordField:
+            repeatPasswordField.becomeFirstResponder()
+        case repeatPasswordField:
+            if areAllFieldsValid() {
+                didPressSaveChanges(self)
+            } else {
+                shakeInvalidInputs()
+            }
+        default:
+            break
+        }
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        guard UIDevice.current.userInterfaceIdiom == .phone else {
+            return true
+        }
+        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+        switch textField {
+        case keyFileField:
+            delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
+            return false 
+        case hardwareKeyField:
+            delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
+            return false 
+        default:
+            break
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        guard UIDevice.current.userInterfaceIdiom != .phone else {
+            return
+        }
+        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+        switch textField {
+        case keyFileField:
+            delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
+        case hardwareKeyField:
+            delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
+        default:
+            delegate?.shouldDismissPopovers(in: self)
+        }
+    }
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        if textField === keyFileField || textField === hardwareKeyField {
+            return false
+        }
+        return true
+    }
+}
+
+extension DatabaseKeyChangerVC: ValidatingTextFieldDelegate {
+    func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
+        return isFieldValid(sender)
     }
     
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
