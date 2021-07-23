@@ -19,6 +19,7 @@ protocol DatabaseCreatorDelegate: AnyObject {
     func didPressPickHardwareKey(
         in databaseCreatorVC: DatabaseCreatorVC,
         at popoverAnchor: PopoverAnchor)
+    func shouldDismissPopovers(in databaseCreatorVC: DatabaseCreatorVC)
 }
 
 class DatabaseCreatorVC: UIViewController {
@@ -32,7 +33,11 @@ class DatabaseCreatorVC: UIViewController {
     }
     public var yubiKey: YubiKey? {
         didSet {
-            hardwareKeyField.text = yubiKey?.description
+            if yubiKey != nil {
+                hardwareKeyField.text = YubiKey.getTitle(for: yubiKey)
+            } else {
+                hardwareKeyField.text = nil // use the "No Hardware Key" placeholder
+            }
         }
     }
 
@@ -202,16 +207,40 @@ extension DatabaseCreatorVC: ValidatingTextFieldDelegate {
 }
 
 extension DatabaseCreatorVC: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        guard UIDevice.current.userInterfaceIdiom == .phone else {
+            return true
+        }
         let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
-        if textField === keyFileField {
-            passwordField.becomeFirstResponder()
+        switch textField {
+        case keyFileField:
             hideErrorMessage(animated: true)
             delegate?.didPressPickKeyFile(in: self, at: popoverAnchor)
-        } else if textField === hardwareKeyField {
-            passwordField.becomeFirstResponder()
+            return false 
+        case hardwareKeyField:
             hideErrorMessage(animated: true)
             delegate?.didPressPickHardwareKey(in: self, at: popoverAnchor)
+            return false 
+        default:
+            break
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        guard UIDevice.current.userInterfaceIdiom != .phone else {
+            return
+        }
+        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+        switch textField {
+        case keyFileField:
+            hideErrorMessage(animated: true)
+            delegate?.didPressPickKeyFile(in: self, at: popoverAnchor)
+        case hardwareKeyField:
+            hideErrorMessage(animated: true)
+            delegate?.didPressPickHardwareKey(in: self, at: popoverAnchor)
+        default:
+            delegate?.shouldDismissPopovers(in: self)
         }
     }
     

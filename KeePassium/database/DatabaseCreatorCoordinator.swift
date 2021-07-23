@@ -278,26 +278,46 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
     }
     
     func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, at popoverAnchor: PopoverAnchor) {
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
-        addChildCoordinator(keyFilePickerCoordinator)
-        keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
-        keyFilePickerCoordinator.delegate = self
-        keyFilePickerCoordinator.start()
-        router.present(modalRouter, animated: true, completion: nil)
+        router.dismissModals(animated: false, completion: { [weak self] in
+            self?.showKeyFilePicker(at: popoverAnchor)
+        })
     }
     
     func didPressPickHardwareKey(
         in databaseCreatorVC: DatabaseCreatorVC,
         at popoverAnchor: PopoverAnchor)
     {
-        showHardwareKeyPicker(at: popoverAnchor)
+        router.dismissModals(animated: false, completion: { [weak self] in
+            self?.showHardwareKeyPicker(at: popoverAnchor)
+        })
+    }
+    
+    func shouldDismissPopovers(in databaseCreatorVC: DatabaseCreatorVC) {
+        router.dismissModals(animated: false, completion: nil)
     }
 }
 
 extension DatabaseCreatorCoordinator: KeyFilePickerCoordinatorDelegate {
+    private func showKeyFilePicker(at popoverAnchor: PopoverAnchor) {
+        let isAlreadyShown = childCoordinators.contains(where: { $0 is KeyFilePickerCoordinator })
+        guard !isAlreadyShown else {
+            assertionFailure()
+            Diag.warning("Key file picker is already shown")
+            return
+        }
+        
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
+        keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        keyFilePickerCoordinator.delegate = self
+        keyFilePickerCoordinator.start()
+        router.present(modalRouter, animated: true, completion: nil)
+
+        addChildCoordinator(keyFilePickerCoordinator)
+    }
+    
     func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
         setKeyFile(keyFile)
     }
