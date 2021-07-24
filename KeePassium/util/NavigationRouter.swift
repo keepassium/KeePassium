@@ -86,10 +86,11 @@ public class NavigationRouter: NSObject {
     }
     
     public func dismissModals(animated: Bool, completion: (()->())?) {
-        guard navigationController.presentedViewController != nil else {
+        guard let presentedVC = navigationController.presentedViewController else {
+            completion?()
             return
         }
-        navigationController.dismiss(animated: animated, completion: completion)
+        presentedVC.dismiss(animated: animated, completion: completion)
     }
     
     public func present(_ router: NavigationRouter, animated: Bool, completion: (()->Void)?) {
