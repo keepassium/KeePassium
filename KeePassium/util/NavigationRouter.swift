@@ -157,8 +157,10 @@ final public class NavigationRouter: NSObject {
     public func pop(animated: Bool, completion: (()->Void)? = nil) {
         let isLastVC = (navigationController.viewControllers.count == 1)
         if isLastVC {
-            navigationController.dismiss(animated: animated, completion: completion)
-            firePopHandler(for: navigationController.topViewController!) 
+            navigationController.dismiss(animated: animated, completion: { [self, completion] in
+                self.firePopHandler(for: navigationController.topViewController!) 
+                completion?()
+            })
         } else {
             navigationController.popViewController(animated: animated, completion: completion)
         }
