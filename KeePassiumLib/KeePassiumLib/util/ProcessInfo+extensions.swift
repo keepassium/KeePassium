@@ -23,6 +23,6 @@ extension ProcessInfo {
         guard #available(iOS 13, *) else {
             return false
         }
-        return ProcessInfo.processInfo.isMacCatalystApp
+        return ProcessInfo.processInfo.isMacCatalystApp && !isiPadAppOnMac
     }
 }
