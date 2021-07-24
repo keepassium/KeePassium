@@ -134,10 +134,6 @@
 		754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
 		754BF08A2082A6BD00E3A292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */; };
-		754D7C09238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
-		754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
-		754D7C0B238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
-		754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C08238C2135005652E1 /* KeyFileTextField.swift */; };
 		754D7C1C238C3553005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
 		754D7C1D238C355B005652E1 /* libYubiKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754D7C18238C2C0E005652E1 /* libYubiKit.a */; };
 		754E40862630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
@@ -1270,7 +1266,6 @@
 		754BF0892082A6BD00E3A292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		754BF08C2082A6BD00E3A292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		754BF08E2082A6BD00E3A292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		754D7C08238C2135005652E1 /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
 		754D7C18238C2C0E005652E1 /* libYubiKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYubiKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		754D7C1E238C384A005652E1 /* KeePassium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeePassium-Bridging-Header.h"; sourceTree = "<group>"; };
 		754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -2473,7 +2468,6 @@
 				7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */,
 				7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */,
 				7573FD8A2321664F00DCDA5A /* MultilineButton.swift */,
-				754D7C08238C2135005652E1 /* KeyFileTextField.swift */,
 				757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */,
 				757ADC4E23A5180600D708D2 /* DismissablePopover.swift */,
 				75BFB13E2481553D0017B980 /* DynamicFileList.swift */,
@@ -3130,7 +3124,6 @@
 				75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				758D272426867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				750E159C269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */,
-				754D7C0A238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
 				75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */,
@@ -3250,7 +3243,6 @@
 				757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */,
 				750E15A2269C4DE50040D599 /* SettingsItemListCoordinator.swift in Sources */,
-				754D7C09238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				75D1674A21464333005E33C3 /* AboutVC.swift in Sources */,
 				754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */,
 				750C683220D767F6001A6AA0 /* EntryFieldEditorVC.swift in Sources */,
@@ -3418,7 +3410,6 @@
 				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
 				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */,
-				754D7C0B238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				750E15A4269C4DE50040D599 /* SettingsItemListCoordinator.swift in Sources */,
 				75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */,
 				75B38C1A233E5B7C006BDEFC /* EntryFieldEditorVC.swift in Sources */,
@@ -3565,7 +3556,6 @@
 				75F0BE5626A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				758D272526867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				750E159E269C3B4D0040D599 /* SettingsFileSortingCoordinator.swift in Sources */,
-				754D7C0C238C2135005652E1 /* KeyFileTextField.swift in Sources */,
 				756F365926112A3B005A35DA /* FileDestructionHelper.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
 				75BFB1422481553D0017B980 /* DynamicFileList.swift in Sources */,
