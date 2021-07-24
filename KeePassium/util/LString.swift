@@ -262,6 +262,22 @@ public enum LString {
         comment: "Suggestion/hint for available user action"
     )
 
+    public static let fieldRepeatPassword = NSLocalizedString(
+        "[Repeat Password/Field/title]",
+        value: "Repeat Password",
+        comment: "Name of an input field for entering the password again"
+    )
+    public static let fieldKeyFile = NSLocalizedString(
+        "[KeyFile/Field/title]",
+        value: "Key File",
+        comment: "Name of an input field which shows selected key file"
+    )
+    public static let fieldHardwareKey = NSLocalizedString(
+        "[HardwareKey/Field/title]",
+        value: "Hardware Key",
+        comment: "Name of an input field which shows selected hardware key"
+    )
+    
     public static let databaseStatusLoading = NSLocalizedString(
         "[Database/Loading/Status] Loading...",
         value: "Loading...",

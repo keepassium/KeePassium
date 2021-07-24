@@ -40,7 +40,7 @@ final class DatabaseKeyChangerVC: UIViewController {
         return vc
     }
 
-   override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         databaseNameLabel.text = databaseRef.visibleFileName
@@ -58,7 +58,13 @@ final class DatabaseKeyChangerVC: UIViewController {
         keyFileField.validityDelegate = self
         hardwareKeyField.delegate = self
         hardwareKeyField.validityDelegate = self
+
         hardwareKeyField.placeholder = LString.noHardwareKey
+
+        passwordField.accessibilityLabel = LString.fieldPassword
+        repeatPasswordField.accessibilityLabel = LString.fieldRepeatPassword
+        keyFileField.accessibilityLabel = LString.fieldKeyFile
+        hardwareKeyField.accessibilityLabel = LString.fieldHardwareKey
         
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false

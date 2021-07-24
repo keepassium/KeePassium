@@ -76,7 +76,12 @@ class DatabaseCreatorVC: UIViewController {
         passwordField.delegate = self
         keyFileField.delegate = self
         hardwareKeyField.delegate = self
+        
         hardwareKeyField.placeholder = LString.noHardwareKey
+        
+        passwordField.accessibilityLabel = LString.fieldPassword
+        keyFileField.accessibilityLabel = LString.fieldKeyFile
+        hardwareKeyField.accessibilityLabel = LString.fieldHardwareKey
         
         passwordField.becomeFirstResponder()
     }
