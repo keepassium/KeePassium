@@ -307,10 +307,14 @@ public class DatabaseManager {
                 
                 do {
                     self.databaseRef = try URLReference(from: databaseURL, location: .internalInbox)
-                    successHandler()
+                    DispatchQueue.main.async {
+                        successHandler()
+                    }
                 } catch {
                     Diag.error("Failed to create reference to temporary DB file [message: \(error.localizedDescription)]")
-                    errorHandler(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        errorHandler(error.localizedDescription)
+                    }
                 }
             },
             error: { 
@@ -318,7 +322,9 @@ public class DatabaseManager {
                 assert(self.databaseRef == nil)
                 self.abortDatabaseCreation()
                 Diag.error("Error creating composite key for a new database [message: \(message)]")
-                errorHandler(message)
+                DispatchQueue.main.async {
+                    errorHandler(message)
+                }
             }
         )
     }
