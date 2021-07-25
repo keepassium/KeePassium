@@ -65,6 +65,29 @@ final class SettingsAppearanceVC: UITableViewController {
     
     override func tableView(
         _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath)
+    {
+        if indexPath.section == 0,
+           indexPath.row == 0
+        {
+            cell.isHidden = !UIApplication.shared.supportsAlternateIcons
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0,
+           indexPath.row == 0,
+           !UIApplication.shared.supportsAlternateIcons
+        {
+            return 0 
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+    
+    
+    override func tableView(
+        _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath)
     {
         guard let cell = tableView.cellForRow(at: indexPath) else {
