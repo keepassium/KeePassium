@@ -328,7 +328,9 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     }
 
     private func showAppSettings(at popoverAnchor: PopoverAnchor, in viewController: UIViewController) {
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let modalRouter = NavigationRouter.createModal(
+            style: ProcessInfo.isRunningOnMac ? .formSheet : .popover,
+            at: popoverAnchor)
         let settingsCoordinator = SettingsCoordinator(router: modalRouter)
         settingsCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
