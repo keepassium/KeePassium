@@ -16,27 +16,15 @@ public enum FileKeeperError: LocalizedError {
         switch self {
         case .openError(let reason):
             return String.localizedStringWithFormat(
-                NSLocalizedString(
-                    "[FileKeeper] Failed to open file. Reason: %@",
-                    bundle: Bundle.framework,
-                    value: "Failed to open file. Reason: %@",
-                    comment: "Error message [reason: String]"),
+                LString.Error.failedToOpenFileReasonTemplate,
                 reason)
         case .importError(let reason):
             return String.localizedStringWithFormat(
-                NSLocalizedString(
-                    "[FileKeeper] Failed to import file. Reason: %@",
-                    bundle: Bundle.framework,
-                    value: "Failed to import file. Reason: %@",
-                    comment: "Error message [reason: String]"),
+                LString.Error.failedToImportFileReasonTemplate,
                 reason)
         case .removalError(let reason):
             return String.localizedStringWithFormat(
-                NSLocalizedString(
-                    "[FileKeeper] Failed to delete file. Reason: %@",
-                    bundle: Bundle.framework,
-                    value: "Failed to delete file. Reason: %@",
-                    comment: "Error message [reason: String]"),
+                LString.Error.failedToDeleteFileReasonTemplate,
                 reason)
         }
     }
@@ -423,11 +411,7 @@ public class FileKeeper {
         }
         guard sourceURL.isFileURL else {
             Diag.error("Tried to import a non-file URL: \(sourceURL.redacted)")
-            let messageNotAFileURL = NSLocalizedString(
-                "[FileKeeper] Not a file URL",
-                bundle: Bundle.framework,
-                value: "Not a file URL",
-                comment: "Error message: tried to import URL which does not point to a file")
+            let messageNotAFileURL = LString.Error.notAFileURL
             switch openMode {
             case .import:
                 let importError = FileKeeperError.importError(reason: messageNotAFileURL)

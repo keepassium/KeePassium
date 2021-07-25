@@ -51,6 +51,26 @@ internal enum LString {
             bundle: Bundle.framework,
             value: "Please provide at least a password or a key file",
             comment: "Error shown when both master password and key file are empty")
+        public static let failedToOpenFileReasonTemplate = NSLocalizedString(
+            "[FileKeeper] Failed to open file. Reason: %@",
+            bundle: Bundle.framework,
+            value: "Failed to open file. Reason: %@",
+            comment: "Error message [reason: String]")
+        public static let failedToImportFileReasonTemplate = NSLocalizedString(
+            "[FileKeeper] Failed to import file. Reason: %@",
+            bundle: Bundle.framework,
+            value: "Failed to import file. Reason: %@",
+            comment: "Error message [reason: String]")
+        public static let failedToDeleteFileReasonTemplate = NSLocalizedString(
+            "[FileKeeper] Failed to delete file. Reason: %@",
+            bundle: Bundle.framework,
+            value: "Failed to delete file. Reason: %@",
+            comment: "Error message [reason: String]")
+        public static let notAFileURL = NSLocalizedString(
+            "[FileKeeper] Not a file URL",
+            bundle: Bundle.framework,
+            value: "Not a file URL",
+            comment: "Error message: tried to import URL which does not point to a file")
     }
     
     
