@@ -8,9 +8,9 @@
 
 import Foundation
 
-internal enum LString {
+public enum LString {
         
-    enum Error {
+    public enum Error {
         public static let passwordAndKeyFileAreBothEmpty = NSLocalizedString(
             "[Database/Unlock/Error] Password and key file are both empty.",
             bundle: Bundle.framework,

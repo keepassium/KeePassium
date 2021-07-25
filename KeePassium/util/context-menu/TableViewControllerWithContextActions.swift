@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
+import KeePassiumLib
 
 class TableViewControllerWithContextActions: UITableViewController {
     

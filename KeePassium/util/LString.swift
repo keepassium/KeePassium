@@ -6,9 +6,9 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
+import KeePassiumLib
 
-public enum LString {
+extension LString {
 
     public static let actionOK = NSLocalizedString(
         "[Generic] OK",
