@@ -164,7 +164,7 @@ public class FileKeeper {
     }
     
     private static func storeURL(_ url: URL, location: URLReference.Location, key: String) {
-        URLReference.create(for: url, location: .internalDocuments) { result in
+        URLReference.create(for: url, location: location) { result in
             switch result {
             case .success(let urlRef):
                 let data = urlRef.serialize()
