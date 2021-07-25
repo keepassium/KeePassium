@@ -9,8 +9,8 @@
 import KeePassiumLib
 
 protocol KeyFilePickerCoordinatorDelegate: AnyObject {
-    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?)
-    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference)
+    func didPickKeyFile(_ keyFile: URLReference?, in coordinator: KeyFilePickerCoordinator)
+    func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator)
 }
 
 class KeyFilePickerCoordinator: NSObject, Coordinator {
@@ -21,6 +21,7 @@ class KeyFilePickerCoordinator: NSObject, Coordinator {
     
     private var router: NavigationRouter
     private var keyFilePickerVC: KeyFilePickerVC
+    private var documentPickerShouldAdd = true
     
     init(router: NavigationRouter) {
         self.router = router
@@ -62,40 +63,50 @@ class KeyFilePickerCoordinator: NSObject, Coordinator {
 }
 
 extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
-    func didPressAddKeyFile(in keyFilePicker: KeyFilePickerVC, at popoverAnchor: PopoverAnchor) {
+    func didPressAddKeyFile(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
         let picker = UIDocumentPickerViewController(documentTypes: FileType.keyFileUTIs, in: .open)
+        documentPickerShouldAdd = true
         picker.delegate = self
         picker.modalPresentationStyle = .pageSheet
         popoverAnchor.apply(to: picker.popoverPresentationController)
         router.present(picker, animated: true, completion: nil)
     }
     
-    func didSelectFile(in keyFilePicker: KeyFilePickerVC, selectedFile: URLReference?) {
-        delegate?.didPickKeyFile(in: self, keyFile: selectedFile)
+    func didPressBrowse(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
+        let picker = UIDocumentPickerViewController(documentTypes: FileType.keyFileUTIs, in: .open)
+        documentPickerShouldAdd = false
+        picker.delegate = self
+        picker.modalPresentationStyle = .pageSheet
+        popoverAnchor.apply(to: picker.popoverPresentationController)
+        router.present(picker, animated: true, completion: nil)
+    }
+    
+    func didSelectFile(_ selectedFile: URLReference?, in keyFilePicker: KeyFilePickerVC) {
+        delegate?.didPickKeyFile(selectedFile, in: self)
         router.dismiss(animated: true)
     }
     
     func didPressFileInfo(
-        in keyFilePicker: KeyFilePickerVC,
         for keyFile: URLReference,
-        at popoverAnchor: PopoverAnchor)
-    {
+        at popoverAnchor: PopoverAnchor,
+        in keyFilePicker: KeyFilePickerVC
+    ) {
         let fileInfoVC = FileInfoVC.make(urlRef: keyFile, fileType: .keyFile, at: popoverAnchor)
         fileInfoVC.canExport = false
         fileInfoVC.didDeleteCallback = { [weak self, weak fileInfoVC] in
             guard let self = self else { return }
             fileInfoVC?.dismiss(animated: true, completion: nil)
             self.keyFilePickerVC.refresh()
-            self.delegate?.didRemoveOrDeleteKeyFile(in: self, keyFile: keyFile)
+            self.delegate?.didEliminateKeyFile(keyFile, in: self)
         }
         router.present(fileInfoVC, animated: true, completion: nil)
     }
     
-    func didPressRemoveOrDeleteFile(
-        in keyFilePicker: KeyFilePickerVC,
+    func didPressEliminate(
         keyFile: URLReference,
-        at popoverAnchor: PopoverAnchor)
-    {
+        at popoverAnchor: PopoverAnchor,
+        in keyFilePicker: KeyFilePickerVC
+    ) {
         Diag.debug("Will remove or delete key file")
         FileDestructionHelper.destroyFile(
             keyFile,
@@ -107,7 +118,7 @@ extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
                 guard let self = self else { return }
                 self.keyFilePickerVC.refresh()
                 if success {
-                    self.delegate?.didRemoveOrDeleteKeyFile(in: self, keyFile: keyFile)
+                    self.delegate?.didEliminateKeyFile(keyFile, in: self)
                 }
             }
         )
@@ -115,18 +126,22 @@ extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
 }
 
 extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+    func documentPicker(
+        _ controller: UIDocumentPickerViewController,
+        didPickDocumentsAt urls: [URL]
+    ) {
         guard let url = urls.first else { return }
-        addKeyFile(url: url)
+        
+        if documentPickerShouldAdd {
+            addKeyFile(url: url)
+        } else {
+            returnFileReference(for: url)
+        }
     }
     
     private func addKeyFile(url: URL) {
-        if FileType.isDatabaseFile(url: url) {
-            let warningAlert = UIAlertController.make(
-                title: LString.titleWarning,
-                message: LString.dontUseDatabaseAsKeyFile,
-                dismissButtonTitle: LString.actionOK)
-            keyFilePickerVC.present(warningAlert, animated: true)
+        guard !FileType.isDatabaseFile(url: url) else {
+            showDatabaseAsKeyFileWarning()
             return
         }
         
@@ -143,5 +158,38 @@ extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
                 self?.keyFilePickerVC.showErrorAlert(fileKeeperError)
             }
         )
+    }
+    
+    private func returnFileReference(for url: URL) {
+        guard !FileType.isDatabaseFile(url: url) else {
+            showDatabaseAsKeyFileWarning()
+            return
+        }
+
+        let location = FileKeeper.shared.getLocation(for: url)
+        keyFilePickerVC.setBusyIndicatorVisible(true)
+        URLReference.create(for: url, location: location) { [weak self] result in
+            guard let self = self else { return }
+            self.keyFilePickerVC.setBusyIndicatorVisible(false)
+            switch result {
+            case .success(let fileRef):
+                self.delegate?.didPickKeyFile(fileRef, in: self)
+                self.router.dismiss(animated: true)
+            case .failure(let fileAccessError):
+                let message = String.localizedStringWithFormat(
+                    LString.Error.failedToOpenFileReasonTemplate,
+                    fileAccessError.localizedDescription)
+                Diag.error(message)
+                self.keyFilePickerVC.showErrorAlert(message)
+            }
+        }
+    }
+    
+    private func showDatabaseAsKeyFileWarning() {
+        let warningAlert = UIAlertController.make(
+            title: LString.titleWarning,
+            message: LString.dontUseDatabaseAsKeyFile,
+            dismissButtonTitle: LString.actionOK)
+        keyFilePickerVC.present(warningAlert, animated: true)
     }
 }

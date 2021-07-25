@@ -9,22 +9,28 @@
 import KeePassiumLib
 
 protocol KeyFilePickerDelegate: AnyObject {
-    func didPressAddKeyFile(in keyFilePicker: KeyFilePickerVC, at popoverAnchor: PopoverAnchor)
-    func didSelectFile(in keyFilePicker: KeyFilePickerVC, selectedFile: URLReference?)
-    func didPressRemoveOrDeleteFile(
-        in keyFilePicker: KeyFilePickerVC,
+    func didPressAddKeyFile(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC)
+    func didSelectFile(_ selectedFile: URLReference?, in keyFilePicker: KeyFilePickerVC)
+    func didPressEliminate(
         keyFile: URLReference,
-        at popoverAnchor: PopoverAnchor)
+        at popoverAnchor: PopoverAnchor,
+        in keyFilePicker: KeyFilePickerVC)
     func didPressFileInfo(
-        in keyFilePicker: KeyFilePickerVC,
         for keyFile: URLReference,
-        at popoverAnchor: PopoverAnchor)
+        at popoverAnchor: PopoverAnchor,
+        in keyFilePicker: KeyFilePickerVC)
+    func didPressBrowse(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC)
 }
 
-class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable {
+final class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable {
     private enum CellID {
         static let noKeyFile = "NoKeyFileCell"
         static let keyFile = "KeyFileCell"
+        static let browseKeyFile = "BrowseKeyFileCell"
+    }
+    private enum Section: Int {
+        case fixedOptions = 0
+        case knownFiles = 1
     }
 
     @IBOutlet weak var addKeyFileBarButton: UIBarButtonItem!
@@ -126,34 +132,75 @@ class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable {
         tableView.reloadData()
     }
     
+    
+    func setBusyIndicatorVisible(_ visible: Bool) {
+        if visible {
+            view.makeToastActivity(.center)
+        } else {
+            view.hideToastActivity()
+        }
+    }
+    
 
+    private func getFileForRow(at indexPath: IndexPath) -> URLReference? {
+        switch Section(rawValue: indexPath.section)! {
+        case .fixedOptions:
+            return nil
+        case .knownFiles:
+            guard indexPath.row < keyFileRefs.count else {
+                return nil
+            }
+            return keyFileRefs[indexPath.row]
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if keyFileRefs.isEmpty {
+            return 1
+        } else {
+            return 2
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return keyFileRefs.count + 1
+        switch Section(rawValue: section)! {
+        case .fixedOptions:
+            return 2
+        case .knownFiles:
+            return keyFileRefs.count
+        }
     }
 
-    private func getFileForRow(at indexPath: IndexPath) -> URLReference? {
-        guard indexPath.row > 0 else {
-            return nil
-        }
-        return keyFileRefs[indexPath.row - 1]
-    }
-    
     override func tableView(
         _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath)
-        -> UITableViewCell
-    {
-        guard let keyFileRef = getFileForRow(at: indexPath) else {
-            let cell = tableView.dequeueReusableCell(
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        switch Section(rawValue: indexPath.section)! {
+        case .fixedOptions:
+            return makeFixedOptionsCell(at: indexPath)
+        case .knownFiles:
+            return makeKeyFileCell(at: indexPath)
+        }
+    }
+    
+    private func makeFixedOptionsCell(at indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            return tableView.dequeueReusableCell(
                 withIdentifier: CellID.noKeyFile,
                 for: indexPath)
-            return cell
+        case 1:
+            return tableView.dequeueReusableCell(
+                withIdentifier: CellID.browseKeyFile,
+                for: indexPath)
+        default:
+            assertionFailure("No such cell")
+            return UITableViewCell()
         }
-
+    }
+    
+    private func makeKeyFileCell(at indexPath: IndexPath) -> UITableViewCell {
+        let keyFileRef = keyFileRefs[indexPath.row]
         let cell = FileListCellFactory.dequeueReusableCell(
             from: tableView,
             withIdentifier: CellID.keyFile,
@@ -175,33 +222,52 @@ class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable {
     
     override func tableView(
         _ tableView: UITableView,
-        accessoryButtonTappedForRowWith indexPath: IndexPath)
-    {
-        guard let fileRef = getFileForRow(at: indexPath) else {
-            assertionFailure("Accessory tapped for non-file cell")
-            return
+        accessoryButtonTappedForRowWith indexPath: IndexPath
+    ) {
+        switch Section(rawValue: indexPath.section)! {
+        case .fixedOptions:
+            assertionFailure("There's no accessory button setup")
+        case .knownFiles:
+            let fileRef = keyFileRefs[indexPath.row]
+            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            delegate?.didPressFileInfo(for: fileRef, at: popoverAnchor, in: self)
         }
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        delegate?.didPressFileInfo(in: self, for: fileRef, at: popoverAnchor)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let fileRef = getFileForRow(at: indexPath)
-        delegate?.didSelectFile(in: self, selectedFile: fileRef)
+        switch (Section(rawValue: indexPath.section)!, indexPath.row) {
+        case (.fixedOptions, 0):
+            delegate?.didSelectFile(nil, in: self)
+        case (.fixedOptions, 1):
+            tableView.deselectRow(at: indexPath, animated: true)
+            didPressBrowseKeyFile()
+        case (.knownFiles, _):
+            let fileRef = getFileForRow(at: indexPath)
+            delegate?.didSelectFile(fileRef, in: self)
+        default:
+            assertionFailure("Unexpected row selected")
+        }
     }
     
     @IBAction func didPressAddKeyFile(_ sender: Any) {
         let popoverAnchor = PopoverAnchor(barButtonItem: addKeyFileBarButton)
-        delegate?.didPressAddKeyFile(in: self, at: popoverAnchor)
+        delegate?.didPressAddKeyFile(at: popoverAnchor, in: self)
     }
     
-    func didPressRemoveOrDeleteKeyFile(at indexPath: IndexPath) {
+    private func didPressBrowseKeyFile() {
+        let popoverAnchor = PopoverAnchor(
+            tableView: tableView,
+            at: IndexPath(row: 1, section: Section.fixedOptions.rawValue))
+        delegate?.didPressBrowse(at: popoverAnchor, in: self)
+    }
+    
+    func didPressEliminateFile(at indexPath: IndexPath) {
         guard let fileRef = getFileForRow(at: indexPath) else {
             assertionFailure()
             return
         }
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        delegate?.didPressRemoveOrDeleteFile(in: self, keyFile: fileRef, at: popoverAnchor)
+        delegate?.didPressEliminate(keyFile: fileRef, at: popoverAnchor, in: self)
     }
     
     override func getContextActionsForRow(
@@ -221,10 +287,10 @@ class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable {
             handler: { [weak self] in
                 guard let self = self else { return }
                 let popoverAnchor = PopoverAnchor(tableView: self.tableView, at: indexPath)
-                self.delegate?.didPressRemoveOrDeleteFile(
-                    in: self,
+                self.delegate?.didPressEliminate(
                     keyFile: fileRef,
-                    at: popoverAnchor
+                    at: popoverAnchor,
+                    in: self
                 )
             }
         )

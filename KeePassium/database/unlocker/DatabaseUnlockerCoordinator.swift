@@ -168,8 +168,8 @@ extension DatabaseUnlockerCoordinator {
     #if AUTOFILL_EXT
     private func challengeHandlerForAutoFill(
         challenge: SecureByteArray,
-        responseHandler: @escaping ResponseHandler)
-    {
+        responseHandler: @escaping ResponseHandler
+    ) {
         Diag.warning("YubiKey is not available in AutoFill")
         responseHandler(SecureByteArray(), .notAvailableInAutoFill)
     }
@@ -284,12 +284,12 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
 }
 
 extension DatabaseUnlockerCoordinator: KeyFilePickerCoordinatorDelegate {
-    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
+    func didPickKeyFile(_ keyFile: URLReference?, in coordinator: KeyFilePickerCoordinator) {
         databaseUnlockerVC.hideErrorMessage(animated: false)
         setKeyFile(keyFile)
     }
     
-    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
+    func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator) {
         if keyFile == selectedKeyFileRef {
             databaseUnlockerVC.hideErrorMessage(animated: false)
             setKeyFile(nil)
@@ -351,7 +351,11 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         delegate?.didNotUnlockDatabase(databaseRef, with: message, reason: nil, in: self)
     }
     
-    func databaseManager(database urlRef: URLReference, loadingError message: String, reason: String?) {
+    func databaseManager(
+        database urlRef: URLReference,
+        loadingError message: String,
+        reason: String?
+    ) {
         DatabaseManager.shared.removeObserver(self)
         databaseUnlockerVC.refresh()
         databaseUnlockerVC.hideProgressView(animated: true)

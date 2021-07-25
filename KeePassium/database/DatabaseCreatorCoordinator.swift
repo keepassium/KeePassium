@@ -318,11 +318,11 @@ extension DatabaseCreatorCoordinator: KeyFilePickerCoordinatorDelegate {
         addChildCoordinator(keyFilePickerCoordinator)
     }
     
-    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
+    func didPickKeyFile(_ keyFile: URLReference?, in coordinator: KeyFilePickerCoordinator) {
         setKeyFile(keyFile)
     }
     
-    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
+    func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator) {
         if databaseCreatorVC.keyFile == keyFile {
             setKeyFile(nil)
         }

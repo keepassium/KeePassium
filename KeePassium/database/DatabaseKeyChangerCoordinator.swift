@@ -172,11 +172,11 @@ extension DatabaseKeyChangerCoordinator: DatabaseKeyChangerDelegate {
 }
 
 extension DatabaseKeyChangerCoordinator: KeyFilePickerCoordinatorDelegate {
-    func didPickKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference?) {
+    func didPickKeyFile(_ keyFile: URLReference?, in coordinator: KeyFilePickerCoordinator) {
         databaseKeyChangerVC.setKeyFile(keyFile)
     }
     
-    func didRemoveOrDeleteKeyFile(in coordinator: KeyFilePickerCoordinator, keyFile: URLReference) {
+    func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator) {
         if databaseKeyChangerVC.keyFileRef == keyFile {
             databaseKeyChangerVC.setKeyFile(nil)
         }
