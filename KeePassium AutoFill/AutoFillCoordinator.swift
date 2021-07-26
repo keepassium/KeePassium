@@ -64,7 +64,9 @@ class AutoFillCoordinator: NSObject, Coordinator {
         if !isAppLockVisible {
             rootController.showChildViewController(router.navigationController)
             if isNeedsOnboarding() {
-                presentOnboarding()
+                DispatchQueue.main.async { [weak self] in
+                    self?.presentOnboarding()
+                }
             }
         }
 
