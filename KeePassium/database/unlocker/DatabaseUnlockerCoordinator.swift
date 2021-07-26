@@ -76,6 +76,9 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
         databaseUnlockerVC.databaseRef = fileRef
         
         guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef) else {
+            setKeyFile(nil)
+            setHardwareKey(nil)
+            mayUseFinalKey = false
             refresh()
             return
         }
