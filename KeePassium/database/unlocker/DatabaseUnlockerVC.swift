@@ -50,6 +50,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             guard isViewLoaded else { return }
             hideErrorMessage(animated: false)
             refresh()
+            maybeFocusOnPassword()
         }
     }
     
