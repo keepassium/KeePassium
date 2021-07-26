@@ -120,6 +120,10 @@ class AutoFillCoordinator: NSObject, Coordinator {
 
 extension AutoFillCoordinator {
     private func isNeedsOnboarding() -> Bool {
+        if FileKeeper.canAccessAppSandbox {
+            return false
+        }
+        
         let validDatabases = FileKeeper.shared
             .getAllReferences(fileType: .database, includeBackup: false)
             .filter { !$0.hasError }

@@ -62,7 +62,7 @@ public class FileKeeper {
         }
 
         static var autoFillExtensionPrefix: String {
-            if #available(iOS 14, *) {
+            if FileKeeper.platformSupportsSharedReferences {
                 return mainAppPrefix
             }
             
@@ -79,8 +79,20 @@ public class FileKeeper {
         static let externalKeyFiles = ".external.keyFiles"
     }
     
-    public static var canAccessAppSandbox: Bool {
+    public static let platformSupportsSharedReferences: Bool = {
+        if ProcessInfo.isRunningOnMac {
+            return false 
+        }
+        
         if #available(iOS 14, *) {
+            return true
+        } else {
+            return false
+        }
+    }()
+    
+    public static var canAccessAppSandbox: Bool {
+        if platformSupportsSharedReferences {
             return true
         } else {
             return AppGroup.isMainApp
@@ -152,7 +164,7 @@ public class FileKeeper {
             )
             return dirFromFileManager
         } else {
-            if #available(iOS 14, *) {
+            if platformSupportsSharedReferences {
                 guard let docDirUrl = loadURL(key: UserDefaultsKey.documentsDirURLReference) else {
                     Diag.warning("AutoFill does not know the main app's documents directory. Launch the main app to fix this.")
                     return dirFromFileManager

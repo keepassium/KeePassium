@@ -176,7 +176,7 @@ public class URLReference:
             options = [.minimalBookmark]
         }
         
-        if #available(iOS 14, *) {
+        if FileKeeper.platformSupportsSharedReferences {
             result = try url.bookmarkData(
                 options: options,
                 includingResourceValuesForKeys: nil,
@@ -463,7 +463,7 @@ public class URLReference:
     
     
     public func resolveSync() throws -> URL {
-        if #available(iOS 14, *) {
+        if FileKeeper.platformSupportsSharedReferences {
         } else {
             if location.isInternal, let cachedURL = self.cachedURL {
                 return cachedURL
@@ -635,7 +635,7 @@ public class URLReference:
                 self.fileProvider = .localStorage
                 return
             }
-            if #available(iOS 14, *) {
+            if FileKeeper.platformSupportsSharedReferences {
                 self.fileProvider = .localStorage
             } else {
                 assertionFailure()
