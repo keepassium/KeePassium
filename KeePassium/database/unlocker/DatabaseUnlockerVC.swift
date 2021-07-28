@@ -180,15 +180,9 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     func refresh() {
         guard isViewLoaded else { return }
         
-        if let errorMessage = databaseRef.error?.localizedDescription {
-            databaseFileNameLabel.text = errorMessage
-            databaseFileNameLabel.textColor = UIColor.errorMessage
-            databaseLocationIconImage.image = nil
-        } else {
-            databaseFileNameLabel.text = databaseRef.visibleFileName
-            databaseFileNameLabel.textColor = UIColor.primaryText
-            databaseLocationIconImage.image = databaseRef.getIcon(fileType: .database)
-        }
+        databaseFileNameLabel.text = databaseRef.visibleFileName
+        databaseFileNameLabel.textColor = UIColor.primaryText
+        databaseLocationIconImage.image = databaseRef.getIcon(fileType: .database)
         refreshInputMode()
     }
     
