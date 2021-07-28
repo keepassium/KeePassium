@@ -216,14 +216,23 @@ extension DatabaseKeyChangerVC: UITextFieldDelegate {
         guard UIDevice.current.userInterfaceIdiom != .phone else {
             return
         }
+        let isMac = ProcessInfo.isRunningOnMac
         let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
         switch textField {
         case keyFileField:
             delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
+            if isMac {
+                passwordField.becomeFirstResponder()
+            }
         case hardwareKeyField:
             delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
+            if isMac {
+                passwordField.becomeFirstResponder()
+            }
         default:
-            delegate?.shouldDismissPopovers(in: self)
+            if !isMac {
+                delegate?.shouldDismissPopovers(in: self)
+            }
         }
     }
     

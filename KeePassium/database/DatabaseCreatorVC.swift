@@ -231,16 +231,25 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
         guard UIDevice.current.userInterfaceIdiom != .phone else {
             return
         }
+        let isMac = ProcessInfo.isRunningOnMac
         let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
         switch textField {
         case keyFileField:
             hideErrorMessage(animated: true)
             delegate?.didPressPickKeyFile(in: self, at: popoverAnchor)
+            if isMac {
+                passwordField.becomeFirstResponder()
+            }
         case hardwareKeyField:
             hideErrorMessage(animated: true)
             delegate?.didPressPickHardwareKey(in: self, at: popoverAnchor)
+            if isMac {
+                passwordField.becomeFirstResponder()
+            }
         default:
-            delegate?.shouldDismissPopovers(in: self)
+            if !isMac {
+                delegate?.shouldDismissPopovers(in: self)
+            }
         }
     }
     

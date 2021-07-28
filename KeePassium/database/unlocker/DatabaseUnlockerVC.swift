@@ -276,17 +276,25 @@ extension DatabaseUnlockerVC: UITextFieldDelegate {
         guard UIDevice.current.userInterfaceIdiom != .phone else {
             return
         }
+        let isMac = ProcessInfo.isRunningOnMac
         let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
         switch textField {
         case keyFileField:
             hideErrorMessage(animated: true)
             delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
+            if isMac {
+                passwordField.becomeFirstResponder()
+            }
         case hardwareKeyField:
             hideErrorMessage(animated: true)
             delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
+            if isMac {
+                passwordField.becomeFirstResponder()
+            }
         default:
-            hideErrorMessage(animated: true)
-            delegate?.shouldDismissPopovers(in: self)
+            if !isMac {
+                delegate?.shouldDismissPopovers(in: self)
+            }
         }
     }
     

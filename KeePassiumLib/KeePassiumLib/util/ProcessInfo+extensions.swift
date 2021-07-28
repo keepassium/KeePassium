@@ -12,14 +12,14 @@ extension ProcessInfo {
         return isiPadAppOnMac || isCatalystApp
     }
     
-    private static var isiPadAppOnMac: Bool {
+    public static var isiPadAppOnMac: Bool {
         guard #available(iOS 14, *) else {
             return false
         }
         return ProcessInfo.processInfo.isiOSAppOnMac
     }
     
-    private static var isCatalystApp: Bool {
+    public static var isCatalystApp: Bool {
         guard #available(iOS 13, *) else {
             return false
         }
