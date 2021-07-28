@@ -546,6 +546,20 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         databasePickerCoordinator.setEnabled(true)
         showDatabaseViewer(fileRef, database: database, warnings: warnings)
     }
+    
+    func didPressReinstateDatabase(
+        _ fileRef: URLReference,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) {
+        if rootSplitVC.isCollapsed {
+            primaryRouter.pop(animated: true, completion: { [weak self] in
+                guard let self = self else { return }
+                self.databasePickerCoordinator.addExistingDatabase(presenter: self.rootSplitVC)
+            })
+        } else {
+            databasePickerCoordinator.addExistingDatabase(presenter: rootSplitVC)
+        }
+    }
 }
 
 extension MainCoordinator: DatabaseViewerCoordinatorDelegate {

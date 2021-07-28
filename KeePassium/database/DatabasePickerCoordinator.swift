@@ -141,9 +141,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     private func hasValidDatabases() -> Bool {
         let accessibleDatabaseRefs = FileKeeper.shared
             .getAllReferences(fileType: .database, includeBackup: false)
-            .filter {
-                !($0.hasPermissionError257 || $0.hasFileMissingError) 
-            }
+            .filter { !$0.needsReinstatement } 
         return accessibleDatabaseRefs.count > 0
     }
     

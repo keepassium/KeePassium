@@ -114,9 +114,27 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         _ text: String,
         reason: String?=nil,
         suggestion: String?=nil,
-        haptics: HapticFeedback.Kind?=nil
+        haptics: HapticFeedback.Kind?=nil,
+        actionHandler: ToastAction.Handler?=nil
     ) {
-        let text = [text, reason, suggestion]
+        var textComponents = [text, reason]
+        let toastAction: ToastAction
+        if let actionHandler = actionHandler {
+            toastAction = ToastAction(
+                title: suggestion ?? LString.actionShowDetails,
+                handler: actionHandler
+            )
+        } else {
+            textComponents.append(suggestion)
+            toastAction = ToastAction(
+                title: LString.actionShowDetails,
+                handler: { [weak self] in
+                    self?.didPressErrorDetails()
+                }
+            )
+        }
+        
+        let text = textComponents
             .compactMap { return $0 } 
             .joined(separator: "\n")
         Diag.error(text)
@@ -133,12 +151,6 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         toastStyle.backgroundColor = .warningMessage
         toastStyle.imageSize = CGSize(width: 29, height: 29)
         toastStyle.displayShadow = false
-        let toastAction = ToastAction(
-            title: LString.actionShowDetails,
-            handler: { [weak self] in
-                self?.didPressErrorDetails()
-            }
-        )
         let toastView = view.toastViewForMessage(
             text,
             title: nil,

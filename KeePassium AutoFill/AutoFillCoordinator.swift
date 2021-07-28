@@ -405,6 +405,18 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         Settings.current.isAutoFillFinishedOK = true 
         showDatabaseViewer(fileRef, database: database, warnings: warnings)
     }
+    
+    func didPressReinstateDatabase(
+        _ fileRef: URLReference,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) {
+        router.pop(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
+            self.databasePickerCoordinator.addExistingDatabase(
+                presenter: self.router.navigationController
+            )
+        })
+    }
 }
 
 extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {

@@ -28,6 +28,7 @@ protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
         warnings: DatabaseLoadingWarnings,
         in coordinator: DatabaseUnlockerCoordinator
     )
+    func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator)
 }
 
 final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
@@ -363,12 +364,17 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         databaseUnlockerVC.refresh()
         databaseUnlockerVC.hideProgressView(animated: true)
         
-        if databaseRef.hasPermissionError257 || databaseRef.hasFileMissingError {
+        if databaseRef.needsReinstatement {
             databaseUnlockerVC.showErrorMessage(
                 message,
                 reason: reason,
-                suggestion: LString.tryToReAddFile,
-                haptics: .error
+                suggestion: LString.actionReAddFile,
+                haptics: .error,
+                actionHandler: { [weak self] in
+                    guard let self = self else { return }
+                    Diag.debug("Will reinstate database")
+                    self.delegate?.didPressReinstateDatabase(self.databaseRef, in: self)
+                }
             )
         } else {
             databaseUnlockerVC.showErrorMessage(message, reason: reason, haptics: .error)

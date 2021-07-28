@@ -79,33 +79,33 @@ public class URLReference:
     public private(set) var error: FileAccessError?
     public var hasError: Bool { return error != nil}
     
-    public var hasPermissionError257: Bool {
-        guard let nsError = error?.underlyingError as NSError? else { return false }
-        return (nsError.domain == NSCocoaErrorDomain) && (nsError.code == 257)
-    }
-    
-    public var hasFileMissingError: Bool {
+    public var needsReinstatement: Bool {
         guard location == .external,
               let underlyingError = error?.underlyingError,
-              let nsError = underlyingError as NSError? else { return false }
+              let nsError = underlyingError as NSError?
+        else {
+            return false
+        }
         
-        #if targetEnvironment(macCatalyst)
-            switch nsError.domain {
-            case NSCocoaErrorDomain:
-                return nsError.code == CocoaError.Code.fileNoSuchFile.rawValue
+        switch nsError.domain {
+        case NSCocoaErrorDomain:
+            switch CocoaError.Code.init(rawValue: nsError.code) {
+            case .fileNoSuchFile:
+                return true
+            case .fileReadNoPermission:
+                return true
+            case .fileReadCorruptFile:
+                return true
             default:
                 return false
             }
-        #else
-            switch nsError.domain {
-            case NSCocoaErrorDomain:
-                return nsError.code == CocoaError.Code.fileNoSuchFile.rawValue
-            case NSFileProviderErrorDomain:
-                return nsError.code == NSFileProviderError.noSuchItem.rawValue
-            default:
-                return false
-            }
+        #if !targetEnvironment(macCatalyst)
+        case NSFileProviderErrorDomain:
+            return nsError.code == NSFileProviderError.noSuchItem.rawValue
         #endif
+        default:
+            return false
+        }
     }
     
     private let data: Data
