@@ -145,18 +145,20 @@ class DatabaseCreatorVC: UIViewController {
         toastStyle.backgroundColor = .warningMessage
         toastStyle.imageSize = CGSize(width: 29, height: 29)
         toastStyle.displayShadow = false
+        let toastAction = ToastAction(
+            title: LString.actionShowDetails,
+            handler: { [weak self] in
+                self?.didPressErrorDetails()
+            }
+        )
         let toastView = view.toastViewForMessage(
             message,
             title: nil,
             image: warningIcon,
-            action: ToastAction(
-                title: LString.actionShowDetails,
-                target: self,
-                action: #selector(didPressErrorDetails(_:))),
+            action: toastAction,
             style: toastStyle
         )
-        view.showToast(toastView, duration: 5, position: .top, completion: nil)
-
+        view.showToast(toastView, duration: 5, position: .top, action: toastAction, completion: nil)
         StoreReviewSuggester.registerEvent(.trouble)
     }
     
@@ -169,7 +171,7 @@ class DatabaseCreatorVC: UIViewController {
         delegate?.didPressCancel(in: self)
     }
     
-    @IBAction func didPressErrorDetails(_ sender: Any) {
+    private func didPressErrorDetails() {
         hideErrorMessage(animated: true)
         delegate?.didPressErrorDetails(in: self)
     }
