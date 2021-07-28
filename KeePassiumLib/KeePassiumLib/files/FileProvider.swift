@@ -19,6 +19,7 @@ public enum FileProvider: Hashable {
         "com.skyjos.fileexplorer.fileprovider": .feFileExplorer,
         "com.google.Drive.FileProviderExtension": .googleDrive,
         "com.apple.CloudDocs.MobileDocumentsFileProvider": .iCloudDrive,
+        "mega.ios.MEGAPickerFileProvider": .megaNz,
         "it.twsweb.Nextcloud.File-Provider-Extension": .nextcloud,
         "com.microsoft.skydrive.onedrivefileprovider": .oneDrive,
         "com.owncloud.ios-app.ownCloud-File-Provider": .ownCloud,
@@ -48,6 +49,7 @@ public enum FileProvider: Hashable {
     case feFileExplorer
     case googleDrive
     case iCloudDrive
+    case megaNz
     case nextcloud
     case oneDrive
     case ownCloud
@@ -133,6 +135,12 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "iCloud Drive",
                 comment: "Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive)")
+        case .megaNz:
+            return NSLocalizedString(
+                "[FileProvider/Mega.nz/name]",
+                bundle: Bundle.framework,
+                value: "MEGA.nz",
+                comment: "Localized name of the storage service: MEGA (https://mega.nz)")
         case .nextcloud:
             return NSLocalizedString(
                 "[FileProvider/Nextcloud/name]",

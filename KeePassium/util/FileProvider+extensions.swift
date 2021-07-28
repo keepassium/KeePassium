@@ -43,6 +43,7 @@ extension FileProvider {
         case .amerigo:        fallthrough
         case .amerigoFree:    fallthrough
         case .feFileExplorer: fallthrough
+        case .megaNz:         fallthrough
         case .qnapQFile:      fallthrough
         case .readdleDocuments: fallthrough
         case .resilioSync:    fallthrough
