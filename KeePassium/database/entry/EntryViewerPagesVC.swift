@@ -114,23 +114,29 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             direction: direction,
             animated: true,
             completion: { [weak self] (finished) in
-                guard let self = self else { return }
-                previousPageVC?.didMove(toParent: nil)
-                targetPageVC.didMove(toParent: self.pagesViewController)
-                self.pageSelector.selectedSegmentIndex = index
-                self.currentPageIndex = index
-                self.navigationItem.rightBarButtonItem =
-                    targetPageVC.navigationItem.rightBarButtonItem
-                
-                let toolbarItems = targetPageVC.toolbarItems
-                self.setToolbarItems(toolbarItems, animated: true)
+                self?.changeCurrentPage(from: previousPageVC, to: targetPageVC, index: index)
             }
         )
-        
     }
     
     @IBAction func didChangePage(_ sender: Any) {
         switchTo(page: pageSelector.selectedSegmentIndex)
+    }
+    
+    private func changeCurrentPage(
+        from previousPageVC: UIViewController?,
+        to targetPageVC: UIViewController,
+        index: Int
+    ) {
+        previousPageVC?.didMove(toParent: nil)
+        targetPageVC.didMove(toParent: pagesViewController)
+        pageSelector.selectedSegmentIndex = index
+        currentPageIndex = index
+        navigationItem.rightBarButtonItem =
+            targetPageVC.navigationItem.rightBarButtonItem
+        
+        let toolbarItems = targetPageVC.toolbarItems
+        setToolbarItems(toolbarItems, animated: true)
     }
     
     func refresh() {
@@ -174,12 +180,10 @@ extension EntryViewerPagesVC: UIPageViewControllerDelegate {
         else {
             return
         }
-        
-        previousViewControllers.first?.didMove(toParent: nil)
-        selectedVC.didMove(toParent: pagesViewController)
-        currentPageIndex = selectedIndex
-        pageSelector.selectedSegmentIndex = selectedIndex
-        navigationItem.rightBarButtonItem = selectedVC.navigationItem.rightBarButtonItem
+        changeCurrentPage(
+            from: previousViewControllers.first,
+            to: selectedVC,
+            index: selectedIndex)
     }
 }
 
