@@ -44,7 +44,9 @@ public class Entry1: Entry {
         set {
             let never = Date.kp1Never
             if newValue {
-                expiryTime = never - 1.0
+                if expiryTime == never {
+                    expiryTime = never - 1.0
+                } 
             } else {
                 expiryTime = never
             }
