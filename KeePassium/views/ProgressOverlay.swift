@@ -13,7 +13,7 @@ import KeePassiumLib
 class ProgressOverlay: UIView {
     typealias UnresponsiveCancelHandler = () -> ()
     
-    public var title: String? { 
+    public var title: String? {
         didSet { statusLabel.text = title }
     }
     

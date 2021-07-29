@@ -178,7 +178,6 @@ final class GroupViewerVC:
         }
     }
     
-    
     private func setupSearch() {
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
@@ -463,6 +462,9 @@ final class GroupViewerVC:
     
     func selectEntry(_ entry: Entry?, animated: Bool) {
         guard let entry = entry else {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selectedIndexPath, animated: animated)
+            }
             return
         }
         guard let indexPath = getIndexPath(for: entry) else {
