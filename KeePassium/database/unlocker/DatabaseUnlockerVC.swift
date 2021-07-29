@@ -30,6 +30,9 @@ protocol DatabaseUnlockerDelegate: AnyObject {
 
 final class DatabaseUnlockerVC: UIViewController, Refreshable {
 
+    private let forgottenPasswordHelpURL =
+        URL(string: "https://keepassium.com/articles/invalid-password/")!
+    
     @IBOutlet private weak var databaseLocationIconImage: UIImageView!
     @IBOutlet private weak var databaseFileNameLabel: UILabel!
     @IBOutlet private weak var inputPanel: UIView!
@@ -113,28 +116,10 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     func showErrorMessage(
         _ text: String,
         reason: String?=nil,
-        suggestion: String?=nil,
         haptics: HapticFeedback.Kind?=nil,
-        actionHandler: ToastAction.Handler?=nil
+        action: ToastAction?=nil
     ) {
-        var textComponents = [text, reason]
-        let toastAction: ToastAction
-        if let actionHandler = actionHandler {
-            toastAction = ToastAction(
-                title: suggestion ?? LString.actionShowDetails,
-                handler: actionHandler
-            )
-        } else {
-            textComponents.append(suggestion)
-            toastAction = ToastAction(
-                title: LString.actionShowDetails,
-                handler: { [weak self] in
-                    self?.didPressErrorDetails()
-                }
-            )
-        }
-        
-        let text = textComponents
+        let text = [text, reason]
             .compactMap { return $0 } 
             .joined(separator: "\n")
         Diag.error(text)
@@ -147,6 +132,16 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             warningIcon = UIImage.get(.exclamationMarkTriangle)!
         }
         
+        var toastAction = action
+        if toastAction == nil {
+            toastAction = ToastAction(
+                title: LString.actionShowDetails,
+                handler: { [weak self] in
+                    self?.didPressErrorDetails()
+                }
+            )
+        }
+
         var toastStyle = ToastStyle()
         toastStyle.backgroundColor = .warningMessage
         toastStyle.imageSize = CGSize(width: 29, height: 29)
@@ -168,7 +163,26 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
 
     func showMasterKeyInvalid(message: String) {
         passwordField.shake()
-        showErrorMessage(message, haptics: .wrongPassword)
+        showErrorMessage(
+            message,
+            haptics: .wrongPassword,
+            action: ToastAction(
+                title: LString.forgotPasswordQuestion,
+                icon: UIImage(asset: .externalLinkBadge),
+                handler: { [weak self] in
+                    self?.showInvalidPasswordHelp()
+                }
+            )
+        )
+    }
+    
+    private func showInvalidPasswordHelp() {
+        let urlOpener = URLOpener(self)
+        urlOpener.open(url: forgottenPasswordHelpURL) { [weak self] didOpen in
+            if !didOpen {
+                self?.didPressErrorDetails()
+            }
+        }
     }
     
     func maybeFocusOnPassword() {

@@ -277,6 +277,12 @@ extension LString {
         value: "Hardware Key",
         comment: "Name of an input field which shows selected hardware key"
     )
+    public static let forgotPasswordQuestion = NSLocalizedString(
+        "[Database/Unlock/wrongPassword/question]",
+        value: "Forgot your password?",
+        comment: "Message shown when user enters an invalid database password"
+    )
+
     
     public static let databaseStatusLoading = NSLocalizedString(
         "[Database/Loading/Status] Loading...",

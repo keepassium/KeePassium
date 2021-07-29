@@ -549,7 +549,7 @@ public extension UIView {
         var messageLabel: UILabel
         var titleLabel: UILabel?
         var imageView: UIImageView?
-        var button: UIButton?
+        var actionButton: UIButton?
         
         let wrapperView = UIView()
         wrapperView.backgroundColor = style.backgroundColor
@@ -623,34 +623,49 @@ public extension UIView {
         messageLabel.frame = CGRect(x: 0.0, y: 0.0, width: actualWidth, height: actualHeight)
   
         if let toastAction = action {
-            button = UIButton()
-            button?.setTitleColor(style.buttonColor, for: .normal)
-            button?.setTitle(toastAction.title, for: .normal)
-            button?.contentHorizontalAlignment = .trailing
+            let button = UIButton()
+            button.setTitleColor(style.buttonColor, for: .normal)
+            button.setTitle(toastAction.title, for: .normal)
+            button.contentHorizontalAlignment = .trailing
             let titleInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-            button?.titleEdgeInsets = titleInsets
-            button?.titleLabel?.font = style.buttonFont
-            button?.titleLabel?.numberOfLines = style.buttonNumberOfLines
-            button?.titleLabel?.lineBreakMode = .byWordWrapping
+            button.titleEdgeInsets = titleInsets
+            button.titleLabel?.font = style.buttonFont
+            button.titleLabel?.numberOfLines = style.buttonNumberOfLines
+            button.titleLabel?.lineBreakMode = .byWordWrapping
+
+            var buttonImageWidth = CGFloat.zero
+            if let buttonImage = toastAction.icon {
+                button.setImage(buttonImage, for: .normal)
+                button.imageEdgeInsets.right = 4
+                button.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+                button.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+                button.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+                buttonImageWidth =
+                    buttonImage.size.width +
+                    button.imageEdgeInsets.left +
+                    button.imageEdgeInsets.right
+            }
+            
             let maxButtonLabelSize = CGSize(
                 width: self.bounds.width * style.maxWidthPercentage -
-                    imageRect.width - titleInsets.left - titleInsets.right,
+                    imageRect.width - titleInsets.left - titleInsets.right - buttonImageWidth,
                 height: self.bounds.height * style.maxHeightPercentage -
                     titleInsets.top - titleInsets.bottom
             )
-            if let buttonSize = button?.titleLabel?.sizeThatFits(maxButtonLabelSize) {
-                button?.frame = CGRect(
+            if let buttonSize = button.titleLabel?.sizeThatFits(maxButtonLabelSize) {
+                button.frame = CGRect(
                     x: 0.0,
                     y: 0.0,
-                    width: buttonSize.width + titleInsets.left + titleInsets.right,
+                    width: buttonSize.width + titleInsets.left + titleInsets.right + buttonImageWidth,
                     height: buttonSize.height + titleInsets.top + titleInsets.bottom
                 )
             }
-            button?.addTarget(
+            button.addTarget(
                 wrapperView,
                 action: #selector(handleToastActionTapped(_:)),
                 for: .touchUpInside
             )
+            actionButton = button
         }
         
         var titleRect = CGRect.zero
@@ -671,7 +686,7 @@ public extension UIView {
         messageRect.size.height = messageLabel.bounds.height
         
         var buttonRect = CGRect.zero
-        if let button = button {
+        if let button = actionButton {
             buttonRect.origin.x = imageRect.origin.x + imageRect.width + style.horizontalPadding
             buttonRect.origin.y = messageRect.origin.y + messageRect.height
             buttonRect.size.width = button.bounds.width
@@ -694,7 +709,7 @@ public extension UIView {
         )
         
         var contentHeight = messageRect.origin.y + messageRect.height + style.verticalPadding
-        if button != nil {
+        if actionButton != nil {
             contentHeight = buttonRect.origin.y + buttonRect.height
         }
         let wrapperHeight = max(
@@ -710,15 +725,15 @@ public extension UIView {
             wrapperView.addSubview(titleLabel)
         }
         
-        if titleLabel == nil && button == nil {
+        if titleLabel == nil && actionButton == nil {
             messageRect.origin.y = (wrapperHeight - messageRect.height) / 2
         }
         messageRect.size.width = longerWidth
         messageLabel.frame = messageRect
         wrapperView.addSubview(messageLabel)
         
-        if let button = button {
-            buttonRect.size.width = longerWidth
+        if let button = actionButton {
+            buttonRect.origin.x = wrapperWidth - style.horizontalPadding - buttonRect.width
             button.frame = buttonRect
             wrapperView.addSubview(button)
         }
@@ -810,7 +825,7 @@ public struct ToastStyle {
     
     public var messageFont: UIFont = .preferredFont(forTextStyle: .callout)
     
-    public var buttonFont: UIFont = .preferredFont(forTextStyle: .footnote)
+    public var buttonFont: UIFont = .preferredFont(forTextStyle: .callout)
     
     /**
      The title text alignment. Default is `NSTextAlignment.Left`.
@@ -981,9 +996,11 @@ public struct ToastAction {
     public typealias Handler = (() -> Void)
     var title: String
     var handler: Handler
+    var icon: UIImage?
     
-    public init(title: String, handler: @escaping Handler) {
+    public init(title: String, icon: UIImage? = nil, handler: @escaping Handler) {
         self.title = title
+        self.icon = icon
         self.handler = handler
     }
 }

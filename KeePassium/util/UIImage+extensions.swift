@@ -21,6 +21,7 @@ enum ImageAsset: String {
     case deleteItemToolbar = "delete-item-toolbar"
     case editItemListitem = "edit-item-listitem"
     case editItemToolbar = "edit-item-toolbar"
+    case externalLinkBadge = "external-link-badge"
     case moreActionsToolbar = "more-actions-toolbar"
     case sortOrderAscToolbar = "sort-order-asc-toolbar"
     case sortOrderDescToolbar = "sort-order-desc-toolbar"

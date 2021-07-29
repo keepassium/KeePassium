@@ -368,13 +368,16 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
             databaseUnlockerVC.showErrorMessage(
                 message,
                 reason: reason,
-                suggestion: LString.actionReAddFile,
                 haptics: .error,
-                actionHandler: { [weak self] in
-                    guard let self = self else { return }
-                    Diag.debug("Will reinstate database")
-                    self.delegate?.didPressReinstateDatabase(self.databaseRef, in: self)
-                }
+                action: ToastAction(
+                    title: LString.actionReAddFile,
+                    icon: nil,
+                    handler: { [weak self] in
+                        guard let self = self else { return }
+                        Diag.debug("Will reinstate database")
+                        self.delegate?.didPressReinstateDatabase(self.databaseRef, in: self)
+                    }
+                )
             )
         } else {
             databaseUnlockerVC.showErrorMessage(message, reason: reason, haptics: .error)
