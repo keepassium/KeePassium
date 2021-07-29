@@ -672,7 +672,9 @@ extension DatabaseViewerCoordinator: GroupEditorCoordinatorDelegate {
 extension DatabaseViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {
         refresh()
-        selectEntry(entry)
+        if !isSplitViewCollapsed {
+            selectEntry(entry)
+        }
         StoreReviewSuggester.maybeShowAppReview(appVersion: AppInfo.version, occasion: .didEditItem)
     }
 }
