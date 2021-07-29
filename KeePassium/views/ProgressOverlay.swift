@@ -205,8 +205,7 @@ class ProgressOverlay: UIView {
     internal func update(with progress: ProgressEx) {
         statusLabel.text = progress.localizedDescription
         percentLabel.text = String(format: "%.0f%%", 100.0 * progress.fractionCompleted)
-        let animate = progress.fractionCompleted < 0.99
-        progressView.setProgress(Float(progress.fractionCompleted), animated: animate)
+        progressView.setProgress(Float(progress.fractionCompleted), animated: false)
         cancelButton.isEnabled = cancelButton.isEnabled && progress.isCancellable && !progress.isCancelled
         isAnimating = progress.isIndeterminate
         self.progress = progress
