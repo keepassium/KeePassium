@@ -1,5 +1,10 @@
 #CHANGELOG
 
+## [1.25.88] - 2021-07-30
+
+- An internal build to ensure TestFlight continuity.
+
+
 ## [1.24.87] - 2021-05-06
 
 ### Added
