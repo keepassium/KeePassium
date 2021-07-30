@@ -32,7 +32,7 @@ final class MainCoordinator: Coordinator {
     fileprivate var biometricsBackgroundWindow: UIWindow?
     fileprivate var isBiometricAuthShown = false
     
-    fileprivate let biometricAuthReuseDuration = TimeInterval(1.5)
+    fileprivate let biometricAuthReuseDuration = TimeInterval(2.0)
     fileprivate var lastSuccessfulBiometricAuthTime: Date = .distantPast
     
     private var selectedDatabaseRef: URLReference?
