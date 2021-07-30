@@ -67,7 +67,11 @@ private final class UIImagePickerControllerPhotoPicker:
         imagePicker.sourceType = sourceType
         imagePicker.allowsEditing = false
         imagePicker.imageExportPreset = .compatible
-        imagePicker.modalPresentationStyle = .overCurrentContext
+        if sourceType == .camera {
+            imagePicker.modalPresentationStyle = .overFullScreen
+        } else {
+            imagePicker.modalPresentationStyle = .overCurrentContext
+        }
 
         super.init()
         imagePicker.delegate = self
