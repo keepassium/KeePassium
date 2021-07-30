@@ -58,7 +58,7 @@ final class MainCoordinator: Coordinator {
         window.rootViewController = rootSplitVC
     }
     
-    func start() {
+    func start(hasIncomingURL: Bool) {
         Diag.info(AppInfo.description)
         PremiumManager.shared.startObservingTransactions()
         
@@ -79,6 +79,13 @@ final class MainCoordinator: Coordinator {
         addChildCoordinator(databasePickerCoordinator)
         
         showPlaceholder()
+        
+        DatabaseManager.shared.addObserver(self)
+        
+        guard !hasIncomingURL else {
+            databasePickerCoordinator.shouldSelectDefaultDatabase = false
+            return
+        }
         
         DispatchQueue.main.async { [weak self] in
             self?.maybeShowOnboarding()
@@ -499,6 +506,13 @@ extension MainCoordinator: FileKeeperDelegate {
             let topModalVC = self.rootSplitVC.presentedViewController ?? self.rootSplitVC
             topModalVC.present(choiceAlert, animated: true)
         }
+    }
+}
+
+extension MainCoordinator: DatabaseManagerObserver {
+    func databaseManager(didCloseDatabase urlRef: URLReference) {
+        Diag.debug("Closing DB viewer")
+        databaseViewerCoordinator?.stop(animated: true)
     }
 }
 

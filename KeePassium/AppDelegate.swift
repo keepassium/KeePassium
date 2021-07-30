@@ -30,8 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        let incomingURL: URL? = launchOptions?[.url] as? URL
+        let hasIncomingURL = incomingURL != nil
+        
         mainCoordinator = MainCoordinator(window: window)
-        mainCoordinator.start()
+        mainCoordinator.start(hasIncomingURL: hasIncomingURL)
         window.makeKeyAndVisible()
         
         self.window = window

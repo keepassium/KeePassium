@@ -111,7 +111,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         showInitialMessages()
     }
     
-    private func stop(animated: Bool) {
+    public func stop(animated: Bool) {
         guard let rootGroupViewer = rootGroupViewer else {
             fatalError("No group viewer")
         }
@@ -309,7 +309,6 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             }
             
             Diag.debug("Database locked [reason: \(reason)]")
-            self?.stop(animated: animated)
         }
     }
     
