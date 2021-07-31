@@ -118,13 +118,18 @@ class PasscodeInputVC: UIViewController {
     }
     
     private func updateKeyboardLayoutConstraints() {
-        if let window = view.window {
-            let viewTop = view.convert(view.frame.origin, to: window).y
-            let viewHeight = view.frame.height
-            let windowHeight = window.frame.height
-            let viewBottomOffset = windowHeight - (viewTop + viewHeight)
-            keyboardLayoutConstraint.viewOffset = viewBottomOffset
+        let windowSpace: UICoordinateSpace
+        if #available(iOS 14, *) {
+            windowSpace = UIScreen.main.coordinateSpace
+        } else {
+            guard let window = view.window else { return }
+            windowSpace = window.coordinateSpace
         }
+        let viewTop = view.convert(view.frame.origin, to: windowSpace).y
+        let viewHeight = view.frame.height
+        let windowHeight = windowSpace.bounds.height
+        let viewBottomOffset = windowHeight - (viewTop + viewHeight)
+        keyboardLayoutConstraint.viewOffset = viewBottomOffset
     }
     
     public func showKeyboard() {
