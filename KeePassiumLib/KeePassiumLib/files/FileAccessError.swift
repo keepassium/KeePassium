@@ -23,6 +23,15 @@ public enum FileAccessError: LocalizedError {
     
     case systemError(_ originalError: Error?)
     
+    public var isTimeout: Bool {
+        switch self {
+        case .timeout(_):
+            return true
+        default:
+            return false
+        }
+    }
+    
     public var errorDescription: String? {
         switch self {
         case .timeout(let fileProvider):

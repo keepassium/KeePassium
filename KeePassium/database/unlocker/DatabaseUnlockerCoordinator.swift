@@ -101,6 +101,31 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
         
         mayUseFinalKey = true
         refresh()
+        
+        maybeShowInitialDatabaseError(fileRef)
+    }
+    
+    private func maybeShowInitialDatabaseError(_ fileRef: URLReference) {
+        if let dbError = fileRef.error {
+            showDatabaseError(fileRef.visibleFileName, reason: dbError.localizedDescription)
+            return
+        }
+        
+        fileRef.refreshInfo(timeout: 2) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_):
+                self.refresh()
+            case .failure(let fileAccessError):
+                if fileAccessError.isTimeout {
+                    return
+                }
+                self.showDatabaseError(
+                    self.databaseRef.visibleFileName,
+                    reason: fileAccessError.localizedDescription
+                )
+            }
+        }
     }
 }
 
@@ -238,6 +263,27 @@ extension DatabaseUnlockerCoordinator {
             $0.clearMasterKey()
         }
     }
+    
+    private func showDatabaseError(_ message: String, reason: String?) {
+        guard databaseRef.needsReinstatement else {
+            databaseUnlockerVC.showErrorMessage(message, reason: reason, haptics: .error)
+            return
+        }
+        databaseUnlockerVC.showErrorMessage(
+            message,
+            reason: reason,
+            haptics: .error,
+            action: ToastAction(
+                title: LString.actionReAddFile,
+                icon: nil,
+                handler: { [weak self] in
+                    guard let self = self else { return }
+                    Diag.debug("Will reinstate database")
+                    self.delegate?.didPressReinstateDatabase(self.databaseRef, in: self)
+                }
+            )
+        )
+    }
 }
 
 extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
@@ -364,24 +410,7 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         databaseUnlockerVC.refresh()
         databaseUnlockerVC.hideProgressView(animated: true)
         
-        if databaseRef.needsReinstatement {
-            databaseUnlockerVC.showErrorMessage(
-                message,
-                reason: reason,
-                haptics: .error,
-                action: ToastAction(
-                    title: LString.actionReAddFile,
-                    icon: nil,
-                    handler: { [weak self] in
-                        guard let self = self else { return }
-                        Diag.debug("Will reinstate database")
-                        self.delegate?.didPressReinstateDatabase(self.databaseRef, in: self)
-                    }
-                )
-            )
-        } else {
-            databaseUnlockerVC.showErrorMessage(message, reason: reason, haptics: .error)
-        }
+        showDatabaseError(message, reason: reason)
         databaseUnlockerVC.maybeFocusOnPassword()
         delegate?.didNotUnlockDatabase(databaseRef, with: message, reason: reason, in: self)
     }
