@@ -302,7 +302,7 @@ public class URLReference:
         callback: @escaping ResolveCallback)
     {
         execute(
-            withTimeout: URLReference.defaultTimeout,
+            withTimeout: timeout,
             on: URLReference.backgroundQueue,
             slowSyncOperation: { () -> Result<URL, Error> in
                 do {
@@ -385,7 +385,7 @@ public class URLReference:
             switch result {
             case .success(let url):
                 URLReference.backgroundQueue.async { 
-                    self.refreshInfo(for: url, completion: callback)
+                    self.refreshInfo(for: url, timeout: timeout, completion: callback)
                 }
             case .failure(let error):
                 self.registerInfoRefreshRequest(.completed)
@@ -395,13 +395,17 @@ public class URLReference:
         }
     }
     
-    private func refreshInfo(for url: URL, completion callback: @escaping InfoCallback) {
+    private func refreshInfo(
+        for url: URL,
+        timeout: TimeInterval,
+        completion callback: @escaping InfoCallback
+    ) {
         assert(!Thread.isMainThread)
 
         let isAccessed = url.startAccessingSecurityScopedResource()
         
         let tmpDoc = BaseDocument(fileURL: url, fileProvider: fileProvider)
-        tmpDoc.open(withTimeout: URLReference.defaultTimeout) { [self] (result) in
+        tmpDoc.open(withTimeout: timeout) { [self] (result) in
             defer {
                 if isAccessed {
                     url.stopAccessingSecurityScopedResource()
