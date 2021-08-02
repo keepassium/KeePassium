@@ -89,11 +89,11 @@ final public class NavigationRouter: NSObject {
         navigationController.delegate = oldDelegate
     }
     
-    public func dismiss(animated: Bool) {
+    public func dismiss(animated: Bool, completion: (()->Void)?=nil) {
         assert(navigationController.presentingViewController != nil)
         navigationController.dismiss(animated: animated, completion: {
             [self] in 
-            self.popAll()
+            self.popAll(completion: completion)
         })
     }
     
@@ -166,21 +166,29 @@ final public class NavigationRouter: NSObject {
         }
     }
     
-    public func popTo(viewController: UIViewController, animated: Bool) {
-        navigationController.popToViewController(viewController, animated: animated)
+    public func popTo(viewController: UIViewController, animated: Bool, completion: (()->Void)?) {
+        navigationController.popToViewController(
+            viewController,
+            animated: animated,
+            completion: completion
+        )
     }
     
-    public func pop(viewController: UIViewController, animated: Bool) {
+    public func pop(
+        viewController: UIViewController,
+        animated: Bool,
+        completion: (()->Void)?=nil
+    ) {
         let viewControllers = navigationController.viewControllers
         guard let index = viewControllers.firstIndex(of: viewController) else {
             return
         }
         
         if index == 0 {
-            dismiss(animated: animated)
+            dismiss(animated: animated, completion: completion)
         } else {
             let previousVC = viewControllers[index - 1]
-            popTo(viewController: previousVC, animated: animated)
+            popTo(viewController: previousVC, animated: animated, completion: completion)
         }
     }
     
@@ -188,9 +196,10 @@ final public class NavigationRouter: NSObject {
         navigationController.popToRootViewController(animated: animated)
     }
     
-    public func popAll() {
+    public func popAll(completion: (()->Void)?=nil) {
         fireAllPopHandlers()
         navigationController.setViewControllers([UIViewController()], animated: false)
+        completion?()
     }
        
     private func fireAllPopHandlers() {
@@ -377,6 +386,24 @@ extension UIViewController {
 extension UINavigationController {
     func popViewController(animated: Bool, completion: (()->Void)?) {
         popViewController(animated: animated)
+        
+        guard animated, let transitionCoordinator = transitionCoordinator else {
+            DispatchQueue.main.async {
+                completion?()
+            }
+            return
+        }
+        transitionCoordinator.animate(alongsideTransition: nil) { _ in
+            completion?()
+        }
+    }
+    
+    func popToViewController(
+        _ viewController: UIViewController,
+        animated: Bool,
+        completion: (()->Void)?
+    ) {
+        popToViewController(viewController, animated: true)
         
         guard animated, let transitionCoordinator = transitionCoordinator else {
             DispatchQueue.main.async {

@@ -8,19 +8,19 @@
 
 import KeePassiumLib
 
-public enum DatabaseLockReason: CustomStringConvertible {
+public enum DatabaseCloseReason: CustomStringConvertible {
     case userRequest
-    case loadingWarning
     case databaseTimeout
+    case appLevelOperation
     
     public var description: String {
         switch self {
         case .userRequest:
             return "User request"
-        case .loadingWarning:
-            return "Loading warning"
         case .databaseTimeout:
             return "Database timeout"
+        case .appLevelOperation:
+            return "App-level operation"
         }
     }
 }
@@ -111,11 +111,11 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         showInitialMessages()
     }
     
-    public func stop(animated: Bool) {
+    public func stop(animated: Bool, completion: (()->Void)?) {
         guard let rootGroupViewer = rootGroupViewer else {
             fatalError("No group viewer")
         }
-        primaryRouter.pop(viewController: rootGroupViewer, animated: animated)
+        primaryRouter.pop(viewController: rootGroupViewer, animated: animated, completion: completion)
     }
     
     func refresh() {
@@ -156,7 +156,12 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             with: warnings,
             in: presentingVC,
             onLockDatabase: { [weak self] in
-                self?.lockDatabase(reason: .loadingWarning, animated: true)
+                self?.closeDatabase(
+                    shouldLock: true,
+                    reason: .userRequest,
+                    animated: true,
+                    completion: nil
+                )
             }
         )
         StoreReviewSuggester.registerEvent(.trouble)
@@ -299,16 +304,22 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         splitViewController.setDetailRouter(entryViewerRouter)
     }
     
-    
-    public func lockDatabase(reason: DatabaseLockReason, animated: Bool) {
-        DatabaseManager.shared.closeDatabase(clearStoredKey: true, ignoreErrors: false) {
+    public func closeDatabase(
+        shouldLock: Bool,
+        reason: DatabaseCloseReason,
+        animated: Bool,
+        completion: (()->Void)?
+    ) {
+        DatabaseManager.shared.closeDatabase(clearStoredKey: shouldLock, ignoreErrors: false) {
             [weak self] (error) in
             if let error = error {
                 Diag.error("Failed to close database: \(error.localizedDescription)")
                 self?.getPresenterForModals().showErrorAlert(error)
+                completion?()
             }
             
-            Diag.debug("Database locked [reason: \(reason)]")
+            Diag.debug("Database closed [locked: \(shouldLock), reason: \(reason)]")
+            self?.stop(animated: animated, completion: completion)
         }
     }
     
@@ -452,7 +463,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
         
     func didPressLockDatabase(in viewController: GroupViewerVC) {
-        lockDatabase(reason: .userRequest, animated: true)
+        closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
     }
 
     func didPressChangeMasterKey(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {

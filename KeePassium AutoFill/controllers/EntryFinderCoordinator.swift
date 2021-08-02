@@ -72,13 +72,13 @@ final class EntryFinderCoordinator: Coordinator {
         )
     }
     
-    func stop() {
-        router.pop(viewController: entryFinderVC, animated: true)
+    func stop(animated: Bool) {
+        router.pop(viewController: entryFinderVC, animated: animated)
     }
 }
 
 extension EntryFinderCoordinator {
-    private func lockDatabase() {
+    public func lockDatabase() {
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { databaseSettings in
             databaseSettings.clearMasterKey()
         }

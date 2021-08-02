@@ -241,8 +241,8 @@ extension AutoFillCoordinator: WatchdogDelegate {
         dismissPasscodeAndContinue()
     }
 
-    func watchdogDidCloseDatabase(_ sender: Watchdog, when lockTimestamp: Date) {
-        entryFinderCoordinator?.stop()
+    func watchdogDidCloseDatabase(_ sender: Watchdog, animate: Bool) {
+        entryFinderCoordinator?.stop(animated: animate)
     }
 
     private func dismissPasscodeAndContinue() {
@@ -321,10 +321,7 @@ extension AutoFillCoordinator: PasscodeInputDelegate {
                 StoreReviewSuggester.registerEvent(.trouble)
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
                     DatabaseSettingsManager.shared.eraseAllMasterKeys()
-                    DatabaseManager.shared.closeDatabase(
-                        clearStoredKey: true,
-                        ignoreErrors: true,
-                        completion: nil)
+                    entryFinderCoordinator?.lockDatabase()
                 }
             }
         } catch {

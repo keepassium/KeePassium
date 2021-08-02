@@ -80,8 +80,6 @@ final class MainCoordinator: Coordinator {
         
         showPlaceholder()
         
-        DatabaseManager.shared.addObserver(self)
-        
         guard !hasIncomingURL else {
             databasePickerCoordinator.shouldSelectDefaultDatabase = false
             return
@@ -418,10 +416,8 @@ extension MainCoordinator: WatchdogDelegate {
         print("Biometrics background hidden")
     }
     
-    func watchdogDidCloseDatabase(_ sender: Watchdog, when lockTimeout: Date) {
-        let intervalSinceLocked = -lockTimeout.timeIntervalSinceNow
-        let isLockedJustNow = intervalSinceLocked < 0.2
-        databaseViewerCoordinator?.lockDatabase(reason: .databaseTimeout, animated: isLockedJustNow)
+    func watchdogDidCloseDatabase(_ sender: Watchdog, animate: Bool) {
+        databaseViewerCoordinator?.closeDatabase(shouldLock: true, reason: .databaseTimeout, animated: animate, completion: nil)
     }
 }
 
@@ -437,10 +433,12 @@ extension MainCoordinator: PasscodeInputDelegate {
                 StoreReviewSuggester.registerEvent(.trouble)
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
                     DatabaseSettingsManager.shared.eraseAllMasterKeys()
-                    DatabaseManager.shared.closeDatabase(
-                        clearStoredKey: true,
-                        ignoreErrors: true,
-                        completion: nil)
+                    databaseViewerCoordinator?.closeDatabase(
+                        shouldLock: true,
+                        reason: .databaseTimeout,
+                        animated: false,
+                        completion: nil
+                    )
                 }
             }
         } catch {
@@ -506,13 +504,6 @@ extension MainCoordinator: FileKeeperDelegate {
             let topModalVC = self.rootSplitVC.presentedViewController ?? self.rootSplitVC
             topModalVC.present(choiceAlert, animated: true)
         }
-    }
-}
-
-extension MainCoordinator: DatabaseManagerObserver {
-    func databaseManager(didCloseDatabase urlRef: URLReference) {
-        Diag.debug("Closing DB viewer")
-        databaseViewerCoordinator?.stop(animated: true)
     }
 }
 
