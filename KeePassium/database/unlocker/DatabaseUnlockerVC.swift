@@ -104,9 +104,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         navigationController?.setToolbarHidden(true, animated: true)
         updateKeyboardLayoutConstraints()
         if shouldAutofocus {
-            DispatchQueue.main.async { [weak self] in
-                self?.maybeFocusOnPassword()
-            }
+            maybeFocusOnPassword()
         }
     }
     
@@ -136,12 +134,13 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         passwordField.text = ""
     }
     
+    @discardableResult
     func showErrorMessage(
         _ text: String,
         reason: String?=nil,
         haptics: HapticFeedback.Kind?=nil,
         action: ToastAction?=nil
-    ) {
+    ) -> UIView {
         let text = [text, reason]
             .compactMap { return $0 } 
             .joined(separator: "\n")
@@ -178,6 +177,8 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         )
         view.showToast(toastView, duration: 5, position: .top, action: toastAction, completion: nil)
         StoreReviewSuggester.registerEvent(.trouble)
+        
+        return toastView
     }
     
     func hideErrorMessage(animated: Bool) {
@@ -185,8 +186,8 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
 
     func showMasterKeyInvalid(message: String) {
-        passwordField.shake()
-        showErrorMessage(
+        HapticFeedback.play(.wrongPassword)
+        let toast = showErrorMessage(
             message,
             haptics: .wrongPassword,
             action: ToastAction(
@@ -197,6 +198,11 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
                 }
             )
         )
+        toast.shake()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.maybeFocusOnPassword()
+        }
     }
     
     private func showInvalidPasswordHelp() {
@@ -209,6 +215,9 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
     
     func maybeFocusOnPassword() {
+        guard progressOverlay == nil else {
+            return 
+        }
         if !inputPanel.isHidden {
             passwordField.becomeFirstResponderWhenSafe()
         }

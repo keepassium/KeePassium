@@ -106,6 +106,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     }
     
     private func maybeShowInitialDatabaseError(_ fileRef: URLReference) {
+        databaseUnlockerVC.hideErrorMessage(animated: false)
         if let dbError = fileRef.error {
             showDatabaseError(fileRef.visibleFileName, reason: dbError.localizedDescription)
             return
@@ -230,8 +231,11 @@ extension DatabaseUnlockerCoordinator {
         Diag.clear()
 
         delegate?.willUnlockDatabase(databaseRef, in: self)
-
         databaseUnlockerVC.hideErrorMessage(animated: false)
+        retryToUnlockDatabase()
+    }
+    
+    private func retryToUnlockDatabase() {
         DatabaseManager.shared.addObserver(self)
         
         #if AUTOFILL_EXT
@@ -387,18 +391,18 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         if mayUseFinalKey {
             Diag.info("Express unlock failed, retrying slow")
             mayUseFinalKey = false
-            tryToUnlockDatabase()
+            retryToUnlockDatabase()
         } else {
             DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
                 dbSettings.clearMasterKey()
             }
             databaseUnlockerVC.refresh()
-            databaseUnlockerVC.hideProgressView(animated: true)
+            databaseUnlockerVC.hideProgressView(animated: false)
             
             databaseUnlockerVC.showMasterKeyInvalid(message: message)
-            databaseUnlockerVC.maybeFocusOnPassword()
+
+            delegate?.didNotUnlockDatabase(databaseRef, with: message, reason: nil, in: self)
         }
-        delegate?.didNotUnlockDatabase(databaseRef, with: message, reason: nil, in: self)
     }
     
     func databaseManager(
