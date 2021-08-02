@@ -92,24 +92,51 @@ final class MainCoordinator: Coordinator {
         let isAutoUnlockStartupDatabase = Settings.current.isAutoUnlockStartupDatabase
         databasePickerCoordinator.shouldSelectDefaultDatabase = isAutoUnlockStartupDatabase
     }
-    
+}
+
+extension MainCoordinator {
     public func processIncomingURL(_ url: URL, openInPlace: Bool) {
         Diag.info("Will process incoming URL [inPlace: \(openInPlace), URL: \(url.redacted)]")
-        DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: true) {
-            (fileAccessError) in
-            if url.scheme != AppGroup.appURLScheme {
-                FileKeeper.shared.addFile(
-                    url: url,
-                    fileType: nil, 
-                    mode: openInPlace ? .openInPlace : .import,
-                    success: { _ in
-                    },
-                    error: { [weak self] fileKeeperError in
-                        Diag.error(fileKeeperError.localizedDescription)
-                        self?.rootSplitVC.showErrorAlert(fileKeeperError)
-                    }
-                )
+        guard let databaseViewerCoordinator = databaseViewerCoordinator else {
+            handleIncomingURL(url, openInPlace: openInPlace)
+            return
+        }
+        databaseViewerCoordinator.closeDatabase(
+            shouldLock: false,
+            reason: .appLevelOperation,
+            animated: false,
+            completion: { [weak self] in
+                self?.handleIncomingURL(url, openInPlace: openInPlace)
             }
+        )
+    }
+    
+    private func handleIncomingURL(_ url: URL, openInPlace: Bool) {
+        guard url.scheme != AppGroup.appURLScheme else {
+            processDeepLink(url)
+            return
+        }
+        
+        FileKeeper.shared.addFile(
+            url: url,
+            fileType: nil, 
+            mode: openInPlace ? .openInPlace : .import,
+            success: { _ in
+            },
+            error: { [weak self] fileKeeperError in
+                Diag.error(fileKeeperError.localizedDescription)
+                self?.rootSplitVC.showErrorAlert(fileKeeperError)
+            }
+        )
+    }
+    
+    private func processDeepLink(_ url: URL) {
+        assert(url.scheme == AppGroup.appURLScheme)
+        switch url {
+        case AppGroup.upgradeToPremiumURL:
+            showPremiumUpgrade(in: rootSplitVC)
+        default:
+            Diag.warning("Unrecognized URL, ignoring [url: \(url.absoluteString)]")
         }
     }
 }
