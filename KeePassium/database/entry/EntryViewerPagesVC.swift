@@ -49,7 +49,9 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             navigationOrientation: .horizontal,
             options: nil)
         pagesViewController.delegate = self
-        pagesViewController.dataSource = self
+        if !ProcessInfo.isRunningOnMac {
+            pagesViewController.dataSource = self
+        }
 
         addChild(pagesViewController)
         pagesViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -112,7 +114,7 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         pagesViewController.setViewControllers(
             [targetPageVC],
             direction: direction,
-            animated: true,
+            animated: !ProcessInfo.isRunningOnMac,
             completion: { [weak self] (finished) in
                 self?.changeCurrentPage(from: previousPageVC, to: targetPageVC, index: index)
             }
