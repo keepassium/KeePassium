@@ -27,6 +27,7 @@ final class MainCoordinator: Coordinator {
     private var databaseViewerCoordinator: DatabaseViewerCoordinator?
 
     private let watchdog: Watchdog
+    private let mainWindow: UIWindow
     fileprivate var appCoverWindow: UIWindow?
     fileprivate var appLockWindow: UIWindow?
     fileprivate var biometricsBackgroundWindow: UIWindow?
@@ -40,6 +41,7 @@ final class MainCoordinator: Coordinator {
     private var isInitialDatabase = true
     
     init(window: UIWindow) {
+        self.mainWindow = window
         self.rootSplitVC = RootSplitVC()
 
         let primaryNavVC = RouterNavigationController()
@@ -317,8 +319,9 @@ extension MainCoordinator: WatchdogDelegate {
     private func showAppCoverScreen()  {
         guard appCoverWindow == nil else { return }
         
-        let _appCoverWindow = UIWindow(frame: UIScreen.main.bounds)
-        _appCoverWindow.setScreen(UIScreen.main)
+        let currentScreen =  mainWindow.screen
+        let _appCoverWindow = UIWindow(frame: currentScreen.bounds)
+        _appCoverWindow.setScreen(currentScreen)
         _appCoverWindow.windowLevel = UIWindow.Level.alert
         self.appCoverWindow = _appCoverWindow
 
@@ -372,8 +375,9 @@ extension MainCoordinator: WatchdogDelegate {
         passcodeInputVC.isCancelAllowed = false 
         passcodeInputVC.isBiometricsAllowed = canUseBiometrics
         
-        let _appLockWindow = UIWindow(frame: UIScreen.main.bounds)
-        _appLockWindow.setScreen(UIScreen.main)
+        let currentScreen = mainWindow.screen
+        let _appLockWindow = UIWindow(frame: currentScreen.bounds)
+        _appLockWindow.setScreen(currentScreen)
         _appLockWindow.windowLevel = UIWindow.Level.alert
         UIView.performWithoutAnimation { [weak self] in
             _appLockWindow.rootViewController = passcodeInputVC
@@ -435,8 +439,9 @@ extension MainCoordinator: WatchdogDelegate {
     private func showBiometricsBackground()  {
         guard biometricsBackgroundWindow == nil else { return }
         
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.setScreen(UIScreen.main)
+        let currentScreen = mainWindow.screen
+        let window = UIWindow(frame: currentScreen.bounds)
+        window.setScreen(currentScreen)
         window.windowLevel = UIWindow.Level.alert + 1 
         let coverVC = AppCoverVC.make()
         

@@ -120,7 +120,8 @@ class PasscodeInputVC: UIViewController {
     private func updateKeyboardLayoutConstraints() {
         let windowSpace: UICoordinateSpace
         if #available(iOS 14, *) {
-            windowSpace = UIScreen.main.coordinateSpace
+            guard let screen = view.window?.screen else { return }
+            windowSpace = screen.coordinateSpace
         } else {
             guard let window = view.window else { return }
             windowSpace = window.coordinateSpace
