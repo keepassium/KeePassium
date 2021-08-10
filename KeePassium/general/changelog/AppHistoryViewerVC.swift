@@ -49,17 +49,9 @@ class AppHistoryViewerVC: UITableViewController {
         
         guard let appHistory = appHistory else { return }
         
-        guard let perpetualFallbackDate = fallbackDate else {
-            sections = appHistory.sections.map { return TableSection.historySection(section: $0) }
-            return
-        }
-        var isFallbackSectionAdded = false
-        for release in appHistory.sections {
-            if !isFallbackSectionAdded && release.releaseDate < perpetualFallbackDate {
-                sections.append(TableSection.fallbackSeparator(date: perpetualFallbackDate))
-                isFallbackSectionAdded = true
-            }
-            sections.append(TableSection.historySection(section: release))
+        sections = appHistory.sections.map { return TableSection.historySection(section: $0) }
+        if let perpetualFallbackDate = fallbackDate {
+            sections.insert(TableSection.fallbackSeparator(date: perpetualFallbackDate), at: 0)
         }
     }
 }
@@ -98,6 +90,7 @@ extension AppHistoryViewerVC {
             headerView.textLabel?.text = self.tableView(tableView, titleForHeaderInSection: section)
         }
     }
+    
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath)
@@ -108,10 +101,7 @@ extension AppHistoryViewerVC {
             let cell = tableView
                 .dequeueReusableCell(withIdentifier: AppHistoryFallbackCell.storyboardID)
                 as! AppHistoryFallbackCell
-            let formattedDate = dateFormatter.string(from: fallbackDate)
-            cell.textLabel?.text = String.localizedStringWithFormat(
-                LString.perpetualLicenseStatus,
-                formattedDate)
+            setupFallbackCell(cell, fallbackDate: fallbackDate)
             return cell
         case .historySection(section: let releaseInfo):
             let cell = tableView
@@ -119,12 +109,25 @@ extension AppHistoryViewerVC {
                 as! AppHistoryItemCell
             let item = releaseInfo.items[indexPath.row]
             let isOwned = (fallbackDate != nil) && (releaseInfo.releaseDate < fallbackDate!)
-            setupCell(cell, item: item, isOwned: isOwned)
+            setupItemCell(cell, item: item, isOwned: isOwned)
             return cell
         }
     }
     
-    private func setupCell(_ cell: AppHistoryItemCell, item: AppHistory.Item, isOwned: Bool) {
+    private func setupFallbackCell(_ cell: AppHistoryFallbackCell, fallbackDate: Date) {
+        if fallbackDate == .distantFuture {
+            cell.textLabel?.text = LString.perpetualLicense
+            cell.accessoryType = .none
+        } else {
+            let licensedVersion = appHistory?.versionOnDate(fallbackDate) ?? "?"
+            cell.textLabel?.text = String.localizedStringWithFormat(
+                LString.premiumStatusLicensedVersionTemplate,
+                licensedVersion)
+            cell.accessoryType = .disclosureIndicator
+        }
+    }
+    
+    private func setupItemCell(_ cell: AppHistoryItemCell, item: AppHistory.Item, isOwned: Bool) {
         cell.titleLabel.text = item.title
         switch item.type {
         case .none:
@@ -153,6 +156,35 @@ extension AppHistoryViewerVC {
                 cell.accessoryView = PremiumBadgeAccessory()
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch sections[indexPath.section] {
+        case .fallbackSeparator(date: let fallbackDate):
+            scrollToDate(fallbackDate)
+        default:
+            break
+        }
+    }
+    
+    private func scrollToDate(_ date: Date) {
+        let sectionIndex = sections.firstIndex(where: {
+            switch $0 {
+            case .fallbackSeparator(date: _):
+                return false
+            case .historySection(section: let section):
+                return section.releaseDate < date
+            }
+        })
+        guard let sectionIndex = sectionIndex else {
+            return
+        }
+        tableView.scrollToRow(
+            at: IndexPath(row: 0, section: sectionIndex),
+            at: .top,
+            animated: true
+        )
     }
 }
 

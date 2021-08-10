@@ -134,6 +134,15 @@ extension SettingsCoordinator {
         addChildCoordinator(diagnosticsViewerCoordinator)
     }
     
+    private func showDonationsPage() {
+        let tipBoxCoordinator = TipBoxCoordinator(router: router)
+        tipBoxCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        tipBoxCoordinator.start()
+        addChildCoordinator(tipBoxCoordinator)
+    }
+    
     private func showAboutAppPage() {
         let aboutCoordinator = AboutCoordinator(router: router)
         aboutCoordinator.dismissHandler = { [weak self] coordinator in
@@ -218,6 +227,10 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
             parent: viewController,
             popoverAnchor: popoverAnchor
         )
+    }
+    
+    func didPressDonations(at popoverAnchor: PopoverAnchor, in viewController: SettingsVC) {
+        showDonationsPage()
     }
     
     func didPressAboutApp(in viewController: SettingsVC) {

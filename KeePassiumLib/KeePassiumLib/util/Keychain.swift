@@ -45,6 +45,8 @@ public class Keychain {
         case premium = "KeePassium.premium"
     }
     private let appPasscodeAccount = "appPasscode"
+    private let premiumPurchaseHistory = "premiumPurchaseHistory"
+    
     private let premiumExpiryDateAccount = "premiumExpiryDate"
     private let premiumProductAccount = "premiumProductID"
     private let premiumFallbackDateAccount = "premiumFallbackDate"
@@ -185,55 +187,75 @@ public class Keychain {
     
     
     
-    public func setPremiumExpiry(for product: InAppProduct, to expiryDate: Date) throws {
-        let timestampBytes = UInt64(expiryDate.timeIntervalSinceReferenceDate).data
-        let productID = product.rawValue.dataUsingUTF8StringEncoding
-        try set(service: .premium, account: premiumProductAccount, data: productID)
-        try set(service: .premium, account: premiumExpiryDateAccount, data: timestampBytes.asData)
+    public func setPurchaseHistory(_ purchaseHistory: PurchaseHistory) throws {
+        let encodedHistoryData: Data
+        do {
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+            encodedHistoryData = try encoder.encode(purchaseHistory) 
+        } catch {
+            Diag.error("Failed to encode, aborting [message: \(error.localizedDescription)]")
+            throw KeychainError.unexpectedFormat
+        }
+        try set(service: .premium, account: premiumPurchaseHistory, data: encodedHistoryData)
     }
     
-    #if DEBUG
-    public func clearPremiumExpiryDate() throws {
-        try remove(service: .premium, account: premiumExpiryDateAccount)
-    }
-    #endif
-    
-    public func getPremiumExpiryDate() throws -> Date? {
-        guard let data = try get(service: .premium, account: premiumExpiryDateAccount) else {
+    public func getPurchaseHistory() throws -> PurchaseHistory? {
+        guard let data = try get(service: .premium, account: premiumPurchaseHistory) else {
+            let purchaseHistory = try convertLegacyHistory()
+            return purchaseHistory
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let purchaseHistory = try decoder.decode(PurchaseHistory.self, from: data)
+            return purchaseHistory
+        } catch {
+            Diag.error("Failed to decode, aborting [message: \(error.localizedDescription)]")
             return nil
         }
-        guard let timestamp = UInt64(data: ByteArray(data: data)) else {
-            assertionFailure()
-            return nil
-        }
-        return Date(timeIntervalSinceReferenceDate: Double(timestamp))
     }
     
-    public func getPremiumProduct() throws -> InAppProduct? {
-        guard let data = try get(service: .premium, account: premiumProductAccount),
-            let productIDString = String(data: data, encoding: .utf8) else { return nil }
-        guard let product = InAppProduct(rawValue: productIDString) else { return nil }
-        return product
-    }
-    
-    internal func setPremiumFallbackDate(_ date: Date?) throws {
-        guard let date = date else {
-            try remove(service: .premium, account: premiumFallbackDateAccount)
-            return
+    private func convertLegacyHistory() throws -> PurchaseHistory? {
+        var purchaseHistory = PurchaseHistory.empty
+        var foundLegacyData = false
+        if let productIDData = try get(service: .premium, account: premiumProductAccount),
+           let productIDString = String(data: productIDData, encoding: .utf8),
+           let product = InAppProduct(rawValue: productIDString)
+        {
+            foundLegacyData = true
+            purchaseHistory.latestPremiumProduct = product
         }
 
-        let timestampBytes = UInt64(date.timeIntervalSinceReferenceDate).data
-        try set(service: .premium, account: premiumFallbackDateAccount, data: timestampBytes.asData)
-    }
-    
-    internal func getPremiumFallbackDate() throws -> Date? {
-        guard let data = try get(service: .premium, account: premiumFallbackDateAccount) else {
+        if let expiryDateData = try get(service: .premium, account: premiumExpiryDateAccount),
+           let expiryDateTimestamp = UInt64(data: ByteArray(data: expiryDateData))
+        {
+            foundLegacyData = true
+            purchaseHistory.latestPremiumExpiryDate = Date(
+                timeIntervalSinceReferenceDate: Double(expiryDateTimestamp)
+            )
+        }
+
+        if let fallbackDateData = try get(service: .premium, account: premiumFallbackDateAccount),
+           let fallbackDateTimestamp = UInt64(data: ByteArray(data: fallbackDateData))
+        {
+            foundLegacyData = true
+            purchaseHistory.premiumFallbackDate = Date(
+                timeIntervalSinceReferenceDate: Double(fallbackDateTimestamp)
+            )
+        }
+        
+        guard foundLegacyData else {
             return nil
         }
-        guard let timestamp = UInt64(data: ByteArray(data: data)) else {
-            assertionFailure()
-            return nil
-        }
-        return Date(timeIntervalSinceReferenceDate: Double(timestamp))
+        Diag.debug("Found purchase history in old format, upgrading")
+        try setPurchaseHistory(purchaseHistory)
+        try remove(service: .premium, account: premiumProductAccount)
+        try remove(service: .premium, account: premiumExpiryDateAccount)
+        try remove(service: .premium, account: premiumFallbackDateAccount)
+        Diag.info("Purchase history upgraded")
+        
+        return purchaseHistory
     }
 }

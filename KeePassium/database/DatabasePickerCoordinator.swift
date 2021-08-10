@@ -69,6 +69,17 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     
     #if MAIN_APP
+    private func showTipBox(in viewController: UIViewController) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let tipBoxCoordinator = TipBoxCoordinator(router: modalRouter)
+        tipBoxCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        tipBoxCoordinator.start()
+        addChildCoordinator(tipBoxCoordinator)
+        viewController.present(modalRouter, animated: true, completion: nil)
+    }
+    
     private func showAboutScreen(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController

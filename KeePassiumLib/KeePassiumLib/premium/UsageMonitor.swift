@@ -56,7 +56,8 @@ public class UsageMonitor {
             return false
         case .lapsed, 
              .freeLightUse,
-             .freeHeavyUse:
+             .freeHeavyUse,
+             .fallback:
             return true
         }
     }

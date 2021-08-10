@@ -62,12 +62,17 @@ class PremiumCoordinator: NSObject, Coordinator {
         }
     }
     
+    public func stop(completion: (()->Void)?) {
+        premiumManager.delegate = nil
+        router.pop(viewController: planPicker, animated: true, completion: completion)
+    }
+    
     fileprivate func restorePurchases() {
         premiumManager.restorePurchases()
     }
     
     fileprivate func refreshAvailableProducts() {
-        premiumManager.requestAvailableProducts() {
+        premiumManager.requestAvailableProducts(ofKind: .premium) {
             [weak self] (products, error) in
             (UIApplication.shared as! KPApplication).hideNetworkActivityIndicator()
             guard let self = self else { return }
@@ -111,8 +116,7 @@ extension PremiumCoordinator: PricingPlanPickerDelegate {
     }
     
     func didPressCancel(in viewController: PricingPlanPickerVC) {
-        premiumManager.delegate = nil
-        router.pop(viewController: planPicker, animated: true)
+        stop(completion: nil)
     }
     
     func didPressRestorePurchases(in viewController: PricingPlanPickerVC) {
@@ -155,30 +159,39 @@ extension PremiumCoordinator: PremiumManagerDelegate {
     func purchaseStarted(in premiumManager: PremiumManager) {
         planPicker.showMessage(LString.statusPurchasing)
         setPurchasing(true)
-        hadSubscriptionBeforePurchase = premiumManager.getPremiumProduct()?.isSubscription ?? false
+        
+        let purchaseHistory = premiumManager.getPurchaseHistory()
+        if let latestPremiumProduct = purchaseHistory.latestPremiumProduct,
+           latestPremiumProduct.isSubscription,
+           let subscriptionExpiryDate = purchaseHistory.latestPremiumExpiryDate
+        {
+            let isActiveSubscription = subscriptionExpiryDate.timeIntervalSinceNow > 0
+            hadSubscriptionBeforePurchase = isActiveSubscription
+        } else {
+            hadSubscriptionBeforePurchase = false
+        }
+        
+        Watchdog.shared.ignoreMinimizationOnce()
     }
     
-    func purchaseSucceeded(_ product: InAppProduct, in premiumManager: PremiumManager) {
+    func purchaseSucceeded(
+        _ product: InAppProduct,
+        skProduct: SKProduct,
+        in premiumManager: PremiumManager
+    ) {
         setPurchasing(false)
+
+        Watchdog.shared.ignoreMinimizationOnce()
+
         if hadSubscriptionBeforePurchase && !product.isSubscription {
-            let existingSubscriptionAlert = UIAlertController.make(
-                title: LString.titlePurchaseSuccess,
-                message: LString.messageCancelOldSubscriptions,
-                dismissButtonTitle: LString.actionDismiss)
-            let manageSubscriptionAction = UIAlertAction(
-                title: LString.actionManageSubscriptions,
-                style: .default)
-            {
-                (action) in
-                AppStoreHelper.openSubscriptionManagement()
-            }
-            existingSubscriptionAlert.addAction(manageSubscriptionAction)
-            planPicker.present(existingSubscriptionAlert, animated: true, completion: nil)
+            showOngoingSubscriptionReminderAndDismiss()
         } else {
-            StoreReviewSuggester.maybeShowAppReview(
-                appVersion: AppInfo.version,
-                occasion: .didPurchasePremium
-            )
+            stop(completion: {
+                StoreReviewSuggester.maybeShowAppReview(
+                    appVersion: AppInfo.version,
+                    occasion: .didPurchasePremium
+                )
+            })
         }
     }
     
@@ -199,7 +212,8 @@ extension PremiumCoordinator: PremiumManagerDelegate {
     func purchaseRestoringFinished(in premiumManager: PremiumManager) {
         setPurchasing(false)
         switch premiumManager.status {
-        case .subscribed:
+        case .subscribed,
+             .fallback:
             showRestoreConfirmation()
         default:
             if !isProductsRefreshed {
@@ -209,6 +223,29 @@ extension PremiumCoordinator: PremiumManagerDelegate {
         }
     }
     
+    private func showOngoingSubscriptionReminderAndDismiss() {
+        let ongoingSubscriptionAlert = UIAlertController(
+            title: LString.titlePurchaseSuccess,
+            message: LString.messageCancelOldSubscriptions,
+            preferredStyle: .alert
+        )
+        ongoingSubscriptionAlert.addAction(
+            title: LString.actionManageSubscriptions,
+            style: .default,
+            handler: { _ in
+                AppStoreHelper.openSubscriptionManagement()
+            }
+        )
+        ongoingSubscriptionAlert.addAction(
+            title: LString.actionDismiss,
+            style: .cancel,
+            handler: { [weak self] _ in
+                self?.stop(completion: nil)
+            }
+        )
+        planPicker.present(ongoingSubscriptionAlert, animated: true, completion: nil)
+    }
+    
     private func showRestoreConfirmation() {
         let successAlert = UIAlertController(
             title: LString.titlePurchaseRestored,
@@ -216,8 +253,7 @@ extension PremiumCoordinator: PremiumManagerDelegate {
             preferredStyle: .alert)
         let okAction = UIAlertAction(title: LString.actionOK, style: .default) {
             [weak self] _ in
-            guard let self = self else { return }
-            self.router.pop(viewController: self.planPicker, animated: true)
+            self?.stop(completion: nil)
         }
         successAlert.addAction(okAction)
         planPicker.present(successAlert, animated: true, completion: nil)

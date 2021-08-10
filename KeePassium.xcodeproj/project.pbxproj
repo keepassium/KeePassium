@@ -111,7 +111,6 @@
 		753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
 		753DF2D0263E0EF20046F185 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
 		753DF2D3263E0EF30046F185 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
-		753F924B22905621005E496F /* PremiumUpgradeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924A22905621005E496F /* PremiumUpgradeHelper.swift */; };
 		753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		753FE83524C1A9A400063FBB /* UIViewController+alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753FE83424C1A9A400063FBB /* UIViewController+alerts.swift */; };
@@ -150,6 +149,10 @@
 		75514A3420DF5B6200202340 /* EntryFieldEditorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75514A3320DF5B6200202340 /* EntryFieldEditorCells.swift */; };
 		7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */; };
 		7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */; };
+		755B435B26BC894200C24386 /* TipBoxCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B435A26BC894200C24386 /* TipBoxCoordinator.swift */; };
+		755B435D26BD606300C24386 /* TipBoxVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E5FE26BB4FE1000F1443 /* TipBoxVC.storyboard */; };
+		755B435E26BD606700C24386 /* TipBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7598D79026BBFD5C0019C625 /* TipBoxVC.swift */; };
+		755B435F26BD606A00C24386 /* TipBoxCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B435A26BC894200C24386 /* TipBoxCoordinator.swift */; };
 		755B862E23054FA200E9FC83 /* AboutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863023054FA200E9FC83 /* AboutVC.storyboard */; };
 		755B863123054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863423054FAD00E9FC83 /* PasscodeInputVC.storyboard */; };
 		755B863223054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863423054FAD00E9FC83 /* PasscodeInputVC.storyboard */; };
@@ -415,6 +418,7 @@
 		759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
 		7598963F2341590300DF39AA /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
 		759896402341590300DF39AA /* KeePassiumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7598D79126BBFD5C0019C625 /* TipBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7598D79026BBFD5C0019C625 /* TipBoxVC.swift */; };
 		7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599636F22E112E50004BC85 /* Attachment+extensions.swift */; };
 		759992F024B6140D006CC379 /* LString+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759992EF24B6140D006CC379 /* LString+premium.swift */; };
 		759992F124B6140D006CC379 /* LString+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759992EF24B6140D006CC379 /* LString+premium.swift */; };
@@ -439,6 +443,7 @@
 		75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A5312223C0D35500900ED1 /* NavigationRouter.swift */; };
 		75A5312823C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A5312723C0DFE900900ED1 /* ItemRelocationCoordinator.swift */; };
 		75A5312923C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A5312723C0DFE900900ED1 /* ItemRelocationCoordinator.swift */; };
+		75A7E5FF26BB4FE1000F1443 /* TipBoxVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E5FE26BB4FE1000F1443 /* TipBoxVC.storyboard */; };
 		75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
 		75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */; };
 		75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
@@ -483,7 +488,6 @@
 		75B38C1D233E5B7C006BDEFC /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
 		75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71C21C98D620025C706 /* SupportEmailComposer.swift */; };
 		75B38C1F233E5B7C006BDEFC /* ViewEntryFieldCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */; };
-		75B38C20233E5B7C006BDEFC /* PremiumUpgradeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924A22905621005E496F /* PremiumUpgradeHelper.swift */; };
 		75B38C21233E5B7C006BDEFC /* ItemIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE9D220CF8B5E00995846 /* ItemIconPicker.swift */; };
 		75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDC20C3ACFD00C5D834 /* KPApplication.swift */; };
 		75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
@@ -1096,7 +1100,6 @@
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewerCoordinator.swift; sourceTree = "<group>"; };
 		753F293E2643FEF800F0413A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
-		753F924A22905621005E496F /* PremiumUpgradeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUpgradeHelper.swift; sourceTree = "<group>"; };
 		753F924D2290705D005E496F /* SKProduct+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+extension.swift"; sourceTree = "<group>"; };
 		753FE83424C1A9A400063FBB /* UIViewController+alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alerts.swift"; sourceTree = "<group>"; };
 		7542D2412129640F00C8A926 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
@@ -1279,6 +1282,7 @@
 		75530C8E233E603000EC557E /* KeePassiumLibPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75530C94233E604E00EC557E /* KeePassiumLibPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLibPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeResponseManager.swift; sourceTree = "<group>"; };
+		755B435A26BC894200C24386 /* TipBoxCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBoxCoordinator.swift; sourceTree = "<group>"; };
 		755B862F23054FA200E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AboutVC.storyboard; sourceTree = "<group>"; };
 		755B863323054FAD00E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PasscodeInputVC.storyboard; sourceTree = "<group>"; };
 		755B863A23054FC700E9FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WelcomeVC.storyboard; sourceTree = "<group>"; };
@@ -1290,6 +1294,7 @@
 		755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extensions.swift"; sourceTree = "<group>"; };
 		7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareTextView.swift; sourceTree = "<group>"; };
 		7561850420E0379F00EEFAEE /* ValidatingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatingTextView.swift; sourceTree = "<group>"; };
+		7562BB2826B971E9009836A8 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Configuration.storekit; path = KeePassium/Configuration.storekit; sourceTree = "<group>"; };
 		75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFieldCells.swift; sourceTree = "<group>"; };
 		75679ACA22F8095F00372301 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		75679ACD22FD896F00372301 /* NewsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCenter.swift; sourceTree = "<group>"; };
@@ -1470,6 +1475,7 @@
 		7597DBDD25F58BD700D1A126 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		759894B624620AF6006B6709 /* FileExportHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExportHelper.swift; sourceTree = "<group>"; };
 		759894BB24620D33006B6709 /* FileDestructionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDestructionHelper.swift; sourceTree = "<group>"; };
+		7598D79026BBFD5C0019C625 /* TipBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBoxVC.swift; sourceTree = "<group>"; };
 		7599636F22E112E50004BC85 /* Attachment+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Attachment+extensions.swift"; sourceTree = "<group>"; };
 		759992EF24B6140D006CC379 /* LString+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+premium.swift"; sourceTree = "<group>"; };
 		759992F224B666F7006CC379 /* PricingPlanCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingPlanCollectionLayout.swift; sourceTree = "<group>"; };
@@ -1482,6 +1488,7 @@
 		75A357BD25F58E2800C30909 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		75A5312223C0D35500900ED1 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		75A5312723C0DFE900900ED1 /* ItemRelocationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRelocationCoordinator.swift; sourceTree = "<group>"; };
+		75A7E5FE26BB4FE1000F1443 /* TipBoxVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TipBoxVC.storyboard; sourceTree = "<group>"; };
 		75AC35BC23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75AC35BD23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75AC35BE23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
@@ -2130,7 +2137,6 @@
 			isa = PBXGroup;
 			children = (
 				75A26775228F02C70097C693 /* PremiumCoordinator.swift */,
-				753F924A22905621005E496F /* PremiumUpgradeHelper.swift */,
 				753F924D2290705D005E496F /* SKProduct+extension.swift */,
 				75A2677C22904E0D0097C693 /* PremiumFeature+extension.swift */,
 				758BAD9A24B53ABF00CC9265 /* PricingPlanPickerVC.storyboard */,
@@ -2166,6 +2172,7 @@
 		754BF0722082A6BD00E3A292 = {
 			isa = PBXGroup;
 			children = (
+				7562BB2826B971E9009836A8 /* Configuration.storekit */,
 				754D7C1E238C384A005652E1 /* KeePassium-Bridging-Header.h */,
 				754BF07D2082A6BD00E3A292 /* KeePassium */,
 				750CFBC921BA9ACD00E62B09 /* KeePassium AutoFill */,
@@ -2429,6 +2436,7 @@
 				750E15A6269C95140040D599 /* onboarding */,
 				7579A06224F0728F00C98F24 /* changelog */,
 				7588B6C02627319700F5D372 /* password-generator */,
+				75A7E5FD26BB4F9E000F1443 /* tipbox */,
 				759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */,
 				7550D24B215FDEC500360E0C /* AppCoverVC.swift */,
 				75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */,
@@ -2453,6 +2461,16 @@
 				7572665924CB1B500099B6E1 /* HelpArticle.swift */,
 			);
 			path = help;
+			sourceTree = "<group>";
+		};
+		75A7E5FD26BB4F9E000F1443 /* tipbox */ = {
+			isa = PBXGroup;
+			children = (
+				75A7E5FE26BB4FE1000F1443 /* TipBoxVC.storyboard */,
+				7598D79026BBFD5C0019C625 /* TipBoxVC.swift */,
+				755B435A26BC894200C24386 /* TipBoxCoordinator.swift */,
+			);
+			path = tipbox;
 			sourceTree = "<group>";
 		};
 		75AD9FB3212EE35300F49C23 /* views */ = {
@@ -2851,6 +2869,7 @@
 				755E7D9C232008300010E199 /* InfoPlist.strings in Resources */,
 				756F3645260E9670005A35DA /* KeyFilePickerVC.storyboard in Resources */,
 				755B863823054FC700E9FC83 /* WelcomeVC.storyboard in Resources */,
+				75A7E5FF26BB4FE1000F1443 /* TipBoxVC.storyboard in Resources */,
 				751E0CFB2309AF0D0088BB10 /* GroupViewerVC.storyboard in Resources */,
 				758FC14D24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
 				758FC14124CEF72000BAD35C /* appicon-classic-pro_iPadApp_76@2x.png in Resources */,
@@ -2991,6 +3010,7 @@
 				758FC12C24CEF72000BAD35C /* appicon-keepass_iPadProApp_83.5@2x.png in Resources */,
 				758FC11C24CEF72000BAD35C /* appicon-classic-free_iPadApp_76.png in Resources */,
 				752F5888247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */,
+				755B435D26BD606300C24386 /* TipBoxVC.storyboard in Resources */,
 				758FC11824CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */,
 				75B38C73233E5B7C006BDEFC /* SettingsAutoFillVC.storyboard in Resources */,
 				75B38C74233E5B7C006BDEFC /* DatabaseUnlockerVC.storyboard in Resources */,
@@ -3247,12 +3267,12 @@
 				754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */,
 				750C683220D767F6001A6AA0 /* EntryFieldEditorVC.swift in Sources */,
 				75151D3323268AB300F3C411 /* UILabel+extensions.swift in Sources */,
+				7598D79126BBFD5C0019C625 /* TipBoxVC.swift in Sources */,
 				7572664B24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				755E9C4D20BE5DC200FD7C7A /* UIImage+extensions.swift in Sources */,
 				75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */,
 				7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */,
 				75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */,
-				753F924B22905621005E496F /* PremiumUpgradeHelper.swift in Sources */,
 				756AE9D320CF8B5E00995846 /* ItemIconPicker.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
 				7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */,
@@ -3292,6 +3312,7 @@
 				75A26776228F02C80097C693 /* PremiumCoordinator.swift in Sources */,
 				757FB3CA21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				7573FD8B2321664F00DCDA5A /* MultilineButton.swift in Sources */,
+				755B435B26BC894200C24386 /* TipBoxCoordinator.swift in Sources */,
 				7546FBC120BFB8DD00C5D834 /* WelcomeVC.swift in Sources */,
 				75267CFE25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */,
@@ -3416,11 +3437,11 @@
 				754E408F263067DE003E4854 /* DatabaseUnlockerVC.swift in Sources */,
 				75B38C1B233E5B7C006BDEFC /* UILabel+extensions.swift in Sources */,
 				7572664D24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
+				755B435E26BD606700C24386 /* TipBoxVC.swift in Sources */,
 				75B38C1C233E5B7C006BDEFC /* UIImage+extensions.swift in Sources */,
 				75B38C1D233E5B7C006BDEFC /* UIView+extension.swift in Sources */,
 				75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */,
 				75B38C1F233E5B7C006BDEFC /* ViewEntryFieldCells.swift in Sources */,
-				75B38C20233E5B7C006BDEFC /* PremiumUpgradeHelper.swift in Sources */,
 				75B38C21233E5B7C006BDEFC /* ItemIconPicker.swift in Sources */,
 				75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */,
 				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
@@ -3461,6 +3482,7 @@
 				75B38C39233E5B7C006BDEFC /* PasscodeInputVC.swift in Sources */,
 				75B38C3A233E5B7C006BDEFC /* MultilineButton.swift in Sources */,
 				75B38C3C233E5B7C006BDEFC /* WelcomeVC.swift in Sources */,
+				755B435F26BD606A00C24386 /* TipBoxCoordinator.swift in Sources */,
 				75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */,
 				75B38C3E233E5B7C006BDEFC /* SettingsAppLockVC.swift in Sources */,
 				7573DECE26050CF000E8440D /* QRCodeScanner.swift in Sources */,

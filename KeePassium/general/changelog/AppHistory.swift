@@ -9,6 +9,7 @@
 import KeePassiumLib
 
 struct AppHistory: Decodable {
+    fileprivate static let fileName = "ChangeLog"
     struct Section: Decodable {
         let version: String
         let releaseDate: Date
@@ -31,20 +32,44 @@ struct AppHistory: Decodable {
 
 extension AppHistory {
 
-    public static func load(from fileName: String) -> AppHistory? {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json", subdirectory: "") else {
-            Diag.error("Failed to find app history file")
-            return nil
+    public static func load(completion: @escaping ((AppHistory?)->Void)) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            loadInBackground(completion: completion)
         }
+    }
+    
+    private static func loadInBackground(completion: @escaping ((AppHistory?)->Void)) {
+        dispatchPrecondition(condition: .notOnQueue(.main))
+        
+        let url = Bundle.main.url(
+            forResource: AppHistory.fileName,
+            withExtension: "json",
+            subdirectory: "")
+        guard let fileURL = url else {
+            Diag.error("Failed to find app history file")
+            DispatchQueue.main.async {
+                completion(nil)
+            }
+            return
+        }
+        
         do {
-            let fileContents = try Data(contentsOf: url)
+            let fileContents = try Data(contentsOf: fileURL)
             let jsonDecoder = JSONDecoder()
             jsonDecoder.dateDecodingStrategy = .iso8601
             let appHistory = try jsonDecoder.decode(AppHistory.self, from: fileContents)
-            return appHistory
+            DispatchQueue.main.async {
+                completion(appHistory)
+            }
         } catch {
             Diag.error("Failed to load app history file [reason: \(error.localizedDescription)]")
-            return nil
+            DispatchQueue.main.async { completion(nil) }
         }
+    }
+    
+    public func versionOnDate(_ date: Date) -> String? {
+        let sortedSections = sections.sorted(by: { $0.releaseDate < $1.releaseDate })
+        let matchingSection = sortedSections.last(where: { $0.releaseDate <= date })
+        return matchingSection?.version
     }
 }

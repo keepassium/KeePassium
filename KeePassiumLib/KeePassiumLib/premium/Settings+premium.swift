@@ -22,7 +22,8 @@ public extension Settings {
         case .freeHeavyUse:
             return min(actualTimeout, Settings.heavyUseDatabaseLockTimeout)
         case .subscribed,
-             .lapsed:
+             .lapsed,
+             .fallback:
             return actualTimeout
         }
     }
@@ -52,7 +53,8 @@ public extension Settings {
         case .freeHeavyUse:
             return timeout <= Settings.heavyUseDatabaseLockTimeout && timeout != .never
         case .subscribed,
-             .lapsed:
+             .lapsed,
+             .fallback:
             return true
         }
     }
@@ -65,7 +67,8 @@ public extension Settings {
         case .freeHeavyUse:
             return timeout <= Settings.heavyUseDatabaseLockTimeout && timeout != .never
         case .subscribed,
-             .lapsed:
+             .lapsed,
+             .fallback:
             return true
         }
     }

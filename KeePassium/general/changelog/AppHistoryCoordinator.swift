@@ -26,8 +26,9 @@ class AppHistoryCoordinator: Coordinator {
     }
     
     func start() {
-        let appHistory = AppHistory.load(from: "ChangeLog")
-        viewer.appHistory = appHistory
+         AppHistory.load(completion: { [weak self] appHistory in
+            self?.viewer.appHistory = appHistory
+        })
         router.push(viewer, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()

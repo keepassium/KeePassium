@@ -150,6 +150,7 @@ class PricingPlanFactory {
             Diag.error("IAP with unrecognized product ID [id: \(product.productIdentifier)]")
             return nil
         }
+        assert(iapProduct.kind == .premium, "Wrong IAP product kind encountered")
         
         switch iapProduct {
         case .betaForever:
@@ -161,6 +162,12 @@ class PricingPlanFactory {
             return PricingPlanPremiumMonthly(product)
         case .yearlySubscription:
             return PricingPlanPremiumYearly(product)
+        case .version88:
+            return PricingPlanVersionPurchase(product)
+        case .donationSmall,
+             .donationMedium,
+             .donationLarge:
+            return nil
         }
     }
 }
@@ -316,12 +323,38 @@ class PricingPlanPremiumYearly: RealPricingPlan {
     }
 }
 
+class PricingPlanVersionPurchase: RealPricingPlan {
+    override init(_ product: SKProduct) {
+        super.init(product)
+
+        self.localizedPriceWithPeriod = localizedPrice
+        self.callToAction = LString.premiumCallToActionBuyNow
+        self.ctaSubtitle = LString.planConditionFullPriceUpgrade
+        self.conditions = [
+            PricingPlanCondition(kind: .currentPremiumFeatures, isIncluded: true, moreInfo: .none),
+            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
+            PricingPlanCondition(kind: .oneYearEmailSupport, isIncluded: true, moreInfo: .none),
+            PricingPlanCondition(kind: .upcomingPremiumFeatures, isIncluded: false, moreInfo: .none),
+            PricingPlanCondition(kind: .familySharing, isIncluded: false, moreInfo: .familySharing),
+        ]
+        self.benefits = [
+            PricingPlanBenefit.multipleDatabases,
+            PricingPlanBenefit.longDatabaseTimeout,
+            PricingPlanBenefit.attachmentPreview,
+            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.customAppIcons,
+            PricingPlanBenefit.viewFieldReferences,
+        ]
+        self.smallPrint = nil
+    }
+}
+
 class PricingPlanPremiumForever: RealPricingPlan {
     override init(_ product: SKProduct) {
         super.init(product)
         
         self.localizedPriceWithPeriod = localizedPrice
-        self.callToAction = LString.premiumCallToActionUpgradeNow
+        self.callToAction = LString.premiumCallToActionBuyNow
         self.ctaSubtitle = nil
         self.conditions = [
             PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: true, moreInfo: .none),

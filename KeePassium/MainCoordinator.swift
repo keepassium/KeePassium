@@ -135,6 +135,8 @@ extension MainCoordinator {
         switch url {
         case AppGroup.upgradeToPremiumURL:
             showPremiumUpgrade(in: rootSplitVC)
+        case AppGroup.donateURL:
+            showDonationScreen(in: rootSplitVC)
         default:
             Diag.warning("Unrecognized URL, ignoring [url: \(url.absoluteString)]")
         }
@@ -240,6 +242,18 @@ extension MainCoordinator {
     private func deallocateDatabaseUnlocker() {
         databaseUnlockerRouter = nil
         childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
+    }
+    
+    private func showDonationScreen(in viewController: UIViewController) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let tipBoxCoordinator = TipBoxCoordinator(router: modalRouter)
+        tipBoxCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        tipBoxCoordinator.start()
+        addChildCoordinator(tipBoxCoordinator)
+        
+        viewController.present(modalRouter, animated: true, completion: nil)
     }
 }
 

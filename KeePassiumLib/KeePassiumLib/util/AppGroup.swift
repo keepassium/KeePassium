@@ -14,7 +14,9 @@ public class AppGroup {
     public static let appURLScheme = "keepassium"
     
     public static let upgradeToPremiumURL = URL(string: appURLScheme + "://upgradeToPremium")! 
-    
+
+    public static let donateURL = URL(string: appURLScheme + "://donate")! 
+
     public static var isMainApp: Bool {
         return applicationShared != nil
     }

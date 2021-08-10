@@ -9,7 +9,11 @@
 import Foundation
 import StoreKit
 
-public enum InAppProduct: String {
+public enum InAppProduct: String, Codable {
+    public enum Kind {
+        case premium
+        case donation
+    }
     public enum Period {
         case oneTime
         case yearly
@@ -17,12 +21,19 @@ public enum InAppProduct: String {
         case other
     }
     
+    static let allForever = [.forever, forever2]
+    
     case betaForever = "com.keepassium.ios.iap.beta.forever"
     
     case forever = "com.keepassium.ios.iap.forever"
     case forever2 = "com.keepassium.ios.iap.forever.2"
     case montlySubscription = "com.keepassium.ios.iap.subscription.1month"
     case yearlySubscription = "com.keepassium.ios.iap.subscription.1year"
+    case version88 = "com.keepassium.ios.iap.version.88"
+    
+    case donationSmall = "com.keepassium.ios.donation.small"
+    case donationMedium = "com.keepassium.ios.donation.medium"
+    case donationLarge = "com.keepassium.ios.donation.large"
     
     public var period: Period {
         return InAppProduct.period(productIdentifier: self.rawValue)
@@ -37,6 +48,45 @@ public enum InAppProduct: String {
         case .montlySubscription,
              .yearlySubscription:
             return true
+        case .version88:
+            return false
+        case .donationSmall,
+             .donationMedium,
+             .donationLarge:
+            return false
+        }
+    }
+    
+    public var isVersionPurchase: Bool {
+        switch self {
+        case .version88:
+            return true
+        case .betaForever,
+             .forever,
+             .forever2,
+             .montlySubscription,
+             .yearlySubscription:
+            return false
+        case .donationSmall,
+             .donationMedium,
+             .donationLarge:
+            return false
+        }
+    }
+    
+    public var kind: Kind {
+        switch self {
+        case .betaForever,
+             .forever,
+             .forever2,
+             .montlySubscription,
+             .yearlySubscription,
+             .version88:
+            return .premium
+        case .donationSmall,
+             .donationMedium,
+             .donationLarge:
+            return .donation
         }
     }
     
@@ -47,9 +97,33 @@ public enum InAppProduct: String {
             return .yearly
         } else if productIdentifier.contains(".1month") {
             return .monthly
+        } else if productIdentifier.contains(".version.") {
+            return .oneTime
+        } else if productIdentifier.contains(".donation.") {
+            return .other
         } else {
             assertionFailure("Should not be here")
             return .other
+        }
+    }
+    
+    public var premiumSupportDurationAfterExpiry: TimeInterval {
+        switch self {
+        case .version88:
+            let oneYear: TimeInterval = 365 * 24 * 60 * 60
+            return oneYear
+        case .betaForever,
+             .forever,
+             .forever2:
+            return 0
+        case .montlySubscription,
+             .yearlySubscription:
+            return 0
+        case .donationSmall,
+             .donationMedium,
+             .donationLarge:
+            assertionFailure("Premium support is not applicable to donations")
+            return 0
         }
     }
 }
@@ -59,7 +133,7 @@ public enum InAppProduct: String {
 public protocol PremiumManagerDelegate: AnyObject {
     func purchaseStarted(in premiumManager: PremiumManager)
     
-    func purchaseSucceeded(_ product: InAppProduct, in premiumManager: PremiumManager)
+    func purchaseSucceeded(_ product: InAppProduct, skProduct: SKProduct, in premiumManager: PremiumManager)
     
     func purchaseDeferred(in premiumManager: PremiumManager)
     
@@ -83,7 +157,7 @@ public class PremiumManager: NSObject {
 #if DEBUG
     private let gracePeriodInSeconds: TimeInterval = 1 * 60
 
-    private let lapsePeriodInSeconds: TimeInterval = 7 * 60
+    private let lapsePeriodInSeconds: TimeInterval = 2 * 60
     
     private let heavyUseThreshold: TimeInterval = 5 * 60
 #else
@@ -92,18 +166,19 @@ public class PremiumManager: NSObject {
     private let heavyUseThreshold: TimeInterval = 8 * 60 * 60 / 12 
 #endif
     
-    private let premiumSupportDuration: TimeInterval = 365 * 24 * 60 * 60 
+    
+    
+    private var purchaseHistory = PurchaseHistory.empty
 
+    public var isTrialAvailable: Bool { return !purchaseHistory.containsTrial }
     
-    
-    public private(set) var isTrialAvailable: Bool = true
-    
-    public private(set) var fallbackDate: Date? = nil
+    public var fallbackDate: Date? { return purchaseHistory.premiumFallbackDate }
     
     public enum Status {
         case initialGracePeriod
         case subscribed
         case lapsed
+        case fallback
         case freeLightUse
         case freeHeavyUse
     }
@@ -128,15 +203,6 @@ public class PremiumManager: NSObject {
         updateStatus(allowSubscriptionExpiration: false)
     }
 
-    #if DEBUG
-    public func resetSubscription() {
-        try? Keychain.shared.clearPremiumExpiryDate()
-        usageMonitor.resetStats()
-        Settings.current.resetFirstLaunchTimestampToNow()
-        updateStatus(allowSubscriptionExpiration: true)
-    }
-    #endif
-    
     private func updateStatus(allowSubscriptionExpiration: Bool) {
         if !allowSubscriptionExpiration && status == .subscribed {
             return
@@ -144,12 +210,15 @@ public class PremiumManager: NSObject {
         
         let previousStatus = status
         var wasStatusSet = false
-        if let expiryDate = getPremiumExpiryDate() {
+        if let expiryDate = purchaseHistory.latestPremiumExpiryDate {
             if expiryDate.timeIntervalSinceNow > 0 {
                 status = .subscribed
                 wasStatusSet = true
             } else if Date.now.timeIntervalSince(expiryDate) < lapsePeriodInSeconds {
                 status = .lapsed
+                wasStatusSet = true
+            } else if let fallbackDate = purchaseHistory.premiumFallbackDate {
+                status = .fallback
                 wasStatusSet = true
             }
         } else {
@@ -172,109 +241,45 @@ public class PremiumManager: NSObject {
             notifyStatusChanged()
         }
     }
-    
-    private var isSubscribed: Bool {
-        if let premiumExpiryDate = getPremiumExpiryDate() {
-            let isPremium = Date.now < premiumExpiryDate
-            return isPremium
-        }
-        return false
-    }
 
-    public func getPremiumProduct() -> InAppProduct? {
-        if BusinessModel.type == .prepaid {
-            return InAppProduct.forever
-        }
-        
-        #if DEBUG
-        return InAppProduct.betaForever 
-        #endif
-        if Settings.current.isTestEnvironment {
-            return InAppProduct.betaForever
-        }
-
-        do {
-            return try Keychain.shared.getPremiumProduct() 
-        } catch {
-            Diag.error("Failed to get premium product info [message: \(error.localizedDescription)]")
-            return nil
-        }
-    }
-    
-    public func getPremiumExpiryDate() -> Date? {
-        if BusinessModel.type == .prepaid {
-            return Date.distantFuture
-        }
-        
-        #if DEBUG
-        return Date.distantFuture 
-        #endif
-        if Settings.current.isTestEnvironment {
-            return Date.distantFuture
-        }
-        
-        do {
-            return try Keychain.shared.getPremiumExpiryDate() 
-        } catch {
-            Diag.error("Failed to get premium expiry date [message: \(error.localizedDescription)]")
-            return nil
-        }
-    }
-    
-    fileprivate func setPremiumExpiry(for product: InAppProduct, to expiryDate: Date) -> Bool {
-        do {
-            try Keychain.shared.setPremiumExpiry(for: product, to: expiryDate)
-            updateStatus()
-            return true
-        } catch {
-            Diag.error("Failed to save purchase expiry date [message: \(error.localizedDescription)]")
-            return false
-        }
+    public func getPurchaseHistory() -> PurchaseHistory {
+        return purchaseHistory
     }
     
     
     public func reloadReceipt() {
         guard BusinessModel.type == .freemium else { return }
         
-        let oldFallbackDate = fallbackDate
+        let oldPurchaseHistory = purchaseHistory
         if AppGroup.isMainApp {
             let receiptAnalyzer = ReceiptAnalyzer()
-            receiptAnalyzer.loadReceipt()
-            isTrialAvailable = !receiptAnalyzer.containsTrial
-            fallbackDate = receiptAnalyzer.fallbackDate
+            purchaseHistory = receiptAnalyzer.loadReceipt()
             do {
-                try Keychain.shared.setPremiumFallbackDate(fallbackDate) 
+                try Keychain.shared.setPurchaseHistory(purchaseHistory) 
             } catch {
-                Diag.warning("Failed to store premium fallback date [message: \(error.localizedDescription)]")
+                Diag.error("Failed to save purchase history [message: \(error.localizedDescription)]")
             }
-        } else { 
+        } else {
             do {
-                fallbackDate = try Keychain.shared.getPremiumFallbackDate()  
+                let savedHistory = try Keychain.shared.getPurchaseHistory() 
+                purchaseHistory = savedHistory ?? PurchaseHistory.empty
             } catch {
-                Diag.warning("Failed to retrieve premium fallback date [message: \(error.localizedDescription)]")
+                Diag.error("Failed to load purchase history [message: \(error.localizedDescription)]")
             }
         }
         
-        if let newFallbackDate = fallbackDate, newFallbackDate != oldFallbackDate {
-            Diag.info("Premium fallback date changed to \(fallbackDate!.iso8601String())")
+        if purchaseHistory != oldPurchaseHistory {
+            Diag.info("Purchase history updated")
             notifyStatusChanged()
         }
     }
     
     public func isPremiumSupportAvailable() -> Bool {
-        switch status {
-        case .subscribed,
-             .lapsed:
-            return true
-        case .initialGracePeriod,
-             .freeLightUse,
-             .freeHeavyUse:
-            if let fallbackDate = fallbackDate {
-                let supportExpiryDate = fallbackDate.addingTimeInterval(premiumSupportDuration)
-                return supportExpiryDate < .now
-            }
+        guard let premiumSupportExpiryDate = purchaseHistory.premiumSupportExpiryDate else {
             return false
         }
+        let timeLeft = premiumSupportExpiryDate.timeIntervalSinceNow
+        return timeLeft > 0
     }
     
     
@@ -289,43 +294,40 @@ public class PremiumManager: NSObject {
         let secondsLeft = gracePeriodInSeconds - secondsFromFirstLaunch
         return secondsLeft
     }
-    
-    public var secondsUntilExpiration: Double? {
-        guard let expiryDate = getPremiumExpiryDate() else { return nil }
-        return expiryDate.timeIntervalSinceNow
-    }
-    
-    public var secondsSinceExpiration: Double? {
-        guard let secondsUntilExpiration = secondsUntilExpiration else { return nil }
-        return -secondsUntilExpiration
-    }
-    
-    public var lapsePeriodSecondsRemaining: Double? {
-        guard let secondsSinceExpiration = secondsSinceExpiration,
-            secondsSinceExpiration > 0 
-            else { return nil }
-        let secondsLeft = lapsePeriodInSeconds - secondsSinceExpiration
-        return secondsLeft
-    }
 
     
     public fileprivate(set) var availableProducts: [SKProduct]?
-    private let purchaseableProductIDs = Set<String>([
-        InAppProduct.forever2.rawValue,
-        InAppProduct.montlySubscription.rawValue,
-        InAppProduct.yearlySubscription.rawValue])
+    private let purchaseableProducts: [InAppProduct.Kind : [InAppProduct]] = [
+        .premium: [
+            .forever2,
+            .montlySubscription,
+            .yearlySubscription,
+            .version88,
+        ],
+        .donation: [
+            .donationSmall,
+            .donationMedium,
+            .donationLarge,
+        ]
+    ]
+        
     
     private var productsRequest: SKProductsRequest?
 
     public typealias ProductsRequestHandler = (([SKProduct]?, Error?) -> Void)
     fileprivate var productsRequestHandler: ProductsRequestHandler?
     
-    public func requestAvailableProducts(completionHandler: @escaping ProductsRequestHandler)
-    {
+    public func requestAvailableProducts(
+        ofKind kind: InAppProduct.Kind,
+        completionHandler: @escaping ProductsRequestHandler
+    ) {
         productsRequest?.cancel()
         productsRequestHandler = completionHandler
         
-        productsRequest = SKProductsRequest(productIdentifiers: purchaseableProductIDs)
+        let productsToRequest = purchaseableProducts[kind] ?? []
+        let productIDSetToRequest = Set<String>(productsToRequest.map { $0.rawValue })
+        
+        productsRequest = SKProductsRequest(productIdentifiers: productIDSetToRequest)
         productsRequest!.delegate = self
         productsRequest!.start()
     }
@@ -421,6 +423,7 @@ extension PremiumManager: SKPaymentTransactionObserver {
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         ReceiptAnalyzer.logPurchaseHistory()
         Diag.debug("Finished restoring purchases")
+        reloadReceipt()
         delegate?.purchaseRestoringFinished(in: self)
     }
     
@@ -446,74 +449,38 @@ extension PremiumManager: SKPaymentTransactionObserver {
             Diag.error("IAP with unrecognized product ID [id: \(productID)]")
             return
         }
+        guard let skProduct = availableProducts?.first(where: { $0.productIdentifier == productID })
+        else {
+            assertionFailure("Purchased a product which was not available?")
+            Diag.error("IAP with unexpected product ID [id: \(productID)]")
+            return
+        }
         
         Diag.info("IAP purchase update [date: \(transactionDate), product: \(productID)]")
-        if applyPurchase(of: product, on: transactionDate, skipExpired: false) {
-            queue.finishTransaction(transaction)
-        }
-        delegate?.purchaseSucceeded(product, in: self)
+        queue.finishTransaction(transaction)
+        
+        reloadReceipt()
+        delegate?.purchaseSucceeded(product, skProduct: skProduct, in: self)
     }
     
     private func didRestorePurchase(_ transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        defer {
+            queue.finishTransaction(transaction)
+        }
+
         guard let transactionDate = transaction.transactionDate else {
             assertionFailure()
             Diag.warning("IAP transaction date is empty?!")
-            queue.finishTransaction(transaction)
             return
         }
         
         let productID = transaction.payment.productIdentifier
-        guard let product = InAppProduct(rawValue: productID) else {
+        guard let _ = InAppProduct(rawValue: productID) else {
             assertionFailure()
             Diag.error("IAP with unrecognized product ID [id: \(productID)]")
-            queue.finishTransaction(transaction)
             return
         }
         Diag.info("Restored purchase [date: \(transactionDate), product: \(productID)]")
-        if applyPurchase(of: product, on: transactionDate, skipExpired: true) {
-            queue.finishTransaction(transaction)
-        }
-    }
-    
-    private func applyPurchase(
-        of product: InAppProduct,
-        on transactionDate: Date,
-        skipExpired: Bool = false
-        ) -> Bool
-    {
-        let calendar = Calendar.current
-        let newExpiryDate: Date
-        switch product.period {
-        case .oneTime:
-            newExpiryDate = Date.distantFuture
-        case .yearly:
-            #if DEBUG
-                newExpiryDate = calendar.date(byAdding: .hour, value: 1, to: transactionDate)!
-            #else
-                newExpiryDate = calendar.date(byAdding: .year, value: 1, to: transactionDate)!
-            #endif
-        case .monthly:
-            #if DEBUG
-                newExpiryDate = calendar.date(byAdding: .minute, value: 5, to: transactionDate)!
-            #else
-                newExpiryDate = calendar.date(byAdding: .month, value: 1, to: transactionDate)!
-            #endif
-        case .other:
-            assertionFailure()
-            newExpiryDate = calendar.date(byAdding: .year, value: 1, to: transactionDate)!
-        }
-        
-        if skipExpired && newExpiryDate < Date.now {
-            return true
-        }
-        
-        let oldExpiryDate = getPremiumExpiryDate()
-        if newExpiryDate > (oldExpiryDate ?? Date.distantPast) {
-            let isNewDateSaved = setPremiumExpiry(for: product, to: newExpiryDate)
-            return isNewDateSaved
-        } else {
-            return true
-        }
     }
     
     private func didFailToPurchase(
