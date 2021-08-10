@@ -84,7 +84,7 @@ public class Database1: Database {
             metaEntry.erase()
         }
         metaStreamEntries.removeAll()
-        Diag.debug("Database erased")
+        Diag.debug("DB memory cleaned up")
     }
 
     func createNewGroupID() -> Group1ID {

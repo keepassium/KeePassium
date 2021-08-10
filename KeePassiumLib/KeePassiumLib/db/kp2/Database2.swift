@@ -145,6 +145,7 @@ public class Database2: Database {
         hmacKey.erase()
         deletedObjects.removeAll()
         super.erase()
+        Diag.debug("DB memory cleaned up")
     }
     
     internal static func makeNewV4() -> Database2 {
