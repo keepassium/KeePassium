@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+import QuickLook
 
 protocol EntryViewerCoordinatorDelegate: AnyObject {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryViewerCoordinator)
@@ -39,8 +40,8 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     private let fileViewerVC: EntryFileViewerVC
     private let historyViewerVC: EntryHistoryViewerVC
     
-    private var filePreviewController = UIDocumentInteractionController()
-    private var fileExportTemporaryURL: TemporaryFileURL?
+    private var previewController: QLPreviewController? 
+    private var temporaryAttachmentURLs = [TemporaryFileURL]()
     private var photoPicker: PhotoPicker? 
     
     private let settingsNotifications: SettingsNotifications
@@ -85,6 +86,8 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     }
     
     deinit {
+        dismissPreview(animated: false)
+        temporaryAttachmentURLs.removeAll()
         settingsNotifications.stopObserving()
         
         assert(childCoordinators.isEmpty)
@@ -110,10 +113,12 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     }
     
     public func dismiss(animated: Bool) {
+        previewController?.dismiss(animated: animated, completion: nil)
         router.pop(viewController: pagesVC, animated: animated)
     }
     
     public func setEntry(_ entry: Entry, database: Database, isHistoryEntry: Bool, canEditEntry: Bool) {
+        dismissPreview(animated: false)
         if let existingEntryViewerCoo = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
             let historyEntryViewer = existingEntryViewerCoo as! EntryViewerCoordinator
             historyEntryViewer.dismiss(animated: true)
@@ -312,7 +317,7 @@ extension EntryViewerCoordinator {
             let temporaryURL = try saveToTemporaryURL(attachment) 
             FileExportHelper.showFileExportSheet(temporaryURL.url, at: popoverAnchor, parent: viewController)
             
-            self.fileExportTemporaryURL = temporaryURL
+            self.temporaryAttachmentURLs = [temporaryURL]
         } catch {
             Diag.error("Failed to export attachment [reason: \(error.localizedDescription)]")
             viewController.showErrorAlert(error, title: LString.titleFileExportError)
@@ -320,36 +325,45 @@ extension EntryViewerCoordinator {
     }
     
     private func showPreview(
-        for attachment: Attachment,
+        for attachments: [Attachment],
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
         Diag.debug("Will present file preview")
-        do {
-            let temporaryURL = try saveToTemporaryURL(attachment) 
-            
-            self.fileExportTemporaryURL = temporaryURL
-            filePreviewController.url = temporaryURL.url
-            filePreviewController.delegate = self
-            
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                assert(popoverAnchor.kind == .viewRect)
-                if !self.filePreviewController.presentPreview(animated: true) {
-                    Diag.debug("Preview not available, showing menu")
-                    self.filePreviewController.presentOptionsMenu(
-                        from: popoverAnchor.sourceRect!,
-                        in: popoverAnchor.sourceView!,
-                        animated: true
-                    )
-                }
+        let urls = attachments.compactMap { attachment -> TemporaryFileURL? in
+            do {
+                let temporaryURL = try saveToTemporaryURL(attachment) 
+                return temporaryURL
+            } catch {
+                Diag.error("Failed to export attachment [reason: \(error.localizedDescription)]")
+                return nil
             }
-        } catch {
-            Diag.error("Failed to export attachment [reason: \(error.localizedDescription)]")
-            viewController.showErrorAlert(error, title: LString.titleFileExportError)
+        }
+        
+        temporaryAttachmentURLs = urls
+        
+        let previewController = QLPreviewController()
+        previewController.dataSource = self
+        previewController.delegate = self
+        self.previewController = previewController 
+        if ProcessInfo.isRunningOnMac {
+            viewController.present(previewController, animated: true, completion: nil)
+        } else {
+            router.push(previewController, animated: true, onPop: {
+                self.temporaryAttachmentURLs.removeAll()
+            })
         }
     }
     
+    private func dismissPreview(animated: Bool) {
+        guard let previewController = previewController else { return }
+        if ProcessInfo.isRunningOnMac {
+            previewController.dismiss(animated: animated, completion: nil)
+        } else {
+            router.pop(viewController: previewController, animated: animated)
+        }
+    }
+
     private func saveToTemporaryURL(_ attachment: Attachment) throws -> TemporaryFileURL {
         guard let encodedFileName = attachment.name
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
@@ -544,17 +558,27 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         saveDatabase()
     }
     
+    func canPreviewFiles(in viewController: EntryFileViewerVC) -> Bool {
+        return PremiumManager.shared.isAvailable(feature: .canPreviewAttachments)
+    }
+    
     func didPressView(
         file attachment: Attachment,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFileViewerVC
     ) {
-        let isPreviewAllowed = PremiumManager.shared.isAvailable(feature: .canPreviewAttachments)
-        if isPreviewAllowed {
-            showPreview(for: attachment, at: popoverAnchor, in: viewController)
+        if canPreviewFiles(in: viewController) {
+            showPreview(for: [attachment], at: popoverAnchor, in: viewController)
         } else {
             showExportDialog(for: attachment, at: popoverAnchor, in: viewController)
         }
+    }
+    func didPressViewAll(
+        files attachments: [Attachment],
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFileViewerVC
+    ) {
+        showPreview(for: attachments, at: popoverAnchor, in: viewController)
     }
     
     func didPressDelete(
@@ -721,5 +745,25 @@ extension EntryViewerCoordinator: SettingsObserver {
             return
         }
         refresh()
+    }
+}
+
+extension EntryViewerCoordinator: QLPreviewControllerDataSource {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return temporaryAttachmentURLs.count
+    }
+    
+    func previewController(
+        _ controller: QLPreviewController,
+        previewItemAt index: Int
+    ) -> QLPreviewItem {
+        let fileURL = temporaryAttachmentURLs[index].url
+        return fileURL as QLPreviewItem
+    }
+}
+
+extension EntryViewerCoordinator: QLPreviewControllerDelegate {
+    func previewControllerDidDismiss(_ controller: QLPreviewController) {
+        previewController = nil
     }
 }

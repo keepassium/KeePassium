@@ -11,6 +11,8 @@ import KeePassiumLib
 protocol EntryFileViewerDelegate: AnyObject {
     func shouldReplaceExistingFile(in viewController: EntryFileViewerVC) -> Bool
     
+    func canPreviewFiles(in viewController: EntryFileViewerVC) -> Bool
+    
     func didPressAddFile(at popoverAnchor: PopoverAnchor, in viewController: EntryFileViewerVC)
     func didPressAddPhoto(
         fromCamera: Bool,
@@ -24,6 +26,11 @@ protocol EntryFileViewerDelegate: AnyObject {
     )
     func didPressView(
         file attachment: Attachment,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFileViewerVC
+    )
+    func didPressViewAll(
+        files attachments: [Attachment],
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFileViewerVC
     )
@@ -43,6 +50,7 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
 
     private var canEditFiles = false
 
+    private var previewFilesBarButton: UIBarButtonItem! 
     private var addFileBarButton: UIBarButtonItem! 
     private var deleteFilesBarButton: UIBarButtonItem! 
     
@@ -53,6 +61,14 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
         
         navigationItem.rightBarButtonItem = editButtonItem
         tableView.allowsMultipleSelectionDuringEditing = true
+
+        previewFilesBarButton = UIBarButtonItem(
+            image: UIImage(asset: .filePreviewToolbar),
+            style: .plain,
+            target: self,
+            action: #selector(didPressViewAll(_:)))
+        previewFilesBarButton.title = LString.actionPreviewAttachments
+        previewFilesBarButton.accessibilityLabel = LString.actionPreviewAttachments
 
         if #available(iOS 14, *) {
             addFileBarButton = UIBarButtonItem(systemItem: .add)
@@ -73,6 +89,8 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
             action: #selector(confirmDeleteSelection(_:))
         )
         toolbarItems = [
+            previewFilesBarButton,
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             addFileBarButton,
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             deleteFilesBarButton
@@ -273,6 +291,11 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
 
 private extension EntryFileViewerVC {
     
+    @objc private func didPressViewAll(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressViewAll(files: attachments, at: popoverAnchor, in: self)
+    }
+    
     @objc private func didPressAddFileAttachment(_ sender: AnyObject) {
         assert(canEditFiles)
         maybeConfirmReplacement(confirmed: { [weak self] in
@@ -384,6 +407,8 @@ private extension EntryFileViewerVC {
     
     private func updateToolbar() {
         let hasAttachments = !attachments.isEmpty
+        let isPreviewAllowed = delegate?.canPreviewFiles(in: self) ?? true
+        previewFilesBarButton.isEnabled = hasAttachments && isPreviewAllowed
         addFileBarButton.isEnabled = canEditFiles
         deleteFilesBarButton.isEnabled = canEditFiles && isEditing && hasAttachments
         if tableView.indexPathsForSelectedRows != nil {
@@ -392,4 +417,12 @@ private extension EntryFileViewerVC {
             deleteFilesBarButton.title = LString.actionDeleteAll
         }
     }
+}
+
+extension LString {
+    public static let actionPreviewAttachments = NSLocalizedString(
+        "[Entry/Attachments/preview]",
+        value: "Preview",
+        comment: "Action to preview one or several attached documents or images"
+    )
 }
