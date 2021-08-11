@@ -26,14 +26,6 @@ You can manage and cancel your subscriptions by going to your account settings o
 """,
         comment: "Subscription conditions")
     
-    public static let premiumFeatureGenericTitle = NSLocalizedString(
-        "[PremiumFeature/Generic/title]",
-        value: "Premium Feature",
-        comment: "A generic title of a premium feature")
-    public static let premiumFeatureGenericDescription = NSLocalizedString(
-        "[PremiumFeature/Generic/description]",
-        value: "Upgrade to Premium and enjoy KeePassium at its best.",
-        comment: "A generic description of a premium feature")
     
     public static let actionManageSubscriptions = NSLocalizedString(
         "[Premium/ManageSubscriptions/action]",
