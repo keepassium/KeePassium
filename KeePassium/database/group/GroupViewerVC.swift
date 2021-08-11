@@ -111,6 +111,7 @@ final class GroupViewerVC:
                 titleView.titleLabel.text = nil
                 titleView.iconView.image = nil
             }
+            navigationItem.title = titleView.titleLabel.text
             sortGroupItems()
         }
     }
