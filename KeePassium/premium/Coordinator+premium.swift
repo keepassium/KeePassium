@@ -21,18 +21,20 @@ extension Coordinator {
     
     func performPremiumActionOrOfferUpgrade(
         for feature: PremiumFeature,
+        allowBypass: Bool = false,
         in viewController: UIViewController,
-        actionHandler: () -> Void
+        actionHandler: @escaping () -> Void
     ) {
         if PremiumManager.shared.isAvailable(feature: feature) {
             actionHandler()
         } else {
-            offerPremiumUpgrade(for: feature, in: viewController)
+            offerPremiumUpgrade(for: feature, bypassAction: actionHandler, in: viewController)
         }
     }
 
     func offerPremiumUpgrade(
         for feature: PremiumFeature,
+        bypassAction: (() -> Void)? = nil,
         in viewController: UIViewController
     ) {
         let upgradeNotice = UIAlertController(
@@ -48,6 +50,11 @@ extension Coordinator {
                 return
             }
             self.showPremiumUpgrade(in: viewController)
+        }
+        if let bypassAction = bypassAction {
+            upgradeNotice.addAction(title: LString.actionContinue, style: .default) { _ in
+                bypassAction()
+            }
         }
         upgradeNotice.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
         viewController.present(upgradeNotice, animated: true, completion: nil)

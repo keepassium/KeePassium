@@ -331,9 +331,34 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     }
     
     func didSelectDatabase(_ fileRef: URLReference, in viewController: DatabasePickerVC) {
-        Settings.current.startupDatabase = fileRef
-        selectedDatabase = fileRef
-        delegate?.didSelectDatabase(fileRef, in: self)
+        selectDatabaseOrOfferPremiumUpgrade(fileRef, in: viewController)
+    }
+    
+    private func selectDatabaseOrOfferPremiumUpgrade(
+        _ fileRef: URLReference,
+        in viewController: DatabasePickerVC
+    ) {
+        if fileRef == Settings.current.startupDatabase {
+            selectDatabase(fileRef, animated: false)
+            return
+        }
+        
+        let validSortedDatabases = viewController.databaseRefs.filter {
+            !$0.hasError && $0.location != .internalBackup
+        }
+        let isFirstDatabase = (fileRef === validSortedDatabases.first)
+        if isFirstDatabase || fileRef.location == .internalBackup {
+            selectDatabase(fileRef, animated: false)
+        } else {
+            performPremiumActionOrOfferUpgrade(
+                for: .canUseMultipleDatabases,
+                allowBypass: true,
+                in: viewController,
+                actionHandler: { [weak self] in
+                    self?.selectDatabase(fileRef, animated: false)
+                }
+            )
+        }
     }
 }
 

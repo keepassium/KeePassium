@@ -68,9 +68,9 @@ extension DataProtectionSettingsCoordinator {
         performPremiumActionOrOfferUpgrade(
             for: .canKeepMasterKeyOnDatabaseTimeout,
             in: viewController,
-            actionHandler: {
+            actionHandler: { [weak self] in
                 Settings.current.isLockDatabasesOnTimeout = value
-                refresh()
+                self?.refresh()
             }
         )
     }
