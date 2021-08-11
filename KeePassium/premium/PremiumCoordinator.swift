@@ -176,7 +176,7 @@ extension PremiumCoordinator: PremiumManagerDelegate {
     
     func purchaseSucceeded(
         _ product: InAppProduct,
-        skProduct: SKProduct,
+        skProduct: SKProduct?,
         in premiumManager: PremiumManager
     ) {
         setPurchasing(false)

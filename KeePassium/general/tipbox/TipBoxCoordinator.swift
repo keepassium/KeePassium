@@ -111,7 +111,7 @@ extension TipBoxCoordinator: PremiumManagerDelegate {
     
     func purchaseSucceeded(
         _ product: InAppProduct,
-        skProduct: SKProduct,
+        skProduct: SKProduct?,
         in premiumManager: PremiumManager
     ) {
         tipBoxVC.setStatus(busy: false, text: nil, animated: false)
@@ -119,6 +119,11 @@ extension TipBoxCoordinator: PremiumManagerDelegate {
         
         Watchdog.shared.ignoreMinimizationOnce()
         
+        guard let skProduct = skProduct else {
+            Diag.warning("SKProduct is unexpectedly nil")
+            assertionFailure()
+            return
+        }
         TipBox.registerPurchase(amount: skProduct.price, locale: skProduct.priceLocale)
         Diag.info(TipBox.getStatus())
     }

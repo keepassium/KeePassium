@@ -133,7 +133,7 @@ public enum InAppProduct: String, Codable {
 public protocol PremiumManagerDelegate: AnyObject {
     func purchaseStarted(in premiumManager: PremiumManager)
     
-    func purchaseSucceeded(_ product: InAppProduct, skProduct: SKProduct, in premiumManager: PremiumManager)
+    func purchaseSucceeded(_ product: InAppProduct, skProduct: SKProduct?, in premiumManager: PremiumManager)
     
     func purchaseDeferred(in premiumManager: PremiumManager)
     
@@ -196,6 +196,7 @@ public class PremiumManager: NSObject {
     
     private override init() {
         super.init()
+        reloadReceipt()
         updateStatus(allowSubscriptionExpiration: true)
     }
     
@@ -424,6 +425,7 @@ extension PremiumManager: SKPaymentTransactionObserver {
         ReceiptAnalyzer.logPurchaseHistory()
         Diag.debug("Finished restoring purchases")
         reloadReceipt()
+        updateStatus(allowSubscriptionExpiration: false)
         delegate?.purchaseRestoringFinished(in: self)
     }
     
@@ -449,17 +451,14 @@ extension PremiumManager: SKPaymentTransactionObserver {
             Diag.error("IAP with unrecognized product ID [id: \(productID)]")
             return
         }
-        guard let skProduct = availableProducts?.first(where: { $0.productIdentifier == productID })
-        else {
-            assertionFailure("Purchased a product which was not available?")
-            Diag.error("IAP with unexpected product ID [id: \(productID)]")
-            return
-        }
+        
+        let skProduct = availableProducts?.first(where: { $0.productIdentifier == productID })
         
         Diag.info("IAP purchase update [date: \(transactionDate), product: \(productID)]")
         queue.finishTransaction(transaction)
         
         reloadReceipt()
+        updateStatus(allowSubscriptionExpiration: false)
         delegate?.purchaseSucceeded(product, skProduct: skProduct, in: self)
     }
     
