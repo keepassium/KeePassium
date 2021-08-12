@@ -52,7 +52,13 @@ Please contact us if you need help with this.</string>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="1To-fA-tCt" secondAttribute="trailing" id="w40-fe-TLn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zvf-PV-5l4"/>
+                    <navigationItem key="navigationItem" title="We are sorry" id="zvf-PV-5l4">
+                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="ebS-pB-Qan">
+                            <connections>
+                                <action selector="didPressDismiss:" destination="4Bx-SW-Cru" id="a6a-Li-GpC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="learnMoreButton" destination="1To-fA-tCt" id="OPE-5a-Ksg"/>
                     </connections>
