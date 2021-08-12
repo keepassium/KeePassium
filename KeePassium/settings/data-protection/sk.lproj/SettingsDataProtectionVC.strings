@@ -20,7 +20,7 @@
 "Faj-km-pM5.headerTitle" = "Rýchle odomknutie";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Použite univerzálny schránku na kopírovanie a vkladanie medzi vašimi Apple zariadeniami. Na externých zariadeniach je táto schránka vymazaná po dvoch minútach.";
+"g9a-rJ-4WJ.footerTitle" = "Použite univerzálnu schránku na kopírovanie a vkladanie medzi vašimi Apple zariadeniami. Na externých zariadeniach je táto schránka vymazaná po dvoch minútach.";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
 "gTm-F6-EDQ.text" = "Vymazať hlavný kľúč po vypršaní časového limitu";

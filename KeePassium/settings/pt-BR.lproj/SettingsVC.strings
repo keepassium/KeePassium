@@ -16,14 +16,11 @@
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Bk0-Xf-O7B"; */
 "Bk0-Xf-O7B.title" = "Ajustes";
 
-/* Class = "UILabel"; text = "Review KeePassium"; ObjectID = "c5H-hS-sU3"; Note = "Action: write an app review on the App Store"; */
-"c5H-hS-sU3.text" = "Avaliar KeePassium";
-
 /* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
 "cBS-jW-dHU.headerTitle" = "Suporte";
 
 /* Class = "UILabel"; text = "Database Backup"; ObjectID = "coD-Om-Vfm"; Note = "Settings section"; */
-"coD-Om-Vfm.text" = "Cópias de seg. de BD";
+"coD-Om-Vfm.text" = "Cópias de segurança de bancos de dados";
 
 /* Class = "UILabel"; text = "About KeePassium"; ObjectID = "DNo-Rs-0EP"; */
 "DNo-Rs-0EP.text" = "Sobre KeePassium";
@@ -32,7 +29,7 @@
 "FHp-ns-ke9.text" = "Chaves-mestras, arquivos de chave";
 
 /* Class = "UILabel"; text = "Search"; ObjectID = "GLr-Uf-Kln"; Note = "Section title in settings"; */
-"GLr-Uf-Kln.text" = "Buscar";
+"GLr-Uf-Kln.text" = "Busca";
 
 /* Class = "UILabel"; text = "Premium Version"; ObjectID = "HCe-A3-eG6"; Note = "Status shown on premium tier"; */
 "HCe-A3-eG6.text" = "Versão Premium";
@@ -42,9 +39,6 @@
 
 /* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
 "hui-xG-chj.headerTitle" = "Controle de acesso";
-
-/* Class = "UILabel"; text = "Rate KeePassium on the App Store"; ObjectID = "HYe-lP-dCp"; Note = "Subtitle for `Review KeePassium`"; */
-"HYe-lP-dCp.text" = "Avalie KeePassium na App Store";
 
 /* Class = "UILabel"; text = "{Renews on 1 Jan 1970}"; ObjectID = "LHz-DF-ZST"; Note = "#bc-ignore!"; */
 "LHz-DF-ZST.text" = "{Renews on 1 Jan 1970}";
@@ -75,9 +69,6 @@
 
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "Proteção de dados";
-
-/* Class = "UILabel"; text = "{Upgrade subtitle}"; ObjectID = "WM2-qq-lMN"; Note = "#bc-ignore!"; */
-"WM2-qq-lMN.text" = "{Upgrade subtitle}";
 
 /* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
 "zUh-Sn-3ya.text" = "Gerenciar assinaturas";

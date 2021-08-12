@@ -139,9 +139,6 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Chyba súboru s kľúčom: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostické správy boli skopírované do schránky.";
 
@@ -524,7 +521,7 @@
 "[Premium/status] Valid forever" = "Platné navždy";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nPlatba bude naúčtovaná na váš Apple účet pri potvrdení nákupu. \n\nPredplatné sa automaticky obnoví, ak nebude zrušené najmenej 24 hodín pred koncom aktuálneho obdobia. Platba za obnovenie predplatného bude zúčtovaná z vášho účtu počas 24 hodín pred vypršaním aktuálneho obdobia.\n\nSvoje predplatné môžete spravovať alebo zrušiť po vykonaní nákupu v nastavení vášho účtu v App Store.\n";
+"[Premium/Subscription/Legal/text]" = "Platba bude naúčtovaná na váš Apple účet pri potvrdení nákupu. \n\nPredplatné sa automaticky obnoví, ak nebude zrušené najmenej 24 hodín pred koncom aktuálneho obdobia. Platba za obnovenie predplatného bude zúčtovaná z vášho účtu počas 24 hodín pred vypršaním aktuálneho obdobia.\n\nSvoje predplatné môžete spravovať alebo zrušiť po vykonaní nákupu v nastavení vášho účtu v App Store.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ zadarmo, potom %2$@";

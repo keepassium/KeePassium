@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Dodaj niestandardową ikonę";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "Nie udało się usunąć pliku bazy danych";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Usunąć plik bazy danych?\n Upewnij się, że masz kopię zapasową.";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Błąd pliku klucza: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Log diagnostyczny został skopiowany do schowka.";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "Pokaż logi diagnostyczne";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Dołączone pliki";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "Popularne";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nPayment will be charged to your Apple ID account at the confirmation of purchase.\n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.\n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.\n";
+"[Premium/Subscription/Legal/text]" = "Payment will be charged to your Apple ID account at the confirmation of purchase.\n\nSubscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.\n\nYou can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ za darmo, potem %2$@";

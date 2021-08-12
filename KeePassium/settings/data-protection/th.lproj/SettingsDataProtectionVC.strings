@@ -14,7 +14,7 @@
 "e6Y-AP-hag.headerTitle" = "ส่วนการป้องกัน";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "เมื่อคุณปลดล็อกฐานข้อมูลแล้ว กุญแจหลักจะถูกเก็บไว้ในพวงกุญแจในเครื่องที่ปลอดภัย ในครั้งต่อไป KeePassium จะใช้รหัสนั้นโดยที่คุณไม่ต้องพิมพ์รหัสผ่านหลักอีก\n\n(กุญแจหลักจะถูกล้างอัตโนมัติเมื่อหมดเวลาใช้งานฐานข้อมูล)";
+"Faj-km-pM5.footerTitle" = "เมื่อคุณปลดล็อกฐานข้อมูลแล้ว กุญแจหลักจะถูกเก็บไว้ในพวงกุญแจไว้ในเครื่องอย่างปลอดภัย ในครั้งต่อไป KeePassium จะใช้รหัสนั้นโดยที่คุณไม่ต้องพิมพ์รหัสผ่านหลักอีก\n\n(กุญแจหลักจะถูกล้างอัตโนมัติเมื่อหมดเวลาใช้งานฐานข้อมูล)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "ปลดล็อกด่วน";
@@ -47,7 +47,7 @@
 "Mxu-GP-FmN.headerTitle" = "ไฟล์กุญแจ";
 
 /* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.footerTitle" = "การหมดเวลาใช้งานฐานข้อมูลจะปิดฐานข้อมูลทุกตัวที่เปิดทิ้งไว้และกุญแจหลักจะถูกล้างหลังจากนั้นสักครู่";
+"neJ-eG-TV7.footerTitle" = "การหมดเวลาใช้งานฐานข้อมูลจะปิดฐานข้อมูลทุกตัวที่เปิดอยู่ทั้งหมดและกุญแจหลักจะถูกล้างหลังจากนั้นสักครู่";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
 "neJ-eG-TV7.headerTitle" = "ล็อกอัตโนมัติ";
@@ -62,7 +62,7 @@
 "SSu-Sr-MCg.text" = "เวลาหมดอายุของคลิปบอร์ด";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "เวลาหมดการใช้งานของฐานข้อมูล";
+"weX-SZ-IDB.text" = "หมดเวลาใช้งานฐานข้อมูล";
 
 /* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
 "xPd-ot-oqe.text" = "{Detail}";

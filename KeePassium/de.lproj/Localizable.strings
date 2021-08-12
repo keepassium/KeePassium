@@ -89,7 +89,7 @@
 "[Database/Create/title] Create Database" = "Neue Datenbank erstellen";
 
 /* Action: add/import an image as a custom icon */
-"[Database/CustomIcon/add]" = "Add Custom Icon";
+"[Database/CustomIcon/add]" = "Benutzerdefiniertes Symbol hinzufügen";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Datenbankdatei löschen?\n Stellen Sie sicher, dass Sie ein Backup haben.";
@@ -138,9 +138,6 @@
 
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Schlüsseldatei Fehler: %@";
-
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Das Diagnoseprotokoll wurde in die Zwischenablage kopiert.";
@@ -383,7 +380,7 @@
 "[ItemCategory] Default (KeePass)" = "Standard (KeePass)";
 
 /* Title of a list with custom (user-imported) icons for groups and entries */
-"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+"[ItemIconPicker/CustomIcons]" = "Benutzerdefinierte Symbole";
 
 /* Title of a list with standard/default icons for groups and entries */
 "[ItemIconPicker/StandardIcons]" = "Standard Icons";
@@ -524,7 +521,7 @@
 "[Premium/status] Valid forever" = "Gültig für immer";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nDer Kaufpreis wird bei der Kaufbestätigung über Ihr Apple ID-Konto abgerechnet. \n\nDas Abonnement verlängert sich automatisch, wenn es nicht mindestens 24 Stunden vor Ablauf der aktuellen Laufzeit gekündigt wird. Die Verlängerungsgebühr wird innerhalb von 24 Stunden vor Ablauf der aktuellen Laufzeit über Ihr Konto abgerechnet. \n\nSie können Ihre Abonnements verwalten und kündigen, indem Sie nach dem Kauf Ihre Kontoeinstellungen im App Store aufrufen.\n";
+"[Premium/Subscription/Legal/text]" = "Der Kaufpreis wird bei der Kaufbestätigung über Ihr Apple ID-Konto abgerechnet. \n\nDas Abonnement verlängert sich automatisch, wenn es nicht mindestens 24 Stunden vor Ablauf der aktuellen Laufzeit gekündigt wird. Die Verlängerungsgebühr wird innerhalb von 24 Stunden vor Ablauf der aktuellen Laufzeit über Ihr Konto abgerechnet. \n\nSie können Ihre Abonnements verwalten und kündigen, indem Sie nach dem Kauf Ihre Kontoeinstellungen im App Store aufrufen.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ kostenlos, dann %2$@";

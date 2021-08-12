@@ -17,7 +17,7 @@
 "qPq-UR-uZs.title" = "데이터베이스 추가";
 
 /* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
-"R68-cy-5mz.text" = "허가되지 않은 접근으로부터 KeePassium 보호.";
+"R68-cy-5mz.text" = "허가되지 않은 접근으로부터 KeePassium을 보호합니다.";
 
 /* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "rWy-ey-805"; Note = "#bc-ignore!"; */
 "rWy-ey-805.text" = "{Database File Name}";

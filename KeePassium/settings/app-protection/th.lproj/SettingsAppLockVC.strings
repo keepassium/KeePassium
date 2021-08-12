@@ -8,7 +8,7 @@
 "6Pk-35-Fx6.text" = "ปกป้องฐานข้อมูล";
 
 /* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.footerTitle" = "อนุญาตให้ใช้การยืนยันไบโอเมทริกซ์เพื่อความรวดเร็ว (แต่ปลอดภัยน้อยลง) แทนการใช้รหัสผ่านแอปล็อก";
+"7ae-8I-LiQ.footerTitle" = "อนุญาตให้ใช้การยืนยันด้วยไบโอเมทริกซ์เพื่อความรวดเร็ว (แต่ปลอดภัยน้อยลง) แทนการใช้รหัสผ่านแอปล็อก";
 
 /* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
 "7ae-8I-LiQ.headerTitle" = "ไบโอเมทริกซ์";

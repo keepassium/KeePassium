@@ -11,7 +11,7 @@
 "BJ7-eQ-JOc.text" = "Fazer cópias de segurança";
 
 /* Class = "UITableViewSection"; footerTitle = "Defines whether backup databases created by KeePassium should be excluded from iCloud/iTunes backup. Applies to all the existing and future backup files."; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
-"fst-lq-BDl.footerTitle" = "Escolha se as cópias de segurança dos bancos de dados criadas pelo KeePassium devem ser excluídas do backup do iOS no iCloud ou iTunes. Aplica-se a todos os bancos de dados, atuais e futuros.";
+"fst-lq-BDl.footerTitle" = "Escolha se as cópias de segurança dos bancos de dados criadas pelo KeePassium devam ser excluídas do Backup do iOS no iCloud ou iTunes. Aplica-se a todos os bancos de dados atuais e futuros.";
 
 /* Class = "UITableViewSection"; headerTitle = "iTunes and iCloud Backup"; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
 "fst-lq-BDl.headerTitle" = "Backup no iCloud e iTunes";
@@ -23,17 +23,17 @@
 "nBI-OF-9iV.footerTitle" = "Antes de salvar um banco de dados, KeePassium fará uma cópia automaticamente por precaução.";
 
 /* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
-"nSy-3u-0xW.title" = "Cópias de seg. de BD";
+"nSy-3u-0xW.title" = "Cópias de segurança de bancos de dados";
 
 /* Class = "UILabel"; text = "{N days}"; ObjectID = "PKe-6p-Ssr"; Note = "#bc-ignore!"; */
 "PKe-6p-Ssr.text" = "{N days}";
 
 /* Class = "UILabel"; text = "Exclude Backup Files from System Backup"; ObjectID = "Qs6-uS-gdS"; Note = "Settings option, on/off"; */
-"Qs6-uS-gdS.text" = "Excluir cópias de segurança do backup do iOS";
+"Qs6-uS-gdS.text" = "Excluir cópias de segurança do Backup do iOS";
 
 /* Class = "UIButton"; normalTitle = "{Delete ALL Backup Files (1)}"; ObjectID = "RXF-mN-5RB"; Note = "#bc-ignore!"; */
 "RXF-mN-5RB.normalTitle" = "{Delete ALL Backup Files (1)}";
 
 /* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
-"XeH-7q-aad.footerTitle" = "As cópias de segurança aparecerão junto aos arquivos originais.";
+"XeH-7q-aad.footerTitle" = "Mostrar as cópias de segurança na lista de arquivos, junto aos bancos de dados originais.";
 

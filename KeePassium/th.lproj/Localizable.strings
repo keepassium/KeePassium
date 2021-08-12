@@ -139,9 +139,6 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "ไฟล์กุญแจเกิดข้อผิดพลาด: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "บันทึกการวินิจฉัยได้คัดลอกไปยังคลิปบอร์ดเรียบร้อยแล้ว";
 
@@ -515,7 +512,7 @@
 "[Premium/status] Beta testing" = "ตัวเบตาทดสอบ";
 
 /* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
-"[Premium/status] Expired %@ ago. Please renew." = "หมดอายุ %@ ที่แล้ว โปรดต่ออายุใหม่";
+"[Premium/status] Expired %@ ago. Please renew." = "หมดอายุเมื่อ %@ ที่แล้ว โปรดต่ออายุใหม่";
 
 /* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
 "[Premium/status] Next renewal on %@" = "ต่ออายุครั้งต่อไปในวันที่ %@";
@@ -524,7 +521,7 @@
 "[Premium/status] Valid forever" = "ใช้ได้ตลอดไป";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nการชำระเงินจะถูกเรียกเก็บไปยังบัญชี Apple ID ของคุณเมื่อยืนยันการซื้อเรียบร้อยแล้ว\n\nการสมัครรับจะต่ออายุให้อัตโนมัติหากไม่มีคำสั่งยกเลิกอย่างน้อย 24 ชั่วโมงก่อนที่จะหมดรอบใช้งานปัจจุบัน บัญชีของคุณจะถูกเรียกเก็บเงินเพื่อต่ออายุภายใน 24 ชั่วโมงก่อนสิ้นสุดรอบใช้งานปัจจุบัน\n\nคุณสามารถจัดการและยกเลิกการสมัครรับโดยเข้าไปที่ตั้งค่าบัญชีของคุณใน App Store หลังจากซื้อเรียบร้อยแล้ว\n";
+"[Premium/Subscription/Legal/text]" = "การชำระเงินจะถูกเรียกเก็บไปยังบัญชี Apple ID ของคุณเมื่อยืนยันการซื้อเรียบร้อยแล้ว\n\nการสมัครรับจะต่ออายุให้อัตโนมัติหากไม่มีคำสั่งยกเลิกอย่างน้อย 24 ชั่วโมงก่อนที่จะหมดรอบใช้งานปัจจุบัน บัญชีของคุณจะถูกเรียกเก็บเงินเพื่อต่ออายุภายใน 24 ชั่วโมงก่อนสิ้นสุดรอบใช้งานปัจจุบัน\n\nคุณสามารถจัดการและยกเลิกการสมัครรับโดยเข้าไปที่ตั้งค่าบัญชีของคุณใน App Store หลังจากซื้อเรียบร้อยแล้ว";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "ฟรี %1$@, จากนั้น %2$@";
@@ -653,7 +650,7 @@
 "[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "เมื่อคุณคัดลอกข้อความจากรายการ แอปจะล้างคลิปบอร์ดให้อัตโนมัติหลังจากคัดลอกไปชั่วครู่";
 
 /* Description of the Database Lock Timeout */
-"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "ถ้าคุณไม่ได้แตะต้องแอปสักพัก ฐานข้อมูลจะถูกปิดเพื่อความปลอดภัย หากต้องการเปิดมันขึ้นมาใหม่ คุณจะต้องใส่รหัสผ่านหลักอีกครั้ง";
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "หากคุณไม่ได้ใช้งานแอปสักพัก ฐานข้อมูลจะถูกปิดเพื่อความปลอดภัย หากต้องการเปิดมันขึ้นมาใหม่ คุณจะต้องใส่รหัสผ่านหลักอีกครั้ง";
 
 /* Title of a settings section about making backup files */
 "[Settings/FileLists/Backup/title] Backup" = "การสำรองข้อมูล";

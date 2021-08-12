@@ -1,11 +1,5 @@
-/* Class = "UIButton"; normalTitle = "{news}"; ObjectID = "APT-2C-WiG"; Note = "#bc-ignore!"; */
-"APT-2C-WiG.normalTitle" = "{news}";
-
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "CuN-tE-lAG"; Note = "Placeholder: database password"; */
 "CuN-tE-lAG.placeholder" = "패스워드";
-
-/* Class = "UILabel"; text = "{Error message}"; ObjectID = "d2U-7y-vCm"; Note = "#bc-ignore!"; */
-"d2U-7y-vCm.text" = "{Error message}";
 
 /* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "eAa-Z5-pdq"; Note = "Title of the database unlocker dialog."; */
 "eAa-Z5-pdq.title" = "데이터베이스 잠금 해제";
@@ -27,7 +21,4 @@
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "mYY-hP-3vH"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
 "mYY-hP-3vH.placeholder" = "키 파일 없음";
-
-/* Class = "UIButton"; accessibilityLabel = "Show Diagnostics"; ObjectID = "nrD-QC-R8N"; Note = "Action to show detailed diagnostics about the current error."; */
-"nrD-QC-R8N.accessibilityLabel" = "진단 내용 보기";
 

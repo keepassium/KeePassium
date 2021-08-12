@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "사용자 지정 아이콘 추가";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "데이터베이스 파일 삭제 실패";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "데이터베이스 파일을 삭제하시겠습니까?\n 백업을 생성해뒀는지 확인해주세요.";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "키 파일 오류: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "진단 로그가 클립보드에 복사되었습니다.";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "진단 로그 보기";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "첨부된 파일";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "인기";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\n구매가 확인되면 사용자의 Apple ID 계정을 통해 청구됩니다.\n\n구독은 현재 구독 기간이 종료되기 최소 24시간 전에 취소하지 않는 한 자동으로 갱신됩니다. 자동 갱신 시 현재 구독 기간이 종료되기 24시간 이내에 지불이 발생합니다.\n\n구독 구매 후, App Store의 계정 설정에서 구독을 관리하고 취소할 수 있습니다.";
+"[Premium/Subscription/Legal/text]" = "구매가 확인되면 사용자의 Apple ID 계정을 통해 청구됩니다.\n\n구독은 현재 구독 기간이 종료되기 최소 24시간 전에 취소하지 않는 한 자동으로 갱신됩니다. 자동 갱신 시 현재 구독 기간이 종료되기 24시간 이내에 지불이 발생합니다.\n\n구독 구매 후, App Store의 계정 설정에서 구독을 관리하고 취소할 수 있습니다.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ 무료 사용 후 %2$@";

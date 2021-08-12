@@ -11,7 +11,7 @@
 "fSx-Do-lgu.text" = "앱 아이콘";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "Lh3-CB-Urp"; */
-"Lh3-CB-Urp.footerTitle" = "패스워드와 보호된 필드를 별표 문자로 숨기기 (권장).";
+"Lh3-CB-Urp.footerTitle" = "패스워드와 보호된 필드를 별표 문자로 숨깁니다. (권장)";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "Lh3-CB-Urp"; */
 "Lh3-CB-Urp.headerTitle" = "보호된 필드";

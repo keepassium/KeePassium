@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Add Custom Icon";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "Misslyckades att radera databasfilen";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Radera databasfil?\nSäkerställ att du har en backup.";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Nyckelfil-fel: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisk logg har kopierats till urklipp.";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "Visa diagnostisk logg";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Bifogade filer";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "Populär";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nBetalning kommer att debiteras ditt Apple-konto vid bekräftelse av köpet.\n\nPrenumerationen förnyas automatiskt om inte avbokning sker minst 24 timmar före utgången av den aktuella perioden. Kontot kommer debiteras för förnyelsen inom de sista 24-timmarna före den aktuella perioden tar slut.\n\nDu kan hantera och avsluta din prenumeration genom att gå till Kontoinställningar i App Store efter ditt köp.\n";
+"[Premium/Subscription/Legal/text]" = "Betalning kommer att debiteras ditt Apple-konto vid bekräftelse av köpet.\n\nPrenumerationen förnyas automatiskt om inte avbokning sker minst 24 timmar före utgången av den aktuella perioden. Kontot kommer debiteras för förnyelsen inom de sista 24-timmarna före den aktuella perioden tar slut.\n\nDu kan hantera och avsluta din prenumeration genom att gå till Kontoinställningar i App Store efter ditt köp.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ gratis, sedan %2$@";

@@ -98,7 +98,7 @@
 "lht-LP-o0Y.text" = "MIT 라이선스";
 
 /* Class = "UITableViewSection"; headerTitle = "Credits"; ObjectID = "muG-xI-muo"; Note = "Section: acknowledgements and thank-you notes"; */
-"muG-xI-muo.headerTitle" = "개발진 및 라이브러리";
+"muG-xI-muo.headerTitle" = "크레딧 및 사용 라이브러리";
 
 /* Class = "UITableViewController"; title = "About"; ObjectID = "NLN-lQ-bh5"; */
 "NLN-lQ-bh5.title" = "앱 정보";

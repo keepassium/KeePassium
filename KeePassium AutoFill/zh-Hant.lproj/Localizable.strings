@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Add Custom Icon";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "刪除資料庫文件失敗";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "刪除資料庫文件?\n 請確保您有備份檔案!";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "金鑰檔案異常: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "診斷日誌複製到剪貼簿成功。";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "顯示診斷日誌";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "附件";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "熱門";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\n在確認購買時，將會從您的Apple ID帳戶中收取付款。 \n\n除非在到期前至少24小時取消，否則訂閱會自動續訂。您的帳戶將在到期前24小時內收取續訂費用。 \n\n您可以在購買後轉到App Store上的帳戶設置來管理和取消訂閱。\n";
+"[Premium/Subscription/Legal/text]" = "在確認購買時，將會從您的Apple ID帳戶中收取付款。 \n\n除非在到期前至少24小時取消，否則訂閱會自動續訂。您的帳戶將在到期前24小時內收取續訂費用。 \n\n您可以在購買後轉到App Store上的帳戶設置來管理和取消訂閱。";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ 天免費，之後 %2$@";

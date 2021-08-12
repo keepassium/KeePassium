@@ -11,16 +11,16 @@
 "BJ7-eQ-JOc.text" = "สร้างสำเนาการสำรองข้อมูล";
 
 /* Class = "UITableViewSection"; footerTitle = "Defines whether backup databases created by KeePassium should be excluded from iCloud/iTunes backup. Applies to all the existing and future backup files."; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
-"fst-lq-BDl.footerTitle" = "กำหนดให้ไม่ว่าฐานข้อมูลสำรองที่สร้างโดย KeePassium ควรเว้นไว้ไม่ให้ iCloud/iTunes มาสำรอง แล้วนำไปใช้กับฐานข้อมูลอื่นที่มีอยู่แล้วและไฟล์สำรองอื่นในอนาคต";
+"fst-lq-BDl.footerTitle" = "กำหนดให้ฐานข้อมูลสำรองใด ๆ ที่สร้างโดย KeePassium ควรเว้นไว้ไม่ให้ iCloud/iTunes มาสำรอง แล้วนำไปใช้กับฐานข้อมูลอื่นที่มีอยู่แล้วและไฟล์สำรองอื่นในอนาคต";
 
 /* Class = "UITableViewSection"; headerTitle = "iTunes and iCloud Backup"; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
 "fst-lq-BDl.headerTitle" = "การสำรองข้อมูล iTunes และ iCloud";
 
 /* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
-"G42-gR-eKm.text" = "พยายามสำรองข้อมูลไว้";
+"G42-gR-eKm.text" = "เก็บไฟล์สำรองข้อมูลไว้";
 
 /* Class = "UITableViewSection"; footerTitle = "Before saving a database, KeePassium will automatically make a copy, just in case."; ObjectID = "nBI-OF-9iV"; Note = "Explanation for the `Make Backup Copies` option"; */
-"nBI-OF-9iV.footerTitle" = "ก่อนบันทึกฐานข้อมูล KeePassium จะทำสำเนาให้อัตโนมัติ ในกรณีที่เปิดใช้งาน";
+"nBI-OF-9iV.footerTitle" = "ก่อนบันทึกฐานข้อมูล KeePassium จะทำสำเนาให้อัตโนมัติ";
 
 /* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
 "nSy-3u-0xW.title" = "สำรองฐานข้อมูล";
@@ -29,7 +29,7 @@
 "PKe-6p-Ssr.text" = "{N days}";
 
 /* Class = "UILabel"; text = "Exclude Backup Files from System Backup"; ObjectID = "Qs6-uS-gdS"; Note = "Settings option, on/off"; */
-"Qs6-uS-gdS.text" = "เว้นไม่ให้ระบบเครื่องมาสำรองข้อมูลในไฟล์สำรองในแอป";
+"Qs6-uS-gdS.text" = "เว้นไม่ให้ระบบเครื่องมาสำรองข้อมูลไฟล์สำรองในแอป";
 
 /* Class = "UIButton"; normalTitle = "{Delete ALL Backup Files (1)}"; ObjectID = "RXF-mN-5RB"; Note = "#bc-ignore!"; */
 "RXF-mN-5RB.normalTitle" = "{Delete ALL Backup Files (1)}";

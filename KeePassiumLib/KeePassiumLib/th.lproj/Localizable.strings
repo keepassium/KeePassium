@@ -131,13 +131,13 @@
 "[Database2/FormatError] Cannot parse database. %@" = "ไม่สามารถแยกวิเคราะห์ฐานข้อมูล %@";
 
 /* Error message [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Corrupted database file (block %d has negative size)";
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "ไฟล์ฐานข้อมูลไม่ถูกต้อง (block %d has negative size)";
 
 /* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Corrupted database file (hash mismatch in block %d)";
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "ไฟล์ฐานข้อมูลไม่ถูกต้อง (hash mismatch in block %d)";
 
 /* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Corrupted database file (HMAC mismatch in block %d)";
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "ไฟล์ฐานข้อมูลไม่ถูกต้อง (HMAC mismatch in block %d)";
 
 /* Error message about Gzip compression algorithm. [reason: String] */
 "[Database2/FormatError] Gzip error: %@" = "Gzip error: %@";
@@ -422,10 +422,10 @@
 "[KDF/Progress] Processing the master key" = "กำลังประมวลผลกุญแจหลัก";
 
 /* Generic error message about system keychain. [errorCode: Int] */
-"[KeychainError/generic] Keychain error (code %d) " = "Keychain error (code %d) ";
+"[KeychainError/generic] Keychain error (code %d) " = "พวงกุญแจเกิดข้อผิดพลาด (code %d) ";
 
 /* Error message about system keychain. */
-"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "พวงกุญแจผิดพลาด: ไม่ทราบฟอร์แมทของข้อมูล";
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "พวงกุญแจเกิดข้อผิดพลาด: ไม่ทราบฟอร์แมทของข้อมูล";
 
 /* Error message when the key file is misformatted or damaged */
 "[KeyFileError/Corrupted/title]" = "ไฟล์กุญแจเสียหาย";
@@ -440,7 +440,7 @@
 "[Progress/CancellationReason/lowMemory]" = "หน่วยความจำไม่พอที่จะไปต่อได้\nสิ่งนี้สามารถเกิดขึ้นได้ถ้าฐานข้อมูลมีขนาดใหญ่เกินไปหรือการตั้งค่าฐานข้อมูลที่ยุ่งยาก (Argon2 memory parameter)";
 
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
-"[Settings/AppLockTimeout/description] After last interaction" = "หลังจากการแตะต้องครั้งสุดท้าย";
+"[Settings/AppLockTimeout/description] After last interaction" = "หลังจากใช้งานครั้งสุดท้าย";
 
 /* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
 "[Settings/AppLockTimeout/description] After leaving the app" = "หลังจากออกแอป";

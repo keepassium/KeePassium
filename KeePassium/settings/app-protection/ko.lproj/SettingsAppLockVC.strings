@@ -14,7 +14,7 @@
 "7ae-8I-LiQ.headerTitle" = "생체 인식";
 
 /* Class = "UITableViewSection"; footerTitle = "Protect KeePassium from unauthorized access."; ObjectID = "aBx-Ee-bMk"; Note = "Explanation for the `Enable AppLock` option."; */
-"aBx-Ee-bMk.footerTitle" = "허가되지 않은 접근으로부터 KeePassium 보호.";
+"aBx-Ee-bMk.footerTitle" = "허가되지 않은 접근으로부터 KeePassium을 보호합니다.";
 
 /* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
 "Ef4-Jw-xeO.text" = "시간 제한";

@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Adicionar ícone personalizado";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "Não foi possível apagar o arquivo de banco de dados";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Apagar o arquivo de banco de dados?\n Certifique-se de ter uma cópia de segurança.";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Erro no arquivo de chave: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "O registro de diagnóstico foi copiado para a área de transferência.";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "Mostrar registro de diagnóstico";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Anexos";
@@ -365,13 +356,13 @@
 "[Premium/Price Plan/Conditions/1 year email support]" = "Um ano de suporte via e-mail";
 
 /* What's included in a price plan */
-"[Premium/Price Plan/Conditions/all premium features]" = "Todos os recursos premium";
+"[Premium/Price Plan/Conditions/all premium features]" = "Todos os recursos Premium";
 
 /* What's included in a free plan: support via forums (as opposed to email support) */
 "[Premium/Price Plan/Conditions/community support]" = "Suporte: fórum on-line";
 
 /* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
-"[Premium/Price Plan/Conditions/current premium features]" = "Recursos premium atuais";
+"[Premium/Price Plan/Conditions/current premium features]" = "Recursos Premium atuais";
 
 /* What's included in a price plan: support via email */
 "[Premium/Price Plan/Conditions/email support]" = "Suporte: via e-mail";
@@ -380,13 +371,13 @@
 "[Premium/Price Plan/Conditions/family sharing]" = "Compartilhamento familiar";
 
 /* What's included in a free plan: reminders that the version is free */
-"[Premium/Price Plan/Conditions/freemium reminders]" = "Lembretes freemium";
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Lembretes Freemium";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "Recursos premium adicionados no futuro exigirão uma nova compra pelo valor cheio vigente.";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Recursos Premium adicionados no futuro exigirão uma nova compra pelo valor cheio vigente.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
-"[Premium/Price Plan/Conditions/future premium features]" = "Recursos premium futuros";
+"[Premium/Price Plan/Conditions/future premium features]" = "Recursos Premium futuros";
 
 /* What's included in a price plan. Please leave `perpetual fallback license` in English. */
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "Licença Alugue e Tenha (Perpetual fallback license)";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "Popular";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nO valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do aplicativo.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.\n";
+"[Premium/Subscription/Legal/text]" = "O valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do aplicativo.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ grátis, depois %2$@";

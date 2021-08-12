@@ -139,9 +139,6 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "키 파일 오류: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "진단 로그가 클립보드에 복사되었습니다.";
 
@@ -200,7 +197,7 @@
 "[Entry/History] Previous Versions" = "이전 버전";
 
 /* Expiry Date of an entry which does not expire. */
-"[Entry/History/ExpiryDate] Never" = "잠그지 않음";
+"[Entry/History/ExpiryDate] Never" = "만료일 없음";
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "새로운 항목";
@@ -524,7 +521,7 @@
 "[Premium/status] Valid forever" = "평생 유효";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\n구매가 확인되면 사용자의 Apple ID 계정을 통해 청구됩니다.\n\n구독은 현재 구독 기간이 종료되기 최소 24시간 전에 취소하지 않는 한 자동으로 갱신됩니다. 자동 갱신 시 현재 구독 기간이 종료되기 24시간 이내에 지불이 발생합니다.\n\n구독 구매 후, App Store의 계정 설정에서 구독을 관리하고 취소할 수 있습니다.";
+"[Premium/Subscription/Legal/text]" = "구매가 확인되면 사용자의 Apple ID 계정을 통해 청구됩니다.\n\n구독은 현재 구독 기간이 종료되기 최소 24시간 전에 취소하지 않는 한 자동으로 갱신됩니다. 자동 갱신 시 현재 구독 기간이 종료되기 24시간 이내에 지불이 발생합니다.\n\n구독 구매 후, App Store의 계정 설정에서 구독을 관리하고 취소할 수 있습니다.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ 무료 사용 후 %2$@";

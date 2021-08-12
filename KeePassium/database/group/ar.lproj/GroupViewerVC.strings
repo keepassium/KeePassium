@@ -7,9 +7,6 @@
 /* Class = "UIBarButtonItem"; 9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Lock Database"; ObjectID = "9KV-rC-1XL"; */
 "9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "قَفل قاعدة البيانات";
 
-/* Class = "UILabel"; text = "{Group subtitle}"; ObjectID = "A8h-F7-ipn"; Note = "#bc-ignore!"; */
-"A8h-F7-ipn.text" = "{Group subtitle}";
-
 /* Class = "UIBarButtonItem"; M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "M5a-Ld-ZXd"; */
 "M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "طريقة الفرز";
 
@@ -30,7 +27,4 @@
 
 /* Class = "UILabel"; text = "{nItems}"; ObjectID = "ttY-yZ-yRg"; Note = "#bc-ignore!"; */
 "ttY-yZ-yRg.text" = "{nItems}";
-
-/* Class = "UILabel"; text = "{Group Title}"; ObjectID = "yQP-VD-gVT"; Note = "#bc-ignore!"; */
-"yQP-VD-gVT.text" = "{Group Title}";
 

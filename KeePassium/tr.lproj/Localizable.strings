@@ -139,9 +139,6 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Anahtar Dosya Hatası: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Tanılama günlüğü panoya kopyalandı.";
 
@@ -524,7 +521,7 @@
 "[Premium/status] Valid forever" = "Sonsuza dek geçerlidir";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nSatın alma onaylandığında Apple Kimliğinden ödeme tahsil edilecektir. Geçerli abonelik dönemi bitmeden en az 24 saat önceden otomatik yenileme özelliği kapatılmazsa abonelik otomatik olarak yenilenir. Mevcut abonelik döneminin bitmesine 24 saat kala hesabından yenileme ücreti tahsil edilir. Satın almadan sonra App Store’da hesap ayarlarına giderek aboneliklerini yönetebilir ve iptal edebilirsin.\n";
+"[Premium/Subscription/Legal/text]" = "Satın alma onaylandığında Apple Kimliğinden ödeme tahsil edilecektir. Geçerli abonelik dönemi bitmeden en az 24 saat önceden otomatik yenileme özelliği kapatılmazsa abonelik otomatik olarak yenilenir. Mevcut abonelik döneminin bitmesine 24 saat kala hesabından yenileme ücreti tahsil edilir. Satın almadan sonra App Store’da hesap ayarlarına giderek aboneliklerini yönetebilir ve iptal edebilirsin.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ ücretsiz, sonrasında %2$@";

@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "เพิ่มไอคอนที่กำหนดเอง";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "ไม่สามารถลบไฟล์ฐานข้อมูล";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "ลบไฟล์กุญแจหรือไม่?\n ตรวจสอบให้ดีว่าคุณกู้ไว้เรียบร้อยแล้ว";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "ไฟล์กุญแจเกิดข้อผิดพลาด: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "บันทึกการวินิจฉัยได้คัดลอกไปยังคลิปบอร์ดเรียบร้อยแล้ว";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "แสดงบันทึกการวินิจฉัย";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "ไฟล์แนบ";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "ยอดนิยม";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nการชำระเงินจะถูกเรียกเก็บไปยังบัญชี Apple ID ของคุณเมื่อยืนยันการซื้อเรียบร้อยแล้ว\n\nการสมัครรับจะต่ออายุให้อัตโนมัติหากไม่มีคำสั่งยกเลิกอย่างน้อย 24 ชั่วโมงก่อนที่จะหมดรอบใช้งานปัจจุบัน บัญชีของคุณจะถูกเรียกเก็บเงินเพื่อต่ออายุภายใน 24 ชั่วโมงก่อนสิ้นสุดรอบใช้งานปัจจุบัน\n\nคุณสามารถจัดการและยกเลิกการสมัครรับโดยเข้าไปที่ตั้งค่าบัญชีของคุณใน App Store หลังจากซื้อเรียบร้อยแล้ว\n";
+"[Premium/Subscription/Legal/text]" = "การชำระเงินจะถูกเรียกเก็บไปยังบัญชี Apple ID ของคุณเมื่อยืนยันการซื้อเรียบร้อยแล้ว\n\nการสมัครรับจะต่ออายุให้อัตโนมัติหากไม่มีคำสั่งยกเลิกอย่างน้อย 24 ชั่วโมงก่อนที่จะหมดรอบใช้งานปัจจุบัน บัญชีของคุณจะถูกเรียกเก็บเงินเพื่อต่ออายุภายใน 24 ชั่วโมงก่อนสิ้นสุดรอบใช้งานปัจจุบัน\n\nคุณสามารถจัดการและยกเลิกการสมัครรับโดยเข้าไปที่ตั้งค่าบัญชีของคุณใน App Store หลังจากซื้อเรียบร้อยแล้ว";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "ฟรี %1$@, จากนั้น %2$@";

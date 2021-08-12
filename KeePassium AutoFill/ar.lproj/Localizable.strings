@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "إضافة أيقونة مُخصصة";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "فشل في حذف قاعدة البيانات";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "حذف ملف قاعدة البيانات؟\nتأكد من أن يكون لديك نسخة احتياطية.";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "خطأ في ملف المفتاح: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "تمّ نسخ سجل التشخيص إلى الحافظة.";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "إظهار سجل التشخيص";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "المرفقات";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "رائج";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nسوف يتم اقتطاع المبلغ من حساب Apple ID عند تأكيد الشراء. \n\nيتجدد الاشتراك تلقائيًا إلا إذا قمت بالإلغاء في غضون 24 ساعة على الأقل قبل انتهاء فترة الاشتراك الحالية. وسوف يتم خصم المبلغ من حسابك نظير التجديد في غضون فترة 24 ساعة قبل نهاية الفترة الحالية. \n\nيمكنك إدارة اشتراكاتك وإلغائها بالذهاب إلى إعدادات الحساب في متجر التطبيقات بعد الشراء.\n";
+"[Premium/Subscription/Legal/text]" = "سوف يتم اقتطاع المبلغ من حساب Apple ID عند تأكيد الشراء. \n\nيتجدد الاشتراك تلقائيًا إلا إذا قمت بالإلغاء في غضون 24 ساعة على الأقل قبل انتهاء فترة الاشتراك الحالية. وسوف يتم خصم المبلغ من حسابك نظير التجديد في غضون فترة 24 ساعة قبل نهاية الفترة الحالية. \n\nيمكنك إدارة اشتراكاتك وإلغائها بالذهاب إلى إعدادات الحساب في متجر التطبيقات بعد الشراء.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ مجاناً، ثم %2$@";

@@ -139,9 +139,6 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Errore file chiave: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Il log diagnostico è stato copiato negli appunti.";
 
@@ -524,7 +521,7 @@
 "[Premium/status] Valid forever" = "Valido per sempre";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nIl pagamento sarà addebitato sul tuo account ID Apple alla conferma dell'acquisto. \n\nL'abbonamento si rinnova automaticamente a meno che non venga annullato almeno 24 ore prima del termine del periodo di validità. Il rinnovo verrà addebitaato sul vostro account nelle 24 ore precedenti il termine del periodo di validità. \n\nPotete gestire e annullare gli abbonamenti nelle impostazioni del vostro account su App Store dopo l'acquisto.\n";
+"[Premium/Subscription/Legal/text]" = "Il pagamento sarà addebitato sul tuo account ID Apple alla conferma dell'acquisto. \n\nL'abbonamento si rinnova automaticamente a meno che non venga annullato almeno 24 ore prima del termine del periodo di validità. Il rinnovo verrà addebitaato sul vostro account nelle 24 ore precedenti il termine del periodo di validità. \n\nPotete gestire e annullare gli abbonamenti nelle impostazioni del vostro account su App Store dopo l'acquisto.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ gratis, quindi %2$@";

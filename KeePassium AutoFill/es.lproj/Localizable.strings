@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Add Custom Icon";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "Error al eliminar la base de datos";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "¿Eliminar el archivo de base de datos?\n Asegúrate de tener una copia de seguridad.";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Error del archivo de clave: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "El diagnóstico se ha copiado al portapapeles.";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "Visualizar diagnóstico";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Archivos adjuntos";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "Popular";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\nEl pago se cargará a tu ID de Apple al confirmar la compra. \n\nLa suscripción se renueva automáticamente a no ser que se cancele al menos 24 horas antes de que finalice el periodo actual. Se cobrará la renovación de la suscripción 24 horas antes que termine el periodo actual.\n\nPuedes gestionar y cancelar tus suscripciones accediendo a los ajustes de tu cuenta en la AppStore después de la compra.\n";
+"[Premium/Subscription/Legal/text]" = "El pago se cargará a tu ID de Apple al confirmar la compra. \n\nLa suscripción se renueva automáticamente a no ser que se cancele al menos 24 horas antes de que finalice el periodo actual. Se cobrará la renovación de la suscripción 24 horas antes que termine el periodo actual.\n\nPuedes gestionar y cancelar tus suscripciones accediendo a los ajustes de tu cuenta en la AppStore después de la compra.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ gratis, luego %2$@";

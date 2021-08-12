@@ -67,9 +67,6 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Add Custom Icon";
 
-/* Title of an error message */
-"[Database/Delete] Failed to delete database file" = "删除数据库文件失败";
-
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "删除数据库文件?\n 请确保您有备份文件!";
 
@@ -106,14 +103,8 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "密钥文件异常: %@";
 
-/* Action/button to setup YubiKey key component */
-"[Database/Unlock] YubiKey" = "YubiKey 令牌设备验证";
-
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "诊断日志复制到剪贴板成功。";
-
-/* Action/button to show internal diagnostic log */
-"[Diagnostics] Show Diagnostic Log" = "显示诊断日志";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "附件";
@@ -407,7 +398,7 @@
 "[Premium/Price Plan/popular]" = "人气";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "\n在确认购买时，将会从您的Apple ID账户中收取付款。 \n\n除非在到期前至少24小时取消，否则订阅会自动续订。您的账户将在到期前24小时内收取续订费用。 \n\n您可以在购买后转到App Store上的账户设置来管理和取消订阅。\n";
+"[Premium/Subscription/Legal/text]" = "在确认购买时，将会从您的Apple ID账户中收取付款。 \n\n除非在到期前至少24小时取消，否则订阅会自动续订。您的账户将在到期前24小时内收取续订费用。 \n\n您可以在购买后转到App Store上的账户设置来管理和取消订阅。";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ 免费，然后 %2$@";
