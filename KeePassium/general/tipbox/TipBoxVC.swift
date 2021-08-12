@@ -58,7 +58,12 @@ final class TipBoxVC: UIViewController {
                 }
                 self.rootStackView.layoutIfNeeded()
             },
-            completion: nil
+            completion: { [weak self] _ in
+                guard let self = self else { return }
+                if !self.statusLabel.isHidden {
+                    UIAccessibility.post(notification: .layoutChanged, argument: self.statusLabel)
+                }
+            }
         )
     }
     
@@ -66,6 +71,9 @@ final class TipBoxVC: UIViewController {
         let shouldHide = !visible
         guard thankYouLabel.isHidden != shouldHide else { 
             return
+        }
+        if visible {
+            UIAccessibility.post(notification: .announcement, argument: thankYouLabel.text)
         }
         UIView.animate(
             withDuration: 0.3,

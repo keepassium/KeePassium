@@ -441,10 +441,9 @@ public extension UIView {
         activeToasts.add(toast)
         self.addSubview(toast)
 
-        if let announcementText = toast.accessibilityLabel {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                UIAccessibility.post(notification: .announcement, argument: announcementText)
-            }
+        var adjustedDuration = duration
+        if UIAccessibility.isVoiceOverRunning {
+            adjustedDuration = max(duration, 15)
         }
         
         UIView.animate(
@@ -455,8 +454,9 @@ public extension UIView {
                 toast.alpha = 1.0
             },
             completion: { _ in
+                UIAccessibility.post(notification: .screenChanged, argument: toast)
                 let timer = Timer(
-                    timeInterval: duration,
+                    timeInterval: adjustedDuration,
                     target: self,
                     selector: #selector(UIView.toastTimerDidFinish(_:)),
                     userInfo: toast,
@@ -482,6 +482,7 @@ public extension UIView {
             completion: { _ in
                 toast.removeFromSuperview()
                 self.activeToasts.remove(toast)
+                UIAccessibility.post(notification: .screenChanged, argument: toast.superview)
                 
                 if let completionWrapper = objc_getAssociatedObject(toast, &ToastKeys.completion)
                     as? ToastCompletionWrapper
@@ -632,6 +633,10 @@ public extension UIView {
             button.titleLabel?.font = style.buttonFont
             button.titleLabel?.numberOfLines = style.buttonNumberOfLines
             button.titleLabel?.lineBreakMode = .byWordWrapping
+            if toastAction.isLink {
+                button.accessibilityTraits.remove(.button)
+                button.accessibilityTraits.insert(.link)
+            }
 
             var buttonImageWidth = CGFloat.zero
             if let buttonImage = toastAction.icon {
@@ -744,7 +749,8 @@ public extension UIView {
             wrapperView.addSubview(imageView)
         }
         
-        wrapperView.accessibilityLabel = [title, message].compactMap { $0 }.joined(separator: ".")
+        wrapperView.accessibilityElements = [titleLabel, messageLabel, actionButton].compactMap { $0 }
+        wrapperView.isAccessibilityElement = false
         return wrapperView
     }
 }
@@ -995,12 +1001,19 @@ public enum ToastPosition {
 public struct ToastAction {
     public typealias Handler = (() -> Void)
     var title: String
+    var isLink: Bool
     var handler: Handler
     var icon: UIImage?
     
-    public init(title: String, icon: UIImage? = nil, handler: @escaping Handler) {
+    public init(
+        title: String,
+        icon: UIImage? = nil,
+        isLink: Bool = false,
+        handler: @escaping Handler
+    ) {
         self.title = title
         self.icon = icon
+        self.isLink = isLink
         self.handler = handler
     }
 }

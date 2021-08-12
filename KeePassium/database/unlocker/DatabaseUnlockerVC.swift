@@ -104,6 +104,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         navigationController?.setToolbarHidden(true, animated: true)
         updateKeyboardLayoutConstraints()
         if shouldAutofocus {
+            UIAccessibility.post(notification: .layoutChanged, argument: passwordField)
             maybeFocusOnPassword()
         }
     }
@@ -146,7 +147,6 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             .compactMap { return $0 } 
             .joined(separator: "\n")
         Diag.error(text)
-        UIAccessibility.post(notification: .announcement, argument: text)
 
         let warningIcon: UIImage
         if #available(iOS 13, *) {
@@ -194,6 +194,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             action: ToastAction(
                 title: LString.forgotPasswordQuestion,
                 icon: UIImage(asset: .externalLinkBadge),
+                isLink: true,
                 handler: { [weak self] in
                     self?.showInvalidPasswordHelp()
                 }

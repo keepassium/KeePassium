@@ -14,7 +14,9 @@ class ProgressOverlay: UIView {
     typealias UnresponsiveCancelHandler = () -> ()
     
     public var title: String? {
-        didSet { statusLabel.text = title }
+        didSet {
+            statusLabel.text = title
+        }
     }
     
     public var isCancellable: Bool {
@@ -82,6 +84,10 @@ class ProgressOverlay: UIView {
         overlay.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 0).isActive = true
         overlay.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: 0).isActive = true
         parent.layoutSubviews()
+        
+        overlay.accessibilityViewIsModal = true
+        UIAccessibility.post(notification: .screenChanged , argument: overlay.statusLabel)
+        
         return overlay
     }
     
@@ -110,6 +116,7 @@ class ProgressOverlay: UIView {
             self.alpha = 0.0
             completion?(true)
         }
+        UIAccessibility.post(notification: .screenChanged, argument: nil)
     }
     
     private func setupViews() {
@@ -123,6 +130,7 @@ class ProgressOverlay: UIView {
         spinner.hidesWhenStopped = false
         spinner.isHidden = false
         spinner.alpha = 0.0
+        spinner.isAccessibilityElement = false
         addSubview(spinner)
 
         statusLabel = UILabel()
@@ -130,16 +138,19 @@ class ProgressOverlay: UIView {
         statusLabel.numberOfLines = 0
         statusLabel.lineBreakMode = .byWordWrapping
         statusLabel.font = UIFont.preferredFont(forTextStyle: .callout)
+        statusLabel.accessibilityTraits.insert(.updatesFrequently)
         addSubview(statusLabel)
 
         percentLabel = UILabel()
         percentLabel.text = ""
         percentLabel.numberOfLines = 1
         percentLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        statusLabel.accessibilityTraits.insert(.updatesFrequently)
         addSubview(percentLabel)
 
         progressView = UIProgressView()
         progressView.progress = 0.0
+        progressView.accessibilityTraits.insert(.updatesFrequently)
         addSubview(progressView)
         
         cancelButton = UIButton(type: .system)
