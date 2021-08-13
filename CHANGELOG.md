@@ -1,5 +1,55 @@
 #CHANGELOG
 
+## [1.25.89] - 2021-08-13
+
+### Changed
+
+- This version requires at least iOS 12
+- Massive internal changes to simplify future development
+
+### Added
+
+- Entry history management (closes #56) [thanks, Joahna V, Ivo and A13BioniciOS6]
+- Possibility to purchase premium version without subscription "like a CD box"
+- Possiblity to attach pictures from Photo Library or camera (closes #162) [thanks, everyone]
+- View entry's attachments as a gallery
+- Donations! Anyone can support the development now
+
+### Improved
+
+- AutoFill and the main app use the same file list (iOS 14+). Finally! (#1, #122, #125)
+- Added a separate field for hardware keys; no more confusion with key files
+- Entry expiration date can be edited
+- Show "What's new" section also in KeePassium Pro
+- AutoFill will import key files if possible, instead of simply referencing them (iOS 14+) (#142)
+- You can also select a key file for one-time use, without adding it to the list
+- Disabled editing of internal backup databases (they were always intended as read-only)
+- Search bar is visible by default (#165, #157) [thanks, everyone]
+- Can select and delete attachments in bulk
+- Can re-add a broken database directly from the error message
+- Showing database errors in a popup, better visibility on small screens
+- Added detection of Mega.nz and Boxcryptor (2021) file provider
+- Disabled Entry Viewer page swiping/animation on macOS
+- Added links to online help for most common issues
+- More informative licensing status display
+- Refined import workflow from other apps
+
+### Fixed
+
+- Prevent iCloud Keychain AutoFill prompts for password fields (caused a lot of confusion) (related #44)
+- Fixed keyboard occasionally missing in AutoFill. 4th attempt, should do the trick (fixes #133)
+- Entry attachment preview on macOS (closes #174) [thanks, layandreas]
+- Help article about Perpetual Fallback license was misformatted
+- Opening the Premium Upgrade screen from AutoFill
+- Double Face ID scan after a failed attempt (fixes #158) [thanks, Fotis]
+- Several UI improvements throughout
+- Hide Custom App Icon setting if not supported by the system [thanks, Andreas]
+- Automatically trim whitespaces in OTP config field
+- It was impossible to switch entry/group from a custom to (the current) standard icon
+- Subscription remained active after a cancelled trial [thanks, everyone]
+- Large text did not display correctly in AutoFill [thanks, Peter]
+
+
 ## [1.25.88] - 2021-07-30
 
 - An internal build to ensure TestFlight continuity.
