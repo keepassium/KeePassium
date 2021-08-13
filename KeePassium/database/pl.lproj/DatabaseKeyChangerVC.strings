@@ -10,6 +10,9 @@
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "M9Q-v8-e6Q"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
 "M9Q-v8-e6Q.placeholder" = "Brak pliku klucza";
 
+/* Class = "UITextField"; placeholder = "{No Hardware Key}"; ObjectID = "o5v-tf-bLd"; */
+"o5v-tf-bLd.placeholder" = "{No Hardware Key}";
+
 /* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "SHG-X2-fHH"; Note = "Placeholder: the second text field for changing the master password"; */
 "SHG-X2-fHH.placeholder" = "Powtórz hasło";
 

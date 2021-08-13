@@ -28,6 +28,9 @@
 /* Class = "UILabel"; text = "Master keys, key files"; ObjectID = "FHp-ns-ke9"; Note = "Subtitle/details for `Data Protection`"; */
 "FHp-ns-ke9.text" = "Hlavné kľúče, súbory s kľúčom";
 
+/* Class = "UILabel"; text = "{Tip Box}"; ObjectID = "GC2-NL-1vB"; Note = "Action"; */
+"GC2-NL-1vB.text" = "{Tip Box}";
+
 /* Class = "UILabel"; text = "Search"; ObjectID = "GLr-Uf-Kln"; Note = "Section title in settings"; */
 "GLr-Uf-Kln.text" = "Vyhľadávanie";
 
@@ -69,6 +72,9 @@
 
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "Ochrana dát";
+
+/* Class = "UILabel"; text = "{Support KeePassium}"; ObjectID = "VTG-VH-iv4"; */
+"VTG-VH-iv4.text" = "{Support KeePassium}";
 
 /* Class = "UILabel"; text = "Manage Subscriptions"; ObjectID = "zUh-Sn-3ya"; Note = "Action: open AppStore subscription management page"; */
 "zUh-Sn-3ya.text" = "Správa predplatného";

@@ -70,6 +70,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databankbestand?\n Zorg ervoor dat je een back-up hebt.";
 
+/* Message shown if current database cannot be edited */
+"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Bezig met laden...";
 
@@ -103,8 +106,26 @@
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Sleutelbestandsfout: %@";
 
+/* Message shown when user enters an invalid database password */
+"[Database/Unlock/wrongPassword/question]" = "Wachtwoord vergeten?";
+
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisch logbestand is gekopieerd naar het klembord.";
+
+/* Action/button to add a file to entry attachments */
+"[Entry/Attachment/add]" = "Voeg bestand toe";
+
+/* Action/button to pick a file from a list */
+"[Entry/Attachment/chooseFile]" = "Choose File";
+
+/* Action/button to select an (existing) photo from Photo Library */
+"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+
+/* Default name for a photo attachment */
+"[Entry/Attachment/Photo/defaultName]" = "Photo";
+
+/* Action/button to take a new photo from camera */
+"[Entry/Attachment/takePhoto]" = "Take Photo";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Bijgevoegde bestanden";
@@ -129,6 +150,21 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Gebruikersnaam";
+
+/* Title of a field with entry creation date and time */
+"[Entry/History] Creation Date" = "Aanmaakdatum";
+
+/* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
+"[Entry/History] Expiry Date" = "Vervaldatum";
+
+/* Title of a field with date and time when the entry was last accessed/viewed */
+"[Entry/History] Last Access Date" = "Laatst geopend op";
+
+/* Title of a field with entry's last modification date and time */
+"[Entry/History] Last Modification Date" = "Laatst gewijzigd op";
+
+/* Expiry Date of an entry which does not expire. */
+"[Entry/History/ExpiryDate] Never" = "Nooit";
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Nieuw item";
@@ -187,6 +223,9 @@
 /* Action/button to delete an item (destroys the item/file) */
 "[Generic] Delete" = "Verwijder";
 
+/* Action/button to delete all relevant/selected items */
+"[Generic] Delete All" = "Delete All";
+
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "Verwerp";
 
@@ -225,6 +264,9 @@
 
 /* Action/button to replace an item with another one */
 "[Generic] Replace" = "Vervang";
+
+/* Action/button to restore a backup/archived item in its original place */
+"[Generic] Restore" = "Restore";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "Delen";
@@ -265,6 +307,9 @@
 /* Title of an error message about file import */
 "[Generic/File/title] Import Error" = "Importeerfout";
 
+/* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
+"[Generic/Presets]" = "Presets";
+
 /* Title of an error message notification */
 "[Generic/title] Error" = "Fout";
 
@@ -292,6 +337,9 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarematige sleutels zijn niet beschikbaar in AutoFill.";
 
+/* Name of an input field which shows selected hardware key */
+"[HardwareKey/Field/title]" = "Hardwarematige sleutel";
+
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "NFC vereist iOS 13 of hoger.";
 
@@ -304,6 +352,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Hulp";
 
+/* Notification that an archived/historical item (e.g entry) has been successfully restored */
+"[Item/History/Restored]" = "Previous version restored";
+
 /* Title of a list with custom (user-imported) icons for groups and entries */
 "[ItemIconPicker/CustomIcons]" = "Custom Icons";
 
@@ -312,6 +363,9 @@
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";
+
+/* Name of an input field which shows selected key file */
+"[KeyFile/Field/title]" = "Sleutelbestand";
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Wil het sleutelbestand verwijderen van de lijst?\n De sleutel blijft bewaard en je kunt deze later weer toevoegen.";
@@ -483,6 +537,15 @@
 
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Toon wachtwoord";
+
+/* Name of an input field for entering the password again */
+"[Repeat Password/Field/title]" = "Herhaal wachtwoord";
+
+/* Title of a settings section about making backup files */
+"[Settings/FileLists/Backup/title] Backup" = "Back-up";
+
+/* Title of a settings section about file order in lists */
+"[Settings/FileLists/Sorting/title] Sorting" = "Sortering";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(beschrijf hier het probleem)";

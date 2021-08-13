@@ -16,6 +16,9 @@
 /* Class = "UILabel"; text = "Master Key"; ObjectID = "VjQ-di-Ilx"; Note = "Common title for the password/key file fields."; */
 "VjQ-di-Ilx.text" = "Clave maestra";
 
+/* Class = "UITextField"; placeholder = "{No Hardware Key}"; ObjectID = "wiB-ZM-ePr"; */
+"wiB-ZM-ePr.placeholder" = "{No Hardware Key}";
+
 /* Class = "UITextField"; placeholder = "e.g. MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
 "XNL-lc-2Ti.placeholder" = "ej. MiContraseña";
 

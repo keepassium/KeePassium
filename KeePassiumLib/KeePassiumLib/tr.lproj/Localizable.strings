@@ -322,6 +322,9 @@
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud";
 
+/* Localized name of the storage service: MEGA (https://mega.nz) */
+"[FileProvider/Mega.nz/name]" = "MEGA.nz";
+
 /* Localized name of the storage service: Nextcloud (https://nextcloud.com) */
 "[FileProvider/Nextcloud/name]" = "Nextcloud";
 
