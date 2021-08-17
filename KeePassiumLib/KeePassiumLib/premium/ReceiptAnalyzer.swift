@@ -186,6 +186,10 @@ class ReceiptAnalyzer {
             processLifetimePurchases(receipt, &purchaseHistory)
             return purchaseHistory
         } catch {
+            if ProcessInfo.isCatalystApp {
+                Diag.info("Catalyst app without App Store receipt, assuming beta version")
+                return PurchaseHistory.betaTesting
+            }
             Diag.warning(error.localizedDescription)
             return PurchaseHistory.empty
         }
