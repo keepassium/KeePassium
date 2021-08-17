@@ -109,6 +109,8 @@ extension EntryFinderCoordinator {
            Settings.current.autoFillPerfectMatch
         {
             delegate?.didSelectEntry(perfectMatch, in: self)
+        } else {
+            entryFinderVC.setSearchResults(results)
         }
     }
     
