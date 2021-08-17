@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.25.90] - 2021-08-17
+
+### Fixed
+
+- macOS: Enable premium features when running in beta testing mode [thanks, u/remraf_1]
+
+
 ## [1.25.89] - 2021-08-13
 
 ### Changed

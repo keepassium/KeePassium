@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.25",
-            "releaseDate": "2021-08-13T00:00:00Z",
+            "releaseDate": "2021-08-17T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Entry history management (closes #56) [thanks, Joahna V, Ivo and A13BioniciOS6]",
@@ -138,6 +138,10 @@
                 },
                 {
                     "title": "🐞 Fixed: Large text did not display correctly in AutoFill [thanks, Peter]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 macOS: Enable premium features when running in beta testing mode [thanks, u/remraf_1]",
                     "type": 1
                 }
             ]
