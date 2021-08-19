@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.25.91] - 2021-08-19
+
+### Improved
+
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- Regression in AutoFill: automatic search did not work (fixes #176) [thanks, everyone]
+
+
 ## [1.25.90] - 2021-08-17
 
 ### Fixed

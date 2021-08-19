@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.25",
-            "releaseDate": "2021-08-17T00:00:00Z",
+            "releaseDate": "2021-08-19T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Entry history management (closes #56) [thanks, Joahna V, Ivo and A13BioniciOS6]",
@@ -93,6 +93,10 @@
                     "type": 1
                 },
                 {
+                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
                     "title": "🐞 Fixed: Prevent iCloud Keychain AutoFill prompts for password fields (caused a lot of confusion) (related #44)",
                     "type": 1
                 },
@@ -141,7 +145,11 @@
                     "type": 1
                 },
                 {
-                    "title": "🐞 macOS: Enable premium features when running in beta testing mode [thanks, u/remraf_1]",
+                    "title": "🐞 Fixed: macOS: Enable premium features when running in beta testing mode [thanks, u/remraf_1]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Automatic search did not work in AutoFill (closes #176)  [thanks, everyone]",
                     "type": 1
                 }
             ]
