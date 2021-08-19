@@ -23,5 +23,5 @@
 "NSPhotoLibraryAddUsageDescription" = "Dosyaları dışa aktarmak için KeePassium'un Fotoğraf Kütüphanesine erişmeye ihtiyacı vardır.";
 
 /* (No Comment) */
-"NSPhotoLibraryUsageDescription" = "KeePassium needs access to the Photos library to add custom icons to groups and entries";
+"NSPhotoLibraryUsageDescription" = "Girdi ve gruplara özel simge ayarlayabilmeniz için KeePassium Fotoğraf kütüphanesine erişmeye ihtiyaç duyar";
 

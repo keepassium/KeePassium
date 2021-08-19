@@ -71,7 +71,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "ลบไฟล์กุญแจหรือไม่?\n ตรวจสอบให้ดีว่าคุณกู้ไว้เรียบร้อยแล้ว";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "ฐานข้อมูลนี้อ่านได้เท่านั้น";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "กำลังโหลด...";
@@ -116,16 +116,16 @@
 "[Entry/Attachment/add]" = "เพิ่มไฟล์";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "เลือกไฟล์";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "เลือกรูปภาพ";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "รูปภาพ";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "ถ่ายภาพ";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "ไฟล์แนบ";
@@ -224,7 +224,7 @@
 "[Generic] Delete" = "ลบ";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "ลบทั้งหมด";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "ละทิ้ง";
@@ -266,7 +266,7 @@
 "[Generic] Replace" = "แทนที่";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "คืนค่า";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "แชร์";
@@ -308,7 +308,7 @@
 "[Generic/File/title] Import Error" = "นำเข้าผิดพลาด";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "ค่าที่ตั้งไว้";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "ผิดพลาด";
@@ -353,7 +353,7 @@
 "[Help Viewer/title]" = "ช่วยเหลือ";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "คืนค่าเป็นรุ่นที่ผ่านมาเรียบร้อยแล้ว";
 
 /* Title of a list with custom (user-imported) icons for groups and entries */
 "[ItemIconPicker/CustomIcons]" = "ไอคอนที่กำหนดเอง";

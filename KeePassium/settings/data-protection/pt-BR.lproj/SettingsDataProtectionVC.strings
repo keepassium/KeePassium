@@ -53,7 +53,7 @@
 "neJ-eG-TV7.headerTitle" = "Bloqueio automático";
 
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
-"pid-k2-idJ.text" = "Esconder Senhas";
+"pid-k2-idJ.text" = "Esconder senhas";
 
 /* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
 "siQ-LK-GXZ.text" = "Manter chaves criptográficas já processadas em cachê";

@@ -101,7 +101,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "データベースを削除しますか？\n バックアップがあることを確認してください。";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "このデータベースは読み取り専用です";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "読み込み中...";
@@ -161,19 +161,19 @@
 "[Entry/Attachment/add]" = "ファイルを追加";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "ファイルを選択";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "写真を選択";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "写真";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "写真を撮る";
 
 /* Action to preview one or several attached documents or images */
-"[Entry/Attachments/preview]" = "Preview";
+"[Entry/Attachments/preview]" = "プレビュー";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "添付ファイル";
@@ -290,7 +290,7 @@
 "[Generic] Delete" = "削除";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "すべて削除";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "終了";
@@ -332,7 +332,7 @@
 "[Generic] Replace" = "置換";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "復元";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "共有";
@@ -374,7 +374,7 @@
 "[Generic/File/title] Import Error" = "読み込みエラー";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "プリセット";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "エラー";
@@ -419,7 +419,7 @@
 "[Help Viewer/title]" = "ヘルプ";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "以前のバージョンが復元されました";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "デフォルト (KeePass)";
@@ -560,13 +560,13 @@
 "[Premium/status] Beta testing" = "ベータテスト";
 
 /* Status: current version of the app. For example: `Current version: 1.23`. Should be similar to the `Licensed version` string. [version: String] */
-"[Premium/status] Current version: %@" = "Current version: %@";
+"[Premium/status] Current version: %@" = "現在のバージョン: %@";
 
 /* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
 "[Premium/status] Expired %@ ago. Please renew." = "%@前に期限が切れています。更新をお願いします。";
 
 /* Status: licensed premium version of the app. For example: `Licensed version: 1.23`. [version: String] */
-"[Premium/status] Licensed version: %@" = "Licensed version: %@";
+"[Premium/status] Licensed version: %@" = "購入済みのバージョン: %@";
 
 /* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
 "[Premium/status] Next renewal on %@" = "次回の更新は%@";
@@ -725,34 +725,34 @@
 "[Support/template] (Please describe the problem here)" = "（トラブルの内容を記述してください）";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/1]" = "Help us make KeePassium better!";
+"[TipBox/callToAction/1]" = "KeePassiumの改善をご支援ください。";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/2]" = "Help us keep KeePassium shiny!";
+"[TipBox/callToAction/2]" = "KeePassiumの改善をご支援ください。";
 
 /* Call to action in the Donations screen. (free = gratis) */
-"[TipBox/callToAction/3]" = "Help us keep KeePassium free!";
+"[TipBox/callToAction/3]" = "KeePassiumの改善をご支援ください。";
 
 /* Text in the Donations screen. */
-"[TipBox/description/1]" = "Do you like KeePassium?";
+"[TipBox/description/1]" = "KeePassiumはいかがですか？";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium is a free open-source app. You trust it with your most sensitive information. There are no ads, no spying, no nonsense — we respect you.";
+"[TipBox/description/2]" = "KeePassiumは無料のオープンソースAppです。あなたの最も重要な情報を託すことができます。広告もスパイもナンセンスもなく、あなたを尊重します。";
 
 /* Text in the Donations screen. */
-"[TipBox/description/3]" = "Do you like KeePassium but don't need the premium features?";
+"[TipBox/description/3]" = "KeePassiumはいかがですか？プレミアム機能は必要ありませんか？";
 
 /* Notification after a successful donation. */
-"[TipBox/thankYou]" = "Thank you!";
+"[TipBox/thankYou]" = "ご支援ありがとうございます。";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Tip Jar";
+"[TipBox/title/1]" = "KeePassiumを支援";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/2]" = "Donations";
+"[TipBox/title/2]" = "寄付";
 
 /* Call to action, title of the tip box/donation screen. */
-"[TipBox/title/3]" = "Support KeePassium";
+"[TipBox/title/3]" = "KeePassiumを支援";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "YubiKeyなし";

@@ -131,7 +131,7 @@
 "[Database/Opened/Warning/action] Ignore and Continue" = "Пропустить и продолжить";
 
 /* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
-"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "Последние изменения в базе паролей были сделаны: %@";
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "База паролей была изменена: %@";
 
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "База паролей готова, но есть проблема.";
@@ -266,7 +266,7 @@
 "[FileInfo/isExcludedFromBackup/title]" = "Исключить из резервной копии iCloud/iTunes";
 
 /* Title of the dialog for picking the destination group for move/copy operations */
-"[General/DestinationGroup/title] Choose a Destination" = "Выберите, куда сохранить";
+"[General/DestinationGroup/title] Choose a Destination" = "Выберите место назначения";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Отменить";
@@ -401,7 +401,7 @@
 "[Group/New/defaultName] New Group" = "Новая группа";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Аппаратные ключи недоступны в Автозаполнении.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Аппаратные ключи недоступны в автозаполнении.";
 
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Аппаратный ключ";
@@ -455,7 +455,7 @@
 "[Premium/Benefits/AttachmentPreview/title]" = "Просмотр без следов";
 
 /* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Сделайте иконку приложения уникальной, привычной — или вообще замаскируйте KeePassium под калькулятор.";
+"[Premium/Benefits/CustomAppIcon/details]" = "Сделайте значок приложения уникальным или привычным — или вообще замаскируйте KeePassium под калькулятор.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/CustomAppIcon/title]" = "Смените значок приложения";
@@ -479,10 +479,10 @@
 "[Premium/Benefits/MultiDB/title]" = "Синхронизация с другими";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Negative/header] " = "Что Вы упускаете";
+"[Premium/Benefits/Negative/header] " = "Что вы упускаете";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Positive/header] " = "Что Вы получите";
+"[Premium/Benefits/Positive/header] " = "Что вы получите";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/ViewFieldReferences/details]" = "Вместо создания нескольких копий одной и той же информации используйте ссылки на поля для её показа из других записей.";
@@ -575,7 +575,7 @@
 "[Premium/status] Valid forever" = "Навсегда";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "Оплата будет снята с Вашего аккаунта Apple ID после подтверждения покупки. \n\nПодписка автоматически возобновляется, если не отменена минимум за 24 часа до конца текущего периода. Плата за продление подписки будет снята с Вашего счёта в течение суток до окончания текущего периода. \n\nВы можете изменить или отменить подписки, зайдя в настройки своего аккаунта в App Store после покупки.";
+"[Premium/Subscription/Legal/text]" = "Оплата будет снята с вашего аккаунта Apple ID после подтверждения покупки. \n\nПодписка автоматически возобновляется, если не отменена минимум за 24 часа до конца текущего периода. Плата за продление подписки будет снята с вашего аккаунта в течение суток до окончания текущего периода. \n\nВы можете изменить или отменить подписки, зайдя в настройки своего аккаунта в App Store после покупки.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ бесплатно, затем %2$@";
@@ -626,7 +626,7 @@
 "[Premium/Upgrade/Success/thankYou]" = "Спасибо за покупку!";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
-"[Premium/usage] App being useful: %@/month, that is around %@/year." = "Приложение полезно %1$@/месяц, т.е. около %2$@/год.";
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "Приложение полезно %1$@ в месяц, т.е. около %2$@ в год.";
 
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Другой значок приложения";
@@ -671,7 +671,7 @@
 "[Settings/AppLock/Biometric/title] Use %@" = "Использовать %@";
 
 /* Explanation for the `Lock on App Launch` setting */
-"[Settings/AppLock/LockOnLaunch/description]" = "Гарантирует, что KeePassium будет заблокирован после принудительного закрытия приложения или перезагрузки устройства.";
+"[Settings/AppLock/LockOnLaunch/description]" = "KeePassium будет заблокирован после принудительного закрытия приложения или перезагрузки устройства.";
 
 /* Setting switch: whether to lock the app after it was terminated and relaunched. */
 "[Settings/AppLock/LockOnLaunch/title]" = "Блокировать приложение при запуске";
@@ -725,7 +725,7 @@
 "[Support/template] (Please describe the problem here)" = "(Опишите проблему)";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/1]" = "Помогите нам сделать KeePassium лучше!";
+"[TipBox/callToAction/1]" = "Помогите сделать KeePassium лучше!";
 
 /* Call to action in the Donations screen. */
 "[TipBox/callToAction/2]" = "Помогите нам развивать KeePassium!";
@@ -737,7 +737,7 @@
 "[TipBox/description/1]" = "Вам нравится KeePassium?";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium — бесплатное приложение с открытым исходным кодом. Вы доверяете ему самую важную информацию. В нём нет рекламы, шпионских модулей, ничего лишнего — мы уважаем Вас.";
+"[TipBox/description/2]" = "KeePassium — бесплатное приложение с открытым исходным кодом. Вы доверяете ему самую важную информацию. В нём нет рекламы, шпионских модулей, ничего лишнего — мы уважаем вас.";
 
 /* Text in the Donations screen. */
 "[TipBox/description/3]" = "Нравится KeePassium, но не нужны премиум-функции?";
@@ -761,7 +761,7 @@
 "[YubiKey] Insert the key" = "Вставьте ключ";
 
 /* Call for action: touch the sides of YubiKey 5Ci to continue */
-"[YubiKey] Touch the key" = "Прикоснитесь к ключу";
+"[YubiKey] Touch the key" = "Коснитесь ключа";
 
 /* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
 "[YubiKey] Use YubiKey Slot %d" = "Использовать YubiKey-слот %d";

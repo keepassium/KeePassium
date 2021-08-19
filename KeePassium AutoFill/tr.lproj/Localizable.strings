@@ -65,13 +65,13 @@
 "[Database/Create/title] Create Database" = "Veritabanı Oluştur";
 
 /* Action: add/import an image as a custom icon */
-"[Database/CustomIcon/add]" = "Add Custom Icon";
+"[Database/CustomIcon/add]" = "Özel Simge Ekle";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Veritabanı dosyasını sil?\n  Bir yedeğiniz olduğundan emin olun.";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "Bu veritabanı salt okunur";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Yükleniyor...";
@@ -116,16 +116,16 @@
 "[Entry/Attachment/add]" = "Dosya Ekle";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "Dosya Seç";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "Fotoğraf Seç";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "Fotoğraf";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "Kamera";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Bağımlı Dosyalar";
@@ -224,7 +224,7 @@
 "[Generic] Delete" = "Sil";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "Tümünü Sil";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "Kaldır";
@@ -266,7 +266,7 @@
 "[Generic] Replace" = "Değiştir";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "Geri Yükle";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "Paylaş";
@@ -308,7 +308,7 @@
 "[Generic/File/title] Import Error" = "İçe Aktarım Hatası";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "Hazır ayarlar";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Hata";
@@ -353,13 +353,13 @@
 "[Help Viewer/title]" = "Yardım";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "Önceki sürüm geri yüklendi";
 
 /* Title of a list with custom (user-imported) icons for groups and entries */
-"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+"[ItemIconPicker/CustomIcons]" = "Özel Simgeler";
 
 /* Title of a list with standard/default icons for groups and entries */
-"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+"[ItemIconPicker/StandardIcons]" = "Standart Simgeler";
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Anahtar dosya silinsin mi? \n Yedeğini aldığınızdan emin olun.";
@@ -371,13 +371,13 @@
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Veritabanı listeden silinsin mi?\n\n(Sadece gördüğünüz listeden silinir. Bulut hizmetinizden veya cihazınızdan silinmez.) Daha sonra tekrar ekleyebilirsiniz.";
 
 /* Error shown when scanned QR code cannot be used for OTP */
-"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+"[OTP/Scan/InvalidData]" = "Bu QR kod, OTP kurulumu için uygun değil.";
 
 /* Message to confirm user intentions */
-"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+"[OTP/Scan/OverwriteWarning]" = "Bu girdi için tek kullanımlık parola oluşturulmuştu. Üzerine yazılsın mı?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
-"[OTP/Setup]" = "Setup one-time password (OTP)";
+"[OTP/Setup]" = "Tek kullanımlık parola oluştur (OTP)";
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Neleri kaçırıyorsunuz";

@@ -17,7 +17,7 @@
 "qPq-UR-uZs.title" = "Добавить базу паролей";
 
 /* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
-"R68-cy-5mz.text" = "Защищает KeePassium от посторонних глаз.";
+"R68-cy-5mz.text" = "Защищает KeePassium от неавторизованного доступа.";
 
 /* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "rWy-ey-805"; Note = "#bc-ignore!"; */
 "rWy-ey-805.text" = "{Database File Name}";

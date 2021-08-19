@@ -14,7 +14,7 @@
 "7ae-8I-LiQ.headerTitle" = "Биометрия";
 
 /* Class = "UITableViewSection"; footerTitle = "Protect KeePassium from unauthorized access."; ObjectID = "aBx-Ee-bMk"; Note = "Explanation for the `Enable AppLock` option."; */
-"aBx-Ee-bMk.footerTitle" = "Защищает KeePassium от посторонних глаз.";
+"aBx-Ee-bMk.footerTitle" = "Защищает KeePassium от неавторизованного доступа.";
 
 /* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
 "Ef4-Jw-xeO.text" = "Задержка";

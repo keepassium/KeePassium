@@ -71,7 +71,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Apagar o arquivo de banco de dados?\n Certifique-se de ter uma cópia de segurança.";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "Este banco de dados é somente-leitura";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Carregando...";
@@ -107,7 +107,7 @@
 "[Database/Unlock] Key file error: %@" = "Erro no arquivo de chave: %@";
 
 /* Message shown when user enters an invalid database password */
-"[Database/Unlock/wrongPassword/question]" = "Forgot your password?";
+"[Database/Unlock/wrongPassword/question]" = "Esqueceu sua senha?";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "O registro de diagnóstico foi copiado para a área de transferência.";
@@ -116,16 +116,16 @@
 "[Entry/Attachment/add]" = "Adicionar arquivo";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "Escolher arquivo";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "Escolher foto";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "Foto";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "Tirar foto";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Anexos";
@@ -224,7 +224,7 @@
 "[Generic] Delete" = "Apagar";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "Apagar tudo";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "Descartar";
@@ -266,7 +266,7 @@
 "[Generic] Replace" = "Substituir";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "Restaurar";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "Compartilhar";
@@ -308,7 +308,7 @@
 "[Generic/File/title] Import Error" = "Falha ao importar";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "Predefinições";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Erro";
@@ -353,7 +353,7 @@
 "[Help Viewer/title]" = "Ajuda";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "Versão anterior restaurada";
 
 /* Title of a list with custom (user-imported) icons for groups and entries */
 "[ItemIconPicker/CustomIcons]" = "Ícones personalizados";

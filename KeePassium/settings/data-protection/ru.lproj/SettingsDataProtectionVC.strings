@@ -62,7 +62,7 @@
 "SSu-Sr-MCg.text" = "Очистка буфера обмена";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Задержка до закрытия баз";
+"weX-SZ-IDB.text" = "Задержка закрытия баз";
 
 /* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
 "xPd-ot-oqe.text" = "{Detail}";

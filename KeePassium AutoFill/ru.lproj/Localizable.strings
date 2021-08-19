@@ -335,7 +335,7 @@
 "[Group/New/defaultName] New Group" = "Новая группа";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Аппаратные ключи недоступны в Автозаполнении.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Аппаратные ключи недоступны в автозаполнении.";
 
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Аппаратный ключ";
@@ -380,10 +380,10 @@
 "[OTP/Setup]" = "Настроить одноразовый пароль (OTP)";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Negative/header] " = "Что Вы упускаете";
+"[Premium/Benefits/Negative/header] " = "Что вы упускаете";
 
 /* List of premium benefits/advantages */
-"[Premium/Benefits/Positive/header] " = "Что Вы получите";
+"[Premium/Benefits/Positive/header] " = "Что вы получите";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Купить";
@@ -452,7 +452,7 @@
 "[Premium/Price Plan/popular]" = "Популярный";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "Оплата будет снята с Вашего аккаунта Apple ID после подтверждения покупки. \n\nПодписка автоматически возобновляется, если не отменена минимум за 24 часа до конца текущего периода. Плата за продление подписки будет снята с Вашего счёта в течение суток до окончания текущего периода. \n\nВы можете изменить или отменить подписки, зайдя в настройки своего аккаунта в App Store после покупки.";
+"[Premium/Subscription/Legal/text]" = "Оплата будет снята с вашего аккаунта Apple ID после подтверждения покупки. \n\nПодписка автоматически возобновляется, если не отменена минимум за 24 часа до конца текущего периода. Плата за продление подписки будет снята с вашего аккаунта в течение суток до окончания текущего периода. \n\nВы можете изменить или отменить подписки, зайдя в настройки своего аккаунта в App Store после покупки.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ бесплатно, затем %2$@";
@@ -557,7 +557,7 @@
 "[YubiKey] Insert the key" = "Вставьте ключ";
 
 /* Call for action: touch the sides of YubiKey 5Ci to continue */
-"[YubiKey] Touch the key" = "Прикоснитесь к ключу";
+"[YubiKey] Touch the key" = "Коснитесь ключа";
 
 /* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
 "[YubiKey] Use YubiKey Slot %d" = "Использовать YubiKey-слот %d";
