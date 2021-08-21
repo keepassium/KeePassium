@@ -80,7 +80,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         viewController.present(modalRouter, animated: true, completion: nil)
     }
     
-    private func showAboutScreen(
+    func showAboutScreen(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
@@ -112,7 +112,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     
     #if MAIN_APP
-    private func showAppSettings(
+    func showAppSettings(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
