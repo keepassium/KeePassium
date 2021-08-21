@@ -358,8 +358,12 @@ class FileInfoVC: UITableViewController {
 
     
     @IBAction func didPressExport(_ sender: UIButton) {
-        let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
-        FileExportHelper.showFileExportSheet(urlRef, at: popoverAnchor, parent: self)
+        if ProcessInfo.isRunningOnMac {
+            FileExportHelper.revealFile(urlRef)
+        } else {
+            let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
+            FileExportHelper.showFileExportSheet(urlRef, at: popoverAnchor, parent: self)
+        }
     }
     
     @IBAction func didPressDelete(_ sender: UIButton) {

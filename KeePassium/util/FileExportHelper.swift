@@ -10,6 +10,24 @@ import KeePassiumLib
 
 class FileExportHelper {
 
+    public static func revealFile(_ urlRef: URLReference)
+    {
+        let NSWorkspace = NSClassFromString("NSWorkspace") as AnyObject
+        let sharedWorkspaceSelector = NSSelectorFromString("sharedWorkspace")
+        let sharedWorkspaceSignature = (@convention(c)(AnyObject, Selector) -> NSObject).self
+        let sharedWorkspaceMethod = unsafeBitCast(NSWorkspace.method(for: sharedWorkspaceSelector), to: sharedWorkspaceSignature)
+        let sharedWorkspace = sharedWorkspaceMethod(NSWorkspace, sharedWorkspaceSelector)
+
+        let activateSelector = NSSelectorFromString("activateFileViewerSelectingURLs:")
+        let activateSignature = (@convention(c)(NSObject, Selector, [URL]) -> Void).self
+        let activateMethod = unsafeBitCast(sharedWorkspace.method(for: activateSelector), to: activateSignature)
+        do {
+            activateMethod(sharedWorkspace, activateSelector, [try urlRef.resolveSync()])
+        } catch {
+            Diag.warning("Failed to reveal the file")
+        }
+    }
+    
     public static func showFileExportSheet(
         _ urlRef: URLReference,
         at popoverAnchor: PopoverAnchor,
