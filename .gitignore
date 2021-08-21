@@ -18,3 +18,5 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+DerivedData/
+KeePassium.xcodeproj/xcshareddata/
