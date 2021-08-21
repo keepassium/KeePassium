@@ -756,6 +756,10 @@
 		75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FEC2232175292C0034334B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
+		CEC7C36926D14BFB00EEE37F /* NavViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7C36826D14BFB00EEE37F /* NavViewControllers.swift */; };
+		CEC7C36A26D14BFB00EEE37F /* NavViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7C36826D14BFB00EEE37F /* NavViewControllers.swift */; };
+		CEC7C36B26D14BFB00EEE37F /* NavViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7C36826D14BFB00EEE37F /* NavViewControllers.swift */; };
+		CEC7C36C26D14BFB00EEE37F /* NavViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7C36826D14BFB00EEE37F /* NavViewControllers.swift */; };
 		F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */; };
 /* End PBXBuildFile section */
 
@@ -1912,6 +1916,7 @@
 		75FDEF73233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75FDEF74233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75FEC2222175292C0034334B /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC7C36826D14BFB00EEE37F /* NavViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewControllers.swift; sourceTree = "<group>"; };
 		F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2493,6 +2498,7 @@
 				758CA53C2569B9960034EF10 /* SwitchCell.xib */,
 				758CA5432569B9EA0034EF10 /* SwitchCell.swift */,
 				75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */,
+				CEC7C36826D14BFB00EEE37F /* NavViewControllers.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -3164,6 +3170,7 @@
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				75D99DEF269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
+				CEC7C36A26D14BFB00EEE37F /* NavViewControllers.swift in Sources */,
 				75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */,
 				7583EA7E2685D34A009969E7 /* SettingsFileSortingVC.swift in Sources */,
 				7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */,
@@ -3238,6 +3245,7 @@
 				7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */,
 				758FC18D24CF254000BAD35C /* AppIcon.swift in Sources */,
 				F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */,
+				CEC7C36926D14BFB00EEE37F /* NavViewControllers.swift in Sources */,
 				750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */,
 				75DE6779268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				75679ACB22F8095F00372301 /* AppInfo.swift in Sources */,
@@ -3408,6 +3416,7 @@
 				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
 				758FC18E24CF254000BAD35C /* AppIcon.swift in Sources */,
 				75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */,
+				CEC7C36B26D14BFB00EEE37F /* NavViewControllers.swift in Sources */,
 				75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */,
 				75DE677B268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				75B38C0C233E5B7C006BDEFC /* SettingsFileSortingVC.swift in Sources */,
@@ -3598,6 +3607,7 @@
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
 				75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
+				CEC7C36C26D14BFB00EEE37F /* NavViewControllers.swift in Sources */,
 				75D7DFA0233E5E310029AD87 /* SearchHelper.swift in Sources */,
 				7583EA812685D34B009969E7 /* SettingsFileSortingVC.swift in Sources */,
 				75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */,

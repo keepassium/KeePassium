@@ -41,7 +41,7 @@ protocol DiagnosticsViewerDelegate: AnyObject {
     func didPressContactSupport(in diagnosticsViewer: DiagnosticsViewerVC, text: String)
 }
 
-class DiagnosticsViewerVC: UITableViewController, Refreshable {
+class DiagnosticsViewerVC: NavTableViewController, Refreshable {
     private var items: [Diag.Item] = [] {
         didSet {
             refresh()

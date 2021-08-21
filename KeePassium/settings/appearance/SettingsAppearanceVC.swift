@@ -13,7 +13,7 @@ protocol SettingsAppearanceViewControllerDelegate: AnyObject {
     func didPressDatabaseIconsSettings(in viewController: SettingsAppearanceVC)
 }
 
-final class SettingsAppearanceVC: UITableViewController {
+final class SettingsAppearanceVC: NavTableViewController {
     
     @IBOutlet private weak var appIconCell: UITableViewCell!
     @IBOutlet private weak var databaseIconsCell: UITableViewCell!

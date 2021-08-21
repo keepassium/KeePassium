@@ -50,7 +50,7 @@ class FileInfoSwitchCell: UITableViewCell {
     }
 }
 
-class FileInfoVC: UITableViewController {
+class FileInfoVC: NavTableViewController {
     @IBOutlet weak var exportButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     

@@ -37,7 +37,7 @@ protocol EntryFieldEditorDelegate: AnyObject {
     )
 }
 
-final class EntryFieldEditorVC: UITableViewController, Refreshable {
+final class EntryFieldEditorVC: NavTableViewController, Refreshable {
     @IBOutlet private weak var addFieldButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet private weak var scanOTPButton: UIButton!
@@ -143,6 +143,10 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         }
         choiceAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
         present(choiceAlert, animated: true, completion: nil)
+    }
+    
+    @objc override func dismissView() {
+        delegate?.didPressCancel(in: self)
     }
 
     @IBAction func didPressCancel(_ sender: Any) {

@@ -14,7 +14,7 @@ protocol SettingsAppLockViewControllerDelegate: AnyObject {
     func didPressAppTimeout(in viewController: SettingsAppLockVC)
 }
 
-final class SettingsAppLockVC: UITableViewController, Refreshable {
+final class SettingsAppLockVC: NavTableViewController, Refreshable {
     @IBOutlet private weak var appLockEnabledSwitch: UISwitch!
     
     @IBOutlet private weak var changePasscodeCell: UITableViewCell!

@@ -15,7 +15,7 @@ protocol AboutDelegate: AnyObject {
     func didPressOpenLicense(url: URL, at popoverAnchor: PopoverAnchor, in viewController: AboutVC)
 }
 
-final class AboutVC: UITableViewController {
+final class AboutVC: NavTableViewController {
     @IBOutlet private weak var appTitleLabel: UILabel!
     @IBOutlet private weak var contactSupportCell: UITableViewCell!
     @IBOutlet private weak var writeReviewCell: UITableViewCell!

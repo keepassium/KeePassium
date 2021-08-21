@@ -24,7 +24,7 @@ protocol SettingsDatabaseTimeoutViewControllerDelegate: AnyObject {
     )
 }
 
-final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
+final class SettingsDatabaseTimeoutVC: NavTableViewController, Refreshable {
     private var premiumStatus: PremiumManager.Status = .initialGracePeriod
     
     weak var delegate: SettingsDatabaseTimeoutViewControllerDelegate?

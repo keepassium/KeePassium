@@ -27,7 +27,7 @@ protocol SettingsViewControllerDelegate: AnyObject {
     func didPressAboutApp(in viewController: SettingsVC)
 }
 
-final class SettingsVC: UITableViewController, Refreshable {
+final class SettingsVC: NavTableViewController, Refreshable {
 
     @IBOutlet private weak var appSafetyCell: UITableViewCell!
     @IBOutlet private weak var dataSafetyCell: UITableViewCell!
