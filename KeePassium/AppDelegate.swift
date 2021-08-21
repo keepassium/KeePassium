@@ -96,7 +96,6 @@ extension AppDelegate {
     @available(iOS 13, *)
     override func buildMenu(with builder: UIMenuBuilder) {
         builder.remove(menu: .file)
-        builder.remove(menu: .edit)
         builder.remove(menu: .format)
 
         let aboutNameDef = String(format: NSLocalizedString("About %@", comment: ""), AppInfo.name)
