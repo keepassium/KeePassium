@@ -196,6 +196,16 @@ final class GroupViewerVC:
 
         definesPresentationContext = true
         searchController.searchResultsUpdater = self
+        
+        addKeyCommand(UIKeyCommand(action: #selector(activateSearch), input: "f", modifierFlags: [.command]))
+    }
+    
+    @objc func activateSearch() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.searchController.isActive = true
+            self.searchController.searchBar.becomeFirstResponderWhenSafe()
+        }
     }
     
     func refresh() {
