@@ -257,6 +257,16 @@ extension MainCoordinator {
         
         viewController.present(modalRouter, animated: true, completion: nil)
     }
+    
+    func showAboutScreen() {
+        let popoverAnchor = PopoverAnchor(sourceView: mainWindow, sourceRect: mainWindow.bounds)
+        self.databasePickerCoordinator.showAboutScreen(at: popoverAnchor, in: self.rootSplitVC)
+    }
+    
+    func showSettingsScreen() {
+        let popoverAnchor = PopoverAnchor(sourceView: mainWindow, sourceRect: mainWindow.bounds)
+        self.databasePickerCoordinator.showAppSettings(at: popoverAnchor, in: self.rootSplitVC)
+    }
 }
 
 extension MainCoordinator: UISplitViewControllerDelegate {

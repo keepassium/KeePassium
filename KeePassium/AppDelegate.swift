@@ -82,11 +82,35 @@ extension AppDelegate {
     func showHelp(_ sender: Any) {
         UIApplication.shared.open(helpURL, options: [:], completionHandler: nil)
     }
+    
+    @objc
+    func showAbout(_ sender: Any) {
+        mainCoordinator.showAboutScreen()
+    }
+    
+    @objc
+    func showSettings(_ sender: Any) {
+        mainCoordinator.showSettingsScreen()
+    }
 
     @available(iOS 13, *)
     override func buildMenu(with builder: UIMenuBuilder) {
         builder.remove(menu: .file)
         builder.remove(menu: .edit)
         builder.remove(menu: .format)
+
+        let aboutNameDef = String(format: NSLocalizedString("About %@", comment: ""), AppInfo.name)
+        let aboutName = builder.menu(for: .about)?.children.first?.title ?? aboutNameDef;
+        let aboutEntry = UICommand(title: aboutName, action: #selector(showAbout))
+        let aboutMenu = UIMenu(title: "", identifier: .about, options: .displayInline, children: [aboutEntry])
+        builder.remove(menu: .about)
+        builder.insertChild(aboutMenu, atStartOfMenu: .application)
+
+        let prefsNameDef = NSLocalizedString("Preferences…", comment: "")
+        let prefsName = builder.menu(for: .preferences)?.children.first?.title ?? prefsNameDef
+        let prefsEntry = UIKeyCommand(title: prefsName, action: #selector(showSettings), input: ",", modifierFlags: [.command])
+        let prefsMenu = UIMenu(title: "", identifier: .preferences, options: .displayInline, children: [prefsEntry])
+        builder.remove(menu: .preferences)
+        builder.insertSibling(prefsMenu, afterMenu: .about)
     }
 }
