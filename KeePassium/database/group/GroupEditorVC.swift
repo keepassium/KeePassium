@@ -15,7 +15,7 @@ protocol GroupEditorDelegate: AnyObject {
     func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in groupEditor: GroupEditorVC)
 }
 
-final class GroupEditorVC: UIViewController, Refreshable {
+final class GroupEditorVC: NavViewController, Refreshable {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var nameTextField: ValidatingTextField!
     

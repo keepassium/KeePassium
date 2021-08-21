@@ -15,7 +15,7 @@ protocol SettingsDataProtectionViewCoordinatorDelegate: AnyObject {
     func didToggleLockDatabasesOnTimeout(newValue: Bool, in viewController: SettingsDataProtectionVC)
 }
 
-final class SettingsDataProtectionVC: UITableViewController, Refreshable {
+final class SettingsDataProtectionVC: NavTableViewController, Refreshable {
 
     @IBOutlet private weak var rememberMasterKeysSwitch: UISwitch!
     @IBOutlet private weak var clearMasterKeysButton: UIButton!

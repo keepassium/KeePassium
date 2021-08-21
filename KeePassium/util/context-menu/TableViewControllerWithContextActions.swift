@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-class TableViewControllerWithContextActions: UITableViewController {
+class TableViewControllerWithContextActions: NavTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-class SettingsSearchVC: UITableViewController {
+class SettingsSearchVC: NavTableViewController {
     @IBOutlet weak var startWithSearchSwitch: UISwitch!
     @IBOutlet weak var searchFieldNamesSwitch: UISwitch!
     @IBOutlet weak var searchProtectedValuesSwitch: UISwitch!

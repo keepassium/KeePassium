@@ -22,7 +22,7 @@ protocol DatabaseCreatorDelegate: AnyObject {
     func shouldDismissPopovers(in databaseCreatorVC: DatabaseCreatorVC)
 }
 
-class DatabaseCreatorVC: UIViewController {
+class DatabaseCreatorVC: NavViewController {
 
     public var databaseFileName: String { return fileNameField.text ?? "" }
     public var password: String { return passwordField.text ?? ""}

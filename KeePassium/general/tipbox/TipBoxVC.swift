@@ -14,7 +14,7 @@ protocol TipBoxDelegate: AnyObject {
     func didPressPurchase(product: SKProduct, in viewController: TipBoxVC)
 }
 
-final class TipBoxVC: UIViewController {
+final class TipBoxVC: NavViewController {
     @IBOutlet private weak var rootStackView: UIStackView!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var buttonsStackView: UIStackView!

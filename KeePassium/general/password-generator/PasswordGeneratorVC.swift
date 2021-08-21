@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-class PasswordGeneratorVC: UITableViewController, Refreshable {
+class PasswordGeneratorVC: NavTableViewController, Refreshable {
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var lengthLabel: UILabel!
     @IBOutlet weak var lengthSlider: UISlider!
@@ -127,6 +127,11 @@ class PasswordGeneratorVC: UITableViewController, Refreshable {
         }
         refresh()
         loadSettings()
+    }
+    
+    @objc override func previousView() {
+        completionHandler?(nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func didPressRefresh(_ sender: Any) {

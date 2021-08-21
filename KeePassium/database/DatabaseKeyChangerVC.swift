@@ -15,7 +15,7 @@ protocol DatabaseKeyChangerDelegate: AnyObject {
     func shouldDismissPopovers(in viewController: DatabaseKeyChangerVC)
 }
 
-final class DatabaseKeyChangerVC: UIViewController {
+final class DatabaseKeyChangerVC: NavViewController {
    
     @IBOutlet private weak var databaseNameLabel: UILabel!
     @IBOutlet private weak var databaseIcon: UIImageView!

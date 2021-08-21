@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-class SettingsAppTimeoutVC: UITableViewController, Refreshable {
+class SettingsAppTimeoutVC: NavTableViewController, Refreshable {
     private let timeoutCellID = "TimeoutCell"
     private let switchCellID = "SwitchCell"
     
