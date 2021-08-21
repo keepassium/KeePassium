@@ -288,7 +288,11 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabasePickerVC
     ) {
-        FileExportHelper.showFileExportSheet(fileRef, at: popoverAnchor, parent: viewController)
+        if ProcessInfo.isRunningOnMac {
+            FileExportHelper.revealFile(fileRef)
+        } else {
+            FileExportHelper.showFileExportSheet(fileRef, at: popoverAnchor, parent: viewController)
+        }
     }
     
     func didPressEliminateDatabase(
