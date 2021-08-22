@@ -173,6 +173,11 @@ extension LString {
         value: "Warning",
         comment: "Title of an warning message"
     )
+    public static let titleSearch = NSLocalizedString(
+        "[Generic/Search/title]",
+        value: "Search",
+        comment: "Title of a search field (a noun, not verb)"
+    )
     public static let titleFileImportError = NSLocalizedString(
         "[Generic/File/title] Import Error",
         value: "Import Error",

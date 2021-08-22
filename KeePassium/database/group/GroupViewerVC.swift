@@ -196,8 +196,30 @@ final class GroupViewerVC:
 
         definesPresentationContext = true
         searchController.searchResultsUpdater = self
-        
-        addKeyCommand(UIKeyCommand(action: #selector(activateSearch), input: "f", modifierFlags: [.command]))
+    }
+    
+    override var keyCommands: [UIKeyCommand]? {
+        var commands = [UIKeyCommand]()
+        if #available(iOS 13, *) {
+            commands.append(
+                UIKeyCommand(
+                    action: #selector(activateSearch),
+                    input: "f",
+                    modifierFlags: [.command],
+                    discoverabilityTitle: LString.titleSearch
+                )
+            )
+        } else {
+            commands.append(
+                UIKeyCommand(
+                    input: "f",
+                    modifierFlags: [.command],
+                    action: #selector(activateSearch),
+                    discoverabilityTitle: LString.titleSearch
+                )
+            )
+        }
+        return commands
     }
     
     @objc func activateSearch() {
