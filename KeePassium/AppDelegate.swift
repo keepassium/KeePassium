@@ -73,6 +73,8 @@ extension AppDelegate {
         switch action {
         case #selector(showHelp(_:)):
             return true
+        case #selector(lockDatabase(_:)):
+            return DatabaseManager.shared.isDatabaseOpen
         default:
             return super.canPerformAction(action, withSender: sender)
         }
@@ -93,9 +95,23 @@ extension AppDelegate {
         mainCoordinator.showSettingsScreen()
     }
 
+    @objc
+    func createDatabase(_ sender: Any) {
+        mainCoordinator.createDatabase()
+    }
+
+    @objc
+    func lockDatabase(_ sender: Any) {
+        mainCoordinator.lockDatabase()
+    }
+
+    @objc
+    func openDatabase(_ sender: Any) {
+        mainCoordinator.openDatabase()
+    }
+
     @available(iOS 13, *)
     override func buildMenu(with builder: UIMenuBuilder) {
-        builder.remove(menu: .file)
         builder.remove(menu: .format)
 
         let aboutNameDef = String(format: NSLocalizedString("About %@", comment: ""), AppInfo.name)
@@ -111,5 +127,14 @@ extension AppDelegate {
         let prefsMenu = UIMenu(title: "", identifier: .preferences, options: .displayInline, children: [prefsEntry])
         builder.remove(menu: .preferences)
         builder.insertSibling(prefsMenu, afterMenu: .about)
+
+        let newDbName = NSLocalizedString("Create Database", comment: "")
+        let newDbEntry = UIKeyCommand(title: newDbName, action: #selector(createDatabase), input: "n", modifierFlags: [.command])
+        let lockDbName = NSLocalizedString("Lock Database", comment: "")
+        let lockDbEntry = UIKeyCommand(title: lockDbName, action: #selector(lockDatabase), input: "l", modifierFlags: [.command, .alternate, .control])
+        let openDbName = NSLocalizedString("Open Database", comment: "")
+        let openDbEntry = UIKeyCommand(title: openDbName, action: #selector(openDatabase), input: "o", modifierFlags: [.command])
+        let dbMenu = UIMenu(title: "", options: .displayInline, children: [newDbEntry, lockDbEntry, openDbEntry])
+        builder.insertChild(dbMenu, atStartOfMenu: .file)
     }
 }
