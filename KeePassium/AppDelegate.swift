@@ -71,70 +71,109 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         switch action {
-        case #selector(showHelp(_:)):
+        case #selector(showAppHelp):
             return true
-        case #selector(lockDatabase(_:)):
+        case #selector(lockDatabase):
             return DatabaseManager.shared.isDatabaseOpen
         default:
             return super.canPerformAction(action, withSender: sender)
         }
-    }
-    
-    @objc
-    func showHelp(_ sender: Any) {
-        UIApplication.shared.open(helpURL, options: [:], completionHandler: nil)
-    }
-    
-    @objc
-    func showAbout(_ sender: Any) {
-        mainCoordinator.showAboutScreen()
-    }
-    
-    @objc
-    func showSettings(_ sender: Any) {
-        mainCoordinator.showSettingsScreen()
-    }
-
-    @objc
-    func createDatabase(_ sender: Any) {
-        mainCoordinator.createDatabase()
-    }
-
-    @objc
-    func lockDatabase(_ sender: Any) {
-        mainCoordinator.lockDatabase()
-    }
-
-    @objc
-    func openDatabase(_ sender: Any) {
-        mainCoordinator.openDatabase()
     }
 
     @available(iOS 13, *)
     override func buildMenu(with builder: UIMenuBuilder) {
         builder.remove(menu: .format)
 
-        let aboutNameDef = String(format: NSLocalizedString("About %@", comment: ""), AppInfo.name)
-        let aboutName = builder.menu(for: .about)?.children.first?.title ?? aboutNameDef;
-        let aboutEntry = UICommand(title: aboutName, action: #selector(showAbout))
-        let aboutMenu = UIMenu(title: "", identifier: .about, options: .displayInline, children: [aboutEntry])
+        let aboutAppMenuTitle = builder.menu(for: .about)?.children.first?.title
+            ?? String.localizedStringWithFormat(LString.menuAboutAppTemplate, AppInfo.name)
+        let aboutAppMenuAction = UICommand(
+            title: aboutAppMenuTitle,
+            action: #selector(showAboutScreen))
+        let aboutAppMenu = UIMenu(
+            title: "",
+            identifier: .about,
+            options: .displayInline,
+            children: [aboutAppMenuAction]
+        )
         builder.remove(menu: .about)
-        builder.insertChild(aboutMenu, atStartOfMenu: .application)
+        builder.insertChild(aboutAppMenu, atStartOfMenu: .application)
 
-        let prefsNameDef = NSLocalizedString("Preferences…", comment: "")
-        let prefsName = builder.menu(for: .preferences)?.children.first?.title ?? prefsNameDef
-        let prefsEntry = UIKeyCommand(title: prefsName, action: #selector(showSettings), input: ",", modifierFlags: [.command])
-        let prefsMenu = UIMenu(title: "", identifier: .preferences, options: .displayInline, children: [prefsEntry])
+        let preferencesMenuItem = UIKeyCommand(
+            title: builder.menu(for: .preferences)?.children.first?.title ?? LString.menuPreferences,
+            action: #selector(showSettingsScreen),
+            input: ",",
+            modifierFlags: [.command])
+        let preferencesMenu = UIMenu(
+            identifier: .preferences,
+            options: .displayInline,
+            children: [preferencesMenuItem]
+        )
         builder.remove(menu: .preferences)
-        builder.insertSibling(prefsMenu, afterMenu: .about)
+        builder.insertSibling(preferencesMenu, afterMenu: .about)
 
-        let newDbName = NSLocalizedString("Create Database", comment: "")
-        let newDbEntry = UIKeyCommand(title: newDbName, action: #selector(createDatabase), input: "n", modifierFlags: [.command])
-        let lockDbName = NSLocalizedString("Lock Database", comment: "")
-        let lockDbEntry = UIKeyCommand(title: lockDbName, action: #selector(lockDatabase), input: "l", modifierFlags: [.command, .alternate, .control])
-        let openDbName = NSLocalizedString("Open Database", comment: "")
-        let openDbEntry = UIKeyCommand(title: openDbName, action: #selector(openDatabase), input: "o", modifierFlags: [.command])
-        let dbMenu = UIMenu(title: "", options: .displayInline, children: [newDbEntry, lockDbEntry, openDbEntry])
-        builder.insertChild(dbMenu, atStartOfMenu: .file)
+        let createDatabaseMenuItem = UIKeyCommand(
+            title: LString.actionCreateDatabase,
+            action: #selector(createDatabase),
+            input: "n",
+            modifierFlags: [.command])
+        let openDatabaseMenuItem = UIKeyCommand(
+            title: LString.actionOpenDatabase,
+            action: #selector(openDatabase),
+            input: "o",
+            modifierFlags: [.command])
+        let lockDatabaseMenuItem = UIKeyCommand(
+            title: LString.actionLockDatabase,
+            action: #selector(lockDatabase),
+            input: "l",
+            modifierFlags: [.command]
+        )
+        let databaseMenu = UIMenu(
+            options: .displayInline,
+            children: [createDatabaseMenuItem, openDatabaseMenuItem, lockDatabaseMenuItem]
+        )
+        builder.insertChild(databaseMenu, atStartOfMenu: .file)
     }
+    
+    @objc
+    private func showAppHelp() {
+        UIApplication.shared.open(helpURL, options: [:], completionHandler: nil)
+    }
+    
+    @objc
+    private func showAboutScreen() {
+        mainCoordinator.showAboutScreen()
+    }
+    
+    @objc
+    private func showSettingsScreen() {
+        mainCoordinator.showSettingsScreen()
+    }
+    
+    @objc
+    private func createDatabase() {
+        mainCoordinator.createDatabase()
+    }
+    
+    @objc
+    private func openDatabase() {
+        mainCoordinator.openDatabase()
+    }
+    
+    @objc
+    private func lockDatabase() {
+        mainCoordinator.lockDatabase()
+    }
+}
+
+extension LString {
+    public static let menuAboutAppTemplate = NSLocalizedString(
+        "[Menu/About/title]",
+        value: "About %@",
+        comment: "Menu title. For example: `About KeePassium`. [appName: String]"
+    )
+    public static let menuPreferences = NSLocalizedString(
+        "[Menu/Preferences/title]",
+        value: "Preferences…",
+        comment: "Menu title: app settings"
+    )
 }
