@@ -269,17 +269,36 @@ extension MainCoordinator {
     }
     
     func createDatabase() {
-        lockDatabase()
-        self.databasePickerCoordinator.createDatabase(presenter: self.rootSplitVC)
+        databaseViewerCoordinator?.closeDatabase(
+            shouldLock: false,
+            reason: .appLevelOperation,
+            animated: true,
+            completion: { [weak self] in
+                guard let self = self else { return }
+                self.databasePickerCoordinator.createDatabase(presenter: self.rootSplitVC)
+            }
+        )
+    }
+        
+    func openDatabase() {
+        databaseViewerCoordinator?.closeDatabase(
+            shouldLock: false,
+            reason: .appLevelOperation,
+            animated: true,
+            completion: { [weak self] in
+                guard let self = self else { return }
+                self.databasePickerCoordinator.addExistingDatabase(presenter: self.rootSplitVC)
+            }
+        )
     }
     
     func lockDatabase() {
-        self.databaseViewerCoordinator?.closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
-    }
-    
-    func openDatabase() {
-        lockDatabase()
-        self.databasePickerCoordinator.addExistingDatabase(presenter: self.rootSplitVC)
+        databaseViewerCoordinator?.closeDatabase(
+            shouldLock: true,
+            reason: .userRequest,
+            animated: true,
+            completion: nil
+        )
     }
 }
 
