@@ -267,6 +267,20 @@ extension MainCoordinator {
         let popoverAnchor = PopoverAnchor(sourceView: mainWindow, sourceRect: mainWindow.bounds)
         self.databasePickerCoordinator.showAppSettings(at: popoverAnchor, in: self.rootSplitVC)
     }
+    
+    func createDatabase() {
+        lockDatabase()
+        self.databasePickerCoordinator.createDatabase(presenter: self.rootSplitVC)
+    }
+    
+    func lockDatabase() {
+        self.databaseViewerCoordinator?.closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
+    }
+    
+    func openDatabase() {
+        lockDatabase()
+        self.databasePickerCoordinator.addExistingDatabase(presenter: self.rootSplitVC)
+    }
 }
 
 extension MainCoordinator: UISplitViewControllerDelegate {
