@@ -47,6 +47,17 @@ public struct PurchaseHistory: Codable, Equatable {
         )
     }()
     
+    static let prepaidProVersion = {
+        PurchaseHistory(
+            containsTrial: false,
+            containsLifetimePurchase: true,
+            latestPremiumProduct: .forever,
+            latestPremiumExpiryDate: Date.distantFuture,
+            premiumSupportExpiryDate: Date.distantFuture,
+            premiumFallbackDate: Date.distantFuture
+        )
+    }()
+    
     static let betaTesting = {
         PurchaseHistory(
             containsTrial: false,
@@ -169,6 +180,9 @@ class ReceiptAnalyzer {
     }
     
     func loadReceipt() -> PurchaseHistory {
+        if BusinessModel.type == .prepaid {
+            return PurchaseHistory.prepaidProVersion
+        }
         if Settings.current.isTestEnvironment {
             Diag.info("Enabling premium for test environment")
             return PurchaseHistory.betaTesting

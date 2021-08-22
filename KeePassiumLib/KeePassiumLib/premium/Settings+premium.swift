@@ -46,8 +46,6 @@ public extension Settings {
     }
     
     func isAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
-        guard BusinessModel.type == .freemium else { return true }
-
         switch status {
         case .initialGracePeriod,
              .freeLightUse:
@@ -62,8 +60,6 @@ public extension Settings {
     }
     
     func isShownAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
-        guard BusinessModel.type == .freemium else { return true }
-        
         switch status {
         case .initialGracePeriod,
              .freeLightUse:

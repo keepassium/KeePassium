@@ -44,8 +44,6 @@ public enum PremiumFeature: Int {
     case canViewFieldReferences = 8
     
     public func isAvailable(in status: PremiumManager.Status, fallbackDate: Date?) -> Bool {
-        guard BusinessModel.type == .freemium else { return true }
-        
         let isEntitled = status == .subscribed ||
             status == .lapsed ||
             wasAvailable(before: fallbackDate)

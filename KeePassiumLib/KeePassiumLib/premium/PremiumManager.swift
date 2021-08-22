@@ -249,8 +249,6 @@ public class PremiumManager: NSObject {
     
     
     public func reloadReceipt() {
-        guard BusinessModel.type == .freemium else { return }
-        
         let oldPurchaseHistory = purchaseHistory
         if AppGroup.isMainApp {
             let receiptAnalyzer = ReceiptAnalyzer()
