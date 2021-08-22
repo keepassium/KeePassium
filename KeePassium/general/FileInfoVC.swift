@@ -183,9 +183,15 @@ class FileInfoVC: NavTableViewController {
     }
 
     func setupButtons() {
-        exportButton?.isHidden = !canExport
+        guard isViewLoaded else { return }
+        exportButton.isHidden = !canExport
+        if ProcessInfo.isRunningOnMac {
+            exportButton.setTitle(LString.actionRevealInFinder, for: .normal)
+        } else {
+            exportButton.setTitle(LString.actionExport, for: .normal)
+        }
         let destructiveAction = DestructiveFileAction.get(for: urlRef.location)
-        deleteButton?.setTitle(destructiveAction.title, for: .normal)
+        deleteButton.setTitle(destructiveAction.title, for: .normal)
     }
     
     
@@ -359,7 +365,7 @@ class FileInfoVC: NavTableViewController {
     
     @IBAction func didPressExport(_ sender: UIButton) {
         if ProcessInfo.isRunningOnMac {
-            FileExportHelper.revealFile(urlRef)
+            FileExportHelper.revealInFinder(urlRef)
         } else {
             let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
             FileExportHelper.showFileExportSheet(urlRef, at: popoverAnchor, parent: self)

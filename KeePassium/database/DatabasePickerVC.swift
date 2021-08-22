@@ -51,6 +51,9 @@ protocol DatabasePickerDelegate: AnyObject {
     func didPressCreateDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     #endif
 
+    func didPressRevealDatabaseInFinder(
+        _ fileRef: URLReference,
+        in viewController: DatabasePickerVC)
     func didPressExportDatabase(
         _ fileRef: URLReference,
         at popoverAnchor: PopoverAnchor,
@@ -292,13 +295,18 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         present(optionsSheet, animated: true, completion: nil)
     }
     
-
+    private func didPressRevealInFinder(_ fileRef: URLReference, at indexPath: IndexPath) {
+        assert(ProcessInfo.isRunningOnMac)
+        let fileRef = databaseRefs[indexPath.row]
+        delegate?.didPressRevealDatabaseInFinder(fileRef, in: self)
+    }
+    
     func didPressExportDatabase(_ fileRef: URLReference, at indexPath: IndexPath) {
         let fileRef = databaseRefs[indexPath.row]
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressExportDatabase(fileRef, at: popoverAnchor, in: self)
     }
-        
+
     func didPressEliminateDatabase(_ fileRef: URLReference, at indexPath: IndexPath) {
         StoreReviewSuggester.registerEvent(.trouble)
 
@@ -455,16 +463,31 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             return []
         }
 
+        var actions = [ContextualAction]()
         let fileRef = databaseRefs[indexPath.row]
-        let exportAction = ContextualAction(
-            title: LString.actionExport,
-            imageName: .squareAndArrowUp,
-            style: .default,
-            color: UIColor.actionTint,
-            handler: { [weak self, indexPath] in
-                self?.didPressExportDatabase(fileRef, at: indexPath)
-            }
-        )
+        if ProcessInfo.isRunningOnMac {
+            let revealInFinderAction = ContextualAction(
+                title: LString.actionRevealInFinder,
+                imageName: nil,
+                style: .default,
+                color: UIColor.actionTint,
+                handler: { [weak self, indexPath] in
+                    self?.didPressRevealInFinder(fileRef, at: indexPath)
+                }
+            )
+            actions.append(revealInFinderAction)
+        } else {
+            let exportAction = ContextualAction(
+                title: LString.actionExport,
+                imageName: .squareAndArrowUp,
+                style: .default,
+                color: UIColor.actionTint,
+                handler: { [weak self, indexPath] in
+                    self?.didPressExportDatabase(fileRef, at: indexPath)
+                }
+            )
+            actions.append(exportAction)
+        }
         
         let destructiveActionTitle = DestructiveFileAction.get(for: fileRef.location).title
         let destructiveAction = ContextualAction(
@@ -476,8 +499,9 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 self?.didPressEliminateDatabase(fileRef, at: indexPath)
             }
         )
+        actions.append(destructiveAction)
         
-        return [exportAction, destructiveAction]
+        return actions
     }
 }
 

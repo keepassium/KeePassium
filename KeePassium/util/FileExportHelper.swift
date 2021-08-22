@@ -9,22 +9,30 @@
 import KeePassiumLib
 
 class FileExportHelper {
-
-    public static func revealFile(_ urlRef: URLReference)
-    {
+    
+    public static func revealInFinder(_ urlRef: URLReference) {
+        assert(ProcessInfo.isRunningOnMac)
         let NSWorkspace = NSClassFromString("NSWorkspace") as AnyObject
         let sharedWorkspaceSelector = NSSelectorFromString("sharedWorkspace")
         let sharedWorkspaceSignature = (@convention(c)(AnyObject, Selector) -> NSObject).self
-        let sharedWorkspaceMethod = unsafeBitCast(NSWorkspace.method(for: sharedWorkspaceSelector), to: sharedWorkspaceSignature)
+        let sharedWorkspaceMethod = unsafeBitCast(
+            NSWorkspace.method(for: sharedWorkspaceSelector),
+            to: sharedWorkspaceSignature
+        )
         let sharedWorkspace = sharedWorkspaceMethod(NSWorkspace, sharedWorkspaceSelector)
 
         let activateSelector = NSSelectorFromString("activateFileViewerSelectingURLs:")
         let activateSignature = (@convention(c)(NSObject, Selector, [URL]) -> Void).self
-        let activateMethod = unsafeBitCast(sharedWorkspace.method(for: activateSelector), to: activateSignature)
+        let activateMethod = unsafeBitCast(
+            sharedWorkspace.method(for: activateSelector),
+            to: activateSignature
+        )
         do {
-            activateMethod(sharedWorkspace, activateSelector, [try urlRef.resolveSync()])
+            let fileURL = try urlRef.resolveSync()
+            assert(fileURL.isFileURL)
+            activateMethod(sharedWorkspace, activateSelector, [fileURL])
         } catch {
-            Diag.warning("Failed to reveal the file")
+            Diag.warning("Failed to reveal the file [message: \(error.localizedDescription)]")
         }
     }
     

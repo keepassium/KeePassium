@@ -120,6 +120,11 @@ extension LString {
         value: "Export",
         comment: "Action/button to export an item to another app"
     )
+    public static let actionRevealInFinder = NSLocalizedString(
+        "[Generic] Reveal in Finder",
+        value: "Reveal in Finder",
+        comment: "Action/button to open Finder (macOS file manager) and highlight a given file"
+    )
     public static let actionContactUs = NSLocalizedString(
         "[Generic] Contact Us",
         value: "Contact Us",

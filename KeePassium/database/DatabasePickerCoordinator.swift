@@ -282,17 +282,20 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     func didPressAddExistingDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         addExistingDatabase(presenter: viewController)
     }
-    
+
+    func didPressRevealDatabaseInFinder(
+        _ fileRef: URLReference,
+        in viewController: DatabasePickerVC
+    ) {
+        FileExportHelper.revealInFinder(fileRef)
+    }
+
     func didPressExportDatabase(
         _ fileRef: URLReference,
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabasePickerVC
     ) {
-        if ProcessInfo.isRunningOnMac {
-            FileExportHelper.revealFile(fileRef)
-        } else {
-            FileExportHelper.showFileExportSheet(fileRef, at: popoverAnchor, parent: viewController)
-        }
+        FileExportHelper.showFileExportSheet(fileRef, at: popoverAnchor, parent: viewController)
     }
     
     func didPressEliminateDatabase(
