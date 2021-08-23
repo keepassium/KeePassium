@@ -107,6 +107,13 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
             action: #selector(didTapValueTextView))
         scrollTapGestureRecognizer.numberOfTapsRequired = 1
         valueScrollView.addGestureRecognizer(scrollTapGestureRecognizer)
+        
+        valueScrollView.alwaysBounceVertical = false
+        valueScrollView.alwaysBounceHorizontal = false
+        if ProcessInfo.isCatalystApp {
+            valueScrollView.isScrollEnabled = false
+            valueScrollView.showsVerticalScrollIndicator = false
+        }
     }
     
     func setupCell() {
