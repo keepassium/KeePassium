@@ -115,7 +115,13 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         guard let rootGroupViewer = rootGroupViewer else {
             fatalError("No group viewer")
         }
-        primaryRouter.pop(viewController: rootGroupViewer, animated: animated, completion: completion)
+        primaryRouter.dismissModals(animated: animated) { [self, rootGroupViewer] in 
+            self.primaryRouter.pop(
+                viewController: rootGroupViewer,
+                animated: animated,
+                completion: completion
+            )
+        }
     }
     
     func refresh() {
