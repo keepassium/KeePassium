@@ -155,10 +155,10 @@ final public class NavigationRouter: NSObject {
         replaceTopViewController: Bool = false,
         onPop popHandler: PopHandler?
     ) {
-        if let popHandler = popHandler {
-            let id = ObjectIdentifier(viewController)
-            popHandlers.append((id, popHandler, viewController.debugDescription))
-        }
+        let nonEmptyPopHandler = popHandler ??
+            { /* an empty handler, required to maintain a continuous handler stack */ }
+        let id = ObjectIdentifier(viewController)
+        popHandlers.append((id, nonEmptyPopHandler, viewController.debugDescription))
         
         if replaceTopViewController,
            let topVC = navigationController.topViewController
