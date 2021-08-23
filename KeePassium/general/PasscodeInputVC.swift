@@ -28,7 +28,7 @@ extension PasscodeInputDelegate {
     func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {}
 }
 
-class PasscodeInputVC: NavViewController {
+class PasscodeInputVC: UIViewController {
 
     public enum Mode {
         case setup
@@ -165,9 +165,6 @@ class PasscodeInputVC: NavViewController {
         passcodeTextField.selectAll(nil)
     }
     
-    @objc override func dismissView() {
-        delegate?.passcodeInputDidCancel(self)
-    }
     
     @IBAction func didPressCancelButton(_ sender: Any) {
         delegate?.passcodeInputDidCancel(self)

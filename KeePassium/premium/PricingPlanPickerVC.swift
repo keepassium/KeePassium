@@ -20,7 +20,7 @@ protocol PricingPlanPickerDelegate: AnyObject {
         in viewController: PricingPlanPickerVC)
 }
 
-class PricingPlanPickerVC: NavViewController {
+class PricingPlanPickerVC: UIViewController {
     fileprivate let termsAndConditionsURL = URL(string: "https://keepassium.com/terms/app")!
     fileprivate let privacyPolicyURL = URL(string: "https://keepassium.com/privacy/app")!
 

@@ -12,7 +12,7 @@ protocol SettingsClipboardTimeoutViewControllerDelegate: AnyObject {
     func didFinishSelection(in viewController: SettingsClipboardTimeoutVC)
 }
 
-final class SettingsClipboardTimeoutVC: NavTableViewController, Refreshable {
+final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
     private let cellID = "Cell"
     
     weak var delegate: SettingsClipboardTimeoutViewControllerDelegate?

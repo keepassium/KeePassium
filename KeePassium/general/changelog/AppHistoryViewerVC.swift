@@ -18,7 +18,7 @@ class AppHistoryFallbackCell: UITableViewCell {
     fileprivate static let storyboardID = "FallbackCell"
 }
 
-class AppHistoryViewerVC: NavTableViewController {
+class AppHistoryViewerVC: UITableViewController {
     var appHistory: AppHistory? {
         didSet {
             updateSections()

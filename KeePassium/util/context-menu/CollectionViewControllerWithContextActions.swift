@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-class CollectionViewControllerWithContextActions: NavCollectionViewController {
+class CollectionViewControllerWithContextActions: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-class SettingsBackupVC: NavTableViewController {
+class SettingsBackupVC: UITableViewController {
 
     @IBOutlet weak var enableDatabaseBackupSwitch: UISwitch!
     @IBOutlet weak var showBackupFilesSwitch: UISwitch!

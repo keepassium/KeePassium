@@ -37,7 +37,7 @@ final class SettingsBackupFileVisibilityCell: UITableViewCell {
     }
 }
 
-final class SettingsFileSortingVC: NavTableViewController, Refreshable {
+final class SettingsFileSortingVC: UITableViewController, Refreshable {
     private let sortingCellID = "SortingCell"
     
     weak var delegate: SettingsFileSortingDelegate?

@@ -16,7 +16,7 @@ protocol ExpiryDateEditorDelegate: AnyObject {
         in viewController: ExpiryDateEditorVC)
 }
 
-final class ExpiryDateEditorVC: NavViewController, Refreshable {
+final class ExpiryDateEditorVC: UIViewController, Refreshable {
 
     @IBOutlet weak var neverExpiresSwitch: UISwitch!
     @IBOutlet weak var expiresLabel: UILabel!
@@ -129,9 +129,6 @@ final class ExpiryDateEditorVC: NavViewController, Refreshable {
         return UIMenu(title: LString.titlePresets, children: [yearsMenu, monthsMenu, weeksMenu])
     }
     
-    @objc override func dismissView() {
-        delegate?.didPressCancel(in: self)
-    }
     
     @IBAction func didToggleNeverExpiresSwitch(_ sender: UISwitch) {
         refresh()

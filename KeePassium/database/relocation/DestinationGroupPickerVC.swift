@@ -66,7 +66,7 @@ class DestinationGroupPickerCell: UITableViewCell {
     }
 }
 
-class DestinationGroupPickerVC: NavTableViewController, Refreshable {
+class DestinationGroupPickerVC: UITableViewController, Refreshable {
     private let cellID = "GroupCell"
     class Node {
         weak var group: Group?

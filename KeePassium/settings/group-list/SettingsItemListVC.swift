@@ -20,7 +20,7 @@ protocol SettingsItemListDelegate: AnyObject {
     )
 }
 
-final class SettingsItemListVC: NavTableViewController, Refreshable {
+final class SettingsItemListVC: UITableViewController, Refreshable {
     private let cellID = "Cell"
     
     weak var delegate: SettingsItemListDelegate?

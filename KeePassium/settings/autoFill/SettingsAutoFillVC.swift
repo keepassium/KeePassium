@@ -9,7 +9,7 @@
 import UIKit
 import KeePassiumLib
 
-class SettingsAutoFillVC: NavTableViewController {
+class SettingsAutoFillVC: UITableViewController {
 
     @IBOutlet weak var copyTOTPSwitch: UISwitch!
     @IBOutlet weak var perfectMatchSwitch: UISwitch!

@@ -17,7 +17,7 @@ internal class DatabaseIconSetPickerCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
 }
 
-class DatabaseIconSetPicker: NavTableViewController {
+class DatabaseIconSetPicker: UITableViewController {
     private let cellID = "DatabaseIconSetPickerCell"
 
     weak var delegate: DatabaseIconSetPickerDelegate?
