@@ -42,7 +42,7 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-qF-itI">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-qF-itI">
                                             <rect key="frame" x="16" y="29.5" width="288" height="35.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lyz-4O-dvw">
@@ -107,7 +107,7 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q78-uq-riD">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q78-uq-riD">
                                             <rect key="frame" x="16" y="29.5" width="288" height="35.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wfh-AY-t3P">
@@ -172,7 +172,7 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-5G-0Dk">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-5G-0Dk">
                                             <rect key="frame" x="16" y="29.5" width="288" height="35.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Cc-vV-vTv">
@@ -237,7 +237,7 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aK-gi-nfx">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aK-gi-nfx">
                                             <rect key="frame" x="16" y="29.5" width="288" height="35.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1r1-bD-3m7">
@@ -341,7 +341,7 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBn-qa-M6r">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBn-qa-M6r">
                                             <rect key="frame" x="16" y="29.5" width="135.5" height="39.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p7x-lw-Hyn">
