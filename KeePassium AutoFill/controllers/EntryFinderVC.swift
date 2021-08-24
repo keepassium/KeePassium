@@ -80,7 +80,12 @@ final class EntryFinderVC: UITableViewController {
     private var searchController: UISearchController! 
     private var manualSearchButton: UIBarButtonItem! 
     private var searchResults = FuzzySearchResults(exactMatch: [], partialMatch: [])
-   
+    
+    override var canDismissFromKeyboard: Bool {
+        return !(searchController?.isActive ?? false)
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearch()

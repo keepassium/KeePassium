@@ -14,6 +14,24 @@ public protocol NavigationRouterDismissAttemptDelegate: AnyObject {
 
 final public class RouterNavigationController: UINavigationController {
     fileprivate weak var router: NavigationRouter?
+    
+    public override var keyCommands: [UIKeyCommand]? {
+        var commands = super.keyCommands ?? []
+        if router?.canPopTopViewControllerFromKeyboard() ?? false {
+            let escapeCommand = UIKeyCommand(
+                input: UIKeyCommand.inputEscape,
+                modifierFlags: [],
+                action: #selector(didPressEscapeKey)
+            )
+            commands.append(escapeCommand)
+        }
+        return commands
+    }
+    
+    @objc
+    private func didPressEscapeKey() {
+        router?.pop(animated: true)
+    }
 
     override public func viewDidDisappear(_ animated: Bool) {
         if isBeingDismissed {
@@ -201,7 +219,11 @@ final public class NavigationRouter: NSObject {
         navigationController.setViewControllers([UIViewController()], animated: false)
         completion?()
     }
-       
+    
+    fileprivate func canPopTopViewControllerFromKeyboard() -> Bool {
+        return navigationController.topViewController?.canDismissFromKeyboard ?? false
+    }
+    
     private func fireAllPopHandlers() {
         while let (_, popHandler, _) = popHandlers.popLast() {
             popHandler()

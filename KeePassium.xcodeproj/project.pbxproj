@@ -106,6 +106,10 @@
 		7537FEBF249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
 		7537FEC0249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
 		7537FEC1249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
+		7538936926D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
+		7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
+		7538936B26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
+		7538936C26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
 		753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
 		753DF2C1263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
 		753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
@@ -1097,6 +1101,7 @@
 		7535079F23783729003B65C9 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		7537FEBD249D7B950028A653 /* Settings+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+extensions.swift"; sourceTree = "<group>"; };
 		7538040C25F58C80005C5D32 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
+		7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissable.swift; sourceTree = "<group>"; };
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewerCoordinator.swift; sourceTree = "<group>"; };
 		753F293E2643FEF800F0413A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
@@ -2279,6 +2284,7 @@
 				75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */,
 				75DDA56525F3E19900708750 /* UIWindow+extensions.swift */,
 				75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */,
+				7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3158,6 +3164,7 @@
 				753FE83624C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				75779865223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				754E409926306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
+				7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
 				7583EA6C2685D1FA009969E7 /* DatabasePickerVC.swift in Sources */,
 				75DE677A268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
@@ -3344,6 +3351,7 @@
 				7527FAB3262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				7572665A24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
+				7538936926D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
@@ -3514,6 +3522,7 @@
 				7527FAB4262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				7572665C24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
+				7538936B26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07124F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
@@ -3592,6 +3601,7 @@
 				753FE83824C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				75D7DF9B233E5E310029AD87 /* ProgressViewHost.swift in Sources */,
 				754E409B26306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
+				7538936C26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
 				7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */,
 				75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,

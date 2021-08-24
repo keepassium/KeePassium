@@ -138,6 +138,10 @@ final class GroupViewerVC:
         return searchController.isActive && (searchController.searchBar.text?.isNotEmpty ?? false)
     }
     
+    override var canDismissFromKeyboard: Bool {
+        return !(searchController?.isActive ?? false)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

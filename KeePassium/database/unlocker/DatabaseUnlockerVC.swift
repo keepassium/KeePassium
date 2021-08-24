@@ -63,6 +63,8 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     
     private var progressOverlay: ProgressOverlay?
 
+    override var canDismissFromKeyboard: Bool { return false }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
