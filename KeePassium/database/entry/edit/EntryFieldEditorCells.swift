@@ -172,7 +172,7 @@ class EntryFieldEditorSingleLineCell:
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.font = UIFont.systemFont(forTextStyle: .subheadline, weight: .thin)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
         textField.font = UIFont.monospaceFont(forTextStyle: .body)
         textField.adjustsFontForContentSizeCategory = true
@@ -239,7 +239,7 @@ class EntryFieldEditorSingleLineProtectedCell:
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleLabel.font = UIFont.systemFont(forTextStyle: .subheadline, weight: .thin)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
         textField.font = UIFont.monospaceFont(forTextStyle: .body)
         textField.adjustsFontForContentSizeCategory = true
@@ -302,7 +302,7 @@ class EntryFieldEditorMultiLineCell: UITableViewCell, EditableFieldCell, Validat
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleLabel.font = UIFont.systemFont(forTextStyle: .subheadline, weight: .thin)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
         textView.font = UIFont.monospaceFont(forTextStyle: .body)
         textView.adjustsFontForContentSizeCategory = true
@@ -356,6 +356,8 @@ class EntryFieldEditorCustomFieldCell:
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        nameTextField.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        nameTextField.adjustsFontForContentSizeCategory = true
         valueTextView.font = UIFont.monospaceFont(forTextStyle: .body)
         valueTextView.adjustsFontForContentSizeCategory = true
         

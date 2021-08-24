@@ -54,7 +54,9 @@ final class SettingsAppearanceVC: UITableViewController {
         entryTextScaleSlider.value = Float(textScale)
         tableView.performBatchUpdates(
             { [weak textScaleLabel] in
-                textScaleLabel?.font = UIFont.monospaceFont(ofSize: 17 * textScale, forTextStyle: .body)
+                textScaleLabel?.font = UIFont
+                    .monospaceFont(forTextStyle: .body)
+                    .withRelativeSize(textScale)
             },
             completion: nil
         )

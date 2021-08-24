@@ -28,8 +28,8 @@ class FileInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        nameLabel?.font = UIFont.systemFont(forTextStyle: .subheadline, weight: .thin)
-        valueLabel?.font = UIFont.monospaceFont(forTextStyle: .body)
+        nameLabel?.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        valueLabel?.font = UIFont.preferredFont(forTextStyle: .body)
     }
 }
 

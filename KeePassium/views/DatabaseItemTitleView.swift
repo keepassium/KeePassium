@@ -24,11 +24,7 @@ final class DatabaseItemTitleView: UIView {
     
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        if #available(iOS 13, *) {
-            titleLabel.font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: .current)
-        } else {
-            titleLabel.font = UIFont.systemFont(forTextStyle: .headline)
-        }
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         titleLabel.textColor = .primaryText
         titleLabel.text = nil
         titleLabel.lineBreakMode = .byTruncatingTail
@@ -37,11 +33,7 @@ final class DatabaseItemTitleView: UIView {
     
     lazy var subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
-        if #available(iOS 13, *) {
-            subtitleLabel.font = UIFont.preferredFont(forTextStyle: .footnote, compatibleWith: .current)
-        } else {
-            subtitleLabel.font = UIFont.systemFont(forTextStyle: .footnote)
-        }
+        subtitleLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
         subtitleLabel.textColor = .auxiliaryText
         subtitleLabel.text = nil
         subtitleLabel.lineBreakMode = .byTruncatingTail

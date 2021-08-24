@@ -112,7 +112,7 @@ final class TipBoxVC: UIViewController {
     
     private func makePurchaseButton(_ title: String) -> UIButton {
         let button = UIButton(frame: .zero)
-        button.titleLabel?.font = UIFont.systemFont(forTextStyle: .headline)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.numberOfLines = 1
         button.setTitleColor(UIColor.actionTint, for: .normal)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PX3-OS-yYF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PX3-OS-yYF">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19134"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmptyHistoryCell" textLabel="bzL-mr-Hrz" style="IBUITableViewCellStyleDefault" id="6sf-Cg-bgh">
-                                <rect key="frame" x="0.0" y="24.5" width="320" height="43.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="320" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6sf-Cg-bgh" id="O0n-hz-Mj2">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -37,7 +37,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FixedTimestampCell" textLabel="E9b-9K-I4D" style="IBUITableViewCellStyleDefault" id="Xm5-Sx-adI">
-                                <rect key="frame" x="0.0" y="68" width="320" height="43.5"/>
+                                <rect key="frame" x="0.0" y="88" width="320" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xm5-Sx-adI" id="YCG-Ae-fDq">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -57,7 +57,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="old_HistoryItemCell" textLabel="RUE-Cg-Lxv" detailTextLabel="bPL-8Z-oet" style="IBUITableViewCellStyleSubtitle" id="5Hp-wd-hwG" userLabel="old_HistoryItemCell">
-                                <rect key="frame" x="0.0" y="111.5" width="320" height="49.5"/>
+                                <rect key="frame" x="0.0" y="131.5" width="320" height="49.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Hp-wd-hwG" id="HMX-gK-eNC">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
@@ -87,7 +87,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimestampCell" id="6mB-Lu-1TQ" customClass="EntryHistoryTimestampCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="161" width="320" height="58"/>
+                                <rect key="frame" x="0.0" y="181" width="320" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6mB-Lu-1TQ" id="jyT-2c-Rmu">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
@@ -125,7 +125,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryItemCell" id="ZOk-r3-yxv" userLabel="HistoryEntryCell" customClass="EntryHistoryItemCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="219" width="320" height="58"/>
+                                <rect key="frame" x="0.0" y="239" width="320" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZOk-r3-yxv" id="14G-0r-R6r">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QNf-to-6jj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QNf-to-6jj">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19134"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,10 +20,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ViewableFieldCell" id="sU6-Ki-4v8" customClass="ViewableFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="44.5" width="320" height="72.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sU6-Ki-4v8" id="jjW-5J-9hc">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="72.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="itG-fy-fi4" userLabel="Separator">
@@ -34,19 +34,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="{ViewableFieldCell}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46A-ga-B85">
-                                            <rect key="frame" x="16" y="10" width="288" height="19.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
-                                            <color key="textColor" name="PrimaryText"/>
+                                            <rect key="frame" x="16" y="10" width="288" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
                                             <nil key="highlightedColor"/>
                                             <attributedString key="userComments">
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-qF-itI">
-                                            <rect key="frame" x="16" y="29.5" width="288" height="35.5"/>
+                                            <rect key="frame" x="12" y="26" width="292" height="35.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lyz-4O-dvw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="35.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="292" height="35.5"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -71,7 +71,7 @@
                                         <constraint firstItem="itG-fy-fi4" firstAttribute="top" secondItem="jjW-5J-9hc" secondAttribute="top" id="8ii-Td-fUf"/>
                                         <constraint firstItem="46A-ga-B85" firstAttribute="leading" secondItem="jjW-5J-9hc" secondAttribute="leadingMargin" id="DGG-db-yjy"/>
                                         <constraint firstItem="itG-fy-fi4" firstAttribute="leading" secondItem="jjW-5J-9hc" secondAttribute="leading" id="Dtv-l6-BGq"/>
-                                        <constraint firstItem="9Ag-qF-itI" firstAttribute="leading" secondItem="jjW-5J-9hc" secondAttribute="leadingMargin" id="Okm-1E-OTj"/>
+                                        <constraint firstItem="9Ag-qF-itI" firstAttribute="leading" secondItem="jjW-5J-9hc" secondAttribute="leadingMargin" constant="-4" id="Okm-1E-OTj"/>
                                         <constraint firstItem="9Ag-qF-itI" firstAttribute="bottom" secondItem="jjW-5J-9hc" secondAttribute="bottomMargin" id="ZLH-5V-X13"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="9Ag-qF-itI" secondAttribute="trailing" id="ZiZ-qR-U2N"/>
                                         <constraint firstAttribute="trailing" secondItem="itG-fy-fi4" secondAttribute="trailing" id="dhE-jG-nAX"/>
@@ -85,10 +85,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProtectedFieldCell" id="N7a-iW-AlS" customClass="ProtectedFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="104" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="117" width="320" height="72.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N7a-iW-AlS" id="sRU-Lr-P1B">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="72.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf6-jL-050" userLabel="Separator">
@@ -99,19 +99,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="{ViewableFieldCell}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weL-29-hO1">
-                                            <rect key="frame" x="16" y="10" width="288" height="19.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
-                                            <color key="textColor" name="PrimaryText"/>
+                                            <rect key="frame" x="16" y="10" width="288" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
                                             <nil key="highlightedColor"/>
                                             <attributedString key="userComments">
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q78-uq-riD">
-                                            <rect key="frame" x="16" y="29.5" width="288" height="35.5"/>
+                                            <rect key="frame" x="12" y="26" width="292" height="35.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wfh-AY-t3P">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="35.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="292" height="35.5"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -131,7 +131,7 @@
                                         </scrollView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="q78-uq-riD" firstAttribute="leading" secondItem="sRU-Lr-P1B" secondAttribute="leadingMargin" id="2Wd-hg-5FZ"/>
+                                        <constraint firstItem="q78-uq-riD" firstAttribute="leading" secondItem="sRU-Lr-P1B" secondAttribute="leadingMargin" constant="-4" id="2Wd-hg-5FZ"/>
                                         <constraint firstItem="q78-uq-riD" firstAttribute="bottom" secondItem="sRU-Lr-P1B" secondAttribute="bottomMargin" id="4cR-5e-wyh"/>
                                         <constraint firstItem="weL-29-hO1" firstAttribute="bottom" secondItem="q78-uq-riD" secondAttribute="top" id="C63-3s-QqZ"/>
                                         <constraint firstItem="Rf6-jL-050" firstAttribute="top" secondItem="sRU-Lr-P1B" secondAttribute="top" id="HIi-7S-ZOx"/>
@@ -150,10 +150,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="URLFieldCell" id="Nk9-cJ-ViQ" customClass="URLFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="180" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="189.5" width="320" height="72.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nk9-cJ-ViQ" id="Kvk-Sm-2w4">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="72.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0b-sr-9BP" userLabel="Separator">
@@ -164,19 +164,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="{ViewableFieldCell}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5V-vy-3To">
-                                            <rect key="frame" x="16" y="10" width="288" height="19.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
-                                            <color key="textColor" name="PrimaryText"/>
+                                            <rect key="frame" x="16" y="10" width="288" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
                                             <nil key="highlightedColor"/>
                                             <attributedString key="userComments">
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-5G-0Dk">
-                                            <rect key="frame" x="16" y="29.5" width="288" height="35.5"/>
+                                            <rect key="frame" x="12" y="26" width="292" height="35.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Cc-vV-vTv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="35.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="292" height="35.5"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -198,7 +198,7 @@
                                     <constraints>
                                         <constraint firstItem="L5V-vy-3To" firstAttribute="top" secondItem="O0b-sr-9BP" secondAttribute="bottom" constant="8" id="0gr-gG-bOZ"/>
                                         <constraint firstItem="O0b-sr-9BP" firstAttribute="top" secondItem="Kvk-Sm-2w4" secondAttribute="top" id="182-Lg-uED"/>
-                                        <constraint firstItem="KeR-5G-0Dk" firstAttribute="leading" secondItem="Kvk-Sm-2w4" secondAttribute="leadingMargin" id="4Xq-wB-z2K"/>
+                                        <constraint firstItem="KeR-5G-0Dk" firstAttribute="leading" secondItem="Kvk-Sm-2w4" secondAttribute="leadingMargin" constant="-4" id="4Xq-wB-z2K"/>
                                         <constraint firstItem="O0b-sr-9BP" firstAttribute="leading" secondItem="Kvk-Sm-2w4" secondAttribute="leading" id="ATa-sq-JHn"/>
                                         <constraint firstAttribute="trailing" secondItem="O0b-sr-9BP" secondAttribute="trailing" id="J0j-bY-ftk"/>
                                         <constraint firstItem="L5V-vy-3To" firstAttribute="trailing" secondItem="Kvk-Sm-2w4" secondAttribute="trailingMargin" id="YYZ-v9-wnF"/>
@@ -215,10 +215,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpandableFieldCell" id="t52-2d-lh5" customClass="ExpandableFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="256" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="262" width="320" height="72.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t52-2d-lh5" id="MIw-7h-0NW">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="72.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJy-47-hZI" userLabel="Separator">
@@ -229,19 +229,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="{Field Name}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZZ-fa-lax">
-                                            <rect key="frame" x="16" y="10" width="288" height="19.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
-                                            <color key="textColor" name="PrimaryText"/>
+                                            <rect key="frame" x="16" y="10" width="288" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
                                             <nil key="highlightedColor"/>
                                             <attributedString key="userComments">
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aK-gi-nfx">
-                                            <rect key="frame" x="16" y="29.5" width="288" height="35.5"/>
+                                            <rect key="frame" x="12" y="26" width="292" height="35.5"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1r1-bD-3m7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="35.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="292" height="35.5"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -260,7 +260,7 @@
                                             </constraints>
                                         </scrollView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adN-zK-wsh" userLabel="Show More Container">
-                                            <rect key="frame" x="263" y="35" width="41" height="41"/>
+                                            <rect key="frame" x="263" y="31.5" width="41" height="41"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6Mx-Oh-6m0" userLabel="Show More Button">
                                                     <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
@@ -298,7 +298,7 @@
                                     <constraints>
                                         <constraint firstItem="jZZ-fa-lax" firstAttribute="top" secondItem="aJy-47-hZI" secondAttribute="bottom" constant="8" id="9C8-6K-yXa"/>
                                         <constraint firstItem="aJy-47-hZI" firstAttribute="leading" secondItem="MIw-7h-0NW" secondAttribute="leading" id="Jty-17-aPM"/>
-                                        <constraint firstItem="8aK-gi-nfx" firstAttribute="leading" secondItem="MIw-7h-0NW" secondAttribute="leadingMargin" id="Ncb-dK-NH1"/>
+                                        <constraint firstItem="8aK-gi-nfx" firstAttribute="leading" secondItem="MIw-7h-0NW" secondAttribute="leadingMargin" constant="-4" id="Ncb-dK-NH1"/>
                                         <constraint firstItem="aJy-47-hZI" firstAttribute="top" secondItem="MIw-7h-0NW" secondAttribute="top" id="Shq-CY-EFf"/>
                                         <constraint firstItem="jZZ-fa-lax" firstAttribute="trailing" secondItem="MIw-7h-0NW" secondAttribute="trailingMargin" id="Xrp-nC-49n"/>
                                         <constraint firstAttribute="bottom" secondItem="adN-zK-wsh" secondAttribute="baseline" id="YW1-Y3-jAz"/>
@@ -319,7 +319,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TOTPFieldCell" rowHeight="80" id="S3Q-Rq-VvH" customClass="TOTPFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="332" width="320" height="80"/>
+                                <rect key="frame" x="0.0" y="334.5" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S3Q-Rq-VvH" id="peX-Ic-VfW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
@@ -333,19 +333,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="{Field Name}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBf-im-hEw">
-                                            <rect key="frame" x="16" y="10" width="288" height="19.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
-                                            <color key="textColor" name="PrimaryText"/>
+                                            <rect key="frame" x="16" y="10" width="288" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
                                             <nil key="highlightedColor"/>
                                             <attributedString key="userComments">
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBn-qa-M6r">
-                                            <rect key="frame" x="16" y="29.5" width="135.5" height="39.5"/>
+                                            <rect key="frame" x="12" y="26" width="135.5" height="43"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p7x-lw-Hyn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="135.5" height="39.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="135.5" height="43"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -364,7 +364,7 @@
                                             </constraints>
                                         </scrollView>
                                         <progressView hidden="YES" opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="249" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fQz-ku-cXx">
-                                            <rect key="frame" x="16" y="65" width="135.5" height="4"/>
+                                            <rect key="frame" x="12" y="65" width="135.5" height="4"/>
                                             <color key="tintColor" name="ActionTint"/>
                                         </progressView>
                                     </subviews>
@@ -381,7 +381,7 @@
                                         <constraint firstItem="pBf-im-hEw" firstAttribute="top" secondItem="5v5-u1-oSS" secondAttribute="bottom" constant="8" id="iqB-C6-aZ3"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="jBn-qa-M6r" secondAttribute="trailing" id="krV-ub-6k0"/>
                                         <constraint firstItem="jBn-qa-M6r" firstAttribute="top" secondItem="pBf-im-hEw" secondAttribute="bottom" id="pxI-pm-Exf"/>
-                                        <constraint firstItem="jBn-qa-M6r" firstAttribute="leading" secondItem="peX-Ic-VfW" secondAttribute="leadingMargin" id="wCI-3g-Vax"/>
+                                        <constraint firstItem="jBn-qa-M6r" firstAttribute="leading" secondItem="peX-Ic-VfW" secondAttribute="leadingMargin" constant="-4" id="wCI-3g-Vax"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -408,10 +408,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="b0f-OE-Umo" userLabel="Wrapper">
-                            <rect key="frame" x="87" y="3.5" width="140" height="45"/>
+                            <rect key="frame" x="88.5" y="3.5" width="137.5" height="45"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-Zc-bUc">
-                                    <rect key="frame" x="0.0" y="0.0" width="63" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="60.5" height="45"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                     <color key="textColor" name="ActionText"/>
                                     <nil key="highlightedColor"/>
@@ -420,7 +420,7 @@
                                     </attributedString>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo1-SX-gPB" userLabel="Export">
-                                    <rect key="frame" x="95" y="0.0" width="45" height="45"/>
+                                    <rect key="frame" x="92.5" y="0.0" width="45" height="45"/>
                                     <accessibility key="accessibilityConfiguration">
                                         <bool key="isElement" value="NO"/>
                                     </accessibility>
@@ -459,6 +459,9 @@
         </namedColor>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AuxiliaryText">
+            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
