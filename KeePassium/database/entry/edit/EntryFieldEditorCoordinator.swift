@@ -181,6 +181,37 @@ final class EntryFieldEditorCoordinator: Coordinator {
         router.present(namePicker, animated: true, completion: nil)
     }
     
+    @available(iOS 14, *)
+    private func makeUserNameGeneratorMenu(for field: EditableField) -> UIMenu {
+        let applyUserName: UIActionHandler = { (action) in
+            field.value = action.title
+            self.isModified = true
+            self.refresh()
+        }
+        
+        let frequentUserNames = UserNameHelper.getUserNameSuggestions(from: database, count: 4)
+        let frequentItems = frequentUserNames.map { (userName) -> UIAction in
+            UIAction(title: userName, image: nil, handler: applyUserName)
+        }
+        let randomUserNames = UserNameHelper.getRandomUserNames(count: 3)
+        let randomItems = randomUserNames.map { (userName) -> UIAction in
+            UIAction(
+                title: userName,
+                image: UIImage(systemName: "wand.and.stars"),
+                handler: applyUserName
+            )
+        }
+
+        let menu = UIMenu(
+            title: LString.fieldUserName,
+            children: [
+                UIMenu(options: .displayInline, children: frequentItems),
+                UIMenu(options: .displayInline, children: randomItems),
+            ]
+        )
+        return menu
+    }
+    
     private func showDiagnostics() {
         let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
         diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
@@ -316,6 +347,14 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
             self.isModified = true
             self.refresh()
         })
+    }
+    
+    @available(iOS 14, *)
+    func getUserNameGeneratorMenu(
+        for field: EditableField,
+        in viewController: EntryFieldEditorVC
+    ) -> UIMenu? {
+        return makeUserNameGeneratorMenu(for: field)
     }
     
     func didPressPickIcon(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldEditorVC) {

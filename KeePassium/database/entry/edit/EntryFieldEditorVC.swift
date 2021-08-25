@@ -26,6 +26,12 @@ protocol EntryFieldEditorDelegate: AnyObject {
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldEditorVC
     )
+    
+    @available(iOS 14, *)
+    func getUserNameGeneratorMenu(
+        for field: EditableField,
+        in viewController: EntryFieldEditorVC) -> UIMenu?
+    
     func didPressPasswordGenerator(
         for field: EditableField,
         at popoverAnchor: PopoverAnchor,
@@ -282,6 +288,16 @@ extension EntryFieldEditorVC: ValidatingTextFieldDelegate {
 }
 
 extension EntryFieldEditorVC: EditableFieldCellDelegate {
+    @available(iOS 14, *)
+    func getButtonMenu(for field: EditableField, in cell: EditableFieldCell) -> UIMenu? {
+        switch field.internalName {
+        case EntryField.userName:
+            return delegate?.getUserNameGeneratorMenu(for: field, in: self)
+        default:
+            return nil
+        }
+    }
+    
     func didPressButton(
         for field: EditableField,
         at popoverAnchor: PopoverAnchor,

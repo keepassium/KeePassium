@@ -62,6 +62,9 @@ internal protocol EditableFieldCellDelegate: AnyObject {
         for field: EditableField,
         at popoverAnchor: PopoverAnchor,
         in cell: EditableFieldCell)
+    
+    @available(iOS 14, *)
+    func getButtonMenu(for field: EditableField, in cell: EditableFieldCell) -> UIMenu?
 }
 
 internal protocol EditableFieldCell: AnyObject {
@@ -160,7 +163,9 @@ class EntryFieldEditorSingleLineCell:
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     
-    weak var delegate: EditableFieldCellDelegate?
+    weak var delegate: EditableFieldCellDelegate? {
+        didSet { refreshMenu() }
+    }
     weak var field: EditableField? {
         didSet {
             titleLabel.text = field?.visibleName
@@ -168,6 +173,7 @@ class EntryFieldEditorSingleLineCell:
             textField.isSecureTextEntry =
                 (field?.isProtected ?? false) && Settings.current.isHideProtectedFields
             textField.accessibilityLabel = field?.visibleName
+            refreshMenu()
         }
     }
     override func awakeFromNib() {
@@ -181,6 +187,19 @@ class EntryFieldEditorSingleLineCell:
         textField.delegate = self
     }
 
+    private func refreshMenu() {
+        guard #available(iOS 14, *) else { return }
+        
+        if let field = field,
+           let buttonMenu = delegate?.getButtonMenu(for: field, in: self)
+        {
+            actionButton.menu = buttonMenu
+            actionButton.showsMenuAsPrimaryAction = true
+        } else {
+            actionButton.showsMenuAsPrimaryAction = false
+        }
+    }
+    
     override func becomeFirstResponder() -> Bool {
         super.becomeFirstResponder()
         return textField.becomeFirstResponder()
