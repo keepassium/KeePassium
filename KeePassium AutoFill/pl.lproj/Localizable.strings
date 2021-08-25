@@ -428,7 +428,7 @@
 "[Premium/Price Plan/Conditions/freemium reminders]" = "Przypomnienia o Freemium";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "Premium features added in the future would require a new purchase at full price.";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Funkcje premium dodane w przyszłości będą wymagać nowego zakupu po pełnej cenie.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "Przyszłe funkcje premium";
@@ -437,7 +437,7 @@
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "Licencja najmu (Perpetual fallback license)";
 
 /* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
-"[Premium/Price Plan/Conditions/subscription as purchase]" = "Subscription as a purchase";
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Zakup jako subskrypcja";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "Aktualizacje i poprawki błędów";
@@ -464,10 +464,10 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "Uaktualnij do Premium";
 
 /* Message shown after buying a lifetime version. */
-"[Premium/Upgrade/cancelOngoingSubscription]" = "Please check if you need to cancel your old subscription.";
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Sprawdź, czy nie musisz anulować poprzedniej subskrypcji.";
 
 /* Message shown when in-app purchase is deferred until approval (parental or corporate). */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Thank you! You can use KeePassium while purchase is awaiting approval.";
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Dziękujemy! Możesz używać KeePassium czekając na zatwierdzenie zakupu.";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / miesiąc";

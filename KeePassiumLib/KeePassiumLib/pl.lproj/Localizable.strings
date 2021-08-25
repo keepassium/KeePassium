@@ -86,7 +86,7 @@
 "[Database/Progress/resolving]" = "Łączenie z dostawcą magazynu...";
 
 /* Database loading/saving status: replacing field references with their values */
-"[Database/Progress/resolvingFieldReferences]" = "Resolving field references…";
+"[Database/Progress/resolvingFieldReferences]" = "Rozwiązuje odwołanie…";
 
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Nie udało się otworzyć pliku klucza";

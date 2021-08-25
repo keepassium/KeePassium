@@ -485,10 +485,10 @@
 "[Premium/Benefits/Positive/header] " = "Co otrzymasz";
 
 /* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Use field references to show information from other entries, instead of creating multiple copies of the same information.";
+"[Premium/Benefits/ViewFieldReferences/details]" = "Używaj odwołań do wyświetlenia informacji z innych wpisów, zamiast tworzenia wielu kopii tych samych informacji.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Show field references";
+"[Premium/Benefits/ViewFieldReferences/title]" = "Pokaż odwołania";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Kup teraz";
@@ -533,7 +533,7 @@
 "[Premium/Price Plan/Conditions/freemium reminders]" = "Przypomnienia o Freemium";
 
 /* Upgrade conditions for current-version premium purchase. */
-"[Premium/Price Plan/Conditions/full price upgrade]" = "Premium features added in the future would require a new purchase at full price.";
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Funkcje premium dodane w przyszłości będą wymagać nowego zakupu po pełnej cenie.";
 
 /* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
 "[Premium/Price Plan/Conditions/future premium features]" = "Przyszłe funkcje premium";
@@ -542,7 +542,7 @@
 "[Premium/Price Plan/Conditions/perpetual fallback]" = "Licencja najmu (Perpetual fallback license)";
 
 /* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
-"[Premium/Price Plan/Conditions/subscription as purchase]" = "Subscription as a purchase";
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Zakup jako subskrypcja";
 
 /* What's included in a price plan */
 "[Premium/Price Plan/Conditions/updates and bug fixes]" = "Aktualizacje i poprawki błędów";
@@ -566,7 +566,7 @@
 "[Premium/status] Expired %@ ago. Please renew." = "Wygasło %@ temu. Proszę odnowić.";
 
 /* Status: licensed premium version of the app. For example: `Licensed version: 1.23`. [version: String] */
-"[Premium/status] Licensed version: %@" = "Licensed version: %@";
+"[Premium/status] Licensed version: %@" = "Wersja licencjonowana: %@";
 
 /* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
 "[Premium/status] Next renewal on %@" = "Następne odnowienie %@";
@@ -587,10 +587,10 @@
 "[Premium/Upgrade/action] Upgrade to Premium" = "Uaktualnij do Premium";
 
 /* Message shown after buying a lifetime version. */
-"[Premium/Upgrade/cancelOngoingSubscription]" = "Please check if you need to cancel your old subscription.";
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Sprawdź, czy nie musisz anulować poprzedniej subskrypcji.";
 
 /* Message shown when in-app purchase is deferred until approval (parental or corporate). */
-"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Thank you! You can use KeePassium while purchase is awaiting approval.";
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Dziękujemy! Możesz używać KeePassium czekając na zatwierdzenie zakupu.";
 
 /* Product price for monthly premium subscription. [localizedPrice: String] */
 "[Premium/Upgrade/price] %@ / month" = "%@ / miesiąc";
@@ -728,16 +728,16 @@
 "[TipBox/callToAction/1]" = "Pomóż nam uczynić KeePassium lepszym!";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/2]" = "Help us keep KeePassium shiny!";
+"[TipBox/callToAction/2]" = "Pomóż nam trzymać KeePassium lśniącym!";
 
 /* Call to action in the Donations screen. (free = gratis) */
-"[TipBox/callToAction/3]" = "Help us keep KeePassium free!";
+"[TipBox/callToAction/3]" = "Pomóż nam, aby KeePassium pozostało darmowe!";
 
 /* Text in the Donations screen. */
 "[TipBox/description/1]" = "Lubisz KeePassium?";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium is a free open-source app. You trust it with your most sensitive information. There are no ads, no spying, no nonsense — we respect you.";
+"[TipBox/description/2]" = "KeePassium jest darmową aplikacją open-source. Możesz jej powierzyć najbardziej wrażliwe informacje. Nie ma tu reklam, szpiegowania, bezsensu - szanujemy Cię.";
 
 /* Text in the Donations screen. */
 "[TipBox/description/3]" = "Lubisz KeePassium ale nie potrzebujesz funkcji premium?";

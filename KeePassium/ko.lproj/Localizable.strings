@@ -101,7 +101,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "데이터베이스 파일을 삭제하시겠습니까?\n 백업을 생성해뒀는지 확인해주세요.";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "데이터베이스가 읽기 전용입니다.";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "불러오는 중...";
@@ -161,19 +161,19 @@
 "[Entry/Attachment/add]" = "파일 추가";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "파일 선택";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "사진 선택";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "사진";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "사진 촬영";
 
 /* Action to preview one or several attached documents or images */
-"[Entry/Attachments/preview]" = "Preview";
+"[Entry/Attachments/preview]" = "미리 보기";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "첨부된 파일";
@@ -290,7 +290,7 @@
 "[Generic] Delete" = "삭제";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "모두 삭제";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "버리기";
@@ -332,7 +332,7 @@
 "[Generic] Replace" = "교체";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "복원";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "공유";
@@ -374,7 +374,7 @@
 "[Generic/File/title] Import Error" = "가져오기 오류";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "사전 설정";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "오류";
@@ -419,7 +419,7 @@
 "[Help Viewer/title]" = "도움말";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "이전 버전으로 복원됨";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "기본 (KeePass)";
@@ -560,13 +560,13 @@
 "[Premium/status] Beta testing" = "베타 테스트";
 
 /* Status: current version of the app. For example: `Current version: 1.23`. Should be similar to the `Licensed version` string. [version: String] */
-"[Premium/status] Current version: %@" = "Current version: %@";
+"[Premium/status] Current version: %@" = "현재 버전: %@";
 
 /* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
 "[Premium/status] Expired %@ ago. Please renew." = "%@ 전에 만료되었습니다. 갱신해 주시기 바랍니다.";
 
 /* Status: licensed premium version of the app. For example: `Licensed version: 1.23`. [version: String] */
-"[Premium/status] Licensed version: %@" = "Licensed version: %@";
+"[Premium/status] Licensed version: %@" = "라이선스 적용 버전: %@";
 
 /* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
 "[Premium/status] Next renewal on %@" = "%@에 갱신 예정";
@@ -725,34 +725,34 @@
 "[Support/template] (Please describe the problem here)" = "(여기에 문제에 대한 설명을 작성해주세요.)";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/1]" = "Help us make KeePassium better!";
+"[TipBox/callToAction/1]" = "KeePassium이 더 좋은 앱이 될 수 있도록 도와주세요!";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/2]" = "Help us keep KeePassium shiny!";
+"[TipBox/callToAction/2]" = "KeePassium이 더 멋진 앱이 될 수 있도록 도와주세요!";
 
 /* Call to action in the Donations screen. (free = gratis) */
-"[TipBox/callToAction/3]" = "Help us keep KeePassium free!";
+"[TipBox/callToAction/3]" = "KeePassium이 계속 무료로 유지될 수 있도록 도와주세요!";
 
 /* Text in the Donations screen. */
-"[TipBox/description/1]" = "Do you like KeePassium?";
+"[TipBox/description/1]" = "KeePassium을 잘 사용하고 계신가요?";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium is a free open-source app. You trust it with your most sensitive information. There are no ads, no spying, no nonsense — we respect you.";
+"[TipBox/description/2]" = "KeePassium은 무료 오픈 소스 앱입니다. 사용자의 민감한 정보가 빠져나갈 구멍을 만들 수 없죠. 광고와 추적 없이 사용자를 존중합니다.";
 
 /* Text in the Donations screen. */
-"[TipBox/description/3]" = "Do you like KeePassium but don't need the premium features?";
+"[TipBox/description/3]" = "KeePassium을 잘 사용하고 있지만 프리미엄 기능은 필요하지 않으신가요?";
 
 /* Notification after a successful donation. */
-"[TipBox/thankYou]" = "Thank you!";
+"[TipBox/thankYou]" = "감사합니다!";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Tip Jar";
+"[TipBox/title/1]" = "팁";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/2]" = "Donations";
+"[TipBox/title/2]" = "기부";
 
 /* Call to action, title of the tip box/donation screen. */
-"[TipBox/title/3]" = "Support KeePassium";
+"[TipBox/title/3]" = "KeePassium 지원하기";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "YubiKey를 사용하지 않음";

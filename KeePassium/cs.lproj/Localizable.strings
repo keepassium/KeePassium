@@ -101,7 +101,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Odstranit databázový soubor?\n Ujistěte se, že máte zálohu.";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "Databáze je pouze pro čtení";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Načítání...";
@@ -161,19 +161,19 @@
 "[Entry/Attachment/add]" = "Přidat soubor";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "Vybrat soubor";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "Vybrat fotografii";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "Fotografie";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "Pořídit fotografii";
 
 /* Action to preview one or several attached documents or images */
-"[Entry/Attachments/preview]" = "Preview";
+"[Entry/Attachments/preview]" = "Náhled";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Přiložené soubory";
@@ -290,7 +290,7 @@
 "[Generic] Delete" = "Odstranit";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "Vymazat vše";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "Zahodit";
@@ -332,7 +332,7 @@
 "[Generic] Replace" = "Nahradit";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "Obnovit";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "Sdílet";
@@ -374,7 +374,7 @@
 "[Generic/File/title] Import Error" = "Import selhal";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "Předvolené";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Chyba";
@@ -419,7 +419,7 @@
 "[Help Viewer/title]" = "Nápověda";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "Předchozí verze obnovena";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Původní (KeePass)";
@@ -446,7 +446,7 @@
 "[OTP/Scan/OverwriteWarning]" = "Jednorázové heslo je již pro tuto položku nakonfigurováno. Chcete ji přepsat?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
-"[OTP/Setup]" = "Setup one-time password (OTP)";
+"[OTP/Setup]" = "Nastavit jednorázové heslo (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Na vaše přílohy můžete nahlížet přímo zde v aplikaci a nezanechávat tak stopy v jiných aplikacích. (Náhled podporuje obrázky, dokumenty, archivované soubory a další.)";
@@ -560,13 +560,13 @@
 "[Premium/status] Beta testing" = "Beta testování";
 
 /* Status: current version of the app. For example: `Current version: 1.23`. Should be similar to the `Licensed version` string. [version: String] */
-"[Premium/status] Current version: %@" = "Current version: %@";
+"[Premium/status] Current version: %@" = "Současná verze: %@";
 
 /* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
 "[Premium/status] Expired %@ ago. Please renew." = "Platnost vypršela před %@. Prosím obnovte.";
 
 /* Status: licensed premium version of the app. For example: `Licensed version: 1.23`. [version: String] */
-"[Premium/status] Licensed version: %@" = "Licensed version: %@";
+"[Premium/status] Licensed version: %@" = "Licencovaná verze: %@";
 
 /* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
 "[Premium/status] Next renewal on %@" = "Další obnovení dne %@";
@@ -725,34 +725,34 @@
 "[Support/template] (Please describe the problem here)" = "(Zde prosím popište váš problém)";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/1]" = "Help us make KeePassium better!";
+"[TipBox/callToAction/1]" = "Pomozte nám vylepšit KeePassium!";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/2]" = "Help us keep KeePassium shiny!";
+"[TipBox/callToAction/2]" = "Pomozte nám udržovat KeePassium!";
 
 /* Call to action in the Donations screen. (free = gratis) */
-"[TipBox/callToAction/3]" = "Help us keep KeePassium free!";
+"[TipBox/callToAction/3]" = "Pomozte nám zachovat KeePassium zdarma!";
 
 /* Text in the Donations screen. */
-"[TipBox/description/1]" = "Do you like KeePassium?";
+"[TipBox/description/1]" = "Líbí se vám KeePassium?";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium is a free open-source app. You trust it with your most sensitive information. There are no ads, no spying, no nonsense — we respect you.";
+"[TipBox/description/2]" = "KeePassium je aplikace zdarma s otevřeným zdrojovým kódem. Svěřujete jí své nejcitlivější informace. Je bez reklam, sledování a zbytečností — respektujeme Vás.";
 
 /* Text in the Donations screen. */
-"[TipBox/description/3]" = "Do you like KeePassium but don't need the premium features?";
+"[TipBox/description/3]" = "Líbí se vám KeePassium, ale nepotřebujete prémiové funkce?";
 
 /* Notification after a successful donation. */
-"[TipBox/thankYou]" = "Thank you!";
+"[TipBox/thankYou]" = "Děkujeme!";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Tip Jar";
+"[TipBox/title/1]" = "Spropitné";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/2]" = "Donations";
+"[TipBox/title/2]" = "Příspěvky";
 
 /* Call to action, title of the tip box/donation screen. */
-"[TipBox/title/3]" = "Support KeePassium";
+"[TipBox/title/3]" = "Podpořte KeePassium";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Bez YubiKey";
