@@ -107,7 +107,9 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
         mayUseFinalKey = true
         refresh()
         
-        maybeShowInitialDatabaseError(fileRef)
+        DispatchQueue.main.async { [self] in
+            maybeShowInitialDatabaseError(fileRef)
+        }
     }
     
     private func maybeShowInitialDatabaseError(_ fileRef: URLReference) {
