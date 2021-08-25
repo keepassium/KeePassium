@@ -10,14 +10,17 @@ import KeePassiumLib
 
 protocol GroupEditorCoordinatorDelegate: AnyObject {
     func didUpdateGroup(_ group: Group, in coordinator: GroupEditorCoordinator)
+    
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-final class GroupEditorCoordinator: Coordinator, DatabaseSaving {
+final class GroupEditorCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: GroupEditorCoordinatorDelegate?
 
     private let router: NavigationRouter
+    private let databaseFile: DatabaseFile
     private let database: Database
     private let parent: Group 
     private let originalGroup: Group? 
@@ -25,12 +28,15 @@ final class GroupEditorCoordinator: Coordinator, DatabaseSaving {
     private let groupEditorVC: GroupEditorVC
     
     private var group: Group
+    
+    var databaseSaver: DatabaseSaver?
+    var fileExportHelper: FileExportHelper?
+    var savingProgressHost: ProgressViewHost? { return router }
 
-    internal var databaseExporterTemporaryURL: TemporaryFileURL?
-
-    init(router: NavigationRouter, database: Database, parent: Group, target: Group?) {
+    init(router: NavigationRouter, databaseFile: DatabaseFile, parent: Group, target: Group?) {
         self.router = router
-        self.database = database
+        self.databaseFile = databaseFile
+        self.database = databaseFile.database
         self.parent = parent
         self.originalGroup = target
         
@@ -86,9 +92,7 @@ final class GroupEditorCoordinator: Coordinator, DatabaseSaving {
             GroupChangeNotifications.post(groupDidChange: group)
         }
         
-        let databaseManager = DatabaseManager.shared
-        databaseManager.addObserver(self)
-        databaseManager.startSavingDatabase()
+        saveDatabase(databaseFile)
     }
     
     private func showDiagnostics() {
@@ -101,7 +105,10 @@ final class GroupEditorCoordinator: Coordinator, DatabaseSaving {
     }
     
     func showIconPicker() {
-        let iconPickerCoordinator = ItemIconPickerCoordinator(router: router, database: database)
+        let iconPickerCoordinator = ItemIconPickerCoordinator(
+            router: router,
+            databaseFile: databaseFile
+        )
         iconPickerCoordinator.item = group
         iconPickerCoordinator.dismissHandler = { [weak self] (coordinator) in
             self?.removeChildCoordinator(coordinator)
@@ -128,6 +135,10 @@ extension GroupEditorCoordinator: GroupEditorDelegate {
 }
 
 extension GroupEditorCoordinator: ItemIconPickerCoordinatorDelegate {
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: url)
+    }
+    
     func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator) {
         group.iconID = standardIcon
         if let group2 = group as? Group2 {
@@ -152,41 +163,23 @@ extension GroupEditorCoordinator: ItemIconPickerCoordinatorDelegate {
     }
 }
 
-extension GroupEditorCoordinator: DatabaseManagerObserver {
-    func databaseManager(willSaveDatabase urlRef: URLReference) {
-        router.showProgressView(title: LString.databaseStatusSaving, allowCancelling: true)
+extension GroupEditorCoordinator: DatabaseSaving {
+    func didCancelSaving(databaseFile: DatabaseFile) {
     }
-
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        router.updateProgressView(with: progress)
-    }
-
-    func databaseManager(didSaveDatabase urlRef: URLReference) {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
+    
+    func didSave(databaseFile: DatabaseFile) {
         router.pop(animated: true)
     }
     
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        return groupEditorVC
     }
-
-    func databaseManager(
-        database urlRef: URLReference,
-        savingError error: Error,
-        data: ByteArray?)
-    {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-        showDatabaseSavingError(
-            error,
-            fileName: urlRef.visibleFileName,
-            diagnosticsHandler: { [weak self] in
-                self?.showDiagnostics()
-            },
-            exportableData: data,
-            parent: groupEditorVC
-        )
+    
+    func getDiagnosticsHandler() -> (() -> Void)? {
+        return showDiagnostics
+    }
+    
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: newURL)
     }
 }

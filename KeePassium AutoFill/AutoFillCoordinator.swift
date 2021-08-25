@@ -20,6 +20,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
 
     private var databasePickerCoordinator: DatabasePickerCoordinator!
     private var entryFinderCoordinator: EntryFinderCoordinator?
+    private var databaseUnlockerCoordinator: DatabaseUnlockerCoordinator?
     var serviceIdentifiers = [ASCredentialServiceIdentifier]()
     
     fileprivate var watchdog: Watchdog
@@ -56,7 +57,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
     
     public func handleMemoryWarning() {
         Diag.error("Received a memory warning")
-        DatabaseManager.shared.progress.cancel(reason: .lowMemoryWarning)
+        databaseUnlockerCoordinator?.cancelLoading(reason: .lowMemoryWarning)
     }
     
     func start() {
@@ -165,23 +166,24 @@ extension AutoFillCoordinator {
         )
         databaseUnlockerCoordinator.dismissHandler = {[weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
+            self?.databaseUnlockerCoordinator = nil
         }
         databaseUnlockerCoordinator.delegate = self
         databaseUnlockerCoordinator.setDatabase(databaseRef)
 
         databaseUnlockerCoordinator.start()
         addChildCoordinator(databaseUnlockerCoordinator)
+        self.databaseUnlockerCoordinator = databaseUnlockerCoordinator
     }
     
     private func showDatabaseViewer(
         _ fileRef: URLReference,
-        database: Database,
+        databaseFile: DatabaseFile,
         warnings: DatabaseLoadingWarnings
     ) {
         let entryFinderCoordinator = EntryFinderCoordinator(
             router: router,
-            database: database,
-            databaseRef: fileRef,
+            databaseFile: databaseFile,
             loadingWarnings: warnings,
             serviceIdentifiers: serviceIdentifiers
         )
@@ -241,7 +243,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
         dismissPasscodeAndContinue()
     }
 
-    func watchdogDidCloseDatabase(_ sender: Watchdog, animate: Bool) {
+    func mustCloseDatabase(_ sender: Watchdog, animate: Bool) {
         entryFinderCoordinator?.stop(animated: animate)
     }
 
@@ -394,13 +396,13 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
     }
     
     func didUnlockDatabase(
-        _ fileRef: URLReference,
-        database: Database,
+        databaseFile: DatabaseFile,
+        at fileRef: URLReference,
         warnings: DatabaseLoadingWarnings,
         in coordinator: DatabaseUnlockerCoordinator
     ) {
         Settings.current.isAutoFillFinishedOK = true 
-        showDatabaseViewer(fileRef, database: database, warnings: warnings)
+        showDatabaseViewer(fileRef, databaseFile: databaseFile, warnings: warnings)
     }
     
     func didPressReinstateDatabase(
@@ -418,12 +420,6 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
 
 extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
     func didLeaveDatabase(in coordinator: EntryFinderCoordinator) {
-        DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: true, completion: {
-            [weak self] error in
-            if let error = error {
-                self?.router.navigationController.showErrorAlert(error)
-            }
-        })
     }
     
     func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator) {

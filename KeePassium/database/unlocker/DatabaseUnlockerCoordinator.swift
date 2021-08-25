@@ -23,8 +23,8 @@ protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
         in coordinator: DatabaseUnlockerCoordinator
     )
     func didUnlockDatabase(
-        _ fileRef: URLReference,
-        database: Database,
+        databaseFile: DatabaseFile,
+        at fileRef: URLReference,
         warnings: DatabaseLoadingWarnings,
         in coordinator: DatabaseUnlockerCoordinator
     )
@@ -44,6 +44,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     private var selectedHardwareKey: YubiKey?
     
     private var mayUseFinalKey = true
+    private var databaseLoader: DatabaseLoader?
     
     init(router: NavigationRouter, databaseRef: URLReference) {
         self.router = router
@@ -70,6 +71,10 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     
     func refresh() {
         databaseUnlockerVC.refresh()
+    }
+    
+    func cancelLoading(reason: ProgressEx.CancellationReason) {
+        databaseLoader?.cancel(reason: reason)
     }
     
     func setDatabase(_ fileRef: URLReference) {
@@ -236,7 +241,7 @@ extension DatabaseUnlockerCoordinator {
     }
     
     private func retryToUnlockDatabase() {
-        DatabaseManager.shared.addObserver(self)
+        assert(databaseLoader == nil)
         
         #if AUTOFILL_EXT
         let challengeHandler = (selectedHardwareKey != nil) ? challengeHandlerForAutoFill : nil
@@ -244,22 +249,29 @@ extension DatabaseUnlockerCoordinator {
         let challengeHandler = ChallengeResponseManager.makeHandler(for: selectedHardwareKey)
         #endif
         
+        let compositeKey: CompositeKey
         let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
-        if let databaseKey = dbSettings?.masterKey {
-            databaseKey.challengeHandler = challengeHandler
-            DatabaseManager.shared.startLoadingDatabase(
-                database: databaseRef,
-                compositeKey: databaseKey,
-                canUseFinalKey: mayUseFinalKey)
+        if let storedCompositeKey = dbSettings?.masterKey {
+            compositeKey = storedCompositeKey
+            compositeKey.challengeHandler = challengeHandler
+            if !mayUseFinalKey {
+                compositeKey.eraseFinalKeys()
+            }
         } else {
             mayUseFinalKey = false 
             let password = databaseUnlockerVC.password
-            DatabaseManager.shared.startLoadingDatabase(
-                database: databaseRef,
+            compositeKey = CompositeKey(
                 password: password,
-                keyFile: selectedKeyFileRef,
-                challengeHandler: challengeHandler)
+                keyFileRef: selectedKeyFileRef,
+                challengeHandler: challengeHandler
+            )
         }
+        databaseLoader = DatabaseLoader(
+            dbRef: databaseRef,
+            compositeKey: compositeKey,
+            delegate: self
+        )
+        databaseLoader!.load()
     }
     
     private func eraseMasterKey() {
@@ -359,8 +371,8 @@ extension DatabaseUnlockerCoordinator: HardwareKeyPickerCoordinatorDelegate {
     }
 }
 
-extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
-    func databaseManager(willLoadDatabase urlRef: URLReference) {
+extension DatabaseUnlockerCoordinator: DatabaseLoaderDelegate {
+    func databaseLoader(_ databaseLoader: DatabaseLoader, willLoadDatabase dbRef: URLReference) {
         databaseUnlockerVC.showProgressView(
             title: LString.databaseStatusLoading,
             allowCancelling: true,
@@ -368,12 +380,16 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         )
     }
     
-    func databaseManager(progressDidChange progress: ProgressEx) {
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didChangeProgress progress: ProgressEx,
+        for dbRef: URLReference
+    ) {
         databaseUnlockerVC.updateProgressView(with: progress)
     }
     
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        DatabaseManager.shared.removeObserver(self)
+    func databaseLoader(_ databaseLoader: DatabaseLoader, didCancelLoading dbRef: URLReference) {
+        self.databaseLoader = nil
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
             dbSettings.clearMasterKey()
         }
@@ -386,8 +402,12 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         delegate?.didNotUnlockDatabase(databaseRef, with: nil, reason: nil, in: self)
     }
     
-    func databaseManager(database urlRef: URLReference, invalidMasterKey message: String) {
-        DatabaseManager.shared.removeObserver(self)
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didFailLoading dbRef: URLReference,
+        withInvalidMasterKeyMessage message: String
+    ) {
+        self.databaseLoader = nil
         if mayUseFinalKey {
             Diag.info("Express unlock failed, retrying slow")
             mayUseFinalKey = false
@@ -405,12 +425,13 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         }
     }
     
-    func databaseManager(
-        database urlRef: URLReference,
-        loadingError message: String,
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didFailLoading dbRef: URLReference,
+        message: String,
         reason: String?
     ) {
-        DatabaseManager.shared.removeObserver(self)
+        self.databaseLoader = nil
         databaseUnlockerVC.refresh()
         databaseUnlockerVC.hideProgressView(animated: true)
         
@@ -419,16 +440,25 @@ extension DatabaseUnlockerCoordinator: DatabaseManagerObserver {
         delegate?.didNotUnlockDatabase(databaseRef, with: message, reason: reason, in: self)
     }
     
-    func databaseManager(didLoadDatabase urlRef: URLReference, warnings: DatabaseLoadingWarnings) {
-        DatabaseManager.shared.removeObserver(self)
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didLoadDatabase dbRef: URLReference,
+        databaseFile: DatabaseFile,
+        withWarnings warnings: DatabaseLoadingWarnings
+    ) {
+        self.databaseLoader = nil
         HapticFeedback.play(.databaseUnlocked)
-        
-        let database = DatabaseManager.shared.database!
+
         DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
-            dbSettings.maybeSetMasterKey(of: database)
+            dbSettings.maybeSetMasterKey(of: databaseFile.database)
         }
         databaseUnlockerVC.clearPasswordField()
         
-        delegate?.didUnlockDatabase(databaseRef, database: database, warnings: warnings, in: self)
+        delegate?.didUnlockDatabase(
+            databaseFile: databaseFile,
+            at: databaseRef,
+            warnings: warnings,
+            in: self
+        )
     }
 }

@@ -18,6 +18,10 @@ final class MainCoordinator: Coordinator {
         }
     }
     
+    public var canLockDatabase: Bool {
+        return databaseViewerCoordinator != nil
+    }
+    
     private let rootSplitVC: RootSplitVC
     private let primaryRouter: NavigationRouter
     private let placeholderRouter: NavigationRouter
@@ -217,15 +221,14 @@ extension MainCoordinator {
     
     private func showDatabaseViewer(
         _ fileRef: URLReference,
-        database: Database,
+        databaseFile: DatabaseFile,
         warnings: DatabaseLoadingWarnings
     ) {
         let canEditDatabase = fileRef.location != .internalBackup
         let databaseViewerCoordinator = DatabaseViewerCoordinator(
             splitViewController: rootSplitVC,
             primaryRouter: primaryRouter,
-            database: database,
-            databaseRef: fileRef,
+            databaseFile: databaseFile,
             canEditDatabase: canEditDatabase,
             loadingWarnings: warnings
         )
@@ -505,8 +508,13 @@ extension MainCoordinator: WatchdogDelegate {
         print("Biometrics background hidden")
     }
     
-    func watchdogDidCloseDatabase(_ sender: Watchdog, animate: Bool) {
-        databaseViewerCoordinator?.closeDatabase(shouldLock: true, reason: .databaseTimeout, animated: animate, completion: nil)
+    func mustCloseDatabase(_ sender: Watchdog, animate: Bool) {
+        databaseViewerCoordinator?.closeDatabase(
+            shouldLock: true,
+            reason: .databaseTimeout,
+            animated: animate,
+            completion: nil
+        )
     }
 }
 
@@ -632,13 +640,13 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
     }
     
     func didUnlockDatabase(
-        _ fileRef: URLReference,
-        database: Database,
+        databaseFile: DatabaseFile,
+        at fileRef: URLReference,
         warnings: DatabaseLoadingWarnings,
         in coordinator: DatabaseUnlockerCoordinator
     ) {
         databasePickerCoordinator.setEnabled(true)
-        showDatabaseViewer(fileRef, database: database, warnings: warnings)
+        showDatabaseViewer(fileRef, databaseFile: databaseFile, warnings: warnings)
     }
     
     func didPressReinstateDatabase(
@@ -657,18 +665,38 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
 }
 
 extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL) {
+        Diag.debug("Will account relocated database")
+        let fileKeeper = FileKeeper.shared
+        
+        if let oldReference = databaseFile.fileReference,
+           fileKeeper.removeExternalReference(oldReference, fileType: .database)
+        {
+            Diag.debug("Did remove old reference")
+        } else {
+            Diag.debug("No old reference found")
+        }
+        
+        databaseFile.fileURL = url
+        fileKeeper.addFile(
+            url: url,
+            fileType: .database,
+            mode: .openInPlace,
+            success: { urlRef in
+                Diag.info("Relocated database reference added OK")
+                databaseFile.fileReference = urlRef
+            },
+            error: { error in
+                Diag.error("Failed to add relocated database [message: \(error.localizedDescription)")
+            }
+        )
+    }
+    
     func didLeaveDatabase(in coordinator: DatabaseViewerCoordinator) {
         Diag.debug("Did leave database")
-        DatabaseManager.shared.closeDatabase(clearStoredKey: false, ignoreErrors: true) {
-            [weak self] error in
-            guard let self = self else { return }
-            if !self.rootSplitVC.isCollapsed {
-                self.databasePickerCoordinator.selectDatabase(self.selectedDatabaseRef, animated: false)
-            }
-            
-            if let error = error {
-                self.rootSplitVC.showErrorAlert(error)
-            }
+
+        if !self.rootSplitVC.isCollapsed {
+            self.databasePickerCoordinator.selectDatabase(self.selectedDatabaseRef, animated: false)
         }
     }
 }

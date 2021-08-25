@@ -27,10 +27,12 @@ public enum DatabaseCloseReason: CustomStringConvertible {
 
 protocol DatabaseViewerCoordinatorDelegate: AnyObject {
     func didLeaveDatabase(in coordinator: DatabaseViewerCoordinator)
+    
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
-    
+final class DatabaseViewerCoordinator: Coordinator {
+    private let vcAnimationDuration = 0.3
     
     var childCoordinators = [Coordinator]()
     
@@ -40,8 +42,9 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     private let primaryRouter: NavigationRouter
     private let placeholderRouter: NavigationRouter
     private var entryViewerRouter: NavigationRouter?
+    
+    private let databaseFile: DatabaseFile
     private let database: Database
-    private let databaseRef: URLReference
     private let canEditDatabase: Bool
     private let loadingWarnings: DatabaseLoadingWarnings?
     
@@ -60,20 +63,23 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
     
     private var progressOverlay: ProgressOverlay?
     private var settingsNotifications: SettingsNotifications!
-    var databaseExporterTemporaryURL: TemporaryFileURL?
+    
+    var databaseSaver: DatabaseSaver?
+    var fileExportHelper: FileExportHelper?
+    var savingProgressHost: ProgressViewHost? { return self }
     
     init(
         splitViewController: RootSplitVC,
         primaryRouter: NavigationRouter,
-        database: Database,
-        databaseRef: URLReference,
+        databaseFile: DatabaseFile,
         canEditDatabase: Bool,
         loadingWarnings: DatabaseLoadingWarnings?
     ) {
         self.splitViewController = splitViewController
         self.primaryRouter = primaryRouter
-        self.database = database
-        self.databaseRef = databaseRef
+        
+        self.databaseFile = databaseFile
+        self.database = databaseFile.database
         self.canEditDatabase = canEditDatabase
         self.loadingWarnings = loadingWarnings
         
@@ -108,7 +114,10 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         
         settingsNotifications.startObserving()
         
-        showInitialMessages()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2 * vcAnimationDuration) {
+            [weak self] in
+            self?.showInitialMessages()
+        }
     }
     
     public func stop(animated: Bool, completion: (()->Void)?) {
@@ -142,10 +151,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             showLoadingWarnings(loadingWarnings!)
         }
         if !canEditDatabase {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak self] in
-                guard let self = self else { return }
-                self.showReadOnlyDatabaseNotification(in: self.getPresenterForModals())
-            }
+            showReadOnlyDatabaseNotification(in: getPresenterForModals())
         }
 
         StoreReviewSuggester.maybeShowAppReview(
@@ -219,7 +225,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         let isCustomTransition = replacingTopVC
         if isCustomTransition {
             primaryRouter.prepareCustomTransition(
-                duration: 0.3,
+                duration: vcAnimationDuration,
                 type: .fade,
                 timingFunction: .easeOut
             )
@@ -276,7 +282,6 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
             let entryViewerCoordinator = existingCoordinator as! EntryViewerCoordinator 
             entryViewerCoordinator.setEntry(
                 entry,
-                database: database,
                 isHistoryEntry: false,
                 canEditEntry: canEditDatabase && !entry.isDeleted
             )
@@ -292,7 +297,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         let entryViewerRouter = NavigationRouter(RouterNavigationController())
         let entryViewerCoordinator = EntryViewerCoordinator(
             entry: entry,
-            database: database,
+            databaseFile: databaseFile,
             isHistoryEntry: false,
             canEditEntry: canEditDatabase && !entry.isDeleted,
             router: entryViewerRouter,
@@ -316,17 +321,13 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         animated: Bool,
         completion: (()->Void)?
     ) {
-        DatabaseManager.shared.closeDatabase(clearStoredKey: shouldLock, ignoreErrors: false) {
-            [weak self] (error) in
-            if let error = error {
-                Diag.error("Failed to close database: \(error.localizedDescription)")
-                self?.getPresenterForModals().showErrorAlert(error)
-                completion?()
+        if shouldLock {
+            DatabaseSettingsManager.shared.updateSettings(for: databaseFile) {
+                $0.clearMasterKey()
             }
-            
-            Diag.debug("Database closed [locked: \(shouldLock), reason: \(reason)]")
-            self?.stop(animated: animated, completion: completion)
         }
+        Diag.debug("Database closed [locked: \(shouldLock), reason: \(reason)]")
+        stop(animated: animated, completion: completion)
     }
     
     private func showGroupListSettings(
@@ -364,7 +365,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         
         let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
         let databaseKeyChangeCoordinator = DatabaseKeyChangerCoordinator(
-            databaseRef: databaseRef,
+            databaseFile: databaseFile,
             router: modalRouter
         )
         databaseKeyChangeCoordinator.dismissHandler = { [weak self] coordinator in
@@ -387,7 +388,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
         let groupEditorCoordinator = GroupEditorCoordinator(
             router: modalRouter,
-            database: database,
+            databaseFile: databaseFile,
             parent: parent,
             target: groupToEdit)
         groupEditorCoordinator.dismissHandler = { [weak self] coordinator in
@@ -411,7 +412,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
         let entryFieldEditorCoordinator = EntryFieldEditorCoordinator(
             router: modalRouter,
-            database: database,
+            databaseFile: databaseFile,
             parent: parent,
             target: entryToEdit
         )
@@ -435,7 +436,7 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         let itemRelocationCoordinator = ItemRelocationCoordinator(
             router: modalRouter,
-            database: database,
+            databaseFile: databaseFile,
             mode: mode,
             itemsToRelocate: [Weak(item)])
         itemRelocationCoordinator.dismissHandler = { [weak self] coordinator in
@@ -446,11 +447,6 @@ final class DatabaseViewerCoordinator: Coordinator, DatabaseSaving {
         
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(itemRelocationCoordinator)
-    }
-    
-    func saveDatabase() {
-        DatabaseManager.shared.addObserver(self)
-        DatabaseManager.shared.startSavingDatabase()
     }
 }
 
@@ -524,7 +520,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     ) {
         database.delete(group: group)
         group.touch(.accessed)
-        saveDatabase()
+        saveDatabase(databaseFile)
     }
     
     func didPressDeleteEntry(
@@ -539,7 +535,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
             selectEntry(nil)
             showEntry(nil)
         }
-        saveDatabase()
+        saveDatabase(databaseFile)
     }
     
     func didPressRelocateItem(
@@ -629,52 +625,43 @@ extension DatabaseViewerCoordinator: ProgressViewHost {
     }
 }
 
-extension DatabaseViewerCoordinator: DatabaseManagerObserver {
-    
-    public func databaseManager(willSaveDatabase urlRef: URLReference) {
-        showProgressView(title: LString.databaseStatusSaving, allowCancelling: false, animated: true)
-    }
-
-    public func databaseManager(progressDidChange progress: ProgressEx) {
-        updateProgressView(with: progress)
-    }
-
-    public func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        DatabaseManager.shared.removeObserver(self)
-        refresh()
-        hideProgressView(animated: true)
-    }
-
-    public func databaseManager(didSaveDatabase urlRef: URLReference) {
-        DatabaseManager.shared.removeObserver(self)
-        refresh()
-        hideProgressView(animated: true)
+extension DatabaseViewerCoordinator: DatabaseSaving {
+    func canCancelSaving(databaseFile: DatabaseFile) -> Bool {
+        return false
     }
     
-    public func databaseManager(
-        database urlRef: URLReference,
-        savingError error: Error,
-        data: ByteArray?
-    ) {
-        DatabaseManager.shared.removeObserver(self)
+    func didCancelSaving(databaseFile: DatabaseFile) {
         refresh()
-        hideProgressView(animated: true)
-        
-        showDatabaseSavingError(
-            error,
-            fileName: urlRef.visibleFileName,
-            diagnosticsHandler: { [weak self] in
-                self?.showDiagnostics()
-            },
-            exportableData: data,
-            parent: getPresenterForModals()
-        )
+    }
+    
+    func didSave(databaseFile: DatabaseFile) {
+        refresh()
+    }
+    
+    func didFailSaving(databaseFile: DatabaseFile) {
+        refresh()
+    }
+    
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: newURL)
+    }
+    
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        getPresenterForModals()
+    }
+    
+    func getDiagnosticsHandler() -> (() -> Void)? {
+        return showDiagnostics
     }
 }
 
 extension DatabaseViewerCoordinator: EntryViewerCoordinatorDelegate {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryViewerCoordinator) {
         refresh()
+    }
+    
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: url)
     }
 }
 

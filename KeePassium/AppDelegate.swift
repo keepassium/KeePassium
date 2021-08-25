@@ -74,7 +74,7 @@ extension AppDelegate {
         case #selector(showAppHelp):
             return true
         case #selector(lockDatabase):
-            return DatabaseManager.shared.isDatabaseOpen
+            return mainCoordinator.canLockDatabase
         default:
             return super.canPerformAction(action, withSender: sender)
         }

@@ -109,6 +109,11 @@ public class URLReference:
     }
     
     private let data: Data
+    
+    private lazy var dataSHA256: ByteArray = {
+        return ByteArray(data: data).sha256
+    }()
+    
     public let location: Location
     
     internal var bookmarkedURL: URL?
@@ -201,7 +206,12 @@ public class URLReference:
             Diag.debug("Original URL of the file is nil.")
             return false
         }
-        return lhsOriginalURL == rhsOriginalURL
+        guard lhsOriginalURL == rhsOriginalURL else {
+            return false
+        }
+        let lhsDataHash = lhs.dataSHA256
+        let rhsDataHash = rhs.dataSHA256
+        return lhsDataHash == rhsDataHash
     }
     
     public func hash(into hasher: inout Hasher) {
@@ -299,6 +309,7 @@ public class URLReference:
     
     public func resolveAsync(
         timeout: TimeInterval = URLReference.defaultTimeout,
+        callbackQueue: OperationQueue = .main,
         callback: @escaping ResolveCallback)
     {
         execute(
@@ -317,7 +328,7 @@ public class URLReference:
                 switch result {
                 case .success(let url):
                     self.error = nil
-                    self.dispatchMain {
+                    callbackQueue.addOperation {
                         callback(.success(url))
                     }
                 case .failure(let error):
@@ -326,14 +337,14 @@ public class URLReference:
                         fileProvider: self.fileProvider
                     )
                     self.error = fileAccessError
-                    self.dispatchMain {
+                    callbackQueue.addOperation {
                         callback(.failure(fileAccessError))
                     }
                 }
             },
             onTimeout: { [self] in
                 self.error = FileAccessError.timeout(fileProvider: self.fileProvider)
-                self.dispatchMain {
+                callbackQueue.addOperation {
                     callback(.failure(FileAccessError.timeout(fileProvider: self.fileProvider)))
                 }
             }
@@ -415,53 +426,23 @@ public class URLReference:
             self.registerInfoRefreshRequest(.completed)
             switch result {
             case .success(_):
-                self.readFileInfo(url: url, completion: callback)
+                url.readFileInfo(canUseCache: false) { [self] result in
+                    switch result {
+                    case .success(let fileInfo):
+                        self.cachedInfo = fileInfo
+                    case .failure(let fileAccessError):
+                        self.error = fileAccessError
+                    }
+                    DispatchQueue.main.async {
+                        callback(result)
+                    }
+                }
             case .failure(let fileAccessError):
                 DispatchQueue.main.async { 
                     self.error = fileAccessError
                     callback(.failure(fileAccessError))
                 }
             }
-        }
-    }
-    
-    private func readFileInfo(url: URL, completion callback: @escaping InfoCallback) {
-        assert(!Thread.isMainThread)
-        let attributeKeys: Set<URLResourceKey> = [
-            .fileSizeKey,
-            .creationDateKey,
-            .contentModificationDateKey,
-            .isExcludedFromBackupKey,
-            .ubiquitousItemDownloadingStatusKey,
-        ]
-
-        var urlWithFreshAttributes = url
-        urlWithFreshAttributes.removeAllCachedResourceValues()
-        
-        let attributes: URLResourceValues
-        do {
-            attributes = try urlWithFreshAttributes.resourceValues(forKeys: attributeKeys)
-        } catch {
-            Diag.error("Failed to get file info [reason: \(error.localizedDescription)]")
-            let fileAccessError = FileAccessError.systemError(error)
-            DispatchQueue.main.async { 
-                self.error = fileAccessError
-                callback(.failure(fileAccessError))
-            }
-            return
-        }
-        
-        let latestInfo = FileInfo(
-            fileName: urlWithFreshAttributes.lastPathComponent,
-            fileSize: Int64(attributes.fileSize ?? -1),
-            creationDate: attributes.creationDate,
-            modificationDate: attributes.contentModificationDate,
-            isExcludedFromBackup: attributes.isExcludedFromBackup ?? false,
-            isInTrash: url.isInTrashDirectory)
-        self.cachedInfo = latestInfo
-        DispatchQueue.main.async {
-            self.error = nil
-            callback(.success(latestInfo))
         }
     }
     
@@ -485,9 +466,6 @@ public class URLReference:
     }
     
     public func getDescriptor() -> Descriptor? {
-        if let resolvedFileName = resolvedURL?.lastPathComponent {
-            return resolvedFileName
-        }
         if let cachedFileName = cachedURL?.lastPathComponent {
             return cachedFileName
         }

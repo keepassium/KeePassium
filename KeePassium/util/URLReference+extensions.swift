@@ -41,9 +41,8 @@ extension URLReference {
         guard let _fileProvider = fileProvider else {
             return UIImage(asset: .fileProviderGenericListitem)
         }
-        if _fileProvider == .localStorage,
-            let _fileInfo = self.getCachedInfoSync(canFetch: false),
-            _fileInfo.isInTrash
+        if let _fileInfo = self.getCachedInfoSync(canFetch: false),
+           _fileInfo.isInTrash
         {
             return UIImage(asset: .databaseTrashedListitem)
         }

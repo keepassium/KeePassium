@@ -8,7 +8,66 @@
 
 import KeePassiumLib
 
-class FileExportHelper {
+final class FileExportHelper: NSObject {
+    private let data: ByteArray
+    private let fileName: String
+    private var tmpURL: TemporaryFileURL?
+    
+    var handler: ((_ newURL: URL?) -> Void)?
+    
+    init(data: ByteArray, fileName: String) {
+        self.data = data
+        self.fileName = fileName
+        super.init()
+    }
+    
+    public func saveAs(presenter viewController: UIViewController) {
+        assert(handler != nil, "The `handler` callback must be defined for processing user choice")
+        do {
+            tmpURL = try TemporaryFileURL(fileName: fileName)
+            try data.write(to: tmpURL!.url, options: .completeFileProtection)
+
+            let documentPicker = UIDocumentPickerViewController(
+                url: tmpURL!.url,
+                in: .exportToService
+            )
+            documentPicker.delegate = self
+            viewController.present(documentPicker, animated: true, completion: nil)
+        } catch {
+            Diag.error("Failed to save temporary file [message: \(error.localizedDescription)")
+            tmpURL = nil
+            handler?(nil)
+        }
+    }
+}
+
+extension FileExportHelper: UIDocumentPickerDelegate {
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        handler?(nil)
+    }
+    
+    func documentPicker(
+        _ controller: UIDocumentPickerViewController,
+        didPickDocumentsAt urls: [URL]
+    ) {
+        guard let url = urls.first else {
+            Diag.warning("No target file selected")
+            handler?(nil)
+            return
+        }
+        BaseDocument.write(data, to: url, completionQueue: .main) { [self] result in
+            switch result {
+            case .success:
+                self.handler?(url)
+            case .failure(_):
+                Diag.error("Failed to save file, cancelling")
+                self.handler?(nil)
+            }
+        }
+    }
+}
+
+extension FileExportHelper {
     
     public static func revealInFinder(_ urlRef: URLReference) {
         assert(ProcessInfo.isRunningOnMac)

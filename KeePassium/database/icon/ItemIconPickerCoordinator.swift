@@ -12,9 +12,11 @@ protocol ItemIconPickerCoordinatorDelegate: AnyObject {
     func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator)
     func didSelectIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator)
     func didDeleteIcon(customIcon: UUID, in coordinator: ItemIconPickerCoordinator)
+    
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
+class ItemIconPickerCoordinator: Coordinator {
     
     public static let customIconMaxSide = CGFloat(128)
 
@@ -25,14 +27,19 @@ class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
     weak var item: DatabaseItem?
     
     private let router: NavigationRouter
-    private weak var database: Database?
+    private let databaseFile: DatabaseFile
+    private let database: Database
     private let iconPicker: ItemIconPicker
     private var photoPicker: PhotoPicker?
-    var databaseExporterTemporaryURL: TemporaryFileURL?
     
-    init(router: NavigationRouter, database: Database) {
+    var databaseSaver: DatabaseSaver?
+    var fileExportHelper: FileExportHelper?
+    var savingProgressHost: ProgressViewHost? { return router }
+
+    init(router: NavigationRouter, databaseFile: DatabaseFile) {
         self.router = router
-        self.database = database
+        self.databaseFile = databaseFile
+        self.database = databaseFile.database
         iconPicker = ItemIconPicker.instantiateFromStoryboard()
         iconPicker.delegate = self
     }
@@ -43,11 +50,6 @@ class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
     }
     
     func start() {
-        guard let database = database else {
-            assertionFailure()
-            return
-        }
-        
         iconPicker.isImportAllowed = database is Database2
         refresh()
         iconPicker.selectIcon(for: item)
@@ -79,7 +81,7 @@ class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
         }
         db2.addCustomIcon(pngData: ByteArray(data: pngData))
         refresh()
-        saveDatabase()
+        saveDatabase(databaseFile)
     }
     
     private func deleteCustomIcon(uuid: UUID) {
@@ -88,15 +90,9 @@ class ItemIconPickerCoordinator: Coordinator, DatabaseSaving {
             return
         }
         db2.deleteCustomIcon(uuid: uuid)
-        saveDatabase()
+        saveDatabase(databaseFile)
         delegate?.didDeleteIcon(customIcon: uuid, in: self)
         refresh() 
-    }
-    
-    private func saveDatabase() {
-        let dbm = DatabaseManager.shared
-        dbm.addObserver(self)
-        dbm.startSavingDatabase()
     }
 }
 
@@ -138,35 +134,15 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
     }
 }
 
-extension ItemIconPickerCoordinator: DatabaseManagerObserver {
-    func databaseManager(willSaveDatabase urlRef: URLReference) {
-        router.showProgressView(title: LString.databaseStatusSaving, allowCancelling: true)
+extension ItemIconPickerCoordinator: DatabaseSaving {
+    func didSave(databaseFile: DatabaseFile) {
     }
     
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        router.updateProgressView(with: progress)
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: newURL)
     }
     
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        Diag.info("Database saving cancelled")
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-    }
-    
-    func databaseManager(didSaveDatabase urlRef: URLReference) {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-    }
-    
-    func databaseManager(database urlRef: URLReference, savingError error: Error, data: ByteArray?) {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-        showDatabaseSavingError(
-            error,
-            fileName: urlRef.visibleFileName,
-            diagnosticsHandler: nil,
-            exportableData: data,
-            parent: iconPicker
-        )
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        return iconPicker
     }
 }

@@ -318,7 +318,8 @@ public class FileKeeper {
         }
     }
     
-    public func removeExternalReference(_ urlRef: URLReference, fileType: FileType) {
+    @discardableResult
+    public func removeExternalReference(_ urlRef: URLReference, fileType: FileType) -> Bool {
         Diag.debug("Removing URL reference [fileType: \(fileType)]")
         var refs = getStoredReferences(fileType: fileType, forExternalFiles: true)
         if let index = refs.firstIndex(of: urlRef) {
@@ -326,9 +327,10 @@ public class FileKeeper {
             storeReferences(refs, fileType: fileType, forExternalFiles: true)
             FileKeeperNotifier.notifyFileRemoved(urlRef: urlRef, fileType: fileType)
             Diag.info("URL reference removed successfully")
+            return true
         } else {
-            assertionFailure("Tried to delete non-existent reference")
             Diag.warning("Failed to remove URL reference - no such reference")
+            return false
         }
     }
     

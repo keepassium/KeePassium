@@ -15,9 +15,11 @@ public enum ItemRelocationMode {
 
 protocol ItemRelocationCoordinatorDelegate: AnyObject {
     func didRelocateItems(in coordinator: ItemRelocationCoordinator)
+    
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-class ItemRelocationCoordinator: Coordinator, DatabaseSaving {
+class ItemRelocationCoordinator: Coordinator {
     
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
@@ -26,18 +28,27 @@ class ItemRelocationCoordinator: Coordinator, DatabaseSaving {
     
     private let router: NavigationRouter
     
-    private weak var database: Database?
+    private let databaseFile: DatabaseFile
+    private let database: Database
     private let mode: ItemRelocationMode
     private var itemsToRelocate = [Weak<DatabaseItem>]()
     
     private var groupPicker: DestinationGroupPickerVC
     private weak var destinationGroup: Group?
     
-    var databaseExporterTemporaryURL: TemporaryFileURL?
+    var databaseSaver: DatabaseSaver?
+    var fileExportHelper: FileExportHelper?
+    var savingProgressHost: ProgressViewHost? { return router }
     
-    init(router: NavigationRouter, database: Database, mode: ItemRelocationMode, itemsToRelocate: [Weak<DatabaseItem>]) {
+    init(
+        router: NavigationRouter,
+        databaseFile: DatabaseFile,
+        mode: ItemRelocationMode,
+        itemsToRelocate: [Weak<DatabaseItem>]
+    ) {
         self.router = router
-        self.database = database
+        self.databaseFile = databaseFile
+        self.database = databaseFile.database
         self.mode = mode
         self.itemsToRelocate = itemsToRelocate
 
@@ -52,7 +63,7 @@ class ItemRelocationCoordinator: Coordinator, DatabaseSaving {
     }
     
     func start() {
-        guard let rootGroup = database?.root else {
+        guard let rootGroup = database.root else {
             assertionFailure();
             return
         }
@@ -183,49 +194,29 @@ extension ItemRelocationCoordinator: DestinationGroupPickerDelegate {
         case .copy:
             copyItems(to: group)
         }
-        DatabaseManager.shared.addObserver(self)
-        DatabaseManager.shared.startSavingDatabase()
+        saveDatabase(databaseFile)
     }
 }
 
-
-
-extension ItemRelocationCoordinator: DatabaseManagerObserver {
-    func databaseManager(willSaveDatabase urlRef: URLReference) {
-        router.showProgressView(title: LString.databaseStatusSaving, allowCancelling: false)
+extension ItemRelocationCoordinator: DatabaseSaving {
+    func canCancelSaving(databaseFile: DatabaseFile) -> Bool {
+        return false
     }
-
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        router.updateProgressView(with: progress)
-    }
-
-    func databaseManager(didSaveDatabase urlRef: URLReference) {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
+    
+    func didSave(databaseFile: DatabaseFile) {
         notifyContentChanged()
         router.pop(viewController: groupPicker, animated: true)
     }
     
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: newURL)
     }
-
-    func databaseManager(
-        database urlRef: URLReference,
-        savingError error: Error,
-        data: ByteArray?)
-    {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-        showDatabaseSavingError(
-            error,
-            fileName: urlRef.visibleFileName,
-            diagnosticsHandler: { [weak self] in
-                self?.showDiagnostics()
-            },
-            exportableData: data,
-            parent: router.navigationController
-        )
+    
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        return router.navigationController
+    }
+    
+    func getDiagnosticsHandler() -> (() -> Void)? {
+        return showDiagnostics
     }
 }

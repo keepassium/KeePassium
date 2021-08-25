@@ -11,9 +11,10 @@ import QuickLook
 
 protocol EntryViewerCoordinatorDelegate: AnyObject {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryViewerCoordinator)
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refreshable {
+final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
     private enum Pages: Int {
         static let count = 3
         
@@ -29,7 +30,8 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     var dismissHandler: CoordinatorDismissHandler?
     private let router: NavigationRouter
     
-    private var database: Database
+    private let databaseFile: DatabaseFile
+    private let database: Database
     private var entry: Entry
     private var isHistoryEntry: Bool
     private var canEditEntry: Bool
@@ -49,21 +51,25 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
     private var toastHost: UIViewController {
         router.navigationController
     }
-    var databaseExporterTemporaryURL: TemporaryFileURL?
+    
+    var databaseSaver: DatabaseSaver?
+    var fileExportHelper: FileExportHelper?
+    var savingProgressHost: ProgressViewHost? { return progressHost }
     
     private var expiryDateEditorModalRouter: NavigationRouter?
     
     
     init(
         entry: Entry,
-        database: Database,
+        databaseFile: DatabaseFile,
         isHistoryEntry: Bool,
         canEditEntry: Bool,
         router: NavigationRouter,
         progressHost: ProgressViewHost
     ) {
         self.entry = entry
-        self.database = database
+        self.databaseFile = databaseFile
+        self.database = databaseFile.database
         self.isHistoryEntry = isHistoryEntry
         self.canEditEntry = canEditEntry
         self.router = router
@@ -117,7 +123,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         router.pop(viewController: pagesVC, animated: animated)
     }
     
-    public func setEntry(_ entry: Entry, database: Database, isHistoryEntry: Bool, canEditEntry: Bool) {
+    public func setEntry(_ entry: Entry, isHistoryEntry: Bool, canEditEntry: Bool) {
         dismissPreview(animated: false)
         if let existingEntryViewerCoo = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
             let historyEntryViewer = existingEntryViewerCoo as! EntryViewerCoordinator
@@ -125,7 +131,6 @@ final class EntryViewerCoordinator: NSObject, Coordinator, DatabaseSaving, Refre
         }
         
         self.entry = entry
-        self.database = database
         self.isHistoryEntry = isHistoryEntry
         self.canEditEntry = canEditEntry
         refresh()
@@ -406,7 +411,7 @@ extension EntryViewerCoordinator {
         let modalRouter = NavigationRouter.createModal(style: .formSheet, at: nil)
         let entryFieldEditorCoordinator = EntryFieldEditorCoordinator(
             router: modalRouter,
-            database: database,
+            databaseFile: databaseFile,
             parent: parent,
             target: entry
         )
@@ -426,7 +431,7 @@ extension EntryViewerCoordinator {
         
         let historyEntryViewerCoordinator = EntryViewerCoordinator(
             entry: entry,
-            database: database,
+            databaseFile: databaseFile,
             isHistoryEntry: true,
             canEditEntry: false,
             router: router,
@@ -480,8 +485,7 @@ extension EntryViewerCoordinator {
         delegate?.didUpdateEntry(entry, in: self)
         EntryChangeNotifications.post(entryDidChange: entry)
         
-        DatabaseManager.shared.addObserver(self)
-        DatabaseManager.shared.startSavingDatabase()
+        saveDatabase(databaseFile)
     }
 }
 
@@ -690,6 +694,10 @@ extension EntryViewerCoordinator: ExpiryDateEditorDelegate {
 }
 
 extension EntryViewerCoordinator: EntryViewerCoordinatorDelegate {
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: url)
+    }
+    
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryViewerCoordinator) {
         assertionFailure("History entries cannot be modified")
     }
@@ -702,40 +710,21 @@ extension EntryViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
     }
 }
 
-extension EntryViewerCoordinator: DatabaseManagerObserver {
-    func databaseManager(willSaveDatabase urlRef: URLReference) {
+extension EntryViewerCoordinator: DatabaseSaving {
+    func willStartSaving(databaseFile: DatabaseFile) {
         assert(canEditEntry)
-        progressHost?.showProgressView(
-            title: LString.databaseStatusSaving,
-            allowCancelling: true,
-            animated: true
-        )
     }
     
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        progressHost?.updateProgressView(with: progress)
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        return router.navigationController
     }
     
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        DatabaseManager.shared.removeObserver(self)
-        progressHost?.hideProgressView(animated: true)
+    func getDiagnosticsHandler() -> (() -> Void)? {
+        return showDiagnostics
     }
     
-    func databaseManager(didSaveDatabase urlRef: URLReference) {
-        DatabaseManager.shared.removeObserver(self)
-        progressHost?.hideProgressView(animated: true)
-    }
-    
-    func databaseManager(database urlRef: URLReference, savingError error: Error, data: ByteArray?) {
-        DatabaseManager.shared.removeObserver(self)
-        progressHost?.hideProgressView(animated: true)
-        showDatabaseSavingError(
-            error,
-            fileName: urlRef.visibleFileName,
-            diagnosticsHandler: { [weak self] in self?.showDiagnostics() },
-            exportableData: data,
-            parent: router.navigationController 
-        )
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: newURL)
     }
 }
 

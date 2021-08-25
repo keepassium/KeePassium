@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-protocol DatabaseLoaderDelegate: AnyObject {
+public protocol DatabaseLoaderDelegate: AnyObject {
     func databaseLoader(_ databaseLoader: DatabaseLoader, willLoadDatabase dbRef: URLReference)
     
     func databaseLoader(
@@ -30,18 +30,14 @@ protocol DatabaseLoaderDelegate: AnyObject {
     func databaseLoader(
         _ databaseLoader: DatabaseLoader,
         didLoadDatabase dbRef: URLReference,
+        databaseFile: DatabaseFile,
         withWarnings warnings: DatabaseLoadingWarnings)
-    
-    func databaseLoaderDidFinish(
-        _ databaseLoader: DatabaseLoader,
-        for dbRef: URLReference,
-        withResult databaseDocument: DatabaseDocument?
-    )
 }
 
 public class DatabaseLoader: ProgressObserver {
     fileprivate enum ProgressSteps {
         static let all: Int64 = 100 
+        static let willStart: Int64 = -1 
         static let didReadDatabaseFile: Int64 = -1 
         static let didReadKeyFile: Int64 = -1 
         static let willDecryptDatabase: Int64 = 0
@@ -50,7 +46,8 @@ public class DatabaseLoader: ProgressObserver {
         static let willMakeBackup: Int64 = -1 
     }
     
-    weak var delegate: DatabaseLoaderDelegate?
+    public weak var delegate: DatabaseLoaderDelegate?
+    private let delegateQueue: DispatchQueue
     
     private let dbRef: URLReference
     private let compositeKey: CompositeKey
@@ -67,17 +64,22 @@ public class DatabaseLoader: ProgressObserver {
     
     private var startTime: Date?
     
-    init(
+    public init(
         dbRef: URLReference,
         compositeKey: CompositeKey,
-        progress: ProgressEx,
-        delegate: DatabaseLoaderDelegate)
-    {
+        delegate: DatabaseLoaderDelegate,
+        delegateQueue: DispatchQueue = .main
+    ) {
         assert(compositeKey.state != .empty)
         self.dbRef = dbRef
-        self.compositeKey = compositeKey
+        self.compositeKey = compositeKey.clone()
         self.delegate = delegate
+        self.delegateQueue = delegateQueue
         self.warnings = DatabaseLoadingWarnings()
+        
+        let progress = ProgressEx()
+        progress.totalUnitCount = ProgressSteps.all
+        progress.completedUnitCount = ProgressSteps.willStart
         super.init(progress: progress)
     }
     
@@ -122,18 +124,29 @@ public class DatabaseLoader: ProgressObserver {
     }
     
     
+    public func cancel(reason: ProgressEx.CancellationReason) {
+        progress.cancel(reason: reason)
+    }
+    
     override func progressDidChange(progress: ProgressEx) {
-        delegate?.databaseLoader(self, didChangeProgress: progress, for: dbRef)
+        notifyDidChangeProgress(progress)
     }
     
     
-    func load() {
+    public func load() {
+        operationQueue.addOperation { [self] in
+            self.loadInBackgroundQueue()
+        }
+    }
+    
+    private func loadInBackgroundQueue() {
+        assert(!Thread.isMainThread)
+        Diag.info("Will load database [fileProvider: \(dbRef.fileProvider?.rawValue ?? "nil")]")
         startBackgroundTask()
         startObservingProgress()
-        delegate?.databaseLoader(self, willLoadDatabase: dbRef)
-        Diag.info("Database file provider: \(dbRef.fileProvider?.localizedName ?? "nil")")
+        notifyWillLoadDatabase()
         progress.status = LString.Progress.contactingStorageProvider
-        dbRef.resolveAsync { result in 
+        dbRef.resolveAsync(callbackQueue: operationQueue) { result in 
             switch result {
             case .success(let dbURL):
                 self.onDatabaseURLResolved(url: dbURL, fileProvider: self.dbRef.fileProvider)
@@ -146,44 +159,42 @@ public class DatabaseLoader: ProgressObserver {
     private func onDatabaseURLResolveError(_ error: FileAccessError) {
         Diag.error("Failed to resolve database URL reference [error: \(error.localizedDescription)]")
         stopObservingProgress()
-        delegate?.databaseLoader(
-            self,
-            didFailLoading: dbRef,
+        notifyDidFailLoading(
             message: LString.Error.cannotFindDatabaseFile,
             reason: error.localizedDescription
         )
-        delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: nil)
         endBackgroundTask()
     }
     
     private func onDatabaseURLResolved(url: URL, fileProvider: FileProvider?) {
-        let dbDoc = DatabaseDocument(fileURL: url, fileProvider: fileProvider)
         progress.status = LString.Progress.loadingDatabaseFile
-        dbDoc.open(queue: operationQueue) { [weak self] (result) in
+        BaseDocument.read(url, queue: operationQueue, completionQueue: operationQueue) {
+            [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let docData):
-                self.onDatabaseDocumentOpened(dbDoc: dbDoc, data: docData)
+                self.onDatabaseDocumentReadComplete(data: docData, fileURL: url, fileProvider: fileProvider)
             case .failure(let fileAccessError):
                 Diag.error("Failed to open database document [error: \(fileAccessError.localizedDescription)]")
                 self.stopObservingProgress()
                 if self.progress.isCancelled {
-                    self.delegate?.databaseLoader(self, didCancelLoading: self.dbRef)
+                    self.notifyDidCancelLoading()
                 } else {
-                    self.delegate?.databaseLoader(
-                        self,
-                        didFailLoading: self.dbRef,
+                    self.notifyDidFailLoading(
                         message: LString.Error.cannotOpenDatabaseFile,
                         reason: fileAccessError.localizedDescription
                     )
                 }
-                self.delegate?.databaseLoaderDidFinish(self, for: self.dbRef, withResult: nil)
                 self.endBackgroundTask()
             }
         }
     }
     
-    private func onDatabaseDocumentOpened(dbDoc: DatabaseDocument, data: ByteArray) {
+    private func onDatabaseDocumentReadComplete(
+        data: ByteArray,
+        fileURL: URL,
+        fileProvider: FileProvider?
+    ) {
         progress.completedUnitCount = ProgressSteps.didReadDatabaseFile
         
         guard let db = initDatabase(signature: data) else {
@@ -195,31 +206,33 @@ public class DatabaseLoader: ProgressObserver {
             }
             stopObservingProgress()
             if progress.isCancelled {
-                delegate?.databaseLoader(self, didCancelLoading: dbRef)
+                self.notifyDidCancelLoading()
             } else {
-                delegate?.databaseLoader(
-                    self,
-                    didFailLoading: dbRef,
+                self.notifyDidFailLoading(
                     message: LString.Error.unrecognizedDatabaseFormat,
                     reason: nil
                 )
             }
-            delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: nil)
             endBackgroundTask()
             return
         }
         
-        dbDoc.database = db
+        let dbFile = DatabaseFile(
+            database: db,
+            data: data,
+            fileURL: fileURL,
+            fileReference: dbRef
+        )
         guard compositeKey.state == .rawComponents else {
             
             progress.completedUnitCount = ProgressSteps.didReadKeyFile
             Diag.info("Using a ready composite key")
-            onCompositeKeyComponentsProcessed(dbDoc: dbDoc, compositeKey: compositeKey)
+            onCompositeKeyComponentsProcessed(dbFile: dbFile, compositeKey: compositeKey)
             return
         }
         
         guard let keyFileRef = compositeKey.keyFileRef else {
-            onKeyFileDataReady(dbDoc: dbDoc, keyFileData: ByteArray())
+            onKeyFileDataReady(dbFile: dbFile, keyFileData: ByteArray())
             return
         }
         
@@ -231,7 +244,7 @@ public class DatabaseLoader: ProgressObserver {
                 self.onKeyFileURLResolved(
                     url: keyFileURL,
                     fileProvider: keyFileRef.fileProvider,
-                    dbDoc: dbDoc)
+                    dbFile: dbFile)
             case .failure(let accessError):
                 self.onKeyFileURLResolveError(accessError)
             }
@@ -242,65 +255,53 @@ public class DatabaseLoader: ProgressObserver {
         Diag.error("Failed to resolve key file URL reference [error: \(error.localizedDescription)]")
         stopObservingProgress()
         if progress.isCancelled {
-            delegate?.databaseLoader(self, didCancelLoading: dbRef)
+            notifyDidCancelLoading()
         } else {
-            delegate?.databaseLoader(
-                self,
-                didFailLoading: dbRef,
+            notifyDidFailLoading(
                 message: LString.Error.cannotFindKeyFile,
                 reason: error.localizedDescription
             )
         }
-        delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: nil)
         endBackgroundTask()
     }
     
-    private func onKeyFileURLResolved(url: URL, fileProvider: FileProvider?, dbDoc: DatabaseDocument) {
+    private func onKeyFileURLResolved(url: URL, fileProvider: FileProvider?, dbFile: DatabaseFile) {
         let keyDoc = BaseDocument(fileURL: url, fileProvider: fileProvider)
-        keyDoc.open(queue: operationQueue) { [weak self] result in
+        keyDoc.open(queue: operationQueue, completionQueue: operationQueue) {
+            [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let docData):
-                self.onKeyFileDataReady(dbDoc: dbDoc, keyFileData: docData)
+                self.onKeyFileDataReady(dbFile: dbFile, keyFileData: docData)
             case .failure(let fileAccessError):
                 Diag.error("Failed to open key file [error: \(fileAccessError.localizedDescription)]")
                 self.stopObservingProgress()
                 if self.progress.isCancelled {
-                    self.delegate?.databaseLoader(self, didCancelLoading: self.dbRef)
+                    self.notifyDidCancelLoading()
                 } else {
-                    self.delegate?.databaseLoader(
-                        self,
-                        didFailLoading: self.dbRef,
+                    self.notifyDidFailLoading(
                         message: LString.Error.cannotOpenKeyFile,
                         reason: fileAccessError.localizedDescription
                     )
                 }
-                self.delegate?.databaseLoaderDidFinish(self, for: self.dbRef, withResult: nil)
                 self.endBackgroundTask()
             }
         }
     }
     
-    private func onKeyFileDataReady(dbDoc: DatabaseDocument, keyFileData: ByteArray) {
-        guard let database = dbDoc.database else { fatalError() }
-        
+    private func onKeyFileDataReady(dbFile: DatabaseFile, keyFileData: ByteArray) {
         progress.completedUnitCount = ProgressSteps.didReadKeyFile
-        let keyHelper = database.keyHelper
+        let keyHelper = dbFile.database.keyHelper
         let passwordData = keyHelper.getPasswordData(password: compositeKey.password)
         if passwordData.isEmpty && keyFileData.isEmpty && compositeKey.challengeHandler == nil {
             Diag.error("Both password and key file are empty")
             stopObservingProgress()
-            delegate?.databaseLoader(
-                self,
-                didFailLoading: dbRef,
-                withInvalidMasterKeyMessage: LString.Error.needPasswordOrKeyFile
-            )
-            delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: nil)
+            notifyDidFailLoading(withInvalidMasterKeyMessage: LString.Error.needPasswordOrKeyFile)
             endBackgroundTask()
             return
         }
         compositeKey.setProcessedComponents(passwordData: passwordData, keyFileData: keyFileData)
-        onCompositeKeyComponentsProcessed(dbDoc: dbDoc, compositeKey: compositeKey)
+        onCompositeKeyComponentsProcessed(dbFile: dbFile, compositeKey: compositeKey)
     }
     
     private func addFileLocationWarnings(to warnings: DatabaseLoadingWarnings) {
@@ -323,47 +324,44 @@ public class DatabaseLoader: ProgressObserver {
         }
     }
     
-    func onCompositeKeyComponentsProcessed(dbDoc: DatabaseDocument, compositeKey: CompositeKey) {
+    func onCompositeKeyComponentsProcessed(dbFile: DatabaseFile, compositeKey: CompositeKey) {
         assert(compositeKey.state >= .processedComponents)
-        guard let db = dbDoc.database else { fatalError() }
         
         progress.completedUnitCount = ProgressSteps.willDecryptDatabase
         let remainingUnitCount = ProgressSteps.didDecryptDatabase - ProgressSteps.willDecryptDatabase
         do {
+            let db = dbFile.database
             progress.addChild(db.initProgress(), withPendingUnitCount: remainingUnitCount)
             Diag.info("Loading database")
             try db.load(
-                dbFileName: dbDoc.fileURL.lastPathComponent,
-                dbFileData: dbDoc.data,
+                dbFileName: dbFile.visibleFileName,
+                dbFileData: dbFile.data,
                 compositeKey: compositeKey,
                 warnings: warnings)
             Diag.info("Database loaded OK")
             
             let shouldUpdateBackup = Settings.current.isBackupDatabaseOnLoad
-                && DatabaseManager.shouldUpdateLatestBackup(for: dbRef)
+                && DatabaseManager.shouldBackupFiles(from: dbRef.location)
             if shouldUpdateBackup {
                 Diag.debug("Updating latest backup")
                 progress.completedUnitCount = ProgressSteps.willMakeBackup
                 progress.status = LString.Progress.makingDatabaseBackup
-                assert(dbRef.url != nil)
                 FileKeeper.shared.makeBackup(
-                    nameTemplate: dbRef.url?.lastPathComponent ?? "Backup",
+                    nameTemplate: dbFile.visibleFileName,
                     mode: .latest,
-                    contents: dbDoc.data)
+                    contents: dbFile.data)
             }
             
             addFileLocationWarnings(to: warnings)
 
             progress.completedUnitCount = ProgressSteps.all
             progress.localizedDescription = LString.Progress.done
-            delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: dbDoc)
             stopObservingProgress()
-            delegate?.databaseLoader(self, didLoadDatabase: dbRef, withWarnings: warnings)
+            notifyDidLoadDatabase(databaseFile: dbFile, warnings: warnings)
             endBackgroundTask()
             
         } catch let error as DatabaseError {
-            dbDoc.database = nil
-            dbDoc.close(completionHandler: nil)
+            dbFile.erase()
             switch error {
             case .loadError:
                 Diag.error("""
@@ -374,11 +372,9 @@ public class DatabaseLoader: ProgressObserver {
                     """)
                 stopObservingProgress()
                 if progress.isCancelled {
-                    delegate?.databaseLoader(self, didCancelLoading: dbRef)
+                    notifyDidCancelLoading()
                 } else {
-                    delegate?.databaseLoader(
-                        self,
-                        didFailLoading: dbRef,
+                    notifyDidFailLoading(
                         message: error.localizedDescription,
                         reason: error.failureReason
                     )
@@ -386,56 +382,104 @@ public class DatabaseLoader: ProgressObserver {
             case .invalidKey:
                 Diag.error("Invalid master key. [message: \(error.localizedDescription)]")
                 stopObservingProgress()
-                delegate?.databaseLoader(
-                    self,
-                    didFailLoading: dbRef,
-                    withInvalidMasterKeyMessage: error.localizedDescription
-                )
+                notifyDidFailLoading(withInvalidMasterKeyMessage: error.localizedDescription)
             case .saveError:
                 Diag.error("saveError while loading?!")
                 fatalError("Database saving error while loading?!")
             }
-            delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: nil)
             endBackgroundTask()
         } catch let error as ProgressInterruption {
-            dbDoc.database = nil
-            dbDoc.close(completionHandler: nil)
+            dbFile.erase()
             switch error {
             case .cancelled(let reason):
                 Diag.info("Database loading was cancelled. [reason: \(reason.localizedDescription)]")
                 stopObservingProgress()
                 switch reason {
                 case .userRequest:
-                    delegate?.databaseLoader(self, didCancelLoading: dbRef)
+                    notifyDidCancelLoading()
                 case .lowMemoryWarning:
-                    delegate?.databaseLoader(
-                        self,
-                        didFailLoading: dbRef,
+                    notifyDidFailLoading(
                         message: error.localizedDescription,
                         reason: nil
                     )
                 }
-                delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: nil)
                 endBackgroundTask()
             }
         } catch {
             assertionFailure("Unprocessed exception")
-            dbDoc.database = nil
-            dbDoc.close(completionHandler: nil)
+            dbFile.erase()
             Diag.error("Unexpected error [message: \(error.localizedDescription)]")
             stopObservingProgress()
             if progress.isCancelled {
-                delegate?.databaseLoader(self, didCancelLoading: dbRef)
+                notifyDidCancelLoading()
             } else {
-                delegate?.databaseLoader(
-                    self,
-                    didFailLoading: dbRef,
+                notifyDidFailLoading(
                     message: error.localizedDescription,
                     reason: nil
                 )
             }
-            delegate?.databaseLoaderDidFinish(self, for: dbRef, withResult: nil)
             endBackgroundTask()
+        }
+    }
+}
+
+extension DatabaseLoader {
+    private func notifyWillLoadDatabase() {
+        delegateQueue.async { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.databaseLoader(self, willLoadDatabase: self.dbRef)
+        }
+    }
+    
+    private func notifyDidChangeProgress(_ progress: ProgressEx) {
+        delegateQueue.async { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.databaseLoader(self, didChangeProgress: progress, for: self.dbRef)
+        }
+    }
+    
+    private func notifyDidCancelLoading() {
+        delegateQueue.async { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.databaseLoader(self, didCancelLoading: self.dbRef)
+        }
+    }
+    
+    private func notifyDidFailLoading(withInvalidMasterKeyMessage message: String) {
+        delegateQueue.async { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.databaseLoader(
+                self,
+                didFailLoading: self.dbRef,
+                withInvalidMasterKeyMessage: message
+            )
+        }
+    }
+
+    private func notifyDidFailLoading(message: String, reason: String?) {
+        delegateQueue.async { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.databaseLoader(
+                self,
+                didFailLoading: self.dbRef,
+                message: message,
+                reason: reason
+            )
+        }
+    }
+    
+    private func notifyDidLoadDatabase(
+        databaseFile: DatabaseFile,
+        warnings: DatabaseLoadingWarnings
+    ) {
+        delegateQueue.async { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.databaseLoader(
+                self,
+                didLoadDatabase: self.dbRef,
+                databaseFile: databaseFile,
+                withWarnings: warnings
+            )
         }
     }
 }

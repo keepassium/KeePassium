@@ -9,6 +9,13 @@
 import UIKit
 
 extension UIFont {
+    public func withWeight(_ weight: Weight) -> UIFont {
+        let traits = [UIFontDescriptor.TraitKey.weight: weight]
+        let attributes = [UIFontDescriptor.AttributeName.traits: traits]
+        let newDescriptor = fontDescriptor.addingAttributes(attributes)
+        return UIFont(descriptor: newDescriptor, size: 0) 
+    }
+    
     public func withRelativeSize(_ scale: CGFloat) -> UIFont {
         let scaledSize = pointSize * scale
         return self.withSize(scaledSize)

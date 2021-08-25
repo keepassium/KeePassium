@@ -10,23 +10,30 @@ import KeePassiumLib
 
 protocol DatabaseKeyChangerCoordinatorDelegate: AnyObject {
     func didChangeDatabaseKey(in coordinator: DatabaseKeyChangerCoordinator)
+    
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-final class DatabaseKeyChangerCoordinator: Coordinator, DatabaseSaving {
+final class DatabaseKeyChangerCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: DatabaseKeyChangerCoordinatorDelegate?
     
     private let router: NavigationRouter
     private let databaseKeyChangerVC: DatabaseKeyChangerVC
-    private let databaseRef: URLReference
     
-    var databaseExporterTemporaryURL: TemporaryFileURL?
+    private let databaseFile: DatabaseFile
+    private let database: Database
     
-    init(databaseRef: URLReference, router: NavigationRouter) {
+    var databaseSaver: DatabaseSaver?
+    var fileExportHelper: FileExportHelper?
+    var savingProgressHost: ProgressViewHost? { return router }
+    
+    init(databaseFile: DatabaseFile, router: NavigationRouter) {
         self.router = router
-        self.databaseRef = databaseRef
-        databaseKeyChangerVC = DatabaseKeyChangerVC.make(for: databaseRef)
+        self.databaseFile = databaseFile
+        self.database = databaseFile.database
+        databaseKeyChangerVC = DatabaseKeyChangerVC.make(for: databaseFile)
         databaseKeyChangerVC.delegate = self
     }
     
@@ -101,45 +108,32 @@ extension DatabaseKeyChangerCoordinator {
     }
     
     private func applyChangesAndSaveDatabase() {
-        guard let db = DatabaseManager.shared.database else {
-            assertionFailure()
-            return
-        }
-        
         let newPassword = databaseKeyChangerVC.password
         let newKeyFile = databaseKeyChangerVC.keyFileRef
         let newYubiKey = databaseKeyChangerVC.yubiKey
-        let _challengeHandler = ChallengeResponseManager.makeHandler(for: newYubiKey)
-        DatabaseManager.createCompositeKey(
-            keyHelper: db.keyHelper,
+        
+        database.keyHelper.createCompositeKey(
             password: newPassword,
             keyFile: newKeyFile,
-            challengeHandler: _challengeHandler,
-            success: {
-                [weak self] (_ newCompositeKey: CompositeKey) -> Void in
+            challengeHandler: ChallengeResponseManager.makeHandler(for: newYubiKey),
+            completion: { [weak self] result in
                 guard let self = self else { return }
-                let dbm = DatabaseManager.shared
-                dbm.changeCompositeKey(to: newCompositeKey)
-                DatabaseSettingsManager.shared.updateSettings(for: self.databaseRef) {
-                    (dbSettings) in
-                    dbSettings.maybeSetMasterKey(newCompositeKey)
-                    dbSettings.maybeSetAssociatedKeyFile(newKeyFile)
-                    dbSettings.maybeSetAssociatedYubiKey(newYubiKey)
+                switch result {
+                case .success(let newCompositeKey):
+                    self.database.changeCompositeKey(to: newCompositeKey)
+                    DatabaseSettingsManager.shared.updateSettings(for: self.databaseFile) {
+                        (dbSettings) in
+                        dbSettings.maybeSetMasterKey(newCompositeKey)
+                        dbSettings.maybeSetAssociatedKeyFile(newKeyFile)
+                        dbSettings.maybeSetAssociatedYubiKey(newYubiKey)
+                    }
+                    self.saveDatabase(self.databaseFile)
+                case .failure(let errorMessage):
+                    Diag.error("Failed to create new composite key [message: \(errorMessage)]")
+                    self.databaseKeyChangerVC.showErrorAlert(errorMessage, title: LString.titleError)
                 }
-                self.saveDatabase()
-            },
-            error: {
-                [weak self] (_ errorMessage: String) -> Void in
-                guard let self = self else { return }
-                Diag.error("Failed to create new composite key [message: \(errorMessage)]")
-                self.databaseKeyChangerVC.showErrorAlert(errorMessage, title: LString.titleError)
             }
         )
-    }
-    
-    private func saveDatabase() {
-        DatabaseManager.shared.addObserver(self)
-        DatabaseManager.shared.startSavingDatabase()
     }
 }
 
@@ -189,46 +183,27 @@ extension DatabaseKeyChangerCoordinator: HardwareKeyPickerCoordinatorDelegate {
     }
 }
 
-extension DatabaseKeyChangerCoordinator: DatabaseManagerObserver {
-    func databaseManager(willSaveDatabase urlRef: URLReference) {
-        router.showProgressView(title: LString.databaseStatusSaving, allowCancelling: false)
+extension DatabaseKeyChangerCoordinator: DatabaseSaving {
+    func canCancelSaving(databaseFile: DatabaseFile) -> Bool {
+        return false
     }
     
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        router.updateProgressView(with: progress)
-    }
-    
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        Diag.info("Master key change cancelled")
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-    }
-    
-    func databaseManager(didSaveDatabase urlRef: URLReference) {
+    func didSave(databaseFile: DatabaseFile) {
         Diag.info("Master key change saved")
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-        router.pop(animated: true, completion: { [self] in
+        router.pop(animated: true) { [self] in
             self.delegate?.didChangeDatabaseKey(in: self)
-        })
+        }
     }
     
-    func databaseManager(
-        database urlRef: URLReference,
-        savingError error: Error,
-        data: ByteArray?
-    ) {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-        
-        showDatabaseSavingError(
-            error,
-            fileName: urlRef.visibleFileName,
-            diagnosticsHandler: { [weak self] in
-                self?.showDiagnostics()
-            },
-            exportableData: data,
-            parent: databaseKeyChangerVC
-        )
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: newURL)
+    }
+    
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        return databaseKeyChangerVC
+    }
+    
+    func getDiagnosticsHandler() -> (() -> Void)? {
+        return showDiagnostics
     }
 }

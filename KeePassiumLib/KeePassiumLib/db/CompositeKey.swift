@@ -38,14 +38,14 @@ public class CompositeKey: Codable {
     internal private(set) var cipherKey: SecureByteArray?
     
     
-    init() {
+    public init() {
         self.password = ""
         self.keyFileRef = nil
         self.challengeHandler = nil
         state = .empty
     }
     
-    init(password: String, keyFileRef: URLReference?, challengeHandler: ChallengeHandler?) {
+    public init(password: String, keyFileRef: URLReference?, challengeHandler: ChallengeHandler?) {
         self.password = password
         self.keyFileRef = keyFileRef
         self.challengeHandler = challengeHandler
@@ -167,7 +167,7 @@ public class CompositeKey: Codable {
         state = .final
     }
     
-    func eraseFinalKeys() {
+    public func eraseFinalKeys() {
         guard state >= .final else { return }
         state = .combinedComponents
         cipherKey?.erase()

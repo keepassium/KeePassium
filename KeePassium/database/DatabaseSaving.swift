@@ -8,18 +8,152 @@
 
 import KeePassiumLib
 
-protocol DatabaseSaving: AnyObject {
-    var databaseExporterTemporaryURL: TemporaryFileURL? { get set }
+protocol DatabaseSaving: DatabaseSaverDelegate {
+    var fileExportHelper: FileExportHelper? { get set }
     
-    func exportDataAsFile(
-        _ data: ByteArray,
-        fileName: String,
-        parent viewController: UIViewController
-    )
+    var databaseSaver: DatabaseSaver? { get set }
+    var savingProgressHost: ProgressViewHost? { get }
+    
+    func saveDatabase(_ databaseFile: DatabaseFile)
+    
+    func willStartSaving(databaseFile: DatabaseFile)
+    func canCancelSaving(databaseFile: DatabaseFile) -> Bool
+    func didCancelSaving(databaseFile: DatabaseFile)
+    func didSave(databaseFile: DatabaseFile)
+    func didFailSaving(databaseFile: DatabaseFile)
+
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL)
+
+    func getDiagnosticsHandler() -> (()->Void)?
+    func getDatabaseSavingErrorParent() -> UIViewController
 }
 
 extension DatabaseSaving {
+    func saveDatabase(_ databaseFile: DatabaseFile) {
+        assert(databaseSaver == nil)
+        databaseSaver = DatabaseSaver(
+            databaseFile: databaseFile,
+            delegate: self)
+        databaseSaver!.save()
+    }
     
+    fileprivate func saveToAnotherFile(databaseFile: DatabaseFile) {
+        assert(databaseFile.data.count > 0, "Database content should be ready")
+        assert(fileExportHelper == nil)
+        assert(databaseSaver == nil, "Should be deallocated by caller")
+        fileExportHelper = FileExportHelper(
+            data: databaseFile.data,
+            fileName: databaseFile.fileURL.lastPathComponent)
+        fileExportHelper!.handler = { [weak self] newURL in
+            guard let self = self else { return }
+            self.fileExportHelper = nil
+            self.savingProgressHost?.hideProgressView(animated: true)
+            guard let newURL = newURL else { 
+                return
+            }
+            databaseFile.setData(databaseFile.data, updateHash: true)
+            self.didSave(databaseFile: databaseFile)
+            self.didRelocate(databaseFile: databaseFile, to: newURL)
+        }
+        fileExportHelper!.saveAs(presenter: getDatabaseSavingErrorParent())
+    }
+    
+    func databaseSaver(_ databaseSaver: DatabaseSaver, willSave databaseFile: DatabaseFile) {
+        willStartSaving(databaseFile: databaseFile)
+        savingProgressHost?.showProgressView(
+            title: LString.databaseStatusSaving,
+            allowCancelling: canCancelSaving(databaseFile: databaseFile),
+            animated: true
+        )
+    }
+    
+    func databaseSaver(
+        _ databaseSaver: DatabaseSaver,
+        didChangeProgress progress: ProgressEx,
+        for databaseFile: DatabaseFile
+    ) {
+        savingProgressHost?.updateProgressView(with: progress)
+    }
+    
+    func databaseSaver(
+        _ databaseSaver: DatabaseSaver,
+        didCancelSaving databaseFile: DatabaseFile
+    ) {
+        self.databaseSaver = nil
+        savingProgressHost?.hideProgressView(animated: true)
+        didCancelSaving(databaseFile: databaseFile)
+    }
+    
+    func databaseSaverResolveConflict(
+        _ databaseSaver: DatabaseSaver,
+        local: DatabaseFile,
+        remoteURL: URL,
+        remoteData: ByteArray,
+        completion: @escaping ((ByteArray?) -> Void)
+    ) {
+        let alert = SyncConflictAlert.instantiateFromStoryboard()
+        alert.responseHandler = { [weak self, completion] strategy in
+            guard let self = self else { return }
+            switch strategy {
+            case .cancelSaving:
+                completion(nil)
+                self.databaseSaver(databaseSaver, didCancelSaving: local)
+            case .overwriteRemote:
+                completion(local.data)
+            case .merge:
+                assertionFailure("Not implemented")
+                completion(nil)
+                self.databaseSaver = nil
+            case .saveAs:
+                completion(nil)
+                self.databaseSaver = nil
+                self.saveToAnotherFile(databaseFile: local) 
+            }
+        }
+        
+        let viewController = getDatabaseSavingErrorParent()
+        viewController.present(alert, animated: true, completion: nil)
+    }
+
+    func databaseSaver(
+        _ databaseSaver: DatabaseSaver,
+        didSave databaseFile: DatabaseFile
+    ) {
+        self.databaseSaver = nil
+        savingProgressHost?.hideProgressView(animated: true)
+        didSave(databaseFile: databaseFile)
+    }
+    
+    func databaseSaver(
+        _ databaseSaver: DatabaseSaver,
+        didFailSaving databaseFile: DatabaseFile,
+        with error: Error
+    ) {
+        self.databaseSaver = nil
+        savingProgressHost?.hideProgressView(animated: true)
+        
+        showDatabaseSavingError(
+            error,
+            fileName: databaseFile.visibleFileName,
+            databaseFile: databaseFile,
+            diagnosticsHandler: getDiagnosticsHandler(),
+            parent: getDatabaseSavingErrorParent()
+        )
+    }
+}
+
+extension DatabaseSaving {
+    func willStartSaving(databaseFile: DatabaseFile) { }
+    func canCancelSaving(databaseFile: DatabaseFile) -> Bool { return true }
+    func didCancelSaving(databaseFile: DatabaseFile) { }
+    func didSave(databaseFile: DatabaseFile) { }
+    func didFailSaving(databaseFile: DatabaseFile) { }
+    func getDiagnosticsHandler() -> (()->Void)? {
+        return nil
+    }
+}
+
+extension DatabaseSaving {
     private func getErrorDetails(_ error: Error) -> String? {
         guard let localizedError = error as? LocalizedError else {
             return nil
@@ -32,52 +166,32 @@ extension DatabaseSaving {
     func showDatabaseSavingError(
         _ error: Error,
         fileName: String,
+        databaseFile: DatabaseFile,
         diagnosticsHandler: (()->Void)?,
-        exportableData: ByteArray?,
         parent viewController: UIViewController
     ) {
         StoreReviewSuggester.registerEvent(.trouble)
-        
-        let errorAlert = UIAlertController.make(
+        let errorAlert = UIAlertController.init(
             title: error.localizedDescription,
             message: getErrorDetails(error),
-            dismissButtonTitle: LString.actionDismiss)
+            preferredStyle: .alert
+        )
         if let diagnosticsHandler = diagnosticsHandler {
-            errorAlert.addAction(title: LString.actionShowDetails, style: .default) { _ in
+            errorAlert.addAction(title: LString.actionShowDetails, style: .default) {
+                [weak self] _ in
+                self?.didFailSaving(databaseFile: databaseFile)
                 diagnosticsHandler()
             }
         }
-        if let data = exportableData {
-            errorAlert.addAction(title: LString.actionExport, style: .default) {
-                [weak self, weak viewController] _ in
-                guard let viewController = viewController else { return }
-                self?.exportDataAsFile(data, fileName: fileName, parent: viewController)
+        if databaseFile.data.count > 0 {
+            errorAlert.addAction(title: LString.actionFileSaveAs, style: .default) {
+                [weak self] _ in
+                self?.saveToAnotherFile(databaseFile: databaseFile) 
             }
+        }
+        errorAlert.addAction(title: LString.actionCancel, style: .cancel) { [weak self] _ in
+            self?.didFailSaving(databaseFile: databaseFile)
         }
         viewController.present(errorAlert, animated: true, completion: nil)
-    }
-    
-    func exportDataAsFile(
-        _ data: ByteArray,
-        fileName: String,
-        parent viewController: UIViewController
-    ) {
-        assert(databaseExporterTemporaryURL == nil)
-        do {
-            let tmpURL = try TemporaryFileURL(fileName: fileName)
-            databaseExporterTemporaryURL = tmpURL
-            try data.write(to: tmpURL.url, options: .completeFileProtection)
-            let popoverAnchor = PopoverAnchor(
-                sourceView: viewController.view,
-                sourceRect: viewController.view.bounds
-            )
-            FileExportHelper.showFileExportSheet(tmpURL.url, at: popoverAnchor, parent: viewController) {
-                [weak self] (_, _, _, _) in
-                self?.databaseExporterTemporaryURL = nil
-            }
-        } catch {
-            Diag.error("Failed to save temporary file [message: \(error.localizedDescription)")
-            databaseExporterTemporaryURL = nil
-        }
     }
 }

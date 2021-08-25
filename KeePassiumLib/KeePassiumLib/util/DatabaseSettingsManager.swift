@@ -14,82 +14,56 @@ public class DatabaseSettingsManager {
     init() {
     }
     
+    public func getSettings(for databaseFile: DatabaseFile) -> DatabaseSettings? {
+        return getSettings(for: databaseFile.descriptor)
+    }
+    
     public func getSettings(for databaseRef: URLReference) -> DatabaseSettings? {
-        guard let databaseDescriptor = databaseRef.getDescriptor() else {
-            Diag.warning("Cannot get database descriptor")
-            return nil
-        }
+        return getSettings(for: databaseRef.getDescriptor())
+    }
+    
+    public func getOrMakeSettings(for databaseFile: DatabaseFile) -> DatabaseSettings {
+        return getOrMakeSettings(for: databaseFile.descriptor)
+    }
 
-        do {
-            if let dbSettings = try Keychain.shared.getDatabaseSettings(for: databaseDescriptor) { 
-                return dbSettings
-            }
-            return nil
-        } catch {
-            Diag.warning(error.localizedDescription)
-            return nil
-        }
-    }
-    
     public func getOrMakeSettings(for databaseRef: URLReference) -> DatabaseSettings {
-        if let storedSettings = getSettings(for: databaseRef) {
-            return storedSettings
-        }
-        let defaultResult = DatabaseSettings(for: databaseRef)
-        return defaultResult
+        return getOrMakeSettings(for: databaseRef.getDescriptor())
     }
-    
+
+    public func setSettings(_ dbSettings: DatabaseSettings, for databaseFile: DatabaseFile) {
+        setSettings(dbSettings, for: databaseFile.descriptor)
+    }
+
     public func setSettings(_ dbSettings: DatabaseSettings, for databaseRef: URLReference) {
-        guard let databaseDescriptor = databaseRef.getDescriptor() else {
-            Diag.warning("Cannot get database descriptor")
-            return
-        }
-        
-        do {
-            try Keychain.shared.setDatabaseSettings(dbSettings, for: databaseDescriptor) 
-        } catch {
-            Diag.error(error.localizedDescription)
-        }
+        setSettings(dbSettings, for: databaseRef.getDescriptor())
     }
-    
+
+    public func updateSettings(for databaseFile: DatabaseFile, updater: (DatabaseSettings) -> Void) {
+        updateSettings(for: databaseFile.descriptor, updater: updater)
+    }
+
     public func updateSettings(for databaseRef: URLReference, updater: (DatabaseSettings) -> Void) {
-        let dbSettings = getOrMakeSettings(for: databaseRef)
-        updater(dbSettings)
-        setSettings(dbSettings, for: databaseRef)
+        updateSettings(for: databaseRef.getDescriptor(), updater: updater)
     }
-    
+
+    public func removeSettings(for databaseFile: DatabaseFile, onlyIfUnused: Bool) {
+        removeSettings(for: databaseFile.descriptor, onlyIfUnused: onlyIfUnused)
+    }
+
     public func removeSettings(for databaseRef: URLReference, onlyIfUnused: Bool) {
-        guard let databaseDescriptor = databaseRef.getDescriptor() else {
-            Diag.warning("Cannot get database descriptor")
-            return
-        }
-        
-        if onlyIfUnused {
-            let allDatabaseDescriptors = FileKeeper.shared.getAllReferences(
-                fileType: .database,
-                includeBackup: true)
-                .map { $0.getDescriptor() }
-            if allDatabaseDescriptors.contains(databaseDescriptor) {
-                return
-            }
-        }
-        
-        do {
-            try Keychain.shared.removeDatabaseSettings(for: databaseDescriptor)
-        } catch {
-            Diag.error(error.localizedDescription)
-        }
+        removeSettings(for: databaseRef.getDescriptor(), onlyIfUnused: onlyIfUnused)
     }
-    
+
     public func forgetAllKeyFiles() {
         let allDatabaseRefs = FileKeeper.shared.getAllReferences(
             fileType: .database,
             includeBackup: true
         )
         for dbRef in allDatabaseRefs {
-            guard let dbSettings = getSettings(for: dbRef) else { continue }
+            let dbDescriptor = dbRef.getDescriptor()
+            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
             dbSettings.setAssociatedKeyFile(nil)
-            setSettings(dbSettings, for: dbRef)
+            setSettings(dbSettings, for: dbDescriptor)
         }
     }
     
@@ -99,9 +73,10 @@ public class DatabaseSettingsManager {
             includeBackup: true
         )
         for dbRef in allDatabaseRefs {
-            guard let dbSettings = getSettings(for: dbRef) else { continue }
+            let dbDescriptor = dbRef.getDescriptor()
+            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
             dbSettings.setAssociatedYubiKey(nil)
-            setSettings(dbSettings, for: dbRef)
+            setSettings(dbSettings, for: dbDescriptor)
         }
     }
 
@@ -113,12 +88,13 @@ public class DatabaseSettingsManager {
         )
         
         for dbRef in allDatabaseRefs {
-            guard let dbSettings = getSettings(for: dbRef) else { continue }
+            let dbDescriptor = dbRef.getDescriptor()
+            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
             if let associatedKeyFile = dbSettings.associatedKeyFile,
-                associatedKeyFile.getDescriptor() == keyFileDescriptor
+               associatedKeyFile.getDescriptor() == keyFileDescriptor
             {
                 dbSettings.setAssociatedKeyFile(nil)
-                setSettings(dbSettings, for: dbRef)
+                setSettings(dbSettings, for: dbDescriptor)
             }
         }
     }
@@ -129,9 +105,10 @@ public class DatabaseSettingsManager {
             includeBackup: true
         )
         for dbRef in allDatabaseRefs {
-            guard let dbSettings = getSettings(for: dbRef) else { continue }
+            let dbDescriptor = dbRef.getDescriptor()
+            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
             dbSettings.clearMasterKey()
-            setSettings(dbSettings, for: dbRef)
+            setSettings(dbSettings, for: dbDescriptor)
         }
     }
     
@@ -141,9 +118,85 @@ public class DatabaseSettingsManager {
             includeBackup: true
         )
         for dbRef in allDatabaseRefs {
-            guard let dbSettings = getSettings(for: dbRef) else { continue }
+            let dbDescriptor = dbRef.getDescriptor()
+            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
             dbSettings.clearFinalKey()
-            setSettings(dbSettings, for: dbRef)
+            setSettings(dbSettings, for: dbDescriptor)
+        }
+    }
+    
+    
+    private func getSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings? {
+        guard let descriptor = descriptor else {
+            Diag.warning("Cannot get database descriptor")
+            assertionFailure()
+            return nil
+        }
+        do {
+            if let dbSettings = try Keychain.shared.getDatabaseSettings(for: descriptor) { 
+                return dbSettings
+            }
+            return nil
+        } catch {
+            Diag.warning(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    private func getOrMakeSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings {
+        guard let descriptor = descriptor else {
+            Diag.warning("Cannot get database descriptor")
+            assertionFailure()
+            return DatabaseSettings()
+        }
+        if let storedSettings = getSettings(for: descriptor) {
+            return storedSettings
+        }
+        let defaultResult = DatabaseSettings()
+        return defaultResult
+    }
+    
+    private func setSettings(_ dbSettings: DatabaseSettings, for descriptor: URLReference.Descriptor?) {
+        guard let descriptor = descriptor else {
+            Diag.warning("Cannot get database descriptor")
+            assertionFailure()
+            return
+        }
+        
+        do {
+            try Keychain.shared.setDatabaseSettings(dbSettings, for: descriptor) 
+        } catch {
+            Diag.error(error.localizedDescription)
+        }
+    }
+    
+    private func updateSettings(for descriptor: URLReference.Descriptor?, updater: (DatabaseSettings) -> Void) {
+        let dbSettings = getOrMakeSettings(for: descriptor)
+        updater(dbSettings)
+        setSettings(dbSettings, for: descriptor)
+    }
+    
+    private func removeSettings(for descriptor: URLReference.Descriptor?, onlyIfUnused: Bool) {
+        guard let descriptor = descriptor else {
+            Diag.warning("Cannot get database descriptor")
+            assertionFailure()
+            return
+        }
+        
+        if onlyIfUnused {
+            let allDatabaseDescriptors = FileKeeper.shared.getAllReferences(
+                fileType: .database,
+                includeBackup: true)
+                .map { $0.getDescriptor() }
+            if allDatabaseDescriptors.contains(descriptor) {
+                return
+            }
+        }
+        
+        do {
+            try Keychain.shared.removeDatabaseSettings(for: descriptor)
+        } catch {
+            Diag.error(error.localizedDescription)
         }
     }
 }

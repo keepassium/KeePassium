@@ -16,8 +16,6 @@ public class DatabaseSettings: Eraseable, Codable {
         case readWrite = 0
     }
 
-    public let databaseRef: URLReference
-    
     public var accessMode: AccessMode
     
     public var isRememberMasterKey: Bool?
@@ -32,7 +30,6 @@ public class DatabaseSettings: Eraseable, Codable {
     public private(set) var associatedYubiKey: YubiKey?
 
     private enum CodingKeys: String, CodingKey {
-        case databaseRef
         case accessMode
         case isRememberMasterKey
         case isRememberFinalKey
@@ -43,8 +40,7 @@ public class DatabaseSettings: Eraseable, Codable {
         case associatedYubiKey
     }
     
-    init(for databaseRef: URLReference) {
-        self.databaseRef = databaseRef
+    init() {
         accessMode = AccessMode.default
     }
     

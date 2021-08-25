@@ -74,33 +74,6 @@ class FileInfoVC: UITableViewController {
 
     private var dismissablePopoverDelegate = DismissablePopover()
     
-    private enum FieldTitle {
-        static let fileName = NSLocalizedString(
-            "[FileInfo/Field/title] File Name",
-            value: "File Name",
-            comment: "Field title")
-        static let error = NSLocalizedString(
-            "[FileInfo/Field/valueError] Error",
-            value: "Error",
-            comment: "Title of a field with an error message")
-        static let fileLocation = NSLocalizedString(
-            "[FileInfo/Field/title] File Location",
-            value: "File Location",
-            comment: "Field title")
-        static let fileSize = NSLocalizedString(
-            "[FileInfo/Field/title] File Size",
-            value: "File Size",
-            comment: "Field title")
-        static let creationDate = NSLocalizedString(
-            "[FileInfo/Field/title] Creation Date",
-            value: "Creation Date",
-            comment: "Field title")
-        static let modificationDate = NSLocalizedString(
-            "[FileInfo/Field/title] Last Modification Date",
-            value: "Last Modification Date",
-            comment: "Field title")
-    }
-    
     public static func make(
         urlRef: URLReference,
         fileType: FileType,
@@ -210,7 +183,7 @@ class FileInfoVC: UITableViewController {
                 self.updateDynamicFields(from: fileInfo)
             case .failure(let accessError):
                 self.fields.append((
-                    FieldTitle.error,
+                    LString.fileInfoFieldError,
                     accessError.localizedDescription
                 ))
             }
@@ -243,8 +216,8 @@ class FileInfoVC: UITableViewController {
             fields.append(("", ""))
             fields.append(("", ""))
         }
-        fields[0] = ((FieldTitle.fileName, urlRef.visibleFileName))
-        fields[1] = ((FieldTitle.fileLocation, getFileLocationDescription()))
+        fields[0] = ((LString.fileInfoFieldFileName, urlRef.visibleFileName))
+        fields[1] = ((LString.fileInfoFieldFileLocation, getFileLocationDescription()))
     }
     
     private func getFileLocationDescription() -> String {
@@ -271,13 +244,13 @@ class FileInfoVC: UITableViewController {
     private func updateDynamicFields(from fileInfo: FileInfo) {
         if let fileSize = fileInfo.fileSize {
             fields.append((
-                FieldTitle.fileSize,
+                LString.fileInfoFieldFileSize,
                 ByteCountFormatter.string(fromByteCount: fileSize, countStyle: .file)
             ))
         }
         if let creationDate = fileInfo.creationDate {
             fields.append((
-                FieldTitle.creationDate,
+                LString.fileInfoFieldCreationDate,
                 DateFormatter.localizedString(
                     from: creationDate,
                     dateStyle: .medium,
@@ -286,7 +259,7 @@ class FileInfoVC: UITableViewController {
         }
         if let modificationDate = fileInfo.modificationDate {
             fields.append((
-                FieldTitle.modificationDate,
+                LString.fileInfoFieldModificationDate,
                 DateFormatter.localizedString(
                     from: modificationDate,
                     dateStyle: .medium,
@@ -413,4 +386,31 @@ extension FileInfoVC: FileInfoSwitchCellDelegate {
             self.refresh()
         }
     }
+}
+
+extension LString {
+    static let fileInfoFieldFileName = NSLocalizedString(
+        "[FileInfo/Field/title] File Name",
+        value: "File Name",
+        comment: "Field title")
+    static let fileInfoFieldError = NSLocalizedString(
+        "[FileInfo/Field/valueError] Error",
+        value: "Error",
+        comment: "Title of a field with an error message")
+    static let fileInfoFieldFileLocation = NSLocalizedString(
+        "[FileInfo/Field/title] File Location",
+        value: "File Location",
+        comment: "Field title")
+    static let fileInfoFieldFileSize = NSLocalizedString(
+        "[FileInfo/Field/title] File Size",
+        value: "File Size",
+        comment: "Field title")
+    static let fileInfoFieldCreationDate = NSLocalizedString(
+        "[FileInfo/Field/title] Creation Date",
+        value: "Creation Date",
+        comment: "Field title")
+    static let fileInfoFieldModificationDate = NSLocalizedString(
+        "[FileInfo/Field/title] Last Modification Date",
+        value: "Last Modification Date",
+        comment: "Field title")
 }

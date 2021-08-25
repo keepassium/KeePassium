@@ -10,15 +10,18 @@ import KeePassiumLib
 
 protocol EntryFieldEditorCoordinatorDelegate: AnyObject {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator)
+    
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-final class EntryFieldEditorCoordinator: Coordinator, DatabaseSaving {
+final class EntryFieldEditorCoordinator: Coordinator {
     private typealias RollbackRoutine = () -> Void
     
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: EntryFieldEditorCoordinatorDelegate?
     
+    private let databaseFile: DatabaseFile
     private let database: Database
     private let parent: Group 
     private let originalEntry: Entry? 
@@ -42,11 +45,14 @@ final class EntryFieldEditorCoordinator: Coordinator, DatabaseSaving {
         }
     }
     
-    internal var databaseExporterTemporaryURL: TemporaryFileURL?
-        
-    init(router: NavigationRouter, database: Database, parent: Group, target: Entry?) {
+    var databaseSaver: DatabaseSaver?
+    var fileExportHelper: FileExportHelper?
+    var savingProgressHost: ProgressViewHost? { return router }
+    
+    init(router: NavigationRouter, databaseFile: DatabaseFile, parent: Group, target: Entry?) {
         self.router = router
-        self.database = database
+        self.databaseFile = databaseFile
+        self.database = databaseFile.database
         self.parent = parent
         self.originalEntry = target
         
@@ -117,10 +123,7 @@ final class EntryFieldEditorCoordinator: Coordinator, DatabaseSaving {
                 self.parent.remove(entry: self.entry)
             }
         }
-        
-        let databaseManager = DatabaseManager.shared
-        databaseManager.addObserver(self)
-        databaseManager.startSavingDatabase()
+        saveDatabase(databaseFile)
     }
     
     private func setOTPCode(data: String) {
@@ -188,7 +191,10 @@ final class EntryFieldEditorCoordinator: Coordinator, DatabaseSaving {
     }
     
     func showIconPicker(at popoverAnchor: PopoverAnchor) {
-        let iconPickerCoordinator = ItemIconPickerCoordinator(router: router, database: database)
+        let iconPickerCoordinator = ItemIconPickerCoordinator(
+            router: router,
+            databaseFile: databaseFile
+        )
         iconPickerCoordinator.item = entry
         iconPickerCoordinator.dismissHandler = { [weak self] (coordinator) in
             self?.removeChildCoordinator(coordinator)
@@ -318,6 +324,10 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
 }
 
 extension EntryFieldEditorCoordinator: ItemIconPickerCoordinatorDelegate {
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: url)
+    }
+    
     func didSelectIcon(standardIcon: IconID, in coordinator: ItemIconPickerCoordinator) {
         entry.iconID = standardIcon
         if let entry2 = entry as? Entry2 {
@@ -350,54 +360,37 @@ extension EntryFieldEditorCoordinator: ItemIconPickerCoordinatorDelegate {
     }
 }
 
-extension EntryFieldEditorCoordinator: DatabaseManagerObserver {
-    func databaseManager(willSaveDatabase urlRef: URLReference) {
-        router.showProgressView(title: LString.databaseStatusSaving, allowCancelling: true)
-    }
-    
-    func databaseManager(progressDidChange progress: ProgressEx) {
-        router.updateProgressView(with: progress)
-    }
-    
-    func databaseManager(database urlRef: URLReference, isCancelled: Bool) {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
+extension EntryFieldEditorCoordinator: DatabaseSaving {
+    func didCancelSaving(databaseFile: DatabaseFile) {
         rollbackPreSaveActions?()
         rollbackPreSaveActions = nil
     }
     
-    func databaseManager(didSaveDatabase urlRef: URLReference) {
-        DatabaseManager.shared.removeObserver(self)
+    func didSave(databaseFile: DatabaseFile) {
         isModified = false
 
         let changedEntry = originalEntry ?? entry
         delegate?.didUpdateEntry(changedEntry, in: self)
         EntryChangeNotifications.post(entryDidChange: changedEntry)
 
-        router.hideProgressView()
         router.pop(animated: true)
     }
     
-    func databaseManager(
-        database urlRef: URLReference,
-        savingError error: Error,
-        data: ByteArray?)
-    {
-        DatabaseManager.shared.removeObserver(self)
-        router.hideProgressView()
-        
+    func didFailSaving(databaseFile: DatabaseFile) {
         rollbackPreSaveActions?()
         rollbackPreSaveActions = nil
-        
-        showDatabaseSavingError(
-            error,
-            fileName: urlRef.visibleFileName,
-            diagnosticsHandler: { [weak self] in
-                self?.showDiagnostics()
-            },
-            exportableData: data,
-            parent: fieldEditorVC
-        )
+    }
+    
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: newURL)
+    }
+    
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        return fieldEditorVC
+    }
+    
+    func getDiagnosticsHandler() -> (() -> Void)? {
+        return showDiagnostics
     }
 }
 

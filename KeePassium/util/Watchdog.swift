@@ -18,7 +18,7 @@ protocol WatchdogDelegate: AnyObject {
     func showAppLock(_ sender: Watchdog)
     func hideAppLock(_ sender: Watchdog)
 
-    func watchdogDidCloseDatabase(_ sender: Watchdog, animate: Bool)
+    func mustCloseDatabase(_ sender: Watchdog, animate: Bool)
 }
 
 fileprivate extension WatchdogDelegate {
@@ -234,16 +234,11 @@ class Watchdog {
         if isLockDatabases {
             DatabaseSettingsManager.shared.eraseAllMasterKeys()
         }
-        DatabaseManager.shared.closeDatabase(
-            clearStoredKey: isLockDatabases,
-            ignoreErrors: true,
-            completion: { 
-                (errorMessage) in 
-                self.delegate?.watchdogDidCloseDatabase(self, animate: animate)
-                NotificationCenter.default.post(
-                    name: Watchdog.Notifications.databaseLockDidEngage,
-                    object: self)
-            })
+        delegate?.mustCloseDatabase(self, animate: animate)
+        NotificationCenter.default.post(
+            name: Watchdog.Notifications.databaseLockDidEngage,
+            object: self
+        )
     }
     
     open func unlockApp() {

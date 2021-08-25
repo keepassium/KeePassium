@@ -90,6 +90,11 @@ extension LString {
         value: "Create",
         comment: "Action/button to create an item (entry, group, file — depending on context)"
     )
+    public static let actionFileSaveAs = NSLocalizedString(
+        "[Generic/File/Save as]",
+        value: "Save as…",
+        comment: "Action/button to save data to a different file"
+    )
     public static let actionShowMore = NSLocalizedString(
         "[Generic] Show more",
         value: "Show more",

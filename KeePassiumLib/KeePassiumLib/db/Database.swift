@@ -90,9 +90,7 @@ public class DatabaseLoadingWarnings {
     }
 }
 
-open class Database: Eraseable {
-    var filePath: String?
-    
+open class Database: Eraseable {    
     public internal(set) var root: Group?
 
     public internal(set) var progress = ProgressEx()
@@ -118,7 +116,6 @@ open class Database: Eraseable {
     public func erase() {
         root?.erase()
         root = nil
-        filePath?.erase()
         compositeKey.erase()
     }
 

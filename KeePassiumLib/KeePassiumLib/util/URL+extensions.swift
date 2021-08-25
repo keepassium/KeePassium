@@ -62,4 +62,48 @@ public extension URL {
         let isDirectory = self.isDirectory
         return self.deletingLastPathComponent().appendingPathComponent("_redacted_", isDirectory: isDirectory)
     }
+    
+    func readFileInfo(
+        canUseCache: Bool,
+        completionQueue: OperationQueue = .main,
+        completion: @escaping ((Result<FileInfo, FileAccessError>) -> Void)
+    ) {
+        assert(!Thread.isMainThread)
+        assert(self.isFileURL)
+        let attributeKeys: Set<URLResourceKey> = [
+            .fileSizeKey,
+            .creationDateKey,
+            .contentModificationDateKey,
+            .isExcludedFromBackupKey,
+            .ubiquitousItemDownloadingStatusKey,
+        ]
+
+        var targetURL = self
+        if !canUseCache {
+            targetURL.removeAllCachedResourceValues()
+        }
+        
+        let attributes: URLResourceValues
+        do {
+            attributes = try targetURL.resourceValues(forKeys: attributeKeys)
+        } catch {
+            Diag.error("Failed to get file info [reason: \(error.localizedDescription)]")
+            let fileAccessError = FileAccessError.systemError(error)
+            completionQueue.addOperation {
+                completion(.failure(fileAccessError))
+            }
+            return
+        }
+        
+        let latestInfo = FileInfo(
+            fileName: targetURL.lastPathComponent,
+            fileSize: Int64(attributes.fileSize ?? -1),
+            creationDate: attributes.creationDate,
+            modificationDate: attributes.contentModificationDate,
+            isExcludedFromBackup: attributes.isExcludedFromBackup ?? false,
+            isInTrash: self.isInTrashDirectory)
+        completionQueue.addOperation {
+            completion(.success(latestInfo))
+        }
+    }
 }

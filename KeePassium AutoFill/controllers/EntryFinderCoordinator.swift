@@ -22,8 +22,8 @@ final class EntryFinderCoordinator: Coordinator {
     private let router: NavigationRouter
     private let entryFinderVC: EntryFinderVC
     
+    private let databaseFile: DatabaseFile
     private let database: Database
-    private let databaseRef: URLReference
     private let loadingWarnings: DatabaseLoadingWarnings?
     
     private var shouldAutoSelectFirstMatch: Bool = false
@@ -32,21 +32,20 @@ final class EntryFinderCoordinator: Coordinator {
     
     init(
         router: NavigationRouter,
-        database: Database,
-        databaseRef: URLReference,
+        databaseFile: DatabaseFile,
         loadingWarnings: DatabaseLoadingWarnings?,
         serviceIdentifiers: [ASCredentialServiceIdentifier]
     ) {
         self.router = router
-        self.database = database
-        self.databaseRef = databaseRef
+        self.databaseFile = databaseFile
+        self.database = databaseFile.database
         self.loadingWarnings = loadingWarnings
         self.serviceIdentifiers = serviceIdentifiers
 
         entryFinderVC = EntryFinderVC.instantiateFromStoryboard()
         entryFinderVC.delegate = self
         
-        entryFinderVC.navigationItem.title = databaseRef.visibleFileName
+        entryFinderVC.navigationItem.title = databaseFile.visibleFileName
     }
     
     deinit {
@@ -79,8 +78,8 @@ final class EntryFinderCoordinator: Coordinator {
 
 extension EntryFinderCoordinator {
     public func lockDatabase() {
-        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { databaseSettings in
-            databaseSettings.clearMasterKey()
+        DatabaseSettingsManager.shared.updateSettings(for: databaseFile) {
+            $0.clearMasterKey()
         }
         router.pop(viewController: entryFinderVC, animated: true)
         Diag.info("Database locked")

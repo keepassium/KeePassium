@@ -32,19 +32,19 @@ final class DatabaseKeyChangerVC: UIViewController {
     internal var password: String { return passwordField.text ?? ""}
     internal private(set) var keyFileRef: URLReference?
     internal private(set) var yubiKey: YubiKey?
-    private var databaseRef: URLReference!
+    private var databaseFile: DatabaseFile!
 
-    static func make(for databaseRef: URLReference) -> DatabaseKeyChangerVC {
+    static func make(for databaseFile: DatabaseFile) -> DatabaseKeyChangerVC {
         let vc = DatabaseKeyChangerVC.instantiateFromStoryboard()
-        vc.databaseRef = databaseRef
+        vc.databaseFile = databaseFile
         return vc
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        databaseNameLabel.text = databaseRef.visibleFileName
-        databaseIcon.image = databaseRef.getIcon(fileType: .database)
+        databaseNameLabel.text = databaseFile.visibleFileName
+        databaseIcon.image = databaseFile.getIcon()
         
         passwordField.invalidBackgroundColor = nil
         repeatPasswordField.invalidBackgroundColor = nil
