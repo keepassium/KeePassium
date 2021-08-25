@@ -98,6 +98,10 @@ final class MainCoordinator: Coordinator {
         let isAutoUnlockStartupDatabase = Settings.current.isAutoUnlockStartupDatabase
         databasePickerCoordinator.shouldSelectDefaultDatabase = isAutoUnlockStartupDatabase
     }
+    
+    private func getPresenterForModals() -> UIViewController {
+        return rootSplitVC.presentedViewController ?? rootSplitVC
+    }
 }
 
 extension MainCoordinator {
@@ -127,11 +131,14 @@ extension MainCoordinator {
             url: url,
             fileType: nil, 
             mode: openInPlace ? .openInPlace : .import,
-            success: { _ in
-            },
-            error: { [weak self] fileKeeperError in
-                Diag.error(fileKeeperError.localizedDescription)
-                self?.rootSplitVC.showErrorAlert(fileKeeperError)
+            completion: { [weak self] result in
+                switch result {
+                case .success(_):
+                    break
+                case .failure(let fileKeeperError):
+                    Diag.error(fileKeeperError.localizedDescription)
+                    self?.getPresenterForModals().showErrorAlert(fileKeeperError)
+                }
             }
         )
     }
@@ -577,30 +584,27 @@ extension MainCoordinator: FileKeeperDelegate {
         target: URL,
         handler: @escaping (FileKeeper.ConflictResolution) -> Void
     ) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            let fileName = target.lastPathComponent
-            let choiceAlert = UIAlertController(
-                title: fileName,
-                message: LString.fileAlreadyExists,
-                preferredStyle: .alert)
-            let actionOverwrite = UIAlertAction(title: LString.actionOverwrite, style: .destructive) {
-                (action) in
-                handler(.overwrite)
-            }
-            let actionRename = UIAlertAction(title: LString.actionRename, style: .default) { (action) in
-                handler(.rename)
-            }
-            let actionAbort = UIAlertAction(title: LString.actionCancel, style: .cancel) { (action) in
-                handler(.abort)
-            }
-            choiceAlert.addAction(actionOverwrite)
-            choiceAlert.addAction(actionRename)
-            choiceAlert.addAction(actionAbort)
-            
-            let topModalVC = self.rootSplitVC.presentedViewController ?? self.rootSplitVC
-            topModalVC.present(choiceAlert, animated: true)
+        assert(Thread.isMainThread, "FileKeeper called its delegate on background queue, that's illegal")
+        let fileName = target.lastPathComponent
+        let choiceAlert = UIAlertController(
+            title: fileName,
+            message: LString.fileAlreadyExists,
+            preferredStyle: .alert)
+        let actionOverwrite = UIAlertAction(title: LString.actionOverwrite, style: .destructive) {
+            (action) in
+            handler(.overwrite)
         }
+        let actionRename = UIAlertAction(title: LString.actionRename, style: .default) { (action) in
+            handler(.rename)
+        }
+        let actionAbort = UIAlertAction(title: LString.actionCancel, style: .cancel) { (action) in
+            handler(.abort)
+        }
+        choiceAlert.addAction(actionOverwrite)
+        choiceAlert.addAction(actionRename)
+        choiceAlert.addAction(actionAbort)
+        
+        getPresenterForModals().present(choiceAlert, animated: true)
     }
 }
 
@@ -678,18 +682,15 @@ extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
         }
         
         databaseFile.fileURL = url
-        fileKeeper.addFile(
-            url: url,
-            fileType: .database,
-            mode: .openInPlace,
-            success: { urlRef in
+        fileKeeper.addFile(url: url, fileType: .database, mode: .openInPlace) { result in
+            switch result {
+            case .success(let fileRef):
                 Diag.info("Relocated database reference added OK")
-                databaseFile.fileReference = urlRef
-            },
-            error: { error in
-                Diag.error("Failed to add relocated database [message: \(error.localizedDescription)")
+                databaseFile.fileReference = fileRef
+            case .failure(let fileKeeperError):
+                Diag.error("Failed to add relocated database [message: \(fileKeeperError.localizedDescription)")
             }
-        )
+        }
     }
     
     func didLeaveDatabase(in coordinator: DatabaseViewerCoordinator) {

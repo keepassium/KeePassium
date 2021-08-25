@@ -169,19 +169,17 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     
     private func addDatabaseFile(_ url: URL, mode: FileKeeper.OpenMode) {
-        FileKeeper.shared.addFile(
-            url: url,
-            fileType: .database,
-            mode: .openInPlace,
-            success: { [weak self] fileRef in
+        FileKeeper.shared.addFile(url: url, fileType: .database, mode: .openInPlace) {
+            [weak self] (result) in
+            switch result {
+            case .success(let fileRef):
                 self?.refresh()
                 self?.selectDatabase(fileRef, animated: true)
-            },
-            error: { [weak self] fileKeeperError in
+            case .failure(let fileKeeperError):
                 Diag.error("Failed to import database [message: \(fileKeeperError.localizedDescription)]")
                 self?.refresh()
             }
-        )
+        }
     }
 
     #if MAIN_APP

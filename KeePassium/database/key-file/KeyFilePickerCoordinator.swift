@@ -147,17 +147,14 @@ extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
         
         let addingMode: FileKeeper.OpenMode = FileKeeper.canAccessAppSandbox ? .import : .openInPlace
         let fileKeeper = FileKeeper.shared
-        fileKeeper.addFile(
-            url: url,
-            fileType: .keyFile,
-            mode: addingMode,
-            success: { [weak self] fileRef in
+        fileKeeper.addFile(url: url, fileType: .keyFile, mode: addingMode) { [weak self] result in
+            switch result {
+            case .success(_):
                 self?.keyFilePickerVC.refresh()
-            },
-            error: { [weak self] fileKeeperError in
+            case .failure(let fileKeeperError):
                 self?.keyFilePickerVC.showErrorAlert(fileKeeperError)
             }
-        )
+        }
     }
     
     private func returnFileReference(for url: URL) {

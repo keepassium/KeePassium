@@ -136,9 +136,13 @@ class SettingsBackupVC: UITableViewController {
         DispatchQueue.main.async { [self] in 
             FileKeeper.shared.deleteBackupFiles(
                 olderThan: -TimeInterval.infinity,
-                keepLatest: false) 
-            self.backupDeletionSpinner.isHidden = true
-            self.refresh()
+                keepLatest: false, 
+                completionQueue: .main,
+                completion: { [weak self] in
+                    self?.backupDeletionSpinner.isHidden = true
+                    self?.refresh()
+                }
+            )
         }
     }
     

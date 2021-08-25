@@ -215,26 +215,24 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
     
     private func addCreatedDatabase(at finalURL: URL) {
         let fileKeeper = FileKeeper.shared
-        fileKeeper.addFile(
-            url: finalURL,
-            fileType: .database,
-            mode: .openInPlace,
-            success: { [weak self] (addedRef) in
-                guard let self = self else { return }
+        fileKeeper.addFile(url: finalURL, fileType: .database, mode: .openInPlace) {
+            [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let addedRef):
                 DatabaseSettingsManager.shared.removeSettings(for: addedRef, onlyIfUnused: false)
                 
                 self.router.pop(viewController: self.databaseCreatorVC, animated: true)
                 self.delegate?.didCreateDatabase(in: self, database: addedRef)
-            },
-            error: { [weak self] (fileKeeperError) in
+            case .failure(let fileKeeperError):
                 Diag.error("Failed to add created file [mesasge: \(fileKeeperError.localizedDescription)]")
-                self?.databaseCreatorVC.showErrorMessage(
+                self.databaseCreatorVC.showErrorMessage(
                     fileKeeperError.localizedDescription,
                     haptics: .error,
                     animated: true
                 )
             }
-        )
+        }
     }
     
     private func showDiagnostics() {
