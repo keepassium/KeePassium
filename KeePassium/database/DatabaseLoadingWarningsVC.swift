@@ -15,60 +15,92 @@ final class DatabaseLoadingWarningsVC: UIAlertController {
         in viewController: UIViewController,
         onLockDatabase: @escaping (() -> Void)
     ) {
-        var message = warnings.messages.joined(separator: "\n\n")
-        if warnings.isGeneratorImportant {
-            let lastUsedAppName = warnings.databaseGenerator ?? ""
-            let footerLine = String.localizedStringWithFormat(
-                NSLocalizedString(
-                    "[Database/Opened/Warning/lastEdited] Database was last edited by: %@",
-                    value: "Database was last edited by: %@",
-                    comment: "Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String]"),
-                lastUsedAppName)
-            message += "\n\n" + footerLine
-        }
-        
         let alert = UIAlertController(
-            title: NSLocalizedString(
-                "[Database/Opened/Warning/title] Your database is ready, but there was an issue.",
-                value: "Your database is ready, but there was an issue.",
-                comment: "Title of a warning message, shown after opening a problematic database"),
-            message: message,
-            preferredStyle: .alert)
-        alert.addAction(
-            title: NSLocalizedString(
-                "[Database/Opened/Warning/action] Ignore and Continue",
-                value: "Ignore and Continue",
-                comment: "Action: ignore warnings and proceed to work with the database"),
-            style: .default,
-            handler: nil)
-        alert.addAction(
-            title: LString.actionContactUs,
-            style: .default,
-            handler: { [weak viewController] (action) in
-                guard let presentingVC = viewController else { return }
-                let popoverAnchor = PopoverAnchor(
-                    sourceView: presentingVC.view,
-                    sourceRect: presentingVC.view.frame)
-                SupportEmailComposer.show(
-                    subject: .problem,
-                    parent: presentingVC,
-                    popoverAnchor: popoverAnchor,
-                    completion: { (isSent) in
-                        alert.dismiss(animated: false, completion: nil)
-                    }
-                )
-            }
+            title: LString.titleDatabaseLoadingWarning,
+            message: warnings.getFormattedMessage(),
+            preferredStyle: .alert
         )
-        alert.addAction(
-            title: NSLocalizedString(
-                "[Database/Opened/Warning/action] Close Database",
-                value: "Close Database",
-                comment: "Action: lock database"),
+        let ignoreAndContinueAction = UIAlertAction(
+            title: LString.actionIgnoreAndContinue,
+            style: .default,
+            handler: nil
+        )
+        let closeDatabaseAction = UIAlertAction(
+            title: LString.actionCloseDatabase,
             style: .cancel,
             handler: { _ in
                 onLockDatabase()
             }
         )
+        
+        if let helpURL = warnings.getHelpURL() {
+            alert.addAction(
+                title: LString.actionLearnMore,
+                style: .default,
+                handler: { [weak viewController] _ in
+                    guard let presentingVC = viewController else {
+                        assertionFailure()
+                        return
+                    }
+                    URLOpener(presentingVC).open(url: helpURL)
+                }
+            )
+            alert.addAction(ignoreAndContinueAction)
+        } else {
+            alert.addAction(ignoreAndContinueAction)
+            alert.addAction(
+                title: LString.actionContactUs,
+                style: .default,
+                handler: { [weak viewController] (action) in
+                    guard let presentingVC = viewController else { return }
+                    let popoverAnchor = PopoverAnchor(
+                        sourceView: presentingVC.view,
+                        sourceRect: presentingVC.view.frame)
+                    SupportEmailComposer.show(
+                        subject: .problem,
+                        parent: presentingVC,
+                        popoverAnchor: popoverAnchor,
+                        completion: { (isSent) in
+                            alert.dismiss(animated: false, completion: nil)
+                        }
+                    )
+                }
+            )
+        }
+        alert.addAction(closeDatabaseAction)
         viewController.present(alert, animated: true, completion: nil)
     }
+}
+
+extension DatabaseLoadingWarnings {
+    public func getFormattedMessage() -> String {
+        let sortedIssues = issues.sorted { $0.priority > $1.priority }
+        var messages = sortedIssues.map { getDescription(for: $0) }
+        if isGeneratorImportant {
+            let footerLine = String.localizedStringWithFormat(
+                LString.databaseLastEditedByTemplate,
+                databaseGenerator ?? "")
+            messages.append(footerLine)
+        }
+        return messages.joined(separator: "\n\n")
+    }
+}
+
+extension LString {
+    public static let databaseLastEditedByTemplate = NSLocalizedString(
+        "[Database/Opened/Warning/lastEdited] Database was last edited by: %@",
+        value: "Database was last edited by: %@",
+        comment: "Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String]")
+    public static let titleDatabaseLoadingWarning = NSLocalizedString(
+        "[Database/Opened/Warning/title] Your database is ready, but there was an issue.",
+        value: "Your database is ready, but there was an issue.",
+        comment: "Title of a warning message, shown after opening a problematic database")
+    public static let actionIgnoreAndContinue = NSLocalizedString(
+        "[Database/Opened/Warning/action] Ignore and Continue",
+        value: "Ignore and Continue",
+        comment: "Action: ignore warnings and proceed to work with the database")
+    public static let actionCloseDatabase = NSLocalizedString(
+        "[Database/Opened/Warning/action] Close Database",
+        value: "Close Database",
+        comment: "Action: lock database")
 }

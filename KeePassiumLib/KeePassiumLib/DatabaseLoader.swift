@@ -310,17 +310,12 @@ public class DatabaseLoader: ProgressObserver {
         }
         
         if dbFileInfo.isInTrash {
-            let trashWarning = String.localizedStringWithFormat(
-                LString.Warning.fileIsInTrashTemplate,
-                dbFileInfo.fileName
-            )
-            Diag.warning(trashWarning)
-            warnings.messages.insert(trashWarning, at: 0)
+            warnings.addIssue(.databaseFileIsInTrash(fileName: dbFileInfo.fileName))
         }
         if dbRef.location == .internalBackup {
-            let temporaryBackupWarning = LString.Warning.temporaryBackupDatabase
-            Diag.warning(temporaryBackupWarning)
-            warnings.messages.insert(temporaryBackupWarning, at: 0)
+            let issue = DatabaseLoadingWarnings.IssueType.temporaryBackupDatabase
+            warnings.addIssue(issue)
+            Diag.warning(warnings.getDescription(for: issue))
         }
     }
     

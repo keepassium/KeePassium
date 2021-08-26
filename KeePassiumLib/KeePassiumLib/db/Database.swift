@@ -76,20 +76,6 @@ public struct SearchQuery {
     }
 }
 
-public class DatabaseLoadingWarnings {
-    public internal(set) var databaseGenerator: String?
-    public internal(set) var messages: [String]
-    
-    public var isEmpty: Bool { return messages.isEmpty }
-    
-    public var isGeneratorImportant = false
-    
-    internal init() {
-        databaseGenerator = nil
-        messages = []
-    }
-}
-
 open class Database: Eraseable {    
     public internal(set) var root: Group?
 

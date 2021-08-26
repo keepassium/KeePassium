@@ -319,11 +319,6 @@ extension LString {
         value: "The database is read-only",
         comment: "Message shown if current database cannot be edited"
     )
-    public static let actionCloseDatabase = NSLocalizedString(
-        "[Database/Opened/action] Close",
-        value: "Close",
-        comment: "Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database."
-    )
     public static let actionLockDatabase = NSLocalizedString(
         "[Database/Opened/action] Lock Database",
         value: "Lock Database",

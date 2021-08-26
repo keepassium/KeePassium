@@ -719,16 +719,7 @@ public class Database2: Database {
         let missingBinaries = usedIDs.subtracting(knownIDs)
         
         if unusedBinaries.count > 0 {
-            let lastUsedAppName = warnings.databaseGenerator ?? ""
-            let warningMessage = String.localizedStringWithFormat(
-                NSLocalizedString(
-                    "[Database2/Loading/Warning/unusedAttachments]",
-                    bundle: Bundle.framework,
-                    value: "The database contains some attachments that are not used in any entry. Most likely, they have been forgotten by the last used app (%@). However, this can also be a sign of data corruption. \nPlease make sure to have a backup of your database before changing anything.",
-                    comment: "A warning about unused attachments after loading the database. [lastUsedAppName: String]"),
-                lastUsedAppName)
-            warnings.messages.append(warningMessage)
-            warnings.isGeneratorImportant = true
+            warnings.addIssue(.unusedAttachments)
             
             let unusedIDs = unusedBinaries
                 .map { String($0) }
@@ -742,21 +733,8 @@ public class Database2: Database {
             allEntries.forEach { (entry) in
                 mapAttachmentNamesByID(of: entry as! Entry2, nameByID: &attachmentNameByID)
             }
-            let attachmentNames = missingBinaries
-                .compactMap { attachmentNameByID[$0] } 
-                .map { "\"\($0)\"" } 
-                .joined(separator: "\n ") 
-            
-            let lastUsedAppName = warnings.databaseGenerator ?? ""
-            let warningMessage = String.localizedStringWithFormat(
-                NSLocalizedString(
-                    "[Database2/Loading/Warning/missingBinaries]",
-                    bundle: Bundle.framework,
-                    value: "Attachments of some entries are missing data. This is a sign of database corruption, most likely by the last used app (%@). KeePassium will preserve the empty attachments, but cannot restore them. You should restore your database from a backup copy. \n\nMissing attachments: %@",
-                    comment: "A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String]"),
-                lastUsedAppName,
-                attachmentNames)
-            warnings.messages.append(warningMessage)
+            let attachmentNames = missingBinaries.compactMap { attachmentNameByID[$0] }
+            warnings.addIssue(.missingBinaries(attachmentNames: attachmentNames))
 
             let missingIDs = missingBinaries
                 .map { String($0) }
@@ -792,21 +770,11 @@ public class Database2: Database {
         if affectedEntries.isEmpty {
             return
         }
-        let listOfEntryNames = affectedEntries
-            .compactMap { $0.getGroupPath() + "/" + $0.resolvedTitle } 
-            .map { "\"\($0)\"" } 
-            .joined(separator: "\n ") 
         
-        let warningMessage = String.localizedStringWithFormat(
-            NSLocalizedString(
-                "[Database2/Loading/Warning/namelessAttachments]",
-                bundle: Bundle.framework,
-                value: "Some entries have attachments without a name. This is a sign of previous database corruption.\n\n Please review attached files in the following entries (and their history):\n%@",
-                comment: "A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String]"),
-            listOfEntryNames)
-        Diag.warning(warningMessage)
-        warnings.messages.append(warningMessage)
-        warnings.isGeneratorImportant = true
+        let entryNames = affectedEntries.compactMap {$0.getGroupPath() + "/" + $0.resolvedTitle }
+        let issue = DatabaseLoadingWarnings.IssueType.namelessAttachments(entryNames: entryNames)
+        warnings.addIssue(issue)
+        Diag.warning(warnings.getDescription(for: issue))
     }
     
     private func checkCustomFieldsIntegrity(allEntries: [Entry], warnings: DatabaseLoadingWarnings) {
@@ -819,17 +787,8 @@ public class Database2: Database {
         guard problematicEntries.count > 0 else { return }
         
         let entryPaths = problematicEntries
-            .map { entry in "'\(entry.resolvedTitle)' in '\(entry.getGroupPath())'" }
-            .joined(separator: "\n")
-        let warningMessage = String.localizedStringWithFormat(
-            NSLocalizedString(
-                "[Database2/Loading/Warning/namelessCustomFields]",
-                bundle: Bundle.framework,
-                value: "Some entries have custom field(s) with empty names. This can be a sign of data corruption. Please check these entries:\n\n%@",
-                comment: "A warning about misformatted custom fields after loading the database. [entryPaths: String]"),
-            entryPaths)
-        warnings.messages.append(warningMessage)
-        warnings.isGeneratorImportant = true
+            .map { "'\($0.resolvedTitle)' in '\($0.getGroupPath())'" }
+        warnings.addIssue(.namelessCustomFields(entryPaths: entryPaths))
     }
         
     private func updateBinaries(root: Group2) {
@@ -1364,4 +1323,29 @@ private extension Entry2 {
     }
 }
 
-
+extension LString.Warning {
+    public static let unusedAttachmentsTemplate = NSLocalizedString(
+        "[Database2/Loading/Warning/unusedAttachments]",
+        bundle: Bundle.framework,
+        value: "The database contains some attachments that are not used in any entry. Most likely, they have been forgotten by the last used app (%@). However, this can also be a sign of data corruption. \nPlease make sure to have a backup of your database before changing anything.",
+        comment: "A warning about unused attachments after loading the database. [lastUsedAppName: String]"
+    )
+    public static let missingBinariesTemplate = NSLocalizedString(
+        "[Database2/Loading/Warning/missingBinaries]",
+        bundle: Bundle.framework,
+        value: "Attachments of some entries are missing data. This is a sign of database corruption, most likely by the last used app (%@). KeePassium will preserve the empty attachments, but cannot restore them. You should restore your database from a backup copy. \n\nMissing attachments: %@",
+        comment: "A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String]"
+    )
+    public static let namelessCustomFieldsTemplate = NSLocalizedString(
+        "[Database2/Loading/Warning/namelessCustomFields]",
+        bundle: Bundle.framework,
+        value: "Some entries have custom field(s) with empty names. This can be a sign of data corruption. Please check these entries:\n\n%@",
+        comment: "A warning about misformatted custom fields after loading the database. [entryPaths: String]"
+    )
+    public static let namelessAttachmentsTemplate = NSLocalizedString(
+        "[Database2/Loading/Warning/namelessAttachments]",
+        bundle: Bundle.framework,
+        value: "Some entries have attachments without a name. This is a sign of previous database corruption.\n\n Please review attached files in the following entries (and their history):\n%@",
+        comment: "A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String]"
+    )
+}

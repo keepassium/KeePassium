@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75012A6A26D82A58002F1911 /* DatabaseLoadingWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75012A6926D82A58002F1911 /* DatabaseLoadingWarning.swift */; };
 		7505E8CB2236C93300E5202E /* TOTPGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CA2236C93300E5202E /* TOTPGenerator.swift */; };
 		7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CE2236ED6E00E5202E /* Base32.swift */; };
 		7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8D02236FA0F00E5202E /* StringExtension.swift */; };
@@ -155,6 +156,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75012A6926D82A58002F1911 /* DatabaseLoadingWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoadingWarning.swift; sourceTree = "<group>"; };
 		7502613D243E970000C47F4F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7505E8CA2236C93300E5202E /* TOTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGenerator.swift; sourceTree = "<group>"; };
 		7505E8CE2236ED6E00E5202E /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				75D4080423952FD40042122A /* CompositeKey.swift */,
 				759A321A252DC1E7001A1623 /* EntryFieldReference.swift */,
 				756AFD5C258B4C510072BEEF /* KeyFileError.swift */,
+				75012A6926D82A58002F1911 /* DatabaseLoadingWarning.swift */,
 			);
 			path = db;
 			sourceTree = "<group>";
@@ -903,6 +906,7 @@
 				75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */,
 				75D09C222174F77000F7DEF2 /* CustomData2.swift in Sources */,
 				756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */,
+				75012A6A26D82A58002F1911 /* DatabaseLoadingWarning.swift in Sources */,
 				75D09C242174F77000F7DEF2 /* Attachment2.swift in Sources */,
 				75D09C232174F77000F7DEF2 /* Database2.swift in Sources */,
 				75B5F7F5251B7BE100E444F0 /* DatabaseLoader.swift in Sources */,
