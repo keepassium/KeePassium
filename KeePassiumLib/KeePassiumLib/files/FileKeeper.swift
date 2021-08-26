@@ -988,11 +988,17 @@ fileprivate class ReferenceCache {
     private var directoryCache = [DirectoryFileTypeKey: [URLReference]]()
     private var directoryCacheSet = [DirectoryFileTypeKey: Set<URLReference>]()
     
+    private let semaphore = DispatchSemaphore(value: 1)
+    
     func update(
         with newRefs: [URLReference],
         fileType: FileType,
         isExternal: Bool
     ) -> [URLReference] {
+        semaphore.wait()
+        defer {
+            semaphore.signal()
+        }
         let key = FileTypeExternalKey(fileType: fileType, isExternal: isExternal)
         guard var _cache = cache[key], let _cacheSet = cacheSet[key] else {
             cache[key] = newRefs
@@ -1016,6 +1022,11 @@ fileprivate class ReferenceCache {
         from directory: URL,
         fileType: FileType
     ) -> [URLReference] {
+        semaphore.wait()
+        defer {
+            semaphore.signal()
+        }
+
         let key = DirectoryFileTypeKey(directory: directory, fileType: fileType)
         guard var _directoryCache = directoryCache[key],
             let _directoryCacheSet = directoryCacheSet[key] else
