@@ -267,7 +267,7 @@ public class URLReference:
         let tmpDoc = BaseDocument(fileURL: url, fileProvider: nil)
         tmpDoc.open(withTimeout: URLReference.defaultTimeout) { (result) in
             defer {
-                tmpDoc.close(completionHandler: nil)
+                tmpDoc.close(completionQueue: nil, completion: nil)
             }
             switch result {
             case .success(_):
@@ -421,7 +421,7 @@ public class URLReference:
                 if isAccessed {
                     url.stopAccessingSecurityScopedResource()
                 }
-                tmpDoc.close(completionHandler: nil)
+                tmpDoc.close(completionQueue: nil, completion: nil)
             }
             self.registerInfoRefreshRequest(.completed)
             switch result {

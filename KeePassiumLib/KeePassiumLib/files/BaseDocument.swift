@@ -106,6 +106,7 @@ public class BaseDocument: UIDocument, Synchronizable {
                 }
             } else {
                 if let error = self.error {
+                    Diag.error("Saving failed [message: \(error.localizedDescription)]")
                     completionQueue.addOperation {
                         completion(.failure(error))
                     }
@@ -134,6 +135,7 @@ public class BaseDocument: UIDocument, Synchronizable {
                 Diag.info("Document closed OK")
             } else {
                 if let error = self.error {
+                    Diag.error("Document closed with an error [message: \(error.localizedDescription)]")
                     completionQueue.addOperation {
                         completion?(.failure(error))
                     }
@@ -188,7 +190,7 @@ extension BaseDocument {
                 baseDocument.open(withTimeout: timeout, completionQueue: completionQueue) {
                     (result) in
                     assert(completionQueue.isCurrent)
-                    baseDocument.close(completionHandler: nil)
+                    baseDocument.close(completionQueue: nil, completion: nil)
                     completion(result)
                 }
             case .failure(let fileAccessError):

@@ -266,8 +266,7 @@ public class DatabaseLoader: ProgressObserver {
     }
     
     private func onKeyFileURLResolved(url: URL, fileProvider: FileProvider?, dbFile: DatabaseFile) {
-        let keyDoc = BaseDocument(fileURL: url, fileProvider: fileProvider)
-        keyDoc.open(queue: operationQueue, completionQueue: operationQueue) {
+        BaseDocument.read(url, queue: operationQueue, completionQueue: operationQueue) {
             [weak self] (result) in
             guard let self = self else { return }
             switch result {
