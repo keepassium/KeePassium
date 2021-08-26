@@ -174,14 +174,21 @@ final public class NavigationRouter: NSObject {
     
     public func pop(animated: Bool, completion: (()->Void)? = nil) {
         let isLastVC = (navigationController.viewControllers.count == 1)
-        if isLastVC {
-            navigationController.dismiss(animated: animated, completion: { [self, completion] in
-                self.firePopHandler(for: navigationController.topViewController!) 
-                completion?()
-            })
-        } else {
+        guard isLastVC else {
             navigationController.popViewController(animated: animated, completion: completion)
+            return
         }
+        
+        navigationController.dismiss(animated: animated, completion: { [self, completion] in
+            self.firePopHandler(for: navigationController.topViewController!) 
+            if let collapsedSplitNavVC = navigationController.parent as? UINavigationController,
+               isCollapsedSplitVC(collapsedSplitNavVC)
+            {
+                collapsedSplitNavVC.popViewController(animated: animated, completion: completion)
+            } else {
+                completion?()
+            }
+        })
     }
     
     public func popTo(viewController: UIViewController, animated: Bool, completion: (()->Void)?) {
