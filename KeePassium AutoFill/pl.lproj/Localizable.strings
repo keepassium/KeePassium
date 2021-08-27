@@ -88,9 +88,6 @@
 /* Action/button */
 "[Database/Open/action] Open Database" = "Otwórz bazę danych";
 
-/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
-"[Database/Opened/action] Close" = "Zamknij";
-
 /* Action/button to lock current database (the next time, it will ask for the master key). */
 "[Database/Opened/action] Lock Database" = "Zablokuj bazę";
 
@@ -268,6 +265,9 @@
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Przywróć";
 
+/* Action/button to open Finder (macOS file manager) and highlight a given file */
+"[Generic] Reveal in Finder" = "Pokaż w Finderze";
+
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "Udostępnij";
 
@@ -298,6 +298,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Usuń";
 
+/* Action/button to save data to a different file */
+"[Generic/File/Save as]" = "Zapisz jako…";
+
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "Błąd eksportu";
 
@@ -309,6 +312,9 @@
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "Presety";
+
+/* Title of a search field (a noun, not verb) */
+"[Generic/Search/title]" = "Szukaj";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Błąd";

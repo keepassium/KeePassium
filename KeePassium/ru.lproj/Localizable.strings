@@ -118,9 +118,6 @@
 /* Action/button */
 "[Database/Open/action] Open Database" = "Открыть базу паролей";
 
-/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
-"[Database/Opened/action] Close" = "Закрыть";
-
 /* Action/button to lock current database (the next time, it will ask for the master key). */
 "[Database/Opened/action] Lock Database" = "Закрыть базу паролей";
 
@@ -144,6 +141,27 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Сохранение...";
+
+/* Explanation of the database sync conflict `Cancel` option. */
+"[Database/SyncConflict/Cancel/description]" = "Отменить сохранение, оставить конечный файл без изменений.";
+
+/* Message shown in case of database sync conflict. */
+"[Database/SyncConflict/description]" = "База паролей изменилась со времени её загрузки в KeePassium.";
+
+/* Action: combine changes in two conflicting databases. */
+"[Database/SyncConflict/Merge/action]" = "Объединить";
+
+/* Explanation of the database sync conflict `Merge` option. */
+"[Database/SyncConflict/Merge/description]" = "Объединить изменения перед сохранением.";
+
+/* Explanation of the database sync conflict `Overwrite` option. */
+"[Database/SyncConflict/Overwrite/description]" = "Перезаписать файл назначения локальной версией.";
+
+/* Explanation of the database sync conflict `Save as` option. */
+"[Database/SyncConflict/SaveAs/description]" = "Сохранить изменения в другой файл.";
+
+/* Title of a message shown when saving to a database that has already been modified elsewhere. */
+"[Database/SyncConflict/title]" = "Конфликт синхронизации";
 
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Проблема с ключевым файлом: %@";
@@ -334,6 +352,9 @@
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Восстановить";
 
+/* Action/button to open Finder (macOS file manager) and highlight a given file */
+"[Generic] Reveal in Finder" = "Показать в Finder";
+
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "Поделиться";
 
@@ -364,6 +385,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Убрать";
 
+/* Action/button to save data to a different file */
+"[Generic/File/Save as]" = "Сохранить как…";
+
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "Ошибка экспорта";
 
@@ -375,6 +399,9 @@
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "Предустановки";
+
+/* Title of a search field (a noun, not verb) */
+"[Generic/Search/title]" = "Поиск";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Ошибка";
@@ -438,6 +465,12 @@
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Убрать ключевой файл из списка?\nФайл останется нетронутым, вы сможете добавить его позже.";
+
+/* Menu title. For example: `About KeePassium`. [appName: String] */
+"[Menu/About/title]" = "О приложении %@";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Настройки…";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Этот QR-код не подходит для настройки одноразового пароля (OTP).";

@@ -14,7 +14,7 @@
 "oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ajustes";
 
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
-"qPq-UR-uZs.title" = "Adicionar Banco de Dados";
+"qPq-UR-uZs.title" = "Adicionar banco de dados";
 
 /* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
 "R68-cy-5mz.text" = "Proteja KeePassium contra acesso não autorizado.";
@@ -23,7 +23,7 @@
 "rWy-ey-805.text" = "{Database File Name}";
 
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
-"UI0-Lh-wTj.title" = "Bancos de Dados";
+"UI0-Lh-wTj.title" = "Bancos de dados";
 
 /* Class = "UILabel"; text = "{File Attributes}"; ObjectID = "y2W-10-GnE"; Note = "#bc-ignore!"; */
 "y2W-10-GnE.text" = "{File Attributes}";

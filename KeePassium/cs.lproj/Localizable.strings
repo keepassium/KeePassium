@@ -118,9 +118,6 @@
 /* Action/button */
 "[Database/Open/action] Open Database" = "Otevřít databázi";
 
-/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
-"[Database/Opened/action] Close" = "Zavřít";
-
 /* Action/button to lock current database (the next time, it will ask for the master key). */
 "[Database/Opened/action] Lock Database" = "Zamknout databázi";
 
@@ -144,6 +141,27 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Ukládání...";
+
+/* Explanation of the database sync conflict `Cancel` option. */
+"[Database/SyncConflict/Cancel/description]" = "Cancel saving, leave target file intact.";
+
+/* Message shown in case of database sync conflict. */
+"[Database/SyncConflict/description]" = "The database has changed since it was loaded in KeePassium.";
+
+/* Action: combine changes in two conflicting databases. */
+"[Database/SyncConflict/Merge/action]" = "Merge";
+
+/* Explanation of the database sync conflict `Merge` option. */
+"[Database/SyncConflict/Merge/description]" = "Combine changes before saving.";
+
+/* Explanation of the database sync conflict `Overwrite` option. */
+"[Database/SyncConflict/Overwrite/description]" = "Overwrite target file with the local version.";
+
+/* Explanation of the database sync conflict `Save as` option. */
+"[Database/SyncConflict/SaveAs/description]" = "Save changes to another file.";
+
+/* Title of a message shown when saving to a database that has already been modified elsewhere. */
+"[Database/SyncConflict/title]" = "Sync Conflict";
 
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Chyba souboru s klíčem: %@";
@@ -334,6 +352,9 @@
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Obnovit";
 
+/* Action/button to open Finder (macOS file manager) and highlight a given file */
+"[Generic] Reveal in Finder" = "Zobrazit ve Finderu";
+
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "Sdílet";
 
@@ -364,6 +385,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Odebrat";
 
+/* Action/button to save data to a different file */
+"[Generic/File/Save as]" = "Uložit jako…";
+
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "Export selhal";
 
@@ -375,6 +399,9 @@
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "Předvolené";
+
+/* Title of a search field (a noun, not verb) */
+"[Generic/Search/title]" = "Vyhledávání";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Chyba";
@@ -438,6 +465,12 @@
 
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Odebrat soubor s klíčem ze seznamu?\nSoubor zůstane neporušený a později jej budete moci znovu přidat.";
+
+/* Menu title. For example: `About KeePassium`. [appName: String] */
+"[Menu/About/title]" = "O aplikaci %@";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Předvolby…";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Tento QR kód není vhodný pro nastavení OTP.";

@@ -88,9 +88,6 @@
 /* Action/button */
 "[Database/Open/action] Open Database" = "Abrir banco de dados";
 
-/* Action/button to close current database (for example, when leaving the root group). NOTE: closing does not necessarily lock the database. */
-"[Database/Opened/action] Close" = "Fechar";
-
 /* Action/button to lock current database (the next time, it will ask for the master key). */
 "[Database/Opened/action] Lock Database" = "Bloquear banco de dados";
 
@@ -268,6 +265,9 @@
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Restaurar";
 
+/* Action/button to open Finder (macOS file manager) and highlight a given file */
+"[Generic] Reveal in Finder" = "Mostrar no Finder";
+
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "Compartilhar";
 
@@ -298,6 +298,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Esquecer";
 
+/* Action/button to save data to a different file */
+"[Generic/File/Save as]" = "Salvar como…";
+
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "Falha ao exportar";
 
@@ -309,6 +312,9 @@
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "Predefinições";
+
+/* Title of a search field (a noun, not verb) */
+"[Generic/Search/title]" = "Busca";
 
 /* Title of an error message notification */
 "[Generic/title] Error" = "Erro";
@@ -521,13 +527,13 @@
 "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Ganhe tempo ao inserir suas senhas-mestras complexas — deixe seu banco de dados aberto por mais tempo na versão Premium.";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Bancos de Dados Abertos por Mais Tempo";
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Bancos de dados abertos por mais tempo";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Alterne facilmente entre bancos de dados na versão Premium.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
-"[PremiumFeature/MultiDB/title] Multiple Databases" = "Vários Bancos de Dados";
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Vários bancos de dados";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Visualize imagens e documentos sem sair do aplicativo, na versão Premium.";
@@ -563,13 +569,13 @@
 "[YubiKey] Use YubiKey Slot %d" = "Usar a posição %d da YubiKey";
 
 /* Action/button to add database to the app */
-"Add Database" = "Adicionar Banco de Dados";
+"Add Database" = "Adicionar banco de dados";
 
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "Escolher banco de dados";
 
 /* Action/button */
-"Import Database" = "Importar Banco de Dados";
+"Import Database" = "Importar banco de dados";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "Um banco de dados do KeePass não pode ser usado como arquivo de chave. Por favor, escolha um arquivo diferente.";

@@ -23,7 +23,7 @@
 "nBI-OF-9iV.footerTitle" = "Antes de salvar um banco de dados, KeePassium fará uma cópia automaticamente por precaução.";
 
 /* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
-"nSy-3u-0xW.title" = "Cópias de segurança de bancos de dados";
+"nSy-3u-0xW.title" = "Cópias de segurança";
 
 /* Class = "UILabel"; text = "{N days}"; ObjectID = "PKe-6p-Ssr"; Note = "#bc-ignore!"; */
 "PKe-6p-Ssr.text" = "{N days}";
