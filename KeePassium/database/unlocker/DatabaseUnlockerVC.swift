@@ -31,7 +31,7 @@ protocol DatabaseUnlockerDelegate: AnyObject {
 final class DatabaseUnlockerVC: UIViewController, Refreshable {
 
     private let forgottenPasswordHelpURL =
-        URL(string: "https://keepassium.com/articles/invalid-password/")!
+        URL(string: "https://keepassium.com/apphelp/invalid-database-password/")!
     
     @IBOutlet private weak var databaseLocationIconImage: UIImageView!
     @IBOutlet private weak var databaseFileNameLabel: UILabel!

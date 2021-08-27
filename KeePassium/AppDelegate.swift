@@ -10,7 +10,7 @@ import KeePassiumLib
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let helpURL = URL(string: "https://keepassium.com/faq")!
+    let helpURL = URL(string: "https://keepassium.com/apphelp/")!
 
     var window: UIWindow?
     
