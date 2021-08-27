@@ -167,6 +167,8 @@
 		755E7D9F232008300010E199 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7D9D232008300010E199 /* Localizable.strings */; };
 		755E7DA2232008300010E199 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7DA0232008300010E199 /* Localizable.strings */; };
 		755E9C4D20BE5DC200FD7C7A /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */; };
+		75604EB426D8F0DA008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */; };
+		75604EB526D8F0DB008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */; };
 		7561850320E033DB00EEFAEE /* WatchdogAwareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */; };
 		7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850420E0379F00EEFAEE /* ValidatingTextView.swift */; };
 		75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */; };
@@ -3192,6 +3194,7 @@
 				7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
 				7583EA6C2685D1FA009969E7 /* DatabasePickerVC.swift in Sources */,
+				75604EB426D8F0DA008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75DE677A268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
@@ -3634,6 +3637,7 @@
 				7538936C26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
 				7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */,
+				75604EB526D8F0DB008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,

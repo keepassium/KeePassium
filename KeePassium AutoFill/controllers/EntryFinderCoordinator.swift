@@ -30,6 +30,8 @@ final class EntryFinderCoordinator: Coordinator {
     private var serviceIdentifiers: [ASCredentialServiceIdentifier]
     private let searchHelper = SearchHelper()
     
+    private let vcAnimationDuration = 0.3
+    
     init(
         router: NavigationRouter,
         databaseFile: DatabaseFile,
@@ -55,7 +57,7 @@ final class EntryFinderCoordinator: Coordinator {
     
     func start() {
         router.prepareCustomTransition(
-            duration: 0.3,
+            duration: vcAnimationDuration,
             type: .fade,
             timingFunction: .easeOut
         )
@@ -69,6 +71,10 @@ final class EntryFinderCoordinator: Coordinator {
                 self.delegate?.didLeaveDatabase(in: self)
             }
         )
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2 * vcAnimationDuration) { [weak self] in
+            self?.showInitialMessages()
+        }
     }
     
     func stop(animated: Bool) {
@@ -95,6 +101,19 @@ extension EntryFinderCoordinator {
             .map { $0.identifier }
             .joined(separator: " | ")
         entryFinderVC.callerID = callerID
+    }
+    
+    private func showInitialMessages() {
+        if let loadingWarnings = loadingWarnings {
+            showLoadingWarnings(loadingWarnings)
+        }
+    }
+    
+    private func showLoadingWarnings(_ warnings: DatabaseLoadingWarnings) {
+        guard !warnings.isEmpty else { return }
+        
+        DatabaseLoadingWarningsVC.present(warnings, in: entryFinderVC, onLockDatabase: lockDatabase)
+        StoreReviewSuggester.registerEvent(.trouble)
     }
     
     private func setupAutomaticSearchResults() {

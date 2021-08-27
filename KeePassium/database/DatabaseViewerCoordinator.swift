@@ -165,7 +165,7 @@ final class DatabaseViewerCoordinator: Coordinator {
         
         let presentingVC = getPresenterForModals()
         DatabaseLoadingWarningsVC.present(
-            with: warnings,
+            warnings,
             in: presentingVC,
             onLockDatabase: { [weak self] in
                 self?.closeDatabase(

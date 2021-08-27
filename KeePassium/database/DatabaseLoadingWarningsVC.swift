@@ -11,7 +11,7 @@ import KeePassiumLib
 final class DatabaseLoadingWarningsVC: UIAlertController {
     
     static func present(
-        with warnings: DatabaseLoadingWarnings,
+        _ warnings: DatabaseLoadingWarnings,
         in viewController: UIViewController,
         onLockDatabase: @escaping (() -> Void)
     ) {
