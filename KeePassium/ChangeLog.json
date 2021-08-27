@@ -2,8 +2,12 @@
     "sections": [
         {
             "version": "1.25",
-            "releaseDate": "2021-08-19T00:00:00Z",
+            "releaseDate": "2021-08-27T00:00:00Z",
             "items": [
+                {
+                    "title": "🧩 Added: Detect database conflicts on save, with \"Overwrite\" and \"Save as\" options (\"Merge\" is coming later)",
+                    "type": 1
+                },
                 {
                     "title": "🧩 Added: Entry history management (closes #56) [thanks, Joahna V, Ivo and A13BioniciOS6]",
                     "type": 1
@@ -30,6 +34,10 @@
                 },
                 {
                     "title": "🛠 Improved: AutoFill and the main app use the same file list (iOS 14+). Finally! (#1, #122, #125)",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Integration with macOS: UI, hotkeys, navigation (for example: Cmd-F to start search, Esc to return to previous view) [thanks, Vitaly]",
                     "type": 1
                 },
                 {
@@ -70,6 +78,10 @@
                 },
                 {
                     "title": "🛠 Improved: Showing database errors in a popup, better visibility on small screens",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Show database loading warnings also in AutoFill",
                     "type": 1
                 },
                 {

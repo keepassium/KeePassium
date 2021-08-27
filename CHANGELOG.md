@@ -1,5 +1,29 @@
 #CHANGELOG
 
+## [1.25.92] - 2021-08-27
+
+### Added
+
+- Detect database conflicts on save, with "Overwrite" and "Save as" options ("Merge" is coming later)
+
+### Improved
+
+- Integration with macOS: UI, hotkeys, navigation (for example: Cmd-F to start search, Esc to return to previous view) [thanks, Vitaly]
+- Added "Learn more" help links for most common issues
+- Fonts in entry viewer and file info dialogs
+- Run slow file operations (e.g. backup maintenance) in background
+- Show database loading warnings also in AutoFill
+- Modern menu UI for username suggestions (iOS 14+)
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- Regression in 1.25.89: Pro version requested purchase [thanks, Vitaly]
+- Possible crash when leaving some settings pages (fixes #179) [thanks, Vitaly]
+- Possible crash when DB locks up with a modal window (fixes #188) [thanks, Vitaly]
+- Some error messages appeared partially off-screen
+
+
 ## [1.25.91] - 2021-08-19
 
 ### Improved
