@@ -133,13 +133,6 @@ class DatabaseCreatorVC: UIViewController {
     func showErrorMessage(_ message: String, haptics: HapticFeedback.Kind?, animated: Bool) {
         Diag.error(message)
         UIAccessibility.post(notification: .announcement, argument: message)
-
-        let warningIcon: UIImage
-        if #available(iOS 13, *) {
-            warningIcon = UIImage.get(.exclamationMarkTriangle)!.withTintColor(.warningMessage)
-        } else {
-            warningIcon = UIImage.get(.exclamationMarkTriangle)!
-        }
         
         var toastStyle = ToastStyle()
         toastStyle.backgroundColor = .warningMessage
@@ -154,7 +147,7 @@ class DatabaseCreatorVC: UIViewController {
         let toastView = view.toastViewForMessage(
             message,
             title: nil,
-            image: warningIcon,
+            image: UIImage.get(.exclamationMarkTriangle),
             action: toastAction,
             style: toastStyle
         )

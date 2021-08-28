@@ -19,6 +19,11 @@ protocol EntryFileViewerDelegate: AnyObject {
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFileViewerVC)
     
+    func didPressSave(
+        file attachment: Attachment,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFileViewerVC
+    )
     func didPressRename(
         file attachment: Attachment,
         to newName: String,
@@ -270,7 +275,16 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
                 self?.didPressRenameAttachment(at: indexPath)
             }
         )
-        return [renameFileAction, deleteAction]
+        
+        let saveAsAction = ContextualAction(
+            title: LString.actionFileSaveAs,
+            imageName: .squareAndArrowDown,
+            style: .default,
+            handler: { [weak self] in
+                self?.didPressSaveAttachment(at: indexPath)
+            }
+        )
+        return [saveAsAction, renameFileAction, deleteAction]
     }
     
     override func tableView(
@@ -367,6 +381,12 @@ private extension EntryFileViewerVC {
             self.delegate?.didPressRename(file: attachment, to: newName, in: self)
         }
         present(renameController, animated: true, completion: nil)
+    }
+    
+    private func didPressSaveAttachment(at indexPath: IndexPath) {
+        let attachment = attachments[indexPath.row]
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressSave(file: attachment, at: popoverAnchor, in: self)
     }
     
     private func didPressDeleteAttachment(at indexPath: IndexPath) {

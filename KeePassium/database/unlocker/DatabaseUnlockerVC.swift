@@ -149,13 +149,6 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             .compactMap { return $0 } 
             .joined(separator: "\n")
         Diag.error(text)
-
-        let warningIcon: UIImage
-        if #available(iOS 13, *) {
-            warningIcon = UIImage.get(.exclamationMarkTriangle)!.withTintColor(.warningMessage)
-        } else {
-            warningIcon = UIImage.get(.exclamationMarkTriangle)!
-        }
         
         var toastAction = action
         if toastAction == nil {
@@ -174,7 +167,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         let toastView = view.toastViewForMessage(
             text,
             title: nil,
-            image: warningIcon,
+            image: UIImage.get(.exclamationMarkTriangle),
             action: toastAction,
             style: toastStyle
         )

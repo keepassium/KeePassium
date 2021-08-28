@@ -329,6 +329,25 @@ extension EntryViewerCoordinator {
         }
     }
     
+    
+    private func showSaveDialog(
+        for attachment: Attachment,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        Diag.debug("Will save attachment")
+        assert(fileExportHelper == nil)
+        fileExportHelper = FileExportHelper(data: attachment.data, fileName: attachment.name)
+        fileExportHelper!.handler = { finalURL in
+            self.fileExportHelper = nil 
+            guard finalURL != nil else { return }
+            
+            Diag.info("Attachment saved OK")
+            viewController.showSuccessNotification(LString.actionDone)
+        }
+        fileExportHelper!.saveAs(presenter: viewController)
+    }
+    
     private func showPreview(
         for attachments: [Attachment],
         at popoverAnchor: PopoverAnchor,
@@ -550,7 +569,15 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         let canAddWithoutReplacement = entry.attachments.isEmpty || entry.isSupportsMultipleAttachments
         return !canAddWithoutReplacement
     }
-    
+
+    func didPressSave(
+        file attachment: Attachment,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFileViewerVC
+    ) {
+        showSaveDialog(for: attachment, at: popoverAnchor, in: viewController)
+    }
+
     func didPressRename(
         file attachment: Attachment,
         to newName: String,

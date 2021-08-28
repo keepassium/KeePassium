@@ -62,6 +62,8 @@ enum ImageAsset: String {
 
 enum SystemImageName: String {
     case camera = "camera"
+    case checkmark = "checkmark"
+    case checkmarkCircle = "checkmark.circle"
     case clockArrowCirclepath = "clock.arrow.circlepath"
     case docOnDoc = "doc.on.doc"
     case ellipsisCircle = "ellipsis.circle"
@@ -71,6 +73,7 @@ enum SystemImageName: String {
     case photo = "photo"
     case qrcode = "qrcode"
     case squareAndPencil = "square.and.pencil"
+    case squareAndArrowDown = "square.and.arrow.down"
     case squareAndArrowUp = "square.and.arrow.up"
     case trash = "trash"
 }

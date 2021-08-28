@@ -8,6 +8,8 @@
 
 import KeePassiumLib
 
+fileprivate let toastIconSize = CGSize(width: 25, height: 25)
+
 extension UIViewController {
     
     func showErrorAlert(_ error: Error, title: String?=nil) {
@@ -54,6 +56,21 @@ extension UIViewController {
             image: image,
             style: style,
             completion: nil
+        )
+    }
+    
+    func showSuccessNotification(_ message: String) {
+        let checkmarkIcon: UIImage?
+        if #available(iOS 13, *) {
+            checkmarkIcon = UIImage.get(.checkmark)?
+                .withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+        } else {
+            checkmarkIcon = UIImage.get(.checkmark)
+        }
+        showNotification(
+            message,
+            image: checkmarkIcon,
+            imageSize: toastIconSize
         )
     }
 }
