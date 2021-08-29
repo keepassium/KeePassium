@@ -10,16 +10,23 @@ import KeePassiumLib
 import LocalAuthentication
 
 final class MainCoordinator: Coordinator {
+    enum Action {
+        case showAboutScreen
+        case showAppSettings
+        case createDatabase
+        case openDatabase
+        
+        case lockDatabase
+        case createEntry
+        case createGroup
+    }
+
     var childCoordinators = [Coordinator]()
     
     var dismissHandler: CoordinatorDismissHandler? {
         didSet {
             fatalError("Don't set dismiss handler in MainCoordinator, it is never called.")
         }
-    }
-    
-    public var canLockDatabase: Bool {
-        return databaseViewerCoordinator != nil
     }
     
     private let rootSplitVC: RootSplitVC
@@ -152,6 +159,46 @@ extension MainCoordinator {
             showDonationScreen(in: rootSplitVC)
         default:
             Diag.warning("Unrecognized URL, ignoring [url: \(url.absoluteString)]")
+        }
+    }
+}
+
+extension MainCoordinator {
+    func canPerform(action: Action) -> Bool {
+        switch action {
+        case .showAboutScreen:
+            return true
+        case .showAppSettings:
+            return true
+        case .createDatabase:
+            return true
+        case .openDatabase:
+            return true
+        case .lockDatabase:
+            return databaseViewerCoordinator?.canPerform(action: .lockDatabase) ?? false
+        case .createEntry:
+            return databaseViewerCoordinator?.canPerform(action: .createEntry) ?? false
+        case .createGroup:
+            return databaseViewerCoordinator?.canPerform(action: .createGroup) ?? false
+        }
+    }
+
+    func perform(action: Action) {
+        switch action {
+        case .showAboutScreen:
+            showAboutScreen()
+        case .showAppSettings:
+            showSettingsScreen()
+        case .createDatabase:
+            createDatabase()
+        case .openDatabase:
+            openDatabase()
+        case .lockDatabase:
+            databaseViewerCoordinator?.perform(action: .lockDatabase)
+        case .createEntry:
+            databaseViewerCoordinator?.perform(action: .createEntry)
+        case .createGroup:
+            databaseViewerCoordinator?.perform(action: .createGroup)
         }
     }
 }

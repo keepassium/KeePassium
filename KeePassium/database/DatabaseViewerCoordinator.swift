@@ -34,6 +34,12 @@ protocol DatabaseViewerCoordinatorDelegate: AnyObject {
 final class DatabaseViewerCoordinator: Coordinator {
     private let vcAnimationDuration = 0.3
     
+    enum Action {
+        case lockDatabase
+        case createEntry
+        case createGroup
+    }
+    
     var childCoordinators = [Coordinator]()
     
     weak var delegate: DatabaseViewerCoordinatorDelegate?
@@ -145,7 +151,54 @@ final class DatabaseViewerCoordinator: Coordinator {
     private func getPresenterForModals() -> UIViewController {
         return splitViewController
     }
+}
+
+extension DatabaseViewerCoordinator {
+    public func canPerform(action: Action) -> Bool {
+        switch action {
+        case .lockDatabase:
+            return true
+        case .createEntry:
+            guard let currentGroup = currentGroup else {
+                assertionFailure()
+                return false
+            }
+            let permissions = getActionPermissions(for: currentGroup)
+            return permissions.canCreateEntry
+        case .createGroup:
+            guard let currentGroup = currentGroup else {
+                assertionFailure()
+                return false
+            }
+            let permissions = getActionPermissions(for: currentGroup)
+            return permissions.canCreateGroup
+        }
+    }
     
+    public func perform(action: Action) {
+        assert(canPerform(action: action))
+        switch action {
+        case .lockDatabase:
+            closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
+        case .createEntry:
+            let popoverAnchor = PopoverAnchor(
+                sourceView: primaryRouter.navigationController.view,
+                sourceRect: primaryRouter.navigationController.view.bounds)
+            primaryRouter.dismissModals(animated: true) { [self] in
+                showEntryEditor(for: nil, at: popoverAnchor)
+            }
+        case .createGroup:
+            let popoverAnchor = PopoverAnchor(
+                sourceView: primaryRouter.navigationController.view,
+                sourceRect: primaryRouter.navigationController.view.bounds)
+            primaryRouter.dismissModals(animated: true) { [self] in
+                showGroupEditor(for: nil, at: popoverAnchor)
+            }
+        }
+    }
+}
+
+extension DatabaseViewerCoordinator {
     private func showInitialMessages() {
         if loadingWarnings != nil {
             showLoadingWarnings(loadingWarnings!)

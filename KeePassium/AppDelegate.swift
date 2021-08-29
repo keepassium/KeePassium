@@ -8,6 +8,12 @@
 
 import KeePassiumLib
 
+@available(iOS 13, *)
+enum MenuIdentifier {
+    static let databaseFileMenu = UIMenu.Identifier("com.keepassium.menu.databaseFileMenu")
+    static let databaseItemsMenu = UIMenu.Identifier("com.keepassium.menu.databaseItemsMenu")
+}
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let helpURL = URL(string: "https://keepassium.com/apphelp/")!
@@ -71,10 +77,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         switch action {
+        case #selector(createDatabase):
+            return mainCoordinator.canPerform(action: .createDatabase)
+        case #selector(openDatabase):
+            return mainCoordinator.canPerform(action: .openDatabase)
+        case #selector(showAboutScreen):
+            return mainCoordinator.canPerform(action: .showAboutScreen)
+        case #selector(showSettingsScreen):
+            return mainCoordinator.canPerform(action: .showAppSettings)
+        case #selector(lockDatabase):
+            return mainCoordinator.canPerform(action: .lockDatabase)
+        case #selector(createEntry):
+            return mainCoordinator.canPerform(action: .createEntry)
+        case #selector(createGroup):
+            return mainCoordinator.canPerform(action: .createGroup)
         case #selector(showAppHelp):
             return true
-        case #selector(lockDatabase):
-            return mainCoordinator.canLockDatabase
         default:
             return super.canPerformAction(action, withSender: sender)
         }
@@ -83,6 +101,9 @@ extension AppDelegate {
     @available(iOS 13, *)
     override func buildMenu(with builder: UIMenuBuilder) {
         builder.remove(menu: .format)
+        if #available(iOS 14, *) {
+            builder.remove(menu: .openRecent)
+        }
 
         let aboutAppMenuTitle = builder.menu(for: .about)?.children.first?.title
             ?? String.localizedStringWithFormat(LString.menuAboutAppTemplate, AppInfo.name)
@@ -115,7 +136,7 @@ extension AppDelegate {
             title: LString.actionCreateDatabase,
             action: #selector(createDatabase),
             input: "n",
-            modifierFlags: [.command])
+            modifierFlags: [.command, .shift])
         let openDatabaseMenuItem = UIKeyCommand(
             title: LString.actionOpenDatabase,
             action: #selector(openDatabase),
@@ -127,11 +148,30 @@ extension AppDelegate {
             input: "l",
             modifierFlags: [.command]
         )
-        let databaseMenu = UIMenu(
-            options: .displayInline,
+        let databaseFileMenu = UIMenu(
+            identifier: MenuIdentifier.databaseFileMenu,
+            options: [.displayInline],
             children: [createDatabaseMenuItem, openDatabaseMenuItem, lockDatabaseMenuItem]
         )
-        builder.insertChild(databaseMenu, atStartOfMenu: .file)
+
+        let createEntryMenuItem = UIKeyCommand(
+            title: LString.actionCreateEntry,
+            action: #selector(createEntry),
+            input: "n",
+            modifierFlags: [.command])
+        let createGroupMenuItem = UIKeyCommand(
+            title: LString.actionCreateGroup,
+            action: #selector(createGroup),
+            input: "g",
+            modifierFlags: [.command])
+        let databaseItemsMenu = UIMenu(
+            identifier: MenuIdentifier.databaseItemsMenu,
+            options: [.displayInline],
+            children: [createEntryMenuItem, createGroupMenuItem]
+        )
+        
+        builder.insertChild(databaseFileMenu, atStartOfMenu: .file)
+        builder.insertSibling(databaseItemsMenu, beforeMenu: databaseFileMenu.identifier)
     }
     
     @objc
@@ -141,27 +181,37 @@ extension AppDelegate {
     
     @objc
     private func showAboutScreen() {
-        mainCoordinator.showAboutScreen()
+        mainCoordinator.perform(action: .showAboutScreen)
     }
     
     @objc
     private func showSettingsScreen() {
-        mainCoordinator.showSettingsScreen()
+        mainCoordinator.perform(action: .showAppSettings)
     }
     
     @objc
     private func createDatabase() {
-        mainCoordinator.createDatabase()
+        mainCoordinator.perform(action: .createDatabase)
     }
     
     @objc
     private func openDatabase() {
-        mainCoordinator.openDatabase()
+        mainCoordinator.perform(action: .openDatabase)
     }
     
     @objc
     private func lockDatabase() {
-        mainCoordinator.lockDatabase()
+        mainCoordinator.perform(action: .lockDatabase)
+    }
+    
+    @objc
+    private func createEntry() {
+        mainCoordinator.perform(action: .createEntry)
+    }
+
+    @objc
+    private func createGroup() {
+        mainCoordinator.perform(action: .createGroup)
     }
 }
 
