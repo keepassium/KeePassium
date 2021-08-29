@@ -68,6 +68,7 @@ final class MainCoordinator: Coordinator {
         watchdog.delegate = self
         
         rootSplitVC.delegate = self
+        rootSplitVC.maximumPrimaryColumnWidth = 700
         window.rootViewController = rootSplitVC
     }
     
