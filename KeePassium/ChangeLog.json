@@ -25,6 +25,10 @@
                     "type": 1
                 },
                 {
+                    "title": "🧩 Added: Possibility to save attachment files (in addition to view/export) (fixes #189) [thanks, Vitaly]",
+                    "type": 1
+                },
+                {
                     "title": "🧩 Added: Donations! Anyone can support the development now",
                     "type": 1
                 },
@@ -38,6 +42,10 @@
                 },
                 {
                     "title": "🛠 Improved: Integration with macOS: UI, hotkeys, navigation (for example: Cmd-F to start search, Esc to return to previous view) [thanks, Vitaly]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: As an experiment, won't reduce DB timeout in free version under heavy use",
                     "type": 1
                 },
                 {
@@ -154,6 +162,10 @@
                 },
                 {
                     "title": "🐞 Fixed: Large text did not display correctly in AutoFill [thanks, Peter]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Soft-enforce single-DB limit in free version (#52)",
                     "type": 1
                 },
                 {

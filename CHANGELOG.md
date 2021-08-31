@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [1.25.93] - 2021-08-31
+
+### Added
+
+- Possibility to save attachment files (in addition to view/export) (fixes #189) [thanks, Vitaly]
+
+### Improved
+
+- macOS: increase max width of split view's primary column
+- macOS: add entry/group creation to main menu
+- As an experiment, won't reduce DB timeout in free version under heavy use
+
+### Fixed
+
+- Soft-enforce single-DB limit in free version (#52)
+- Regression in 1.25.89: all DB Timeouts were paywalled in free version
+- Ensure incoming attachment files are closed after import
+
+
 ## [1.25.92] - 2021-08-27
 
 ### Added
