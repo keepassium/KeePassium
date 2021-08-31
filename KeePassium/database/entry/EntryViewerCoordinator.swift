@@ -259,28 +259,23 @@ extension EntryViewerCoordinator {
             allowCancelling: false,
             animated: true)
         
-        let doc = BaseDocument(fileURL: url, fileProvider: nil) 
-        doc.open { [weak self] result in
+        BaseDocument.read(url, completionQueue: .main) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let docData):
-                DispatchQueue.main.async {
-                    success(docData)
-                }
+                success(docData)
             case .failure(let fileAccessError):
                 Diag.error("Failed to open file to be attached [message: \(fileAccessError.localizedDescription)]")
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.progressHost?.hideProgressView(animated: false) 
-                    let vc = self.router.navigationController
-                    vc.showErrorAlert(fileAccessError)
-                }
+                self.progressHost?.hideProgressView(animated: false) 
+                let vc = self.router.navigationController
+                vc.showErrorAlert(fileAccessError)
             }
         }
     }
     
     private func addAttachment(name: String, data: ByteArray) {
         assert(canEditEntry)
+        assert(Thread.isMainThread)
         entry.backupState()
         
         let newAttachment = database.makeAttachment(name: name, data: data)
