@@ -88,12 +88,16 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
     }
 
     func refresh() {
+        refreshControls()
+        tableView.reloadData()
+    }
+    
+    private func refreshControls() {
         addFieldButton.isEnabled = allowsCustomFields
         fields.sort {
             itemCategory.compare($0.internalName, $1.internalName)
         }
         revalidate()
-        tableView.reloadData()
     }
     
     func revalidate() {
@@ -186,7 +190,7 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
                 self?.selectCustomFieldName(at: newIndexPath)
             }
         )
-        refresh()
+        refreshControls()
     }
     
     func didPressDeleteField(at indexPath: IndexPath) {
@@ -206,7 +210,7 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         tableView.beginUpdates()
         tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.endUpdates()
-        refresh()
+        refreshControls()
     }
     
 
