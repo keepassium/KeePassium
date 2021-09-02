@@ -80,10 +80,23 @@ protocol GroupViewerDelegate: AnyObject {
 }
 
 
-class GroupViewListCell: UITableViewCell {
+final class GroupViewerGroupCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+}
+
+final class GroupViewerEntryCell: UITableViewCell {
+    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var attachmentIndicator: UIImageView!
+    
+    var hasAttachments: Bool = false {
+        didSet {
+            attachmentIndicator?.isHidden = !hasAttachments
+        }
+    }
 }
 
 final class GroupViewerVC:
@@ -333,15 +346,8 @@ final class GroupViewerVC:
         let entryCell = tableView.dequeueReusableCell(
             withIdentifier: CellID.entry,
             for: indexPath)
-            as! GroupViewListCell
-        setupCell(
-            entryCell,
-            title: entry.resolvedTitle,
-            subtitle: getDetailInfo(for: entry),
-            image: UIImage.kpIcon(forEntry: entry),
-            isExpired: entry.isExpired,
-            itemCount: nil)
-        setupAccessibilityActions(entryCell, entry: entry)
+            as! GroupViewerEntryCell
+        setupEntryCell(entryCell, entry: entry)
         return entryCell
     }
     
@@ -360,58 +366,39 @@ final class GroupViewerVC:
         }
     }
     
-    private func getGroupCell(for group: Group, at indexPath: IndexPath) -> GroupViewListCell {
-        let groupCell = tableView.dequeueReusableCell(
+    private func getGroupCell(for group: Group, at indexPath: IndexPath) -> GroupViewerGroupCell {
+        let cell = tableView.dequeueReusableCell(
             withIdentifier: CellID.group,
             for: indexPath)
-            as! GroupViewListCell
+            as! GroupViewerGroupCell
         
         let itemCount = group.groups.count + group.entries.count
-        setupCell(
-            groupCell,
-            title: group.name,
-            subtitle: "\(itemCount)",
-            image: UIImage.kpIcon(forGroup: group),
-            isExpired: group.isExpired,
-            itemCount: itemCount
-        )
-        return groupCell
+        cell.titleLabel.setText(group.name, strikethrough: group.isExpired)
+        cell.subtitleLabel?.setText("\(itemCount)", strikethrough: group.isExpired)
+        cell.iconView?.image = UIImage.kpIcon(forGroup: group)
+        cell.accessibilityLabel = String.localizedStringWithFormat(
+            LString.titleGroupDescriptionTemplate,
+            group.name)
+        return cell
     }
 
-    private func getEntryCell(for entry: Entry, at indexPath: IndexPath) -> GroupViewListCell {
+    private func getEntryCell(for entry: Entry, at indexPath: IndexPath) -> GroupViewerEntryCell {
         let entryCell = tableView.dequeueReusableCell(
             withIdentifier: CellID.entry,
             for: indexPath)
-            as! GroupViewListCell
+            as! GroupViewerEntryCell
         
-        setupCell(
-            entryCell,
-            title: entry.resolvedTitle,
-            subtitle: getDetailInfo(for: entry),
-            image: UIImage.kpIcon(forEntry: entry),
-            isExpired: entry.isExpired,
-            itemCount: nil
-        )
-        setupAccessibilityActions(entryCell, entry: entry)
+        setupEntryCell(entryCell, entry: entry)
         return entryCell
     }
 
-    private func setupCell(
-        _ cell: GroupViewListCell,
-        title: String,
-        subtitle: String?,
-        image: UIImage?,
-        isExpired: Bool,
-        itemCount: Int?
-    ) {
-        cell.titleLabel.setText(title, strikethrough: isExpired)
-        cell.subtitleLabel?.setText(subtitle, strikethrough: isExpired)
-        cell.iconView?.image = image
-        
-        if itemCount != nil {
-            cell.accessibilityLabel = String.localizedStringWithFormat(
-                LString.titleGroupDescriptionTemplate,
-                title)
+    private func setupEntryCell(_ cell: GroupViewerEntryCell, entry: Entry) {
+        cell.titleLabel.setText(entry.resolvedTitle, strikethrough: entry.isExpired)
+        cell.subtitleLabel?.setText(getDetailInfo(for: entry), strikethrough: entry.isExpired)
+        cell.iconView?.image = UIImage.kpIcon(forEntry: entry)
+        cell.hasAttachments = entry.attachments.count > 0
+        if #available(iOS 13, *) {
+            cell.accessibilityCustomActions = getAccessibilityActions(for: entry)
         }
     }
     
@@ -438,11 +425,6 @@ final class GroupViewerVC:
         }
     }
     
-    
-    private func setupAccessibilityActions(_ cell: GroupViewListCell, entry: Entry) {
-        guard #available(iOS 13, *) else { return }
-        cell.accessibilityCustomActions = getAccessibilityActions(for: entry)
-    }
     
     @available(iOS 13, *)
     private func getAccessibilityActions(for entry: Entry) -> [UIAccessibilityCustomAction] {

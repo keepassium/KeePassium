@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,7 +59,7 @@
                                     <fragment content="Placeholder text in search mode, when nothing is found"/>
                                 </attributedString>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" id="MoA-V2-ZR5" customClass="GroupViewListCell" customModule="KeePassium" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" id="MoA-V2-ZR5" customClass="GroupViewerGroupCell" customModule="KeePassium" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="111.5" width="375" height="51.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MoA-V2-ZR5" id="rfV-hX-YdO">
@@ -109,12 +110,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="iconView" destination="raf-Bf-GLo" id="7QE-R9-q74"/>
-                                    <outlet property="subtitleLabel" destination="ttY-yZ-yRg" id="otR-iQ-MgH"/>
-                                    <outlet property="titleLabel" destination="7uR-HK-1Dd" id="VeQ-r6-aJ7"/>
+                                    <outlet property="iconView" destination="raf-Bf-GLo" id="MUA-jz-ISC"/>
+                                    <outlet property="subtitleLabel" destination="ttY-yZ-yRg" id="0xa-aq-sUj"/>
+                                    <outlet property="titleLabel" destination="7uR-HK-1Dd" id="KFx-3e-9Bz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryCell" id="mqP-Mr-NTh" customClass="GroupViewListCell" customModule="KeePassium" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryCell" id="mqP-Mr-NTh" customClass="GroupViewerEntryCell" customModule="KeePassium" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="163" width="375" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mqP-Mr-NTh" id="gG2-77-V2H">
@@ -129,46 +130,61 @@
                                                 <constraint firstAttribute="width" secondItem="XYa-LO-MrH" secondAttribute="height" multiplier="1:1" id="Lxf-bg-LPz"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zQD-hA-ZaY">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KqU-4H-iqE">
                                             <rect key="frame" x="61" y="11.5" width="298" height="30.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" ambiguous="YES" text="{Entry Title}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-aR-wD3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" name="PrimaryText"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="#bc-ignore!"/>
-                                                    </attributedString>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="{Entry Subtitle}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Db-9q-PM7">
-                                                    <rect key="frame" x="0.0" y="17" width="298" height="13.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                    <color key="textColor" name="AuxiliaryText"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="#bc-ignore!"/>
-                                                    </attributedString>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zQD-hA-ZaY" userLabel="Title Subtitle Stack">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="30.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" ambiguous="YES" text="{Entry Title}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-aR-wD3">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <color key="textColor" name="PrimaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <attributedString key="userComments">
+                                                                <fragment content="#bc-ignore!"/>
+                                                            </attributedString>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="{Entry Subtitle}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Db-9q-PM7">
+                                                            <rect key="frame" x="0.0" y="17" width="80" height="13.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="AuxiliaryText"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <attributedString key="userComments">
+                                                                <fragment content="#bc-ignore!"/>
+                                                            </attributedString>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-z3-IV4">
+                                                    <rect key="frame" x="273" y="4" width="25" height="22"/>
+                                                    <color key="tintColor" name="AuxiliaryText"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="X8P-x6-Nzw"/>
+                                                        <constraint firstAttribute="width" constant="25" id="gqH-C8-zKE"/>
+                                                    </constraints>
+                                                    <imageReference key="image" image="paperclip" catalog="system" symbolScale="small" renderingMode="template"/>
+                                                </imageView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="XYa-LO-MrH" firstAttribute="centerY" secondItem="gG2-77-V2H" secondAttribute="centerY" priority="750" id="3EO-rV-jrv"/>
-                                        <constraint firstItem="zQD-hA-ZaY" firstAttribute="centerY" secondItem="gG2-77-V2H" secondAttribute="centerY" id="VBS-cs-wY3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="KqU-4H-iqE" secondAttribute="trailing" id="6WO-6M-wqT"/>
+                                        <constraint firstItem="KqU-4H-iqE" firstAttribute="leading" secondItem="XYa-LO-MrH" secondAttribute="trailing" constant="16" id="VJm-RH-l1y"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="KqU-4H-iqE" secondAttribute="bottom" id="Vul-o3-wqT"/>
                                         <constraint firstItem="XYa-LO-MrH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gG2-77-V2H" secondAttribute="topMargin" id="aFq-fh-RIH"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="zQD-hA-ZaY" secondAttribute="trailing" id="df6-V5-uJz"/>
+                                        <constraint firstItem="KqU-4H-iqE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gG2-77-V2H" secondAttribute="topMargin" id="ePl-fL-XBm"/>
                                         <constraint firstItem="XYa-LO-MrH" firstAttribute="leading" secondItem="gG2-77-V2H" secondAttribute="leadingMargin" id="hlr-Ut-vxA"/>
-                                        <constraint firstItem="zQD-hA-ZaY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gG2-77-V2H" secondAttribute="topMargin" id="iQa-5B-Tin"/>
-                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="zQD-hA-ZaY" secondAttribute="bottom" id="p1W-qP-61o"/>
-                                        <constraint firstItem="zQD-hA-ZaY" firstAttribute="leading" secondItem="XYa-LO-MrH" secondAttribute="trailing" constant="16" id="sAj-yu-Kl5"/>
+                                        <constraint firstItem="KqU-4H-iqE" firstAttribute="centerY" secondItem="gG2-77-V2H" secondAttribute="centerY" id="jmt-WU-TWi"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XYa-LO-MrH" secondAttribute="bottom" id="vEF-xS-qsV"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="iconView" destination="XYa-LO-MrH" id="lNT-lf-pze"/>
-                                    <outlet property="subtitleLabel" destination="5Db-9q-PM7" id="qKw-JF-PU3"/>
-                                    <outlet property="titleLabel" destination="OjW-aR-wD3" id="j0R-Oz-lhw"/>
+                                    <outlet property="attachmentIndicator" destination="JIe-z3-IV4" id="Ffc-UB-R1A"/>
+                                    <outlet property="iconView" destination="XYa-LO-MrH" id="H0j-Ia-UF8"/>
+                                    <outlet property="subtitleLabel" destination="5Db-9q-PM7" id="k5X-bD-WrI"/>
+                                    <outlet property="titleLabel" destination="OjW-aR-wD3" id="5f7-Wf-qxW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -238,6 +254,7 @@
         <image name="database-settings-toolbar" width="25" height="25"/>
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <image name="lock-database-toolbar" width="25" height="25"/>
+        <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="settings-toolbar" width="25" height="25"/>
         <image name="sort-order-toolbar" width="25" height="25"/>
         <namedColor name="ActionTint">
