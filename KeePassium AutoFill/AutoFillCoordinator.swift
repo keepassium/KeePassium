@@ -290,20 +290,23 @@ extension AutoFillCoordinator: WatchdogDelegate {
         Diag.debug("Biometric auth: showing request")
         context.evaluatePolicy(policy, localizedReason: LString.titleTouchID) {
             [weak self](authSuccessful, authError) in
-            BiometricsHelper.biometricPromptLastSeenTime = Date.now
-            self?.isBiometricAuthShown = false
-            if authSuccessful {
-                Diag.info("Biometric auth successful")
-                DispatchQueue.main.async {
-                    [weak self] in
-                    self?.watchdog.unlockApp()
-                }
-            } else {
-                Diag.warning("Biometric auth failed [message: \(authError?.localizedDescription ?? "nil")]")
-                self?.passcodeInputController?.showKeyboard()
+            DispatchQueue.main.async { [weak self] in
+                self?.processBiometricAuthResult(successful: authSuccessful, error: authError)
             }
         }
         isBiometricAuthShown = true
+    }
+    
+    private func processBiometricAuthResult(successful: Bool, error: Error?) {
+        BiometricsHelper.biometricPromptLastSeenTime = Date.now
+        isBiometricAuthShown = false
+        if successful {
+            Diag.info("Biometric auth successful")
+            watchdog.unlockApp()
+        } else {
+            Diag.warning("Biometric auth failed [message: \(error?.localizedDescription ?? "nil")]")
+            passcodeInputController?.showKeyboard()
+        }
     }
 }
 
