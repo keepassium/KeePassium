@@ -12,9 +12,9 @@ import LocalAuthentication
 
 class SystemIssueDetector {
     public enum Issue {
-        static let allValues: [Issue] = [.autoFillFaceIDLoop_iOS_13_1_3]
+        static let allValues: [Issue] = [.autoFillBiometricIDLoop]
         
-        case autoFillFaceIDLoop_iOS_13_1_3
+        case autoFillBiometricIDLoop
     }
     
     private static var activeIssues = [Issue]()
@@ -27,20 +27,19 @@ class SystemIssueDetector {
         assert(activeIssues.isEmpty)
         for issue in Issue.allValues {
             switch issue {
-            case .autoFillFaceIDLoop_iOS_13_1_3:
-                if isAffectedByAutoFillFaceIDLoop_iOS_13_1_3() {
-                    Diag.warning("Detected a known system issue: \(issue)")
-                    Settings.current.isAffectedByAutoFillFaceIDLoop_iOS_13_1_3 = true
-                    activeIssues.append(.autoFillFaceIDLoop_iOS_13_1_3)
+            case .autoFillBiometricIDLoop:
+                if isAffectedByAutoFillBiometricIDLoop() {
+                    Diag.info("Detected a known system issue: \(issue)")
+                    Settings.current.isAffectedByAutoFillBiometricIDLoop = true
+                    activeIssues.append(.autoFillBiometricIDLoop)
                 }
             }
         }
     }
     
-    private static func isAffectedByAutoFillFaceIDLoop_iOS_13_1_3() -> Bool {
+    private static func isAffectedByAutoFillBiometricIDLoop() -> Bool {
         #if AUTOFILL_EXT
             guard #available(iOS 13.1.3, *) else { return false }
-            guard LAContext.getBiometryType() == .faceID else { return false }
             return true
         #else
             return false

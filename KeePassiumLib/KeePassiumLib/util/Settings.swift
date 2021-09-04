@@ -975,10 +975,10 @@ public class Settings {
         }
     }
     
-    public var isAffectedByAutoFillFaceIDLoop_iOS_13_1_3 = false
+    public var isAffectedByAutoFillBiometricIDLoop = false
     
-    public func maybeFixAutoFillFaceIDLoop_iOS_13_1_3(_ timeout: AppLockTimeout) -> AppLockTimeout {
-        if isAffectedByAutoFillFaceIDLoop_iOS_13_1_3 && timeout == .immediately {
+    public func maybeFixAutoFillBiometricIDLoop(_ timeout: AppLockTimeout) -> AppLockTimeout {
+        if isAffectedByAutoFillBiometricIDLoop && timeout == .immediately {
             return .after1second
         } else {
             return timeout
@@ -991,9 +991,9 @@ public class Settings {
                 .object(forKey: Keys.appLockTimeout.rawValue) as? Int,
                 let timeout = AppLockTimeout(rawValue: rawValue)
             {
-                return maybeFixAutoFillFaceIDLoop_iOS_13_1_3(timeout)
+                return maybeFixAutoFillBiometricIDLoop(timeout)
             }
-            return maybeFixAutoFillFaceIDLoop_iOS_13_1_3(AppLockTimeout.immediately)
+            return maybeFixAutoFillBiometricIDLoop(AppLockTimeout.immediately)
         }
         set {
             let oldValue = appLockTimeout
