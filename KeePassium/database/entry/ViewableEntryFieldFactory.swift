@@ -109,7 +109,7 @@ class TOTPViewableField: DynamicViewableField {
         return value
     }
     
-    var elapsedTimeFraction: Float? {
+    var elapsedTimeFraction: Double? {
         return totpGenerator?.elapsedTimeFraction
     }
     

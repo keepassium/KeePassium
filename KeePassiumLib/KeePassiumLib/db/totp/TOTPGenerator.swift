@@ -34,17 +34,20 @@ public enum TOTPHashAlgorithm {
 }
 
 public protocol TOTPGenerator: AnyObject {
-    var elapsedTimeFraction: Float { get }
+    var remainingTime: TimeInterval { get }
+    
+    var elapsedTimeFraction: Double { get }
     
     func generate() -> String
 }
 
 extension TOTPGenerator {
-    fileprivate func getElapsedTimeFraction(timeStep: Int) -> Float {
+    fileprivate func getRemainingTime(timeStep: Int) -> TimeInterval {
         let now = Date.now.timeIntervalSince1970
         let _timeStep = Double(timeStep)
         let totpTime = floor(now / _timeStep) * _timeStep
-        let result = Float((now - totpTime) / _timeStep)
+        let elapsedTime = now - totpTime
+        let result = TimeInterval(timeStep) - elapsedTime
         return result
     }
     
@@ -78,7 +81,12 @@ public class TOTPGeneratorRFC6238: TOTPGenerator {
     internal let length: Int
     internal let hashAlgorithm: TOTPHashAlgorithm
     
-    public var elapsedTimeFraction: Float { return getElapsedTimeFraction(timeStep: timeStep) }
+    public var remainingTime: TimeInterval {
+        return getRemainingTime(timeStep: timeStep)
+    }
+    public var elapsedTimeFraction: Double {
+        return remainingTime / Double(timeStep)
+    }
 
     internal init?(seed: ByteArray, timeStep: Int, length: Int, hashAlgorithm: TOTPHashAlgorithm) {
         guard length >= 4 && length <= 8 else { return nil }
@@ -111,7 +119,12 @@ public class TOTPGeneratorSteam: TOTPGenerator {
         "2","3","4","5","6","7","8","9","B","C","D","F","G",
         "H","J","K","M","N","P","Q","R","T","V","W","X","Y"]
 
-    public var elapsedTimeFraction: Float { return getElapsedTimeFraction(timeStep: timeStep) }
+    public var remainingTime: TimeInterval {
+        return getRemainingTime(timeStep: timeStep)
+    }
+    public var elapsedTimeFraction: Double {
+        return remainingTime / Double(timeStep)
+    }
     
     private let seed: ByteArray
     private let timeStep: Int

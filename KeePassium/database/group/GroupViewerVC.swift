@@ -90,12 +90,90 @@ final class GroupViewerEntryCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    
+    @IBOutlet private weak var hStack: UIStackView!
+    @IBOutlet private weak var showOTPButton: UIButton!
+    @IBOutlet private weak var otpView: OTPView!
     @IBOutlet private weak var attachmentIndicator: UIImageView!
     
     var hasAttachments: Bool = false {
         didSet {
-            attachmentIndicator?.isHidden = !hasAttachments
+            setVisible(attachmentIndicator, hasAttachments)
         }
+    }
+    
+    var totpGenerator: TOTPGenerator? {
+        didSet {
+            refresh()
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        attachmentIndicator.isHidden = true
+        showOTPButton.isHidden = true
+        otpView.isHidden = true
+        showOTPButton.setTitle("", for: .normal)
+        showOTPButton.accessibilityLabel = "OTP"
+        showOTPButton.setImage(UIImage.get(.clock), for: .normal)
+        otpView.tapHandler = { [weak self] in
+            self?.animateOTPValue(visible: false)
+        }
+    }
+    
+    private func setVisible(_ view: UIView, _ visible: Bool) {
+        let isViewAlreadyVisible = !view.isHidden
+        guard visible != isViewAlreadyVisible else {
+            return
+        }
+        view.isHidden = !visible
+    }
+    
+    public func refresh() {
+        guard let totpGenerator = totpGenerator else {
+            setVisible(showOTPButton, false)
+            setVisible(otpView, false)
+            return
+        }
+        if otpView.isHidden {
+            setVisible(showOTPButton, true)
+            return
+        }
+
+        otpView.value = totpGenerator.generate()
+        otpView.remainingTime = totpGenerator.remainingTime
+        otpView.refresh()
+        
+        let justSwitched = !showOTPButton.isHidden
+        if justSwitched {
+            animateOTPValue(visible: true)
+        }
+    }
+    
+    private func animateOTPValue(visible: Bool) {
+        let animateValue = (otpView.isHidden != !visible)
+        let animateButton = (showOTPButton.isHidden != visible)
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            options: .beginFromCurrentState,
+            animations: { [weak self] in
+                guard let self = self else { return }
+                if animateValue {
+                    self.otpView.isHidden = !visible
+                }
+                if animateButton {
+                    self.showOTPButton.isHidden = visible
+                }
+                self.hStack.layoutIfNeeded()
+            },
+            completion: nil
+        )
+    }
+    
+    @IBAction private func didPressShowOTP(_ sender: UIButton) {
+        setVisible(otpView, true)
+        refresh()
     }
 }
 
@@ -155,6 +233,8 @@ final class GroupViewerVC:
         return !(searchController?.isActive ?? false)
     }
     
+    private var cellRefreshTimer: Timer?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,6 +260,10 @@ final class GroupViewerVC:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.hidesSearchBarWhenScrolling = false
+        cellRefreshTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
+            [weak self] _ in
+            self?.refreshDynamicCells()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -194,6 +278,12 @@ final class GroupViewerVC:
                 searchController?.searchBar.becomeFirstResponder()
             }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cellRefreshTimer?.invalidate()
+        cellRefreshTimer = nil
     }
     
     private func setupSearch() {
@@ -249,6 +339,7 @@ final class GroupViewerVC:
     
     func refresh() {
         guard let group = group else { return }
+        
         actionPermissions =
             delegate?.getActionPermissions(for: group) ??
             DatabaseItemActionPermissions()
@@ -265,6 +356,14 @@ final class GroupViewerVC:
         tableView.reloadData()
         
         sortOrderButton.image = Settings.current.groupSortOrder.toolbarIcon
+    }
+    
+    private func refreshDynamicCells() {
+        tableView.visibleCells.forEach {
+            if let entryCell = $0 as? GroupViewerEntryCell {
+                entryCell.refresh()
+            }
+        }
     }
 
     private func sortGroupItems() {
@@ -396,6 +495,9 @@ final class GroupViewerVC:
         cell.titleLabel.setText(entry.resolvedTitle, strikethrough: entry.isExpired)
         cell.subtitleLabel?.setText(getDetailInfo(for: entry), strikethrough: entry.isExpired)
         cell.iconView?.image = UIImage.kpIcon(forEntry: entry)
+        
+        cell.totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry)
+        
         cell.hasAttachments = entry.attachments.count > 0
         if #available(iOS 13, *) {
             cell.accessibilityCustomActions = getAccessibilityActions(for: entry)

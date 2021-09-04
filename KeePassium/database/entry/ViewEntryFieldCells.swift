@@ -430,7 +430,7 @@ class TOTPFieldCell: ViewableFieldCell, DynamicFieldCell {
             return
         }
         let progress = 1 - (totpViewableField.elapsedTimeFraction ?? 0.0)
-        progressView.setProgress(progress, animated: true)
+        progressView.setProgress(Float(progress), animated: true)
 
         valueText.text = getUserVisibleValue()
     }

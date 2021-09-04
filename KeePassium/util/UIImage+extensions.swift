@@ -64,6 +64,7 @@ enum SystemImageName: String {
     case camera = "camera"
     case checkmark = "checkmark"
     case checkmarkCircle = "checkmark.circle"
+    case clock = "clock"
     case clockArrowCirclepath = "clock.arrow.circlepath"
     case docOnDoc = "doc.on.doc"
     case ellipsisCircle = "ellipsis.circle"

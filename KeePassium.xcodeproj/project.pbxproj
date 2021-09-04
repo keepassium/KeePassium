@@ -260,6 +260,10 @@
 		757FB3CD21F9C50700F016FA /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */; };
 		757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
 		757FB3D021F9C52600F016FA /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
+		757FDF6226E2519E0023E028 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FDF6126E2519E0023E028 /* OTPView.swift */; };
+		757FDF6326E2519E0023E028 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FDF6126E2519E0023E028 /* OTPView.swift */; };
+		757FDF6426E2519E0023E028 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FDF6126E2519E0023E028 /* OTPView.swift */; };
+		757FDF6526E2519E0023E028 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FDF6126E2519E0023E028 /* OTPView.swift */; };
 		75802631222EBC3800F4525F /* ProgressVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75802630222EBC3800F4525F /* ProgressVC.storyboard */; };
 		75802632222EBC3800F4525F /* ProgressVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75802630222EBC3800F4525F /* ProgressVC.storyboard */; };
 		75802634222ED11D00F4525F /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75802633222ED11D00F4525F /* ProgressVC.swift */; };
@@ -1395,6 +1399,7 @@
 		757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClipboardTimeoutVC.swift; sourceTree = "<group>"; };
 		757EF2F420EB3D1C0024AACD /* PasswordGeneratorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorVC.swift; sourceTree = "<group>"; };
 		757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeInputVC.swift; sourceTree = "<group>"; };
+		757FDF6126E2519E0023E028 /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		75802630222EBC3800F4525F /* ProgressVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProgressVC.storyboard; sourceTree = "<group>"; };
 		75802633222ED11D00F4525F /* ProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVC.swift; sourceTree = "<group>"; };
 		75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+keyWindow.swift"; sourceTree = "<group>"; };
@@ -2514,6 +2519,7 @@
 				758CA53C2569B9960034EF10 /* SwitchCell.xib */,
 				758CA5432569B9EA0034EF10 /* SwitchCell.swift */,
 				75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */,
+				757FDF6126E2519E0023E028 /* OTPView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -3199,6 +3205,7 @@
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				75D99DEF269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
+				757FDF6326E2519E0023E028 /* OTPView.swift in Sources */,
 				75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */,
 				7583EA7E2685D34A009969E7 /* SettingsFileSortingVC.swift in Sources */,
 				7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */,
@@ -3317,6 +3324,7 @@
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
 				75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75EA64182098FC0500DDB941 /* DatabasePickerVC.swift in Sources */,
+				757FDF6226E2519E0023E028 /* OTPView.swift in Sources */,
 				753FE83524C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				75BE091F2509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */,
@@ -3490,6 +3498,7 @@
 				75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75B38C28233E5B7C006BDEFC /* DatabasePickerVC.swift in Sources */,
 				753FE83724C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
+				757FDF6426E2519E0023E028 /* OTPView.swift in Sources */,
 				75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */,
 				75BE09202509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */,
 				75B38C2A233E5B7C006BDEFC /* EntryFileViewerVC.swift in Sources */,
@@ -3642,6 +3651,7 @@
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
 				75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
+				757FDF6526E2519E0023E028 /* OTPView.swift in Sources */,
 				75D7DFA0233E5E310029AD87 /* SearchHelper.swift in Sources */,
 				7583EA812685D34B009969E7 /* SettingsFileSortingVC.swift in Sources */,
 				75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */,
