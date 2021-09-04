@@ -85,6 +85,7 @@
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="folder" id="ei2-xw-PXd">
                                             <rect key="frame" x="16" y="10" width="29" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="tintColor" name="IconTint"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
