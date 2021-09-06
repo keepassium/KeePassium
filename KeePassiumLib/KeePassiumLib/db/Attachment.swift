@@ -21,7 +21,8 @@ public class Attachment: Eraseable {
     public var size: Int {
         if uncompressedSize < 0 {
             if isCompressed {
-                uncompressedSize = (try? data.gunzipped().count) ?? 0
+                let uncompressedData = try? data.gunzipped() 
+                uncompressedSize = uncompressedData?.count ?? 0
             } else {
                 uncompressedSize = data.count
             }
