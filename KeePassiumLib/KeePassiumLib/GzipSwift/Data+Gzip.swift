@@ -1,7 +1,7 @@
 /*
  The MIT License (MIT)
  
- © 2014-2019 1024jp <wolfrosch.com>
+ © 2014-2020 1024jp <wolfrosch.com>
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,12 @@
  THE SOFTWARE.
  */
 
-import Foundation
+import struct Foundation.Data
 
 #if os(Linux)
-import zlibLinux
+    import zlibLinux
 #else
-import zlib
+    import zlib
 #endif
 
 /// Compression level whose rawValue is based on the zlib's constants.
@@ -146,11 +146,11 @@ extension Data {
     }
     
     
-    /// Create a new `Data` object by compressing the receiver using zlib.
+    /// Create a new `Data` instance by compressing the receiver using zlib.
     /// Throws an error if compression failed.
     ///
     /// - Parameter level: Compression level.
-    /// - Returns: Gzip-compressed `Data` object.
+    /// - Returns: Gzip-compressed `Data` instance.
     /// - Throws: `GzipError`
     public func gzipped(level: CompressionLevel = .defaultCompression) throws -> Data {
         
@@ -209,17 +209,17 @@ extension Data {
     }
     
     
-    /// Create a new `Data` object by decompressing the receiver using zlib.
+    /// Create a new `Data` instance by decompressing the receiver using zlib.
     /// Throws an error if decompression failed.
     ///
-    /// - Returns: Gzip-decompressed `Data` object.
+    /// - Returns: Gzip-decompressed `Data` instance.
     /// - Throws: `GzipError`
     public func gunzipped() throws -> Data {
         
         guard !self.isEmpty else {
             return Data()
         }
-        
+
         var stream = z_stream()
         var status: Int32
         
@@ -279,10 +279,8 @@ extension Data {
 }
 
 
-private struct DataSize {
+private enum DataSize {
     
-    static let chunk = 2 ^ 14
+    static let chunk = 1 << 14
     static let stream = MemoryLayout<z_stream>.size
-    
-    private init() { }
 }
