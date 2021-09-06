@@ -1,6 +1,32 @@
 {
     "sections": [
         {
+            "version": "1.26",
+            "releaseDate": "2021-09-06T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Improved: Show OTP codes in entry list (closes #8) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Mark entries with attachments [thanks, David]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill could show Touch ID prompt repeatedly [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash when adding attachments [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Insert/delete animation of custom fields [thanks, G]",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.25",
             "releaseDate": "2021-08-27T00:00:00Z",
             "items": [

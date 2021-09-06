@@ -1,5 +1,19 @@
 #CHANGELOG
 
+## [1.26.94] - 2021-09-06
+
+### Improved 
+
+- Show OTP codes in entry list (closes #8) [thanks, everyone]
+- Mark entries with attachments [thanks, David]
+
+### Fixed
+
+- AutoFill could show Touch ID prompt repeatedly [thanks, everyone]
+- Crash when adding attachments [thanks, everyone]
+- Insert/delete animation of custom fields [thanks, G]
+
+
 ## [1.25.93] - 2021-08-31
 
 ### Added
