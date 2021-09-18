@@ -77,8 +77,6 @@ final class MainCoordinator: Coordinator {
         PremiumManager.shared.startObservingTransactions()
         
         FileKeeper.shared.delegate = self
-
-        showAppCoverScreen()
         
         watchdog.didBecomeActive()
         StoreReviewSuggester.registerEvent(.sessionStart)
