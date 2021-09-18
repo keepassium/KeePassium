@@ -669,10 +669,10 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) -> Bool {
-        guard Settings.current.isAutoUnlockStartupDatabase else {
-            return false
+        if isInitialDatabase && Settings.current.isAutoUnlockStartupDatabase {
+            return true
         }
-        return rootSplitVC.isCollapsed || isInitialDatabase
+        return rootSplitVC.isCollapsed
     }
     
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
