@@ -132,7 +132,7 @@ public class BaseDocument: UIDocument, Synchronizable {
                 completionQueue.addOperation {
                     completion?(.success)
                 }
-                Diag.info("Document closed OK")
+                Diag.verbose("Document closed OK")
             } else {
                 if let error = self.error {
                     Diag.error("Document closed with an error [message: \(error.localizedDescription)]")
