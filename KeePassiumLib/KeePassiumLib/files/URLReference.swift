@@ -395,8 +395,8 @@ public class URLReference:
             [self] (result) in 
             switch result {
             case .success(let url):
-                URLReference.backgroundQueue.async { 
-                    self.refreshInfo(for: url, timeout: timeout, completion: callback)
+                URLReference.backgroundQueue.async { [weak self, callback] in
+                    self?.refreshInfo(for: url, timeout: timeout, completion: callback)
                 }
             case .failure(let error):
                 self.registerInfoRefreshRequest(.completed)
