@@ -20,21 +20,6 @@
       "type" : "NonConsumable"
     },
     {
-      "displayPrice" : "2.99",
-      "familyShareable" : false,
-      "internalID" : "B71D3E20",
-      "localizations" : [
-        {
-          "description" : "",
-          "displayName" : "",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "com.keepassium.ios.donation.small",
-      "referenceName" : "Donation S",
-      "type" : "Consumable"
-    },
-    {
       "displayPrice" : "4.99",
       "familyShareable" : false,
       "internalID" : "295DD87A",
@@ -78,6 +63,21 @@
       "productID" : "com.keepassium.ios.iap.version.88",
       "referenceName" : "Version 88",
       "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "DA143D41",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.keepassium.ios.donation.small",
+      "referenceName" : "Donation S",
+      "type" : "Consumable"
     }
   ],
   "settings" : {

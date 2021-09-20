@@ -78,9 +78,12 @@ final class TipBoxCoordinator: Coordinator {
             tipBoxVC.setStatus(busy: false, text: LString.errorNoPurchasesAvailable, animated: true)
             return
         }
+        let sortedProducts = products.sorted {
+            $0.price.compare($1.price) == .orderedAscending
+        }
         tipBoxVC.setStatus(busy: false, text: nil, animated: true)
-        tipBoxVC.setProducts(products)
-        availableProducts = products
+        tipBoxVC.setProducts(sortedProducts)
+        availableProducts = sortedProducts
     }
     
     
