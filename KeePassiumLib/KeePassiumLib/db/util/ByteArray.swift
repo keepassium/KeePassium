@@ -240,9 +240,7 @@ public class ByteArray: Eraseable, Codable, CustomDebugStringConvertible {
     }
     
     public func erase() {
-        for i in 0..<count {
-            bytes[i] = 0
-        }
+        Eraser.erase(array: &bytes)
         invalidateHashCache()
     }
     

@@ -10,8 +10,9 @@ import Foundation
 
 final class Eraser {
     public static func erase(array: inout [UInt8]) {
-        for i in 0..<array.count {
-            array[i] = 0
+        let count = array.count
+        array.withUnsafeMutableBytes { pointer in
+            _ = memset(pointer.baseAddress, 0, count)
         }
     }
     
