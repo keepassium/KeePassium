@@ -124,7 +124,6 @@ public class DatabaseSaver: ProgressObserver {
     
     private func didResolveURL() {
         assert(operationQueue.isCurrent)
-        databaseFile.data.erase() 
         if Settings.current.isBackupDatabaseOnSave {
             progress.completedUnitCount = ProgressSteps.willMakeBackup
             progress.status = LString.Progress.makingDatabaseBackup
