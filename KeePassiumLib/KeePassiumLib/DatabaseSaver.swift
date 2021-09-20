@@ -19,7 +19,7 @@ public protocol DatabaseSaverDelegate: AnyObject {
         local: DatabaseFile,
         remoteURL: URL,
         remoteData: ByteArray,
-        completion: @escaping ((ByteArray?) -> Void)
+        completion: @escaping DatabaseSaver.ConflictResolutionHandler
     )
     
     func databaseSaver(
@@ -37,8 +37,9 @@ public protocol DatabaseSaverDelegate: AnyObject {
 }
 
 public class DatabaseSaver: ProgressObserver {
-    typealias ConflictResolutionCallback = ((ByteArray?) -> Void)
-    
+    public typealias ConflictResolutionHandler =
+        (_ targetData: ByteArray?, _ overwrite: Bool) -> Void
+
     fileprivate enum ProgressSteps {
         static let all: Int64 = 100 
         
@@ -177,17 +178,23 @@ public class DatabaseSaver: ProgressObserver {
         notifyShouldResolveConflict(
             remoteURL: document.fileURL,
             remoteData: document.data,
-            completion: { [self, document] newData in
+            completion: { [self, document] (targetData: ByteArray?, shouldOverwrite: Bool) in
                 assert(self.operationQueue.isCurrent)
-                guard let newData = newData else {
+                guard let targetData = targetData else {
                     Diag.debug("Saving aborted after sync conflict.")
                     document.close(completionQueue: nil, completion: nil)
                     finalize(withError: nil)
                     return
                 }
-                self.databaseFile.setData(newData, updateHash: false)
-                document.data = newData
-                self.overwriteRemote(document: document)
+                
+                if shouldOverwrite {
+                    self.databaseFile.setData(targetData, updateHash: false)
+                    document.data = targetData
+                    self.overwriteRemote(document: document)
+                } else {
+                    updateLatestBackup(with: targetData)
+                    finalize(withError: nil)
+                }
             }
         )
         
@@ -314,7 +321,7 @@ extension DatabaseSaver {
     private func notifyShouldResolveConflict(
         remoteURL: URL,
         remoteData: ByteArray,
-        completion: @escaping ConflictResolutionCallback
+        completion: @escaping ConflictResolutionHandler
     ) {
         delegateQueue.async { [weak self] in
             guard let self = self else { return }
@@ -324,9 +331,9 @@ extension DatabaseSaver {
                 local: self.databaseFile,
                 remoteURL: remoteURL,
                 remoteData: remoteData,
-                completion: { [self] resolvedData in
+                completion: { [self] (resolvedData, shouldOverwrite) in
                     self.operationQueue.addOperation {
-                        completion(resolvedData)
+                        completion(resolvedData, shouldOverwrite)
                     }
                 }
             )

@@ -359,11 +359,11 @@ extension DatabaseCreatorCoordinator: DatabaseSaverDelegate {
         local: DatabaseFile,
         remoteURL: URL,
         remoteData: ByteArray,
-        completion: @escaping ((ByteArray?) -> Void)
+        completion: @escaping DatabaseSaver.ConflictResolutionHandler
     ) {
         Diag.warning("Sync conflict when creating a new database. Overwriting")
         assertionFailure()
-        completion(local.data)
+        completion(local.data, true)
     }
     
     func databaseSaver(

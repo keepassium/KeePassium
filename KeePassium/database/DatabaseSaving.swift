@@ -89,23 +89,23 @@ extension DatabaseSaving {
         local: DatabaseFile,
         remoteURL: URL,
         remoteData: ByteArray,
-        completion: @escaping ((ByteArray?) -> Void)
+        completion: @escaping DatabaseSaver.ConflictResolutionHandler
     ) {
         let alert = SyncConflictAlert.instantiateFromStoryboard()
         alert.responseHandler = { [weak self, completion] strategy in
             guard let self = self else { return }
             switch strategy {
             case .cancelSaving:
-                completion(nil)
+                completion(nil, false)
                 self.databaseSaver(databaseSaver, didCancelSaving: local)
             case .overwriteRemote:
-                completion(local.data)
+                completion(local.data, true)
             case .merge:
                 assertionFailure("Not implemented")
-                completion(nil)
+                completion(nil, false)
                 self.databaseSaver = nil
             case .saveAs:
-                completion(nil)
+                completion(local.data, false)
                 self.databaseSaver = nil
                 self.saveToAnotherFile(databaseFile: local) 
             }
