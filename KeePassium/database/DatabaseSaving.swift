@@ -92,6 +92,7 @@ extension DatabaseSaving {
         completion: @escaping DatabaseSaver.ConflictResolutionHandler
     ) {
         let alert = SyncConflictAlert.instantiateFromStoryboard()
+        alert.setData(local: local, remote: remoteURL)
         alert.responseHandler = { [weak self, completion] strategy in
             guard let self = self else { return }
             switch strategy {

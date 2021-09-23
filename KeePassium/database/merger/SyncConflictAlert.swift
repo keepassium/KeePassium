@@ -9,8 +9,15 @@
 import KeePassiumLib
 
 final class SyncConflictAlertMessageCell: UITableViewCell {
+    fileprivate var buttonHandler: ((UIButton)->Void)?
+    
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var subtitleLabel: UILabel!
+    @IBOutlet fileprivate weak var toggleButton: UIButton!
+     
+    @IBAction func didPressToggleButton(_ sender: UIButton) {
+        buttonHandler?(sender)
+    }
 }
 
 final class SyncConflictAlert: UIViewController, Refreshable {
@@ -18,7 +25,6 @@ final class SyncConflictAlert: UIViewController, Refreshable {
     @IBOutlet private weak var tableViewHeightConstraint: NSLayoutConstraint!
 
     private enum CellID {
-        static let fixedCellCount = 1
         static let message = "messageCell"
         static let file = "fileCell"
         static let option = "optionCell"
@@ -33,27 +39,41 @@ final class SyncConflictAlert: UIViewController, Refreshable {
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .long
-        dateFormatter.doesRelativeDateFormatting = true
+        dateFormatter.timeStyle = .medium
+        dateFormatter.doesRelativeDateFormatting = false
         dateFormatter.formattingContext = .listItem
         return dateFormatter
+    }()
+    
+    private let fileSizeFormatter: ByteCountFormatter = {
+        let formatter = ByteCountFormatter()
+        formatter.formattingContext = .listItem
+        formatter.countStyle = .file
+        return formatter
     }()
     
     private var localFileInfo: FileInfo?
     private var remoteFileInfo: FileInfo?
     private var remoteFileError: FileAccessError?
+    private var isShowFileInfo = false
+    
+    private let infoRefreshQueue = DispatchQueue(
+        label: "com.keepassium.SyncConflictInfoRefresh",
+        qos: .utility
+    )
     
     public func setData(local: DatabaseFile, remote: URL) {
         localFileInfo = local.fileReference?.getCachedInfoSync(canFetch: false)
         refresh()
-        remote.readFileInfo(canUseCache: false) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let fileInfo):
-                self.remoteFileInfo = fileInfo
-                self.refresh()
-            case .failure(let fileAccessError):
-                self.remoteFileError = fileAccessError
+        infoRefreshQueue.async { [self] in
+            remote.readFileInfo(canUseCache: false) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let fileInfo):
+                    self.remoteFileInfo = fileInfo
+                case .failure(let fileAccessError):
+                    self.remoteFileError = fileAccessError
+                }
                 self.refresh()
             }
         }
@@ -75,7 +95,7 @@ final class SyncConflictAlert: UIViewController, Refreshable {
         view.insertSubview(bgView, at: 0)
         
         tableView.estimatedRowHeight = 60
-        tableView.rowHeight  = UITableView.automaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.alwaysBounceVertical = false
         
         tableView.dataSource = self
@@ -92,7 +112,13 @@ final class SyncConflictAlert: UIViewController, Refreshable {
         super.viewWillDisappear(animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refresh()
+    }
+    
     func refresh() {
+        guard isViewLoaded else { return }
         tableView.reloadData()
     }
     
@@ -115,7 +141,7 @@ extension SyncConflictAlert: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return CellID.fixedCellCount
+            return isShowFileInfo ? 3 : 1
         case 1:
             return options.count
         default:
@@ -140,12 +166,12 @@ extension SyncConflictAlert: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: CellID.file,
                     for: indexPath)
-                return setupLocalFileCell(cell)
+                return setupLocalFileInfoCell(cell)
             case 2:
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: CellID.file,
                     for: indexPath)
-                return setupRemoteFileCell(cell)
+                return setupRemoteFileInfoCell(cell)
             default:
                 fatalError()
             }
@@ -160,31 +186,35 @@ extension SyncConflictAlert: UITableViewDataSource {
     }
     
     private func setupMessageCell(_ cell: SyncConflictAlertMessageCell) -> UITableViewCell {
-        cell.titleLabel?.text = LString.titleSyncConflict
+        cell.titleLabel?.text = localFileInfo?.fileName ?? LString.titleSyncConflict
         cell.subtitleLabel?.text = LString.syncConflictMessage
-        return cell
-    }
-    
-    private func setupLocalFileCell(_ cell: UITableViewCell) -> UITableViewCell {
-        cell.textLabel?.text = "Local database"
-        cell.detailTextLabel?.text = String.localizedStringWithFormat(
-            "Name: %@\nModified: %@",
-            localFileInfo?.fileName ?? "?",
-            formatFileDate(localFileInfo?.modificationDate) ?? "?")
-        return cell
-    }
-    
-    private func setupRemoteFileCell(_ cell: UITableViewCell) -> UITableViewCell {
-        cell.textLabel?.text = "Target database"
-        if let remoteFileInfo = remoteFileInfo {
-            cell.detailTextLabel?.text = String.localizedStringWithFormat(
-                "Name: %@\nModified: %@",
-                remoteFileInfo.fileName,
-                formatFileDate(remoteFileInfo.modificationDate) ?? "?"
-            )
-        } else {
-            cell.detailTextLabel?.text = remoteFileError?.localizedDescription ?? LString.databaseStatusLoading
+        cell.toggleButton.setTitle(LString.actionShowDetails, for: .normal)
+        cell.buttonHandler = { [weak self] button in
+            guard let self = self else { return }
+            self.isShowFileInfo = !self.isShowFileInfo
+            button.isHidden = true
+            self.refresh()
         }
+        return cell
+    }
+    
+    private func setupLocalFileInfoCell(_ cell: UITableViewCell) -> UITableViewCell {
+        cell.textLabel?.text = LString.syncConflictLoadedVersion
+        cell.detailTextLabel?.text = formatDescription(localFileInfo)
+        return cell
+    }
+    
+    private func setupRemoteFileInfoCell(_ cell: UITableViewCell) -> UITableViewCell {
+        cell.textLabel?.text = LString.syncConflictCurrentVersion
+        
+        let currentVersionDescription: String
+        if let remoteFileInfo = remoteFileInfo {
+            currentVersionDescription = formatDescription(remoteFileInfo)
+        } else {
+            currentVersionDescription = remoteFileError?.localizedDescription
+                ?? LString.databaseStatusLoading
+        }
+        cell.detailTextLabel?.text = currentVersionDescription
         return cell
     }
     
@@ -216,11 +246,15 @@ extension SyncConflictAlert: UITableViewDataSource {
         return cell
     }
     
-    private func formatFileDate(_ date: Date?) -> String? {
-        guard let date = date else {
-            return nil
+    private func formatDescription(_ fileInfo: FileInfo?) -> String {
+        var lines = [String]()
+        if let modDate = fileInfo?.modificationDate {
+            lines.append(dateFormatter.string(from: modDate))
         }
-        return dateFormatter.string(from: date)
+        if let fileSize = fileInfo?.fileSize {
+            lines.append(fileSizeFormatter.string(fromByteCount: fileSize))
+        }
+        return lines.joined(separator: "\n")
     }
 }
 
@@ -254,7 +288,18 @@ extension LString {
         value: "The database has changed since it was loaded in KeePassium.",
         comment: "Message shown in case of database sync conflict."
     )
-
+    
+    public static let syncConflictLoadedVersion = NSLocalizedString(
+        "[Database/SyncConflict/loadedVersion]",
+        value: "Loaded version",
+        comment: "Title: the loaded (on-device) database version in case of sync conflict."
+    )
+    public static let syncConflictCurrentVersion = NSLocalizedString(
+        "[Database/SyncConflict/currentVersion]",
+        value: "Current version",
+        comment: "Title: the current (on-server) database version in case of sync conflict."
+    )
+    
     public static let conflictResolutionOverwriteAction = LString.actionOverwrite
     public static let conflictResolutionOverwriteDescription = NSLocalizedString(
         "[Database/SyncConflict/Overwrite/description]",
