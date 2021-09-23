@@ -69,6 +69,8 @@ final class DatabaseLoadingWarningsVC: UIAlertController {
         }
         alert.addAction(closeDatabaseAction)
         viewController.present(alert, animated: true, completion: nil)
+        
+        Diag.warning("DB loading warnings shown [issues: \(warnings.getRedactedDescription())]")
     }
 }
 

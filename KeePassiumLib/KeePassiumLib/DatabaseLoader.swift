@@ -141,7 +141,7 @@ public class DatabaseLoader: ProgressObserver {
     
     private func loadInBackgroundQueue() {
         assert(!Thread.isMainThread)
-        Diag.info("Will load database [fileProvider: \(dbRef.fileProvider?.rawValue ?? "nil")]")
+        Diag.info("Will load database [location: \(dbRef.location), fileProvider: \(dbRef.fileProvider?.rawValue ?? "nil")]")
         startBackgroundTask()
         startObservingProgress()
         notifyWillLoadDatabase()
@@ -304,15 +304,19 @@ public class DatabaseLoader: ProgressObserver {
     }
     
     private func addFileLocationWarnings(to warnings: DatabaseLoadingWarnings) {
-        guard let dbFileInfo = dbRef.getCachedInfoSync(canFetch: false) else {
-            return
-        }
-        
-        if dbFileInfo.isInTrash {
-            warnings.addIssue(.databaseFileIsInTrash(fileName: dbFileInfo.fileName))
-        }
         if dbRef.location == .internalBackup {
             let issue = DatabaseLoadingWarnings.IssueType.temporaryBackupDatabase
+            warnings.addIssue(issue)
+            Diag.warning(warnings.getDescription(for: issue))
+        }
+        
+        guard let dbFileInfo = dbRef.getCachedInfoSync(canFetch: false) else {
+            Diag.warning("Could not refresh file info, some warnings might be missing")
+            return
+        }
+        if dbFileInfo.isInTrash {
+            let issue = DatabaseLoadingWarnings.IssueType
+                .databaseFileIsInTrash(fileName: dbFileInfo.fileName)
             warnings.addIssue(issue)
             Diag.warning(warnings.getDescription(for: issue))
         }

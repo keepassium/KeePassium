@@ -55,6 +55,23 @@ public final class DatabaseLoadingWarnings {
             }
         }
         
+        internal var debugName: String {
+            switch self {
+            case .unusedAttachments:
+                return "unusedAttachments"
+            case .missingBinaries:
+                return "missingBinaries"
+            case .namelessAttachments:
+                return "namelessAttachments"
+            case .namelessCustomFields:
+                return "namelessCustomFields"
+            case .databaseFileIsInTrash:
+                return "databaseFileIsInTrash"
+            case .temporaryBackupDatabase:
+                return "temporaryBackupDatabase"
+            }
+        }
+        
         internal func getDescription(with databaseGenerator: String) -> String {
             switch self {
             case .unusedAttachments:
@@ -91,6 +108,7 @@ public final class DatabaseLoadingWarnings {
             }
         }
     }
+    
     public internal(set) var databaseGenerator: String?
 
     public private(set) var issues = [IssueType]()
@@ -110,6 +128,10 @@ public final class DatabaseLoadingWarnings {
     
     public func getDescription(for issue: IssueType) -> String {
         return issue.getDescription(with: databaseGenerator ?? "")
+    }
+    
+    public func getRedactedDescription() -> String {
+        return issues.map({ $0.debugName}).joined(separator: ", ")
     }
     
     public func getHelpURL() -> URL? {
