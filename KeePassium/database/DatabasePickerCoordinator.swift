@@ -14,6 +14,12 @@ protocol DatabasePickerCoordinatorDelegate: AnyObject {
     func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool
 }
 
+public enum DatabasePickerMode {
+    case full
+    case autoFill
+    case light
+}
+
 final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     var childCoordinators = [Coordinator]()
     
@@ -24,12 +30,15 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     
     private let router: NavigationRouter
     private let databasePickerVC: DatabasePickerVC
+    private let mode: DatabasePickerMode
     
     private var fileKeeperNotifications: FileKeeperNotifications!
     
-    init(router: NavigationRouter) {
+    init(router: NavigationRouter, mode: DatabasePickerMode = .full) {
         self.router = router
+        self.mode = mode
         databasePickerVC = DatabasePickerVC.instantiateFromStoryboard()
+        databasePickerVC.mode = mode
         super.init()
         
         databasePickerVC.delegate = self
@@ -44,7 +53,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     
     func start() {
-        router.push(databasePickerVC, animated: false, onPop: { [weak self] in
+        router.push(databasePickerVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
@@ -63,7 +72,12 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     
     public func selectDatabase(_ fileRef: URLReference?, animated: Bool) {
         selectedDatabase = fileRef
-        Settings.current.startupDatabase = fileRef
+        switch mode {
+        case .full, .autoFill:
+            Settings.current.startupDatabase = fileRef
+        case .light:
+            break
+        }
         databasePickerVC.selectDatabase(fileRef, animated: animated)
         delegate?.didSelectDatabase(fileRef, in: self)
     }
@@ -218,6 +232,13 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         from databases: [URLReference],
         in viewController: DatabasePickerVC
     ) -> URLReference? {
+        switch mode {
+        case .light:
+            return nil
+        case .full, .autoFill:
+            break
+        }
+        
         defer {
             shouldSelectDefaultDatabase = false
         }
@@ -271,11 +292,11 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     func didPressCreateDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         createDatabase(presenter: viewController)
     }
-    #else
+    #endif
+    
     func didPressCancel(in viewController: DatabasePickerVC) {
         router.pop(viewController: databasePickerVC, animated: true)
     }
-    #endif
     
     func didPressAddExistingDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         addExistingDatabase(presenter: viewController)

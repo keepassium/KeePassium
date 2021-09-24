@@ -737,6 +737,7 @@ extension DatabaseViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
 
 extension DatabaseViewerCoordinator: ItemRelocationCoordinatorDelegate {
     func didRelocateItems(in coordinator: ItemRelocationCoordinator) {
+        getPresenterForModals().showSuccessNotification(LString.actionDone)
         refresh()
     }
 }

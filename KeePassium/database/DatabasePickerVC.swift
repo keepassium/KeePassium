@@ -41,9 +41,8 @@ protocol DatabasePickerDelegate: AnyObject {
     func didPressHelp(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressListOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
-    #else
-    func didPressCancel(in viewController: DatabasePickerVC)
     #endif
+    func didPressCancel(in viewController: DatabasePickerVC)
 
     func didPressAddDatabaseOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressAddExistingDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
@@ -89,6 +88,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
     
     public weak var delegate: DatabasePickerDelegate?
+    public var mode: DatabasePickerMode = .light
     
     private var _isEnabled = true
     var isEnabled: Bool {
@@ -137,13 +137,24 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
         clearsSelectionOnViewWillAppear = false
         
-        #if AUTOFILL_EXT
+        switch mode {
+        case .autoFill:
+            setupCancelButton()
+        case .full, .light:
+            if (navigationController?.viewControllers.count ?? 1) > 1 {
+                navigationItem.leftBarButtonItem = nil
+            } else {
+                setupCancelButton()
+            }
+        }
+    }
+    
+    private func setupCancelButton() {
         let cancelBarButton = UIBarButtonItem(
             barButtonSystemItem: .cancel,
             target: self,
             action: #selector(didPressCancel(_:)))
         navigationItem.leftBarButtonItem = cancelBarButton
-        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,11 +164,13 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        #if MAIN_APP
-        navigationController?.setToolbarHidden(false, animated: false)
-        #else
-        navigationController?.setToolbarHidden(true, animated: false)
-        #endif
+        
+        switch mode {
+        case .full:
+            navigationController?.setToolbarHidden(false, animated: false)
+        case .autoFill, .light:
+            navigationController?.setToolbarHidden(true, animated: false)
+        }
         settingsNotifications.startObserving()
         refresh()
     }
@@ -186,9 +199,17 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     func refresh() {
         sortOrderButton.image = Settings.current.filesSortOrder.toolbarIcon
         
+        let includeBackup: Bool
+        switch mode {
+        case .full, .autoFill:
+            includeBackup = Settings.current.isBackupFilesVisible
+        case .light:
+            includeBackup = false
+        }
+        
         databaseRefs = FileKeeper.shared.getAllReferences(
             fileType: .database,
-            includeBackup: Settings.current.isBackupFilesVisible)
+            includeBackup: includeBackup)
         sortFileList()
         
         if let defaultDatabase = delegate?.getDefaultDatabase(from: databaseRefs, in: self) {
@@ -263,11 +284,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressHelp(at: popoverAnchor, in: self)
     }
-    #else
+    #endif
+    
     @objc func didPressCancel(_ sender: UIBarButtonItem) {
         delegate?.didPressCancel(in: self)
     }
-    #endif
     
     @IBAction func didPressAddDatabase(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
@@ -284,10 +305,15 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
         
         #if MAIN_APP
-        optionsSheet.addAction(title: LString.actionCreateDatabase, style: .default) {
-            [weak self] _ in
-            guard let self = self else { return }
-            self.delegate?.didPressCreateDatabase(at: popoverAnchor, in: self)
+        switch mode {
+        case .full, .light:
+            optionsSheet.addAction(title: LString.actionCreateDatabase, style: .default) {
+                [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressCreateDatabase(at: popoverAnchor, in: self)
+            }
+        case .autoFill:
+            assertionFailure("Tried to use .autoFill mode in main app")
         }
         #endif
         

@@ -1242,8 +1242,7 @@ public class Database2: Database {
 
     @discardableResult
     public func addCustomIcon(pngData: ByteArray) -> CustomIcon2 {
-        let candidateHash = pngData.sha256
-        if let existingIcon = customIcons.first(where: { $0.data.sha256 == candidateHash }) {
+        if let existingIcon = findCustomIcon(pngDataSha256: pngData.sha256) {
             return existingIcon
         }
         
@@ -1253,6 +1252,14 @@ public class Database2: Database {
         return newCustomIcon
     }
     
+    public func findCustomIcon(pngDataSha256: ByteArray) -> CustomIcon2? {
+        return customIcons.first(where: { $0.data.sha256 == pngDataSha256 })
+    }
+
+    public func getCustomIcon(with uuid: UUID) -> CustomIcon2? {
+        return customIcons.first(where: { $0.uuid == uuid })
+    }
+
     @discardableResult
     public func deleteCustomIcon(uuid: UUID) -> Bool {
         guard customIcons.contains(where: { $0.uuid == uuid }) else {

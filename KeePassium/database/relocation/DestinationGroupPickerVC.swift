@@ -13,6 +13,10 @@ protocol DestinationGroupPickerDelegate: AnyObject {
     func didPressCancel(in groupPicker: DestinationGroupPickerVC)
     func shouldSelectGroup(_ group: Group, in groupPicker: DestinationGroupPickerVC) -> Bool
     func didSelectGroup(_ group: Group, in groupPicker: DestinationGroupPickerVC)
+    func didPressSwitchDatabase(
+        at popoverAnchor: PopoverAnchor,
+        in groupPicker: DestinationGroupPickerVC
+    )
 }
 
 class DestinationGroupPickerCell: UITableViewCell {
@@ -105,6 +109,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             } else {
                 rootNode = nil
             }
+            selectedGroup = rootGroup
             refresh()
         }
     }
@@ -127,6 +132,22 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         case .copy:
             doneButton.title = LString.actionCopy
         }
+        
+        let switchDatabaseButton = UIBarButtonItem(
+            title: LString.actionSwitchDatabase,
+            style: .plain,
+            target: self,
+            action: #selector(didPressSwitchDatabase(_:))
+        )
+        
+        setToolbarItems(
+            [
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                switchDatabaseButton,
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            ],
+            animated: false
+        )
     }
     
     func refresh() {
@@ -317,4 +338,18 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         }
         delegate?.didSelectGroup(selectedGroup, in: self)
     }
+    
+    @objc
+    private func didPressSwitchDatabase(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressSwitchDatabase(at: popoverAnchor, in: self)
+    }
+}
+
+extension LString {
+    public static let actionSwitchDatabase = NSLocalizedString(
+        "[Database/Switch/action]",
+        value: "Switch Database",
+        comment: "Action/button to switch from current to some other database."
+    )
 }
