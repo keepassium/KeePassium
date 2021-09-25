@@ -24,6 +24,8 @@ extension PremiumFeature {
             return LString.premiumFeatureGenericTitle
         case .canChangeAppIcon:
             return LString.premiumFeatureChangeAppIconTitle
+        case .canRelocateAcrossDatabases:
+            return LString.premiumFeatureGenericTitle
         case .canUseExpressUnlock,
              .canViewFieldReferences:
             assertionFailure("Implicit feature, no upgrade notice required")
@@ -44,7 +46,8 @@ extension PremiumFeature {
         case .canKeepMasterKeyOnDatabaseTimeout,
              .canChangeAppIcon,
              .canUseExpressUnlock,
-             .canViewFieldReferences:
+             .canViewFieldReferences,
+             .canRelocateAcrossDatabases:
             return LString.premiumFeatureGenericDescription
         }
     }

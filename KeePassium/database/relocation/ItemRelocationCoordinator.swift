@@ -338,7 +338,14 @@ extension ItemRelocationCoordinator: DestinationGroupPickerDelegate {
         at popoverAnchor: PopoverAnchor,
         in groupPicker: DestinationGroupPickerVC
     ) {
-        pickDifferentDatabase()
+        performPremiumActionOrOfferUpgrade(
+            for: .canRelocateAcrossDatabases,
+            allowBypass: false,
+            in: groupPicker,
+            actionHandler: { [weak self] in
+                self?.pickDifferentDatabase()
+            }
+        )
     }
 }
 
