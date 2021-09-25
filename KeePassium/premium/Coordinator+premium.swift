@@ -27,8 +27,13 @@ extension Coordinator {
     ) {
         if PremiumManager.shared.isAvailable(feature: feature) {
             actionHandler()
-        } else {
+            return
+        }
+        
+        if allowBypass {
             offerPremiumUpgrade(for: feature, bypassAction: actionHandler, in: viewController)
+        } else {
+            offerPremiumUpgrade(for: feature, bypassAction: nil, in: viewController)
         }
     }
 
