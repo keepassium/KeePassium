@@ -33,7 +33,7 @@ public class PasswordGenerator {
         case includeLookAlike
     }
     
-    public static func generate(length: Int, parameters: Set<Parameters>) throws -> String {
+    public static func generate(length: Int, parameters: Set<Parameters>) -> String {
         var charSet: Set<String> = []
         if parameters.contains(.includeLowerCase) {
             charSet.formUnion(charSetLower)
@@ -51,15 +51,14 @@ public class PasswordGenerator {
             charSet.subtract(charSetLookAlike)
         }
         
-        assert(charSet.count < 0xFF, "charSet has more than 256 entries, password generation will be suboptimal")
         let charSetArray = charSet.sorted()
-        
-        let randomSeq = try CryptoManager.getRandomBytes(count: length) 
-        let randomBytes = randomSeq.bytesCopy()
-        
+        let charSetSize = UInt32(charSet.count)
+
         var password: [String] = []
-        for byte in randomBytes {
-            password.append(charSetArray[Int(byte) % charSet.count])
+        var rng = SecureRandomNumberGenerator()
+        for _ in 0..<length {
+            let randomIndex = Int(rng.next(upperBound: charSetSize))
+            password.append(charSetArray[randomIndex])
         }
         return password.joined()
     }

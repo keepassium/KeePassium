@@ -87,18 +87,14 @@ class PasswordGeneratorVC: UITableViewController, Refreshable {
             return
         }
         
-        do {
-            password = try PasswordGenerator.generate(
-                length: settings.passwordGeneratorLength,
-                parameters: params)
-            passwordLabel.attributedText = PasswordStringHelper.decorate(
-                password,
-                font: passwordLabel.font
-            )
-        } catch {
-            Diag.error("RNG error [message: \(error.localizedDescription)]")
-            showErrorAlert(error)
-        }
+        password = PasswordGenerator.generate(
+            length: settings.passwordGeneratorLength,
+            parameters: params
+        )
+        passwordLabel.attributedText = PasswordStringHelper.decorate(
+            password,
+            font: passwordLabel.font
+        )
     }
     
     
