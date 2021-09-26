@@ -91,6 +91,18 @@
 /* Action/button to lock current database (the next time, it will ask for the master key). */
 "[Database/Opened/action] Lock Database" = "ล็อกฐานข้อมูล";
 
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "ปิดฐานข้อมูล";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "ข้ามและไปต่อ";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "เปลี่ยนแปลงฐานข้อมูลครั้งล่าสุดโดย: %@";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "ฐานข้อมูลของคุณพร้อมแล้ว แต่ยังมีปัญหาอยู่";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "ลบฐานข้อมูลออกจากรายการหรือไม่?\n ไฟล์จะยังคงเดิมและคุณยังสามารถเพิ่มไฟล์ได้ในภายหลัง";
 
@@ -266,7 +278,7 @@
 "[Generic] Restore" = "คืนค่า";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
-"[Generic] Reveal in Finder" = "Reveal in Finder";
+"[Generic] Reveal in Finder" = "แสดงใน Finder";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "แชร์";
@@ -299,7 +311,7 @@
 "[Generic/File] Remove" = "ลบออก";
 
 /* Action/button to save data to a different file */
-"[Generic/File/Save as]" = "Save as…";
+"[Generic/File/Save as]" = "บันทึกเป็น...";
 
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "ส่งออกผิดพลาด";

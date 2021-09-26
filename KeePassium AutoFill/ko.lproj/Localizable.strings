@@ -91,6 +91,18 @@
 /* Action/button to lock current database (the next time, it will ask for the master key). */
 "[Database/Opened/action] Lock Database" = "데이터베이스 잠그기";
 
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "데이터베이스 닫기";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "무시하고 계속하기";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "데이터베이스 최종 편집 앱/프로그램: %@";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "데이터베이스가 준비되었지만, 문제가 있습니다.";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "데이터베이스를 목록에서 제거하시겠습니까?\n 원본 파일은 삭제되지 않으며, 나중에 목록에 다시 추가할 수 있습니다.";
 

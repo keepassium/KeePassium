@@ -5,7 +5,7 @@
 "4Yu-VJ-n8p.text" = "資料庫圖示";
 
 /* Class = "UIButton"; accessibilityLabel = "Reset text size to default"; ObjectID = "5U9-NZ-sJe"; Note = "Action: set text size to standard size"; */
-"5U9-NZ-sJe.accessibilityLabel" = "重置文字大小為默認值";
+"5U9-NZ-sJe.accessibilityLabel" = "重置文字大小為預設值";
 
 /* Class = "UILabel"; text = "App Icon"; ObjectID = "fSx-Do-lgu"; Note = "Section in settings: icon for the app"; */
 "fSx-Do-lgu.text" = "應用程式圖示";

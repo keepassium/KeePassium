@@ -95,13 +95,13 @@
 "[Database/Create/title] Create Database" = "Maak databank";
 
 /* Action: add/import an image as a custom icon */
-"[Database/CustomIcon/add]" = "Add Custom Icon";
+"[Database/CustomIcon/add]" = "Voeg aangepast pictogram toe";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databankbestand?\n Zorg ervoor dat je een back-up hebt.";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "De databank is alleen-lezen";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Bezig met laden...";
@@ -142,26 +142,35 @@
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Bezig met opslaan...";
 
+/* Action/button to switch from current to some other database. */
+"[Database/Switch/action]" = "Andere databank openen";
+
 /* Explanation of the database sync conflict `Cancel` option. */
-"[Database/SyncConflict/Cancel/description]" = "Cancel saving, leave target file intact.";
+"[Database/SyncConflict/Cancel/description]" = "Breek het opslaan af en laat het bestand ongewijzigd.";
+
+/* Title: the current (on-server) database version in case of sync conflict. */
+"[Database/SyncConflict/currentVersion]" = "Huidige versie";
 
 /* Message shown in case of database sync conflict. */
-"[Database/SyncConflict/description]" = "The database has changed since it was loaded in KeePassium.";
+"[Database/SyncConflict/description]" = "De databank is veranderd sinds deze is geopend in KeePassium.";
+
+/* Title: the loaded (on-device) database version in case of sync conflict. */
+"[Database/SyncConflict/loadedVersion]" = "Geopende versie";
 
 /* Action: combine changes in two conflicting databases. */
-"[Database/SyncConflict/Merge/action]" = "Merge";
+"[Database/SyncConflict/Merge/action]" = "Voeg samen";
 
 /* Explanation of the database sync conflict `Merge` option. */
-"[Database/SyncConflict/Merge/description]" = "Combine changes before saving.";
+"[Database/SyncConflict/Merge/description]" = "Combineer wijzigingen alvorens ze op te slaan.";
 
 /* Explanation of the database sync conflict `Overwrite` option. */
-"[Database/SyncConflict/Overwrite/description]" = "Overwrite target file with the local version.";
+"[Database/SyncConflict/Overwrite/description]" = "Overschrijf het doelbestand met de lokale versie.";
 
 /* Explanation of the database sync conflict `Save as` option. */
-"[Database/SyncConflict/SaveAs/description]" = "Save changes to another file.";
+"[Database/SyncConflict/SaveAs/description]" = "Sla de wijzigingen op in een ander bestand.";
 
 /* Title of a message shown when saving to a database that has already been modified elsewhere. */
-"[Database/SyncConflict/title]" = "Sync Conflict";
+"[Database/SyncConflict/title]" = "Synchronisatieconflict";
 
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "Sleutelbestandsfout: %@";
@@ -179,19 +188,19 @@
 "[Entry/Attachment/add]" = "Voeg bestand toe";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "Kies een bestand";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "Kies een foto";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "Foto";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "Maak een foto";
 
 /* Action to preview one or several attached documents or images */
-"[Entry/Attachments/preview]" = "Preview";
+"[Entry/Attachments/preview]" = "Voorvertoning";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Bijgevoegde bestanden";
@@ -308,7 +317,7 @@
 "[Generic] Delete" = "Verwijder";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "Verwijder alles";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "Verwerp";
@@ -350,7 +359,7 @@
 "[Generic] Replace" = "Vervang";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "Herstel";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Toon in Finder";
@@ -398,7 +407,7 @@
 "[Generic/File/title] Import Error" = "Importeerfout";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "Voorinstellingen";
 
 /* Title of a search field (a noun, not verb) */
 "[Generic/Search/title]" = "Zoek";
@@ -446,16 +455,16 @@
 "[Help Viewer/title]" = "Hulp";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "De vorige versie is hersteld";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Standaard (KeePass)";
 
 /* Title of a list with custom (user-imported) icons for groups and entries */
-"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+"[ItemIconPicker/CustomIcons]" = "Aangepaste pictogrammen";
 
 /* Title of a list with standard/default icons for groups and entries */
-"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+"[ItemIconPicker/StandardIcons]" = "Standaard pictogrammen";
 
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";
@@ -473,13 +482,13 @@
 "[Menu/Preferences/title]" = "Voorkeuren…";
 
 /* Error shown when scanned QR code cannot be used for OTP */
-"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+"[OTP/Scan/InvalidData]" = "Deze QR-code is niet geschikt voor OTP-instellingen.";
 
 /* Message to confirm user intentions */
-"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+"[OTP/Scan/OverwriteWarning]" = "Er is al een eenmalig wachtwoord ingesteld bij dit item. Wilt u dit overschrijven?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
-"[OTP/Setup]" = "Setup one-time password (OTP)";
+"[OTP/Setup]" = "Stel eenmalig wachtwoord in (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Bekijk bijlagen direct in KeePassium en laat geen sporen achter in andere apps. (werkt met afbeeldingen, documenten, archieven en nog veel meer)";
@@ -593,13 +602,13 @@
 "[Premium/status] Beta testing" = "Bètatesten";
 
 /* Status: current version of the app. For example: `Current version: 1.23`. Should be similar to the `Licensed version` string. [version: String] */
-"[Premium/status] Current version: %@" = "Current version: %@";
+"[Premium/status] Current version: %@" = "Huidige versie: %@";
 
 /* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
 "[Premium/status] Expired %@ ago. Please renew." = "%@ geleden verlopen. Vernieuw je licentie.";
 
 /* Status: licensed premium version of the app. For example: `Licensed version: 1.23`. [version: String] */
-"[Premium/status] Licensed version: %@" = "Licensed version: %@";
+"[Premium/status] Licensed version: %@" = "Gelicentieerde versie: %@";
 
 /* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
 "[Premium/status] Next renewal on %@" = "Volgende vernieuwing op %@";
@@ -758,34 +767,34 @@
 "[Support/template] (Please describe the problem here)" = "(beschrijf hier het probleem)";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/1]" = "Help us make KeePassium better!";
+"[TipBox/callToAction/1]" = "Help ons KeePassium te verbeteren!";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/2]" = "Help us keep KeePassium shiny!";
+"[TipBox/callToAction/2]" = "Help ons KeePassium mooi te houden!";
 
 /* Call to action in the Donations screen. (free = gratis) */
-"[TipBox/callToAction/3]" = "Help us keep KeePassium free!";
+"[TipBox/callToAction/3]" = "Help ons KeePassium gratis te houden!";
 
 /* Text in the Donations screen. */
-"[TipBox/description/1]" = "Do you like KeePassium?";
+"[TipBox/description/1]" = "Gebruikt u KeePassium graag?";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium is a free open-source app. You trust it with your most sensitive information. There are no ads, no spying, no nonsense — we respect you.";
+"[TipBox/description/2]" = "KeePassium is een gratis opensource-app. U legt uw vertrouwen in deze app door er uw belangrijkste informatie aan toe te voegen. Er is geen reclame, geen spionage, geen onzin — we respecteren u.";
 
 /* Text in the Donations screen. */
-"[TipBox/description/3]" = "Do you like KeePassium but don't need the premium features?";
+"[TipBox/description/3]" = "Gebruikt u KeePassium graag, maar heeft u geen premium-functies nodig?";
 
 /* Notification after a successful donation. */
-"[TipBox/thankYou]" = "Thank you!";
+"[TipBox/thankYou]" = "Bedankt!";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Tip Jar";
+"[TipBox/title/1]" = "Fooienpot";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/2]" = "Donations";
+"[TipBox/title/2]" = "Donaties";
 
 /* Call to action, title of the tip box/donation screen. */
-"[TipBox/title/3]" = "Support KeePassium";
+"[TipBox/title/3]" = "Ondersteun KeePassium";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Zonder YubiKey";

@@ -14,7 +14,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Digitar o código";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Mudar senha do aplicativo";
+"[AppLock/changePasscode]" = "Mudar senha do app";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "Desbloquear KeePassium";
@@ -26,7 +26,7 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Senha do aplicativo atualizada com sucesso.";
+"[AppLock/passcodeUpdated/title]" = "Senha do app atualizada com sucesso.";
 
 /* Action/button to save new or edited AppLock passcode. */
 "[AppLock/savePasscode]" = "Salvar senha do app";
@@ -142,11 +142,20 @@
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Salvando...";
 
+/* Action/button to switch from current to some other database. */
+"[Database/Switch/action]" = "Trocar banco de dados";
+
 /* Explanation of the database sync conflict `Cancel` option. */
 "[Database/SyncConflict/Cancel/description]" = "Não salvar, deixar o arquivo de destino intacto.";
 
+/* Title: the current (on-server) database version in case of sync conflict. */
+"[Database/SyncConflict/currentVersion]" = "Versão atual";
+
 /* Message shown in case of database sync conflict. */
 "[Database/SyncConflict/description]" = "O banco de dados foi editado desde que foi carregado no KeePassium.";
+
+/* Title: the loaded (on-device) database version in case of sync conflict. */
+"[Database/SyncConflict/loadedVersion]" = "Versão aberta";
 
 /* Action: combine changes in two conflicting databases. */
 "[Database/SyncConflict/Merge/action]" = "Mesclar";
@@ -251,7 +260,7 @@
 "[Entry/New/defaultTitle] New Entry" = "Nova Entrada";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Tente retirar o arquivo do aplicativo e adicioná-lo de novo.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Tente retirar o arquivo do app e adicioná-lo de novo.";
 
 /* Action: re-add (a broken) database or key file to the app. */
 "[File/Re-add/title]" = "Adicionar arquivo novamente";
@@ -482,7 +491,7 @@
 "[OTP/Setup]" = "Configurar código de uso único (OTP)";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "Abra anexos diretamente no KeePassium sem deixar vestígios em outros aplicativos. (Funciona com imagens, documentos, arquivos e mais.)";
+"[Premium/Benefits/AttachmentPreview/details]" = "Abra anexos diretamente no KeePassium sem deixar vestígios em outros apps. (Funciona com imagens, documentos, arquivos e mais.)";
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Pré-visualização sem vestígios";
@@ -491,7 +500,7 @@
 "[Premium/Benefits/CustomAppIcon/details]" = "Faça KeePassium parecer único, familiar ou disfarçado de calculadora — você decide.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Mude o ícone do aplicativo";
+"[Premium/Benefits/CustomAppIcon/title]" = "Mude o ícone do app";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/DatabaseTimeout/details]" = "Cansado de digitar a senha-mestra? Deixe seu banco de dados aberto por mais tempo e o desbloqueie com um toque.";
@@ -608,7 +617,7 @@
 "[Premium/status] Valid forever" = "Válido para sempre";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "O valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do aplicativo.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.";
+"[Premium/Subscription/Legal/text]" = "O valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do app.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ grátis, depois %2$@";
@@ -659,7 +668,7 @@
 "[Premium/Upgrade/Success/thankYou]" = "Obrigado por sua compra!";
 
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
-"[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplicativo sendo útil: %1$@/mês, aproximadamente %2$@/ano.";
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "App sendo útil: %1$@/mês, aproximadamente %2$@/ano.";
 
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Ícones Personalizados";
@@ -689,7 +698,7 @@
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Vários bancos de dados";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Visualize imagens e documentos sem sair do aplicativo, na versão Premium.";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Visualize imagens e documentos sem sair do app, na versão Premium.";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "Visualizar Anexos";
@@ -710,10 +719,10 @@
 "[Settings/AppLock/LockOnLaunch/title]" = "Bloquear ao iniciar";
 
 /* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
-"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Bloqueio do aplicativo, %@, limite de tempo";
+"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Bloqueio do app, %@, limite de tempo";
 
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
-"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Bloqueio do aplicativo, senha, limite de tempo";
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Bloqueio do app, senha, limite de tempo";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Apagar TODAS as cópias de segurança (%d)";
@@ -740,7 +749,7 @@
 "[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "Ao copiar texto de uma entrada, KeePassium limpará automaticamente a área de transferência após o tempo definido.";
 
 /* Description of the Database Lock Timeout */
-"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Se você não interagir com o aplicativo por certo tempo, o banco de dados será fechado para sua segurança. Para abri-lo, será preciso a senha-mestra novamente.";
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Se você não interagir com o app por certo tempo, o banco de dados será fechado para sua segurança. Para abri-lo, será preciso a senha-mestra novamente.";
 
 /* Title of a settings section about making backup files */
 "[Settings/FileLists/Backup/title] Backup" = "Cópias de segurança";

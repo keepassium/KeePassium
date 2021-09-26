@@ -2,7 +2,7 @@
 "9UZ-FK-v73.text" = "沒有金鑰檔案";
 
 /* Class = "UILabel"; text = "Use key file without adding it to the list"; ObjectID = "BGv-TX-maE"; Note = "Explanation for the \"Key File/Browse\" action."; */
-"BGv-TX-maE.text" = "Use key file without adding it to the list";
+"BGv-TX-maE.text" = "使用金鑰檔案，但不保存到列表中。";
 
 /* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "jCW-yW-0I5"; Note = "#bc-ignore!"; */
 "jCW-yW-0I5.text" = "{Database File Name}";
@@ -23,5 +23,5 @@
 "r85-yz-wYI.title" = "金鑰檔案";
 
 /* Class = "UILabel"; text = "Browse…"; ObjectID = "XiA-k9-5wr"; Note = "Action to open a file selection dialog"; */
-"XiA-k9-5wr.text" = "Browse…";
+"XiA-k9-5wr.text" = "瀏覽…";
 

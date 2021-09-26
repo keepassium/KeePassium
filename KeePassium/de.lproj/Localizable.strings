@@ -142,11 +142,20 @@
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Speichern...";
 
+/* Action/button to switch from current to some other database. */
+"[Database/Switch/action]" = "Switch Database";
+
 /* Explanation of the database sync conflict `Cancel` option. */
 "[Database/SyncConflict/Cancel/description]" = "Brechen Sie den Speichervorgang ab und lassen Sie die Zieldatei unverändert.";
 
+/* Title: the current (on-server) database version in case of sync conflict. */
+"[Database/SyncConflict/currentVersion]" = "Current version";
+
 /* Message shown in case of database sync conflict. */
 "[Database/SyncConflict/description]" = "Die Datenbank hat sich geändert, seit sie in KeePassium geladen wurde.";
+
+/* Title: the loaded (on-device) database version in case of sync conflict. */
+"[Database/SyncConflict/loadedVersion]" = "Loaded version";
 
 /* Action: combine changes in two conflicting databases. */
 "[Database/SyncConflict/Merge/action]" = "Zusammenführen";

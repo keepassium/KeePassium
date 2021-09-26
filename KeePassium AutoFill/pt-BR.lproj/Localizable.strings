@@ -11,7 +11,7 @@
 "[AppLock/cancelBiometricAuth] Use Passcode" = "Digitar o código";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Mudar senha do aplicativo";
+"[AppLock/changePasscode]" = "Mudar senha do app";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "Desbloquear KeePassium";
@@ -23,7 +23,7 @@
 "[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Senha do aplicativo atualizada com sucesso.";
+"[AppLock/passcodeUpdated/title]" = "Senha do app atualizada com sucesso.";
 
 /* Action/button to save new or edited AppLock passcode. */
 "[AppLock/savePasscode]" = "Salvar senha do app";
@@ -41,7 +41,7 @@
 "[AutoFill/Search/callerID]" = "ID do chamador: %@";
 
 /* No comment provided by engineer. */
-"[AutoFill/Setup/footer]" = "O Preenchimento Automático precisa ser autorizado a acessar os arquivos que você já tem no aplicativo principal do KeePassium.\n\nPor quê? Por trás das cenas, o sistema trata o Preenchimento Automático como um aplicativo separado, independente do KeePassium principal. Por segurança, um aplicativo não pode acessar arquivos externos, a menos que você vincule explicitamente esses arquivos a ele. Assim, o sistema garante que o aplicativo só possa acessar os poucos arquivos que você autorizou.\n\nComo resultado, tanto o Preenchimento Automático quanto o aplicativo principal do KeePassium precisam ser autorizados separadamente para cada arquivo externo. Felizmente, você só precisa fazer isso uma vez para cada arquivo.";
+"[AutoFill/Setup/footer]" = "O Preenchimento Automático precisa ser autorizado a acessar os arquivos que você já tem no app principal do KeePassium.\n\nPor quê? Por trás das cenas, o sistema trata o Preenchimento Automático como um app separado, independente do KeePassium principal. Por segurança, um app não pode acessar arquivos externos, a menos que você vincule explicitamente esses arquivos a ele. Assim, o sistema garante que o app só possa acessar os poucos arquivos que você autorizou.\n\nComo resultado, tanto o Preenchimento Automático quanto o app principal do KeePassium precisam ser autorizados separadamente para cada arquivo externo. Felizmente, você só precisa fazer isso uma vez para cada arquivo.";
 
 /* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
 "[BiometricAuthType] Face ID" = "Face ID";
@@ -90,6 +90,18 @@
 
 /* Action/button to lock current database (the next time, it will ask for the master key). */
 "[Database/Opened/action] Lock Database" = "Bloquear banco de dados";
+
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "Fechar banco de dados";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "Ignorar e continuar";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "Banco de dados editado por último em: %@";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "O seu banco de dados está pronto, mas houve um problema.";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Esquecer esse banco de dados?\n O arquivo permanecerá intacto e você poderá adicioná-lo de novo depois.";
@@ -167,7 +179,7 @@
 "[Entry/New/defaultTitle] New Entry" = "Nova Entrada";
 
 /* A suggestion shown after specific file errors (either databases or key files). */
-"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Tente retirar o arquivo do aplicativo e adicioná-lo de novo.";
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Tente retirar o arquivo do app e adicioná-lo de novo.";
 
 /* Action: re-add (a broken) database or key file to the app. */
 "[File/Re-add/title]" = "Adicionar arquivo novamente";
@@ -458,7 +470,7 @@
 "[Premium/Price Plan/popular]" = "Popular";
 
 /* Subscription conditions */
-"[Premium/Subscription/Legal/text]" = "O valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do aplicativo.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.";
+"[Premium/Subscription/Legal/text]" = "O valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do app.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.";
 
 /* Trial conditions. For example `30 days free, then $1 per month` */
 "[Premium/Trial/trial then price]" = "%1$@ grátis, depois %2$@";
@@ -536,7 +548,7 @@
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Vários bancos de dados";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Visualize imagens e documentos sem sair do aplicativo, na versão Premium.";
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Visualize imagens e documentos sem sair do app, na versão Premium.";
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "Visualizar Anexos";

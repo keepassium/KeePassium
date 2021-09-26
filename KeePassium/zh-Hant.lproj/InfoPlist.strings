@@ -23,5 +23,5 @@
 "NSPhotoLibraryAddUsageDescription" = "KeePassium 需要獲取匯出檔案到照片庫的權限。";
 
 /* (No Comment) */
-"NSPhotoLibraryUsageDescription" = "KeePassium needs access to the Photos library to add custom icons to groups and entries";
+"NSPhotoLibraryUsageDescription" = "向群組與項目添加自定義圖示，KeePassium 需要取用您的照片圖庫權限。";
 

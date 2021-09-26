@@ -91,6 +91,18 @@
 /* Action/button to lock current database (the next time, it will ask for the master key). */
 "[Database/Opened/action] Lock Database" = "Zablokuj bazę";
 
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "Zamknij bazę";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "Ignoruj i kontynuuj";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "Baza została ostatnio zmieniona przez: %@";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Twoja baza jest gotowa, ale wystąpił problem.";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Usunąć bazę danych z listy?\n Plik pozostanie nienaruszony i możesz go dodać później.";
 

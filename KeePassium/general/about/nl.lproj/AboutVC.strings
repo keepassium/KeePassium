@@ -40,9 +40,6 @@
 /* Class = "UILabel"; text = "©2021 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
 "bmf-Ed-H4x.text" = "©2021 Andrei Popleteev";
 
-/* Class = "UILabel"; text = "Reset entry text size to default"; ObjectID = "bTY-d6-puv"; Note = "#bc-ignore!"; */
-"bTY-d6-puv.text" = "Reset entry text size to default";
-
 /* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
 "CNI-b8-7Da.text" = "KeePass van Dominik Reichl";
 
@@ -116,7 +113,7 @@
 "Qz4-PJ-Tra.text" = "CC BY 3.0";
 
 /* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
-"r7M-Gb-1Xd.text" = "Toast-Swift by Charles Scalesse";
+"r7M-Gb-1Xd.text" = "Toast-Swift van Charles Schalen";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
 "Rab-wf-OQe.text" = "MIT-licentie";

@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9yn-W3-FDl"; Note = "Section in settings: settings that define what happens when the app is started."; */
-"9yn-W3-FDl.headerTitle" = "Abertura do aplicativo";
+"9yn-W3-FDl.headerTitle" = "Abertura do app";
 
 /* Class = "UILabel"; text = "Appearance"; ObjectID = "32P-LG-SHa"; Note = "Section in settings: visual style of app elements"; */
 "32P-LG-SHa.text" = "Aparência";
@@ -11,7 +11,7 @@
 "A5N-B3-t3t.headerTitle" = "Premium";
 
 /* Class = "UILabel"; text = "App Protection"; ObjectID = "abS-AH-iFO"; Note = "Settings section: protection of the app from unauthorized access"; */
-"abS-AH-iFO.text" = "Proteção do aplicativo";
+"abS-AH-iFO.text" = "Proteção do app";
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Bk0-Xf-O7B"; */
 "Bk0-Xf-O7B.title" = "Ajustes";

@@ -185,7 +185,7 @@
 "[Database2/Loading/Error] Error unpacking database: %@" = "Erro ao descompactar o banco de dados: %@";
 
 /* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
-"[Database2/Loading/Warning/missingBinaries]" = "Os anexos de algumas entradas estão faltando. Isso é sinal de corrupção no banco de dados, provavelmente causada pelo último aplicativo que o salvou (%1$@). KeePassium preservará os anexos vazios, mas não pode recuperá-los. Você deve restaurar o banco de dados a partir de uma cópia de segurança. \n\nAnexos faltando: %2$@";
+"[Database2/Loading/Warning/missingBinaries]" = "Os anexos de algumas entradas estão faltando. Isso é sinal de corrupção no banco de dados, provavelmente causada pelo último app que o salvou (%1$@). KeePassium preservará os anexos vazios, mas não pode recuperá-los. Você deve restaurar o banco de dados a partir de uma cópia de segurança. \n\nAnexos faltando: %2$@";
 
 /* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
 "[Database2/Loading/Warning/namelessAttachments]" = "Algumas entradas têm anexos sem nome. Isso indica corrupção passada no banco de dados.\n\n Por favor, verifique os anexos destas entradas (e seus históricos):\n%@";
@@ -194,7 +194,7 @@
 "[Database2/Loading/Warning/namelessCustomFields]" = "Algumas entradas têm campos personalizados sem nome. Isso indica corrupção no banco de dados. Por favor, verifique estas entradas:\n\n%@";
 
 /* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
-"[Database2/Loading/Warning/unusedAttachments]" = "O banco de dados tem anexos que não pertencem a nenhuma entrada. Provavelmente foram esquecidos pelo último aplicativo que o salvou (%@). Todavia, também pode ser sinal de corrupção no banco de dados. \nFaça uma cópia de segurança desse banco de dados antes de modifica-lo.";
+"[Database2/Loading/Warning/unusedAttachments]" = "O banco de dados tem anexos que não pertencem a nenhuma entrada. Provavelmente foram esquecidos pelo último app que o salvou (%@). Todavia, também pode ser sinal de corrupção no banco de dados. \nFaça uma cópia de segurança desse banco de dados antes de modifica-lo.";
 
 /* Progress bar status */
 "[Database2/Progress] Loading database" = "Carregando banco de dados";
@@ -254,10 +254,10 @@
 "[File/TemporaryBackup/warning]" = "Esta é uma cópia temporária do banco de dados. Ela pode ser apagada automaticamente sem aviso. Não a use como banco de dados principal.";
 
 /* Error message: storage provider app was logged out or uninstalled. */
-"[FileAccessError/FileProvider/NotFound/generic]" = "Serviço de armazenamento indisponível. Verifique se o aplicativo deste está instalado e conectado à sua conta.";
+"[FileAccessError/FileProvider/NotFound/generic]" = "Serviço de armazenamento indisponível. Verifique se o app deste está instalado e conectado à sua conta.";
 
 /* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
-"[FileAccessError/FileProvider/NotFound/other]" = "%@ não está disponível. Por favor, verifique se esse aplicativo está instalado e conectado à sua conta.";
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ não está disponível. Por favor, verifique se esse app está instalado e conectado à sua conta.";
 
 /* Error message: the required network drive is not connected. */
 "[FileAccessError/FileProvider/NotFound/smbShare]" = "O armazenamento de rede está desconectado.";
@@ -446,7 +446,7 @@
 "[Settings/AppLockTimeout/description] After last interaction" = "Após a última interação";
 
 /* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
-"[Settings/AppLockTimeout/description] After leaving the app" = "Após sair do aplicativo";
+"[Settings/AppLockTimeout/description] After leaving the app" = "Após sair do app";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
 "[Settings/AppLockTimeout/fullTitle] Immediately" = "Imediatamente";
@@ -470,7 +470,7 @@
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Nunca";
 
 /* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
-"[Settings/DatabaseLockTimeout/description] When leaving the app" = "Ao sair do aplicativo";
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "Ao sair do app";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
 "[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "Imediatamente";
@@ -503,7 +503,7 @@
 "[Settings/EntryListDetail/longTitle] User Name" = "Nome de usuário";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
-"[URLReference/Location] Cloud storage / Another app" = "Nuvem/Outro aplicativo";
+"[URLReference/Location] Cloud storage / Another app" = "Nuvem/Outro app";
 
 /* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
 "[URLReference/Location] Internal backup" = "Pasta Backup interna";

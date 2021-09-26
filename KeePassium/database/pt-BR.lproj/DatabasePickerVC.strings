@@ -5,7 +5,7 @@
 "5Md-DB-C5P.text" = "Nenhum arquivo de banco de dados";
 
 /* Class = "UIButton"; normalTitle = "Enable AppLock"; ObjectID = "hmv-DA-BgM"; */
-"hmv-DA-BgM.normalTitle" = "Ativar senha do aplicativo";
+"hmv-DA-BgM.normalTitle" = "Ativar senha do app";
 
 /* Class = "UIBarButtonItem"; lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "lnO-nD-gvh"; Note = "Action: show sorting settings of database files"; */
 "lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ordenar";

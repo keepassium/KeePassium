@@ -62,7 +62,7 @@
 "RlK-RW-8Ld.text" = "バージョン履歴";
 
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
-"RNK-fS-Fvx.text" = "改善提案や問題点を報告する";
+"RNK-fS-Fvx.text" = "改善提案や問題点を報告";
 
 /* Class = "UILabel"; text = "{App Lock, Touch ID, timeout}"; ObjectID = "SrV-ib-V2E"; Note = "#bc-ignore!"; */
 "SrV-ib-V2E.text" = "{App Lock, Touch ID, timeout}";

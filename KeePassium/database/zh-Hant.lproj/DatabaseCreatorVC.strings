@@ -5,7 +5,7 @@
 "dhd-je-Doc.title" = "{Create Database}";
 
 /* Class = "UIButton"; normalTitle = "Save Database"; ObjectID = "h6C-CG-RVI"; Note = "Action: save the new database (will show a file picker dialog)."; */
-"h6C-CG-RVI.normalTitle" = "保存資料庫";
+"h6C-CG-RVI.normalTitle" = "儲存資料庫";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "pvt-FS-0Yx"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
 "pvt-FS-0Yx.placeholder" = "沒有金鑰檔案";

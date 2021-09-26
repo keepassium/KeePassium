@@ -242,7 +242,7 @@
 "[DatabaseError] Cannot open database" = "資料庫無法開啟";
 
 /* Error message while saving a database */
-"[DatabaseError] Cannot save database" = "資料庫保存錯誤";
+"[DatabaseError] Cannot save database" = "無法儲存資料庫";
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "錯誤的密碼或者金鑰檔案";
