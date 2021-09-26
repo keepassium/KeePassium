@@ -86,6 +86,14 @@ public enum LString {
             bundle: Bundle.framework,
             value: "This is a temporary backup database. It can be automatically deleted without a warning. Don't use it as your main database.",
             comment: "Notification when user opens an in-app backup database.")
+        
+        public static let lesserTargetDatabaseFormat = NSLocalizedString(
+            "[Database/LesserTargetFormat/warning]",
+            bundle: Bundle.framework,
+            value: "This is an older database format, some data might be lost.",
+            comment: "Notification when user tries to copy data from KDBX to older KDB database."
+        )
+        
     }
     
     

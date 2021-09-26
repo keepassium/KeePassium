@@ -15,6 +15,7 @@ public final class DatabaseLoadingWarnings {
         case namelessCustomFields(entryPaths: [String])
         case databaseFileIsInTrash(fileName: String)
         case temporaryBackupDatabase
+        case lesserTargetFormat
         
         public var priority: Int {
             switch self {
@@ -24,7 +25,8 @@ public final class DatabaseLoadingWarnings {
             case .unusedAttachments,
                  .missingBinaries:
                 return 20
-            case .temporaryBackupDatabase:
+            case .temporaryBackupDatabase,
+                 .lesserTargetFormat:
                 return 30
             case .databaseFileIsInTrash:
                 return 40
@@ -39,7 +41,8 @@ public final class DatabaseLoadingWarnings {
                  .namelessCustomFields:
                 return true
             case .databaseFileIsInTrash,
-                 .temporaryBackupDatabase:
+                 .temporaryBackupDatabase,
+                 .lesserTargetFormat:
                 return false
             }
         }
@@ -69,6 +72,8 @@ public final class DatabaseLoadingWarnings {
                 return "databaseFileIsInTrash"
             case .temporaryBackupDatabase:
                 return "temporaryBackupDatabase"
+            case .lesserTargetFormat:
+                return "lesserTargetFormat"
             }
         }
         
@@ -105,6 +110,8 @@ public final class DatabaseLoadingWarnings {
                 )
             case .temporaryBackupDatabase:
                 return LString.Warning.temporaryBackupDatabase
+            case .lesserTargetFormat:
+                return LString.Warning.lesserTargetDatabaseFormat
             }
         }
     }

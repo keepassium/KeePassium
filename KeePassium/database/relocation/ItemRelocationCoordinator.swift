@@ -427,12 +427,19 @@ extension ItemRelocationCoordinator {
         })
         self.externalGroupPicker = externalGroupPicker
         
+        if targetDatabase is Database1 && sourceDatabase is Database2 {
+            warnings.addIssue(.lesserTargetFormat)
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.showLoadingWarnings(warnings)
+            self?.showLoadingWarnings(warnings, for: databaseFile)
         }
     }
     
-    private func showLoadingWarnings(_ warnings: DatabaseLoadingWarnings) {
+    private func showLoadingWarnings(
+        _ warnings: DatabaseLoadingWarnings,
+        for databaseFile: DatabaseFile
+    ) {
         guard !warnings.isEmpty else { return }
         
         DatabaseLoadingWarningsVC.present(
