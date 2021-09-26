@@ -20,7 +20,7 @@ final class AboutVC: UITableViewController {
     @IBOutlet private weak var contactSupportCell: UITableViewCell!
     @IBOutlet private weak var writeReviewCell: UITableViewCell!
     @IBOutlet private weak var versionLabel: UILabel!
-    @IBOutlet private weak var resetTextScaleCell: UITableViewCell!
+    @IBOutlet private weak var acceptInputFromAutoFillCell: UITableViewCell!
     
     weak var delegate: AboutDelegate?
     
@@ -74,6 +74,14 @@ final class AboutVC: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        if cell == acceptInputFromAutoFillCell {
+            cell.accessoryType = Settings.current.acceptAutoFillInput ? .checkmark : .none
+        }
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
@@ -84,12 +92,11 @@ final class AboutVC: UITableViewController {
             delegate?.didPressContactSupport(at: popoverAnchor, in: self)
         case writeReviewCell:
             delegate?.didPressWriteReview(at: popoverAnchor, in: self)
-        case resetTextScaleCell:
-            Settings.current.textScale = 1.0
-            Diag.info("Text scale reset to 1.0")
-            resetTextScaleCell.detailTextLabel?.text = "Done!" 
-            tableView.beginUpdates()
-            tableView.endUpdates()
+        case acceptInputFromAutoFillCell:
+            let newValue = !Settings.current.acceptAutoFillInput
+            Settings.current.acceptAutoFillInput = newValue
+            Diag.info("Accept input from AutoFill providers: \(newValue)")
+            tableView.reloadData()
         default:
             if let urlString = cellTagToURL[selectedCell.tag], let url = URL(string: urlString) {
                 delegate?.didPressOpenLicense(url: url, at: popoverAnchor, in: self)

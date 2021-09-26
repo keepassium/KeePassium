@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
+import KeePassiumLib
 
 class ProtectedTextField: ValidatingTextField {
     private let horizontalInsets = CGFloat(8.0)
@@ -29,7 +29,7 @@ class ProtectedTextField: ValidatingTextField {
         super.awakeFromNib()
 
         setupVisibilityAccessory()
-        allowAutoFillPrompt(false)
+        allowAutoFillPrompt(Settings.current.acceptAutoFillInput)
 
         NotificationCenter.default.addObserver(
             self,

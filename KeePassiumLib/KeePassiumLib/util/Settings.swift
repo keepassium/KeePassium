@@ -96,6 +96,7 @@ public class Settings {
         case autoFillFinishedOK
         case copyTOTPOnAutoFill
         case autoFillPerfectMatch
+        case acceptAutoFillInput
         
         case hapticFeedbackEnabled
         
@@ -1337,7 +1338,22 @@ public class Settings {
                 key: .autoFillPerfectMatch)
         }
     }
-
+    
+    public var acceptAutoFillInput: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.acceptAutoFillInput.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: acceptAutoFillInput,
+                newValue: newValue,
+                key: .acceptAutoFillInput)
+        }
+    }
+    
     
     public var isHapticFeedbackEnabled: Bool {
         get {
