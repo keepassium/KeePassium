@@ -1,5 +1,29 @@
 #CHANGELOG
 
+## [1.27.95] - 2021-09-26
+
+### Added
+
+- Possibility to copy/move data to other databases (closes #102)
+- Added Ukrainian translation [thanks, Max]
+
+### Improved
+
+- Show file info in Sync Conflict alert
+- Optionally accept input from AutoFill providers
+- Updated all translations
+
+### Fixed
+
+- Timestamped backups were zero-filled (regression in 1.25.92)
+- Modulo bias in password generator (fixes #195) [thanks, Ben]
+- It was possible to skip premium upgrade notice (regression in 1.25.93)
+- Latest in-app backup was not updated when saving a conflicted DB
+- Auto-unlock worked only with "Auto-open the Previous Database" enabled [thanks, Tom]
+- Launch animation glitch [thanks, G]
+- Minor UI fixes here and there
+
+
 ## [1.26.94] - 2021-09-06
 
 ### Improved 

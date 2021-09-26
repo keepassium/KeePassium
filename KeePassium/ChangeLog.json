@@ -1,6 +1,60 @@
 {
     "sections": [
         {
+            "version": "1.27",
+            "releaseDate": "2021-09-26T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Possibility to copy/move data to other databases (closes #102)",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: Ukrainian translation [thanks, Max]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Show file info in Sync Conflict alert",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Optionally accept input from AutoFill providers",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated all translations",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Timestamped backups were zero-filled (regression in 1.25.92)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Modulo bias in password generator (fixes #195) [thanks, Ben]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: It was possible to skip premium upgrade notice (regression in 1.25.93)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Latest in-app backup was not updated when saving a conflicted DB",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Auto-unlock worked only with \"Auto-open the Previous Database\" enabled [thanks, Tom]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Launch animation glitch [thanks, G]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI fixes here and there",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.26",
             "releaseDate": "2021-09-06T00:00:00Z",
             "items": [
