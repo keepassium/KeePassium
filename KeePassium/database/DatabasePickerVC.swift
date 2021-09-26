@@ -140,7 +140,9 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         switch mode {
         case .autoFill:
             setupCancelButton()
-        case .full, .light:
+        case .full:
+            break
+        case .light:
             if (navigationController?.viewControllers.count ?? 1) > 1 {
                 navigationItem.leftBarButtonItem = nil
             } else {
