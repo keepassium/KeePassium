@@ -881,6 +881,50 @@
 		751A565124CCD3CD001227D6 /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconSwitcherCoordinator.swift; sourceTree = "<group>"; };
 		751B99B62315B736002AA609 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
+		751C41BC2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
+		751C41BD2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
+		751C41BE2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
+		751C41BF2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		751C41C02700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		751C41C12700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
+		751C41C22700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
+		751C41C32700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DatabasePickerVC.strings; sourceTree = "<group>"; };
+		751C41C42700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
+		751C41C52700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
+		751C41C62700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
+		751C41C72700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
+		751C41C82700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
+		751C41C92700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ExpiryDateEditorVC.strings; sourceTree = "<group>"; };
+		751C41CA2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/GroupEditorVC.strings; sourceTree = "<group>"; };
+		751C41CB2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
+		751C41CC2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
+		751C41CD2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
+		751C41CE2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
+		751C41CF2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
+		751C41D02700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
+		751C41D12700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		751C41D22700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		751C41D32700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/AboutVC.strings; sourceTree = "<group>"; };
+		751C41D42700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
+		751C41D52700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
+		751C41D62700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
+		751C41D72700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DiagnosticsViewerVC.strings; sourceTree = "<group>"; };
+		751C41D82700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/WelcomeVC.strings; sourceTree = "<group>"; };
+		751C41D92700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/PasswordGeneratorVC.strings; sourceTree = "<group>"; };
+		751C41DA2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/PricingPlanPickerVC.strings; sourceTree = "<group>"; };
+		751C41DB2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
+		751C41DC2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
+		751C41DD2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
+		751C41DE2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
+		751C41DF2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
+		751C41E02700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
+		751C41E12700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
+		751C41E22700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsVC.strings; sourceTree = "<group>"; };
+		751C41E32700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
+		751C41E42700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsDatabaseTimeoutVC.strings; sourceTree = "<group>"; };
+		751C41E52700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
+		751C41E62700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsFileSortingVC.strings; sourceTree = "<group>"; };
+		751C41E72700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsItemListVC.strings; sourceTree = "<group>"; };
 		751E0CE72309AE5D0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsDataProtectionVC.storyboard; sourceTree = "<group>"; };
 		751E0CEA2309AE860088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsFileSortingVC.storyboard; sourceTree = "<group>"; };
 		751E0CED2309AE8D0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsVC.storyboard; sourceTree = "<group>"; };
@@ -2812,6 +2856,7 @@
 				tr,
 				th,
 				ko,
+				uk,
 			);
 			mainGroup = 754BF0722082A6BD00E3A292;
 			productRefGroup = 754BF07C2082A6BD00E3A292 /* Products */;
@@ -3722,6 +3767,7 @@
 				75D65E8226A4D4A1004E5948 /* sv */,
 				75D65E8426A4D4D0004E5948 /* th */,
 				75D65E8626A4D5B2004E5948 /* tr */,
+				751C41C92700E4260002FB8F /* uk */,
 			);
 			name = ExpiryDateEditorVC.storyboard;
 			sourceTree = "<group>";
@@ -3748,6 +3794,7 @@
 				7531911D263800DC000A1119 /* tr */,
 				75FCA93F2638010D0070405A /* th */,
 				7534380B2643FE6E0032D284 /* ko */,
+				751C41E52700E4260002FB8F /* uk */,
 			);
 			name = SettingsDataProtectionVC.storyboard;
 			sourceTree = "<group>";
@@ -3774,6 +3821,7 @@
 				75319124263800DC000A1119 /* tr */,
 				75FCA9412638010D0070405A /* th */,
 				7534380D2643FE6E0032D284 /* ko */,
+				751C41E62700E4260002FB8F /* uk */,
 			);
 			name = SettingsFileSortingVC.storyboard;
 			sourceTree = "<group>";
@@ -3800,6 +3848,7 @@
 				75319138263800DC000A1119 /* tr */,
 				75FCA9552638010D0070405A /* th */,
 				753438222643FE6F0032D284 /* ko */,
+				751C41E22700E4260002FB8F /* uk */,
 			);
 			name = SettingsVC.storyboard;
 			sourceTree = "<group>";
@@ -3826,6 +3875,7 @@
 				75319122263800DC000A1119 /* tr */,
 				75FCA93C2638010D0070405A /* th */,
 				753438052643FE6E0032D284 /* ko */,
+				751C41E02700E4260002FB8F /* uk */,
 			);
 			name = SettingsBackupVC.storyboard;
 			sourceTree = "<group>";
@@ -3852,6 +3902,7 @@
 				75319121263800DC000A1119 /* tr */,
 				75FCA93E2638010D0070405A /* th */,
 				7534380A2643FE6E0032D284 /* ko */,
+				751C41DB2700E4260002FB8F /* uk */,
 			);
 			name = SettingsAppLockVC.storyboard;
 			sourceTree = "<group>";
@@ -3878,6 +3929,7 @@
 				7531912F263800DC000A1119 /* tr */,
 				75FCA94B2638010D0070405A /* th */,
 				753438182643FE6F0032D284 /* ko */,
+				751C41DE2700E4260002FB8F /* uk */,
 			);
 			name = SettingsAutoFillVC.storyboard;
 			sourceTree = "<group>";
@@ -3904,6 +3956,7 @@
 				75319129263800DC000A1119 /* tr */,
 				75FCA9452638010D0070405A /* th */,
 				753438122643FE6F0032D284 /* ko */,
+				751C41CB2700E4260002FB8F /* uk */,
 			);
 			name = GroupViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -3930,6 +3983,7 @@
 				75319139263800DC000A1119 /* tr */,
 				75FCA9562638010D0070405A /* th */,
 				753438232643FE6F0032D284 /* ko */,
+				751C41CA2700E4260002FB8F /* uk */,
 			);
 			name = GroupEditorVC.storyboard;
 			sourceTree = "<group>";
@@ -3956,6 +4010,7 @@
 				7531913E263800DC000A1119 /* tr */,
 				75FCA95B2638010D0070405A /* th */,
 				753438282643FE6F0032D284 /* ko */,
+				751C41C82700E4260002FB8F /* uk */,
 			);
 			name = EntryFieldEditorVC.storyboard;
 			sourceTree = "<group>";
@@ -3982,6 +4037,7 @@
 				75319136263800DC000A1119 /* tr */,
 				75FCA9532638010D0070405A /* th */,
 				753438202643FE6F0032D284 /* ko */,
+				751C41D92700E4260002FB8F /* uk */,
 			);
 			name = PasswordGeneratorVC.storyboard;
 			sourceTree = "<group>";
@@ -4008,6 +4064,7 @@
 				75319126263800DC000A1119 /* tr */,
 				75FCA9432638010D0070405A /* th */,
 				7534380F2643FE6E0032D284 /* ko */,
+				751C41C72700E4260002FB8F /* uk */,
 			);
 			name = EntryViewerPagesVC.storyboard;
 			sourceTree = "<group>";
@@ -4034,6 +4091,7 @@
 				7531911E263800DC000A1119 /* tr */,
 				75FCA93B2638010D0070405A /* th */,
 				753438072643FE6E0032D284 /* ko */,
+				751C41C42700E4260002FB8F /* uk */,
 			);
 			name = EntryFieldViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -4060,6 +4118,7 @@
 				75319134263800DC000A1119 /* tr */,
 				75FCA9512638010D0070405A /* th */,
 				7534381C2643FE6F0032D284 /* ko */,
+				751C41C52700E4260002FB8F /* uk */,
 			);
 			name = EntryFileViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -4086,6 +4145,7 @@
 				75319132263800DC000A1119 /* tr */,
 				75FCA94F2638010D0070405A /* th */,
 				7534381B2643FE6F0032D284 /* ko */,
+				751C41C62700E4260002FB8F /* uk */,
 			);
 			name = EntryHistoryViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -4112,6 +4172,7 @@
 				75319123263800DC000A1119 /* tr */,
 				75FCA9402638010D0070405A /* th */,
 				7534380C2643FE6E0032D284 /* ko */,
+				751C41C32700E4260002FB8F /* uk */,
 			);
 			name = DatabasePickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4138,6 +4199,7 @@
 				7531911A263800DC000A1119 /* tr */,
 				75FCA9372638010D0070405A /* th */,
 				753438022643FE6E0032D284 /* ko */,
+				751C41C22700E4260002FB8F /* uk */,
 			);
 			name = DatabaseKeyChangerVC.storyboard;
 			sourceTree = "<group>";
@@ -4164,6 +4226,7 @@
 				75319125263800DC000A1119 /* tr */,
 				75FCA9422638010D0070405A /* th */,
 				7534380E2643FE6E0032D284 /* ko */,
+				751C41D02700E4260002FB8F /* uk */,
 			);
 			name = DatabaseUnlockerVC.storyboard;
 			sourceTree = "<group>";
@@ -4190,6 +4253,7 @@
 				75319137263800DC000A1119 /* tr */,
 				75FCA9542638010D0070405A /* th */,
 				753438212643FE6F0032D284 /* ko */,
+				751C41C12700E4260002FB8F /* uk */,
 			);
 			name = DatabaseCreatorVC.storyboard;
 			sourceTree = "<group>";
@@ -4216,6 +4280,7 @@
 				7531913F263800DC000A1119 /* tr */,
 				75FCA95C2638010D0070405A /* th */,
 				753438292643FE6F0032D284 /* ko */,
+				751C41CD2700E4260002FB8F /* uk */,
 			);
 			name = ItemIconPicker.storyboard;
 			sourceTree = "<group>";
@@ -4242,6 +4307,7 @@
 				75319142263800DC000A1119 /* tr */,
 				75FCA9392638010D0070405A /* th */,
 				753438032643FE6E0032D284 /* ko */,
+				751C41D42700E4260002FB8F /* uk */,
 			);
 			name = FileInfoVC.storyboard;
 			sourceTree = "<group>";
@@ -4268,6 +4334,7 @@
 				7531911F263800DC000A1119 /* tr */,
 				75FCA93D2638010D0070405A /* th */,
 				753438082643FE6E0032D284 /* ko */,
+				751C41BC2700E4260002FB8F /* uk */,
 			);
 			name = CrashReportVC.storyboard;
 			sourceTree = "<group>";
@@ -4294,6 +4361,7 @@
 				75319131263800DC000A1119 /* tr */,
 				75FCA94E2638010D0070405A /* th */,
 				7534381A2643FE6F0032D284 /* ko */,
+				751C41BE2700E4260002FB8F /* uk */,
 			);
 			name = FirstSetupVC.storyboard;
 			sourceTree = "<group>";
@@ -4320,6 +4388,7 @@
 				75319128263800DC000A1119 /* tr */,
 				75FCA9462638010D0070405A /* th */,
 				753438112643FE6F0032D284 /* ko */,
+				751C41BD2700E4260002FB8F /* uk */,
 			);
 			name = EntryFinderVC.storyboard;
 			sourceTree = "<group>";
@@ -4346,6 +4415,7 @@
 				7531912A263800DC000A1119 /* tr */,
 				75FCA9472638010D0070405A /* th */,
 				753438132643FE6F0032D284 /* ko */,
+				751C41CE2700E4260002FB8F /* uk */,
 			);
 			name = KeyFilePickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4372,6 +4442,7 @@
 				75319140263800DC000A1119 /* tr */,
 				75FCA95D2638010D0070405A /* th */,
 				7534382A2643FE6F0032D284 /* ko */,
+				751C41E12700E4260002FB8F /* uk */,
 			);
 			name = SettingsSearchVC.storyboard;
 			sourceTree = "<group>";
@@ -4398,6 +4469,7 @@
 				75319133263800DC000A1119 /* tr */,
 				75FCA9502638010D0070405A /* th */,
 				7534381E2643FE6F0032D284 /* ko */,
+				751C41CF2700E4260002FB8F /* uk */,
 			);
 			name = DestinationGroupPickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4432,6 +4504,7 @@
 				7531912E263800DC000A1119 /* tr */,
 				75FCA9492638010D0070405A /* th */,
 				753438172643FE6F0032D284 /* ko */,
+				751C41D32700E4260002FB8F /* uk */,
 			);
 			name = AboutVC.storyboard;
 			sourceTree = "<group>";
@@ -4458,6 +4531,7 @@
 				7531913D263800DC000A1119 /* tr */,
 				75FCA95A2638010D0070405A /* th */,
 				753438272643FE6F0032D284 /* ko */,
+				751C41D52700E4260002FB8F /* uk */,
 			);
 			name = PasscodeInputVC.storyboard;
 			sourceTree = "<group>";
@@ -4484,6 +4558,7 @@
 				75319135263800DC000A1119 /* tr */,
 				75FCA9522638010D0070405A /* th */,
 				7534381F2643FE6F0032D284 /* ko */,
+				751C41D82700E4260002FB8F /* uk */,
 			);
 			name = WelcomeVC.storyboard;
 			sourceTree = "<group>";
@@ -4510,6 +4585,7 @@
 				75319117263800DC000A1119 /* tr */,
 				75FCA9342638010D0070405A /* th */,
 				753438002643FE6E0032D284 /* ko */,
+				751C41BF2700E4260002FB8F /* uk */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -4536,6 +4612,7 @@
 				75319118263800DC000A1119 /* tr */,
 				75FCA9352638010D0070405A /* th */,
 				753438012643FE6E0032D284 /* ko */,
+				751C41D12700E4260002FB8F /* uk */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -4561,6 +4638,7 @@
 				7531911B263800DC000A1119 /* tr */,
 				75FCA9382638010D0070405A /* th */,
 				753438042643FE6E0032D284 /* ko */,
+				751C41C02700E4260002FB8F /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4586,6 +4664,7 @@
 				7531911C263800DC000A1119 /* tr */,
 				75FCA93A2638010D0070405A /* th */,
 				753438062643FE6E0032D284 /* ko */,
+				751C41D22700E4260002FB8F /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4612,6 +4691,7 @@
 				7529D8C92643FEF100363B02 /* sk */,
 				7534BFA12643FEF4001A3873 /* th */,
 				753F293E2643FEF800F0413A /* tr */,
+				751C41D62700E4260002FB8F /* uk */,
 			);
 			name = AppHistoryViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -4638,6 +4718,7 @@
 				7531913A263800DC000A1119 /* tr */,
 				75FCA9572638010D0070405A /* th */,
 				753438242643FE6F0032D284 /* ko */,
+				751C41CC2700E4260002FB8F /* uk */,
 			);
 			name = HardwareKeyPicker.storyboard;
 			sourceTree = "<group>";
@@ -4664,6 +4745,7 @@
 				75319141263800DC000A1119 /* tr */,
 				75FCA95E2638010D0070405A /* th */,
 				7534382B2643FE6F0032D284 /* ko */,
+				751C41DA2700E4260002FB8F /* uk */,
 			);
 			name = PricingPlanPickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4691,6 +4773,7 @@
 				75319119263800DC000A1119 /* tr */,
 				75FCA9362638010D0070405A /* th */,
 				753438092643FE6E0032D284 /* ko */,
+				751C41DD2700E4260002FB8F /* uk */,
 			);
 			name = SettingsAppearanceVC.storyboard;
 			sourceTree = "<group>";
@@ -4717,6 +4800,7 @@
 				75319130263800DC000A1119 /* tr */,
 				75FCA94D2638010D0070405A /* th */,
 				753438192643FE6F0032D284 /* ko */,
+				751C41D72700E4260002FB8F /* uk */,
 			);
 			name = DiagnosticsViewerVC.storyboard;
 			sourceTree = "<group>";
@@ -4743,6 +4827,7 @@
 				7531912C263800DC000A1119 /* tr */,
 				75FCA94C2638010D0070405A /* th */,
 				753438152643FE6F0032D284 /* ko */,
+				751C41DC2700E4260002FB8F /* uk */,
 			);
 			name = SettingsAppTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -4769,6 +4854,7 @@
 				75319120263800DC000A1119 /* tr */,
 				75FCA95F2638010D0070405A /* th */,
 				7534382C2643FE6F0032D284 /* ko */,
+				751C41DF2700E4260002FB8F /* uk */,
 			);
 			name = SettingsBackupTimeoutPickerVC.storyboard;
 			sourceTree = "<group>";
@@ -4795,6 +4881,7 @@
 				75319127263800DC000A1119 /* tr */,
 				75FCA9442638010D0070405A /* th */,
 				753438102643FE6F0032D284 /* ko */,
+				751C41E42700E4260002FB8F /* uk */,
 			);
 			name = SettingsDatabaseTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -4821,6 +4908,7 @@
 				7531913C263800DC000A1119 /* tr */,
 				75FCA9592638010D0070405A /* th */,
 				753438262643FE6F0032D284 /* ko */,
+				751C41E32700E4260002FB8F /* uk */,
 			);
 			name = SettingsClipboardTimeoutVC.storyboard;
 			sourceTree = "<group>";
@@ -4847,6 +4935,7 @@
 				7531912B263800DC000A1119 /* tr */,
 				75FCA9482638010D0070405A /* th */,
 				753438142643FE6F0032D284 /* ko */,
+				751C41E72700E4260002FB8F /* uk */,
 			);
 			name = SettingsItemListVC.storyboard;
 			sourceTree = "<group>";

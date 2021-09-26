@@ -164,6 +164,7 @@
 		7505E8D02236FA0F00E5202E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		750935C3235219B900A362C8 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseItem.swift; sourceTree = "<group>"; };
+		75156CEB2700E42400B5D5E2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		751E0CDE2309A3420088BB10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		751E0D63230B49190088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		751E0D67230D12660088BB10 /* Bundle+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+extensions.swift"; sourceTree = "<group>"; };
@@ -824,6 +825,7 @@
 				tr,
 				th,
 				ko,
+				uk,
 			);
 			mainGroup = 75D0C7602174AF1F00C64C93;
 			packageReferences = (
@@ -1034,6 +1036,7 @@
 				75261DA2263800DA00EE2ED9 /* tr */,
 				75F21C262638010B0048F26F /* th */,
 				752F5DCA2643FE6C0099CA6E /* ko */,
+				75156CEB2700E42400B5D5E2 /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

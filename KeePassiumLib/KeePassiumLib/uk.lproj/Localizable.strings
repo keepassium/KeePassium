@@ -1,0 +1,516 @@
+/* Type of keyboard to show for App Lock passcode: letters and digits. */
+"[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "Буквено-цифровий";
+
+/* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
+"[AppLock/Passcode/KeyboardType/title] Numeric" = "Цифровий";
+
+/* Error message when the challenge-response communication has been cancelled by the user. */
+"[ChallengeResponseError] cancelled" = "Скасовано користувачем.";
+
+/* Error message when the hardware key is not plugged in. */
+"[ChallengeResponseError] keyNotConnected" = "Апаратний ключ не під'єднано.";
+
+/* Error message when trying to use challenge-response hardware in AutoFill. */
+"[ChallengeResponseError] notAvailableInAutoFill" = "Апаратні ключі недоступні для автозаповнення.";
+
+/* Error message when trying to use challenge-response with a kdb database. */
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Апаратні ключі не підтримуються цим форматом бази паролів.";
+
+/* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
+"[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Це пристрій або версія iOS не підтримує апаратні ключі (%@)";
+
+/* Error message: the hardware key (or its slot) was not configured for challenge-response operations. */
+"[ChallengeResponseError] slotNotConfigured" = "Апаратний ключ не налаштований для аутентифікації виклик-відповідь.";
+
+/* Progress status */
+"[Cipher/Progress] Decrypting" = "Розшифрування";
+
+/* Progress status */
+"[Cipher/Progress] Encrypting" = "Шифрування";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES decryption error (code %d)" = "Помилка розшифровки AES (код %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES encryption error (code %d)" = "Помилка шифрування AES (код %d)";
+
+/* Error message about AES cipher. [errorCode: Int] */
+"[CryptoError] AES initialization error (code %d)" = "Помилка ініціалізації AES (код %d)";
+
+/* Error message about Argon2 hashing function. [errorCode: Int] */
+"[CryptoError] Argon2 hashing error (code %d)" = "Помилка хешування Argon2 (код %d)";
+
+/* Error message about PKCS7 padding. [errorCode: Int] */
+"[CryptoError] Invalid data padding (code %d). File corrupt?" = "Недійсне заповнення даних (код %d). Файл пошкоджено?";
+
+/* Error message about key derivation function (KDF) parameters. [kdfName: String, paramName: String] */
+"[CryptoError] Invalid KDF parameter: %@ - %@. File corrupt?" = "Невірний параметр ФФК: %1$@ - %2$@. Пошкоджений файл?";
+
+/* Error message about random number generator. [errorCode: Int] */
+"[CryptoError] Random number generator error (code %d)" = "Помилка генератора випадкових чисел (код %d)";
+
+/* Error message about Twofish cipher. [errorCode: Int] */
+"[CryptoError] Twofish cipher error (code %d)" = "Помилка шифру Twofish (код %d)";
+
+/* Error message */
+"[Database/Load/Error] Cannot find database file" = "Не вдалося знайти файл бази паролів";
+
+/* Error message */
+"[Database/Load/Error] Cannot find key file" = "Не вдалося знайти файл-ключ";
+
+/* Error message */
+"[Database/Load/Error] Cannot open database file" = "Не вдалося відкрити базу паролів";
+
+/* Error message */
+"[Database/Load/Error] Cannot open key file" = "Не вдалося відкрити файл-ключ";
+
+/* Error shown when both master password and key file are empty */
+"[Database/Load/Error] Please provide at least a password or a key file" = "Будь ласка, вкажіть пароль або файл-ключ";
+
+/* Error message */
+"[Database/Load/Error] Unrecognized database format" = "Невідомий формат бази паролів";
+
+/* Progress status: finished loading database */
+"[Database/Progress] Done" = "Готово";
+
+/* Progress status */
+"[Database/Progress] Loading key file..." = "Завантаження файл-ключа...";
+
+/* Database loading status: fetching the database file from disk/cloud */
+"[Database/Progress/downloading]" = "Завантаження бази паролів...";
+
+/* Database saving status: making a local backup copy of the database */
+"[Database/Progress/makingDatabaseBackup]" = "Створення резервної копії...";
+
+/* Progress status */
+"[Database/Progress/resolving]" = "З'єднання зі сховищем файлів...";
+
+/* Database loading/saving status: replacing field references with their values */
+"[Database/Progress/resolvingFieldReferences]" = "Зіставлення посилань на поля…";
+
+/* Error message */
+"[Database/Unlock/Error] Failed to open key file" = "Не вдалося відкрити файл-ключ";
+
+/* Error message */
+"[Database/Unlock/Error] Password and key file are both empty." = "І пароль, і файл-ключ порожні.";
+
+/* Error message */
+"[Database1/FormatError] Database file is corrupted." = "Файл бази паролів пошкоджено.";
+
+/* Error message [fieldName: String] */
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Не вдалося розібрати поле %@. Файл бази паролів пошкоджений?";
+
+/* Error message */
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Виявлено запис поза групою. Файл бази паролів пошкоджений?";
+
+/* Error message */
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Несподіваний кінець файлу. Файл бази паролів пошкоджений?";
+
+/* Error message when reading database header */
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Помилка читання заголовка. Файл бази паролів пошкоджений?";
+
+/* Error message. [flagsHexString: String] */
+"[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Непідтримуваний алгоритм шифрування. (Код: %@)";
+
+/* Error message when opening a database. [version: String] */
+"[Database1/Header1/Error] Unsupported database format version: %@." = "Непідтримувана версія формату бази: %@.";
+
+/* Error message when opening a database */
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Невірна сигнатура файлу. Це дійсно база паролів KeePass?";
+
+/* Status message: collecting database items into a single package */
+"[Database1/Progress] Packing the content" = "Пакування даних";
+
+/* Status message: processing the content of a database */
+"[Database1/Progress] Parsing content" = "Розбір даних";
+
+/* Name of a group which contains deleted entries */
+"[Database2/backupGroupName] Recycle Bin" = "Смітник";
+
+/* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
+"[Database2/FormatError] Cannot parse database. %@" = "Не вдалося розібрати базу даних. %@";
+
+/* Error message [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Файл з базою паролів пошкоджений (у блоку %d негативний розмір)";
+
+/* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Файл з базою паролів пошкоджений (невірний хеш в блоці %d)";
+
+/* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Файл з базою паролів пошкоджений (невірний HMAC в блоці %d)";
+
+/* Error message about Gzip compression algorithm. [reason: String] */
+"[Database2/FormatError] Gzip error: %@" = "Помилка Gzip: %@";
+
+/* Error message: wrong ID of a data block */
+"[Database2/FormatError] Unexpected block ID." = "Несподіваний номер блоку.";
+
+/* Error message */
+"[Database2/FormatError] Unexpected end of file. Corrupted file?" = "Несподіваний кінець файлу. Файл пошкоджено?";
+
+/* Error message when saving a database. [reason: String] */
+"[Database2/Header2/Error] Failed to uncompress attachment data: %@" = "Неможливо розпакувати вміст прикріпленого файлу: %@";
+
+/* Error message, with the name of problematic field. [fieldName: String] */
+"[Database2/Header2/Error] Header field %@ is corrupted." = "У заголовку пошкоджено поле %@.";
+
+/* Error message */
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Невірний хеш заголовка. Файл бази пошкоджений?";
+
+/* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Невірний HMAC заголовка. Файл бази пошкоджений?";
+
+/* Error message when reading database header */
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "Помилка читання заголовка. Файл бази паролів пошкоджений?";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Unknown compression algorithm." = "Невідомий алгоритм стиснення.";
+
+/* Error message. [uuidHexString: String] */
+"[Database2/Header2/Error] Unsupported data cipher: %@" = "Непідтримуваний алгоритм шифрування даних: %@";
+
+/* Error message when opening a database. [version: String] */
+"[Database2/Header2/Error] Unsupported database format version: %@." = "Непідтримувана версія формату бази: %@.";
+
+/* Error message when opening a database. [id: UInt32] */
+"[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Непідтримуваний потоковий шифр (ID %d)";
+
+/* Error message about Key Derivation Function. [uuidString: String] */
+"[Database2/Header2/Error] Unsupported KDF: %@" = "Непідтримувана функція формування ключа (ФФК): %@";
+
+/* Error message when opening a database */
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Невірна сигнатура файлу. Це дійсно база паролів KeePass?";
+
+/* Error message about Gzip compression algorithm. [errorMessage: String] */
+"[Database2/Loading/Error] Error unpacking database: %@" = "Помилка при розпакуванні бази паролів: %@";
+
+/* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
+"[Database2/Loading/Warning/missingBinaries]" = "Прикріплені файли в деяких записах не мають вмісту. Це ознака пошкодження бази паролів, можливо, останнім використаним додатком (%1$@). KeePassium залишить ці порожні прикріплені файли, але не зможе відновити їх. Радимо відновити базу з резервної копії.\n\nВідсутні прикріплені файли: %2$@";
+
+/* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
+"[Database2/Loading/Warning/namelessAttachments]" = "Деякі записи містять прикріплені файли без імені. Це ознака пошкодженої бази паролів.\n\nПеревірте прикріплені файли в наступних записах (і їх попередніх версіях):\n%@";
+
+/* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
+"[Database2/Loading/Warning/namelessCustomFields]" = "Деякі записи містять поля без назв. Це може бути ознакою пошкодженої бази. Перевірте такі записи:\n\n% @";
+
+/* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
+"[Database2/Loading/Warning/unusedAttachments]" = "База містить прикріплені дані, які не використовуються ні в одному записі. Швидше за все, вони були забуті попередньою програмою (%@), але це може бути і ознакою пошкодження бази.\nПеред тим як що-небудь редагувати, переконайтеся, що у Вас є резервна копія бази паролів.";
+
+/* Progress bar status */
+"[Database2/Progress] Loading database" = "Завантаження бази паролів";
+
+/* Progress bar status */
+"[Database2/Progress] Reading database content" = "Читання бази паролів";
+
+/* Progress bar status */
+"[Database2/Progress] Writing encrypted blocks" = "Запис шифрованих блоків";
+
+/* Progress bar status: un-zipping the database content */
+"[Database2/Progress/decompressing]" = "Розпакування бази паролів";
+
+/* Progress bar status */
+"[Database2/Progress/integrityCheck]" = "Перевірка цілісності";
+
+/* Progress bar status: parsing decrypted XML content */
+"[Database2/Progress/parsingXML]" = "Аналіз бази паролів";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Data compression error: %@" = "Помилка стиснення даних: %@";
+
+/* Error message while saving a database. [errorDescription: String] */
+"[Database2/Saving/Error] Encryption error: %@" = "Помилка шифрування: %@";
+
+/* Error message about XML parsing. [value: String, tag: String] */
+"[Database2/Xml2/ParsingError] Malformed value '%@' in %@" = "Незрозуміле значення '%1$@' в тезі %2$@";
+
+/* Error message about XML parsing. [tag: String] */
+"[Database2/Xml2/ParsingError] Nil value in %@" = "Виявлено значення \"nil\" в тезі %@";
+
+/* Error message about XML parsing */
+"[Database2/Xml2/ParsingError] Not a KeePass XML" = "XML не відповідає формату KeePass";
+
+/* Error message about XML parsing. [actualTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Несподіваний тег '%@'";
+
+/* Error message about XML parsing. [actualTag: String, expectedTag: String] */
+"[Database2/Xml2/ParsingError] Unexpected tag '%@' (instead of '%@')" = "Несподіваний тег '%1$@' (замість '%2$@')";
+
+/* Generic error while parsing XML. [errorDetails: String] */
+"[Database2/Xml2/ParsingError] XML error: %@" = "Помилка XML: %@";
+
+/* Error message while opening a database */
+"[DatabaseError] Cannot open database" = "Не вдалося відкрити базу паролів";
+
+/* Error message while saving a database */
+"[DatabaseError] Cannot save database" = "Не вдалося зберегти базу паролів";
+
+/* Error message: user provided a wrong master key for decryption. */
+"[DatabaseError] Invalid password or key file" = "Неправильний пароль або файл-ключ";
+
+/* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
+"[File/In Trash/warning]" = "'%@' розташований в нещодавно вилучених і може бути незабаром видалений. Щоб зберегти свої дані, перемістіть файл в більш постійне місце.";
+
+/* Notification when user opens an in-app backup database. */
+"[File/TemporaryBackup/warning]" = "Це тимчасова копія бази даних. Вона може бути автоматично видалена без попередження. Не використовуйте її як основну базу паролів.";
+
+/* Error message: storage provider app was logged out or uninstalled. */
+"[FileAccessError/FileProvider/NotFound/generic]" = "Сховище файлів недоступно. Переконайтеся, що відповідну програму встановлено і підключено до вашого облікового запису.";
+
+/* Error message: storage provider app was logged out or uninstalled [fileProviderName: String]. */
+"[FileAccessError/FileProvider/NotFound/other]" = "%@ недоступний. Переконайтеся, що відповідну програму встановлено і підключено до вашого облікового запису.";
+
+/* Error message: the required network drive is not connected. */
+"[FileAccessError/FileProvider/NotFound/smbShare]" = "Мережеве сховище не підключено.";
+
+/* Error message: there is no USB drive connected to the device. */
+"[FileAccessError/FileProvider/NotFound/usbDrive]" = "USB-накопичувач не підключено.";
+
+/* Error message shown when there's internal inconsistency in KeePassium. */
+"[FileAccessError/internalError]" = "Внутрішня помилка KeePassium. Будь ласка, повідомте нам про це.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
+"[FileAccessError/NoResponse/genericFileProvider]" = "Сховище файлів не відповідає.";
+
+/* Error message: file provider does not respond to requests. For example: `Google Drive does not respond.` */
+"[FileAccessError/NoResponse/knownFileProvider]" = "%@ не відповідає.";
+
+/* Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)` */
+"[FileAccessError/NoWritePermission/title]" = "Неможливо зберегти файл (%@)";
+
+/* Explanation of a file writing error */
+"[FileAccessError/OneDriveReadOnly/reason]" = "Нещодавно Microsoft перевела інтеграцію OneDrive з iOS в режим тільки читання. Як кажуть, тимчасово.";
+
+/* Suggestion for error recovery */
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Використовуйте функцію експорту, щоб зберегти файл в іншому місці.";
+
+/* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
+"[FileAccessError/Timeout/genericFileProvider]" = "Сховище файлів не відповідає.";
+
+/* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
+"[FileAccessError/Timeout/knownFileProvider]" = "%@ не відповідає.";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to delete file. Reason: %@" = "Не вдалося видалити файл. Причина: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to import file. Reason: %@" = "Не вдалося імпортувати файл. Причина: %@";
+
+/* Error message [reason: String] */
+"[FileKeeper] Failed to open file. Reason: %@" = "Не вдалося відкрити файл. Причина: %@";
+
+/* Error message: tried to import URL which does not point to a file */
+"[FileKeeper] Not a file URL" = "Не є URL-адреса файлу";
+
+/* Localized name of the storage service: Amerigo (https://www.amerigo-app.com) */
+"[FileProvider/Amerigo/name]" = "Amerigo";
+
+/* Localized name of the storage service: Box (https://box.com) */
+"[FileProvider/Box/name]" = "Box";
+
+/* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
+"[FileProvider/Boxcryptor/name]" = "Boxcryptor";
+
+/* Localized name of the storage service: Dropbox (https://dropbox.com) */
+"[FileProvider/Dropbox/name]" = "Dropbox";
+
+/* Localized name of the storage service: FE File Explorer (https://apps.apple.com/app/fe-file-explorer-file-manager/id510282524) */
+"[FileProvider/FE File Explorer/name]" = "FE File Explorer";
+
+/* Localized name of the storage service: Google Drive (https://drive.google.com) */
+"[FileProvider/Google Drive/name]" = "Google Drive";
+
+/* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
+"[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MEGA (https://mega.nz) */
+"[FileProvider/Mega.nz/name]" = "MEGA.nz";
+
+/* Localized name of the storage service: Nextcloud (https://nextcloud.com) */
+"[FileProvider/Nextcloud/name]" = "Nextcloud";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPad/name]" = "На моєму iPad";
+
+/* Localized name of the local on-device storage, as shown in the Files app. */
+"[FileProvider/On My iPhone/name]" = "На моєму iPhone";
+
+/* Localized name of the storage service: OneDrive (https://onedrive.com) */
+"[FileProvider/OneDrive/name]" = "OneDrive";
+
+/* Localized name of the storage service: ownCloud (https://owncloud.com) */
+"[FileProvider/ownCloud/name]" = "ownCloud";
+
+/* Localized name of the storage service: pCloud (https://pcloud.com) */
+"[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
+"[FileProvider/qnapQFile/name]" = "Qfile";
+
+/* Localized name of the storage service: Documents by Readdle (https://apps.apple.com/app/id364901807) */
+"[FileProvider/Readdle Documents/name]" = "Documents від Readdle";
+
+/* Localized name of the storage service: Resilio Sync (https://https://apps.apple.com/us/app/id1126282325) */
+"[FileProvider/Resilio Sync/name]" = "Resilio Sync";
+
+/* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
+"[FileProvider/Seafile Pro/name]" = "Seafile Pro";
+
+/* Localized name of the storage service: SMB server (network share) via native iOS integration. */
+"[FileProvider/SMB/name]" = "SMB-сервер";
+
+/* Localized name of the storage service: Stratospherix FileBrowser (https://apps.apple.com/us/app/filebrowser-document-manager/id364738545) */
+"[FileProvider/Stratospherix FileBrowser/name]" = "FileBrowser";
+
+/* Localized name of the storage service: Sync.com (https://sync.com) */
+"[FileProvider/sync.com/name]" = "Sync.com";
+
+/* Localized name of the storage service: Synology Drive (https://apps.apple.com/us/app/synology-drive/id1267275421) */
+"[FileProvider/Synology Drive/name]" = "Synology Drive";
+
+/* Localized name of the storage service: Synology DS file (https://apps.apple.com/us/app/ds-file/id416751772) */
+"[FileProvider/Synology DS file/name]" = "Synology DS file";
+
+/* Localized name of the storage service: Tresorit (https://tresorit.com) */
+"[FileProvider/Tresorit/name]" = "Tresorit";
+
+/* Localized name of the storage service: local USB drive (native iOS integration) */
+"[FileProvider/USB drive/name]" = "USB-накопичувач";
+
+/* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
+"[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Дата створення (спочатку найстаріші)";
+
+/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Дата створення (спочатку найновіші)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Дата змінення (спочатку найстаріші)";
+
+/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Дата змінення (спочатку найновіші)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
+"[FilesSortOrder/longTitle] Name (A..Z)" = "Назва (А..я)";
+
+/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
+"[FilesSortOrder/longTitle] Name (Z..A)" = "Назва (Я..а)";
+
+/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
+"[FilesSortOrder/longTitle] No Sorting" = "Без сортування";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "За датою створення (нове..старе)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "За датою створення (старе..нове)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "За датою зміни (нове..старе)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "За датою зміни (старе..нове)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
+"[GroupSortOrder/longTitle] By Title (A..Z)" = "За назвою (А..Я)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "За назвою (я..А)";
+
+/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
+"[GroupSortOrder/longTitle] No Sorting" = "Без сортування";
+
+/* Status message: processing of the master key is in progress */
+"[KDF/Progress] Processing the master key" = "Підготовка майстер-ключа";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "Помилка при роботі зі зв'язкою ключів (код %d) ";
+
+/* Error message about system keychain. */
+"[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Помилка при роботі зі зв'язкою ключів: неочікуваний формат даних";
+
+/* Error message when the key file is misformatted or damaged */
+"[KeyFileError/Corrupted/title]" = "Файл-ключ пошкоджено";
+
+/* Error message: unsupported/unknown format of a key file */
+"[KeyFileError/UnsupportedFormat/title]" = "Формат файл-ключа не підтримується";
+
+/* Explanation/notification when a long-running operation was cancelled by user */
+"[Progress/CancellationReason] Cancelled by user" = "Скасовано користувачем";
+
+/* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
+"[Progress/CancellationReason/lowMemory]" = "Бракує пам'яті щоб продовжити.\nМожливо, база паролів занадто велика або вимагає дуже багато пам'яті (для Argon2).";
+
+/* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
+"[Settings/AppLockTimeout/description] After last interaction" = "Після бездіяльності";
+
+/* A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app) */
+"[Settings/AppLockTimeout/description] After leaving the app" = "Після виходу з додатку";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/fullTitle] Immediately" = "Негайно";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/fullTitle] Never" = "Ніколи";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
+"[Settings/AppLockTimeout/shortTitle] Immediately" = "Негайно";
+
+/* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
+"[Settings/AppLockTimeout/shortTitle] Never" = "Ніколи";
+
+/* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
+"[Settings/BackupKeepingDuration/shortTitle] Forever" = "Завжди";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/fullTitle] Never" = "Ніколи";
+
+/* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
+"[Settings/ClipboardTimeout/shortTitle] Never" = "Ніколи";
+
+/* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
+"[Settings/DatabaseLockTimeout/description] When leaving the app" = "При виході з додатку";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "Негайно";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "Ніколи";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
+"[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "Негайно";
+
+/* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "Ніколи";
+
+/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Дата останньої зміни";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
+"[Settings/EntryListDetail/longTitle] None" = "Нічого";
+
+/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
+"[Settings/EntryListDetail/longTitle] Notes" = "Нотатки";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
+"[Settings/EntryListDetail/longTitle] Password" = "Пароль";
+
+/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
+"[Settings/EntryListDetail/longTitle] URL" = "URL";
+
+/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
+"[Settings/EntryListDetail/longTitle] User Name" = "Ім'я користувача";
+
+/* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
+"[URLReference/Location] Cloud storage / Another app" = "Хмарне сховище / В іншому додатку";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Backup' is a dedicated directory for database backup files. Example: 'File Location: Internal backup' */
+"[URLReference/Location] Internal backup" = "Внутрішня резервна копія";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. 'Inbox' is a special directory for files that are being imported. Can be also 'Internal import'. Example: 'File Location: Internal inbox' */
+"[URLReference/Location] Internal inbox" = "Внутрішній імпорт";
+
+/* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
+"[URLReference/Location] Local copy" = "Локальна копія";
+
