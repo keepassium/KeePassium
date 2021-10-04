@@ -773,7 +773,7 @@ public class FileKeeper {
     ) {
         assert(operationQueue.isCurrent)
         do {
-            try bytes.write(to: targetURL, options: [.atomicWrite])
+            try bytes.write(to: targetURL, options: [])
             Diag.debug("File imported successfully")
             clearInbox()
             completionQueue.addOperation {
@@ -849,9 +849,10 @@ public class FileKeeper {
             try fileManager.createDirectory(
                 at: backupDirURL,
                 withIntermediateDirectories: true,
-                attributes: nil)
+                attributes: [.protectionKey: FileProtectionType.complete]
+            )
             
-            try contents.asData.write(to: backupFileURL, options: .atomic)
+            try contents.asData.write(to: backupFileURL, options: [])
             try fileManager.setAttributes(
                 [FileAttributeKey.creationDate: timestamp,
                  FileAttributeKey.modificationDate: timestamp],
