@@ -105,7 +105,11 @@ public class Keychain {
     private func set(service: Service, account: String, data: Data) throws {
         if let _ = try get(service: service, account: account) { 
             let query = makeQuery(service: service, account: account)
-            let attrsToUpdate = [kSecValueData as String : data as AnyObject?]
+            let attrsToUpdate: [String: Any] = [
+                kSecValueData as String : data,
+                kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+            ]
+            
             let status = SecItemUpdate(query as CFDictionary, attrsToUpdate as CFDictionary)
             if status != noErr {
                 Diag.error("Keychain error [code: \(Int(status))]")
@@ -113,6 +117,7 @@ public class Keychain {
             }
         } else {
             var newItem = makeQuery(service: service, account: account)
+            newItem[kSecAttrAccessible as String] = kSecAttrAccessibleWhenUnlockedThisDeviceOnly
             newItem[kSecValueData as String] = data as AnyObject?
             let status = SecItemAdd(newItem as CFDictionary, nil)
             if status != noErr {
