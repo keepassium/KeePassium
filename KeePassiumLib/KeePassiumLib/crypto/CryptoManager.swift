@@ -9,24 +9,21 @@
 import Foundation
 
 public let SHA256_SIZE = Int(CC_SHA256_DIGEST_LENGTH)
+public let SHA512_SIZE = Int(CC_SHA512_DIGEST_LENGTH)
 public let SHA1_SIZE = Int(CC_SHA1_DIGEST_LENGTH)
 
 public final class CryptoManager {
 
-    public static func sha256(of buffer: ByteArray) -> ByteArray {
-        var hashBytes = [UInt8](repeating: 0, count: SHA256_SIZE)
-        buffer.withBytes { (bytes) in
-            CC_SHA256(bytes, CC_LONG(bytes.count), &hashBytes)
-        }
-        return ByteArray(bytes: hashBytes)
+    public static func sha256(of buffer: [UInt8]) -> [UInt8] {
+        var hash = [UInt8](repeating: 0, count: SHA256_SIZE)
+        CC_SHA256(buffer, CC_LONG(buffer.count), &hash)
+        return hash
     }
     
-    public static func sha512(of bytes: ByteArray) -> ByteArray {
+    public static func sha512(of buffer: [UInt8]) -> [UInt8] {
         var hash = [UInt8](repeating: 0,  count: Int(CC_SHA512_DIGEST_LENGTH))
-        bytes.withBytes { (bytes) in
-            CC_SHA512(bytes, CC_LONG(bytes.count), &hash)
-        }
-        return ByteArray(bytes: hash)
+        CC_SHA512(buffer, CC_LONG(buffer.count), &hash)
+        return hash
     }
     
     public static func getRandomBytes(count: Int) throws -> ByteArray {
@@ -41,10 +38,22 @@ public final class CryptoManager {
         return output
     }
     
-    public static func getHMACKey64(key: ByteArray, blockIndex: UInt64) -> ByteArray {
-        assert(key.count == 64)
-        let merged = ByteArray.concat(blockIndex.data, key)
-        return merged.sha512
+    public static func getRandomSecureBytes(count: Int) throws -> SecureBytes {
+        let plainTextBytes = try getRandomBytes(count: count)
+        defer {
+            plainTextBytes.erase()
+        }
+        let result = SecureBytes.from(plainTextBytes)
+        return result
+    }
+    
+    public static func getHMACKey64(key: SecureBytes, blockIndex: UInt64) -> ByteArray {
+        let result = key.withDecryptedByteArray { (keyBytes) -> ByteArray in
+            assert(keyBytes.count == 64)
+            let merged = ByteArray.concat(blockIndex.data, keyBytes)
+            return merged.sha512
+        }
+        return result
     }
     
     public static func hmacSHA1(data: ByteArray, key: ByteArray) -> ByteArray {

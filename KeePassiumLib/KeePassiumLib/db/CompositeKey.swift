@@ -29,13 +29,13 @@ public class CompositeKey: Codable {
     internal private(set) var keyFileRef: URLReference?
     public var challengeHandler: ChallengeHandler? 
     
-    internal private(set) var passwordData: SecureByteArray?
-    internal private(set) var keyFileData: ByteArray?
+    internal private(set) var passwordData: SecureBytes?
+    internal private(set) var keyFileData: SecureBytes?
     
-    internal private(set) var combinedStaticComponents: SecureByteArray?
+    internal private(set) var combinedStaticComponents: SecureBytes?
     
-    internal private(set) var finalKey: SecureByteArray?
-    internal private(set) var cipherKey: SecureByteArray?
+    internal private(set) var finalKey: SecureBytes?
+    internal private(set) var cipherKey: SecureBytes?
     
     
     public init() {
@@ -52,21 +52,7 @@ public class CompositeKey: Codable {
         state = .rawComponents
     }
     
-    init(
-        passwordData: SecureByteArray,
-        keyFileData: ByteArray,
-        challengeHandler: ChallengeHandler?)
-    {
-        self.password = ""
-        self.keyFileRef = nil
-        self.passwordData = passwordData
-        self.keyFileData = keyFileData
-        self.challengeHandler = challengeHandler
-        
-        state = .processedComponents
-    }
-    
-    init(staticComponents: SecureByteArray, challengeHandler: ChallengeHandler?) {
+    init(staticComponents: SecureBytes, challengeHandler: ChallengeHandler?) {
         self.password = ""
         self.keyFileRef = nil
         self.passwordData = nil
@@ -100,37 +86,24 @@ public class CompositeKey: Codable {
         case finalKey
     }
     
-    internal func serialize() -> SecureByteArray {
-        let encoder = JSONEncoder()
-        let encodedBytes = SecureByteArray(data: try! encoder.encode(self))
-        return encodedBytes
-    }
-    
-    internal static func deserialize(from bytes: SecureByteArray?) -> CompositeKey? {
-        guard let data = bytes?.asData else { return nil }
-        let decoder = JSONDecoder()
-        let result = try? decoder.decode(CompositeKey.self, from: data)
-        return result
-    }
-    
     
     public func clone() -> CompositeKey {
         let clone = CompositeKey(
             password: self.password,
             keyFileRef: self.keyFileRef,
             challengeHandler: self.challengeHandler)
-        clone.passwordData = self.passwordData?.secureClone()
+        clone.passwordData = self.passwordData?.clone()
         clone.keyFileData = self.keyFileData?.clone()
-        clone.combinedStaticComponents = self.combinedStaticComponents?.secureClone()
-        clone.cipherKey = self.cipherKey?.secureClone()
-        clone.finalKey = self.finalKey?.secureClone()
+        clone.combinedStaticComponents = self.combinedStaticComponents?.clone()
+        clone.cipherKey = self.cipherKey?.clone()
+        clone.finalKey = self.finalKey?.clone()
         clone.state = self.state
         return clone
     }
     
-    func setProcessedComponents(passwordData: SecureByteArray, keyFileData: ByteArray) {
+    func setProcessedComponents(passwordData: SecureBytes, keyFileData: SecureBytes) {
         assert(state == .rawComponents)
-        self.passwordData = passwordData.secureClone()
+        self.passwordData = passwordData.clone()
         self.keyFileData = keyFileData.clone()
         state = .processedComponents
         
@@ -142,9 +115,9 @@ public class CompositeKey: Codable {
         self.finalKey = nil
     }
     
-    func setCombinedStaticComponents(_ staticComponents: SecureByteArray) {
+    func setCombinedStaticComponents(_ staticComponents: SecureBytes) {
         assert(state <= .combinedComponents)
-        self.combinedStaticComponents = staticComponents.secureClone()
+        self.combinedStaticComponents = staticComponents.clone()
         state = .combinedComponents
         
         self.password.erase()
@@ -160,10 +133,10 @@ public class CompositeKey: Codable {
         self.finalKey = nil
     }
     
-    func setFinalKeys(_ finalKey: SecureByteArray, _ cipherKey: SecureByteArray?) {
+    func setFinalKeys(_ finalKey: SecureBytes, _ cipherKey: SecureBytes?) {
         assert(state >= .combinedComponents)
-        self.cipherKey = cipherKey?.secureClone()
-        self.finalKey = finalKey.secureClone()
+        self.cipherKey = cipherKey?.clone()
+        self.finalKey = finalKey.clone()
         state = .final
     }
     
@@ -176,13 +149,13 @@ public class CompositeKey: Codable {
         finalKey = nil
     }
     
-    func getResponse(challenge: SecureByteArray) throws -> SecureByteArray  {
+    func getResponse(challenge: SecureBytes) throws -> SecureBytes  {
         guard let handler = self.challengeHandler else {
-            return SecureByteArray()
+            return SecureBytes.empty()
         }
         
         
-        var response: SecureByteArray?
+        var response: SecureBytes?
         var challengeError: ChallengeResponseError?
         let responseReadySemaphore = DispatchSemaphore(value: 0)
         DispatchQueue.global(qos: .default).async {

@@ -67,7 +67,7 @@ public enum ChallengeResponseError: LocalizedError {
 }
 
 public typealias ChallengeHandler =
-    (_ challenge: SecureByteArray, _ responseHandler: @escaping ResponseHandler) -> Void
+    (_ challenge: SecureBytes, _ responseHandler: @escaping ResponseHandler) -> Void
 
 public typealias ResponseHandler =
-    (_ response: SecureByteArray, _ error: ChallengeResponseError?) -> Void
+    (_ response: SecureBytes, _ error: ChallengeResponseError?) -> Void

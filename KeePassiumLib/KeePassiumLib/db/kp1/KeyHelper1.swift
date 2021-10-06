@@ -13,23 +13,23 @@ class KeyHelper1: KeyHelper {
         super.init()
     }
     
-    override func getPasswordData(password: String) -> SecureByteArray {
+    override func getPasswordData(password: String) -> SecureBytes {
         guard let data = password.data(using: .isoLatin1, allowLossyConversion: true) else {
             fatalError("getPasswordData(KP1): Failed lossy conversion to ISO Latin 1")
         }
-        return SecureByteArray(data: data)
+        return SecureBytes.from(data)
     }
     
     override func combineComponents(
-        passwordData: SecureByteArray,
-        keyFileData: ByteArray
-    ) throws -> SecureByteArray {
+        passwordData: SecureBytes,
+        keyFileData: SecureBytes
+    ) throws -> SecureBytes {
         let hasPassword = !passwordData.isEmpty
         let hasKeyFile = !keyFileData.isEmpty
         
         if hasPassword && hasKeyFile {
             Diag.info("Using password and key file")
-            let preKey = SecureByteArray.concat(
+            let preKey = SecureBytes.concat(
                 passwordData.sha256,
                 try processKeyFile(keyFileData: keyFileData)) 
             return preKey.sha256
@@ -41,15 +41,15 @@ class KeyHelper1: KeyHelper {
             return try processKeyFile(keyFileData: keyFileData) 
         } else {
             Diag.warning("Both password and key file are empty after being checked.")
-            return SecureByteArray().sha256
+            return SecureBytes.empty().sha256
         }
     }
     
-    override func getKey(fromCombinedComponents combinedComponents: SecureByteArray) -> SecureByteArray {
+    override func getKey(fromCombinedComponents combinedComponents: SecureBytes) -> SecureBytes{
         return combinedComponents 
     }
     
-    override func processXmlKeyFile(keyFileData: ByteArray) throws -> SecureByteArray? {
+    override func processXmlKeyFile(keyFileData: SecureBytes) throws -> SecureBytes? {
         return nil
     }
 }

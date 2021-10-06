@@ -73,7 +73,7 @@ class Header1 {
     private weak var database: Database1?
     private(set) var flags: UInt32 
     private(set) var masterSeed: ByteArray
-    private(set) var initialVector: ByteArray
+    private(set) var initialVector: SecureBytes
     internal var contentHash: ByteArray
     private(set) var transformSeed: ByteArray
     private(set) var transformRounds: UInt32
@@ -85,7 +85,7 @@ class Header1 {
         self.database = database
         flags = 0
         masterSeed = ByteArray()
-        initialVector = ByteArray()
+        initialVector = SecureBytes.empty()
         contentHash = ByteArray()
         transformSeed = ByteArray()
         transformRounds = 0
@@ -166,7 +166,7 @@ class Header1 {
         guard let masterSeed = stream.read(count: masterSeedSize) else { throw Error.readingError }
         guard let initialVector = stream.read(count: initialVectorSize) else { throw Error.readingError }
         self.masterSeed = masterSeed
-        self.initialVector = initialVector
+        self.initialVector = SecureBytes.from(initialVector)
 
         guard let groupCount = stream.readUInt32() else { throw Error.readingError }
         guard let entryCount = stream.readUInt32() else { throw Error.readingError }
@@ -195,7 +195,9 @@ class Header1 {
         stream.write(value: flags)
         stream.write(value: Header1.fileVersion)
         stream.write(data: masterSeed)
-        stream.write(data: initialVector)
+        initialVector.withDecryptedByteArray {
+            stream.write(data: $0)
+        }
         stream.write(value: UInt32(groupCount))
         stream.write(value: UInt32(entryCount))
         stream.write(data: contentHash)
@@ -205,7 +207,7 @@ class Header1 {
     
     internal func randomizeSeeds() throws {
         Diag.debug("Randomizing the seeds")
-        initialVector = try CryptoManager.getRandomBytes(count: initialVectorSize)
+        initialVector = try CryptoManager.getRandomSecureBytes(count: initialVectorSize)
         masterSeed = try CryptoManager.getRandomBytes(count: masterSeedSize)
         transformSeed = try CryptoManager.getRandomBytes(count: transformSeedSize)
     }

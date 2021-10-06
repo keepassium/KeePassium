@@ -14,25 +14,25 @@ final class KeyHelper2: KeyHelper {
         super.init()
     }
     
-    override func getPasswordData(password: String) -> SecureByteArray {
-        return SecureByteArray(data: Data(password.utf8))
+    override func getPasswordData(password: String) -> SecureBytes {
+        return SecureBytes.from(password.utf8data)
     }
     
     override func combineComponents(
-        passwordData: SecureByteArray,
-        keyFileData: ByteArray
-    ) throws -> SecureByteArray {
+        passwordData: SecureBytes,
+        keyFileData: SecureBytes
+    ) throws -> SecureBytes {
         let hasPassword = !passwordData.isEmpty
         let hasKeyFile = !keyFileData.isEmpty
         
-        var preKey = SecureByteArray()
+        var preKey = SecureBytes.empty()
         if hasPassword {
             Diag.info("Using password")
-            preKey = SecureByteArray.concat(preKey, passwordData.sha256)
+            preKey = SecureBytes.concat(preKey, passwordData.sha256)
         }
         if hasKeyFile {
             Diag.info("Using key file")
-            preKey = SecureByteArray.concat(
+            preKey = SecureBytes.concat(
                 preKey,
                 try processKeyFile(keyFileData: keyFileData) 
             )
@@ -43,14 +43,16 @@ final class KeyHelper2: KeyHelper {
         return preKey 
     }
     
-    override func getKey(fromCombinedComponents combinedComponents: SecureByteArray) -> SecureByteArray {
+    override func getKey(fromCombinedComponents combinedComponents: SecureBytes) -> SecureBytes {
         return combinedComponents.sha256
     }
     
-    internal override func processXmlKeyFile(keyFileData: ByteArray) throws -> SecureByteArray? {
+    internal override func processXmlKeyFile(keyFileData: SecureBytes) throws -> SecureBytes? {
         let xml: AEXMLDocument
         do {
-            xml = try AEXMLDocument(xml: keyFileData.asData)
+            xml = try keyFileData.withDecryptedData {
+                try AEXMLDocument(xml: $0) 
+            }
         } catch {
             return nil
         }
@@ -82,7 +84,7 @@ final class KeyHelper2: KeyHelper {
         }
     }
     
-    private func processXMLFileVersion1(_ xml: AEXMLDocument) throws -> SecureByteArray? {
+    private func processXMLFileVersion1(_ xml: AEXMLDocument) throws -> SecureBytes? {
         guard let base64 = xml[Xml2.keyFile][Xml2.key][Xml2.data].value else {
             Diag.warning("Empty Base64 value")
             return nil
@@ -91,10 +93,10 @@ final class KeyHelper2: KeyHelper {
             Diag.error("Invalid Base64 string")
             throw KeyFileError.keyFileCorrupted
         }
-        return SecureByteArray(keyData)
+        return SecureBytes.from(keyData)
     }
     
-    private func processXMLFileVersion2(_ xml: AEXMLDocument) throws -> SecureByteArray? {
+    private func processXMLFileVersion2(_ xml: AEXMLDocument) throws -> SecureBytes? {
         let rawHexString = xml[Xml2.keyFile][Xml2.key][Xml2.data].value
         guard let hexString = rawHexString?.filter({ !$0.isWhitespace }),
               hexString.isNotEmpty
@@ -118,6 +120,6 @@ final class KeyHelper2: KeyHelper {
                 throw KeyFileError.keyFileCorrupted
             }
         }
-        return SecureByteArray(keyData)
+        return SecureBytes.from(keyData)
     }
 }

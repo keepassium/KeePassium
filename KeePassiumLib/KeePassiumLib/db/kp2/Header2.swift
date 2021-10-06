@@ -194,7 +194,7 @@ final class Header2: Eraseable {
         return compressionValue != CompressionAlgorithm.noCompression.rawValue
     }
     
-    var protectedStreamKey: SecureByteArray?
+    var protectedStreamKey: SecureBytes?
     var innerStreamAlgorithm: ProtectedStreamAlgorithm
     
     class func isSignatureMatches(data: ByteArray) -> Bool {
@@ -448,7 +448,7 @@ final class Header2: Eraseable {
                     Diag.error("Unexpected \(fieldID.name) field size [\(fieldSize) bytes]")
                     throw HeaderError.corruptedField(fieldName: fieldID.name)
                 }
-                self.protectedStreamKey = SecureByteArray(fieldValueData)
+                self.protectedStreamKey = SecureBytes.from(fieldValueData)
                 Diag.verbose("\(fieldID.name) read OK")
             case .streamStartBytes: 
                 guard formatVersion == .v3 else {
@@ -555,7 +555,7 @@ final class Header2: Eraseable {
             key: protectedStreamKey)
     }
     
-    func getHMAC(key: ByteArray) -> ByteArray {
+    func getHMAC(key: SecureBytes) -> ByteArray {
         assert(!self.data.isEmpty)
         assert(key.count == CC_SHA256_BLOCK_BYTES)
         
@@ -607,7 +607,7 @@ final class Header2: Eraseable {
                 guard fieldData.count > 0 else {
                     throw HeaderError.corruptedField(fieldName: fieldID.name)
                 }
-                self.protectedStreamKey = SecureByteArray(fieldData)
+                self.protectedStreamKey = SecureBytes.from(fieldData)
                 Diag.verbose("\(fieldID.name) read OK")
             case .binary:
                 let isProtected = (fieldData[0] & 0x01 != 0)
@@ -676,7 +676,13 @@ final class Header2: Eraseable {
         fields[.cipherID] = self.dataCipher.uuid.data
         fields[.transformSeed] = transformSeedData
         fields[.transformRounds] = transformRoundsData
-        fields[.protectedStreamKey] = protectedStreamKey
+        if let protectedStreamKey = protectedStreamKey {
+            protectedStreamKey.withDecryptedBytes {
+                fields[.protectedStreamKey] = ByteArray(bytes: $0.clone())
+            }
+        } else {
+            fields[.protectedStreamKey] = nil
+        }
         fields[.innerRandomStreamID] = innerStreamAlgorithm.rawValue.data
 
         writeField(to: stream, fieldID: .cipherID)
@@ -724,8 +730,12 @@ final class Header2: Eraseable {
         
         stream.write(value: InnerFieldID.innerRandomStreamKey.rawValue) 
         stream.write(value: UInt32(protectedStreamKey.count)) 
-        stream.write(data: protectedStreamKey)
-        print("  streamCipherKey: \(protectedStreamKey.asHexString)")
+        protectedStreamKey.withDecryptedByteArray {
+            stream.write(data: $0)
+            #if DEBUG
+            print("  streamCipherKey: \($0.asHexString)")
+            #endif
+        }
         
         for binaryID in database.binaries.keys.sorted() {
             Diag.verbose("Writing a binary")
@@ -760,10 +770,10 @@ final class Header2: Eraseable {
         try kdf.randomize(params: &kdfParams) 
         switch formatVersion {
         case .v3:
-            protectedStreamKey = SecureByteArray(try CryptoManager.getRandomBytes(count: 32)) 
+            protectedStreamKey = try CryptoManager.getRandomSecureBytes(count: 32) 
             fields[.streamStartBytes] = try CryptoManager.getRandomBytes(count: SHA256_SIZE)
         case .v4, .v4_1:
-            protectedStreamKey = SecureByteArray(try CryptoManager.getRandomBytes(count: 64)) 
+            protectedStreamKey = try CryptoManager.getRandomSecureBytes(count: 64) 
         }
         initStreamCipher()
     }

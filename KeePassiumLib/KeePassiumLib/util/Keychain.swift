@@ -51,6 +51,8 @@ public class Keychain {
     private let premiumProductAccount = "premiumProductID"
     private let premiumFallbackDateAccount = "premiumFallbackDate"
     
+    private let memoryProtectionKeyTagData = "SecureBytes.general".data(using: .utf8)!
+    
     private init() {
         cleanupObsoleteKeys()
     }
@@ -129,9 +131,20 @@ public class Keychain {
         }
     }
     
-    public func removeAll() throws {
-        for service in Service.allValues {
-            try remove(service: service, account: nil) 
+    public func removeAll() {
+        let secItemClasses = [
+            kSecClassGenericPassword,
+            kSecClassInternetPassword,
+            kSecClassCertificate,
+            kSecClassKey,
+            kSecClassIdentity
+        ]
+        secItemClasses.forEach {
+            let query: NSDictionary = [kSecClass as String: $0]
+            let status = SecItemDelete(query)
+            if status != noErr && status != errSecItemNotFound {
+                Diag.warning("Could not delete \($0) items")
+            }
         }
     }
 
@@ -185,6 +198,59 @@ public class Keychain {
         try remove(service: .databaseSettings, account: descriptor) 
     }
     
+    
+    internal func getMemoryProtectionKey() -> SecKey? {
+        let query: [String: Any] = [
+            kSecClass as String              : kSecClassKey,
+            kSecAttrApplicationTag as String : memoryProtectionKeyTagData,
+            kSecAttrKeyType as String        : kSecAttrKeyTypeEC,
+            kSecReturnRef as String          : true
+        ]
+        
+        var item: CFTypeRef?
+        let status = SecItemCopyMatching(query as CFDictionary, &item)
+        switch status {
+        case errSecSuccess:
+            return (item as! SecKey)
+        case errSecItemNotFound:
+            return makeAndStoreMemoryProtectionKey()
+        default:
+            Diag.warning("Failed to retrieve memory protection key, continuing without [status: \(status)]")
+            return nil
+        }
+    }
+    
+    private func makeAndStoreMemoryProtectionKey() -> SecKey? {
+        Diag.debug("Creating the memory protection key.")
+        var error: Unmanaged<CFError>?
+        guard let accessControl = SecAccessControlCreateWithFlags(
+            kCFAllocatorDefault,
+            kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+            .privateKeyUsage,
+            &error
+        ) else {
+            let err = error!.takeRetainedValue() as Error
+            Diag.error("Failed to create access control object [message: \(err.localizedDescription)]")
+            return nil
+        }
+        let attributes: [String: Any] = [
+            kSecAttrKeyType as String       : kSecAttrKeyTypeEC,
+            kSecAttrKeySizeInBits as String : 256,
+            kSecAttrTokenID as String       : kSecAttrTokenIDSecureEnclave,
+            kSecPrivateKeyAttrs as String   : [
+                kSecAttrIsPermanent as String    : true,
+                kSecAttrApplicationTag as String : memoryProtectionKeyTagData,
+                kSecAttrAccessControl as String  : accessControl
+            ]
+        ]
+        
+        guard let privateKey = SecKeyCreateRandomKey(attributes as CFDictionary, &error) else {
+            let err = error!.takeRetainedValue() as Error
+            Diag.error("Failed to create random key [message: \(err.localizedDescription)]")
+            return nil
+        }
+        return privateKey
+    }
     
     
     public func setPurchaseHistory(_ purchaseHistory: PurchaseHistory) throws {

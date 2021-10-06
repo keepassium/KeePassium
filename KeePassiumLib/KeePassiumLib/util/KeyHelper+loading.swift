@@ -18,7 +18,7 @@ public extension KeyHelper {
         guard let keyFileRef = keyFileRef else {
             buildCompositeKey(
                 password: password,
-                keyFileData: ByteArray(),
+                keyFileData: SecureBytes.empty(),
                 challengeHandler: challengeHandler,
                 completionQueue: completionQueue,
                 completion: completion
@@ -31,7 +31,7 @@ public extension KeyHelper {
             case .success(let keyFileData):
                 self.buildCompositeKey(
                     password: password,
-                    keyFileData: keyFileData,
+                    keyFileData: SecureBytes.from(keyFileData),
                     challengeHandler: challengeHandler,
                     completionQueue: completionQueue,
                     completion: completion
@@ -47,7 +47,7 @@ public extension KeyHelper {
     
     private func buildCompositeKey(
         password: String,
-        keyFileData: ByteArray,
+        keyFileData: SecureBytes,
         challengeHandler: ChallengeHandler?,
         completionQueue: DispatchQueue,
         completion: @escaping((Result<CompositeKey, String>) -> Void)

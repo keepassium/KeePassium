@@ -63,7 +63,7 @@ class AESKDF: KeyDerivationFunction {
             value: VarDict.TypedValue(value: transformSeed))
     }
     
-    func transform(key compositeKey: SecureByteArray, params: KDFParams) throws -> SecureByteArray {
+    func transform(key compositeKey: SecureBytes, params: KDFParams) throws -> SecureBytes {
         guard let transformSeed = params.getValue(key: AESKDF.transformSeedParam)?.asByteArray() else {
             throw CryptoError.invalidKDFParam(kdfName: name, paramName: AESKDF.transformSeedParam)
         }
@@ -75,14 +75,13 @@ class AESKDF: KeyDerivationFunction {
         
         progress.totalUnitCount = Int64(transformRounds)
         
-        let keyCopy = compositeKey.secureClone()
-        
+        var transformedKey = SecureBytes.empty()
         let status = transformSeed.withBytes { (trSeedBytes)  in
-            return keyCopy.withMutableBytes { (trKeyBytes: inout [UInt8]) -> Int32 in
+            return compositeKey.withDecryptedMutableBytes { (trKeyBytes: inout [UInt8]) -> Int32 in
                 
                 
                 let progressPtr = UnsafeRawPointer(Unmanaged.passUnretained(progress).toOpaque())
-                return aeskdf_rounds(
+                let status = aeskdf_rounds(
                     trSeedBytes,
                     &trKeyBytes,
                     transformRounds,
@@ -99,6 +98,9 @@ class AESKDF: KeyDerivationFunction {
                         return isShouldStop
                     },
                     progressPtr)
+                let transformedKeyBytes = CryptoManager.sha256(of: trKeyBytes)
+                transformedKey = SecureBytes.from(transformedKeyBytes)
+                return status
             }
         }
         progress.completedUnitCount = progress.totalUnitCount
@@ -110,6 +112,6 @@ class AESKDF: KeyDerivationFunction {
             Diag.error("doRounds() crypto error [code: \(status)]")
             throw CryptoError.aesEncryptError(code: Int(status))
         }
-        return keyCopy.sha256
+        return transformedKey
     }
 }

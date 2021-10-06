@@ -13,33 +13,32 @@ public class KeyHelper {
     internal let keyFileKeyLength = 32
     
     public func combineComponents(
-        passwordData: SecureByteArray,
-        keyFileData: ByteArray
-    ) throws -> SecureByteArray {
+        passwordData: SecureBytes,
+        keyFileData: SecureBytes
+    ) throws -> SecureBytes {
         fatalError("Pure virtual method")
     }
     
-    public func getKey(fromCombinedComponents combinedComponents: SecureByteArray) -> SecureByteArray {
+    public func getKey(fromCombinedComponents combinedComponents: SecureBytes) -> SecureBytes {
         fatalError("Pure virtual method")
     }
     
-    public func getPasswordData(password: String) -> SecureByteArray {
+    public func getPasswordData(password: String) -> SecureBytes {
         fatalError("Pure virtual method")
     }
     
-    public func processKeyFile(keyFileData: ByteArray) throws -> SecureByteArray {
+    public func processKeyFile(keyFileData: SecureBytes) throws -> SecureBytes {
         assert(!keyFileData.isEmpty, "keyFileData cannot be empty here")
-
-        if keyFileData.count == keyFileKeyLength {
+        
+        let keyFileDataSize = keyFileData.count
+        if keyFileDataSize == keyFileKeyLength {
             Diag.debug("Key file format is: binary")
-            return SecureByteArray(keyFileData)
-        } else if keyFileData.count == 2 * keyFileKeyLength {
-            let hexString = keyFileData.toString(using: .ascii)
-            if let hexString = hexString {
-                if let key = ByteArray(hexString: hexString) {
-                    Diag.debug("Key file format is: base64")
-                    return SecureByteArray(key)
-                }
+            return keyFileData
+        } else if keyFileDataSize == 2 * keyFileKeyLength {
+            
+            if let key = keyFileData.interpretedAsASCIIHexString() {
+                Diag.debug("Key file format is: base64")
+                return key
             }
         }
         
@@ -49,10 +48,10 @@ public class KeyHelper {
         }
         
         Diag.debug("Key file format is: other")
-        return SecureByteArray(keyFileData.sha256)
+        return keyFileData.sha256
     }
     
-    public func processXmlKeyFile(keyFileData: ByteArray) throws -> SecureByteArray? {
+    public func processXmlKeyFile(keyFileData: SecureBytes) throws -> SecureBytes? {
         return nil
     }
 }

@@ -25,7 +25,7 @@ final class TwofishDataCipher: DataCipher {
         self.isPaddingLikelyMessedUp = isPaddingLikelyMessedUp
     }
 
-    func encrypt(plainText data: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {
+    func encrypt(plainText data: ByteArray, key: SecureBytes, iv: SecureBytes) throws -> ByteArray {
         assert(key.count == self.keySize)
         assert(iv.count == self.initialVectorSize)
         
@@ -42,7 +42,7 @@ final class TwofishDataCipher: DataCipher {
         return dataClone
     }
     
-    func decrypt(cipherText encData: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {
+    func decrypt(cipherText encData: ByteArray, key: SecureBytes, iv: SecureBytes) throws -> ByteArray {
         assert(key.count == self.keySize)
         assert(iv.count == self.initialVectorSize)
         progress.localizedDescription = NSLocalizedString(

@@ -37,8 +37,7 @@ extension FixedWidthInteger {
     }
     
     var bytes: [UInt8] {
-        var value = self
-        return withUnsafeBytes(of: &value) { Array($0) }
+        return withUnsafeBytes(of: self) { Array($0) }
     }
     var asHexString: String {
         let size = MemoryLayout<Self>.size

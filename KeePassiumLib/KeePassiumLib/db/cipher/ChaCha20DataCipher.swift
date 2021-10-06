@@ -21,7 +21,7 @@ final class ChaCha20DataCipher: DataCipher {
     init() {
     }
     
-    func encrypt(plainText: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {
+    func encrypt(plainText: ByteArray, key: SecureBytes, iv: SecureBytes) throws -> ByteArray {
         progress.localizedDescription = NSLocalizedString(
             "[Cipher/Progress] Encrypting",
             bundle: Bundle.framework,
@@ -32,7 +32,7 @@ final class ChaCha20DataCipher: DataCipher {
         return try chacha20.encrypt(data: plainText, progress: progress) 
     }
     
-    func decrypt(cipherText: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {
+    func decrypt(cipherText: ByteArray, key: SecureBytes, iv: SecureBytes) throws -> ByteArray {
         progress.localizedDescription = NSLocalizedString(
             "[Cipher/Progress] Decrypting",
             bundle: Bundle.framework,

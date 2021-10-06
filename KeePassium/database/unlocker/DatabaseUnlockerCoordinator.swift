@@ -204,11 +204,11 @@ extension DatabaseUnlockerCoordinator {
     
     #if AUTOFILL_EXT
     private func challengeHandlerForAutoFill(
-        challenge: SecureByteArray,
+        challenge: SecureBytes,
         responseHandler: @escaping ResponseHandler
     ) {
         Diag.warning("YubiKey is not available in AutoFill")
-        responseHandler(SecureByteArray(), .notAvailableInAutoFill)
+        responseHandler(SecureBytes.empty(), .notAvailableInAutoFill)
     }
     #endif
     

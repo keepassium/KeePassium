@@ -232,7 +232,7 @@ public class DatabaseLoader: ProgressObserver {
         }
         
         guard let keyFileRef = compositeKey.keyFileRef else {
-            onKeyFileDataReady(dbFile: dbFile, keyFileData: ByteArray())
+            onKeyFileDataReady(dbFile: dbFile, keyFileData: SecureBytes.empty())
             return
         }
         
@@ -271,7 +271,7 @@ public class DatabaseLoader: ProgressObserver {
             guard let self = self else { return }
             switch result {
             case .success(let docData):
-                self.onKeyFileDataReady(dbFile: dbFile, keyFileData: docData)
+                self.onKeyFileDataReady(dbFile: dbFile, keyFileData: SecureBytes.from(docData))
             case .failure(let fileAccessError):
                 Diag.error("Failed to open key file [error: \(fileAccessError.localizedDescription)]")
                 self.stopObservingProgress()
@@ -288,7 +288,7 @@ public class DatabaseLoader: ProgressObserver {
         }
     }
     
-    private func onKeyFileDataReady(dbFile: DatabaseFile, keyFileData: ByteArray) {
+    private func onKeyFileDataReady(dbFile: DatabaseFile, keyFileData: SecureBytes) {
         progress.completedUnitCount = ProgressSteps.didReadKeyFile
         let keyHelper = dbFile.database.keyHelper
         let passwordData = keyHelper.getPasswordData(password: compositeKey.password)

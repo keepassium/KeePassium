@@ -97,7 +97,6 @@
 		75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BFE2174F77000F7DEF2 /* UUID+extension.swift */; };
 		75D09C2F2174F77000F7DEF2 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09BFF2174F77000F7DEF2 /* Date+extension.swift */; };
 		75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C002174F77000F7DEF2 /* ByteArray.swift */; };
-		75D09C312174F77000F7DEF2 /* Eraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C012174F77000F7DEF2 /* Eraser.swift */; };
 		75D09C322174F77000F7DEF2 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C022174F77000F7DEF2 /* String+extension.swift */; };
 		75D09C332174F77000F7DEF2 /* ProgressInterruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C032174F77000F7DEF2 /* ProgressInterruption.swift */; };
 		75D09C342174F77000F7DEF2 /* Bool+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09C042174F77000F7DEF2 /* Bool+extension.swift */; };
@@ -131,6 +130,7 @@
 		75D4080523952FD40042122A /* CompositeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4080423952FD40042122A /* CompositeKey.swift */; };
 		75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */; };
 		75DBD04A253A525E00538B8F /* EntryField+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD049253A525E00538B8F /* EntryField+premium.swift */; };
+		75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5B6FA2706004500DFFF4F /* Cloneable.swift */; };
 		75E60AE125CF5D310089219C /* DatabaseIconSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE025CF5D310089219C /* DatabaseIconSet.swift */; };
 		75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74D3326C1D2B00071B151 /* TestHelper.swift */; };
 		75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */; };
@@ -278,7 +278,6 @@
 		75D09BFE2174F77000F7DEF2 /* UUID+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UUID+extension.swift"; sourceTree = "<group>"; };
 		75D09BFF2174F77000F7DEF2 /* Date+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		75D09C002174F77000F7DEF2 /* ByteArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteArray.swift; sourceTree = "<group>"; };
-		75D09C012174F77000F7DEF2 /* Eraser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eraser.swift; sourceTree = "<group>"; };
 		75D09C022174F77000F7DEF2 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		75D09C032174F77000F7DEF2 /* ProgressInterruption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressInterruption.swift; sourceTree = "<group>"; };
 		75D09C042174F77000F7DEF2 /* Bool+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+extension.swift"; sourceTree = "<group>"; };
@@ -315,6 +314,7 @@
 		75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+extensions.swift"; sourceTree = "<group>"; };
 		75DBD049253A525E00538B8F /* EntryField+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryField+premium.swift"; sourceTree = "<group>"; };
 		75E4CA89232D0B2200EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		75E5B6FA2706004500DFFF4F /* Cloneable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloneable.swift; sourceTree = "<group>"; };
 		75E60AE025CF5D310089219C /* DatabaseIconSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSet.swift; sourceTree = "<group>"; };
 		75E74D3326C1D2B00071B151 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaver.swift; sourceTree = "<group>"; };
@@ -725,12 +725,12 @@
 				75D09C002174F77000F7DEF2 /* ByteArray.swift */,
 				75D09BFD2174F77000F7DEF2 /* VarDict.swift */,
 				75D09C112174F77000F7DEF2 /* Eraseable.swift */,
-				75D09C012174F77000F7DEF2 /* Eraser.swift */,
 				75D09C042174F77000F7DEF2 /* Bool+extension.swift */,
 				75D09C062174F77000F7DEF2 /* FixedWidthInteger+extension.swift */,
 				75D09BFE2174F77000F7DEF2 /* UUID+extension.swift */,
 				75D09BFF2174F77000F7DEF2 /* Date+extension.swift */,
 				75D09C022174F77000F7DEF2 /* String+extension.swift */,
+				75E5B6FA2706004500DFFF4F /* Cloneable.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -920,7 +920,6 @@
 				75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */,
 				751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */,
 				75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */,
-				75D09C312174F77000F7DEF2 /* Eraser.swift in Sources */,
 				75D09BDE2174F76500F7DEF2 /* ref.c in Sources */,
 				75D09C202174F77000F7DEF2 /* Header2.swift in Sources */,
 				75D09C472174F77000F7DEF2 /* Database.swift in Sources */,
@@ -990,6 +989,7 @@
 				75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */,
 				759A321B252DC1E7001A1623 /* EntryFieldReference.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
+				75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */,
 				75F4ACE32177469500B22D8B /* BaseDocument.swift in Sources */,
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,
 				75F4ACE22177469500B22D8B /* DatabaseFile.swift in Sources */,

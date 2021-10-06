@@ -121,18 +121,17 @@ class AbstractArgon2KDF {
         )
     }
     
-    func transform(key: SecureByteArray, params: KDFParams) throws -> SecureByteArray {
+    func transform(key: SecureBytes, params: KDFParams) throws -> SecureBytes {
         assert(key.count > 0)
         
         let hashingParams = try getParams(params) 
-        
         
         let outHash = try Argon2.hash(
             data: key,
             params: hashingParams,
             type: primitiveType,
             progress: progress)
-        return SecureByteArray(outHash)
+        return outHash
     }
 }
 

@@ -120,8 +120,8 @@ public class Database2: Database {
     public var binaries: [Binary2.ID: Binary2] = [:]
     public var customIcons: [CustomIcon2] { return meta.customIcons }
     public var defaultUserName: String { return meta.defaultUserName }
-    private var cipherKey = SecureByteArray()
-    private var hmacKey = SecureByteArray()
+    private var cipherKey = SecureBytes.empty()
+    private var hmacKey = SecureBytes.empty()
     private var deletedObjects: ContiguousArray<DeletedObject2> = []
     
     override public var keyHelper: KeyHelper { return _keyHelper }
@@ -325,11 +325,15 @@ public class Database2: Database {
         readingProgress.totalUnitCount = Int64(blockBytesCount)
         readingProgress.localizedDescription = LString.Progress.database2ReadingContent
         progress.addChild(readingProgress, withPendingUnitCount: ProgressSteps.readingBlocks)
+        
         var blockIndex: UInt64 = 0
         while true {
             guard let storedBlockHMAC = inStream.read(count: SHA256_SIZE) else {
                 throw FormatError.prematureDataEnd
             }
+            #if DEBUG
+            print("Stored block HMAC: \(storedBlockHMAC.asHexString)")
+            #endif
             guard let blockSize = inStream.readInt32() else {
                 throw FormatError.prematureDataEnd
             }
@@ -359,10 +363,24 @@ public class Database2: Database {
         
         Diag.verbose("Will decrypt \(allBlocksData.count) bytes")
         progress.addChild(cipher.initProgress(), withPendingUnitCount: ProgressSteps.decryption)
+
+        #if DEBUG
+        hmacKey.withDecryptedByteArray {
+            print("hmacKey plain: \($0.asHexString)")
+        }
+        print("hmacKey enc: \(hmacKey.description)")
+
+        cipherKey.withDecryptedByteArray {
+            print("cipherKey plain: \($0.asHexString)")
+        }
+        print("cipherKey enc: \(cipherKey.description)")
+        #endif
+        
         let decryptedData = try cipher.decrypt(
             cipherText: allBlocksData,
             key: cipherKey,
-            iv: header.initialVector) 
+            iv: SecureBytes.from(header.initialVector)
+        ) 
         Diag.verbose("Decrypted \(decryptedData.count) bytes")
 
         return decryptedData
@@ -374,7 +392,7 @@ public class Database2: Database {
         let decryptedData = try cipher.decrypt(
             cipherText: data,
             key: cipherKey,
-            iv: header.initialVector) 
+            iv: SecureBytes.from(header.initialVector)) 
         Diag.verbose("Decrypted \(decryptedData.count) bytes")
         
         let decryptedStream = decryptedData.asInputStream()
@@ -598,7 +616,7 @@ public class Database2: Database {
         }
 
         progress.addChild(header.kdf.initProgress(), withPendingUnitCount: ProgressSteps.keyDerivation)
-        var combinedComponents: SecureByteArray
+        var combinedComponents: SecureBytes
         if compositeKey.state == .processedComponents {
             combinedComponents = try keyHelper.combineComponents(
                 passwordData: compositeKey.passwordData!, 
@@ -611,8 +629,8 @@ public class Database2: Database {
             preconditionFailure("Unexpected key state")
         }
         
-        let secureMasterSeed = SecureByteArray(header.masterSeed)
-        let joinedKey: SecureByteArray
+        let secureMasterSeed = SecureBytes.from(header.masterSeed)
+        let joinedKey: SecureBytes
         switch header.formatVersion {
         case .v3:
             
@@ -623,25 +641,25 @@ public class Database2: Database {
                 params: header.kdfParams)
             
             let challengeResponse = try compositeKey.getResponse(challenge: secureMasterSeed) 
-            joinedKey = SecureByteArray.concat(secureMasterSeed, challengeResponse, transformedKey)
+            joinedKey = SecureBytes.concat(secureMasterSeed, challengeResponse, transformedKey)
         case .v4, .v4_1:
             
             let challenge = try header.kdf.getChallenge(header.kdfParams) 
-            let secureChallenge = SecureByteArray(challenge)
+            let secureChallenge = SecureBytes.from(challenge)
 
             let challengeResponse = try compositeKey.getResponse(challenge: secureChallenge) 
-            combinedComponents = SecureByteArray.concat(combinedComponents, challengeResponse)
+            combinedComponents = SecureBytes.concat(combinedComponents, challengeResponse)
             
             let keyToTransform = keyHelper.getKey(fromCombinedComponents: combinedComponents)
             
             let transformedKey = try header.kdf.transform(
                 key: keyToTransform,
                 params: header.kdfParams)
-            joinedKey = SecureByteArray.concat(secureMasterSeed, transformedKey)
+            joinedKey = SecureBytes.concat(secureMasterSeed, transformedKey)
         }
         self.cipherKey = cipher.resizeKey(key: joinedKey)
-        let one = SecureByteArray(bytes: [1])
-        self.hmacKey = SecureByteArray.concat(joinedKey, one).sha512
+        let one = SecureBytes.from([1])
+        self.hmacKey = SecureBytes.concat(joinedKey, one).sha512
         compositeKey.setFinalKeys(hmacKey, cipherKey)
     }
     
@@ -953,7 +971,7 @@ public class Database2: Database {
             let encData = try header.dataCipher.encrypt(
                 plainText: dataToEncrypt,
                 key: cipherKey,
-                iv: header.initialVector) 
+                iv: SecureBytes.from(header.initialVector)) 
             Diag.verbose("Encrypted \(encData.count) bytes")
             
             try writeAsBlocksV4(to: outStream, data: encData) 
@@ -1063,7 +1081,7 @@ public class Database2: Database {
             let encryptedData = try header.dataCipher.encrypt(
                 plainText: blocksData,
                 key: cipherKey,
-                iv: header.initialVector) 
+                iv: SecureBytes.from(header.initialVector)) 
             outStream.write(data: encryptedData)
             Diag.verbose("Encryption OK")
         } catch let error as CryptoError {

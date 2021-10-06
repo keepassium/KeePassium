@@ -39,12 +39,11 @@ public final class Argon2 {
     }
     
     public static func hash(
-        data pwd: ByteArray,
+        data pwd: SecureBytes,
         params: Params,
         type: PrimitiveType,
         progress: ProgressEx?
-        ) throws -> ByteArray
-    {
+    ) throws -> SecureBytes {
 
         var isAbortProcessing: UInt8 = 0
         
@@ -81,7 +80,10 @@ public final class Argon2 {
         
         FLAG_clear_internal_memory = 1
         var outBytes = [UInt8](repeating: 0, count: 32)
-        let statusCode = pwd.withBytes {
+        defer {
+            outBytes.erase()
+        }
+        let statusCode = pwd.withDecryptedBytes {
             (pwdBytes) in
             return params.salt.withBytes {
                 (saltBytes) -> Int32 in
@@ -101,6 +103,7 @@ public final class Argon2 {
                 )
             }
         }
+
         progressKVO?.invalidate()
         if let progress = progress {
             progress.completedUnitCount = Int64(params.iterations) 
@@ -112,6 +115,6 @@ public final class Argon2 {
         if statusCode != ARGON2_OK.rawValue {
             throw CryptoError.argon2Error(code: Int(statusCode))
         }
-        return ByteArray(bytes: outBytes)
+        return SecureBytes.from(outBytes)
     }
 }

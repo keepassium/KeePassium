@@ -22,7 +22,7 @@ final class AESDataCipher: DataCipher {
     init() {
     }
     
-    func encrypt(plainText data: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {
+    func encrypt(plainText data: ByteArray, key: SecureBytes, iv: SecureBytes) throws -> ByteArray {
         assert(key.count == kCCKeySizeAES256)
         assert(iv.count == kCCBlockSizeAES128)
         progress.localizedDescription = NSLocalizedString(
@@ -40,8 +40,8 @@ final class AESDataCipher: DataCipher {
         let out = ByteArray(count: data.count + kCCBlockSizeAES128)
         var numBytesEncrypted: size_t = 0
         let status = data.withBytes { dataBytes in
-            return key.withBytes{ keyBytes in
-                return iv.withBytes{ ivBytes in
+            return key.withDecryptedBytes{ keyBytes in
+                return iv.withDecryptedBytes{ ivBytes in
                     return out.withMutableBytes { (outBytes: inout [UInt8]) in
                         return CCCrypt(
                             operation, algoritm, options,
@@ -60,7 +60,10 @@ final class AESDataCipher: DataCipher {
             throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
         }
         
+        #if DEBUG
         debugPrint("encrypted size: \(numBytesEncrypted) bytes")
+        #endif
+        
         guard status == UInt32(kCCSuccess) else {
             throw CryptoError.aesEncryptError(code: Int(status))
         }
@@ -68,7 +71,7 @@ final class AESDataCipher: DataCipher {
         return out
     }
     
-    func decrypt(cipherText encData: ByteArray, key: ByteArray, iv: ByteArray) throws -> ByteArray {
+    func decrypt(cipherText encData: ByteArray, key: SecureBytes, iv: SecureBytes) throws -> ByteArray {
         assert(key.count == kCCKeySizeAES256)
         assert(iv.count == kCCBlockSizeAES128)
         assert(encData.count % kCCBlockSizeAES128 == 0)
@@ -88,8 +91,8 @@ final class AESDataCipher: DataCipher {
         var numBytesDecrypted: size_t = 0
         let out = ByteArray(count: encData.count)
         let status = encData.withBytes { encDataBytes in
-            return key.withBytes{ keyBytes in
-                return iv.withBytes{ ivBytes in
+            return key.withDecryptedBytes{ keyBytes in
+                return iv.withDecryptedBytes{ ivBytes in
                     return out.withMutableBytes { (outBytes: inout [UInt8]) in
                         return CCCrypt(
                             operation, algoritm, options,
@@ -108,7 +111,10 @@ final class AESDataCipher: DataCipher {
             throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
         }
         
-        debugPrint("decrypted \(numBytesDecrypted) bytes")
+        #if DEBUG
+        print("decrypted \(numBytesDecrypted) bytes")
+        #endif
+        
         guard status == UInt32(kCCSuccess) else {
             throw CryptoError.aesDecryptError(code: Int(status))
         }

@@ -15,10 +15,9 @@ extension String {
         self.removeAll()
     }
     
-    var utf8data: Data {
-        return self.data(using: .utf8)! 
+    var utf8data: ByteArray {
+        return ByteArray(data: self.data(using: .utf8)!) 
     }
-    
     
     public func localizedContains<T: StringProtocol>(
         _ other: T,

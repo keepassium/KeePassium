@@ -17,7 +17,7 @@ protocol KeyDerivationFunction {
 
     init()
     
-    func transform(key: SecureByteArray, params: KDFParams) throws -> SecureByteArray
+    func transform(key: SecureBytes, params: KDFParams) throws -> SecureBytes
     
     func getChallenge(_ params: KDFParams) throws -> ByteArray
     
