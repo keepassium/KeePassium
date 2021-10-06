@@ -47,7 +47,7 @@ public class SettingsNotifications {
 }
 
 public class Settings {
-    public static let latestVersion = 3
+    public static let latestVersion = 4
     public static let current = Settings()
     
     public enum Keys: String {

@@ -16,6 +16,13 @@ extension LAContext {
         context.canEvaluatePolicy(policy, error: nil)
         return context.biometryType
     }
+    
+    public static func isBiometricsAvailable() -> Bool {
+        let context = LAContext()
+        let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
+        let canUseBiometrics = context.canEvaluatePolicy(policy, error: nil)
+        return canUseBiometrics
+    }
 }
 
 extension LABiometryType {

@@ -89,7 +89,7 @@ final class SettingsAppLockVC: UITableViewController, Refreshable {
         changePasscodeCell.setEnabled(isAppLockEnabled)
         appLockTimeoutCell.detailTextLabel?.text = settings.appLockTimeout.shortTitle
         lockDatabasesOnFailedPasscodeSwitch.isOn = settings.isLockAllDatabasesOnFailedPasscode
-        biometricsSwitch.isOn = settings.premiumIsBiometricAppLockEnabled
+        biometricsSwitch.isOn = settings.isBiometricAppLockEnabled
         
         appLockTimeoutCell.setEnabled(isAppLockEnabled)
         lockDatabasesOnFailedPasscodeCell.setEnabled(isAppLockEnabled)
@@ -135,7 +135,12 @@ final class SettingsAppLockVC: UITableViewController, Refreshable {
     
     @IBAction func didToggleBiometricsSwitch(_ sender: UISwitch) {
         let isSwitchOn = sender.isOn
-        Settings.current.isBiometricAppLockEnabled = isSwitchOn
+        let keychain = Keychain.shared
+        if keychain.prepareBiometricAuth(isSwitchOn) {
+            Settings.current.isBiometricAppLockEnabled = isSwitchOn
+        } else {
+            Settings.current.isBiometricAppLockEnabled = keychain.isBiometricAuthPrepared()
+        }
         refresh()
     }
 }

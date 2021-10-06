@@ -216,7 +216,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
 
     func showAppLock(_ sender: Watchdog) {
         guard !isAppLockVisible else { return }
-        let shouldUseBiometrics = isBiometricAuthAvailable()
+        let shouldUseBiometrics = canUseBiometrics()
 
         let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
         passcodeInputVC.delegate = self
@@ -269,44 +269,32 @@ extension AutoFillCoordinator: WatchdogDelegate {
         watchdog.restart()
     }
 
-    private func isBiometricAuthAvailable() -> Bool {
-        guard Settings.current.premiumIsBiometricAppLockEnabled else { return false }
-        let context = LAContext()
-        let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
-        return context.canEvaluatePolicy(policy, error: nil)
+    private func canUseBiometrics() -> Bool {
+        return Settings.current.isBiometricAppLockEnabled
+            && LAContext.isBiometricsAvailable()
+            && Keychain.shared.isBiometricAuthPrepared()
     }
-
+    
     private func maybeShowBiometricAuth() {
-        guard isBiometricAuthAvailable() else {
+        guard canUseBiometrics() else {
             isBiometricAuthShown = false
             return
         }
         
-        let context = LAContext()
-        let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
-        context.localizedFallbackTitle = "" // hide "Enter Password" fallback; nil won't work
-        context.localizedCancelTitle = LString.actionUsePasscode
-
         Diag.debug("Biometric auth: showing request")
-        context.evaluatePolicy(policy, localizedReason: LString.titleTouchID) {
-            [weak self](authSuccessful, authError) in
-            DispatchQueue.main.async { [weak self] in
-                self?.processBiometricAuthResult(successful: authSuccessful, error: authError)
+        Keychain.shared.performBiometricAuth { [weak self] success in
+            guard let self = self else { return }
+            BiometricsHelper.biometricPromptLastSeenTime = Date.now
+            self.isBiometricAuthShown = false
+            if success {
+                Diag.info("Biometric auth successful")
+                self.watchdog.unlockApp()
+            } else {
+                Diag.warning("Biometric auth failed")
+                self.passcodeInputController?.showKeyboard()
             }
         }
         isBiometricAuthShown = true
-    }
-    
-    private func processBiometricAuthResult(successful: Bool, error: Error?) {
-        BiometricsHelper.biometricPromptLastSeenTime = Date.now
-        isBiometricAuthShown = false
-        if successful {
-            Diag.info("Biometric auth successful")
-            watchdog.unlockApp()
-        } else {
-            Diag.warning("Biometric auth failed [message: \(error?.localizedDescription ?? "nil")]")
-            passcodeInputController?.showKeyboard()
-        }
     }
 }
 
@@ -319,6 +307,7 @@ extension AutoFillCoordinator: PasscodeInputDelegate {
         do {
             if try Keychain.shared.isAppPasscodeMatch(passcode) { 
                 HapticFeedback.play(.appUnlocked)
+                Keychain.shared.prepareBiometricAuth(true)
                 watchdog.unlockApp()
             } else {
                 HapticFeedback.play(.wrongPassword)

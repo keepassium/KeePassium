@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import Foundation
+import LocalAuthentication
 
 public enum KeychainError: LocalizedError {
     case generic(code: Int)
@@ -45,6 +46,7 @@ public class Keychain {
         case premium = "KeePassium.premium"
     }
     private let appPasscodeAccount = "appPasscode"
+    private let biometricControlAccount = "biometricControlItem"
     private let premiumPurchaseHistory = "premiumPurchaseHistory"
     
     private let premiumExpiryDateAccount = "premiumExpiryDate"
@@ -136,7 +138,8 @@ public class Keychain {
         }
     }
     
-    public func removeAll() {
+    @discardableResult
+    public func removeAll() -> Bool {
         let secItemClasses = [
             kSecClassGenericPassword,
             kSecClassInternetPassword,
@@ -144,15 +147,18 @@ public class Keychain {
             kSecClassKey,
             kSecClassIdentity
         ]
+        var success = true
         secItemClasses.forEach {
             let query: NSDictionary = [kSecClass as String: $0]
             let status = SecItemDelete(query)
             if status != noErr && status != errSecItemNotFound {
-                Diag.warning("Could not delete \($0) items")
+                Diag.warning("Could not delete \($0) items [code: \(Int(status))]")
+                success = false
             }
         }
+        return success
     }
-
+    
     
     public func setAppPasscode(_ passcode: String) throws {
         let dataHash = ByteArray(utf8String: passcode).sha256.asData
@@ -328,5 +334,109 @@ public class Keychain {
         Diag.info("Purchase history upgraded")
         
         return purchaseHistory
+    }
+}
+
+public extension Keychain {
+    func performBiometricAuth(_ callback: @escaping (Bool) -> Void) {
+        assert(isBiometricAuthPrepared())
+        
+        let callbackQueue = DispatchQueue.main
+        DispatchQueue.global(qos: .default).async { [self] in
+            var query = makeQuery(service: .general, account: biometricControlAccount)
+            let context = LAContext()
+            context.localizedCancelTitle = LString.Biometrics.actionUsePasscode
+            query[kSecUseAuthenticationContext as String] = context
+            query[kSecUseOperationPrompt as String] = LString.Biometrics.titleBiometricPrompt as AnyObject
+            query[kSecReturnData as String] = kCFBooleanTrue
+            
+            var resultData: AnyObject?
+            let status = SecItemCopyMatching(query as CFDictionary, &resultData)
+            guard status == noErr else {
+                Diag.error("Keychain error [code: \(Int(status))]")
+                callbackQueue.async {
+                    callback(false)
+                }
+                return
+            }
+            callbackQueue.async {
+                callback(true)
+            }
+        }
+    }
+    
+    func isBiometricAuthPrepared() -> Bool {
+        var query = makeQuery(service: .general, account: biometricControlAccount)
+        let context = LAContext()
+        context.interactionNotAllowed = true
+        query[kSecUseAuthenticationContext as String] = context
+        
+        var resultItem: CFTypeRef?
+        let status = SecItemCopyMatching(query as CFDictionary, &resultItem)
+        let itemPresent = (status == errSecSuccess) || (status == errSecInteractionNotAllowed)
+        return itemPresent
+    }
+    
+    @discardableResult
+    func prepareBiometricAuth(_ enable: Bool) -> Bool {
+        if enable {
+            return addBiometricAuthItem()
+        } else {
+            return removeBiometricAuthItem()
+        }
+    }
+    
+    private func removeBiometricAuthItem() -> Bool {
+        do {
+            try remove(service: .general, account: biometricControlAccount) 
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    private func addBiometricAuthItem() -> Bool {
+        var cfError: Unmanaged<CFError>?
+        guard let accessControl = SecAccessControlCreateWithFlags(
+            nil, 
+            kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+            .biometryCurrentSet,
+            &cfError
+        ) else {
+            let error = cfError!.takeRetainedValue() as Error
+            Diag.error("Failed to create access control object [message: \(error.localizedDescription)]")
+            return false
+        }
+
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: biometricControlAccount as AnyObject,
+            kSecAttrService as String: Service.general.rawValue as AnyObject,
+            kSecAttrAccessControl as String: accessControl as AnyObject,
+            kSecValueData as String: Data(repeating: 1, count: 1) as NSData
+        ]
+        let status = SecItemAdd(query as CFDictionary, nil)
+        if status != noErr && status != errSecDuplicateItem {
+            Diag.error("Failed to add biometric control item [code: \(Int(status))]")
+            return false
+        }
+        Diag.debug("Biometric auth is ready")
+        return true
+    }
+}
+
+public extension LString {
+    enum Biometrics {
+        public static let titleBiometricPrompt  = NSLocalizedString(
+            "[AppLock/Biometric/Hint] Unlock KeePassium",
+            bundle: Bundle.framework,
+            value: "Unlock KeePassium",
+            comment: "Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt.")
+        public static let actionUsePasscode = NSLocalizedString(
+            "[AppLock/cancelBiometricAuth] Use Passcode",
+            bundle: Bundle.framework,
+            value: "Use Passcode",
+            comment: "Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode."
+        )
     }
 }

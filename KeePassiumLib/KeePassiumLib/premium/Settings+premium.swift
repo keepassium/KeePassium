@@ -26,10 +26,6 @@ public extension Settings {
         }
     }
     
-    var premiumIsBiometricAppLockEnabled: Bool {
-        return isBiometricAppLockEnabled
-    }
-    
     var premiumIsKeepKeyFileAssociations: Bool {
         return isKeepKeyFileAssociations
     }

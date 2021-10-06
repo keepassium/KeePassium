@@ -229,11 +229,6 @@ extension LString {
         value: "Unlock",
         comment: "Action/button to unlock the App Lock with passcode"
     )
-    public static let actionUsePasscode = NSLocalizedString(
-        "[AppLock/cancelBiometricAuth] Use Passcode",
-        value: "Use Passcode",
-        comment: "Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode."
-    )
     public static let actionChangePasscode = NSLocalizedString(
         "[AppLock/changePasscode]",
         value: "Change Passcode",
@@ -523,11 +518,7 @@ extension LString {
         value: "Help",
         comment: "Generic title of in-app help article")
     
-    public static let titleTouchID  = NSLocalizedString(
-        "[AppLock/Biometric/Hint] Unlock KeePassium",
-        value: "Unlock KeePassium",
-        comment: "Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt.")
-    
+
     public static let actionCreateDatabase = NSLocalizedString(
         "[Database/Create/action] Create Database",
         value: "Create Database",

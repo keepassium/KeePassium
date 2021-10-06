@@ -443,13 +443,15 @@ extension MainCoordinator: WatchdogDelegate {
         print("App cover hidden")
     }
     
-    private var canUseBiometrics: Bool {
-        return isBiometricsAvailable() && Settings.current.premiumIsBiometricAppLockEnabled
+    private func canUseBiometrics() -> Bool {
+        return Settings.current.isBiometricAppLockEnabled
+            && LAContext.isBiometricsAvailable()
+            && Keychain.shared.isBiometricAuthPrepared()
     }
     
     private func showAppLockScreen() {
         guard !isAppLockVisible else { return }
-        if canUseBiometrics {
+        if canUseBiometrics() {
             performBiometricUnlock()
         } else {
             showPasscodeRequest()
@@ -472,7 +474,7 @@ extension MainCoordinator: WatchdogDelegate {
         passcodeInputVC.delegate = self
         passcodeInputVC.mode = .verification
         passcodeInputVC.isCancelAllowed = false 
-        passcodeInputVC.isBiometricsAllowed = canUseBiometrics
+        passcodeInputVC.isBiometricsAllowed = canUseBiometrics()
         
         let currentScreen = mainWindow.screen
         let _appLockWindow = UIWindow(frame: currentScreen.bounds)
@@ -491,16 +493,12 @@ extension MainCoordinator: WatchdogDelegate {
         print("passcode request shown")
     }
     
-    private func isBiometricsAvailable() -> Bool {
-        let context = LAContext()
-        let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
-        return context.canEvaluatePolicy(policy, error: nil)
-    }
-    
     private func performBiometricUnlock() {
-        assert(isBiometricsAvailable())
-        guard Settings.current.premiumIsBiometricAppLockEnabled else { return }
-        guard !isBiometricAuthShown else { return }
+        guard !isBiometricAuthShown,
+              canUseBiometrics()
+        else {
+            return
+        }
         
         let timeSinceLastSuccess = abs(Date.now.timeIntervalSince(lastSuccessfulBiometricAuthTime))
         if timeSinceLastSuccess < biometricAuthReuseDuration {
@@ -509,28 +507,22 @@ extension MainCoordinator: WatchdogDelegate {
             return
         }
         
-        let context = LAContext()
-        let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
-        context.localizedFallbackTitle = "" // hide "Enter (System) Password" fallback; nil won't work
-        context.localizedCancelTitle = LString.actionUsePasscode
         print("Showing biometrics request")
-        
         showBiometricsBackground()
         lastSuccessfulBiometricAuthTime = .distantPast
-        context.evaluatePolicy(policy, localizedReason: LString.titleTouchID) {
-            [weak self] (authSuccessful, authError) in
-            DispatchQueue.main.async { [weak self] in
-                if authSuccessful {
-                    self?.lastSuccessfulBiometricAuthTime = Date.now
-                    self?.watchdog.unlockApp()
-                } else {
-                    Diag.warning("TouchID failed [message: \(authError?.localizedDescription ?? "nil")]")
-                    self?.lastSuccessfulBiometricAuthTime = .distantPast
-                    self?.showPasscodeRequest()
-                }
-                self?.hideBiometricsBackground()
-                self?.isBiometricAuthShown = false
+        Keychain.shared.performBiometricAuth { [weak self] success in
+            guard let self = self else { return }
+            if success {
+                Diag.warning("Biometric auth successful")
+                self.lastSuccessfulBiometricAuthTime = Date.now
+                self.watchdog.unlockApp()
+            } else {
+                Diag.warning("Biometric auth failed")
+                self.lastSuccessfulBiometricAuthTime = .distantPast
+                self.showPasscodeRequest()
             }
+            self.hideBiometricsBackground()
+            self.isBiometricAuthShown = false
         }
         isBiometricAuthShown = true
     }
@@ -577,6 +569,7 @@ extension MainCoordinator: PasscodeInputDelegate {
             if try Keychain.shared.isAppPasscodeMatch(passcode) { 
                 HapticFeedback.play(.appUnlocked)
                 watchdog.unlockApp()
+                Keychain.shared.prepareBiometricAuth(true)
             } else {
                 HapticFeedback.play(.wrongPassword)
                 sender.animateWrongPassccode()
@@ -600,7 +593,7 @@ extension MainCoordinator: PasscodeInputDelegate {
     }
     
     func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {
-        assert(canUseBiometrics)
+        assert(canUseBiometrics())
         performBiometricUnlock()
     }
 }

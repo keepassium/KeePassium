@@ -405,7 +405,9 @@ extension DatabasePickerCoordinator: PasscodeInputDelegate {
         sender.dismiss(animated: true) {
             [weak self] in
             do {
-                try Keychain.shared.setAppPasscode(passcode)
+                let keychain = Keychain.shared
+                try keychain.setAppPasscode(passcode)
+                keychain.prepareBiometricAuth(true)
                 Settings.current.isBiometricAppLockEnabled = true
                 self?.refresh()
             } catch {
