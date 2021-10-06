@@ -134,7 +134,7 @@ extension AutoFillCoordinator {
     }
     
     private func showDatabasePicker() {
-        databasePickerCoordinator = DatabasePickerCoordinator(router: router)
+        databasePickerCoordinator = DatabasePickerCoordinator(router: router, mode: .autoFill)
         databasePickerCoordinator.delegate = self
         databasePickerCoordinator.dismissHandler = {[weak self] coordinator in
             self?.removeChildCoordinator(coordinator)

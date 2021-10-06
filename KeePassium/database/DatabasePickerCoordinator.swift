@@ -34,7 +34,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     
     private var fileKeeperNotifications: FileKeeperNotifications!
     
-    init(router: NavigationRouter, mode: DatabasePickerMode = .full) {
+    init(router: NavigationRouter, mode: DatabasePickerMode) {
         self.router = router
         self.mode = mode
         databasePickerVC = DatabasePickerVC.instantiateFromStoryboard()

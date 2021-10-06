@@ -82,7 +82,7 @@ final class MainCoordinator: Coordinator {
         StoreReviewSuggester.registerEvent(.sessionStart)
 
         assert(databasePickerCoordinator == nil)
-        databasePickerCoordinator = DatabasePickerCoordinator(router: primaryRouter)
+        databasePickerCoordinator = DatabasePickerCoordinator(router: primaryRouter, mode: .full)
         databasePickerCoordinator.delegate = self
         databasePickerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
