@@ -844,11 +844,12 @@ public class Database2: Database {
                     isProtected: binaryInOldPool.isProtected
                 )
             } else {
+                
                 newBinary = Binary2(
                     id: newID,
                     data: att2.data,
                     isCompressed: att2.isCompressed,
-                    isProtected: true
+                    isProtected: !att2.isCompressed
                 )
             }
             newPoolInverse[newBinary.data] = newBinary
