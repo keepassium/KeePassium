@@ -1,10 +1,22 @@
 #CHANGELOG
 
+## [1.27.96] - 2021-10-08
+
+### Improved
+
+- Updated translations
+
+### Fixed
+
+- New attachments to kdbx3 files were unreadable in KeePass [thanks, Adam]
+- Regression in 1.27.95: Wrong DB picker UI in AutoFill
+
+
 ## [1.27.95] - 2021-09-26
 
 ### Added
 
-- Possibility to copy/move data to other databases (closes #102)
+- Possibility to copy/move data to other databases (closes #102) [thanks, everyone]
 - Added Ukrainian translation [thanks, Max]
 
 ### Improved
