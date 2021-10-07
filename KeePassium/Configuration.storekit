@@ -56,7 +56,7 @@
       "localizations" : [
         {
           "description" : "",
-          "displayName" : "",
+          "displayName" : "Premium Version 88",
           "locale" : "en_US"
         }
       ],
@@ -78,6 +78,21 @@
       "productID" : "com.keepassium.ios.donation.small",
       "referenceName" : "Donation S",
       "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "C0DA288B",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Premium Version 96",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.keepassium.ios.iap.version.96",
+      "referenceName" : "Version 96",
+      "type" : "NonConsumable"
     }
   ],
   "settings" : {
@@ -107,7 +122,7 @@
           "localizations" : [
             {
               "description" : "",
-              "displayName" : "",
+              "displayName" : "Premium Monthly",
               "locale" : "en_US"
             }
           ],
@@ -133,7 +148,7 @@
           "localizations" : [
             {
               "description" : "",
-              "displayName" : "",
+              "displayName" : "Premium Yearly",
               "locale" : "en_US"
             }
           ],

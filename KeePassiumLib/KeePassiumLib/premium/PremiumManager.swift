@@ -30,6 +30,7 @@ public enum InAppProduct: String, Codable {
     case montlySubscription = "com.keepassium.ios.iap.subscription.1month"
     case yearlySubscription = "com.keepassium.ios.iap.subscription.1year"
     case version88 = "com.keepassium.ios.iap.version.88"
+    case version96 = "com.keepassium.ios.iap.version.96"
     
     case donationSmall = "com.keepassium.ios.donation.small"
     case donationMedium = "com.keepassium.ios.donation.medium"
@@ -48,7 +49,8 @@ public enum InAppProduct: String, Codable {
         case .montlySubscription,
              .yearlySubscription:
             return true
-        case .version88:
+        case .version88,
+             .version96:
             return false
         case .donationSmall,
              .donationMedium,
@@ -59,7 +61,8 @@ public enum InAppProduct: String, Codable {
     
     public var isVersionPurchase: Bool {
         switch self {
-        case .version88:
+        case .version88,
+             .version96:
             return true
         case .betaForever,
              .forever,
@@ -81,7 +84,8 @@ public enum InAppProduct: String, Codable {
              .forever2,
              .montlySubscription,
              .yearlySubscription,
-             .version88:
+             .version88,
+             .version96:
             return .premium
         case .donationSmall,
              .donationMedium,
@@ -109,7 +113,8 @@ public enum InAppProduct: String, Codable {
     
     public var premiumSupportDurationAfterExpiry: TimeInterval {
         switch self {
-        case .version88:
+        case .version88,
+             .version96:
             let oneYear: TimeInterval = 365 * 24 * 60 * 60
             return oneYear
         case .betaForever,
@@ -301,7 +306,7 @@ public class PremiumManager: NSObject {
             .forever2,
             .montlySubscription,
             .yearlySubscription,
-            .version88,
+            .version96,
         ],
         .donation: [
             .donationSmall,
