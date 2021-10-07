@@ -26,7 +26,7 @@ public enum PremiumFeature: Int {
         .canChangeAppIcon: Date(iso8601string: "2020-08-04T00:00:00Z")!,
         .canUseExpressUnlock: Date(iso8601string: "2020-10-01T00:00:00Z")!,
         .canViewFieldReferences: Date(iso8601string: "2020-11-12T00:00:00Z")!,
-        .canRelocateAcrossDatabases: Date(iso8601string: "2021-09-25T00:00:00Z")!,
+        .canRelocateAcrossDatabases: Date(iso8601string: "2021-10-08T00:00:00Z")!,
     ]
     
     case canUseMultipleDatabases = 0
