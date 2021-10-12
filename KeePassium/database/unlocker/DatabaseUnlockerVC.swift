@@ -390,6 +390,11 @@ extension DatabaseUnlockerVC: ProgressViewHost {
             title: title,
             animated: animated)
         progressOverlay?.isCancellable = allowCancelling
+        progressOverlay?.unresponsiveCancelHandler = { [weak self] in
+            guard let self = self else { return }
+            let popoverAnchor = PopoverAnchor(sourceView: self.view, sourceRect: self.view.bounds)
+            self.delegate?.didPressShowDiagnostics(at: popoverAnchor, in: self)
+        }
 
         navigationItem.setHidesBackButton(true, animated: animated)
     }
