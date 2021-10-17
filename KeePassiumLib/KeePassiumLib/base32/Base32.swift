@@ -328,13 +328,9 @@ private func base32decode(_ string: String, _ table: [UInt8]) -> [UInt8]? {
     // validated
     let dataSize = remainEncodedLength / 8 * 5 + additionalBytes
     
-    // Use UnsafePointer<UInt8>
-    return string.utf8CString.withUnsafeBufferPointer {
-        (data: UnsafeBufferPointer<CChar>) -> [UInt8] in
-        var encoded = data.baseAddress!
-        
-        let result = Array<UInt8>(repeating: 0, count: dataSize)
-        var decoded = UnsafeMutablePointer<UInt8>(mutating: result)
+    func decode(input: UnsafePointer<CChar>, output: UnsafeMutablePointer<UInt8>) {
+        var encoded = input
+        var decoded = output
         
         // decode regular blocks
         var value0, value1, value2, value3, value4, value5, value6, value7: UInt8
@@ -393,7 +389,16 @@ private func base32decode(_ string: String, _ table: [UInt8]) -> [UInt8]? {
             decoded[0] = value0 << 3 | value1 >> 2
         default: break
         }
-
+    }
+    
+    // Use UnsafePointer<UInt8>
+    return string.utf8CString.withUnsafeBufferPointer {
+        (data: UnsafeBufferPointer<CChar>) -> [UInt8] in
+        
+        var result = Array<UInt8>(repeating: 0, count: dataSize)
+        result.withUnsafeMutableBufferPointer {
+            decode(input: data.baseAddress!, output: $0.baseAddress!)
+        }
         return result
     }
 }

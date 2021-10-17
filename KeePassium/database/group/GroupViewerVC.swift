@@ -293,7 +293,7 @@ final class GroupViewerVC:
         searchController.searchBar.searchBarStyle = .default
         searchController.searchBar.returnKeyType = .search
         searchController.searchBar.barStyle = .default
-        if #available(iOS 13, *) {
+        if #available(iOS 12, *) {
         } else {
             searchController.dimsBackgroundDuringPresentation = false
         }

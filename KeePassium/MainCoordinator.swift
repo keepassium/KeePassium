@@ -480,7 +480,7 @@ extension MainCoordinator: WatchdogDelegate {
         let _appLockWindow = UIWindow(frame: currentScreen.bounds)
         _appLockWindow.setScreen(currentScreen)
         _appLockWindow.windowLevel = UIWindow.Level.alert
-        UIView.performWithoutAnimation { [weak self] in
+        UIView.performWithoutAnimation { 
             _appLockWindow.rootViewController = passcodeInputVC
             _appLockWindow.makeKeyAndVisible()
             let window = UIApplication.shared.delegate!.window!
