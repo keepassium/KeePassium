@@ -555,7 +555,7 @@ extension MainCoordinator: WatchdogDelegate {
     
     func mustCloseDatabase(_ sender: Watchdog, animate: Bool) {
         databaseViewerCoordinator?.closeDatabase(
-            shouldLock: true,
+            shouldLock: Settings.current.premiumIsLockDatabasesOnTimeout,
             reason: .databaseTimeout,
             animated: animate,
             completion: nil

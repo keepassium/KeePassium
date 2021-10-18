@@ -244,7 +244,11 @@ extension AutoFillCoordinator: WatchdogDelegate {
     }
 
     func mustCloseDatabase(_ sender: Watchdog, animate: Bool) {
-        entryFinderCoordinator?.stop(animated: animate)
+        if Settings.current.premiumIsLockDatabasesOnTimeout {
+            entryFinderCoordinator?.lockDatabase()
+        }else {
+            entryFinderCoordinator?.stop(animated: animate)
+        }
     }
 
     private func dismissPasscodeAndContinue() {
