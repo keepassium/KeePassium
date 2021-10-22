@@ -44,6 +44,23 @@ class EditableField: BasicViewableField {
         }
     }
     
+    public var textContentType: UITextContentType? {
+        switch internalName {
+        case EntryField.userName:
+            return .username
+        case EntryField.password:
+            if Settings.current.acceptAutoFillInput {
+                return .password
+            } else {
+                return nil
+            }
+        case EntryField.url:
+            return .URL
+        default:
+            return nil
+        }
+    }
+    
     var isValid: Bool
 
     init(field: EntryField) {

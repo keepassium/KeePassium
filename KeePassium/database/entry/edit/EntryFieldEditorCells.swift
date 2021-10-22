@@ -173,6 +173,7 @@ class EntryFieldEditorSingleLineCell:
             textField.isSecureTextEntry =
                 (field?.isProtected ?? false) && Settings.current.isHideProtectedFields
             textField.accessibilityLabel = field?.visibleName
+            textField.textContentType = field?.textContentType
             refreshMenu()
         }
     }
