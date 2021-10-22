@@ -16,9 +16,7 @@ class EditableFieldCellFactory {
         from tableView: UITableView,
         for indexPath: IndexPath,
         field: EditableField
-        ) -> EditableFieldCell & UITableViewCell
-    {
-        
+    ) -> EditableFieldCell & UITableViewCell {
         let cellStoryboardID: String
         if field.isFixed {
             if field.isMultiline {
@@ -39,19 +37,19 @@ class EditableFieldCellFactory {
             as! EditableFieldCell & UITableViewCell
         cell.field = field
         
-        if field.internalName == EntryField.userName,
-            let userNameCell = cell as? EntryFieldEditorSingleLineCell
-        {
-            userNameCell.actionButton.setTitle(
-                NSLocalizedString(
-                    "[EditEntry/UserName/choose]",
-                    value: "Choose",
-                    comment: "Action: choose a username from a list"),
-                for: .normal)
-            userNameCell.actionButton.isHidden = false
+        if let singleLineCell = cell as? EntryFieldEditorSingleLineCell {
+            decorate(singleLineCell, field: field)
         }
-        
         return cell
+    }
+    
+    private static func decorate(_ cell: EntryFieldEditorSingleLineCell, field: EditableField) {
+        if field.internalName == EntryField.userName {
+            cell.actionButton.setTitle(LString.actionChooseUserName, for: .normal)
+            cell.actionButton.isHidden = false
+        } else {
+            cell.actionButton.isHidden = true
+        }
     }
 }
 
@@ -434,3 +432,11 @@ class EntryFieldEditorCustomFieldCell:
     }
 }
 
+
+extension LString {
+    public static let actionChooseUserName = NSLocalizedString(
+        "[EditEntry/UserName/choose]",
+        value: "Choose",
+        comment: "Action: choose a username from a list"
+    )
+}
