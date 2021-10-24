@@ -137,11 +137,17 @@ final public class StoreReviewSuggester {
     }
     
     private static func showAppReview(appVersion: String) {
+        guard let appScenes = AppGroup.applicationShared?.connectedScenes,
+              let activeScene = appScenes.first(where: { $0.activationState == .foregroundActive }),
+              let currentWindowScene = activeScene as? UIWindowScene
+        else {
+            return
+        }
         registerEvent(.reviewRequest)
         withParams {
             $0.lastReviewedVersion = appVersion
         }
-        SKStoreReviewController.requestReview()
+        SKStoreReviewController.requestReview(in: currentWindowScene)
     }
     
     private static func isGoodTimeForReview(appVersion: String) -> Bool {

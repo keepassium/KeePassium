@@ -346,8 +346,8 @@ public extension Keychain {
             var query = makeQuery(service: .general, account: biometricControlAccount)
             let context = LAContext()
             context.localizedCancelTitle = LString.Biometrics.actionUsePasscode
+            context.localizedReason = LString.Biometrics.titleBiometricPrompt
             query[kSecUseAuthenticationContext as String] = context
-            query[kSecUseOperationPrompt as String] = LString.Biometrics.titleBiometricPrompt as AnyObject
             query[kSecReturnData as String] = kCFBooleanTrue
             
             var resultData: AnyObject?

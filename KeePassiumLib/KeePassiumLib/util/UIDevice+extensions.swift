@@ -14,13 +14,14 @@ extension UIDevice {
         #if targetEnvironment(macCatalyst)
         return false
         #else
-        if #available(iOS 11.0, *) {
-            guard let keyWindow = AppGroup.applicationShared?.keyWindow else {
-                return false
-            }
-            return keyWindow.safeAreaInsets.bottom.isZero
+        let keyWindow = AppGroup.applicationShared?.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+        guard let keyWindow = keyWindow else {
+            return false
         }
-        return true
+        return keyWindow.safeAreaInsets.bottom.isZero
         #endif
     }
 }

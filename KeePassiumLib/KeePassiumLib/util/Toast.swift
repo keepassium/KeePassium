@@ -411,7 +411,7 @@ public extension UIView {
             activityView.layer.shadowOffset = style.shadowOffset
         }
         
-        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        let activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.center = CGPoint(
             x: activityView.bounds.size.width / 2.0,
             y: activityView.bounds.size.height / 2.0

@@ -207,7 +207,7 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
     }
     
     private func pickTargetLocation(for tmpDatabaseURL: URL) {
-        let picker = UIDocumentPickerViewController(url: tmpDatabaseURL, in: .exportToService)
+        let picker = UIDocumentPickerViewController(forExporting: [tmpDatabaseURL], asCopy: true)
         picker.delegate = self
         picker.modalPresentationStyle = router.navigationController.modalPresentationStyle
         databaseCreatorVC.present(picker, animated: true, completion: nil)

@@ -10,6 +10,12 @@ import UIKit
 
 extension UIApplication {
     
+    var currentScene: UIWindowScene? {
+        connectedScenes
+            .first { $0.activationState == .foregroundActive}
+            as? UIWindowScene
+    }
+    
     public func getKeyWindow() -> UIWindow? {
         if #available(iOS 13, *) {
             return windows.first { $0.isKeyWindow }

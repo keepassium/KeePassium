@@ -28,8 +28,8 @@ final class FileExportHelper: NSObject {
             try data.write(to: tmpURL!.url, options: .completeFileProtection)
 
             let documentPicker = UIDocumentPickerViewController(
-                url: tmpURL!.url,
-                in: .exportToService
+                forExporting: [tmpURL!.url],
+                asCopy: true
             )
             documentPicker.delegate = self
             viewController.present(documentPicker, animated: true, completion: nil)

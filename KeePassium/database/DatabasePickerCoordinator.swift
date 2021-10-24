@@ -174,8 +174,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     
     public func addExistingDatabase(presenter: UIViewController) {
         let documentPicker = UIDocumentPickerViewController(
-            documentTypes: FileType.databaseUTIs,
-            in: .open
+            forOpeningContentTypes: FileType.databaseUTIs
         )
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = .pageSheet
@@ -426,19 +425,7 @@ extension DatabasePickerCoordinator: UIDocumentPickerDelegate {
         guard let url = urls.first else { return }
         FileAddingHelper.ensureFileIsDatabase(url, parent: databasePickerVC) {
             [weak self] (url) in
-            guard let self = self else { return }
-            
-            switch controller.documentPickerMode {
-            case .open:
-                self.addDatabaseFile(url, mode: .openInPlace)
-            case .import:
-                assertionFailure("This will misbehave in AutoFill before iOS 14")
-                self.addDatabaseFile(url, mode: .import)
-            default:
-                Diag.warning("Unexpected document picker mode")
-                assertionFailure()
-                return
-            }
+            self?.addDatabaseFile(url, mode: .openInPlace)
         }
     }
 }

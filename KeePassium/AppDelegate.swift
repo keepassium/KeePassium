@@ -101,9 +101,7 @@ extension AppDelegate {
     @available(iOS 13, *)
     override func buildMenu(with builder: UIMenuBuilder) {
         builder.remove(menu: .format)
-        if #available(iOS 14, *) {
-            builder.remove(menu: .openRecent)
-        }
+        builder.remove(menu: .openRecent)
 
         let aboutAppMenuTitle = builder.menu(for: .about)?.children.first?.title
             ?? String.localizedStringWithFormat(LString.menuAboutAppTemplate, AppInfo.name)

@@ -208,8 +208,9 @@ extension EntryViewerCoordinator {
     private func showFileAttachmentPicker(in viewController: UIViewController) {
         assert(canEditEntry)
         let picker = UIDocumentPickerViewController(
-            documentTypes: FileType.attachmentUTIs,
-            in: .import)
+            forOpeningContentTypes: FileType.attachmentUTIs,
+            asCopy: true 
+        )
         picker.modalPresentationStyle = .formSheet
         picker.delegate = self
         viewController.present(picker, animated: true, completion: nil)

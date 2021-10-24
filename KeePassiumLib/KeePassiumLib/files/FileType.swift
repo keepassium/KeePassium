@@ -6,25 +6,25 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import Foundation
+import UniformTypeIdentifiers
 
 public enum FileType {
-    public static let attachmentUTIs = ["public.data", "public.content"]
+    public static let attachmentUTIs: [UTType] = [.data, .content]
     
-    public static let databaseUTIs = [
-        "public.data", "public.content", 
-        "public.item", 
-        "com.keepassium.kdb", "com.keepassium.kdbx",
-        "com.maxep.mikee.kdb", "com.maxep.mikee.kdbx", 
-        "com.jflan.MiniKeePass.kdb", "com.jflan.MiniKeePass.kdbx",
-        "com.kptouch.kdb", "com.kptouch.kdbx",
-        "com.markmcguill.strongbox.kdb",
-        "com.markmcguill.strongbox.kdbx",
-        "be.kyuran.kypass.kdb",
-        "org.keepassxc"]
+    public static let databaseUTIs: [UTType] = [
+        .data, .content, 
+        .item, 
+        .init("com.keepassium.kdb")!, .init("com.keepassium.kdbx")!,
+        .init("com.maxep.mikee.kdb")!, .init("com.maxep.mikee.kdbx")!,
+        .init("com.jflan.MiniKeePass.kdb")!, .init("com.jflan.MiniKeePass.kdbx")!,
+        .init("com.kptouch.kdb")!, .init("com.kptouch.kdbx")!,
+        .init("com.markmcguill.strongbox.kdb")!,
+        .init("com.markmcguill.strongbox.kdbx")!,
+        .init("be.kyuran.kypass.kdb")!,
+        .init("org.keepassxc")!]
     
-    public static let keyFileUTIs =
-        ["com.keepassium.keyfile", "public.data", "public.content", "public.item"]
+    public static let keyFileUTIs: [UTType] =
+        [.init("com.keepassium.keyfile")!, .data, .content, .item]
 
     public enum DatabaseExtensions {
         public static let all = [kdb, kdbx]

@@ -64,7 +64,7 @@ class KeyFilePickerCoordinator: NSObject, Coordinator {
 
 extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
     func didPressAddKeyFile(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
-        let picker = UIDocumentPickerViewController(documentTypes: FileType.keyFileUTIs, in: .open)
+        let picker = UIDocumentPickerViewController(forOpeningContentTypes: FileType.keyFileUTIs)
         documentPickerShouldAdd = true
         picker.delegate = self
         picker.modalPresentationStyle = .pageSheet
@@ -73,7 +73,7 @@ extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
     }
     
     func didPressBrowse(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
-        let picker = UIDocumentPickerViewController(documentTypes: FileType.keyFileUTIs, in: .open)
+        let picker = UIDocumentPickerViewController(forOpeningContentTypes: FileType.keyFileUTIs)
         documentPickerShouldAdd = false
         picker.delegate = self
         picker.modalPresentationStyle = .pageSheet

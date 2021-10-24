@@ -9,10 +9,10 @@
 import KeePassiumLib
 
 class RootSplitVC: UISplitViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.preferredDisplayMode = .allVisible
+        self.preferredDisplayMode = .oneBesideSecondary
     }
     
     public func setDetailRouter(_ router: NavigationRouter) {

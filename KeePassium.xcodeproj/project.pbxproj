@@ -268,10 +268,10 @@
 		75802632222EBC3800F4525F /* ProgressVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75802630222EBC3800F4525F /* ProgressVC.storyboard */; };
 		75802634222ED11D00F4525F /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75802633222ED11D00F4525F /* ProgressVC.swift */; };
 		75802635222ED11D00F4525F /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75802633222ED11D00F4525F /* ProgressVC.swift */; };
-		75814FD225F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */; };
-		75814FD325F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */; };
-		75814FD425F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */; };
-		75814FD525F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */; };
+		75814FD225F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+extensions.swift */; };
+		75814FD325F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+extensions.swift */; };
+		75814FD425F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+extensions.swift */; };
+		75814FD525F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75814FD125F3D70B00B52A57 /* UIApplication+extensions.swift */; };
 		7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
 		75838481268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75838480268B55BF000D2E8B /* UIViewController+subviews.swift */; };
 		75838482268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75838480268B55BF000D2E8B /* UIViewController+subviews.swift */; };
@@ -1446,7 +1446,7 @@
 		757FDF6126E2519E0023E028 /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		75802630222EBC3800F4525F /* ProgressVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProgressVC.storyboard; sourceTree = "<group>"; };
 		75802633222ED11D00F4525F /* ProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVC.swift; sourceTree = "<group>"; };
-		75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+keyWindow.swift"; sourceTree = "<group>"; };
+		75814FD125F3D70B00B52A57 /* UIApplication+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+extensions.swift"; sourceTree = "<group>"; };
 		75838480268B55BF000D2E8B /* UIViewController+subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+subviews.swift"; sourceTree = "<group>"; };
 		75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSearchVC.swift; sourceTree = "<group>"; };
 		7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillCoordinator.swift; sourceTree = "<group>"; };
@@ -2343,7 +2343,7 @@
 				758FC18C24CF254000BAD35C /* AppIcon.swift */,
 				75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */,
 				75BE05F925DAA5A200B34CC0 /* URLOpener.swift */,
-				75814FD125F3D70B00B52A57 /* UIApplication+keyWindow.swift */,
+				75814FD125F3D70B00B52A57 /* UIApplication+extensions.swift */,
 				75DDA56525F3E19900708750 /* UIWindow+extensions.swift */,
 				75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */,
 				75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */,
@@ -3206,7 +3206,7 @@
 				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
 				75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
-				75814FD325F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
+				75814FD325F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562A2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */,
 				75B59A6923887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
@@ -3443,7 +3443,7 @@
 				757ADC5423A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FCCF842631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75BE05FA25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
-				75814FD225F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
+				75814FD225F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75E60AE525CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3617,7 +3617,7 @@
 				757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75BE05FC25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
-				75814FD425F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
+				75814FD425F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75E60AE725CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3652,7 +3652,7 @@
 				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
 				75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
-				75814FD525F3D70B00B52A57 /* UIApplication+keyWindow.swift in Sources */,
+				75814FD525F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562C2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75D7DF89233E5E310029AD87 /* EntryFinderVC.swift in Sources */,
 				75B59A6B23887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
