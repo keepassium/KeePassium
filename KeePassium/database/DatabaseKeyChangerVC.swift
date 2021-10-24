@@ -66,6 +66,11 @@ final class DatabaseKeyChangerVC: UIViewController {
         keyFileField.accessibilityLabel = LString.fieldKeyFile
         hardwareKeyField.accessibilityLabel = LString.fieldHardwareKey
         
+        passwordField.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        repeatPasswordField.maskedCorners = []
+        keyFileField.maskedCorners = []
+        hardwareKeyField.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
         

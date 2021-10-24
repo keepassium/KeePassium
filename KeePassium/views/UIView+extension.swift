@@ -37,6 +37,15 @@ extension UIView {
         }
     }
     
+    @IBInspectable var maskedCorners: CACornerMask {
+        set {
+            layer.maskedCorners = newValue
+        }
+        get {
+            return layer.maskedCorners
+        }
+    }
+    
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.duration = 0.6

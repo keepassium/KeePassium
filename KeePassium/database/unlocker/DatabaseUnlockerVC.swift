@@ -72,6 +72,9 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         view.layer.isOpaque = false
         unlockButton.titleLabel?.adjustsFontForContentSizeCategory = true
         
+        passwordField.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        hardwareKeyField.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
         keyboardLayoutConstraint.layoutCallback = { [weak self] in
             self?.view.layoutIfNeeded()
         }

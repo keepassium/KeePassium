@@ -52,7 +52,7 @@
                                                 <rect key="frame" x="35" y="193" width="250" height="182"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hYP-f0-K1s" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="0.0" width="234" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="rVW-Op-EUS"/>
                                                         </constraints>
@@ -62,6 +62,14 @@
                                                         <attributedString key="userComments">
                                                             <fragment content="Placeholder: text field for changing the master password"/>
                                                         </attributedString>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRQ-hf-Pd2" userLabel="Separator1">
                                                         <rect key="frame" x="0.0" y="44" width="250" height="2"/>
@@ -71,7 +79,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHG-X2-fHH" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="46" width="234" height="44"/>
+                                                        <rect key="frame" x="0.0" y="46" width="250" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="bS0-dy-vQZ"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="yOJ-et-37f"/>
@@ -82,6 +90,14 @@
                                                         <attributedString key="userComments">
                                                             <fragment content="Placeholder: the second text field for changing the master password"/>
                                                         </attributedString>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHO-Fw-vsa" userLabel="Separator2">
                                                         <rect key="frame" x="0.0" y="90" width="250" height="2"/>
@@ -91,7 +107,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M9Q-v8-e6Q" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="92" width="234" height="44"/>
+                                                        <rect key="frame" x="0.0" y="92" width="250" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="t31-lC-6jx"/>
                                                         </constraints>
@@ -101,6 +117,14 @@
                                                         <attributedString key="userComments">
                                                             <fragment content="Placeholder: don't use key file (should match the No Key File option in key file picker)."/>
                                                         </attributedString>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HaB-6m-duq" userLabel="Separator3">
                                                         <rect key="frame" x="0.0" y="136" width="250" height="2"/>
@@ -110,45 +134,53 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="{No Hardware Key}" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o5v-tf-bLd" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="138" width="234" height="44"/>
+                                                        <rect key="frame" x="0.0" y="138" width="250" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="foT-cy-G9u"/>
                                                         </constraints>
                                                         <color key="textColor" name="PrimaryText"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="BRQ-hf-Pd2" secondAttribute="trailing" id="5rB-nM-Y3M"/>
-                                                    <constraint firstItem="o5v-tf-bLd" firstAttribute="trailing" secondItem="xCb-0U-HF5" secondAttribute="trailingMargin" id="67d-Td-Nih"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="M9Q-v8-e6Q" secondAttribute="trailing" id="A4k-x6-sc4"/>
+                                                    <constraint firstItem="o5v-tf-bLd" firstAttribute="trailing" secondItem="xCb-0U-HF5" secondAttribute="trailing" id="67d-Td-Nih"/>
+                                                    <constraint firstAttribute="trailing" secondItem="M9Q-v8-e6Q" secondAttribute="trailing" id="A4k-x6-sc4"/>
                                                     <constraint firstItem="NHO-Fw-vsa" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leading" id="CHz-qP-Pym"/>
                                                     <constraint firstItem="BRQ-hf-Pd2" firstAttribute="top" secondItem="hYP-f0-K1s" secondAttribute="bottom" id="Cfd-Kl-cBA"/>
-                                                    <constraint firstItem="o5v-tf-bLd" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leadingMargin" id="KJh-cw-WN0"/>
-                                                    <constraint firstItem="SHG-X2-fHH" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leadingMargin" id="Kpm-N4-UZA"/>
+                                                    <constraint firstItem="o5v-tf-bLd" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leading" id="KJh-cw-WN0"/>
+                                                    <constraint firstItem="SHG-X2-fHH" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leading" id="Kpm-N4-UZA"/>
                                                     <constraint firstItem="SHG-X2-fHH" firstAttribute="bottom" secondItem="NHO-Fw-vsa" secondAttribute="top" id="P88-pk-BiK"/>
-                                                    <constraint firstItem="M9Q-v8-e6Q" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leadingMargin" id="PlO-nr-Pmh"/>
+                                                    <constraint firstItem="M9Q-v8-e6Q" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leading" id="PlO-nr-Pmh"/>
                                                     <constraint firstAttribute="trailing" secondItem="HaB-6m-duq" secondAttribute="trailing" id="QDV-GU-ZSh"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="SsN-5A-Sm5"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="hYP-f0-K1s" secondAttribute="trailing" id="W1O-j6-imD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hYP-f0-K1s" secondAttribute="trailing" id="W1O-j6-imD"/>
                                                     <constraint firstAttribute="trailing" secondItem="NHO-Fw-vsa" secondAttribute="trailing" id="XBo-fI-qZi"/>
                                                     <constraint firstItem="HaB-6m-duq" firstAttribute="bottom" secondItem="o5v-tf-bLd" secondAttribute="top" id="dMP-OS-d4G"/>
                                                     <constraint firstItem="BRQ-hf-Pd2" firstAttribute="bottom" secondItem="SHG-X2-fHH" secondAttribute="top" id="dqj-FO-dSh"/>
                                                     <constraint firstAttribute="width" priority="250" constant="280" id="erq-Mk-TTy"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="SHG-X2-fHH" secondAttribute="trailing" id="exG-ZN-wed"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SHG-X2-fHH" secondAttribute="trailing" id="exG-ZN-wed"/>
                                                     <constraint firstAttribute="bottom" secondItem="o5v-tf-bLd" secondAttribute="bottom" id="lzQ-oD-zXW"/>
                                                     <constraint firstItem="NHO-Fw-vsa" firstAttribute="bottom" secondItem="M9Q-v8-e6Q" secondAttribute="top" id="nhW-Us-W04"/>
                                                     <constraint firstItem="M9Q-v8-e6Q" firstAttribute="bottom" secondItem="HaB-6m-duq" secondAttribute="top" id="od5-aJ-c4N"/>
                                                     <constraint firstItem="hYP-f0-K1s" firstAttribute="top" secondItem="xCb-0U-HF5" secondAttribute="top" id="pPN-qp-2iW"/>
                                                     <constraint firstItem="BRQ-hf-Pd2" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leading" id="pTB-35-O5Z"/>
-                                                    <constraint firstItem="hYP-f0-K1s" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leadingMargin" id="rLW-j1-fGV"/>
+                                                    <constraint firstItem="hYP-f0-K1s" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leading" id="rLW-j1-fGV"/>
                                                     <constraint firstItem="HaB-6m-duq" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="leading" id="vTj-2E-hnC"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>

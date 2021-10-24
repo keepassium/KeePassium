@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eAa-Z5-pdq">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -73,7 +74,7 @@
                                                         <rect key="frame" x="0.0" y="22.5" width="280" height="136"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuN-tE-lAG" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                                                <rect key="frame" x="8" y="0.0" width="264" height="44"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="password_field"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="44" id="Ce1-pB-jMO"/>
@@ -84,6 +85,14 @@
                                                                 <attributedString key="userComments">
                                                                     <fragment content="Placeholder: database password"/>
                                                                 </attributedString>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                        <real key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb4-4d-9A9" userLabel="Fake UserName Field for AutoFill (GitHub #41)">
                                                                 <rect key="frame" x="0.0" y="43" width="1" height="1"/>
@@ -106,7 +115,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYY-hP-3vH" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                                <rect key="frame" x="8" y="46" width="264" height="44"/>
+                                                                <rect key="frame" x="0.0" y="46" width="280" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="44" id="zgu-ja-9pO"/>
                                                                 </constraints>
@@ -116,6 +125,14 @@
                                                                 <attributedString key="userComments">
                                                                     <fragment content="Placeholder: don't use key file (should match the No Key File option in key file picker)."/>
                                                                 </attributedString>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                        <real key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enR-VV-wge" userLabel="Separator2">
                                                                 <rect key="frame" x="0.0" y="90" width="280" height="2"/>
@@ -125,24 +142,32 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="{No Hardware Key}" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDJ-gO-5kR" userLabel="Hardware Key Field" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                                <rect key="frame" x="8" y="92" width="264" height="44"/>
+                                                                <rect key="frame" x="0.0" y="92" width="280" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="44" id="3Fk-na-nhL"/>
                                                                 </constraints>
                                                                 <color key="textColor" name="PrimaryText"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                        <real key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="mYY-hP-3vH" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="11G-x2-VCX"/>
+                                                            <constraint firstItem="mYY-hP-3vH" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="11G-x2-VCX"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2QP-BY-ymU"/>
-                                                            <constraint firstItem="IDJ-gO-5kR" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="6v4-TA-Atn"/>
-                                                            <constraint firstItem="CuN-tE-lAG" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leadingMargin" id="7YG-AI-dEZ"/>
+                                                            <constraint firstItem="IDJ-gO-5kR" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="6v4-TA-Atn"/>
+                                                            <constraint firstItem="CuN-tE-lAG" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="7YG-AI-dEZ"/>
                                                             <constraint firstItem="Rb4-4d-9A9" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="8G5-w2-EBj"/>
                                                             <constraint firstAttribute="width" priority="750" constant="280" id="FqB-Kn-Heq"/>
-                                                            <constraint firstAttribute="trailingMargin" secondItem="CuN-tE-lAG" secondAttribute="trailing" id="O1R-4o-zHz"/>
+                                                            <constraint firstAttribute="trailing" secondItem="CuN-tE-lAG" secondAttribute="trailing" id="O1R-4o-zHz"/>
                                                             <constraint firstItem="enR-VV-wge" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="Tx0-WI-l4b"/>
                                                             <constraint firstItem="mYY-hP-3vH" firstAttribute="bottom" secondItem="enR-VV-wge" secondAttribute="top" id="Ujf-aa-ZgO"/>
                                                             <constraint firstItem="854-YG-tHO" firstAttribute="leading" secondItem="3xv-vB-0Jn" secondAttribute="leading" id="ayP-z8-IdO"/>
@@ -150,16 +175,16 @@
                                                             <constraint firstAttribute="bottom" secondItem="IDJ-gO-5kR" secondAttribute="bottom" id="hwx-v8-LAy"/>
                                                             <constraint firstItem="854-YG-tHO" firstAttribute="top" secondItem="Rb4-4d-9A9" secondAttribute="bottom" id="igJ-N8-90q"/>
                                                             <constraint firstItem="CuN-tE-lAG" firstAttribute="top" secondItem="3xv-vB-0Jn" secondAttribute="top" id="kvI-is-rJb"/>
-                                                            <constraint firstItem="IDJ-gO-5kR" firstAttribute="trailing" secondItem="3xv-vB-0Jn" secondAttribute="trailingMargin" id="n6z-f3-Lwo"/>
+                                                            <constraint firstItem="IDJ-gO-5kR" firstAttribute="trailing" secondItem="3xv-vB-0Jn" secondAttribute="trailing" id="n6z-f3-Lwo"/>
                                                             <constraint firstAttribute="trailing" secondItem="enR-VV-wge" secondAttribute="trailing" id="nVp-k1-dby"/>
                                                             <constraint firstItem="854-YG-tHO" firstAttribute="top" secondItem="CuN-tE-lAG" secondAttribute="bottom" id="sZa-3K-Joh"/>
                                                             <constraint firstItem="mYY-hP-3vH" firstAttribute="top" secondItem="854-YG-tHO" secondAttribute="bottom" id="v62-wO-G2n"/>
-                                                            <constraint firstAttribute="trailingMargin" secondItem="mYY-hP-3vH" secondAttribute="trailing" id="vA6-I9-AaR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mYY-hP-3vH" secondAttribute="trailing" id="vA6-I9-AaR"/>
                                                             <constraint firstAttribute="trailing" secondItem="854-YG-tHO" secondAttribute="trailing" id="waV-xA-21s"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="5"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
