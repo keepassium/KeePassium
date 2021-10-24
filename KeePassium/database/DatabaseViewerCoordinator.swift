@@ -128,7 +128,9 @@ final class DatabaseViewerCoordinator: Coordinator {
     
     public func stop(animated: Bool, completion: (()->Void)?) {
         guard let rootGroupViewer = rootGroupViewer else {
-            fatalError("No group viewer")
+            assertionFailure("Group viewer already deallocated")
+            Diag.debug("Group viewer is already deallocated, ignoring")
+            return
         }
         primaryRouter.dismissModals(animated: animated) { [self, rootGroupViewer] in 
             self.primaryRouter.pop(
