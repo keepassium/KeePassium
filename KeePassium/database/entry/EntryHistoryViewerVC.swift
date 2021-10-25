@@ -132,9 +132,9 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         
         deleteBarButton = UIBarButtonItem(
             title: "", 
-            style: .plain,
-            target: self,
-            action: #selector(confirmDeleteSelection(_:))
+            image: nil,
+            primaryAction: nil,
+            menu: nil 
         )
         toolbarItems = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -481,18 +481,16 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         delegate?.didPressDelete(historyEntries: [entryToDelete], in: self)
     }
     
-    @objc private func confirmDeleteSelection(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(
-            title: nil,
-            message: nil,
-            preferredStyle: .actionSheet)
-        alert.addAction(title: sender.title, style: .destructive) { [weak self] _ in
-            self?.didPressDeleteSelection()
-        }
-        alert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        popoverAnchor.apply(to: alert.popoverPresentationController)
-        present(alert, animated: true, completion: nil)
+    private func makeConfirmDeleteSelectionMenu(for button: UIBarButtonItem) -> UIMenu {
+        let deleteAction = UIAction(
+            title: button.title ?? LString.actionDelete,
+            image: UIImage.get(.trash),
+            attributes: [.destructive],
+            handler: { [weak self] _ in
+                self?.didPressDeleteSelection()
+            }
+        )
+        return UIMenu(title: "", image: nil, options: [.destructive], children: [deleteAction])
     }
     
     private func didPressDeleteSelection() {
@@ -527,6 +525,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         } else {
             deleteBarButton.title = LString.actionDeleteAll
         }
+        deleteBarButton.menu = makeConfirmDeleteSelectionMenu(for: deleteBarButton)
     }
     
 }

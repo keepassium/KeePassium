@@ -20,14 +20,7 @@ protocol EntryFieldEditorDelegate: AnyObject {
 
     func isTOTPSetupAvailable(_ viewController: EntryFieldEditorVC) -> Bool
     func didPressScanQRCode(in viewController: EntryFieldEditorVC)
-
-    func didPressUserNameGenerator(
-        for field: EditableField,
-        at popoverAnchor: PopoverAnchor,
-        in viewController: EntryFieldEditorVC
-    )
     
-    @available(iOS 14, *)
     func getUserNameGeneratorMenu(
         for field: EditableField,
         in viewController: EntryFieldEditorVC) -> UIMenu?
@@ -292,7 +285,7 @@ extension EntryFieldEditorVC: ValidatingTextFieldDelegate {
 }
 
 extension EntryFieldEditorVC: EditableFieldCellDelegate {
-    @available(iOS 14, *)
+
     func getButtonMenu(for field: EditableField, in cell: EditableFieldCell) -> UIMenu? {
         switch field.internalName {
         case EntryField.userName:
@@ -313,11 +306,7 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         case is EntryFieldEditorSingleLineProtectedCell:
             didPressRandomize(field: field, at: popoverAnchor)
         default:
-            if field.internalName == EntryField.userName {
-                didPressChooseUserName(field: field, at: popoverAnchor)
-            } else {
-                assertionFailure("Button pressed in an unknown field")
-            }
+            assertionFailure("Button pressed in an unknown field")
         }
     }
     
@@ -336,10 +325,6 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
     
     func didPressRandomize(field: EditableField, at popoverAnchor: PopoverAnchor) {
         delegate?.didPressPasswordGenerator(for: field, at: popoverAnchor, in: self)
-    }
-    
-    func didPressChooseUserName(field: EditableField, at popoverAnchor: PopoverAnchor) {
-        delegate?.didPressUserNameGenerator(for: field, at: popoverAnchor, in: self)
     }
     
     func isFieldValid(field: EditableField) -> Bool {

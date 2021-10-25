@@ -89,9 +89,9 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
         }
         deleteFilesBarButton = UIBarButtonItem(
             title: LString.actionDelete, 
-            style: .plain,
-            target: self,
-            action: #selector(confirmDeleteSelection(_:))
+            image: nil,
+            primaryAction: nil,
+            menu: nil 
         )
         toolbarItems = [
             previewFilesBarButton,
@@ -395,18 +395,16 @@ private extension EntryFileViewerVC {
         delegate?.didPressDelete(files: [attachment], in: self)
     }
     
-    @objc private func confirmDeleteSelection(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(
-            title: nil,
-            message: nil,
-            preferredStyle: .actionSheet)
-        alert.addAction(title: sender.title, style: .destructive) { [weak self] _ in
-            self?.didPressDeleteSelection()
-        }
-        alert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        popoverAnchor.apply(to: alert.popoverPresentationController)
-        present(alert, animated: true, completion: nil)
+    private func makeConfirmDeleteSelectionMenu(for button: UIBarButtonItem) -> UIMenu {
+        let deleteAction = UIAction(
+            title: button.title ?? LString.actionDelete,
+            image: UIImage.get(.trash),
+            attributes: [.destructive],
+            handler: { [weak self] _ in
+                self?.didPressDeleteSelection()
+            }
+        )
+        return UIMenu(title: "", image: nil, options: [.destructive], children: [deleteAction])
     }
     
     private func didPressDeleteSelection() {
@@ -436,6 +434,7 @@ private extension EntryFileViewerVC {
         } else {
             deleteFilesBarButton.title = LString.actionDeleteAll
         }
+        deleteFilesBarButton.menu = makeConfirmDeleteSelectionMenu(for: deleteFilesBarButton)
     }
 }
 

@@ -243,12 +243,10 @@ final class GroupViewerVC:
         tableView.estimatedRowHeight = 44.0
         
         createItemButton = UIBarButtonItem(
+            title: LString.actionCreate,
             image: UIImage(asset: .createItemToolbar),
-            style: .plain,
-            target: self,
-            action: #selector(didPressCreateItem)
-        )
-        createItemButton.accessibilityLabel = LString.actionCreate
+            primaryAction: nil,
+            menu: nil)
         navigationItem.setRightBarButton(createItemButton, animated: false)
         
         navigationItem.titleView = titleView
@@ -347,6 +345,8 @@ final class GroupViewerVC:
             actionPermissions.canCreateGroup ||
             actionPermissions.canCreateEntry
         changeMasterKeyButton.isEnabled = actionPermissions.canEditDatabase
+        
+        createItemButton.menu = makeCreateItemMenu(for: createItemButton)
         
         if isSearchActive {
             updateSearchResults(for: searchController)
@@ -717,33 +717,37 @@ final class GroupViewerVC:
     }
     
 
-    @objc func didPressCreateItem(sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+    private func makeCreateItemMenu(for button: UIBarButtonItem) -> UIMenu {
+        let popoverAnchor = PopoverAnchor(barButtonItem: button)
         
-        let addItemSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let createGroupAction = UIAlertAction(title: LString.actionCreateGroup, style: .default) {
-            [weak self, popoverAnchor] _ in
-            guard let self = self else { return }
-            self.delegate?.didPressCreateGroup(at: popoverAnchor, in: self)
-        }
-        createGroupAction.isEnabled = actionPermissions.canCreateGroup
+        let createGroupAction = UIAction(
+            title: LString.actionCreateGroup,
+            image: nil,
+            attributes: actionPermissions.canCreateGroup ? [] : [.disabled],
+            handler: {
+                [weak self, popoverAnchor] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressCreateGroup(at: popoverAnchor, in: self)
+            }
+        )
         
-        let createEntryAction = UIAlertAction(title: LString.actionCreateEntry, style: .default) {
-            [weak self, popoverAnchor] _ in
-            guard let self = self else { return }
-            self.delegate?.didPressCreateEntry(at: popoverAnchor, in: self)
-        }
-        createEntryAction.isEnabled = actionPermissions.canCreateEntry
+        let createEntryAction = UIAction(
+            title: LString.actionCreateEntry,
+            image: nil,
+            attributes: actionPermissions.canCreateEntry ? [] : [.disabled],
+            handler: {
+                [weak self, popoverAnchor] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressCreateEntry(at: popoverAnchor, in: self)
+            }
+        )
         
-        let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        
-        addItemSheet.addAction(createGroupAction)
-        addItemSheet.addAction(createEntryAction)
-        addItemSheet.addAction(cancelAction)
-
-        addItemSheet.modalPresentationStyle = .popover
-        popoverAnchor.apply(to: addItemSheet.popoverPresentationController)
-        present(addItemSheet, animated: true, completion: nil)
+        return UIMenu(
+            title: "",
+            image: nil,
+            options: [],
+            children: [createGroupAction, createEntryAction]
+        )
     }
     
     func didPressEditItem(at indexPath: IndexPath) {

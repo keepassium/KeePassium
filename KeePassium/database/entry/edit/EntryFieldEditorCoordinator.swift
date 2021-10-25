@@ -150,37 +150,6 @@ final class EntryFieldEditorCoordinator: Coordinator {
         router.push(vc, animated: true, onPop: nil)
     }
     
-    private func showUserNameGenerator(
-        at popoverAnchor: PopoverAnchor,
-        completion: @escaping (String?)->Void
-    ) {
-        let namePicker = UIAlertController(
-            title: LString.fieldUserName,
-            message: nil,
-            preferredStyle: .actionSheet)
-        let userNames = UserNameHelper.getUserNameSuggestions(from: database, count: 4)
-        userNames.forEach { userName in
-            namePicker.addAction(title: userName, style: .default) { _ in
-                completion(userName)
-            }
-        }
-        
-        let randomUserName = UserNameHelper.getRandomUserName()
-        let randomTitle = LString.directionAwareConcatenate(["🎲", " ", randomUserName])
-        namePicker.addAction(title: randomTitle, style: .default) { _ in
-            completion(randomUserName)
-        }
-        
-        namePicker.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        
-        namePicker.modalPresentationStyle = .popover
-        if let popover = namePicker.popoverPresentationController {
-            popoverAnchor.apply(to: popover)
-            popover.permittedArrowDirections = [.up, .down]
-        }
-        router.present(namePicker, animated: true, completion: nil)
-    }
-    
     @available(iOS 14, *)
     private func makeUserNameGeneratorMenu(for field: EditableField) -> UIMenu {
         let applyUserName: UIActionHandler = { (action) in
@@ -333,23 +302,6 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         }
     }
     
-    func didPressUserNameGenerator(
-        for field: EditableField,
-        at popoverAnchor: PopoverAnchor,
-        in viewController: EntryFieldEditorVC
-    ) {
-        showUserNameGenerator(at: popoverAnchor, completion: {
-            [weak self, weak field] (userName) in
-            guard let self = self,
-                  let field = field,
-                  userName != nil else { return }
-            field.value = userName
-            self.isModified = true
-            self.refresh()
-        })
-    }
-    
-    @available(iOS 14, *)
     func getUserNameGeneratorMenu(
         for field: EditableField,
         in viewController: EntryFieldEditorVC
