@@ -1,5 +1,29 @@
 #CHANGELOG
 
+## [1.28.97] - 2021-10-26
+
+### Changed
+
+- This version requires iOS 14 or newer
+
+### Improved 
+
+- Sensitive data is encrypted in process memory using Secure Enclave
+- All app files are additionally encrypted on disk and cannot be accessed while device is locked (NSFileProtectionComplete). Reinstall the app to activate this. (closes #141)
+- More secure keychain-based biometric authentication
+- Require passcode unlock after biometric data was modified
+- Keychain-stored data is restricted to the current device
+- Improved highlight of focused text fields on macOS
+- Old-style popups partially replaced with modern menus
+
+### Fixed
+
+- "Clear master keys on timeout" option was treated as always on
+- Show diagnostics on repeated Cancel taps [thanks, Anders]
+- Occasional crashes caused by database timeout on launch
+- Annoying autocorrection in URL fields
+
+
 ## [1.27.96] - 2021-10-08
 
 ### Improved

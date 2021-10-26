@@ -1,6 +1,60 @@
 {
     "sections": [
         {
+            "version": "1.28",
+            "releaseDate": "2021-10-26T00:00:00Z",
+            "items": [
+                {
+                    "title": "This version requires iOS 14 or newer",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Sensitive data is encrypted in process memory using Secure Enclave",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: All app files are additionally encrypted on disk and cannot be accessed while device is locked (NSFileProtectionComplete). Reinstall the app to activate this. (closes #141)",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: More secure keychain-based biometric authentication",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Require passcode unlock after biometric data was modified",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Keychain-stored data is restricted to the current device",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Improved highlight of focused text fields on macOS",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Old-style popups partially replaced with modern menus",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: \"Clear master keys on timeout\" option was treated as always on",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Show diagnostics on repeated Cancel taps [thanks, Anders]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Occasional crashes caused by database timeout on launch",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Annoying autocorrection in URL fields",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.27",
             "releaseDate": "2021-10-08T00:00:00Z",
             "items": [
