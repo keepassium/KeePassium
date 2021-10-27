@@ -43,11 +43,11 @@ protocol DatabasePickerDelegate: AnyObject {
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     #endif
     func didPressCancel(in viewController: DatabasePickerVC)
-
-    func didPressAddDatabaseOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
-    func didPressAddExistingDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
+    
+    func needsPremiumToAddDatabase(in viewController: DatabasePickerVC) -> Bool
+    func didPressAddExistingDatabase(in viewController: DatabasePickerVC)
     #if MAIN_APP
-    func didPressCreateDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
+    func didPressCreateDatabase(in viewController: DatabasePickerVC)
     #endif
 
     func didPressRevealDatabaseInFinder(
@@ -202,6 +202,15 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         sortOrderButton.image = Settings.current.filesSortOrder.toolbarIcon
         sortOrderButton.menu = makeListSettingsMenu()
         
+        let addDatabaseMenu = makeAddDatabaseMenu()
+        if let primaryAddDatabaseAction = getPrimaryAddDatabaseAction() {
+            addDatabaseBarButton.primaryAction = primaryAddDatabaseAction
+            addDatabaseBarButton.menu = nil
+        } else {
+            addDatabaseBarButton.primaryAction = nil
+            addDatabaseBarButton.menu = addDatabaseMenu
+        }
+
         let includeBackup: Bool
         switch mode {
         case .full, .autoFill:
@@ -309,6 +318,60 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             children: [sortOptionsMenu, backupMenu])
     }
     
+    private func makeAddDatabaseMenu() -> UIMenu {
+        let needPremium = delegate?.needsPremiumToAddDatabase(in: self) ?? true
+        
+        var menuItems = [UIAction]()
+        let addDatabaseAction = UIAction(
+            title: LString.actionOpenDatabase,
+            image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.folder),
+            handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressAddExistingDatabase(in: self)
+            }
+        )
+        menuItems.append(addDatabaseAction)
+        
+        #if MAIN_APP
+        switch mode {
+        case .full, .light:
+            let createDatabaseAction = UIAction(
+                title: LString.actionCreateDatabase,
+                image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.plus),
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.delegate?.didPressCreateDatabase(in: self)
+                }
+            )
+            menuItems.append(createDatabaseAction)
+        case .autoFill:
+            assertionFailure("Tried to use .autoFill mode in main app")
+        }
+        #endif
+        return UIMenu.make(reverse: false, children: menuItems)
+    }
+    
+    private func getPrimaryAddDatabaseAction() -> UIAction? {
+        let needPremium = delegate?.needsPremiumToAddDatabase(in: self) ?? true
+        let addDatabaseAction = UIAction(
+            title: LString.actionOpenDatabase,
+            image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.plus),
+            handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressAddExistingDatabase(in: self)
+            }
+        )
+        #if MAIN_APP
+        if mode == .autoFill {
+            return addDatabaseAction
+        } else {
+            return nil
+        }
+        #else
+        return addDatabaseAction
+        #endif
+    }
+    
     
     #if MAIN_APP
     @IBAction func didPressSettingsButton(_ sender: UIBarButtonItem) {
@@ -324,39 +387,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     
     @objc func didPressCancel(_ sender: UIBarButtonItem) {
         delegate?.didPressCancel(in: self)
-    }
-    
-    @IBAction func didPressAddDatabase(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressAddDatabaseOptions(at: popoverAnchor, in: self)
-    }
-    
-    public func showAddDatabaseOptions(at popoverAnchor: PopoverAnchor) {
-        let optionsSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        optionsSheet.addAction(title: LString.actionOpenDatabase, style: .default) {
-            [weak self] _ in
-            guard let self = self else { return }
-            self.delegate?.didPressAddExistingDatabase(at: popoverAnchor, in: self)
-        }
-        
-        #if MAIN_APP
-        switch mode {
-        case .full, .light:
-            optionsSheet.addAction(title: LString.actionCreateDatabase, style: .default) {
-                [weak self] _ in
-                guard let self = self else { return }
-                self.delegate?.didPressCreateDatabase(at: popoverAnchor, in: self)
-            }
-        case .autoFill:
-            assertionFailure("Tried to use .autoFill mode in main app")
-        }
-        #endif
-        
-        optionsSheet.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-
-        popoverAnchor.apply(to: optionsSheet.popoverPresentationController)
-        present(optionsSheet, animated: true, completion: nil)
     }
     
     private func didPressRevealInFinder(_ fileRef: URLReference, at indexPath: IndexPath) {

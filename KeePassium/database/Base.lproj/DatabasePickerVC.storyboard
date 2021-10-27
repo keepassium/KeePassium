@@ -214,9 +214,6 @@
                             <attributedString key="userComments">
                                 <fragment content="Action: add database (either an existing file or create a new one)"/>
                             </attributedString>
-                            <connections>
-                                <action selector="didPressAddDatabase:" destination="vWt-yt-cgE" id="s1g-VK-Lau"/>
-                            </connections>
                         </barButtonItem>
                         <attributedString key="userComments">
                             <fragment content="Title of the database picker list"/>

@@ -75,6 +75,7 @@ enum SystemImageName: String {
     case paperclip = "paperclip"
     case pencil = "pencil"
     case photo = "photo"
+    case plus = "plus"
     case qrcode = "qrcode"
     case squareAndPencil = "square.and.pencil"
     case squareAndArrowDown = "square.and.arrow.down"

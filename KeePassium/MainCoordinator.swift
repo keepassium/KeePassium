@@ -331,7 +331,7 @@ extension MainCoordinator {
             animated: true,
             completion: { [weak self] in
                 guard let self = self else { return }
-                self.databasePickerCoordinator.createDatabase(presenter: self.rootSplitVC)
+                self.databasePickerCoordinator.maybeCreateDatabase(presenter: self.rootSplitVC)
             }
         )
     }
@@ -343,7 +343,7 @@ extension MainCoordinator {
             animated: true,
             completion: { [weak self] in
                 guard let self = self else { return }
-                self.databasePickerCoordinator.addExistingDatabase(presenter: self.rootSplitVC)
+                self.databasePickerCoordinator.maybeAddExistingDatabase(presenter: self.rootSplitVC)
             }
         )
     }

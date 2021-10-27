@@ -127,33 +127,28 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     #endif
     
-    private func maybeShowAddDatabaseOptions(
-        at popoverAnchor: PopoverAnchor,
-        in viewController: UIViewController
-    ) {
-        guard hasValidDatabases() else {
-            #if MAIN_APP
-            databasePickerVC.showAddDatabaseOptions(at: popoverAnchor)
-            #else
-            addExistingDatabase(presenter: viewController)
-            #endif
-            return
-        }
-        performPremiumActionOrOfferUpgrade(for: .canUseMultipleDatabases, in: viewController) {
-            [weak self] in
-            #if MAIN_APP
-            self?.databasePickerVC.showAddDatabaseOptions(at: popoverAnchor)
-            #else
-            self?.addExistingDatabase(presenter: viewController)
-            #endif
-        }
-    }
-    
     private func hasValidDatabases() -> Bool {
         let accessibleDatabaseRefs = FileKeeper.shared
             .getAllReferences(fileType: .database, includeBackup: false)
             .filter { !$0.needsReinstatement } 
         return accessibleDatabaseRefs.count > 0
+    }
+    
+    public func maybeAddExistingDatabase(presenter: UIViewController) {
+        guard needsPremiumToAddDatabase() else {
+            addExistingDatabase(presenter: presenter)
+            return
+        }
+
+        performPremiumActionOrOfferUpgrade(for: .canUseMultipleDatabases, in: presenter) {
+            [weak self, weak presenter] in
+            guard let self = self,
+                  let presenter = presenter
+            else {
+                return
+            }
+            self.addExistingDatabase(presenter: presenter)
+        }
     }
     
     public func addExistingDatabase(presenter: UIViewController) {
@@ -180,6 +175,23 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
 
     #if MAIN_APP
+    public func maybeCreateDatabase(presenter: UIViewController) {
+        guard needsPremiumToAddDatabase() else {
+            createDatabase(presenter: presenter)
+            return
+        }
+        
+        performPremiumActionOrOfferUpgrade(for: .canUseMultipleDatabases, in: presenter) {
+            [weak self, weak presenter] in
+            guard let self = self,
+                  let presenter = presenter
+            else {
+                return
+            }
+            self.createDatabase(presenter: presenter)
+        }
+    }
+    
     public func createDatabase(presenter: UIViewController) {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let databaseCreatorCoordinator = DatabaseCreatorCoordinator(router: modalRouter)
@@ -246,8 +258,18 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         return nil
     }
     
-    func didPressAddDatabaseOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
-        maybeShowAddDatabaseOptions(at: popoverAnchor, in: viewController)
+    
+    private func needsPremiumToAddDatabase() -> Bool {
+        if hasValidDatabases() {
+            let isEligible = PremiumManager.shared.isAvailable(feature: .canUseMultipleDatabases)
+            return !isEligible
+        } else {
+            return false
+        }
+    }
+    
+    func needsPremiumToAddDatabase(in viewController: DatabasePickerVC) -> Bool {
+        return needsPremiumToAddDatabase()
     }
     
     func didPressSetupAppLock(in viewController: DatabasePickerVC) {
@@ -268,8 +290,8 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         showAppSettings(at: popoverAnchor, in: viewController)
     }
     
-    func didPressCreateDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
-        createDatabase(presenter: viewController)
+    func didPressCreateDatabase(in viewController: DatabasePickerVC) {
+        maybeCreateDatabase(presenter: viewController)
     }
     #endif
     
@@ -277,8 +299,8 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         router.pop(viewController: databasePickerVC, animated: true)
     }
     
-    func didPressAddExistingDatabase(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
-        addExistingDatabase(presenter: viewController)
+    func didPressAddExistingDatabase(in viewController: DatabasePickerVC) {
+        maybeAddExistingDatabase(presenter: viewController)
     }
 
     func didPressRevealDatabaseInFinder(
