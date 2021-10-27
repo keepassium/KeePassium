@@ -148,13 +148,12 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
             self?.didPressAddPhotoAttachment(fromCamera: true)
         }
         
-        let menu = UIMenu(
-            title: "",
-            image: nil,
+        let menu = UIMenu.make(
+            reverse: true,
             children: [
-                takePhotoAction,
-                choosePhotoAction,
                 chooseFileAction,
+                choosePhotoAction,
+                takePhotoAction,
             ]
         )
         return menu
@@ -404,7 +403,7 @@ private extension EntryFileViewerVC {
                 self?.didPressDeleteSelection()
             }
         )
-        return UIMenu(title: "", image: nil, options: [.destructive], children: [deleteAction])
+        return UIMenu.make(options: [.destructive], children: [deleteAction])
     }
     
     private func didPressDeleteSelection() {

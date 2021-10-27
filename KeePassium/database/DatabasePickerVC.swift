@@ -283,20 +283,30 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 self?.refresh()
             }
         )
-        let backupMenu = UIMenu(
+        let backupMenu = UIMenu.make(
             title: LString.titleBackupSettings,
-            options: .displayInline,
+            options: [.displayInline],
             children: [showBackupAction]
         )
 
-        let sortOptionsMenu = UIMenu.makeFileSortMenu(
+        let sortMenuItems = UIMenu.makeFileSortMenuItems(
             current: Settings.current.filesSortOrder,
             handler: { [weak self] newSortOrder in
                 Settings.current.filesSortOrder = newSortOrder
                 self?.refresh()
             }
         )
-        return UIMenu(title: LString.titleSortBy, children: [backupMenu, sortOptionsMenu])
+        let sortOptionsMenu = UIMenu.make(
+            title: LString.titleSortBy,
+            reverse: true,
+            options: [.displayInline],
+            macOptions: [],
+            children: sortMenuItems
+        )
+        return UIMenu.make(
+            title: LString.titleSortBy,
+            reverse: true,
+            children: [sortOptionsMenu, backupMenu])
     }
     
     

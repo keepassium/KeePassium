@@ -159,26 +159,28 @@ final class EntryFieldEditorCoordinator: Coordinator {
         }
         
         let frequentUserNames = UserNameHelper.getUserNameSuggestions(from: database, count: 4)
-        let frequentItems = frequentUserNames.map { (userName) -> UIAction in
+        let frequentNamesMenuItems = frequentUserNames.map { (userName) -> UIAction in
             UIAction(title: userName, image: nil, handler: applyUserName)
         }
+        let frequentNamesMenu = UIMenu.make(
+            reverse: false, 
+            options: .displayInline,
+            children: frequentNamesMenuItems
+        )
+        
         let randomUserNames = UserNameHelper.getRandomUserNames(count: 3)
-        let randomItems = randomUserNames.map { (userName) -> UIAction in
+        let randomNamesMenuItems = randomUserNames.map { (userName) -> UIAction in
             UIAction(
                 title: userName,
                 image: UIImage(systemName: "wand.and.stars"),
                 handler: applyUserName
             )
         }
+        let randomNamesMenu = UIMenu.make(options: .displayInline, children: randomNamesMenuItems)
 
-        let menu = UIMenu(
+        return UIMenu.make(
             title: LString.fieldUserName,
-            children: [
-                UIMenu(options: .displayInline, children: frequentItems),
-                UIMenu(options: .displayInline, children: randomItems),
-            ]
-        )
-        return menu
+            children: [frequentNamesMenu, randomNamesMenu])
     }
     
     private func showDiagnostics() {

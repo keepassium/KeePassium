@@ -9,10 +9,31 @@
 import KeePassiumLib
 
 extension UIMenu {
-    public static func makeFileSortMenu(
+    
+    public static func make(
+        title: String = "",
+        reverse: Bool = false,
+        options: UIMenu.Options = [],
+        macOptions: UIMenu.Options? = nil,
+        children: [UIMenuElement]
+    ) -> UIMenu {
+        if ProcessInfo.isRunningOnMac {
+            return UIMenu(
+                title: title,
+                options: macOptions ?? options,
+                children: children)
+        } else {
+            return UIMenu(
+                title: title,
+                options: options,
+                children: reverse ? children.reversed() : children)
+        }
+    }
+    
+    public static func makeFileSortMenuItems(
         current: Settings.FilesSortOrder,
         handler: @escaping (Settings.FilesSortOrder) -> Void
-    ) -> UIMenu {
+    ) -> [UIMenuElement] {
         let sortByNone = UIAction(
             title: LString.titleSortByNone,
             attributes: [],
@@ -44,11 +65,7 @@ extension UIMenu {
             handler: handler
         )
 
-        return UIMenu(
-            title: LString.titleSortBy,
-            options: .displayInline,
-            children: [sortByNone, sortByName, sortByDateCreated, sortByDateModified].reversed()
-        )
+        return [sortByNone, sortByName, sortByDateCreated, sortByDateModified]
     }
     
     private static func makeFileSortAction(

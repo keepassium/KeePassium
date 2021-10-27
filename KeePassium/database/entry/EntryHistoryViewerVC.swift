@@ -490,7 +490,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
                 self?.didPressDeleteSelection()
             }
         )
-        return UIMenu(title: "", image: nil, options: [.destructive], children: [deleteAction])
+        return UIMenu.make(options: [.destructive], children: [deleteAction])
     }
     
     private func didPressDeleteSelection() {

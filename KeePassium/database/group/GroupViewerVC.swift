@@ -656,10 +656,11 @@ final class GroupViewerVC:
                 }
             )
         }
-        let entrySutitleMenu = UIMenu(
+        let entrySubtitleMenu = UIMenu.make(
             title: LString.titleEntrySubtitle,
+            reverse: true,
             options: [],
-            children: entrySubtitleActions.reversed()
+            children: entrySubtitleActions
         )
         
         let sortOrderMenuItems = UIMenu.makeDatabaseItemSortMenuItems(
@@ -669,15 +670,18 @@ final class GroupViewerVC:
                 self?.refresh()
             }
         )
-        let sortOrderMenu = UIMenu(
+        let sortOrderMenu = UIMenu.make(
             title: LString.titleSortBy,
-            options: [.displayInline],
-            children: sortOrderMenuItems.reversed()
-        )
-        return UIMenu(
-            title: LString.titleSortBy,
+            reverse: true,
             options: [],
-            children: [entrySutitleMenu, sortOrderMenu]
+            macOptions: [],
+            children: sortOrderMenuItems
+        )
+        return UIMenu.make(
+            title: "",
+            reverse: true,
+            options: [],
+            children: [sortOrderMenu, entrySubtitleMenu]
         )
     }
     
@@ -780,9 +784,9 @@ final class GroupViewerVC:
             }
         )
         
-        return UIMenu(
+        return UIMenu.make(
             title: "",
-            image: nil,
+            reverse: false,
             options: [],
             children: [createGroupAction, createEntryAction]
         )
