@@ -506,6 +506,17 @@ public class Settings {
         case modificationTimeAsc
         case modificationTimeDesc
         
+        public var isAscending: Bool? {
+            switch self {
+            case .noSorting:
+                return nil
+            case .nameAsc, .creationTimeAsc, .modificationTimeAsc:
+                return true
+            case .nameDesc, .creationTimeDesc, .modificationTimeDesc:
+                return false
+            }
+        }
+        
         public var longTitle: String {
             switch self {
             case .noSorting:
@@ -1584,21 +1595,26 @@ extension LString {
         "[SortBy/None]",
         bundle: Bundle.framework,
         value: "None",
-        comment: "File list sorting option, when no sorting is selected. Example: 'Sort by: None'")
+        comment: "List sorting option, when no sorting is selected. Example: 'Sort by: None'")
     public static let titleSortByFileName = NSLocalizedString(
         "[SortBy/FileName]",
         bundle: Bundle.framework,
         value: "Name",
-        comment: "File list sorting option. Example: 'Sort by: Name'")
+        comment: "List sorting option (for file names). Example: 'Sort by: Name'")
+    public static let titleSortByItemTitle = NSLocalizedString(
+        "[SortBy/ItemTitle]",
+        bundle: Bundle.framework,
+        value: "Title",
+        comment: "List sorting option (for groups and entries). Example: 'Sort by: Title'")
     public static let titleSortByDateCreated = NSLocalizedString(
         "[SortBy/DateCreated]",
         bundle: Bundle.framework,
         value: "Date Created",
-        comment: "File list sorting option. Example: 'Sort by: Date Created'")
+        comment: "List sorting option. Example: 'Sort by: Date Created'")
     public static let titleSortByDateModified = NSLocalizedString(
         "[SortBy/DateModified]",
         bundle: Bundle.framework,
         value: "Date Modified",
-        comment: "File list sorting option. Example: 'Sort by: Date Modified'")
+        comment: "List sorting option. Example: 'Sort by: Date Modified'")
 
 }

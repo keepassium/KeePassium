@@ -27,7 +27,6 @@ struct DatabaseItemActionPermissions {
 }
 
 protocol GroupViewerDelegate: AnyObject {
-    func didPressListSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressLockDatabase(in viewController: GroupViewerVC)
     func didPressChangeMasterKey(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
@@ -355,6 +354,7 @@ final class GroupViewerVC:
         }
         tableView.reloadData()
         
+        sortOrderButton.menu = makeListSettingsMenu()
         sortOrderButton.image = Settings.current.groupSortOrder.toolbarIcon
     }
     
@@ -643,6 +643,44 @@ final class GroupViewerVC:
     }
 
     
+    private func makeListSettingsMenu() -> UIMenu {
+        let currentDetail = Settings.current.entryListDetail
+        let entrySubtitleActions = Settings.EntryListDetail.allValues.map {
+            entryListDetail in
+            UIAction(
+                title: entryListDetail.longTitle,
+                state: (currentDetail == entryListDetail) ? .on : .off,
+                handler: { [weak self] _ in
+                    Settings.current.entryListDetail = entryListDetail
+                    self?.refresh()
+                }
+            )
+        }
+        let entrySutitleMenu = UIMenu(
+            title: LString.titleEntrySubtitle,
+            options: [],
+            children: entrySubtitleActions.reversed()
+        )
+        
+        let sortOrderMenuItems = UIMenu.makeDatabaseItemSortMenuItems(
+            current: Settings.current.groupSortOrder,
+            handler: { [weak self] newSortOrder in
+                Settings.current.groupSortOrder = newSortOrder
+                self?.refresh()
+            }
+        )
+        let sortOrderMenu = UIMenu(
+            title: LString.titleSortBy,
+            options: [.displayInline],
+            children: sortOrderMenuItems.reversed()
+        )
+        return UIMenu(
+            title: LString.titleSortBy,
+            options: [],
+            children: [entrySutitleMenu, sortOrderMenu]
+        )
+    }
+    
     override func getContextActionsForRow(
         at indexPath: IndexPath,
         forSwipe: Bool
@@ -801,11 +839,6 @@ final class GroupViewerVC:
         delegate?.didPressRelocateItem(selectedItem, mode: mode, at: popoverAnchor, in: self)
     }
     
-    @IBAction func didPressItemListSettings(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressListSettings(at: popoverAnchor, in: self)
-    }
-    
     @IBAction func didPressSettings(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressSettings(at: popoverAnchor, in: self)
@@ -853,4 +886,19 @@ extension GroupViewerVC: UISearchControllerDelegate {
     public func didDismissSearchController(_ searchController: UISearchController) {
         refresh()
     }
+}
+
+extension LString {
+    public static let titleEntrySubtitle = NSLocalizedString(
+        "[Settings/GroupViewer] Entry Subtitle",
+        value: "Entry Subtitle",
+        comment: "Title of a settings section: which entry field to show along with entry title")
+    public static let titleSortOrder = NSLocalizedString(
+        "[Settings/GroupViewer] Sort Order",
+        value: "Sort Order",
+        comment: "Title of a settings section: sort order of groups and entries in a list")
+    public static let titleListSettings = NSLocalizedString(
+        "[Settings/ListSettings/title]",
+        value: "List Settings",
+        comment: "Title of list view configuration screen")
 }

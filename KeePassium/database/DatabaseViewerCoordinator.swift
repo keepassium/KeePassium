@@ -385,20 +385,6 @@ extension DatabaseViewerCoordinator {
         stop(animated: animated, completion: completion)
     }
     
-    private func showGroupListSettings(
-        at popoverAnchor: PopoverAnchor,
-        in viewController: UIViewController
-    ) {
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let listSettingsCoordinator = SettingsItemListCoordinator(router: modalRouter)
-        listSettingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
-        listSettingsCoordinator.start()
-        addChildCoordinator(listSettingsCoordinator)
-        viewController.present(modalRouter, animated: true, completion: nil)
-    }
-
     private func showAppSettings(at popoverAnchor: PopoverAnchor, in viewController: UIViewController) {
         let modalRouter = NavigationRouter.createModal(
             style: ProcessInfo.isRunningOnMac ? .formSheet : .popover,
@@ -514,11 +500,7 @@ extension DatabaseViewerCoordinator: SettingsObserver {
     }
 }
 
-extension DatabaseViewerCoordinator: GroupViewerDelegate {
-    func didPressListSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
-        showGroupListSettings(at: popoverAnchor, in: viewController)
-    }
-        
+extension DatabaseViewerCoordinator: GroupViewerDelegate {        
     func didPressLockDatabase(in viewController: GroupViewerVC) {
         closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
     }

@@ -91,4 +91,82 @@ extension UIMenu {
             )
         }
     }
+    
+    public static func makeDatabaseItemSortMenuItems(
+        current: Settings.GroupSortOrder,
+        handler: @escaping (Settings.GroupSortOrder) -> Void
+    ) -> [UIMenuElement] {
+        let sortByNone = UIAction(
+            title: LString.titleSortByNone,
+            attributes: [],
+            state: (current == .noSorting) ? .on : .off,
+            handler: { _ in
+                handler(.noSorting)
+            }
+        )
+        
+        let sortByItemTitle = makeGroupSortAction(
+            title: LString.titleSortByItemTitle,
+            current: current,
+            ascending: .nameAsc,
+            descending: .nameDesc,
+            handler: handler
+        )
+        let sortByDateCreated = makeGroupSortAction(
+            title: LString.titleSortByDateCreated,
+            current: current,
+            ascending: .creationTimeAsc,
+            descending: .creationTimeDesc,
+            handler: handler
+        )
+        let sortByDateModified = makeGroupSortAction(
+            title: LString.titleSortByDateModified,
+            current: current,
+            ascending: .modificationTimeAsc,
+            descending: .modificationTimeDesc,
+            handler: handler
+        )
+        return [sortByNone, sortByItemTitle, sortByDateCreated, sortByDateModified]
+    }
+    
+    private static func makeGroupSortAction(
+        title: String,
+        current: Settings.GroupSortOrder,
+        ascending: Settings.GroupSortOrder,
+        descending: Settings.GroupSortOrder,
+        handler: @escaping (Settings.GroupSortOrder) -> Void
+    ) -> UIAction {
+        switch current {
+        case ascending:
+            return UIAction(
+                title: title,
+                image: UIImage.get(.chevronUp),
+                attributes: [],
+                state: .on,
+                handler: { _ in handler(descending) }
+            )
+        case descending:
+            return UIAction(
+                title: title,
+                image: UIImage.get(.chevronDown),
+                attributes: [],
+                state: .on,
+                handler: { _ in handler(ascending) }
+            )
+        default:
+            return UIAction(
+                title: title,
+                image: nil,
+                attributes: [],
+                state: .off,
+                handler: { _ in
+                    if current.isAscending ?? true {
+                        handler(ascending)
+                    } else {
+                        handler(descending)
+                    }
+                }
+            )
+        }
+    }
 }
