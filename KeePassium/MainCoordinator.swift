@@ -325,7 +325,11 @@ extension MainCoordinator {
     }
     
     func createDatabase() {
-        databaseViewerCoordinator?.closeDatabase(
+        guard let dbViewer = databaseViewerCoordinator else {
+            databasePickerCoordinator.maybeCreateDatabase(presenter: rootSplitVC)
+            return
+        }
+        dbViewer.closeDatabase(
             shouldLock: false,
             reason: .appLevelOperation,
             animated: true,
@@ -337,7 +341,11 @@ extension MainCoordinator {
     }
         
     func openDatabase() {
-        databaseViewerCoordinator?.closeDatabase(
+        guard let dbViewer = databaseViewerCoordinator else {
+            databasePickerCoordinator.maybeAddExistingDatabase(presenter: rootSplitVC)
+            return
+        }
+        dbViewer.closeDatabase(
             shouldLock: false,
             reason: .appLevelOperation,
             animated: true,
@@ -349,6 +357,7 @@ extension MainCoordinator {
     }
     
     func lockDatabase() {
+        assert(databaseViewerCoordinator != nil, "Tried to lock database, but there is none opened")
         databaseViewerCoordinator?.closeDatabase(
             shouldLock: true,
             reason: .userRequest,
