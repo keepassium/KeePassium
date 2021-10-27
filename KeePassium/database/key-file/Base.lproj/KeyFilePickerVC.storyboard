@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,19 +35,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No Key File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="9UZ-FK-v73">
-                                            <rect key="frame" x="60" y="7.5" width="72.5" height="17"/>
+                                            <rect key="frame" x="51.5" y="7.5" width="72.5" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="no-keyfile-listitem" id="mtg-wq-fAX">
-                                            <rect key="frame" x="16" y="10" width="29" height="29"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mtg-wq-fAX">
+                                            <rect key="frame" x="17" y="16" width="18.5" height="16.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="tintColor" name="IconTint"/>
+                                            <imageReference key="image" image="multiply" catalog="system" symbolScale="large" renderingMode="template"/>
                                         </imageView>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use only password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="leO-vH-qBX">
-                                            <rect key="frame" x="60" y="27" width="99" height="13.5"/>
+                                            <rect key="frame" x="51.5" y="27" width="99" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" name="AuxiliaryText"/>
@@ -63,7 +65,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Browse…" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="XiA-k9-5wr">
-                                            <rect key="frame" x="60" y="7.5" width="59" height="17"/>
+                                            <rect key="frame" x="55.5" y="7.5" width="59" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
@@ -73,7 +75,7 @@
                                             </attributedString>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use key file without adding it to the list" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="BGv-TX-maE">
-                                            <rect key="frame" x="60" y="27" width="204.5" height="13.5"/>
+                                            <rect key="frame" x="55.5" y="27" width="204.5" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" name="AuxiliaryText"/>
@@ -82,10 +84,11 @@
                                                 <fragment content="Explanation for the &quot;Key File/Browse&quot; action."/>
                                             </attributedString>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="folder" id="ei2-xw-PXd">
-                                            <rect key="frame" x="16" y="10" width="29" height="29"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ei2-xw-PXd">
+                                            <rect key="frame" x="12" y="13.5" width="28.5" height="21.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="tintColor" name="IconTint"/>
+                                            <imageReference key="image" image="folder" catalog="system" symbolScale="large"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -180,9 +183,9 @@
     </scenes>
     <resources>
         <image name="create-item-toolbar" width="25" height="25"/>
-        <image name="folder" width="29" height="29"/>
+        <image name="folder" catalog="system" width="128" height="97"/>
         <image name="keyfile-listitem" width="29" height="29"/>
-        <image name="no-keyfile-listitem" width="29" height="29"/>
+        <image name="multiply" catalog="system" width="128" height="111"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
