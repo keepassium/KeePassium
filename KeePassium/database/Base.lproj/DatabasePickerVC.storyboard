@@ -181,9 +181,6 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Sort Order" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="didPressSortButton:" destination="vWt-yt-cgE" id="lpv-um-TFm"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Yyg-IS-vi0"/>
                         <barButtonItem image="settings-toolbar" id="oee-CI-r2x" userLabel="Settings">

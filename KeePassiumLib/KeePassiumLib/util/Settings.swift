@@ -605,6 +605,17 @@ public class Settings {
         case modificationTimeAsc
         case modificationTimeDesc
         
+        public var isAscending: Bool? {
+            switch self {
+            case .noSorting:
+                return nil
+            case .nameAsc, .creationTimeAsc, .modificationTimeAsc:
+                return true
+            case .nameDesc, .creationTimeDesc, .modificationTimeDesc:
+                return false
+            }
+        }
+                
         public var longTitle: String {
             switch self {
             case .noSorting:
@@ -1561,4 +1572,33 @@ public class Settings {
             ]
         )
     }
+}
+
+extension LString {
+    public static let titleSortBy = NSLocalizedString(
+        "[SortBy]",
+        bundle: Bundle.framework,
+        value: "Sort By",
+        comment: "Title of a sort options list. Example: 'Sort by: Name'")
+    public static let titleSortByNone = NSLocalizedString(
+        "[SortBy/None]",
+        bundle: Bundle.framework,
+        value: "None",
+        comment: "File list sorting option, when no sorting is selected. Example: 'Sort by: None'")
+    public static let titleSortByFileName = NSLocalizedString(
+        "[SortBy/FileName]",
+        bundle: Bundle.framework,
+        value: "Name",
+        comment: "File list sorting option. Example: 'Sort by: Name'")
+    public static let titleSortByDateCreated = NSLocalizedString(
+        "[SortBy/DateCreated]",
+        bundle: Bundle.framework,
+        value: "Date Created",
+        comment: "File list sorting option. Example: 'Sort by: Date Created'")
+    public static let titleSortByDateModified = NSLocalizedString(
+        "[SortBy/DateModified]",
+        bundle: Bundle.framework,
+        value: "Date Modified",
+        comment: "File list sorting option. Example: 'Sort by: Date Modified'")
+
 }

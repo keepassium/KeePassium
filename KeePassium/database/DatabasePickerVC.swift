@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+import UIKit
 
 
 protocol AppLockSetupCellDelegate: AnyObject {
@@ -39,7 +40,6 @@ protocol DatabasePickerDelegate: AnyObject {
     
     #if MAIN_APP
     func didPressHelp(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
-    func didPressListOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     #endif
     func didPressCancel(in viewController: DatabasePickerVC)
@@ -200,6 +200,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     
     func refresh() {
         sortOrderButton.image = Settings.current.filesSortOrder.toolbarIcon
+        sortOrderButton.menu = makeListSettingsMenu()
         
         let includeBackup: Bool
         switch mode {
@@ -271,12 +272,35 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     }
     
     
-    #if MAIN_APP
-    @IBAction func didPressSortButton(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressListOptions(at: popoverAnchor, in: self)
-    }
+    private func makeListSettingsMenu() -> UIMenu {
+        let showBackupAction = UIAction(
+            title: LString.titleShowBackupFiles,
+            attributes: [],
+            state: Settings.current.isBackupFilesVisible ? .on : .off,
+            handler: { [weak self] action in
+                let isOn = (action.state == .on)
+                Settings.current.isBackupFilesVisible = !isOn
+                self?.refresh()
+            }
+        )
+        let backupMenu = UIMenu(
+            title: LString.titleBackupSettings,
+            options: .displayInline,
+            children: [showBackupAction]
+        )
 
+        let sortOptionsMenu = UIMenu.makeFileSortMenu(
+            current: Settings.current.filesSortOrder,
+            handler: { [weak self] newSortOrder in
+                Settings.current.filesSortOrder = newSortOrder
+                self?.refresh()
+            }
+        )
+        return UIMenu(title: LString.titleSortBy, children: [backupMenu, sortOptionsMenu])
+    }
+    
+    
+    #if MAIN_APP
     @IBAction func didPressSettingsButton(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressSettings(at: popoverAnchor, in: self)
@@ -563,4 +587,12 @@ extension DatabasePickerVC: AppLockSetupCellDelegate {
     func didPressEnableAppLock(in cell: AppLockSetupCell) {
         delegate?.didPressSetupAppLock(in: self)
     }
+}
+
+extension LString {
+    public static let titleShowBackupFiles = NSLocalizedString(
+        "Show Backup Files",
+        value: "Show Backup Files",
+        comment: "Settings switch: whether to include backup copies in the file list"
+    )
 }

@@ -109,23 +109,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         addChildCoordinator(aboutCoordinator)        
         viewController.present(modalRouter, animated: true, completion: nil)
     }
-    #endif
-    
-    private func showListOptions(
-        at popoverAnchor: PopoverAnchor,
-        in viewController: UIViewController
-    ) {
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let settingsFileSortingCoordinator = SettingsFileSortingCoordinator(router: modalRouter)
-        settingsFileSortingCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
-        settingsFileSortingCoordinator.start()
-        addChildCoordinator(settingsFileSortingCoordinator)
-        viewController.present(modalRouter, animated: true, completion: nil)
-    }
-    
-    #if MAIN_APP
+
     func showAppSettings(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
@@ -278,10 +262,6 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     #if MAIN_APP
     func didPressHelp(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         showAboutScreen(at: popoverAnchor, in: viewController)
-    }
-        
-    func didPressListOptions(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
-        showListOptions(at: popoverAnchor, in: viewController)
     }
     
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
