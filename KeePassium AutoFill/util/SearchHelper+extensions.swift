@@ -29,8 +29,7 @@ extension SearchHelper {
     func find(
         database: Database,
         serviceIdentifiers: [ASCredentialServiceIdentifier]
-        ) -> FuzzySearchResults
-    {
+    ) -> FuzzySearchResults {
         var relevantEntries = [ScoredEntry]()
         for si in serviceIdentifiers {
             switch si.type {
@@ -171,7 +170,7 @@ extension SearchHelper {
             let pathSimilarity = commonPrefixCount / maxPathCount 
             return 0.7 + 0.3 * pathSimilarity 
         } else {
-            if url1.domain2 == url2.domain2 {
+            if url1.guessServiceName() == url2.guessServiceName() {
                 return 0.5
             }
         }
@@ -181,62 +180,79 @@ extension SearchHelper {
     private func getSimilarity(url: URL, entry: Entry) -> Double {
         
         let urlScore = howSimilar(url, with: URL.guessFrom(malformedString: entry.resolvedURL))
-        let titleScore: Double
-        let notesScore: Double
         
-        if let urlHost = url.host, let urlDomain2 = url.domain2 {
+        let guessedServiceName = url.guessServiceName()
+        
+        var titleScore = 0.0
+        var notesScore = 0.0
+        
+        if let urlHost = url.host {
             if entry.resolvedTitle.localizedCaseInsensitiveContains(urlHost) {
                 titleScore = 0.8
-            } else if entry.resolvedTitle.localizedCaseInsensitiveContains(urlDomain2) {
-                titleScore = 0.5
-            } else {
-                titleScore = 0.0
             }
             if entry.resolvedNotes.localizedCaseInsensitiveContains(urlHost) {
                 notesScore = 0.5
-            } else if entry.resolvedNotes.localizedCaseInsensitiveContains(urlDomain2) {
-                notesScore = 0.3
-            } else {
-                notesScore = 0.0
             }
-        } else {
-            titleScore = 0.0
-            notesScore = 0.0
+        }
+        if let serviceName = guessedServiceName {
+            if entry.resolvedTitle.localizedCaseInsensitiveContains(serviceName) {
+                titleScore = max(titleScore, 0.5)
+            }
+            if entry.resolvedNotes.localizedCaseInsensitiveContains(serviceName) {
+                notesScore = max(notesScore, 0.3)
+            }
         }
         
-        if let entry2 = entry as? Entry2 {
-            let altURLScore = howSimilar(
-                url,
-                with: URL.guessFrom(malformedString: entry2.overrideURL))
-            let maxScoreSoFar = max(urlScore, titleScore, notesScore, altURLScore)
-            if maxScoreSoFar >= 0.5 {
-                return maxScoreSoFar
-            }
-            
-            let urlString = url.absoluteString
-            guard let urlHost = url.host,
-                let urlDomain2 = url.domain2 else { return maxScoreSoFar }
-            let extraFieldScores: [Double] = entry2.fields
-                .filter { !$0.isStandardField }
-                .map { (field) in
-                    if field.value.localizedCaseInsensitiveContains(urlString) {
-                        return 1.0
-                    } else if field.value.localizedCaseInsensitiveContains(urlHost) {
-                        return 0.5
-                    } else if field.value.localizedCaseInsensitiveContains(urlDomain2) {
-                        return 0.3
-                    } else {
-                        return 0.0
-                    }
-            }
-            return max(maxScoreSoFar, extraFieldScores.max() ?? 0.0)
-        } else {
+        guard let entry2 = entry as? Entry2 else {
             return max(urlScore, titleScore, notesScore)
         }
+        
+        let altURLScore = howSimilar(
+            url,
+            with: URL.guessFrom(malformedString: entry2.overrideURL))
+        let maxScoreSoFar = max(urlScore, titleScore, notesScore, altURLScore)
+        if maxScoreSoFar >= 0.5 {
+            return maxScoreSoFar
+        }
+        
+        let customFieldValues = entry2.fields
+            .filter { !$0.isStandardField }
+            .map { $0.resolvedValue }
+        
+        let urlString = url.absoluteString
+        for fieldValue in customFieldValues {
+            if fieldValue.localizedCaseInsensitiveContains(urlString) {
+                return 1.0
+            }
+        }
+        
+        guard let urlHost = url.host else {
+            return maxScoreSoFar
+        }
+        for fieldValue in customFieldValues {
+            if fieldValue.localizedCaseInsensitiveContains(urlHost) {
+                return 0.5
+            }
+        }
+        
+        guard let serviceName = guessedServiceName else {
+            return maxScoreSoFar
+        }
+        for fieldValue in customFieldValues {
+            if fieldValue.localizedCaseInsensitiveContains(serviceName) {
+                return 0.3
+            }
+        }
+        return maxScoreSoFar
     }
 }
 
+
 fileprivate extension URL {
+    private static let genericSLDs = Set<String>(
+        ["co", "com", "edu", "ac", "org", "net", "gov", "mil"]
+    )
+
     static func guessFrom(malformedString string: String?) -> URL? {
         guard let string = string else { return nil }
         
@@ -248,6 +264,29 @@ fileprivate extension URL {
                 return nil
         }
         return fakeSchemeURL
+    }
+    
+    func guessServiceName() -> String? {
+        guard let domains = host?.split(separator: ".") else {
+            return nil
+        }
+        let domainLevels = domains.count
+        guard domainLevels > 1 else {
+            return nil
+        }
+        let secondLevelDomain = String(domains[domainLevels - 2])
+        if !URL.genericSLDs.contains(secondLevelDomain) {
+            return secondLevelDomain
+        }
+        if domainLevels > 2 {
+            let thirdLevelDomain = String(domains[domainLevels - 3])
+            if thirdLevelDomain.count > 3 {
+                return thirdLevelDomain
+            } else {
+                return domains.suffix(3).joined(separator: ".")
+            }
+        }
+        return domains.suffix(2).joined(separator: ".")
     }
 }
 

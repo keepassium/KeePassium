@@ -8,17 +8,7 @@
 
 import Foundation
 
-public extension URL {
-    
-    var domain2: String? {
-        guard let names = host?.split(separator: ".") else { return nil }
-        let nameCount = names.count
-        if nameCount >= 2 {
-            return String(names[nameCount - 2])
-        }
-        return nil
-    }
-    
+public extension URL {    
     var isDirectory: Bool {
         let res = try? resourceValues(forKeys: [.isDirectoryKey])
         return res?.isDirectory ?? false
