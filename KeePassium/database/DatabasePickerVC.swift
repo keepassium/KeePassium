@@ -62,7 +62,11 @@ protocol DatabasePickerDelegate: AnyObject {
         shouldConfirm: Bool,
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabasePickerVC)
-    func didPressDatabaseProperties(
+    func didPressDatabaseSettings(
+        _ fileRef: URLReference,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabasePickerVC)
+    func didPressFileInfo(
         _ fileRef: URLReference,
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabasePickerVC)
@@ -388,6 +392,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     @objc func didPressCancel(_ sender: UIBarButtonItem) {
         delegate?.didPressCancel(in: self)
     }
+
+    private func didPressFileInfo(_ fileRef: URLReference, at indexPath: IndexPath) {
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressFileInfo(fileRef, at: popoverAnchor, in: self)
+    }
     
     private func didPressRevealInFinder(_ fileRef: URLReference, at indexPath: IndexPath) {
         assert(ProcessInfo.isRunningOnMac)
@@ -399,6 +408,12 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         let fileRef = databaseRefs[indexPath.row]
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressExportDatabase(fileRef, at: popoverAnchor, in: self)
+    }
+    
+    func didPressDatabaseSettings(_ fileRef: URLReference, at indexPath: IndexPath) {
+        let fileRef = databaseRefs[indexPath.row]
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressDatabaseSettings(fileRef, at: popoverAnchor, in: self)
     }
 
     func didPressEliminateDatabase(_ fileRef: URLReference, at indexPath: IndexPath) {
@@ -540,13 +555,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             assertionFailure()
             return
         }
-        
         let fileRef = databaseRefs[indexPath.row]
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        delegate?.didPressDatabaseProperties(fileRef, at: popoverAnchor, in: self)
+        didPressFileInfo(fileRef, at: indexPath)
     }
     
-       
+    
     override func getContextActionsForRow(
         at indexPath: IndexPath,
         forSwipe: Bool
@@ -557,34 +570,122 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             return []
         }
 
-        var actions = [ContextualAction]()
         let fileRef = databaseRefs[indexPath.row]
+        var actions = [ContextualAction]()
         if ProcessInfo.isRunningOnMac {
-            let revealInFinderAction = ContextualAction(
-                title: LString.actionRevealInFinder,
-                imageName: nil,
-                style: .default,
-                color: UIColor.actionTint,
-                handler: { [weak self, indexPath] in
-                    self?.didPressRevealInFinder(fileRef, at: indexPath)
-                }
-            )
-            actions.append(revealInFinderAction)
+            actions.append(makeRevealInFinderAction(for: fileRef, at: indexPath))
         } else {
-            let exportAction = ContextualAction(
-                title: LString.actionExport,
-                imageName: .squareAndArrowUp,
-                style: .default,
-                color: UIColor.actionTint,
-                handler: { [weak self, indexPath] in
-                    self?.didPressExportDatabase(fileRef, at: indexPath)
-                }
-            )
-            actions.append(exportAction)
+            actions.append(makeExportFileAction(for: fileRef, at: indexPath))
+        }
+        actions.append(makeDestructiveFileAction(for: fileRef, at: indexPath))
+        return actions
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        contextMenuConfigurationForRowAt indexPath: IndexPath,
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        let cellType = getCellID(for: indexPath)
+        let isEditableRow = cellType == .fileItem
+        guard isEditableRow else {
+            return nil
         }
         
+        var menuItems = [UIMenuElement]()
+        let fileRef = databaseRefs[indexPath.row]
+        
+        let databaseSettingsAction = makeDatabaseSettingsAction(for: fileRef, at: indexPath)
+        let databaseSettingsMenu = UIMenu(
+            title: "",
+            image: nil,
+            options: [.displayInline],
+            children: [databaseSettingsAction.toMenuAction()]
+        )
+        menuItems.append(databaseSettingsMenu)
+
+        menuItems.append(makeFileInfoAction(for: fileRef, at: indexPath).toMenuAction())
+        
+        if ProcessInfo.isRunningOnMac {
+            menuItems.append(
+                makeRevealInFinderAction(for: fileRef, at: indexPath).toMenuAction()
+            )
+        } else {
+            menuItems.append(
+                makeExportFileAction(for: fileRef, at: indexPath).toMenuAction()
+            )
+        }
+        menuItems.append(makeDestructiveFileAction(for: fileRef, at: indexPath).toMenuAction())
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            UIMenu(title: "", children: menuItems)
+        }
+    }
+    
+    private func makeDatabaseSettingsAction(
+        for fileRef: URLReference,
+        at indexPath: IndexPath
+    ) -> ContextualAction {
+        return ContextualAction(
+            title: LString.titleDatabaseSettings,
+            imageName: .gearshape2,
+            style: .default,
+            handler: { [weak self] in
+                self?.didPressDatabaseSettings(fileRef, at: indexPath)
+            }
+        )
+    }
+    
+    private func makeFileInfoAction(
+        for fileRef: URLReference,
+        at indexPath: IndexPath
+    ) -> ContextualAction {
+        return ContextualAction(
+            title: LString.menuFileInfo,
+            imageName: .infoCircle,
+            style: .default,
+            handler: { [weak self] in
+                self?.didPressFileInfo(fileRef, at: indexPath)
+            }
+        )
+    }
+    
+    private func makeRevealInFinderAction(
+        for fileRef: URLReference,
+        at indexPath: IndexPath
+    ) -> ContextualAction {
+        return ContextualAction(
+            title: LString.actionExport,
+            imageName: .squareAndArrowUp,
+            style: .default,
+            color: UIColor.actionTint,
+            handler: { [weak self] in
+                self?.didPressExportDatabase(fileRef, at: indexPath)
+            }
+        )
+    }
+    
+    private func makeExportFileAction(
+        for fileRef: URLReference,
+        at indexPath: IndexPath
+    ) -> ContextualAction {
+        return ContextualAction(
+            title: LString.actionExport,
+            imageName: .squareAndArrowUp,
+            style: .default,
+            color: UIColor.actionTint,
+            handler: { [weak self, indexPath] in
+                self?.didPressExportDatabase(fileRef, at: indexPath)
+            }
+        )
+    }
+    
+    private func makeDestructiveFileAction(
+        for fileRef: URLReference,
+        at indexPath: IndexPath
+    ) -> ContextualAction {
         let destructiveActionTitle = DestructiveFileAction.get(for: fileRef.location).title
-        let destructiveAction = ContextualAction(
+        return ContextualAction(
             title: destructiveActionTitle,
             imageName: .trash,
             style: .destructive,
@@ -593,9 +694,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 self?.didPressEliminateDatabase(fileRef, at: indexPath)
             }
         )
-        actions.append(destructiveAction)
-        
-        return actions
     }
 }
 
@@ -634,5 +732,10 @@ extension LString {
         "Show Backup Files",
         value: "Show Backup Files",
         comment: "Settings switch: whether to include backup copies in the file list"
+    )
+    public static let menuFileInfo = NSLocalizedString(
+        "[Menu/FileInfo/title]",
+        value: "File Info",
+        comment: "Menu item: show information about file (name, size, dates)"
     )
 }

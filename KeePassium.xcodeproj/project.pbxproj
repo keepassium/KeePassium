@@ -615,6 +615,18 @@
 		75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75C11F1E22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
 		75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
+		75C1AF812731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */; };
+		75C1AF822731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */; };
+		75C1AF832731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */; };
+		75C1AF842731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */; };
+		75C1AF862731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */; };
+		75C1AF872731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */; };
+		75C1AF882731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */; };
+		75C1AF892731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */; };
+		75C1AF8B2731E57B00E33AAC /* DatabaseSettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C1AF8A2731E57B00E33AAC /* DatabaseSettingsVC.storyboard */; };
+		75C1AF8C2731E57B00E33AAC /* DatabaseSettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C1AF8A2731E57B00E33AAC /* DatabaseSettingsVC.storyboard */; };
+		75C1AF8D2731E57B00E33AAC /* DatabaseSettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C1AF8A2731E57B00E33AAC /* DatabaseSettingsVC.storyboard */; };
+		75C1AF8E2731E57B00E33AAC /* DatabaseSettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C1AF8A2731E57B00E33AAC /* DatabaseSettingsVC.storyboard */; };
 		75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		75C3802D217A2650006F74C2 /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
 		75C38045217A3204006F74C2 /* PlaceholderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */; };
@@ -1688,6 +1700,9 @@
 		75BFB13E2481553D0017B980 /* DynamicFileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFileList.swift; sourceTree = "<group>"; };
 		75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileProvider+extensions.swift"; sourceTree = "<group>"; };
 		75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+biometrics.swift"; sourceTree = "<group>"; };
+		75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsCoordinator.swift; sourceTree = "<group>"; };
+		75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsVC.swift; sourceTree = "<group>"; };
+		75C1AF8A2731E57B00E33AAC /* DatabaseSettingsVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DatabaseSettingsVC.storyboard; sourceTree = "<group>"; };
 		75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
 		75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppCoverVC.storyboard; sourceTree = "<group>"; };
 		75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceholderVC.storyboard; sourceTree = "<group>"; };
@@ -2358,6 +2373,7 @@
 				75FCCF802631D1A10025E86C /* hardware-key */,
 				75BE091D25098F3500C436C2 /* icon */,
 				750E72C726A4277500CDBFFA /* expiry-date */,
+				75C1AF7F2731E43B00E33AAC /* settings */,
 				7533032523C52AB600F38CC7 /* relocation */,
 				756FF64620BAB55000FF890B /* group */,
 				756FF64520BAB52C00FF890B /* entry */,
@@ -2536,6 +2552,16 @@
 				75BE091E2509905300C436C2 /* ItemIconPickerCoordinator.swift */,
 			);
 			path = icon;
+			sourceTree = "<group>";
+		};
+		75C1AF7F2731E43B00E33AAC /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */,
+				75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */,
+				75C1AF8A2731E57B00E33AAC /* DatabaseSettingsVC.storyboard */,
+			);
+			path = settings;
 			sourceTree = "<group>";
 		};
 		75C3800F217A0497006F74C2 /* app-protection */ = {
@@ -2799,6 +2825,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				755E7D99232008300010E199 /* InfoPlist.strings in Resources */,
+				75C1AF8C2731E57B00E33AAC /* DatabaseSettingsVC.storyboard in Resources */,
 				7583EA722685D21F009969E7 /* DatabasePickerVC.storyboard in Resources */,
 				758D27212686174C006764C0 /* DatabaseUnlockerVC.storyboard in Resources */,
 				756AFD64258CF4E40072BEEF /* appstore-family-sharing.html in Resources */,
@@ -2827,6 +2854,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				758FC15324CEF72000BAD35C /* appicon-keepass_iPadApp_76.png in Resources */,
+				75C1AF8B2731E57B00E33AAC /* DatabaseSettingsVC.storyboard in Resources */,
 				7513992B25DDD46C00D22DBB /* default.css in Resources */,
 				7533030F23C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */,
 				751E0D102309AF4C0088BB10 /* EntryHistoryViewerVC.storyboard in Resources */,
@@ -2927,6 +2955,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				758FC15424CEF72000BAD35C /* appicon-keepass_iPadApp_76.png in Resources */,
+				75C1AF8D2731E57B00E33AAC /* DatabaseSettingsVC.storyboard in Resources */,
 				7513992D25DDD46C00D22DBB /* default.css in Resources */,
 				7533031023C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */,
 				75B38C51233E5B7C006BDEFC /* EntryHistoryViewerVC.storyboard in Resources */,
@@ -3027,6 +3056,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75D7DFAD233E5E310029AD87 /* InfoPlist.strings in Resources */,
+				75C1AF8E2731E57B00E33AAC /* DatabaseSettingsVC.storyboard in Resources */,
 				7583EA752685D220009969E7 /* DatabasePickerVC.storyboard in Resources */,
 				758D27222686174C006764C0 /* DatabaseUnlockerVC.storyboard in Resources */,
 				756AFD66258CF4E40072BEEF /* appstore-family-sharing.html in Resources */,
@@ -3130,11 +3160,13 @@
 				757FB3CD21F9C50700F016FA /* ValidatingTextField.swift in Sources */,
 				75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */,
+				75C1AF872731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				750CFBD921BAD7FF00E62B09 /* Refreshable.swift in Sources */,
 				757FB3D021F9C52600F016FA /* UITableViewCell+extension.swift in Sources */,
 				75B7870F261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				7583EA882685D371009969E7 /* Coordinator+premium.swift in Sources */,
 				758CA5452569B9EA0034EF10 /* SwitchCell.swift in Sources */,
+				75C1AF822731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */,
 				75CFBE2A21C2BDDF0029A80A /* DatabaseUnlockerVC.swift in Sources */,
 				7575B24922D8476300B84B3F /* SearchHelper+extensions.swift in Sources */,
 				750CFBDC21BAD7FF00E62B09 /* UIColor+namedColors.swift in Sources */,
@@ -3235,6 +3267,7 @@
 				75B786FD261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				758BADB224B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
 				7572665024CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
+				75C1AF862731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				7550D22B215CC99100360E0C /* DatabaseKeyChangerVC.swift in Sources */,
 				7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */,
 				758FC18D24CF254000BAD35C /* AppIcon.swift in Sources */,
@@ -3257,6 +3290,7 @@
 				75C94C6120B4BAC4004FA29D /* EntryHistoryViewerVC.swift in Sources */,
 				75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75802634222ED11D00F4525F /* ProgressVC.swift in Sources */,
+				75C1AF812731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */,
 				75EC7BFD262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				75839A90246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
 				7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */,
@@ -3406,6 +3440,7 @@
 				75B786FF261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				758BADB324B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
 				7572665224CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
+				75C1AF882731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				75B38C07233E5B7C006BDEFC /* DatabaseKeyChangerVC.swift in Sources */,
 				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
 				758FC18E24CF254000BAD35C /* AppIcon.swift in Sources */,
@@ -3428,6 +3463,7 @@
 				75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */,
 				75839A91246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
+				75C1AF832731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */,
 				75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
 				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
@@ -3569,11 +3605,13 @@
 				75D7DF8B233E5E310029AD87 /* ValidatingTextField.swift in Sources */,
 				75D7DF8C233E5E310029AD87 /* FileInfoReloader.swift in Sources */,
 				75D7DF8D233E5E310029AD87 /* MultilineButton.swift in Sources */,
+				75C1AF892731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				75D7DF8E233E5E310029AD87 /* Refreshable.swift in Sources */,
 				75D7DF8F233E5E310029AD87 /* UITableViewCell+extension.swift in Sources */,
 				75B78711261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				7583EA8B2685D372009969E7 /* Coordinator+premium.swift in Sources */,
 				758CA5472569B9EA0034EF10 /* SwitchCell.swift in Sources */,
+				75C1AF842731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */,
 				75D7DF90233E5E310029AD87 /* DatabaseUnlockerVC.swift in Sources */,
 				75D7DF91233E5E310029AD87 /* SearchHelper+extensions.swift in Sources */,
 				75D7DF92233E5E310029AD87 /* UIColor+namedColors.swift in Sources */,

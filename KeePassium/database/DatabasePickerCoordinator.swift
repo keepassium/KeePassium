@@ -206,18 +206,38 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     #endif
 
-    private func showDatabaseInfo(
+    private func showFileInfo(
         _ fileRef: URLReference,
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabasePickerVC
     ) {
-        let databaseInfoVC = FileInfoVC.make(urlRef: fileRef, fileType: .database, at: popoverAnchor)
-        databaseInfoVC.canExport = true
-        databaseInfoVC.didDeleteCallback = { [weak self, weak databaseInfoVC] in
+        let fileInfoVC = FileInfoVC.make(urlRef: fileRef, fileType: .database, at: popoverAnchor)
+        fileInfoVC.canExport = true
+        fileInfoVC.didDeleteCallback = { [weak self, weak fileInfoVC] in
             self?.refresh()
-            databaseInfoVC?.dismiss(animated: true, completion: nil)
+            fileInfoVC?.dismiss(animated: true, completion: nil)
         }
-        viewController.present(databaseInfoVC, animated: true, completion: nil)
+        viewController.present(fileInfoVC, animated: true, completion: nil)
+    }
+    
+    private func showDatabaseSettings(
+        _ fileRef: URLReference,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabasePickerVC
+    ) {
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let databaseSettingsCoordinator = DatabaseSettingsCoordinator(
+            fileRef: fileRef,
+            router: modalRouter
+        )
+        databaseSettingsCoordinator.delegate = self
+        databaseSettingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        databaseSettingsCoordinator.start()
+        
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(databaseSettingsCoordinator)
     }
 }
 
@@ -340,12 +360,20 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         )
     }
     
-    func didPressDatabaseProperties(
+    func didPressFileInfo(
         _ fileRef: URLReference,
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabasePickerVC
     ) {
-        showDatabaseInfo(fileRef, at: popoverAnchor, in: viewController)
+        showFileInfo(fileRef, at: popoverAnchor, in: viewController)
+    }
+    
+    func didPressDatabaseSettings(
+        _ fileRef: URLReference,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabasePickerVC
+    ) {
+        showDatabaseSettings(fileRef, at: popoverAnchor, in: viewController)
     }
 
     func shouldKeepSelection(in viewController: DatabasePickerVC) -> Bool {
@@ -442,6 +470,12 @@ extension DatabasePickerCoordinator: DatabaseCreatorCoordinatorDelegate {
     }
 }
 #endif
+
+extension DatabasePickerCoordinator: DatabaseSettingsCoordinatorDelegate {
+    func didChangeDatabaseSettings(in coordinator: DatabaseSettingsCoordinator) {
+        refresh()
+    }
+}
 
 extension DatabasePickerCoordinator: FileKeeperObserver {
     func fileKeeper(didAddFile urlRef: URLReference, fileType: FileType) {

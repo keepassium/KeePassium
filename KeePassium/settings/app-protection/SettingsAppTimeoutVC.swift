@@ -87,7 +87,7 @@ class SettingsAppTimeoutVC: UITableViewController, Refreshable {
             value: "Lock on App Launch",
             comment: "Setting switch: whether to lock the app after it was terminated and relaunched.")
         cell.theSwitch.isOn = Settings.current.isLockAppOnLaunch
-        cell.didToggleSwitch = { (theSwitch) in
+        cell.toggleHandler = { (theSwitch) in
             Settings.current.isLockAppOnLaunch = theSwitch.isOn
         }
     }

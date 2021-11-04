@@ -72,6 +72,8 @@ enum SystemImageName: String {
     case ellipsisCircle = "ellipsis.circle"
     case exclamationMarkTriangle = "exclamationmark.triangle"
     case folder = "folder"
+    case gearshape2 = "gearshape.2"
+    case infoCircle = "info.circle"
     case paperclip = "paperclip"
     case pencil = "pencil"
     case photo = "photo"
