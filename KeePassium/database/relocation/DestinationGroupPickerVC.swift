@@ -116,11 +116,16 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
     
     private var rootNode: Node?
     private var flatNodes = [Node]()
+    private var canSwitchDatabase = true
+
     
-    
-    public static func create(mode: ItemRelocationMode) -> DestinationGroupPickerVC {
+    public static func create(
+        mode: ItemRelocationMode,
+        canSwitchDatabase: Bool = true
+    ) -> DestinationGroupPickerVC {
         let vc = DestinationGroupPickerVC.instantiateFromStoryboard()
         vc.mode = mode
+        vc.canSwitchDatabase = canSwitchDatabase
         return vc
     }
     
@@ -139,6 +144,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             target: self,
             action: #selector(didPressSwitchDatabase(_:))
         )
+        switchDatabaseButton.isEnabled = canSwitchDatabase
         
         setToolbarItems(
             [

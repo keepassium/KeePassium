@@ -414,7 +414,10 @@ extension ItemRelocationCoordinator {
         targetDatabaseFile = databaseFile
         targetDatabase = databaseFile.database
         assert(externalGroupPicker == nil)
-        let externalGroupPicker = DestinationGroupPickerVC.create(mode: mode)
+        let externalGroupPicker = DestinationGroupPickerVC.create(
+            mode: mode,
+            canSwitchDatabase: false
+        )
         externalGroupPicker.delegate = self
         externalGroupPicker.rootGroup = databaseFile.database.root
         externalGroupPicker.expandGroup(databaseFile.database.root)
