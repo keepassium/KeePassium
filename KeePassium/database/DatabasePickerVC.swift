@@ -78,6 +78,10 @@ protocol DatabasePickerDelegate: AnyObject {
         in viewController: DatabasePickerVC)
         -> URLReference?
     
+    func shouldAcceptDatabaseSelection(
+        _ fileRef: URLReference,
+        in viewController: DatabasePickerVC) -> Bool
+    
     func didSelectDatabase(_ fileRef: URLReference, in viewController: DatabasePickerVC)
 }
 
@@ -229,8 +233,12 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         sortFileList()
         
         if let defaultDatabase = delegate?.getDefaultDatabase(from: databaseRefs, in: self) {
-            selectDatabase(defaultDatabase, animated: false)
-            delegate?.didSelectDatabase(defaultDatabase, in: self)
+            if delegate?.shouldAcceptDatabaseSelection(defaultDatabase, in: self) ?? true {
+                selectDatabase(defaultDatabase, animated: false)
+                delegate?.didSelectDatabase(defaultDatabase, in: self)
+            } else {
+                Diag.debug("Default database could not be selected, skipping")
+            }
         }
 
         fileInfoReloader.getInfo(
@@ -282,6 +290,13 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 self?.tableView.selectRow(at: nil, animated: animated, scrollPosition: .none)
             }
         }
+    }
+    
+    private func showSelectionDeniedAnimation(at indexPath: IndexPath) {
+        guard let cellView = tableView.cellForRow(at: indexPath)?.contentView else {
+            return
+        }
+        cellView.shake()
     }
     
     
@@ -539,8 +554,12 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             break
         case .fileItem:
             let selectedDatabaseRef = databaseRefs[indexPath.row]
-            selectedRef = selectedDatabaseRef
-            delegate?.didSelectDatabase(selectedDatabaseRef, in: self)
+            if delegate?.shouldAcceptDatabaseSelection(selectedDatabaseRef, in: self) ?? true {
+                selectedRef = selectedDatabaseRef
+                delegate?.didSelectDatabase(selectedDatabaseRef, in: self)
+            } else {
+                showSelectionDeniedAnimation(at: indexPath)
+            }
         case .appLockSetup:
             break
         }

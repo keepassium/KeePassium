@@ -73,4 +73,8 @@ extension UIViewController {
             imageSize: toastIconSize
         )
     }
+    
+    func hideAllToasts() {
+        getHostViewForToastNotifications().hideAllToasts()
+    }
 }

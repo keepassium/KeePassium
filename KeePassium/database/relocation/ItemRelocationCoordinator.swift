@@ -453,9 +453,22 @@ extension ItemRelocationCoordinator {
     }
 }
 
-extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {
+extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {    
+    func shouldAcceptDatabaseSelection(
+        _ fileRef: URLReference,
+        in coordinator: DatabasePickerCoordinator
+    ) -> Bool {
+        let isReadOnly = DatabaseSettingsManager.shared.isReadOnly(fileRef)
+        if isReadOnly {
+            router.navigationController.showNotification(LString.databaseIsReadOnly)
+        }
+        return !isReadOnly
+    }
+    
     func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator) {
         guard let fileRef = fileRef else { return }
+        assert(!DatabaseSettingsManager.shared.isReadOnly(fileRef), "Cannot relocate to read-only DB")
+        router.navigationController.hideAllToasts()
         unlockDatabase(fileRef)
     }
     

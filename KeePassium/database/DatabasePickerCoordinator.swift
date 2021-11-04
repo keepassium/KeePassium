@@ -9,6 +9,10 @@
 import KeePassiumLib
 
 protocol DatabasePickerCoordinatorDelegate: AnyObject {
+    func shouldAcceptDatabaseSelection(
+        _ fileRef: URLReference,
+        in coordinator: DatabasePickerCoordinator) -> Bool
+
     func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator)
     
     func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool
@@ -378,6 +382,13 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
 
     func shouldKeepSelection(in viewController: DatabasePickerVC) -> Bool {
         return delegate?.shouldKeepSelection(in: self) ?? true
+    }
+    
+    func shouldAcceptDatabaseSelection(
+        _ fileRef: URLReference,
+        in viewController: DatabasePickerVC
+    ) -> Bool {
+        return delegate?.shouldAcceptDatabaseSelection(fileRef, in: self) ?? true
     }
     
     func didSelectDatabase(_ fileRef: URLReference, in viewController: DatabasePickerVC) {

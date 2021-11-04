@@ -358,6 +358,13 @@ extension AutoFillCoordinator: FirstSetupDelegate {
 }
 
 extension AutoFillCoordinator: DatabasePickerCoordinatorDelegate {
+    func shouldAcceptDatabaseSelection(
+        _ fileRef: URLReference,
+        in coordinator: DatabasePickerCoordinator
+    ) -> Bool {
+        return true
+    }
+    
     func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator) {
         guard let fileRef = fileRef else {
             return

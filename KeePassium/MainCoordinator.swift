@@ -657,6 +657,13 @@ extension MainCoordinator: FileKeeperDelegate {
 }
 
 extension MainCoordinator: DatabasePickerCoordinatorDelegate {
+    func shouldAcceptDatabaseSelection(
+        _ fileRef: URLReference,
+        in coordinator: DatabasePickerCoordinator
+    ) -> Bool {
+        return true
+    }
+    
     func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator) {
         setDatabase(fileRef)
     }
