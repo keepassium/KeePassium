@@ -264,7 +264,7 @@ public class URLReference:
             return
         }
 
-        let tmpDoc = BaseDocument(fileURL: url, fileProvider: nil)
+        let tmpDoc = BaseDocument(fileURL: url, fileProvider: nil, readOnly: true)
         tmpDoc.open(withTimeout: URLReference.defaultTimeout) { (result) in
             defer {
                 tmpDoc.close(completionQueue: nil, completion: nil)
@@ -415,7 +415,7 @@ public class URLReference:
 
         let isAccessed = url.startAccessingSecurityScopedResource()
         
-        let tmpDoc = BaseDocument(fileURL: url, fileProvider: fileProvider)
+        let tmpDoc = BaseDocument(fileURL: url, fileProvider: fileProvider, readOnly: true)
         tmpDoc.open(withTimeout: timeout) { [self] (result) in
             defer {
                 if isAccessed {

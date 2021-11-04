@@ -9,14 +9,7 @@
 import Foundation
 
 public class DatabaseSettings: Eraseable, Codable {
-
-    public enum AccessMode: Int, Codable {
-        static let `default`: AccessMode = .readWrite 
-        
-        case readWrite = 0
-    }
-
-    public var accessMode: AccessMode
+    public var isReadOnlyFile: Bool
     
     public var isRememberMasterKey: Bool?
     public var isRememberFinalKey: Bool?
@@ -30,7 +23,7 @@ public class DatabaseSettings: Eraseable, Codable {
     public private(set) var associatedYubiKey: YubiKey?
 
     private enum CodingKeys: String, CodingKey {
-        case accessMode
+        case isReadOnlyFile
         case isRememberMasterKey
         case isRememberFinalKey
         case masterKey
@@ -41,7 +34,7 @@ public class DatabaseSettings: Eraseable, Codable {
     }
     
     init() {
-        accessMode = AccessMode.default
+        isReadOnlyFile = false
     }
     
     deinit {
@@ -49,7 +42,7 @@ public class DatabaseSettings: Eraseable, Codable {
     }
     
     public func erase() {
-        self.accessMode = AccessMode.default
+        self.isReadOnlyFile = false
         
         isRememberMasterKey = nil
         isRememberFinalKey = nil

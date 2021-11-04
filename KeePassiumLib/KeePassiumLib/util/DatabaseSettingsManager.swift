@@ -125,6 +125,16 @@ public class DatabaseSettingsManager {
         }
     }
     
+    public func isReadOnly(_ databaseRef: URLReference) -> Bool {
+        guard databaseRef.location != .internalBackup else {
+            return true
+        }
+        guard let dbSettings = getSettings(for: databaseRef) else {
+            return false
+        }
+        return dbSettings.isReadOnlyFile
+    }
+    
     
     private func getSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings? {
         guard let descriptor = descriptor else {

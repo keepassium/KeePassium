@@ -13,6 +13,7 @@ public class BaseDocument: UIDocument, Synchronizable {
     
     public typealias OpenCallback = (Result<ByteArray, FileAccessError>) -> Void
     
+    public private(set) var isReadOnly: Bool = false
     public internal(set) var data = ByteArray()
     public internal(set) var error: FileAccessError?
     public var errorMessage: String? { error?.localizedDescription }
@@ -27,8 +28,9 @@ public class BaseDocument: UIDocument, Synchronizable {
         return queue
     }()
     
-    public convenience init(fileURL url: URL, fileProvider: FileProvider?) {
+    public convenience init(fileURL url: URL, fileProvider: FileProvider?, readOnly: Bool) {
         self.init(fileURL: url)
+        self.isReadOnly = readOnly
         self.fileProvider = fileProvider
     }
     private override init(fileURL url: URL) {
@@ -37,6 +39,15 @@ public class BaseDocument: UIDocument, Synchronizable {
     
     public func open(_ completion: @escaping OpenCallback) {
         self.open(withTimeout: BaseDocument.timeout, completion: completion)
+    }
+    
+    public override var hasUnsavedChanges: Bool {
+        if isReadOnly {
+            assert(!super.hasUnsavedChanges, "Read-only document has been changed, something is wrong")
+            return false
+        } else {
+            return super.hasUnsavedChanges
+        }
     }
     
     public func open(
@@ -186,7 +197,11 @@ extension BaseDocument {
         fileRef.resolveAsync(timeout: timeout) { result in
             switch result {
             case .success(let fileURL):
-                let baseDocument = BaseDocument(fileURL: fileURL, fileProvider: fileRef.fileProvider)
+                let baseDocument = BaseDocument(
+                    fileURL: fileURL,
+                    fileProvider: fileRef.fileProvider,
+                    readOnly: true
+                )
                 baseDocument.open(withTimeout: timeout, completionQueue: completionQueue) {
                     (result) in
                     assert(completionQueue.isCurrent)
@@ -210,7 +225,7 @@ extension BaseDocument {
         completion: @escaping OpenCallback
     ) {
         let completionQueue = completionQueue ?? BaseDocument.backgroundQueue
-        let baseDocument = BaseDocument(fileURL: url, fileProvider: nil)
+        let baseDocument = BaseDocument(fileURL: url, fileProvider: nil, readOnly: true)
         baseDocument.open(withTimeout: timeout, queue: queue, completionQueue: completionQueue){
             (result) in
             assert(completionQueue.isCurrent)

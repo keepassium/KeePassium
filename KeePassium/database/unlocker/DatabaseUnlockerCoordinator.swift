@@ -268,9 +268,11 @@ extension DatabaseUnlockerCoordinator {
                 challengeHandler: challengeHandler
             )
         }
+        let isReadOnly = DatabaseSettingsManager.shared.isReadOnly(databaseRef)
         databaseLoader = DatabaseLoader(
             dbRef: databaseRef,
             compositeKey: compositeKey,
+            readOnly: isReadOnly,
             delegate: self
         )
         databaseLoader!.load()

@@ -150,7 +150,11 @@ public class DatabaseSaver: ProgressObserver {
             progress.completedUnitCount = ProgressSteps.didEncryptDatabase
             
             Diag.info("Writing database document")
-            let document = BaseDocument(fileURL: databaseFile.fileURL, fileProvider: databaseFile.fileProvider)
+            let document = BaseDocument(
+                fileURL: databaseFile.fileURL,
+                fileProvider: databaseFile.fileProvider,
+                readOnly: false
+            )
             document.open(queue: operationQueue, completionQueue: operationQueue) {
                 [self] (result) in 
                 switch result {

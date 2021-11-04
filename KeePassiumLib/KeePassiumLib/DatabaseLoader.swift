@@ -51,6 +51,7 @@ public class DatabaseLoader: ProgressObserver {
     
     private let dbRef: URLReference
     private let compositeKey: CompositeKey
+    private let isReadOnly: Bool
 
     private let warnings: DatabaseLoadingWarnings
     
@@ -67,12 +68,14 @@ public class DatabaseLoader: ProgressObserver {
     public init(
         dbRef: URLReference,
         compositeKey: CompositeKey,
+        readOnly: Bool,
         delegate: DatabaseLoaderDelegate,
         delegateQueue: DispatchQueue = .main
     ) {
         assert(compositeKey.state != .empty)
         self.dbRef = dbRef
         self.compositeKey = compositeKey.clone()
+        self.isReadOnly = readOnly
         self.delegate = delegate
         self.delegateQueue = delegateQueue
         self.warnings = DatabaseLoadingWarnings()
