@@ -341,19 +341,9 @@ public class DatabaseLoader: ProgressObserver {
                 warnings: warnings)
             Diag.info("Database loaded OK")
             
-            let shouldUpdateBackup = Settings.current.isBackupDatabaseOnLoad
-                && DatabaseManager.shouldBackupFiles(from: dbRef.location)
-            if shouldUpdateBackup {
-                Diag.debug("Updating latest backup")
-                progress.completedUnitCount = ProgressSteps.willMakeBackup
-                progress.status = LString.Progress.makingDatabaseBackup
-                FileKeeper.shared.makeBackup(
-                    nameTemplate: dbFile.visibleFileName,
-                    mode: .latest,
-                    contents: dbFile.data)
-            }
-            
             addFileLocationWarnings(to: warnings)
+
+            performAfterLoadTasks(dbFile)
 
             progress.completedUnitCount = ProgressSteps.all
             progress.localizedDescription = LString.Progress.done
@@ -420,6 +410,35 @@ public class DatabaseLoader: ProgressObserver {
                 )
             }
             endBackgroundTask()
+        }
+    }
+    
+    private func performAfterLoadTasks(_ dbFile: DatabaseFile) {
+        maybeUpdateLatestBackup(dbFile)
+        
+        let dbSettingsManager = DatabaseSettingsManager.shared
+        if dbSettingsManager.isQuickTypeEnabled(dbFile) {
+            let quickTypeDatabaseCount = dbSettingsManager.getQuickTypeDatabaseCount()
+            let isReplaceExisting = quickTypeDatabaseCount == 1
+            Diag.debug("Updating QuickType AutoFill records [replacing: \(isReplaceExisting)]")
+            QuickTypeAutoFillStorage.saveIdentities(
+                from: dbFile,
+                replaceExisting: isReplaceExisting
+            )
+        }
+    }
+    
+    private func maybeUpdateLatestBackup(_ dbFile: DatabaseFile) {
+        let shouldUpdateBackup = Settings.current.isBackupDatabaseOnLoad
+            && DatabaseManager.shouldBackupFiles(from: dbRef.location)
+        if shouldUpdateBackup {
+            Diag.debug("Updating latest backup")
+            progress.completedUnitCount = ProgressSteps.willMakeBackup
+            progress.status = LString.Progress.makingDatabaseBackup
+            FileKeeper.shared.makeBackup(
+                nameTemplate: dbFile.visibleFileName,
+                mode: .latest,
+                contents: dbFile.data)
         }
     }
 }

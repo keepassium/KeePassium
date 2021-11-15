@@ -136,7 +136,6 @@ extension EntryFinderCoordinator {
         var searchResults = FuzzySearchResults(exactMatch: [], partialMatch: [])
         searchResults.exactMatch = searchHelper
             .find(database: database, searchText: searchText)
-            .excludingNonAutoFillableEntries()
         searchResults.partialMatch = []
         entryFinderVC.setSearchResults(searchResults)
     }

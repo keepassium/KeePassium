@@ -73,6 +73,10 @@ internal struct Xml2 {
         }
     } 
     
+    public enum ThirdParty {
+        static let browserHideEntry = "BrowserHideEntry"
+    }
+    
     static let meta = "Meta"
     static let root = "Root"
     static let group = "Group"

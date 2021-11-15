@@ -196,7 +196,7 @@ public class DatabaseSaver: ProgressObserver {
                     document.data = targetData
                     self.overwriteRemote(document: document)
                 } else {
-                    updateLatestBackup(with: targetData)
+                    performPostSaveTasks(savedData: targetData)
                     finalize(withError: nil)
                 }
             }
@@ -215,13 +215,28 @@ public class DatabaseSaver: ProgressObserver {
                 self.progress.completedUnitCount = ProgressSteps.didWriteDatabase
                 self.databaseFile.setData(self.databaseFile.data, updateHash: true)
                 Diag.info("Database saved OK")
-                self.updateLatestBackup(with: document.data)
+                self.performPostSaveTasks(savedData: document.data)
                 notifyDidSaveDatabase()
                 finalize(withError: nil)
             case .failure(let fileAccessError):
                 Diag.error("Database saving error. [message: \(fileAccessError.localizedDescription)]")
                 finalize(withError: fileAccessError)
             }
+        }
+    }
+    
+    private func performPostSaveTasks(savedData: ByteArray) {
+        updateLatestBackup(with: savedData)
+        
+        let dbSettingsManager = DatabaseSettingsManager.shared
+        if dbSettingsManager.isQuickTypeEnabled(databaseFile) {
+            let quickTypeDatabaseCount = dbSettingsManager.getQuickTypeDatabaseCount()
+            let isReplaceExisting = quickTypeDatabaseCount == 1
+            Diag.debug("Updating QuickType AutoFill records [replacing: \(isReplaceExisting)]")
+            QuickTypeAutoFillStorage.saveIdentities(
+                from: databaseFile,
+                replaceExisting: isReplaceExisting
+            )
         }
     }
     

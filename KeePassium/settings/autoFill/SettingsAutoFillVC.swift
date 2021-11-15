@@ -9,11 +9,13 @@
 import UIKit
 import KeePassiumLib
 
-class SettingsAutoFillVC: UITableViewController {
+final class SettingsAutoFillVC: UITableViewController {
 
-    @IBOutlet weak var copyTOTPSwitch: UISwitch!
-    @IBOutlet weak var perfectMatchSwitch: UISwitch!
-    @IBOutlet weak var appIconImage: UIImageView!
+    @IBOutlet private weak var quickTypeLabel: UILabel!
+    @IBOutlet private weak var quickTypeSwitch: UISwitch!
+    @IBOutlet private weak var copyTOTPSwitch: UISwitch!
+    @IBOutlet private weak var perfectMatchSwitch: UISwitch!
+    @IBOutlet private weak var appIconImage: UIImageView!
     
     private var settingsNotifications: SettingsNotifications!
 
@@ -36,11 +38,21 @@ class SettingsAutoFillVC: UITableViewController {
     
     func refresh() {
         let settings = Settings.current
+        quickTypeSwitch.isOn = settings.isQuickTypeEnabled
         copyTOTPSwitch.isOn = settings.isCopyTOTPOnAutoFill
         perfectMatchSwitch.isOn = settings.autoFillPerfectMatch
         appIconImage.image = AppIcon.current
     }
     
+    
+    @IBAction func didToggleQuickType(_ sender: UISwitch) {
+        Settings.current.isQuickTypeEnabled = quickTypeSwitch.isOn
+        if !quickTypeSwitch.isOn {
+            quickTypeLabel.flashColor(to: .destructiveTint, duration: 0.7)
+            QuickTypeAutoFillStorage.removeAll()
+        }
+        refresh()
+    }
     
     @IBAction func didToggleCopyTOTP(_ sender: UISwitch) {
         Settings.current.isCopyTOTPOnAutoFill = copyTOTPSwitch.isOn

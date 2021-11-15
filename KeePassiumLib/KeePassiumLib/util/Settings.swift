@@ -97,6 +97,7 @@ public class Settings {
         case copyTOTPOnAutoFill
         case autoFillPerfectMatch
         case acceptAutoFillInput
+        case quickTypeEnabled
         
         case hapticFeedbackEnabled
         
@@ -1373,6 +1374,21 @@ public class Settings {
                 oldValue: acceptAutoFillInput,
                 newValue: newValue,
                 key: .acceptAutoFillInput)
+        }
+    }
+    
+    public var isQuickTypeEnabled: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.quickTypeEnabled.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isQuickTypeEnabled,
+                newValue: newValue,
+                key: .quickTypeEnabled)
         }
     }
     

@@ -257,6 +257,19 @@ public class Entry2: Entry {
     public var qualityCheck: Bool 
     public var customData: CustomData2 
     
+    public override var isHiddenFromSearch: Bool {
+        get {
+            guard let property = customData[Xml2.ThirdParty.browserHideEntry] else {
+                return false
+            }
+            return Bool(string: property.value)
+        }
+        set {
+            let dataItem = CustomData2.Item(value: String(describing: newValue), lastModificationTime: .now)
+            customData[Xml2.ThirdParty.browserHideEntry] = dataItem
+        }
+    }
+    
     override init(database: Database?) {
         _canExpire = false
         customIconUUID = UUID.ZERO

@@ -209,6 +209,11 @@ public class Entry: DatabaseItem, Eraseable {
     public var isExpired: Bool { return canExpire && (Date() > expiryTime) }
     public var isDeleted: Bool
     
+    public var isHiddenFromSearch: Bool {
+        get { return false }
+        set { fatalError("This property can be modified only in some DB formats") }
+    }
+    
     public var attachments: Array<Attachment>
     
     public var description: String { return "Entry[\(rawTitle)]" }

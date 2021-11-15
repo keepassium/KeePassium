@@ -46,12 +46,11 @@ public class DatabaseSettingsManager {
         updateSettings(for: databaseRef.getDescriptor(), updater: updater)
     }
 
-    public func removeSettings(for databaseFile: DatabaseFile, onlyIfUnused: Bool) {
-        removeSettings(for: databaseFile.descriptor, onlyIfUnused: onlyIfUnused)
-    }
-
     public func removeSettings(for databaseRef: URLReference, onlyIfUnused: Bool) {
         removeSettings(for: databaseRef.getDescriptor(), onlyIfUnused: onlyIfUnused)
+        if isQuickTypeEnabled(databaseRef) {
+            QuickTypeAutoFillStorage.removeAll()
+        }
     }
 
     public func forgetAllKeyFiles() {
@@ -125,6 +124,7 @@ public class DatabaseSettingsManager {
         }
     }
     
+    
     public func isReadOnly(_ databaseRef: URLReference) -> Bool {
         guard databaseRef.location != .internalBackup else {
             return true
@@ -133,6 +133,25 @@ public class DatabaseSettingsManager {
             return false
         }
         return dbSettings.isReadOnlyFile
+    }
+
+    public func isQuickTypeEnabled(_ databaseFile: DatabaseFile) -> Bool {
+        let appDefault = Settings.current.isQuickTypeEnabled
+        return getSettings(for: databaseFile)?.isQuickTypeEnabled ?? appDefault
+    }
+    
+    public func isQuickTypeEnabled(_ databaseRef: URLReference) -> Bool {
+        let appDefault = Settings.current.isQuickTypeEnabled
+        return getSettings(for: databaseRef)?.isQuickTypeEnabled ?? appDefault
+    }
+    
+    public func getQuickTypeDatabaseCount() -> Int {
+        let allDatabaseRefs = FileKeeper.shared.getAllReferences(
+            fileType: .database,
+            includeBackup: false
+        )
+        let quickTypeDatabases = allDatabaseRefs.filter { isQuickTypeEnabled($0) }
+        return quickTypeDatabases.count
     }
     
     

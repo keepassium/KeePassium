@@ -21,6 +21,8 @@ public class DatabaseSettings: Eraseable, Codable {
     
     public var isRememberHardwareKey: Bool?
     public private(set) var associatedYubiKey: YubiKey?
+    
+    public var isQuickTypeEnabled: Bool?
 
     private enum CodingKeys: String, CodingKey {
         case isReadOnlyFile
@@ -31,6 +33,7 @@ public class DatabaseSettings: Eraseable, Codable {
         case associatedKeyFile
         case isRememberHardwareKey
         case associatedYubiKey
+        case isQuickTypeEnabled
     }
     
     init() {
@@ -50,6 +53,11 @@ public class DatabaseSettings: Eraseable, Codable {
         
         isRememberKeyFile = nil
         associatedKeyFile = nil
+        
+        isRememberHardwareKey = nil
+        associatedYubiKey = nil
+        
+        isQuickTypeEnabled = nil
     }
     
     internal func serialize() -> Data {

@@ -35,6 +35,8 @@
 		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
 		75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677A229045A60097C693 /* PremiumFeature.swift */; };
 		75AA237826CA6DA700488C4E /* KeyHelper+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237726CA6DA700488C4E /* KeyHelper+loading.swift */; };
+		75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA9B50272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift */; };
+		75AA9B53272FFAA600863B98 /* QuickTypeAutoFillStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA9B52272FFAA600863B98 /* QuickTypeAutoFillStorage.swift */; };
 		75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */; };
 		75B5F7F5251B7BE100E444F0 /* DatabaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F4251B7BE100E444F0 /* DatabaseLoader.swift */; };
 		75B5F7F8251B7CC700E444F0 /* ProgressObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */; };
@@ -211,6 +213,8 @@
 		75A2676F228DAC430097C693 /* PremiumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManager.swift; sourceTree = "<group>"; };
 		75A2677A229045A60097C693 /* PremiumFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeature.swift; sourceTree = "<group>"; };
 		75AA237726CA6DA700488C4E /* KeyHelper+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyHelper+loading.swift"; sourceTree = "<group>"; };
+		75AA9B50272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTypeAutoFillRecord.swift; sourceTree = "<group>"; };
+		75AA9B52272FFAA600863B98 /* QuickTypeAutoFillStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTypeAutoFillStorage.swift; sourceTree = "<group>"; };
 		75AC35BB23549D6C00B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75AC53482326FCC6000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75AC534A2326FCDB000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -406,6 +410,15 @@
 			path = premium;
 			sourceTree = "<group>";
 		};
+		75AA9B4F272FF3E500863B98 /* autofill */ = {
+			isa = PBXGroup;
+			children = (
+				75AA9B50272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift */,
+				75AA9B52272FFAA600863B98 /* QuickTypeAutoFillStorage.swift */,
+			);
+			name = autofill;
+			sourceTree = "<group>";
+		};
 		75B813CD25FA6E8C00A86B7C /* db-settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +592,7 @@
 		75D09BFC2174F77000F7DEF2 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				75AA9B4F272FF3E500863B98 /* autofill */,
 				75B813CD25FA6E8C00A86B7C /* db-settings */,
 				75707EC326CE7B0100BE5EBC /* dispatch */,
 				75B813D025FA6EE600A86B7C /* progress */,
@@ -891,6 +905,7 @@
 				75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */,
 				75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */,
 				75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */,
+				75AA9B53272FFAA600863B98 /* QuickTypeAutoFillStorage.swift in Sources */,
 				75D09C1F2174F77000F7DEF2 /* Attachment.swift in Sources */,
 				75D09C362174F77000F7DEF2 /* FixedWidthInteger+extension.swift in Sources */,
 				75D09C382174F77000F7DEF2 /* StreamCipher.swift in Sources */,
@@ -962,6 +977,7 @@
 				75B5F7F8251B7CC700E444F0 /* ProgressObserver.swift in Sources */,
 				75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */,
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
+				75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */,
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
 				75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */,
 				751F90A9247748A300A7418F /* Result.swift in Sources */,

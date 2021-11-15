@@ -97,3 +97,25 @@ public extension URL {
         }
     }
 }
+
+public extension URL {
+    static func from(malformedString: String, defaultScheme: String = "https") -> URL? {
+        guard var urlComponents = URLComponents(string: malformedString),
+              let urlHost = urlComponents.host,
+              urlHost.isNotEmpty
+        else {
+            return nil
+        }
+        
+        if let urlScheme = urlComponents.scheme {
+            if urlScheme == "otpauth" || urlScheme == "mailto" {
+                return nil
+            }
+            return urlComponents.url
+        } else {
+            urlComponents.scheme = defaultScheme
+            return urlComponents.url
+        }
+    }
+}
+

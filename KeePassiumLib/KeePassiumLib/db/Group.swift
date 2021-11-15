@@ -189,6 +189,15 @@ public class Group: DatabaseItem, Eraseable {
         }
         return nil
     }
+    
+    public func findEntry(byUUID uuid: UUID) -> Entry? {
+        for group in groups {
+            if let result = group.findEntry(byUUID: uuid) {
+                return result
+            }
+        }
+        return entries.first(where: { $0.uuid == uuid })
+    }
 
     public func createEntry(detached: Bool = false) -> Entry {
         fatalError("Pure virtual method")

@@ -16,21 +16,31 @@ class AutoFillCoordinator: NSObject, Coordinator {
     var dismissHandler: CoordinatorDismissHandler? 
     
     unowned var rootController: CredentialProviderViewController
+    let extensionContext: ASCredentialProviderExtensionContext
     var router: NavigationRouter
+    var hasUI = false
 
     private var databasePickerCoordinator: DatabasePickerCoordinator!
     private var entryFinderCoordinator: EntryFinderCoordinator?
     private var databaseUnlockerCoordinator: DatabaseUnlockerCoordinator?
     var serviceIdentifiers = [ASCredentialServiceIdentifier]()
-    
+
+    private var quickTypeDatabaseLoader: DatabaseLoader?
+    private var quickTypeRequiredRecord: QuickTypeAutoFillRecord?
+
     fileprivate var watchdog: Watchdog
     fileprivate var passcodeInputController: PasscodeInputVC?
     fileprivate var isBiometricAuthShown = false
     fileprivate var isPasscodeInputShown = false
     
     
-    init(rootController: CredentialProviderViewController) {
+    init(
+        rootController: CredentialProviderViewController,
+        context: ASCredentialProviderExtensionContext
+    ) {
         self.rootController = rootController
+        self.extensionContext = context
+        
         let navigationController = RouterNavigationController()
         navigationController.view.backgroundColor = .clear
         router = NavigationRouter(navigationController)
@@ -76,6 +86,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
         premiumManager.usageMonitor.startInterval()
         
         showDatabasePicker()
+        hasUI = true
         StoreReviewSuggester.registerEvent(.sessionStart)
         if Settings.current.isAutoFillFinishedOK {
             databasePickerCoordinator.shouldSelectDefaultDatabase = true
@@ -86,13 +97,23 @@ class AutoFillCoordinator: NSObject, Coordinator {
     
     internal func cleanup() {
         PremiumManager.shared.usageMonitor.stopInterval()
+        Watchdog.shared.willResignActive()
         router.popToRoot(animated: false)
     }
     
     private func dismissAndQuit() {
-        rootController.dismiss()
+        cancelRequest(.userCanceled)
         Settings.current.isAutoFillFinishedOK = true
         cleanup()
+    }
+    
+    internal func cancelRequest(_ code: ASExtensionError.Code) {
+        extensionContext.cancelRequest(
+            withError: NSError(
+                domain: ASExtensionErrorDomain,
+                code: code.rawValue
+            )
+        )
     }
     
     private func returnCredentials(entry: Entry) {
@@ -112,8 +133,11 @@ class AutoFillCoordinator: NSObject, Coordinator {
         let passwordCredential = ASPasswordCredential(
             user: entry.resolvedUserName,
             password: entry.resolvedPassword)
-        rootController.extensionContext.completeRequest(withSelectedCredential: passwordCredential) {
-            (expired) in
+        extensionContext.completeRequest(
+            withSelectedCredential: passwordCredential,
+            completionHandler: nil
+        )
+        if hasUI {
             HapticFeedback.play(.credentialsPasted)
         }
         Settings.current.isAutoFillFinishedOK = true
@@ -196,6 +220,157 @@ extension AutoFillCoordinator {
         entryFinderCoordinator.start()
         addChildCoordinator(entryFinderCoordinator)
         self.entryFinderCoordinator = entryFinderCoordinator
+    }
+}
+
+extension AutoFillCoordinator: DatabaseLoaderDelegate {
+    func prepareUI(for credentialIdentity: ASPasswordCredentialIdentity) {
+        Diag.debug("Preparing UI to return credentials")
+        self.serviceIdentifiers = [credentialIdentity.serviceIdentifier]
+        if let recordIdentifier = credentialIdentity.recordIdentifier,
+           let record = QuickTypeAutoFillRecord.parse(recordIdentifier)
+        {
+            quickTypeRequiredRecord = record
+        }
+        assert(!hasUI)
+        showDummyWarmupSplash()
+    }
+    
+    private func showDummyWarmupSplash() {
+        let splash = UIAlertController(
+            title: LString.databaseStatusLoading,
+            message: nil,
+            preferredStyle: .alert)
+        rootController.present(splash, animated: true) {
+            splash.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func provideWithoutUserInteraction(for credentialIdentity: ASPasswordCredentialIdentity) {
+        assert(!hasUI, "This should run in pre-UI mode only")
+        Diag.info("Identity: \(credentialIdentity.debugDescription)")
+        
+        guard let recordIdentifier = credentialIdentity.recordIdentifier,
+              let record = QuickTypeAutoFillRecord.parse(recordIdentifier)
+        else {
+            Diag.error("Failed to parse credential store record, aborting")
+            cancelRequest(.failed)
+            return
+        }
+        quickTypeRequiredRecord = record
+
+        guard let dbRef = findDatabase(for: record) else {
+            Diag.warning("Failed to find record's database, aborting")
+            QuickTypeAutoFillStorage.removeAll()
+            cancelRequest(.userInteractionRequired)
+            return
+        }
+        
+        guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: dbRef),
+              let masterKey = dbSettings.masterKey
+        else {
+            cancelRequest(.userInteractionRequired)
+            return
+        }
+        
+        assert(self.quickTypeDatabaseLoader == nil)
+        quickTypeDatabaseLoader = DatabaseLoader(
+            dbRef: dbRef,
+            compositeKey: masterKey,
+            readOnly: true,
+            delegate: self
+        )
+        quickTypeDatabaseLoader!.load()
+    }
+    
+    private func findDatabase(for record: QuickTypeAutoFillRecord) -> URLReference? {
+        let dbRefs = FileKeeper.shared.getAllReferences(fileType: .database, includeBackup: false)
+        let matchingDatabase = dbRefs.first {
+            $0.fileProvider == record.fileProvider && $0.getDescriptor() == record.fileDescriptor
+        }
+        return matchingDatabase
+    }
+    
+    private func findEntry(
+        matching record: QuickTypeAutoFillRecord,
+        in databaseFile: DatabaseFile
+    ) -> Entry? {
+        guard let entry = databaseFile.database.root?.findEntry(byUUID: record.itemID),
+              !entry.isDeleted,
+              !entry.isHiddenFromSearch,
+              !entry.isExpired
+        else {
+            return nil
+        }
+        return entry
+    }
+    
+    private func returnQuickTypeEntry(
+        matching record: QuickTypeAutoFillRecord,
+        in databaseFile: DatabaseFile
+    ) {
+        assert(!hasUI, "This should run only in pre-UI mode")
+        if let foundEntry = findEntry(matching: record, in: databaseFile) {
+            returnCredentials(entry: foundEntry)
+        } else {
+            cancelRequest(.credentialIdentityNotFound)
+        }
+    }
+    
+    func databaseLoader(_ databaseLoader: DatabaseLoader, willLoadDatabase dbRef: URLReference) {
+        assert(!hasUI, "This should run only in pre-UI mode")
+    }
+    
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didChangeProgress progress: ProgressEx,
+        for dbRef: URLReference
+    ) {
+    }
+    
+    func databaseLoader(_ databaseLoader: DatabaseLoader, didCancelLoading dbRef: URLReference) {
+        assert(!hasUI, "This should run only in pre-UI mode")
+        quickTypeDatabaseLoader = nil
+        cancelRequest(.failed)
+    }
+    
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didFailLoading dbRef: URLReference,
+        message: String,
+        reason: String?
+    ) {
+        assert(!hasUI, "This should run only in pre-UI mode")
+        Diag.info("Failed to load the database, starting the UI")
+        quickTypeDatabaseLoader = nil
+        cancelRequest(.userInteractionRequired)
+    }
+    
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didFailLoading dbRef: URLReference,
+        withInvalidMasterKeyMessage message: String
+    ) {
+        assert(!hasUI, "This should run only in pre-UI mode")
+        Diag.info("Stored master key does not fit, starting the UI")
+        quickTypeDatabaseLoader = nil
+        cancelRequest(.userInteractionRequired)
+    }
+    
+    func databaseLoader(
+        _ databaseLoader: DatabaseLoader,
+        didLoadDatabase dbRef: URLReference,
+        databaseFile: DatabaseFile,
+        withWarnings warnings: DatabaseLoadingWarnings
+    ) {
+        assert(!hasUI, "This should run only in pre-UI mode")
+        quickTypeDatabaseLoader = nil
+        guard let record = quickTypeRequiredRecord else {
+            assertionFailure("quickTypeRequiredRecord is unexpectedly nil")
+            cancelRequest(.userInteractionRequired)
+            return
+        }
+        returnQuickTypeEntry(matching: record, in: databaseFile)
     }
 }
 
@@ -405,7 +580,13 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         in coordinator: DatabaseUnlockerCoordinator
     ) {
         Settings.current.isAutoFillFinishedOK = true 
-        showDatabaseViewer(fileRef, databaseFile: databaseFile, warnings: warnings)
+        if let targetRecord = quickTypeRequiredRecord,
+           let desiredEntry = findEntry(matching: targetRecord, in: databaseFile)
+        {
+            returnCredentials(entry: desiredEntry)
+        } else {
+            showDatabaseViewer(fileRef, databaseFile: databaseFile, warnings: warnings)
+        }
     }
     
     func didPressReinstateDatabase(

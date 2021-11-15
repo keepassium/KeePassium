@@ -108,7 +108,9 @@ final public class NavigationRouter: NSObject {
     }
     
     public func dismiss(animated: Bool, completion: (()->Void)?=nil) {
+        #if !AUTOFILL_EXT
         assert(navigationController.presentingViewController != nil)
+        #endif
         navigationController.dismiss(animated: animated, completion: {
             [self] in 
             self.popAll(completion: completion)

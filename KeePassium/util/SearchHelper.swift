@@ -41,6 +41,9 @@ class SearchHelper {
             text: searchText,
             textWords: words)
         let scoredEntries = performSearch(in: database, query: query)
+            .filter {
+                !$0.entry.isHiddenFromSearch
+            }
         let searchResults = arrangeByGroups(scoredEntries: scoredEntries)
         return searchResults
     }
