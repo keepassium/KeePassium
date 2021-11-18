@@ -11,6 +11,19 @@ import AuthenticationServices
 final public class QuickTypeAutoFillStorage {
     static let urlDetector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
     
+    public static var isEnabled: Bool {
+        let semaphore = DispatchSemaphore(value: 0)
+        var result = false
+        ASCredentialIdentityStore.shared.getState { state in
+            result = state.isEnabled
+            semaphore.signal()
+        }
+        if semaphore.wait(timeout: .now() + 5) == .timedOut {
+            Diag.error("Failed to query credential store state: timeout")
+        }
+        return result
+    }
+    
     public static func removeAll() {
         let store = ASCredentialIdentityStore.shared
         store.getState { state in
