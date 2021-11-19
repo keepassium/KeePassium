@@ -26,6 +26,8 @@ extension PremiumFeature {
             return LString.premiumFeatureChangeAppIconTitle
         case .canRelocateAcrossDatabases:
             return LString.premiumFeatureGenericTitle
+        case .canUseQuickTypeAutoFill:
+            return LString.premiumFeatureQuickAutoFillTitle
         case .canUseExpressUnlock,
              .canViewFieldReferences:
             assertionFailure("Implicit feature, no upgrade notice required")
@@ -43,6 +45,8 @@ extension PremiumFeature {
             return LString.premiumFeaturePreviewAttachmentsDescription
         case .canUseHardwareKeys:
             return LString.premiumFeatureHardwareKeysDescription
+        case .canUseQuickTypeAutoFill:
+            return LString.premiumFeatureQuickAutoFillDescription
         case .canKeepMasterKeyOnDatabaseTimeout,
              .canChangeAppIcon,
              .canUseExpressUnlock,
@@ -103,4 +107,13 @@ extension LString {
             "[PremiumFeature/CustomAppIcons/title]",
             value: "Custom App Icons",
             comment: "Title of a premium feature: ability to change the app icon")
+    
+    public static let premiumFeatureQuickAutoFillTitle = NSLocalizedString(
+        "[PremiumFeature/QuickAutoFill/title]",
+        value: "Quick AutoFill",
+        comment: "Title of a premium feature: show relevant AutoFill entries right under the input field")
+    public static let premiumFeatureQuickAutoFillDescription = NSLocalizedString(
+        "[PremiumFeature/QuickAutoFill/description]",
+        value: "Fill out login forms with a single tap.",
+        comment: "Description/advertisement for the `Quick AutoFill` premium feature.")
 }

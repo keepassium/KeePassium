@@ -136,12 +136,12 @@ public class DatabaseSettingsManager {
     }
 
     public func isQuickTypeEnabled(_ databaseFile: DatabaseFile) -> Bool {
-        let appDefault = Settings.current.isQuickTypeEnabled
+        let appDefault = Settings.current.premiumIsQuickTypeEnabled
         return getSettings(for: databaseFile)?.isQuickTypeEnabled ?? appDefault
     }
     
     public func isQuickTypeEnabled(_ databaseRef: URLReference) -> Bool {
-        let appDefault = Settings.current.isQuickTypeEnabled
+        let appDefault = Settings.current.premiumIsQuickTypeEnabled
         return getSettings(for: databaseRef)?.isQuickTypeEnabled ?? appDefault
     }
     

@@ -52,17 +52,19 @@ final class AutoFillSettingsCoordinator: Coordinator, Refreshable {
 
 extension AutoFillSettingsCoordinator {
     private func maybeSetQuickAutoFill(_ enabled: Bool, in viewController: SettingsAutoFillVC) {
-        performPremiumActionOrOfferUpgrade(
-            for: .canUseQuickTypeAutoFill,
-            in: viewController,
-            actionHandler: { [weak self] in
-                Settings.current.isQuickTypeEnabled = enabled
-                if !enabled {
-                    viewController.showQuickAutoFillCleared()
-                    QuickTypeAutoFillStorage.removeAll()
+        if enabled {
+            performPremiumActionOrOfferUpgrade(
+                for: .canUseQuickTypeAutoFill,
+                in: viewController,
+                actionHandler: { [weak self] in
+                    Settings.current.isQuickTypeEnabled = true
                 }
-            }
-        )
+            )
+        } else {
+            Settings.current.isQuickTypeEnabled = false
+            viewController.showQuickAutoFillCleared()
+            QuickTypeAutoFillStorage.removeAll()
+        }
     }
 }
 

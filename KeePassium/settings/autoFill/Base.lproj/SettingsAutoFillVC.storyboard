@@ -54,7 +54,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="{Quick AutoFill}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wq1-wJ-wCR">
-                                                    <rect key="frame" x="61" y="17.5" width="186" height="17"/>
+                                                    <rect key="frame" x="61" y="17.5" width="153" height="17"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -74,10 +74,18 @@
                                                     </constraints>
                                                     <imageReference key="image" image="hand.tap" catalog="system" symbolScale="large" renderingMode="template"/>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium-feature-badge" translatesAutoresizingMaskIntoConstraints="NO" id="gpr-fU-ZKU">
+                                                    <rect key="frame" x="222" y="13.5" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="gpr-fU-ZKU" secondAttribute="height" multiplier="1:1" id="7fv-9G-R0a"/>
+                                                        <constraint firstAttribute="width" constant="25" id="dhe-sg-T4q"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="e8p-zG-ufb" firstAttribute="leading" secondItem="wZ9-Hz-1qs" secondAttribute="leadingMargin" id="3Ul-Vd-hj9"/>
-                                                <constraint firstItem="dWj-rl-IAF" firstAttribute="leading" secondItem="Wq1-wJ-wCR" secondAttribute="trailing" constant="8" id="FFn-Xn-4h6"/>
+                                                <constraint firstItem="dWj-rl-IAF" firstAttribute="leading" secondItem="gpr-fU-ZKU" secondAttribute="trailing" constant="8" symbolic="YES" id="CaV-R8-GrP"/>
+                                                <constraint firstItem="gpr-fU-ZKU" firstAttribute="leading" secondItem="Wq1-wJ-wCR" secondAttribute="trailing" constant="8" id="FFn-Xn-4h6"/>
                                                 <constraint firstItem="Wq1-wJ-wCR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wZ9-Hz-1qs" secondAttribute="topMargin" id="NCG-iE-hJ0"/>
                                                 <constraint firstItem="e8p-zG-ufb" firstAttribute="centerY" secondItem="wZ9-Hz-1qs" secondAttribute="centerY" id="RwP-ri-rdp"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Wq1-wJ-wCR" secondAttribute="bottom" id="WYo-dc-9dW"/>
@@ -85,6 +93,7 @@
                                                 <constraint firstItem="dWj-rl-IAF" firstAttribute="centerY" secondItem="wZ9-Hz-1qs" secondAttribute="centerY" priority="750" id="hgy-V2-hhW"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dWj-rl-IAF" secondAttribute="bottom" constant="10" id="ieV-HZ-08p"/>
                                                 <constraint firstItem="dWj-rl-IAF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wZ9-Hz-1qs" secondAttribute="top" constant="10" id="jgW-8b-7to"/>
+                                                <constraint firstItem="gpr-fU-ZKU" firstAttribute="centerY" secondItem="wZ9-Hz-1qs" secondAttribute="centerY" id="lVb-s0-UUe"/>
                                                 <constraint firstItem="Wq1-wJ-wCR" firstAttribute="leading" secondItem="e8p-zG-ufb" secondAttribute="trailing" constant="16" id="lYS-k6-qf5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dWj-rl-IAF" secondAttribute="trailing" id="qM9-L6-pMp"/>
                                             </constraints>
@@ -204,6 +213,8 @@
                         <outlet property="perfectMatchCell" destination="R2t-YZ-TJF" id="Zvi-Ti-FJI"/>
                         <outlet property="perfectMatchSwitch" destination="dg8-cp-hCR" id="cdQ-vS-hbF"/>
                         <outlet property="quickAutoFillCell" destination="ymn-Ga-UJN" id="3sh-0k-5ID"/>
+                        <outlet property="quickAutoFillPremiumBadge" destination="gpr-fU-ZKU" id="A3g-eM-bbK"/>
+                        <outlet property="quickAutoFillPremiumBadgeWidthConstraint" destination="dhe-sg-T4q" id="gEg-SI-adF"/>
                         <outlet property="quickTypeLabel" destination="Wq1-wJ-wCR" id="cFd-5O-SuP"/>
                         <outlet property="quickTypeSwitch" destination="dWj-rl-IAF" id="utZ-UC-HmH"/>
                         <outlet property="setupInstructionsCell" destination="Q6S-wx-6gy" id="jt3-IZ-6V0"/>
@@ -217,6 +228,7 @@
     <resources>
         <image name="hand.tap" catalog="system" width="113" height="128"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="premium-feature-badge" width="25" height="25"/>
         <image name="settings-autofill-perfect-match-listitem" width="29" height="29"/>
         <image name="settings-clipboard-timeout-listitem" width="29" height="29"/>
         <namedColor name="ActionTint">

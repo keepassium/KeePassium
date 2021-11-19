@@ -29,6 +29,8 @@ final class SettingsAutoFillVC: UITableViewController {
     @IBOutlet private weak var quickTypeSwitch: UISwitch!
     @IBOutlet private weak var copyTOTPSwitch: UISwitch!
     @IBOutlet private weak var perfectMatchSwitch: UISwitch!
+    @IBOutlet private weak var quickAutoFillPremiumBadge: UIImageView!
+    @IBOutlet private weak var quickAutoFillPremiumBadgeWidthConstraint: NSLayoutConstraint!
     
     private var settingsNotifications: SettingsNotifications!
     private var isAutoFillEnabled = false
@@ -78,7 +80,16 @@ final class SettingsAutoFillVC: UITableViewController {
             setupInstructionsCell.textLabel?.text = LString.actionActivateAutoFill
         }
 
+        let canUseQuickAutoFill = PremiumManager.shared.isAvailable(feature: .canUseQuickTypeAutoFill)
+        quickAutoFillPremiumBadge.isHidden = canUseQuickAutoFill
+        quickAutoFillPremiumBadgeWidthConstraint.constant = canUseQuickAutoFill ? 0 : 25
+        quickTypeSwitch.accessibilityHint = canUseQuickAutoFill ? nil : LString.premiumFeatureGenericTitle
+
         tableView.reloadData()
+    }
+    
+    func showQuickAutoFillCleared() {
+        quickTypeLabel.flashColor(to: .destructiveTint, duration: 0.7)
     }
     
     
@@ -95,11 +106,8 @@ final class SettingsAutoFillVC: UITableViewController {
     }
     
     @IBAction func didToggleQuickType(_ sender: UISwitch) {
-        Settings.current.isQuickTypeEnabled = quickTypeSwitch.isOn
-        if !quickTypeSwitch.isOn {
-            quickTypeLabel.flashColor(to: .destructiveTint, duration: 0.7)
-            QuickTypeAutoFillStorage.removeAll()
-        }
+        assert(delegate != nil, "This won't work without a delegate")
+        delegate?.didToggleQuickAutoFill(newValue: quickTypeSwitch.isOn, in: self)
         refresh()
     }
     

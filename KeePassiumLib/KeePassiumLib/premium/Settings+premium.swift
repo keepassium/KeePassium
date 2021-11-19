@@ -39,6 +39,15 @@ public extension Settings {
         }
     }
     
+    var premiumIsQuickTypeEnabled: Bool {
+        let actualValue = Settings.current.isQuickTypeEnabled
+        if PremiumManager.shared.isAvailable(feature: .canUseQuickTypeAutoFill) {
+            return actualValue
+        } else {
+            return false
+        }
+    }
+    
     func isAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
         switch status {
         case .initialGracePeriod,
