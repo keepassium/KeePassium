@@ -8,11 +8,17 @@
 
 import KeePassiumLib
 
+protocol SettingsAutoFillViewControllerDelegate: AnyObject {
+    func didToggleQuickAutoFill(newValue: Bool, in viewController: SettingsAutoFillVC)
+}
+
 final class SettingsAutoFillVC: UITableViewController {
     private let setupGuideURL_iOS =
         URL(string: "https://keepassium.com/apphelp/how-to-set-up-autofill-ios/")!
     private let setupGuideURL_macOS =
         URL(string: "https://keepassium.com/apphelp/how-to-set-up-autofill-macos/")!
+    
+    weak var delegate: SettingsAutoFillViewControllerDelegate?
     
     @IBOutlet private weak var setupInstructionsCell: UITableViewCell!
     @IBOutlet private weak var quickAutoFillCell: UITableViewCell!

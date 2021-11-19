@@ -757,6 +757,8 @@
 		75ED429223133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */; };
 		75ED429D2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429F2313A3EF003DE72E /* SettingsDatabaseTimeoutVC.storyboard */; };
 		75ED42A42313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */; };
+		75EEC20F2747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */; };
+		75EEC2102747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */; };
 		75F0BE5326A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
@@ -1819,6 +1821,7 @@
 		75ED42A82313C0C5003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		75ED42AF2313C267003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75ED42B12315896C003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
+		75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillSettingsCoordinator.swift; sourceTree = "<group>"; };
 		75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YubiKey+extension.swift"; sourceTree = "<group>"; };
 		75F15C9F233E512F001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F15CA2233E5399001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2012,6 +2015,7 @@
 			children = (
 				751E0CF72309AEBB0088BB10 /* SettingsAutoFillVC.storyboard */,
 				75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */,
+				75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */,
 			);
 			path = autoFill;
 			sourceTree = "<group>";
@@ -3286,6 +3290,7 @@
 				759992F324B666F7006CC379 /* PricingPlanCollectionLayout.swift in Sources */,
 				7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */,
 				75CA919A20E90C3700B286F0 /* EntryChangeObserver+Notifier.swift in Sources */,
+				75EEC20F2747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */,
 				7544A187261610DE000C0492 /* PhotoPicker.swift in Sources */,
 				75C94C6120B4BAC4004FA29D /* EntryHistoryViewerVC.swift in Sources */,
 				75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
@@ -3459,6 +3464,7 @@
 				75B38C10233E5B7C006BDEFC /* UITableViewCell+extension.swift in Sources */,
 				75B38C11233E5B7C006BDEFC /* EntryChangeObserver+Notifier.swift in Sources */,
 				75B38C12233E5B7C006BDEFC /* EntryHistoryViewerVC.swift in Sources */,
+				75EEC2102747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */,
 				7544A188261610DE000C0492 /* PhotoPicker.swift in Sources */,
 				75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */,

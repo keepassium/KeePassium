@@ -98,8 +98,12 @@ extension SettingsCoordinator {
     }
     
     private func showAutoFillSettingsPage() {
-        let autoFillSettingsVC = SettingsAutoFillVC.instantiateFromStoryboard()
-        router.push(autoFillSettingsVC, animated: true, onPop: nil)
+        let autoFillSettingsCoordinator = AutoFillSettingsCoordinator(router: router)
+        autoFillSettingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        autoFillSettingsCoordinator.start()
+        addChildCoordinator(autoFillSettingsCoordinator)
     }
     
     private func showAppProtectionSettingsPage() {
