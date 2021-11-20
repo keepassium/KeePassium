@@ -250,13 +250,17 @@ final class GroupViewerVC:
         
         navigationItem.titleView = titleView
         
-        isActivateSearch = Settings.current.isStartWithSearch && (group?.isRoot ?? false)
+        let isRootGroup = group?.isRoot ?? false
+        isActivateSearch = Settings.current.isStartWithSearch && isRootGroup
         setupSearch()
+        if isRootGroup {
+            navigationItem.hidesSearchBarWhenScrolling = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.hidesSearchBarWhenScrolling = false
+        
         cellRefreshTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
             [weak self] _ in
             self?.refreshDynamicCells()
