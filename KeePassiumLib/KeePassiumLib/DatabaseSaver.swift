@@ -40,6 +40,12 @@ public class DatabaseSaver: ProgressObserver {
     public typealias ConflictResolutionHandler =
         (_ targetData: ByteArray?, _ overwrite: Bool) -> Void
 
+    public enum RelatedTasks: CaseIterable {
+        case backupOriginal
+        case updateLatestBackup
+        case updateQuickAutoFill
+    }
+    
     fileprivate enum ProgressSteps {
         static let all: Int64 = 100 
         
@@ -51,6 +57,7 @@ public class DatabaseSaver: ProgressObserver {
     }
     
     private let databaseFile: DatabaseFile
+    private let relatedTasks: Set<RelatedTasks>
     private var progressKVO: NSKeyValueObservation?
     
     public weak var delegate: DatabaseSaverDelegate?
@@ -66,12 +73,14 @@ public class DatabaseSaver: ProgressObserver {
     
     public init(
         databaseFile: DatabaseFile,
+        skipTasks: [RelatedTasks] = [],
         delegate: DatabaseSaverDelegate,
         delegateQueue: DispatchQueue = .main
     ) {
         self.databaseFile = databaseFile
         self.delegate = delegate
         self.delegateQueue = delegateQueue
+        self.relatedTasks = Set(RelatedTasks.allCases).subtracting(skipTasks)
         
         let progress = ProgressEx()
         progress.totalUnitCount = ProgressSteps.all
@@ -125,15 +134,9 @@ public class DatabaseSaver: ProgressObserver {
     
     private func didResolveURL() {
         assert(operationQueue.isCurrent)
-        if Settings.current.isBackupDatabaseOnSave {
-            progress.completedUnitCount = ProgressSteps.willMakeBackup
-            progress.status = LString.Progress.makingDatabaseBackup
-            
-            let nameTemplate = databaseFile.visibleFileName
-            FileKeeper.shared.makeBackup(
-                nameTemplate: nameTemplate,
-                mode: .timestamped,
-                contents: databaseFile.data)
+        
+        if relatedTasks.contains(.backupOriginal) {
+            maybeBackupOriginal(originalData: databaseFile.data)
         }
         
         databaseFile.setData(ByteArray(), updateHash: false)
@@ -225,9 +228,34 @@ public class DatabaseSaver: ProgressObserver {
         }
     }
     
-    private func performPostSaveTasks(savedData: ByteArray) {
-        updateLatestBackup(with: savedData)
+    
+    private func maybeBackupOriginal(originalData: ByteArray) {
+        assert(self.operationQueue.isCurrent)
+        guard Settings.current.isBackupDatabaseOnSave else {
+            return
+        }
+        progress.completedUnitCount = ProgressSteps.willMakeBackup
+        progress.status = LString.Progress.makingDatabaseBackup
         
+        let nameTemplate = databaseFile.visibleFileName
+        FileKeeper.shared.makeBackup(
+            nameTemplate: nameTemplate,
+            mode: .timestamped,
+            contents: originalData)
+    }
+    
+    private func performPostSaveTasks(savedData: ByteArray) {
+        if relatedTasks.contains(.updateLatestBackup) {
+            updateLatestBackup(with: savedData)
+        }
+        
+        if relatedTasks.contains(.updateQuickAutoFill) {
+            updateQuickAutoFillStorage()
+        }
+    }
+    
+    private func updateQuickAutoFillStorage() {
+        assert(self.operationQueue.isCurrent)
         let dbSettingsManager = DatabaseSettingsManager.shared
         if dbSettingsManager.isQuickTypeEnabled(databaseFile) {
             let quickTypeDatabaseCount = dbSettingsManager.getQuickTypeDatabaseCount()

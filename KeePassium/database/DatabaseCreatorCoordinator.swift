@@ -201,6 +201,11 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
         assert(databaseSaver == nil)
         databaseSaver = DatabaseSaver(
             databaseFile: databaseFile,
+            skipTasks: [
+                .backupOriginal,      
+                .updateLatestBackup,  
+                .updateQuickAutoFill, 
+            ],
             delegate: self
         )
         databaseSaver!.save()
