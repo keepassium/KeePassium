@@ -245,7 +245,6 @@ extension DatabaseViewerCoordinator {
         toastHost.showNotification(
             LString.databaseIsReadOnly,
             image: image,
-            imageSize: CGSize(width: 25, height: 25),
             duration: 3.0
         )
     }
@@ -721,7 +720,10 @@ extension DatabaseViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
 
 extension DatabaseViewerCoordinator: ItemRelocationCoordinatorDelegate {
     func didRelocateItems(in coordinator: ItemRelocationCoordinator) {
-        getPresenterForModals().showSuccessNotification(LString.actionDone)
+        getPresenterForModals().showSuccessNotification(
+            LString.actionDone,
+            icon: .arrowshapeTurnUpForward
+        )
         refresh()
     }
 }

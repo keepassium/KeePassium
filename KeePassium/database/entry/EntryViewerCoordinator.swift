@@ -339,7 +339,10 @@ extension EntryViewerCoordinator {
             guard finalURL != nil else { return }
             
             Diag.info("Attachment saved OK")
-            viewController.showSuccessNotification(LString.actionDone)
+            viewController.showSuccessNotification(
+                LString.actionDone,
+                icon: .squareAndArrowUp
+            )
         }
         fileExportHelper!.saveAs(presenter: viewController)
     }

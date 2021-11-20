@@ -163,14 +163,12 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             )
         }
 
-        var toastStyle = ToastStyle()
-        toastStyle.backgroundColor = .warningMessage
-        toastStyle.imageSize = CGSize(width: 29, height: 29)
-        toastStyle.displayShadow = false
+        let toastStyle = ToastStyle()
         let toastView = view.toastViewForMessage(
             text,
             title: nil,
-            image: UIImage.get(.exclamationMarkTriangle),
+            image: UIImage.get(.exclamationMarkTriangle)?
+                .withTintColor(.errorMessage, renderingMode: .alwaysOriginal),
             action: toastAction,
             style: toastStyle
         )

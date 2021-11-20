@@ -563,6 +563,8 @@ public extension UIView {
             wrapperView.layer.shadowOpacity = style.shadowOpacity
             wrapperView.layer.shadowRadius = style.shadowRadius
             wrapperView.layer.shadowOffset = style.shadowOffset
+            wrapperView.layer.borderColor = style.shadowColor.cgColor
+            wrapperView.layer.borderWidth = 1.0
         }
         
         if let image = image {
@@ -771,19 +773,19 @@ public struct ToastStyle {
     public init() {}
     
     /**
-     The background color. Default is `.black` at 80% opacity.
+     The background color. Default is `.secondarySystemBackground`
     */
-    public var backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.8)
+    public var backgroundColor: UIColor = .secondarySystemBackground
     
     /**
-     The title color. Default is `UIColor.whiteColor()`.
+     The title color. Default is `.label`.
     */
-    public var titleColor: UIColor = .white
+    public var titleColor: UIColor = .label
     
     /**
-     The message color. Default is `.white`.
+     The message color. Default is `.label`.
     */
-    public var messageColor: UIColor = .white
+    public var messageColor: UIColor = .label
     
     public var buttonColor: UIColor = .systemBlue
     
@@ -856,14 +858,14 @@ public struct ToastStyle {
     public var buttonNumberOfLines = 0
     
     /**
-     Enable or disable a shadow on the toast view. Default is `false`.
+     Enable or disable a shadow on the toast view. Default is `true`.
     */
-    public var displayShadow = false
+    public var displayShadow = true
     
     /**
-     The shadow color. Default is `.black`.
+     The shadow color. Default is `.secondaryLabel`.
      */
-    public var shadowColor: UIColor = .black
+    public var shadowColor: UIColor = .secondaryLabel
     
     /**
      A value from 0.0 to 1.0, representing the opacity of the shadow.
@@ -881,14 +883,14 @@ public struct ToastStyle {
     public var shadowRadius: CGFloat = 6.0
     
     /**
-     The shadow offset. The default is 4 x 4.
+     The shadow offset. The default is zero.
     */
-    public var shadowOffset = CGSize(width: 4.0, height: 4.0)
+    public var shadowOffset = CGSize.zero
     
     /**
-     The image size. The default is 80 x 80.
+     The image size. The default is 32 x 32.
     */
-    public var imageSize = CGSize(width: 80.0, height: 80.0)
+    public var imageSize = CGSize(width: 32.0, height: 32.0)
     
     /**
      The size of the toast activity view when `makeToastActivity(position:)` is called.

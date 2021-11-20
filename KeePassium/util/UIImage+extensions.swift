@@ -61,9 +61,9 @@ enum ImageAsset: String {
 }
 
 enum SystemImageName: String {
+    case arrowshapeTurnUpForward = "arrowshape.turn.up.forward"
     case camera = "camera"
     case checkmark = "checkmark"
-    case checkmarkCircle = "checkmark.circle"
     case chevronDown = "chevron.down"
     case chevronUp = "chevron.up"
     case clock = "clock"

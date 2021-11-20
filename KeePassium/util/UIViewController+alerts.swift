@@ -8,8 +8,6 @@
 
 import KeePassiumLib
 
-fileprivate let toastIconSize = CGSize(width: 25, height: 25)
-
 extension UIViewController {
     
     func showErrorAlert(_ error: Error, title: String?=nil) {
@@ -40,37 +38,27 @@ extension UIViewController {
         _ message: String,
         title: String? = nil,
         image: UIImage? = nil,
-        imageSize: CGSize? = nil,
+        action: ToastAction? = nil,
         duration: TimeInterval = 3.0)
     {
         var style = ToastStyle()
-        style.backgroundColor = .darkGray
-        if let imageSize = imageSize {
-            style.imageSize = imageSize
-        }
-        getHostViewForToastNotifications().makeToast(
+        style.buttonColor = .actionTint
+
+        let hostView = getHostViewForToastNotifications()
+        let toastView = hostView.toastViewForMessage(
             message,
-            duration: duration,
-            position: .top,
             title: title,
             image: image,
-            style: style,
-            completion: nil
+            action: action,
+            style: style
         )
+        hostView.showToast(toastView, duration: 5, position: .top, action: action, completion: nil)
     }
     
-    func showSuccessNotification(_ message: String) {
-        let checkmarkIcon: UIImage?
-        if #available(iOS 13, *) {
-            checkmarkIcon = UIImage.get(.checkmark)?
-                .withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
-        } else {
-            checkmarkIcon = UIImage.get(.checkmark)
-        }
+    func showSuccessNotification(_ message: String, icon: SystemImageName) {
         showNotification(
             message,
-            image: checkmarkIcon,
-            imageSize: toastIconSize
+            image: UIImage.get(icon)?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
         )
     }
     
