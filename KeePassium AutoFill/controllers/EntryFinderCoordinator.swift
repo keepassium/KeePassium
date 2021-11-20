@@ -15,6 +15,8 @@ protocol EntryFinderCoordinatorDelegate: AnyObject {
 }
 
 final class EntryFinderCoordinator: Coordinator {
+    let quickAutoFillPromoURL = URL(string: "https://keepassium.com/apphelp/quick-autofill/")!
+    
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: EntryFinderCoordinatorDelegate?
@@ -104,8 +106,12 @@ extension EntryFinderCoordinator {
     }
     
     private func showInitialMessages() {
-        if let loadingWarnings = loadingWarnings {
+        if let loadingWarnings = loadingWarnings,
+           !loadingWarnings.isEmpty
+        {
             showLoadingWarnings(loadingWarnings)
+        } else {
+            maybeShowQuickAutoFillPromo()
         }
     }
     
@@ -114,6 +120,34 @@ extension EntryFinderCoordinator {
         
         DatabaseLoadingWarningsVC.present(warnings, in: entryFinderVC, onLockDatabase: lockDatabase)
         StoreReviewSuggester.registerEvent(.trouble)
+    }
+    
+    private func maybeShowQuickAutoFillPromo() {
+        QuickAutoFillPrompt.dismissDate = nil
+        let isQuickTypeEnabled = DatabaseSettingsManager.shared.isQuickTypeEnabled(databaseFile)
+        guard !isQuickTypeEnabled && QuickAutoFillPrompt.shouldShow else {
+            return
+        }
+        entryFinderVC.showNotification(
+            LString.premiumFeatureQuickAutoFillDescription,
+            title: LString.callToActionActivateQuickAutoFill,
+            image: UIImage.get(.megaphone)?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal),
+            action: ToastAction(
+                title: LString.actionLearnMore,
+                icon: UIImage(asset: .externalLinkBadge),
+                isLink: true,
+                handler: { [weak self] in
+                    self?.openQuickAutoFillPromo()
+                }
+            ),
+            duration: 10
+        )
+        QuickAutoFillPrompt.lastSeenDate = Date.now
+    }
+    
+    private func openQuickAutoFillPromo() {
+        QuickAutoFillPrompt.dismissDate = Date.now
+        URLOpener(entryFinderVC).open(url: quickAutoFillPromoURL, completionHandler: nil)
     }
     
     private func setupAutomaticSearchResults() {
@@ -158,4 +192,11 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
     func didPressLockDatabase(in viewController: EntryFinderVC) {
         lockDatabase()
     }
+}
+
+extension LString {
+    public static let callToActionActivateQuickAutoFill = NSLocalizedString(
+        "[QuickAutoFill/Activate/callToAction]",
+        value: "Activate Quick AutoFill",
+        comment: "Call to action, invites the user to enable the Quick AutoFill feature")
 }

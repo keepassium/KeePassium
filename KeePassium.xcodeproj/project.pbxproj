@@ -759,6 +759,10 @@
 		75ED42A42313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */; };
 		75EEC20F2747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */; };
 		75EEC2102747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */; };
+		75EEC22127484DD90092505F /* QuickAutoFillPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */; };
+		75EEC22227484DD90092505F /* QuickAutoFillPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */; };
+		75EEC22327484DD90092505F /* QuickAutoFillPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */; };
+		75EEC22427484DD90092505F /* QuickAutoFillPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */; };
 		75F0BE5326A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
@@ -1822,6 +1826,7 @@
 		75ED42AF2313C267003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75ED42B12315896C003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
 		75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillSettingsCoordinator.swift; sourceTree = "<group>"; };
+		75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAutoFillPrompt.swift; sourceTree = "<group>"; };
 		75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YubiKey+extension.swift"; sourceTree = "<group>"; };
 		75F15C9F233E512F001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F15CA2233E5399001FA223 /* KeePassiumLib-PRO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "KeePassiumLib-PRO.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2515,6 +2520,7 @@
 			children = (
 				7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */,
 				7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */,
+				75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3143,6 +3149,7 @@
 				75B786FE261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				75A5312423C0D35500900ED1 /* NavigationRouter.swift in Sources */,
+				75EEC22227484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
@@ -3308,6 +3315,7 @@
 				75AA237A26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */,
 				7598D79126BBFD5C0019C625 /* TipBoxVC.swift in Sources */,
 				7572664B24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
+				75EEC22127484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
 				755E9C4D20BE5DC200FD7C7A /* UIImage+extensions.swift in Sources */,
 				75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */,
 				7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */,
@@ -3482,6 +3490,7 @@
 				75AA237C26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */,
 				755B435E26BD606700C24386 /* TipBoxVC.swift in Sources */,
 				75B38C1C233E5B7C006BDEFC /* UIImage+extensions.swift in Sources */,
+				75EEC22327484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
 				75B38C1D233E5B7C006BDEFC /* UIView+extension.swift in Sources */,
 				75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */,
 				75B38C1F233E5B7C006BDEFC /* ViewEntryFieldCells.swift in Sources */,
@@ -3590,6 +3599,7 @@
 				75B78700261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
 				75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */,
+				75EEC22427484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
 				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
