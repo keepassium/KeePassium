@@ -17,6 +17,13 @@
 		751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E0D67230D12660088BB10 /* Bundle+extensions.swift */; };
 		751F90A9247748A300A7418F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751F90A8247748A300A7418F /* Result.swift */; };
 		75205FA5239C01CF00C1DEAA /* DatabaseSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */; };
+		75241F38274A8D6400AE15AD /* LString+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F37274A8D6400AE15AD /* LString+premium.swift */; };
+		75241F3A274A8DD200AE15AD /* LString+diag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F39274A8DD200AE15AD /* LString+diag.swift */; };
+		75241F3C274A8E9300AE15AD /* LString+tipBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F3B274A8E9300AE15AD /* LString+tipBox.swift */; };
+		75241F3E274A8ED300AE15AD /* LString+appLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F3D274A8ED300AE15AD /* LString+appLock.swift */; };
+		75241F40274A8F5C00AE15AD /* LString+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F3F274A8F5C00AE15AD /* LString+fileInfo.swift */; };
+		75241F42274A8FD300AE15AD /* LString+database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F41274A8FD300AE15AD /* LString+database.swift */; };
+		75241F44274A90AD00AE15AD /* LString+general.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F43274A90AD00AE15AD /* LString+general.swift */; };
 		75335E7E26FF23F300D49422 /* SecureRandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75335E7D26FF23F300D49422 /* SecureRandomNumberGenerator.swift */; };
 		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
@@ -42,6 +49,7 @@
 		75B5F7F8251B7CC700E444F0 /* ProgressObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */; };
 		75B813D425FA6FD000A86B7C /* StoreReviewSuggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */; };
 		75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B8608B2475E2F800C5E6C0 /* LString.swift */; };
+		75B928AF274ADB970082E56C /* LString+settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B928AE274ADB970082E56C /* LString+settings.swift */; };
 		75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1432481B2FA0017B980 /* FileProvider.swift */; };
 		75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01EFE2474AC290099698C /* Synchronizable.swift */; };
 		75C01F03247554EA0099698C /* FileAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01F02247554EA0099698C /* FileAccessError.swift */; };
@@ -173,6 +181,13 @@
 		751F90A8247748A300A7418F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		75205FA2239BDB6700C1DEAA /* DatabaseSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
 		75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsManager.swift; sourceTree = "<group>"; };
+		75241F37274A8D6400AE15AD /* LString+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+premium.swift"; sourceTree = "<group>"; };
+		75241F39274A8DD200AE15AD /* LString+diag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+diag.swift"; sourceTree = "<group>"; };
+		75241F3B274A8E9300AE15AD /* LString+tipBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+tipBox.swift"; sourceTree = "<group>"; };
+		75241F3D274A8ED300AE15AD /* LString+appLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+appLock.swift"; sourceTree = "<group>"; };
+		75241F3F274A8F5C00AE15AD /* LString+fileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+fileInfo.swift"; sourceTree = "<group>"; };
+		75241F41274A8FD300AE15AD /* LString+database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+database.swift"; sourceTree = "<group>"; };
+		75241F43274A90AD00AE15AD /* LString+general.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LString+general.swift"; sourceTree = "<group>"; };
 		75261DA1263800DA00EE2ED9 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75261DA2263800DA00EE2ED9 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75271962263800A800D68A32 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -224,6 +239,7 @@
 		75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressObserver.swift; sourceTree = "<group>"; };
 		75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewSuggester.swift; sourceTree = "<group>"; };
 		75B8608B2475E2F800C5E6C0 /* LString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
+		75B928AE274ADB970082E56C /* LString+settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+settings.swift"; sourceTree = "<group>"; };
 		75BFB1432481B2FA0017B980 /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
 		75C01EFE2474AC290099698C /* Synchronizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
 		75C01F02247554EA0099698C /* FileAccessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAccessError.swift; sourceTree = "<group>"; };
@@ -360,6 +376,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7501B860274A82220091082A /* l10n */ = {
+			isa = PBXGroup;
+			children = (
+				75B8608B2475E2F800C5E6C0 /* LString.swift */,
+				75241F43274A90AD00AE15AD /* LString+general.swift */,
+				75241F39274A8DD200AE15AD /* LString+diag.swift */,
+				75241F3B274A8E9300AE15AD /* LString+tipBox.swift */,
+				75241F3D274A8ED300AE15AD /* LString+appLock.swift */,
+				75241F3F274A8F5C00AE15AD /* LString+fileInfo.swift */,
+				75241F41274A8FD300AE15AD /* LString+database.swift */,
+				75B928AE274ADB970082E56C /* LString+settings.swift */,
+				75241F37274A8D6400AE15AD /* LString+premium.swift */,
+			);
+			path = l10n;
+			sourceTree = "<group>";
+		};
 		7505E8CC2236E69F00E5202E /* totp */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,7 +629,6 @@
 				75707EC326CE7B0100BE5EBC /* dispatch */,
 				75B813D025FA6EE600A86B7C /* progress */,
 				75B813D225FA6F6000A86B7C /* settings */,
-				75B8608B2475E2F800C5E6C0 /* LString.swift */,
 				75F4ACEE217749DB00B22D8B /* AppGroup.swift */,
 				75EA2D1621B2FB4000826FC6 /* Diag.swift */,
 				75F4ACE82177485D00B22D8B /* Keychain.swift */,
@@ -696,6 +727,7 @@
 				75D09C4F2174F81900F7DEF2 /* AEXML */,
 				7505E8CD2236ED2F00E5202E /* base32 */,
 				75D09C4B2174F81900F7DEF2 /* GzipSwift */,
+				7501B860274A82220091082A /* l10n */,
 				75D09BFC2174F77000F7DEF2 /* util */,
 				75F4ACD3217745B300B22D8B /* DatabaseManager.swift */,
 				75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */,
@@ -906,9 +938,11 @@
 				75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */,
 				75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */,
 				75AA9B53272FFAA600863B98 /* QuickTypeAutoFillStorage.swift in Sources */,
+				75B928AF274ADB970082E56C /* LString+settings.swift in Sources */,
 				75D09C1F2174F77000F7DEF2 /* Attachment.swift in Sources */,
 				75D09C362174F77000F7DEF2 /* FixedWidthInteger+extension.swift in Sources */,
 				75D09C382174F77000F7DEF2 /* StreamCipher.swift in Sources */,
+				75241F3A274A8DD200AE15AD /* LString+diag.swift in Sources */,
 				7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */,
 				7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */,
 				75F4ACF321774A6400B22D8B /* Clipboard.swift in Sources */,
@@ -923,6 +957,7 @@
 				75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */,
 				75F4ACD5217745B300B22D8B /* DatabaseManager.swift in Sources */,
 				75D09C212174F77000F7DEF2 /* Binary2.swift in Sources */,
+				75241F3C274A8E9300AE15AD /* LString+tipBox.swift in Sources */,
 				75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */,
 				75D09C222174F77000F7DEF2 /* CustomData2.swift in Sources */,
 				756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */,
@@ -932,7 +967,9 @@
 				75B5F7F5251B7BE100E444F0 /* DatabaseLoader.swift in Sources */,
 				75D09C2F2174F77000F7DEF2 /* Date+extension.swift in Sources */,
 				75F74ABA24C082F90071281E /* ReceiptAnalyzer.swift in Sources */,
+				75241F3E274A8ED300AE15AD /* LString+appLock.swift in Sources */,
 				75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */,
+				75241F40274A8F5C00AE15AD /* LString+fileInfo.swift in Sources */,
 				751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */,
 				75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */,
 				75D09BDE2174F76500F7DEF2 /* ref.c in Sources */,
@@ -1001,6 +1038,7 @@
 				75D09C5C2174F81900F7DEF2 /* Error.swift in Sources */,
 				75C8471924FAE7B60064A4EC /* Comparable+extensions.swift in Sources */,
 				75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */,
+				75241F44274A90AD00AE15AD /* LString+general.swift in Sources */,
 				75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */,
 				75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */,
 				759A321B252DC1E7001A1623 /* EntryFieldReference.swift in Sources */,
@@ -1010,6 +1048,7 @@
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,
 				75F4ACE22177469500B22D8B /* DatabaseFile.swift in Sources */,
 				7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */,
+				75241F38274A8D6400AE15AD /* LString+premium.swift in Sources */,
 				75D09BDB2174F76500F7DEF2 /* blake2b.c in Sources */,
 				75F4ACEA2177485D00B22D8B /* Settings.swift in Sources */,
 				75D09C5D2174F81900F7DEF2 /* Element.swift in Sources */,
@@ -1020,6 +1059,7 @@
 				759B532025FABB1500259DB0 /* DatabaseSettings.swift in Sources */,
 				75D09C372174F77000F7DEF2 /* KeyHelper.swift in Sources */,
 				75C01F03247554EA0099698C /* FileAccessError.swift in Sources */,
+				75241F42274A8FD300AE15AD /* LString+database.swift in Sources */,
 				75335E7E26FF23F300D49422 /* SecureRandomNumberGenerator.swift in Sources */,
 				75A26770228DAC440097C693 /* PremiumManager.swift in Sources */,
 				75D09BAF2174F3E600F7DEF2 /* KeePassiumLib.m in Sources */,

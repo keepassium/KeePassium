@@ -36,10 +36,7 @@ final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return NSLocalizedString(
-            "[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time.",
-            value: "When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time.",
-            comment: "Description of the clipboard/pasteboard timeout.")
+        return LString.clipboardTimeoutDescription
     }
     override func tableView(
         _ tableView: UITableView,

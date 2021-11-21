@@ -74,10 +74,7 @@ final class SettingsAppLockVC: UITableViewController, Refreshable {
         
         let biometryTypeName = context.biometryType.name ?? "Touch ID/Face ID"
         allowBiometricsLabel.text = String.localizedStringWithFormat(
-            NSLocalizedString(
-                "[Settings/AppLock/Biometric/title] Use %@",
-                value: "Use %@",
-                comment: "Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String]"),
+            LString.titleUseBiometryTypeTemplate,
             biometryTypeName)
         biometricsIcon.image = context.biometryType.icon
     }

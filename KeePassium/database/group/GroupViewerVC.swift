@@ -895,18 +895,3 @@ extension GroupViewerVC: UISearchControllerDelegate {
         refresh()
     }
 }
-
-extension LString {
-    public static let titleEntrySubtitle = NSLocalizedString(
-        "[Settings/GroupViewer] Entry Subtitle",
-        value: "Entry Subtitle",
-        comment: "Title of a settings section: which entry field to show along with entry title")
-    public static let titleSortOrder = NSLocalizedString(
-        "[Settings/GroupViewer] Sort Order",
-        value: "Sort Order",
-        comment: "Title of a settings section: sort order of groups and entries in a list")
-    public static let titleListSettings = NSLocalizedString(
-        "[Settings/ListSettings/title]",
-        value: "List Settings",
-        comment: "Title of list view configuration screen")
-}

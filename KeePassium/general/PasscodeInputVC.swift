@@ -144,17 +144,11 @@ class PasscodeInputVC: UIViewController {
         case .numeric:
             passcodeTextField.keyboardType = .numberPad
             nextKeyboardType = .alphanumeric
-            nextKeyboardTitle = NSLocalizedString(
-                "[AppLock/Passcode/KeyboardType/switchAction] 123→ABC",
-                value: "123→ABC",
-                comment: "Action: change keyboard type to enter alphanumeric passphrases")
+            nextKeyboardTitle = LString.actionSwitchToAlphanumericKeyboard
         case .alphanumeric:
             passcodeTextField.keyboardType = .asciiCapable
             nextKeyboardType = .numeric
-            nextKeyboardTitle = NSLocalizedString(
-                "[AppLock/Passcode/KeyboardType/switchAction] ABC→123",
-                value: "ABC→123",
-                comment: "Action: change keyboard type to enter PIN numbers")
+            nextKeyboardTitle = LString.actionSwitchToDigitalKeyboard
         }
         passcodeTextField.reloadInputViews()
         switchKeyboardButton.setTitle(nextKeyboardTitle, for: .normal)

@@ -138,10 +138,7 @@ final class EntryFinderVC: UITableViewController {
         callerIDView.copyButton.isHidden = !hasCallerID
         let callerIDText = self.callerID ?? "?"
         callerIDView.textLabel.text = String.localizedStringWithFormat(
-            NSLocalizedString(
-                "[AutoFill/Search/callerID]",
-                value: "Caller ID: %@",
-                comment: "An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String]"),
+            LString.autoFillCallerIDTemplate,
             callerIDText
         )
         callerIDView.copyHandler = { (view: CallerIDView) in
@@ -356,4 +353,12 @@ extension EntryFinderVC: UISearchResultsUpdating {
         }
         delegate?.didChangeSearchQuery(searchText, in: self)
     }
+}
+
+
+extension LString {
+    public static let autoFillCallerIDTemplate = NSLocalizedString(
+        "[AutoFill/Search/callerID]",
+        value: "Caller ID: %@",
+        comment: "An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String]")
 }

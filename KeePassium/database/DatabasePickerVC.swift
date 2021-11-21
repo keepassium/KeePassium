@@ -745,16 +745,3 @@ extension DatabasePickerVC: AppLockSetupCellDelegate {
         delegate?.didPressSetupAppLock(in: self)
     }
 }
-
-extension LString {
-    public static let titleShowBackupFiles = NSLocalizedString(
-        "Show Backup Files",
-        value: "Show Backup Files",
-        comment: "Settings switch: whether to include backup copies in the file list"
-    )
-    public static let menuFileInfo = NSLocalizedString(
-        "[Menu/FileInfo/title]",
-        value: "File Info",
-        comment: "Menu item: show information about file (name, size, dates)"
-    )
-}

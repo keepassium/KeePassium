@@ -436,11 +436,3 @@ private extension EntryFileViewerVC {
         deleteFilesBarButton.menu = makeConfirmDeleteSelectionMenu(for: deleteFilesBarButton)
     }
 }
-
-extension LString {
-    public static let actionPreviewAttachments = NSLocalizedString(
-        "[Entry/Attachments/preview]",
-        value: "Preview",
-        comment: "Action to preview one or several attached documents or images"
-    )
-}

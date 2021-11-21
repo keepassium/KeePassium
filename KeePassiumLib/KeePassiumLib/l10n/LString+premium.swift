@@ -6,8 +6,6 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import KeePassiumLib
-
 extension LString {
     
     public static let errorNoPurchasesAvailable = NSLocalizedString(
@@ -197,5 +195,127 @@ You can manage and cancel your subscriptions by going to your account settings o
         "[Premium/PerpetualLicense/status]",
         value: "You have a perpetual license for all the versions before %@.",
         comment: "[formattedDate: String]")
+    
+    
+    public static let premiumManualUpgradeTitle = NSLocalizedString(
+        "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade",
+        value: "Premium Upgrade",
+        comment: "Title of a message related to upgrading to the premium version")
+    public static let premiumManualUpgradeMessage = NSLocalizedString(
+        "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen.",
+        value: "To upgrade, please manually open KeePassium from your home screen.",
+        comment: "Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version.")
+}
 
+extension LString {
+    public static let premiumFeatureGenericTitle = NSLocalizedString(
+        "[PremiumFeature/Generic/title]",
+        value: "Premium Feature",
+        comment: "A generic title of a premium feature")
+    public static let premiumFeatureGenericDescription = NSLocalizedString(
+        "[PremiumFeature/Generic/description]",
+        value: "Upgrade to Premium and enjoy KeePassium at its best.",
+        comment: "A generic description of a premium feature")
+    
+    public static let premiumFeatureMultipleDatabasesTitle = NSLocalizedString(
+            "[PremiumFeature/MultiDB/title] Multiple Databases",
+            value: "Multiple Databases",
+            comment: "Title of a premium feature: ability to use multiple databases (In Title Case)")
+    public static let premiumFeatureMultipleDatabasesDescription = NSLocalizedString(
+        "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version.",
+        value: "Easily switch between databases in the premium version.",
+        comment: "Description/advertisement for the `Multiple Databases` premium feature")
+    public static let premiumBenefitMultipleDatabasesTitle = NSLocalizedString(
+        "[Premium/Benefits/MultiDB/title]",
+        value: "Sync with the team",
+        comment: "Title of a premium feature")
+    public static let premiumBenefitMultipleDatabasesDescription = NSLocalizedString(
+        "[Premium/Benefits/MultiDB/details]",
+        value: "Add multiple databases and quickly switch between them.",
+        comment: "Explanation of the premium feature")
+    
+    public static let premiumFeatureLongDatabaseTimeoutsTitle = NSLocalizedString(
+            "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts",
+            value: "Long Database Timeouts",
+            comment: "Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case)")
+    public static let premiumFeatureLongDatabaseTimeoutsDescription = NSLocalizedString(
+        "[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version.",
+        value: "Save time entering your complex master passwords — keep your database open longer in the premium version.",
+        comment: "Description/advertisement for the `Long Database Timeouts` premium feature")
+    public static let premiumBenefitLongDatabaseTimeoutsTitle = NSLocalizedString(
+        "[Premium/Benefits/DatabaseTimeout/title]",
+        value: "Save your time",
+        comment: "Title of a premium feature")
+    public static let premiumBenefitLongDatabaseTimeoutsDescription = NSLocalizedString(
+        "[Premium/Benefits/DatabaseTimeout/details]",
+        value: "Tired of typing your master password? Keep your database open longer and unlock it with one tap.",
+        comment: "Explanation of the premium feature")
+        
+    
+    public static let premiumFeaturePreviewAttachmentsTitle = NSLocalizedString(
+            "[PremiumFeature/Preview/title] Preview Attachments",
+            value: "Preview Attachments",
+            comment: "Title of a premium feature: ability to preview some attached files directly in the app (In Title Case)")
+    public static let premiumFeaturePreviewAttachmentsDescription =  NSLocalizedString(
+        "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version.",
+        value: "Preview images and documents directly in the app, in the premium version.",
+        comment: "Description/advertisement for the `Preview Attachments` premium feature")
+    public static let premiumBenefitPreviewAttachmentsTitle = NSLocalizedString(
+        "[Premium/Benefits/AttachmentPreview/title]",
+        value: "Preview without a trace",
+        comment: "Title of a premium feature")
+    public static let premiumBenefitPreviewAttachmentsDescription = NSLocalizedString(
+        "[Premium/Benefits/AttachmentPreview/details]",
+        value: "Preview attached files directly in KeePassium and leave no traces in other apps. (Works with images, documents, archives and more.)",
+        comment: "Explanation of the premium feature")
+    
+    public static let premiumFeatureHardwareKeysTitle = NSLocalizedString(
+            "[PremiumFeature/HardwareKeys/title] Hardware Keys",
+            value: "Hardware Keys",
+            comment: "Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case)")
+    public static let premiumFeatureHardwareKeysDescription = NSLocalizedString(
+        "[PremiumFeature/HardwareKeys/description]",
+        value: "Strengthen your security with hardware keys (YubiKey) in the premium version.",
+        comment: "Description/advertisement for the `Hardware Keys` premium feature")
+    public static let premiumBenefitHardwareKeysTitle = NSLocalizedString(
+        "[Premium/Benefits/HardwareKeys/title]",
+        value: "Use hardware keys",
+        comment: "Title of a premium feature")
+    public static let premiumBenefitHardwareKeysDescription = NSLocalizedString(
+        "[Premium/Benefits/HardwareKeys/details]",
+        value: "Protect your secrets with a hardware key, such as YubiKey.",
+        comment: "Explanation of the premium feature")
+    
+    public static let premiumFeatureChangeAppIconTitle = NSLocalizedString(
+        "[PremiumFeature/CustomAppIcons/title]",
+        value: "Custom App Icons",
+        comment: "Title of a premium feature: ability to change the app icon")
+    public static let premiumBenefitChangeAppIconTitle = NSLocalizedString(
+        "[Premium/Benefits/CustomAppIcon/title]",
+        value: "Change app icon",
+        comment: "Title of a premium feature")
+    public static let premiumBenefitChangeAppIconDescription = NSLocalizedString(
+        "[Premium/Benefits/CustomAppIcon/details]",
+        value: "Make KeePassium look unique, familiar, or disguise it as a calculator — the choice is yours.",
+        comment: "Explanation of a premium feature")
+    
+    public static let premiumBenefitFieldReferecesTitle = NSLocalizedString(
+        "[Premium/Benefits/ViewFieldReferences/title]",
+        value: "Show field references",
+        comment: "Title of a premium feature")
+    public static let premiumBenefitFieldReferencesDescription = NSLocalizedString(
+        "[Premium/Benefits/ViewFieldReferences/details]",
+        value: "Use field references to show information from other entries, instead of creating multiple copies of the same information.",
+        comment: "Explanation of a premium feature")
+    
+    public static let premiumFeatureQuickAutoFillTitle = NSLocalizedString(
+        "[PremiumFeature/QuickAutoFill/title]",
+        value: "Quick AutoFill",
+        comment: "Title of a premium feature: show relevant AutoFill entries right under the input field")
+    public static let premiumFeatureQuickAutoFillDescription = NSLocalizedString(
+        "[PremiumFeature/QuickAutoFill/description]",
+        value: "Fill out login forms with a single tap, without even opening KeePassium.",
+        comment: "Description/call to action for the `Quick AutoFill` premium feature.")
+    public static let premiumBenefitQuickAutoFillTitle = premiumFeatureQuickAutoFillTitle
+    public static let premiumBenefitQuickAutoFillDescription = premiumFeatureQuickAutoFillDescription
 }

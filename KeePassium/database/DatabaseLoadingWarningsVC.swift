@@ -87,22 +87,3 @@ extension DatabaseLoadingWarnings {
         return messages.joined(separator: "\n\n")
     }
 }
-
-extension LString {
-    public static let databaseLastEditedByTemplate = NSLocalizedString(
-        "[Database/Opened/Warning/lastEdited] Database was last edited by: %@",
-        value: "Database was last edited by: %@",
-        comment: "Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String]")
-    public static let titleDatabaseLoadingWarning = NSLocalizedString(
-        "[Database/Opened/Warning/title] Your database is ready, but there was an issue.",
-        value: "Your database is ready, but there was an issue.",
-        comment: "Title of a warning message, shown after opening a problematic database")
-    public static let actionIgnoreAndContinue = NSLocalizedString(
-        "[Database/Opened/Warning/action] Ignore and Continue",
-        value: "Ignore and Continue",
-        comment: "Action: ignore warnings and proceed to work with the database")
-    public static let actionCloseDatabase = NSLocalizedString(
-        "[Database/Opened/Warning/action] Close Database",
-        value: "Close Database",
-        comment: "Action: lock database")
-}

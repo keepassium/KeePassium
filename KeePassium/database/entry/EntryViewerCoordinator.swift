@@ -253,10 +253,7 @@ extension EntryViewerCoordinator {
     private func loadAttachmentFile(from url: URL, success: @escaping (ByteArray)->Void) {
         Diag.info("Loading new attachment file")
         progressHost?.showProgressView(
-            title: NSLocalizedString(
-                "[Entry/Files/Add] Loading attachment file",
-                value: "Loading attachment file",
-                comment: "Status message: loading file to be attached to an entry"),
+            title: LString.statusLoadingAttachmentFile,
             allowCancelling: false,
             animated: true)
         

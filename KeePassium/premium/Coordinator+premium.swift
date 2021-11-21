@@ -99,14 +99,8 @@ extension Coordinator {
 
     func showManualUpgradeMessage(in viewController: UIViewController) {
         let manualUpgradeAlert = UIAlertController.make(
-            title: NSLocalizedString(
-                "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade",
-                value: "Premium Upgrade",
-                comment: "Title of a message related to upgrading to the premium version"),
-            message: NSLocalizedString(
-                "[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen.",
-                value: "To upgrade, please manually open KeePassium from your home screen.",
-                comment: "Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version."),
+            title: LString.premiumManualUpgradeTitle,
+            message: LString.premiumManualUpgradeMessage,
             dismissButtonTitle: LString.actionOK)
         viewController.present(manualUpgradeAlert, animated: true, completion: nil)
     }

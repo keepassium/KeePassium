@@ -237,10 +237,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard section == 0 else { return nil }
-        return NSLocalizedString(
-            "[General/DestinationGroup/title] Choose a Destination",
-            value: "Choose a Destination",
-            comment: "Title of the dialog for picking the destination group for move/copy operations")
+        return LString.callToActionChooseDestinationGroup
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -350,12 +347,4 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressSwitchDatabase(at: popoverAnchor, in: self)
     }
-}
-
-extension LString {
-    public static let actionSwitchDatabase = NSLocalizedString(
-        "[Database/Switch/action]",
-        value: "Switch Database",
-        comment: "Action/button to switch from current to some other database."
-    )
 }

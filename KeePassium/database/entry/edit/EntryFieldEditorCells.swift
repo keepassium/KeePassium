@@ -431,12 +431,3 @@ class EntryFieldEditorCustomFieldCell:
         delegate?.didChangeField(field, in: self)
     }
 }
-
-
-extension LString {
-    public static let actionChooseUserName = NSLocalizedString(
-        "[EditEntry/UserName/choose]",
-        value: "Choose",
-        comment: "Action: choose a username from a list"
-    )
-}

@@ -112,22 +112,3 @@ extension DatabaseSettingsVC {
         }
     }
 }
-
-extension LString {
-    public static let titleDatabaseSettings = NSLocalizedString(
-        "[Database/Settings/title]",
-        value: "Database Settings",
-        comment: "Title of database-related settings screen"
-    )
-    
-    public static let titleSettingsFileAccess = NSLocalizedString(
-        "[Database/Settings/FileAccess/title]",
-        value: "File Access",
-        comment: "Title of settings section (read-only, backup-able, etc)"
-    )
-
-    public static let titleFileAccessReadOnly = NSLocalizedString(
-        "[Database/Settings/ReadOnly/title]",
-        value: "Read Only",
-        comment: "File setting title, whether the file can be modified (yes/no).")
-}

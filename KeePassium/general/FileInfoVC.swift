@@ -6,7 +6,6 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
 
 class FileInfoCell: UITableViewCell {
@@ -386,31 +385,4 @@ extension FileInfoVC: FileInfoSwitchCellDelegate {
             self.refresh()
         }
     }
-}
-
-extension LString {
-    static let fileInfoFieldFileName = NSLocalizedString(
-        "[FileInfo/Field/title] File Name",
-        value: "File Name",
-        comment: "Field title")
-    static let fileInfoFieldError = NSLocalizedString(
-        "[FileInfo/Field/valueError] Error",
-        value: "Error",
-        comment: "Title of a field with an error message")
-    static let fileInfoFieldFileLocation = NSLocalizedString(
-        "[FileInfo/Field/title] File Location",
-        value: "File Location",
-        comment: "Field title")
-    static let fileInfoFieldFileSize = NSLocalizedString(
-        "[FileInfo/Field/title] File Size",
-        value: "File Size",
-        comment: "Field title")
-    static let fileInfoFieldCreationDate = NSLocalizedString(
-        "[FileInfo/Field/title] Creation Date",
-        value: "Creation Date",
-        comment: "Field title")
-    static let fileInfoFieldModificationDate = NSLocalizedString(
-        "[FileInfo/Field/title] Last Modification Date",
-        value: "Last Modification Date",
-        comment: "Field title")
 }

@@ -52,12 +52,7 @@ extension DiagnosticsViewerCoordinator: DiagnosticsViewerDelegate {
     func didPressCopy(in diagnosticsViewer: DiagnosticsViewerVC, text: String) {
         Clipboard.general.insert(text: text, timeout: nil)
         HapticFeedback.play(.copiedToClipboard)
-        diagnosticsViewer.showNotification(
-            NSLocalizedString(
-                "[Diagnostics] Diagnostic log has been copied to clipboard.",
-                value: "Diagnostic log has been copied to clipboard.",
-                comment: "Notification/confirmation message")
-        )
+        diagnosticsViewer.showNotification(LString.diagnosticLogCopiedToClipboard)
     }
     
     func didPressContactSupport(in diagnosticsViewer: DiagnosticsViewerVC, text: String) {

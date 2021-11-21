@@ -267,10 +267,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             Diag.info("Key file set successfully")
             if let errorDetails = keyFileRef.error?.localizedDescription {
                 let errorMessage = String.localizedStringWithFormat(
-                    NSLocalizedString(
-                        "[Database/Unlock] Key file error: %@",
-                        value: "Key file error: %@",
-                        comment: "Error message related to key file. [errorDetails: String]"),
+                    LString.keyFileErrorTemplate,
                     errorDetails)
                 Diag.warning(errorMessage)
                 showErrorMessage(errorMessage)

@@ -76,70 +76,34 @@ struct PricingPlanBenefit {
         
     static let multipleDatabases = PricingPlanBenefit(
         image: .premiumBenefitMultiDB,
-        title: NSLocalizedString(
-            "[Premium/Benefits/MultiDB/title]",
-            value: "Sync with the team",
-            comment: "Title of a premium feature"),
-        description: NSLocalizedString(
-            "[Premium/Benefits/MultiDB/details]",
-            value: "Add multiple databases and quickly switch between them.",
-            comment: "Explanation of the premium feature")
+        title: LString.premiumBenefitMultipleDatabasesTitle,
+        description: LString.premiumBenefitMultipleDatabasesDescription
     )
     static let longDatabaseTimeout = PricingPlanBenefit(
         image: .premiumBenefitDBTimeout,
-        title:  NSLocalizedString(
-            "[Premium/Benefits/DatabaseTimeout/title]",
-            value: "Save your time",
-            comment: "Title of a premium feature"),
-        description: NSLocalizedString(
-            "[Premium/Benefits/DatabaseTimeout/details]",
-            value: "Tired of typing your master password? Keep your database open longer and unlock it with one tap.",
-            comment: "Explanation of the premium feature")
+        title:  LString.premiumBenefitLongDatabaseTimeoutsTitle,
+        description: LString.premiumBenefitLongDatabaseTimeoutsDescription
     )
     static let yubikeyChallengeResponse = PricingPlanBenefit(
         image: .premiumBenefitHardwareKeys,
-        title: NSLocalizedString(
-            "[Premium/Benefits/HardwareKeys/title]",
-            value: "Use hardware keys",
-            comment: "Title of a premium feature"),
-        description: NSLocalizedString(
-            "[Premium/Benefits/HardwareKeys/details]",
-            value: "Protect your secrets with a hardware key, such as YubiKey.",
-            comment: "Explanation of the premium feature")
+        title: LString.premiumBenefitHardwareKeysTitle,
+        description: LString.premiumBenefitHardwareKeysDescription
     )
     static let attachmentPreview = PricingPlanBenefit(
         image: .premiumBenefitPreview,
-        title: NSLocalizedString(
-            "[Premium/Benefits/AttachmentPreview/title]",
-            value: "Preview without a trace",
-            comment: "Title of a premium feature"),
-        description: NSLocalizedString(
-            "[Premium/Benefits/AttachmentPreview/details]",
-            value: "Preview attached files directly in KeePassium and leave no traces in other apps. (Works with images, documents, archives and more.)",
-            comment: "Explanation of the premium feature")
+        title: LString.premiumBenefitPreviewAttachmentsTitle,
+        description: LString.premiumBenefitPreviewAttachmentsDescription
     )
     static let customAppIcons = PricingPlanBenefit(
         image: .premiumBenefitCustomAppIcons,
-        title: NSLocalizedString(
-            "[Premium/Benefits/CustomAppIcon/title]",
-            value: "Change app icon",
-            comment: "Title of a premium feature"),
-        description: NSLocalizedString(
-            "[Premium/Benefits/CustomAppIcon/details]",
-            value: "Make KeePassium look unique, familiar, or disguise it as a calculator — the choice is yours.",
-            comment: "Explanation of a premium feature")
+        title: LString.premiumBenefitChangeAppIconTitle,
+        description: LString.premiumBenefitChangeAppIconDescription
     )
     
     static let viewFieldReferences = PricingPlanBenefit(
         image: .premiumBenefitFieldReferences,
-        title: NSLocalizedString(
-            "[Premium/Benefits/ViewFieldReferences/title]",
-            value: "Show field references",
-            comment: "Title of a premium feature"),
-        description: NSLocalizedString(
-            "[Premium/Benefits/ViewFieldReferences/details]",
-            value: "Use field references to show information from other entries, instead of creating multiple copies of the same information.",
-            comment: "Explanation of a premium feature")
+        title: LString.premiumBenefitFieldReferecesTitle,
+        description: LString.premiumBenefitFieldReferencesDescription
     )
 }
 

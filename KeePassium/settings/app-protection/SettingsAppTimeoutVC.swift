@@ -47,10 +47,7 @@ class SettingsAppTimeoutVC: UITableViewController, Refreshable {
     ) -> String? {
         switch SectionID(rawValue: section)! {
         case .launchTrigger:
-            return NSLocalizedString(
-                "[Settings/AppLock/LockOnLaunch/description]",
-                value: "Ensures KeePassium is locked after you force-close the app or restart the device.",
-                comment: "Explanation for the `Lock on App Launch` setting")
+            return LString.lockAppOnLaunchDescription
         case .timeout:
             return nil
         }
@@ -82,10 +79,7 @@ class SettingsAppTimeoutVC: UITableViewController, Refreshable {
     }
     
     private func configureLaunchTriggerCell(_ cell: SwitchCell) {
-        cell.titleLabel.text = NSLocalizedString(
-            "[Settings/AppLock/LockOnLaunch/title]",
-            value: "Lock on App Launch",
-            comment: "Setting switch: whether to lock the app after it was terminated and relaunched.")
+        cell.titleLabel.text = LString.lockAppOnLaunchTitle
         cell.theSwitch.isOn = Settings.current.isLockAppOnLaunch
         cell.toggleHandler = { (theSwitch) in
             Settings.current.isLockAppOnLaunch = theSwitch.isOn

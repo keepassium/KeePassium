@@ -32,12 +32,8 @@ final class SettingsAppearanceVC: UITableViewController {
         entryTextScaleSlider.minimumValue = Float(textScaleRange.lowerBound)
         entryTextScaleSlider.maximumValue = Float(textScaleRange.upperBound)
         
-        let textSizeString = NSLocalizedString(
-            "[Appearance/TextSize/title]",
-            value: "Text Size",
-            comment: "Title of a setting option: font size")
-        textScaleLabel.text = textSizeString
-        entryTextScaleSlider.accessibilityLabel = textSizeString
+        textScaleLabel.text = LString.titleTextSize
+        entryTextScaleSlider.accessibilityLabel = LString.titleTextSize
     }
     
     override func viewWillAppear(_ animated: Bool) {

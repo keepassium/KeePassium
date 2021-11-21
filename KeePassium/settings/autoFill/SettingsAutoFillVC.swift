@@ -159,27 +159,3 @@ extension SettingsAutoFillVC: SettingsObserver {
         refresh()
     }
 }
-
-extension LString {
-    public static let actionActivateAutoFill = NSLocalizedString(
-        "[Settings/AutoFill/Activate/action]",
-        value: "Activate AutoFill",
-        comment: "Action that opens system settings or instructions")
-    public static let titleAutoFillSetupGuide = NSLocalizedString(
-        "[Settings/AutoFill/Setup Guide/title]",
-        value: "AutoFill Setup Guide",
-        comment: "Title of a help article on how to activate AutoFill.")
-    public static let howToActivateAutoFillDescription = NSLocalizedString(
-        "[Settings/AutoFill/Activate/description]",
-        value: "Before first use, you need to activate AutoFill in system settings.",
-        comment: "Description for the AutoFill setup instructions")
-    
-    public static let titleQuickAutoFill = NSLocalizedString(
-        "[QuickAutoFill/title]",
-        value: "Quick AutoFill",
-        comment: "Name of a feature that shows relevant entries directly next to the login/password forms.")
-    public static let quickAutoFillDescription = NSLocalizedString(
-        "[QuickAutoFill/description]",
-        value: "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.",
-        comment: "Description of the Quick AutoFill feature.")
-}

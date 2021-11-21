@@ -207,10 +207,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         case .timestamps:
             return nil
         case .historyEntries:
-            return NSLocalizedString(
-                "[Entry/History] Previous Versions",
-                value: "Previous Versions",
-                comment: "Title of a list with previous versions/revisions of an entry.")
+            return LString.titleEntryPreviousVersions
         }
     }
     

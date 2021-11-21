@@ -107,14 +107,8 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @IBAction func didPressClearMasterKeys(_ sender: Any) {
         DatabaseSettingsManager.shared.eraseAllMasterKeys()
         let confirmationAlert = UIAlertController.make(
-            title: NSLocalizedString(
-                "[Settings/ClearMasterKeys/Cleared/title] Cleared",
-                value: "Cleared",
-                comment: "Title of the success message for `Clear Master Keys` button"),
-            message: NSLocalizedString(
-                "[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted.",
-                value: "All master keys have been deleted.",
-                comment: "Text of the success message for `Clear Master Keys` button"),
+            title: LString.masterKeysClearedTitle,
+            message: LString.masterKeysClearedMessage,
             dismissButtonTitle: LString.actionOK)
         present(confirmationAlert, animated: true, completion: nil)
     }
@@ -127,14 +121,8 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @IBAction func didPressClearKeyFileAssociations(_ sender: Any) {
         DatabaseSettingsManager.shared.forgetAllKeyFiles()
         let confirmationAlert = UIAlertController.make(
-            title: NSLocalizedString(
-                "[Settings/ClearKeyFileAssociations/Cleared/title] Cleared",
-                value: "Cleared",
-                comment: "Title of the success message for `Clear Key File Associations` button"),
-            message: NSLocalizedString(
-                "[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed.",
-                value: "Associations between key files and databases have been removed.",
-                comment: "Text of the success message for `Clear Key File Associations` button"),
+            title: LString.keyFileAssociationsClearedTitle,
+            message: LString.keyFileAssociationsClearedMessage,
             dismissButtonTitle: LString.actionOK)
         present(confirmationAlert, animated: true, completion: nil)
     }

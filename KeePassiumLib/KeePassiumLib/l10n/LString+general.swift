@@ -606,12 +606,13 @@ extension LString {
         comment: "Action: add/import an image as a custom icon"
     )
     
-    #if MAIN_APP
-    public static func directionAwareConcatenate(_ parts: [String]) -> String {
-        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
-            return parts.reversed().joined()
-        }
-        return parts.joined()
-    }
-    #endif
+    
+    public static let biometricsTypeTouchID = NSLocalizedString(
+        "[BiometricAuthType] Touch ID",
+        value: "Touch ID",
+        comment: "Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language.")
+    public static let biometricsTypeFaceID = NSLocalizedString(
+        "[BiometricAuthType] Face ID",
+        value: "Face ID",
+        comment: "Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language.")
 }

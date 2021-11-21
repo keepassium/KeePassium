@@ -23,13 +23,7 @@ enum ItemCategory: String {
             EntryField.url,
             EntryField.notes]
     }
-    var name: String {
-        return NSLocalizedString(
-            "[ItemCategory] Default (KeePass)",
-            value: "Default (KeePass)",
-            comment: "Name of an entry/group category (visual style): default one, like in KeePass"
-        )
-    }
+    var name: String { LString.itemCategoryDefault }
     
     func getFieldRanks() -> [String: Int] {
         return [
