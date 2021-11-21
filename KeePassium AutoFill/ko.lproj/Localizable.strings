@@ -278,7 +278,7 @@
 "[Generic] Restore" = "복원";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
-"[Generic] Reveal in Finder" = "Reveal in Finder";
+"[Generic] Reveal in Finder" = "Finder에 표시";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "공유";
@@ -311,7 +311,7 @@
 "[Generic/File] Remove" = "제거";
 
 /* Action/button to save data to a different file */
-"[Generic/File/Save as]" = "Save as…";
+"[Generic/File/Save as]" = "다른 이름으로 저장…";
 
 /* Title of an error message about file export */
 "[Generic/File/title] Export Error" = "내보내기 오류";

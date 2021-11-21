@@ -143,31 +143,31 @@
 "[Database/Saving/Status] Saving..." = "Sauvegarde...";
 
 /* Action/button to switch from current to some other database. */
-"[Database/Switch/action]" = "Switch Database";
+"[Database/Switch/action]" = "Changer de base de données";
 
 /* Explanation of the database sync conflict `Cancel` option. */
-"[Database/SyncConflict/Cancel/description]" = "Cancel saving, leave target file intact.";
+"[Database/SyncConflict/Cancel/description]" = "Annuler l'enregistrement, ne pas modifier le fichier cible.";
 
 /* Title: the current (on-server) database version in case of sync conflict. */
-"[Database/SyncConflict/currentVersion]" = "Current version";
+"[Database/SyncConflict/currentVersion]" = "Version actuelle";
 
 /* Message shown in case of database sync conflict. */
-"[Database/SyncConflict/description]" = "The database has changed since it was loaded in KeePassium.";
+"[Database/SyncConflict/description]" = "La base de données a changé depuis son chargement dans KeePassium.";
 
 /* Title: the loaded (on-device) database version in case of sync conflict. */
-"[Database/SyncConflict/loadedVersion]" = "Loaded version";
+"[Database/SyncConflict/loadedVersion]" = "Version chargée";
 
 /* Action: combine changes in two conflicting databases. */
-"[Database/SyncConflict/Merge/action]" = "Merge";
+"[Database/SyncConflict/Merge/action]" = "Fusionner";
 
 /* Explanation of the database sync conflict `Merge` option. */
-"[Database/SyncConflict/Merge/description]" = "Combine changes before saving.";
+"[Database/SyncConflict/Merge/description]" = "Combiner les modifications avant d'enregistrer.";
 
 /* Explanation of the database sync conflict `Overwrite` option. */
-"[Database/SyncConflict/Overwrite/description]" = "Overwrite target file with the local version.";
+"[Database/SyncConflict/Overwrite/description]" = "Écraser le fichier cible avec la version locale.";
 
 /* Explanation of the database sync conflict `Save as` option. */
-"[Database/SyncConflict/SaveAs/description]" = "Save changes to another file.";
+"[Database/SyncConflict/SaveAs/description]" = "Enregistrer les modifications dans un autre fichier.";
 
 /* Title of a message shown when saving to a database that has already been modified elsewhere. */
 "[Database/SyncConflict/title]" = "Conflit de synchronisation";

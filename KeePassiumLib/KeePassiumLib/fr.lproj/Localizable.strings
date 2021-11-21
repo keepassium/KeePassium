@@ -395,7 +395,7 @@
 "[FilesSortOrder/longTitle] Name (A..Z)" = "Nom (A—Z)";
 
 /* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "Nom (Z..A)";
+"[FilesSortOrder/longTitle] Name (Z..A)" = "Nom (Z—A)";
 
 /* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
 "[FilesSortOrder/longTitle] No Sorting" = "Aucun tri";
@@ -416,7 +416,7 @@
 "[GroupSortOrder/longTitle] By Title (A..Z)" = "Par titre (A—Z)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "Par titre (Z..A)";
+"[GroupSortOrder/longTitle] By Title (Z..A)" = "Par titre (Z—A)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
 "[GroupSortOrder/longTitle] No Sorting" = "Aucun tri";
