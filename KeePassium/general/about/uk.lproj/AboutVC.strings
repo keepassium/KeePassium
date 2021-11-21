@@ -40,6 +40,9 @@
 /* Class = "UILabel"; text = "©2021 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
 "bmf-Ed-H4x.text" = "©2021 Андрій Поплетєєв";
 
+/* Class = "UILabel"; text = "Accept input from AutoFill providers"; ObjectID = "bTY-d6-puv"; Note = "#bc-ignore!"; */
+"bTY-d6-puv.text" = "Accept input from AutoFill providers";
+
 /* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
 "CNI-b8-7Da.text" = "KeePass, автор Dominik Reichl";
 

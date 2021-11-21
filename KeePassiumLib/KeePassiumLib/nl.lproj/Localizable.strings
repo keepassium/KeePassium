@@ -1,8 +1,56 @@
+/* Suggestion/hint for available user action */
+"[Accessibility] Double tap to copy to clipboard" = "Dubbeltikken om naar klembord te kopiëren";
+
+/* Title of a setting option: font size */
+"[Appearance/TextSize/title]" = "Tekstgrootte";
+
+/* Action/button to unlock the App Lock with passcode */
+"[AppLock] Unlock" = "Ontgrendel";
+
+/* Hint/Description why the user is asked to provide their fingerprint. Shown in the standard Touch ID prompt. */
+"[AppLock/Biometric/Hint] Unlock KeePassium" = "Ontgrendel KeePassium";
+
+/* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Gebruik toegangscode";
+
+/* Action/button to modify the existing AppLock passcode. */
+"[AppLock/changePasscode]" = "Toegangscode wijzigen";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/EnterPasscode/callToAction]" = "Ontgrendel KeePassium";
+
+/* Action: change keyboard type to enter alphanumeric passphrases */
+"[AppLock/Passcode/KeyboardType/switchAction] 123→ABC" = "123→ABC";
+
+/* Action: change keyboard type to enter PIN numbers */
+"[AppLock/Passcode/KeyboardType/switchAction] ABC→123" = "ABC→123";
+
 /* Type of keyboard to show for App Lock passcode: letters and digits. */
 "[AppLock/Passcode/KeyboardType/title] Alphanumeric" = "Alfanumeriek";
 
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numeriek";
+
+/* Notification that the modified AppLock passcode has been saved. */
+"[AppLock/passcodeUpdated/title]" = "Toegangscode bijgewerkt.";
+
+/* Action/button to save new or edited AppLock passcode. */
+"[AppLock/savePasscode]" = "Toegangscode opslaan";
+
+/* Call to action in the passcode input dialog. */
+"[AppLock/SetupPasscode/callToAction]" = "Bescherm KeePassium tegen ongeautoriseerde toegang";
+
+/* Message shown when AutoFill cannot automatically open the main app for upgrading to a premium version. */
+"[AutoFill/Premium/Upgrade/Manual/text] To upgrade, please manually open KeePassium from your home screen." = "Open KeePassium handmatig vanop je beginscherm om te upgraden.";
+
+/* Title of a message related to upgrading to the premium version */
+"[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade" = "Premium-upgrade";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Face ID" = "Face ID";
+
+/* Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language. */
+"[BiometricAuthType] Touch ID" = "Touch ID";
 
 /* Error message when the challenge-response communication has been cancelled by the user. */
 "[ChallengeResponseError] cancelled" = "Afgebroken door gebruiker.";
@@ -28,6 +76,12 @@
 /* Progress status */
 "[Cipher/Progress] Encrypting" = "Versleutelen";
 
+/* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
+"[Clipboard/Copy/namedValue]" = "%@ kopiëren";
+
+/* Notification: an item has been copied to clipboard */
+"[Clipboard/Copy/notification]" = "Gekopieerd";
+
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "AES-ontcryptiefout (code %d)";
 
@@ -52,6 +106,24 @@
 /* Error message about Twofish cipher. [errorCode: Int] */
 "[CryptoError] Twofish cipher error (code %d)" = "Twofish-vercijferingsfout (code %d)";
 
+/* Warning when trying to add a random file as a database. [fileName: String] */
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Het geselecteerde bestand ('%@') lijkt geen databank te zijn.";
+
+/* Action/button to create a new database */
+"[Database/Create/action] Create Database" = "Maak databank";
+
+/* Title of a form for creating a database */
+"[Database/Create/title] Create Database" = "Maak databank";
+
+/* Action: add/import an image as a custom icon */
+"[Database/CustomIcon/add]" = "Voeg aangepast pictogram toe";
+
+/* Message to confirm deletion of a database file. (This deletes the file itself) */
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databankbestand?\n Zorg ervoor dat je een back-up hebt.";
+
+/* Notification when user tries to copy data from KDBX to older KDB database. */
+"[Database/LesserTargetFormat/warning]" = "This is an older database format, some data might be lost.";
+
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Kan databankbestand niet vinden";
 
@@ -69,6 +141,39 @@
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Niet-herkend databankformaat";
+
+/* Message shown if current database cannot be edited */
+"[Database/Loading/ReadOnly/text]" = "De databank is alleen-lezen";
+
+/* Status message: loading a database */
+"[Database/Loading/Status] Loading..." = "Bezig met laden...";
+
+/* Notification after changing database master key */
+"[Database/MasterKey/changed] Master key successfully changed" = "Hoofdsleutel is gewijzigd";
+
+/* A warning shown when changing database password. Is preceded with `Remember your database password`. */
+"[Database/MasterKey/RememberYourPassword/text]" = "Als u het ooit vergeet, hebt u geen toegang meer tot uw gegevens. Er is geen optie om het wachtwoord te resetten.";
+
+/* Imperative/recommendation: title of a warning when changing database password. */
+"[Database/MasterKey/RememberYourPassword/title]" = "Onthoud uw databasewachtwoord";
+
+/* Action/button */
+"[Database/Open/action] Open Database" = "Open databank";
+
+/* Action/button to lock current database (the next time, it will ask for the master key). */
+"[Database/Opened/action] Lock Database" = "Vergrendel databank";
+
+/* Action: lock database */
+"[Database/Opened/Warning/action] Close Database" = "Sluit databank";
+
+/* Action: ignore warnings and proceed to work with the database */
+"[Database/Opened/Warning/action] Ignore and Continue" = "Negeer en ga door";
+
+/* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "De databank is voor het laatst bewerkt door: %@";
+
+/* Title of a warning message, shown after opening a problematic database */
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Je databank is klaar voor gebruik, maar er is een probleem.";
 
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Klaar";
@@ -88,11 +193,65 @@
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Veldverwijzingen oplossen …";
 
+/* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Verwijder databank uit de lijst?\n Het bestand blijft intact en je kunt het later nog toevoegen.";
+
+/* Status message: finished saving a database */
+"[Database/Saving/Status] Done" = "Klaar";
+
+/* Status message: saving a database */
+"[Database/Saving/Status] Saving..." = "Bezig met opslaan...";
+
+/* Title of settings section (read-only, backup-able, etc) */
+"[Database/Settings/FileAccess/title]" = "File Access";
+
+/* File setting title, whether the file can be modified (yes/no). */
+"[Database/Settings/ReadOnly/title]" = "Alleen lezen";
+
+/* Title of database-related settings screen */
+"[Database/Settings/title]" = "Database Settings";
+
+/* Action/button to switch from current to some other database. */
+"[Database/Switch/action]" = "Andere databank openen";
+
+/* Explanation of the database sync conflict `Cancel` option. */
+"[Database/SyncConflict/Cancel/description]" = "Breek het opslaan af en laat het bestand ongewijzigd.";
+
+/* Title: the current (on-server) database version in case of sync conflict. */
+"[Database/SyncConflict/currentVersion]" = "Huidige versie";
+
+/* Message shown in case of database sync conflict. */
+"[Database/SyncConflict/description]" = "De databank is veranderd sinds deze is geopend in KeePassium.";
+
+/* Title: the loaded (on-device) database version in case of sync conflict. */
+"[Database/SyncConflict/loadedVersion]" = "Geopende versie";
+
+/* Action: combine changes in two conflicting databases. */
+"[Database/SyncConflict/Merge/action]" = "Voeg samen";
+
+/* Explanation of the database sync conflict `Merge` option. */
+"[Database/SyncConflict/Merge/description]" = "Combineer wijzigingen alvorens ze op te slaan.";
+
+/* Explanation of the database sync conflict `Overwrite` option. */
+"[Database/SyncConflict/Overwrite/description]" = "Overschrijf het doelbestand met de lokale versie.";
+
+/* Explanation of the database sync conflict `Save as` option. */
+"[Database/SyncConflict/SaveAs/description]" = "Sla de wijzigingen op in een ander bestand.";
+
+/* Title of a message shown when saving to a database that has already been modified elsewhere. */
+"[Database/SyncConflict/title]" = "Synchronisatieconflict";
+
+/* Error message related to key file. [errorDetails: String] */
+"[Database/Unlock] Key file error: %@" = "Sleutelbestandsfout: %@";
+
 /* Error message */
 "[Database/Unlock/Error] Failed to open key file" = "Kan sleutelbestand niet openen";
 
 /* Error message */
 "[Database/Unlock/Error] Password and key file are both empty." = "Wachtwoord en sleutelbestand zijn beide leeg.";
+
+/* Message shown when user enters an invalid database password */
+"[Database/Unlock/wrongPassword/question]" = "Wachtwoord vergeten?";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "Het databankbestand is beschadigd.";
@@ -247,8 +406,86 @@
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Ongeldig wachtwoord of sleutelbestand";
 
+/* Notification/confirmation message */
+"[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisch logbestand is gekopieerd naar het klembord.";
+
+/* Action: choose a username from a list */
+"[EditEntry/UserName/choose]" = "Kies";
+
+/* Action/button to add a file to entry attachments */
+"[Entry/Attachment/add]" = "Voeg bestand toe";
+
+/* Action/button to pick a file from a list */
+"[Entry/Attachment/chooseFile]" = "Kies een bestand";
+
+/* Action/button to select an (existing) photo from Photo Library */
+"[Entry/Attachment/choosePhoto]" = "Kies een foto";
+
+/* Default name for a photo attachment */
+"[Entry/Attachment/Photo/defaultName]" = "Foto";
+
+/* Action/button to take a new photo from camera */
+"[Entry/Attachment/takePhoto]" = "Maak een foto";
+
+/* Action to preview one or several attached documents or images */
+"[Entry/Attachments/preview]" = "Voorvertoning";
+
+/* Title of a list with attached files */
+"[Entry/Attachments/title] Attached Files" = "Bijgevoegde bestanden";
+
+/* Action/button to create a new entry in the current group */
+"[Entry/Create/action] Create Entry" = "Maak item";
+
+/* Default name of a newly created entry field */
+"[Entry/Edit/CreateField/defaultName] Field Name" = "Veldnaam";
+
+/* Name of an entry field */
+"[Entry/Field/name] Notes" = "Notities";
+
+/* Name of an entry field */
+"[Entry/Field/name] Password" = "Wachtwoord";
+
+/* Name of an entry field */
+"[Entry/Field/name] Title" = "Titel";
+
+/* Name of an entry field */
+"[Entry/Field/name] URL" = "URL";
+
+/* Name of an entry field */
+"[Entry/Field/name] User Name" = "Gebruikersnaam";
+
+/* Status message: loading file to be attached to an entry */
+"[Entry/Files/Add] Loading attachment file" = "Bezig met laden van bijlage";
+
+/* Title of a field with entry creation date and time */
+"[Entry/History] Creation Date" = "Aanmaakdatum";
+
+/* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
+"[Entry/History] Expiry Date" = "Vervaldatum";
+
+/* Title of a field with date and time when the entry was last accessed/viewed */
+"[Entry/History] Last Access Date" = "Laatst geopend op";
+
+/* Title of a field with entry's last modification date and time */
+"[Entry/History] Last Modification Date" = "Laatst gewijzigd op";
+
+/* Title of a list with previous versions/revisions of an entry. */
+"[Entry/History] Previous Versions" = "Vorige versies";
+
+/* Expiry Date of an entry which does not expire. */
+"[Entry/History/ExpiryDate] Never" = "Nooit";
+
+/* Default title of a new entry */
+"[Entry/New/defaultTitle] New Entry" = "Nieuw item";
+
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' bevindt zich in Recent verwijderd en kan binnenkort worden verwijderd. Verplaats het bestand naar een meer permanente locatie om uw gegevens te bewaren.";
+
+/* A suggestion shown after specific file errors (either databases or key files). */
+"[File/PermissionDenied] Try to remove the file from the app, then add it again." = "Probeer het bestand uit de app te verwijderen en voeg het dan opnieuw toe.";
+
+/* Action: re-add (a broken) database or key file to the app. */
+"[File/Re-add/title]" = "Voeg het bestand opnieuw toe";
 
 /* Notification when user opens an in-app backup database. */
 "[File/TemporaryBackup/warning]" = "Dit is een tijdelijke back-updatabase. Deze kan zonder waarschuwing automatisch worden verwijderd. Gebruik deze niet als uw hoofddatabase.";
@@ -288,6 +525,33 @@
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ reageert niet.";
+
+/* Section header: file backup settings */
+"[FileInfo/Backup/header]" = "Back-up";
+
+/* Error message shown when the user tries to change file attributes (such as creation/modification date, backup flag, etc) */
+"[FileInfo/Error/failed to change attributes]" = "Kan bestandsattributen niet bijwerken.";
+
+/* Field title */
+"[FileInfo/Field/title] Creation Date" = "Aanmaakdatum";
+
+/* Field title */
+"[FileInfo/Field/title] File Location" = "Bestandslocatie";
+
+/* Field title */
+"[FileInfo/Field/title] File Name" = "Bestandsnaam";
+
+/* Field title */
+"[FileInfo/Field/title] File Size" = "Bestandsgrootte";
+
+/* Field title */
+"[FileInfo/Field/title] Last Modification Date" = "Laatst gewijzigd op";
+
+/* Title of a field with an error message */
+"[FileInfo/Field/valueError] Error" = "Fout";
+
+/* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
+"[FileInfo/isExcludedFromBackup/title]" = "Uitsluiten van iCloud/iTunes back-up";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Kan bestand niet verwijderen. Reden: %@";
@@ -400,6 +664,150 @@
 /* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
 "[FilesSortOrder/longTitle] No Sorting" = "Niet sorteren";
 
+/* Title of the dialog for picking the destination group for move/copy operations */
+"[General/DestinationGroup/title] Choose a Destination" = "Kies een bestemming";
+
+/* Action/button to cancel whatever is going on */
+"[Generic] Cancel" = "Annuleer";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Support" = "Neem contact op met ons ondersteuningsteam";
+
+/* Action/button to write an email to support */
+"[Generic] Contact Us" = "Neem contact op";
+
+/* Action/button to proceed with the action */
+"[Generic] Continue" = "Doorgaan";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Copy" = "Kopiëren";
+
+/* Action/button to create an item (entry, group, file — depending on context) */
+"[Generic] Create" = "Maken";
+
+/* Action/button to delete an item (destroys the item/file) */
+"[Generic] Delete" = "Verwijder";
+
+/* Action/button to delete all relevant/selected items */
+"[Generic] Delete All" = "Verwijder alles";
+
+/* Action/button to discard any unsaved changes */
+"[Generic] Discard" = "Verwerp";
+
+/* Action/button to close an error message. */
+"[Generic] Dismiss" = "Negeer";
+
+/* Action/button to finish (editing) and keep changes */
+"[Generic] Done" = "Klaar";
+
+/* Action/button to edit an item */
+"[Generic] Edit" = "Bewerk";
+
+/* Action/button to export an item to another app */
+"[Generic] Export" = "Exporteer";
+
+/* Action/button to view more help/info about some topic */
+"[Generic] Learn more" = "Meer informatie";
+
+/* Checkbox/Button to show additional actions */
+"[Generic] More Actions" = "Meer acties";
+
+/* Action/button to move an item (to another group/folder/etc) */
+"[Generic] Move" = "Verplaatsen";
+
+/* Action/button: generic OK */
+"[Generic] OK" = "Oké";
+
+/* Action/button to open URL in the appropriate app (usually, web browser) */
+"[Generic] Open URL" = "URL openen";
+
+/* Action/button to replace/overwrite an item */
+"[Generic] Overwrite" = "Overschrijf";
+
+/* Action/button to rename an item */
+"[Generic] Rename" = "Wijzig naam";
+
+/* Action/button to replace an item with another one */
+"[Generic] Replace" = "Vervang";
+
+/* Action/button to restore a backup/archived item in its original place */
+"[Generic] Restore" = "Herstel";
+
+/* Action/button to open Finder (macOS file manager) and highlight a given file */
+"[Generic] Reveal in Finder" = "Toon in Finder";
+
+/* Action/button to share an item with another app (AirDrop, send an email, etc) */
+"[Generic] Share" = "Delen";
+
+/* Action/button to show additional information about an error or item */
+"[Generic] Show Details" = "Toon details";
+
+/* Action/button to show sensitive info as it is, in plain text (as opposed to asterisks) */
+"[Generic] Show In Plain Text" = "Tonen in tekst zonder opmaak";
+
+/* Checkbox/Button to show a text field in its full size */
+"[Generic] Show more" = "Toon meer";
+
+/* Message to confirm deletion of an item. */
+"[Generic/ConfirmDelete/title] Are you sure?" = "Weet je het zeker?";
+
+/* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
+"[Generic/Directory/Recently Deleted/name]" = "Onlangs verwijderd";
+
+/* Notification text when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Verwerp niet-opgeslagen wijzigingen?";
+
+/* Title of a notification when the user tries to close a document with unsaved changes */
+"[Generic/Edit/Aborting/title] There are unsaved changes" = "Er zijn niet-opgeslagen wijzigingen";
+
+/* Action/button to delete a file (destroys the file forever) */
+"[Generic/File] Delete" = "Verwijder";
+
+/* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
+"[Generic/File] Remove" = "Verwijder";
+
+/* Action/button to save data to a different file */
+"[Generic/File/Save as]" = "Bewaar als…";
+
+/* Title of an error message about file export */
+"[Generic/File/title] Export Error" = "Exporteerfout";
+
+/* Message shown when trying to copy into an existing file. */
+"[Generic/File/title] File already exists" = "Bestand bestaat al";
+
+/* Title of an error message about file import */
+"[Generic/File/title] Import Error" = "Importeerfout";
+
+/* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
+"[Generic/Presets]" = "Voorinstellingen";
+
+/* Title of a search field (a noun, not verb) */
+"[Generic/Search/title]" = "Zoek";
+
+/* Title of an error message notification */
+"[Generic/title] Error" = "Fout";
+
+/* Title of an error message about iOS system keychain */
+"[Generic/title] Keychain Error" = "Sleutelhangerfout";
+
+/* Title of an warning message */
+"[Generic/title] Warning" = "Waarschuwing";
+
+/* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
+"[Group/a11y/description]" = "%@, groep";
+
+/* Action/button to create a new sub-group in the current group */
+"[Group/Create/action] Create Group" = "Maak groep";
+
+/* Title of a form for creating a group */
+"[Group/Create/title] Create Group" = "Maak groep";
+
+/* Title of a form for editing a group */
+"[Group/Edit/title] Edit Group" = "Bewerk groep";
+
+/* Default name of a new group */
+"[Group/New/defaultName] New Group" = "Nieuwe groep";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Op aanmaakdatum (nieuw..oud)";
 
@@ -421,6 +829,36 @@
 /* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
 "[GroupSortOrder/longTitle] No Sorting" = "Niet sorteren";
 
+/* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarematige sleutels zijn niet beschikbaar in AutoFill.";
+
+/* Name of an input field which shows selected hardware key */
+"[HardwareKey/Field/title]" = "Hardwarematige sleutel";
+
+/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
+"[HardwareKey/NFC/OS too old]" = "NFC vereist iOS 13 of hoger.";
+
+/* Master key/unlock option: don't use hardware keys */
+"[HardwareKey/None] No Hardware Key" = "Geen hardwarematige sleutel";
+
+/* Master key/unlock option: use given slot of YubiKey */
+"[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey-sleuf %d";
+
+/* Generic title of in-app help article */
+"[Help Viewer/title]" = "Hulp";
+
+/* Notification that an archived/historical item (e.g entry) has been successfully restored */
+"[Item/History/Restored]" = "De vorige versie is hersteld";
+
+/* Name of an entry/group category (visual style): default one, like in KeePass */
+"[ItemCategory] Default (KeePass)" = "Standaard (KeePass)";
+
+/* Title of a list with custom (user-imported) icons for groups and entries */
+"[ItemIconPicker/CustomIcons]" = "Aangepaste pictogrammen";
+
+/* Title of a list with standard/default icons for groups and entries */
+"[ItemIconPicker/StandardIcons]" = "Standaard pictogrammen";
+
 /* Status message: processing of the master key is in progress */
 "[KDF/Progress] Processing the master key" = "Bezig met verwerken van hoofdsleutel";
 
@@ -430,17 +868,281 @@
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Sleutelhangerfout: onverwacht gegevensformaat";
 
+/* Message to confirm deletion of a key file. */
+"[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";
+
+/* Name of an input field which shows selected key file */
+"[KeyFile/Field/title]" = "Sleutelbestand";
+
+/* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
+"[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Wil het sleutelbestand verwijderen van de lijst?\n De sleutel blijft bewaard en je kunt deze later weer toevoegen.";
+
 /* Error message when the key file is misformatted or damaged */
 "[KeyFileError/Corrupted/title]" = "Het sleutelbestand is beschadigd";
 
 /* Error message: unsupported/unknown format of a key file */
 "[KeyFileError/UnsupportedFormat/title]" = "Bestandsindeling sleutelbestand niet ondersteund";
 
+/* Menu item: show information about file (name, size, dates) */
+"[Menu/FileInfo/title]" = "Bestandsinformatie";
+
+/* Error shown when scanned QR code cannot be used for OTP */
+"[OTP/Scan/InvalidData]" = "Deze QR-code is niet geschikt voor OTP-instellingen.";
+
+/* Message to confirm user intentions */
+"[OTP/Scan/OverwriteWarning]" = "Er is al een eenmalig wachtwoord ingesteld bij dit item. Wilt u dit overschrijven?";
+
+/* Call for action. Acronym `OTP` should not be translated. */
+"[OTP/Setup]" = "Stel eenmalig wachtwoord in (OTP)";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/AttachmentPreview/details]" = "Bekijk bijlagen direct in KeePassium en laat geen sporen achter in andere apps. (werkt met afbeeldingen, documenten, archieven en nog veel meer)";
+
+/* Title of a premium feature */
+"[Premium/Benefits/AttachmentPreview/title]" = "Voorbeeld zonder spoor";
+
+/* Explanation of a premium feature */
+"[Premium/Benefits/CustomAppIcon/details]" = "Laat KeePassium er uniek of vertrouwd uitzien of vermom het als rekenmachine - de keuze is aan u.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/CustomAppIcon/title]" = "Pictogram wijzigen";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/DatabaseTimeout/details]" = "Ben je het zat om je hoofdwachtwoord te typen? Houd je databank langer open en ontgrendel deze met één tik.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/DatabaseTimeout/title]" = "Bespaar tijd";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/HardwareKeys/details]" = "Bescherm je geheimen met een hardwarematige sleutel, zoals YubiKey.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/HardwareKeys/title]" = "Gebruik hardwarematige sleutels";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/MultiDB/details]" = "Voeg meerdere databanken toe en schakel snel over.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/MultiDB/title]" = "Synchroniseer met het team";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Negative/header] " = "Wat je mist";
+
+/* List of premium benefits/advantages */
+"[Premium/Benefits/Positive/header] " = "Wat je krijgt";
+
+/* Explanation of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/details]" = "Gebruik veldverwijzingen om informatie van andere items weer te geven, in plaats van meerdere kopieën van dezelfde informatie te maken.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/ViewFieldReferences/title]" = "Veldverwijzingen tonen";
+
+/* Call to action */
+"[Premium/CallToAction/buyNow]" = "Nu kopen";
+
+/* Call to action: continue using the free version */
+"[Premium/CallToAction/free]" = "Ga door met uitproberen";
+
+/* Call to action: start free trial */
+"[Premium/CallToAction/startTrial]" = "Probeer het gratis";
+
+/* Call to action: upgrade to premium */
+"[Premium/CallToAction/upgradeNow]" = "Upgrade nu";
+
+/* Action: open AppStore subscription management page */
+"[Premium/ManageSubscriptions/action]" = "Abonnementen beheren";
+
+/* Name of the permanent/never-ending license. */
+"[Premium/perpetualLicense]" = "Eeuwigdurende licentie";
+
+/* [formattedDate: String] */
+"[Premium/PerpetualLicense/status]" = "Je hebt een eeuwigdurende licentie voor alle versies vóór %@.";
+
+/* What's included in a price plan: 1 year of support via email */
+"[Premium/Price Plan/Conditions/1 year email support]" = "Eén jaar e-mailondersteuning";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/all premium features]" = "Alle premium-functies";
+
+/* What's included in a free plan: support via forums (as opposed to email support) */
+"[Premium/Price Plan/Conditions/community support]" = "Klantenondersteuning: online-fora";
+
+/* What's included in a price plan: existing premium features only (as opposed to `current + future`) */
+"[Premium/Price Plan/Conditions/current premium features]" = "Huidige premium-functies";
+
+/* What's included in a price plan: support via email */
+"[Premium/Price Plan/Conditions/email support]" = "Klantenondersteuning: e-mail";
+
+/* Family Sharing programme. Translation must match Apple's: https://www.apple.com/family-sharing/ */
+"[Premium/Price Plan/Conditions/family sharing]" = "Delen met gezin";
+
+/* What's included in a free plan: reminders that the version is free */
+"[Premium/Price Plan/Conditions/freemium reminders]" = "Freemium-herinneringen";
+
+/* Upgrade conditions for current-version premium purchase. */
+"[Premium/Price Plan/Conditions/full price upgrade]" = "Voor premiumfuncties die in de toekomst worden toegevoegd, is een nieuwe aankoop voor de volledige prijs vereist.";
+
+/* What's included in a price plan: upcoming premium features (as opposed to `current only`) */
+"[Premium/Price Plan/Conditions/future premium features]" = "Toekomstige premium-functies";
+
+/* What's included in a price plan. Please leave `perpetual fallback license` in English. */
+"[Premium/Price Plan/Conditions/perpetual fallback]" = "Bruikleenlicentie (terugvallicentie)";
+
+/* What's included in a subscription plan. By subscribing for a certain period, the user receives a permanent license for a version of the app. More info: https://keepassium.com/articles/perpetual-fallback-license/ */
+"[Premium/Price Plan/Conditions/subscription as purchase]" = "Abonnement in de vorm van een aankoop";
+
+/* What's included in a price plan */
+"[Premium/Price Plan/Conditions/updates and bug fixes]" = "Updates en foutoplossingen";
+
+/* Price of the free pricing plan */
+"[Premium/Price Plan/Free/price]" = "Gratis";
+
+/* Name of the free pricing plan */
+"[Premium/Price Plan/Free/title]" = "Gratis";
+
+/* Marks the default pricing plan */
+"[Premium/Price Plan/popular]" = "Populair";
+
+/* Status: special premium for beta-testing environment is active */
+"[Premium/status] Beta testing" = "Bètatesten";
+
+/* Status: current version of the app. For example: `Current version: 1.23`. Should be similar to the `Licensed version` string. [version: String] */
+"[Premium/status] Current version: %@" = "Huidige versie: %@";
+
+/* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
+"[Premium/status] Expired %@ ago. Please renew." = "%@ geleden verlopen. Vernieuw je licentie.";
+
+/* Status: licensed premium version of the app. For example: `Licensed version: 1.23`. [version: String] */
+"[Premium/status] Licensed version: %@" = "Gelicentieerde versie: %@";
+
+/* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
+"[Premium/status] Next renewal on %@" = "Volgende vernieuwing op %@";
+
+/* Status: validity period of once-and-forever premium */
+"[Premium/status] Valid forever" = "Permanent geldig";
+
+/* Subscription conditions */
+"[Premium/Subscription/Legal/text]" = "De betaling wordt in rekening gebracht op je Apple ID-account bij de bevestiging van de aankoop. \n\nHet abonnement wordt automatisch verlengd, tenzij het ten minste 24 uur voor het einde van de huidige periode wordt geannuleerd. Je account wordt binnen 24 uur voor het einde van de huidige periode belast. \n\nJe kunt je abonnementen beheren en annuleren door na aankoop naar je accountinstellingen te gaan in de App Store.";
+
+/* Trial conditions. For example `30 days free, then $1 per month` */
+"[Premium/Trial/trial then price]" = "%1$@ gratis, daarna %2$@";
+
+/* Error message: AppStore returned no available in-app purchase options */
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hmm, er zijn geen upgrades beschikbaar. Dit mag niet gebeuren; neem contact op met ons ondersteuningsteam.";
+
+/* Action/button to start choosing premium versions and possibly buying one */
+"[Premium/Upgrade/action] Upgrade to Premium" = "Upgrade naar Premium";
+
+/* Message shown after buying a lifetime version. */
+"[Premium/Upgrade/cancelOngoingSubscription]" = "Controleer of u uw oude abonnement moet opzeggen.";
+
+/* Message shown when in-app purchase is deferred until approval (parental or corporate). */
+"[Premium/Upgrade/Deferred/text] Thank you! You can use KeePassium while purchase is awaiting approval." = "Bedankt! U kunt KeePassium gebruiken terwijl de aankoop wordt goedgekeurd.";
+
+/* Product price for monthly premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / month" = "%@/maand";
+
+/* Product price for annual premium subscription. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ / year" = "%@/jaar";
+
+/* Product price for once-and-forever premium. [localizedPrice: String] */
+"[Premium/Upgrade/price] %@ once" = "eenmalig %@";
+
+/* Equivalent monthly price for an annual subscription. For example: `$12/year ≈ $1 / month` */
+"[Premium/Upgrade/price] around %@ / month" = "≈ %@/maand";
+
+/* Status message when downloading available in-app purchases */
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "Bezig met openen van App Store...";
+
+/* Status: in-app purchase started */
+"[Premium/Upgrade/Progress] Purchasing..." = "Bezig met aanschaffen...";
+
+/* Text of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/text] Upgrade successful, enjoy the app!" = "Upgrade geslaagd; geniet van de app!";
+
+/* Title of the message shown after in-app purchase was successfully restored */
+"[Premium/Upgrade/Restored/title] Purchase Restored" = "Aankoop hersteld";
+
+/* Text of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/text] No previous purchase could be restored." = "Geen te herstellen aankoop.";
+
+/* Title of an error message: there were no in-app purchases that can be restored */
+"[Premium/Upgrade/RestoreFailed/title] Sorry" = "Sorry";
+
+/* Message shown after buying or subscribing. */
+"[Premium/Upgrade/Success/thankYou]" = "Bedankt voor uw aankoop!";
+
+/* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
+"[Premium/usage] App being useful: %@/month, that is around %@/year." = "App is nuttig: %1$@/maand - dat is ongeveer %2$@/jaar.";
+
+/* Title of a premium feature: ability to change the app icon */
+"[PremiumFeature/CustomAppIcons/title]" = "Aangepaste app-pictogrammen";
+
+/* A generic description of a premium feature */
+"[PremiumFeature/Generic/description]" = "Upgrade naar premium en geniet nóg meer van KeePassium.";
+
+/* A generic title of a premium feature */
+"[PremiumFeature/Generic/title]" = "Premium-functie";
+
+/* Description/advertisement for the `Hardware Keys` premium feature */
+"[PremiumFeature/HardwareKeys/description]" = "Versterk je beveiliging met hardwarematige sleutels (YubiKey) in de premium-versie.";
+
+/* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
+"[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardwarematige sleutels";
+
+/* Description/advertisement for the `Long Database Timeouts` premium feature */
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Bespaar tijd bij het invoeren van complexe hoofdwachtwoorden — in de Premium-versie kun je je databank langer open houden.";
+
+/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
+"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Lage databank-time-outs";
+
+/* Description/advertisement for the `Multiple Databases` premium feature */
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "In de Premium-versie kun je eenvoudig schakelen tusses databanken.";
+
+/* Title of a premium feature: ability to use multiple databases (In Title Case) */
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Meerdere databanken";
+
+/* Description/advertisement for the `Preview Attachments` premium feature */
+"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "In de Premium-versie kun je afbeeldingen en documenten direct voorvertonen in de app.";
+
+/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
+"[PremiumFeature/Preview/title] Preview Attachments" = "Bijlagen voorvertonen";
+
+/* Description/call to action for the `Quick AutoFill` premium feature. */
+"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
+
+/* Title of a premium feature: show relevant AutoFill entries right under the input field */
+"[PremiumFeature/QuickAutoFill/title]" = "Quick AutoFill";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Afgebroken door gebruiker";
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "Niet genoeg geheugen om door te gaan.\nDit kan gebeuren bij grotere databanken of te ambitieuze databankinstellingen (Argon2-geheugenparameter).";
+
+/* Description of the Quick AutoFill feature. */
+"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
+
+/* Name of a feature that shows relevant entries directly next to the login/password forms. */
+"[QuickAutoFill/title]" = "Quick AutoFill";
+
+/* Name of an input field for entering the password again */
+"[Repeat Password/Field/title]" = "Herhaal wachtwoord";
+
+/* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
+"[Settings/AppLock/Biometric/title] Use %@" = "Gebruik %@";
+
+/* Explanation for the `Lock on App Launch` setting */
+"[Settings/AppLock/LockOnLaunch/description]" = "Zorgt ervoor dat KeePassium is vergrendeld nadat u de app gedwongen hebt afgesloten of het apparaat opnieuw opstart.";
+
+/* Setting switch: whether to lock the app after it was terminated and relaunched. */
+"[Settings/AppLock/LockOnLaunch/title]" = "Vergrendelen bij het starten van de app";
+
+/* Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String] */
+"[Settings/AppLock/subtitle] App Lock, %@, timeout" = "App-vergrendeling, %@, time-out";
+
+/* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "App-vergrendeling, toegangscode, time-out";
 
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "Na laatste interactie";
@@ -460,14 +1162,50 @@
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
 "[Settings/AppLockTimeout/shortTitle] Never" = "Nooit";
 
+/* Action that opens system settings or instructions */
+"[Settings/AutoFill/Activate/action]" = "Activate AutoFill";
+
+/* Description for the AutoFill setup instructions */
+"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+
+/* Title of a help article on how to activate AutoFill. */
+"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+
+/* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
+"[Settings/Backup] Delete ALL Backup Files (%d)" = "Verwijder alle back-upbestanden (%d)";
+
+/* Status message: there are no backup files to delete */
+"[Settings/Backup] No Backup Files Found" = "Geen back-ups aangetroffen";
+
+/* Confirmation dialog message to delete all backup files */
+"[Settings/Backup/Delete/title] Delete all backup files?" = "Alle back-upbestanden verwijderen?";
+
 /* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
 "[Settings/BackupKeepingDuration/shortTitle] Forever" = "Voor altijd";
+
+/* Text of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed." = "De associaties tussen sleutelbestanden en databanken zijn verwijderd.";
+
+/* Title of the success message for `Clear Key File Associations` button */
+"[Settings/ClearKeyFileAssociations/Cleared/title] Cleared" = "Gewist";
+
+/* Text of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/text] All master keys have been deleted." = "Alle hoofdsleutels zijn verwijderd.";
+
+/* Title of the success message for `Clear Master Keys` button */
+"[Settings/ClearMasterKeys/Cleared/title] Cleared" = "Gewist";
+
+/* Description of the clipboard/pasteboard timeout. */
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "Als je tekst kopieert uit een item, dan wist KeePassium na deze periode automatisch je klembord.";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/fullTitle] Never" = "Nooit";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Nooit";
+
+/* Description of the Database Lock Timeout */
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Als je al even niks hebt gedaan in de app, dan wordt de databank omwille van de veiligheid gesloten. Voer je hoofdwachtwoord opnieuw in om de app weer te openen.";
 
 /* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
 "[Settings/DatabaseLockTimeout/description] When leaving the app" = "Bij het verlaten van de app";
@@ -502,6 +1240,66 @@
 /* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
 "[Settings/EntryListDetail/longTitle] User Name" = "Gebruikersnaam";
 
+/* Title of a settings section: which entry field to show along with entry title */
+"[Settings/GroupViewer] Entry Subtitle" = "Itemonderschrift";
+
+/* Title of a settings section: sort order of groups and entries in a list */
+"[Settings/GroupViewer] Sort Order" = "Sorteervolgorde";
+
+/* Title of list view configuration screen */
+"[Settings/ListSettings/title]" = "Lijstinstellingen";
+
+/* Title of a sort options list. Example: 'Sort by: Name' */
+"[SortBy]" = "Sorteer op";
+
+/* List sorting option. Example: 'Sort by: Date Created' */
+"[SortBy/DateCreated]" = "Aanmaakdatum";
+
+/* List sorting option. Example: 'Sort by: Date Modified' */
+"[SortBy/DateModified]" = "Bewerkingsdatum";
+
+/* List sorting option (for file names). Example: 'Sort by: Name' */
+"[SortBy/FileName]" = "Naam";
+
+/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
+"[SortBy/ItemTitle]" = "Titel";
+
+/* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
+"[SortBy/None]" = "Geen";
+
+/* Template text of a bug report email */
+"[Support/template] (Please describe the problem here)" = "(beschrijf hier het probleem)";
+
+/* Call to action in the Donations screen. */
+"[TipBox/callToAction/1]" = "Help ons KeePassium te verbeteren!";
+
+/* Call to action in the Donations screen. */
+"[TipBox/callToAction/2]" = "Help ons KeePassium mooi te houden!";
+
+/* Call to action in the Donations screen. (free = gratis) */
+"[TipBox/callToAction/3]" = "Help ons KeePassium gratis te houden!";
+
+/* Text in the Donations screen. */
+"[TipBox/description/1]" = "Gebruikt u KeePassium graag?";
+
+/* Text in the Donations screen. */
+"[TipBox/description/2]" = "KeePassium is een gratis opensource-app. U legt uw vertrouwen in deze app door er uw belangrijkste informatie aan toe te voegen. Er is geen reclame, geen spionage, geen onzin — we respecteren u.";
+
+/* Text in the Donations screen. */
+"[TipBox/description/3]" = "Gebruikt u KeePassium graag, maar heeft u geen premium-functies nodig?";
+
+/* Notification after a successful donation. */
+"[TipBox/thankYou]" = "Bedankt!";
+
+/* Title of the tip box/donation screen. */
+"[TipBox/title/1]" = "Fooienpot";
+
+/* Title of the tip box/donation screen. */
+"[TipBox/title/2]" = "Donaties";
+
+/* Call to action, title of the tip box/donation screen. */
+"[TipBox/title/3]" = "Ondersteun KeePassium";
+
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "Cloud-opslag/Andere app";
 
@@ -513,4 +1311,31 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Lokale kopie";
+
+/* Selector choice: don't use YubiKey to encrypt/decrypt database */
+"[YubiKey] Don't use YubiKey" = "Zonder YubiKey";
+
+/* Call for action: insert YubiKey 5Ci to the Lightning port */
+"[YubiKey] Insert the key" = "Plug de sleutel in";
+
+/* Call for action: touch the sides of YubiKey 5Ci to continue */
+"[YubiKey] Touch the key" = "Raak de sleutel aan";
+
+/* Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int] */
+"[YubiKey] Use YubiKey Slot %d" = "Gebruik YubiKey-sleuf %d";
+
+/* Action/button to add database to the app */
+"Add Database" = "Voeg databank toe";
+
+/* Title of a window where the user selects a file to be opened/added to the app */
+"Choose Database" = "Kies databank";
+
+/* Action/button */
+"Import Database" = "Importeer databank";
+
+/* Warning message when the user tries to use a database as a key file */
+"KeePass database should not be used as key file. Please pick a different file." = "De KeePass-databank mag niet worden gebruikt als sleutelbestand. Kies een ander bestand.";
+
+/* Settings switch: whether to include backup copies in the file list */
+"Show Backup Files" = "Toon back-upbestanden";
 

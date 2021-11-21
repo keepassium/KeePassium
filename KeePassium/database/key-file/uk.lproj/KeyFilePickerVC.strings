@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
-"9UZ-FK-v73.text" = "Без файлу-ключа";
+"9UZ-FK-v73.text" = "Без ключового файлу";
 
 /* Class = "UILabel"; text = "Use key file without adding it to the list"; ObjectID = "BGv-TX-maE"; Note = "Explanation for the \"Key File/Browse\" action."; */
 "BGv-TX-maE.text" = "Використовувати файл-ключ, не додаючи його в список";
