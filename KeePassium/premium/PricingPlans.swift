@@ -105,6 +105,11 @@ struct PricingPlanBenefit {
         title: LString.premiumBenefitFieldReferecesTitle,
         description: LString.premiumBenefitFieldReferencesDescription
     )
+    static let quickAutoFill = PricingPlanBenefit(
+        image: .premiumBenefitQuickAutoFill,
+        title: LString.premiumBenefitQuickAutoFillTitle,
+        description: LString.premiumBenefitQuickAutoFillDescription
+    )
 }
 
 class PricingPlanFactory {
@@ -185,12 +190,13 @@ class FreePricingPlan: PricingPlan {
             PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: false, moreInfo: .none),
         ]
         self.benefits = [
+            PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
+            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
-            PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.customAppIcons,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil
     }
@@ -247,12 +253,13 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanCondition(kind: .familySharing, isIncluded: true, moreInfo: .familySharing),
         ]
         self.benefits = [
+            PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
+            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
-            PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.customAppIcons,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -276,12 +283,13 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanCondition(kind: .familySharing, isIncluded: true, moreInfo: .familySharing),
         ]
         self.benefits = [
+            PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
+            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
-            PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.customAppIcons,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -303,12 +311,13 @@ class PricingPlanVersionPurchase: RealPricingPlan {
             PricingPlanCondition(kind: .familySharing, isIncluded: false, moreInfo: .familySharing),
         ]
         self.benefits = [
+            PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
+            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
-            PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.customAppIcons,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil
     }
@@ -329,12 +338,13 @@ class PricingPlanPremiumForever: RealPricingPlan {
             PricingPlanCondition(kind: .familySharing, isIncluded: false, moreInfo: .familySharing),
         ]
         self.benefits = [
+            PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
+            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.attachmentPreview,
-            PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.customAppIcons,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil
     }

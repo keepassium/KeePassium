@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Alarm Add.png",
+      "filename" : "Quick Mode On-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Alarm Add-1.png",
+      "filename" : "Quick Mode On-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Alarm Add-2.png",
+      "filename" : "Quick Mode On.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
