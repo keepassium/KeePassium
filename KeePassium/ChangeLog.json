@@ -2,10 +2,18 @@
     "sections": [
         {
             "version": "1.28",
-            "releaseDate": "2021-10-26T00:00:00Z",
+            "releaseDate": "2021-11-21T00:00:00Z",
             "items": [
                 {
                     "title": "This version requires iOS 14 or newer",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Quick AutoFill - fill out login forms with one tap, without even opening AutoFill (closes #50)",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: Can manually configure any database as read-only (related #64)",
                     "type": 1
                 },
                 {
@@ -33,11 +41,27 @@
                     "type": 1
                 },
                 {
-                    "title": "🛠 Improved: Old-style popups partially replaced with modern menus",
+                    "title": "🛠 Improved: AutoFill setup instructions also available for macOS",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: UI improvements here and there",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated translations",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill for ccSLD domains like .co.nz or .co.jp (closes #201) [thanks, Adam and waynezhang]",
                     "type": 1
                 },
                 {
                     "title": "🐞 Fixed: \"Clear master keys on timeout\" option was treated as always on",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: search field abruptly disappeared in some cases [thanks, Andrew]",
                     "type": 1
                 },
                 {
@@ -46,6 +70,14 @@
                 },
                 {
                     "title": "🐞 Fixed: Occasional crashes caused by database timeout on launch",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: possible memory leak when tapping \"Switch database\" repeatedly",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: open/create database menu did not work sometimes",
                     "type": 1
                 },
                 {

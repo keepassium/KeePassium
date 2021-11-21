@@ -1,5 +1,26 @@
 #CHANGELOG
 
+## [1.28.98] - 2021-11-21
+
+### Added
+
+- Quick AutoFill - fill out login forms with one tap, without even opening AutoFill (closes #50)
+- Can manually configure any database as read-only (related #64)
+
+### Improved
+
+- AutoFill setup instructions are also available for macOS
+- UI improvements here and there
+- Updated translations
+
+### Fixed
+
+- AutoFill for ccSLD domains like .co.nz or .co.jp (closes #201) [thanks, Adam and waynezhang]
+- Search field abruptly disappeared in some cases [thanks, Andrew]
+- Possible memory leak when tapping "Switch database" repeatedly
+- macOS: open/create database menu did not work sometimes
+
+
 ## [1.28.97] - 2021-10-26
 
 ### Changed
