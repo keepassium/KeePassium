@@ -174,14 +174,16 @@ public class FileKeeper {
     }
     
     private static func storeURL(_ url: URL, location: URLReference.Location, key: String) {
-        URLReference.create(for: url, location: location) { result in
-            switch result {
-            case .success(let urlRef):
-                let data = urlRef.serialize()
-                UserDefaults.appGroupShared.set(data, forKey: key)
-            case .failure(let error):
-                assertionFailure("This should not happen")
-                Diag.warning("Failed to store URL reference [message: \(error.localizedDescription)]")
+        DispatchQueue.global(qos: .background).async {
+            URLReference.create(for: url, location: location) { result in
+                switch result {
+                case .success(let urlRef):
+                    let data = urlRef.serialize()
+                    UserDefaults.appGroupShared.set(data, forKey: key)
+                case .failure(let error):
+                    assertionFailure("This should not happen")
+                    Diag.warning("Failed to store URL reference [message: \(error.localizedDescription)]")
+                }
             }
         }
     }
