@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.28.99] - 2021-11-23
+
+### Improved
+
+- Updated translations [thanks, everyone]
+
+### Fixed
+
+- Occasional freeze and crash when launching the app [thanks, everyone]
+
+
 ## [1.28.98] - 2021-11-21
 
 ### Added
