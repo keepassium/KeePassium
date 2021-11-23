@@ -8,7 +8,7 @@
 "P0M-N3-ynf.text" = "Por favor, adicione de novo os bancos de dados e arquivos de chave que deseja usar com o Preenchimento Automático.";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
-"pIl-6L-Msp.text" = "Configurar preenchimento automático";
+"pIl-6L-Msp.text" = "Configurar Preenchimento Automático";
 
 /* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
 "rzY-Ci-bd9.title" = "KeePassium";

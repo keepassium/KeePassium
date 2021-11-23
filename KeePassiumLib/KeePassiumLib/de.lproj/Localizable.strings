@@ -122,7 +122,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Datenbankdatei löschen?\n Stellen Sie sicher, dass Sie ein Backup haben.";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
-"[Database/LesserTargetFormat/warning]" = "This is an older database format, some data might be lost.";
+"[Database/LesserTargetFormat/warning]" = "Dies ist ein älteres Datenbankformat, wodurch einige Daten verloren gehen können.";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Datenbank-Datei kann nicht gefunden werden";
@@ -203,13 +203,13 @@
 "[Database/Saving/Status] Saving..." = "Speichern...";
 
 /* Title of settings section (read-only, backup-able, etc) */
-"[Database/Settings/FileAccess/title]" = "File Access";
+"[Database/Settings/FileAccess/title]" = "Dateizugriff";
 
 /* File setting title, whether the file can be modified (yes/no). */
 "[Database/Settings/ReadOnly/title]" = "Nur Lesen";
 
 /* Title of database-related settings screen */
-"[Database/Settings/title]" = "Database Settings";
+"[Database/Settings/title]" = "Datenbankeinstellungen";
 
 /* Action/button to switch from current to some other database. */
 "[Database/Switch/action]" = "Datenbank wechseln";
@@ -1109,10 +1109,10 @@
 "[PremiumFeature/Preview/title] Preview Attachments" = "Vorschau des Anhangs";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
-"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
+"[PremiumFeature/QuickAutoFill/description]" = "Füllen Sie Anmeldeformulare mit einem einzigen Fingertipp aus, ohne KeePassium überhaupt zu öffnen.";
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
-"[PremiumFeature/QuickAutoFill/title]" = "Quick AutoFill";
+"[PremiumFeature/QuickAutoFill/title]" = "Schnelles autom. Ausfüllen";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Von Benutzer abgebrochen";
@@ -1121,10 +1121,10 @@
 "[Progress/CancellationReason/lowMemory]" = "Nicht genügend Speicher, um fortzufahren.\nDies kann bei größeren Datenbanken oder zu ehrgeizigen Datenbankeinstellungen (Argon2-Speicherparameter) passieren.";
 
 /* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
+"[QuickAutoFill/description]" = "Schnelles autom. Ausfüllen zeigt relevante Einträge direkt neben dem Passwortfeld an, ohne KeePassium zu öffnen.";
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
-"[QuickAutoFill/title]" = "Quick AutoFill";
+"[QuickAutoFill/title]" = "Schnelles autom. Ausfüllen";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Passwort bestätigen";
@@ -1163,13 +1163,13 @@
 "[Settings/AppLockTimeout/shortTitle] Never" = "Nie";
 
 /* Action that opens system settings or instructions */
-"[Settings/AutoFill/Activate/action]" = "Activate AutoFill";
+"[Settings/AutoFill/Activate/action]" = "Autom. Ausfüllen aktivieren";
 
 /* Description for the AutoFill setup instructions */
-"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+"[Settings/AutoFill/Activate/description]" = "Vor der ersten Verwendung müssen Sie das automatische Ausfüllen in den Systemeinstellungen aktivieren.";
 
 /* Title of a help article on how to activate AutoFill. */
-"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+"[Settings/AutoFill/Setup Guide/title]" = "Setup-Leitfaden für autom. Ausfüllen";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "ALLE Backup-Dateien löschen (%d)";

@@ -59,7 +59,7 @@
 "[ChallengeResponseError] keyNotConnected" = "Chave física não encontrada.";
 
 /* Error message when trying to use challenge-response hardware in AutoFill. */
-"[ChallengeResponseError] notAvailableInAutoFill" = "As chaves físicas não estão disponíveis com o preenchimento automático.";
+"[ChallengeResponseError] notAvailableInAutoFill" = "As chaves físicas não são compatíveis com o Preenchimento Automático.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
 "[ChallengeResponseError] notSupportedByDatabaseFormat" = "As chaves físicas não são suportadas por esse formato de banco de dados.";
@@ -122,7 +122,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Apagar o arquivo de banco de dados?\n Certifique-se de ter uma cópia de segurança.";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
-"[Database/LesserTargetFormat/warning]" = "This is an older database format, some data might be lost.";
+"[Database/LesserTargetFormat/warning]" = "Alguns dados podem ser perdidos pois o banco de dados de destino está em um formato mais antigo.";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Arquivo de banco de dados não encontrado";
@@ -203,13 +203,13 @@
 "[Database/Saving/Status] Saving..." = "Salvando...";
 
 /* Title of settings section (read-only, backup-able, etc) */
-"[Database/Settings/FileAccess/title]" = "File Access";
+"[Database/Settings/FileAccess/title]" = "Acesso ao arquivo";
 
 /* File setting title, whether the file can be modified (yes/no). */
-"[Database/Settings/ReadOnly/title]" = "Read Only";
+"[Database/Settings/ReadOnly/title]" = "Apenas leitura";
 
 /* Title of database-related settings screen */
-"[Database/Settings/title]" = "Database Settings";
+"[Database/Settings/title]" = "Ajustes do banco de dados";
 
 /* Action/button to switch from current to some other database. */
 "[Database/Switch/action]" = "Trocar banco de dados";
@@ -830,7 +830,7 @@
 "[GroupSortOrder/longTitle] No Sorting" = "Não ordenar";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
-"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "As chaves físicas não estão disponíveis com o preenchimento automático.";
+"[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "As chaves físicas não são compatíveis com o Preenchimento Automático.";
 
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Chave física";
@@ -1109,10 +1109,10 @@
 "[PremiumFeature/Preview/title] Preview Attachments" = "Visualizar Anexos";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
-"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
+"[PremiumFeature/QuickAutoFill/description]" = "Faça login com um só toque, sem nem abrir o KeePassium.";
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
-"[PremiumFeature/QuickAutoFill/title]" = "Quick AutoFill";
+"[PremiumFeature/QuickAutoFill/title]" = "Preenchimento Automático Expresso";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Cancelado pelo usuário";
@@ -1121,10 +1121,10 @@
 "[Progress/CancellationReason/lowMemory]" = "Memória insuficiente para continuar.\nIsso pode ocorrer com bancos de dados muito grandes ou com configurações exageradas (ex.: parâmetro de memória de Argon2).";
 
 /* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
+"[QuickAutoFill/description]" = "Mostra entradas relevantes junto aos campos de senha, sem precisar abrir o KeePassium.";
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
-"[QuickAutoFill/title]" = "Quick AutoFill";
+"[QuickAutoFill/title]" = "Modo Expresso";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Repita a senha";
@@ -1163,13 +1163,13 @@
 "[Settings/AppLockTimeout/shortTitle] Never" = "Nunca";
 
 /* Action that opens system settings or instructions */
-"[Settings/AutoFill/Activate/action]" = "Activate AutoFill";
+"[Settings/AutoFill/Activate/action]" = "Ativar Preenchimento Automático";
 
 /* Description for the AutoFill setup instructions */
-"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+"[Settings/AutoFill/Activate/description]" = "Antes do primeiro uso, você deve ativar o Preenchimento Automático nos Ajustes do sistema.";
 
 /* Title of a help article on how to activate AutoFill. */
-"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+"[Settings/AutoFill/Setup Guide/title]" = "Como ativar o Preenchimento Automático";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Apagar TODAS as cópias de segurança (%d)";
@@ -1250,16 +1250,16 @@
 "[Settings/ListSettings/title]" = "Ajustes de lista";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Sort By";
+"[SortBy]" = "Ordenar por";
 
 /* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Date Created";
+"[SortBy/DateCreated]" = "Data de criação";
 
 /* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Date Modified";
+"[SortBy/DateModified]" = "Data de modificação";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
-"[SortBy/FileName]" = "Name";
+"[SortBy/FileName]" = "Nome";
 
 /* List sorting option (for groups and entries). Example: 'Sort by: Title' */
 "[SortBy/ItemTitle]" = "Título";

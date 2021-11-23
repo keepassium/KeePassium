@@ -23,5 +23,5 @@
 "NSPhotoLibraryAddUsageDescription" = "KeePassium ha bisogno dell'autorizzazione per esportare file nella tua libreria di foto.";
 
 /* (No Comment) */
-"NSPhotoLibraryUsageDescription" = "KeePassium needs access to the Photos library to add custom icons to groups and entries";
+"NSPhotoLibraryUsageDescription" = "KeePassium ha bisogno di accedere alla libreria Foto per aggiungere icone personalizzate a gruppi e voci";
 

@@ -41,7 +41,7 @@
 "[Entry/Files/Rename/title] Rename File" = "Rinomina File";
 
 /* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "About %@";
+"[Menu/About/title]" = "Informazioni su %@";
 
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Preferenze…";

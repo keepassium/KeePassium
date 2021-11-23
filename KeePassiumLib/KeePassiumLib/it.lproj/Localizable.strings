@@ -116,13 +116,13 @@
 "[Database/Create/title] Create Database" = "Crea Database";
 
 /* Action: add/import an image as a custom icon */
-"[Database/CustomIcon/add]" = "Add Custom Icon";
+"[Database/CustomIcon/add]" = "Aggiungi Icona Personalizzata";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Eliminare il file di database?\n Assicurati di avere un backup.";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
-"[Database/LesserTargetFormat/warning]" = "This is an older database format, some data might be lost.";
+"[Database/LesserTargetFormat/warning]" = "Questo è un formato di database più vecchio, alcuni dati potrebbero essere persi.";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Database file non trovato";
@@ -143,7 +143,7 @@
 "[Database/Load/Error] Unrecognized database format" = "Formato di database non riconosciuto";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "Il database è in sola lettura";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Caricamento in corso...";
@@ -203,40 +203,40 @@
 "[Database/Saving/Status] Saving..." = "Salvataggio in corso...";
 
 /* Title of settings section (read-only, backup-able, etc) */
-"[Database/Settings/FileAccess/title]" = "File Access";
+"[Database/Settings/FileAccess/title]" = "Accesso Ai File";
 
 /* File setting title, whether the file can be modified (yes/no). */
-"[Database/Settings/ReadOnly/title]" = "Read Only";
+"[Database/Settings/ReadOnly/title]" = "Sola Lettura";
 
 /* Title of database-related settings screen */
-"[Database/Settings/title]" = "Database Settings";
+"[Database/Settings/title]" = "Impostazioni Database";
 
 /* Action/button to switch from current to some other database. */
-"[Database/Switch/action]" = "Switch Database";
+"[Database/Switch/action]" = "Cambia Database";
 
 /* Explanation of the database sync conflict `Cancel` option. */
-"[Database/SyncConflict/Cancel/description]" = "Cancel saving, leave target file intact.";
+"[Database/SyncConflict/Cancel/description]" = "Annulla il salvataggio, lascia intatto il file di destinazione.";
 
 /* Title: the current (on-server) database version in case of sync conflict. */
-"[Database/SyncConflict/currentVersion]" = "Current version";
+"[Database/SyncConflict/currentVersion]" = "Versione corrente";
 
 /* Message shown in case of database sync conflict. */
-"[Database/SyncConflict/description]" = "The database has changed since it was loaded in KeePassium.";
+"[Database/SyncConflict/description]" = "Il database è cambiato da quando è stato caricato in KeePassium.";
 
 /* Title: the loaded (on-device) database version in case of sync conflict. */
-"[Database/SyncConflict/loadedVersion]" = "Loaded version";
+"[Database/SyncConflict/loadedVersion]" = "Versione caricata";
 
 /* Action: combine changes in two conflicting databases. */
-"[Database/SyncConflict/Merge/action]" = "Merge";
+"[Database/SyncConflict/Merge/action]" = "Unisci";
 
 /* Explanation of the database sync conflict `Merge` option. */
-"[Database/SyncConflict/Merge/description]" = "Combine changes before saving.";
+"[Database/SyncConflict/Merge/description]" = "Combina le modifiche prima di salvare.";
 
 /* Explanation of the database sync conflict `Overwrite` option. */
-"[Database/SyncConflict/Overwrite/description]" = "Overwrite target file with the local version.";
+"[Database/SyncConflict/Overwrite/description]" = "Sovrascrivi il file di destinazione con la versione locale.";
 
 /* Explanation of the database sync conflict `Save as` option. */
-"[Database/SyncConflict/SaveAs/description]" = "Save changes to another file.";
+"[Database/SyncConflict/SaveAs/description]" = "Salva le modifiche in un altro file.";
 
 /* Title of a message shown when saving to a database that has already been modified elsewhere. */
 "[Database/SyncConflict/title]" = "Conflitto di sincronizzazione";
@@ -416,19 +416,19 @@
 "[Entry/Attachment/add]" = "Aggiungi File";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "Scegli File";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "Scegli Foto";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "Foto";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "Scatta Foto";
 
 /* Action to preview one or several attached documents or images */
-"[Entry/Attachments/preview]" = "Preview";
+"[Entry/Attachments/preview]" = "Anteprima";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "Files allegati";
@@ -689,7 +689,7 @@
 "[Generic] Delete" = "Eliminare";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "Elimina Tutto";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "Annulla";
@@ -731,7 +731,7 @@
 "[Generic] Replace" = "Sostituisci";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "Ripristina";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Mostra nel Finder";
@@ -779,7 +779,7 @@
 "[Generic/File/title] Import Error" = "Errore di Importazione";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "Valori predefiniti";
 
 /* Title of a search field (a noun, not verb) */
 "[Generic/Search/title]" = "Cerca";
@@ -848,16 +848,16 @@
 "[Help Viewer/title]" = "Aiuto";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "Versione precedente ripristinata";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Predefinito (KeePass)";
 
 /* Title of a list with custom (user-imported) icons for groups and entries */
-"[ItemIconPicker/CustomIcons]" = "Custom Icons";
+"[ItemIconPicker/CustomIcons]" = "Icona Personalizzata";
 
 /* Title of a list with standard/default icons for groups and entries */
-"[ItemIconPicker/StandardIcons]" = "Standard Icons";
+"[ItemIconPicker/StandardIcons]" = "Icone Standard";
 
 /* Status message: processing of the master key is in progress */
 "[KDF/Progress] Processing the master key" = "Elaborazione della chiave principale";
@@ -887,13 +887,13 @@
 "[Menu/FileInfo/title]" = "Informazioni sul File";
 
 /* Error shown when scanned QR code cannot be used for OTP */
-"[OTP/Scan/InvalidData]" = "This QR code is not suitable for OTP setup.";
+"[OTP/Scan/InvalidData]" = "Questo codice QR non è adatto per la configurazione OTP.";
 
 /* Message to confirm user intentions */
-"[OTP/Scan/OverwriteWarning]" = "One-time password is already configured for this entry. Do you want to overwrite it?";
+"[OTP/Scan/OverwriteWarning]" = "La password monouso è già configurata per questa voce. Vuoi sovrascriverla?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
-"[OTP/Setup]" = "Setup one-time password (OTP)";
+"[OTP/Setup]" = "Imposta password monouso (OTP)";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Visualizza l'anteprima dei file allegati direttamente in KeePassium e non lasciare tracce in altre applicazioni. (Funziona con immagini, documenti, archivi e molto altro)";
@@ -1007,13 +1007,13 @@
 "[Premium/status] Beta testing" = "Beta testing";
 
 /* Status: current version of the app. For example: `Current version: 1.23`. Should be similar to the `Licensed version` string. [version: String] */
-"[Premium/status] Current version: %@" = "Current version: %@";
+"[Premium/status] Current version: %@" = "Versione attuale: %@";
 
 /* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
 "[Premium/status] Expired %@ ago. Please renew." = "Scaduto %@ fa. Si prega di rinnovare.";
 
 /* Status: licensed premium version of the app. For example: `Licensed version: 1.23`. [version: String] */
-"[Premium/status] Licensed version: %@" = "Licensed version: %@";
+"[Premium/status] Licensed version: %@" = "Versione autorizzata: %@";
 
 /* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
 "[Premium/status] Next renewal on %@" = "Rinnovo successivo il %@";
@@ -1109,10 +1109,10 @@
 "[PremiumFeature/Preview/title] Preview Attachments" = "Anteprima allegati";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
-"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
+"[PremiumFeature/QuickAutoFill/description]" = "Compila i moduli di accesso con un solo tocco, senza nemmeno aprire KeePassium.";
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
-"[PremiumFeature/QuickAutoFill/title]" = "Quick AutoFill";
+"[PremiumFeature/QuickAutoFill/title]" = "Riempimento Automatico Veloce";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Operazione annullata dall'utente";
@@ -1121,10 +1121,10 @@
 "[Progress/CancellationReason/lowMemory]" = "Memoria insufficiente per continuare.\nCiò può accadere con database di grandi dimensioni o con impostazioni database troppo ambiziose (parametro di memoria Argon2).";
 
 /* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
+"[QuickAutoFill/description]" = "Il riempimento automatico veloce mostra le voci rilevanti proprio accanto al campo della password, senza aprire KeePassium.";
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
-"[QuickAutoFill/title]" = "Quick AutoFill";
+"[QuickAutoFill/title]" = "Riempimento Automatico Veloce";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Ripetere Password";
@@ -1163,13 +1163,13 @@
 "[Settings/AppLockTimeout/shortTitle] Never" = "Mai";
 
 /* Action that opens system settings or instructions */
-"[Settings/AutoFill/Activate/action]" = "Activate AutoFill";
+"[Settings/AutoFill/Activate/action]" = "Attiva il Riempimento Automatico";
 
 /* Description for the AutoFill setup instructions */
-"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+"[Settings/AutoFill/Activate/description]" = "Prima del primo utilizzo, è necessario attivare il riempimento automatico nelle impostazioni di sistema.";
 
 /* Title of a help article on how to activate AutoFill. */
-"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+"[Settings/AutoFill/Setup Guide/title]" = "Guida alla configurazione del riempimento automatico";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Elimina TUTTI i file di backup (%d)";
@@ -1250,16 +1250,16 @@
 "[Settings/ListSettings/title]" = "Impostazioni Elenco";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Sort By";
+"[SortBy]" = "Ordina Per";
 
 /* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Date Created";
+"[SortBy/DateCreated]" = "Data Di Creazione";
 
 /* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Date Modified";
+"[SortBy/DateModified]" = "Data Di Modifica";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
-"[SortBy/FileName]" = "Name";
+"[SortBy/FileName]" = "Nome";
 
 /* List sorting option (for groups and entries). Example: 'Sort by: Title' */
 "[SortBy/ItemTitle]" = "Titolo";
@@ -1271,34 +1271,34 @@
 "[Support/template] (Please describe the problem here)" = "(Si prega di descrivere il problema qui)";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/1]" = "Help us make KeePassium better!";
+"[TipBox/callToAction/1]" = "Aiutaci a migliorare KeePassium!";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/2]" = "Help us keep KeePassium shiny!";
+"[TipBox/callToAction/2]" = "Aiutaci a mantenere KeePassium brillante!";
 
 /* Call to action in the Donations screen. (free = gratis) */
-"[TipBox/callToAction/3]" = "Help us keep KeePassium free!";
+"[TipBox/callToAction/3]" = "Aiutaci a mantenere KeePassium gratis!";
 
 /* Text in the Donations screen. */
-"[TipBox/description/1]" = "Do you like KeePassium?";
+"[TipBox/description/1]" = "Ti piace KeePassium?";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium is a free open-source app. You trust it with your most sensitive information. There are no ads, no spying, no nonsense — we respect you.";
+"[TipBox/description/2]" = "KeePassium è un'app open source gratuita. Ti fidi delle tue informazioni più sensibili. Non ci sono annunci, nessuna spia, nessuna assurdità — noi ti rispettiamo.";
 
 /* Text in the Donations screen. */
-"[TipBox/description/3]" = "Do you like KeePassium but don't need the premium features?";
+"[TipBox/description/3]" = "Ti piace KeePassium ma non hai bisogno delle funzioni premium?";
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "Grazie!";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Tip Jar";
+"[TipBox/title/1]" = "Mance";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/2]" = "Donations";
+"[TipBox/title/2]" = "Donazioni";
 
 /* Call to action, title of the tip box/donation screen. */
-"[TipBox/title/3]" = "Support KeePassium";
+"[TipBox/title/3]" = "Sostieni KeePassium";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "Cloud storage / un'altra app";

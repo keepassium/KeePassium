@@ -2,13 +2,13 @@
 "aSq-s6-gVc.text" = "{Setup instructions}";
 
 /* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
-"ei6-22-NXN.title" = "Preenchimento automático";
+"ei6-22-NXN.title" = "Preenchimento Automático";
 
 /* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
 "go1-Nt-isQ.text" = "Copiar código de uso único p/ área transf.";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.footerTitle" = "Quando o preenchimento automático encontrar uma só entrada com correspondência exata ao login em andamento, esta será usada sem pedir confirmação.";
+"jYl-ks-dFG.footerTitle" = "Quando o Preenchimento Automático encontrar uma só entrada com correspondência exata ao login em andamento, esta será usada sem pedir confirmação.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "Busca automática";
