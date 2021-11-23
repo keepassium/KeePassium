@@ -132,7 +132,8 @@ class PricingPlanFactory {
         case .yearlySubscription:
             return PricingPlanPremiumYearly(product)
         case .version88,
-             .version96:
+             .version96,
+             .version99:
             return PricingPlanVersionPurchase(product)
         case .donationSmall,
              .donationMedium,

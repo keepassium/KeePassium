@@ -344,7 +344,8 @@ final class SettingsVC: UITableViewController, Refreshable {
                 LString.premiumStatusNextRenewalTemplate,
                 expiryDateString)
         case .version88,
-             .version96:
+             .version96,
+             .version99:
             premiumStatusText = ""
             assertionFailure("Cannot be subscribed to a version purchase")
         case .donationSmall,

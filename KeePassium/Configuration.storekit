@@ -93,6 +93,21 @@
       "productID" : "com.keepassium.ios.iap.version.96",
       "referenceName" : "Version 96",
       "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "A875ACF0",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "KeePassium 1.28 Premium",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.keepassium.ios.iap.version.99",
+      "referenceName" : "Version 99",
+      "type" : "NonConsumable"
     }
   ],
   "settings" : {
