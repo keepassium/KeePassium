@@ -9,6 +9,7 @@
 extension LString {
     public static let diagnosticLogCopiedToClipboard = NSLocalizedString(
         "[Diagnostics] Diagnostic log has been copied to clipboard.",
+        bundle: Bundle.framework,
         value: "Diagnostic log has been copied to clipboard.",
         comment: "Notification/confirmation message"
     )
