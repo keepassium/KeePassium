@@ -309,15 +309,18 @@ extension DatabaseViewerCoordinator {
     }
     
     private func selectEntry(_ entry: Entry?) {
+        focusOnEntry(entry)
+        showEntry(entry)
+    }
+    
+    private func focusOnEntry(_ entry: Entry?) {
         guard let groupViewerVC = primaryRouter.navigationController.topViewController
                 as? GroupViewerVC
         else {
             assertionFailure()
             return
         }
-        
         groupViewerVC.selectEntry(entry, animated: false)
-        showEntry(entry)
     }
     
     private func showEntry(_ entry: Entry?) {
@@ -711,7 +714,9 @@ extension DatabaseViewerCoordinator: GroupEditorCoordinatorDelegate {
 extension DatabaseViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {
         refresh()
-        if !isSplitViewCollapsed {
+        if isSplitViewCollapsed {
+            focusOnEntry(entry)            
+        } else {
             selectEntry(entry)
         }
         StoreReviewSuggester.maybeShowAppReview(appVersion: AppInfo.version, occasion: .didEditItem)

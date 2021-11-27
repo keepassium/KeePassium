@@ -596,7 +596,7 @@ final class GroupViewerVC:
             return
         }
         tableView.selectRow(at: indexPath, animated: animated, scrollPosition: .none)
-        
+        tableView.scrollToRow(at: indexPath, at: .none, animated: animated)
     }
     
     func getGroup(at indexPath: IndexPath) -> Group? {
