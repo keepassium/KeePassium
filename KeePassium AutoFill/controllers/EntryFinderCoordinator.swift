@@ -123,7 +123,6 @@ extension EntryFinderCoordinator {
     }
     
     private func maybeShowQuickAutoFillPromo() {
-        QuickAutoFillPrompt.dismissDate = nil
         let isQuickTypeEnabled = DatabaseSettingsManager.shared.isQuickTypeEnabled(databaseFile)
         guard !isQuickTypeEnabled && QuickAutoFillPrompt.shouldShow else {
             return

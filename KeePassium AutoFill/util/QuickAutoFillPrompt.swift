@@ -15,7 +15,14 @@ final class QuickAutoFillPrompt {
         static let dismissDate = root + ".dismissDate"
     }
     
-    static var shouldShow: Bool { dismissDate == nil } 
+    static var shouldShow: Bool {
+        if dismissDate != nil {
+            return false
+        }
+        let timeSinceSeen = -(lastSeenDate ?? .distantPast).timeIntervalSinceNow
+        let oneWeek = TimeInterval(7 * 86400)
+        return timeSinceSeen > oneWeek
+    }
     
     static var lastSeenDate: Date? {
         get {
