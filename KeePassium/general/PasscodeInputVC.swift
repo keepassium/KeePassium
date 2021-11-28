@@ -32,6 +32,7 @@ class PasscodeInputVC: UIViewController {
 
     public enum Mode {
         case setup
+        case change
         case verification
     }
     
@@ -68,15 +69,16 @@ class PasscodeInputVC: UIViewController {
         
         passcodeTextField.delegate = self
         passcodeTextField.validityDelegate = self
-        passcodeTextField.isWatchdogAware = (mode != .verification) 
 
         switch mode {
-        case .setup:
+        case .setup, .change:
             instructionsLabel.text = LString.titleSetupAppPasscode
             mainButton.setTitle(LString.actionSavePasscode, for: .normal)
+            passcodeTextField.isWatchdogAware = true
         case .verification:
             instructionsLabel.text = LString.titleUnlockTheApp
             mainButton.setTitle(LString.actionUnlock, for: .normal)
+            passcodeTextField.isWatchdogAware = false 
         }
         cancelButton.isHidden = !isCancelAllowed
         instructionsToCancelButtonConstraint.isActive = isCancelAllowed

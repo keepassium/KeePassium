@@ -62,7 +62,7 @@ extension AppProtectionSettingsCoordinator {
     private func showChangePasscode(isInitialSetup: Bool) {
         let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
         passcodeInputVC.delegate = self
-        passcodeInputVC.mode = .setup
+        passcodeInputVC.mode = isInitialSetup ? .setup : .change
         passcodeInputVC.modalPresentationStyle = .formSheet
         passcodeInputVC.isCancelAllowed = true
         appProtectionSettingsVC.present(passcodeInputVC, animated: true, completion: nil)
