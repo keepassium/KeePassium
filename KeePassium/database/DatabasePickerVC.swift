@@ -520,6 +520,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         let dbRef = databaseRefs[indexPath.row]
         cell.showInfo(from: dbRef)
         cell.isAnimating = dbRef.isRefreshingInfo
+        cell.accessoryMenu = makeDatabaseContextMenu(for: indexPath)
         cell.accessoryTapHandler = { [weak self, indexPath] cell in
             guard let self = self else { return }
             self.tableView(self.tableView, accessoryButtonTappedForRowWith: indexPath)
@@ -605,6 +606,12 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         contextMenuConfigurationForRowAt indexPath: IndexPath,
         point: CGPoint
     ) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ in
+            self?.makeDatabaseContextMenu(for: indexPath)
+        }
+    }
+    
+    private func makeDatabaseContextMenu(for indexPath: IndexPath) -> UIMenu? {
         let cellType = getCellID(for: indexPath)
         let isEditableRow = cellType == .fileItem
         guard isEditableRow else {
@@ -636,9 +643,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
         menuItems.append(makeDestructiveFileAction(for: fileRef, at: indexPath).toMenuAction())
         
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            UIMenu(title: "", children: menuItems)
-        }
+        return UIMenu(title: "", children: menuItems)
     }
     
     private func makeDatabaseSettingsAction(

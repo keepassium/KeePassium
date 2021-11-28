@@ -41,12 +41,23 @@ class FileListCell: UITableViewCell {
     @IBOutlet weak var fileNameLabel: UILabel!
     @IBOutlet weak var fileDetailLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
+    private var accessoryButton: FileInfoAccessoryButton! 
+
+    var accessoryMenu: UIMenu? {
+        get { accessoryButton.menu }
+        set {
+            accessoryButton?.menu = newValue
+            accessoryButton.showsMenuAsPrimaryAction = (newValue != nil)
+        }
+    }
     var accessoryTapHandler: ((FileListCell)->())? 
+    
     fileprivate(set) var fileType: FileType!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        accessoryButton = FileInfoAccessoryButton()
         setupCell()
     }
     
@@ -54,9 +65,8 @@ class FileListCell: UITableViewCell {
         if #available(iOS 13, *) {
             spinner.style = .medium
         }
-        let fileInfoButton = FileInfoAccessoryButton()
-        accessoryView = fileInfoButton
-        fileInfoButton.addTarget(
+        accessoryView = accessoryButton
+        accessoryButton.addTarget(
             self,
             action: #selector(didPressAccessoryButton(button:)),
             for: .touchUpInside)
