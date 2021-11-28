@@ -83,7 +83,7 @@
 "[Clipboard/Copy/notification]" = "Gekopieerd";
 
 /* Error message about AES cipher. [errorCode: Int] */
-"[CryptoError] AES decryption error (code %d)" = "AES-ontcryptiefout (code %d)";
+"[CryptoError] AES decryption error (code %d)" = "AES-decryptiefout (code %d)";
 
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES encryption error (code %d)" = "AES-versleutelfout (code %d)";
@@ -122,7 +122,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databankbestand?\n Zorg ervoor dat je een back-up hebt.";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
-"[Database/LesserTargetFormat/warning]" = "This is an older database format, some data might be lost.";
+"[Database/LesserTargetFormat/warning]" = "Dit is een ouder databankformaat; bepaalde gegevens gaan mogelijk verloren.";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Kan databankbestand niet vinden";
@@ -203,13 +203,13 @@
 "[Database/Saving/Status] Saving..." = "Bezig met opslaan...";
 
 /* Title of settings section (read-only, backup-able, etc) */
-"[Database/Settings/FileAccess/title]" = "File Access";
+"[Database/Settings/FileAccess/title]" = "Bestandtoegang";
 
 /* File setting title, whether the file can be modified (yes/no). */
 "[Database/Settings/ReadOnly/title]" = "Alleen lezen";
 
 /* Title of database-related settings screen */
-"[Database/Settings/title]" = "Database Settings";
+"[Database/Settings/title]" = "Databankinstellingen";
 
 /* Action/button to switch from current to some other database. */
 "[Database/Switch/action]" = "Andere databank openen";
@@ -1109,10 +1109,10 @@
 "[PremiumFeature/Preview/title] Preview Attachments" = "Bijlagen voorvertonen";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
-"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
+"[PremiumFeature/QuickAutoFill/description]" = "Vul loginvelden in met een tik zonder KeePassium te openen.";
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
-"[PremiumFeature/QuickAutoFill/title]" = "Quick AutoFill";
+"[PremiumFeature/QuickAutoFill/title]" = "Snel automatisch invullen";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Afgebroken door gebruiker";
@@ -1121,10 +1121,10 @@
 "[Progress/CancellationReason/lowMemory]" = "Niet genoeg geheugen om door te gaan.\nDit kan gebeuren bij grotere databanken of te ambitieuze databankinstellingen (Argon2-geheugenparameter).";
 
 /* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
+"[QuickAutoFill/description]" = "Deze functie toont relevante items naast het wachtwoordveld zonder KeePassium te openen.";
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
-"[QuickAutoFill/title]" = "Quick AutoFill";
+"[QuickAutoFill/title]" = "Snel automatisch invullen";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Herhaal wachtwoord";
@@ -1163,13 +1163,13 @@
 "[Settings/AppLockTimeout/shortTitle] Never" = "Nooit";
 
 /* Action that opens system settings or instructions */
-"[Settings/AutoFill/Activate/action]" = "Activate AutoFill";
+"[Settings/AutoFill/Activate/action]" = "Activeer automatisch invullen";
 
 /* Description for the AutoFill setup instructions */
-"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+"[Settings/AutoFill/Activate/description]" = "Voordat je automatisch invullen kunt gebruiken, moet je deze functie in Instellingen activeren.";
 
 /* Title of a help article on how to activate AutoFill. */
-"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+"[Settings/AutoFill/Setup Guide/title]" = "Gids voor automatisch invullen";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Verwijder alle back-upbestanden (%d)";

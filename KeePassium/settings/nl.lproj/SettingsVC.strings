@@ -11,7 +11,7 @@
 "A5N-B3-t3t.headerTitle" = "Premium";
 
 /* Class = "UILabel"; text = "App Protection"; ObjectID = "abS-AH-iFO"; Note = "Settings section: protection of the app from unauthorized access"; */
-"abS-AH-iFO.text" = "App-beveiliging";
+"abS-AH-iFO.text" = "Appbeveiliging";
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Bk0-Xf-O7B"; */
 "Bk0-Xf-O7B.title" = "Instellingen";

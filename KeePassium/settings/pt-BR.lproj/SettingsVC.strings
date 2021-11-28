@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9yn-W3-FDl"; Note = "Section in settings: settings that define what happens when the app is started."; */
-"9yn-W3-FDl.headerTitle" = "Abertura do app";
+"9yn-W3-FDl.headerTitle" = "Ao iniciar o app";
 
 /* Class = "UILabel"; text = "Appearance"; ObjectID = "32P-LG-SHa"; Note = "Section in settings: visual style of app elements"; */
 "32P-LG-SHa.text" = "Aparência";
@@ -62,13 +62,13 @@
 "RlK-RW-8Ld.text" = "Novidades";
 
 /* Class = "UILabel"; text = "Suggestions? Problems? Let us know!"; ObjectID = "RNK-fS-Fvx"; Note = "Subtitle for `Contact Us`. Keep it short."; */
-"RNK-fS-Fvx.text" = "Sugestões? Problemas? Contacte-nos!";
+"RNK-fS-Fvx.text" = "Sugestões? Problemas? Contate-nos!";
 
 /* Class = "UILabel"; text = "{App Lock, Touch ID, timeout}"; ObjectID = "SrV-ib-V2E"; Note = "#bc-ignore!"; */
 "SrV-ib-V2E.text" = "{App Lock, Touch ID, timeout}";
 
 /* Class = "UILabel"; text = "AutoFill Passwords"; ObjectID = "T2Z-oa-zJR"; */
-"T2Z-oa-zJR.text" = "Preencher senhas automaticamente";
+"T2Z-oa-zJR.text" = "Preenchimento Automático";
 
 /* Class = "UILabel"; text = "Data Protection"; ObjectID = "UNl-Hc-Ref"; Note = "Settings section: protection of databases, their keys and data inside them"; */
 "UNl-Hc-Ref.text" = "Proteção de dados";

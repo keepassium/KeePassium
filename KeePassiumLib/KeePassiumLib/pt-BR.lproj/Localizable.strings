@@ -1028,7 +1028,7 @@
 "[Premium/Trial/trial then price]" = "%1$@ grátis, depois %2$@";
 
 /* Error message: AppStore returned no available in-app purchase options */
-"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hum... Não há atualizações disponíveis. Isso não deveria ocorrer. Por favor, contacte nosso suporte.";
+"[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support." = "Hum... Não há atualizações disponíveis. Isso não deveria ocorrer. Por favor, contate nosso suporte.";
 
 /* Action/button to start choosing premium versions and possibly buying one */
 "[Premium/Upgrade/action] Upgrade to Premium" = "Atualizar para Premium";

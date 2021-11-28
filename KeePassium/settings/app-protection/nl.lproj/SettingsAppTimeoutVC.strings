@@ -1,5 +1,5 @@
 /* Class = "UITableViewController"; title = "App Lock Timeout"; ObjectID = "5MH-wG-EYd"; */
-"5MH-wG-EYd.title" = "App-vergrendeling-time-out";
+"5MH-wG-EYd.title" = "Time-out voor appvergrendeling";
 
 /* Class = "UILabel"; text = "{Timeout Title}"; ObjectID = "h3T-Lh-kgE"; Note = "#bc-ignore!"; */
 "h3T-Lh-kgE.text" = "{Timeout Title}";

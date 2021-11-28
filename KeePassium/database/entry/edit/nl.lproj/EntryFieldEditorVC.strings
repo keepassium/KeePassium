@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "In-memory Protection"; ObjectID = "0pb-xb-fuf"; Note = "Label for a switch, equivalent to KeePass' own `Enable in-memory protection` for custom entry fields."; */
-"0pb-xb-fuf.text" = "In-geheugen-bescherming";
+"0pb-xb-fuf.text" = "Beveilig in het geheugen";
 
 /* Class = "UIButton"; normalTitle = "{Scan QR code to setup OTP}"; ObjectID = "1Nq-zk-w7B"; */
 "1Nq-zk-w7B.normalTitle" = "{Scan QR code to setup OTP}";
@@ -29,7 +29,7 @@
 "ecN-Xd-ff5.text" = "{Field Name}";
 
 /* Class = "UISwitch"; accessibilityLabel = "In-memory Protection"; ObjectID = "eox-My-Hns"; Note = "Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."; */
-"eox-My-Hns.accessibilityLabel" = "In-geheugen-bescherming";
+"eox-My-Hns.accessibilityLabel" = "Beveilig in het geheugen";
 
 /* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "HcW-rc-pdR"; */
 "HcW-rc-pdR.normalTitle" = "Wijzig pictogram";
