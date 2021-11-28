@@ -1,6 +1,40 @@
 {
     "sections": [
         {
+            "version": "1.29",
+            "releaseDate": "2021-11-29T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Improved: New/edited entry gets highlighted in the group (now also on iPhones) [thanks, u/uschrisf]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Database context menu is duplicated on the `...` button [thanks, Igor]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated NL/PT/SK translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Localization was mostly broken (regression in 1.28.99) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Quick AutoFill setup prompt appeared all the time [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Pressing Cancel while changing the app protection passcode could erase the passcode [thanks, Kevin]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Text input mode for username and URL fields",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.28",
             "releaseDate": "2021-11-23T00:00:00Z",
             "items": [

@@ -1,5 +1,21 @@
 #CHANGELOG
 
+## [1.29.100] - 2021-11-29
+
+### Improved
+
+- New/edited entry gets highlighted in the group (now also on iPhones) [thanks, u/uschrisf]
+- Database context menu is duplicated on the `...` button [thanks, Igor]
+- Updated NL/PT/SK translations [thanks, everyone]
+
+### Fixed
+
+- Localization was mostly broken in previous release [thanks, everyone]
+- Quick AutoFill setup prompt appeared all the time [thanks, everyone]
+- Pressing Cancel while changing the app protection passcode could erase the passcode [thanks, Kevin]
+- Text input mode for username and URL fields
+
+
 ## [1.28.99] - 2021-11-23
 
 ### Improved
