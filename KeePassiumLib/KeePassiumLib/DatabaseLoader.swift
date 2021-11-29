@@ -179,16 +179,10 @@ public class DatabaseLoader: ProgressObserver {
                 self.onDatabaseDocumentReadComplete(data: docData, fileURL: url, fileProvider: fileProvider)
             case .failure(let fileAccessError):
                 Diag.error("Failed to open database document [error: \(fileAccessError.localizedDescription)]")
-                self.stopObservingProgress()
-                if self.progress.isCancelled {
-                    self.notifyDidCancelLoading()
-                } else {
-                    self.notifyDidFailLoading(
-                        message: LString.Error.cannotOpenDatabaseFile,
-                        reason: fileAccessError.localizedDescription
-                    )
-                }
-                self.endBackgroundTask()
+                self.stopAndNotify(
+                    message: LString.Error.cannotOpenDatabaseFile,
+                    reason: fileAccessError.localizedDescription
+                )
             }
         }
     }
@@ -207,16 +201,7 @@ public class DatabaseLoader: ProgressObserver {
                 let fullResponse = String(data: data.asData, encoding: .utf8) ?? "nil"
                 Diag.debug("Full error content for DS file: \(fullResponse)")
             }
-            stopObservingProgress()
-            if progress.isCancelled {
-                self.notifyDidCancelLoading()
-            } else {
-                self.notifyDidFailLoading(
-                    message: LString.Error.unrecognizedDatabaseFormat,
-                    reason: nil
-                )
-            }
-            endBackgroundTask()
+            stopAndNotify(message: LString.Error.unrecognizedDatabaseFormat, reason: nil)
             return
         }
         
@@ -256,16 +241,10 @@ public class DatabaseLoader: ProgressObserver {
     
     private func onKeyFileURLResolveError(_ error: FileAccessError) {
         Diag.error("Failed to resolve key file URL reference [error: \(error.localizedDescription)]")
-        stopObservingProgress()
-        if progress.isCancelled {
-            notifyDidCancelLoading()
-        } else {
-            notifyDidFailLoading(
-                message: LString.Error.cannotFindKeyFile,
-                reason: error.localizedDescription
-            )
-        }
-        endBackgroundTask()
+        stopAndNotify(
+            message: LString.Error.cannotFindKeyFile,
+            reason: error.localizedDescription
+        )
     }
     
     private func onKeyFileURLResolved(url: URL, fileProvider: FileProvider?, dbFile: DatabaseFile) {
@@ -277,16 +256,10 @@ public class DatabaseLoader: ProgressObserver {
                 self.onKeyFileDataReady(dbFile: dbFile, keyFileData: SecureBytes.from(docData))
             case .failure(let fileAccessError):
                 Diag.error("Failed to open key file [error: \(fileAccessError.localizedDescription)]")
-                self.stopObservingProgress()
-                if self.progress.isCancelled {
-                    self.notifyDidCancelLoading()
-                } else {
-                    self.notifyDidFailLoading(
-                        message: LString.Error.cannotOpenKeyFile,
-                        reason: fileAccessError.localizedDescription
-                    )
-                }
-                self.endBackgroundTask()
+                self.stopAndNotify(
+                    message: LString.Error.cannotOpenKeyFile,
+                    reason: fileAccessError.localizedDescription
+                )
             }
         }
     }
@@ -361,15 +334,10 @@ public class DatabaseLoader: ProgressObserver {
                             message: \(error.localizedDescription),
                             reason: \(String(describing: error.failureReason))]
                     """)
-                stopObservingProgress()
-                if progress.isCancelled {
-                    notifyDidCancelLoading()
-                } else {
-                    notifyDidFailLoading(
-                        message: error.localizedDescription,
-                        reason: error.failureReason
-                    )
-                }
+                stopAndNotify(
+                    message: error.localizedDescription,
+                    reason: error.failureReason
+                )
             case .invalidKey:
                 Diag.error("Invalid master key. [message: \(error.localizedDescription)]")
                 stopObservingProgress()
@@ -384,32 +352,14 @@ public class DatabaseLoader: ProgressObserver {
             switch error {
             case .cancelled(let reason):
                 Diag.info("Database loading was cancelled. [reason: \(reason.localizedDescription)]")
-                stopObservingProgress()
-                switch reason {
-                case .userRequest:
-                    notifyDidCancelLoading()
-                case .lowMemoryWarning:
-                    notifyDidFailLoading(
-                        message: error.localizedDescription,
-                        reason: nil
-                    )
-                }
-                endBackgroundTask()
+                stopAndNotify(message: error.localizedDescription, reason: nil)
             }
         } catch {
             assertionFailure("Unprocessed exception")
             dbFile.erase()
             Diag.error("Unexpected error [message: \(error.localizedDescription)]")
-            stopObservingProgress()
-            if progress.isCancelled {
-                notifyDidCancelLoading()
-            } else {
-                notifyDidFailLoading(
-                    message: error.localizedDescription,
-                    reason: nil
-                )
-            }
-            endBackgroundTask()
+            stopAndNotify(message: error.localizedDescription, reason: nil)
+
         }
     }
     
@@ -439,6 +389,30 @@ public class DatabaseLoader: ProgressObserver {
                 nameTemplate: dbFile.visibleFileName,
                 mode: .latest,
                 contents: dbFile.data)
+        }
+    }
+    
+    private func stopAndNotify(message: String, reason: String?) {
+        stopObservingProgress()
+        defer {
+            endBackgroundTask()
+        }
+        
+        guard progress.isCancelled else {
+            notifyDidFailLoading(
+                message: message,
+                reason: reason
+            )
+            return
+        }
+        switch progress.cancellationReason {
+        case .userRequest:
+            notifyDidCancelLoading()
+        case .lowMemoryWarning:
+            notifyDidFailLoading(
+                message: message,
+                reason: reason
+            )
         }
     }
 }
