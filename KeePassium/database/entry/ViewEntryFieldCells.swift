@@ -17,9 +17,7 @@ class ViewableFieldCellFactory {
         field: ViewableField
     ) -> ViewableFieldCell {
         
-        let shouldHideField =
-            (field.isProtected || (field.internalName == EntryField.password))
-            && Settings.current.isHideProtectedFields
+        let isPasswordField = field.internalName == EntryField.password
         let isOpenableURL = field.resolvedValue?.isOpenableURL ?? false
         
         let cell: ViewableFieldCell
@@ -28,7 +26,7 @@ class ViewableFieldCellFactory {
                 withIdentifier: TOTPFieldCell.storyboardID,
                 for: indexPath)
                 as! TOTPFieldCell
-        } else if shouldHideField {
+        } else if field.isProtected || isPasswordField {
             cell = tableView.dequeueReusableCell(
                 withIdentifier: ProtectedFieldCell.storyboardID,
                 for: indexPath)

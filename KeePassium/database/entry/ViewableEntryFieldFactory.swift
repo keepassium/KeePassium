@@ -162,7 +162,9 @@ class ViewableEntryFieldFactory {
     }
     
     static private func makeOne(field: EntryField) -> ViewableField {
-        let isHidden = field.isProtected || field.name == EntryField.password
+        let isHidden =
+            (field.isProtected || field.name == EntryField.password)
+            && Settings.current.isHideProtectedFields
         let result = BasicViewableField(field: field, isValueHidden: isHidden)
         
         if field.name == EntryField.notes {
