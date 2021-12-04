@@ -41,7 +41,7 @@ public class Keychain {
         static let allValues: [Service] = [.general, .databaseKeys, databaseSettings, .premium]
         
         case general = "KeePassium"
-        case databaseKeys = "KeePassium.dbKeys"
+        case databaseKeys = "KeePassium.dbKeys" 
         case databaseSettings = "KeePassium.dbSettings"
         case premium = "KeePassium.premium"
     }
@@ -102,6 +102,30 @@ public class Keychain {
             throw KeychainError.unexpectedFormat
         }
         return data
+    }
+    
+    private func getAccounts(service: Service) throws -> [String] {
+        var query = makeQuery(service: .databaseSettings, account: nil)
+        query[kSecReturnAttributes as String] = kCFBooleanTrue
+        query[kSecMatchLimit as String] = kSecMatchLimitAll
+        
+        var queryResult: AnyObject?
+        let status = withUnsafeMutablePointer(to: &queryResult) { ptr in
+            SecItemCopyMatching(query as CFDictionary, ptr)
+        }
+        if status == errSecItemNotFound {
+            return []
+        }
+        guard status == noErr else {
+            Diag.error("Keychain error [code: \(status))]")
+            throw KeychainError.generic(code: Int(status))
+        }
+        if let items = queryResult as? Array<Dictionary<String, AnyObject>> {
+            let result = items.compactMap { $0[kSecAttrAccount as String] as? String }
+            return result
+        } else {
+            return []
+        }
     }
     
     private func set(service: Service, account: String, data: Data) throws {
@@ -207,6 +231,18 @@ public class Keychain {
     
     internal func removeDatabaseSettings(for descriptor: URLReference.Descriptor) throws {
         try remove(service: .databaseSettings, account: descriptor) 
+    }
+    
+    internal func updateAllDatabaseSettings(updater: (DatabaseSettings) -> Void) throws {
+        let descriptors = try getAccounts(service: .databaseSettings)
+        try descriptors.forEach { descriptor in
+            guard let dbSettings = try getDatabaseSettings(for: descriptor) else {
+                try? removeDatabaseSettings(for: descriptor)
+                return
+            }
+            updater(dbSettings)
+            try setDatabaseSettings(dbSettings, for: descriptor)
+        }
     }
     
     

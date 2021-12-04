@@ -54,73 +54,49 @@ public class DatabaseSettingsManager {
     }
 
     public func forgetAllKeyFiles() {
-        let allDatabaseRefs = FileKeeper.shared.getAllReferences(
-            fileType: .database,
-            includeBackup: true
-        )
-        for dbRef in allDatabaseRefs {
-            let dbDescriptor = dbRef.getDescriptor()
-            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
-            dbSettings.setAssociatedKeyFile(nil)
-            setSettings(dbSettings, for: dbDescriptor)
+        do {
+            try updateAllSettings { $0.setAssociatedKeyFile(nil) }
+        } catch {
+            Diag.error("Failed to forget all key files associations [message: \(error.localizedDescription)]")
         }
     }
     
     public func forgetAllHardwareKeys() {
-        let allDatabaseRefs = FileKeeper.shared.getAllReferences(
-            fileType: .database,
-            includeBackup: true
-        )
-        for dbRef in allDatabaseRefs {
-            let dbDescriptor = dbRef.getDescriptor()
-            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
-            dbSettings.setAssociatedYubiKey(nil)
-            setSettings(dbSettings, for: dbDescriptor)
+        do {
+            try updateAllSettings { $0.setAssociatedYubiKey(nil) }
+        } catch {
+            Diag.error("Failed to forget all hardware key associations [message: \(error.localizedDescription)]")
         }
     }
 
     public func removeAllAssociations(of keyFileRef: URLReference) {
         guard let keyFileDescriptor = keyFileRef.getDescriptor() else { return }
-        let allDatabaseRefs = FileKeeper.shared.getAllReferences(
-            fileType: .database,
-            includeBackup: true
-        )
-        
-        for dbRef in allDatabaseRefs {
-            let dbDescriptor = dbRef.getDescriptor()
-            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
-            if let associatedKeyFile = dbSettings.associatedKeyFile,
-               associatedKeyFile.getDescriptor() == keyFileDescriptor
-            {
-                dbSettings.setAssociatedKeyFile(nil)
-                setSettings(dbSettings, for: dbDescriptor)
+        do {
+            try updateAllSettings { dbSettings in
+                if let associatedKeyFile = dbSettings.associatedKeyFile,
+                   associatedKeyFile.getDescriptor() == keyFileDescriptor
+                {
+                    dbSettings.setAssociatedKeyFile(nil)
+                }
             }
+        } catch {
+            Diag.error("Failed to remove links to key file [message: \(error.localizedDescription)]")
         }
     }
     
     public func eraseAllMasterKeys() {
-        let allDatabaseRefs = FileKeeper.shared.getAllReferences(
-            fileType: .database,
-            includeBackup: true
-        )
-        for dbRef in allDatabaseRefs {
-            let dbDescriptor = dbRef.getDescriptor()
-            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
-            dbSettings.clearMasterKey()
-            setSettings(dbSettings, for: dbDescriptor)
+        do {
+            try updateAllSettings { $0.clearMasterKey() }
+        } catch {
+            Diag.error("Failed to erase all master keys [message: \(error.localizedDescription)]")
         }
     }
     
     public func eraseAllFinalKeys() {
-        let allDatabaseRefs = FileKeeper.shared.getAllReferences(
-            fileType: .database,
-            includeBackup: true
-        )
-        for dbRef in allDatabaseRefs {
-            let dbDescriptor = dbRef.getDescriptor()
-            guard let dbSettings = getSettings(for: dbDescriptor) else { continue }
-            dbSettings.clearFinalKey()
-            setSettings(dbSettings, for: dbDescriptor)
+        do {
+            try updateAllSettings { $0.clearFinalKey() }
+        } catch {
+            Diag.error("Failed to erase all master keys [message: \(error.localizedDescription)]")
         }
     }
     
@@ -203,6 +179,10 @@ public class DatabaseSettingsManager {
         let dbSettings = getOrMakeSettings(for: descriptor)
         updater(dbSettings)
         setSettings(dbSettings, for: descriptor)
+    }
+    
+    private func updateAllSettings(updater: (DatabaseSettings) -> Void) throws {
+        try Keychain.shared.updateAllDatabaseSettings(updater: updater)
     }
     
     private func removeSettings(for descriptor: URLReference.Descriptor?, onlyIfUnused: Bool) {
