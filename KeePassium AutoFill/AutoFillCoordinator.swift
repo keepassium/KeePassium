@@ -10,8 +10,11 @@ import UIKit
 import KeePassiumLib
 import AuthenticationServices
 import LocalAuthentication
+import OSLog
 
 class AutoFillCoordinator: NSObject, Coordinator {
+    let log = Logger(subsystem: "com.keepassium.autofill", category: "AutoFillCoordinator")
+    
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler? 
     
@@ -38,6 +41,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
         rootController: CredentialProviderViewController,
         context: ASCredentialProviderExtensionContext
     ) {
+        log.trace("Coordinator is initializing")
         self.rootController = rootController
         self.extensionContext = context
         
@@ -61,17 +65,27 @@ class AutoFillCoordinator: NSObject, Coordinator {
     }
     
     deinit {
+        log.trace("Coordinator is deinitializing")
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
     
     public func handleMemoryWarning() {
+        log.warning("Received a memory warning, will cancel loading")
         Diag.error("Received a memory warning")
         databaseUnlockerCoordinator?.cancelLoading(reason: .lowMemoryWarning)
     }
     
-    func start() {
+    func prepare() {
+        log.trace("Coordinator is preparing")
+        let premiumManager = PremiumManager.shared
+        premiumManager.reloadReceipt()
+        premiumManager.usageMonitor.startInterval()
         watchdog.didBecomeActive()
+    }
+    
+    func start() {
+        log.trace("Coordinator is starting the UI")
         if !isAppLockVisible {
             rootController.showChildViewController(router.navigationController)
             if isNeedsOnboarding() {
@@ -80,10 +94,6 @@ class AutoFillCoordinator: NSObject, Coordinator {
                 }
             }
         }
-
-        let premiumManager = PremiumManager.shared
-        premiumManager.reloadReceipt()
-        premiumManager.usageMonitor.startInterval()
         
         showDatabasePicker()
         hasUI = true
@@ -99,15 +109,18 @@ class AutoFillCoordinator: NSObject, Coordinator {
         PremiumManager.shared.usageMonitor.stopInterval()
         Watchdog.shared.willResignActive()
         router.popToRoot(animated: false)
+        removeAllChildCoordinators()
     }
     
     private func dismissAndQuit() {
+        log.trace("Coordinator will clean up and quit")
         cancelRequest(.userCanceled)
         Settings.current.isAutoFillFinishedOK = true
         cleanup()
     }
     
     internal func cancelRequest(_ code: ASExtensionError.Code) {
+        log.info("Cancelling the request with code \(code)")
         extensionContext.cancelRequest(
             withError: NSError(
                 domain: ASExtensionErrorDomain,
@@ -117,6 +130,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
     }
     
     private func returnCredentials(entry: Entry) {
+        log.info("Will return credentials")
         watchdog.restart()
         
         let settings = Settings.current
@@ -225,6 +239,7 @@ extension AutoFillCoordinator {
 
 extension AutoFillCoordinator: DatabaseLoaderDelegate {
     func prepareUI(for credentialIdentity: ASPasswordCredentialIdentity) {
+        log.trace("Preparing UI to return credentials")
         Diag.debug("Preparing UI to return credentials")
         self.serviceIdentifiers = [credentialIdentity.serviceIdentifier]
         if let recordIdentifier = credentialIdentity.recordIdentifier,
@@ -232,11 +247,14 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         {
             quickTypeRequiredRecord = record
         }
-        assert(!hasUI)
-        showDummyWarmupSplash()
+        if !ProcessInfo.isRunningOnMac {
+            assert(!hasUI)
+            showDummyWarmupSplash()
+        }
     }
     
     private func showDummyWarmupSplash() {
+        log.trace("Will show a dummy splash")
         let splash = UIAlertController(
             title: LString.databaseStatusLoading,
             message: nil,
@@ -247,12 +265,14 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
     }
     
     func provideWithoutUserInteraction(for credentialIdentity: ASPasswordCredentialIdentity) {
+        log.trace("Will provide without user interaction")
         assert(!hasUI, "This should run in pre-UI mode only")
         Diag.info("Identity: \(credentialIdentity.debugDescription)")
         
         guard let recordIdentifier = credentialIdentity.recordIdentifier,
               let record = QuickTypeAutoFillRecord.parse(recordIdentifier)
         else {
+            log.debug("Failed to parse credential store record, aborting")
             Diag.error("Failed to parse credential store record, aborting")
             cancelRequest(.failed)
             return
@@ -260,6 +280,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         quickTypeRequiredRecord = record
 
         guard let dbRef = findDatabase(for: record) else {
+            log.debug("Failed to find the record, aborting")
             Diag.warning("Failed to find record's database, aborting")
             QuickTypeAutoFillStorage.removeAll()
             cancelRequest(.userInteractionRequired)
@@ -269,9 +290,11 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: dbRef),
               let masterKey = dbSettings.masterKey
         else {
+            log.debug("Failed to auto-open the DB, will require user interaction")
             cancelRequest(.userInteractionRequired)
             return
         }
+        log.debug("Got stored master key for \(dbRef.visibleFileName, privacy: .private)")
         
         assert(self.quickTypeDatabaseLoader == nil)
         quickTypeDatabaseLoader = DatabaseLoader(
@@ -280,6 +303,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
             readOnly: true,
             delegate: self
         )
+        log.trace("Will load database")
         quickTypeDatabaseLoader!.load()
     }
     
@@ -330,6 +354,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
     
     func databaseLoader(_ databaseLoader: DatabaseLoader, didCancelLoading dbRef: URLReference) {
         assert(!hasUI, "This should run only in pre-UI mode")
+        log.fault("DB loading was cancelled without UI. This should not be possible.")
         quickTypeDatabaseLoader = nil
         cancelRequest(.failed)
     }
@@ -341,6 +366,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         reason: String?
     ) {
         assert(!hasUI, "This should run only in pre-UI mode")
+        log.error("DB loading failed: \(message). Will require user interaction.")
         Diag.info("Failed to load the database, starting the UI")
         quickTypeDatabaseLoader = nil
         cancelRequest(.userInteractionRequired)
@@ -352,6 +378,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         withInvalidMasterKeyMessage message: String
     ) {
         assert(!hasUI, "This should run only in pre-UI mode")
+        log.error("DB loading failed: invalid key. Will require user interaction.")
         Diag.info("Stored master key does not fit, starting the UI")
         quickTypeDatabaseLoader = nil
         cancelRequest(.userInteractionRequired)
@@ -366,6 +393,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         assert(!hasUI, "This should run only in pre-UI mode")
         quickTypeDatabaseLoader = nil
         guard let record = quickTypeRequiredRecord else {
+            log.fault("quickTypeRequiredRecord is unexpectedly nil")
             assertionFailure("quickTypeRequiredRecord is unexpectedly nil")
             cancelRequest(.userInteractionRequired)
             return

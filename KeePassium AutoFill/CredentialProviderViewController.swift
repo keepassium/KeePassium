@@ -7,30 +7,40 @@
 //  For commercial licensing, please contact the author.
 
 import AuthenticationServices
+import OSLog
 
 class CredentialProviderViewController: ASCredentialProviderViewController {
-
+    let log = Logger(subsystem: "com.keepassium.autofill", category: "CredentialProviderVC")
+    
     var autoFillCoordinator: AutoFillCoordinator! 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         autoFillCoordinator = AutoFillCoordinator(rootController: self, context: extensionContext)
+        autoFillCoordinator.prepare()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        log.trace("viewWillAppear")
         super.viewWillAppear(animated)
-        if #available(iOS 14, *) {
+        if !ProcessInfo.isRunningOnMac {
             cacheKeyboard()
+            autoFillCoordinator?.start()
         }
-        autoFillCoordinator?.start()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        autoFillCoordinator?.cleanup()
-        DispatchQueue.main.async {
-            exit(0)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        log.trace("viewDidAppear")
+        if ProcessInfo.isRunningOnMac {
+            autoFillCoordinator.start()
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        log.trace("viewDidDisappear")
+        super.viewDidDisappear(animated)
+        autoFillCoordinator?.cleanup()
     }
     
     override func didReceiveMemoryWarning() {

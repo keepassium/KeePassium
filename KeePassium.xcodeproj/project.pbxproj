@@ -180,6 +180,8 @@
 		756B15D024C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756B15D224C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
+		756DBE2E275994B800E4270B /* ASExtensionError+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */; };
+		756DBE2F275994B800E4270B /* ASExtensionError+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */; };
 		756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		756F3645260E9670005A35DA /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
@@ -1375,6 +1377,7 @@
 		756B245E243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		756D15602129AFB60052C728 /* KeePassium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium.entitlements; sourceTree = "<group>"; };
 		756D78DD25F58D67003E080E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
+		756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASExtensionError+extensions.swift"; sourceTree = "<group>"; };
 		756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFilePickerCoordinator.swift; sourceTree = "<group>"; };
 		756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "perpetual-fallback-license.html"; sourceTree = "<group>"; };
 		756FF64320BAB20300FF890B /* UIColor+namedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+namedColors.swift"; sourceTree = "<group>"; };
@@ -2509,6 +2512,7 @@
 				7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */,
 				7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */,
 				75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */,
+				756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3126,6 +3130,7 @@
 			files = (
 				753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */,
 				75838482268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
+				756DBE2E275994B800E4270B /* ASExtensionError+extensions.swift in Sources */,
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
 				759894B824620AF6006B6709 /* FileExportHelper.swift in Sources */,
@@ -3570,6 +3575,7 @@
 			files = (
 				75D7DF7C233E5E310029AD87 /* SKProduct+extension.swift in Sources */,
 				75838484268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
+				756DBE2F275994B800E4270B /* ASExtensionError+extensions.swift in Sources */,
 				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
 				759894BA24620AF6006B6709 /* FileExportHelper.swift in Sources */,
