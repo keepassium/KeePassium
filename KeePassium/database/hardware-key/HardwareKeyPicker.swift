@@ -116,7 +116,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
 
         switch _section {
         case .noHardwareKey:
-            if !AppGroup.isMainApp {
+            if AppGroup.isAppExtension {
                 return LString.hardwareKeyNotAvailableInAutoFill
             }
         case .yubiKeyNFC:

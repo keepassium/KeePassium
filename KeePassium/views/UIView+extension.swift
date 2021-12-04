@@ -61,7 +61,7 @@ extension UIView {
             }
             return
         }
-        guard !AppGroup.isMainApp else {
+        guard AppGroup.isAppExtension else {
             DispatchQueue.main.async { [weak self] in
                 self?.becomeFirstResponder()
             }

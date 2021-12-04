@@ -21,5 +21,9 @@ public class AppGroup {
         return applicationShared != nil
     }
     
+    public static var isAppExtension: Bool {
+        return !isMainApp
+    }
+    
     public static weak var applicationShared: UIApplication?
 }

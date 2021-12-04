@@ -562,10 +562,6 @@
 		75B38C77233E5B7C006BDEFC /* SettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */; };
 		75B38C78233E5B7C006BDEFC /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
 		75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
-		75B59A6823887A2C00239CFF /* SystemIssueDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */; };
-		75B59A6923887A2C00239CFF /* SystemIssueDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */; };
-		75B59A6A23887A2C00239CFF /* SystemIssueDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */; };
-		75B59A6B23887A2C00239CFF /* SystemIssueDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */; };
 		75B5FB7720D53EA700D402D9 /* EntryFieldViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7620D53EA700D402D9 /* EntryFieldViewerVC.swift */; };
 		75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75B5FB7B20D61BC000D402D9 /* ViewableEntryFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */; };
@@ -1668,7 +1664,6 @@
 		75B24DD421C523AE003C9486 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
 		75B38C81233E5B7C006BDEFC /* KeePassiumPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeePassiumPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderVC.swift; sourceTree = "<group>"; };
-		75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIssueDetector.swift; sourceTree = "<group>"; };
 		75B5FB7620D53EA700D402D9 /* EntryFieldViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldViewerVC.swift; sourceTree = "<group>"; };
 		75B5FB7820D6101100D402D9 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewableEntryFieldFactory.swift; sourceTree = "<group>"; };
@@ -2271,7 +2266,6 @@
 				758544632351FE8D000D5E5E /* UIFont+monospace.swift */,
 				75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */,
 				7535079F23783729003B65C9 /* HapticFeedback.swift */,
-				75B59A6723887A2C00239CFF /* SystemIssueDetector.swift */,
 				75A5312223C0D35500900ED1 /* NavigationRouter.swift */,
 				75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */,
 				759BC62B2487FE5200E88111 /* URLReference+extensions.swift */,
@@ -3159,7 +3153,6 @@
 				75814FD325F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562A2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */,
-				75B59A6923887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				757FB3CD21F9C50700F016FA /* ValidatingTextField.swift in Sources */,
 				75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */,
@@ -3386,7 +3379,6 @@
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
-				75B59A6823887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,
 				757ADC5423A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FCCF842631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
@@ -3559,7 +3551,6 @@
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07124F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
-				75B59A6A23887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				75B38C4A233E5B7C006BDEFC /* main.swift in Sources */,
 				757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
@@ -3604,7 +3595,6 @@
 				75814FD525F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562C2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75D7DF89233E5E310029AD87 /* EntryFinderVC.swift in Sources */,
-				75B59A6B23887A2C00239CFF /* SystemIssueDetector.swift in Sources */,
 				75D7DF8B233E5E310029AD87 /* ValidatingTextField.swift in Sources */,
 				75D7DF8C233E5E310029AD87 /* FileInfoReloader.swift in Sources */,
 				75D7DF8D233E5E310029AD87 /* MultilineButton.swift in Sources */,

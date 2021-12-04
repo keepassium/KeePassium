@@ -56,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppGroup.applicationShared = application
         
         SettingsMigrator.processAppLaunch(with: Settings.current)
-        SystemIssueDetector.scanForIssues()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

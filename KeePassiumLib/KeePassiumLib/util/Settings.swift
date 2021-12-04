@@ -999,10 +999,8 @@ public class Settings {
         }
     }
     
-    public var isAffectedByAutoFillBiometricIDLoop = false
-    
-    public func maybeFixAutoFillBiometricIDLoop(_ timeout: AppLockTimeout) -> AppLockTimeout {
-        if isAffectedByAutoFillBiometricIDLoop && timeout == .immediately {
+    private func maybeFixAutoFillBiometricIDLoop(_ timeout: AppLockTimeout) -> AppLockTimeout {
+        if timeout == .immediately && AppGroup.isAppExtension {
             return .after1second
         } else {
             return timeout

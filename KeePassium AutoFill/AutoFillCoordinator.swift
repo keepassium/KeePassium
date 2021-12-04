@@ -58,7 +58,6 @@ class AutoFillCoordinator: NSObject, Coordinator {
         BusinessModel.type = .freemium
         #endif
         SettingsMigrator.processAppLaunch(with: Settings.current)
-        SystemIssueDetector.scanForIssues()
         Diag.info(AppInfo.description)
 
         watchdog.delegate = self
