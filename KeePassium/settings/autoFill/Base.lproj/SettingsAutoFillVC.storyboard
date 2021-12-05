@@ -13,7 +13,7 @@
         <scene sceneID="jVa-UW-bJz">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsAutoFillVC" title="AutoFill" id="ei6-22-NXN" customClass="SettingsAutoFillVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rrn-hr-Byf">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Rrn-hr-Byf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,7 +47,7 @@
                             <tableViewSection headerTitle="" footerTitle="{Quick AutoFill description}" id="KaG-pD-D9z">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ymn-Ga-UJN">
-                                        <rect key="frame" x="0.0" y="121.5" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="121" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ymn-Ga-UJN" id="wZ9-Hz-1qs">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
@@ -104,7 +104,7 @@
                             <tableViewSection headerTitle="Automatic search" footerTitle="When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically." id="jYl-ks-dFG" userLabel="Automatic search">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="R2t-YZ-TJF">
-                                        <rect key="frame" x="0.0" y="239" width="320" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="238.5" width="320" height="58.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R2t-YZ-TJF" id="Gjp-69-EKT">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
@@ -154,7 +154,7 @@
                             <tableViewSection headerTitle="One-time passwords" footerTitle="When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you." id="XYL-1l-Jx6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="GKe-BK-Kaa">
-                                        <rect key="frame" x="0.0" y="377.5" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="377" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GKe-BK-Kaa" id="vYX-KL-3FJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>

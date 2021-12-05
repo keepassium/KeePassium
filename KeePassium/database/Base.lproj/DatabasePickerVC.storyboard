@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,13 +13,13 @@
         <scene sceneID="ZB8-UY-hSW">
             <objects>
                 <tableViewController storyboardIdentifier="DatabasePickerVC" id="vWt-yt-cgE" customClass="DatabasePickerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="R2f-V7-oLa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="R2f-V7-oLa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoFilesCell" textLabel="5Md-DB-C5P" style="IBUITableViewCellStyleDefault" id="2aB-CY-avc">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2aB-CY-avc" id="6sf-ql-YWz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -39,14 +39,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" id="vFB-ft-SKS" userLabel="FileItemCell" customClass="FileListCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.5" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="59.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vFB-ft-SKS" id="XQp-IY-Ue4">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="63"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="338.5" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="4cs-i4-8Si">
-                                            <rect key="frame" x="16" y="17" width="29" height="29"/>
+                                            <rect key="frame" x="16" y="15.5" width="29" height="29"/>
                                             <color key="tintColor" name="IconTint"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="29" id="8z4-YP-LNG"/>
@@ -54,10 +54,10 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lBd-mX-l14">
-                                            <rect key="frame" x="61" y="11.5" width="266" height="40.5"/>
+                                            <rect key="frame" x="61" y="11.5" width="269.5" height="37"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="{Database File Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWy-ey-805">
-                                                    <rect key="frame" x="0.0" y="0.0" width="266" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="269.5" height="17"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -66,13 +66,13 @@
                                                     </attributedString>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d08-i0-dTY">
-                                                    <rect key="frame" x="0.0" y="20.5" width="266" height="20"/>
+                                                    <rect key="frame" x="0.0" y="17" width="269.5" height="20"/>
                                                     <subviews>
                                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WJR-7L-1rw">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="{File Attributes}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2W-10-GnE">
-                                                            <rect key="frame" x="28" y="0.0" width="238" height="20"/>
+                                                            <rect key="frame" x="28" y="0.0" width="241.5" height="20"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" name="AuxiliaryText"/>
                                                             <nil key="highlightedColor"/>
@@ -103,14 +103,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AppLockSetupCell" id="P0I-MZ-5qs" userLabel="AppLockSetupCell" customClass="AppLockSetupCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="134.5" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="147.5" width="375" height="103.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P0I-MZ-5qs" id="UIb-k0-Rcp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Protect KeePassium from unauthorized access." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R68-cy-5mz">
-                                            <rect key="frame" x="85" y="15" width="205.5" height="42.5"/>
+                                            <rect key="frame" x="100.5" y="15" width="174" height="36"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                             </accessibility>
@@ -122,7 +122,7 @@
                                             </attributedString>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hmv-DA-BgM" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="111.5" y="65.5" width="152" height="29.5"/>
+                                            <rect key="frame" x="120.5" y="59" width="134" height="29.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <state key="normal" title="Enable AppLock" image="settings-app-lock-listitem">
