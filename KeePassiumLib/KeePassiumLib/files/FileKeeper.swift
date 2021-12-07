@@ -50,7 +50,15 @@ public class FileKeeper {
     }
 
     private enum UserDefaultsKey {
-        static let documentsDirURLReference = "documentsDirURLReference"
+        static let freemiumDocumentsDirURLReference = "documentsDirURLReference"
+        static let proDocumentsDirURLReference = "documentsDirURLReferencePro"
+        static var documentsDirURLReference: String {
+            if BusinessModel.type == .prepaid {
+                return proDocumentsDirURLReference
+            } else {
+                return freemiumDocumentsDirURLReference
+            }
+        }
         
         static var mainAppPrefix: String {
             if BusinessModel.type == .prepaid {
@@ -161,16 +169,26 @@ public class FileKeeper {
                 key: UserDefaultsKey.documentsDirURLReference
             )
             return dirFromFileManager
-        } else {
-            if platformSupportsSharedReferences {
-                guard let docDirUrl = loadURL(key: UserDefaultsKey.documentsDirURLReference) else {
-                    Diag.warning("AutoFill does not know the main app's documents directory. Launch the main app to fix this.")
-                    return dirFromFileManager
-                }
-                return docDirUrl
-            }
+        }
+        
+        guard platformSupportsSharedReferences else {
             return dirFromFileManager
         }
+        switch BusinessModel.type {
+        case .freemium:
+            if let docDirUrl = loadURL(key: UserDefaultsKey.documentsDirURLReference) {
+                return docDirUrl
+            }
+        case .prepaid:
+            if let proDocDirURL = loadURL(key: UserDefaultsKey.proDocumentsDirURLReference) {
+                return proDocDirURL
+            } else if let freeDocDirURL = loadURL(key: UserDefaultsKey.freemiumDocumentsDirURLReference) {
+                Diag.warning("Falling back to freemium documents directory")
+                return freeDocDirURL
+            }
+        }
+        Diag.warning("AutoFill does not know the main app's documents directory. Launch the main app to fix this.")
+        return dirFromFileManager
     }
     
     private static func storeURL(_ url: URL, location: URLReference.Location, key: String) {
