@@ -21,6 +21,10 @@ final class EntryFieldEditorCoordinator: Coordinator {
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: EntryFieldEditorCoordinatorDelegate?
     
+    public var isCreating: Bool {
+        originalEntry == nil
+    }
+    
     private let databaseFile: DatabaseFile
     private let database: Database
     private let parent: Group 

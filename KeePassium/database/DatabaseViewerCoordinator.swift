@@ -715,7 +715,13 @@ extension DatabaseViewerCoordinator: EntryFieldEditorCoordinatorDelegate {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator) {
         refresh()
         if isSplitViewCollapsed {
-            focusOnEntry(entry)            
+            let isNewEntry = coordinator.isCreating
+            if isNewEntry {
+                Settings.current.entryViewerPage = 0
+                selectEntry(entry) 
+            } else {
+                focusOnEntry(entry) 
+            }
         } else {
             selectEntry(entry)
         }
