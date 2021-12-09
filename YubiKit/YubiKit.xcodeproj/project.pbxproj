@@ -150,7 +150,7 @@
 		95BA204521F7483100EED927 /* YKFKeyFIDO2GetAssertionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA204421F7483100EED927 /* YKFKeyFIDO2GetAssertionResponse.m */; };
 		95BA204821F877BA00EED927 /* YKFFIDO2TouchPoolingAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA204721F877BA00EED927 /* YKFFIDO2TouchPoolingAPDU.m */; };
 		95C29617206247210091318B /* YubiKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 95C29614206247210091318B /* YubiKit.h */; };
-		95C2961F206247450091318B /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C2961E206247450091318B /* CoreNFC.framework */; };
+		95C2961F206247450091318B /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C2961E206247450091318B /* CoreNFC.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		95C29623206247920091318B /* YKFOTPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C29622206247920091318B /* YKFOTPToken.m */; };
 		95C296262062497C0091318B /* YKFOTPTokenValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C296252062497C0091318B /* YKFOTPTokenValidator.m */; };
 		95C29628206250820091318B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C29627206250820091318B /* AVFoundation.framework */; };
