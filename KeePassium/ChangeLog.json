@@ -1,6 +1,48 @@
 {
     "sections": [
         {
+            "version": "1.30",
+            "releaseDate": "2021-12-10T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Improved: Easier copying from a newly created entry [thanks, u/uschrisf and u/Vakke]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: Quick AutoFill now also works on macOS (fixes #206)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Empty window on iPad when launching in Split View mode [thanks, G]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Passwords were not colored in some cases [thanks, Jan]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill could use a wrong directory after freemium-to-Pro upgrade [thanks, ARK]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill could lock up the database when running low on memory [thanks, Tim]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Deserialization of pre-1.28 database settings",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: `Remove Master Keys` could miss some files in AutoFill",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: Some texts appeared truncated",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.29",
             "releaseDate": "2021-11-29T00:00:00Z",
             "items": [

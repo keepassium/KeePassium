@@ -1,5 +1,23 @@
 #CHANGELOG
 
+## [1.30.101] - 2021-12-10
+
+### Improved
+
+- Easier copying from a newly created entry [thanks, u/uschrisf and u/Vakke]
+
+### Fixed
+
+- macOS: Quick AutoFill now also works on macOS (fixes #206)
+- Empty window on iPad when launching in Split View mode [thanks, G]
+- Passwords were not colored in some cases [thanks, Jan]
+- AutoFill could use a wrong directory after freemium-to-Pro upgrade [thanks, ARK]
+- AutoFill could lock up the database when running low on memory [thanks, Tim]
+- Deserialization of pre-1.28 database settings
+- macOS: `Remove Master Keys` could miss some files in AutoFill
+- macOS: Some texts appeared truncated
+
+
 ## [1.29.100] - 2021-11-29
 
 ### Improved
