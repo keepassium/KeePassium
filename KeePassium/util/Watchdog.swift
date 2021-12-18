@@ -29,11 +29,6 @@ fileprivate extension WatchdogDelegate {
 
 class Watchdog {
     public static let shared = Watchdog()
-    
-    public enum Notifications {
-        public static let appLockDidEngage = Notification.Name("com.keepassium.Watchdog.appLockDidEngage")
-        public static let databaseLockDidEngage = Notification.Name("com.keepassium.Watchdog.databaseLockDidEngage")
-    }
        
     private var isAppLaunchHandled = false
     
@@ -222,7 +217,6 @@ class Watchdog {
         appLockTimer?.invalidate()
         appLockTimer = nil
         delegate.showAppLock(self)
-        NotificationCenter.default.post(name: Watchdog.Notifications.appLockDidEngage, object: self)
     }
     
     private func engageDatabaseLock(animate: Bool) {
@@ -235,10 +229,6 @@ class Watchdog {
             DatabaseSettingsManager.shared.eraseAllMasterKeys()
         }
         delegate?.mustCloseDatabase(self, animate: animate)
-        NotificationCenter.default.post(
-            name: Watchdog.Notifications.databaseLockDidEngage,
-            object: self
-        )
     }
     
     open func unlockApp() {
