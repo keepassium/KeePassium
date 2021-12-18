@@ -482,6 +482,12 @@ extension AutoFillCoordinator: WatchdogDelegate {
     }
     
     private func maybeShowBiometricAuth() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            self?._maybeShowBiometricAuth()
+        }
+    }
+    
+    private func _maybeShowBiometricAuth() {
         guard canUseBiometrics() else {
             isBiometricAuthShown = false
             return
