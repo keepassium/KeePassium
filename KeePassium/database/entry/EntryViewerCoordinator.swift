@@ -330,7 +330,20 @@ extension EntryViewerCoordinator {
     ) {
         Diag.debug("Will save attachment")
         assert(fileExportHelper == nil)
-        fileExportHelper = FileExportHelper(data: attachment.data, fileName: attachment.name)
+
+        let uncompressedBytes: ByteArray
+        do {
+            if attachment.isCompressed {
+                uncompressedBytes = try attachment.data.gunzipped() 
+            } else {
+                uncompressedBytes = attachment.data
+            }
+        } catch {
+            Diag.error("Failed to decompress the attachment [message: \(error.localizedDescription)]")
+            return
+        }
+
+        fileExportHelper = FileExportHelper(data: uncompressedBytes, fileName: attachment.name)
         fileExportHelper!.handler = { finalURL in
             self.fileExportHelper = nil 
             guard finalURL != nil else { return }
@@ -338,7 +351,7 @@ extension EntryViewerCoordinator {
             Diag.info("Attachment saved OK")
             viewController.showSuccessNotification(
                 LString.actionDone,
-                icon: .squareAndArrowUp
+                icon: ProcessInfo.isRunningOnMac ? .squareAndArrowDown : .squareAndArrowUp
             )
         }
         fileExportHelper!.saveAs(presenter: viewController)
