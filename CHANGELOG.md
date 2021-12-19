@@ -1,5 +1,14 @@
 #CHANGELOG
 
+## [1.30.102] - 2021-12-19
+
+### Fixed
+
+- New attachments did not export properly via `Save As` menu (fixes #211) [thanks, Andreas]
+- AutoFill failed to show biometric unlock (regression in 1.28.97) [thanks, Felix and Ville]
+- Buttons in passcode input screen could be covered by keyboard [thanks, Ville]
+
+
 ## [1.30.101] - 2021-12-10
 
 ### Improved

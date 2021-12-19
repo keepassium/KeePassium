@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.30",
-            "releaseDate": "2021-12-10T00:00:00Z",
+            "releaseDate": "2021-12-19T00:00:00Z",
             "items": [
                 {
                     "title": "🛠 Improved: Easier copying from a newly created entry [thanks, u/uschrisf and u/Vakke]",
@@ -38,6 +38,18 @@
                 },
                 {
                     "title": "🐞 Fixed: macOS: Some texts appeared truncated",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: New attachments did not export properly via `Save As` menu (fixes #211) [thanks, Andreas]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill failed to show biometric unlock (regression in 1.28.97) [thanks, Ville]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Buttons in passcode input screen could be covered by keyboard [thanks, Ville]",
                     "type": 1
                 }
             ]
