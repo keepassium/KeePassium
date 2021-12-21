@@ -220,6 +220,12 @@ class FileInfoVC: UITableViewController {
     }
     
     private func getFileLocationDescription() -> String {
+        if ProcessInfo.isRunningOnMac,
+            let url = try? urlRef.resolveSync()
+        {
+            return url.path
+        }
+        
         guard let fileProvider = urlRef.fileProvider else {
             return urlRef.location.description
         }
