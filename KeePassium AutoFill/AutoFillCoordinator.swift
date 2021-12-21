@@ -21,7 +21,9 @@ class AutoFillCoordinator: NSObject, Coordinator {
     unowned var rootController: CredentialProviderViewController
     let extensionContext: ASCredentialProviderExtensionContext
     var router: NavigationRouter
-    var hasUI = false
+    
+    private var hasUI = false
+    private var isStarted = false
 
     private var databasePickerCoordinator: DatabasePickerCoordinator!
     private var entryFinderCoordinator: EntryFinderCoordinator?
@@ -84,6 +86,11 @@ class AutoFillCoordinator: NSObject, Coordinator {
     }
     
     func start() {
+        guard !isStarted else {
+            return
+        }
+        isStarted = true
+
         log.trace("Coordinator is starting the UI")
         if !isAppLockVisible {
             rootController.showChildViewController(router.navigationController)
@@ -248,18 +255,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         }
         if !ProcessInfo.isRunningOnMac {
             assert(!hasUI)
-            showDummyWarmupSplash()
-        }
-    }
-    
-    private func showDummyWarmupSplash() {
-        log.trace("Will show a dummy splash")
-        let splash = UIAlertController(
-            title: LString.databaseStatusLoading,
-            message: nil,
-            preferredStyle: .alert)
-        rootController.present(splash, animated: true) {
-            splash.dismiss(animated: true, completion: nil)
+            start()
         }
     }
     
