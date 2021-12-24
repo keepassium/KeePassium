@@ -130,6 +130,30 @@ public class DatabaseSettingsManager {
         return quickTypeDatabases.count
     }
     
+    public func getAvailableFallbackStrategies(
+        _ databaseRef: URLReference
+    ) -> Set<UnreachableFileFallbackStrategy> {
+        switch databaseRef.location {
+        case .internalDocuments,
+             .internalBackup,
+             .internalInbox:
+            return [.showError]
+        case .external:
+            return [.showError, .useCache]
+        }
+    }
+    
+    public func getFallbackStrategy(_ databaseRef: URLReference) -> UnreachableFileFallbackStrategy {
+        switch databaseRef.location {
+        case .internalDocuments,
+             .internalBackup,
+             .internalInbox:
+            return .showError
+        case .external:
+            return getSettings(for: databaseRef)?.fallbackStrategy ?? .useCache
+        }
+    }
+    
     
     private func getSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings? {
         guard let descriptor = descriptor else {

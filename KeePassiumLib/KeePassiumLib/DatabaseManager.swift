@@ -30,7 +30,12 @@ public class DatabaseManager {
         guard let root2 = db2.root as? Group2 else { fatalError() }
         templateSetupHandler(root2)
 
-        let databaseFile = DatabaseFile(database: db2, fileURL: databaseURL, fileProvider: nil)
+        let databaseFile = DatabaseFile(
+            database: db2,
+            fileURL: databaseURL,
+            fileProvider: nil,
+            status: []
+        )
         db2.keyHelper.createCompositeKey(
             password: password,
             keyFile: keyFile,
@@ -58,6 +63,24 @@ public class DatabaseManager {
             return true
         case .internalBackup, .internalInbox:
             return false
+        }
+    }
+    
+    public static func getFallbackFile(for databaseRef: URLReference) -> URLReference? {
+        let latestBackupURL = FileKeeper.shared.getBackupFileURL(
+            nameTemplate: databaseRef.visibleFileName,
+            mode: .latest,
+            timestamp: .now
+        )
+        guard let latestBackupURL = latestBackupURL else {
+            return nil
+        }
+        do {
+            let ref = try URLReference(from: latestBackupURL, location: .internalBackup)
+            return ref
+        } catch {
+            Diag.error("Failed to create reference to fallback file [message: \(error.localizedDescription)]")
+            return nil
         }
     }
 }

@@ -50,10 +50,12 @@
 		75B813D425FA6FD000A86B7C /* StoreReviewSuggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */; };
 		75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B8608B2475E2F800C5E6C0 /* LString.swift */; };
 		75B928AF274ADB970082E56C /* LString+settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B928AE274ADB970082E56C /* LString+settings.swift */; };
+		75BF5AE827680A3F00809654 /* UnreachableFileFallbackStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF5AE727680A3F00809654 /* UnreachableFileFallbackStrategy.swift */; };
 		75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1432481B2FA0017B980 /* FileProvider.swift */; };
 		75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01EFE2474AC290099698C /* Synchronizable.swift */; };
 		75C01F03247554EA0099698C /* FileAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01F02247554EA0099698C /* FileAccessError.swift */; };
 		75C8471924FAE7B60064A4EC /* Comparable+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */; };
+		75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA6640276BAF06003384FC /* DatabaseError.swift */; };
 		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
 		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B862174F02F00F7DEF2 /* salsa20.c */; };
@@ -240,10 +242,12 @@
 		75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewSuggester.swift; sourceTree = "<group>"; };
 		75B8608B2475E2F800C5E6C0 /* LString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75B928AE274ADB970082E56C /* LString+settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+settings.swift"; sourceTree = "<group>"; };
+		75BF5AE727680A3F00809654 /* UnreachableFileFallbackStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreachableFileFallbackStrategy.swift; sourceTree = "<group>"; };
 		75BFB1432481B2FA0017B980 /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
 		75C01EFE2474AC290099698C /* Synchronizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
 		75C01F02247554EA0099698C /* FileAccessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAccessError.swift; sourceTree = "<group>"; };
 		75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+extensions.swift"; sourceTree = "<group>"; };
+		75CA6640276BAF06003384FC /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
 		75D09B862174F02F00F7DEF2 /* salsa20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = salsa20.c; sourceTree = "<group>"; };
@@ -480,6 +484,14 @@
 			name = settings;
 			sourceTree = "<group>";
 		};
+		75BF5AE627680A1100809654 /* caching */ = {
+			isa = PBXGroup;
+			children = (
+				75BF5AE727680A3F00809654 /* UnreachableFileFallbackStrategy.swift */,
+			);
+			name = caching;
+			sourceTree = "<group>";
+		};
 		75D09B6A2174F02F00F7DEF2 /* crypto */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +597,7 @@
 				75D09BFB2174F77000F7DEF2 /* IconID.swift */,
 				75D4080423952FD40042122A /* CompositeKey.swift */,
 				759A321A252DC1E7001A1623 /* EntryFieldReference.swift */,
+				75CA6640276BAF06003384FC /* DatabaseError.swift */,
 				756AFD5C258B4C510072BEEF /* KeyFileError.swift */,
 				75012A6926D82A58002F1911 /* DatabaseLoadingWarning.swift */,
 			);
@@ -753,6 +766,7 @@
 		75F4ACD72177469500B22D8B /* files */ = {
 			isa = PBXGroup;
 			children = (
+				75BF5AE627680A1100809654 /* caching */,
 				75F4ACD92177469500B22D8B /* FileKeeper.swift */,
 				75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */,
 				75F4ACDA2177469500B22D8B /* FileType.swift */,
@@ -954,6 +968,7 @@
 				75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */,
 				750935C4235219B900A362C8 /* Observable.swift in Sources */,
 				75D09C3A2174F77000F7DEF2 /* DataCipher.swift in Sources */,
+				75BF5AE827680A3F00809654 /* UnreachableFileFallbackStrategy.swift in Sources */,
 				75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */,
 				75F4ACD5217745B300B22D8B /* DatabaseManager.swift in Sources */,
 				75D09C212174F77000F7DEF2 /* Binary2.swift in Sources */,
@@ -1016,6 +1031,7 @@
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
 				75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */,
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
+				75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */,
 				75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */,
 				751F90A9247748A300A7418F /* Result.swift in Sources */,
 				75D09C412174F77000F7DEF2 /* Database1.swift in Sources */,

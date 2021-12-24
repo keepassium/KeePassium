@@ -370,6 +370,12 @@ extension LString {
         value: "The database is read-only",
         comment: "Message shown if current database cannot be edited"
     )
+    public static let databaseIsFallbackCopy = NSLocalizedString(
+        "[Database/Loading/FromCache/text]",
+        bundle: Bundle.framework,
+        value: "The database is unreachable.\nThis is its latest local copy.",
+        comment: "Message shown after we show a cached local database instead of the (unavailable) original database."
+    )
     public static let actionLockDatabase = NSLocalizedString(
         "[Database/Opened/action] Lock Database",
         bundle: Bundle.framework,

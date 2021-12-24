@@ -839,30 +839,22 @@ public class FileKeeper {
             Diag.info("No data to backup.")
             return
         }
-        guard let encodedNameTemplate = nameTemplate
-            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        guard let nameTemplateURL = URL(string: encodedNameTemplate) else { return }
         
         let timestamp: Date
-        let fileNameSuffix: String
         switch mode {
         case .latest:
-            timestamp = Date.now
-            fileNameSuffix = backupLatestSuffix
+            timestamp = .now
         case .timestamped:
-            timestamp = Date.now - 1.0
-            let timestampString = backupTimestampFormatter.string(from: timestamp)
-            fileNameSuffix = String(backupTimestampSeparator) + timestampString
+            timestamp = .now - 1.0
         }
         
-        let baseFileName = nameTemplateURL
-            .deletingPathExtension()
-            .absoluteString
-            .removingPercentEncoding  
-            ?? nameTemplate           
-        var backupFileURL = backupDirURL
-            .appendingPathComponent(baseFileName + fileNameSuffix, isDirectory: false)
-            .appendingPathExtension(nameTemplateURL.pathExtension)
+        guard var backupFileURL = getBackupFileURL(
+            nameTemplate: nameTemplate,
+            mode: mode,
+            timestamp: timestamp)
+        else {
+            return
+        }
         
         let fileManager = FileManager.default
         do {
@@ -890,6 +882,34 @@ public class FileKeeper {
         } catch {
             Diag.warning("Failed to make backup copy [error: \(error.localizedDescription)]")
         }
+    }
+    
+    func getBackupFileURL(nameTemplate: String, mode: BackupMode, timestamp: Date) -> URL? {
+        guard let encodedNameTemplate = nameTemplate
+                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let nameTemplateURL = URL(string: encodedNameTemplate)
+        else {
+            return nil
+        }
+        
+        let fileNameSuffix: String
+        switch mode {
+        case .latest:
+            fileNameSuffix = backupLatestSuffix
+        case .timestamped:
+            let timestampString = backupTimestampFormatter.string(from: timestamp)
+            fileNameSuffix = String(backupTimestampSeparator) + timestampString
+        }
+        
+        let baseFileName = nameTemplateURL
+            .deletingPathExtension()
+            .absoluteString
+            .removingPercentEncoding  
+            ?? nameTemplate           
+        let backupFileURL = backupDirURL
+            .appendingPathComponent(baseFileName + fileNameSuffix, isDirectory: false)
+            .appendingPathExtension(nameTemplateURL.pathExtension)
+        return backupFileURL
     }
     
     public func getBackupFiles() -> [URLReference] {

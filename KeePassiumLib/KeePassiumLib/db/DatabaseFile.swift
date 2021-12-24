@@ -16,8 +16,14 @@ public class DatabaseFile: Eraseable {
         case merge
     }
     
-    public let database: Database
+    public enum StatusFlag {
+        case readOnly
+        case localFallback
+    }
+    public typealias Status = Set<StatusFlag>
     
+    public let database: Database
+       
     public private(set) var data: ByteArray
     
     public private(set) var storedDataSHA512: ByteArray
@@ -25,7 +31,9 @@ public class DatabaseFile: Eraseable {
     public var fileURL: URL
 
     public var fileReference: URLReference?
-        
+    
+    public private(set) var status: Status
+
     public var visibleFileName: String {
         return fileURL.lastPathComponent
     }
@@ -48,7 +56,8 @@ public class DatabaseFile: Eraseable {
         database: Database,
         data: ByteArray = ByteArray(),
         fileURL: URL,
-        fileProvider: FileProvider?
+        fileProvider: FileProvider?,
+        status: Status
     ) {
         self.database = database
         self.data = data
@@ -56,13 +65,15 @@ public class DatabaseFile: Eraseable {
         self.fileURL = fileURL
         self._fileProvider = fileProvider
         self.fileReference = nil
+        self.status = status
     }
 
     init(
         database: Database,
         data: ByteArray = ByteArray(),
         fileURL: URL,
-        fileReference: URLReference
+        fileReference: URLReference,
+        status: Status
     ) {
         self.database = database
         self.data = data
@@ -70,11 +81,13 @@ public class DatabaseFile: Eraseable {
         self.fileURL = fileURL
         self.fileReference = fileReference
         self._fileProvider = nil 
+        self.status = status
     }
     
     public func erase() {
         data.erase()
         database.erase()
+        status.removeAll()
     }
     
     public func resolveFileURL(

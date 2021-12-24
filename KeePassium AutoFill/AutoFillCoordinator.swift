@@ -295,7 +295,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         quickTypeDatabaseLoader = DatabaseLoader(
             dbRef: dbRef,
             compositeKey: masterKey,
-            readOnly: true,
+            status: [.readOnly],
             delegate: self
         )
         log.trace("Will load database")
@@ -347,36 +347,26 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
     ) {
     }
     
-    func databaseLoader(_ databaseLoader: DatabaseLoader, didCancelLoading dbRef: URLReference) {
-        assert(!hasUI, "This should run only in pre-UI mode")
-        log.fault("DB loading was cancelled without UI. This should not be possible.")
-        quickTypeDatabaseLoader = nil
-        cancelRequest(.failed)
-    }
-    
     func databaseLoader(
         _ databaseLoader: DatabaseLoader,
         didFailLoading dbRef: URLReference,
-        message: String,
-        reason: String?
+        with error: DatabaseLoader.Error
     ) {
         assert(!hasUI, "This should run only in pre-UI mode")
-        log.error("DB loading failed: \(message). Will require user interaction.")
-        Diag.info("Failed to load the database, starting the UI")
         quickTypeDatabaseLoader = nil
-        cancelRequest(.userInteractionRequired)
-    }
-    
-    func databaseLoader(
-        _ databaseLoader: DatabaseLoader,
-        didFailLoading dbRef: URLReference,
-        withInvalidMasterKeyMessage message: String
-    ) {
-        assert(!hasUI, "This should run only in pre-UI mode")
-        log.error("DB loading failed: invalid key. Will require user interaction.")
-        Diag.info("Stored master key does not fit, starting the UI")
-        quickTypeDatabaseLoader = nil
-        cancelRequest(.userInteractionRequired)
+        switch error {
+        case .cancelledByUser:
+            log.fault("DB loading was cancelled without UI. This should not be possible.")
+            cancelRequest(.failed)
+        case .invalidKey(_):
+            log.error("DB loading failed: invalid key. Will require user interaction.")
+            Diag.info("Stored master key does not fit, starting the UI")
+            cancelRequest(.userInteractionRequired)
+        default:
+            log.error("DB loading failed: \(error.localizedDescription). Will require user interaction.")
+            Diag.info("Failed to load the database, starting the UI")
+            cancelRequest(.userInteractionRequired)
+        }
     }
     
     func databaseLoader(
@@ -602,6 +592,13 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         Settings.current.isAutoFillFinishedOK = true 
     }
     
+    func shouldChooseFallbackStrategy(
+        for fileRef: URLReference,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) -> UnreachableFileFallbackStrategy {
+        return DatabaseSettingsManager.shared.getFallbackStrategy(fileRef)
+    }
+
     func didUnlockDatabase(
         databaseFile: DatabaseFile,
         at fileRef: URLReference,

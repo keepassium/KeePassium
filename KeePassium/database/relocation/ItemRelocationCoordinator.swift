@@ -494,6 +494,13 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
     func didNotUnlockDatabase(_ fileRef: URLReference, with message: String?, reason: String?, in coordinator: DatabaseUnlockerCoordinator) {
     }
     
+    func shouldChooseFallbackStrategy(
+        for fileRef: URLReference,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) -> UnreachableFileFallbackStrategy {
+        return .showError 
+    }
+    
     func didUnlockDatabase(
         databaseFile: DatabaseFile,
         at fileRef: URLReference,

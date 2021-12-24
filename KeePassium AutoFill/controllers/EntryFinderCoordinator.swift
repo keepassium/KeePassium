@@ -106,13 +106,17 @@ extension EntryFinderCoordinator {
     }
     
     private func showInitialMessages() {
-        if let loadingWarnings = loadingWarnings,
-           !loadingWarnings.isEmpty
-        {
+        if let loadingWarnings = loadingWarnings, !loadingWarnings.isEmpty {
             showLoadingWarnings(loadingWarnings)
-        } else {
-            maybeShowQuickAutoFillPromo()
+            return
         }
+        
+        if databaseFile.status.contains(.localFallback) {
+            showLocalFallbackNotification()
+            return
+        }
+        
+        maybeShowQuickAutoFillPromo()
     }
     
     private func showLoadingWarnings(_ warnings: DatabaseLoadingWarnings) {
@@ -120,6 +124,15 @@ extension EntryFinderCoordinator {
         
         DatabaseLoadingWarningsVC.present(warnings, in: entryFinderVC, onLockDatabase: lockDatabase)
         StoreReviewSuggester.registerEvent(.trouble)
+    }
+    
+    private func showLocalFallbackNotification() {
+        entryFinderVC.showNotification(
+            LString.databaseIsFallbackCopy,
+            image: UIImage.get(.icloudSlash)?
+                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal),
+            duration: 3.0
+        )
     }
     
     private func maybeShowQuickAutoFillPromo() {

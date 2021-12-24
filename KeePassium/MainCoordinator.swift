@@ -277,12 +277,11 @@ extension MainCoordinator {
         databaseFile: DatabaseFile,
         warnings: DatabaseLoadingWarnings
     ) {
-        let isReadOnly = DatabaseSettingsManager.shared.isReadOnly(fileRef)
         let databaseViewerCoordinator = DatabaseViewerCoordinator(
             splitViewController: rootSplitVC,
             primaryRouter: primaryRouter,
-            databaseFile: databaseFile,
-            canEditDatabase: !isReadOnly,
+            originalRef: fileRef, 
+            databaseFile: databaseFile, 
             loadingWarnings: warnings
         )
         databaseViewerCoordinator.dismissHandler = { [weak self] coordinator in
@@ -696,6 +695,13 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         in coordinator: DatabaseUnlockerCoordinator
     ) {
         databasePickerCoordinator.setEnabled(true)
+    }
+    
+    func shouldChooseFallbackStrategy(
+        for fileRef: URLReference,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) -> UnreachableFileFallbackStrategy {
+        return DatabaseSettingsManager.shared.getFallbackStrategy(fileRef)
     }
     
     func didUnlockDatabase(

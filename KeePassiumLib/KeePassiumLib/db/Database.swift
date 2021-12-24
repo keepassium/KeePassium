@@ -6,47 +6,6 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import Foundation
-
-public enum DatabaseError: LocalizedError {
-    case loadError(reason: String)
-    case invalidKey
-    case saveError(reason: String)
-    
-    public var errorDescription: String? {
-        switch self {
-        case .loadError:
-            return NSLocalizedString(
-                "[DatabaseError] Cannot open database",
-                bundle: Bundle.framework,
-                value: "Cannot open database",
-                comment: "Error message while opening a database")
-        case .invalidKey:
-            return NSLocalizedString(
-                "[DatabaseError] Invalid password or key file",
-                bundle: Bundle.framework,
-                value: "Invalid password or key file",
-                comment: "Error message: user provided a wrong master key for decryption.")
-        case .saveError:
-            return NSLocalizedString(
-                "[DatabaseError] Cannot save database",
-                bundle: Bundle.framework,
-                value: "Cannot save database",
-                comment: "Error message while saving a database")
-        }
-    }
-    public var failureReason: String? {
-        switch self {
-        case .loadError(let reason):
-            return reason
-        case .saveError(let reason):
-            return reason
-        default:
-            return nil
-        }
-    }
-}
-
 public struct SearchQuery {
     public let includeSubgroups: Bool
     public let includeDeleted: Bool

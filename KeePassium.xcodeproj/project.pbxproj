@@ -597,6 +597,14 @@
 		75BE064A25DB1A9C00B34CC0 /* DiagnosticsViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75BE064525DB1A9C00B34CC0 /* DiagnosticsViewerVC.storyboard */; };
 		75BE091F2509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE091E2509905300C436C2 /* ItemIconPickerCoordinator.swift */; };
 		75BE09202509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE091E2509905300C436C2 /* ItemIconPickerCoordinator.swift */; };
+		75BF5AEA27680CC100809654 /* ParameterValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BF5AE927680CC100809654 /* ParameterValueCell.xib */; };
+		75BF5AEB27680CC100809654 /* ParameterValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BF5AE927680CC100809654 /* ParameterValueCell.xib */; };
+		75BF5AED27680D4600809654 /* ParameterValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF5AEC27680D4600809654 /* ParameterValueCell.swift */; };
+		75BF5AEE27680D4600809654 /* ParameterValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF5AEC27680D4600809654 /* ParameterValueCell.swift */; };
+		75BF5AEF2768106A00809654 /* ParameterValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BF5AE927680CC100809654 /* ParameterValueCell.xib */; };
+		75BF5AF02768106B00809654 /* ParameterValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BF5AE927680CC100809654 /* ParameterValueCell.xib */; };
+		75BF5AF12768106F00809654 /* ParameterValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF5AEC27680D4600809654 /* ParameterValueCell.swift */; };
+		75BF5AF22768106F00809654 /* ParameterValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF5AEC27680D4600809654 /* ParameterValueCell.swift */; };
 		75BFB13F2481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
 		75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
 		75BFB1412481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
@@ -1692,6 +1700,8 @@
 		75BE065B25DB1AEA00B34CC0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DiagnosticsViewerVC.strings; sourceTree = "<group>"; };
 		75BE065C25DB1AEC00B34CC0 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/DiagnosticsViewerVC.strings; sourceTree = "<group>"; };
 		75BE091E2509905300C436C2 /* ItemIconPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIconPickerCoordinator.swift; sourceTree = "<group>"; };
+		75BF5AE927680CC100809654 /* ParameterValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParameterValueCell.xib; sourceTree = "<group>"; };
+		75BF5AEC27680D4600809654 /* ParameterValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterValueCell.swift; sourceTree = "<group>"; };
 		75BFB13E2481553D0017B980 /* DynamicFileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFileList.swift; sourceTree = "<group>"; };
 		75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileProvider+extensions.swift"; sourceTree = "<group>"; };
 		75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+biometrics.swift"; sourceTree = "<group>"; };
@@ -2496,6 +2506,8 @@
 				758CA5432569B9EA0034EF10 /* SwitchCell.swift */,
 				75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */,
 				757FDF6126E2519E0023E028 /* OTPView.swift */,
+				75BF5AE927680CC100809654 /* ParameterValueCell.xib */,
+				75BF5AEC27680D4600809654 /* ParameterValueCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -2840,6 +2852,7 @@
 				751E0D292309AFE50088BB10 /* CrashReportVC.storyboard in Resources */,
 				751E0D2C2309AFE90088BB10 /* FirstSetupVC.storyboard in Resources */,
 				751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */,
+				75BF5AF02768106B00809654 /* ParameterValueCell.xib in Resources */,
 				751E0D262309AFBA0088BB10 /* FileInfoVC.storyboard in Resources */,
 				7572665624CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */,
 			);
@@ -2920,6 +2933,7 @@
 				758FC16524CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */,
 				758FC13324CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
 				751E0D0D2309AF400088BB10 /* EntryFileViewerVC.storyboard in Resources */,
+				75BF5AEA27680CC100809654 /* ParameterValueCell.xib in Resources */,
 				758FC13D24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@2x.png in Resources */,
 				758FC12924CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */,
 				751E0D252309AFBA0088BB10 /* FileInfoVC.storyboard in Resources */,
@@ -3021,6 +3035,7 @@
 				758FC13424CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
 				75B38C6E233E5B7C006BDEFC /* EntryFileViewerVC.storyboard in Resources */,
 				758FC13E24CEF72000BAD35C /* appicon-calc_iPhoneApp_60@2x.png in Resources */,
+				75BF5AEB27680CC100809654 /* ParameterValueCell.xib in Resources */,
 				758FC12A24CEF72000BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */,
 				75B38C6F233E5B7C006BDEFC /* FileInfoVC.storyboard in Resources */,
 				75B38C70233E5B7C006BDEFC /* PlaceholderVC.storyboard in Resources */,
@@ -3071,6 +3086,7 @@
 				75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */,
 				75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */,
 				75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */,
+				75BF5AEF2768106A00809654 /* ParameterValueCell.xib in Resources */,
 				75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */,
 				7572665824CB18520099B6E1 /* HelpViewerVC.storyboard in Resources */,
 			);
@@ -3150,6 +3166,7 @@
 				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
 				75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
+				75BF5AF22768106F00809654 /* ParameterValueCell.swift in Sources */,
 				75814FD325F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562A2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */,
@@ -3268,6 +3285,7 @@
 				F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */,
 				750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */,
 				7516B0D527292A130042F40E /* UIMenu+extensions.swift in Sources */,
+				75BF5AED27680D4600809654 /* ParameterValueCell.swift in Sources */,
 				75DE6779268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				75679ACB22F8095F00372301 /* AppInfo.swift in Sources */,
 				752B1E9320E8AA070073AABD /* EditableField.swift in Sources */,
@@ -3440,6 +3458,7 @@
 				75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */,
 				75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */,
 				7516B0D727292A130042F40E /* UIMenu+extensions.swift in Sources */,
+				75BF5AEE27680D4600809654 /* ParameterValueCell.swift in Sources */,
 				75DE677B268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */,
 				759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
@@ -3592,6 +3611,7 @@
 				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
 				75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
+				75BF5AF12768106F00809654 /* ParameterValueCell.swift in Sources */,
 				75814FD525F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562C2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75D7DF89233E5E310029AD87 /* EntryFinderVC.swift in Sources */,

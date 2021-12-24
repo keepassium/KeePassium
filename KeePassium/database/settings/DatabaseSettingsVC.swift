@@ -10,13 +10,21 @@ import KeePassiumLib
 
 protocol DatabaseSettingsDelegate: AnyObject {
     func didPressClose(in viewController: DatabaseSettingsVC)
+
     func canChangeReadOnly(in viewController: DatabaseSettingsVC) -> Bool
     func didChangeSettings(isReadOnlyFile: Bool, in viewController: DatabaseSettingsVC)
+
+    func didChangeSettings(
+        fallbackStrategy: UnreachableFileFallbackStrategy,
+        in viewController: DatabaseSettingsVC
+    )
 }
 
 final class DatabaseSettingsVC: UITableViewController, Refreshable {
     weak var delegate: DatabaseSettingsDelegate?
     var isReadOnlyAccess: Bool!
+    var fallbackStrategy: UnreachableFileFallbackStrategy!
+    var availableFallbackStrategies: Set<UnreachableFileFallbackStrategy> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +32,10 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
         
         tableView.register(
             UINib(nibName: SwitchCell.reuseIdentifier, bundle: nil),
-            forCellReuseIdentifier: SwitchCell.reuseIdentifier
-        )
+            forCellReuseIdentifier: SwitchCell.reuseIdentifier)
+        tableView.register(
+            UINib(nibName: ParameterValueCell.reuseIdentifier, bundle: nil),
+            forCellReuseIdentifier: ParameterValueCell.reuseIdentifier)
         setupCloseButton()
     }
     
@@ -67,7 +77,7 @@ extension DatabaseSettingsVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .fileAccess:
-            return 1
+            return 2
         }
     }
     
@@ -85,30 +95,64 @@ extension DatabaseSettingsVC {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: SwitchCell.reuseIdentifier,
-            for: indexPath)
-            as! SwitchCell
         switch Section(rawValue: indexPath.section)! {
         case .fileAccess:
-            configureFileAccessSectionCell(cell, row: indexPath.row)
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: SwitchCell.reuseIdentifier,
+                    for: indexPath)
+                    as! SwitchCell
+                configureReadOnlyCell(cell)
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: ParameterValueCell.reuseIdentifier,
+                    for: indexPath)
+                    as! ParameterValueCell
+                configureOfflineAccessCell(cell)
+                return cell
+            default:
+                preconditionFailure("Unexpected row number")
+            }
         }
-        return cell
     }
     
-    private func configureFileAccessSectionCell(_ cell: SwitchCell, row: Int) {
-        switch row {
-        case 0:
-            cell.titleLabel.text = LString.titleFileAccessReadOnly
-            cell.theSwitch.isEnabled = delegate?.canChangeReadOnly(in: self) ?? false
-            cell.theSwitch.isOn = isReadOnlyAccess
-            cell.toggleHandler = { [weak self] theSwitch in
-                guard let self = self else { return }
-                self.isReadOnlyAccess = theSwitch.isOn
-                self.delegate?.didChangeSettings(isReadOnlyFile: theSwitch.isOn, in: self)
-            }
-        default:
-            preconditionFailure()
+    private func configureReadOnlyCell(_ cell: SwitchCell) {
+        cell.titleLabel.text = LString.titleFileAccessReadOnly
+        cell.theSwitch.isEnabled = delegate?.canChangeReadOnly(in: self) ?? false
+        cell.theSwitch.isOn = isReadOnlyAccess
+
+        cell.titleLabel.isAccessibilityElement = false
+        cell.theSwitch.accessibilityLabel = LString.titleFileAccessReadOnly
+
+        cell.toggleHandler = { [weak self] theSwitch in
+            guard let self = self else { return }
+            self.isReadOnlyAccess = theSwitch.isOn
+            self.delegate?.didChangeSettings(isReadOnlyFile: theSwitch.isOn, in: self)
         }
+    }
+    
+    private func configureOfflineAccessCell(_ cell: ParameterValueCell) {
+        cell.textLabel?.text = LString.titleWhenDatabaseUnreachable
+        cell.detailTextLabel?.text = fallbackStrategy.title
+        
+        let actions = UnreachableFileFallbackStrategy.allCases.map { strategy in
+            UIAction(
+                title: strategy.title,
+                attributes: availableFallbackStrategies.contains(strategy) ? [] : .disabled,
+                state: strategy == fallbackStrategy ? .on : .off,
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.delegate?.didChangeSettings(fallbackStrategy: strategy, in: self)
+                    self.refresh()
+                }
+            )
+        }
+        cell.menu = UIMenu(
+            title: LString.titleWhenDatabaseUnreachable,
+            options: .displayInline,
+            children: actions
+        )
     }
 }

@@ -49,11 +49,16 @@ final class DatabaseViewerCoordinator: Coordinator {
     private let placeholderRouter: NavigationRouter
     private var entryViewerRouter: NavigationRouter?
     
+    private let originalRef: URLReference
     private let databaseFile: DatabaseFile
     private let database: Database
-    private let canEditDatabase: Bool
+
     private let loadingWarnings: DatabaseLoadingWarnings?
-    
+
+    private var canEditDatabase: Bool {
+        return !databaseFile.status.contains(.readOnly)
+    }
+
     private weak var currentGroup: Group?
     private weak var currentEntry: Entry?
     private weak var rootGroupViewer: GroupViewerVC?
@@ -77,16 +82,16 @@ final class DatabaseViewerCoordinator: Coordinator {
     init(
         splitViewController: RootSplitVC,
         primaryRouter: NavigationRouter,
+        originalRef: URLReference,
         databaseFile: DatabaseFile,
-        canEditDatabase: Bool,
         loadingWarnings: DatabaseLoadingWarnings?
     ) {
         self.splitViewController = splitViewController
         self.primaryRouter = primaryRouter
         
+        self.originalRef = originalRef
         self.databaseFile = databaseFile
         self.database = databaseFile.database
-        self.canEditDatabase = canEditDatabase
         self.loadingWarnings = loadingWarnings
         
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
@@ -205,8 +210,14 @@ extension DatabaseViewerCoordinator {
         if loadingWarnings != nil {
             showLoadingWarnings(loadingWarnings!)
         }
-        if !canEditDatabase {
-            showReadOnlyDatabaseNotification(in: getPresenterForModals())
+        let status = databaseFile.status
+        if status.contains(.localFallback) {
+            showDatabaseStatusNotification(status: .localFallback)
+            return 
+        }
+        if status.contains(.readOnly) {
+            showDatabaseStatusNotification(status: .readOnly)
+            return 
         }
 
         StoreReviewSuggester.maybeShowAppReview(
@@ -233,20 +244,22 @@ extension DatabaseViewerCoordinator {
         )
         StoreReviewSuggester.registerEvent(.trouble)
     }
-    
-    private func showReadOnlyDatabaseNotification(in toastHost: UIViewController) {
+
+    private func showDatabaseStatusNotification(status: DatabaseFile.StatusFlag) {
         let image: UIImage?
-        if #available(iOS 13, *) {
-            image = UIImage(systemName: SystemImageName.exclamationMarkTriangle.rawValue)?
-                .withTintColor(UIColor.warningMessage, renderingMode: .alwaysOriginal)
-        } else {
-            image = UIImage.get(.exclamationMarkTriangle)
+        let text: String
+        switch status {
+        case .localFallback:
+            image = UIImage.get(.icloudSlash)?
+                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal)
+            text = LString.databaseIsFallbackCopy
+        case .readOnly:
+            image = UIImage.get(.exclamationMarkTriangle)?
+                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal)
+            text = LString.databaseIsReadOnly
         }
-        toastHost.showNotification(
-            LString.databaseIsReadOnly,
-            image: image,
-            duration: 3.0
-        )
+        let toastHost = getPresenterForModals()
+        toastHost.showNotification(text, image: image, duration: 3.0)
     }
     
     private func showDiagnostics() {
@@ -379,7 +392,7 @@ extension DatabaseViewerCoordinator {
         completion: (()->Void)?
     ) {
         if shouldLock {
-            DatabaseSettingsManager.shared.updateSettings(for: databaseFile) {
+            DatabaseSettingsManager.shared.updateSettings(for: originalRef) {
                 $0.clearMasterKey()
             }
         }

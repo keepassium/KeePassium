@@ -267,19 +267,23 @@ public class Database2: Database {
             Diag.verbose("== DB2 progress CP5: \(progress.completedUnitCount)")
         } catch let error as Header2.HeaderError {
             Diag.error("Header error [reason: \(error.localizedDescription)]")
-            throw DatabaseError.loadError(reason: error.localizedDescription)
+            throw DatabaseError.loadError(
+                reason: .headerError(reason: error.localizedDescription)
+            )
         } catch let error as CryptoError {
             Diag.error("Crypto error [reason: \(error.localizedDescription)]")
-            throw DatabaseError.loadError(reason: error.localizedDescription)
+            throw DatabaseError.loadError(reason: .cryptoError(error))
         } catch let error as KeyFileError {
             Diag.error("Key file error [reason: \(error.localizedDescription)]")
-            throw DatabaseError.loadError(reason: error.localizedDescription)
+            throw DatabaseError.loadError(reason: .keyFileError(error))
         } catch let error as ChallengeResponseError {
             Diag.error("Challenge-response error [reason: \(error.localizedDescription)]")
-            throw DatabaseError.loadError(reason: error.localizedDescription)
+            throw DatabaseError.loadError(reason: .challengeResponseError(error))
         } catch let error as FormatError {
             Diag.error("Format error [reason: \(error.localizedDescription)]")
-            throw DatabaseError.loadError(reason: error.localizedDescription)
+            throw DatabaseError.loadError(
+                reason: .formatError(reason: error.localizedDescription)
+            )
         } catch let error as GzipError {
             Diag.error("Gzip error [kind: \(error.kind), message: \(error.message)]")
             let reason = String.localizedStringWithFormat(
@@ -289,7 +293,7 @@ public class Database2: Database {
                     value: "Error unpacking database: %@",
                     comment: "Error message about Gzip compression algorithm. [errorMessage: String]"),
                 error.localizedDescription)
-            throw DatabaseError.loadError(reason: reason)
+            throw DatabaseError.loadError(reason: .gzipError(reason: reason))
         }
         
         self.compositeKey = compositeKey

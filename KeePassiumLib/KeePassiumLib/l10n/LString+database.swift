@@ -107,6 +107,25 @@ extension LString {
         value: "Read Only",
         comment: "File setting title, whether the file can be modified (yes/no).")
 
+    public static let titleWhenDatabaseUnreachable = NSLocalizedString(
+        "[Database/Settings/FallbackStrategy/title]",
+        bundle: Bundle.framework,
+        value: "When Unreachable",
+        comment: "File setting parameter: what to do when (remote) database cannot be loaded. (For example: `When unreachable: Use local copy`.)")
+    
+    public static let titleWhenDatabaseUnreachableShowError = NSLocalizedString(
+        "[Database/Settings/FallbackStrategy/ShowError/title]",
+        bundle: Bundle.framework,
+        value: "Show Error",
+        comment: "Title: what to do when (remote) database cannot be loaded. (For example: `When unreachable: Show Error`.)")
+    
+    public static let titleWhenDatabaseUnreachableUseCache = NSLocalizedString(
+        "[Database/Settings/FallbackStrategy/UseCache/title]",
+        bundle: Bundle.framework,
+        value: "Use Local Copy",
+        comment: "Title: what to do when (remote) database cannot be loaded. (For example: `When unreachable: Use local copy`.)")
+
+    
     
     public static let callToActionChooseDestinationGroup = NSLocalizedString(
         "[General/DestinationGroup/title] Choose a Destination",

@@ -41,6 +41,8 @@ final class DatabaseSettingsCoordinator: Coordinator {
         })
         let dsm = DatabaseSettingsManager.shared
         dbSettingsVC.isReadOnlyAccess = dsm.isReadOnly(dbRef)
+        dbSettingsVC.fallbackStrategy = dsm.getFallbackStrategy(dbRef)
+        dbSettingsVC.availableFallbackStrategies = dsm.getAvailableFallbackStrategies(dbRef)
     }
 }
 
@@ -60,4 +62,15 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
         }
         delegate?.didChangeDatabaseSettings(in: self)
     }    
+    
+    func didChangeSettings(
+        fallbackStrategy: UnreachableFileFallbackStrategy,
+        in viewController: DatabaseSettingsVC
+    ) {
+        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+            dbSettings.fallbackStrategy = fallbackStrategy
+        }
+        viewController.fallbackStrategy = fallbackStrategy
+        delegate?.didChangeDatabaseSettings(in: self)
+    }
 }
