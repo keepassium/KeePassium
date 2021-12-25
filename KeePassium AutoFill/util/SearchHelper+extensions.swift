@@ -18,9 +18,15 @@ struct FuzzySearchResults {
     var isEmpty: Bool { return exactMatch.isEmpty && partialMatch.isEmpty }
     
     var perfectMatch: Entry? {
-        guard partialMatch.isEmpty && (exactMatch.count == 1) else { return nil }
-        let firstGroup = exactMatch.first
-        return firstGroup?.entries.first?.entry
+        guard partialMatch.isEmpty else { return nil }
+        guard exactMatch.count == 1,
+              let theOnlyGroup = exactMatch.first,
+              theOnlyGroup.entries.count == 1,
+              let theOnlyScoredEntry = theOnlyGroup.entries.first
+        else {
+            return nil
+        }
+        return theOnlyScoredEntry.entry
     }
 }
 
