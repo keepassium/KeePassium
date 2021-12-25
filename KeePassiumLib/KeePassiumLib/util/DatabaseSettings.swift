@@ -25,7 +25,8 @@ final public class DatabaseSettings: Eraseable {
     public var isQuickTypeEnabled: Bool?
     
     public var fallbackStrategy: UnreachableFileFallbackStrategy?
-    
+    public var fallbackTimeout: TimeInterval?
+
     init() {
         isReadOnlyFile = false
     }
@@ -50,6 +51,7 @@ final public class DatabaseSettings: Eraseable {
         isQuickTypeEnabled = nil
         
         fallbackStrategy = nil
+        fallbackTimeout = nil
     }
 
     public func setMasterKey(_ key: CompositeKey) {
@@ -112,6 +114,7 @@ extension DatabaseSettings: Codable {
         case associatedYubiKey
         case isQuickTypeEnabled
         case fallbackStrategy
+        case fallbackTimeout
     }
     
     internal func serialize() -> Data {
@@ -145,6 +148,7 @@ extension DatabaseSettings: Codable {
         self.associatedYubiKey = try container.decodeIfPresent(YubiKey.self, forKey: .associatedYubiKey)
         self.isQuickTypeEnabled = try container.decodeIfPresent(Bool.self, forKey: .isQuickTypeEnabled)
         self.fallbackStrategy = try container.decodeIfPresent(UnreachableFileFallbackStrategy.self, forKey: .fallbackStrategy)
+        self.fallbackTimeout = try container.decodeIfPresent(TimeInterval.self, forKey: .fallbackTimeout)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -176,6 +180,9 @@ extension DatabaseSettings: Codable {
         }
         if let _fallbackStrategy = fallbackStrategy {
             try container.encode(_fallbackStrategy, forKey: .fallbackStrategy)
+        }
+        if let _fallbackTimeout = fallbackTimeout {
+            try container.encode(_fallbackTimeout, forKey: .fallbackTimeout)
         }
     }
 }

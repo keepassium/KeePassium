@@ -43,6 +43,7 @@ final class DatabaseSettingsCoordinator: Coordinator {
         dbSettingsVC.isReadOnlyAccess = dsm.isReadOnly(dbRef)
         dbSettingsVC.fallbackStrategy = dsm.getFallbackStrategy(dbRef)
         dbSettingsVC.availableFallbackStrategies = dsm.getAvailableFallbackStrategies(dbRef)
+        dbSettingsVC.fallbackTimeout = dsm.getFallbackTimeout(dbRef)
     }
 }
 
@@ -71,6 +72,14 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
             dbSettings.fallbackStrategy = fallbackStrategy
         }
         viewController.fallbackStrategy = fallbackStrategy
+        delegate?.didChangeDatabaseSettings(in: self)
+    }
+    
+    func didChangeSettings(fallbackTimeout: TimeInterval, in viewController: DatabaseSettingsVC) {
+        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+            dbSettings.fallbackTimeout = fallbackTimeout
+        }
+        viewController.fallbackTimeout = fallbackTimeout
         delegate?.didChangeDatabaseSettings(in: self)
     }
 }

@@ -150,6 +150,7 @@ public class DatabaseLoader: ProgressObserver {
     private let dbRef: URLReference
     private let compositeKey: CompositeKey
     public let status: DatabaseFile.Status
+    public let timeout: TimeInterval
     
     private var isReadOnly: Bool {
         status.contains(.readOnly)
@@ -171,6 +172,7 @@ public class DatabaseLoader: ProgressObserver {
         dbRef: URLReference,
         compositeKey: CompositeKey,
         status: DatabaseFile.Status,
+        timeout: TimeInterval,
         delegate: DatabaseLoaderDelegate,
         delegateQueue: DispatchQueue = .main
     ) {
@@ -178,6 +180,7 @@ public class DatabaseLoader: ProgressObserver {
         self.dbRef = dbRef
         self.compositeKey = compositeKey.clone()
         self.status = status
+        self.timeout = timeout
         self.delegate = delegate
         self.delegateQueue = delegateQueue
         self.warnings = DatabaseLoadingWarnings()
@@ -251,7 +254,7 @@ public class DatabaseLoader: ProgressObserver {
         startObservingProgress()
         notifyWillLoadDatabase()
         progress.status = LString.Progress.contactingStorageProvider
-        dbRef.resolveAsync(callbackQueue: operationQueue) { result in 
+        dbRef.resolveAsync(timeout: timeout, callbackQueue: operationQueue) { result in 
             switch result {
             case .success(let dbURL):
                 self.onDatabaseURLResolved(url: dbURL, fileProvider: self.dbRef.fileProvider)
@@ -269,20 +272,27 @@ public class DatabaseLoader: ProgressObserver {
     }
     
     private func onDatabaseURLResolved(url: URL, fileProvider: FileProvider?) {
+        assert(operationQueue.isCurrent)
         progress.status = LString.Progress.loadingDatabaseFile
-        BaseDocument.read(url, queue: operationQueue, completionQueue: operationQueue) {
-            [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let docData):
-                self.onDatabaseDocumentReadComplete(data: docData, fileURL: url, fileProvider: fileProvider)
-            case .failure(let fileAccessError):
-                Diag.error("Failed to open database document [error: \(fileAccessError.localizedDescription)]")
-                self.stopAndNotify(
-                    .databaseUnreachable(.cannotOpenDatabaseFile(reason: fileAccessError))
-                )
+        BaseDocument.read(
+            url,
+            queue: operationQueue,
+            timeout: timeout,
+            completionQueue: operationQueue,
+            completion: {
+                [weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .success(let docData):
+                    self.onDatabaseDocumentReadComplete(data: docData, fileURL: url, fileProvider: fileProvider)
+                case .failure(let fileAccessError):
+                    Diag.error("Failed to open database document [error: \(fileAccessError.localizedDescription)]")
+                    self.stopAndNotify(
+                        .databaseUnreachable(.cannotOpenDatabaseFile(reason: fileAccessError))
+                    )
+                }
             }
-        }
+        )
     }
     
     private func onDatabaseDocumentReadComplete(
@@ -290,6 +300,7 @@ public class DatabaseLoader: ProgressObserver {
         fileURL: URL,
         fileProvider: FileProvider?
     ) {
+        assert(operationQueue.isCurrent)
         progress.completedUnitCount = ProgressSteps.didReadDatabaseFile
         
         guard let db = initDatabase(signature: data) else {
@@ -321,7 +332,7 @@ public class DatabaseLoader: ProgressObserver {
         
         Diag.debug("Loading key file")
         progress.localizedDescription = LString.Progress.loadingKeyFile
-        keyFileRef.resolveAsync { result in 
+        keyFileRef.resolveAsync(timeout: timeout, callbackQueue: operationQueue) { result in 
             switch result {
             case .success(let keyFileURL):
                 self.onKeyFileURLResolved(
@@ -340,22 +351,30 @@ public class DatabaseLoader: ProgressObserver {
     }
     
     private func onKeyFileURLResolved(url: URL, fileProvider: FileProvider?, dbFile: DatabaseFile) {
-        BaseDocument.read(url, queue: operationQueue, completionQueue: operationQueue) {
-            [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let docData):
-                self.onKeyFileDataReady(dbFile: dbFile, keyFileData: SecureBytes.from(docData))
-            case .failure(let fileAccessError):
-                Diag.error("Failed to open key file [error: \(fileAccessError.localizedDescription)]")
-                self.stopAndNotify(
-                    .keyFileUnreachable(.cannotOpenKeyFile(reason: fileAccessError))
-                )
+        assert(operationQueue.isCurrent)
+        BaseDocument.read(
+            url,
+            queue: operationQueue,
+            timeout: timeout,
+            completionQueue: operationQueue,
+            completion: {
+                [weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .success(let docData):
+                    self.onKeyFileDataReady(dbFile: dbFile, keyFileData: SecureBytes.from(docData))
+                case .failure(let fileAccessError):
+                    Diag.error("Failed to open key file [error: \(fileAccessError.localizedDescription)]")
+                    self.stopAndNotify(
+                        .keyFileUnreachable(.cannotOpenKeyFile(reason: fileAccessError))
+                    )
+                }
             }
-        }
+        )
     }
     
     private func onKeyFileDataReady(dbFile: DatabaseFile, keyFileData: SecureBytes) {
+        assert(operationQueue.isCurrent)
         progress.completedUnitCount = ProgressSteps.didReadKeyFile
         let keyHelper = dbFile.database.keyHelper
         let passwordData = keyHelper.getPasswordData(password: compositeKey.password)
@@ -391,6 +410,7 @@ public class DatabaseLoader: ProgressObserver {
     }
     
     func onCompositeKeyComponentsProcessed(dbFile: DatabaseFile, compositeKey: CompositeKey) {
+        assert(operationQueue.isCurrent)
         assert(compositeKey.state >= .processedComponents)
         
         progress.completedUnitCount = ProgressSteps.willDecryptDatabase
@@ -454,6 +474,7 @@ public class DatabaseLoader: ProgressObserver {
     }
     
     private func performAfterLoadTasks(_ dbFile: DatabaseFile) {
+        assert(operationQueue.isCurrent)
         maybeUpdateLatestBackup(dbFile)
         
         let dbSettingsManager = DatabaseSettingsManager.shared
@@ -469,6 +490,7 @@ public class DatabaseLoader: ProgressObserver {
     }
     
     private func maybeUpdateLatestBackup(_ dbFile: DatabaseFile) {
+        assert(operationQueue.isCurrent)
         let shouldUpdateBackup = Settings.current.isBackupDatabaseOnLoad
             && DatabaseManager.shouldBackupFiles(from: dbRef.location)
         if shouldUpdateBackup {

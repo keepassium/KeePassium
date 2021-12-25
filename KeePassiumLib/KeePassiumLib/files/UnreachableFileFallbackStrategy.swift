@@ -15,9 +15,9 @@ public enum UnreachableFileFallbackStrategy: Int, Codable, CaseIterable {
     public var title: String {
         switch self {
         case .showError:
-            return LString.titleWhenDatabaseUnreachableShowError
+            return LString.titleIfFileUnreachableShowError
         case .useCache:
-            return LString.titleWhenDatabaseUnreachableUseCache
+            return LString.titleIfFileUnreachableUseCache
         }
     }
 }

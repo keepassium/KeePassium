@@ -72,7 +72,7 @@ public class URLReference:
         }
     }
     
-    public static let defaultTimeout: TimeInterval = 15.0
+    public static let defaultTimeout: TimeInterval = 10.0
     
     public var visibleFileName: String { return url?.lastPathComponent ?? "?" }
     

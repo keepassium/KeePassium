@@ -264,8 +264,9 @@ extension DatabaseUnlockerCoordinator {
         let challengeHandler = ChallengeResponseManager.makeHandler(for: selectedHardwareKey)
         #endif
         
+        let databaseSettingsManager = DatabaseSettingsManager.shared
+        let dbSettings = databaseSettingsManager.getSettings(for: databaseRef)
         let compositeKey: CompositeKey
-        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef)
         if let storedCompositeKey = dbSettings?.masterKey {
             compositeKey = storedCompositeKey
             compositeKey.challengeHandler = challengeHandler
@@ -299,14 +300,16 @@ extension DatabaseUnlockerCoordinator {
             databaseStatus.insert(.localFallback)
         }
         
-        if DatabaseSettingsManager.shared.isReadOnly(currentDatabaseRef) {
+        if databaseSettingsManager.isReadOnly(currentDatabaseRef) {
             databaseStatus.insert(.readOnly)
         }
-        
+        let fallbackTimeout = databaseSettingsManager.getFallbackTimeout(currentDatabaseRef)
+
         databaseLoader = DatabaseLoader(
             dbRef: currentDatabaseRef,
             compositeKey: compositeKey,
             status: databaseStatus,
+            timeout: fallbackTimeout,
             delegate: self
         )
         databaseLoader!.load()

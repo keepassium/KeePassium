@@ -106,24 +106,30 @@ extension LString {
         bundle: Bundle.framework,
         value: "Read Only",
         comment: "File setting title, whether the file can be modified (yes/no).")
+    
+    public static let titleConsiderFileUnreachable = NSLocalizedString(
+        "[Database/Settings/ConsiderFileUnreachable/title]",
+        bundle: Bundle.framework,
+        value: "Consider File Unreachable",
+        comment: "File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.)")
 
-    public static let titleWhenDatabaseUnreachable = NSLocalizedString(
+    public static let titleIfFileIsUnreachable = NSLocalizedString(
         "[Database/Settings/FallbackStrategy/title]",
         bundle: Bundle.framework,
-        value: "When Unreachable",
-        comment: "File setting parameter: what to do when (remote) database cannot be loaded. (For example: `When unreachable: Use local copy`.)")
+        value: "If File is Unreachable",
+        comment: "File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.)")
     
-    public static let titleWhenDatabaseUnreachableShowError = NSLocalizedString(
+    public static let titleIfFileUnreachableShowError = NSLocalizedString(
         "[Database/Settings/FallbackStrategy/ShowError/title]",
         bundle: Bundle.framework,
         value: "Show Error",
-        comment: "Title: what to do when (remote) database cannot be loaded. (For example: `When unreachable: Show Error`.)")
+        comment: "Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.)")
     
-    public static let titleWhenDatabaseUnreachableUseCache = NSLocalizedString(
+    public static let titleIfFileUnreachableUseCache = NSLocalizedString(
         "[Database/Settings/FallbackStrategy/UseCache/title]",
         bundle: Bundle.framework,
         value: "Use Local Copy",
-        comment: "Title: what to do when (remote) database cannot be loaded. (For example: `When unreachable: Use local copy`.)")
+        comment: "Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.)")
 
     
     

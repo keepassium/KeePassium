@@ -282,7 +282,8 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
             return
         }
         
-        guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: dbRef),
+        let databaseSettingsManager = DatabaseSettingsManager.shared
+        guard let dbSettings = databaseSettingsManager.getSettings(for: dbRef),
               let masterKey = dbSettings.masterKey
         else {
             log.debug("Failed to auto-open the DB, will require user interaction")
@@ -291,11 +292,14 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         }
         log.debug("Got stored master key for \(dbRef.visibleFileName, privacy: .private)")
         
+        let timeout = databaseSettingsManager.getFallbackTimeout(dbRef)
+        
         assert(self.quickTypeDatabaseLoader == nil)
         quickTypeDatabaseLoader = DatabaseLoader(
             dbRef: dbRef,
             compositeKey: masterKey,
             status: [.readOnly],
+            timeout: timeout,
             delegate: self
         )
         log.trace("Will load database")

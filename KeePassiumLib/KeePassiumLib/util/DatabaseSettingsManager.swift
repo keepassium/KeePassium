@@ -154,6 +154,10 @@ public class DatabaseSettingsManager {
         }
     }
     
+    public func getFallbackTimeout(_ databaseRef: URLReference) -> TimeInterval {
+        return getSettings(for: databaseRef)?.fallbackTimeout ?? URLReference.defaultTimeout
+    }
+    
     
     private func getSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings? {
         guard let descriptor = descriptor else {
