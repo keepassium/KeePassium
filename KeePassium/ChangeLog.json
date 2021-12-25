@@ -2,10 +2,26 @@
     "sections": [
         {
             "version": "1.30",
-            "releaseDate": "2021-12-19T00:00:00Z",
+            "releaseDate": "2021-12-25T00:00:00Z",
             "items": [
                 {
+                    "title": "🧩 Added: Offline caching: when database is unreachable, load latest local copy (#135, #17)",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Customizable download timeout for each database",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Default download timeout reduced from 15 to 10 seconds",
+                    "type": 1
+                },
+                {
                     "title": "🛠 Improved: Easier copying from a newly created entry [thanks, u/uschrisf and u/Vakke]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: macOS: show the actual file path in File Info dialog",
                     "type": 1
                 },
                 {
@@ -50,6 +66,14 @@
                 },
                 {
                     "title": "🐞 Fixed: Buttons in passcode input screen could be covered by keyboard [thanks, Ville]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill sometimes mishandled several perfect matches (fixes #212) [thanks, loeffelpan]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill sometimes opened an empty window [thanks, Nico]",
                     "type": 1
                 }
             ]

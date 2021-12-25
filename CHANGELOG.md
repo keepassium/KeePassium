@@ -1,5 +1,23 @@
 #CHANGELOG
 
+## [1.30.103] - 2021-12-25
+
+### Added
+
+- Offline caching: when database is unreachable, load latest local copy (#135, #17)
+- Customizable download timeout for each database
+
+### Improved
+
+- Default download timeout reduced from 15 to 10 seconds
+- macOS: show the actual file path in File Info dialog
+
+### Fixed
+
+- AutoFill sometimes mishandled several perfect matches (fixes #212) [thanks, loeffelpan]
+- AutoFill sometimes opened an empty window [thanks, Nico]
+
+
 ## [1.30.102] - 2021-12-19
 
 ### Fixed
