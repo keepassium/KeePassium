@@ -21,7 +21,8 @@ extension URLReference {
     
     private func getDatabaseIcon() -> UIImage {
         switch self.location {
-        case .external:
+        case .external,
+             .remote:
             return getExternalDatabaseIcon()
         case .internalDocuments, .internalInbox:
             if UIDevice.current.userInterfaceIdiom == .pad {
@@ -50,9 +51,7 @@ extension URLReference {
     }
 
     public func getLocationDescription() -> String {
-        if ProcessInfo.isRunningOnMac,
-           let url = try? self.resolveSync()
-        {
+        if ProcessInfo.isRunningOnMac, let url = self.url {
             return url.path
         }
         
@@ -62,13 +61,20 @@ extension URLReference {
         
         var components = [String]()
         switch location {
+        case .remote:
+            components.append(fileProvider.localizedName)
+            if let url = url {
+                components.append(url.absoluteString)
+            }
         case .external:
             components.append(fileProvider.localizedName)
             let isInTrash = getCachedInfoSync(canFetch: false)?.isInTrash
             if isInTrash ?? false {
                 components.append(LString.trashDirectoryName)
             }
-        case .internalDocuments, .internalBackup, .internalInbox:
+        case .internalDocuments,
+             .internalBackup,
+             .internalInbox:
             components.append(fileProvider.localizedName)
             components.append(AppInfo.name)
             components.append(location.description)

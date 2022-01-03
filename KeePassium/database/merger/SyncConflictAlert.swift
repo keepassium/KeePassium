@@ -68,7 +68,7 @@ final class SyncConflictAlert: UIViewController, Refreshable {
         infoRefreshQueue.async { [self] in
             FileDataProvider.readFileInfo(
                 at: remote,
-                fileProvider: nil,
+                fileProvider: FileProvider.find(for: remote), 
                 canUseCache: false,
                 completionQueue: .main,
                 completion: { [weak self] result in

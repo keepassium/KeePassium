@@ -84,6 +84,22 @@
 		751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */; };
 		751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71C21C98D620025C706 /* SupportEmailComposer.swift */; };
+		7524E7362888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
+		7524E7372888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
+		7524E7382888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
+		7524E7392888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
+		7524E73B2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
+		7524E73C2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
+		7524E73D2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
+		7524E73E2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
+		7524E7452888B56600ECBEC8 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7442888B56600ECBEC8 /* RightDetailCell.swift */; };
+		7524E7462888B56600ECBEC8 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7442888B56600ECBEC8 /* RightDetailCell.swift */; };
+		7524E7472888B56600ECBEC8 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7442888B56600ECBEC8 /* RightDetailCell.swift */; };
+		7524E7482888B56600ECBEC8 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7442888B56600ECBEC8 /* RightDetailCell.swift */; };
+		7524E74A2888B58200ECBEC8 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7492888B58200ECBEC8 /* TextFieldCell.swift */; };
+		7524E74B2888B58200ECBEC8 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7492888B58200ECBEC8 /* TextFieldCell.swift */; };
+		7524E74C2888B58200ECBEC8 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7492888B58200ECBEC8 /* TextFieldCell.swift */; };
+		7524E74D2888B58200ECBEC8 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7492888B58200ECBEC8 /* TextFieldCell.swift */; };
 		7526403A28455DAD0003DDFA /* PasswordGeneratorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D92824135D009017BF /* PasswordGeneratorCoordinator.swift */; };
 		7526403B28455DAF0003DDFA /* PasswordGeneratorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D92824135D009017BF /* PasswordGeneratorCoordinator.swift */; };
 		7526403C28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757E78DF282414D5009017BF /* PasswordGeneratorVC.storyboard */; };
@@ -1008,6 +1024,10 @@
 		751E0D5B2309B0520088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75209D73231B1C760010E142 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/WelcomeVC.strings; sourceTree = "<group>"; };
 		7523F71C21C98D620025C706 /* SupportEmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportEmailComposer.swift; sourceTree = "<group>"; };
+		7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFilePickerCoordinator.swift; sourceTree = "<group>"; };
+		7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFilePickerVC.swift; sourceTree = "<group>"; };
+		7524E7442888B56600ECBEC8 /* RightDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightDetailCell.swift; sourceTree = "<group>"; };
+		7524E7492888B58200ECBEC8 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		75264049284653580003DDFA /* TextInput+editMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextInput+editMenu.swift"; sourceTree = "<group>"; };
 		75267CFD25FF75E300A1CC95 /* ContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualAction.swift; sourceTree = "<group>"; };
 		7527CC5125F51DFD000E8661 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
@@ -2433,6 +2453,8 @@
 				75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */,
 				751E0D152309AF540088BB10 /* DatabasePickerVC.storyboard */,
 				75D76137262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift */,
+				7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */,
+				7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */,
 				7550D22A215CC99100360E0C /* DatabaseKeyChangerVC.swift */,
 				751E0D1B2309AF620088BB10 /* DatabaseKeyChangerVC.storyboard */,
 				750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */,
@@ -2564,6 +2586,8 @@
 				75BF5AE927680CC100809654 /* ParameterValueCell.xib */,
 				75BF5AEC27680D4600809654 /* ParameterValueCell.swift */,
 				759ADB86285A22CD00D93BD4 /* AnnouncementView.swift */,
+				7524E7442888B56600ECBEC8 /* RightDetailCell.swift */,
+				7524E7492888B58200ECBEC8 /* TextFieldCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -3216,6 +3240,7 @@
 				75BF1966283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
+				7524E7462888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				759ADB8D285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
 				7526404B284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75A94C4428441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
@@ -3288,6 +3313,7 @@
 				754E409926306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
+				7524E74B2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				7583EA6C2685D1FA009969E7 /* DatabasePickerVC.swift in Sources */,
 				7526404028455DD30003DDFA /* PasswordGeneratorVC.swift in Sources */,
 				75604EB426D8F0DA008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
@@ -3313,8 +3339,10 @@
 				750CFBDA21BAD7FF00E62B09 /* KeyboardLayoutConstraint.swift in Sources */,
 				750CFBDE21BAD7FF00E62B09 /* UIViewController+storyboard.swift in Sources */,
 				75FCCF852631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
+				7524E73C2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
 				75E60AE625CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				758544652351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,
+				7524E7372888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
 				750CFBDD21BAD7FF00E62B09 /* UIImage+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3354,6 +3382,7 @@
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
 				75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */,
+				7524E73B2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
 				75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				753DF2C1263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
 				75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */,
@@ -3416,6 +3445,7 @@
 				75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */,
 				7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */,
 				75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */,
+				7524E74A2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				756AE9D320CF8B5E00995846 /* ItemIconPicker.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
 				7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */,
@@ -3480,6 +3510,7 @@
 				75F0BE5326A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				75A5312823C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
 				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
+				7524E7362888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
 				750D127E20CF071600BE0CCE /* GroupEditorVC.swift in Sources */,
 				75D99DEE269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
@@ -3498,6 +3529,7 @@
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
+				7524E7452888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,
 				757ADC5423A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FCCF842631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
@@ -3542,6 +3574,7 @@
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
 				75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */,
+				7524E73D2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
 				75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
 				75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */,
@@ -3604,6 +3637,7 @@
 				75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */,
 				75B38C1F233E5B7C006BDEFC /* ViewEntryFieldCells.swift in Sources */,
 				75B38C21233E5B7C006BDEFC /* ItemIconPicker.swift in Sources */,
+				7524E74C2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */,
 				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
 				75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */,
@@ -3668,6 +3702,7 @@
 				75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */,
 				75B38C44233E5B7C006BDEFC /* GroupEditorVC.swift in Sources */,
+				7524E7382888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
 				75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
 				75D99DF0269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				758CA5462569B9EA0034EF10 /* SwitchCell.swift in Sources */,
@@ -3686,6 +3721,7 @@
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07124F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
+				7524E7472888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				75B38C4A233E5B7C006BDEFC /* main.swift in Sources */,
 				757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
@@ -3705,6 +3741,7 @@
 				75BF1968283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
+				7524E7482888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				759ADB8F285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
 				7526404D284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75A94C4628441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
@@ -3777,6 +3814,7 @@
 				754E409B26306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				7538936C26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
+				7524E74D2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */,
 				7526403F28455DC00003DDFA /* PasswordGeneratorVC.swift in Sources */,
 				75604EB526D8F0DB008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
@@ -3802,8 +3840,10 @@
 				75D7DFA5233E5E310029AD87 /* KeyboardLayoutConstraint.swift in Sources */,
 				75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */,
 				75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
+				7524E73E2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
 				75E60AE825CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				758544672351FE8D000D5E5E /* UIFont+monospace.swift in Sources */,
+				7524E7392888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
 				75D7DFA7233E5E310029AD87 /* UIImage+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

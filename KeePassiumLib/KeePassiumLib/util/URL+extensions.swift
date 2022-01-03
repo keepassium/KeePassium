@@ -14,6 +14,8 @@ public extension URL {
         return res?.isDirectory ?? false
     }
     
+    var isRemoteURL: Bool { !isFileURL }
+    
     var isExcludedFromBackup: Bool? {
         let res = try? resourceValues(forKeys: [.isExcludedFromBackupKey])
         return res?.isExcludedFromBackup
@@ -53,7 +55,7 @@ public extension URL {
         return self.deletingLastPathComponent().appendingPathComponent("_redacted_", isDirectory: isDirectory)
     }
     
-    func readFileInfo(
+    func readLocalFileInfo(
         canUseCache: Bool,
         completionQueue: OperationQueue = .main,
         completion: @escaping ((Result<FileInfo, FileAccessError>) -> Void)
@@ -118,3 +120,56 @@ public extension URL {
     }
 }
 
+
+fileprivate let urlSchemeSeparator: Character = "+"
+
+public extension URL {
+    var schemePrefix: String? {
+        guard let scheme = self.scheme else {
+            return nil
+        }
+        let schemeParts = scheme.split(separator: urlSchemeSeparator)
+        guard schemeParts.count > 1,
+              let prefix = schemeParts.first
+        else {
+            return nil
+        }
+        return String(prefix)
+    }
+    
+    var schemeWithoutPrefix: String? {
+        if let mainScheme = self.scheme?
+            .split(separator: urlSchemeSeparator, maxSplits: 1)
+            .last
+        {
+            return String(mainScheme)
+        }
+        return nil
+    }
+    
+    func withSchemePrefix(_ prefix: String?) -> URL {
+        guard var components = URLComponents(url: self, resolvingAgainstBaseURL: false) else {
+            return self
+        }
+        var mainScheme: String = ""
+        if let scheme = components.scheme,
+           let _mainScheme = scheme.split(separator: urlSchemeSeparator, maxSplits: 1).last
+        {
+            mainScheme = String(_mainScheme)
+        }
+        if let prefix = prefix {
+            components.scheme = prefix + String(urlSchemeSeparator) + mainScheme
+        } else {
+            components.scheme = mainScheme
+        }
+        return components.url!
+    }
+    
+    func withoutSchemePrefix() -> URL {
+        guard var components = URLComponents(url: self, resolvingAgainstBaseURL: false) else {
+            return self
+        }
+        components.scheme = self.schemeWithoutPrefix
+        return components.url!
+    }
+}

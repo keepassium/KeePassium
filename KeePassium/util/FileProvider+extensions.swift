@@ -24,6 +24,8 @@ extension FileProvider {
             return UIImage(named: "fp-google-drive-listitem")
         case .iCloudDrive:
             return UIImage(named: "fp-icloud-drive-listitem")
+        case .keepassiumWebDAV:
+            return UIImage(named: "fp-webdav-listitem")
         case .nextcloud:
             return UIImage(named: "fp-nextcloud-listitem")
         case .oneDrive:

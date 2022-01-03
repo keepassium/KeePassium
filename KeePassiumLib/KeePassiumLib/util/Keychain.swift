@@ -38,11 +38,12 @@ public class Keychain {
     
     private static let accessGroup: String? = nil
     private enum Service: String {
-        static let allValues: [Service] = [.general, databaseSettings, .premium]
+        static let allValues: [Service] = [.general, databaseSettings, .premium, .networkCredentials]
         
         case general = "KeePassium"
         case databaseSettings = "KeePassium.dbSettings"
         case premium = "KeePassium.premium"
+        case networkCredentials = "KeePassium.networkCredentials"
     }
     private let keychainFormatVersion = "formatVersion"
     private let appPasscodeAccount = "appPasscode"
@@ -368,6 +369,32 @@ public class Keychain {
         Diag.info("Purchase history upgraded")
         
         return purchaseHistory
+    }
+}
+
+internal extension Keychain {
+
+    func getNetworkCredential(for url: URL) throws -> NetworkCredential? {
+        guard let data = try get(
+            service: .networkCredentials,
+            account: url.absoluteString)
+        else {
+            return nil
+        }
+        return NetworkCredential.deserialize(from: data)
+    }
+    
+    func store(networkCredential: NetworkCredential, for url: URL) throws {
+        let data = networkCredential.serialize()
+        try set(service: .networkCredentials, account: url.absoluteString, data: data)
+    }
+    
+    func removeNetworkCredential(for url: URL) throws {
+        try remove(service: .networkCredentials, account: url.absoluteString)
+    }
+    
+    func removeAllNetworkCredentials() throws {
+        try remove(service: .networkCredentials, account: nil) 
     }
 }
 

@@ -37,9 +37,18 @@ public class URLReference:
         case internalBackup = 1
         case internalInbox = 2
         case external = 100
+        case remote = 200
         
         public var isInternal: Bool {
-            return self != .external
+            switch self {
+            case .internalDocuments,
+                 .internalBackup,
+                 .internalInbox:
+                return true
+            case .external,
+                 .remote:
+                return false
+            }
         }
         
         public var description: String {
@@ -68,6 +77,8 @@ public class URLReference:
                     bundle: Bundle.framework,
                     value: "Cloud storage / Another app",
                     comment: "Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app'")
+            case .remote:
+                return "Remote server" 
             }
         }
     }
@@ -124,7 +135,7 @@ public class URLReference:
         return bookmarkedURL ?? cachedURL
     }
 
-    internal var url: URL? {
+    public var url: URL? {
         return resolvedURL ?? cachedURL ?? bookmarkedURL
     }
     
@@ -471,6 +482,14 @@ public class URLReference:
             }
         }
         
+        if Settings.current.isNetworkAccessAllowed,
+           let originalURL = originalURL,
+           originalURL.isRemoteURL
+        {
+            self.resolvedURL = originalURL
+            return originalURL
+        }
+        
         var isStale = false
         let _resolvedURL = try URL(
             resolvingBookmarkData: data,
@@ -527,9 +546,7 @@ public class URLReference:
     
     fileprivate func processReference() {
         guard !data.isEmpty else {
-            if location.isInternal {
-                fileProvider = .localStorage
-            }
+            fileProvider = detectFileProvider(hint: nil)
             return
         }
         
@@ -626,19 +643,28 @@ public class URLReference:
         if let urlString = _sandboxBookmarkedURLString ?? _hackyBookmarkedURLString {
             self.bookmarkedURL = URL(fileURLWithPath: urlString, isDirectory: false)
         }
-        if let fileProviderID = _fileProviderID {
-            self.fileProvider = FileProvider(rawValue: fileProviderID)
+        self.fileProvider = detectFileProvider(hint: _fileProviderID)
+    }
+    
+    private func detectFileProvider(hint: String?) -> FileProvider? {
+        if let fileProviderID = hint {
+            return FileProvider(rawValue: fileProviderID)
+        }
+        
+        if let url = url,
+           let fileProviderDedicatedToSuchURLs = DataSourceFactory.findFileProvider(for: url)
+        {
+            return fileProviderDedicatedToSuchURLs
+        }
+        
+        if location.isInternal || ProcessInfo.isRunningOnMac {
+            return .localStorage
+        }
+        if FileKeeper.platformSupportsSharedReferences {
+            return .localStorage
         } else {
-            if ProcessInfo.isRunningOnMac {
-                self.fileProvider = .localStorage
-                return
-            }
-            if FileKeeper.platformSupportsSharedReferences {
-                self.fileProvider = .localStorage
-            } else {
-                assertionFailure()
-                self.fileProvider = nil
-            }
+            assertionFailure()
+            return nil
         }
     }
 }

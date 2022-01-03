@@ -24,6 +24,8 @@ protocol DatabasePickerDelegate: AnyObject {
     
     func needsPremiumToAddDatabase(in viewController: DatabasePickerVC) -> Bool
     func didPressAddExistingDatabase(in viewController: DatabasePickerVC)
+    func didPressAddRemoteDatabase(in viewController: DatabasePickerVC)
+    
     #if MAIN_APP
     func didPressCreateDatabase(in viewController: DatabasePickerVC)
     #endif
@@ -214,14 +216,8 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         sortOrderButton.image = Settings.current.filesSortOrder.toolbarIcon
         sortOrderButton.menu = makeListSettingsMenu()
         
-        let addDatabaseMenu = makeAddDatabaseMenu()
-        if let primaryAddDatabaseAction = getPrimaryAddDatabaseAction() {
-            addDatabaseBarButton.primaryAction = primaryAddDatabaseAction
-            addDatabaseBarButton.menu = nil
-        } else {
-            addDatabaseBarButton.primaryAction = nil
-            addDatabaseBarButton.menu = addDatabaseMenu
-        }
+        addDatabaseBarButton.primaryAction = nil
+        addDatabaseBarButton.menu = makeAddDatabaseMenu()
 
         let includeBackup: Bool
         switch mode {
@@ -337,7 +333,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     private func makeAddDatabaseMenu() -> UIMenu {
         let needPremium = delegate?.needsPremiumToAddDatabase(in: self) ?? true
         
-        var menuItems = [UIAction]()
+        var databaseMenuItems = [UIMenuElement]()
         let addDatabaseAction = UIAction(
             title: LString.actionOpenDatabase,
             image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.folder),
@@ -346,7 +342,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 self.delegate?.didPressAddExistingDatabase(in: self)
             }
         )
-        menuItems.append(addDatabaseAction)
+        databaseMenuItems.append(addDatabaseAction)
         
         #if MAIN_APP
         switch mode {
@@ -359,35 +355,37 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                     self.delegate?.didPressCreateDatabase(in: self)
                 }
             )
-            menuItems.append(createDatabaseAction)
+            databaseMenuItems.append(createDatabaseAction)
         case .autoFill:
             assertionFailure("Tried to use .autoFill mode in main app")
         }
         #endif
-        return UIMenu.make(reverse: false, children: menuItems)
-    }
-    
-    private func getPrimaryAddDatabaseAction() -> UIAction? {
-        let needPremium = delegate?.needsPremiumToAddDatabase(in: self) ?? true
-        let addDatabaseAction = UIAction(
-            title: LString.actionOpenDatabase,
-            image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.plus),
+        
+        let databaseMenu = UIMenu.make(
+            title: "",
+            reverse: false,
+            options: .displayInline,
+            children: databaseMenuItems)
+        
+        let addRemoteDatabaseAction = UIAction(
+            title: LString.actionConnectToServer,
+            image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.network),
+            attributes: Settings.current.isNetworkAccessAllowed ? [] : [.disabled],
             handler: { [weak self] _ in
                 guard let self = self else { return }
-                self.delegate?.didPressAddExistingDatabase(in: self)
+                self.delegate?.didPressAddRemoteDatabase(in: self)
             }
         )
-        #if MAIN_APP
-        if mode == .autoFill {
-            return addDatabaseAction
-        } else {
-            return nil
-        }
-        #else
-        return addDatabaseAction
-        #endif
-    }
+        let networkMenu = UIMenu.make(
+            title: "",
+            reverse: false,
+            options: [.displayInline],
+            children: [addRemoteDatabaseAction]
+        )
 
+        return UIMenu.make(reverse: false, children: [databaseMenu, networkMenu])
+    }
+    
 
     #if MAIN_APP
     @IBAction func didPressSettingsButton(_ sender: UIBarButtonItem) {
@@ -697,7 +695,9 @@ extension DatabasePickerVC: DynamicFileList {
 extension DatabasePickerVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
         switch key {
-        case .filesSortOrder, .backupFilesVisible:
+        case .filesSortOrder,
+             .backupFilesVisible,
+             .networkAccessAllowed:
             refresh()
         case .appLockEnabled, .rememberDatabaseKey:
             tableView.reloadSections([0], with: .automatic)

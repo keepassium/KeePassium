@@ -33,7 +33,7 @@ public class DatabaseManager {
         let databaseFile = DatabaseFile(
             database: db2,
             fileURL: databaseURL,
-            fileProvider: nil,
+            fileProvider: nil, 
             status: []
         )
         db2.keyHelper.createCompositeKey(
@@ -59,9 +59,12 @@ public class DatabaseManager {
     
     static func shouldBackupFiles(from location: URLReference.Location) -> Bool {
         switch location {
-        case .external, .internalDocuments:
+        case .external,
+             .remote,
+             .internalDocuments:
             return true
-        case .internalBackup, .internalInbox:
+        case .internalBackup,
+             .internalInbox:
             return false
         }
     }

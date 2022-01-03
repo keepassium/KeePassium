@@ -55,7 +55,8 @@ extension FileExportHelper: UIDocumentPickerDelegate {
             handler?(nil)
             return
         }
-        FileDataProvider.write(data, to: url, fileProvider: nil, completionQueue: .main) {
+        let fileProvider = FileProvider.find(for: url) 
+        FileDataProvider.write(data, to: url, fileProvider: fileProvider, completionQueue: .main) {
             [self] result in
             switch result {
             case .success:

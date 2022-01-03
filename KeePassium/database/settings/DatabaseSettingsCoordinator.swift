@@ -53,8 +53,15 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
     }
     
     func canChangeReadOnly(in viewController: DatabaseSettingsVC) -> Bool {
-        let isAlwaysReadOnly = dbRef.location == .internalBackup
-        return !isAlwaysReadOnly
+        switch dbRef.location {
+        case .internalBackup: 
+            return false
+        case .external,
+             .remote,
+             .internalDocuments,
+             .internalInbox:
+            return true
+        }
     }
     
     func didChangeSettings(isReadOnlyFile: Bool, in viewController: DatabaseSettingsVC) {

@@ -199,6 +199,41 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         presenter.present(documentPicker, animated: true, completion: nil)
     }
     
+    public func maybeAddRemoteDatabase(presenter: UIViewController) {
+        guard needsPremiumToAddDatabase() else {
+            addRemoteDatabase(presenter: presenter)
+            return
+        }
+
+        performPremiumActionOrOfferUpgrade(for: .canUseMultipleDatabases, in: presenter) {
+            [weak self, weak presenter] in
+            guard let self = self,
+                  let presenter = presenter
+            else {
+                return
+            }
+            self.addRemoteDatabase(presenter: presenter)
+        }
+    }
+    
+    public func addRemoteDatabase(presenter: UIViewController) {
+        guard Settings.current.isNetworkAccessAllowed else {
+            Diag.error("Network access denied")
+            presenter.showErrorAlert(FileAccessError.networkAccessDenied)
+            return
+        }
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let connectionCreatorCoordinator = RemoteFilePickerCoordinator(router: modalRouter)
+        connectionCreatorCoordinator.delegate = self
+        connectionCreatorCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        connectionCreatorCoordinator.start()
+        
+        presenter.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(connectionCreatorCoordinator)
+    }
+    
     private func addDatabaseFile(_ url: URL, mode: FileKeeper.OpenMode) {
         FileKeeper.shared.addFile(url: url, fileType: .database, mode: .openInPlace) {
             [weak self] (result) in
@@ -369,6 +404,10 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     func didPressAddExistingDatabase(in viewController: DatabasePickerVC) {
         maybeAddExistingDatabase(presenter: viewController)
     }
+    
+    func didPressAddRemoteDatabase(in viewController: DatabasePickerVC) {
+        maybeAddRemoteDatabase(presenter: viewController)
+    }
 
     func didPressRevealDatabaseInFinder(
         _ fileRef: URLReference,
@@ -514,5 +553,16 @@ extension DatabasePickerCoordinator: FileKeeperObserver {
             selectDatabase(nil, animated: false)
         }
         refresh()
+    }
+}
+
+extension DatabasePickerCoordinator: RemoteFilePickerCoordinatorDelegate {
+    func didPickRemoteFile(
+        url: URL,
+        credential: NetworkCredential,
+        in coordinator: RemoteFilePickerCoordinator
+    ) {
+        CredentialManager.shared.store(credential: credential, for: url)
+        addDatabaseFile(url, mode: .openInPlace)
     }
 }

@@ -248,6 +248,11 @@
 	<true/>
 	<key>NFCReaderUsageDescription</key>
 	<string>KeePassium needs access to NFC to communicate with your YubiKey.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>KeePassium needs the camera to scan QR codes.</string>
 	<key>NSFaceIDUsageDescription</key>

@@ -239,12 +239,16 @@ public class FileKeeper {
         }
     }
     
-    public func getLocation(for filePath: URL) -> URLReference.Location {
+    public func getLocation(for url: URL) -> URLReference.Location {
+        guard !url.isRemoteURL else {
+            return .remote
+        }
+        
         let path: String
-        if filePath.isDirectory {
-            path = filePath.standardizedFileURL.path
+        if url.isDirectory {
+            path = url.standardizedFileURL.path
         } else {
-            path = filePath.standardizedFileURL.deletingLastPathComponent().path
+            path = url.standardizedFileURL.deletingLastPathComponent().path
         }
         
         for candidateLocation in URLReference.Location.allInternal {
@@ -284,7 +288,7 @@ public class FileKeeper {
     
     private func getStoredReferences(
         fileType: FileType,
-        forExternalFiles isExternal: Bool
+        forExternalAndRemoteFiles isExternal: Bool
     ) -> [URLReference] {
         let key = userDefaultsKey(for: fileType, external: isExternal)
         guard let refsData = UserDefaults.appGroupShared.array(forKey: key) else {
@@ -312,7 +316,7 @@ public class FileKeeper {
     }
 
     private func findStoredExternalReferenceFor(url: URL, fileType: FileType) -> URLReference? {
-        let storedRefs = getStoredReferences(fileType: fileType, forExternalFiles: true)
+        let storedRefs = getStoredReferences(fileType: fileType, forExternalAndRemoteFiles: true)
         for ref in storedRefs {
             let storedURL = ref.cachedURL ?? ref.bookmarkedURL
             if storedURL == url {
@@ -342,7 +346,7 @@ public class FileKeeper {
     @discardableResult
     public func removeExternalReference(_ urlRef: URLReference, fileType: FileType) -> Bool {
         Diag.debug("Removing URL reference [fileType: \(fileType)]")
-        var refs = getStoredReferences(fileType: fileType, forExternalFiles: true)
+        var refs = getStoredReferences(fileType: fileType, forExternalAndRemoteFiles: true)
         if let index = refs.firstIndex(of: urlRef) {
             refs.remove(at: index)
             storeReferences(refs, fileType: fileType, forExternalFiles: true)
@@ -357,7 +361,9 @@ public class FileKeeper {
     
     public func getAllReferences(fileType: FileType, includeBackup: Bool) -> [URLReference] {
         var result: [URLReference] = []
-        result.append(contentsOf:getStoredReferences(fileType: fileType, forExternalFiles: true))
+        result.append(
+            contentsOf: getStoredReferences(fileType: fileType, forExternalAndRemoteFiles: true)
+        )
         
         let internalDocumentFiles = scanLocalDirectory(docDirURL, fileType: fileType)
         result.append(contentsOf: internalDocumentFiles)
@@ -372,7 +378,7 @@ public class FileKeeper {
     func scanLocalDirectory(_ dirURL: URL, fileType: FileType) -> [URLReference] {
         var refs: [URLReference] = []
         let location = getLocation(for: dirURL)
-        assert(location != .external, "This should be used only on local directories.")
+        assert(location.isInternal, "This should be used only on local directories.")
         
         let isIgnoreFileType = (location == .internalBackup)
         do {
@@ -423,29 +429,21 @@ public class FileKeeper {
         
         Diag.debug("Will add file [mode: \(openMode)]")
         
-        guard url.isFileURL else {
-            Diag.error("Failed to import non-file URL: \(url.redacted)")
-            let messageNotAFileURL = LString.Error.notAFileURL
-            let error: FileKeeperError
-            switch openMode {
-            case .import:
-                error = FileKeeperError.importError(reason: messageNotAFileURL)
-            case .openInPlace:
-                error = FileKeeperError.openError(reason: messageNotAFileURL)
-            }
-            completionQueue.addOperation {
-                completion(.failure(error))
-            }
-            return
-        }
-        
         
         let location = getLocation(for: url)
         let fileType = fileType ?? FileType(for: url)
         switch location {
+        case .remote:
+            processRemoteURL(
+                url: url,
+                fileType: fileType,
+                openMode: openMode,
+                completionQueue: completionQueue,
+                completion: completion
+            )
         case .external:
             processExternalFile(
-                url: url,
+                fileURL: url,
                 fileType: fileType,
                 openMode: openMode,
                 completionQueue: completionQueue,
@@ -467,8 +465,59 @@ public class FileKeeper {
         }
     }
     
+    private func processRemoteURL(
+        url: URL,
+        fileType: FileType,
+        openMode: OpenMode,
+        completionQueue: OperationQueue,
+        completion: @escaping (Result<URLReference, FileKeeperError>) -> Void
+    ) {
+        assert(url.isRemoteURL, "Should be a remote URL")
+        guard Settings.current.isNetworkAccessAllowed else {
+            Diag.error("Network access denied, will not import remote URL: \(url.redacted)")
+            let messageNotAFileURL = LString.Error.notAFileURL
+            let error: FileKeeperError
+            switch openMode {
+            case .import:
+                error = FileKeeperError.importError(reason: messageNotAFileURL)
+            case .openInPlace:
+                error = FileKeeperError.openError(reason: messageNotAFileURL)
+            }
+            completionQueue.addOperation {
+                completion(.failure(error))
+            }
+            return
+        }
+        
+        Diag.info("Adding remote URL: \(url.redacted)")
+        processExternalOrRemoteFile(
+            url: url,
+            fileType: fileType,
+            openMode: openMode,
+            completionQueue: completionQueue,
+            completion: completion
+        )
+    }
     
-    private func maybeProcessExistingExternalFile(
+    private func processExternalFile(
+        fileURL: URL,
+        fileType: FileType,
+        openMode: OpenMode,
+        completionQueue: OperationQueue,
+        completion: @escaping (Result<URLReference, FileKeeperError>) -> Void
+    ) {
+        assert(!fileURL.isRemoteURL, "Should be a local external URL")
+        Diag.info("Adding external file: \(fileURL.redacted)")
+        processExternalOrRemoteFile(
+            url: fileURL,
+            fileType: fileType,
+            openMode: openMode,
+            completionQueue: completionQueue,
+            completion: completion
+        )
+    }
+    
+    private func maybeProcessExistingExternalOrRemoteFile(
         url sourceURL: URL,
         fileType: FileType,
         completionQueue: OperationQueue,
@@ -497,7 +546,8 @@ public class FileKeeper {
         return true 
     }
     
-    private func processExternalFile(
+    
+    private func processExternalOrRemoteFile(
         url sourceURL: URL,
         fileType: FileType,
         openMode: OpenMode,
@@ -505,7 +555,7 @@ public class FileKeeper {
         completion: @escaping (Result<URLReference, FileKeeperError>) -> Void
     ) {
         assert(operationQueue.isCurrent)
-        let isProcessed = maybeProcessExistingExternalFile(
+        let isProcessed = maybeProcessExistingExternalOrRemoteFile(
             url: sourceURL,
             fileType: fileType,
             completionQueue: completionQueue,
@@ -516,7 +566,7 @@ public class FileKeeper {
         
         switch openMode {
         case .openInPlace:
-            addExternalFileRef(
+            addFileRef(
                 url: sourceURL,
                 fileType: fileType,
                 completionQueue: completionQueue,
@@ -524,7 +574,7 @@ public class FileKeeper {
                     assert(completionQueue.isCurrent)
                     switch result {
                     case .success(let urlRef):
-                        Diag.info("External file added successfully")
+                        Diag.info("File reference added successfully")
                         FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
                         completion(.success(urlRef))
                     case .failure(let fileKeeperError):
@@ -533,9 +583,10 @@ public class FileKeeper {
                 }
             )
         case .import:
+            let guessedFileProvider = FileProvider.find(for: sourceURL)
             copyToDocumentsResolvingConflicts(
                 from: sourceURL,
-                fileProvider: nil, 
+                fileProvider: FileProvider.find(for: sourceURL),
                 completionQueue: completionQueue)
             {
                 (result) in
@@ -545,14 +596,14 @@ public class FileKeeper {
                         (result) in
                         switch result {
                         case .success(let urlRef):
-                            Diag.info("External file imported successfully")
+                            Diag.info("File imported successfully")
                             FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
                             completionQueue.addOperation {
                                 completion(.success(urlRef))
                             }
                         case .failure(let fileAccessError):
                             Diag.error("""
-                                Failed to import external file [
+                                Failed to import file [
                                     type: \(fileType),
                                     message: \(fileAccessError.localizedDescription),
                                     url: \(sourceURL.redacted)]
@@ -644,27 +695,29 @@ public class FileKeeper {
         }
     }
     
-    private func addExternalFileRef(
+    private func addFileRef(
         url sourceURL: URL,
         fileType: FileType,
         completionQueue: OperationQueue,
         completion: @escaping (Result<URLReference, FileKeeperError>) -> Void
     ) {
         assert(operationQueue.isCurrent)
-        Diag.debug("Will add external file reference")
+        Diag.debug("Will add external/remote file reference")
         
-        URLReference.create(for: sourceURL, location: .external) {
+        let location = getLocation(for: sourceURL)
+        assert(!location.isInternal, "Must be an external or remote location")
+        URLReference.create(for: sourceURL, location: location) {
             [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let newRef):
                 var storedRefs = self.getStoredReferences(
                     fileType: fileType,
-                    forExternalFiles: true)
+                    forExternalAndRemoteFiles: true)
                 storedRefs.insert(newRef, at: 0)
                 self.storeReferences(storedRefs, fileType: fileType, forExternalFiles: true)
                 
-                Diag.info("External URL reference added OK")
+                Diag.info("External/remote URL reference added OK")
                 completionQueue.addOperation {
                     completion(.success(newRef))
                 }

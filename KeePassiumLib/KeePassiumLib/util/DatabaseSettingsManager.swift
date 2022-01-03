@@ -102,9 +102,16 @@ public class DatabaseSettingsManager {
     
     
     public func isReadOnly(_ databaseRef: URLReference) -> Bool {
-        guard databaseRef.location != .internalBackup else {
+        switch databaseRef.location {
+        case .internalBackup:
             return true
+        case .external,
+             .remote,
+             .internalDocuments,
+             .internalInbox:
+            break
         }
+
         guard let dbSettings = getSettings(for: databaseRef) else {
             return false
         }
@@ -138,7 +145,8 @@ public class DatabaseSettingsManager {
              .internalBackup,
              .internalInbox:
             return [.showError]
-        case .external:
+        case .external,
+             .remote:
             return [.showError, .useCache]
         }
     }
@@ -149,7 +157,8 @@ public class DatabaseSettingsManager {
              .internalBackup,
              .internalInbox:
             return .showError
-        case .external:
+        case .external,
+             .remote:
             return getSettings(for: databaseRef)?.fallbackStrategy ?? .useCache
         }
     }

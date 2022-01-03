@@ -14,7 +14,7 @@ extension URL {
         
         public static let termsAndConditions = URL(string: "https://keepassium.com/terms/app")!
         public static let privacyPolicyOfflineMode = URL(string: "https://keepassium.com/privacy/app")!
-        public static let privacyPolicyOnlineMode = URL(string: "https://keepassium.com/privacy/app-online")!
+        public static let privacyPolicyOnlineMode = URL(string: "https://keepassium.com/privacy/app")!
         public static var currentPrivacyPolicy: URL {
             if Settings.current.isNetworkAccessAllowed {
                 return privacyPolicyOnlineMode

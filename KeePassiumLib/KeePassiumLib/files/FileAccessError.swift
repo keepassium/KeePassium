@@ -21,6 +21,12 @@ public enum FileAccessError: LocalizedError {
     
     case targetFileIsReadOnly(fileProvider: FileProvider)
     
+    case networkAccessDenied
+
+    case serverSideError(message: String)
+    
+    case networkError(message: String)
+    
     case systemError(_ originalError: Error?)
     
     public var isTimeout: Bool {
@@ -53,7 +59,7 @@ public enum FileAccessError: LocalizedError {
             }
         case .noInfoAvailable:
             assertionFailure("Should not be shown to the user")
-            return nil
+            return "noInfoAvailable" 
         case .internalError:
             return NSLocalizedString(
                 "[FileAccessError/internalError]",
@@ -118,6 +124,16 @@ public enum FileAccessError: LocalizedError {
                     comment: "Error message: file provider does not support write operations. For example: `Cannot save file (OneDrive)`"),
                 fileProvider.localizedName
             )
+        case .networkAccessDenied:
+            return NSLocalizedString(
+                "[FileAccessError/NetworkAccessDenied/generic]",
+                bundle: Bundle.framework,
+                value: "Network access is blocked by the settings.",
+                comment: "Error message: network access is forbidden by system or app settings.")
+        case .serverSideError(let message):
+            return message
+        case .networkError(let message):
+            return message
         case .systemError(let originalError):
             return originalError?.localizedDescription
         }
