@@ -194,15 +194,7 @@ final class GroupViewerVC:
     
     weak var group: Group? {
         didSet {
-            if let group = group {
-                titleView.titleLabel.setText(group.name, strikethrough: group.isExpired)
-                titleView.iconView.image = UIImage.kpIcon(forGroup: group)
-            } else {
-                titleView.titleLabel.text = nil
-                titleView.iconView.image = nil
-            }
-            navigationItem.title = titleView.titleLabel.text
-            sortGroupItems()
+            refresh()
         }
     }
 
@@ -265,12 +257,11 @@ final class GroupViewerVC:
             [weak self] _ in
             self?.refreshDynamicCells()
         }
+        refresh()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        refresh()
         
         navigationItem.hidesSearchBarWhenScrolling = true
         if isActivateSearch {
@@ -339,8 +330,12 @@ final class GroupViewerVC:
     }
     
     func refresh() {
-        guard let group = group else { return }
+        guard isViewLoaded, let group = group else { return }
         
+        titleView.titleLabel.setText(group.name, strikethrough: group.isExpired)
+        titleView.iconView.image = UIImage.kpIcon(forGroup: group)
+        navigationItem.title = titleView.titleLabel.text
+
         actionPermissions =
             delegate?.getActionPermissions(for: group) ??
             DatabaseItemActionPermissions()
