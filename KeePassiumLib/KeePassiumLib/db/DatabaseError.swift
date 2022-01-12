@@ -18,6 +18,22 @@ public enum DatabaseError: LocalizedError {
         case challengeResponseError(_ reason: ChallengeResponseError)
         case formatError(reason: String)
         case gzipError(reason: String)
+        public var errorDescription: String? {
+            switch self {
+            case .headerError(let reason):
+                return reason
+            case .cryptoError(let underlyingError):
+                return underlyingError.localizedDescription
+            case .keyFileError(let underlyingError):
+                return underlyingError.localizedDescription
+            case .challengeResponseError(let underlyingError):
+                return underlyingError.localizedDescription
+            case .formatError(let reason):
+                return reason
+            case .gzipError(let reason):
+                return reason
+            }
+        }
     }
     
     public var errorDescription: String? {
