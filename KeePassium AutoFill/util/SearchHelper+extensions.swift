@@ -68,11 +68,10 @@ extension SearchHelper {
         
         let relevantEntries = allEntries
             .filter { (entry) in
-                if let group2 = entry.parent as? Group2 {
-                    return group2.isSearchingEnabled ?? true
-                } else {
-                    return !(entry.isDeleted || entry.isHiddenFromSearch)
-                }
+                (entry.parent as? Group2)?.isSearchingEnabled ?? true
+            }
+            .filter { (entry) in
+                !(entry.isDeleted || entry.isHiddenFromSearch)
             }
             .map { (entry) in
                 return ScoredEntry(
@@ -95,11 +94,10 @@ extension SearchHelper {
         
         let relevantEntries = allEntries
             .filter { (entry) in
-                if let group2 = entry.parent as? Group2 {
-                    return group2.isSearchingEnabled ?? true
-                } else {
-                    return !(entry.isDeleted || entry.isHiddenFromSearch)
-                }
+                (entry.parent as? Group2)?.isSearchingEnabled ?? true
+            }
+            .filter { (entry) in
+                !(entry.isDeleted || entry.isHiddenFromSearch)
             }
             .map { (entry) in
                 return ScoredEntry(
