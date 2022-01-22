@@ -695,7 +695,12 @@ public class FileKeeper {
         }
         
         Diag.debug("Will import a file")
-        BaseDocument.read(sourceURL, completionQueue: operationQueue) { [self] result in 
+        FileDataProvider.read(
+            sourceURL,
+            fileProvider: fileProvider,
+            completionQueue: operationQueue
+        ) {
+            [self] result in 
             assert(operationQueue.isCurrent)
             switch result {
             case .success(let docData):

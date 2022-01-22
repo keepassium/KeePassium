@@ -176,8 +176,8 @@ public class ByteArray: Eraseable, Cloneable, Codable, CustomDebugStringConverti
         self.init()
         bytes.reserveCapacity(capacity)
     }
-    convenience public init(contentsOf url: URL) throws {
-        let data = try Data(contentsOf: url)
+    convenience public init(contentsOf url: URL, options: Data.ReadingOptions = []) throws {
+        let data = try Data(contentsOf: url, options: options)
         self.init(data: data)
     }
     convenience public init(utf8String: String) {

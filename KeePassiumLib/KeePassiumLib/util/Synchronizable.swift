@@ -28,44 +28,26 @@ public extension Synchronizable {
     }
     
     func execute<SlowResultType>(
-        withTimeout timeout: TimeInterval,
+        byTime: DispatchTime,
         on queue: DispatchQueue,
         slowSyncOperation: @escaping ()->(SlowResultType),
         onSuccess: @escaping (SlowResultType)->(),
         onTimeout: @escaping ()->())
     {
-        assert(timeout >= TimeInterval.zero)
-        queue.async { [self] in 
+        queue.async { 
             let semaphore = DispatchSemaphore(value: 0)
             let slowBlockQueue = DispatchQueue.init(label: "", qos: queue.qos, attributes: []) 
             
             var result: SlowResultType?
-            var isCancelled = false
-            var isFinished = false
-            slowBlockQueue.async { [weak self] in
+            slowBlockQueue.async {
                 result = slowSyncOperation()
-                
-                guard let self = self else { return }
-                defer { semaphore.signal() }
-                self.synchronized {
-                    if !isCancelled {
-                        isFinished = true
-                    }
-                }
+                semaphore.signal()
             }
             
-            if semaphore.wait(timeout: .now() + timeout) == .timedOut {
-                self.synchronized {
-                    if !isFinished {
-                        isCancelled = true
-                    }
-                }
-            }
-            
-            if isFinished {
-                onSuccess(result!)
-            } else {
+            if semaphore.wait(timeout: byTime) == .timedOut {
                 onTimeout()
+            } else {
+                onSuccess(result!)
             }
         }
     }

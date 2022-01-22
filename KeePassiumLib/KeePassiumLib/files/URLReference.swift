@@ -250,34 +250,14 @@ public class URLReference:
     public static func create(
         for url: URL,
         location: URLReference.Location,
-        completion callback: @escaping CreateCallback)
-    {
-        let isAccessed = url.startAccessingSecurityScopedResource()
-        defer {
-            if isAccessed {
-                url.stopAccessingSecurityScopedResource()
-            }
-        }
-
-        if tryCreate(for: url, location: location, callbackOnError: false, callback: callback) {
-            print("URL bookmarked on stage 1")
-            return
-        }
-
-        let tmpDoc = BaseDocument(fileURL: url, fileProvider: nil, readOnly: true)
-        tmpDoc.open(withTimeout: URLReference.defaultTimeout) { (result) in
-            defer {
-                tmpDoc.close(completionQueue: nil, completion: nil)
-            }
-            switch result {
-            case .success(_):
-                tryCreate(for: url, location: location, callbackOnError: true, callback: callback)
-            case .failure(let fileAccessError):
-                DispatchQueue.main.async {
-                    callback(.failure(fileAccessError))
-                }
-            }
-        }
+        completion: @escaping CreateCallback
+    ) {
+        FileDataProvider.bookmarkFile(
+            at: url,
+            location: location,
+            completionQueue: .main,
+            completion: completion
+        )
     }
     
     @discardableResult
@@ -310,10 +290,22 @@ public class URLReference:
     public func resolveAsync(
         timeout: TimeInterval = URLReference.defaultTimeout,
         callbackQueue: OperationQueue = .main,
-        callback: @escaping ResolveCallback)
-    {
+        callback: @escaping ResolveCallback
+    ) {
+        resolveAsync(
+            byTime: .now() + timeout,
+            callbackQueue: callbackQueue,
+            callback: callback
+        )
+    }
+    
+    public func resolveAsync(
+        byTime: DispatchTime,
+        callbackQueue: OperationQueue = .main,
+        callback: @escaping ResolveCallback
+    ) {
         execute(
-            withTimeout: timeout,
+            byTime: byTime,
             on: URLReference.backgroundQueue,
             slowSyncOperation: { () -> Result<URL, Error> in
                 do {
@@ -388,62 +380,56 @@ public class URLReference:
     
     public func refreshInfo(
         timeout: TimeInterval = URLReference.defaultTimeout,
-        completion callback: @escaping InfoCallback)
-    {
+        completionQueue: OperationQueue = .main,
+        completion: @escaping InfoCallback
+    ) {
+        let byTime = DispatchTime.now() + timeout
         registerInfoRefreshRequest(.added)
-        resolveAsync(timeout: timeout) {
-            [self] (result) in 
+        resolveAsync(byTime: byTime, callbackQueue: completionQueue) {
+            [weak self] result in
+            guard let self = self else { return }
+
+            assert(completionQueue.isCurrent)
             switch result {
             case .success(let url):
-                URLReference.backgroundQueue.async { [weak self, callback] in
-                    self?.refreshInfo(for: url, timeout: timeout, completion: callback)
-                }
-            case .failure(let error):
+                self.refreshInfo(
+                    for: url,
+                    byTime: byTime,
+                    completionQueue: completionQueue,
+                    completion: completion
+                )
+            case .failure(let fileAccessError):
                 self.registerInfoRefreshRequest(.completed)
-                self.error = error
-                callback(.failure(error))
+                self.error = fileAccessError
+                completion(.failure(fileAccessError))
             }
         }
     }
     
     private func refreshInfo(
         for url: URL,
-        timeout: TimeInterval,
-        completion callback: @escaping InfoCallback
+        byTime: DispatchTime,
+        completionQueue: OperationQueue,
+        completion: @escaping InfoCallback
     ) {
-        assert(!Thread.isMainThread)
-
-        let isAccessed = url.startAccessingSecurityScopedResource()
-        
-        let tmpDoc = BaseDocument(fileURL: url, fileProvider: fileProvider, readOnly: true)
-        tmpDoc.open(withTimeout: timeout) { [self] (result) in
-            defer {
-                if isAccessed {
-                    url.stopAccessingSecurityScopedResource()
-                }
-                tmpDoc.close(completionQueue: nil, completion: nil)
-            }
-            self.registerInfoRefreshRequest(.completed)
-            switch result {
-            case .success(_):
-                url.readFileInfo(canUseCache: false) { [self] result in
-                    switch result {
-                    case .success(let fileInfo):
-                        self.cachedInfo = fileInfo
-                    case .failure(let fileAccessError):
-                        self.error = fileAccessError
-                    }
-                    DispatchQueue.main.async {
-                        callback(result)
-                    }
-                }
-            case .failure(let fileAccessError):
-                DispatchQueue.main.async { 
+        FileDataProvider.readFileInfo(
+            at: url,
+            fileProvider: nil,
+            canUseCache: false,
+            byTime: byTime,
+            completionQueue: completionQueue,
+            completion: { [weak self] result in
+                guard let self = self else { return }
+                self.registerInfoRefreshRequest(.completed)
+                switch result {
+                case .success(let fileInfo):
+                    self.cachedInfo = fileInfo
+                case .failure(let fileAccessError):
                     self.error = fileAccessError
-                    callback(.failure(fileAccessError))
                 }
+                completion(result)
             }
-        }
+        )
     }
     
     

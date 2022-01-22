@@ -274,10 +274,11 @@ public class DatabaseLoader: ProgressObserver {
     private func onDatabaseURLResolved(url: URL, fileProvider: FileProvider?) {
         assert(operationQueue.isCurrent)
         progress.status = LString.Progress.loadingDatabaseFile
-        BaseDocument.read(
+        FileDataProvider.read(
             url,
+            fileProvider: fileProvider,
             queue: operationQueue,
-            timeout: timeout,
+            byTime: .now() + timeout,
             completionQueue: operationQueue,
             completion: {
                 [weak self] (result) in
@@ -352,10 +353,11 @@ public class DatabaseLoader: ProgressObserver {
     
     private func onKeyFileURLResolved(url: URL, fileProvider: FileProvider?, dbFile: DatabaseFile) {
         assert(operationQueue.isCurrent)
-        BaseDocument.read(
+        FileDataProvider.read(
             url,
+            fileProvider: fileProvider,
             queue: operationQueue,
-            timeout: timeout,
+            byTime: .now() + timeout,
             completionQueue: operationQueue,
             completion: {
                 [weak self] (result) in

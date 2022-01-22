@@ -257,7 +257,9 @@ extension EntryViewerCoordinator {
             allowCancelling: false,
             animated: true)
         
-        BaseDocument.read(url, completionQueue: .main) { [weak self] result in
+        FileDataProvider.read(url, fileProvider: nil, completionQueue: .main) {
+            [weak self] result in
+            assert(Thread.isMainThread)
             guard let self = self else { return }
             switch result {
             case .success(let docData):

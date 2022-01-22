@@ -26,7 +26,8 @@ public extension KeyHelper {
             return
         }
         
-        BaseDocument.read(keyFileRef, completionQueue: nil) { result in
+        FileDataProvider.read(keyFileRef, completionQueue: nil) { result in
+            assert(!Thread.isMainThread)
             switch result {
             case .success(let keyFileData):
                 self.buildCompositeKey(

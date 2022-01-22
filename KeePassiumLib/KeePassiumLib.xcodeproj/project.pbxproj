@@ -33,6 +33,7 @@
 		754ABE9C25AB898B00B98A63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 754ABE9A25AB898B00B98A63 /* InfoPlist.strings */; };
 		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
+		75615DAF278C200D00CE3026 /* FileDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75615DAE278C200D00CE3026 /* FileDataProvider.swift */; };
 		756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AFD5C258B4C510072BEEF /* KeyFileError.swift */; };
 		75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */; };
 		759896432341CED300DF39AA /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759896422341CED300DF39AA /* BusinessModel.swift */; };
@@ -153,7 +154,6 @@
 		75F4ACE02177469500B22D8B /* FileKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD92177469500B22D8B /* FileKeeper.swift */; };
 		75F4ACE12177469500B22D8B /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDA2177469500B22D8B /* FileType.swift */; };
 		75F4ACE22177469500B22D8B /* DatabaseFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDB2177469500B22D8B /* DatabaseFile.swift */; };
-		75F4ACE32177469500B22D8B /* BaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDC2177469500B22D8B /* BaseDocument.swift */; };
 		75F4ACE42177469500B22D8B /* FileKeeperObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */; };
 		75F4ACE52177469500B22D8B /* URLReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACDE2177469500B22D8B /* URLReference.swift */; };
 		75F4ACEA2177485D00B22D8B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACE72177485D00B22D8B /* Settings.swift */; };
@@ -222,6 +222,7 @@
 		754ABF3125AB976E00B98A63 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		754D7C0D238C26A7005652E1 /* YubiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YubiKey.swift; sourceTree = "<group>"; };
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
+		75615DAE278C200D00CE3026 /* FileDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataProvider.swift; sourceTree = "<group>"; };
 		756AFD5C258B4C510072BEEF /* KeyFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileError.swift; sourceTree = "<group>"; };
 		75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+extensions.swift"; sourceTree = "<group>"; };
 		759896422341CED300DF39AA /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
@@ -351,7 +352,6 @@
 		75F4ACD92177469500B22D8B /* FileKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileKeeper.swift; sourceTree = "<group>"; };
 		75F4ACDA2177469500B22D8B /* FileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		75F4ACDB2177469500B22D8B /* DatabaseFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseFile.swift; sourceTree = "<group>"; };
-		75F4ACDC2177469500B22D8B /* BaseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDocument.swift; sourceTree = "<group>"; };
 		75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileKeeperObserver.swift; sourceTree = "<group>"; };
 		75F4ACDE2177469500B22D8B /* URLReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLReference.swift; sourceTree = "<group>"; };
 		75F4ACE72177485D00B22D8B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -770,11 +770,11 @@
 				75F4ACD92177469500B22D8B /* FileKeeper.swift */,
 				75F4ACDD2177469500B22D8B /* FileKeeperObserver.swift */,
 				75F4ACDA2177469500B22D8B /* FileType.swift */,
-				75F4ACDC2177469500B22D8B /* BaseDocument.swift */,
 				75F4ACD82177469500B22D8B /* TemporaryFileURL.swift */,
 				75F4ACDE2177469500B22D8B /* URLReference.swift */,
 				75BFB1432481B2FA0017B980 /* FileProvider.swift */,
 				75C01F02247554EA0099698C /* FileAccessError.swift */,
+				75615DAE278C200D00CE3026 /* FileDataProvider.swift */,
 			);
 			path = files;
 			sourceTree = "<group>";
@@ -1060,7 +1060,6 @@
 				759A321B252DC1E7001A1623 /* EntryFieldReference.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
 				75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */,
-				75F4ACE32177469500B22D8B /* BaseDocument.swift in Sources */,
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,
 				75F4ACE22177469500B22D8B /* DatabaseFile.swift in Sources */,
 				7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */,
@@ -1075,6 +1074,7 @@
 				759B532025FABB1500259DB0 /* DatabaseSettings.swift in Sources */,
 				75D09C372174F77000F7DEF2 /* KeyHelper.swift in Sources */,
 				75C01F03247554EA0099698C /* FileAccessError.swift in Sources */,
+				75615DAF278C200D00CE3026 /* FileDataProvider.swift in Sources */,
 				75241F42274A8FD300AE15AD /* LString+database.swift in Sources */,
 				75335E7E26FF23F300D49422 /* SecureRandomNumberGenerator.swift in Sources */,
 				75A26770228DAC440097C693 /* PremiumManager.swift in Sources */,

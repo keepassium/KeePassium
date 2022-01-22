@@ -66,7 +66,7 @@ public class DatabaseSaver: ProgressObserver {
     private let operationQueue: OperationQueue = {
         let q = OperationQueue()
         q.name = "com.keepassium.DatabaseSaver"
-        q.maxConcurrentOperationCount = 1
+        q.maxConcurrentOperationCount = 2
         q.qualityOfService = .userInitiated
         return q
     }()
@@ -153,79 +153,82 @@ public class DatabaseSaver: ProgressObserver {
             progress.completedUnitCount = ProgressSteps.didEncryptDatabase
             
             Diag.info("Writing database document")
-            let document = BaseDocument(
-                fileURL: databaseFile.fileURL,
+            var isSaveCancelled = false
+            var isSaveToSameFile = true
+            FileDataProvider.readThenWrite(
+                to: databaseFile.fileURL,
                 fileProvider: databaseFile.fileProvider,
-                readOnly: false
-            )
-            document.open(queue: operationQueue, completionQueue: operationQueue) {
-                [self] (result) in 
-                switch result {
-                case .success(_):
-                    self.didOpenRemote(document: document)
-                case .failure(let fileAccessError):
-                    finalize(withError: fileAccessError)
+                queue: operationQueue,
+                dataSource: { [self] remoteURL, remoteData -> ByteArray? in 
+                    assert(operationQueue.isCurrent)
+                    let dataToWrite = resolveConflict(
+                        localData: outData,
+                        remoteURL: remoteURL,
+                        remoteData: remoteData,
+                        saveToSameFile: &isSaveToSameFile
+                    )
+                    isSaveCancelled = (dataToWrite == nil)
+                    return dataToWrite
+                },
+                completionQueue: operationQueue,
+                completion: { [self] result in 
+                    switch result {
+                    case .success(_):
+                        if isSaveCancelled {
+                            Diag.debug("Saving aborted after sync conflict.")
+                            finalize(withError: nil)
+                            return
+                        }
+                        progress.status = LString.Progress.done
+                        progress.completedUnitCount = ProgressSteps.didWriteDatabase
+                        
+                        if isSaveToSameFile {
+                            databaseFile.setData(databaseFile.data, updateHash: true)
+                            Diag.info("Database saved OK")
+                            performPostSaveTasks(savedData: databaseFile.data)
+                            notifyDidSaveDatabase()
+                            finalize(withError: nil)
+                        } else {
+                            performPostSaveTasks(savedData: databaseFile.data)
+                            finalize(withError: nil)
+                        }
+                    case .failure(let fileAccessError):
+                        finalize(withError: fileAccessError)
+                    }
                 }
-            }
+            )
         } catch {
             finalize(withError: error)
         }
     }
     
-    private func didOpenRemote(document: BaseDocument) {
-        assert(operationQueue.isCurrent)
-        let remoteData = document.data
-        let remoteDataHash = remoteData.sha512
-        let localDataHash = databaseFile.storedDataSHA512
-        if remoteData.isEmpty || (localDataHash == remoteDataHash) {
-            overwriteRemote(document: document)
-            return
-        }
-        
-        notifyShouldResolveConflict(
-            remoteURL: document.fileURL,
-            remoteData: document.data,
-            completion: { [self, document] (targetData: ByteArray?, shouldOverwrite: Bool) in
-                assert(self.operationQueue.isCurrent)
-                guard let targetData = targetData else {
-                    Diag.debug("Saving aborted after sync conflict.")
-                    document.close(completionQueue: nil, completion: nil)
-                    finalize(withError: nil)
-                    return
-                }
-                
-                if shouldOverwrite {
-                    self.databaseFile.setData(targetData, updateHash: false)
-                    document.data = targetData
-                    self.overwriteRemote(document: document)
-                } else {
-                    performPostSaveTasks(savedData: targetData)
-                    finalize(withError: nil)
-                }
-            }
-        )
-        
-    }
     
-    private func overwriteRemote(document: BaseDocument) {
+    private func resolveConflict(
+        localData: ByteArray,
+        remoteURL: URL,
+        remoteData: ByteArray,
+        saveToSameFile: inout Bool
+    ) -> ByteArray? {
         assert(operationQueue.isCurrent)
-        assert(document.documentState.contains(.normal))
-        document.data = databaseFile.data
-        document.saveAndClose(completionQueue: operationQueue) { [self] result in
-            switch result {
-            case .success:
-                self.progress.status = LString.Progress.done
-                self.progress.completedUnitCount = ProgressSteps.didWriteDatabase
-                self.databaseFile.setData(self.databaseFile.data, updateHash: true)
-                Diag.info("Database saved OK")
-                self.performPostSaveTasks(savedData: document.data)
-                notifyDidSaveDatabase()
-                finalize(withError: nil)
-            case .failure(let fileAccessError):
-                Diag.error("Database saving error. [message: \(fileAccessError.localizedDescription)]")
-                finalize(withError: fileAccessError)
-            }
+        if remoteData.isEmpty || remoteData.sha512 == databaseFile.storedDataSHA512 {
+            saveToSameFile = true
+            return localData
         }
+        
+        var resolvedData: ByteArray?
+        var shouldOverwrite = true 
+
+        let semaphore = DispatchSemaphore(value: 0)
+        notifyShouldResolveConflict(remoteURL: remoteURL, remoteData: remoteData) {
+            (_resolvedData: ByteArray?, _shouldOverwrite: Bool) in
+            resolvedData = _resolvedData
+            shouldOverwrite = _shouldOverwrite
+            semaphore.signal()
+        }
+        semaphore.wait() 
+
+        saveToSameFile = shouldOverwrite
+        return resolvedData
     }
     
     
