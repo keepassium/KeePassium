@@ -40,11 +40,7 @@ extension FileDataProvider {
         completion: @escaping FileOperationCompletion<URLReference>
     ) {
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
-        defer {
-            if isAccessed {
-                fileURL.stopAccessingSecurityScopedResource()
-            }
-        }
+
         let operationQueue = FileDataProvider.backgroundQueue
         coordinateFileOperation(
             intent: .readingIntent(with: fileURL, options: [.withoutChanges]),
@@ -53,6 +49,12 @@ extension FileDataProvider {
             queue: operationQueue,
             fileOperation: { url in
                 assert(operationQueue.isCurrent)
+                defer {
+                    if isAccessed {
+                        fileURL.stopAccessingSecurityScopedResource()
+                    }
+                }
+                
                 do {
                     let fileRef = try URLReference(from: url, location: location)
                     completionQueue.addOperation {
@@ -82,11 +84,7 @@ extension FileDataProvider {
         let operationQueue = FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
-        defer {
-            if isAccessed {
-                fileURL.stopAccessingSecurityScopedResource()
-            }
-        }
+
         coordinateFileOperation(
             intent: .readingIntent(with: fileURL, options: [.resolvesSymbolicLink, .withoutChanges]),
             fileProvider: fileProvider,
@@ -94,6 +92,11 @@ extension FileDataProvider {
             queue: operationQueue,
             fileOperation: { url in
                 assert(operationQueue.isCurrent)
+                defer {
+                    if isAccessed {
+                        fileURL.stopAccessingSecurityScopedResource()
+                    }
+                }
                 if let inputStream = InputStream(url: url) {
                     defer {
                         inputStream.close()
@@ -156,11 +159,7 @@ extension FileDataProvider {
         let operationQueue = queue ?? FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
-        defer {
-            if isAccessed {
-                fileURL.stopAccessingSecurityScopedResource()
-            }
-        }
+
         coordinateFileOperation(
             intent: .readingIntent(with: fileURL, options: [.forUploading]),
             fileProvider: fileProvider,
@@ -168,6 +167,11 @@ extension FileDataProvider {
             queue: operationQueue,
             fileOperation: { (url) in
                 assert(operationQueue.isCurrent)
+                defer {
+                    if isAccessed {
+                        fileURL.stopAccessingSecurityScopedResource()
+                    }
+                }
                 do {
                     let fileData = try ByteArray(contentsOf: url, options: [.uncached, .mappedIfSafe])
                     completionQueue.addOperation {
@@ -198,11 +202,7 @@ extension FileDataProvider {
         let operationQueue = queue ?? FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
-        defer {
-            if isAccessed {
-                fileURL.stopAccessingSecurityScopedResource()
-            }
-        }
+
         coordinateFileOperation(
             intent: .writingIntent(with: fileURL, options: [.forMerging]),
             fileProvider: fileProvider,
@@ -210,6 +210,11 @@ extension FileDataProvider {
             queue: operationQueue,
             fileOperation: { url in
                 assert(operationQueue.isCurrent)
+                defer {
+                    if isAccessed {
+                        fileURL.stopAccessingSecurityScopedResource()
+                    }
+                }
                 do {
                     try data.write(to: url, options: [])
                     completionQueue.addOperation {
@@ -240,11 +245,7 @@ extension FileDataProvider {
         let operationQueue = queue ?? FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
-        defer {
-            if isAccessed {
-                fileURL.stopAccessingSecurityScopedResource()
-            }
-        }
+
         coordinateReadThenWriteOperation(
             fileURL: fileURL,
             fileProvider: fileProvider,
@@ -252,6 +253,12 @@ extension FileDataProvider {
             queue: operationQueue,
             fileOperation: { readURL, writeURL in
                 assert(operationQueue.isCurrent)
+                defer {
+                    if isAccessed {
+                        fileURL.stopAccessingSecurityScopedResource()
+                    }
+                }
+                
                 if let inputStream = InputStream(url: readURL) {
                     defer {
                         inputStream.close()
