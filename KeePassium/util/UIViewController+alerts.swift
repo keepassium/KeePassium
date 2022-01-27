@@ -23,7 +23,8 @@ extension UIViewController {
     func showErrorAlert(_ message: String, title: String?=nil) {
         let alert = UIAlertController.make(
             title: title ?? LString.titleError,
-            message: message)
+            message: message,
+            dismissButtonTitle: LString.actionOK)
         present(alert, animated: true, completion: nil)
         
         StoreReviewSuggester.registerEvent(.trouble)
