@@ -11,7 +11,13 @@ import KeePassiumLib
 extension UIViewController {
     
     func showErrorAlert(_ error: Error, title: String?=nil) {
-        showErrorAlert(error.localizedDescription, title: title)
+        var message = error.localizedDescription
+        if let localizedError = error as? LocalizedError,
+           let recoverySuggestion = localizedError.recoverySuggestion
+        {
+            message += "\n" + recoverySuggestion
+        }
+        showErrorAlert(message, title: title)
     }
     
     func showErrorAlert(_ message: String, title: String?=nil) {
