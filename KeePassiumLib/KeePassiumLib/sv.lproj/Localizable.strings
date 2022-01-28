@@ -122,7 +122,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Radera databasfil?\nSäkerställ att du har en backup.";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
-"[Database/LesserTargetFormat/warning]" = "This is an older database format, some data might be lost.";
+"[Database/LesserTargetFormat/warning]" = "Det här är ett äldre databasformat, viss data kan gå förlorade.";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Kan inte hitta databasfilen";
@@ -141,6 +141,9 @@
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Okänt databasformat";
+
+/* Message shown after we show a cached local database instead of the (unavailable) original database. */
+"[Database/Loading/FromCache/text]" = "The database is unreachable.\nThis is its latest local copy.";
 
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "Databasen är skrivskyddad";
@@ -202,14 +205,26 @@
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Sparar...";
 
+/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
+"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "Show Error";
+
+/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/title]" = "If File is Unreachable";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "Use Local Copy";
+
 /* Title of settings section (read-only, backup-able, etc) */
-"[Database/Settings/FileAccess/title]" = "File Access";
+"[Database/Settings/FileAccess/title]" = "Filaccess";
 
 /* File setting title, whether the file can be modified (yes/no). */
-"[Database/Settings/ReadOnly/title]" = "Read Only";
+"[Database/Settings/ReadOnly/title]" = "Skrivskyddad";
 
 /* Title of database-related settings screen */
-"[Database/Settings/title]" = "Database Settings";
+"[Database/Settings/title]" = "Databasinställningar";
 
 /* Action/button to switch from current to some other database. */
 "[Database/Switch/action]" = "Byt databas";
@@ -1109,10 +1124,10 @@
 "[PremiumFeature/Preview/title] Preview Attachments" = "Förhandsgranska bilagor";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
-"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
+"[PremiumFeature/QuickAutoFill/description]" = "Logga in med en tryckning, utan att ens öppna KeePassium.";
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
-"[PremiumFeature/QuickAutoFill/title]" = "Quick AutoFill";
+"[PremiumFeature/QuickAutoFill/title]" = "Snabb Autofyll";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Avbrutet av användaren";
@@ -1121,10 +1136,10 @@
 "[Progress/CancellationReason/lowMemory]" = "Inte tillräckligt med minne för att fortsätta.\nDetta kan hända med stora databaser eller för högt ställda databasinställningar (Argon2-parametrar för minnet).";
 
 /* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
+"[QuickAutoFill/description]" = "Snabb Autofyll visar relevanta konton precis bredvid lösenordsfältet, utan att öppna KeePassium.";
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
-"[QuickAutoFill/title]" = "Quick AutoFill";
+"[QuickAutoFill/title]" = "Snabb Autofyll";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Repetera lösenord";
@@ -1163,13 +1178,13 @@
 "[Settings/AppLockTimeout/shortTitle] Never" = "Aldrig";
 
 /* Action that opens system settings or instructions */
-"[Settings/AutoFill/Activate/action]" = "Activate AutoFill";
+"[Settings/AutoFill/Activate/action]" = "Aktivera Autofyll";
 
 /* Description for the AutoFill setup instructions */
-"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+"[Settings/AutoFill/Activate/description]" = "Innan första användningen måste du aktivera Autofyll i systeminställningar.";
 
 /* Title of a help article on how to activate AutoFill. */
-"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+"[Settings/AutoFill/Setup Guide/title]" = "Kom igång med Autofyll";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Radera ALLA backuper (%d)";
@@ -1250,16 +1265,16 @@
 "[Settings/ListSettings/title]" = "Listinställningar";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Sort By";
+"[SortBy]" = "Sortera Efter";
 
 /* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Date Created";
+"[SortBy/DateCreated]" = "Skapad";
 
 /* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Date Modified";
+"[SortBy/DateModified]" = "Ändrad";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
-"[SortBy/FileName]" = "Name";
+"[SortBy/FileName]" = "Namn";
 
 /* List sorting option (for groups and entries). Example: 'Sort by: Title' */
 "[SortBy/ItemTitle]" = "Titel";

@@ -122,7 +122,7 @@
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "حذف ملف قاعدة البيانات؟\nتأكد من أن يكون لديك نسخة احتياطية.";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
-"[Database/LesserTargetFormat/warning]" = "This is an older database format, some data might be lost.";
+"[Database/LesserTargetFormat/warning]" = "صيغة قاعدة البيانات هذه قديمة، قد تضيع بعض البيانات.";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "يتعذَّر العثور على ملف قاعدة البيانات";
@@ -142,8 +142,11 @@
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "صيغة قاعدة البيانات غير معترف بها";
 
+/* Message shown after we show a cached local database instead of the (unavailable) original database. */
+"[Database/Loading/FromCache/text]" = "The database is unreachable.\nThis is its latest local copy.";
+
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "The database is read-only";
+"[Database/Loading/ReadOnly/text]" = "قاعدة البيانات للقراءة فقط";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "جاري التحميل...";
@@ -202,44 +205,56 @@
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "جاري الحفظ...";
 
+/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
+"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "Show Error";
+
+/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/title]" = "If File is Unreachable";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "Use Local Copy";
+
 /* Title of settings section (read-only, backup-able, etc) */
-"[Database/Settings/FileAccess/title]" = "File Access";
+"[Database/Settings/FileAccess/title]" = "الوصول إلى الملف";
 
 /* File setting title, whether the file can be modified (yes/no). */
-"[Database/Settings/ReadOnly/title]" = "Read Only";
+"[Database/Settings/ReadOnly/title]" = "للقراءة فقط";
 
 /* Title of database-related settings screen */
-"[Database/Settings/title]" = "Database Settings";
+"[Database/Settings/title]" = "إعدادات قاعدة البيانات";
 
 /* Action/button to switch from current to some other database. */
-"[Database/Switch/action]" = "Switch Database";
+"[Database/Switch/action]" = "تبديل قاعدة البيانات";
 
 /* Explanation of the database sync conflict `Cancel` option. */
-"[Database/SyncConflict/Cancel/description]" = "Cancel saving, leave target file intact.";
+"[Database/SyncConflict/Cancel/description]" = "إلغاء الحفظ ، ترك الملف الهدف بلا تغيير.";
 
 /* Title: the current (on-server) database version in case of sync conflict. */
-"[Database/SyncConflict/currentVersion]" = "Current version";
+"[Database/SyncConflict/currentVersion]" = "الإصدار الحالي";
 
 /* Message shown in case of database sync conflict. */
-"[Database/SyncConflict/description]" = "The database has changed since it was loaded in KeePassium.";
+"[Database/SyncConflict/description]" = "لقد تغيرت قاعدة البيانات منذ تحميلها في KeePassium.";
 
 /* Title: the loaded (on-device) database version in case of sync conflict. */
-"[Database/SyncConflict/loadedVersion]" = "Loaded version";
+"[Database/SyncConflict/loadedVersion]" = "النسخة المُحمَّلَة";
 
 /* Action: combine changes in two conflicting databases. */
-"[Database/SyncConflict/Merge/action]" = "Merge";
+"[Database/SyncConflict/Merge/action]" = "دَمج";
 
 /* Explanation of the database sync conflict `Merge` option. */
-"[Database/SyncConflict/Merge/description]" = "Combine changes before saving.";
+"[Database/SyncConflict/Merge/description]" = "دمج التغييرات قبل الحفظ.";
 
 /* Explanation of the database sync conflict `Overwrite` option. */
-"[Database/SyncConflict/Overwrite/description]" = "Overwrite target file with the local version.";
+"[Database/SyncConflict/Overwrite/description]" = "الكتابة فوق الملف المستهدف بالإصدار المحلي.";
 
 /* Explanation of the database sync conflict `Save as` option. */
-"[Database/SyncConflict/SaveAs/description]" = "Save changes to another file.";
+"[Database/SyncConflict/SaveAs/description]" = "حفظ التغييرات إلى ملف آخر.";
 
 /* Title of a message shown when saving to a database that has already been modified elsewhere. */
-"[Database/SyncConflict/title]" = "Sync Conflict";
+"[Database/SyncConflict/title]" = "تعارُض في المُزامَنَة";
 
 /* Error message related to key file. [errorDetails: String] */
 "[Database/Unlock] Key file error: %@" = "خطأ في ملف المفتاح: %@";
@@ -416,19 +431,19 @@
 "[Entry/Attachment/add]" = "إضافة ملف";
 
 /* Action/button to pick a file from a list */
-"[Entry/Attachment/chooseFile]" = "Choose File";
+"[Entry/Attachment/chooseFile]" = "اختيار ملف";
 
 /* Action/button to select an (existing) photo from Photo Library */
-"[Entry/Attachment/choosePhoto]" = "Choose Photo";
+"[Entry/Attachment/choosePhoto]" = "اختيار صورة";
 
 /* Default name for a photo attachment */
-"[Entry/Attachment/Photo/defaultName]" = "Photo";
+"[Entry/Attachment/Photo/defaultName]" = "صورة";
 
 /* Action/button to take a new photo from camera */
-"[Entry/Attachment/takePhoto]" = "Take Photo";
+"[Entry/Attachment/takePhoto]" = "التقاط صورة";
 
 /* Action to preview one or several attached documents or images */
-"[Entry/Attachments/preview]" = "Preview";
+"[Entry/Attachments/preview]" = "مُعايَنَة";
 
 /* Title of a list with attached files */
 "[Entry/Attachments/title] Attached Files" = "المرفقات";
@@ -689,7 +704,7 @@
 "[Generic] Delete" = "حذف";
 
 /* Action/button to delete all relevant/selected items */
-"[Generic] Delete All" = "Delete All";
+"[Generic] Delete All" = "حذف الكل";
 
 /* Action/button to discard any unsaved changes */
 "[Generic] Discard" = "تجاهل";
@@ -731,10 +746,10 @@
 "[Generic] Replace" = "إستبدال";
 
 /* Action/button to restore a backup/archived item in its original place */
-"[Generic] Restore" = "Restore";
+"[Generic] Restore" = "استعادة";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
-"[Generic] Reveal in Finder" = "Reveal in Finder";
+"[Generic] Reveal in Finder" = "الكشف في الباحِث";
 
 /* Action/button to share an item with another app (AirDrop, send an email, etc) */
 "[Generic] Share" = "مُشاركة";
@@ -779,7 +794,7 @@
 "[Generic/File/title] Import Error" = "خطأ في الاستيراد";
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
-"[Generic/Presets]" = "Presets";
+"[Generic/Presets]" = "الإعدادات الجاهزة";
 
 /* Title of a search field (a noun, not verb) */
 "[Generic/Search/title]" = "البحث";
@@ -848,7 +863,7 @@
 "[Help Viewer/title]" = "المساعدة";
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
-"[Item/History/Restored]" = "Previous version restored";
+"[Item/History/Restored]" = "اُستُعيدَ الإصدار السابق";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "الافتراضي (KeePass)";
@@ -1007,13 +1022,13 @@
 "[Premium/status] Beta testing" = "اختبار إصدار البيتا";
 
 /* Status: current version of the app. For example: `Current version: 1.23`. Should be similar to the `Licensed version` string. [version: String] */
-"[Premium/status] Current version: %@" = "Current version: %@";
+"[Premium/status] Current version: %@" = "الإصدار الحالي: %@";
 
 /* Status: premium subscription has expired. For example: `Expired 1 day ago`. [timeFormatted: String, includes the time unit (day, hour, minute)] */
 "[Premium/status] Expired %@ ago. Please renew." = "انتهت صلاحيتها منذ %@ جدد من فضلك.";
 
 /* Status: licensed premium version of the app. For example: `Licensed version: 1.23`. [version: String] */
-"[Premium/status] Licensed version: %@" = "Licensed version: %@";
+"[Premium/status] Licensed version: %@" = "إصدار الرخصة: %@";
 
 /* Status: scheduled renewal date of a premium subscription. For example: `Next renewal on 1 Jan 2050`. [expiryDateString: String] */
 "[Premium/status] Next renewal on %@" = "التجديد التالي في %@";
@@ -1109,10 +1124,10 @@
 "[PremiumFeature/Preview/title] Preview Attachments" = "مُعاينة المُرفقات";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
-"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
+"[PremiumFeature/QuickAutoFill/description]" = "ملء نماذج تسجيل الدخول بضغطة واحدة، حتى بدون فتح KeePassium.";
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
-"[PremiumFeature/QuickAutoFill/title]" = "Quick AutoFill";
+"[PremiumFeature/QuickAutoFill/title]" = "ملء تلقائي سريع";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "أُلغي مِن قِبَل المُستخدِم";
@@ -1121,10 +1136,10 @@
 "[Progress/CancellationReason/lowMemory]" = "الذاكِرة غير كافية للاِستمرار.\nيُمكِن حُدوث هذا مع قواعد البيانات الكبيرة أو إعدادات قاعدة بيانات عالية للغاية (مُعامل الذاكرة Argon2).";
 
 /* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
+"[QuickAutoFill/description]" = "التعبئة التلقائية السريعة تظهر المُدخلات ذات الصلة بجانب حقل رمز المرور، دون فتح KeePassium.";
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
-"[QuickAutoFill/title]" = "Quick AutoFill";
+"[QuickAutoFill/title]" = "ملء تلقائي سريع";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "أعد كلمة المرور";
@@ -1163,13 +1178,13 @@
 "[Settings/AppLockTimeout/shortTitle] Never" = "ابدًا";
 
 /* Action that opens system settings or instructions */
-"[Settings/AutoFill/Activate/action]" = "Activate AutoFill";
+"[Settings/AutoFill/Activate/action]" = "تنشيط التعبئة التلقائية";
 
 /* Description for the AutoFill setup instructions */
-"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+"[Settings/AutoFill/Activate/description]" = "قبل الاستخدام الأول، تحتاج إلى تفعيل التعبئة التلقائية من إعدادات النظام.";
 
 /* Title of a help article on how to activate AutoFill. */
-"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+"[Settings/AutoFill/Setup Guide/title]" = "دليل إعداد الملء التلقائي";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "حذف جميع ملفات النسخ الاحتياطي (%d)";
@@ -1250,16 +1265,16 @@
 "[Settings/ListSettings/title]" = "إعدادات القوائم";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Sort By";
+"[SortBy]" = "الفرز حَسَب";
 
 /* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Date Created";
+"[SortBy/DateCreated]" = "تاريخ الإنشاء";
 
 /* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Date Modified";
+"[SortBy/DateModified]" = "تاريخ التعديل";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
-"[SortBy/FileName]" = "Name";
+"[SortBy/FileName]" = "الاسم";
 
 /* List sorting option (for groups and entries). Example: 'Sort by: Title' */
 "[SortBy/ItemTitle]" = "العنوان";
@@ -1271,34 +1286,34 @@
 "[Support/template] (Please describe the problem here)" = "(يُرجى وصف المُشكلة هُنا)";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/1]" = "Help us make KeePassium better!";
+"[TipBox/callToAction/1]" = "ساعدنا على جعل KeePassium أفضل!";
 
 /* Call to action in the Donations screen. */
-"[TipBox/callToAction/2]" = "Help us keep KeePassium shiny!";
+"[TipBox/callToAction/2]" = "ساعدنا على إبقاء KeePassium لامع!";
 
 /* Call to action in the Donations screen. (free = gratis) */
-"[TipBox/callToAction/3]" = "Help us keep KeePassium free!";
+"[TipBox/callToAction/3]" = "ساعدنا على إبقاء KeePassium مجاني!";
 
 /* Text in the Donations screen. */
-"[TipBox/description/1]" = "Do you like KeePassium?";
+"[TipBox/description/1]" = "هل تحب KeePassium؟";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium is a free open-source app. You trust it with your most sensitive information. There are no ads, no spying, no nonsense — we respect you.";
+"[TipBox/description/2]" = "إنَّ KeePassium عبارة عن تطبيق مفتوح المصدر. تثق به مع معلوماتك الأكثر حساسية. لا توجد إعلانات، لا تجسس ولا هراء — نحن نحترمك.";
 
 /* Text in the Donations screen. */
-"[TipBox/description/3]" = "Do you like KeePassium but don't need the premium features?";
+"[TipBox/description/3]" = "هل تحب KeePassium ولكن لا تحتاج إلى الميزات المدفوعة؟";
 
 /* Notification after a successful donation. */
-"[TipBox/thankYou]" = "Thank you!";
+"[TipBox/thankYou]" = "شُكرًا لك!";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Tip Jar";
+"[TipBox/title/1]" = "وعاء إكراميَّة";
 
 /* Title of the tip box/donation screen. */
-"[TipBox/title/2]" = "Donations";
+"[TipBox/title/2]" = "التبرع";
 
 /* Call to action, title of the tip box/donation screen. */
-"[TipBox/title/3]" = "Support KeePassium";
+"[TipBox/title/3]" = "دعم KeePassium";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "التخزين السحابي / تطبيق آخر";

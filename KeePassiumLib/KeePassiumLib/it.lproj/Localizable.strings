@@ -142,6 +142,9 @@
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Formato di database non riconosciuto";
 
+/* Message shown after we show a cached local database instead of the (unavailable) original database. */
+"[Database/Loading/FromCache/text]" = "The database is unreachable.\nThis is its latest local copy.";
+
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "Il database è in sola lettura";
 
@@ -201,6 +204,18 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Salvataggio in corso...";
+
+/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
+"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "Show Error";
+
+/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/title]" = "If File is Unreachable";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "Use Local Copy";
 
 /* Title of settings section (read-only, backup-able, etc) */
 "[Database/Settings/FileAccess/title]" = "Accesso Ai File";
