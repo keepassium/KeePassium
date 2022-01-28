@@ -1,5 +1,20 @@
 #CHANGELOG
 
+## [1.31.104] - 2022-01-28
+
+### Changed
+
+- Switched to a more lightweight method to access files (`NSFileCoordinator` instead of `UIDocument`).
+
+### Fixed
+
+- AutoFill crash when large DBs present in the app [thanks, everyone]
+- macOS: double Touch ID prompt for Quick AutoFill [thanks, Ville]
+- Entries hidden from AutoFill could still appear there (related #100) [thanks, u/567567]
+- Some icons did not immediately refresh when changing the icon set [thanks, Kamil]
+- Some errors appeared as codes instead of human-readable messages [thanks, everyone]
+
+
 ## [1.30.103] - 2021-12-25
 
 ### Added
