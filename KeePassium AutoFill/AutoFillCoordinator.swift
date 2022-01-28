@@ -466,7 +466,8 @@ extension AutoFillCoordinator: WatchdogDelegate {
     }
 
     private func canUseBiometrics() -> Bool {
-        return Settings.current.isBiometricAppLockEnabled
+        return hasUI 
+            && Settings.current.isBiometricAppLockEnabled
             && LAContext.isBiometricsAvailable()
             && Keychain.shared.isBiometricAuthPrepared()
     }
