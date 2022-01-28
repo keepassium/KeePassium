@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>KeePassium</string>
+	<string>$(INFOPLIST_KEY_CFBundleDisplayName)</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>

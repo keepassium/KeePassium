@@ -1,9 +1,3 @@
-/* Bundle display name */
-"CFBundleDisplayName" = "KeePassium";
-
-/* Bundle name */
-"CFBundleName" = "KeePassium";
-
 /* (No Comment) */
 "KeePass Database (kdb)" = "База паролей KeePass (kdb)";
 
