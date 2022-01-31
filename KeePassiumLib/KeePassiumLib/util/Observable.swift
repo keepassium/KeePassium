@@ -1,10 +1,10 @@
+//  KeePassium Password Manager
+//  Copyright © 2018–2022 Andrei Popleteev <info@keepassium.com>
 //
-//  Observable.swift
-//  KeePassiumLib
-//
-//  Created by Andrei Popleteev on 2019-10-12.
-//  Copyright © 2019 Andrei Popleteev. All rights reserved.
-//
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact the author.
 
 public protocol Observer: AnyObject {
 }
