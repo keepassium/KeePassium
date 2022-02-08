@@ -38,10 +38,9 @@ public class Keychain {
     
     private static let accessGroup: String? = nil
     private enum Service: String {
-        static let allValues: [Service] = [.general, .databaseKeys, databaseSettings, .premium]
+        static let allValues: [Service] = [.general, databaseSettings, .premium]
         
         case general = "KeePassium"
-        case databaseKeys = "KeePassium.dbKeys" 
         case databaseSettings = "KeePassium.dbSettings"
         case premium = "KeePassium.premium"
     }
@@ -56,13 +55,8 @@ public class Keychain {
     private let memoryProtectionKeyTagData = "SecureBytes.general".data(using: .utf8)!
     
     private init() {
-        cleanupObsoleteKeys()
     }
-    
-    private func cleanupObsoleteKeys() {
-        try? remove(service: .databaseKeys, account: nil)
-    }
-    
+        
     
     private func makeQuery(service: Service, account: String?) -> [String: AnyObject] {
         var result = [String: AnyObject]()
