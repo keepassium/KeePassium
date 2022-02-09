@@ -604,7 +604,9 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
     private static let algorithm = SecKeyAlgorithm.eciesEncryptionCofactorVariableIVX963SHA256AESGCM
     
     private static func encrypt(_ plainText: [UInt8], with key: inout SecKey?) -> [UInt8] {
-        assert(plainText.count > 0, "There must be some data to encrypt")
+        guard plainText.count > 0 else {
+            return []
+        }
         guard let privateKey = key else {
             Diag.warning("Cannot encrypt, there is no key")
             return Array(plainText)
@@ -634,7 +636,9 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
     }
     
     private static func decrypt(_ encrypted: [UInt8], with key: SecKey?) -> [UInt8] {
-        assert(encrypted.count > 0, "There must be some data to decrypt")
+        guard encrypted.count > 0 else {
+            return []
+        }
         guard let key = key else {
             return Array(encrypted)
         }
