@@ -143,7 +143,7 @@
 "[Database/Load/Error] Unrecognized database format" = "Неизвестный формат базы";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
-"[Database/Loading/FromCache/text]" = "База паролей недоступна. \nЭто её последняя локальная версия.";
+"[Database/Loading/FromCache/text]" = "База паролей недоступна. \nЭто её новейшая локальная версия.";
 
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "База паролей доступна только для чтения";

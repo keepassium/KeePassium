@@ -8,5 +8,5 @@
 "[ProtectedTextField] Show Password" = "Pokaż hasło";
 
 /* Call to action, invites the user to enable the Quick AutoFill feature */
-"[QuickAutoFill/Activate/callToAction]" = "Activate Quick AutoFill";
+"[QuickAutoFill/Activate/callToAction]" = "Aktywuj autouzupełnianie";
 
