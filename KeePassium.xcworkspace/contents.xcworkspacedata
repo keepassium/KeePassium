@@ -5,9 +5,6 @@
       location = "group:KeePassiumLib/KeePassiumLib.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:YubiKit/YubiKit.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:KeePassium.xcodeproj">
    </FileRef>
 </Workspace>

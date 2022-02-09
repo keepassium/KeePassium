@@ -18,6 +18,15 @@
           "revision": "6630e3858f0d0a5803cede6f82afeaed5f5de7b6",
           "version": null
         }
+      },
+      {
+        "package": "YubiKit",
+        "repositoryURL": "https://github.com/keepassium/yubikit-ios.git",
+        "state": {
+          "branch": "keepassium",
+          "revision": "7a0521f7da0dec54b14ed06a0275a5bf277163ab",
+          "version": null
+        }
       }
     ]
   },

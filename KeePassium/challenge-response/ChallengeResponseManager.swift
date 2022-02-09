@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+import YubiKit
 
 fileprivate let YUBIKEY_SUCCESS: UInt16 = 0x9000
 fileprivate let YUBIKEY_MFI_TOUCH_TIMEOUT: UInt16 = 0x6985
@@ -125,8 +126,6 @@ class ChallengeResponseManager {
     private func nfcSessionStateDidChange() {
         let keySession = YubiKitManager.shared.nfcSession as! YKFNFCSession
         switch keySession.iso7816SessionState {
-        case .opening:
-            print("NFC session -> opening")
         case .open:
             print("NFC session -> open")
             queue.async { [weak self] in

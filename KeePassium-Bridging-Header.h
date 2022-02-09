@@ -9,5 +9,4 @@
 #ifndef KeePassiumBridgingHeader_h
 #define KeePassiumBridgingHeader_h
 
-#import "YubiKit/YubiKit.h"
 #endif /* KeePassiumBridgingHeader_h */

@@ -8,8 +8,8 @@
 //
 //  Created by Igor Kulman on 12.03.2021.
 
-import Foundation
 import KeePassiumLib
+import YubiKit
 
 protocol QRCodeScanner: AnyObject {
     var deviceSupportsQRScanning: Bool { get }
@@ -22,12 +22,11 @@ final class YubiKitQRCodeScanner: QRCodeScanner {
         return YubiKitDeviceCapabilities.supportsQRCodeScanning
     }
 
-    private let session = YKFQRReaderSession()
-
     func scanQRCode(presenter: UIViewController, completion: @escaping (Result<String, Error>) -> Void) {
         Diag.debug("Showing QR code scanner")
-
-        session.scanQrCode(withPresenter: presenter) { (data, error) in
+        
+        let qrReaderSession = YKFQRReaderSession.shared
+        qrReaderSession.scanQrCode(withPresenter: presenter) { (data, error) in
             if let error = error {
                 Diag.error("Scanning QR code failed [message: \(error.localizedDescription)]")
                 HapticFeedback.play(.error)
