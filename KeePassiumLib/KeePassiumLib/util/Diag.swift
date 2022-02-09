@@ -148,15 +148,20 @@ public class Diag {
         return lines.joined(separator: "\n")
     }
     
+    public static func isDeepDebugMode() -> Bool {
+        guard Settings.current.isTestEnvironment else {
+            return false
+        }
+        let debugDirURL = FileKeeper.shared.getDebugModeDirURL()
+        return FileManager.default.fileExists(atPath: debugDirURL.absoluteString)
+    }
+    
     public static func writeToPersistentLog(_ string: String) {
         guard Settings.current.isTestEnvironment else { return }
         
-        let fileManager = FileManager()
-        let docDirURL = fileManager
-            .urls(for: .documentDirectory, in: .userDomainMask)
-            .first!  
-            .standardizedFileURL
-        let fileURL = docDirURL.appendingPathComponent("debug-log.txt")
+        let fileURL = FileKeeper.shared
+            .getDebugModeDirURL()
+            .appendingPathComponent("debug-log.txt")
         
         let stringWithHeader = "This is a KeePassium debug log. Please send it to info@keepassium.com.\nThank you for your help!\n\n\(string)"
         try? stringWithHeader.write(to: fileURL, atomically: false, encoding: .utf8)

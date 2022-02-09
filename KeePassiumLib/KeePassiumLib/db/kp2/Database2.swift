@@ -552,6 +552,11 @@ public class Database2: Database {
             Diag.debug("XML content loaded OK")
         } catch let error as Header2.HeaderError {
             Diag.error("Header error [reason: \(error.localizedDescription)]")
+            if Diag.isDeepDebugMode() {
+                header.protectedStreamKey?.withDecryptedByteArray {
+                    Diag.debug("Inner encryption key: `\($0.asHexString)`")
+                }
+            }
             throw FormatError.parsingError(reason: error.localizedDescription)
         } catch let error as Xml2.ParsingError {
             Diag.error("XML parsing error [reason: \(error.localizedDescription)]")

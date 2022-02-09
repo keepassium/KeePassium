@@ -65,6 +65,10 @@ public class EntryField2: EntryField {
                         value = plainData.toString(using: .utf8) 
                         if value == nil {
                             Diag.warning("Failed to decrypt field value")
+                            if Diag.isDeepDebugMode() {
+                                Diag.debug("Encrypted field value: `\(encData.asHexString)`")
+                                Diag.debug("Decrypted field value: `\(plainData.asHexString)`")
+                            }
                         }
                     }
                 } else {

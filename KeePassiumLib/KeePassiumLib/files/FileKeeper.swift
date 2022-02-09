@@ -1018,6 +1018,12 @@ public class FileKeeper {
     }
 }
 
+internal extension FileKeeper {
+    func getDebugModeDirURL() -> URL {
+        return docDirURL.appendingPathComponent("Debug mode", isDirectory: true)
+    }
+}
+
 
 fileprivate class ReferenceCache {
     private struct FileTypeExternalKey: Hashable {
