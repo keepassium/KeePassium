@@ -2,10 +2,18 @@
     "sections": [
         {
             "version": "1.31",
-            "releaseDate": "2022-01-28T00:00:00Z",
+            "releaseDate": "2022-02-09T00:00:00Z",
             "items": [
                 {
                     "title": "🛠 Changed: Switched to a more lightweight method to access files",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Crash on iPod Touch devices running iOS 15 (fixes #215)",
                     "type": 1
                 },
                 {

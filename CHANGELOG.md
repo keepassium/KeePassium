@@ -1,5 +1,18 @@
 #CHANGELOG
 
+## [1.31.105] - 2022-02-09
+
+### Improved
+
+- Upgraded YubiKit from 2.0 to 3.2
+- Added an opt-in "deep debug" mode for TestFlight builds, to analyze a rare bug
+- Updated all translations
+
+### Fixed
+
+- Crash on iPod Touch devices running iOS 15 (fixes #215)
+
+
 ## [1.31.104] - 2022-01-28
 
 ### Changed
