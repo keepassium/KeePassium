@@ -33,9 +33,10 @@ public final class FileDataProvider: Synchronizable {
 
 extension FileDataProvider {
     
-    public static func bookmarkFile(
+    internal static func bookmarkFile(
         at fileURL: URL,
         location: URLReference.Location,
+        creationHandler: @escaping (URL, URLReference.Location) throws -> URLReference,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<URLReference>
     ) {
@@ -56,7 +57,7 @@ extension FileDataProvider {
                 }
                 
                 do {
-                    let fileRef = try URLReference(from: url, location: location)
+                    let fileRef = try creationHandler(url, location)
                     completionQueue.addOperation {
                         completion(.success(fileRef))
                     }

@@ -193,7 +193,7 @@ public class FileKeeper {
     
     private static func storeURL(_ url: URL, location: URLReference.Location, key: String) {
         DispatchQueue.global(qos: .background).async {
-            URLReference.create(for: url, location: location) { result in
+            URLReference.create(for: url, location: location, allowOptimization: false) { result in
                 switch result {
                 case .success(let urlRef):
                     let data = urlRef.serialize()

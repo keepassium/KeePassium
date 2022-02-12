@@ -157,7 +157,7 @@ public class URLReference:
     }
     
     
-    public init(from url: URL, location: Location) throws {
+    internal init(from url: URL, location: Location, allowOptimization: Bool = true) throws {
         let isAccessed = url.startAccessingSecurityScopedResource()
         defer {
             if isAccessed {
@@ -166,14 +166,30 @@ public class URLReference:
         }
         cachedURL = url
         bookmarkedURL = url
-        data = try URLReference.makeBookmarkData(for: url, location: location) 
+        if URLReference.shouldMakeBookmark(
+            url: url,
+            location: location,
+            allowOptimization: allowOptimization
+        ) {
+            data = try URLReference.makeBookmarkData(for: url, location: location) 
+        } else {
+            data = Data() 
+        }
         self.location = location
         processReference()
     }
     
+    private static func shouldMakeBookmark(url: URL, location: Location, allowOptimization: Bool) -> Bool {
+        guard url.scheme == "file" else {
+            return false 
+        }
+        guard allowOptimization else {
+            return true
+        }
+        return !location.isInternal
+    }
+    
     private static func makeBookmarkData(for url: URL, location: Location) throws -> Data {
-        let result: Data
-        
         let options: URL.BookmarkCreationOptions
         if ProcessInfo.isRunningOnMac {
             options = []
@@ -181,6 +197,7 @@ public class URLReference:
             options = [.minimalBookmark]
         }
         
+        let result: Data
         if FileKeeper.platformSupportsSharedReferences {
             result = try url.bookmarkData(
                 options: options,
@@ -250,38 +267,39 @@ public class URLReference:
     public static func create(
         for url: URL,
         location: URLReference.Location,
+        allowOptimization: Bool = true,
         completion: @escaping CreateCallback
     ) {
+        let completionQueue = OperationQueue.main
+        guard URLReference.shouldMakeBookmark(url: url, location: location, allowOptimization: allowOptimization) else {
+            do {
+                let fileRef = try URLReference(
+                    from: url,
+                    location: location,
+                    allowOptimization: allowOptimization
+                )
+                completionQueue.addOperation {
+                    completion(.success(fileRef))
+                }
+            } catch {
+                Diag.error("Failed to create file reference [message: \(error.localizedDescription)]")
+                let fileAccessError = FileAccessError.systemError(error)
+                completionQueue.addOperation {
+                    completion(.failure(fileAccessError))
+                }
+            }
+            return
+        }
+        
         FileDataProvider.bookmarkFile(
             at: url,
             location: location,
-            completionQueue: .main,
+            creationHandler: { (_url, _location) throws -> URLReference in
+                return try URLReference(from: _url, location: _location, allowOptimization: allowOptimization)
+            },
+            completionQueue: completionQueue,
             completion: completion
         )
-    }
-    
-    @discardableResult
-    private static func tryCreate(
-        for url: URL,
-        location: URLReference.Location,
-        callbackOnError: Bool = false,
-        callback: @escaping CreateCallback
-    ) -> Bool {
-        do {
-            let urlRef = try URLReference(from: url, location: location)
-            DispatchQueue.main.async {
-                callback(.success(urlRef))
-            }
-            return true
-        } catch {
-            if callbackOnError {
-                DispatchQueue.main.async {
-                    let fileAccessError = FileAccessError.make(from: error, fileProvider: nil)
-                    callback(.failure(fileAccessError))
-                }
-            }
-            return false
-        }
     }
     
     
@@ -304,6 +322,18 @@ public class URLReference:
         callbackQueue: OperationQueue = .main,
         callback: @escaping ResolveCallback
     ) {
+        guard !data.isEmpty else {
+            callbackQueue.addOperation { [self] in
+                if let originalURL = originalURL {
+                    callback(.success(originalURL))
+                } else {
+                    Diag.error("Both reference data and original URL are empty")
+                    callback(.failure(.internalError))
+                }
+            }
+            return
+        }
+        
         execute(
             byTime: byTime,
             on: URLReference.backgroundQueue,
