@@ -454,6 +454,7 @@ public class URLReference:
                 switch result {
                 case .success(let fileInfo):
                     self.cachedInfo = fileInfo
+                    self.error = nil
                 case .failure(let fileAccessError):
                     self.error = fileAccessError
                 }

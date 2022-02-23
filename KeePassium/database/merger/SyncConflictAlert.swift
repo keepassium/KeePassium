@@ -66,16 +66,22 @@ final class SyncConflictAlert: UIViewController, Refreshable {
         localFileInfo = local.fileReference?.getCachedInfoSync(canFetch: false)
         refresh()
         infoRefreshQueue.async { [self] in
-            remote.readFileInfo(canUseCache: false) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let fileInfo):
-                    self.remoteFileInfo = fileInfo
-                case .failure(let fileAccessError):
-                    self.remoteFileError = fileAccessError
+            FileDataProvider.readFileInfo(
+                at: remote,
+                fileProvider: nil,
+                canUseCache: false,
+                completionQueue: .main,
+                completion: { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let fileInfo):
+                        self.remoteFileInfo = fileInfo
+                    case .failure(let fileAccessError):
+                        self.remoteFileError = fileAccessError
+                    }
+                    self.refresh()
                 }
-                self.refresh()
-            }
+            )
         }
     }
     
