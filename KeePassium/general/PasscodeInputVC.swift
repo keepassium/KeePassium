@@ -91,7 +91,7 @@ class PasscodeInputVC: UIViewController {
         refreshBiometricsButton()
         
         if shouldActivateKeyboard {
-            passcodeTextField.becomeFirstResponderWhenSafe()
+            showKeyboard()
         }
         super.viewWillAppear(animated)
     }
@@ -100,7 +100,7 @@ class PasscodeInputVC: UIViewController {
         super.viewDidAppear(animated)
         updateKeyboardLayoutConstraints()
         if shouldActivateKeyboard {
-            passcodeTextField.becomeFirstResponderWhenSafe()
+            showKeyboard()
         }
     }
     
@@ -136,6 +136,7 @@ class PasscodeInputVC: UIViewController {
     }
     
     public func showKeyboard() {
+        view.window?.makeKey()
         passcodeTextField.becomeFirstResponderWhenSafe()
     }
     
