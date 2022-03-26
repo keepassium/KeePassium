@@ -1315,6 +1315,9 @@
 /* Call to action, title of the tip box/donation screen. */
 "[TipBox/title/3]" = "Unterstützen Sie KeePassium";
 
+/* Name of an entry field. Acronym `TOTP` should not be translated. */
+"[TOTP/FieldName]" = "Einmalpasswort (TOTP)";
+
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "Cloud-Speicher / Eine andere App";
 

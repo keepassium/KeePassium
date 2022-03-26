@@ -143,7 +143,7 @@
 "[Database/Load/Error] Unrecognized database format" = "Formato de banco de dados não reconhecido";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
-"[Database/Loading/FromCache/text]" = "The database is unreachable.\nThis is its latest local copy.";
+"[Database/Loading/FromCache/text]" = "O banco de dados está inacessível.\nEsta é a última cópia local disponível.";
 
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "Este banco de dados é somente-leitura";
@@ -206,19 +206,19 @@
 "[Database/Saving/Status] Saving..." = "Salvando...";
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
-"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
+"[Database/Settings/ConsiderFileUnreachable/title]" = "Considerar arquivo inacessível";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
-"[Database/Settings/FallbackStrategy/ShowError/title]" = "Show Error";
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "Mostrar erro";
 
 /* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/title]" = "If File is Unreachable";
+"[Database/Settings/FallbackStrategy/title]" = "Se estiver inacessível";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/UseCache/title]" = "Use Local Copy";
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "Usar cópia local";
 
 /* Title of settings section (read-only, backup-able, etc) */
-"[Database/Settings/FileAccess/title]" = "Acesso ao arquivo";
+"[Database/Settings/FileAccess/title]" = "Acesso a arquivos";
 
 /* File setting title, whether the file can be modified (yes/no). */
 "[Database/Settings/ReadOnly/title]" = "Apenas leitura";
@@ -1314,6 +1314,9 @@
 
 /* Call to action, title of the tip box/donation screen. */
 "[TipBox/title/3]" = "Apoie KeePassium";
+
+/* Name of an entry field. Acronym `TOTP` should not be translated. */
+"[TOTP/FieldName]" = "Senha de uso único (TOTP)";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "Nuvem/Outro app";

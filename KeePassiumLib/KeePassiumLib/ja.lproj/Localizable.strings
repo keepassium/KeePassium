@@ -962,7 +962,7 @@
 "[Premium/CallToAction/startTrial]" = "無料で試す";
 
 /* Call to action: upgrade to premium */
-"[Premium/CallToAction/upgradeNow]" = "今すぐアップグレードする";
+"[Premium/CallToAction/upgradeNow]" = "今すぐアップグレード";
 
 /* Action: open AppStore subscription management page */
 "[Premium/ManageSubscriptions/action]" = "サブスクリプションを管理";
@@ -1314,6 +1314,9 @@
 
 /* Call to action, title of the tip box/donation screen. */
 "[TipBox/title/3]" = "KeePassiumを支援";
+
+/* Name of an entry field. Acronym `TOTP` should not be translated. */
+"[TOTP/FieldName]" = "One-time password (TOTP)";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "クラウドストレージ / 他のアプリ";
