@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.31",
-            "releaseDate": "2022-02-09T00:00:00Z",
+            "releaseDate": "2022-03-26T00:00:00Z",
             "items": [
                 {
                     "title": "🛠 Changed: Switched to a more lightweight method to access files",
@@ -10,6 +10,10 @@
                 },
                 {
                     "title": "🛠 Improved: Updated translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Renamed TOTP field for clarity (closes #219) [thanks, plus-or-minus]",
                     "type": 1
                 },
                 {
@@ -29,7 +33,19 @@
                     "type": 1
                 },
                 {
+                    "title": "🐞 Fixed: Keyboard focus on app launch [thanks, Nelson and raja]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Loading cached files when there is an unreachable SMB server in the system (related #109)",
+                    "type": 1
+                },
+                {
                     "title": "🐞 Fixed: Some icons did not immediately refresh when changing the icon set [thanks, Kamil]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: File info sometimes did not refresh",
                     "type": 1
                 },
                 {

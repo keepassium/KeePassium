@@ -1,5 +1,19 @@
 #CHANGELOG
 
+## [1.31.106] - 2022-03-26
+
+### Improved 
+
+- Renamed TOTP field for clarity (closes #219) [thanks, plus-or-minus]
+- Updated all translations
+
+### Fixed
+
+- Loading cached files when there is an unreachable SMB server in the system (related #109)
+- Keyboard focus on app launch [thanks, Nelson and raja]
+- File info sometimes did not refresh
+
+
 ## [1.31.105] - 2022-02-09
 
 ### Improved
