@@ -40,17 +40,6 @@ extension ViewableField {
         return !singlelineFields.contains(internalName)
     }
     
-    var visibleName: String {
-        switch internalName {
-        case EntryField.title: return LString.fieldTitle
-        case EntryField.userName: return LString.fieldUserName
-        case EntryField.password: return LString.fieldPassword
-        case EntryField.url: return LString.fieldURL
-        case EntryField.notes: return LString.fieldNotes
-        default:
-            return internalName
-        }
-    }
 }
 
 class BasicViewableField: ViewableField {
@@ -68,6 +57,18 @@ class BasicViewableField: ViewableField {
     var isHeightConstrained: Bool
     
     var isEditable: Bool { return true }
+    
+    var visibleName: String {
+        switch internalName {
+        case EntryField.title: return LString.fieldTitle
+        case EntryField.userName: return LString.fieldUserName
+        case EntryField.password: return LString.fieldPassword
+        case EntryField.url: return LString.fieldURL
+        case EntryField.notes: return LString.fieldNotes
+        default:
+            return internalName
+        }
+    }
     
     convenience init(field: EntryField, isValueHidden: Bool) {
         self.init(fieldOrNil: field, isValueHidden: isValueHidden)
@@ -97,6 +98,8 @@ class TOTPViewableField: DynamicViewableField {
     var totpGenerator: TOTPGenerator?
     
     override var internalName: String { return EntryField.totp }
+    override var visibleName: String { return LString.fieldTOTP }
+
     override var isEditable: Bool { return false }
     
     override var value: String {
