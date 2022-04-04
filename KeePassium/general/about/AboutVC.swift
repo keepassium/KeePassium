@@ -20,6 +20,7 @@ final class AboutVC: UITableViewController {
     @IBOutlet private weak var contactSupportCell: UITableViewCell!
     @IBOutlet private weak var writeReviewCell: UITableViewCell!
     @IBOutlet private weak var versionLabel: UILabel!
+    @IBOutlet private weak var copyrightLabel: UILabel!
     @IBOutlet private weak var acceptInputFromAutoFillCell: UITableViewCell!
     
     weak var delegate: AboutDelegate?
@@ -62,7 +63,7 @@ final class AboutVC: UITableViewController {
             }
         }
         versionLabel.text = versionParts.joined(separator: " ")
-        
+        copyrightLabel.text = LString.copyrightNotice
         contactSupportCell.detailTextLabel?.text = SupportEmailComposer.getSupportEmail()
     }
     

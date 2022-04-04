@@ -740,4 +740,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Face ID",
         comment: "Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language.")
+    
+    
+    public static let copyrightNotice = NSLocalizedString(
+        "[About/CopyrightAuthor]",
+        bundle: Bundle.framework,
+        value: "©Andrei Popleteev",
+        comment: "Copyright notice")
 }
