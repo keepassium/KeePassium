@@ -318,6 +318,7 @@ class ExpandableFieldCell: ViewableFieldCell {
             heightConstraint.priority = .defaultHigh
         }
         heightConstraint.isActive = field?.isHeightConstrained ?? false
+        showMoreContainer.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.7)
 
         DispatchQueue.main.async { [weak self] in
             self?.setupExpandButton()
