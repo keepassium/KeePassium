@@ -145,7 +145,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
         let fields = ViewableEntryFieldFactory.makeAll(
             from: entry,
             in: database,
-            excluding: [.title, .emptyValues]
+            excluding: [.title, .emptyValues, .otpConfig]
         )
         fieldViewerVC.setContents(
             fields,

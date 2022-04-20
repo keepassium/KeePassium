@@ -56,6 +56,12 @@ public class TOTPGeneratorFactory {
 
 
 
+public extension EntryField {
+    public static let otpConfig1 = EntryField.otp
+    public static let otpConfig2Seed = SplitFieldFormat.seedFieldName
+    public static let otpConfig2Settings = SplitFieldFormat.settingsFieldName
+}
+
 fileprivate class SingleFieldFormat {
     static let fieldName = EntryField.otp
 }

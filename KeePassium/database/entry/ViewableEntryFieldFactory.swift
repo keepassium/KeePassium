@@ -132,6 +132,7 @@ class ViewableEntryFieldFactory {
         case title
         case emptyValues
         case nonEditable
+        case otpConfig
     }
     
     static func makeAll(
@@ -140,11 +141,22 @@ class ViewableEntryFieldFactory {
         excluding excludedFields: [ExcludedFields]
     ) -> [ViewableField] {
         var result = [ViewableField]()
-        let excludeTitle = excludedFields.contains(.title)
+
+        let hasValidOTPConfig = TOTPGeneratorFactory.makeGenerator(for: entry) != nil
+
+        var excludedFieldNames = Set<String>()
+        if excludedFields.contains(.title) {
+            excludedFieldNames.insert(EntryField.title)
+        }
+        if hasValidOTPConfig && excludedFields.contains(.otpConfig) {
+            excludedFieldNames.insert(EntryField.otpConfig1)
+            excludedFieldNames.insert(EntryField.otpConfig2Seed)
+            excludedFieldNames.insert(EntryField.otpConfig2Settings)
+        }
         let excludeEmptyValues = excludedFields.contains(.emptyValues)
         let excludeNonEditable = excludedFields.contains(.nonEditable)
         for field in entry.fields {
-            if excludeTitle && field.name == EntryField.title {
+            if excludedFieldNames.contains(field.name) {
                 continue
             }
             if excludeEmptyValues && field.value.isEmpty {
@@ -155,9 +167,7 @@ class ViewableEntryFieldFactory {
             result.append(viewableField)
         }
         
-        if let _ = TOTPGeneratorFactory.makeGenerator(for: entry),
-            !excludeNonEditable
-        {
+        if hasValidOTPConfig && !excludeNonEditable {
             result.append(TOTPViewableField(fields: entry.fields))
         }
         
