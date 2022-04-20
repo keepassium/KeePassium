@@ -161,16 +161,23 @@ extension SearchHelper {
         if url1 == url2 { return 1.0 }
         
         guard let host1 = url1.host?.localizedLowercase,
-            let host2 = url2.host?.localizedLowercase else { return 0.0 }
+              let host2 = url2.host?.localizedLowercase else { return 0.0 }
         if host1 == host2 {
-            
+            var portMismatchPenalty = 0.0
+            if let port1 = url1.port,
+               let port2 = url2.port,
+               port1 != port2
+            {
+                portMismatchPenalty = -0.2 
+            }
             guard url2.path.isNotEmpty else { return 0.7 }
             let lowercasePath1 = url1.path.localizedLowercase
             let lowercasePath2 = url2.path.localizedLowercase
             let commonPrefixCount = Double(lowercasePath1.commonPrefix(with: lowercasePath2).count)
             let maxPathCount = Double(max(lowercasePath1.count, lowercasePath2.count))
             let pathSimilarity = commonPrefixCount / maxPathCount 
-            return 0.7 + 0.3 * pathSimilarity 
+            
+            return 0.7 + portMismatchPenalty + 0.3 * pathSimilarity
         } else {
             if url1.guessServiceName() == url2.guessServiceName() {
                 return 0.5
