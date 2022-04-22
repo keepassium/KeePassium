@@ -46,7 +46,6 @@ class EditableFieldCellFactory {
     private static func decorate(_ cell: EntryFieldEditorSingleLineCell, field: EditableField) {
         cell.textField.keyboardType = .default
         cell.actionButton.isHidden = true
-        cell.textField.autocorrectionType = .default
         
         switch field.internalName {
         case EntryField.userName:
@@ -55,7 +54,6 @@ class EditableFieldCellFactory {
             cell.textField.keyboardType = .emailAddress
         case EntryField.url:
             cell.textField.keyboardType = .URL
-            cell.textField.autocorrectionType = .no
         default:
             break
         }
