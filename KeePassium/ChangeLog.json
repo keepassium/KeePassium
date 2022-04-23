@@ -2,18 +2,34 @@
     "sections": [
         {
             "version": "1.31",
-            "releaseDate": "2022-03-26T00:00:00Z",
+            "releaseDate": "2022-04-23T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Changed: Switched to a more lightweight method to access files",
+                    "title": "🛠 Improved: Memory consumption when reading/writing files",
                     "type": 1
                 },
                 {
-                    "title": "🛠 Improved: Updated translations [thanks, everyone]",
+                    "title": "🛠 Improved: Made `TOTP Settings` field optional (closes #225) [thanks, plus-or-minus]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Hidden redundant OTP config fields from entry viewer (closes #218) [thanks, plus-or-minus]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: AutoFill will compare port numbers when comparing URLs [thanks, Z.X.]",
                     "type": 1
                 },
                 {
                     "title": "🛠 Improved: Renamed TOTP field for clarity (closes #219) [thanks, plus-or-minus]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Disabled spelling autocorrection in entry editor (closes #223) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated translations [thanks, everyone]",
                     "type": 1
                 },
                 {
@@ -51,7 +67,20 @@
                 {
                     "title": "🐞 Fixed: Some errors appeared as codes instead of human-readable messages [thanks, everyone]",
                     "type": 1
-                }
+                },
+                {
+                    "title": "🐞Fixed: Cleaned up redundant menu items on macOS",
+                    "type": 1
+                },
+                {
+                    "title": "🐞Fixed: Readability of last characters in expanded fields [thanks, Sachin]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞Fixed: removed obsolete error description for read-only OneDrive [thanks, Thomas]",
+                    "type": 1
+                },
+
             ]
         },
         {
