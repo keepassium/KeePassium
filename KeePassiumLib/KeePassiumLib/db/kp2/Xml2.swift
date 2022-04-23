@@ -97,6 +97,7 @@ internal struct Xml2 {
     static let masterKeyChanged = "MasterKeyChanged"
     static let masterKeyChangeRec = "MasterKeyChangeRec"
     static let masterKeyChangeForce = "MasterKeyChangeForce"
+    static let masterKeyChangeForceOnce = "MasterKeyChangeForceOnce"
     static let memoryProtection = "MemoryProtection"
     static let protectTitle = "ProtectTitle"
     static let protectUserName = "ProtectUserName"

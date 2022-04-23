@@ -92,6 +92,7 @@ final class Meta2: Eraseable {
     internal var masterKeyChangedTime: Date 
     private(set) var masterKeyChangeRec: Int64 
     private(set) var masterKeyChangeForce: Int64 
+    internal var masterKeyChangeForceOnce: Bool 
     private(set) var memoryProtection: MemoryProtection
     private(set) var isRecycleBinEnabled: Bool
     private(set) var recycleBinGroupUUID: UUID
@@ -121,6 +122,7 @@ final class Meta2: Eraseable {
         masterKeyChangedTime = Date.now
         masterKeyChangeRec = Int64(-1)
         masterKeyChangeForce = Int64(-1)
+        masterKeyChangeForceOnce = false
         memoryProtection = MemoryProtection()
         isRecycleBinEnabled = true
         recycleBinGroupUUID = UUID.ZERO
@@ -153,6 +155,7 @@ final class Meta2: Eraseable {
         masterKeyChangedTime = Date.now
         masterKeyChangeRec = Int64(-1)
         masterKeyChangeForce = Int64(-1)
+        masterKeyChangeForceOnce = false
         memoryProtection.erase()
         isRecycleBinEnabled = true
         recycleBinGroupUUID.erase()
@@ -225,6 +228,8 @@ final class Meta2: Eraseable {
                 self.masterKeyChangeRec = Int64(tag.value) ?? -1
             case Xml2.masterKeyChangeForce:
                 self.masterKeyChangeForce = Int64(tag.value) ?? -1
+            case Xml2.masterKeyChangeForceOnce:
+                self.masterKeyChangeForceOnce = Bool(string: tag.value)
             case Xml2.memoryProtection:
                 try memoryProtection.load(xml: tag)
                 Diag.verbose("Memory protection loaded OK")
@@ -403,6 +408,11 @@ final class Meta2: Eraseable {
         xmlMeta.addChild(
             name: Xml2.masterKeyChangeForce,
             value: String(masterKeyChangeForce))
+        if masterKeyChangeForceOnce {
+            xmlMeta.addChild(
+                name: Xml2.masterKeyChangeForceOnce,
+                value: masterKeyChangeForceOnce ? Xml2._true : Xml2._false)
+        }
         xmlMeta.addChild(memoryProtection.toXml())
         xmlMeta.addChild(
             name: Xml2.recycleBinEnabled,
