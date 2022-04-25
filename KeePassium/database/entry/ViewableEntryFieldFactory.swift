@@ -98,7 +98,7 @@ class TOTPViewableField: DynamicViewableField {
     var totpGenerator: TOTPGenerator?
     
     override var internalName: String { return EntryField.totp }
-    override var visibleName: String { return LString.fieldTOTP }
+    override var visibleName: String { return LString.fieldOTP }
 
     override var isEditable: Bool { return false }
     

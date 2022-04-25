@@ -549,13 +549,25 @@ extension LString {
         value: "Notes",
         comment: "Name of an entry field"
     )
+    public static let fieldOTP = NSLocalizedString(
+        "[OTP/FieldName]",
+        bundle: Bundle.framework,
+        value: "One-Time Password",
+        comment: "Name of an entry field"
+    )
     public static let fieldTOTP = NSLocalizedString(
         "[TOTP/FieldName]",
         bundle: Bundle.framework,
-        value: "One-time password (TOTP)",
+        value: "One-Time Password (TOTP)",
         comment: "Name of an entry field. Acronym `TOTP` should not be translated."
     )
-    
+    public static let fieldHOTP = NSLocalizedString(
+        "[HOTP/FieldName]",
+        bundle: Bundle.framework,
+        value: "One-Time Password (HOTP)",
+        comment: "Name of an entry field. Acronym `HOTP` should not be translated."
+    )
+
     public static let previousItemVersionRestored = NSLocalizedString(
         "[Item/History/Restored]",
         bundle: Bundle.framework,
