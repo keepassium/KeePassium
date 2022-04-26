@@ -307,7 +307,7 @@ class FileInfoVC: UITableViewController {
         case 0:
             return nil
         case 1:
-            return LString.titleBackupSettings
+            return LString.titleFileBackupSettings
         default:
             return super.tableView(tableView, titleForHeaderInSection: section)
         }

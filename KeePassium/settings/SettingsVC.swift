@@ -35,6 +35,7 @@ final class SettingsVC: UITableViewController, Refreshable {
     @IBOutlet private weak var autoFillCell: UITableViewCell!
     
     @IBOutlet private weak var searchCell: UITableViewCell!
+    @IBOutlet private weak var autoUnlockStartupDatabaseLabel: UILabel!
     @IBOutlet private weak var autoUnlockStartupDatabaseSwitch: UISwitch!
     @IBOutlet private weak var appearanceCell: UITableViewCell!
     
@@ -98,15 +99,39 @@ final class SettingsVC: UITableViewController, Refreshable {
             setCellVisibility(manageSubscriptionCell, isHidden: true)
             setCellVisibility(tipBoxCell, isHidden: true)
         }
-        
-        premiumStatusCell.detailTextLabel?.text = nil 
-        tipBoxCell.textLabel?.text = LString.tipBoxTitle2
-        tipBoxCell.detailTextLabel?.text = LString.tipBoxTitle3
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setLocalizedStrings()
         refresh()
+    }
+
+    private func setLocalizedStrings() {
+        appHistoryCell.textLabel?.text = LString.titleAppHistory
+        premiumPurchaseCell.textLabel?.text = LString.actionUpgradeToPremium
+        premiumStatusCell.textLabel?.text = LString.premiumVersion
+        premiumStatusCell.detailTextLabel?.text = nil 
+        manageSubscriptionCell.textLabel?.text = LString.actionManageSubscriptions
+        
+        autoUnlockStartupDatabaseLabel.text = LString.autoOpenPreviousDatabase
+        
+        appearanceCell.textLabel?.text = LString.titleAppearanceSettings
+        autoFillCell.textLabel?.text = LString.titleAutoFillSettings
+        searchCell.textLabel?.text = LString.titleSearchSettings
+        
+        appSafetyCell.textLabel?.text = LString.titleAppProtectionSettings
+        dataSafetyCell.textLabel?.text = LString.titleDataProtectionSettings
+        dataSafetyCell.detailTextLabel?.text = LString.subtitleDataProtectionSettings
+        
+        dataBackupCell.textLabel?.text = LString.titleDatabaseBackupSettings
+        contactSupportCell.textLabel?.text = LString.actionContactUs
+        contactSupportCell.detailTextLabel?.text = LString.subtitleContactUs
+        tipBoxCell.textLabel?.text = LString.tipBoxTitle2
+        tipBoxCell.detailTextLabel?.text = LString.tipBoxTitle3
+        diagnosticLogCell.textLabel?.text = LString.titleDiagnosticLog
+        diagnosticLogCell.detailTextLabel?.text = LString.subtitleDiagnosticLog
+        aboutAppCell.textLabel?.text = LString.titleAboutKeePassium
     }
     
     func refresh() {

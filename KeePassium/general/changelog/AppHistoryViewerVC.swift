@@ -41,6 +41,11 @@ class AppHistoryViewerVC: UITableViewController {
         return dateFormatter
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = LString.titleAppHistory
+    }
+    
     private func updateSections() {
         sections.removeAll()
         defer {
@@ -198,4 +203,11 @@ private class PremiumBadgeAccessory: UIImageView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
     }
+}
+
+extension LString {
+    static let titleAppHistory = NSLocalizedString(
+        "[AppHistory/title]",
+        value: "What's New",
+        comment: "Title of the app history (changelog) screen")
 }

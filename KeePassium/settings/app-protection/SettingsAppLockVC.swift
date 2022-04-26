@@ -51,6 +51,7 @@ final class SettingsAppLockVC: UITableViewController, Refreshable {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = LString.titleAppProtectionSettings
         settingsNotifications.startObserving()
 
         refreshBiometricsSupport()

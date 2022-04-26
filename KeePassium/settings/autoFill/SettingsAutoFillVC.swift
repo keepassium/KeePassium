@@ -27,7 +27,9 @@ final class SettingsAutoFillVC: UITableViewController {
     
     @IBOutlet private weak var quickTypeLabel: UILabel!
     @IBOutlet private weak var quickTypeSwitch: UISwitch!
+    @IBOutlet private weak var copyTOTPLabel: UILabel!
     @IBOutlet private weak var copyTOTPSwitch: UISwitch!
+    @IBOutlet private weak var perfectMatchLabel: UILabel!
     @IBOutlet private weak var perfectMatchSwitch: UISwitch!
     @IBOutlet private weak var quickAutoFillPremiumBadge: UIImageView!
     @IBOutlet private weak var quickAutoFillPremiumBadgeWidthConstraint: NSLayoutConstraint!
@@ -50,6 +52,9 @@ final class SettingsAutoFillVC: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = LString.titleAutoFillSettings
+        copyTOTPLabel.text = LString.titleCopyOTPtoClipboard
+        perfectMatchLabel.text = LString.titleAutoFillPerfectMatch
         settingsNotifications.startObserving()
         refresh()
     }

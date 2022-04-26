@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Appearance-->
+        <!--{Appearance}-->
         <scene sceneID="aKh-TC-lJx">
             <objects>
-                <tableViewController storyboardIdentifier="SettingsAppearanceVC" title="Appearance" id="4mh-X8-Byq" customClass="SettingsAppearanceVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsAppearanceVC" title="{Appearance}" id="4mh-X8-Byq" customClass="SettingsAppearanceVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="RGN-nh-Dp1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,11 +24,11 @@
                                         <rect key="frame" x="0.0" y="35" width="320" height="48.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yBx-ZL-DDR" id="f59-C7-fgC">
-                                            <rect key="frame" x="0.0" y="0.0" width="294.5" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="295.5" height="48.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="App Icon" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="fSx-Do-lgu" userLabel="App Icon">
-                                                    <rect key="frame" x="60" y="0.0" width="226.5" height="48.5"/>
+                                                    <rect key="frame" x="60" y="0.0" width="227.5" height="48.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -52,11 +52,11 @@
                                         <rect key="frame" x="0.0" y="83.5" width="320" height="48.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i3u-Xq-xMJ" id="8zJ-6N-QXR">
-                                            <rect key="frame" x="0.0" y="0.0" width="294.5" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="295.5" height="48.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Database Icons" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="4Yu-VJ-n8p">
-                                                    <rect key="frame" x="60" y="0.0" width="226.5" height="48.5"/>
+                                                    <rect key="frame" x="60" y="0.0" width="227.5" height="48.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -186,9 +186,6 @@
                             <outlet property="delegate" destination="4mh-X8-Byq" id="fRG-6l-5a4"/>
                         </connections>
                     </tableView>
-                    <attributedString key="userComments">
-                        <fragment content="Settings for user interface appearance (text size, icons, etc)"/>
-                    </attributedString>
                     <connections>
                         <outlet property="appIconCell" destination="yBx-ZL-DDR" id="RYs-eO-fHy"/>
                         <outlet property="databaseIconsCell" destination="i3u-Xq-xMJ" id="HOX-4u-S16"/>

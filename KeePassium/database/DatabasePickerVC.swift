@@ -312,7 +312,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             }
         )
         let backupMenu = UIMenu.make(
-            title: LString.titleBackupSettings,
+            title: LString.titleFileBackupSettings,
             options: [.displayInline],
             children: [showBackupAction]
         )

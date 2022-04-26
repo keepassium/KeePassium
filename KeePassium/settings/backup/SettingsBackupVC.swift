@@ -35,6 +35,7 @@ class SettingsBackupVC: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = LString.titleDatabaseBackupSettings
         settingsNotifications.startObserving()
         fileKeeperNotifications.startObserving()
         refresh()

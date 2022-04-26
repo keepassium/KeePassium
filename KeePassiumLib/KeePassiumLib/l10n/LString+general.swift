@@ -616,7 +616,7 @@ extension LString {
         value: "Exclude From iCloud/iTunes Backup",
         comment: "Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>`"
     )
-    public static let titleBackupSettings = NSLocalizedString(
+    public static let titleFileBackupSettings = NSLocalizedString(
         "[FileInfo/Backup/header]",
         bundle: Bundle.framework,
         value: "Backup",

@@ -75,6 +75,11 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = LString.titleDiagnosticLog
+    }
+    
     func refresh() {
         guard isViewLoaded else { return }
         tableView.reloadData()
