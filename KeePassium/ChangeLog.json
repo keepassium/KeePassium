@@ -69,19 +69,19 @@
                     "type": 1
                 },
                 {
-                    "title": "🐞Fixed: Cleaned up redundant menu items on macOS",
+                    "title": "🐞 Fixed: Cleaned up redundant menu items on macOS",
                     "type": 1
                 },
                 {
-                    "title": "🐞Fixed: Readability of last characters in expanded fields [thanks, Sachin]",
+                    "title": "🐞 Fixed: Readability of last characters in expanded fields [thanks, Sachin]",
                     "type": 1
                 },
                 {
-                    "title": "🐞Fixed: Parsing of MasterKeyChangeForceOnce tag in KDBX databases [thanks, M.H.]",
+                    "title": "🐞 Fixed: Parsing of MasterKeyChangeForceOnce tag in KDBX databases [thanks, M.H.]",
                     "type": 1
-                }
+                },
                 {
-                    "title": "🐞Fixed: removed obsolete error description for read-only OneDrive [thanks, Thomas]",
+                    "title": "🐞 Fixed: removed obsolete error description for read-only OneDrive [thanks, Thomas]",
                     "type": 1
                 },
 
