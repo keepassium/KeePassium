@@ -1,34 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "ASN1Swift",
-        "repositoryURL": "https://github.com/keepassium/ASN1Swift",
-        "state": {
-          "branch": null,
-          "revision": "b53bee03a942623db25afc5bfb80227b2cb3b425",
-          "version": "1.2.4"
-        }
-      },
-      {
-        "package": "TPInAppReceipt",
-        "repositoryURL": "https://github.com/keepassium/TPInAppReceipt",
-        "state": {
-          "branch": "keepassium",
-          "revision": "6630e3858f0d0a5803cede6f82afeaed5f5de7b6",
-          "version": null
-        }
-      },
-      {
-        "package": "YubiKit",
-        "repositoryURL": "https://github.com/keepassium/yubikit-ios.git",
-        "state": {
-          "branch": "keepassium",
-          "revision": "7a0521f7da0dec54b14ed06a0275a5bf277163ab",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "asn1swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/ASN1Swift",
+      "state" : {
+        "revision" : "b53bee03a942623db25afc5bfb80227b2cb3b425",
+        "version" : "1.2.4"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "tpinappreceipt",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/TPInAppReceipt",
+      "state" : {
+        "branch" : "keepassium",
+        "revision" : "6630e3858f0d0a5803cede6f82afeaed5f5de7b6"
+      }
+    },
+    {
+      "identity" : "yubikit-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/yubikit-ios.git",
+      "state" : {
+        "branch" : "keepassium",
+        "revision" : "7a0521f7da0dec54b14ed06a0275a5bf277163ab"
+      }
+    }
+  ],
+  "version" : 2
 }
