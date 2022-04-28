@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "حَول KeePassium";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "©Andrei Popleteev";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "انقر بشكل مزدوج للنسخ إلى الحافظة";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "حجم النص";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "المظهر";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "فتح القفل";
@@ -82,6 +91,9 @@
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "تم النسخ!";
 
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "اقتراحات؟ مشاكل؟ دعنا نعلم!";
+
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "خطأ في فك تعمية AES (الرمز %d)";
 
@@ -142,9 +154,6 @@
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "صيغة قاعدة البيانات غير معترف بها";
 
-/* Message shown after we show a cached local database instead of the (unavailable) original database. */
-"[Database/Loading/FromCache/text]" = "The database is unreachable.\nThis is its latest local copy.";
-
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "قاعدة البيانات للقراءة فقط";
 
@@ -204,18 +213,6 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "جاري الحفظ...";
-
-/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
-"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
-
-/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
-"[Database/Settings/FallbackStrategy/ShowError/title]" = "Show Error";
-
-/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/title]" = "If File is Unreachable";
-
-/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/UseCache/title]" = "Use Local Copy";
 
 /* Title of settings section (read-only, backup-able, etc) */
 "[Database/Settings/FileAccess/title]" = "الوصول إلى الملف";
@@ -420,6 +417,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "كلمة المرور غير صالحة أو ملف المفتاح غير صالح";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "اصلاح المشاكل للمستخدمين المتقدمين";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "سجل التشخيص";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "تمّ نسخ سجل التشخيص إلى الحافظة.";
@@ -1036,6 +1039,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "صالحة للأبد";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "النُسخة المُمَيَزة";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "سوف يتم اقتطاع المبلغ من حساب Apple ID عند تأكيد الشراء. \n\nيتجدد الاشتراك تلقائيًا إلا إذا قمت بالإلغاء في غضون 24 ساعة على الأقل قبل انتهاء فترة الاشتراك الحالية. وسوف يتم خصم المبلغ من حسابك نظير التجديد في غضون فترة 24 ساعة قبل نهاية الفترة الحالية. \n\nيمكنك إدارة اشتراكاتك وإلغائها بالذهاب إلى إعدادات الحساب في متجر التطبيقات بعد الشراء.";
 
@@ -1159,6 +1165,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "قفل التطبيق، كلمة المرور، مهلة الخروج";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "حماية التطبيق";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "بعد آخر تفاعل";
 
@@ -1183,8 +1192,20 @@
 /* Description for the AutoFill setup instructions */
 "[Settings/AutoFill/Activate/description]" = "قبل الاستخدام الأول، تحتاج إلى تفعيل التعبئة التلقائية من إعدادات النظام.";
 
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "نسخ OTP إلى الحافظة";
+
 /* Title of a help article on how to activate AutoFill. */
 "[Settings/AutoFill/Setup Guide/title]" = "دليل إعداد الملء التلقائي";
+
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "التعبئة التلقائية لكلمات المرور";
+
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "املأ النتائج المتطابقة تلقائيًا";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "الفتح التلقائي لقاعدة البيانات السابقة";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "حذف جميع ملفات النسخ الاحتياطي (%d)";
@@ -1219,6 +1240,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "ابدًا";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "النسخ الاحتياطي لقاعدة البيانات";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "إذا كنت لا تتفاعل مع التطبيق لبعض الوقت، فسيتم إغلاق قاعدة البيانات لسلامتك. لفتحها، سوف تحتاج إلى إدخال كلمة المرور الرئيسة مرة أخرى.";
 
@@ -1236,6 +1260,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "ابدًا";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "المفاتيح الرئيسة وملفات المفاتيح";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "حماية البيانات";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "تاريخ آخر تعديل";
@@ -1263,6 +1293,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "إعدادات القوائم";
+
+/* Section title in settings */
+"[Settings/Search/title]" = "البحث";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
 "[SortBy]" = "الفرز حَسَب";
@@ -1314,9 +1347,6 @@
 
 /* Call to action, title of the tip box/donation screen. */
 "[TipBox/title/3]" = "دعم KeePassium";
-
-/* Name of an entry field. Acronym `TOTP` should not be translated. */
-"[TOTP/FieldName]" = "One-time password (TOTP)";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "التخزين السحابي / تطبيق آخر";

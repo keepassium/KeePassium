@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "KeePassium 소개";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "© Andrei Popleteev";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "두 번 탭하여 클립보드에 복사";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "글자 크기";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "모양";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "잠금 해제";
@@ -82,6 +91,9 @@
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "복사됨";
 
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "문제가 있거나 제안하고 싶은게 있나요? 개발자에게 알려주세요!";
+
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "AES 복호화 오류 (코드 %d)";
 
@@ -121,9 +133,6 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "데이터베이스 파일을 삭제하시겠습니까?\n 백업을 생성해뒀는지 확인해주세요.";
 
-/* Notification when user tries to copy data from KDBX to older KDB database. */
-"[Database/LesserTargetFormat/warning]" = "This is an older database format, some data might be lost.";
-
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "데이터베이스 파일을 찾을 수 없습니다";
 
@@ -141,9 +150,6 @@
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "데이터베이스 포맷이 인식되지 않음";
-
-/* Message shown after we show a cached local database instead of the (unavailable) original database. */
-"[Database/Loading/FromCache/text]" = "The database is unreachable.\nThis is its latest local copy.";
 
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "데이터베이스가 읽기 전용입니다.";
@@ -204,27 +210,6 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "저장 중...";
-
-/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
-"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
-
-/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
-"[Database/Settings/FallbackStrategy/ShowError/title]" = "Show Error";
-
-/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/title]" = "If File is Unreachable";
-
-/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/UseCache/title]" = "Use Local Copy";
-
-/* Title of settings section (read-only, backup-able, etc) */
-"[Database/Settings/FileAccess/title]" = "File Access";
-
-/* File setting title, whether the file can be modified (yes/no). */
-"[Database/Settings/ReadOnly/title]" = "Read Only";
-
-/* Title of database-related settings screen */
-"[Database/Settings/title]" = "Database Settings";
 
 /* Action/button to switch from current to some other database. */
 "[Database/Switch/action]" = "데이터베이스 전환";
@@ -420,6 +405,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "잘못된 비밀번호 또는 키 파일입니다";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "전문가용 문제 해결";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "진단 로그";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "진단 로그가 클립보드에 복사되었습니다.";
@@ -1036,6 +1027,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "평생 유효";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "프리미엄 버전";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "구매가 확인되면 사용자의 Apple ID 계정을 통해 지불됩니다.\n\n구독은 현재 구독 기간이 종료되기 최소 24시간 전에 취소하지 않는 한 자동으로 갱신됩니다. 자동 갱신 시 현재 구독 기간이 종료되기 24시간 전 이내에 지불이 발생합니다.\n\n구독 구매 후, App Store의 계정 설정에서 구독을 관리하고 취소할 수 있습니다.";
 
@@ -1123,23 +1117,11 @@
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "첨부 파일 미리보기";
 
-/* Description/call to action for the `Quick AutoFill` premium feature. */
-"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
-
-/* Title of a premium feature: show relevant AutoFill entries right under the input field */
-"[PremiumFeature/QuickAutoFill/title]" = "Quick AutoFill";
-
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "사용자에 의해 취소됨";
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "메모리가 부족하여 계속 진행할 수 없습니다.\n이 현상은 규모가 큰 데이터베이스를 처리할 때나 Argon2 메모리 파라미터와 같은 데이터베이스 설정을 과도하게 설정한 경우 발생할 수 있습니다.";
-
-/* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
-
-/* Name of a feature that shows relevant entries directly next to the login/password forms. */
-"[QuickAutoFill/title]" = "Quick AutoFill";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "패스워드 재입력";
@@ -1159,6 +1141,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "앱 잠금, 비밀번호, 시간 제한";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "앱 보호";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "마지막 상호작용 후";
 
@@ -1177,14 +1162,17 @@
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
 "[Settings/AppLockTimeout/shortTitle] Never" = "잠그지 않음";
 
-/* Action that opens system settings or instructions */
-"[Settings/AutoFill/Activate/action]" = "Activate AutoFill";
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "클립보드에 OTP 복사";
 
-/* Description for the AutoFill setup instructions */
-"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "자동 완성 패스워드";
 
-/* Title of a help article on how to activate AutoFill. */
-"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "완벽히 일치하는 항목으로 자동 채우기";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "이전 데이터베이스를 자동으로 열기";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "모든 백업 파일 삭제 (%d개)";
@@ -1219,6 +1207,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "잠그지 않음";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "데이터베이스 백업";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "일정 시간동안 앱과 상호작용하지 않는 경우, 보안을 위해 데이터베이스를 자동으로 닫습니다. 데이터베이스를 열려면 마스터 패스워드를 다시 입력해야 합니다.";
 
@@ -1236,6 +1227,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "잠그지 않음";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "마스터 키, 키 파일";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "데이터 보호";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "마지막 수정 일자";
@@ -1264,17 +1261,8 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "목록 설정";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Sort By";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Date Created";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Date Modified";
-
-/* List sorting option (for file names). Example: 'Sort by: Name' */
-"[SortBy/FileName]" = "Name";
+/* Section title in settings */
+"[Settings/Search/title]" = "검색";
 
 /* List sorting option (for groups and entries). Example: 'Sort by: Title' */
 "[SortBy/ItemTitle]" = "제목";
@@ -1314,9 +1302,6 @@
 
 /* Call to action, title of the tip box/donation screen. */
 "[TipBox/title/3]" = "KeePassium 지원하기";
-
-/* Name of an entry field. Acronym `TOTP` should not be translated. */
-"[TOTP/FieldName]" = "One-time password (TOTP)";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "클라우드 저장소 / 기타 앱";

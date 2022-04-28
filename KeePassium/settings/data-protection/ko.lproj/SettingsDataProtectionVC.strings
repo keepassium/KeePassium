@@ -1,9 +1,6 @@
 /* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
 "3uV-Zs-RRo.normalTitle" = "키 파일 연결 초기화";
 
-/* Class = "UILabel"; text = "{Detail}"; ObjectID = "beV-Hv-Qdr"; Note = "#bc-ignore!"; */
-"beV-Hv-Qdr.text" = "{Detail}";
-
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
 "e1v-nv-Mst.normalTitle" = "마스터 키 비우기";
 
@@ -34,9 +31,6 @@
 /* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
 "INJ-Cy-Tfo.text" = "마스터 키 기억하기";
 
-/* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
-"IZZ-aM-g2i.title" = "데이터 보호";
-
 /* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
 "JHl-o7-xHI.text" = "키 파일 기억하기";
 
@@ -63,9 +57,6 @@
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
 "weX-SZ-IDB.text" = "데이터베이스 시간 제한";
-
-/* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
-"xPd-ot-oqe.text" = "{Detail}";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "공통 클립보드";

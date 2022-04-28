@@ -1,26 +1,8 @@
-/* Class = "UILabel"; text = "{Setup instructions}"; ObjectID = "aSq-s6-gVc"; */
-"aSq-s6-gVc.text" = "{Setup instructions}";
-
-/* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
-"ei6-22-NXN.title" = "自動填入功能";
-
-/* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"go1-Nt-isQ.text" = "複製 一次性密碼OTP 到剪貼板";
-
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.footerTitle" = "當自動填入只找到一個並且完整匹配的項目時 - 該項目將會被自動貼上。";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "自動搜尋";
-
-/* Class = "UITableViewSection"; footerTitle = "{Quick AutoFill description}"; ObjectID = "KaG-pD-D9z"; */
-"KaG-pD-D9z.footerTitle" = "{Quick AutoFill description}";
-
-/* Class = "UILabel"; text = "Fill-in the perfect result automatically"; ObjectID = "WDb-aU-Mmf"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"WDb-aU-Mmf.text" = "自動填入合適的結果";
-
-/* Class = "UILabel"; text = "{Quick AutoFill}"; ObjectID = "Wq1-wJ-wCR"; */
-"Wq1-wJ-wCR.text" = "{Quick AutoFill}";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you."; ObjectID = "XYL-1l-Jx6"; */
 "XYL-1l-Jx6.footerTitle" = "當自動填充寫入用戶名和密碼時，它還可以自動為您複製一次性密碼（OTP）。";

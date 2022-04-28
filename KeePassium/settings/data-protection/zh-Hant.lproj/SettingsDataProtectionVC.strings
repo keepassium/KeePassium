@@ -1,9 +1,6 @@
 /* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
 "3uV-Zs-RRo.normalTitle" = "清除金鑰文件的關聯";
 
-/* Class = "UILabel"; text = "{Detail}"; ObjectID = "beV-Hv-Qdr"; Note = "#bc-ignore!"; */
-"beV-Hv-Qdr.text" = "{Detail}";
-
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
 "e1v-nv-Mst.normalTitle" = "清除主金鑰";
 
@@ -34,9 +31,6 @@
 /* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
 "INJ-Cy-Tfo.text" = "記住主金鑰";
 
-/* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
-"IZZ-aM-g2i.title" = "資料保護";
-
 /* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
 "JHl-o7-xHI.text" = "記住金鑰檔案";
 
@@ -63,9 +57,6 @@
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
 "weX-SZ-IDB.text" = "資料庫自動鎖定";
-
-/* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
-"xPd-ot-oqe.text" = "{Detail}";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "通用剪貼板";

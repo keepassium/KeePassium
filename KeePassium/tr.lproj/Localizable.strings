@@ -1,3 +1,6 @@
+/* Title of the app history (changelog) screen */
+"[AppHistory/title]" = "Neler Değişti?";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Lütfen bir şifre girin ya da anahtar dosya seçin.";
 
@@ -40,11 +43,8 @@
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "Yeniden Adlandır";
 
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "About %@";
-
 /* Menu title: app settings */
-"[Menu/Preferences/title]" = "Preferences…";
+"[Menu/Preferences/title]" = "Tercihler…";
 
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Şifreyi Göster";

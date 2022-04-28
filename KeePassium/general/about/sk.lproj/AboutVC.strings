@@ -1,6 +1,3 @@
-/* Class = "UITableViewSection"; headerTitle = "Troubleshooting"; ObjectID = "0mb-N7-JBa"; Note = "#bc-ignore!"; */
-"0mb-N7-JBa.headerTitle" = "Troubleshooting";
-
 /* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
 "7bL-fQ-OUc.headerTitle" = "Spätná väzba";
 
@@ -36,12 +33,6 @@
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "bAq-tq-nuY"; */
 "bAq-tq-nuY.text" = "MIT Licencia";
-
-/* Class = "UILabel"; text = "©2021 Andrei Popleteev"; ObjectID = "bmf-Ed-H4x"; */
-"bmf-Ed-H4x.text" = "©2021 Andrei Popleteev";
-
-/* Class = "UILabel"; text = "Accept input from AutoFill providers"; ObjectID = "bTY-d6-puv"; Note = "#bc-ignore!"; */
-"bTY-d6-puv.text" = "Accept input from AutoFill providers";
 
 /* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
 "CNI-b8-7Da.text" = "KeePass by Dominik Reichl";
@@ -87,9 +78,6 @@
 
 /* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
 "JRy-jy-KXb.text" = "GPL licencia";
-
-/* Class = "UILabel"; text = "{info@keepassium.com}"; ObjectID = "kae-Kb-5ZU"; Note = "#bc-ignore!"; */
-"kae-Kb-5ZU.text" = "{info@keepassium.com}";
 
 /* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern by Daniel Beaton";
@@ -144,9 +132,6 @@
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "uiw-Qh-pNp.text" = "Zanechajte recenziu na App Store.";
-
-/* Class = "UILabel"; text = "{v1.0.123}"; ObjectID = "vDg-fF-8ty"; Note = "#bc-ignore!"; */
-"vDg-fF-8ty.text" = "{v1.0.123}";
 
 /* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
 "vg0-6M-OIq.text" = "KeyboardLayoutConstraint by James Tang";

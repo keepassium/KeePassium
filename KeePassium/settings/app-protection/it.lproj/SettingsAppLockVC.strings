@@ -19,21 +19,9 @@
 /* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
 "Ef4-Jw-xeO.text" = "Timeout";
 
-/* Class = "UILabel"; text = "{Use Touch ID / Face ID}"; ObjectID = "Fez-6g-oyk"; Note = "#bc-ignore!"; */
-"Fez-6g-oyk.text" = "{Use Touch ID / Face ID}";
-
-/* Class = "UILabel"; text = "{Detail}"; ObjectID = "FWz-EI-KaZ"; Note = "#bc-ignore!"; */
-"FWz-EI-KaZ.text" = "{Detail}";
-
 /* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
 "IS1-Lb-MFy.text" = "Abilita Blocco dell'App";
 
 /* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
 "m50-fl-4tu.footerTitle" = "L'app si bloccherà automaticamente dopo questo tempo.";
-
-/* Class = "UITableViewController"; title = "App Protection"; ObjectID = "U5m-je-MhO"; */
-"U5m-je-MhO.title" = "Protezione App";
-
-/* Class = "UILabel"; text = "{Change Passcode}"; ObjectID = "wzW-GR-02W"; Note = "#bc-ignore!"; */
-"wzW-GR-02W.text" = "{Change Passcode}";
 

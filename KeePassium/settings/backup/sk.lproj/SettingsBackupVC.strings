@@ -22,17 +22,8 @@
 /* Class = "UITableViewSection"; footerTitle = "Before saving a database, KeePassium will automatically make a copy, just in case."; ObjectID = "nBI-OF-9iV"; Note = "Explanation for the `Make Backup Copies` option"; */
 "nBI-OF-9iV.footerTitle" = "KeePassium bude automaticky vytvárať zálohu pred každým uložením databázy.";
 
-/* Class = "UITableViewController"; title = "Database Backup"; ObjectID = "nSy-3u-0xW"; */
-"nSy-3u-0xW.title" = "Záloha databázy";
-
-/* Class = "UILabel"; text = "{N days}"; ObjectID = "PKe-6p-Ssr"; Note = "#bc-ignore!"; */
-"PKe-6p-Ssr.text" = "{N days}";
-
 /* Class = "UILabel"; text = "Exclude Backup Files from System Backup"; ObjectID = "Qs6-uS-gdS"; Note = "Settings option, on/off"; */
 "Qs6-uS-gdS.text" = "Vynechať záložné súbory zo zálohy systému";
-
-/* Class = "UIButton"; normalTitle = "{Delete ALL Backup Files (1)}"; ObjectID = "RXF-mN-5RB"; Note = "#bc-ignore!"; */
-"RXF-mN-5RB.normalTitle" = "{Delete ALL Backup Files (1)}";
 
 /* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
 "XeH-7q-aad.footerTitle" = "Záložné súbory budú zobrazené spolu s originálnymi súbormi.";

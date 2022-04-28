@@ -13,6 +13,3 @@
 /* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
 "rzY-Ci-bd9.title" = "كِيّباسيوم";
 
-/* Class = "UITextView"; text = "{Footer text}"; ObjectID = "UAW-0G-N5G"; Note = "#bc-ignore!"; */
-"UAW-0G-N5G.text" = "{Footer text}";
-

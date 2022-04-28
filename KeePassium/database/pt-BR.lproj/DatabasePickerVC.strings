@@ -19,14 +19,8 @@
 /* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
 "R68-cy-5mz.text" = "Proteja KeePassium contra acesso não autorizado.";
 
-/* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "rWy-ey-805"; Note = "#bc-ignore!"; */
-"rWy-ey-805.text" = "{Database File Name}";
-
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
 "UI0-Lh-wTj.title" = "Bancos de dados";
-
-/* Class = "UILabel"; text = "{File Attributes}"; ObjectID = "y2W-10-GnE"; Note = "#bc-ignore!"; */
-"y2W-10-GnE.text" = "{File Attributes}";
 
 /* Class = "UIButton"; accessibilityLabel = "Close"; ObjectID = "zIk-Pe-sKK"; */
 "zIk-Pe-sKK.accessibilityLabel" = "Fechar";

@@ -1,26 +1,8 @@
-/* Class = "UILabel"; text = "{Setup instructions}"; ObjectID = "aSq-s6-gVc"; */
-"aSq-s6-gVc.text" = "{Setup instructions}";
-
-/* Class = "UITableViewController"; title = "AutoFill"; ObjectID = "ei6-22-NXN"; */
-"ei6-22-NXN.title" = "Riempimento automatico";
-
-/* Class = "UILabel"; text = "Copy OTP to clipboard"; ObjectID = "go1-Nt-isQ"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"go1-Nt-isQ.text" = "Copia OTP negli appunti";
-
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.footerTitle" = "Quando Riempimento automatico trova una voce perfettamente corrispondente, questa voce verrà popolata automaticamente.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "Ricerca automatica";
-
-/* Class = "UITableViewSection"; footerTitle = "{Quick AutoFill description}"; ObjectID = "KaG-pD-D9z"; */
-"KaG-pD-D9z.footerTitle" = "{Quick AutoFill description}";
-
-/* Class = "UILabel"; text = "Fill-in the perfect result automatically"; ObjectID = "WDb-aU-Mmf"; Note = "Title of an option: copy one-time password to clipboard when using AutoFill"; */
-"WDb-aU-Mmf.text" = "Compila automaticamente il risultato perfetto";
-
-/* Class = "UILabel"; text = "{Quick AutoFill}"; ObjectID = "Wq1-wJ-wCR"; */
-"Wq1-wJ-wCR.text" = "{Quick AutoFill}";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you."; ObjectID = "XYL-1l-Jx6"; */
 "XYL-1l-Jx6.footerTitle" = "Quando il riempimento automatico inserisce nome utente e password, può anche copiare la password monouso (OTP).";

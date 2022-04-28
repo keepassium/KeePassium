@@ -10,17 +10,11 @@
 /* Class = "UIButton"; normalTitle = "Lock Database"; ObjectID = "gji-1x-co5"; */
 "gji-1x-co5.normalTitle" = "قَفل قاعدة البيانات";
 
-/* Class = "UITextField"; placeholder = "{No Hardware Key}"; ObjectID = "IDJ-gO-5kR"; */
-"IDJ-gO-5kR.placeholder" = "{No Hardware Key}";
-
 /* Class = "UILabel"; text = "Will use the remembered master key."; ObjectID = "K3Y-ON-C19"; Note = "Hint shown below the Unlock button, when not asking for master password/key file."; */
 "K3Y-ON-C19.text" = "سيتم استخدام المفتاح الرئيس المحفوظ.";
 
 /* Class = "UIButton"; normalTitle = "Unlock"; ObjectID = "l45-hq-1lr"; */
 "l45-hq-1lr.normalTitle" = "فتح القفل";
-
-/* Class = "UILabel"; text = "{Database file name}"; ObjectID = "LsQ-5N-nP3"; Note = "#bc-ignore!"; */
-"LsQ-5N-nP3.text" = "{Database file name}";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "mYY-hP-3vH"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
 "mYY-hP-3vH.placeholder" = "لا يوجد ملف مفتاح";

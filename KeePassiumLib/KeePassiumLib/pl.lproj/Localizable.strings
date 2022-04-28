@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "O KeePassium";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "©Andrei Popleteev";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dotknij dwukrotnie aby skopiować";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Rozmiar tekstu";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "Wygląd";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Odblokuj";
@@ -81,6 +90,9 @@
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "Skopiowano";
+
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "Sugestie? Problemy? Daj nam znać!";
 
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "Błąd deszyfrowania AES (kod %d)";
@@ -204,9 +216,6 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Zapisywanie...";
-
-/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
-"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "Pokaż błąd";
@@ -420,6 +429,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Nieprawidłowe hasło lub plik klucza";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "Rozwiązywanie problemów dla ekspertów";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "Logi diagnostyczne";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Log diagnostyczny został skopiowany do schowka.";
@@ -862,6 +877,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Pomoc";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "Hasło jednorazowe (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Przywrócono poprzednią wersję";
 
@@ -900,6 +918,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informacje o pliku";
+
+/* Name of an entry field */
+"[OTP/FieldName]" = "Hasło jednorazowe";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Tego kodu QR nie można użyć dla OTP.";
@@ -1036,6 +1057,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "Ważne na zawsze";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "Wersja Premium";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "Po zakupię płatnością zostanie obciążone Twoje konto Apple ID. \n\nSubskrypcja odnawia się automatycznie, chyba że zostanie anulowana przynajmniej na 24 godziny przed końcem obecnego okresu. Twoje konto zostanie obciążone w ciągu 24 godzin przed upływem obecnego okresu.\n\nPo zakupie możesz zarządzać i anulować subskrypcję przechodząc do ustawień swojego konta w App Store.";
 
@@ -1123,9 +1147,6 @@
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "Podgląd załączników";
 
-/* Description/call to action for the `Quick AutoFill` premium feature. */
-"[PremiumFeature/QuickAutoFill/description]" = "Fill out login forms with a single tap, without even opening KeePassium.";
-
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Szybkie autouzupełnianie";
 
@@ -1134,9 +1155,6 @@
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "Za mało pamięci, aby kontynuować.\nMoże się to zdarzyć przy dużych bazach lub zbyt wygórowanych ustawieniach bazy (parametr pamięci Argon2).";
-
-/* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.";
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Szybkie autouzupełnianie";
@@ -1159,6 +1177,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Blokada aplikacji, kod dostępu, limit czasu";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "Ochrona aplikacji";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "Od ostatniego użycia";
 
@@ -1180,11 +1201,17 @@
 /* Action that opens system settings or instructions */
 "[Settings/AutoFill/Activate/action]" = "Aktywuj autouzupełnianie";
 
-/* Description for the AutoFill setup instructions */
-"[Settings/AutoFill/Activate/description]" = "Before first use, you need to activate AutoFill in system settings.";
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "Kopiuj hasło jednorazowe do schowka";
 
-/* Title of a help article on how to activate AutoFill. */
-"[Settings/AutoFill/Setup Guide/title]" = "AutoFill Setup Guide";
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "Autouzupełnianie";
+
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "Wypełnij dokładne dopasowania";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "Automatycznie otwórz ostatnią bazę";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Usuń WSZYSTKIE kopie zapasowe (%d)";
@@ -1219,6 +1246,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Nigdy";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "Kopia zapasowa bazy";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Jeżeli program nie będzie w użyciu przez podany czas, dla bezpieczeństwa baza zostanie zamknięta. Aby ją otworzyć, wprowadź ponownie jej klucz główny.";
 
@@ -1236,6 +1266,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Nigdy";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "Klucz główny, plik klucza";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "Ochrona danych";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Data ostatniej modyfikacji";
@@ -1263,6 +1299,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Ustawienia listy";
+
+/* Section title in settings */
+"[Settings/Search/title]" = "Szukaj";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
 "[SortBy]" = "Sortuj według";

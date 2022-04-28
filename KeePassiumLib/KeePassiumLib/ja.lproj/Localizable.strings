@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "KeePassiumについて";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "©Andrei Popleteev";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "ダブルタップでクリップボードにコピー";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "文字の大きさ";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "表示";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "ロックを解除";
@@ -81,6 +90,9 @@
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "コピーしました";
+
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "改善提案や問題点を報告";
 
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "AES 復号エラー (コード %d)";
@@ -420,6 +432,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "パスワードまたはキーファイルが無効です";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "障害対応のための情報";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "診断ログ";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "診断ログをクリップボードにコピーしました。";
@@ -862,6 +880,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "ヘルプ";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "ワンタイムパスワード (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "以前のバージョンが復元されました";
 
@@ -900,6 +921,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "ファイルの情報";
+
+/* Name of an entry field */
+"[OTP/FieldName]" = "ワンタイムパスワード";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "このQRコードは、ワンタイム・パスワードの設定に使えません。";
@@ -1036,6 +1060,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "永久に有効";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "プレミアム版";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "お支払いは、Apple IDのアカウントに対し購入確定時に請求いたします。\n\nサブスクリプション（期限付きの使用）は、期限が切れる24時間前までにキャンセルされなければ、自動的に更新されます。更新する場合の請求は、期限終了前の24時間以内に行われます。\n\nサブスクリプションの管理やキャンセルは、購入後にApp Storeのアカウント設定で可能です。";
 
@@ -1159,6 +1186,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Appロック、パスコード、タイムアウト";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "Appの保護";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "最後に操作した後";
 
@@ -1183,8 +1213,20 @@
 /* Description for the AutoFill setup instructions */
 "[Settings/AutoFill/Activate/description]" = "利用するにあたり、まず自動入力をオンにする必要があります。";
 
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "OTPをクリップボードにコピー";
+
 /* Title of a help article on how to activate AutoFill. */
 "[Settings/AutoFill/Setup Guide/title]" = "自動入力設定ガイド";
+
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "パスワードの自動入力";
+
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "完全一致時に自動で入力";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "前回使ったデータベースを開く";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "すべてのバックアップを削除 (%d)";
@@ -1219,6 +1261,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "しない";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "データベースのバックアップ";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Appがしばらく使われていない場合、安全のためにデータベースを閉じます。再開するにはマスターパスワードを再度入力してください。";
 
@@ -1236,6 +1281,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "しない";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "マスターキー、キーファイル";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "データの保護";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "変更日";
@@ -1263,6 +1314,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "リストの設定";
+
+/* Section title in settings */
+"[Settings/Search/title]" = "検索";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
 "[SortBy]" = "並び替え";
@@ -1316,7 +1370,7 @@
 "[TipBox/title/3]" = "KeePassiumを支援";
 
 /* Name of an entry field. Acronym `TOTP` should not be translated. */
-"[TOTP/FieldName]" = "One-time password (TOTP)";
+"[TOTP/FieldName]" = "ワンタイムパスワード (TOTP)";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "クラウドストレージ / 他のアプリ";

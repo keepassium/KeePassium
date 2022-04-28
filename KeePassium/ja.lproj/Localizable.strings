@@ -1,3 +1,6 @@
+/* Title of the app history (changelog) screen */
+"[AppHistory/title]" = "バージョン履歴";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "パスワードを入力するか、キーファイルを選択してください。";
 

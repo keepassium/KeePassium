@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "Om KeePassium";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "©Andrei Popleteev";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dubbeltryck för att kopiera till urklipp";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Textstorlek";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "Utseende";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Lås upp";
@@ -81,6 +90,9 @@
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "Kopierad";
+
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "Förslag? Problem? Hör av dig!";
 
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "AES Dekrypteringsfel (Felkod %d)";
@@ -420,6 +432,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Felaktigt lösenord eller nyckelfil";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "För felsökning av experter";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "Diagnostisk logg";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisk logg har kopierats till urklipp.";
@@ -862,6 +880,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Hjälp";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "Engångslösenord (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Föregående version återställd";
 
@@ -900,6 +921,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Filinfo";
+
+/* Name of an entry field */
+"[OTP/FieldName]" = "Engångslösenord";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Denna QR-kod är inte lämplig för OTP-konfiguration.";
@@ -1036,6 +1060,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "Giltig för alltid";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "Premiumversion";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "Betalning kommer att debiteras ditt Apple-konto vid bekräftelse av köpet.\n\nPrenumerationen förnyas automatiskt om inte avbokning sker minst 24 timmar före utgången av den aktuella perioden. Kontot kommer debiteras för förnyelsen inom de sista 24-timmarna före den aktuella perioden tar slut.\n\nDu kan hantera och avsluta din prenumeration genom att gå till Kontoinställningar i App Store efter ditt köp.";
 
@@ -1159,6 +1186,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "App Lock, PIN-kod, timeout";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "Appskydd";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "Efter senaste interaktionen";
 
@@ -1183,8 +1213,20 @@
 /* Description for the AutoFill setup instructions */
 "[Settings/AutoFill/Activate/description]" = "Innan första användningen måste du aktivera Autofyll i systeminställningar.";
 
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "Kopiera engångslösenord till urklipp";
+
 /* Title of a help article on how to activate AutoFill. */
 "[Settings/AutoFill/Setup Guide/title]" = "Kom igång med Autofyll";
+
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "Autofyll lösenord";
+
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "Fyll i det matchande resultatet automatiskt";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "Öppna den tidigare databasen automatiskt";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Radera ALLA backuper (%d)";
@@ -1219,6 +1261,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Aldrig";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "Databasbackup";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Om du inte interagerar med appen på ett tag kommer databasen stängas för din säkerhet. För att öppna behöver du ange huvudlösenordet igen.";
 
@@ -1236,6 +1281,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Aldrig";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "Huvudnycklar, nyckelfiler";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "Dataskydd";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Senaste ändringsdatum";
@@ -1263,6 +1314,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Listinställningar";
+
+/* Section title in settings */
+"[Settings/Search/title]" = "Sök";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
 "[SortBy]" = "Sortera Efter";

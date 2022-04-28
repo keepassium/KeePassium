@@ -1,17 +1,8 @@
-/* Class = "UILabel"; text = "{Entry Subtitle}"; ObjectID = "5Db-9q-PM7"; Note = "#bc-ignore!"; */
-"5Db-9q-PM7.text" = "{Entry Subtitle}";
-
-/* Class = "UILabel"; text = "{Group Name}"; ObjectID = "7uR-HK-1Dd"; Note = "#bc-ignore!"; */
-"7uR-HK-1Dd.text" = "{Group Name}";
-
 /* Class = "UIBarButtonItem"; 9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Lock Database"; ObjectID = "9KV-rC-1XL"; */
 "9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "鎖定資料庫";
 
 /* Class = "UIBarButtonItem"; M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "M5a-Ld-ZXd"; */
 "M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "排序順序";
-
-/* Class = "UILabel"; text = "{Entry Title}"; ObjectID = "OjW-aR-wD3"; Note = "#bc-ignore!"; */
-"OjW-aR-wD3.text" = "{Entry Title}";
 
 /* Class = "UIBarButtonItem"; qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Change Master Key"; ObjectID = "qkh-6K-yQW"; */
 "qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "變更主金鑰";
@@ -19,18 +10,9 @@
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
 "QXa-eN-7am.text" = "這個群組是空的";
 
-/* Class = "UILabel"; text = "{OTPValue}"; ObjectID = "RAn-LR-hxd"; */
-"RAn-LR-hxd.text" = "{OTPValue}";
-
 /* Class = "UIBarButtonItem"; rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Settings"; ObjectID = "rF3-mC-kj1"; */
 "rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "設置";
 
 /* Class = "UILabel"; text = "No entries found"; ObjectID = "tpA-i1-ah8"; */
 "tpA-i1-ah8.text" = "沒有找到條目";
-
-/* Class = "UILabel"; text = "{nItems}"; ObjectID = "ttY-yZ-yRg"; Note = "#bc-ignore!"; */
-"ttY-yZ-yRg.text" = "{nItems}";
-
-/* Class = "UIButton"; normalTitle = "{OTP}"; ObjectID = "x2j-8N-gU5"; */
-"x2j-8N-gU5.normalTitle" = "{OTP}";
 

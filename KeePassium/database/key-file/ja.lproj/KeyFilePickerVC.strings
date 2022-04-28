@@ -4,9 +4,6 @@
 /* Class = "UILabel"; text = "Use key file without adding it to the list"; ObjectID = "BGv-TX-maE"; Note = "Explanation for the \"Key File/Browse\" action."; */
 "BGv-TX-maE.text" = "キーファイルをリストに追加せずに使用";
 
-/* Class = "UILabel"; text = "{Database File Name}"; ObjectID = "jCW-yW-0I5"; Note = "#bc-ignore!"; */
-"jCW-yW-0I5.text" = "{Database File Name}";
-
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
 "leO-vH-qBX.text" = "パスワードのみを使用";
 
@@ -15,9 +12,6 @@
 
 /* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
 "Omh-Sn-jl2.normalTitle" = "キーファイルを追加";
-
-/* Class = "UILabel"; text = "{File Attributes}"; ObjectID = "pn1-Yp-Bzr"; Note = "#bc-ignore!"; */
-"pn1-Yp-Bzr.text" = "{File Attributes}";
 
 /* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
 "r85-yz-wYI.title" = "キーファイル";

@@ -1,9 +1,6 @@
 /* Class = "UIButton"; normalTitle = "Clear Key File Associations"; ObjectID = "3uV-Zs-RRo"; */
 "3uV-Zs-RRo.normalTitle" = "Wyczyść powiązania plików kluczy";
 
-/* Class = "UILabel"; text = "{Detail}"; ObjectID = "beV-Hv-Qdr"; Note = "#bc-ignore!"; */
-"beV-Hv-Qdr.text" = "{Detail}";
-
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
 "e1v-nv-Mst.normalTitle" = "Wyczyść klucze główne";
 
@@ -34,9 +31,6 @@
 /* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
 "INJ-Cy-Tfo.text" = "Zapamiętaj klucze główne";
 
-/* Class = "UITableViewController"; title = "Data Protection"; ObjectID = "IZZ-aM-g2i"; */
-"IZZ-aM-g2i.title" = "Ochrona danych";
-
 /* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
 "JHl-o7-xHI.text" = "Zapamiętaj pliki kluczy";
 
@@ -55,23 +49,14 @@
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
 "pid-k2-idJ.text" = "Ukryj hasło";
 
-/* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
-"siQ-LK-GXZ.text" = "Cache Derived Encryption Keys";
-
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Limit czasu schowka";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
 "weX-SZ-IDB.text" = "Limit czasu bazy";
 
-/* Class = "UILabel"; text = "{Detail}"; ObjectID = "xPd-ot-oqe"; Note = "#bc-ignore!"; */
-"xPd-ot-oqe.text" = "{Detail}";
-
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "Schowek ogólny";
-
-/* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
-"Zqb-p5-Ft8.footerTitle" = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. ";
 
 /* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
 "Zqb-p5-Ft8.headerTitle" = "Zaawansowane";

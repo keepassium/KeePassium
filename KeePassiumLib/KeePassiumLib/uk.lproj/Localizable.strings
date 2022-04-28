@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "Про KeePassium";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "©Андрій Поплетєєв";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Торкніться двічі, щоб скопіювати до буфера обміну";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Розмір тексту";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "Зовнішній вигляд";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Розблокувати";
@@ -82,6 +91,9 @@
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "Скопійовано";
 
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "Ідеї? Питання? Повідомте нас!";
+
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "Помилка розшифровки AES (код %d)";
 
@@ -143,7 +155,7 @@
 "[Database/Load/Error] Unrecognized database format" = "Невідомий формат бази паролів";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
-"[Database/Loading/FromCache/text]" = "The database is unreachable.\nThis is its latest local copy.";
+"[Database/Loading/FromCache/text]" = "База паролів недоступна.\nЦе остання локальна копія.";
 
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "База паролів доступна тільки для читання";
@@ -206,16 +218,16 @@
 "[Database/Saving/Status] Saving..." = "Збереження...";
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
-"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
+"[Database/Settings/ConsiderFileUnreachable/title]" = "Вважати файл недоступним";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
-"[Database/Settings/FallbackStrategy/ShowError/title]" = "Show Error";
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "Показати помилку";
 
 /* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/title]" = "If File is Unreachable";
+"[Database/Settings/FallbackStrategy/title]" = "Якщо файл недоступний";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/UseCache/title]" = "Use Local Copy";
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "Використовувати локальну копію";
 
 /* Title of settings section (read-only, backup-able, etc) */
 "[Database/Settings/FileAccess/title]" = "Доступ до файлу";
@@ -420,6 +432,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Неправильний пароль або файл-ключ";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "Для вирішення проблем";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "Діагностика";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Журнал діагностики скопійований до буферу обміну.";
@@ -862,6 +880,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Довідка";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "Одноразовий пароль (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Попередня версія відновлена";
 
@@ -900,6 +921,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Відомості про файл";
+
+/* Name of an entry field */
+"[OTP/FieldName]" = "Одноразовий пароль";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Цей QR-код не підходить для налаштування одноразового пароля (OTP).";
@@ -1036,6 +1060,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "Назавжди";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "Преміум-версія";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "Оплата буде знята з вашого облікового запису Apple ID після підтвердження покупки.\n\nПідписка автоматично поновлюється, якщо не скасована мінімум за 24 години до кінця поточного періоду. Плата за продовження підписки буде знята з вашого облікового запису протягом доби до закінчення поточного періоду.\n\nВи можете змінити або скасувати підписки, зайшовши в налаштування свого облікового запису в App Store після покупки.";
 
@@ -1159,6 +1186,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Блокування, код доступу, затримки";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "Захист додатку";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "Після бездіяльності";
 
@@ -1183,8 +1213,20 @@
 /* Description for the AutoFill setup instructions */
 "[Settings/AutoFill/Activate/description]" = "Спочатку потрібно увімкнути Автозаповнення у налаштуваннях системи.";
 
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "Скопіювати одноразовий пароль";
+
 /* Title of a help article on how to activate AutoFill. */
 "[Settings/AutoFill/Setup Guide/title]" = "Інструкція з налаштування Автозаповнення";
+
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "Натисніть \"Автозаповнення паролів\"";
+
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "Автоматично підставляти ідеальний варіант";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "Автоматично відкривати попередню базу";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Видалити ВСІ резервні копії (%d)";
@@ -1219,6 +1261,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Ніколи";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "Резервування";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Якщо ви не використовуєте додаток протягом деякого часу, база паролів буде автоматично закрита і заблокована. Щоб відкрити її, потрібно буде знову ввести майстер-пароль.";
 
@@ -1236,6 +1281,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Ніколи";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "Мастер-ключі, ключові файли";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "Захист даних";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Дата останньої зміни";
@@ -1263,6 +1314,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Вид списку";
+
+/* Section title in settings */
+"[Settings/Search/title]" = "Пошук";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
 "[SortBy]" = "Сортувати за";

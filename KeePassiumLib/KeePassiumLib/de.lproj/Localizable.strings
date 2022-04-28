@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "Über KeePassium";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "©Andrei Popleteev";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Doppeltippen, um in die Zwischenablage zu kopieren";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Textgröße";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "Erscheinungsbild";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Entsperren";
@@ -82,6 +91,9 @@
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "Kopiert";
 
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "Vorschläge? Probleme? Lass uns wissen!";
+
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "AES Entschlüsselungsfehler (Code %d)";
 
@@ -143,7 +155,7 @@
 "[Database/Load/Error] Unrecognized database format" = "Unbekanntes Datenbankformat";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
-"[Database/Loading/FromCache/text]" = "The database is unreachable.\nThis is its latest local copy.";
+"[Database/Loading/FromCache/text]" = "Die Datenbank ist unerreichbar.\nDies ist ihre letzte lokale Kopie.";
 
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "Die Datenbank kann nur gelesen werden";
@@ -206,16 +218,16 @@
 "[Database/Saving/Status] Saving..." = "Speichern...";
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
-"[Database/Settings/ConsiderFileUnreachable/title]" = "Consider File Unreachable";
+"[Database/Settings/ConsiderFileUnreachable/title]" = "Datei als unerreichbar betrachten";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
-"[Database/Settings/FallbackStrategy/ShowError/title]" = "Show Error";
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "Fehler anzeigen";
 
 /* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/title]" = "If File is Unreachable";
+"[Database/Settings/FallbackStrategy/title]" = "Wenn die Datei unerreichbar ist";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
-"[Database/Settings/FallbackStrategy/UseCache/title]" = "Use Local Copy";
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "Lokale Kopie verwenden";
 
 /* Title of settings section (read-only, backup-able, etc) */
 "[Database/Settings/FileAccess/title]" = "Dateizugriff";
@@ -420,6 +432,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Ungültiges Passwort oder Schlüsseldatei";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "Fehlerbehebung (Expertenmodus)";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "Diagnoseprotokolle anzeigen";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Das Diagnoseprotokoll wurde in die Zwischenablage kopiert.";
@@ -862,6 +880,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Hilfe";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "Einmalpasswort (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Vorherige Version wiederhergestellt";
 
@@ -900,6 +921,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Datei-Information";
+
+/* Name of an entry field */
+"[OTP/FieldName]" = "Einmalpasswort";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Dieser QR-Code ist nicht für die OTP-Einrichtung geeignet.";
@@ -1036,6 +1060,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "Gültig für immer";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "Premiumversion";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "Der Kaufpreis wird bei der Kaufbestätigung über Ihr Apple ID-Konto abgerechnet. \n\nDas Abonnement verlängert sich automatisch, wenn es nicht mindestens 24 Stunden vor Ablauf der aktuellen Laufzeit gekündigt wird. Die Verlängerungsgebühr wird innerhalb von 24 Stunden vor Ablauf der aktuellen Laufzeit über Ihr Konto abgerechnet. \n\nSie können Ihre Abonnements verwalten und kündigen, indem Sie nach dem Kauf Ihre Kontoeinstellungen im App Store aufrufen.";
 
@@ -1159,6 +1186,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "App-Sperre, Passcode, Timeout";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "Zugangsschutz";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "Nach der letzten Interaktion";
 
@@ -1183,8 +1213,20 @@
 /* Description for the AutoFill setup instructions */
 "[Settings/AutoFill/Activate/description]" = "Vor der ersten Verwendung müssen Sie das automatische Ausfüllen in den Systemeinstellungen aktivieren.";
 
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "OTP in die Zwischenablage kopieren";
+
 /* Title of a help article on how to activate AutoFill. */
 "[Settings/AutoFill/Setup Guide/title]" = "Setup-Leitfaden für autom. Ausfüllen";
+
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "Passwörter automatisch eintragen";
+
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "Fügt das perfekte Ergebnis automatisch ein";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "Automatisches Öffnen der vorherigen Datenbank";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "ALLE Backup-Dateien löschen (%d)";
@@ -1219,6 +1261,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Nie";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "Datenbank-Backup";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Wenn Sie länger nicht mit der App interagieren, wird die Datenbank zu Ihrer Sicherheit geschlossen. Um sie zu öffnen, müssen Sie ihr Master-Passwort erneut eingeben.";
 
@@ -1236,6 +1281,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Nie";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "Masterschlüssel, Schlüsseldateien";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "Datenschutz";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Letztes Bearbeitungsdatum";
@@ -1263,6 +1314,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Listeneinstellungen";
+
+/* Section title in settings */
+"[Settings/Search/title]" = "Suche";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
 "[SortBy]" = "Sortieren nach";

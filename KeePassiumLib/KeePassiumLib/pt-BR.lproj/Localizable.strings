@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "Sobre KeePassium";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "©Andrei Popleteev";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Toque duas vezes para copiar";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Tamanho do texto";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "Aparência";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Desbloquear";
@@ -81,6 +90,9 @@
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "Copiado";
+
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "Sugestões? Problemas? Contate-nos!";
 
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "Erro de descriptografia AES (código %d)";
@@ -420,6 +432,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Senha ou arquivo de chave inválidos";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "Para solução de problemas avançada";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "Registro de diagnóstico";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "O registro de diagnóstico foi copiado para a área de transferência.";
@@ -862,6 +880,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Ajuda";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "Código de uso único (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Versão anterior restaurada";
 
@@ -900,6 +921,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informações";
+
+/* Name of an entry field */
+"[OTP/FieldName]" = "Código de uso único";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Este não é um código QR para configurar códigos de uso único.";
@@ -1036,6 +1060,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "Válido para sempre";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "Versão Premium";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "O valor será cobrado de seu Apple ID imediatamente ao confirmar a compra dentro do app.\n\nAssinaturas possuem renovação automática, a menos que canceladas até 24 horas antes do fim do período vigente. A renovação da assinatura será cobrada durante as últimas 24 horas do período de assinatura vigente.\n\nApós a compra, você pode gerenciar e cancelar suas assinaturas nas configurações de sua conta na App Store.";
 
@@ -1159,6 +1186,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Bloqueio do app, senha, limite de tempo";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "Proteção do aplicativo";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "Após a última interação";
 
@@ -1183,8 +1213,20 @@
 /* Description for the AutoFill setup instructions */
 "[Settings/AutoFill/Activate/description]" = "Antes do primeiro uso, você deve ativar o Preenchimento Automático nos Ajustes do sistema.";
 
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "Copiar código de uso único p/ área transf.";
+
 /* Title of a help article on how to activate AutoFill. */
 "[Settings/AutoFill/Setup Guide/title]" = "Como ativar o Preenchimento Automático";
+
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "Preenchimento Automático";
+
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "Usar automaticamente o resultado perfeito";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "Abrir último banco de dados automaticamente";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Apagar TODAS as cópias de segurança (%d)";
@@ -1219,6 +1261,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Nunca";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "Cópias de segurança";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Se você não interagir com o app por certo tempo, o banco de dados será fechado para sua segurança. Para abri-lo, será preciso a senha-mestra novamente.";
 
@@ -1236,6 +1281,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Nunca";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "Chaves-mestras, arquivos de chave";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "Proteção de dados";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Data da última modificação";
@@ -1263,6 +1314,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Ajustes de lista";
+
+/* Section title in settings */
+"[Settings/Search/title]" = "Busca";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
 "[SortBy]" = "Ordenar por";
@@ -1316,7 +1370,7 @@
 "[TipBox/title/3]" = "Apoie KeePassium";
 
 /* Name of an entry field. Acronym `TOTP` should not be translated. */
-"[TOTP/FieldName]" = "Senha de uso único (TOTP)";
+"[TOTP/FieldName]" = "Código de uso único (TOTP)";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "Nuvem/Outro app";

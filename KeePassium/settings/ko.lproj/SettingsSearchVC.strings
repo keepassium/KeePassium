@@ -13,6 +13,3 @@
 /* Class = "UILabel"; text = "Start with Search"; ObjectID = "q0v-f7-D4Y"; */
 "q0v-f7-D4Y.text" = "검색으로 시작";
 
-/* Class = "UITableViewController"; title = "Search"; ObjectID = "RZt-EW-TGN"; Note = "Section title in settings"; */
-"RZt-EW-TGN.title" = "검색";
-

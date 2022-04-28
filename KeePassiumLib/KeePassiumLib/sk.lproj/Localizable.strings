@@ -1,8 +1,17 @@
+/* Menu item that shows info about KeePassium app */
+"[About/altTitle]" = "O aplikácii";
+
+/* Copyright notice */
+"[About/CopyrightAuthor]" = "©Andrei Popleteev";
+
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dvojitým poklepaním skopírujete do schránky";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Veľkosť písma";
+
+/* Group of settings for user interface appearance (text size, icons, etc) */
+"[Appearance/title]" = "Vzhľad";
 
 /* Action/button to unlock the App Lock with passcode */
 "[AppLock] Unlock" = "Odomknúť";
@@ -81,6 +90,9 @@
 
 /* Notification: an item has been copied to clipboard */
 "[Clipboard/Copy/notification]" = "Skopírované";
+
+/* Subtitle for `Contact Us`. Keep it short. */
+"[ContactUs/subtitle]" = "Návrhy? Problémy? Dajte nám vedieť!";
 
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES decryption error (code %d)" = "Chyba AES dešifrovania (kód %d)";
@@ -420,6 +432,12 @@
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Chybné heslo alebo súbor s kľúčom";
+
+/* Subtitle for `Diagnostic Log`. Keep it short. */
+"[DiagLog/subtitle]" = "Pre odborné riešenie problémov";
+
+/* Title of the diagnostic info screen */
+"[DiagLog/title]" = "Diagnostické správy";
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostické správy boli skopírované do schránky.";
@@ -862,6 +880,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "Pomoc";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "Jednorazové heslo (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Predchádzajúca verzia obnovená";
 
@@ -900,6 +921,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informácie o súbore";
+
+/* Name of an entry field */
+"[OTP/FieldName]" = "Jednorazové heslo";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Tento QR kód nie je vhodný na nastavenie OTP.";
@@ -1036,6 +1060,9 @@
 /* Status: validity period of once-and-forever premium */
 "[Premium/status] Valid forever" = "Platné navždy";
 
+/* Status when the user has a premium version */
+"[Premium/Status/title]" = "Prémiová verzia";
+
 /* Subscription conditions */
 "[Premium/Subscription/Legal/text]" = "Platba bude naúčtovaná na váš Apple účet pri potvrdení nákupu. \n\nPredplatné sa automaticky obnoví, ak nebude zrušené najmenej 24 hodín pred koncom aktuálneho obdobia. Platba za obnovenie predplatného bude zúčtovaná z vášho účtu počas 24 hodín pred vypršaním aktuálneho obdobia.\n\nSvoje predplatné môžete spravovať alebo zrušiť po vykonaní nákupu v nastavení vášho účtu v App Store.";
 
@@ -1159,6 +1186,9 @@
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
 "[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Zámok aplikácie, kód aplikácie, časový limit";
 
+/* Settings section: protection of the app from unauthorized access */
+"[Settings/AppLock/title]" = "Ochrana aplikácie";
+
 /* A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction) */
 "[Settings/AppLockTimeout/description] After last interaction" = "Po poslednej interakcii";
 
@@ -1183,8 +1213,20 @@
 /* Description for the AutoFill setup instructions */
 "[Settings/AutoFill/Activate/description]" = "Pred prvým použitím je potrebné aktivovať automatické dopĺňanie v systémových nastaveniach.";
 
+/* Title of an option: copy one-time password to clipboard when using AutoFill */
+"[Settings/AutoFill/CopyOTP/title]" = "Kopírovať jednorazové heslo";
+
 /* Title of a help article on how to activate AutoFill. */
 "[Settings/AutoFill/Setup Guide/title]" = "Sprievodca nastavením automatického dopĺňania";
+
+/* Title of AutoFill settings screen */
+"[Settings/AutoFill/title]" = "Automatické vyplňovanie hesiel";
+
+/* Title of an option: automatically use the single best match found by AutoFill search */
+"[Settings/AutoFill/UsePerfectMatch/title]" = "Vyplniť presné výsledky automaticky";
+
+/* Option in settings: whether to open the last used database automatically on start. */
+"[Settings/AutoOpenPreviousDatabase/title]" = "Automaticky načítať naposledy otvorenú databázu";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Vymazať VŠETKY zálohy? (%d)";
@@ -1219,6 +1261,9 @@
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Nikdy";
 
+/* Title of a settings section: backup of databases */
+"[Settings/DatabaseBackup/title]" = "Záloha databázy";
+
 /* Description of the Database Lock Timeout */
 "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Ak aplikáciu nejaký čas nepoužívate, databáza sa z dôvodu vašej bezpečnosti uzavrie. Pre jej opätovné otvorenie budete musieť znova zadať jej hlavné heslo.";
 
@@ -1236,6 +1281,12 @@
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Nikdy";
+
+/* Subtitle for `Data Protection` section in settings */
+"[Settings/DataProtection/subtitle]" = "Hlavné kľúče, súbory s kľúčom";
+
+/* Settings section: protection of databases, their keys and data inside them */
+"[Settings/DataProtection/title]" = "Ochrana dát";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Dátum poslednej úpravy";
@@ -1263,6 +1314,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Nastavenia zoznamu";
+
+/* Section title in settings */
+"[Settings/Search/title]" = "Vyhľadávanie";
 
 /* Title of a sort options list. Example: 'Sort by: Name' */
 "[SortBy]" = "Zoradiť podľa";

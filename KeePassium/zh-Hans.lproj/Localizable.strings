@@ -1,3 +1,6 @@
+/* Title of the app history (changelog) screen */
+"[AppHistory/title]" = "更新了什么";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "请输入一个密码或者选择一个密钥文件。";
 
