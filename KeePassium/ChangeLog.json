@@ -21,7 +21,7 @@
                     "type": 1
                 },
                 {
-                    "title": "🛠 Improved: Renamed TOTP field for clarity (closes #219) [thanks, plus-or-minus]",
+                    "title": "🛠 Improved: Wording of some UI elements (#219, #228) [thanks, plus-or-minus and Taxyovio]",
                     "type": 1
                 },
                 {
@@ -76,6 +76,10 @@
                     "title": "🐞Fixed: Readability of last characters in expanded fields [thanks, Sachin]",
                     "type": 1
                 },
+                {
+                    "title": "🐞Fixed: Parsing of MasterKeyChangeForceOnce tag in KDBX databases [thanks, M.H.]",
+                    "type": 1
+                }
                 {
                     "title": "🐞Fixed: removed obsolete error description for read-only OneDrive [thanks, Thomas]",
                     "type": 1

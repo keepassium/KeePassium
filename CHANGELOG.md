@@ -1,5 +1,17 @@
 #CHANGELOG
 
+## [1.31.108] - 2022-04-28
+
+### Improved
+
+- Refined some texts (#228, #219) [thanks, Taxyovio]
+- Updated all translations
+
+### Fixed
+
+- Added parsing of `MasterKeyChangeForceOnce` tag in KDBX databases [thanks, M.H.]
+
+
 ## [1.31.107] - 2022-04-23
 
 ### Improved
