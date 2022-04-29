@@ -42,6 +42,8 @@ final class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable 
     private let fileInfoReloader = FileInfoReloader()
     private var fileKeeperNotifications: FileKeeperNotifications!
 
+    override var canBecomeFirstResponder: Bool { true }
+    
     
     public static func create() -> KeyFilePickerVC {
         let vc = KeyFilePickerVC.instantiateFromStoryboard()

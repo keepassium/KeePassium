@@ -577,6 +577,10 @@ extension AutoFillCoordinator: DatabasePickerCoordinatorDelegate {
 }
 
 extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
+    func shouldDismissFromKeyboard(_ coordinator: DatabaseUnlockerCoordinator) -> Bool {
+        return true
+    }
+    
     func shouldAutoUnlockDatabase(
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator

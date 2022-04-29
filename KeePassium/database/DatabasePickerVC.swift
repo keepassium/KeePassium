@@ -128,7 +128,14 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     
     internal var ongoingUpdateAnimations = 0
     
-    override var canDismissFromKeyboard: Bool { return false }
+    override var canDismissFromKeyboard: Bool {
+        switch mode {
+        case .full:
+            return false
+        case .autoFill, .light:
+            return true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

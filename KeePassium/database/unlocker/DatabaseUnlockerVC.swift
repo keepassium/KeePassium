@@ -9,6 +9,7 @@
 import KeePassiumLib
 
 protocol DatabaseUnlockerDelegate: AnyObject {
+    func shouldDismissFromKeyboard(_ viewController: DatabaseUnlockerVC) -> Bool
     func willAppear(viewController: DatabaseUnlockerVC)
     
     func didPressSelectKeyFile(
@@ -63,7 +64,9 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     
     private var progressOverlay: ProgressOverlay?
 
-    override var canDismissFromKeyboard: Bool { return false }
+    override var canDismissFromKeyboard: Bool {
+        return delegate?.shouldDismissFromKeyboard(self) ?? false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

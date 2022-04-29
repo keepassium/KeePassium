@@ -673,6 +673,14 @@ extension MainCoordinator: DatabasePickerCoordinatorDelegate {
 }
 
 extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
+    func shouldDismissFromKeyboard(_ coordinator: DatabaseUnlockerCoordinator) -> Bool {
+        if rootSplitVC.isCollapsed {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func shouldAutoUnlockDatabase(
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator

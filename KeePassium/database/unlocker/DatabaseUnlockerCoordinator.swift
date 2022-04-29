@@ -11,6 +11,8 @@ import KeePassiumLib
 typealias DatabaseUnlockResult = Result<Database, Error>
 
 protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
+    func shouldDismissFromKeyboard(_ coordinator: DatabaseUnlockerCoordinator) -> Bool
+    
     func shouldAutoUnlockDatabase(
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
@@ -344,6 +346,10 @@ extension DatabaseUnlockerCoordinator {
 }
 
 extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
+    func shouldDismissFromKeyboard(_ viewController: DatabaseUnlockerVC) -> Bool {
+        return delegate?.shouldDismissFromKeyboard(self) ?? false
+    }
+
     func willAppear(viewController: DatabaseUnlockerVC) {
         maybeUnlockAutomatically()
     }

@@ -58,7 +58,11 @@ class KeyFilePickerCoordinator: NSObject, Coordinator {
     
     @objc
     private func didPressDismissButton() {
-        router.dismiss(animated: true)
+        dismiss(animated: true)
+    }
+    
+    private func dismiss(animated: Bool) {
+        router.pop(viewController: keyFilePickerVC, animated: animated)
     }
 }
 
@@ -83,7 +87,7 @@ extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
     
     func didSelectFile(_ selectedFile: URLReference?, in keyFilePicker: KeyFilePickerVC) {
         delegate?.didPickKeyFile(selectedFile, in: self)
-        router.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     func didPressFileInfo(
@@ -171,7 +175,7 @@ extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
             switch result {
             case .success(let fileRef):
                 self.delegate?.didPickKeyFile(fileRef, in: self)
-                self.router.dismiss(animated: true)
+                self.dismiss(animated: true)
             case .failure(let fileAccessError):
                 let message = String.localizedStringWithFormat(
                     LString.Error.failedToOpenFileReasonTemplate,

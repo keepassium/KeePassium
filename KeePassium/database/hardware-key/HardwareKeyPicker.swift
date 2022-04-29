@@ -47,6 +47,8 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     private var isNFCAvailable = false
     private var isMFIAvailable = false
     
+    override var canBecomeFirstResponder: Bool { true }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
