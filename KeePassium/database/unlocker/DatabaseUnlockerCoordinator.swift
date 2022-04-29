@@ -167,35 +167,48 @@ extension DatabaseUnlockerCoordinator {
         addChildCoordinator(diagnosticsViewerCoordinator)
     }
     
+    private func getPopoverRouter(at popoverAnchor: PopoverAnchor) -> NavigationRouter {
+        #if AUTOFILL_EXT
+        if ProcessInfo.isRunningOnMac {
+            return router
+        }
+        #endif
+        return NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+    }
+    
     private func selectKeyFile(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
+        let targetRouter = getPopoverRouter(at: popoverAnchor)
+        let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: targetRouter)
         keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }
         keyFilePickerCoordinator.delegate = self
         keyFilePickerCoordinator.start()
-        viewController.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(keyFilePickerCoordinator)
+        if targetRouter != router {
+            viewController.present(targetRouter, animated: true, completion: nil)
+        }
     }
     
     private func selectHardwareKey(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
-        let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: modalRouter)
+        let targetRouter = getPopoverRouter(at: popoverAnchor)
+        let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: targetRouter)
         hardwareKeyPickerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }
         hardwareKeyPickerCoordinator.delegate = self
         hardwareKeyPickerCoordinator.setSelectedKey(selectedHardwareKey)
         hardwareKeyPickerCoordinator.start()
-        viewController.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(hardwareKeyPickerCoordinator)
+        if targetRouter != router {
+            viewController.present(targetRouter, animated: true, completion: nil)
+        }
     }
     
     private func setKeyFile(_ fileRef: URLReference?) {
