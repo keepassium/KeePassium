@@ -632,8 +632,6 @@ final class GroupViewerVC:
             shouldKeepSelection = delegate?.didSelectGroup(selectedGroup, in: self) ?? true
         } else if let selectedEntry = getEntry(at: indexPath) {
             shouldKeepSelection = delegate?.didSelectEntry(selectedEntry, in: self) ?? true
-        } else {
-            assertionFailure("Unknown item type")
         }
         
         if !shouldKeepSelection {
