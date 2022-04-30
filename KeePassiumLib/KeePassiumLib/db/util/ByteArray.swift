@@ -666,18 +666,22 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
 }
 
 extension SecureBytes {
+    @inline(never)
     private static func __unexpected_serialization_format(_ format: Int) {
         fatalError("Unexpected serialization format: \(format)")
     }
     
+    @inline(never)
     private static func __encryption_key_is_missing() {
         fatalError("Got encrypted SecureBytes, but no key. Something is very wrong.")
     }
     
+    @inline(never)
     private static func __decryption_algorithm_is_not_supported() {
         fatalError("Decryption algorithm is not supported. Something is very wrong.")
     }
     
+    @inline(never)
     private static func __decryption_failed(message: String) {
         fatalError("Decryption failed, cannot continue. Reason: \(message)")
     }
