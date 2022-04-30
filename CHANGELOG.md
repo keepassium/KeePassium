@@ -1,5 +1,15 @@
 #CHANGELOG
 
+## [1.31.109] - 2022-04-30
+
+### Fixed 
+
+- macOS: Closing AutoFill dialog with Escape key [thanks, u/TCIHL]
+- macOS AutoFill: improved database unlocker UI 
+- More informative crash reports
+- Broken changelog format (regression in 1.31.108)
+
+
 ## [1.31.108] - 2022-04-28
 
 ### Improved

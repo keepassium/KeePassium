@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.31",
-            "releaseDate": "2022-04-23T00:00:00Z",
+            "releaseDate": "2022-04-30T00:00:00Z",
             "items": [
                 {
                     "title": "🛠 Improved: Memory consumption when reading/writing files",
@@ -81,10 +81,21 @@
                     "type": 1
                 },
                 {
+                    "title": "🐞 Fixed: Closing macOS AutoFill dialog with Escape key [thanks, u/TCIHL]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Parsing of MasterKeyChangeForceOnce tag in KDBX databases [thanks, M.H.]",
+                    "type": 1
+                },
+                {
                     "title": "🐞 Fixed: removed obsolete error description for read-only OneDrive [thanks, Thomas]",
                     "type": 1
                 },
-
+                {
+                    "title": "🐞 Fixed: Minor UI improvements here and there [thanks, everyone]",
+                    "type": 1
+                },
             ]
         },
         {
