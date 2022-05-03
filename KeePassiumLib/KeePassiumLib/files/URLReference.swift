@@ -465,6 +465,9 @@ public class URLReference:
     
     
     public func resolveSync() throws -> URL {
+        guard data.count > 0 else {
+            return resolvedURL ?? cachedURL ?? bookmarkedURL! 
+        }
         if FileKeeper.platformSupportsSharedReferences {
         } else {
             if location.isInternal, let cachedURL = self.cachedURL {
