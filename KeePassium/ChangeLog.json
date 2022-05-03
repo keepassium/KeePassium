@@ -1,6 +1,20 @@
 {
     "sections": [
         {
+            "version": "1.32",
+            "releaseDate": "2022-05-03T00:00:00Z",
+            "items": [
+                {
+                    "title": "🐞 Fixed: Could not export or delete local files (regression in 1.31.105) [thanks,everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: Replaced DB 'Export' menu with 'Reveal in Finder'",
+                    "type": 1
+                },
+            ]
+        },
+        {
             "version": "1.31",
             "releaseDate": "2022-04-30T00:00:00Z",
             "items": [

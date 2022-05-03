@@ -1,5 +1,13 @@
 #CHANGELOG
 
+## [1.32.110] - 2022-05-03
+
+### Fixed 
+
+- Could not export or delete local files (regression in 1.31.105) [thanks, everyone]
+- macOS: Replaced DB 'Export' menu with 'Reveal in Finder'.
+
+
 ## [1.31.109] - 2022-04-30
 
 ### Fixed 
