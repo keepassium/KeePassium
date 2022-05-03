@@ -686,12 +686,12 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         at indexPath: IndexPath
     ) -> ContextualAction {
         return ContextualAction(
-            title: LString.actionExport,
+            title: LString.actionRevealInFinder,
             imageName: .squareAndArrowUp,
             style: .default,
             color: UIColor.actionTint,
             handler: { [weak self] in
-                self?.didPressExportDatabase(fileRef, at: indexPath)
+                self?.didPressRevealInFinder(fileRef, at: indexPath)
             }
         )
     }
