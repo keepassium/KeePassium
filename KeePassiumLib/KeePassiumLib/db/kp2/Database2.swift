@@ -1318,11 +1318,26 @@ public class Database2: Database {
 extension Database2: Database2XMLTimeParser {
     func xmlStringToDate(_ string: String?) -> Date? {
         let trimmedString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         switch header.formatVersion {
         case .v3:
-            return Date(iso8601string: trimmedString)
+            if let formatAppropriateDate = Date(iso8601string: trimmedString) {
+                return formatAppropriateDate
+            }
+            if let altFormatDate = Date(base64Encoded: trimmedString) {
+                Diag.warning("Found Base64-formatted timestamp in \(header.formatVersion) DB.")
+                return altFormatDate
+            }
+            return nil
         case .v4, .v4_1:
-            return Date(base64Encoded: trimmedString)
+            if let formatAppropriateDate = Date(base64Encoded: trimmedString) {
+                return formatAppropriateDate
+            }
+            if let altFormatDate = Date(iso8601string: trimmedString) {
+                Diag.warning("Found ISO8601-formatted timestamp in \(header.formatVersion) DB.")
+                return altFormatDate
+            }
+            return nil
         }
     }
 }
