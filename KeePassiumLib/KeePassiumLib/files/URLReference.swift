@@ -476,9 +476,15 @@ public class URLReference:
         }
         
         var isStale = false
+        let options: URL.BookmarkResolutionOptions
+        if #available(iOS 14.2, *) {
+            options = [.withoutUI, .withoutMounting, .withoutImplicitStartAccessing]
+        } else {
+            options = [.withoutUI, .withoutMounting]
+        }
         let _resolvedURL = try URL(
             resolvingBookmarkData: data,
-            options: [URL.BookmarkResolutionOptions.withoutUI],
+            options: options,
             relativeTo: nil,
             bookmarkDataIsStale: &isStale)
         self.resolvedURL = _resolvedURL

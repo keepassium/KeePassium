@@ -65,7 +65,6 @@ public extension URL {
             .creationDateKey,
             .contentModificationDateKey,
             .isExcludedFromBackupKey,
-            .ubiquitousItemDownloadingStatusKey,
         ]
 
         var targetURL = self
