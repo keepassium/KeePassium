@@ -73,7 +73,7 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
                 }
             ),
             menu: nil)
-        navigationItem.rightBarButtonItem = closeBarButton
+        navigationItem.leftBarButtonItem = closeBarButton
     }
 }
 

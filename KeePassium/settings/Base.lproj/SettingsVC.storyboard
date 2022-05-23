@@ -473,13 +473,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Settings" id="Bk0-Xf-O7B">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="SDU-um-XMx">
-                            <connections>
-                                <action selector="doneButtonTapped:" destination="lJf-1X-3im" id="wuJ-Sa-G7b"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" id="Bk0-Xf-O7B"/>
                     <size key="freeformSize" width="400" height="1200"/>
                     <connections>
                         <outlet property="aboutAppCell" destination="7mL-Oc-jtm" id="TSR-A5-4oN"/>

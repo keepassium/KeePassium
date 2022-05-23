@@ -34,7 +34,7 @@ final class SettingsCoordinator: Coordinator, Refreshable {
     }
     
     func start() {
-        setupDoneButton(in: settingsVC)
+        setupCloseButton(in: settingsVC)
         router.push(settingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
@@ -44,16 +44,16 @@ final class SettingsCoordinator: Coordinator, Refreshable {
         startObservingPremiumStatus(#selector(premiumStatusDidChange))
     }
     
-    private func setupDoneButton(in viewController: UIViewController) {
+    private func setupCloseButton(in viewController: UIViewController) {
         guard router.navigationController.topViewController == nil else {
             return
         }
         
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
+        let closeButton = UIBarButtonItem(
+            barButtonSystemItem: .close,
             target: self,
             action: #selector(didPressDismiss))
-        viewController.navigationItem.rightBarButtonItem = doneButton
+        viewController.navigationItem.leftBarButtonItem = closeButton
     }
     
     @objc
