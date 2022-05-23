@@ -22,13 +22,11 @@ public final class FileDataProvider: Synchronizable {
         return queue
     }()
     
-    fileprivate static let coordinatorWaitingQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.name = "FileCoordinatorQueue"
-        queue.qualityOfService = .utility
-        queue.maxConcurrentOperationCount = 8
-        return queue
-    }()
+    fileprivate static let coordinatorSyncQueue = DispatchQueue(
+        label: "CoordinatorSyncQueue",
+        qos: .utility,
+        attributes: []
+    )
 }
 
 extension FileDataProvider {
@@ -309,34 +307,43 @@ extension FileDataProvider {
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<T>
     ) {
-        coordinatorWaitingQueue.addOperation {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            let fileCoordinator = NSFileCoordinator()
-            fileCoordinator.coordinate(with: [intent], queue: queue) {
-                (coordinatorError) in
-                assert(queue.isCurrent)
-                guard semaphore.signal() != 0 else { 
-                    return
+        let fileCoordinator = NSFileCoordinator()
+
+        var hasStartedCoordinating = false
+        var hasTimedOut = false
+        coordinatorSyncQueue.asyncAfter(deadline: byTime) {
+            if hasStartedCoordinating {
+                return
+            }
+            hasTimedOut = true
+            fileCoordinator.cancel()
+            completionQueue.addOperation {
+                completion(.failure(.timeout(fileProvider: fileProvider)))
+            }
+        }
+        
+        fileCoordinator.coordinate(with: [intent], queue: queue) {
+            (coordinatorError) in
+            assert(queue.isCurrent)
+            let canContinue = coordinatorSyncQueue.sync(execute: { () -> Bool in
+                if hasTimedOut {
+                    return false
                 }
-                
-                if let coordinatorError = coordinatorError {
-                    completionQueue.addOperation {
-                        completion(.failure(.systemError(coordinatorError)))
-                    }
-                    return
-                }
-                
-                fileOperation(intent.url)
+                hasStartedCoordinating = true
+                return true
+            })
+            guard canContinue else { 
+                return
             }
             
-            if semaphore.wait(timeout: byTime) == .timedOut {
-                fileCoordinator.cancel()
+            if let coordinatorError = coordinatorError {
                 completionQueue.addOperation {
-                    completion(.failure(.timeout(fileProvider: fileProvider)))
+                    completion(.failure(.systemError(coordinatorError)))
                 }
                 return
             }
+            
+            fileOperation(intent.url)
         }
     }
     
@@ -349,36 +356,45 @@ extension FileDataProvider {
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<T>
     ) {
-        coordinatorWaitingQueue.addOperation {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            let fileCoordinator = NSFileCoordinator()
-            let readingIntent = NSFileAccessIntent.readingIntent(with: fileURL, options: [])
-            let writingIntent = NSFileAccessIntent.writingIntent(with: fileURL, options: [.forMerging])
-            fileCoordinator.coordinate(with: [readingIntent, writingIntent], queue: queue) {
-                (coordinatorError) in
-                assert(queue.isCurrent)
-                guard semaphore.signal() != 0 else { 
-                    return
+        let fileCoordinator = NSFileCoordinator()
+        
+        var hasStartedCoordinating = false
+        var hasTimedOut = false
+        coordinatorSyncQueue.asyncAfter(deadline: byTime) {
+            if hasStartedCoordinating {
+                return
+            }
+            hasTimedOut = true
+            fileCoordinator.cancel()
+            completionQueue.addOperation {
+                completion(.failure(.timeout(fileProvider: fileProvider)))
+            }
+        }
+        
+        let readingIntent = NSFileAccessIntent.readingIntent(with: fileURL, options: [])
+        let writingIntent = NSFileAccessIntent.writingIntent(with: fileURL, options: [.forMerging])
+        fileCoordinator.coordinate(with: [readingIntent, writingIntent], queue: queue) {
+            (coordinatorError) in
+            assert(queue.isCurrent)
+            let canContinue = coordinatorSyncQueue.sync(execute: { () -> Bool in
+                if hasTimedOut {
+                    return false 
                 }
-                
-                if let coordinatorError = coordinatorError {
-                    completionQueue.addOperation {
-                        completion(.failure(.systemError(coordinatorError)))
-                    }
-                    return
-                }
-                
-                fileOperation(readingIntent.url, writingIntent.url)
+                hasStartedCoordinating = true
+                return true
+            })
+            guard canContinue else { 
+                return
             }
             
-            if semaphore.wait(timeout: byTime) == .timedOut {
-                fileCoordinator.cancel()
+            if let coordinatorError = coordinatorError {
                 completionQueue.addOperation {
-                    completion(.failure(.timeout(fileProvider: fileProvider)))
+                    completion(.failure(.systemError(coordinatorError)))
                 }
                 return
             }
+            
+            fileOperation(readingIntent.url, writingIntent.url)
         }
     }
 }
