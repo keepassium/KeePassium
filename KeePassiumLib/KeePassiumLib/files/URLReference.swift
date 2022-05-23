@@ -334,43 +334,37 @@ public class URLReference:
             return
         }
         
-        execute(
-            byTime: byTime,
-            on: URLReference.backgroundQueue,
-            slowSyncOperation: { () -> Result<URL, Error> in
+        let fileProvider = self.fileProvider
+        let queue = URLReference.backgroundQueue
+        queue.async {
+            let resolver = DispatchWorkItem() {
                 do {
                     let url = try self.resolveSync()
-                    return .success(url)
-                } catch {
-                    return .failure(error)
-                }
-            },
-            onSuccess: { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let url):
                     self.error = nil
                     callbackQueue.addOperation {
                         callback(.success(url))
                     }
-                case .failure(let error):
-                    let fileAccessError = FileAccessError.make(
-                        from: error,
-                        fileProvider: self.fileProvider
-                    )
+                } catch {
+                    let fileAccessError = FileAccessError.make(from: error, fileProvider: fileProvider)
                     self.error = fileAccessError
                     callbackQueue.addOperation {
                         callback(.failure(fileAccessError))
                     }
                 }
-            },
-            onTimeout: { [self] in
-                self.error = FileAccessError.timeout(fileProvider: self.fileProvider)
+            }
+            queue.async(execute: resolver)
+            switch resolver.wait(timeout: byTime) {
+            case .success:
+                break
+            case .timedOut:
+                resolver.cancel() 
+                let fileAccessError = FileAccessError.timeout(fileProvider: fileProvider)
+                self.error = fileAccessError
                 callbackQueue.addOperation {
-                    callback(.failure(FileAccessError.timeout(fileProvider: self.fileProvider)))
+                    callback(.failure(fileAccessError))
                 }
             }
-        )
+        }
     }
     
     
