@@ -418,6 +418,7 @@ public class URLReference:
             case .success(let url):
                 self.refreshInfo(
                     for: url,
+                    fileProvider: self.fileProvider,
                     byTime: byTime,
                     completionQueue: completionQueue,
                     completion: completion
@@ -432,13 +433,14 @@ public class URLReference:
     
     private func refreshInfo(
         for url: URL,
+        fileProvider: FileProvider?,
         byTime: DispatchTime,
         completionQueue: OperationQueue,
         completion: @escaping InfoCallback
     ) {
         FileDataProvider.readFileInfo(
             at: url,
-            fileProvider: nil,
+            fileProvider: fileProvider,
             canUseCache: false,
             byTime: byTime,
             completionQueue: completionQueue,
