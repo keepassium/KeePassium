@@ -34,20 +34,19 @@ public extension Synchronizable {
         onSuccess: @escaping (SlowResultType)->(),
         onTimeout: @escaping ()->())
     {
-        queue.async { 
-            let semaphore = DispatchSemaphore(value: 0)
-            let slowBlockQueue = DispatchQueue.init(label: "", qos: queue.qos, attributes: []) 
-            
-            var result: SlowResultType?
-            slowBlockQueue.async {
-                result = slowSyncOperation()
-                semaphore.signal()
-            }
-            
-            if semaphore.wait(timeout: byTime) == .timedOut {
-                onTimeout()
-            } else {
+        var result: SlowResultType?
+        let workItem = DispatchWorkItem() {
+            result = slowSyncOperation()
+        }
+        queue.async(execute: workItem)
+        
+        queue.async {
+            switch workItem.wait(timeout: byTime) {
+            case .success:
                 onSuccess(result!)
+            case .timedOut:
+                workItem.cancel() 
+                onTimeout()
             }
         }
     }
