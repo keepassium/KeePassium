@@ -138,14 +138,14 @@ public enum FileAccessError: LocalizedError {
             [fileProvider: \(fileProvider?.id ?? "nil"), systemError: \(nsError.debugDescription)]
             """)
         switch (nsError.domain, nsError.code) {
-        case (NSCocoaErrorDomain, 4101):
-            fallthrough
+        case (NSCocoaErrorDomain, CocoaError.Code.xpcConnectionReplyInvalid.rawValue): 
+            return .fileProviderDoesNotRespond(fileProvider: fileProvider)
             
-        case (NSCocoaErrorDomain, 4097): fallthrough
-        case (NSCocoaErrorDomain, 4099):
+        case (NSCocoaErrorDomain, CocoaError.Code.xpcConnectionInterrupted.rawValue), 
+             (NSCocoaErrorDomain, CocoaError.Code.xpcConnectionInvalid.rawValue): 
             return .fileProviderDoesNotRespond(fileProvider: fileProvider)
 
-        case (NSCocoaErrorDomain, 513):
+        case (NSCocoaErrorDomain, CocoaError.Code.fileWriteNoPermission.rawValue): 
             if let fileProvider = fileProvider {
                 return .targetFileIsReadOnly(fileProvider: fileProvider)
             } else {
