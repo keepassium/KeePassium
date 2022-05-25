@@ -11,7 +11,7 @@
 "BJ7-eQ-JOc.text" = "バックアップを作成";
 
 /* Class = "UITableViewSection"; footerTitle = "Defines whether backup databases created by KeePassium should be excluded from iCloud/iTunes backup. Applies to all the existing and future backup files."; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
-"fst-lq-BDl.footerTitle" = "KeePassiumのデータベースのバックアップを iCloud/iTunes バックアップから除外します。現在および今後のすべてのバックアップに適用されます。";
+"fst-lq-BDl.footerTitle" = "KeePassiumのデータベースをiCloud/iTunesバックアップの対象から除外します。現在および今後のすべてのバックアップに適用されます。";
 
 /* Class = "UITableViewSection"; headerTitle = "iTunes and iCloud Backup"; ObjectID = "fst-lq-BDl"; Note = "Section header, refers to Apple's backup services (https://support.apple.com/HT203977)"; */
 "fst-lq-BDl.headerTitle" = "iTunes / iCloudバックアップ";
@@ -23,7 +23,7 @@
 "nBI-OF-9iV.footerTitle" = "データベースを保存する前に、コピーを自動的に作成して万一に備えます。";
 
 /* Class = "UILabel"; text = "Exclude Backup Files from System Backup"; ObjectID = "Qs6-uS-gdS"; Note = "Settings option, on/off"; */
-"Qs6-uS-gdS.text" = "システムバックアップからデータベースを除外";
+"Qs6-uS-gdS.text" = "システムバックアップから除外";
 
 /* Class = "UITableViewSection"; footerTitle = "Backup copies will appear along with the original files."; ObjectID = "XeH-7q-aad"; Note = "Explanation for the `Show Backup Files` option"; */
 "XeH-7q-aad.footerTitle" = "バックアップを元のファイルと一緒に表示します。";

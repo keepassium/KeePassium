@@ -133,6 +133,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Odstranit databázový soubor?\n Ujistěte se, že máte zálohu.";
 
+/* Notification when user tries to copy data from KDBX to older KDB database. */
+"[Database/LesserTargetFormat/warning]" = "Formát této databáze je zastaralý, některá data mohou být ztracena.";
+
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Nelze najít databázi";
 
@@ -150,6 +153,9 @@
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Nerozpoznaný formát databáze";
+
+/* Message shown after we show a cached local database instead of the (unavailable) original database. */
+"[Database/Loading/FromCache/text]" = "Databáze je nedostupná.\nToto je její nejnovější lokální kopie.";
 
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "Databáze je pouze pro čtení";
@@ -211,11 +217,41 @@
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Ukládání...";
 
+/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
+"[Database/Settings/ConsiderFileUnreachable/title]" = "Považovat soubor za nedostupný";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "Zobrazit chybu";
+
+/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/title]" = "Pokud je soubor nedostupný";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "Použít lokální kopii";
+
+/* Title of settings section (read-only, backup-able, etc) */
+"[Database/Settings/FileAccess/title]" = "Přístup k souboru";
+
+/* File setting title, whether the file can be modified (yes/no). */
+"[Database/Settings/ReadOnly/title]" = "Pouze pro čtení";
+
+/* Title of database-related settings screen */
+"[Database/Settings/title]" = "Nastavení Databáze";
+
+/* Action/button to switch from current to some other database. */
+"[Database/Switch/action]" = "Změnit Databázi";
+
 /* Explanation of the database sync conflict `Cancel` option. */
 "[Database/SyncConflict/Cancel/description]" = "Zrušit ukládání, ponechat cílový soubor nedotčený.";
 
+/* Title: the current (on-server) database version in case of sync conflict. */
+"[Database/SyncConflict/currentVersion]" = "Aktuální verze";
+
 /* Message shown in case of database sync conflict. */
 "[Database/SyncConflict/description]" = "Databáze se změnila od doby, kdy byla načtena v KeePassium.";
+
+/* Title: the loaded (on-device) database version in case of sync conflict. */
+"[Database/SyncConflict/loadedVersion]" = "Lokální verze";
 
 /* Action: combine changes in two conflicting databases. */
 "[Database/SyncConflict/Merge/action]" = "Sloučit";
@@ -549,6 +585,9 @@
 
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
 "[FileInfo/isExcludedFromBackup/title]" = "Vyloučit ze zálohy iCloudu/iTunes";
+
+/* Title of a dialog with file details (name, size, dates) */
+"[FileInfo/title]" = "Informace o souboru";
 
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Nepodařilo se odstranit soubor. Důvod: %@";
@@ -1114,11 +1153,23 @@
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "Náhled příloh";
 
+/* Description/call to action for the `Quick AutoFill` premium feature. */
+"[PremiumFeature/QuickAutoFill/description]" = "Vyplňujte přihlašovací formuláře jediným klepnutím, dokonce i bez otevření KeePassium.";
+
+/* Title of a premium feature: show relevant AutoFill entries right under the input field */
+"[PremiumFeature/QuickAutoFill/title]" = "Automatické Vyplňování";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Zrušeno uživatelem";
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "Nedostatek paměti pro pokračování.\nTo se může stát s velkými databázemi nebo s příliš ambiciózním nastavením databáze (Argon2).";
+
+/* Description of the Quick AutoFill feature. */
+"[QuickAutoFill/description]" = "Automatické Vyplňování zobrazí relevantní položky vedle pole s heslem bez otevření KeePassium.";
+
+/* Name of a feature that shows relevant entries directly next to the login/password forms. */
+"[QuickAutoFill/title]" = "Automatické Vyplňování";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Zopakujte heslo";
@@ -1159,8 +1210,17 @@
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
 "[Settings/AppLockTimeout/shortTitle] Never" = "Nikdy";
 
+/* Action that opens system settings or instructions */
+"[Settings/AutoFill/Activate/action]" = "Aktivovat Automatické Vyplňování";
+
+/* Description for the AutoFill setup instructions */
+"[Settings/AutoFill/Activate/description]" = "Před prvním použitím je třeba aktivovat Automatické vyplňování v nastavení systému.";
+
 /* Title of an option: copy one-time password to clipboard when using AutoFill */
 "[Settings/AutoFill/CopyOTP/title]" = "Kopírovat jednorázové hesla";
+
+/* Title of a help article on how to activate AutoFill. */
+"[Settings/AutoFill/Setup Guide/title]" = "Nastavení Automatického Vyplňování";
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Vyplňování hesel";
@@ -1260,6 +1320,18 @@
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Vyhledávání";
+
+/* Title of a sort options list. Example: 'Sort by: Name' */
+"[SortBy]" = "Seřadit dle";
+
+/* List sorting option. Example: 'Sort by: Date Created' */
+"[SortBy/DateCreated]" = "Datum Vytvoření";
+
+/* List sorting option. Example: 'Sort by: Date Modified' */
+"[SortBy/DateModified]" = "Datum Změny";
+
+/* List sorting option (for file names). Example: 'Sort by: Name' */
+"[SortBy/FileName]" = "Název";
 
 /* List sorting option (for groups and entries). Example: 'Sort by: Title' */
 "[SortBy/ItemTitle]" = "Název";

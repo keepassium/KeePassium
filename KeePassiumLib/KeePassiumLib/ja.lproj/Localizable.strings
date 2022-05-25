@@ -586,6 +586,9 @@
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
 "[FileInfo/isExcludedFromBackup/title]" = "iCloud/iTunesのバックアップから除外";
 
+/* Title of a dialog with file details (name, size, dates) */
+"[FileInfo/title]" = "ファイルの情報";
+
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "ファイルを削除できません: %@";
 

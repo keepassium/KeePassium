@@ -5,10 +5,10 @@
 "Gck-9R-sGq.normalTitle" = "Omitir";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
-"P0M-N3-ynf.text" = "Por favor, vuelve a agregar las bases de datos y los archivos de claves para utilizar con la función de autocompletar (AutoFill).";
+"P0M-N3-ynf.text" = "Vuelva a agregar las bases de datos y los archivos de claves para utilizar con la función de «Autorrelleno» (AutoFill).";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
-"pIl-6L-Msp.text" = "Configurar autocompletar (AutoFill)";
+"pIl-6L-Msp.text" = "Configurar «Autorrelleno»";
 
 /* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
 "rzY-Ci-bd9.title" = "KeePassium";

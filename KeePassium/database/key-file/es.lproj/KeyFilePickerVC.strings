@@ -5,7 +5,7 @@
 "BGv-TX-maE.text" = "Usar archivo de clave sin añadirlo a la lista";
 
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
-"leO-vH-qBX.text" = "Utilizar sólo contraseña";
+"leO-vH-qBX.text" = "Usar solo contraseña";
 
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
 "Lod-RE-tcd.title" = "Añadir archivo de clave";
@@ -17,5 +17,5 @@
 "r85-yz-wYI.title" = "Archivos de claves";
 
 /* Class = "UILabel"; text = "Browse…"; ObjectID = "XiA-k9-5wr"; Note = "Action to open a file selection dialog"; */
-"XiA-k9-5wr.text" = "Navegar …";
+"XiA-k9-5wr.text" = "Examinar…";
 

@@ -2,10 +2,10 @@
 "[AppHistory/title]" = "Novedades";
 
 /* Hint shown when both password and key file are empty. */
-"[Database/Create] Please enter a password or choose a key file." = "Por favor, introduce una contraseña o selecciona un archivo de clave.";
+"[Database/Create] Please enter a password or choose a key file." = "Introduzca una contraseña o elija un archivo de clave.";
 
 /* Note for a sample entry */
-"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "También puedes almacenar notas, si lo deseas.";
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "También puede almacenar algunas notas, si lo desea.";
 
 /* Password for a sample entry. Translation is optional. */
 "[Database/Create/TemplateEntry/password] pa$$word" = "Contra$€ña";
@@ -32,13 +32,13 @@
 "[Database/Create/TemplateGroup/title] Network" = "Red";
 
 /* Predefined `Operating system` group in a new database */
-"[Database/Create/TemplateGroup/title] OS" = "Sistema Operativo";
+"[Database/Create/TemplateGroup/title] OS" = "Sistema operativo";
 
 /* Confirmation message to replace an existing entry attachment with a new one. */
 "[Entry/Files/Add] Replace existing attachment?" = "¿Reemplazar el archivo adjunto existente?";
 
 /* Explanation for replacing the only attachment of KeePass1 entry */
-"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Esta base de datos soporta sólo un archivo adjunto por entrada y ya existe uno.";
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Esta base de datos admite solo un archivo adjunto por entrada y ya existe uno.";
 
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "Cambiar nombre del archivo";

@@ -2,7 +2,7 @@
 "7bL-fQ-OUc.headerTitle" = "Comentarios";
 
 /* Class = "UILabel"; text = "Proprietary license"; ObjectID = "7cl-Fc-8Nf"; */
-"7cl-Fc-8Nf.text" = "Licencia Propietaria";
+"7cl-Fc-8Nf.text" = "Licencia propietaria";
 
 /* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
 "7id-QT-w26.text" = "Iconos por Icons8";
@@ -23,7 +23,7 @@
 "AMd-x7-PDa.text" = "¿Te gusta lo que ves?";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "Traducción gracias a los colaboradores de KeePassium";
+"aqX-J9-IzD.text" = "Traducción por colaboradores de KeePassium";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
 "AWg-lI-BfC.text" = "Licencia MIT";
@@ -95,7 +95,7 @@
 "o9e-qb-mMw.text" = "Licencia CC0";
 
 /* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
-"OaP-Bl-5vR.text" = "TPInAppReceipt by Pavel Tikhonenko";
+"OaP-Bl-5vR.text" = "TPInAppReceipt por Pavel Tikhonenko";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
 "QV5-N8-NRt.text" = "Dominio público";
@@ -104,7 +104,7 @@
 "Qz4-PJ-Tra.text" = "CC BY 3.0";
 
 /* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
-"r7M-Gb-1Xd.text" = "Toast-Swift de Charles Scalesse";
+"r7M-Gb-1Xd.text" = "Toast-Swift por Charles Scalesse";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
 "Rab-wf-OQe.text" = "Licencia MIT";
@@ -125,7 +125,7 @@
 "SOX-Re-yl9.text" = "Linecons por Andrian Valeanu";
 
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
-"TOl-DA-gYc.text" = "Contacta con el soporte técnico";
+"TOl-DA-gYc.text" = "Contactar con el servicio de asistencia";
 
 /* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
 "tOr-N9-2UY.text" = "Iconos Feather por Cole Bemis";

@@ -7,3 +7,6 @@
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "顯示密碼";
 
+/* Call to action, invites the user to enable the Quick AutoFill feature */
+"[QuickAutoFill/Activate/callToAction]" = "啟用自動填寫密碼";
+

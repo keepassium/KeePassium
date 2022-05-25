@@ -5,7 +5,7 @@
 "5U9-NZ-sJe.accessibilityLabel" = "Restablecer tamaño de texto a predeterminado";
 
 /* Class = "UILabel"; text = "App Icon"; ObjectID = "fSx-Do-lgu"; Note = "Section in settings: icon for the app"; */
-"fSx-Do-lgu.text" = "Icono de la App";
+"fSx-Do-lgu.text" = "Icono de la aplicación";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "Lh3-CB-Urp"; */
 "Lh3-CB-Urp.footerTitle" = "Ocultar contraseñas y otros campos protegidos detrás de asteriscos (recomendado).";

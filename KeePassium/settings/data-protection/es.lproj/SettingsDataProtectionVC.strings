@@ -11,19 +11,19 @@
 "e6Y-AP-hag.headerTitle" = "Campos protegidos";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "Una vez abierta una base de datos, la clave maestra se puede almacenar en la cadena de claves segura del iPhone (KeyChain). La próxima vez, KeePassium utilizará esa clave para no introducir la contraseña maestra completa de nuevo. \n\n(Las claves maestras se borran automáticamente al cumplirse el tiempo de espera de la base de datos.)";
+"Faj-km-pM5.footerTitle" = "Una vez abierta una base de datos, la clave maestra se puede almacenar en la cadena de claves segura del iPhone (KeyChain). La próxima vez, KeePassium utilizará esa clave para no introducir la contraseña maestra completa de nuevo. \n\n(Las claves maestras se borran automáticamente al cumplirse el tiempo de espera de la base de datos)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Desbloqueo rápido";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Utilice el portapapeles Universal para copiar y pegar entre sus dispositivos Apple. En dispositivos externos, este portapapeles se borra después de dos minutos.";
+"g9a-rJ-4WJ.footerTitle" = "Utilice el portapapeles universal para copiar y pegar entre sus dispositivos Apple. En dispositivos externos, este portapapeles se borra después de dos minutos.";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
 "gTm-F6-EDQ.text" = "Borrar claves maestras en tiempo de espera";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.footerTitle" = "Cuando copies texto, KeePassium limpiará automáticamente el portapapeles después del tiempo seleccionado.";
+"hnI-Q8-Ixm.footerTitle" = "Cuando copies texto, KeePassium limpiará automáticamente el portapapeles después de un tiempo.";
 
 /* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
 "hnI-Q8-Ixm.headerTitle" = "Portapapeles";
@@ -56,7 +56,7 @@
 "SSu-Sr-MCg.text" = "Tiempo de espera del portapapeles";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Tiempo de espera";
+"weX-SZ-IDB.text" = "Tiempo de espera de la base de datos";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "Portapapeles universal";

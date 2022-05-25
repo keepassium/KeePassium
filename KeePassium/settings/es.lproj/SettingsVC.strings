@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; headerTitle = "Start"; ObjectID = "9yn-W3-FDl"; Note = "Section in settings: settings that define what happens when the app is started."; */
-"9yn-W3-FDl.headerTitle" = "Al iniciar la aplicación";
+"9yn-W3-FDl.headerTitle" = "Inicio";
 
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
 "A5N-B3-t3t.headerTitle" = "Premium";
@@ -8,7 +8,7 @@
 "Bk0-Xf-O7B.title" = "Ajustes";
 
 /* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
-"cBS-jW-dHU.headerTitle" = "Soporte técnico";
+"cBS-jW-dHU.headerTitle" = "Asistencia técnica";
 
 /* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
 "HjD-9G-X8p.headerTitle" = "Copia de seguridad";

@@ -586,6 +586,9 @@
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
 "[FileInfo/isExcludedFromBackup/title]" = "Виключити з резервної копії iCloud/iTunes";
 
+/* Title of a dialog with file details (name, size, dates) */
+"[FileInfo/title]" = "Відомості про файл";
+
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "Не вдалося видалити файл. Причина: %@";
 

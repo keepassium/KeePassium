@@ -154,6 +154,9 @@
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "صيغة قاعدة البيانات غير معترف بها";
 
+/* Message shown after we show a cached local database instead of the (unavailable) original database. */
+"[Database/Loading/FromCache/text]" = "يتعذَّر الوصول إلى قاعدة البيانات.\nهذِهِ أحدث نُسخة محليَّة.";
+
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "قاعدة البيانات للقراءة فقط";
 
@@ -213,6 +216,18 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "جاري الحفظ...";
+
+/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
+"[Database/Settings/ConsiderFileUnreachable/title]" = "اعتبار الملف لا يمكن الوصول إليه";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "إظهار رسالة خطأ";
+
+/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/title]" = "عند تعذُّر الوصول إلى الملف";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "استخدام نُسخة محليَّة";
 
 /* Title of settings section (read-only, backup-able, etc) */
 "[Database/Settings/FileAccess/title]" = "الوصول إلى الملف";
@@ -571,6 +586,9 @@
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
 "[FileInfo/isExcludedFromBackup/title]" = "استبعد من النسخ الاحتياطي لـ iCloud/iTunes";
 
+/* Title of a dialog with file details (name, size, dates) */
+"[FileInfo/title]" = "معلومات الملف";
+
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "فشل حذف الملف. السبب: %@";
 
@@ -865,6 +883,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "المساعدة";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "رمز مُرور المرة الواحدة (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "اُستُعيدَ الإصدار السابق";
 
@@ -903,6 +924,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "معلومات الملف";
+
+/* Name of an entry field */
+"[OTP/FieldName]" = "رمز مُرور المرة الواحدة";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "رمز الاستجابة السريعة هذا غير مُلائم لإعداد OTP.";
@@ -1347,6 +1371,9 @@
 
 /* Call to action, title of the tip box/donation screen. */
 "[TipBox/title/3]" = "دعم KeePassium";
+
+/* Name of an entry field. Acronym `TOTP` should not be translated. */
+"[TOTP/FieldName]" = "رمز مُرور المرة الواحدة (TOTP)";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "التخزين السحابي / تطبيق آخر";

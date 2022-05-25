@@ -532,6 +532,9 @@
 /* Title of a setting: is the file exluded from iCloud/iTunes backup. For example: `Exclude From Backup: <Yes>` */
 "[FileInfo/isExcludedFromBackup/title]" = "iCloud / iTunes Yedeklemesine Dahil Etme";
 
+/* Title of a dialog with file details (name, size, dates) */
+"[FileInfo/title]" = "Dosya Bilgisi";
+
 /* Error message [reason: String] */
 "[FileKeeper] Failed to delete file. Reason: %@" = "%@'ten dolayı dosya silinemedi.";
 
