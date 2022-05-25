@@ -1,5 +1,23 @@
 #CHANGELOG
 
+## [1.33.111] - 2022-05-25
+
+### Improved
+
+- Local files should load quickly, no matter what
+- Refined File Info dialog interface
+- Updated all translations
+
+### Fixed
+
+- DB opening stuck at "Downloading the database… 0%" [thanks, everyone]
+- Race condition in file coordination (technical reason of the above)
+- It was impossible to open local files with an unresponsive SMB share in the system (fixes #109) [thanks, everyone]
+- Parsing misformatted kdbx3/4 timestamps [thanks Jim]
+- Reporting missing/unresponsive file providers on iOS 15+
+- Minor UI fixes here and there
+
+
 ## [1.32.110] - 2022-05-03
 
 ### Fixed 

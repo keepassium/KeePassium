@@ -1,6 +1,40 @@
 {
     "sections": [
         {
+            "version": "1.33",
+            "releaseDate": "2022-05-25T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Improved: Local files should load quickly, no matter what",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated all translations",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: DB opening stuck at \"Downloading the database… 0%\" [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: It was impossible to open local files with an unresponsive SMB share in the system (fixes #109) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Parsing misformatted kdbx3/4 timestamps [thanks Jim]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Reporting missing/unresponsive file providers on iOS 15+",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI fixes here and there",
+                    "type": 1
+                },
+            ]
+        },
+        {
             "version": "1.32",
             "releaseDate": "2022-05-03T00:00:00Z",
             "items": [
