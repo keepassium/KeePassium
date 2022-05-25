@@ -43,7 +43,7 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
         title = LString.titleDatabaseSettings
         
         tableView.register(
-            UINib(nibName: SwitchCell.reuseIdentifier, bundle: nil),
+            SwitchCell.classForCoder(),
             forCellReuseIdentifier: SwitchCell.reuseIdentifier)
         tableView.register(
             UINib(nibName: ParameterValueCell.reuseIdentifier, bundle: nil),
@@ -148,14 +148,14 @@ extension DatabaseSettingsVC {
     }
     
     private func configureReadOnlyCell(_ cell: SwitchCell) {
-        cell.titleLabel.text = LString.titleFileAccessReadOnly
+        cell.textLabel?.text = LString.titleFileAccessReadOnly
         cell.theSwitch.isEnabled = delegate?.canChangeReadOnly(in: self) ?? false
         cell.theSwitch.isOn = isReadOnlyAccess
 
-        cell.titleLabel.isAccessibilityElement = false
+        cell.textLabel?.isAccessibilityElement = false
         cell.theSwitch.accessibilityLabel = LString.titleFileAccessReadOnly
 
-        cell.toggleHandler = { [weak self] theSwitch in
+        cell.onDidToggleSwitch = { [weak self] theSwitch in
             guard let self = self else { return }
             self.isReadOnlyAccess = theSwitch.isOn
             self.delegate?.didChangeSettings(isReadOnlyFile: theSwitch.isOn, in: self)

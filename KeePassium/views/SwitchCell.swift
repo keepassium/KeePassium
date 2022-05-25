@@ -10,14 +10,50 @@ import UIKit
 
 class SwitchCell: UITableViewCell {
     public static let reuseIdentifier = "SwitchCell"
-    
-    typealias ToggleHandler = (UISwitch) -> Void
-    var toggleHandler: ToggleHandler?
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var theSwitch: UISwitch!
+    typealias ToggleHandler = (UISwitch) -> Void
     
-    @IBAction private func didToggleSwitch(_ sender: UISwitch) {
-        toggleHandler?(theSwitch)
+    var onDidToggleSwitch: ToggleHandler?
+
+    lazy var theSwitch: UISwitch = {
+        let theSwitch = UISwitch(frame: .zero)
+        return theSwitch
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        configureCell()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configureCell()
+    }
+    
+    private func configureCell() {
+        selectionStyle = .none
+        
+        textLabel?.font = .preferredFont(forTextStyle: .body)
+        textLabel?.textColor = .primaryText
+        textLabel?.numberOfLines = 0
+        textLabel?.lineBreakMode = .byWordWrapping
+        
+        detailTextLabel?.font = .preferredFont(forTextStyle: .footnote)
+        detailTextLabel?.textColor = .auxiliaryText
+        detailTextLabel?.numberOfLines = 0
+        detailTextLabel?.lineBreakMode = .byWordWrapping
+        
+        accessoryType = .none
+        accessoryView = theSwitch
+        
+        let toggleHandlerAction = UIAction() { [weak self] _ in
+            guard let self = self else { return }
+            self.onDidToggleSwitch?(self.theSwitch)
+        }
+        theSwitch.addAction(toggleHandlerAction, for: .valueChanged)
     }
 }

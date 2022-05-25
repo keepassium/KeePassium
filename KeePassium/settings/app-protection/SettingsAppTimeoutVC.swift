@@ -24,12 +24,8 @@ class SettingsAppTimeoutVC: UITableViewController, Refreshable {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.register(
-            UINib(nibName: SwitchCell.reuseIdentifier, bundle: nil),
-            forCellReuseIdentifier: switchCellID
-        )
+        super.viewDidLoad()        
+        tableView.register(SwitchCell.classForCoder(), forCellReuseIdentifier: switchCellID)
     }
     
     func refresh() {
@@ -79,9 +75,9 @@ class SettingsAppTimeoutVC: UITableViewController, Refreshable {
     }
     
     private func configureLaunchTriggerCell(_ cell: SwitchCell) {
-        cell.titleLabel.text = LString.lockAppOnLaunchTitle
+        cell.textLabel?.text = LString.lockAppOnLaunchTitle
         cell.theSwitch.isOn = Settings.current.isLockAppOnLaunch
-        cell.toggleHandler = { (theSwitch) in
+        cell.onDidToggleSwitch = { (theSwitch) in
             Settings.current.isLockAppOnLaunch = theSwitch.isOn
         }
     }
