@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -138,13 +139,14 @@
                                                         <action selector="didToggleExcludeFromSystemBackup:" destination="nSy-3u-0xW" eventType="valueChanged" id="GMj-Wa-QHn"/>
                                                     </connections>
                                                 </switch>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-icloud-backup-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="pvX-2y-zf5">
-                                                    <rect key="frame" x="16" y="15" width="29" height="29"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pvX-2y-zf5">
+                                                    <rect key="frame" x="16" y="13" width="29" height="31.5"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="NX9-UA-kYK"/>
                                                         <constraint firstAttribute="width" constant="29" id="PTX-bV-e41"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="xmark.icloud" catalog="system" symbolScale="large"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -268,9 +270,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="no-icloud-backup-listitem" width="29" height="29"/>
         <image name="settings-backup-duration-listitem" width="29" height="29"/>
         <image name="settings-backup-listitem" width="29" height="29"/>
+        <image name="xmark.icloud" catalog="system" width="128" height="88"/>
         <namedColor name="AuxiliaryText">
             <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

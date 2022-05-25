@@ -213,15 +213,21 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     private func showFileInfo(
         _ fileRef: URLReference,
         at popoverAnchor: PopoverAnchor,
-        in viewController: DatabasePickerVC
+        in viewController: UIViewController
     ) {
-        let fileInfoVC = FileInfoVC.make(urlRef: fileRef, fileType: .database, at: popoverAnchor)
-        fileInfoVC.canExport = true
-        fileInfoVC.didDeleteCallback = { [weak self, weak fileInfoVC] in
-            self?.refresh()
-            fileInfoVC?.dismiss(animated: true, completion: nil)
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let fileInfoCoordinator = FileInfoCoordinator(
+            fileRef: fileRef,
+            fileType: .database,
+            allowExport: true,
+            router: modalRouter)
+        fileInfoCoordinator.delegate = self
+        fileInfoCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
         }
-        viewController.present(fileInfoVC, animated: true, completion: nil)
+        fileInfoCoordinator.start()
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(fileInfoCoordinator)
     }
     
     private func showDatabaseSettings(
@@ -481,6 +487,12 @@ extension DatabasePickerCoordinator: DatabaseCreatorCoordinatorDelegate {
     }
 }
 #endif
+
+extension DatabasePickerCoordinator: FileInfoCoordinatorDelegate {
+    func didEliminateFile(_ fileRef: URLReference, in coordinator: FileInfoCoordinator) {
+        refresh()
+    }
+}
 
 extension DatabasePickerCoordinator: DatabaseSettingsCoordinatorDelegate {
     func didChangeDatabaseSettings(in coordinator: DatabaseSettingsCoordinator) {

@@ -672,7 +672,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         at indexPath: IndexPath
     ) -> ContextualAction {
         return ContextualAction(
-            title: LString.menuFileInfo,
+            title: LString.FileInfo.menuFileInfo,
             imageName: .infoCircle,
             style: .default,
             handler: { [weak self] in

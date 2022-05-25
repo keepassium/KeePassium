@@ -87,6 +87,7 @@ enum SystemImageName: String {
     case squareAndArrowDown = "square.and.arrow.down"
     case squareAndArrowUp = "square.and.arrow.up"
     case trash = "trash"
+    case xmarkICloud = "xmark.icloud"
 }
 
 extension UIImage {

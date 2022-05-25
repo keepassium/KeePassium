@@ -48,4 +48,31 @@ extension URLReference {
         }
         return _fileProvider.icon ?? UIImage(asset: .fileProviderGenericListitem)
     }
+
+    public func getLocationDescription() -> String {
+        if ProcessInfo.isRunningOnMac,
+           let url = try? self.resolveSync()
+        {
+            return url.path
+        }
+        
+        guard let fileProvider = self.fileProvider else {
+            return location.description 
+        }
+        
+        var components = [String]()
+        switch location {
+        case .external:
+            components.append(fileProvider.localizedName)
+            let isInTrash = getCachedInfoSync(canFetch: false)?.isInTrash
+            if isInTrash ?? false {
+                components.append(LString.trashDirectoryName)
+            }
+        case .internalDocuments, .internalBackup, .internalInbox:
+            components.append(fileProvider.localizedName)
+            components.append(AppInfo.name)
+            components.append(location.description)
+        }
+        return components.joined(separator: " → ")
+    }
 }

@@ -66,6 +66,28 @@ class KeyFilePickerCoordinator: NSObject, Coordinator {
     }
 }
 
+extension KeyFilePickerCoordinator {
+    private func showFileInfo(
+        _ fileRef: URLReference,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let fileInfoCoordinator = FileInfoCoordinator(
+            fileRef: fileRef,
+            fileType: .keyFile,
+            allowExport: false,
+            router: modalRouter)
+        fileInfoCoordinator.delegate = self
+        fileInfoCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        fileInfoCoordinator.start()
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(fileInfoCoordinator)
+    }
+}
+
 extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
     func didPressAddKeyFile(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
         let picker = UIDocumentPickerViewController(forOpeningContentTypes: FileType.keyFileUTIs)
@@ -95,15 +117,7 @@ extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
         at popoverAnchor: PopoverAnchor,
         in keyFilePicker: KeyFilePickerVC
     ) {
-        let fileInfoVC = FileInfoVC.make(urlRef: keyFile, fileType: .keyFile, at: popoverAnchor)
-        fileInfoVC.canExport = false
-        fileInfoVC.didDeleteCallback = { [weak self, weak fileInfoVC] in
-            guard let self = self else { return }
-            fileInfoVC?.dismiss(animated: true, completion: nil)
-            self.keyFilePickerVC.refresh()
-            self.delegate?.didEliminateKeyFile(keyFile, in: self)
-        }
-        router.present(fileInfoVC, animated: true, completion: nil)
+        showFileInfo(keyFile, at: popoverAnchor, in: keyFilePicker)
     }
     
     func didPressEliminate(
@@ -192,5 +206,12 @@ extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
             message: LString.dontUseDatabaseAsKeyFile,
             dismissButtonTitle: LString.actionOK)
         keyFilePickerVC.present(warningAlert, animated: true)
+    }
+}
+
+extension KeyFilePickerCoordinator: FileInfoCoordinatorDelegate {
+    func didEliminateFile(_ fileRef: URLReference, in coordinator: FileInfoCoordinator) {
+        keyFilePickerVC.refresh()
+        delegate?.didEliminateKeyFile(fileRef, in: self)
     }
 }
