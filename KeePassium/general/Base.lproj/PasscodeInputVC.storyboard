@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KmH-Rg-WCs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KmH-Rg-WCs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -121,7 +122,7 @@
                                     <constraint firstItem="i2Z-Q7-JRa" firstAttribute="top" secondItem="ZTd-Zj-qAs" secondAttribute="bottom" constant="8" id="VU5-Db-Ufe"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="Xb4-tK-S3a"/>
                                     <constraint firstItem="i2Z-Q7-JRa" firstAttribute="width" secondItem="ZTd-Zj-qAs" secondAttribute="width" id="ZUp-1T-Qgl"/>
-                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="top" priority="250" constant="16" id="b92-nV-xCo"/>
+                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="top" priority="250" constant="32" id="b92-nV-xCo"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerY" secondItem="u9P-fB-zfA" secondAttribute="centerY" priority="750" id="dBk-f7-19f"/>
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="dZt-k0-KDh"/>
                                     <constraint firstItem="i2Z-Q7-JRa" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="f6B-2H-YvR"/>
@@ -129,12 +130,13 @@
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="z0x-Rz-Nfj" secondAttribute="bottom" priority="750" id="muI-ci-wh6"/>
                                     <constraint firstAttribute="bottom" secondItem="HCs-4z-c3c" secondAttribute="bottom" id="nZM-7R-WIi"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="r0g-ql-wUj"/>
-                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="top" id="rei-9A-IvX"/>
+                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="topMargin" id="rei-9A-IvX"/>
                                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3mQ-t6-0ty" secondAttribute="trailing" id="sQS-fD-2eK"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3mQ-t6-0ty" secondAttribute="bottom" constant="8" id="zHd-pZ-S22"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="O4e-oE-4lU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u9P-fB-zfA" firstAttribute="top" secondItem="ZhN-Z7-r4d" secondAttribute="topMargin" id="TC8-je-hHv"/>
