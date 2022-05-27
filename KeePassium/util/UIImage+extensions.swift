@@ -62,32 +62,43 @@ enum ImageAsset: String {
 }
 
 enum SystemImageName: String {
-    case arrowshapeTurnUpForward = "arrowshape.turn.up.forward"
-    case camera = "camera"
-    case checkmark = "checkmark"
-    case chevronDown = "chevron.down"
-    case chevronForward = "chevron.forward"
-    case chevronUp = "chevron.up"
-    case clock = "clock"
-    case clockArrowCirclepath = "clock.arrow.circlepath"
-    case docOnDoc = "doc.on.doc"
-    case ellipsisCircle = "ellipsis.circle"
-    case exclamationMarkTriangle = "exclamationmark.triangle"
-    case folder = "folder"
-    case gearshape2 = "gearshape.2"
-    case icloudSlash = "icloud.slash"
-    case infoCircle = "info.circle"
-    case megaphone = "megaphone"
-    case paperclip = "paperclip"
-    case pencil = "pencil"
-    case photo = "photo"
-    case plus = "plus"
-    case qrcode = "qrcode"
-    case squareAndPencil = "square.and.pencil"
-    case squareAndArrowDown = "square.and.arrow.down"
-    case squareAndArrowUp = "square.and.arrow.up"
-    case trash = "trash"
-    case xmarkICloud = "xmark.icloud"
+    case arrowshapeTurnUpForward = "arrowshape.turn.up.forward" 
+    case arrowLeftAndRight = "arrow.left.and.right" 
+    case asterisk = "asterisk" 
+    case asteriskCircle = "asterisk.circle" 
+    case bookClosed = "book.closed" 
+    case camera = "camera" 
+    case checkmark = "checkmark" 
+    case checkmarkCircle = "checkmark.circle" 
+    case chevronDown = "chevron.down" 
+    case chevronForward = "chevron.forward" 
+    case chevronUp = "chevron.up" 
+    case clock = "clock" 
+    case clockArrowCirclepath = "clock.arrow.circlepath" 
+    case docOnDoc = "doc.on.doc" 
+    case ellipsisCircle = "ellipsis.circle" 
+    case exclamationMarkTriangle = "exclamationmark.triangle" 
+    case folder = "folder" 
+    case gearshape2 = "gearshape.2" 
+    case icloudSlash = "icloud.slash" 
+    case infoCircle = "info.circle" 
+    case megaphone = "megaphone" 
+    case nosign = "nosign" 
+    case paperclip = "paperclip" 
+    case pencil = "pencil" 
+    case photo = "photo" 
+    case plus = "plus" 
+    case qrcode = "qrcode" 
+    case sliderVertical3 = "slider.vertical.3" 
+    case squareAndPencil = "square.and.pencil" 
+    case squareAndArrowDown = "square.and.arrow.down" 
+    case squareAndArrowUp = "square.and.arrow.up" 
+    case xmark = "xmark" 
+    case xmarkCircle = "xmark.circle" 
+    case textformat = "textformat" 
+    case trash = "trash" 
+    case wandAndStars = "wand.and.stars" 
+    case xmarkICloud = "xmark.icloud" 
 }
 
 extension UIImage {
@@ -96,11 +107,11 @@ extension UIImage {
     }
     
     static func get(_ systemImageName: SystemImageName) -> UIImage? {
-        if #available(iOS 13, *) {
-            return UIImage(systemName: systemImageName.rawValue)
-        } else {
-            return UIImage(named: systemImageName.rawValue)
+        if let systemImage =  UIImage(systemName: systemImageName.rawValue) {
+            return systemImage
         }
+        let fallbackAssetImage = UIImage(named: systemImageName.rawValue)
+        return fallbackAssetImage
     }
     
     static func kpIcon(forEntry entry: Entry, iconSet: DatabaseIconSet?=nil) -> UIImage? {

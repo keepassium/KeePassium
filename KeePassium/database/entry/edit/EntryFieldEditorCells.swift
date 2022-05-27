@@ -23,7 +23,7 @@ class EditableFieldCellFactory {
                 cellStoryboardID = EntryFieldEditorMultiLineCell.storyboardID
             } else {
                 if field.isProtected || (field.internalName == EntryField.password) {
-                    cellStoryboardID = EntryFieldEditorSingleLineProtectedCell.storyboardID
+                    cellStoryboardID = PasswordEntryFieldCell.storyboardID
                 } else {
                     cellStoryboardID = EntryFieldEditorSingleLineCell.storyboardID
                 }
@@ -238,13 +238,13 @@ class EntryFieldEditorSingleLineCell:
     }
 }
 
-class EntryFieldEditorSingleLineProtectedCell:
+final class PasswordEntryFieldCell:
     UITableViewCell,
     EditableFieldCell,
     ValidatingTextFieldDelegate,
     UITextFieldDelegate
 {
-    public static let storyboardID = "SingleLineProtectedCell"
+    public static let storyboardID = "PasswordEntryFieldCell"
     @IBOutlet private weak var textField: ValidatingTextField!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var randomizeButton: UIButton!
@@ -257,7 +257,7 @@ class EntryFieldEditorSingleLineProtectedCell:
             textField.isSecureTextEntry =
                 (field?.isProtected ?? false) && Settings.current.isHideProtectedFields
             textField.accessibilityLabel = field?.visibleName
-            randomizeButton.isHidden = (field?.internalName != EntryField.password)
+            randomizeButton.accessibilityLabel = LString.PasswordGenerator.titleRandomGenerator
         }
     }
     

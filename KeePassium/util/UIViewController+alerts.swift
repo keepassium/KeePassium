@@ -45,8 +45,9 @@ extension UIViewController {
         _ message: String,
         title: String? = nil,
         image: UIImage? = nil,
+        position: ToastPosition = .top,
         action: ToastAction? = nil,
-        duration: TimeInterval = 3.0)
+        duration: TimeInterval = 5.0)
     {
         var style = ToastStyle()
         style.buttonColor = .actionTint
@@ -59,7 +60,13 @@ extension UIViewController {
             action: action,
             style: style
         )
-        hostView.showToast(toastView, duration: 5, position: .top, action: action, completion: nil)
+        hostView.showToast(
+            toastView,
+            duration: duration,
+            position: position,
+            action: action,
+            completion: nil
+        )
     }
     
     func showSuccessNotification(_ message: String, icon: SystemImageName) {

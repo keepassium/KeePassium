@@ -303,7 +303,7 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         switch cell {
         case is EntryFieldEditorTitleCell:
             didPressChangeIcon(in: cell, at: popoverAnchor)
-        case is EntryFieldEditorSingleLineProtectedCell:
+        case is PasswordEntryFieldCell:
             didPressRandomize(field: field, at: popoverAnchor)
         default:
             assertionFailure("Button pressed in an unknown field")

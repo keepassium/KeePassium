@@ -9,57 +9,110 @@
 import Foundation
 
 public class PasswordGenerator {
-    public static let defaultLength = 20
     
-    public static let charSetLower: Set<String> = [
-        "a","b","c","d","e","f","g","h","i","j","k","l","m",
-        "n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    public static let charSetUpper: Set<String> = [
-        "A","B","C","D","E","F","G","H","I","J","K","L","M",
-        "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    public static let charSetDigits: Set<String> =
-        ["0","1","2","3","4","5","6","7","8","9"]
-    public static let charSetSpecials: Set<String> = [
-        "`","~","!","@","#","$","%","^","&","*","_","-","+","=","(",")","[","]",
-        "{","}","<",">","\\","|",":",";",",",".","?","/","'","\""]
-    public static let charSetLookAlike: Set<String> =
-        ["I","l","|","1","0","O","S","5"]
+    public typealias ElementPreprocessingFunction = (inout [String]) -> Void
     
-    public enum Parameters {
-        case includeLowerCase
-        case includeUpperCase
-        case includeSpecials
-        case includeDigits
-        case includeLookAlike
+    public typealias ElementMergingFunction = ([String]) -> String
+    
+    internal var rng = SecureRandomNumberGenerator()
+    
+    public init() {
     }
     
-    public static func generate(length: Int, parameters: Set<Parameters>) -> String {
-        var charSet: Set<String> = []
-        if parameters.contains(.includeLowerCase) {
-            charSet.formUnion(charSetLower)
+    public func generate(with requirements: PasswordGeneratorRequirements) throws -> String {
+        let targetLength = requirements.length
+        guard targetLength >= 0 else {
+            throw PasswordGeneratorError.desiredLengthTooShort(minimum: 0)
         }
-        if parameters.contains(.includeUpperCase) {
-            charSet.formUnion(charSetUpper)
+
+        let requiredSets = try requirements.getRequiredSetsFiltered()
+        if requiredSets.count > targetLength {
+            throw PasswordGeneratorError.desiredLengthTooShort(minimum: requiredSets.count)
         }
-        if parameters.contains(.includeSpecials) {
-            charSet.formUnion(charSetSpecials)
-        }
-        if parameters.contains(.includeDigits) {
-            charSet.formUnion(charSetDigits)
-        }
-        if !parameters.contains(.includeLookAlike) {
-            charSet.subtract(charSetLookAlike)
+        let requiredElementsSample: [String] = try requiredSets.map {
+            if let result = $0.randomElement(using: &rng) {
+                return result
+            } else {
+                assertionFailure("A required set is empty. This should have been checked before.")
+                throw PasswordGeneratorError.requiredSetCompletelyExcluded
+            }
         }
         
-        let charSetArray = charSet.sorted()
-        let charSetSize = UInt32(charSet.count)
-
-        var password: [String] = []
-        var rng = SecureRandomNumberGenerator()
-        for _ in 0..<length {
-            let randomIndex = Int(rng.next(upperBound: charSetSize))
-            password.append(charSetArray[randomIndex])
+        var pickedElements = requiredElementsSample
+        
+        let fillerCount = targetLength - requiredElementsSample.count
+        if fillerCount > 0 {
+            let allowedElements = try requirements.getAllowedElementsFiltered()
+            guard allowedElements.count > 0 else {
+                assertionFailure("An allowed set is empty. This cannot be possible here.")
+                throw PasswordGeneratorError.notEnoughElementsToSample
+            }
+            for _ in 0..<fillerCount {
+                if let element = allowedElements.randomElement(using: &rng) {
+                    pickedElements.append(element)
+                } else {
+                    assertionFailure("Should not be here")
+                    throw PasswordGeneratorError.notEnoughElementsToSample
+                }
+            }
         }
-        return password.joined()
+
+        if let preprocessorFunction = requirements.elementPreprocessor {
+            preprocessorFunction(&pickedElements)
+        }
+        
+        guard canSatisfy(maxConsecutive: requirements.maxConsecutive, with: pickedElements) else {
+            throw PasswordGeneratorError.maxConsecutiveNotSatisfiable
+        }
+        var attemptsLeft = 10
+        repeat {
+            pickedElements.shuffle(using: &rng)
+            attemptsLeft -= 1
+            if attemptsLeft < 0 {
+                throw PasswordGeneratorError.maxConsecutiveNotSatisfiable
+            }
+        } while !isSatisfied(maxConsecutive: requirements.maxConsecutive, with: pickedElements)
+
+        if let mergingFunction = requirements.elementMerger {
+            return mergingFunction(pickedElements)
+        } else {
+            return pickedElements.joined()
+        }
+    }
+    
+    private func canSatisfy(maxConsecutive: Int?, with elements: [String]) -> Bool {
+        guard let maxConsecutive = maxConsecutive else {
+            return true
+        }
+        guard maxConsecutive > 0 else {
+            return false
+        }
+        let uniqueElements = StringSet(elements)
+        return (uniqueElements.count > 1) || (maxConsecutive >= elements.count)
+    }
+    
+    private func isSatisfied(maxConsecutive: Int?, with elements: [String]) -> Bool {
+        guard let maxConsecutive = maxConsecutive else {
+            return true
+        }
+        guard maxConsecutive > 0 else {
+            return false
+        }
+        
+        var repeats = 0
+        var maxRepeats = 0
+        var previousElement: String? = nil
+        for element in elements {
+            if element == previousElement {
+                repeats += 1
+                continue
+            }
+            previousElement = element
+            maxRepeats = max(maxRepeats, repeats)
+            repeats = 1
+        }
+        maxRepeats = max(maxRepeats, repeats) 
+        return maxRepeats <= maxConsecutive
     }
 }
+

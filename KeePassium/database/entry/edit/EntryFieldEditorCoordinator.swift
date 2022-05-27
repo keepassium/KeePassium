@@ -40,6 +40,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
     
     private let router: NavigationRouter
     private let fieldEditorVC: EntryFieldEditorVC
+    private weak var passwordGeneratorTargetField: EditableField?
     
     private var isModified = false{
         didSet {
@@ -146,12 +147,17 @@ final class EntryFieldEditorCoordinator: Coordinator {
         refresh()
     }
     
-    private func showPasswordGenerator(
+    func showPasswordGenerator(
         at popoverAnchor: PopoverAnchor,
-        completion: @escaping (String?)->Void
+        in viewController: UIViewController
     ) {
-        let vc = PasswordGeneratorVC.make(completion: completion)
-        router.push(vc, animated: true, onPop: nil)
+        let passGenCoordinator = PasswordGeneratorCoordinator(router: router)
+        passGenCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        passGenCoordinator.delegate = self
+        passGenCoordinator.start()
+        addChildCoordinator(passGenCoordinator)
     }
     
     @available(iOS 14, *)
@@ -176,7 +182,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         let randomNamesMenuItems = randomUserNames.map { (userName) -> UIAction in
             UIAction(
                 title: userName,
-                image: UIImage(systemName: "wand.and.stars"),
+                image: UIImage.get(.wandAndStars),
                 handler: applyUserName
             )
         }
@@ -297,15 +303,8 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldEditorVC
     ) {
-        showPasswordGenerator(at: popoverAnchor) {
-            [weak self, weak field] password in
-            guard let self = self,
-                  let field = field,
-                  password != nil else { return }
-            field.value = password
-            self.isModified = true
-            self.fieldEditorVC.revalidate()
-        }
+        passwordGeneratorTargetField = field
+        showPasswordGenerator(at: popoverAnchor, in: viewController)
     }
     
     func getUserNameGeneratorMenu(
@@ -354,6 +353,20 @@ extension EntryFieldEditorCoordinator: ItemIconPickerCoordinatorDelegate {
             delegate?.didUpdateEntry(entry, in: self)
             refresh()
         }
+    }
+}
+
+extension EntryFieldEditorCoordinator: PasswordGeneratorCoordinatorDelegate {
+    func didAcceptPassword(_ password: String, in coordinator: PasswordGeneratorCoordinator) {
+        guard let targetField = passwordGeneratorTargetField else {
+            assertionFailure("There is no target for the generated password")
+            return
+        }
+        targetField.value = password
+        self.isModified = true
+        fieldEditorVC.revalidate()
+        fieldEditorVC.refresh()
+        passwordGeneratorTargetField = nil
     }
 }
 

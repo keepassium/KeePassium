@@ -74,6 +74,7 @@ public class Settings {
         case lockAppOnLaunch
         case databaseLockTimeout
         case lockDatabasesOnTimeout
+        case passcodeKeyboardType
         
         case clipboardTimeout
         case universalClipboardEnabled
@@ -101,13 +102,7 @@ public class Settings {
         
         case hapticFeedbackEnabled
         
-        case passwordGeneratorLength
-        case passwordGeneratorIncludeLowerCase
-        case passwordGeneratorIncludeUpperCase
-        case passwordGeneratorIncludeSpecials
-        case passwordGeneratorIncludeDigits
-        case passwordGeneratorIncludeLookAlike
-        case passcodeKeyboardType
+        case passwordGeneratorConfig
         
         case hideAppLockSetupReminder
         case textScale
@@ -1443,89 +1438,25 @@ public class Settings {
     }
     
     
-    public var passwordGeneratorLength: Int {
+    public var passwordGeneratorConfig: PasswordGeneratorParams {
         get {
-            let stored = UserDefaults.appGroupShared
-                .object(forKey: Keys.passwordGeneratorLength.rawValue)
-                as? Int
-            return stored ?? PasswordGenerator.defaultLength
+            let storedData = UserDefaults.appGroupShared
+                .object(forKey: Keys.passwordGeneratorConfig.rawValue)
+                as? Data
+            let storedConfig = PasswordGeneratorParams.deserialize(from: storedData)
+            return storedConfig ?? PasswordGeneratorParams()
         }
         set {
-            updateAndNotify(
-                oldValue: passwordGeneratorLength,
-                newValue: newValue,
-                key: .passwordGeneratorLength)
+            let hasChanged = newValue != passwordGeneratorConfig
+            UserDefaults.appGroupShared.set(
+                newValue.serialize(),
+                forKey: Keys.passwordGeneratorConfig.rawValue
+            )
+            if hasChanged {
+                postChangeNotification(changedKey: Keys.passwordGeneratorConfig)
+            }
         }
-    }
-    public var passwordGeneratorIncludeLowerCase: Bool {
-        get {
-            let stored = UserDefaults.appGroupShared
-                .object(forKey: Keys.passwordGeneratorIncludeLowerCase.rawValue)
-                as? Bool
-            return stored ?? true
-        }
-        set {
-            updateAndNotify(
-                oldValue: passwordGeneratorIncludeLowerCase,
-                newValue: newValue,
-                key: .passwordGeneratorIncludeLowerCase)
-        }
-    }
-    public var passwordGeneratorIncludeUpperCase: Bool {
-        get {
-            let stored = UserDefaults.appGroupShared
-                .object(forKey: Keys.passwordGeneratorIncludeUpperCase.rawValue)
-                as? Bool
-            return stored ?? true
-        }
-        set {
-            updateAndNotify(
-                oldValue: passwordGeneratorIncludeUpperCase,
-                newValue: newValue,
-                key: .passwordGeneratorIncludeUpperCase)
-        }
-    }
-    public var passwordGeneratorIncludeSpecials: Bool {
-        get {
-            let stored = UserDefaults.appGroupShared
-                .object(forKey: Keys.passwordGeneratorIncludeSpecials.rawValue)
-                as? Bool
-            return stored ?? true
-        }
-        set {
-            updateAndNotify(
-                oldValue: passwordGeneratorIncludeSpecials,
-                newValue: newValue,
-                key: .passwordGeneratorIncludeSpecials)
-        }
-    }
-    public var passwordGeneratorIncludeDigits: Bool {
-        get {
-            let stored = UserDefaults.appGroupShared
-                .object(forKey: Keys.passwordGeneratorIncludeDigits.rawValue)
-                as? Bool
-            return stored ?? true
-        }
-        set {
-            updateAndNotify(
-                oldValue: passwordGeneratorIncludeDigits,
-                newValue: newValue,
-                key: .passwordGeneratorIncludeDigits)
-        }
-    }
-    public var passwordGeneratorIncludeLookAlike: Bool {
-        get {
-            let stored = UserDefaults.appGroupShared
-                .object(forKey: Keys.passwordGeneratorIncludeLookAlike.rawValue)
-                as? Bool
-            return stored ?? false
-        }
-        set {
-            updateAndNotify(
-                oldValue: passwordGeneratorIncludeLookAlike,
-                newValue: newValue,
-                key: .passwordGeneratorIncludeLookAlike)
-        }
+
     }
     
     public var passcodeKeyboardType: PasscodeKeyboardType {

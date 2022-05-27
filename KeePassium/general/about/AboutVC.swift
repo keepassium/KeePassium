@@ -47,6 +47,7 @@ final class AboutVC: UITableViewController {
         140: "https://github.com/norio-nomura/Base32",
         150: "https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift",
         160: "https://github.com/scalessec/Toast-Swift",
+        170: "https://eff.org/dice",
     ]
 
     override func viewDidLoad() {

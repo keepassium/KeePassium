@@ -19,13 +19,17 @@ class HapticFeedback {
         case wrongPassword
         case error
         case qrCodeScanned
+        case passwordGenerated
     }
     
     static func play(_ kind: Kind) {
         guard Settings.current.isHapticFeedbackEnabled else { return }
         
         switch kind {
-        case .appUnlocked, .databaseUnlocked, .contextMenuOpened:
+        case .appUnlocked,
+             .databaseUnlocked,
+             .contextMenuOpened,
+             .passwordGenerated:
             let tactileGenerator = UIImpactFeedbackGenerator()
             tactileGenerator.impactOccurred()
         case .copiedToClipboard:

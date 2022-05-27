@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -180,7 +181,7 @@
                                     <outlet property="titleLabel" destination="CN9-CU-AJF" id="W1O-DL-4V6"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineProtectedCell" id="Kw5-lo-PXD" customClass="EntryFieldEditorSingleLineProtectedCell" customModule="KeePassium" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PasswordEntryFieldCell" id="Kw5-lo-PXD" customClass="PasswordEntryFieldCell" customModule="KeePassium" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="205.33333015441895" width="414" height="80.666664123535156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kw5-lo-PXD" id="n4E-7U-Owp">
@@ -194,8 +195,8 @@
                                                 <constraint firstAttribute="height" constant="4" id="C9V-Uc-gIb"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="{Field Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-4o-MBS">
-                                            <rect key="frame" x="20" y="12" width="77.666666666666671" height="15.666666666666664"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="{Password}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-4o-MBS">
+                                            <rect key="frame" x="20" y="12" width="68" height="15.666666666666664"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
@@ -219,20 +220,14 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-wo-jYf">
-                                            <rect key="frame" x="327" y="4.0000000000000018" width="67" height="31.666666666666671"/>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-wo-jYf">
+                                            <rect key="frame" x="361" y="4.0000000000000018" width="41" height="31.666666666666671"/>
                                             <accessibility key="accessibilityConfiguration" identifier="randomize_button"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                            <state key="normal" title="Randomize">
+                                            <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                            <state key="normal">
                                                 <color key="titleColor" name="ActionTint"/>
+                                                <imageReference key="image" image="die.face.6" catalog="system" symbolScale="large"/>
                                             </state>
-                                            <attributedString key="userComments">
-                                                <fragment content="Action/button to generate new password"/>
-                                            </attributedString>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Randomize password" localized="YES"/>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="didPressRandomizeButton:" destination="Kw5-lo-PXD" eventType="touchUpInside" id="aQH-Hs-qJc"/>
                                             </connections>
@@ -251,7 +246,7 @@
                                         <constraint firstItem="903-Pj-kT9" firstAttribute="top" secondItem="n4E-7U-Owp" secondAttribute="top" id="g8t-tA-8o5"/>
                                         <constraint firstItem="z2C-wo-jYf" firstAttribute="firstBaseline" secondItem="kN4-4o-MBS" secondAttribute="firstBaseline" priority="750" id="kL3-yu-Ldw"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ro2-Xv-zrw" secondAttribute="trailing" id="maP-wj-csG"/>
-                                        <constraint firstItem="z2C-wo-jYf" firstAttribute="trailing" secondItem="Ro2-Xv-zrw" secondAttribute="trailing" id="ncY-vZ-zto"/>
+                                        <constraint firstItem="z2C-wo-jYf" firstAttribute="trailing" secondItem="Ro2-Xv-zrw" secondAttribute="trailing" constant="8" id="ncY-vZ-zto"/>
                                         <constraint firstItem="z2C-wo-jYf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="903-Pj-kT9" secondAttribute="bottom" id="ndN-bi-5Hx"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -447,6 +442,7 @@
     <color key="tintColor" name="ActionTint"/>
     <resources>
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
+        <image name="die.face.6" catalog="system" width="128" height="114"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
