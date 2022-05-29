@@ -657,9 +657,14 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
         ) as Data?
         guard let plainTextData = plainTextData else {
             let err = error!.takeRetainedValue() as Error
-            let message = "\(err.localizedDescription): \((err as NSError).userInfo)"
-            __decryption_failed(message: message)
-            fatalError()
+            let nsError = err as NSError
+            let message = "\(err.localizedDescription): \(nsError.userInfo)"
+            if encrypted.allSatisfy({ $0 == 0 }) {
+                __decryption_failed_input_is_zeros(code: nsError.code, message: message)
+            } else {
+                __decryption_failed(code: nsError.code, message: message)
+            }
+            fatalError() 
         }
         return plainTextData.bytes
     }
@@ -680,10 +685,52 @@ extension SecureBytes {
     private static func __decryption_algorithm_is_not_supported() {
         fatalError("Decryption algorithm is not supported. Something is very wrong.")
     }
+
+    /* There are decryption failures occasionally, so we need to know the error code.
+       To do so, we call either *_bit_0 and *_bit_1 for each bit of the error code,
+       so that the stack trace includes the error code in binary format.
+    */
+
+    @inline(never)
+    private static func __decryption_failed_input_is_zeros(code: Int, message: String) {
+        if code % 2 == 0 {
+            __decryption_failed_error_code_bit_0(code >> 1)
+        } else {
+            __decryption_failed_error_code_bit_1(code >> 1)
+        }
+    }
+
+    @inline(never)
+    private static func __decryption_failed(code: Int, message: String) {
+        if code % 2 == 0 {
+            __decryption_failed_error_code_bit_0(code >> 1)
+        } else {
+            __decryption_failed_error_code_bit_1(code >> 1)
+        }
+    }
+
+    @inline(never)
+    private static func __decryption_failed_error_code_bit_0(_ remainder: Int) {
+        guard remainder != 0 else {
+            fatalError("Decryption failed, error code in stack trace")
+        }
+        if remainder % 2 == 0 {
+            __decryption_failed_error_code_bit_0(remainder >> 1)
+        } else {
+            __decryption_failed_error_code_bit_1(remainder >> 1)
+        }
+    }
     
     @inline(never)
-    private static func __decryption_failed(message: String) {
-        fatalError("Decryption failed, cannot continue. Reason: \(message)")
+    private static func __decryption_failed_error_code_bit_1(_ remainder: Int) {
+        guard remainder != 0 else {
+            fatalError("Decryption failed, error code in stack trace")
+        }
+        if remainder % 2 == 0 {
+            __decryption_failed_error_code_bit_0(remainder >> 1)
+        } else {
+            __decryption_failed_error_code_bit_1(remainder >> 1)
+        }
     }
 }
 
