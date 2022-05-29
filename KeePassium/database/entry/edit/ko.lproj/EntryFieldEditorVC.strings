@@ -31,9 +31,3 @@
 /* Class = "UITextField"; placeholder = "Entry Title"; ObjectID = "mGc-If-zfn"; */
 "mGc-If-zfn.placeholder" = "제목";
 
-/* Class = "UIButton"; z2C-wo-jYf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Randomize password"; ObjectID = "z2C-wo-jYf"; Note = "Action/button to generate new password"; */
-"z2C-wo-jYf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "패스워드 랜덤 생성";
-
-/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "z2C-wo-jYf"; Note = "Action/button to generate new password"; */
-"z2C-wo-jYf.normalTitle" = "랜덤 생성";
-

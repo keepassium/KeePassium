@@ -16,6 +16,9 @@
 /* Class = "UILabel"; text = "KeePassium does not collect any personal or analytical data nor share it with anyone."; ObjectID = "9wt-nj-TZW"; */
 "9wt-nj-TZW.text" = "KeePassiumは個人データや分析データを一切集めませんし、他人にも共有しません。";
 
+/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "86n-Hc-6m7"; */
+"86n-Hc-6m7.text" = "CC BY 3.0";
+
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
 "Aig-jg-p8B.text" = "MIT license";
 
@@ -81,6 +84,9 @@
 
 /* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern by Daniel Beaton";
+
+/* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
+"kvO-9B-1Sy.text" = "EFFのワードリスト";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
 "lht-LP-o0Y.text" = "MIT license";

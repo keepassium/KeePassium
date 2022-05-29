@@ -16,6 +16,9 @@
 /* Class = "UILabel"; text = "KeePassium does not collect any personal or analytical data nor share it with anyone."; ObjectID = "9wt-nj-TZW"; */
 "9wt-nj-TZW.text" = "KeePassium não coleta nem compartilha quaisquer dados pessoais ou analíticos.";
 
+/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "86n-Hc-6m7"; */
+"86n-Hc-6m7.text" = "CC BY 3.0";
+
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
 "Aig-jg-p8B.text" = "Licença MIT";
 
@@ -81,6 +84,9 @@
 
 /* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
 "Kdg-Hz-XOQ.text" = "Textura Fancy Deboss por Daniel Beaton";
+
+/* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
+"kvO-9B-1Sy.text" = "Dicionários para frases-senha por EFF";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
 "lht-LP-o0Y.text" = "Licença MIT";

@@ -937,6 +937,9 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Stel eenmalig wachtwoord in (OTP)";
 
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "Hoofdletterinstellingen";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Bekijk bijlagen direct in KeePassium en laat geen sporen achter in andere apps. (werkt met afbeeldingen, documenten, archieven en nog veel meer)";
 

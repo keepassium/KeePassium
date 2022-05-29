@@ -16,6 +16,9 @@
 /* Class = "UILabel"; text = "KeePassium does not collect any personal or analytical data nor share it with anyone."; ObjectID = "9wt-nj-TZW"; */
 "9wt-nj-TZW.text" = "KeePassium non raccoglie dati personali o analitici né li condivide con nessuno.";
 
+/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "86n-Hc-6m7"; */
+"86n-Hc-6m7.text" = "CC BY 3.0";
+
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
 "Aig-jg-p8B.text" = "Licenza MIT";
 

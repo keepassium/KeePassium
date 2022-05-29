@@ -133,6 +133,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "ลบไฟล์กุญแจหรือไม่?\n ตรวจสอบให้ดีว่าคุณกู้ไว้เรียบร้อยแล้ว";
 
+/* Notification when user tries to copy data from KDBX to older KDB database. */
+"[Database/LesserTargetFormat/warning]" = "ฟอร์แมทของฐานข้อมูลนี้เก่าเกินไป ข้อมูลบางอย่างอาจหาย";
+
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "ไม่สามารถหาฐานข้อมูลได้";
 
@@ -150,6 +153,9 @@
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "ฟอร์แมทฐานข้อมูลที่ไม่รู้จัก";
+
+/* Message shown after we show a cached local database instead of the (unavailable) original database. */
+"[Database/Loading/FromCache/text]" = "ไม่สามารถเข้าถึงฐานข้อมูลได้\nที่ใช้อยู่นี้เป็นสำเนาที่เก็บอยู่ในเครื่อง";
 
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "ฐานข้อมูลนี้อ่านได้เท่านั้น";
@@ -211,11 +217,41 @@
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "กำลังบันทึก...";
 
+/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
+"[Database/Settings/ConsiderFileUnreachable/title]" = "วิธีการพิจารณาว่าเข้าถึงไฟล์ไม่ได้";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "แสดงข้อผิดพลาด";
+
+/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/title]" = "ถ้าเข้าถึงไฟล์ไม่ได้";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "ใช้สำเนาของในเครื่อง";
+
+/* Title of settings section (read-only, backup-able, etc) */
+"[Database/Settings/FileAccess/title]" = "การเข้าถึงไฟล์";
+
+/* File setting title, whether the file can be modified (yes/no). */
+"[Database/Settings/ReadOnly/title]" = "อ่านเท่านั้น";
+
+/* Title of database-related settings screen */
+"[Database/Settings/title]" = "การตั้งค่าฐานข้อมูล";
+
+/* Action/button to switch from current to some other database. */
+"[Database/Switch/action]" = "สลับฐานข้อมูล";
+
 /* Explanation of the database sync conflict `Cancel` option. */
 "[Database/SyncConflict/Cancel/description]" = "กำลังยกเลิกการบันทึก ปล่อยไฟล์ไว้ตามเดิม";
 
+/* Title: the current (on-server) database version in case of sync conflict. */
+"[Database/SyncConflict/currentVersion]" = "เวอร์ชันปัจจุบัน";
+
 /* Message shown in case of database sync conflict. */
 "[Database/SyncConflict/description]" = "ฐานข้อมูลมีการเปลี่ยนแปลงหลังจากโหลดเข้ามาใน KeePassium";
+
+/* Title: the loaded (on-device) database version in case of sync conflict. */
+"[Database/SyncConflict/loadedVersion]" = "เวอร์ชันที่โหลดเข้าเครื่อง";
 
 /* Action: combine changes in two conflicting databases. */
 "[Database/SyncConflict/Merge/action]" = "รวม";
@@ -847,6 +883,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "ช่วยเหลือ";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "รหัสผ่านแบบใช้ครั้งเดียว (HOTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "คืนค่าเป็นรุ่นที่ผ่านมาเรียบร้อยแล้ว";
 
@@ -861,6 +900,9 @@
 
 /* Status message: processing of the master key is in progress */
 "[KDF/Progress] Processing the master key" = "กำลังประมวลผลกุญแจหลัก";
+
+/* Generic error message about system keychain. [errorCode: Int] */
+"[KeychainError/generic] Keychain error (code %d) " = "พวงกุญแจเกิดข้อผิดพลาด (code %d) ";
 
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "พวงกุญแจเกิดข้อผิดพลาด: ไม่ทราบฟอร์แมทของข้อมูล";
@@ -883,6 +925,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "รายละเอียดไฟล์";
 
+/* Name of an entry field */
+"[OTP/FieldName]" = "รหัสผ่านแบบใช้ครั้งเดียว";
+
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "QR code นี้ไม่สามารถใช้กับการตั้ง OTP ได้";
 
@@ -891,6 +936,12 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "ตั้งค่ารหัสผ่านแบบใช้ครั้งเดียว (OTP)";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "ไม่สามารถสร้างข้อความ";
+
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "ว่างเปล่า";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "แสดงตัวอย่างไฟล์แนบได้โดยตรงใน KeePassium และไม่ทิ้งร่องรอยให้แอปอื่นเห็น (ใช้กับรูปภาพ, เอกสาร, บันทึกสำคัญ และอื่น ๆ)";
