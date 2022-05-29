@@ -1,5 +1,17 @@
 #CHANGELOG
 
+## [1.34.112] - 2022-05-29
+
+### Added
+
+- New password/passphrase generator (closes #78, #86, #160, #207) [thanks, everyone]
+
+### Improved
+
+- Updated all translations
+- Added more detailed crash logs for memory protection issues 
+
+
 ## [1.33.111] - 2022-05-25
 
 ### Improved
