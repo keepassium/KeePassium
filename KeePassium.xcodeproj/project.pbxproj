@@ -80,6 +80,18 @@
 		751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */; };
 		751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71C21C98D620025C706 /* SupportEmailComposer.swift */; };
+		7526403A28455DAD0003DDFA /* PasswordGeneratorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D92824135D009017BF /* PasswordGeneratorCoordinator.swift */; };
+		7526403B28455DAF0003DDFA /* PasswordGeneratorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D92824135D009017BF /* PasswordGeneratorCoordinator.swift */; };
+		7526403C28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757E78DF282414D5009017BF /* PasswordGeneratorVC.storyboard */; };
+		7526403D28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757E78DF282414D5009017BF /* PasswordGeneratorVC.storyboard */; };
+		7526403F28455DC00003DDFA /* PasswordGeneratorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78E22824150B009017BF /* PasswordGeneratorVC.swift */; };
+		7526404028455DD30003DDFA /* PasswordGeneratorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78E22824150B009017BF /* PasswordGeneratorVC.swift */; };
+		7526404128455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */; };
+		7526404228455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */; };
+		7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */; };
+		7526404428455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */; };
+		7526404528455DDF0003DDFA /* InclusionCondition+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */; };
+		7526404628455DE00003DDFA /* InclusionCondition+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */; };
 		75267CFE25FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
 		75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
 		75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
@@ -450,6 +462,10 @@
 		75A5312823C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A5312723C0DFE900900ED1 /* ItemRelocationCoordinator.swift */; };
 		75A5312923C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A5312723C0DFE900900ED1 /* ItemRelocationCoordinator.swift */; };
 		75A7E5FF26BB4FE1000F1443 /* TipBoxVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E5FE26BB4FE1000F1443 /* TipBoxVC.storyboard */; };
+		75A94C4328441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */; };
+		75A94C4428441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */; };
+		75A94C4528441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */; };
+		75A94C4628441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */; };
 		75AA237A26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
 		75AA237B26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
 		75AA237C26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
@@ -1540,6 +1556,7 @@
 		75A5312223C0D35500900ED1 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		75A5312723C0DFE900900ED1 /* ItemRelocationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRelocationCoordinator.swift; sourceTree = "<group>"; };
 		75A7E5FE26BB4FE1000F1443 /* TipBoxVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TipBoxVC.storyboard; sourceTree = "<group>"; };
+		75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorQuickSheetVC.swift; sourceTree = "<group>"; };
 		75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseFile+extensions.swift"; sourceTree = "<group>"; };
 		75AC35BC23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75AC35BD23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2441,6 +2458,7 @@
 				75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */,
 				75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */,
 				75BF195F283EE1B8006A9826 /* PasswordGeneratorLabel.swift */,
+				75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */,
 			);
 			path = "password-generator";
 			sourceTree = "<group>";
@@ -2866,6 +2884,7 @@
 				7513992C25DDD46C00D22DBB /* default.css in Resources */,
 				751E0D292309AFE50088BB10 /* CrashReportVC.storyboard in Resources */,
 				751E0D2C2309AFE90088BB10 /* FirstSetupVC.storyboard in Resources */,
+				7526403C28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */,
 				751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */,
 				75BF5AF02768106B00809654 /* ParameterValueCell.xib in Resources */,
 				751E0D262309AFBA0088BB10 /* FileInfoVC.storyboard in Resources */,
@@ -3097,6 +3116,7 @@
 				7513992E25DDD46C00D22DBB /* default.css in Resources */,
 				75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */,
 				75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */,
+				7526403D28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */,
 				75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */,
 				75BF5AEF2768106A00809654 /* ParameterValueCell.xib in Resources */,
 				75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */,
@@ -3156,6 +3176,7 @@
 				75BF1966283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
+				75A94C4428441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
 				759894B824620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				758BADB624B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
@@ -3165,14 +3186,17 @@
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				75A5312423C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				75EEC22227484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
+				7526404128455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
+				7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
 				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				7583EA8F2685D720009969E7 /* AutoFillCoordinator.swift in Sources */,
 				75BF1961283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
 				7583EA782685D223009969E7 /* DatabasePickerCoordinator.swift in Sources */,
 				756B15D024C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
+				7526404528455DDF0003DDFA /* InclusionCondition+extensions.swift in Sources */,
 				7516B0D627292A130042F40E /* UIMenu+extensions.swift in Sources */,
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
@@ -3202,6 +3226,7 @@
 				75802635222ED11D00F4525F /* ProgressVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
 				75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */,
+				7526403A28455DAD0003DDFA /* PasswordGeneratorCoordinator.swift in Sources */,
 				758D272426867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */,
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
@@ -3221,6 +3246,7 @@
 				7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
 				7583EA6C2685D1FA009969E7 /* DatabasePickerVC.swift in Sources */,
+				7526404028455DD30003DDFA /* PasswordGeneratorVC.swift in Sources */,
 				75604EB426D8F0DA008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75DE677A268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
@@ -3299,6 +3325,7 @@
 				7599637022E112E50004BC85 /* Attachment+extensions.swift in Sources */,
 				758FC18D24CF254000BAD35C /* AppIcon.swift in Sources */,
 				F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */,
+				75A94C4328441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
 				750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */,
 				7516B0D527292A130042F40E /* UIMenu+extensions.swift in Sources */,
 				75BF5AED27680D4600809654 /* ParameterValueCell.swift in Sources */,
@@ -3480,6 +3507,7 @@
 				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
 				758FC18E24CF254000BAD35C /* AppIcon.swift in Sources */,
 				75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */,
+				75A94C4528441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
 				75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */,
 				7516B0D727292A130042F40E /* UIMenu+extensions.swift in Sources */,
 				75BF5AEE27680D4600809654 /* ParameterValueCell.swift in Sources */,
@@ -3621,6 +3649,7 @@
 				75BF1968283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
+				75A94C4628441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
 				759894BA24620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				758BADB824B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
@@ -3630,14 +3659,17 @@
 				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
 				75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				75EEC22427484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
+				7526404228455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
+				7526404428455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				7583EA902685D720009969E7 /* AutoFillCoordinator.swift in Sources */,
 				75BF1963283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
 				7583EA7B2685D224009969E7 /* DatabasePickerCoordinator.swift in Sources */,
 				756B15D224C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
+				7526404628455DE00003DDFA /* InclusionCondition+extensions.swift in Sources */,
 				7516B0D827292A130042F40E /* UIMenu+extensions.swift in Sources */,
 				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
@@ -3667,6 +3699,7 @@
 				75D7DF95233E5E310029AD87 /* ProgressVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
 				75F0BE5626A9BD270076B636 /* YubiKey+extension.swift in Sources */,
+				7526403B28455DAF0003DDFA /* PasswordGeneratorCoordinator.swift in Sources */,
 				758D272526867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				756F365926112A3B005A35DA /* FileDestructionHelper.swift in Sources */,
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
@@ -3686,6 +3719,7 @@
 				7538936C26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
 				7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */,
+				7526403F28455DC00003DDFA /* PasswordGeneratorVC.swift in Sources */,
 				75604EB526D8F0DB008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,

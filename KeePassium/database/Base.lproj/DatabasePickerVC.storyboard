@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -182,6 +182,12 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Sw6-F7-OkZ"/>
+                        <barButtonItem title="{PassGen}" image="die.face.3" catalog="system" id="XJs-ol-dGz">
+                            <connections>
+                                <action selector="didPressPasswordGeneratorButton:" destination="vWt-yt-cgE" id="KaO-rW-ZHX"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Yyg-IS-vi0"/>
                         <barButtonItem image="settings-toolbar" id="oee-CI-r2x" userLabel="Settings">
                             <attributedString key="userComments">
@@ -222,6 +228,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="addDatabaseBarButton" destination="qPq-UR-uZs" id="a7h-6a-Mnv"/>
+                        <outlet property="passwordGeneratorButton" destination="XJs-ol-dGz" id="SgO-qU-nJa"/>
                         <outlet property="sortOrderButton" destination="lnO-nD-gvh" id="JWF-cH-xup"/>
                     </connections>
                 </tableViewController>
@@ -234,6 +241,7 @@
     <resources>
         <image name="close-toolbar" width="25" height="25"/>
         <image name="create-item-toolbar" width="25" height="25"/>
+        <image name="die.face.3" catalog="system" width="128" height="114"/>
         <image name="fp-generic-listitem" width="29" height="29"/>
         <image name="help-about-toolbar" width="25" height="25"/>
         <image name="settings-app-lock-listitem" width="29" height="29"/>

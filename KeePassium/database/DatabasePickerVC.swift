@@ -42,6 +42,10 @@ protocol DatabasePickerDelegate: AnyObject {
     func didPressHelp(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     #endif
+    func didPressPasswordGenerator(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabasePickerVC
+    )
     func didPressCancel(in viewController: DatabasePickerVC)
     
     func needsPremiumToAddDatabase(in viewController: DatabasePickerVC) -> Bool
@@ -94,6 +98,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     }
     @IBOutlet private weak var addDatabaseBarButton: UIBarButtonItem!
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
+    @IBOutlet private weak var passwordGeneratorButton: UIBarButtonItem!
     
     public weak var delegate: DatabasePickerDelegate?
     public var mode: DatabasePickerMode = .light
@@ -142,6 +147,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
+        passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
         
         settingsNotifications = SettingsNotifications(observer: self)
         
@@ -410,6 +416,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         delegate?.didPressHelp(at: popoverAnchor, in: self)
     }
     #endif
+        
+    @IBAction func didPressPasswordGeneratorButton(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressPasswordGenerator(at: popoverAnchor, in: self)
+    }
     
     @objc func didPressCancel(_ sender: UIBarButtonItem) {
         delegate?.didPressCancel(in: self)

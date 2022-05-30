@@ -21,15 +21,27 @@ final class PasswordGeneratorCoordinator: Coordinator {
     public private(set) var generatedPassword = ""
     
     private let router: NavigationRouter
-    private let passGenVC: PasswordGeneratorVC
+    private let firstVC: UIViewController
+    private var passGenVC: PasswordGeneratorVC?
+    private var quickSheetVC: PasswordGeneratorQuickSheetVC?
     
     private let passwordGenerator = PasswordGenerator()
     private let passphraseGenerator = PassphraseGenerator()
     
-    init(router: NavigationRouter) {
+    init(router: NavigationRouter, quickMode: Bool) {
         self.router = router
-        passGenVC = PasswordGeneratorVC.instantiateFromStoryboard()
-        passGenVC.delegate = self
+        if quickMode {
+            let quickModeVC = PasswordGeneratorQuickSheetVC()
+            self.quickSheetVC = quickModeVC
+            firstVC = quickModeVC
+        } else {
+            let fullModeVC = PasswordGeneratorVC.instantiateFromStoryboard()
+            self.passGenVC = fullModeVC
+            firstVC = fullModeVC
+            prepareFullModeGenerator(fullModeVC)
+        }
+        quickSheetVC?.delegate = self
+        passGenVC?.delegate = self
     }
     
     deinit {
@@ -39,11 +51,7 @@ final class PasswordGeneratorCoordinator: Coordinator {
     
     func start() {
         setupDismissButton()
-        
-        passGenVC.config = Settings.current.passwordGeneratorConfig
-        passGenVC.mode = Settings.current.passwordGeneratorConfig.lastMode
-        
-        router.push(passGenVC, animated: true, onPop: { [weak self] in
+        router.push(firstVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
@@ -61,11 +69,16 @@ final class PasswordGeneratorCoordinator: Coordinator {
                 self?.dismiss()
             },
             menu: nil)
-        passGenVC.navigationItem.leftBarButtonItem = closeButton
+        firstVC.navigationItem.leftBarButtonItem = closeButton
+    }
+    
+    private func prepareFullModeGenerator(_ passGenVC: PasswordGeneratorVC) {
+        passGenVC.config = Settings.current.passwordGeneratorConfig
+        passGenVC.mode = Settings.current.passwordGeneratorConfig.lastMode
     }
     
     private func dismiss() {
-        router.pop(viewController: passGenVC, animated: true)
+        router.pop(viewController: firstVC, animated: true)
     }
 }
 
@@ -73,7 +86,8 @@ extension PasswordGeneratorCoordinator {
     public func generate(
         mode: PasswordGeneratorMode,
         config: PasswordGeneratorParams,
-        animated: Bool
+        animated: Bool,
+        viewController: PasswordGeneratorVC
     ) {
         let requirements: PasswordGeneratorRequirements
         let generator: PasswordGenerator
@@ -100,13 +114,35 @@ extension PasswordGeneratorCoordinator {
             let password = try generator.generate(with: requirements) 
             generatedPassword = password
             if isPassphrase {
-                passGenVC.showPassphrase(password, animated: animated)
+                viewController.showPassphrase(password, animated: animated)
             } else {
-                passGenVC.showPassword(password, animated: animated)
+                viewController.showPassword(password, animated: animated)
             }
         } catch {
             generatedPassword = ""
-            passGenVC.showError(error)
+            viewController.showError(error)
+        }
+    }
+    
+    private func performCopyToClipboard(in viewController: UIViewController) {
+        let clipboardTimeout = TimeInterval(Settings.current.clipboardTimeout.seconds)
+        Clipboard.general.insert(text: generatedPassword, timeout: clipboardTimeout)
+        HapticFeedback.play(.copiedToClipboard)
+        if UIAccessibility.isVoiceOverRunning {
+            UIAccessibility.post(
+                notification: .announcement,
+                argument: NSAttributedString(
+                    string: LString.titleCopiedToClipboard,
+                    attributes: [.accessibilitySpeechQueueAnnouncement: true]
+                )    
+            )
+        } else {
+            viewController.showNotification(
+                LString.titleCopiedToClipboard,
+                image: UIImage.get(.docOnDoc)?
+                    .applyingSymbolConfiguration(.init(weight: .light))?
+                    .withTintColor(.green, renderingMode: .alwaysTemplate),
+                duration: 1)
         }
     }
 }
@@ -122,7 +158,7 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorDelegate {
         animated: Bool,
         in viewController: PasswordGeneratorVC
     ) {
-        generate(mode: mode, config: config, animated: animated)
+        generate(mode: mode, config: config, animated: animated, viewController: viewController)
         if animated {
             HapticFeedback.play(.passwordGenerated)
         }
@@ -133,7 +169,7 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorDelegate {
         config.lastMode = mode
         Settings.current.passwordGeneratorConfig = config
         
-        generate(mode: mode, config: config, animated: false)
+        generate(mode: mode, config: config, animated: false, viewController: viewController)
     }
     
     func didPressDone(in viewController: PasswordGeneratorVC) {
@@ -142,23 +178,52 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorDelegate {
     }
     
     func didPressCopyToClipboard(in viewController: PasswordGeneratorVC) {
-        let clipboardTimeout = TimeInterval(Settings.current.clipboardTimeout.seconds)
-        Clipboard.general.insert(text: generatedPassword, timeout: clipboardTimeout)
-        HapticFeedback.play(.copiedToClipboard)
-        if UIAccessibility.isVoiceOverRunning {
-            UIAccessibility.post(notification: .announcement, argument: LString.titleCopiedToClipboard)
-        } else {
-            viewController.showNotification(
-                LString.titleCopiedToClipboard,
-                image: UIImage.get(.docOnDoc)?
-                    .applyingSymbolConfiguration(.init(weight: .light))?
-                    .withTintColor(.green, renderingMode: .alwaysTemplate),
-                duration: 1)
-        }
+        performCopyToClipboard(in: viewController)
+        dismiss()
     }
     
     func didPressWordlistInfo(wordlist: PassphraseWordlist, in viewController: PasswordGeneratorVC) {
         let urlOpener = URLOpener(viewController)
         urlOpener.open(url: wordlist.sourceURL)
+    }
+}
+
+extension PasswordGeneratorCoordinator: PasswordGeneratorQuickSheetDelegate {
+    func shouldGenerateText(
+        mode: QuickRandomTextMode,
+        in viewController: PasswordGeneratorQuickSheetVC
+    ) -> String? {
+        let config = Settings.current.passwordGeneratorConfig
+
+        let result: String?
+        switch mode {
+        case .basic:
+            result = try? passwordGenerator.generate(with: config.basicModeConfig.toRequirements())
+        case .expert:
+            result = try? passwordGenerator.generate(with: config.customModeConfig.toRequirements())
+        case .passphrase:
+            result = try? passwordGenerator.generate(with: config.passphraseModeConfig.toRequirements())
+        }
+        return result
+    }
+    
+    func didPressCopy(_ text: String, in viewController: PasswordGeneratorQuickSheetVC) {
+        generatedPassword = text
+        performCopyToClipboard(in: viewController)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.dismiss()
+        }
+    }
+    
+    func didRequestFullMode(in viewController: PasswordGeneratorQuickSheetVC) {
+        assert(passGenVC == nil, "Already in full mode?")
+        let fullModeVC = PasswordGeneratorVC.instantiateFromStoryboard()
+        fullModeVC.delegate = self
+        self.passGenVC = fullModeVC
+        prepareFullModeGenerator(fullModeVC)
+        router.push(fullModeVC, animated: true, onPop: { [weak self] in
+            self?.passGenVC = nil
+            self?.quickSheetVC?.refresh()
+        })
     }
 }

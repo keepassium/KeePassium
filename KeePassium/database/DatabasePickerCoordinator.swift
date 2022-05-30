@@ -131,6 +131,29 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     #endif
     
+    func showPasswordGenerator(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        let modalRouter: NavigationRouter
+        let isNarrow = viewController.splitViewController?.isCollapsed ?? false
+        if isNarrow, #available(iOS 15, *) {
+            modalRouter = NavigationRouter.createModal(style: .pageSheet, at: popoverAnchor)
+            let sheet = modalRouter.navigationController.sheetPresentationController   
+            sheet?.detents = [.medium(), .large()]
+            sheet?.prefersGrabberVisible = true
+        } else {
+            modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        }
+        let passGenCoordinator = PasswordGeneratorCoordinator(router: modalRouter, quickMode: true)
+        passGenCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        passGenCoordinator.start()
+        addChildCoordinator(passGenCoordinator)
+        viewController.present(modalRouter, animated: true, completion: nil)
+    }
+    
     private func hasValidDatabases() -> Bool {
         let accessibleDatabaseRefs = FileKeeper.shared
             .getAllReferences(fileType: .database, includeBackup: false)
@@ -324,6 +347,13 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         maybeCreateDatabase(presenter: viewController)
     }
     #endif
+    
+    func didPressPasswordGenerator(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: DatabasePickerVC
+    ) {
+        showPasswordGenerator(at: popoverAnchor, in: viewController)
+    }
     
     func didPressCancel(in viewController: DatabasePickerVC) {
         router.pop(viewController: databasePickerVC, animated: true)

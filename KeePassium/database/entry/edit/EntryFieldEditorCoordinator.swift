@@ -151,7 +151,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
-        let passGenCoordinator = PasswordGeneratorCoordinator(router: router)
+        let passGenCoordinator = PasswordGeneratorCoordinator(router: router, quickMode: false)
         passGenCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }
