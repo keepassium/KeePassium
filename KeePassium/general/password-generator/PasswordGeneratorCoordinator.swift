@@ -15,7 +15,8 @@ protocol PasswordGeneratorCoordinatorDelegate: AnyObject {
 final class PasswordGeneratorCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
-
+    
+    weak var context: AnyObject?
     weak var delegate: PasswordGeneratorCoordinatorDelegate?
     
     public private(set) var generatedPassword = ""
@@ -189,6 +190,15 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorDelegate {
 }
 
 extension PasswordGeneratorCoordinator: PasswordGeneratorQuickSheetDelegate {
+    func didSelectItem(_ text: String, in viewController: PasswordGeneratorQuickSheetVC) {
+        guard let delegate = delegate else {
+            didPressCopy(text, in: viewController)
+            return
+        }
+        delegate.didAcceptPassword(text, in: self)
+        dismiss()
+    }
+    
     func shouldGenerateText(
         mode: QuickRandomTextMode,
         in viewController: PasswordGeneratorQuickSheetVC

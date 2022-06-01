@@ -117,6 +117,20 @@ final class GroupEditorCoordinator: Coordinator {
         addChildCoordinator(iconPickerCoordinator)
         iconPickerCoordinator.start()
     }
+    
+    func showPasswordGenerator(
+        for textInput: TextInputView,
+        in groupEditor: GroupEditorVC
+    ) {
+        let passGenCoordinator = PasswordGeneratorCoordinator(router: router, quickMode: true)
+        passGenCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        passGenCoordinator.delegate = self
+        passGenCoordinator.context = textInput
+        passGenCoordinator.start()
+        addChildCoordinator(passGenCoordinator)
+    }
 }
 
 extension GroupEditorCoordinator: GroupEditorDelegate {
@@ -131,6 +145,23 @@ extension GroupEditorCoordinator: GroupEditorDelegate {
     
     func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in groupEditor: GroupEditorVC) {
         showIconPicker()
+    }
+    
+    func didPressRandomizer(for textInput: TextInputView, in groupEditor: GroupEditorVC) {
+        showPasswordGenerator(for: textInput, in: groupEditor)
+    }
+}
+
+extension GroupEditorCoordinator: PasswordGeneratorCoordinatorDelegate {
+    func didAcceptPassword(_ password: String, in coordinator: PasswordGeneratorCoordinator) {
+        guard let context = coordinator.context,
+              let textInput = context as? TextInputView
+        else {
+            assertionFailure()
+            return
+        }
+        textInput.replace(textInput.selectedOrFullTextRange, withText: password)
+        refresh()
     }
 }
 

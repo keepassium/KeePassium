@@ -13,6 +13,7 @@ protocol GroupEditorDelegate: AnyObject {
     func didPressCancel(in groupEditor: GroupEditorVC)
     func didPressDone(in groupEditor: GroupEditorVC)
     func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in groupEditor: GroupEditorVC)
+    func didPressRandomizer(for textInput: TextInputView, in groupEditor: GroupEditorVC)
 }
 
 final class GroupEditorVC: UIViewController, Refreshable {
@@ -32,7 +33,7 @@ final class GroupEditorVC: UIViewController, Refreshable {
         super.viewDidLoad()
         nameTextField.delegate = self
         nameTextField.validityDelegate = self
-
+        nameTextField.addRandomizerEditMenu()
         refresh()
     }
     
@@ -113,5 +114,11 @@ extension GroupEditorVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         didPressDone(self)
         return true
+    }
+}
+
+extension GroupEditorVC: TextInputEditMenuDelegate {
+    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
+        delegate?.didPressRandomizer(for: textInput, in: self)
     }
 }

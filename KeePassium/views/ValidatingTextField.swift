@@ -58,6 +58,7 @@ class ValidatingTextField: UITextField {
     }
     
     private var wasValid: Bool?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         validBackgroundColor = backgroundColor
@@ -171,5 +172,15 @@ extension ValidatingTextField: UITextFieldDelegate {
     @available(iOS 13, *)
     func textFieldDidChangeSelection(_ textField: UITextField) {
         externalDelegate?.textFieldDidChangeSelection?(textField)
+    }
+}
+
+extension ValidatingTextField: TextInputEditMenuDelegate {
+    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
+        guard let externalEditMenuDelegate = externalDelegate as? TextInputEditMenuDelegate else {
+            assertionFailure("Randomizer requested from where it was not shown")
+            return
+        }
+        return externalEditMenuDelegate.textInputDidRequestRandomizer(textInput)
     }
 }

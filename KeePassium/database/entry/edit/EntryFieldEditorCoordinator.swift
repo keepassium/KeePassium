@@ -40,7 +40,6 @@ final class EntryFieldEditorCoordinator: Coordinator {
     
     private let router: NavigationRouter
     private let fieldEditorVC: EntryFieldEditorVC
-    private weak var passwordGeneratorTargetField: EditableField?
     
     private var isModified = false{
         didSet {
@@ -148,14 +147,16 @@ final class EntryFieldEditorCoordinator: Coordinator {
     }
     
     func showPasswordGenerator(
-        at popoverAnchor: PopoverAnchor,
+        for textInput: TextInputView,
+        quickMode: Bool,
         in viewController: UIViewController
     ) {
-        let passGenCoordinator = PasswordGeneratorCoordinator(router: router, quickMode: false)
+        let passGenCoordinator = PasswordGeneratorCoordinator(router: router, quickMode: quickMode)
         passGenCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }
         passGenCoordinator.delegate = self
+        passGenCoordinator.context = textInput
         passGenCoordinator.start()
         addChildCoordinator(passGenCoordinator)
     }
@@ -299,12 +300,11 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
     }
     
     func didPressPasswordGenerator(
-        for field: EditableField,
-        at popoverAnchor: PopoverAnchor,
+        for input: TextInputView,
+        viaMenu: Bool,
         in viewController: EntryFieldEditorVC
     ) {
-        passwordGeneratorTargetField = field
-        showPasswordGenerator(at: popoverAnchor, in: viewController)
+        showPasswordGenerator(for: input, quickMode: viaMenu, in: viewController)
     }
     
     func getUserNameGeneratorMenu(
@@ -358,15 +358,16 @@ extension EntryFieldEditorCoordinator: ItemIconPickerCoordinatorDelegate {
 
 extension EntryFieldEditorCoordinator: PasswordGeneratorCoordinatorDelegate {
     func didAcceptPassword(_ password: String, in coordinator: PasswordGeneratorCoordinator) {
-        guard let targetField = passwordGeneratorTargetField else {
+        guard let context = coordinator.context,
+              let targetInput = context as? TextInputView
+        else {
             assertionFailure("There is no target for the generated password")
             return
         }
-        targetField.value = password
+        targetInput.replace(targetInput.selectedOrFullTextRange, withText: password)
         self.isModified = true
         fieldEditorVC.revalidate()
         fieldEditorVC.refresh()
-        passwordGeneratorTargetField = nil
     }
 }
 

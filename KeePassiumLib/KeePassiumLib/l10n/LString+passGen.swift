@@ -15,6 +15,8 @@ public extension LString {
             bundle: Bundle.framework,
             value: "Random Generator",
             comment: "Title of the random text/password/username generator dialog.")
+        
+        public static let editMenuTitle = "🎲"
 
         public static let actionGenerate = NSLocalizedString(
             "[PasswordGenerator/Generate/action]",

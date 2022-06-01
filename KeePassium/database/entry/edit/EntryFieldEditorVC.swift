@@ -26,8 +26,8 @@ protocol EntryFieldEditorDelegate: AnyObject {
         in viewController: EntryFieldEditorVC) -> UIMenu?
     
     func didPressPasswordGenerator(
-        for field: EditableField,
-        at popoverAnchor: PopoverAnchor,
+        for input: TextInputView,
+        viaMenu: Bool,
         in viewController: EntryFieldEditorVC
     )
     func didPressPickIcon(
@@ -285,7 +285,6 @@ extension EntryFieldEditorVC: ValidatingTextFieldDelegate {
 }
 
 extension EntryFieldEditorVC: EditableFieldCellDelegate {
-
     func getButtonMenu(for field: EditableField, in cell: EditableFieldCell) -> UIMenu? {
         switch field.internalName {
         case EntryField.userName:
@@ -303,8 +302,7 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         switch cell {
         case is EntryFieldEditorTitleCell:
             didPressChangeIcon(in: cell, at: popoverAnchor)
-        case is PasswordEntryFieldCell:
-            didPressRandomize(field: field, at: popoverAnchor)
+            break
         default:
             assertionFailure("Button pressed in an unknown field")
         }
@@ -323,10 +321,10 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         revalidate()
     }
     
-    func didPressRandomize(field: EditableField, at popoverAnchor: PopoverAnchor) {
-        delegate?.didPressPasswordGenerator(for: field, at: popoverAnchor, in: self)
+    func didPressRandomize(for input: TextInputView, viaMenu: Bool, in cell: EditableFieldCell) {
+        delegate?.didPressPasswordGenerator(for: input, viaMenu: viaMenu, in: self)
     }
-    
+
     func isFieldValid(field: EditableField) -> Bool {
         if field.internalName == EntryField.title {
             return field.value?.isNotEmpty ?? false

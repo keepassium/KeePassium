@@ -63,6 +63,7 @@ class EditableFieldCellFactory {
 internal protocol EditableFieldCellDelegate: AnyObject {
     func didChangeField(_ field: EditableField, in cell: EditableFieldCell)
     func didPressReturn(for field: EditableField, in cell: EditableFieldCell)
+    func didPressRandomize(for textInput: TextInputView, viaMenu: Bool, in cell: EditableFieldCell)
     func didPressButton(
         for field: EditableField,
         at popoverAnchor: PopoverAnchor,
@@ -82,7 +83,8 @@ class EntryFieldEditorTitleCell:
     UITableViewCell,
     EditableFieldCell,
     UITextFieldDelegate,
-    ValidatingTextFieldDelegate
+    ValidatingTextFieldDelegate,
+    TextInputEditMenuDelegate
 {
     public static let storyboardID = "TitleCell"
     
@@ -106,6 +108,7 @@ class EntryFieldEditorTitleCell:
 
         titleTextField.validityDelegate = self
         titleTextField.delegate = self
+        titleTextField.addRandomizerEditMenu()
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapIcon))
         iconView.addGestureRecognizer(tapRecognizer)
@@ -155,12 +158,18 @@ class EntryFieldEditorTitleCell:
         delegate?.didPressReturn(for: field, in: self)
         return false
     }
+    
+    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
+        guard textInput === titleTextField else { return }
+        delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
+    }
 }
 
 class EntryFieldEditorSingleLineCell:
     UITableViewCell,
     EditableFieldCell,
     ValidatingTextFieldDelegate,
+    TextInputEditMenuDelegate,
     UITextFieldDelegate
 {
     public static let storyboardID = "SingleLineCell"
@@ -191,6 +200,7 @@ class EntryFieldEditorSingleLineCell:
         
         textField.validityDelegate = self
         textField.delegate = self
+        textField.addRandomizerEditMenu()
     }
 
     private func refreshMenu() {
@@ -236,12 +246,18 @@ class EntryFieldEditorSingleLineCell:
         let popoverAnchor = PopoverAnchor(sourceView: actionButton, sourceRect: actionButton.bounds)
         delegate?.didPressButton(for: field, at: popoverAnchor, in: self)
     }
+    
+    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
+        guard textInput === textField else { return }
+        delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
+    }
 }
 
 final class PasswordEntryFieldCell:
     UITableViewCell,
     EditableFieldCell,
     ValidatingTextFieldDelegate,
+    TextInputEditMenuDelegate,
     UITextFieldDelegate
 {
     public static let storyboardID = "PasswordEntryFieldCell"
@@ -271,6 +287,7 @@ final class PasswordEntryFieldCell:
         
         textField.validityDelegate = self
         textField.delegate = self
+        textField.addRandomizerEditMenu()
     }
     
     override func becomeFirstResponder() -> Bool {
@@ -299,16 +316,27 @@ final class PasswordEntryFieldCell:
     }
     
     @IBAction func didPressRandomizeButton(_ sender: Any) {
-        guard let field = field else { return }
-        let popoverAnchor = PopoverAnchor(
-            sourceView: randomizeButton,
-            sourceRect: randomizeButton.bounds
-        )
-        delegate?.didPressButton(for: field, at: popoverAnchor, in: self)
+        textField.selectAll(self) 
+        delegate?.didPressRandomize(for: textField, viaMenu: false, in: self)
+    }
+    
+    func shouldShowRandomizerMenu(in textInput: TextInputView) -> Bool {
+        return textInput === textField
+    }
+    
+    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
+        guard textInput === textField else { return }
+        delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
     }
 }
 
-class EntryFieldEditorMultiLineCell: UITableViewCell, EditableFieldCell, ValidatingTextViewDelegate {
+class EntryFieldEditorMultiLineCell:
+    UITableViewCell,
+    EditableFieldCell,
+    UITextViewDelegate,
+    ValidatingTextViewDelegate,
+    TextInputEditMenuDelegate
+{
     public static let storyboardID = "MultiLineCell"
     @IBOutlet private weak var textView: ValidatingTextView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -333,6 +361,8 @@ class EntryFieldEditorMultiLineCell: UITableViewCell, EditableFieldCell, Validat
         textView.adjustsFontForContentSizeCategory = true
         
         textView.validityDelegate = self
+        textView.delegate = self
+        textView.addRandomizerEditMenu()
         DispatchQueue.main.async {
             self.textView.setupBorder()
         }
@@ -356,13 +386,21 @@ class EntryFieldEditorMultiLineCell: UITableViewCell, EditableFieldCell, Validat
     func validatingTextViewShouldValidate(_ sender: ValidatingTextView) -> Bool {
         return field?.isValid ?? false
     }
+    
+    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
+        guard textInput === textView else { return }
+        delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
+    }
 }
 
 class EntryFieldEditorCustomFieldCell:
     UITableViewCell,
     EditableFieldCell,
+    UITextFieldDelegate,
+    UITextViewDelegate,
     ValidatingTextFieldDelegate,
-    ValidatingTextViewDelegate
+    ValidatingTextViewDelegate,
+    TextInputEditMenuDelegate
 {
     public static let storyboardID = "CustomFieldCell"
     @IBOutlet private weak var nameTextField: ValidatingTextField!
@@ -387,8 +425,15 @@ class EntryFieldEditorCustomFieldCell:
         valueTextView.adjustsFontForContentSizeCategory = true
         
         protectionSwitch.addTarget(self, action: #selector(protectionDidChange), for: .valueChanged)
+        
         nameTextField.validityDelegate = self
+        nameTextField.delegate = self
+        nameTextField.addRandomizerEditMenu()
+
         valueTextView.validityDelegate = self
+        valueTextView.delegate = self
+        valueTextView.addRandomizerEditMenu()
+
         DispatchQueue.main.async {
             self.valueTextView.setupBorder()
         }
@@ -431,7 +476,12 @@ class EntryFieldEditorCustomFieldCell:
         guard sender == valueTextView else { assertionFailure(); return false }
         return true 
     }
-
+    
+    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
+        guard (textInput === nameTextField) || (textInput === valueTextView) else { return }
+        delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
+    }
+    
     @objc func protectionDidChange() {
         guard let field = field else { return }
         field.isProtected = protectionSwitch.isOn
