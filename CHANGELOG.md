@@ -1,5 +1,17 @@
 #CHANGELOG
 
+## [1.34.113] - 2022-06-02
+
+### Added
+
+- Random generator is now available in context menus in entry/group editor (#155) [thanks, everyone]
+- Quick popup with random passwords in database picker (#155) [thanks, everyone]
+
+### Fixed
+
+- AutoFill could not access some local files (regression in 1.32.110) [thanks, Chris]
+
+
 ## [1.34.112] - 2022-05-29
 
 ### Added
