@@ -7,6 +7,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dvojitým poklepaním skopírujete do schránky";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "Aktivujte, k chcete počúvať.";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Veľkosť písma";
 
@@ -936,6 +939,111 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Nastaviť jednorazové heslo (OTP)";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "Nie je možné vygenerovať text";
+
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "Prázdne";
+
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "Vlastné znaky";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "Zvýšte parameter dĺžky aspoň na %d.";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "Generovať";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "Generovať text";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "Povolené";
+
+/* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
+"[PasswordGenerator/InclusionCondition/excluded]" = "Vylúčené";
+
+/* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
+"[PasswordGenerator/InclusionCondition/required]" = "Povinné";
+
+/* Length (number of characters) of the random text to generate */
+"[PasswordGenerator/Length/title]" = "Dĺžka";
+
+/* Description of a password generator parameter. For example, the digit in 'abc222def'. */
+"[PasswordGenerator/MaxConsecutive/description]" = "Maximálny počet identických znakov opakujúcich sa za sebou.";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "Zvýšte limit na maximálny počet identických prvkov opakujúcich sa za sebou.";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "Základné";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "Expert";
+
+/* One of the operation modes of the random text generator, where it generates random phrases. */
+"[PasswordGenerator/Mode/Passphrase/title]" = "Prístupová fráza";
+
+/* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
+"[PasswordGenerator/Mode/title]" = "Režim";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/NotEnoughElementsToSample/title]" = "Je potrebné vybrať viac prvkov.";
+
+/* Length (number of characters) of the password to generate */
+"[PasswordGenerator/PasswordLength/title]" = "Dĺžka hesla";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "Jedna zo sád znakov je povinná aj vylúčená.";
+
+/* Title for digits (like '123') */
+"[PasswordGenerator/Set/Digits/title]" = "Číslice";
+
+/* Title for look-alike symbols (like '1lI', that is: digit `1`, small `L`, capital `i`). */
+"[PasswordGenerator/Set/Lookalikes/title]" = "Podobné znaky";
+
+/* Title for lowercase letters (like 'abc') */
+"[PasswordGenerator/Set/Lowercase/title]" = "Malé písmená";
+
+/* Title for special symbols (like '@#$') */
+"[PasswordGenerator/Set/Specials/title]" = "Špeciálne symboly";
+
+/* Title for uppercase letters (like 'ABC') */
+"[PasswordGenerator/Set/Uppercase/title]" = "Veľké písmená";
+
+/* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
+"[PasswordGenerator/SpaceCharacter/name]" = "Medzera";
+
+/* Title of the random text/password/username generator dialog. */
+"[PasswordGenerator/title]" = "Náhodný generátor";
+
+/* Character to be inserted between words of a passphrase. */
+"[PasswordGenerator/Word Separtor/title]" = "Oddeľovač";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/lowerCase]" = "malé písmená";
+
+/* Case of letters in a word (e.g. UPPER, lower, Title Case) */
+"[PasswordGenerator/WordCase/title]" = "Veľké a malé písmená";
+
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "Prvé Veľké";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/upperCase]" = "VEĽKÉ PÍSMENÁ";
+
+/* Number of words in a generated passphrase. In context: 'Words: 5' */
+"[PasswordGenerator/WordCount/title]" = "Slová";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "EFF Veľký zoznam slov (7776 slov)";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF Krátky zoznam slov (1296 slov)";
+
+/* List of words to be used for a passphrase. */
+"[PasswordGenerator/Wordlist/title]" = "Zoznam slov";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Zobrazte si ukážku príloh priamo v aplikácii KeePassium a nezanechávajte stopy v iných aplikáciách. (Náhľad podporuje obrázky, dokumenty, archívy a ďalšie.)";

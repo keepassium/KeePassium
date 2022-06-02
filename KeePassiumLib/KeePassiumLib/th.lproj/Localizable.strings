@@ -943,6 +943,60 @@
 /* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
 "[PasswordGenerator/CustomSet/Empty/title]" = "ว่างเปล่า";
 
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "อักขระที่เลือกเอง";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "เพิ่มความยาวตัวอักษรให้ถึงอย่างน้อย %d";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "สุ่ม";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "อักขระที่สุ่ม";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "อนุญาต";
+
+/* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
+"[PasswordGenerator/InclusionCondition/excluded]" = "ละเว้น";
+
+/* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
+"[PasswordGenerator/InclusionCondition/required]" = "ต้องการ";
+
+/* Length (number of characters) of the random text to generate */
+"[PasswordGenerator/Length/title]" = "ความยาวอักขระ";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "ง่าย";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "ยาก";
+
+/* One of the operation modes of the random text generator, where it generates random phrases. */
+"[PasswordGenerator/Mode/Passphrase/title]" = "ชุดวลี";
+
+/* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
+"[PasswordGenerator/Mode/title]" = "รูปแบบ";
+
+/* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
+"[PasswordGenerator/SpaceCharacter/name]" = "เว้นวรรค";
+
+/* Character to be inserted between words of a passphrase. */
+"[PasswordGenerator/Word Separtor/title]" = "ตัวคั่น";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/lowerCase]" = "ตัวพิมพ์เล็ก";
+
+/* Case of letters in a word (e.g. UPPER, lower, Title Case) */
+"[PasswordGenerator/WordCase/title]" = "รูปแบบตัวพิมพ์";
+
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "ขึ้นต้นตัวพิมพ์";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/upperCase]" = "ตัวพิมพ์ใหญ่";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "แสดงตัวอย่างไฟล์แนบได้โดยตรงใน KeePassium และไม่ทิ้งร่องรอยให้แอปอื่นเห็น (ใช้กับรูปภาพ, เอกสาร, บันทึกสำคัญ และอื่น ๆ)";
 
@@ -1306,6 +1360,18 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "ค้นหา";
 
+/* Title of a sort options list. Example: 'Sort by: Name' */
+"[SortBy]" = "เรียงลำดับตาม";
+
+/* List sorting option. Example: 'Sort by: Date Created' */
+"[SortBy/DateCreated]" = "วันที่สร้าง";
+
+/* List sorting option. Example: 'Sort by: Date Modified' */
+"[SortBy/DateModified]" = "วันที่แก้ไข";
+
+/* List sorting option (for file names). Example: 'Sort by: Name' */
+"[SortBy/FileName]" = "ชื่อ";
+
 /* List sorting option (for groups and entries). Example: 'Sort by: Title' */
 "[SortBy/ItemTitle]" = "ชื่อ";
 
@@ -1344,6 +1410,9 @@
 
 /* Call to action, title of the tip box/donation screen. */
 "[TipBox/title/3]" = "สนับสนุน KeePassium";
+
+/* Name of an entry field. Acronym `TOTP` should not be translated. */
+"[TOTP/FieldName]" = "รหัสผ่านแบบใช้ครั้งเดียว (TOTP)";
 
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "ที่จัดเก็บในคลาวด์ / แอปอื่น";

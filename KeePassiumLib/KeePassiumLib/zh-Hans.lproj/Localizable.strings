@@ -133,6 +133,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "删除数据库文件?\n 请确保您有备份文件!";
 
+/* Notification when user tries to copy data from KDBX to older KDB database. */
+"[Database/LesserTargetFormat/warning]" = "这是旧版的数据库格式，有些数据可能会丢失。";
+
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "找不到数据库文件";
 

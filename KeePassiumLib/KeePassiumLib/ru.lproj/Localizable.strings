@@ -8,7 +8,7 @@
 "[Accessibility] Double tap to copy to clipboard" = "Нажмите дважды, чтобы скопировать в буфер обмена";
 
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
-"[Accessibility/activateToListen]" = "Активировать для прослушивания.";
+"[Accessibility/activateToListen]" = "Активируйте, чтобы прослушать.";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Размер текста";
