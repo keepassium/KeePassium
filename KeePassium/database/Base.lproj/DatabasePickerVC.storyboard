@@ -18,28 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoFilesCell" textLabel="5Md-DB-C5P" style="IBUITableViewCellStyleDefault" id="2aB-CY-avc">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2aB-CY-avc" id="6sf-ql-YWz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No database files" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="5Md-DB-C5P">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" name="PrimaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Placeholder shown when there are no database files available"/>
-                                            </attributedString>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" id="vFB-ft-SKS" userLabel="FileItemCell" customClass="FileListCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="375" height="59.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="59.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vFB-ft-SKS" id="XQp-IY-Ue4">
                                     <rect key="frame" x="0.0" y="0.0" width="338.5" height="59.5"/>
@@ -103,7 +83,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AppLockSetupCell" id="P0I-MZ-5qs" userLabel="AppLockSetupCell" customClass="AppLockSetupCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="147.5" width="375" height="103.5"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="103.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P0I-MZ-5qs" id="UIb-k0-Rcp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
@@ -132,7 +112,7 @@
                                                 <action selector="didPressEnableAppLock:" destination="P0I-MZ-5qs" eventType="touchUpInside" id="cg9-rU-tWG"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-Pe-sKK" userLabel="Close">
+                                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-Pe-sKK" userLabel="Close">
                                             <rect key="frame" x="326" y="11" width="33" height="33"/>
                                             <accessibility key="accessibilityConfiguration" label="Close"/>
                                             <constraints>
@@ -140,7 +120,6 @@
                                                 <constraint firstAttribute="width" constant="33" id="PJh-kX-40C"/>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
-                                            <state key="normal" image="close-toolbar"/>
                                             <connections>
                                                 <action selector="didPressClose:" destination="P0I-MZ-5qs" eventType="touchUpInside" id="1Fe-fN-pOM"/>
                                             </connections>
@@ -239,7 +218,6 @@
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
-        <image name="close-toolbar" width="25" height="25"/>
         <image name="create-item-toolbar" width="25" height="25"/>
         <image name="die.face.3" catalog="system" width="128" height="114"/>
         <image name="fp-generic-listitem" width="29" height="29"/>

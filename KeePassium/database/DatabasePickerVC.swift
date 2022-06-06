@@ -93,7 +93,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     
     private enum CellID: String {
         case fileItem = "FileItemCell"
-        case noFiles = "NoFilesCell"
         case appLockSetup = "AppLockSetupCell"
     }
     @IBOutlet private weak var addDatabaseBarButton: UIBarButtonItem!
@@ -147,6 +146,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
+        setupEmptyView(tableView)
         passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
         
         settingsNotifications = SettingsNotifications(observer: self)
@@ -170,6 +170,18 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 setupCancelButton()
             }
         }
+    }
+    
+    private func setupEmptyView(_ tableView: UITableView) {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
+        label.textColor = .auxiliaryText
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.text = LString.titleNoDatabaseFiles
+        label.textAlignment = .center
+        
+        tableView.backgroundView = label
     }
     
     private func setupCancelButton() {
@@ -203,7 +215,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         super.viewWillDisappear(animated)
         selectedRef = nil
     }
-    
+
 
     @objc
     private func didPullToRefresh() {
@@ -245,6 +257,8 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             includeBackup: includeBackup)
         sortFileList()
         
+        tableView.backgroundView?.isHidden = !databaseRefs.isEmpty
+        
         if let defaultDatabase = delegate?.getDefaultDatabase(from: databaseRefs, in: self) {
             if delegate?.shouldAcceptDatabaseSelection(defaultDatabase, in: self) ?? true {
                 selectDatabase(defaultDatabase, animated: false)
@@ -281,15 +295,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
     }
     
-    private func getIndexPath(for fileRef: URLReference) -> IndexPath? {
-        guard let originalInstance = fileRef.find(in: databaseRefs, fallbackToNamesake: false),
-              let fileIndex = databaseRefs.firstIndex(of: originalInstance)
-        else {
-            return nil
-        }
-        return getIndexPath(for: fileIndex)
-    }
-    
     public func selectDatabase(_ fileRef: URLReference?, animated: Bool) {
         selectedRef = fileRef
         if let fileRef = fileRef,
@@ -311,8 +316,8 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
         cellView.shake()
     }
-    
-    
+
+
     private func makeListSettingsMenu() -> UIMenu {
         let showBackupAction = UIAction(
             title: LString.titleShowBackupFiles,
@@ -403,8 +408,8 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         return addDatabaseAction
         #endif
     }
-    
-    
+
+
     #if MAIN_APP
     @IBAction func didPressSettingsButton(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
@@ -433,18 +438,18 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     
     private func didPressRevealInFinder(_ fileRef: URLReference, at indexPath: IndexPath) {
         assert(ProcessInfo.isRunningOnMac)
-        let fileRef = databaseRefs[indexPath.row]
+        guard let fileRef = getFileRef(at: indexPath) else { assertionFailure(); return }
         delegate?.didPressRevealDatabaseInFinder(fileRef, in: self)
     }
     
     func didPressExportDatabase(_ fileRef: URLReference, at indexPath: IndexPath) {
-        let fileRef = databaseRefs[indexPath.row]
+        guard let fileRef = getFileRef(at: indexPath) else { assertionFailure(); return }
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressExportDatabase(fileRef, at: popoverAnchor, in: self)
     }
     
     func didPressDatabaseSettings(_ fileRef: URLReference, at indexPath: IndexPath) {
-        let fileRef = databaseRefs[indexPath.row]
+        guard let fileRef = getFileRef(at: indexPath) else { assertionFailure(); return }
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressDatabaseSettings(fileRef, at: popoverAnchor, in: self)
     }
@@ -452,7 +457,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     func didPressEliminateDatabase(_ fileRef: URLReference, at indexPath: IndexPath) {
         StoreReviewSuggester.registerEvent(.trouble)
 
-        let fileRef = databaseRefs[indexPath.row]
+        guard let fileRef = getFileRef(at: indexPath) else { assertionFailure(); return }
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         
         delegate?.didPressEliminateDatabase(
@@ -462,8 +467,8 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             in: self
         )
     }
-    
-    
+
+
     private func shouldShowAppLockSetup() -> Bool {
         let settings = Settings.current
         if settings.isHideAppLockSetupReminder {
@@ -473,31 +478,49 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         return isDataVulnerable
     }
     
+    private func getFileRef(at indexPath: IndexPath) -> URLReference? {
+        let fileIndex: Int
+        if shouldShowAppLockSetup() {
+            fileIndex = indexPath.row - 1
+        } else {
+            fileIndex = indexPath.row
+        }
+        guard databaseRefs.indices.contains(fileIndex) else {
+            return nil
+        }
+        return databaseRefs[fileIndex]
+    }
+    
+    private func getIndexPath(for fileRef: URLReference) -> IndexPath? {
+        guard let originalInstance = fileRef.find(in: databaseRefs, fallbackToNamesake: false),
+              let fileIndex = databaseRefs.firstIndex(of: originalInstance)
+        else {
+            return nil
+        }
+        if shouldShowAppLockSetup() {
+            return IndexPath(row: fileIndex + 1, section: 0)
+        } else {
+            return IndexPath(row: fileIndex, section: 0)
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRows()
-    }
-
-    func numberOfRows() -> Int {
-        let contentCellCount = max(databaseRefs.count, 1) // either files or "there is nothing"
         if shouldShowAppLockSetup() {
-            return contentCellCount + 1
+            return databaseRefs.count + 1
         } else {
-            return contentCellCount
+            return databaseRefs.count
         }
     }
 
     private func getCellID(for indexPath: IndexPath) -> CellID {
-        if indexPath.row < databaseRefs.count {
-            return .fileItem
-        }
-        if shouldShowAppLockSetup() && indexPath.row == (numberOfRows() - 1) {
+        if shouldShowAppLockSetup() && indexPath.row == 0 {
             return .appLockSetup
         }
-        return .noFiles
+        return .fileItem
     }
 
     override func tableView(
@@ -506,26 +529,13 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         ) -> UITableViewCell
     {
         switch getCellID(for: indexPath) {
-        case .noFiles:
-            return makeEmptyListCell(tableView, indexPath: indexPath)
         case .fileItem:
             return makeFileItemCell(tableView, indexPath: indexPath)
         case .appLockSetup:
             return makeAppLockSetupCell(tableView, indexPath: indexPath)
         }
     }
-    
-    private func makeEmptyListCell(
-        _ tableView: UITableView,
-        indexPath: IndexPath
-    ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellID.noFiles.rawValue,
-            for: indexPath
-        )
-        return cell
-    }
-    
+        
     private func makeFileItemCell(
         _ tableView: UITableView,
         indexPath: IndexPath
@@ -535,7 +545,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             withIdentifier: CellID.fileItem.rawValue,
             for: indexPath,
             for: .database)
-        let dbRef = databaseRefs[indexPath.row]
+        guard let dbRef = getFileRef(at: indexPath) else { fatalError() }
         cell.showInfo(from: dbRef)
         cell.isAnimating = dbRef.isRefreshingInfo
         cell.accessoryMenu = makeDatabaseContextMenu(for: indexPath)
@@ -569,10 +579,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
         
         switch getCellID(for: indexPath) {
-        case .noFiles:
-            break
         case .fileItem:
-            let selectedDatabaseRef = databaseRefs[indexPath.row]
+            guard let selectedDatabaseRef = getFileRef(at: indexPath) else {
+                assertionFailure()
+                return
+            }
             if delegate?.shouldAcceptDatabaseSelection(selectedDatabaseRef, in: self) ?? true {
                 selectedRef = selectedDatabaseRef
                 delegate?.didSelectDatabase(selectedDatabaseRef, in: self)
@@ -593,7 +604,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             assertionFailure()
             return
         }
-        let fileRef = databaseRefs[indexPath.row]
+        guard let fileRef = getFileRef(at: indexPath) else { assertionFailure(); return }
         didPressFileInfo(fileRef, at: indexPath)
     }
     
@@ -608,7 +619,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             return []
         }
 
-        let fileRef = databaseRefs[indexPath.row]
+        guard let fileRef = getFileRef(at: indexPath) else { assertionFailure(); return [] }
         var actions = [ContextualAction]()
         if ProcessInfo.isRunningOnMac {
             actions.append(makeRevealInFinderAction(for: fileRef, at: indexPath))
@@ -637,7 +648,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
         
         var menuItems = [UIMenuElement]()
-        let fileRef = databaseRefs[indexPath.row]
+        guard let fileRef = getFileRef(at: indexPath) else { assertionFailure(); return nil }
         
         let databaseSettingsAction = makeDatabaseSettingsAction(for: fileRef, at: indexPath)
         let databaseSettingsMenu = UIMenu(
