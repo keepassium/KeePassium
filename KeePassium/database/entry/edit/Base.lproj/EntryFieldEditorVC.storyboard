@@ -226,7 +226,7 @@
                                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                             <state key="normal">
                                                 <color key="titleColor" name="ActionTint"/>
-                                                <imageReference key="image" image="die.face.6" catalog="system" symbolScale="large"/>
+                                                <imageReference key="image" image="die.face.3" catalog="system" symbolScale="large"/>
                                             </state>
                                             <connections>
                                                 <action selector="didPressRandomizeButton:" destination="Kw5-lo-PXD" eventType="touchUpInside" id="aQH-Hs-qJc"/>
@@ -442,7 +442,7 @@
     <color key="tintColor" name="ActionTint"/>
     <resources>
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
-        <image name="die.face.6" catalog="system" width="128" height="114"/>
+        <image name="die.face.3" catalog="system" width="128" height="114"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
