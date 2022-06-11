@@ -542,7 +542,7 @@ extension PasswordGeneratorVC {
             [weak self, weak alert] _ in
             guard let self = self else { return }
             let text = alert?.textFields!.first!.text ?? ""
-            self.config.customModeConfig.customLists[condition] = text
+            self.config.customModeConfig.customLists[condition] = text.removingRepetitions()
             self.saveConfig()
             self.refresh()
             self.generate(animated: true)
@@ -751,5 +751,13 @@ extension PasswordGeneratorVC {
             return LString.PasswordGenerator.spaceCharacterName
         }
         return separator
+    }
+}
+
+
+extension String {
+    func removingRepetitions() -> String {
+        var present = Set<Character>()
+        return self.filter { present.insert($0).inserted }
     }
 }
