@@ -12,6 +12,8 @@ extension InclusionCondition {
     
     var glyphSymbol: String {
         switch self {
+        case .inactive:
+            return "−"
         case .excluded:
             return "✕"
         case .allowed:
@@ -24,6 +26,9 @@ extension InclusionCondition {
     var image: UIImage? {
         let config = UIImage.SymbolConfiguration(scale: .large)
         switch self {
+        case .inactive:
+            return UIImage.get(.minus)?.withConfiguration(config)
+                .withTintColor(.disabledText, renderingMode: .alwaysOriginal)
         case .excluded:
             return UIImage.get(.nosign)?.withConfiguration(config)
         case .allowed:

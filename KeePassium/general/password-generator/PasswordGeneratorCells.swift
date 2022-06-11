@@ -17,6 +17,14 @@ final class PasswordGeneratorFixedSetCell: UITableViewCell {
     
     var value: InclusionCondition = .allowed {
         didSet {
+            switch value {
+            case .inactive:
+                textLabel?.textColor = .disabledText
+                detailTextLabel?.textColor = .disabledText
+            case .excluded, .allowed, .required:
+                textLabel?.textColor = .primaryText
+                detailTextLabel?.textColor = .auxiliaryText
+            }
             detailTextLabel?.text = value.description
             detailTextLabel?.accessibilityLabel = "" 
             selectorView.value = value

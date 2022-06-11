@@ -9,12 +9,15 @@
 import Foundation
 
 public enum InclusionCondition: Int8, Codable, CustomStringConvertible {
+    case inactive = -2
     case allowed  = -1
     case excluded = 0
     case required = 1
     
     public var description: String {
         switch self {
+        case .inactive:
+            return LString.InclusionCondition.inactive
         case .excluded:
             return LString.InclusionCondition.excluded
         case .allowed:
@@ -27,6 +30,11 @@ public enum InclusionCondition: Int8, Codable, CustomStringConvertible {
 
 extension LString {
     enum InclusionCondition {
+        public static let inactive = NSLocalizedString(
+            "[PasswordGenerator/InclusionCondition/inactive]",
+            bundle: Bundle.framework,
+            value: "Inactive",
+            comment: "Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive`")
         public static let excluded = NSLocalizedString(
             "[PasswordGenerator/InclusionCondition/excluded]",
             bundle: Bundle.framework,

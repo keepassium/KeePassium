@@ -83,6 +83,7 @@ enum SystemImageName: String {
     case icloudSlash = "icloud.slash" 
     case infoCircle = "info.circle" 
     case megaphone = "megaphone" 
+    case minus = "minus" 
     case nosign = "nosign" 
     case paperclip = "paperclip" 
     case pencil = "pencil" 

@@ -29,7 +29,7 @@ public struct PasswordGeneratorRequirements {
         elementMerger: PasswordGenerator.ElementMergingFunction? = nil
     ) {
         self.length = length
-        self.sets = sets
+        self.sets = sets.filter { $0.condition != .inactive }
         self.maxConsecutive = maxConsecutive
         self.elementPreprocessor = elementPreprocessor
         self.elementMerger = elementMerger
