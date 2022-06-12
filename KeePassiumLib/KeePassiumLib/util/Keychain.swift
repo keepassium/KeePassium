@@ -44,6 +44,7 @@ public class Keychain {
         case databaseSettings = "KeePassium.dbSettings"
         case premium = "KeePassium.premium"
     }
+    private let keychainFormatVersion = "formatVersion"
     private let appPasscodeAccount = "appPasscode"
     private let biometricControlAccount = "biometricControlItem"
     private let premiumPurchaseHistory = "premiumPurchaseHistory"
@@ -55,8 +56,9 @@ public class Keychain {
     private let memoryProtectionKeyTagData = "SecureBytes.general".data(using: .utf8)!
     
     private init() {
+        maybeUpgradeKeychainFormat()
     }
-        
+    
     
     private func makeQuery(service: Service, account: String?) -> [String: AnyObject] {
         var result = [String: AnyObject]()
@@ -127,7 +129,8 @@ public class Keychain {
             let query = makeQuery(service: service, account: account)
             let attrsToUpdate: [String: Any] = [
                 kSecValueData as String : data,
-                kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+                kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                kSecAttrIsInvisible as String: kCFBooleanTrue as Any,
             ]
             
             let status = SecItemUpdate(query as CFDictionary, attrsToUpdate as CFDictionary)
@@ -138,6 +141,7 @@ public class Keychain {
         } else {
             var newItem = makeQuery(service: service, account: account)
             newItem[kSecAttrAccessible as String] = kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+            newItem[kSecAttrIsInvisible as String] = kCFBooleanTrue
             newItem[kSecValueData as String] = data as AnyObject?
             let status = SecItemAdd(newItem as CFDictionary, nil)
             if status != noErr {
@@ -364,6 +368,50 @@ public class Keychain {
         Diag.info("Purchase history upgraded")
         
         return purchaseHistory
+    }
+}
+
+private extension Keychain {
+    private func getFormatVersion() -> UInt8 {
+        guard let formatVersionData = try? get(service: .general, account: keychainFormatVersion),
+              let storedFormatVersion = formatVersionData.first
+        else {
+            return 0
+        }
+        return storedFormatVersion
+    }
+    
+    private func saveFormatVersion(_ version: UInt8) {
+        let data = Data([version])
+        do {
+            try set(service: .general, account: keychainFormatVersion, data: data)
+        } catch {
+            Diag.error("Failed to save format version, ignoring [message: \(error.localizedDescription)]")
+            return
+        }
+    }
+    
+    private func maybeUpgradeKeychainFormat() {
+        let formatVersion = getFormatVersion()
+        if formatVersion == 0 {
+            upgradeKeychainFormatToV1()
+            saveFormatVersion(1)
+        }
+    }
+    
+    private func upgradeKeychainFormatToV1() {
+        if let passcodeData = try? get(service: .general, account: appPasscodeAccount) {
+            try? set(service: .general, account: appPasscodeAccount, data: passcodeData)
+        }
+        if let purchaseHistoryData = try? get(service: .premium, account: premiumPurchaseHistory) {
+            try? set(service: .premium, account: premiumPurchaseHistory, data: purchaseHistoryData)
+        }
+        let dbAccounts = try? getAccounts(service: .databaseSettings)
+        dbAccounts?.forEach { dbAccount in
+            if let dbSettingsData = try? get(service: .databaseSettings, account: dbAccount) {
+                try? set(service: .databaseSettings, account: dbAccount, data: dbSettingsData)
+            }
+        }
     }
 }
 
