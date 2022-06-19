@@ -66,7 +66,7 @@ public extension Settings {
         case .initialGracePeriod,
              .freeLightUse,
              .freeHeavyUse:
-            return timeout <= Settings.lightUseDatabaseLockTimeout && timeout != .never
+            return timeout <= Settings.lightUseDatabaseLockTimeout
         case .subscribed,
              .lapsed,
              .fallback:
