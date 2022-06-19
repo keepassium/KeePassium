@@ -67,7 +67,7 @@ public enum PremiumFeature: Int {
              .canUseQuickTypeAutoFill:
             return isEntitled
         case .canPreviewAttachments:
-            return isEntitled || (status != .freeHeavyUse)
+            return true 
         case .canUseExpressUnlock:
             return true 
         }

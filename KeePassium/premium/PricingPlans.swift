@@ -89,11 +89,6 @@ struct PricingPlanBenefit {
         title: LString.premiumBenefitHardwareKeysTitle,
         description: LString.premiumBenefitHardwareKeysDescription
     )
-    static let attachmentPreview = PricingPlanBenefit(
-        image: .premiumBenefitPreview,
-        title: LString.premiumBenefitPreviewAttachmentsTitle,
-        description: LString.premiumBenefitPreviewAttachmentsDescription
-    )
     static let customAppIcons = PricingPlanBenefit(
         image: .premiumBenefitCustomAppIcons,
         title: LString.premiumBenefitChangeAppIconTitle,
@@ -196,7 +191,6 @@ class FreePricingPlan: PricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = nil
@@ -259,7 +253,6 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = LString.subscriptionConditions
@@ -289,7 +282,6 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = LString.subscriptionConditions
@@ -317,7 +309,6 @@ class PricingPlanVersionPurchase: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = nil
@@ -344,7 +335,6 @@ class PricingPlanPremiumForever: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.attachmentPreview,
             PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = nil
