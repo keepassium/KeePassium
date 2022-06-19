@@ -663,6 +663,9 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         if let appLockSetupAnnouncement = maybeMakeAppLockSetupAnnouncement(for: viewController) {
             result.append(appLockSetupAnnouncement)
         }
+        if let donationAnnouncement = maybeMakeDonationAnnouncement(for: viewController) {
+            result.append(donationAnnouncement)
+        }
         return result
     }
 }
@@ -878,5 +881,53 @@ extension DatabaseViewerCoordinator {
             }
         )
         return announcement
+    }
+    
+    private func maybeMakeDonationAnnouncement(
+        for viewController: GroupViewerVC
+    ) -> AnnouncementItem? {
+        let premiumStatus = PremiumManager.shared.status
+        guard TipBox.shouldSuggestDonation(status: premiumStatus) else {
+            return nil
+        }
+        
+        let texts = TestHelper.getCurrent(from: [
+            (nil, nil),
+            (LString.tipBoxDescription1, LString.tipBoxCallToAction1),
+            (LString.tipBoxDescription2, LString.tipBoxCallToAction2),
+            (LString.tipBoxDescription3, LString.tipBoxCallToAction3),
+        ])
+        guard texts.1 != nil else { 
+            return nil
+        }
+        let announcement = AnnouncementItem(
+            title: nil,
+            body: texts.0,
+            actionTitle: texts.1,
+            image: .get(.heart)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal),
+            canBeClosed: true,
+            onDidPressAction: { [weak self, weak viewController] _ in
+                self?.showTipBox()
+                viewController?.refreshAnnouncements()
+            },
+            onDidPressClose: { [weak viewController] _ in
+                TipBox.registerTipBoxSeen()
+                viewController?.refreshAnnouncements()
+            }
+        )
+        return announcement
+    }
+}
+
+extension DatabaseViewerCoordinator {
+    func showTipBox() {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let tipBoxCoordinator = TipBoxCoordinator(router: modalRouter)
+        tipBoxCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        tipBoxCoordinator.start()
+        addChildCoordinator(tipBoxCoordinator)
+        getPresenterForModals().present(modalRouter, animated: true, completion: nil)
     }
 }

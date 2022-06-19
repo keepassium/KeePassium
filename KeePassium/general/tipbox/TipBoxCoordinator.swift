@@ -34,7 +34,7 @@ final class TipBoxCoordinator: Coordinator {
     }
     
     func start() {
-        setupCancelButton(in: tipBoxVC)
+        setupCloseButton(in: tipBoxVC)
         router.push(tipBoxVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
@@ -47,16 +47,16 @@ final class TipBoxCoordinator: Coordinator {
         TipBox.registerTipBoxSeen()
     }
     
-    private func setupCancelButton(in viewController: UIViewController) {
+    private func setupCloseButton(in viewController: UIViewController) {
         guard router.navigationController.topViewController == nil else {
             return
         }
         
-        let cancelButton = UIBarButtonItem(
-            barButtonSystemItem: .cancel,
+        let closeButton = UIBarButtonItem(
+            barButtonSystemItem: .close,
             target: self,
             action: #selector(didPressDismiss))
-        viewController.navigationItem.leftBarButtonItem = cancelButton
+        viewController.navigationItem.leftBarButtonItem = closeButton
     }
     
     private func refreshAvailableProducts() {

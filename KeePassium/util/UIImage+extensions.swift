@@ -81,6 +81,7 @@ enum SystemImageName: String {
     case exclamationMarkTriangle = "exclamationmark.triangle" 
     case folder = "folder" 
     case gearshape2 = "gearshape.2" 
+    case heart = "heart" 
     case icloudSlash = "icloud.slash" 
     case infoCircle = "info.circle" 
     case megaphone = "megaphone" 
