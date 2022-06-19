@@ -316,7 +316,7 @@ final class SettingsVC: UITableViewController, Refreshable {
     
     private func displayInitialGracePeriodStatus(_ purchaseHistory: PurchaseHistory) {
         if Settings.current.isTestEnvironment {
-            let secondsLeft = PremiumManager.shared.gracePeriodSecondsRemaining
+            let secondsLeft = PremiumManager.shared.gracePeriodRemaining
             Diag.debug("Initial setup period: \(secondsLeft) seconds remaining")
         }
         displayFreeStatus(heavyUse: false, purchaseHistory)
@@ -450,8 +450,9 @@ final class SettingsVC: UITableViewController, Refreshable {
         
         let monthlyUseDuration = usageMonitor.getAppUsageDuration(.perMonth)
         let annualUseDuration = 12 * monthlyUseDuration
-        
-        guard monthlyUseDuration > 5 * 60.0 else { return nil }
+        guard monthlyUseDuration > 5 * TimeInterval.minute else {
+            return nil
+        }
         guard let monthlyUsage = usageTimeFormatter.string(from: monthlyUseDuration),
               let annualUsage = usageTimeFormatter.string(from: annualUseDuration)
         else {

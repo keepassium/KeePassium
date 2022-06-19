@@ -108,22 +108,18 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
     }
     
     private func makePresetsMenu() -> UIMenu {
-        let oneDay: TimeInterval = 24*60*60
-        let oneWeek: TimeInterval = 7 * oneDay
-        let oneYear: TimeInterval = 365 * oneDay
-        
         let weeksMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
-            makePresetMenuAction(1 * oneWeek),
-            makePresetMenuAction(2 * oneWeek),
+            makePresetMenuAction(1 * .week),
+            makePresetMenuAction(2 * .week),
         ])
         let monthsMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
-            makePresetMenuAction(31 * oneDay),  
-            makePresetMenuAction(91 * oneDay),  
-            makePresetMenuAction(182 * oneDay), 
+            makePresetMenuAction(31 * .day),  
+            makePresetMenuAction(91 * .day),  
+            makePresetMenuAction(182 * .day), 
         ])
         let yearsMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
-            makePresetMenuAction(1 * oneYear),
-            makePresetMenuAction(2 * oneYear),
+            makePresetMenuAction(1 * .year),
+            makePresetMenuAction(2 * .year),
         ])
         return UIMenu.make(
             title: LString.titlePresets,

@@ -12,13 +12,13 @@ final public class StoreReviewSuggester {
     private static let defaultsKey = "storeReviewSuggester"
     private static let reviewFrequency = 0.015 
     
-    private static let minDaysSinceReview = 125 
+    private static let minDaysSinceReview = 365.0 / 3 
     private static let minSessionsSinceReview = 10
-    private static let minDaysSinceTrouble = 7
+    private static let minDaysSinceTrouble = 7.0
     private static let minSessionsSinceTrouble = 10
     
-    private static let minIntervalSinceReview = TimeInterval(minDaysSinceReview * 24 * 3600)
-    private static let minIntervalSinceTrouble = TimeInterval(minDaysSinceTrouble * 24 * 3600)
+    private static let minIntervalSinceReview: TimeInterval = minDaysSinceReview * .day
+    private static let minIntervalSinceTrouble: TimeInterval = minDaysSinceTrouble * .day
     
     public enum EventType {
         case sessionStart

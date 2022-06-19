@@ -20,8 +20,7 @@ final class QuickAutoFillPrompt {
             return false
         }
         let timeSinceSeen = -(lastSeenDate ?? .distantPast).timeIntervalSinceNow
-        let oneWeek = TimeInterval(7 * 86400)
-        return timeSinceSeen > oneWeek
+        return timeSinceSeen > .week
     }
     
     static var lastSeenDate: Date? {

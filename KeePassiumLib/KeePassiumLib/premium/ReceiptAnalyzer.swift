@@ -107,13 +107,10 @@ public struct PurchaseHistory: Codable, Equatable {
 }
 
 class ReceiptAnalyzer {
-    private let adjacentIntervalsTolerance = 7 * DateInterval.day
+    private let adjacentIntervalsTolerance = 7 * TimeInterval.day
     
     
     struct DateInterval: CustomDebugStringConvertible {
-        static let day = TimeInterval(24 * 60 * 60)
-        static let year = 365 * DateInterval.day
-
         var from: Date
         var to: Date
         
@@ -349,8 +346,8 @@ class ReceiptAnalyzer {
         var fallbackDate: Date? = nil
         while true {
             let duration = continuousInterval.duration
-            if duration >= DateInterval.year {
-                fallbackDate = continuousInterval.to.addingTimeInterval(-DateInterval.year)
+            if duration >= .year {
+                fallbackDate = continuousInterval.to.addingTimeInterval(-TimeInterval.year)
                 break
             }
 

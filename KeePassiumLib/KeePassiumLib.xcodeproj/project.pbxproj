@@ -72,6 +72,7 @@
 		75C01F03247554EA0099698C /* FileAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01F02247554EA0099698C /* FileAccessError.swift */; };
 		75C8471924FAE7B60064A4EC /* Comparable+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */; };
 		75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA6640276BAF06003384FC /* DatabaseError.swift */; };
+		75CD1524285F3929003C11DA /* TimeInterval+constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD1523285F3929003C11DA /* TimeInterval+constants.swift */; };
 		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
 		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B862174F02F00F7DEF2 /* salsa20.c */; };
@@ -279,6 +280,7 @@
 		75C01F02247554EA0099698C /* FileAccessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAccessError.swift; sourceTree = "<group>"; };
 		75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+extensions.swift"; sourceTree = "<group>"; };
 		75CA6640276BAF06003384FC /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
+		75CD1523285F3929003C11DA /* TimeInterval+constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+constants.swift"; sourceTree = "<group>"; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
 		75D09B862174F02F00F7DEF2 /* salsa20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = salsa20.c; sourceTree = "<group>"; };
@@ -730,6 +732,7 @@
 				75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */,
 				7599FE1626C2A51100E3DD67 /* TipBox.swift */,
 				75AA237726CA6DA700488C4E /* KeyHelper+loading.swift */,
+				75CD1523285F3929003C11DA /* TimeInterval+constants.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1133,6 +1136,7 @@
 				75D09C402174F77000F7DEF2 /* Eraseable.swift in Sources */,
 				75D4080523952FD40042122A /* CompositeKey.swift in Sources */,
 				75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */,
+				75CD1524285F3929003C11DA /* TimeInterval+constants.swift in Sources */,
 				75D09C5C2174F81900F7DEF2 /* Error.swift in Sources */,
 				75C8471924FAE7B60064A4EC /* Comparable+extensions.swift in Sources */,
 				75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */,
