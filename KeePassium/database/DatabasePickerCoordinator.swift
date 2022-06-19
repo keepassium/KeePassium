@@ -325,15 +325,6 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         return needsPremiumToAddDatabase()
     }
     
-    func didPressSetupAppLock(in viewController: DatabasePickerVC) {
-        let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
-        passcodeInputVC.delegate = self
-        passcodeInputVC.mode = .setup
-        passcodeInputVC.modalPresentationStyle = .formSheet
-        passcodeInputVC.isCancelAllowed = true
-        viewController.present(passcodeInputVC, animated: true, completion: nil)
-    }
-    
     #if MAIN_APP
     func didPressHelp(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC) {
         showAboutScreen(at: popoverAnchor, in: viewController)
@@ -455,41 +446,6 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
                     self?.selectDatabase(fileRef, animated: false)
                 }
             )
-        }
-    }
-}
-
-
-extension DatabasePickerCoordinator: PasscodeInputDelegate {
-    func passcodeInputDidCancel(_ sender: PasscodeInputVC) {
-        do {
-            try Keychain.shared.removeAppPasscode() 
-        } catch {
-            Diag.error(error.localizedDescription)
-            databasePickerVC.showErrorAlert(error, title: LString.titleKeychainError)
-            return
-        }
-        sender.dismiss(animated: true, completion: nil)
-        refresh()
-    }
-    
-    func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
-        return passcode.count > 0
-    }
-    
-    func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
-        sender.dismiss(animated: true) {
-            [weak self] in
-            do {
-                let keychain = Keychain.shared
-                try keychain.setAppPasscode(passcode)
-                keychain.prepareBiometricAuth(true)
-                Settings.current.isBiometricAppLockEnabled = true
-                self?.refresh()
-            } catch {
-                Diag.error(error.localizedDescription)
-                self?.databasePickerVC.showErrorAlert(error, title: LString.titleKeychainError)
-            }
         }
     }
 }

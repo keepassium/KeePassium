@@ -76,6 +76,8 @@ protocol GroupViewerDelegate: AnyObject {
     
     func getActionPermissions(for group: Group) -> DatabaseItemActionPermissions
     func getActionPermissions(for entry: Entry) -> DatabaseItemActionPermissions
+    
+    func getAnnouncements(for group: Group, in viewController: GroupViewerVC) -> [AnnouncementItem]
 }
 
 
@@ -181,6 +183,7 @@ final class GroupViewerVC:
     Refreshable
 {
     private enum CellID {
+        static let announcement = "AnnouncementCell"
         static let emptyGroup = "EmptyGroupCell"
         static let group = "GroupCell"
         static let entry = "EntryCell"
@@ -211,6 +214,8 @@ final class GroupViewerVC:
     
     private var actionPermissions = DatabaseItemActionPermissions()
     
+    private var announcements = [AnnouncementItem]()
+    
     private var isActivateSearch: Bool = false
     private var searchHelper = SearchHelper()
     private var searchResults = [GroupedEntries]()
@@ -225,6 +230,7 @@ final class GroupViewerVC:
     }
     
     private var cellRefreshTimer: Timer?
+    private var settingsNotifications: SettingsNotifications!
     
     
     override func viewDidLoad() {
@@ -232,6 +238,7 @@ final class GroupViewerVC:
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
+        tableView.register(AnnouncementCell.classForCoder(), forCellReuseIdentifier: CellID.announcement)
         
         createItemButton = UIBarButtonItem(
             title: LString.actionCreate,
@@ -241,6 +248,8 @@ final class GroupViewerVC:
         navigationItem.setRightBarButton(createItemButton, animated: false)
         
         navigationItem.titleView = titleView
+        
+        settingsNotifications = SettingsNotifications(observer: self)
         
         let isRootGroup = group?.isRoot ?? false
         isActivateSearch = Settings.current.isStartWithSearch && isRootGroup
@@ -262,6 +271,7 @@ final class GroupViewerVC:
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        settingsNotifications.startObserving()
         
         navigationItem.hidesSearchBarWhenScrolling = true
         if isActivateSearch {
@@ -274,6 +284,7 @@ final class GroupViewerVC:
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        settingsNotifications.stopObserving()
         cellRefreshTimer?.invalidate()
         cellRefreshTimer = nil
     }
@@ -336,6 +347,8 @@ final class GroupViewerVC:
         titleView.iconView.image = UIImage.kpIcon(forGroup: group)
         navigationItem.title = titleView.titleLabel.text
 
+        announcements = delegate?.getAnnouncements(for: group, in: self) ?? []
+
         actionPermissions =
             delegate?.getActionPermissions(for: group) ??
             DatabaseItemActionPermissions()
@@ -355,6 +368,12 @@ final class GroupViewerVC:
         
         sortOrderButton.menu = makeListSettingsMenu()
         sortOrderButton.image = Settings.current.groupSortOrder.toolbarIcon
+    }
+    
+    func refreshAnnouncements() {
+        guard isViewLoaded, let group = group else { return }
+        announcements = delegate?.getAnnouncements(for: group, in: self) ?? []
+        tableView.reloadSections([0], with: .automatic)
     }
     
     private func refreshDynamicCells() {
@@ -415,9 +434,9 @@ final class GroupViewerVC:
             }
         } else {
             if isGroupEmpty {
-                return 1 // for "Nothing here" cell
+                return announcements.count + 1 // for "Nothing here" cell
             } else {
-                return groupsSorted.count + entriesSorted.count
+                return announcements.count + groupsSorted.count + entriesSorted.count
             }
         }
     }
@@ -427,13 +446,26 @@ final class GroupViewerVC:
         cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         if isSearchActive {
-            return getSearchResultCell(at: indexPath)
+            return makeSearchResultCell(at: indexPath)
         } else {
-            return getDatabaseItemCell(at: indexPath)
+            if announcements.indices.contains(indexPath.row) {
+                return makeAnnouncementCell(at: indexPath)
+            } else {
+                return makeDatabaseItemCell(at: indexPath)
+            }
         }
     }
     
-    private func getSearchResultCell(at indexPath: IndexPath) -> UITableViewCell {
+    private func makeAnnouncementCell(at indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView
+            .dequeueReusableCell(withIdentifier: CellID.announcement, for: indexPath)
+            as! AnnouncementCell
+        let announcement = announcements[indexPath.row]
+        cell.announcementView.apply(announcement)
+        return cell
+    }
+    
+    private func makeSearchResultCell(at indexPath: IndexPath) -> UITableViewCell {
         if isSearchActive && searchResults.isEmpty {
             return tableView.dequeueReusableCell(
                 withIdentifier: CellID.nothingFound,
@@ -449,7 +481,7 @@ final class GroupViewerVC:
         return entryCell
     }
     
-    private func getDatabaseItemCell(at indexPath: IndexPath) -> UITableViewCell {
+    private func makeDatabaseItemCell(at indexPath: IndexPath) -> UITableViewCell {
         if isGroupEmpty {
             return tableView.dequeueReusableCell(withIdentifier: CellID.emptyGroup, for: indexPath)
         }
@@ -598,8 +630,9 @@ final class GroupViewerVC:
         if isSearchActive {
             return nil
         } else {
-            guard indexPath.row < groupsSorted.count else { return nil }
-            return groupsSorted[indexPath.row].value
+            let groupIndex = indexPath.row - announcements.count
+            guard groupsSorted.indices.contains(groupIndex) else { return nil }
+            return groupsSorted[groupIndex].value
         }
     }
     
@@ -610,8 +643,8 @@ final class GroupViewerVC:
             guard indexPath.row < searchResult.entries.count else { return nil }
             return searchResult.entries[indexPath.row].entry
         } else {
-            let entryIndex = indexPath.row - groupsSorted.count
-            guard entryIndex >= 0 && entryIndex < entriesSorted.count else { return nil }
+            let entryIndex = indexPath.row - announcements.count - groupsSorted.count
+            guard entriesSorted.indices.contains(entryIndex) else { return nil }
             return entriesSorted[entryIndex].value
         }
     }
@@ -864,6 +897,17 @@ final class GroupViewerVC:
     @IBAction func didPressChangeDatabaseSettings(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressChangeMasterKey(at: popoverAnchor, in: self)
+    }
+}
+
+extension GroupViewerVC: SettingsObserver {
+    func settingsDidChange(key: Settings.Keys) {
+        switch key {
+        case .appLockEnabled, .rememberDatabaseKey:
+            refreshAnnouncements()
+        default:
+            break
+        }
     }
 }
 

@@ -51,6 +51,7 @@ enum ImageAsset: String {
     case premiumBenefitShiny = "premium-benefit-shiny"
     case premiumConditionCheckedListitem = "premium-condition-checked-listitem"
     case premiumConditionUncheckedListitem = "premium-condition-unchecked-listitem"
+    case settingsAppLockListitem = "settings-app-lock-listitem"
     case expandRowCellAccessory = "expand-row-cellaccessory"
     case collapseRowCellAccessory = "collapse-row-cellaccessory"
     case viewMoreAccessory = "view-more-accessory"

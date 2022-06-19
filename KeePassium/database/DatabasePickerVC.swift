@@ -7,37 +7,10 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
-import UIKit
+import LocalAuthentication.LAContext
 
 
-protocol AppLockSetupCellDelegate: AnyObject {
-    func didPressEnableAppLock(in cell: AppLockSetupCell)
-    func didPressClose(in cell: AppLockSetupCell)
-}
-
-class AppLockSetupCell: UITableViewCell {
-    @IBOutlet weak var dismissButton: UIButton!
-
-    weak var delegate: AppLockSetupCellDelegate?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        dismissButton.accessibilityLabel = LString.actionDismiss
-    }
-    
-    @IBAction func didPressEnableAppLock(_ sender: Any) {
-        delegate?.didPressEnableAppLock(in: self)
-    }
-    
-    @IBAction func didPressClose(_ sender: UIButton) {
-        delegate?.didPressClose(in: self)
-    }
-}
-
-
-protocol DatabasePickerDelegate: AnyObject {
-    func didPressSetupAppLock(in viewController: DatabasePickerVC)
-    
+protocol DatabasePickerDelegate: AnyObject {    
     #if MAIN_APP
     func didPressHelp(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: DatabasePickerVC)
@@ -93,7 +66,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     
     private enum CellID: String {
         case fileItem = "FileItemCell"
-        case appLockSetup = "AppLockSetupCell"
     }
     @IBOutlet private weak var addDatabaseBarButton: UIBarButtonItem!
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
@@ -147,6 +119,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         setupEmptyView(tableView)
+        
         passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
         
         settingsNotifications = SettingsNotifications(observer: self)
@@ -468,23 +441,9 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         )
     }
 
-
-    private func shouldShowAppLockSetup() -> Bool {
-        let settings = Settings.current
-        if settings.isHideAppLockSetupReminder {
-            return false
-        }
-        let isDataVulnerable = settings.isRememberDatabaseKey && !settings.isAppLockEnabled
-        return isDataVulnerable
-    }
     
     private func getFileRef(at indexPath: IndexPath) -> URLReference? {
-        let fileIndex: Int
-        if shouldShowAppLockSetup() {
-            fileIndex = indexPath.row - 1
-        } else {
-            fileIndex = indexPath.row
-        }
+        let fileIndex = indexPath.row
         guard databaseRefs.indices.contains(fileIndex) else {
             return nil
         }
@@ -497,11 +456,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         else {
             return nil
         }
-        if shouldShowAppLockSetup() {
-            return IndexPath(row: fileIndex + 1, section: 0)
-        } else {
-            return IndexPath(row: fileIndex, section: 0)
-        }
+        return IndexPath(row: fileIndex, section: 0)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -509,17 +464,10 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if shouldShowAppLockSetup() {
-            return databaseRefs.count + 1
-        } else {
-            return databaseRefs.count
-        }
+        return databaseRefs.count
     }
 
     private func getCellID(for indexPath: IndexPath) -> CellID {
-        if shouldShowAppLockSetup() && indexPath.row == 0 {
-            return .appLockSetup
-        }
         return .fileItem
     }
 
@@ -531,8 +479,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         switch getCellID(for: indexPath) {
         case .fileItem:
             return makeFileItemCell(tableView, indexPath: indexPath)
-        case .appLockSetup:
-            return makeAppLockSetupCell(tableView, indexPath: indexPath)
         }
     }
         
@@ -553,18 +499,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             guard let self = self else { return }
             self.tableView(self.tableView, accessoryButtonTappedForRowWith: indexPath)
         }
-        return cell
-    }
-    
-    private func makeAppLockSetupCell(
-        _ tableView: UITableView,
-        indexPath: IndexPath
-    ) -> AppLockSetupCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellID.appLockSetup.rawValue,
-            for: indexPath)
-            as! AppLockSetupCell
-        cell.delegate = self
         return cell
     }
     
@@ -590,8 +524,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             } else {
                 showSelectionDeniedAnimation(at: indexPath)
             }
-        case .appLockSetup:
-            break
         }
     }
     
@@ -766,16 +698,5 @@ extension DatabasePickerVC: SettingsObserver {
         default:
             break
         }
-    }
-}
-
-extension DatabasePickerVC: AppLockSetupCellDelegate {
-    func didPressClose(in cell: AppLockSetupCell) {
-        Settings.current.isHideAppLockSetupReminder = true
-        tableView.reloadSections([0], with: .automatic)
-    }
-    
-    func didPressEnableAppLock(in cell: AppLockSetupCell) {
-        delegate?.didPressSetupAppLock(in: self)
     }
 }

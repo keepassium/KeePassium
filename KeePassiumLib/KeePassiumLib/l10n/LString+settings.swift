@@ -133,12 +133,22 @@ extension LString {
         comment: "Section title in settings")
     
 
+    public static let titleAppProtection = titleAppProtectionSettings
     public static let titleAppProtectionSettings = NSLocalizedString(
         "[Settings/AppLock/title]",
         bundle: Bundle.framework,
         value: "App Protection",
         comment: "Settings section: protection of the app from unauthorized access")
-
+    public static let callToActionActivateAppProtection = NSLocalizedString(
+        "[Settings/AppLoc/Activate/callToAction]",
+        bundle: Bundle.framework,
+        value: "Activate App Protection",
+        comment: "Call to action (protect the app from unauthorized access)")
+    public static let appProtectionDescription = NSLocalizedString(
+        "[Settings/AppLock/Activate/description]",
+        bundle: Bundle.framework,
+        value: "Protect KeePassium from unauthorized access.",
+        comment: "Description of `Activate app protection` call to action.")
     public static let titleUseBiometryTypeTemplate = NSLocalizedString(
         "[Settings/AppLock/Biometric/title] Use %@",
         bundle: Bundle.framework,

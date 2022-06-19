@@ -119,7 +119,7 @@ final class DatabaseViewerCoordinator: Coordinator {
         }
 
         settingsNotifications = SettingsNotifications(observer: self)
-
+        
         showGroup(database.root, replacingTopVC: splitViewController.isCollapsed)
         showEntry(nil)
         
@@ -272,6 +272,15 @@ extension DatabaseViewerCoordinator {
         
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(diagnosticsViewerCoordinator)
+    }
+    
+    private func startAppProtectionSetup() {
+        let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
+        passcodeInputVC.delegate = self
+        passcodeInputVC.mode = .setup
+        passcodeInputVC.modalPresentationStyle = .formSheet
+        passcodeInputVC.isCancelAllowed = true
+        getPresenterForModals().present(passcodeInputVC, animated: true, completion: nil)
     }
     
     private func showGroup(_ group: Group?, replacingTopVC: Bool = false) {
@@ -644,6 +653,18 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         result.canMoveItem = true
         return result
     }
+
+    func getAnnouncements(for group: Group, in viewController: GroupViewerVC) -> [AnnouncementItem] {
+        guard group.isRoot else {
+            return []
+        }
+        var result = [AnnouncementItem]()
+        
+        if let appLockSetupAnnouncement = maybeMakeAppLockSetupAnnouncement(for: viewController) {
+            result.append(appLockSetupAnnouncement)
+        }
+        return result
+    }
 }
 
 extension DatabaseViewerCoordinator: ProgressViewHost {
@@ -758,6 +779,44 @@ extension DatabaseViewerCoordinator: DatabaseKeyChangerCoordinatorDelegate {
     }
 }
 
+extension DatabaseViewerCoordinator: PasscodeInputDelegate {
+    func passcodeInputDidCancel(_ sender: PasscodeInputVC) {
+        guard sender.mode == .setup else {
+            return
+        }
+        do {
+            try Keychain.shared.removeAppPasscode() 
+        } catch {
+            Diag.error(error.localizedDescription)
+            getPresenterForModals().showErrorAlert(error, title: LString.titleKeychainError)
+            return
+        }
+        sender.dismiss(animated: true, completion: nil)
+        refresh()
+    }
+    
+    func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
+        return passcode.count > 0
+    }
+    
+    func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
+        sender.dismiss(animated: true) {
+            [weak self] in
+            do {
+                let keychain = Keychain.shared
+                try keychain.setAppPasscode(passcode)
+                keychain.prepareBiometricAuth(true)
+                Settings.current.isBiometricAppLockEnabled = true
+                self?.refresh()
+            } catch {
+                Diag.error(error.localizedDescription)
+                self?.getPresenterForModals()
+                    .showErrorAlert(error, title: LString.titleKeychainError)
+            }
+        }
+    }
+}
+
 extension DatabaseViewerCoordinator: UISplitViewControllerDelegate {
     func splitViewController(
         _ splitViewController: UISplitViewController,
@@ -785,5 +844,39 @@ extension DatabaseViewerCoordinator: UISplitViewControllerDelegate {
     }
     func primaryViewController(forCollapsing splitViewController: UISplitViewController) -> UIViewController? {
         return primaryRouter.navigationController
+    }
+}
+
+extension DatabaseViewerCoordinator {
+    private func shouldOfferAppLockSetup() -> Bool {
+        let settings = Settings.current
+        if settings.isHideAppLockSetupReminder {
+            return false
+        }
+        let isDataVulnerable = settings.isRememberDatabaseKey && !settings.isAppLockEnabled
+        return isDataVulnerable
+    }
+    
+    private func maybeMakeAppLockSetupAnnouncement(
+        for viewController: GroupViewerVC
+    ) -> AnnouncementItem? {
+        guard  shouldOfferAppLockSetup() else {
+            return nil
+        }
+        let announcement = AnnouncementItem(
+            title: LString.titleAppProtection,
+            body: LString.appProtectionDescription,
+            actionTitle: LString.callToActionActivateAppProtection,
+            image: UIImage(asset: .settingsAppLockListitem),
+            canBeClosed: true,
+            onDidPressAction: { [weak self] _ in
+                self?.startAppProtectionSetup()
+            },
+            onDidPressClose: { [weak viewController] _ in
+                Settings.current.isHideAppLockSetupReminder = true
+                viewController?.refreshAnnouncements()
+            }
+        )
+        return announcement
     }
 }
