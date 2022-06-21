@@ -1132,6 +1132,12 @@
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "重复密码";
 
+/* Call to action (protect the app from unauthorized access) */
+"[Settings/AppLoc/Activate/callToAction]" = "启用应用解锁密码";
+
+/* Description of `Activate app protection` call to action. */
+"[Settings/AppLock/Activate/description]" = "保护KeePassium免受未经授权的访问。";
+
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "使用 %@";
 
@@ -1344,6 +1350,9 @@
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePass数据库文件不应该当作密钥文件使用。 请选择其他文件。";
+
+/* Placeholder shown when there are no database files available */
+"No database files" = "没有数据库文件";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "显示备份文件";

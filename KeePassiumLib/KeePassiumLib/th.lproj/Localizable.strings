@@ -1222,6 +1222,12 @@
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "ยืนยันรหัสผ่าน";
 
+/* Call to action (protect the app from unauthorized access) */
+"[Settings/AppLoc/Activate/callToAction]" = "เปิดใช้งานแอปล็อก";
+
+/* Description of `Activate app protection` call to action. */
+"[Settings/AppLock/Activate/description]" = "ปกป้อง KeePassium จากการเข้าถึงที่ไม่ได้รับอนุญาต.";
+
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "ใช้ %@";
 
@@ -1449,6 +1455,9 @@
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "ฐานข้อมูล KeePass ไม่ควรใช้เป็นไฟล์กุญแจ โปรดเลือกไฟล์ใหม่";
+
+/* Placeholder shown when there are no database files available */
+"No database files" = "ไม่มีไฟล์ฐานข้อมูล";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "แสดงไฟล์สำรองข้อมูล";

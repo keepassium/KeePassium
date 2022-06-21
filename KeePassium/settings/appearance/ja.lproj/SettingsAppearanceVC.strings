@@ -8,7 +8,7 @@
 "fSx-Do-lgu.text" = "Appのアイコン";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "Lh3-CB-Urp"; */
-"Lh3-CB-Urp.footerTitle" = "パスワードやその他の保護フィールドをアスタリスクで隠す (推奨)";
+"Lh3-CB-Urp.footerTitle" = "パスワードなどの保護されたフィールドをアスタリスクで隠します。 (推奨)";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "Lh3-CB-Urp"; */
 "Lh3-CB-Urp.headerTitle" = "保護されたフィールド";

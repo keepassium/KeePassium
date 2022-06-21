@@ -964,6 +964,9 @@
 /* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
 "[PasswordGenerator/InclusionCondition/excluded]" = "Исключено";
 
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "Неактивно";
+
 /* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
 "[PasswordGenerator/InclusionCondition/required]" = "Обязательно";
 
@@ -1282,6 +1285,12 @@
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Повторить пароль";
 
+/* Call to action (protect the app from unauthorized access) */
+"[Settings/AppLoc/Activate/callToAction]" = "Активируйте защиту приложения";
+
+/* Description of `Activate app protection` call to action. */
+"[Settings/AppLock/Activate/description]" = "Защищает KeePassium от неавторизованного доступа.";
+
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "Использовать %@";
 
@@ -1518,6 +1527,9 @@
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "База паролей KeePass не должна использоваться в качестве ключевого файла. Выберите другой файл.";
+
+/* Placeholder shown when there are no database files available */
+"No database files" = "Нет ни одной базы паролей";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "Показывать резервные копии";

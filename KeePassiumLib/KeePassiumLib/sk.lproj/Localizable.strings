@@ -964,6 +964,9 @@
 /* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
 "[PasswordGenerator/InclusionCondition/excluded]" = "Vylúčené";
 
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "Neaktívne";
+
 /* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
 "[PasswordGenerator/InclusionCondition/required]" = "Povinné";
 
@@ -1282,6 +1285,12 @@
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Zopakujte heslo";
 
+/* Call to action (protect the app from unauthorized access) */
+"[Settings/AppLoc/Activate/callToAction]" = "Zapnúť zámok";
+
+/* Description of `Activate app protection` call to action. */
+"[Settings/AppLock/Activate/description]" = "Chráňte KeePassium pred neoprávneným prístupom.";
+
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "Používať %@";
 
@@ -1518,6 +1527,9 @@
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePass databáza by nemala byť použitá ako súbor s kľúčom. Prosím, vyberte iný súbor.";
+
+/* Placeholder shown when there are no database files available */
+"No database files" = "Žiadne databázové súbory";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "Zobraziť záložné súbory";

@@ -5,7 +5,7 @@
 "e1v-nv-Mst.normalTitle" = "マスターキーをクリア";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "パスワードやその他の保護フィールドをアスタリスクで隠す (推奨)";
+"e6Y-AP-hag.footerTitle" = "パスワードなどの保護されたフィールドをアスタリスクで隠します。 (推奨)";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
 "e6Y-AP-hag.headerTitle" = "保護されたフィールド";

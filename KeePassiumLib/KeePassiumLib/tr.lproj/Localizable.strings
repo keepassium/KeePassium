@@ -1105,6 +1105,12 @@
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Şifreyi Tekrarla";
 
+/* Call to action (protect the app from unauthorized access) */
+"[Settings/AppLoc/Activate/callToAction]" = "Uygulama kilidini etkinleştir";
+
+/* Description of `Activate app protection` call to action. */
+"[Settings/AppLock/Activate/description]" = "KeePassium'u yetkisiz girişlerden koruyun.";
+
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "%@ kullan";
 
@@ -1317,6 +1323,9 @@
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePass veritabanı anahtar dosya olarak kullanılmamalıdır. Lütfen farklı bir dosya seçin.";
+
+/* Placeholder shown when there are no database files available */
+"No database files" = "Veritabanı dosyası yok";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "Yedek Dosyaları Göster";

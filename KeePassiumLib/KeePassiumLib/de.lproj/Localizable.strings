@@ -937,8 +937,38 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Einmalpasswort einrichten (OTP)";
 
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "Leer";
+
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "Eigene Zeichen";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "Ändern Sie die Passwortlänge auf %d oder mehr Zeichen.";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "Erzeugen";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "Erzeugter Text";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "Zulässig";
+
+/* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
+"[PasswordGenerator/InclusionCondition/excluded]" = "Ausgeschlossen";
+
+/* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
+"[PasswordGenerator/InclusionCondition/required]" = "Erforderlich";
+
 /* Length (number of characters) of the random text to generate */
 "[PasswordGenerator/Length/title]" = "Länge";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "Standard";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "Erweitert";
 
 /* One of the operation modes of the random text generator, where it generates random phrases. */
 "[PasswordGenerator/Mode/Passphrase/title]" = "Passphrase";
@@ -948,6 +978,9 @@
 
 /* Length (number of characters) of the password to generate */
 "[PasswordGenerator/PasswordLength/title]" = "Passwortlänge";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "Einer der Zeichensätze ist sowohl erforderlich als auch ausgeschlossen.";
 
 /* Title for digits (like '123') */
 "[PasswordGenerator/Set/Digits/title]" = "Ziffern";
@@ -987,6 +1020,12 @@
 
 /* Number of words in a generated passphrase. In context: 'Words: 5' */
 "[PasswordGenerator/WordCount/title]" = "Wort-Anzahl";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "Große EFF-Wortliste (7.776 Wörter)";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Kurze EFF-Wortliste (1.296 Wörter)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Wortliste";
@@ -1228,6 +1267,12 @@
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Passwort bestätigen";
 
+/* Call to action (protect the app from unauthorized access) */
+"[Settings/AppLoc/Activate/callToAction]" = "Appsperre aktivieren";
+
+/* Description of `Activate app protection` call to action. */
+"[Settings/AppLock/Activate/description]" = "Schützen Sie KeePassium vor unbefugten Zugriffen.";
+
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "%@ verwenden";
 
@@ -1464,6 +1509,9 @@
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "Eine KeePass Datenbank sollte nicht als Schlüsseldatei verwendet werden. Bitte wählen Sie eine andere Datei.";
+
+/* Placeholder shown when there are no database files available */
+"No database files" = "Keine Datenbank";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "Sicherungsdateien anzeigen";

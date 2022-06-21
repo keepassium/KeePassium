@@ -1174,6 +1174,12 @@
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Повторіть пароль";
 
+/* Call to action (protect the app from unauthorized access) */
+"[Settings/AppLoc/Activate/callToAction]" = "Активувати захист додатку";
+
+/* Description of `Activate app protection` call to action. */
+"[Settings/AppLock/Activate/description]" = "Захищає KeePassium від несанкціонованого доступу.";
+
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "Використовувати %@";
 
@@ -1410,6 +1416,9 @@
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "База паролів KeePass не повинна використовуватися в якості файл-ключа. Виберіть інший файл.";
+
+/* Placeholder shown when there are no database files available */
+"No database files" = "Відсутні бази паролів";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "Показувати резервні копії";

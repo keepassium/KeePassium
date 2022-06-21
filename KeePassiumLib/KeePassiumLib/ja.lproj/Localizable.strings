@@ -971,7 +971,7 @@
 "[PasswordGenerator/MaxConsecutive/description]" = "同じ文字の連続を、この値までに制限します。";
 
 /* Error message/call to action from the random text generator. */
-"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "「同一文字の連続の上限」を増やしてください。";
+"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "「同一文字の最大連続数」を増やしてください。";
 
 /* One of the operation modes of the random text generator */
 "[PasswordGenerator/Mode/Basic/title]" = "基本";
@@ -1279,6 +1279,12 @@
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "パスワードの確認";
 
+/* Call to action (protect the app from unauthorized access) */
+"[Settings/AppLoc/Activate/callToAction]" = "Appロックを使用";
+
+/* Description of `Activate app protection` call to action. */
+"[Settings/AppLock/Activate/description]" = "KeePassiumを不正なアクセスから保護します。";
+
 /* Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String] */
 "[Settings/AppLock/Biometric/title] Use %@" = "%@ を使用";
 
@@ -1515,6 +1521,9 @@
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePassのデータベースをキーファイルとして使用しないでください。別のファイルを選択してください。";
+
+/* Placeholder shown when there are no database files available */
+"No database files" = "データベースがありません";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "バックアップを表示";

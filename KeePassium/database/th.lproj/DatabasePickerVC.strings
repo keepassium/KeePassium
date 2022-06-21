@@ -1,12 +1,6 @@
 /* Class = "UIBarButtonItem"; 2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Help"; ObjectID = "2o3-sG-Pcm"; Note = "Action: show help pages (at the moment shows the About screen)"; */
 "2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "ช่วยเหลือ";
 
-/* Class = "UILabel"; text = "No database files"; ObjectID = "5Md-DB-C5P"; Note = "Placeholder shown when there are no database files available"; */
-"5Md-DB-C5P.text" = "ไม่มีไฟล์ฐานข้อมูล";
-
-/* Class = "UIButton"; normalTitle = "Enable AppLock"; ObjectID = "hmv-DA-BgM"; */
-"hmv-DA-BgM.normalTitle" = "เปิดใช้งานแอปล็อก";
-
 /* Class = "UIBarButtonItem"; lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "lnO-nD-gvh"; Note = "Action: show sorting settings of database files"; */
 "lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "จัดเรียงลำดับ";
 
@@ -16,12 +10,6 @@
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
 "qPq-UR-uZs.title" = "เพิ่มฐานข้อมูล";
 
-/* Class = "UILabel"; text = "Protect KeePassium from unauthorized access."; ObjectID = "R68-cy-5mz"; Note = "Explanation for the `Enable AppLock` button."; */
-"R68-cy-5mz.text" = "ปกป้อง KeePassium จากการเข้าถึงที่ไม่ได้รับอนุญาต.";
-
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
 "UI0-Lh-wTj.title" = "ฐานข้อมูล";
-
-/* Class = "UIButton"; accessibilityLabel = "Close"; ObjectID = "zIk-Pe-sKK"; */
-"zIk-Pe-sKK.accessibilityLabel" = "ปิด";
 
