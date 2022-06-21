@@ -20,6 +20,7 @@ protocol DatabasePickerDelegate: AnyObject {
         in viewController: DatabasePickerVC
     )
     func didPressCancel(in viewController: DatabasePickerVC)
+    func didPressShowDiagnostics(in viewController: DatabasePickerVC)
     
     func needsPremiumToAddDatabase(in viewController: DatabasePickerVC) -> Bool
     func didPressAddExistingDatabase(in viewController: DatabasePickerVC)
@@ -162,6 +163,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             barButtonSystemItem: .cancel,
             target: self,
             action: #selector(didPressCancel(_:)))
+        let diagMenuItem = UIAction(title: LString.titleDiagnosticLog) { [weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.didPressShowDiagnostics(in: self)
+        }
+        cancelBarButton.menu = UIMenu(children: [diagMenuItem])
         navigationItem.leftBarButtonItem = cancelBarButton
     }
     

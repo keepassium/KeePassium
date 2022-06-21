@@ -131,6 +131,18 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
     #endif
     
+    private func showDiagnostics(in viewController: UIViewController) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
+        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        diagnosticsViewerCoordinator.start()
+        
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(diagnosticsViewerCoordinator)
+    }
+    
     func showPasswordGenerator(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
@@ -348,6 +360,10 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     
     func didPressCancel(in viewController: DatabasePickerVC) {
         router.pop(viewController: databasePickerVC, animated: true)
+    }
+    
+    func didPressShowDiagnostics(in viewController: DatabasePickerVC) {
+        showDiagnostics(in: viewController)
     }
     
     func didPressAddExistingDatabase(in viewController: DatabasePickerVC) {
