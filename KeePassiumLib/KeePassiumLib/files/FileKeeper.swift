@@ -172,13 +172,14 @@ public class FileKeeper {
         }
         
         guard platformSupportsSharedReferences else {
+            Diag.warning("Failed to get documents directory due to OS limitations.")
             return dirFromFileManager
         }
         switch BusinessModel.type {
         case .freemium:
             if let docDirUrl = loadURL(key: UserDefaultsKey.documentsDirURLReference) {
                 return docDirUrl
-            }
+            } 
         case .prepaid:
             if let proDocDirURL = loadURL(key: UserDefaultsKey.proDocumentsDirURLReference) {
                 return proDocDirURL
@@ -207,9 +208,12 @@ public class FileKeeper {
     }
     
     private static func loadURL(key: String) -> URL? {
-        guard let urlReferenceData = UserDefaults.appGroupShared.data(forKey: key),
-              let urlReference = URLReference.deserialize(from: urlReferenceData)
-        else {
+        guard let urlReferenceData = UserDefaults.appGroupShared.data(forKey: key) else {
+            Diag.warning("No stored reference found")
+            return nil
+        }
+        guard let urlReference = URLReference.deserialize(from: urlReferenceData) else {
+            Diag.warning("Failed to deserialize stored reference")
             return nil
         }
         do {
