@@ -1,5 +1,23 @@
 #CHANGELOG
 
+## [1.35.114] - 2022-06-22
+
+### Changed
+
+- Attachment previews are no longer restricted in free version
+- Database timeout "Never" is shown as a free option (worked as such even before)
+- Instead, the app will suggest donating once in a while
+- Password generator: fixed sets can be deactivated instead of excluded [thanks, Fabian]
+- AutoFill: context menu of the Cancel button will show the diagnostic log
+- Updated all translations
+
+### Fixed
+
+- macOS: sensitive data will not show up in Keychain Access app anymore
+- Extended diagnostics for AutoFill not showing local DBs [thanks, Dennis]
+- Minor UI fixes here and there
+
+
 ## [1.34.113] - 2022-06-02
 
 ### Added
