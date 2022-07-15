@@ -788,7 +788,7 @@ public class Database2: Database {
             let entry2 = entry as! Entry2
             let isEntryAffected = maybeFixAttachmentNames(entry: entry2)
             let isHistoryAffected = entry2.history.reduce(false) { (result, historyEntry) in
-                return result || maybeFixAttachmentNames(entry: historyEntry)
+                return maybeFixAttachmentNames(entry: historyEntry) || result
             }
             if isEntryAffected || isHistoryAffected {
                 affectedEntries.append(entry2)
