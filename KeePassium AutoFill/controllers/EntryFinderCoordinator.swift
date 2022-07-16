@@ -15,8 +15,6 @@ protocol EntryFinderCoordinatorDelegate: AnyObject {
 }
 
 final class EntryFinderCoordinator: Coordinator {
-    let quickAutoFillPromoURL = URL(string: "https://keepassium.com/apphelp/quick-autofill/")!
-    
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: EntryFinderCoordinatorDelegate?
@@ -159,7 +157,7 @@ extension EntryFinderCoordinator {
     
     private func openQuickAutoFillPromo() {
         QuickAutoFillPrompt.dismissDate = Date.now
-        URLOpener(entryFinderVC).open(url: quickAutoFillPromoURL, completionHandler: nil)
+        URLOpener(entryFinderVC).open(url: URL.AppHelp.quickAutoFillIntro, completionHandler: nil)
     }
     
     private func setupAutomaticSearchResults() {

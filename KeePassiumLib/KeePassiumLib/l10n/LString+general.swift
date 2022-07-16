@@ -203,6 +203,17 @@ extension LString {
         comment: "Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year')"
     )
 
+    public static let statusFeatureOn = NSLocalizedString(
+        "[General/Feature/On]",
+        bundle: Bundle.framework,
+        value: "On",
+        comment: "Feature status: enabled/active. Keep it short, possibly abbreviated.")
+    public static let statusFeatureOff = NSLocalizedString(
+        "[General/Feature/Off]",
+        bundle: Bundle.framework,
+        value: "Off",
+        comment: "Feature status: disabled/inactive. Keep it short, possibly abbreviated.")
+
     public static let titleError = NSLocalizedString(
         "[Generic/title] Error",
         bundle: Bundle.framework,

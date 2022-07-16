@@ -21,9 +21,6 @@ protocol PricingPlanPickerDelegate: AnyObject {
 }
 
 class PricingPlanPickerVC: UIViewController {
-    fileprivate let termsAndConditionsURL = URL(string: "https://keepassium.com/terms/app")!
-    fileprivate let privacyPolicyURL = URL(string: "https://keepassium.com/privacy/app")!
-
     @IBOutlet weak var activityIndcator: UIActivityIndicatorView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -137,10 +134,10 @@ class PricingPlanPickerVC: UIViewController {
     }
         
     @IBAction func didPressTerms(_ sender: Any) {
-        AppGroup.applicationShared?.open(termsAndConditionsURL, options: [:])
+        AppGroup.applicationShared?.open(URL.AppHelp.termsAndConditions, options: [:])
     }
     @IBAction func didPressPrivacyPolicy(_ sender: Any) {
-        AppGroup.applicationShared?.open(privacyPolicyURL, options: [:])
+        AppGroup.applicationShared?.open(URL.AppHelp.currentPrivacyPolicy, options: [:])
     }
 }
 

@@ -104,6 +104,8 @@ public class Settings {
         
         case passwordGeneratorConfig
         
+        case networkAccessAllowed
+        
         case hideAppLockSetupReminder
         case textScale
     }
@@ -1475,6 +1477,22 @@ public class Settings {
             if newValue != oldValue {
                 postChangeNotification(changedKey: Keys.passcodeKeyboardType)
             }
+        }
+    }
+    
+    
+    public var isNetworkAccessAllowed: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.networkAccessAllowed.rawValue) as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isNetworkAccessAllowed,
+                newValue: newValue,
+                key: .networkAccessAllowed
+            )
         }
     }
     

@@ -28,8 +28,7 @@ final class CrashReportVC: UIViewController {
     }
     
     @IBAction func didPressLearnMore(_ sender: UIButton) {
-        let helpUrl = URL(string: "https://keepassium.com/apphelp/autofill-memory-limits/")!
         let urlOpener = URLOpener(self)
-        urlOpener.open(url: helpUrl)
+        urlOpener.open(url: URL.AppHelp.autoFillMemoryLimits)
     }
 }

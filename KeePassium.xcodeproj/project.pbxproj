@@ -818,6 +818,10 @@
 		75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75F0BE5626A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
+		75F11C362883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C352883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift */; };
+		75F11C372883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C352883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift */; };
+		75F11C3928836283005B3DC0 /* NetworkAccessSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C3828836283005B3DC0 /* NetworkAccessSettingsVC.swift */; };
+		75F11C3A28836283005B3DC0 /* NetworkAccessSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C3828836283005B3DC0 /* NetworkAccessSettingsVC.swift */; };
 		75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
 		75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
 		75F28787245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
@@ -1870,6 +1874,8 @@
 		75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillSettingsCoordinator.swift; sourceTree = "<group>"; };
 		75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAutoFillPrompt.swift; sourceTree = "<group>"; };
 		75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YubiKey+extension.swift"; sourceTree = "<group>"; };
+		75F11C352883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAccessSettingsCoordinator.swift; sourceTree = "<group>"; };
+		75F11C3828836283005B3DC0 /* NetworkAccessSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAccessSettingsVC.swift; sourceTree = "<group>"; };
 		75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFIKeyActionSheetView.swift; sourceTree = "<group>"; };
 		75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFIKeyActionSheetView.xib; sourceTree = "<group>"; };
 		75F5CACC20BD18320056C969 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
@@ -2208,6 +2214,7 @@
 				75C3800F217A0497006F74C2 /* app-protection */,
 				7527FAAF262F712F00623849 /* data-protection */,
 				7578488722C16D7D00BBEF9A /* backup */,
+				75F11C3428836229005B3DC0 /* network-access */,
 				7546FBC520C1027700C5D834 /* SettingsVC.swift */,
 				751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */,
 				75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */,
@@ -2672,6 +2679,15 @@
 				75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */,
 			);
 			path = "hardware-key";
+			sourceTree = "<group>";
+		};
+		75F11C3428836229005B3DC0 /* network-access */ = {
+			isa = PBXGroup;
+			children = (
+				75F11C352883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift */,
+				75F11C3828836283005B3DC0 /* NetworkAccessSettingsVC.swift */,
+			);
+			path = "network-access";
 			sourceTree = "<group>";
 		};
 		75F2877F245D646B00F03657 /* MFIKeyActionSheet */ = {
@@ -3326,6 +3342,7 @@
 				750E72C926A427A200CDBFFA /* ExpiryDateEditorVC.swift in Sources */,
 				75C94C5720B373BA004FA29D /* GroupViewerVC.swift in Sources */,
 				753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */,
+				75F11C3928836283005B3DC0 /* NetworkAccessSettingsVC.swift in Sources */,
 				757ADC5023A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				756F364A260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				758BAD9524B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
@@ -3433,6 +3450,7 @@
 				75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */,
 				75D76138262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */,
 				750E15A8269C95370040D599 /* OnboardingCoordinator.swift in Sources */,
+				75F11C362883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */,
 				7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */,
 				7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				75BE063F25DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
@@ -3512,6 +3530,7 @@
 				750E72CA26A427A200CDBFFA /* ExpiryDateEditorVC.swift in Sources */,
 				75B38BFE233E5B7C006BDEFC /* GroupViewerVC.swift in Sources */,
 				75B38BFF233E5B7C006BDEFC /* SKProduct+extension.swift in Sources */,
+				75F11C3A28836283005B3DC0 /* NetworkAccessSettingsVC.swift in Sources */,
 				757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				758BAD9624B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
@@ -3619,6 +3638,7 @@
 				75B38C33233E5B7C006BDEFC /* SettingsBackupVC.swift in Sources */,
 				75D76139262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */,
 				750E15A9269C95370040D599 /* OnboardingCoordinator.swift in Sources */,
+				75F11C372883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */,
 				75BE064125DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,

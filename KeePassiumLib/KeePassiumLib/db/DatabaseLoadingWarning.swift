@@ -50,9 +50,9 @@ public final class DatabaseLoadingWarnings {
         public var helpURL: URL? {
             switch self {
             case .databaseFileIsInTrash:
-                return URL(string: "https://keepassium.com/apphelp/database-recently-deleted-warning/")
+                return URL.AppHelp.databaseFileIsInTrashWarning
             case .temporaryBackupDatabase:
-                return URL(string: "https://keepassium.com/apphelp/temporary-backup-database-warning/")
+                return URL.AppHelp.temporaryBackupDatabaseWarning
             default:
                 return nil
             }

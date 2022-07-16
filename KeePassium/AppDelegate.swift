@@ -15,9 +15,6 @@ enum MenuIdentifier {
 }
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    let helpURL = URL(string: "https://keepassium.com/apphelp/")!
-
     var window: UIWindow?
     
     private var mainCoordinator: MainCoordinator!
@@ -199,7 +196,7 @@ extension AppDelegate {
     
     @objc
     private func showAppHelp() {
-        UIApplication.shared.open(helpURL, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL.AppHelp.helpIndex, options: [:], completionHandler: nil)
     }
     
     @objc

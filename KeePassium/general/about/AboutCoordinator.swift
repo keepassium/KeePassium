@@ -64,7 +64,7 @@ extension AboutCoordinator: AboutDelegate {
         AppStoreHelper.writeReview()
     }
     
-    func didPressOpenLicense(url: URL, at popoverAnchor: PopoverAnchor, in viewController: AboutVC) {
+    func didPressOpenURL(_ url: URL, at popoverAnchor: PopoverAnchor, in viewController: AboutVC) {
         AppGroup.applicationShared?.open(url, options: [:], completionHandler: nil)
     }
 }

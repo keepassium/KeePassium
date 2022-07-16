@@ -86,6 +86,7 @@ enum SystemImageName: String {
     case infoCircle = "info.circle" 
     case megaphone = "megaphone" 
     case minus = "minus" 
+    case network = "network" 
     case nosign = "nosign" 
     case paperclip = "paperclip" 
     case pencil = "pencil" 
@@ -101,6 +102,7 @@ enum SystemImageName: String {
     case textformat = "textformat" 
     case trash = "trash" 
     case wandAndStars = "wand.and.stars" 
+    case wifiSlash = "wifi.slash" 
     case xmarkICloud = "xmark.icloud" 
 }
 

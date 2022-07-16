@@ -124,6 +124,15 @@ extension SettingsCoordinator {
         addChildCoordinator(dataProtectionSettingsCoordinator)
     }
     
+    private func showNetworkAccessSettingsPage() {
+        let networkAccessSettingsCoordinator = NetworkAccessSettingsCoordinator(router: router)
+        networkAccessSettingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        networkAccessSettingsCoordinator.start()
+        addChildCoordinator(networkAccessSettingsCoordinator)
+    }
+    
     private func showBackupSettingsPage() {
         let dataBackupSettingsVC = SettingsBackupVC.instantiateFromStoryboard()
         router.push(dataBackupSettingsVC, animated: true, onPop: nil)
@@ -215,6 +224,10 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
     
     func didPressDataProtectionSettings(in viewController: SettingsVC) {
         showDataProtectionSettingsPage()
+    }
+    
+    func didPressNetworkAccessSettings(in viewController: SettingsVC) {
+        showNetworkAccessSettingsPage()
     }
     
     func didPressBackupSettings(in viewController: SettingsVC) {

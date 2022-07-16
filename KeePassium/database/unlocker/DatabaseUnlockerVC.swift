@@ -29,11 +29,7 @@ protocol DatabaseUnlockerDelegate: AnyObject {
         in viewController: DatabaseUnlockerVC)
 }
 
-final class DatabaseUnlockerVC: UIViewController, Refreshable {
-
-    private let forgottenPasswordHelpURL =
-        URL(string: "https://keepassium.com/apphelp/invalid-database-password/")!
-    
+final class DatabaseUnlockerVC: UIViewController, Refreshable {    
     @IBOutlet private weak var databaseLocationIconImage: UIImageView!
     @IBOutlet private weak var databaseFileNameLabel: UILabel!
     @IBOutlet private weak var inputPanel: UIView!
@@ -208,7 +204,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     
     private func showInvalidPasswordHelp() {
         let urlOpener = URLOpener(self)
-        urlOpener.open(url: forgottenPasswordHelpURL) { [weak self] didOpen in
+        urlOpener.open(url: URL.AppHelp.invalidDatabasePassword) { [weak self] didOpen in
             if !didOpen {
                 self?.didPressErrorDetails()
             }

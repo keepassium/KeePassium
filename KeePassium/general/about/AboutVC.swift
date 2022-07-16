@@ -12,7 +12,7 @@ import KeePassiumLib
 protocol AboutDelegate: AnyObject {
     func didPressContactSupport(at popoverAnchor: PopoverAnchor, in viewController: AboutVC)
     func didPressWriteReview(at popoverAnchor: PopoverAnchor, in viewController: AboutVC)
-    func didPressOpenLicense(url: URL, at popoverAnchor: PopoverAnchor, in viewController: AboutVC)
+    func didPressOpenURL(_ url: URL, at popoverAnchor: PopoverAnchor, in viewController: AboutVC)
 }
 
 final class AboutVC: UITableViewController {
@@ -22,6 +22,8 @@ final class AboutVC: UITableViewController {
     @IBOutlet private weak var versionLabel: UILabel!
     @IBOutlet private weak var copyrightLabel: UILabel!
     @IBOutlet private weak var acceptInputFromAutoFillCell: UITableViewCell!
+    @IBOutlet private weak var privacyPolicyCell: UITableViewCell!
+    @IBOutlet private weak var privacyPolicyLabel: UILabel!
     
     weak var delegate: AboutDelegate?
     
@@ -66,6 +68,11 @@ final class AboutVC: UITableViewController {
         versionLabel.text = versionParts.joined(separator: " ")
         copyrightLabel.text = LString.copyrightNotice
         contactSupportCell.detailTextLabel?.text = SupportEmailComposer.getSupportEmail()
+        if Settings.current.isNetworkAccessAllowed {
+            privacyPolicyLabel.text = LString.About.onlinePrivacyPolicyText
+        } else {
+            privacyPolicyLabel.text = LString.About.offlinePrivacyPolicyText
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -94,6 +101,8 @@ final class AboutVC: UITableViewController {
             delegate?.didPressContactSupport(at: popoverAnchor, in: self)
         case writeReviewCell:
             delegate?.didPressWriteReview(at: popoverAnchor, in: self)
+        case privacyPolicyCell:
+            delegate?.didPressOpenURL(URL.AppHelp.currentPrivacyPolicy, at: popoverAnchor, in: self)
         case acceptInputFromAutoFillCell:
             let newValue = !Settings.current.acceptAutoFillInput
             Settings.current.acceptAutoFillInput = newValue
@@ -101,7 +110,7 @@ final class AboutVC: UITableViewController {
             tableView.reloadData()
         default:
             if let urlString = cellTagToURL[selectedCell.tag], let url = URL(string: urlString) {
-                delegate?.didPressOpenLicense(url: url, at: popoverAnchor, in: self)
+                delegate?.didPressOpenURL(url, at: popoverAnchor, in: self)
             }
         } 
     }

@@ -213,6 +213,32 @@ extension LString {
         comment: "Description of the clipboard/pasteboard timeout.")
     
     
+    public static let titleNetworkAccessSettings = NSLocalizedString(
+        "[Settings/NetworkAccess/title]",
+        bundle: Bundle.framework,
+        value: "Network Access",
+        comment: "Settings section: how/whether the app is allowed to use networks/Internet")
+    public static let titleStayOffline = NSLocalizedString(
+        "[Settings/NetworkAccessMode/Offline/title]",
+        bundle: Bundle.framework,
+        value: "Stay Offline",
+        comment: "Setting option: the app should work offline")
+    public static let titleAllowNetworkAccess = NSLocalizedString(
+        "[Settings/NetworkAccessMode/Online/title]",
+        bundle: Bundle.framework,
+        value: "Allow Network Access",
+        comment: "Setting option: the app is permitted to use online features")
+    public static let titleMaximumPrivacy = NSLocalizedString(
+        "[Settings/NetworkAccessMode/Offline/description]",
+        bundle: Bundle.framework,
+        value: "Maximum privacy",
+        comment: "Description of the `Stay Offline` mode.")
+    public static let titleMaximumFunctionality = NSLocalizedString(
+        "[Settings/NetworkAccessMode/Online/description]",
+        bundle: Bundle.framework,
+        value: "Maximum functionality",
+        comment: "Description of the `Allow Network Access` mode.")
+    
     public static let titleDatabaseBackupSettings = NSLocalizedString(
         "[Settings/DatabaseBackup/title]",
         bundle: Bundle.framework,

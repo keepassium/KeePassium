@@ -318,10 +318,46 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Network Access" id="K9j-xG-abD">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="70" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="tPJ-l5-dpS" detailTextLabel="RJA-kR-Obv" imageView="Hmj-1o-ckg" style="IBUITableViewCellStyleValue1" id="wbL-x5-Fc2">
+                                        <rect key="frame" x="0.0" y="752" width="400" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wbL-x5-Fc2" id="RBx-gq-OCt">
+                                            <rect key="frame" x="0.0" y="0.0" width="371.5" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Network access}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="tPJ-l5-dpS">
+                                                    <rect key="frame" x="64" y="14" width="113.5" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Settings section"/>
+                                                    </attributedString>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-network-listitem" id="Hmj-1o-ckg">
+                                                    <rect key="frame" x="20" y="7" width="29" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                </imageView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Off}" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="RJA-kR-Obv">
+                                                    <rect key="frame" x="334.5" y="15" width="29" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Backup" id="HjD-9G-X8p">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="70" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="coD-Om-Vfm" imageView="NaE-pd-mUb" style="IBUITableViewCellStyleDefault" id="v6d-Ag-heE" userLabel="Data Backup Cell">
-                                        <rect key="frame" x="0.0" y="752" width="400" height="48.5"/>
+                                        <rect key="frame" x="0.0" y="845" width="400" height="48.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v6d-Ag-heE" id="EbI-MV-DyE">
                                             <rect key="frame" x="0.0" y="0.0" width="371.5" height="48.5"/>
@@ -350,7 +386,7 @@
                             <tableViewSection headerTitle="Support" id="cBS-jW-dHU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="70" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="QlM-VS-hle" detailTextLabel="RNK-fS-Fvx" imageView="LZW-Tf-LiZ" style="IBUITableViewCellStyleSubtitle" id="UmW-JW-qMs">
-                                        <rect key="frame" x="0.0" y="850" width="400" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="943" width="400" height="49.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UmW-JW-qMs" id="PAH-7H-PLZ">
                                             <rect key="frame" x="0.0" y="0.0" width="371.5" height="49.5"/>
@@ -382,7 +418,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="70" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="GC2-NL-1vB" detailTextLabel="VTG-VH-iv4" imageView="zU2-lH-qu3" style="IBUITableViewCellStyleSubtitle" id="KXm-eO-H7A">
-                                        <rect key="frame" x="0.0" y="899.5" width="400" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="992.5" width="400" height="49.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KXm-eO-H7A" id="HiG-mj-L2T">
                                             <rect key="frame" x="0.0" y="0.0" width="371.5" height="49.5"/>
@@ -414,7 +450,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PpA-oZ-kr2" detailTextLabel="qhK-lw-bGy" imageView="khe-dH-O9L" style="IBUITableViewCellStyleSubtitle" id="LFP-f4-LpI" userLabel="Diagnostic Log Cell">
-                                        <rect key="frame" x="0.0" y="949" width="400" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="1042" width="400" height="49.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LFP-f4-LpI" id="2mk-GN-MHl">
                                             <rect key="frame" x="0.0" y="0.0" width="371.5" height="49.5"/>
@@ -443,7 +479,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DNo-Rs-0EP" imageView="zxE-9P-EpX" style="IBUITableViewCellStyleDefault" id="7mL-Oc-jtm">
-                                        <rect key="frame" x="0.0" y="998.5" width="400" height="48.5"/>
+                                        <rect key="frame" x="0.0" y="1091.5" width="400" height="48.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7mL-Oc-jtm" id="yww-UZ-yiW">
                                             <rect key="frame" x="0.0" y="0.0" width="371.5" height="48.5"/>
@@ -488,6 +524,7 @@
                         <outlet property="dataSafetyCell" destination="rD3-1z-wKc" id="NOP-dI-5CW"/>
                         <outlet property="diagnosticLogCell" destination="LFP-f4-LpI" id="2yE-Si-hL6"/>
                         <outlet property="manageSubscriptionCell" destination="mLw-8H-ker" id="Se7-FN-zL1"/>
+                        <outlet property="networkAccessCell" destination="wbL-x5-Fc2" id="Ok6-my-P7V"/>
                         <outlet property="premiumPurchaseCell" destination="GlN-nS-7Gp" id="vFt-JG-EdQ"/>
                         <outlet property="premiumStatusCell" destination="dqj-hN-QMF" id="ApE-iB-TeI"/>
                         <outlet property="searchCell" destination="CcB-N8-LYg" id="LSG-qR-vsD"/>
@@ -512,6 +549,7 @@
         <image name="settings-autofill-listitem" width="29" height="29"/>
         <image name="settings-backup-listitem" width="29" height="29"/>
         <image name="settings-database-protection-listitem" width="29" height="29"/>
+        <image name="settings-network-listitem" width="29" height="29"/>
         <image name="settings-premium-listitem" width="29" height="29"/>
         <image name="settings-premium-manage-listitem" width="29" height="29"/>
         <image name="settings-premium-trial-listitem" width="29" height="29"/>

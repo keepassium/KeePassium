@@ -164,6 +164,8 @@
 		75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74D3326C1D2B00071B151 /* TestHelper.swift */; };
 		75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */; };
 		75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA2D1621B2FB4000826FC6 /* Diag.swift */; };
+		75F11C33288312A3005B3DC0 /* LString+about.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C32288312A3005B3DC0 /* LString+about.swift */; };
+		75F11C3C288580D4005B3DC0 /* URL+consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C3B288580D4005B3DC0 /* URL+consts.swift */; };
 		75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD12177456200B22D8B /* PasswordGenerator.swift */; };
 		75F4ACD5217745B300B22D8B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD3217745B300B22D8B /* DatabaseManager.swift */; };
 		75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACD82177469500B22D8B /* TemporaryFileURL.swift */; };
@@ -376,6 +378,8 @@
 		75E74D3326C1D2B00071B151 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaver.swift; sourceTree = "<group>"; };
 		75EA2D1621B2FB4000826FC6 /* Diag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diag.swift; sourceTree = "<group>"; };
+		75F11C32288312A3005B3DC0 /* LString+about.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+about.swift"; sourceTree = "<group>"; };
+		75F11C3B288580D4005B3DC0 /* URL+consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+consts.swift"; sourceTree = "<group>"; };
 		75F21C252638010B0048F26F /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75F21C262638010B0048F26F /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75F4ACD12177456200B22D8B /* PasswordGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
@@ -417,6 +421,7 @@
 			children = (
 				75B8608B2475E2F800C5E6C0 /* LString.swift */,
 				75A0047A2840CF5C000B7B17 /* LString+a11y.swift */,
+				75F11C32288312A3005B3DC0 /* LString+about.swift */,
 				75241F43274A90AD00AE15AD /* LString+general.swift */,
 				75241F39274A8DD200AE15AD /* LString+diag.swift */,
 				75241F3B274A8E9300AE15AD /* LString+tipBox.swift */,
@@ -733,6 +738,7 @@
 				7599FE1626C2A51100E3DD67 /* TipBox.swift */,
 				75AA237726CA6DA700488C4E /* KeyHelper+loading.swift */,
 				75CD1523285F3929003C11DA /* TimeInterval+constants.swift */,
+				75F11C3B288580D4005B3DC0 /* URL+consts.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1056,6 +1062,7 @@
 				75D09C222174F77000F7DEF2 /* CustomData2.swift in Sources */,
 				756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */,
 				75012A6A26D82A58002F1911 /* DatabaseLoadingWarning.swift in Sources */,
+				75F11C33288312A3005B3DC0 /* LString+about.swift in Sources */,
 				75D09C242174F77000F7DEF2 /* Attachment2.swift in Sources */,
 				75D09C232174F77000F7DEF2 /* Database2.swift in Sources */,
 				75B5F7F5251B7BE100E444F0 /* DatabaseLoader.swift in Sources */,
@@ -1159,6 +1166,7 @@
 				75D09C5F2174F81900F7DEF2 /* Document.swift in Sources */,
 				75AA237826CA6DA700488C4E /* KeyHelper+loading.swift in Sources */,
 				75F74ABC24C0EF370071281E /* IARError+description.swift in Sources */,
+				75F11C3C288580D4005B3DC0 /* URL+consts.swift in Sources */,
 				759B532025FABB1500259DB0 /* DatabaseSettings.swift in Sources */,
 				75D09C372174F77000F7DEF2 /* KeyHelper.swift in Sources */,
 				75C01F03247554EA0099698C /* FileAccessError.swift in Sources */,

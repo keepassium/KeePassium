@@ -19,6 +19,7 @@ protocol SettingsViewControllerDelegate: AnyObject {
     func didPressAutoFillSettings(in viewController: SettingsVC)
     func didPressAppProtectionSettings(in viewController: SettingsVC)
     func didPressDataProtectionSettings(in viewController: SettingsVC)
+    func didPressNetworkAccessSettings(in viewController: SettingsVC)
     func didPressBackupSettings(in viewController: SettingsVC)
     
     func didPressShowDiagnostics(in viewController: SettingsVC)
@@ -33,6 +34,7 @@ final class SettingsVC: UITableViewController, Refreshable {
     @IBOutlet private weak var dataSafetyCell: UITableViewCell!
     @IBOutlet private weak var dataBackupCell: UITableViewCell!
     @IBOutlet private weak var autoFillCell: UITableViewCell!
+    @IBOutlet private weak var networkAccessCell: UITableViewCell!
     
     @IBOutlet private weak var searchCell: UITableViewCell!
     @IBOutlet private weak var autoUnlockStartupDatabaseLabel: UILabel!
@@ -60,7 +62,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         static let premiumStatus = IndexPath(row: 1, section: premiumSectionIndex)
         static let manageSubscription = IndexPath(row: 2, section: premiumSectionIndex)
 
-        static let supportSectionIndex = 6
+        static let supportSectionIndex = 7
         static let tipBoxCell = IndexPath(row: 1, section: supportSectionIndex)
     }
     private var hiddenIndexPaths = Set<IndexPath>()
@@ -124,6 +126,8 @@ final class SettingsVC: UITableViewController, Refreshable {
         dataSafetyCell.textLabel?.text = LString.titleDataProtectionSettings
         dataSafetyCell.detailTextLabel?.text = LString.subtitleDataProtectionSettings
         
+        networkAccessCell.textLabel?.text = LString.titleNetworkAccessSettings
+        
         dataBackupCell.textLabel?.text = LString.titleDatabaseBackupSettings
         contactSupportCell.textLabel?.text = LString.actionContactUs
         contactSupportCell.detailTextLabel?.text = LString.subtitleContactUs
@@ -146,7 +150,12 @@ final class SettingsVC: UITableViewController, Refreshable {
             appSafetyCell.detailTextLabel?.text = LString.appLockWithPasscodeSubtitle
         }
         refreshPremiumStatus()
-        
+
+        if settings.isNetworkAccessAllowed {
+            networkAccessCell.detailTextLabel?.text = LString.statusFeatureOn
+        } else {
+            networkAccessCell.detailTextLabel?.text = LString.statusFeatureOff
+        }
         contactSupportCell.accessibilityValue = SupportEmailComposer.getSupportEmail()
     }
     
@@ -237,6 +246,8 @@ final class SettingsVC: UITableViewController, Refreshable {
             delegate?.didPressSearchSettings(in: self)
         case appearanceCell:
             delegate?.didPressAppearanceSettings(in: self)
+        case networkAccessCell:
+            delegate?.didPressNetworkAccessSettings(in: self)
         case dataBackupCell:
             delegate?.didPressBackupSettings(in: self)
         case premiumStatusCell,
