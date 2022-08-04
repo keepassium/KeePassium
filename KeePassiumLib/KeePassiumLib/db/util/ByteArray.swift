@@ -693,6 +693,10 @@ extension SecureBytes {
 
     @inline(never)
     private static func __decryption_failed_input_is_zeros(code: Int, message: String) {
+        guard code >= 0 else {
+            __decryption_failed_error_code_negative(code: code)
+            return
+        }
         if code % 2 == 0 {
             __decryption_failed_error_code_bit_0(code >> 1)
         } else {
@@ -702,6 +706,20 @@ extension SecureBytes {
 
     @inline(never)
     private static func __decryption_failed(code: Int, message: String) {
+        guard code >= 0 else {
+            __decryption_failed_error_code_negative(code: code)
+            return
+        }
+        if code % 2 == 0 {
+            __decryption_failed_error_code_bit_0(code >> 1)
+        } else {
+            __decryption_failed_error_code_bit_1(code >> 1)
+        }
+    }
+    
+    @inline(never)
+    private static func __decryption_failed_error_code_negative(code: Int) {
+        let code = abs(code) 
         if code % 2 == 0 {
             __decryption_failed_error_code_bit_0(code >> 1)
         } else {
