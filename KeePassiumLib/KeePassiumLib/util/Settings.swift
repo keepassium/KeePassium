@@ -230,7 +230,7 @@ public class Settings {
             immediately, /*after5seconds, after15seconds, */after30seconds,
             after1minute, after2minutes, after5minutes, after10minutes,
             after30minutes, after1hour, after2hours, after4hours, after8hours,
-            after24hours, after7days, never]
+            after24hours, after48hours, after7days, never]
         case never = -1
         case immediately = 0
         case after5seconds = 5
@@ -246,6 +246,7 @@ public class Settings {
         case after4hours = 14400
         case after8hours = 28800
         case after24hours = 86400
+        case after48hours = 172800
         case after7days = 604800
 
         public var seconds: Int {
