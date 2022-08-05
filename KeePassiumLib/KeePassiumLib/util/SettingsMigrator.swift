@@ -14,7 +14,7 @@ open class SettingsMigrator {
             Diag.info("Processing first launch.")
             settings.settingsVersion = Settings.latestVersion
             
-            Keychain.shared.removeAll()
+            Keychain.shared.reset()
         } else {
             let latestVersion = Settings.latestVersion
             while settings.settingsVersion < latestVersion {
