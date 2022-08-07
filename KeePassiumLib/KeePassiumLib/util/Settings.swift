@@ -53,6 +53,7 @@ public class Settings {
     public enum Keys: String {
         case testEnvironment
         case settingsVersion
+        case bundleCreationTimestamp
         case firstLaunchTimestamp
         
         case filesSortOrder
@@ -746,7 +747,7 @@ public class Settings {
     
     public private(set) var isTestEnvironment: Bool
     
-    public var isFirstLaunch: Bool { return _isFirstLaunch }
+    public private(set) var isFirstLaunch: Bool
     
     public var settingsVersion: Int {
         get {
@@ -1498,7 +1499,6 @@ public class Settings {
     }
     
     
-    private var _isFirstLaunch: Bool
     private init() {
         #if DEBUG
         isTestEnvironment = true
@@ -1514,9 +1514,47 @@ public class Settings {
         }
         #endif
         
-        let versionInfo = UserDefaults.appGroupShared
-            .object(forKey: Keys.settingsVersion.rawValue) as? Int
-        _isFirstLaunch = (versionInfo == nil)
+        isFirstLaunch = Settings.maybeHandleFirstLaunch()
+    }
+    
+    private static func maybeHandleFirstLaunch() -> Bool {
+        guard ProcessInfo.isRunningOnMac else {
+            let versionInfo = UserDefaults.appGroupShared
+                .object(forKey: Keys.settingsVersion.rawValue) as? Int
+            return (versionInfo == nil)
+        }
+            
+        
+        guard let bundleAttributes = try? FileManager.default
+                .attributesOfItem(atPath: Bundle.main.bundlePath),
+              let bundleCreationDate = bundleAttributes[.creationDate] as? Date
+        else {
+            Diag.warning("Failed to read app bundle creation date, ignoring")
+            UserDefaults.eraseAppGroupShared()
+            return true
+        }
+        
+        let storedCreationDate: Date? = UserDefaults.appGroupShared
+            .object(forKey: Keys.bundleCreationTimestamp.rawValue)
+            as? Date
+        let storedDateExists = storedCreationDate != nil
+        let bundleDateChanged = storedDateExists &&
+            (bundleCreationDate.timeIntervalSince(storedCreationDate!) > 1.0)
+        switch (storedDateExists, bundleDateChanged) {
+        case (false, _):
+            Diag.info("First launch ever")
+            break
+        case (true, true):
+            Diag.info("App was reinstalled, handling as a first launch")
+            break
+        case (true, false):
+            return false
+        }
+        UserDefaults.eraseAppGroupShared()
+        UserDefaults.appGroupShared.set(
+            bundleCreationDate,
+            forKey: Keys.bundleCreationTimestamp.rawValue)
+        return true
     }
 
     
