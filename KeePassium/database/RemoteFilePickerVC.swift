@@ -228,7 +228,7 @@ extension RemoteFilePickerVC {
     }
     
     private func configureWebdavURLCell(_ cell: TextFieldCell) {
-        cell.textField.placeholder = LString.titleFileURL
+        cell.textField.placeholder = "https://host:port/path/file.kdbx"
         cell.textField.textContentType = .URL
         cell.textField.isSecureTextEntry = false
         cell.textField.autocapitalizationType = .none
