@@ -39,15 +39,19 @@ final class TextFieldCell: UITableViewCell {
             .constraint(equalTo: contentView.bottomAnchor, constant: 0)
             .activate()
         textField.leadingAnchor
-            .constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor)
+            .constraint(equalTo: contentView.leadingAnchor)
             .activate()
         textField.trailingAnchor
-            .constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
+            .constraint(equalTo: contentView.trailingAnchor)
             .activate()
         textField.heightAnchor
             .constraint(equalToConstant: 44)
             .setPriority(.defaultHigh)
             .activate()
+        textField.leftTextInset = 16
+        textField.rightTextInset = 16
+        textField.cornerRadius = 10
+
         selectionStyle = .none
     }
 }

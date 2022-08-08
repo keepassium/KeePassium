@@ -48,7 +48,12 @@ class ValidatingTextField: UITextField {
             layoutIfNeeded()
         }
     }
-    
+    @IBInspectable var rightTextInset: CGFloat = 0.0 {
+        didSet {
+            layoutIfNeeded()
+        }
+    }
+
     var isValid: Bool {
         get { return validityDelegate?.validatingTextFieldShouldValidate(self) ?? true }
     }
@@ -99,12 +104,12 @@ class ValidatingTextField: UITextField {
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.textRect(forBounds: bounds)
-        return rect.inset(by: .init(top: 0, left: leftTextInset, bottom: 0, right: 0))
+        return rect.inset(by: .init(top: 0, left: leftTextInset, bottom: 0, right: rightTextInset))
     }
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.editingRect(forBounds: bounds)
-        return rect.inset(by: .init(top: 0, left: leftTextInset, bottom: 0, right: 0))
+        return rect.inset(by: .init(top: 0, left: leftTextInset, bottom: 0, right: rightTextInset))
     }
 
     
