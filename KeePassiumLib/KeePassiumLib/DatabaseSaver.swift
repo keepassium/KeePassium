@@ -168,7 +168,11 @@ public class DatabaseSaver: ProgressObserver {
                         saveToSameFile: &isSaveToSameFile
                     )
                     isSaveCancelled = (dataToWrite == nil)
-                    return dataToWrite
+                    if isSaveToSameFile {
+                        return dataToWrite
+                    } else {
+                        return nil
+                    }
                 },
                 completionQueue: operationQueue,
                 completion: { [self] result in 
