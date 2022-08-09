@@ -1,6 +1,44 @@
 {
     "sections": [
         {
+            "version": "1.36",
+            "releaseDate": "2022-08-09T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: \"Allow Network Access\" setting (off by default)",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: In-app support for WebDAV sync (Nextcloud, Synology, etc) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Added a 48-hour database timeout [thanks, BM]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: On devices restored from a backup, DB loading froze at 60% [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: \"Save as\" on sync conflict could overwrite the original",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Reset keychain when memory protection key disappears",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: Erase app settings after reinstallation [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Loading DBs with several nameless attachments [thanks, u/mindhaq]",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.35",
             "releaseDate": "2022-06-22T00:00:00Z",
             "items": [

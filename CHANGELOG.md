@@ -1,5 +1,25 @@
 #CHANGELOG
 
+## [1.36.115] - 2022-08-09
+
+### Added
+
+- Added "Allow Network Access" setting (off by default)
+- Added in-app support for WebDAV sync (Nextcloud, Synology, etc) [thanks, everyone]
+
+### Improved
+
+- Added a 48-hour database timeout [thanks, BM]
+
+### Fixed
+
+- On devices restored from a backup, DB loading froze at 60% [thanks, everyone]
+- "Save as" on sync conflict could overwrite the original
+- Reset keychain when memory protection key disappears
+- macOS: Erase app settings after reinstallation [thanks, everyone]
+- Fixed loading DBs with several nameless attachments [thanks, u/mindhaq]
+
+
 ## [1.35.114] - 2022-06-22
 
 ### Changed
