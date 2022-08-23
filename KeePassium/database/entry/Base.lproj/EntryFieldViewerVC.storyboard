@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QNf-to-6jj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QNf-to-6jj">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -398,65 +397,15 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <connections>
-                        <outlet property="copiedCellView" destination="M5c-3i-Sj9" id="9b0-iq-4Ay"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e39-x1-5Es" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="M5c-3i-Sj9" customClass="FieldCopiedView" customModule="KeePassium" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="314" height="52"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="b0f-OE-Umo" userLabel="Wrapper">
-                            <rect key="frame" x="88.5" y="3.5" width="137.5" height="45"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-Zc-bUc">
-                                    <rect key="frame" x="0.0" y="0.0" width="60.5" height="45"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                    <color key="textColor" name="ActionText"/>
-                                    <nil key="highlightedColor"/>
-                                    <attributedString key="userComments">
-                                        <fragment content="Confirmation message: field value has been copied to clipboard."/>
-                                    </attributedString>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo1-SX-gPB" userLabel="Export">
-                                    <rect key="frame" x="92.5" y="0.0" width="45" height="45"/>
-                                    <accessibility key="accessibilityConfiguration">
-                                        <bool key="isElement" value="NO"/>
-                                    </accessibility>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                    <color key="tintColor" name="ActionText"/>
-                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                    <state key="normal" image="export-listitem"/>
-                                    <connections>
-                                        <action selector="didPressExport:" destination="M5c-3i-Sj9" eventType="touchUpInside" id="P4p-SN-76m"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
-                    </subviews>
-                    <viewLayoutGuide key="safeArea" id="g0Q-sh-IKa"/>
-                    <color key="backgroundColor" name="ActionTint"/>
-                    <constraints>
-                        <constraint firstItem="b0f-OE-Umo" firstAttribute="centerX" secondItem="M5c-3i-Sj9" secondAttribute="centerX" id="9WT-Nh-awJ"/>
-                        <constraint firstItem="b0f-OE-Umo" firstAttribute="centerY" secondItem="M5c-3i-Sj9" secondAttribute="centerY" priority="250" id="P4G-vT-7td"/>
-                        <constraint firstItem="b0f-OE-Umo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="M5c-3i-Sj9" secondAttribute="top" id="Qte-pW-bGQ"/>
-                        <constraint firstItem="b0f-OE-Umo" firstAttribute="centerY" secondItem="M5c-3i-Sj9" secondAttribute="centerY" id="iAq-v9-TCi"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="b0f-OE-Umo" secondAttribute="bottom" id="o5k-Cr-MP9"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="b0f-OE-Umo" secondAttribute="trailing" constant="60" id="v3f-aV-urX"/>
-                    </constraints>
-                </view>
             </objects>
             <point key="canvasLocation" x="4475.625" y="538.73239436619724"/>
         </scene>
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
-        <image name="export-listitem" width="29" height="29"/>
         <image name="view-more-accessory" width="25" height="25"/>
-        <namedColor name="ActionText">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

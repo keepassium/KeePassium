@@ -65,6 +65,7 @@ enum ImageAsset: String {
 enum SystemImageName: String {
     case arrowshapeTurnUpForward = "arrowshape.turn.up.forward" 
     case arrowLeftAndRight = "arrow.left.and.right" 
+    case arrowRightCircle = "arrow.right.circle" 
     case asterisk = "asterisk" 
     case asteriskCircle = "asterisk.circle" 
     case bookClosed = "book.closed" 

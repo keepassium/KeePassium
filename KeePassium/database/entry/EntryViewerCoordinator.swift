@@ -550,6 +550,21 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
     ) {
         showExportDialog(for: text, at: popoverAnchor, in: viewController)
     }
+    
+    func didPressCopyFieldReference(
+        from viewableField: ViewableField,
+        in viewController: EntryFieldViewerVC
+    ) {
+        guard let entryField = viewableField.field,
+              let refString = EntryFieldReference.make(for: entryField, in: entry)
+        else {
+            assertionFailure("Tried to create a reference to non-referenceable field")
+            return
+        }
+        Clipboard.general.insert(refString)
+        HapticFeedback.play(.copiedToClipboard)
+        viewController.showNotification(LString.fieldReferenceCopiedToClipboard)
+    }
 }
 
 extension EntryViewerCoordinator: EntryFileViewerDelegate {

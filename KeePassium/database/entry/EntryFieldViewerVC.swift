@@ -8,76 +8,6 @@
 
 import KeePassiumLib
 
-protocol FieldCopiedViewDelegate: AnyObject {
-    func didPressExport(for indexPath: IndexPath, from view: FieldCopiedView)
-}
-
-class FieldCopiedView: UIView {
-    var indexPath: IndexPath!
-    
-    weak var hidingTimer: Timer?
-    weak var delegate: FieldCopiedViewDelegate?
-    
-    public func show(in tableView: UITableView, at indexPath: IndexPath) {
-        hide(animated: false)
-        
-        guard let cell = tableView.cellForRow(at: indexPath) else { assertionFailure(); return }
-        self.indexPath = indexPath
-        
-        self.frame = cell.bounds
-        self.layoutIfNeeded()
-        cell.addSubview(self)
-        
-        self.alpha = 0.0
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0.0,
-            options: [.curveEaseOut, .allowUserInteraction] ,
-            animations: { [weak self] in
-                self?.backgroundColor = UIColor.actionTint
-                self?.alpha = 0.9
-            },
-            completion: { [weak self] finished in
-                guard let self = self else { return }
-                tableView.deselectRow(at: indexPath, animated: false)
-                self.hidingTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) {
-                    [weak self] _ in
-                    self?.hide(animated: true)
-                }
-            }
-        )
-    }
-    
-    public func hide(animated: Bool) {
-        hidingTimer?.invalidate()
-        hidingTimer = nil
-        guard animated else {
-            self.layer.removeAllAnimations()
-            self.removeFromSuperview()
-            return
-        }
-        UIView.animate(
-            withDuration: 0.2,
-            delay: 0.0,
-            options: [.curveEaseIn, .beginFromCurrentState],
-            animations: { [weak self] in
-                self?.backgroundColor = UIColor.actionTint
-                self?.alpha = 0.0
-            },
-            completion: { [weak self] finished in
-                if finished {
-                    self?.removeFromSuperview()
-                }
-            }
-        )
-    }
-    
-    @IBAction func didPressExport(_ sender: UIButton) {
-        delegate?.didPressExport(for: indexPath, from: self)
-    }
-}
-
-
 protocol EntryFieldViewerDelegate: AnyObject {
     func didPressCopyField(
         text: String,
@@ -88,12 +18,18 @@ protocol EntryFieldViewerDelegate: AnyObject {
         from viewableField: ViewableField,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldViewerVC)
-    
+    func didPressCopyFieldReference(
+        from viewableField: ViewableField,
+        in viewController: EntryFieldViewerVC)
+
     func didPressEdit(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldViewerVC)
 }
 
 final class EntryFieldViewerVC: UITableViewController, Refreshable {
-    @IBOutlet private weak var copiedCellView: FieldCopiedView!
+    private lazy var copiedCellView: FieldCopiedView = {
+        let view = FieldCopiedView(frame: .zero)
+        return view
+    }()
     
     weak var delegate: EntryFieldViewerDelegate?
     
@@ -170,10 +106,15 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     }
     
     func animateCopyingToClipboard(at indexPath: IndexPath) {
+        let supportsFieldReferencing = getField(at: indexPath).field?.isStandardField ?? false
         HapticFeedback.play(.copiedToClipboard)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.copiedCellView.show(in: self.tableView, at: indexPath)
+            self.copiedCellView.show(
+                in: self.tableView,
+                at: indexPath,
+                canReference: supportsFieldReferencing
+            )
         }
     }
     
@@ -279,5 +220,10 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
         HapticFeedback.play(.contextMenuOpened)
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressExportField(text: value, from: field, at: popoverAnchor, in: self)
+    }
+    
+    func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView) {
+        let field = getField(at: indexPath)
+        delegate?.didPressCopyFieldReference(from: field, in: self)
     }
 }

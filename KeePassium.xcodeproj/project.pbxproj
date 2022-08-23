@@ -344,6 +344,8 @@
 		75876B272646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */; };
 		7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */; };
 		7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */; };
+		7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */; };
+		7589FDCE28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */; };
 		758BAD9524B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */; };
 		758BAD9624B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */; };
 		758BAD9724B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758BAD9A24B53ABF00CC9265 /* PricingPlanPickerVC.storyboard */; };
@@ -1513,6 +1515,7 @@
 		758544632351FE8D000D5E5E /* UIFont+monospace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+monospace.swift"; sourceTree = "<group>"; };
 		75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseKeyChangerCoordinator.swift; sourceTree = "<group>"; };
 		7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorCoordinator.swift; sourceTree = "<group>"; };
+		7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCopiedView.swift; sourceTree = "<group>"; };
 		758AD0B425F58C3500864030 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
 		758AD0B625F58C4800864030 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
 		758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingPlanPickerVC.swift; sourceTree = "<group>"; };
@@ -2419,6 +2422,7 @@
 				751E0D0F2309AF400088BB10 /* EntryFileViewerVC.storyboard */,
 				75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */,
 				751E0D122309AF4C0088BB10 /* EntryHistoryViewerVC.storyboard */,
+				7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */,
 			);
 			path = entry;
 			sourceTree = "<group>";
@@ -3520,6 +3524,7 @@
 				7579A06A24F074D500C98F24 /* AppHistory.swift in Sources */,
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* EntryViewerPagesVC.swift in Sources */,
+				7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				7527FAB3262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */,
@@ -3712,6 +3717,7 @@
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* EntryViewerPagesVC.swift in Sources */,
+				7589FDCE28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				7527FAB4262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */,

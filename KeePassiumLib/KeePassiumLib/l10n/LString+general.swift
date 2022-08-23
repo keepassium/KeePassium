@@ -504,6 +504,18 @@ extension LString {
         value: "Take Photo",
         comment: "Action/button to take a new photo from camera"
     )
+    public static let actionCopyFieldReference = NSLocalizedString(
+        "[Entry/Field/CopyReference/action]",
+        bundle: Bundle.framework,
+        value: "Copy Field Reference",
+        comment: "Action: copy a reference to the selected entry field to clipboard"
+    )
+    public static let fieldReferenceCopiedToClipboard = NSLocalizedString(
+        "[Entry/Field/CopyReference/acknowledgement]",
+        bundle: Bundle.framework,
+        value: "Field reference copied to clipboard",
+        comment: "Notification: a reference to an entry field has been copied to clipboard"
+    )
     public static let defaultNewEntryName = NSLocalizedString(
         "[Entry/New/defaultTitle] New Entry",
         bundle: Bundle.framework,
