@@ -113,10 +113,23 @@ class PasscodeInputVC: UIViewController {
     
     private func refreshBiometricsButton() {
         guard isViewLoaded else { return }
+
+        useBiometricsButton.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         useBiometricsButton.isHidden = !isBiometricsAllowed
+        if useBiometricsButton.isHidden {
+            mainButton.maskedCorners = [
+                .layerMinXMinYCorner,
+                .layerMinXMaxYCorner,
+                .layerMaxXMinYCorner,
+                .layerMaxXMaxYCorner
+            ]
+        } else {
+            mainButton.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        }
         
         let biometryType = LAContext.getBiometryType()
         useBiometricsButton.setImage(biometryType.icon, for: .normal)
+        useBiometricsButton.accessibilityLabel = biometryType.name
     }
     
     private func updateKeyboardLayoutConstraints() {
@@ -141,6 +154,11 @@ class PasscodeInputVC: UIViewController {
     }
     
     private func setKeyboardType(_ type: Settings.PasscodeKeyboardType) {
+        if ProcessInfo.isRunningOnMac || UIDevice.current.userInterfaceIdiom == .pad {
+            switchKeyboardButton.isHidden = true
+            return
+        }
+        
         Settings.current.passcodeKeyboardType = type
         let nextKeyboardTitle: String
         switch type {

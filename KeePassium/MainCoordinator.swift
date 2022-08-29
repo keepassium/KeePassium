@@ -459,7 +459,7 @@ extension MainCoordinator: WatchdogDelegate {
     
     private func showAppLockScreen() {
         guard !isAppLockVisible else { return }
-        if canUseBiometrics() {
+        if canUseBiometrics() && !ProcessInfo.isRunningOnMac{
             performBiometricUnlock()
         } else {
             showPasscodeRequest()

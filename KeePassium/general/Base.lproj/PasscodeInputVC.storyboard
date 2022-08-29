@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0x-Rz-Nfj">
-                                        <rect key="frame" x="8" y="52" width="58" height="32"/>
+                                        <rect key="frame" x="8" y="52" width="58" height="341"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <color key="tintColor" name="ActionTint"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Enter passcode to protect KeePassium}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-t6-0ty">
-                                        <rect key="frame" x="71.5" y="84" width="271" height="17"/>
+                                        <rect key="frame" x="71.5" y="393" width="271" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" name="PrimaryText"/>
                                         <nil key="highlightedColor"/>
@@ -65,27 +65,49 @@
                                             <action selector="didChangePasscodeField:" destination="KmH-Rg-WCs" eventType="valueChanged" id="pX1-3Y-Vtf"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-Q7-JRa" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="478" width="200" height="44"/>
-                                        <color key="backgroundColor" name="ActionTint"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="nSI-oU-RRJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="tintColor" name="ActionText"/>
-                                        <state key="normal" title="{Unlock / Save}"/>
-                                        <attributedString key="userComments">
-                                            <fragment content="#bc-ignore!"/>
-                                        </attributedString>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="didPressMainButton:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="sq4-iI-f2q"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GK4-6p-jx8" userLabel="Buttons Stack">
+                                        <rect key="frame" x="107" y="478" width="200" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-Q7-JRa" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="147" height="45"/>
+                                                <color key="backgroundColor" name="ActionTint"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="nSI-oU-RRJ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="tintColor" name="ActionText"/>
+                                                <state key="normal" title="{Unlock / Save}"/>
+                                                <attributedString key="userComments">
+                                                    <fragment content="#bc-ignore!"/>
+                                                </attributedString>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressMainButton:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="sq4-iI-f2q"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCs-4z-c3c">
+                                                <rect key="frame" x="155" y="0.0" width="45" height="45"/>
+                                                <color key="backgroundColor" name="ActionTint"/>
+                                                <color key="tintColor" name="ActionText"/>
+                                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                <state key="normal" image="touch-id-listitem">
+                                                    <color key="titleColor" name="ActionText"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressUseBiometricsButton:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="OIK-5A-t60"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5U-FH-tld">
                                         <rect key="frame" x="8" y="865" width="147" height="31"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
@@ -100,39 +122,27 @@
                                             <action selector="didPressSwitchKeyboard:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="AYY-AQ-iAB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCs-4z-c3c">
-                                        <rect key="frame" x="369" y="851" width="45" height="45"/>
-                                        <color key="tintColor" name="ActionTint"/>
-                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                        <state key="normal" image="touch-id-listitem"/>
-                                        <connections>
-                                            <action selector="didPressUseBiometricsButton:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="OIK-5A-t60"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="HCs-4z-c3c" secondAttribute="trailing" id="7Be-KN-hvf"/>
+                                    <constraint firstItem="f5U-FH-tld" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GK4-6p-jx8" secondAttribute="bottom" constant="8" id="0zs-Mf-b0F"/>
+                                    <constraint firstItem="GK4-6p-jx8" firstAttribute="top" secondItem="ZTd-Zj-qAs" secondAttribute="bottom" constant="8" id="453-0T-gIf"/>
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="bottom" secondItem="u9P-fB-zfA" secondAttribute="bottom" id="823-Ip-2VZ"/>
-                                    <constraint firstItem="HCs-4z-c3c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f5U-FH-tld" secondAttribute="trailing" constant="8" id="8tP-tl-c4e"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="AWb-Wr-Asf"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="centerX" secondItem="ZTd-Zj-qAs" secondAttribute="centerX" id="ELh-TK-cnn"/>
-                                    <constraint firstItem="HCs-4z-c3c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i2Z-Q7-JRa" secondAttribute="bottom" constant="8" id="EyR-0E-U82"/>
-                                    <constraint firstItem="f5U-FH-tld" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i2Z-Q7-JRa" secondAttribute="bottom" constant="8" id="Spy-RJ-M1U"/>
-                                    <constraint firstItem="i2Z-Q7-JRa" firstAttribute="top" secondItem="ZTd-Zj-qAs" secondAttribute="bottom" constant="8" id="VU5-Db-Ufe"/>
+                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="f5U-FH-tld" secondAttribute="trailing" id="F5U-Tl-3JQ"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="Xb4-tK-S3a"/>
-                                    <constraint firstItem="i2Z-Q7-JRa" firstAttribute="width" secondItem="ZTd-Zj-qAs" secondAttribute="width" id="ZUp-1T-Qgl"/>
+                                    <constraint firstItem="GK4-6p-jx8" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="YaM-aJ-ghi"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="top" priority="250" constant="32" id="b92-nV-xCo"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerY" secondItem="u9P-fB-zfA" secondAttribute="centerY" priority="750" id="dBk-f7-19f"/>
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="dZt-k0-KDh"/>
-                                    <constraint firstItem="i2Z-Q7-JRa" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="f6B-2H-YvR"/>
+                                    <constraint firstItem="GK4-6p-jx8" firstAttribute="width" secondItem="ZTd-Zj-qAs" secondAttribute="width" id="ktX-r6-m2S"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="topMargin" id="lZx-Sc-BwX"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="z0x-Rz-Nfj" secondAttribute="bottom" priority="750" id="muI-ci-wh6"/>
-                                    <constraint firstAttribute="bottom" secondItem="HCs-4z-c3c" secondAttribute="bottom" id="nZM-7R-WIi"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="r0g-ql-wUj"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="topMargin" id="rei-9A-IvX"/>
                                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3mQ-t6-0ty" secondAttribute="trailing" id="sQS-fD-2eK"/>
-                                    <constraint firstItem="ZTd-Zj-qAs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3mQ-t6-0ty" secondAttribute="bottom" constant="8" id="zHd-pZ-S22"/>
+                                    <constraint firstItem="ZTd-Zj-qAs" firstAttribute="top" secondItem="3mQ-t6-0ty" secondAttribute="bottom" constant="16" id="zHd-pZ-S22"/>
                                 </constraints>
                             </view>
                         </subviews>
