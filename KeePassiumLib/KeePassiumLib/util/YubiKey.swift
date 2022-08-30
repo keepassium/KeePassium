@@ -22,10 +22,12 @@ public class YubiKey: Codable, Equatable, CustomStringConvertible {
     public enum Interface: Int, Codable, CustomStringConvertible {
         case nfc
         case mfi
+        case usb
         public var description: String {
             switch self {
             case .nfc: return "NFC"
             case .mfi: return "MFI"
+            case .usb: return "USB"
             }
         }
     }

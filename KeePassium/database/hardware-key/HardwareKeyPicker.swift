@@ -27,12 +27,26 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     private let mfiKeys: [YubiKey] = [
         YubiKey(interface: .mfi, slot: .slot1),
         YubiKey(interface: .mfi, slot: .slot2)]
+    private let usbKeys: [YubiKey] = [
+        YubiKey(interface: .usb, slot: .slot1),
+        YubiKey(interface: .usb, slot: .slot2)]
 
-    private enum Section: Int {
-        static let allValues = [.noHardwareKey, yubiKeyNFC, yubiKeyMFI]
+    private enum Section {
+        private static let macOSValues: [Section] = [.noHardwareKey, .yubiKeyUSB]
+        private static let iOSValues: [Section] = [.noHardwareKey, .yubiKeyNFC, .yubiKeyMFI]
+        
         case noHardwareKey
         case yubiKeyNFC
         case yubiKeyMFI
+        case yubiKeyUSB
+        
+        static var allValues: [Section] {
+            if ProcessInfo.isRunningOnMac {
+                return Section.macOSValues
+            } else {
+                return Section.iOSValues
+            }
+        }
         var title: String? {
             switch self {
             case .noHardwareKey:
@@ -41,11 +55,14 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
                 return "NFC"
             case .yubiKeyMFI:
                 return "Lightning"
+            case .yubiKeyUSB:
+                return "USB"
             }
         }
     }
     private var isNFCAvailable = false
     private var isMFIAvailable = false
+    private var isUSBAvailable = false
     
     override var canBecomeFirstResponder: Bool { true }
     
@@ -57,9 +74,11 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         #if MAIN_APP
         isNFCAvailable = ChallengeResponseManager.instance.supportsNFC
         isMFIAvailable = ChallengeResponseManager.instance.supportsMFI
+        isUSBAvailable = ChallengeResponseManager.instance.supportsUSB
         #elseif AUTOFILL_EXT
         isNFCAvailable = false
         isMFIAvailable = false
+        isUSBAvailable = false
         #endif
     }
     
@@ -91,32 +110,24 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let section = Section(rawValue: section) else {
-            assertionFailure()
-            return 0
-        }
-        switch section {
+        switch Section.allValues[section] {
         case .noHardwareKey:
             return 1
         case .yubiKeyNFC:
             return nfcKeys.count
         case .yubiKeyMFI:
             return mfiKeys.count
+        case .yubiKeyUSB:
+            return usbKeys.count
         }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let section = Section(rawValue: section) else {
-            assertionFailure()
-            return nil
-        }
-        return section.title
+        return Section.allValues[section].title
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        guard let _section = Section(rawValue: section) else { assertionFailure(); return nil }
-
-        switch _section {
+        switch Section.allValues[section] {
         case .noHardwareKey:
             if AppGroup.isAppExtension {
                 return LString.hardwareKeyNotAvailableInAutoFill
@@ -132,14 +143,10 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = Section(rawValue: indexPath.section) else {
-            fatalError()
-        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         let key: YubiKey?
-        switch section {
+        switch Section.allValues[indexPath.section] {
         case .noHardwareKey:
             key = nil
             cell.setEnabled(true)
@@ -152,6 +159,10 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             key = mfiKeys[indexPath.row]
             cell.setEnabled(isMFIAvailable)
             cell.isUserInteractionEnabled = isMFIAvailable
+        case .yubiKeyUSB:
+            key = usbKeys[indexPath.row]
+            cell.setEnabled(isUSBAvailable)
+            cell.isUserInteractionEnabled = isUSBAvailable
         }
         cell.textLabel?.text = getKeyDescription(key)
         cell.accessoryType = (key == selectedKey) ? .checkmark : .none
@@ -172,18 +183,15 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let section = Section(rawValue: indexPath.section) else {
-            assertionFailure()
-            return
-        }
-        
-        switch section {
+        switch Section.allValues[indexPath.section] {
         case .noHardwareKey:
             selectedKey = nil
         case .yubiKeyNFC:
             selectedKey = nfcKeys[indexPath.row]
         case .yubiKeyMFI:
             selectedKey = mfiKeys[indexPath.row]
+        case .yubiKeyUSB:
+            selectedKey = usbKeys[indexPath.row]
         }
         delegate?.didSelectKey(selectedKey, in: self)
     }

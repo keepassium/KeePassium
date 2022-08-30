@@ -504,6 +504,8 @@
 		75AA237B26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
 		75AA237C26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
 		75AA237D26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
+		75AD22DC27FDE59200636D66 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
+		75AD22DD27FDE59200636D66 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
 		75AF1920282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */; };
 		75AF1921282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */; };
 		75AF1923282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */; };
@@ -1737,6 +1739,7 @@
 		75AC53CA2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsClipboardTimeoutVC.strings"; sourceTree = "<group>"; };
 		75AC53CC2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PasscodeInputVC.strings"; sourceTree = "<group>"; };
 		75AC53CD2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsBackupTimeoutPickerVC.strings"; sourceTree = "<group>"; };
+		75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YubiKeyUSB.swift; sourceTree = "<group>"; };
 		75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorCells.swift; sourceTree = "<group>"; };
 		75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InclusionCondition+extensions.swift"; sourceTree = "<group>"; };
 		75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorLengthCell.swift; sourceTree = "<group>"; };
@@ -2497,6 +2500,7 @@
 		757ADC4323A1045C00D708D2 /* challenge-response */ = {
 			isa = PBXGroup;
 			children = (
+				75AD22DA27FDE57400636D66 /* YubiKeyUSB */,
 				75F2877F245D646B00F03657 /* MFIKeyActionSheet */,
 				7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */,
 			);
@@ -2562,6 +2566,14 @@
 				755B435A26BC894200C24386 /* TipBoxCoordinator.swift */,
 			);
 			path = tipbox;
+			sourceTree = "<group>";
+		};
+		75AD22DA27FDE57400636D66 /* YubiKeyUSB */ = {
+			isa = PBXGroup;
+			children = (
+				75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */,
+			);
+			path = YubiKeyUSB;
 			sourceTree = "<group>";
 		};
 		75AD9FB3212EE35300F49C23 /* views */ = {
@@ -3484,6 +3496,7 @@
 				75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */,
 				75D76138262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */,
 				750E15A8269C95370040D599 /* OnboardingCoordinator.swift in Sources */,
+				75AD22DC27FDE59200636D66 /* YubiKeyUSB.swift in Sources */,
 				75F11C362883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */,
 				7578488622C165C900BBEF9A /* SettingsBackupVC.swift in Sources */,
 				7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
@@ -3677,6 +3690,7 @@
 				75B38C33233E5B7C006BDEFC /* SettingsBackupVC.swift in Sources */,
 				75D76139262CCB6A00B1DE7F /* DatabasePickerCoordinator.swift in Sources */,
 				750E15A9269C95370040D599 /* OnboardingCoordinator.swift in Sources */,
+				75AD22DD27FDE59200636D66 /* YubiKeyUSB.swift in Sources */,
 				75F11C372883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */,
 				75BE064125DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
