@@ -321,6 +321,16 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         revalidate()
     }
     
+    func didPressDelete(_ field: EditableField, in cell: EditableFieldCell) {
+        guard let tableCell = cell as? UITableViewCell,
+              let indexPath = tableView.indexPath(for: tableCell)
+        else {
+            assertionFailure("Sending cell not found")
+            return
+        }
+        didPressDeleteField(at: indexPath)
+    }
+    
     func didPressRandomize(for input: TextInputView, viaMenu: Bool, in cell: EditableFieldCell) {
         delegate?.didPressPasswordGenerator(for: input, viaMenu: viaMenu, in: self)
     }
