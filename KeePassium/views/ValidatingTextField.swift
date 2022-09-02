@@ -21,6 +21,7 @@ extension ValidatingTextFieldDelegate {
 }
 
 class ValidatingTextField: UITextField {
+    private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25).cgColor
     
     private weak var externalDelegate: UITextFieldDelegate?
     override var delegate: UITextFieldDelegate? {
@@ -77,7 +78,19 @@ class ValidatingTextField: UITextField {
     private func setupView() {
         validBackgroundColor = backgroundColor
         delegate = self
+        setupDefaultBorder()
         addTarget(self, action: #selector(onEditingChanged), for: .editingChanged)
+    }
+    
+    private func setupDefaultBorder() {
+        layer.cornerRadius = 5.0
+        layer.maskedCorners = [
+            .layerMinXMinYCorner,
+            .layerMinXMaxYCorner,
+            .layerMaxXMinYCorner,
+            .layerMaxXMaxYCorner]
+        layer.borderWidth = 0.8
+        layer.borderColor = defaultBorderColor
     }
     
     @objc

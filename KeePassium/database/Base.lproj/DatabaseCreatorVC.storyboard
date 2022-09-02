@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nri-WU-XVv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nri-WU-XVv">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -34,7 +34,7 @@
                                                 <rect key="frame" x="20" y="132" width="280" height="44"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="MyPasswords" placeholder="e.g. MyPasswords" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XNL-lc-2Ti" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="0.0" width="264" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Snw-aT-6sg"/>
                                                         </constraints>
@@ -44,14 +44,19 @@
                                                         <attributedString key="userComments">
                                                             <fragment content="Default name for a new database."/>
                                                         </attributedString>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="XNL-lc-2Ti" secondAttribute="trailing" id="Ddo-PV-BA5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XNL-lc-2Ti" secondAttribute="trailing" id="Ddo-PV-BA5"/>
                                                     <constraint firstItem="XNL-lc-2Ti" firstAttribute="top" secondItem="pxN-RE-FXX" secondAttribute="top" id="OME-RB-Uob"/>
                                                     <constraint firstAttribute="bottom" secondItem="XNL-lc-2Ti" secondAttribute="bottom" id="Rlt-E7-iCr"/>
-                                                    <constraint firstItem="XNL-lc-2Ti" firstAttribute="leading" secondItem="pxN-RE-FXX" secondAttribute="leadingMargin" id="Xzr-n2-6dO"/>
+                                                    <constraint firstItem="XNL-lc-2Ti" firstAttribute="leading" secondItem="pxN-RE-FXX" secondAttribute="leading" id="Xzr-n2-6dO"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -72,7 +77,7 @@
                                                 <rect key="frame" x="20" y="216" width="280" height="136"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uHk-Yt-mBh" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="0.0" width="264" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="OzF-bO-19Y"/>
                                                         </constraints>
@@ -82,6 +87,11 @@
                                                         <attributedString key="userComments">
                                                             <fragment content="Placeholder: master password of the database"/>
                                                         </attributedString>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHi-ew-m8P" userLabel="Separator">
                                                         <rect key="frame" x="0.0" y="44" width="280" height="2"/>
@@ -91,7 +101,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pvt-FS-0Yx" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="46" width="264" height="44"/>
+                                                        <rect key="frame" x="0.0" y="46" width="280" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="br3-ld-CHa"/>
                                                         </constraints>
@@ -101,6 +111,11 @@
                                                         <attributedString key="userComments">
                                                             <fragment content="Placeholder: don't use key file (should match the No Key File option in key file picker)."/>
                                                         </attributedString>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G41-JZ-U5P" userLabel="Separator">
                                                         <rect key="frame" x="0.0" y="90" width="280" height="2"/>
@@ -110,32 +125,37 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="{No Hardware Key}" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wiB-ZM-ePr" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                                        <rect key="frame" x="8" y="92" width="264" height="44"/>
+                                                        <rect key="frame" x="0.0" y="92" width="280" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Dhy-KT-t2z"/>
                                                         </constraints>
                                                         <color key="textColor" name="PrimaryText"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="pvt-FS-0Yx" secondAttribute="trailing" id="1sE-2q-zXo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pvt-FS-0Yx" secondAttribute="trailing" id="1sE-2q-zXo"/>
                                                     <constraint firstItem="uHi-ew-m8P" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="3y7-3P-Keq"/>
                                                     <constraint firstItem="pvt-FS-0Yx" firstAttribute="bottom" secondItem="G41-JZ-U5P" secondAttribute="top" id="7e0-6x-o6j"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="9lU-LM-sdf"/>
-                                                    <constraint firstItem="uHk-Yt-mBh" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leadingMargin" id="Fua-pM-uaS"/>
+                                                    <constraint firstItem="uHk-Yt-mBh" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="Fua-pM-uaS"/>
                                                     <constraint firstAttribute="bottom" secondItem="wiB-ZM-ePr" secondAttribute="bottom" id="GS9-G2-36d"/>
-                                                    <constraint firstItem="wiB-ZM-ePr" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leadingMargin" id="Ifs-Ub-Caa"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="uHk-Yt-mBh" secondAttribute="trailing" id="QSk-oW-yUZ"/>
+                                                    <constraint firstItem="wiB-ZM-ePr" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="Ifs-Ub-Caa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uHk-Yt-mBh" secondAttribute="trailing" id="QSk-oW-yUZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="G41-JZ-U5P" secondAttribute="trailing" id="Toy-im-2sq"/>
-                                                    <constraint firstItem="wiB-ZM-ePr" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailingMargin" id="VS6-4p-Lcp"/>
+                                                    <constraint firstItem="wiB-ZM-ePr" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="VS6-4p-Lcp"/>
                                                     <constraint firstItem="G41-JZ-U5P" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="afA-nr-W4b"/>
                                                     <constraint firstItem="uHi-ew-m8P" firstAttribute="top" secondItem="uHk-Yt-mBh" secondAttribute="bottom" id="apP-QD-Tg4"/>
                                                     <constraint firstAttribute="width" priority="750" constant="280" id="buI-Py-aPn"/>
                                                     <constraint firstItem="uHk-Yt-mBh" firstAttribute="top" secondItem="sgR-8q-2o9" secondAttribute="top" id="gjv-EG-DAh"/>
-                                                    <constraint firstItem="pvt-FS-0Yx" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leadingMargin" id="mp6-Om-wbP"/>
+                                                    <constraint firstItem="pvt-FS-0Yx" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="mp6-Om-wbP"/>
                                                     <constraint firstAttribute="trailing" secondItem="uHi-ew-m8P" secondAttribute="trailing" id="sj3-Fv-hCH"/>
                                                     <constraint firstItem="G41-JZ-U5P" firstAttribute="bottom" secondItem="wiB-ZM-ePr" secondAttribute="top" id="uoZ-rb-BXc"/>
                                                     <constraint firstItem="pvt-FS-0Yx" firstAttribute="top" secondItem="uHi-ew-m8P" secondAttribute="bottom" id="xnm-Hw-gtB"/>
@@ -269,6 +289,9 @@
         </namedColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

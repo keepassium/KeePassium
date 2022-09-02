@@ -70,6 +70,10 @@ class DatabaseCreatorVC: UIViewController {
         view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
         view.layer.isOpaque = false
 
+        passwordField.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        keyFileField.maskedCorners = []
+        hardwareKeyField.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
         fileNameField.validityDelegate = self
         fileNameField.delegate = self
         passwordField.validityDelegate = self

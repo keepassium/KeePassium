@@ -364,9 +364,6 @@ class EntryFieldEditorMultiLineCell:
         textView.validityDelegate = self
         textView.delegate = self
         textView.addRandomizerEditMenu()
-        DispatchQueue.main.async {
-            self.textView.setupBorder()
-        }
     }
 
     override func becomeFirstResponder() -> Bool {
@@ -423,6 +420,7 @@ class EntryFieldEditorCustomFieldCell:
         
         nameTextField.font = UIFont.preferredFont(forTextStyle: .subheadline)
         nameTextField.adjustsFontForContentSizeCategory = true
+        
         valueTextView.font = UIFont.monospaceFont(forTextStyle: .body)
         valueTextView.adjustsFontForContentSizeCategory = true
         
@@ -438,9 +436,6 @@ class EntryFieldEditorCustomFieldCell:
         valueTextView.delegate = self
         valueTextView.addRandomizerEditMenu()
 
-        DispatchQueue.main.async {
-            self.valueTextView.setupBorder()
-        }
     }
 
     override func becomeFirstResponder() -> Bool {

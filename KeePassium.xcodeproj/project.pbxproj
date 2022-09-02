@@ -300,7 +300,6 @@
 		757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */; };
 		757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
 		757FB3CD21F9C50700F016FA /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */; };
-		757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
 		757FB3D021F9C52600F016FA /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
 		757FDF6226E2519E0023E028 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FDF6126E2519E0023E028 /* OTPView.swift */; };
 		757FDF6326E2519E0023E028 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FDF6126E2519E0023E028 /* OTPView.swift */; };
@@ -331,7 +330,6 @@
 		7583EA8B2685D372009969E7 /* Coordinator+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D76158262ED2E200B1DE7F /* Coordinator+premium.swift */; };
 		7583EA8F2685D720009969E7 /* AutoFillCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */; };
 		7583EA902685D720009969E7 /* AutoFillCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */; };
-		7584B3F120DD908A0086C094 /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
 		7584CEF024D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
 		7584CEF124D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
 		7584CEF224D208E80063B421 /* HardwareKeyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7584CEF524D208E80063B421 /* HardwareKeyPicker.storyboard */; };
@@ -518,7 +516,6 @@
 		75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
 		75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */; };
 		75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
-		75B38BF6233E5B7C006BDEFC /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
 		75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
 		75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */; };
 		75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */; };
@@ -740,7 +737,6 @@
 		75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
 		75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */; };
-		75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584B3F020DD908A0086C094 /* UITextView+border.swift */; };
 		75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
 		75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
 		75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
@@ -1501,7 +1497,6 @@
 		75838480268B55BF000D2E8B /* UIViewController+subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+subviews.swift"; sourceTree = "<group>"; };
 		75839A8F246B1A78003DAB7F /* SettingsSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSearchVC.swift; sourceTree = "<group>"; };
 		7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillCoordinator.swift; sourceTree = "<group>"; };
-		7584B3F020DD908A0086C094 /* UITextView+border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+border.swift"; sourceTree = "<group>"; };
 		7584CEF424D208E80063B421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HardwareKeyPicker.storyboard; sourceTree = "<group>"; };
 		7584CEF724D208EC0063B421 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/HardwareKeyPicker.strings"; sourceTree = "<group>"; };
 		7584CEF924D208F00063B421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/HardwareKeyPicker.strings"; sourceTree = "<group>"; };
@@ -2581,7 +2576,6 @@
 			children = (
 				75BF1964283F9C50006A9826 /* AccessibleStepper.swift */,
 				75E371932108CA08002602BD /* ProgressOverlay.swift */,
-				7584B3F020DD908A0086C094 /* UITextView+border.swift */,
 				75F5CACC20BD18320056C969 /* UIView+extension.swift */,
 				7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */,
 				758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */,
@@ -3273,7 +3267,6 @@
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
-				757FB3CF21F9C51C00F016FA /* UITextView+border.swift in Sources */,
 				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				7583EA8F2685D720009969E7 /* AutoFillCoordinator.swift in Sources */,
 				75BF1961283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
@@ -3373,7 +3366,6 @@
 				751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				75AF1932282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift in Sources */,
 				754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */,
-				7584B3F120DD908A0086C094 /* UITextView+border.swift in Sources */,
 				7579A06724F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
 				752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */,
 				751A565524CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
@@ -3567,7 +3559,6 @@
 				751A565324CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				75AF1933282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift in Sources */,
 				75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */,
-				75B38BF6233E5B7C006BDEFC /* UITextView+border.swift in Sources */,
 				7579A06824F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
 				75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */,
 				751A565624CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
@@ -3778,7 +3769,6 @@
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404428455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
-				75D7DF82233E5E310029AD87 /* UITextView+border.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				7583EA902685D720009969E7 /* AutoFillCoordinator.swift in Sources */,
 				75BF1963283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,

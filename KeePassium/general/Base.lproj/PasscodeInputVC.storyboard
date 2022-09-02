@@ -42,7 +42,7 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTd-Zj-qAs" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                         <rect key="frame" x="107" y="426" width="200" height="44"/>
-                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="1bo-cl-ZZV"/>
                                             <constraint firstAttribute="height" constant="44" id="LsL-gj-gZm"/>
@@ -189,10 +189,10 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="tableCellGroupedBackgroundColor">
+        <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

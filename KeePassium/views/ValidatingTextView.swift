@@ -21,7 +21,12 @@ extension ValidatingTextViewDelegate {
 }
 
 class ValidatingTextView: WatchdogAwareTextView {
+    private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25).cgColor
     
+    @IBInspectable var invalidBackgroundColor: UIColor? = UIColor.red.withAlphaComponent(0.2)
+    
+    @IBInspectable var validBackgroundColor: UIColor? = UIColor.clear
+
     var validityDelegate: ValidatingTextViewDelegate?
     var isValid: Bool {
         get { return validityDelegate?.validatingTextViewShouldValidate(self) ?? true }
@@ -34,6 +39,23 @@ class ValidatingTextView: WatchdogAwareTextView {
     private var wasValid: Bool?
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setupView()
+    }
+    
+    private func setupView() {
+        validBackgroundColor = backgroundColor
+        setupDefaultBorder()
+    }
+    
+    private func setupDefaultBorder() {
+        layer.cornerRadius = 5.0
+        layer.maskedCorners = [
+            .layerMinXMinYCorner,
+            .layerMinXMaxYCorner,
+            .layerMaxXMinYCorner,
+            .layerMaxXMaxYCorner]
+        layer.borderWidth = 0.8
+        layer.borderColor = defaultBorderColor
     }
     
     @objc
@@ -46,9 +68,9 @@ class ValidatingTextView: WatchdogAwareTextView {
     func validate() {
         let isValid = validityDelegate?.validatingTextViewShouldValidate(self) ?? true
         if isValid {
-            backgroundColor = UIColor.clear
+            backgroundColor = validBackgroundColor
         } else if (wasValid ?? true) { 
-            backgroundColor = UIColor.red.withAlphaComponent(0.2)
+            backgroundColor = invalidBackgroundColor
         }
         if isValid != wasValid {
             validityDelegate?.validatingTextView(self, validityDidChange: isValid)
@@ -56,3 +78,32 @@ class ValidatingTextView: WatchdogAwareTextView {
         wasValid = isValid
     }
 }
+
+#if targetEnvironment(macCatalyst)
+extension ValidatingTextView {
+    @objc(_focusRingType)
+    var focusRingType: UInt {
+        return 1 
+    }
+    
+    private func refreshFocusRing() {
+        if isFirstResponder {
+            borderWidth = 3
+            borderColor = .systemBlue.withAlphaComponent(0.5)
+        } else {
+            setupDefaultBorder()
+        }
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        let result = super.becomeFirstResponder()
+        refreshFocusRing()
+        return result
+    }
+    override func resignFirstResponder() -> Bool {
+        let result = super.resignFirstResponder()
+        refreshFocusRing()
+        return result
+    }
+}
+#endif
