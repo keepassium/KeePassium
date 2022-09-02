@@ -5,7 +5,7 @@
 "M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ordre de tri";
 
 /* Class = "UIBarButtonItem"; qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Change Master Key"; ObjectID = "qkh-6K-yQW"; */
-"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Modifier la clé maître";
+"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Modifier la clé principale";
 
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
 "QXa-eN-7am.text" = "Ce groupe est vide";

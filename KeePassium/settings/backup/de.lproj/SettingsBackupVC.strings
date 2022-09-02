@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "Show Backup Files"; ObjectID = "aEK-cJ-9bc"; Note = "Settings option: whether to show backup copies in the list of database files"; */
-"aEK-cJ-9bc.text" = "Sicherungsdateien anzeigen";
+"aEK-cJ-9bc.text" = "Gesicherte Dateien anzeigen";
 
 /* Class = "UITableViewSection"; footerTitle = "KeePassium can automatically delete old backup files to free up some storage space."; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
 "B3L-Dk-Uq3.footerTitle" = "KeePassium kann automatisch alte Sicherungsdateien löschen, um Speicherplatz zu freigeben.";

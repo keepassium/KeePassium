@@ -7,6 +7,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Appuyez deux fois pour copier dans le presse-papiers";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "Activer pour écouter.";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Taille du texte";
 
@@ -937,6 +940,114 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Configurer le mot de passe à usage unique (OTP)";
 
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "Impossible de générer le texte";
+
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "Vide";
+
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "Caractères personnalisés";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "Augmenter le paramètre de longueur d'au moins %d.";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "Générer";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "Texte généré";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "Autorisé";
+
+/* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
+"[PasswordGenerator/InclusionCondition/excluded]" = "Exclu";
+
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "Inactif";
+
+/* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
+"[PasswordGenerator/InclusionCondition/required]" = "Obligatoire";
+
+/* Length (number of characters) of the random text to generate */
+"[PasswordGenerator/Length/title]" = "Longueur";
+
+/* Description of a password generator parameter. For example, the digit in 'abc222def'. */
+"[PasswordGenerator/MaxConsecutive/description]" = "Nombre maximum de caractères identiques se répétant consécutivement.";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "Augmentez le nombre maximum d'éléments identiques se répétant consécutivement.";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "Normal";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "Expert";
+
+/* One of the operation modes of the random text generator, where it generates random phrases. */
+"[PasswordGenerator/Mode/Passphrase/title]" = "Phrase secrète";
+
+/* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
+"[PasswordGenerator/Mode/title]" = "Mode";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/NotEnoughElementsToSample/title]" = "Besoin de plus d'éléments pour choisir.";
+
+/* Length (number of characters) of the password to generate */
+"[PasswordGenerator/PasswordLength/title]" = "Longueur du mot de passe";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "Un des jeux de caractères est à la fois obligatoire et exclu.";
+
+/* Title for digits (like '123') */
+"[PasswordGenerator/Set/Digits/title]" = "Chiffres";
+
+/* Title for look-alike symbols (like '1lI', that is: digit `1`, small `L`, capital `i`). */
+"[PasswordGenerator/Set/Lookalikes/title]" = "Caractères que l'on peut confondre";
+
+/* Title for lowercase letters (like 'abc') */
+"[PasswordGenerator/Set/Lowercase/title]" = "Minuscules";
+
+/* Title for special symbols (like '@#$') */
+"[PasswordGenerator/Set/Specials/title]" = "Caractères spéciaux";
+
+/* Title for uppercase letters (like 'ABC') */
+"[PasswordGenerator/Set/Uppercase/title]" = "Majuscules";
+
+/* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
+"[PasswordGenerator/SpaceCharacter/name]" = "Espace";
+
+/* Title of the random text/password/username generator dialog. */
+"[PasswordGenerator/title]" = "Générateur Aléatoire";
+
+/* Character to be inserted between words of a passphrase. */
+"[PasswordGenerator/Word Separtor/title]" = "Séparateur";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/lowerCase]" = "minuscules";
+
+/* Case of letters in a word (e.g. UPPER, lower, Title Case) */
+"[PasswordGenerator/WordCase/title]" = "Taille des lettres";
+
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "Majuscule Au Début Des Mots";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/upperCase]" = "MAJUSCULE";
+
+/* Number of words in a generated passphrase. In context: 'Words: 5' */
+"[PasswordGenerator/WordCount/title]" = "Mots";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "Grande liste de mots EFF (7776 mots)";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Petite Liste de mots EFF (1296 mots)";
+
+/* List of words to be used for a passphrase. */
+"[PasswordGenerator/Wordlist/title]" = "Liste de mots";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Prévisualiser les fichiers attachés directement dans KeePassium et ne laisser aucune trace dans d'autres applications. (Fonctionne avec des images, des documents, des archives et plus.)";
 
@@ -1158,6 +1269,12 @@
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Remplissage automatique rapide";
+
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium ne recueille aucune donnée personnelle ou analytique ni ne la partage avec quiconque.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Politique de confidentialité";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Annulé par l'utilisateur";

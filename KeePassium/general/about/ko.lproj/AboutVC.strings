@@ -13,9 +13,6 @@
 /* Class = "UILabel"; text = "Base32 for Swift by Norio Nomura"; ObjectID = "9MZ-zt-75x"; */
 "9MZ-zt-75x.text" = "Swift용 Base32 ― Norio Nomura";
 
-/* Class = "UILabel"; text = "KeePassium does not collect any personal or analytical data nor share it with anyone."; ObjectID = "9wt-nj-TZW"; */
-"9wt-nj-TZW.text" = "KeePassium은 개인 정보나 통계 데이터를 수집하지 않으며, 타인 혹은 타 단체에 공유하지도 않습니다.";
-
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "86n-Hc-6m7"; */
 "86n-Hc-6m7.text" = "CC BY 3.0";
 

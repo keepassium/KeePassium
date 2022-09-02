@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.footerTitle" = "Si vous entrez un mauvais code d'accès AppLock, KeePassium fermera toutes les bases de données et effacera toutes les clés maîtresses du trousseau.";
+"5Dg-KX-m7a.footerTitle" = "Si vous entrez un mauvais code d'accès AppLock, KeePassium fermera toutes les bases de données et effacera toutes les clés principales du trousseau.";
 
 /* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
 "5Dg-KX-m7a.headerTitle" = "Code d'accès erroné";

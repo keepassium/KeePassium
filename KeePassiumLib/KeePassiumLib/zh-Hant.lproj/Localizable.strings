@@ -1159,6 +1159,12 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "快速自動填寫密碼";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium不會對任何個人資料收集或分析，也不會與任何人分享。";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "隱私權政策";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "已被使用者取消";
 

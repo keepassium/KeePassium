@@ -1270,6 +1270,12 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "«Autorrelleno» rápido";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium no recopila datos personales o analíticos ni los comparte con nadie.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Política de privacidad";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Cancelado por el/la usuario/a";
 

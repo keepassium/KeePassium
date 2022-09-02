@@ -7,6 +7,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "انقر بشكل مزدوج للنسخ إلى الحافظة";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "تنشيط للاستماع.";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "حجم النص";
 
@@ -937,6 +940,114 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "إعداد كلمة مرور لمرة واحدة (OTP)";
 
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "يَتَعَذَّرُ تَوليدُ النَّص";
+
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "فَارِغة";
+
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "رُمُوزٌ مُخَصَّصَة";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "زِدْ الطُول إلَى %d عَلَى الأقل.";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "تَوليد";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "النَّص المُوَلَّد";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "مَسمُوح";
+
+/* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
+"[PasswordGenerator/InclusionCondition/excluded]" = "مُستَبعَد";
+
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "غَيرُ مُفَعَّلة";
+
+/* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
+"[PasswordGenerator/InclusionCondition/required]" = "مُتَطَلَّب";
+
+/* Length (number of characters) of the random text to generate */
+"[PasswordGenerator/Length/title]" = "الطُّول";
+
+/* Description of a password generator parameter. For example, the digit in 'abc222def'. */
+"[PasswordGenerator/MaxConsecutive/description]" = "الحدُّ الأقصى لعدد الرموز المتطابقة المتكررة على التوالي.";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "زِدْ الحد الأقصى لعدد العناصر المتطابقة المُتكررة بشكل متتالي.";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "تَقليديّ";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "مُتَقَدِّم";
+
+/* One of the operation modes of the random text generator, where it generates random phrases. */
+"[PasswordGenerator/Mode/Passphrase/title]" = "عِبارَة سِرِيَّة";
+
+/* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
+"[PasswordGenerator/Mode/title]" = "النَّمَط";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/NotEnoughElementsToSample/title]" = "بِحاجةٍ إلَى مَزيدٍ مِنَ العَناصِرِ لِلاِنتِقاءِ مِنها.";
+
+/* Length (number of characters) of the password to generate */
+"[PasswordGenerator/PasswordLength/title]" = "طُولُ كَلِمَةِ المُرور";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "أحَدُ مَجموعاتِ الرُّموز مَطلوبَةٌ وَمُستَبعَدَةٌ فِي الوَقتِ نَفسِه.";
+
+/* Title for digits (like '123') */
+"[PasswordGenerator/Set/Digits/title]" = "أرقام";
+
+/* Title for look-alike symbols (like '1lI', that is: digit `1`, small `L`, capital `i`). */
+"[PasswordGenerator/Set/Lookalikes/title]" = "رُمُوزٌ مُشابِهَةُ المَظهَر";
+
+/* Title for lowercase letters (like 'abc') */
+"[PasswordGenerator/Set/Lowercase/title]" = "حُرُوفٌ صَغيرَة";
+
+/* Title for special symbols (like '@#$') */
+"[PasswordGenerator/Set/Specials/title]" = "رُمُوزٌ الخاصَّة";
+
+/* Title for uppercase letters (like 'ABC') */
+"[PasswordGenerator/Set/Uppercase/title]" = "حُرُوفٌ كَبيرَة";
+
+/* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
+"[PasswordGenerator/SpaceCharacter/name]" = "فَراغ";
+
+/* Title of the random text/password/username generator dialog. */
+"[PasswordGenerator/title]" = "المُوَلِّدُ العَشوائِيّ";
+
+/* Character to be inserted between words of a passphrase. */
+"[PasswordGenerator/Word Separtor/title]" = "فَاصِل";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/lowerCase]" = "صَغيرَة";
+
+/* Case of letters in a word (e.g. UPPER, lower, Title Case) */
+"[PasswordGenerator/WordCase/title]" = "الحالَة";
+
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "حالَةُ العُنوان";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/upperCase]" = "كَبيرَة";
+
+/* Number of words in a generated passphrase. In context: 'Words: 5' */
+"[PasswordGenerator/WordCount/title]" = "كَلِمات";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "قائمة كلمات EFF الكبيرة (7776 كلمة)";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "قائمة كلمات EFF القصيرة (1296 كلمة)";
+
+/* List of words to be used for a passphrase. */
+"[PasswordGenerator/Wordlist/title]" = "قَائِمَةُ الكَلِمات";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "معاينة الملفات المرفقة مباشرة في KeePassium ولا تترك أي أثر في تطبيقات أخرى. (يعمل مع الصور والمستندات والأرشيف والمزيد)";
 
@@ -1158,6 +1269,12 @@
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "ملء تلقائي سريع";
+
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "لا تجمع KeePassium أي بيانات شخصية أو تحليلية ولا تشاركها مع أي شخص.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "سياسة الخصوصية";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "أُلغي مِن قِبَل المُستخدِم";

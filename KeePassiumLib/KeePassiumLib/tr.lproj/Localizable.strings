@@ -1096,6 +1096,12 @@
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "Bağlılıkları Önizle";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium herhangi bir kişisel veya analitik veri toplamaz ve kimseyle paylaşmaz.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Gizlilik Politikası";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Kullanıcı tarafından iptal edildi";
 

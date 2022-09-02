@@ -934,6 +934,9 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Ustaw hasło jednorazowe (OTP)";
 
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "Nieaktywne";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Podgląd załączników bezpośrednio w KeePassium bez zostawiania śladu w innych aplikacjach (zdjęć, dokumentów, archiwów i innych).";
 
@@ -1152,6 +1155,12 @@
 
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Szybkie autouzupełnianie";
+
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium nie zbiera żadnych danych osobowych, danych analitycznych, ani nie nikomu ich nie udostępnia.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Polityka prywatności";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Anulowane przez użytkownika";

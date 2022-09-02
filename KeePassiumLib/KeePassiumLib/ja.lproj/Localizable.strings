@@ -7,6 +7,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "ダブルタップでクリップボードにコピー";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "有効にする。";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "文字の大きさ";
 
@@ -472,6 +475,12 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "項目名";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "クリップボードにコピーしました";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "項目の参照をコピー";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "メモ";
 
@@ -537,6 +546,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "KeePassium内部エラーです。サポートにお問い合わせください。";
+
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "ネットワークアクセスは設定によってブロックされています。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "ストレージが応答しません。";
@@ -702,6 +714,12 @@
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "保存先を選択";
+
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "オフ";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "オン";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "キャンセル";
@@ -960,6 +978,9 @@
 
 /* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
 "[PasswordGenerator/InclusionCondition/excluded]" = "使用不可";
+
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "使用不可";
 
 /* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
 "[PasswordGenerator/InclusionCondition/required]" = "必須";
@@ -1264,6 +1285,15 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "クイック自動入力";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassiumは個人データまたは分析データを収集したり、他の人と共有したりすることはありません。";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassiumは個人データまたは分析データを収集しません。\n一部の機能には、外部サービスとのデータ交換が含まれる場合があります(お客様の要求に応じて、これらのサービスをお客様に提供する唯一の目的のため)。 このような交換は、それぞれのサービスのプライバシーポリシーに準拠します。";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "プライバシーポリシー";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "ユーザーにキャンセルされました";
 
@@ -1275,6 +1305,27 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "クイック自動入力";
+
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "信頼されていない証明書を許可";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "接続";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "サーバーに接続";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "アカウント";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "認証失敗";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "ファイルのURL";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "リモート接続";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "パスワードの確認";
@@ -1428,6 +1479,21 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "リストの設定";
+
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "ネットワークアクセス";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "最もプライバシーを保護";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "常にオフライン";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "最も機能的";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "ネットワークアクセスを許可";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "検索";

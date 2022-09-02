@@ -7,6 +7,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "双击复制到剪贴板";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "激活辅助功能以收听内容。";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "文本大小";
 
@@ -154,6 +157,9 @@
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "未知的数据库格式";
 
+/* Message shown after we show a cached local database instead of the (unavailable) original database. */
+"[Database/Loading/FromCache/text]" = "数据库无法访问。\n这是其最新的本地副本。";
+
 /* Message shown if current database cannot be edited */
 "[Database/Loading/ReadOnly/text]" = "数据库为只读模式";
 
@@ -213,6 +219,27 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "正在保存...";
+
+/* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
+"[Database/Settings/ConsiderFileUnreachable/title]" = "无法访问文件";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
+"[Database/Settings/FallbackStrategy/ShowError/title]" = "显示错误";
+
+/* File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/title]" = "如果文件无法访问";
+
+/* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.) */
+"[Database/Settings/FallbackStrategy/UseCache/title]" = "使用本地副本";
+
+/* Title of settings section (read-only, backup-able, etc) */
+"[Database/Settings/FileAccess/title]" = "文件权限";
+
+/* File setting title, whether the file can be modified (yes/no). */
+"[Database/Settings/ReadOnly/title]" = "只读";
+
+/* Title of database-related settings screen */
+"[Database/Settings/title]" = "数据库设置";
 
 /* Action/button to switch from current to some other database. */
 "[Database/Switch/action]" = "切换数据库";
@@ -448,6 +475,12 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "域名";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "字段参考已复制到剪贴板";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "复制字段引用";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "备注";
 
@@ -513,6 +546,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "KeePassium内部错误，请告诉我们。";
+
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "网络访问已被屏蔽。";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "存储提供商没有响应。";
@@ -678,6 +714,12 @@
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "选择目标位置";
+
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "关闭";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "启用";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "取消";
@@ -859,6 +901,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "帮助";
 
+/* Name of an entry field. Acronym `HOTP` should not be translated. */
+"[HOTP/FieldName]" = "一次性密码 (OTP)";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "已还原上一个版本";
 
@@ -898,6 +943,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "文件信息";
 
+/* Name of an entry field */
+"[OTP/FieldName]" = "一次性密码";
+
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "此二维码不适用于两步验证(OTP)设置";
 
@@ -906,6 +954,27 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "设置两步验证密码(OTP)";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "无法生成文本";
+
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "空";
+
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "自定义字符：";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "将长度参数增加到至少 %d。";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "生成";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "已生成的文本";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "已允许";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "直接在KeePassium上预览附件, 并且不留痕迹。(适用于图像, 文文件, 文件等。)";
@@ -1122,6 +1191,12 @@
 
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "附件预览";
+
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium不会对任何个人资料收集或分析，也不会与任何人分享。";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "隐私权政策";
 
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "已被使用者取消";

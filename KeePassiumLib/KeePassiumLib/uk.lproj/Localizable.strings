@@ -1159,6 +1159,12 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Швидке автозаповнення";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium не збирає і нікуди не відправляє жодних персональних даних.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Політика конфіденційності";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Скасовано користувачем";
 

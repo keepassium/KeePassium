@@ -7,6 +7,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Doppeltippen, um in die Zwischenablage zu kopieren";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "Zum Anhören aktivieren.";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Textgröße";
 
@@ -472,6 +475,12 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Feldname";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "Feldreferenz in Zwischenablage kopiert";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "Feldreferenz kopieren";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Kommentare";
 
@@ -537,6 +546,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Interner KeePassium-Fehler. Bitte teilen Sie uns dies mit.";
+
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "Netzwerkzugriff wird durch Einstellungen blockiert.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "Speicheranbieter reagiert nicht.";
@@ -702,6 +714,12 @@
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Speicherort wählen";
+
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "Aus";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "Ein";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Abbrechen";
@@ -937,6 +955,9 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Einmalpasswort einrichten (OTP)";
 
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "Nachricht kann nicht generiert werden";
+
 /* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
 "[PasswordGenerator/CustomSet/Empty/title]" = "Leer";
 
@@ -958,11 +979,20 @@
 /* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
 "[PasswordGenerator/InclusionCondition/excluded]" = "Ausgeschlossen";
 
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "Inaktiv";
+
 /* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
 "[PasswordGenerator/InclusionCondition/required]" = "Erforderlich";
 
 /* Length (number of characters) of the random text to generate */
 "[PasswordGenerator/Length/title]" = "Länge";
+
+/* Description of a password generator parameter. For example, the digit in 'abc222def'. */
+"[PasswordGenerator/MaxConsecutive/description]" = "Maximale Anzahl sich wiederholender identischer Zeichen.";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "Erhöhe das Limit für die maximale Anzahl identischer sich wiederholender Elemente.";
 
 /* One of the operation modes of the random text generator */
 "[PasswordGenerator/Mode/Basic/title]" = "Standard";
@@ -975,6 +1005,9 @@
 
 /* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
 "[PasswordGenerator/Mode/title]" = "Modus";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/NotEnoughElementsToSample/title]" = "Mehr Elemente zur Auswahl werden benötigt.";
 
 /* Length (number of characters) of the password to generate */
 "[PasswordGenerator/PasswordLength/title]" = "Passwortlänge";
@@ -1252,6 +1285,15 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Schnelles autom. Ausfüllen";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium sammelt weder persönliche oder analytische Daten, noch teilt irgendwelche Daten mit Dritten.";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassium sammelt keine persönlichen oder analytischen Daten.\nBei einigen Funktionen kann es zu einem Datenaustausch mit externen Diensten kommen (auf Ihre Anfrage hin und ausschließlich zu dem Zweck, Ihnen diese Dienste zur Verfügung zu stellen). Ein solcher Austausch unterliegt den Datenschutzrichtlinien des jeweiligen Dienstes.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Datenschutzerklärung";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Von Benutzer abgebrochen";
 
@@ -1263,6 +1305,27 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Schnelles autom. Ausfüllen";
+
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "Nicht vertrauenswürdiges Zertifikat zulassen";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "Verbindung";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "Mit Server verbinden";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "Anmeldedaten";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "Anmeldung fehlgeschlagen";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "Datei-URL";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "Remote-Verbindung";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Passwort bestätigen";
@@ -1417,6 +1480,21 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Listeneinstellungen";
 
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "Netzwerkzugriff";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "Maximaler Datenschutz";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "Offline bleiben";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "Maximale Funktionalität";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "Netzwerkzugriff erlauben";
+
 /* Section title in settings */
 "[Settings/Search/title]" = "Suche";
 
@@ -1514,5 +1592,5 @@
 "No database files" = "Keine Datenbank";
 
 /* Settings switch: whether to include backup copies in the file list */
-"Show Backup Files" = "Sicherungsdateien anzeigen";
+"Show Backup Files" = "Gesicherte Dateien anzeigen";
 

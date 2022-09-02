@@ -475,6 +475,12 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Fältnamn";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "Referens till fällt kopierad";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "Kopiera referens till fält";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Anteckningar";
 
@@ -540,6 +546,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Internt KeePassium-fel, var vänlig och rapportera det till oss.";
+
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "Nätverksåtkomst är begränsad av inställningarna.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "Lagringsleverantören svarar inte.";
@@ -705,6 +714,12 @@
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Välj en målmapp";
+
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "Av";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "På";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Avbryt";
@@ -1270,6 +1285,15 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Snabb Autofyll";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium samlar inte in någon personlig eller analytisk data och kan därför inte heller dela något med tredje part.";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassium samlar inte in några personliga eller analytiska uppgifter.\nVissa funktioner kan innebära datautbyte med externa tjänster (endast på din egna begäran och med enda syfte att göra tjänsterna tillgängliga för dig). Sådana utbyten regleras av regler och avtal för respektive tjänst.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Integritetspolicy";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Avbrutet av användaren";
 
@@ -1281,6 +1305,27 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Snabb Autofyll";
+
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "Tillåt ej betrodda certifikat";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "Anslutning";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "Anslut till server";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "Inloggningsuppgifter";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "Autentisering misslyckades";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "Fil-URL";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "Fjärranslutning";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Repetera lösenord";
@@ -1434,6 +1479,21 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Listinställningar";
+
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "Nätverksåtkomst";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "Maximalt integritetsskydd";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "Stanna offline";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "Maximal funktionalitet";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "Tillåt nätverksåtkomst";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Sök";

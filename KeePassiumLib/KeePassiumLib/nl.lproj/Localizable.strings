@@ -475,6 +475,12 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Veldnaam";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "Veldverwijzing gekopieerd naar klembord";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "Kopieer veldverwijzing";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Notities";
 
@@ -540,6 +546,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Interne KeePassium-fout. Meld dit aan ons.";
+
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "Netwerktoegang wordt geblokkeerd door de instellingen.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "De opslagdienst reageert niet.";
@@ -705,6 +714,12 @@
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Kies een bestemming";
+
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "Uit";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "Aan";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Annuleer";
@@ -1270,6 +1285,15 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Snel automatisch invullen";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium verzamelt geen persoonlijke of analytische gegevens en deel deze met niemand.";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassium verzamelt geen persoonlijke of analytische gegevens.\nSommige functies kunnen betrekking hebben op de uitwisseling van gegevens met externe diensten (op eigen verzoek en uitsluitend om deze diensten beschikbaar te stellen). Een dergelijke uitwisseling wordt bepaald door het privacybeleid van de betreffende dienst.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Privacybeleid";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Afgebroken door gebruiker";
 
@@ -1281,6 +1305,27 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Snel automatisch invullen";
+
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "Sta onvertrouwd certificaat toe";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "Verbinding";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "Verbind met server";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "Inloggegevens";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "Authenticatie mislukt";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "Bestandsurl";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "Externe verbinding";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Herhaal wachtwoord";
@@ -1434,6 +1479,21 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Lijstinstellingen";
+
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "Netwerktoegang";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "Maximale privacy";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "Offline blijven";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "Maximale functionaliteit";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "Sta netwerktoegang toe";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Zoek";

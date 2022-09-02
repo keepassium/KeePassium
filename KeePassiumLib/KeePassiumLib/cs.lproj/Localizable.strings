@@ -1159,6 +1159,12 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Automatické Vyplňování";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium neshromažďuje žádná osobní nebo analytická data a ani je s nikým nesdílí.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Zásady ochrany osobních údajů";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Zrušeno uživatelem";
 

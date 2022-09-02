@@ -38,7 +38,7 @@
 "Mxu-GP-FmN.footerTitle" = "Mémoriser et sélectionner automatiquement le dernier fichier de clé utilisé pour chaque base de données. Effacer les associations n'affecte pas les fichiers.";
 
 /* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.headerTitle" = "Fichiers clés";
+"Mxu-GP-FmN.headerTitle" = "Fichiers-clé";
 
 /* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
 "neJ-eG-TV7.footerTitle" = "Le délai de réponse de la base de données dépassé, ferme toutes les bases de données ouvertes et efface les clés maîtresses mémorisées après un certain temps.";
@@ -56,7 +56,7 @@
 "SSu-Sr-MCg.text" = "Délai de purge du presse-papiers";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Expiration de la session de base de données";
+"weX-SZ-IDB.text" = "Délai de réponse de la base de données dépassé";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "Presse-papiers universel";

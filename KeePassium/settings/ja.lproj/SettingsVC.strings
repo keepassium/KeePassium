@@ -16,3 +16,6 @@
 /* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
 "hui-xG-chj.headerTitle" = "アクセス管理";
 
+/* Class = "UITableViewSection"; headerTitle = "Network Access"; ObjectID = "K9j-xG-abD"; */
+"K9j-xG-abD.headerTitle" = "ネットワークアクセス";
+

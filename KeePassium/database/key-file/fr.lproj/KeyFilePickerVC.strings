@@ -8,13 +8,13 @@
 "leO-vH-qBX.text" = "Utiliser uniquement le mot de passe";
 
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
-"Lod-RE-tcd.title" = "Ajouter un fichier clé";
+"Lod-RE-tcd.title" = "Ajouter un fichier-clé";
 
 /* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
-"Omh-Sn-jl2.normalTitle" = "Ajouter un fichier clé";
+"Omh-Sn-jl2.normalTitle" = "Ajouter un fichier-clé";
 
 /* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
-"r85-yz-wYI.title" = "Fichiers clés";
+"r85-yz-wYI.title" = "Fichiers-clé";
 
 /* Class = "UILabel"; text = "Browse…"; ObjectID = "XiA-k9-5wr"; Note = "Action to open a file selection dialog"; */
 "XiA-k9-5wr.text" = "Parcourir…";

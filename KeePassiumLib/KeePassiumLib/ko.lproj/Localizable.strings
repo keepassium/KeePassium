@@ -1120,6 +1120,12 @@
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "첨부 파일 미리보기";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium은 개인 정보나 통계 데이터를 수집하지 않으며, 타인 혹은 타 단체에 공유하지도 않습니다.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "개인정보처리방침";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "사용자에 의해 취소됨";
 

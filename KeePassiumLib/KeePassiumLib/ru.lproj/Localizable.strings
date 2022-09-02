@@ -475,6 +475,12 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Название поля";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "Ссылка на поле скопирована в буфер обмена";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "Скопировать ссылку на поле";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Заметки";
 
@@ -540,6 +546,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Внутренняя ошибка KeePassium. Пожалуйста, сообщите нам об этом.";
+
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "Сетевой доступ заблокирован в настройках.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "Хранилище файлов не отвечает.";
@@ -705,6 +714,12 @@
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Выберите место назначения";
+
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "Выкл.";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "Вкл.";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Отменить";
@@ -1270,6 +1285,15 @@
 /* Title of a premium feature: show relevant AutoFill entries right under the input field */
 "[PremiumFeature/QuickAutoFill/title]" = "Быстрое автозаполнение";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium не собирает персональные или аналитические данные и никому их не передаёт.";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassium не собирает никаких персональных или аналитических данных.\nНекоторые функции могут включать обмен данными с внешними сервисами (по вашему запросу и с единственной целью сделать эти сервисы доступными для вас). Такой обмен регулируется политикой конфиденциальности соответствующего сервиса.";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "Политика конфиденциальности";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "Отменено пользователем";
 
@@ -1281,6 +1305,27 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Быстрое автозаполнение";
+
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "Разрешить ненадёжный сертификат";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "Соединение";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "Подключиться к серверу";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "Учётные данные";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "Ошибка авторизации";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "URL файла";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "Удалённое соединение";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Повторить пароль";
@@ -1434,6 +1479,21 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Вид списка";
+
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "Доступ к сети";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "Максимальная конфиденциальность";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "Оставаться офлайн";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "Максимальная функциональность";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "Разрешить доступ к сети";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Поиск";

@@ -1213,6 +1213,12 @@
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "ดูตัวอย่างไฟล์แนบ";
 
+/* A brief summary of the privacy policy (for offline mode) */
+"[PrivacyPolicy/Offline/text]" = "KeePassium ไม่เก็บข้อมูลส่วนตัวหรือข้อมูลวิเคราะห์ใด ๆ และไม่แชร์ข้อมูลให้ผู้อื่น";
+
+/* Section: privacy policy */
+"[PrivacyPolicy/title]" = "นโยบายความเป็นส่วนตัว";
+
 /* Explanation/notification when a long-running operation was cancelled by user */
 "[Progress/CancellationReason] Cancelled by user" = "ถูกยกเลิกโดยผู้ใช้งาน";
 
