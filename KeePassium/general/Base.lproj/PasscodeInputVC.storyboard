@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0x-Rz-Nfj">
-                                        <rect key="frame" x="8" y="52" width="58" height="341"/>
+                                        <rect key="frame" x="8" y="52" width="58" height="32"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <color key="tintColor" name="ActionTint"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -138,7 +138,7 @@
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="dZt-k0-KDh"/>
                                     <constraint firstItem="GK4-6p-jx8" firstAttribute="width" secondItem="ZTd-Zj-qAs" secondAttribute="width" id="ktX-r6-m2S"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="topMargin" id="lZx-Sc-BwX"/>
-                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="z0x-Rz-Nfj" secondAttribute="bottom" priority="750" id="muI-ci-wh6"/>
+                                    <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z0x-Rz-Nfj" secondAttribute="bottom" id="muI-ci-wh6"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="r0g-ql-wUj"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="topMargin" id="rei-9A-IvX"/>
                                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3mQ-t6-0ty" secondAttribute="trailing" id="sQS-fD-2eK"/>
