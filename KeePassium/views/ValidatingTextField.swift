@@ -54,6 +54,21 @@ class ValidatingTextField: UITextField {
             layoutIfNeeded()
         }
     }
+    
+    #if targetEnvironment(macCatalyst)
+    private var hoverGestureRecognizer: UIHoverGestureRecognizer?
+    public var cursor: NSCursor? {
+        didSet {
+            if hoverGestureRecognizer == nil {
+                hoverGestureRecognizer = UIHoverGestureRecognizer(
+                    target: self,
+                    action: #selector(hoverGestureHandler)
+                )
+                addGestureRecognizer(hoverGestureRecognizer!)
+            }
+        }
+    }
+    #endif
 
     var isValid: Bool {
         get { return validityDelegate?.validatingTextFieldShouldValidate(self) ?? true }
@@ -211,3 +226,18 @@ extension ValidatingTextField: TextInputEditMenuDelegate {
         return externalEditMenuDelegate.textInputDidRequestRandomizer(textInput)
     }
 }
+
+#if targetEnvironment(macCatalyst)
+extension ValidatingTextField {
+    @objc private func hoverGestureHandler(_ recognizer: UIHoverGestureRecognizer) {
+        switch recognizer.state {
+        case .began, .changed:
+            cursor?.set()
+        case .ended:
+            NSCursor.arrow.set()
+        default:
+            break
+        }
+    }
+}
+#endif

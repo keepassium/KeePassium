@@ -74,6 +74,11 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         passwordField.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         keyFileField.maskedCorners = []
         hardwareKeyField.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+
+        #if targetEnvironment(macCatalyst)
+        keyFileField.cursor = .arrow
+        hardwareKeyField.cursor = .arrow
+        #endif
         
         keyboardLayoutConstraint.layoutCallback = { [weak self] in
             self?.view.layoutIfNeeded()

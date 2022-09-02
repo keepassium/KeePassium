@@ -74,6 +74,11 @@ class DatabaseCreatorVC: UIViewController {
         keyFileField.maskedCorners = []
         hardwareKeyField.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
+        #if targetEnvironment(macCatalyst)
+        keyFileField.cursor = .arrow
+        hardwareKeyField.cursor = .arrow
+        #endif
+
         fileNameField.validityDelegate = self
         fileNameField.delegate = self
         passwordField.validityDelegate = self
