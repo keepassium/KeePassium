@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.36",
-            "releaseDate": "2022-08-09T00:00:00Z",
+            "releaseDate": "2022-09-03T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: \"Allow Network Access\" setting (off by default)",
@@ -13,7 +13,31 @@
                     "type": 1
                 },
                 {
+                    "title": "🧩 Added: Support for USB YubiKeys on macOS (native MacCatalyst builds only, won't work in iPad emulation mode on Apple Silicon)",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Ability to copy references to entry fields (tap the field to see the copy button) [thanks, u/RandomComputerFellow]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Added a button to delete custom entry fields [thanks, YJ]",
+                    "type": 1
+                },
+                {
                     "title": "🛠 Improved: Added a 48-hour database timeout [thanks, BM]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Display full Pro app name on the home screen",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Minor UI improvements focused on macOS",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated all translations",
                     "type": 1
                 },
                 {
@@ -22,6 +46,10 @@
                 },
                 {
                     "title": "🐞 Fixed: \"Save as\" on sync conflict could overwrite the original",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: Too frequent Touch ID popups. Now one needs to click a 'Touch ID unlock' button first [thanks, everyone]",
                     "type": 1
                 },
                 {

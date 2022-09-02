@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [1.36.116] - 2022-09-03
+
+### Added
+
+- macOS: Added support for USB YubiKeys (native MacCatalys builds only)
+- Ability to copy references to entry fields (tap the field to see the copy button) [thanks, u/RandomComputerFellow]
+
+### Improved
+
+- Added a button to delete custom entry fields [thanks, YJ]
+- Display full Pro app name on the Home screen
+- Minor UI improvements focused on macOS
+- Updated all translations
+
+### Fixed
+
+- macOS: too frequent Touch ID popups. Now one needs to click a "Touch ID unlock" button first [thanks, everyone]
+
+
 ## [1.36.115] - 2022-08-09
 
 ### Added
