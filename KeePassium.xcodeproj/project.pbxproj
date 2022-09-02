@@ -779,7 +779,7 @@
 		75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2E2309AFE90088BB10 /* FirstSetupVC.storyboard */; };
 		75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
-		75D7DFC7233E5E8C0029AD87 /* KeePassiumPro AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		75D7DFC7233E5E8C0029AD87 /* KeePassium Pro AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 75D7DFBE233E5E310029AD87 /* KeePassium Pro AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		75D9913A26CEC8E400823331 /* SyncConflictAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9913926CEC8E400823331 /* SyncConflictAlert.swift */; };
 		75D9913B26CEC8E400823331 /* SyncConflictAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9913926CEC8E400823331 /* SyncConflictAlert.swift */; };
 		75D9913D26CEEDC800823331 /* SyncConflictAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D9913C26CEEDC800823331 /* SyncConflictAlert.storyboard */; };
@@ -908,7 +908,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				75D7DFC7233E5E8C0029AD87 /* KeePassiumPro AutoFill.appex in Embed App Extensions */,
+				75D7DFC7233E5E8C0029AD87 /* KeePassium Pro AutoFill.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1740,7 +1740,7 @@
 		75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorLengthCell.swift; sourceTree = "<group>"; };
 		75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFinderVC.swift; sourceTree = "<group>"; };
 		75B24DD421C523AE003C9486 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
-		75B38C81233E5B7C006BDEFC /* KeePassiumPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeePassiumPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75B38C81233E5B7C006BDEFC /* KeePassium Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KeePassium Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderVC.swift; sourceTree = "<group>"; };
 		75B5FB7620D53EA700D402D9 /* EntryFieldViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldViewerVC.swift; sourceTree = "<group>"; };
 		75B5FB7820D6101100D402D9 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
@@ -1812,7 +1812,7 @@
 		75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
 		75D76153262E1E9000B1DE7F /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		75D76158262ED2E200B1DE7F /* Coordinator+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+premium.swift"; sourceTree = "<group>"; };
-		75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassiumPro AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D7DFBE233E5E310029AD87 /* KeePassium Pro AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassium Pro AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D9913926CEC8E400823331 /* SyncConflictAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncConflictAlert.swift; sourceTree = "<group>"; };
 		75D9913C26CEEDC800823331 /* SyncConflictAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SyncConflictAlert.storyboard; sourceTree = "<group>"; };
 		75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutContraint+extensions.swift"; sourceTree = "<group>"; };
@@ -2262,8 +2262,8 @@
 			children = (
 				754BF07B2082A6BD00E3A292 /* KeePassium.app */,
 				750CFBC721BA9ACD00E62B09 /* KeePassium AutoFill.appex */,
-				75B38C81233E5B7C006BDEFC /* KeePassiumPro.app */,
-				75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */,
+				75B38C81233E5B7C006BDEFC /* KeePassium Pro.app */,
+				75D7DFBE233E5E310029AD87 /* KeePassium Pro AutoFill.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2787,9 +2787,9 @@
 			productReference = 754BF07B2082A6BD00E3A292 /* KeePassium.app */;
 			productType = "com.apple.product-type.application";
 		};
-		75B38BEF233E5B7C006BDEFC /* KeePassiumPro */ = {
+		75B38BEF233E5B7C006BDEFC /* KeePassium Pro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75B38C7E233E5B7C006BDEFC /* Build configuration list for PBXNativeTarget "KeePassiumPro" */;
+			buildConfigurationList = 75B38C7E233E5B7C006BDEFC /* Build configuration list for PBXNativeTarget "KeePassium Pro" */;
 			buildPhases = (
 				75B38BF2233E5B7C006BDEFC /* Sources */,
 				75B38C4B233E5B7C006BDEFC /* Frameworks */,
@@ -2803,17 +2803,17 @@
 			dependencies = (
 				75530C93233E604300EC557E /* PBXTargetDependency */,
 			);
-			name = KeePassiumPro;
+			name = "KeePassium Pro";
 			packageProductDependencies = (
 				75D1C58727B4155E0079E97E /* YubiKit */,
 			);
 			productName = KeePassium;
-			productReference = 75B38C81233E5B7C006BDEFC /* KeePassiumPro.app */;
+			productReference = 75B38C81233E5B7C006BDEFC /* KeePassium Pro.app */;
 			productType = "com.apple.product-type.application";
 		};
-		75D7DF7A233E5E310029AD87 /* KeePassiumPro AutoFill */ = {
+		75D7DF7A233E5E310029AD87 /* KeePassium Pro AutoFill */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75D7DFBB233E5E310029AD87 /* Build configuration list for PBXNativeTarget "KeePassiumPro AutoFill" */;
+			buildConfigurationList = 75D7DFBB233E5E310029AD87 /* Build configuration list for PBXNativeTarget "KeePassium Pro AutoFill" */;
 			buildPhases = (
 				75D7DF7B233E5E310029AD87 /* Sources */,
 				75D7DFA8233E5E310029AD87 /* Frameworks */,
@@ -2823,9 +2823,9 @@
 			);
 			dependencies = (
 			);
-			name = "KeePassiumPro AutoFill";
+			name = "KeePassium Pro AutoFill";
 			productName = "KeePassium AutoFill";
-			productReference = 75D7DFBE233E5E310029AD87 /* KeePassiumPro AutoFill.appex */;
+			productReference = 75D7DFBE233E5E310029AD87 /* KeePassium Pro AutoFill.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -2929,8 +2929,8 @@
 			targets = (
 				754BF07A2082A6BD00E3A292 /* KeePassium */,
 				750CFBC621BA9ACD00E62B09 /* KeePassium AutoFill */,
-				75B38BEF233E5B7C006BDEFC /* KeePassiumPro */,
-				75D7DF7A233E5E310029AD87 /* KeePassiumPro AutoFill */,
+				75B38BEF233E5B7C006BDEFC /* KeePassium Pro */,
+				75D7DF7A233E5E310029AD87 /* KeePassium Pro AutoFill */,
 			);
 		};
 /* End PBXProject section */
@@ -3868,7 +3868,7 @@
 		};
 		75530C93233E604300EC557E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 75D7DF7A233E5E310029AD87 /* KeePassiumPro AutoFill */;
+			target = 75D7DF7A233E5E310029AD87 /* KeePassium Pro AutoFill */;
 			targetProxy = 75530C92233E604300EC557E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -5424,7 +5424,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75B38C7E233E5B7C006BDEFC /* Build configuration list for PBXNativeTarget "KeePassiumPro" */ = {
+		75B38C7E233E5B7C006BDEFC /* Build configuration list for PBXNativeTarget "KeePassium Pro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75B38C7F233E5B7C006BDEFC /* Debug */,
@@ -5433,7 +5433,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75D7DFBB233E5E310029AD87 /* Build configuration list for PBXNativeTarget "KeePassiumPro AutoFill" */ = {
+		75D7DFBB233E5E310029AD87 /* Build configuration list for PBXNativeTarget "KeePassium Pro AutoFill" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D7DFBC233E5E310029AD87 /* Debug */,
