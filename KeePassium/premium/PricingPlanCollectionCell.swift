@@ -36,12 +36,15 @@ class PricingPlanConditionCell: UITableViewCell {
     var isChecked: Bool = false {
         didSet {
             if isChecked {
-                checkmarkImage?.image = UIImage(asset: .premiumConditionCheckedListitem)
+                checkmarkImage?.image = .get(.checkmark)?
+                    .applyingSymbolConfiguration(.init(scale: .default))
                 checkmarkImage?.tintColor = .primaryText
                 titleLabel?.textColor = .primaryText
                 accessibilityTraits.remove(.notEnabled)
             } else {
-                checkmarkImage?.image = UIImage(asset: .premiumConditionUncheckedListitem)
+                checkmarkImage?.image = .get(.xmark)?
+                    .applyingSymbolConfiguration(.init(weight: .light))?
+                    .applyingSymbolConfiguration(.init(scale: .small))
                 checkmarkImage?.tintColor = .disabledText
                 titleLabel?.textColor = .disabledText
                 accessibilityTraits.insert(.notEnabled)
