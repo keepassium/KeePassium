@@ -170,6 +170,7 @@ extension ValidatingTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         refreshFocusRing()
         externalDelegate?.textFieldDidBeginEditing?(textField)
+        onEditingChanged(textField: textField)
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

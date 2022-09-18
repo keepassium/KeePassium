@@ -67,6 +67,7 @@ class PasscodeInputVC: UIViewController {
         
         self.presentationController?.delegate = self
         
+        passcodeTextField.invalidBackgroundColor = passcodeTextField.backgroundColor
         passcodeTextField.delegate = self
         passcodeTextField.validityDelegate = self
 
