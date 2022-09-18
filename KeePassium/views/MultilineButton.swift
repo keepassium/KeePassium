@@ -9,6 +9,22 @@
 import UIKit
 
 class MultilineButton: UIButton {
+    override var canBecomeFocused: Bool { isEnabled }
+    
+    #if targetEnvironment(macCatalyst)
+    @available(iOS 15, *)
+    override var focusEffect: UIFocusEffect? {
+        get {
+            UIFocusHaloEffect(
+                roundedRect: bounds.insetBy(dx: -2, dy: -2),
+                cornerRadius: cornerRadius,
+                curve: .circular)
+        }
+        set {
+        }
+    }
+    #endif
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel?.lineBreakMode = .byWordWrapping

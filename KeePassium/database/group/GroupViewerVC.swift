@@ -239,6 +239,7 @@ final class GroupViewerVC:
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
         tableView.register(AnnouncementCell.classForCoder(), forCellReuseIdentifier: CellID.announcement)
+        tableView.selectionFollowsFocus = true
         
         createItemButton = UIBarButtonItem(
             title: LString.actionCreate,
@@ -899,6 +900,18 @@ final class GroupViewerVC:
         delegate?.didPressChangeMasterKey(at: popoverAnchor, in: self)
     }
 }
+
+#if targetEnvironment(macCatalyst)
+extension GroupViewerVC {
+    override func tableView(
+        _ tableView: UITableView,
+        selectionFollowsFocusForRowAt indexPath: IndexPath
+    ) -> Bool {
+        let isEntry = getEntry(at: indexPath) != nil
+        return isEntry
+    }
+}
+#endif
 
 extension GroupViewerVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {

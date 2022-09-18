@@ -21,7 +21,14 @@ extension ValidatingTextViewDelegate {
 }
 
 class ValidatingTextView: WatchdogAwareTextView {
-    private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25).cgColor
+    private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25)
+    private let focusedBorderColor: UIColor = {
+        if #available(iOS 15, *) {
+            return .tintColor.withAlphaComponent(0.5)
+        } else {
+            return .systemBlue.withAlphaComponent(0.5)
+        }
+    }()
     
     @IBInspectable var invalidBackgroundColor: UIColor? = UIColor.red.withAlphaComponent(0.2)
     
@@ -55,7 +62,7 @@ class ValidatingTextView: WatchdogAwareTextView {
             .layerMaxXMinYCorner,
             .layerMaxXMaxYCorner]
         layer.borderWidth = 0.8
-        layer.borderColor = defaultBorderColor
+        layer.borderColor = defaultBorderColor.cgColor
     }
     
     @objc
@@ -79,17 +86,33 @@ class ValidatingTextView: WatchdogAwareTextView {
     }
 }
 
-#if targetEnvironment(macCatalyst)
+
 extension ValidatingTextView {
+    #if targetEnvironment(macCatalyst)
+    @available(iOS 15.0, *)
+    override var focusEffect: UIFocusEffect? {
+        get {
+            UIFocusHaloEffect(
+                roundedRect: bounds,
+                cornerRadius: cornerRadius,
+                curve: .continuous)
+        }
+        set {
+        }
+    }
+
     @objc(_focusRingType)
     var focusRingType: UInt {
         return 1 
     }
     
     private func refreshFocusRing() {
+        if #available(iOS 15, *) {
+            return 
+        }
         if isFirstResponder {
             borderWidth = 3
-            borderColor = .systemBlue.withAlphaComponent(0.5)
+            borderColor = focusedBorderColor
         } else {
             setupDefaultBorder()
         }
@@ -105,5 +128,5 @@ extension ValidatingTextView {
         refreshFocusRing()
         return result
     }
+    #endif
 }
-#endif

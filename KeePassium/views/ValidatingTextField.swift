@@ -21,7 +21,15 @@ extension ValidatingTextFieldDelegate {
 }
 
 class ValidatingTextField: UITextField {
-    private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25).cgColor
+    private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25)
+    private let focusedBorderColor: UIColor = {
+        if #available(iOS 15, *) {
+            return .tintColor.withAlphaComponent(0.5)
+        } else {
+            return .systemBlue.withAlphaComponent(0.5)
+        }
+    }()
+    
     
     private weak var externalDelegate: UITextFieldDelegate?
     override var delegate: UITextFieldDelegate? {
@@ -105,7 +113,7 @@ class ValidatingTextField: UITextField {
             .layerMaxXMinYCorner,
             .layerMaxXMaxYCorner]
         layer.borderWidth = 0.8
-        layer.borderColor = defaultBorderColor
+        layer.borderColor = defaultBorderColor.cgColor
     }
     
     @objc
@@ -139,8 +147,23 @@ class ValidatingTextField: UITextField {
         let rect = super.editingRect(forBounds: bounds)
         return rect.inset(by: .init(top: 0, left: leftTextInset, bottom: 0, right: rightTextInset))
     }
+}
 
-    
+extension ValidatingTextField {
+    #if targetEnvironment(macCatalyst)
+    @available(iOS 15, *)
+    override var focusEffect: UIFocusEffect? {
+        get {
+            UIFocusHaloEffect(
+                roundedRect: bounds,
+                cornerRadius: cornerRadius,
+                curve: .continuous)
+        }
+        set {
+        }
+    }
+    #endif
+
     #if targetEnvironment(macCatalyst)
     @objc(_focusRingType)
     var focusRingType: UInt {
@@ -150,12 +173,14 @@ class ValidatingTextField: UITextField {
     
     private func refreshFocusRing() {
         #if targetEnvironment(macCatalyst)
+        if #available(iOS 15, *) {
+            return 
+        }
         if isEditing {
             borderWidth = 3
-            borderColor = .systemBlue.withAlphaComponent(0.5)
+            borderColor = focusedBorderColor
         } else {
-            borderWidth = 0
-            borderColor = .clear
+            setupDefaultBorder()
         }
         #endif
     }

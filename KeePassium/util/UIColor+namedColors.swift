@@ -9,6 +9,14 @@
 import UIKit
 
 extension UIColor {
+
+    static var systemTint: UIColor {
+        if #available(iOS 15, *) {
+            return UIColor.tintColor.resolvedColor(with: .current)
+        } else {
+            return actionTint
+        }
+    }
     
     static var actionTint: UIColor {
         return UIColor(named: "ActionTint") ?? UIColor.systemBlue
