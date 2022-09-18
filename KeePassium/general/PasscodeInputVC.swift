@@ -227,6 +227,9 @@ class PasscodeInputVC: UIViewController {
 
 extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard passcodeTextField.isValid else {
+            return false
+        }
         didPressMainButton(textField)
         return false
     }
