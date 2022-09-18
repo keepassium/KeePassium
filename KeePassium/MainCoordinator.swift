@@ -43,6 +43,7 @@ final class MainCoordinator: Coordinator {
     fileprivate var appLockWindow: UIWindow?
     fileprivate var biometricsBackgroundWindow: UIWindow?
     fileprivate var isBiometricAuthShown = false
+    private var isInitialAppLock = true
     
     fileprivate let biometricAuthReuseDuration = TimeInterval(2.0)
     fileprivate var lastSuccessfulBiometricAuthTime: Date = .distantPast
@@ -459,7 +460,9 @@ extension MainCoordinator: WatchdogDelegate {
     
     private func showAppLockScreen() {
         guard !isAppLockVisible else { return }
-        if canUseBiometrics() && !ProcessInfo.isRunningOnMac{
+        let isRepeatedLockOnMac = ProcessInfo.isRunningOnMac && !isInitialAppLock
+        isInitialAppLock = false
+        if canUseBiometrics() && !isRepeatedLockOnMac {
             performBiometricUnlock()
         } else {
             showPasscodeRequest()
