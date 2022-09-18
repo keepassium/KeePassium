@@ -1523,7 +1523,11 @@ public class Settings {
                 .object(forKey: Keys.settingsVersion.rawValue) as? Int
             return (versionInfo == nil)
         }
-            
+        
+        #if DEBUG
+        return false
+        #endif
+        
         
         guard let bundleAttributes = try? FileManager.default
                 .attributesOfItem(atPath: Bundle.main.bundlePath),
