@@ -97,7 +97,7 @@ extension SearchHelper {
                 (entry.parent as? Group2)?.isSearchingEnabled ?? true
             }
             .filter { (entry) in
-                !(entry.isDeleted || entry.isHiddenFromSearch)
+                !(entry.isDeleted || entry.isExpired || entry.isHiddenFromSearch)
             }
             .map { (entry) in
                 return ScoredEntry(
