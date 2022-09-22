@@ -29,7 +29,14 @@ class AppInfo {
     }
 
     public static var description: String {
-        let deviceInfo = "\(UIDevice.current.model), iOS \(UIDevice.current.systemVersion)"
+        let deviceInfo: String
+        if ProcessInfo.isCatalystApp {
+            deviceInfo = "MacCatalyst \(UIDevice.current.systemVersion)"
+        } else if ProcessInfo.isiPadAppOnMac {
+            deviceInfo = "Mac, iPadOS \(UIDevice.current.systemVersion)"
+        } else {
+            deviceInfo = "\(UIDevice.current.model), iOS \(UIDevice.current.systemVersion)"
+        }
         let betaMark = Settings.current.isTestEnvironment ? "-beta" : ""
         return "\(name) v\(version).\(build)\(betaMark) (\(deviceInfo))"
     }
