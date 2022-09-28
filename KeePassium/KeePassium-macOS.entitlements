@@ -8,6 +8,8 @@
 	</array>
 	<key>com.apple.developer.authentication-services.autofill-credential-provider</key>
 	<true/>
+	<key>com.apple.developer.default-data-protection</key>
+	<string>NSFileProtectionComplete</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
 		<string>iCloud.com.keepassium.ios</string>
@@ -30,9 +32,7 @@
 	</array>
 	<key>com.apple.security.device.camera</key>
 	<true/>
-	<key>com.apple.security.device.usb</key>
-	<true/>
-	<key>com.apple.security.files.user-selected.read-write</key>
+	<key>com.apple.security.network.client</key>
 	<true/>
 	<key>com.apple.security.personal-information.photos-library</key>
 	<true/>
@@ -40,5 +40,9 @@
 	<array>
 		<string>$(AppIdentifierPrefix)com.keepassium.SharedItems</string>
 	</array>
+	<key>com.apple.security.files.user-selected.read-write</key>
+	<true/>
+	<key>com.apple.security.device.usb</key>
+	<true/>
 </dict>
 </plist>
