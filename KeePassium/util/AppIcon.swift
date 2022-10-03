@@ -18,11 +18,11 @@ extension AppIcon {
     private static let all: [AppIcon]  = [
         AppIcon.classicFree, AppIcon.classicPro,
         AppIcon.atomBlue, AppIcon.atomWhite, AppIcon.atomBlack,
-        AppIcon.calc, AppIcon.keepass, AppIcon.info,
+        AppIcon.keepass,
     ]
     static let allCustom: [AppIcon]  = [
         AppIcon.atomBlue, AppIcon.atomWhite, AppIcon.atomBlack,
-        AppIcon.calc, AppIcon.keepass, AppIcon.info, 
+        AppIcon.keepass,
     ]
     
     static let classicFree = AppIcon(
@@ -46,14 +46,6 @@ extension AppIcon {
         name: "Atom White",
         key: "appicon-atom-white",
         asset: "appicon-atom-white-listitem")
-    static let calc = AppIcon(
-        name: "Calculator",
-        key: "appicon-calc",
-        asset: "appicon-calc-listitem")
-    static let info = AppIcon(
-        name: "Info",
-        key: "appicon-info",
-        asset: "appicon-info-listitem")
     static let keepass = AppIcon(
         name: "KeePass",
         key: "appicon-keepass",

@@ -78,15 +78,6 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>appicon-calc</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>appicon-calc_iPhoneApp_60</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>appicon-classic-free</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -101,15 +92,6 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>appicon-classic-pro_iPhoneApp_60</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>appicon-info</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>appicon-info_iPhoneApp_60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
