@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [1.37.117] - 2022-10-07
+
+### Removed
+
+- Deleted two custom app icons (calc, info), due to Apple's demand.
+
+### Improved
+
+- macOS: On launch, show Touch ID prompt automatically [thanks, YJ]
+- macOS: In app passcode screen, pressing Esc will show Touch ID prompt (closes #253) [thanks, moenodedev]
+- Updated IT and PT-BR translations
+
+### Fixed
+
+- macOS: WebDAV connection could not find the server
+- Excluded expired entries from search (closes #252) [thanks, cryptosteve2]
+- Minor UI fixes here and there
+
+
 ## [1.36.116] - 2022-09-03
 
 ### Added
