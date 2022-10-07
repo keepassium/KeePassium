@@ -173,7 +173,7 @@
 "[Database/MasterKey/RememberYourPassword/text]" = "Caso a esqueça, não conseguirá acessar seus dados. Não há modo de redefinir a senha.";
 
 /* Imperative/recommendation: title of a warning when changing database password. */
-"[Database/MasterKey/RememberYourPassword/title]" = "Lembre-se da sua senha-mestra";
+"[Database/MasterKey/RememberYourPassword/title]" = "Lembre-se da senha do seu banco de dados";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Abrir banco de dados";
@@ -434,7 +434,7 @@
 "[DatabaseError] Cannot save database" = "Não foi possível salvar o banco de dados";
 
 /* Error message: user provided a wrong master key for decryption. */
-"[DatabaseError] Invalid password or key file" = "Senha ou arquivo de chave inválidos";
+"[DatabaseError] Invalid password or key file" = "Senha ou arquivo de chave inválido(s)";
 
 /* Subtitle for `Diagnostic Log`. Keep it short. */
 "[DiagLog/subtitle]" = "Para solução de problemas avançada";
@@ -1076,7 +1076,7 @@
 "[Premium/Benefits/CustomAppIcon/title]" = "Mude o ícone do app";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "Cansado de digitar a senha-mestra? Deixe seu banco de dados aberto por mais tempo e o desbloqueie com um toque.";
+"[Premium/Benefits/DatabaseTimeout/details]" = "Cansado de digitar a senha do banco de dados? Deixe-o aberto por mais tempo e o desbloqueie com um toque.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/DatabaseTimeout/title]" = "Poupe tempo";
@@ -1262,7 +1262,7 @@
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Chaves Físicas";
 
 /* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Ganhe tempo ao inserir suas senhas-mestras complexas — deixe seu banco de dados aberto por mais tempo na versão Premium.";
+"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Ganhe tempo em vez de repetir as senhas complicadas dos seus bancos de dados — deixe-os abertos por mais tempo na versão Premium.";
 
 /* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
 "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Bancos de dados abertos por mais tempo";
@@ -1430,7 +1430,7 @@
 "[Settings/DatabaseBackup/title]" = "Cópias de segurança";
 
 /* Description of the Database Lock Timeout */
-"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Se você não interagir com o app por certo tempo, o banco de dados será fechado para sua segurança. Para abri-lo, será preciso a senha-mestra novamente.";
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Se você não interagir com o aplicativo por certo tempo, o banco de dados será fechado para sua segurança. Para abri-lo, será preciso a senha deste novamente.";
 
 /* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
 "[Settings/DatabaseLockTimeout/description] When leaving the app" = "Ao sair do app";

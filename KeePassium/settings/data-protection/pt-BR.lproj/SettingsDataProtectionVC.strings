@@ -11,7 +11,7 @@
 "e6Y-AP-hag.headerTitle" = "Campos protegidos";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "Ao desbloquear um banco de dados, sua senha-mestra pode ser salva nas chaves do sistema deste dispositivo. Na próxima vez, KeePassium usará a senha-mestra salva para que você não precise digitá-la de novo.\n\n(Senhas-mestras são automaticamente apagadas das chaves do sistema quando o tempo de permanência aberto do banco de dados expira.)";
+"Faj-km-pM5.footerTitle" = "Ao desbloquear um banco de dados, a chave-mestra dele pode ser salva nas chaves do sistema deste dispositivo. Nos desbloqueios seguintes, KeePassium a usará para que você não precise digitar de novo a senha do banco de dados.\n\n(Chaves-mestras são automaticamente apagadas das chaves do sistema quando o tempo de permanência aberto do banco de dados expira.)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Desbloqueio rápido";
