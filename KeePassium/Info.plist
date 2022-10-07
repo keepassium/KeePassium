@@ -141,16 +141,6 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>appicon-calc</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>appicon-calc_iPadApp_76</string>
-					<string>appicon-calc_iPadProApp_83.5</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>appicon-classic-free</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -167,16 +157,6 @@
 				<array>
 					<string>appicon-classic-pro_iPadApp_76</string>
 					<string>appicon-classic-pro_iPadProApp_83.5</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>appicon-info</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>appicon-info_iPadApp_76</string>
-					<string>appicon-info_iPadProApp_83.5</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
