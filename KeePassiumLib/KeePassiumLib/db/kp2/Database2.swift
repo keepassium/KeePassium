@@ -1305,6 +1305,7 @@ public class Database2: Database {
     private func removeUnusedCustomIconRefs() {
         let knownIconUUIDs = Set<UUID>(customIcons.map { $0.uuid })
         root?.applyToAllChildren(
+            includeSelf: true,
             groupHandler: { group in
                 (group as! Group2).enforceCustomIconUUID(isValid: knownIconUUIDs)
             },
