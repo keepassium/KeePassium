@@ -73,7 +73,13 @@ protocol GroupViewerDelegate: AnyObject {
         at popoverAnchor: PopoverAnchor,
         in viewController: GroupViewerVC
     )
-    
+
+    func didPressEmptyRecycleBinGroup(
+        _ recycleBinGroup: Group,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: GroupViewerVC
+    )
+
     func getActionPermissions(for group: Group) -> DatabaseItemActionPermissions
     func getActionPermissions(for entry: Entry) -> DatabaseItemActionPermissions
     
@@ -720,9 +726,12 @@ final class GroupViewerVC:
         at indexPath: IndexPath,
         forSwipe: Bool
     ) -> [ContextualAction] {
+        var isNonEmptyRecycleBinGroup = false
         let permissions: DatabaseItemActionPermissions
         if let group = getGroup(at: indexPath) {
             permissions = delegate?.getActionPermissions(for: group) ?? DatabaseItemActionPermissions()
+            let isRecycleBin = (group === group.database?.getBackupGroup(createIfMissing: false))
+            isNonEmptyRecycleBinGroup = isRecycleBin && (!group.entries.isEmpty || !group.groups.isEmpty)
         } else if let entry = getEntry(at: indexPath) {
             permissions = delegate?.getActionPermissions(for: entry) ?? DatabaseItemActionPermissions()
         } else {
@@ -745,6 +754,15 @@ final class GroupViewerVC:
             color: UIColor.destructiveTint,
             handler: { [weak self, indexPath] in
                 self?.didPressDeleteItem(at: indexPath)
+            }
+        )
+        let emptyRecycleBinAction = ContextualAction(
+            title: LString.actionEmptyRecycleBinGroup,
+            imageName: .trash,
+            style: .destructive,
+            color: UIColor.destructiveTint,
+            handler: { [weak self, indexPath] in
+                self?.didPressEmptyRecycleBinGroup(at: indexPath)
             }
         )
          
@@ -785,6 +803,9 @@ final class GroupViewerVC:
         }
         if permissions.canDeleteItem {
             actions.append(deleteAction)
+            if isNonEmptyRecycleBinGroup {
+                actions.append(emptyRecycleBinAction)
+            }
         }
         return actions
     }
@@ -862,6 +883,25 @@ final class GroupViewerVC:
         present(confirmationAlert, animated: true, completion: nil)
     }
     
+    private func didPressEmptyRecycleBinGroup(at indexPath: IndexPath) {
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        guard let targetGroup = getGroup(at: indexPath) else {
+            assertionFailure("Cannot find a group at specified index path")
+            return
+        }
+        let confirmationAlert = UIAlertController.make(
+            title: LString.confirmEmptyRecycleBinGroup,
+            message: nil,
+            dismissButtonTitle: LString.actionCancel)
+        confirmationAlert.addAction(title: LString.actionEmptyRecycleBinGroup, style: .destructive) {
+            [weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.didPressEmptyRecycleBinGroup(targetGroup, at: popoverAnchor, in: self)
+        }
+        confirmationAlert.modalPresentationStyle = .popover
+        popoverAnchor.apply(to: confirmationAlert.popoverPresentationController)
+        present(confirmationAlert, animated: true, completion: nil)
+    }
 
     func didPressRelocateItem(at indexPath: IndexPath, mode: ItemRelocationMode) {
         guard let selectedItem = getItem(at: indexPath) else {

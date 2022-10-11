@@ -474,6 +474,19 @@ extension LString {
         value: "Edit Group",
         comment: "Title of a form for editing a group"
     )
+    public static let actionEmptyRecycleBinGroup = NSLocalizedString(
+        "[Group/RecycleBin/Empty/action]",
+        bundle: Bundle.framework,
+        value: "Empty Recycle Bin",
+        comment: "Action/button to delete everything inside the Recycle Bin"
+    )
+    public static let confirmEmptyRecycleBinGroup = NSLocalizedString(
+        "[Group/RecycleBin/Empty/confirmTitle]",
+        bundle: Bundle.framework,
+        value: "Permanently delete everything in the Recycle Bin?",
+        comment: "Title of the confirmation dialog for `Empty Recycle Bin` action"
+    )
+
     public static let actionCreateEntry = NSLocalizedString(
         "[Entry/Create/action] Create Entry",
         bundle: Bundle.framework,

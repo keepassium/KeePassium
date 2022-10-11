@@ -608,6 +608,21 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         showItemRelocator(for: item, mode: mode, at: popoverAnchor)
     }
     
+    func didPressEmptyRecycleBinGroup(
+        _ recycleBinGroup: Group,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: GroupViewerVC
+    ) {
+        recycleBinGroup.groups.forEach {
+            database.delete(group: $0)
+        }
+        recycleBinGroup.entries.forEach {
+            database.delete(entry: $0)
+        }
+        recycleBinGroup.touch(.accessed)
+        saveDatabase(databaseFile)
+    }
+    
     func getActionPermissions(for group: Group) -> DatabaseItemActionPermissions {
         guard canEditDatabase else {
             return DatabaseItemActionPermissions.everythingForbidden
