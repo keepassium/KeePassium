@@ -12,6 +12,8 @@
 		7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CE2236ED6E00E5202E /* Base32.swift */; };
 		7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8D02236FA0F00E5202E /* StringExtension.swift */; };
 		750935C4235219B900A362C8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750935C3235219B900A362C8 /* Observable.swift */; };
+		750AB1AA2902DD6100811980 /* WebDAVFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750AB1A92902DD6100811980 /* WebDAVFileURL.swift */; };
+		750AB1AC2902DD9200811980 /* OneDriveFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750AB1AB2902DD9200811980 /* OneDriveFileURL.swift */; };
 		75134CFC23C0F02C0065CD10 /* DatabaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */; };
 		751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CDD2309A3420088BB10 /* Localizable.strings */; };
 		751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E0D67230D12660088BB10 /* Bundle+extensions.swift */; };
@@ -45,6 +47,10 @@
 		756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AFD5C258B4C510072BEEF /* KeyFileError.swift */; };
 		75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */; };
 		757E78D82822D729009017BF /* PasswordGeneratorParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D72822D729009017BF /* PasswordGeneratorParams.swift */; };
+		758FF6D4290193F0007DE8EB /* OneDriveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */; };
+		758FF6D82902DB07007DE8EB /* RemoteFileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */; };
+		758FF6DB2902DB64007DE8EB /* OneDriveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6DA2902DB64007DE8EB /* OneDriveManager.swift */; };
+		7596174C29082D0C005845FF /* RemoteConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596174B29082D0B005845FF /* RemoteConnectionType.swift */; };
 		759896432341CED300DF39AA /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759896422341CED300DF39AA /* BusinessModel.swift */; };
 		7599AC292891EC9100FD03BC /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599AC282891EC9100FD03BC /* DataSource.swift */; };
 		7599AC2D2894087000FD03BC /* WebDAVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599AC2C2894087000FD03BC /* WebDAVDataSource.swift */; };
@@ -203,6 +209,8 @@
 		7505E8CE2236ED6E00E5202E /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		7505E8D02236FA0F00E5202E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		750935C3235219B900A362C8 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		750AB1A92902DD6100811980 /* WebDAVFileURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVFileURL.swift; sourceTree = "<group>"; };
+		750AB1AB2902DD9200811980 /* OneDriveFileURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveFileURL.swift; sourceTree = "<group>"; };
 		75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseItem.swift; sourceTree = "<group>"; };
 		75156CEB2700E42400B5D5E2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		751E0CDE2309A3420088BB10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -261,7 +269,11 @@
 		756AFD5C258B4C510072BEEF /* KeyFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileError.swift; sourceTree = "<group>"; };
 		75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+extensions.swift"; sourceTree = "<group>"; };
 		757E78D72822D729009017BF /* PasswordGeneratorParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorParams.swift; sourceTree = "<group>"; };
+		758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveDataSource.swift; sourceTree = "<group>"; };
+		758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFileItem.swift; sourceTree = "<group>"; };
+		758FF6DA2902DB64007DE8EB /* OneDriveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveManager.swift; sourceTree = "<group>"; };
 		7593BE6027C45123008D30B5 /* FileAccessCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAccessCoordinator.swift; sourceTree = "<group>"; };
+		7596174B29082D0B005845FF /* RemoteConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConnectionType.swift; sourceTree = "<group>"; };
 		759896422341CED300DF39AA /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		7599AC282891EC9100FD03BC /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		7599AC2C2894087000FD03BC /* WebDAVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVDataSource.swift; sourceTree = "<group>"; };
@@ -496,11 +508,17 @@
 		75675C83277C8BDB0025910A /* remote */ = {
 			isa = PBXGroup;
 			children = (
+				7596174B29082D0B005845FF /* RemoteConnectionType.swift */,
 				75BD4C702789BCBC00FDE499 /* CredentialManager.swift */,
 				7599AC2C2894087000FD03BC /* WebDAVDataSource.swift */,
+				750AB1A92902DD6100811980 /* WebDAVFileURL.swift */,
 				75675C84277C8BEA0025910A /* WebDAVManager.swift */,
 				7534443B278356AD00CC8248 /* WebDAVRequest.swift */,
 				7534443D27842FEC00CC8248 /* Date+http.swift */,
+				758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */,
+				758FF6DA2902DB64007DE8EB /* OneDriveManager.swift */,
+				758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */,
+				750AB1AB2902DD9200811980 /* OneDriveFileURL.swift */,
 			);
 			name = remote;
 			sourceTree = "<group>";
@@ -1112,6 +1130,7 @@
 				756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */,
 				75012A6A26D82A58002F1911 /* DatabaseLoadingWarning.swift in Sources */,
 				75F11C33288312A3005B3DC0 /* LString+about.swift in Sources */,
+				750AB1AC2902DD9200811980 /* OneDriveFileURL.swift in Sources */,
 				75D09C242174F77000F7DEF2 /* Attachment2.swift in Sources */,
 				75D09C232174F77000F7DEF2 /* Database2.swift in Sources */,
 				7534443C278356AD00CC8248 /* WebDAVRequest.swift in Sources */,
@@ -1131,6 +1150,7 @@
 				75D09C5A2174F81900F7DEF2 /* Options.swift in Sources */,
 				75F4ACF0217749DC00B22D8B /* AppGroup.swift in Sources */,
 				75F4ACE02177469500B22D8B /* FileKeeper.swift in Sources */,
+				758FF6D4290193F0007DE8EB /* OneDriveDataSource.swift in Sources */,
 				75D09C282174F77000F7DEF2 /* CustomIcon2.swift in Sources */,
 				75AF193F282EF76C00FA4BB5 /* PassphraseWordlist.swift in Sources */,
 				75AF1926282E593400FA4BB5 /* InclusionCondition.swift in Sources */,
@@ -1170,8 +1190,11 @@
 				75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */,
 				75D09C462174F77000F7DEF2 /* KeyHelper1.swift in Sources */,
 				759896432341CED300DF39AA /* BusinessModel.swift in Sources */,
+				750AB1AA2902DD6100811980 /* WebDAVFileURL.swift in Sources */,
 				75B5F7F8251B7CC700E444F0 /* ProgressObserver.swift in Sources */,
+				758FF6D82902DB07007DE8EB /* RemoteFileItem.swift in Sources */,
 				75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */,
+				758FF6DB2902DB64007DE8EB /* OneDriveManager.swift in Sources */,
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
 				7524E74F288AA80500ECBEC8 /* LString+remote.swift in Sources */,
 				75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */,
@@ -1205,6 +1228,7 @@
 				75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */,
 				75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */,
 				759A321B252DC1E7001A1623 /* EntryFieldReference.swift in Sources */,
+				7596174C29082D0C005845FF /* RemoteConnectionType.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
 				75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */,
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,

@@ -89,6 +89,11 @@ struct PricingPlanBenefit {
         title: LString.premiumBenefitHardwareKeysTitle,
         description: LString.premiumBenefitHardwareKeysDescription
     )
+    static let businessClouds = PricingPlanBenefit(
+        image: .premiumBenefitBusinessClouds,
+        title: LString.premiumBenefitBusinessCloudsTitle,
+        description: LString.premiumBenefitBusinessCloudsDescription
+    )
     static let customAppIcons = PricingPlanBenefit(
         image: .premiumBenefitCustomAppIcons,
         title: LString.premiumBenefitChangeAppIconTitle,
@@ -189,6 +194,7 @@ class FreePricingPlan: PricingPlan {
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.customAppIcons,
@@ -251,6 +257,7 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.customAppIcons,
@@ -280,6 +287,7 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.customAppIcons,
@@ -307,6 +315,7 @@ class PricingPlanVersionPurchase: RealPricingPlan {
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.customAppIcons,
@@ -333,6 +342,7 @@ class PricingPlanPremiumForever: RealPricingPlan {
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
             PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
             PricingPlanBenefit.customAppIcons,

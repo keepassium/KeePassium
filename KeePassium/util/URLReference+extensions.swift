@@ -51,22 +51,21 @@ extension URLReference {
     }
 
     public func getLocationDescription() -> String {
-        if ProcessInfo.isRunningOnMac, let url = self.url {
-            return url.path
-        }
-        
-        guard let fileProvider = self.fileProvider else {
-            return location.description 
-        }
-        
         var components = [String]()
         switch location {
         case .remote:
-            components.append(fileProvider.localizedName)
-            if let url = url {
-                components.append(url.absoluteString)
+            if let description = url?.getRemoteLocationDescription() {
+                components.append(description)
+            } else {
+                components.append(url?.absoluteString ?? "")
             }
         case .external:
+            if ProcessInfo.isRunningOnMac, let url = self.url {
+                return url.path
+            }
+            guard let fileProvider = self.fileProvider else {
+                return location.description 
+            }
             components.append(fileProvider.localizedName)
             let isInTrash = getCachedInfoSync(canFetch: false)?.isInTrash
             if isInTrash ?? false {
@@ -75,7 +74,12 @@ extension URLReference {
         case .internalDocuments,
              .internalBackup,
              .internalInbox:
-            components.append(fileProvider.localizedName)
+            if ProcessInfo.isRunningOnMac, let url = self.url {
+                return url.path
+            }
+            if let fileProvider = self.fileProvider {
+                components.append(fileProvider.localizedName)
+            }
             components.append(AppInfo.name)
             components.append(location.description)
         }

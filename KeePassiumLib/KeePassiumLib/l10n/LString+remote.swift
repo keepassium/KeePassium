@@ -28,6 +28,14 @@ extension LString {
     )
     
     public static let connectionTypeWebDAV = "WebDAV" 
+    public static let connectionTypeOneDrive = "OneDrive" 
+    public static let connectionTypeSharePoint = "OneDrive" 
+    public static let connectionTypeOneDriveForBusiness = NSLocalizedString(
+        "[StorageService/OneDriveForBusiness/title]",
+        bundle: Bundle.framework,
+        value: "OneDrive for Business",
+        comment: "Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business")
+
     public static let titleConnection = NSLocalizedString(
         "[RemoteConnection/Connection/title]",
         bundle: Bundle.framework,
@@ -50,4 +58,28 @@ extension LString {
         bundle: Bundle.framework,
         value: "Credentials",
         comment: "Title of a section: username, password, etc")
+    
+    public static let titleFolderIsEmpty = NSLocalizedString(
+        "[General/FileList/Empty/title]",
+        bundle: Bundle.framework,
+        value: "Folder is empty",
+        comment: "Placeholder for folders without files")
+
+    public static let titlePrivateBrowserMode = NSLocalizedString(
+        "[RemoteConnection/SignIn/PrivateMode/title]",
+        bundle: Bundle.framework,
+        value: "Private mode",
+        comment: "")
+    public static let descriptionPrivateBrowserMode = NSLocalizedString(
+        "[RemoteConnection/SignIn/PrivateMode/description]",
+        bundle: Bundle.framework,
+        value: "Open sign-in page in private web browser mode",
+        comment: "")
+
+    public static let actionSignInToOneDrive = NSLocalizedString(
+        "[RemoteConnection/SignIn/OneDrive/action]",
+        bundle: Bundle.framework,
+        value: "Sign in to OneDrive",
+        comment: "Action: authenticate to OneDrive account")
+
 }

@@ -15,6 +15,22 @@ public struct FileInfo {
     public var modificationDate: Date?
     public var isExcludedFromBackup: Bool?
     public var isInTrash: Bool
+    
+    public init(
+        fileName: String,
+        fileSize: Int64? = nil,
+        creationDate: Date? = nil,
+        modificationDate: Date? = nil,
+        isExcludedFromBackup: Bool? = nil,
+        isInTrash: Bool
+    ) {
+        self.fileName = fileName
+        self.fileSize = fileSize
+        self.creationDate = creationDate
+        self.modificationDate = modificationDate
+        self.isExcludedFromBackup = isExcludedFromBackup
+        self.isInTrash = isInTrash
+    }
 }
 
 public class URLReference:
@@ -652,7 +668,7 @@ public class URLReference:
         }
         
         if let url = url,
-           let fileProviderDedicatedToSuchURLs = DataSourceFactory.findFileProvider(for: url)
+           let fileProviderDedicatedToSuchURLs = DataSourceFactory.findInAppFileProvider(for: url)
         {
             return fileProviderDedicatedToSuchURLs
         }

@@ -47,6 +47,7 @@ enum ImageAsset: String {
     case premiumBenefitCustomAppIcons = "premium-benefit-custom-appicons"
     case premiumBenefitFieldReferences = "premium-benefit-field-references"
     case premiumBenefitQuickAutoFill = "premium-benefit-quick-autofill"
+    case premiumBenefitBusinessClouds = "premium-benefit-business-clouds"
     case premiumBenefitSupport = "premium-benefit-support"
     case premiumBenefitShiny = "premium-benefit-shiny"
     case settingsAppLockListitem = "settings-app-lock-listitem"

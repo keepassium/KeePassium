@@ -8,24 +8,101 @@
 
 import Foundation
 
+public struct OAuthToken: Codable {
+    public var accessToken: String
+    public var refreshToken: String
+    public var acquired: Date
+    public var lifespan: TimeInterval
+    public var halflife: TimeInterval { lifespan / 2 }
+    
+    public init(
+        accessToken: String,
+        refreshToken: String,
+        acquired: Date,
+        lifespan: TimeInterval
+    ) {
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
+        self.acquired = acquired
+        self.lifespan = lifespan
+    }
+}
 
 public final class NetworkCredential: Codable {
+    public enum CredentialType: Int, Codable {
+        case usernamePassword = 0
+        case oauthToken = 1
+    }
+    
+    private let type: CredentialType
     public let username: String
     public let password: String
     public let allowUntrustedCertificate: Bool
+    public let oauthToken: OAuthToken?
     
     public init(username: String, password: String, allowUntrustedCertificate: Bool) {
+        self.type = .usernamePassword
         self.username = username
         self.password = password
         self.allowUntrustedCertificate = allowUntrustedCertificate
+        self.oauthToken = nil
     }
+
+    public init(oauthToken: OAuthToken) {
+        self.type = .oauthToken
+        self.username = ""
+        self.password = ""
+        self.allowUntrustedCertificate = false
+        self.oauthToken = oauthToken
+    }
+
     
     internal func serialize() -> Data {
         return try! JSONEncoder().encode(self)
     }
-    
+
     internal static func deserialize(from data: Data) -> NetworkCredential? {
         return try? JSONDecoder().decode(NetworkCredential.self, from: data)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case type
+        case username
+        case password
+        case allowUntrustedCertificate
+        case oauthToken
+    }
+    
+    public convenience init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let type = try container.decodeIfPresent(CredentialType.self, forKey: .type)
+            ?? .usernamePassword
+        switch type {
+        case .usernamePassword:
+            self.init(
+                username: try container.decode(String.self, forKey: .username),
+                password: try container.decode(String.self, forKey: .password),
+                allowUntrustedCertificate: try container.decode(
+                    Bool.self,
+                    forKey: .allowUntrustedCertificate
+                )
+            )
+        case .oauthToken:
+            self.init(oauthToken: try container.decode(OAuthToken.self, forKey: .oauthToken))
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(type, forKey: .type)
+        switch type {
+        case .usernamePassword:
+            try container.encode(username, forKey: .username)
+            try container.encode(password, forKey: .password)
+            try container.encode(allowUntrustedCertificate, forKey: .allowUntrustedCertificate)
+        case .oauthToken:
+            try container.encode(oauthToken, forKey: .oauthToken)
+        }
     }
     
     public func toURLCredential() -> URLCredential {

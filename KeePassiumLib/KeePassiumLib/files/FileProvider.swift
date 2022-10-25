@@ -20,6 +20,7 @@ public enum FileProvider: Hashable {
         "com.google.Drive.FileProviderExtension": .googleDrive,
         "com.apple.CloudDocs.MobileDocumentsFileProvider": .iCloudDrive,
         "com.keepassium.fileprovider.webdav": .keepassiumWebDAV,
+        "com.keepassium.fileprovider.onedrive": .keepassiumOneDrive,
         "mega.ios.MEGAPickerFileProvider": .megaNz,
         "it.twsweb.Nextcloud.File-Provider-Extension": .nextcloud,
         "com.microsoft.skydrive.onedrivefileprovider": .oneDrive,
@@ -51,6 +52,7 @@ public enum FileProvider: Hashable {
     case googleDrive
     case iCloudDrive
     case keepassiumWebDAV
+    case keepassiumOneDrive
     case megaNz
     case nextcloud
     case oneDrive
@@ -139,6 +141,8 @@ public enum FileProvider: Hashable {
                 comment: "Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive)")
         case .keepassiumWebDAV:
             return LString.connectionTypeWebDAV
+        case .keepassiumOneDrive:
+            return LString.connectionTypeOneDrive
         case .megaNz:
             return NSLocalizedString(
                 "[FileProvider/Mega.nz/name]",
@@ -269,6 +273,6 @@ public enum FileProvider: Hashable {
     }
     
     public static func find(for url: URL) -> FileProvider? {
-        return DataSourceFactory.findFileProvider(for: url)
+        return DataSourceFactory.findInAppFileProvider(for: url)
     }
 }

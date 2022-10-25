@@ -11,10 +11,6 @@ public typealias FileOperationCompletion<T> = (FileOperationResult<T>) -> Void
 
 protocol DataSource {
     
-    static var urlSchemePrefix: String? { get }
-    
-    static var urlSchemes: [String] { get }
-    
     func getAccessCoordinator() -> FileAccessCoordinator
     
     func readFileInfo(

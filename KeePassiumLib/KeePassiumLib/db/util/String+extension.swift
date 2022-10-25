@@ -38,4 +38,20 @@ extension String {
         let result = self.compare(withoutDiacritics, options: .literal, range: nil, locale: nil)
         return result != .orderedSame
     }
+    
+    public func withLeadingSlash() -> String {
+        if self.first == "/" {
+            return self
+        } else {
+            return "/" + self
+        }
+    }
+    
+    public func withTrailingSlash() -> String {
+        if self.last == "/" {
+            return self
+        } else {
+            return self + "/"
+        }
+    }
 }

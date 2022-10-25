@@ -107,6 +107,8 @@ public class Settings {
         
         case networkAccessAllowed
         
+        case lastRemoteConnectionType
+        
         case hideAppLockSetupReminder
         case textScale
     }
@@ -1495,6 +1497,29 @@ public class Settings {
                 newValue: newValue,
                 key: .networkAccessAllowed
             )
+        }
+    }
+    
+    
+    public var lastRemoteConnectionType: RemoteConnectionType? {
+        get {
+            if let storedRawValue = UserDefaults.appGroupShared
+                .object(forKey: Keys.lastRemoteConnectionType.rawValue) as? String,
+               let connectionType = RemoteConnectionType(rawValue: storedRawValue)
+            {
+                return connectionType
+            }
+            return nil
+        }
+        set {
+            let oldValue = lastRemoteConnectionType
+            UserDefaults.appGroupShared.set(
+                newValue?.rawValue,
+                forKey: Keys.lastRemoteConnectionType.rawValue
+            )
+            if newValue != oldValue {
+                postChangeNotification(changedKey: Keys.lastRemoteConnectionType)
+            }
         }
     }
     

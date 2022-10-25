@@ -12,22 +12,23 @@ internal final class DataSourceFactory {
         guard let urlSchemePrefix = url.schemePrefix else {
             return LocalDataSource()
         }
-        
-        switch urlSchemePrefix {
-        case WebDAVDataSource.urlSchemePrefix:
+
+        if url.isWebDAVFileURL {
             return WebDAVDataSource()
-        default:
-            Diag.warning("Unexpected URL scheme prefix [prefix: \(urlSchemePrefix)]")
+        } else if url.isOneDriveFileURL {
+            return OneDriveDataSource()
+        } else {
+            Diag.warning("Unexpected URL format, assuming local file [prefix: \(urlSchemePrefix)]")
             return LocalDataSource()
         }
     }
     
-    public static func findFileProvider(for url: URL) -> FileProvider? {
-        switch url.schemePrefix {
-        case WebDAVDataSource.urlSchemePrefix:
+    public static func findInAppFileProvider(for url: URL) -> FileProvider? {
+        if url.isWebDAVFileURL {
             return .keepassiumWebDAV
-        default:
-            return nil
+        } else if url.isOneDriveFileURL {
+            return .keepassiumOneDrive
         }
+        return nil
     }
 }

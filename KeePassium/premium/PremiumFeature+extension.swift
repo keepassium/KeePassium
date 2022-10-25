@@ -28,6 +28,8 @@ extension PremiumFeature {
             return LString.premiumFeatureGenericTitle
         case .canUseQuickTypeAutoFill:
             return LString.premiumFeatureQuickAutoFillTitle
+        case .canUseBusinessClouds:
+            return LString.premiumFeatureBusinessCloudsTitle
         case .canUseExpressUnlock,
              .canViewFieldReferences:
             assertionFailure("Implicit feature, no upgrade notice required")
@@ -47,6 +49,8 @@ extension PremiumFeature {
             return LString.premiumFeatureHardwareKeysDescription
         case .canUseQuickTypeAutoFill:
             return LString.premiumFeatureQuickAutoFillDescription
+        case .canUseBusinessClouds:
+            return LString.premiumFeatureBusinessCloudsDescription
         case .canKeepMasterKeyOnDatabaseTimeout,
              .canChangeAppIcon,
              .canUseExpressUnlock,

@@ -121,14 +121,14 @@ public extension URL {
 }
 
 
-fileprivate let urlSchemeSeparator: Character = "+"
+internal let urlSchemePrefixSeparator: Character = "+"
 
 public extension URL {
     var schemePrefix: String? {
         guard let scheme = self.scheme else {
             return nil
         }
-        let schemeParts = scheme.split(separator: urlSchemeSeparator)
+        let schemeParts = scheme.split(separator: urlSchemePrefixSeparator)
         guard schemeParts.count > 1,
               let prefix = schemeParts.first
         else {
@@ -139,7 +139,7 @@ public extension URL {
     
     var schemeWithoutPrefix: String? {
         if let mainScheme = self.scheme?
-            .split(separator: urlSchemeSeparator, maxSplits: 1)
+            .split(separator: urlSchemePrefixSeparator, maxSplits: 1)
             .last
         {
             return String(mainScheme)
@@ -153,12 +153,12 @@ public extension URL {
         }
         var mainScheme: String = ""
         if let scheme = components.scheme,
-           let _mainScheme = scheme.split(separator: urlSchemeSeparator, maxSplits: 1).last
+           let _mainScheme = scheme.split(separator: urlSchemePrefixSeparator, maxSplits: 1).last
         {
             mainScheme = String(_mainScheme)
         }
         if let prefix = prefix {
-            components.scheme = prefix + String(urlSchemeSeparator) + mainScheme
+            components.scheme = prefix + String(urlSchemePrefixSeparator) + mainScheme
         } else {
             components.scheme = mainScheme
         }
@@ -171,5 +171,34 @@ public extension URL {
         }
         components.scheme = self.schemeWithoutPrefix
         return components.url!
+    }
+    
+    static func build(
+        schemePrefix: String,
+        scheme: String,
+        host: String,
+        path: String,
+        queryItems: [URLQueryItem]?
+    ) -> URL {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = [schemePrefix, scheme]
+            .joined(separator: String(urlSchemePrefixSeparator))
+        urlComponents.host = host
+        urlComponents.path = path
+        urlComponents.queryItems = queryItems
+        return urlComponents.url!
+    }
+}
+
+public extension URL {
+    func getRemoteLocationDescription() -> String? {
+        if isWebDAVFileURL {
+            return WebDAVFileURL.getDescription(for: self)
+        } else if isOneDriveFileURL {
+            return OneDriveFileURL.getDescription(for: self)
+        } else {
+            assertionFailure("Description missing, remote location unknown?")
+            return nil
+        }
     }
 }

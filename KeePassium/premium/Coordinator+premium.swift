@@ -22,6 +22,7 @@ extension Coordinator {
     func performPremiumActionOrOfferUpgrade(
         for feature: PremiumFeature,
         allowBypass: Bool = false,
+        bypassTitle: String = LString.actionContinue,
         in viewController: UIViewController,
         actionHandler: @escaping () -> Void
     ) {
@@ -31,15 +32,25 @@ extension Coordinator {
         }
         
         if allowBypass {
-            offerPremiumUpgrade(for: feature, bypassAction: actionHandler, in: viewController)
+            offerPremiumUpgrade(
+                for: feature,
+                bypassAction: actionHandler,
+                bypassTitle: bypassTitle,
+                in: viewController
+            )
         } else {
-            offerPremiumUpgrade(for: feature, bypassAction: nil, in: viewController)
+            offerPremiumUpgrade(
+                for: feature,
+                bypassAction: nil,
+                in: viewController
+            )
         }
     }
 
     func offerPremiumUpgrade(
         for feature: PremiumFeature,
         bypassAction: (() -> Void)? = nil,
+        bypassTitle: String = LString.actionContinue,
         in viewController: UIViewController
     ) {
         let upgradeNotice = UIAlertController(
@@ -57,7 +68,7 @@ extension Coordinator {
             self.showPremiumUpgrade(in: viewController)
         }
         if let bypassAction = bypassAction {
-            upgradeNotice.addAction(title: LString.actionContinue, style: .default) { _ in
+            upgradeNotice.addAction(title: bypassTitle, style: .default) { _ in
                 bypassAction()
             }
         }

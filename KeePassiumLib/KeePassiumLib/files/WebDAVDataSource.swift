@@ -10,10 +10,7 @@ import Foundation
 
 public final class WebDAVDataSource: DataSource {
     static let defaultTimeout = URLReference.defaultTimeout
-    
-    public static var urlSchemePrefix: String? = "webdav"
-    public static var urlSchemes = ["http", "https"]
-    
+
     func getAccessCoordinator() -> FileAccessCoordinator {
         return PassthroughFileAccessCoordinator()
     }
@@ -43,7 +40,7 @@ public final class WebDAVDataSource: DataSource {
             return
         }
         WebDAVManager.shared.getFileInfo(
-            url: url.withoutSchemePrefix(),
+            url: WebDAVFileURL.getNakedURL(from: url),
             credential: credential,
             timeout: FileDataProvider.defaultTimeout,
             completionQueue: completionQueue,
@@ -76,7 +73,7 @@ public final class WebDAVDataSource: DataSource {
             return
         }
         WebDAVManager.shared.downloadFile(
-            url: url.withoutSchemePrefix(),
+            url: WebDAVFileURL.getNakedURL(from: url),
             credential: credential,
             timeout: FileDataProvider.defaultTimeout,
             completionQueue: completionQueue,
@@ -110,7 +107,7 @@ public final class WebDAVDataSource: DataSource {
         }
         WebDAVManager.shared.uploadFile(
             data: data,
-            url: url.withoutSchemePrefix(),
+            url: WebDAVFileURL.getNakedURL(from: url),
             credential: credential,
             timeout: FileDataProvider.defaultTimeout,
             completionQueue: completionQueue,
