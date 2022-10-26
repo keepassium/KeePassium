@@ -1,6 +1,20 @@
 {
     "sections": [
         {
+            "version": "1.38",
+            "releaseDate": "2022-10-26T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: In-app support for OneDrive sync (free for OneDrive Personal; SharePoint and OneDrive for Business require premium)",
+                    "type": 2
+                },
+                {
+                    "title": "🛠 Improved: Added 'Empty Recycle Bin' context menu for the corresponding group [thanks, YJ]",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.37",
             "releaseDate": "2022-10-07T00:00:00Z",
             "items": [

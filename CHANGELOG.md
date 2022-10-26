@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.38.119] - 2022-10-26
+
+### Added
+
+- In-app support for OneDrive sync (free for OneDrive Personal; SharePoint and OneDrive for Business require premium) (#256, #248, #80, #55)
+
+### Improved
+
+- Added 'Empty Recycle Bin' context menu for the corresponding group [thanks, YJ]
+
+
 ## [1.37.118] - 2022-10-07
 
 ### Removed
