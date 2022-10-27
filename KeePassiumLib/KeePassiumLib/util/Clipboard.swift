@@ -25,10 +25,13 @@ public class Clipboard {
         insertedURL = url
     }
     
-    public func insert(text: String, timeout: Double?=nil) {
+    @discardableResult
+    public func insert(text: String, timeout: Double?=nil) -> Bool {
         Diag.debug("Inserted a string to clipboard")
         insert(items: [[(kUTTypeUTF8PlainText as String) : text]], timeout: timeout)
         insertedText = text
+        let isSuccessful = (UIPasteboard.general.string == text)
+        return isSuccessful
     }
     
     private func insert(items: [[String: Any]], timeout: Double?) {

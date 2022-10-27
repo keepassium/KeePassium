@@ -144,10 +144,22 @@ class AutoFillCoordinator: NSObject, Coordinator {
             let totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry)
         {
             let totpString = totpGenerator.generate()
-            Clipboard.general.insert(
+            let isCopied = Clipboard.general.insert(
                 text: totpString,
                 timeout: TimeInterval(settings.clipboardTimeout.seconds)
             )
+            let formattedOTP = OTPCodeFormatter.decorate(otpCode: totpString)
+            if isCopied {
+                LocalNotifications.showTOTPNotification(
+                    title: formattedOTP,
+                    body: LString.otpCodeCopiedToClipboard
+                )
+            } else {
+                LocalNotifications.showTOTPNotification(
+                    title: formattedOTP,
+                    body: LString.otpCodeHereItIs
+                )
+            }
         }
         
         let passwordCredential = ASPasswordCredential(

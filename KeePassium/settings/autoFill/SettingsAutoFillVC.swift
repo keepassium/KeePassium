@@ -10,6 +10,7 @@ import KeePassiumLib
 
 protocol SettingsAutoFillViewControllerDelegate: AnyObject {
     func didToggleQuickAutoFill(newValue: Bool, in viewController: SettingsAutoFillVC)
+    func didToggleCopyTOTP(newValue: Bool, in viewController: SettingsAutoFillVC)
 }
 
 final class SettingsAutoFillVC: UITableViewController {
@@ -111,7 +112,7 @@ final class SettingsAutoFillVC: UITableViewController {
     }
     
     @IBAction func didToggleCopyTOTP(_ sender: UISwitch) {
-        Settings.current.isCopyTOTPOnAutoFill = copyTOTPSwitch.isOn
+        delegate?.didToggleCopyTOTP(newValue: copyTOTPSwitch.isOn, in: self)
         refresh()
     }
     

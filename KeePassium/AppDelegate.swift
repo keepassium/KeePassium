@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppGroup.applicationShared = application
         
         SettingsMigrator.processAppLaunch(with: Settings.current)
+        UNUserNotificationCenter.current().delegate = self
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -73,6 +74,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let isOpenInPlace = (options[.openInPlace] as? Bool) ?? false
         mainCoordinator.processIncomingURL(inputURL, openInPlace: isOpenInPlace)
         return true
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        completionHandler([.banner])
     }
 }
 
