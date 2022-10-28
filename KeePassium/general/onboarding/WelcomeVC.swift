@@ -12,12 +12,14 @@ import KeePassiumLib
 protocol WelcomeDelegate: AnyObject {
     func didPressCreateDatabase(in welcomeVC: WelcomeVC)
     func didPressAddExistingDatabase(in welcomeVC: WelcomeVC)
+    func didPressConnectToServer(in welcomeVC: WelcomeVC)
 }
 
 class WelcomeVC: UIViewController {
     private weak var delegate: WelcomeDelegate?
     
-    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet private weak var infoLabel: UILabel!
+    @IBOutlet private weak var connectToServerButton: UIButton!
     
     static func make(delegate: WelcomeDelegate) -> WelcomeVC {
         let vc = WelcomeVC.instantiateFromStoryboard()
@@ -27,7 +29,8 @@ class WelcomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        connectToServerButton.setTitle(LString.actionConnectToServer, for: .normal)
         prettifyInfoText()
     }
 
@@ -57,5 +60,9 @@ class WelcomeVC: UIViewController {
     
     @IBAction func didPressOpenDatabase(_ sender: Any) {
         delegate?.didPressAddExistingDatabase(in: self)
+    }
+    
+    @IBAction func didPressConnectToServer(_ sender: Any) {
+        delegate?.didPressConnectToServer(in: self)
     }
 }

@@ -627,6 +627,17 @@ extension MainCoordinator: OnboardingCoordinatorDelegate {
             )
         })
     }
+    
+    func didPressConnectToServer(in coordinator: OnboardingCoordinator) {
+        Diag.info("Network access permission implied by user action")
+        Settings.current.isNetworkAccessAllowed = true
+        coordinator.dismiss(completion: { [weak self] in
+            guard let self = self else { return }
+            self.databasePickerCoordinator.addRemoteDatabase(
+                presenter: self.rootSplitVC
+            )
+        })
+    }
 }
 
 extension MainCoordinator: FileKeeperDelegate {

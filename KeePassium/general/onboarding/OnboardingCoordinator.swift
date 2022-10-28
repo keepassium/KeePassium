@@ -11,6 +11,7 @@ import KeePassiumLib
 protocol OnboardingCoordinatorDelegate: AnyObject {
     func didPressCreateDatabase(in coordinator: OnboardingCoordinator)
     func didPressAddExistingDatabase(in coordinator: OnboardingCoordinator)
+    func didPressConnectToServer(in coordinator: OnboardingCoordinator)
 }
 
 final class OnboardingCoordinator: Coordinator {
@@ -55,5 +56,9 @@ extension OnboardingCoordinator: WelcomeDelegate {
     
     func didPressAddExistingDatabase(in welcomeVC: WelcomeVC) {
         delegate?.didPressAddExistingDatabase(in: self)
+    }
+    
+    func didPressConnectToServer(in welcomeVC: WelcomeVC) {
+        delegate?.didPressConnectToServer(in: self)
     }
 }
