@@ -35,7 +35,7 @@ final class RemoteFilePickerCoordinator: Coordinator {
 
     init(router: NavigationRouter) {
         self.router = router
-        currentConnectionType = Settings.current.lastRemoteConnectionType ?? .webdav
+        currentConnectionType = Settings.current.lastRemoteConnectionType ?? .oneDrive
 
         sourceSelectorVC = RemoteFilePickerVC.make()
         sourceSelectorVC.delegate = self
