@@ -819,6 +819,14 @@
 		75E60AE825CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */; };
 		75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
 		75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
+		75E9E2B4290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
+		75E9E2B5290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
+		75E9E2B6290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
+		75E9E2B7290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
+		75E9E2B9290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
+		75E9E2BA290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
+		75E9E2BB290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
+		75E9E2BC290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
 		75EA64182098FC0500DDB941 /* DatabasePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */; };
 		75EC7BFD262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */; };
 		75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */; };
@@ -1861,6 +1869,8 @@
 		75E60ADB25CF3C880089219C /* DatabaseIconSetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSetPicker.swift; sourceTree = "<group>"; };
 		75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseIconSet+assets.swift"; sourceTree = "<group>"; };
 		75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSetSwitcherCoordinator.swift; sourceTree = "<group>"; };
+		75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewerCells.swift; sourceTree = "<group>"; };
+		75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseItem+ActionPermissions.swift"; sourceTree = "<group>"; };
 		75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePickerVC.swift; sourceTree = "<group>"; };
 		75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewerCoordinator.swift; sourceTree = "<group>"; };
 		75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoadingWarningsVC.swift; sourceTree = "<group>"; };
@@ -2420,6 +2430,7 @@
 			isa = PBXGroup;
 			children = (
 				75C94C5620B373BA004FA29D /* GroupViewerVC.swift */,
+				75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */,
 				751E0CFD2309AF0D0088BB10 /* GroupViewerVC.storyboard */,
 				750D127D20CF071600BE0CCE /* GroupEditorVC.swift */,
 				751E0D002309AF150088BB10 /* GroupEditorVC.storyboard */,
@@ -2455,6 +2466,7 @@
 				75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */,
 				75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */,
 				75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */,
+				75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -3250,6 +3262,7 @@
 				758FF6D028FC2C9C007DE8EB /* SubtitleCell.swift in Sources */,
 				7526404128455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
+				75E9E2BA290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
@@ -3263,6 +3276,7 @@
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
+				75E9E2B5290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
 				75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
@@ -3362,6 +3376,7 @@
 				751A565524CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
 				759894B724620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75E4CA5D232C455D00EB6805 /* UserNameHelper.swift in Sources */,
+				75E9E2B9290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				7561850320E033DB00EEFAEE /* WatchdogAwareTextView.swift in Sources */,
 				75D3AEB523BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */,
 				75A5312323C0D35500900ED1 /* NavigationRouter.swift in Sources */,
@@ -3447,6 +3462,7 @@
 				75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */,
 				7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */,
 				75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */,
+				75E9E2B4290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
 				7524E74A2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				756AE9D320CF8B5E00995846 /* ItemIconPicker.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
@@ -3561,6 +3577,7 @@
 				751A565624CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
 				759894B924620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */,
+				75E9E2BB290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */,
 				75D3AEB623BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */,
 				75A5312523C0D35500900ED1 /* NavigationRouter.swift in Sources */,
@@ -3646,6 +3663,7 @@
 				75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */,
 				75B38C1F233E5B7C006BDEFC /* ViewEntryFieldCells.swift in Sources */,
 				75B38C21233E5B7C006BDEFC /* ItemIconPicker.swift in Sources */,
+				75E9E2B6290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
 				7524E74C2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */,
 				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
@@ -3770,6 +3788,7 @@
 				758FF6D228FC2C9C007DE8EB /* SubtitleCell.swift in Sources */,
 				7526404228455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
+				75E9E2BC290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404428455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
@@ -3783,6 +3802,7 @@
 				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
+				75E9E2B7290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
 				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
 				75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,

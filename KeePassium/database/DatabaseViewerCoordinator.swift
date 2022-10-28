@@ -623,12 +623,12 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         saveDatabase(databaseFile)
     }
     
-    func getActionPermissions(for group: Group) -> DatabaseItemActionPermissions {
+    func getActionPermissions(for group: Group) -> DatabaseItem.ActionPermissions {
         guard canEditDatabase else {
-            return DatabaseItemActionPermissions.everythingForbidden
+            return DatabaseItem.ActionPermissions.everythingForbidden
         }
         
-        var result = DatabaseItemActionPermissions()
+        var result = DatabaseItem.ActionPermissions()
         result.canEditDatabase = true 
         result.canCreateGroup = !group.isDeleted
 
@@ -654,12 +654,12 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         return result
     }
     
-    func getActionPermissions(for entry: Entry) -> DatabaseItemActionPermissions {
+    func getActionPermissions(for entry: Entry) -> DatabaseItem.ActionPermissions {
         guard canEditDatabase else {
-            return DatabaseItemActionPermissions.everythingForbidden
+            return DatabaseItem.ActionPermissions.everythingForbidden
         }
         
-        var result = DatabaseItemActionPermissions()
+        var result = DatabaseItem.ActionPermissions()
         result.canEditDatabase = true 
         result.canCreateGroup = false
         result.canCreateEntry = false
