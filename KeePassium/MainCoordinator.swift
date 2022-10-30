@@ -38,6 +38,7 @@ final class MainCoordinator: Coordinator {
     private var databaseViewerCoordinator: DatabaseViewerCoordinator?
 
     private let watchdog: Watchdog
+    private let localNotifications = LocalNotifications()
     private let mainWindow: UIWindow
     fileprivate var appCoverWindow: UIWindow?
     fileprivate var appLockWindow: UIWindow?
@@ -65,6 +66,8 @@ final class MainCoordinator: Coordinator {
 
         rootSplitVC.viewControllers = [primaryNavVC, placeholderNavVC]
 
+        UNUserNotificationCenter.current().delegate = localNotifications
+        
         watchdog = Watchdog.shared
         watchdog.delegate = self
         

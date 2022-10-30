@@ -38,6 +38,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
     fileprivate var isBiometricAuthShown = false
     fileprivate var isPasscodeInputShown = false
     
+    private let localNotifications = LocalNotifications()
     
     init(
         rootController: CredentialProviderViewController,
@@ -63,6 +64,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
         Diag.info(AppInfo.description)
 
         watchdog.delegate = self
+        UNUserNotificationCenter.current().delegate = localNotifications
     }
     
     deinit {

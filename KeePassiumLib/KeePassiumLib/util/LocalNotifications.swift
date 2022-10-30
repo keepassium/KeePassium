@@ -8,7 +8,8 @@
 
 import UIKit
 
-final public class LocalNotifications {
+final public class LocalNotifications: NSObject {
+    private static let totpCopiedNotificationID = "totp-copied"
     
     public static func requestPermission(_ success: @escaping ()->Void) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) {
@@ -23,14 +24,14 @@ final public class LocalNotifications {
     }
     
     public static func showTOTPNotification(title: String, body: String) {
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1e-6, repeats: false)
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.sound = nil
         
         let request = UNNotificationRequest(
-            identifier: "totp-copied",
+            identifier: totpCopiedNotificationID,
             content: content,
             trigger: trigger
         )
@@ -43,5 +44,21 @@ final public class LocalNotifications {
                 Diag.warning("Failed to add local notification [message: \(error.localizedDescription)]")
             }
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UNUserNotificationCenter.current().removeDeliveredNotifications(
+                withIdentifiers: [totpCopiedNotificationID]
+            )
+        }
     }
 }
+
+extension LocalNotifications: UNUserNotificationCenterDelegate {
+    public func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        completionHandler([.banner])
+    }
+}
+
