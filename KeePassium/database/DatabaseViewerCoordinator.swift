@@ -29,6 +29,8 @@ protocol DatabaseViewerCoordinatorDelegate: AnyObject {
     func didLeaveDatabase(in coordinator: DatabaseViewerCoordinator)
     
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
+    
+    func didPressReaddDatabase(in coordinator: DatabaseViewerCoordinator)
 }
 
 final class DatabaseViewerCoordinator: Coordinator {
@@ -54,6 +56,7 @@ final class DatabaseViewerCoordinator: Coordinator {
     private let database: Database
 
     private let loadingWarnings: DatabaseLoadingWarnings?
+    private var announcements = [AnnouncementItem]()
 
     private var canEditDatabase: Bool {
         return !databaseFile.status.contains(.readOnly)
@@ -125,6 +128,7 @@ final class DatabaseViewerCoordinator: Coordinator {
         
         settingsNotifications.startObserving()
         
+        updateAnnouncements()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 * vcAnimationDuration) {
             [weak self] in
             self?.showInitialMessages()
@@ -210,20 +214,12 @@ extension DatabaseViewerCoordinator {
         if loadingWarnings != nil {
             showLoadingWarnings(loadingWarnings!)
         }
-        let status = databaseFile.status
-        if status.contains(.localFallback) {
-            showDatabaseStatusNotification(status: .localFallback)
-            return 
+        if announcements.isEmpty {
+            StoreReviewSuggester.maybeShowAppReview(
+                appVersion: AppInfo.version,
+                occasion: .didOpenDatabase
+            )
         }
-        if status.contains(.readOnly) {
-            showDatabaseStatusNotification(status: .readOnly)
-            return 
-        }
-
-        StoreReviewSuggester.maybeShowAppReview(
-            appVersion: AppInfo.version,
-            occasion: .didOpenDatabase
-        )
     }
     
     private func showLoadingWarnings(_ warnings: DatabaseLoadingWarnings) {
@@ -243,23 +239,6 @@ extension DatabaseViewerCoordinator {
             }
         )
         StoreReviewSuggester.registerEvent(.trouble)
-    }
-
-    private func showDatabaseStatusNotification(status: DatabaseFile.StatusFlag) {
-        let image: UIImage?
-        let text: String
-        switch status {
-        case .localFallback:
-            image = UIImage.get(.icloudSlash)?
-                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal)
-            text = LString.databaseIsFallbackCopy
-        case .readOnly:
-            image = UIImage.get(.exclamationMarkTriangle)?
-                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal)
-            text = LString.databaseIsReadOnly
-        }
-        let toastHost = getPresenterForModals()
-        toastHost.showNotification(text, image: image, duration: 3.0)
     }
     
     private func showDiagnostics() {
@@ -673,15 +652,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         guard group.isRoot else {
             return []
         }
-        var result = [AnnouncementItem]()
-        
-        if let appLockSetupAnnouncement = maybeMakeAppLockSetupAnnouncement(for: viewController) {
-            result.append(appLockSetupAnnouncement)
-        }
-        if let donationAnnouncement = maybeMakeDonationAnnouncement(for: viewController) {
-            result.append(donationAnnouncement)
-        }
-        return result
+        return announcements
     }
 }
 
@@ -866,6 +837,35 @@ extension DatabaseViewerCoordinator: UISplitViewControllerDelegate {
 }
 
 extension DatabaseViewerCoordinator {
+    
+    private func updateAnnouncements() {
+        guard let rootGroupViewer = rootGroupViewer else {
+            assertionFailure()
+            return
+        }
+
+        announcements.removeAll()
+        if let appLockSetupAnnouncement = maybeMakeAppLockSetupAnnouncement(for: rootGroupViewer) {
+            announcements.append(appLockSetupAnnouncement)
+        }
+        
+        let status = databaseFile.status
+        if status.contains(.localFallback) {
+            announcements.append(makeFallbackDatabaseAnnouncement(for: rootGroupViewer))
+        } else {
+            if status.contains(.readOnly) {
+                announcements.append(makeReadOnlyDatabaseAnnouncement(for: rootGroupViewer))
+            }
+        }
+        
+        if announcements.isEmpty, 
+           let donationAnnouncement = maybeMakeDonationAnnouncement(for: rootGroupViewer)
+        {
+            announcements.append(donationAnnouncement)
+        }
+        rootGroupViewer.refreshAnnouncements()
+    }
+    
     private func shouldOfferAppLockSetup() -> Bool {
         let settings = Settings.current
         if settings.isHideAppLockSetupReminder {
@@ -885,17 +885,49 @@ extension DatabaseViewerCoordinator {
             title: LString.titleAppProtection,
             body: LString.appProtectionDescription,
             actionTitle: LString.callToActionActivateAppProtection,
-            image: UIImage(asset: .settingsAppLockListitem),
-            canBeClosed: true,
+            image: UIImage(asset: .settingsAppLockListitem)
+                .withTintColor(.primaryText, renderingMode: .alwaysOriginal),
             onDidPressAction: { [weak self] _ in
                 self?.startAppProtectionSetup()
             },
-            onDidPressClose: { [weak viewController] _ in
+            onDidPressClose: { [weak self] _ in
                 Settings.current.isHideAppLockSetupReminder = true
-                viewController?.refreshAnnouncements()
+                self?.updateAnnouncements()
             }
         )
         return announcement
+    }
+    
+    private func makeFallbackDatabaseAnnouncement(
+        for viewController: GroupViewerVC
+    ) -> AnnouncementItem {
+        return AnnouncementItem(
+            title: nil,
+            body: LString.databaseIsFallbackCopy,
+            actionTitle: originalRef.needsReinstatement ? LString.actionReAddFile : nil,
+            image: .get(.icloudSlash)?
+                .applyingSymbolConfiguration(.init(weight: .light))?
+                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal),
+            onDidPressAction: { [weak self, weak viewController] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressReaddDatabase(in: self)
+                viewController?.refreshAnnouncements()
+            }
+        )
+    }
+    
+    private func makeReadOnlyDatabaseAnnouncement(
+        for viewController: GroupViewerVC
+    ) -> AnnouncementItem {
+        return AnnouncementItem(
+            title: nil,
+            body: LString.databaseIsReadOnly,
+            actionTitle: nil,
+            image: nil,
+            onDidPressAction: { [weak viewController] _ in
+                viewController?.refreshAnnouncements()
+            }
+        )
     }
     
     private func maybeMakeDonationAnnouncement(
@@ -920,7 +952,6 @@ extension DatabaseViewerCoordinator {
             body: texts.0,
             actionTitle: texts.1,
             image: .get(.heart)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal),
-            canBeClosed: true,
             onDidPressAction: { [weak self, weak viewController] _ in
                 self?.showTipBox()
                 viewController?.refreshAnnouncements()

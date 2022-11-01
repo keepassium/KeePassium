@@ -13,7 +13,6 @@ struct AnnouncementItem {
     var body: String?
     var actionTitle: String?
     var image: UIImage?
-    var canBeClosed: Bool
     var onDidPressAction: ((AnnouncementView) -> Void)?
     var onDidPressClose: ((AnnouncementView) -> Void)?
 }

@@ -786,4 +786,17 @@ extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
             self.databasePickerCoordinator.selectDatabase(self.selectedDatabaseRef, animated: false)
         }
     }
+    
+    func didPressReaddDatabase(in coordinator: DatabaseViewerCoordinator) {
+        databaseViewerCoordinator?.closeDatabase(
+            shouldLock: false,
+            reason: .userRequest,
+            animated: true
+        ) { [weak self] in
+            guard let self = self else { return }
+            self.databasePickerCoordinator.addExistingDatabase(
+                presenter: self.rootSplitVC
+            )
+        }
+    }
 }
