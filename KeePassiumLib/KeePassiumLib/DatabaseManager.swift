@@ -72,7 +72,7 @@ public class DatabaseManager {
     public static func getFallbackFile(for databaseRef: URLReference) -> URLReference? {
         let latestBackupURL = FileKeeper.shared.getBackupFileURL(
             nameTemplate: databaseRef.visibleFileName,
-            mode: .latest,
+            mode: .overwriteLatest,
             timestamp: .now
         )
         guard let latestBackupURL = latestBackupURL else {

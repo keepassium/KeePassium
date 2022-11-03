@@ -202,3 +202,43 @@ public extension URL {
         }
     }
 }
+
+public extension URL {
+    /* Based on https://stackoverflow.com/a/38343753/1671985 */
+    
+    func getExtendedAttribute(name: String) throws -> ByteArray {
+        let data = try self.withUnsafeFileSystemRepresentation { fileSystemPath -> Data in
+            let length = getxattr(fileSystemPath, name, nil, 0, 0, 0)
+            guard length >= 0 else {
+                throw URL.posixError(errno)
+            }
+
+            var data = Data(count: length)
+
+            let result =  data.withUnsafeMutableBytes { [count = data.count] in
+                getxattr(fileSystemPath, name, $0.baseAddress, count, 0, 0)
+            }
+            guard result >= 0 else {
+                throw URL.posixError(errno)
+            }
+            return data
+        }
+        return ByteArray(data: data)
+    }
+    
+    func setExtendedAttribute(name: String, value: ByteArray) throws {
+        try self.withUnsafeFileSystemRepresentation { fileSystemPath in
+            let result = value.asData.withUnsafeBytes {
+                setxattr(fileSystemPath, name, $0.baseAddress, value.count, 0, 0)
+            }
+            guard result >= 0 else {
+                throw URL.posixError(errno)
+            }
+        }
+    }
+    
+    private static func posixError(_ err: Int32) -> NSError {
+        return NSError(domain: NSPOSIXErrorDomain, code: Int(err),
+                       userInfo: [NSLocalizedDescriptionKey: String(cString: strerror(err))])
+    }
+}

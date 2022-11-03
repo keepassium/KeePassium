@@ -501,7 +501,7 @@ public class DatabaseLoader: ProgressObserver {
             progress.status = LString.Progress.makingDatabaseBackup
             FileKeeper.shared.makeBackup(
                 nameTemplate: dbFile.visibleFileName,
-                mode: .latest,
+                mode: .renameLatest,
                 contents: dbFile.data)
         }
     }

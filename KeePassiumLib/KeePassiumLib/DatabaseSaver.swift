@@ -291,7 +291,7 @@ public class DatabaseSaver: ProgressObserver {
         let nameTemplate = databaseFile.visibleFileName
         FileKeeper.shared.makeBackup(
             nameTemplate: nameTemplate,
-            mode: .latest,
+            mode: .overwriteLatest,
             contents: data)
     }
     

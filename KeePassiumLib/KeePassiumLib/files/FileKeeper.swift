@@ -883,7 +883,8 @@ public class FileKeeper {
     
     
     enum BackupMode {
-        case latest
+        case overwriteLatest
+        case renameLatest
         case timestamped
     }
     
@@ -895,6 +896,7 @@ public class FileKeeper {
     }()
     let backupTimestampSeparator = Character("_")
     let backupLatestSuffix = ".latest"
+    let lastTimestampedSHA256Attribute = "lastTimestampedSHA256"
     
     func makeBackup(nameTemplate: String, mode: BackupMode, contents: ByteArray) {
         guard !contents.isEmpty else {
@@ -902,10 +904,17 @@ public class FileKeeper {
             return
         }
         
+        var newlyTimestampedSHA256: ByteArray?
         let timestamp: Date
         switch mode {
-        case .latest:
+        case .overwriteLatest:
             timestamp = .now
+        case .renameLatest:
+            timestamp = .now
+            newlyTimestampedSHA256 = maybeTimestampLatestBackup(
+                nameTemplate: nameTemplate,
+                contents: contents
+            )
         case .timestamped:
             timestamp = .now - 1.0
         }
@@ -934,9 +943,19 @@ public class FileKeeper {
             
             let isExcludeFromBackup = Settings.current.isExcludeBackupFilesFromSystemBackup
             backupFileURL.setExcludedFromBackup(isExcludeFromBackup)
+            if let newlyTimestampedSHA256 = newlyTimestampedSHA256 {
+                do {
+                    try backupFileURL.setExtendedAttribute(
+                        name: lastTimestampedSHA256Attribute,
+                        value: newlyTimestampedSHA256
+                    )
+                } catch {
+                    Diag.warning("Failed to update \(lastTimestampedSHA256Attribute) attribute")
+                }
+            }
             
             switch mode {
-            case .latest:
+            case .overwriteLatest, .renameLatest:
                 Diag.info("Latest backup updated OK")
             case .timestamped:
                 Diag.info("Backup copy created OK")
@@ -944,6 +963,67 @@ public class FileKeeper {
         } catch {
             Diag.warning("Failed to make backup copy [error: \(error.localizedDescription)]")
         }
+    }
+    
+    private func maybeTimestampLatestBackup(nameTemplate: String, contents: ByteArray) -> ByteArray? {
+        guard let latestBackupURL = getBackupFileURL(
+            nameTemplate: nameTemplate,
+            mode: .renameLatest,
+            timestamp: .now)
+        else {
+            Diag.warning("Backup file name is too bizzarre, skipping")
+            return nil
+        }
+        
+        guard FileManager.default.fileExists(atPath: latestBackupURL.path) else {
+            return nil
+        }
+        
+        let contentsSHA256 = contents.sha256
+        
+        var shouldBackup = true
+        if let lastTimestampedSHA256 = try? latestBackupURL
+                .getExtendedAttribute(name: lastTimestampedSHA256Attribute)
+        {
+            shouldBackup = (lastTimestampedSHA256 != contentsSHA256)
+        } else {
+            shouldBackup = true
+        }
+        guard shouldBackup else {
+            Diag.debug("Latest backup content did not change, no need to timestamp it.")
+            return nil
+        }
+        
+        Diag.info("Renaming the latest backup")
+        guard let attributes = try? latestBackupURL
+                .resourceValues(forKeys: [.contentModificationDateKey]),
+            let modificationDate = attributes.contentModificationDate
+        else {
+            Diag.warning("Failed to get latest backup modification date, skipping")
+            return nil
+        }
+        
+        guard let newLatestBackupURL = getBackupFileURL(
+            nameTemplate: nameTemplate,
+            mode: .timestamped,
+            timestamp: modificationDate)
+        else {
+            Diag.warning("New backup file name is too bizzarre, skipping")
+            assertionFailure()
+            return nil
+        }
+        do {
+            _ = try FileManager.default.replaceItemAt(
+                newLatestBackupURL,
+                withItemAt: latestBackupURL,
+                backupItemName: nil,
+                options: [])
+        } catch {
+            Diag.error("Failed to rename the latest backup, skipping [message: \(error.localizedDescription)]")
+            return nil
+        }
+        Diag.info("Previous latest backup timestamped successfully")
+        return contentsSHA256
     }
     
     func getBackupFileURL(nameTemplate: String, mode: BackupMode, timestamp: Date) -> URL? {
@@ -956,7 +1036,8 @@ public class FileKeeper {
         
         let fileNameSuffix: String
         switch mode {
-        case .latest:
+        case .overwriteLatest,
+             .renameLatest:
             fileNameSuffix = backupLatestSuffix
         case .timestamped:
             let timestampString = backupTimestampFormatter.string(from: timestamp)
