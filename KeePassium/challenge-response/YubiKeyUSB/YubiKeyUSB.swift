@@ -146,7 +146,7 @@ class YubiKeyUSB {
         }
         let result = IOHIDDeviceOpen(hidDevice, IOOptionBits(kIOHIDOptionsTypeNone))
         guard result == kIOReturnSuccess else {
-            Diag.error("Failed to open USB HID device")
+            Diag.error("Failed to open USB HID device [code: \(result)]")
             throw Error.communicationFailure
         }
         isDeviceOpen = true
@@ -175,7 +175,7 @@ class YubiKeyUSB {
             return IOHIDDeviceSetReport(hidDevice, kIOHIDReportTypeFeature, 0, bytes, packet.count)
         }
         guard result == kIOReturnSuccess else {
-            Diag.warning("Failed to send to USB HID device. Code: \(result)")
+            Diag.warning("Failed to send to USB HID device [code: \(result)]")
             throw Error.communicationFailure
         }
     }
@@ -196,7 +196,7 @@ class YubiKeyUSB {
             &bufferLen
         )
         guard result == kIOReturnSuccess else {
-            Diag.error("Failed to receive from USB HID device. Code: \(result)")
+            Diag.error("Failed to receive from USB HID device [code: \(result)]")
             throw Error.communicationFailure
         }
         return buffer
