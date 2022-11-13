@@ -41,6 +41,11 @@ public enum LString {
             bundle: Bundle.framework,
             value: "Cannot open key file",
             comment: "Error message")
+        public static let incorrectDatabaseFormatTemplate = NSLocalizedString(
+            "[Database/Load/Error] Incorrect database format",
+            bundle: Bundle.framework,
+            value: "Incorrect database format: %@.",
+            comment: "Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.'")
         public static let unrecognizedDatabaseFormat = NSLocalizedString(
             "[Database/Load/Error] Unrecognized database format",
             bundle: Bundle.framework,

@@ -33,6 +33,7 @@
 		7534443E27842FEC00CC8248 /* Date+http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534443D27842FEC00CC8248 /* Date+http.swift */; };
 		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
+		753858DB291957BF006ADA21 /* FileFormatRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */; };
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
 		753E9A6225FEBE3000541121 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753E9A6125FEBE2F00541121 /* Toast.swift */; };
 		7544570425CAE2D50011386C /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 7544570325CAE2D50011386C /* TPInAppReceipt */; };
@@ -241,6 +242,7 @@
 		7534443D27842FEC00CC8248 /* Date+http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+http.swift"; sourceTree = "<group>"; };
 		7538167D22B15FC7000FA4BD /* Settings+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+premium.swift"; sourceTree = "<group>"; };
 		75384B9822CCB76800157598 /* UsageMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageMonitor.swift; sourceTree = "<group>"; };
+		753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileFormatRecognizer.swift; sourceTree = "<group>"; };
 		75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResponse.swift; sourceTree = "<group>"; };
 		753E9A6125FEBE2F00541121 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		754A322A244269F500632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -807,6 +809,7 @@
 				75AA237726CA6DA700488C4E /* KeyHelper+loading.swift */,
 				75CD1523285F3929003C11DA /* TimeInterval+constants.swift */,
 				75F11C3B288580D4005B3DC0 /* URL+consts.swift */,
+				753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1227,6 +1230,7 @@
 				7505E8CB2236C93300E5202E /* TOTPGenerator.swift in Sources */,
 				75D09C402174F77000F7DEF2 /* Eraseable.swift in Sources */,
 				75D4080523952FD40042122A /* CompositeKey.swift in Sources */,
+				753858DB291957BF006ADA21 /* FileFormatRecognizer.swift in Sources */,
 				75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */,
 				75CD1524285F3929003C11DA /* TimeInterval+constants.swift in Sources */,
 				75D09C5C2174F81900F7DEF2 /* Error.swift in Sources */,

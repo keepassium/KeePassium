@@ -34,6 +34,7 @@ public class DatabaseLoader: ProgressObserver {
         case permissionError(message: String)
         case emptyKey
         case invalidKey(message: String)
+        case wrongFormat(fileFormat: CommonFileFormat)
         case unrecognizedFormat(hexSignature: String)
         case lowMemory
         case databaseError(reason: DatabaseError)
@@ -53,6 +54,11 @@ public class DatabaseLoader: ProgressObserver {
                 return LString.Error.needPasswordOrKeyFile
             case .invalidKey(let message):
                 return message
+            case .wrongFormat(let fileFormat):
+                return String.localizedStringWithFormat(
+                    LString.Error.incorrectDatabaseFormatTemplate,
+                    fileFormat.description
+                )
             case .unrecognizedFormat:
                 return LString.Error.unrecognizedDatabaseFormat
             case .lowMemory:
@@ -76,6 +82,8 @@ public class DatabaseLoader: ProgressObserver {
             case .emptyKey:
                 return nil
             case .invalidKey(_):
+                return nil
+            case .wrongFormat(_):
                 return nil
             case .unrecognizedFormat:
                 return nil
@@ -305,9 +313,15 @@ public class DatabaseLoader: ProgressObserver {
         progress.completedUnitCount = ProgressSteps.didReadDatabaseFile
         
         guard let db = initDatabase(signature: data) else {
-            let hexPrefix = data.prefix(8).asHexString
-            Diag.error("Unrecognized database format [firstBytes: \(hexPrefix)]")
-            stopAndNotify(.unrecognizedFormat(hexSignature: hexPrefix))
+            let fileSignature = data.prefix(8)
+            if let wrongFormat = FileFormatRecognizer.recognize(fileSignature) {
+                Diag.error("Wrong file format, not a database [looksLike: \(wrongFormat.description)]")
+                stopAndNotify(.wrongFormat(fileFormat: wrongFormat))
+            } else {
+                let hexPrefix = fileSignature.asHexString
+                Diag.error("Unrecognized database format [firstBytes: \(hexPrefix)]")
+                stopAndNotify(.unrecognizedFormat(hexSignature: hexPrefix))
+            }
             return
         }
         
