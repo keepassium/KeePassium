@@ -216,14 +216,17 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         }
     }
     
-    public func addRemoteDatabase(presenter: UIViewController) {
+    public func addRemoteDatabase(connectionType: RemoteConnectionType?=nil, presenter: UIViewController) {
         guard Settings.current.isNetworkAccessAllowed else {
             Diag.error("Network access denied")
             presenter.showErrorAlert(FileAccessError.networkAccessDenied)
             return
         }
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
-        let connectionCreatorCoordinator = RemoteFilePickerCoordinator(router: modalRouter)
+        let connectionCreatorCoordinator = RemoteFilePickerCoordinator(
+            connectionType: connectionType,
+            router: modalRouter
+        )
         connectionCreatorCoordinator.delegate = self
         connectionCreatorCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)

@@ -649,6 +649,19 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
             )
         })
     }
+    
+    func didPressAddRemoteDatabase(
+        connectionType: RemoteConnectionType?,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) {
+        router.pop(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
+            self.databasePickerCoordinator.addRemoteDatabase(
+                connectionType: connectionType,
+                presenter: self.router.navigationController
+            )
+        })
+    }
 }
 
 extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {

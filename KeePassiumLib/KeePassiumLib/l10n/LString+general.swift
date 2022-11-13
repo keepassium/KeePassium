@@ -684,7 +684,13 @@ extension LString {
         bundle: Bundle.framework,
         value: "Open Database",
         comment: "Action/button")
+    public static let tryRemoteConnection = NSLocalizedString(
+        "[Database/RecommendRemote/callToAction]",
+        bundle: Bundle.framework,
+        value: "Try connecting to your remote storage directly from KeePassium.",
+        comment: "Suggested solution/call to action when intermediate sync app fails.")
 
+    
     public static let masterKeySuccessfullyChanged = NSLocalizedString(
         "[Database/MasterKey/changed] Master key successfully changed",
         bundle: Bundle.framework,

@@ -26,6 +26,7 @@ final class RemoteFilePickerCoordinator: Coordinator {
     private let sourceSelectorVC: RemoteFilePickerVC
     private var connectionTypePickerVC: ConnectionTypePickerVC?
     private var currentConnectionType: RemoteConnectionType
+    private var startWithTypeSelector: Bool
 
     private struct OneDriveAccount {
         var driveInfo: OneDriveDriveInfo
@@ -33,9 +34,12 @@ final class RemoteFilePickerCoordinator: Coordinator {
     }
     private var oneDriveAccount: OneDriveAccount?
 
-    init(router: NavigationRouter) {
+    init(connectionType: RemoteConnectionType?, router: NavigationRouter) {
         self.router = router
-        currentConnectionType = Settings.current.lastRemoteConnectionType ?? .oneDrive
+        startWithTypeSelector = (connectionType == nil)
+        currentConnectionType = connectionType
+            ?? Settings.current.lastRemoteConnectionType
+            ?? .oneDrive
 
         sourceSelectorVC = RemoteFilePickerVC.make()
         sourceSelectorVC.delegate = self
@@ -55,6 +59,9 @@ final class RemoteFilePickerCoordinator: Coordinator {
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
+        if startWithTypeSelector {
+            showConnectionTypeSelector(animated: false)
+        }
     }
     
     private func setupDismissButton() {
@@ -86,7 +93,7 @@ extension RemoteFilePickerCoordinator: RemoteFilePickerDelegate {
         at popoverAnchor: PopoverAnchor,
         in viewController: RemoteFilePickerVC
     ) {
-        showConnectionTypeSelector(at: popoverAnchor)
+        showConnectionTypeSelector(animated: true)
     }
     
     func didPressDone(
@@ -104,11 +111,11 @@ extension RemoteFilePickerCoordinator: RemoteFilePickerDelegate {
 }
 
 extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
-    private func showConnectionTypeSelector(at popoverAnchor: PopoverAnchor) {
+    private func showConnectionTypeSelector(animated: Bool) {
         let pickerVC = ConnectionTypePickerVC.make()
         pickerVC.selectedValue = currentConnectionType
         pickerVC.delegate = self
-        router.push(pickerVC, animated: true, onPop: { [weak self] in
+        router.push(pickerVC, animated: animated, onPop: { [weak self] in
             self?.connectionTypePickerVC = nil
         })
         self.connectionTypePickerVC = pickerVC

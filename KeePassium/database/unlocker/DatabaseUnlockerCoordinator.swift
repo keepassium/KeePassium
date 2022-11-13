@@ -37,6 +37,10 @@ protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
         in coordinator: DatabaseUnlockerCoordinator
     )
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator)
+    func didPressAddRemoteDatabase(
+        connectionType: RemoteConnectionType?,
+        in coordinator: DatabaseUnlockerCoordinator
+    )
 }
 
 final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
@@ -356,6 +360,26 @@ extension DatabaseUnlockerCoordinator {
             )
         )
     }
+    
+    private func showIntuneProtectionError() {
+        let message = LString.Error.databaseProtectedByIntune + "\n\n" + LString.tryRemoteConnection
+        databaseUnlockerVC.showErrorMessage(
+            message,
+            reason: nil,
+            haptics: .error,
+            action: ToastAction(
+                title: LString.actionConnectToServer,
+                handler: { [weak self] in
+                    guard let self = self else { return }
+                    Diag.debug("Will add remote database")
+                    self.delegate?.didPressAddRemoteDatabase(
+                        connectionType: nil,
+                        in: self
+                    )
+                }
+            )
+        )
+    }
 }
 
 extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
@@ -503,6 +527,15 @@ extension DatabaseUnlockerCoordinator: DatabaseLoaderDelegate {
                 databaseUnlockerVC.hideProgressView(animated: true)
                 showDatabaseError(error.localizedDescription, reason: error.failureReason)
                 databaseUnlockerVC.maybeFocusOnPassword()
+            }
+        case .wrongFormat(let fileFormat):
+            databaseUnlockerVC.refresh()
+            databaseUnlockerVC.hideProgressView(animated: true)
+            switch (fileFormat) {
+            case .intuneProtectedFile:
+                showIntuneProtectionError()
+            default:
+                showDatabaseError(error.localizedDescription, reason: error.failureReason)
             }
         default:
             databaseUnlockerVC.refresh()

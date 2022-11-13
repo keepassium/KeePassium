@@ -752,6 +752,26 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
             databasePickerCoordinator.addExistingDatabase(presenter: rootSplitVC)
         }
     }
+    
+    func didPressAddRemoteDatabase(
+        connectionType: RemoteConnectionType?,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) {
+        if rootSplitVC.isCollapsed {
+            primaryRouter.pop(animated: true, completion: { [weak self] in
+                guard let self = self else { return }
+                self.databasePickerCoordinator.addRemoteDatabase(
+                    connectionType: connectionType,
+                    presenter: self.rootSplitVC
+                )
+            })
+        } else {
+            databasePickerCoordinator.addRemoteDatabase(
+                connectionType: connectionType,
+                presenter: rootSplitVC
+            )
+        }
+    }
 }
 
 extension MainCoordinator: DatabaseViewerCoordinatorDelegate {

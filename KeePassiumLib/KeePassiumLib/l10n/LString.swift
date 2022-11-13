@@ -51,6 +51,11 @@ public enum LString {
             bundle: Bundle.framework,
             value: "Unrecognized database format",
             comment: "Error message")
+        public static let databaseProtectedByIntune = NSLocalizedString(
+            "[Database/Load/Error/encryptedByIntune]",
+            bundle: Bundle.framework,
+            value: "This database is protected by your corporate IT policies and Microsoft Intune.",
+            comment: "Error message")
         public static let needPasswordOrKeyFile = NSLocalizedString(
             "[Database/Load/Error] Please provide at least a password or a key file",
             bundle: Bundle.framework,
