@@ -145,6 +145,8 @@ extension WebDAVManager: URLSessionDataDelegate, URLSessionTaskDelegate {
         case NSURLAuthenticationMethodDefault,
              NSURLAuthenticationMethodHTTPBasic:
             completionHandler(.useCredential, webdavRequest.credential)
+        case NSURLAuthenticationMethodHTTPDigest:
+            completionHandler(.useCredential, webdavRequest.credential)
         case NSURLAuthenticationMethodServerTrust:
             guard let serverTrust = challenge.protectionSpace.serverTrust else {
                 completionHandler(.performDefaultHandling, nil)
