@@ -65,6 +65,7 @@ final class AboutVC: UITableViewController {
                 versionParts.append("Pro")
             }
         }
+        appTitleLabel.text = AppInfo.name
         versionLabel.text = versionParts.joined(separator: " ")
         copyrightLabel.text = LString.copyrightNotice
         contactSupportCell.detailTextLabel?.text = SupportEmailComposer.getSupportEmail()
