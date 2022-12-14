@@ -46,7 +46,7 @@ final class MainCoordinator: Coordinator {
     fileprivate var isBiometricAuthShown = false
     private var isInitialAppLock = true
     
-    fileprivate let biometricAuthReuseDuration = TimeInterval(2.0)
+    fileprivate let biometricAuthReuseDuration = TimeInterval(3.0)
     fileprivate var lastSuccessfulBiometricAuthTime: Date = .distantPast
     
     private var selectedDatabaseRef: URLReference?
