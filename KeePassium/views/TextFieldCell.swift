@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TextFieldCell: UITableViewCell {
+class TextFieldCell: UITableViewCell {
     var textField: ValidatingTextField! 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,7 +26,7 @@ final class TextFieldCell: UITableViewCell {
     }
     
     private func setupCell() {
-        textField = ValidatingTextField(frame: .zero)
+        textField = makeTextField()
         textField.font = .preferredFont(forTextStyle: .body)
         textField.textColor = .label
         
@@ -54,5 +54,14 @@ final class TextFieldCell: UITableViewCell {
 
         selectionStyle = .none
     }
+    
+    fileprivate func makeTextField() -> ValidatingTextField {
+        return ValidatingTextField(frame: .zero)
+    }
 }
 
+class ProtectedTextFieldCell: TextFieldCell {
+    override func makeTextField() -> ValidatingTextField {
+        return ProtectedTextField(frame: .zero)
+    }
+}

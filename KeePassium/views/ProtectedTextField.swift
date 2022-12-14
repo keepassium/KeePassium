@@ -25,9 +25,17 @@ class ProtectedTextField: ValidatingTextField {
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupView()
+    }
+    
+    private func setupView() {
         setupVisibilityAccessory()
         allowAutoFillPrompt(Settings.current.acceptAutoFillInput)
 

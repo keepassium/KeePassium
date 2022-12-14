@@ -26,6 +26,7 @@ final class RemoteFilePickerVC: UITableViewController {
     private enum CellID {
         static let selectorCell = "SelectorCell"
         static let textFieldCell = "TextFieldCell"
+        static let protectedTextFieldCell = "ProtectedTextFieldCell"
         static let switchCell = "SwitchCell"
         static let buttonCell = "ButtonCell"
     }
@@ -85,6 +86,9 @@ final class RemoteFilePickerVC: UITableViewController {
         tableView.register(
             TextFieldCell.classForCoder(),
             forCellReuseIdentifier: CellID.textFieldCell)
+        tableView.register(
+            ProtectedTextFieldCell.classForCoder(),
+            forCellReuseIdentifier: CellID.protectedTextFieldCell)
         tableView.register(
             RightDetailCell.classForCoder(),
             forCellReuseIdentifier: CellID.selectorCell)
@@ -231,9 +235,10 @@ extension RemoteFilePickerVC {
         case (_, CellIndex.typeSelector):
             return CellID.selectorCell
         case (.webdav, CellIndex.webdavURL),
-            (.webdav, CellIndex.webdavUsername),
-            (.webdav, CellIndex.webdavPassword):
+            (.webdav, CellIndex.webdavUsername):
             return CellID.textFieldCell
+        case (.webdav, CellIndex.webdavPassword):
+            return CellID.protectedTextFieldCell
         case (.webdav, CellIndex.webdavAllowUntrusted):
             return CellID.switchCell
         case (.oneDrive, CellIndex.oneDriveLogin),
@@ -302,7 +307,7 @@ extension RemoteFilePickerVC {
         case CellIndex.webdavUsername:
             configureWebdavUsernameCell(cell as! TextFieldCell)
         case CellIndex.webdavPassword:
-            configureWebdavPasswordCell(cell as! TextFieldCell)
+            configureWebdavPasswordCell(cell as! ProtectedTextFieldCell)
         default:
             fatalError("Unexpected cell index")
         }
