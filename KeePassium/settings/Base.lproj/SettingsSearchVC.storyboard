@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RZt-EW-TGN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RZt-EW-TGN">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +35,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Start with Search" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0v-f7-D4Y">
-                                                    <rect key="frame" x="61" y="17.5" width="186" height="17"/>
+                                                    <rect key="frame" x="61" y="15.5" width="186" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -70,14 +70,14 @@
                             <tableViewSection headerTitle="Search Scope" footerTitle="" id="Io8-uP-3lF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Jti-wu-o0O" userLabel="Search in Field Names">
-                                        <rect key="frame" x="0.0" y="149" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="160.5" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jti-wu-o0O" id="Ukc-Mx-j56">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Search in Field Names" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCm-E4-L3m">
-                                                    <rect key="frame" x="16" y="17.5" width="231" height="17"/>
+                                                    <rect key="frame" x="16" y="15.5" width="231" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -106,14 +106,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="D3M-hL-ERx" userLabel="Search in Protected Value">
-                                        <rect key="frame" x="0.0" y="200.5" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="212" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D3M-hL-ERx" id="5dO-eh-A29">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Search in Protected Values" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrQ-5g-wj0">
-                                                    <rect key="frame" x="16" y="17.5" width="231" height="17"/>
+                                                    <rect key="frame" x="16" y="15.5" width="231" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -141,6 +141,42 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="tmj-7d-HCA" userLabel="Search in Passwords">
+                                        <rect key="frame" x="0.0" y="263.5" width="320" height="51.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tmj-7d-HCA" id="Ocz-YZ-nPX">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Search in Passwords" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1LC-s7-Kdl">
+                                                    <rect key="frame" x="16" y="15.5" width="231" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="An switch in settings: whether to include protected field values in search procedure."/>
+                                                    </attributedString>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jxw-6d-2Kw">
+                                                    <rect key="frame" x="255" y="10.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleSearchPasswords:" destination="RZt-EW-TGN" eventType="valueChanged" id="rcD-4W-JdD"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jxw-6d-2Kw" firstAttribute="trailing" secondItem="Ocz-YZ-nPX" secondAttribute="trailingMargin" id="45B-id-KNX"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="1LC-s7-Kdl" secondAttribute="bottom" id="Dpr-0p-cMs"/>
+                                                <constraint firstItem="jxw-6d-2Kw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ocz-YZ-nPX" secondAttribute="top" constant="10" id="EQu-L1-CVs"/>
+                                                <constraint firstItem="1LC-s7-Kdl" firstAttribute="centerY" secondItem="Ocz-YZ-nPX" secondAttribute="centerY" priority="250" id="Poa-TP-ymJ"/>
+                                                <constraint firstItem="1LC-s7-Kdl" firstAttribute="leading" secondItem="Ocz-YZ-nPX" secondAttribute="leadingMargin" id="R3Q-6o-1Wi"/>
+                                                <constraint firstItem="1LC-s7-Kdl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ocz-YZ-nPX" secondAttribute="topMargin" id="U7j-wA-Pvw"/>
+                                                <constraint firstItem="jxw-6d-2Kw" firstAttribute="centerY" secondItem="Ocz-YZ-nPX" secondAttribute="centerY" id="bA4-1Q-Gz7"/>
+                                                <constraint firstItem="jxw-6d-2Kw" firstAttribute="leading" secondItem="1LC-s7-Kdl" secondAttribute="trailing" constant="8" id="ehx-Q5-zf1"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jxw-6d-2Kw" secondAttribute="bottom" constant="10" id="uie-Tw-Bc2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                                 <attributedString key="userComments">
                                     <fragment content="A section in search-related settings: which fields to include in search."/>
@@ -154,6 +190,8 @@
                     </tableView>
                     <connections>
                         <outlet property="searchFieldNamesSwitch" destination="P4x-6S-BGw" id="Aks-RE-Vwn"/>
+                        <outlet property="searchPasswordsCell" destination="tmj-7d-HCA" id="Zli-ep-8Lh"/>
+                        <outlet property="searchPasswordsSwitch" destination="jxw-6d-2Kw" id="Lhr-0x-uPv"/>
                         <outlet property="searchProtectedValuesSwitch" destination="yIo-qK-dL6" id="XST-8t-mfJ"/>
                         <outlet property="startWithSearchSwitch" destination="eaC-Ja-s6W" id="tzt-gB-kr4"/>
                     </connections>

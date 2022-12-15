@@ -11,6 +11,7 @@ public struct SearchQuery {
     public let includeDeleted: Bool
     public let includeFieldNames: Bool
     public let includeProtectedValues: Bool
+    public let includePasswords: Bool
     public let compareOptions: String.CompareOptions
     
     public let text: String
@@ -21,6 +22,7 @@ public struct SearchQuery {
         includeDeleted: Bool,
         includeFieldNames: Bool,
         includeProtectedValues: Bool,
+        includePasswords: Bool,
         compareOptions: String.CompareOptions,
         text: String,
         textWords: Array<Substring>)
@@ -29,6 +31,7 @@ public struct SearchQuery {
         self.includeDeleted = includeDeleted
         self.includeFieldNames = includeFieldNames
         self.includeProtectedValues = includeProtectedValues
+        self.includePasswords = includePasswords
         self.compareOptions = compareOptions
         self.text = text
         self.textWords = text.split(separator: " ")

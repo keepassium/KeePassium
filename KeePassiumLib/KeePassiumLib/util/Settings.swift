@@ -90,6 +90,7 @@ public class Settings {
         case startWithSearch
         case searchFieldNames
         case searchProtectedValues
+        case searchPasswords
 
         case backupDatabaseOnSave
         case backupKeepingDuration
@@ -1252,6 +1253,24 @@ public class Settings {
                 oldValue: isSearchProtectedValues,
                 newValue: newValue,
                 key: .searchProtectedValues)
+        }
+    }
+    
+    public var isSearchPasswords: Bool {
+        get {
+            guard isSearchProtectedValues else {
+                return false
+            }
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.searchPasswords.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isSearchPasswords,
+                newValue: newValue,
+                key: .searchPasswords)
         }
     }
     

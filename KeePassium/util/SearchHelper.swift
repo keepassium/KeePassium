@@ -37,6 +37,7 @@ class SearchHelper {
             includeDeleted: false,
             includeFieldNames: settings.isSearchFieldNames,
             includeProtectedValues: settings.isSearchProtectedValues,
+            includePasswords: settings.isSearchPasswords,
             compareOptions: compareOptions,
             text: searchText,
             textWords: words)
