@@ -370,7 +370,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         let addRemoteDatabaseAction = UIAction(
             title: LString.actionConnectToServer,
             image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.network),
-            attributes: Settings.current.isNetworkAccessAllowed ? [] : [.disabled],
+            attributes: [],
             handler: { [weak self] _ in
                 guard let self = self else { return }
                 self.delegate?.didPressAddRemoteDatabase(in: self)

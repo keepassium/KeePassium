@@ -238,6 +238,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Maximum functionality",
         comment: "Description of the `Allow Network Access` mode.")
+    public static let allowNetwokAccessQuestionText = NSLocalizedString(
+        "[Settings/NetworkAccess/Confirmation/text]",
+        bundle: Bundle.framework,
+        value: "Allow KeePassium to make network connections to external services?",
+        comment: "Confirmation dialog message")
+
     
     public static let titleDatabaseBackupSettings = NSLocalizedString(
         "[Settings/DatabaseBackup/title]",

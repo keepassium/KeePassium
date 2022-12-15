@@ -201,7 +201,10 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     
     public func maybeAddRemoteDatabase(presenter: UIViewController) {
         guard needsPremiumToAddDatabase() else {
-            addRemoteDatabase(presenter: presenter)
+            presenter.requestNetworkAccessPermission() { [weak self, weak presenter] in
+                guard let self = self, let presenter = presenter else { return }
+                self.addRemoteDatabase(presenter: presenter)
+            }
             return
         }
 
@@ -212,7 +215,10 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
             else {
                 return
             }
-            self.addRemoteDatabase(presenter: presenter)
+            presenter.requestNetworkAccessPermission() { [weak self, weak presenter] in
+                guard let self = self, let presenter = presenter else { return }
+                self.addRemoteDatabase(presenter: presenter)
+            }
         }
     }
     

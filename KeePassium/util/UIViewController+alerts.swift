@@ -30,6 +30,28 @@ extension UIViewController {
         StoreReviewSuggester.registerEvent(.trouble)
     }
     
+    func requestNetworkAccessPermission(allowed completion: @escaping () -> Void) {
+        if Settings.current.isNetworkAccessAllowed {
+            completion()
+            return
+        }
+        let networkModeAlert = UIAlertController(
+            title: LString.titleNetworkAccessSettings,
+            message: LString.allowNetwokAccessQuestionText,
+            preferredStyle: .alert
+        )
+        networkModeAlert.addAction(title: LString.titleAllowNetworkAccess, style: .default) { _ in
+            Diag.info("Network access is allowed by the user")
+            Settings.current.isNetworkAccessAllowed = true
+            completion()
+        }
+        networkModeAlert.addAction(title: LString.titleStayOffline, style: .cancel) { _ in
+            Diag.info("Network access is denied by the user")
+            Settings.current.isNetworkAccessAllowed = false
+        }
+        present(networkModeAlert, animated: true)
+    }
+    
     private func getHostViewForToastNotifications() -> UIView {
         var hostVC: UIViewController = self
         if hostVC is UITableViewController, let navVC = self.navigationController {
