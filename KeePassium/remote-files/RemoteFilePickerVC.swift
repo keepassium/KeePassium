@@ -421,7 +421,7 @@ extension RemoteFilePickerVC {
     
     private func configureOneDriveLoginCell(_ cell: ButtonCell) {
         cell.button.setTitle(LString.actionSignInToOneDrive, for: .normal)
-        cell.button.contentHorizontalAlignment = .leading
+        cell.button.contentHorizontalAlignment = .center
         cell.button.isEnabled = !isBusy
         cell.buttonPressHandler = { [weak self] theSwitch in
             guard let self = self else { return }

@@ -25,8 +25,17 @@ class MultilineButton: UIButton {
     }
     #endif
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+    }
+    
+    private func setupView() {
         titleLabel?.lineBreakMode = .byWordWrapping
         titleLabel?.numberOfLines = 0
     }

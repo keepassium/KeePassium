@@ -32,31 +32,22 @@ final class ButtonCell: UITableViewCell {
         contentView.addSubview(button)
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.topAnchor
-            .constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor, constant: 0)
-            .activate()
-        button.bottomAnchor
-            .constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor, constant: 0)
-            .activate()
         button.leadingAnchor
-            .constraint(greaterThanOrEqualTo: layoutMarginsGuide.leadingAnchor)
+            .constraint(equalTo: layoutMarginsGuide.leadingAnchor)
             .activate()
         button.trailingAnchor
-            .constraint(lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor)
-            .activate()
-        button.centerXAnchor
-            .constraint(equalTo: layoutMarginsGuide.centerXAnchor)
-            .setPriority(.defaultLow)
+            .constraint(equalTo: layoutMarginsGuide.trailingAnchor)
             .activate()
         button.centerYAnchor
-            .constraint(equalTo: layoutMarginsGuide.centerYAnchor)
-            .setPriority(.defaultHigh)
+            .constraint(equalTo: contentView.centerYAnchor)
+            .activate()
+        button.heightAnchor
+            .constraint(equalTo: contentView.heightAnchor)
             .activate()
         contentView.heightAnchor
             .constraint(greaterThanOrEqualToConstant: 44)
-            .setPriority(.defaultLow)
             .activate()
-
+        
         selectionStyle = .none
         
         button.addTarget(self, action: #selector(didTouchUpInsideButton), for: .touchUpInside)
