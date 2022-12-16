@@ -188,7 +188,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>keepassium</string>
+				<string>$(APP_URL_SCHEME)</string>
 			</array>
 		</dict>
 	</array>

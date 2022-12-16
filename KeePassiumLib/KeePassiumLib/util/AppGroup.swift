@@ -11,7 +11,14 @@ import Foundation
 public class AppGroup {
     public static let id = "group.com.keepassium"
     
-    public static let appURLScheme = "keepassium"
+    public static let appURLScheme = {
+        switch BusinessModel.type {
+        case .freemium:
+            return "keepassium"
+        case .prepaid:
+            return "keepassium.pro"
+        }
+    }()
     
     public static let upgradeToPremiumURL = URL(string: appURLScheme + "://upgradeToPremium")! 
 

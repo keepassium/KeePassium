@@ -29,7 +29,7 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>keepassium</string>
+		<string>$(APP_URL_SCHEME)</string>
 		<string>mailto</string>
 	</array>
 	<key>LSSupportsOpeningDocumentsInPlace</key>

@@ -80,8 +80,8 @@ final public class OneDriveManager: NSObject {
         static let scope = "user.read files.readwrite offline_access"
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         static let apiEndPoint = "https://graph.microsoft.com/v1.0/me/drive"
-        static let callbackURLScheme = "keepassium"
-        static let redirectURI = "keepassium://onedrive-auth"
+        static let callbackURLScheme = AppGroup.appURLScheme
+        static let redirectURI = "\(AppGroup.appURLScheme)://onedrive-auth"
         static let authURL = URL(string: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=\(clientID)&scope=\(scope)&response_type=code&redirect_uri=\(redirectURI)")!
         static let tokenRequestURL = URL(string: "https://login.microsoftonline.com/common/oauth2/v2.0/token")!
     }
