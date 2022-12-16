@@ -94,7 +94,12 @@ public class URLReference:
                     value: "Cloud storage / Another app",
                     comment: "Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app'")
             case .remote:
-                return "Remote server" 
+                return NSLocalizedString(
+                    "[URLReference/Location/RemoteServer]",
+                    bundle: Bundle.framework,
+                    value: "Remote server",
+                    comment: "Human-readable file location. Example: 'File Location: Remote server'")
+
             }
         }
     }
