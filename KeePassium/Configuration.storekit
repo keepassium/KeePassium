@@ -108,6 +108,21 @@
       "productID" : "com.keepassium.ios.iap.version.99",
       "referenceName" : "Version 99",
       "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "A07719C2",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "KeePassium 1.39 Premium",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.keepassium.ios.iap.version.120",
+      "referenceName" : "Version 120",
+      "type" : "NonConsumable"
     }
   ],
   "settings" : {
@@ -123,6 +138,9 @@
       "subscriptions" : [
         {
           "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
 
           ],
           "displayPrice" : "1.99",
@@ -151,6 +169,9 @@
           "adHocOffers" : [
 
           ],
+          "codeOffers" : [
+
+          ],
           "displayPrice" : "19.99",
           "familyShareable" : true,
           "groupNumber" : 1,
@@ -177,7 +198,7 @@
     }
   ],
   "version" : {
-    "major" : 1,
-    "minor" : 1
+    "major" : 2,
+    "minor" : 0
   }
 }
