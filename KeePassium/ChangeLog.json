@@ -2,14 +2,70 @@
     "sections": [
         {
             "version": "1.38",
-            "releaseDate": "2022-10-26T00:00:00Z",
+            "releaseDate": "2022-12-16T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: In-app support for OneDrive sync (free for OneDrive Personal; SharePoint and OneDrive for Business require premium)",
                     "type": 2
                 },
                 {
+                    "title": "🧩 Added: Option to search in passwords (closes #196) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: AutoFill can notify you about one-time password in the clipboard. To activate, open app settings → AutoFill Passwords → Copy OTP to Clipboard → turn it off, then back on. (fixes #242) [thanks, ixs]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Support for digest authentication for WebDAV connections [thanks, Andreas]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Preserve the .latest backup with a timestamp before overwriting it (only if changed) [thanks, Vadim]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: When opening a non-DB file as a database, recognize the most common incorrect file types",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Added 'Connect to Server' action to onboarding",
+                    "type": 1
+                },
+                {
                     "title": "🛠 Improved: Added 'Empty Recycle Bin' context menu for the corresponding group [thanks, YJ]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Face ID loop on some devices with iOS 16.2 (closes #266) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Replaced some toast notifications with more persistent announcements (fixes #250) [thanks, psifertex]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: App name was missing in macOS Activity Monitor and support emails [thanks, Felix]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: improved logging of YubiKey-related errors [thanks, u/Historical_Pie_7716]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Added 'Show Password' button for WebDAV credentials [thanks, Andreas]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Added a dedicated app URL scheme for the Pro edition",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI fixes here and there",
                     "type": 1
                 }
             ]
