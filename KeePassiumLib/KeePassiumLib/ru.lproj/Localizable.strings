@@ -151,11 +151,17 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Не удалось открыть ключевой файл";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "Некорректный формат базы данных: %@.";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Укажите пароль или ключевой файл";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Неизвестный формат базы";
+
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "Эта база данных защищена вашей корпоративной политикой в области ИТ и Microsoft Intune.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "База паролей недоступна. \nЭто её новейшая локальная версия.";
@@ -210,6 +216,9 @@
 
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Сопоставление ссылок на поля…";
+
+/* Suggested solution/call to action when intermediate sync app fails. */
+"[Database/RecommendRemote/callToAction]" = "Попробуйте подключиться к удалённому хранилищу прямо из KeePassium.";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Убрать базу паролей из списка?\nФайл останется нетронутым, вы сможете добавить его позже.";
@@ -721,6 +730,9 @@
 /* Feature status: enabled/active. Keep it short, possibly abbreviated. */
 "[General/Feature/On]" = "Вкл.";
 
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "Папка пуста";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Отменить";
 
@@ -862,6 +874,12 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Новая группа";
 
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "Очистить корзину";
+
+/* Title of the confirmation dialog for `Empty Recycle Bin` action */
+"[Group/RecycleBin/Empty/confirmTitle]" = "Окончательно удалить всё в Корзине?";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "По дате создания (новые..старые)";
 
@@ -943,6 +961,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Информация о файле";
 
+/* Notification next to the OTP code which was copied to clipboard */
+"[OTP/CopiedToClipboard/title]" = "Одноразовый пароль скопирован в буфер обмена";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "Одноразовый пароль";
 
@@ -954,6 +975,9 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Настроить одноразовый пароль (OTP)";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "Одноразовый пароль";
 
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "Невозможно сгенерировать текст";
@@ -1068,6 +1092,9 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Просмотр без следов";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "Синхронизация с корпоративным хранилищем";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "Сделайте значок приложения уникальным или привычным — или вообще замаскируйте KeePassium под калькулятор.";
@@ -1246,6 +1273,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Приложение полезно %1$@ в месяц, т.е. около %2$@ в год.";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "Подключайтесь напрямую к учётным записям корпоративного хранилища, таким как OneDrive for Business.";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "Корпоративное облачное хранилище";
+
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Другой значок приложения";
 
@@ -1323,6 +1356,15 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "URL файла";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "Войти в OneDrive";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "Открыть страницу входа в браузере в режиме инкогнито";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "Режим инкогнито";
 
 /* Title: connection to a network storage */
 "[RemoteConnection/title]" = "Удалённое соединение";
@@ -1480,6 +1522,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Вид списка";
 
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "Разрешить KeePassium устанавливать сетевые подключения к внешним службам?";
+
 /* Settings section: how/whether the app is allowed to use networks/Internet */
 "[Settings/NetworkAccess/title]" = "Доступ к сети";
 
@@ -1515,6 +1560,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Нет";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive для бизнеса";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Опишите проблему)";
@@ -1564,6 +1612,9 @@
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Локальная копия";
 
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "Удалённый сервер";
+
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Без YubiKey";
 
@@ -1581,9 +1632,6 @@
 
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "Выбрать базу паролей";
-
-/* Action/button */
-"Import Database" = "Импортировать базу паролей";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "База паролей KeePass не должна использоваться в качестве ключевого файла. Выберите другой файл.";

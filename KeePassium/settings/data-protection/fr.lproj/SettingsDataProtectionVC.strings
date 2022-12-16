@@ -2,10 +2,10 @@
 "3uV-Zs-RRo.normalTitle" = "Effacer les associations de fichiers clés";
 
 /* Class = "UIButton"; normalTitle = "Clear Master Keys"; ObjectID = "e1v-nv-Mst"; */
-"e1v-nv-Mst.normalTitle" = "Effacer les clés maîtresses";
+"e1v-nv-Mst.normalTitle" = "Effacer les clés principales";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "Masquer les mots de passe et les autres champs protégés derrière des astérisques (recommandé).";
+"e6Y-AP-hag.footerTitle" = "Masquer les mots de passe et autres champs protégés par des astérisques (recommandé).";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
 "e6Y-AP-hag.headerTitle" = "Champs protégés";
@@ -17,16 +17,16 @@
 "Faj-km-pM5.headerTitle" = "Déverrouillage rapide";
 
 /* Class = "UITableViewSection"; footerTitle = "Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes."; ObjectID = "g9a-rJ-4WJ"; */
-"g9a-rJ-4WJ.footerTitle" = "Utilisez le Presse-papiers universel pour copier et coller entre vos appareils Apple. Sur les appareils externes, ce presse-papiers est effacé après deux minutes.";
+"g9a-rJ-4WJ.footerTitle" = "Utilisez le Presse-papiers universel pour copier et coller entre vos appareils Apple. Sur les appareils externes, ce presse-papiers est effacé au bout de deux minutes.";
 
 /* Class = "UILabel"; text = "Clear Master Keys on Timeout"; ObjectID = "gTm-F6-EDQ"; */
-"gTm-F6-EDQ.text" = "Effacer la clé primaire en cas d'expiration";
+"gTm-F6-EDQ.text" = "Effacer les clés principales à l'expiration du délai";
 
 /* Class = "UITableViewSection"; footerTitle = "When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time."; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.footerTitle" = "Lorsque vous copiez du texte depuis une entrée, l'application effacera automatiquement votre presse-papiers après un certain délai.";
+"hnI-Q8-Ixm.footerTitle" = "Lorsque vous copiez quelque chose, KeePassium effacera automatiquement votre presse-papiers après un certain temps.";
 
 /* Class = "UITableViewSection"; headerTitle = "Clipboard"; ObjectID = "hnI-Q8-Ixm"; */
-"hnI-Q8-Ixm.headerTitle" = "Presse-papier";
+"hnI-Q8-Ixm.headerTitle" = "Presse-papiers";
 
 /* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
 "INJ-Cy-Tfo.text" = "Se souvenir des clés maîtresses";
@@ -35,16 +35,16 @@
 "JHl-o7-xHI.text" = "Se souvenir des fichiers clés";
 
 /* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.footerTitle" = "Mémoriser et sélectionner automatiquement le dernier fichier de clé utilisé pour chaque base de données. Effacer les associations n'affecte pas les fichiers.";
+"Mxu-GP-FmN.footerTitle" = "Mémoriser et sélectionner automatiquement le dernier fichier clé utilisé pour chaque base de données. Effacer les associations n'affecte pas les fichiers.";
 
 /* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.headerTitle" = "Fichiers-clé";
+"Mxu-GP-FmN.headerTitle" = "Fichiers clés";
 
 /* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.footerTitle" = "Le délai de réponse de la base de données dépassé, ferme toutes les bases de données ouvertes et efface les clés maîtresses mémorisées après un certain temps.";
+"neJ-eG-TV7.footerTitle" = "Le délai d'expiration de la base de données ferme toutes les bases de données ouvertes et efface toutes les clés principales mémorisées après un certain temps.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.headerTitle" = "Verrouiller automatiquement";
+"neJ-eG-TV7.headerTitle" = "Verrouillage automatique";
 
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
 "pid-k2-idJ.text" = "Masquer les mots de passe";
@@ -53,16 +53,16 @@
 "siQ-LK-GXZ.text" = "Clés de chiffrement dérivées du cache";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
-"SSu-Sr-MCg.text" = "Délai de purge du presse-papiers";
+"SSu-Sr-MCg.text" = "Délai d'expiration du presse-papiers";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Délai de réponse de la base de données dépassé";
+"weX-SZ-IDB.text" = "Délai d'expiration de la base de données";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "Presse-papiers universel";
 
 /* Class = "UITableViewSection"; footerTitle = "Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. "; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
-"Zqb-p5-Ft8.footerTitle" = "Les clés mises en cache permettent à KeePassium de ne pas avoir à dériver les clés et à YubiKey de les scanner dès que possible. ";
+"Zqb-p5-Ft8.footerTitle" = "Les clés mises en cache permettent à KeePassium d'éviter, dans la mesure du possible, la dérivation des clés et les analyses YubiKey.";
 
 /* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "Zqb-p5-Ft8"; Note = "Section title: advanced/expert settings"; */
 "Zqb-p5-Ft8.headerTitle" = "Avancé";

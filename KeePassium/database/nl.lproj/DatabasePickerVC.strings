@@ -1,5 +1,5 @@
 /* Class = "UIBarButtonItem"; 2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Help"; ObjectID = "2o3-sG-Pcm"; Note = "Action: show help pages (at the moment shows the About screen)"; */
-"2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Hulp";
+"2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Help";
 
 /* Class = "UIBarButtonItem"; lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "lnO-nD-gvh"; Note = "Action: show sorting settings of database files"; */
 "lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Sorteervolgorde";

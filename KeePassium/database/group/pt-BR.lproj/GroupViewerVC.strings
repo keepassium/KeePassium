@@ -8,7 +8,7 @@
 "qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Mudar chave-mestra";
 
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
-"QXa-eN-7am.text" = "Este grupo está vazio";
+"QXa-eN-7am.text" = "Esse grupo está vazio";
 
 /* Class = "UIBarButtonItem"; rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Settings"; ObjectID = "rF3-mC-kj1"; */
 "rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ajustes";

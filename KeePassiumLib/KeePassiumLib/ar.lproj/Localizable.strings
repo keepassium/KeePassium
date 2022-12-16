@@ -1441,6 +1441,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "إعدادات القوائم";
 
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "الوصول إلى الشبكة";
+
 /* Section title in settings */
 "[Settings/Search/title]" = "البحث";
 
@@ -1527,9 +1530,6 @@
 
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "اختيار قاعدة بيانات";
-
-/* Action/button */
-"Import Database" = "إستيراد قاعدة البيانات";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "لا ينبغي استخدام ملف قاعدة بيانات KeePass كملف مفتاح. الرجاء اختيار ملف مختلف.";

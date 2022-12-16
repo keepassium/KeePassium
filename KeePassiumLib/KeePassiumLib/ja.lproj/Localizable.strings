@@ -1085,7 +1085,7 @@
 "[Premium/Benefits/HardwareKeys/details]" = "YubiKeyなどのハードウェアの鍵を使って秘密を守ります。";
 
 /* Title of a premium feature */
-"[Premium/Benefits/HardwareKeys/title]" = "ハードウェアキーを使用";
+"[Premium/Benefits/HardwareKeys/title]" = "ハードウェアキーを使う";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "複数のデータベースを作って、素速く切り替えます。";
@@ -1581,9 +1581,6 @@
 
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "データベースを選択";
-
-/* Action/button */
-"Import Database" = "データベースを読み込む";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePassのデータベースをキーファイルとして使用しないでください。別のファイルを選択してください。";

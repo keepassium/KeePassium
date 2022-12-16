@@ -5,7 +5,7 @@
 "eAa-Z5-pdq.title" = "Déverrouiller la base de données";
 
 /* Class = "UILabel"; text = "Database was closed by a timer."; ObjectID = "epu-yU-Lyg"; Note = "Notification message shown by database lock timer."; */
-"epu-yU-Lyg.text" = "La base de données a été fermée par le minuteur.";
+"epu-yU-Lyg.text" = "La base de données a été fermée par un minuteur.";
 
 /* Class = "UIButton"; normalTitle = "Lock Database"; ObjectID = "gji-1x-co5"; */
 "gji-1x-co5.normalTitle" = "Verrouiller la base de données";
@@ -17,5 +17,5 @@
 "l45-hq-1lr.normalTitle" = "Déverrouiller";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "mYY-hP-3vH"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
-"mYY-hP-3vH.placeholder" = "Aucun fichier-clé";
+"mYY-hP-3vH.placeholder" = "Aucun fichier clé";
 

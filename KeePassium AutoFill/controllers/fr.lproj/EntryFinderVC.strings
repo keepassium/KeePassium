@@ -5,5 +5,5 @@
 "NSB-dG-jRN.text" = "Aucun résultat pertinent trouvé.";
 
 /* Class = "UILabel"; text = "Related Entries"; ObjectID = "yLY-eZ-iAh"; Note = "Title of a list of entries similar to (but not exactly matching) the search query."; */
-"yLY-eZ-iAh.text" = "Entrées liées";
+"yLY-eZ-iAh.text" = "Entrées connexes";
 

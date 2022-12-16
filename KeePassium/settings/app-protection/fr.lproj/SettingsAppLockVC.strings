@@ -8,20 +8,20 @@
 "6Pk-35-Fx6.text" = "Protéger les bases de données";
 
 /* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.footerTitle" = "Permet l'authentification biométrique en tant qu'alternative rapide (mais moins sécurisée) au code d'accès AppLock.";
+"7ae-8I-LiQ.footerTitle" = "Permet l'authentification biométrique comme une alternative rapide (mais moins sûre) au code d'accès AppLock.";
 
 /* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.headerTitle" = "Biométriques";
+"7ae-8I-LiQ.headerTitle" = "Biométrie";
 
 /* Class = "UITableViewSection"; footerTitle = "Protect KeePassium from unauthorized access."; ObjectID = "aBx-Ee-bMk"; Note = "Explanation for the `Enable AppLock` option."; */
-"aBx-Ee-bMk.footerTitle" = "Protéger KeePassium contre les accès non autorisés.";
+"aBx-Ee-bMk.footerTitle" = "Protège KeePassium des accès non autorisés.";
 
 /* Class = "UILabel"; text = "Timeout"; ObjectID = "Ef4-Jw-xeO"; Note = "Title for App Lock Timeout setting"; */
 "Ef4-Jw-xeO.text" = "Expiration";
 
 /* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
-"IS1-Lb-MFy.text" = "Activer le verrou d'applications";
+"IS1-Lb-MFy.text" = "Activer AppLock";
 
 /* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
-"m50-fl-4tu.footerTitle" = "L'application se verrouille automatiquement après ce délai.";
+"m50-fl-4tu.footerTitle" = "L'application va se verrouiller automatiquement après ce délai.";
 

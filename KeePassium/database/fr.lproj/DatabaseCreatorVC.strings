@@ -5,20 +5,20 @@
 "h6C-CG-RVI.normalTitle" = "Enregistrer la base de données";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "pvt-FS-0Yx"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
-"pvt-FS-0Yx.placeholder" = "Aucun fichier-clé";
+"pvt-FS-0Yx.placeholder" = "Aucun fichier clé";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "uHk-Yt-mBh"; Note = "Placeholder: master password of the database"; */
 "uHk-Yt-mBh.placeholder" = "Mot de passe";
 
 /* Class = "UILabel"; text = "Master Key"; ObjectID = "VjQ-di-Ilx"; Note = "Common title for the password/key file fields."; */
-"VjQ-di-Ilx.text" = "Clé maîtresse";
+"VjQ-di-Ilx.text" = "Clé principale";
 
 /* Class = "UITextField"; placeholder = "e.g. MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
-"XNL-lc-2Ti.placeholder" = "Ex: mon mot de passe";
+"XNL-lc-2Ti.placeholder" = "Exemple : mes mots de passe";
 
 /* Class = "UITextField"; text = "MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
-"XNL-lc-2Ti.text" = "MonMotsDePasse";
+"XNL-lc-2Ti.text" = "Mes mots de passe";
 
 /* Class = "UILabel"; text = "Will use kdbx4 format (Argon2+ChaCha20)"; ObjectID = "XVR-1N-ywy"; Note = "Hint about the default format of new databases."; */
-"XVR-1N-ywy.text" = "Utilisera le format kdbx4 (Argon2+ChaChaCha20)";
+"XVR-1N-ywy.text" = "Utilisera le format kdbx4 (Argon2+ChaCha20)";
 

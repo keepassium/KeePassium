@@ -5,10 +5,10 @@
 "5U9-NZ-sJe.accessibilityLabel" = "Réinitialiser la taille du texte par défaut";
 
 /* Class = "UILabel"; text = "App Icon"; ObjectID = "fSx-Do-lgu"; Note = "Section in settings: icon for the app"; */
-"fSx-Do-lgu.text" = "Icône d'application";
+"fSx-Do-lgu.text" = "Icône de l'application";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "Lh3-CB-Urp"; */
-"Lh3-CB-Urp.footerTitle" = "Masquer les mots de passe et les autres champs protégés derrière des astérisques (recommandé).";
+"Lh3-CB-Urp.footerTitle" = "Masque les mots de passes et autres champs protégés par des astérisques (recommandé).";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "Lh3-CB-Urp"; */
 "Lh3-CB-Urp.headerTitle" = "Champs protégés";

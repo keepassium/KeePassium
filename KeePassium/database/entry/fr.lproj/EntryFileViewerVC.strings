@@ -2,5 +2,5 @@
 "bgK-Q6-nzE.text" = "Ajouter un fichier";
 
 /* Class = "UILabel"; text = "There are no attached files"; ObjectID = "W86-tp-bfF"; Note = "Placeholder shown when there are no attached files in the entry."; */
-"W86-tp-bfF.text" = "Il n'y a aucun fichier joint";
+"W86-tp-bfF.text" = "Il n'y a pas de fichiers joints";
 

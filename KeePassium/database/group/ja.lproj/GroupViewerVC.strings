@@ -5,7 +5,7 @@
 "M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "表示順序";
 
 /* Class = "UIBarButtonItem"; qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Change Master Key"; ObjectID = "qkh-6K-yQW"; */
-"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "マスターキーを変更";
+"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "マスターキーの変更";
 
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
 "QXa-eN-7am.text" = "このグループは空です";

@@ -1,26 +1,26 @@
 /* Title of the app history (changelog) screen */
-"[AppHistory/title]" = "Les nouveautés";
+"[AppHistory/title]" = "Nouveautés";
 
 /* Hint shown when both password and key file are empty. */
-"[Database/Create] Please enter a password or choose a key file." = "Veuillez entrer un mot de passe ou choisir un fichier de clé.";
+"[Database/Create] Please enter a password or choose a key file." = "Veuillez entrer un mot de passe ou choisir un fichier clé.";
 
 /* Note for a sample entry */
-"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Vous pouvez également stocker des notes, si vous le souhaitez.";
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Si vous le souhaitez, vous pouvez également enregistrer quelques notes.";
 
 /* Password for a sample entry. Translation is optional. */
-"[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
+"[Database/Create/TemplateEntry/password] pa$$word" = "Mot de pa$$e";
 
 /* Title for a sample entry */
-"[Database/Create/TemplateEntry/title] Sample Entry" = "Échantillon d'entrée";
+"[Database/Create/TemplateEntry/title] Sample Entry" = "Exemple d'entrée";
 
 /* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
-"[Database/Create/TemplateEntry/userName] john.smith" = "françois.pignon";
+"[Database/Create/TemplateEntry/userName] john.smith" = "jean.dupont";
 
 /* Predefined group in a new database */
 "[Database/Create/TemplateGroup/title] Email" = "Courriel";
 
 /* Predefined group in a new database */
-"[Database/Create/TemplateGroup/title] Finance" = "Finance";
+"[Database/Create/TemplateGroup/title] Finance" = "Finances";
 
 /* Predefined group in a new database */
 "[Database/Create/TemplateGroup/title] General" = "Général";
@@ -41,7 +41,7 @@
 "[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Cette base de données ne supporte qu'une seule pièce jointe par entrée, et il y en a déjà une.";
 
 /* Title of a dialog for renaming an attached file */
-"[Entry/Files/Rename/title] Rename File" = "Renommer Le Fichier";
+"[Entry/Files/Rename/title] Rename File" = "Renommer le fichier";
 
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "À propos de %@";

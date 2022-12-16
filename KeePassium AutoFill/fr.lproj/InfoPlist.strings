@@ -5,5 +5,5 @@
 "CFBundleName" = "Remplissage automatique KeePassium";
 
 /* Privacy - Face ID Usage Description */
-"NSFaceIDUsageDescription" = "Utilisez FaceID pour déverrouiller KeePassium";
+"NSFaceIDUsageDescription" = "Utilisez Face ID pour déverrouiller KeePassium";
 

@@ -8,7 +8,7 @@
 "CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Éditeur de champ personnalisé";
 
 /* Class = "UITextField"; accessibilityLabel = "Custom field name"; ObjectID = "ecN-Xd-ff5"; */
-"ecN-Xd-ff5.accessibilityLabel" = "Valeur du champ personnalisé";
+"ecN-Xd-ff5.accessibilityLabel" = "Nom de champ personnalisé";
 
 /* Class = "UITextField"; placeholder = "Field Name"; ObjectID = "ecN-Xd-ff5"; */
 "ecN-Xd-ff5.placeholder" = "Nom du champ";

@@ -5,10 +5,10 @@
 "Gck-9R-sGq.normalTitle" = "Salta";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
-"P0M-N3-ynf.text" = "Si prega di ri-aggiungere i database e i file chiave che si desidera utilizzare con la funzione AutoFill.";
+"P0M-N3-ynf.text" = "Si prega di aggiungere nuovamente i database e i file chiave che si desidera utilizzare con la funzione Inserimento automatico.";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
-"pIl-6L-Msp.text" = "Configurazione AutoFill";
+"pIl-6L-Msp.text" = "Configurazione Inserimento automatico";
 
 /* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
 "rzY-Ci-bd9.title" = "KeePassium";

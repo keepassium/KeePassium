@@ -5,7 +5,7 @@
 "7iU-ut-hd7.accessibilityLabel" = "Aangepaste veldwaarde";
 
 /* Class = "UITableViewCell"; CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Custom field editor"; ObjectID = "CcF-c8-r4M"; */
-"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Aangepastveldbewerker";
+"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Bewerker voor aangepaste velden";
 
 /* Class = "UITextField"; accessibilityLabel = "Custom field name"; ObjectID = "ecN-Xd-ff5"; */
 "ecN-Xd-ff5.accessibilityLabel" = "Aangepaste veldnaam";

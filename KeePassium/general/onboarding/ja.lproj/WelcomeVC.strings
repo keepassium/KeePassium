@@ -1,5 +1,5 @@
 /* Class = "UIViewController"; title = "Welcome"; ObjectID = "1Nc-wz-Yqq"; Note = "Onboarding screen shown on first launch"; */
-"1Nc-wz-Yqq.title" = "ようこそ";
+"1Nc-wz-Yqq.title" = "はじめに";
 
 /* Class = "UIButton"; normalTitle = "Create New Database"; ObjectID = "4wh-8O-5Ch"; */
 "4wh-8O-5Ch.normalTitle" = "新規データベースを作成";

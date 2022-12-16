@@ -1,5 +1,5 @@
 /* Class = "UIButton"; accessibilityHint = "Expands a text field to its full height"; ObjectID = "6Mx-Oh-6m0"; */
-"6Mx-Oh-6m0.accessibilityHint" = "Agrandir le champ de texte à sa pleine hauteur";
+"6Mx-Oh-6m0.accessibilityHint" = "Développe un champ de texte sur toute sa hauteur";
 
 /* Class = "UIButton"; accessibilityLabel = "Show more"; ObjectID = "6Mx-Oh-6m0"; */
 "6Mx-Oh-6m0.accessibilityLabel" = "Plus";

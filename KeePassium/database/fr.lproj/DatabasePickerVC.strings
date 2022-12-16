@@ -2,13 +2,13 @@
 "2o3-sG-Pcm.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Aide";
 
 /* Class = "UIBarButtonItem"; lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "lnO-nD-gvh"; Note = "Action: show sorting settings of database files"; */
-"lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ordre de tri";
+"lnO-nD-gvh.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Trier par";
 
 /* Class = "UIBarButtonItem"; oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Settings"; ObjectID = "oee-CI-r2x"; Note = "Action: show app settings"; */
 "oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Réglages";
 
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
-"qPq-UR-uZs.title" = "Ajouter une base de données";
+"qPq-UR-uZs.title" = "Ajouter base de données";
 
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
 "UI0-Lh-wTj.title" = "Bases de données";

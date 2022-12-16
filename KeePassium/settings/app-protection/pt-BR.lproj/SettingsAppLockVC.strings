@@ -23,5 +23,5 @@
 "IS1-Lb-MFy.text" = "Ativar senha do app";
 
 /* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
-"m50-fl-4tu.footerTitle" = "O app será bloqueado automaticamente após este tempo.";
+"m50-fl-4tu.footerTitle" = "O app será bloqueado automaticamente após esse tempo.";
 

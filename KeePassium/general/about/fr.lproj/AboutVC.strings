@@ -14,13 +14,13 @@
 "9MZ-zt-75x.text" = "Base32 pour Swift par Norio Nomura";
 
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "86n-Hc-6m7"; */
-"86n-Hc-6m7.text" = "CC PAR 3.0";
+"86n-Hc-6m7.text" = "CC BY 3.0";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
 "Aig-jg-p8B.text" = "Licence MIT";
 
 /* Class = "UILabel"; text = "Do you like what you see?"; ObjectID = "AMd-x7-PDa"; Note = "First part of the 'Do you like what you see? / Leave an App Store review.\""; */
-"AMd-x7-PDa.text" = "Vous aimez ce que vous voyez ?";
+"AMd-x7-PDa.text" = "Aimez-vous ce que vous voyez ?";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
 "aqX-J9-IzD.text" = "Traduction par les contributeurs de KeePassium";
@@ -59,7 +59,7 @@
 "ht7-pj-Dbb.text" = "Licence Apache 2.0";
 
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "hVm-qH-TAI"; */
-"hVm-qH-TAI.text" = "CC PAR 3.0";
+"hVm-qH-TAI.text" = "CC BY 3.0";
 
 /* Class = "UILabel"; text = "Icons by KeePassXC team"; ObjectID = "hW0-fR-mIf"; */
 "hW0-fR-mIf.text" = "Icônes par l'équipe KeePassXC";
@@ -83,7 +83,7 @@
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern par Daniel Beaton";
 
 /* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
-"kvO-9B-1Sy.text" = "Liste de mots EFF pour phrases secrètes";
+"kvO-9B-1Sy.text" = "Listes de phrase de passe par EFF";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
 "lht-LP-o0Y.text" = "Licence MIT";
@@ -98,7 +98,7 @@
 "o9e-qb-mMw.text" = "Licence CC0";
 
 /* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
-"OaP-Bl-5vR.text" = "TPInAppReceipt de Pavel Tikhonenko";
+"OaP-Bl-5vR.text" = "TPInAppReceipt par Pavel Tikhonenko";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
 "QV5-N8-NRt.text" = "Domaine public";
@@ -107,13 +107,13 @@
 "Qz4-PJ-Tra.text" = "CC PAR 3.0";
 
 /* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
-"r7M-Gb-1Xd.text" = "Toast-Swift développé par Charles Scalesse";
+"r7M-Gb-1Xd.text" = "Toast-Swift par Charles Scalesse";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
 "Rab-wf-OQe.text" = "Licence MIT";
 
 /* Class = "UILabel"; text = "Argon2 by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves"; ObjectID = "rDJ-4G-8Oz"; */
-"rDJ-4G-8Oz.text" = "Argon2 de Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, et Samuel Neves";
+"rDJ-4G-8Oz.text" = "Argon2 par Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson et Samuel Neves";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "sCk-Se-Vvo"; */
 "sCk-Se-Vvo.text" = "Licence MIT";
@@ -128,13 +128,13 @@
 "SOX-Re-yl9.text" = "Linecons par Andrian Valeanu";
 
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
-"TOl-DA-gYc.text" = "Contacter le support technique";
+"TOl-DA-gYc.text" = "Contactez l'assistance technique";
 
 /* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
-"tOr-N9-2UY.text" = "Icônes plume par Cole Bemis";
+"tOr-N9-2UY.text" = "Feather icons par Cole Bemis";
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
-"uiw-Qh-pNp.text" = "Laisser un avis sur l'App Store.";
+"uiw-Qh-pNp.text" = "Laissez un avis sur l'App Store";
 
 /* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
 "vg0-6M-OIq.text" = "KeyboardLayoutConstraint par James Tang";

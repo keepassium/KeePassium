@@ -151,17 +151,23 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Não é possível abrir o arquivo de chave";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "Formato incorreto de banco de dados: %@.";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Por favor, forneça uma senha ou um arquivo de chave";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Formato de banco de dados não reconhecido";
 
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "Esse banco de dados está protegido pelas políticas de TI corporativas e pelo Microsoft Intune.";
+
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "O banco de dados está inacessível.\nEsta é a última cópia local disponível.";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "Este banco de dados é somente-leitura";
+"[Database/Loading/ReadOnly/text]" = "Esse banco de dados é somente-leitura";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Carregando...";
@@ -210,6 +216,9 @@
 
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Obtendo valores das referências…";
+
+/* Suggested solution/call to action when intermediate sync app fails. */
+"[Database/RecommendRemote/callToAction]" = "Tente conectar-se a essa conta corporativa diretamente usando o KeePassium.";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Esquecer esse banco de dados?\n O arquivo permanecerá intacto e você poderá adicioná-lo de novo depois.";
@@ -563,7 +572,7 @@
 "[FileAccessError/OneDriveReadOnly/reason]" = "Recentemente, a Microsoft tornou apenas-leitura a integração do OneDrive com o iOS. Temporariamente, dizem eles.";
 
 /* Suggestion for error recovery */
-"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use a opção Exportar para salvar este arquivo em outro local.";
+"[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use a opção Exportar para salvar esse arquivo em outro local.";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "O serviço de armazenamento não está respondendo.";
@@ -611,7 +620,7 @@
 "[FileKeeper] Failed to open file. Reason: %@" = "Falha ao abrir arquivo. Motivo: %@";
 
 /* Error message: tried to import URL which does not point to a file */
-"[FileKeeper] Not a file URL" = "Este URL não aponta para um arquivo";
+"[FileKeeper] Not a file URL" = "Esse URL não aponta para um arquivo";
 
 /* Localized name of the storage service: Amerigo (https://www.amerigo-app.com) */
 "[FileProvider/Amerigo/name]" = "Amerigo";
@@ -720,6 +729,9 @@
 
 /* Feature status: enabled/active. Keep it short, possibly abbreviated. */
 "[General/Feature/On]" = "Sim";
+
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "Pasta vazia";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Cancelar";
@@ -862,6 +874,12 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Novo grupo";
 
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "Esvaziar lixeira";
+
+/* Title of the confirmation dialog for `Empty Recycle Bin` action */
+"[Group/RecycleBin/Empty/confirmTitle]" = "Apagar permanentemente tudo na lixeira?";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Por data de criação (novo..antigo)";
 
@@ -943,17 +961,23 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informações";
 
+/* Notification next to the OTP code which was copied to clipboard */
+"[OTP/CopiedToClipboard/title]" = "Código de uso único copiado";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "Código de uso único";
 
 /* Error shown when scanned QR code cannot be used for OTP */
-"[OTP/Scan/InvalidData]" = "Este não é um código QR para configurar códigos de uso único.";
+"[OTP/Scan/InvalidData]" = "Esse não é um código QR para configurar códigos de uso único.";
 
 /* Message to confirm user intentions */
 "[OTP/Scan/OverwriteWarning]" = "Já há um código de uso único configurado nesta entrada. Substituí-lo?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Configurar código de uso único (OTP)";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "Código de uso único";
 
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "Não foi possível gerar o texto";
@@ -1068,6 +1092,9 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Pré-visualização sem vestígios";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "Conecte-se a armazenamentos corporativos";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "Faça KeePassium parecer único, familiar ou disfarçado de calculadora — você decide.";
@@ -1246,6 +1273,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "App sendo útil: %1$@/mês, aproximadamente %2$@/ano.";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "Conecte-se diretamente a contas corporativas de armazenamento, como o OneDrive for Business.";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "Nuvem corporativa";
+
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Ícones Personalizados";
 
@@ -1323,6 +1356,15 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "URL do arquivo";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "Entrar no OneDrive";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "Abrir a página de entrada no modo privado do navegador";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "Modo privado";
 
 /* Title: connection to a network storage */
 "[RemoteConnection/title]" = "Conexão Remota";
@@ -1480,6 +1522,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Ajustes de lista";
 
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "Permitir que KeePassium conecte-se a serviços de terceiros?";
+
 /* Settings section: how/whether the app is allowed to use networks/Internet */
 "[Settings/NetworkAccess/title]" = "Acesso à rede";
 
@@ -1515,6 +1560,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Nenhum";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive for Business";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Por favor, descreva o problema aqui.)";
@@ -1564,6 +1612,9 @@
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Cópia local";
 
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "Servidor remoto";
+
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Não usar YubiKey";
 
@@ -1581,9 +1632,6 @@
 
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "Escolher banco de dados";
-
-/* Action/button */
-"Import Database" = "Importar banco de dados";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "Um banco de dados do KeePass não pode ser usado como arquivo de chave. Por favor, escolha um arquivo diferente.";

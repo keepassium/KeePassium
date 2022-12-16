@@ -1,14 +1,14 @@
 /* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
-"enW-gs-tra.normalTitle" = "Ajouter une base de données";
+"enW-gs-tra.normalTitle" = "Ajouter base de données";
 
 /* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "Gck-9R-sGq"; Note = "Action: skip setup and proceed to the next step."; */
 "Gck-9R-sGq.normalTitle" = "Ignorer";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
-"P0M-N3-ynf.text" = "Veuillez ajouter à nouveau les bases de données et les fichiers clés que vous souhaitez utiliser avec la fonction Remplissage automatique.";
+"P0M-N3-ynf.text" = "Veuillez ajouter à nouveau les bases de données et les fichiers clés que vous voulez utiliser avec la fonctionnalité Remplissage automatique.";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
-"pIl-6L-Msp.text" = "AutoFill Setup";
+"pIl-6L-Msp.text" = "Configuration du Remplissage automatique";
 
 /* Class = "UINavigationItem"; title = "KeePassium"; ObjectID = "rzY-Ci-bd9"; */
 "rzY-Ci-bd9.title" = "KeePassium";

@@ -1420,9 +1420,6 @@
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "关闭数据库";
 
-/* Action/button */
-"Import Database" = "汇入数据库";
-
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePass数据库文件不应该当作密钥文件使用。 请选择其他文件。";
 

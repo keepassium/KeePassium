@@ -1,12 +1,12 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
-"[AutoFill/Search/callerID]" = "ID de l'appelant : %@";
+"[AutoFill/Search/callerID]" = "ID d'appel : %@";
 
 /* No comment provided by engineer. */
-"[AutoFill/Setup/footer]" = "Le remplissage automatique ne peut pas accéder automatiquement aux fichiers que vous avez déjà dans l'application principale KeePassium.\n\nPourquoi ? En coulisse, le système traite le remplissage automatique comme une application séparée, indépendante du processus principal de KeePassium. Pour des raisons de sécurité, une application ne peut pas simplement accéder à des fichiers externes, à moins que vous ne liez explicitement ces fichiers à cette application. Ainsi, le système garantit que l'application ne peut accéder qu'aux quelques fichiers que vous avez autorisés.\n\nEn conséquence, le remplissage automatique et l'application principale KeePassium doivent avoir leurs propres permissions pour chaque fichier externe. Heureusement, il s'agit d'une procédure unique.";
+"[AutoFill/Setup/footer]" = "Le Remplissage automatique ne peut pas accéder automatiquement aux fichiers que vous avez déjà dans l'application principale KeePassium.\n\nPourquoi ? En coulisses, le système traite la fonction de Remplissage automatique comme une application distincte, indépendante du processus principal de KeePassium. Pour des raisons de sécurité, une application ne peut simplement pas accéder à des fichiers externes – sauf si vous liez explicitement ces fichiers à cette application. Ainsi, le système garantit que l'application ne peut accéder qu'aux quelques fichiers dont vous avez autorisé l'accès.\n\nPar conséquent, la fonction de Remplissage automatique et l'application principale KeePassium doivent avoir leurs propres autorisations pour chaque fichier externe. Heureusement, il s'agit d'une procédure unique.";
 
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Afficher le mot de passe";
 
 /* Call to action, invites the user to enable the Quick AutoFill feature */
-"[QuickAutoFill/Activate/callToAction]" = "Activer le remplissage automatique rapide";
+"[QuickAutoFill/Activate/callToAction]" = "Activer le Remplissage automatique rapide";
 

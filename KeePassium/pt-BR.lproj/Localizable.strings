@@ -38,7 +38,7 @@
 "[Entry/Files/Add] Replace existing attachment?" = "Substituir o anexo existente?";
 
 /* Explanation for replacing the only attachment of KeePass1 entry */
-"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Este banco de dados suporta apenas um anexo por entrada, e esta já tem um.";
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Esse banco de dados suporta apenas um anexo por entrada, e esta já tem um.";
 
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "Renomear arquivo";

@@ -2,7 +2,7 @@
 "hYP-f0-K1s.placeholder" = "新しいパスワード";
 
 /* Class = "UINavigationItem"; title = "Change Master Key"; ObjectID = "JKD-iF-iwA"; Note = "Title of the dialog for changing the database's master key."; */
-"JKD-iF-iwA.title" = "マスターキーを変更";
+"JKD-iF-iwA.title" = "マスターキーの変更";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "M9Q-v8-e6Q"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
 "M9Q-v8-e6Q.placeholder" = "キーファイルがありません";

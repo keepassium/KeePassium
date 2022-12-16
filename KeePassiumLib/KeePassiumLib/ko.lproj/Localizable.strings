@@ -1348,9 +1348,6 @@
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "데이터베이스 선택";
 
-/* Action/button */
-"Import Database" = "데이터베이스 가져오기";
-
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePass 데이터베이스 파일은 키 파일로 사용될 수 없습니다. 다른 파일을 선택해주세요.";
 

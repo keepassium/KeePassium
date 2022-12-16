@@ -1528,9 +1528,6 @@
 /* Title of a window where the user selects a file to be opened/added to the app */
 "Choose Database" = "Seleccionar base de datos";
 
-/* Action/button */
-"Import Database" = "Importar base de datos";
-
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "La base de datos de KeePass no se debe usar como archivo de clave. Seleccione un archivo diferente.";
 
