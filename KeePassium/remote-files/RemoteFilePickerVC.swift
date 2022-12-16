@@ -10,10 +10,6 @@ import KeePassiumLib
 import Foundation
 
 protocol RemoteFilePickerDelegate: AnyObject {
-    func didPressSelectConnectionType(
-        at popoverAnchor: PopoverAnchor,
-        in viewController: RemoteFilePickerVC
-    )
     func didPressDone(
         nakedWebdavURL: URL,
         credential: NetworkCredential,
@@ -24,25 +20,21 @@ protocol RemoteFilePickerDelegate: AnyObject {
 
 final class RemoteFilePickerVC: UITableViewController {
     private enum CellID {
-        static let selectorCell = "SelectorCell"
         static let textFieldCell = "TextFieldCell"
         static let protectedTextFieldCell = "ProtectedTextFieldCell"
         static let switchCell = "SwitchCell"
         static let buttonCell = "ButtonCell"
     }
     private enum CellIndex {
-        static let commonSectionCount = 1
-        static let typeSelector = IndexPath(row: 0, section: 0)
+        static let webdavSectionSizes = [2, 2]
+        static let webdavURL = IndexPath(row: 0, section: 0)
+        static let webdavAllowUntrusted = IndexPath(row: 1, section: 0)
+        static let webdavUsername = IndexPath(row: 0, section: 1)
+        static let webdavPassword = IndexPath(row: 1, section: 1)
         
-        static let webdavSectionSizes = [0, 2, 2] 
-        static let webdavURL = IndexPath(row: 0, section: 1)
-        static let webdavAllowUntrusted = IndexPath(row: 1, section: 1)
-        static let webdavUsername = IndexPath(row: 0, section: 2)
-        static let webdavPassword = IndexPath(row: 1, section: 2)
-        
-        static let oneDriveSectionSizes = [0, 2] 
-        static let oneDrivePrivateSession = IndexPath(row: 0, section: 1)
-        static let oneDriveLogin = IndexPath(row: 1, section: 1)
+        static let oneDriveSectionSizes = [2]
+        static let oneDrivePrivateSession = IndexPath(row: 0, section: 0)
+        static let oneDriveLogin = IndexPath(row: 1, section: 0)
     }
     
     weak var delegate: RemoteFilePickerDelegate?
@@ -90,9 +82,6 @@ final class RemoteFilePickerVC: UITableViewController {
             ProtectedTextFieldCell.classForCoder(),
             forCellReuseIdentifier: CellID.protectedTextFieldCell)
         tableView.register(
-            RightDetailCell.classForCoder(),
-            forCellReuseIdentifier: CellID.selectorCell)
-        tableView.register(
             ButtonCell.classForCoder(),
             forCellReuseIdentifier: CellID.buttonCell)
         tableView.alwaysBounceVertical = false
@@ -137,6 +126,7 @@ final class RemoteFilePickerVC: UITableViewController {
     }
     
     private func refresh() {
+        titleView.label.text = connectionType.description
         tableView.reloadData()
         refreshDoneButton()
     }
@@ -185,8 +175,6 @@ extension RemoteFilePickerVC {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (connectionType, section) {
-        case (_, CellIndex.typeSelector.section): 
-            return 1
         case (.webdav, _):
             return CellIndex.webdavSectionSizes[section]
         case (.oneDrive, _),
@@ -219,8 +207,6 @@ extension RemoteFilePickerVC {
         )
         resetCellStyle(cell)
         switch (connectionType, indexPath.section) {
-        case (_, CellIndex.typeSelector.section):
-            configureConnectionTypeSelectorCell(cell as! RightDetailCell)
         case (.webdav, _):
             configureWebdavConnectionCell(cell, at: indexPath)
         case (.oneDrive, _),
@@ -232,8 +218,6 @@ extension RemoteFilePickerVC {
     
     private func getReusableCellID(for indexPath: IndexPath) -> String {
         switch (connectionType, indexPath) {
-        case (_, CellIndex.typeSelector):
-            return CellID.selectorCell
         case (.webdav, CellIndex.webdavURL),
             (.webdav, CellIndex.webdavUsername):
             return CellID.textFieldCell
@@ -265,35 +249,6 @@ extension RemoteFilePickerVC {
         cell.accessibilityTraits = []
         cell.accessibilityValue = nil
         cell.accessibilityHint = nil
-    }
-    
-    private func configureConnectionTypeSelectorCell(_ cell: UITableViewCell) {
-        cell.selectionStyle = .default
-        cell.textLabel?.text = LString.titleConnection
-        cell.detailTextLabel?.text = connectionType.description
-        cell.detailTextLabel?.font = .preferredFont(forTextStyle: .body)
-        cell.accessoryType = .disclosureIndicator
-    }
-}
-
-extension RemoteFilePickerVC {
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        switch indexPath {
-        case CellIndex.typeSelector:
-            return indexPath
-        default:
-            return nil
-        }
-    }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath {
-        case CellIndex.typeSelector:
-            tableView.deselectRow(at: indexPath, animated: true)
-            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-            delegate?.didPressSelectConnectionType(at: popoverAnchor, in: self)
-        default:
-            break
-        }
     }
 }
 
