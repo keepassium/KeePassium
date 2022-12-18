@@ -306,7 +306,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         }
         log.debug("Got stored master key for \(dbRef.visibleFileName, privacy: .private)")
         
-        let timeout = databaseSettingsManager.getFallbackTimeout(dbRef)
+        let timeout = databaseSettingsManager.getFallbackTimeout(dbRef, forAutoFill: true)
         
         assert(self.quickTypeDatabaseLoader == nil)
         quickTypeDatabaseLoader = DatabaseLoader(
@@ -619,7 +619,7 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         for fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) -> UnreachableFileFallbackStrategy {
-        return DatabaseSettingsManager.shared.getFallbackStrategy(fileRef)
+        return DatabaseSettingsManager.shared.getFallbackStrategy(fileRef, forAutoFill: true)
     }
 
     func didUnlockDatabase(

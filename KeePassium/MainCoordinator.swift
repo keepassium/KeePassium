@@ -726,7 +726,7 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         for fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) -> UnreachableFileFallbackStrategy {
-        return DatabaseSettingsManager.shared.getFallbackStrategy(fileRef)
+        return DatabaseSettingsManager.shared.getFallbackStrategy(fileRef, forAutoFill: false)
     }
     
     func didUnlockDatabase(

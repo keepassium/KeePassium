@@ -41,9 +41,11 @@ final class DatabaseSettingsCoordinator: Coordinator {
         })
         let dsm = DatabaseSettingsManager.shared
         dbSettingsVC.isReadOnlyAccess = dsm.isReadOnly(dbRef)
-        dbSettingsVC.fallbackStrategy = dsm.getFallbackStrategy(dbRef)
+        dbSettingsVC.fallbackStrategy = dsm.getFallbackStrategy(dbRef, forAutoFill: false)
+        dbSettingsVC.autoFillFallbackStrategy = dsm.getFallbackStrategy(dbRef, forAutoFill: true)
         dbSettingsVC.availableFallbackStrategies = dsm.getAvailableFallbackStrategies(dbRef)
-        dbSettingsVC.fallbackTimeout = dsm.getFallbackTimeout(dbRef)
+        dbSettingsVC.fallbackTimeout = dsm.getFallbackTimeout(dbRef, forAutoFill: false)
+        dbSettingsVC.autoFillFallbackTimeout = dsm.getFallbackTimeout(dbRef, forAutoFill: true)
     }
 }
 
@@ -72,21 +74,40 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
     }    
     
     func didChangeSettings(
-        fallbackStrategy: UnreachableFileFallbackStrategy,
+        newFallbackStrategy: UnreachableFileFallbackStrategy,
+        forAutoFill: Bool,
         in viewController: DatabaseSettingsVC
     ) {
-        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
-            dbSettings.fallbackStrategy = fallbackStrategy
+        if forAutoFill {
+            DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+                dbSettings.autofillFallbackStrategy = newFallbackStrategy
+            }
+            viewController.autoFillFallbackStrategy = newFallbackStrategy
+        } else {
+            DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+                dbSettings.fallbackStrategy = newFallbackStrategy
+            }
+            viewController.fallbackStrategy = newFallbackStrategy
         }
-        viewController.fallbackStrategy = fallbackStrategy
         delegate?.didChangeDatabaseSettings(in: self)
     }
     
-    func didChangeSettings(fallbackTimeout: TimeInterval, in viewController: DatabaseSettingsVC) {
-        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
-            dbSettings.fallbackTimeout = fallbackTimeout
+    func didChangeSettings(
+        newFallbackTimeout: TimeInterval,
+        forAutoFill: Bool,
+        in viewController: DatabaseSettingsVC
+    ) {
+        if forAutoFill {
+            DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+                dbSettings.autofillFallbackTimeout = newFallbackTimeout
+            }
+            viewController.autoFillFallbackTimeout = newFallbackTimeout
+        } else {
+            DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+                dbSettings.fallbackTimeout = newFallbackTimeout
+            }
+            viewController.fallbackTimeout = newFallbackTimeout
         }
-        viewController.fallbackTimeout = fallbackTimeout
         delegate?.didChangeDatabaseSettings(in: self)
     }
 }

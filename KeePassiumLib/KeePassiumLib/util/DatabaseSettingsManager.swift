@@ -151,7 +151,10 @@ public class DatabaseSettingsManager {
         }
     }
     
-    public func getFallbackStrategy(_ databaseRef: URLReference) -> UnreachableFileFallbackStrategy {
+    public func getFallbackStrategy(
+        _ databaseRef: URLReference,
+        forAutoFill: Bool
+    ) -> UnreachableFileFallbackStrategy {
         switch databaseRef.location {
         case .internalDocuments,
              .internalBackup,
@@ -159,11 +162,21 @@ public class DatabaseSettingsManager {
             return .showError
         case .external,
              .remote:
+            if forAutoFill,
+               let autoFillValue = getSettings(for: databaseRef)?.autofillFallbackStrategy
+            {
+                return autoFillValue
+            }
             return getSettings(for: databaseRef)?.fallbackStrategy ?? .useCache
         }
     }
     
-    public func getFallbackTimeout(_ databaseRef: URLReference) -> TimeInterval {
+    public func getFallbackTimeout(_ databaseRef: URLReference, forAutoFill: Bool) -> TimeInterval {
+        if forAutoFill,
+           let autoFillValue = getSettings(for: databaseRef)?.autofillFallbackTimeout
+        {
+            return autoFillValue
+        }
         return getSettings(for: databaseRef)?.fallbackTimeout ?? URLReference.defaultTimeout
     }
     

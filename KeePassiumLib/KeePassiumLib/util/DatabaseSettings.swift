@@ -26,6 +26,8 @@ final public class DatabaseSettings: Eraseable {
     
     public var fallbackStrategy: UnreachableFileFallbackStrategy?
     public var fallbackTimeout: TimeInterval?
+    public var autofillFallbackStrategy: UnreachableFileFallbackStrategy?
+    public var autofillFallbackTimeout: TimeInterval?
 
     init() {
         isReadOnlyFile = false
@@ -52,6 +54,8 @@ final public class DatabaseSettings: Eraseable {
         
         fallbackStrategy = nil
         fallbackTimeout = nil
+        autofillFallbackStrategy = nil
+        autofillFallbackTimeout = nil
     }
 
     public func setMasterKey(_ key: CompositeKey) {
@@ -115,6 +119,8 @@ extension DatabaseSettings: Codable {
         case isQuickTypeEnabled
         case fallbackStrategy
         case fallbackTimeout
+        case autofillFallbackStrategy
+        case autofillFallbackTimeout
     }
     
     internal func serialize() -> Data {
@@ -149,6 +155,8 @@ extension DatabaseSettings: Codable {
         self.isQuickTypeEnabled = try container.decodeIfPresent(Bool.self, forKey: .isQuickTypeEnabled)
         self.fallbackStrategy = try container.decodeIfPresent(UnreachableFileFallbackStrategy.self, forKey: .fallbackStrategy)
         self.fallbackTimeout = try container.decodeIfPresent(TimeInterval.self, forKey: .fallbackTimeout)
+        self.autofillFallbackStrategy = try container.decodeIfPresent(UnreachableFileFallbackStrategy.self, forKey: .autofillFallbackStrategy)
+        self.autofillFallbackTimeout = try container.decodeIfPresent(TimeInterval.self, forKey: .autofillFallbackTimeout)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -183,6 +191,12 @@ extension DatabaseSettings: Codable {
         }
         if let _fallbackTimeout = fallbackTimeout {
             try container.encode(_fallbackTimeout, forKey: .fallbackTimeout)
+        }
+        if let _autofillFallbackStrategy = autofillFallbackStrategy {
+            try container.encode(_autofillFallbackStrategy, forKey: .autofillFallbackStrategy)
+        }
+        if let _autofillFallbackTimeout = autofillFallbackTimeout {
+            try container.encode(_autofillFallbackTimeout, forKey: .autofillFallbackTimeout)
         }
     }
 }

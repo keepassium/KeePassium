@@ -322,7 +322,13 @@ extension DatabaseUnlockerCoordinator {
         if databaseSettingsManager.isReadOnly(currentDatabaseRef) {
             databaseStatus.insert(.readOnly)
         }
-        let fallbackTimeout = databaseSettingsManager.getFallbackTimeout(currentDatabaseRef)
+        #if AUTOFILL_EXT
+        let fallbackTimeout = databaseSettingsManager
+            .getFallbackTimeout(currentDatabaseRef, forAutoFill: true)
+        #elseif MAIN_APP
+        let fallbackTimeout = databaseSettingsManager
+            .getFallbackTimeout(currentDatabaseRef, forAutoFill: false)
+        #endif
 
         databaseLoader = DatabaseLoader(
             dbRef: currentDatabaseRef,
