@@ -145,8 +145,9 @@ public class DatabaseSettingsManager {
              .internalBackup,
              .internalInbox:
             return [.showError]
-        case .external,
-             .remote:
+        case .external:
+            return [.showError, .useCache, .reAddDatabase]
+        case .remote:
             return [.showError, .useCache]
         }
     }

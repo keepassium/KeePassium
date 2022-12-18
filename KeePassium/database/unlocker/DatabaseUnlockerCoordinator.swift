@@ -533,6 +533,10 @@ extension DatabaseUnlockerCoordinator: DatabaseLoaderDelegate {
                 databaseUnlockerVC.hideProgressView(animated: true)
                 showDatabaseError(error.localizedDescription, reason: error.failureReason)
                 databaseUnlockerVC.maybeFocusOnPassword()
+            case .reAddDatabase:
+                databaseUnlockerVC.hideProgressView(animated: true)
+                showDatabaseError(error.localizedDescription, reason: error.failureReason)
+                delegate?.didPressReinstateDatabase(databaseRef, in: self)
             }
         case .wrongFormat(let fileFormat):
             databaseUnlockerVC.refresh()

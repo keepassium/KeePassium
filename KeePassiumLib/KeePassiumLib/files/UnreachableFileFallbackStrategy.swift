@@ -11,6 +11,7 @@ import Foundation
 public enum UnreachableFileFallbackStrategy: Int, Codable, CaseIterable {
     case showError = 0
     case useCache = 1
+    case reAddDatabase = 2
     
     public var title: String {
         switch self {
@@ -18,6 +19,8 @@ public enum UnreachableFileFallbackStrategy: Int, Codable, CaseIterable {
             return LString.titleIfFileUnreachableShowError
         case .useCache:
             return LString.titleIfFileUnreachableUseCache
+        case .reAddDatabase:
+            return LString.actionReAddFile
         }
     }
 }

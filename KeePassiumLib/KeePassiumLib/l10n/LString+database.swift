@@ -130,6 +130,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Use Local Copy",
         comment: "Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.)")
+    
+    public static let titleIfFileUnreachableReAddFile = NSLocalizedString(
+        "[Database/Settings/FallbackStrategy/ReAddFile/title]",
+        bundle: Bundle.framework,
+        value: "Re-add File",
+        comment: "Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.)")
 
     
     
