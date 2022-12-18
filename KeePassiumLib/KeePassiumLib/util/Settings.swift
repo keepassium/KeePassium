@@ -158,17 +158,9 @@ public class Settings {
         public var fullTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString(
-                    "[Settings/AppLockTimeout/fullTitle] Never",
-                    bundle: Bundle.framework,
-                    value: "Never",
-                    comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
+                return LString.appProtectionTimeoutNeverFull
             case .immediately:
-                return NSLocalizedString(
-                    "[Settings/AppLockTimeout/fullTitle] Immediately",
-                    bundle: Bundle.framework,
-                    value: "Immediately",
-                    comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
+                return LString.appProtectionTimeoutImmediatelyFull
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
@@ -185,17 +177,9 @@ public class Settings {
         public var shortTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString(
-                    "[Settings/AppLockTimeout/shortTitle] Never",
-                    bundle: Bundle.framework,
-                    value: "Never",
-                    comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
+                return LString.appProtectionTimeoutNeverShort
             case .immediately:
-                return NSLocalizedString(
-                    "[Settings/AppLockTimeout/shortTitle] Immediately",
-                    bundle: Bundle.framework,
-                    value: "Immediately",
-                    comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
+                return LString.appProtectionTimeoutImmediatelyShort
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
@@ -212,17 +196,9 @@ public class Settings {
         public var description: String? {
             switch triggerMode {
             case .appMinimized:
-                return NSLocalizedString(
-                    "[Settings/AppLockTimeout/description] After leaving the app",
-                    bundle: Bundle.framework,
-                    value: "After leaving the app",
-                    comment: "A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app)")
+                return LString.appProtectionTimeoutAfterLeavingApp
             case .userIdle:
-                return NSLocalizedString(
-                    "[Settings/AppLockTimeout/description] After last interaction",
-                    bundle: Bundle.framework,
-                    value: "After last interaction",
-                    comment: "A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction)")
+                return LString.appProtectionTimeoutAfterLastInteraction
             }
         }
     }
@@ -262,17 +238,9 @@ public class Settings {
         public var fullTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString(
-                    "[Settings/DatabaseLockTimeout/fullTitle] Never",
-                    bundle: Bundle.framework,
-                    value: "Never",
-                    comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Never'")
+                return LString.databaseLockTimeoutNeverFull
             case .immediately:
-                return NSLocalizedString(
-                    "[Settings/DatabaseLockTimeout/fullTitle] Immediately",
-                    bundle: Bundle.framework,
-                    value: "Immediately",
-                    comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately'")
+                return LString.databaseLockTimeoutImmediatelyFull
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.weekOfMonth, .day, .hour, .minute, .second]
@@ -289,17 +257,9 @@ public class Settings {
         public var shortTitle: String {
             switch self {
             case .never:
-                return NSLocalizedString(
-                    "[Settings/DatabaseLockTimeout/shortTitle] Never",
-                    bundle: Bundle.framework,
-                    value: "Never",
-                    comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Never'")
+                return LString.databaseLockTimeoutNeverShort
             case .immediately:
-                return NSLocalizedString(
-                    "[Settings/DatabaseLockTimeout/shortTitle] Immediately",
-                    bundle: Bundle.framework,
-                    value: "Immediately",
-                    comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately'")
+                return LString.databaseLockTimeoutImmediatelyShort
             default:
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.weekOfMonth, .day, .hour, .minute, .second]
@@ -316,11 +276,7 @@ public class Settings {
         public var description: String? {
             switch self {
             case .immediately:
-                return NSLocalizedString(
-                    "[Settings/DatabaseLockTimeout/description] When leaving the app",
-                    bundle: Bundle.framework,
-                    value: "When leaving the app",
-                    comment: "A description/subtitle for the 'DatabaseLockTimeout: Immediately'.")
+                return LString.databaseLockTimeoutWhenLeavingApp
             default:
                 return nil
             }

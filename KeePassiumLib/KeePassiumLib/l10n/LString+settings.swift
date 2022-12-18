@@ -165,6 +165,36 @@ extension LString {
         bundle: Bundle.framework,
         value: "Ensures KeePassium is locked after you force-close the app or restart the device.",
         comment: "Explanation for the `Lock on App Launch` setting")
+    public static let appProtectionTimeoutNeverFull = NSLocalizedString(
+        "[Settings/AppLockTimeout/fullTitle] Never",
+        bundle: Bundle.framework,
+        value: "Never",
+        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
+    public static let appProtectionTimeoutNeverShort = NSLocalizedString(
+        "[Settings/AppLockTimeout/shortTitle] Never",
+        bundle: Bundle.framework,
+        value: "Never",
+        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
+    public static let appProtectionTimeoutImmediatelyFull = NSLocalizedString(
+        "[Settings/AppLockTimeout/fullTitle] Immediately",
+        bundle: Bundle.framework,
+        value: "Immediately",
+        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
+    public static let appProtectionTimeoutImmediatelyShort = NSLocalizedString(
+        "[Settings/AppLockTimeout/shortTitle] Immediately",
+        bundle: Bundle.framework,
+        value: "Immediately",
+        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
+    public static let appProtectionTimeoutAfterLeavingApp = NSLocalizedString(
+        "[Settings/AppLockTimeout/description] After leaving the app",
+        bundle: Bundle.framework,
+        value: "After leaving the app",
+        comment: "A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app)")
+    public static let appProtectionTimeoutAfterLastInteraction = NSLocalizedString(
+        "[Settings/AppLockTimeout/description] After last interaction",
+        bundle: Bundle.framework,
+        value: "After last interaction",
+        comment: "A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction)")
     
     
     public static let titleDataProtectionSettings = NSLocalizedString(
@@ -212,6 +242,31 @@ extension LString {
         value: "When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time.",
         comment: "Description of the clipboard/pasteboard timeout.")
     
+    public static let databaseLockTimeoutNeverFull = NSLocalizedString(
+        "[Settings/DatabaseLockTimeout/fullTitle] Never",
+        bundle: Bundle.framework,
+        value: "Never",
+        comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Never'")
+    public static let databaseLockTimeoutNeverShort = NSLocalizedString(
+        "[Settings/DatabaseLockTimeout/shortTitle] Never",
+        bundle: Bundle.framework,
+        value: "Never",
+        comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Never'")
+    public static let databaseLockTimeoutImmediatelyFull = NSLocalizedString(
+        "[Settings/DatabaseLockTimeout/fullTitle] Immediately",
+        bundle: Bundle.framework,
+        value: "Immediately",
+        comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately'")
+    public static let databaseLockTimeoutImmediatelyShort = NSLocalizedString(
+        "[Settings/DatabaseLockTimeout/shortTitle] Immediately",
+        bundle: Bundle.framework,
+        value: "Immediately",
+        comment: "An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately'")
+    public static let databaseLockTimeoutWhenLeavingApp = NSLocalizedString(
+        "[Settings/DatabaseLockTimeout/description] When leaving the app",
+        bundle: Bundle.framework,
+        value: "When leaving the app",
+        comment: "A description/subtitle for the 'DatabaseLockTimeout: Immediately'.")
     
     public static let titleNetworkAccessSettings = NSLocalizedString(
         "[Settings/NetworkAccess/title]",
