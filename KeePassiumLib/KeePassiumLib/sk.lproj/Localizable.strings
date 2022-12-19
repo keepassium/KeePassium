@@ -151,11 +151,17 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Nedá sa otvoriť súbor s kľúčom";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "Nesprávny formát databázy: %@.";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Prosím, vložte heslo alebo súbor s kľúčom";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Nerozpoznaný formát databázy";
+
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "Táto databáza je chránená IT politikami vašej spoločnosti a Microsoft Intune.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "Databáza je nedostupná.\nToto je jej posledná lokálna kópia.";
@@ -211,6 +217,9 @@
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Riešenie odkazov na pole…";
 
+/* Suggested solution/call to action when intermediate sync app fails. */
+"[Database/RecommendRemote/callToAction]" = "Skúste sa pripojiť k vášmu vzdialenému úložisku priamo z KeePassium.";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Odobrať databázu zo zoznamu?\n Súbor nebude odstránený a môžete ho znovu pridať neskôr.";
 
@@ -222,6 +231,9 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Považujte súbor za nedostupný";
+
+/* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
+"[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Znova pridať súbor";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "Zobraziť chybu";
@@ -721,6 +733,9 @@
 /* Feature status: enabled/active. Keep it short, possibly abbreviated. */
 "[General/Feature/On]" = "Zapnuté";
 
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "Priečinok je prázdny";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Zrušiť";
 
@@ -862,6 +877,12 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nová skupina";
 
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "Vyprázdniť kôš";
+
+/* Title of the confirmation dialog for `Empty Recycle Bin` action */
+"[Group/RecycleBin/Empty/confirmTitle]" = "Natrvalo odstrániť všetko v koši?";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Podľa dátumu vytvorenia (nové..staré)";
 
@@ -943,6 +964,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informácie o súbore";
 
+/* Notification next to the OTP code which was copied to clipboard */
+"[OTP/CopiedToClipboard/title]" = "Jednorazové heslo bolo skopírované do schránky";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "Jednorazové heslo";
 
@@ -954,6 +978,9 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Nastaviť jednorazové heslo (OTP)";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "Jednorazové heslo";
 
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "Nie je možné vygenerovať text";
@@ -1068,6 +1095,9 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Náhľad bez zanechania stôp";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "Synchronizácia s firemným úložiskom";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "Zvoľte si pre KeePassium unikátnu ikonu alebo ju napríklad maskujte ako kalkulačku – voľba je na vás.";
@@ -1246,6 +1276,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplikácia je používaná: %1$@/mesiac, čo je %2$@/rok.";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "Pripojte sa priamo k účtom firemného úložiska, ako je napríklad OneDrive for Business.";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "Firemné cloudové úložisko";
+
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Vlastné ikony aplikácie";
 
@@ -1323,6 +1359,15 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Adresa URL súboru";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "Prihláste sa do OneDrive";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "Otvorte prihlasovaciu stránku v režime súkromného webového prehliadača";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "Súkromný režim";
 
 /* Title: connection to a network storage */
 "[RemoteConnection/title]" = "Vzdialené pripojenie";
@@ -1480,6 +1525,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Nastavenia zoznamu";
 
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "Povoliť aplikácii KeePassium vytvárať sieťové pripojenia k externým službám?";
+
 /* Settings section: how/whether the app is allowed to use networks/Internet */
 "[Settings/NetworkAccess/title]" = "Prístup k sieti";
 
@@ -1515,6 +1563,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Žiadny";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive pre firmy";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Tu prosím popíšte váš problém)";
@@ -1563,6 +1614,9 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Lokálna kópia";
+
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "Vzdialený server";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Bez YubiKey";

@@ -152,7 +152,7 @@
 "[Database/Load/Error] Cannot open key file" = "Kan sleutelbestand niet openen";
 
 /* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
-"[Database/Load/Error] Incorrect database format" = "Onjuist database formaat: %@.";
+"[Database/Load/Error] Incorrect database format" = "Onjuist databankformaat: %@.";
 
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Kies een wachtwoord of sleutelbestand";
@@ -161,7 +161,7 @@
 "[Database/Load/Error] Unrecognized database format" = "Niet-herkend databankformaat";
 
 /* Error message */
-"[Database/Load/Error/encryptedByIntune]" = "Deze database wordt beschermd door het IT-beleid van uw bedrijf en Microsoft Intune.";
+"[Database/Load/Error/encryptedByIntune]" = "Deze databank is beveiligd door het zakelijke it-beleid en Microsoft Intune.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "De databank is ontoegankelijk.\nDit is de nieuwste lokale kopie.";
@@ -231,6 +231,9 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Beschouw bestand als ontoegankelijk";
+
+/* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
+"[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Bestand opnieuw toevoegen";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "Toon foutmelding";

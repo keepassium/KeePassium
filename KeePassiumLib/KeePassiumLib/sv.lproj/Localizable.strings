@@ -151,11 +151,17 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Kan inte öppna nyckelfilen";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "Felaktigt format på databasen: %@.";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Ange som minst ett lösenord eller en nyckelfil";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Okänt databasformat";
+
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "Denna databas skyddas av ditt företags IT-policyer och Microsoft Intune.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "Databasen är inte tillgänglig.\nDetta är den senaste lokala kopian.";
@@ -210,6 +216,9 @@
 
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Löser fältreferenser…";
+
+/* Suggested solution/call to action when intermediate sync app fails. */
+"[Database/RecommendRemote/callToAction]" = "Försök ansluta till din lagringsplats direkt från KeePassium.";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Ta bort databasen från fillistan?\nFilen kommer inte raderas, och du kan lägga till den igen vid ett senare tillfälle.";
@@ -721,6 +730,9 @@
 /* Feature status: enabled/active. Keep it short, possibly abbreviated. */
 "[General/Feature/On]" = "På";
 
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "Mappen är tom";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Avbryt";
 
@@ -862,6 +874,12 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Ny grupp";
 
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "Töm papperskorgen";
+
+/* Title of the confirmation dialog for `Empty Recycle Bin` action */
+"[Group/RecycleBin/Empty/confirmTitle]" = "Radera allt i papperskorgen permanent?";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "På Skapandedatum (Ny..Gammal)";
 
@@ -943,6 +961,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Filinfo";
 
+/* Notification next to the OTP code which was copied to clipboard */
+"[OTP/CopiedToClipboard/title]" = "Engångslösenord kopierat till urklipp";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "Engångslösenord";
 
@@ -954,6 +975,9 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Ställ in engångslösenord (OTP)";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "Engångslösenord";
 
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "Kan inte generera text";
@@ -1068,6 +1092,9 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Förhandsgranska utan ett spår";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "Synkronisera med företagslagring";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "Gör KeePassium unikt, igenkännbart, eller få det att se ut som en kalkylator – valet är ditt.";
@@ -1246,6 +1273,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Appen är användbar: %1$@/månad, det är cirka %2$@/år.";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "Anslut direkt till företagskonton för lagring, till exempel OneDrive for Business.";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "Företagslagring i molnet";
+
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Valbara app-ikoner";
 
@@ -1323,6 +1356,15 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Fil-URL";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "Logga in på OneDrive";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "Öppna inloggnignssidan i privat webbläsarläge";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "Privat läge";
 
 /* Title: connection to a network storage */
 "[RemoteConnection/title]" = "Fjärranslutning";
@@ -1480,6 +1522,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Listinställningar";
 
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "Tillåt KeePassium att göra nätverskanslutningar till externa tjänster?";
+
 /* Settings section: how/whether the app is allowed to use networks/Internet */
 "[Settings/NetworkAccess/title]" = "Nätverksåtkomst";
 
@@ -1515,6 +1560,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Inget";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive for Business";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Vänligen beskriv problemet här)";
@@ -1563,6 +1611,9 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Lokal kopia";
+
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "Fjärrserver";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Utan YubiKey";

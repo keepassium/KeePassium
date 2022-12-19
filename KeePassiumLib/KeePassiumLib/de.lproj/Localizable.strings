@@ -151,11 +151,17 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Schlüsseldatei kann nicht geöffnet werden";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "Falsches Datenbankformat: %@.";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Bitte nutzen Sie mindestens ein Passwort oder eine Schlüsseldatei";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Unbekanntes Datenbankformat";
+
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "Diese Datenbank ist durch Ihre unternehmenseigenen IT-Richtlinien und Microsoft Intune geschützt.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "Die Datenbank ist unerreichbar.\nDies ist ihre letzte lokale Kopie.";
@@ -210,6 +216,9 @@
 
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Feldverweise werden aufgelöst …";
+
+/* Suggested solution/call to action when intermediate sync app fails. */
+"[Database/RecommendRemote/callToAction]" = "Versuchen Sie, sich direkt von KeePassium aus mit Ihrem Remote-Speicher zu verbinden.";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Datenbank aus der Liste entfernen?\n Die Datei bleibt erhalten und Sie können sie später erneut hinzufügen.";
@@ -721,6 +730,9 @@
 /* Feature status: enabled/active. Keep it short, possibly abbreviated. */
 "[General/Feature/On]" = "Ein";
 
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "Ordner ist leer";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Abbrechen";
 
@@ -862,6 +874,12 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Neue Gruppe";
 
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "Papierkorb leeren";
+
+/* Title of the confirmation dialog for `Empty Recycle Bin` action */
+"[Group/RecycleBin/Empty/confirmTitle]" = "Alles im Papierkorb endgültig löschen?";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Erstellungsdatum (neueste zuerst)";
 
@@ -943,6 +961,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Datei-Information";
 
+/* Notification next to the OTP code which was copied to clipboard */
+"[OTP/CopiedToClipboard/title]" = "Einmalpasswort in die Zwischenablage kopiert";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "Einmalpasswort";
 
@@ -954,6 +975,9 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Einmalpasswort einrichten (OTP)";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "Einmalpasswort";
 
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "Nachricht kann nicht generiert werden";
@@ -1068,6 +1092,9 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Vorschau ohne Spuren zu hinterlassen";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "Synchronisierung mit Unternehmensspeicher";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "Lassen Sie KeePassium einzigartig, gewöhnlich oder getarnt wie ein Taschenrechner aussehen — Sie haben die Wahl.";
@@ -1246,6 +1273,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "App ist nützlich: %1$@/Monat, das sind etwa %2$@/Jahr.";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "Verbinden Sie sich direkt mit Speicherkonten von Unternehmen, wie etwa OneDrive for Business.";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "Cloud-Speicher für Unternehmen";
+
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Eigene App-Symbole";
 
@@ -1323,6 +1356,15 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Datei-URL";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "Bei OneDrive anmelden";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "Anmeldeseite im privaten Webbrowser-Modus öffnen";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "Privater Modus";
 
 /* Title: connection to a network storage */
 "[RemoteConnection/title]" = "Remote-Verbindung";
@@ -1480,6 +1522,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Listeneinstellungen";
 
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "KeePassium erlauben, Netzwerkverbindungen zu externen Diensten herzustellen?";
+
 /* Settings section: how/whether the app is allowed to use networks/Internet */
 "[Settings/NetworkAccess/title]" = "Netzwerkzugriff";
 
@@ -1515,6 +1560,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Keine";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive for Business";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Bitte beschreiben Sie das Problem hier)";
@@ -1563,6 +1611,9 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Lokale Kopie";
+
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "Remote-Server";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Ohne YubiKey";
