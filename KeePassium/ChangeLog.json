@@ -17,7 +17,19 @@
                     "type": 1
                 },
                 {
+                    "title": "🧩 Added: Database settings: Separate fallback settings for AutoFill [thanks, Leonid] ",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Database settings: Option to re-add the DB as a fallback strategy [thanks, Kevin]",
+                    "type": 1
+                },
+                {
                     "title": "🧩 Added: Support for digest authentication for WebDAV connections [thanks, Andreas]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Provisional business license check",
                     "type": 1
                 },
                 {

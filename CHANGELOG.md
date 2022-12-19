@@ -1,5 +1,18 @@
 #CHANGELOG
 
+## [1.38.121] - 2022-12-19
+
+### Added
+
+- Database settings: Separate fallback settings for AutoFill [thanks, Leonid] 
+- Database settings: Option to re-add the DB as a fallback strategy [thanks, Kevin]
+- Provisional business license check
+
+### Improved
+
+- Updated all translations [thanks, everyone]
+
+
 ## [1.38.120] - 2022-12-16
 
 ### Added
