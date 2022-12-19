@@ -36,6 +36,7 @@
 		753858DB291957BF006ADA21 /* FileFormatRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */; };
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
 		753E9A6225FEBE3000541121 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753E9A6125FEBE2F00541121 /* Toast.swift */; };
+		754025152950700E000ABA73 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754025142950700E000ABA73 /* ManagedAppConfig.swift */; };
 		7544570425CAE2D50011386C /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 7544570325CAE2D50011386C /* TPInAppReceipt */; };
 		754ABE9C25AB898B00B98A63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 754ABE9A25AB898B00B98A63 /* InfoPlist.strings */; };
 		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
@@ -245,6 +246,7 @@
 		753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileFormatRecognizer.swift; sourceTree = "<group>"; };
 		75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResponse.swift; sourceTree = "<group>"; };
 		753E9A6125FEBE2F00541121 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		754025142950700E000ABA73 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
 		754A322A244269F500632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754ABE9B25AB898B00B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		754ABE9D25AB898B00B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -490,6 +492,14 @@
 				7505E8CE2236ED6E00E5202E /* Base32.swift */,
 			);
 			path = base32;
+			sourceTree = "<group>";
+		};
+		7540251329506FF6000ABA73 /* org */ = {
+			isa = PBXGroup;
+			children = (
+				754025142950700E000ABA73 /* ManagedAppConfig.swift */,
+			);
+			path = org;
 			sourceTree = "<group>";
 		};
 		756180F82820823A00EA015D /* password-generator */ = {
@@ -881,6 +891,7 @@
 		75D0C76C2174AF1F00C64C93 /* KeePassiumLib */ = {
 			isa = PBXGroup;
 			children = (
+				7540251329506FF6000ABA73 /* org */,
 				75AF1936282EEFB300FA4BB5 /* resources */,
 				75A267792290458E0097C693 /* premium */,
 				75F4ACD72177469500B22D8B /* files */,
@@ -1176,6 +1187,7 @@
 				75D09BE42174F76500F7DEF2 /* encoding.c in Sources */,
 				75D09BE62174F76500F7DEF2 /* Argon2.swift in Sources */,
 				75F4ACE52177469500B22D8B /* URLReference.swift in Sources */,
+				754025152950700E000ABA73 /* ManagedAppConfig.swift in Sources */,
 				75D5DC452894931E0021DA52 /* DataSourceFactory.swift in Sources */,
 				753E9A6225FEBE3000541121 /* Toast.swift in Sources */,
 				75D09C332174F77000F7DEF2 /* ProgressInterruption.swift in Sources */,
