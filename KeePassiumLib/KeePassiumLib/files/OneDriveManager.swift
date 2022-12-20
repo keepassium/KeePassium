@@ -444,10 +444,8 @@ extension OneDriveManager {
             Diag.error("Failed to parse drive info: driveType field missing")
             return nil
         }
-        guard let driveName = json[Keys.name] as? String else {
-            Diag.error("Failed to parse drive info: name field missing")
-            return nil
-        }
+        
+        let driveName = (json[Keys.name] as? String) ?? "OneDrive"
 
         var ownerEmail: String?
         if let ownerDict = json[Keys.owner] as? [String: Any],
