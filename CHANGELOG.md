@@ -1,5 +1,13 @@
 #CHANGELOG
 
+## [1.39.122] - 2022-12-21
+
+### Fixed 
+
+- 'Unexpected server response format' after signing in to OneDrive (fixes #268) [thanks, everyone]
+- Repeating Face ID in AutoFill on some devices with iOS 16.2 (closes #266) [thanks, everyone]
+
+
 ## [1.38.121] - 2022-12-19
 
 ### Added

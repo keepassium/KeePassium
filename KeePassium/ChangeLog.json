@@ -1,6 +1,20 @@
 {
     "sections": [
         {
+            "version": "1.39",
+            "releaseDate": "2022-12-21T00:00:00Z",
+            "items": [
+                {
+                    "title": "🐞 Fixed: 'Unexpected server response format' after signing in to OneDrive (fixes #268) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Repeating Face ID in AutoFill on some devices with iOS 16.2 (closes #266) [thanks, everyone]",
+                    "type": 1
+                }
+            }
+        },
+        {
             "version": "1.38",
             "releaseDate": "2022-12-16T00:00:00Z",
             "items": [
