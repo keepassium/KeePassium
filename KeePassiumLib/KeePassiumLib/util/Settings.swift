@@ -131,7 +131,7 @@ public class Settings {
         
         case never = -1 
         case immediately = 0
-        case after1second = 1 
+        case almostImmediately = 2 /* workaround for some bugs with `immediately` */
         case after3seconds = 3
         case after15seconds = 15
         case after30seconds = 30
@@ -147,7 +147,7 @@ public class Settings {
             switch self {
             case .never,
                  .immediately,
-                 .after1second,
+                 .almostImmediately,
                  .after3seconds:
                 return .appMinimized
             default:
@@ -957,7 +957,7 @@ public class Settings {
     
     private func maybeFixAutoFillBiometricIDLoop(_ timeout: AppLockTimeout) -> AppLockTimeout {
         if timeout == .immediately && AppGroup.isAppExtension {
-            return .after1second
+            return .almostImmediately
         } else {
             return timeout
         }
