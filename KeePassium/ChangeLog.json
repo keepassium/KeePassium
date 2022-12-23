@@ -12,7 +12,7 @@
                     "title": "🐞 Fixed: Repeating Face ID in AutoFill on some devices with iOS 16.2 (closes #266) [thanks, everyone]",
                     "type": 1
                 }
-            }
+            ]
         },
         {
             "version": "1.38",
