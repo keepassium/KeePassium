@@ -28,6 +28,15 @@ final class RemoteFilePickerCoordinator: Coordinator {
     private struct OneDriveAccount {
         var driveInfo: OneDriveDriveInfo
         var token: OAuthToken
+        
+        var isCorporateAccount: Bool {
+            switch driveInfo.type {
+            case .personal:
+                return false
+            case .business, .sharepoint:
+                return true
+            }
+        }
     }
     private var oneDriveAccount: OneDriveAccount?
 
@@ -262,9 +271,14 @@ extension RemoteFilePickerCoordinator: RemoteFolderViewerDelegate {
             showOneDriveFolder(folder: item, presenter: viewController)
             return
         }
-        performPremiumActionOrOfferUpgrade(for: .canUseBusinessClouds, in: viewController) {
-            [weak self] in
-            self?.didSelectOneDriveFile(item, oneDriveAccount: oneDriveAccount)
+        
+        if oneDriveAccount.isCorporateAccount {
+            performPremiumActionOrOfferUpgrade(for: .canUseBusinessClouds, in: viewController) {
+                [weak self] in
+                self?.didSelectOneDriveFile(item, oneDriveAccount: oneDriveAccount)
+            }
+        } else {
+            didSelectOneDriveFile(item, oneDriveAccount: oneDriveAccount)
         }
     }
 }
