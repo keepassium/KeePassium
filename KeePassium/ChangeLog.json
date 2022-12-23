@@ -1,6 +1,20 @@
 {
     "sections": [
         {
+            "version": "1.40",
+            "releaseDate": "2022-12-22T00:00:00Z",
+            "items": [
+                {
+                    "title": "🐞 Fixed: Connection to personal OneDrive accounts should work in the free version (fixes #270) [thanks, Rune]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: \"What's New\" section appeared empty",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.39",
             "releaseDate": "2022-12-21T00:00:00Z",
             "items": [

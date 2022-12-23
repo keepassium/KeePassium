@@ -1,5 +1,13 @@
 #CHANGELOG
 
+## [1.40.123] - 2022-12-23
+
+### Fixed 
+
+- Connection to personal OneDrive accounts should not require premium (closes #270) [thanks, Rune]
+- "What's new" section appeared empty
+
+
 ## [1.39.122] - 2022-12-21
 
 ### Fixed 
