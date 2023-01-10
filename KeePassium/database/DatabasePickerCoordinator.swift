@@ -199,8 +199,8 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         presenter.present(documentPicker, animated: true, completion: nil)
     }
     
-    public func maybeAddRemoteDatabase(presenter: UIViewController) {
-        guard needsPremiumToAddDatabase() else {
+    public func maybeAddRemoteDatabase(bypassPaywall: Bool, presenter: UIViewController) {
+        guard needsPremiumToAddDatabase() && !bypassPaywall else {
             presenter.requestNetworkAccessPermission() { [weak self, weak presenter] in
                 guard let self = self, let presenter = presenter else { return }
                 self.addRemoteDatabase(presenter: presenter)
@@ -415,7 +415,7 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     }
     
     func didPressAddRemoteDatabase(in viewController: DatabasePickerVC) {
-        maybeAddRemoteDatabase(presenter: viewController)
+        maybeAddRemoteDatabase(bypassPaywall: false, presenter: viewController)
     }
 
     func didPressRevealDatabaseInFinder(

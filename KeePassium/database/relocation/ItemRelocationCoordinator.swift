@@ -531,10 +531,7 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
         })
     }
     
-    func didPressAddRemoteDatabase(
-        connectionType: RemoteConnectionType?,
-        in coordinator: DatabaseUnlockerCoordinator
-    ) {
+    func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator) {
         guard let databasePickerCoordinator = databasePickerCoordinator else {
             Diag.warning("No database picker found, cancelling")
             assertionFailure()
@@ -543,8 +540,8 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
         
         router.pop(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            databasePickerCoordinator.addRemoteDatabase(
-                connectionType: connectionType,
+            databasePickerCoordinator.maybeAddRemoteDatabase(
+                bypassPaywall: true,
                 presenter: self.router.navigationController
             )
         })

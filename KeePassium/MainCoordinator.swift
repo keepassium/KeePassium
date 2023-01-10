@@ -753,21 +753,18 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         }
     }
     
-    func didPressAddRemoteDatabase(
-        connectionType: RemoteConnectionType?,
-        in coordinator: DatabaseUnlockerCoordinator
-    ) {
+    func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator) {
         if rootSplitVC.isCollapsed {
             primaryRouter.pop(animated: true, completion: { [weak self] in
                 guard let self = self else { return }
-                self.databasePickerCoordinator.addRemoteDatabase(
-                    connectionType: connectionType,
+                self.databasePickerCoordinator.maybeAddRemoteDatabase(
+                    bypassPaywall: true,
                     presenter: self.rootSplitVC
                 )
             })
         } else {
-            databasePickerCoordinator.addRemoteDatabase(
-                connectionType: connectionType,
+            databasePickerCoordinator.maybeAddRemoteDatabase(
+                bypassPaywall: true,
                 presenter: rootSplitVC
             )
         }

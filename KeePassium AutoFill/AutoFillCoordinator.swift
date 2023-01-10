@@ -650,14 +650,11 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         })
     }
     
-    func didPressAddRemoteDatabase(
-        connectionType: RemoteConnectionType?,
-        in coordinator: DatabaseUnlockerCoordinator
-    ) {
+    func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator) {
         router.pop(animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            self.databasePickerCoordinator.addRemoteDatabase(
-                connectionType: connectionType,
+            self.databasePickerCoordinator.maybeAddRemoteDatabase(
+                bypassPaywall: true,
                 presenter: self.router.navigationController
             )
         })

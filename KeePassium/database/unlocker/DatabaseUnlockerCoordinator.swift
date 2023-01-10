@@ -37,10 +37,7 @@ protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
         in coordinator: DatabaseUnlockerCoordinator
     )
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator)
-    func didPressAddRemoteDatabase(
-        connectionType: RemoteConnectionType?,
-        in coordinator: DatabaseUnlockerCoordinator
-    )
+    func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator)
 }
 
 final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
@@ -378,10 +375,7 @@ extension DatabaseUnlockerCoordinator {
                 handler: { [weak self] in
                     guard let self = self else { return }
                     Diag.debug("Will add remote database")
-                    self.delegate?.didPressAddRemoteDatabase(
-                        connectionType: nil,
-                        in: self
-                    )
+                    self.delegate?.didPressAddRemoteDatabase(in: self)
                 }
             )
         )
