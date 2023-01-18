@@ -402,6 +402,9 @@ final class GroupViewerVC:
         cell.iconView?.image = UIImage.kpIcon(forEntry: entry)
         
         cell.totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry)
+        cell.otpCopiedHandler = { [weak self] in
+            self?.showNotification(LString.otpCodeCopiedToClipboard)
+        }
         
         cell.hasAttachments = entry.attachments.count > 0
         cell.accessibilityCustomActions = getAccessibilityActions(for: entry)

@@ -36,6 +36,8 @@ final class GroupViewerEntryCell: UITableViewCell {
         }
     }
     
+    var otpCopiedHandler: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         attachmentIndicator.isHidden = true
@@ -68,13 +70,17 @@ final class GroupViewerEntryCell: UITableViewCell {
             return
         }
 
-        otpView.value = totpGenerator.generate()
+        let otpValue = totpGenerator.generate()
+        otpView.value = otpValue
         otpView.remainingTime = totpGenerator.remainingTime
         otpView.refresh()
         
         let justSwitched = !showOTPButton.isHidden
         if justSwitched {
             animateOTPValue(visible: true)
+            Clipboard.general.insert(otpValue)
+            HapticFeedback.play(.copiedToClipboard)
+            otpCopiedHandler?()
         }
     }
     

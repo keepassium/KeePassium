@@ -820,9 +820,7 @@
 		75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
 		75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
 		75E9E2B4290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
-		75E9E2B5290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
 		75E9E2B6290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
-		75E9E2B7290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
 		75E9E2B9290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
 		75E9E2BA290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
 		75E9E2BB290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
@@ -3276,7 +3274,6 @@
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
-				75E9E2B5290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
 				75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
@@ -3802,7 +3799,6 @@
 				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
-				75E9E2B7290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
 				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
 				75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
