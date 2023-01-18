@@ -83,6 +83,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
+        setDatabase(databaseRef)
     }
     
     func refresh() {
