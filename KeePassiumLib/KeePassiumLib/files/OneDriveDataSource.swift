@@ -11,6 +11,12 @@ import Foundation
 public final class OneDriveDataSource: DataSource {
     private static let defaultTimeout: TimeInterval = 15.0
     
+    private struct AuthorizedItem {
+        var filePath: String
+        var parent: OneDriveSharedFolder?
+        var token: OAuthToken
+    }
+    
     func getAccessCoordinator() -> FileAccessCoordinator {
         return PassthroughFileAccessCoordinator()
     }
@@ -20,7 +26,7 @@ public final class OneDriveDataSource: DataSource {
         operation: String,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<ReturnType>
-    ) -> (String, OAuthToken)? {
+    ) -> AuthorizedItem? {
         guard Settings.current.isNetworkAccessAllowed else {
             Diag.error("Network access denied [operation: \(operation)]")
             completionQueue.addOperation {
@@ -49,8 +55,8 @@ public final class OneDriveDataSource: DataSource {
             }
             return nil
         }
-        
-        return (filePath, token)
+        let parent = OneDriveFileURL.getParent(from: url) 
+        return AuthorizedItem(filePath: filePath, parent: parent, token: token)
     }
     
     private func saveUpdatedToken(_ newToken: OAuthToken, prefixedURL url: URL) {
@@ -68,7 +74,7 @@ public final class OneDriveDataSource: DataSource {
         completion: @escaping FileOperationCompletion<FileInfo>
     ) {
         assert(fileProvider == .keepassiumOneDrive)
-        guard let (filePath, token) = checkAccessAndCredentials(
+        guard let authorizedItem = checkAccessAndCredentials(
             url: url,
             operation: "readFileInfo",
             completionQueue: completionQueue,
@@ -78,8 +84,9 @@ public final class OneDriveDataSource: DataSource {
         }
         
         OneDriveManager.shared.getItemInfo(
-            path: filePath,
-            token: token,
+            path: authorizedItem.filePath,
+            parent: authorizedItem.parent,
+            token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
             completionQueue: completionQueue,
             completion: { result in
@@ -103,7 +110,7 @@ public final class OneDriveDataSource: DataSource {
         completion: @escaping FileOperationCompletion<ByteArray>
     ) {
         assert(fileProvider == .keepassiumOneDrive)
-        guard let (filePath, token) = checkAccessAndCredentials(
+        guard let authorizedItem = checkAccessAndCredentials(
             url: url,
             operation: "read",
             completionQueue: completionQueue,
@@ -113,8 +120,9 @@ public final class OneDriveDataSource: DataSource {
         }
         
         OneDriveManager.shared.getFileContents(
-            filePath: filePath,
-            token: token,
+            filePath: authorizedItem.filePath,
+            parent: authorizedItem.parent,
+            token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
             completionQueue: completionQueue,
             completion: { result in
@@ -139,7 +147,7 @@ public final class OneDriveDataSource: DataSource {
         completion: @escaping FileOperationCompletion<Void>
     ) {
         assert(fileProvider == .keepassiumOneDrive)
-        guard let (filePath, token) = checkAccessAndCredentials(
+        guard let authorizedItem = checkAccessAndCredentials(
             url: url,
             operation: "write",
             completionQueue: completionQueue,
@@ -148,10 +156,11 @@ public final class OneDriveDataSource: DataSource {
             return 
         }
         OneDriveManager.shared.uploadFile(
-            filePath: filePath,
+            filePath: authorizedItem.filePath,
+            parent: authorizedItem.parent,
             contents: data,
             fileName: url.lastPathComponent,
-            token: token,
+            token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
             completionQueue: completionQueue,
             completion: { result in

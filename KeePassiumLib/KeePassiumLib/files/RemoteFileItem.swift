@@ -6,11 +6,8 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import Foundation
 
-public struct RemoteFileItem {
-    public var itemID: String
-    public var itemPath: String
-    public var isFolder: Bool
-    public var fileInfo: FileInfo
+public protocol RemoteFileItem {
+    var isFolder: Bool { get }
+    var fileInfo: FileInfo { get }
 }

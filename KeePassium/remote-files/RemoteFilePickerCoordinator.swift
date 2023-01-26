@@ -187,7 +187,7 @@ extension RemoteFilePickerCoordinator {
 
 extension RemoteFilePickerCoordinator {
     private func startAddingOneDriveFile(token: OAuthToken, viewController: RemoteFilePickerVC) {
-        OneDriveManager.shared.getDriveInfo(freshToken: token) {
+        OneDriveManager.shared.getDriveInfo(parent: nil, freshToken: token) {
             [weak self, weak viewController] result in
             guard let self = self, let viewController = viewController else { return }
             switch result {
@@ -215,7 +215,7 @@ extension RemoteFilePickerCoordinator {
         }
     }
     
-    private func showOneDriveFolder(folder: RemoteFileItem?, presenter: UIViewController) {
+    private func showOneDriveFolder(folder: OneDriveFileItem?, presenter: UIViewController) {
         guard let oneDriveAccount = oneDriveAccount else {
             Diag.warning("Not signed into any OneDrive account")
             assertionFailure()
@@ -224,6 +224,7 @@ extension RemoteFilePickerCoordinator {
         let folderName = folder?.fileInfo.fileName ?? oneDriveAccount.driveInfo.type.description
         OneDriveManager.shared.getItems(
             in: folder?.itemPath ?? "/",
+            parent: folder?.parent,
             token: oneDriveAccount.token,
             tokenUpdater: nil 
         ) {
@@ -245,14 +246,10 @@ extension RemoteFilePickerCoordinator {
     }
     
     private func didSelectOneDriveFile(
-        _ fileItem: RemoteFileItem,
+        _ fileItem: OneDriveFileItem,
         oneDriveAccount: OneDriveAccount
     ) {
-        let fileURL = OneDriveFileURL.build(
-            fileID: fileItem.itemID,
-            filePath: fileItem.itemPath,
-            driveInfo: oneDriveAccount.driveInfo
-        )
+        let fileURL = OneDriveFileURL.build(from: fileItem, driveInfo: oneDriveAccount.driveInfo)
         let credential = NetworkCredential(oauthToken: oneDriveAccount.token)
         delegate?.didPickRemoteFile(url: fileURL, credential: credential, in: self)
         dismiss()
@@ -266,19 +263,24 @@ extension RemoteFilePickerCoordinator: RemoteFolderViewerDelegate {
             assertionFailure()
             return
         }
+        guard let oneDriveFileItem = item as? OneDriveFileItem else {
+            Diag.warning("Unexpected type of selected item")
+            assertionFailure()
+            return
+        }
 
-        if item.isFolder {
-            showOneDriveFolder(folder: item, presenter: viewController)
+        if oneDriveFileItem.isFolder {
+            showOneDriveFolder(folder: oneDriveFileItem, presenter: viewController)
             return
         }
         
         if oneDriveAccount.isCorporateAccount {
             performPremiumActionOrOfferUpgrade(for: .canUseBusinessClouds, in: viewController) {
                 [weak self] in
-                self?.didSelectOneDriveFile(item, oneDriveAccount: oneDriveAccount)
+                self?.didSelectOneDriveFile(oneDriveFileItem, oneDriveAccount: oneDriveAccount)
             }
         } else {
-            didSelectOneDriveFile(item, oneDriveAccount: oneDriveAccount)
+            didSelectOneDriveFile(oneDriveFileItem, oneDriveAccount: oneDriveAccount)
         }
     }
 }
