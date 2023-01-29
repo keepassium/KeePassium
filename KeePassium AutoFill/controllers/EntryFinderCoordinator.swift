@@ -22,6 +22,7 @@ final class EntryFinderCoordinator: Coordinator {
     private let router: NavigationRouter
     private let entryFinderVC: EntryFinderVC
     
+    private let originalRef: URLReference
     private let databaseFile: DatabaseFile
     private let database: Database
     private let loadingWarnings: DatabaseLoadingWarnings?
@@ -34,11 +35,13 @@ final class EntryFinderCoordinator: Coordinator {
     
     init(
         router: NavigationRouter,
+        originalRef: URLReference,
         databaseFile: DatabaseFile,
         loadingWarnings: DatabaseLoadingWarnings?,
         serviceIdentifiers: [ASCredentialServiceIdentifier]
     ) {
         self.router = router
+        self.originalRef = originalRef
         self.databaseFile = databaseFile
         self.database = databaseFile.database
         self.loadingWarnings = loadingWarnings
@@ -84,7 +87,7 @@ final class EntryFinderCoordinator: Coordinator {
 
 extension EntryFinderCoordinator {
     public func lockDatabase() {
-        DatabaseSettingsManager.shared.updateSettings(for: databaseFile) {
+        DatabaseSettingsManager.shared.updateSettings(for: originalRef) {
             $0.clearMasterKey()
         }
         router.pop(viewController: entryFinderVC, animated: true)

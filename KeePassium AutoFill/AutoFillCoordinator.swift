@@ -241,6 +241,7 @@ extension AutoFillCoordinator {
     ) {
         let entryFinderCoordinator = EntryFinderCoordinator(
             router: router,
+            originalRef: fileRef,
             databaseFile: databaseFile,
             loadingWarnings: warnings,
             serviceIdentifiers: serviceIdentifiers
