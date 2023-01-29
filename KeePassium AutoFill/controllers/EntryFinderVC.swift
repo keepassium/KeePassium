@@ -13,6 +13,8 @@ protocol EntryFinderDelegate: AnyObject {
     func didChangeSearchQuery(_ searchText: String, in viewController: EntryFinderVC)
     func didSelectEntry(_ entry: Entry, in viewController: EntryFinderVC)
     func didPressLockDatabase(in viewController: EntryFinderVC)
+    
+    func getAnnouncements(for viewController: EntryFinderVC) -> [AnnouncementItem]
 }
 
 final class EntryFinderCell: UITableViewCell {
@@ -65,6 +67,7 @@ final class CallerIDView: UIView {
 
 final class EntryFinderVC: UITableViewController {
     private enum CellID {
+        static let announcement = "AnnouncementCell"
         static let entry = EntryFinderCell.storyboardID
         static let nothingFound = "NothingFoundCell"
     }
@@ -76,6 +79,8 @@ final class EntryFinderVC: UITableViewController {
     var callerID: String? {
         didSet { refreshCallerID() }
     }
+    
+    private var announcements = [AnnouncementItem]()
     
     private var searchController: UISearchController! 
     private var manualSearchButton: UIBarButtonItem! 
@@ -89,7 +94,15 @@ final class EntryFinderVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearch()
-
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44.0
+        tableView.register(AnnouncementCell.classForCoder(), forCellReuseIdentifier: CellID.announcement)
+        tableView.selectionFollowsFocus = true
+        if #available(iOSApplicationExtension 15.0, *) {
+            tableView.sectionHeaderTopPadding = 1 
+        }
+        
         manualSearchButton = UIBarButtonItem(
             barButtonSystemItem: .search,
             target: self,
@@ -145,6 +158,7 @@ final class EntryFinderVC: UITableViewController {
             Clipboard.general.insert(
                 text: callerIDText,
                 timeout: TimeInterval(Settings.current.clipboardTimeout.seconds))
+            HapticFeedback.play(.copiedToClipboard)
             view.blink()
         }
         tableView.tableFooterView = callerIDView
@@ -157,7 +171,7 @@ final class EntryFinderVC: UITableViewController {
         sort(&searchResults.exactMatch, sortOrder: groupSortOrder)
         sort(&searchResults.partialMatch, sortOrder: groupSortOrder)
 
-        tableView.reloadData()
+        refresh()
     }
     
     private func sort(_ searchResults: inout SearchResults, sortOrder: Settings.GroupSortOrder) {
@@ -184,109 +198,224 @@ final class EntryFinderVC: UITableViewController {
         }
     }
     
+    func refresh() {
+        guard isViewLoaded else {
+            return
+        }
+        announcements = delegate?.getAnnouncements(for: self) ?? []
+        tableView.reloadData()
+    }
+    
+    func refreshAnnouncements() {
+        guard isViewLoaded else { return }
+        let wasEmpty = announcements.isEmpty
+        announcements = delegate?.getAnnouncements(for: self) ?? []
+        let isEmpty = announcements.isEmpty
+        
+        if wasEmpty != isEmpty {
+            tableView.reloadData()
+        } else {
+            tableView.reloadSections([0], with: .automatic)
+        }
+    }
+    
+    
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    private enum SectionType {
+        case announcement
+        case nothingFound
+        case exactMatch
+        case matchSeparator
+        case partialMatch
+    }
+    
+    private func getSectionTypeAndIndex(_ section: Int) -> (SectionType, Int) {
+        let precedingSections = announcements.isEmpty ? 0 : 1
+        let resultSection = section - precedingSections
+        if resultSection < 0 {
+            return (.announcement, section)
+        }
         if searchResults.isEmpty {
-            return 1 // for "Nothing found" cell
+            return (.nothingFound, 0)
         }
         
-        var nSections = searchResults.exactMatch.count
+        let nExactResults = searchResults.exactMatch.count
+        if resultSection < nExactResults {
+            return (.exactMatch, resultSection)
+        } else if resultSection == nExactResults {
+            return (.matchSeparator, 0)
+        } else {
+            return (.partialMatch, resultSection - nExactResults - 1)
+        }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        let nAnnouncementSections = announcements.isEmpty ? 0 : 1
+        if searchResults.isEmpty {
+            return nAnnouncementSections + 1 // for "Nothing found" cell
+        }
+        
+        var nSearchResultSections = searchResults.exactMatch.count
         let hasPartialResults = !searchResults.partialMatch.isEmpty
         if hasPartialResults {
-            nSections += searchResults.partialMatch.count + 1 
+            nSearchResultSections += searchResults.partialMatch.count + 1 
         }
-        return nSections
+        return nAnnouncementSections + nSearchResultSections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchResults.isEmpty {
-            return (section == 0) ? 1 : 0 // "Nothing found" cell
-        }
-        let nExactResults = searchResults.exactMatch.count
-        if section < nExactResults {
-            let iExactResult = section
-            return searchResults.exactMatch[iExactResult].entries.count
-        } else if section == nExactResults {
+        let (sectionType, sectionIndex) = getSectionTypeAndIndex(section)
+        switch sectionType {
+        case .announcement:
+            return announcements.count
+        case .nothingFound:
+            return 1 // "Nothing found" cell
+        case .exactMatch:
+            return searchResults.exactMatch[sectionIndex].entries.count
+        case .matchSeparator:
             return 0
-        } else {
-            let iPartialResult = section - nExactResults - 1
-            return searchResults.partialMatch[iPartialResult].entries.count
+        case .partialMatch:
+            return searchResults.partialMatch[sectionIndex].entries.count
         }
     }
     
     override func tableView(
         _ tableView: UITableView,
         titleForHeaderInSection section: Int
-        ) -> String?
-    {
-        guard !searchResults.isEmpty else { return nil }
-
-        let nExactResults = searchResults.exactMatch.count
-        if section < nExactResults {
-            let iExactResult = section
-            return searchResults.exactMatch[iExactResult].group.name
-        } else if section == nExactResults {
+    ) -> String? {
+        let (sectionType, sectionIndex) = getSectionTypeAndIndex(section)
+        switch sectionType {
+        case .announcement, .nothingFound, .matchSeparator:
             return nil
-        } else {
-            let iPartialResult = section - nExactResults - 1
-            return searchResults.partialMatch[iPartialResult].group.name
+        case .exactMatch:
+            return searchResults.exactMatch[sectionIndex].group.name
+        case .partialMatch:
+            return searchResults.partialMatch[sectionIndex].group.name
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let (sectionType, _) = getSectionTypeAndIndex(section)
+        switch sectionType {
+        case .nothingFound:
+            return 1 
+        case .matchSeparator:
+            return 20
+        default:
+            return UITableView.automaticDimension
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let hasPartialResults = searchResults.partialMatch.count > 0
-        let nExactResults = searchResults.exactMatch.count
-        if hasPartialResults && section == nExactResults {
-            return separatorView
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let (sectionType, _) = getSectionTypeAndIndex(section)
+        switch sectionType {
+        case .announcement, .exactMatch, .partialMatch, .nothingFound:
+            return 8 
+        default:
+            return UITableView.automaticDimension
         }
-        return nil
+    }
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let (sectionType, _) = getSectionTypeAndIndex(section)
+        switch sectionType {
+        case .matchSeparator:
+            return separatorView
+        default:
+            return nil
+        }
     }
     
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
-        ) -> UITableViewCell
-    {
-        if searchResults.isEmpty {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: CellID.nothingFound,
-                for: indexPath)
-            return cell
+    ) -> UITableViewCell {
+        let (sectionType, sectionIndex) = getSectionTypeAndIndex(indexPath.section)
+        switch sectionType {
+        case .announcement:
+            return makeAnnouncementCell(at: indexPath)
+        case .nothingFound:
+            return makeNothingFoundCell(at: indexPath)
+        case .exactMatch:
+            return makeExactMatchResultCell(
+                at: indexPath,
+                resultIndex: sectionIndex)
+        case .matchSeparator:
+            assertionFailure("Result separator is not supposed to contain cells")
+            return makeNothingFoundCell(at: indexPath)
+        case .partialMatch:
+            return makePartialMatchResultCell(
+                at: indexPath,
+                resultIndex: sectionIndex)
         }
-
+    }
+    
+    private func makeAnnouncementCell(at indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView
+            .dequeueReusableCell(withIdentifier: CellID.announcement, for: indexPath)
+            as! AnnouncementCell
+        let announcement = announcements[indexPath.row]
+        cell.announcementView.apply(announcement)
+        return cell
+    }
+    
+    private func makeNothingFoundCell(at indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(
+            withIdentifier: CellID.nothingFound,
+            for: indexPath
+        )
+    }
+    
+    private func makeExactMatchResultCell(
+        at indexPath: IndexPath,
+        resultIndex: Int
+    ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CellID.entry,
             for: indexPath)
             as! EntryFinderCell
-
-        let section = indexPath.section
-        let nExactResults = searchResults.exactMatch.count
-        if section < nExactResults {
-            let iExactResult = section
-            cell.entry = searchResults.exactMatch[iExactResult].entries[indexPath.row].entry
-        } else if section == nExactResults {
-            assertionFailure("Should not be here")
-        } else {
-            let iPartialResult = section - nExactResults - 1
-            cell.entry = searchResults.partialMatch[iPartialResult].entries[indexPath.row].entry
-        }
+        cell.entry = searchResults.exactMatch[resultIndex].entries[indexPath.row].entry
+        return cell
+    }
+    
+    private func makePartialMatchResultCell(
+        at indexPath: IndexPath,
+        resultIndex: Int
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: CellID.entry,
+            for: indexPath)
+            as! EntryFinderCell
+        cell.entry = searchResults.partialMatch[resultIndex].entries[indexPath.row].entry
         return cell
     }
     
     
+    override func tableView(
+        _ tableView: UITableView,
+        willSelectRowAt indexPath: IndexPath
+    ) -> IndexPath? {
+        let (sectionType, _) = getSectionTypeAndIndex(indexPath.section)
+        switch sectionType {
+        case .announcement, .matchSeparator, .nothingFound: 
+            return nil
+        default:
+            return indexPath
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Watchdog.shared.restart()
-        let section = indexPath.section
-        let nExactResults = searchResults.exactMatch.count
-        if section < nExactResults {
-            let iExactResult = section
-            let selectedEntry = searchResults.exactMatch[iExactResult].entries[indexPath.row].entry
+        
+        let (sectionType, sectionIndex) = getSectionTypeAndIndex(indexPath.section)
+        switch sectionType {
+        case .announcement, .matchSeparator, .nothingFound:
+            return
+        case .exactMatch:
+            let selectedEntry = searchResults.exactMatch[sectionIndex].entries[indexPath.row].entry
             delegate?.didSelectEntry(selectedEntry, in: self)
-        } else if section == nExactResults {
-            assertionFailure("Should not be here")
-        } else {
-            let iPartialResult = section - nExactResults - 1
-            let selectedEntry = searchResults.partialMatch[iPartialResult].entries[indexPath.row].entry
+        case .partialMatch:
+            let selectedEntry = searchResults.partialMatch[sectionIndex].entries[indexPath.row].entry
             delegate?.didSelectEntry(selectedEntry, in: self)
         }
     }

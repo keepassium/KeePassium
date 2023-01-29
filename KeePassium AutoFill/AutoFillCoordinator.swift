@@ -454,7 +454,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
         if Settings.current.premiumIsLockDatabasesOnTimeout {
             entryFinderCoordinator?.lockDatabase()
         }else {
-            entryFinderCoordinator?.stop(animated: animate)
+            entryFinderCoordinator?.stop(animated: animate, completion: nil)
         }
     }
 
@@ -668,5 +668,14 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
     
     func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator) {
         returnCredentials(entry: entry)
+    }
+    
+    func didPressReaddDatabase(in coordinator: EntryFinderCoordinator) {
+        coordinator.stop(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.databasePickerCoordinator.addExistingDatabase(
+                presenter: self.router.navigationController
+            )
+        }
     }
 }

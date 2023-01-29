@@ -12,6 +12,8 @@ import AuthenticationServices
 protocol EntryFinderCoordinatorDelegate: AnyObject {
     func didLeaveDatabase(in coordinator: EntryFinderCoordinator)
     func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator)
+    
+    func didPressReaddDatabase(in coordinator: EntryFinderCoordinator)
 }
 
 final class EntryFinderCoordinator: Coordinator {
@@ -26,6 +28,7 @@ final class EntryFinderCoordinator: Coordinator {
     private let databaseFile: DatabaseFile
     private let database: Database
     private let loadingWarnings: DatabaseLoadingWarnings?
+    private var announcements = [AnnouncementItem]()
     
     private var shouldAutoSelectFirstMatch: Bool = false
     private var serviceIdentifiers: [ASCredentialServiceIdentifier]
@@ -75,13 +78,14 @@ final class EntryFinderCoordinator: Coordinator {
             }
         )
         
+        updateAnnouncements()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 * vcAnimationDuration) { [weak self] in
             self?.showInitialMessages()
         }
     }
     
-    func stop(animated: Bool) {
-        router.pop(viewController: entryFinderVC, animated: animated)
+    func stop(animated: Bool, completion: (()->Void)?) {
+        router.pop(viewController: entryFinderVC, animated: animated, completion: completion)
     }
 }
 
@@ -111,13 +115,6 @@ extension EntryFinderCoordinator {
             showLoadingWarnings(loadingWarnings)
             return
         }
-        
-        if databaseFile.status.contains(.localFallback) {
-            showLocalFallbackNotification()
-            return
-        }
-        
-        maybeShowQuickAutoFillPromo()
     }
     
     private func showLoadingWarnings(_ warnings: DatabaseLoadingWarnings) {
@@ -127,36 +124,6 @@ extension EntryFinderCoordinator {
         StoreReviewSuggester.registerEvent(.trouble)
     }
     
-    private func showLocalFallbackNotification() {
-        entryFinderVC.showNotification(
-            LString.databaseIsFallbackCopy,
-            image: UIImage.get(.icloudSlash)?
-                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal),
-            duration: 3.0
-        )
-    }
-    
-    private func maybeShowQuickAutoFillPromo() {
-        let isQuickTypeEnabled = DatabaseSettingsManager.shared.isQuickTypeEnabled(databaseFile)
-        guard !isQuickTypeEnabled && QuickAutoFillPrompt.shouldShow else {
-            return
-        }
-        entryFinderVC.showNotification(
-            LString.premiumFeatureQuickAutoFillDescription,
-            title: LString.callToActionActivateQuickAutoFill,
-            image: UIImage.get(.megaphone)?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal),
-            action: ToastAction(
-                title: LString.actionLearnMore,
-                icon: UIImage(asset: .externalLinkBadge),
-                isLink: true,
-                handler: { [weak self] in
-                    self?.openQuickAutoFillPromo()
-                }
-            ),
-            duration: 10
-        )
-        QuickAutoFillPrompt.lastSeenDate = Date.now
-    }
     
     private func openQuickAutoFillPromo() {
         QuickAutoFillPrompt.dismissDate = Date.now
@@ -188,7 +155,70 @@ extension EntryFinderCoordinator {
     }
 }
 
+extension EntryFinderCoordinator {
+    private func updateAnnouncements() {
+        announcements.removeAll()
+        if databaseFile.status.contains(.localFallback) {
+            announcements.append(makeFallbackDatabaseAnnouncement(for: entryFinderVC))
+        }
+        if let qafAnnouncment = maybeMakeQuickAutoFillAnnouncment(for: entryFinderVC) {
+            announcements.append(qafAnnouncment)
+        }
+        entryFinderVC.refreshAnnouncements()
+    }
+    
+    private func maybeMakeQuickAutoFillAnnouncment(
+        for viewController: EntryFinderVC
+    ) -> AnnouncementItem? {
+        let isQuickTypeEnabled = DatabaseSettingsManager.shared.isQuickTypeEnabled(databaseFile)
+        guard !isQuickTypeEnabled && QuickAutoFillPrompt.shouldShow else {
+            return nil
+        }
+
+        let announcement = AnnouncementItem(
+            title: LString.callToActionActivateQuickAutoFill,
+            body: LString.premiumFeatureQuickAutoFillDescription,
+            actionTitle: LString.actionLearnMore,
+            image: UIImage.get(.infoCircle)?
+                .applyingSymbolConfiguration(.init(weight: .light))?
+                .withTintColor(.primaryText, renderingMode: .alwaysOriginal),
+            onDidPressAction: { [weak self] _ in
+                self?.openQuickAutoFillPromo()
+            },
+            onDidPressClose: { [weak self] _ in
+                QuickAutoFillPrompt.dismissDate = Date.now
+                self?.updateAnnouncements()
+            }
+        )
+        QuickAutoFillPrompt.lastSeenDate = Date.now
+        return announcement
+    }
+    
+    private func makeFallbackDatabaseAnnouncement(
+        for viewController: EntryFinderVC
+    ) -> AnnouncementItem {
+        let announcement = AnnouncementItem(
+            title: nil,
+            body: LString.databaseIsFallbackCopy,
+            actionTitle: originalRef.needsReinstatement ? LString.actionReAddFile : nil,
+            image: .get(.icloudSlash)?
+                .applyingSymbolConfiguration(.init(weight: .light))?
+                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal),
+            onDidPressAction: { [weak self, weak viewController] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressReaddDatabase(in: self)
+                viewController?.refreshAnnouncements()
+            }
+        )
+        return announcement
+    }
+}
+
 extension EntryFinderCoordinator: EntryFinderDelegate {
+    func getAnnouncements(for viewController: EntryFinderVC) -> [AnnouncementItem] {
+        return announcements
+    }
+    
     func didLoadViewController(_ viewController: EntryFinderVC) {
         updateCallerID()
         setupAutomaticSearchResults()
