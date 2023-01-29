@@ -28,11 +28,15 @@ final class AnnouncementCell: UITableViewCell {
         setupView()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        separatorInset = UIEdgeInsets(top: 0, left: bounds.width * 2, bottom: 0, right: 0)
+    }
+    
     private func setupView() {
         selectionStyle = .none
         
         backgroundColor = .systemBackground
-        separatorInset = UIEdgeInsets(top: 0, left: self.bounds.width*2, bottom: 0, right: 0)
         
         contentView.addSubview(announcementView)
         announcementView.translatesAutoresizingMaskIntoConstraints = false
