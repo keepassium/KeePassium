@@ -8,9 +8,7 @@
 
 import Foundation
 
-public final class OneDriveDataSource: DataSource {
-    private static let defaultTimeout: TimeInterval = 15.0
-    
+public final class OneDriveDataSource: DataSource {    
     private struct AuthorizedItem {
         var filePath: String
         var parent: OneDriveSharedFolder?
@@ -68,7 +66,7 @@ public final class OneDriveDataSource: DataSource {
         at url: URL,
         fileProvider: FileProvider?,
         canUseCache: Bool,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<FileInfo>
@@ -104,7 +102,7 @@ public final class OneDriveDataSource: DataSource {
     func read(
         _ url: URL,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<ByteArray>
@@ -141,7 +139,7 @@ public final class OneDriveDataSource: DataSource {
         _ data: ByteArray,
         to url: URL,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<Void>
@@ -181,7 +179,7 @@ public final class OneDriveDataSource: DataSource {
         to writeURL: URL,
         fileProvider: FileProvider?,
         outputDataSource: @escaping (URL, ByteArray) throws -> ByteArray?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<Void>
@@ -199,7 +197,7 @@ public final class OneDriveDataSource: DataSource {
         read(
             readURL, 
             fileProvider: fileProvider,
-            byTime: byTime,
+            timeout: timeout,
             queue: operationQueue,
             completionQueue: operationQueue, 
             completion: { [self] result in 
@@ -219,7 +217,7 @@ public final class OneDriveDataSource: DataSource {
                             dataToWrite,
                             to: writeURL, 
                             fileProvider: fileProvider,
-                            byTime: .now() + OneDriveDataSource.defaultTimeout,
+                            timeout: Timeout(duration: timeout.duration),
                             queue: operationQueue,
                             completionQueue: completionQueue,
                             completion: completion

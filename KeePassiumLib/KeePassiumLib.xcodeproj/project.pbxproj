@@ -67,6 +67,7 @@
 		75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA9B50272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift */; };
 		75AA9B53272FFAA600863B98 /* QuickTypeAutoFillStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA9B52272FFAA600863B98 /* QuickTypeAutoFillStorage.swift */; };
 		75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */; };
+		75AEAFA429871F25008F6F4C /* Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AEAFA329871F25008F6F4C /* Timeout.swift */; };
 		75AF1926282E593400FA4BB5 /* InclusionCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1925282E593400FA4BB5 /* InclusionCondition.swift */; };
 		75AF1928282E5A9200FA4BB5 /* PasswordGeneratorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1927282E5A9200FA4BB5 /* PasswordGeneratorMode.swift */; };
 		75AF192A282E5B2F00FA4BB5 /* BasicPasswordGeneratorParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1929282E5B2F00FA4BB5 /* BasicPasswordGeneratorParams.swift */; };
@@ -297,6 +298,7 @@
 		75AC534A2326FCDB000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC53A2232766EB000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+extensions.swift"; sourceTree = "<group>"; };
+		75AEAFA329871F25008F6F4C /* Timeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout.swift; sourceTree = "<group>"; };
 		75AF1925282E593400FA4BB5 /* InclusionCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InclusionCondition.swift; sourceTree = "<group>"; };
 		75AF1927282E5A9200FA4BB5 /* PasswordGeneratorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorMode.swift; sourceTree = "<group>"; };
 		75AF1929282E5B2F00FA4BB5 /* BasicPasswordGeneratorParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPasswordGeneratorParams.swift; sourceTree = "<group>"; };
@@ -820,6 +822,7 @@
 				75CD1523285F3929003C11DA /* TimeInterval+constants.swift */,
 				75F11C3B288580D4005B3DC0 /* URL+consts.swift */,
 				753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */,
+				75AEAFA329871F25008F6F4C /* Timeout.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1218,6 +1221,7 @@
 				758FF6D82902DB07007DE8EB /* RemoteFileItem.swift in Sources */,
 				75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */,
 				758FF6DB2902DB64007DE8EB /* OneDriveManager.swift in Sources */,
+				75AEAFA429871F25008F6F4C /* Timeout.swift in Sources */,
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
 				7524E74F288AA80500ECBEC8 /* LString+remote.swift in Sources */,
 				75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */,

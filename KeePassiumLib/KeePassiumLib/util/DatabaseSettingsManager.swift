@@ -178,7 +178,7 @@ public class DatabaseSettingsManager {
         {
             return autoFillValue
         }
-        return getSettings(for: databaseRef)?.fallbackTimeout ?? URLReference.defaultTimeout
+        return getSettings(for: databaseRef)?.fallbackTimeout ?? URLReference.defaultTimeoutDuration
     }
     
     

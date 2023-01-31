@@ -91,7 +91,7 @@ public class DatabaseFile: Eraseable {
     }
     
     public func resolveFileURL(
-        timeout: TimeInterval = URLReference.defaultTimeout,
+        timeout: Timeout,
         completionQueue: OperationQueue = .main,
         completion: @escaping (() -> Void)
     ) {

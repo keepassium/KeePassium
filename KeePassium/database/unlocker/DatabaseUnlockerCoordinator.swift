@@ -136,7 +136,8 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
             return
         }
         
-        fileRef.refreshInfo(timeout: 2) { [weak self] result in
+        let timeout = Timeout(duration: 2.0)
+        fileRef.refreshInfo(timeout: timeout) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(_):
@@ -321,10 +322,10 @@ extension DatabaseUnlockerCoordinator {
             databaseStatus.insert(.readOnly)
         }
         #if AUTOFILL_EXT
-        let fallbackTimeout = databaseSettingsManager
+        let fallbackTimeoutDuration = databaseSettingsManager
             .getFallbackTimeout(currentDatabaseRef, forAutoFill: true)
         #elseif MAIN_APP
-        let fallbackTimeout = databaseSettingsManager
+        let fallbackTimeoutDuration = databaseSettingsManager
             .getFallbackTimeout(currentDatabaseRef, forAutoFill: false)
         #endif
 
@@ -332,7 +333,7 @@ extension DatabaseUnlockerCoordinator {
             dbRef: currentDatabaseRef,
             compositeKey: compositeKey,
             status: databaseStatus,
-            timeout: fallbackTimeout,
+            timeout: Timeout(duration: fallbackTimeoutDuration),
             delegate: self
         )
         databaseLoader!.load()

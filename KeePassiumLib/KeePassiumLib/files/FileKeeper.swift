@@ -755,6 +755,7 @@ public class FileKeeper {
         FileDataProvider.read(
             sourceURL,
             fileProvider: fileProvider,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             completionQueue: operationQueue
         ) {
             [self] result in 

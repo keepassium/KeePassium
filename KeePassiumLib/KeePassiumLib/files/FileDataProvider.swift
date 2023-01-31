@@ -9,7 +9,7 @@
 import Foundation
 
 public final class FileDataProvider {
-    public static let defaultTimeout = URLReference.defaultTimeout
+    public static let defaultTimeoutDuration = URLReference.defaultTimeoutDuration
         
     fileprivate static let backgroundQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -42,7 +42,7 @@ extension FileDataProvider {
             accessCoordinator: dataSource.getAccessCoordinator(),
             intent: .readingIntent(with: fileURL, options: [.withoutChanges]),
             fileProvider: FileProvider.find(for: fileURL), 
-            byTime: .now() + FileDataProvider.defaultTimeout,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             queue: operationQueue,
             fileOperation: { url in
                 assert(operationQueue.isCurrent)
@@ -74,7 +74,7 @@ extension FileDataProvider {
         at fileURL: URL,
         fileProvider: FileProvider?,
         canUseCache: Bool,
-        byTime: DispatchTime = .now() + FileDataProvider.defaultTimeout,
+        timeout: Timeout,
         completionQueue: OperationQueue? = nil,
         completion: @escaping FileOperationCompletion<FileInfo>
     ) {
@@ -87,7 +87,7 @@ extension FileDataProvider {
             accessCoordinator: dataSource.getAccessCoordinator(),
             intent: .readingIntent(with: fileURL, options: [.resolvesSymbolicLink, .withoutChanges]),
             fileProvider: fileProvider,
-            byTime: byTime,
+            timeout: timeout,
             queue: operationQueue,
             fileOperation: { coordinatedURL in
                 assert(operationQueue.isCurrent)
@@ -101,7 +101,7 @@ extension FileDataProvider {
                     at: coordinatedURL,
                     fileProvider: fileProvider,
                     canUseCache: canUseCache,
-                    byTime: byTime,
+                    timeout: timeout,
                     queue: operationQueue,
                     completionQueue: completionQueue,
                     completion: completion
@@ -115,13 +115,13 @@ extension FileDataProvider {
     public static func read(
         _ fileRef: URLReference,
         queue: OperationQueue? = nil,
-        byTime: DispatchTime = .now() + FileDataProvider.defaultTimeout,
+        timeout: Timeout,
         completionQueue: OperationQueue? = nil,
         completion: @escaping FileOperationCompletion<ByteArray>
     ) {
         let operationQueue = queue ?? FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
-        fileRef.resolveAsync(byTime: byTime, callbackQueue: operationQueue) {
+        fileRef.resolveAsync(timeout: timeout, callbackQueue: operationQueue) {
             assert(operationQueue.isCurrent)
             switch $0 {
             case .success(let prefixedFileURL):
@@ -129,7 +129,7 @@ extension FileDataProvider {
                     prefixedFileURL,
                     fileProvider: fileRef.fileProvider,
                     queue: operationQueue,
-                    byTime: byTime,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -146,7 +146,7 @@ extension FileDataProvider {
         _ fileURL: URL,
         fileProvider: FileProvider?,
         queue: OperationQueue? = nil,
-        byTime: DispatchTime = .now() + FileDataProvider.defaultTimeout,
+        timeout: Timeout,
         completionQueue: OperationQueue? = nil,
         completion: @escaping FileOperationCompletion<ByteArray>
     ) {
@@ -158,7 +158,7 @@ extension FileDataProvider {
             accessCoordinator: dataSource.getAccessCoordinator(),
             intent: .readingIntent(with: fileURL, options: [.forUploading]),
             fileProvider: fileProvider,
-            byTime: byTime,
+            timeout: timeout,
             queue: operationQueue,
             fileOperation: { (coordinatedURL) in
                 assert(operationQueue.isCurrent)
@@ -170,7 +170,7 @@ extension FileDataProvider {
                 dataSource.read(
                     coordinatedURL,
                     fileProvider: fileProvider,
-                    byTime: byTime,
+                    timeout: timeout,
                     queue: operationQueue,
                     completionQueue: completionQueue,
                     completion: completion
@@ -186,7 +186,7 @@ extension FileDataProvider {
         to fileURL: URL,
         fileProvider: FileProvider?,
         queue: OperationQueue? = nil,
-        byTime: DispatchTime = .now() + FileDataProvider.defaultTimeout,
+        timeout: Timeout,
         completionQueue: OperationQueue? = nil,
         completion: @escaping (Result<Void, FileAccessError>) -> Void
     ) {
@@ -199,7 +199,7 @@ extension FileDataProvider {
             accessCoordinator: dataSource.getAccessCoordinator(),
             intent: .writingIntent(with: fileURL, options: [.forMerging]),
             fileProvider: fileProvider,
-            byTime: byTime,
+            timeout: timeout,
             queue: operationQueue,
             fileOperation: { coordintedURL in
                 assert(operationQueue.isCurrent)
@@ -212,7 +212,7 @@ extension FileDataProvider {
                     data,
                     to: coordintedURL,
                     fileProvider: fileProvider,
-                    byTime: byTime,
+                    timeout: timeout,
                     queue: operationQueue,
                     completionQueue: completionQueue,
                     completion: completion
@@ -228,7 +228,7 @@ extension FileDataProvider {
         fileProvider: FileProvider?,
         queue: OperationQueue? = nil,
         outputDataSource: @escaping (_ url: URL, _ newData: ByteArray) throws -> ByteArray?,
-        byTime: DispatchTime = .now() + FileDataProvider.defaultTimeout,
+        timeout: Timeout,
         completionQueue: OperationQueue? = nil,
         completion: @escaping (Result<Void, FileAccessError>) -> Void
     ) {
@@ -241,7 +241,7 @@ extension FileDataProvider {
             accessCoordinator: dataSource.getAccessCoordinator(),
             fileURL: fileURL,
             fileProvider: fileProvider,
-            byTime: byTime,
+            timeout: timeout,
             queue: operationQueue,
             fileOperation: { readURL, writeURL in
                 assert(operationQueue.isCurrent)
@@ -255,7 +255,7 @@ extension FileDataProvider {
                     to: writeURL,
                     fileProvider: fileProvider,
                     outputDataSource: outputDataSource,
-                    byTime: byTime,
+                    timeout: timeout,
                     queue: operationQueue,
                     completionQueue: completionQueue,
                     completion: completion
@@ -273,7 +273,7 @@ extension FileDataProvider {
         accessCoordinator: FileAccessCoordinator,
         intent: NSFileAccessIntent,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         fileOperation: @escaping (URL) -> Void,
         completionQueue: OperationQueue,
@@ -281,7 +281,7 @@ extension FileDataProvider {
     ) {
         var hasStartedCoordinating = false
         var hasTimedOut = false
-        coordinatorSyncQueue.asyncAfter(deadline: byTime) {
+        coordinatorSyncQueue.asyncAfter(deadline: timeout.deadline) {
             if hasStartedCoordinating {
                 return
             }
@@ -321,7 +321,7 @@ extension FileDataProvider {
         accessCoordinator: FileAccessCoordinator,
         fileURL: URL,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         fileOperation: @escaping (URL, URL) -> Void,
         completionQueue: OperationQueue,
@@ -329,7 +329,7 @@ extension FileDataProvider {
     ) {
         var hasStartedCoordinating = false
         var hasTimedOut = false
-        coordinatorSyncQueue.asyncAfter(deadline: byTime) {
+        coordinatorSyncQueue.asyncAfter(deadline: timeout.deadline) {
             if hasStartedCoordinating {
                 return
             }

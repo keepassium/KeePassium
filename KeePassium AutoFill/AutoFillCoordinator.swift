@@ -307,14 +307,14 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         }
         log.debug("Got stored master key for \(dbRef.visibleFileName, privacy: .private)")
         
-        let timeout = databaseSettingsManager.getFallbackTimeout(dbRef, forAutoFill: true)
+        let timeoutDuration = databaseSettingsManager.getFallbackTimeout(dbRef, forAutoFill: true)
         
         assert(self.quickTypeDatabaseLoader == nil)
         quickTypeDatabaseLoader = DatabaseLoader(
             dbRef: dbRef,
             compositeKey: masterKey,
             status: [.readOnly],
-            timeout: timeout,
+            timeout: Timeout(duration: timeoutDuration),
             delegate: self
         )
         log.trace("Will load database")

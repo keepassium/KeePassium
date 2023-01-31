@@ -12,6 +12,7 @@ public extension KeyHelper {
         password: String,
         keyFile keyFileRef: URLReference?,
         challengeHandler: ChallengeHandler?,
+        timeout: Timeout = Timeout(duration: FileDataProvider.defaultTimeoutDuration),
         completionQueue: DispatchQueue = .main,
         completion: @escaping((Result<CompositeKey, String>) -> Void)
     ) {
@@ -26,7 +27,7 @@ public extension KeyHelper {
             return
         }
         
-        FileDataProvider.read(keyFileRef, completionQueue: nil) { result in
+        FileDataProvider.read(keyFileRef, timeout: timeout, completionQueue: nil) { result in
             assert(!Thread.isMainThread)
             switch result {
             case .success(let keyFileData):

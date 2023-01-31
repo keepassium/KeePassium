@@ -143,7 +143,7 @@ extension RemoteFilePickerCoordinator {
         WebDAVManager.shared.getFileInfo(
             url: url.withoutSchemePrefix(),
             credential: credential,
-            timeout: FileDataProvider.defaultTimeout,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             completion: { [weak self, weak viewController] result in
                 guard let self = self, let viewController = viewController else { return }
                 viewController.setState(isBusy: false)

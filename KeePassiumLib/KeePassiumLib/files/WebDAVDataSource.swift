@@ -9,8 +9,6 @@
 import Foundation
 
 public final class WebDAVDataSource: DataSource {
-    static let defaultTimeout = URLReference.defaultTimeout
-
     func getAccessCoordinator() -> FileAccessCoordinator {
         return PassthroughFileAccessCoordinator()
     }
@@ -19,7 +17,7 @@ public final class WebDAVDataSource: DataSource {
         at url: URL,
         fileProvider: FileProvider?,
         canUseCache: Bool,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<FileInfo>
@@ -42,7 +40,7 @@ public final class WebDAVDataSource: DataSource {
         WebDAVManager.shared.getFileInfo(
             url: WebDAVFileURL.getNakedURL(from: url),
             credential: credential,
-            timeout: FileDataProvider.defaultTimeout,
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: completion
         )
@@ -52,7 +50,7 @@ public final class WebDAVDataSource: DataSource {
     public func read(
         _ url: URL,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<ByteArray>
@@ -75,7 +73,7 @@ public final class WebDAVDataSource: DataSource {
         WebDAVManager.shared.downloadFile(
             url: WebDAVFileURL.getNakedURL(from: url),
             credential: credential,
-            timeout: FileDataProvider.defaultTimeout,
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: completion
         )
@@ -85,7 +83,7 @@ public final class WebDAVDataSource: DataSource {
         _ data: ByteArray,
         to url: URL,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<Void>
@@ -109,7 +107,7 @@ public final class WebDAVDataSource: DataSource {
             data: data,
             url: WebDAVFileURL.getNakedURL(from: url),
             credential: credential,
-            timeout: FileDataProvider.defaultTimeout,
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: completion
         )
@@ -120,7 +118,7 @@ public final class WebDAVDataSource: DataSource {
         to writeURL: URL,
         fileProvider: FileProvider?,
         outputDataSource: @escaping (_ url: URL, _ oldData: ByteArray) throws -> ByteArray?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<Void>
@@ -138,7 +136,7 @@ public final class WebDAVDataSource: DataSource {
         read(
             readURL, 
             fileProvider: fileProvider,
-            byTime: byTime,
+            timeout: timeout,
             queue: operationQueue,
             completionQueue: operationQueue, 
             completion: { [self] result in 
@@ -158,7 +156,7 @@ public final class WebDAVDataSource: DataSource {
                             dataToWrite,
                             to: writeURL, 
                             fileProvider: fileProvider,
-                            byTime: .now() + WebDAVDataSource.defaultTimeout,
+                            timeout: Timeout(duration: timeout.duration),
                             queue: operationQueue,
                             completionQueue: completionQueue,
                             completion: completion

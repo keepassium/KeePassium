@@ -14,7 +14,7 @@ protocol DatabaseSaving: DatabaseSaverDelegate {
     var databaseSaver: DatabaseSaver? { get set }
     var savingProgressHost: ProgressViewHost? { get }
     
-    func saveDatabase(_ databaseFile: DatabaseFile)
+    func saveDatabase(_ databaseFile: DatabaseFile, timeout: Timeout)
     
     func willStartSaving(databaseFile: DatabaseFile)
     func canCancelSaving(databaseFile: DatabaseFile) -> Bool
@@ -29,10 +29,14 @@ protocol DatabaseSaving: DatabaseSaverDelegate {
 }
 
 extension DatabaseSaving {
-    func saveDatabase(_ databaseFile: DatabaseFile) {
+    func saveDatabase(
+        _ databaseFile: DatabaseFile,
+        timeout: Timeout = Timeout(duration: FileDataProvider.defaultTimeoutDuration)
+    ) {
         assert(databaseSaver == nil)
         databaseSaver = DatabaseSaver(
             databaseFile: databaseFile,
+            timeout: timeout,
             delegate: self)
         databaseSaver!.save()
     }

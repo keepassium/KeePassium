@@ -206,6 +206,7 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
                 .updateLatestBackup,  
                 .updateQuickAutoFill, 
             ],
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             delegate: self
         )
         databaseSaver!.save()

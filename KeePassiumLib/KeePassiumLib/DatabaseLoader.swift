@@ -158,7 +158,7 @@ public class DatabaseLoader: ProgressObserver {
     private let dbRef: URLReference
     private let compositeKey: CompositeKey
     public let status: DatabaseFile.Status
-    public let timeout: TimeInterval
+    public let timeout: Timeout
     
     private var isReadOnly: Bool {
         status.contains(.readOnly)
@@ -180,7 +180,7 @@ public class DatabaseLoader: ProgressObserver {
         dbRef: URLReference,
         compositeKey: CompositeKey,
         status: DatabaseFile.Status,
-        timeout: TimeInterval,
+        timeout: Timeout,
         delegate: DatabaseLoaderDelegate,
         delegateQueue: DispatchQueue = .main
     ) {
@@ -286,7 +286,7 @@ public class DatabaseLoader: ProgressObserver {
             url,
             fileProvider: fileProvider,
             queue: operationQueue,
-            byTime: .now() + timeout,
+            timeout: timeout,
             completionQueue: operationQueue,
             completion: {
                 [weak self] (result) in
@@ -371,7 +371,7 @@ public class DatabaseLoader: ProgressObserver {
             url,
             fileProvider: fileProvider,
             queue: operationQueue,
-            byTime: .now() + timeout,
+            timeout: timeout,
             completionQueue: operationQueue,
             completion: {
                 [weak self] (result) in

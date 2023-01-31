@@ -104,7 +104,7 @@ public class URLReference:
         }
     }
     
-    public static let defaultTimeout: TimeInterval = 10.0
+    public static let defaultTimeoutDuration: TimeInterval = 10.0
     
     public var visibleFileName: String { return url?.lastPathComponent ?? "?" }
     
@@ -338,19 +338,7 @@ public class URLReference:
     public typealias ResolveCallback = (Result<URL, FileAccessError>) -> ()
     
     public func resolveAsync(
-        timeout: TimeInterval = URLReference.defaultTimeout,
-        callbackQueue: OperationQueue = .main,
-        callback: @escaping ResolveCallback
-    ) {
-        resolveAsync(
-            byTime: .now() + timeout,
-            callbackQueue: callbackQueue,
-            callback: callback
-        )
-    }
-    
-    public func resolveAsync(
-        byTime: DispatchTime,
+        timeout: Timeout,
         callbackQueue: OperationQueue = .main,
         callback: @escaping ResolveCallback
     ) {
@@ -385,7 +373,7 @@ public class URLReference:
                 }
             }
             queue.async(execute: resolver)
-            switch resolver.wait(timeout: byTime) {
+            switch resolver.wait(timeout: timeout.deadline) {
             case .success:
                 break
             case .timedOut:
@@ -418,7 +406,11 @@ public class URLReference:
         }
     }
     
-    public func getCachedInfo(canFetch: Bool, completion callback: @escaping InfoCallback) {
+    public func getCachedInfo(
+        canFetch: Bool,
+        timeout: Timeout = Timeout(duration: URLReference.defaultTimeoutDuration),
+        completion callback: @escaping InfoCallback
+    ) {
         if let info = cachedInfo {
             DispatchQueue.main.async {
                 callback(.success(info))
@@ -429,19 +421,18 @@ public class URLReference:
                 callback(.failure(error))
                 return
             }
-            refreshInfo(completion: callback)
+            refreshInfo(timeout: timeout, completion: callback)
         }
     }
     
     
     public func refreshInfo(
-        timeout: TimeInterval = URLReference.defaultTimeout,
+        timeout: Timeout = Timeout(duration: URLReference.defaultTimeoutDuration),
         completionQueue: OperationQueue = .main,
         completion: @escaping InfoCallback
     ) {
-        let byTime = DispatchTime.now() + timeout
         registerInfoRefreshRequest(.added)
-        resolveAsync(byTime: byTime, callbackQueue: completionQueue) {
+        resolveAsync(timeout: timeout, callbackQueue: completionQueue) {
             [weak self] result in
             guard let self = self else { return }
 
@@ -451,7 +442,7 @@ public class URLReference:
                 self.refreshInfo(
                     for: url,
                     fileProvider: self.fileProvider,
-                    byTime: byTime,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -466,7 +457,7 @@ public class URLReference:
     private func refreshInfo(
         for url: URL,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping InfoCallback
     ) {
@@ -474,7 +465,7 @@ public class URLReference:
             at: url,
             fileProvider: fileProvider,
             canUseCache: false,
-            byTime: byTime,
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: { [weak self] result in
                 guard let self = self else { return }

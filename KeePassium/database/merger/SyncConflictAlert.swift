@@ -70,6 +70,7 @@ final class SyncConflictAlert: UIViewController, Refreshable {
                 at: remote,
                 fileProvider: FileProvider.find(for: remote), 
                 canUseCache: false,
+                timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
                 completionQueue: .main,
                 completion: { [weak self] result in
                     guard let self = self else { return }

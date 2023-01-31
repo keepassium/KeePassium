@@ -17,7 +17,7 @@ protocol DataSource {
         at url: URL,
         fileProvider: FileProvider?,
         canUseCache: Bool,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<FileInfo>
@@ -26,7 +26,7 @@ protocol DataSource {
     func read(
         _ url: URL,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<ByteArray>
@@ -36,7 +36,7 @@ protocol DataSource {
         _ data: ByteArray,
         to url: URL,
         fileProvider: FileProvider?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<Void>
@@ -47,7 +47,7 @@ protocol DataSource {
         to writeURL: URL,
         fileProvider: FileProvider?,
         outputDataSource: @escaping (_ url: URL, _ oldData: ByteArray) throws -> ByteArray?,
-        byTime: DispatchTime,
+        timeout: Timeout,
         queue: OperationQueue,
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<Void>

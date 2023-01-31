@@ -10,8 +10,6 @@ import Foundation
 import KeePassiumLib
 
 class FileInfoReloader: Synchronizable {
-    static let timeout = URLReference.defaultTimeout
-
     public var isRefreshing: Bool {
         return synchronized { [self] in
             self.refreshingRefsCount > 0

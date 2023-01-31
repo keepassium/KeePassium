@@ -17,7 +17,7 @@ internal protocol WebDAVRequest {
     var url: URL { get }
     var credential: URLCredential { get }
     var allowUntrustedCertificate: Bool { get }
-    var timeout: TimeInterval { get }
+    var timeout: Timeout { get }
     var cancelReason: WebDAVCancelReason? { get set }
     
     func makeURLRequest() -> URLRequest
@@ -31,7 +31,7 @@ internal class WebDAVRequestBase: WebDAVRequest {
     let url: URL
     let credential: URLCredential
     let allowUntrustedCertificate: Bool
-    let timeout: TimeInterval
+    let timeout: Timeout
     var cancelReason: WebDAVCancelReason?
     private(set) var receivedData: Data
     
@@ -39,7 +39,7 @@ internal class WebDAVRequestBase: WebDAVRequest {
         url: URL,
         credential: URLCredential,
         allowUntrustedCertificate: Bool,
-        timeout: TimeInterval
+        timeout: Timeout
     ) {
         self.url = url
         self.credential = credential
@@ -116,7 +116,7 @@ final class WebDAVInfoRequest: WebDAVRequestBase {
         url: URL,
         credential: URLCredential,
         allowUntrustedCertificate: Bool,
-        timeout: TimeInterval,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping Completion
     ) {
@@ -134,7 +134,7 @@ final class WebDAVInfoRequest: WebDAVRequestBase {
         var request = URLRequest(
             url: url,
             cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: timeout
+            timeoutInterval: timeout.remainingTimeInterval
         )
         request.httpMethod = "HEAD"
         if #available(iOS 15, *) {
@@ -185,7 +185,7 @@ final class WebDAVDownloadRequest: WebDAVRequestBase {
         url: URL,
         credential: URLCredential,
         allowUntrustedCertificate: Bool,
-        timeout: TimeInterval,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping Completion
     ) {
@@ -203,7 +203,7 @@ final class WebDAVDownloadRequest: WebDAVRequestBase {
         var request = URLRequest(
             url: url,
             cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: timeout
+            timeoutInterval: timeout.remainingTimeInterval
         )
         request.httpMethod = "GET"
         if #available(iOS 15, *) {
@@ -240,7 +240,7 @@ final class WebDAVUploadRequest: WebDAVRequestBase {
         credential: URLCredential,
         allowUntrustedCertificate: Bool,
         data: ByteArray,
-        timeout: TimeInterval,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping Completion
     ) {
@@ -259,7 +259,7 @@ final class WebDAVUploadRequest: WebDAVRequestBase {
         var request = URLRequest(
             url: url,
             cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: timeout
+            timeoutInterval: timeout.remainingTimeInterval
         )
         request.httpMethod = "PUT"
         request.httpBody = dataToUpload.asData

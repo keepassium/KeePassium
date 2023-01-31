@@ -100,7 +100,7 @@ final class FileInfoCoordinator: Coordinator {
 
 extension FileInfoCoordinator {
     private func setExcludedFromBackup(_ isExcluded: Bool) {
-        fileRef.resolveAsync(timeout: 1.0) { [weak self] result in
+        fileRef.resolveAsync(timeout: Timeout(duration: 1.0)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(var url):
