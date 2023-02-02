@@ -24,6 +24,43 @@ final public class RouterNavigationController: UINavigationController {
         return [escapeCommand] + (super.keyCommands ?? [])
     }
     
+    public init() {
+        super.init(navigationBarClass: nil, toolbarClass: nil)
+        setupBarAppearance()
+    }
+    
+    public override init(rootViewController: UIViewController) {
+        super.init(rootViewController: rootViewController)
+        setupBarAppearance()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupBarAppearance()
+    }
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        setupBarAppearance()
+    }
+    
+    private func setupBarAppearance() {
+        guard #available(iOS 15.0, *) else {
+            return
+        }
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithDefaultBackground()
+        navBarAppearance.backgroundColor = .systemBackground
+        navigationBar.standardAppearance = navBarAppearance
+        navigationBar.scrollEdgeAppearance = navBarAppearance
+        
+        let toolbarAppearance = UIToolbarAppearance()
+        toolbarAppearance.configureWithDefaultBackground()
+        toolbarAppearance.backgroundColor = .systemBackground
+        toolbar.standardAppearance = toolbarAppearance
+        toolbar.scrollEdgeAppearance = toolbarAppearance
+    }
+    
     @objc
     private func didPressEscapeKey() {
         if let router = router, router.canPopTopViewControllerFromKeyboard() {
