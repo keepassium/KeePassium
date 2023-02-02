@@ -136,7 +136,7 @@ To avoid backdoors in third-party code, it has been checked by the main develope
 
 KeePassium Password Manager
 
-Copyright ©2018–2020 [Andrei Popleteev](http://popleteev.com).
+Copyright ©2018–2023 [Andrei Popleteev](http://popleteev.com).
 
 KeePassium is a commercial open-source app, available under the  [GPLv3 license](https://choosealicense.com/licenses/gpl-3.0/). Our intention is to provide the maximal possible transparency: you can personally audit the code and build your own binary. 
 
