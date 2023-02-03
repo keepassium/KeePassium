@@ -1,6 +1,48 @@
 {
     "sections": [
         {
+            "version": "1.41",
+            "releaseDate": "2023-02-03T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Improved: Tapping the \"Show OTP\" button will also copy the OTP code to clipboard [thanks, Ray]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Announcements in AutoFill won't cover the search bar anymore [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Better handling of file operation timeouts, especially for WebDAV [thanks, Leonid]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: When a feature needs network access but the app is offline, KeePassium would ask for permission instead of showing an error [thanks, Raphael]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated FR/IT translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Moving items to a YubiKey-protected database could remove that protection (fixes #276) [thanks, Santiago]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Access to files in shared OneDrive folders (fixes #273) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Locking a database in AutoFill sometimes applied only to the cached file",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI improvements on iOS 15+",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.40",
             "releaseDate": "2022-12-22T00:00:00Z",
             "items": [

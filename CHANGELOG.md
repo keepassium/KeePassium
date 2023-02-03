@@ -1,5 +1,23 @@
 #CHANGELOG
 
+## [1.41.124] - 2023-02-03
+
+### Improved
+
+- Tapping the "Show OTP" button will also copy the OTP code to clipboard [thanks, Ray]
+- Announcements in AutoFill won't cover the search bar anymore [thanks, everyone]
+- Better handling of file operation timeouts, especially for WebDAV [thanks, Leonid]
+- When a feature needs network access but the app is offline, KeePassium would ask for permission instead of showing an error [thanks, Raphael]
+- Updated FR/IT translations [thanks, everyone]
+
+### Fixed
+
+- Moving items to a YubiKey-protected database could remove that protection (fixes #276) [thanks, Santiago]
+- Access to files in shared OneDrive folders (fixes #273) [thanks, everyone]
+- Locking a database in AutoFill sometimes applied only to the cached file
+- Minor UI improvements on iOS 15+
+
+
 ## [1.40.123] - 2022-12-23
 
 ### Fixed 
