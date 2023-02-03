@@ -5,7 +5,7 @@
 "BGv-TX-maE.text" = "Usa il file chiave senza aggiungerlo alla lista";
 
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
-"leO-vH-qBX.text" = "Usa solo password";
+"leO-vH-qBX.text" = "Usa solo la password";
 
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
 "Lod-RE-tcd.title" = "Aggiungi File Chiave";

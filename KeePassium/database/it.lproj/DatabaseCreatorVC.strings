@@ -11,7 +11,7 @@
 "uHk-Yt-mBh.placeholder" = "Password";
 
 /* Class = "UILabel"; text = "Master Key"; ObjectID = "VjQ-di-Ilx"; Note = "Common title for the password/key file fields."; */
-"VjQ-di-Ilx.text" = "Chiave Master";
+"VjQ-di-Ilx.text" = "Chiave Principale";
 
 /* Class = "UITextField"; placeholder = "e.g. MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
 "XNL-lc-2Ti.placeholder" = "es. MyPasswords";

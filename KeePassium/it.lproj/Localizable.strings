@@ -8,13 +8,13 @@
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Puoi anche archiviare alcune note, se vuoi.";
 
 /* Password for a sample entry. Translation is optional. */
-"[Database/Create/TemplateEntry/password] pa$$word" = "paga$$word";
+"[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
 
 /* Title for a sample entry */
 "[Database/Create/TemplateEntry/title] Sample Entry" = "Esempio di voce";
 
 /* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
-"[Database/Create/TemplateEntry/userName] john.smith" = "john.smith";
+"[Database/Create/TemplateEntry/userName] john.smith" = "mario.rossi";
 
 /* Predefined group in a new database */
 "[Database/Create/TemplateGroup/title] Email" = "Email";

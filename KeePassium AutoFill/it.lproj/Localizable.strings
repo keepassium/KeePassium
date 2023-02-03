@@ -2,7 +2,7 @@
 "[AutoFill/Search/callerID]" = "Caller ID: %@";
 
 /* No comment provided by engineer. */
-"[AutoFill/Setup/footer]" = "L'AutoFill non può accedere automaticamente ai file che hai già nell'app principale di KeePassium\n\nPerché? Dietro le quinte, il sistema tratta AutoFill come un'app separata, indipendente dal processo principale di KeePassium. Per ragioni di sicurezza, un’app non può semplicemente accedere a qualsiasi file esterno – a meno che non si colleghino esplicitamente questi file all'app. Pertanto, il sistema garantisce che l'applicazione possa accedere solo ai file che hai autorizzato.\n\nDi conseguenza, sia AutoFill che l'app principale di KeePassium devono avere le autorizzazioni necessarie per ogni file esterno. Fortunatamente si tratta di una procedura da eseguire una tantum.";
+"[AutoFill/Setup/footer]" = "L'AutoFill non può accedere automaticamente ai file che hai già nell'app principale di KeePassium.\n\nPerché? Dietro le quinte, il sistema tratta AutoFill come un'app separata, indipendente dal processo principale di KeePassium. Per ragioni di sicurezza, un’app non può semplicemente accedere a qualsiasi file esterno – a meno che non si colleghino esplicitamente questi file all'app. Pertanto, il sistema garantisce che l'applicazione possa accedere solo ai file che hai autorizzato.\n\nDi conseguenza, sia AutoFill che l'app principale di KeePassium devono avere le autorizzazioni necessarie per ogni file esterno. Fortunatamente si tratta di una procedura da eseguire una sola volta.";
 
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Mostra Password";

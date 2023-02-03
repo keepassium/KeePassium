@@ -5,13 +5,13 @@
 "e1v-nv-Mst.normalTitle" = "Effacer les clés principales";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "e6Y-AP-hag"; */
-"e6Y-AP-hag.footerTitle" = "Masquer les mots de passe et autres champs protégés par des astérisques (recommandé).";
+"e6Y-AP-hag.footerTitle" = "Masque les mots de passe et autres champs protégés par des astérisques (recommandé).";
 
 /* Class = "UITableViewSection"; headerTitle = "Protected Fields"; ObjectID = "e6Y-AP-hag"; */
 "e6Y-AP-hag.headerTitle" = "Champs protégés";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "Une fois que vous avez déverrouillé une base de données, sa clé principale peut être stockée dans le trousseau sécurisé du périphérique. La prochaine fois, KeePassium utilisera cette clé, de sorte que vous n'aurez plus à taper votre mot de passe maître complet. \n\n(les clés maîtresses sont automatiquement effacées lors de l'expiration de la session de base de données.)";
+"Faj-km-pM5.footerTitle" = "Une fois que vous déverrouillez une base de données, sa clé principale peut être stockée dans le trousseau sécurisé de l'appareil. La prochaine fois, KeePassium utilisera cette clé afin que vous n'ayez pas à taper votre mot de passe principal complet à nouveau.\n\n(Les clés principales sont automatiquement effacées lors du délai d'expiration de session de la base de données).";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Déverrouillage rapide";
@@ -29,7 +29,7 @@
 "hnI-Q8-Ixm.headerTitle" = "Presse-papiers";
 
 /* Class = "UILabel"; text = "Remember Master Keys"; ObjectID = "INJ-Cy-Tfo"; */
-"INJ-Cy-Tfo.text" = "Se souvenir des clés maîtresses";
+"INJ-Cy-Tfo.text" = "Se souvenir des clés principales";
 
 /* Class = "UILabel"; text = "Remember Key Files"; ObjectID = "JHl-o7-xHI"; */
 "JHl-o7-xHI.text" = "Se souvenir des fichiers clés";
@@ -41,7 +41,7 @@
 "Mxu-GP-FmN.headerTitle" = "Fichiers clés";
 
 /* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.footerTitle" = "Le délai d'expiration de la base de données ferme toutes les bases de données ouvertes et efface toutes les clés principales mémorisées après un certain temps.";
+"neJ-eG-TV7.footerTitle" = "Le délai d'expiration de session de base de données ferme toutes les bases de données ouvertes et efface toutes les clés principales mémorisées après un certain temps.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
 "neJ-eG-TV7.headerTitle" = "Verrouillage automatique";

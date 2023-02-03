@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
-"7bL-fQ-OUc.headerTitle" = "Retour sur expérience";
+"7bL-fQ-OUc.headerTitle" = "Retour d'expérience";
 
 /* Class = "UILabel"; text = "Proprietary license"; ObjectID = "7cl-Fc-8Nf"; */
 "7cl-Fc-8Nf.text" = "Licence propriétaire";
