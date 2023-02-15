@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.41.125] - 2023-02-15
+
+### Improved
+
+- OneDrive sign-in page will allow switching between accounts [thanks, Tom]
+
+### Fixed
+
+- macOS: Disable main menu when the app is locked [thanks, Sander]
+
+
 ## [1.41.124] - 2023-02-03
 
 ### Improved
