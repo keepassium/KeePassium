@@ -168,6 +168,9 @@ extension MainCoordinator {
 
 extension MainCoordinator {
     func canPerform(action: Action) -> Bool {
+        if isAppLockVisible {
+            return false
+        }
         switch action {
         case .showAboutScreen:
             return true
