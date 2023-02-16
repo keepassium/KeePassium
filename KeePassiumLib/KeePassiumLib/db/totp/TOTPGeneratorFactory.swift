@@ -20,15 +20,15 @@ public class TOTPGeneratorFactory {
     
     public static func makeGenerator(from fields: [EntryField]) -> TOTPGenerator? {
         if let totpField = find(SingleFieldFormat.fieldName, in: fields) {
-            return parseSingleFieldFormat(totpField.value)
+            return parseSingleFieldFormat(totpField.resolvedValue)
         } else {
             guard let seedField = find(SplitFieldFormat.seedFieldName, in: fields) else {
                 return nil
             }
             let settingsField = find(SplitFieldFormat.settingsFieldName, in: fields) 
             return SplitFieldFormat.parse(
-                seedString: seedField.value,
-                settingsString: settingsField?.value)
+                seedString: seedField.resolvedValue,
+                settingsString: settingsField?.resolvedValue)
         }
     }
     

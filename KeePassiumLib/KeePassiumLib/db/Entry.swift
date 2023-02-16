@@ -125,7 +125,7 @@ public class EntryField: Eraseable {
     }
     
     @discardableResult
-    public func resolveReferences<T>(entries: T, maxDepth: Int = 3) -> String
+    public func resolveReferences<T>(referrer: Entry, entries: T, maxDepth: Int = 3) -> String
         where T: Collection, T.Element: Entry
     {
         guard resolvedValueInternal == nil else {
@@ -135,6 +135,7 @@ public class EntryField: Eraseable {
         var _resolvedValue = value
         let status = EntryFieldReference.resolveReferences(
             in: value,
+            referrer: referrer,
             entries: entries,
             maxDepth: maxDepth,
             resolvedValue: &_resolvedValue

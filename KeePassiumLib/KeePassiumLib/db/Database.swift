@@ -144,7 +144,7 @@ open class Database: Eraseable {
         var entriesProcessed = 0
         allEntries.forEach { entry in
             entry.fields.forEach { field in
-                field.resolveReferences(entries: allEntries)
+                field.resolveReferences(referrer: entry, entries: allEntries)
             }
             entriesProcessed += 1
             if entriesProcessed % 100 == 0 {
