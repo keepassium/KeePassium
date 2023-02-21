@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KmH-Rg-WCs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KmH-Rg-WCs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -122,6 +122,12 @@
                                             <action selector="didPressSwitchKeyboard:" destination="KmH-Rg-WCs" eventType="touchUpInside" id="AYY-AQ-iAB"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Press Esc for Touch ID}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atY-8z-wKo">
+                                        <rect key="frame" x="134" y="531" width="146" height="16"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" name="AuxiliaryText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -134,14 +140,17 @@
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="Xb4-tK-S3a"/>
                                     <constraint firstItem="GK4-6p-jx8" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="YaM-aJ-ghi"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="top" priority="250" constant="32" id="b92-nV-xCo"/>
+                                    <constraint firstItem="atY-8z-wKo" firstAttribute="width" relation="lessThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="width" id="dAk-bF-2QN"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerY" secondItem="u9P-fB-zfA" secondAttribute="centerY" priority="750" id="dBk-f7-19f"/>
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="dZt-k0-KDh"/>
+                                    <constraint firstItem="atY-8z-wKo" firstAttribute="top" secondItem="GK4-6p-jx8" secondAttribute="bottom" constant="8" symbolic="YES" id="j55-pZ-UFk"/>
                                     <constraint firstItem="GK4-6p-jx8" firstAttribute="width" secondItem="ZTd-Zj-qAs" secondAttribute="width" id="ktX-r6-m2S"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="topMargin" id="lZx-Sc-BwX"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z0x-Rz-Nfj" secondAttribute="bottom" id="muI-ci-wh6"/>
                                     <constraint firstItem="z0x-Rz-Nfj" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="r0g-ql-wUj"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="topMargin" id="rei-9A-IvX"/>
                                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="3mQ-t6-0ty" secondAttribute="trailing" id="sQS-fD-2eK"/>
+                                    <constraint firstItem="atY-8z-wKo" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="wSS-GC-98Z"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="top" secondItem="3mQ-t6-0ty" secondAttribute="bottom" constant="16" id="zHd-pZ-S22"/>
                                 </constraints>
                             </view>
@@ -160,6 +169,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="h3e-d3-O0S"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="biometricsHintLabel" destination="atY-8z-wKo" id="ye2-HX-pqh"/>
                         <outlet property="cancelButton" destination="z0x-Rz-Nfj" id="JGh-R2-I7U"/>
                         <outlet property="instructionsLabel" destination="3mQ-t6-0ty" id="AtL-ka-xVR"/>
                         <outlet property="instructionsToCancelButtonConstraint" destination="muI-ci-wh6" id="stZ-Mn-YCw"/>
@@ -182,6 +192,9 @@
         </namedColor>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AuxiliaryText">
+            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="InputErrorBackground">
             <color red="0.94099998474121094" green="0.77100002765655518" blue="0.74599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

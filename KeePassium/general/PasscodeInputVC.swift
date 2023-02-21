@@ -44,6 +44,7 @@ class PasscodeInputVC: UIViewController {
     @IBOutlet weak var useBiometricsButton: UIButton!
     @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     @IBOutlet weak var instructionsToCancelButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var biometricsHintLabel: UILabel!
     
     public var mode: Mode = .setup
     public var shouldActivateKeyboard = true
@@ -151,6 +152,10 @@ class PasscodeInputVC: UIViewController {
         let biometryType = LAContext.getBiometryType()
         useBiometricsButton.setImage(biometryType.icon, for: .normal)
         useBiometricsButton.accessibilityLabel = biometryType.name
+        
+        let showMacOSBiometricHint = ProcessInfo.isRunningOnMac && !useBiometricsButton.isHidden
+        biometricsHintLabel.isHidden = !showMacOSBiometricHint
+        biometricsHintLabel.text = LString.hintPressEscForTouchID
     }
     
     private func updateKeyboardLayoutConstraints() {

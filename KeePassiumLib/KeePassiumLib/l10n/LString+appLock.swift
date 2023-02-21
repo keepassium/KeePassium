@@ -17,4 +17,9 @@ extension LString {
         bundle: Bundle.framework,
         value: "ABC→123",
         comment: "Action: change keyboard type to enter PIN numbers")
+    public static let hintPressEscForTouchID = NSLocalizedString(
+        "[AppLock/Passcode/pressEscForTouchID]",
+        bundle: Bundle.framework,
+        value: "Press Esc for Touch ID",
+        comment: "Hint/call to action about keyboard shortcut")
 }
