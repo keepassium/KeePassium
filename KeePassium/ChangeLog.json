@@ -2,8 +2,16 @@
     "sections": [
         {
             "version": "1.41",
-            "releaseDate": "2023-02-15T00:00:00Z",
+            "releaseDate": "2023-02-21T00:00:00Z",
             "items": [
+                {
+                    "title": "🧩 Added: Database printing",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Resolving KeePass' field placeholders (closes #260) [thanks, Mateusz]",
+                    "type": 1
+                },
                 {
                     "title": "🛠 Improved: OneDrive sign-in page will allow switching between accounts [thanks, Tom]",
                     "type": 1

@@ -1,5 +1,21 @@
 #CHANGELOG
 
+## [1.41.126] - 2023-02-21
+
+### Added
+
+- Database printing [thanks, everyone]
+- Resolving KeePass' field placeholders (closes #260) [thanks, Mateusz]
+
+### Improved
+
+- macOS: show hint about Esc shortcut for Touch ID [thanks, everyone]
+
+### Fixed
+
+- macOS: Removed an entitlement unsupported by the OS
+
+
 ## [1.41.125] - 2023-02-15
 
 ### Improved
