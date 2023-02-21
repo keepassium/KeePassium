@@ -15,7 +15,7 @@ public class PasswordStringHelper {
         public static let symbol = UIColor.passwordSymbols
     }
     
-    public static func decorate(_ password: String, font: UIFont?) -> NSAttributedString {
+    public static func decorate(_ password: String, font: UIFont?) -> NSMutableAttributedString {
         let baseFont = font ?? UIFont.monospaceFont(forTextStyle: .body)
         
         let result = NSMutableAttributedString()

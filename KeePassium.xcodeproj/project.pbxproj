@@ -175,6 +175,8 @@
 		754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
 		754BF08A2082A6BD00E3A292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		754BF08D2082A6BD00E3A292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */; };
+		754CE07B299FA80000C3DE50 /* DatabasePrintFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */; };
+		754CE07C299FA80000C3DE50 /* DatabasePrintFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */; };
 		754E40862630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
 		754E40872630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
 		754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
@@ -1393,6 +1395,7 @@
 		754BF0892082A6BD00E3A292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		754BF08C2082A6BD00E3A292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		754BF08E2082A6BD00E3A292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePrintFormatter.swift; sourceTree = "<group>"; };
 		754D7C1E238C384A005652E1 /* KeePassium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeePassium-Bridging-Header.h"; sourceTree = "<group>"; };
 		754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUnlockerCoordinator.swift; sourceTree = "<group>"; };
@@ -2357,6 +2360,7 @@
 				7516B0D427292A130042F40E /* UIMenu+extensions.swift */,
 				75264049284653580003DDFA /* TextInput+editMenu.swift */,
 				751DED722847B44B00B6D02E /* UITextInput+extensions.swift */,
+				754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3508,6 +3512,7 @@
 				75A26776228F02C80097C693 /* PremiumCoordinator.swift in Sources */,
 				757FB3CA21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				7573FD8B2321664F00DCDA5A /* MultilineButton.swift in Sources */,
+				754CE07B299FA80000C3DE50 /* DatabasePrintFormatter.swift in Sources */,
 				758FF6CA28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,
 				755B435B26BC894200C24386 /* TipBoxCoordinator.swift in Sources */,
 				7546FBC120BFB8DD00C5D834 /* WelcomeVC.swift in Sources */,
@@ -3709,6 +3714,7 @@
 				75B38C39233E5B7C006BDEFC /* PasscodeInputVC.swift in Sources */,
 				75B38C3A233E5B7C006BDEFC /* MultilineButton.swift in Sources */,
 				75B38C3C233E5B7C006BDEFC /* WelcomeVC.swift in Sources */,
+				754CE07C299FA80000C3DE50 /* DatabasePrintFormatter.swift in Sources */,
 				758FF6CC28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,
 				755B435F26BD606A00C24386 /* TipBoxCoordinator.swift in Sources */,
 				75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */,

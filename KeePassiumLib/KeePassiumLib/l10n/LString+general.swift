@@ -146,6 +146,12 @@ extension LString {
         value: "Export",
         comment: "Action/button to export an item to another app"
     )
+    public static let actionPrint = NSLocalizedString(
+        "[Generic] Print",
+        bundle: Bundle.framework,
+        value: "Print",
+        comment: "Action/button to print a document"
+    )
     public static let actionRevealInFinder = NSLocalizedString(
         "[Generic] Reveal in Finder",
         bundle: Bundle.framework,
@@ -392,6 +398,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Lock Database",
         comment: "Action/button to lock current database (the next time, it will ask for the master key)."
+    )
+    public static let databaseStatusPreparingPrintPreview = NSLocalizedString(
+        "[Database/Print/preparingPreview]",
+        bundle: Bundle.framework,
+        value: "Preparing preview…",
+        comment: "Status message: preparing database print preview."
     )
 
     

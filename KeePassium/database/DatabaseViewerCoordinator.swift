@@ -492,6 +492,45 @@ extension DatabaseViewerCoordinator {
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(itemRelocationCoordinator)
     }
+    
+    private func showDatabasePrintDialog(at popoverAnchor: PopoverAnchor) {
+        Diag.info("Will print database")
+        let databaseFormatter = DatabasePrintFormatter()
+        guard let formattedText = databaseFormatter.toAttributedString(
+            database: database,
+            title: databaseFile.visibleFileName)
+        else {
+            Diag.info("Could not format database for printing, skipping")
+            return
+        }
+        
+        if ProcessInfo.isRunningOnMac {
+            showProgressView(title: "", allowCancelling: false, animated: false)
+            let indefiniteProgress = ProgressEx()
+            indefiniteProgress.totalUnitCount = -1
+            indefiniteProgress.status = LString.databaseStatusPreparingPrintPreview
+            updateProgressView(with: indefiniteProgress)
+        }
+        
+        let printFormatter = UISimpleTextPrintFormatter(attributedText: formattedText)
+        printFormatter.perPageContentInsets = UIEdgeInsets(
+            top: 72,
+            left: 72,
+            bottom: 72,
+            right: 72
+        )
+        
+        let printController = UIPrintInteractionController.shared
+        printController.printFormatter = printFormatter
+        printController.present(animated: true, completionHandler: { [weak self] _,_,_ in
+            printController.printFormatter = nil
+            if ProcessInfo.isRunningOnMac {
+                self?.hideProgressView(animated: false)
+            }
+            Diag.debug("Print dialog closed")
+        })
+        Diag.debug("Preparing print preview")
+    }
 }
 
 extension DatabaseViewerCoordinator: SettingsObserver {
@@ -510,6 +549,10 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
 
     func didPressChangeMasterKey(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
         showMasterKeyChanger(at: popoverAnchor, in: viewController)
+    }
+
+    func didPressPrintDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
+        showDatabasePrintDialog(at: popoverAnchor)
     }
     
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {

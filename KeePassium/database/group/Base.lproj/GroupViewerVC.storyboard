@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rxg-rI-fqC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rxg-rI-fqC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +20,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmptyGroupCell" textLabel="QXa-eN-7am" style="IBUITableViewCellStyleDefault" id="xaz-4s-cHu">
-                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xaz-4s-cHu" id="3HB-93-0Jf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -39,7 +40,7 @@
                                 </attributedString>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NothingFoundCell" textLabel="tpA-i1-ah8" style="IBUITableViewCellStyleDefault" id="xUY-Ge-18Y">
-                                <rect key="frame" x="0.0" y="68" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="93.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xUY-Ge-18Y" id="Orl-Ia-20B">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -59,10 +60,10 @@
                                 </attributedString>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" id="MoA-V2-ZR5" customClass="GroupViewerGroupCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="111.5" width="375" height="51.5"/>
+                                <rect key="frame" x="0.0" y="137" width="375" height="51.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MoA-V2-ZR5" id="rfV-hX-YdO">
-                                    <rect key="frame" x="0.0" y="0.0" width="349.5" height="51.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="348.5" height="51.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/db-icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="raf-Bf-GLo">
@@ -74,7 +75,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="{Group Name}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uR-HK-1Dd">
-                                            <rect key="frame" x="61" y="17.5" width="92" height="17"/>
+                                            <rect key="frame" x="61" y="15.5" width="108.5" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <nil key="highlightedColor"/>
@@ -83,7 +84,7 @@
                                             </attributedString>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{nItems}" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttY-yZ-yRg">
-                                            <rect key="frame" x="287.5" y="17.5" width="54" height="17"/>
+                                            <rect key="frame" x="277" y="15.5" width="63.5" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="AuxiliaryText"/>
                                             <nil key="highlightedColor"/>
@@ -115,14 +116,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryCell" id="mqP-Mr-NTh" customClass="GroupViewerEntryCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="163" width="375" height="53"/>
+                                <rect key="frame" x="0.0" y="188.5" width="375" height="57.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mqP-Mr-NTh" id="gG2-77-V2H">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/db-icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="XYa-LO-MrH">
-                                            <rect key="frame" x="16" y="12" width="29" height="29"/>
+                                            <rect key="frame" x="16" y="14.5" width="29" height="29"/>
                                             <color key="tintColor" name="IconTint"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="29" id="3q2-Wj-yz5"/>
@@ -130,13 +131,13 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KqU-4H-iqE">
-                                            <rect key="frame" x="61" y="11.5" width="298" height="30.5"/>
+                                            <rect key="frame" x="61" y="11.5" width="298" height="35"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zQD-hA-ZaY" userLabel="Title Subtitle Stack">
-                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="30.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="152" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="{Entry Title}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-aR-wD3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="172" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="152" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" name="PrimaryText"/>
                                                             <nil key="highlightedColor"/>
@@ -145,7 +146,7 @@
                                                             </attributedString>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Entry Subtitle}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Db-9q-PM7">
-                                                            <rect key="frame" x="0.0" y="17" width="172" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="20.5" width="152" height="14.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" name="AuxiliaryText"/>
                                                             <nil key="highlightedColor"/>
@@ -156,7 +157,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-z3-IV4">
-                                                    <rect key="frame" x="176" y="4" width="25" height="22"/>
+                                                    <rect key="frame" x="156" y="6.5" width="25" height="22"/>
                                                     <color key="tintColor" name="AuxiliaryText"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="X8P-x6-Nzw"/>
@@ -165,7 +166,7 @@
                                                     <imageReference key="image" image="paperclip" catalog="system" symbolScale="small" renderingMode="template"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="{OTPValue}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAn-LR-hxd" customClass="OTPView" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="180" y="6.5" width="74" height="17"/>
+                                                    <rect key="frame" x="160" y="7" width="87" height="20.5"/>
                                                     <color key="tintColor" name="WarningBackground"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
@@ -175,7 +176,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2j-8N-gU5">
-                                                    <rect key="frame" x="262" y="1" width="36" height="28"/>
+                                                    <rect key="frame" x="255" y="1.5" width="43" height="32"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <state key="normal" title="{OTP}"/>
                                                     <connections>
@@ -240,6 +241,13 @@
                                 <action selector="didPressChangeDatabaseSettings:" destination="Rxg-rI-fqC" id="GI8-hw-rx1"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zgU-y1-cjL"/>
+                        <barButtonItem id="skd-dl-nXZ" userLabel="Print Button">
+                            <imageReference key="image" image="printer" catalog="system" symbolScale="default" renderingMode="template"/>
+                            <connections>
+                                <action selector="didPressPrintDatabase:" destination="Rxg-rI-fqC" id="mgJ-Ye-Rbb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="3c2-tf-H4L"/>
                         <barButtonItem image="settings-toolbar" style="plain" id="rF3-mC-kj1">
                             <userDefinedRuntimeAttributes>
@@ -258,6 +266,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="changeMasterKeyButton" destination="qkh-6K-yQW" id="G6S-sf-hF1"/>
+                        <outlet property="printButton" destination="skd-dl-nXZ" id="euh-ff-ckU"/>
                         <outlet property="sortOrderButton" destination="M5a-Ld-ZXd" id="eOe-PN-cG0"/>
                     </connections>
                 </tableViewController>
@@ -272,6 +281,7 @@
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <image name="lock-database-toolbar" width="25" height="25"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
+        <image name="printer" catalog="system" width="128" height="111"/>
         <image name="settings-toolbar" width="25" height="25"/>
         <image name="sort-order-toolbar" width="25" height="25"/>
         <namedColor name="ActionTint">

@@ -11,6 +11,7 @@ import KeePassiumLib
 protocol GroupViewerDelegate: AnyObject {
     func didPressLockDatabase(in viewController: GroupViewerVC)
     func didPressChangeMasterKey(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
+    func didPressPrintDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool
@@ -83,7 +84,8 @@ final class GroupViewerVC:
     weak var delegate: GroupViewerDelegate?
     
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
-    @IBOutlet weak var changeMasterKeyButton: UIBarButtonItem!
+    @IBOutlet private weak var changeMasterKeyButton: UIBarButtonItem!
+    @IBOutlet private weak var printButton: UIBarButtonItem!
     
     weak var group: Group? {
         didSet {
@@ -137,8 +139,11 @@ final class GroupViewerVC:
             primaryAction: nil,
             menu: nil)
         navigationItem.setRightBarButton(createItemButton, animated: false)
-        
         navigationItem.titleView = titleView
+        
+        printButton.title = LString.actionPrint
+        printButton.image = UIImage.get(.printer)?
+            .withConfiguration(UIImage.SymbolConfiguration(weight: .light))
         
         settingsNotifications = SettingsNotifications(observer: self)
         
@@ -806,6 +811,11 @@ final class GroupViewerVC:
     @IBAction func didPressChangeDatabaseSettings(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressChangeMasterKey(at: popoverAnchor, in: self)
+    }
+    
+    @IBAction func didPressPrintDatabase(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressPrintDatabase(at: popoverAnchor, in: self)
     }
 }
 
