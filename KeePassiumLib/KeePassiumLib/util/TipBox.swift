@@ -71,6 +71,9 @@ final public class TipBox {
         case .initialGracePeriod, .subscribed, .lapsed:
             return false
         case .fallback:
+            if PremiumManager.shared.isPremiumSupportAvailable() {
+                return false // don't annoy "recent" version purchasers
+            }
             suggestionInterval = 6 * .month
         case .freeLightUse:
             suggestionInterval = 3 * .month
