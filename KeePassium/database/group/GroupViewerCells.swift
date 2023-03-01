@@ -40,11 +40,20 @@ final class GroupViewerEntryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        resetView()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        resetView()
+    }
+
+    private func resetView() {
         attachmentIndicator.isHidden = true
         showOTPButton.isHidden = true
         otpView.isHidden = true
         showOTPButton.setTitle("", for: .normal)
-        showOTPButton.accessibilityLabel = "OTP"
+        showOTPButton.accessibilityLabel = LString.fieldOTP
         showOTPButton.setImage(UIImage.get(.clock), for: .normal)
         otpView.tapHandler = { [weak self] in
             self?.animateOTPValue(visible: false)
