@@ -101,6 +101,7 @@ final public class OneDriveManager: NSObject {
         static let email = "email"
         static let error = "error"
         static let errorDescription = "error_description"
+        static let errorURI = "error_uri"
         static let expiresIn = "expires_in"
         static let id = "id"
         static let file = "file"
@@ -165,7 +166,7 @@ extension OneDriveManager {
         }
 
         if let serverMessage = getServerErrorMessage(from: json) {
-            Diag.error("OneDrive request failed: server-side error [operation: \(operation), message: \(serverMessage )]")
+            Diag.error("OneDrive request failed: server-side error [operation: \(operation), message: \(serverMessage)]")
             return .failure(.serverSideError(message: serverMessage ))
         }
         return .success(json)
@@ -190,12 +191,25 @@ extension OneDriveManager {
         guard let errorObject = json[Keys.error] else { 
             return nil
         }
-        guard let errorDict = errorObject as? [String: Any] else {
-            return String(describing: errorObject)
+        
+        let errorMessage: String?
+        if let errorDict = errorObject as? [String: Any] {
+            errorMessage = errorDict[Keys.message] as? String
+        } else {
+            errorMessage = String(describing: errorObject)
         }
-        Diag.error(errorDict.description)
-        let message = errorDict[Keys.message] as? String
-        return message
+        
+        var errorDetails = [String]()
+        errorDetails.append(errorMessage ?? "")
+        if let errorDescription = json[Keys.errorDescription] as? String {
+            errorDetails.append(errorDescription)
+        }
+        if let errorURI = json[Keys.errorURI] as? String {
+            errorDetails.append(errorURI)
+        }
+        Diag.error(errorDetails.joined(separator: "\n"))
+
+        return errorMessage
     }
 }
 
@@ -970,7 +984,7 @@ extension OneDriveManager {
     }
     
     private func parseUploadDataResponse(_ json: [String: Any]) -> String? {
-        Diag.debug("Upload successful [response: \(json.description)]")
+        Diag.debug("Upload complete")
         guard let fileName = json[Keys.name] as? String else {
             Diag.debug("Failed to parse upload response: name field missing")
             return nil
