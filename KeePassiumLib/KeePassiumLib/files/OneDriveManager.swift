@@ -316,7 +316,6 @@ extension OneDriveManager {
         var postParams = [
             "client_id=\(AuthConfig.clientID)",
             "redirect_uri=\(AuthConfig.redirectURI)",
-            "scope=\(AuthConfig.scope)",
         ]
         
         let refreshToken: String?
