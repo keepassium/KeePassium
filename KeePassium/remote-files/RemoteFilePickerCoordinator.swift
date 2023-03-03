@@ -108,10 +108,6 @@ extension RemoteFilePickerCoordinator: RemoteFilePickerDelegate {
             credential: credential,
             viewController: viewController)
     }
-    
-    func didPressLoginToOneDrive(privateSession: Bool, in viewController: RemoteFilePickerVC) {
-        startOneDriveSignIn(privateSession: privateSession, viewController: viewController)
-    }
 }
 
 extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
@@ -128,7 +124,13 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
     }
     
     func didSelect(connectionType: RemoteConnectionType, in viewController: ConnectionTypePickerVC) {
-        showSourceSelector(connectionType: connectionType)
+        switch connectionType {
+        case .webdav:
+            showSourceSelector(connectionType: connectionType)
+        case .oneDrive, .oneDriveForBusiness:
+            startOneDriveSignIn(privateSession: false, viewController: viewController)
+        }
+        
     }
 }
 
@@ -160,7 +162,7 @@ extension RemoteFilePickerCoordinator {
         )
     }
     
-    private func startOneDriveSignIn(privateSession: Bool, viewController: RemoteFilePickerVC) {
+    private func startOneDriveSignIn(privateSession: Bool, viewController: ConnectionTypePickerVC) {
         viewController.setState(isBusy: true)
         OneDriveManager.shared.authenticate(
             presenter: viewController,
@@ -186,7 +188,7 @@ extension RemoteFilePickerCoordinator {
 }
 
 extension RemoteFilePickerCoordinator {
-    private func startAddingOneDriveFile(token: OAuthToken, viewController: RemoteFilePickerVC) {
+    private func startAddingOneDriveFile(token: OAuthToken, viewController: ConnectionTypePickerVC) {
         OneDriveManager.shared.getDriveInfo(parent: nil, freshToken: token) {
             [weak self, weak viewController] result in
             guard let self = self, let viewController = viewController else { return }

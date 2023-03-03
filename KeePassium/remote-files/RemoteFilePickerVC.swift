@@ -15,7 +15,6 @@ protocol RemoteFilePickerDelegate: AnyObject {
         credential: NetworkCredential,
         in viewController: RemoteFilePickerVC
     )
-    func didPressLoginToOneDrive(privateSession: Bool, in viewController: RemoteFilePickerVC)
 }
 
 final class RemoteFilePickerVC: UITableViewController {
@@ -378,13 +377,6 @@ extension RemoteFilePickerVC {
         cell.button.setTitle(LString.actionSignInToOneDrive, for: .normal)
         cell.button.contentHorizontalAlignment = .center
         cell.button.isEnabled = !isBusy
-        cell.buttonPressHandler = { [weak self] theSwitch in
-            guard let self = self else { return }
-            self.delegate?.didPressLoginToOneDrive(
-                privateSession: self.oneDrivePrivateSession,
-                in: self
-            )
-        }
     }
     
     private func configureOneDrivePrivateSessionCell(_ cell: SwitchCell) {

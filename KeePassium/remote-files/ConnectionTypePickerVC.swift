@@ -23,8 +23,17 @@ final class ConnectionTypePickerVC: UITableViewController, Refreshable {
     public weak var delegate: ConnectionTypePickerDelegate?
 
     public let values = RemoteConnectionType.allValues
-    
     public var selectedValue: RemoteConnectionType?
+    
+    private lazy var titleView: SpinnerLabel = {
+        let view = SpinnerLabel(frame: .zero)
+        view.label.text = LString.titleConnection
+        view.label.font = .preferredFont(forTextStyle: .headline)
+        view.spinner.startAnimating()
+        return view
+    }()
+    private var isBusy = false
+    
     
     public static func make() -> ConnectionTypePickerVC {
         return ConnectionTypePickerVC(style: .insetGrouped)
@@ -32,7 +41,7 @@ final class ConnectionTypePickerVC: UITableViewController, Refreshable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = LString.titleConnection
+        navigationItem.titleView = titleView
 
         tableView.register(
             SubtitleCell.classForCoder(),
@@ -42,6 +51,12 @@ final class ConnectionTypePickerVC: UITableViewController, Refreshable {
     
     func refresh() {
         tableView.reloadData()
+    }
+    
+    public func setState(isBusy: Bool) {
+        titleView.showSpinner(isBusy, animated: true)
+        self.isBusy = isBusy
+        refresh()
     }
 }
 
@@ -67,19 +82,27 @@ extension ConnectionTypePickerVC {
         cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.image = value.icon
         cell.selectionStyle = .default
-        
+        cell.setEnabled(!isBusy)
+
         if value.isPremiumUpgradeRequired {
             cell.accessoryType = .none
             cell.accessoryView = PremiumBadgeAccessory()
         } else {
             cell.accessoryView = nil
-            cell.accessoryType = value == selectedValue ? .checkmark : .none
+            cell.accessoryType = .disclosureIndicator
         }
         return cell
     }
 }
 
 extension ConnectionTypePickerVC {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if isBusy {
+            return nil
+        }
+        return indexPath
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedValue = values[indexPath.row]
         let canSelect = delegate?.willSelect(connectionType: selectedValue, in: self) ?? false
