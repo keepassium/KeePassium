@@ -41,8 +41,10 @@ final class ConnectionTypePickerVC: UITableViewController, Refreshable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.titleView = titleView
-
+        navigationItem.title = titleView.label.text
+        
         tableView.register(
             SubtitleCell.classForCoder(),
             forCellReuseIdentifier: CellID.itemCell)

@@ -189,9 +189,11 @@ extension RemoteFilePickerCoordinator {
 
 extension RemoteFilePickerCoordinator {
     private func startAddingOneDriveFile(token: OAuthToken, viewController: ConnectionTypePickerVC) {
+        viewController.setState(isBusy: true)
         OneDriveManager.shared.getDriveInfo(parent: nil, freshToken: token) {
             [weak self, weak viewController] result in
             guard let self = self, let viewController = viewController else { return }
+            viewController.setState(isBusy: false)
             switch result {
             case .success(let driveInfo):
                 self.oneDriveAccount = OneDriveAccount(
@@ -217,7 +219,7 @@ extension RemoteFilePickerCoordinator {
         }
     }
     
-    private func showOneDriveWelcomeFolder(presenter: UIViewController) {
+    private func showOneDriveWelcomeFolder(presenter: ConnectionTypePickerVC) {
         guard let oneDriveAccount = oneDriveAccount else {
             Diag.warning("Not signed into any OneDrive account")
             assertionFailure()
@@ -233,12 +235,14 @@ extension RemoteFilePickerCoordinator {
         router.push(vc, animated: true, onPop: {})
     }
     
-    private func showOneDriveFolder(folder: OneDriveItem, presenter: UIViewController) {
+    private func showOneDriveFolder(folder: OneDriveItem, presenter: RemoteFolderViewerVC) {
         guard let oneDriveAccount = oneDriveAccount else {
             Diag.warning("Not signed into any OneDrive account")
             assertionFailure()
             return
         }
+        
+        presenter.setState(isBusy: true)
         OneDriveManager.shared.getItems(
             in: folder,
             token: oneDriveAccount.token,
@@ -246,6 +250,7 @@ extension RemoteFilePickerCoordinator {
         ) {
             [weak self, weak presenter] result in
             guard let self = self else { return }
+            presenter?.setState(isBusy: false)
             switch result {
             case .success(let items):
                 let vc = RemoteFolderViewerVC.make()
