@@ -136,7 +136,7 @@ extension RemoteFolderViewerVC {
     
     private func configureFolderCell(_ cell: SubtitleCell, item: RemoteFileItem) {
         cell.textLabel?.font = .preferredFont(forTextStyle: .headline)
-        cell.textLabel?.text = item.fileInfo.fileName
+        cell.textLabel?.text = item.name
         
         cell.detailTextLabel?.text = nil
         cell.accessoryType = .disclosureIndicator
@@ -144,14 +144,14 @@ extension RemoteFolderViewerVC {
     
     private func configureFileCell(_ cell: SubtitleCell, item: RemoteFileItem) {
         cell.textLabel?.font = .preferredFont(forTextStyle: .body)
-        cell.textLabel?.text = item.fileInfo.fileName
+        cell.textLabel?.text = item.name
         
         var details = [String]()
-        if let fileSize = item.fileInfo.fileSize {
+        if let fileSize = item.fileInfo?.fileSize {
             let sizeString = fileSizeFormatter.string(fromByteCount: fileSize)
             details.append(sizeString)
         }
-        if let modificationDate = item.fileInfo.modificationDate {
+        if let modificationDate = item.fileInfo?.modificationDate {
             let dateString = dateFormatter.string(from: modificationDate)
             details.append(dateString)
         }

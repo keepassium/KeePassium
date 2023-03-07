@@ -8,6 +8,7 @@
 
 
 public protocol RemoteFileItem {
+    var name: String { get }
     var isFolder: Bool { get }
-    var fileInfo: FileInfo { get }
+    var fileInfo: FileInfo? { get }
 }

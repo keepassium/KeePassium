@@ -81,5 +81,15 @@ extension LString {
         bundle: Bundle.framework,
         value: "Sign in to OneDrive",
         comment: "Action: authenticate to OneDrive account")
-
+    
+    public static let titleOneDriveFolderFiles = NSLocalizedString(
+        "[RemoteConnection/OneDrive/Folder/files]",
+        bundle: Bundle.framework,
+        value: "Files",
+        comment: "Name of a predefined OneDrive folder which contains user's own files")
+    public static let titleOneDriveFolderSharedWithMe = NSLocalizedString(
+        "[RemoteConnection/OneDrive/Folder/sharedWithMe]",
+        bundle: Bundle.framework,
+        value: "Shared",
+        comment: "Name of a predefined OneDrive folder which contains files shared with this user")
 }

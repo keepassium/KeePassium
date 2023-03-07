@@ -10,8 +10,7 @@ import Foundation
 
 public final class OneDriveDataSource: DataSource {    
     private struct AuthorizedItem {
-        var filePath: String
-        var parent: OneDriveSharedFolder?
+        var item: OneDriveItemReference
         var token: OAuthToken
     }
     
@@ -46,15 +45,15 @@ public final class OneDriveDataSource: DataSource {
             }
             return nil
         }
-        guard let filePath = OneDriveFileURL.getFilePath(from: url) else {
-            Diag.error("Target file path missing")
+        
+        guard let itemReference = OneDriveItemReference.fromURL(url) else {
+            Diag.error("Failed to restore OneDrive item reference")
             completionQueue.addOperation {
                 completion(.failure(.internalError))
             }
             return nil
         }
-        let parent = OneDriveFileURL.getParent(from: url) 
-        return AuthorizedItem(filePath: filePath, parent: parent, token: token)
+        return AuthorizedItem(item: itemReference, token: token)
     }
     
     private func saveUpdatedToken(_ newToken: OAuthToken, prefixedURL url: URL) {
@@ -82,8 +81,7 @@ public final class OneDriveDataSource: DataSource {
         }
         
         OneDriveManager.shared.getItemInfo(
-            path: authorizedItem.filePath,
-            parent: authorizedItem.parent,
+            authorizedItem.item,
             token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
             completionQueue: completionQueue,
@@ -91,7 +89,10 @@ public final class OneDriveDataSource: DataSource {
                 assert(completionQueue.isCurrent)
                 switch result {
                 case .success(let remoteFileItem):
-                    completion(.success(remoteFileItem.fileInfo))
+                    assert(remoteFileItem.fileInfo != nil, "File info must be defined for remote items")
+                    let fileInfoOrDummy = remoteFileItem.fileInfo ??
+                        FileInfo(fileName: remoteFileItem.name, isInTrash: false)
+                    completion(.success(fileInfoOrDummy))
                 case .failure(let oneDriveError):
                     completion(.failure(.systemError(oneDriveError)))
                 }
@@ -118,8 +119,7 @@ public final class OneDriveDataSource: DataSource {
         }
         
         OneDriveManager.shared.getFileContents(
-            filePath: authorizedItem.filePath,
-            parent: authorizedItem.parent,
+            authorizedItem.item,
             token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
             completionQueue: completionQueue,
@@ -154,8 +154,7 @@ public final class OneDriveDataSource: DataSource {
             return 
         }
         OneDriveManager.shared.uploadFile(
-            filePath: authorizedItem.filePath,
-            parent: authorizedItem.parent,
+            authorizedItem.item,
             contents: data,
             fileName: url.lastPathComponent,
             token: authorizedItem.token,
