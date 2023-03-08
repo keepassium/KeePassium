@@ -117,6 +117,17 @@ public class EntryField: Eraseable {
             return true
         }
         
+        if name == EntryField.url {
+            let hostregex = "^(?:[^:/?#]+://)?([^:/?#]*)"
+            if let wordMatches = String(word).matchedGroups(forRegex: hostregex), let valueMatches = String(value).matchedGroups(forRegex: hostregex) {
+                let wordHost = wordMatches[1].lowercased()
+                let valueHost = valueMatches[1].lowercased()
+                if wordHost.hasSuffix(valueHost){
+                    return true
+                }
+            }
+        }
+        
         let includeFieldValue = !isProtected || includeProtectedValues
         if includeFieldValue {
             return resolvedValue.localizedContains(word, options: options)
