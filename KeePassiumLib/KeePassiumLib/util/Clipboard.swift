@@ -13,24 +13,23 @@ public class Clipboard {
 
     public static let general = Clipboard()
     
-    private var insertedText: String?
-    private var insertedURL: URL?
-    
     private init() {
     }
     
     public func insert(url: URL, timeout: Double?=nil) {
         Diag.debug("Inserted a URL to clipboard")
         insert(items: [[(kUTTypeURL as String) : url]], timeout: timeout)
-        insertedURL = url
+        scheduleCleanup(url: url, after: timeout)
     }
     
     @discardableResult
     public func insert(text: String, timeout: Double?=nil) -> Bool {
         Diag.debug("Inserted a string to clipboard")
         insert(items: [[(kUTTypeUTF8PlainText as String) : text]], timeout: timeout)
-        insertedText = text
         let isSuccessful = (UIPasteboard.general.string == text)
+        if isSuccessful {
+            scheduleCleanup(text: text, after: timeout)
+        }
         return isSuccessful
     }
     
@@ -48,23 +47,38 @@ public class Clipboard {
             UIPasteboard.general.setItems(items, options: [.localOnly: isLocalOnly])
         }
     }
-    
-    public func clear() {
-        let pasteboard = UIPasteboard.general
 
-        var containsOurStuff = false
-        if let insertedText = insertedText {
-            containsOurStuff = containsOurStuff || (pasteboard.string == insertedText)
+    private func scheduleCleanup(url: URL, after timeout: TimeInterval?) {
+        guard ProcessInfo.isRunningOnMac,
+              let timeout = timeout,
+              timeout > 0
+        else {
+            return
         }
-        if let insertedURL = insertedURL {
-            containsOurStuff = containsOurStuff || (pasteboard.url == insertedURL)
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeout) {
+            if UIPasteboard.general.url == url {
+                self.clear()
+            }
         }
+    }
+
+    private func scheduleCleanup(text: String, after timeout: TimeInterval?) {
+        guard ProcessInfo.isRunningOnMac,
+              let timeout = timeout,
+              timeout > 0
+        else {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeout) {
+            if UIPasteboard.general.string == text {
+                self.clear()
+            }
+        }
+    }
         
-        if containsOurStuff {
-            pasteboard.setItems([[:]], options: [.localOnly: true])
-            self.insertedText = nil
-            self.insertedURL = nil
-            Diag.info("Clipboard content cleared")
-        }
+    private func clear() {
+        let isLocalOnly = !Settings.current.isUniversalClipboardEnabled
+        UIPasteboard.general.setItems([[:]], options: [.localOnly: isLocalOnly])
+        Diag.info("Clipboard content cleared")
     }
 }
