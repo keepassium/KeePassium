@@ -102,7 +102,7 @@ Code contributions cannot be accepted due to [formalities](#license), but feel f
 
 ## Author and Credits
 
-KeePassium is created and maintained by [Andrei Popleteev](http://popleteev.com) (also responsible for [KeePassB for BlackBerry 10](https://github.com/anmipo/keepassb)).
+KeePassium is created and maintained by [Andrei Popleteev](http://popleteev.com), founder of [KeePassium Labs](https://keepassium.com).
 
 The project would not be the same without some third-party components:
 
@@ -136,7 +136,7 @@ To avoid backdoors in third-party code, it has been checked by the main develope
 
 KeePassium Password Manager
 
-Copyright ©2018–2023 [Andrei Popleteev](http://popleteev.com).
+Copyright ©2018–2023 Andrei Popleteev, KeePassium Labs.
 
 KeePassium is a commercial open-source app, available under the  [GPLv3 license](https://choosealicense.com/licenses/gpl-3.0/). Our intention is to provide the maximal possible transparency: you can personally audit the code and build your own binary. 
 

@@ -1,4 +1,5 @@
-KeePassium: Copyright (C) 2018 Andrei Popleteev <info@keepassium.com>
+KeePassium Password Manager
+Copyright (C) Andrei Popleteev, KeePassium Labs <info@keepassium.com>
 
 The software is distributed under the terms of the GNU General Public License 
 version 3. For commercial licensing, please contact the author.

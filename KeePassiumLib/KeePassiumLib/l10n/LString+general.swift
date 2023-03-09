@@ -822,7 +822,8 @@ extension LString {
         comment: "Name of biometric authentication method. Trademarked, do not translate unless Apple traslated it to your language.")
     
     
-    public static let copyrightNotice = NSLocalizedString(
+    public static let copyrightNotice = "©KeePassium Labs" 
+    public static let previousCopyrightNotice = NSLocalizedString(
         "[About/CopyrightAuthor]",
         bundle: Bundle.framework,
         value: "©Andrei Popleteev",
