@@ -711,7 +711,7 @@ public class Settings {
             let storedVersion = UserDefaults.appGroupShared
                 .object(forKey: Keys.settingsVersion.rawValue)
                 as? Int
-            return storedVersion ?? 0
+            return storedVersion ?? Settings.latestVersion
         }
         set {
             let oldValue = settingsVersion
