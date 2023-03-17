@@ -9,9 +9,18 @@
 import Foundation
 
 public class AppGroup {
-    public static let id = "group.com.keepassium"
+    public static var id: String = {
+        if BusinessModel.isIntuneEdition {
+            return "group.com.keepassium.intune"
+        } else {
+            return "group.com.keepassium"
+        }
+    }()
     
-    public static let appURLScheme = {
+    public static let appURLScheme: String = {
+        if BusinessModel.isIntuneEdition {
+            return "keepassium.org"
+        }
         switch BusinessModel.type {
         case .freemium:
             return "keepassium"

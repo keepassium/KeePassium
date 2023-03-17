@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "microsoft-authentication-library-for-objc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/microsoft-authentication-library-for-objc/",
+      "state" : {
+        "branch" : "keepassium",
+        "revision" : "7c649c4139faee517db5bc013d27abd39f5c1fcc"
+      }
+    },
+    {
       "identity" : "tpinappreceipt",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/keepassium/TPInAppReceipt",

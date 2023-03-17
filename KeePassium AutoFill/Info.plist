@@ -25,12 +25,48 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+#ifdef INTUNE
+    <key>IntuneMAMSettings</key>
+    <dict>
+        <key>AppGroupIdentifiers</key>
+        <array>
+            <string>group.com.keepassium.intune</string>
+        </array>
+        <key>ContainingAppBundleId</key>
+        <string>com.keepassium.intune</string>
+    </dict>
+#endif
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>$(APP_URL_SCHEME)</string>
 		<string>mailto</string>
+#ifdef INTUNE
+        <string>$(APP_URL_SCHEME)-intunemam</string>
+        <string>msauthv2</string>
+        <string>msauthv3</string>
+        <string>mailto-intunemam</string>
+        <string>ms-outlook-intunemam</string>
+        <string>http-intunemam</string>
+        <string>itms-apps-intunemam</string>
+        <string>https-intunemam</string>
+        <string>ftp-intunemam</string>
+        <string>microsoft-edge-https</string>
+        <string>microsoft-edge-http</string>
+        <string>ms-outlook</string>
+        <string>companyportal</string>
+        <string>smart-ns</string>
+        <string>zips</string>
+        <string>lacoonsecurity</string>
+        <string>wandera</string>
+        <string>lookoutwork-ase</string>
+        <string>skycure</string>
+        <string>betteractiveshield</string>
+        <string>smsec</string>
+        <string>mvisionmobile</string>
+        <string>scmx</string>
+#endif
 	</array>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>

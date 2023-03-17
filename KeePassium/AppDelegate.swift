@@ -56,6 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         BusinessModel.type = .freemium
         #endif
+        
+        #if INTUNE
+        BusinessModel.isIntuneEdition = true
+        #else
+        BusinessModel.isIntuneEdition = false
+        #endif
+
         AppGroup.applicationShared = application
         
         SettingsMigrator.processAppLaunch(with: Settings.current)
@@ -67,12 +74,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(
         _ application: UIApplication,
-        open inputURL: URL,
+        open url: URL,
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
-        let isOpenInPlace = (options[.openInPlace] as? Bool) ?? false
-        mainCoordinator.processIncomingURL(inputURL, openInPlace: isOpenInPlace)
-        return true
+        let result = mainCoordinator.processIncomingURL(
+            url,
+            sourceApp: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            openInPlace: options[.openInPlace] as? Bool)
+        return result
     }
 }
 

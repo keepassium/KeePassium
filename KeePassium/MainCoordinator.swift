@@ -8,6 +8,10 @@
 
 import KeePassiumLib
 import LocalAuthentication
+#if INTUNE
+import MSAL
+import IntuneMAMSwift
+#endif
 
 final class MainCoordinator: Coordinator {
     enum Action {
@@ -49,6 +53,11 @@ final class MainCoordinator: Coordinator {
     fileprivate let biometricAuthReuseDuration = TimeInterval(3.0)
     fileprivate var lastSuccessfulBiometricAuthTime: Date = .distantPast
     
+    #if INTUNE
+    private var enrollmentDelegate: IntuneEnrollmentDelegateImpl?
+    private var policyDelegate: IntunePolicyDelegateImpl?
+    #endif
+    
     private var selectedDatabaseRef: URLReference?
     
     private var isInitialDatabase = true
@@ -76,6 +85,12 @@ final class MainCoordinator: Coordinator {
         window.rootViewController = rootSplitVC
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+    
     func start(hasIncomingURL: Bool) {
         Diag.info(AppInfo.description)
         PremiumManager.shared.startObservingTransactions()
@@ -101,6 +116,37 @@ final class MainCoordinator: Coordinator {
             return
         }
         
+        #if INTUNE
+        setupIntune()
+        guard let currentUser = IntuneMAMEnrollmentManager.instance().enrolledAccount(),
+              !currentUser.isEmpty
+        else {
+            Diag.debug("Intune account missing, starting enrollment")
+            startIntuneEnrollment()
+            return
+        }
+        Diag.info("Intune account is enrolled")
+        IntuneMAMDiagnosticConsole.getIntuneLogPaths()?.forEach { logFilePath in
+            Diag.info(logFilePath)
+            if let fileURL = URL(string: "file://" + logFilePath) {
+                let log: String = (try? String(contentsOf: fileURL)) ?? "failed"
+                Diag.info(log)
+            }
+        }
+        #endif
+        
+        runAfterStartTasks()
+    }
+    
+    private func runAfterStartTasks() {
+        #if INTUNE
+        applyIntuneAppConfig()
+        
+        guard ManagedAppConfig.shared.hasProvisionalLicense() else {
+            showOrgLicensePaywall()
+            return
+        }
+        #endif
         DispatchQueue.main.async { [weak self] in
             self?.maybeShowOnboarding()
         }
@@ -114,21 +160,121 @@ final class MainCoordinator: Coordinator {
     }
 }
 
+#if INTUNE
 extension MainCoordinator {
-    public func processIncomingURL(_ url: URL, openInPlace: Bool) {
+    private func setupIntune() {
+        assert(policyDelegate == nil && enrollmentDelegate == nil, "Repeated call to Intune setup")
+        
+        policyDelegate = IntunePolicyDelegateImpl()
+        IntuneMAMPolicyManager.instance().delegate = policyDelegate
+
+        enrollmentDelegate = IntuneEnrollmentDelegateImpl(
+            onEnrollment: { [weak self] enrollmentResult in
+                guard let self = self else { return }
+                switch enrollmentResult {
+                case .success:
+                    self.runAfterStartTasks()
+                case .cancelledByUser:
+                    let message = [
+                            LString.Intune.orgNeedsToManage,
+                            LString.Intune.personalVersionInAppStore,
+                        ].joined(separator: "\n\n")
+                    self.showIntuneMessageAndRestartEnrollment(message)
+                case .failure(let errorMessage):
+                    self.showIntuneMessageAndRestartEnrollment(errorMessage)
+                }
+            },
+            onUnenrollment: { [weak self] wasSuccessful in
+                self?.startIntuneEnrollment()
+            }
+        )
+        IntuneMAMEnrollmentManager.instance().delegate = enrollmentDelegate
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applyIntuneAppConfig),
+            name: NSNotification.Name.IntuneMAMAppConfigDidChange,
+            object: IntuneMAMAppConfigManager.instance()
+        )
+    }
+    
+    private func startIntuneEnrollment() {
+        let enrollmentManager = IntuneMAMEnrollmentManager.instance()
+        enrollmentManager.delegate = enrollmentDelegate
+        enrollmentManager.loginAndEnrollAccount(enrollmentManager.enrolledAccount())
+    }
+
+    private func showIntuneMessageAndRestartEnrollment(_ message: String) {
+        let alert = UIAlertController(
+            title: "",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(title: LString.actionOK, style: .default) { [weak self] _ in
+            self?.startIntuneEnrollment()
+        }
+        getPresenterForModals().present(alert, animated: true)
+    }
+    
+    @objc private func applyIntuneAppConfig() {
+        guard let enrolledUser = IntuneMAMEnrollmentManager.instance().enrolledAccount() else {
+            assertionFailure("There must be an enrolled account by now")
+            Diag.warning("No enrolled account found")
+            return
+        }
+        let config = IntuneMAMAppConfigManager.instance().appConfig(forIdentity: enrolledUser)
+        ManagedAppConfig.shared.setIntuneAppConfig(config.fullData)
+    }
+    
+    private func showOrgLicensePaywall() {
+        let message = [
+                LString.Intune.orgLicenseMissing,
+                LString.Intune.hintContactYourAdmin,
+            ].joined(separator: "\n\n")
+        let alert = UIAlertController(
+            title: "",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(title: LString.actionRetry, style: .default) { [weak self] _ in
+            self?.runAfterStartTasks()
+        }
+        alert.addAction(title: LString.titleDiagnosticLog, style: .default) { [weak self] _ in
+            self?.showDiagnostics(onDismiss: { [weak self] in
+                self?.runAfterStartTasks()
+            })
+        }
+        DispatchQueue.main.async {
+            self.getPresenterForModals().present(alert, animated: true)
+        }
+    }
+}
+#endif
+
+extension MainCoordinator {
+    public func processIncomingURL(_ url: URL, sourceApp: String?, openInPlace: Bool?) -> Bool {
+        #if INTUNE
+        if !url.isFileURL { 
+            let isHandled = MSALPublicClientApplication.handleMSALResponse(
+                url,
+                sourceApplication: sourceApp)
+            return isHandled
+        }
+        #endif
         Diag.info("Will process incoming URL [inPlace: \(openInPlace), URL: \(url.redacted)]")
         guard let databaseViewerCoordinator = databaseViewerCoordinator else {
-            handleIncomingURL(url, openInPlace: openInPlace)
-            return
+            handleIncomingURL(url, openInPlace: openInPlace ?? true)
+            return true
         }
         databaseViewerCoordinator.closeDatabase(
             shouldLock: false,
             reason: .appLevelOperation,
             animated: false,
             completion: { [weak self] in
-                self?.handleIncomingURL(url, openInPlace: openInPlace)
+                self?.handleIncomingURL(url, openInPlace: openInPlace ?? true)
             }
         )
+        return true
     }
     
     private func handleIncomingURL(_ url: URL, openInPlace: Bool) {
@@ -328,6 +474,19 @@ extension MainCoordinator {
     func showSettingsScreen() {
         let popoverAnchor = PopoverAnchor(sourceView: mainWindow, sourceRect: mainWindow.bounds)
         self.databasePickerCoordinator.showAppSettings(at: popoverAnchor, in: self.rootSplitVC)
+    }
+    
+    func showDiagnostics(onDismiss: (()->Void)? = nil) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
+        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+            onDismiss?()
+        }
+        diagnosticsViewerCoordinator.start()
+        
+        getPresenterForModals().present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(diagnosticsViewerCoordinator)
     }
     
     func createDatabase() {

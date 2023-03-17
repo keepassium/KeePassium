@@ -11,6 +11,10 @@ import KeePassiumLib
 import AuthenticationServices
 import LocalAuthentication
 import OSLog
+#if INTUNE
+import MSAL
+import IntuneMAMSwift
+#endif
 
 class AutoFillCoordinator: NSObject, Coordinator {
     let log = Logger(subsystem: "com.keepassium.autofill", category: "AutoFillCoordinator")
@@ -40,6 +44,11 @@ class AutoFillCoordinator: NSObject, Coordinator {
     
     private let localNotifications = LocalNotifications()
     
+    #if INTUNE
+    private var enrollmentDelegate: IntuneEnrollmentDelegateImpl?
+    private var policyDelegate: IntunePolicyDelegateImpl?
+    #endif
+        
     init(
         rootController: CredentialProviderViewController,
         context: ASCredentialProviderExtensionContext
@@ -60,6 +69,13 @@ class AutoFillCoordinator: NSObject, Coordinator {
         #else
         BusinessModel.type = .freemium
         #endif
+        
+        #if INTUNE
+        BusinessModel.isIntuneEdition = true
+        #else
+        BusinessModel.isIntuneEdition = false
+        #endif
+        
         SettingsMigrator.processAppLaunch(with: Settings.current)
         Diag.info(AppInfo.description)
 
@@ -92,7 +108,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
             return
         }
         isStarted = true
-
+        
         log.trace("Coordinator is starting the UI")
         if !isAppLockVisible {
             rootController.showChildViewController(router.navigationController)
@@ -106,6 +122,35 @@ class AutoFillCoordinator: NSObject, Coordinator {
         showDatabasePicker()
         hasUI = true
         StoreReviewSuggester.registerEvent(.sessionStart)
+        
+        
+        #if INTUNE
+        setupIntune()
+        guard let currentUser = IntuneMAMEnrollmentManager.instance().enrolledAccount(),
+              !currentUser.isEmpty
+        else {
+            Diag.debug("Intune account missing, starting enrollment")
+            DispatchQueue.main.async {
+                self.startIntuneEnrollment()
+            }
+            return
+        }
+        Diag.info("Intune account is enrolled")
+        #endif
+        
+        runAfterStartTasks()
+    }
+    
+    private func runAfterStartTasks() {
+        #if INTUNE
+        applyIntuneAppConfig()
+
+        guard ManagedAppConfig.shared.hasProvisionalLicense() else {
+            showOrgLicensePaywall()
+            return
+        }
+        #endif
+
         if Settings.current.isAutoFillFinishedOK {
             databasePickerCoordinator.shouldSelectDefaultDatabase = true
         } else {
@@ -679,3 +724,95 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
         }
     }
 }
+
+#if INTUNE
+extension AutoFillCoordinator {
+    
+    private func getPresenterForModals() -> UIViewController {
+        return router.navigationController
+    }
+    
+    private func setupIntune() {
+        assert(policyDelegate == nil && enrollmentDelegate == nil, "Repeated call to Intune setup")
+        
+        policyDelegate = IntunePolicyDelegateImpl()
+        IntuneMAMPolicyManager.instance().delegate = policyDelegate
+
+        enrollmentDelegate = IntuneEnrollmentDelegateImpl(
+            onEnrollment: { [weak self] enrollmentResult in
+                guard let self = self else { return }
+                switch enrollmentResult {
+                case .success:
+                    self.runAfterStartTasks()
+                case .cancelledByUser:
+                    let message = [
+                            LString.Intune.orgNeedsToManage,
+                            LString.Intune.personalVersionInAppStore,
+                        ].joined(separator: "\n\n")
+                    self.showIntuneMessageAndRestartEnrollment(message)
+                case .failure(let errorMessage):
+                    self.showIntuneMessageAndRestartEnrollment(errorMessage)
+                }
+            },
+            onUnenrollment: { [weak self] wasSuccessful in
+                self?.startIntuneEnrollment()
+            }
+        )
+        IntuneMAMEnrollmentManager.instance().delegate = enrollmentDelegate
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applyIntuneAppConfig),
+            name: NSNotification.Name.IntuneMAMAppConfigDidChange,
+            object: IntuneMAMAppConfigManager.instance()
+        )
+    }
+    
+
+    private func startIntuneEnrollment() {
+        let enrollmentManager = IntuneMAMEnrollmentManager.instance()
+        enrollmentManager.delegate = enrollmentDelegate
+        enrollmentManager.loginAndEnrollAccount(enrollmentManager.enrolledAccount())
+    }
+
+    private func showIntuneMessageAndRestartEnrollment(_ message: String) {
+        let alert = UIAlertController(
+            title: "",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(title: LString.actionOK, style: .default) { [weak self] _ in
+            self?.startIntuneEnrollment()
+        }
+        getPresenterForModals().present(alert, animated: true)
+    }
+    
+    @objc private func applyIntuneAppConfig() {
+        guard let enrolledUser = IntuneMAMEnrollmentManager.instance().enrolledAccount() else {
+            assertionFailure("There must be an enrolled account by now")
+            Diag.warning("No enrolled account found")
+            return
+        }
+        let config = IntuneMAMAppConfigManager.instance().appConfig(forIdentity: enrolledUser)
+        ManagedAppConfig.shared.setIntuneAppConfig(config.fullData)
+    }
+    
+    private func showOrgLicensePaywall() {
+        let message = [
+                LString.Intune.orgLicenseMissing,
+                LString.Intune.hintContactYourAdmin,
+            ].joined(separator: "\n\n")
+        let alert = UIAlertController(
+            title: AppInfo.name,
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(title: LString.actionRetry, style: .default) { [weak self] _ in
+            self?.runAfterStartTasks()
+        }
+        DispatchQueue.main.async {
+            self.getPresenterForModals().present(alert, animated: true)
+        }
+    }
+}
+#endif

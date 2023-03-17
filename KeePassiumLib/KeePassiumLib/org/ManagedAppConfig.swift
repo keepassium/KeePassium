@@ -22,6 +22,7 @@ public final class ManagedAppConfig {
         }
         return config
     }
+    private var intuneConfig: [String: Any]?
     
     private init() {
     }
@@ -32,7 +33,8 @@ public final class ManagedAppConfig {
     }
     
     public func hasProvisionalLicense() -> Bool {
-        guard let rawLicenseValue = currentConfig?[Key.license] as? String else {
+        let anyValue = intuneConfig?[Key.license] ?? currentConfig?[Key.license]
+        guard let rawLicenseValue = anyValue as? String else {
             return false
         }
         let licenseValue = rawLicenseValue
@@ -45,5 +47,20 @@ public final class ManagedAppConfig {
          To ensure a smooth transition, request your corporate license in advance.
          */
         return licenseValue == "provisional"
+    }
+}
+
+extension ManagedAppConfig {
+    public func setIntuneAppConfig(_ config: [[AnyHashable: Any]]?) {
+        guard let config = config,
+              let firstConfig = config.first 
+        else {
+            intuneConfig = nil
+            return
+        }
+        
+        var newIntuneConfig = intuneConfig ?? [:]
+        newIntuneConfig[Key.license] = firstConfig[Key.license] as? String
+        intuneConfig = newIntuneConfig
     }
 }

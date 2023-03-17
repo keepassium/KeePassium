@@ -34,6 +34,7 @@
 		7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538167D22B15FC7000FA4BD /* Settings+premium.swift */; };
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
 		753858DB291957BF006ADA21 /* FileFormatRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */; };
+		7538871D28BD59B500BE41B5 /* LString+intune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538871C28BD59B500BE41B5 /* LString+intune.swift */; };
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
 		753E9A6225FEBE3000541121 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753E9A6125FEBE2F00541121 /* Toast.swift */; };
 		754025152950700E000ABA73 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754025142950700E000ABA73 /* ManagedAppConfig.swift */; };
@@ -245,6 +246,7 @@
 		7538167D22B15FC7000FA4BD /* Settings+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+premium.swift"; sourceTree = "<group>"; };
 		75384B9822CCB76800157598 /* UsageMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageMonitor.swift; sourceTree = "<group>"; };
 		753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileFormatRecognizer.swift; sourceTree = "<group>"; };
+		7538871C28BD59B500BE41B5 /* LString+intune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+intune.swift"; sourceTree = "<group>"; };
 		75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResponse.swift; sourceTree = "<group>"; };
 		753E9A6125FEBE2F00541121 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		754025142950700E000ABA73 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				75241F37274A8D6400AE15AD /* LString+premium.swift */,
 				75AF192F282E5F6600FA4BB5 /* LString+passGen.swift */,
 				7524E74E288AA80500ECBEC8 /* LString+remote.swift */,
+				7538871C28BD59B500BE41B5 /* LString+intune.swift */,
 			);
 			path = l10n;
 			sourceTree = "<group>";
@@ -1107,6 +1110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75D09C482174F77000F7DEF2 /* Group.swift in Sources */,
+				7538871D28BD59B500BE41B5 /* LString+intune.swift in Sources */,
 				75D09C442174F77000F7DEF2 /* Group1.swift in Sources */,
 				75D09BE12174F76500F7DEF2 /* core.c in Sources */,
 				75D09BCE2174F76500F7DEF2 /* chacha20.c in Sources */,
