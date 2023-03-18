@@ -1,6 +1,48 @@
 {
     "sections": [
         {
+            "version": "1.42",
+            "releaseDate": "2023-03-18T00:00:00Z",
+            "items": [
+                {
+                    "title": "📣 Evolved from a personal project into a company: meet KeePassium Labs Sàrl!",
+                    "type": 1
+                },
+                {
+                    "title": "📣 Added: KeePassium for Intune (beta) — a business app specialized for Microsoft Intune environment",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: In-app OneDrive for Business connection could not access shared files (fixes #273) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: In-app OneDrive connection sometimes returned `invalid_grant` error (regression in 1.41.126) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: clipboard timeout had no effect (fixes #278) [thanks, S.B.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Revealed TOTP codes could show up on unrelated rows (fixes #277) [thanks, Timothy]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Don't suggest donation to recent version purchasers [thanks, T.H.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI fixes and improvements",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.41",
             "releaseDate": "2023-02-21T00:00:00Z",
             "items": [

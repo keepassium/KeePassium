@@ -1,5 +1,27 @@
 #CHANGELOG
 
+## [1.42.127] - 2023-03-17
+
+### Added
+
+- KeePassium for Intune (beta): a new app specialized for Microsoft Intune environment
+
+### Changed
+
+- Evolved from a personal project into a company: meet KeePassium Labs Sàrl!
+- Extended the provisional business license to 2023-05-31
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- In-app OneDrive for Business connection could not access shared files (fixes #273) [thanks, everyone]
+- In-app OneDrive connection sometimes returned `invalid_grant` error (regression in 1.41.126) [thanks, everyone]
+- macOS: clipboard timeout had no effect (fixes #278) [thanks, S.B.]
+- Revealed TOTP codes could show up on unrelated rows (fixes #277) [thanks, Timothy]
+- Don't suggest donation to recent version purchasers [thanks, T.H.]
+- Minor UI fixes and improvements
+
+
 ## [1.41.126] - 2023-02-21
 
 ### Added
