@@ -7,6 +7,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "แตะสองครั้งเพื่อคัดลอกไปยังคลิปบอร์ด";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "เปิดใช้งานฟังข้อความ";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "ขนาดข้อความ";
 
@@ -148,11 +151,17 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "ไม่สามารถเปิดไฟล์กุญแจได้";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "รูปแบบฐานข้อมูลไม่ถูกต้อง: %@";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "โปรดใส่รหัสผ่าน หรือไม่ก็ไฟล์กุญแจ";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "ฟอร์แมทฐานข้อมูลที่ไม่รู้จัก";
+
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "ฐานข้อมูลนี้ป้องกันโดยนโยบายไอทีขององค์กรและ Microsoft Intune";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "ไม่สามารถเข้าถึงฐานข้อมูลได้\nที่ใช้อยู่นี้เป็นสำเนาที่เก็บอยู่ในเครื่อง";
@@ -208,6 +217,9 @@
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "กำลังแก้ช่องอ้างอิง...";
 
+/* Suggested solution/call to action when intermediate sync app fails. */
+"[Database/RecommendRemote/callToAction]" = "กำลังลองเชื่อมต่อที่จัดเก็บโดยตรงจาก KeePassium";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "ลบฐานข้อมูลออกจากรายการหรือไม่?\n ไฟล์จะยังคงเดิมและคุณยังสามารถเพิ่มไฟล์ได้ในภายหลัง";
 
@@ -219,6 +231,9 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "วิธีการพิจารณาว่าเข้าถึงไฟล์ไม่ได้";
+
+/* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
+"[Database/Settings/FallbackStrategy/ReAddFile/title]" = "เพิ่มไฟล์ใหม่อีกครั้ง";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "แสดงข้อผิดพลาด";
@@ -472,6 +487,12 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "ชื่อ";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "ช่องอ้างอิงถูกคัดลอกไปยังคลิปบอร์ดแล้ว";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "คัดลอกช่องอ้างอิง";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "หมายเหตุ";
 
@@ -537,6 +558,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "ภายใน KeePassium มีปัญหา โปรดบอกรายละเอียดเกี่ยวกับมันหน่อย";
+
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "การเข้าถึงเน็ตเวิร์คถูกบล็อคโดยการตั้งค่า";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "ระบบจัดเก็บข้อมูลไม่ตอบสนอง";
@@ -703,6 +727,15 @@
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "เลือกปลายทาง";
 
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "ปิด";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "เปิด";
+
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "โฟลเดอร์ว่างเปล่า";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "ยกเลิก";
 
@@ -844,6 +877,12 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "สร้างกลุ่มใหม่";
 
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "ล้างข้อมูลในถังรีไซเคิล";
+
+/* Title of the confirmation dialog for `Empty Recycle Bin` action */
+"[Group/RecycleBin/Empty/confirmTitle]" = "ต้องการลบข้อมูลทุกอย่างในถังรีไซเคิลโดยถาวรหรือไม่";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "ตามวันที่สร้าง (ใหม่..เก่า)";
 
@@ -886,6 +925,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "รหัสผ่านแบบใช้ครั้งเดียว (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "เพื่อป้องกันข้อมูล องค์กรของคุณจำเป็นต้องจัดการแอปนี้ เมื่อต้องการดำเนินการนี้ให้เสร็จสมบูรณ์ ให้ลงชื่อเข้าใช้ด้วยบัญชีที่ทำงานหรือโรงเรียนของคุณ";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "คืนค่าเป็นรุ่นที่ผ่านมาเรียบร้อยแล้ว";
 
@@ -925,6 +967,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "รายละเอียดไฟล์";
 
+/* Notification next to the OTP code which was copied to clipboard */
+"[OTP/CopiedToClipboard/title]" = "คัดลอกรหัสผ่านครั้งเดียวไปยังคลิปบอร์ดแล้ว";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "รหัสผ่านแบบใช้ครั้งเดียว";
 
@@ -936,6 +981,9 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "ตั้งค่ารหัสผ่านแบบใช้ครั้งเดียว (OTP)";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "รหัสผ่านแบบครั้งเดียว";
 
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "ไม่สามารถสร้างข้อความ";
@@ -961,11 +1009,20 @@
 /* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
 "[PasswordGenerator/InclusionCondition/excluded]" = "ละเว้น";
 
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "ไม่ใช้งาน";
+
 /* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
 "[PasswordGenerator/InclusionCondition/required]" = "ต้องการ";
 
 /* Length (number of characters) of the random text to generate */
 "[PasswordGenerator/Length/title]" = "ความยาวอักขระ";
+
+/* Description of a password generator parameter. For example, the digit in 'abc222def'. */
+"[PasswordGenerator/MaxConsecutive/description]" = "จำนวนอักขระสูงสุดที่ให้มีความซ้ำกันหลายตัวได้";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "ต้องไปเพิ่มจำนวนอักขระสูงสุดที่ให้ใช้ซ้ำกันได้";
 
 /* One of the operation modes of the random text generator */
 "[PasswordGenerator/Mode/Basic/title]" = "ง่าย";
@@ -979,8 +1036,35 @@
 /* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
 "[PasswordGenerator/Mode/title]" = "รูปแบบ";
 
+/* Error message from the random text generator. */
+"[PasswordGenerator/NotEnoughElementsToSample/title]" = "เพิ่มประเภทอักขระเพื่อให้เลือกใช้";
+
+/* Length (number of characters) of the password to generate */
+"[PasswordGenerator/PasswordLength/title]" = "ความยาวรหัสผ่าน";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "ชุดอักขระชุดหนึ่งถูกตั้งเป็นต้องมีและเว้นไว้";
+
+/* Title for digits (like '123') */
+"[PasswordGenerator/Set/Digits/title]" = "ตัวเลข";
+
+/* Title for look-alike symbols (like '1lI', that is: digit `1`, small `L`, capital `i`). */
+"[PasswordGenerator/Set/Lookalikes/title]" = "ตัวอักษรที่ดูคล้ายกัน";
+
+/* Title for lowercase letters (like 'abc') */
+"[PasswordGenerator/Set/Lowercase/title]" = "ตัวอักษรพิมพ์เล็ก (a-z)";
+
+/* Title for special symbols (like '@#$') */
+"[PasswordGenerator/Set/Specials/title]" = "สัญลักษณ์พิเศษ";
+
+/* Title for uppercase letters (like 'ABC') */
+"[PasswordGenerator/Set/Uppercase/title]" = "ตัวอักษรพิมพ์ใหญ่ (A-Z)";
+
 /* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
 "[PasswordGenerator/SpaceCharacter/name]" = "เว้นวรรค";
+
+/* Title of the random text/password/username generator dialog. */
+"[PasswordGenerator/title]" = "เครื่องมือสุ่มรหัสผ่าน";
 
 /* Character to be inserted between words of a passphrase. */
 "[PasswordGenerator/Word Separtor/title]" = "ตัวคั่น";
@@ -997,11 +1081,26 @@
 /* Word capitalization style. Written in that style, if possible. */
 "[PasswordGenerator/WordCase/upperCase]" = "ตัวพิมพ์ใหญ่";
 
+/* Number of words in a generated passphrase. In context: 'Words: 5' */
+"[PasswordGenerator/WordCount/title]" = "จำนวนคำ";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "EFF Large Wordlist (7776 คำ)";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF Short Wordlist (1296 คำ)";
+
+/* List of words to be used for a passphrase. */
+"[PasswordGenerator/Wordlist/title]" = "ชุดคำศัพท์";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "แสดงตัวอย่างไฟล์แนบได้โดยตรงใน KeePassium และไม่ทิ้งร่องรอยให้แอปอื่นเห็น (ใช้กับรูปภาพ, เอกสาร, บันทึกสำคัญ และอื่น ๆ)";
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "แสดงตัวอย่างโดยไม่ทิ้งร่องรอย";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "ซิงค์กับที่จัดเก็บขององค์กร";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "สามารถตั้งแอป KeePassium ให้ดูไม่เหมือนแอปอื่น, คล้าย ๆ, หรือแอปเครื่องคิดเลขปลอมก็ได้ — แล้วแต่คุณเลย";
@@ -1180,6 +1279,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "ใช้แอปไป: %1$@/เดือน, หรือประมาณ %2$@/ปี";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "เชื่อมต่อโดยตรงกับบัญชีที่จัดเก็บขององค์กร เช่น OneDrive for Business";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "ที่จัดเก็บบนคลาวด์ขององค์กร";
+
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "กำหนดไอคอนของแอป";
 
@@ -1213,8 +1318,17 @@
 /* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
 "[PremiumFeature/Preview/title] Preview Attachments" = "ดูตัวอย่างไฟล์แนบ";
 
+/* Description/call to action for the `Quick AutoFill` premium feature. */
+"[PremiumFeature/QuickAutoFill/description]" = "ป้อนรหัสผ่านอัตโนมัติด้วยการกดครั้งเดียว โดยไม่ต้องเปิด KeePassium";
+
+/* Title of a premium feature: show relevant AutoFill entries right under the input field */
+"[PremiumFeature/QuickAutoFill/title]" = "ป้อนรหัสอัตโนมัติทันที";
+
 /* A brief summary of the privacy policy (for offline mode) */
 "[PrivacyPolicy/Offline/text]" = "KeePassium ไม่เก็บข้อมูลส่วนตัวหรือข้อมูลวิเคราะห์ใด ๆ และไม่แชร์ข้อมูลให้ผู้อื่น";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassium จะไม่เก็บข้อมูลส่วนตัวหรือข้อมูลเพื่อการวิเคราะห์ใด ๆ\nฟีเจอร์บางอย่างอาจจะต้องใช้การแลกเปลี่ยนข้อมูลกับบริการอื่นภายนอก (จะขึ้นอยู่กับการยินยอมของผู้ใช้ก่อนใช้งานบริการเหล่านั้น) การแลกเปลี่ยนข้อมูลจะทำตามนโยบายความเป็นส่วนตัวตามบริการที่ใช้";
 
 /* Section: privacy policy */
 "[PrivacyPolicy/title]" = "นโยบายความเป็นส่วนตัว";
@@ -1224,6 +1338,45 @@
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "หน่วยความจำไม่พอที่จะไปต่อได้\nสิ่งนี้สามารถเกิดขึ้นได้ถ้าฐานข้อมูลมีขนาดใหญ่เกินไปหรือการตั้งค่าฐานข้อมูลที่ยุ่งยาก (Argon2 memory parameter)";
+
+/* Description of the Quick AutoFill feature. */
+"[QuickAutoFill/description]" = "ป้อนรหัสทันทีจะแสดงรายการที่มีความสัมพันธ์กับช่องใส่รหัส โดยไม่จำเป็นต้องเปิด KeePassium";
+
+/* Name of a feature that shows relevant entries directly next to the login/password forms. */
+"[QuickAutoFill/title]" = "ป้อนรหัสอัตโนมัติทันที";
+
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "อนุญาตใช้ใบอนุญาตที่ไม่น่าเชื่อถือ";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "การเชื่อมต่อ";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "เชื่อมต่อกับเซิร์ฟเวอร์";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "ข้อมูลยืนยันตัวตน";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "การยืนยันตัวตนไม่สำเร็จ";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "URL ของไฟล์";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "ไฟล์";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "ลงชื่อเข้าใช้ OneDrive";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "เปิดหน้าลงชื่อเข้าใช้ในเบราว์เซอร์โหมดส่วนตัว";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "โหมดส่วนตัว";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "การเชื่อมต่อ";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "ยืนยันรหัสผ่าน";
@@ -1270,8 +1423,17 @@
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
 "[Settings/AppLockTimeout/shortTitle] Never" = "ตลอดไป";
 
+/* Action that opens system settings or instructions */
+"[Settings/AutoFill/Activate/action]" = "เปิดใช้ป้อนรหัสอัตโนมัติ";
+
+/* Description for the AutoFill setup instructions */
+"[Settings/AutoFill/Activate/description]" = "ก่อนเข้าใช้ คุณต้องเข้าไปเปิดใช้งานป้อนอัตโนมัติในการตั้งค่า";
+
 /* Title of an option: copy one-time password to clipboard when using AutoFill */
 "[Settings/AutoFill/CopyOTP/title]" = "คัดลอกรหัส OTP ไปยังคลิปบอร์ด";
+
+/* Title of a help article on how to activate AutoFill. */
+"[Settings/AutoFill/Setup Guide/title]" = "วิธีตั้งค่าการป้อนอัตโนมัติ";
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "การป้อนรหัสผ่านอัตโนมัติ";
@@ -1369,6 +1531,24 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "การตั้งค่ารายการ";
 
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "ต้องการอนุญาตให้ KeePassium เชื่อมต่อกับบริการภายนอกหรือไม่";
+
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "การเข้าถึงเครือข่าย";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "มีความเป็นส่วนตัวมากกว่า";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "ใช้แบบออฟไลน์";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "มีความสามารถการใช้งานที่หลากหลายกว่า";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "อนุญาตให้เข้าถึงเครือข่าย";
+
 /* Section title in settings */
 "[Settings/Search/title]" = "ค้นหา";
 
@@ -1389,6 +1569,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "ไม่มี";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive for Business";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(โปรดอธิบายปัญหาตรงนี้)";
@@ -1437,6 +1620,9 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "สำเนาภายใน";
+
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "เซิร์ฟเวอร์";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "ไม่ใช้ YubiKey";

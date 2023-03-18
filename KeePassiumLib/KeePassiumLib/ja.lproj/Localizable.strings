@@ -43,6 +43,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "数字";
 
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Escを押してTouch IDを使用";
+
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "パスコードが更新されました。";
 
@@ -198,6 +201,9 @@
 
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "データベースの準備はできましたが、問題が発生しました。";
+
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "プレビューを準備中...";
 
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "完了";
@@ -793,6 +799,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "上書き";
 
+/* Action/button to print a document */
+"[Generic] Print" = "プリント";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "名前を変更";
 
@@ -801,6 +810,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "復元";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "やり直す";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Finderで表示";
@@ -925,6 +937,12 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "ワンタイムパスワード (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "組織のデータを保護するために、このアプリを組織で管理する必要があります。このアクションを完了するには、職場または学校アカウントでサインインしてください。";
+
+/* Info message for users who accidentally installed the enterprise version. */
+"[Intune/PersonalVersionElsewhere]" = "個人向けのKeePassiumをApp Storeにて提供しています。";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "以前のバージョンが復元されました";
 
@@ -963,6 +981,12 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "ファイルの情報";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "IT 管理者にお問い合わせください。";
+
+/* Error message, euphemism for missing corporate license */
+"[Org/LicenseMissing]" = "KeePassiumはあなたの組織の企業アカウントを見つけられませんでした。";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "ワンタイムパスワードをクリップボードにコピーしました";
@@ -1359,6 +1383,12 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "ファイルのURL";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "ファイル";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "共有";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "OneDriveにサインイン";

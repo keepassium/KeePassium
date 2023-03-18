@@ -904,6 +904,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "一次性密码 (OTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "为了保护组织数据，你的组织需要管理此应用。要完成此操作，请使用工作或学校帐户登录。";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "已还原上一个版本";
 
@@ -942,6 +945,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "文件信息";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "请联系 IT 管理员。";
 
 /* Name of an entry field */
 "[OTP/FieldName]" = "一次性密码";
@@ -1203,6 +1209,9 @@
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "没有足够的内存供继续程序继续。\n较大的数据库或过于消耗内存的数据库设置(Argon2内存参数) 可能会发生这种情况。";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "文件";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "重复密码";

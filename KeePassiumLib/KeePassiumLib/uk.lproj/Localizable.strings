@@ -925,6 +925,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Відомості про файл";
 
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Зв'яжіться з системним адміністратором за допомогою.";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "Одноразовий пароль";
 
@@ -1176,6 +1179,9 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Швидке автозаповнення";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Файли";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Повторіть пароль";

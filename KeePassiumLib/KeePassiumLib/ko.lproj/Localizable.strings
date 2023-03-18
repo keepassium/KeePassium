@@ -856,6 +856,9 @@
 /* Generic title of in-app help article */
 "[Help Viewer/title]" = "도움말";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "조직 데이터를 보호하려면 이 앱을 관리해야 합니다. 이 작업을 완료하려면 회사 또는 학교 계정으로 로그인하세요.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "이전 버전으로 복원됨";
 
@@ -894,6 +897,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "파일 정보";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "IT 관리자에게 문의하세요.";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "이 QR 코드는 OTP 설정에 사용되기에 적합하지 않습니다.";
@@ -1131,6 +1137,9 @@
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "메모리가 부족하여 계속 진행할 수 없습니다.\n이 현상은 규모가 큰 데이터베이스를 처리할 때나 Argon2 메모리 파라미터와 같은 데이터베이스 설정을 과도하게 설정한 경우 발생할 수 있습니다.";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "파일";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "패스워드 재입력";

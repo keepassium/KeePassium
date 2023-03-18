@@ -1288,6 +1288,9 @@
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "ملء تلقائي سريع";
 
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "الملفات";
+
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "أعد كلمة المرور";
 

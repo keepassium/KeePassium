@@ -43,6 +43,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numerisk";
 
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Trysk på Esc för Touch ID";
+
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "Pinkoden uppdaterades.";
 
@@ -199,6 +202,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Din databas är färdig, men det uppstod ett problem.";
 
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "Förbereder förhandsvisning…";
+
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Klar";
 
@@ -231,6 +237,9 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Anse fil otillgänglig";
+
+/* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
+"[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Lägg till filen på nytt";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "Visa fel";
@@ -790,6 +799,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Skriv över";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Skriv ut";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Byt namn";
 
@@ -798,6 +810,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Återställ";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "Försök igen";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Visa i Finder";
@@ -922,6 +937,12 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Engångslösenord (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "För att skydda sin data måste din organisation hantera denna app. För att slutföra, logga in med ditt arbets- eller skolkonto.";
+
+/* Info message for users who accidentally installed the enterprise version. */
+"[Intune/PersonalVersionElsewhere]" = "KeePassium-version för personligt bruk är tillgänglig på App Store.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Föregående version återställd";
 
@@ -960,6 +981,12 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Filinfo";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Var vänlig kontakta din IT-administratör.";
+
+/* Error message, euphemism for missing corporate license */
+"[Org/LicenseMissing]" = "KeePassium kunde inte hitta enterprise-kontot för din organisation.";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "Engångslösenord kopierat till urklipp";
@@ -1356,6 +1383,12 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Fil-URL";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Filer";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Delat";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Logga in på OneDrive";

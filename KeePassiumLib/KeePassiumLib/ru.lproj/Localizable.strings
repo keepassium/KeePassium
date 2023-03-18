@@ -43,6 +43,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Цифровая";
 
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Нажмите Esc для Touch ID";
+
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "Код доступа успешно обновлён.";
 
@@ -198,6 +201,9 @@
 
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "База паролей готова, но есть проблема.";
+
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "Подготовка просмотра…";
 
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Готово";
@@ -793,6 +799,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Перезаписать";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Печать";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Переименовать";
 
@@ -801,6 +810,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Восстановить";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "Повтор";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Показать в Finder";
@@ -925,6 +937,12 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Одноразовый пароль (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Вашей организации необходимо управлять этим приложением для защиты своих данных. Чтобы выполнить это действие, войдите по рабочей или учебной учетной записи.";
+
+/* Info message for users who accidentally installed the enterprise version. */
+"[Intune/PersonalVersionElsewhere]" = "В App Store доступна версия KeePassium для личного использования.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Предыдущая версия восстановлена";
 
@@ -963,6 +981,12 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Информация о файле";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Обратитесь к своему ИТ-администратору.";
+
+/* Error message, euphemism for missing corporate license */
+"[Org/LicenseMissing]" = "KeePassium не удалось найти учётную запись вашей организации.";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "Одноразовый пароль скопирован в буфер обмена";
@@ -1359,6 +1383,12 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "URL файла";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Файлы";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Общие";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Войти в OneDrive";

@@ -790,6 +790,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Überschreiben";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Drucken";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Umbenennen";
 
@@ -798,6 +801,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Wiederherstellen";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "Wiederholen";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Im Finder zeigen";
@@ -922,6 +928,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Einmalpasswort (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Um die eigenen Daten zu schützen, muss Ihre Organisation diese App verwalten. Melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto an, um diese Aktion abzuschließen.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Vorherige Version wiederhergestellt";
 
@@ -960,6 +969,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Datei-Information";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Wenden Sie sich an Ihren IT-Administrator.";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "Einmalpasswort in die Zwischenablage kopiert";
@@ -1356,6 +1368,12 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Datei-URL";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Dateien";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Geteilt";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Bei OneDrive anmelden";

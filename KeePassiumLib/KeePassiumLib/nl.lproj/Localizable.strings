@@ -925,6 +925,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Eenmalig wachtwoord (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Voor bescherming van de organisatiegegevens moet de app worden beheerd door uw organisatie. Meld u aan met uw werk- of schoolaccount om deze actie te voltooien.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "De vorige versie is hersteld";
 
@@ -963,6 +966,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Bestandsinformatie";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Neem contact op met de IT-beheerder.";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "Eenmalig wachtwoord gekopieerd naar het klembord";
@@ -1359,6 +1365,9 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Bestandsurl";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Bestanden";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Meld u aan bij OneDrive";

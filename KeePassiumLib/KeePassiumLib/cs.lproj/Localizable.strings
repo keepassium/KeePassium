@@ -886,6 +886,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Jednorázové heslo (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Aby mohla organizace chránit svoje data, musí tuto aplikaci spravovat. Pokud budete chtít správu nastavit, přihlaste se svým pracovním nebo školním účtem.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Předchozí verze obnovena";
 
@@ -924,6 +927,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informace o souboru";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Obraťte se prosím na správce IT.";
 
 /* Name of an entry field */
 "[OTP/FieldName]" = "Jednorázové heslo";
@@ -1176,6 +1182,9 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Automatické Vyplňování";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Soubory";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Zopakujte heslo";

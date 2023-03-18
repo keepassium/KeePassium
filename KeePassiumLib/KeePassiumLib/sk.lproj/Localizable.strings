@@ -1360,6 +1360,9 @@
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Adresa URL súboru";
 
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Súbory";
+
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Prihláste sa do OneDrive";
 

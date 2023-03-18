@@ -832,6 +832,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Tek seferlik parola (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Verilerini korumak için kuruluşunuzun bu uygulamayı yönetmesi gerekiyor. Bu eylemi tamamlamak için iş veya okul hesabınız ile oturum açın.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Önceki sürüm geri yüklendi";
 
@@ -867,6 +870,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Dosya Bilgisi";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Lütfen BT yöneticinize başvurun.";
 
 /* Name of an entry field */
 "[OTP/FieldName]" = "Tek Kullanımlık Şifre";
@@ -1107,6 +1113,9 @@
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "Devam etmek için yeterli hafıza yok. Ya veritabanınız çok büyük ya da veritabanı ayarlarınız çok komplike (Argon2 bellek parametresi).";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Dosyalar";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Şifreyi Tekrarla";

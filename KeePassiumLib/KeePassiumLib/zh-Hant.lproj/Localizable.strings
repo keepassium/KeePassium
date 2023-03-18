@@ -886,6 +886,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "一次性密碼 (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "貴組織為了保護其資料，需要管理此應用程式。若要完成此動作，請使用您的工作或學校帳戶登入。";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "先前的版本已經還原";
 
@@ -924,6 +927,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "檔案資訊";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "請連絡您的 IT 系統管理員。";
 
 /* Name of an entry field */
 "[OTP/FieldName]" = "一次性密碼";
@@ -1176,6 +1182,9 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "快速自動填寫密碼";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "檔案";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "請重複輸入密碼";

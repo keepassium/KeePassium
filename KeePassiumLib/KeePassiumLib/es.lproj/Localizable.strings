@@ -889,6 +889,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Contraseña de un solo uso (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Para proteger sus datos propios, la organización debe administrar esta aplicación. Inicie sesión con la cuenta profesional o educativa para completar esta acción.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Versión previa recuperada";
 
@@ -927,6 +930,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Información de archivo";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Póngase en contacto con el administrador de TI.";
 
 /* Name of an entry field */
 "[OTP/FieldName]" = "Contraseña de un solo uso";
@@ -1287,6 +1293,9 @@
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "«Autorrelleno» rápido";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "Archivos";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Repetir contraseña";

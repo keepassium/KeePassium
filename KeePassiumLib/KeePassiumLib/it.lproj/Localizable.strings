@@ -925,6 +925,9 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Password monouso (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Per proteggere i propri dati, l'organizzazione deve gestire questa app. Per completare l'azione, accedere con l'account aziendale o dell'istituto di istruzione.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Versione precedente ripristinata";
 
@@ -963,6 +966,9 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informazioni sul File";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Contattare l'amministratore IT.";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "OTP copiato negli appunti";
@@ -1359,6 +1365,9 @@
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "URL del file";
+
+/* Name of a predefined OneDrive folder which contains user's own files */
+"[RemoteConnection/OneDrive/Folder/files]" = "File";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Accedi a OneDrive";
