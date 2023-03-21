@@ -83,6 +83,13 @@ final class MainCoordinator: Coordinator {
         rootSplitVC.delegate = self
         rootSplitVC.maximumPrimaryColumnWidth = 700
         window.rootViewController = rootSplitVC
+        
+        #if targetEnvironment(macCatalyst)
+        if #available(macCatalyst 16.0, *) { 
+            let titlebar = UIApplication.shared.currentScene?.titlebar
+            titlebar?.titleVisibility = .hidden
+        }
+        #endif
     }
     
     deinit {
