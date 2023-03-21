@@ -1,5 +1,18 @@
 #CHANGELOG
 
+## [1.42.128] - 2023-03-22
+
+### Improved
+
+- Updated IT/NL/PT-BR translations [thanks, everyone]
+
+### Fixed
+
+- Manual editing of the WebDAV file URL was cumbersome [thanks, everyone]
+- macOS: fixed beta status detection for TestFlight builds [thanks, Philipp]
+- macOS: broken titlebar colors on macOS 13 (fixes #265) [thanks, enviousjag]
+
+
 ## [1.42.127] - 2023-03-17
 
 ### Added

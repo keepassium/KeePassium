@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.42",
-            "releaseDate": "2023-03-18T00:00:00Z",
+            "releaseDate": "2023-03-22T00:00:00Z",
             "items": [
                 {
                     "title": "📣 Evolved from a personal project into a company: meet KeePassium Labs Sàrl!",
@@ -33,7 +33,19 @@
                     "type": 1
                 },
                 {
+                    "title": "🐞 Fixed: macOS: broken titlebar colors on macOS 13 (fixes #265) [thanks, enviousjag]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: fixed beta status detection for TestFlight builds [thanks, Philipp]",
+                    "type": 1
+                },
+                {
                     "title": "🐞 Fixed: Don't suggest donation to recent version purchasers [thanks, T.H.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Manual editing of the WebDAV file URL was cumbersome [thanks, everyone]",
                     "type": 1
                 },
                 {
