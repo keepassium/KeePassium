@@ -344,18 +344,23 @@ extension RemoteFilePickerVC {
             return
         }
         
+        var inputTextNeedsUpdate = false
         if let urlUser = urlComponents.user {
             webdavUsername = urlUser
             webdavUsernameTextField?.text = urlUser
+            inputTextNeedsUpdate = true
         }
         if let urlPassword = urlComponents.password {
             webdavPassword = urlPassword
             webdavPasswordTextField?.text = urlPassword
+            inputTextNeedsUpdate = true
         }
         urlComponents.user = nil
         urlComponents.password = nil
         self.webdavURL = urlComponents.url
-        webdavURLTextField?.text = self.webdavURL?.absoluteString ?? text
+        if inputTextNeedsUpdate  {
+            webdavURLTextField?.text = self.webdavURL?.absoluteString ?? text
+        }
         
         refreshDoneButton()
     }
