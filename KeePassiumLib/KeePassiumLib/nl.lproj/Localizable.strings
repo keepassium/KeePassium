@@ -43,6 +43,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numeriek";
 
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Druk op Esc voor Touch ID";
+
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "Toegangscode bijgewerkt.";
 
@@ -198,6 +201,9 @@
 
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Je databank is klaar voor gebruik, maar er is een probleem.";
+
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "Bezig met maken van voorvertoning…";
 
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Klaar";
@@ -793,6 +799,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Overschrijf";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Druk af";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Wijzig naam";
 
@@ -801,6 +810,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Herstel";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "Opnieuw";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Toon in Finder";
@@ -928,6 +940,9 @@
 /* Info message for enterprise users */
 "[Intune/OrgNeedsToManage]" = "Voor bescherming van de organisatiegegevens moet de app worden beheerd door uw organisatie. Meld u aan met uw werk- of schoolaccount om deze actie te voltooien.";
 
+/* Info message for users who accidentally installed the enterprise version. */
+"[Intune/PersonalVersionElsewhere]" = "KeePassium voor persoonlijk gebruik is beschikbaar in de App Store.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "De vorige versie is hersteld";
 
@@ -968,7 +983,10 @@
 "[Menu/FileInfo/title]" = "Bestandsinformatie";
 
 /* Suggestion/hint on how to fix an accompanying error. */
-"[Org/ContactYourAdmin]" = "Neem contact op met de IT-beheerder.";
+"[Org/ContactYourAdmin]" = "Neem contact op met uw it-beheerder.";
+
+/* Error message, euphemism for missing corporate license */
+"[Org/LicenseMissing]" = "KeePassium kan het bedrijfsaccount van uw organisatie niet vinden.";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "Eenmalig wachtwoord gekopieerd naar het klembord";
@@ -1368,6 +1386,9 @@
 
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "Bestanden";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Gedeeld";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Meld u aan bij OneDrive";
