@@ -1479,8 +1479,7 @@ public class Settings {
         isTestEnvironment = true
         #else
         if AppGroup.isMainApp {
-            let lastPathComp = Bundle.main.appStoreReceiptURL?.lastPathComponent
-            isTestEnvironment = lastPathComp == "sandboxReceipt"
+            isTestEnvironment = ProcessInfo.isTestFlightApp
             UserDefaults.appGroupShared.set(isTestEnvironment, forKey: Keys.testEnvironment.rawValue)
         } else {
             isTestEnvironment = UserDefaults.appGroupShared
