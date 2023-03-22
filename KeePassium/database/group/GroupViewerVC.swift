@@ -480,7 +480,7 @@ final class GroupViewerVC:
         guard let groupIndex = groupsSorted.firstIndex(where: { $0.value === group }) else {
             return nil
         }
-        let indexPath = IndexPath(row: groupIndex, section: 0)
+        let indexPath = IndexPath(row: announcements.count + groupIndex, section: 0)
         return indexPath
     }
 
@@ -488,7 +488,8 @@ final class GroupViewerVC:
         guard let entryIndex = entriesSorted.firstIndex(where: { $0.value === entry }) else {
             return nil
         }
-        let indexPath = IndexPath(row: groupsSorted.count + entryIndex, section: 0)
+        let rowNumber = announcements.count + groupsSorted.count + entryIndex
+        let indexPath = IndexPath(row: rowNumber, section: 0)
         return indexPath
     }
     
