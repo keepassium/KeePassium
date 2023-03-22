@@ -1,5 +1,17 @@
 #CHANGELOG
 
+## [1.42.129] - 2023-03-22
+
+### Improved
+
+- Updated SK translation [thanks, onegin1]
+
+### Fixed
+
+- Occasional timeouts while saving the database (regression in 1.41.124) [thanks, everyone]
+- After editing an entry, a wrong entry could be highlighted
+
+
 ## [1.42.128] - 2023-03-22
 
 ### Improved

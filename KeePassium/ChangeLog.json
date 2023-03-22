@@ -25,6 +25,10 @@
                     "type": 1
                 },
                 {
+                    "title": "🐞 Fixed: Occasional timeouts while saving the database (regression in 1.41.124) [thanks, everyone]",
+                    "type": 1
+                },
+                {
                     "title": "🐞 Fixed: macOS: clipboard timeout had no effect (fixes #278) [thanks, S.B.]",
                     "type": 1
                 },
