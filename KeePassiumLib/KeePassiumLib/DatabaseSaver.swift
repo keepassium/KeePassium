@@ -58,7 +58,7 @@ public class DatabaseSaver: ProgressObserver {
     
     private let databaseFile: DatabaseFile
     private let relatedTasks: Set<RelatedTasks>
-    private let timeout: Timeout
+    private let timeoutDuration: TimeInterval
     private var progressKVO: NSKeyValueObservation?
     
     public weak var delegate: DatabaseSaverDelegate?
@@ -71,16 +71,16 @@ public class DatabaseSaver: ProgressObserver {
         q.qualityOfService = .userInitiated
         return q
     }()
-    
+
     public init(
         databaseFile: DatabaseFile,
         skipTasks: [RelatedTasks] = [],
-        timeout: Timeout,
+        timeoutDuration: TimeInterval,
         delegate: DatabaseSaverDelegate,
         delegateQueue: DispatchQueue = .main
     ) {
         self.databaseFile = databaseFile
-        self.timeout = timeout
+        self.timeoutDuration = timeoutDuration
         self.delegate = delegate
         self.delegateQueue = delegateQueue
         self.relatedTasks = Set(RelatedTasks.allCases).subtracting(skipTasks)
@@ -130,7 +130,8 @@ public class DatabaseSaver: ProgressObserver {
         startObservingProgress()
         notifyWillSaveDatabase()
         
-        databaseFile.resolveFileURL(timeout: timeout, completionQueue: operationQueue) { [self] in
+        let phase1Timeout = Timeout(duration: timeoutDuration)
+        databaseFile.resolveFileURL(timeout: phase1Timeout, completionQueue: operationQueue) { [self] in
             self.didResolveURL()
         }
     }
@@ -155,6 +156,7 @@ public class DatabaseSaver: ProgressObserver {
             databaseFile.setData(outData, updateHash: false)
             progress.completedUnitCount = ProgressSteps.didEncryptDatabase
             
+            let phase2Timeout = Timeout(duration: timeoutDuration)
             Diag.info("Writing database document")
             var isSaveCancelled = false
             var isSaveToSameFile = true
@@ -177,7 +179,7 @@ public class DatabaseSaver: ProgressObserver {
                         return nil
                     }
                 },
-                timeout: timeout,
+                timeout: phase2Timeout,
                 completionQueue: operationQueue,
                 completion: { [self] result in 
                     switch result {
