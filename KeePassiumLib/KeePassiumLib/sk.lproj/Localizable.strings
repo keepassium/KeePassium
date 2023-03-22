@@ -43,6 +43,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numerická";
 
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Stlač kláves ESC pre Touch ID overenie";
+
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "Prístupový kód bol úspešne aktualizovaný.";
 
@@ -198,6 +201,9 @@
 
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Vaša databáza je otvorená, avšak všetko neprebehlo úplne v poriadku.";
+
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "Pripravuje sa ukážka…";
 
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Hotovo";
@@ -793,6 +799,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Prepísať";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Vytlačiť";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Premenovať";
 
@@ -801,6 +810,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Obnoviť";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "Skúsiť znova";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Zobraziť vo Finderi";
@@ -925,6 +937,12 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Jednorazové heslo (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Na ochranu svojich údajov musí vaša organizácia spravovať túto aplikáciu. Ak chcete dokončiť túto akciu, prihláste sa pomocou svojho pracovného alebo školského účtu.";
+
+/* Info message for users who accidentally installed the enterprise version. */
+"[Intune/PersonalVersionElsewhere]" = "Verzia KeePassium pre osobné použitie je k dispozícii v obchode App Store.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Predchádzajúca verzia obnovená";
 
@@ -963,6 +981,12 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informácie o súbore";
+
+/* Suggestion/hint on how to fix an accompanying error. */
+"[Org/ContactYourAdmin]" = "Prosím kontaktujte svojho správcu IT.";
+
+/* Error message, euphemism for missing corporate license */
+"[Org/LicenseMissing]" = "KeePassium nenašlo podnikový účet vašej organizácie.";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "Jednorazové heslo bolo skopírované do schránky";
@@ -1362,6 +1386,9 @@
 
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "Súbory";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Zdieľané";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Prihláste sa do OneDrive";
