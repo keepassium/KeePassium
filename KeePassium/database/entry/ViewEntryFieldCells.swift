@@ -167,7 +167,7 @@ class URLFieldCell: ViewableFieldCell {
     override func setupCell() {
         super.setupCell()
         
-        let urlString = field?.value ?? ""
+        let urlString = field?.resolvedValue ?? ""
         url = URL(string: urlString)
         
         let openURLButton = OpenURLAccessoryButton()
