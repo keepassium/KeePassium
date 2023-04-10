@@ -645,7 +645,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     ) -> ContextualAction {
         return ContextualAction(
             title: LString.actionRevealInFinder,
-            imageName: .squareAndArrowUp,
+            imageName: .folder,
             style: .default,
             color: UIColor.actionTint,
             handler: { [weak self] in

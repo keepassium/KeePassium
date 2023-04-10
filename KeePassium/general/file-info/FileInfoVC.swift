@@ -127,11 +127,18 @@ final class FileInfoVC: UITableViewController, Refreshable {
     private func setupToolbar() {
         var toolbarItems = [UIBarButtonItem]()
         
-        let exportActionTitle = ProcessInfo.isRunningOnMac ?
-                LString.actionRevealInFinder : LString.actionExport
+        let exportActionTitle: String
+        let exportActionImage: SystemImageName
+        if ProcessInfo.isRunningOnMac {
+            exportActionTitle = LString.actionRevealInFinder
+            exportActionImage = .folder
+        } else {
+            exportActionTitle = LString.actionExport
+            exportActionImage = .squareAndArrowUp
+        }
         exportBarButton = UIBarButtonItem(
             title: exportActionTitle,
-            image: .get(.squareAndArrowUp),
+            image: .get(exportActionImage),
             primaryAction: UIAction(
                 title: exportActionTitle,
                 image: .get(.squareAndArrowUp),
