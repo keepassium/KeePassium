@@ -179,7 +179,11 @@ public class URLReference:
         label: "com.keepassium.URLReference",
         qos: .background,
         attributes: [.concurrent])
-    
+    private let resolveQueue = DispatchQueue(
+        label: "com.keepassium.URLReference.resolve",
+        attributes: [], 
+        target: URLReference.backgroundQueue
+    )
     
     
     private enum CodingKeys: String, CodingKey {
@@ -355,8 +359,7 @@ public class URLReference:
         }
         
         let fileProvider = self.fileProvider
-        let queue = URLReference.backgroundQueue
-        queue.async {
+        URLReference.backgroundQueue.async {
             let resolver = DispatchWorkItem() {
                 do {
                     let url = try self.resolveSync()
@@ -372,7 +375,7 @@ public class URLReference:
                     }
                 }
             }
-            queue.async(execute: resolver)
+            self.resolveQueue.async(execute: resolver)
             switch resolver.wait(timeout: timeout.deadline) {
             case .success:
                 break
@@ -533,7 +536,7 @@ public class URLReference:
     
     private func refreshInfoSync() {
         let semaphore = DispatchSemaphore(value: 0)
-        URLReference.backgroundQueue.async { [self] in
+        resolveQueue.async { [self] in
             self.refreshInfo { _ in
                 semaphore.signal()
             }
