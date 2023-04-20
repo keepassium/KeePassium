@@ -129,54 +129,47 @@ final public class QuickTypeAutoFillStorage {
 
 private struct SearchableData {
     var urls = Set<URL>()
-    var domains = Set<String>()
-
-    mutating func maybeAdd(url: URL?) {
-        if let url = url {
-            urls.insert(url)
-        }
+    
+    mutating func add(url: URL) {
+        urls.insert(url)
     }
-    mutating func maybeAdd(domain: String?) {
-        if let domain = domain {
-            domains.insert(domain)
-        }
+    mutating func addAll(urls: [URL]) {
+        self.urls.formUnion(urls)
     }
     
     func toCredentialServiceIdentifiers() -> [ASCredentialServiceIdentifier] {
         let urlBasedPart = urls.map { url in
             ASCredentialServiceIdentifier(identifier: url.absoluteString, type: .URL)
         }
-        let domainBasedPart = domains.map { domain in
-            ASCredentialServiceIdentifier(identifier: domain, type: .domain)
-        }
         
-        if urlBasedPart.isEmpty && domainBasedPart.isEmpty {
-            return []
-        }
         var result = [ASCredentialServiceIdentifier]()
         result.append(contentsOf: urlBasedPart)
-        result.append(contentsOf: domainBasedPart)
         return result
     }
 }
 
 extension Entry {
+
     fileprivate func extractSearchableData() -> SearchableData? {
         if isHiddenFromSearch {
             return nil
         }
         
         var result = SearchableData()
-        result.maybeAdd(url: URL.from(malformedString: resolvedURL))
+        if let mainURL = URL.from(malformedString: resolvedURL) {
+            result.add(url: mainURL)
+        }
+        
         guard let entry2 = self as? Entry2 else {
             return result
         }
 
-        let customFields = entry2.fields.filter { !$0.isStandardField}
-        customFields.forEach {
-            let maybeURL = URL.from(malformedString: $0.resolvedValue)
-            result.maybeAdd(url: maybeURL)
+        let customFields = entry2.fields.filter { !$0.isStandardField }
+        let customURLs = customFields.compactMap {
+            URL.from(malformedString: $0.resolvedValue)
         }
+        result.addAll(urls: customURLs)
+
         return result
     }
 }

@@ -49,6 +49,8 @@
 		75675C85277C8BEA0025910A /* WebDAVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75675C84277C8BEA0025910A /* WebDAVManager.swift */; };
 		756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AFD5C258B4C510072BEEF /* KeyFileError.swift */; };
 		75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */; };
+		757C51CF29F17D3C008986F4 /* DomainParser in Frameworks */ = {isa = PBXBuildFile; productRef = 757C51CE29F17D3C008986F4 /* DomainParser */; };
+		757C51D129F18192008986F4 /* DomainNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757C51D029F18192008986F4 /* DomainNameHelper.swift */; };
 		757E78D82822D729009017BF /* PasswordGeneratorParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D72822D729009017BF /* PasswordGeneratorParams.swift */; };
 		758FF6D4290193F0007DE8EB /* OneDriveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */; };
 		758FF6D82902DB07007DE8EB /* RemoteFileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */; };
@@ -277,6 +279,7 @@
 		75675C84277C8BEA0025910A /* WebDAVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVManager.swift; sourceTree = "<group>"; };
 		756AFD5C258B4C510072BEEF /* KeyFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileError.swift; sourceTree = "<group>"; };
 		75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+extensions.swift"; sourceTree = "<group>"; };
+		757C51D029F18192008986F4 /* DomainNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNameHelper.swift; sourceTree = "<group>"; };
 		757E78D72822D729009017BF /* PasswordGeneratorParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorParams.swift; sourceTree = "<group>"; };
 		758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveDataSource.swift; sourceTree = "<group>"; };
 		758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFileItem.swift; sourceTree = "<group>"; };
@@ -454,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7544570425CAE2D50011386C /* TPInAppReceipt in Frameworks */,
+				757C51CF29F17D3C008986F4 /* DomainParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,6 +830,7 @@
 				75F11C3B288580D4005B3DC0 /* URL+consts.swift */,
 				753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */,
 				75AEAFA329871F25008F6F4C /* Timeout.swift */,
+				757C51D029F18192008986F4 /* DomainNameHelper.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1007,6 +1012,7 @@
 			name = KeePassiumLib;
 			packageProductDependencies = (
 				7544570325CAE2D50011386C /* TPInAppReceipt */,
+				757C51CE29F17D3C008986F4 /* DomainParser */,
 			);
 			productName = KeePassiumLib;
 			productReference = 75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */;
@@ -1058,6 +1064,7 @@
 			mainGroup = 75D0C7602174AF1F00C64C93;
 			packageReferences = (
 				7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
+				757C51CD29F17D3C008986F4 /* XCRemoteSwiftPackageReference "SwiftDomainParser" */,
 			);
 			productRefGroup = 75D0C76B2174AF1F00C64C93 /* Products */;
 			projectDirPath = "";
@@ -1136,6 +1143,7 @@
 				7538167E22B15FC7000FA4BD /* Settings+premium.swift in Sources */,
 				7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */,
 				75F4ACF321774A6400B22D8B /* Clipboard.swift in Sources */,
+				757C51D129F18192008986F4 /* DomainNameHelper.swift in Sources */,
 				75AF1928282E5A9200FA4BB5 /* PasswordGeneratorMode.swift in Sources */,
 				75D09C292174F77000F7DEF2 /* Group2.swift in Sources */,
 				75D09C342174F77000F7DEF2 /* Bool+extension.swift in Sources */,
@@ -1564,6 +1572,14 @@
 				kind = branch;
 			};
 		};
+		757C51CD29F17D3C008986F4 /* XCRemoteSwiftPackageReference "SwiftDomainParser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/keepassium/SwiftDomainParser";
+			requirement = {
+				branch = keepassium;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1571,6 +1587,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
+		};
+		757C51CE29F17D3C008986F4 /* DomainParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 757C51CD29F17D3C008986F4 /* XCRemoteSwiftPackageReference "SwiftDomainParser" */;
+			productName = DomainParser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

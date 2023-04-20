@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "swiftdomainparser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/SwiftDomainParser",
+      "state" : {
+        "branch" : "keepassium",
+        "revision" : "17642aa186caca61ab008dc5a4ebda770d93033a"
+      }
+    },
+    {
       "identity" : "tpinappreceipt",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/keepassium/TPInAppReceipt",

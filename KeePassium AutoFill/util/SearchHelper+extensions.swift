@@ -9,7 +9,7 @@
 
 import KeePassiumLib
 import AuthenticationServices
-
+import DomainParser
 
 struct FuzzySearchResults {
     var exactMatch: SearchResults
@@ -61,6 +61,7 @@ extension SearchHelper {
     
     private func performSearch(in database: Database, url: String) -> [ScoredEntry] {
         guard let url = URL.from(malformedString: url) else { return [] }
+        let parsedHost = DomainNameHelper.shared.parse(url: url) 
         
         var allEntries = [Entry]()
         guard let rootGroup = database.root else { return [] }
@@ -76,7 +77,7 @@ extension SearchHelper {
             .map { (entry) in
                 return ScoredEntry(
                     entry: entry,
-                    similarityScore: getSimilarity(url: url, entry: entry)
+                    similarityScore: getSimilarity(url: url, parsedHost: parsedHost, entry: entry)
                 )
             }
             .filter { $0.similarityScore > 0.0 }
@@ -90,6 +91,7 @@ extension SearchHelper {
         guard let rootGroup = database.root else { return [] }
         rootGroup.collectAllEntries(to: &allEntries)
         
+        let mainDomain = DomainNameHelper.shared.getMainDomain(host: domain) ?? domain
         let compareOptions: String.CompareOptions = [.caseInsensitive]
         
         let relevantEntries = allEntries
@@ -103,7 +105,7 @@ extension SearchHelper {
                 return ScoredEntry(
                     entry: entry,
                     similarityScore: getSimilarity(
-                        domain: domain,
+                        domain: mainDomain,
                         entry: entry,
                         options: compareOptions
                     )
@@ -123,9 +125,12 @@ extension SearchHelper {
         if host == domain {
             return 1.0
         }
-        if host.hasSuffix("." + domain) {
-            return 0.9
+        if let simplifiedURLHost = DomainNameHelper.shared.getMainDomain(host: host),
+           domain == simplifiedURLHost
+        {
+            return 0.95
         }
+        
         return 0.0
     }
     
@@ -155,14 +160,32 @@ extension SearchHelper {
     }
     
     
-    private func howSimilar(_ url1: URL, with url2: URL?) -> Double {
+    private func howSimilar(
+        _ url1: URL,
+        parsedHost parsedHost1: ParsedHost?,
+        with url2: URL?
+    ) -> Double {
         guard let url2 = url2 else { return 0.0 }
         
         if url1 == url2 { return 1.0 }
         
+        var isSimilarHosts = false
         guard let host1 = url1.host?.localizedLowercase,
               let host2 = url2.host?.localizedLowercase else { return 0.0 }
+        
+        var parsedHost2: ParsedHost?
         if host1 == host2 {
+            isSimilarHosts = true
+        } else {
+            parsedHost2 = DomainNameHelper.shared.parse(host: host2)
+            if let mainDomain1 = parsedHost1?.domain,
+               let mainDomain2 = parsedHost2?.domain
+            {
+                isSimilarHosts = (mainDomain1 == mainDomain2)
+            }
+        }
+                    
+        if isSimilarHosts {
             var portMismatchPenalty = 0.0
             if let port1 = url1.port,
                let port2 = url2.port,
@@ -179,31 +202,37 @@ extension SearchHelper {
             
             return 0.7 + portMismatchPenalty + 0.3 * pathSimilarity
         } else {
-            if url1.guessServiceName() == url2.guessServiceName() {
+            if let serviceName1 = parsedHost1?.serviceName,
+               let serviceName2 = parsedHost2?.serviceName,
+               serviceName1 == serviceName2
+            {
                 return 0.5
             }
         }
         return 0.0
     }
     
-    private func getSimilarity(url: URL, entry: Entry) -> Double {
+    private func getSimilarity(url: URL, parsedHost: ParsedHost?, entry: Entry) -> Double {
         
-        let urlScore = howSimilar(url, with: URL.from(malformedString: entry.resolvedURL))
-        
-        let guessedServiceName = url.guessServiceName()
+        let urlScore = howSimilar(
+            url,
+            parsedHost: parsedHost,
+            with: URL.from(malformedString: entry.resolvedURL)
+        )
         
         var titleScore = 0.0
         var notesScore = 0.0
-        
-        if let urlHost = url.host {
-            if entry.resolvedTitle.localizedCaseInsensitiveContains(urlHost) {
+
+        if let simplifiedHost = parsedHost?.domain ?? url.host {
+            if entry.resolvedTitle.localizedCaseInsensitiveContains(simplifiedHost) {
                 titleScore = 0.8
             }
-            if entry.resolvedNotes.localizedCaseInsensitiveContains(urlHost) {
+            if entry.resolvedNotes.localizedCaseInsensitiveContains(simplifiedHost) {
                 notesScore = 0.5
             }
         }
-        if let serviceName = guessedServiceName {
+
+        if let serviceName = parsedHost?.serviceName {
             if entry.resolvedTitle.localizedCaseInsensitiveContains(serviceName) {
                 titleScore = max(titleScore, 0.5)
             }
@@ -218,11 +247,9 @@ extension SearchHelper {
         
         let altURLScore = howSimilar(
             url,
+            parsedHost: parsedHost,
             with: URL.from(malformedString: entry2.overrideURL))
         let maxScoreSoFar = max(urlScore, titleScore, notesScore, altURLScore)
-        if maxScoreSoFar >= 0.5 {
-            return maxScoreSoFar
-        }
         
         let customFieldValues = entry2.fields
             .filter { !$0.isStandardField }
@@ -235,53 +262,30 @@ extension SearchHelper {
             }
         }
         
-        guard let urlHost = url.host else {
+        guard let mainDomain = parsedHost?.domain else {
             return maxScoreSoFar
         }
         for fieldValue in customFieldValues {
-            if fieldValue.localizedCaseInsensitiveContains(urlHost) {
-                return 0.5
+            if fieldValue == mainDomain {
+                return max(0.95, maxScoreSoFar)
+            }
+            if fieldValue.localizedCaseInsensitiveContains(mainDomain) {
+                return max(0.5, maxScoreSoFar)
             }
         }
         
-        guard let serviceName = guessedServiceName else {
+        if maxScoreSoFar > 0.3 {
+            return maxScoreSoFar
+        }
+        
+        guard let serviceName = parsedHost?.serviceName else {
             return maxScoreSoFar
         }
         for fieldValue in customFieldValues {
             if fieldValue.localizedCaseInsensitiveContains(serviceName) {
-                return 0.3
+                return max(0.3, maxScoreSoFar)
             }
         }
         return maxScoreSoFar
-    }
-}
-
-
-fileprivate extension URL {
-    private static let genericSLDs = Set<String>(
-        ["co", "com", "edu", "ac", "org", "net", "gov", "mil"]
-    )
-    
-    func guessServiceName() -> String? {
-        guard let domains = host?.split(separator: ".") else {
-            return nil
-        }
-        let domainLevels = domains.count
-        guard domainLevels > 1 else {
-            return nil
-        }
-        let secondLevelDomain = String(domains[domainLevels - 2])
-        if !URL.genericSLDs.contains(secondLevelDomain) {
-            return secondLevelDomain
-        }
-        if domainLevels > 2 {
-            let thirdLevelDomain = String(domains[domainLevels - 3])
-            if thirdLevelDomain.count > 3 {
-                return thirdLevelDomain
-            } else {
-                return domains.suffix(3).joined(separator: ".")
-            }
-        }
-        return domains.suffix(2).joined(separator: ".")
     }
 }
