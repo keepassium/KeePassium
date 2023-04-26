@@ -45,6 +45,7 @@ final class AboutVC: UITableViewController {
         120: "http://www.cartotype.com/downloads/twofish/twofish.cpp",
         122: "https://github.com/Yubico/yubikit-ios",
         125: "https://github.com/tikhop/TPInAppReceipt",
+        127: "https://github.com/Dashlane/SwiftDomainParser",
         130: "https://github.com/1024jp/GzipSwift",
         140: "https://github.com/norio-nomura/Base32",
         150: "https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift",
