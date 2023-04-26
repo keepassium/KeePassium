@@ -181,7 +181,7 @@ final class EntryFinderVC: UITableViewController {
                 if scoredEntry1.similarityScore == scoredEntry2.similarityScore {
                     return sortOrder.compare(scoredEntry1.entry, scoredEntry2.entry)
                 } else {
-                    return (scoredEntry2.similarityScore > scoredEntry1.similarityScore)
+                    return (scoredEntry2.similarityScore < scoredEntry1.similarityScore)
                 }
             }
         }
