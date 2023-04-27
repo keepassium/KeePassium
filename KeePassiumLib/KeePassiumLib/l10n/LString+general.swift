@@ -758,11 +758,23 @@ extension LString {
         comment: "Call for action: touch the sides of YubiKey 5Ci to continue")
 
     
-    public static let otpSetupOTPAction = NSLocalizedString(
+    public static let otpSetUpOTPAction = NSLocalizedString(
         "[OTP/Setup]",
         bundle: Bundle.framework,
-        value: "Setup one-time password (OTP)",
+        value: "Set up one-time password (OTP)",
         comment: "Call for action. Acronym `OTP` should not be translated."
+    )
+    public static let otpSetupScanQRCode = NSLocalizedString(
+        "[OTP/Setup/ScanQRCode]",
+        bundle: Bundle.framework,
+        value: "Scan QR code",
+        comment: "Button/action: proceed with QR code based OTP setup"
+    )
+    public static let otpSetupEnterManually = NSLocalizedString(
+        "[OTP/Setup/EnterManually]",
+        bundle: Bundle.framework,
+        value: "Enter manually",
+        comment: "Button/action: proceed with manual OTP setup"
     )
 
     public static let otpQRCodeNotValid = NSLocalizedString(
@@ -771,14 +783,28 @@ extension LString {
         value: "This QR code is not suitable for OTP setup.",
         comment: "Error shown when scanned QR code cannot be used for OTP"
     )
-
-    public static let otpQRCodeOverwriteWarning = NSLocalizedString(
+    public static let otpInvalidSecretCode = NSLocalizedString(
+        "[OTP/Scan/InvalidSecretCode]",
+        bundle: Bundle.framework,
+        value: "Entered secret code is not suitable for OTP setup.",
+        comment: "Error shown when a manually entered OTP secret is misformatted."
+    )
+    
+    public static let otpConfigOverwriteWarning = NSLocalizedString(
         "[OTP/Scan/OverwriteWarning]",
         bundle: Bundle.framework,
         value: "One-time password is already configured for this entry. Do you want to overwrite it?",
         comment: "Message to confirm user intentions"
     )
 
+    public static let otpSecretCodePlaceholder = "abcd1234…" 
+    public static let otpEnterSecretCodeTitle = NSLocalizedString(
+        "[OTP/Setup/EnterSecretCode/callToAction]",
+        bundle: Bundle.framework,
+        value: "Enter Secret Code",
+        comment: "Call to action: type in the secret key for OTP setup."
+    )
+    
     public static let otpCodeCopyToClipboardDemo = "Demo"
     public static let otpCodeCopiedToClipboard = NSLocalizedString(
         "[OTP/CopiedToClipboard/title]",

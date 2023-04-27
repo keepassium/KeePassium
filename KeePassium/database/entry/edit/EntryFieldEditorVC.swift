@@ -19,7 +19,9 @@ protocol EntryFieldEditorDelegate: AnyObject {
     func didModifyContent(in viewController: EntryFieldEditorVC)
 
     func isTOTPSetupAvailable(_ viewController: EntryFieldEditorVC) -> Bool
-    func didPressScanQRCode(in viewController: EntryFieldEditorVC)
+    func isQRScannerAvailable(_ viewController: EntryFieldEditorVC) -> Bool
+    func didPressQRCodeOTPSetup(in viewController: EntryFieldEditorVC)
+    func didPressManualOTPSetup(in viewController: EntryFieldEditorVC)
     
     func getUserNameGeneratorMenu(
         for field: EditableField,
@@ -38,8 +40,8 @@ protocol EntryFieldEditorDelegate: AnyObject {
 
 final class EntryFieldEditorVC: UITableViewController, Refreshable {
     @IBOutlet private weak var addFieldButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet private weak var scanOTPButton: UIButton!
+    @IBOutlet private weak var doneButton: UIBarButtonItem!
+    @IBOutlet private weak var otpSetupButton: UIButton!
 
     public var shouldFocusOnTitleField = true
 
@@ -56,12 +58,7 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
 
-        let supportsTOTPSetup = delegate?.isTOTPSetupAvailable(self) ?? false
-        if supportsTOTPSetup {
-            scanOTPButton.setTitle(LString.otpSetupOTPAction, for: .normal)
-        } else {
-            tableView.tableFooterView = nil
-        }
+        configureOTPSetupButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,34 +115,84 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         }
         cell.selectNameText()
     }
-
     
-    @IBAction private func didPressSetupTOTP(_ sender: Any) {
-        let isTOTPSetupAvailable = delegate?.isTOTPSetupAvailable(self) ?? false
-        guard isTOTPSetupAvailable else {
-            assertionFailure("TOTP setup option should have been hidden")
+    private func configureOTPSetupButton() {
+        let isOTPSetupSupported = delegate?.isTOTPSetupAvailable(self) ?? false
+        guard isOTPSetupSupported else {
+            tableView.tableFooterView = nil
             return
         }
+        
+        let isQRScannerAvailable = delegate?.isQRScannerAvailable(self) ?? false
+        let qrCodeSetupAction = UIAction(
+            title: LString.otpSetupScanQRCode,
+            image: .get(.qrcode),
+            attributes: isQRScannerAvailable ? [] : [.disabled]
+        ) {
+            [weak self] _ in
+            self?.didPressQRCodeOTPSetup()
+        }
+        let manualSetupAction = UIAction(
+            title: LString.otpSetupEnterManually,
+            image: .get(.keyboard)
+        ) {
+            [weak self] _ in
+            self?.didPressManualOTPSetup()
+        }
 
+        otpSetupButton.setTitle(LString.otpSetUpOTPAction, for: .normal)
+        otpSetupButton.showsMenuAsPrimaryAction = true
+        otpSetupButton.menu = UIMenu(children: [qrCodeSetupAction, manualSetupAction])
+    }
+    
+    
+    private func confirmOverwritingOTPConfig(completion: @escaping ()->Void) {
         guard let otpField = fields.first(where: { $0.internalName == EntryField.otp }),
               let value = otpField.value,
               !value.isEmpty
-        else {
-            delegate?.didPressScanQRCode(in: self)
+        else { 
+            completion()
             return
         }
 
-        let choiceAlert = UIAlertController(
-            title: LString.titleWarning,
-            message: LString.otpQRCodeOverwriteWarning,
-            preferredStyle: .alert)
-        choiceAlert.addAction(title: LString.actionOverwrite, style: .destructive) {
-            [weak self] (action) in
-            guard let self = self else { return }
-            self.delegate?.didPressScanQRCode(in: self)
-        }
-        choiceAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        let choiceAlert = UIAlertController
+            .make(
+                title: LString.titleWarning,
+                message: LString.otpConfigOverwriteWarning,
+                dismissButtonTitle: LString.actionCancel)
+            .addAction(title: LString.actionOverwrite, style: .destructive) { _ in
+                completion()
+            }
         present(choiceAlert, animated: true, completion: nil)
+    }
+    
+    private func didPressQRCodeOTPSetup() {
+        guard let isTOTPSetupSupported = delegate?.isTOTPSetupAvailable(self),
+              let isQRScannerAvailable = delegate?.isQRScannerAvailable(self),
+              isTOTPSetupSupported,
+              isQRScannerAvailable
+        else {
+            assertionFailure("Tried to use an unavailable TOTP setup option")
+            return
+        }
+        confirmOverwritingOTPConfig { [weak self] in
+            guard let self else { return }
+            self.delegate?.didPressQRCodeOTPSetup(in: self)
+        }
+        
+    }
+
+    private func didPressManualOTPSetup() {
+        guard let isTOTPSetupSupported = delegate?.isTOTPSetupAvailable(self),
+              isTOTPSetupSupported
+        else {
+            assertionFailure("Tried to use an unavailable TOTP setup option")
+            return
+        }
+        confirmOverwritingOTPConfig { [weak self] in
+            guard let self else { return }
+            self.delegate?.didPressManualOTPSetup(in: self)
+        }
     }
 
     @IBAction func didPressCancel(_ sender: Any) {

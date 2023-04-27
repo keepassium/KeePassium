@@ -130,13 +130,17 @@ final class EntryFieldEditorCoordinator: Coordinator {
         saveDatabase(databaseFile)
     }
     
-    private func setOTPCode(data: String) {
-        guard TOTPGeneratorFactory.isValid(data) else {
-            fieldEditorVC.showNotification(LString.otpQRCodeNotValid)
+    private func setOTPConfig(uri: String, isQRBased: Bool) {
+        guard TOTPGeneratorFactory.isValidURI(uri) else {
+            fieldEditorVC.showNotification(
+                isQRBased ? LString.otpQRCodeNotValid: LString.otpInvalidSecretCode,
+                image: .get(.exclamationMarkTriangle)?
+                    .withTintColor(.errorMessage, renderingMode: .alwaysOriginal)
+            )
             return
         }
 
-        entry.setField(name: EntryField.otp, value: data, isProtected: true)
+        entry.setField(name: EntryField.otp, value: uri, isProtected: true)
         isModified = true
 
         if !fields.contains(where: { $0.internalName == EntryField.otp }) {
@@ -144,6 +148,16 @@ final class EntryFieldEditorCoordinator: Coordinator {
             fieldEditorVC.fields = fields
         }
         refresh()
+    }
+    
+    private func setOTPConfig(unfilteredSeed: String) {
+        if TOTPGeneratorFactory.isValidURI(unfilteredSeed) {
+            setOTPConfig(uri: unfilteredSeed, isQRBased: false)
+            return
+        }
+        let seed = unfilteredSeed.replacingOccurrences(of: " ", with: "")
+        let otpauthURI = TOTPGeneratorFactory.makeOtpauthURI(base32Seed: seed)
+        setOTPConfig(uri: otpauthURI.absoluteString, isQRBased: false)
     }
     
     func showPasswordGenerator(
@@ -226,21 +240,44 @@ extension EntryFieldEditorCoordinator: NavigationRouterDismissAttemptDelegate {
 
 extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
     func isTOTPSetupAvailable(_ viewController: EntryFieldEditorVC) -> Bool {
-        let isCompatibleHardware = qrCodeScanner.deviceSupportsQRScanning
-        let isCompatibleDatabase = database is Database2
-        return isCompatibleHardware && isCompatibleDatabase
+        return database is Database2
     }
     
-    func didPressScanQRCode(in viewController: EntryFieldEditorVC) {
+    func isQRScannerAvailable(_ viewController: EntryFieldEditorVC) -> Bool {
+        return qrCodeScanner.deviceSupportsQRScanning
+    }
+    
+    func didPressQRCodeOTPSetup(in viewController: EntryFieldEditorVC) {
         qrCodeScanner.scanQRCode(presenter: viewController) {
             [weak self] result in
             switch result {
             case .failure(let error):
                 self?.fieldEditorVC.showNotification(error.localizedDescription)
-            case .success(let data):
-                self?.setOTPCode(data: data)
+            case .success(let scannedText):
+                self?.setOTPConfig(uri: scannedText, isQRBased: true)
             }
         }
+    }
+    
+    func didPressManualOTPSetup(in viewController: EntryFieldEditorVC) {
+        let alert = UIAlertController.make(
+            title: LString.otpEnterSecretCodeTitle,
+            message: nil,
+            dismissButtonTitle: LString.actionCancel)
+        alert.addTextField { textField in
+            textField.placeholder = LString.otpSecretCodePlaceholder
+        }
+        alert.addAction(title: LString.actionDone, style: .default) { [weak self, weak alert] _ in
+            guard let self, let alert else { return }
+            guard let textField = alert.textFields?.first,
+                  let text = textField.text
+            else {
+                return
+            }
+            self.setOTPConfig(unfilteredSeed: text)
+        }
+            
+        viewController.present(alert, animated: true)
     }
     
     func didPressCancel(in viewController: EntryFieldEditorVC) {

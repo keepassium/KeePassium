@@ -49,8 +49,12 @@ public class TOTPGeneratorFactory {
         return nil
     }
 
-    public static func isValid(_ paramString: String) -> Bool {
+    public static func isValidURI(_ paramString: String) -> Bool {
         return parseSingleFieldFormat(paramString) != nil
+    }
+    
+    public static func makeOtpauthURI(base32Seed seed: String) -> URL {
+        return GAuthFormat.make(base32Seed: seed)
     }
 }
 
@@ -137,6 +141,27 @@ fileprivate class GAuthFormat: SingleFieldFormat {
             timeStep: timeStep,
             length: length,
             hashAlgorithm: algorithm ?? defaultAlgorithm)
+    }
+    
+    static func make(base32Seed: String) -> URL {
+        var components = URLComponents()
+        components.scheme = GAuthFormat.scheme
+        components.host = GAuthFormat.host
+        components.queryItems = [
+            URLQueryItem(
+                name: GAuthFormat.seedParam,
+                value: base32Seed),
+            URLQueryItem(
+                name: GAuthFormat.timeStepParam,
+                value: String(GAuthFormat.defaultTimeStep)),
+            URLQueryItem(
+                name: GAuthFormat.lengthParam,
+                value: String(GAuthFormat.defaultLength)),
+            URLQueryItem(
+                name: GAuthFormat.algorithmParam,
+                value: GAuthFormat.defaultAlgorithm.asString)
+        ]
+        return components.url!
     }
 }
 

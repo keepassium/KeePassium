@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,19 +21,16 @@
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ad1-Rf-HyL">
-                            <rect key="frame" x="0.0" y="817.33333206176769" width="414" height="60"/>
+                            <rect key="frame" x="0.0" y="844" width="414" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-zk-w7B" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="7.9999999999999982" width="210.33333333333334" height="18.333333333333329"/>
+                                    <rect key="frame" x="16" y="8" width="119" height="21"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                     <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="-4" maxY="0.0"/>
-                                    <state key="normal" title="{Scan QR code to setup OTP}" image="qrcode" catalog="system">
+                                    <state key="normal" title="{Set up OTP}" image="clock" catalog="system">
                                         <color key="titleColor" name="ActionTint"/>
                                     </state>
-                                    <connections>
-                                        <action selector="didPressSetupTOTP:" destination="dyC-HY-kh4" eventType="touchUpInside" id="a6P-lO-UIq"/>
-                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -448,7 +445,7 @@
                     <connections>
                         <outlet property="addFieldButton" destination="HGI-xq-zUf" id="aPE-l1-Fw7"/>
                         <outlet property="doneButton" destination="urr-zn-2MK" id="KNL-EB-lsB"/>
-                        <outlet property="scanOTPButton" destination="1Nq-zk-w7B" id="ii9-pd-TVP"/>
+                        <outlet property="otpSetupButton" destination="1Nq-zk-w7B" id="YeF-mT-2jZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWU-SY-Plz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -458,10 +455,10 @@
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
+        <image name="clock" catalog="system" width="128" height="123"/>
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <image name="die.face.3" catalog="system" width="128" height="114"/>
-        <image name="qrcode" catalog="system" width="128" height="114"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

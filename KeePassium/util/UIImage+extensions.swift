@@ -85,6 +85,7 @@ enum SystemImageName: String {
     case heart = "heart" 
     case icloudSlash = "icloud.slash" 
     case infoCircle = "info.circle" 
+    case keyboard = "keyboard" 
     case megaphone = "megaphone" 
     case minus = "minus" 
     case network = "network" 
