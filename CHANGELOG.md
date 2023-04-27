@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [1.43.130] - 2023-04-27
+
+## Added
+
+- Manual TOTP setup (closes #150) [thanks, everyone]
+
+## Improved
+
+- AutoFill: finding URLs with different subdomains and/or TLDs (#201, #279) [thanks, everyone]
+- Updated all translations [thanks, everyone]
+
+## Fixed
+
+- Frequent crashes on macOS 13 (data race in URLReference) [thanks, everyone]
+- A URL containing a field reference could not be opened [thanks, Ken]
+- AutoFill: search results were shown in reverse order (least relevant first)
+- macOS: better icons for local databases and for "Reveal in Finder" [thanks, YJ]
+
+
 ## [1.42.129] - 2023-03-22
 
 ### Improved
