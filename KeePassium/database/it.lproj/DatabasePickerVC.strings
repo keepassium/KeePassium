@@ -8,7 +8,7 @@
 "oee-CI-r2x.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Impostazioni";
 
 /* Class = "UIBarButtonItem"; title = "Add Database"; ObjectID = "qPq-UR-uZs"; Note = "Action: add database (either an existing file or create a new one)"; */
-"qPq-UR-uZs.title" = "Aggiungi Database";
+"qPq-UR-uZs.title" = "Aggiungi database";
 
 /* Class = "UINavigationItem"; title = "Databases"; ObjectID = "UI0-Lh-wTj"; Note = "Title of the database picker list"; */
 "UI0-Lh-wTj.title" = "Database";

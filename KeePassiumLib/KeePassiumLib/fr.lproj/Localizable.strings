@@ -793,6 +793,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Écraser";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Imprimer";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Renommer";
 

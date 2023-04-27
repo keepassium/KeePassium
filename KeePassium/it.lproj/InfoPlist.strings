@@ -1,22 +1,22 @@
 
 /* (No Comment) */
-"KeePass Database (kdb)" = "Database di KeePass (kdb)";
+"KeePass Database (kdb)" = "Database KeePass (kdb)";
 
 /* (No Comment) */
-"KeePass Database (kdbx)" = "Database di KeePass (kdbx)";
+"KeePass Database (kdbx)" = "Database KeePass (kdbx)";
 
 /* Privacy - NFC Scan Usage Description */
-"NFCReaderUsageDescription" = "KeePassium richiede l'accesso a NFC per comunicare con la YubiKey.";
+"NFCReaderUsageDescription" = "KeePassium richiede l'accesso a NFC per comunicare con la tua YubiKey.";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "KeePassium richiede l'accesso alla fotocamera per scansionare i codici QR.";
+"NSCameraUsageDescription" = "KeePassium richiede l'accesso a Fotocamera per leggere i codici QR.";
 
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Usa FaceID per sbloccare KeePassium";
 
 /* Privacy - Photo Library Additions Usage Description */
-"NSPhotoLibraryAddUsageDescription" = "KeePassium ha bisogno dell'autorizzazione per esportare file nella tua libreria di foto.";
+"NSPhotoLibraryAddUsageDescription" = "KeePassium ha bisogno del permesso per esportare file in Foto.";
 
 /* (No Comment) */
-"NSPhotoLibraryUsageDescription" = "KeePassium ha bisogno di accedere alla libreria Foto per aggiungere icone personalizzate a gruppi e voci";
+"NSPhotoLibraryUsageDescription" = "KeePassium richiede l'accesso a Foto per aggiungere icone personalizzate a gruppi e voci";
 

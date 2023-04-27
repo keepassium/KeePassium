@@ -1,26 +1,26 @@
 /* Class = "UILabel"; text = "In-memory Protection"; ObjectID = "0pb-xb-fuf"; Note = "Label for a switch, equivalent to KeePass' own `Enable in-memory protection` for custom entry fields."; */
-"0pb-xb-fuf.text" = "Protezione in-memory";
+"0pb-xb-fuf.text" = "Protezione in-memoria";
 
 /* Class = "UITextView"; accessibilityLabel = "Custom field value"; ObjectID = "7iU-ut-hd7"; */
 "7iU-ut-hd7.accessibilityLabel" = "Valore campo personalizzato";
 
 /* Class = "UITableViewCell"; CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Custom field editor"; ObjectID = "CcF-c8-r4M"; */
-"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Editor campo personalizzato";
+"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Editore campo personalizzato";
 
 /* Class = "UITextField"; accessibilityLabel = "Custom field name"; ObjectID = "ecN-Xd-ff5"; */
 "ecN-Xd-ff5.accessibilityLabel" = "Nome campo personalizzato";
 
 /* Class = "UITextField"; placeholder = "Field Name"; ObjectID = "ecN-Xd-ff5"; */
-"ecN-Xd-ff5.placeholder" = "Nome Campo";
+"ecN-Xd-ff5.placeholder" = "Nome campo";
 
 /* Class = "UISwitch"; accessibilityLabel = "In-memory Protection"; ObjectID = "eox-My-Hns"; Note = "Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."; */
-"eox-My-Hns.accessibilityLabel" = "Protezione in-memory";
+"eox-My-Hns.accessibilityLabel" = "Protezione in-memoria";
 
 /* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "HcW-rc-pdR"; */
-"HcW-rc-pdR.normalTitle" = "Cambia Icona";
+"HcW-rc-pdR.normalTitle" = "Cambia icona";
 
 /* Class = "UIBarButtonItem"; HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Add Custom Field"; ObjectID = "HGI-xq-zUf"; */
-"HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Aggiungi Campo Personalizzato";
+"HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Aggiungi campo personalizzato";
 
 /* Class = "UINavigationItem"; title = "Edit Entry"; ObjectID = "l3s-Bv-fA1"; */
 "l3s-Bv-fA1.title" = "Modifica voce";

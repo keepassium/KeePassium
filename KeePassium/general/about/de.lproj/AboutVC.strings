@@ -85,6 +85,9 @@
 /* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
 "kvO-9B-1Sy.text" = "Passwort-Wortlisten von EFF";
 
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "KWA-h1-ddu"; */
+"KWA-h1-ddu.text" = "MIT Lizenz";
+
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
 "lht-LP-o0Y.text" = "MIT Lizenz";
 
@@ -150,6 +153,9 @@
 
 /* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
 "Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK von Yubico AB";
+
+/* Class = "UILabel"; text = "SwiftDomainParser by Dashlane"; ObjectID = "y9Z-rr-JL8"; */
+"y9Z-rr-JL8.text" = "SwiftDomainParser von Dashlane";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Z7s-Ch-895"; */
 "Z7s-Ch-895.text" = "MIT Lizenz";

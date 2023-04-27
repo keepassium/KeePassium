@@ -1327,6 +1327,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Ustawienia listy";
 
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "Dostęp do sieci";
+
 /* Section title in settings */
 "[Settings/Search/title]" = "Szukaj";
 

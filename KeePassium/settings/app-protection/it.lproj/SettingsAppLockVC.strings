@@ -1,14 +1,14 @@
 /* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.footerTitle" = "Se immetti un codice di accesso AppLock errato, KeePassium chiuderà tutti i database e cancellerà tutte le chiavi master dal portachiavi.";
+"5Dg-KX-m7a.footerTitle" = "Se immetti un codice di accesso BloccoApp errato, KeePassium chiuderà tutti i database e cancellerà tutte le chiavi principali dal portachiavi.";
 
 /* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
 "5Dg-KX-m7a.headerTitle" = "Codice di accesso errato";
 
 /* Class = "UILabel"; text = "Protect Databases"; ObjectID = "6Pk-35-Fx6"; */
-"6Pk-35-Fx6.text" = "Protezione database";
+"6Pk-35-Fx6.text" = "Proteggi database";
 
 /* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.footerTitle" = "Consente l'autenticazione biometrica come alternativa rapida (ma meno sicura) al codice di sicurezza di AppLock.";
+"7ae-8I-LiQ.footerTitle" = "Consente l'autenticazione biometrica come alternativa rapida (ma meno sicura) al codice di accesso di BloccoApp.";
 
 /* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
 "7ae-8I-LiQ.headerTitle" = "Dati biometrici";
@@ -20,8 +20,8 @@
 "Ef4-Jw-xeO.text" = "Timeout";
 
 /* Class = "UILabel"; text = "Enable AppLock"; ObjectID = "IS1-Lb-MFy"; */
-"IS1-Lb-MFy.text" = "Abilita Blocco dell'App";
+"IS1-Lb-MFy.text" = "Abilita BloccoApp";
 
 /* Class = "UITableViewSection"; footerTitle = "The app will automatically lock up after this time."; ObjectID = "m50-fl-4tu"; */
-"m50-fl-4tu.footerTitle" = "L'app si bloccherà automaticamente dopo questo tempo.";
+"m50-fl-4tu.footerTitle" = "L'app si bloccherà automaticamente dopo questo intervallo di tempo.";
 

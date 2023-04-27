@@ -82,6 +82,9 @@
 /* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern 來自 Daniel Beaton";
 
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "KWA-h1-ddu"; */
+"KWA-h1-ddu.text" = "MIT 授權許可";
+
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
 "lht-LP-o0Y.text" = "MIT 授權許可";
 

@@ -49,6 +49,9 @@
 /* Class = "UILabel"; text = "Hide Passwords"; ObjectID = "pid-k2-idJ"; */
 "pid-k2-idJ.text" = "Ukryj hasło";
 
+/* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
+"siQ-LK-GXZ.text" = "Klucze szyfrowania pamięci podręcznej";
+
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Limit czasu schowka";
 

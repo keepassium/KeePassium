@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
-"7bL-fQ-OUc.headerTitle" = "Feedback";
+"7bL-fQ-OUc.headerTitle" = "Supporto";
 
 /* Class = "UILabel"; text = "Proprietary license"; ObjectID = "7cl-Fc-8Nf"; */
 "7cl-Fc-8Nf.text" = "Licenza proprietaria";
@@ -23,7 +23,7 @@
 "AMd-x7-PDa.text" = "Ti piace quello che vedi?";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "Traduzione da parte dei contributori di KeePassium";
+"aqX-J9-IzD.text" = "Traduzione dei contributori di KeePassium";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
 "AWg-lI-BfC.text" = "Licenza MIT";
@@ -47,10 +47,10 @@
 "EWy-OI-IxL.text" = "Licenza permissiva personalizzata";
 
 /* Class = "UILabel"; text = "ChaCha20 & Salsa20 implementation by D. J. Bernstein"; ObjectID = "Ha8-Qv-0qg"; */
-"Ha8-Qv-0qg.text" = "ChaCha20 & Salsa20 implementazione di D. J. Bernstein";
+"Ha8-Qv-0qg.text" = "Implementazione ChaCha20 & Salsa20 di D. J. Bernstein";
 
 /* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
-"hDU-6p-Bzr.text" = "Implementazione di Rijndael di Szymon Stefanek";
+"hDU-6p-Bzr.text" = "Implementazione Rijndael di Szymon Stefanek";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "hqP-9y-rXc"; */
 "hqP-9y-rXc.text" = "Licenza MIT";
@@ -68,7 +68,7 @@
 "iKy-z5-Ox7.text" = "CC BY-ND 3.0";
 
 /* Class = "UITableViewSection"; headerTitle = "Privacy Policy"; ObjectID = "JbR-nf-D9o"; Note = "Section: privacy policy"; */
-"JbR-nf-D9o.headerTitle" = "Privacy Policy";
+"JbR-nf-D9o.headerTitle" = "Politica sulla privacy";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "JgR-60-OMp"; */
 "JgR-60-OMp.text" = "Dominio Pubblico";
@@ -83,7 +83,10 @@
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern di Daniel Beaton";
 
 /* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
-"kvO-9B-1Sy.text" = "Lista delle passphrase dell'EFF";
+"kvO-9B-1Sy.text" = "Lista delle frasi segrete dell'EFF";
+
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "KWA-h1-ddu"; */
+"KWA-h1-ddu.text" = "Licenza MIT";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
 "lht-LP-o0Y.text" = "Licenza MIT";
@@ -92,7 +95,7 @@
 "muG-xI-muo.headerTitle" = "Riconoscimenti";
 
 /* Class = "UITableViewController"; title = "About"; ObjectID = "NLN-lQ-bh5"; */
-"NLN-lQ-bh5.title" = "Altro";
+"NLN-lQ-bh5.title" = "Informazioni";
 
 /* Class = "UILabel"; text = "CC0 license"; ObjectID = "o9e-qb-mMw"; */
 "o9e-qb-mMw.text" = "Licenza CC0";
@@ -101,7 +104,7 @@
 "OaP-Bl-5vR.text" = "TPInAppReceipt di Pavel Tikhonenko";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
-"QV5-N8-NRt.text" = "Dominio Pubblico";
+"QV5-N8-NRt.text" = "Dominio pubblico";
 
 /* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "Qz4-PJ-Tra"; */
 "Qz4-PJ-Tra.text" = "CC BY 3.0";
@@ -128,16 +131,16 @@
 "SOX-Re-yl9.text" = "Linecons di Andrian Valeanu";
 
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
-"TOl-DA-gYc.text" = "Contatta il Supporto";
+"TOl-DA-gYc.text" = "Contatta il supporto";
 
 /* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
 "tOr-N9-2UY.text" = "Icone Feather di Cole Bemis";
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
-"uiw-Qh-pNp.text" = "Lascia una recensione dell'App Store.";
+"uiw-Qh-pNp.text" = "Lascia una recensione sull'App Store.";
 
 /* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
-"vg0-6M-OIq.text" = "Vincolo KeyboardLayout di James Tang";
+"vg0-6M-OIq.text" = "KeyboardLayoutConstraint di James Tang";
 
 /* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
 "VuB-ng-Uii.text" = "Icone Nuvola di David Vignoni";
@@ -146,10 +149,13 @@
 "Wuj-Uw-baK.text" = "KeePassium";
 
 /* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
-"wYr-Ya-qAP.text" = "Icona impostazioni di sistema di Vicons Design";
+"wYr-Ya-qAP.text" = "Icona Impostazioni di Sistema di Vicons Design";
 
 /* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
-"Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK di Yubico AB";
+"Xee-Y1-Dcw.text" = "SDK Yubico Mobile iOS di Yubico AB";
+
+/* Class = "UILabel"; text = "SwiftDomainParser by Dashlane"; ObjectID = "y9Z-rr-JL8"; */
+"y9Z-rr-JL8.text" = "SwiftDomainParser di Dashlane";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Z7s-Ch-895"; */
 "Z7s-Ch-895.text" = "Licenza MIT";

@@ -2,7 +2,7 @@
 "P3J-3c-ucU.title" = "Sblocca KeePassium";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "z0x-Rz-Nfj"; */
-"z0x-Rz-Nfj.normalTitle" = "Annullare";
+"z0x-Rz-Nfj.normalTitle" = "Annulla";
 
 /* Class = "UITextField"; placeholder = "Passcode"; ObjectID = "ZTd-Zj-qAs"; Note = "Placeholder text in the AppLock passcode field"; */
 "ZTd-Zj-qAs.placeholder" = "Codice di accesso";

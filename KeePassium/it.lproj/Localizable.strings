@@ -11,7 +11,7 @@
 "[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
 
 /* Title for a sample entry */
-"[Database/Create/TemplateEntry/title] Sample Entry" = "Esempio di voce";
+"[Database/Create/TemplateEntry/title] Sample Entry" = "Voce esempio";
 
 /* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
 "[Database/Create/TemplateEntry/userName] john.smith" = "mario.rossi";
@@ -32,16 +32,16 @@
 "[Database/Create/TemplateGroup/title] Network" = "Rete";
 
 /* Predefined `Operating system` group in a new database */
-"[Database/Create/TemplateGroup/title] OS" = "Sistema operativo";
+"[Database/Create/TemplateGroup/title] OS" = "OS";
 
 /* Confirmation message to replace an existing entry attachment with a new one. */
 "[Entry/Files/Add] Replace existing attachment?" = "Sostituire l'allegato esistente?";
 
 /* Explanation for replacing the only attachment of KeePass1 entry */
-"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Questo database supporta solo un allegato per ogni voce: ne esiste già uno.";
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Questo database supporta solo un allegato per voce, e ne esiste già uno.";
 
 /* Title of a dialog for renaming an attached file */
-"[Entry/Files/Rename/title] Rename File" = "Rinomina File";
+"[Entry/Files/Rename/title] Rename File" = "Rinomina file";
 
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "Informazioni su %@";
@@ -50,5 +50,5 @@
 "[Menu/Preferences/title]" = "Preferenze…";
 
 /* Action/button to make password visible as plain-text */
-"[ProtectedTextField] Show Password" = "Mostra Password";
+"[ProtectedTextField] Show Password" = "Mostra password";
 

@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "Search in Passwords"; ObjectID = "1LC-s7-Kdl"; Note = "An switch in settings: whether to include protected field values in search procedure."; */
-"1LC-s7-Kdl.text" = "Ricerca nelle password";
+"1LC-s7-Kdl.text" = "Cerca nelle password";
 
 /* Class = "UILabel"; text = "Search in Field Names"; ObjectID = "cCm-E4-L3m"; Note = "An switch in settings: whether to include entry field names in search procedure."; */
 "cCm-E4-L3m.text" = "Cerca nei nomi dei campi";
@@ -8,11 +8,11 @@
 "DJr-hC-DMT.footerTitle" = "Dopo l'apertura di un database, mostra automaticamente il campo di ricerca.";
 
 /* Class = "UITableViewSection"; headerTitle = "Search Scope"; ObjectID = "Io8-uP-3lF"; Note = "A section in search-related settings: which fields to include in search."; */
-"Io8-uP-3lF.headerTitle" = "Ambito della ricerca";
+"Io8-uP-3lF.headerTitle" = "Estensione ricerca";
 
 /* Class = "UILabel"; text = "Search in Protected Values"; ObjectID = "LrQ-5g-wj0"; Note = "An switch in settings: whether to include protected field values in search procedure."; */
 "LrQ-5g-wj0.text" = "Cerca nei valori protetti";
 
 /* Class = "UILabel"; text = "Start with Search"; ObjectID = "q0v-f7-D4Y"; */
-"q0v-f7-D4Y.text" = "Inizia la ricerca";
+"q0v-f7-D4Y.text" = "Inizia con ricerca";
 

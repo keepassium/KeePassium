@@ -1,12 +1,12 @@
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.footerTitle" = "Quando Riempimento automatico trova una voce perfettamente corrispondente, questa voce verrà popolata automaticamente.";
+"jYl-ks-dFG.footerTitle" = "Quando l'inserimento automatico trova una voce perfettamente corrispondente, questa voce verrà incollata automaticamente.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "Ricerca automatica";
 
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you."; ObjectID = "XYL-1l-Jx6"; */
-"XYL-1l-Jx6.footerTitle" = "Quando il riempimento automatico inserisce nome utente e password, può anche copiare la password monouso (OTP).";
+"XYL-1l-Jx6.footerTitle" = "Quando l'inserimento automatico inserisce il nome utente e la password, può anche copiare la password monouso (OTP) per te.";
 
 /* Class = "UITableViewSection"; headerTitle = "One-time passwords"; ObjectID = "XYL-1l-Jx6"; */
-"XYL-1l-Jx6.headerTitle" = "One-Time Password";
+"XYL-1l-Jx6.headerTitle" = "Password monouso";
 
