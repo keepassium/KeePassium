@@ -997,11 +997,23 @@
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Esse não é um código QR para configurar códigos de uso único.";
 
+/* Error shown when a manually entered OTP secret is misformatted. */
+"[OTP/Scan/InvalidSecretCode]" = "Não foi possível configurar OTP com este código.";
+
 /* Message to confirm user intentions */
 "[OTP/Scan/OverwriteWarning]" = "Já há um código de uso único configurado nesta entrada. Substituí-lo?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Configurar código de uso único (OTP)";
+
+/* Button/action: proceed with manual OTP setup */
+"[OTP/Setup/EnterManually]" = "Inserir manualmente";
+
+/* Call to action: type in the secret key for OTP setup. */
+"[OTP/Setup/EnterSecretCode/callToAction]" = "Insira o código secreto";
+
+/* Button/action: proceed with QR code based OTP setup */
+"[OTP/Setup/ScanQRCode]" = "Ler código QR";
 
 /* Description of an OTP code; sentence case. */
 "[OTP/Title/sentenceCase]" = "Código de uso único";

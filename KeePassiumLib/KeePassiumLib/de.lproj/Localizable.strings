@@ -199,6 +199,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Ihre Datenbank wurde geöffnet, aber es gab ein Problem.";
 
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "Vorschau vorbereiten …";
+
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Fertig";
 
@@ -987,6 +990,9 @@
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Einmalpasswort einrichten (OTP)";
+
+/* Button/action: proceed with QR code based OTP setup */
+"[OTP/Setup/ScanQRCode]" = "QR-Code scannen";
 
 /* Description of an OTP code; sentence case. */
 "[OTP/Title/sentenceCase]" = "Einmalpasswort";

@@ -1010,7 +1010,7 @@
 "[OTP/Setup/EnterManually]" = "Inserisci manualmente";
 
 /* Call to action: type in the secret key for OTP setup. */
-"[OTP/Setup/EnterSecretCode/callToAction]" = "Inserisci il codice segreto";
+"[OTP/Setup/EnterSecretCode/callToAction]" = "Inserisci codice segreto";
 
 /* Button/action: proceed with QR code based OTP setup */
 "[OTP/Setup/ScanQRCode]" = "Scansiona codice QR";

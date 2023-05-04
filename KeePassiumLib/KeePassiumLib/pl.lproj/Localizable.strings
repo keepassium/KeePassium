@@ -7,6 +7,9 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dotknij dwukrotnie aby skopiować";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "Aktywuj aby słuchać.";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Rozmiar tekstu";
 
@@ -39,6 +42,9 @@
 
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numeryczna";
+
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Naciśnij Esc, aby użyć Touch ID";
 
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "Kod został zmieniony.";
@@ -148,11 +154,17 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Nie można otworzyć pliku klucza";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "Nieprawidłowy format bazy danych: %@.";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Podaj przynajmniej hasło lub plik klucza";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Nieznany format bazy";
+
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "Ta baza danych jest chroniona przez polityki IT twojej firmy i Microsoft Intune.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "Baza danych jest nieosiągalna.\nTo jest jej najnowsza kopia lokalna.";
@@ -190,6 +202,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Twoja baza jest gotowa, ale wystąpił problem.";
 
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "Przygotowywanie podglądu…";
+
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Gotowe";
 
@@ -216,6 +231,9 @@
 
 /* Status message: saving a database */
 "[Database/Saving/Status] Saving..." = "Zapisywanie...";
+
+/* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
+"[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Dodaj ponownie plik";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "Pokaż błąd";
@@ -700,6 +718,15 @@
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Miejsce docelowe";
 
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "Włączone";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "Włączone";
+
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "Folder jest pusty";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Anuluj";
 
@@ -757,6 +784,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Zastąp";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Drukuj";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Zmień nazwę";
 
@@ -765,6 +795,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Przywróć";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "Ponów próbę";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Pokaż w Finderze";
@@ -840,6 +873,9 @@
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nowa grupa";
+
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "Opróżnij kosz";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Wg daty utworzenia (Od najnowszej)";
@@ -940,14 +976,116 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Ustaw hasło jednorazowe (OTP)";
 
+/* Button/action: proceed with manual OTP setup */
+"[OTP/Setup/EnterManually]" = "Wprowadź ręcznie";
+
+/* Button/action: proceed with QR code based OTP setup */
+"[OTP/Setup/ScanQRCode]" = "Skanuj kod QR";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "Jednorazowe hasło";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "Nie można wygenerować tekstu";
+
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "Puste";
+
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "Niestandardowe znaki";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "Zwiększ parametr długości do co najmniej %d.";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "Generuj";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "Wygenerowany tekst";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "Dozwolone";
+
+/* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
+"[PasswordGenerator/InclusionCondition/excluded]" = "Wykluczone";
+
 /* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
 "[PasswordGenerator/InclusionCondition/inactive]" = "Nieaktywne";
+
+/* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
+"[PasswordGenerator/InclusionCondition/required]" = "Wymagane";
+
+/* Length (number of characters) of the random text to generate */
+"[PasswordGenerator/Length/title]" = "Długość";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "Podstawowy";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "Zaawansowany";
+
+/* One of the operation modes of the random text generator, where it generates random phrases. */
+"[PasswordGenerator/Mode/Passphrase/title]" = "Tekst szyfrujący";
+
+/* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
+"[PasswordGenerator/Mode/title]" = "Tryb";
+
+/* Length (number of characters) of the password to generate */
+"[PasswordGenerator/PasswordLength/title]" = "Długość hasła";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "Jeden z zestawów znaków jest wymagany i wykluczony.";
+
+/* Title for digits (like '123') */
+"[PasswordGenerator/Set/Digits/title]" = "Cyfry";
+
+/* Title for lowercase letters (like 'abc') */
+"[PasswordGenerator/Set/Lowercase/title]" = "Małe litery";
+
+/* Title for special symbols (like '@#$') */
+"[PasswordGenerator/Set/Specials/title]" = "Znaki specjalne";
+
+/* Title for uppercase letters (like 'ABC') */
+"[PasswordGenerator/Set/Uppercase/title]" = "Wielkie litery";
+
+/* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
+"[PasswordGenerator/SpaceCharacter/name]" = "Spacja";
+
+/* Character to be inserted between words of a passphrase. */
+"[PasswordGenerator/Word Separtor/title]" = "Separator";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/lowerCase]" = "małe litery";
+
+/* Case of letters in a word (e.g. UPPER, lower, Title Case) */
+"[PasswordGenerator/WordCase/title]" = "Wielkość znaków";
+
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "Duże Pierwsze Litery";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/upperCase]" = "DUŻE LITERY";
+
+/* Number of words in a generated passphrase. In context: 'Words: 5' */
+"[PasswordGenerator/WordCount/title]" = "Słowa";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "Duża lista słów EFF (7776 słów)";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Mała lista słów EFF (1296 słów)";
+
+/* List of words to be used for a passphrase. */
+"[PasswordGenerator/Wordlist/title]" = "Lista słów";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Podgląd załączników bezpośrednio w KeePassium bez zostawiania śladu w innych aplikacjach (zdjęć, dokumentów, archiwów i innych).";
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Podgląd bez śladu";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "Synchronizuj z magazynem firmowym";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "Spraw by KeePassium wyglądał wyjątkowo, przyjaźnie lub udawał kalkulator — wybór należy do Ciebie.";
@@ -1126,6 +1264,9 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplikacja była używana: %1$@/miesiąc, to jest ok %2$@/rok.";
 
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "Pamięć w firmowej chmurze";
+
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Dostosuj ikonę";
 
@@ -1177,8 +1318,35 @@
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Szybkie autouzupełnianie";
 
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "Połączenie";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "Połącz z serwerem";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "Dane uwierzytelniające";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "Uwierzytelnianie nie powiodło się";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "Adres URL pliku";
+
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "Pliki";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "Zaloguj się do OneDrive";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "Otwórz stronę logowania w przeglądarce internetowej w trybie prywatnym";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "Tryb prywatny";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "Połączenie zdalne";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Powtórz hasło";
@@ -1228,8 +1396,14 @@
 /* Action that opens system settings or instructions */
 "[Settings/AutoFill/Activate/action]" = "Aktywuj autouzupełnianie";
 
+/* Description for the AutoFill setup instructions */
+"[Settings/AutoFill/Activate/description]" = "Przed pierwszym użyciem, musisz aktywować autouzupełnianie w ustawieniach systemowych.";
+
 /* Title of an option: copy one-time password to clipboard when using AutoFill */
 "[Settings/AutoFill/CopyOTP/title]" = "Kopiuj hasło jednorazowe do schowka";
+
+/* Title of a help article on how to activate AutoFill. */
+"[Settings/AutoFill/Setup Guide/title]" = "Przewodnik konfiguracji autouzupełniania";
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Autouzupełnianie";
@@ -1327,8 +1501,23 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Ustawienia listy";
 
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "Zezwolić KeePassium na tworzenie połączeń sieciowych z zewnętrznymi usługami?";
+
 /* Settings section: how/whether the app is allowed to use networks/Internet */
 "[Settings/NetworkAccess/title]" = "Dostęp do sieci";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "Maksymalna prywatność";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "Pozostań w trybie offline";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "Maksymalna funkcjonalność";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "Zezwalaj na dostęp do sieci";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Szukaj";
@@ -1350,6 +1539,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Brak";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive dla biznesu";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Tutaj proszę opisać problem)";
@@ -1398,6 +1590,9 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Kopia lokalna";
+
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "Zdalny serwer";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Bez YubiKey";

@@ -998,7 +998,7 @@
 "[OTP/Scan/InvalidData]" = "Этот QR-код не подходит для настройки одноразового пароля (OTP).";
 
 /* Error shown when a manually entered OTP secret is misformatted. */
-"[OTP/Scan/InvalidSecretCode]" = "Введенный секретный код не подходит для настройки одноразового пароля (OTP).";
+"[OTP/Scan/InvalidSecretCode]" = "Введённый секретный код не подходит для настройки одноразового пароля (OTP).";
 
 /* Message to confirm user intentions */
 "[OTP/Scan/OverwriteWarning]" = "Одноразовый пароль уже настроен для этой записи. Заменить его?";

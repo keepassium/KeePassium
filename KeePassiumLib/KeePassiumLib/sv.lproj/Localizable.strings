@@ -997,11 +997,23 @@
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Denna QR-kod är inte lämplig för OTP-konfiguration.";
 
+/* Error shown when a manually entered OTP secret is misformatted. */
+"[OTP/Scan/InvalidSecretCode]" = "Inmatad hemlighet är inte korrekt för OTP-konfiguration.";
+
 /* Message to confirm user intentions */
 "[OTP/Scan/OverwriteWarning]" = "Engångslösenordet är redan konfigurerat för detta konto. Vill du skriva över det?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Ställ in engångslösenord (OTP)";
+
+/* Button/action: proceed with manual OTP setup */
+"[OTP/Setup/EnterManually]" = "Ange manuellt";
+
+/* Call to action: type in the secret key for OTP setup. */
+"[OTP/Setup/EnterSecretCode/callToAction]" = "Ange hemlighet";
+
+/* Button/action: proceed with QR code based OTP setup */
+"[OTP/Setup/ScanQRCode]" = "Skanna QR-kod";
 
 /* Description of an OTP code; sentence case. */
 "[OTP/Title/sentenceCase]" = "Engångslösenord";
