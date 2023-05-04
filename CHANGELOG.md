@@ -1,17 +1,29 @@
 #CHANGELOG
 
+## [1.43.131] - 2023-05-04
+
+### Improved
+
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- macOS: app passcode persisted after reinstallation [thanks, Maciej]
+- macOS: detection of first launch/reinstall/update
+
+
 ## [1.43.130] - 2023-04-27
 
-## Added
+### Added
 
 - Manual TOTP setup (closes #150) [thanks, everyone]
 
-## Improved
+### Improved
 
 - AutoFill: finding URLs with different subdomains and/or TLDs (#201, #279) [thanks, everyone]
 - Updated all translations [thanks, everyone]
 
-## Fixed
+### Fixed
 
 - Frequent crashes on macOS 13 (data race in URLReference) [thanks, everyone]
 - A URL containing a field reference could not be opened [thanks, Ken]

@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.43",
-            "releaseDate": "2023-04-27T00:00:00Z",
+            "releaseDate": "2023-05-04T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Manual TOTP setup (closes #150) [thanks, everyone]",
@@ -18,6 +18,10 @@
                 },
                 {
                     "title": "🐞 Fixed: Frequent crashes on macOS 13 (data race in URLReference) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: App passcode persisted after reinstallation [thanks, Maciej]",
                     "type": 1
                 },
                 {
