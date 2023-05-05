@@ -168,23 +168,10 @@ final class EntryFinderVC: UITableViewController {
         searchResults = newResults
 
         let groupSortOrder = Settings.current.groupSortOrder
-        sort(&searchResults.exactMatch, sortOrder: groupSortOrder)
-        sort(&searchResults.partialMatch, sortOrder: groupSortOrder)
+        searchResults.exactMatch.sort(order: groupSortOrder)
+        searchResults.partialMatch.sort(order: groupSortOrder)
 
         refresh()
-    }
-    
-    private func sort(_ searchResults: inout SearchResults, sortOrder: Settings.GroupSortOrder) {
-        searchResults.sort { sortOrder.compare($0.group, $1.group) }
-        for i in 0..<searchResults.count {
-            searchResults[i].entries.sort { (scoredEntry1, scoredEntry2) in
-                if scoredEntry1.similarityScore == scoredEntry2.similarityScore {
-                    return sortOrder.compare(scoredEntry1.entry, scoredEntry2.entry)
-                } else {
-                    return (scoredEntry2.similarityScore < scoredEntry1.similarityScore)
-                }
-            }
-        }
     }
     
     public func activateManualSearch() {
