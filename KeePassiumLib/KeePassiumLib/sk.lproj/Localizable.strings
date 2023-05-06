@@ -997,11 +997,23 @@
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Tento QR kód nie je vhodný na nastavenie OTP.";
 
+/* Error shown when a manually entered OTP secret is misformatted. */
+"[OTP/Scan/InvalidSecretCode]" = "Zadaný tajný kód nie je vhodný na nastavenie OTP.";
+
 /* Message to confirm user intentions */
 "[OTP/Scan/OverwriteWarning]" = "Pre tento záznam je už nakonfigurované jednorazové heslo. Chcete ho prepísať?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Nastaviť jednorazové heslo (OTP)";
+
+/* Button/action: proceed with manual OTP setup */
+"[OTP/Setup/EnterManually]" = "Zadať ručne";
+
+/* Call to action: type in the secret key for OTP setup. */
+"[OTP/Setup/EnterSecretCode/callToAction]" = "Zadaj tajný kód";
+
+/* Button/action: proceed with QR code based OTP setup */
+"[OTP/Setup/ScanQRCode]" = "Naskenovať QR kód";
 
 /* Description of an OTP code; sentence case. */
 "[OTP/Title/sentenceCase]" = "Jednorazové heslo";
