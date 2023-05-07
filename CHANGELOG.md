@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.43.132] - 2023-05-07
+
+### Improved
+
+- Updated SK translation [thanks, onegin1]
+
+### Fixed
+
+- In the main app's search, only groups were sorted, not entries [thanks, Aleks]
+
+
 ## [1.43.131] - 2023-05-04
 
 ### Improved

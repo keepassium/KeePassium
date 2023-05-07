@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.43",
-            "releaseDate": "2023-05-04T00:00:00Z",
+            "releaseDate": "2023-05-07T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Manual TOTP setup (closes #150) [thanks, everyone]",
@@ -30,6 +30,10 @@
                 },
                 {
                     "title": "🐞 Fixed: AutoFill: search results were shown in reverse order (least relevant first)",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: In the main app's search, only groups were sorted, not entries [thanks, Aleks]",
                     "type": 1
                 },
                 {
