@@ -65,12 +65,13 @@ public enum PremiumFeature: Int {
              .canUseLongDatabaseTimeouts,
              .canUseHardwareKeys,
              .canKeepMasterKeyOnDatabaseTimeout,
-             .canChangeAppIcon,
              .canViewFieldReferences,
              .canRelocateAcrossDatabases,
              .canUseQuickTypeAutoFill,
              .canUseBusinessClouds:
             return isEntitled
+        case .canChangeAppIcon:
+            return true 
         case .canPreviewAttachments:
             return true 
         case .canUseExpressUnlock:

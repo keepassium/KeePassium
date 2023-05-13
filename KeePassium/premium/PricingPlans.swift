@@ -94,12 +94,6 @@ struct PricingPlanBenefit {
         title: LString.premiumBenefitBusinessCloudsTitle,
         description: LString.premiumBenefitBusinessCloudsDescription
     )
-    static let customAppIcons = PricingPlanBenefit(
-        image: .premiumBenefitCustomAppIcons,
-        title: LString.premiumBenefitChangeAppIconTitle,
-        description: LString.premiumBenefitChangeAppIconDescription
-    )
-    
     static let viewFieldReferences = PricingPlanBenefit(
         image: .premiumBenefitFieldReferences,
         title: LString.premiumBenefitFieldReferecesTitle,
@@ -198,7 +192,6 @@ class FreePricingPlan: PricingPlan {
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = nil
     }
@@ -261,7 +254,6 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -291,7 +283,6 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -319,7 +310,6 @@ class PricingPlanVersionPurchase: RealPricingPlan {
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = nil
     }
@@ -346,7 +336,6 @@ class PricingPlanPremiumForever: RealPricingPlan {
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
             PricingPlanBenefit.longDatabaseTimeout,
-            PricingPlanBenefit.customAppIcons,
         ]
         self.smallPrint = nil
     }
