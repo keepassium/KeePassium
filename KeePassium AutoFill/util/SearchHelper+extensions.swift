@@ -232,7 +232,8 @@ extension SearchHelper {
             }
         }
 
-        if let serviceName = parsedHost?.serviceName {
+        let serviceName = parsedHost?.serviceName
+        if let serviceName {
             if entry.resolvedTitle.localizedCaseInsensitiveContains(serviceName) {
                 titleScore = max(titleScore, 0.5)
             }
@@ -278,12 +279,11 @@ extension SearchHelper {
             return maxScoreSoFar
         }
         
-        guard let serviceName = parsedHost?.serviceName else {
-            return maxScoreSoFar
-        }
-        for fieldValue in customFieldValues {
-            if fieldValue.localizedCaseInsensitiveContains(serviceName) {
-                return max(0.3, maxScoreSoFar)
+        if let serviceName {
+            for fieldValue in customFieldValues {
+                if fieldValue.localizedCaseInsensitiveContains(serviceName) {
+                    return max(0.3, maxScoreSoFar)
+                }
             }
         }
         return maxScoreSoFar

@@ -49,6 +49,6 @@ public final class DomainNameHelper {
 
 public extension ParsedHost {
     var serviceName: Substring? {
-        return domain?.dropLast(publicSuffix.count)
+        return domain?.dropLast(publicSuffix.count + 1) 
     }
 }
