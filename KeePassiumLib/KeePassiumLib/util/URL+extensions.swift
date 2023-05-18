@@ -100,23 +100,25 @@ public extension URL {
 }
 
 public extension URL {
-    static func from(malformedString: String, defaultScheme: String = "https") -> URL? {
-        guard var urlComponents = URLComponents(string: malformedString),
+    private static let commonSchemePrefixes = ["https://", "http://"]
+    private static let defaultSchemePrefix = "https://"
+
+    static func from(malformedString input: String) -> URL? {
+        let hasScheme = URL.commonSchemePrefixes.contains(where: { input.starts(with: $0) })
+        let inputString = hasScheme ? input : URL.defaultSchemePrefix + input
+        
+        guard let urlComponents = URLComponents(string: inputString),
               let urlHost = urlComponents.host,
               urlHost.isNotEmpty
         else {
             return nil
         }
         
-        if let urlScheme = urlComponents.scheme {
-            if urlScheme == "otpauth" || urlScheme == "mailto" {
-                return nil
-            }
-            return urlComponents.url
-        } else {
-            urlComponents.scheme = defaultScheme
-            return urlComponents.url
+        let urlScheme = urlComponents.scheme
+        if urlScheme == "otpauth" || urlScheme == "mailto" {
+            return nil
         }
+        return urlComponents.url
     }
 }
 
