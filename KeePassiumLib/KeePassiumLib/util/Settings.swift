@@ -1528,12 +1528,14 @@ public class Settings {
             (storedModificationDate != nil) &&
             abs(bundleModificationDate.timeIntervalSince(storedModificationDate!)) > 1.0
         
-        UserDefaults.appGroupShared.set(
-            bundleCreationDate,
-            forKey: Keys.bundleCreationTimestamp.rawValue)
-        UserDefaults.appGroupShared.set(
-            bundleModificationDate,
-            forKey: Keys.bundleModificationTimestamp.rawValue)
+        defer {
+            UserDefaults.appGroupShared.set(
+                bundleCreationDate,
+                forKey: Keys.bundleCreationTimestamp.rawValue)
+            UserDefaults.appGroupShared.set(
+                bundleModificationDate,
+                forKey: Keys.bundleModificationTimestamp.rawValue)
+        }
         
         switch (hasStoredDate, isCreationDateChanged, isModificationDateChanged) {
         case (false, _, _):
