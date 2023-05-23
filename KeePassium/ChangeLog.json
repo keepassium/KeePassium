@@ -1,6 +1,32 @@
 {
     "sections": [
         {
+            "version": "1.44",
+            "releaseDate": "2023-05-23T00:00:00Z",
+            "items": [
+                {
+                    "title": "🛠 Changed: Alternative app icons made available in the free version, no longer a premium feature",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated translations",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: macOS: App settings were getting reset on every launch (regression in 1.43.131) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill: matching entries by service name [thanks, D.S.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill: processing the domain-only entry URL fields (without the scheme component)",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.43",
             "releaseDate": "2023-05-07T00:00:00Z",
             "items": [
