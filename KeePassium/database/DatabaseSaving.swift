@@ -126,6 +126,9 @@ extension DatabaseSaving {
     ) {
         self.databaseSaver = nil
         savingProgressHost?.hideProgressView(animated: true)
+        DatabaseSettingsManager.shared.updateSettings(for: databaseFile) { dbSettings in
+            dbSettings.maybeSetMasterKey(of: databaseFile.database)
+        }
         didSave(databaseFile: databaseFile)
     }
     
