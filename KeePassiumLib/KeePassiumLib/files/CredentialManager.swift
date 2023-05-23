@@ -109,7 +109,7 @@ public final class NetworkCredential: Codable {
         return URLCredential(
             user: username,
             password: password,
-            persistence: .forSession
+            persistence: .none
         )
     }
 }
