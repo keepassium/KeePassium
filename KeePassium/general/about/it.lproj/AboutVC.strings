@@ -71,7 +71,7 @@
 "JbR-nf-D9o.headerTitle" = "Politica sulla privacy";
 
 /* Class = "UILabel"; text = "Public domain"; ObjectID = "JgR-60-OMp"; */
-"JgR-60-OMp.text" = "Dominio Pubblico";
+"JgR-60-OMp.text" = "Dominio pubblico";
 
 /* Class = "UILabel"; text = "LGPL license"; ObjectID = "JjJ-GT-eoX"; */
 "JjJ-GT-eoX.text" = "Licenza LGPL";
@@ -83,7 +83,7 @@
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern di Daniel Beaton";
 
 /* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
-"kvO-9B-1Sy.text" = "Lista delle frasi segrete dell'EFF";
+"kvO-9B-1Sy.text" = "Liste vocaboli per frasi segrete dell'EFF";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "KWA-h1-ddu"; */
 "KWA-h1-ddu.text" = "Licenza MIT";

@@ -23,7 +23,7 @@
 "AMd-x7-PDa.text" = "您喜歡您看到的嗎？";
 
 /* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "繁體中文翻譯 由 社群 與 3374575857 貢獻";
+"aqX-J9-IzD.text" = "繁體中文翻譯 由 社群 貢獻";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
 "AWg-lI-BfC.text" = "MIT 授權許可";

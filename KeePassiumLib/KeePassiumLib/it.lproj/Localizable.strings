@@ -326,7 +326,7 @@
 "[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Firma file errata. Non è un database KeePass?";
 
 /* Status message: collecting database items into a single package */
-"[Database1/Progress] Packing the content" = "Impacco il contenuto";
+"[Database1/Progress] Packing the content" = "Aggrego il contenuto";
 
 /* Status message: processing the content of a database */
 "[Database1/Progress] Parsing content" = "Analizzo il contenuto";
@@ -455,7 +455,7 @@
 "[DatabaseError] Invalid password or key file" = "Password o file chiave non validi";
 
 /* Subtitle for `Diagnostic Log`. Keep it short. */
-"[DiagLog/subtitle]" = "Per risoluzione problemi esperta";
+"[DiagLog/subtitle]" = "Per risoluzione problemi avanzata";
 
 /* Title of the diagnostic info screen */
 "[DiagLog/title]" = "Registro diagnostico";
@@ -1151,7 +1151,7 @@
 "[Premium/Benefits/HardwareKeys/details]" = "Proteggi i tuoi segreti con una chiave fisica, tipo YubiKey.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/HardwareKeys/title]" = "Usa le chiavi hardware";
+"[Premium/Benefits/HardwareKeys/title]" = "Usa chiavi fisiche";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Aggiungi più database e passa rapidamente da uno all'altro.";
@@ -1289,7 +1289,7 @@
 "[Premium/Upgrade/price] around %@ / month" = "≈ %@ / mese";
 
 /* Status message when downloading available in-app purchases */
-"[Premium/Upgrade/Progress] Contacting AppStore..." = "Contatto l'AppStore...";
+"[Premium/Upgrade/Progress] Contacting AppStore..." = "Contatto App Store...";
 
 /* Status: in-app purchase started */
 "[Premium/Upgrade/Progress] Purchasing..." = "Acquisto in corso...";
@@ -1562,7 +1562,7 @@
 "[Settings/GroupViewer] Entry Subtitle" = "Sottotitolo voce";
 
 /* Title of a settings section: sort order of groups and entries in a list */
-"[Settings/GroupViewer] Sort Order" = "Ordinamento";
+"[Settings/GroupViewer] Sort Order" = "Ordine";
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Impostazioni elenco";
