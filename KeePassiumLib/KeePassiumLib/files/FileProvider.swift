@@ -18,7 +18,8 @@ public enum FileProvider: Hashable {
         "com.getdropbox.Dropbox.FileProvider": .dropbox,
         "com.skyjos.fileexplorer.fileprovider": .feFileExplorer,
         "com.google.Drive.FileProviderExtension": .googleDrive,
-        "com.apple.CloudDocs.MobileDocumentsFileProvider": .iCloudDrive,
+        "com.apple.CloudDocs.iCloudDriveFileProvider": .iCloudDrive, 
+        "com.apple.CloudDocs.MobileDocumentsFileProvider": .iCloudDriveLegacy, 
         "com.keepassium.fileprovider.webdav": .keepassiumWebDAV,
         "com.keepassium.fileprovider.onedrive": .keepassiumOneDrive,
         "mega.ios.MEGAPickerFileProvider": .megaNz,
@@ -51,6 +52,7 @@ public enum FileProvider: Hashable {
     case feFileExplorer
     case googleDrive
     case iCloudDrive
+    case iCloudDriveLegacy
     case keepassiumWebDAV
     case keepassiumOneDrive
     case megaNz
@@ -133,7 +135,7 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "Google Drive",
                 comment: "Localized name of the storage service: Google Drive (https://drive.google.com)")
-        case .iCloudDrive:
+        case .iCloudDrive, .iCloudDriveLegacy:
             return NSLocalizedString(
                 "[FileProvider/iCloud Drive/name]",
                 bundle: Bundle.framework,

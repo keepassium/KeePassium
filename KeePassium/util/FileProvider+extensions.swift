@@ -22,7 +22,7 @@ extension FileProvider {
             return UIImage(named: "fp-dropbox-listitem")
         case .googleDrive:
             return UIImage(named: "fp-google-drive-listitem")
-        case .iCloudDrive:
+        case .iCloudDrive, .iCloudDriveLegacy:
             return UIImage(named: "fp-icloud-drive-listitem")
         case .keepassiumWebDAV:
             return UIImage(named: "fp-webdav-listitem")
