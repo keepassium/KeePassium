@@ -1505,7 +1505,7 @@ public class Settings {
         
         
         guard let bundleAttributes = try? FileManager.default
-                .attributesOfItem(atPath: Bundle.main.bundlePath),
+                .attributesOfItem(atPath: Bundle.mainAppURL.path),
               let bundleCreationDate = bundleAttributes[.creationDate] as? Date,
               let bundleModificationDate = bundleAttributes[.modificationDate] as? Date
         else {
