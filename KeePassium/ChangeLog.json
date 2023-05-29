@@ -1,6 +1,28 @@
 {
     "sections": [
         {
+            "version": "1.45",
+            "releaseDate": "2023-05-29T00:00:00Z",
+            "items": [
+                {
+                    "title": "🐞 Fixed: Excessive WebDAV credential caching (fixes #295) [thanks, Henrik]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Update the stored derived key on DB save [thanks, Santiago]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: iCloud Drive icon on iOS 16.5 [thanks, E.M.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Minor UI fixes and improvements",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.44",
             "releaseDate": "2023-05-29T00:00:00Z",
             "items": [
