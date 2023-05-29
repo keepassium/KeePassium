@@ -231,6 +231,14 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorQuickSheetDelegate {
         fullModeVC.delegate = self
         self.passGenVC = fullModeVC
         prepareFullModeGenerator(fullModeVC)
+        if #available(iOS 15, *),
+           let sheet = viewController.sheetPresentationController
+        {
+            sheet.animateChanges {
+                sheet.selectedDetentIdentifier = .large
+            }
+        }
+
         router.push(fullModeVC, animated: true, onPop: { [weak self] in
             self?.passGenVC = nil
             self?.quickSheetVC?.refresh()
