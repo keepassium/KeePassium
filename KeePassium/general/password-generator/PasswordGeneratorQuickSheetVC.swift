@@ -68,6 +68,7 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
             PasswordGeneratorQuickSheetVC.Cell.classForCoder(),
             forCellReuseIdentifier: PasswordGeneratorQuickSheetVC.Cell.reuseIdentifier)
         tableView.bounces = false
+        tableView.estimatedSectionHeaderHeight = 18
         
         title = LString.PasswordGenerator.titleRandomGenerator
         

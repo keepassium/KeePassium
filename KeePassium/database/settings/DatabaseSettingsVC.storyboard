@@ -11,7 +11,7 @@
         <scene sceneID="ajK-M3-mtG">
             <objects>
                 <tableViewController storyboardIdentifier="DatabaseSettingsVC" id="DWd-p2-mps" customClass="DatabaseSettingsVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="44" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="3ss-Ld-V3M">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="44" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="18" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="3ss-Ld-V3M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
