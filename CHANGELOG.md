@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.44.134] - 2023-05-29
+
+### Fixed
+
+- macOS: App settings were getting reset by AutoFill
+
+
 ## [1.44.133] - 2023-05-23
 
 ### Changed
