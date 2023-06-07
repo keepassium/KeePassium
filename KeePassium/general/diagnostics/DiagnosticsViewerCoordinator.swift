@@ -49,14 +49,17 @@ class DiagnosticsViewerCoordinator: NSObject, Coordinator {
 }
 
 extension DiagnosticsViewerCoordinator: DiagnosticsViewerDelegate {
-    func didPressCopy(in diagnosticsViewer: DiagnosticsViewerVC, text: String) {
+    func didPressCopy(text: String, in diagnosticsViewer: DiagnosticsViewerVC) {
         Clipboard.general.insert(text: text, timeout: nil)
         HapticFeedback.play(.copiedToClipboard)
         diagnosticsViewer.showNotification(LString.diagnosticLogCopiedToClipboard)
     }
     
-    func didPressContactSupport(in diagnosticsViewer: DiagnosticsViewerVC, text: String) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: diagnosticsViewer.contactButton)
+    func didPressContactSupport(
+        text: String,
+        at popoverAnchor: PopoverAnchor,
+        in diagnosticsViewer: DiagnosticsViewerVC
+    ) {
         SupportEmailComposer.show(
             subject: .problem,
             parent: diagnosticsViewer,
@@ -65,7 +68,7 @@ extension DiagnosticsViewerCoordinator: DiagnosticsViewerDelegate {
             [weak self] (success) in
             if !success {
                 Diag.debug("Failed to create an email message, copying to clipboard instead")
-                self?.didPressCopy(in: diagnosticsViewer, text: text)
+                self?.didPressCopy(text: text, in: diagnosticsViewer)
             }
         }
     }

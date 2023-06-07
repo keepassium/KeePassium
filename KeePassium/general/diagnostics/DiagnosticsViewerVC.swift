@@ -8,64 +8,43 @@
 
 import KeePassiumLib
 
-class DiagnosticsViewerCell: UITableViewCell {
-    static let storyboardID = "DiagnosticsViewerCell"
-    @IBOutlet weak var placeLabel: UILabel!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var levelImage: UIImageView!
-    
-    func setDiagItem(_ item: Diag.Item) {
-        placeLabel?.text = "\(item.file):\(item.line)\n\(item.function)"
-        messageLabel?.text = item.message
-        levelImage.image = imageForLevel(item.level)
-    }
-    
-    func imageForLevel(_ level: Diag.Level) -> UIImage? {
-        switch level {
-        case .verbose:
-            return UIImage(named: "diag-level-verbose")
-        case .debug:
-            return UIImage(named: "diag-level-debug")
-        case .info:
-            return UIImage(named: "diag-level-info")
-        case .warning:
-            return UIImage(named: "diag-level-warning")
-        case .error:
-            return UIImage(named: "diag-level-error")
-        }
-    }
-}
-
 protocol DiagnosticsViewerDelegate: AnyObject {
-    func didPressCopy(in diagnosticsViewer: DiagnosticsViewerVC, text: String)
-    func didPressContactSupport(in diagnosticsViewer: DiagnosticsViewerVC, text: String)
+    func didPressCopy(text: String, in diagnosticsViewer: DiagnosticsViewerVC)
+    func didPressContactSupport(
+        text: String,
+        at popoverAnchor: PopoverAnchor,
+        in diagnosticsViewer: DiagnosticsViewerVC
+    )
 }
 
 class DiagnosticsViewerVC: UITableViewController, Refreshable {
+    private static let cellID = "Cell"
+
+    weak var delegate: DiagnosticsViewerDelegate?
+
+    private weak var contactSupportButtonItem: UIBarButtonItem!
     private var items: [Diag.Item] = [] {
         didSet {
             refresh()
         }
     }
-
-    @IBOutlet weak var copyButton: UIBarButtonItem!
-    @IBOutlet weak var contactButton: UIBarButtonItem!
-    
-    weak var delegate: DiagnosticsViewerDelegate?
     
     public static func create() -> DiagnosticsViewerVC {
-        return DiagnosticsViewerVC.instantiateFromStoryboard()
+        return DiagnosticsViewerVC(style: .plain)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.allowsSelection = false
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: Self.cellID)
+        
+        title = LString.titleDiagnosticLog
+        configureToolbars()
+
         items = Diag.itemsSnapshot()
 
-        contactButton.title = LString.actionContactSupport
-        copyButton.accessibilityLabel = LString.actionCopy
-        
         refresh()
         if items.count > 0 {
             let lastRowIndexPath = IndexPath(row: items.count - 1, section: 0)
@@ -75,9 +54,26 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        title = LString.titleDiagnosticLog
+    private func configureToolbars() {
+        let copyToClipboardAction = UIAction(
+            title: LString.actionCopy,
+            image: .symbol(.docOnDoc),
+            handler: didPressCopy(_:)
+        )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(primaryAction: copyToClipboardAction)
+        
+        let contactSupportAction = UIAction(
+            title: LString.actionContactSupport,
+            handler: didPressContactSupport(_:)
+        )
+        let contactSupportItem = UIBarButtonItem(primaryAction: contactSupportAction)
+        self.contactSupportButtonItem = contactSupportItem
+
+        toolbarItems = [
+            UIBarButtonItem(systemItem: .flexibleSpace),
+            contactSupportButtonItem,
+            UIBarButtonItem(systemItem: .flexibleSpace)
+        ]
     }
     
     func refresh() {
@@ -86,16 +82,17 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
     }
     
     
-    @IBAction func didPressCopy(_ sender: Any) {
+    private func didPressCopy(_ sender: Any) {
         Watchdog.shared.restart()
         let logText = Diag.toString()
-        delegate?.didPressCopy(in: self, text: logText)
+        delegate?.didPressCopy(text: logText, in: self)
     }
     
-    @IBAction func didPressContactSupport(_ sender: Any) {
+    private func didPressContactSupport(_ sender: Any) {
         Watchdog.shared.restart()
         let logText = Diag.toString()
-        delegate?.didPressContactSupport(in: self, text: logText)
+        let popoverAnchor = PopoverAnchor(barButtonItem: contactSupportButtonItem)
+        delegate?.didPressContactSupport(text: logText, at: popoverAnchor, in: self)
     }
     
     
@@ -112,11 +109,28 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell
     {
+        let item = items[indexPath.row]
+        var content = buildContent()
+        content.text = "\(item.file):\(item.line)\n\(item.function)"
+        content.secondaryText = item.message
+
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: DiagnosticsViewerCell.storyboardID,
+            withIdentifier: DiagnosticsViewerVC.cellID,
             for: indexPath)
-            as! DiagnosticsViewerCell
-        cell.setDiagItem(items[indexPath.row])
+        cell.contentConfiguration = content
         return cell
+    }
+    
+    private func buildContent() -> UIListContentConfiguration {
+        var content = UIListContentConfiguration.subtitleCell()
+        content.textProperties.font = .preferredFont(forTextStyle: .caption1)
+        content.textProperties.color = .secondaryLabel
+        
+        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .callout)
+        content.secondaryTextProperties.color = .label
+        
+        content.textToSecondaryTextVerticalPadding = 4.0
+        content.directionalLayoutMargins = .init(top: 8, leading: 8, bottom: 8, trailing: 8)
+        return content
     }
 }
