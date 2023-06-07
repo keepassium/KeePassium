@@ -16,20 +16,17 @@ struct ContextualAction {
     }
     
     var title: String
-    var imageName: SystemImageName?
+    var imageName: SymbolName?
     var style: Style
     var color: UIColor?
     var handler: (() -> Void)
     
-    var image: UIImage? {
-        guard let imageName = imageName else {
-            return nil
-        }
-        return UIImage.get(imageName)
-    }
-
     @available(iOS 13, *)
     public func toMenuAction() -> UIAction {
+        var image: UIImage?
+        if let imageName {
+            image = .symbol(imageName)
+        }
         return UIAction(
             title: title,
             image: image,
@@ -81,9 +78,12 @@ struct ContextualAction {
                     completion(false) 
                 }
             }
-
         }
-        contextualAction.image = image
+        if let imageName {
+            contextualAction.image = .symbol(imageName)
+        } else {
+            contextualAction.image = nil
+        }
         contextualAction.backgroundColor = color
         return contextualAction
     }

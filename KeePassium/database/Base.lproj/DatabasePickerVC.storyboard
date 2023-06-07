@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,25 +20,29 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FileItemCell" id="vFB-ft-SKS" userLabel="FileItemCell" customClass="FileListCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="59.5"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vFB-ft-SKS" id="XQp-IY-Ue4">
-                                    <rect key="frame" x="0.0" y="0.0" width="338.5" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="4cs-i4-8Si">
-                                            <rect key="frame" x="16" y="15.5" width="29" height="29"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4cs-i4-8Si">
+                                            <rect key="frame" x="16" y="17" width="29" height="29"/>
                                             <color key="tintColor" name="IconTint"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="29" id="8z4-YP-LNG"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="29" id="8z4-YP-LNG"/>
                                                 <constraint firstAttribute="width" secondItem="4cs-i4-8Si" secondAttribute="height" multiplier="1:1" id="uer-N2-GTs"/>
                                             </constraints>
+                                            <imageReference key="image" image="fp.generic" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            </preferredSymbolConfiguration>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lBd-mX-l14">
-                                            <rect key="frame" x="61" y="11.5" width="269.5" height="37"/>
+                                            <rect key="frame" x="61" y="11.5" width="266" height="40.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="{Database File Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWy-ey-805">
-                                                    <rect key="frame" x="0.0" y="0.0" width="269.5" height="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="266" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -46,13 +51,13 @@
                                                     </attributedString>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d08-i0-dTY">
-                                                    <rect key="frame" x="0.0" y="17" width="269.5" height="20"/>
+                                                    <rect key="frame" x="0.0" y="20.5" width="266" height="20"/>
                                                     <subviews>
                                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WJR-7L-1rw">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="{File Attributes}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2W-10-GnE">
-                                                            <rect key="frame" x="28" y="0.0" width="241.5" height="20"/>
+                                                            <rect key="frame" x="28" y="0.0" width="238" height="20"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" name="AuxiliaryText"/>
                                                             <nil key="highlightedColor"/>
@@ -89,7 +94,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem image="sort-order-toolbar" id="lnO-nD-gvh" userLabel="Sort Order">
+                        <barButtonItem title="I" image="list.bullet" catalog="system" id="lnO-nD-gvh" userLabel="Sort Order">
                             <attributedString key="userComments">
                                 <fragment content="Action: show sorting settings of database files"/>
                             </attributedString>
@@ -105,7 +110,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Yyg-IS-vi0"/>
-                        <barButtonItem image="settings-toolbar" id="oee-CI-r2x" userLabel="Settings">
+                        <barButtonItem image="gearshape" catalog="system" id="oee-CI-r2x" userLabel="Settings">
                             <attributedString key="userComments">
                                 <fragment content="Action: show app settings"/>
                             </attributedString>
@@ -120,7 +125,7 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Databases" id="UI0-Lh-wTj">
-                        <barButtonItem key="leftBarButtonItem" image="help-about-toolbar" id="2o3-sG-Pcm" userLabel="Help Bar Button">
+                        <barButtonItem key="leftBarButtonItem" image="info.circle" catalog="system" id="2o3-sG-Pcm" userLabel="Help Bar Button">
                             <attributedString key="userComments">
                                 <fragment content="Action: show help pages (at the moment shows the About screen)"/>
                             </attributedString>
@@ -132,7 +137,7 @@
                                 <action selector="didPressHelpButton:" destination="vWt-yt-cgE" id="C2G-nG-7ZZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add Database" image="create-item-toolbar" id="qPq-UR-uZs">
+                        <barButtonItem key="rightBarButtonItem" title="Add Database" image="plus" catalog="system" id="qPq-UR-uZs">
                             <attributedString key="userComments">
                                 <fragment content="Action: add database (either an existing file or create a new one)"/>
                             </attributedString>
@@ -155,12 +160,12 @@
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
-        <image name="create-item-toolbar" width="25" height="25"/>
         <image name="die.face.3" catalog="system" width="128" height="114"/>
-        <image name="fp-generic-listitem" width="29" height="29"/>
-        <image name="help-about-toolbar" width="25" height="25"/>
-        <image name="settings-toolbar" width="25" height="25"/>
-        <image name="sort-order-toolbar" width="25" height="25"/>
+        <image name="fp.generic" width="13" height="13"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

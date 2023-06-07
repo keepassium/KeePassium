@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ymj-cN-i1q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ymj-cN-i1q">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,18 +23,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zV-VG-oSJ" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="391"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="401"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="a4q-gk-OB4">
-                                                <rect key="frame" x="60" y="154.5" width="29" height="29"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="a4q-gk-OB4">
+                                                <rect key="frame" x="52" y="182.5" width="29" height="29"/>
                                                 <color key="tintColor" name="PrimaryText"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="29" id="CuK-iE-M22"/>
-                                                    <constraint firstAttribute="height" constant="29" id="HzM-CS-VAL"/>
-                                                </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="default" weight="regular">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                </preferredSymbolConfiguration>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Database file name}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzF-lh-Cod">
-                                                <rect key="frame" x="97" y="161" width="126" height="16"/>
+                                                <rect key="frame" x="85" y="167.5" width="150.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                 <color key="textColor" name="PrimaryText"/>
                                                 <nil key="highlightedColor"/>
@@ -41,16 +41,17 @@
                                                     <fragment content="#bc-ignore!"/>
                                                 </attributedString>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning-accessory" translatesAutoresizingMaskIntoConstraints="NO" id="R8Q-C7-aGF">
-                                                <rect key="frame" x="291" y="248.5" width="25" height="25"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R8Q-C7-aGF">
+                                                <rect key="frame" x="291" y="256" width="25" height="29.5"/>
                                                 <color key="tintColor" name="ErrorBackground"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Kan-PS-gkg"/>
                                                     <constraint firstAttribute="width" constant="25" id="Yu2-SQ-H7Q"/>
                                                 </constraints>
+                                                <imageReference key="image" image="exclamationmark.triangle" catalog="system" symbolScale="large" renderingMode="template"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-0U-HF5" userLabel="InputPanel">
-                                                <rect key="frame" x="35" y="193" width="250" height="182"/>
+                                                <rect key="frame" x="35" y="203" width="250" height="182"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hYP-f0-K1s" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
@@ -194,7 +195,7 @@
                                             <constraint firstItem="lzF-lh-Cod" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3zV-VG-oSJ" secondAttribute="topMargin" constant="8" id="KOG-uQ-LKd"/>
                                             <constraint firstItem="lzF-lh-Cod" firstAttribute="centerX" secondItem="3zV-VG-oSJ" secondAttribute="centerX" id="NrT-LW-u0X"/>
                                             <constraint firstItem="a4q-gk-OB4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3zV-VG-oSJ" secondAttribute="topMargin" constant="8" id="P50-Yy-j9k"/>
-                                            <constraint firstItem="a4q-gk-OB4" firstAttribute="centerY" secondItem="lzF-lh-Cod" secondAttribute="centerY" id="Rz1-ft-9D6"/>
+                                            <constraint firstItem="a4q-gk-OB4" firstAttribute="firstBaseline" secondItem="lzF-lh-Cod" secondAttribute="firstBaseline" id="Rz1-ft-9D6"/>
                                             <constraint firstItem="R8Q-C7-aGF" firstAttribute="leading" secondItem="xCb-0U-HF5" secondAttribute="trailing" priority="250" constant="8" id="TX8-uP-9Zt"/>
                                             <constraint firstAttribute="bottom" secondItem="xCb-0U-HF5" secondAttribute="bottom" constant="16" id="UMJ-yU-Wv3"/>
                                             <constraint firstItem="R8Q-C7-aGF" firstAttribute="centerY" secondItem="SHG-X2-fHH" secondAttribute="centerY" id="V6C-u1-l6C"/>
@@ -202,7 +203,7 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="R8Q-C7-aGF" secondAttribute="trailing" priority="750" constant="4" id="vlm-cT-GbV"/>
                                             <constraint firstItem="xCb-0U-HF5" firstAttribute="top" secondItem="lzF-lh-Cod" secondAttribute="bottom" constant="16" id="xs2-uU-FPF"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="R8Q-C7-aGF" secondAttribute="trailing" id="zIx-pc-b6b"/>
-                                            <constraint firstItem="lzF-lh-Cod" firstAttribute="leading" secondItem="a4q-gk-OB4" secondAttribute="trailing" constant="8" id="zbc-G1-xEf"/>
+                                            <constraint firstItem="lzF-lh-Cod" firstAttribute="leading" secondItem="a4q-gk-OB4" secondAttribute="trailing" constant="4" id="zbc-G1-xEf"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -255,8 +256,8 @@
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
+        <image name="exclamationmark.triangle" catalog="system" width="128" height="109"/>
         <image name="fp-generic-listitem" width="29" height="29"/>
-        <image name="warning-accessory" width="25" height="25"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

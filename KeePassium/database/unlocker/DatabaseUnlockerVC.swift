@@ -67,7 +67,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
+        view.backgroundColor = ImageAsset.backgroundPattern.asColor()
         view.layer.isOpaque = false
         unlockButton.titleLabel?.adjustsFontForContentSizeCategory = true
         
@@ -168,12 +168,12 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             )
         }
 
-        let toastStyle = ToastStyle()
+        var toastStyle = ToastStyle()
+        toastStyle.iconTint = .errorMessage
         let toastView = view.toastViewForMessage(
             text,
             title: nil,
-            image: UIImage.get(.exclamationMarkTriangle)?
-                .withTintColor(.errorMessage, renderingMode: .alwaysOriginal),
+            image: .symbol(.exclamationMarkTriangle),
             action: toastAction,
             style: toastStyle
         )
@@ -194,7 +194,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             haptics: .wrongPassword,
             action: ToastAction(
                 title: LString.forgotPasswordQuestion,
-                icon: UIImage(asset: .externalLinkBadge),
+                icon: .symbol(.externalLink)?.applyingSymbolConfiguration(.init(scale: .small)),
                 isLink: true,
                 handler: { [weak self] in
                     self?.showInvalidPasswordHelp()
@@ -231,7 +231,8 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         
         databaseFileNameLabel.text = databaseRef.visibleFileName
         databaseFileNameLabel.textColor = UIColor.primaryText
-        databaseLocationIconImage.image = databaseRef.getIcon(fileType: .database)
+        let locationSymbol = databaseRef.getIconSymbol(fileType: .database)
+        databaseLocationIconImage.image = .symbol(locationSymbol)
         refreshInputMode()
     }
     

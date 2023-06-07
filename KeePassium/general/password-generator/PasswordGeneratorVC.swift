@@ -330,7 +330,7 @@ extension PasswordGeneratorVC: UITableViewDataSource {
         cell.textLabel?.text = LString.PasswordGeneratorMode.title
         cell.detailTextLabel?.text = mode.description
         cell.detailTextLabel?.font = .preferredFont(forTextStyle: .body)
-        cell.imageView?.image = UIImage.get(.sliderVertical3)
+        cell.imageView?.image = .symbol(.sliderVertical3)
     }
 }
 
@@ -631,7 +631,10 @@ extension PasswordGeneratorVC {
         guard let textForCopying = getCustomModeSetTextForCopying(at: indexPath) else {
             return nil
         }
-        let copyAction = UIAction(title: LString.actionCopy, image: .get(.docOnDoc)) { _ in
+        let copyAction = UIAction(
+            title: LString.actionCopy,
+            image: .symbol(.docOnDoc)
+        ) { _ in
             let timeout = Double(Settings.current.clipboardTimeout.seconds)
             Clipboard.general.insert(text: textForCopying, timeout: timeout)
         }
@@ -672,20 +675,20 @@ extension PasswordGeneratorVC {
     
     private func configurePassphraseModeSeparatorCell(_ cell: UITableViewCell) {
         cell.textLabel?.text = LString.PasswordGenerator.titleWordSepartor
-        cell.imageView?.image = UIImage.get(.arrowLeftAndRight)
+        cell.imageView?.image = .symbol(.arrowLeftAndRight)
         cell.detailTextLabel?.text = getSeparatorDescription(config.passphraseModeConfig.separator)
         cell.accessoryType = .disclosureIndicator
     }
     private func configurePassphraseModeWordCaseCell(_ cell: UITableViewCell) {
         let wordCase = config.passphraseModeConfig.wordCase
         cell.textLabel?.text = LString.PasswordGenerator.WordCase.title
-        cell.imageView?.image = UIImage.get(.textformat)
+        cell.imageView?.image = .symbol(.textformat)
         cell.detailTextLabel?.text = wordCase.description
         cell.accessoryType = .disclosureIndicator
     }
     private func configurePassphraseModeWordListCell(_ cell: UITableViewCell) {
         cell.textLabel?.text = LString.PasswordGenerator.titleWordlist
-        cell.imageView?.image = UIImage.get(.bookClosed)
+        cell.imageView?.image = .symbol(.bookClosed)
         cell.detailTextLabel?.text = config.passphraseModeConfig.wordlist.description
         cell.accessoryType = .detailDisclosureButton
     }

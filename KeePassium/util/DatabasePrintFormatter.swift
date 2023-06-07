@@ -39,7 +39,7 @@ final class DatabasePrintFormatter {
     private var fieldParagraphStyles = [Level : NSParagraphStyle]()
     
     
-    private let iconForField: [String: SystemImageName] = [
+    private let iconSymbolForField: [String: SymbolName] = [
         EntryField.userName: .person,
         EntryField.password: .asterisk,
         EntryField.url:      .globe,
@@ -151,13 +151,21 @@ extension DatabasePrintFormatter {
         size: CGFloat = Predefined.itemIconSide,
         forFont font: UIFont
     ) -> NSAttributedString? {
-        guard let icon = icon else {
+        guard let icon else { return nil }
+        var image: UIImage?
+        if icon.isSymbolImage {
+            image = icon
+                .withRenderingMode(.alwaysOriginal) 
+                .applyingSymbolConfiguration( 
+                    .init(pointSize: font.pointSize * 5, weight: .semibold))?
+                .stretchableImage(withLeftCapWidth: 0, topCapHeight: 0) 
+        }
+        guard image != nil else {
             return nil
         }
-        let iconWithFixedColors = icon.withRenderingMode(.alwaysOriginal)
-        
+
         let attachment = NSTextAttachment()
-        attachment.image = iconWithFixedColors
+        attachment.image = image
         let iconSize = CGSize(width: size, height: size)
         attachment.bounds = CGRect(
             x: CGFloat(0),
@@ -230,9 +238,9 @@ extension DatabasePrintFormatter {
             NSAttributedString.Key.foregroundColor: UIColor.darkText,
         ]
         
-        if let iconName = iconForField[field.name],
+        if let iconSymbol = iconSymbolForField[field.name],
            let icon = renderIcon(
-                UIImage.get(iconName),
+                .symbol(iconSymbol),
                 size: Predefined.fieldIconSide,
                 forFont: Predefined.fieldNameFont)
         {

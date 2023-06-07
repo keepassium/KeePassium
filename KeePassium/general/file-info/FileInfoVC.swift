@@ -128,20 +128,19 @@ final class FileInfoVC: UITableViewController, Refreshable {
         var toolbarItems = [UIBarButtonItem]()
         
         let exportActionTitle: String
-        let exportActionImage: SystemImageName
+        let exportActionSymbol: SymbolName
         if ProcessInfo.isRunningOnMac {
             exportActionTitle = LString.actionRevealInFinder
-            exportActionImage = .folder
+            exportActionSymbol = .folder
         } else {
             exportActionTitle = LString.actionExport
-            exportActionImage = .squareAndArrowUp
+            exportActionSymbol = .squareAndArrowUp
         }
         exportBarButton = UIBarButtonItem(
             title: exportActionTitle,
-            image: .get(exportActionImage),
+            image: .symbol(exportActionSymbol),
             primaryAction: UIAction(
                 title: exportActionTitle,
-                image: .get(.squareAndArrowUp),
                 handler: { [weak self] action in
                     guard let self = self else { return }
                     let popoverAnchor = PopoverAnchor(barButtonItem: self.exportBarButton)
@@ -154,10 +153,9 @@ final class FileInfoVC: UITableViewController, Refreshable {
         let eliminationActionTitle = DestructiveFileAction.get(for: fileRef.location).title
         eliminateBarButton = UIBarButtonItem(
             title: eliminationActionTitle,
-            image: .get(.trash),
+            image: .symbol(.trash),
             primaryAction: UIAction(
                 title: eliminationActionTitle,
-                image: .get(.trash),
                 attributes: .destructive,
                 handler: { [weak self] action in
                     guard let self = self else { return }
@@ -281,7 +279,7 @@ extension FileInfoVC {
     }
     
     private func configureExcludeFromBackupCell(_ cell: SwitchCell) {
-        cell.imageView?.image = UIImage.get(.xmarkICloud)
+        cell.imageView?.image = .symbol(.xmarkICloud)
         cell.textLabel?.text = LString.titleExcludeFromBackup
         cell.theSwitch.isOn = isExcludedFromBackup ?? cell.theSwitch.isOn
         cell.onDidToggleSwitch = { [weak self] cellSwitch in

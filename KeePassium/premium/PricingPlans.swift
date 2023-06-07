@@ -70,37 +70,37 @@ struct PricingPlanCondition {
 }
 
 struct PricingPlanBenefit {
-    var image: ImageAsset?
+    var symbolName: SymbolName
     var title: String
     var description: String?
         
     static let multipleDatabases = PricingPlanBenefit(
-        image: .premiumBenefitMultiDB,
+        symbolName: .premiumBenefitMultiDB,
         title: LString.premiumBenefitMultipleDatabasesTitle,
         description: LString.premiumBenefitMultipleDatabasesDescription
     )
     static let longDatabaseTimeout = PricingPlanBenefit(
-        image: .premiumBenefitDBTimeout,
+        symbolName: .premiumBenefitDBTimeout,
         title:  LString.premiumBenefitLongDatabaseTimeoutsTitle,
         description: LString.premiumBenefitLongDatabaseTimeoutsDescription
     )
     static let yubikeyChallengeResponse = PricingPlanBenefit(
-        image: .premiumBenefitHardwareKeys,
+        symbolName: .premiumBenefitHardwareKeys,
         title: LString.premiumBenefitHardwareKeysTitle,
         description: LString.premiumBenefitHardwareKeysDescription
     )
     static let businessClouds = PricingPlanBenefit(
-        image: .premiumBenefitBusinessClouds,
+        symbolName: .premiumBenefitBusinessClouds,
         title: LString.premiumBenefitBusinessCloudsTitle,
         description: LString.premiumBenefitBusinessCloudsDescription
     )
     static let viewFieldReferences = PricingPlanBenefit(
-        image: .premiumBenefitFieldReferences,
+        symbolName: .premiumBenefitFieldReferences,
         title: LString.premiumBenefitFieldReferecesTitle,
         description: LString.premiumBenefitFieldReferencesDescription
     )
     static let quickAutoFill = PricingPlanBenefit(
-        image: .premiumBenefitQuickAutoFill,
+        symbolName: .premiumBenefitQuickAutoFill,
         title: LString.premiumBenefitQuickAutoFillTitle,
         description: LString.premiumBenefitQuickAutoFillDescription
     )

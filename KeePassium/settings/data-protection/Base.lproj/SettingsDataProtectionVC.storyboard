@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +15,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SettingsDataProtectionVC" title="{Data Protection}" id="IZZ-aM-g2i" customClass="SettingsDataProtectionVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Bpw-6U-LVJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1566"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -23,22 +25,26 @@
 (Master keys are automatically cleared on database timeout.)</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="j7b-PX-ojf">
-                                        <rect key="frame" x="0.0" y="49.5" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j7b-PX-ojf" id="3WR-cy-Je7">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-remember-master-keys-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="o75-tg-dCR">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o75-tg-dCR">
                                                     <rect key="frame" x="16" y="11.5" width="29" height="29"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="ESJ-MU-YzE"/>
                                                         <constraint firstAttribute="width" constant="29" id="vcq-dT-xa0"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="key.diagonal" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Remember Master Keys" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INJ-Cy-Tfo">
-                                                    <rect key="frame" x="61" y="17.5" width="186" height="17"/>
+                                                    <rect key="frame" x="61" y="15.5" width="186" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -66,14 +72,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="PLI-CX-Rsv">
-                                        <rect key="frame" x="0.0" y="101" width="320" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="107" width="320" height="62.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PLI-CX-Rsv" id="Dks-a6-DS3">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-nv-Mst" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="105" y="15.5" width="110" height="28"/>
+                                                    <rect key="frame" x="94" y="15.5" width="132" height="32"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="tintColor" name="DestructiveTint"/>
                                                     <state key="normal" title="Clear Master Keys"/>
@@ -96,22 +102,22 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Automatic Lock" footerTitle="Database timeout closes any opened databases and clears any remembered master keys after some time." id="neJ-eG-TV7" userLabel="Timeout">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="weX-SZ-IDB" detailTextLabel="beV-Hv-Qdr" imageView="kwU-PJ-9tl" style="IBUITableViewCellStyleValue1" id="7gS-TC-EzJ">
-                                        <rect key="frame" x="0.0" y="309.5" width="320" height="48.5"/>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="weX-SZ-IDB" detailTextLabel="beV-Hv-Qdr" imageView="czG-xE-Epf" style="IBUITableViewCellStyleValue1" id="7gS-TC-EzJ">
+                                        <rect key="frame" x="0.0" y="357" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7gS-TC-EzJ" id="3iu-pK-y97">
-                                            <rect key="frame" x="0.0" y="0.0" width="295.5" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Database Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="weX-SZ-IDB">
-                                                    <rect key="frame" x="60" y="16" width="118" height="17"/>
+                                                    <rect key="frame" x="42" y="12" width="139.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Detail}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="beV-Hv-Qdr">
-                                                    <rect key="frame" x="242.5" y="17" width="45" height="16"/>
+                                                    <rect key="frame" x="232" y="13" width="53.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -120,44 +126,54 @@
                                                         <fragment content="#bc-ignore!"/>
                                                     </attributedString>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-database-timeout-listitem" id="kwU-PJ-9tl">
-                                                    <rect key="frame" x="16" y="9.5" width="29" height="29"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="czG-xE-Epf">
+                                                    <rect key="frame" x="16" y="15" width="11" height="13"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
+                                                    <imageReference key="image" image="clock.shield" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="5Fq-CG-7iL" userLabel="Lock Database on Timeout Cell">
-                                        <rect key="frame" x="0.0" y="358" width="320" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="400.5" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Fq-CG-7iL" id="WV2-IR-7yU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-remember-master-keys-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="0Tb-sh-39n">
-                                                    <rect key="frame" x="16" y="15" width="29" height="29"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Tb-sh-39n">
+                                                    <rect key="frame" x="16" y="18" width="29" height="29"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="C9U-Yd-twC"/>
                                                         <constraint firstAttribute="height" constant="29" id="enk-In-ojl"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="trash.badge.clock" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Clear Master Keys on Timeout" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTm-F6-EDQ">
-                                                    <rect key="frame" x="61" y="11.5" width="153" height="36"/>
+                                                    <rect key="frame" x="61" y="11.5" width="153" height="42.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Tol-4N-vjf">
-                                                    <rect key="frame" x="222" y="14" width="82" height="31"/>
+                                                    <rect key="frame" x="222" y="17" width="82" height="31"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="premium-feature-badge" translatesAutoresizingMaskIntoConstraints="NO" id="8yB-X8-xqJ">
-                                                            <rect key="frame" x="0.0" y="1" width="29" height="29"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="8yB-X8-xqJ">
+                                                            <rect key="frame" x="0.0" y="-3.5" width="29" height="36"/>
+                                                            <color key="tintColor" systemColor="systemYellowColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="8yB-X8-xqJ" secondAttribute="height" multiplier="1:1" id="kfC-it-kzc"/>
                                                                 <constraint firstAttribute="width" constant="29" id="nn3-2K-EDk"/>
                                                             </constraints>
+                                                            <imageReference key="image" image="star.fill" catalog="system" symbolScale="large" renderingMode="template"/>
                                                         </imageView>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSh-Tr-5oQ">
                                                             <rect key="frame" x="33" y="0.0" width="51" height="31"/>
@@ -188,26 +204,30 @@
                             <tableViewSection headerTitle="Clipboard" footerTitle="When you copy anything, KeePassium will automatically clear your clipboard (pasteboard) after some time." id="hnI-Q8-Ixm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="SSu-Sr-MCg" detailTextLabel="xPd-ot-oqe" imageView="KN4-NG-3Iw" style="IBUITableViewCellStyleValue1" id="pl7-TW-G1h" userLabel="Clipboard Timeout Cell">
-                                        <rect key="frame" x="0.0" y="510.5" width="320" height="48.5"/>
+                                        <rect key="frame" x="0.0" y="573" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pl7-TW-G1h" id="Wfm-hG-PH6">
-                                            <rect key="frame" x="0.0" y="0.0" width="295.5" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Clipboard Timeout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="SSu-Sr-MCg">
-                                                    <rect key="frame" x="60" y="16" width="119.5" height="17"/>
+                                                    <rect key="frame" x="42" y="12" width="140.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-clipboard-timeout-listitem" id="KN4-NG-3Iw">
-                                                    <rect key="frame" x="16" y="9.5" width="29" height="29"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KN4-NG-3Iw">
+                                                    <rect key="frame" x="16" y="13.5" width="11" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
+                                                    <imageReference key="image" image="clock.clipboard" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Detail}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="xPd-ot-oqe">
-                                                    <rect key="frame" x="242.5" y="17" width="45" height="16"/>
+                                                    <rect key="frame" x="232" y="13" width="53.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
@@ -225,22 +245,26 @@
                                 <string key="footerTitle">Use Universal Clipboard to copy and paste between your Apple devices. On external devices, this clipboard is cleared after two minutes.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="2o6-DM-GCk" userLabel="Use Universal Clilpboard">
-                                        <rect key="frame" x="0.0" y="631" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="696" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2o6-DM-GCk" id="euh-0J-9KN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-clipboard-universal-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="bIA-sn-kaC">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bIA-sn-kaC">
                                                     <rect key="frame" x="16" y="11.5" width="29" height="29"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="MSm-bI-ZaK"/>
                                                         <constraint firstAttribute="width" constant="29" id="ywO-kO-mdr"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="clipboard.and.arrow.triangle.2.circlepath" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Universal Clipboard" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YL6-U9-FM6">
-                                                    <rect key="frame" x="61" y="17.5" width="186" height="17"/>
+                                                    <rect key="frame" x="61" y="15.5" width="186" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -272,22 +296,26 @@
                             <tableViewSection headerTitle="Protected Fields" footerTitle="Hide passwords and other protected fields behind asterisks (recommended)." id="e6Y-AP-hag">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="xy0-l4-jX5" userLabel="Hide Protected Fields">
-                                        <rect key="frame" x="0.0" y="776.5" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="871" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xy0-l4-jX5" id="SV3-RM-NaN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-hide-passwords-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="o8u-9Y-Vtd">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o8u-9Y-Vtd">
                                                     <rect key="frame" x="16" y="11.5" width="29" height="29"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="QmV-aV-UWL"/>
                                                         <constraint firstAttribute="width" constant="29" id="rYc-E4-at5"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="ellipsis.rectangle.eye" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Hide Passwords" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pid-k2-idJ">
-                                                    <rect key="frame" x="61" y="17.5" width="186" height="17"/>
+                                                    <rect key="frame" x="61" y="15.5" width="186" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -320,22 +348,26 @@
                                 <string key="footerTitle">Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="qrz-wG-vpS">
-                                        <rect key="frame" x="0.0" y="908" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="1014" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qrz-wG-vpS" id="cEF-MG-8iD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-remember-keyfiles-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="DwH-6B-R5v">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DwH-6B-R5v">
                                                     <rect key="frame" x="16" y="11.5" width="29" height="29"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="QLe-0h-7Xe"/>
                                                         <constraint firstAttribute="width" constant="29" id="UTd-hV-Xzy"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="key.doc.horizontal" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Remember Key Files" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHl-o7-xHI">
-                                                    <rect key="frame" x="61" y="17.5" width="186" height="17"/>
+                                                    <rect key="frame" x="61" y="15.5" width="186" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -363,14 +395,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="63r-C0-jmV">
-                                        <rect key="frame" x="0.0" y="959.5" width="320" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="1065.5" width="320" height="62.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="63r-C0-jmV" id="54K-xz-dwY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uV-Zs-RRo" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="78.5" y="15.5" width="163" height="28"/>
+                                                    <rect key="frame" x="63" y="15.5" width="194" height="32"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="tintColor" name="DestructiveTint"/>
                                                     <state key="normal" title="Clear Key File Associations"/>
@@ -394,22 +426,26 @@
                             <tableViewSection headerTitle="Advanced" footerTitle="Cached keys allow KeePassium to skip key derivation and YubiKey scans whenever possible. " id="Zqb-p5-Ft8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="qjB-0Y-b5L">
-                                        <rect key="frame" x="0.0" y="1112" width="320" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="1235.5" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qjB-0Y-b5L" id="wQh-sf-qDA">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-remember-master-keys-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="g6c-fu-Gfv">
-                                                    <rect key="frame" x="16" y="15" width="29" height="29"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g6c-fu-Gfv">
+                                                    <rect key="frame" x="16" y="18" width="29" height="29"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="aG3-h1-Uxs"/>
                                                         <constraint firstAttribute="width" constant="29" id="ykK-F6-Vhd"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="key.diagonal" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Cache Derived Encryption Keys" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siQ-LK-GXZ">
-                                                    <rect key="frame" x="61" y="11.5" width="186" height="36"/>
+                                                    <rect key="frame" x="61" y="11.5" width="186" height="42.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -418,7 +454,7 @@
                                                     </attributedString>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wD7-lf-bW7">
-                                                    <rect key="frame" x="255" y="14" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="17" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="didToggleRememberFinalKeys:" destination="IZZ-aM-g2i" eventType="valueChanged" id="4EL-kj-qld"/>
                                                     </connections>
@@ -450,7 +486,7 @@
                             <outlet property="delegate" destination="IZZ-aM-g2i" id="j4A-iG-g34"/>
                         </connections>
                     </tableView>
-                    <size key="freeformSize" width="320" height="900"/>
+                    <size key="freeformSize" width="320" height="1566"/>
                     <connections>
                         <outlet property="clearKeyFileAssociationsButton" destination="3uV-Zs-RRo" id="AaL-yl-h39"/>
                         <outlet property="clearMasterKeysButton" destination="e1v-nv-Mst" id="uRo-08-UjQ"/>
@@ -470,17 +506,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0h-PX-haA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="241"/>
+            <point key="canvasLocation" x="1048" y="239.73013493253376"/>
         </scene>
     </scenes>
     <resources>
-        <image name="premium-feature-badge" width="25" height="25"/>
-        <image name="settings-clipboard-timeout-listitem" width="29" height="29"/>
-        <image name="settings-clipboard-universal-listitem" width="29" height="29"/>
-        <image name="settings-database-timeout-listitem" width="29" height="29"/>
-        <image name="settings-hide-passwords-listitem" width="29" height="29"/>
-        <image name="settings-remember-keyfiles-listitem" width="29" height="29"/>
-        <image name="settings-remember-master-keys-listitem" width="29" height="29"/>
+        <image name="clipboard.and.arrow.triangle.2.circlepath" width="11" height="16"/>
+        <image name="clock.clipboard" width="11" height="16"/>
+        <image name="clock.shield" width="11" height="13"/>
+        <image name="ellipsis.rectangle.eye" width="13" height="13"/>
+        <image name="key.diagonal" width="14" height="13"/>
+        <image name="key.doc.horizontal" width="11" height="14"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="trash.badge.clock" width="14" height="15"/>
         <namedColor name="AuxiliaryText">
             <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -495,6 +532,9 @@
         </namedColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

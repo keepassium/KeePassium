@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rxg-rI-fqC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rxg-rI-fqC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -134,10 +134,10 @@
                                             <rect key="frame" x="61" y="11.5" width="298" height="35"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zQD-hA-ZaY" userLabel="Title Subtitle Stack">
-                                                    <rect key="frame" x="0.0" y="0.0" width="152" height="35"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="{Entry Title}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-aR-wD3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="152" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="123" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" name="PrimaryText"/>
                                                             <nil key="highlightedColor"/>
@@ -146,7 +146,7 @@
                                                             </attributedString>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Entry Subtitle}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Db-9q-PM7">
-                                                            <rect key="frame" x="0.0" y="20.5" width="152" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="20.5" width="123" height="14.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" name="AuxiliaryText"/>
                                                             <nil key="highlightedColor"/>
@@ -157,7 +157,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-z3-IV4">
-                                                    <rect key="frame" x="156" y="6.5" width="25" height="22"/>
+                                                    <rect key="frame" x="127" y="6.5" width="25" height="22"/>
                                                     <color key="tintColor" name="AuxiliaryText"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="X8P-x6-Nzw"/>
@@ -166,7 +166,7 @@
                                                     <imageReference key="image" image="paperclip" catalog="system" symbolScale="small" renderingMode="template"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="{OTPValue}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAn-LR-hxd" customClass="OTPView" customModule="KeePassium" customModuleProvider="target">
-                                                    <rect key="frame" x="160" y="7" width="87" height="20.5"/>
+                                                    <rect key="frame" x="131" y="7" width="87" height="20.5"/>
                                                     <color key="tintColor" name="WarningBackground"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
@@ -175,10 +175,15 @@
                                                     <color key="textColor" name="AuxiliaryText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2j-8N-gU5">
-                                                    <rect key="frame" x="255" y="1.5" width="43" height="32"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                    <state key="normal" title="{OTP}"/>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2j-8N-gU5">
+                                                    <rect key="frame" x="226" y="4.5" width="72" height="26"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="{OTP}">
+                                                        <imageReference key="image" image="clock" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        </preferredSymbolConfiguration>
+                                                    </state>
                                                     <connections>
                                                         <action selector="didPressShowOTP:" destination="mqP-Mr-NTh" eventType="touchUpInside" id="GTV-mH-Hme"/>
                                                     </connections>
@@ -215,14 +220,16 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem image="sort-order-toolbar" style="plain" id="M5a-Ld-ZXd">
+                        <barButtonItem style="plain" id="M5a-Ld-ZXd">
+                            <imageReference key="image" image="list.bullet" catalog="system" renderingMode="template"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Sort Order" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="C9C-x8-Xot"/>
-                        <barButtonItem image="lock-database-toolbar" style="done" id="9KV-rC-1XL">
+                        <barButtonItem style="done" id="9KV-rC-1XL">
+                            <imageReference key="image" image="lock" renderingMode="template"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Lock Database" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
@@ -232,7 +239,8 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4G1-5H-wDl"/>
-                        <barButtonItem image="database-settings-toolbar" id="qkh-6K-yQW">
+                        <barButtonItem id="qkh-6K-yQW">
+                            <imageReference key="image" image="key.shield" renderingMode="template"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Change Master Key" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
@@ -243,13 +251,14 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zgU-y1-cjL"/>
                         <barButtonItem id="skd-dl-nXZ" userLabel="Print Button">
-                            <imageReference key="image" image="printer" catalog="system" symbolScale="default" renderingMode="template"/>
+                            <imageReference key="image" image="printer" catalog="system" renderingMode="template"/>
                             <connections>
                                 <action selector="didPressPrintDatabase:" destination="Rxg-rI-fqC" id="mgJ-Ye-Rbb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="3c2-tf-H4L"/>
-                        <barButtonItem image="settings-toolbar" style="plain" id="rF3-mC-kj1">
+                        <barButtonItem style="plain" id="rF3-mC-kj1">
+                            <imageReference key="image" image="gearshape" catalog="system" renderingMode="template"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Settings" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
@@ -277,13 +286,14 @@
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
-        <image name="database-settings-toolbar" width="25" height="25"/>
+        <image name="clock" catalog="system" width="128" height="123"/>
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
-        <image name="lock-database-toolbar" width="25" height="25"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="key.shield" width="11" height="13"/>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="lock" width="10" height="13"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="printer" catalog="system" width="128" height="111"/>
-        <image name="settings-toolbar" width="25" height="25"/>
-        <image name="sort-order-toolbar" width="25" height="25"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

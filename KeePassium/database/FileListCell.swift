@@ -25,10 +25,11 @@ class FileListCellFactory {
 
 class FileInfoAccessoryButton: UIButton {
     required init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        setImage(UIImage(asset: .fileInfoCellAccessory), for: .normal)
-        contentMode = .scaleAspectFill
+        super.init(frame: .zero)
+        setImage(.symbol(.ellipsis), for: .normal)
+        contentMode = .scaleAspectFit
         accessibilityLabel = LString.actionShowDetails
+        sizeToFit()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
@@ -97,7 +98,9 @@ class FileListCell: UITableViewCell {
     }
     
     private func showFileInfo(_ fileInfo: FileInfo, for urlRef: URLReference) {
-        fileIconView?.image = urlRef.getIcon(fileType: fileType)
+        let iconSymbol = urlRef.getIconSymbol(fileType: fileType)
+        fileIconView?.image = .symbol(iconSymbol)
+        fileIconView?.sizeToFit()
         if let modificationDate = fileInfo.modificationDate {
             let dateString = DateFormatter.localizedString(
                 from: modificationDate,
@@ -111,14 +114,18 @@ class FileListCell: UITableViewCell {
     }
     
     private func showFileError(_ error: FileAccessError?, for urlRef: URLReference) {
+        let iconSymbol = urlRef.getIconSymbol(fileType: fileType)
         guard let error = error else {
             self.fileDetailLabel?.text = "..."
-            self.fileIconView?.image = urlRef.getIcon(fileType: self.fileType)
+            self.fileIconView?.image = .symbol(iconSymbol)
+            self.fileIconView?.sizeToFit()
             return
         }
         self.fileDetailLabel?.text = error.localizedDescription
         self.fileDetailLabel?.textColor = UIColor.errorMessage
-        self.fileIconView?.image = urlRef.getIcon(fileType: self.fileType)
+        self.fileIconView?.image = .symbol(iconSymbol)
+        self.fileIconView?.sizeToFit()
+        sizeToFit()
     }
     
     var isAnimating: Bool {

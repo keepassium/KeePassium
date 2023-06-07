@@ -11,7 +11,7 @@ import KeePassiumLib
 final class PremiumBadgeAccessory: UIImageView {
     required init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        image = UIImage(asset: .premiumFeatureBadge)
+        image = UIImage.premiumBadge
         contentMode = .scaleAspectFill
         accessibilityLabel = LString.premiumFeatureGenericTitle
     }

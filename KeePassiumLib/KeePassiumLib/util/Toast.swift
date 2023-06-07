@@ -568,15 +568,13 @@ public extension UIView {
         }
         
         if let image = image {
-            imageView = UIImageView(image: image)
-            imageView?.tintColor = style.titleColor
-            imageView?.contentMode = .scaleAspectFit
-            imageView?.frame = CGRect(
-                x: style.horizontalPadding,
-                y: style.verticalPadding,
-                width: style.imageSize.width,
-                height: style.imageSize.height
-            )
+            let _imageView = UIImageView(image: image)
+            _imageView.adjustsImageSizeForAccessibilityContentSizeCategory = true
+            _imageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
+            _imageView.tintColor = style.iconTint ?? style.titleColor
+            _imageView.contentMode = .scaleAspectFit
+            _imageView.sizeToFit()
+            imageView = _imageView
         }
         
         var imageRect = CGRect.zero
@@ -647,6 +645,7 @@ public extension UIView {
                 button.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
                 button.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
                 button.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+                button.imageView?.sizeToFit()
                 buttonImageWidth =
                     buttonImage.size.width +
                     button.imageEdgeInsets.left +
@@ -782,6 +781,8 @@ public struct ToastStyle {
     */
     public var titleColor: UIColor = .label
     
+    public var iconTint: UIColor?
+    
     /**
      The message color. Default is `.label`.
     */
@@ -886,11 +887,6 @@ public struct ToastStyle {
      The shadow offset. The default is zero.
     */
     public var shadowOffset = CGSize.zero
-    
-    /**
-     The image size. The default is 32 x 32.
-    */
-    public var imageSize = CGSize(width: 32.0, height: 32.0)
     
     /**
      The size of the toast activity view when `makeToastActivity(position:)` is called.

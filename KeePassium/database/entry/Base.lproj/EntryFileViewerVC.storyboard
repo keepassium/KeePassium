@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="coc-lo-rXf">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="coc-lo-rXf">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,14 +20,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileItemCell" textLabel="WUw-Hm-GLz" detailTextLabel="Kbg-2Y-UcU" imageView="c2m-da-5aZ" style="IBUITableViewCellStyleSubtitle" id="4LX-3D-gq2">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="49.5"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="57.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4LX-3D-gq2" id="WaU-pb-UJ8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{File Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="WUw-Hm-GLz">
-                                            <rect key="frame" x="60" y="7.5" width="74.5" height="17"/>
+                                            <rect key="frame" x="55" y="9" width="87.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="PrimaryText"/>
@@ -36,7 +37,7 @@
                                             </attributedString>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{File Size}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Kbg-2Y-UcU">
-                                            <rect key="frame" x="60" y="27" width="52.5" height="13.5"/>
+                                            <rect key="frame" x="55" y="32.5" width="56.5" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" name="AuxiliaryText"/>
@@ -45,15 +46,16 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="attached-file-listitem" id="c2m-da-5aZ">
-                                            <rect key="frame" x="16" y="10" width="29" height="29"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c2m-da-5aZ">
+                                            <rect key="frame" x="19" y="18.5" width="18" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <imageReference key="image" image="doc" catalog="system" renderingMode="template"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoFilesCell" textLabel="W86-tp-bfF" style="IBUITableViewCellStyleDefault" id="nlU-mt-E0q">
-                                <rect key="frame" x="0.0" y="94" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="107.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nlU-mt-E0q" id="HH7-sn-e6f">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -73,14 +75,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddFileCell" textLabel="bgK-Q6-nzE" imageView="XnV-a4-8Mp" style="IBUITableViewCellStyleDefault" id="Sem-R7-u6d">
-                                <rect key="frame" x="0.0" y="137.5" width="375" height="48.5"/>
+                                <rect key="frame" x="0.0" y="151" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sem-R7-u6d" id="9U5-dE-O6I">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Add File" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="bgK-Q6-nzE">
-                                            <rect key="frame" x="60" y="0.0" width="299" height="48.5"/>
+                                            <rect key="frame" x="55" y="0.0" width="304" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="ActionTint"/>
@@ -89,9 +91,10 @@
                                                 <fragment content="Action: attach a file to the entry."/>
                                             </attributedString>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="create-attachment-listitem" id="XnV-a4-8Mp">
-                                            <rect key="frame" x="16" y="9.5" width="29" height="29"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XnV-a4-8Mp">
+                                            <rect key="frame" x="19" y="13.5" width="18" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <imageReference key="image" image="plus" catalog="system" renderingMode="template"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -112,8 +115,8 @@
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
-        <image name="attached-file-listitem" width="29" height="29"/>
-        <image name="create-attachment-listitem" width="29" height="29"/>
+        <image name="doc" catalog="system" width="115" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

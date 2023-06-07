@@ -126,7 +126,7 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         let isQRScannerAvailable = delegate?.isQRScannerAvailable(self) ?? false
         let qrCodeSetupAction = UIAction(
             title: LString.otpSetupScanQRCode,
-            image: .get(.qrcode),
+            image: .symbol(.qrcode),
             attributes: isQRScannerAvailable ? [] : [.disabled]
         ) {
             [weak self] _ in
@@ -134,7 +134,7 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         }
         let manualSetupAction = UIAction(
             title: LString.otpSetupEnterManually,
-            image: .get(.keyboard)
+            image: .symbol(.keyboard)
         ) {
             [weak self] _ in
             self?.didPressManualOTPSetup()

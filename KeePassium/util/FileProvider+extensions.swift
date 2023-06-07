@@ -9,41 +9,41 @@
 import KeePassiumLib
 
 extension FileProvider {
-    var icon: UIImage? {
+    var iconSymbol: SymbolName? {
         switch self {
         case .localStorage:
-            return getLocalStorageIcon()
+            return FileProvider.getLocalStorageIconSymbol()
         case .box:
-            return UIImage(named: "fp-box-listitem")
+            return .fileProviderBox
         case .boxcryptor,
              .boxcryptorLegacy2020:
-            return UIImage(named: "fp-boxcryptor-listitem")
+            return .fileProviderBoxCryptor
         case .dropbox:
-            return UIImage(named: "fp-dropbox-listitem")
+            return .fileProviderDropbox
         case .googleDrive:
-            return UIImage(named: "fp-google-drive-listitem")
+            return .fileProviderGoogleDrive
         case .iCloudDrive, .iCloudDriveLegacy:
-            return UIImage(named: "fp-icloud-drive-listitem")
+            return .iCloud
         case .keepassiumWebDAV:
-            return UIImage(named: "fp-webdav-listitem")
+            return .fileProviderWebDAV
         case .keepassiumOneDrive:
-            return UIImage(named: "fp-onedrive-listitem")
+            return .fileProviderOneDrive
         case .nextcloud:
-            return UIImage(named: "fp-nextcloud-listitem")
+            return .fileProviderNextCloud
         case .oneDrive:
-            return UIImage(named: "fp-onedrive-listitem")
+            return .fileProviderOneDrive
         case .ownCloud:
-            return UIImage(named: "fp-owncloud-listitem")
+            return .fileProviderOwnCloud
         case .pCloud:
-            return UIImage(named: "fp-pcloud-listitem")
+            return .fileProviderPCloud
         case .smbShare:
-            return UIImage(named: "fp-smb-share-listitem")
+            return .fileProviderSMB
         case .synologyDSfile:
-            return UIImage(named: "fp-nas-listitem") // UIImage(named: "fp-synology-dsfile-listitem")
+            return .fileProviderNAS
         case .synologyDrive:
-            return UIImage(named: "fp-synology-drive-listitem")
+            return .fileProviderSynologyDrive
         case .usbDrive:
-            return UIImage(named: "fp-usb-drive-listitem")
+            return .fileProviderUSB
         case .amerigo:        fallthrough
         case .amerigoFree:    fallthrough
         case .feFileExplorer: fallthrough
@@ -57,18 +57,32 @@ extension FileProvider {
         case .tresorit:       fallthrough
         case .yandexDisk:     fallthrough
         case .other:
-            return UIImage(asset: .fileProviderGenericListitem)
+            return .fileProviderGeneric
         }
     }
     
-    private func getLocalStorageIcon() -> UIImage? {
-        guard UIDevice.current.userInterfaceIdiom == .pad else {
-            return UIImage(named: "fp-on-iphone-listitem")
-        }
+    public static func getLocalStorageIconSymbol() -> SymbolName {
         if ProcessInfo.isRunningOnMac {
-            return UIImage(named: "fp-on-hard-drive-listitem")
-        } else {
-            return UIImage(named: "fp-on-ipad-listitem")
+            return .fileProviderGeneric
+        }
+        let device = UIDevice.current
+        switch device.userInterfaceIdiom {
+        case .pad:
+            if device.hasHomeButton() {
+                return .iPadHomeButton
+            } else {
+                return .iPad
+            }
+        case .phone:
+            if device.hasHomeButton() {
+                return .iPhoneHomeButton
+            } else {
+                return .iPhone
+            }
+        case .mac:
+            return .fileProviderGeneric
+        default:
+            return .fileProviderGeneric
         }
     }
 }

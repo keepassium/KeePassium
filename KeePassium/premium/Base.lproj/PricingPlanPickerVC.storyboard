@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q33-jL-fgN">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SiG-rk-T4D" userLabel="Wait Panel">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="55.333333333333336"/>
@@ -42,10 +43,10 @@
                                         <edgeInsets key="layoutMargins" top="4" left="8" bottom="4" right="8"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Rng-i2-FCe" userLabel="CollectionWrapper">
-                                        <rect key="frame" x="0.0" y="55.333333333333314" width="414" height="612.66666666666674"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333314" width="414" height="600.66666666666674"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DHw-Tm-Wbg">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="612.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="600.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <collectionViewLayout key="collectionViewLayout" id="DqF-Nq-DUa" customClass="PricingPlanCollectionLayout" customModule="KeePassium" customModuleProvider="target"/>
                                                 <cells>
@@ -173,17 +174,20 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="252" height="37"/>
                                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                                         <subviews>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium-condition-unchecked-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="qmr-lR-zg0">
+                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium-condition-unchecked-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="qmr-lR-zg0">
                                                                                                 <rect key="frame" x="16" y="4" width="29" height="29"/>
                                                                                                 <color key="tintColor" name="DisabledText"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" secondItem="qmr-lR-zg0" secondAttribute="height" multiplier="1:1" id="Esx-d8-Ps4"/>
                                                                                                     <constraint firstAttribute="width" constant="29" id="kfo-nq-Pxl"/>
                                                                                                 </constraints>
+                                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                                                </preferredSymbolConfiguration>
                                                                                             </imageView>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Condition}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juk-xI-Nbg" userLabel="Title Label">
-                                                                                                <rect key="frame" x="53.000000000000007" y="8.9999999999999982" width="81.666666666666686" height="19.333333333333329"/>
-                                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                                                                <rect key="frame" x="53.000000000000007" y="8.3333333333333339" width="85.666666666666686" height="20.333333333333329"/>
+                                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                                                 <color key="textColor" name="PrimaryText"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                                 <attributedString key="userComments">
@@ -191,7 +195,7 @@
                                                                                                 </attributedString>
                                                                                             </label>
                                                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qy-XG-UQT" userLabel="Detail Button">
-                                                                                                <rect key="frame" x="142.66666666666666" y="6.6666666666666661" width="24.333333333333343" height="23.666666666666671"/>
+                                                                                                <rect key="frame" x="146.66666666666666" y="5.6666666666666661" width="25.666666666666657" height="25.666666666666671"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                                 <color key="tintColor" name="ActionTint"/>
                                                                                                 <connections>
@@ -227,16 +231,19 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="252" height="60"/>
                                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                                         <subviews>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFL-15-a49">
-                                                                                                <rect key="frame" x="16" y="6.6666666666666679" width="29" height="29.000000000000004"/>
+                                                                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFL-15-a49">
+                                                                                                <rect key="frame" x="16.000000000000004" y="9.3333333333333321" width="46.333333333333343" height="23.999999999999996"/>
                                                                                                 <color key="tintColor" name="DisabledText"/>
                                                                                                 <constraints>
-                                                                                                    <constraint firstAttribute="width" secondItem="fFL-15-a49" secondAttribute="height" multiplier="1:1" id="REH-BI-J3r"/>
-                                                                                                    <constraint firstAttribute="width" constant="29" id="ieW-u1-lsF"/>
+                                                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="29" id="ieW-u1-lsF"/>
                                                                                                 </constraints>
+                                                                                                <imageReference key="image" image="person.3" catalog="system" symbolScale="large"/>
+                                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                                                </preferredSymbolConfiguration>
                                                                                             </imageView>
                                                                                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ep9-uU-zW5">
-                                                                                                <rect key="frame" x="53" y="11" width="183" height="38"/>
+                                                                                                <rect key="frame" x="70.333333333333329" y="11" width="165.66666666666669" height="38"/>
                                                                                                 <subviews>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="{Benefit Title}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0i-gI-Jb4" userLabel="Title Label">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="109.33333333333333" height="20.333333333333332"/>
@@ -260,7 +267,7 @@
                                                                                             </stackView>
                                                                                         </subviews>
                                                                                         <constraints>
-                                                                                            <constraint firstItem="fFL-15-a49" firstAttribute="centerY" secondItem="f0i-gI-Jb4" secondAttribute="centerY" priority="250" id="P18-J0-WjI"/>
+                                                                                            <constraint firstItem="fFL-15-a49" firstAttribute="firstBaseline" secondItem="f0i-gI-Jb4" secondAttribute="firstBaseline" priority="250" id="P18-J0-WjI"/>
                                                                                             <constraint firstItem="fFL-15-a49" firstAttribute="leading" secondItem="kGG-bH-38I" secondAttribute="leadingMargin" id="T75-bS-Kis"/>
                                                                                             <constraint firstItem="fFL-15-a49" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kGG-bH-38I" secondAttribute="top" constant="2" id="WL4-bX-vJl"/>
                                                                                             <constraint firstAttribute="trailingMargin" secondItem="Ep9-uU-zW5" secondAttribute="trailing" id="WOY-AO-crw"/>
@@ -374,7 +381,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="j7c-Gd-QEh" userLabel="Restore Purchases Button" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="668" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="656" width="414" height="32"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <color key="tintColor" name="ActionTint"/>
                                         <state key="normal" title="Already purchased?"/>
@@ -383,7 +390,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f3M-nh-HoU" userLabel="Footer">
-                                        <rect key="frame" x="0.0" y="708" width="414" height="28"/>
+                                        <rect key="frame" x="0.0" y="688" width="414" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NSz-U1-2ye" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="203" height="28"/>
@@ -439,6 +446,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="premium-condition-unchecked-listitem" width="29" height="29"/>
         <namedColor name="ActionText">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -447,7 +455,7 @@
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AuxiliaryText">
-            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DisabledText">
             <color red="0.75300002098083496" green="0.75300002098083496" blue="0.75300002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

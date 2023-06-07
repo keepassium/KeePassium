@@ -140,9 +140,7 @@ extension PasswordGeneratorCoordinator {
         } else {
             viewController.showNotification(
                 LString.titleCopiedToClipboard,
-                image: UIImage.get(.docOnDoc)?
-                    .applyingSymbolConfiguration(.init(weight: .light))?
-                    .withTintColor(.green, renderingMode: .alwaysTemplate),
+                image: .symbol(.docOnDoc),
                 duration: 1)
         }
     }

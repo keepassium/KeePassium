@@ -36,34 +36,25 @@ class PricingPlanConditionCell: UITableViewCell {
     var isChecked: Bool = false {
         didSet {
             if isChecked {
-                checkmarkImage?.image = .get(.checkmark)?
-                    .applyingSymbolConfiguration(.init(scale: .default))
+                checkmarkImage?.image = .symbol(.checkmark, tint: .primaryText)
                 checkmarkImage?.tintColor = .primaryText
                 titleLabel?.textColor = .primaryText
                 accessibilityTraits.remove(.notEnabled)
             } else {
-                checkmarkImage?.image = .get(.xmark)?
-                    .applyingSymbolConfiguration(.init(weight: .light))?
-                    .applyingSymbolConfiguration(.init(scale: .small))
+                checkmarkImage?.image = .symbol(.xmark, tint: .disabledText)
                 checkmarkImage?.tintColor = .disabledText
                 titleLabel?.textColor = .disabledText
                 accessibilityTraits.insert(.notEnabled)
             }
         }
     }
+    
     @IBAction func didPressDetailButton(_ sender: UIButton) {
         assert(helpReference != .none)
         delegate?.didPressDetailButton(in: self)
     }
 }
 
-class PricingPlanBenefitCell: UITableViewCell {
-    static let storyboardID = "BenefitCell"
-    
-    @IBOutlet weak var iconView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-}
 
 
 protocol PricingPlanCollectionCellDelegate: AnyObject {
@@ -73,6 +64,9 @@ protocol PricingPlanCollectionCellDelegate: AnyObject {
 
 class PricingPlanCollectionCell: UICollectionViewCell {
     static let storyboardID = "PricingPlanCollectionCell"
+    private enum CellID {
+        static let benefitCell = "BenefitCell"
+    }
     private enum Section: Int {
         static let allValues = [Section]([.title, .conditions, .benefits, .smallprint])
         case title = 0
@@ -103,6 +97,8 @@ class PricingPlanCollectionCell: UICollectionViewCell {
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+        
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: CellID.benefitCell)
     }
     
     func refresh() {
@@ -244,6 +240,7 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
             as! PricingPlanConditionCell
         cell.delegate = self
         cell.titleLabel?.text = condition.localizedTitle
+        cell.titleLabel?.font = .preferredFont(forTextStyle: .body)
         cell.isChecked = condition.isIncluded
         
         cell.helpReference = condition.moreInfo
@@ -253,30 +250,33 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
     
     func dequeueBenefitCell(
         _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath)
-        -> PricingPlanBenefitCell
-    {
-        let cell = tableView
-            .dequeueReusableCell(withIdentifier: PricingPlanBenefitCell.storyboardID, for: indexPath)
-            as! PricingPlanBenefitCell
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let benefit = pricingPlan.benefits[indexPath.row]
-        cell.titleLabel?.text = benefit.title
-        cell.subtitleLabel?.text = benefit.description
-        if let imageAsset = benefit.image {
-            cell.iconView?.image = UIImage(asset: imageAsset)
-        } else {
-            cell.iconView.image = nil
-        }
-
+        var content = UIListContentConfiguration.cell()
+        content.image = .symbol(benefit.symbolName)
+        content.text = benefit.title
+        content.secondaryText = benefit.description
+        content.textProperties.font = .preferredFont(forTextStyle: .title3)
+        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
+        content.textToSecondaryTextVerticalPadding = 4.0
+        
+        content.imageProperties.preferredSymbolConfiguration =
+            UIImage.SymbolConfiguration(textStyle: .title1, scale: .large)
+                .applying(UIImage.SymbolConfiguration(weight: .thin))
+        content.imageProperties.reservedLayoutSize = CGSize(width: 32, height: 0)
+        
         if pricingPlan.isFree {
-            cell.titleLabel.textColor = .disabledText
-            cell.subtitleLabel.textColor = .disabledText
-            cell.iconView?.tintColor = .disabledText
+            content.textProperties.color = .disabledText
+            content.secondaryTextProperties.color = .disabledText
+            content.imageProperties.tintColor = .disabledText
         } else {
-            cell.titleLabel.textColor = .primaryText
-            cell.subtitleLabel.textColor = .auxiliaryText
-            cell.iconView?.tintColor = .actionTint
+            content.textProperties.color = .label
+            content.secondaryTextProperties.color = .secondaryLabel
+            content.imageProperties.tintColor = .iconTint
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.benefitCell, for: indexPath)
+        cell.contentConfiguration = content
         return cell
     }
     

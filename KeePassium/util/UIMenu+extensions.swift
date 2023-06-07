@@ -79,7 +79,7 @@ extension UIMenu {
         case ascending:
             return UIAction(
                 title: title,
-                image: UIImage.get(.chevronUp),
+                image: .symbol(.chevronUp),
                 attributes: [],
                 state: .on,
                 handler: { _ in handler(descending) }
@@ -87,7 +87,7 @@ extension UIMenu {
         case descending:
             return UIAction(
                 title: title,
-                image: UIImage.get(.chevronDown),
+                image: .symbol(.chevronDown),
                 attributes: [],
                 state: .on,
                 handler: { _ in handler(ascending) }
@@ -157,7 +157,7 @@ extension UIMenu {
         case ascending:
             return UIAction(
                 title: title,
-                image: UIImage.get(.chevronUp),
+                image: .symbol(.chevronUp),
                 attributes: [],
                 state: .on,
                 handler: { _ in handler(descending) }
@@ -165,7 +165,7 @@ extension UIMenu {
         case descending:
             return UIAction(
                 title: title,
-                image: UIImage.get(.chevronDown),
+                image: .symbol(.chevronDown),
                 attributes: [],
                 state: .on,
                 handler: { _ in handler(ascending) }

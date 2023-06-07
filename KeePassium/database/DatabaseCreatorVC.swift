@@ -67,7 +67,7 @@ class DatabaseCreatorVC: UIViewController {
         
         navigationItem.title = LString.titleCreateDatabase
         
-        view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
+        view.backgroundColor = ImageAsset.backgroundPattern.asColor()
         view.layer.isOpaque = false
 
         passwordField.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -145,7 +145,6 @@ class DatabaseCreatorVC: UIViewController {
         
         var toastStyle = ToastStyle()
         toastStyle.backgroundColor = .warningMessage
-        toastStyle.imageSize = CGSize(width: 29, height: 29)
         toastStyle.displayShadow = false
         let toastAction = ToastAction(
             title: LString.actionShowDetails,
@@ -156,7 +155,7 @@ class DatabaseCreatorVC: UIViewController {
         let toastView = view.toastViewForMessage(
             message,
             title: nil,
-            image: UIImage.get(.exclamationMarkTriangle),
+            image: .symbol(.exclamationMarkTriangle),
             action: toastAction,
             style: toastStyle
         )

@@ -65,10 +65,14 @@ final class AnnouncementView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "info.circle")
-        imageView.contentMode = .scaleAspectFit
+        imageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
+        imageView.tintColor = .label
+        imageView.contentMode = .center
+        imageView.clipsToBounds = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalToConstant: 29).activate()
-        imageView.heightAnchor.constraint(equalToConstant: 29).activate()
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: 36).activate()
+        imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: 29).activate()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -171,7 +175,7 @@ final class AnnouncementView: UIView {
                 .setPriority(.defaultHigh)
                 .activate()
             imageTrailingAnchor = imageView.trailingAnchor
-            imageTrailingAnchorConstant = 16
+            imageTrailingAnchorConstant = 8
         } else {
             imageTrailingAnchor = layoutMarginsGuide.leadingAnchor
             imageTrailingAnchorConstant = 8

@@ -35,5 +35,9 @@ final class SubtitleCell: UITableViewCell {
         detailTextLabel?.textColor = .secondaryLabel
         detailTextLabel?.numberOfLines = 0
         detailTextLabel?.lineBreakMode = .byWordWrapping
+        
+        imageView?.preferredSymbolConfiguration =
+            UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
+        imageView?.tintColor = .iconTint
     }
 }

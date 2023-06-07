@@ -928,8 +928,7 @@ extension DatabaseViewerCoordinator {
             title: LString.titleAppProtection,
             body: LString.appProtectionDescription,
             actionTitle: LString.callToActionActivateAppProtection,
-            image: UIImage(asset: .settingsAppLockListitem)
-                .withTintColor(.primaryText, renderingMode: .alwaysOriginal),
+            image: .symbol(.appProtection),
             onDidPressAction: { [weak self] _ in
                 self?.startAppProtectionSetup()
             },
@@ -948,9 +947,7 @@ extension DatabaseViewerCoordinator {
             title: nil,
             body: LString.databaseIsFallbackCopy,
             actionTitle: originalRef.needsReinstatement ? LString.actionReAddFile : nil,
-            image: .get(.icloudSlash)?
-                .applyingSymbolConfiguration(.init(weight: .light))?
-                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal),
+            image: .symbol(.iCloudSlash),
             onDidPressAction: { [weak self, weak viewController] _ in
                 guard let self = self else { return }
                 self.delegate?.didPressReaddDatabase(in: self)
@@ -994,7 +991,7 @@ extension DatabaseViewerCoordinator {
             title: nil,
             body: texts.0,
             actionTitle: texts.1,
-            image: .get(.heart)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal),
+            image: .symbol(.heart)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal),
             onDidPressAction: { [weak self, weak viewController] _ in
                 self?.showTipBox()
                 viewController?.refreshAnnouncements()

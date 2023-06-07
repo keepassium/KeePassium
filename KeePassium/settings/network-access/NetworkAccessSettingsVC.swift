@@ -85,8 +85,7 @@ final class NetworkAccessSettingsVC: UITableViewController {
             modeCell.textLabel?.text = LString.titleStayOffline
             modeCell.detailTextLabel?.text = LString.titleMaximumPrivacy
             modeCell.accessoryType = isAccessAllowed ? .none : .checkmark
-            modeCell.imageView?.image = UIImage.get(.wifiSlash)?
-                .applyingSymbolConfiguration(.init(scale: .large))
+            modeCell.imageView?.image = .symbol(.wifiSlash)
             return modeCell
         case CellIndex.accessGranted:
             let modeCell = tableView
@@ -95,8 +94,7 @@ final class NetworkAccessSettingsVC: UITableViewController {
             modeCell.textLabel?.text = LString.titleAllowNetworkAccess
             modeCell.detailTextLabel?.text = LString.titleMaximumFunctionality
             modeCell.accessoryType = isAccessAllowed ? .checkmark : .none
-            modeCell.imageView?.image = UIImage.get(.network)?
-                .applyingSymbolConfiguration(.init(scale: .large))
+            modeCell.imageView?.image = .symbol(.network)
             return modeCell
         case CellIndex.privacyPolicySummary:
             let policyCell = tableView
@@ -173,6 +171,10 @@ extension NetworkAccessSettingsVC {
             detailTextLabel?.textColor = .secondaryLabel
             detailTextLabel?.numberOfLines = 0
             detailTextLabel?.lineBreakMode = .byWordWrapping
+            
+            imageView?.preferredSymbolConfiguration =
+                UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
+            imageView?.tintColor = .iconTint
         }
     }
     

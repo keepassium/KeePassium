@@ -213,7 +213,6 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     }
     
     func refresh() {
-        sortOrderButton.image = Settings.current.filesSortOrder.toolbarIcon
         sortOrderButton.menu = makeListSettingsMenu()
         
         addDatabaseBarButton.primaryAction = nil
@@ -336,7 +335,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         var databaseMenuItems = [UIMenuElement]()
         let addDatabaseAction = UIAction(
             title: LString.actionOpenDatabase,
-            image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.folder),
+            image: needPremium ? .premiumBadge : .symbol(.folder),
             handler: { [weak self] _ in
                 guard let self = self else { return }
                 self.delegate?.didPressAddExistingDatabase(in: self)
@@ -349,7 +348,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         case .full, .light:
             let createDatabaseAction = UIAction(
                 title: LString.actionCreateDatabase,
-                image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.plus),
+                image: needPremium ? .premiumBadge : .symbol(.plus),
                 handler: { [weak self] _ in
                     guard let self = self else { return }
                     self.delegate?.didPressCreateDatabase(in: self)
@@ -369,7 +368,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         
         let addRemoteDatabaseAction = UIAction(
             title: LString.actionConnectToServer,
-            image: needPremium ? UIImage(asset: .premiumFeatureBadge) : UIImage.get(.network),
+            image: needPremium ? UIImage.premiumBadge : UIImage.symbol(.network),
             attributes: [],
             handler: { [weak self] _ in
                 guard let self = self else { return }

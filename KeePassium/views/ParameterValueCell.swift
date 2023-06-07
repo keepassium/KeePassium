@@ -38,7 +38,7 @@ final class ParameterValueCell: UITableViewCell {
     private func setupAccessory() {
         let button = UIButton(type: .detailDisclosure)
         button.tintColor = .secondaryLabel
-        button.setImage(UIImage.get(.chevronForward), for: .normal)
+        button.setImage(.symbol(.chevronForward), for: .normal)
         button.accessibilityLabel = LString.actionEdit
         button.menu = menu
         button.showsMenuAsPrimaryAction = true

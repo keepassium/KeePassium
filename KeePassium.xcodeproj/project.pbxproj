@@ -159,10 +159,6 @@
 		753507A123783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
 		753507A223783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
 		753507A323783729003B65C9 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7535079F23783729003B65C9 /* HapticFeedback.swift */; };
-		7537FEBE249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
-		7537FEBF249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
-		7537FEC0249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
-		7537FEC1249D7B950028A653 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
 		7538936926D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
 		7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
 		7538936B26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
@@ -857,7 +853,6 @@
 		75D0761C28B639D200F02E39 /* EntryFileViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */; };
 		75D0761D28B639D200F02E39 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542D2412129640F00C8A926 /* String+extensions.swift */; };
 		75D0761E28B639D200F02E39 /* CollectionViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B7870D261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift */; };
-		75D0761F28B639D200F02E39 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
 		75D0762028B639D200F02E39 /* AnnouncementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759ADB86285A22CD00D93BD4 /* AnnouncementView.swift */; };
 		75D0762128B639D200F02E39 /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
 		75D0762228B639D200F02E39 /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
@@ -1102,7 +1097,6 @@
 		75D0771E28B639F600F02E39 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
 		75D0771F28B639F600F02E39 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */; };
 		75D0772028B639F600F02E39 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
-		75D0772128B639F600F02E39 /* Settings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537FEBD249D7B950028A653 /* Settings+extensions.swift */; };
 		75D0772228B639F600F02E39 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE05F925DAA5A200B34CC0 /* URLOpener.swift */; };
 		75D0772328B639F600F02E39 /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
 		75D0772428B639F600F02E39 /* DiagnosticsViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE05EA25DA86F200B34CC0 /* DiagnosticsViewerCoordinator.swift */; };
@@ -1735,7 +1729,6 @@
 		7534382C2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		7534BFA12643FEF4001A3873 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/AppHistoryViewerVC.strings; sourceTree = "<group>"; };
 		7535079F23783729003B65C9 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
-		7537FEBD249D7B950028A653 /* Settings+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+extensions.swift"; sourceTree = "<group>"; };
 		7538040C25F58C80005C5D32 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissable.swift; sourceTree = "<group>"; };
 		753A3EE920D3776D00A1CF70 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
@@ -2949,7 +2942,6 @@
 				75A5312223C0D35500900ED1 /* NavigationRouter.swift */,
 				75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */,
 				759BC62B2487FE5200E88111 /* URLReference+extensions.swift */,
-				7537FEBD249D7B950028A653 /* Settings+extensions.swift */,
 				758FC18C24CF254000BAD35C /* AppIcon.swift */,
 				75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */,
 				75BE05F925DAA5A200B34CC0 /* URLOpener.swift */,
@@ -4113,7 +4105,6 @@
 				750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */,
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
-				7537FEBF249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				75BE05FB25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75AA237B26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */,
 				758FF6CB28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,
@@ -4280,7 +4271,6 @@
 				75B7870E261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				7542D2422129640F00C8A926 /* String+extensions.swift in Sources */,
 				759ADB87285A22CD00D93BD4 /* AnnouncementView.swift in Sources */,
-				7537FEBE249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */,
 				759A430C26206D7F0074C375 /* GroupEditorCoordinator.swift in Sources */,
 				75C11F1E22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
@@ -4480,7 +4470,6 @@
 				75B38C2A233E5B7C006BDEFC /* EntryFileViewerVC.swift in Sources */,
 				75B38C2B233E5B7C006BDEFC /* String+extensions.swift in Sources */,
 				75B78710261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
-				7537FEC0249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				759ADB89285A22CD00D93BD4 /* AnnouncementView.swift in Sources */,
 				75B38C2C233E5B7C006BDEFC /* ProgressOverlay.swift in Sources */,
 				75B38C2D233E5B7C006BDEFC /* LAContext+biometrics.swift in Sources */,
@@ -4682,7 +4671,6 @@
 				75D0761C28B639D200F02E39 /* EntryFileViewerVC.swift in Sources */,
 				75D0761D28B639D200F02E39 /* String+extensions.swift in Sources */,
 				75D0761E28B639D200F02E39 /* CollectionViewControllerWithContextActions.swift in Sources */,
-				75D0761F28B639D200F02E39 /* Settings+extensions.swift in Sources */,
 				75D0762028B639D200F02E39 /* AnnouncementView.swift in Sources */,
 				75CA661029B8E00A0094CBAA /* DatabasePrintFormatter.swift in Sources */,
 				75D0762128B639D200F02E39 /* ProgressOverlay.swift in Sources */,
@@ -4849,7 +4837,6 @@
 				75D0771E28B639F600F02E39 /* UIAlertController+extensions.swift in Sources */,
 				75D0771F28B639F600F02E39 /* Coordinator.swift in Sources */,
 				75D0772028B639F600F02E39 /* UIView+extension.swift in Sources */,
-				75D0772128B639F600F02E39 /* Settings+extensions.swift in Sources */,
 				75D0772228B639F600F02E39 /* URLOpener.swift in Sources */,
 				75D0772328B639F600F02E39 /* DatabaseFile+extensions.swift in Sources */,
 				75D0772428B639F600F02E39 /* DiagnosticsViewerCoordinator.swift in Sources */,
@@ -4971,7 +4958,6 @@
 				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
 				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,
 				75D7DF9A233E5E310029AD87 /* UIView+extension.swift in Sources */,
-				7537FEC1249D7B950028A653 /* Settings+extensions.swift in Sources */,
 				75BE05FD25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75AA237D26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */,
 				758FF6CD28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,

@@ -44,7 +44,7 @@ final class DatabaseKeyChangerVC: UIViewController {
         super.viewDidLoad()
         
         databaseNameLabel.text = databaseFile.visibleFileName
-        databaseIcon.image = databaseFile.getIcon()
+        databaseIcon.image = .symbol(databaseFile.getIconSymbol())
         
         passwordField.invalidBackgroundColor = nil
         repeatPasswordField.invalidBackgroundColor = nil
@@ -76,7 +76,7 @@ final class DatabaseKeyChangerVC: UIViewController {
         hardwareKeyField.cursor = .arrow
         #endif
 
-        view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
+        view.backgroundColor = ImageAsset.backgroundPattern.asColor()
         view.layer.isOpaque = false
         
         navigationItem.rightBarButtonItem?.isEnabled = false

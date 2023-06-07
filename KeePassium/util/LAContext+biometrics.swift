@@ -37,12 +37,12 @@ extension LABiometryType {
         }
     }
     
-    var icon: UIImage? {
+    var symbolName: SymbolName? {
         switch self {
         case .faceID:
-            return UIImage(asset: .biometryFaceIDListitem)
+            return SymbolName.faceID
         case .touchID:
-            return UIImage(asset: .biometryTouchIDListitem)
+            return SymbolName.touchID
         default:
             return nil
         }

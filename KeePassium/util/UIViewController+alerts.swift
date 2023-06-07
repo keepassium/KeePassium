@@ -91,10 +91,10 @@ extension UIViewController {
         )
     }
     
-    func showSuccessNotification(_ message: String, icon: SystemImageName) {
+    func showSuccessNotification(_ message: String, icon: SymbolName) {
         showNotification(
             message,
-            image: UIImage.get(icon)?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+            image: .symbol(icon)
         )
     }
     

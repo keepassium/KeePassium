@@ -74,7 +74,7 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
         
         let fullModeButton = UIBarButtonItem(
             title: LString.PasswordGenerator.titleRandomGenerator,
-            image: .get(.gearshape2),
+            image: .symbol(.gearshape2),
             primaryAction: UIAction { [weak self] _ in
                 guard let self = self else { return }
                 self.delegate?.didRequestFullMode(in: self)
@@ -151,14 +151,16 @@ extension PasswordGeneratorQuickSheetVC {
             detailTextLabel?.textColor = .primaryText
             detailTextLabel?.numberOfLines = 0
             detailTextLabel?.lineBreakMode = .byCharWrapping
-                        
+            
             let copyButton = UIButton(
-                frame: CGRect(x: 0, y: 0, width: 25, height: 25),
+                type: .system,
                 primaryAction: UIAction() { [weak self] _ in
                     self?.onDidPressCopy?()
                 }
             )
-            copyButton.setImage(UIImage.get(.docOnDoc), for: .normal)
+            copyButton.setImage(.symbol(.docOnDoc), for: .normal)
+            copyButton.sizeToFit()
+            copyButton.accessibilityLabel = LString.actionCopy
             accessoryView = copyButton
             
             accessibilityElements = [textLabel as Any, detailTextLabel as Any, accessoryView as Any]

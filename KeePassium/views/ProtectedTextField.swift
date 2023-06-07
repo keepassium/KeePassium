@@ -12,8 +12,8 @@ class ProtectedTextField: ValidatingTextField {
     private let horizontalInsets = CGFloat(8.0)
     private let verticalInsets = CGFloat(2.0)
     
-    private let unhideImage = UIImage(asset: .unhideAccessory)
-    private let hideImage = UIImage(asset: .hideAccessory)
+    private let unhideImage = UIImage.symbol(.eye)!
+    private let hideImage = UIImage.symbol(.eyeFill)!
 
     private var toggleButton: UIButton! 
     private var originalContentType: UITextContentType?

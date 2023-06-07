@@ -82,7 +82,7 @@ extension ConnectionTypePickerVC {
         let value = values[indexPath.row]
         cell.textLabel?.text = value.description
         cell.imageView?.contentMode = .scaleAspectFit
-        cell.imageView?.image = value.icon
+        cell.imageView?.image = .symbol(value.iconSymbol)
         cell.selectionStyle = .default
         cell.setEnabled(!isBusy)
 

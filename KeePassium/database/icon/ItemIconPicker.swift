@@ -88,7 +88,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
 
         if isImportAllowed {
             let importIconButton = UIBarButtonItem(
-                image: UIImage(asset: .createItemToolbar),
+                image: .symbol(.plus),
                 style: .plain,
                 target: self,
                 action: #selector(didPressImportIcon))

@@ -148,9 +148,10 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
 
 class OpenURLAccessoryButton: UIButton {
     required init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: 44, height: 80))
-        setImage(UIImage(asset: .openURLCellAccessory), for: .normal)
+        super.init(frame: .zero)
+        setImage(.symbol(.externalLink), for: .normal)
         contentMode = .scaleAspectFit
+        sizeToFit()
 
         accessibilityLabel = LString.actionOpenURL
     }
@@ -213,12 +214,14 @@ class URLFieldCell: ViewableFieldCell {
 
 
 class ToggleVisibilityAccessoryButton: UIButton {
+    
     required init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: 44, height: 80))
-        setImage(UIImage(asset: .unhideListitem), for: .normal)
-        setImage(UIImage(asset: .hideListitem), for: .selected)
-        setImage(UIImage(asset: .hideListitem), for: .highlighted)
+        super.init(frame: .zero)
+        setImage(.symbol(.eye), for: .normal)
+        setImage(.symbol(.eyeFill), for: .selected)
+        setImage(.symbol(.eyeFill), for: .highlighted)
         contentMode = .scaleAspectFit
+        sizeToFit()
         
         accessibilityLabel = LString.actionShowInPlainText
     }

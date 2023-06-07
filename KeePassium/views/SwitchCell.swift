@@ -47,6 +47,8 @@ class SwitchCell: UITableViewCell {
         detailTextLabel?.numberOfLines = 0
         detailTextLabel?.lineBreakMode = .byWordWrapping
         
+        imageView?.preferredSymbolConfiguration = .init(textStyle: .body, scale: .large)
+
         accessoryType = .none
         accessoryView = theSwitch
         

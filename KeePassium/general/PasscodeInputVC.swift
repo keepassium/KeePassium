@@ -59,7 +59,7 @@ class PasscodeInputVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(patternImage: UIImage(asset: .backgroundPattern))
+        view.backgroundColor = ImageAsset.backgroundPattern.asColor()
         view.layer.isOpaque = false
         
         mainButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
@@ -150,7 +150,9 @@ class PasscodeInputVC: UIViewController {
         }
         
         let biometryType = LAContext.getBiometryType()
-        useBiometricsButton.setImage(biometryType.icon, for: .normal)
+        useBiometricsButton.setImage(
+            .symbol(biometryType.symbolName),
+            for: .normal)
         useBiometricsButton.accessibilityLabel = biometryType.name
         
         let showMacOSBiometricHint = ProcessInfo.isRunningOnMac && !useBiometricsButton.isHidden

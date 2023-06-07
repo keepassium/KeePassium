@@ -55,6 +55,8 @@ class DestinationGroupPickerCell: UITableViewCell {
         super.awakeFromNib()
         arrowImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         arrowImageView.tintColor = .auxiliaryText
+        arrowImageView.contentMode = .center
+        arrowImageView.preferredSymbolConfiguration = .init(textStyle: .body)
         self.accessoryView = arrowImageView
     }
     
@@ -63,9 +65,9 @@ class DestinationGroupPickerCell: UITableViewCell {
         case .none:
             arrowImageView.image = nil
         case .collapsed:
-            arrowImageView.image = UIImage(asset: .expandRowCellAccessory)
+            arrowImageView.image = .symbol(.chevronForward)
         case .expanded:
-            arrowImageView.image = UIImage(asset: .collapseRowCellAccessory)
+            arrowImageView.image = .symbol(.chevronDown)
         }
     }
 }

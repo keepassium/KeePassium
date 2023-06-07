@@ -135,15 +135,14 @@ final class GroupViewerVC:
         
         createItemButton = UIBarButtonItem(
             title: LString.actionCreate,
-            image: UIImage(asset: .createItemToolbar),
+            image: .symbol(.plus),
             primaryAction: nil,
             menu: nil)
         navigationItem.setRightBarButton(createItemButton, animated: false)
         navigationItem.titleView = titleView
         
         printButton.title = LString.actionPrint
-        printButton.image = UIImage.get(.printer)?
-            .withConfiguration(UIImage.SymbolConfiguration(weight: .light))
+        printButton.image = .symbol(.printer)
         
         settingsNotifications = SettingsNotifications(observer: self)
         
@@ -246,7 +245,7 @@ final class GroupViewerVC:
         tableView.reloadData()
         
         sortOrderButton.menu = makeListSettingsMenu()
-        sortOrderButton.image = Settings.current.groupSortOrder.toolbarIcon
+        sortOrderButton.image = .symbol(.listBullet)
     }
     
     func refreshAnnouncements() {

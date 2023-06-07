@@ -179,9 +179,7 @@ extension EntryFinderCoordinator {
             title: LString.callToActionActivateQuickAutoFill,
             body: LString.premiumFeatureQuickAutoFillDescription,
             actionTitle: LString.actionLearnMore,
-            image: UIImage.get(.infoCircle)?
-                .applyingSymbolConfiguration(.init(weight: .light))?
-                .withTintColor(.primaryText, renderingMode: .alwaysOriginal),
+            image: .symbol(.infoCircle),
             onDidPressAction: { [weak self] _ in
                 self?.openQuickAutoFillPromo()
             },
@@ -201,9 +199,7 @@ extension EntryFinderCoordinator {
             title: nil,
             body: LString.databaseIsFallbackCopy,
             actionTitle: originalRef.needsReinstatement ? LString.actionReAddFile : nil,
-            image: .get(.icloudSlash)?
-                .applyingSymbolConfiguration(.init(weight: .light))?
-                .withTintColor(UIColor.primaryText, renderingMode: .alwaysOriginal),
+            image: .symbol(.iCloudSlash),
             onDidPressAction: { [weak self, weak viewController] _ in
                 guard let self = self else { return }
                 self.delegate?.didPressReaddDatabase(in: self)

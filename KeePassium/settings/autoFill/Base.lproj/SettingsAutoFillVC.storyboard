@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ei6-22-NXN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ei6-22-NXN">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,23 +22,26 @@
                             <tableViewSection headerTitle="" id="r0b-qe-g8J">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="aSq-s6-gVc" imageView="WKL-cx-hvq" style="IBUITableViewCellStyleDefault" id="Q6S-wx-6gy">
-                                        <rect key="frame" x="0.0" y="35" width="320" height="45.5"/>
+                                        <rect key="frame" x="0.0" y="39.5" width="320" height="48.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q6S-wx-6gy" id="7Nt-pA-o5w">
-                                            <rect key="frame" x="0.0" y="0.0" width="295.5" height="45.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293.5" height="48.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Setup instructions}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="aSq-s6-gVc">
-                                                    <rect key="frame" x="54.25" y="0.0" width="233.25" height="45.5"/>
+                                                    <rect key="frame" x="56" y="0.0" width="229.5" height="48.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="ActionTint"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WKL-cx-hvq">
-                                                    <rect key="frame" x="13.25" y="9.5" width="26" height="26"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WKL-cx-hvq">
+                                                    <rect key="frame" x="15" y="11" width="26" height="26"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -47,14 +51,14 @@
                             <tableViewSection headerTitle="" footerTitle="{Quick AutoFill description}" id="KaG-pD-D9z">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ymn-Ga-UJN">
-                                        <rect key="frame" x="0.0" y="123" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="135" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ymn-Ga-UJN" id="wZ9-Hz-1qs">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="{Quick AutoFill}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wq1-wJ-wCR">
-                                                    <rect key="frame" x="61" y="17.5" width="153" height="17"/>
+                                                    <rect key="frame" x="61" y="15.5" width="153" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -72,14 +76,19 @@
                                                         <constraint firstAttribute="width" constant="29" id="TLq-QA-Fr8"/>
                                                         <constraint firstAttribute="height" constant="29" id="WUY-hE-gDf"/>
                                                     </constraints>
-                                                    <imageReference key="image" image="bolt" catalog="system" symbolScale="large" renderingMode="template"/>
+                                                    <imageReference key="image" image="bolt" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium-feature-badge" translatesAutoresizingMaskIntoConstraints="NO" id="gpr-fU-ZKU">
-                                                    <rect key="frame" x="222" y="13.5" width="25" height="25"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpr-fU-ZKU">
+                                                    <rect key="frame" x="222" y="9" width="25" height="32"/>
+                                                    <color key="tintColor" systemColor="systemYellowColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="gpr-fU-ZKU" secondAttribute="height" multiplier="1:1" id="7fv-9G-R0a"/>
                                                         <constraint firstAttribute="width" constant="25" id="dhe-sg-T4q"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="star.fill" catalog="system" symbolScale="large" renderingMode="template"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -104,31 +113,35 @@
                             <tableViewSection headerTitle="Automatic search" footerTitle="When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically." id="jYl-ks-dFG" userLabel="Automatic search">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="R2t-YZ-TJF">
-                                        <rect key="frame" x="0.0" y="240.5" width="320" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="262" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R2t-YZ-TJF" id="Gjp-69-EKT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="{Fill-in the perfect result automatically}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDb-aU-Mmf">
-                                                    <rect key="frame" x="61" y="11.5" width="186" height="36"/>
+                                                    <rect key="frame" x="61" y="11.5" width="186" height="42.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dg8-cp-hCR">
-                                                    <rect key="frame" x="255" y="14" width="51" height="31"/>
+                                                    <rect key="frame" x="255" y="17" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="didTogglePerfectMatch:" destination="ei6-22-NXN" eventType="valueChanged" id="qLI-XC-yKS"/>
                                                     </connections>
                                                 </switch>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-autofill-perfect-match-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="1FP-jM-b2u">
-                                                    <rect key="frame" x="16" y="15" width="29" height="29"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1FP-jM-b2u">
+                                                    <rect key="frame" x="16" y="16.5" width="29" height="31.5"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="oty-FA-yX4"/>
                                                         <constraint firstAttribute="height" constant="29" id="ubm-CV-5tE"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="chevron.forward.2" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -151,14 +164,14 @@
                             <tableViewSection headerTitle="One-time passwords" footerTitle="When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you." id="XYL-1l-Jx6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="GKe-BK-Kaa">
-                                        <rect key="frame" x="0.0" y="379" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="434.5" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GKe-BK-Kaa" id="vYX-KL-3FJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="{Copy OTP to clipboard}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go1-Nt-isQ">
-                                                    <rect key="frame" x="61" y="17.5" width="186" height="17"/>
+                                                    <rect key="frame" x="61" y="15.5" width="186" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -169,13 +182,17 @@
                                                         <action selector="didToggleCopyTOTP:" destination="ei6-22-NXN" eventType="valueChanged" id="bYo-32-pDq"/>
                                                     </connections>
                                                 </switch>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-clipboard-timeout-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="8Ep-US-vGn">
-                                                    <rect key="frame" x="16" y="11.5" width="29" height="29"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Ep-US-vGn">
+                                                    <rect key="frame" x="16" y="12" width="29" height="28"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="qD2-Xe-RkX"/>
                                                         <constraint firstAttribute="width" constant="29" id="rRy-2l-Om7"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="ellipsis.rectangle" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -222,11 +239,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bolt" catalog="system" width="101" height="128"/>
-        <image name="info.circle" catalog="system" width="128" height="121"/>
-        <image name="premium-feature-badge" width="25" height="25"/>
-        <image name="settings-autofill-perfect-match-listitem" width="29" height="29"/>
-        <image name="settings-clipboard-timeout-listitem" width="29" height="29"/>
+        <image name="bolt" catalog="system" width="100" height="128"/>
+        <image name="chevron.forward.2" catalog="system" width="128" height="108"/>
+        <image name="ellipsis.rectangle" catalog="system" width="128" height="79"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -236,5 +253,8 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -49,8 +49,8 @@ final class FieldCopiedView: UIView {
             self.delegate?.didPressExport(for: self.indexPath, from: self)
         })
         button.tintColor = .actionText
-        button.setImage(.get(.squareAndArrowUp), for: .normal)
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
+        button.setImage(.symbol(.squareAndArrowUp), for: .normal)
+        button.setPreferredSymbolConfiguration(.init(textStyle: .body, scale: .large), forImageIn: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityLabel = LString.actionShare
         return button
@@ -62,8 +62,8 @@ final class FieldCopiedView: UIView {
             self.delegate?.didPressCopyFieldReference(for: self.indexPath, from: self)
         })
         button.tintColor = .actionText
-        button.setImage(.get(.arrowRightCircle), for: .normal)
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
+        button.setImage(.symbol(.fieldReference), for: .normal)
+        button.setPreferredSymbolConfiguration(.init(textStyle: .body, scale: .large), forImageIn: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityLabel = LString.actionCopyFieldReference
         return button

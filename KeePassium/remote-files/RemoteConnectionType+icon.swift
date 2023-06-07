@@ -9,13 +9,13 @@
 import KeePassiumLib
 
 extension RemoteConnectionType {
-    public var icon: UIImage? {
+    public var iconSymbol: SymbolName? {
         switch self {
         case .webdav:
-            return FileProvider.keepassiumWebDAV.icon
+            return FileProvider.keepassiumWebDAV.iconSymbol
         case .oneDrive,
-                .oneDriveForBusiness:
-            return FileProvider.keepassiumOneDrive.icon
+             .oneDriveForBusiness:
+            return FileProvider.keepassiumOneDrive.iconSymbol
         }
     }
 }

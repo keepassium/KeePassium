@@ -17,6 +17,6 @@ open class AppCoverVC: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: UIImage(asset: .appCoverPattern))
+        view.backgroundColor = ImageAsset.appCoverPattern.asColor()
     }
 }

@@ -77,7 +77,7 @@ final class SettingsAppLockVC: UITableViewController, Refreshable {
         allowBiometricsLabel.text = String.localizedStringWithFormat(
             LString.titleUseBiometryTypeTemplate,
             biometryTypeName)
-        biometricsIcon.image = context.biometryType.icon
+        biometricsIcon.image = .symbol(context.biometryType.symbolName)
     }
     
     func refresh() {

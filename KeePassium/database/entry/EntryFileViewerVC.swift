@@ -68,7 +68,7 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
         tableView.allowsMultipleSelectionDuringEditing = true
 
         previewFilesBarButton = UIBarButtonItem(
-            image: UIImage(asset: .filePreviewToolbar),
+            image: .symbol(.rectangleStack),
             style: .plain,
             target: self,
             action: #selector(didPressViewAll(_:)))
@@ -135,15 +135,24 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
     
     @available(iOS 14, *)
     private func makeAddAttachmentMenu() -> UIMenu {
-        let chooseFileAction = UIAction(title: LString.actionChooseFile, image: UIImage.get(.folder)) {
+        let chooseFileAction = UIAction(
+            title: LString.actionChooseFile,
+            image: .symbol(.folder)
+        ) {
             [weak self] action in
             self?.didPressAddFileAttachment(action)
         }
-        let choosePhotoAction = UIAction(title: LString.actionChoosePhoto, image: UIImage.get(.photo)) {
+        let choosePhotoAction = UIAction(
+            title: LString.actionChoosePhoto,
+            image: .symbol(.photo)
+        ) {
             [weak self] _ in
             self?.didPressAddPhotoAttachment(fromCamera: false)
         }
-        let takePhotoAction = UIAction(title: LString.actionTakePhoto, image: UIImage.get(.camera)) {
+        let takePhotoAction = UIAction(
+            title: LString.actionTakePhoto,
+            image: .symbol(.camera)
+        ) {
             [weak self] _ in
             self?.didPressAddPhotoAttachment(fromCamera: true)
         }
@@ -397,7 +406,7 @@ private extension EntryFileViewerVC {
     private func makeConfirmDeleteSelectionMenu(for button: UIBarButtonItem) -> UIMenu {
         let deleteAction = UIAction(
             title: button.title ?? LString.actionDelete,
-            image: UIImage.get(.trash),
+            image: .symbol(.trash),
             attributes: [.destructive],
             handler: { [weak self] _ in
                 self?.didPressDeleteSelection()

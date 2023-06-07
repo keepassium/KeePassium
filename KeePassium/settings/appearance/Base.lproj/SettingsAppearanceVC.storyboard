@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,14 +22,14 @@
                             <tableViewSection headerTitle="" id="Sc2-r0-Toe">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fSx-Do-lgu" imageView="eeb-bc-aya" style="IBUITableViewCellStyleDefault" id="yBx-ZL-DDR" userLabel="App Icon">
-                                        <rect key="frame" x="0.0" y="35" width="320" height="48.5"/>
+                                        <rect key="frame" x="0.0" y="39.5" width="320" height="52.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yBx-ZL-DDR" id="f59-C7-fgC">
-                                            <rect key="frame" x="0.0" y="0.0" width="295.5" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293.5" height="52.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="App Icon" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="fSx-Do-lgu" userLabel="App Icon">
-                                                    <rect key="frame" x="60" y="0.0" width="227.5" height="48.5"/>
+                                                    <rect key="frame" x="56.75" y="0.0" width="228.75" height="52.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -37,10 +38,14 @@
                                                         <fragment content="Section in settings: icon for the app"/>
                                                     </attributedString>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="settings-app-icon-listitem" id="eeb-bc-aya">
-                                                    <rect key="frame" x="16" y="9.5" width="29" height="29"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="eeb-bc-aya">
+                                                    <rect key="frame" x="14.25" y="11" width="27.5" height="30"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
+                                                    <imageReference key="image" image="atom" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                             <attributedString key="userComments">
@@ -49,14 +54,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4Yu-VJ-n8p" imageView="QKJ-al-m91" style="IBUITableViewCellStyleDefault" id="i3u-Xq-xMJ" userLabel="Database Icons">
-                                        <rect key="frame" x="0.0" y="83.5" width="320" height="48.5"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i3u-Xq-xMJ" id="8zJ-6N-QXR">
-                                            <rect key="frame" x="0.0" y="0.0" width="295.5" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293.5" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Database Icons" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="4Yu-VJ-n8p">
-                                                    <rect key="frame" x="60" y="0.0" width="227.5" height="48.5"/>
+                                                    <rect key="frame" x="60" y="0.0" width="225.5" height="51.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -65,10 +70,13 @@
                                                         <fragment content="Section in settings: icons for database"/>
                                                     </attributedString>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="db-icons/db-icon-loading" id="QKJ-al-m91">
-                                                    <rect key="frame" x="16" y="9.5" width="29" height="29"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="db-icons/db-icon-loading" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="QKJ-al-m91">
+                                                    <rect key="frame" x="16" y="11" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" name="IconTint"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -78,14 +86,14 @@
                             <tableViewSection headerTitle="Entry Viewer" id="MsA-Cd-czb">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wGS-Nq-9TY">
-                                        <rect key="frame" x="0.0" y="181.5" width="320" height="77.5"/>
+                                        <rect key="frame" x="0.0" y="199" width="320" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wGS-Nq-9TY" id="f6W-QG-JTM">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="77.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="{Text size}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbO-y9-3wb">
-                                                    <rect key="frame" x="16" y="11" width="67" height="17"/>
+                                                    <rect key="frame" x="16" y="11" width="78.5" height="20.5"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="NO"/>
                                                     </accessibility>
@@ -96,19 +104,19 @@
                                                         <fragment content="#bc-ignore!"/>
                                                     </attributedString>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MAG-tY-N1o">
-                                                    <rect key="frame" x="14" y="36" width="243" height="31.5"/>
+                                                <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MAG-tY-N1o">
+                                                    <rect key="frame" x="14" y="39.5" width="253" height="31.5"/>
                                                     <connections>
                                                         <action selector="didChangeTextScale:" destination="4mh-X8-Byq" eventType="valueChanged" id="XXo-su-Sql"/>
                                                     </connections>
                                                 </slider>
-                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5U9-NZ-sJe">
-                                                    <rect key="frame" x="271" y="31" width="41" height="41"/>
+                                                <button opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="5U9-NZ-sJe">
+                                                    <rect key="frame" x="281" y="36.5" width="31" height="37"/>
                                                     <accessibility key="accessibilityConfiguration" label="Reset text size to default"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                                    <state key="normal" image="zoom-original-toolbar">
-                                                        <color key="titleColor" name="ActionTint"/>
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="one-to-one" symbolScale="large"/>
                                                     </state>
                                                     <attributedString key="userComments">
                                                         <fragment content="Action: set text size to standard size"/>
@@ -136,22 +144,26 @@
                             <tableViewSection headerTitle="Protected Fields" footerTitle="Hide passwords and other protected fields behind asterisks (recommended)." id="Lh3-CB-Urp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="LFD-J8-PP9" userLabel="Hide Protected Fields">
-                                        <rect key="frame" x="0.0" y="316" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="343" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LFD-J8-PP9" id="dNo-I4-XUP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-hide-passwords-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="hX2-R8-ftf">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hX2-R8-ftf">
                                                     <rect key="frame" x="16" y="11.5" width="29" height="29"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="Oc3-mW-qWK"/>
                                                         <constraint firstAttribute="width" constant="29" id="Z10-ba-Idv"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="ellipsis.rectangle.eye" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Hide Passwords" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usg-hF-eLK">
-                                                    <rect key="frame" x="61" y="17.5" width="186" height="17"/>
+                                                    <rect key="frame" x="61" y="15.5" width="186" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -200,13 +212,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="atom" catalog="system" width="122" height="128"/>
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
-        <image name="settings-app-icon-listitem" width="29" height="29"/>
-        <image name="settings-hide-passwords-listitem" width="29" height="29"/>
-        <image name="zoom-original-toolbar" width="25" height="25"/>
-        <namedColor name="ActionTint">
-            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="ellipsis.rectangle.eye" width="13" height="13"/>
+        <image name="one-to-one" width="15" height="12"/>
         <namedColor name="IconTint">
             <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

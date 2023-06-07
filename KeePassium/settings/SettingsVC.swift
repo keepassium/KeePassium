@@ -105,10 +105,17 @@ final class SettingsVC: UITableViewController, Refreshable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setLocalizedStrings()
+        configureCells()
         refresh()
     }
 
+    private func configureCells() {
+        setLocalizedStrings()
+        
+        premiumPurchaseCell.imageView?.image = UIImage.premiumBadge
+        tipBoxCell.imageView?.image = .symbol(.heart, tint: .red)
+    }
+    
     private func setLocalizedStrings() {
         appHistoryCell.textLabel?.text = LString.titleAppHistory
         premiumPurchaseCell.textLabel?.text = LString.actionUpgradeToPremium

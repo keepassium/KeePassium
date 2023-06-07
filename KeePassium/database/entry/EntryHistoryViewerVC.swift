@@ -42,10 +42,10 @@ final class EntryHistoryItemCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        restoreButton = UIButton()
-        restoreButton.setImage(UIImage.get(.clockArrowCirclepath), for: .normal)
+        restoreButton = UIButton(type: .system)
+        restoreButton.setImage(.symbol(.actionRestore), for: .normal)
         restoreButton.accessibilityLabel = LString.actionRestore
-        restoreButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        restoreButton.sizeToFit()
         restoreButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         editingAccessoryView = restoreButton
     }
@@ -481,7 +481,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     private func makeConfirmDeleteSelectionMenu(for button: UIBarButtonItem) -> UIMenu {
         let deleteAction = UIAction(
             title: button.title ?? LString.actionDelete,
-            image: UIImage.get(.trash),
+            image: .symbol(.trash),
             attributes: [.destructive],
             handler: { [weak self] _ in
                 self?.didPressDeleteSelection()
