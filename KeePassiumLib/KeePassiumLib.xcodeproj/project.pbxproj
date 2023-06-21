@@ -52,6 +52,7 @@
 		757C51CF29F17D3C008986F4 /* DomainParser in Frameworks */ = {isa = PBXBuildFile; productRef = 757C51CE29F17D3C008986F4 /* DomainParser */; };
 		757C51D129F18192008986F4 /* DomainNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757C51D029F18192008986F4 /* DomainNameHelper.swift */; };
 		757E78D82822D729009017BF /* PasswordGeneratorParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D72822D729009017BF /* PasswordGeneratorParams.swift */; };
+		75804AAF2A43B5A300A9C985 /* eff-short-wordlist-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 75804AAE2A43B5A300A9C985 /* eff-short-wordlist-1.txt */; };
 		758FF6D4290193F0007DE8EB /* OneDriveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */; };
 		758FF6D82902DB07007DE8EB /* RemoteFileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */; };
 		758FF6DB2902DB64007DE8EB /* OneDriveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6DA2902DB64007DE8EB /* OneDriveManager.swift */; };
@@ -281,6 +282,7 @@
 		75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+extensions.swift"; sourceTree = "<group>"; };
 		757C51D029F18192008986F4 /* DomainNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNameHelper.swift; sourceTree = "<group>"; };
 		757E78D72822D729009017BF /* PasswordGeneratorParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorParams.swift; sourceTree = "<group>"; };
+		75804AAE2A43B5A300A9C985 /* eff-short-wordlist-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "eff-short-wordlist-1.txt"; sourceTree = "<group>"; };
 		758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveDataSource.swift; sourceTree = "<group>"; };
 		758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFileItem.swift; sourceTree = "<group>"; };
 		758FF6DA2902DB64007DE8EB /* OneDriveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveManager.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 			children = (
 				75AF193A282EF1B600FA4BB5 /* eff-large-wordlist.txt */,
 				75AF193C282EF39300FA4BB5 /* eff-short-wordlist-2-0.txt */,
+				75804AAE2A43B5A300A9C985 /* eff-short-wordlist-1.txt */,
 			);
 			path = wordlists;
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				75D09BDD2174F76500F7DEF2 /* LICENSE in Resources */,
 				754ABE9C25AB898B00B98A63 /* InfoPlist.strings in Resources */,
 				75AF193B282EF1B600FA4BB5 /* eff-large-wordlist.txt in Resources */,
+				75804AAF2A43B5A300A9C985 /* eff-short-wordlist-1.txt in Resources */,
 				75AF193D282EF39300FA4BB5 /* eff-short-wordlist-2-0.txt in Resources */,
 				751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */,
 			);

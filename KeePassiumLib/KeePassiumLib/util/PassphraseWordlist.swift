@@ -10,14 +10,23 @@ import Foundation
 
 public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConvertible {
     case effLarge = 0
-    case effShort = 1
+    case effShort1 = 1
+    case effShort2 = 2
     
     public var description: String {
         switch self {
         case .effLarge:
             return LString.PasswordGenerator.Wordlist.effLargeWordlistTitle
-        case .effShort:
-            return LString.PasswordGenerator.Wordlist.effShortWordlistTitle
+        case .effShort1:
+            return String.localizedStringWithFormat(
+                LString.PasswordGenerator.Wordlist.effShortWordlistTitleTemplate,
+                1
+            )
+        case .effShort2:
+            return String.localizedStringWithFormat(
+                LString.PasswordGenerator.Wordlist.effShortWordlistTitleTemplate,
+                2
+            )
         }
     }
     
@@ -25,7 +34,9 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
         switch self {
         case .effLarge:
             return "eff-large-wordlist.txt"
-        case .effShort:
+        case .effShort1:
+            return "eff-short-wordlist-1.txt"
+        case .effShort2:
             return "eff-short-wordlist-2-0.txt"
         }
     }
@@ -34,7 +45,9 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
         switch self {
         case .effLarge:
             return URL(string: "https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt")!
-        case .effShort:
+        case .effShort1:
+            return URL(string: "https://www.eff.org/files/2016/09/08/eff_short_wordlist_1.txt")!
+        case .effShort2:
             return URL(string: "https://www.eff.org/files/2016/09/08/eff_short_wordlist_2_0.txt")!
         }
     }
@@ -77,10 +90,10 @@ extension LString.PasswordGenerator {
             value: "EFF Large Wordlist (7776 words)",
             comment: "Name of a wordlist for passphrase generator. `EFF` is an organization name."
         )
-        public static let effShortWordlistTitle = NSLocalizedString(
+        public static let effShortWordlistTitleTemplate = NSLocalizedString(
             "[PasswordGenerator/Wordlist/EFFShort/title]",
             bundle: Bundle.framework,
-            value: "EFF Short Wordlist (1296 words)",
+            value: "EFF Short Wordlist #%d (1296 words)",
             comment: "Name of a wordlist for passphrase generator. `EFF` is an organization name."
         )
     }
