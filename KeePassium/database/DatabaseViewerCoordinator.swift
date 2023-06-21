@@ -690,13 +690,6 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         result.canMoveItem = true
         return result
     }
-
-    func getAnnouncements(for group: Group, in viewController: GroupViewerVC) -> [AnnouncementItem] {
-        guard group.isRoot else {
-            return []
-        }
-        return announcements
-    }
 }
 
 extension DatabaseViewerCoordinator: ProgressViewHost {
@@ -906,7 +899,7 @@ extension DatabaseViewerCoordinator {
         {
             announcements.append(donationAnnouncement)
         }
-        rootGroupViewer.refreshAnnouncements()
+        rootGroupViewer.announcements = announcements
     }
     
     private func shouldOfferAppLockSetup() -> Bool {
@@ -948,10 +941,10 @@ extension DatabaseViewerCoordinator {
             body: LString.databaseIsFallbackCopy,
             actionTitle: originalRef.needsReinstatement ? LString.actionReAddFile : nil,
             image: .symbol(.iCloudSlash),
-            onDidPressAction: { [weak self, weak viewController] _ in
+            onDidPressAction: { [weak self] _ in
                 guard let self = self else { return }
                 self.delegate?.didPressReaddDatabase(in: self)
-                viewController?.refreshAnnouncements()
+                self.updateAnnouncements()
             }
         )
     }
@@ -963,10 +956,7 @@ extension DatabaseViewerCoordinator {
             title: nil,
             body: LString.databaseIsReadOnly,
             actionTitle: nil,
-            image: nil,
-            onDidPressAction: { [weak viewController] _ in
-                viewController?.refreshAnnouncements()
-            }
+            image: nil
         )
     }
     
@@ -992,13 +982,13 @@ extension DatabaseViewerCoordinator {
             body: texts.0,
             actionTitle: texts.1,
             image: .symbol(.heart)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal),
-            onDidPressAction: { [weak self, weak viewController] _ in
+            onDidPressAction: { [weak self] _ in
                 self?.showTipBox()
-                viewController?.refreshAnnouncements()
+                self?.updateAnnouncements()
             },
-            onDidPressClose: { [weak viewController] _ in
+            onDidPressClose: { [weak self] _ in
                 TipBox.registerTipBoxSeen()
-                viewController?.refreshAnnouncements()
+                self?.updateAnnouncements()
             }
         )
         return announcement

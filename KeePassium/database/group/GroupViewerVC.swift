@@ -65,8 +65,6 @@ protocol GroupViewerDelegate: AnyObject {
 
     func getActionPermissions(for group: Group) -> DatabaseItem.ActionPermissions
     func getActionPermissions(for entry: Entry) -> DatabaseItem.ActionPermissions
-    
-    func getAnnouncements(for group: Group, in viewController: GroupViewerVC) -> [AnnouncementItem]
 }
 
 final class GroupViewerVC:
@@ -106,7 +104,12 @@ final class GroupViewerVC:
     
     private var actionPermissions = DatabaseItem.ActionPermissions()
     
-    private var announcements = [AnnouncementItem]()
+    internal var announcements = [AnnouncementItem]() {
+        didSet {
+            guard isViewLoaded else { return }
+            tableView.reloadSections([0], with: .automatic)
+        }
+    }
     
     private var isActivateSearch: Bool = false
     private var searchHelper = SearchHelper()
@@ -225,8 +228,6 @@ final class GroupViewerVC:
         titleView.iconView.image = UIImage.kpIcon(forGroup: group)
         navigationItem.title = titleView.titleLabel.text
 
-        announcements = delegate?.getAnnouncements(for: group, in: self) ?? []
-
         actionPermissions =
             delegate?.getActionPermissions(for: group) ??
             DatabaseItem.ActionPermissions()
@@ -246,12 +247,6 @@ final class GroupViewerVC:
         
         sortOrderButton.menu = makeListSettingsMenu()
         sortOrderButton.image = .symbol(.listBullet)
-    }
-    
-    func refreshAnnouncements() {
-        guard isViewLoaded, let group = group else { return }
-        announcements = delegate?.getAnnouncements(for: group, in: self) ?? []
-        tableView.reloadSections([0], with: .automatic)
     }
     
     private func refreshDynamicCells() {
@@ -835,7 +830,7 @@ extension GroupViewerVC: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
         switch key {
         case .appLockEnabled, .rememberDatabaseKey:
-            refreshAnnouncements()
+            refresh()
         default:
             break
         }
