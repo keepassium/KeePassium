@@ -81,6 +81,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Sign in to OneDrive",
         comment: "Action: authenticate to OneDrive account")
+    public static let titleOneDriveRequiresSignIn = NSLocalizedString(
+        "[RemoteConnection/SignIn/OneDrive/authorizationRequried]",
+        bundle: Bundle.framework,
+        value: "OneDrive needs you to sign in again.",
+        comment: "Error description: the user should manually sign in to their OneDrive account")
     
     public static let titleOneDriveFolderFiles = NSLocalizedString(
         "[RemoteConnection/OneDrive/Folder/files]",

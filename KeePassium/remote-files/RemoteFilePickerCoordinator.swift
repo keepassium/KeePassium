@@ -24,6 +24,7 @@ final class RemoteFilePickerCoordinator: Coordinator {
     
     private let router: NavigationRouter
     private let connectionTypePicker: ConnectionTypePickerVC
+    private var oldRef: URLReference?
     
     private struct OneDriveAccount {
         var driveInfo: OneDriveDriveInfo
@@ -40,11 +41,10 @@ final class RemoteFilePickerCoordinator: Coordinator {
     }
     private var oneDriveAccount: OneDriveAccount?
 
-    init(connectionType: RemoteConnectionType?, router: NavigationRouter) {
+    init(oldRef: URLReference?, router: NavigationRouter) {
         self.router = router
-
+        self.oldRef = oldRef
         connectionTypePicker = ConnectionTypePickerVC.make()
-        connectionTypePicker.selectedValue = nil 
         connectionTypePicker.delegate = self
     }
     
@@ -56,11 +56,28 @@ final class RemoteFilePickerCoordinator: Coordinator {
     func start() {
         setupDismissButton()
         startObservingPremiumStatus(#selector(premiumStatusDidChange))
-        router.push(connectionTypePicker, animated: true, onPop: { [weak self] in
+
+        let connectionType: RemoteConnectionType?
+        switch oldRef?.fileProvider {
+        case .some(.keepassiumWebDAV):
+            connectionType = .webdav
+        case .some(.keepassiumOneDrive):
+            connectionType = .oneDrive
+        default:
+            connectionType = nil
+        }
+
+        let animated = (connectionType == nil) 
+        router.push(connectionTypePicker, animated: animated, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
+        if let connectionType {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [self] in
+                didSelect(connectionType: connectionType, in: connectionTypePicker)
+            }
+        }
     }
     
     private func setupDismissButton() {
@@ -124,6 +141,7 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
     }
     
     func didSelect(connectionType: RemoteConnectionType, in viewController: ConnectionTypePickerVC) {
+        
         switch connectionType {
         case .webdav:
             showSourceSelector(connectionType: connectionType)
@@ -174,7 +192,7 @@ extension RemoteFilePickerCoordinator {
             viewController.setState(isBusy: false)
             switch result {
             case .success(let token):
-                self.startAddingOneDriveFile(token: token, viewController: viewController)
+                self.onOneDriveAuthorized(token: token, viewController: viewController)
             case .failure(let oneDriveError):
                 switch oneDriveError {
                 case .cancelledByUser: 
@@ -188,7 +206,7 @@ extension RemoteFilePickerCoordinator {
 }
 
 extension RemoteFilePickerCoordinator {
-    private func startAddingOneDriveFile(token: OAuthToken, viewController: ConnectionTypePickerVC) {
+    private func onOneDriveAuthorized(token: OAuthToken, viewController: ConnectionTypePickerVC) {
         viewController.setState(isBusy: true)
         OneDriveManager.shared.getDriveInfo(parent: nil, freshToken: token) {
             [weak self, weak viewController] result in
@@ -200,21 +218,65 @@ extension RemoteFilePickerCoordinator {
                     driveInfo: driveInfo,
                     token: token
                 )
-                if driveInfo.type == .personal {
-                    self.showOneDriveWelcomeFolder(presenter: viewController)
-                } else {
-                    self.performPremiumActionOrOfferUpgrade(
-                        for: .canUseBusinessClouds,
-                        allowBypass: true,
-                        bypassTitle: LString.actionIgnoreAndContinue,
-                        in: viewController
-                    ) { [weak self, weak presenter = viewController] in
-                        guard let self = self, let presenter = presenter else { return }
-                        self.showOneDriveWelcomeFolder(presenter: presenter)
-                    }
-                }
+                onOneDriveDriveTypeAcquired(driveInfo.type, viewController: viewController)
+
             case .failure(let oneDriveError):
                 viewController.showErrorAlert(oneDriveError)
+            }
+        }
+    }
+    
+    private func onOneDriveDriveTypeAcquired(
+        _ driveType: OneDriveDriveInfo.DriveType,
+        viewController: ConnectionTypePickerVC
+    ) {
+        if let oldRef,
+           let url = oldRef.url,
+           oldRef.fileProvider == .keepassiumOneDrive
+        {
+            maybeSelectOneDriveFile(url, onFailure: { [weak self, weak viewController] in
+                guard let self, let viewController else { return }
+                self.oldRef = nil
+                self.onOneDriveDriveTypeAcquired(driveType, viewController: viewController)
+            })
+            return
+        }
+        
+        if driveType == .personal {
+            showOneDriveWelcomeFolder(presenter: viewController)
+        } else {
+            performPremiumActionOrOfferUpgrade(
+                for: .canUseBusinessClouds,
+                allowBypass: true,
+                bypassTitle: LString.actionIgnoreAndContinue,
+                in: viewController
+            ) { [weak self, weak presenter = viewController] in
+                guard let self, let presenter else { return }
+                self.showOneDriveWelcomeFolder(presenter: presenter)
+            }
+        }
+    }
+    
+    private func maybeSelectOneDriveFile(_ fileURL: URL, onFailure: @escaping ()->Void) {
+        guard let oneDriveAccount = self.oneDriveAccount,
+              let oneDriveItemRef = OneDriveItemReference.fromURL(fileURL)
+        else {
+            onFailure()
+            return
+        }
+        OneDriveManager.shared.getItemInfo(
+            oneDriveItemRef,
+            token: oneDriveAccount.token,
+            tokenUpdater: nil
+        ) {
+            [self, onFailure] result in
+            switch result {
+            case .success(let oneDriveFileItem):
+                Diag.info("Old file reference reinstated successfully")
+                didSelectOneDriveFile(oneDriveFileItem, account: oneDriveAccount)
+            case .failure(let oneDriveError):
+                Diag.debug("Failed to reinstate old file reference [message: \(oneDriveError.localizedDescription)]")
+                onFailure()
             }
         }
     }

@@ -30,7 +30,7 @@ protocol DatabaseViewerCoordinatorDelegate: AnyObject {
     
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
     
-    func didPressReaddDatabase(in coordinator: DatabaseViewerCoordinator)
+    func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: DatabaseViewerCoordinator)
 }
 
 final class DatabaseViewerCoordinator: Coordinator {
@@ -936,14 +936,21 @@ extension DatabaseViewerCoordinator {
     private func makeFallbackDatabaseAnnouncement(
         for viewController: GroupViewerVC
     ) -> AnnouncementItem {
+        let actionTitle: String?
+        switch originalRef.error {
+        case .authorizationRequired(_, let recoveryAction):
+            actionTitle = recoveryAction
+        default:
+            actionTitle = nil
+        }
         return AnnouncementItem(
-            title: nil,
-            body: LString.databaseIsFallbackCopy,
-            actionTitle: originalRef.needsReinstatement ? LString.actionReAddFile : nil,
+            title: LString.databaseIsFallbackCopy,
+            body: originalRef.error?.errorDescription,
+            actionTitle: actionTitle,
             image: .symbol(.iCloudSlash),
             onDidPressAction: { [weak self] _ in
                 guard let self = self else { return }
-                self.delegate?.didPressReaddDatabase(in: self)
+                self.delegate?.didPressReinstateDatabase(originalRef, in: self)
                 self.updateAnnouncements()
             }
         )

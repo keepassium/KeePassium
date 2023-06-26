@@ -13,6 +13,7 @@ public enum OneDriveError: LocalizedError {
     case emptyResponse
     case misformattedResponse
     case cannotRefreshToken
+    case authorizationRequired
     case serverSideError(message: String)
     case general(error: Error)
     
@@ -26,6 +27,8 @@ public enum OneDriveError: LocalizedError {
             return "Unexpected server response format."
         case .cannotRefreshToken:
             return "Cannot renew access token."
+        case .authorizationRequired:
+            return LString.titleOneDriveRequiresSignIn
         case .serverSideError(let message):
             return message
         case .general(let error):
@@ -98,6 +101,7 @@ internal enum OneDriveAPI {
         static let driveType = "driveType"
         static let email = "email"
         static let error = "error"
+        static let errorSubcode = "error_subcode"
         static let errorDescription = "error_description"
         static let errorURI = "error_uri"
         static let expiresIn = "expires_in"
@@ -113,6 +117,7 @@ internal enum OneDriveAPI {
         static let refreshToken = "refresh_token"
         static let remoteItem = "remoteItem"
         static let size = "size"
+        static let suberror = "suberror"
         static let uploadUrl = "uploadUrl"
         static let user = "user"
         static let value = "value"
@@ -174,9 +179,10 @@ extension OneDriveManager {
             return .failure(.emptyResponse)
         }
 
-        if let serverMessage = getServerErrorMessage(from: json) {
-            Diag.error("OneDrive request failed: server-side error [operation: \(operation), message: \(serverMessage)]")
-            return .failure(.serverSideError(message: serverMessage ))
+        
+        if let serverError = getServerError(from: json) {
+            Diag.error("OneDrive request failed: server-side error [operation: \(operation), message: \(serverError.localizedDescription)]")
+            return .failure(serverError)
         }
         return .success(json)
     }
@@ -196,29 +202,28 @@ extension OneDriveManager {
         }
     }
     
-    private func getServerErrorMessage(from json: [String: Any]) -> String? {
-        guard let errorObject = json[OneDriveAPI.Keys.error] else { 
+    private func getServerError(from json: [String: Any]) -> OneDriveError? {
+        guard let error = json[OneDriveAPI.Keys.error] else { 
             return nil
         }
-        
-        let errorMessage: String?
-        if let errorDict = errorObject as? [String: Any] {
-            errorMessage = errorDict[OneDriveAPI.Keys.message] as? String
-        } else {
-            errorMessage = String(describing: errorObject)
+        let errorDetails = json.description
+        Diag.error(errorDetails)
+        if let errorDict = error as? [String: Any] {
+            let message = (errorDict[OneDriveAPI.Keys.message] as? String) ?? "UnknownError"
+            return OneDriveError.serverSideError(message: message)
         }
         
-        var errorDetails = [String]()
-        errorDetails.append(errorMessage ?? "")
-        if let errorDescription = json[OneDriveAPI.Keys.errorDescription] as? String {
-            errorDetails.append(errorDescription)
+        let errorKind = (error as? String) ?? "OneDriveError"
+        let suberrorKind = json[OneDriveAPI.Keys.suberror] as? String
+        switch (errorKind, suberrorKind) {
+        case ("invalid_grant", "token_expired"):
+            Diag.warning("Authorization token expired")
+            return .authorizationRequired
+        default:
+            let errorDescription = (json[OneDriveAPI.Keys.errorDescription] as?  String) ?? errorKind
+            Diag.warning("Server-side OneDrive error [message: \(errorDescription)]")
+            return .serverSideError(message: errorDescription)
         }
-        if let errorURI = json[OneDriveAPI.Keys.errorURI] as? String {
-            errorDetails.append(errorURI)
-        }
-        Diag.error(errorDetails.joined(separator: "\n"))
-
-        return errorMessage
     }
 }
 
@@ -276,10 +281,22 @@ extension OneDriveManager {
                     return
                 }
                 
-                if let errorDescItem = queryItems.first(where: { $0.name == OneDriveAPI.Keys.errorDescription}),
-                   let errorDescription = errorDescItem.value?
-                        .removingPercentEncoding?
-                        .replacingOccurrences(of: "+", with: " ")
+                let error = queryItems.getValue(name: OneDriveAPI.Keys.error)
+                let errorSubcode = queryItems.getValue(name: OneDriveAPI.Keys.errorSubcode)
+                switch (error, errorSubcode) {
+                case ("access_denied", "cancel"):
+                    completionQueue.addOperation {
+                        Diag.error("Access denied, authentication cancelled")
+                        completion(.failure(.cancelledByUser))
+                    }
+                    return
+                default:
+                    break
+                }
+                
+                if let errorDescription = queryItems.getValue(name: OneDriveAPI.Keys.errorDescription)?
+                    .removingPercentEncoding?
+                    .replacingOccurrences(of: "+", with: " ")
                 {
                     completionQueue.addOperation {
                         Diag.error("Authentication failed: \(errorDescription)")
@@ -287,7 +304,8 @@ extension OneDriveManager {
                     }
                     return
                 }
-                guard let codeItem = urlComponents.queryItems?.first(where: { $0.name == OneDriveAPI.Keys.code }),
+                                          
+                guard let codeItem = queryItems[OneDriveAPI.Keys.code],
                       let authCodeString = codeItem.value
                 else {
                     completionQueue.addOperation {
@@ -354,7 +372,7 @@ extension OneDriveManager {
             )
             switch result {
             case .success(let json):
-                if let token = self.parseTokenResponse(json: json, refreshToken: refreshToken) {
+                if let token = self.parseTokenResponse(json: json, currentRefreshToken: refreshToken) {
                     Diag.debug("OAuth token acquired successfully [operation: \(operation)]")
                     completionQueue.addOperation {
                         completion(.success(token))
@@ -373,7 +391,7 @@ extension OneDriveManager {
         dataTask.resume()
     }
     
-    private func parseTokenResponse(json: [String: Any], refreshToken: String?) -> OAuthToken? {
+    private func parseTokenResponse(json: [String: Any], currentRefreshToken: String?) -> OAuthToken? {
         guard let accessToken = json[OneDriveAPI.Keys.accessToken] as? String else {
             Diag.error("Failed to parse token response: access_token missing")
             return nil
@@ -382,7 +400,8 @@ extension OneDriveManager {
             Diag.error("Failed to parse token response: expires_in missing")
             return nil
         }
-        guard let refreshToken = (refreshToken ?? json[OneDriveAPI.Keys.refreshToken] as? String) else {
+        let newRefreshToken = json[OneDriveAPI.Keys.refreshToken] as? String
+        guard let refreshToken = (newRefreshToken ?? currentRefreshToken) else {
             Diag.error("Failed to parse token response: refresh_token missing")
             return nil
         }
@@ -893,11 +912,11 @@ extension OneDriveManager {
             }
             if response?.mimeType == "application/json",
                let json = self.parseJSONDict(data: data),
-               let serverErrorMessage = self.getServerErrorMessage(from: json)
+               let serverError = self.getServerError(from: json)
             {
                 completionQueue.addOperation {
-                    Diag.error("Failed to download file, server returned error [message: \(serverErrorMessage)]")
-                    completion(.failure(.serverSideError(message: serverErrorMessage)))
+                    Diag.error("Failed to download file, server returned error [message: \(serverError.localizedDescription)]")
+                    completion(.failure(serverError))
                 }
                 return
             }

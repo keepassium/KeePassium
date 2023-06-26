@@ -94,7 +94,16 @@ public final class OneDriveDataSource: DataSource {
                         FileInfo(fileName: remoteFileItem.name, isInTrash: false)
                     completion(.success(fileInfoOrDummy))
                 case .failure(let oneDriveError):
-                    completion(.failure(.systemError(oneDriveError)))
+                    switch oneDriveError {
+                    case .authorizationRequired:
+                        let message = oneDriveError.localizedDescription
+                        completion(.failure(.authorizationRequired(
+                            message: message,
+                            recoveryAction: LString.actionSignInToOneDrive
+                        )))
+                    default:
+                        completion(.failure(.systemError(oneDriveError)))
+                    }
                 }
             }
         )

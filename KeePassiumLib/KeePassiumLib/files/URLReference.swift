@@ -111,29 +111,25 @@ public class URLReference:
     public private(set) var error: FileAccessError?
     public var hasError: Bool { return error != nil}
     
+    
     public var needsReinstatement: Bool {
-        guard location == .external,
-              let underlyingError = error?.underlyingError,
-              let nsError = underlyingError as NSError?
-        else {
-            return false
+        guard let error else { return false }
+        guard !location.isInternal else { return false }
+
+        switch error {
+        case FileAccessError.authorizationRequired(_, _):
+            return true
+        default:
+            break
         }
         
-        switch nsError.domain {
-        case NSCocoaErrorDomain:
-            switch CocoaError.Code.init(rawValue: nsError.code) {
-            case .fileNoSuchFile:
-                return true
-            case .fileReadNoPermission:
-                return true
-            case .fileReadCorruptFile:
-                return true
-            default:
-                return false
-            }
+        guard let nsError = error.underlyingError as NSError? else {
+            return false
+        }
+        switch (nsError.domain, nsError.code) {
         #if !targetEnvironment(macCatalyst)
-        case NSFileProviderErrorDomain:
-            return nsError.code == NSFileProviderError.noSuchItem.rawValue
+        case (NSFileProviderErrorDomain, NSFileProviderError.noSuchItem.rawValue):
+            return true
         #endif
         default:
             return false
@@ -368,7 +364,11 @@ public class URLReference:
                         callback(.success(url))
                     }
                 } catch {
-                    let fileAccessError = FileAccessError.make(from: error, fileProvider: fileProvider)
+                    let fileAccessError = FileAccessError.make(
+                        from: error,
+                        fileName: self.visibleFileName,
+                        fileProvider: fileProvider
+                    )
                     self.error = fileAccessError
                     callbackQueue.addOperation {
                         callback(.failure(fileAccessError))

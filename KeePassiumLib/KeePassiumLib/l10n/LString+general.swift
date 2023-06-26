@@ -182,7 +182,13 @@ extension LString {
         value: "Learn more…",
         comment: "Action/button to view more help/info about some topic"
     )
-    
+    public static let actionFixThis = NSLocalizedString(
+        "[Generic] Fix this",
+        bundle: Bundle.framework,
+        value: "Fix this",
+        comment: "Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message."
+    )
+
     public static let actionDeleteFile = NSLocalizedString(
         "[Generic/File] Delete",
         bundle: Bundle.framework,

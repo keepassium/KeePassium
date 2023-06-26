@@ -13,7 +13,7 @@ protocol EntryFinderCoordinatorDelegate: AnyObject {
     func didLeaveDatabase(in coordinator: EntryFinderCoordinator)
     func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator)
     
-    func didPressReaddDatabase(in coordinator: EntryFinderCoordinator)
+    func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: EntryFinderCoordinator)
 }
 
 final class EntryFinderCoordinator: Coordinator {
@@ -195,14 +195,21 @@ extension EntryFinderCoordinator {
     private func makeFallbackDatabaseAnnouncement(
         for viewController: EntryFinderVC
     ) -> AnnouncementItem {
+        let actionTitle: String?
+        switch originalRef.error {
+        case .authorizationRequired(_, let recoveryAction):
+            actionTitle = recoveryAction
+        default:
+            actionTitle = nil
+        }
         let announcement = AnnouncementItem(
-            title: nil,
-            body: LString.databaseIsFallbackCopy,
-            actionTitle: originalRef.needsReinstatement ? LString.actionReAddFile : nil,
+            title: LString.databaseIsFallbackCopy,
+            body: originalRef.error?.errorDescription,
+            actionTitle: actionTitle,
             image: .symbol(.iCloudSlash),
             onDidPressAction: { [weak self, weak viewController] _ in
                 guard let self = self else { return }
-                self.delegate?.didPressReaddDatabase(in: self)
+                self.delegate?.didPressReinstateDatabase(originalRef, in: self)
                 viewController?.refreshAnnouncements()
             }
         )

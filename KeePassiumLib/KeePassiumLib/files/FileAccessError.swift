@@ -23,6 +23,8 @@ public enum FileAccessError: LocalizedError {
     
     case networkAccessDenied
 
+    case authorizationRequired(message: String, recoveryAction: String)
+    
     case serverSideError(message: String)
     
     case networkError(message: String)
@@ -130,6 +132,8 @@ public enum FileAccessError: LocalizedError {
                 bundle: Bundle.framework,
                 value: "Network access is blocked by the settings.",
                 comment: "Error message: network access is forbidden by system or app settings.")
+        case .authorizationRequired(let message, _):
+            return message
         case .serverSideError(let message):
             return message
         case .networkError(let message):
@@ -144,10 +148,19 @@ public enum FileAccessError: LocalizedError {
     }
     
     public var recoverySuggestion: String? {
-        return nil
+        switch self {
+        case .authorizationRequired(_, let recoveryAction):
+            return recoveryAction
+        default:
+            return nil
+        }
     }
     
-    public static func make(from originalError: Error, fileProvider: FileProvider?) -> FileAccessError {
+    public static func make(
+        from originalError: Error,
+        fileName: String,
+        fileProvider: FileProvider?
+    ) -> FileAccessError {
         let nsError = originalError as NSError
         Diag.error("""
             Failed to access the file \
@@ -167,11 +180,22 @@ public enum FileAccessError: LocalizedError {
             } else {
                 return .systemError(originalError)
             }
-
+        
+        case (NSCocoaErrorDomain, CocoaError.Code.fileReadNoPermission.rawValue),
+             (NSCocoaErrorDomain, CocoaError.Code.fileNoSuchFile.rawValue),
+             (NSCocoaErrorDomain, CocoaError.Code.fileReadCorruptFile.rawValue):
+            let message = String.localizedStringWithFormat(
+                LString.Error.filePermissionRequiredDescriptionTemplate, fileName
+            )
+            return .authorizationRequired(
+                message: message,
+                recoveryAction: LString.Error.actionReAddFileToAllowAccess
+            )
+        
         case ("NSFileProviderInternalErrorDomain", 0), 
-             ("NSFileProviderErrorDomain", -2001): 
+             (NSFileProviderErrorDomain, -2001): 
             return .fileProviderNotFound(fileProvider: fileProvider)
-            
+
         default:
             return .systemError(originalError)
         }
@@ -200,4 +224,14 @@ extension LString.Error {
         value: "Use the Export option to save file to another location.",
         comment: "Suggestion for error recovery"
     )
+    fileprivate static let filePermissionRequiredDescriptionTemplate = NSLocalizedString(
+        "[FileAccessError/PermissionRequired/reason]",
+        bundle: Bundle.framework,
+        value: "KeePassium needs your permission to access '%@'.",
+        comment: "Error message for file with an expired access permission [fileName: String].")
+    fileprivate static let actionReAddFileToAllowAccess = NSLocalizedString(
+        "[FileAccessError/PermissionRequired/recoveryAction]",
+        bundle: Bundle.framework,
+        value: "Select the file again to allow access",
+        comment: "Action/button for error recovery")
 }

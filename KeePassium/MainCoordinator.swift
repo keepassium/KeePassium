@@ -514,7 +514,7 @@ extension MainCoordinator {
         
     func openDatabase() {
         guard let dbViewer = databaseViewerCoordinator else {
-            databasePickerCoordinator.maybeAddExistingDatabase(presenter: rootSplitVC)
+            databasePickerCoordinator.maybeAddExternalDatabase(presenter: rootSplitVC)
             return
         }
         dbViewer.closeDatabase(
@@ -523,7 +523,7 @@ extension MainCoordinator {
             animated: true,
             completion: { [weak self] in
                 guard let self = self else { return }
-                self.databasePickerCoordinator.maybeAddExistingDatabase(presenter: self.rootSplitVC)
+                self.databasePickerCoordinator.maybeAddExternalDatabase(presenter: self.rootSplitVC)
             }
         )
     }
@@ -536,6 +536,18 @@ extension MainCoordinator {
             animated: true,
             completion: nil
         )
+    }
+    
+    private func reinstateDatabase(_ fileRef: URLReference) {
+        switch fileRef.location {
+        case .external:
+            databasePickerCoordinator.addExternalDatabase(fileRef, presenter: getPresenterForModals())
+        case .remote:
+            databasePickerCoordinator.addRemoteDatabase(fileRef, presenter: getPresenterForModals())
+        case .internalBackup, .internalDocuments, .internalInbox:
+            assertionFailure("Should not be here. Can reinstate only external or remote files.")
+            return
+        }
     }
 }
 
@@ -794,7 +806,7 @@ extension MainCoordinator: OnboardingCoordinatorDelegate {
     func didPressAddExistingDatabase(in coordinator: OnboardingCoordinator) {
         coordinator.dismiss(completion: { [weak self] in
             guard let self = self else { return }
-            self.databasePickerCoordinator.addExistingDatabase(
+            self.databasePickerCoordinator.addExternalDatabase(
                 presenter: self.rootSplitVC
             )
         })
@@ -914,11 +926,10 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
     ) {
         if rootSplitVC.isCollapsed {
             primaryRouter.pop(animated: true, completion: { [weak self] in
-                guard let self = self else { return }
-                self.databasePickerCoordinator.addExistingDatabase(presenter: self.rootSplitVC)
+                self?.reinstateDatabase(fileRef)
             })
         } else {
-            databasePickerCoordinator.addExistingDatabase(presenter: rootSplitVC)
+            reinstateDatabase(fileRef)
         }
     }
     
@@ -973,16 +984,13 @@ extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
         }
     }
     
-    func didPressReaddDatabase(in coordinator: DatabaseViewerCoordinator) {
+    func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: DatabaseViewerCoordinator) {
         databaseViewerCoordinator?.closeDatabase(
             shouldLock: false,
             reason: .userRequest,
             animated: true
         ) { [weak self] in
-            guard let self = self else { return }
-            self.databasePickerCoordinator.addExistingDatabase(
-                presenter: self.rootSplitVC
-            )
+            self?.reinstateDatabase(fileRef)
         }
     }
 }

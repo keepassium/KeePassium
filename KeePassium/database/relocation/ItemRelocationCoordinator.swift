@@ -96,6 +96,20 @@ class ItemRelocationCoordinator: Coordinator {
         diagnosticsViewerCoordinator.start()
         router.present(modalRouter, animated: true, completion: nil)
     }
+
+    private func reinstateDatabase(_ fileRef: URLReference) {
+        let presenter = router.navigationController
+        switch fileRef.location {
+        case .external:
+            databasePickerCoordinator?.addExternalDatabase(fileRef, presenter: presenter)
+        case .remote:
+            databasePickerCoordinator?.addRemoteDatabase(fileRef, presenter: presenter)
+        case .internalBackup, .internalDocuments, .internalInbox:
+            assertionFailure("Should not be here. Can reinstate only external or remote files.")
+            return
+        }
+    }
+
 }
 
 extension ItemRelocationCoordinator {
@@ -524,10 +538,7 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
         }
         
         router.pop(animated: true, completion: { [weak self] in
-            guard let self = self else { return }
-            databasePickerCoordinator.addExistingDatabase(
-                presenter: self.router.navigationController
-            )
+            self?.reinstateDatabase(fileRef)
         })
     }
     

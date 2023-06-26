@@ -173,9 +173,9 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         return accessibleDatabaseRefs.count > 0
     }
     
-    public func maybeAddExistingDatabase(presenter: UIViewController) {
+    public func maybeAddExternalDatabase(presenter: UIViewController) {
         guard needsPremiumToAddDatabase() else {
-            addExistingDatabase(presenter: presenter)
+            addExternalDatabase(presenter: presenter)
             return
         }
 
@@ -186,16 +186,17 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
             else {
                 return
             }
-            self.addExistingDatabase(presenter: presenter)
+            self.addExternalDatabase(presenter: presenter)
         }
     }
     
-    public func addExistingDatabase(presenter: UIViewController) {
+    public func addExternalDatabase(_ ref: URLReference? = nil, presenter: UIViewController) {
         let documentPicker = UIDocumentPickerViewController(
             forOpeningContentTypes: FileType.databaseUTIs
         )
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = .pageSheet
+        documentPicker.directoryURL = ref?.url?.deletingLastPathComponent()
         presenter.present(documentPicker, animated: true, completion: nil)
     }
     
@@ -222,7 +223,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         }
     }
     
-    public func addRemoteDatabase(connectionType: RemoteConnectionType?=nil, presenter: UIViewController) {
+    public func addRemoteDatabase(_ oldRef: URLReference? = nil, presenter: UIViewController) {
         guard Settings.current.isNetworkAccessAllowed else {
             Diag.error("Network access denied")
             presenter.showErrorAlert(FileAccessError.networkAccessDenied)
@@ -230,7 +231,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
         }
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let connectionCreatorCoordinator = RemoteFilePickerCoordinator(
-            connectionType: connectionType,
+            oldRef: oldRef,
             router: modalRouter
         )
         connectionCreatorCoordinator.delegate = self
@@ -411,7 +412,7 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
     }
     
     func didPressAddExistingDatabase(in viewController: DatabasePickerVC) {
-        maybeAddExistingDatabase(presenter: viewController)
+        maybeAddExternalDatabase(presenter: viewController)
     }
     
     func didPressAddRemoteDatabase(in viewController: DatabasePickerVC) {

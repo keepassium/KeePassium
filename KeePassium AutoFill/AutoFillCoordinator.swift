@@ -279,6 +279,19 @@ extension AutoFillCoordinator {
         self.databaseUnlockerCoordinator = databaseUnlockerCoordinator
     }
     
+    private func reinstateDatabase(_ fileRef: URLReference) {
+        let presenter = router.navigationController
+        switch fileRef.location {
+        case .external:
+            databasePickerCoordinator.addExternalDatabase(fileRef, presenter: presenter)
+        case .remote:
+            databasePickerCoordinator.addRemoteDatabase(fileRef, presenter: presenter)
+        case .internalInbox, .internalBackup, .internalDocuments:
+            assertionFailure("Should not be here. Can reinstate only external or remote files.")
+            return
+        }
+    }
+    
     private func showDatabaseViewer(
         _ fileRef: URLReference,
         databaseFile: DatabaseFile,
@@ -607,7 +620,7 @@ extension AutoFillCoordinator: FirstSetupDelegate {
     func didPressAddDatabase(in firstSetup: FirstSetupVC, at popoverAnchor: PopoverAnchor) {
         watchdog.restart()
         firstSetup.dismiss(animated: true, completion: nil)
-        databasePickerCoordinator.addExistingDatabase(presenter: router.navigationController)
+        databasePickerCoordinator.addExternalDatabase(presenter: router.navigationController)
     }
     
     func didPressSkip(in firstSetup: FirstSetupVC) {
@@ -689,10 +702,7 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         in coordinator: DatabaseUnlockerCoordinator
     ) {
         router.pop(animated: true, completion: { [weak self] in
-            guard let self = self else { return }
-            self.databasePickerCoordinator.addExistingDatabase(
-                presenter: self.router.navigationController
-            )
+            self?.reinstateDatabase(fileRef)
         })
     }
     
@@ -715,12 +725,9 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
         returnCredentials(entry: entry)
     }
     
-    func didPressReaddDatabase(in coordinator: EntryFinderCoordinator) {
+    func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: EntryFinderCoordinator) {
         coordinator.stop(animated: true) { [weak self] in
-            guard let self = self else { return }
-            self.databasePickerCoordinator.addExistingDatabase(
-                presenter: self.router.navigationController
-            )
+            self?.reinstateDatabase(fileRef)
         }
     }
 }
