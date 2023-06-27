@@ -30,8 +30,10 @@ protocol DatabaseUnlockerDelegate: AnyObject {
 }
 
 final class DatabaseUnlockerVC: UIViewController, Refreshable {    
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var databaseLocationIconImage: UIImageView!
     @IBOutlet private weak var databaseFileNameLabel: UILabel!
+    @IBOutlet private weak var errorMessageView: ErrorMessageView!
     @IBOutlet private weak var inputPanel: UIView!
     @IBOutlet private weak var fakeUserNameField: UITextField!
     @IBOutlet private weak var passwordField: ProtectedTextField!
@@ -39,9 +41,8 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     @IBOutlet private weak var hardwareKeyField: ValidatingTextField!
     @IBOutlet private weak var unlockButton: UIButton!
     @IBOutlet private weak var masterKeyKnownLabel: UILabel!
-    @IBOutlet weak var lockDatabaseButton: UIButton!
-    @IBOutlet private weak var lockedOnTimeoutLabel: UILabel!
-    @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
+    @IBOutlet private weak var lockDatabaseButton: UIButton!
+    @IBOutlet private weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     
     weak var delegate: DatabaseUnlockerDelegate?
     var shouldAutofocus = false
@@ -84,7 +85,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             self?.view.layoutIfNeeded()
         }
         
-        lockedOnTimeoutLabel.isHidden = true
+        errorMessageView.isHidden = true
         
         refresh()
         
@@ -146,62 +147,50 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         passwordField.text = ""
     }
     
-    @discardableResult
     func showErrorMessage(
         _ text: String,
         reason: String?=nil,
         haptics: HapticFeedback.Kind?=nil,
-        action: ToastAction?=nil
-    ) -> UIView {
+        action: ErrorMessageView.Action?=nil
+    ) {
+        guard isViewLoaded else { return }
         let text = [text, reason]
-            .compactMap { return $0 } 
+            .compactMap { $0 } 
             .joined(separator: "\n")
         Diag.error(text)
         
-        var toastAction = action
-        if toastAction == nil {
-            toastAction = ToastAction(
-                title: LString.actionShowDetails,
-                handler: { [weak self] in
-                    self?.didPressErrorDetails()
-                }
-            )
+        if let haptics {
+            HapticFeedback.play(haptics)
         }
-
-        var toastStyle = ToastStyle()
-        toastStyle.iconTint = .errorMessage
-        let toastView = view.toastViewForMessage(
-            text,
-            title: nil,
-            image: .symbol(.exclamationMarkTriangle),
-            action: toastAction,
-            style: toastStyle
-        )
-        view.showToast(toastView, duration: 5, position: .top, action: toastAction, completion: nil)
-        StoreReviewSuggester.registerEvent(.trouble)
+        errorMessageView.message = text
+        errorMessageView.action = action
+        errorMessageView.show(animated: true)
+        UIAccessibility.post(notification: .screenChanged, argument: errorMessageView)
         
-        return toastView
+        StoreReviewSuggester.registerEvent(.trouble)
+        scrollView.setContentOffset(.zero, animated: true)
     }
     
     func hideErrorMessage(animated: Bool) {
-        view.hideToast()
+        guard isViewLoaded else { return }
+        
+        errorMessageView.hide(animated: animated)
+        UIAccessibility.post(notification: .screenChanged, argument: self.view)
     }
 
     func showMasterKeyInvalid(message: String) {
-        HapticFeedback.play(.wrongPassword)
-        let toast = showErrorMessage(
+        showErrorMessage(
             message,
             haptics: .wrongPassword,
-            action: ToastAction(
+            action: .init(
                 title: LString.forgotPasswordQuestion,
-                icon: .symbol(.externalLink)?.applyingSymbolConfiguration(.init(scale: .small)),
                 isLink: true,
                 handler: { [weak self] in
                     self?.showInvalidPasswordHelp()
                 }
             )
         )
-        toast.shake()
+        errorMessageView.shake()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             self?.maybeFocusOnPassword()

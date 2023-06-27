@@ -358,6 +358,12 @@
 		758544652351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
 		758544662351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
 		758544672351FE8D000D5E5E /* UIFont+monospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+monospace.swift */; };
+		758622772A4B798500D50B68 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758622762A4B798500D50B68 /* ErrorMessageView.swift */; };
+		758622782A4B798500D50B68 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758622762A4B798500D50B68 /* ErrorMessageView.swift */; };
+		758622792A4B798500D50B68 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758622762A4B798500D50B68 /* ErrorMessageView.swift */; };
+		7586227A2A4B798500D50B68 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758622762A4B798500D50B68 /* ErrorMessageView.swift */; };
+		7586227B2A4B798500D50B68 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758622762A4B798500D50B68 /* ErrorMessageView.swift */; };
+		7586227C2A4B798500D50B68 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758622762A4B798500D50B68 /* ErrorMessageView.swift */; };
 		75876B262646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */; };
 		75876B272646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */; };
 		7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */; };
@@ -2011,6 +2017,7 @@
 		7584CF0924D208FF0063B421 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
 		7584CF0B24D209000063B421 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/HardwareKeyPicker.strings; sourceTree = "<group>"; };
 		758544632351FE8D000D5E5E /* UIFont+monospace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+monospace.swift"; sourceTree = "<group>"; };
+		758622762A4B798500D50B68 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseKeyChangerCoordinator.swift; sourceTree = "<group>"; };
 		7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorCoordinator.swift; sourceTree = "<group>"; };
 		7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCopiedView.swift; sourceTree = "<group>"; };
@@ -3183,6 +3190,7 @@
 				7524E7492888B58200ECBEC8 /* TextFieldCell.swift */,
 				758FF6BE28FAE32F007DE8EB /* ButtonCell.swift */,
 				759F6A062906BA7C0089FB34 /* PremiumBadgeAccessory.swift */,
+				758622762A4B798500D50B68 /* ErrorMessageView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -4010,6 +4018,7 @@
 				7526404B284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75A94C4428441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
 				759894B824620AF6006B6709 /* FileExportHelper.swift in Sources */,
+				758622782A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				758BADB624B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
@@ -4183,6 +4192,7 @@
 				75EC7C04262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */,
 				759894BC24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				756FF64420BAB20300FF890B /* UIColor+namedColors.swift in Sources */,
+				758622772A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				757E78E32824150B009017BF /* PasswordGeneratorVC.swift in Sources */,
 				75D76131262CC19700B1DE7F /* MainCoordinator.swift in Sources */,
 				75BE05EB25DA86F200B34CC0 /* DiagnosticsViewerCoordinator.swift in Sources */,
@@ -4384,6 +4394,7 @@
 				75EC7C05262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75B38C0E233E5B7C006BDEFC /* UIColor+namedColors.swift in Sources */,
 				75BE05ED25DA86F200B34CC0 /* DiagnosticsViewerCoordinator.swift in Sources */,
+				758622792A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				757E78E42824150B009017BF /* PasswordGeneratorVC.swift in Sources */,
 				75D76132262CC19700B1DE7F /* MainCoordinator.swift in Sources */,
 				75B38C0F233E5B7C006BDEFC /* ViewableEntryFieldFactory.swift in Sources */,
@@ -4558,6 +4569,7 @@
 				75D075CE28B639D200F02E39 /* AboutCoordinator.swift in Sources */,
 				75D075CF28B639D200F02E39 /* KeyFilePickerVC.swift in Sources */,
 				75D075D028B639D200F02E39 /* RemoteFilePickerVC.swift in Sources */,
+				7586227B2A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				75D075D128B639D200F02E39 /* FileProvider+extensions.swift in Sources */,
 				75D075D228B639D200F02E39 /* EntryViewerCoordinator.swift in Sources */,
 				75D075D328B639D200F02E39 /* GroupChangeObserver+Notifier.swift in Sources */,
@@ -4739,6 +4751,7 @@
 				75D076E428B639F600F02E39 /* TextInput+editMenu.swift in Sources */,
 				751ABAD82915B7B6008C18DE /* DatabaseItem+ActionPermissions.swift in Sources */,
 				75D076E528B639F600F02E39 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
+				7586227C2A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				751ABAD42915B73E008C18DE /* ButtonCell.swift in Sources */,
 				75D076E628B639F600F02E39 /* FileExportHelper.swift in Sources */,
 				75D076E728B639F600F02E39 /* GradientSeparatorView.swift in Sources */,
@@ -4863,6 +4876,7 @@
 				7526404D284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75A94C4628441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
 				759894BA24620AF6006B6709 /* FileExportHelper.swift in Sources */,
+				7586227A2A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				758BADB824B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
 				75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */,

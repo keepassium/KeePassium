@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-k8-gTg" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="446"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="434"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dr0-TU-sMX" userLabel="Database Name Panel">
-                                                <rect key="frame" x="65.5" y="121" width="183.5" height="29"/>
+                                                <rect key="frame" x="65.5" y="133" width="183.5" height="29"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fp-generic-listitem" translatesAutoresizingMaskIntoConstraints="NO" id="MLZ-P0-rnn">
                                                         <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
@@ -58,19 +58,10 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G3Q-hY-M1b">
-                                                <rect key="frame" x="20" y="158" width="280" height="272"/>
+                                                <rect key="frame" x="20" y="170" width="280" height="248"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" text="Database was closed by a timer." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epu-yU-Lyg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="16"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                        <color key="textColor" name="AuxiliaryText"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <attributedString key="userComments">
-                                                            <fragment content="Notification message shown by database lock timer."/>
-                                                        </attributedString>
-                                                    </label>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3xv-vB-0Jn">
-                                                        <rect key="frame" x="0.0" y="24" width="280" height="136"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="136"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuN-tE-lAG" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -179,7 +170,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l45-hq-1lr" userLabel="Unlock">
-                                                        <rect key="frame" x="0.0" y="168" width="280" height="44"/>
+                                                        <rect key="frame" x="0.0" y="144" width="280" height="44"/>
                                                         <color key="backgroundColor" name="ActionTint"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="unlock_button"/>
                                                         <constraints>
@@ -198,7 +189,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Will use the remembered master key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3Y-ON-C19">
-                                                        <rect key="frame" x="0.0" y="220" width="280" height="16"/>
+                                                        <rect key="frame" x="0.0" y="196" width="280" height="16"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                         <color key="textColor" name="AuxiliaryText"/>
                                                         <nil key="highlightedColor"/>
@@ -207,7 +198,7 @@
                                                         </attributedString>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gji-1x-co5">
-                                                        <rect key="frame" x="0.0" y="244" width="280" height="28"/>
+                                                        <rect key="frame" x="0.0" y="220" width="280" height="28"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                         <state key="normal" title="Lock Database"/>
                                                         <connections>
@@ -217,17 +208,26 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2vz-Ao-z4Z"/>
-                                                    <constraint firstAttribute="width" priority="750" constant="280" id="XJS-1Z-GxV"/>
+                                                    <constraint firstAttribute="width" priority="250" constant="280" id="XJS-1Z-GxV"/>
                                                 </constraints>
                                             </stackView>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-UZ-NJM" customClass="ErrorMessageView" customModule="KeePassium" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="28" width="280" height="41"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="Dr0-TU-sMX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Quf-UZ-NJM" secondAttribute="bottom" constant="8" id="1pW-Ec-dcg"/>
                                             <constraint firstItem="Dr0-TU-sMX" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" constant="-3" id="Bsv-T2-67i"/>
-                                            <constraint firstItem="Dr0-TU-sMX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="topMargin" id="YNh-YO-8Gg"/>
+                                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Quf-UZ-NJM" secondAttribute="trailing" constant="8" id="Mwr-ck-As9"/>
+                                            <constraint firstItem="Quf-UZ-NJM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" constant="8" id="Olh-YC-qGI"/>
                                             <constraint firstAttribute="bottom" secondItem="G3Q-hY-M1b" secondAttribute="bottom" constant="16" id="eOd-FT-9dX"/>
                                             <constraint firstItem="G3Q-hY-M1b" firstAttribute="top" secondItem="Dr0-TU-sMX" secondAttribute="bottom" constant="8" id="gih-9n-0TA"/>
                                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Dr0-TU-sMX" secondAttribute="trailing" id="iPw-bZ-jul"/>
+                                            <constraint firstItem="Quf-UZ-NJM" firstAttribute="width" secondItem="3xv-vB-0Jn" secondAttribute="width" priority="250" id="jFg-DP-b9B"/>
                                             <constraint firstItem="Dr0-TU-sMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdl-k8-gTg" secondAttribute="leadingMargin" id="mbo-7y-lJ6"/>
+                                            <constraint firstItem="Quf-UZ-NJM" firstAttribute="top" secondItem="cdl-k8-gTg" secondAttribute="topMargin" id="x8S-7J-m3X"/>
+                                            <constraint firstItem="Quf-UZ-NJM" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" id="xY7-Me-uhc"/>
                                             <constraint firstItem="G3Q-hY-M1b" firstAttribute="centerX" secondItem="cdl-k8-gTg" secondAttribute="centerX" id="yQN-7S-jaf"/>
                                         </constraints>
                                     </view>
@@ -260,15 +260,16 @@
                     <connections>
                         <outlet property="databaseFileNameLabel" destination="LsQ-5N-nP3" id="kqF-va-O1r"/>
                         <outlet property="databaseLocationIconImage" destination="MLZ-P0-rnn" id="K9j-iw-h9N"/>
+                        <outlet property="errorMessageView" destination="Quf-UZ-NJM" id="2cj-3Z-wGF"/>
                         <outlet property="fakeUserNameField" destination="Rb4-4d-9A9" id="XjJ-LG-77d"/>
                         <outlet property="hardwareKeyField" destination="IDJ-gO-5kR" id="MLb-iC-qnt"/>
                         <outlet property="inputPanel" destination="3xv-vB-0Jn" id="yUX-DL-NZd"/>
                         <outlet property="keyFileField" destination="mYY-hP-3vH" id="89z-Ta-JMu"/>
                         <outlet property="keyboardLayoutConstraint" destination="QOA-Z2-DsV" id="kTX-kB-w8d"/>
                         <outlet property="lockDatabaseButton" destination="gji-1x-co5" id="dlm-uQ-hm3"/>
-                        <outlet property="lockedOnTimeoutLabel" destination="epu-yU-Lyg" id="3T0-0O-NWP"/>
                         <outlet property="masterKeyKnownLabel" destination="K3Y-ON-C19" id="boH-5S-KlE"/>
                         <outlet property="passwordField" destination="CuN-tE-lAG" id="7ce-ej-YEW"/>
+                        <outlet property="scrollView" destination="dnY-o0-iC1" id="tup-Yc-iGP"/>
                         <outlet property="unlockButton" destination="l45-hq-1lr" id="9Uk-Uv-jJZ"/>
                     </connections>
                 </viewController>

@@ -350,9 +350,8 @@ extension DatabaseUnlockerCoordinator {
                 error.localizedDescription,
                 reason: error.failureReason,
                 haptics: .error,
-                action: ToastAction(
+                action: .init(
                     title: error.recoverySuggestion ?? LString.actionFixThis,
-                    icon: nil,
                     handler: { [weak self] in
                         guard let self = self else { return }
                         Diag.debug("Will reinstate database")
@@ -391,9 +390,8 @@ extension DatabaseUnlockerCoordinator {
             error.localizedDescription,
             reason: error.failureReason,
             haptics: .error,
-            action: ToastAction(
+            action: .init(
                 title: error.recoverySuggestion ?? LString.actionFixThis,
-                icon: nil,
                 handler: { [weak self] in
                     guard let self = self else { return }
                     Diag.debug("Will reinstate database")
@@ -409,7 +407,7 @@ extension DatabaseUnlockerCoordinator {
             message,
             reason: nil,
             haptics: .error,
-            action: ToastAction(
+            action: .init(
                 title: LString.actionConnectToServer,
                 handler: { [weak self] in
                     guard let self = self else { return }
