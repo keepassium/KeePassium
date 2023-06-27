@@ -96,6 +96,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     
     func setDatabase(_ fileRef: URLReference) {
         databaseRef = fileRef
+        fallbackDatabaseRef = DatabaseManager.getFallbackFile(for: databaseRef)
         databaseUnlockerVC.databaseRef = fileRef
         
         guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef) else {
