@@ -155,6 +155,7 @@ public class FileKeeper {
         self.backupDirURL = _backupDirURL.standardizedFileURL
         
         deleteExpiredBackupFiles(completion: nil)
+        deleteTemporaryFiles()
     }
 
     private static func getDocumentsDirectoryURL() -> URL {
@@ -878,6 +879,17 @@ public class FileKeeper {
             includingPropertiesForKeys: nil,
             options: [])
         inboxFiles?.forEach {
+            try? fileManager.removeItem(at: $0) 
+        }
+    }
+
+    private func deleteTemporaryFiles() {
+        let fileManager = FileManager()
+        let tmpFiles = try? fileManager.contentsOfDirectory(
+            at: fileManager.temporaryDirectory,
+            includingPropertiesForKeys: nil,
+            options: [])
+        tmpFiles?.forEach {
             try? fileManager.removeItem(at: $0) 
         }
     }
