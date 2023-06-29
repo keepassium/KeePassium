@@ -244,12 +244,13 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fjp-FI-lys"/>
+                        <keyboardLayoutGuide key="keyboard" id="usj-VB-WAG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dnY-o0-iC1" firstAttribute="top" secondItem="bPc-V2-3Of" secondAttribute="top" id="8pd-ry-Bpd"/>
                             <constraint firstItem="dnY-o0-iC1" firstAttribute="leading" secondItem="bPc-V2-3Of" secondAttribute="leading" id="9v7-2t-C6p"/>
-                            <constraint firstAttribute="bottom" secondItem="dnY-o0-iC1" secondAttribute="bottom" id="QOA-Z2-DsV" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
                             <constraint firstItem="cdl-k8-gTg" firstAttribute="width" secondItem="bPc-V2-3Of" secondAttribute="width" id="bi0-93-J7q"/>
+                            <constraint firstItem="dnY-o0-iC1" firstAttribute="bottom" secondItem="usj-VB-WAG" secondAttribute="top" id="evV-Dk-Lku"/>
                             <constraint firstAttribute="trailing" secondItem="dnY-o0-iC1" secondAttribute="trailing" id="yiK-p5-v1m"/>
                         </constraints>
                     </view>
@@ -265,7 +266,6 @@
                         <outlet property="hardwareKeyField" destination="IDJ-gO-5kR" id="MLb-iC-qnt"/>
                         <outlet property="inputPanel" destination="3xv-vB-0Jn" id="yUX-DL-NZd"/>
                         <outlet property="keyFileField" destination="mYY-hP-3vH" id="89z-Ta-JMu"/>
-                        <outlet property="keyboardLayoutConstraint" destination="QOA-Z2-DsV" id="kTX-kB-w8d"/>
                         <outlet property="lockDatabaseButton" destination="gji-1x-co5" id="dlm-uQ-hm3"/>
                         <outlet property="masterKeyKnownLabel" destination="K3Y-ON-C19" id="boH-5S-KlE"/>
                         <outlet property="passwordField" destination="CuN-tE-lAG" id="7ce-ej-YEW"/>

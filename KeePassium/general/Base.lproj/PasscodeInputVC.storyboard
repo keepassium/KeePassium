@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9P-fB-zfA" userLabel="KeyboardAdjView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0x-Rz-Nfj">
                                         <rect key="frame" x="8" y="56" width="66" height="36"/>
@@ -33,7 +33,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Enter passcode to protect KeePassium}" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-t6-0ty">
-                                        <rect key="frame" x="47.5" y="389.5" width="319.5" height="20.5"/>
+                                        <rect key="frame" x="47.5" y="372.5" width="319.5" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" name="PrimaryText"/>
                                         <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                                         </attributedString>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTd-Zj-qAs" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="426" width="200" height="44"/>
+                                        <rect key="frame" x="107" y="409" width="200" height="44"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="1bo-cl-ZZV"/>
@@ -67,7 +67,7 @@
                                         </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GK4-6p-jx8" userLabel="Buttons Stack">
-                                        <rect key="frame" x="107" y="478" width="200" height="44"/>
+                                        <rect key="frame" x="107" y="461" width="200" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-Q7-JRa" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="148.5" height="44"/>
@@ -115,7 +115,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5U-FH-tld">
-                                        <rect key="frame" x="8" y="864" width="156" height="32"/>
+                                        <rect key="frame" x="8" y="830" width="156" height="32"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" title="{Switch to passphrase}">
@@ -129,7 +129,7 @@
                                         </connections>
                                     </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Press Esc for Touch ID}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atY-8z-wKo">
-                                        <rect key="frame" x="134" y="530" width="146" height="16"/>
+                                        <rect key="frame" x="134" y="513" width="146" height="16"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <color key="textColor" name="AuxiliaryText"/>
                                         <nil key="highlightedColor"/>
@@ -162,12 +162,13 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O4e-oE-4lU"/>
+                        <keyboardLayoutGuide key="keyboard" id="U0I-Ht-YYP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u9P-fB-zfA" firstAttribute="top" secondItem="ZhN-Z7-r4d" secondAttribute="topMargin" id="TC8-je-hHv"/>
                             <constraint firstItem="u9P-fB-zfA" firstAttribute="leading" secondItem="ZhN-Z7-r4d" secondAttribute="leading" id="Uq1-PM-FNg"/>
                             <constraint firstAttribute="trailing" secondItem="u9P-fB-zfA" secondAttribute="trailing" id="abg-Iv-vhR"/>
-                            <constraint firstAttribute="bottom" secondItem="u9P-fB-zfA" secondAttribute="bottom" id="fpU-27-8NR" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
+                            <constraint firstItem="u9P-fB-zfA" firstAttribute="bottom" secondItem="U0I-Ht-YYP" secondAttribute="top" id="fpU-27-8NR"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -179,7 +180,6 @@
                         <outlet property="cancelButton" destination="z0x-Rz-Nfj" id="JGh-R2-I7U"/>
                         <outlet property="instructionsLabel" destination="3mQ-t6-0ty" id="AtL-ka-xVR"/>
                         <outlet property="instructionsToCancelButtonConstraint" destination="muI-ci-wh6" id="stZ-Mn-YCw"/>
-                        <outlet property="keyboardLayoutConstraint" destination="fpU-27-8NR" id="dUe-Rv-mtz"/>
                         <outlet property="mainButton" destination="i2Z-Q7-JRa" id="A8G-LI-2JU"/>
                         <outlet property="passcodeTextField" destination="ZTd-Zj-qAs" id="CYO-9J-fW4"/>
                         <outlet property="switchKeyboardButton" destination="f5U-FH-tld" id="412-ln-hvK"/>

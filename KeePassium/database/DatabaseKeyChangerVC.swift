@@ -25,7 +25,6 @@ final class DatabaseKeyChangerVC: UIViewController {
     @IBOutlet private weak var keyFileField: ValidatingTextField!
     @IBOutlet private weak var hardwareKeyField: ValidatingTextField!
     @IBOutlet private weak var passwordMismatchImage: UIImageView!
-    @IBOutlet private weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     
     weak var delegate: DatabaseKeyChangerDelegate?
     
@@ -84,30 +83,12 @@ final class DatabaseKeyChangerVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateKeyboardLayoutConstraints()
         passwordField.becomeFirstResponder()
         refresh()
     }
     
     func refresh() {
         navigationItem.rightBarButtonItem?.isEnabled = areAllFieldsValid()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        DispatchQueue.main.async { [weak self] in
-            self?.updateKeyboardLayoutConstraints()
-        }
-    }
-    
-    private func updateKeyboardLayoutConstraints() {
-        if let window = view.window {
-            let viewTop = view.convert(view.frame.origin, to: window).y
-            let viewHeight = view.frame.height
-            let windowHeight = window.frame.height
-            let viewBottomOffset = windowHeight - (viewTop + viewHeight)
-            keyboardLayoutConstraint.viewOffset = viewBottomOffset
-        }
     }
     
     

@@ -48,7 +48,6 @@ class DatabaseCreatorVC: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var errorMessagePanel: UIView!
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     
     weak var delegate: DatabaseCreatorDelegate?
@@ -93,29 +92,6 @@ class DatabaseCreatorVC: UIViewController {
         hardwareKeyField.accessibilityLabel = LString.fieldHardwareKey
         
         passwordField.becomeFirstResponder()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        updateKeyboardLayoutConstraints()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        DispatchQueue.main.async {
-            self.updateKeyboardLayoutConstraints()
-        }
-    }
-    
-    private func updateKeyboardLayoutConstraints() {
-        let view = containerView
-        if let window = view.window {
-            let viewTop = view.convert(view.frame.origin, to: window).y
-            let viewHeight = view.frame.height
-            let windowHeight = window.frame.height
-            let viewBottomOffset = windowHeight - (viewTop + viewHeight)
-            keyboardLayoutConstraint.viewOffset = viewBottomOffset
-        }
     }
     
     @discardableResult

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nri-WU-XVv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nri-WU-XVv">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,16 +22,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BU0-lv-Dei" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="458.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Database File Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iK-ct-ygq">
-                                                <rect key="frame" x="20" y="108" width="280" height="16"/>
+                                                <rect key="frame" x="20" y="111" width="280" height="19.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                 <color key="textColor" name="PrimaryText"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pxN-RE-FXX" userLabel="FileNamePanel">
-                                                <rect key="frame" x="20" y="132" width="280" height="44"/>
+                                                <rect key="frame" x="20" y="138.5" width="280" height="44"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="MyPasswords" placeholder="e.g. MyPasswords" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XNL-lc-2Ti" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -65,7 +65,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Master Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjQ-di-Ilx">
-                                                <rect key="frame" x="20" y="192" width="280" height="16"/>
+                                                <rect key="frame" x="20" y="198.5" width="280" height="19.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                 <color key="textColor" name="PrimaryText"/>
                                                 <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                                                 </attributedString>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="sgR-8q-2o9" userLabel="MasterKeyPanel">
-                                                <rect key="frame" x="20" y="216" width="280" height="136"/>
+                                                <rect key="frame" x="20" y="226" width="280" height="136"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uHk-Yt-mBh" customClass="ProtectedTextField" customModule="KeePassium" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -170,7 +170,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6C-CG-RVI" userLabel="Save Database">
-                                                <rect key="frame" x="20" y="368" width="280" height="44"/>
+                                                <rect key="frame" x="20" y="378" width="280" height="44"/>
                                                 <color key="backgroundColor" name="ActionTint"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="1Ue-I0-Bid"/>
@@ -191,7 +191,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Will use kdbx4 format (Argon2+ChaCha20)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVR-1N-ywy">
-                                                <rect key="frame" x="20" y="420" width="280" height="14.5"/>
+                                                <rect key="frame" x="20" y="430" width="280" height="16"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" name="AuxiliaryText"/>
                                                 <nil key="highlightedColor"/>
@@ -234,12 +234,13 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zz4-uB-JHT"/>
+                        <keyboardLayoutGuide key="keyboard" id="Y9D-Ze-uQR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UAC-3N-WvO" firstAttribute="leading" secondItem="6fp-OI-Lt3" secondAttribute="leading" id="3Gu-V2-eOZ"/>
                             <constraint firstAttribute="trailing" secondItem="UAC-3N-WvO" secondAttribute="trailing" id="Cca-63-ngJ"/>
                             <constraint firstItem="UAC-3N-WvO" firstAttribute="top" secondItem="6fp-OI-Lt3" secondAttribute="top" id="VQb-aZ-lhL"/>
-                            <constraint firstAttribute="bottom" secondItem="UAC-3N-WvO" secondAttribute="bottom" id="Vn9-PM-nmb" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
+                            <constraint firstItem="UAC-3N-WvO" firstAttribute="bottom" secondItem="Y9D-Ze-uQR" secondAttribute="top" id="Vn9-PM-nmb"/>
                             <constraint firstItem="BU0-lv-Dei" firstAttribute="centerY" secondItem="UAC-3N-WvO" secondAttribute="centerY" priority="750" id="WPJ-P9-ar3"/>
                             <constraint firstItem="BU0-lv-Dei" firstAttribute="width" secondItem="6fp-OI-Lt3" secondAttribute="width" id="vv0-DO-7cf"/>
                         </constraints>
@@ -264,7 +265,6 @@
                         <outlet property="fileNameField" destination="XNL-lc-2Ti" id="iKo-Vc-RF3"/>
                         <outlet property="hardwareKeyField" destination="wiB-ZM-ePr" id="pOM-z9-ya1"/>
                         <outlet property="keyFileField" destination="pvt-FS-0Yx" id="BCD-MV-f0s"/>
-                        <outlet property="keyboardLayoutConstraint" destination="Vn9-PM-nmb" id="fUd-Xa-ZpD"/>
                         <outlet property="passwordField" destination="uHk-Yt-mBh" id="JiK-BH-kCB"/>
                         <outlet property="scrollView" destination="UAC-3N-WvO" id="Re8-AB-rKc"/>
                     </connections>

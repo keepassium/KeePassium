@@ -218,12 +218,13 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="t5n-gM-kxn"/>
+                        <keyboardLayoutGuide key="keyboard" id="pXX-Vf-Gap"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1cP-o2-ccW" firstAttribute="leading" secondItem="58Q-hF-v4J" secondAttribute="leading" id="CDz-qe-e8F"/>
                             <constraint firstAttribute="trailing" secondItem="1cP-o2-ccW" secondAttribute="trailing" id="VVQ-8t-eqb"/>
                             <constraint firstItem="1cP-o2-ccW" firstAttribute="top" secondItem="58Q-hF-v4J" secondAttribute="top" id="YLy-tV-hUR"/>
-                            <constraint firstAttribute="bottom" secondItem="1cP-o2-ccW" secondAttribute="bottom" id="gsD-jT-Tz7" customClass="KeyboardLayoutConstraint" customModule="KeePassium" customModuleProvider="target"/>
+                            <constraint firstItem="1cP-o2-ccW" firstAttribute="bottom" secondItem="pXX-Vf-Gap" secondAttribute="top" id="gsD-jT-Tz7"/>
                             <constraint firstItem="3zV-VG-oSJ" firstAttribute="width" secondItem="58Q-hF-v4J" secondAttribute="width" id="yn1-u6-sH9"/>
                         </constraints>
                     </view>
@@ -243,7 +244,6 @@
                         <outlet property="hardwareKeyField" destination="o5v-tf-bLd" id="uNb-TV-Pf8"/>
                         <outlet property="inputPanel" destination="xCb-0U-HF5" id="xb9-sZ-ac8"/>
                         <outlet property="keyFileField" destination="M9Q-v8-e6Q" id="xBo-vx-X6f"/>
-                        <outlet property="keyboardLayoutConstraint" destination="gsD-jT-Tz7" id="AXw-yv-4wl"/>
                         <outlet property="passwordField" destination="hYP-f0-K1s" id="4U6-kt-6H4"/>
                         <outlet property="passwordMismatchImage" destination="R8Q-C7-aGF" id="jcM-Yz-cE2"/>
                         <outlet property="repeatPasswordField" destination="SHG-X2-fHH" id="FDB-fU-tXq"/>

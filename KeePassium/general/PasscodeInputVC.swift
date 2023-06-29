@@ -42,7 +42,6 @@ class PasscodeInputVC: UIViewController {
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var switchKeyboardButton: UIButton!
     @IBOutlet weak var useBiometricsButton: UIButton!
-    @IBOutlet weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     @IBOutlet weak var instructionsToCancelButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var biometricsHintLabel: UILabel!
     
@@ -101,16 +100,8 @@ class PasscodeInputVC: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateKeyboardLayoutConstraints()
         if shouldActivateKeyboard {
             showKeyboard()
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        DispatchQueue.main.async {
-            self.updateKeyboardLayoutConstraints()
         }
     }
     
@@ -158,22 +149,6 @@ class PasscodeInputVC: UIViewController {
         let showMacOSBiometricHint = ProcessInfo.isRunningOnMac && !useBiometricsButton.isHidden
         biometricsHintLabel.isHidden = !showMacOSBiometricHint
         biometricsHintLabel.text = LString.hintPressEscForTouchID
-    }
-    
-    private func updateKeyboardLayoutConstraints() {
-        guard let screen = view.window?.screen else { return }
-        let windowSpace = screen.coordinateSpace
-        
-        let viewTop = view.convert(view.frame.origin, to: windowSpace).y
-        let viewHeight = view.frame.height
-        let windowHeight = windowSpace.bounds.height
-        let viewBottomOffset = windowHeight - (viewTop + viewHeight)
-        #if MAIN_APP
-        keyboardLayoutConstraint.viewOffset = viewBottomOffset
-        #else
-        let weirdAutoFillOffset = CGFloat(50)
-        keyboardLayoutConstraint.viewOffset = viewBottomOffset - weirdAutoFillOffset
-        #endif
     }
     
     public func showKeyboard() {

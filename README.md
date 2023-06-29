@@ -126,7 +126,6 @@ The project would not be the same without some third-party components:
 	- [SwiftDomainParser](https://github.com/Dashlane/SwiftDomainParser) by Dashlane (MIT license)
 	- [GzipSwift](https://github.com/1024jp/GzipSwift) by 1024jp (MIT license)
 	- [Base32 for Swift](https://github.com/norio-nomura/Base32) by Norio Nomura (MIT license)
-	- [KeyboardLayoutConstraint](https://github.com/MengTo/Spring/blob/master/Spring/KeyboardLayoutConstraint.swift) by James Tang (MIT license)
 	- [Toast-Swift](https://github.com/scalessec/Toast-Swift) by Charles Scalesse (MIT license)
 * Other:
 	- [Passphrase wordlists](https://eff.org/dice) by Electronic Frontiers Foundation (CC-BY-3.0 license)

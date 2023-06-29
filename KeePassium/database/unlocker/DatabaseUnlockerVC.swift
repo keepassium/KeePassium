@@ -42,7 +42,6 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     @IBOutlet private weak var unlockButton: UIButton!
     @IBOutlet private weak var masterKeyKnownLabel: UILabel!
     @IBOutlet private weak var lockDatabaseButton: UIButton!
-    @IBOutlet private weak var keyboardLayoutConstraint: KeyboardLayoutConstraint!
     
     weak var delegate: DatabaseUnlockerDelegate?
     var shouldAutofocus = false
@@ -81,10 +80,6 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         hardwareKeyField.cursor = .arrow
         #endif
         
-        keyboardLayoutConstraint.layoutCallback = { [weak self] in
-            self?.view.layoutIfNeeded()
-        }
-        
         errorMessageView.isHidden = true
         
         refresh()
@@ -113,34 +108,10 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.setToolbarHidden(true, animated: true)
-        updateKeyboardLayoutConstraints()
         if shouldAutofocus {
             UIAccessibility.post(notification: .layoutChanged, argument: passwordField)
             maybeFocusOnPassword()
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        DispatchQueue.main.async {
-            self.updateKeyboardLayoutConstraints()
-        }
-    }
-    
-    private func updateKeyboardLayoutConstraints() {
-        let windowSpace: UICoordinateSpace
-        if #available(iOS 14, *) {
-            guard let screen = view.window?.screen else { return }
-            windowSpace = screen.coordinateSpace
-        } else {
-            guard let window = view.window else { return }
-            windowSpace = window.coordinateSpace
-        }
-        let viewTop = view.convert(view.frame.origin, to: windowSpace).y
-        let viewHeight = view.frame.height
-        let windowHeight = windowSpace.bounds.height
-        let viewBottomOffset = windowHeight - (viewTop + viewHeight)
-        keyboardLayoutConstraint.viewOffset = viewBottomOffset
     }
     
     public func clearPasswordField() {

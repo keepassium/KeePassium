@@ -26,7 +26,6 @@
 		750CFBD321BA9ACD00E62B09 /* KeePassium AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 750CFBC721BA9ACD00E62B09 /* KeePassium AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		750CFBD721BA9B6200E62B09 /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
 		750CFBD921BAD7FF00E62B09 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
-		750CFBDA21BAD7FF00E62B09 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
 		750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
 		750CFBDC21BAD7FF00E62B09 /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
 		750CFBDD21BAD7FF00E62B09 /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */; };
@@ -604,7 +603,6 @@
 		75B38C33233E5B7C006BDEFC /* SettingsBackupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488522C165C900BBEF9A /* SettingsBackupVC.swift */; };
 		75B38C34233E5B7C006BDEFC /* SettingsAutoFillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */; };
 		75B38C35233E5B7C006BDEFC /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
-		75B38C36233E5B7C006BDEFC /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
 		75B38C38233E5B7C006BDEFC /* PremiumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A26775228F02C70097C693 /* PremiumCoordinator.swift */; };
 		75B38C39233E5B7C006BDEFC /* PasscodeInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */; };
 		75B38C3A233E5B7C006BDEFC /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
@@ -736,7 +734,6 @@
 		75C94C5F20B4BAB0004FA29D /* EntryFileViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */; };
 		75C94C6120B4BAC4004FA29D /* EntryHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */; };
 		75CA661029B8E00A0094CBAA /* DatabasePrintFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */; };
-		75CA73912144381200ADAD64 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
 		75CA919A20E90C3700B286F0 /* EntryChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */; };
 		75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */; };
 		75CBABA121C16CD000B8AFE2 /* FirstSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */; };
@@ -880,7 +877,6 @@
 		75D0763628B639D200F02E39 /* SettingsAutoFillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */; };
 		75D0763728B639D200F02E39 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
 		75D0763828B639D200F02E39 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
-		75D0763928B639D200F02E39 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
 		75D0763A28B639D200F02E39 /* PremiumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A26775228F02C70097C693 /* PremiumCoordinator.swift */; };
 		75D0763B28B639D200F02E39 /* PasscodeInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */; };
 		75D0763C28B639D200F02E39 /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
@@ -1130,7 +1126,6 @@
 		75D0773F28B639F600F02E39 /* HelpArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572665924CB1B500099B6E1 /* HelpArticle.swift */; };
 		75D0774028B639F600F02E39 /* DismissablePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4E23A5180600D708D2 /* DismissablePopover.swift */; };
 		75D0774128B639F600F02E39 /* PremiumFeature+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677C22904E0D0097C693 /* PremiumFeature+extension.swift */; };
-		75D0774228B639F600F02E39 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
 		75D0774328B639F600F02E39 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		75D0774428B639F600F02E39 /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75D0774528B639F600F02E39 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
@@ -1236,7 +1231,6 @@
 		75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
 		75D7DFA3233E5E310029AD87 /* UILabel+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75151D3223268AB300F3C411 /* UILabel+extensions.swift */; };
 		75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677C22904E0D0097C693 /* PremiumFeature+extension.swift */; };
-		75D7DFA5233E5E310029AD87 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */; };
 		75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		75D7DFA7233E5E310029AD87 /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */; };
 		75D7DFAA233E5E310029AD87 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; };
@@ -2284,7 +2278,6 @@
 		75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewerPagesVC.swift; sourceTree = "<group>"; };
 		75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFileViewerVC.swift; sourceTree = "<group>"; };
 		75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryHistoryViewerVC.swift; sourceTree = "<group>"; };
-		75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSetupVC.swift; sourceTree = "<group>"; };
@@ -2900,7 +2893,6 @@
 				753A3EE920D3776D00A1CF70 /* Refreshable.swift */,
 				75779863223023D3006671BD /* ProgressViewHost.swift */,
 				754804FA238E51AF0068C863 /* PopoverAnchor.swift */,
-				75CA73902144381200ADAD64 /* KeyboardLayoutConstraint.swift */,
 				75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */,
 				756FF64320BAB20300FF890B /* UIColor+namedColors.swift */,
 				75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */,
@@ -4114,7 +4106,6 @@
 				7572665B24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				757ADC5123A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75A2677E22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
-				750CFBDA21BAD7FF00E62B09 /* KeyboardLayoutConstraint.swift in Sources */,
 				750CFBDE21BAD7FF00E62B09 /* UIViewController+storyboard.swift in Sources */,
 				75FCCF852631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				7524E73C2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
@@ -4273,7 +4264,6 @@
 				754E40862630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */,
 				7546FBD920C3A3F600C5D834 /* Watchdog.swift in Sources */,
-				75CA73912144381200ADAD64 /* KeyboardLayoutConstraint.swift in Sources */,
 				75A26776228F02C80097C693 /* PremiumCoordinator.swift in Sources */,
 				757FB3CA21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				7573FD8B2321664F00DCDA5A /* MultilineButton.swift in Sources */,
@@ -4474,7 +4464,6 @@
 				75B38C34233E5B7C006BDEFC /* SettingsAutoFillVC.swift in Sources */,
 				754E40872630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75B38C35233E5B7C006BDEFC /* Watchdog.swift in Sources */,
-				75B38C36233E5B7C006BDEFC /* KeyboardLayoutConstraint.swift in Sources */,
 				75B38C38233E5B7C006BDEFC /* PremiumCoordinator.swift in Sources */,
 				75B38C39233E5B7C006BDEFC /* PasscodeInputVC.swift in Sources */,
 				75B38C3A233E5B7C006BDEFC /* MultilineButton.swift in Sources */,
@@ -4678,7 +4667,6 @@
 				75D0763628B639D200F02E39 /* SettingsAutoFillVC.swift in Sources */,
 				75D0763728B639D200F02E39 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75D0763828B639D200F02E39 /* Watchdog.swift in Sources */,
-				75D0763928B639D200F02E39 /* KeyboardLayoutConstraint.swift in Sources */,
 				75D0763A28B639D200F02E39 /* PremiumCoordinator.swift in Sources */,
 				75D0763B28B639D200F02E39 /* PasscodeInputVC.swift in Sources */,
 				75D0763C28B639D200F02E39 /* MultilineButton.swift in Sources */,
@@ -4850,7 +4838,6 @@
 				75D0773F28B639F600F02E39 /* HelpArticle.swift in Sources */,
 				75D0774028B639F600F02E39 /* DismissablePopover.swift in Sources */,
 				75D0774128B639F600F02E39 /* PremiumFeature+extension.swift in Sources */,
-				75D0774228B639F600F02E39 /* KeyboardLayoutConstraint.swift in Sources */,
 				75D0774328B639F600F02E39 /* UIViewController+storyboard.swift in Sources */,
 				75D0774428B639F600F02E39 /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75D0774528B639F600F02E39 /* RemoteFilePickerVC.swift in Sources */,
@@ -4972,7 +4959,6 @@
 				7572665D24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				757ADC5323A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */,
-				75D7DFA5233E5E310029AD87 /* KeyboardLayoutConstraint.swift in Sources */,
 				75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */,
 				75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				7524E73E2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
