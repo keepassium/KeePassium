@@ -193,7 +193,7 @@ public enum FileAccessError: LocalizedError {
             )
         
         case ("NSFileProviderInternalErrorDomain", 0), 
-             (NSFileProviderErrorDomain, -2001): 
+             ("NSFileProviderErrorDomain", -2001): 
             return .fileProviderNotFound(fileProvider: fileProvider)
 
         default:
