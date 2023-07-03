@@ -2,8 +2,40 @@
     "sections": [
         {
             "version": "1.45",
-            "releaseDate": "2023-05-29T00:00:00Z",
+            "releaseDate": "2023-07-03T00:00:00Z",
             "items": [
+                {
+                    "title": "This version requires iOS 15.4 / macOS 12.0 or newer",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Uniform and scalable SF Symbols icons (closes #287) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Passphrase generator now includes EFF short list #1 [thanks, K.J.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: OneDrive: periodic \"invalid_grant\" error [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Error messages could be visible while loading a fallback database [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Database unlocker could load a wrong fallback file sometimes",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Lingering donation suggestion, required database reload [thanks everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Temporary files (such as print previews) could stay around for too long [thanks, Christopher]",
+                    "type": 1
+                },
                 {
                     "title": "🐞 Fixed: Excessive WebDAV credential caching (fixes #295) [thanks, Henrik]",
                     "type": 1
