@@ -43,9 +43,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
     
     private var isModified = false{
         didSet {
-            if #available(iOS 13, *) {
-                fieldEditorVC.isModalInPresentation = isModified
-            }
+            fieldEditorVC.isModalInPresentation = isModified
         }
     }
     

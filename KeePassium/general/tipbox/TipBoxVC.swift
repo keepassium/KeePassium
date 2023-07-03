@@ -175,13 +175,11 @@ extension TipBoxVC {
                 NSAttributedString.Key.paragraphStyle: paragraphStyle
             ]
         )
-        if #available(iOS 13, *) {
-            attributedText.addAttribute(
-                .foregroundColor,
-                value: UIColor.primaryText,
-                range: NSRange(0..<attributedText.length)
-            )
-        }
+        attributedText.addAttribute(
+            .foregroundColor,
+            value: UIColor.primaryText,
+            range: NSRange(0..<attributedText.length)
+        )
         return attributedText
     }
 }

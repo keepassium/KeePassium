@@ -22,14 +22,7 @@ extension ValidatingTextFieldDelegate {
 
 class ValidatingTextField: UITextField {
     private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25)
-    private let focusedBorderColor: UIColor = {
-        if #available(iOS 15, *) {
-            return .tintColor.withAlphaComponent(0.5)
-        } else {
-            return .systemBlue.withAlphaComponent(0.5)
-        }
-    }()
-    
+    private let focusedBorderColor: UIColor = .tintColor.withAlphaComponent(0.5)    
     
     private weak var externalDelegate: UITextFieldDelegate?
     override var delegate: UITextFieldDelegate? {
@@ -151,7 +144,6 @@ class ValidatingTextField: UITextField {
 
 extension ValidatingTextField {
     #if targetEnvironment(macCatalyst)
-    @available(iOS 15, *)
     override var focusEffect: UIFocusEffect? {
         get {
             UIFocusHaloEffect(
@@ -162,54 +154,33 @@ extension ValidatingTextField {
         set {
         }
     }
-    #endif
-
-    #if targetEnvironment(macCatalyst)
+    
     @objc(_focusRingType)
     var focusRingType: UInt {
         return 1 
     }
     #endif
-    
-    private func refreshFocusRing() {
-        #if targetEnvironment(macCatalyst)
-        if #available(iOS 15, *) {
-            return 
-        }
-        if isEditing {
-            borderWidth = 3
-            borderColor = focusedBorderColor
-        } else {
-            setupDefaultBorder()
-        }
-        #endif
-    }
 }
 
 extension ValidatingTextField: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        refreshFocusRing()
         return externalDelegate?.textFieldShouldBeginEditing?(textField) ?? true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        refreshFocusRing()
         externalDelegate?.textFieldDidBeginEditing?(textField)
         onEditingChanged(textField: textField)
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        refreshFocusRing()
         return externalDelegate?.textFieldShouldEndEditing?(textField) ?? true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        refreshFocusRing()
         externalDelegate?.textFieldDidEndEditing?(textField, reason: reason)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        refreshFocusRing()
         externalDelegate?.textFieldDidEndEditing?(textField)
     }
     

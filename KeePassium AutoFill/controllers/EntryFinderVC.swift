@@ -99,9 +99,7 @@ final class EntryFinderVC: UITableViewController {
         tableView.estimatedRowHeight = 44.0
         tableView.register(AnnouncementCell.classForCoder(), forCellReuseIdentifier: CellID.announcement)
         tableView.selectionFollowsFocus = true
-        if #available(iOSApplicationExtension 15.0, *) {
-            tableView.sectionHeaderTopPadding = 1 
-        }
+        tableView.sectionHeaderTopPadding = 1 
         
         manualSearchButton = UIBarButtonItem(
             barButtonSystemItem: .search,
@@ -132,10 +130,6 @@ final class EntryFinderVC: UITableViewController {
         searchController.searchBar.barStyle = .default
         searchController.searchBar.delegate = self
         
-        if #available(iOS 12.0, *) {
-        } else {
-            searchController.dimsBackgroundDuringPresentation = false
-        }
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.delegate = self

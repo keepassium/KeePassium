@@ -95,15 +95,10 @@ final public class NavigationRouter: NSObject {
     
     public var isModalInPresentation: Bool {
         get {
-            guard #available(iOS 13, *) else {
-                return false
-            }
             return navigationController.isModalInPresentation
         }
         set {
-            if #available(iOS 13, *) {
-                navigationController.isModalInPresentation = newValue
-            }
+            navigationController.isModalInPresentation = newValue
         }
     }
     
@@ -393,10 +388,9 @@ extension NavigationRouter: ProgressViewHost {
             title: title,
             animated: animated)
         progressOverlay?.isCancellable = allowCancelling
-        if #available(iOS 13, *) {
-            wasModalInPresentation = navigationController.isModalInPresentation
-            navigationController.isModalInPresentation = true
-        }
+
+        wasModalInPresentation = navigationController.isModalInPresentation
+        navigationController.isModalInPresentation = true
 
         let navigationBar = navigationController.navigationBar
         oldNavigationBarAlpha = navigationBar.alpha
@@ -431,9 +425,8 @@ extension NavigationRouter: ProgressViewHost {
         }
         navigationBar.isUserInteractionEnabled = wasNavigationBarUserInteractionEnabled
         
-        if #available(iOS 13, *) {
-            navigationController.isModalInPresentation = wasModalInPresentation
-        }
+        navigationController.isModalInPresentation = wasModalInPresentation
+        
         progressOverlay?.dismiss(animated: animated) {
             [weak self] (finished) in
             guard let self = self else { return }

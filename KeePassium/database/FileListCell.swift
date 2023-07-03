@@ -63,9 +63,7 @@ class FileListCell: UITableViewCell {
     }
     
     private func setupCell() {
-        if #available(iOS 13, *) {
-            spinner.style = .medium
-        }
+        spinner.style = .medium
         accessoryView = accessoryButton
         accessoryButton.addTarget(
             self,

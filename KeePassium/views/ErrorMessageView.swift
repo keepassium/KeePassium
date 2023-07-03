@@ -65,20 +65,15 @@ final class ErrorMessageView: UIView {
         })
         button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.leading
         
-        if #available(iOS 15.0, *) {
-            var config =  UIButton.Configuration.plain()
-            config.titlePadding = 0
-            config.contentInsets = .init(top: 8, leading: 0, bottom: 8, trailing: 0)
-            config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
-                var outgoing = $0
-                outgoing.font = .preferredFont(forTextStyle: .callout)
-                return outgoing
-            }
-            button.configuration = config
-        } else {
-            button.titleLabel?.font = .preferredFont(forTextStyle: .callout)
-            button.titleLabel?.adjustsFontForContentSizeCategory = true
+        var config =  UIButton.Configuration.plain()
+        config.titlePadding = 0
+        config.contentInsets = .init(top: 8, leading: 0, bottom: 8, trailing: 0)
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
+            var outgoing = $0
+            outgoing.font = .preferredFont(forTextStyle: .callout)
+            return outgoing
         }
+        button.configuration = config
         
         button.setTitleColor(.actionTint, for: .normal)
         button.titleLabel?.numberOfLines = 0
@@ -157,17 +152,15 @@ final class ErrorMessageView: UIView {
                 .activate()
             actionButton.setTitle(action.title, for: .normal)
             
-            if #available(iOS 15, *) {
-                if action.isLink {
-                    var buttonConfig = actionButton.configuration
-                    buttonConfig?.imagePlacement = .trailing
-                    buttonConfig?.imagePadding = 4
-                    buttonConfig?.image = .symbol(.externalLink)
-                    buttonConfig?.preferredSymbolConfigurationForImage = .init(scale: .small)
-                    actionButton.configuration = buttonConfig
-                } else {
-                    actionButton.configuration?.image = nil
-                }
+            if action.isLink {
+                var buttonConfig = actionButton.configuration
+                buttonConfig?.imagePlacement = .trailing
+                buttonConfig?.imagePadding = 4
+                buttonConfig?.image = .symbol(.externalLink)
+                buttonConfig?.preferredSymbolConfigurationForImage = .init(scale: .small)
+                actionButton.configuration = buttonConfig
+            } else {
+                actionButton.configuration?.image = nil
             }
             self.accessibilityElements?.append(actionButton)
         } else {

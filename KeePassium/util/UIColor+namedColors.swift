@@ -11,11 +11,7 @@ import UIKit
 extension UIColor {
 
     static var systemTint: UIColor {
-        if #available(iOS 15, *) {
-            return UIColor.tintColor.resolvedColor(with: .current)
-        } else {
-            return actionTint
-        }
+        return UIColor.tintColor.resolvedColor(with: .current)
     }
     
     static var actionTint: UIColor {

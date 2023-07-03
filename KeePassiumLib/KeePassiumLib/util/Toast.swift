@@ -1019,10 +1019,6 @@ public struct ToastAction {
 
 private extension UIView {
     var csSafeAreaInsets: UIEdgeInsets {
-        if #available(iOS 11.0, *) {
-            return self.safeAreaInsets
-        } else {
-            return .zero
-        }
+        return self.safeAreaInsets
     }
 }

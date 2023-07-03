@@ -94,9 +94,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         context: UnsafeMutableRawPointer?)
     {
         var preferredSize = tableView.contentSize
-        if #available(iOS 13, *) {
-            preferredSize.width = 400
-        }
+        preferredSize.width = 400
         self.preferredContentSize = preferredSize
     }
     

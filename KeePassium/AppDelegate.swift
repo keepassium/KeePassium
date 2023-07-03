@@ -26,11 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initAppGlobals(application)
 
         let window = UIWindow(frame: UIScreen.main.bounds)
-        if #available(iOS 13, *) {
-            let args = ProcessInfo.processInfo.arguments
-            if args.contains("darkMode") {
-                window.overrideUserInterfaceStyle = .dark
-            }
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("darkMode") {
+            window.overrideUserInterfaceStyle = .dark
         }
 
         let incomingURL: URL? = launchOptions?[.url] as? URL
@@ -126,11 +124,9 @@ extension AppDelegate {
         builder.remove(menu: .speech)
         builder.remove(menu: .toolbar)
         
-        if #available(iOS 15.0, *) {
-            builder.replaceChildren(ofMenu: .standardEdit) { children -> [UIMenuElement] in
-                children.filter {
-                    ($0 as? UIKeyCommand)?.action != #selector(UIResponderStandardEditActions.pasteAndMatchStyle(_:))
-                }
+        builder.replaceChildren(ofMenu: .standardEdit) { children -> [UIMenuElement] in
+            children.filter {
+                ($0 as? UIKeyCommand)?.action != #selector(UIResponderStandardEditActions.pasteAndMatchStyle(_:))
             }
         }
         

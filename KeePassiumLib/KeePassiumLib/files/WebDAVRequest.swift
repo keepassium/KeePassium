@@ -137,9 +137,7 @@ final class WebDAVInfoRequest: WebDAVRequestBase {
             timeoutInterval: timeout.remainingTimeInterval
         )
         request.httpMethod = "HEAD"
-        if #available(iOS 15, *) {
-            request.attribution = .developer
-        }
+        request.attribution = .developer
         return request
     }
     
@@ -206,9 +204,7 @@ final class WebDAVDownloadRequest: WebDAVRequestBase {
             timeoutInterval: timeout.remainingTimeInterval
         )
         request.httpMethod = "GET"
-        if #available(iOS 15, *) {
-            request.attribution = .developer
-        }
+        request.attribution = .developer
         return request
     }
     
@@ -263,9 +259,7 @@ final class WebDAVUploadRequest: WebDAVRequestBase {
         )
         request.httpMethod = "PUT"
         request.httpBody = dataToUpload.asData
-        if #available(iOS 15, *) {
-            request.attribution = .developer
-        }
+        request.attribution = .developer
         return request
     }
     

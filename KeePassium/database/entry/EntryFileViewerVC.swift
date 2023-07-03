@@ -75,18 +75,10 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
         previewFilesBarButton.title = LString.actionPreviewAttachments
         previewFilesBarButton.accessibilityLabel = LString.actionPreviewAttachments
 
-        if #available(iOS 14, *) {
-            addFileBarButton = UIBarButtonItem(systemItem: .add)
-            addFileBarButton.accessibilityLabel = LString.actionAddAttachment
-            addFileBarButton.menu = makeAddAttachmentMenu()
-        } else {
-            addFileBarButton = UIBarButtonItem(
-                barButtonSystemItem: .add,
-                target: self,
-                action: #selector(didPressAddFileAttachment(_:))
-            )
-            addFileBarButton.accessibilityLabel = LString.actionAddAttachment
-        }
+        addFileBarButton = UIBarButtonItem(systemItem: .add)
+        addFileBarButton.accessibilityLabel = LString.actionAddAttachment
+        addFileBarButton.menu = makeAddAttachmentMenu()
+
         deleteFilesBarButton = UIBarButtonItem(
             title: LString.actionDelete, 
             image: nil,

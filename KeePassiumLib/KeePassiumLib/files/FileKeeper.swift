@@ -90,12 +90,7 @@ public class FileKeeper {
         if ProcessInfo.isRunningOnMac {
             return false 
         }
-        
-        if #available(iOS 14, *) {
-            return true
-        } else {
-            return false
-        }
+        return true
     }()
     
     public static var canAccessAppSandbox: Bool {

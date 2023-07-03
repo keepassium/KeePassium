@@ -42,11 +42,7 @@ protocol PhotoPicker {
 final class PhotoPickerFactory {
 
     static func makePhotoPicker() -> PhotoPicker {
-        if #available(iOS 14, *) {
-            return PHPickerViewControllerPhotoPicker()
-        } else {
-            return UIImagePickerControllerPhotoPicker(sourceType: .savedPhotosAlbum)
-        }
+        return PHPickerViewControllerPhotoPicker()
     }
     
     static func makeCameraPhotoPicker() -> PhotoPicker {
@@ -102,7 +98,6 @@ private final class UIImagePickerControllerPhotoPicker:
     }
 }
 
-@available(iOS 14, *)
 private final class PHPickerViewControllerPhotoPicker:
     NSObject,
     PhotoPicker,

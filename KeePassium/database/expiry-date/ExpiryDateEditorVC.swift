@@ -56,19 +56,16 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
 
         navigationItem.title = LString.itemExpiryDate
         expiresLabel.text = LString.expiryDateNever
-        if #available(iOS 14, *) {
-            datePicker.preferredDatePickerStyle = .inline
-        }
+        datePicker.preferredDatePickerStyle = .inline
+
         expiresLabel.isAccessibilityElement = false
         neverExpiresSwitch.accessibilityLabel = LString.expiryDateNever
         
-        if #available(iOS 14, *) {
-            presetButton.setTitle(LString.titlePresets, for: .normal)
-            presetButton.accessibilityLabel = LString.titlePresets
-            presetButton.isHidden = false
-            presetButton.menu = makePresetsMenu()
-            presetButton.showsMenuAsPrimaryAction = true
-        }
+        presetButton.setTitle(LString.titlePresets, for: .normal)
+        presetButton.accessibilityLabel = LString.titlePresets
+        presetButton.isHidden = false
+        presetButton.menu = makePresetsMenu()
+        presetButton.showsMenuAsPrimaryAction = true
         
         preferredContentSize = CGSize(width: 320, height: 370)
     }

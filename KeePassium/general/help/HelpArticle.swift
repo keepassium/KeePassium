@@ -35,13 +35,11 @@ public struct HelpArticle {
                     .characterEncoding: String.Encoding.utf8.rawValue
                 ],
                 documentAttributes: &d)
-            if #available(iOS 13, *) {
-                content.addAttribute(
-                    .foregroundColor,
-                    value: UIColor.primaryText,
-                    range: NSRange(0..<content.length)
-                )
-            }
+            content.addAttribute(
+                .foregroundColor,
+                value: UIColor.primaryText,
+                range: NSRange(0..<content.length)
+            )
             return HelpArticle(content: content)
         } catch {
             Diag.error("Failed to load help article file [reason: \(error.localizedDescription)]")

@@ -25,17 +25,8 @@ extension UIFont {
         let baseFont = UIFont.preferredFont(forTextStyle: style)
         let size = baseFont.pointSize
 
-        var font: UIFont
-        if #available(iOS 13, *) {
-            let weight: Weight = UIAccessibility.isBoldTextEnabled ? .bold : .regular
-            font = UIFont.monospacedSystemFont(ofSize: size, weight: weight)
-        } else {
-            if UIAccessibility.isBoldTextEnabled {
-                font = UIFont(name: "Menlo-Bold", size: size) ?? UIFont.boldSystemFont(ofSize: size)
-            } else {
-                font = UIFont(name: "Menlo", size: size) ?? baseFont
-            }
-        }
+        let weight: Weight = UIAccessibility.isBoldTextEnabled ? .bold : .regular
+        let font = UIFont.monospacedSystemFont(ofSize: size, weight: weight)
         let fontMetrics = UIFontMetrics(forTextStyle: style)
         return fontMetrics.scaledFont(for: font)
     }

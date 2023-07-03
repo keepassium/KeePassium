@@ -72,11 +72,7 @@ struct ContextualAction {
                 [weak tableView] (action, sourceView, completion) in
                 tableView?.setEditing(false, animated: true)
                 handler()
-                if #available(iOS 13, *) {
-                    completion(true)
-                } else {
-                    completion(false) 
-                }
+                completion(true)
             }
         }
         if let imageName {
