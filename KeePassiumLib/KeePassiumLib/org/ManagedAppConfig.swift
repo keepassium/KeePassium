@@ -35,6 +35,9 @@ public final class ManagedAppConfig {
     public func hasProvisionalLicense() -> Bool {
         let anyValue = intuneConfig?[Key.license] ?? currentConfig?[Key.license]
         guard let rawLicenseValue = anyValue as? String else {
+            if BusinessModel.isIntuneEdition {
+                Diag.warning("Business license is not configured")
+            }
             return false
         }
         let licenseValue = rawLicenseValue
@@ -56,6 +59,7 @@ extension ManagedAppConfig {
               let firstConfig = config.first 
         else {
             intuneConfig = nil
+            Diag.info("No app config provided by Intune")
             return
         }
         

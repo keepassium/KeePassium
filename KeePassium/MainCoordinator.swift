@@ -180,14 +180,17 @@ extension MainCoordinator {
                 guard let self = self else { return }
                 switch enrollmentResult {
                 case .success:
+                    Diag.info("Intune enrollment successful")
                     self.runAfterStartTasks()
                 case .cancelledByUser:
                     let message = [
                             LString.Intune.orgNeedsToManage,
                             LString.Intune.personalVersionInAppStore,
                         ].joined(separator: "\n\n")
+                    Diag.error("Intune enrollment cancelled")
                     self.showIntuneMessageAndRestartEnrollment(message)
                 case .failure(let errorMessage):
+                    Diag.error("Intune enrollment failed [message: \(errorMessage)]")
                     self.showIntuneMessageAndRestartEnrollment(errorMessage)
                 }
             },
@@ -206,6 +209,7 @@ extension MainCoordinator {
     }
     
     private func startIntuneEnrollment() {
+        Diag.debug("Starting Intune enrollment")
         let enrollmentManager = IntuneMAMEnrollmentManager.instance()
         enrollmentManager.delegate = enrollmentDelegate
         enrollmentManager.loginAndEnrollAccount(enrollmentManager.enrolledAccount())
@@ -238,6 +242,7 @@ extension MainCoordinator {
                 LString.Intune.orgLicenseMissing,
                 LString.Intune.hintContactYourAdmin,
             ].joined(separator: "\n\n")
+        Diag.error(message)
         let alert = UIAlertController(
             title: "",
             message: message,
