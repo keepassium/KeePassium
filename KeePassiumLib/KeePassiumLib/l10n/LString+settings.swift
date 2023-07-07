@@ -102,6 +102,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Before first use, you need to activate AutoFill in system settings.",
         comment: "Description for the AutoFill setup instructions")
+    public static let autoFillUnavailableInIntuneDescription = NSLocalizedString(
+        "[Settings/AutoFill/UnavailableInIntune/description]",
+        bundle: Bundle.framework,
+        value: "AutoFill is not available in KeePassium for Intune.",
+        comment: "")
+
     
     public static let titleQuickAutoFill = NSLocalizedString(
         "[QuickAutoFill/title]",

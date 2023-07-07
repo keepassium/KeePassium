@@ -71,15 +71,21 @@ final class SettingsAutoFillVC: UITableViewController {
         copyTOTPSwitch.isOn = settings.isCopyTOTPOnAutoFill
         perfectMatchSwitch.isOn = settings.autoFillPerfectMatch
 
+        #if INTUNE
+        isAutoFillEnabled = false
+        setupInstructionsCell.setEnabled(false)
+        #else
         isAutoFillEnabled = QuickTypeAutoFillStorage.isEnabled
-        quickAutoFillCell.setEnabled(isAutoFillEnabled)
-        perfectMatchCell.setEnabled(isAutoFillEnabled)
-        copyTOTPCell.setEnabled(isAutoFillEnabled)
+        #endif
         if isAutoFillEnabled {
             setupInstructionsCell.textLabel?.text = LString.titleAutoFillSetupGuide
         } else {
             setupInstructionsCell.textLabel?.text = LString.actionActivateAutoFill
         }
+        
+        quickAutoFillCell.setEnabled(isAutoFillEnabled)
+        perfectMatchCell.setEnabled(isAutoFillEnabled)
+        copyTOTPCell.setEnabled(isAutoFillEnabled)
 
         let canUseQuickAutoFill = PremiumManager.shared.isAvailable(feature: .canUseQuickTypeAutoFill)
         quickAutoFillPremiumBadge.isHidden = canUseQuickAutoFill
@@ -129,11 +135,15 @@ extension SettingsAutoFillVC {
     ) -> String? {
         switch section {
         case 0:
+            #if INTUNE
+            return "⚠️ " + LString.autoFillUnavailableInIntuneDescription
+            #else
             if isAutoFillEnabled {
                 return nil
             } else {
                 return LString.howToActivateAutoFillDescription
             }
+            #endif
         case 1:
             return LString.quickAutoFillDescription
         default:
