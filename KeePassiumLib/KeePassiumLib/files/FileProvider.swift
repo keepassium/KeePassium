@@ -23,6 +23,7 @@ public enum FileProvider: Hashable {
         "com.keepassium.fileprovider.webdav": .keepassiumWebDAV,
         "com.keepassium.fileprovider.onedrive": .keepassiumOneDrive,
         "mega.ios.MEGAPickerFileProvider": .megaNz,
+        "de.telekom.Mediencenter.FileProviderExtension": .magentaCloud,
         "it.twsweb.Nextcloud.File-Provider-Extension": .nextcloud,
         "com.microsoft.skydrive.onedrivefileprovider": .oneDrive,
         "com.owncloud.ios-app.ownCloud-File-Provider": .ownCloud,
@@ -56,6 +57,7 @@ public enum FileProvider: Hashable {
     case keepassiumWebDAV
     case keepassiumOneDrive
     case megaNz
+    case magentaCloud
     case nextcloud
     case oneDrive
     case ownCloud
@@ -151,6 +153,12 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "MEGA.nz",
                 comment: "Localized name of the storage service: MEGA (https://mega.nz)")
+        case .magentaCloud:
+            return NSLocalizedString(
+                "[FileProvider/MagentaCloud/name]",
+                bundle: Bundle.framework,
+                value: "MagentaCLOUD",
+                comment: "Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud)")
         case .nextcloud:
             return NSLocalizedString(
                 "[FileProvider/Nextcloud/name]",
