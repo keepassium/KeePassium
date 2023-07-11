@@ -94,7 +94,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="I" image="list.bullet" catalog="system" id="lnO-nD-gvh" userLabel="Sort Order">
+                        <barButtonItem image="list.bullet" catalog="system" id="lnO-nD-gvh" userLabel="Sort Order">
                             <attributedString key="userComments">
                                 <fragment content="Action: show sorting settings of database files"/>
                             </attributedString>
