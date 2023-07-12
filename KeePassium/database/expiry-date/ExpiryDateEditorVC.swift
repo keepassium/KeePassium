@@ -35,19 +35,12 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
     @available(iOS 13, *)
     private lazy var relativeTimeFormatter: RelativeDateTimeFormatter = {
         let formatter = RelativeDateTimeFormatter()
-        formatter.formattingContext = .listItem
+        formatter.formattingContext = .beginningOfSentence
+        formatter.dateTimeStyle = .named
         formatter.unitsStyle = .full
         return formatter
     }()
     
-    private lazy var presetShortTimeFormatter: RelativeDateTimeFormatter = {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.dateTimeStyle = .named
-        formatter.formattingContext = .beginningOfSentence
-        formatter.unitsStyle = .full
-        return formatter
-    }()
-
     private lazy var presetTimeFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.allowsFractionalUnits = false
@@ -102,15 +95,19 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
     
     
     @available(iOS 14, *)
-    private func makePresetMenuAction(_ interval: TimeInterval) -> UIAction {
+    private func makePresetMenuAction(_ delta: DateComponents) -> UIAction {
+        let targetDate = Calendar.autoupdatingCurrent.date(byAdding: delta, to: .now) ?? .now
+        
         let title: String
-        if interval < .day {
-            title = presetShortTimeFormatter.localizedString(fromTimeInterval: interval)
+        if targetDate.timeIntervalSinceNow < .hour {
+            title = relativeTimeFormatter.localizedString(for: targetDate, relativeTo: .now)
         } else {
-            title = presetTimeFormatter.string(from: interval)!
+            title = presetTimeFormatter.string(from: .now, to: targetDate) ?? "?"
         }
-        let action = UIAction(title: title) { [weak self] _ in
-            self?.datePicker.date = .now.addingTimeInterval(interval)
+        
+        let action = UIAction(title: title) { [weak self, delta] _ in
+            let targetDate = Calendar.autoupdatingCurrent.date(byAdding: delta, to: .now) ?? .now
+            self?.datePicker.date = targetDate
             self?.neverExpiresSwitch.isOn = false
             self?.refresh()
         }
@@ -119,20 +116,20 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
     
     private func makePresetsMenu() -> UIMenu {
         let todayMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
-            makePresetMenuAction(0 * .second)
+            makePresetMenuAction(DateComponents(second: 0))
         ])
         let weeksMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
-            makePresetMenuAction(1 * .week),
-            makePresetMenuAction(2 * .week),
+            makePresetMenuAction(DateComponents(minute: 1, weekOfYear: 1)),
+            makePresetMenuAction(DateComponents(minute: 1, weekOfYear: 2))
         ])
         let monthsMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
-            makePresetMenuAction(31 * .day),  
-            makePresetMenuAction(91 * .day),  
-            makePresetMenuAction(182 * .day), 
+            makePresetMenuAction(DateComponents(month: 1, minute: 1)),
+            makePresetMenuAction(DateComponents(month: 3, minute: 1)),
+            makePresetMenuAction(DateComponents(month: 6, minute: 1)),
         ])
         let yearsMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
-            makePresetMenuAction(1 * .year),
-            makePresetMenuAction(2 * .year),
+            makePresetMenuAction(DateComponents(year: 1, minute: 1)),
+            makePresetMenuAction(DateComponents(year: 2, minute: 1)),
         ])
         return UIMenu.make(
             title: LString.titlePresets,
