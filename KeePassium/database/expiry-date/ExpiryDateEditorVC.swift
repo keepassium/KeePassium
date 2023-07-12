@@ -40,6 +40,14 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
         return formatter
     }()
     
+    private lazy var presetShortTimeFormatter: RelativeDateTimeFormatter = {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.dateTimeStyle = .named
+        formatter.formattingContext = .beginningOfSentence
+        formatter.unitsStyle = .full
+        return formatter
+    }()
+
     private lazy var presetTimeFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.allowsFractionalUnits = false
@@ -95,7 +103,12 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
     
     @available(iOS 14, *)
     private func makePresetMenuAction(_ interval: TimeInterval) -> UIAction {
-        let title = presetTimeFormatter.string(from: interval)!
+        let title: String
+        if interval < .day {
+            title = presetShortTimeFormatter.localizedString(fromTimeInterval: interval)
+        } else {
+            title = presetTimeFormatter.string(from: interval)!
+        }
         let action = UIAction(title: title) { [weak self] _ in
             self?.datePicker.date = .now.addingTimeInterval(interval)
             self?.neverExpiresSwitch.isOn = false
@@ -105,6 +118,9 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
     }
     
     private func makePresetsMenu() -> UIMenu {
+        let todayMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
+            makePresetMenuAction(0 * .second)
+        ])
         let weeksMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
             makePresetMenuAction(1 * .week),
             makePresetMenuAction(2 * .week),
@@ -121,7 +137,7 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
         return UIMenu.make(
             title: LString.titlePresets,
             reverse: true,
-            children: [weeksMenu, monthsMenu, yearsMenu])
+            children: [todayMenu, weeksMenu, monthsMenu, yearsMenu])
     }
     
     
