@@ -93,6 +93,17 @@ public class Group2: Group {
         }
         return parent2.resolvingIsSearchingEnabled()
     }
+    
+    public func resolvingIsAutoTypeEnabled() -> Bool {
+        if let isAutoTypeEnabled { // nil means "check parent"
+            return isAutoTypeEnabled
+        }
+        guard let parent2 = parent as? Group2 else {
+            return true
+        }
+        return parent2.resolvingIsAutoTypeEnabled()
+    }
+    
     override public func createEntry(detached: Bool = false) -> Entry {
         let newEntry = Entry2(database: database)
         newEntry.uuid = UUID()

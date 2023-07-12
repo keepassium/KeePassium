@@ -91,7 +91,8 @@ final public class QuickTypeAutoFillStorage {
         rootGroup?.applyToAllChildren(groupHandler: nil, entryHandler: { entry in
             let parentGroup2 = entry.parent as? Group2
             let canSearch = parentGroup2?.resolvingIsSearchingEnabled() ?? true
-            guard canSearch else {
+            let canAutoType = parentGroup2?.resolvingIsAutoTypeEnabled() ?? true
+            guard canSearch && canAutoType else {
                 return
             }
             if entry.isDeleted || entry.isHiddenFromSearch || entry.isExpired {
