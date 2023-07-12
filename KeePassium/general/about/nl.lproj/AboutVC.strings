@@ -40,9 +40,6 @@
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
 "daJ-ma-jhe.text" = "MIT-licentie";
 
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "dMv-Zw-y7y"; */
-"dMv-Zw-y7y.text" = "MIT-licentie";
-
 /* Class = "UILabel"; text = "Custom permissive license"; ObjectID = "EWy-OI-IxL"; */
 "EWy-OI-IxL.text" = "Aangepaste vrijblijvende licentie";
 
@@ -138,9 +135,6 @@
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "uiw-Qh-pNp.text" = "Laat een recensie achter in de App Store.";
-
-/* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
-"vg0-6M-OIq.text" = "KeyboardLayoutConstraint van James Tang";
 
 /* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
 "VuB-ng-Uii.text" = "Nuvola-pictogrammen van David Vignoni";

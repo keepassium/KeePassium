@@ -583,6 +583,12 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "共有メニューを使用して、別の場所に保存してください。";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassiumが '%@' にアクセスするには認証が必要です。";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "アクセスを許可するファイルをもう一度選択してください";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "ストレージが応答しません。";
 
@@ -651,6 +657,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -780,6 +789,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "共有";
+
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "修復する";
 
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "詳細...";
@@ -1121,7 +1133,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "EFFのラージワードリスト (7776個)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFFのショートワードリスト (1296個)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFFのショートワードリスト #%d (1296個)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "ワードリスト";
@@ -1405,6 +1417,9 @@
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "OneDriveにサインイン";
 
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "OneDriveには再度サインインする必要があります。";
+
 /* No comment provided by engineer. */
 "[RemoteConnection/SignIn/PrivateMode/description]" = "プライベートウェブブラウザモードでサインインページを開く";
 
@@ -1473,6 +1488,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "パスワードの自動入力";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "自動入力はKeePassium for Intuneでは使用できません。";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "完全一致時に自動で入力";

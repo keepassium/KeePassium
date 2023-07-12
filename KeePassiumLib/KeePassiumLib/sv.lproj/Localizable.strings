@@ -1121,7 +1121,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "EFF:s långa ordlista (7776 ord)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF:s korta ordlista (1296 ord)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF:s korta ordlista %d (1296 ord)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Ordlista";

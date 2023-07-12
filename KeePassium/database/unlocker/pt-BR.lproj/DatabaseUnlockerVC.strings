@@ -4,9 +4,6 @@
 /* Class = "UIViewController"; title = "Unlock Database"; ObjectID = "eAa-Z5-pdq"; Note = "Title of the database unlocker dialog."; */
 "eAa-Z5-pdq.title" = "Desbloquear banco de dados";
 
-/* Class = "UILabel"; text = "Database was closed by a timer."; ObjectID = "epu-yU-Lyg"; Note = "Notification message shown by database lock timer."; */
-"epu-yU-Lyg.text" = "O banco de dados foi fechado pois o tempo de permanência aberto expirou.";
-
 /* Class = "UIButton"; normalTitle = "Lock Database"; ObjectID = "gji-1x-co5"; */
 "gji-1x-co5.normalTitle" = "Bloquear banco de dados";
 

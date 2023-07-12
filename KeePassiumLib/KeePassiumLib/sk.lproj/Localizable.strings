@@ -1121,7 +1121,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "EFF Veľký zoznam slov (7776 slov)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF Krátky zoznam slov (1296 slov)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF Krátky zoznam slov #%d (1296 slov)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Zoznam slov";

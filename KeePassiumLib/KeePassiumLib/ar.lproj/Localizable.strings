@@ -1042,9 +1042,6 @@
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "قائمة كلمات EFF الكبيرة (7776 كلمة)";
 
-/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "قائمة كلمات EFF القصيرة (1296 كلمة)";
-
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "قَائِمَةُ الكَلِمات";
 

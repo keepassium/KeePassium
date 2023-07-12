@@ -43,6 +43,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numerisch";
 
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Für Touch ID ESC drücken";
+
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "PIN erfolgreich aktualisiert.";
 
@@ -234,6 +237,9 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Datei als unerreichbar betrachten";
+
+/* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
+"[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Datei erneut hinzufügen";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "Fehler anzeigen";
@@ -577,6 +583,12 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Verwenden Sie die Export-Option, um die Datei an einem anderen Ort zu speichern.";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium benötigt Ihre Erlaubnis für den Zugriff auf '%@'.";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Wählen Sie die Datei erneut aus, um den Zugriff zu erlauben";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Speicheranbieter reagiert nicht.";
 
@@ -645,6 +657,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -774,6 +789,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportieren";
+
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Beheben";
 
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Mehr erfahren …";
@@ -934,6 +952,9 @@
 /* Info message for enterprise users */
 "[Intune/OrgNeedsToManage]" = "Um die eigenen Daten zu schützen, muss Ihre Organisation diese App verwalten. Melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto an, um diese Aktion abzuschließen.";
 
+/* Info message for users who accidentally installed the enterprise version. */
+"[Intune/PersonalVersionElsewhere]" = "Die KeePassium-Version für den persönlichen Gebrauch ist erhältlich im App Store.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Vorherige Version wiederhergestellt";
 
@@ -976,6 +997,9 @@
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Wenden Sie sich an Ihren IT-Administrator.";
 
+/* Error message, euphemism for missing corporate license */
+"[Org/LicenseMissing]" = "KeePassium konnte das Unternehmenskonto Ihrer Organisation nicht finden.";
+
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "Einmalpasswort in die Zwischenablage kopiert";
 
@@ -985,11 +1009,20 @@
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Dieser QR-Code ist nicht für die OTP-Einrichtung geeignet.";
 
+/* Error shown when a manually entered OTP secret is misformatted. */
+"[OTP/Scan/InvalidSecretCode]" = "Dieser Geheimcode ist nicht für die OTP-Einrichtung geeignet.";
+
 /* Message to confirm user intentions */
 "[OTP/Scan/OverwriteWarning]" = "Für diesen Eintrag ist bereits ein Einmalpasswort festgelegt. Möchten Sie es überschreiben?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Einmalpasswort einrichten (OTP)";
+
+/* Button/action: proceed with manual OTP setup */
+"[OTP/Setup/EnterManually]" = "Manuell eingeben";
+
+/* Call to action: type in the secret key for OTP setup. */
+"[OTP/Setup/EnterSecretCode/callToAction]" = "Geheimcode eingeben";
 
 /* Button/action: proceed with QR code based OTP setup */
 "[OTP/Setup/ScanQRCode]" = "QR-Code scannen";
@@ -1100,7 +1133,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "Große EFF-Wortliste (7.776 Wörter)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "Kurze EFF-Wortliste (1.296 Wörter)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Kurze EFF-Wortliste #%d (1.296 Wörter)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Wortliste";
@@ -1384,6 +1417,9 @@
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Bei OneDrive anmelden";
 
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "Sie müssen sich erneut bei OneDrive anmelden.";
+
 /* No comment provided by engineer. */
 "[RemoteConnection/SignIn/PrivateMode/description]" = "Anmeldeseite im privaten Webbrowser-Modus öffnen";
 
@@ -1452,6 +1488,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Passwörter automatisch eintragen";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "Automatisch ausfüllen ist in KeePassium für Intune nicht verfügbar.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Fügt das perfekte Ergebnis automatisch ein";

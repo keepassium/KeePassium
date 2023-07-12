@@ -40,9 +40,6 @@
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
 "daJ-ma-jhe.text" = "MIT 授權許可";
 
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "dMv-Zw-y7y"; */
-"dMv-Zw-y7y.text" = "MIT 授權許可";
-
 /* Class = "UILabel"; text = "Custom permissive license"; ObjectID = "EWy-OI-IxL"; */
 "EWy-OI-IxL.text" = "自定義許可證";
 
@@ -135,9 +132,6 @@
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "uiw-Qh-pNp.text" = "在 App Store 留下評論。";
-
-/* Class = "UILabel"; text = "KeyboardLayoutConstraint by James Tang"; ObjectID = "vg0-6M-OIq"; */
-"vg0-6M-OIq.text" = "KeyboardLayoutConstraint 來自 James Tang";
 
 /* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
 "VuB-ng-Uii.text" = "Nuvola icons 來自 David Vignoni";

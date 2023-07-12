@@ -583,6 +583,12 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Utilizza l'opzione Esporta per salvare il file da un'altra parte.";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium richiede il tuo permesso per accedere a '%@'.";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Seleziona di nuovo il file per consentire l'accesso";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Il fornitore di spazio di archiviazione non risponde.";
 
@@ -651,6 +657,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -780,6 +789,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Esporta";
+
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Risolvi";
 
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Maggiori informazioni...";
@@ -1121,7 +1133,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "Lista vocaboli EFF ampia (7776 parole)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "Lista vocaboli EFF breve (1296 parole)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Dizionario EEF breve #%d (1296 parole)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Lista vocaboli";
@@ -1405,6 +1417,9 @@
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Accedi a OneDrive";
 
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "OneDrive richiede di nuovo l'accesso.";
+
 /* No comment provided by engineer. */
 "[RemoteConnection/SignIn/PrivateMode/description]" = "Apri la pagina di accesso in un pannello privato";
 
@@ -1473,6 +1488,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Inserimento automatico password";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "L'inserimento automatico non è disponibile in KeePassium per Intune.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Inserisci risultato perfetto in automatico";

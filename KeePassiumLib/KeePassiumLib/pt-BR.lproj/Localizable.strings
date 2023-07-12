@@ -1121,7 +1121,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "Lista grande da EFF (7776 termos)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "Lista curta da EFF (1296 termos)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Lista curta da EFF nº%d (1296 termos)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Dicionário";

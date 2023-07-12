@@ -583,6 +583,9 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Используйте функцию экспорта, чтобы сохранить файл в другом месте.";
 
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Выберите файл заново, чтобы разрешить доступ";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Хранилище файлов не отвечает.";
 
@@ -651,6 +654,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -780,6 +786,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Экспорт";
+
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Исправить это";
 
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Подробнее…";
@@ -1121,7 +1130,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "Большой список EFF (7776 слов)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "Малый список EFF (1296 слов)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Малый список EFF №%d (1296 слов)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Список слов";
@@ -1473,6 +1482,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Автозаполнение паролей";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "Автозаполнение недоступно в KeePassium для Intune.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Автоматически подставлять идеальный вариант";

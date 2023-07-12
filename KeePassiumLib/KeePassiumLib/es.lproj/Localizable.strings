@@ -1049,7 +1049,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "Lista larga de la EFF (7776 palabras)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "Lista corta de la EFF (1296 palabras)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Lista corta de la EFF n.º%d (1296 palabras)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Lista de palabras";

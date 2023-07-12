@@ -1088,7 +1088,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "EFF Large Wordlist (7776 คำ)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF Short Wordlist (1296 คำ)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF Short Wordlist %d (1296 คำ)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "ชุดคำศัพท์";

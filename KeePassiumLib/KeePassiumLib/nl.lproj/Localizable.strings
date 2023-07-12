@@ -583,6 +583,12 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Gebruik de exportoptie om het bestand op te slaan op een andere locatie.";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium heeft uw toestemming nodig om toegang te krijgen tot '%@'.";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Selecteer het bestand opnieuw om toegang toe te staan";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "De opslagdienst reageert niet.";
 
@@ -651,6 +657,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -780,6 +789,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exporteer";
+
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Herstel dit";
 
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Meer informatie";
@@ -1121,7 +1133,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "Grote woordenlijst van EFF (7.776 woorden)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "Korte woordenlijst van EFF (1.296 woorden)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF korte woordenlijst #%d (1296 woorden)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Woordenlijst";
@@ -1405,6 +1417,9 @@
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Meld u aan bij OneDrive";
 
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "Voor OneDrive moet u zich opnieuw aanmelden.";
+
 /* No comment provided by engineer. */
 "[RemoteConnection/SignIn/PrivateMode/description]" = "Open de aanmeldpagina in privéwebbrowsermodus";
 
@@ -1473,6 +1488,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Vul wachtwoorden automatisch in";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "AutoFill is niet beschikbaar in KeePassium voor Intune.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Vul het meest overeenkomende resultaat automatisch in";
