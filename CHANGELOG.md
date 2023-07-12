@@ -1,5 +1,22 @@
 #CHANGELOG
 
+### Improved
+
+- Added expiry option "Now" (closes #300) [thanks, thejoker8814]
+- Added detection of MagentaCloud file provider
+- Updated all translations
+
+### Removed 
+
+- Intune: removed AutoFill, because not supported by Intune SDK (msintuneappsdk/ms-intune-app-sdk-ios#314)
+
+### Fixed
+
+- AutoFill: exclude groups that have AutoType disabled [thanks, Kelly]
+- Search: Check parent groups when omitting non-searchable ones
+- Minor UI improvements in expiry date editor
+
+
 ## [1.45.136] - 2023-07-03
 
 ### Added

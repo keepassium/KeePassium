@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.45",
-            "releaseDate": "2023-07-03T00:00:00Z",
+            "releaseDate": "2023-07-12T00:00:00Z",
             "items": [
                 {
                     "title": "This version requires iOS 15.4 / macOS 12.0 or newer",
@@ -14,6 +14,22 @@
                 },
                 {
                     "title": "🧩 Added: Passphrase generator now includes EFF short list #1 [thanks, K.J.]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Added expiry option \"Now\" (closes #300) [thanks, thejoker8814]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Added detection of MagentaCloud file provider",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated all translations",
+                    "type": 1
+                },
+                {
+                    "title": "❌ Removed: Intune: removed AutoFill, because not supported by Intune SDK",
                     "type": 1
                 },
                 {
@@ -42,6 +58,14 @@
                 },
                 {
                     "title": "🐞 Fixed: Update the stored derived key on DB save [thanks, Santiago]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: AutoFill: exclude groups that have AutoType disabled [thanks, Kelly]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Search: Check parent groups when omitting non-searchable ones",
                     "type": 1
                 },
                 {
