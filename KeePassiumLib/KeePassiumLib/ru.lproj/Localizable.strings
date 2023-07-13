@@ -583,6 +583,9 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Используйте функцию экспорта, чтобы сохранить файл в другом месте.";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium требуется разрешение на доступ к '%@'.";
+
 /* Action/button for error recovery */
 "[FileAccessError/PermissionRequired/recoveryAction]" = "Выберите файл заново, чтобы разрешить доступ";
 
@@ -1413,6 +1416,9 @@
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Войти в OneDrive";
+
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "Необходимо повторно войти в OneDrive.";
 
 /* No comment provided by engineer. */
 "[RemoteConnection/SignIn/PrivateMode/description]" = "Открыть страницу входа в браузере в режиме инкогнито";

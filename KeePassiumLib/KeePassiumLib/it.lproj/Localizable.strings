@@ -1133,7 +1133,7 @@
 "[PasswordGenerator/Wordlist/EFFLarge/title]" = "Lista vocaboli EFF ampia (7776 parole)";
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
-"[PasswordGenerator/Wordlist/EFFShort/title]" = "Dizionario EEF breve #%d (1296 parole)";
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Dizionario EEF breve n. %d (1296 parole)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Lista vocaboli";

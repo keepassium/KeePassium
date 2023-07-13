@@ -583,6 +583,12 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Použite možnosť Export na uloženie súboru do inej lokácie.";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium potrebuje vaše povolenie na prístup k '%@'.";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Opätovne vyberte súbor k povoleniu prístupu";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Poskytovateľ úložiska neodpovedá.";
 
@@ -651,6 +657,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -780,6 +789,9 @@
 
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportovať";
+
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Opraviť";
 
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Zistiť viac…";
@@ -1405,6 +1417,9 @@
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Prihláste sa do OneDrive";
 
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "OneDrive vyžaduje, aby ste sa opätovne prihlásili.";
+
 /* No comment provided by engineer. */
 "[RemoteConnection/SignIn/PrivateMode/description]" = "Otvorte prihlasovaciu stránku v režime súkromného webového prehliadača";
 
@@ -1473,6 +1488,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Automatické vyplňovanie hesiel";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "Automatické doplňovanie nie je dostupné v KeePassium pre Intune.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Vyplniť presné výsledky automaticky";
