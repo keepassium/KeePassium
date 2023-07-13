@@ -1,5 +1,15 @@
 #CHANGELOG
 
+## [1.45.138] - 2023-07-13
+
+### Changed
+
+- Extended the provisional business license to 2023-08-31
+- Updated translations
+
+
+## [1.45.137] - 2023-07-12
+
 ### Improved
 
 - Added expiry option "Now" (closes #300) [thanks, thejoker8814]
