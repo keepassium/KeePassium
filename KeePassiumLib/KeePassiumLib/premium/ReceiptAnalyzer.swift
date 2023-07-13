@@ -68,7 +68,7 @@ public struct PurchaseHistory: Codable, Equatable {
             premiumFallbackDate: nil
         )
     }()
-    private static let provisionalLicenseCutoffDate = Date(iso8601string: "2023-07-31T23:59:59Z")
+    private static let provisionalLicenseCutoffDate = Date(iso8601string: "2023-08-31T23:59:59Z")
     
     static let betaTesting = {
         PurchaseHistory(
