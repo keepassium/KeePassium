@@ -133,13 +133,6 @@ final class MainCoordinator: Coordinator {
             return
         }
         Diag.info("Intune account is enrolled")
-        IntuneMAMDiagnosticConsole.getIntuneLogPaths()?.forEach { logFilePath in
-            Diag.info(logFilePath)
-            if let fileURL = URL(string: "file://" + logFilePath) {
-                let log: String = (try? String(contentsOf: fileURL)) ?? "failed"
-                Diag.info(log)
-            }
-        }
         #endif
         
         runAfterStartTasks()
