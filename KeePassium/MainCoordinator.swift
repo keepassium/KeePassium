@@ -757,6 +757,13 @@ extension MainCoordinator: WatchdogDelegate {
 }
 
 extension MainCoordinator: PasscodeInputDelegate {
+    func passcodeInput(_ sender: PasscodeInputVC, shouldTryPasscode passcode: String) {
+        let isMatch = try? Keychain.shared.isAppPasscodeMatch(passcode)
+        if isMatch ?? false { 
+            passcodeInput(sender, didEnterPasscode: passcode)
+        }
+    }
+    
     func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
         do {
             if try Keychain.shared.isAppPasscodeMatch(passcode) { 

@@ -14,6 +14,8 @@ protocol PasscodeInputDelegate: AnyObject {
     
     func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool
     
+    func passcodeInput(_ sender: PasscodeInputVC, shouldTryPasscode passcode: String)
+    
     func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String)
     
     func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC)
@@ -24,6 +26,7 @@ extension PasscodeInputDelegate {
     func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
         return passcode.count > 0
     }
+    func passcodeInput(_ sender: PasscodeInputVC, shouldTryPasscode passcode: String) {}
     func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode: String) {}
     func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {}
 }
@@ -223,6 +226,15 @@ extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
             .passcodeInput(_sender: self, canAcceptPasscode: passcode) ?? false
         mainButton.isEnabled = isAcceptable
         return isAcceptable
+    }
+    
+    func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
+        guard mode == .verification,
+              sender.isValid
+        else {
+            return
+        }
+        delegate?.passcodeInput(self, shouldTryPasscode: text)
     }
 }
 
