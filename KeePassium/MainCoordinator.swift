@@ -141,8 +141,8 @@ final class MainCoordinator: Coordinator {
     private func runAfterStartTasks() {
         #if INTUNE
         applyIntuneAppConfig()
-        
-        guard ManagedAppConfig.shared.hasProvisionalLicense() else {
+
+        guard LicenseManager.shared.hasActiveBusinessLicense() else {
             showOrgLicensePaywall()
             return
         }
@@ -150,7 +150,7 @@ final class MainCoordinator: Coordinator {
         DispatchQueue.main.async { [weak self] in
             self?.maybeShowOnboarding()
         }
-        
+
         let isAutoUnlockStartupDatabase = Settings.current.isAutoUnlockStartupDatabase
         databasePickerCoordinator.shouldSelectDefaultDatabase = isAutoUnlockStartupDatabase
     }
@@ -245,9 +245,12 @@ extension MainCoordinator {
             self?.runAfterStartTasks()
         }
         alert.addAction(title: LString.titleDiagnosticLog, style: .default) { [weak self] _ in
-            self?.showDiagnostics(onDismiss: { [weak self] in
-                self?.runAfterStartTasks()
-            })
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.showDiagnostics(onDismiss: { [weak self] in
+                    self?.runAfterStartTasks()
+                })
+            }
         }
         DispatchQueue.main.async {
             self.getPresenterForModals().present(alert, animated: true)

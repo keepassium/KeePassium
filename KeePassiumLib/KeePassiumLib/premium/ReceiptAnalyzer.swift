@@ -58,17 +58,16 @@ public struct PurchaseHistory: Codable, Equatable {
         )
     }()
 
-    static let provisionalBusinessLicense = {
+    static let businessLicense = {
         PurchaseHistory(
             containsTrial: false,
-            containsLifetimePurchase: false,
-            latestPremiumProduct: .yearlySubscription,
-            latestPremiumExpiryDate: provisionalLicenseCutoffDate,
-            premiumSupportExpiryDate: provisionalLicenseCutoffDate,
+            containsLifetimePurchase: true,
+            latestPremiumProduct: .forever,
+            latestPremiumExpiryDate: .distantFuture,
+            premiumSupportExpiryDate: .distantFuture,
             premiumFallbackDate: nil
         )
     }()
-    private static let provisionalLicenseCutoffDate = Date(iso8601string: "2023-08-31T23:59:59Z")
     
     static let betaTesting = {
         PurchaseHistory(
@@ -192,9 +191,9 @@ class ReceiptAnalyzer {
         if BusinessModel.type == .prepaid {
             return PurchaseHistory.prepaidProVersion
         }
-        if ManagedAppConfig.shared.hasProvisionalLicense() {
-            Diag.info("Using provisional business license")
-            return PurchaseHistory.provisionalBusinessLicense
+        if LicenseManager.shared.hasActiveBusinessLicense() {
+            Diag.info("Using business license")
+            return PurchaseHistory.businessLicense
         }
         if Settings.current.isTestEnvironment {
             Diag.info("Enabling premium for test environment")

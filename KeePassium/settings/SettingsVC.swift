@@ -93,7 +93,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
         
-        if BusinessModel.type == .prepaid {
+        if BusinessModel.type == .prepaid || LicenseManager.shared.hasActiveBusinessLicense() {
             isPremiumSectionHidden = true
             premiumSectionFooter = nil
             setCellVisibility(premiumPurchaseCell, isHidden: true)
@@ -296,7 +296,9 @@ final class SettingsVC: UITableViewController, Refreshable {
     #endif
     
     @objc private func refreshPremiumStatus() {
-        guard BusinessModel.type != .prepaid else { return }
+        if BusinessModel.type == .prepaid || LicenseManager.shared.hasActiveBusinessLicense() {
+            return
+        }
         
         let premiumManager = PremiumManager.shared
         premiumManager.usageMonitor.refresh()

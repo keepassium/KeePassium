@@ -31,26 +31,6 @@ public final class ManagedAppConfig {
         let isForced = UserDefaults.standard.objectIsForced(forKey: Key.managedConfig)
         return isForced
     }
-    
-    public func hasProvisionalLicense() -> Bool {
-        let anyValue = intuneConfig?[Key.license] ?? currentConfig?[Key.license]
-        guard let rawLicenseValue = anyValue as? String else {
-            if BusinessModel.isIntuneEdition {
-                Diag.warning("Business license is not configured")
-            }
-            return false
-        }
-        let licenseValue = rawLicenseValue
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .lowercased()
-        /*
-         Note to business customers (administrators).
-         This is a temporary stub to get you up and running.
-         Once the proper licensing is implemented, this workaround will be removed.
-         To ensure a smooth transition, request your corporate license in advance.
-         */
-        return licenseValue == "provisional"
-    }
 }
 
 extension ManagedAppConfig {
@@ -66,5 +46,19 @@ extension ManagedAppConfig {
         var newIntuneConfig = intuneConfig ?? [:]
         newIntuneConfig[Key.license] = firstConfig[Key.license] as? String
         intuneConfig = newIntuneConfig
+    }
+}
+
+extension ManagedAppConfig {
+    internal func getLicenseValue() -> String? {
+        let anyValue = intuneConfig?[Key.license] ?? currentConfig?[Key.license]
+        guard let rawLicenseValue = anyValue as? String else {
+            if BusinessModel.isIntuneEdition {
+                Diag.warning("Business license is not configured")
+            }
+            return nil
+        }
+        let licenseValue = rawLicenseValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        return licenseValue
     }
 }

@@ -96,6 +96,8 @@
 		75C8471924FAE7B60064A4EC /* Comparable+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */; };
 		75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA6640276BAF06003384FC /* DatabaseError.swift */; };
 		75CD1524285F3929003C11DA /* TimeInterval+constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD1523285F3929003C11DA /* TimeInterval+constants.swift */; };
+		75CF4C862A65F9E90054B05B /* v1-proofs.sha256 in Resources */ = {isa = PBXBuildFile; fileRef = 75CF4C852A65F9650054B05B /* v1-proofs.sha256 */; };
+		75CF4C8A2A666D8B0054B05B /* LicenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF4C892A666D8B0054B05B /* LicenseManager.swift */; };
 		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
 		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B862174F02F00F7DEF2 /* salsa20.c */; };
@@ -331,6 +333,8 @@
 		75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+extensions.swift"; sourceTree = "<group>"; };
 		75CA6640276BAF06003384FC /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 		75CD1523285F3929003C11DA /* TimeInterval+constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+constants.swift"; sourceTree = "<group>"; };
+		75CF4C852A65F9650054B05B /* v1-proofs.sha256 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "v1-proofs.sha256"; sourceTree = "<group>"; };
+		75CF4C892A666D8B0054B05B /* LicenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseManager.swift; sourceTree = "<group>"; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
 		75D09B862174F02F00F7DEF2 /* salsa20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = salsa20.c; sourceTree = "<group>"; };
@@ -607,6 +611,7 @@
 		75AF1936282EEFB300FA4BB5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				75CF4C882A666D6D0054B05B /* licensing */,
 				75AF1937282EEFBC00FA4BB5 /* wordlists */,
 			);
 			path = resources;
@@ -657,6 +662,22 @@
 				75BF5AE727680A3F00809654 /* UnreachableFileFallbackStrategy.swift */,
 			);
 			name = caching;
+			sourceTree = "<group>";
+		};
+		75CF4C872A666D4E0054B05B /* licensing */ = {
+			isa = PBXGroup;
+			children = (
+				75CF4C892A666D8B0054B05B /* LicenseManager.swift */,
+			);
+			name = licensing;
+			sourceTree = "<group>";
+		};
+		75CF4C882A666D6D0054B05B /* licensing */ = {
+			isa = PBXGroup;
+			children = (
+				75CF4C852A65F9650054B05B /* v1-proofs.sha256 */,
+			);
+			path = licensing;
 			sourceTree = "<group>";
 		};
 		75D09B6A2174F02F00F7DEF2 /* crypto */ = {
@@ -807,6 +828,7 @@
 				75AA9B4F272FF3E500863B98 /* autofill */,
 				75B813CD25FA6E8C00A86B7C /* db-settings */,
 				75707EC326CE7B0100BE5EBC /* dispatch */,
+				75CF4C872A666D4E0054B05B /* licensing */,
 				756180F82820823A00EA015D /* password-generator */,
 				75B813D025FA6EE600A86B7C /* progress */,
 				75B813D225FA6F6000A86B7C /* settings */,
@@ -1091,6 +1113,7 @@
 				75AF193B282EF1B600FA4BB5 /* eff-large-wordlist.txt in Resources */,
 				75804AAF2A43B5A300A9C985 /* eff-short-wordlist-1.txt in Resources */,
 				75AF193D282EF39300FA4BB5 /* eff-short-wordlist-2-0.txt in Resources */,
+				75CF4C862A65F9E90054B05B /* v1-proofs.sha256 in Resources */,
 				751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1223,6 +1246,7 @@
 				756180FA2820827D00EA015D /* StringSet.swift in Sources */,
 				754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */,
 				7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */,
+				75CF4C8A2A666D8B0054B05B /* LicenseManager.swift in Sources */,
 				75D09C432174F77000F7DEF2 /* DateExtension-kp1.swift in Sources */,
 				75D09C322174F77000F7DEF2 /* String+extension.swift in Sources */,
 				75E60AE125CF5D310089219C /* DatabaseIconSet.swift in Sources */,
