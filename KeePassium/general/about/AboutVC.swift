@@ -49,6 +49,7 @@ final class AboutVC: UITableViewController {
         130: "https://github.com/1024jp/GzipSwift",
         140: "https://github.com/norio-nomura/Base32",
         160: "https://github.com/scalessec/Toast-Swift",
+        165: "https://github.com/dropbox/zxcvbn-ios",
         170: "https://eff.org/dice",
     ]
 

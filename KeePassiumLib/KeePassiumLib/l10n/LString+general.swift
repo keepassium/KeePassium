@@ -7,6 +7,12 @@
 //  For commercial licensing, please contact the author.
 
 extension LString {
+    
+    public static let bitCountTemplate = NSLocalizedString(
+        "[Generic/Count/Bits]",
+        bundle: Bundle.framework,
+        comment: "(Defined in Localizable.stringsdict)"
+    )
 
     public static let actionOK = NSLocalizedString(
         "[Generic] OK",

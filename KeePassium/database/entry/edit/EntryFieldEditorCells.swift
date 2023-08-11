@@ -264,6 +264,7 @@ final class PasswordEntryFieldCell:
     public static let storyboardID = "PasswordEntryFieldCell"
     @IBOutlet private weak var textField: ValidatingTextField!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var passwordQualityIndicatorView: PasswordQualityIndicatorView!
     @IBOutlet weak var randomizeButton: UIButton!
     
     weak var delegate: EditableFieldCellDelegate?
@@ -275,6 +276,7 @@ final class PasswordEntryFieldCell:
                 (field?.isProtected ?? false) && Settings.current.isHideProtectedFields
             textField.accessibilityLabel = field?.visibleName
             randomizeButton.accessibilityLabel = LString.PasswordGenerator.titleRandomGenerator
+            passwordQualityIndicatorView.quality = .init(password: field?.value)
         }
     }
     
@@ -309,6 +311,7 @@ final class PasswordEntryFieldCell:
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         guard let field = field else { return }
         field.value = textField.text ?? ""
+        passwordQualityIndicatorView.quality = .init(password: textField.text)
         delegate?.didChangeField(field, in: self)
     }
     

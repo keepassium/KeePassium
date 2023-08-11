@@ -70,11 +70,19 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
     @IBOutlet private weak var updateButton: UIBarButtonItem!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet private weak var altDoneButton: UIBarButtonItem!
-    
+    @IBOutlet private weak var passwordQualityIndicatorView: PasswordQualityIndicatorView!
+
     public weak var delegate: PasswordGeneratorDelegate?
     
     public internal(set) var config: PasswordGeneratorParams!
     public internal(set) var mode: PasswordGeneratorMode = .basic
+    
+    private let qualityEstimationQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.qualityOfService = .utility
+        return queue
+    }()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,6 +141,8 @@ extension PasswordGeneratorVC {
         doneButton.isEnabled = true
         altDoneButton.isEnabled = true
         copyButton.isEnabled = true
+
+        updateQualityIndicator(password: passphrase)
     }
     
     public func showPassword(_ password: String, animated: Bool) {
@@ -149,6 +159,30 @@ extension PasswordGeneratorVC {
         doneButton.isEnabled = true
         altDoneButton.isEnabled = true
         copyButton.isEnabled = true
+        
+        updateQualityIndicator(password: password)
+    }
+    
+    private func updateQualityIndicator(password: String?) {
+        qualityEstimationQueue.cancelAllOperations()
+        guard let password else {
+            passwordQualityIndicatorView.isHidden = true
+            return
+        }
+        passwordQualityIndicatorView.isHidden = false
+        passwordQualityIndicatorView.isBusy = true
+        let updateOperation = BlockOperation()
+        updateOperation.addExecutionBlock { [weak passwordQualityIndicatorView] in
+            let quality = PasswordQuality(password: password)
+            if updateOperation.isCancelled {
+                return
+            }
+            DispatchQueue.main.async {
+                passwordQualityIndicatorView?.quality = quality
+                passwordQualityIndicatorView?.isBusy = false
+            }
+        }
+        qualityEstimationQueue.addOperation(updateOperation)
     }
     
     private func setupAccessibility(_ label: PasswordGeneratorLabel) {
@@ -195,6 +229,7 @@ extension PasswordGeneratorVC {
         doneButton.isEnabled = false
         altDoneButton.isEnabled = false
         copyButton.isEnabled = false
+        updateQualityIndicator(password: nil)
     }
     
     private func animateTransition(_ view: UIView) {
