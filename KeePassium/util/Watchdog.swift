@@ -38,6 +38,9 @@ class Watchdog {
     private var databaseLockTimer: Timer?
     private var isIgnoringMinimizationOnce = false
     
+    private let screenIsLockedNotificationName = Notification.Name(rawValue: "com.apple.screenIsLocked")
+    private let screenIsUnlockedNotificationName = Notification.Name(rawValue: "com.apple.screenIsUnlocked")
+    
     init() {
         NotificationCenter.default.addObserver(
             self,
@@ -49,10 +52,27 @@ class Watchdog {
             selector: #selector(appWillResignActive),
             name: UIApplication.willResignActiveNotification,
             object: nil)
+        #if targetEnvironment(macCatalyst)
+            DistributedNotificationCenter.default().addObserver(
+                self,
+                selector: #selector(macScreenDidLock),
+                name: screenIsLockedNotificationName,
+                object: nil)
+            DistributedNotificationCenter.default().addObserver(
+                self,
+                selector: #selector(macScreenDidUnlock),
+                name: screenIsUnlockedNotificationName,
+                object: nil)
+        #endif
     }
     
     
     @objc private func appDidBecomeActive(_ notification: Notification) {
+        didBecomeActive()
+    }
+
+    @objc private func macScreenDidUnlock(_notification: Notification) {
+        Diag.debug("Screen unlocked")
         didBecomeActive()
     }
     
@@ -73,6 +93,11 @@ class Watchdog {
     }
     
     @objc private func appWillResignActive(_ notification: Notification) {
+        willResignActive()
+    }
+    
+    @objc private func macScreenDidLock(_notification: Notification) {
+        Diag.debug("Screen locked")
         willResignActive()
     }
     
