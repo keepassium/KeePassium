@@ -7,6 +7,12 @@
 //  For commercial licensing, please contact the author.
 
 extension LString {
+
+  public static let entriesSelectedCountTemplate = NSLocalizedString(
+        "[Generic/Count/EntriesSelected]",
+        bundle: Bundle.framework,
+        comment: "(Defined in Localizable.stringsdict)"
+    )
     
     public static let bitCountTemplate = NSLocalizedString(
         "[Generic/Count/Bits]",
@@ -116,6 +122,13 @@ extension LString {
         value: "Create",
         comment: "Action/button to create an item (entry, group, file — depending on context)"
     )
+    public static let actionSelect = NSLocalizedString(
+        "[Generic/Action/SelectItems]",
+        bundle: Bundle.framework,
+        value: "Select",
+        comment: "Action/button to select some items in a list."
+    )
+
     public static let actionFileSaveAs = NSLocalizedString(
         "[Generic/File/Save as]",
         bundle: Bundle.framework,

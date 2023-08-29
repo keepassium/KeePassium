@@ -13,6 +13,7 @@ protocol GroupViewerDelegate: AnyObject {
     func didPressChangeMasterKey(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressPrintDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
+    func didPressPasswordAudit(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool
     
@@ -812,6 +813,12 @@ final class GroupViewerVC:
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressPrintDatabase(at: popoverAnchor, in: self)
     }
+
+    @IBAction func didPressPasswordAudit(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressPasswordAudit(at: popoverAnchor, in: self)
+    }
+
 }
 
 #if targetEnvironment(macCatalyst)

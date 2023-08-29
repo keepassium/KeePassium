@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -249,6 +249,12 @@
                                 <action selector="didPressChangeDatabaseSettings:" destination="Rxg-rI-fqC" id="GI8-hw-rx1"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="AmW-9i-D28"/>
+                        <barButtonItem image="network.badge.shield" id="eny-dJ-5tN">
+                            <connections>
+                                <action selector="didPressPasswordAudit:" destination="Rxg-rI-fqC" id="3wC-ap-yOW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zgU-y1-cjL"/>
                         <barButtonItem id="skd-dl-nXZ" userLabel="Print Button">
                             <imageReference key="image" image="printer" catalog="system" renderingMode="template"/>
@@ -292,6 +298,7 @@
         <image name="key.shield" width="11" height="13"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="lock" width="10" height="13"/>
+        <image name="network.badge.shield" width="15" height="14"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="printer" catalog="system" width="128" height="111"/>
         <namedColor name="ActionTint">

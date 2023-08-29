@@ -237,4 +237,27 @@ extension LString {
         bundle: Bundle.framework,
         value: "Close Database",
         comment: "Action: lock database")
+    
+    
+    public static let titleDatabaseFormatVersionUpgrade = NSLocalizedString(
+        "[Database/FormatVersion/Upgrade/title]",
+        bundle: Bundle.framework,
+        value: "Before we continue",
+        comment: "Title of an info message when the app needs to change database file format.")
+    public static let databaseFormatVersionUpgradeMessageTemplate = NSLocalizedString(
+        "[Database/FormatVersion/Upgrade/text]",
+        bundle: Bundle.framework,
+        value: "KeePassium needs to upgrade your database file format (from %@ to %@). You might need to update other apps that use this database.",
+        comment: "Info message when the app needs to change database file format. [oldFormat, newFormat: String]")
+    public static let titleDatabaseFormatConversionAllDataPreserved = NSLocalizedString(
+        "[Database/FormatVersion/Conversion/allDataPreserved]",
+        bundle: Bundle.framework,
+        value: "All your data will be preserved.",
+        comment: "Info message when changing database file format.")
+    
+    public static let statusItemEdited = NSLocalizedString(
+        "[Database/Item/Edited/state]",
+        bundle: Bundle.framework,
+        value: "Edited",
+        comment: "Status of a database item (entry or group) after it was edited.")
 }

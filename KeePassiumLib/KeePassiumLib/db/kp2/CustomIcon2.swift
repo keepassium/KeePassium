@@ -107,14 +107,15 @@ public class CustomIcon2: Eraseable {
         xmlIcon.addChild(name: Xml2.uuid, value: uuid.base64EncodedString())
         xmlIcon.addChild(name: Xml2.data, value: data.base64EncodedString())
         
-        guard formatVersion >= .v4_1 else {
-            return xmlIcon
-        }
-        
-        if let name = name {
+        if formatVersion.supports(.customIconName),
+           let name = name
+        {
             xmlIcon.addChild(name: Xml2.name, value: name)
         }
-        if let lastModificationTime = lastModificationTime {
+        
+        if formatVersion.supports(.customIconModificationTime),
+           let lastModificationTime = lastModificationTime
+        {
             xmlIcon.addChild(
                 name: Xml2.lastModificationTime,
                 value: timeFormatter.dateToXMLString(lastModificationTime)

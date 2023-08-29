@@ -369,7 +369,7 @@ public class Entry: DatabaseItem, Eraseable {
             groupNames.append(parentGroupUnwrapped.name)
             parentGroup = parentGroupUnwrapped.parent
         }
-        return groupNames.reversed().joined(separator: "/")
+        return groupNames.reversed().joined(separator: " / ")
     }
     
     public func matches(query: SearchQuery) -> Bool {

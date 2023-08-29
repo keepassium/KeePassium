@@ -34,6 +34,7 @@ public enum SymbolName: String {
     public static let premiumBenefitFieldReferences = Self.arrowshapeTurnUpForwardCircle
     public static let premiumBenefitQuickAutoFill = Self.bolt
     public static let premiumBenefitBusinessClouds = Self.briefcase
+    public static let premiumBenefitPasswordAudit = Self.networkBadgeShield
     public static let premiumBenefitSupport = Self.questionmarkBubble
     public static let premiumBenefitShiny = Self.faceSmiling
     
@@ -42,6 +43,7 @@ public enum SymbolName: String {
     case arrowshapeTurnUpForward = "arrowshape.turn.up.forward" 
     case arrowshapeTurnUpForwardCircle = "arrowshape.turn.up.forward.circle" 
     case asterisk = "asterisk" 
+    case bellSlash = "bell.slash" 
     case bolt = "bolt" 
     case bookClosed = "book.closed" 
     case briefcase = "briefcase" 
@@ -56,6 +58,7 @@ public enum SymbolName: String {
     case clockShield = "clock.shield" 
     case docOnDoc = "doc.on.doc" 
     case ellipsis = "ellipsis" 
+    case ellipsisCircle = "ellipsis.circle"
     case externalLink = "external-link" 
     case exclamationMarkOctagonFill = "exclamationmark.octagon.fill"
     case exclamationMarkTriangle = "exclamationmark.triangle" 
@@ -83,6 +86,7 @@ public enum SymbolName: String {
     case lock = "lock" 
     case minus = "minus" 
     case network = "network" 
+    case networkBadgeShield = "network.badge.shield" 
     case nosign = "nosign" 
     case noteText = "note.text" 
     case pencil = "pencil" 

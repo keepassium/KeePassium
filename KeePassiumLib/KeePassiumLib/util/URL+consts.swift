@@ -39,6 +39,8 @@ extension URL {
 
         public static let databaseFileIsInTrashWarning = URL(string: "https://keepassium.com/apphelp/database-recently-deleted-warning/")!
         public static let temporaryBackupDatabaseWarning = URL(string: "https://keepassium.com/apphelp/temporary-backup-database-warning/")!
+
+        public static let hibpMoreInfoURLString = "https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/#cloudflareprivacyandkanonymity"
     }
     
 }

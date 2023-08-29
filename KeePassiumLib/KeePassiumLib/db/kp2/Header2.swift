@@ -628,6 +628,12 @@ final class Header2: Eraseable {
         }
     }
     
+    func upgradeFormatVersion(to newerVersion: Database2.FormatVersion) {
+        precondition(newerVersion >= formatVersion, "Downgrading the database format is not supported")
+        Diag.debug("Upgrading DB format version to \(newerVersion)")
+        formatVersion = newerVersion
+    }
+
     func maybeUpdateFormatVersion() {
     }
     

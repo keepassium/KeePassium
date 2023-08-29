@@ -458,13 +458,13 @@ public class Entry2: Entry {
                 try autoType.load(xml: tag, streamCipher: streamCipher)
                 Diag.verbose("Entry autotype loaded OK")
             case Xml2.previousParentGroup:
-                assert(formatVersion >= .v4_1)
+                assert(formatVersion.supports(.previousParentGroup))
                 previousParentGroupUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.qualityCheck:
-                assert(formatVersion >= .v4_1)
+                assert(formatVersion.supports(.qualityCheckFlag))
                 qualityCheck = Bool(optString: tag.value) ?? true
             case Xml2.customData: 
-                assert(formatVersion >= .v4)
+                assert(formatVersion.supports(.customData))
                 try customData.load(
                     xml: tag,
                     streamCipher: streamCipher,
@@ -648,19 +648,23 @@ public class Entry2: Entry {
         }
         xmlEntry.addChild(autoType.toXml())
         
-        if formatVersion >= .v4_1 {
-            if previousParentGroupUUID != UUID.ZERO {
-                xmlEntry.addChild(
-                    name: Xml2.previousParentGroup,
-                    value: previousParentGroupUUID.base64EncodedString()
-                )
-            }
-            if !qualityCheck {
-                xmlEntry.addChild(name: Xml2.qualityCheck, value: Xml2._false)
-            }
+        if formatVersion.supports(.previousParentGroup),
+           previousParentGroupUUID != UUID.ZERO
+        {
+            xmlEntry.addChild(
+                name: Xml2.previousParentGroup,
+                value: previousParentGroupUUID.base64EncodedString()
+            )
+        }
+        if formatVersion.supports(.qualityCheckFlag),
+           !qualityCheck
+        {
+            xmlEntry.addChild(name: Xml2.qualityCheck, value: Xml2._false)
         }
         
-        if formatVersion >= .v4 && !customData.isEmpty{
+        if formatVersion.supports(.customData),
+           !customData.isEmpty
+        {
             xmlEntry.addChild(customData.toXml(timeFormatter: timeFormatter))
         }
         

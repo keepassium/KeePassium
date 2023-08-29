@@ -20,5 +20,23 @@
 			<string>%d bits</string>
 		</dict>
 	</dict>
+	<key>[Generic/Count/EntriesSelected]</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>%d entries selected</string>
+			<key>one</key>
+			<string>%d entry selected</string>
+			<key>other</key>
+			<string>%d entries selected</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

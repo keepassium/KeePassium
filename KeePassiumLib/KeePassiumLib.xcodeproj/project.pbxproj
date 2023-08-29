@@ -50,6 +50,7 @@
 		75675C85277C8BEA0025910A /* WebDAVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75675C84277C8BEA0025910A /* WebDAVManager.swift */; };
 		756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AFD5C258B4C510072BEEF /* KeyFileError.swift */; };
 		75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */; };
+		757B9B822AA0848100FFA6EA /* DatabaseFeature2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757B9B812AA0848100FFA6EA /* DatabaseFeature2.swift */; };
 		757C51CF29F17D3C008986F4 /* DomainParser in Frameworks */ = {isa = PBXBuildFile; productRef = 757C51CE29F17D3C008986F4 /* DomainParser */; };
 		757C51D129F18192008986F4 /* DomainNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757C51D029F18192008986F4 /* DomainNameHelper.swift */; };
 		757E78D82822D729009017BF /* PasswordGeneratorParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D72822D729009017BF /* PasswordGeneratorParams.swift */; };
@@ -214,6 +215,7 @@
 		75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F594B7221BDC51001729FD /* SettingsMigrator.swift */; };
 		75F74ABA24C082F90071281E /* ReceiptAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74AB924C082F90071281E /* ReceiptAnalyzer.swift */; };
 		75F74ABC24C0EF370071281E /* IARError+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74ABB24C0EF370071281E /* IARError+description.swift */; };
+		F380E75C2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -286,6 +288,7 @@
 		75675C84277C8BEA0025910A /* WebDAVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVManager.swift; sourceTree = "<group>"; };
 		756AFD5C258B4C510072BEEF /* KeyFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileError.swift; sourceTree = "<group>"; };
 		75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+extensions.swift"; sourceTree = "<group>"; };
+		757B9B812AA0848100FFA6EA /* DatabaseFeature2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFeature2.swift; sourceTree = "<group>"; };
 		757C51D029F18192008986F4 /* DomainNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNameHelper.swift; sourceTree = "<group>"; };
 		757E78D72822D729009017BF /* PasswordGeneratorParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorParams.swift; sourceTree = "<group>"; };
 		75804AAE2A43B5A300A9C985 /* eff-short-wordlist-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "eff-short-wordlist-1.txt"; sourceTree = "<group>"; };
@@ -335,7 +338,7 @@
 		75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+extensions.swift"; sourceTree = "<group>"; };
 		75CA6640276BAF06003384FC /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 		75CD1523285F3929003C11DA /* TimeInterval+constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+constants.swift"; sourceTree = "<group>"; };
-		75CF4C852A65F9650054B05B /* v1-proofs.sha256 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "v1-proofs.sha256"; sourceTree = "<group>"; };
+		75CF4C852A65F9650054B05B /* v1-proofs.sha256 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "v1-proofs.sha256"; sourceTree = "<group>"; };
 		75CF4C892A666D8B0054B05B /* LicenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseManager.swift; sourceTree = "<group>"; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
@@ -461,6 +464,7 @@
 		75F74ABB24C0EF370071281E /* IARError+description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IARError+description.swift"; sourceTree = "<group>"; };
 		75FDEF1D233ABE7800F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75FDEF49233ABED700F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesSelectedCountFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -822,6 +826,7 @@
 				75D09BF32174F77000F7DEF2 /* Attachment2.swift */,
 				75D09BF72174F77000F7DEF2 /* CustomIcon2.swift */,
 				75D09BF92174F77000F7DEF2 /* DeletedObject2.swift */,
+				757B9B812AA0848100FFA6EA /* DatabaseFeature2.swift */,
 			);
 			path = kp2;
 			sourceTree = "<group>";
@@ -864,6 +869,7 @@
 				757C51D029F18192008986F4 /* DomainNameHelper.swift */,
 				754840ED2A52C957001EEF21 /* URLQueryItems+extensions.swift */,
 				75F221282A86591900CB1B5F /* BitCountFormatter.swift */,
+				F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1164,6 +1170,7 @@
 				75A0047B2840CF5C000B7B17 /* LString+a11y.swift in Sources */,
 				75D09C262174F77000F7DEF2 /* Xml2.swift in Sources */,
 				75AF1935282EE78F00FA4BB5 /* PassphraseGenerator.swift in Sources */,
+				F380E75C2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift in Sources */,
 				75D09C2D2174F77000F7DEF2 /* VarDict.swift in Sources */,
 				75AF192A282E5B2F00FA4BB5 /* BasicPasswordGeneratorParams.swift in Sources */,
 				75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */,
@@ -1291,6 +1298,7 @@
 				75D09C452174F77000F7DEF2 /* Entry1.swift in Sources */,
 				75D09C3F2174F77000F7DEF2 /* Entry.swift in Sources */,
 				756180FC282082D400EA015D /* PasswordGeneratorError.swift in Sources */,
+				757B9B822AA0848100FFA6EA /* DatabaseFeature2.swift in Sources */,
 				75D09BE52174F76500F7DEF2 /* CryptoManager.swift in Sources */,
 				75D09BD62174F76500F7DEF2 /* thread.c in Sources */,
 				75D09BE32174F76500F7DEF2 /* argon2.c in Sources */,

@@ -24,10 +24,14 @@ extension UIAlertController {
     func addAction(
         title: String?,
         style: UIAlertAction.Style,
+        preferred: Bool = false,
         handler: ((UIAlertAction) -> Void)?
     ) -> UIAlertController {
         let action = UIAlertAction(title: title, style: style, handler: handler)
         self.addAction(action)
+        if preferred {
+            self.preferredAction = action
+        }
         return self
     }
 }

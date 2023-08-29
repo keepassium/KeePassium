@@ -196,13 +196,13 @@ public class Group2: Group {
             case Xml2.lastTopVisibleEntry:
                 self.lastTopVisibleEntryUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.previousParentGroup:
-                assert(formatVersion >= .v4_1)
+                assert(formatVersion.supports(.previousParentGroup))
                 self.previousParentGroupUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.tags:
-                assert(formatVersion >= .v4_1)
+                assert(formatVersion.supports(.groupTags))
                 self.tags = tag.value ?? ""
             case Xml2.customData:
-                assert(formatVersion >= .v4)
+                assert(formatVersion.supports(.customData))
                 try customData.load(
                     xml: tag,
                     streamCipher: streamCipher,
@@ -375,7 +375,7 @@ public class Group2: Group {
             name: Xml2.lastTopVisibleEntry,
             value: lastTopVisibleEntryUUID.base64EncodedString())
 
-        if formatVersion >= .v4_1 {
+        if formatVersion.supports(.previousParentGroup) {
             if previousParentGroupUUID != UUID.ZERO {
                 xmlGroup.addChild(
                     name: Xml2.previousParentGroup,
@@ -384,7 +384,9 @@ public class Group2: Group {
             xmlGroup.addChild(name: Xml2.tags, value: tags)
         }
         
-        if formatVersion >= .v4 && !customData.isEmpty{
+        if formatVersion.supports(.customData),
+           !customData.isEmpty
+        {
             xmlGroup.addChild(customData.toXml(timeFormatter: timeFormatter))
         }
         

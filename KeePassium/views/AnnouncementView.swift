@@ -193,8 +193,7 @@ final class AnnouncementView: UIView {
                 .constraint(equalTo: imageTrailingAnchor, constant: imageTrailingAnchorConstant)
                 .activate()
             titleLabel.trailingAnchor
-                .constraint(greaterThanOrEqualTo: layoutMarginsGuide.trailingAnchor, constant: -8)
-                .setPriority(.defaultHigh)
+                .constraint(lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor, constant: -8)
                 .activate()
             titleLabel.bottomAnchor
                 .constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor)

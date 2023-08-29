@@ -160,7 +160,7 @@ final class DatabaseViewerCoordinator: Coordinator {
     }
     
     private func getPresenterForModals() -> UIViewController {
-        return splitViewController
+        return splitViewController.presentedViewController ?? splitViewController
     }
 }
 
@@ -400,6 +400,41 @@ extension DatabaseViewerCoordinator {
         viewController.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(settingsCoordinator)
     }
+
+    private func showPasswordAuditOrOfferPremium(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        performPremiumActionOrOfferUpgrade(
+            for: .canAuditPasswords,
+            in: viewController,
+            actionHandler: { [weak self, weak viewController] in
+                guard let self, let viewController else { return }
+                self.showPasswordAudit(at: popoverAnchor, in: viewController)
+            }
+        )
+    }
+    
+    private func showPasswordAudit(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        let modalRouter = NavigationRouter.createModal(
+            style: .formSheet,
+            at: popoverAnchor)
+        let passwordAuditCoordinator = PasswordAuditCoordinator(
+            databaseFile: databaseFile,
+            router: modalRouter
+        )
+        passwordAuditCoordinator.delegate = self
+        passwordAuditCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+            self?.refresh()
+        }
+        passwordAuditCoordinator.start()
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(passwordAuditCoordinator)
+    }
     
     private func showMasterKeyChanger(
         at popoverAnchor: PopoverAnchor,
@@ -445,7 +480,7 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(groupEditorCoordinator)
     }
     
-    private func showEntryEditor(for entryToEdit: Entry?, at popoverAnchor: PopoverAnchor?) {
+    private func showEntryEditor(for entryToEdit: Entry?, at popoverAnchor: PopoverAnchor?, onDismiss: (() -> Void)? = nil) {
         Diag.info("Will edit entry")
         guard let parent = currentGroup else {
             Diag.warning("Parent group is not definted")
@@ -462,6 +497,7 @@ extension DatabaseViewerCoordinator {
         )
         entryFieldEditorCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
+            onDismiss?()
         }
         entryFieldEditorCoordinator.delegate = self
         entryFieldEditorCoordinator.start()
@@ -557,6 +593,10 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
         showAppSettings(at: popoverAnchor, in: viewController)
+    }
+
+    func didPressPasswordAudit(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
+        showPasswordAuditOrOfferPremium(at: popoverAnchor, in: viewController)
     }
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool {
@@ -1012,5 +1052,11 @@ extension DatabaseViewerCoordinator {
         tipBoxCoordinator.start()
         addChildCoordinator(tipBoxCoordinator)
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
+    }
+}
+
+extension DatabaseViewerCoordinator: PasswordAuditCoordinatorDelegate {
+    func didPressEditEntry(_ entry: KeePassiumLib.Entry, at popoverAnchor: PopoverAnchor, onDismiss: @escaping () -> Void) {
+        showEntryEditor(for: entry, at: popoverAnchor, onDismiss: onDismiss)
     }
 }

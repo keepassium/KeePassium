@@ -402,4 +402,22 @@ extension LString {
         value: "Sync with corporate storage",
         comment: "Title of a premium feature")
     public static let premiumBenefitBusinessCloudsDescription = premiumFeatureBusinessCloudsDescription
+    
+    public static let premiumFeaturePasswordAuditTitle = NSLocalizedString(
+        "[PremiumFeature/PasswordAudit/title]",
+        bundle: Bundle.framework,
+        value: "Password audit",
+        comment: "Title of a premium feature: discover which passwords are known to be compromized")
+    public static let premiumFeaturePasswordAuditDescription = NSLocalizedString(
+        "[PremiumFeature/PasswordAudit/description]",
+        bundle: Bundle.framework,
+        value: "Find out if any of your passwords have been exposed in a known data breach.",
+        comment: "Description/call to action for the `Password Audit` premium feature.")
+    public static let premiumBenefitPasswordAuditTitle = NSLocalizedString(
+        "[Premium/Benefits/PasswordAudit/title]",
+        bundle: Bundle.framework,
+        value: "Check your passwords",
+        comment: "Title of a premium feature")
+    public static let premiumBenefitPasswordAuditDescription = premiumFeaturePasswordAuditDescription
+
 }
