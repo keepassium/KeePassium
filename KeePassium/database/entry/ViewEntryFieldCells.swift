@@ -245,6 +245,12 @@ class ProtectedFieldCell: ViewableFieldCell {
         valueText.isSelectable = theButton.isSelected
         toggleButton = theButton
 
+        guard field?.internalName == EntryField.password else {
+            accessoryView = theButton
+            refreshTextView()
+            return
+        }
+
         let indicatorView = PasswordQualityIndicatorIconView()
         indicatorView.quality = .init(password: field?.resolvedValue)
         guard !indicatorView.isHidden else {
