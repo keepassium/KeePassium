@@ -153,7 +153,7 @@ extension PasswordGeneratorVC {
         passwordLabel.lineBreakMode = .byCharWrapping
         passwordLabel.attributedText = PasswordStringHelper.decorate(
             password,
-            font: .monospaceFont(forTextStyle: .body))
+            font: .monospaceFont(style: .body))
         passwordLabel.accessibilityIsPhrase = false
         
         doneButton.isEnabled = true

@@ -139,12 +139,69 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="TEx-Hv-9VE" detailTextLabel="O1w-EU-vrn" style="IBUITableViewCellStyleValue1" id="cTx-nt-ABy" userLabel="Font">
+                                        <rect key="frame" x="0.0" y="280" width="320" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cTx-nt-ABy" id="zKF-oA-C0d">
+                                            <rect key="frame" x="0.0" y="0.0" width="293.5" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Font}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="TEx-Hv-9VE">
+                                                    <rect key="frame" x="16" y="12" width="46.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Section in settings: icons for database"/>
+                                                    </attributedString>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Subtitle}" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="O1w-EU-vrn">
+                                                    <rect key="frame" x="218" y="13" width="67.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="WAJ-vb-eFR">
+                                        <rect key="frame" x="0.0" y="323.5" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WAJ-vb-eFR" id="KOI-NR-vko">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" role="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="Fdn-Dx-Gop" userLabel="Restore Defaults Button">
+                                                    <rect key="frame" x="16" y="4.5" width="288" height="36.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="{Restore Defaults}"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="{Restore Defaults}">
+                                                        <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                                        <directionalEdgeInsets key="contentInsets" top="8" leading="0.0" bottom="8" trailing="8"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="didPressResetTextParameters:" destination="4mh-X8-Byq" eventType="touchUpInside" id="0zk-o7-2MG"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Fdn-Dx-Gop" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KOI-NR-vko" secondAttribute="top" constant="4" id="Emn-ga-YI1"/>
+                                                <constraint firstItem="Fdn-Dx-Gop" firstAttribute="centerY" secondItem="KOI-NR-vko" secondAttribute="centerY" id="JrY-4e-XbG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Fdn-Dx-Gop" secondAttribute="trailing" id="dbN-YO-ROX"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Fdn-Dx-Gop" secondAttribute="bottom" constant="4" id="eTt-YY-oBa"/>
+                                                <constraint firstItem="Fdn-Dx-Gop" firstAttribute="leading" secondItem="KOI-NR-vko" secondAttribute="leadingMargin" id="rRo-Tc-Zrp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Protected Fields" footerTitle="Hide passwords and other protected fields behind asterisks (recommended)." id="Lh3-CB-Urp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="LFD-J8-PP9" userLabel="Hide Protected Fields">
-                                        <rect key="frame" x="0.0" y="343" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="431.5" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LFD-J8-PP9" id="dNo-I4-XUP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
@@ -203,6 +260,8 @@
                         <outlet property="databaseIconsCell" destination="i3u-Xq-xMJ" id="HOX-4u-S16"/>
                         <outlet property="entryTextScaleSlider" destination="MAG-tY-N1o" id="sbQ-Ul-HnG"/>
                         <outlet property="hideProtectedFieldsSwitch" destination="lxT-1h-16d" id="EuR-3p-SOM"/>
+                        <outlet property="resetTextParametersButton" destination="Fdn-Dx-Gop" id="c7Y-cO-oJ3"/>
+                        <outlet property="textFontCell" destination="cTx-nt-ABy" id="LbM-NC-Gzt"/>
                         <outlet property="textScaleLabel" destination="QbO-y9-3wb" id="M3O-B6-3rr"/>
                     </connections>
                 </tableViewController>
@@ -222,6 +281,9 @@
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

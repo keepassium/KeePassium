@@ -120,9 +120,8 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
             .preferredFont(forTextStyle: .subheadline)
             .withRelativeSize(textScale)
         nameLabel.adjustsFontForContentSizeCategory = true
-        valueText.font = UIFont
-            .monospaceFont(forTextStyle: .body)
-            .withRelativeSize(textScale)
+        
+        valueText.font = UIFont.entryTextFont().withRelativeSize(textScale)
         valueText.adjustsFontForContentSizeCategory = true
         
         nameLabel.text = field?.visibleName

@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-final class SettingsCoordinator: Coordinator, Refreshable {
+final class SettingsCoordinator: NSObject, Coordinator, Refreshable {
     var childCoordinators = [Coordinator]()
     
     var dismissHandler: CoordinatorDismissHandler?
@@ -21,6 +21,7 @@ final class SettingsCoordinator: Coordinator, Refreshable {
         self.router = router
         settingsVC = SettingsVC.instantiateFromStoryboard()
         settingsNotifications = SettingsNotifications()
+        super.init()
         
         settingsNotifications.observer = self
         settingsVC.delegate = self
@@ -182,6 +183,15 @@ extension SettingsCoordinator {
         databaseIconSwitcherCoordinator.start()
         addChildCoordinator(databaseIconSwitcherCoordinator)
     }
+    
+    private func showEntryTextFontPicker(at popoverAnchor: PopoverAnchor) {
+        var config = UIFontPickerViewController.Configuration()
+        let fontPicker = UIFontPickerViewController(configuration: config)
+        fontPicker.delegate = self
+        fontPicker.modalPresentationStyle = .popover
+        popoverAnchor.apply(to: fontPicker.popoverPresentationController)
+        router.present(fontPicker, animated: true, completion: nil)
+    }
 }
 
 extension SettingsCoordinator: SettingsObserver {
@@ -262,5 +272,21 @@ extension SettingsCoordinator: SettingsAppearanceViewControllerDelegate {
     
     func didPressDatabaseIconsSettings(in viewController: SettingsAppearanceVC) {
         showDatabaseIconsSettingsPage()
+    }
+    
+    func didPressEntryTextFontSettings(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: SettingsAppearanceVC
+    ) {
+        showEntryTextFontPicker(at: popoverAnchor)
+    }
+}
+
+extension SettingsCoordinator: UIFontPickerViewControllerDelegate {
+    func fontPickerViewControllerDidPickFont(_ viewController: UIFontPickerViewController) {
+        if let selectedFontDescriptor = viewController.selectedFontDescriptor {
+            Settings.current.entryTextFontDescriptor = selectedFontDescriptor
+        }
+        viewController.dismiss(animated: true)
     }
 }

@@ -7,6 +7,12 @@
 //  For commercial licensing, please contact the author.
 
 extension LString {
+    public static let actionRestoreDefaults = NSLocalizedString(
+        "[Settings/RestoreDefaults/action]",
+        bundle: Bundle.framework,
+        value: "Restore Defaults",
+        comment: "Action/button which resets some settings to their default state.")
+    
     public static let appLockWithBiometricsSubtitleTemplate = NSLocalizedString(
         "[Settings/AppLock/subtitle] App Lock, %@, timeout",
         bundle: Bundle.framework,
@@ -79,6 +85,19 @@ extension LString {
         bundle: Bundle.framework,
         value: "Text Size",
         comment: "Title of a setting option: font size")
+
+    public static let titleTextFont = NSLocalizedString(
+        "[Appearance/Font/title]",
+        bundle: Bundle.framework,
+        value: "Font",
+        comment: "Title of a setting option: font")
+
+    public static let titleDefaultFont = NSLocalizedString(
+        "[Appearance/DefaultFont/shortTitle]",
+        bundle: Bundle.framework,
+        value: "Default",
+        comment: "Short name of the default/system font. For example: `Font: Default`")
+
     
     
     public static let titleAutoFillSettings = NSLocalizedString(

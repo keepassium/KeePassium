@@ -11,12 +11,17 @@ import KeePassiumLib
 protocol SettingsAppearanceViewControllerDelegate: AnyObject {
     func didPressAppIconSettings(in viewController: SettingsAppearanceVC)
     func didPressDatabaseIconsSettings(in viewController: SettingsAppearanceVC)
+    func didPressEntryTextFontSettings(
+        at popoverAnchor: PopoverAnchor,
+        in viewController: SettingsAppearanceVC)
 }
 
-final class SettingsAppearanceVC: UITableViewController {
+final class SettingsAppearanceVC: UITableViewController, Refreshable {
     
     @IBOutlet private weak var appIconCell: UITableViewCell!
     @IBOutlet private weak var databaseIconsCell: UITableViewCell!
+    @IBOutlet private weak var textFontCell: UITableViewCell!
+    @IBOutlet private weak var resetTextParametersButton: UIButton!
     
     @IBOutlet private weak var textScaleLabel: UILabel!
     @IBOutlet private weak var entryTextScaleSlider: UISlider!
@@ -32,8 +37,17 @@ final class SettingsAppearanceVC: UITableViewController {
         entryTextScaleSlider.minimumValue = Float(textScaleRange.lowerBound)
         entryTextScaleSlider.maximumValue = Float(textScaleRange.upperBound)
         
+        textFontCell.textLabel?.text = LString.titleTextFont
         textScaleLabel.text = LString.titleTextSize
         entryTextScaleSlider.accessibilityLabel = LString.titleTextSize
+        resetTextParametersButton.setTitle(LString.actionRestoreDefaults, for: .normal)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(preferredContentSizeChanged(_:)),
+            name: UIContentSizeCategory.didChangeNotification,
+            object: nil
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,23 +56,44 @@ final class SettingsAppearanceVC: UITableViewController {
         refresh()
     }
     
-    private func refresh() {
+    func refresh() {
         let settings = Settings.current
 
         hideProtectedFieldsSwitch.isOn = settings.isHideProtectedFields
 
+        let entryTextFont = getEntryTextFont()
         let textScale = settings.textScale
         entryTextScaleSlider.value = Float(textScale)
         tableView.performBatchUpdates(
             { [weak textScaleLabel] in
-                textScaleLabel?.font = UIFont
-                    .monospaceFont(forTextStyle: .body)
-                    .withRelativeSize(textScale)
+                textScaleLabel?.font = entryTextFont.withRelativeSize(textScale)
             },
             completion: nil
         )
         
+        let isDefaultFont = (settings.entryTextFontDescriptor == nil)
+        let fontName = isDefaultFont ? LString.titleDefaultFont : entryTextFont.familyName
+        textFontCell.detailTextLabel?.text = fontName
+        
+        let isDefaultSize = abs(settings.textScale - 1.0).isLessThanOrEqualTo(.ulpOfOne)
+        resetTextParametersButton.isEnabled = (!isDefaultFont || !isDefaultSize)
+
         databaseIconsCell.imageView?.image = settings.databaseIconSet.getIcon(.key)
+    }
+    
+    private func getEntryTextFont() -> UIFont {
+        let fontDescriptor = Settings.current.entryTextFontDescriptor
+        return UIFont.monospaceFont(descriptor: fontDescriptor, style: .body)
+    }
+    
+    private func resetTextParameters() {
+        let settings = Settings.current
+        settings.textScale = CGFloat(1.0)
+        settings.entryTextFontDescriptor = nil
+    }
+
+    @objc private func preferredContentSizeChanged(_ notification: Notification) {
+        refresh()
     }
     
     
@@ -97,6 +132,10 @@ final class SettingsAppearanceVC: UITableViewController {
             delegate?.didPressAppIconSettings(in: self)
         case databaseIconsCell:
             delegate?.didPressDatabaseIconsSettings(in: self)
+        case textFontCell:
+            tableView.deselectRow(at: indexPath, animated: true)
+            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            delegate?.didPressEntryTextFontSettings(at: popoverAnchor, in: self)
         default:
             break
         }
@@ -104,16 +143,17 @@ final class SettingsAppearanceVC: UITableViewController {
 
     @IBAction func didChangeTextScale(_ sender: UISlider) {
         Settings.current.textScale = CGFloat(entryTextScaleSlider.value)
-        refresh()
     }
     
     @IBAction func didPressResetTextScale(_ sender: UIButton) {
         Settings.current.textScale = CGFloat(1.0)
-        refresh()
     }
     
     @IBAction func didToggleHideProtectedFieldsSwitch(_ sender: UISwitch) {
         Settings.current.isHideProtectedFields = hideProtectedFieldsSwitch.isOn
-        refresh()
+    }
+    
+    @IBAction func didPressResetTextParameters(_ sender: Any) {
+        resetTextParameters()
     }
 }

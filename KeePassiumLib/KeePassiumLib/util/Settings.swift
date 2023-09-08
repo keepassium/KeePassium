@@ -111,6 +111,7 @@ public class Settings {
         
         case hideAppLockSetupReminder
         case textScale
+        case entryTextFontDescriptor
     }
 
     fileprivate enum Notifications {
@@ -1417,6 +1418,23 @@ public class Settings {
         }
     }
     
+    public var entryTextFontDescriptor: UIFontDescriptor? {
+        get {
+            guard let data = UserDefaults.appGroupShared.data(forKey: .entryTextFontDescriptor) else {
+                return nil
+            }
+            return UIFontDescriptor.deserialize(data)
+        }
+        set {
+            let newData = newValue?.serialize()
+            let oldData = UserDefaults.appGroupShared.data(forKey: .entryTextFontDescriptor)
+            if newData != oldData {
+                UserDefaults.appGroupShared.set(newData, forKey: .entryTextFontDescriptor)
+                postChangeNotification(changedKey: .entryTextFontDescriptor)
+            }
+        }
+    }
+    
     
     public var passwordGeneratorConfig: PasswordGeneratorParams {
         get {
@@ -1571,7 +1589,7 @@ public class Settings {
     }
 
     private func contains(key: Keys) -> Bool {
-        return UserDefaults.appGroupShared.object(forKey: key.rawValue) != nil
+        return UserDefaults.appGroupShared.object(forKey: key) != nil
     }
 
     fileprivate func postChangeNotification(changedKey: Settings.Keys) {
@@ -1582,6 +1600,19 @@ public class Settings {
                 Notifications.userInfoKey: changedKey.rawValue
             ]
         )
+    }
+}
+
+
+fileprivate extension UserDefaults {
+    func set(_ value: Any?, forKey key: Settings.Keys) {
+        set(value, forKey: key.rawValue)
+    }
+    func object(forKey key: Settings.Keys) -> Any? {
+        return object(forKey: key.rawValue)
+    }
+    func data(forKey key: Settings.Keys) -> Data? {
+        return data(forKey: key.rawValue)
     }
 }
 

@@ -107,6 +107,7 @@ class EntryFieldEditorTitleCell:
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        titleTextField.font = UIFont.entryTextFont()
         titleTextField.validityDelegate = self
         titleTextField.delegate = self
         titleTextField.addRandomizerEditMenu()
@@ -196,7 +197,7 @@ class EntryFieldEditorSingleLineCell:
         super.awakeFromNib()
         titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
-        textField.font = UIFont.monospaceFont(forTextStyle: .body)
+        textField.font = UIFont.entryTextFont()
         textField.adjustsFontForContentSizeCategory = true
         
         textField.validityDelegate = self
@@ -285,7 +286,7 @@ final class PasswordEntryFieldCell:
         
         titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
-        textField.font = UIFont.monospaceFont(forTextStyle: .body)
+        textField.font = UIFont.entryTextFont()
         textField.adjustsFontForContentSizeCategory = true
         
         textField.validityDelegate = self
@@ -361,7 +362,7 @@ class EntryFieldEditorMultiLineCell:
         
         titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
-        textView.font = UIFont.monospaceFont(forTextStyle: .body)
+        textView.font = UIFont.entryTextFont()
         textView.adjustsFontForContentSizeCategory = true
         
         textView.validityDelegate = self
@@ -421,10 +422,10 @@ class EntryFieldEditorCustomFieldCell:
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        nameTextField.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        nameTextField.font = UIFont.entryTextFont()
         nameTextField.adjustsFontForContentSizeCategory = true
         
-        valueTextView.font = UIFont.monospaceFont(forTextStyle: .body)
+        valueTextView.font = UIFont.entryTextFont()
         valueTextView.adjustsFontForContentSizeCategory = true
         
         protectionSwitch.addTarget(self, action: #selector(protectionDidChange), for: .valueChanged)

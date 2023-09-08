@@ -198,7 +198,7 @@ extension PasswordGeneratorQuickSheetVC {
         cell.textLabel?.text = item.mode.description
         cell.detailTextLabel?.attributedText = PasswordStringHelper.decorate(
             item.text,
-            font: .monospaceFont(forTextStyle: .body)
+            font: .monospaceFont(style: .body)
         )
         cell.detailTextLabel?.lineBreakMode = item.mode.optimalLineBreakMode
         cell.detailTextLabel?.accessibilityAttributedLabel = NSAttributedString(

@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import UIKit
+import KeePassiumLib
 
 extension UIFont {
     public func withWeight(_ weight: Weight) -> UIFont {
@@ -21,16 +22,31 @@ extension UIFont {
         return self.withSize(scaledSize)
     }
     
-    public static func monospaceFont(forTextStyle style: UIFont.TextStyle) -> UIFont {
+    public static func entryTextFont(style: UIFont.TextStyle = .body) -> UIFont {
+        let descriptor = Settings.current.entryTextFontDescriptor
+        return monospaceFont(descriptor: descriptor, style: style)
+    }
+    
+    public static func monospaceFont(
+        descriptor: UIFontDescriptor? = nil,
+        style: UIFont.TextStyle
+    ) -> UIFont {
         let baseFont = UIFont.preferredFont(forTextStyle: style)
         let size = baseFont.pointSize
 
+        let font: UIFont
         let weight: Weight = UIAccessibility.isBoldTextEnabled ? .bold : .regular
-        let font = UIFont.monospacedSystemFont(ofSize: size, weight: weight)
+        if let descriptor {
+            let weightTrait = [UIFontDescriptor.TraitKey.weight: weight]
+            let adjustedDescriptor = descriptor.addingAttributes([.traits: weightTrait])
+            font = UIFont(descriptor: adjustedDescriptor, size: size)
+        } else {
+            font = UIFont.monospacedSystemFont(ofSize: size, weight: weight)
+        }
         let fontMetrics = UIFontMetrics(forTextStyle: style)
         return fontMetrics.scaledFont(for: font)
     }
-    
+
     func addingTraits(_ traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         var currentTraits = self.fontDescriptor.symbolicTraits
         currentTraits.update(with: traits)
