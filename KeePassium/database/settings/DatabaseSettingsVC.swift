@@ -14,6 +14,9 @@ protocol DatabaseSettingsDelegate: AnyObject {
     func canChangeReadOnly(in viewController: DatabaseSettingsVC) -> Bool
     func didChangeSettings(isReadOnlyFile: Bool, in viewController: DatabaseSettingsVC)
 
+    func canChangeQuickTypeEnabled(in viewController: DatabaseSettingsVC) -> Bool
+    func didChangeSettings(isQuickTypeEnabled: Bool, in viewController: DatabaseSettingsVC)
+
     func didChangeSettings(
         newFallbackStrategy: UnreachableFileFallbackStrategy,
         forAutoFill: Bool,
@@ -32,6 +35,7 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
     weak var delegate: DatabaseSettingsDelegate?
     
     var isReadOnlyAccess: Bool!
+    var isQuickTypeEnabled: Bool!
     var fallbackStrategy: UnreachableFileFallbackStrategy!
     var autoFillFallbackStrategy: UnreachableFileFallbackStrategy!
     var availableFallbackStrategies: Set<UnreachableFileFallbackStrategy> = []
@@ -86,13 +90,14 @@ extension DatabaseSettingsVC {
         static let parameterValueCell = "ParameterValueCell"
     }
     private enum CellIndex {
-        static let sectionSizes = [1, 2, 2]
+        static let sectionSizes = [1, 2, 3]
         
         static let readOnly = IndexPath(row: 0, section: 0)
         static let fileUnreachableTimeout = IndexPath(row: 0, section: 1)
         static let fileUnreachableAction = IndexPath(row: 1, section: 1)
-        static let autoFillFileUnreachableTimeout = IndexPath(row: 0, section: 2)
-        static let autoFillFileUnreachableAction = IndexPath(row: 1, section: 2)
+        static let quickTypeEnabled = IndexPath(row: 0, section: 2)
+        static let autoFillFileUnreachableTimeout = IndexPath(row: 1, section: 2)
+        static let autoFillFileUnreachableAction = IndexPath(row: 2, section: 2)
     }
     
     private func registerCellClasses(_ tableView: UITableView) {
@@ -151,6 +156,13 @@ extension DatabaseSettingsVC {
                 for: indexPath)
                 as! ParameterValueCell
             configureOfflineAccessCell(cell, strategy: fallbackStrategy, forAutoFill: false)
+            return cell
+        case CellIndex.quickTypeEnabled:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.switchCell,
+                for: indexPath)
+                as! SwitchCell
+            configureQuickTypeEnabledCell(cell)
             return cell
         case CellIndex.autoFillFileUnreachableTimeout:
             let cell = tableView.dequeueReusableCell(
@@ -254,5 +266,26 @@ extension DatabaseSettingsVC {
             return LString.appProtectionTimeoutImmediatelyFull 
         }
         return fallbackTimeoutFormatter.localizedString(fromTimeInterval: timeout)
+    }
+    
+    
+    private func configureQuickTypeEnabledCell(_ cell: SwitchCell) {
+        cell.textLabel?.text = LString.titleQuickAutoFill
+        let isEnabled = delegate?.canChangeQuickTypeEnabled(in: self) ?? false
+        cell.setEnabled(isEnabled)
+        cell.theSwitch.isEnabled = isEnabled
+        cell.theSwitch.isOn = isQuickTypeEnabled
+
+        cell.textLabel?.isAccessibilityElement = false
+        cell.theSwitch.accessibilityLabel = LString.titleQuickAutoFill
+
+        cell.onDidToggleSwitch = { [weak self, weak cell] theSwitch in
+            guard let self = self else { return }
+            self.isQuickTypeEnabled = theSwitch.isOn
+            if !theSwitch.isOn {
+                cell?.textLabel?.flashColor(to: .destructiveTint, duration: 0.7)
+            }
+            self.delegate?.didChangeSettings(isQuickTypeEnabled: theSwitch.isOn, in: self)
+        }
     }
 }

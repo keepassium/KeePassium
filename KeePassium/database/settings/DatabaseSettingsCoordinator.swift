@@ -41,6 +41,7 @@ final class DatabaseSettingsCoordinator: Coordinator {
         })
         let dsm = DatabaseSettingsManager.shared
         dbSettingsVC.isReadOnlyAccess = dsm.isReadOnly(dbRef)
+        dbSettingsVC.isQuickTypeEnabled = dsm.isQuickTypeEnabled(dbRef)
         dbSettingsVC.fallbackStrategy = dsm.getFallbackStrategy(dbRef, forAutoFill: false)
         dbSettingsVC.autoFillFallbackStrategy = dsm.getFallbackStrategy(dbRef, forAutoFill: true)
         dbSettingsVC.availableFallbackStrategies = dsm.getAvailableFallbackStrategies(dbRef)
@@ -66,12 +67,26 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
         }
     }
     
+    func canChangeQuickTypeEnabled(in viewController: DatabaseSettingsVC) -> Bool {
+        return Settings.current.isQuickTypeEnabled
+    }
+
     func didChangeSettings(isReadOnlyFile: Bool, in viewController: DatabaseSettingsVC) {
         DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
             dbSettings.isReadOnlyFile = isReadOnlyFile
         }
         delegate?.didChangeDatabaseSettings(in: self)
     }    
+    
+    func didChangeSettings(isQuickTypeEnabled: Bool, in viewController: DatabaseSettingsVC) {
+        if !isQuickTypeEnabled {
+            QuickTypeAutoFillStorage.removeAll()
+        }
+        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+            dbSettings.isQuickTypeEnabled = isQuickTypeEnabled
+        }
+        delegate?.didChangeDatabaseSettings(in: self)
+    }
     
     func didChangeSettings(
         newFallbackStrategy: UnreachableFileFallbackStrategy,

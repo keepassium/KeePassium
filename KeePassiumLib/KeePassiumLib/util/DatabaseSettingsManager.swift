@@ -119,13 +119,21 @@ public class DatabaseSettingsManager {
     }
 
     public func isQuickTypeEnabled(_ databaseFile: DatabaseFile) -> Bool {
-        let appDefault = Settings.current.premiumIsQuickTypeEnabled
-        return getSettings(for: databaseFile)?.isQuickTypeEnabled ?? appDefault
+        let isEnabledForApp = Settings.current.premiumIsQuickTypeEnabled
+        if let isEnabledForDB = getSettings(for: databaseFile)?.isQuickTypeEnabled {
+            return isEnabledForDB && isEnabledForApp
+        } else {
+            return isEnabledForApp
+        }
     }
     
     public func isQuickTypeEnabled(_ databaseRef: URLReference) -> Bool {
-        let appDefault = Settings.current.premiumIsQuickTypeEnabled
-        return getSettings(for: databaseRef)?.isQuickTypeEnabled ?? appDefault
+        let isEnabledForApp = Settings.current.premiumIsQuickTypeEnabled
+        if let isEnabledForDB = getSettings(for: databaseRef)?.isQuickTypeEnabled {
+            return isEnabledForDB && isEnabledForApp
+        } else {
+            return isEnabledForApp
+        }
     }
     
     public func getQuickTypeDatabaseCount() -> Int {
