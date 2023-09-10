@@ -424,6 +424,12 @@ extension LString {
         value: "The database is unreachable.\nThis is its latest local copy.",
         comment: "Message shown after we show a cached local database instead of the (unavailable) original database."
     )
+    public static let titleDatabaseOperations = NSLocalizedString(
+        "[Database/Operations/title]",
+        bundle: Bundle.framework,
+        value: "Database Operations",
+        comment: "Title of a list with database-related actions (e.g. lock database, change master key, etc)"
+    )
     public static let actionLockDatabase = NSLocalizedString(
         "[Database/Opened/action] Lock Database",
         bundle: Bundle.framework,
@@ -474,6 +480,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Create Database",
         comment: "Title of a form for creating a database"
+    )
+    public static let actionChangeMasterKey = NSLocalizedString(
+        "[Database/MasterKey/Change/action]",
+        bundle: Bundle.framework,
+        value: "Change Master Key",
+        comment: "Action/button: change master key of a database."
     )
     public static let titleRememberYourPassword = NSLocalizedString(
         "[Database/MasterKey/RememberYourPassword/title]",

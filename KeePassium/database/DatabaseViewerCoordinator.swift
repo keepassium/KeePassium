@@ -401,27 +401,19 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(settingsCoordinator)
     }
 
-    private func showPasswordAuditOrOfferPremium(
-        at popoverAnchor: PopoverAnchor,
-        in viewController: UIViewController
-    ) {
+    private func showPasswordAuditOrOfferPremium(in viewController: UIViewController) {
         performPremiumActionOrOfferUpgrade(
             for: .canAuditPasswords,
             in: viewController,
             actionHandler: { [weak self, weak viewController] in
                 guard let self, let viewController else { return }
-                self.showPasswordAudit(at: popoverAnchor, in: viewController)
+                self.showPasswordAudit(in: viewController)
             }
         )
     }
     
-    private func showPasswordAudit(
-        at popoverAnchor: PopoverAnchor,
-        in viewController: UIViewController
-    ) {
-        let modalRouter = NavigationRouter.createModal(
-            style: .formSheet,
-            at: popoverAnchor)
+    private func showPasswordAudit(in viewController: UIViewController) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let passwordAuditCoordinator = PasswordAuditCoordinator(
             databaseFile: databaseFile,
             router: modalRouter
@@ -436,13 +428,10 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(passwordAuditCoordinator)
     }
     
-    private func showMasterKeyChanger(
-        at popoverAnchor: PopoverAnchor,
-        in viewController: UIViewController
-    ) {
+    private func showMasterKeyChanger(in viewController: UIViewController) {
         Diag.info("Will change master key")
         
-        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let databaseKeyChangeCoordinator = DatabaseKeyChangerCoordinator(
             databaseFile: databaseFile,
             router: modalRouter
@@ -529,7 +518,7 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(itemRelocationCoordinator)
     }
     
-    private func showDatabasePrintDialog(at popoverAnchor: PopoverAnchor) {
+    private func showDatabasePrintDialog() {
         Diag.info("Will print database")
         let databaseFormatter = DatabasePrintFormatter()
         guard let formattedText = databaseFormatter.toAttributedString(
@@ -583,20 +572,20 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
     }
 
-    func didPressChangeMasterKey(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
-        showMasterKeyChanger(at: popoverAnchor, in: viewController)
+    func didPressChangeMasterKey(in viewController: GroupViewerVC) {
+        showMasterKeyChanger(in: viewController)
     }
 
-    func didPressPrintDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
-        showDatabasePrintDialog(at: popoverAnchor)
+    func didPressPrintDatabase(in viewController: GroupViewerVC) {
+        showDatabasePrintDialog()
     }
     
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
         showAppSettings(at: popoverAnchor, in: viewController)
     }
 
-    func didPressPasswordAudit(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
-        showPasswordAuditOrOfferPremium(at: popoverAnchor, in: viewController)
+    func didPressPasswordAudit(in viewController: GroupViewerVC) {
+        showPasswordAuditOrOfferPremium(in: viewController)
     }
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool {

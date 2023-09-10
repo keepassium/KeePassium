@@ -228,41 +228,10 @@
                             </userDefinedRuntimeAttributes>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="C9C-x8-Xot"/>
-                        <barButtonItem style="done" id="9KV-rC-1XL">
-                            <imageReference key="image" image="lock" renderingMode="template"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Lock Database" localized="YES"/>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="didPressLockDatabase:" destination="Rxg-rI-fqC" id="3cY-gR-tVf"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="4G1-5H-wDl"/>
-                        <barButtonItem id="qkh-6K-yQW">
-                            <imageReference key="image" image="key.shield" renderingMode="template"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Change Master Key" localized="YES"/>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="didPressChangeDatabaseSettings:" destination="Rxg-rI-fqC" id="GI8-hw-rx1"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="AmW-9i-D28"/>
-                        <barButtonItem image="network.badge.shield" id="eny-dJ-5tN">
-                            <connections>
-                                <action selector="didPressPasswordAudit:" destination="Rxg-rI-fqC" id="3wC-ap-yOW"/>
-                            </connections>
+                        <barButtonItem style="plain" id="F0x-qf-7Sc">
+                            <imageReference key="image" image="shield" catalog="system" renderingMode="template"/>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zgU-y1-cjL"/>
-                        <barButtonItem id="skd-dl-nXZ" userLabel="Print Button">
-                            <imageReference key="image" image="printer" catalog="system" renderingMode="template"/>
-                            <connections>
-                                <action selector="didPressPrintDatabase:" destination="Rxg-rI-fqC" id="mgJ-Ye-Rbb"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="3c2-tf-H4L"/>
                         <barButtonItem style="plain" id="rF3-mC-kj1">
                             <imageReference key="image" image="gearshape" catalog="system" renderingMode="template"/>
                             <userDefinedRuntimeAttributes>
@@ -280,8 +249,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="changeMasterKeyButton" destination="qkh-6K-yQW" id="G6S-sf-hF1"/>
-                        <outlet property="printButton" destination="skd-dl-nXZ" id="euh-ff-ckU"/>
+                        <outlet property="databaseMenuButton" destination="F0x-qf-7Sc" id="P3J-2v-egU"/>
                         <outlet property="sortOrderButton" destination="M5a-Ld-ZXd" id="eOe-PN-cG0"/>
                     </connections>
                 </tableViewController>
@@ -295,12 +263,9 @@
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
-        <image name="key.shield" width="11" height="13"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
-        <image name="lock" width="10" height="13"/>
-        <image name="network.badge.shield" width="15" height="14"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
-        <image name="printer" catalog="system" width="128" height="111"/>
+        <image name="shield" catalog="system" width="128" height="121"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
