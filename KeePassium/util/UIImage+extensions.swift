@@ -78,7 +78,7 @@ public enum SymbolName: String {
     case iPadHomeButton = "ipad.homebutton" 
     case iPhone = "iphone" 
     case iPhoneHomeButton = "iphone.homebutton" 
-    case key = "key.diagnonal" 
+    case key = "key.diagonal" 
     case keyDoc = "key.doc" 
     case keyDocHorizontal = "key.doc.horizontal" 
     case keyboard = "keyboard" 
