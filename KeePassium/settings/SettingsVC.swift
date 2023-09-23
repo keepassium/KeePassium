@@ -391,7 +391,8 @@ final class SettingsVC: UITableViewController, Refreshable {
         case .version88,
              .version96,
              .version99,
-             .version120:
+             .version120,
+             .version139:
             premiumStatusText = ""
             assertionFailure("Cannot be subscribed to a version purchase")
         case .donationSmall,

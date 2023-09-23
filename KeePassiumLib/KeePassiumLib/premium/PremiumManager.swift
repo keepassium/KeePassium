@@ -33,7 +33,8 @@ public enum InAppProduct: String, Codable {
     case version96 = "com.keepassium.ios.iap.version.96"
     case version99 = "com.keepassium.ios.iap.version.99"
     case version120 = "com.keepassium.ios.iap.version.120"
-    
+    case version139 = "com.keepassium.ios.iap.version.139"
+
     case donationSmall = "com.keepassium.ios.donation.small"
     case donationMedium = "com.keepassium.ios.donation.medium"
     case donationLarge = "com.keepassium.ios.donation.large"
@@ -54,7 +55,8 @@ public enum InAppProduct: String, Codable {
         case .version88,
              .version96,
              .version99,
-             .version120:
+             .version120,
+             .version139:
             return false
         case .donationSmall,
              .donationMedium,
@@ -68,7 +70,8 @@ public enum InAppProduct: String, Codable {
         case .version88,
              .version96,
              .version99,
-             .version120:
+             .version120,
+             .version139:
             return true
         case .betaForever,
              .forever,
@@ -93,7 +96,8 @@ public enum InAppProduct: String, Codable {
              .version88,
              .version96,
              .version99,
-             .version120:
+             .version120,
+             .version139:
             return .premium
         case .donationSmall,
              .donationMedium,
@@ -124,7 +128,8 @@ public enum InAppProduct: String, Codable {
         case .version88,
              .version96,
              .version99,
-             .version120:
+             .version120,
+             .version139:
             return 1 * .year
         case .betaForever,
              .forever,
@@ -319,7 +324,7 @@ public class PremiumManager: NSObject {
             .forever2,
             .montlySubscription,
             .yearlySubscription,
-            .version120,
+            .version139,
         ],
         .donation: [
             .donationSmall,
