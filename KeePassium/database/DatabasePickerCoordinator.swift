@@ -499,7 +499,7 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
         let validSortedDatabases = viewController.databaseRefs.filter {
             !$0.hasError && $0.location != .internalBackup
         }
-        let isFirstDatabase = (fileRef === validSortedDatabases.first)
+        let isFirstDatabase = (fileRef === validSortedDatabases.first) || validSortedDatabases.isEmpty
         if isFirstDatabase || fileRef.location == .internalBackup {
             selectDatabase(fileRef, animated: false)
         } else {
