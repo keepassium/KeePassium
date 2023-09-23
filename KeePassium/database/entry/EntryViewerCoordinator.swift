@@ -520,7 +520,6 @@ extension EntryViewerCoordinator {
         entry.touch(.modified, updateParents: false)
         
         delegate?.didUpdateEntry(entry, in: self)
-        EntryChangeNotifications.post(entryDidChange: entry)
         
         saveDatabase(databaseFile)
     }

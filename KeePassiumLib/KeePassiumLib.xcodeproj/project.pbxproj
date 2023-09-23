@@ -11,7 +11,6 @@
 		7505E8CB2236C93300E5202E /* TOTPGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CA2236C93300E5202E /* TOTPGenerator.swift */; };
 		7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CE2236ED6E00E5202E /* Base32.swift */; };
 		7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8D02236FA0F00E5202E /* StringExtension.swift */; };
-		750935C4235219B900A362C8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750935C3235219B900A362C8 /* Observable.swift */; };
 		750AB1AA2902DD6100811980 /* WebDAVFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750AB1A92902DD6100811980 /* WebDAVFileURL.swift */; };
 		750AB1AC2902DD9200811980 /* OneDriveFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750AB1AB2902DD9200811980 /* OneDriveFileURL.swift */; };
 		75134CFC23C0F02C0065CD10 /* DatabaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */; };
@@ -226,7 +225,6 @@
 		7505E8CA2236C93300E5202E /* TOTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGenerator.swift; sourceTree = "<group>"; };
 		7505E8CE2236ED6E00E5202E /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		7505E8D02236FA0F00E5202E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		750935C3235219B900A362C8 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		750AB1A92902DD6100811980 /* WebDAVFileURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVFileURL.swift; sourceTree = "<group>"; };
 		750AB1AB2902DD9200811980 /* OneDriveFileURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveFileURL.swift; sourceTree = "<group>"; };
 		75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseItem.swift; sourceTree = "<group>"; };
@@ -854,7 +852,6 @@
 				75F4ACF221774A6300B22D8B /* URL+extensions.swift */,
 				75F4ACE92177485D00B22D8B /* Weak.swift */,
 				751E0D67230D12660088BB10 /* Bundle+extensions.swift */,
-				750935C3235219B900A362C8 /* Observable.swift */,
 				75E9E2AD290AB9B100B79BE8 /* OTPCodeFormatter.swift */,
 				754D7C0D238C26A7005652E1 /* YubiKey.swift */,
 				751F90A8247748A300A7418F /* Result.swift */,
@@ -1202,7 +1199,6 @@
 				75D09C2B2174F77000F7DEF2 /* Meta2.swift in Sources */,
 				75D09C1E2174F77000F7DEF2 /* Argon2KDF.swift in Sources */,
 				75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */,
-				750935C4235219B900A362C8 /* Observable.swift in Sources */,
 				75D09C3A2174F77000F7DEF2 /* DataCipher.swift in Sources */,
 				75BF5AE827680A3F00809654 /* UnreachableFileFallbackStrategy.swift in Sources */,
 				75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */,

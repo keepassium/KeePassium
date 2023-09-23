@@ -144,20 +144,6 @@ extension ItemRelocationCoordinator {
         return true
     }
     
-    private func notifyContentChanged() {
-        for item in itemsToRelocate {
-            if let entry = item.value as? Entry, let group = entry.parent {
-                EntryChangeNotifications.post(entryDidChange: entry)
-                GroupChangeNotifications.post(groupDidChange: group)
-            } else if let group = item.value as? Group {
-                GroupChangeNotifications.post(groupDidChange: group)
-            }
-        }
-        if let destinationGroup = destinationGroup {
-            GroupChangeNotifications.post(groupDidChange: destinationGroup)
-        }
-    }
-    
     
     private func relocateWithinDatabase(to destinationGroup: Group) {
         assert(sourceDatabase === targetDatabase)
@@ -377,7 +363,6 @@ extension ItemRelocationCoordinator: DatabaseSaving {
             return
         }
         delegate?.didRelocateItems(in: self)
-        notifyContentChanged()
         router.pop(viewController: groupPicker, animated: true)
     }
     

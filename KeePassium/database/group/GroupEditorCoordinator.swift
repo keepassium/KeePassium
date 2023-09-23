@@ -86,11 +86,9 @@ final class GroupEditorCoordinator: Coordinator {
         if let originalGroup = originalGroup {
             group.apply(to: originalGroup, makeNewUUID: false)
             delegate?.didUpdateGroup(originalGroup, in: self)
-            GroupChangeNotifications.post(groupDidChange: originalGroup)
         } else {
             parent.add(group: group)
             delegate?.didUpdateGroup(group, in: self)
-            GroupChangeNotifications.post(groupDidChange: group)
         }
         
         saveDatabase(databaseFile)

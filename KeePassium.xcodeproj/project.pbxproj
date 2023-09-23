@@ -552,7 +552,6 @@
 		75B38C01233E5B7C006BDEFC /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */; };
 		75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
-		75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */; };
 		75B38C05233E5B7C006BDEFC /* EntryFieldEditorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75514A3320DF5B6200202340 /* EntryFieldEditorCells.swift */; };
 		75B38C06233E5B7C006BDEFC /* RootSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */; };
 		75B38C07233E5B7C006BDEFC /* DatabaseKeyChangerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D22A215CC99100360E0C /* DatabaseKeyChangerVC.swift */; };
@@ -563,7 +562,6 @@
 		75B38C0E233E5B7C006BDEFC /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
 		75B38C0F233E5B7C006BDEFC /* ViewableEntryFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */; };
 		75B38C10233E5B7C006BDEFC /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
-		75B38C11233E5B7C006BDEFC /* EntryChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */; };
 		75B38C12233E5B7C006BDEFC /* EntryHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */; };
 		75B38C13233E5B7C006BDEFC /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75802633222ED11D00F4525F /* ProgressVC.swift */; };
 		75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
@@ -726,7 +724,6 @@
 		75C94C5F20B4BAB0004FA29D /* EntryFileViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */; };
 		75C94C6120B4BAC4004FA29D /* EntryHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */; };
 		75CA661029B8E00A0094CBAA /* DatabasePrintFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */; };
-		75CA919A20E90C3700B286F0 /* EntryChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */; };
 		75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */; };
 		75CBABA121C16CD000B8AFE2 /* FirstSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */; };
 		75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
@@ -768,7 +765,6 @@
 		75D075D028B639D200F02E39 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
 		75D075D128B639D200F02E39 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75D075D228B639D200F02E39 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
-		75D075D328B639D200F02E39 /* GroupChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */; };
 		75D075D428B639D200F02E39 /* AccessibilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC56282581872B002B4395 /* AccessibilityHelper.swift */; };
 		75D075D528B639D200F02E39 /* EntryFieldEditorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75514A3320DF5B6200202340 /* EntryFieldEditorCells.swift */; };
 		75D075D628B639D200F02E39 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
@@ -800,7 +796,6 @@
 		75D075F028B639D200F02E39 /* PricingPlanCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759992F224B666F7006CC379 /* PricingPlanCollectionLayout.swift */; };
 		75D075F128B639D200F02E39 /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
 		75D075F228B639D200F02E39 /* PasswordGeneratorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D92824135D009017BF /* PasswordGeneratorCoordinator.swift */; };
-		75D075F328B639D200F02E39 /* EntryChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */; };
 		75D075F428B639D200F02E39 /* EntryHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */; };
 		75D075F528B639D200F02E39 /* AutoFillSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */; };
 		75D075F628B639D200F02E39 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544A184261610DE000C0492 /* PhotoPicker.swift */; };
@@ -1108,7 +1103,6 @@
 		75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */; };
 		75DACE732573B49700A110DD /* SettingsAppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */; };
 		75DACE742573B49700A110DD /* SettingsAppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */; };
-		75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */; };
 		75DDA56625F3E19900708750 /* UIWindow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDA56525F3E19900708750 /* UIWindow+extensions.swift */; };
 		75DDA56725F3E19900708750 /* UIWindow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDA56525F3E19900708750 /* UIWindow+extensions.swift */; };
 		75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
@@ -2188,7 +2182,6 @@
 		75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewerPagesVC.swift; sourceTree = "<group>"; };
 		75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFileViewerVC.swift; sourceTree = "<group>"; };
 		75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryHistoryViewerVC.swift; sourceTree = "<group>"; };
-		75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		75CBABA021C16CD000B8AFE2 /* FirstSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSetupVC.swift; sourceTree = "<group>"; };
 		75CD363E21521FAE0018AF46 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
@@ -2228,7 +2221,6 @@
 		75D99DE8269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutContraint+extensions.swift"; sourceTree = "<group>"; };
 		75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseItemTitleView.swift; sourceTree = "<group>"; };
 		75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppearanceVC.swift; sourceTree = "<group>"; };
-		75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChangeObserver+Notifier.swift"; sourceTree = "<group>"; };
 		75DDA56525F3E19900708750 /* UIWindow+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+extensions.swift"; sourceTree = "<group>"; };
 		75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoReloader.swift; sourceTree = "<group>"; };
 		75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsHelper.swift; sourceTree = "<group>"; };
@@ -2864,7 +2856,6 @@
 				75514A3320DF5B6200202340 /* EntryFieldEditorCells.swift */,
 				750C683120D767F6001A6AA0 /* EntryFieldEditorVC.swift */,
 				751E0D032309AF1B0088BB10 /* EntryFieldEditorVC.storyboard */,
-				75CA919920E90C3700B286F0 /* EntryChangeObserver+Notifier.swift */,
 				75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */,
 			);
 			path = edit;
@@ -2927,7 +2918,6 @@
 				751E0CFD2309AF0D0088BB10 /* GroupViewerVC.storyboard */,
 				750D127D20CF071600BE0CCE /* GroupEditorVC.swift */,
 				751E0D002309AF150088BB10 /* GroupEditorVC.storyboard */,
-				75DC043220E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift */,
 				759A430B26206D7F0074C375 /* GroupEditorCoordinator.swift */,
 			);
 			path = group;
@@ -4148,7 +4138,6 @@
 				F37CAA272A87D4F20000EF64 /* PasswordAuditCoordinator.swift in Sources */,
 				75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				753DF2C1263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
-				75DC043320E9E0C9007E63EC /* GroupChangeObserver+Notifier.swift in Sources */,
 				75BC56292581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75514A3420DF5B6200202340 /* EntryFieldEditorCells.swift in Sources */,
 				75BFB13F2481553D0017B980 /* DynamicFileList.swift in Sources */,
@@ -4182,7 +4171,6 @@
 				759992F324B666F7006CC379 /* PricingPlanCollectionLayout.swift in Sources */,
 				757E78DA2824135D009017BF /* PasswordGeneratorCoordinator.swift in Sources */,
 				7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */,
-				75CA919A20E90C3700B286F0 /* EntryChangeObserver+Notifier.swift in Sources */,
 				75EEC20F2747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */,
 				7544A187261610DE000C0492 /* PhotoPicker.swift in Sources */,
 				75C94C6120B4BAC4004FA29D /* EntryHistoryViewerVC.swift in Sources */,
@@ -4364,7 +4352,6 @@
 				7524E73D2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
 				75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
-				75B38C04233E5B7C006BDEFC /* GroupChangeObserver+Notifier.swift in Sources */,
 				75BC562B2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75B38C05233E5B7C006BDEFC /* EntryFieldEditorCells.swift in Sources */,
 				75BFB1412481553D0017B980 /* DynamicFileList.swift in Sources */,
@@ -4398,7 +4385,6 @@
 				759992F424B666F7006CC379 /* PricingPlanCollectionLayout.swift in Sources */,
 				75B38C10233E5B7C006BDEFC /* UITableViewCell+extension.swift in Sources */,
 				757E78DB2824135D009017BF /* PasswordGeneratorCoordinator.swift in Sources */,
-				75B38C11233E5B7C006BDEFC /* EntryChangeObserver+Notifier.swift in Sources */,
 				75B38C12233E5B7C006BDEFC /* EntryHistoryViewerVC.swift in Sources */,
 				75EEC2102747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */,
 				7544A188261610DE000C0492 /* PhotoPicker.swift in Sources */,
@@ -4578,7 +4564,6 @@
 				7586227B2A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				75D075D128B639D200F02E39 /* FileProvider+extensions.swift in Sources */,
 				75D075D228B639D200F02E39 /* EntryViewerCoordinator.swift in Sources */,
-				75D075D328B639D200F02E39 /* GroupChangeObserver+Notifier.swift in Sources */,
 				75D075D428B639D200F02E39 /* AccessibilityHelper.swift in Sources */,
 				75D075D528B639D200F02E39 /* EntryFieldEditorCells.swift in Sources */,
 				75D075D628B639D200F02E39 /* DynamicFileList.swift in Sources */,
@@ -4611,7 +4596,6 @@
 				75D075F028B639D200F02E39 /* PricingPlanCollectionLayout.swift in Sources */,
 				75D075F128B639D200F02E39 /* UITableViewCell+extension.swift in Sources */,
 				75D075F228B639D200F02E39 /* PasswordGeneratorCoordinator.swift in Sources */,
-				75D075F328B639D200F02E39 /* EntryChangeObserver+Notifier.swift in Sources */,
 				75D075F428B639D200F02E39 /* EntryHistoryViewerVC.swift in Sources */,
 				75D075F528B639D200F02E39 /* AutoFillSettingsCoordinator.swift in Sources */,
 				75D075F628B639D200F02E39 /* PhotoPicker.swift in Sources */,

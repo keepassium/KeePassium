@@ -466,7 +466,6 @@ extension EntryFieldEditorCoordinator: DatabaseSaving {
 
         let changedEntry = originalEntry ?? entry
         delegate?.didUpdateEntry(changedEntry, in: self)
-        EntryChangeNotifications.post(entryDidChange: changedEntry)
 
         router.pop(animated: true)
     }
