@@ -8,24 +8,26 @@
 
 import UIKit
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 public class Clipboard {
 
     public static let general = Clipboard()
+    private static let concealedTypeID = "org.nspasteboard.ConcealedType"
     
     private init() {
     }
     
     public func insert(url: URL, timeout: Double?=nil) {
         Diag.debug("Inserted a URL to clipboard")
-        insert(items: [[(kUTTypeURL as String) : url]], timeout: timeout)
+        insert(value: url, identifier: UTType.url.identifier, timeout: timeout)
         scheduleCleanup(url: url, after: timeout)
     }
     
     @discardableResult
     public func insert(text: String, timeout: Double?=nil) -> Bool {
         Diag.debug("Inserted a string to clipboard")
-        insert(items: [[(kUTTypeUTF8PlainText as String) : text]], timeout: timeout)
+        insert(value: text, identifier: UTType.utf8PlainText.identifier, timeout: timeout)        
         let isSuccessful = (UIPasteboard.general.string == text)
         if isSuccessful {
             scheduleCleanup(text: text, after: timeout)
@@ -33,18 +35,23 @@ public class Clipboard {
         return isSuccessful
     }
     
-    private func insert(items: [[String: Any]], timeout: Double?) {
+    private func insert(value: Any, identifier: String, timeout: Double?) {
+        var pasteboardItem = [String: Any]()
+        pasteboardItem[identifier] = value
+        if ProcessInfo.isRunningOnMac {
+            pasteboardItem[Self.concealedTypeID] = value
+        }
         let isLocalOnly = !Settings.current.isUniversalClipboardEnabled
         if let timeout = timeout, timeout > 0.0 {
             UIPasteboard.general.setItems(
-                items,
+                [pasteboardItem],
                 options: [
                     .localOnly: isLocalOnly,
                     .expirationDate: Date(timeIntervalSinceNow: timeout)
                 ]
             )
         } else {
-            UIPasteboard.general.setItems(items, options: [.localOnly: isLocalOnly])
+            UIPasteboard.general.setItems([pasteboardItem], options: [.localOnly: isLocalOnly])
         }
     }
 
