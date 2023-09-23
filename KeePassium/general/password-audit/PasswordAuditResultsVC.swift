@@ -11,11 +11,17 @@ import KeePassiumLib
 import UIKit
 
 protocol PasswordAuditResultsVCDelegate: AnyObject {
-    func userDidDismiss()
-    func userDidRequestDeleteEntries(entries: [Entry])
-    func userDidRequestExcludeEntries(entries: [Entry])
-    func didPressEditEntry(_ entry: Entry, at popoverAnchor: PopoverAnchor, onDismiss: @escaping () -> Void)
-    func requestFormatUpgradeIfNecessary(didApprove: @escaping () -> Void)
+    func didPressDismiss(in viewController: PasswordAuditResultsVC)
+    func didPressDeleteEntries(entries: [Entry], in viewController: PasswordAuditResultsVC)
+    func didPressExcludeEntries(entries: [Entry], in viewController: PasswordAuditResultsVC)
+    func didPressEditEntry(
+        _ entry: Entry,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: PasswordAuditResultsVC,
+        onDismiss: @escaping () -> Void)
+    func requestFormatUpgradeIfNecessary(
+        in viewController: PasswordAuditResultsVC,
+        didApprove: @escaping () -> Void)
 }
 
 final class PasswordAuditResultsVC: UIViewController {
@@ -156,7 +162,7 @@ final class PasswordAuditResultsVC: UIViewController {
 
     @objc
     private func didPressDismiss(_ sender: UIBarButtonItem) {
-        delegate?.userDidDismiss()
+        delegate?.didPressDismiss(in: self)
     }
 
     @objc
@@ -187,9 +193,11 @@ final class PasswordAuditResultsVC: UIViewController {
             : LString.confirmExcludeSelectionFromAudit
         let sheet = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         sheet.addAction(title: LString.actionExcludeFromAudit, style: .default) { [weak self] _ in
-            self?.delegate?.requestFormatUpgradeIfNecessary { [weak self] in
-                self?.delegate?.userDidRequestExcludeEntries(entries: entries)
-                self?.reload(removing: entries)
+            guard let self else { return }
+            self.delegate?.requestFormatUpgradeIfNecessary(in: self) { [weak self] in
+                guard let self else { return }
+                self.delegate?.didPressExcludeEntries(entries: entries, in: self)
+                self.reload(removing: entries)
             }
         }
         sheet.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
@@ -201,7 +209,7 @@ final class PasswordAuditResultsVC: UIViewController {
         let sheet = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         sheet.addAction(title: LString.actionDelete, style: .destructive) { [weak self] _ in
             guard let self else { return }
-            self.delegate?.userDidRequestDeleteEntries(entries: entries)
+            self.delegate?.didPressDeleteEntries(entries: entries, in: self)
             self.reload(removing: entries)
         }
         sheet.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
@@ -334,7 +342,7 @@ extension PasswordAuditResultsVC: UITableViewDelegate {
         let itemIndex = indexPath.row - announcements.count
         let selectedEntry = items[itemIndex].entry
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        delegate?.didPressEditEntry(selectedEntry, at: popoverAnchor) {
+        delegate?.didPressEditEntry(selectedEntry, at: popoverAnchor, in: self) {
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }

@@ -11,11 +11,11 @@ import KeePassiumLib
 import UIKit
 
 protocol PasswordAuditVCDelegate: AnyObject {
-    func userDidDismiss()
-    func userDidRequestStartPasswordAudit()
+    func didPressDismiss(in viewController: PasswordAuditVC)
+    func didPressStartAudit(in viewController: PasswordAuditVC)
 }
 
-final class PasswordAuditVC: UIViewController {
+final class PasswordAuditVC: UIViewController, Refreshable {
     @IBOutlet private weak var introTextView: UITextView!
     @IBOutlet private weak var startButton: UIButton!
     
@@ -34,8 +34,8 @@ final class PasswordAuditVC: UIViewController {
         title = LString.titlePasswordAudit
         navigationItem.leftBarButtonItem = closeButton
         
-        startButton.setTitle(LString.actionStartPasswordAudit, for: .normal)
         introTextView.attributedText = getIntroText()
+        refresh()
     }
     
     private func getIntroText() -> NSAttributedString {
@@ -53,16 +53,27 @@ final class PasswordAuditVC: UIViewController {
         )
         return introText
     }
+    
+    func refresh() {
+        var buttonConfig = UIButton.Configuration.plain()
+        buttonConfig.title = LString.actionStartPasswordAudit
+
+        let needsPremium = !PremiumManager.shared.isAvailable(feature: .canAuditPasswords)
+        if needsPremium {
+            buttonConfig.image = .premiumBadge
+            buttonConfig.imagePadding = 8
+            buttonConfig.imagePlacement = .trailing
+        }
+        startButton.configuration = buttonConfig
+    }
 
 
     @objc
     private func didPressDismiss(_ sender: UIBarButtonItem) {
-        delegate?.userDidDismiss()
+        delegate?.didPressDismiss(in: self)
     }
 
     @IBAction private func didPressStartAudit(_ sender: Any) {
-        requestNetworkAccessPermission { [weak self] in
-            self?.delegate?.userDidRequestStartPasswordAudit()
-        }
+        delegate?.didPressStartAudit(in: self)
     }
 }

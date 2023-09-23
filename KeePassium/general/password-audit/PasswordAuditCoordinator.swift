@@ -33,6 +33,7 @@ final class PasswordAuditCoordinator: Coordinator {
 
     private let router: NavigationRouter
     private let databaseFile: DatabaseFile
+    private let passwordAuditIntroVC: PasswordAuditVC
     private let passwordAuditService: PasswordAuditService
     private var passwordAuditResultsVC: PasswordAuditResultsVC?
 
@@ -40,13 +41,16 @@ final class PasswordAuditCoordinator: Coordinator {
     init(databaseFile: DatabaseFile, router: NavigationRouter) {
         self.databaseFile = databaseFile
         self.router = router
-        
+        self.passwordAuditIntroVC = PasswordAuditVC.instantiateFromStoryboard()
+
         var allEntries = [Entry]()
         databaseFile.database.root?.collectAllEntries(to: &allEntries)
         self.passwordAuditService = PasswordAuditService(
             hibpService: HIBPService(),
             entries: allEntries)
         self.passwordAuditService.delegate = self
+
+        passwordAuditIntroVC.delegate = self
     }
 
     deinit {
@@ -54,17 +58,19 @@ final class PasswordAuditCoordinator: Coordinator {
         removeAllChildCoordinators()
     }
 
-
     func start() {
-        let passwordAuditVC = PasswordAuditVC.instantiateFromStoryboard()
-        passwordAuditVC.delegate = self
-
-        router.push(passwordAuditVC, animated: true, onPop: { [weak self] in
+        router.push(passwordAuditIntroVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
+        startObservingPremiumStatus(#selector(premiumStatusDidChange))
     }
+
+    @objc private func premiumStatusDidChange() {
+        passwordAuditIntroVC.refresh()
+    }
+    
 
     private func showResults(results: [PasswordAuditService.PasswordAudit]) {
         let passwordAuditResultsVC = PasswordAuditResultsVC.instantiateFromStoryboard()
@@ -128,12 +134,17 @@ final class PasswordAuditCoordinator: Coordinator {
 
 
 extension PasswordAuditCoordinator: PasswordAuditVCDelegate {
-    func userDidDismiss() {
+    func didPressDismiss(in viewController: PasswordAuditVC) {
         router.dismiss(animated: true)
     }
 
-    func userDidRequestStartPasswordAudit() {
-        performAudit()
+    func didPressStartAudit(in viewController: PasswordAuditVC) {
+        performPremiumActionOrOfferUpgrade(for: .canAuditPasswords, in: viewController) {
+            [weak self, weak viewController] in
+            viewController?.requestNetworkAccessPermission { [weak self] in
+                self?.performAudit()
+            }
+        }
     }
 
     func passwordAuditDidFinish(results: [PasswordAuditService.PasswordAudit]) {
@@ -147,14 +158,18 @@ extension PasswordAuditCoordinator: PasswordAuditVCDelegate {
 
 
 extension PasswordAuditCoordinator: PasswordAuditResultsVCDelegate {
-    func userDidRequestDeleteEntries(entries: [Entry]) {
+    func didPressDismiss(in viewController: PasswordAuditResultsVC) {
+        router.dismiss(animated: true)
+    }
+    
+    func didPressDeleteEntries(entries: [Entry], in viewController: PasswordAuditResultsVC) {
         entries.forEach {
             databaseFile.database.delete(entry: $0)
         }
         saveDatabase(databaseFile)
     }
 
-    func userDidRequestExcludeEntries(entries: [Entry]) {
+    func didPressExcludeEntries(entries: [Entry], in viewController: PasswordAuditResultsVC) {
         entries.forEach { entry in
             assert(entry is Entry2, "Tried to exclude unsupported entry type, check UI-level filters")
             (entry as? Entry2)?.qualityCheck = false
@@ -165,12 +180,16 @@ extension PasswordAuditCoordinator: PasswordAuditResultsVCDelegate {
     func didPressEditEntry(
         _ entry: Entry,
         at popoverAnchor: PopoverAnchor,
+        in viewController: PasswordAuditResultsVC,
         onDismiss: @escaping () -> Void
     ) {
         delegate?.didPressEditEntry(entry, at: popoverAnchor, onDismiss: onDismiss)
     }
 
-    func requestFormatUpgradeIfNecessary(didApprove: @escaping () -> Void) {
+    func requestFormatUpgradeIfNecessary(
+        in viewController: PasswordAuditResultsVC,
+        didApprove: @escaping () -> Void
+    ) {
         guard let db2 = databaseFile.database as? Database2 else {
             assertionFailure("Requested format upgrade for KDB format, this should be blocked in UI.")
             return

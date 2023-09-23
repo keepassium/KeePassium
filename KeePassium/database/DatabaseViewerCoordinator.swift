@@ -408,14 +408,7 @@ extension DatabaseViewerCoordinator {
     }
 
     private func showPasswordAuditOrOfferPremium(in viewController: UIViewController) {
-        performPremiumActionOrOfferUpgrade(
-            for: .canAuditPasswords,
-            in: viewController,
-            actionHandler: { [weak self, weak viewController] in
-                guard let self, let viewController else { return }
-                self.showPasswordAudit(in: viewController)
-            }
-        )
+        self.showPasswordAudit(in: viewController)
     }
     
     private func showPasswordAudit(in viewController: UIViewController) {
