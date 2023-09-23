@@ -14,6 +14,7 @@ protocol GroupViewerDelegate: AnyObject {
     func didPressPrintDatabase(in viewController: GroupViewerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressPasswordAudit(in viewController: GroupViewerVC)
+    func didPressFaviconsDownload(in viewController: GroupViewerVC)
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool
     
@@ -94,6 +95,8 @@ final class GroupViewerVC:
     var isGroupEmpty: Bool {
         return groupsSorted.isEmpty && entriesSorted.isEmpty
     }
+
+    var canDownloadFavicons: Bool = true
     
     private var titleView = DatabaseItemTitleView()
     
@@ -306,18 +309,28 @@ final class GroupViewerVC:
                 self.delegate?.didPressPasswordAudit(in: self)
             }
         )
+        let faviconsDownloadAction = UIAction(
+            title: LString.actionDownloadFavicons,
+            image: .symbol(.squareAndArrowDown),
+            handler: { [weak self] _ in
+                guard let self else { return }
+                self.delegate?.didPressFaviconsDownload(in: self)
+            }
+        )
         
         if !actionPermissions.canEditDatabase {
             changeMasterKeyAction.attributes.insert(.disabled)
+            faviconsDownloadAction.attributes.insert(.disabled)
         }
         
         let lockMenu = UIMenu(options: [.displayInline], children: [lockDatabaseAction])
         let menu = UIMenu(children: [
             lockMenu,
             printDatabaseAction,
+            canDownloadFavicons ? faviconsDownloadAction : nil,
             passwordAuditAction,
             changeMasterKeyAction,
-        ])
+        ].compactMap({ $0 }))
         databaseMenuButton.menu = menu
     }
     

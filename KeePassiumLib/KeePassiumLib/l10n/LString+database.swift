@@ -176,6 +176,15 @@ extension LString {
         comment: "Action: choose a username from a list"
     )
 
+    public static let titleFavicon = "Favicon" 
+
+    public static let actionDownloadFavicon = NSLocalizedString(
+        "[EditEntry/URL/DownloadFavicon]",
+        bundle: Bundle.framework,
+        value: "Download Favicon",
+        comment: "Action: download icon of a website"
+    )
+
     
     public static let statusLoadingAttachmentFile = NSLocalizedString(
         "[Entry/Files/Add] Loading attachment file",
@@ -255,6 +264,7 @@ extension LString {
         value: "All your data will be preserved.",
         comment: "Info message when changing database file format.")
     
+
     public static let statusItemEdited = NSLocalizedString(
         "[Database/Item/Edited/state]",
         bundle: Bundle.framework,

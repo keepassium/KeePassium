@@ -739,6 +739,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Open Database",
         comment: "Action/button")
+    public static let actionSaveDatabase = NSLocalizedString(
+        "[Database/Save/action] Save Database",
+        bundle: Bundle.framework,
+        value: "Save Database",
+        comment: "Action/button to save the current database.")
     public static let tryRemoteConnection = NSLocalizedString(
         "[Database/RecommendRemote/callToAction]",
         bundle: Bundle.framework,
@@ -876,6 +881,30 @@ extension LString {
         bundle: Bundle.framework,
         value: "Add Custom Icon",
         comment: "Action: add/import an image as a custom icon"
+    )
+    public static let actionDownloadFavicons = NSLocalizedString(
+        "[Database/CustomIcon/DownloadFavicons/action]",
+        bundle: Bundle.framework,
+        value: "Download Favicons",
+        comment: "Action/button to download favicons of websites mentioned in selected entries."
+    )
+    public static let faviconUpdateStatsTemplate = NSLocalizedString(
+        "[Database/CustomIcon/DownloadFavicons/stats]",
+        bundle: Bundle.framework,
+        value: "Entries processed: %d\nIcons updated: %d",
+        comment: "Report of favicon download results."
+    )
+    public static let statusDownloadingOneFavicon = NSLocalizedString(
+        "[Database/CustomIcon/DownloadOneFavicon/status]",
+        bundle: Bundle.framework,
+        value: "Downloading favicon",
+        comment: "Status message: a website favicon is being downloaded"
+    )
+    public static let statusDownloadingFavicons = NSLocalizedString(
+        "[Database/CustomIcon/DownloadFavicons/status]",
+        bundle: Bundle.framework,
+        value: "Downloading favicons",
+        comment: "Status message: multiple website favicons are being downloaded"
     )
     
     

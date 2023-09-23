@@ -1295,8 +1295,32 @@ public class Database2: Database {
         return Attachment2(name: name, isCompressed: false, data: data)
     }
 
-
-    @discardableResult
+    
+    public func setCustomIcon(_ icon: CustomIcon2, for entry: Entry2) {
+        entry.backupState()
+        entry.customIconUUID = icon.uuid
+        entry.touch(.accessed)
+        entry.touch(.modified, updateParents: false)
+    }
+    
+    public func setCustomIcon(_ icon: CustomIcon2, for group: Group2) {
+        group.customIconUUID = icon.uuid
+        group.touch(.accessed)
+        group.touch(.modified, updateParents: false)
+    }
+    
+    public func addCustomIcon(_ image: UIImage) -> CustomIcon2? {
+        guard let normalizedImage = image.downscalingToSquare(maxSide: CustomIcon2.maxSide) else {
+            Diag.error("Failed to normalize the image, cancelling")
+            return nil
+        }
+        guard let pngData = normalizedImage.pngData() else {
+            Diag.warning("Failed to get image's PNG data, cancelling")
+            return nil
+        }
+        return addCustomIcon(pngData: ByteArray(data: pngData))
+    }
+    
     public func addCustomIcon(pngData: ByteArray) -> CustomIcon2 {
         if let existingIcon = findCustomIcon(pngDataSha256: pngData.sha256) {
             return existingIcon

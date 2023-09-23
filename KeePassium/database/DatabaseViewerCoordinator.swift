@@ -81,6 +81,9 @@ final class DatabaseViewerCoordinator: Coordinator {
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return self }
+    var saveSuccessHandler: (() -> Void)?
+
+    let faviconDownloader: FaviconDownloader
     
     init(
         splitViewController: RootSplitVC,
@@ -100,6 +103,8 @@ final class DatabaseViewerCoordinator: Coordinator {
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
         let placeholderWrapperVC = RouterNavigationController(rootViewController: placeholderVC)
         self.placeholderRouter = NavigationRouter(placeholderWrapperVC)
+
+        faviconDownloader = FaviconDownloader()
     }
     
     deinit {
@@ -276,6 +281,7 @@ extension DatabaseViewerCoordinator {
         let groupViewerVC = GroupViewerVC.instantiateFromStoryboard()
         groupViewerVC.delegate = self
         groupViewerVC.group = group
+        groupViewerVC.canDownloadFavicons = database is Database2
         
         let isCustomTransition = replacingTopVC
         if isCustomTransition {
@@ -426,6 +432,44 @@ extension DatabaseViewerCoordinator {
         passwordAuditCoordinator.start()
         viewController.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(passwordAuditCoordinator)
+    }
+
+    private func downloadFavicons(in viewController: UIViewController) {
+        var allEntries = [Entry]()
+        databaseFile.database.root?.collectAllEntries(to: &allEntries)
+
+        downloadFavicons(for: allEntries, in: viewController) { [weak self] downloadedFavicons in
+            guard let db2 = self?.database as? Database2, let databaseFile = self?.databaseFile else {
+                return
+            }
+
+            downloadedFavicons.forEach {
+                guard let entry2 = $0.entry as? Entry2 else {
+                    return
+                }
+
+                guard let icon = db2.addCustomIcon($0.image) else {
+                    Diag.error("Failed to add favicon to database")
+                    return
+                }
+                db2.setCustomIcon(icon, for: entry2)
+            }
+            self?.refresh()
+
+            let alert = UIAlertController(
+                title: databaseFile.visibleFileName,
+                message: String.localizedStringWithFormat(
+                    LString.faviconUpdateStatsTemplate,
+                    allEntries.count,
+                    downloadedFavicons.count),
+                preferredStyle: .alert
+            )
+            alert.addAction(title: LString.actionSaveDatabase, style: .default, preferred: true) {
+                [weak self] _ in
+                self?.saveDatabase(databaseFile)
+            }
+            viewController.present(alert, animated: true)
+        }
     }
     
     private func showMasterKeyChanger(in viewController: UIViewController) {
@@ -586,6 +630,10 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
 
     func didPressPasswordAudit(in viewController: GroupViewerVC) {
         showPasswordAuditOrOfferPremium(in: viewController)
+    }
+
+    func didPressFaviconsDownload(in viewController: GroupViewerVC) {
+        downloadFavicons(in: viewController)
     }
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool {
@@ -1048,4 +1096,8 @@ extension DatabaseViewerCoordinator: PasswordAuditCoordinatorDelegate {
     func didPressEditEntry(_ entry: KeePassiumLib.Entry, at popoverAnchor: PopoverAnchor, onDismiss: @escaping () -> Void) {
         showEntryEditor(for: entry, at: popoverAnchor, onDismiss: onDismiss)
     }
+}
+
+extension DatabaseViewerCoordinator: FaviconDownloading {
+    var faviconDownloadingProgressHost: ProgressViewHost { return self }
 }

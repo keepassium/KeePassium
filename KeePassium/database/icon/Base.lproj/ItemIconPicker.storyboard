@@ -32,16 +32,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/db-icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="NKk-hq-lQ6">
-                                            <rect key="frame" x="2" y="2" width="40" height="40"/>
+                                            <rect key="frame" x="4" y="4" width="36" height="36"/>
                                             <color key="tintColor" name="IconTint"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="NKk-hq-lQ6" firstAttribute="leading" secondItem="1lW-K3-td4" secondAttribute="leading" constant="2" id="Ixg-4M-8E4"/>
-                                    <constraint firstAttribute="trailing" secondItem="NKk-hq-lQ6" secondAttribute="trailing" constant="2" id="K5S-Rz-AQP"/>
-                                    <constraint firstItem="NKk-hq-lQ6" firstAttribute="top" secondItem="1lW-K3-td4" secondAttribute="top" constant="2" id="asK-ku-9PZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="NKk-hq-lQ6" secondAttribute="bottom" constant="2" id="qL0-WT-kkJ"/>
+                                    <constraint firstItem="NKk-hq-lQ6" firstAttribute="leading" secondItem="1lW-K3-td4" secondAttribute="leading" constant="4" id="Ixg-4M-8E4"/>
+                                    <constraint firstAttribute="trailing" secondItem="NKk-hq-lQ6" secondAttribute="trailing" constant="4" id="K5S-Rz-AQP"/>
+                                    <constraint firstItem="NKk-hq-lQ6" firstAttribute="top" secondItem="1lW-K3-td4" secondAttribute="top" constant="4" id="asK-ku-9PZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="NKk-hq-lQ6" secondAttribute="bottom" constant="4" id="qL0-WT-kkJ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="NKk-hq-lQ6" id="nPX-39-Vuh"/>

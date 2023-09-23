@@ -46,10 +46,13 @@ final class EntryFieldEditorCoordinator: Coordinator {
             fieldEditorVC.isModalInPresentation = isModified
         }
     }
+
+    private let faviconDownloader: FaviconDownloader
     
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return router }
+    var saveSuccessHandler: (() -> Void)?
     
     init(router: NavigationRouter, databaseFile: DatabaseFile, parent: Group, target: Entry?) {
         self.router = router
@@ -57,6 +60,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         self.database = databaseFile.database
         self.parent = parent
         self.originalEntry = target
+        self.faviconDownloader = FaviconDownloader()
         
         let isCreationMode: Bool
         if let _target = target {
@@ -77,6 +81,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         fieldEditorVC.fields = fields
         fieldEditorVC.entryIcon = UIImage.kpIcon(forEntry: entry)
         fieldEditorVC.allowsCustomFields = entry.isSupportsExtraFields
+        fieldEditorVC.allowsFaviconDownload = database is Database2
         fieldEditorVC.itemCategory = ItemCategory.get(for: entry)
         fieldEditorVC.shouldFocusOnTitleField = isCreationMode
     }
@@ -213,11 +218,27 @@ final class EntryFieldEditorCoordinator: Coordinator {
         diagnosticsViewerCoordinator.start()
         addChildCoordinator(diagnosticsViewerCoordinator)
     }
+
+    private func changeIcon(image: UIImage) {
+        guard let db2 = database as? Database2, let entry2 = entry as? Entry2 else {
+            return
+        }
+
+        guard let customIcon = db2.addCustomIcon(image) else {
+            Diag.error("Failed to add custom icon, cancelling")
+            return
+        }
+        db2.setCustomIcon(customIcon, for: entry2)
+        fieldEditorVC.shouldHighlightIcon = true
+        isModified = true
+        refresh()
+    }
     
     func showIconPicker(at popoverAnchor: PopoverAnchor) {
         let iconPickerCoordinator = ItemIconPickerCoordinator(
             router: router,
-            databaseFile: databaseFile
+            databaseFile: databaseFile,
+            customFaviconUrl: URL.from(malformedString: entry.resolvedURL)
         )
         iconPickerCoordinator.item = entry
         iconPickerCoordinator.dismissHandler = { [weak self] (coordinator) in
@@ -350,6 +371,35 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
     
     func didPressPickIcon(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldEditorVC) {
         showIconPicker(at: popoverAnchor)
+    }
+
+    func didPressDownloadFavicon(for field: EditableField, in viewController: EntryFieldEditorVC) {
+        guard let value = field.resolvedValue,
+              let url = URL.from(malformedString: value)
+        else {
+            return
+        }
+        
+        viewController.isDownloadingFavicon = true
+        viewController.refresh() 
+        
+        faviconDownloader.downloadFavicon(for: url) { [weak self, weak viewController] result in
+            guard let self, let viewController else { return }
+            viewController.isDownloadingFavicon = false
+            switch result {
+            case let .success(image):
+                if let image {
+                    self.changeIcon(image: image)
+                    return
+                }
+            case .failure(.canceled):
+                Diag.info("Downloading favicon canceled")
+            case let .failure(error):
+                Diag.error("Downloading favicon failed [message: \(error.localizedDescription)]")
+                viewController.showNotification(error.localizedDescription)
+            }
+            viewController.refresh()
+        }
     }
 }
 

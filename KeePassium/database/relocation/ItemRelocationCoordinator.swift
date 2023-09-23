@@ -43,6 +43,7 @@ class ItemRelocationCoordinator: Coordinator {
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return router }
+    var saveSuccessHandler: (() -> Void)?
     
     private var postSavingPhase: (()->Void)?
     

@@ -12,6 +12,14 @@ import KeePassiumLib
 
 
 class EditableFieldCellFactory {
+    private static var faviconButtonConfiguration: UIButton.Configuration = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.imagePlacement = .trailing
+        configuration.imagePadding = 4
+        configuration.contentInsets = .init(top: 8, leading: 8, bottom: 8, trailing: 0)
+        return configuration
+    }()
+
     public static func dequeueAndConfigureCell(
         from tableView: UITableView,
         for indexPath: IndexPath,
@@ -46,6 +54,10 @@ class EditableFieldCellFactory {
     private static func decorate(_ cell: EntryFieldEditorSingleLineCell, field: EditableField) {
         cell.textField.keyboardType = .default
         cell.actionButton.isHidden = true
+        cell.actionButton.setTitle(nil, for: .normal)
+        cell.actionButton.setImage(nil, for: .normal)
+        cell.actionButton.configuration = nil
+        cell.actionButton.isEnabled = true
         
         switch field.internalName {
         case EntryField.userName:
@@ -54,9 +66,34 @@ class EditableFieldCellFactory {
             cell.textField.keyboardType = .emailAddress
         case EntryField.url:
             cell.textField.keyboardType = .URL
+            cell.actionButton.configuration = faviconButtonConfiguration
+            cell.actionButton.setTitle(LString.titleFavicon, for: .normal)
+            cell.actionButton.setImage(.symbol(.squareAndArrowDown), for: .normal)
+            cell.actionButton.isHidden = false
         default:
             break
         }
+    }
+}
+
+struct EntryFieldActionConfiguration {
+    static let hidden = Self(state: [.hidden], menu: nil)
+    
+    enum State {
+        case enabled
+        case hidden
+        case busy
+    }
+    var state: Set<State>
+    var menu: UIMenu?
+    
+    public func apply(to button: UIButton) {
+        button.menu = menu
+        button.showsMenuAsPrimaryAction = menu != nil
+        
+        button.isHidden = state.contains(.hidden)
+        button.isEnabled = state.contains(.enabled)
+        button.configuration?.showsActivityIndicator = state.contains(.busy)
     }
 }
 
@@ -70,8 +107,7 @@ internal protocol EditableFieldCellDelegate: AnyObject {
         at popoverAnchor: PopoverAnchor,
         in cell: EditableFieldCell)
     
-    @available(iOS 14, *)
-    func getButtonMenu(for field: EditableField, in cell: EditableFieldCell) -> UIMenu?
+    func getActionConfiguration(for field: EditableField) -> EntryFieldActionConfiguration
 }
 
 internal protocol EditableFieldCell: AnyObject {
@@ -140,6 +176,16 @@ class EntryFieldEditorTitleCell:
         return result
     }
     
+    func pulsateIcon() {
+        let scalingAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scalingAnimation.toValue = 1.5
+        scalingAnimation.duration = 0.3
+        scalingAnimation.timingFunction = CAMediaTimingFunction.init(name: .easeOut)
+        scalingAnimation.autoreverses = true
+        scalingAnimation.repeatCount = 1
+        iconView.layer.add(scalingAnimation, forKey: nil)
+    }
+    
     func validate() {
         titleTextField.validate()
     }
@@ -180,7 +226,9 @@ class EntryFieldEditorSingleLineCell:
     @IBOutlet weak var actionButton: UIButton!
     
     weak var delegate: EditableFieldCellDelegate? {
-        didSet { refreshMenu() }
+        didSet {
+            refreshActionButton()
+        }
     }
     weak var field: EditableField? {
         didSet {
@@ -190,9 +238,10 @@ class EntryFieldEditorSingleLineCell:
                 (field?.isProtected ?? false) && Settings.current.isHideProtectedFields
             textField.accessibilityLabel = field?.visibleName
             textField.textContentType = field?.textContentType
-            refreshMenu()
+            refreshActionButton()
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
@@ -203,19 +252,15 @@ class EntryFieldEditorSingleLineCell:
         textField.validityDelegate = self
         textField.delegate = self
         textField.addRandomizerEditMenu()
+
     }
 
-    private func refreshMenu() {
-        guard #available(iOS 14, *) else { return }
-        
-        if let field = field,
-           let buttonMenu = delegate?.getButtonMenu(for: field, in: self)
-        {
-            actionButton.menu = buttonMenu
-            actionButton.showsMenuAsPrimaryAction = true
-        } else {
-            actionButton.showsMenuAsPrimaryAction = false
+    private func refreshActionButton() {
+        guard let field = field else {
+            return
         }
+        let actionConfig = delegate?.getActionConfiguration(for: field) ?? .hidden
+        actionConfig.apply(to: actionButton)
     }
     
     override func becomeFirstResponder() -> Bool {
@@ -225,6 +270,7 @@ class EntryFieldEditorSingleLineCell:
 
     func validate() {
         textField.validate()
+        refreshActionButton()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -237,6 +283,7 @@ class EntryFieldEditorSingleLineCell:
         guard let field = field else { return }
         field.value = textField.text ?? ""
         delegate?.didChangeField(field, in: self)
+        refreshActionButton()
     }
     
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {

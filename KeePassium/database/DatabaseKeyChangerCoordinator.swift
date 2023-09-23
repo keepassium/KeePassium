@@ -28,6 +28,7 @@ final class DatabaseKeyChangerCoordinator: Coordinator {
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return router }
+    var saveSuccessHandler: (() -> Void)?
     
     init(databaseFile: DatabaseFile, router: NavigationRouter) {
         self.router = router

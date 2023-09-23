@@ -17,9 +17,6 @@ protocol ItemIconPickerCoordinatorDelegate: AnyObject {
 }
 
 class ItemIconPickerCoordinator: Coordinator {
-    
-    public static let customIconMaxSide = CGFloat(128)
-
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     
@@ -31,15 +28,21 @@ class ItemIconPickerCoordinator: Coordinator {
     private let database: Database
     private let iconPicker: ItemIconPicker
     private var photoPicker: PhotoPicker?
+    private let customFaviconUrl: URL?
     
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return router }
+    var saveSuccessHandler: (() -> Void)?
 
-    init(router: NavigationRouter, databaseFile: DatabaseFile) {
+    let faviconDownloader: FaviconDownloader
+
+    init(router: NavigationRouter, databaseFile: DatabaseFile, customFaviconUrl: URL?) {
         self.router = router
         self.databaseFile = databaseFile
         self.database = databaseFile.database
+        self.faviconDownloader = FaviconDownloader()
+        self.customFaviconUrl = customFaviconUrl
         iconPicker = ItemIconPicker.instantiateFromStoryboard()
         iconPicker.delegate = self
     }
@@ -51,6 +54,7 @@ class ItemIconPickerCoordinator: Coordinator {
     
     func start() {
         iconPicker.isImportAllowed = database is Database2
+        iconPicker.isDownloadAllowed = database is Database2 && customFaviconUrl != nil
         refresh()
         iconPicker.selectIcon(for: item)
         
@@ -75,13 +79,18 @@ class ItemIconPickerCoordinator: Coordinator {
             assertionFailure()
             return
         }
-        guard let pngData = image.pngData() else {
+        
+        guard let newIcon = db2.addCustomIcon(image) else {
             Diag.warning("New custom icon has no data, ignoring")
             return
         }
-        db2.addCustomIcon(pngData: ByteArray(data: pngData))
-        refresh()
-        saveDatabase(databaseFile)
+        refresh() 
+        
+        saveDatabase(databaseFile, onSuccess: { [weak self] in
+            guard let self else { return }
+            self.delegate?.didSelectIcon(customIcon: newIcon.uuid, in: self)
+            self.router.pop(animated: true)
+        })
     }
     
     private func deleteCustomIcon(uuid: UUID) {
@@ -123,13 +132,22 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
             guard let self = self else { return }
             switch result {
             case .success(let pickerImage):
-                let maxSide = ItemIconPickerCoordinator.customIconMaxSide
-                if let iconImage = pickerImage?.image.downscalingToSquare(maxSide: maxSide) {
-                    self.addCustomIcon(iconImage)
+                if let iconImage = pickerImage?.image {
+                    addCustomIcon(iconImage)
                 }
             case .failure(let error):
                 viewController.showErrorAlert(error, title: LString.titleError)
             }
+        }
+    }
+
+    func didPressDownloadIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor) {
+        guard let url = customFaviconUrl else {
+            return
+        }
+
+        downloadFavicon(for: url, in: viewController) { [weak self] image in
+            self?.addCustomIcon(image)
         }
     }
 }
@@ -145,4 +163,8 @@ extension ItemIconPickerCoordinator: DatabaseSaving {
     func getDatabaseSavingErrorParent() -> UIViewController {
         return iconPicker
     }
+}
+
+extension ItemIconPickerCoordinator: FaviconDownloading {
+    var faviconDownloadingProgressHost: ProgressViewHost { return router }
 }

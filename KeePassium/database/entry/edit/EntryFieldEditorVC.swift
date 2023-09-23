@@ -36,6 +36,10 @@ protocol EntryFieldEditorDelegate: AnyObject {
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldEditorVC
     )
+    func didPressDownloadFavicon(
+        for field: EditableField,
+        in viewController: EntryFieldEditorVC
+    )
 }
 
 final class EntryFieldEditorVC: UITableViewController, Refreshable {
@@ -48,9 +52,12 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
     var fields = [EditableField]()
     weak var delegate: EntryFieldEditorDelegate?
     var entryIcon: UIImage?
+    var shouldHighlightIcon = false
+    var isDownloadingFavicon = false
 
     var itemCategory = ItemCategory.default
     var allowsCustomFields = false
+    var allowsFaviconDownload = true
     
     
     override func viewDidLoad() {
@@ -276,6 +283,10 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
                 as! EntryFieldEditorTitleCell
             cell.delegate = self
             cell.icon = entryIcon
+            if shouldHighlightIcon {
+                cell.pulsateIcon()
+                shouldHighlightIcon = false
+            }
             cell.field = field
             return cell
         }
@@ -332,15 +343,6 @@ extension EntryFieldEditorVC: ValidatingTextFieldDelegate {
 }
 
 extension EntryFieldEditorVC: EditableFieldCellDelegate {
-    func getButtonMenu(for field: EditableField, in cell: EditableFieldCell) -> UIMenu? {
-        switch field.internalName {
-        case EntryField.userName:
-            return delegate?.getUserNameGeneratorMenu(for: field, in: self)
-        default:
-            return nil
-        }
-    }
-    
     func didPressButton(
         for field: EditableField,
         at popoverAnchor: PopoverAnchor,
@@ -350,6 +352,8 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         case is EntryFieldEditorTitleCell:
             didPressChangeIcon(in: cell, at: popoverAnchor)
             break
+        case is EntryFieldEditorSingleLineCell where field.internalName == EntryField.url:
+            delegate?.didPressDownloadFavicon(for: field, in: self)
         default:
             assertionFailure("Button pressed in an unknown field")
         }
@@ -398,5 +402,30 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
             }
         }
         return (sameNameCount == 1)
+    }
+    
+    func getActionConfiguration(for field: EditableField) -> EntryFieldActionConfiguration {
+        var menu: UIMenu?
+        var state = Set<EntryFieldActionConfiguration.State>()
+        switch field.internalName {
+        case EntryField.userName:
+            menu = delegate?.getUserNameGeneratorMenu(for: field, in: self)
+            state = [.enabled]
+        case EntryField.url:
+            guard allowsFaviconDownload else {
+                state.insert(.hidden)
+                break
+            }
+            let valueLooksLikeURL = URL.from(malformedString: field.resolvedValue ?? "") != nil
+            if valueLooksLikeURL {
+                state.insert(.enabled)
+            }
+            if isDownloadingFavicon {
+                state.insert(.busy)
+            }
+        default:
+            state = [.hidden]
+        }
+        return EntryFieldActionConfiguration(state: state, menu: menu)
     }
 }

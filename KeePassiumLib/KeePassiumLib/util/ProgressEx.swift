@@ -53,6 +53,8 @@ public class ProgressEx: Progress {
     private var children = [Weak<ProgressEx>]()
     
     private weak var parent: ProgressEx?
+
+    public var onCancel: (() -> Void)?
     
     override public init(
         parent parentProgressOrNil: Progress?,
@@ -77,6 +79,11 @@ public class ProgressEx: Progress {
     public func cancel(reason: CancellationReason) {
         self.cancellationReason = reason
         super.cancel()
+    }
+
+    override public func cancel() {
+      super.cancel()
+      onCancel?()
     }
 }
 

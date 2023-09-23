@@ -15,6 +15,7 @@ protocol ItemIconPickerDelegate {
     func didSelect(customIcon uuid: UUID, in viewController: ItemIconPicker)
     func didPressImportIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
     func didDelete(customIcon uuid: UUID, in viewController: ItemIconPicker)
+    func didPressDownloadIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
 }
 
 final class ItemIconPickerSectionHeader: UICollectionReusableView {
@@ -25,40 +26,15 @@ final class ItemIconPickerSectionHeader: UICollectionReusableView {
 final class ItemIconPickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
-    override var isSelected: Bool {
-        get { return super.isSelected }
-        set {
-            super.isSelected = newValue
-            refresh()
-        }
-    }
-    
-    override var isHighlighted: Bool {
-        get { return super.isHighlighted }
-        set {
-            super.isHighlighted = newValue
-            refresh()
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-
-    private func refresh() {
-        let layer = contentView.layer
-        if isHighlighted {
-            layer.borderWidth = 1.0
-            layer.borderColor = UIColor.actionTint.cgColor
-            layer.backgroundColor = UIColor.actionTint.cgColor
-            imageView.tintColor = UIColor.actionText
-        } else {
-            layer.borderWidth = 0.0
-            layer.borderColor = UIColor.clear.cgColor
-            layer.backgroundColor = UIColor.clear.cgColor
-            imageView.tintColor = UIColor.iconTint
-        }
-        setNeedsDisplay()
+        
+        let selectedBackgroundView = UIView(frame: bounds)
+        selectedBackgroundView.layer.borderColor = UIColor.actionTint.cgColor
+        selectedBackgroundView.layer.borderWidth = 1.0
+        selectedBackgroundView.layer.cornerRadius = 5.0
+        selectedBackgroundView.backgroundColor = .actionTint.withAlphaComponent(0.3)
+        self.selectedBackgroundView = selectedBackgroundView
     }
 }
 
@@ -78,6 +54,8 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
     
     var isImportAllowed = true
 
+    var isDownloadAllowed = true
+
     private let standardIconSet: DatabaseIconSet = Settings.current.databaseIconSet
     private var selectedPath: IndexPath?
     
@@ -94,6 +72,15 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
                 action: #selector(didPressImportIcon))
             importIconButton.accessibilityLabel = LString.actionAddCustomIcon
             navigationItem.setRightBarButton(importIconButton, animated: false)
+        }
+
+        if isDownloadAllowed {
+            let downloadButton = UIBarButtonItem(
+                title: LString.actionDownloadFavicon,
+                style: .plain,
+                target: self,
+                action: #selector(didPressDownloadIcon))
+            setToolbarItems([.flexibleSpace(), downloadButton, .flexibleSpace()], animated: false)
         }
     }
     
@@ -122,6 +109,11 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
     @objc private func didPressImportIcon(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressImportIcon(in: self, at: popoverAnchor)
+    }
+
+    @objc private func didPressDownloadIcon(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressDownloadIcon(in: self, at: popoverAnchor)
     }
     
     override func getContextActionsForItem(at indexPath: IndexPath) -> [ContextualAction] {

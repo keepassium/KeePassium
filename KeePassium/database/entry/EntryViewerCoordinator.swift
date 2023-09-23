@@ -55,6 +55,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return progressHost }
+    var saveSuccessHandler: (() -> Void)?
     
     private var expiryDateEditorModalRouter: NavigationRouter?
     
