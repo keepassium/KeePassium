@@ -168,21 +168,19 @@ extension LString {
         value: "List Settings",
         comment: "Title of list view configuration screen")
     
-    
+
+    public static let actionChangeIcon = NSLocalizedString(
+        "[EditEntry/Icon/change]",
+        bundle: Bundle.framework,
+        value: "Change Icon",
+        comment: "Action: select a different icon for an item"
+    )
+
     public static let actionChooseUserName = NSLocalizedString(
         "[EditEntry/UserName/choose]",
         bundle: Bundle.framework,
         value: "Choose",
         comment: "Action: choose a username from a list"
-    )
-
-    public static let titleFavicon = "Favicon" 
-
-    public static let actionDownloadFavicon = NSLocalizedString(
-        "[EditEntry/URL/DownloadFavicon]",
-        bundle: Bundle.framework,
-        value: "Download Favicon",
-        comment: "Action: download icon of a website"
     )
 
     

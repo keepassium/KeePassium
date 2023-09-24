@@ -234,7 +234,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         refresh()
     }
     
-    func showIconPicker(at popoverAnchor: PopoverAnchor) {
+    func showIconPicker() {
         let iconPickerCoordinator = ItemIconPickerCoordinator(
             router: router,
             databaseFile: databaseFile,
@@ -369,8 +369,8 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         return makeUserNameGeneratorMenu(for: field)
     }
     
-    func didPressPickIcon(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldEditorVC) {
-        showIconPicker(at: popoverAnchor)
+    func didPressPickIcon(in viewController: EntryFieldEditorVC) {
+        showIconPicker()
     }
 
     func didPressDownloadFavicon(for field: EditableField, in viewController: EntryFieldEditorVC) {

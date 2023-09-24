@@ -610,6 +610,12 @@ extension LString {
         comment: "VoiceOver description of a group [groupTitle: String, itemCount: Int]"
     )
     
+    public static let fieldIcon = NSLocalizedString(
+        "[Entry/Field/name] Icon",
+        bundle: Bundle.framework,
+        value: "Icon",
+        comment: "Name of an entry field"
+    )
     public static let fieldTitle = NSLocalizedString(
         "[Entry/Field/name] Title",
         bundle: Bundle.framework,
@@ -881,6 +887,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Add Custom Icon",
         comment: "Action: add/import an image as a custom icon"
+    )
+    public static let actionDownloadFavicon = NSLocalizedString(
+        "[Database/CustomIcon/DownloadFavicon/action]",
+        bundle: Bundle.framework,
+        value: "Download Favicon",
+        comment: "Action: download icon of a website"
     )
     public static let actionDownloadFavicons = NSLocalizedString(
         "[Database/CustomIcon/DownloadFavicons/action]",

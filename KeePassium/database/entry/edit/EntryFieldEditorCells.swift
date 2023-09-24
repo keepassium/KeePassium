@@ -10,72 +10,6 @@
 import UIKit
 import KeePassiumLib
 
-
-class EditableFieldCellFactory {
-    private static var faviconButtonConfiguration: UIButton.Configuration = {
-        var configuration = UIButton.Configuration.plain()
-        configuration.imagePlacement = .trailing
-        configuration.imagePadding = 4
-        configuration.contentInsets = .init(top: 8, leading: 8, bottom: 8, trailing: 0)
-        return configuration
-    }()
-
-    public static func dequeueAndConfigureCell(
-        from tableView: UITableView,
-        for indexPath: IndexPath,
-        field: EditableField
-    ) -> EditableFieldCell & UITableViewCell {
-        let cellStoryboardID: String
-        if field.isFixed {
-            if field.isMultiline {
-                cellStoryboardID = EntryFieldEditorMultiLineCell.storyboardID
-            } else {
-                if field.isProtected || (field.internalName == EntryField.password) {
-                    cellStoryboardID = PasswordEntryFieldCell.storyboardID
-                } else {
-                    cellStoryboardID = EntryFieldEditorSingleLineCell.storyboardID
-                }
-            }
-        } else {
-            cellStoryboardID = EntryFieldEditorCustomFieldCell.storyboardID
-        }
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: cellStoryboardID,
-            for: indexPath)
-            as! EditableFieldCell & UITableViewCell
-        cell.field = field
-        
-        if let singleLineCell = cell as? EntryFieldEditorSingleLineCell {
-            decorate(singleLineCell, field: field)
-        }
-        return cell
-    }
-    
-    private static func decorate(_ cell: EntryFieldEditorSingleLineCell, field: EditableField) {
-        cell.textField.keyboardType = .default
-        cell.actionButton.isHidden = true
-        cell.actionButton.setTitle(nil, for: .normal)
-        cell.actionButton.setImage(nil, for: .normal)
-        cell.actionButton.configuration = nil
-        cell.actionButton.isEnabled = true
-        
-        switch field.internalName {
-        case EntryField.userName:
-            cell.actionButton.setTitle(LString.actionChooseUserName, for: .normal)
-            cell.actionButton.isHidden = false
-            cell.textField.keyboardType = .emailAddress
-        case EntryField.url:
-            cell.textField.keyboardType = .URL
-            cell.actionButton.configuration = faviconButtonConfiguration
-            cell.actionButton.setTitle(LString.titleFavicon, for: .normal)
-            cell.actionButton.setImage(.symbol(.squareAndArrowDown), for: .normal)
-            cell.actionButton.isHidden = false
-        default:
-            break
-        }
-    }
-}
-
 struct EntryFieldActionConfiguration {
     static let hidden = Self(state: [.hidden], menu: nil)
     
@@ -125,18 +59,14 @@ class EntryFieldEditorTitleCell:
 {
     public static let storyboardID = "TitleCell"
     
-    @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleTextField: ValidatingTextField!
-    @IBOutlet weak var changeIconButton: UIButton!
+    @IBOutlet weak var iconButton: UIButton!
     
     weak var field: EditableField? {
-        didSet {
-            titleTextField.text = field?.value
-        }
+        didSet { refresh() }
     }
     var icon: UIImage? {
-        get { return iconView.image }
-        set { iconView.image = newValue }
+        didSet { refresh() }
     }
     weak var delegate: EditableFieldCellDelegate?
     
@@ -148,23 +78,21 @@ class EntryFieldEditorTitleCell:
         titleTextField.delegate = self
         titleTextField.addRandomizerEditMenu()
         
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapIcon))
-        iconView.addGestureRecognizer(tapRecognizer)
+        iconButton.configuration = .tinted()
+        iconButton.borderColor = .actionTint
+        iconButton.borderWidth = 1
+        iconButton.cornerRadius = 5
+        iconButton.configuration?.baseForegroundColor = .iconTint
+        iconButton.accessibilityLabel = LString.fieldIcon
     }
     
-    @objc func didTapIcon(_ gestureRecognizer: UITapGestureRecognizer) {
-        if gestureRecognizer.state == .ended {
-            didPressChangeIcon(gestureRecognizer)
-        }
-    }
-    
-    @IBAction func didPressChangeIcon(_ sender: Any) {
-        guard let field = field else { return }
-        let popoverAnchor = PopoverAnchor(
-            sourceView: changeIconButton,
-            sourceRect: changeIconButton.bounds
-        )
-        delegate?.didPressButton(for: field, at: popoverAnchor, in: self)
+    private func refresh() {
+        guard let field else { return }
+        let buttonConfig = delegate?.getActionConfiguration(for: field)
+        buttonConfig?.apply(to: iconButton)
+        iconButton.configuration?.image = icon?.downscalingToSquare(maxSide: 29)
+        
+        titleTextField.text = field.value
     }
     
     override func becomeFirstResponder() -> Bool {
@@ -178,12 +106,12 @@ class EntryFieldEditorTitleCell:
     
     func pulsateIcon() {
         let scalingAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scalingAnimation.toValue = 1.5
-        scalingAnimation.duration = 0.3
+        scalingAnimation.toValue = 1.25
+        scalingAnimation.duration = 0.2
         scalingAnimation.timingFunction = CAMediaTimingFunction.init(name: .easeOut)
         scalingAnimation.autoreverses = true
         scalingAnimation.repeatCount = 1
-        iconView.layer.add(scalingAnimation, forKey: nil)
+        iconButton.layer.add(scalingAnimation, forKey: nil)
     }
     
     func validate() {

@@ -3,7 +3,7 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,7 +21,7 @@
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ad1-Rf-HyL">
-                            <rect key="frame" x="0.0" y="838" width="414" height="60"/>
+                            <rect key="frame" x="0.0" y="810" width="414" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-zk-w7B" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
@@ -43,67 +43,47 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" id="GLB-1c-KE8" customClass="EntryFieldEditorTitleCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="414" height="84"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GLB-1c-KE8" id="9Es-ir-laV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="db-icons/db-icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="10U-0j-Qe5">
-                                            <rect key="frame" x="20" y="11" width="29" height="29"/>
-                                            <color key="tintColor" name="ActionTint"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="29" id="NW4-Ih-278"/>
-                                                <constraint firstAttribute="height" constant="29" id="rL7-C7-WIc"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="{Entry Title}" borderStyle="roundedRect" placeholder="Entry Title" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-If-zfn" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="57" y="11" width="337" height="33"/>
+                                            <rect key="frame" x="68" y="11" width="326" height="34"/>
                                             <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                             <accessibility key="accessibilityConfiguration" label="Entry title"/>
                                             <color key="textColor" name="PrimaryText"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-rc-pdR" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="48" width="92" height="36"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                            <color key="tintColor" name="ActionTint"/>
-                                            <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
-                                            <state key="normal" title="Change Icon">
-                                                <color key="titleColor" name="ActionTint"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="didPressChangeIcon:" destination="GLB-1c-KE8" eventType="touchUpInside" id="Qoc-MH-Wkf"/>
-                                            </connections>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldy-wH-etc">
+                                            <rect key="frame" x="20" y="8" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="dME-T0-u6B"/>
+                                                <constraint firstAttribute="height" constant="40" id="nQK-QF-y3V"/>
+                                            </constraints>
+                                            <buttonConfiguration key="configuration" style="tinted"/>
                                         </button>
                                     </subviews>
                                     <gestureRecognizers/>
                                     <constraints>
-                                        <constraint firstItem="HcW-rc-pdR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mGc-If-zfn" secondAttribute="bottom" constant="4" id="2zE-9x-4Ts"/>
-                                        <constraint firstItem="10U-0j-Qe5" firstAttribute="top" secondItem="9Es-ir-laV" secondAttribute="topMargin" id="3IL-3l-OR9"/>
+                                        <constraint firstItem="mGc-If-zfn" firstAttribute="bottom" secondItem="9Es-ir-laV" secondAttribute="bottomMargin" id="6wu-ay-4C0"/>
+                                        <constraint firstItem="mGc-If-zfn" firstAttribute="leading" secondItem="ldy-wH-etc" secondAttribute="trailing" constant="8" id="9CK-PB-dJL"/>
                                         <constraint firstItem="mGc-If-zfn" firstAttribute="trailing" secondItem="9Es-ir-laV" secondAttribute="trailingMargin" id="Cj7-de-yDR"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="HcW-rc-pdR" secondAttribute="trailing" id="OeJ-l6-SZj"/>
-                                        <constraint firstItem="HcW-rc-pdR" firstAttribute="top" secondItem="10U-0j-Qe5" secondAttribute="bottom" priority="750" constant="8" id="PbJ-Ff-fIB"/>
+                                        <constraint firstItem="ldy-wH-etc" firstAttribute="leading" secondItem="9Es-ir-laV" secondAttribute="leadingMargin" id="EN8-zQ-bDJ"/>
                                         <constraint firstItem="mGc-If-zfn" firstAttribute="top" secondItem="9Es-ir-laV" secondAttribute="topMargin" id="QD8-TM-ifx"/>
-                                        <constraint firstItem="mGc-If-zfn" firstAttribute="leading" secondItem="10U-0j-Qe5" secondAttribute="trailing" constant="8" id="XW4-GU-QCO"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HcW-rc-pdR" secondAttribute="bottom" id="kCc-Eu-jIg"/>
-                                        <constraint firstItem="10U-0j-Qe5" firstAttribute="leading" secondItem="9Es-ir-laV" secondAttribute="leadingMargin" id="ryr-MC-Yl3"/>
-                                        <constraint firstItem="HcW-rc-pdR" firstAttribute="leading" secondItem="10U-0j-Qe5" secondAttribute="leading" id="x99-82-rYb"/>
+                                        <constraint firstItem="ldy-wH-etc" firstAttribute="centerY" secondItem="mGc-If-zfn" secondAttribute="centerY" id="ozp-c2-X6K"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outlet property="changeIconButton" destination="HcW-rc-pdR" id="4r3-89-bzE"/>
-                                    <outlet property="iconView" destination="10U-0j-Qe5" id="OyN-WA-JpH"/>
+                                    <outlet property="iconButton" destination="ldy-wH-etc" id="YKM-o6-MmX"/>
                                     <outlet property="titleTextField" destination="mGc-If-zfn" id="Wgt-4Z-iil"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleLineCell" id="fOA-rA-t9w" customClass="EntryFieldEditorSingleLineCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="134" width="414" height="84.333335876464844"/>
+                                <rect key="frame" x="0.0" y="106" width="414" height="84.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fOA-rA-t9w" id="fv0-vc-xOU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="84.333335876464844"/>
@@ -179,7 +159,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PasswordEntryFieldCell" id="Kw5-lo-PXD" customClass="PasswordEntryFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="218.33333587646484" width="414" height="79.333335876464844"/>
+                                <rect key="frame" x="0.0" y="190.33333587646484" width="414" height="79.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kw5-lo-PXD" id="n4E-7U-Owp">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="79.333335876464844"/>
@@ -267,7 +247,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MultiLineCell" id="5Ke-qE-K1F" customClass="EntryFieldEditorMultiLineCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="297.66667175292969" width="414" height="254.33332824707031"/>
+                                <rect key="frame" x="0.0" y="269.66667175292969" width="414" height="254.33332824707031"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ke-qE-K1F" id="MDp-Cu-Sys">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="254.33332824707031"/>
@@ -330,7 +310,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomFieldCell" id="CcF-c8-r4M" customClass="EntryFieldEditorCustomFieldCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="552" width="414" height="258"/>
+                                <rect key="frame" x="0.0" y="524" width="414" height="258"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CcF-c8-r4M" id="8k8-If-CEX">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="258"/>
@@ -469,7 +449,6 @@
     <color key="tintColor" name="ActionTint"/>
     <resources>
         <image name="clock" catalog="system" width="128" height="123"/>
-        <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <image name="die.face.3" catalog="system" width="128" height="114"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <namedColor name="ActionTint">
