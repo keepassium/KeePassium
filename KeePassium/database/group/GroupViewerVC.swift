@@ -311,7 +311,7 @@ final class GroupViewerVC:
         )
         let faviconsDownloadAction = UIAction(
             title: LString.actionDownloadFavicons,
-            image: .symbol(.squareAndArrowDown),
+            image: .symbol(.wandAndStars),
             handler: { [weak self] _ in
                 guard let self else { return }
                 self.delegate?.didPressFaviconsDownload(in: self)

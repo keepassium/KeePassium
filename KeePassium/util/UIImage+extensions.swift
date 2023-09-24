@@ -56,6 +56,7 @@ public enum SymbolName: String {
     case clockArrowCirclepath = "clock.arrow.circlepath" 
     case clockBadgeCheckmark = "clock.badge.checkmark" 
     case clockShield = "clock.shield" 
+    case dieFace3 = "die.face.3" 
     case docOnDoc = "doc.on.doc" 
     case ellipsis = "ellipsis" 
     case ellipsisCircle = "ellipsis.circle"

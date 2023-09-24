@@ -564,7 +564,7 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         
         let downloadFaviconAction = UIAction(
             title: LString.actionDownloadFavicon,
-            image: .symbol(.squareAndArrowDown),
+            image: .symbol(.wandAndStars),
             attributes: faviconDownloadAttributes,
             handler: { [weak self] _ in
                 if let self,

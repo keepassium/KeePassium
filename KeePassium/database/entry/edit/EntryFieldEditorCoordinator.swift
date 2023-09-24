@@ -199,7 +199,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         let randomNamesMenuItems = randomUserNames.map { (userName) -> UIAction in
             UIAction(
                 title: userName,
-                image: .symbol(.wandAndStars),
+                image: .symbol(.dieFace3),
                 handler: applyUserName
             )
         }
