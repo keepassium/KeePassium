@@ -462,7 +462,7 @@ extension UINavigationController {
         animated: Bool,
         completion: (()->Void)?
     ) {
-        popToViewController(viewController, animated: true)
+        popToViewController(viewController, animated: animated)
         
         guard animated, let transitionCoordinator = transitionCoordinator else {
             DispatchQueue.main.async {
