@@ -222,49 +222,6 @@ extension FileDataProvider {
             completion: completion
         )
     }
-    
-    public static func readThenWrite(
-        to fileURL: URL,
-        fileProvider: FileProvider?,
-        queue: OperationQueue? = nil,
-        outputDataSource: @escaping (_ url: URL, _ newData: ByteArray) throws -> ByteArray?,
-        timeout: Timeout,
-        completionQueue: OperationQueue? = nil,
-        completion: @escaping (Result<Void, FileAccessError>) -> Void
-    ) {
-        let operationQueue = queue ?? FileDataProvider.backgroundQueue
-        let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
-        
-        let isAccessed = fileURL.startAccessingSecurityScopedResource()
-        let dataSource = DataSourceFactory.getDataSource(for: fileURL)
-        coordinateReadThenWriteOperation(
-            accessCoordinator: dataSource.getAccessCoordinator(),
-            fileURL: fileURL,
-            fileProvider: fileProvider,
-            timeout: timeout,
-            queue: operationQueue,
-            fileOperation: { readURL, writeURL in
-                assert(operationQueue.isCurrent)
-                defer {
-                    if isAccessed {
-                        fileURL.stopAccessingSecurityScopedResource()
-                    }
-                }
-                dataSource.readThenWrite(
-                    from: readURL,
-                    to: writeURL,
-                    fileProvider: fileProvider,
-                    outputDataSource: outputDataSource,
-                    timeout: timeout,
-                    queue: operationQueue,
-                    completionQueue: completionQueue,
-                    completion: completion
-                )
-            },
-            completionQueue: completionQueue,
-            completion: completion
-        )
-    }
 }
 
 
@@ -314,56 +271,6 @@ extension FileDataProvider {
             }
             
             fileOperation(intent.url)
-        }
-    }
-    
-    private static func coordinateReadThenWriteOperation<T>(
-        accessCoordinator: FileAccessCoordinator,
-        fileURL: URL,
-        fileProvider: FileProvider?,
-        timeout: Timeout,
-        queue: OperationQueue,
-        fileOperation: @escaping (URL, URL) -> Void,
-        completionQueue: OperationQueue,
-        completion: @escaping FileOperationCompletion<T>
-    ) {
-        var hasStartedCoordinating = false
-        var hasTimedOut = false
-        coordinatorSyncQueue.asyncAfter(deadline: timeout.deadline) {
-            if hasStartedCoordinating {
-                return
-            }
-            hasTimedOut = true
-            accessCoordinator.cancel()
-            completionQueue.addOperation {
-                completion(.failure(.timeout(fileProvider: fileProvider)))
-            }
-        }
-        
-        let readingIntent = NSFileAccessIntent.readingIntent(with: fileURL, options: [])
-        let writingIntent = NSFileAccessIntent.writingIntent(with: fileURL, options: [.forMerging])
-        accessCoordinator.coordinate(with: [readingIntent, writingIntent], queue: queue) {
-            (coordinatorError) in
-            assert(queue.isCurrent)
-            let canContinue = coordinatorSyncQueue.sync(execute: { () -> Bool in
-                if hasTimedOut {
-                    return false 
-                }
-                hasStartedCoordinating = true
-                return true
-            })
-            guard canContinue else { 
-                return
-            }
-            
-            if let coordinatorError = coordinatorError {
-                completionQueue.addOperation {
-                    completion(.failure(.systemError(coordinatorError)))
-                }
-                return
-            }
-            
-            fileOperation(readingIntent.url, writingIntent.url)
         }
     }
 }

@@ -21,6 +21,13 @@ final class SyncConflictAlertMessageCell: UITableViewCell {
 }
 
 final class SyncConflictAlert: UIViewController, Refreshable {
+    public enum Decision {
+        case cancelSaving
+        case overwriteRemote
+        case saveAs
+        case merge
+    }
+
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var tableViewHeightConstraint: NSLayoutConstraint!
 
@@ -30,10 +37,10 @@ final class SyncConflictAlert: UIViewController, Refreshable {
         static let option = "optionCell"
     }
     
-    public let options: [DatabaseFile.ConflictResolutionStrategy] =
+    public let options: [Decision] =
         [.overwriteRemote, .saveAs, .cancelSaving]
 
-    typealias Completion = ((_ selectedStrategy: DatabaseFile.ConflictResolutionStrategy) -> Void)
+    typealias Completion = ((_ decision: Decision) -> Void)
     var responseHandler: Completion?
     
     private let dateFormatter: DateFormatter = {

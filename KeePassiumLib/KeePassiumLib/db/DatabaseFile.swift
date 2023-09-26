@@ -8,14 +8,7 @@
 
 
 public class DatabaseFile: Eraseable {
-    
-    public enum ConflictResolutionStrategy {
-        case cancelSaving
-        case overwriteRemote
-        case saveAs
-        case merge
-    }
-    
+        
     public enum StatusFlag {
         case readOnly
         case localFallback

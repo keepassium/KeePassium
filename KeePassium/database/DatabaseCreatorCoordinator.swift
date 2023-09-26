@@ -369,7 +369,7 @@ extension DatabaseCreatorCoordinator: DatabaseSaverDelegate {
     ) {
         Diag.warning("Sync conflict when creating a new database. Overwriting")
         assertionFailure()
-        completion(local.data, true)
+        completion(.overwrite(local.data))
     }
     
     func databaseSaver(

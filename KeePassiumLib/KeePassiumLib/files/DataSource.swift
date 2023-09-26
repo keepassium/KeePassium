@@ -41,15 +41,4 @@ protocol DataSource {
         completionQueue: OperationQueue,
         completion: @escaping FileOperationCompletion<Void>
     )
-    
-    func readThenWrite(
-        from readURL: URL,
-        to writeURL: URL,
-        fileProvider: FileProvider?,
-        outputDataSource: @escaping (_ url: URL, _ oldData: ByteArray) throws -> ByteArray?,
-        timeout: Timeout,
-        queue: OperationQueue,
-        completionQueue: OperationQueue,
-        completion: @escaping FileOperationCompletion<Void>
-    )
 }

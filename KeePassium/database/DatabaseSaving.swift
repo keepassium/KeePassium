@@ -107,17 +107,15 @@ extension DatabaseSaving {
             guard let self = self else { return }
             switch strategy {
             case .cancelSaving:
-                completion(nil, false)
-                self.databaseSaver(databaseSaver, didCancelSaving: local)
+                completion(.cancel)
             case .overwriteRemote:
-                completion(local.data, true)
+                completion(.overwrite(local.data))
             case .merge:
                 assertionFailure("Not implemented")
-                completion(nil, false)
-                self.databaseSaver = nil
+                completion(.cancel)
             case .saveAs:
-                completion(local.data, false)
-                self.databaseSaver = nil
+                completion(.considerExported)
+                self.databaseSaver = nil 
                 self.saveToAnotherFile(databaseFile: local) 
             }
         }
