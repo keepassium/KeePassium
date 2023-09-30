@@ -280,6 +280,7 @@ final class GroupViewerVC:
         let lockDatabaseAction = UIAction(
             title: LString.actionLockDatabase,
             image: .symbol(.lock),
+            attributes: [.destructive],
             handler: { [weak self] _ in
                 guard let self else { return }
                 self.delegate?.didPressLockDatabase(in: self)
@@ -324,14 +325,21 @@ final class GroupViewerVC:
         }
         
         let lockMenu = UIMenu(options: [.displayInline], children: [lockDatabaseAction])
-        let menu = UIMenu(children: [
-            lockMenu,
-            printDatabaseAction,
-            canDownloadFavicons ? faviconsDownloadAction : nil,
-            passwordAuditAction,
-            changeMasterKeyAction,
-        ].compactMap({ $0 }))
-        databaseMenuButton.menu = menu
+        
+        var menuElements = [
+                changeMasterKeyAction,
+                passwordAuditAction,
+                canDownloadFavicons ? faviconsDownloadAction : nil,
+                printDatabaseAction,
+                lockMenu,
+            ].compactMap { $0 }
+        if #available(iOS 16, *) {
+            barButton.preferredMenuElementOrder = .fixed
+        } else {
+            menuElements.reverse()
+        }
+        let menu = UIMenu(children: menuElements)
+        barButton.menu = menu
     }
     
 
