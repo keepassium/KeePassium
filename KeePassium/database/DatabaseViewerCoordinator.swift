@@ -666,7 +666,11 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     func didPressFaviconsDownload(in viewController: GroupViewerVC) {
         downloadFavicons(in: viewController)
     }
-
+    
+    func didPressPasswordGenerator(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
+        showPasswordGenerator(at: popoverAnchor, in: viewController)
+    }
+    
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool {
         showGroup(group, animated: true)
         

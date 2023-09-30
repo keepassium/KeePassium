@@ -16,6 +16,7 @@ protocol GroupViewerDelegate: AnyObject {
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressPasswordAudit(in viewController: GroupViewerVC)
     func didPressFaviconsDownload(in viewController: GroupViewerVC)
+    func didPressPasswordGenerator(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool
     
@@ -87,6 +88,7 @@ final class GroupViewerVC:
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
     @IBOutlet private weak var databaseMenuButton: UIBarButtonItem!
     @IBOutlet private weak var reloadDatabaseButton: UIBarButtonItem!
+    @IBOutlet private weak var passwordGeneratorButton: UIBarButtonItem!
     
     weak var group: Group? {
         didSet {
@@ -149,6 +151,7 @@ final class GroupViewerVC:
         navigationItem.setRightBarButton(createItemButton, animated: false)
         navigationItem.titleView = titleView
         reloadDatabaseButton.title = LString.actionReloadDatabase
+        passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
         
         settingsNotifications = SettingsNotifications(observer: self)
         
@@ -851,7 +854,7 @@ final class GroupViewerVC:
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressRelocateItem(selectedItem, mode: mode, at: popoverAnchor, in: self)
     }
- 
+    
     @IBAction func didPressReloadDatabase(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressReloadDatabase(at: popoverAnchor, in: self)
@@ -860,6 +863,11 @@ final class GroupViewerVC:
     @IBAction func didPressSettings(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressSettings(at: popoverAnchor, in: self)
+    }
+    
+    @IBAction func didPressPasswordGenerator(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressPasswordGenerator(at: popoverAnchor, in: self)
     }
 }
 

@@ -1162,6 +1162,11 @@
 		75F28787245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
 		75F28788245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
 		75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
+		75FC842E2AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */; };
+		75FC842F2AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */; };
+		75FC84302AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */; };
+		75FC84312AC87C51005021F1 /* Coordinator+passGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */; };
+		75FC84322AC87C52005021F1 /* Coordinator+passGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */; };
 		75FCCF842631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FCCF852631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
@@ -2305,6 +2310,7 @@
 		75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFIKeyActionSheetView.swift; sourceTree = "<group>"; };
 		75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFIKeyActionSheetView.xib; sourceTree = "<group>"; };
 		75F5CACC20BD18320056C969 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+passGen.swift"; sourceTree = "<group>"; };
 		75FCA9342638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75FCA9352638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75FCA9362638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -2997,6 +3003,7 @@
 				75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */,
 				75BF195F283EE1B8006A9826 /* PasswordGeneratorLabel.swift */,
 				75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */,
+				75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */,
 			);
 			path = "password-generator";
 			sourceTree = "<group>";
@@ -4049,6 +4056,7 @@
 				75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */,
 				7572664C24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */,
+				75FC84312AC87C51005021F1 /* Coordinator+passGen.swift in Sources */,
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
 				75BE05FB25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
@@ -4226,6 +4234,7 @@
 				75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */,
 				759A430C26206D7F0074C375 /* GroupEditorCoordinator.swift in Sources */,
 				75C11F1E22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
+				75FC842E2AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */,
 				7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */,
 				75BF1960283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
 				75AF1920282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */,
@@ -4439,6 +4448,7 @@
 				75B38C2C233E5B7C006BDEFC /* ProgressOverlay.swift in Sources */,
 				75B38C2D233E5B7C006BDEFC /* LAContext+biometrics.swift in Sources */,
 				759A430D26206D7F0074C375 /* GroupEditorCoordinator.swift in Sources */,
+				75FC842F2AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */,
 				75B38C2E233E5B7C006BDEFC /* ValidatingTextView.swift in Sources */,
 				75B38C2F233E5B7C006BDEFC /* AppStoreHelper.swift in Sources */,
 				75BF1962283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
@@ -4691,6 +4701,7 @@
 				7528C72728C532530037760C /* YubiKeyUSB.swift in Sources */,
 				75D0764828B639D200F02E39 /* SettingsBackupTimeoutPickerVC.swift in Sources */,
 				754313B328B830F500D5F252 /* IntunePolicyDelegateImpl.swift in Sources */,
+				75FC84302AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */,
 				75D0764928B639D200F02E39 /* PasswordStringHelper.swift in Sources */,
 				75D0764A28B639D200F02E39 /* UIFont+extensions.swift in Sources */,
 				75D0764B28B639D200F02E39 /* UIAlertController+extensions.swift in Sources */,
@@ -4817,6 +4828,7 @@
 				75BFB1422481553D0017B980 /* DynamicFileList.swift in Sources */,
 				7572664E24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
+				75FC84322AC87C52005021F1 /* Coordinator+passGen.swift in Sources */,
 				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,
 				75D7DF9A233E5E310029AD87 /* UIView+extension.swift in Sources */,
 				75BE05FD25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
