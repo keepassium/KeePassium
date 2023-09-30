@@ -31,6 +31,8 @@ protocol DatabaseViewerCoordinatorDelegate: AnyObject {
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
     
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: DatabaseViewerCoordinator)
+    
+    func didPressReloadDatabase(_ databaseFile: DatabaseFile, in coordinator: DatabaseViewerCoordinator)
 }
 
 final class DatabaseViewerCoordinator: Coordinator {
@@ -46,6 +48,8 @@ final class DatabaseViewerCoordinator: Coordinator {
     
     weak var delegate: DatabaseViewerCoordinatorDelegate?
     var dismissHandler: CoordinatorDismissHandler?
+    
+    public var currentGroupUUID: UUID? { currentGroup?.uuid }
 
     private let primaryRouter: NavigationRouter
     private let placeholderRouter: NavigationRouter
@@ -62,6 +66,7 @@ final class DatabaseViewerCoordinator: Coordinator {
         return !databaseFile.status.contains(.readOnly)
     }
 
+    private var initialGroupUUID: UUID?
     private weak var currentGroup: Group?
     private weak var currentEntry: Entry?
     private weak var rootGroupViewer: GroupViewerVC?
@@ -90,6 +95,7 @@ final class DatabaseViewerCoordinator: Coordinator {
         primaryRouter: NavigationRouter,
         originalRef: URLReference,
         databaseFile: DatabaseFile,
+        context: DatabaseReloadContext?,
         loadingWarnings: DatabaseLoadingWarnings?
     ) {
         self.splitViewController = splitViewController
@@ -99,6 +105,8 @@ final class DatabaseViewerCoordinator: Coordinator {
         self.databaseFile = databaseFile
         self.database = databaseFile.database
         self.loadingWarnings = loadingWarnings
+        
+        self.initialGroupUUID = context?.groupUUID
         
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
         let placeholderWrapperVC = RouterNavigationController(rootViewController: placeholderVC)
@@ -128,7 +136,7 @@ final class DatabaseViewerCoordinator: Coordinator {
 
         settingsNotifications = SettingsNotifications(observer: self)
         
-        showGroup(database.root, replacingTopVC: splitViewController.isCollapsed)
+        showInitialGroups(replacingTopVC: splitViewController.isCollapsed)
         showEntry(nil)
         
         settingsNotifications.startObserving()
@@ -267,7 +275,33 @@ extension DatabaseViewerCoordinator {
         getPresenterForModals().present(passcodeInputVC, animated: true, completion: nil)
     }
     
-    private func showGroup(_ group: Group?, replacingTopVC: Bool = false) {
+    private func showInitialGroups(replacingTopVC: Bool) {
+        guard let initialGroupUUID,
+              let initialGroup = database.root?.findGroup(byUUID: initialGroupUUID)
+        else {
+            showGroup(database.root, replacingTopVC: replacingTopVC, animated: true)
+            return
+        }
+        
+        var groupStack = [Group]()
+        var currentGroup: Group? = initialGroup
+        while let subgroup = currentGroup {
+            groupStack.append(subgroup)
+            currentGroup = currentGroup?.parent
+        }
+        groupStack.reverse() 
+        
+        let rootGroup = groupStack.removeFirst()
+        showGroup(rootGroup, replacingTopVC: replacingTopVC, animated: false)
+        
+        groupStack.forEach { subgroup in
+            DispatchQueue.main.async {
+                self.showGroup(subgroup, animated: false)
+            }
+        }
+    }
+    
+    private func showGroup(_ group: Group?, replacingTopVC: Bool = false, animated: Bool) {
         guard let group = group else {
             Diag.error("The group is nil")
             assertionFailure()
@@ -283,7 +317,7 @@ extension DatabaseViewerCoordinator {
         groupViewerVC.group = group
         groupViewerVC.canDownloadFavicons = database is Database2
         
-        let isCustomTransition = replacingTopVC
+        let isCustomTransition = replacingTopVC && animated
         if isCustomTransition {
             primaryRouter.prepareCustomTransition(
                 duration: vcAnimationDuration,
@@ -293,7 +327,7 @@ extension DatabaseViewerCoordinator {
         }
         primaryRouter.push(
             groupViewerVC,
-            animated: !isCustomTransition,
+            animated: animated && !isCustomTransition,
             replaceTopViewController: replacingTopVC,
             onPop: {
                 [weak self, previousGroup] in
@@ -616,6 +650,10 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     func didPressPrintDatabase(in viewController: GroupViewerVC) {
         showDatabasePrintDialog()
     }
+
+    func didPressReloadDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
+        delegate?.didPressReloadDatabase(databaseFile, in: self)
+    }
     
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
         showAppSettings(at: popoverAnchor, in: viewController)
@@ -630,7 +668,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool {
-        showGroup(group)
+        showGroup(group, animated: true)
         
         return false
     }

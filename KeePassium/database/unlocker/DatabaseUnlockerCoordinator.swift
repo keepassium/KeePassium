@@ -50,6 +50,8 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: DatabaseUnlockerCoordinatorDelegate?
     
+    var reloadingContext: DatabaseReloadContext?
+
     private let router: NavigationRouter
     private let databaseUnlockerVC: DatabaseUnlockerVC
     
@@ -242,6 +244,9 @@ extension DatabaseUnlockerCoordinator {
     #endif
     
     private func canUnlockAutomatically() -> Bool {
+        if reloadingContext != nil {
+            return true
+        }
         guard let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseRef) else {
             return false
         }
@@ -273,17 +278,17 @@ extension DatabaseUnlockerCoordinator {
     
     private func retryToUnlockDatabase() {
         assert(databaseLoader == nil)
-        
+ 
         #if AUTOFILL_EXT
         let challengeHandler = (selectedHardwareKey != nil) ? challengeHandlerForAutoFill : nil
         #elseif MAIN_APP
         let challengeHandler = ChallengeResponseManager.makeHandler(for: selectedHardwareKey)
         #endif
-        
+
         let databaseSettingsManager = DatabaseSettingsManager.shared
         let dbSettings = databaseSettingsManager.getSettings(for: databaseRef)
         let compositeKey: CompositeKey
-        if let storedCompositeKey = dbSettings?.masterKey {
+        if let storedCompositeKey = reloadingContext?.compositeKey ?? dbSettings?.masterKey {
             compositeKey = storedCompositeKey
             compositeKey.challengeHandler = challengeHandler
             if state == .unlockOriginalFileSlow {

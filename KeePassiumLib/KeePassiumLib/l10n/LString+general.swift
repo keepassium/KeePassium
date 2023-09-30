@@ -745,6 +745,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Open Database",
         comment: "Action/button")
+    public static let actionReloadDatabase = NSLocalizedString(
+        "[Database/Reload/action]",
+        bundle: Bundle.framework,
+        value: "Reload Database",
+        comment: "Action/button")
     public static let actionSaveDatabase = NSLocalizedString(
         "[Database/Save/action] Save Database",
         bundle: Bundle.framework,

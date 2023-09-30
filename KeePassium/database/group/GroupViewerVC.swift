@@ -12,6 +12,7 @@ protocol GroupViewerDelegate: AnyObject {
     func didPressLockDatabase(in viewController: GroupViewerVC)
     func didPressChangeMasterKey(in viewController: GroupViewerVC)
     func didPressPrintDatabase(in viewController: GroupViewerVC)
+    func didPressReloadDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressPasswordAudit(in viewController: GroupViewerVC)
     func didPressFaviconsDownload(in viewController: GroupViewerVC)
@@ -85,6 +86,7 @@ final class GroupViewerVC:
     
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
     @IBOutlet private weak var databaseMenuButton: UIBarButtonItem!
+    @IBOutlet private weak var reloadDatabaseButton: UIBarButtonItem!
     
     weak var group: Group? {
         didSet {
@@ -146,6 +148,7 @@ final class GroupViewerVC:
             menu: nil)
         navigationItem.setRightBarButton(createItemButton, animated: false)
         navigationItem.titleView = titleView
+        reloadDatabaseButton.title = LString.actionReloadDatabase
         
         settingsNotifications = SettingsNotifications(observer: self)
         
@@ -847,6 +850,11 @@ final class GroupViewerVC:
         
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressRelocateItem(selectedItem, mode: mode, at: popoverAnchor, in: self)
+    }
+ 
+    @IBAction func didPressReloadDatabase(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressReloadDatabase(at: popoverAnchor, in: self)
     }
     
     @IBAction func didPressSettings(_ sender: UIBarButtonItem) {

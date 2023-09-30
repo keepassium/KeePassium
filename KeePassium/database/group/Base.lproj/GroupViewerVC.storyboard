@@ -228,6 +228,12 @@
                             </userDefinedRuntimeAttributes>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="C9C-x8-Xot"/>
+                        <barButtonItem style="plain" systemItem="refresh" id="FA1-F1-VM7">
+                            <connections>
+                                <action selector="didPressReloadDatabase:" destination="Rxg-rI-fqC" id="J8T-19-eEM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zgU-y1-cjL"/>
                         <barButtonItem style="plain" id="F0x-qf-7Sc">
                             <imageReference key="image" image="shield" catalog="system" renderingMode="template"/>
                         </barButtonItem>
@@ -250,6 +256,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="databaseMenuButton" destination="F0x-qf-7Sc" id="P3J-2v-egU"/>
+                        <outlet property="reloadDatabaseButton" destination="FA1-F1-VM7" id="dmi-qJ-EHA"/>
                         <outlet property="sortOrderButton" destination="M5a-Ld-ZXd" id="eOe-PN-cG0"/>
                     </connections>
                 </tableViewController>

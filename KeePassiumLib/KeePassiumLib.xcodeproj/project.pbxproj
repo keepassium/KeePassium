@@ -100,6 +100,7 @@
 		75CD1524285F3929003C11DA /* TimeInterval+constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD1523285F3929003C11DA /* TimeInterval+constants.swift */; };
 		75CF4C862A65F9E90054B05B /* v1-proofs.sha256 in Resources */ = {isa = PBXBuildFile; fileRef = 75CF4C852A65F9650054B05B /* v1-proofs.sha256 */; };
 		75CF4C8A2A666D8B0054B05B /* LicenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF4C892A666D8B0054B05B /* LicenseManager.swift */; };
+		75CFA0772AC5B113008B7B3E /* DatabaseReloadContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFA0762AC5B113008B7B3E /* DatabaseReloadContext.swift */; };
 		75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */; };
 		75D09BA32174F02F00F7DEF2 /* salsa20.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D09B852174F02F00F7DEF2 /* salsa20.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */ = {isa = PBXBuildFile; fileRef = 75D09B862174F02F00F7DEF2 /* salsa20.c */; };
@@ -342,6 +343,7 @@
 		75CD1523285F3929003C11DA /* TimeInterval+constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+constants.swift"; sourceTree = "<group>"; };
 		75CF4C852A65F9650054B05B /* v1-proofs.sha256 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "v1-proofs.sha256"; sourceTree = "<group>"; };
 		75CF4C892A666D8B0054B05B /* LicenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseManager.swift; sourceTree = "<group>"; };
+		75CFA0762AC5B113008B7B3E /* DatabaseReloadContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseReloadContext.swift; sourceTree = "<group>"; };
 		75D09B6B2174F02F00F7DEF2 /* Salsa20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salsa20.swift; sourceTree = "<group>"; };
 		75D09B852174F02F00F7DEF2 /* salsa20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salsa20.h; path = KeePassiumLib/crypto/salsa20/salsa20.h; sourceTree = SOURCE_ROOT; };
 		75D09B862174F02F00F7DEF2 /* salsa20.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = salsa20.c; sourceTree = "<group>"; };
@@ -798,6 +800,7 @@
 				75CA6640276BAF06003384FC /* DatabaseError.swift */,
 				756AFD5C258B4C510072BEEF /* KeyFileError.swift */,
 				75012A6926D82A58002F1911 /* DatabaseLoadingWarning.swift */,
+				75CFA0762AC5B113008B7B3E /* DatabaseReloadContext.swift */,
 			);
 			path = db;
 			sourceTree = "<group>";
@@ -1319,6 +1322,7 @@
 				75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */,
 				75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */,
 				759A321B252DC1E7001A1623 /* EntryFieldReference.swift in Sources */,
+				75CFA0772AC5B113008B7B3E /* DatabaseReloadContext.swift in Sources */,
 				7596174C29082D0C005845FF /* RemoteConnectionType.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
 				75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */,
