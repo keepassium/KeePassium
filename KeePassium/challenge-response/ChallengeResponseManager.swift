@@ -11,6 +11,7 @@ import YubiKit
 
 fileprivate let YUBIKEY_SUCCESS: UInt16 = 0x9000
 fileprivate let YUBIKEY_MFI_TOUCH_TIMEOUT: UInt16 = 0x6985
+fileprivate let YUBIKEY_OTP_DISABLED: UInt16 = 0x6A82
 
 class ChallengeResponseManager {
     static let instance = ChallengeResponseManager()
@@ -426,14 +427,18 @@ class ChallengeResponseManager {
             
             let responseParser = RawResponseParser(response: response!)
             let statusCode = responseParser.statusCode
-            if statusCode == YUBIKEY_SUCCESS {
-                guard let _ = responseParser.responseData else {
+            switch statusCode {
+            case YUBIKEY_SUCCESS:
+                guard responseParser.responseData != nil else {
                     let message = "YubiKey response is empty"
                     Diag.error(message)
                     self.returnError(.communicationError(message: message))
                     return
                 }
-            } else {
+            case YUBIKEY_OTP_DISABLED:
+                Diag.error("YubiKey has OTP function disabled for this interface, returned code \(String(format: "%04X", statusCode))")
+                self.returnError(.keyNotConfigured)
+            default:
                 let message = "YubiKey select applet failed with code 0x\(String(format: "%04X", statusCode))"
                 Diag.error(message)
                 self.returnError(.communicationError(message: message))
@@ -473,7 +478,8 @@ class ChallengeResponseManager {
             
             let responseParser = RawResponseParser(response: response!)
             let statusCode = responseParser.statusCode
-            if statusCode == YUBIKEY_SUCCESS {
+            switch statusCode {
+            case YUBIKEY_SUCCESS:
                 guard let responseData = responseParser.responseData else {
                     let message = "YubiKey response is empty. Slot not configured?"
                     Diag.error(message)
@@ -482,15 +488,13 @@ class ChallengeResponseManager {
                 }
                 let response = SecureBytes.from(responseData)
                 self.returnResponse(response)
-            } else {
+            case YUBIKEY_MFI_TOUCH_TIMEOUT:
+                Diag.error("YubiKey touch timeout")
+                self.returnError(.cancelled)
+            default:
                 let message = "YubiKey challenge failed with code \(String(format: "%04X", statusCode))"
                 Diag.error(message)
-                switch statusCode {
-                case YUBIKEY_MFI_TOUCH_TIMEOUT:
-                    self.returnError(.cancelled)
-                default:
-                    self.returnError(.communicationError(message: message))
-                }
+                self.returnError(.communicationError(message: message))
             }
         }
     }
