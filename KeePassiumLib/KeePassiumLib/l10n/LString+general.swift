@@ -11,13 +11,13 @@ extension LString {
   public static let entriesSelectedCountTemplate = NSLocalizedString(
         "[Generic/Count/EntriesSelected]",
         bundle: Bundle.framework,
-        comment: "(Defined in Localizable.stringsdict)"
+        comment: "Number of entries selected. For example: 'No entries selected', '1 entry selected'. IMPORTANT: Please fill out all the plural forms."
     )
     
     public static let bitCountTemplate = NSLocalizedString(
         "[Generic/Count/Bits]",
         bundle: Bundle.framework,
-        comment: "(Defined in Localizable.stringsdict)"
+        comment: "Number of bits. For example: '123 bits of entropy'. IMPORTANT: Please fill out all the plural forms."
     )
 
     public static let actionOK = NSLocalizedString(

@@ -5,8 +5,8 @@
 	<key>[Generic/Count/Bits]</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@VARIABLE@</string>
-		<key>VARIABLE</key>
+		<string>%#@GenericCountBits@</string>
+		<key>GenericCountBits</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
@@ -23,8 +23,8 @@
 	<key>[Generic/Count/EntriesSelected]</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@VARIABLE@</string>
-		<key>VARIABLE</key>
+		<string>%#@GenericCountEntriesSelected@</string>
+		<key>GenericCountEntriesSelected</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
