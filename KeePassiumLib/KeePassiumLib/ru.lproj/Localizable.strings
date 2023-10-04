@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Активируйте, чтобы прослушать.";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "Стандартный";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "Шрифт";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Размер текста";
 
@@ -136,8 +142,35 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Добавить свой значок";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "Загрузить значок сайта";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "Загрузка значков сайтов";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Обработано записей: %1$d\nОбновлено значков: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "Загрузка значков сайтов";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Загрузка значка сайта";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Удалить файл базы паролей?\nУбедитесь, что у вас есть резервная копия.";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "Все ваши данные будут сохранены.";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "Необходимо обновить формат базы данных (с %1$@ на %2$@). Может потребоваться обновить другие приложения, использующие эту базу данных.";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "Прежде чем продолжить";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "Изменено";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Это старый формат базы данных, некоторые данные могут быть потеряны.";
@@ -175,6 +208,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Загрузка...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "Сменить мастер-ключ";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Мастер-ключ успешно изменён";
 
@@ -202,6 +238,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "База паролей готова, но есть проблема.";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "Операции с базой данных";
+
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Подготовка просмотра…";
 
@@ -226,8 +265,14 @@
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Попробуйте подключиться к удалённому хранилищу прямо из KeePassium.";
 
+/* Action/button */
+"[Database/Reload/action]" = "Перезагрузить базу данных";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Убрать базу паролей из списка?\nФайл останется нетронутым, вы сможете добавить его позже.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "Сохранить базу паролей";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Готово";
@@ -463,6 +508,9 @@
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Журнал диагностики скопирован в буфер обмена.";
 
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "Сменить значок";
+
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Выбрать";
 
@@ -498,6 +546,9 @@
 
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Скопировать ссылку на поле";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "Значок";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Заметки";
@@ -841,6 +892,9 @@
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Развернуть";
 
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "Выбрать";
+
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Вы уверены?";
 
@@ -1174,6 +1228,9 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Что вы упускаете";
 
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "Проверьте пароли";
+
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Что вы получите";
 
@@ -1356,6 +1413,12 @@
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Несколько баз паролей";
+
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "Узнайте, были ли обнародованы какие-либо ваши пароли из-за утечек данных.";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "Аудит паролей";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Просматривайте изображения и документы прямо в премиум-версии программы.";
@@ -1602,6 +1665,9 @@
 
 /* Setting option: the app is permitted to use online features */
 "[Settings/NetworkAccessMode/Online/title]" = "Разрешить доступ к сети";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "Сбросить настройки";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Поиск";

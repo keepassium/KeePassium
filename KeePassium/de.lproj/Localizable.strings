@@ -49,6 +49,60 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Einstellungen …";
 
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "Von Audit ausschließen";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "Passwörter werden geprüft";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "Fehler bei der Kommunikation mit dem HIBP-Dienst. %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "Die Zahl zeigt, wie oft das Passwort bei bekannten Datenpannen gefunden wurde.";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "Das Passwort-Audit vergleicht Ihre Passwörter auf sichere und private Weise mit einer Online-Datenbank mit geleakten Passwörtern.\n\nKeePassium sendet die aus Ihren Passwörtern berechneten Informationen (eine Art Teilprüfsumme) an den Dienst [Have I Been Pwned](https://haveibeenpwned.com). Der Dienst gibt detaillierte Informationen über kompromittierte Passwörter mit ähnlichen Prüfsummen zurück. Die App vergleicht dann die detaillierten Prüfsummen lokal auf dem Gerät und erkennt, welche Ihrer Passwörter gefährdet sind.\n\nIhre tatsächlichen Passwörter werden niemals an den Online-Dienst weitergegeben.\n[Mehr erfahren …](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "Gute Nachrichten! Keines Ihrer Passwörter ist in bekannten Datenpannen aufgetaucht.";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "Gefährdete Passwörter";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "Audit beginnen";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "Passwort-Audit";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Passwortstärke: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Fast gut";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Gut";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Sehr gut";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Sehr schwach";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Schwach";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ Entropie)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Passwort anzeigen";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "Auswahl löschen?";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "Auswahl vom Passwort-Audit ausschließen?";
 

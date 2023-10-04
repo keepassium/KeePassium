@@ -175,6 +175,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Načítavanie...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "Zmeniť hlavný kľúč";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Hlavný kľúč k databáze bol úspešne zmenený";
 
@@ -228,6 +231,9 @@
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Odobrať databázu zo zoznamu?\n Súbor nebude odstránený a môžete ho znovu pridať neskôr.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "Uložiť databázu";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Hotovo";
@@ -462,6 +468,9 @@
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostické správy boli skopírované do schránky.";
+
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "Zmeniť ikonu";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Vybrať";

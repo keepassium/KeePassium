@@ -4,6 +4,27 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "O Preenchimento Automático precisa ser autorizado a acessar os arquivos que você já tem no app principal do KeePassium.\n\nPor quê? Por trás das cenas, o sistema trata o Preenchimento Automático como um app separado, independente do KeePassium principal. Por segurança, um app não pode acessar arquivos externos, a menos que você vincule explicitamente esses arquivos a ele. Assim, o sistema garante que o app só possa acessar os poucos arquivos que você autorizou.\n\nComo resultado, tanto o Preenchimento Automático quanto o app principal do KeePassium precisam ser autorizados separadamente para cada arquivo externo. Felizmente, você só precisa fazer isso uma vez para cada arquivo.";
 
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Qualidade da senha: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "quase boa";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "boa";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "muito boa";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "muito fraca";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "fraca";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ de entropia)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Mostrar senha";
 

@@ -157,6 +157,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "불러오는 중...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "마스터 키 변경";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "마스터 키가 성공적으로 변경되었습니다";
 
@@ -204,6 +207,9 @@
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "데이터베이스를 목록에서 제거하시겠습니까?\n 원본 파일은 삭제되지 않으며, 나중에 목록에 다시 추가할 수 있습니다.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "데이터베이스 저장";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "완료";
@@ -414,6 +420,9 @@
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "진단 로그가 클립보드에 복사되었습니다.";
+
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "아이콘 변경";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "선택";

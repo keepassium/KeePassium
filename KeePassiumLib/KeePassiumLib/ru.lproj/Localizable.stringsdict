@@ -4,39 +4,43 @@
 <dict>
 	<key>[Generic/Count/Bits]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountBits@</string>
 		<key>GenericCountBits</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>zero</key>
-			<string>%d bits</string>
+			<key>few</key>
+			<string>%d бита</string>
+			<key>many</key>
+			<string>%d бит</string>
 			<key>one</key>
-			<string>%d bit</string>
+			<string>%d бит</string>
 			<key>other</key>
-			<string>%d bits</string>
+			<string>%d бит</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountBits@</string>
 	</dict>
 	<key>[Generic/Count/EntriesSelected]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountEntriesSelected@</string>
 		<key>GenericCountEntriesSelected</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>zero</key>
-			<string>%d entries selected</string>
+			<key>few</key>
+			<string>Выбрано %d записи</string>
+			<key>many</key>
+			<string>Выбрано %d записей</string>
 			<key>one</key>
-			<string>%d entry selected</string>
+			<string>Выбрана %d запись</string>
 			<key>other</key>
-			<string>%d entries selected</string>
+			<string>Выбрано %d записей</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountEntriesSelected@</string>
 	</dict>
 </dict>
 </plist>

@@ -40,6 +40,9 @@
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
 "daJ-ma-jhe.text" = "Licença MIT";
 
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "Erq-Zz-P0N"; */
+"Erq-Zz-P0N.text" = "Licença MIT";
+
 /* Class = "UILabel"; text = "Custom permissive license"; ObjectID = "EWy-OI-IxL"; */
 "EWy-OI-IxL.text" = "Licença permissiva particular";
 
@@ -126,6 +129,9 @@
 
 /* Class = "UILabel"; text = "Linecons by Andrian Valeanu"; ObjectID = "SOX-Re-yl9"; */
 "SOX-Re-yl9.text" = "Linecons por Andrian Valeanu";
+
+/* Class = "UILabel"; text = "zxcvbn-ios by Dropbox"; ObjectID = "SUh-L1-IvF"; */
+"SUh-L1-IvF.text" = "zxcvbn-ios por Dropbox";
 
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
 "TOl-DA-gYc.text" = "Contate o suporte";

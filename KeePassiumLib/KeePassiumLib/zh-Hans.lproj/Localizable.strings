@@ -166,6 +166,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "载入中...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "变更主密钥";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "主密码修改成功";
 
@@ -213,6 +216,9 @@
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "从列表中删除数据库?\n 不会对文件进行更改或删除, 您可以在稍后添加回来。";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "保存数据库";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "完成";
@@ -444,6 +450,9 @@
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "诊断日志复制到剪贴板成功。";
+
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "变更图示";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "选择";

@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Activeer om te luisteren.";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "Standaard";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "Lettertype";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Tekstgrootte";
 
@@ -136,8 +142,35 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Voeg aangepast pictogram toe";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "Favicon downloaden";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "Favicons downloaden";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Itemss verwerkt: %1$d\nPictogrammen bijgewerkt: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "Favicons downloaden";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Favicon downloaden";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databankbestand?\n Zorg ervoor dat je een back-up hebt.";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "Al uw gegevens zullen worden bewaard.";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium moet uw database bestandsindeling bijwerken (van %1$@ naar %2$@). U moet mogelijk andere apps bijwerken die deze database gebruiken.";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "Voordat we verdergaan";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "Bewerkt";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Dit is een ouder databankformaat; bepaalde gegevens gaan mogelijk verloren.";
@@ -175,6 +208,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Bezig met laden...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "Wijzig hoofdsleutel";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Hoofdsleutel is gewijzigd";
 
@@ -202,6 +238,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Je databank is klaar voor gebruik, maar er is een probleem.";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "Database bewerkingen";
+
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Bezig met maken van voorvertoning…";
 
@@ -226,8 +265,14 @@
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Probeer rechtstreeks vanuit KeePassium verbinding te maken met uw externe opslag.";
 
+/* Action/button */
+"[Database/Reload/action]" = "Database opnieuw laden";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Verwijder databank uit de lijst?\n Het bestand blijft intact en je kunt het later nog toevoegen.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "Sla databank op";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Klaar";
@@ -463,6 +508,9 @@
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisch logbestand is gekopieerd naar het klembord.";
 
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "Wijzig pictogram";
+
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Kies";
 
@@ -498,6 +546,9 @@
 
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Kopieer veldverwijzing";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "Pictogram";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Notities";
@@ -841,6 +892,9 @@
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Toon meer";
 
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "Selecteer";
+
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Weet je het zeker?";
 
@@ -1174,6 +1228,9 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Wat je mist";
 
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "Controleer uw wachtwoorden";
+
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Wat je krijgt";
 
@@ -1356,6 +1413,12 @@
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Meerdere databanken";
+
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "Ontdek of een van uw wachtwoorden in een bekende gegevenslek zijn gelekt.";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "Wachtwoordcontrole";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "In de Premium-versie kun je afbeeldingen en documenten direct voorvertonen in de app.";
@@ -1602,6 +1665,9 @@
 
 /* Setting option: the app is permitted to use online features */
 "[Settings/NetworkAccessMode/Online/title]" = "Sta netwerktoegang toe";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "Standaardinstellingen herstellen";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Zoek";

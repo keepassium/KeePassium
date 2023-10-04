@@ -49,6 +49,60 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Voorkeuren…";
 
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "Uitsluiten van audit";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "Wachtwoorden controleren";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "Er is een fout opgetreden tijdens de communicatie met de HIBP-service. %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "Het getal laat zien hoe vaak het wachtwoord is gevonden bij bekende datalekken.";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "Wachtwoordaudit controleert uw wachtwoorden op een veilige en privé manier aan de hand van een online database met gelekte wachtwoorden.\n\nKeePassium stuurt informatie die is berekend op basis van uw wachtwoorden (een soort gedeeltelijke controlesom) naar de service [Have I Been Pwned] (https://haveibeenpwned.com). De service retourneert gedetailleerde informatie over gecompromitteerde wachtwoorden met vergelijkbare controlesommen. De app vergelijkt vervolgens de gedetailleerde controlesommen lokaal op het apparaat en detecteert welke van uw wachtwoorden gevaar lopen.\n\nUw daadwerkelijke wachtwoorden worden nooit gedeeld met de online service.\n[Kom meer te weten…](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "Goed nieuws! Geen van uw wachtwoorden is verschenen in bekende datalekken.";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "Gecompromitteerde wachtwoorden";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "Controle starten";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "Wachtwoordcontrole";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Wachtwoordkwaliteit: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Bijna goed";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Goed";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Erg goed";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Erg zwak";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Zwak";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ van entropie)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Toon wachtwoord";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "Selectie verwijderen?";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "Selectie uitsluiten van wachtwoordcontrole?";
 

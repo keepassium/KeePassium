@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "有効にする。";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "デフォルト";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "フォント";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "文字の大きさ";
 
@@ -136,8 +142,35 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "カスタムアイコンを追加";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "FavIcon をダウンロード";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "FavIcon をダウンロード";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "処理されたエントリー: %1$d\nアイコンが更新されました: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "FavIconをダウンロード中";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "FavIconをダウンロード中";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "データベースを削除しますか？\n バックアップがあることを確認してください。";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "データはすべて保存されます。";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "データベースファイル形式をアップグレードする必要があります ( %1$@ から %2$@へ)。 このデータベースを使用する他のアプリを更新する必要があるかもしれません。";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "続ける前に";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "編集済み";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "これは古いデータベース形式です。一部のデータが失われる可能性があります。";
@@ -175,6 +208,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "読み込み中...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "マスターキーの変更";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "マスターキーを変更しました";
 
@@ -202,6 +238,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "データベースの準備はできましたが、問題が発生しました。";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "データベースの操作";
+
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "プレビューを準備中...";
 
@@ -226,8 +265,14 @@
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "KeePassiumから直接リモートストレージに接続してみてください。";
 
+/* Action/button */
+"[Database/Reload/action]" = "データベースを再読み込み";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "データベースを一覧から削除しますか？\n ファイルはそのまま残り、後で再度追加できます。";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "保存";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "完了";
@@ -463,6 +508,9 @@
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "診断ログをクリップボードにコピーしました。";
 
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "アイコンを変更";
+
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "選択";
 
@@ -498,6 +546,9 @@
 
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "項目の参照をコピー";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "アイコン";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "メモ";
@@ -841,6 +892,9 @@
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "さらに表示";
 
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "選択";
+
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "よろしいですか？";
 
@@ -1174,6 +1228,9 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "できないこと";
 
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "パスワードを確認";
+
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "できること";
 
@@ -1356,6 +1413,12 @@
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "複数データベース";
+
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "お使いのパスワードが既知のデータ漏洩にさらされているかどうかを確認します。";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "パスワードの監査";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "プレミアム版では画像や文書を直接Appで見ることができます。";
@@ -1602,6 +1665,9 @@
 
 /* Setting option: the app is permitted to use online features */
 "[Settings/NetworkAccessMode/Online/title]" = "ネットワークアクセスを許可";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "デフォルトに戻す";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "検索";

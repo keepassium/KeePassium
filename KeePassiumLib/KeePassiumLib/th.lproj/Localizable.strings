@@ -172,6 +172,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "กำลังโหลด...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "เปลี่ยนรหัสผ่านหลัก";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "เปลี่ยนกุญแจหลักเรียบร้อยแล้ว";
 
@@ -222,6 +225,9 @@
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "ลบฐานข้อมูลออกจากรายการหรือไม่?\n ไฟล์จะยังคงเดิมและคุณยังสามารถเพิ่มไฟล์ได้ในภายหลัง";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "บันทึกฐานข้อมูล";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "เสร็จ";
@@ -456,6 +462,9 @@
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "บันทึกการวินิจฉัยได้คัดลอกไปยังคลิปบอร์ดเรียบร้อยแล้ว";
+
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "เปลี่ยนไอคอน";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "เลือก";

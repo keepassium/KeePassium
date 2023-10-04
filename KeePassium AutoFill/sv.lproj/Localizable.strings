@@ -4,6 +4,27 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Autofyll kan inte komma åt filerna du redan lagt till i KeePassium-appen automatiskt.\n\nVarför? Bakom kulisserna hanterar systemet Auotfyll som en separat app, som är oberoende från huvudprocessen. Av säkerhetsskäl kan inte en app komma åt externa filer – om du inte uttryckligen ger appen tillstånd till detta. På så sätt garanterar systemet att appen endast kan komma åt filer du ger tillåtelse till.\n\nDetta leder till att både Autofyll och huvudappen för KeePassium behöver ges tillstånd för varje extern fil som ska användas. Som tur är behöver detta bara göras en gång.";
 
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Lösenordsstyrka: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Nästan bra";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Bra";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Mycket bra";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Mycket svagt";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Svagt";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ av entropi)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Visa lösenord";
 

@@ -40,6 +40,9 @@
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
 "daJ-ma-jhe.text" = "MIT 라이선스";
 
+/* Class = "UILabel"; text = "MIT license"; ObjectID = "Erq-Zz-P0N"; */
+"Erq-Zz-P0N.text" = "MIT 라이선스";
+
 /* Class = "UILabel"; text = "Custom permissive license"; ObjectID = "EWy-OI-IxL"; */
 "EWy-OI-IxL.text" = "커스텀 퍼미시브 라이선스";
 

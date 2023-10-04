@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Aktivera för att lyssna.";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "Förvalt";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "Typsnitt";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Textstorlek";
 
@@ -136,8 +142,35 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Lägg till egenvald ikon";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "Ladda ner Favicon";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "Ladda ner Favicons";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Konton bearbetade: %1$d\nIkoner uppdaterade: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "Laddar ner Favicons";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Laddar ner Favicon";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Radera databasfil?\nSäkerställ att du har en backup.";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "All din data kommer bevaras.";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium behöver uppgradera filformatet på din databas (från %1$@ till %2$@). Du kan behöva uppdatera andra program som använder sig av samma databas.";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "Innan vi fortsätter";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "Redigerad";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Det här är ett äldre databasformat, viss data kan gå förlorade.";
@@ -175,6 +208,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Laddar...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "Ändra huvudnyckel";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Huvudnyckel ändrades";
 
@@ -202,6 +238,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Din databas är färdig, men det uppstod ett problem.";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "Databasåtgärder";
+
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Förbereder förhandsvisning…";
 
@@ -226,8 +265,14 @@
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Försök ansluta till din lagringsplats direkt från KeePassium.";
 
+/* Action/button */
+"[Database/Reload/action]" = "Ladda om databas";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Ta bort databasen från fillistan?\nFilen kommer inte raderas, och du kan lägga till den igen vid ett senare tillfälle.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "Spara databas";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Klar";
@@ -463,6 +508,9 @@
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Diagnostisk logg har kopierats till urklipp.";
 
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "Byt ikon";
+
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Välj";
 
@@ -498,6 +546,9 @@
 
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Kopiera referens till fält";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "Ikon";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Anteckningar";
@@ -583,6 +634,12 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Använd Export-möjligheten för att spara filen till en annan plats.";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium behöver din tillåtelse för att komma åt '%@'.";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Välj filen igen för att tillåta åtkomst";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Lagringsleverantören svarar inte.";
 
@@ -651,6 +708,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -781,6 +841,9 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportera";
 
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Åtgärda";
+
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Läs mer…";
 
@@ -828,6 +891,9 @@
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Visa mer";
+
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "Välj";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Är du säker?";
@@ -1162,6 +1228,9 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Vad du går miste om";
 
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "Kontrollera dina lösenord";
+
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Vad du får";
 
@@ -1345,6 +1414,12 @@
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Flera databaser";
 
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "Ta reda på om någon av dina lösenord har komprommeterats i någon känd dataläcka.";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "Lösenordsgranskning";
+
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Förhandsgranska bilder och dokument direkt i appen, i premiumversionen.";
 
@@ -1404,6 +1479,9 @@
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Logga in på OneDrive";
+
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "Du behöver logga in på OneDrive på nytt.";
 
 /* No comment provided by engineer. */
 "[RemoteConnection/SignIn/PrivateMode/description]" = "Öppna inloggnignssidan i privat webbläsarläge";
@@ -1473,6 +1551,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Autofyll lösenord";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "AutoFyll är inte tillgängligt i KeePassium för Intune.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Fyll i det matchande resultatet automatiskt";
@@ -1584,6 +1665,9 @@
 
 /* Setting option: the app is permitted to use online features */
 "[Settings/NetworkAccessMode/Online/title]" = "Tillåt nätverksåtkomst";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "Återställ standardinställningar";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Sök";

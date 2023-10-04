@@ -4,6 +4,27 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "L'inserimento automatico non può accedere automaticamente ai file che hai già nell'app principale di KeePassium.\n\nPerché? Dietro le quinte, il sistema tratta l'inserimento automatico come un'app separata, indipendente dal processo principale di KeePassium. Per ragioni di sicurezza, un’app non può semplicemente accedere a qualsiasi file esterno, a meno che non si colleghino esplicitamente questi file all'app. In questo modo, il sistema garantisce che l'applicazione possa accedere solo ai file per cui ha il permesso.\n\nDi conseguenza, sia l'inserimento automatico che l'app principale di KeePassium devono avere la loro autorizzazione per ogni file esterno. Per fortuna si tratta di una procedura da eseguire una sola volta.";
 
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Robustezza della password: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Quasi buono";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Buono";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Ottimo";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Molto debole";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Debole";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ di entropia)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Mostra password";
 

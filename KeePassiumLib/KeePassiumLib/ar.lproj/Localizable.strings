@@ -166,6 +166,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "جاري التحميل...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "تغيير المفتاح الرئيس";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "تم تغيير المفتاح الرئيس بنجاح";
 
@@ -213,6 +216,9 @@
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "إزالة قاعدة البيانات من القائمة؟\n سيبقى الملف سليماً ويمكنك إضافته مرة أخرى لاحقاً.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "حفظ قاعدة البيانات باسم";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "تمَّ التحميل";
@@ -444,6 +450,9 @@
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "تمّ نسخ سجل التشخيص إلى الحافظة.";
+
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "تغيير الأيقونة";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "اختر";

@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Attiva per ascoltare.";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "Predefinito";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "Tipo di carattere";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Dimensione testo";
 
@@ -136,8 +142,35 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Aggiungi icona personalizzata";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "Scarica Favicon";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "Scarica Favicon";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Voci processate: %1$d\nIcone aggiornate: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "Scaricamento favicon";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Scaricamento favicon";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Eliminare il file database?\nAssicurati di avere una copia di sicurezza.";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "Tutti i tuoi dati saranno conservati.";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium deve aggiornare il formato del file del database (da %1$@ ad %2$@). Potrebbe essere necessario aggiornare altre applicazioni che utilizzano questo database.";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "Prima di continuare";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "Modificato";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Questo è un formato database vecchio, alcuni dati potrebbero andare persi.";
@@ -175,6 +208,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Carico...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "Modifica chiave principale";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Chiave principale cambiata con successo";
 
@@ -202,6 +238,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Il tuo database è pronto, ma si è verificato un errore.";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "Attività database";
+
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Preparazione anteprima…";
 
@@ -226,8 +265,14 @@
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Prova a connetterti al tuo archivio remoto direttamente da KeePassium.";
 
+/* Action/button */
+"[Database/Reload/action]" = "Ricarica database";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Rimuovere il database dalla lista?\nIl file rimarrà intatto e potrai aggiungerlo di nuovo in seguito.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "Salva database";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Fatto";
@@ -463,6 +508,9 @@
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Il registro diagnostico è stato copiato negli appunti.";
 
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "Cambia icona";
+
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Scegli";
 
@@ -498,6 +546,9 @@
 
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Copia riferimento campo";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "Icona";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Note";
@@ -841,6 +892,9 @@
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Mostra di più";
 
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "Seleziona";
+
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Confermi?";
 
@@ -1174,6 +1228,9 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Cosa ti perdi";
 
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "Verifica le tue password";
+
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Cosa ottieni";
 
@@ -1356,6 +1413,12 @@
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Database multipli";
+
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "Scopri se una qualsiasi delle tue password è stata esposta in una violazione di dati nota.";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "Ispezione password";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Visualizza immagini e documenti direttamente nell'app, nella versione Premium.";
@@ -1602,6 +1665,9 @@
 
 /* Setting option: the app is permitted to use online features */
 "[Settings/NetworkAccessMode/Online/title]" = "Consenti accesso alla rete";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "Ripristina predefiniti";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Cerca";

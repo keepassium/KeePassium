@@ -16,9 +16,6 @@
 /* Class = "UISwitch"; accessibilityLabel = "In-memory Protection"; ObjectID = "eox-My-Hns"; Note = "Equivalent to KeePass' own `Enable in-memory protection' for custom entry fields."; */
 "eox-My-Hns.accessibilityLabel" = "Beveilig in het geheugen";
 
-/* Class = "UIButton"; normalTitle = "Change Icon"; ObjectID = "HcW-rc-pdR"; */
-"HcW-rc-pdR.normalTitle" = "Wijzig pictogram";
-
 /* Class = "UIBarButtonItem"; HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Add Custom Field"; ObjectID = "HGI-xq-zUf"; */
 "HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Voeg aangepast veld toe";
 

@@ -49,6 +49,60 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Inställningar…";
 
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "Exkludera från granskning";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "Granska lösenord";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "Ett fel uppstod vid kommunikation med HIBP-tjänsten. %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "Siffran anger hur många gånger lösenordet har dykt upp i kända dataläckor.";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "Lösenordsgranskning kontrollerar dina lösenord mot en databas med läckta lösenord på ett säkert och anonymt sätt.\n\nKeePassium skickar information framräknad från dina lösenord — en sorts partiell checksumma — till tjänsten [Have I Been Pwned](https://haveibeenpwned.com). Tjänsten rapporterar detaljerad information om komprommeterade lösenord med liknande checksummor. Appen kommer sen jämföra de partiella checksummorna lokalt på din enhet för att avgöra vilka av dina lösenord som innebär en risk.\n\nDina faktiska lösenord delas aldrig med tjänsten.\n[Läs mer…](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "Fantastiskt! Inga av dina lösenord har förekommit i kända dataläckor.";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "Komprometterade lösenord";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "Starta granskning";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "Lösenordsgranskning";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Lösenordsstyrka: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Nästan bra";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Bra";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Mycket bra";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Mycket svagt";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Svagt";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ av entropi)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Visa lösenord";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "Radera markering?";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "Exkludera markering från lösenordsgranskning?";
 

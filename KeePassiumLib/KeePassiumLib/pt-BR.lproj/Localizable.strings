@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Ative para ouvir.";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "Padrão";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "Fonte";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Tamanho do texto";
 
@@ -136,8 +142,35 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Adicionar ícone personalizado";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "Baixar favicon";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "Baixar favicons";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Entradas processadas: %1$d\nÍcones atualizados: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "Baixando favicons";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Baixando favicon";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Apagar o arquivo de banco de dados?\n Certifique-se de ter uma cópia de segurança.";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "Todos os seus dados serão mantidos.";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium precisa atualizar o formato do seu banco de dados (de %1$@ para %2$@). Talvez você precise atualizar outros aplicativos que também usem esse banco de dados.";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "Antes de continuarmos";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "Editado";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Alguns dados podem ser perdidos pois o banco de dados de destino está em um formato mais antigo.";
@@ -175,6 +208,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Carregando...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "Mudar chave-mestra";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Chave-mestra alterada com sucesso";
 
@@ -202,6 +238,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "O seu banco de dados está pronto, mas houve um problema.";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "Ações de banco de dados";
+
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Gerando pré-visualização…";
 
@@ -226,8 +265,14 @@
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Tente conectar-se a essa conta corporativa diretamente usando o KeePassium.";
 
+/* Action/button */
+"[Database/Reload/action]" = "Recarregar banco de dados";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Esquecer esse banco de dados?\n O arquivo permanecerá intacto e você poderá adicioná-lo de novo depois.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "Salvar banco de dados";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Pronto";
@@ -463,6 +508,9 @@
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "O registro de diagnóstico foi copiado para a área de transferência.";
 
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "Mudar ícone";
+
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Escolher";
 
@@ -498,6 +546,9 @@
 
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Copiar referência";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "Ícone";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Anotações";
@@ -583,6 +634,12 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Use a opção Exportar para salvar esse arquivo em outro local.";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium precisa da sua permissão para acessar '%@'.";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Selecione novamente o arquivo para conceder acesso";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "O serviço de armazenamento não está respondendo.";
 
@@ -651,6 +708,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -781,6 +841,9 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportar";
 
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Resolva isso";
+
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Saiba mais…";
 
@@ -828,6 +891,9 @@
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Mostrar mais";
+
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "Selecionar";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Tem certeza?";
@@ -1162,6 +1228,9 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Você está perdendo";
 
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "Verifique suas senhas";
+
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Você aproveita";
 
@@ -1345,6 +1414,12 @@
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Vários bancos de dados";
 
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "Descubra se qualquer das suas senhas foi comprometida em algum vazamento de dados conhecido.";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "Auditoria de senhas";
+
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Visualize imagens e documentos sem sair do app, na versão Premium.";
 
@@ -1404,6 +1479,9 @@
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Entrar no OneDrive";
+
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "OneDrive está pedindo que você entre novamente.";
 
 /* No comment provided by engineer. */
 "[RemoteConnection/SignIn/PrivateMode/description]" = "Abrir a página de entrada no modo privado do navegador";
@@ -1473,6 +1551,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Preenchimento Automático";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "O preenchimento automático não está disponível no KeePassium para Intune.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Usar automaticamente o resultado perfeito";
@@ -1584,6 +1665,9 @@
 
 /* Setting option: the app is permitted to use online features */
 "[Settings/NetworkAccessMode/Online/title]" = "Permitir acesso à rede";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "Restaurar padrões";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Busca";

@@ -175,6 +175,9 @@
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Trwa ładowanie...";
 
+/* Action/button: change master key of a database. */
+"[Database/MasterKey/Change/action]" = "Zmień klucz główny";
+
 /* Notification after changing database master key */
 "[Database/MasterKey/changed] Master key successfully changed" = "Klucz główny pomyślnie zmieniony";
 
@@ -225,6 +228,9 @@
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Usunąć bazę danych z listy?\n Plik pozostanie nienaruszony i możesz go dodać później.";
+
+/* Action/button to save the current database. */
+"[Database/Save/action] Save Database" = "Zapisz bazę";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Gotowe";
@@ -456,6 +462,9 @@
 
 /* Notification/confirmation message */
 "[Diagnostics] Diagnostic log has been copied to clipboard." = "Log diagnostyczny został skopiowany do schowka.";
+
+/* Action: select a different icon for an item */
+"[EditEntry/Icon/change]" = "Zmień ikonę";
 
 /* Action: choose a username from a list */
 "[EditEntry/UserName/choose]" = "Wybierz";

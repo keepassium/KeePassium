@@ -49,6 +49,60 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "環境設定...";
 
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "監査から除外";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "パスワードを監査中";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "HIBPサービスとの通信中にエラーが発生しました。 %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "この数字は、データ漏洩しているパスワードが発見された回数を示しています。";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "パスワードの監査は、安全かつプライベートな方法で、流出したパスワードのオンラインデータベースとあなたのパスワードを照合します。\n\nKeePassiumは、あなたのパスワードから計算された情報（部分的なチェックサムのようなもの）を[Have I Been Pwned](https://haveibeenpwned.com)サービスに送信します。このサービスは、同じチェックサムを持つ漏洩したパスワードについて詳細な情報を返します。その後、デバイス上で詳細なチェックサムをローカルで比較し、パスワードが危険にさらされているかを検出します。\n\nお使いのパスワードがオンラインサービスと共有されることはありません。\n[もっと詳しく…](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "ご安心ください。お使いのパスワードは既知の漏洩データにありませんでした。";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "侵害されたパスワード";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "監査を開始";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "パスワードの監査";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "パスワードの強度: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "おおむね良い";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "良い";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "とても良い";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "とても弱い";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "弱い";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ のエントロピー)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "パスワードを表示";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "選択範囲を削除";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "選択範囲を監査から除外しますか？";
 

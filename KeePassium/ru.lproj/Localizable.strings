@@ -49,6 +49,60 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Настройки…";
 
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "Исключить из аудита";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "Проверка паролей";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "Ошибка при обмене данными со службой HIBP. %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "Число показывает, сколько раз пароль был найден в известных утечках данных.";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "Аудит паролей безопасно и конфиденциально проверяет ваши пароли по онлайн-базе утекших паролей.\n\nKeePassium отправит сервису [Have I Been Pwned](https://haveibeenpwned.com) вычисленные на основе ваших паролей данные, разновидность частичной контрольной суммы. Сервис вернет полную информацию о скомпрометированных паролях с похожими контрольными суммами. Сравнив полные контрольные суммы, приложение сможет локально на устройстве определить, какие из паролей находятся под угрозой.\n\nСами пароли никогда не передаются онлайн-сервису.\n[Подробнее…](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "Хорошие новости! Ни одного из ваших паролей нет в известных утечках данных.";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "Пароли под угрозой";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "Начать проверку";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "Аудит паролей";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Качество пароля: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Почти хороший";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Хороший";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Очень хороший";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Очень слабый";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Слабый";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ энтропии)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Показать пароль";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "Удалить выбранное?";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "Исключить выбранное из аудита паролей?";
 

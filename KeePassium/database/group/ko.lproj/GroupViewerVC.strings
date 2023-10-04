@@ -1,11 +1,5 @@
-/* Class = "UIBarButtonItem"; 9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Lock Database"; ObjectID = "9KV-rC-1XL"; */
-"9KV-rC-1XL.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "데이터베이스 잠그기";
-
 /* Class = "UIBarButtonItem"; M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Sort Order"; ObjectID = "M5a-Ld-ZXd"; */
 "M5a-Ld-ZXd.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "정렬 순서";
-
-/* Class = "UIBarButtonItem"; qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Change Master Key"; ObjectID = "qkh-6K-yQW"; */
-"qkh-6K-yQW.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "마스터 키 변경";
 
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
 "QXa-eN-7am.text" = "그룹이 비어있습니다.";
