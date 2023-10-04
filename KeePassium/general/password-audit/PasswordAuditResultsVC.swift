@@ -259,6 +259,7 @@ final class PasswordAuditResultsVC: UIViewController {
         let selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
         deleteButton.isEnabled = selectedCount > 0
         moreButton.isEnabled = selectedCount > 0
+        selectedCountLabel.isHidden = (selectedCount == 0)
         selectedCountLabel.text = EntriesSelectedCountFormatter.string(fromEntriesCount: selectedCount)
         selectedCountLabel.sizeToFit()
     }
