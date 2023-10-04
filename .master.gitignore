@@ -1,0 +1,28 @@
+# (Un)related files
+.related/
+
+# Auto-generated fastlane stuff
+fastlane/screenshots/*
+fastlane/Preview.html
+
+# Temporary OS X files
+.DS_Store
+
+# User settings
+xcuserdata/
+
+# Xcode stuff
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+DerivedData/
+KeePassium.xcodeproj/xcshareddata/
+
+# License verification files
+KeePassiumLib/KeePassiumLib/resources/licensing/
+
+# Tests
+KeePassiumTests/
