@@ -29,6 +29,7 @@ public extension LString {
     enum PasswordGeneratorMode {
         public static let title = NSLocalizedString(
             "[PasswordGenerator/Mode/title]",
+            bundle: Bundle.framework,
             value: "Mode",
             comment: "Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`)"
         )
