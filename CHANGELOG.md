@@ -1,5 +1,36 @@
 #CHANGELOG
 
+## [1.46.139] - 2023-10-05
+
+### Added 
+
+- Password audit powered by 'Have I Been Pwned' service (requires premium) (closes #187)
+- Password quality indicator (closes #170)
+- Favicon downloader (closes #164)
+- Customizable entry font [thanks, everyone]
+- A button to reload the currently opened DB (step towards #226)
+- Intune: Business licensing mechanism
+
+### Improved
+
+- You can disable Quick AutoFill for specific databases (#289) [thanks, everyone]
+- App passcode is tested while being entered, no need to tap the "Unlock" button [thanks, Hinrich]
+- macOS: copied items are marked as concealed for clipboard managers (closes #315)  [thanks, piercefaulkner]
+- macOS: lock app/DB when locking the screen (closes #231) [thanks, Rodrigo]
+- UI improvements in DB viewer and entry editor
+- Updated translations [thanks, everyone]
+
+### Changed
+
+- Intune: update MSAL version to 1.2.3
+- Intune: Extended the provisional license to 2023-12-31
+
+### Fixed
+
+- "No such file" error when saving to Dropbox (fixes #304) [thanks, everyone]
+- Better error message when YubiKey is not completely configured
+
+
 ## [1.45.138] - 2023-07-13
 
 ### Changed

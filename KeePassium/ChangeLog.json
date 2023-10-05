@@ -1,6 +1,72 @@
 {
     "sections": [
         {
+            "version": "1.46",
+            "releaseDate": "2023-10-05T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Password audit tool (powered by the 'Have I Been Pwned' service) [thanks, everyone]",
+                    "type": 2
+                },
+                {
+                    "title": "🧩 Added: Password quality indicator (offline) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Favicon downloader [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Customizable entry font [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: A button to reload the currently opened DB",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: You can disable Quick AutoFill for specific databases (#289) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: App passcode is tested while being entered, no need to tap the Unlock button [thanks, Hinrich]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: macOS: copied items are marked as concealed for clipboard managers (closes #315) [thanks, piercefaulkner]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: macOS: lock app/DB when locking the screen (closes #231) [thanks, Rodrigo]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: UI improvements in DB viewer and entry editor",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Intune: update MSAL version to 1.2.3",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Changed: Intune: Extended the provisional license to 2023-12-31",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: 'No such file' error when saving to Dropbox (fixes #304) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Better error message when YubiKey is not completely configured",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.45",
             "releaseDate": "2023-07-13T00:00:00Z",
             "items": [
