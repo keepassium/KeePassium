@@ -88,6 +88,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
         fileViewerVC.delegate = self
         historyViewerVC.delegate = self
         pagesVC.dataSource = self
+        pagesVC.delegate = self
 
         settingsNotifications.observer = self
     }
@@ -244,6 +245,8 @@ extension EntryViewerCoordinator {
                 }
                 let fileName = (pickerImage.name ?? LString.defaultNewPhotoAttachmentName) + ".jpg"
                 self.addAttachment(name: fileName, data: ByteArray(data: imageData))
+                self.refresh(animated: true)                
+                self.saveDatabase()
             case .failure(let error):
                 Diag.error("Failed to add photo attachment [message: \(error.localizedDescription)]")
                 viewController.showErrorAlert(error)
@@ -291,10 +294,6 @@ extension EntryViewerCoordinator {
         }
         entry.attachments.append(newAttachment)
         Diag.info("Attachment added OK")
-
-        refresh(animated: true)
-        
-        saveDatabase()
     }
 }
     
@@ -669,6 +668,8 @@ extension EntryViewerCoordinator: UIDocumentPickerDelegate {
         guard let url = urls.first else { return }
         loadAttachmentFile(from: url, success: { [weak self] (fileData) in
             self?.addAttachment(name: url.lastPathComponent, data: fileData)
+            self?.refresh(animated: true)
+            self?.saveDatabase()
         })
     }
 }
@@ -813,5 +814,38 @@ extension EntryViewerCoordinator: QLPreviewControllerDataSource {
 extension EntryViewerCoordinator: QLPreviewControllerDelegate {
     func previewControllerDidDismiss(_ controller: QLPreviewController) {
         previewController = nil
+    }
+}
+
+extension EntryViewerCoordinator: EntryViewerPagesVCDelegate {
+    func canDropFiles(_ files: [UIDragItem]) -> Bool {
+        guard canEditEntry else {
+            return false
+        }
+
+        if entry.isSupportsMultipleAttachments {
+            return true
+        }
+        
+        let isTooCrowded = files.count > 1 || entry.attachments.count > 0
+        return !isTooCrowded
+    }
+    
+    func didDropFiles(_ files: [TemporaryFileURL]) {
+        let dispatchGroup = DispatchGroup()
+        for file in files {
+            dispatchGroup.enter()
+
+            loadAttachmentFile(from: file.url) { [weak self] (fileData) in
+                self?.addAttachment(name: file.url.lastPathComponent, data: fileData)
+                dispatchGroup.leave()
+            }
+        }
+
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            Diag.debug("Dropped files added, refreshing and saving")
+            self?.refresh(animated: true)
+            self?.saveDatabase()
+        }
     }
 }
