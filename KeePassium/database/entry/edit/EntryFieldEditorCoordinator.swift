@@ -47,7 +47,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         }
     }
 
-    private let faviconDownloader: FaviconDownloader
+    let faviconDownloader = FaviconDownloader()
     
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
@@ -60,7 +60,6 @@ final class EntryFieldEditorCoordinator: Coordinator {
         self.database = databaseFile.database
         self.parent = parent
         self.originalEntry = target
-        self.faviconDownloader = FaviconDownloader()
         
         let isCreationMode: Bool
         if let _target = target {
@@ -231,7 +230,6 @@ final class EntryFieldEditorCoordinator: Coordinator {
         db2.setCustomIcon(customIcon, for: entry2)
         fieldEditorVC.shouldHighlightIcon = true
         isModified = true
-        refresh()
     }
     
     func showIconPicker() {
@@ -382,21 +380,11 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         
         viewController.isDownloadingFavicon = true
         viewController.refresh() 
-        
-        faviconDownloader.downloadFavicon(for: url) { [weak self, weak viewController] result in
+        downloadFavicon(for: url, in: viewController) { [weak self, weak viewController] image in
             guard let self, let viewController else { return }
             viewController.isDownloadingFavicon = false
-            switch result {
-            case let .success(image):
-                if let image {
-                    self.changeIcon(image: image)
-                    return
-                }
-            case .failure(.canceled):
-                Diag.info("Downloading favicon canceled")
-            case let .failure(error):
-                Diag.error("Downloading favicon failed [message: \(error.localizedDescription)]")
-                viewController.showNotification(error.localizedDescription)
+            if let image {
+                self.changeIcon(image: image)
             }
             viewController.refresh()
         }
@@ -453,6 +441,10 @@ extension EntryFieldEditorCoordinator: PasswordGeneratorCoordinatorDelegate {
         fieldEditorVC.revalidate()
         fieldEditorVC.refresh()
     }
+}
+
+extension EntryFieldEditorCoordinator: FaviconDownloading {
+    var faviconDownloadingProgressHost: ProgressViewHost? { return nil }
 }
 
 extension EntryFieldEditorCoordinator: DatabaseSaving {

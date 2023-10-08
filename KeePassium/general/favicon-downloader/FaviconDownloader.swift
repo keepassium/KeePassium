@@ -64,6 +64,14 @@ final class FaviconDownloader {
         progressHandler: ((ProgressEx) -> Void)? = nil,
         completionHandler: @escaping (DownloadFaviconResult) -> Void
     ) {
+        guard Settings.current.isNetworkAccessAllowed else {
+            Diag.error("Network access denied, cancelling")
+            DispatchQueue.main.async {
+                completionHandler(.failure(.canceled))
+            }
+            return
+        }
+        
         let progress = ProgressEx()
         progress.localizedDescription = LString.statusDownloadingOneFavicon
         progress.totalUnitCount = 2
@@ -97,6 +105,14 @@ final class FaviconDownloader {
         completionHandler: @escaping (DownloadFaviconsResult) -> Void
     ) {
         Diag.info("Starting favicons download")
+        guard Settings.current.isNetworkAccessAllowed else {
+            Diag.error("Network access denied, cancelling")
+            DispatchQueue.main.async {
+                completionHandler(.failure(.canceled))
+            }
+            return
+        }
+
         let progress = ProgressEx()
         progress.localizedDescription = LString.statusDownloadingFavicons
 

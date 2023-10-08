@@ -147,7 +147,9 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
         }
 
         downloadFavicon(for: url, in: viewController) { [weak self] image in
-            self?.addCustomIcon(image)
+            if let image {
+                self?.addCustomIcon(image)
+            }
         }
     }
 }
@@ -166,5 +168,5 @@ extension ItemIconPickerCoordinator: DatabaseSaving {
 }
 
 extension ItemIconPickerCoordinator: FaviconDownloading {
-    var faviconDownloadingProgressHost: ProgressViewHost { return router }
+    var faviconDownloadingProgressHost: ProgressViewHost? { return router }
 }

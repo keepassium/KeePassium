@@ -180,7 +180,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     
     public func maybeAddRemoteDatabase(bypassPaywall: Bool, presenter: UIViewController) {
         guard needsPremiumToAddDatabase() && !bypassPaywall else {
-            presenter.requestNetworkAccessPermission() { [weak self, weak presenter] in
+            presenter.ensuringNetworkAccessPermitted { [weak self, weak presenter] in
                 guard let self = self, let presenter = presenter else { return }
                 self.addRemoteDatabase(presenter: presenter)
             }
@@ -194,7 +194,7 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
             else {
                 return
             }
-            presenter.requestNetworkAccessPermission() { [weak self, weak presenter] in
+            presenter.ensuringNetworkAccessPermitted { [weak self, weak presenter] in
                 guard let self = self, let presenter = presenter else { return }
                 self.addRemoteDatabase(presenter: presenter)
             }

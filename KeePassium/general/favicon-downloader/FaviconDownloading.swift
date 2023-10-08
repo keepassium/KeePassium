@@ -12,47 +12,52 @@ import UIKit
 
 protocol FaviconDownloading: AnyObject {
     var faviconDownloader: FaviconDownloader { get }
-    var faviconDownloadingProgressHost: ProgressViewHost { get }
+    var faviconDownloadingProgressHost: ProgressViewHost? { get }
 
     func downloadFavicon(
         for url: URL,
         in viewController: UIViewController,
-        onSuccess: @escaping (UIImage) -> Void)
+        completion: @escaping (UIImage?) -> Void)
     func downloadFavicons(
         for entries: [Entry],
         in viewController: UIViewController,
-        onSuccess: @escaping ([FaviconDownloader.DownloadedFavicon]) -> Void)
+        completion: @escaping ([FaviconDownloader.DownloadedFavicon]?) -> Void)
 }
 
 extension FaviconDownloading {
     func downloadFavicon(
         for url: URL,
         in viewController: UIViewController,
-        onSuccess: @escaping (UIImage) -> Void
+        completion: @escaping (UIImage?) -> Void
     ) {
-        viewController.requestNetworkAccessPermission() { [weak self] in
+        viewController.requestingNetworkAccessPermission { [weak self] isNetworkAllowed in
             guard let self else { return }
-            self.faviconDownloadingProgressHost.showProgressView(
+            guard isNetworkAllowed else {
+                completion(nil)
+                return
+            }
+            self.faviconDownloadingProgressHost?.showProgressView(
                 title: LString.statusDownloadingOneFavicon,
                 allowCancelling: true,
                 animated: true
             )
             let progressHandler = { [weak self] (progress: ProgressEx) -> Void in
-                self?.faviconDownloadingProgressHost.updateProgressView(with: progress)
+                self?.faviconDownloadingProgressHost?.updateProgressView(with: progress)
             }
             self.faviconDownloader.downloadFavicon(for: url, progressHandler: progressHandler) {
                 [weak self] result in
                 switch result {
                 case let .success(image):
-                    if let image {
-                        onSuccess(image)
-                    }
+                    completion(image)
                 case .failure(.canceled):
                     Diag.info("Favicon download canceled")
+                    completion(nil)
                 case let .failure(error):
                     Diag.error("Favicon download failed [message: \(error.localizedDescription)]")
+                    viewController.showNotification(error.localizedDescription)
+                    completion(nil)
                 }
-                self?.faviconDownloadingProgressHost.hideProgressView(animated: true)
+                self?.faviconDownloadingProgressHost?.hideProgressView(animated: true)
             }
         }
     }
@@ -60,30 +65,37 @@ extension FaviconDownloading {
     func downloadFavicons(
         for entries: [Entry],
         in viewController: UIViewController,
-        onSuccess: @escaping ([FaviconDownloader.DownloadedFavicon]) -> Void
+        completion: @escaping ([FaviconDownloader.DownloadedFavicon]?) -> Void
     ) {
-        viewController.requestNetworkAccessPermission() { [weak self] in
+        viewController.requestingNetworkAccessPermission { [weak self] isNetworkAllowed in
             guard let self else { return }
-            self.faviconDownloadingProgressHost.showProgressView(
+            guard isNetworkAllowed else {
+                completion(nil)
+                return
+            }
+            self.faviconDownloadingProgressHost?.showProgressView(
                 title: LString.statusDownloadingFavicons,
                 allowCancelling: true,
                 animated: true
             )
 
             let progressHandler = { [weak self] (progress: ProgressEx) -> Void in
-                self?.faviconDownloadingProgressHost.updateProgressView(with: progress)
+                self?.faviconDownloadingProgressHost?.updateProgressView(with: progress)
             }
             self.faviconDownloader.downloadFavicons(for: entries, progressHandler: progressHandler) {
                 [weak self] result in
                 switch result {
                 case .success(let favicons):
-                    onSuccess(favicons)
+                    completion(favicons)
                 case .failure(.canceled):
                     Diag.info("Bulk favicon download canceled")
+                    completion(nil)
                 case let .failure(error):
                     Diag.error("Bulk favicon download failed [message: \(error.localizedDescription)]")
+                    viewController.showNotification(error.localizedDescription)
+                    completion(nil)
                 }
-                self?.faviconDownloadingProgressHost.hideProgressView(animated: true)
+                self?.faviconDownloadingProgressHost?.hideProgressView(animated: true)
             }
         }
     }

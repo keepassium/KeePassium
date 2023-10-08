@@ -30,9 +30,17 @@ extension UIViewController {
         StoreReviewSuggester.registerEvent(.trouble)
     }
     
-    func requestNetworkAccessPermission(allowed completion: @escaping () -> Void) {
+    func ensuringNetworkAccessPermitted(allowed completion: @escaping () -> Void) {
+        requestingNetworkAccessPermission() { isAllowed in
+            if isAllowed {
+                completion()
+            }
+        }
+    }
+    
+    func requestingNetworkAccessPermission(completion: @escaping (_ isAllowed: Bool) -> Void) {
         if Settings.current.isNetworkAccessAllowed {
-            completion()
+            completion(true)
             return
         }
         let networkModeAlert = UIAlertController(
@@ -43,11 +51,12 @@ extension UIViewController {
         networkModeAlert.addAction(title: LString.titleAllowNetworkAccess, style: .default) { _ in
             Diag.info("Network access is allowed by the user")
             Settings.current.isNetworkAccessAllowed = true
-            completion()
+            completion(true)
         }
         networkModeAlert.addAction(title: LString.titleStayOffline, style: .cancel) { _ in
             Diag.info("Network access is denied by the user")
             Settings.current.isNetworkAccessAllowed = false
+            completion(false)
         }
         present(networkModeAlert, animated: true)
     }

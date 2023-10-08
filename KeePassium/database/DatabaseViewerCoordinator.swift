@@ -466,7 +466,10 @@ extension DatabaseViewerCoordinator {
         databaseFile.database.root?.collectAllEntries(to: &allEntries)
 
         downloadFavicons(for: allEntries, in: viewController) { [weak self] downloadedFavicons in
-            guard let db2 = self?.database as? Database2, let databaseFile = self?.databaseFile else {
+            guard let downloadedFavicons,
+                  let db2 = self?.database as? Database2,
+                  let databaseFile = self?.databaseFile
+            else {
                 return
             }
 
@@ -1134,5 +1137,5 @@ extension DatabaseViewerCoordinator: PasswordAuditCoordinatorDelegate {
 }
 
 extension DatabaseViewerCoordinator: FaviconDownloading {
-    var faviconDownloadingProgressHost: ProgressViewHost { return self }
+    var faviconDownloadingProgressHost: ProgressViewHost? { return self }
 }

@@ -141,7 +141,7 @@ extension PasswordAuditCoordinator: PasswordAuditVCDelegate {
     func didPressStartAudit(in viewController: PasswordAuditVC) {
         performPremiumActionOrOfferUpgrade(for: .canAuditPasswords, in: viewController) {
             [weak self, weak viewController] in
-            viewController?.requestNetworkAccessPermission { [weak self] in
+            viewController?.ensuringNetworkAccessPermitted { [weak self] in
                 self?.performAudit()
             }
         }
