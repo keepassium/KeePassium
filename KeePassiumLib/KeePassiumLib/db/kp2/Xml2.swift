@@ -14,7 +14,7 @@ internal struct Xml2 {
         case notKeePassDocument
         case unexpectedTag(actual: String, expected: String?)
         case malformedValue(tag: String, value: String?)
-        
+
         public var errorDescription: String? {
             switch self {
             case .xmlError(let details):
@@ -31,7 +31,7 @@ internal struct Xml2 {
                     bundle: Bundle.framework,
                     value: "Not a KeePass XML",
                     comment: "Error message about XML parsing")
-            case .unexpectedTag(let actual, let expected):
+            case let .unexpectedTag(actual, expected):
                 if let expected = expected {
                     return String.localizedStringWithFormat(
                         NSLocalizedString(
@@ -50,7 +50,7 @@ internal struct Xml2 {
                             comment: "Error message about XML parsing. [actualTag: String]"),
                         actual)
                 }
-            case .malformedValue(let tag, let value):
+            case let .malformedValue(tag, value):
                 if let value = value {
                     return String.localizedStringWithFormat(
                         NSLocalizedString(
@@ -72,16 +72,16 @@ internal struct Xml2 {
             }
         }
     } 
-    
+
     public enum ThirdParty {
         static let browserHideEntry = "BrowserHideEntry"
     }
-    
+
     static let meta = "Meta"
     static let root = "Root"
     static let group = "Group"
     static let entry = "Entry"
-    
+
     static let keePassFile = "KeePassFile"
     static let generator = "Generator"
     static let settingsChanged = "SettingsChanged"
@@ -122,7 +122,7 @@ internal struct Xml2 {
     static let customData = "CustomData"
     static let item = "Item"
     static let binary = "Binary"
-    
+
     static let uuid = "UUID"
     static let name = "Name"
     static let notes = "Notes"
@@ -135,7 +135,7 @@ internal struct Xml2 {
     static let protected = "Protected"
     static let ref = "Ref"
     static let qualityCheck = "QualityCheck"
-    
+
     static let isExpanded = "IsExpanded"
     static let defaultAutoTypeSequence = "DefaultAutoTypeSequence" 
     static let enableAutoType = "EnableAutoType"
@@ -148,7 +148,7 @@ internal struct Xml2 {
     static let backgroundColor = "BackgroundColor"
     static let overrideURL = "OverrideURL"
     static let tags = "Tags"
-    
+
     static let autoType = "AutoType"
     static let enabled = "Enabled"
     static let dataTransferObfuscation = "DataTransferObfuscation"
@@ -156,18 +156,18 @@ internal struct Xml2 {
     static let association = "Association"
     static let window = "Window"
     static let keystrokeSequence = "KeystrokeSequence"
-    
+
     static let times = "Times"
     static let lastModificationTime = "LastModificationTime"
     static let creationTime = "CreationTime"
     static let lastAccessTime = "LastAccessTime"
     static let expiryTime = "ExpiryTime"
     static let expires = "Expires"
-    
+
     static let deletedObjects = "DeletedObjects"
     static let deletedObject = "DeletedObject"
     static let deletionTime = "DeletionTime"
-    
+
     static let keyFile = "KeyFile"
     static let version = "Version"
     static let hash = "Hash"

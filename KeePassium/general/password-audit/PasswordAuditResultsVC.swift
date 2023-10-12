@@ -30,7 +30,7 @@ final class PasswordAuditResultsVC: UIViewController {
         case delete
         case exclude
     }
-    
+
     private enum CellID {
         static let result = "PasswordAuditResultCell"
         static let announcement = "AnnouncementCell"
@@ -89,7 +89,7 @@ final class PasswordAuditResultsVC: UIViewController {
         label.adjustsFontForContentSizeCategory = true
         return label
     }()
-    
+
     private lazy var noResultsView: UIView = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
@@ -121,7 +121,7 @@ final class PasswordAuditResultsVC: UIViewController {
         else {
             return []
         }
-        
+
         let selectedEntries = selection.map {
             let itemIndex = $0.row - announcements.count
             return items[itemIndex].entry
@@ -134,18 +134,18 @@ final class PasswordAuditResultsVC: UIViewController {
     private var announcements: [AnnouncementItem] = []
 
     weak var delegate: PasswordAuditResultsVCDelegate?
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = LString.titleCompromisedPasswords
         navigationItem.rightBarButtonItem = closeButton
-        
+
         tableView.register(
             AnnouncementCell.classForCoder(),
             forCellReuseIdentifier: CellID.announcement)
-        
+
         announcements.append(AnnouncementItem(
             title: nil,
             body: LString.exposureCountDescription,
@@ -181,7 +181,7 @@ final class PasswordAuditResultsVC: UIViewController {
     private func didPressDelete(_ sender: UIBarButtonItem) {
         delete(entries: selectedEntries)
     }
-    
+
     private func didPressExcludeEntries(_ action: UIAction) {
         exclude(entries: selectedEntries)
     }
@@ -221,7 +221,7 @@ final class PasswordAuditResultsVC: UIViewController {
         noResultsView.isHidden = !items.isEmpty
         tableView.allowsSelection = allowedActions.contains(.edit)
 
-        guard (allowedActions.contains(.delete) || allowedActions.contains(.exclude)),
+        guard allowedActions.contains(.delete) || allowedActions.contains(.exclude),
               !items.isEmpty
         else {
             toolBar.setItems([], animated: animated)
@@ -237,7 +237,7 @@ final class PasswordAuditResultsVC: UIViewController {
         toolBar.setItems(getToolbarItems(), animated: animated)
         updateButtons()
     }
-    
+
     private func getToolbarItems() -> [UIBarButtonItem] {
         var result = [
             cancelButton,
@@ -254,7 +254,7 @@ final class PasswordAuditResultsVC: UIViewController {
         }
         return result
     }
-    
+
     private func updateButtons() {
         let selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
         deleteButton.isEnabled = selectedCount > 0
@@ -266,7 +266,7 @@ final class PasswordAuditResultsVC: UIViewController {
 
     private func reload(removing entries: [Entry]) {
         items = items.filter { item in
-            let shouldRemove = entries.contains { $0 === item.entry}
+            let shouldRemove = entries.contains { $0 === item.entry }
             return !shouldRemove
         }
         tableView.isEditing = false
@@ -292,7 +292,7 @@ extension PasswordAuditResultsVC: UITableViewDataSource {
             return makeResultCell(index: indexPath.row - announcements.count, at: indexPath)
         }
     }
-    
+
     private func makeAnnouncementCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView
             .dequeueReusableCell(withIdentifier: CellID.announcement, for: indexPath)
@@ -307,7 +307,7 @@ extension PasswordAuditResultsVC: UITableViewDataSource {
             withIdentifier: CellID.result,
             for: indexPath)
             as! PasswordAuditResultCell
-        
+
         let model = items[itemIndex]
         cell.model = model
         cell.isEdited = model.entry.lastModificationTime > passwordAuditFinishTime
@@ -324,7 +324,7 @@ extension PasswordAuditResultsVC: UITableViewDelegate {
             return indexPath
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row >= announcements.count else {
             return
@@ -371,12 +371,12 @@ extension PasswordAuditResultsVC: UITableViewDelegate {
         guard itemIndex >= 0 else {
             return nil
         }
-        
+
         let entry = items[itemIndex].entry
         var contextActions = [UIContextualAction]()
         if allowedActions.contains(.delete) {
             let deleteAction = UIContextualAction(style: .destructive, title: LString.actionDelete) {
-                [weak self] (_, _, completion) in
+                [weak self] _, _, completion in
                 self?.delete(entries: [entry])
                 completion(true)
             }
@@ -387,7 +387,7 @@ extension PasswordAuditResultsVC: UITableViewDelegate {
 
         if allowedActions.contains(.exclude) {
             let excludeAction = UIContextualAction(style: .normal, title: LString.actionExcludeFromAudit) {
-                [weak self] (_, _, completion) in
+                [weak self] _, _, completion in
                 self?.exclude(entries: [entry])
                 completion(true)
             }

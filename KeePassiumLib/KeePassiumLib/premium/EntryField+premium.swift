@@ -9,7 +9,7 @@
 import Foundation
 
 public extension EntryField {
-    
+
     var premiumDecoratedValue: String {
         guard hasReferences else {
             return resolvedValue

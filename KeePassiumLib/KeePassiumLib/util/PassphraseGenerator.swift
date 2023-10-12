@@ -30,6 +30,7 @@ public final class PassphraseGenerator: PasswordGenerator {
 }
 
 extension LString.PasswordGenerator {
+    // swiftlint:disable line_length
     public enum WordCase {
         public static let title = NSLocalizedString(
             "[PasswordGenerator/WordCase/title]",
@@ -52,4 +53,5 @@ extension LString.PasswordGenerator {
             value: "Title Case",
             comment: "Word capitalization style: first letters of significant words capitalized. Written in that style, if possible.")
     }
+    // swiftlint:enable line_length
 }

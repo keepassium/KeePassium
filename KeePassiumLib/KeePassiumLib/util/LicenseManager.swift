@@ -9,22 +9,22 @@
 public final class LicenseManager {
     public static let shared = LicenseManager()
     private static let provisionalLicenseCutoffDate = Date(iso8601string: "2023-12-31T23:59:59Z")!
-    
+
     private enum LicenseKeyFormat {
         case version1 
         case provisional
         case unknown
     }
-    
+
     private func getLicenseKeyString() -> String? {
         return ManagedAppConfig.shared.getLicenseValue()
     }
-    
+
     public func hasActiveBusinessLicense() -> Bool {
         guard let licenseKey = getLicenseKeyString() else {
             return false
         }
-        
+
         let keyFormat = getLicenseKeyFormat(licenseKey)
         switch keyFormat {
         case .version1:
@@ -47,7 +47,7 @@ public final class LicenseManager {
             return false
         }
     }
-    
+
     private func getLicenseKeyFormat(_ licenseKey: String) -> LicenseKeyFormat {
         if let _ = getLicenseDataV1(from: licenseKey) {
             return .version1
@@ -65,7 +65,7 @@ extension LicenseManager {
         static let keyLength = 32 
         static let proofSize = SHA256_SIZE
     }
-    
+
     private func getLicenseDataV1(from licenseKey: String) -> ByteArray? {
         guard licenseKey.count == LicenseV1.keyLength,
               let licenseData = ByteArray(hexString: licenseKey)
@@ -74,14 +74,14 @@ extension LicenseManager {
         }
         return licenseData
     }
-    
+
     private func isValidLicenseV1(_ licenseKey: String) throws -> Bool {
         guard let licenseData = getLicenseDataV1(from: licenseKey) else {
             Diag.warning("Unexpected license key format")
             return false
         }
         let licenseKeyHash = licenseData.sha256
-        
+
         let proofListURL = Bundle.framework.url(
             forResource: Self.proofListFileName,
             withExtension: "",
@@ -92,7 +92,7 @@ extension LicenseManager {
             Diag.error("License proof list is missing")
             return false
         }
-        
+
         let inputStream = proofList.asInputStream()
         inputStream.open()
         defer {

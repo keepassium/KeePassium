@@ -11,15 +11,15 @@ import Foundation
 public final class DatabaseReloadContext: Eraseable {
     public let compositeKey: CompositeKey
     public var groupUUID: UUID?
-    
+
     public init(for database: Database) {
         self.compositeKey = database.compositeKey.clone()
     }
-    
+
     deinit {
         erase()
     }
-    
+
     public func erase() {
         compositeKey.erase()
         groupUUID?.erase()

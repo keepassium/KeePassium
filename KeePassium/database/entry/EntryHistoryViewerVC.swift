@@ -36,12 +36,12 @@ final class EntryHistoryItemCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     var restoreButton: UIButton! 
-    
-    var buttonHandler: (()->Void)?
-    
+
+    var buttonHandler: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         restoreButton = UIButton(type: .system)
         restoreButton.setImage(.symbol(.actionRestore), for: .normal)
         restoreButton.accessibilityLabel = LString.actionRestore
@@ -49,7 +49,7 @@ final class EntryHistoryItemCell: UITableViewCell {
         restoreButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         editingAccessoryView = restoreButton
     }
-    
+
     @objc private func didTapButton(_ sender: AnyObject) {
         buttonHandler?()
     }
@@ -60,20 +60,20 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         case timestamps = 0
         case historyEntries = 1
     }
-    
+
     private enum CellID { 
         static let fixedTimestamp = "TimestampCell"
         static let emptyHistory = "EmptyHistoryCell"
         static let historyItem = "HistoryItemCell"
     }
-    
+
     private enum TimestampType: Int {
         static let all = [expiryTime, creationTime, lastModificationTime, lastAccessTime]
         case expiryTime = 0
         case creationTime = 1
         case lastModificationTime = 2
         case lastAccessTime = 3
-        
+
         var title: String {
             switch self {
             case .expiryTime:
@@ -87,21 +87,21 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             }
         }
     }
-    
+
     weak var delegate: EntryHistoryViewerDelegate?
     private var canEditEntry = false
-    
+
     private var canExpire = false
     private var expiryTime = Date.distantPast
     private var creationTime = Date.distantPast
     private var lastModificationTime = Date.distantPast
     private var lastAccessTime = Date.distantPast
-    
+
     private var historyEntries: [Entry2]?
     private let dateFormatter = DateFormatter()
-    
+
     private var deleteBarButton: UIBarButtonItem! 
-    
+
     public func setContents(
         from entry: Entry,
         isHistoryEntry: Bool,
@@ -109,7 +109,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         animated: Bool
     ) {
         self.canEditEntry = canEditEntry
-        
+
         canExpire = entry.canExpire
         expiryTime = entry.expiryTime
         creationTime = entry.creationTime
@@ -123,13 +123,13 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         }
         refresh(animated: animated)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.rightBarButtonItem = editButtonItem
         tableView.allowsMultipleSelectionDuringEditing = true
-        
+
         deleteBarButton = UIBarButtonItem(
             title: "", 
             image: nil,
@@ -142,21 +142,21 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         ]
         updateToolbar()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
     }
-    
+
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
         setEditing(false, animated: false)
     }
-    
+
     func refresh() {
         refresh(animated: false)
     }
-    
+
     func refresh(animated: Bool) {
         if traitCollection.horizontalSizeClass == .compact {
             dateFormatter.dateStyle = .medium
@@ -165,7 +165,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             dateFormatter.dateStyle = .long
             dateFormatter.timeStyle = .long
         }
-        
+
         editButtonItem.isEnabled = canEditEntry
         if animated {
             let visibleSections = IndexSet(0..<numberOfSections(in: tableView))
@@ -180,7 +180,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         super.traitCollectionDidChange(previousTraitCollection)
         refresh()
     }
-    
+
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if historyEntries != nil {
@@ -210,7 +210,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             return LString.titleEntryPreviousVersions
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         willSelectRowAt indexPath: IndexPath
@@ -226,7 +226,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             return indexPath
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -238,7 +238,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             return setupHistoryEntryCell(indexPath: indexPath)
         }
     }
-    
+
     private func setupTimestampCell(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CellID.fixedTimestamp,
@@ -260,7 +260,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         case .lastAccessTime:
             timestamp = lastAccessTime
         }
-        
+
         if let timestamp = timestamp {
             cell.valueLabel?.text = dateFormatter.string(from: timestamp)
         } else {
@@ -268,7 +268,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         }
         return cell
     }
-    
+
     private func setupHistoryEntryCell(indexPath: IndexPath) -> UITableViewCell {
         guard let historyEntries = historyEntries,
               historyEntries.count > 0
@@ -302,7 +302,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             didPressDeleteHistoryEntry(index: indexPath.row)
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         guard canEditEntry else {
             return false
@@ -314,7 +314,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             return (historyEntries?.count ?? 0) > 0
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         editingStyleForRowAt indexPath: IndexPath
@@ -327,20 +327,20 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             return .delete
         }
     }
-    
-    
+
+
     override func setEditing(_ editing: Bool, animated: Bool) {
         assert(canEditEntry || !editing)
         super.setEditing(editing, animated: animated)
         updateToolbar()
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let section = Section(rawValue: indexPath.section) else {
             assertionFailure()
             return
         }
-        
+
         switch section {
         case .timestamps:
             let timestampType = TimestampType(rawValue: indexPath.row)!
@@ -363,7 +363,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             }
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let section = Section(rawValue: indexPath.section),
               section == .historyEntries,
@@ -376,12 +376,12 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             return
         }
         assert(indexPath.row < historyEntries.count)
-        
+
         if tableView.isEditing {
             updateToolbar()
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         accessoryButtonTappedForRowWith indexPath: IndexPath
@@ -405,13 +405,13 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             }
         }
     }
-    
-    
+
+
     private func didPressEditExpiryDate(at indexPath: IndexPath) {
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressEditExpiryDate(at: popoverAnchor, in: self)
     }
-    
+
     override func getContextActionsForRow(
         at indexPath: IndexPath,
         forSwipe: Bool
@@ -424,7 +424,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         else {
             return []
         }
-        
+
         let deleteAction = ContextualAction(
             title: LString.actionDelete,
             imageName: .trash,
@@ -449,7 +449,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         )
         return [restoreAction, deleteAction]
     }
-    
+
     private func didPressRestoreHistoryEntry(index: Int) {
         guard canEditEntry else {
             Diag.warning("Tried to modify non-editable entry")
@@ -463,7 +463,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         let entry = historyEntries[index]
         delegate?.didPressRestore(historyEntry: entry, in: self)
     }
-    
+
     private func didPressDeleteHistoryEntry(index: Int) {
         guard canEditEntry else {
             Diag.warning("Tried to modify non-editable entry")
@@ -477,7 +477,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         let entryToDelete = historyEntries[index]
         delegate?.didPressDelete(historyEntries: [entryToDelete], in: self)
     }
-    
+
     private func makeConfirmDeleteSelectionMenu(for button: UIBarButtonItem) -> UIMenu {
         let deleteAction = UIAction(
             title: button.title ?? LString.actionDelete,
@@ -489,7 +489,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         )
         return UIMenu.make(options: [.destructive], children: [deleteAction])
     }
-    
+
     private func didPressDeleteSelection() {
         guard canEditEntry else {
             Diag.warning("Tried to modify non-editable entry")
@@ -500,7 +500,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             assertionFailure("There are no history entries")
             return
         }
-        
+
         let entriesToDelete: [Entry2]
         if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
             Diag.debug("Deleting selected history entries")
@@ -513,7 +513,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         }
         delegate?.didPressDelete(historyEntries: entriesToDelete, in: self)
     }
-    
+
     private func updateToolbar() {
         let hasHistoryEntries = (historyEntries?.count ?? 0) > 0
         deleteBarButton.isEnabled = canEditEntry && isEditing && hasHistoryEntries
@@ -524,5 +524,5 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         }
         deleteBarButton.menu = makeConfirmDeleteSelectionMenu(for: deleteBarButton)
     }
-    
+
 }

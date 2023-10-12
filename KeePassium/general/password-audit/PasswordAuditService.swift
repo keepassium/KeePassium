@@ -59,7 +59,7 @@ final class PasswordAuditService {
             completionHandler(.failure(.canceled))
             return
         }
-        
+
         let progress = ProgressEx()
         progress.localizedDescription = LString.statusAuditingPasswords
 
@@ -73,7 +73,7 @@ final class PasswordAuditService {
         entries.removeAll(where: {
             $0.isDeleted || ($0 as? Entry2)?.qualityCheck == false
         })
-        
+
         guard !entries.isEmpty else {
             Diag.debug("Database has no entries, aborting")
             completionHandler(.success([]))

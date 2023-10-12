@@ -6,8 +6,8 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
+import UIKit
 
 protocol DatabaseCreatorDelegate: AnyObject {
     func didPressCancel(in databaseCreatorVC: DatabaseCreatorVC)
@@ -49,30 +49,30 @@ class DatabaseCreatorVC: UIViewController {
     @IBOutlet weak var errorMessagePanel: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    
+
     weak var delegate: DatabaseCreatorDelegate?
 
     private var containerView: UIView {
         return navigationController?.view ?? self.view
     }
     private var progressOverlay: ProgressOverlay?
-    
+
     public static func create() -> DatabaseCreatorVC {
         return DatabaseCreatorVC.instantiateFromStoryboard()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.title = LString.titleCreateDatabase
-        
+
         view.backgroundColor = ImageAsset.backgroundPattern.asColor()
         view.layer.isOpaque = false
 
         passwordField.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         keyFileField.maskedCorners = []
         hardwareKeyField.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        
+
         #if targetEnvironment(macCatalyst)
         keyFileField.cursor = .arrow
         hardwareKeyField.cursor = .arrow
@@ -84,27 +84,27 @@ class DatabaseCreatorVC: UIViewController {
         passwordField.delegate = self
         keyFileField.delegate = self
         hardwareKeyField.delegate = self
-        
+
         hardwareKeyField.placeholder = LString.noHardwareKey
-        
+
         passwordField.accessibilityLabel = LString.fieldPassword
         keyFileField.accessibilityLabel = LString.fieldKeyFile
         hardwareKeyField.accessibilityLabel = LString.fieldHardwareKey
-        
+
         passwordField.becomeFirstResponder()
     }
-    
+
     @discardableResult
     override func becomeFirstResponder() -> Bool {
         return passwordField.becomeFirstResponder()
     }
-    
+
     private func showKeyFile(_ keyFileRef: URLReference?) {
         guard let keyFileRef = keyFileRef else {
             keyFileField.text = nil
             return
         }
-        
+
         if keyFileRef.hasError {
             keyFileField.text = keyFileRef.error?.localizedDescription
             keyFileField.textColor = .errorMessage
@@ -114,11 +114,11 @@ class DatabaseCreatorVC: UIViewController {
         }
         hideErrorMessage(animated: true)
     }
-    
+
     func showErrorMessage(_ message: String, haptics: HapticFeedback.Kind?, animated: Bool) {
         Diag.error(message)
         UIAccessibility.post(notification: .announcement, argument: message)
-        
+
         var toastStyle = ToastStyle()
         toastStyle.backgroundColor = .warningMessage
         toastStyle.displayShadow = false
@@ -138,22 +138,22 @@ class DatabaseCreatorVC: UIViewController {
         view.showToast(toastView, duration: 5, position: .top, action: toastAction, completion: nil)
         StoreReviewSuggester.registerEvent(.trouble)
     }
-    
+
     func hideErrorMessage(animated: Bool) {
         view.hideToast()
     }
-    
-    
-    @IBAction func didPressCancel(_ sender: Any) {
+
+
+    @IBAction private func didPressCancel(_ sender: Any) {
         delegate?.didPressCancel(in: self)
     }
-    
+
     private func didPressErrorDetails() {
         hideErrorMessage(animated: true)
         delegate?.didPressErrorDetails(in: self)
     }
-    
-    @IBAction func didPressContinue(_ sender: Any) {
+
+    @IBAction private func didPressContinue(_ sender: Any) {
         let hasPassword = passwordField.text?.isNotEmpty ?? false
         let hasKeyFile = keyFile != nil
         let hasYubiKey = yubiKey != nil
@@ -210,7 +210,7 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         guard UIDevice.current.userInterfaceIdiom != .phone else {
             return
@@ -236,7 +236,7 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
             }
         }
     }
-    
+
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
@@ -247,7 +247,7 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.passwordField {
             didPressContinue(textField)

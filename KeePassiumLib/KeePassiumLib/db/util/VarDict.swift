@@ -11,7 +11,7 @@ import Foundation
 public class VarDict: Eraseable {
     public static let version: UInt16 = 0x0100
     private static let versionMask: UInt16 = 0xFF00
-    
+
     internal enum TypeID: UInt8 {
         case End     = 0x00 
         case Bool    = 0x08
@@ -22,12 +22,12 @@ public class VarDict: Eraseable {
         case String  = 0x18
         case ByteArray = 0x42
     }
-    
+
     internal struct TypedValue: CustomStringConvertible, Eraseable {
         var type: TypeID
         var data: ByteArray 
         var count: Int { return data.count }
-        
+
         public var description: String {
             switch type {
             case .End:
@@ -42,7 +42,7 @@ public class VarDict: Eraseable {
                 return "[\(data.count) bytes] " + data.asHexString
             }
         }
-        
+
         init?(type: TypeID, rawData: ByteArray) {
             self.type = type
             switch type {
@@ -62,7 +62,7 @@ public class VarDict: Eraseable {
                 self.data = rawData
             }
         }
-        
+
         private init(type: TypeID, data: ByteArray) {
             self.type = type
             self.data = data
@@ -89,11 +89,11 @@ public class VarDict: Eraseable {
         init(value: ByteArray) {
             self.init(type: .ByteArray, data: value)
         }
-        
+
         func erase() {
             data.erase()
         }
-        
+
         func asBool() -> Bool? {
             guard type == .Bool else { return nil }
             return Bool(data[0] != 0)
@@ -139,12 +139,12 @@ public class VarDict: Eraseable {
             return data
         }
     }
-    
+
     private var dict = [String: TypedValue]()
     private var orderedKeys = [String]() 
-    
+
     public var isEmpty: Bool { return dict.isEmpty }
-    
+
     public var data: ByteArray? {
         let stream = ByteArray.makeOutputStream()
         stream.open()
@@ -155,7 +155,7 @@ public class VarDict: Eraseable {
             return nil
         }
     }
-    
+
     init() {
     }
     init?(data: ByteArray) {
@@ -164,14 +164,14 @@ public class VarDict: Eraseable {
             return nil
         }
     }
-    
+
     func read(data: ByteArray) -> Bool {
         let dataStream = data.asInputStream()
         dataStream.open()
         defer { dataStream.close() }
         return read(from: dataStream)
     }
-    
+
     func read(from stream: ByteArray.InputStream) -> Bool {
         erase()
         guard let inVersion = stream.readUInt16() else { return false }
@@ -184,12 +184,12 @@ public class VarDict: Eraseable {
             guard let rawType = stream.readUInt8() else { return false }
             guard let type = TypeID(rawValue: rawType) else { return false }
             if type == .End {
-                break;
+                break
             }
             guard let keyLen = stream.readInt32() else { return false  }
             guard let keyData = stream.read(count: Int(keyLen)) else { return false }
             guard let key = keyData.toString() else { return false }
-            
+
             guard let valueLen = stream.readInt32() else { return false }
             guard let valueData = stream.read(count: Int(valueLen)) else { return false }
             guard let value = TypedValue(type: type, rawData: valueData) else { return false }
@@ -197,7 +197,7 @@ public class VarDict: Eraseable {
         }
         return true
     }
-    
+
     func write(to stream: ByteArray.OutputStream) -> Bool {
         stream.write(value: VarDict.version)
         for key in orderedKeys {
@@ -212,7 +212,7 @@ public class VarDict: Eraseable {
         stream.write(value: UInt8(0)) 
         return true
     }
-    
+
     func setValue(key: String, value: TypedValue) {
         dict[key] = value
         if orderedKeys.contains(key) {
@@ -230,7 +230,7 @@ public class VarDict: Eraseable {
         dict.removeAll()
         orderedKeys.removeAll()
     }
-    
+
     internal func debugPrint() {
         for (key, typedValue) in dict {
             print("\(key) = \(typedValue)")

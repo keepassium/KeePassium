@@ -15,12 +15,12 @@ protocol SettingsAutoFillViewControllerDelegate: AnyObject {
 
 final class SettingsAutoFillVC: UITableViewController {
     weak var delegate: SettingsAutoFillViewControllerDelegate?
-    
+
     @IBOutlet private weak var setupInstructionsCell: UITableViewCell!
     @IBOutlet private weak var quickAutoFillCell: UITableViewCell!
     @IBOutlet private weak var perfectMatchCell: UITableViewCell!
     @IBOutlet private weak var copyTOTPCell: UITableViewCell!
-    
+
     @IBOutlet private weak var quickTypeLabel: UILabel!
     @IBOutlet private weak var quickTypeSwitch: UISwitch!
     @IBOutlet private weak var copyTOTPLabel: UILabel!
@@ -29,15 +29,15 @@ final class SettingsAutoFillVC: UITableViewController {
     @IBOutlet private weak var perfectMatchSwitch: UISwitch!
     @IBOutlet private weak var quickAutoFillPremiumBadge: UIImageView!
     @IBOutlet private weak var quickAutoFillPremiumBadgeWidthConstraint: NSLayoutConstraint!
-    
+
     private var settingsNotifications: SettingsNotifications!
     private var isAutoFillEnabled = false
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         quickTypeLabel.text = LString.titleQuickAutoFill
-        
+
         settingsNotifications = SettingsNotifications(observer: self)
         NotificationCenter.default.addObserver(
             self,
@@ -54,17 +54,17 @@ final class SettingsAutoFillVC: UITableViewController {
         settingsNotifications.startObserving()
         refresh()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         settingsNotifications.stopObserving()
         super.viewWillDisappear(animated)
     }
-    
+
     @objc
     private func appDidBecomeActive(_ notification: Notification) {
         refresh()
     }
-    
+
     func refresh() {
         let settings = Settings.current
         quickTypeSwitch.isOn = settings.isQuickTypeEnabled
@@ -82,7 +82,7 @@ final class SettingsAutoFillVC: UITableViewController {
         } else {
             setupInstructionsCell.textLabel?.text = LString.actionActivateAutoFill
         }
-        
+
         quickAutoFillCell.setEnabled(isAutoFillEnabled)
         perfectMatchCell.setEnabled(isAutoFillEnabled)
         copyTOTPCell.setEnabled(isAutoFillEnabled)
@@ -94,12 +94,12 @@ final class SettingsAutoFillVC: UITableViewController {
 
         tableView.reloadData()
     }
-    
+
     func showQuickAutoFillCleared() {
         quickTypeLabel.flashColor(to: .destructiveTint, duration: 0.7)
     }
-    
-    
+
+
     private func didPressSetupInstructions() {
         URLOpener(AppGroup.applicationShared).open(
             url: URL.AppHelp.autoFillSetupGuide,
@@ -110,19 +110,19 @@ final class SettingsAutoFillVC: UITableViewController {
             }
         )
     }
-    
-    @IBAction func didToggleQuickType(_ sender: UISwitch) {
+
+    @IBAction private func didToggleQuickType(_ sender: UISwitch) {
         assert(delegate != nil, "This won't work without a delegate")
         delegate?.didToggleQuickAutoFill(newValue: quickTypeSwitch.isOn, in: self)
         refresh()
     }
-    
-    @IBAction func didToggleCopyTOTP(_ sender: UISwitch) {
+
+    @IBAction private func didToggleCopyTOTP(_ sender: UISwitch) {
         delegate?.didToggleCopyTOTP(newValue: copyTOTPSwitch.isOn, in: self)
         refresh()
     }
-    
-    @IBAction func didTogglePerfectMatch(_ sender: UISwitch) {
+
+    @IBAction private func didTogglePerfectMatch(_ sender: UISwitch) {
         Settings.current.autoFillPerfectMatch = perfectMatchSwitch.isOn
         refresh()
     }
@@ -150,7 +150,7 @@ extension SettingsAutoFillVC {
             return super.tableView(tableView, titleForFooterInSection: section)
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)

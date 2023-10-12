@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 extension DatabaseFile {
-    
+
     func getIconSymbol() -> SymbolName? {
         self.fileReference?.getIconSymbol(fileType: .database)
     }

@@ -16,7 +16,6 @@ final class Header2: Eraseable {
     private static let fileVersion4_1: UInt32 = 0x00040001
     private static let majorVersionMask: UInt32 = 0xFFFF0000
 
-
     enum HeaderError: LocalizedError {
         case readingError
         case wrongSignature
@@ -29,7 +28,7 @@ final class Header2: Eraseable {
         case hashMismatch 
         case hmacMismatch 
         case corruptedField(fieldName: String)
-        
+
         public var errorDescription: String? {
             switch self {
             case .readingError:
@@ -161,16 +160,16 @@ final class Header2: Eraseable {
             }
         }
     }
-    
+
     enum CompressionAlgorithm: UInt8 {
         case noCompression = 0
         case gzipCompression = 1
     }
-    
+
     private unowned let database: Database2
     private var initialized: Bool
     private var data: ByteArray 
-    
+
     private(set) var formatVersion: Database2.FormatVersion
     internal var size: Int { return data.count }
     private(set) var fields: [FieldID: ByteArray]
@@ -180,11 +179,11 @@ final class Header2: Eraseable {
     private(set) var kdfParams: KDFParams
     private(set) var streamCipher: StreamCipher
     private(set) var publicCustomData: VarDict 
-    
+
     var masterSeed: ByteArray { return fields[.masterSeed]! }
     var streamStartBytes: ByteArray? { return fields[.streamStartBytes] }
-    
-    var initialVector:  ByteArray { return fields[.encryptionIV]! }
+
+    var initialVector: ByteArray { return fields[.encryptionIV]! }
     var isCompressed: Bool {
         guard let fieldData = fields[.compressionFlags],
               let compressionValue = UInt32(data: fieldData) else {
@@ -193,10 +192,10 @@ final class Header2: Eraseable {
         }
         return compressionValue != CompressionAlgorithm.noCompression.rawValue
     }
-    
+
     var protectedStreamKey: SecureBytes?
     var innerStreamAlgorithm: ProtectedStreamAlgorithm
-    
+
     class func isSignatureMatches(data: ByteArray) -> Bool {
         let ins = data.asInputStream()
         ins.open()
@@ -207,7 +206,7 @@ final class Header2: Eraseable {
         }
         return (sign1 == Header2.signature1) && (sign2 == Header2.signature2)
     }
-    
+
     init(database: Database2) {
         self.database = database
         initialized = false
@@ -225,7 +224,7 @@ final class Header2: Eraseable {
     deinit {
         erase()
     }
-    
+
     func erase() {
         initialized = false
         formatVersion = .v4
@@ -240,17 +239,17 @@ final class Header2: Eraseable {
         streamCipher.erase()
         publicCustomData.erase()
     }
-    
+
     func loadDefaultValuesV4() {
         formatVersion = .v4
 
         dataCipher = ChaCha20DataCipher()
         fields[.cipherID] = dataCipher.uuid.data
-        
+
         kdf = Argon2dKDF()
         kdfParams = kdf.defaultParams
         let iterations: UInt64 = 100
-        let memory: UInt64 = 1*1024*1024
+        let memory: UInt64 = 1 * 1024 * 1024
         let parallelism: UInt32 = 2
         kdfParams.setValue(
             key: AbstractArgon2KDF.iterationsParam,
@@ -262,18 +261,18 @@ final class Header2: Eraseable {
             key: AbstractArgon2KDF.parallelismParam,
             value: VarDict.TypedValue(value: parallelism))
         fields[.kdfParameters] = kdfParams.data!
-        
+
         let compressionFlags = UInt32(exactly: CompressionAlgorithm.gzipCompression.rawValue)!
         fields[.compressionFlags] = compressionFlags.data
 
         innerStreamAlgorithm = .ChaCha20
 
         fields[.publicCustomData] = ByteArray()
-        
-        
+
+
         initialized = true
     }
-    
+
     private func verifyFileSignature(stream: ByteArray.InputStream, headerSize: inout Int) throws {
         guard let sign1: UInt32 = stream.readUInt32(),
               let sign2: UInt32 = stream.readUInt32()
@@ -291,7 +290,7 @@ final class Header2: Eraseable {
             throw HeaderError.wrongSignature
         }
     }
-    
+
     private func readFormatVersion(stream: ByteArray.InputStream, headerSize: inout Int) throws {
         guard let fileVersion: UInt32 = stream.readUInt32() else {
             Diag.error("Signature is too short")
@@ -305,7 +304,7 @@ final class Header2: Eraseable {
             formatVersion = .v3
             return
         }
-        
+
         if maskedFileVersion == (Header2.fileVersion4 & Header2.majorVersionMask) {
             formatVersion = .v4
             if fileVersion == Header2.fileVersion4_1 {
@@ -314,28 +313,28 @@ final class Header2: Eraseable {
             Diag.verbose("Database format: \(formatVersion)")
             return
         }
-        
+
         Diag.error("Unsupported file version [version: \(fileVersion.asHexString)]")
         throw HeaderError.unsupportedFileVersion(actualVersion: fileVersion.asHexString)
     }
-    
+
     func read(data inputData: ByteArray) throws {
         assert(!initialized, "Tried to read already initialized header")
-        
+
         Diag.verbose("Will read header")
         var headerSize = 0 
         let stream = inputData.asInputStream()
         stream.open()
         defer { stream.close() }
-        
+
         try verifyFileSignature(stream: stream, headerSize: &headerSize) 
         try readFormatVersion(stream: stream, headerSize: &headerSize) 
         Diag.verbose("Header signatures OK")
-        
-        while (true) {
+
+        while true {
             guard let rawFieldID: UInt8 = stream.readUInt8() else { throw HeaderError.readingError }
             headerSize += rawFieldID.byteWidth
-            
+
             let fieldSize: Int
             switch formatVersion {
             case .v3:
@@ -347,16 +346,16 @@ final class Header2: Eraseable {
                 fieldSize = Int(fSize)
                 headerSize += MemoryLayout.size(ofValue: fSize) + fieldSize
             }
-            
+
             guard let fieldID: FieldID = FieldID(rawValue: rawFieldID) else {
                 Diag.warning("Unknown field ID, skipping [fieldID: \(rawFieldID)]")
                 continue
             }
-            
+
             guard let fieldValueData = stream.read(count: fieldSize) else {
                 throw HeaderError.readingError
             }
-            
+
             if fieldID == .end {
                 self.initialized = true
                 fields.updateValue(fieldValueData, forKey: fieldID)
@@ -366,10 +365,8 @@ final class Header2: Eraseable {
             switch fieldID {
             case .end:
                 Diag.verbose("\(fieldID.name) read OK")
-                break 
             case .comment:
                 Diag.verbose("\(fieldID.name) read OK")
-                break
             case .cipherID:
                 guard let _cipherUUID = UUID(data: fieldValueData) else {
                     Diag.error("Cipher UUID is misformatted")
@@ -438,7 +435,6 @@ final class Header2: Eraseable {
                 Diag.verbose("\(fieldID.name) read OK")
             case .encryptionIV:
                 Diag.verbose("\(fieldID.name) read OK")
-                break
             case .protectedStreamKey: 
                 guard formatVersion == .v3 else {
                     Diag.error("Found \(fieldID.name) in non-V3 header. Database corrupted?")
@@ -456,7 +452,6 @@ final class Header2: Eraseable {
                     throw HeaderError.corruptedField(fieldName: fieldID.name)
                 }
                 Diag.verbose("\(fieldID.name) read OK")
-                break
             case .innerRandomStreamID: 
                 guard formatVersion == .v3 else {
                     Diag.error("Found \(fieldID.name) in non-V3 header. Database corrupted?")
@@ -502,19 +497,19 @@ final class Header2: Eraseable {
             }
             fields.updateValue(fieldValueData, forKey: fieldID)
         }
-        
+
         self.data = inputData.prefix(headerSize)
         self.hash = self.data.sha256
-        
+
         try verifyImportantFields()
         Diag.verbose("All important fields are in place")
-        
+
         if formatVersion == .v3 { 
             initStreamCipher()
             Diag.verbose("V3 stream cipher init OK")
         }
     }
-    
+
     private func verifyImportantFields() throws {
         Diag.verbose("Will check all important fields are present")
         var importantFields: [FieldID]
@@ -539,13 +534,13 @@ final class Header2: Eraseable {
             }
         }
         Diag.verbose("All important fields are OK")
-        
+
         guard initialVector.count == dataCipher.initialVectorSize else {
             Diag.error("Initial vector size is inappropritate for the cipher [size: \(initialVector.count), cipher UUID: \(dataCipher.uuid)]")
             throw HeaderError.corruptedField(fieldName: FieldID.encryptionIV.name)
         }
     }
-    
+
     internal func initStreamCipher() {
         guard let protectedStreamKey = protectedStreamKey else {
             fatalError()
@@ -554,22 +549,21 @@ final class Header2: Eraseable {
             algorithm: innerStreamAlgorithm,
             key: protectedStreamKey)
     }
-    
+
     func getHMAC(key: SecureBytes) -> ByteArray {
         assert(!self.data.isEmpty)
         assert(key.count == CC_SHA256_BLOCK_BYTES)
-        
+
         let blockKey = CryptoManager.getHMACKey64(key: key, blockIndex: UInt64.max)
         return CryptoManager.hmacSHA256(data: data, key: blockKey)
     }
-    
-    
-    
+
+
     func readInner(data: ByteArray) throws -> Int {
         let stream = data.asInputStream()
         stream.open()
         defer { stream.close() }
-        
+
         Diag.verbose("Will read inner header")
         var size: Int = 0
         while true {
@@ -591,7 +585,7 @@ final class Header2: Eraseable {
             size += MemoryLayout.size(ofValue: rawFieldID)
                 + MemoryLayout.size(ofValue: fieldSize)
                 + fieldData.count
-            
+
             switch fieldID {
             case .innerRandomStreamID:
                 guard let rawID = UInt32(data: fieldData) else {
@@ -627,7 +621,7 @@ final class Header2: Eraseable {
             }
         }
     }
-    
+
     func upgradeFormatVersion(to newerVersion: Database2.FormatVersion) {
         precondition(newerVersion >= formatVersion, "Downgrading the database format is not supported")
         Diag.debug("Upgrading DB format version to \(newerVersion)")
@@ -636,13 +630,13 @@ final class Header2: Eraseable {
 
     func maybeUpdateFormatVersion() {
     }
-    
+
     func write(to outStream: ByteArray.OutputStream) {
         Diag.verbose("Will write header")
         let headerStream = ByteArray.makeOutputStream()
         headerStream.open()
         defer { headerStream.close() }
-        
+
         headerStream.write(value: Header2.signature1)
         headerStream.write(value: Header2.signature2)
         switch formatVersion {
@@ -659,13 +653,13 @@ final class Header2: Eraseable {
             writeV4(stream: headerStream)
             Diag.verbose("kdbx4.1 header written OK")
         }
-        
+
         let headerData = headerStream.data!
         self.data = headerData
         self.hash = headerData.sha256
         outStream.write(data: headerData)
     }
-  
+
     private func writeV3(stream: ByteArray.OutputStream) {
         func writeField(to stream: ByteArray.OutputStream, fieldID: FieldID) {
             stream.write(value: UInt8(fieldID.rawValue))
@@ -678,7 +672,7 @@ final class Header2: Eraseable {
             else { fatalError("Missing transform seed data") }
         guard let transformRoundsData = kdfParams.getValue(key: AESKDF.transformRoundsParam)?.data
             else { fatalError("Missing transform rounds data") }
-        
+
         fields[.cipherID] = self.dataCipher.uuid.data
         fields[.transformSeed] = transformSeedData
         fields[.transformRounds] = transformRoundsData
@@ -702,7 +696,7 @@ final class Header2: Eraseable {
         writeField(to: stream, fieldID: .innerRandomStreamID)
         writeField(to: stream, fieldID: .end)
     }
-    
+
     private func writeV4(stream: ByteArray.OutputStream) {
         func writeField(to stream: ByteArray.OutputStream, fieldID: FieldID) {
             stream.write(value: UInt8(fieldID.rawValue))
@@ -724,16 +718,16 @@ final class Header2: Eraseable {
         }
         writeField(to: stream, fieldID: .end)
     }
-    
+
     func writeInner(to stream: ByteArray.OutputStream) throws {
         assert(formatVersion >= .v4)
         guard let protectedStreamKey = protectedStreamKey else { fatalError() }
-        
+
         Diag.verbose("Writing kdbx4 inner header")
         stream.write(value: InnerFieldID.innerRandomStreamID.rawValue) 
         stream.write(value: UInt32(MemoryLayout.size(ofValue: innerStreamAlgorithm.rawValue))) 
         stream.write(value: innerStreamAlgorithm.rawValue) 
-        
+
         stream.write(value: InnerFieldID.innerRandomStreamKey.rawValue) 
         stream.write(value: UInt32(protectedStreamKey.count)) 
         protectedStreamKey.withDecryptedByteArray {
@@ -742,11 +736,11 @@ final class Header2: Eraseable {
             print("  streamCipherKey: \($0.asHexString)")
             #endif
         }
-        
+
         for binaryID in database.binaries.keys.sorted() {
             Diag.verbose("Writing a binary")
             let binary = database.binaries[binaryID]! 
-            
+
             let data: ByteArray
             if binary.isCompressed {
                 do {
@@ -768,7 +762,7 @@ final class Header2: Eraseable {
         stream.write(value: UInt32(0)) 
         Diag.verbose("Inner header written OK")
     }
-    
+
     internal func randomizeSeeds() throws {
         Diag.verbose("Randomizing the seeds")
         fields[.masterSeed] = try CryptoManager.getRandomBytes(count: SHA256_SIZE)

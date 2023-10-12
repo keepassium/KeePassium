@@ -11,22 +11,22 @@ import KeePassiumLib
 final class NetworkAccessSettingsCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     private let router: NavigationRouter
     private let viewController: NetworkAccessSettingsVC
-    
+
     init(router: NavigationRouter) {
         self.router = router
         viewController = NetworkAccessSettingsVC.make()
         viewController.isAccessAllowed = Settings.current.isNetworkAccessAllowed
         viewController.delegate = self
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         router.push(viewController, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
@@ -40,7 +40,7 @@ extension NetworkAccessSettingsCoordinator: NetworkAccessSettingsDelegate {
     func didPressOpenURL(_ url: URL, in viewController: NetworkAccessSettingsVC) {
         URLOpener(viewController).open(url: url)
     }
-    
+
     func didChangeNetworkPermission(isAllowed: Bool, in viewController: NetworkAccessSettingsVC) {
         Settings.current.isNetworkAccessAllowed = isAllowed
     }

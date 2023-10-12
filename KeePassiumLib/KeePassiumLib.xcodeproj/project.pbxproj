@@ -1066,6 +1066,7 @@
 			buildPhases = (
 				7500756B231E6ED4007CC2F1 /* BartyCrouch */,
 				75D0C7652174AF1F00C64C93 /* Headers */,
+				F34929382AD5F01B00A08C9F /* SwiftLint */,
 				75D0C7662174AF1F00C64C93 /* Sources */,
 				75D0C7672174AF1F00C64C93 /* Frameworks */,
 				75D0C7682174AF1F00C64C93 /* Resources */,
@@ -1176,6 +1177,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#if which bartycrouch > /dev/null; then\n#  #bartycrouch update -x\n#  bartycrouch lint -x\n#else\n#  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n#fi\n";
+		};
+		F34929382AD5F01B00A08C9F /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

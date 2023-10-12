@@ -11,26 +11,26 @@ import UIKit
 final class ButtonCell: UITableViewCell {
     var button: MultilineButton! 
     var buttonPressHandler: ((UIButton) -> Void)?
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         setupCell()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("Not implemented")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
-    
+
     private func setupCell() {
         button = MultilineButton(frame: .zero)
         button.setTitleColor(.actionTint, for: .normal)
         contentView.addSubview(button)
-        
+
         button.translatesAutoresizingMaskIntoConstraints = false
         button.leadingAnchor
             .constraint(equalTo: layoutMarginsGuide.leadingAnchor)
@@ -47,15 +47,14 @@ final class ButtonCell: UITableViewCell {
         contentView.heightAnchor
             .constraint(greaterThanOrEqualToConstant: 44)
             .activate()
-        
+
         selectionStyle = .none
-        
+
         button.addTarget(self, action: #selector(didTouchUpInsideButton), for: .touchUpInside)
     }
-    
+
     @objc
     private func didTouchUpInsideButton() {
         buttonPressHandler?(button)
     }
 }
-

@@ -17,26 +17,26 @@ protocol SettingsAppearanceViewControllerDelegate: AnyObject {
 }
 
 final class SettingsAppearanceVC: UITableViewController, Refreshable {
-    
+
     @IBOutlet private weak var appIconCell: UITableViewCell!
     @IBOutlet private weak var databaseIconsCell: UITableViewCell!
     @IBOutlet private weak var textFontCell: UITableViewCell!
     @IBOutlet private weak var resetTextParametersButton: UIButton!
-    
+
     @IBOutlet private weak var textScaleLabel: UILabel!
     @IBOutlet private weak var entryTextScaleSlider: UISlider!
     @IBOutlet private weak var hideProtectedFieldsSwitch: UISwitch!
-    
+
     weak var delegate: SettingsAppearanceViewControllerDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
-        
+
         let textScaleRange = Settings.current.textScaleAllowedRange
         entryTextScaleSlider.minimumValue = Float(textScaleRange.lowerBound)
         entryTextScaleSlider.maximumValue = Float(textScaleRange.upperBound)
-        
+
         textFontCell.textLabel?.text = LString.titleTextFont
         textScaleLabel.text = LString.titleTextSize
         entryTextScaleSlider.accessibilityLabel = LString.titleTextSize
@@ -49,13 +49,13 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
             object: nil
         )
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = LString.titleAppearanceSettings
         refresh()
     }
-    
+
     func refresh() {
         let settings = Settings.current
 
@@ -64,28 +64,25 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
         let entryTextFont = getEntryTextFont()
         let textScale = settings.textScale
         entryTextScaleSlider.value = Float(textScale)
-        tableView.performBatchUpdates(
-            { [weak textScaleLabel] in
-                textScaleLabel?.font = entryTextFont.withRelativeSize(textScale)
-            },
-            completion: nil
-        )
-        
+        tableView.performBatchUpdates { [weak textScaleLabel] in
+            textScaleLabel?.font = entryTextFont.withRelativeSize(textScale)
+        }
+
         let isDefaultFont = (settings.entryTextFontDescriptor == nil)
         let fontName = isDefaultFont ? LString.titleDefaultFont : entryTextFont.familyName
         textFontCell.detailTextLabel?.text = fontName
-        
+
         let isDefaultSize = abs(settings.textScale - 1.0).isLessThanOrEqualTo(.ulpOfOne)
         resetTextParametersButton.isEnabled = (!isDefaultFont || !isDefaultSize)
 
         databaseIconsCell.imageView?.image = settings.databaseIconSet.getIcon(.key)
     }
-    
+
     private func getEntryTextFont() -> UIFont {
         let fontDescriptor = Settings.current.entryTextFontDescriptor
         return UIFont.monospaceFont(descriptor: fontDescriptor, style: .body)
     }
-    
+
     private func resetTextParameters() {
         let settings = Settings.current
         settings.textScale = CGFloat(1.0)
@@ -95,20 +92,20 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
     @objc private func preferredContentSizeChanged(_ notification: Notification) {
         refresh()
     }
-    
-    
+
+
     override func tableView(
         _ tableView: UITableView,
         willDisplay cell: UITableViewCell,
-        forRowAt indexPath: IndexPath)
-    {
+        forRowAt indexPath: IndexPath
+    ) {
         if indexPath.section == 0,
            indexPath.row == 0
         {
             cell.isHidden = !UIApplication.shared.supportsAlternateIcons
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0,
            indexPath.row == 0,
@@ -118,12 +115,12 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
-    
-    
+
+
     override func tableView(
         _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath)
-    {
+        didSelectRowAt indexPath: IndexPath
+    ) {
         guard let cell = tableView.cellForRow(at: indexPath) else {
             return
         }
@@ -141,19 +138,19 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
         }
     }
 
-    @IBAction func didChangeTextScale(_ sender: UISlider) {
+    @IBAction private func didChangeTextScale(_ sender: UISlider) {
         Settings.current.textScale = CGFloat(entryTextScaleSlider.value)
     }
-    
-    @IBAction func didPressResetTextScale(_ sender: UIButton) {
+
+    @IBAction private func didPressResetTextScale(_ sender: UIButton) {
         Settings.current.textScale = CGFloat(1.0)
     }
-    
-    @IBAction func didToggleHideProtectedFieldsSwitch(_ sender: UISwitch) {
+
+    @IBAction private func didToggleHideProtectedFieldsSwitch(_ sender: UISwitch) {
         Settings.current.isHideProtectedFields = hideProtectedFieldsSwitch.isOn
     }
-    
-    @IBAction func didPressResetTextParameters(_ sender: Any) {
+
+    @IBAction private func didPressResetTextParameters(_ sender: Any) {
         resetTextParameters()
     }
 }

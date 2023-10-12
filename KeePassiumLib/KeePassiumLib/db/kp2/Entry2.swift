@@ -9,11 +9,11 @@
 import Foundation
 
 public class EntryField2: EntryField {
-    
+
     public var isEmpty: Bool {
         return name.isEmpty && value.isEmpty
     }
-    
+
     override public func clone() -> EntryField {
         let clone = EntryField2(
             name: name,
@@ -24,7 +24,7 @@ public class EntryField2: EntryField {
         )
         return clone
     }
-    
+
     func applyProtectionFlag(from meta: Meta2) {
         let mp = meta.memoryProtection
         switch name {
@@ -42,13 +42,13 @@ public class EntryField2: EntryField {
             break
         }
     }
-    
+
     func load(xml: AEXMLElement, streamCipher: StreamCipher) throws {
         assert(xml.name == Xml2.string)
         Diag.verbose("Loading XML: entry field")
         erase()
-        
-        
+
+
         var key: String?
         var value: String? = ""
         var isProtected: Bool = false
@@ -94,8 +94,7 @@ public class EntryField2: EntryField {
         self.value = _value
         self.isProtected = isProtected
     }
-    
-    
+
     func toXml(streamCipher: StreamCipher) throws -> AEXMLElement {
         Diag.verbose("Generating XML: entry string")
         let xmlField = AEXMLElement(name: Xml2.string)
@@ -126,7 +125,7 @@ public class Entry2: Entry {
         var obfuscationType: UInt32
         var defaultSequence: String
         var associations: [Association]
-        
+
         init(from original: AutoType) {
             isEnabled = original.isEnabled
             obfuscationType = original.obfuscationType
@@ -142,7 +141,7 @@ public class Entry2: Entry {
         deinit {
             erase()
         }
-        
+
         public func erase() {
             isEnabled = true
             obfuscationType = 0
@@ -158,7 +157,7 @@ public class Entry2: Entry {
             assert(xml.name == Xml2.autoType)
             Diag.verbose("Loading XML: entry autotype")
             erase()
-            
+
             for tag in xml.children {
                 switch tag.name {
                 case Xml2.enabled:
@@ -175,10 +174,10 @@ public class Entry2: Entry {
                 }
             }
         }
-        
+
         func loadAssociation(xml: AEXMLElement) throws {
             assert(xml.name == Xml2.association)
-            
+
             var window: String?
             var sequence: String?
             for tag in xml.children {
@@ -208,7 +207,7 @@ public class Entry2: Entry {
             }
             associations.append(Association(window: window!, keystrokeSequence: sequence!))
         }
-        
+
         internal func toXml() -> AEXMLElement {
             Diag.verbose("Generating XML: entry autotype")
             let xmlAutoType = AEXMLElement(name: Xml2.autoType)
@@ -218,7 +217,7 @@ public class Entry2: Entry {
             xmlAutoType.addChild(
                 name: Xml2.dataTransferObfuscation,
                 value: String(obfuscationType))
-            
+
             if !defaultSequence.isEmpty {
                 xmlAutoType.addChild(
                     name: Xml2.defaultSequence,
@@ -236,21 +235,20 @@ public class Entry2: Entry {
             return xmlAutoType
         }
     } 
-    
+
     private var _canExpire: Bool
     override public var canExpire: Bool {
         get { return _canExpire }
         set { _canExpire = newValue }
     }
-    
+
     override public var isSupportsExtraFields: Bool { return true }
-    
+
     override public var isSupportsMultipleAttachments: Bool { return true }
-    
-    
+
     public var customIconUUID: UUID
     public var autoType: AutoType
-    public var history: Array<Entry2>
+    public var history: [Entry2]
     public var usageCount: UInt32
     public var locationChangedTime: Date
     public var foregroundColor: String
@@ -260,7 +258,7 @@ public class Entry2: Entry {
     public var previousParentGroupUUID: UUID 
     public var qualityCheck: Bool 
     public var customData: CustomData2 
-    
+
     public override var isHiddenFromSearch: Bool {
         get {
             guard let property = customData[Xml2.ThirdParty.browserHideEntry] else {
@@ -273,7 +271,7 @@ public class Entry2: Entry {
             customData[Xml2.ThirdParty.browserHideEntry] = dataItem
         }
     }
-    
+
     override init(database: Database?) {
         _canExpire = false
         customIconUUID = UUID.ZERO
@@ -293,7 +291,7 @@ public class Entry2: Entry {
     deinit {
         erase()
     }
-    
+
     override public func erase() {
         _canExpire = false
         customIconUUID.erase()
@@ -310,12 +308,12 @@ public class Entry2: Entry {
         customData.erase()
         super.erase()
     }
-    
+
     override public func clone(makeNewUUID: Bool) -> Entry {
         let newEntry = Entry2(database: self.database)
         self.apply(to: newEntry, makeNewUUID: makeNewUUID)
-        
-        
+
+
         return newEntry
     }
 
@@ -331,9 +329,9 @@ public class Entry2: Entry {
         targetEntry2.backgroundColor = self.backgroundColor
         targetEntry2.overrideURL = self.overrideURL
         targetEntry2.tags = self.tags
-        
+
         targetEntry2.autoType = self.autoType.clone()
-        
+
         targetEntry2.canExpire = self.canExpire
         targetEntry2.usageCount = self.usageCount
         targetEntry2.locationChangedTime = self.locationChangedTime
@@ -347,28 +345,27 @@ public class Entry2: Entry {
             targetEntry2.history.append(histEntryClone)
         }
     }
-    
+
     override public func makeEntryField(
         name: String,
         value: String,
         isProtected: Bool
-        ) -> EntryField
-    {
+    ) -> EntryField {
         return EntryField2(name: name, value: value, isProtected: isProtected)
     }
-    
+
     public func addToHistory(entry: Entry) {
         history.insert(entry as! Entry2, at: 0)
     }
-    
+
     func clearHistory() {
         history.erase()
     }
-    
+
     func maintainHistorySize() {
         let meta: Meta2 = (self.database as! Database2).meta
         if meta.historyMaxItems >= 0 {
-            
+
             history.sort(by: { return $0.lastModificationTime < $1.lastModificationTime })
             let oldEntryCount = history.count - Int(meta.historyMaxItems)
             guard oldEntryCount > 0 else { return }
@@ -378,8 +375,7 @@ public class Entry2: Entry {
             history = Array(history.dropFirst(oldEntryCount))
         }
     }
-    
-    
+
     override public func backupState() {
         let entryClone = self.clone(makeNewUUID: false) as! Entry2
         entryClone.clearHistory()
@@ -391,13 +387,13 @@ public class Entry2: Entry {
         usageCount += 1
         super.touch(mode, updateParents: updateParents)
     }
-    
+
     override public func move(to newGroup: Group) {
         previousParentGroupUUID = parent?.uuid ?? UUID.ZERO
         super.move(to: newGroup)
         locationChangedTime = Date.now
     }
-    
+
     func load(
         xml: AEXMLElement,
         formatVersion: Database2.FormatVersion,
@@ -407,11 +403,11 @@ public class Entry2: Entry {
     ) throws {
         assert(xml.name == Xml2.entry)
         Diag.verbose("Loading XML: entry")
-        
+
         let parent = self.parent
         erase()
         self.parent = parent
-        
+
         for tag in xml.children {
             switch tag.name {
             case Xml2.uuid:
@@ -486,11 +482,11 @@ public class Entry2: Entry {
             }
         }
     }
-    
+
     func loadTimes(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
         assert(xml.name == Xml2.times)
         Diag.verbose("Loading XML: entry times")
-        
+
         var optionalExpiryTime: Date?
         for tag in xml.children {
             switch tag.name {
@@ -548,8 +544,8 @@ public class Entry2: Entry {
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "Entry/Times/*")
             }
         }
-        
-        if let expiryTime = optionalExpiryTime  {
+
+        if let expiryTime = optionalExpiryTime {
             self.expiryTime = expiryTime
         } else {
             if canExpire {
@@ -569,8 +565,7 @@ public class Entry2: Entry {
         streamCipher: StreamCipher,
         timeParser: Database2XMLTimeParser,
         warnings: DatabaseLoadingWarnings
-        ) throws
-    {
+    ) throws {
         assert(xml.name == Xml2.history)
         Diag.verbose("Loading XML: entry history")
         for tag in xml.children {
@@ -592,7 +587,7 @@ public class Entry2: Entry {
             }
         }
     }
-    
+
     func toXml(
         formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
@@ -600,7 +595,7 @@ public class Entry2: Entry {
     ) throws -> AEXMLElement {
         Diag.verbose("Generating XML: entry")
         let meta: Meta2 = (database as! Database2).meta
-        
+
         let xmlEntry = AEXMLElement(name: Xml2.entry)
         xmlEntry.addChild(name: Xml2.uuid, value: uuid.base64EncodedString())
         xmlEntry.addChild(name: Xml2.iconID, value: String(iconID.rawValue))
@@ -613,7 +608,7 @@ public class Entry2: Entry {
         xmlEntry.addChild(name: Xml2.backgroundColor, value: backgroundColor)
         xmlEntry.addChild(name: Xml2.overrideURL, value: overrideURL)
         xmlEntry.addChild(name: Xml2.tags, value: tags)
-        
+
         let xmlTimes = AEXMLElement(name: Xml2.times)
         xmlTimes.addChild(
             name: Xml2.creationTime,
@@ -637,7 +632,7 @@ public class Entry2: Entry {
             name: Xml2.locationChanged,
             value: timeFormatter.dateToXMLString(locationChangedTime))
         xmlEntry.addChild(xmlTimes)
-        
+
         for field in fields {
             let field2 = field as! EntryField2
             field2.applyProtectionFlag(from: meta)
@@ -647,7 +642,7 @@ public class Entry2: Entry {
             xmlEntry.addChild((att as! Attachment2).toXml())
         }
         xmlEntry.addChild(autoType.toXml())
-        
+
         if formatVersion.supports(.previousParentGroup),
            previousParentGroupUUID != UUID.ZERO
         {
@@ -661,13 +656,13 @@ public class Entry2: Entry {
         {
             xmlEntry.addChild(name: Xml2.qualityCheck, value: Xml2._false)
         }
-        
+
         if formatVersion.supports(.customData),
            !customData.isEmpty
         {
             xmlEntry.addChild(customData.toXml(timeFormatter: timeFormatter))
         }
-        
+
         if !history.isEmpty {
             let xmlHistory = xmlEntry.addChild(name: Xml2.history)
             for histEntry in history {

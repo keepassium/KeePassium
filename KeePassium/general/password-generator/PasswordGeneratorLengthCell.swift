@@ -10,11 +10,11 @@ import UIKit
 
 final class PasswordGeneratorLengthCell: UITableViewCell {
     typealias ValueChangeHandler = (Int) -> Void
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
     @IBOutlet private weak var slider: UISlider!
-    
+
     var title: String? {
         get { titleLabel.text }
         set {
@@ -38,14 +38,14 @@ final class PasswordGeneratorLengthCell: UITableViewCell {
         }
     }
     var valueChanged: ValueChangeHandler?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         accessibilityElements = [slider as Any]
         slider.addTarget(self, action: #selector(sliderDidChangeValue), for: .valueChanged)
         selectionStyle = .none
     }
-    
+
     @objc
     private func sliderDidChangeValue(_ sender: UISlider) {
         let value = Int(slider.value)

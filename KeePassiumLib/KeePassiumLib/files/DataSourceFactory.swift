@@ -7,7 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 internal final class DataSourceFactory {
-    
+
     public static func getDataSource(for url: URL) -> DataSource {
         guard let urlSchemePrefix = url.schemePrefix else {
             return LocalDataSource()
@@ -22,7 +22,7 @@ internal final class DataSourceFactory {
             return LocalDataSource()
         }
     }
-    
+
     public static func findInAppFileProvider(for url: URL) -> FileProvider? {
         if url.isWebDAVFileURL {
             return .keepassiumWebDAV

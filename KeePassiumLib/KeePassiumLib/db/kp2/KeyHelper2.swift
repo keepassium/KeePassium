@@ -9,22 +9,22 @@
 import Foundation
 
 final class KeyHelper2: KeyHelper {
-    
+
     override init() {
         super.init()
     }
-    
+
     override func getPasswordData(password: String) -> SecureBytes {
         return SecureBytes.from(password.utf8data)
     }
-    
+
     override func combineComponents(
         passwordData: SecureBytes,
         keyFileData: SecureBytes
     ) throws -> SecureBytes {
         let hasPassword = !passwordData.isEmpty
         let hasKeyFile = !keyFileData.isEmpty
-        
+
         var preKey = SecureBytes.empty()
         if hasPassword {
             Diag.info("Using password")
@@ -42,11 +42,11 @@ final class KeyHelper2: KeyHelper {
         }
         return preKey 
     }
-    
+
     override func getKey(fromCombinedComponents combinedComponents: SecureBytes) -> SecureBytes {
         return combinedComponents.sha256
     }
-    
+
     internal override func processXmlKeyFile(keyFileData: SecureBytes) throws -> SecureBytes? {
         let xml: AEXMLDocument
         do {
@@ -56,7 +56,7 @@ final class KeyHelper2: KeyHelper {
         } catch {
             return nil
         }
-        
+
         let versionElement = xml[Xml2.keyFile][Xml2.meta][Xml2.version]
         if versionElement.error != nil {
             return nil
@@ -83,7 +83,7 @@ final class KeyHelper2: KeyHelper {
             throw KeyFileError.unsupportedFormat
         }
     }
-    
+
     private func processXMLFileVersion1(_ xml: AEXMLDocument) throws -> SecureBytes? {
         guard let base64 = xml[Xml2.keyFile][Xml2.key][Xml2.data].value else {
             Diag.warning("Empty Base64 value")
@@ -95,7 +95,7 @@ final class KeyHelper2: KeyHelper {
         }
         return SecureBytes.from(keyData)
     }
-    
+
     private func processXMLFileVersion2(_ xml: AEXMLDocument) throws -> SecureBytes? {
         let rawHexString = xml[Xml2.keyFile][Xml2.key][Xml2.data].value
         guard let hexString = rawHexString?.filter({ !$0.isWhitespace }),
@@ -104,12 +104,12 @@ final class KeyHelper2: KeyHelper {
             Diag.warning("Empty key data")
             throw KeyFileError.keyFileCorrupted
         }
-        
+
         guard let keyData = ByteArray(hexString: hexString) else {
             Diag.error("Invalid hex string")
             throw KeyFileError.keyFileCorrupted
         }
-        
+
         if let hashString = xml[Xml2.keyFile][Xml2.key][Xml2.data].attributes[Xml2.hash] {
             guard let hashData = ByteArray(hexString: hashString) else {
                 Diag.error("Invalid hash hex string")

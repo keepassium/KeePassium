@@ -11,7 +11,7 @@ import Foundation
 public class PassphraseGeneratorParams: Codable, Equatable {
     public static let wordCountRange = 4...20
     public var wordCount: Int = 7
-    
+
     public var separator: String = " "
     public var wordCase: PassphraseGenerator.WordCase = .lowerCase
     public var wordlist: PassphraseWordlist = .effLarge {
@@ -19,9 +19,9 @@ public class PassphraseGeneratorParams: Codable, Equatable {
             loadedStringSet = wordlist.load()
         }
     }
-    
+
     private var loadedStringSet: StringSet? 
-    
+
     public static func == (lhs: PassphraseGeneratorParams, rhs: PassphraseGeneratorParams) -> Bool {
         return (lhs.wordCount == rhs.wordCount) &&
                (lhs.separator == rhs.separator) &&
@@ -37,7 +37,7 @@ extension PassphraseGeneratorParams: PasswordGeneratorRequirementsConvertible {
         }
         let stringSet = loadedStringSet ?? StringSet()
         let conditionalSet = ConditionalStringSet(stringSet, condition: .allowed)
-        
+
         let preprocessor = makePreprocessorFunction(for: wordCase)
         let merger: PasswordGenerator.ElementMergingFunction = { [separator] elements in
             elements.joined(separator: separator)
@@ -50,7 +50,7 @@ extension PassphraseGeneratorParams: PasswordGeneratorRequirementsConvertible {
             elementMerger: merger
         )
     }
-    
+
     private func makePreprocessorFunction(
         for wordCase: PassphraseGenerator.WordCase
     ) -> PassphraseGenerator.ElementPreprocessingFunction {

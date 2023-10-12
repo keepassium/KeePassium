@@ -10,9 +10,9 @@ import Foundation
 
 public final class WebDAVManager: NSObject {
     public static let shared = WebDAVManager()
-    
+
     private var webdavRequests = [Int: WebDAVRequest]()
-    
+
     private lazy var urlSession: URLSession = {
         var config = URLSessionConfiguration.ephemeral
         config.allowsCellularAccess = true
@@ -24,7 +24,7 @@ public final class WebDAVManager: NSObject {
             delegateQueue: WebDAVManager.backgroundQueue
         )
     }()
-    
+
     private static let backgroundQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.name = "com.keepassium.WebDAVManager"
@@ -32,11 +32,11 @@ public final class WebDAVManager: NSObject {
         queue.maxConcurrentOperationCount = 4
         return queue
     }()
-    
+
     override private init() {
         super.init()
     }
-    
+
     public func getFileInfo(
         url: URL,
         credential: NetworkCredential,
@@ -52,7 +52,7 @@ public final class WebDAVManager: NSObject {
             completionQueue: completionQueue ?? .main,
             completion: completion
         )
-        
+
         objc_sync_enter(self)
         let dataTask = urlSession.dataTask(with: webdavRequest.makeURLRequest())
         webdavRequests[dataTask.taskIdentifier] = webdavRequest
@@ -60,7 +60,7 @@ public final class WebDAVManager: NSObject {
 
         dataTask.resume()
     }
-    
+
     public func downloadFile(
         url: URL,
         credential: NetworkCredential,
@@ -76,7 +76,7 @@ public final class WebDAVManager: NSObject {
             completionQueue: completionQueue ?? .main,
             completion: completion
         )
-        
+
         objc_sync_enter(self)
         let downloadTask = urlSession.dataTask(with: downloadRequest.makeURLRequest())
         webdavRequests[downloadTask.taskIdentifier] = downloadRequest
@@ -84,7 +84,7 @@ public final class WebDAVManager: NSObject {
 
         downloadTask.resume()
     }
-    
+
     public func uploadFile(
         data: ByteArray,
         url: URL,
@@ -102,7 +102,7 @@ public final class WebDAVManager: NSObject {
             completionQueue: completionQueue ?? .main,
             completion: completion
         )
-        
+
         objc_sync_enter(self)
         let uploadTask = urlSession.dataTask(with: uploadRequest.makeURLRequest())
         webdavRequests[uploadTask.taskIdentifier] = uploadRequest
@@ -112,9 +112,8 @@ public final class WebDAVManager: NSObject {
     }
 }
 
-
 extension WebDAVManager: URLSessionDataDelegate, URLSessionTaskDelegate {
-    
+
     public func urlSession(
         _ session: URLSession,
         task: URLSessionTask,
@@ -138,7 +137,7 @@ extension WebDAVManager: URLSessionDataDelegate, URLSessionTaskDelegate {
             completionHandler(.cancelAuthenticationChallenge, nil)
             return
         }
-        
+
         let authMethod = challenge.protectionSpace.authenticationMethod
         Diag.debug("Authenticating on WebDAV server [method: \(authMethod)]")
         switch authMethod {
@@ -166,22 +165,22 @@ extension WebDAVManager: URLSessionDataDelegate, URLSessionTaskDelegate {
             completionHandler(.performDefaultHandling, nil)
         }
     }
-    
-    
+
+
     private func validateServer(_ serverTrust: SecTrust, allowUntrusted: Bool) throws {
         assert(!Thread.isMainThread, "Must run in background")
         if allowUntrusted {
             return
         }
         var cfError: CFError?
-        let _ = SecTrustEvaluateWithError(serverTrust, &cfError) 
+        _ = SecTrustEvaluateWithError(serverTrust, &cfError) 
         if let err = cfError as Error? {
             let nsError = err as NSError
             Diag.warning("Server certificate is not valid [details: \(nsError.description)]")
             throw err
         }
     }
-    
+
     public func urlSession(
         _ session: URLSession,
         dataTask: URLSessionDataTask,
@@ -193,7 +192,7 @@ extension WebDAVManager: URLSessionDataDelegate, URLSessionTaskDelegate {
         }
         webdavRequest.appendReceivedData(data)
     }
-    
+
     public func urlSession(
         _ session: URLSession,
         task: URLSessionTask,
@@ -203,12 +202,12 @@ extension WebDAVManager: URLSessionDataDelegate, URLSessionTaskDelegate {
         defer {
             objc_sync_exit(self)
         }
-        
+
         guard let webdavRequest = webdavRequests.removeValue(forKey: task.taskIdentifier) else {
             Diag.error("Invalid task identifier")
             preconditionFailure()
         }
-        
+
         if let error = error {
             webdavRequest.handleClientError(error)
             return

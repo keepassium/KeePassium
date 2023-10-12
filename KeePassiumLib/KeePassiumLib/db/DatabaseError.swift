@@ -10,7 +10,7 @@ public enum DatabaseError: LocalizedError {
     case loadError(reason: LoadErrorReason)
     case invalidKey
     case saveError(reason: String)
-    
+
     public enum LoadErrorReason: LocalizedError {
         case headerError(reason: String)
         case cryptoError(_ reason: CryptoError)
@@ -35,7 +35,7 @@ public enum DatabaseError: LocalizedError {
             }
         }
     }
-    
+
     public var errorDescription: String? {
         switch self {
         case .loadError:

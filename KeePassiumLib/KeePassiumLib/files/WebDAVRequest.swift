@@ -19,10 +19,10 @@ internal protocol WebDAVRequest {
     var allowUntrustedCertificate: Bool { get }
     var timeout: Timeout { get }
     var cancelReason: WebDAVCancelReason? { get set }
-    
+
     func makeURLRequest() -> URLRequest
     func appendReceivedData(_ chunk: Data)
-    
+
     func handleClientError(_ error: Error)
     func handleResponse(_ httpResponse: HTTPURLResponse)
 }
@@ -34,7 +34,7 @@ internal class WebDAVRequestBase: WebDAVRequest {
     let timeout: Timeout
     var cancelReason: WebDAVCancelReason?
     private(set) var receivedData: Data
-    
+
     init(
         url: URL,
         credential: URLCredential,
@@ -47,22 +47,22 @@ internal class WebDAVRequestBase: WebDAVRequest {
         self.timeout = timeout
         receivedData = Data()
     }
-    
+
     func makeURLRequest() -> URLRequest {
         fatalError("Pure abstract method")
     }
-    
+
     func appendReceivedData(_ chunk: Data) {
         receivedData.append(chunk)
     }
-    
+
     func handleClientError(_ error: Error) {
         Diag.error("WebDAV client error [message: \(error.localizedDescription)]")
         guard let urlError = error as? URLError else {
             finishWith(error: .systemError(error))
             return
         }
-        
+
         switch urlError.errorCode {
         case NSURLErrorCancelled:
             switch cancelReason {
@@ -89,7 +89,7 @@ internal class WebDAVRequestBase: WebDAVRequest {
         }
         finishWith(error: .serverSideError(message: statusMessage))
     }
-    
+
     func handleResponse(_ httpResponse: HTTPURLResponse) {
         if (200...299).contains(httpResponse.statusCode) {
             finishWith(success: httpResponse, data: receivedData)
@@ -97,7 +97,7 @@ internal class WebDAVRequestBase: WebDAVRequest {
             handleServerError(httpResponse: httpResponse, data: receivedData)
         }
     }
-    
+
     func finishWith(error: FileAccessError) {
         preconditionFailure("Pure virtual method")
     }
@@ -108,10 +108,10 @@ internal class WebDAVRequestBase: WebDAVRequest {
 
 final class WebDAVInfoRequest: WebDAVRequestBase {
     typealias Completion = (Result<FileInfo, FileAccessError>) -> Void
-    
+
     let completionQueue: OperationQueue
     let completion: Completion
-    
+
     init(
         url: URL,
         credential: URLCredential,
@@ -129,7 +129,7 @@ final class WebDAVInfoRequest: WebDAVRequestBase {
             timeout: timeout
         )
     }
-    
+
     override func makeURLRequest() -> URLRequest {
         var request = URLRequest(
             url: url,
@@ -140,23 +140,23 @@ final class WebDAVInfoRequest: WebDAVRequestBase {
         request.attribution = .developer
         return request
     }
-    
+
     override func finishWith(error: FileAccessError) {
         completionQueue.addOperation {
             self.completion(.failure(error))
         }
     }
-    
+
     override func finishWith(success response: HTTPURLResponse, data: Data) {
         assert((200...299).contains(response.statusCode))
-        
+
         let contentLengthString = response.value(forHTTPHeaderField: "content-length")
         let lastModifiedString = response.value(forHTTPHeaderField: "last-modified")
         Diag.debug("""
   content-length: \(contentLengthString ?? "nil")
   last-modified: \(lastModifiedString ?? "nil")
 """)
-        let contentLength = Int.init(contentLengthString) ?? -1
+        let contentLength = Int(contentLengthString) ?? -1
         let lastModifiedDate = Date.parse(httpHeaderValue: lastModifiedString)
 
         let fileInfo = FileInfo(
@@ -175,10 +175,10 @@ final class WebDAVInfoRequest: WebDAVRequestBase {
 
 final class WebDAVDownloadRequest: WebDAVRequestBase {
     typealias Completion = (Result<ByteArray, FileAccessError>) -> Void
-    
+
     let completionQueue: OperationQueue
     let completion: Completion
-    
+
     init(
         url: URL,
         credential: URLCredential,
@@ -196,7 +196,7 @@ final class WebDAVDownloadRequest: WebDAVRequestBase {
             timeout: timeout
         )
     }
-    
+
     override func makeURLRequest() -> URLRequest {
         var request = URLRequest(
             url: url,
@@ -207,13 +207,13 @@ final class WebDAVDownloadRequest: WebDAVRequestBase {
         request.attribution = .developer
         return request
     }
-    
+
     override func finishWith(error: FileAccessError) {
         completionQueue.addOperation {
             self.completion(.failure(error))
         }
     }
-    
+
     override func finishWith(success response: HTTPURLResponse, data: Data) {
         assert((200...299).contains(response.statusCode))
 
@@ -226,11 +226,11 @@ final class WebDAVDownloadRequest: WebDAVRequestBase {
 
 final class WebDAVUploadRequest: WebDAVRequestBase {
     typealias Completion = (Result<Void, FileAccessError>) -> Void
-    
+
     let completionQueue: OperationQueue
     let completion: Completion
     let dataToUpload: ByteArray
-    
+
     init(
         url: URL,
         credential: URLCredential,
@@ -250,7 +250,7 @@ final class WebDAVUploadRequest: WebDAVRequestBase {
             timeout: timeout
         )
     }
-    
+
     override func makeURLRequest() -> URLRequest {
         var request = URLRequest(
             url: url,
@@ -262,13 +262,13 @@ final class WebDAVUploadRequest: WebDAVRequestBase {
         request.attribution = .developer
         return request
     }
-    
+
     override func finishWith(error: FileAccessError) {
         completionQueue.addOperation {
             self.completion(.failure(error))
         }
     }
-    
+
     override func finishWith(success response: HTTPURLResponse, data: Data) {
         assert((200...299).contains(response.statusCode))
         completionQueue.addOperation {

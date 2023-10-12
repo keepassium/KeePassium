@@ -28,18 +28,18 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
             refresh()
         }
     }
-    
+
     public static func create() -> DiagnosticsViewerVC {
         return DiagnosticsViewerVC(style: .plain)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.rowHeight = UITableView.automaticDimension
         tableView.allowsSelection = false
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: Self.cellID)
-        
+
         title = LString.titleDiagnosticLog
         configureToolbars()
 
@@ -53,7 +53,7 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
             }
         }
     }
-    
+
     private func configureToolbars() {
         let copyToClipboardAction = UIAction(
             title: LString.actionCopy,
@@ -61,7 +61,7 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
             handler: didPressCopy(_:)
         )
         navigationItem.rightBarButtonItem = UIBarButtonItem(primaryAction: copyToClipboardAction)
-        
+
         let contactSupportAction = UIAction(
             title: LString.actionContactSupport,
             handler: didPressContactSupport(_:)
@@ -75,40 +75,39 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
             UIBarButtonItem(systemItem: .flexibleSpace)
         ]
     }
-    
+
     func refresh() {
         guard isViewLoaded else { return }
         tableView.reloadData()
     }
-    
-    
+
+
     private func didPressCopy(_ sender: Any) {
         Watchdog.shared.restart()
         let logText = Diag.toString()
         delegate?.didPressCopy(text: logText, in: self)
     }
-    
+
     private func didPressContactSupport(_ sender: Any) {
         Watchdog.shared.restart()
         let logText = Diag.toString()
         let popoverAnchor = PopoverAnchor(barButtonItem: contactSupportButtonItem)
         delegate?.didPressContactSupport(text: logText, at: popoverAnchor, in: self)
     }
-    
-    
+
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
-        ) -> UITableViewCell
-    {
+    ) -> UITableViewCell {
         let item = items[indexPath.row]
         var content = buildContent()
         content.text = "\(item.file):\(item.line)\n\(item.function)"
@@ -120,15 +119,15 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
         cell.contentConfiguration = content
         return cell
     }
-    
+
     private func buildContent() -> UIListContentConfiguration {
         var content = UIListContentConfiguration.subtitleCell()
         content.textProperties.font = .preferredFont(forTextStyle: .caption1)
         content.textProperties.color = .secondaryLabel
-        
+
         content.secondaryTextProperties.font = .preferredFont(forTextStyle: .callout)
         content.secondaryTextProperties.color = .label
-        
+
         content.textToSecondaryTextVerticalPadding = 4.0
         content.directionalLayoutMargins = .init(top: 8, leading: 8, bottom: 8, trailing: 8)
         return content

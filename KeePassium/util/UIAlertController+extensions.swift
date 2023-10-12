@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 extension UIAlertController {
-    
+
     static func make(
         title: String?,
         message: String?,
@@ -19,7 +19,7 @@ extension UIAlertController {
         alert.addAction(title: dismissButtonTitle, style: .cancel, handler: nil)
         return alert
     }
-    
+
     @discardableResult
     func addAction(
         title: String?,

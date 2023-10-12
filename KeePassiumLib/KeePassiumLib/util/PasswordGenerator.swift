@@ -9,16 +9,16 @@
 import Foundation
 
 public class PasswordGenerator {
-    
+
     public typealias ElementPreprocessingFunction = (inout [String]) -> Void
-    
+
     public typealias ElementMergingFunction = ([String]) -> String
-    
+
     internal var rng = SecureRandomNumberGenerator()
-    
+
     public init() {
     }
-    
+
     public func generate(with requirements: PasswordGeneratorRequirements) throws -> String {
         let targetLength = requirements.length
         guard targetLength >= 0 else {
@@ -37,9 +37,9 @@ public class PasswordGenerator {
                 throw PasswordGeneratorError.requiredSetCompletelyExcluded
             }
         }
-        
+
         var pickedElements = requiredElementsSample
-        
+
         let fillerCount = targetLength - requiredElementsSample.count
         if fillerCount > 0 {
             let allowedElements = try requirements.getAllowedElementsFiltered()
@@ -60,7 +60,7 @@ public class PasswordGenerator {
         if let preprocessorFunction = requirements.elementPreprocessor {
             preprocessorFunction(&pickedElements)
         }
-        
+
         guard canSatisfy(maxConsecutive: requirements.maxConsecutive, with: pickedElements) else {
             throw PasswordGeneratorError.maxConsecutiveNotSatisfiable
         }
@@ -79,7 +79,7 @@ public class PasswordGenerator {
             return pickedElements.joined()
         }
     }
-    
+
     private func canSatisfy(maxConsecutive: Int?, with elements: [String]) -> Bool {
         guard let maxConsecutive = maxConsecutive else {
             return true
@@ -90,7 +90,7 @@ public class PasswordGenerator {
         let uniqueElements = StringSet(elements)
         return (uniqueElements.count > 1) || (maxConsecutive >= elements.count)
     }
-    
+
     private func isSatisfied(maxConsecutive: Int?, with elements: [String]) -> Bool {
         guard let maxConsecutive = maxConsecutive else {
             return true
@@ -98,10 +98,10 @@ public class PasswordGenerator {
         guard maxConsecutive > 0 else {
             return false
         }
-        
+
         var repeats = 0
         var maxRepeats = 0
-        var previousElement: String? = nil
+        var previousElement: String?
         for element in elements {
             if element == previousElement {
                 repeats += 1
@@ -115,4 +115,3 @@ public class PasswordGenerator {
         return maxRepeats <= maxConsecutive
     }
 }
-

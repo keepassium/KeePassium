@@ -14,9 +14,9 @@ class SettingsSearchVC: UITableViewController {
     @IBOutlet weak var searchProtectedValuesSwitch: UISwitch!
     @IBOutlet weak var searchPasswordsSwitch: UISwitch!
     @IBOutlet weak var searchPasswordsCell: UITableViewCell!
-    
+
     private var settingsNotifications: SettingsNotifications!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsNotifications = SettingsNotifications(observer: self)
@@ -28,39 +28,39 @@ class SettingsSearchVC: UITableViewController {
         settingsNotifications.startObserving()
         refresh()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         settingsNotifications.stopObserving()
         super.viewWillDisappear(animated)
     }
-    
+
     func refresh() {
         let settings = Settings.current
         startWithSearchSwitch.isOn = settings.isStartWithSearch
         searchFieldNamesSwitch.isOn = settings.isSearchFieldNames
         searchProtectedValuesSwitch.isOn = settings.isSearchProtectedValues
-        
+
         searchPasswordsSwitch.isEnabled = settings.isSearchProtectedValues
         searchPasswordsSwitch.isOn = settings.isSearchPasswords
         searchPasswordsCell.setEnabled(searchPasswordsSwitch.isEnabled)
     }
-    
-    @IBAction func didToggleStartWithSearch(_ sender: UISwitch) {
+
+    @IBAction private func didToggleStartWithSearch(_ sender: UISwitch) {
         Settings.current.isStartWithSearch = sender.isOn
         refresh()
     }
-    
-    @IBAction func didToggleSearchFieldNames(_ sender: UISwitch) {
+
+    @IBAction private func didToggleSearchFieldNames(_ sender: UISwitch) {
         Settings.current.isSearchFieldNames = sender.isOn
         refresh()
     }
-    
-    @IBAction func didToggleSearchProtectedValues(_ sender: UISwitch) {
+
+    @IBAction private func didToggleSearchProtectedValues(_ sender: UISwitch) {
         Settings.current.isSearchProtectedValues = sender.isOn
         refresh()
     }
-    
-    @IBAction func didToggleSearchPasswords(_ sender: UISwitch) {
+
+    @IBAction private func didToggleSearchPasswords(_ sender: UISwitch) {
         Settings.current.isSearchPasswords = sender.isOn
         refresh()
     }

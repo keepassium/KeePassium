@@ -8,13 +8,12 @@
 
 import Foundation
 
-
 public enum TOTPHashAlgorithm {
     public static let allValues: [TOTPHashAlgorithm] = [.sha1, .sha256, .sha512]
     case sha1
     case sha256
     case sha512
-    
+
     var asString: String {
         switch self {
         case .sha1: return "SHA1"
@@ -22,7 +21,7 @@ public enum TOTPHashAlgorithm {
         case .sha512: return "SHA512"
         }
     }
-    
+
     public static func fromString(_ algorithmString: String) -> TOTPHashAlgorithm? {
         for candidate in TOTPHashAlgorithm.allValues {
             if algorithmString.caseInsensitiveCompare(candidate.asString) == .orderedSame {
@@ -35,9 +34,9 @@ public enum TOTPHashAlgorithm {
 
 public protocol TOTPGenerator: AnyObject {
     var remainingTime: TimeInterval { get }
-    
+
     var elapsedTimeFraction: Double { get }
-    
+
     func generate() -> String
 }
 
@@ -50,7 +49,7 @@ extension TOTPGenerator {
         let result = TimeInterval(timeStep) - elapsedTime
         return result
     }
-    
+
     fileprivate func calculateFullCode(
         counterBytes: ByteArray,
         seed: ByteArray,
@@ -65,9 +64,9 @@ extension TOTPGenerator {
         case .sha512:
             hmac = CryptoManager.hmacSHA512(data: counterBytes, key: seed)
         }
-        let fullCode = hmac.withBytes { (hmacBytes) -> UInt32 in
+        let fullCode = hmac.withBytes { hmacBytes -> UInt32 in
             let startPos = Int(hmacBytes[hmacBytes.count - 1] & 0x0F)
-            let hmacBytesSlice = ByteArray(bytes: hmacBytes[startPos..<(startPos+4)])
+            let hmacBytesSlice = ByteArray(bytes: hmacBytes[startPos..<(startPos + 4)])
             let code = UInt32(data: hmacBytesSlice)!.byteSwapped
             return code & 0x7FFFFFFF
         }
@@ -80,7 +79,7 @@ public class TOTPGeneratorRFC6238: TOTPGenerator {
     internal let timeStep: Int
     internal let length: Int
     internal let hashAlgorithm: TOTPHashAlgorithm
-    
+
     public var remainingTime: TimeInterval {
         return getRemainingTime(timeStep: timeStep)
     }
@@ -91,14 +90,13 @@ public class TOTPGeneratorRFC6238: TOTPGenerator {
     internal init?(seed: ByteArray, timeStep: Int, length: Int, hashAlgorithm: TOTPHashAlgorithm) {
         guard length >= 4 && length <= 8 else { return nil }
         guard timeStep > 0 else { return nil }
-        
+
         self.seed = seed
         self.timeStep = timeStep
         self.length = length
         self.hashAlgorithm = hashAlgorithm
     }
 
-    
     public func generate() -> String {
         let counter = UInt64(floor(Date.now.timeIntervalSince1970 / Double(timeStep))).bigEndian
         let fullCode = calculateFullCode(
@@ -112,12 +110,11 @@ public class TOTPGeneratorRFC6238: TOTPGenerator {
     }
 }
 
-
 public class TOTPGeneratorSteam: TOTPGenerator {
     public static let typeSymbol = "S"
     private let steamChars = [
-        "2","3","4","5","6","7","8","9","B","C","D","F","G",
-        "H","J","K","M","N","P","Q","R","T","V","W","X","Y"]
+        "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G",
+        "H", "J", "K", "M", "N", "P", "Q", "R", "T", "V", "W", "X", "Y"]
 
     public var remainingTime: TimeInterval {
         return getRemainingTime(timeStep: timeStep)
@@ -125,7 +122,7 @@ public class TOTPGeneratorSteam: TOTPGenerator {
     public var elapsedTimeFraction: Double {
         return remainingTime / Double(timeStep)
     }
-    
+
     private let seed: ByteArray
     private let timeStep: Int
     private let length = 5
@@ -133,11 +130,11 @@ public class TOTPGeneratorSteam: TOTPGenerator {
 
     internal init?(seed: ByteArray, timeStep: Int) {
         guard timeStep > 0 else { return nil }
-        
+
         self.seed = seed
         self.timeStep = timeStep
     }
-    
+
     public func generate() -> String {
         let counter = UInt64(floor(Date.now.timeIntervalSince1970 / Double(timeStep))).bigEndian
         var code = calculateFullCode(

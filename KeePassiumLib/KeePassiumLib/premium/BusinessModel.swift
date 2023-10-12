@@ -11,7 +11,7 @@ import Foundation
 public enum BusinessModel {
 
     public static var type: BusinessModel = .freemium
-    
+
     public static var isIntuneEdition = false
 
     case freemium

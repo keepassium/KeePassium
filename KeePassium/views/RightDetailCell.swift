@@ -13,24 +13,24 @@ final class RightDetailCell: UITableViewCell {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         setupCell()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("Not implemented")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
-    
+
     private func setupCell() {
         selectionStyle = .none
-        
+
         textLabel?.font = .preferredFont(forTextStyle: .body)
         textLabel?.textColor = .label
         textLabel?.numberOfLines = 0
         textLabel?.lineBreakMode = .byWordWrapping
-        
+
         detailTextLabel?.font = .preferredFont(forTextStyle: .body)
         detailTextLabel?.textColor = .secondaryLabel
         detailTextLabel?.numberOfLines = 0

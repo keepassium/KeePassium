@@ -74,12 +74,12 @@ public enum FileProvider: Hashable {
     case tresorit
     case usbDrive
     case yandexDisk
-    
+
     case localStorage
     case other(id: String)
-    
+
     public var rawValue: String { return id }
-    
+
     public var id: String {
         switch self {
         case .other(let id):
@@ -88,7 +88,7 @@ public enum FileProvider: Hashable {
             return FileProvider.idByProvider[self]!
         }
     }
-    
+
     public init(rawValue: String) {
         if let provider = FileProvider.providerByID[rawValue] {
             self = provider
@@ -96,11 +96,12 @@ public enum FileProvider: Hashable {
             self = .other(id: rawValue)
         }
     }
-    
+
     public var localizedName: String {
+        // swiftlint:disable line_length
         switch self {
-        case .amerigoFree: fallthrough
-        case .amerigo:
+        case .amerigoFree,
+             .amerigo:
             return NSLocalizedString(
                 "[FileProvider/Amerigo/name]",
                 bundle: Bundle.framework,
@@ -260,8 +261,9 @@ public enum FileProvider: Hashable {
         case .other(let id):
             return id
         }
+        // swiftlint:enable line_length
     }
-    
+
     private func getLocalStorageName() -> String {
         guard UIDevice.current.userInterfaceIdiom == .pad else {
             return NSLocalizedString(
@@ -270,7 +272,7 @@ public enum FileProvider: Hashable {
                 value: "On My iPhone",
                 comment: "Localized name of the local on-device storage, as shown in the Files app.")
         }
-        
+
         if ProcessInfo.isRunningOnMac {
             return "macOS" 
         } else {
@@ -281,7 +283,7 @@ public enum FileProvider: Hashable {
                 comment: "Localized name of the local on-device storage, as shown in the Files app.")
         }
     }
-    
+
     public static func find(for url: URL) -> FileProvider? {
         return DataSourceFactory.findInAppFileProvider(for: url)
     }

@@ -10,42 +10,42 @@ import KeePassiumLib
 
 extension UIView {
     @IBInspectable var borderColor: UIColor? {
-        set {
-            layer.borderColor = newValue?.cgColor
-        }
         get {
             guard let cgColor = layer.borderColor else { return nil }
             return UIColor(cgColor: cgColor)
         }
-    }
-    
-    @IBInspectable var borderWidth: CGFloat {
         set {
-            layer.borderWidth = newValue
+            layer.borderColor = newValue?.cgColor
         }
+    }
+
+    @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
         }
-    }
-    
-    @IBInspectable var cornerRadius: CGFloat {
         set {
-            layer.cornerRadius = newValue
+            layer.borderWidth = newValue
         }
+    }
+
+    @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
-    }
-    
-    @IBInspectable var maskedCorners: CACornerMask {
         set {
-            layer.maskedCorners = newValue
+            layer.cornerRadius = newValue
         }
+    }
+
+    @IBInspectable var maskedCorners: CACornerMask {
         get {
             return layer.maskedCorners
         }
+        set {
+            layer.maskedCorners = newValue
+        }
     }
-    
+
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.duration = 0.6
@@ -67,7 +67,7 @@ extension UIView {
             }
             return
         }
-        
+
         let delay = BiometricsHelper.delayBeforeKeyboardAvailable
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             self?.becomeFirstResponder()

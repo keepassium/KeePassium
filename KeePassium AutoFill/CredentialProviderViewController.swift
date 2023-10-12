@@ -11,15 +11,15 @@ import OSLog
 
 class CredentialProviderViewController: ASCredentialProviderViewController {
     let log = Logger(subsystem: "com.keepassium.autofill", category: "CredentialProviderVC")
-    
+
     var autoFillCoordinator: AutoFillCoordinator! 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         autoFillCoordinator = AutoFillCoordinator(rootController: self, context: extensionContext)
         autoFillCoordinator.prepare()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         log.trace("viewWillAppear")
         super.viewWillAppear(animated)
@@ -28,7 +28,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
             autoFillCoordinator?.start()
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         log.trace("viewDidAppear")
@@ -36,18 +36,18 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
             autoFillCoordinator.start()
         }
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         log.trace("viewDidDisappear")
         super.viewDidDisappear(animated)
         autoFillCoordinator?.cleanup()
     }
-    
+
     override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
         autoFillCoordinator?.handleMemoryWarning()
     }
-    
-    
+
     @available(iOS 14, *)
     private func cacheKeyboard() {
         let textField = UITextField()
@@ -56,7 +56,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
         textField.resignFirstResponder()
         textField.removeFromSuperview()
     }
-    
+
     override func prepareCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
         autoFillCoordinator.serviceIdentifiers = serviceIdentifiers
     }
@@ -66,7 +66,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
     ) {
         autoFillCoordinator.prepareUI(for: credentialIdentity)
     }
-    
+
     override func provideCredentialWithoutUserInteraction(
         for credentialIdentity: ASPasswordCredentialIdentity
     ) {

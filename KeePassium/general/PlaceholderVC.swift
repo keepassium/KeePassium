@@ -9,18 +9,18 @@
 import UIKit
 
 class PlaceholderVC: UIViewController {
-    
+
     static func make() -> UIViewController {
         return PlaceholderVC.instantiateFromStoryboard()
     }
-    
+
     override var isPlaceholder: Bool {
         return true
     }
 }
 
 extension UIViewController {
-    
+
     @objc public var isPlaceholder: Bool {
         return false
     }

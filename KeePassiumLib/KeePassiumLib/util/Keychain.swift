@@ -12,7 +12,7 @@ import LocalAuthentication
 public enum KeychainError: LocalizedError {
     case generic(code: Int)
     case unexpectedFormat
-    
+
     public var errorDescription: String? {
         switch self {
         case .generic(let code):
@@ -35,11 +35,11 @@ public enum KeychainError: LocalizedError {
 
 public class Keychain {
     public static let shared = Keychain()
-    
+
     private static let accessGroup: String? = nil
     private enum Service: String {
         static let allValues: [Service] = [.general, databaseSettings, .premium, .networkCredentials]
-        
+
         case general = "KeePassium"
         case databaseSettings = "KeePassium.dbSettings"
         case premium = "KeePassium.premium"
@@ -49,18 +49,18 @@ public class Keychain {
     private let appPasscodeAccount = "appPasscode"
     private let biometricControlAccount = "biometricControlItem"
     private let premiumPurchaseHistory = "premiumPurchaseHistory"
-    
+
     private let premiumExpiryDateAccount = "premiumExpiryDate"
     private let premiumProductAccount = "premiumProductID"
     private let premiumFallbackDateAccount = "premiumFallbackDate"
-    
+
     private let memoryProtectionKeyTagData = "SecureBytes.general".data(using: .utf8)!
-    
+
     private var hasWarnedAboutMissingMemoryProtectionKey = false
-    
+
     private init() {
         maybeUpgradeKeychainFormat()
-        
+
         let hasMemoryProtectionKeyDisappeared =
             SecureEnclave.isAvailable &&
             !Settings.current.isFirstLaunch &&
@@ -70,14 +70,14 @@ public class Keychain {
             reset()
         }
     }
-    
+
     public func reset() {
         removeAll()
         makeAndStoreMemoryProtectionKey()
         Diag.debug("Keychain data reset")
     }
-    
-    
+
+
     private func makeQuery(service: Service, account: String?) -> [String: AnyObject] {
         var result = [String: AnyObject]()
         result[kSecClass as String] = kSecClassGenericPassword
@@ -90,13 +90,13 @@ public class Keychain {
         }
         return result
     }
-    
+
     private func get(service: Service, account: String) throws -> Data? {
         var query = makeQuery(service: service, account: account)
         query[kSecMatchLimit as String] = kSecMatchLimitOne
         query[kSecReturnAttributes as String] = kCFBooleanTrue
         query[kSecReturnData as String] = kCFBooleanTrue
-        
+
         var queryResult: AnyObject?
         let status = withUnsafeMutablePointer(to: &queryResult) { ptr in
             return SecItemCopyMatching(query as CFDictionary, ptr)
@@ -108,21 +108,21 @@ public class Keychain {
             Diag.error("Keychain error [code: \(Int(status))]")
             throw KeychainError.generic(code: Int(status))
         }
-        
+
         guard let item = queryResult as? [String: AnyObject],
-              let data = item[kSecValueData as String] as? Data else
-        {
+              let data = item[kSecValueData as String] as? Data
+        else {
             Diag.error("Keychain error: unexpected format")
             throw KeychainError.unexpectedFormat
         }
         return data
     }
-    
+
     private func getAccounts(service: Service) throws -> [String] {
         var query = makeQuery(service: .databaseSettings, account: nil)
         query[kSecReturnAttributes as String] = kCFBooleanTrue
         query[kSecMatchLimit as String] = kSecMatchLimitAll
-        
+
         var queryResult: AnyObject?
         let status = withUnsafeMutablePointer(to: &queryResult) { ptr in
             SecItemCopyMatching(query as CFDictionary, ptr)
@@ -134,23 +134,23 @@ public class Keychain {
             Diag.error("Keychain error [code: \(status))]")
             throw KeychainError.generic(code: Int(status))
         }
-        if let items = queryResult as? Array<Dictionary<String, AnyObject>> {
+        if let items = queryResult as? [[String: AnyObject]] {
             let result = items.compactMap { $0[kSecAttrAccount as String] as? String }
             return result
         } else {
             return []
         }
     }
-    
+
     private func set(service: Service, account: String, data: Data) throws {
         if let _ = try get(service: service, account: account) { 
             let query = makeQuery(service: service, account: account)
             let attrsToUpdate: [String: Any] = [
-                kSecValueData as String : data,
+                kSecValueData as String: data,
                 kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
                 kSecAttrIsInvisible as String: kCFBooleanTrue as Any,
             ]
-            
+
             let status = SecItemUpdate(query as CFDictionary, attrsToUpdate as CFDictionary)
             if status != noErr {
                 Diag.error("Keychain error [code: \(Int(status))]")
@@ -168,7 +168,7 @@ public class Keychain {
             }
         }
     }
-    
+
     private func remove(service: Service, account: String?) throws {
         let query = makeQuery(service: service, account: account)
         let status = SecItemDelete(query as CFDictionary)
@@ -177,7 +177,7 @@ public class Keychain {
             throw KeychainError.generic(code: Int(status))
         }
     }
-    
+
     @discardableResult
     private func removeAll() -> Bool {
         let secItemClasses = [
@@ -198,8 +198,8 @@ public class Keychain {
         }
         return success
     }
-    
-    
+
+
     public func setAppPasscode(_ passcode: String) throws {
         let dataHash = ByteArray(utf8String: passcode).sha256.asData
         try set(service: .general, account: appPasscodeAccount, data: dataHash) 
@@ -210,7 +210,7 @@ public class Keychain {
         let storedHash = try get(service: .general, account: appPasscodeAccount) 
         return storedHash != nil
     }
-    
+
     public func isAppPasscodeMatch(_ passcode: String) throws -> Bool {
         guard let storedHash =
             try get(service: .general, account: appPasscodeAccount) else
@@ -225,18 +225,17 @@ public class Keychain {
         try remove(service: .general, account: appPasscodeAccount) 
         Settings.current.notifyAppLockEnabledChanged()
     }
-    
-    
+
+
     internal func getDatabaseSettings(
-        for descriptor: URLReference.Descriptor) throws
-        -> DatabaseSettings?
-    {
+        for descriptor: URLReference.Descriptor
+    ) throws -> DatabaseSettings? {
         if let data = try get(service: .databaseSettings, account: descriptor) { 
             return DatabaseSettings.deserialize(from: data)
         }
         return nil
     }
-    
+
     internal func setDatabaseSettings(
         _ dbSettings: DatabaseSettings,
         for descriptor: URLReference.Descriptor
@@ -244,11 +243,11 @@ public class Keychain {
         let data = dbSettings.serialize()
         try set(service: .databaseSettings, account: descriptor, data: data)
     }
-    
+
     internal func removeDatabaseSettings(for descriptor: URLReference.Descriptor) throws {
         try remove(service: .databaseSettings, account: descriptor) 
     }
-    
+
     internal func updateAllDatabaseSettings(updater: (DatabaseSettings) -> Void) throws {
         let descriptors = try getAccounts(service: .databaseSettings)
         try descriptors.forEach { descriptor in
@@ -260,16 +259,16 @@ public class Keychain {
             try setDatabaseSettings(dbSettings, for: descriptor)
         }
     }
-    
-    
+
+
     private func isMemoryProtectionKeyExist() -> Bool {
         let query: [String: Any] = [
-            kSecClass as String              : kSecClassKey,
-            kSecAttrApplicationTag as String : memoryProtectionKeyTagData,
-            kSecAttrKeyType as String        : kSecAttrKeyTypeEC,
-            kSecReturnRef as String          : false
+            kSecClass as String: kSecClassKey,
+            kSecAttrApplicationTag as String: memoryProtectionKeyTagData,
+            kSecAttrKeyType as String: kSecAttrKeyTypeEC,
+            kSecReturnRef as String: false
         ]
-        
+
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         switch status {
@@ -282,15 +281,15 @@ public class Keychain {
             return false
         }
     }
-    
+
     internal func getMemoryProtectionKey() -> SecKey? {
         let query: [String: Any] = [
-            kSecClass as String              : kSecClassKey,
-            kSecAttrApplicationTag as String : memoryProtectionKeyTagData,
-            kSecAttrKeyType as String        : kSecAttrKeyTypeEC,
-            kSecReturnRef as String          : true
+            kSecClass as String: kSecClassKey,
+            kSecAttrApplicationTag as String: memoryProtectionKeyTagData,
+            kSecAttrKeyType as String: kSecAttrKeyTypeEC,
+            kSecReturnRef as String: true
         ]
-        
+
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         switch status {
@@ -304,7 +303,7 @@ public class Keychain {
             return nil
         }
     }
-    
+
     @discardableResult
     private func makeAndStoreMemoryProtectionKey() -> SecKey? {
         Diag.debug("Creating the memory protection key.")
@@ -320,16 +319,16 @@ public class Keychain {
             return nil
         }
         let attributes: [String: Any] = [
-            kSecAttrKeyType as String       : kSecAttrKeyTypeEC,
-            kSecAttrKeySizeInBits as String : 256,
-            kSecAttrTokenID as String       : kSecAttrTokenIDSecureEnclave,
-            kSecPrivateKeyAttrs as String   : [
-                kSecAttrIsPermanent as String    : true,
-                kSecAttrApplicationTag as String : memoryProtectionKeyTagData,
-                kSecAttrAccessControl as String  : accessControl
+            kSecAttrKeyType as String: kSecAttrKeyTypeEC,
+            kSecAttrKeySizeInBits as String: 256,
+            kSecAttrTokenID as String: kSecAttrTokenIDSecureEnclave,
+            kSecPrivateKeyAttrs as String: [
+                kSecAttrIsPermanent as String: true,
+                kSecAttrApplicationTag as String: memoryProtectionKeyTagData,
+                kSecAttrAccessControl as String: accessControl
             ]
         ]
-        
+
         guard let privateKey = SecKeyCreateRandomKey(attributes as CFDictionary, &error) else {
             let err = error!.takeRetainedValue() as Error
             Diag.error("Failed to create the memory protection key [message: \(err.localizedDescription)]")
@@ -337,8 +336,8 @@ public class Keychain {
         }
         return privateKey
     }
-    
-    
+
+
     public func setPurchaseHistory(_ purchaseHistory: PurchaseHistory) throws {
         let encodedHistoryData: Data
         do {
@@ -351,13 +350,13 @@ public class Keychain {
         }
         try set(service: .premium, account: premiumPurchaseHistory, data: encodedHistoryData)
     }
-    
+
     public func getPurchaseHistory() throws -> PurchaseHistory? {
         guard let data = try get(service: .premium, account: premiumPurchaseHistory) else {
             let purchaseHistory = try convertLegacyHistory()
             return purchaseHistory
         }
-        
+
         do {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
@@ -368,7 +367,7 @@ public class Keychain {
             return nil
         }
     }
-    
+
     private func convertLegacyHistory() throws -> PurchaseHistory? {
         var purchaseHistory = PurchaseHistory.empty
         var foundLegacyData = false
@@ -397,7 +396,7 @@ public class Keychain {
                 timeIntervalSinceReferenceDate: Double(fallbackDateTimestamp)
             )
         }
-        
+
         guard foundLegacyData else {
             return nil
         }
@@ -407,7 +406,7 @@ public class Keychain {
         try remove(service: .premium, account: premiumExpiryDateAccount)
         try remove(service: .premium, account: premiumFallbackDateAccount)
         Diag.info("Purchase history upgraded")
-        
+
         return purchaseHistory
     }
 }
@@ -423,16 +422,16 @@ internal extension Keychain {
         }
         return NetworkCredential.deserialize(from: data)
     }
-    
+
     func store(networkCredential: NetworkCredential, for url: URL) throws {
         let data = networkCredential.serialize()
         try set(service: .networkCredentials, account: url.absoluteString, data: data)
     }
-    
+
     func removeNetworkCredential(for url: URL) throws {
         try remove(service: .networkCredentials, account: url.absoluteString)
     }
-    
+
     func removeAllNetworkCredentials() throws {
         try remove(service: .networkCredentials, account: nil) 
     }
@@ -447,7 +446,7 @@ private extension Keychain {
         }
         return storedFormatVersion
     }
-    
+
     private func saveFormatVersion(_ version: UInt8) {
         let data = Data([version])
         do {
@@ -457,7 +456,7 @@ private extension Keychain {
             return
         }
     }
-    
+
     private func maybeUpgradeKeychainFormat() {
         let formatVersion = getFormatVersion()
         if formatVersion == 0 {
@@ -465,7 +464,7 @@ private extension Keychain {
             saveFormatVersion(1)
         }
     }
-    
+
     private func upgradeKeychainFormatToV1() {
         if let passcodeData = try? get(service: .general, account: appPasscodeAccount) {
             try? set(service: .general, account: appPasscodeAccount, data: passcodeData)
@@ -485,7 +484,7 @@ private extension Keychain {
 public extension Keychain {
     func performBiometricAuth(_ callback: @escaping (Bool) -> Void) {
         assert(isBiometricAuthPrepared())
-        
+
         let callbackQueue = DispatchQueue.main
         DispatchQueue.global(qos: .default).async { [self] in
             var query = makeQuery(service: .general, account: biometricControlAccount)
@@ -494,7 +493,7 @@ public extension Keychain {
             context.localizedReason = LString.Biometrics.titleBiometricPrompt
             query[kSecUseAuthenticationContext as String] = context
             query[kSecReturnData as String] = kCFBooleanTrue
-            
+
             var resultData: AnyObject?
             let status = SecItemCopyMatching(query as CFDictionary, &resultData)
             guard status == noErr else {
@@ -509,19 +508,19 @@ public extension Keychain {
             }
         }
     }
-    
+
     func isBiometricAuthPrepared() -> Bool {
         var query = makeQuery(service: .general, account: biometricControlAccount)
         let context = LAContext()
         context.interactionNotAllowed = true
         query[kSecUseAuthenticationContext as String] = context
-        
+
         var resultItem: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &resultItem)
         let itemPresent = (status == errSecSuccess) || (status == errSecInteractionNotAllowed)
         return itemPresent
     }
-    
+
     @discardableResult
     func prepareBiometricAuth(_ enable: Bool) -> Bool {
         if enable {
@@ -530,7 +529,7 @@ public extension Keychain {
             return removeBiometricAuthItem()
         }
     }
-    
+
     private func removeBiometricAuthItem() -> Bool {
         do {
             try remove(service: .general, account: biometricControlAccount) 
@@ -539,7 +538,7 @@ public extension Keychain {
             return false
         }
     }
-    
+
     private func addBiometricAuthItem() -> Bool {
         var cfError: Unmanaged<CFError>?
         guard let accessControl = SecAccessControlCreateWithFlags(
@@ -571,8 +570,9 @@ public extension Keychain {
 }
 
 public extension LString {
+    // swiftlint:disable line_length
     enum Biometrics {
-        public static let titleBiometricPrompt  = NSLocalizedString(
+        public static let titleBiometricPrompt = NSLocalizedString(
             "[AppLock/Biometric/Hint] Unlock KeePassium",
             bundle: Bundle.framework,
             value: "Unlock KeePassium",
@@ -584,4 +584,5 @@ public extension LString {
             comment: "Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode."
         )
     }
+    // swiftlint:enable line_length
 }

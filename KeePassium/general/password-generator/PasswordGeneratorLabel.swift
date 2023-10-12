@@ -9,9 +9,9 @@
 import KeePassiumLib
 
 final class PasswordGeneratorLabel: UILabel {
-    
+
     var accessibilityIsPhrase = false
-    
+
     override var text: String? {
         get {
             super.text
@@ -21,13 +21,13 @@ final class PasswordGeneratorLabel: UILabel {
             updateAccessibility()
         }
     }
-    
+
     private func updateAccessibility() {
         accessibilityLabel = LString.PasswordGenerator.titleGeneratedText
         accessibilityHint = LString.A11y.hintActivateToListen
         accessibilityValue = nil
     }
-    
+
     override func accessibilityActivate() -> Bool {
         guard let text = text else {
             return false
@@ -45,7 +45,7 @@ final class PasswordGeneratorLabel: UILabel {
         UIAccessibility.post(notification: .layoutChanged, argument: self)
         return true
     }
-    
+
     override func accessibilityElementDidLoseFocus() {
         accessibilityValue = nil
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class MultilineButton: UIButton {
     override var canBecomeFocused: Bool { isEnabled }
-    
+
     #if targetEnvironment(macCatalyst)
     @available(iOS 15, *)
     override var focusEffect: UIFocusEffect? {
@@ -24,17 +24,17 @@ class MultilineButton: UIButton {
         }
     }
     #endif
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
     }
-    
+
     private func setupView() {
         titleLabel?.lineBreakMode = .byWordWrapping
         titleLabel?.numberOfLines = 0

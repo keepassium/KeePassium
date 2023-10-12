@@ -87,11 +87,11 @@ extension PasswordQuality {
         case .veryWeak:
             return .auxiliaryText
         case .weak:
-            return .init(red: 228/255, green: 8/255, blue: 8/255, alpha: 1)
+            return .init(red: 228 / 255, green: 8 / 255, blue: 8 / 255, alpha: 1)
         case .almostGood:
-            return .init(red: 255/255, green: 216/255, blue: 0/255, alpha: 1)
+            return .init(red: 255 / 255, green: 216 / 255, blue: 0 / 255, alpha: 1)
         case .good, .veryGood:
-            return .init(red: 44/255, green: 177/255, blue: 23/255, alpha: 1)
+            return .init(red: 44 / 255, green: 177 / 255, blue: 23 / 255, alpha: 1)
         }
     }
 
@@ -128,9 +128,9 @@ extension PasswordQuality {
     var iconColor: UIColor? {
         switch self {
         case .veryWeak:
-            return .init(red: 228/255, green: 8/255, blue: 8/255, alpha: 1)
+            return .init(red: 228 / 255, green: 8 / 255, blue: 8 / 255, alpha: 1)
         case .weak, .almostGood:
-            return .init(red: 255/255, green: 216/255, blue: 0/255, alpha: 1)
+            return .init(red: 255 / 255, green: 216 / 255, blue: 0 / 255, alpha: 1)
         case .good, .veryGood:
             return nil
         }

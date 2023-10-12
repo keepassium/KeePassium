@@ -11,7 +11,7 @@ import KeePassiumLib
 public enum DestructiveFileAction {
     case remove
     case delete
-    
+
     public static func get(for location: URLReference.Location) -> DestructiveFileAction {
         switch location {
         case .external,
@@ -23,7 +23,7 @@ public enum DestructiveFileAction {
             return .delete
         }
     }
-    
+
     var title: String {
         switch self {
         case .remove:
@@ -32,7 +32,7 @@ public enum DestructiveFileAction {
             return LString.actionDeleteFile
         }
     }
-    
+
     public func getConfirmationText(for fileType: FileType) -> String {
         switch (fileType, self) {
         case (.database, .remove):
@@ -48,17 +48,17 @@ public enum DestructiveFileAction {
 }
 
 class FileDestructionHelper {
-    
-    typealias CompletionHandler = (Bool) -> ()
-    
+
+    typealias CompletionHandler = (Bool) -> Void
+
     public static func destroyFile(
         _ urlRef: URLReference,
         fileType: FileType,
         withConfirmation: Bool,
         at popoverAnchor: PopoverAnchor?,
         parent: UIViewController,
-        completion: CompletionHandler?)
-    {
+        completion: CompletionHandler?
+    ) {
         if urlRef.hasError {
             destroyFileNow(
                 urlRef,
@@ -67,26 +67,25 @@ class FileDestructionHelper {
                 completion: completion)
             return
         }
-        
+
         let action = DestructiveFileAction.get(for: urlRef.location)
         let confirmationAlert = UIAlertController.make(
             title: urlRef.visibleFileName,
             message: action.getConfirmationText(for: fileType),
             dismissButtonTitle: LString.actionCancel)
-            .addAction(title: action.title, style: .destructive) { alert in
+            .addAction(title: action.title, style: .destructive) { _ in
                 destroyFileNow(urlRef, fileType: fileType, parent: parent, completion: completion)
             }
         popoverAnchor?.apply(to: confirmationAlert.popoverPresentationController)
         parent.present(confirmationAlert, animated: true, completion: nil)
     }
-    
-    
+
     private static func destroyFileNow(
         _ urlRef: URLReference,
         fileType: FileType,
         parent: UIViewController,
-        completion: CompletionHandler?)
-    {
+        completion: CompletionHandler?
+    ) {
         let action = DestructiveFileAction.get(for: urlRef.location)
         let fileKeeper = FileKeeper.shared
         do {

@@ -15,16 +15,16 @@ public enum WebDAVFileURL {
         "webdav\(urlSchemePrefixSeparator)http",
         "webdav\(urlSchemePrefixSeparator)https"
     ]
-    
+
     public static func build(nakedURL: URL) -> URL {
         let prefixedURL = nakedURL.withSchemePrefix(schemePrefix)
         return prefixedURL
     }
-    
+
     internal static func getNakedURL(from prefixedURL: URL) -> URL {
         return prefixedURL.withoutSchemePrefix()
     }
-    
+
     public static func getDescription(for prefixedURL: URL) -> String? {
         let urlString = getNakedURL(from: prefixedURL).absoluteString
         return "\(LString.connectionTypeWebDAV) → \(urlString)"

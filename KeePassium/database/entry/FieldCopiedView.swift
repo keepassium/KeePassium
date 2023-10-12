@@ -15,10 +15,10 @@ protocol FieldCopiedViewDelegate: AnyObject {
 
 final class FieldCopiedView: UIView {
     weak var delegate: FieldCopiedViewDelegate?
-    
+
     private var indexPath: IndexPath!
     private weak var hidingTimer: Timer?
-    
+
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -28,7 +28,7 @@ final class FieldCopiedView: UIView {
         stack.setContentCompressionResistancePriority(.defaultHigh + 1, for: .vertical)
         return stack
     }()
-    
+
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title3)
@@ -42,9 +42,9 @@ final class FieldCopiedView: UIView {
         label.text = LString.titleCopiedToClipboard
         return label
     }()
-    
+
     private lazy var exportButton: UIButton = {
-        let button = UIButton(primaryAction: UIAction() {[weak self] _ in
+        let button = UIButton(primaryAction: UIAction {[weak self] _ in
             guard let self = self else { return }
             self.delegate?.didPressExport(for: self.indexPath, from: self)
         })
@@ -55,9 +55,9 @@ final class FieldCopiedView: UIView {
         button.accessibilityLabel = LString.actionShare
         return button
     }()
-    
+
     private lazy var copyFieldReferenceButton: UIButton = {
-        let button = UIButton(primaryAction: UIAction() {[weak self] _ in
+        let button = UIButton(primaryAction: UIAction {[weak self] _ in
             guard let self = self else { return }
             self.delegate?.didPressCopyFieldReference(for: self.indexPath, from: self)
         })
@@ -68,20 +68,20 @@ final class FieldCopiedView: UIView {
         button.accessibilityLabel = LString.actionCopyFieldReference
         return button
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("Not implemented")
     }
-    
+
     private func setupView() {
         backgroundColor = .actionTint
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         addSubview(stackView)
         stackView.addArrangedSubview(textLabel)
         stackView.addArrangedSubview(exportButton)
@@ -102,7 +102,7 @@ final class FieldCopiedView: UIView {
             .constraint(lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor)
             .activate()
     }
-    
+
     public func show(
         in tableView: UITableView,
         at indexPath: IndexPath,
@@ -110,10 +110,10 @@ final class FieldCopiedView: UIView {
     ) {
         hide(animated: false)
         copyFieldReferenceButton.isHidden = !canReference
-        
+
         guard let cell = tableView.cellForRow(at: indexPath) else { assertionFailure(); return }
         self.indexPath = indexPath
-        
+
         cell.addSubview(self)
         self.topAnchor.constraint(equalTo: cell.topAnchor).activate()
         self.bottomAnchor.constraint(equalTo: cell.bottomAnchor).activate()
@@ -124,22 +124,21 @@ final class FieldCopiedView: UIView {
         UIView.animate(
             withDuration: 0.3,
             delay: 0.0,
-            options: [.curveEaseOut, .allowUserInteraction] ,
+            options: [.curveEaseOut, .allowUserInteraction],
             animations: { [weak self] in
                 self?.backgroundColor = UIColor.actionTint
                 self?.alpha = 0.9
             },
-            completion: { [weak self] finished in
+            completion: { [weak self] _ in
                 guard let self = self else { return }
                 tableView.deselectRow(at: indexPath, animated: false)
-                self.hidingTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) {
-                    [weak self] _ in
+                self.hidingTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                     self?.hide(animated: true)
                 }
             }
         )
     }
-    
+
     public func hide(animated: Bool) {
         hidingTimer?.invalidate()
         hidingTimer = nil
@@ -163,12 +162,12 @@ final class FieldCopiedView: UIView {
             }
         )
     }
-    
-    @IBAction func didPressExport(_ sender: UIButton) {
+
+    @IBAction private func didPressExport(_ sender: UIButton) {
         delegate?.didPressExport(for: indexPath, from: self)
     }
-    
-    @IBAction func didPressCopyFieldReference(_ sender: UIButton) {
+
+    @IBAction private func didPressCopyFieldReference(_ sender: UIButton) {
         delegate?.didPressCopyFieldReference(for: indexPath, from: self)
     }
 }

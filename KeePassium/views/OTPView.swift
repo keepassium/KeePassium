@@ -17,27 +17,27 @@ final class OTPView: UILabel {
     public var expiringColor: UIColor = .warningMessage {
         didSet { refresh() }
     }
-    
+
     public var value: String = "" {
         didSet {
             formattedValue = OTPCodeFormatter.decorate(otpCode: value)
             refresh()
         }
     }
-    
+
     public var remainingTime: TimeInterval = 0.0 {
         didSet { refresh() }
     }
     public var edgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-    
+
     public var tapHandler: (() -> Void)?
-    
+
     private var formattedValue: String = ""
-    
+
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: edgeInsets))
     }
-    
+
     override var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
         size.width += edgeInsets.left + edgeInsets.right
@@ -49,12 +49,12 @@ final class OTPView: UILabel {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
     }
-    
+
     private func setupView() {
         font = UIFont.preferredFont(forTextStyle: .body)
         textColor = normalColor
@@ -62,7 +62,7 @@ final class OTPView: UILabel {
         contentMode = .center
         textAlignment = .center
         lineBreakMode = .byTruncatingTail
-        
+
         let tapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(didTapValue(gestureRecognizer:))
@@ -70,7 +70,7 @@ final class OTPView: UILabel {
         self.addGestureRecognizer(tapGestureRecognizer)
         self.isUserInteractionEnabled = true
     }
-    
+
     public func refresh() {
         text = formattedValue
         guard remainingTime <= warningInterval else {
@@ -81,11 +81,11 @@ final class OTPView: UILabel {
             textColor = normalColor
             return
         }
-        
+
         let ticToc = remainingTime.truncatingRemainder(dividingBy: 2) - 1
         warningAnimation2(ticToc)
     }
-    
+
     private func warningAnimation1(_ ticToc: Double) {
         let scale: Double
         if ticToc > 0 {
@@ -102,10 +102,10 @@ final class OTPView: UILabel {
         animation.toValue = scale
         layer.add(animation, forKey: "warning")
     }
-    
+
     private func warningAnimation2(_ ticToc: Double) {
         let opacity: Float = ticToc > 0 ? 0.7 : 0
-        
+
         textColor = expiringColor
         layer.shadowOffset = .zero
         layer.masksToBounds = false
@@ -121,8 +121,7 @@ final class OTPView: UILabel {
             completion: nil
         )
     }
-    
-    
+
     @objc
     private func didTapValue(gestureRecognizer: UITapGestureRecognizer) {
         if gestureRecognizer.state == .ended {

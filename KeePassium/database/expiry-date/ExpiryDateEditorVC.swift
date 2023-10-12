@@ -24,7 +24,7 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var presetButton: UIButton!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    
+
     weak var delegate: ExpiryDateEditorDelegate?
     var canExpire = false
     var expiryDate = Date.now
@@ -40,7 +40,7 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
         formatter.unitsStyle = .full
         return formatter
     }()
-    
+
     private lazy var presetTimeFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.allowsFractionalUnits = false
@@ -51,7 +51,7 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
         formatter.maximumUnitCount = 1
         return formatter
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,19 +61,19 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
 
         expiresLabel.isAccessibilityElement = false
         neverExpiresSwitch.accessibilityLabel = LString.expiryDateNever
-        
+
         presetButton.setTitle(LString.titlePresets, for: .normal)
         presetButton.accessibilityLabel = LString.titlePresets
         presetButton.isHidden = false
         presetButton.menu = makePresetsMenu()
         presetButton.showsMenuAsPrimaryAction = true
-        
+
         preferredContentSize = CGSize(width: 320, height: 370)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         neverExpiresSwitch.isOn = !canExpire
         datePicker.date = expiryDate
         refresh()
@@ -92,19 +92,19 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
         let isRelativeTimeHidden = !datePicker.isEnabled
         self.remainingTimeLabel.isHidden = isRelativeTimeHidden
     }
-    
-    
+
+
     @available(iOS 14, *)
     private func makePresetMenuAction(_ delta: DateComponents) -> UIAction {
         let targetDate = Calendar.autoupdatingCurrent.date(byAdding: delta, to: .now) ?? .now
-        
+
         let title: String
         if targetDate.timeIntervalSinceNow < .hour {
             title = relativeTimeFormatter.localizedString(for: targetDate, relativeTo: .now)
         } else {
             title = presetTimeFormatter.string(from: .now, to: targetDate) ?? "?"
         }
-        
+
         let action = UIAction(title: title) { [weak self, delta] _ in
             let targetDate = Calendar.autoupdatingCurrent.date(byAdding: delta, to: .now) ?? .now
             self?.datePicker.date = targetDate
@@ -113,14 +113,14 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
         }
         return action
     }
-    
+
     private func makePresetsMenu() -> UIMenu {
         let todayMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
             makePresetMenuAction(DateComponents(second: 0))
         ])
         let weeksMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
             makePresetMenuAction(DateComponents(minute: 1, weekOfYear: 1)),
-            makePresetMenuAction(DateComponents(minute: 1, weekOfYear: 2))
+            makePresetMenuAction(DateComponents(minute: 1, weekOfYear: 2)),
         ])
         let monthsMenu = UIMenu.make(reverse: true, options: .displayInline, children: [
             makePresetMenuAction(DateComponents(month: 1, minute: 1)),
@@ -136,21 +136,21 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
             reverse: true,
             children: [todayMenu, weeksMenu, monthsMenu, yearsMenu])
     }
-    
-    
-    @IBAction func didToggleNeverExpiresSwitch(_ sender: UISwitch) {
+
+
+    @IBAction private func didToggleNeverExpiresSwitch(_ sender: UISwitch) {
         refresh()
     }
-    
-    @IBAction func didChangeDate(_ sender: UIDatePicker) {
+
+    @IBAction private func didChangeDate(_ sender: UIDatePicker) {
         refresh()
     }
-    
-    @IBAction func didPressCancel(_ sender: Any) {
+
+    @IBAction private func didPressCancel(_ sender: Any) {
         delegate?.didPressCancel(in: self)
     }
-    
-    @IBAction func didPressDone(_ sender: Any) {
+
+    @IBAction private func didPressDone(_ sender: Any) {
         assert(isModified)
         canExpire = !neverExpiresSwitch.isOn
         expiryDate = datePicker.date

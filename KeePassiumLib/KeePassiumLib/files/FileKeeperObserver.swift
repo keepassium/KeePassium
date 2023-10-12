@@ -22,11 +22,11 @@ public extension FileKeeperObserver {
 
 public class FileKeeperNotifications: Synchronizable {
     private weak var observer: FileKeeperObserver?
-    
+
     public init(observer: FileKeeperObserver) {
         self.observer = observer
     }
-    
+
     public func startObserving() {
         NotificationCenter.default.addObserver(
             self,
@@ -53,7 +53,7 @@ public class FileKeeperNotifications: Synchronizable {
         NotificationCenter.default.removeObserver(
             self, name: FileKeeperNotifier.pendingFileOperationNotification, object: nil)
     }
-    
+
     @objc private func didAddFile(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
             let urlRef = userInfo[FileKeeperNotifier.UserInfoKeys.urlReferenceKey] as? URLReference,
@@ -64,7 +64,7 @@ public class FileKeeperNotifications: Synchronizable {
             self.observer?.fileKeeper(didAddFile: urlRef, fileType: fileType)
         }
     }
-    
+
     @objc private func didRemoveFile(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
             let urlRef = userInfo[FileKeeperNotifier.UserInfoKeys.urlReferenceKey] as? URLReference,
@@ -75,7 +75,7 @@ public class FileKeeperNotifications: Synchronizable {
             self.observer?.fileKeeper(didRemoveFile: urlRef, fileType: fileType)
         }
     }
-    
+
     @objc private func gotPendingOperation(_ notification: Notification) {
         dispatchMain {
             self.observer?.fileKeeperHasPendingOperation()
@@ -86,30 +86,31 @@ public class FileKeeperNotifications: Synchronizable {
 class FileKeeperNotifier {
     fileprivate static let fileAddedNotification = Notification.Name("com.keepassium.fileKeeper.fileAdded")
     fileprivate static let fileRemovedNotification = Notification.Name("com.keepassium.fileKeeper.fileRemoved")
-    fileprivate static let pendingFileOperationNotification = Notification.Name("com.keepassium.fileKeeper.pendingOperation")
+    fileprivate static let pendingFileOperationNotification =
+        Notification.Name("com.keepassium.fileKeeper.pendingOperation")
 
     fileprivate enum UserInfoKeys {
         static let urlReferenceKey = "URLReference"
         static let fileTypeKey = "fileType"
     }
-    
+
     static func notifyFileAdded(urlRef: URLReference, fileType: FileType) {
         NotificationCenter.default.post(
             name: fileAddedNotification,
             object: nil,
             userInfo: [
-                UserInfoKeys.urlReferenceKey : urlRef,
+                UserInfoKeys.urlReferenceKey: urlRef,
                 UserInfoKeys.fileTypeKey: fileType
             ]
         )
     }
-    
+
     static func notifyFileRemoved(urlRef: URLReference, fileType: FileType) {
         NotificationCenter.default.post(
             name: fileRemovedNotification,
             object: nil,
             userInfo: [
-                UserInfoKeys.urlReferenceKey : urlRef,
+                UserInfoKeys.urlReferenceKey: urlRef,
                 UserInfoKeys.fileTypeKey: fileType
             ]
         )

@@ -23,7 +23,7 @@ extension IARError: LocalizedError {
 }
 
 extension IARError.ReceiptInitializationFailureReason: LocalizedError {
-    
+
     public var errorDescription: String? {
         switch self {
         case .appStoreReceiptNotFound:
@@ -37,7 +37,7 @@ extension IARError.ReceiptInitializationFailureReason: LocalizedError {
 }
 
 extension IARError.ValidationFailureReason: LocalizedError {
-    
+
     public var errorDescription: String? {
         switch self {
         case .hashValidation:

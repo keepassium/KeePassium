@@ -36,7 +36,6 @@ class FileInfoAccessoryButton: UIButton {
     }
 }
 
-
 class FileListCell: UITableViewCell {
     @IBOutlet weak var fileIconView: UIImageView!
     @IBOutlet weak var fileNameLabel: UILabel!
@@ -51,8 +50,8 @@ class FileListCell: UITableViewCell {
             accessoryButton.showsMenuAsPrimaryAction = (newValue != nil)
         }
     }
-    var accessoryTapHandler: ((FileListCell)->())? 
-    
+    var accessoryTapHandler: ((FileListCell) -> Void)? 
+
     fileprivate(set) var fileType: FileType!
 
     override func awakeFromNib() {
@@ -61,7 +60,7 @@ class FileListCell: UITableViewCell {
         accessoryButton = FileInfoAccessoryButton()
         setupCell()
     }
-    
+
     private func setupCell() {
         spinner.style = .medium
         accessoryView = accessoryButton
@@ -70,20 +69,20 @@ class FileListCell: UITableViewCell {
             action: #selector(didPressAccessoryButton(button:)),
             for: .touchUpInside)
     }
-    
+
     @objc
     private func didPressAccessoryButton(button: UIButton) {
         accessoryTapHandler?(self)
     }
-    
+
     public func showInfo(from urlRef: URLReference) {
         fileNameLabel?.text = urlRef.visibleFileName
-        
+
         if let error = urlRef.error {
             showFileError(error, for: urlRef)
             return
         }
-        
+
         urlRef.getCachedInfo(canFetch: false) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -94,7 +93,7 @@ class FileListCell: UITableViewCell {
             }
         }
     }
-    
+
     private func showFileInfo(_ fileInfo: FileInfo, for urlRef: URLReference) {
         let iconSymbol = urlRef.getIconSymbol(fileType: fileType)
         fileIconView?.image = .symbol(iconSymbol)
@@ -110,7 +109,7 @@ class FileListCell: UITableViewCell {
         }
         fileDetailLabel?.textColor = UIColor.auxiliaryText
     }
-    
+
     private func showFileError(_ error: FileAccessError?, for urlRef: URLReference) {
         let iconSymbol = urlRef.getIconSymbol(fileType: fileType)
         guard let error = error else {
@@ -125,7 +124,7 @@ class FileListCell: UITableViewCell {
         self.fileIconView?.sizeToFit()
         sizeToFit()
     }
-    
+
     var isAnimating: Bool {
         get { spinner.isAnimating }
         set {

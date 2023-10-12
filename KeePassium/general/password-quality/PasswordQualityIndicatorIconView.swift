@@ -56,7 +56,7 @@ final class PasswordQualityIndicatorIconView: UIView {
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             iconImageView.topAnchor.constraint(equalTo: topAnchor),
-            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         isAccessibilityElement = true
         accessibilityTraits = [.staticText]

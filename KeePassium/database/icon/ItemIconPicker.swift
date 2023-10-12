@@ -6,10 +6,10 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
+import UIKit
 
-protocol ItemIconPickerDelegate {
+protocol ItemIconPickerDelegate: AnyObject {
     func didPressCancel(in viewController: ItemIconPicker)
     func didSelect(standardIcon iconID: IconID, in viewController: ItemIconPicker)
     func didSelect(customIcon uuid: UUID, in viewController: ItemIconPicker)
@@ -25,10 +25,10 @@ final class ItemIconPickerSectionHeader: UICollectionReusableView {
 
 final class ItemIconPickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         let selectedBackgroundView = UIView(frame: bounds)
         selectedBackgroundView.layer.borderColor = UIColor.actionTint.cgColor
         selectedBackgroundView.layer.borderWidth = 1.0
@@ -44,21 +44,21 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
 
     private enum SectionID: Int {
         static let all: [SectionID] = [.standard, .custom]
-        
+
         case standard = 0
         case custom = 1
     }
-    
+
     var delegate: ItemIconPickerDelegate?
     var customIcons = [CustomIcon2]()
-    
+
     var isImportAllowed = true
 
     var isDownloadAllowed = true
 
     private let standardIconSet: DatabaseIconSet = Settings.current.databaseIconSet
     private var selectedPath: IndexPath?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = false
@@ -83,9 +83,9 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             setToolbarItems([.flexibleSpace(), downloadButton, .flexibleSpace()], animated: false)
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
 
         guard let selectedPath = selectedPath else {
             return
@@ -95,12 +95,12 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             at: selectedPath, animated: true,
             scrollPosition: .centeredVertically)
     }
-    
+
     func refresh() {
         collectionView.reloadData()
     }
-    
-    
+
+
     @IBAction private func didPressCancel(_ sender: UIBarButtonItem) {
         delegate?.didPressCancel(in: self)
     }
@@ -115,7 +115,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressDownloadIcon(in: self, at: popoverAnchor)
     }
-    
+
     override func getContextActionsForItem(at indexPath: IndexPath) -> [ContextualAction] {
         guard SectionID(rawValue: indexPath.section) == .some(.custom) else {
             return []
@@ -124,7 +124,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
         guard iconIndex >= 0 && iconIndex < customIcons.count else {
             return []
         }
-        
+
         let deleteAction = ContextualAction(
             title: LString.actionDelete,
             imageName: .trash,
@@ -139,7 +139,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
         return [deleteAction]
     }
 
-    
+
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         if customIcons.count > 0 {
             return SectionID.all.count
@@ -149,8 +149,8 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
 
     override func collectionView(
         _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int) -> Int
-    {
+        numberOfItemsInSection section: Int
+    ) -> Int {
         switch SectionID(rawValue: section) {
         case .standard:
             return IconID.all.count
@@ -165,14 +165,12 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
     override func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
-        ) -> UICollectionViewCell
-    {
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: cellID,
             for: indexPath)
             as! ItemIconPickerCell
-        DispatchQueue.global(qos: .userInitiated).async {
-            [standardIconSet, customIcons] in
+        DispatchQueue.global(qos: .userInitiated).async { [standardIconSet, customIcons] in
             let kpIcon: UIImage?
             switch SectionID(rawValue: indexPath.section) {
             case .standard:
@@ -188,7 +186,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             DispatchQueue.main.async {
                 let viewSize = cell.imageView.bounds
                 if let iconSize = kpIcon?.size,
-                   (iconSize.width > viewSize.width || iconSize.height > viewSize.height)
+                   iconSize.width > viewSize.width || iconSize.height > viewSize.height
                 {
                     cell.imageView.contentMode = .scaleAspectFit
                 } else {
@@ -197,7 +195,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
                 cell.imageView.image = kpIcon
             }
         }
-        
+
         if let selectedPath = selectedPath, selectedPath == indexPath {
             cell.isHighlighted = true
         } else {
@@ -208,8 +206,8 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
 
     override func collectionView(
         _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath)
-    {
+        didSelectItemAt indexPath: IndexPath
+    ) {
         switch SectionID(rawValue: indexPath.section) {
         case .standard:
             guard indexPath.row < IconID.all.count else {
@@ -250,7 +248,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
         sectionHeader.separator.isHidden = (indexPath.section == 0)
         return sectionHeader
     }
-    
+
     func selectIcon(for item: DatabaseItem?) {
         guard let item = item else {
             selectedPath = nil
@@ -279,7 +277,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
 }
 
 extension ItemIconPicker: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -290,7 +288,7 @@ extension ItemIconPicker: UICollectionViewDelegateFlowLayout {
             viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader,
             at: IndexPath(row: 0, section: section))
             as! ItemIconPickerSectionHeader
-        
+
         let horizontalMargins = collectionView.layoutMargins.left + collectionView.layoutMargins.right
         let targetWidth = collectionView.bounds.width - horizontalMargins
         var requiredLabelSize = header.titleLabel.sizeThatFits(

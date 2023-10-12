@@ -29,9 +29,9 @@ class DestinationGroupPickerCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
-    
+
     private var arrowImageView: UIImageView!
-    
+
     var isAllowedDestination: Bool = true {
         didSet {
             if isAllowedDestination {
@@ -44,13 +44,13 @@ class DestinationGroupPickerCell: UITableViewCell {
     fileprivate var state: CellState = .none {
         didSet { refresh() }
     }
-    
+
     override var indentationLevel: Int {
         didSet {
             leftConstraint.constant = CGFloat(indentationLevel) * indentationWidth
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         arrowImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
@@ -59,7 +59,7 @@ class DestinationGroupPickerCell: UITableViewCell {
         arrowImageView.preferredSymbolConfiguration = .init(textStyle: .body)
         self.accessoryView = arrowImageView
     }
-    
+
     func refresh() {
         switch state {
         case .none:
@@ -79,19 +79,19 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         var level: Int
         var isExpanded: Bool
         var children = [Node]() 
-        
-        init(group: Group, level: Int, isExpanded: Bool=false) {
+
+        init(group: Group, level: Int, isExpanded: Bool = false) {
             self.group = group
             self.level = level
             self.isExpanded = isExpanded
         }
     }
-    
+
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    
+
     public weak var delegate: DestinationGroupPickerDelegate?
     public private(set) var mode: ItemRelocationMode = .move
-    
+
     public private(set) weak var selectedGroup: Group? {
         didSet {
             if let selectedGroup = selectedGroup {
@@ -102,7 +102,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             }
         }
     }
-    
+
     public weak var rootGroup: Group? {
         didSet {
             if let rootGroup = rootGroup {
@@ -115,12 +115,11 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             refresh()
         }
     }
-    
+
     private var rootNode: Node?
     private var flatNodes = [Node]()
     private var canSwitchDatabase = true
 
-    
     public static func create(
         mode: ItemRelocationMode,
         canSwitchDatabase: Bool = true
@@ -130,7 +129,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         vc.canSwitchDatabase = canSwitchDatabase
         return vc
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         switch mode {
@@ -139,7 +138,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         case .copy:
             doneButton.title = LString.actionCopy
         }
-        
+
         let switchDatabaseButton = UIBarButtonItem(
             title: LString.actionSwitchDatabase,
             style: .plain,
@@ -147,7 +146,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             action: #selector(didPressSwitchDatabase(_:))
         )
         switchDatabaseButton.isEnabled = canSwitchDatabase
-        
+
         setToolbarItems(
             [
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -157,7 +156,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             animated: false
         )
     }
-    
+
     func refresh() {
         if let rootGroup = rootGroup {
             title = rootGroup.name
@@ -167,13 +166,13 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         rebuildFlatNodes()
         tableView.reloadData()
     }
-    
+
     public func expandGroup(_ group: Group?) {
         guard let group = group, let rootNode = rootNode else { return }
-        
+
         guard let expandedNode = expandNode(for: group, in: rootNode) else { return }
         refresh()
-        
+
         guard let rowForNode = (flatNodes.firstIndex { $0 === expandedNode }) else { return }
         DispatchQueue.main.async { [weak self, weak group] in
             self?.selectedGroup = group
@@ -184,12 +183,12 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             )
         }
     }
-    
-    
+
+
     private func buildNodeTree(parent: Node) {
         guard let group = parent.group else { return }
         parent.children.removeAll()
-        
+
         let groupSortOrder = Settings.current.groupSortOrder
         let subGroupsSorted = group.groups.sorted { return groupSortOrder.compare($0, $1) }
         subGroupsSorted.forEach {
@@ -198,20 +197,20 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             buildNodeTree(parent: subNode)
         }
     }
-    
+
     private func rebuildFlatNodes() {
         flatNodes.removeAll(keepingCapacity: true)
         if let rootNode = rootNode {
             flatten(rootNode, to: &flatNodes)
         }
     }
-    
+
     private func flatten(_ node: Node, to flatNodes: inout [Node]) {
         flatNodes.append(node)
         guard node.isExpanded else { return }
         node.children.forEach { flatten($0, to: &flatNodes) }
     }
-    
+
     private func setSubtree(node: Node, expanded: Bool) {
         node.isExpanded = expanded
         node.children.forEach { setSubtree(node: $0, expanded: expanded) }
@@ -232,31 +231,31 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         return nil
     }
 
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard section == 0 else { return nil }
         return LString.callToActionChooseDestinationGroup
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flatNodes.count
     }
-    
+
     override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
         let row = indexPath.row
         return flatNodes[row].level
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: cellID,
             for: indexPath)
             as! DestinationGroupPickerCell
-        
+
         let row = indexPath.row
         let node = flatNodes[row]
         if let group = node.group {
@@ -265,7 +264,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             cell.isAllowedDestination = delegate?.shouldSelectGroup(group, in: self) ?? false
             cell.subtitleLabel?.text = ""
         }
-        
+
         if node.children.isEmpty {
             cell.state = .none
         } else {
@@ -274,7 +273,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         cell.indentationLevel = node.level
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
         let node = flatNodes[row]
@@ -293,14 +292,14 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
             self.selectedGroup = nil
         }
     }
-    
-    
+
+
     func collapseNode(at index: Int) {
         let oldRowCount = flatNodes.count
         setSubtree(node: flatNodes[index], expanded: false)
         rebuildFlatNodes()
         let newRowCount = flatNodes.count
-        
+
         let nRowsToRemove = oldRowCount - newRowCount
         tableView.beginUpdates()
         for i in 0..<nRowsToRemove {
@@ -312,13 +311,13 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
         tableView.endUpdates()
     }
-    
+
     func expandNode(at index: Int) {
         let oldRowCount = flatNodes.count
         flatNodes[index].isExpanded = true
         rebuildFlatNodes()
         let newRowCount = flatNodes.count
-        
+
         let nRowsToAdd = newRowCount - oldRowCount
         tableView.beginUpdates()
         for i in 0..<nRowsToAdd {
@@ -331,19 +330,19 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
         tableView.endUpdates()
     }
 
-    
-    @IBAction func didPressCancelButton(_ sender: Any) {
+
+    @IBAction private func didPressCancelButton(_ sender: Any) {
         delegate?.didPressCancel(in: self)
     }
-    
-    @IBAction func didPressDoneButton(_ sender: Any) {
+
+    @IBAction private func didPressDoneButton(_ sender: Any) {
         guard let selectedGroup = selectedGroup else {
             assertionFailure()
             return
         }
         delegate?.didSelectGroup(selectedGroup, in: self)
     }
-    
+
     @objc
     private func didPressSwitchDatabase(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)

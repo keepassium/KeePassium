@@ -11,14 +11,14 @@ import KeePassiumLib
 class ProtectedTextField: ValidatingTextField {
     private let horizontalInsets = CGFloat(8.0)
     private let verticalInsets = CGFloat(2.0)
-    
+
     private let unhideImage = UIImage.symbol(.eye)!
     private let hideImage = UIImage.symbol(.eyeFill)!
 
     private var toggleButton: UIButton! 
     private var originalContentType: UITextContentType?
     private var originalAutocorrectionType: UITextAutocorrectionType = .default
-    
+
     override var isSecureTextEntry: Bool {
         didSet {
             toggleButton?.isSelected = !isSecureTextEntry
@@ -29,12 +29,12 @@ class ProtectedTextField: ValidatingTextField {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
     }
-    
+
     private func setupView() {
         setupVisibilityAccessory()
         allowAutoFillPrompt(Settings.current.acceptAutoFillInput)
@@ -45,7 +45,7 @@ class ProtectedTextField: ValidatingTextField {
             name: UIApplication.willResignActiveNotification,
             object: nil)
     }
-    
+
     private func setupVisibilityAccessory() {
         toggleButton = UIButton(type: .custom)
         toggleButton.tintColor = UIColor.actionTint 
@@ -79,17 +79,17 @@ class ProtectedTextField: ValidatingTextField {
             width: hideImage.size.width + 2 * horizontalInsets,
             height: hideImage.size.height + 2 * verticalInsets)
     }
-    
+
     @objc
     func resetVisibility(_ sender: Any) {
         isSecureTextEntry = true
     }
-    
+
     @objc
     func toggleVisibility(_ sender: Any) {
         isSecureTextEntry = !isSecureTextEntry
     }
-    
+
     func allowAutoFillPrompt(_ allowed: Bool) {
         guard #available(iOS 12, *) else {
             return

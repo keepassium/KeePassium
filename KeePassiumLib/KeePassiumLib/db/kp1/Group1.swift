@@ -24,10 +24,10 @@ public class Group1: Group {
         case groupFlags       = 0x0009
         case end              = 0xFFFF
     }
-    
+
     public static let backupGroupName = "Backup" 
     public static let backupGroupIconID = IconID.trashBin
-    
+
     private(set)  var id: Group1ID
     internal var level: Int16
     private(set)  var flags: Int32 
@@ -43,39 +43,39 @@ public class Group1: Group {
             }
         }
     }
-    
+
     override init(database: Database?) {
         id = -1
         level = 0
         flags = 0
         super.init(database: database)
-        
+
         canExpire = false
     }
-    
+
     deinit {
         erase()
     }
-    
+
     override public func erase() {
         id = -1
         level = 0
         flags = 0
         super.erase()
-        
+
         canExpire = false
     }
-    
+
     override public func isNameReserved(name: String) -> Bool {
         return name == Group1.backupGroupName
     }
-    
+
     override public func clone(makeNewUUID: Bool) -> Group {
         let copy = Group1(database: database)
         apply(to: copy, makeNewUUID: makeNewUUID)
         return copy
     }
-    
+
     override public func apply(to target: Group, makeNewUUID: Bool) {
         super.apply(to: target, makeNewUUID: makeNewUUID)
         guard let targetGroup1 = target as? Group1 else {
@@ -87,7 +87,7 @@ public class Group1: Group {
         targetGroup1.level = level
         targetGroup1.flags = flags
     }
-    
+
     override public func add(group: Group) {
         super.add(group: group)
         (group as! Group1).level = self.level + 1
@@ -104,55 +104,55 @@ public class Group1: Group {
         super.remove(entry: entry)
         (entry as! Entry1).groupID = -1
     }
-    
+
     override public func createEntry(detached: Bool = false) -> Entry {
         let newEntry = Entry1(database: database)
         newEntry.uuid = UUID()
-        
+
         if self.iconID != Group.defaultIconID && self.iconID != Group.defaultOpenIconID {
             newEntry.iconID = self.iconID
         }
-        
+
         newEntry.isDeleted = isDeleted
-        
+
         newEntry.creationTime = Date.now
         newEntry.lastAccessTime = Date.now
         newEntry.lastModificationTime = Date.now
         newEntry.expiryTime = Date.kp1Never
-        
+
         newEntry.groupID = self.id
         if !detached {
             self.add(entry: newEntry)
         }
         return newEntry
     }
-    
+
     override public func createGroup(detached: Bool = false) -> Group {
         let newGroup = Group1(database: database)
         newGroup.uuid = UUID()
         newGroup.flags = 0
-        
+
         newGroup.id = (database as! Database1).createNewGroupID()
-        
+
         newGroup.iconID = self.iconID
         newGroup.isDeleted = self.isDeleted
-        
+
         newGroup.creationTime = Date.now
         newGroup.lastAccessTime = Date.now
         newGroup.lastModificationTime = Date.now
         newGroup.expiryTime = Date.kp1Never
-        
+
         newGroup.level = self.level + 1
         if !detached {
             self.add(group: newGroup)
         }
         return newGroup
     }
-    
+
     func load(from stream: ByteArray.InputStream) throws {
         Diag.verbose("Loading group")
         erase()
-        
+
         while stream.hasBytesAvailable {
             guard let fieldIDraw = stream.readUInt16() else {
                 throw Database1.FormatError.prematureDataEnd
@@ -167,7 +167,7 @@ public class Group1: Group {
                 throw Database1.FormatError.corruptedField(fieldName: "Group/FieldSize")
             }
             let fieldSize = Int(_fieldSize)
-            
+
             switch fieldID {
             case .reserved:
                 _ = stream.read(count: fieldSize) 
@@ -237,17 +237,17 @@ public class Group1: Group {
                 guard let _ = stream.read(count: fieldSize) else {
                     throw Database1.FormatError.prematureDataEnd
                 }
-                if (level == 0) && (name == Group1.backupGroupName) { //TODO: also check for translated "Backup"
+                if (level == 0) && (name == Group1.backupGroupName) { // TODO: also check for translated "Backup"
                     self.isDeleted = true
                 }
                 return
             } 
         } 
-        
+
         Diag.warning("Group data missing the .end field")
         throw Database1.FormatError.prematureDataEnd
     }
-    
+
     func write(to stream: ByteArray.OutputStream) {
         func writeField(fieldID: FieldID, data: ByteArray, addTrailingZero: Bool = false) {
             stream.write(value: fieldID.rawValue)

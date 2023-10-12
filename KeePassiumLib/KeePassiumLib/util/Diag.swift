@@ -30,7 +30,7 @@ public class Diag {
             }
         }
     }
-    
+
     public struct Item {
         public var timestamp: TimeInterval
         public var level: Level
@@ -42,14 +42,19 @@ public class Diag {
             return "\(String(format: "%.3f", timestamp)) \(level.asString) \t\(file):\(line) \t\(function) \t\(message)"
         }
     }
-    
+
     private static let level = Level.debug 
     private static let instance = Diag()
     private let queue = DispatchQueue(label: "com.KeePassium.diagnostics")
     private var items = [Item]()
     private var startTime: TimeInterval = Date.timeIntervalSinceReferenceDate
-    
-    public class func verbose(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+
+    public class func verbose(
+        _ message: String,
+        file: String = #file,
+        function: String = #function,
+        line: Int = #line
+    ) {
         guard Diag.level.rawValue <= Level.verbose.rawValue else { return }
         let item = Item(
             timestamp: Date.timeIntervalSinceReferenceDate - instance.startTime,
@@ -60,7 +65,12 @@ public class Diag {
             line: line)
         instance.add(item: item)
     }
-    public class func debug(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+    public class func debug(
+        _ message: String,
+        file: String = #file,
+        function: String = #function,
+        line: Int = #line
+    ) {
         guard Diag.level.rawValue <= Level.debug.rawValue else { return }
         let item = Item(
             timestamp: Date.timeIntervalSinceReferenceDate - instance.startTime,
@@ -71,7 +81,12 @@ public class Diag {
             line: line)
         instance.add(item: item)
     }
-    public class func info(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+    public class func info(
+        _ message: String,
+        file: String = #file,
+        function: String = #function,
+        line: Int = #line
+    ) {
         guard Diag.level.rawValue <= Level.info.rawValue else { return }
         let item = Item(
             timestamp: Date.timeIntervalSinceReferenceDate - instance.startTime,
@@ -82,7 +97,12 @@ public class Diag {
             line: line)
         instance.add(item: item)
     }
-    public class func warning(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+    public class func warning(
+        _ message: String,
+        file: String = #file,
+        function: String = #function,
+        line: Int = #line
+    ) {
         guard Diag.level.rawValue <= Level.warning.rawValue else { return }
         let item = Item(
             timestamp: Date.timeIntervalSinceReferenceDate - instance.startTime,
@@ -93,7 +113,12 @@ public class Diag {
             line: line)
         instance.add(item: item)
     }
-    public class func error(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+    public class func error(
+        _ message: String,
+        file: String = #file,
+        function: String = #function,
+        line: Int = #line
+    ) {
         guard Diag.level.rawValue <= Level.error.rawValue else { return }
         let item = Item(
             timestamp: Date.timeIntervalSinceReferenceDate - instance.startTime,
@@ -109,7 +134,7 @@ public class Diag {
         instance.startTime = Date.timeIntervalSinceReferenceDate
         instance.items.removeAll(keepingCapacity: false)
     }
-    
+
     private func add(item: Item) {
         queue.async {
             print(item.toString())
@@ -121,7 +146,7 @@ public class Diag {
         let url = URL(fileURLWithPath: fName, isDirectory: false)
         return url.lastPathComponent
     }
-    
+
     private static func prettifyFunctionName(_ fName: String) -> String {
         if fName.contains("(") {
            return fName
@@ -129,15 +154,15 @@ public class Diag {
             return fName + "()"
         }
     }
-    
-    public static func itemsSnapshot() -> Array<Item> {
+
+    public static func itemsSnapshot() -> [Item] {
         return Array(instance.items)
     }
-    
+
     public static func toString() -> String {
         return instance._toString()
     }
-    
+
     private func _toString() -> String {
         var lines = [String]()
         queue.sync {
@@ -147,7 +172,7 @@ public class Diag {
         }
         return lines.joined(separator: "\n")
     }
-    
+
     public static func isDeepDebugMode() -> Bool {
         guard Settings.current.isTestEnvironment else {
             return false
@@ -155,14 +180,14 @@ public class Diag {
         let debugDirURL = FileKeeper.shared.getDebugModeDirURL()
         return FileManager.default.fileExists(atPath: debugDirURL.absoluteString)
     }
-    
+
     public static func writeToPersistentLog(_ string: String) {
         guard Settings.current.isTestEnvironment else { return }
-        
+
         let fileURL = FileKeeper.shared
             .getDebugModeDirURL()
             .appendingPathComponent("debug-log.txt")
-        
+
         let stringWithHeader = "This is a KeePassium debug log. Please send it to info@keepassium.com.\nThank you for your help!\n\n\(string)"
         try? stringWithHeader.write(to: fileURL, atomically: false, encoding: .utf8)
     }

@@ -62,9 +62,9 @@ final class HIBPService {
             completionHandler(.failure(.invalidHash))
             return
         }
-        
+
         let url = Constants.hibpRangeURL.appendingPathComponent(hashPrefix)
-        
+
         let task = urlSession.dataTask(with: .init(url: url)) { data, _, error in
             if let error = error {
                 Diag.error("HIBP request failed [hasPrefix: \(hashPrefix), error: \(error)]")

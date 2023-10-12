@@ -6,6 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
+// swiftlint:disable line_length
 extension LString {
     public enum About {
         public static let titlePrivacyPolicy = NSLocalizedString(
@@ -13,7 +14,7 @@ extension LString {
             bundle: Bundle.framework,
             value: "Privacy Policy",
             comment: "Section: privacy policy")
-        
+
         public static let offlinePrivacyPolicyText = NSLocalizedString(
             "[PrivacyPolicy/Offline/text]",
             bundle: Bundle.framework,
@@ -26,3 +27,4 @@ extension LString {
             comment: "A brief summary of the privacy policy (for online mode)")
     }
 }
+// swiftlint:enable line_length

@@ -11,20 +11,20 @@ import KeePassiumLib
 class AppHistoryCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     private let router: NavigationRouter
     private let viewer: AppHistoryViewerVC
-    
+
     init(router: NavigationRouter) {
         self.router = router
         viewer = AppHistoryViewerVC.instantiateFromStoryboard()
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
          AppHistory.load(completion: { [weak self] appHistory in
             self?.viewer.appHistory = appHistory

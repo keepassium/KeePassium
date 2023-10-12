@@ -12,9 +12,9 @@ public final class PasswordGeneratorParams: Codable, Equatable {
     public var basicModeConfig = BasicPasswordGeneratorParams()
     public var customModeConfig = CustomPasswordGeneratorParams()
     public var passphraseModeConfig = PassphraseGeneratorParams()
-    
+
     public var lastMode = PasswordGeneratorMode.basic
-    
+
     init() {
     }
 
@@ -31,7 +31,7 @@ extension PasswordGeneratorParams {
         let encodedData = try! encoder.encode(self)
         return encodedData
     }
-    
+
     public static func deserialize(from data: Data?) -> PasswordGeneratorParams? {
         guard let data = data else { return nil }
         let decoder = JSONDecoder()

@@ -11,34 +11,34 @@ import StoreKit
 final public class StoreReviewSuggester {
     private static let defaultsKey = "storeReviewSuggester"
     private static let reviewFrequency = 0.015 
-    
+
     private static let minDaysSinceReview = 365.0 / 3 
     private static let minSessionsSinceReview = 10
     private static let minDaysSinceTrouble = 7.0
     private static let minSessionsSinceTrouble = 10
-    
+
     private static let minIntervalSinceReview: TimeInterval = minDaysSinceReview * .day
     private static let minIntervalSinceTrouble: TimeInterval = minDaysSinceTrouble * .day
-    
+
     public enum EventType {
         case sessionStart
         case trouble
         case reviewRequest
     }
-    
+
     public enum Occasion {
         case didOpenDatabase
         case didPurchasePremium
         case didEditItem
     }
-    
+
     private struct Parameters: Codable, CustomDebugStringConvertible {
         var lastReviewedVersion: String
         var lastReviewDate: Date
         var sessionsSinceReview: Int
         var lastTroubleDate: Date
         var sessionsSinceTrouble: Int
-        
+
         var debugDescription: String {
             return """
                 {
@@ -51,14 +51,14 @@ final public class StoreReviewSuggester {
                 """
         }
     }
-    
-    
+
+
     private static func withParams(_ handler: (inout Parameters) -> Void) {
         var params = getParams()
         handler(&params)
         setParams(params)
     }
-    
+
     private static func getParams() -> Parameters {
         let defaults = UserDefaults.appGroupShared
         if let storedParamsData = defaults.object(forKey: defaultsKey) as? Data {
@@ -70,7 +70,7 @@ final public class StoreReviewSuggester {
                 assertionFailure()
             }
         }
-        
+
         let params = Parameters(
             lastReviewedVersion: "1.21",
             lastReviewDate: Date.now.addingTimeInterval(-minIntervalSinceReview),
@@ -81,7 +81,7 @@ final public class StoreReviewSuggester {
         Diag.debug("Store review suggester initialized")
         return params
     }
-    
+
     private static func setParams(_ params: Parameters) {
         let encoder = JSONEncoder()
         guard let encodedData = try? encoder.encode(params) else {
@@ -91,8 +91,8 @@ final public class StoreReviewSuggester {
         }
         UserDefaults.appGroupShared.set(encodedData, forKey: defaultsKey)
     }
-    
-    
+
+
     public static func registerEvent(_ event: EventType) {
         switch event {
         case .sessionStart:
@@ -112,12 +112,12 @@ final public class StoreReviewSuggester {
             }
         }
     }
-    
+
     public static func maybeShowAppReview(appVersion: String, occasion: Occasion) {
         guard isGoodTimeForReview(appVersion: appVersion) else {
             return
         }
-        
+
         let weekNumberBase4 = Date.now.iso8601WeekOfYear % 4
         switch (occasion, weekNumberBase4) {
         case (.didOpenDatabase, 0),    
@@ -129,13 +129,13 @@ final public class StoreReviewSuggester {
         default:
             return
         }
-        
+
         let shouldShowReview = Double.random(in: 0..<1) < reviewFrequency
         if shouldShowReview {
             showAppReview(appVersion: appVersion)
         }
     }
-    
+
     private static func showAppReview(appVersion: String) {
         guard let appScenes = AppGroup.applicationShared?.connectedScenes,
               let activeScene = appScenes.first(where: { $0.activationState == .foregroundActive }),
@@ -149,30 +149,30 @@ final public class StoreReviewSuggester {
         }
         SKStoreReviewController.requestReview(in: currentWindowScene)
     }
-    
+
     private static func isGoodTimeForReview(appVersion: String) -> Bool {
         let params = getParams()
         let timeSinceReview = Date.now.timeIntervalSince(params.lastReviewDate)
         let timeSinceTrouble = Date.now.timeIntervalSince(params.lastTroubleDate)
-        
+
         guard appVersion != params.lastReviewedVersion else {
             return false
         }
-        
+
         guard timeSinceReview > minIntervalSinceReview else {
             return false
         }
-        
+
         guard params.sessionsSinceReview > minSessionsSinceReview else {
             return false
         }
-        
+
         guard timeSinceTrouble > minIntervalSinceTrouble &&
               params.sessionsSinceTrouble > minSessionsSinceTrouble
         else {
             return false
         }
-        
+
         return true
     }
 }

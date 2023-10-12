@@ -9,8 +9,8 @@
 import KeePassiumLib
 
 extension UIViewController {
-    
-    func showErrorAlert(_ error: Error, title: String?=nil) {
+
+    func showErrorAlert(_ error: Error, title: String? = nil) {
         var message = error.localizedDescription
         if let localizedError = error as? LocalizedError,
            let recoverySuggestion = localizedError.recoverySuggestion
@@ -19,25 +19,25 @@ extension UIViewController {
         }
         showErrorAlert(message, title: title)
     }
-    
-    func showErrorAlert(_ message: String, title: String?=nil) {
+
+    func showErrorAlert(_ message: String, title: String? = nil) {
         let alert = UIAlertController.make(
             title: title ?? LString.titleError,
             message: message,
             dismissButtonTitle: LString.actionOK)
         present(alert, animated: true, completion: nil)
-        
+
         StoreReviewSuggester.registerEvent(.trouble)
     }
-    
+
     func ensuringNetworkAccessPermitted(allowed completion: @escaping () -> Void) {
-        requestingNetworkAccessPermission() { isAllowed in
+        requestingNetworkAccessPermission { isAllowed in
             if isAllowed {
                 completion()
             }
         }
     }
-    
+
     func requestingNetworkAccessPermission(completion: @escaping (_ isAllowed: Bool) -> Void) {
         if Settings.current.isNetworkAccessAllowed {
             completion(true)
@@ -60,7 +60,7 @@ extension UIViewController {
         }
         present(networkModeAlert, animated: true)
     }
-    
+
     private func getHostViewForToastNotifications() -> UIView {
         var hostVC: UIViewController = self
         if hostVC is UITableViewController, let navVC = self.navigationController {
@@ -71,15 +71,15 @@ extension UIViewController {
         }
         return hostVC.view
     }
-    
+
     func showNotification(
         _ message: String,
         title: String? = nil,
         image: UIImage? = nil,
         position: ToastPosition = .top,
         action: ToastAction? = nil,
-        duration: TimeInterval = 5.0)
-    {
+        duration: TimeInterval = 5.0
+    ) {
         var style = ToastStyle()
         style.buttonColor = .actionTint
 
@@ -99,14 +99,14 @@ extension UIViewController {
             completion: nil
         )
     }
-    
+
     func showSuccessNotification(_ message: String, icon: SymbolName) {
         showNotification(
             message,
             image: .symbol(icon)
         )
     }
-    
+
     func hideAllToasts() {
         getHostViewForToastNotifications().hideAllToasts()
     }

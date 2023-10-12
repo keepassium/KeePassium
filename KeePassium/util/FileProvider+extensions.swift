@@ -44,24 +44,24 @@ extension FileProvider {
             return .fileProviderSynologyDrive
         case .usbDrive:
             return .fileProviderUSB
-        case .amerigo:        fallthrough
-        case .amerigoFree:    fallthrough
-        case .feFileExplorer: fallthrough
-        case .megaNz:         fallthrough
-        case .magentaCloud:   fallthrough
-        case .qnapQFile:      fallthrough
-        case .readdleDocuments: fallthrough
-        case .resilioSync:    fallthrough
-        case .seafilePro:     fallthrough
-        case .stratospherixFileBrowser: fallthrough
-        case .syncCom:        fallthrough
-        case .tresorit:       fallthrough
-        case .yandexDisk:     fallthrough
-        case .other:
+        case .amerigo,
+            .amerigoFree,
+            .feFileExplorer,
+            .megaNz,
+            .magentaCloud,
+            .qnapQFile,
+            .readdleDocuments,
+            .resilioSync,
+            .seafilePro,
+            .stratospherixFileBrowser,
+            .syncCom,
+            .tresorit,
+            .yandexDisk,
+            .other:
             return .fileProviderGeneric
         }
     }
-    
+
     public static func getLocalStorageIconSymbol() -> SymbolName {
         if ProcessInfo.isRunningOnMac {
             return .fileProviderGeneric

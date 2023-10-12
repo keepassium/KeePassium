@@ -13,7 +13,7 @@ protocol SettingsViewControllerDelegate: AnyObject {
     func didPressUpgradeToPremium(in viewController: SettingsVC)
     func didPressManageSubscription(in viewController: SettingsVC)
     func didPressShowAppHistory(in viewController: SettingsVC)
- 
+
     func didPressAppearanceSettings(in viewController: SettingsVC)
     func didPressSearchSettings(in viewController: SettingsVC)
     func didPressAutoFillSettings(in viewController: SettingsVC)
@@ -21,7 +21,7 @@ protocol SettingsViewControllerDelegate: AnyObject {
     func didPressDataProtectionSettings(in viewController: SettingsVC)
     func didPressNetworkAccessSettings(in viewController: SettingsVC)
     func didPressBackupSettings(in viewController: SettingsVC)
-    
+
     func didPressShowDiagnostics(in viewController: SettingsVC)
     func didPressContactSupport(at popoverAnchor: PopoverAnchor, in viewController: SettingsVC)
     func didPressDonations(at popoverAnchor: PopoverAnchor, in viewController: SettingsVC)
@@ -35,27 +35,27 @@ final class SettingsVC: UITableViewController, Refreshable {
     @IBOutlet private weak var dataBackupCell: UITableViewCell!
     @IBOutlet private weak var autoFillCell: UITableViewCell!
     @IBOutlet private weak var networkAccessCell: UITableViewCell!
-    
+
     @IBOutlet private weak var searchCell: UITableViewCell!
     @IBOutlet private weak var autoUnlockStartupDatabaseLabel: UILabel!
     @IBOutlet private weak var autoUnlockStartupDatabaseSwitch: UISwitch!
     @IBOutlet private weak var appearanceCell: UITableViewCell!
-    
+
     @IBOutlet private weak var diagnosticLogCell: UITableViewCell!
     @IBOutlet private weak var contactSupportCell: UITableViewCell!
     @IBOutlet private weak var tipBoxCell: UITableViewCell!
     @IBOutlet private weak var aboutAppCell: UITableViewCell!
-    
+
     @IBOutlet private weak var premiumPurchaseCell: UITableViewCell!
     @IBOutlet private weak var premiumStatusCell: UITableViewCell!
     @IBOutlet private weak var manageSubscriptionCell: UITableViewCell!
     @IBOutlet private weak var appHistoryCell: UITableViewCell!
-    
+
     weak var delegate: SettingsViewControllerDelegate?
-    
+
     private var isPremiumSectionHidden = false
     private var premiumSectionFooter: String?
-    
+
     private enum CellIndexPath {
         static let premiumSectionIndex = 1
         static let premiumTrial = IndexPath(row: 0, section: premiumSectionIndex)
@@ -66,7 +66,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         static let tipBoxCell = IndexPath(row: 1, section: supportSectionIndex)
     }
     private var hiddenIndexPaths = Set<IndexPath>()
-    
+
     private lazy var usageTimeFormatter: DateComponentsFormatter = {
         let timeFormatter = DateComponentsFormatter()
         timeFormatter.allowedUnits = [.hour, .minute]
@@ -76,7 +76,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         timeFormatter.unitsStyle = .full
         return timeFormatter
     }()
-    
+
     private lazy var expiryTimeFormatter: DateComponentsFormatter = {
         let timeFormatter = DateComponentsFormatter()
         timeFormatter.allowedUnits = [.day, .hour, .minute]
@@ -86,13 +86,12 @@ final class SettingsVC: UITableViewController, Refreshable {
         timeFormatter.unitsStyle = .full
         return timeFormatter
     }()
-    
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
-        
+
         if BusinessModel.type == .prepaid || LicenseManager.shared.hasActiveBusinessLicense() {
             isPremiumSectionHidden = true
             premiumSectionFooter = nil
@@ -102,7 +101,7 @@ final class SettingsVC: UITableViewController, Refreshable {
             setCellVisibility(tipBoxCell, isHidden: true)
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureCells()
@@ -111,30 +110,30 @@ final class SettingsVC: UITableViewController, Refreshable {
 
     private func configureCells() {
         setLocalizedStrings()
-        
+
         premiumPurchaseCell.imageView?.image = UIImage.premiumBadge
         tipBoxCell.imageView?.image = .symbol(.heart, tint: .red)
     }
-    
+
     private func setLocalizedStrings() {
         appHistoryCell.textLabel?.text = LString.titleAppHistory
         premiumPurchaseCell.textLabel?.text = LString.actionUpgradeToPremium
         premiumStatusCell.textLabel?.text = LString.premiumVersion
         premiumStatusCell.detailTextLabel?.text = nil 
         manageSubscriptionCell.textLabel?.text = LString.actionManageSubscriptions
-        
+
         autoUnlockStartupDatabaseLabel.text = LString.autoOpenPreviousDatabase
-        
+
         appearanceCell.textLabel?.text = LString.titleAppearanceSettings
         autoFillCell.textLabel?.text = LString.titleAutoFillSettings
         searchCell.textLabel?.text = LString.titleSearchSettings
-        
+
         appSafetyCell.textLabel?.text = LString.titleAppProtectionSettings
         dataSafetyCell.textLabel?.text = LString.titleDataProtectionSettings
         dataSafetyCell.detailTextLabel?.text = LString.subtitleDataProtectionSettings
-        
+
         networkAccessCell.textLabel?.text = LString.titleNetworkAccessSettings
-        
+
         dataBackupCell.textLabel?.text = LString.titleDatabaseBackupSettings
         contactSupportCell.textLabel?.text = LString.actionContactUs
         contactSupportCell.detailTextLabel?.text = LString.subtitleContactUs
@@ -144,7 +143,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         diagnosticLogCell.detailTextLabel?.text = LString.subtitleDiagnosticLog
         aboutAppCell.textLabel?.text = LString.titleAboutKeePassium
     }
-    
+
     func refresh() {
         let settings = Settings.current
         autoUnlockStartupDatabaseSwitch.isOn = settings.isAutoUnlockStartupDatabase
@@ -165,8 +164,8 @@ final class SettingsVC: UITableViewController, Refreshable {
         }
         contactSupportCell.accessibilityValue = SupportEmailComposer.getSupportEmail()
     }
-    
-    
+
+
     private func setCells(show cellsToShow: [UITableViewCell], hide cellsToHide: [UITableViewCell]) {
         cellsToShow.forEach {
             self.setCellVisibility($0, isHidden: false)
@@ -175,7 +174,7 @@ final class SettingsVC: UITableViewController, Refreshable {
             self.setCellVisibility($0, isHidden: true)
         }
     }
-    
+
     private func setCellVisibility(_ cell: UITableViewCell, isHidden: Bool) {
         cell.isHidden = isHidden
         if isHidden {
@@ -206,41 +205,41 @@ final class SettingsVC: UITableViewController, Refreshable {
             }
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if hiddenIndexPaths.contains(indexPath) {
             return 0.01
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == CellIndexPath.premiumSectionIndex && isPremiumSectionHidden {
             return 0.01
         }
         return super.tableView(tableView, heightForFooterInSection: section)
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == CellIndexPath.premiumSectionIndex && isPremiumSectionHidden {
             return 0.01
         }
         return super.tableView(tableView, heightForHeaderInSection: section)
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == CellIndexPath.premiumSectionIndex && isPremiumSectionHidden {
             return nil
         }
         return super.tableView(tableView, titleForHeaderInSection: section)
     }
-    
-    
+
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        
+
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         switch selectedCell {
         case appSafetyCell:
@@ -283,23 +282,23 @@ final class SettingsVC: UITableViewController, Refreshable {
         }
         return super.tableView(tableView, titleForFooterInSection: section)
     }
-    
-    @IBAction func didToggleAutoUnlockStartupDatabase(_ sender: UISwitch) {
+
+    @IBAction private func didToggleAutoUnlockStartupDatabase(_ sender: UISwitch) {
         Settings.current.isAutoUnlockStartupDatabase = sender.isOn
     }
-    
-    
+
+
     #if DEBUG
     private let premiumRefreshInterval = 1.0
     #else
     private let premiumRefreshInterval = 20.0
     #endif
-    
+
     @objc private func refreshPremiumStatus() {
         if BusinessModel.type == .prepaid || LicenseManager.shared.hasActiveBusinessLicense() {
             return
         }
-        
+
         let premiumManager = PremiumManager.shared
         premiumManager.usageMonitor.refresh()
         premiumManager.updateStatus()
@@ -324,16 +323,15 @@ final class SettingsVC: UITableViewController, Refreshable {
             }
             displayPurchasedStatus(fallbackDate: fallbackDate, purchaseHistory)
         }
-        
+
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) {
-            [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + premiumRefreshInterval) { [weak self] in
             self?.refreshPremiumStatus()
         }
     }
-    
+
     private func displayInitialGracePeriodStatus(_ purchaseHistory: PurchaseHistory) {
         if Settings.current.isTestEnvironment {
             let secondsLeft = PremiumManager.shared.gracePeriodRemaining
@@ -341,7 +339,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         }
         displayFreeStatus(heavyUse: false, purchaseHistory)
     }
-    
+
     private func displayFreeStatus(heavyUse: Bool, _ purchaseHistory: PurchaseHistory) {
         if let fallbackDate = purchaseHistory.premiumFallbackDate {
             displayPurchasedStatus(fallbackDate: fallbackDate, purchaseHistory)
@@ -356,7 +354,7 @@ final class SettingsVC: UITableViewController, Refreshable {
             premiumSectionFooter = getAppUsageDescription()
         }
     }
-    
+
     private func displaySubscribedStatus(_ purchaseHistory: PurchaseHistory) {
         premiumStatusCell.detailTextLabel?.textColor = .auxiliaryText
 
@@ -368,10 +366,10 @@ final class SettingsVC: UITableViewController, Refreshable {
             premiumStatusCell.detailTextLabel?.text = "?"
             return
         }
-        
+
         setCells(show: [premiumStatusCell], hide: [premiumPurchaseCell])
         setCellVisibility(manageSubscriptionCell, isHidden: !product.isSubscription)
-        
+
         let premiumStatusText: String
         switch product {
         case .betaForever:
@@ -403,13 +401,13 @@ final class SettingsVC: UITableViewController, Refreshable {
         }
         premiumStatusCell.detailTextLabel?.text = premiumStatusText
     }
-    
+
     private func displayLapsedStatus(_ purchaseHistory: PurchaseHistory) {
         if let fallbackDate = purchaseHistory.premiumFallbackDate {
             displayPurchasedStatus(fallbackDate: fallbackDate, purchaseHistory)
             return
         }
-        
+
         setCells(
             show: [premiumStatusCell, manageSubscriptionCell],
             hide: [premiumPurchaseCell]
@@ -429,7 +427,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         premiumStatusCell.detailTextLabel?.text = premiumStatusText
         premiumStatusCell.detailTextLabel?.textColor = .errorMessage
     }
-    
+
     private func displayPurchasedStatus(fallbackDate: Date, _ purchaseHistory: PurchaseHistory) {
         premiumStatusCell.detailTextLabel?.textColor = .auxiliaryText
         if purchaseHistory.containsLifetimePurchase {
@@ -439,11 +437,11 @@ final class SettingsVC: UITableViewController, Refreshable {
             premiumStatusCell.detailTextLabel?.text = LString.premiumStatusValidForever
             return
         }
-        
+
         setCells(
             show: [premiumStatusCell],
             hide: [premiumPurchaseCell, manageSubscriptionCell])
-        
+
         AppHistory.load(completion: { [weak self] appHistory in
             guard let self = self else { return }
             let purchasedVersion = appHistory?.versionOnDate(fallbackDate) ?? "?"
@@ -463,13 +461,13 @@ final class SettingsVC: UITableViewController, Refreshable {
             self.tableView.reloadData()
         })
     }
-    
+
     private func getAppUsageDescription() -> String? {
         let usageMonitor = PremiumManager.shared.usageMonitor
         guard usageMonitor.isEnabled else {
             return nil
         }
-        
+
         let monthlyUseDuration = usageMonitor.getAppUsageDuration(.perMonth)
         let annualUseDuration = 12 * monthlyUseDuration
         guard monthlyUseDuration > 5 * TimeInterval.minute else {

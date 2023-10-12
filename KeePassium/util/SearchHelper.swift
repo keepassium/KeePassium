@@ -20,18 +20,18 @@ struct GroupedEntries {
 typealias SearchResults = [GroupedEntries]
 
 class SearchHelper {
-    
+
     func find(database: Database, searchText: String) -> SearchResults {
         let settings = Settings.current
         let words = searchText.split(separator: " " as Character)
-        
+
         let compareOptions: String.CompareOptions
         if searchText.containsDiacritics() {
             compareOptions = [.caseInsensitive]
         } else {
             compareOptions = [.caseInsensitive, .diacriticInsensitive]
         }
-        
+
         let query = SearchQuery(
             includeSubgroups: true,
             includeDeleted: false,
@@ -48,7 +48,7 @@ class SearchHelper {
         let searchResults = arrangeByGroups(scoredEntries: scoredEntries)
         return searchResults
     }
-    
+
     private func performSearch(in database: Database, query: SearchQuery) -> [ScoredEntry] {
         var foundEntries: [Entry] = []
         let foundCount = database.search(query: query, result: &foundEntries)
@@ -60,11 +60,10 @@ class SearchHelper {
         return scoredEntries
     }
 
-    
     public func arrangeByGroups(scoredEntries: [ScoredEntry]) -> [GroupedEntries] {
         var results = [GroupedEntries]()
         results.reserveCapacity(scoredEntries.count)
-        
+
         for scoredEntry in scoredEntries {
             guard let parentGroup = scoredEntry.entry.parent else { assertionFailure(); return [] }
             var isInserted = false
@@ -85,11 +84,11 @@ class SearchHelper {
 }
 
 extension SearchResults {
-    
+
     mutating public func sort(order sortOrder: Settings.GroupSortOrder) {
         sort { sortOrder.compare($0.group, $1.group) }
         for i in 0..<count {
-            self[i].entries.sort { (scoredEntry1, scoredEntry2) in
+            self[i].entries.sort { scoredEntry1, scoredEntry2 in
                 if scoredEntry1.similarityScore == scoredEntry2.similarityScore {
                     return sortOrder.compare(scoredEntry1.entry, scoredEntry2.entry)
                 } else {

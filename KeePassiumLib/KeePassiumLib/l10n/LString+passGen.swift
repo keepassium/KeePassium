@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable line_length
 public extension LString {
     enum PasswordGenerator {
         public static let titleRandomGenerator = NSLocalizedString(
@@ -15,7 +16,7 @@ public extension LString {
             bundle: Bundle.framework,
             value: "Random Generator",
             comment: "Title of the random text/password/username generator dialog.")
-        
+
         public static let editMenuTitle = "🎲"
 
         public static let actionGenerate = NSLocalizedString(
@@ -23,7 +24,7 @@ public extension LString {
             bundle: Bundle.framework,
             value: "Generate",
             comment: "Action/button: generate random text/password/phrase")
-        
+
         public static let titleGeneratedText = NSLocalizedString(
             "[PasswordGenerator/GeneratedText/title]",
             bundle: Bundle.framework,
@@ -76,3 +77,4 @@ public extension LString {
             comment: "Description of a password generator parameter. For example, the digit in 'abc222def'.")
     }
 }
+// swiftlint:enable line_length

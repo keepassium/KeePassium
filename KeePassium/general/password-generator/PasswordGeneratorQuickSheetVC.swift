@@ -12,7 +12,7 @@ enum QuickRandomTextMode: Int, CaseIterable, CustomStringConvertible {
     case basic = 0
     case expert = 1
     case passphrase = 2
-    
+
     var description: String {
         switch self {
         case .basic:
@@ -23,7 +23,7 @@ enum QuickRandomTextMode: Int, CaseIterable, CustomStringConvertible {
             return LString.PasswordGeneratorMode.titlePassphraseMode
         }
     }
-    
+
     var optimalLineBreakMode: NSLineBreakMode {
         switch self {
         case .basic,
@@ -33,7 +33,7 @@ enum QuickRandomTextMode: Int, CaseIterable, CustomStringConvertible {
             return .byWordWrapping
         }
     }
-    
+
     var accessibilityShouldSpellOut: Bool {
         switch self {
         case .basic,
@@ -57,21 +57,21 @@ protocol PasswordGeneratorQuickSheetDelegate: AnyObject {
 final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
     weak var delegate: PasswordGeneratorQuickSheetDelegate?
     private typealias DataItem = (mode: QuickRandomTextMode, text: String)
-    
+
     private lazy var items: [DataItem] = generateItems()
     private var preferredContentSizeObservation: NSKeyValueObservation?
-    
+
     init() {
         super.init(style: .insetGrouped)
-        
+
         tableView.register(
             PasswordGeneratorQuickSheetVC.Cell.classForCoder(),
             forCellReuseIdentifier: PasswordGeneratorQuickSheetVC.Cell.reuseIdentifier)
         tableView.bounces = false
         tableView.estimatedSectionHeaderHeight = 18
-        
+
         title = LString.PasswordGenerator.titleRandomGenerator
-        
+
         let fullModeButton = UIBarButtonItem(
             title: LString.PasswordGenerator.titleRandomGenerator,
             image: .symbol(.gearshape2),
@@ -95,34 +95,34 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
             ],
             animated: false
         )
-        
+
         preferredContentSizeObservation = tableView.observe(\.contentSize) { [weak self] _, _ in
             guard let self = self else { return }
             let newPreferredSize = CGSize(
                 width: 400,
                 height: self.tableView.contentSize.height
             )
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 self.preferredContentSize = newPreferredSize
             }
         }
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func refresh() {
         items = generateItems()
         tableView.reloadData()
     }
-    
+
     private func generateItems() -> [DataItem] {
         guard let delegate = delegate else {
             assertionFailure("This won't work without a delegate.")
             return []
         }
-        
+
         let result = QuickRandomTextMode.allCases.compactMap { mode -> DataItem? in
             if let text = delegate.shouldGenerateText(mode: mode, in: self) {
                 return (mode, text)
@@ -138,7 +138,7 @@ extension PasswordGeneratorQuickSheetVC {
     private class Cell: UITableViewCell {
         static let reuseIdentifier = "Cell"
         var onDidPressCopy: (() -> Void)?
-        
+
         override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
             textLabel?.font = .preferredFont(forTextStyle: .footnote)
@@ -146,15 +146,15 @@ extension PasswordGeneratorQuickSheetVC {
             textLabel?.numberOfLines = 0
             textLabel?.lineBreakMode = .byWordWrapping
             textLabel?.accessibilityTraits = [.header]
-            
+
             detailTextLabel?.font = .preferredFont(forTextStyle: .body)
             detailTextLabel?.textColor = .primaryText
             detailTextLabel?.numberOfLines = 0
             detailTextLabel?.lineBreakMode = .byCharWrapping
-            
+
             let copyButton = UIButton(
                 type: .system,
-                primaryAction: UIAction() { [weak self] _ in
+                primaryAction: UIAction { [weak self] _ in
                     self?.onDidPressCopy?()
                 }
             )
@@ -162,10 +162,10 @@ extension PasswordGeneratorQuickSheetVC {
             copyButton.sizeToFit()
             copyButton.accessibilityLabel = LString.actionCopy
             accessoryView = copyButton
-            
+
             accessibilityElements = [textLabel as Any, detailTextLabel as Any, accessoryView as Any]
         }
-        
+
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
@@ -179,21 +179,21 @@ extension PasswordGeneratorQuickSheetVC {
         }
         return mode
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: Cell.reuseIdentifier,
             for: indexPath)
             as! Cell
-        
+
         let item = items[indexPath.section]
         cell.textLabel?.text = item.mode.description
         cell.detailTextLabel?.attributedText = PasswordStringHelper.decorate(

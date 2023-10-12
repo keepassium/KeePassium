@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 extension Clipboard {
-    
+
     public func insert(_ content: String) {
         let timeout = Double(Settings.current.clipboardTimeout.seconds)
         if content.isOpenableURL {

@@ -44,8 +44,7 @@ extension FaviconDownloading {
             let progressHandler = { [weak self] (progress: ProgressEx) -> Void in
                 self?.faviconDownloadingProgressHost?.updateProgressView(with: progress)
             }
-            self.faviconDownloader.downloadFavicon(for: url, progressHandler: progressHandler) {
-                [weak self] result in
+            self.faviconDownloader.downloadFavicon(for: url, progressHandler: progressHandler) { [weak self] result in
                 switch result {
                 case let .success(image):
                     completion(image)

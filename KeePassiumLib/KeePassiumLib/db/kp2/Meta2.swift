@@ -12,8 +12,8 @@ final class Meta2: Eraseable {
     public static let generatorName = "KeePassium" 
     public static let defaultMaintenanceHistoryDays: UInt32 = 365
     public static let defaultHistoryMaxItems: Int32 = 10 
-    public static let defaultHistoryMaxSize: Int64 = 6*1024*1024 
-    
+    public static let defaultHistoryMaxSize: Int64 = 6 * 1024 * 1024 
+
     struct MemoryProtection {
         private(set) var isProtectTitle: Bool = false
         private(set) var isProtectUserName: Bool = false
@@ -28,11 +28,11 @@ final class Meta2: Eraseable {
             isProtectURL = false
             isProtectNotes = false
         }
-        
+
         mutating func load(xml: AEXMLElement) throws {
             assert(xml.name == Xml2.memoryProtection)
             Diag.verbose("Loading XML: memory protection")
-            
+
             erase()
             for tag in xml.children {
                 switch tag.name {
@@ -54,7 +54,7 @@ final class Meta2: Eraseable {
                 }
             }
         }
-        
+
         func toXml() -> AEXMLElement {
             Diag.verbose("Generating XML: memory protection")
             let xmlMP = AEXMLElement(name: Xml2.memoryProtection)
@@ -76,7 +76,7 @@ final class Meta2: Eraseable {
             return xmlMP
         }
     }
-    
+
     private unowned let database: Database2
     private(set) var generator: String
     internal var headerHash: ByteArray? 
@@ -105,7 +105,7 @@ final class Meta2: Eraseable {
     private(set) var lastTopVisibleGroupUUID: UUID
     private(set) var customData: CustomData2
     private(set) var customIcons: [CustomIcon2]
-    
+
     init(database: Database2) {
         self.database = database
         generator = ""
@@ -139,7 +139,7 @@ final class Meta2: Eraseable {
     deinit {
         erase()
     }
-    
+
     func erase() {
         generator.erase()
         headerHash?.erase()
@@ -169,12 +169,12 @@ final class Meta2: Eraseable {
         customData.erase()
         customIcons.erase()
     }
-    
+
     func loadDefaultValuesV4() {
         erase()
         generator = Meta2.generatorName
     }
-    
+
     func load(
         xml: AEXMLElement,
         formatVersion: Database2.FormatVersion,
@@ -185,7 +185,7 @@ final class Meta2: Eraseable {
         assert(xml.name == Xml2.meta)
         Diag.verbose("Loading XML: meta")
         erase()
-        
+
         for tag in xml.children {
             switch tag.name {
             case Xml2.generator:
@@ -272,7 +272,7 @@ final class Meta2: Eraseable {
             }
         }
     }
-    
+
     func loadCustomIcons(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
         assert(xml.name == Xml2.customIcons)
         Diag.verbose("Loading XML: custom icons")
@@ -291,7 +291,7 @@ final class Meta2: Eraseable {
             }
         }
     }
-    
+
     func loadBinaries(
         xml: AEXMLElement,
         formatVersion: Database2.FormatVersion,
@@ -308,13 +308,13 @@ final class Meta2: Eraseable {
             }
             return
         }
-        
+
         database.binaries.removeAll()
         for tag in xml.children {
             switch tag.name {
             case Xml2.binary:
                 let binary = try Binary2.load(xml: tag, streamCipher: streamCipher)
-                
+
                 if let conflictingBinary = database.binaries[binary.id] {
                     Diag.error("Multiple Meta/Binary items with the same ID: \(conflictingBinary.id)")
                     throw Xml2.ParsingError.malformedValue(
@@ -332,7 +332,7 @@ final class Meta2: Eraseable {
 
     func createRecycleBinGroup() -> Group2 {
         assert(recycleBinGroupUUID == UUID.ZERO)
-        
+
         let backupGroup = Group2(database: database)
         backupGroup.uuid = UUID()
         backupGroup.name = NSLocalizedString(
@@ -347,15 +347,15 @@ final class Meta2: Eraseable {
 
         self.recycleBinGroupUUID = backupGroup.uuid
         self.recycleBinChangedTime = Date.now
-        
+
         return backupGroup
     }
-    
+
     func resetRecycleBinGroupUUID() {
         recycleBinGroupUUID = UUID.ZERO
         self.recycleBinChangedTime = Date.now
     }
-    
+
     func toXml(
         streamCipher: StreamCipher,
         formatVersion: Database2.FormatVersion,
@@ -364,7 +364,7 @@ final class Meta2: Eraseable {
         Diag.verbose("Generating XML: meta")
         let xmlMeta = AEXMLElement(name: Xml2.meta)
         xmlMeta.addChild(name: Xml2.generator, value: Meta2.generatorName)
-        
+
         switch formatVersion {
         case .v3:
             if let headerHash = headerHash {
@@ -441,14 +441,14 @@ final class Meta2: Eraseable {
         xmlMeta.addChild(
             name: Xml2.lastTopVisibleGroup,
             value: lastTopVisibleGroupUUID.base64EncodedString())
-        
+
         if let xmlCustomIcons = customIconsToXml(
             formatVersion: formatVersion,
             timeFormatter: timeFormatter)
         {
             xmlMeta.addChild(xmlCustomIcons)
         }
-        
+
         if formatVersion == .v3 {
             if let xmlBinaries = try binariesToXml(streamCipher: streamCipher)
             {
@@ -476,7 +476,7 @@ final class Meta2: Eraseable {
             return xmlCustomIcons
         }
     }
-    
+
     internal func binariesToXml(streamCipher: StreamCipher) throws -> AEXMLElement? {
         if database.binaries.isEmpty {
             Diag.verbose("No binaries in Meta")
@@ -491,7 +491,7 @@ final class Meta2: Eraseable {
             return xmlBinaries
         }
     }
-    
+
     func setAllTimestamps(to time: Date) {
         settingsChangedTime = time
         databaseNameChangedTime = time
@@ -501,11 +501,11 @@ final class Meta2: Eraseable {
         recycleBinChangedTime = time
         entryTemplatesGroupChangedTime = time
     }
-    
+
     func addCustomIcon(_ icon: CustomIcon2) {
         customIcons.append(icon)
     }
-    
+
     func deleteCustomIcon(uuid: UUID) {
         customIcons.removeAll(where: { $0.uuid == uuid })
     }

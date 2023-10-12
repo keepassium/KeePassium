@@ -14,7 +14,7 @@ open class AppCoverVC: UIViewController {
         let vc = AppCoverVC.instantiateFromStoryboard()
         return vc
     }
-    
+
     override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ImageAsset.appCoverPattern.asColor()

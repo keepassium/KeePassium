@@ -15,16 +15,16 @@ struct AppIcon: Equatable {
 }
 
 extension AppIcon {
-    private static let all: [AppIcon]  = [
+    private static let all: [AppIcon] = [
         AppIcon.classicFree, AppIcon.classicPro,
         AppIcon.atomBlue, AppIcon.atomWhite, AppIcon.atomBlack,
         AppIcon.keepass,
     ]
-    static let allCustom: [AppIcon]  = [
+    static let allCustom: [AppIcon] = [
         AppIcon.atomBlue, AppIcon.atomWhite, AppIcon.atomBlack,
         AppIcon.keepass,
     ]
-    
+
     static let classicFree = AppIcon(
         name: "KeePassium Classic",
         key: "appicon-classic-free",
@@ -33,7 +33,7 @@ extension AppIcon {
         name: "KeePassium Pro Classic",
         key: "appicon-classic-pro",
         asset: "appicon-classic-pro-listitem")
-    
+
     static let atomBlack = AppIcon(
         name: "Atom Black",
         key: "appicon-atom-black",
@@ -50,15 +50,15 @@ extension AppIcon {
         name: "KeePass",
         key: "appicon-keepass",
         asset: "appicon-keepass-listitem")
-    
+
     public static func isPremium(_ icon: AppIcon) -> Bool {
         let isFree = (icon == classicFree) || (icon == atomBlue)
         return !isFree
     }
-    
+
     public static var current: UIImage? {
         if let key = UIApplication.shared.alternateIconName,
-            let icon = AppIcon.all.first(where: { $0.key == key })
+           let icon = AppIcon.all.first(where: { $0.key == key })
         {
             return UIImage(named: icon.asset)
         }

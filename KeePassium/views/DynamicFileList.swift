@@ -10,20 +10,20 @@ import KeePassiumLib
 
 protocol DynamicFileList: AnyObject {
     var sortingAnimationDuration: TimeInterval { get }
-    
+
     var ongoingUpdateAnimations: Int { get set }
     func sortAndAnimateFileInfoUpdate(refs: inout [URLReference], in tableView: UITableView)
-    
+
     func getIndexPath(for fileIndex: Int) -> IndexPath
 }
 
 extension DynamicFileList {
     var sortingAnimationDuration: TimeInterval { return 0.3 }
-    
+
     func sortAndAnimateFileInfoUpdate(
         refs: inout [URLReference],
-        in tableView: UITableView)
-    {
+        in tableView: UITableView
+    ) {
         let sortOrder = Settings.current.filesSortOrder
         let indexedAndSorted = refs.enumerated().sorted {
             sortOrder.compare($0.element, $1.element)
@@ -34,23 +34,22 @@ extension DynamicFileList {
         DispatchQueue.main.async { [weak self, weak tableView, oldIndices] in
             guard let self = self, let tableView = tableView else { return }
             guard tableView.window != nil else { return }
-            
+
             self.animateSorting(oldIndices: oldIndices, in: tableView)
         }
     }
-    
+
     private func animateSorting(oldIndices: [Int], in tableView: UITableView) {
         ongoingUpdateAnimations += 1
         tableView.performBatchUpdates(
-            {
-                [weak tableView] in
+            { [weak tableView] in
                 for i in 0..<oldIndices.count {
                     tableView?.moveRow(
                         at: getIndexPath(for: oldIndices[i]),
                         to: getIndexPath(for: i))
                 }
             },
-            completion: { [weak self, weak tableView] finished in
+            completion: { [weak self, weak tableView] _ in
                 guard let self = self,
                     let tableView = tableView
                     else { return }
@@ -58,10 +57,9 @@ extension DynamicFileList {
             }
         )
     }
-    
+
     func scheduleDataReload(in tableView: UITableView) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + sortingAnimationDuration) {
-            [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + sortingAnimationDuration) { [weak self] in
             guard let self = self else { return }
             self.ongoingUpdateAnimations -= 1
             assert(self.ongoingUpdateAnimations >= 0)

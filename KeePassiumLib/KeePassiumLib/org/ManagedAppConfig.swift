@@ -8,12 +8,12 @@
 
 public final class ManagedAppConfig {
     public static let shared = ManagedAppConfig()
-    
+
     private enum Key {
         static let managedConfig = "com.apple.configuration.managed"
         static let license = "license"
     }
-    
+
     private var currentConfig: [String: Any]? {
         guard let rawObject = UserDefaults.standard.object(forKey: Key.managedConfig),
               let config = rawObject as? [String: Any]
@@ -23,10 +23,10 @@ public final class ManagedAppConfig {
         return config
     }
     private var intuneConfig: [String: Any]?
-    
+
     private init() {
     }
-    
+
     public func isManaged() -> Bool {
         let isForced = UserDefaults.standard.objectIsForced(forKey: Key.managedConfig)
         return isForced
@@ -42,7 +42,7 @@ extension ManagedAppConfig {
             Diag.info("No app config provided by Intune")
             return
         }
-        
+
         var newIntuneConfig = intuneConfig ?? [:]
         newIntuneConfig[Key.license] = firstConfig[Key.license] as? String
         intuneConfig = newIntuneConfig

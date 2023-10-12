@@ -18,7 +18,7 @@ final class DataCipherFactory {
         chacha20 = ChaCha20DataCipher()
         twofish = TwofishDataCipher(isPaddingLikelyMessedUp: true)
     }
-    
+
     public func createFor(uuid: UUID) -> DataCipher? {
         switch uuid {
         case aes.uuid:

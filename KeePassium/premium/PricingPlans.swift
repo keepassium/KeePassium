@@ -22,7 +22,7 @@ struct PricingPlanCondition {
         case perpetualFallback
         case familySharing
     }
-    
+
     enum HelpReference {
         case none
         case perpetualFallback
@@ -38,11 +38,11 @@ struct PricingPlanCondition {
             }
         }
     }
-    
+
     var kind: Kind
     var isIncluded: Bool
     var moreInfo: HelpReference
-    
+
     var localizedTitle: String {
         switch kind {
         case .updatesAndFixes:
@@ -73,7 +73,7 @@ struct PricingPlanBenefit {
     var symbolName: SymbolName
     var title: String
     var description: String?
-        
+
     static let multipleDatabases = PricingPlanBenefit(
         symbolName: .premiumBenefitMultiDB,
         title: LString.premiumBenefitMultipleDatabasesTitle,
@@ -81,7 +81,7 @@ struct PricingPlanBenefit {
     )
     static let longDatabaseTimeout = PricingPlanBenefit(
         symbolName: .premiumBenefitDBTimeout,
-        title:  LString.premiumBenefitLongDatabaseTimeoutsTitle,
+        title: LString.premiumBenefitLongDatabaseTimeoutsTitle,
         description: LString.premiumBenefitLongDatabaseTimeoutsDescription
     )
     static let yubikeyChallengeResponse = PricingPlanBenefit(
@@ -119,7 +119,7 @@ class PricingPlanFactory {
             return nil
         }
         assert(iapProduct.kind == .premium, "Wrong IAP product kind encountered")
-        
+
         switch iapProduct {
         case .betaForever:
             return nil
@@ -148,19 +148,19 @@ class PricingPlanFactory {
 class PricingPlan {
     fileprivate(set) var title: String
     fileprivate(set) var isFree: Bool
-    
+
     fileprivate(set) var isDefault: Bool
     fileprivate(set) var price: NSDecimalNumber
     fileprivate(set) var localizedPrice: String
     fileprivate(set) var localizedPriceWithPeriod: String?
-    
+
     fileprivate(set) var callToAction: String
     fileprivate(set) var ctaSubtitle: String?
-    
+
     fileprivate(set) var conditions: [PricingPlanCondition]
     fileprivate(set) var benefits: [PricingPlanBenefit]
     fileprivate(set) var smallPrint: String?
-    
+
     init() {
         self.title = ""
         self.isFree = true
@@ -206,7 +206,7 @@ class FreePricingPlan: PricingPlan {
 
 class RealPricingPlan: PricingPlan {
     fileprivate(set) var product: SKProduct
-    
+
     init(_ product: SKProduct) {
         self.product = product
         super.init()
@@ -216,7 +216,7 @@ class RealPricingPlan: PricingPlan {
         self.localizedPrice = product.localizedPrice
         self.localizedPriceWithPeriod = nil
     }
-    
+
     fileprivate func maybeOfferTrial() {
         guard #available(iOS 11.2, *) else {
             return
@@ -242,7 +242,7 @@ class RealPricingPlan: PricingPlan {
 class PricingPlanPremiumMonthly: RealPricingPlan {
     override init(_ product: SKProduct) {
         super.init(product)
-        
+
         self.localizedPriceWithPeriod =
             String.localizedStringWithFormat(LString.priceTemplateMonthly, localizedPrice)
         self.callToAction = LString.premiumCallToActionUpgradeNow
@@ -271,7 +271,7 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
 class PricingPlanPremiumYearly: RealPricingPlan {
     override init(_ product: SKProduct) {
         super.init(product)
-        
+
         isDefault = true
         self.localizedPriceWithPeriod =
             String.localizedStringWithFormat(LString.priceTemplateYearly, localizedPrice)
@@ -328,7 +328,7 @@ class PricingPlanVersionPurchase: RealPricingPlan {
 class PricingPlanPremiumForever: RealPricingPlan {
     override init(_ product: SKProduct) {
         super.init(product)
-        
+
         self.localizedPriceWithPeriod = localizedPrice
         self.callToAction = LString.premiumCallToActionBuyNow
         self.ctaSubtitle = nil

@@ -30,25 +30,25 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         let view = FieldCopiedView(frame: .zero)
         return view
     }()
-    
+
     weak var delegate: EntryFieldViewerDelegate?
-    
+
     private let editButton = UIBarButtonItem()
 
     private var isHistoryEntry = false
     private var canEditEntry = false
     private var category = ItemCategory.default
     private var sortedFields: [ViewableField] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.clearsSelectionOnViewWillAppear = true
-        
+
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
 
         copiedCellView.delegate = self
-        
+
         editButton.title = LString.actionEdit
         editButton.target = self
         editButton.action = #selector(didPressEdit)
@@ -57,7 +57,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         toolbarItems = [] 
         refresh()
     }
-  
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
@@ -77,15 +77,15 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         }
         refresh()
     }
-    
+
     func refresh() {
         guard isViewLoaded else { return }
         editButton.isEnabled = canEditEntry
         navigationItem.rightBarButtonItem = editButton
         tableView.reloadData()
     }
-    
-    
+
+
     @objc func didPressEdit(_ sender: UIBarButtonItem) {
         guard canEditEntry else {
             Diag.warning("Tried to modify non-editable entry, aborting")
@@ -95,7 +95,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressEdit(at: popoverAnchor, in: self)
     }
-    
+
     private func didTapRow(at indexPath: IndexPath) {
         let fieldNumber = indexPath.row
         let field = sortedFields[fieldNumber]
@@ -104,7 +104,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         delegate?.didPressCopyField(text: text, from: field, in: self)
         animateCopyingToClipboard(at: indexPath)
     }
-    
+
     func animateCopyingToClipboard(at indexPath: IndexPath) {
         let supportsFieldReferencing = getField(at: indexPath).field?.isStandardField ?? false
         HapticFeedback.play(.copiedToClipboard)
@@ -117,7 +117,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
             )
         }
     }
-    
+
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -126,12 +126,11 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sortedFields.count
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
-        ) -> UITableViewCell
-    {
+    ) -> UITableViewCell {
         let field = getField(at: indexPath)
         let cell = ViewableFieldCellFactory.dequeueAndConfigureCell(
             from: tableView,
@@ -140,7 +139,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         cell.delegate = self
         return cell
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         willDisplay cell: UITableViewCell,
@@ -150,7 +149,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
             dynamicFieldCell.startRefreshing()
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         didEndDisplaying cell: UITableViewCell,
@@ -160,40 +159,40 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
             dynamicFieldCell.stopRefreshing()
         }
     }
-    
+
     private func getField(at indexPath: IndexPath) -> ViewableField {
         let fieldNumber = indexPath.row
         let field = sortedFields[fieldNumber]
         return field
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didTapRow(at: indexPath)
     }
 }
 
-extension EntryFieldViewerVC: ViewableFieldCellDelegate {    
+extension EntryFieldViewerVC: ViewableFieldCellDelegate {
     func cellHeightDidChange(_ cell: ViewableFieldCell) {
         tableView.beginUpdates()
         tableView.endUpdates()
-        
+
         guard let viewableField = cell.field else { return }
         if viewableField.internalName == EntryField.notes {
             let isCollapsed = viewableField.isHeightConstrained
             Settings.current.isCollapseNotesField = isCollapsed
         }
     }
-    
+
     func cellDidExpand(_ cell: ViewableFieldCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
-    
+
     func didTapCellValue(_ cell: ViewableFieldCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         tableView(tableView, didSelectRowAt: indexPath)
     }
-    
+
     func didLongTapAccessoryButton(_ cell: ViewableFieldCell) {
         guard let field = cell.field,
               let value = field.resolvedValue,
@@ -201,7 +200,7 @@ extension EntryFieldViewerVC: ViewableFieldCellDelegate {
         else {
             return
         }
-        
+
         HapticFeedback.play(.contextMenuOpened)
         let popoverAnchor = PopoverAnchor(sourceView: accessoryView, sourceRect: accessoryView.bounds)
         delegate?.didPressExportField(text: value, from: field, at: popoverAnchor, in: self)
@@ -221,7 +220,7 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressExportField(text: value, from: field, at: popoverAnchor, in: self)
     }
-    
+
     func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView) {
         let field = getField(at: indexPath)
         delegate?.didPressCopyFieldReference(from: field, in: self)

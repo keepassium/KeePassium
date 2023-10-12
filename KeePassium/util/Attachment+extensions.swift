@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 extension Attachment {
-    
+
     public func getSystemIcon() -> UIImage? {
         let url = URL(fileURLWithPath: name, isDirectory: false)
         let interactionController = UIDocumentInteractionController(url: url)

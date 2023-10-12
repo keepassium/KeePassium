@@ -9,17 +9,17 @@
 import KeePassiumLib
 
 class TableViewControllerWithContextActions: UITableViewController {
-        
+
     func getContextActionsForRow(at indexPath: IndexPath, forSwipe: Bool) -> [ContextualAction] {
         return []
     }
-    
-    
+
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         let rowActions = getContextActionsForRow(at: indexPath, forSwipe: true)
         return rowActions.count > 0
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
@@ -32,8 +32,8 @@ class TableViewControllerWithContextActions: UITableViewController {
         }
         return UISwipeActionsConfiguration(actions: swipeActions)
     }
-    
-    
+
+
     @available(iOS 13, *)
     override func tableView(
         _ tableView: UITableView,
@@ -42,13 +42,12 @@ class TableViewControllerWithContextActions: UITableViewController {
     ) -> UIContextMenuConfiguration? {
         let menuActions = getContextActionsForRow(at: indexPath, forSwipe: false)
             .map { $0.toMenuAction() }
-        
+
         guard menuActions.count > 0 else {
             return nil
         }
-        
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {
-            (suggestedActions) in
+
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             return UIMenu(title: "", children: menuActions)
         }
     }

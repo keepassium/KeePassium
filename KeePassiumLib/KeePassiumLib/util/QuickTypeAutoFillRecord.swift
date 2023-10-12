@@ -10,12 +10,12 @@ import AuthenticationServices
 
 final public class QuickTypeAutoFillRecord {
     private static let separator: Character = ":"
-    
+
     private let formatVersion: Int
     public let fileProvider: FileProvider
     public let fileDescriptor: URLReference.Descriptor
     public let itemID: UUID
-    
+
     convenience init(context: DatabaseFile, itemID: UUID) {
         self.init(
             fileProvider: context.fileProvider ?? .other(id: ""),
@@ -23,20 +23,20 @@ final public class QuickTypeAutoFillRecord {
             itemID: itemID
         )
     }
-    
+
     private init(fileProvider: FileProvider, fileDescriptor: URLReference.Descriptor, itemID: UUID) {
         self.formatVersion = 0
         self.fileProvider = fileProvider
         self.fileDescriptor = fileDescriptor
         self.itemID = itemID
     }
-    
+
     public func toString() -> String {
         assert(formatVersion == 0, "Unexpected format version")
         let parts = [String(formatVersion), fileProvider.rawValue, fileDescriptor, itemID.uuidString]
         return parts.joined(separator: String(QuickTypeAutoFillRecord.separator))
     }
-    
+
     public static func parse(_ string: String) -> QuickTypeAutoFillRecord? {
         let parts = string.split(separator: QuickTypeAutoFillRecord.separator)
         guard parts.count == 4 else {

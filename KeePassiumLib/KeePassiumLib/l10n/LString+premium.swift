@@ -6,18 +6,19 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
+// swiftlint:disable line_length
 extension LString {
-    
+
     public static let errorNoPurchasesAvailable = NSLocalizedString(
         "[Premium/Upgrade] Hmm, there are no upgrades available. This should not happen, please contact support.",
         bundle: Bundle.framework,
         value: "Hmm, there are no upgrades available. This should not happen, please contact support.",
         comment: "Error message: AppStore returned no available in-app purchase options")
-    
+
     public static let subscriptionConditions = NSLocalizedString(
         "[Premium/Subscription/Legal/text]",
         bundle: Bundle.framework,
-        value:"""
+        value: """
 Payment will be charged to your Apple ID account at the confirmation of purchase.
 
 Subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.
@@ -25,14 +26,13 @@ Subscription automatically renews unless it is canceled at least 24 hours before
 You can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.
 """,
         comment: "Subscription conditions")
-    
-    
+
     public static let actionManageSubscriptions = NSLocalizedString(
         "[Premium/ManageSubscriptions/action]",
         bundle: Bundle.framework,
         value: "Manage subscriptions",
         comment: "Action: open AppStore subscription management page")
-    
+
 
     public static let premiumFreePlanTitle = NSLocalizedString(
         "[Premium/Price Plan/Free/title]",
@@ -49,7 +49,7 @@ You can manage and cancel your subscriptions by going to your account settings o
         bundle: Bundle.framework,
         value: "Popular",
         comment: "Marks the default pricing plan")
-    
+
     public static let priceTemplateMonthly = NSLocalizedString(
         "[Premium/Upgrade/price] %@ / month",
         bundle: Bundle.framework,
@@ -75,7 +75,7 @@ You can manage and cancel your subscriptions by going to your account settings o
         bundle: Bundle.framework,
         value: "%@ free, then %@",
         comment: "Trial conditions. For example `30 days free, then $1 per month`")
-    
+
     public static let premiumWhatYouGet = NSLocalizedString(
         "[Premium/Benefits/Positive/header] ",
         bundle: Bundle.framework,
@@ -86,8 +86,8 @@ You can manage and cancel your subscriptions by going to your account settings o
         bundle: Bundle.framework,
         value: "What you are missing",
         comment: "List of premium benefits/advantages")
-    
-    
+
+
     public static let planConditionUpdatesAndFixes = NSLocalizedString(
         "[Premium/Price Plan/Conditions/updates and bug fixes]",
         bundle: Bundle.framework,
@@ -149,7 +149,7 @@ You can manage and cancel your subscriptions by going to your account settings o
         value: "Premium features added in the future would require a new purchase at full price.",
         comment: "Upgrade conditions for current-version premium purchase.")
 
-    
+
     public static let premiumCallToActionFree = NSLocalizedString(
         "[Premium/CallToAction/free]",
         bundle: Bundle.framework,
@@ -171,7 +171,7 @@ You can manage and cancel your subscriptions by going to your account settings o
         value: "Buy Now",
         comment: "Call to action")
 
-    
+
     public static let statusContactingAppStore = NSLocalizedString(
         "[Premium/Upgrade/Progress] Contacting AppStore...",
         bundle: Bundle.framework,
@@ -188,7 +188,7 @@ You can manage and cancel your subscriptions by going to your account settings o
         value: "Thank you! You can use KeePassium while purchase is awaiting approval.",
         comment: "Message shown when in-app purchase is deferred until approval (parental or corporate).")
 
-    
+
     public static let titlePurchaseSuccess = NSLocalizedString(
         "[Premium/Upgrade/Success/thankYou]",
         bundle: Bundle.framework,
@@ -200,7 +200,7 @@ You can manage and cancel your subscriptions by going to your account settings o
         value: "Please check if you need to cancel your old subscription.",
         comment: "Message shown after buying a lifetime version.")
 
-    
+
     public static let titlePurchaseRestored = NSLocalizedString(
         "[Premium/Upgrade/Restored/title] Purchase Restored",
         bundle: Bundle.framework,
@@ -211,7 +211,7 @@ You can manage and cancel your subscriptions by going to your account settings o
         bundle: Bundle.framework,
         value: "Upgrade successful, enjoy the app!",
         comment: "Text of the message shown after in-app purchase was successfully restored")
-    
+
     public static let titleRestorePurchaseError = NSLocalizedString(
         "[Premium/Upgrade/RestoreFailed/title] Sorry",
         bundle: Bundle.framework,
@@ -222,7 +222,7 @@ You can manage and cancel your subscriptions by going to your account settings o
         bundle: Bundle.framework,
         value: "No previous purchase could be restored.",
         comment: "Text of an error message: there were no in-app purchases that can be restored")
-    
+
 
     public static let perpetualLicense = NSLocalizedString(
         "[Premium/perpetualLicense]",
@@ -235,8 +235,8 @@ You can manage and cancel your subscriptions by going to your account settings o
         bundle: Bundle.framework,
         value: "You have a perpetual license for all the versions before %@.",
         comment: "[formattedDate: String]")
-    
-    
+
+
     public static let premiumManualUpgradeTitle = NSLocalizedString(
         "[AutoFill/Premium/Upgrade/Manual/title] Premium Upgrade",
         bundle: Bundle.framework,
@@ -260,7 +260,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Upgrade to Premium and enjoy KeePassium at its best.",
         comment: "A generic description of a premium feature")
-    
+
     public static let premiumFeatureMultipleDatabasesTitle = NSLocalizedString(
             "[PremiumFeature/MultiDB/title] Multiple Databases",
             bundle: Bundle.framework,
@@ -281,7 +281,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Add multiple databases and quickly switch between them.",
         comment: "Explanation of the premium feature")
-    
+
     public static let premiumFeatureLongDatabaseTimeoutsTitle = NSLocalizedString(
             "[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts",
             bundle: Bundle.framework,
@@ -302,14 +302,13 @@ extension LString {
         bundle: Bundle.framework,
         value: "Tired of typing your master password? Keep your database open longer and unlock it with one tap.",
         comment: "Explanation of the premium feature")
-        
-    
+
     public static let premiumFeaturePreviewAttachmentsTitle = NSLocalizedString(
             "[PremiumFeature/Preview/title] Preview Attachments",
             bundle: Bundle.framework,
             value: "Preview Attachments",
             comment: "Title of a premium feature: ability to preview some attached files directly in the app (In Title Case)")
-    public static let premiumFeaturePreviewAttachmentsDescription =  NSLocalizedString(
+    public static let premiumFeaturePreviewAttachmentsDescription = NSLocalizedString(
         "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version.",
         bundle: Bundle.framework,
         value: "Preview images and documents directly in the app, in the premium version.",
@@ -324,7 +323,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Preview attached files directly in KeePassium and leave no traces in other apps. (Works with images, documents, archives and more.)",
         comment: "Explanation of the premium feature")
-    
+
     public static let premiumFeatureHardwareKeysTitle = NSLocalizedString(
             "[PremiumFeature/HardwareKeys/title] Hardware Keys",
             bundle: Bundle.framework,
@@ -345,7 +344,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Protect your secrets with a hardware key, such as YubiKey.",
         comment: "Explanation of the premium feature")
-    
+
     public static let premiumFeatureChangeAppIconTitle = NSLocalizedString(
         "[PremiumFeature/CustomAppIcons/title]",
         bundle: Bundle.framework,
@@ -361,7 +360,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Make KeePassium look unique, familiar, or disguise it as a calculator — the choice is yours.",
         comment: "Explanation of a premium feature")
-    
+
     public static let premiumBenefitFieldReferecesTitle = NSLocalizedString(
         "[Premium/Benefits/ViewFieldReferences/title]",
         bundle: Bundle.framework,
@@ -372,7 +371,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Use field references to show information from other entries, instead of creating multiple copies of the same information.",
         comment: "Explanation of a premium feature")
-    
+
     public static let premiumFeatureQuickAutoFillTitle = NSLocalizedString(
         "[PremiumFeature/QuickAutoFill/title]",
         bundle: Bundle.framework,
@@ -385,7 +384,7 @@ extension LString {
         comment: "Description/call to action for the `Quick AutoFill` premium feature.")
     public static let premiumBenefitQuickAutoFillTitle = premiumFeatureQuickAutoFillTitle
     public static let premiumBenefitQuickAutoFillDescription = premiumFeatureQuickAutoFillDescription
-    
+
     public static let premiumFeatureBusinessCloudsTitle = NSLocalizedString(
         "[PremiumFeature/BusinessClouds/title]",
         bundle: Bundle.framework,
@@ -402,7 +401,7 @@ extension LString {
         value: "Sync with corporate storage",
         comment: "Title of a premium feature")
     public static let premiumBenefitBusinessCloudsDescription = premiumFeatureBusinessCloudsDescription
-    
+
     public static let premiumFeaturePasswordAuditTitle = NSLocalizedString(
         "[PremiumFeature/PasswordAudit/title]",
         bundle: Bundle.framework,
@@ -421,3 +420,4 @@ extension LString {
     public static let premiumBenefitPasswordAuditDescription = premiumFeaturePasswordAuditDescription
 
 }
+// swiftlint:enable line_length

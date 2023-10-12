@@ -8,6 +8,7 @@
 
 import KeePassiumLib
 
+// swiftlint:disable line_length
 extension LString {
     static let actionExcludeFromAudit = NSLocalizedString(
         "[PasswordAudit/Action/Exclude]",
@@ -67,3 +68,4 @@ extension LString.Error {
         value: "An error occured while communicating with the HIBP service. %@",
         comment: "Error message after a failed password audit request [message: String].")
 }
+// swiftlint:enable line_length

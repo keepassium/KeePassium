@@ -9,55 +9,55 @@
 import Foundation
 
 public class CustomData2: Eraseable {
-    
-    public typealias Dict = Dictionary<Key, Item>
-    
+
+    public typealias Dict = [Key: Item]
+
     public typealias Key = String
-    
+
     public class Item: Eraseable {
         public var value: String
         public var lastModificationTime: Date? 
-        
+
         init(value: String, lastModificationTime: Date?) {
             self.value = value
             self.lastModificationTime = lastModificationTime
         }
-        
+
         deinit {
             erase()
         }
-        
+
         public func erase() {
             value.erase()
             lastModificationTime = nil
         }
     }
-    
+
     private var dict: Dict
     private weak var database: Database?
-    
+
     init(database: Database?) {
         dict = [:]
         self.database = database
     }
-    
+
     deinit {
         erase()
     }
-    
+
     public func erase() {
         dict.removeAll() 
     }
-    
+
     internal func clone() -> CustomData2 {
         let copy = CustomData2(database: database)
         copy.dict.reserveCapacity(self.dict.capacity)
-        self.dict.forEach { (key, value) in
+        self.dict.forEach { key, value in
             copy.dict.updateValue(value, forKey: key)
         }
         return copy
     }
-    
+
     func load(
         xml: AEXMLElement,
         streamCipher: StreamCipher,
@@ -85,13 +85,13 @@ public class CustomData2: Eraseable {
             }
         }
     }
-    
+
     private func loadItem(
         xml: AEXMLElement,
         streamCipher: StreamCipher,
         timeParser: Database2XMLTimeParser,
-        xmlParentName: String = "?") throws
-    {
+        xmlParentName: String = "?"
+    ) throws {
         assert(xml.name == Xml2.item)
         var key: String?
         var value: String?
@@ -125,15 +125,14 @@ public class CustomData2: Eraseable {
         }
         dict[_key] = Item(value: _value, lastModificationTime: optionalTimestamp)
     }
-    
-    
+
     func toXml(timeFormatter: Database2XMLTimeFormatter) -> AEXMLElement {
         Diag.verbose("Generating XML: custom data")
         let xml = AEXMLElement(name: Xml2.customData)
         if dict.isEmpty {
             return xml
         }
-        
+
         for keyValuePair in dict {
             let xmlItem = xml.addChild(name: Xml2.item)
             xmlItem.addChild(name: Xml2.key, value: keyValuePair.key)

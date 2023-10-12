@@ -10,31 +10,29 @@ public class ProgressObserver {
     internal let progress: ProgressEx
     private var progressFractionKVO: NSKeyValueObservation?
     private var progressDescriptionKVO: NSKeyValueObservation?
-    
+
     init(progress: ProgressEx) {
         self.progress = progress
     }
-    
+
     func startObservingProgress() {
         assert(progressFractionKVO == nil && progressDescriptionKVO == nil)
         progressFractionKVO = progress.observe(
             \.fractionCompleted,
             options: [.new],
-            changeHandler: {
-                [weak self] (progress, _) in
+            changeHandler: { [weak self] progress, _ in
                 self?.progressDidChange(progress: progress)
             }
         )
         progressDescriptionKVO = progress.observe(
             \.localizedDescription,
             options: [.new],
-            changeHandler: {
-                [weak self] (progress, _) in
+            changeHandler: { [weak self] progress, _ in
                 self?.progressDidChange(progress: progress)
             }
         )
     }
-    
+
     func stopObservingProgress() {
         assert(progressFractionKVO != nil && progressDescriptionKVO != nil)
         progressFractionKVO?.invalidate()
@@ -42,7 +40,7 @@ public class ProgressObserver {
         progressFractionKVO = nil
         progressDescriptionKVO = nil
     }
-    
+
     func progressDidChange(progress: ProgressEx) {
         assertionFailure("Override this")
     }

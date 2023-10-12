@@ -15,46 +15,48 @@ protocol HelpViewerDelegate: AnyObject {
 class HelpViewerVC: UIViewController {
     @IBOutlet weak var bodyTextView: UITextView!
     weak var delegate: HelpViewerDelegate?
-    
+
     var content: HelpArticle? {
         didSet {
             refresh()
         }
     }
     private var contentSizeObservation: NSKeyValueObservation?
-    
-    
+
+
     public static func create() -> HelpViewerVC {
         return HelpViewerVC.instantiateFromStoryboard()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LString.titleHelpViewer
 
-        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didPressShareButton(_:)))
+        let shareButton = UIBarButtonItem(
+            barButtonSystemItem: .action,
+            target: self,
+            action: #selector(didPressShareButton(_:)))
         navigationItem.rightBarButtonItem = shareButton
-        
+
         bodyTextView.textContainerInset.top = 16
         bodyTextView.textContainerInset.left = 8
         bodyTextView.textContainerInset.right = 8
-        
+
         bodyTextView.linkTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.actionTint
         ]
-        
-        contentSizeObservation = bodyTextView.observe(\.contentSize, options: [.new]) {
-            [weak self] (textView, change) in
+
+        contentSizeObservation = bodyTextView.observe(\.contentSize, options: [.new]) { [weak self] textView, _ in
             self?.preferredContentSize = textView.contentSize
         }
         refresh()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         bodyTextView.setContentOffset(.zero, animated: false)
     }
-    
+
     func refresh() {
         guard isViewLoaded else { return }
         guard let content = content else {
@@ -64,7 +66,7 @@ class HelpViewerVC: UIViewController {
         }
         bodyTextView.attributedText = content.rendered()
     }
-    
+
     @objc func didPressShareButton(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressShare(at: popoverAnchor, in: self)

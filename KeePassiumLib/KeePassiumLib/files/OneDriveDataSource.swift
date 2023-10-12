@@ -8,16 +8,16 @@
 
 import Foundation
 
-public final class OneDriveDataSource: DataSource {    
+public final class OneDriveDataSource: DataSource {
     private struct AuthorizedItem {
         var item: OneDriveItemReference
         var token: OAuthToken
     }
-    
+
     func getAccessCoordinator() -> FileAccessCoordinator {
         return PassthroughFileAccessCoordinator()
     }
-    
+
     private func checkAccessAndCredentials<ReturnType>(
         url: URL,
         operation: String,
@@ -45,7 +45,7 @@ public final class OneDriveDataSource: DataSource {
             }
             return nil
         }
-        
+
         guard let itemReference = OneDriveItemReference.fromURL(url) else {
             Diag.error("Failed to restore OneDrive item reference")
             completionQueue.addOperation {
@@ -55,12 +55,12 @@ public final class OneDriveDataSource: DataSource {
         }
         return AuthorizedItem(item: itemReference, token: token)
     }
-    
+
     private func saveUpdatedToken(_ newToken: OAuthToken, prefixedURL url: URL) {
         let newCredential = NetworkCredential(oauthToken: newToken)
         CredentialManager.shared.store(credential: newCredential, for: url)
     }
-    
+
     func readFileInfo(
         at url: URL,
         fileProvider: FileProvider?,
@@ -79,7 +79,7 @@ public final class OneDriveDataSource: DataSource {
         ) else {
             return 
         }
-        
+
         OneDriveManager.shared.getItemInfo(
             authorizedItem.item,
             token: authorizedItem.token,
@@ -108,7 +108,7 @@ public final class OneDriveDataSource: DataSource {
             }
         )
     }
-    
+
     func read(
         _ url: URL,
         fileProvider: FileProvider?,
@@ -126,7 +126,7 @@ public final class OneDriveDataSource: DataSource {
         ) else {
             return 
         }
-        
+
         OneDriveManager.shared.getFileContents(
             authorizedItem.item,
             token: authorizedItem.token,
@@ -143,7 +143,7 @@ public final class OneDriveDataSource: DataSource {
             }
         )
     }
-    
+
     func write(
         _ data: ByteArray,
         to url: URL,

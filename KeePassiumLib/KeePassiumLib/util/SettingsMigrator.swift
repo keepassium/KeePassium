@@ -6,14 +6,13 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-
 open class SettingsMigrator {
-    
+
     public static func processAppLaunch(with settings: Settings) {
         if settings.isFirstLaunch {
             Diag.info("Processing first launch.")
             settings.settingsVersion = Settings.latestVersion
-            
+
             Keychain.shared.reset()
         } else {
             let latestVersion = Settings.latestVersion
@@ -22,7 +21,7 @@ open class SettingsMigrator {
             }
         }
     }
-    
+
     private static func upgrade(_ settings: Settings) {
         let fromVersion = settings.settingsVersion
         switch fromVersion {
@@ -31,14 +30,13 @@ open class SettingsMigrator {
             settings.settingsVersion = Settings.latestVersion
         case 3:
             upgradeVersion3toVersion4(settings)
-            break
         case 4: 
             break
         default:
             break
         }
     }
-    
+
     private static func upgradeVersion3toVersion4(_ settings: Settings) {
         if settings.isBiometricAppLockEnabled {
             Keychain.shared.prepareBiometricAuth(true)

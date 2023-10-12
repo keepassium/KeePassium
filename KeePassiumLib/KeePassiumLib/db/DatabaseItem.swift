@@ -6,15 +6,14 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-
 open class DatabaseItem {
     public enum TouchMode {
         case accessed
         case modified
     }
-    
+
     public weak var parent: Group?
-    
+
     public func isAncestor(of item: DatabaseItem) -> Bool {
         var parent = item.parent
         while parent != nil {
@@ -25,7 +24,7 @@ open class DatabaseItem {
         }
         return false
     }
-    
+
     public func touch(_ mode: TouchMode, updateParents: Bool = true) {
         fatalError("Pure abstract method")
     }

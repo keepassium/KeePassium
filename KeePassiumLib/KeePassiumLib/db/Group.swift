@@ -11,7 +11,7 @@ import Foundation
 public class Group: DatabaseItem, Eraseable {
     public static let defaultIconID = IconID.folder
     public static let defaultOpenIconID = IconID.folderOpen
-    
+
     public weak var database: Database?
     public var uuid: UUID
     public var iconID: IconID
@@ -26,15 +26,15 @@ public class Group: DatabaseItem, Eraseable {
         return canExpire && Date() > expiryTime
     }
     public var isDeleted: Bool
-    
+
     public var isIncludeEntriesInSearch: Bool {
         return true 
     }
-    
+
     private var isChildrenModified: Bool
     public var groups = [Group]()
     public var entries = [Entry]()
-    
+
     public var isRoot: Bool { return database?.root === self }
 
     public func isNameReserved(name: String) -> Bool {
@@ -43,7 +43,7 @@ public class Group: DatabaseItem, Eraseable {
 
     init(database: Database?) {
         self.database = database
-        
+
         uuid = UUID.ZERO
         iconID = Group.defaultIconID
         name = ""
@@ -59,7 +59,7 @@ public class Group: DatabaseItem, Eraseable {
         lastModificationTime = now
         lastAccessTime = now
         expiryTime = now
-        
+
         super.init()
     }
     deinit {
@@ -76,7 +76,7 @@ public class Group: DatabaseItem, Eraseable {
         isChildrenModified = true
         canExpire = false
         isDeleted = false
-        
+
         parent = nil
 
         let now = Date()
@@ -85,11 +85,11 @@ public class Group: DatabaseItem, Eraseable {
         lastAccessTime = now
         expiryTime = now
     }
-    
+
     public func clone(makeNewUUID: Bool) -> Group {
         fatalError("Pure virtual method")
     }
-    
+
     public func deepClone(makeNewUUIDs: Bool) -> Group {
         let selfCopy = clone(makeNewUUID: makeNewUUIDs) 
         groups.forEach {
@@ -103,7 +103,6 @@ public class Group: DatabaseItem, Eraseable {
         return selfCopy
     }
 
-    
     public func apply(to target: Group, makeNewUUID: Bool) {
         if makeNewUUID {
             target.uuid = UUID()
@@ -115,14 +114,14 @@ public class Group: DatabaseItem, Eraseable {
         target.notes = notes
         target.canExpire = canExpire
         target.isDeleted = isDeleted
-        
-        
+
+
         target.creationTime = creationTime
         target.lastModificationTime = lastModificationTime
         target.lastAccessTime = lastAccessTime
         target.expiryTime = expiryTime
     }
-    
+
     public func add(group: Group) {
         assert(group !== self)
         group.parent = self
@@ -130,13 +129,13 @@ public class Group: DatabaseItem, Eraseable {
         group.deepSetDeleted(self.isDeleted)
         isChildrenModified = true
     }
-    
+
     public func deepSetDeleted(_ isDeleted: Bool) {
         self.isDeleted = isDeleted
         groups.forEach { $0.deepSetDeleted(isDeleted) }
         entries.forEach { $0.isDeleted = isDeleted }
     }
-    
+
     public func remove(group: Group) {
         guard group.parent === self else {
             return
@@ -145,14 +144,14 @@ public class Group: DatabaseItem, Eraseable {
         group.parent = nil
         isChildrenModified = true
     }
-    
+
     public func add(entry: Entry) {
         entry.parent = self
         entry.isDeleted = self.isDeleted
         entries.append(entry)
         isChildrenModified = true
     }
-    
+
     public func remove(entry: Entry) {
         guard entry.parent === self else {
             return
@@ -161,7 +160,7 @@ public class Group: DatabaseItem, Eraseable {
         entry.parent = nil
         isChildrenModified = true
     }
-    
+
     public func move(to newGroup: Group) {
         guard parent !== newGroup else { return }
         parent?.remove(group: self)
@@ -179,7 +178,7 @@ public class Group: DatabaseItem, Eraseable {
         }
         return nil
     }
-    
+
     public func findEntry(byUUID uuid: UUID) -> Entry? {
         for group in groups {
             if let result = group.findEntry(byUUID: uuid) {
@@ -192,11 +191,11 @@ public class Group: DatabaseItem, Eraseable {
     public func createEntry(detached: Bool = false) -> Entry {
         fatalError("Pure virtual method")
     }
-    
+
     public func createGroup(detached: Bool = false) -> Group {
         fatalError("Pure virtual method")
     }
-    
+
     override public func touch(_ mode: DatabaseItem.TouchMode, updateParents: Bool = true) {
         lastAccessTime = Date.now
         if mode == .modified {
@@ -207,18 +206,18 @@ public class Group: DatabaseItem, Eraseable {
         }
     }
 
-    public func collectAllChildren(groups: inout Array<Group>, entries: inout Array<Entry>) {
+    public func collectAllChildren(groups: inout [Group], entries: inout [Entry]) {
         for group in self.groups {
             groups.append(group)
             group.collectAllChildren(groups: &groups, entries: &entries)
         }
         entries.append(contentsOf: self.entries)
     }
-    
+
     public func applyToAllChildren(
         includeSelf: Bool = false,
-        groupHandler: ((Group)->Void)?,
-        entryHandler: ((Entry)->Void)?
+        groupHandler: ((Group) -> Void)?,
+        entryHandler: ((Entry) -> Void)?
     ) {
         if includeSelf {
             groupHandler?(self)
@@ -232,25 +231,25 @@ public class Group: DatabaseItem, Eraseable {
             )
         }
     }
-    
-    public func collectAllEntries(to entries: inout Array<Entry>) {
+
+    public func collectAllEntries(to entries: inout [Entry]) {
         for group in self.groups {
             group.collectAllEntries(to: &entries)
         }
         entries.append(contentsOf: self.entries)
     }
-    
-    public func filterEntries(query: SearchQuery, result: inout Array<Entry>) {
+
+    public func filterEntries(query: SearchQuery, result: inout [Entry]) {
         if self.isDeleted && !query.includeDeleted {
             return
         }
-        
+
         if query.includeSubgroups {
             for group in groups {
                 group.filterEntries(query: query, result: &result)
             }
         }
-        
+
         guard isIncludeEntriesInSearch else {
             return
         }
@@ -264,10 +263,8 @@ public class Group: DatabaseItem, Eraseable {
 
 extension Array where Element == Group {
     mutating func remove(_ group: Group) {
-        if let index = firstIndex(where: {$0 === group}) {
+        if let index = firstIndex(where: { $0 === group }) {
             remove(at: index)
         }
     }
 }
-
-

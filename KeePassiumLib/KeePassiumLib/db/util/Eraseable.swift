@@ -53,18 +53,18 @@ extension Data: EraseableStruct {
 
 extension Dictionary where Key: Eraseable, Value: Eraseable {
     mutating func erase() {
-        forEach({ (key, value) in
+        forEach { key, value in
             key.erase()
             value.erase()
-        })
+        }
         removeAll()
     }
 }
 extension Dictionary where Value: Eraseable {
     mutating func erase() {
-        forEach({ (key, value) in
+        forEach { _, value in
             value.erase()
-        })
+        }
         removeAll()
     }
 }

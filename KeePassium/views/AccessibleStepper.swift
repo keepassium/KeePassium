@@ -20,17 +20,17 @@ final class AccessibleStepper: UIStepper {
         super.awakeFromNib()
         configureControl()
     }
-    
+
     private func configureControl() {
         isAccessibilityElement = true
         accessibilityTraits = .adjustable
     }
-    
+
     override func accessibilityIncrement() {
         value += stepValue
         sendActions(for: .valueChanged)
     }
-    
+
     override func accessibilityDecrement() {
         value -= stepValue
         sendActions(for: .valueChanged)

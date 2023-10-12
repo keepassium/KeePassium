@@ -14,9 +14,9 @@ protocol SettingsClipboardTimeoutViewControllerDelegate: AnyObject {
 
 final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
     private let cellID = "Cell"
-    
+
     weak var delegate: SettingsClipboardTimeoutViewControllerDelegate?
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
@@ -25,24 +25,23 @@ final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
     func refresh() {
         tableView.reloadData()
     }
-    
-    
+
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Settings.ClipboardTimeout.allValues.count
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return LString.clipboardTimeoutDescription
     }
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
-        ) -> UITableViewCell
-    {
+    ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         let timeout = Settings.ClipboardTimeout.allValues[indexPath.row]
         cell.textLabel?.text = timeout.fullTitle
@@ -53,12 +52,12 @@ final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
         }
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let timeout = Settings.ClipboardTimeout.allValues[indexPath.row]
         didSelectTimeout(timeout)
     }
-    
+
     private func didSelectTimeout(_ timeout: Settings.ClipboardTimeout) {
         Settings.current.clipboardTimeout = timeout
         refresh()

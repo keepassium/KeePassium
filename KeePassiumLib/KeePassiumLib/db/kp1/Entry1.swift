@@ -18,7 +18,7 @@ public class Entry1: Entry {
         case url       = 0x0005
         case username  = 0x0006
         case password  = 0x0007
-        case notes      = 0x0008
+        case notes     = 0x0008
         case creationTime      = 0x0009
         case lastModifiedTime  = 0x000A
         case lastAccessTime    = 0x000B
@@ -27,7 +27,7 @@ public class Entry1: Entry {
         case binaryData        = 0x000E
         case end               = 0xFFFF
     }
-    
+
     private enum MetaStreamID {
         public static let iconID   = IconID.withZeroID
         public static let title    = "Meta-Info"
@@ -35,10 +35,10 @@ public class Entry1: Entry {
         public static let url      = "$"
         public static let attName  = "bin-stream"
     }
-    
-    
+
+
     override public var isSupportsMultipleAttachments: Bool { return false }
-    
+
     override public var canExpire: Bool {
         get { return expiryTime != Date.kp1Never }
         set {
@@ -53,13 +53,13 @@ public class Entry1: Entry {
         }
     }
     internal var groupID: Group1ID
-    
-    override public var isSupportsExtraFields: Bool { get { return false } }
-    
+
+    override public var isSupportsExtraFields: Bool { return false }
+
     var isMetaStream: Bool {
         guard let att = getAttachment() else { return false }
         if rawNotes.isEmpty { return false }
-        
+
         return (iconID == MetaStreamID.iconID) &&
             (att.name == MetaStreamID.attName) &&
             (rawUserName == MetaStreamID.userName) &&
@@ -70,21 +70,21 @@ public class Entry1: Entry {
     override init(database: Database?) {
         groupID = 0
         super.init(database: database)
-        
+
         canExpire = false
     }
-    
+
     deinit {
         erase()
     }
-    
+
     override public func erase() {
         groupID = 0
         super.erase()
-        
+
         canExpire = false
     }
-    
+
     override public func clone(makeNewUUID: Bool) -> Entry {
         let newEntry = Entry1(database: self.database)
         apply(to: newEntry, makeNewUUID: makeNewUUID)
@@ -100,14 +100,14 @@ public class Entry1: Entry {
             return
         }
     }
-    
+
     func load(from stream: ByteArray.InputStream) throws {
         Diag.verbose("Loading entry")
         erase()
-        
+
         var binaryDesc = ""
         var binaryData = ByteArray()
-        
+
         while stream.hasBytesAvailable {
             guard let fieldIDraw = stream.readUInt16() else {
                 throw Database1.FormatError.prematureDataEnd
@@ -123,7 +123,7 @@ public class Entry1: Entry {
             }
 
             let fieldSize = Int(_fieldSize)
-            
+
             switch fieldID {
             case .reserved:
                 guard let _ = stream.read(count: fieldSize) else {
@@ -252,11 +252,11 @@ public class Entry1: Entry {
                 return
             } 
         } 
-        
+
         Diag.warning("Entry data missing the .end field")
         throw Database1.FormatError.prematureDataEnd
     }
-    
+
     func write(to stream: ByteArray.OutputStream) {
         func writeField(fieldID: FieldID, data: ByteArray, addTrailingZero: Bool = false) {
             stream.write(value: fieldID.rawValue)
@@ -281,7 +281,7 @@ public class Entry1: Entry {
         writeField(fieldID: .lastModifiedTime, data: lastModificationTime.asKP1Bytes())
         writeField(fieldID: .lastAccessTime, data: lastAccessTime.asKP1Bytes())
         writeField(fieldID: .expirationTime, data: expiryTime.asKP1Bytes())
-        
+
         if let att = getAttachment() {
             let binaryDesc = ByteArray(utf8String: att.name)
             writeField(fieldID: .binaryDesc, data: binaryDesc, addTrailingZero: true)
@@ -293,14 +293,14 @@ public class Entry1: Entry {
         }
         writeField(fieldID: .end, data: ByteArray())
     }
-    
+
     override public func backupState() {
         let copy = self.clone(makeNewUUID: true)
 
         database?.delete(entry: copy) 
     }
-    
+
     internal func getAttachment() -> Attachment? {
         return attachments.first
-    }    
+    }
 }

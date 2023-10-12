@@ -9,7 +9,7 @@
 import UIKit
 
 extension UILabel {
-    
+
     public func setText(_ text: String?, strikethrough: Bool) {
         if let text = text, strikethrough {
             let attributedText = NSAttributedString(
@@ -24,29 +24,27 @@ extension UILabel {
             self.text = text
         }
     }
-    
+
     public func flashColor(
         to targetColor: UIColor,
         duration: TimeInterval = 1.0,
-        options: UIView.AnimationOptions = .transitionCrossDissolve)
-    {
+        options: UIView.AnimationOptions = .transitionCrossDissolve
+    ) {
         let originalColor = self.textColor
         UIView.transition(
             with: self,
             duration: duration * 0.3,
             options: options,
-            animations: {
-                [weak self] in
+            animations: { [weak self] in
                 self?.textColor = .destructiveTint
             },
-            completion: { [weak self] (finished) in
+            completion: { [weak self] _ in
                 guard let self = self else { return }
                 UIView.transition(
                     with: self,
                     duration: duration * 0.7,
                     options: options,
-                    animations: {
-                        [weak self] in
+                    animations: { [weak self] in
                         self?.textColor = originalColor
                     }
                 )

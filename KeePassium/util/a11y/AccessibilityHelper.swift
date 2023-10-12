@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 class AccessibilityHelper {
-    
+
     public static func decorateAccessibilityLabel(
         premiumFeature name: String?,
         isEnabled: Bool

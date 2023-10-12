@@ -10,16 +10,16 @@ import KeePassiumLib
 
 public struct HelpArticle {
     private let content: NSAttributedString
-    
+
     public enum Key: String {
         case perpetualFallbackLicense = "perpetual-fallback-license"
         case appStoreFamilySharingProgramme = "appstore-family-sharing"
     }
-    
+
     public func rendered() -> NSAttributedString {
         return content
     }
-    
+
     public static func load(_ key: Key) -> HelpArticle? {
         let fileName = key.rawValue
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "html", subdirectory: "") else {
@@ -27,7 +27,7 @@ public struct HelpArticle {
             return nil
         }
         do {
-            var d: NSDictionary? = nil
+            var d: NSDictionary?
             let content = try NSMutableAttributedString(
                 url: url,
                 options: [

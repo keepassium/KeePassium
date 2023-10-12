@@ -14,13 +14,13 @@ struct ContextualAction {
         case destructive
         case cancel
     }
-    
+
     var title: String
     var imageName: SymbolName?
     var style: Style
     var color: UIColor?
     var handler: (() -> Void)
-    
+
     @available(iOS 13, *)
     public func toMenuAction() -> UIAction {
         var image: UIImage?
@@ -31,12 +31,12 @@ struct ContextualAction {
             title: title,
             image: image,
             attributes: (style == .destructive) ? [.destructive] : [],
-            handler: { action in
+            handler: { _ in
                 handler()
             }
         )
     }
-    
+
     public func toAlertAction() -> UIAlertAction {
         let alertActionStyle: UIAlertAction.Style
         switch style {
@@ -47,29 +47,29 @@ struct ContextualAction {
         case .cancel:
             alertActionStyle = .cancel
         }
-        
+
         return UIAlertAction(
             title: title,
             style: alertActionStyle,
-            handler: { action in
+            handler: { _ in
                 handler()
             }
         )
     }
-    
+
     public func toContextualAction(tableView: UITableView) -> UIContextualAction {
         let contextualAction: UIContextualAction
         switch style {
         case .default, .cancel:
             contextualAction = UIContextualAction(style: .normal, title: title) {
-                [weak tableView] (action, sourceView, completion) in
+                [weak tableView] _, _, completion in
                 tableView?.setEditing(false, animated: true)
                 handler()
                 completion(true)
             }
         case .destructive:
             contextualAction = UIContextualAction(style: .destructive, title: title) {
-                [weak tableView] (action, sourceView, completion) in
+                [weak tableView] _, _, completion in
                 tableView?.setEditing(false, animated: true)
                 handler()
                 completion(true)

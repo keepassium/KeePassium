@@ -8,29 +8,27 @@
 
 import UIKit
 
-
 class DismissablePopover: NSObject, UIPopoverPresentationControllerDelegate {
     private let leftButtonSystemItem: UIBarButtonItem.SystemItem?
     private let rightButtonSystemItem: UIBarButtonItem.SystemItem?
-    
+
     init(
         leftButton: UIBarButtonItem.SystemItem? = nil,
-        rightButton: UIBarButtonItem.SystemItem? = .done)
-    {
+        rightButton: UIBarButtonItem.SystemItem? = .done
+    ) {
         self.leftButtonSystemItem = leftButton
         self.rightButtonSystemItem = rightButton
     }
-    
+
     func presentationController(
         _ controller: UIPresentationController,
         viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle
-        ) -> UIViewController?
-    {
+    ) -> UIViewController? {
         let dismissableVC = DismissableNavigationController(
             rootViewController: controller.presentedViewController,
             leftButton: leftButtonSystemItem,
             rightButton: rightButtonSystemItem)
         return dismissableVC
     }
-    
+
 }

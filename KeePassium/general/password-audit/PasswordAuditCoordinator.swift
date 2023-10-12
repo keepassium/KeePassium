@@ -70,7 +70,7 @@ final class PasswordAuditCoordinator: Coordinator {
     @objc private func premiumStatusDidChange() {
         passwordAuditIntroVC.refresh()
     }
-    
+
 
     private func showResults(results: [PasswordAuditService.PasswordAudit]) {
         let passwordAuditResultsVC = PasswordAuditResultsVC.instantiateFromStoryboard()
@@ -79,7 +79,7 @@ final class PasswordAuditCoordinator: Coordinator {
         passwordAuditResultsVC.delegate = self
         router.push(passwordAuditResultsVC, animated: true, onPop: nil)
     }
-    
+
     private func getAllowedActionsForResults() -> [PasswordAuditResultsVC.AllowedAction] {
         if databaseFile.status.contains(.readOnly) {
             return []
@@ -161,7 +161,7 @@ extension PasswordAuditCoordinator: PasswordAuditResultsVCDelegate {
     func didPressDismiss(in viewController: PasswordAuditResultsVC) {
         router.dismiss(animated: true)
     }
-    
+
     func didPressDeleteEntries(entries: [Entry], in viewController: PasswordAuditResultsVC) {
         entries.forEach {
             databaseFile.database.delete(entry: $0)
@@ -198,27 +198,27 @@ extension PasswordAuditCoordinator: PasswordAuditResultsVCDelegate {
             didApprove()
             return
         }
-        
+
         guard db2.formatVersion.hasMajorDifferences(with: newFormat) else {
             Diag.debug("Minor format version upgrade required, approving silently")
             db2.upgradeFormatVersion(to: newFormat)
             didApprove()
             return
         }
-        
+
         let message = [
                 String.localizedStringWithFormat(
                     LString.databaseFormatVersionUpgradeMessageTemplate,
                     db2.formatVersion.description,
                     newFormat.description),
                 LString.titleDatabaseFormatConversionAllDataPreserved
-            ].joined(separator: "\n\n")
+            ].joined(separator: "\n\n") 
         let confirmationAlert = UIAlertController.make(
             title: LString.titleDatabaseFormatVersionUpgrade,
             message: message,
             dismissButtonTitle: LString.actionCancel
         )
-        confirmationAlert.addAction(title: LString.actionContinue, style: .default, preferred: true){ _ in
+        confirmationAlert.addAction(title: LString.actionContinue, style: .default, preferred: true) { _ in
             Diag.debug("DB format upgrade approved by user")
             db2.upgradeFormatVersion(to: newFormat)
             didApprove()
@@ -232,7 +232,7 @@ extension PasswordAuditCoordinator: DatabaseSaving {
     func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
         delegate?.didRelocateDatabase(databaseFile, to: newURL)
     }
-    
+
     func getDatabaseSavingErrorParent() -> UIViewController {
         return passwordAuditResultsVC!
     }

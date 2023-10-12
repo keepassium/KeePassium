@@ -19,12 +19,12 @@ extension DatabaseIconSet {
             return "db-icons/keepassxc"
         }
     }
-    
+
     public func getIcon(_ iconID: IconID) -> UIImage? {
         let name = String(format: "%@/%02d", assetPath, iconID.rawValue)
         return UIImage(named: name)?.withRenderingMode(renderingMode)
     }
-    
+
     public var renderingMode: UIImage.RenderingMode {
         switch self {
         case .keepassium:

@@ -13,12 +13,12 @@ class WatchdogAwareTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         addTarget(self, action: #selector(onEditingChanged), for: .editingChanged)
     }
-    
+
     @objc
     func onEditingChanged(textField: UITextField) {
         Watchdog.shared.restart()

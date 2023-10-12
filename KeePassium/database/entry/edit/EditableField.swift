@@ -36,14 +36,14 @@ class EditableField: BasicViewableField {
             if let field = field { field.value = newValue ?? "" }
         }
     }
-    
+
     override var isProtected: Bool {
         get { return field?.isProtected ?? false }
         set {
             if let field = field { field.isProtected = newValue }
         }
     }
-    
+
     public var textContentType: UITextContentType? {
         switch internalName {
         case EntryField.userName:
@@ -60,7 +60,7 @@ class EditableField: BasicViewableField {
             return nil
         }
     }
-    
+
     var isValid: Bool
 
     init(field: EntryField) {

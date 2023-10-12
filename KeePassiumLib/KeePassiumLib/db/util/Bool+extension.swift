@@ -13,7 +13,7 @@ public extension Bool {
         guard let value = value else {
             return nil
         }
-        
+
         switch value.lowercased() {
         case "true":
             self = true

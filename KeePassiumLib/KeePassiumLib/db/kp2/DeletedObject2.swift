@@ -12,7 +12,7 @@ public class DeletedObject2: Eraseable {
     private weak var database: Database2?
     private(set) var uuid: UUID
     private(set) var deletionTime: Date
-    
+
     init(database: Database2, uuid: UUID) {
         self.database = database
         self.uuid = uuid
@@ -24,12 +24,12 @@ public class DeletedObject2: Eraseable {
     deinit {
         erase()
     }
-    
+
     public func erase() {
         uuid.erase()
         deletionTime = Date.now
     }
-    
+
     func load(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
         assert(xml.name == Xml2.deletedObject)
         Diag.verbose("Loading XML: deleted object")
@@ -54,7 +54,7 @@ public class DeletedObject2: Eraseable {
             }
         }
     }
-    
+
     func toXml(timeFormatter: Database2XMLTimeFormatter) -> AEXMLElement {
         Diag.verbose("Generating XML: deleted object")
         let xml = AEXMLElement(name: Xml2.deletedObject)
@@ -63,4 +63,3 @@ public class DeletedObject2: Eraseable {
         return xml
     }
 }
-

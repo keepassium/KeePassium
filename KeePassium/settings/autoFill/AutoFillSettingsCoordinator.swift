@@ -12,21 +12,21 @@ import UserNotifications
 final class AutoFillSettingsCoordinator: Coordinator, Refreshable {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     private let router: NavigationRouter
     private let autoFillSettingsVC: SettingsAutoFillVC
-    
+
     init(router: NavigationRouter) {
         self.router = router
         autoFillSettingsVC = SettingsAutoFillVC.instantiateFromStoryboard()
         autoFillSettingsVC.delegate = self
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         router.push(autoFillSettingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
@@ -35,12 +35,12 @@ final class AutoFillSettingsCoordinator: Coordinator, Refreshable {
         })
         startObservingPremiumStatus(#selector(premiumStatusDidChange))
     }
-    
+
     @objc
     private func premiumStatusDidChange() {
         refresh()
     }
-    
+
     func refresh() {
         if let topVC = router.navigationController.topViewController,
            let topRefreshable = topVC as? Refreshable
@@ -56,7 +56,7 @@ extension AutoFillSettingsCoordinator {
             performPremiumActionOrOfferUpgrade(
                 for: .canUseQuickTypeAutoFill,
                 in: viewController,
-                actionHandler: { [weak self] in
+                actionHandler: {
                     Settings.current.isQuickTypeEnabled = true
                 }
             )
@@ -72,11 +72,11 @@ extension AutoFillSettingsCoordinator: SettingsAutoFillViewControllerDelegate {
     func didToggleQuickAutoFill(newValue: Bool, in viewController: SettingsAutoFillVC) {
         maybeSetQuickAutoFill(newValue, in: viewController)
     }
-    
+
     func didToggleCopyTOTP(newValue: Bool, in viewController: SettingsAutoFillVC) {
         Settings.current.isCopyTOTPOnAutoFill = newValue
         if newValue {
-            LocalNotifications.requestPermission() {
+            LocalNotifications.requestPermission {
                 LocalNotifications.showTOTPNotification(
                     title: LString.otpCodeCopyToClipboardDemo,
                     body: LString.otpCodeCopiedToClipboard)

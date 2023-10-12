@@ -15,32 +15,32 @@ struct AppHistory: Decodable {
         let releaseDate: Date
         let items: [Item]
     }
-    
+
     struct Item: Decodable {
         let title: String
         let type: ItemType
     }
-    
+
     enum ItemType: Int, Codable {
         case none = 0
         case free = 1
         case premium = 2
     }
-    
+
     let sections: [Section]
 }
 
 extension AppHistory {
 
-    public static func load(completion: @escaping ((AppHistory?)->Void)) {
+    public static func load(completion: @escaping ((AppHistory?) -> Void)) {
         DispatchQueue.global(qos: .userInitiated).async {
             loadInBackground(completion: completion)
         }
     }
-    
-    private static func loadInBackground(completion: @escaping ((AppHistory?)->Void)) {
+
+    private static func loadInBackground(completion: @escaping ((AppHistory?) -> Void)) {
         dispatchPrecondition(condition: .notOnQueue(.main))
-        
+
         let url = Bundle.main.url(
             forResource: AppHistory.fileName,
             withExtension: "json",
@@ -52,7 +52,7 @@ extension AppHistory {
             }
             return
         }
-        
+
         do {
             let fileContents = try Data(contentsOf: fileURL)
             let jsonDecoder = JSONDecoder()
@@ -66,7 +66,7 @@ extension AppHistory {
             DispatchQueue.main.async { completion(nil) }
         }
     }
-    
+
     public func versionOnDate(_ date: Date) -> String? {
         let sortedSections = sections.sorted(by: { $0.releaseDate < $1.releaseDate })
         let matchingSection = sortedSections.last(where: { $0.releaseDate <= date })

@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIDevice {
-    
+
     public func hasHomeButton() -> Bool {
         #if targetEnvironment(macCatalyst)
         return false

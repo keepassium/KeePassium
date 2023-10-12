@@ -9,13 +9,13 @@
 import KeePassiumLib
 
 final class SyncConflictAlertMessageCell: UITableViewCell {
-    fileprivate var buttonHandler: ((UIButton)->Void)?
-    
+    fileprivate var buttonHandler: ((UIButton) -> Void)?
+
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var subtitleLabel: UILabel!
     @IBOutlet fileprivate weak var toggleButton: UIButton!
-     
-    @IBAction func didPressToggleButton(_ sender: UIButton) {
+
+    @IBAction private func didPressToggleButton(_ sender: UIButton) {
         buttonHandler?(sender)
     }
 }
@@ -36,13 +36,13 @@ final class SyncConflictAlert: UIViewController, Refreshable {
         static let file = "fileCell"
         static let option = "optionCell"
     }
-    
+
     public let options: [Decision] =
         [.overwriteRemote, .saveAs, .cancelSaving]
 
     typealias Completion = ((_ decision: Decision) -> Void)
     var responseHandler: Completion?
-    
+
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -51,24 +51,24 @@ final class SyncConflictAlert: UIViewController, Refreshable {
         dateFormatter.formattingContext = .listItem
         return dateFormatter
     }()
-    
+
     private let fileSizeFormatter: ByteCountFormatter = {
         let formatter = ByteCountFormatter()
         formatter.formattingContext = .listItem
         formatter.countStyle = .file
         return formatter
     }()
-    
+
     private var localFileInfo: FileInfo?
     private var remoteFileInfo: FileInfo?
     private var remoteFileError: FileAccessError?
     private var isShowFileInfo = false
-    
+
     private let infoRefreshQueue = DispatchQueue(
         label: "com.keepassium.SyncConflictInfoRefresh",
         qos: .utility
     )
-    
+
     public func setData(local: DatabaseFile, remote: URL) {
         localFileInfo = local.fileReference?.getCachedInfoSync(canFetch: false)
         refresh()
@@ -92,10 +92,10 @@ final class SyncConflictAlert: UIViewController, Refreshable {
             )
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.layer.borderWidth = 0
         tableView.layer.shadowColor = UIColor.primaryText.cgColor
         tableView.layer.shadowOpacity = 0.1
@@ -107,39 +107,39 @@ final class SyncConflictAlert: UIViewController, Refreshable {
         bgView.alpha = 0.2
         bgView.backgroundColor = .black
         view.insertSubview(bgView, at: 0)
-        
+
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         tableView.alwaysBounceVertical = false
-        
+
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         tableView.removeObserver(self, forKeyPath: "contentSize")
         super.viewWillDisappear(animated)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refresh()
     }
-    
+
     func refresh() {
         guard isViewLoaded else { return }
         tableView.reloadData()
     }
-    
+
     override func observeValue(
         forKeyPath keyPath: String?,
         of object: Any?,
-        change: [NSKeyValueChangeKey : Any]?,
+        change: [NSKeyValueChangeKey: Any]?,
         context: UnsafeMutableRawPointer?
     ) {
         let contentSize = tableView.contentSize
@@ -151,7 +151,7 @@ extension SyncConflictAlert: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -163,7 +163,7 @@ extension SyncConflictAlert: UITableViewDataSource {
             return 0
         }
     }
-    
+
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -198,7 +198,7 @@ extension SyncConflictAlert: UITableViewDataSource {
             fatalError()
         }
     }
-    
+
     private func setupMessageCell(_ cell: SyncConflictAlertMessageCell) -> UITableViewCell {
         cell.titleLabel?.text = localFileInfo?.fileName ?? LString.titleSyncConflict
         cell.subtitleLabel?.text = LString.syncConflictMessage
@@ -211,16 +211,16 @@ extension SyncConflictAlert: UITableViewDataSource {
         }
         return cell
     }
-    
+
     private func setupLocalFileInfoCell(_ cell: UITableViewCell) -> UITableViewCell {
         cell.textLabel?.text = LString.syncConflictLoadedVersion
         cell.detailTextLabel?.text = formatDescription(localFileInfo)
         return cell
     }
-    
+
     private func setupRemoteFileInfoCell(_ cell: UITableViewCell) -> UITableViewCell {
         cell.textLabel?.text = LString.syncConflictCurrentVersion
-        
+
         let currentVersionDescription: String
         if let remoteFileInfo = remoteFileInfo {
             currentVersionDescription = formatDescription(remoteFileInfo)
@@ -231,7 +231,7 @@ extension SyncConflictAlert: UITableViewDataSource {
         cell.detailTextLabel?.text = currentVersionDescription
         return cell
     }
-    
+
     private func setupOptionCell(_ cell: UITableViewCell, index: Int) -> UITableViewCell {
         let option = options[index]
         switch option {
@@ -259,7 +259,7 @@ extension SyncConflictAlert: UITableViewDataSource {
         }
         return cell
     }
-    
+
     private func formatDescription(_ fileInfo: FileInfo?) -> String {
         var lines = [String]()
         if let modDate = fileInfo?.modificationDate {
@@ -279,10 +279,10 @@ extension SyncConflictAlert: UITableViewDelegate {
         }
         return nil
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let strategy = options[indexPath.row]
         Diag.debug("Selected conflict resolution strategy: \(strategy)")
         dismiss(animated: true) {[self] in

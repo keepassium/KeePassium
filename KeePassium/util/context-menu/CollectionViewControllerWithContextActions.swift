@@ -9,11 +9,11 @@
 import KeePassiumLib
 
 class CollectionViewControllerWithContextActions: UICollectionViewController {
-    
+
     func getContextActionsForItem(at indexPath: IndexPath) -> [ContextualAction] {
         return []
     }
-    
+
     override func collectionView(
         _ collectionView: UICollectionView,
         canEditItemAt indexPath: IndexPath
@@ -21,9 +21,8 @@ class CollectionViewControllerWithContextActions: UICollectionViewController {
         let itemActions = getContextActionsForItem(at: indexPath)
         return itemActions.count > 0
     }
-    
-    
-    
+
+
     @available(iOS 13, *)
     override func collectionView(
         _ collectionView: UICollectionView,
@@ -32,13 +31,12 @@ class CollectionViewControllerWithContextActions: UICollectionViewController {
     ) -> UIContextMenuConfiguration? {
         let menuActions = getContextActionsForItem(at: indexPath)
             .map { $0.toMenuAction() }
-        
+
         guard menuActions.count > 0 else {
             return nil
         }
-        
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {
-            (suggestedActions) in
+
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             return UIMenu(title: "", children: menuActions)
         }
     }

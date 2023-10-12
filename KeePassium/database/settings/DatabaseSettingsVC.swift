@@ -31,9 +31,9 @@ protocol DatabaseSettingsDelegate: AnyObject {
 
 final class DatabaseSettingsVC: UITableViewController, Refreshable {
     private let fallbackTimeouts: [TimeInterval] = [.zero, 1, 5, 10, 15, 30]
-    
+
     weak var delegate: DatabaseSettingsDelegate?
-    
+
     var isReadOnlyAccess: Bool!
     var isQuickTypeEnabled: Bool!
     var fallbackStrategy: UnreachableFileFallbackStrategy!
@@ -41,7 +41,7 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
     var availableFallbackStrategies: Set<UnreachableFileFallbackStrategy> = []
     var fallbackTimeout: TimeInterval!
     var autoFillFallbackTimeout: TimeInterval!
-    
+
     private let fallbackTimeoutFormatter: RelativeDateTimeFormatter = {
         let formatter = RelativeDateTimeFormatter()
         formatter.dateTimeStyle = .named
@@ -52,21 +52,21 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = LString.titleDatabaseSettings
-        
+
         registerCellClasses(tableView)
         tableView.alwaysBounceVertical = false
         setupCloseButton()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
     }
-    
+
     func refresh() {
         tableView.reloadData()
     }
-    
+
     private func setupCloseButton() {
         let closeBarButton = UIBarButtonItem(
             systemItem: .close,
@@ -91,7 +91,7 @@ extension DatabaseSettingsVC {
     }
     private enum CellIndex {
         static let sectionSizes = [1, 2, 3]
-        
+
         static let readOnly = IndexPath(row: 0, section: 0)
         static let fileUnreachableTimeout = IndexPath(row: 0, section: 1)
         static let fileUnreachableAction = IndexPath(row: 1, section: 1)
@@ -99,7 +99,7 @@ extension DatabaseSettingsVC {
         static let autoFillFileUnreachableTimeout = IndexPath(row: 1, section: 2)
         static let autoFillFileUnreachableAction = IndexPath(row: 2, section: 2)
     }
-    
+
     private func registerCellClasses(_ tableView: UITableView) {
         tableView.register(
             SwitchCell.classForCoder(),
@@ -108,15 +108,15 @@ extension DatabaseSettingsVC {
             UINib(nibName: ParameterValueCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: CellID.parameterValueCell)
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return CellIndex.sectionSizes.count
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CellIndex.sectionSizes[section]
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         titleForHeaderInSection section: Int
@@ -130,7 +130,7 @@ extension DatabaseSettingsVC {
             return nil
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -182,7 +182,7 @@ extension DatabaseSettingsVC {
             preconditionFailure("Unexpected cell index")
         }
     }
-    
+
     private func configureReadOnlyCell(_ cell: SwitchCell) {
         cell.textLabel?.text = LString.titleFileAccessReadOnly
         cell.theSwitch.isEnabled = delegate?.canChangeReadOnly(in: self) ?? false
@@ -197,7 +197,7 @@ extension DatabaseSettingsVC {
             self.delegate?.didChangeSettings(isReadOnlyFile: theSwitch.isOn, in: self)
         }
     }
-    
+
     private func configureOfflineAccessCell(
         _ cell: ParameterValueCell,
         strategy fallbackStrategy: UnreachableFileFallbackStrategy,
@@ -205,7 +205,7 @@ extension DatabaseSettingsVC {
     ) {
         cell.textLabel?.text = LString.titleIfFileIsUnreachable
         cell.detailTextLabel?.text = fallbackStrategy.title
-        
+
         let actions = UnreachableFileFallbackStrategy.allCases.map { strategy in
             UIAction(
                 title: strategy.title,
@@ -228,7 +228,7 @@ extension DatabaseSettingsVC {
             children: actions
         )
     }
-    
+
     private func configureFallbackTimeoutCell(
         _ cell: ParameterValueCell,
         timeout fallbackTimeout: TimeInterval,
@@ -236,7 +236,7 @@ extension DatabaseSettingsVC {
     ) {
         cell.textLabel?.text = LString.titleConsiderFileUnreachable
         cell.detailTextLabel?.text = formatFallbackTimeout(fallbackTimeout)
-        
+
         let actions = fallbackTimeouts.map { timeout -> UIAction in
             let isCurrent = abs(timeout - fallbackTimeout) < .ulpOfOne
             return UIAction(
@@ -260,15 +260,14 @@ extension DatabaseSettingsVC {
             children: actions
         )
     }
-    
+
     private func formatFallbackTimeout(_ timeout: TimeInterval) -> String {
         if timeout.isZero {
             return LString.appProtectionTimeoutImmediatelyFull 
         }
         return fallbackTimeoutFormatter.localizedString(fromTimeInterval: timeout)
     }
-    
-    
+
     private func configureQuickTypeEnabledCell(_ cell: SwitchCell) {
         cell.textLabel?.text = LString.titleQuickAutoFill
         let isEnabled = delegate?.canChangeQuickTypeEnabled(in: self) ?? false

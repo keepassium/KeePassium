@@ -12,7 +12,7 @@ public enum PasswordGeneratorMode: Int, Codable, CustomStringConvertible {
     case basic = 0
     case custom = 1
     case passphrase = 2
-    
+
     public var description: String {
         switch self {
         case .basic:

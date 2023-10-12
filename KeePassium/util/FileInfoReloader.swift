@@ -17,20 +17,19 @@ class FileInfoReloader: Synchronizable {
     }
 
     private var refreshingRefsCount = 0
-    
-    typealias UpdateHandler = (_ ref: URLReference) -> ()
-    
-    
+
+    typealias UpdateHandler = (_ ref: URLReference) -> Void
+
     public func getInfo(
         for refs: [URLReference],
         update updateHandler: @escaping UpdateHandler,
-        completion: @escaping ()->())
-    {
+        completion: @escaping () -> Void
+    ) {
         guard refs.count > 0 else {
             completion()
             return
         }
-        
+
         for ref in refs {
             guard !ref.isRefreshingInfo else {
                 continue

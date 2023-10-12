@@ -10,26 +10,26 @@ import UIKit
 
 class TextFieldCell: UITableViewCell {
     var textField: ValidatingTextField! 
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         setupCell()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("Not implemented")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
-    
+
     private func setupCell() {
         textField = makeTextField()
         textField.font = .preferredFont(forTextStyle: .body)
         textField.textColor = .label
-        
+
         contentView.addSubview(textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.topAnchor
@@ -54,7 +54,7 @@ class TextFieldCell: UITableViewCell {
 
         selectionStyle = .none
     }
-    
+
     fileprivate func makeTextField() -> ValidatingTextField {
         return ValidatingTextField(frame: .zero)
     }

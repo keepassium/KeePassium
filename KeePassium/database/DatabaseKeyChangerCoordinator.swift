@@ -10,7 +10,7 @@ import KeePassiumLib
 
 protocol DatabaseKeyChangerCoordinatorDelegate: AnyObject {
     func didChangeDatabaseKey(in coordinator: DatabaseKeyChangerCoordinator)
-    
+
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
@@ -18,18 +18,18 @@ final class DatabaseKeyChangerCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: DatabaseKeyChangerCoordinatorDelegate?
-    
+
     private let router: NavigationRouter
     private let databaseKeyChangerVC: DatabaseKeyChangerVC
-    
+
     private let databaseFile: DatabaseFile
     private let database: Database
-    
+
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return router }
     var saveSuccessHandler: (() -> Void)?
-    
+
     init(databaseFile: DatabaseFile, router: NavigationRouter) {
         self.router = router
         self.databaseFile = databaseFile
@@ -37,12 +37,12 @@ final class DatabaseKeyChangerCoordinator: Coordinator {
         databaseKeyChangerVC = DatabaseKeyChangerVC.make(for: databaseFile)
         databaseKeyChangerVC.delegate = self
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         if router.navigationController.topViewController == nil {
             let leftButton = UIBarButtonItem(
@@ -57,7 +57,7 @@ final class DatabaseKeyChangerCoordinator: Coordinator {
             self.dismissHandler?(self)
         })
     }
-    
+
     @objc private func didPressDismissButton() {
         router.dismiss(animated: true)
     }
@@ -71,7 +71,7 @@ extension DatabaseKeyChangerCoordinator {
             Diag.warning("Key file picker is already shown")
             return
         }
-        
+
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
         keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
@@ -95,7 +95,7 @@ extension DatabaseKeyChangerCoordinator {
         router.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(hardwareKeyPickerCoordinator)
     }
-    
+
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
@@ -103,16 +103,16 @@ extension DatabaseKeyChangerCoordinator {
             self?.removeChildCoordinator(coordinator)
         }
         diagnosticsViewerCoordinator.start()
-        
+
         router.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(diagnosticsViewerCoordinator)
     }
-    
+
     private func applyChangesAndSaveDatabase() {
         let newPassword = databaseKeyChangerVC.password
         let newKeyFile = databaseKeyChangerVC.keyFileRef
         let newYubiKey = databaseKeyChangerVC.yubiKey
-        
+
         database.keyHelper.createCompositeKey(
             password: newPassword,
             keyFile: newKeyFile,
@@ -122,8 +122,7 @@ extension DatabaseKeyChangerCoordinator {
                 switch result {
                 case .success(let newCompositeKey):
                     self.database.changeCompositeKey(to: newCompositeKey)
-                    DatabaseSettingsManager.shared.updateSettings(for: self.databaseFile) {
-                        (dbSettings) in
+                    DatabaseSettingsManager.shared.updateSettings(for: self.databaseFile) { dbSettings in
                         dbSettings.maybeSetMasterKey(newCompositeKey)
                         dbSettings.maybeSetAssociatedKeyFile(newKeyFile)
                         dbSettings.maybeSetAssociatedYubiKey(newYubiKey)
@@ -147,7 +146,7 @@ extension DatabaseKeyChangerCoordinator: DatabaseKeyChangerDelegate {
             self?.showKeyFilePicker(at: popoverAnchor)
         })
     }
-    
+
     func didPressSelectHardwareKey(
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseKeyChangerVC
@@ -156,11 +155,11 @@ extension DatabaseKeyChangerCoordinator: DatabaseKeyChangerDelegate {
             self?.showHardwareKeyPicker(at: popoverAnchor)
         })
     }
-    
+
     func shouldDismissPopovers(in viewController: DatabaseKeyChangerVC) {
         router.dismissModals(animated: false, completion: nil)
     }
-    
+
     func didPressSaveChanges(in viewController: DatabaseKeyChangerVC) {
         applyChangesAndSaveDatabase()
     }
@@ -170,7 +169,7 @@ extension DatabaseKeyChangerCoordinator: KeyFilePickerCoordinatorDelegate {
     func didPickKeyFile(_ keyFile: URLReference?, in coordinator: KeyFilePickerCoordinator) {
         databaseKeyChangerVC.setKeyFile(keyFile)
     }
-    
+
     func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator) {
         if databaseKeyChangerVC.keyFileRef == keyFile {
             databaseKeyChangerVC.setKeyFile(nil)
@@ -188,22 +187,22 @@ extension DatabaseKeyChangerCoordinator: DatabaseSaving {
     func canCancelSaving(databaseFile: DatabaseFile) -> Bool {
         return false
     }
-    
+
     func didSave(databaseFile: DatabaseFile) {
         Diag.info("Master key change saved")
         router.pop(animated: true) { [self] in
             self.delegate?.didChangeDatabaseKey(in: self)
         }
     }
-    
+
     func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
         delegate?.didRelocateDatabase(databaseFile, to: newURL)
     }
-    
+
     func getDatabaseSavingErrorParent() -> UIViewController {
         return databaseKeyChangerVC
     }
-    
+
     func getDiagnosticsHandler() -> (() -> Void)? {
         return showDiagnostics
     }

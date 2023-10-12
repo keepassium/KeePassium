@@ -16,7 +16,7 @@ public enum OneDriveError: LocalizedError {
     case authorizationRequired
     case serverSideError(message: String)
     case general(error: Error)
-    
+
     public var errorDescription: String? {
         switch self {
         case .cancelledByUser:
@@ -53,13 +53,12 @@ public struct OneDriveDriveInfo {
             }
         }
     }
-    
+
     public var id: String
     public var name: String
     public var type: DriveType
     public var ownerName: String? // e.g. "AdeleV@contoso.com" or "Adele Vance" or nil
 }
-
 
 internal enum OneDriveAPI {
     static var clientID: String {
@@ -80,14 +79,14 @@ internal enum OneDriveAPI {
     static let authURL = URL(string: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=\(clientID)&scope=\(scope)&prompt=select_account&response_type=code&redirect_uri=\(redirectURI)")!
     static let tokenRequestURL = URL(string: "https://login.microsoftonline.com/common/oauth2/v2.0/token")!
     static let itemFields = "id,name,size,createdDateTime,lastModifiedDateTime,folder,file,remoteItem"
-    
+
     static let mainEndpoint = "https://graph.microsoft.com/v1.0"
     static let defaultDrivePath = "/me/drive"
     static let personalDriveRootPath = defaultDrivePath + "/root"
     static let sharedWithMeRootPath = defaultDrivePath + "/sharedWithMe"
-    
+
     static let maxUploadSize = 60 * 1024 * 1024 
-    
+
     internal enum Keys {
         static let accessToken = "access_token"
         static let authorization = "Authorization"
@@ -130,11 +129,11 @@ internal enum OneDriveAPI {
  */
 final public class OneDriveManager: NSObject {
     public typealias TokenUpdateCallback = (OAuthToken) -> Void
-    
+
     public static let shared = OneDriveManager()
-    
+
     private var presentationAnchors = [ObjectIdentifier: Weak<ASPresentationAnchor>]()
-    
+
     private lazy var urlSession: URLSession = {
         var config = URLSessionConfiguration.ephemeral
         config.allowsCellularAccess = true
@@ -153,7 +152,7 @@ final public class OneDriveManager: NSObject {
         queue.maxConcurrentOperationCount = 4
         return queue
     }()
-    
+
     override private init() {
         super.init()
     }
@@ -179,15 +178,13 @@ extension OneDriveManager {
             return .failure(.emptyResponse)
         }
 
-        
         if let serverError = getServerError(from: json) {
             Diag.error("OneDrive request failed: server-side error [operation: \(operation), message: \(serverError.localizedDescription)]")
             return .failure(serverError)
         }
         return .success(json)
     }
-    
-    
+
     private func parseJSONDict(data: Data) -> [String: Any]? {
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
@@ -201,7 +198,7 @@ extension OneDriveManager {
             return nil
         }
     }
-    
+
     private func getServerError(from json: [String: Any]) -> OneDriveError? {
         guard let error = json[OneDriveAPI.Keys.error] else { 
             return nil
@@ -212,7 +209,7 @@ extension OneDriveManager {
             let message = (errorDict[OneDriveAPI.Keys.message] as? String) ?? "UnknownError"
             return OneDriveError.serverSideError(message: message)
         }
-        
+
         let errorKind = (error as? String) ?? "OneDriveError"
         let suberrorKind = json[OneDriveAPI.Keys.suberror] as? String
         switch (errorKind, suberrorKind) {
@@ -240,7 +237,7 @@ extension OneDriveManager {
             }
         }
     }
-    
+
     public func authenticate(
         presenter: UIViewController,
         privateSession: Bool,
@@ -248,7 +245,7 @@ extension OneDriveManager {
         completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
     ) {
         Diag.info("Authenticating with OneDrive")
-        
+
         let webAuthSession = ASWebAuthenticationSession(
             url: OneDriveAPI.authURL,
             callbackURLScheme: OneDriveAPI.callbackURLScheme,
@@ -280,7 +277,7 @@ extension OneDriveManager {
                     }
                     return
                 }
-                
+
                 let error = queryItems.getValue(name: OneDriveAPI.Keys.error)
                 let errorSubcode = queryItems.getValue(name: OneDriveAPI.Keys.errorSubcode)
                 switch (error, errorSubcode) {
@@ -293,10 +290,11 @@ extension OneDriveManager {
                 default:
                     break
                 }
-                
-                if let errorDescription = queryItems.getValue(name: OneDriveAPI.Keys.errorDescription)?
-                    .removingPercentEncoding?
-                    .replacingOccurrences(of: "+", with: " ")
+
+                if let errorDescription = queryItems
+                        .getValue(name: OneDriveAPI.Keys.errorDescription)?
+                        .removingPercentEncoding?
+                        .replacingOccurrences(of: "+", with: " ")
                 {
                     completionQueue.addOperation {
                         Diag.error("Authentication failed: \(errorDescription)")
@@ -304,7 +302,7 @@ extension OneDriveManager {
                     }
                     return
                 }
-                                          
+
                 guard let codeItem = queryItems[OneDriveAPI.Keys.code],
                       let authCodeString = codeItem.value
                 else {
@@ -327,7 +325,7 @@ extension OneDriveManager {
 
         webAuthSession.start()
     }
-    
+
     private func getToken(
         operation: TokenOperation,
         completionQueue: OperationQueue,
@@ -339,12 +337,12 @@ extension OneDriveManager {
         urlRequest.setValue(
             "application/x-www-form-urlencoded; charset=UTF-8",
             forHTTPHeaderField: OneDriveAPI.Keys.contentType)
-        
+
         var postParams = [
             "client_id=\(OneDriveAPI.clientID)",
             "redirect_uri=\(OneDriveAPI.redirectURI)",
         ]
-        
+
         let refreshToken: String?
         switch operation {
         case .authorization(let authCode):
@@ -356,14 +354,14 @@ extension OneDriveManager {
             postParams.append("refresh_token=\(token.refreshToken)")
             postParams.append("grant_type=refresh_token")
         }
-        
+
         let postData = postParams
             .joined(separator: "&")
             .data(using: .ascii, allowLossyConversion: false)!
         let postLength = "\(postData.count)"
         urlRequest.setValue(postLength, forHTTPHeaderField: OneDriveAPI.Keys.contentLength)
         urlRequest.httpBody = postData
-        
+
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = self.parseJSONResponse(
                 operation: operation.description,
@@ -390,7 +388,7 @@ extension OneDriveManager {
         }
         dataTask.resume()
     }
-    
+
     private func parseTokenResponse(json: [String: Any], currentRefreshToken: String?) -> OAuthToken? {
         guard let accessToken = json[OneDriveAPI.Keys.accessToken] as? String else {
             Diag.error("Failed to parse token response: access_token missing")
@@ -405,7 +403,7 @@ extension OneDriveManager {
             Diag.error("Failed to parse token response: refresh_token missing")
             return nil
         }
-        
+
         let token = OAuthToken(
             accessToken: accessToken,
             refreshToken: refreshToken,
@@ -414,12 +412,12 @@ extension OneDriveManager {
         )
         return token
     }
-    
+
     private func maybeRefreshToken(
         token: OAuthToken,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
-    ) -> Void {
+    ) {
         if Date.now < (token.acquired + token.halflife) {
             completionQueue.addOperation {
                 completion(.success(token))
@@ -459,7 +457,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: driveInfoURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        
+
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = self.parseJSONResponse(operation: "getDriveInfo", data: data, error: error)
             switch result {
@@ -482,7 +480,7 @@ extension OneDriveManager {
         }
         dataTask.resume()
     }
-    
+
     private func parseDriveInfoResponse(json: [String: Any]) -> OneDriveDriveInfo? {
         guard let driveID = json[OneDriveAPI.Keys.id] as? String else {
             Diag.error("Failed to parse drive info: id field missing")
@@ -492,7 +490,7 @@ extension OneDriveManager {
             Diag.error("Failed to parse drive info: driveType field missing")
             return nil
         }
-        
+
         let driveName = (json[OneDriveAPI.Keys.name] as? String) ?? "OneDrive"
 
         var ownerName: String?
@@ -515,13 +513,13 @@ extension OneDriveManager {
 }
 
 extension OneDriveManager {
-    
+
     public func getItems(
         in folder: OneDriveItem,
         token: OAuthToken,
         tokenUpdater: TokenUpdateCallback?,
         completionQueue: OperationQueue = .main,
-        completion: @escaping (Result<[OneDriveFileItem], OneDriveError>)->Void
+        completion: @escaping (Result<[OneDriveFileItem], OneDriveError>) -> Void
     ) {
         Diag.debug("Acquiring file list")
         maybeRefreshToken(token: token, completionQueue: completionQueue) { authResult in
@@ -542,18 +540,18 @@ extension OneDriveManager {
             }
         }
     }
-    
+
     private func getItems(
         in folder: OneDriveItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<[OneDriveFileItem], OneDriveError>)->Void
+        completion: @escaping (Result<[OneDriveFileItem], OneDriveError>) -> Void
     ) {
         let requestURL = folder.getChildrenRequestURL()
         var urlRequest = URLRequest(url: requestURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        
+
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = self.parseJSONResponse(operation: "listFiles", data: data, error: error)
             switch result {
@@ -576,7 +574,7 @@ extension OneDriveManager {
         }
         dataTask.resume()
     }
-    
+
     private func parseFileListResponse(
         _ json: [String: Any],
         folder: OneDriveFileItem?
@@ -585,7 +583,7 @@ extension OneDriveManager {
             Diag.error("Failed to parse file list response: value field missing")
             return nil
         }
-        
+
         let folderPath = folder?.itemPath ?? "/"
         let parent = folder?.parent
         let folderPathWithTrailingSlash = folderPath.withTrailingSlash()
@@ -596,7 +594,7 @@ extension OneDriveManager {
                 Diag.debug("Failed to parse file item: id or name field missing; skipping the file")
                 return nil
             }
-            
+
             var fileItem = OneDriveFileItem(
                 name: itemName,
                 itemID: itemID,
@@ -619,8 +617,7 @@ extension OneDriveManager {
         }
         return result
     }
-    
-    
+
     private func updateWithRemoteItemInfo(
         _ infoDict: [String: Any],
         fileItem: inout OneDriveFileItem
@@ -628,7 +625,7 @@ extension OneDriveManager {
         guard let remoteItemDict = infoDict[OneDriveAPI.Keys.remoteItem] as? [String: Any] else {
             return 
         }
-        
+
         guard let remoteItemID = remoteItemDict[OneDriveAPI.Keys.id] as? String else {
             Diag.warning("Unexpected remote item format: item ID field missing")
             return
@@ -644,7 +641,7 @@ extension OneDriveManager {
         let remoteParentID = parentReference[OneDriveAPI.Keys.id] as? String 
         let remotePath = parentReference[OneDriveAPI.Keys.path] as? String 
         fileItem.itemID = remoteItemID
-        
+
         fileItem.isFolder = remoteItemDict[OneDriveAPI.Keys.folder] != nil
         if fileItem.isFolder {
             fileItem.parent = OneDriveSharedFolder(
@@ -652,7 +649,7 @@ extension OneDriveManager {
                 itemID: remoteItemID,
                 name: remotePath ?? fileItem.name
             )
-            
+
             fileItem.itemPath = "/"
         } else {
             fileItem.parent = OneDriveSharedFolder(
@@ -661,18 +658,18 @@ extension OneDriveManager {
                 name: remotePath ?? ""
             )
         }
-        
+
     }
 }
 
 extension OneDriveManager {
-    
+
     public func getItemInfo(
         _ item: OneDriveItemReference,
         token: OAuthToken,
         tokenUpdater: TokenUpdateCallback?,
         completionQueue: OperationQueue = .main,
-        completion: @escaping (Result<OneDriveFileItem, OneDriveError>)->Void
+        completion: @escaping (Result<OneDriveFileItem, OneDriveError>) -> Void
     ) {
         Diag.debug("Acquiring file list")
         maybeRefreshToken(token: token, completionQueue: completionQueue) { authResult in
@@ -693,12 +690,12 @@ extension OneDriveManager {
             }
         }
     }
-    
+
     private func getItemInfo(
         _ item: OneDriveItemReference,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OneDriveFileItem, OneDriveError>)->Void
+        completion: @escaping (Result<OneDriveFileItem, OneDriveError>) -> Void
     ) {
         let encodedPath = item.path
             .withLeadingSlash()
@@ -710,7 +707,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: fileInfoRequestURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        
+
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = self.parseJSONResponse(operation: "itemInfo", data: data, error: error)
             switch result {
@@ -733,7 +730,7 @@ extension OneDriveManager {
         }
         dataTask.resume()
     }
-    
+
     private func parseItemInfoResponse(
         _ json: [String: Any],
         path: String,
@@ -768,7 +765,7 @@ extension OneDriveManager {
         _ fileItem: OneDriveFileItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OneDriveFileItem, OneDriveError>)->Void
+        completion: @escaping (Result<OneDriveFileItem, OneDriveError>) -> Void
     ) {
         guard let parent = fileItem.parent else {
             completionQueue.addOperation {
@@ -776,7 +773,7 @@ extension OneDriveManager {
             }
             return
         }
-        
+
         let parentDrivePath = "/drives/\(parent.driveID)"
         let urlString = OneDriveAPI.mainEndpoint + parentDrivePath + "/items/\(fileItem.itemID)"
 
@@ -784,7 +781,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: fileInfoRequestURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        
+
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = self.parseJSONResponse(operation: "updateItemInfo", data: data, error: error)
             switch result {
@@ -803,13 +800,13 @@ extension OneDriveManager {
         }
         dataTask.resume()
     }
-    
+
     private func updateItemInfo(_ infoDict: [String: Any?], fileItem: inout OneDriveFileItem) {
         guard let itemID = infoDict[OneDriveAPI.Keys.id] as? String else {
             Diag.warning("Unexpected item format: item ID field missing")
             return
         }
-        
+
         guard let itemName = infoDict[OneDriveAPI.Keys.name] as? String else {
             Diag.warning("Unexpected item format: name field missing")
             return
@@ -826,7 +823,7 @@ extension OneDriveManager {
             Diag.warning("Unexpected item format: parent ID field missing")
             return
         }
-        
+
         var parentPath = parentReference[OneDriveAPI.Keys.path] as? String 
         if parentPath != nil,
            let separatorIndex = parentPath!.firstIndex(of: ":")
@@ -851,7 +848,7 @@ extension OneDriveManager {
     }
 }
 extension OneDriveManager {
-    
+
     public func getFileContents(
         _ item: OneDriveItemReference,
         token: OAuthToken,
@@ -878,7 +875,7 @@ extension OneDriveManager {
             }
         }
     }
-    
+
     private func getFileContents(
         _ item: OneDriveItemReference,
         freshToken token: OAuthToken,
@@ -894,7 +891,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: fileContentsURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        
+
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
                 completionQueue.addOperation {
@@ -932,7 +929,7 @@ extension OneDriveManager {
 
 extension OneDriveManager {
     public typealias UploadCompletionHandler = (Result<String, OneDriveError>) -> Void
-    
+
     public func uploadFile(
         _ item: OneDriveItemReference,
         contents: ByteArray,
@@ -943,7 +940,7 @@ extension OneDriveManager {
         completion: @escaping UploadCompletionHandler
     ) {
         Diag.debug("Uploading file")
-        
+
         guard contents.count < OneDriveAPI.maxUploadSize else {
             Diag.error("Such a large upload is not supported. Please contact support. [fileSize: \(contents.count)]")
             completionQueue.addOperation {
@@ -951,7 +948,7 @@ extension OneDriveManager {
             }
             return
         }
-        
+
         maybeRefreshToken(token: token, completionQueue: completionQueue) { authResult in
             switch authResult {
             case .success(let newToken):
@@ -972,7 +969,7 @@ extension OneDriveManager {
             }
         }
     }
-    
+
     private func uploadFile(
         _ item: OneDriveItemReference,
         contents: ByteArray,
@@ -981,14 +978,14 @@ extension OneDriveManager {
         completionQueue: OperationQueue,
         completion: @escaping UploadCompletionHandler
     ) {
-        
+
         Diag.debug("Creating upload session")
         let encodedPath = item.path
             .withLeadingSlash()
             .addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         let parentPath = item.parent?.urlPath ?? OneDriveAPI.personalDriveRootPath
         let urlString = OneDriveAPI.mainEndpoint + parentPath + ":\(encodedPath):/createUploadSession"
-        
+
         let createSessionURL = URL(string: urlString)!
         var urlRequest = URLRequest(url: createSessionURL)
         urlRequest.httpMethod = "POST"
@@ -999,7 +996,6 @@ extension OneDriveManager {
         ])
         urlRequest.httpBody = postData
         urlRequest.setValue(String(postData.count), forHTTPHeaderField: OneDriveAPI.Keys.contentLength)
-        
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = self.parseJSONResponse(operation: "uploadSession", data: data, error: error)
@@ -1026,7 +1022,7 @@ extension OneDriveManager {
         }
         dataTask.resume()
     }
-    
+
     private func parseCreateUploadSessionResponse(_ json: [String: Any]) -> URL? {
         guard let uploadURLString = json[OneDriveAPI.Keys.uploadUrl] as? String else {
             Diag.debug("Failed to parse upload session response: uploadUrl field missing")
@@ -1038,7 +1034,7 @@ extension OneDriveManager {
         }
         return uploadURL
     }
-    
+
     private func uploadData(
         _ data: ByteArray,
         toURL targetURL: URL,
@@ -1050,7 +1046,7 @@ extension OneDriveManager {
 
         var urlRequest = URLRequest(url: targetURL)
         urlRequest.httpMethod = "PUT"
-        
+
         let fileSize = data.count 
         let range = 0..<data.count
         urlRequest.setValue(
@@ -1083,7 +1079,7 @@ extension OneDriveManager {
         }
         dataTask.resume()
     }
-    
+
     private func parseUploadDataResponse(_ json: [String: Any]) -> String? {
         Diag.debug("Upload complete")
         guard let fileName = json[OneDriveAPI.Keys.name] as? String else {

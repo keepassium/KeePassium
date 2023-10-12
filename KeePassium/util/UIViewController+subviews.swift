@@ -14,10 +14,10 @@ public extension UIViewController {
         assert(viewController.parent == nil, "viewController is already used somewhere")
         let childView = viewController.view!
         self.view.addSubview(childView)
-        
+
         viewController.view.frame = view.bounds
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+
         self.addChild(viewController)
         viewController.didMove(toParent: self)
     }
@@ -34,7 +34,7 @@ public extension UIViewController {
         to nextVC: UIViewController,
         duration: TimeInterval = 0.3,
         options: UIView.AnimationOptions = .showHideTransitionViews,
-        completion: ((Bool)->())? = nil
+        completion: ((Bool) -> Void)? = nil
     ) {
         assert(nextVC.parent == nil)
 
@@ -44,10 +44,10 @@ public extension UIViewController {
         currentVC.willMove(toParent: nil)
         self.addChild(nextVC)
         self.view.insertSubview(nextView, belowSubview: currentView)
-        
+
         nextView.frame = view.bounds
         nextView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+
         UIView.transition(
             from: currentView,
             to: nextView,

@@ -18,7 +18,7 @@ public class EntryFieldReference {
         case hasReferences
         case brokenReferences
         case tooDeepReferences
-        
+
         public var isError: Bool {
             switch self {
             case .noReferences,
@@ -30,14 +30,14 @@ public class EntryFieldReference {
             }
         }
     }
-    
+
     private(set) public var status: Status
-    
+
     enum FieldType {
         case uuid
         case named(_ name: String)
         case otherNamed
-        
+
         public static func fromCode(_ code: Character) -> Self? {
             switch code {
             case "T": return .named(EntryField.title)
@@ -52,7 +52,7 @@ public class EntryFieldReference {
             }
         }
     }
-    
+
     private static let referencePrefix = "{REF:"
     private static let referenceRegexp = try! NSRegularExpression(
         pattern: #"\{REF:([TUPANI])@([TUPANIO]):(.+?)\}"#,
@@ -63,46 +63,43 @@ public class EntryFieldReference {
         pattern: #"\{S:(.+?)\}"#,
         options: []
     )
-    
+
     private var range: Range<String.Index>
     private var targetFieldType: FieldType
     private var searchFieldType: FieldType
     private var searchValue: Substring
-    
+
     private init(
         range: Range<String.Index>,
         targetFieldType: FieldType,
         searchFieldType: FieldType,
-        searchValue: Substring)
-    {
+        searchValue: Substring) {
         self.range = range
         self.targetFieldType = targetFieldType
         self.searchFieldType = searchFieldType
         self.searchValue = searchValue
         self.status = .parsed
     }
-    
-    
+
+
     public static func resolveReferences<T>(
         in value: String,
         referrer: Entry,
         entries: T,
         maxDepth: Int,
         resolvedValue: inout String
-    ) -> ResolveStatus
-        where T: Collection, T.Element: Entry
-    {
+    ) -> ResolveStatus where T: Collection, T.Element: Entry {
         guard maxDepth > 0 else {
             Diag.warning("Too many chained references")
             return .tooDeepReferences
         }
-        
+
         let refs = EntryFieldReference.parseAll(value, referrerUUID: referrer.uuid)
         if refs.isEmpty { 
             resolvedValue = value
             return .noReferences
         }
-        
+
         var status = ResolveStatus.hasReferences
         var outputValue = value
         refs.reversed().forEach { ref in
@@ -125,19 +122,19 @@ public class EntryFieldReference {
         resolvedValue = outputValue
         return status
     }
-    
-    
+
+
     private static func parseAll(_ string: String, referrerUUID: UUID) -> [EntryFieldReference] {
         let placeholders = parsePlaceholders(string, referrerUUID: referrerUUID)
         let references = parseReferences(string)
         return placeholders + references
     }
-    
+
     private static func parsePlaceholders(_ string: String, referrerUUID: UUID) -> [EntryFieldReference] {
         guard string.contains(customFieldPlaceholderPrefix) else {
             return []
         }
-        
+
         let referrerUUIDString = referrerUUID.data.asHexString
         let referrerUUIDSubstring = referrerUUIDString.suffix(from: referrerUUIDString.startIndex)
 
@@ -165,12 +162,12 @@ public class EntryFieldReference {
         }
         return placeholders
     }
-    
+
     private static func parseReferences(_ string: String) -> [EntryFieldReference] {
         guard string.contains(referencePrefix) else {
             return []
         }
-        
+
         var references = [EntryFieldReference]()
         let fullRange = NSRange(string.startIndex..<string.endIndex, in: string)
         let matches = referenceRegexp.matches(in: string, options: [], range: fullRange)
@@ -179,25 +176,25 @@ public class EntryFieldReference {
                   let range = Range(match.range, in: string),
                   let targetFieldCodeRange = Range(match.range(at: 1), in: string),
                   let searchFieldCodeRange = Range(match.range(at: 2), in: string),
-                  let searchValueRange =  Range(match.range(at: 3), in: string) else
-            {
+                  let searchValueRange = Range(match.range(at: 3), in: string)
+            else {
                 continue
             }
-            
+
             guard let targetFieldCode = string[targetFieldCodeRange].first,
-                  let targetFieldType = FieldType.fromCode(targetFieldCode) else
-            {
+                  let targetFieldType = FieldType.fromCode(targetFieldCode)
+            else {
                 Diag.debug("Unrecognized target field")
                 continue
             }
-            
+
             guard let searchFieldCode = string[searchFieldCodeRange].first,
-                  let searchFieldType = FieldType.fromCode(searchFieldCode) else
-            {
+                  let searchFieldType = FieldType.fromCode(searchFieldCode)
+            else {
                 Diag.debug("Unrecognized search field")
                 continue
             }
-            
+
             let searchValue = string[searchValueRange]
             guard !searchValue.isEmpty else {
                 Diag.debug("Empty search criterion")
@@ -212,16 +209,18 @@ public class EntryFieldReference {
         }
         return references
     }
-    
-    
-    private func getResolvedValue<T>(referrer: Entry, entries: T, maxDepth: Int) -> String
-        where T: Collection, T.Element: Entry
-    {
+
+
+    private func getResolvedValue<T>(
+        referrer: Entry,
+        entries: T,
+        maxDepth: Int
+    ) -> String where T: Collection, T.Element: Entry {
         guard let entry = findEntry(in: entries, field: searchFieldType, value: searchValue) else {
             status = .targetMissing
             return ""
         }
-        
+
         switch targetFieldType {
         case .uuid:
             return entry.uuid.data.asHexString
@@ -274,10 +273,12 @@ public class EntryFieldReference {
             }
         }
     }
-    
-    private func findEntry<T>(in entries: T, field: FieldType, value: Substring) -> Entry?
-        where T: Collection, T.Element: Entry
-    {
+
+    private func findEntry<T>(
+        in entries: T,
+        field: FieldType,
+        value: Substring
+    ) -> Entry? where T: Collection, T.Element: Entry {
         let result: Entry?
         switch field {
         case .uuid:
@@ -308,7 +309,7 @@ public class EntryFieldReference {
 }
 
 extension EntryFieldReference {
-    
+
     public static func make(for field: EntryField, in entry: Entry) -> String? {
         let fieldCode: Character
         switch field.name {

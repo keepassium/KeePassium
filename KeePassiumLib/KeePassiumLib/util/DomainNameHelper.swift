@@ -10,7 +10,7 @@ import DomainParser
 
 public final class DomainNameHelper {
     public static let shared = DomainNameHelper()
-    
+
     private let domainParser: DomainParserProtocol
     private init() {
         do {
@@ -20,14 +20,14 @@ public final class DomainNameHelper {
             domainParser = FakeDomainParser()
         }
     }
-    
+
     public func parse(url: URL) -> ParsedHost? {
         guard let host = url.host else {
             return nil
         }
         return domainParser.parse(host: host)
     }
-    
+
     public func parse(host: String) -> ParsedHost? {
         return domainParser.parse(host: host)
     }
@@ -35,7 +35,7 @@ public final class DomainNameHelper {
     public func getMainDomain(url: URL?) -> String? {
         return getMainDomain(host: url?.host)
     }
-    
+
     public func getMainDomain(host: String?) -> String? {
         if let host,
            let parsedHost = domainParser.parse(host: host),

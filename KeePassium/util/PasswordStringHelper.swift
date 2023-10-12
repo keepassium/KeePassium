@@ -14,10 +14,10 @@ public class PasswordStringHelper {
         public static let digit = UIColor.passwordDigits
         public static let symbol = UIColor.passwordSymbols
     }
-    
+
     public static func decorate(_ password: String, font: UIFont?) -> NSMutableAttributedString {
         let baseFont = font ?? UIFont.monospaceFont(style: .body)
-        
+
         let result = NSMutableAttributedString()
         let letterAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: Color.letter,
@@ -33,7 +33,7 @@ public class PasswordStringHelper {
         ]
 
 
-        password.forEach { (character) in
+        password.forEach { character in
             if character.isNumber {
                 result.append(
                     NSAttributedString(string: String(character), attributes: digitAttributes))

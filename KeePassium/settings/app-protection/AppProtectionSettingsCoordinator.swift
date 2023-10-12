@@ -10,29 +10,29 @@ import KeePassiumLib
 
 final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
     var childCoordinators = [Coordinator]()
-    
+
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     private let router: NavigationRouter
     private let appProtectionSettingsVC: SettingsAppLockVC
     private let settingsNotifications: SettingsNotifications
-    
+
     init(router: NavigationRouter) {
         self.router = router
         appProtectionSettingsVC = SettingsAppLockVC.instantiateFromStoryboard()
         settingsNotifications = SettingsNotifications()
-        
+
         appProtectionSettingsVC.delegate = self
         settingsNotifications.observer = self
     }
-    
+
     deinit {
         settingsNotifications.stopObserving()
-        
+
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         router.push(appProtectionSettingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
@@ -42,12 +42,12 @@ final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
         settingsNotifications.startObserving()
         startObservingPremiumStatus(#selector(premiumStatusDidChange))
     }
-    
+
     @objc
     private func premiumStatusDidChange() {
         refresh()
     }
-    
+
     func refresh() {
         guard let topVC = router.navigationController.topViewController,
               let topRefreshable = topVC as? Refreshable
@@ -67,7 +67,7 @@ extension AppProtectionSettingsCoordinator {
         passcodeInputVC.isCancelAllowed = true
         appProtectionSettingsVC.present(passcodeInputVC, animated: true, completion: nil)
     }
-    
+
     private func showAppTimeoutSettingsPage() {
         let appTimeoutVC = SettingsAppTimeoutVC.instantiateFromStoryboard()
         router.push(appTimeoutVC, animated: true, onPop: nil)
@@ -87,7 +87,7 @@ extension AppProtectionSettingsCoordinator: SettingsAppLockViewControllerDelegat
     func didPressAppTimeout(in viewController: SettingsAppLockVC) {
         showAppTimeoutSettingsPage()
     }
-    
+
     func didPressChangePasscode(isInitialSetup: Bool, in viewController: SettingsAppLockVC) {
         showChangePasscode(isInitialSetup: isInitialSetup)
     }
@@ -107,14 +107,13 @@ extension AppProtectionSettingsCoordinator: PasscodeInputDelegate {
         refresh()
         sender.dismiss(animated: true, completion: nil)
     }
-    
+
     func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
         return passcode.count > 0
     }
-    
+
     func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
-        sender.dismiss(animated: true) {
-            [weak self] in
+        sender.dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             do {
                 try Keychain.shared.setAppPasscode(passcode)

@@ -6,8 +6,8 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
+import UIKit
 
 extension UIFont {
     public func withWeight(_ weight: Weight) -> UIFont {
@@ -16,17 +16,17 @@ extension UIFont {
         let newDescriptor = fontDescriptor.addingAttributes(attributes)
         return UIFont(descriptor: newDescriptor, size: 0) 
     }
-    
+
     public func withRelativeSize(_ scale: CGFloat) -> UIFont {
         let scaledSize = pointSize * scale
         return self.withSize(scaledSize)
     }
-    
+
     public static func entryTextFont(style: UIFont.TextStyle = .body) -> UIFont {
         let descriptor = Settings.current.entryTextFontDescriptor
         return monospaceFont(descriptor: descriptor, style: style)
     }
-    
+
     public static func monospaceFont(
         descriptor: UIFontDescriptor? = nil,
         style: UIFont.TextStyle

@@ -24,7 +24,7 @@ public protocol PasswordGeneratorDelegate: AnyObject {
 
 final public class PasswordGeneratorVC: UIViewController, Refreshable {
     private typealias Mode = PasswordGeneratorMode
-    
+
     private enum CellID {
         static let wideCell = "WideCell"
         static let fixedSetCell = "FixedSetCell"
@@ -32,19 +32,19 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
         static let sliderCell = "SliderCell"
         static let stepperCell = "StepperCell"
     }
-    
+
     private enum CellIndex {
         static let commonSectionCount = 1
         static let modeSelector = IndexPath(row: 0, section: 0)
-        
+
         static let basicModeSectionCount = 1
         static let basicModeSectionSizes = [0, 1] 
         static let basicModeLength = IndexPath(row: 0, section: 1)
-        
+
         static let customModeSectionCount = 3
         static let customModeSectionSizes = [0, 1, 8, 1] 
         static let customModeLength = IndexPath(row: 0, section: 1)
-        
+
         static let customModeIncludeUpperCase = IndexPath(row: 0, section: 2)
         static let customModeIncludeLowerCase = IndexPath(row: 1, section: 2)
         static let customModeIncludeDigits = IndexPath(row: 2, section: 2)
@@ -63,7 +63,7 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
         static let passphraseModeSeparator = IndexPath(row: 0, section: 2)
         static let passphraseModeWordCase = IndexPath(row: 1, section: 2)
     }
-    
+
     @IBOutlet private weak var passwordLabel: PasswordGeneratorLabel!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var copyButton: UIBarButtonItem!
@@ -73,36 +73,36 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
     @IBOutlet private weak var passwordQualityIndicatorView: PasswordQualityIndicatorView!
 
     public weak var delegate: PasswordGeneratorDelegate?
-    
+
     public internal(set) var config: PasswordGeneratorParams!
     public internal(set) var mode: PasswordGeneratorMode = .basic
-    
+
     private let qualityEstimationQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
         queue.qualityOfService = .utility
         return queue
     }()
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         title = LString.PasswordGenerator.titleRandomGenerator
-        
+
         copyButton.accessibilityLabel = LString.actionCopy
         updateButton.accessibilityLabel = LString.PasswordGenerator.actionGenerate
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         generate(animated: false)
-        
+
         setupAccessibility(passwordLabel)
         UIAccessibility.post(notification: .screenChanged, argument: passwordLabel )
     }
-    
+
     func refresh() {
         self.tableView.reloadData()
     }
-    
+
     private func saveConfig() {
         config.lastMode = mode
         delegate?.didChangeConfig(config, in: self)
@@ -111,17 +111,17 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
     private func generate(animated: Bool) {
         delegate?.shouldGeneratePassword(mode: mode, config: config, animated: animated, in: self)
     }
-    
+
     @IBAction private func didPressRegenerate(_ sender: Any) {
         generate(animated: true)
         UIAccessibility.post(notification: .layoutChanged, argument: passwordLabel)
     }
-    
+
     @IBAction private func didPressDone(_ sender: Any) {
         delegate?.didPressDone(in: self)
     }
-    
-    @IBAction func didPressCopyToClipboard(_ sender: Any) {
+
+    @IBAction private func didPressCopyToClipboard(_ sender: Any) {
         delegate?.didPressCopyToClipboard(in: self)
     }
 }
@@ -137,14 +137,14 @@ extension PasswordGeneratorVC {
         passwordLabel.textColor = .primaryText
         passwordLabel.lineBreakMode = .byWordWrapping
         passwordLabel.accessibilityIsPhrase = true
-        
+
         doneButton.isEnabled = true
         altDoneButton.isEnabled = true
         copyButton.isEnabled = true
 
         updateQualityIndicator(password: passphrase)
     }
-    
+
     public func showPassword(_ password: String, animated: Bool) {
         if animated {
             animateTransition(passwordLabel)
@@ -155,14 +155,14 @@ extension PasswordGeneratorVC {
             password,
             font: .monospaceFont(style: .body))
         passwordLabel.accessibilityIsPhrase = false
-        
+
         doneButton.isEnabled = true
         altDoneButton.isEnabled = true
         copyButton.isEnabled = true
-        
+
         updateQualityIndicator(password: password)
     }
-    
+
     private func updateQualityIndicator(password: String?) {
         qualityEstimationQueue.cancelAllOperations()
         guard let password else {
@@ -184,15 +184,13 @@ extension PasswordGeneratorVC {
         }
         qualityEstimationQueue.addOperation(updateOperation)
     }
-    
+
     private func setupAccessibility(_ label: PasswordGeneratorLabel) {
-        let acceptAction = UIAccessibilityCustomAction(name: LString.actionDone) {
-            [weak self] action in
+        let acceptAction = UIAccessibilityCustomAction(name: LString.actionDone) { [weak self] action in
             self?.didPressDone(action)
             return true
         }
-        let copyAction = UIAccessibilityCustomAction(name: LString.actionCopy) {
-            [weak self] action in
+        let copyAction = UIAccessibilityCustomAction(name: LString.actionCopy) { [weak self] action in
             self?.didPressCopyToClipboard(action)
             return true
         }
@@ -203,20 +201,20 @@ extension PasswordGeneratorVC {
         }
         label.accessibilityCustomActions = [acceptAction, copyAction, generateAction]
     }
-    
+
     public func showError(_ error: Error) {
         passwordLabel.attributedText = nil
         passwordLabel.text = error.localizedDescription
         passwordLabel.font = .preferredFont(forTextStyle: .body)
         passwordLabel.textColor = .errorMessage
         passwordLabel.lineBreakMode = .byWordWrapping
-        
+
         passwordLabel.accessibilityLabel = LString.PasswordGeneratorError.titleCannotGenerateText
         passwordLabel.accessibilityValue = error.localizedDescription
         passwordLabel.accessibilityIsPhrase = true
         passwordLabel.accessibilityCustomActions = nil
         HapticFeedback.play(.error)
-        
+
         let errorIntro = NSAttributedString(
             string: LString.PasswordGeneratorError.titleCannotGenerateText,
             attributes: [.accessibilitySpeechQueueAnnouncement: true])
@@ -225,13 +223,13 @@ extension PasswordGeneratorVC {
             attributes: [.accessibilitySpeechQueueAnnouncement: true])
         UIAccessibility.post(notification: .announcement, argument: errorIntro)
         UIAccessibility.post(notification: .announcement, argument: errorDescription)
-        
+
         doneButton.isEnabled = false
         altDoneButton.isEnabled = false
         copyButton.isEnabled = false
         updateQualityIndicator(password: nil)
     }
-    
+
     private func animateTransition(_ view: UIView) {
         let animation = CATransition()
         animation.type = .reveal
@@ -243,8 +241,8 @@ extension PasswordGeneratorVC {
 }
 
 extension PasswordGeneratorVC: UITableViewDataSource {
-    
-    
+
+
     public func numberOfSections(in tableView: UITableView) -> Int {
         switch mode {
         case .basic:
@@ -255,7 +253,7 @@ extension PasswordGeneratorVC: UITableViewDataSource {
             return CellIndex.commonSectionCount + CellIndex.passphraseModeSectionCount
         }
     }
-    
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (mode, section) {
         case (_, CellIndex.modeSelector.section): 
@@ -268,7 +266,7 @@ extension PasswordGeneratorVC: UITableViewDataSource {
             return CellIndex.passphraseModeSectionSizes[section]
         }
     }
-    
+
     public func tableView(
         _ tableView: UITableView,
         titleForHeaderInSection section: Int
@@ -278,7 +276,7 @@ extension PasswordGeneratorVC: UITableViewDataSource {
             return nil
         }
     }
-    
+
     public func tableView(
         _ tableView: UITableView,
         titleForFooterInSection section: Int
@@ -290,8 +288,8 @@ extension PasswordGeneratorVC: UITableViewDataSource {
             return nil
         }
     }
-    
-    
+
+
     public func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -313,7 +311,7 @@ extension PasswordGeneratorVC: UITableViewDataSource {
         }
         return cell
     }
-    
+
     private func getReusableCellID(for indexPath: IndexPath) -> String {
         switch (mode, indexPath) {
         case (_, CellIndex.modeSelector):
@@ -344,7 +342,7 @@ extension PasswordGeneratorVC: UITableViewDataSource {
             return CellID.customSetCell
         }
     }
-    
+
     private func resetCellStyle(_ cell: UITableViewCell) {
         cell.textLabel?.font = .preferredFont(forTextStyle: .body)
         cell.textLabel?.textColor = .primaryText
@@ -352,14 +350,14 @@ extension PasswordGeneratorVC: UITableViewDataSource {
         cell.detailTextLabel?.textColor = .auxiliaryText
         cell.imageView?.image = nil
         cell.accessoryType = .none
-        
+
         cell.textLabel?.accessibilityLabel = nil
         cell.detailTextLabel?.accessibilityLabel = nil
         cell.accessibilityTraits = []
         cell.accessibilityValue = nil
         cell.accessibilityHint = nil
     }
-    
+
     private func configureModeSelectorCell(_ cell: UITableViewCell) {
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = LString.PasswordGeneratorMode.title
@@ -370,37 +368,30 @@ extension PasswordGeneratorVC: UITableViewDataSource {
 }
 
 extension PasswordGeneratorVC: UITableViewDelegate {
-    
+
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         switch (mode, indexPath) {
         case (_, CellIndex.modeSelector):
             showModeSelector(at: popoverAnchor)
-            break
         case (.custom, CellIndex.customModeRequireList):
             showCustomSetEditor(at: indexPath, condition: .required)
-            break
         case (.custom, CellIndex.customModeAllowList):
             showCustomSetEditor(at: indexPath, condition: .allowed)
-            break
         case (.custom, CellIndex.customModeBlockList):
             showCustomSetEditor(at: indexPath, condition: .excluded)
-            break
         case (.passphrase, CellIndex.passphraseModeWordList):
             showWordlistSelector(at: popoverAnchor)
-            break
         case (.passphrase, CellIndex.passphraseModeWordCase):
             showWordCaseSelector(at: popoverAnchor)
-            break
         case (.passphrase, CellIndex.passphraseModeSeparator):
             showWordSeparatorEditor()
-            break
         default:
             break
         }
     }
-    
+
     public func tableView(
         _ tableView: UITableView,
         accessoryButtonTappedForRowWith indexPath: IndexPath
@@ -412,7 +403,7 @@ extension PasswordGeneratorVC: UITableViewDelegate {
             break
         }
     }
-    
+
     public func tableView(
         _ tableView: UITableView,
         contextMenuConfigurationForRowAt indexPath: IndexPath,
@@ -425,7 +416,7 @@ extension PasswordGeneratorVC: UITableViewDelegate {
             return nil
         }
     }
-    
+
     private func showModeSelector(at popoverAnchor: PopoverAnchor) {
         let sheet = UIAlertController(
             title: LString.PasswordGeneratorMode.title,
@@ -447,7 +438,7 @@ extension PasswordGeneratorVC: UITableViewDelegate {
         popoverAnchor.apply(to: sheet.popoverPresentationController)
         present(sheet, animated: true)
     }
-    
+
     private func setMode(_ mode: PasswordGeneratorMode) {
         self.mode = mode
         refresh()
@@ -465,7 +456,7 @@ extension PasswordGeneratorVC {
             assertionFailure("Unexpected cell")
         }
     }
-    
+
     private func configureBasicModeLengthCell(_ cell: PasswordGeneratorLengthCell) {
         cell.title = LString.PasswordGenerator.titlePasswordLength
         let lengthRange = BasicPasswordGeneratorParams.lengthRange
@@ -482,7 +473,7 @@ extension PasswordGeneratorVC {
 
 
 extension PasswordGeneratorVC {
-    
+
     private func configureCustomModeCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         switch indexPath {
         case CellIndex.customModeLength:
@@ -524,7 +515,7 @@ extension PasswordGeneratorVC {
             assertionFailure("Unexpected cell")
         }
     }
-    
+
     private func configureCustomModeLengthCell(_ cell: PasswordGeneratorLengthCell) {
         cell.title = LString.PasswordGenerator.titlePasswordLength
         let lengthRange = CustomPasswordGeneratorParams.lengthRange
@@ -537,7 +528,7 @@ extension PasswordGeneratorVC {
             self?.generate(animated: false)
         }
     }
-    
+
     private func configureCustomModeFixedSetCell(
         _ cell: PasswordGeneratorFixedSetCell,
         set: CustomPasswordGeneratorParams.FixedSet,
@@ -553,7 +544,7 @@ extension PasswordGeneratorVC {
             self?.generate(animated: true)
         }
     }
-    
+
     private func configureCustomModeCustomSetCell(
         _ cell: UITableViewCell,
         condition: InclusionCondition
@@ -582,22 +573,21 @@ extension PasswordGeneratorVC {
         cell.imageView?.image = condition.image
         cell.accessoryType = .disclosureIndicator
     }
-    
+
     private func showCustomSetEditor(at indexPath: IndexPath, condition: InclusionCondition) {
         let alert = UIAlertController(title: condition.description, message: nil, preferredStyle: .alert)
         alert.addTextField { [self] textField in
             textField.text = config.customModeConfig.customLists[condition]
             textField.accessibilityLabel = LString.PasswordGenerator.titleCustomCharacters
         }
-        alert.addAction(title: LString.actionOK, style: .default) {
-            [weak self, weak alert] _ in
+        alert.addAction(title: LString.actionOK, style: .default) { [weak self, weak alert] _ in
             guard let self = self else { return }
             let text = alert?.textFields!.first!.text ?? ""
             self.config.customModeConfig.customLists[condition] = text.removingRepetitions()
             self.saveConfig()
             self.refresh()
             self.generate(animated: true)
-            
+
             let returnToCell = self.tableView.cellForRow(at: indexPath)
             UIAccessibility.post(notification: .layoutChanged, argument: returnToCell)
         }
@@ -607,7 +597,7 @@ extension PasswordGeneratorVC {
         }
         present(alert, animated: true)
     }
-    
+
     private func configureCustomModeMaxConsecutiveCell(
         _ cell: PasswordGeneratorStepperCell
     ) {
@@ -620,48 +610,40 @@ extension PasswordGeneratorVC {
             self?.generate(animated: true)
         }
     }
-    
+
     private func getCustomModeSetTextForCopying(at indexPath: IndexPath) -> String? {
         guard mode == .custom else {
             return nil
         }
-        
+
         let textToCopy: String?
         switch indexPath {
         case CellIndex.customModeIncludeUpperCase:
             textToCopy = CustomPasswordGeneratorParams.FixedSet.upperCase.value.sorted().joined()
-            break
         case CellIndex.customModeIncludeLowerCase:
             textToCopy = CustomPasswordGeneratorParams.FixedSet.lowerCase.value.sorted().joined()
-            break
         case CellIndex.customModeIncludeDigits:
             textToCopy = CustomPasswordGeneratorParams.FixedSet.digits.value.sorted().joined()
-            break
         case CellIndex.customModeIncludeSpecials:
             textToCopy = CustomPasswordGeneratorParams.FixedSet.specials.value.sorted().joined()
-            break
         case CellIndex.customModeIncludeLookalikes:
             textToCopy = CustomPasswordGeneratorParams.FixedSet.lookalikes.value.sorted().joined()
-            break
         case CellIndex.customModeRequireList:
             textToCopy = config.customModeConfig.customLists[.required]
-            break
         case CellIndex.customModeAllowList:
             textToCopy = config.customModeConfig.customLists[.allowed]
-            break
         case CellIndex.customModeBlockList:
             textToCopy = config.customModeConfig.customLists[.excluded]
-            break
         default:
             return nil
         }
-        
+
         if textToCopy?.isEmpty ?? true {
             return nil
         }
         return textToCopy
     }
-    
+
     private func getCustomModeContextMenu(at indexPath: IndexPath) -> UIContextMenuConfiguration? {
         guard let textForCopying = getCustomModeSetTextForCopying(at: indexPath) else {
             return nil
@@ -694,7 +676,7 @@ extension PasswordGeneratorVC {
             assertionFailure("Unexpected cell")
         }
     }
-    
+
     private func configurePassphraseModeLengthCell(_ cell: PasswordGeneratorLengthCell) {
         cell.title = LString.PasswordGenerator.titleWordCount
         let lengthRange = PassphraseGeneratorParams.wordCountRange
@@ -707,7 +689,7 @@ extension PasswordGeneratorVC {
             self?.generate(animated: false)
         }
     }
-    
+
     private func configurePassphraseModeSeparatorCell(_ cell: UITableViewCell) {
         cell.textLabel?.text = LString.PasswordGenerator.titleWordSepartor
         cell.imageView?.image = .symbol(.arrowLeftAndRight)
@@ -727,7 +709,7 @@ extension PasswordGeneratorVC {
         cell.detailTextLabel?.text = config.passphraseModeConfig.wordlist.description
         cell.accessoryType = .detailDisclosureButton
     }
-    
+
     private func showWordlistSelector(at popoverAnchor: PopoverAnchor) {
         let sheet = UIAlertController(
             title: LString.PasswordGenerator.titleWordlist,
@@ -744,14 +726,14 @@ extension PasswordGeneratorVC {
         popoverAnchor.apply(to: sheet.popoverPresentationController)
         present(sheet, animated: true)
     }
-    
+
     private func setWordlist(_ wordlist: PassphraseWordlist) {
         config.passphraseModeConfig.wordlist = wordlist
         saveConfig()
         refresh()
         generate(animated: true)
     }
-    
+
     private func showWordCaseSelector(at popoverAnchor: PopoverAnchor) {
         let sheet = UIAlertController(
             title: LString.PasswordGenerator.WordCase.title,
@@ -769,14 +751,14 @@ extension PasswordGeneratorVC {
         popoverAnchor.apply(to: sheet.popoverPresentationController)
         present(sheet, animated: true)
     }
-    
+
     private func setWordCase(_ wordCase: PassphraseGenerator.WordCase) {
         config.passphraseModeConfig.wordCase = wordCase
         saveConfig()
         refresh()
         generate(animated: true)
     }
-    
+
     private func showWordSeparatorEditor() {
         let alert = UIAlertController(
             title: LString.PasswordGenerator.titleWordSepartor,
@@ -792,14 +774,14 @@ extension PasswordGeneratorVC {
         alert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
         present(alert, animated: true)
     }
-    
+
     private func setWordSeparator(_ separator: String) {
         config.passphraseModeConfig.separator = separator
         saveConfig()
         refresh()
         generate(animated: true)
     }
-    
+
     private func getSeparatorDescription(_ separator: String) -> String {
         if separator == " " {
             return LString.PasswordGenerator.spaceCharacterName

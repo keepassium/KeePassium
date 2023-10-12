@@ -6,17 +6,17 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
+import UIKit
 
 enum ImageAsset: String {
     case appCoverPattern = "app-cover-pattern" 
     case backgroundPattern = "background-pattern" 
-    
+
     case yubikeyMFIPhoneNew = "yubikey-mfi-phone-new"
     case yubikeyMFIPhone = "yubikey-mfi-phone"
     case yubikeyMFIKey = "yubikey-mfi-key"
-    
+
     public func asColor() -> UIColor? {
         return UIColor(patternImage: UIImage(asset: self))
     }
@@ -27,7 +27,7 @@ public enum SymbolName: String {
     public static let actionRestore = Self.clockArrowCirclepath
     public static let appProtection = Self.lock
     public static let fieldReference = Self.arrowRightCircle
-    
+
     public static let premiumBenefitMultiDB = Self.shieldBadgePlus
     public static let premiumBenefitDBTimeout = Self.clockBadgeCheckmark
     public static let premiumBenefitHardwareKeys = Self.usbDongle
@@ -37,7 +37,7 @@ public enum SymbolName: String {
     public static let premiumBenefitPasswordAudit = Self.networkBadgeShield
     public static let premiumBenefitSupport = Self.questionmarkBubble
     public static let premiumBenefitShiny = Self.faceSmiling
-    
+
     case arrowLeftAndRight = "arrow.left.and.right" 
     case arrowRightCircle = "arrow.right.circle" 
     case arrowshapeTurnUpForward = "arrowshape.turn.up.forward" 
@@ -141,26 +141,26 @@ extension UIImage {
 }
 
 extension UIImage {
-    
+
     public static func symbol(_ symbolName: SymbolName?, tint: UIColor? = nil) -> UIImage? {
         guard let symbolName else {
             return nil
         }
-        
+
         var result = UIImage(named: symbolName.rawValue)
             ?? UIImage(systemName: symbolName.rawValue)
-        
+
         if let tint {
             result = result?.withTintColor(tint, renderingMode: .alwaysOriginal)
         }
         return result
     }
-    
+
     convenience init(asset: ImageAsset) {
         self.init(named: asset.rawValue)! 
     }
-    
-    static func kpIcon(forEntry entry: Entry, iconSet: DatabaseIconSet?=nil) -> UIImage? {
+
+    static func kpIcon(forEntry entry: Entry, iconSet: DatabaseIconSet? = nil) -> UIImage? {
         if let entry2 = entry as? Entry2,
             let db2 = entry2.database as? Database2,
             let customIcon2 = db2.customIcons.first(where: { $0.uuid == entry2.customIconUUID }),
@@ -171,8 +171,8 @@ extension UIImage {
         let _iconSet = iconSet ?? Settings.current.databaseIconSet
         return _iconSet.getIcon(entry.iconID)
     }
-    
-    static func kpIcon(forGroup group: Group, iconSet: DatabaseIconSet?=nil) -> UIImage? {
+
+    static func kpIcon(forGroup group: Group, iconSet: DatabaseIconSet? = nil) -> UIImage? {
         if let group2 = group as? Group2,
             let db2 = group2.database as? Database2,
             let customIcon2 = db2.customIcons.first(where: { $0.uuid == group2.customIconUUID }),
@@ -183,12 +183,12 @@ extension UIImage {
         let _iconSet = iconSet ?? Settings.current.databaseIconSet
         return _iconSet.getIcon(group.iconID)
     }
-    
+
     func withGradientUnderlay() -> UIImage? {
         guard #available(iOS 13, *) else {
             return self
         }
-        
+
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         guard let context = UIGraphicsGetCurrentContext() else {
             return nil

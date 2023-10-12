@@ -8,7 +8,7 @@
 
 import TPInAppReceipt
 
-fileprivate let dateFormatter: DateFormatter = {
+private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US_POSIX") 
     dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -25,17 +25,17 @@ public struct PurchaseHistory: Codable, Equatable {
         case premiumFallbackDate
     }
     public internal(set) var containsTrial: Bool
-    
+
     public internal(set) var containsLifetimePurchase: Bool
-    
+
     public internal(set) var latestPremiumProduct: InAppProduct?
-    
+
     public internal(set) var latestPremiumExpiryDate: Date?
-    
+
     public internal(set) var premiumFallbackDate: Date?
-    
+
     public internal(set) var premiumSupportExpiryDate: Date?
-    
+
     static let empty = {
         PurchaseHistory(
             containsTrial: false,
@@ -46,7 +46,7 @@ public struct PurchaseHistory: Codable, Equatable {
             premiumFallbackDate: nil
         )
     }()
-    
+
     static let prepaidProVersion = {
         PurchaseHistory(
             containsTrial: false,
@@ -68,7 +68,7 @@ public struct PurchaseHistory: Codable, Equatable {
             premiumFallbackDate: nil
         )
     }()
-    
+
     static let betaTesting = {
         PurchaseHistory(
             containsTrial: false,
@@ -79,7 +79,7 @@ public struct PurchaseHistory: Codable, Equatable {
             premiumFallbackDate: Date.distantFuture
         )
     }()
-    
+
     private init(
         containsTrial: Bool,
         containsLifetimePurchase: Bool,
@@ -95,7 +95,7 @@ public struct PurchaseHistory: Codable, Equatable {
         self.premiumSupportExpiryDate = premiumSupportExpiryDate
         self.premiumFallbackDate = premiumFallbackDate
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         containsTrial = try values.decode(Bool.self, forKey: .containsTrial)
@@ -105,7 +105,7 @@ public struct PurchaseHistory: Codable, Equatable {
         premiumSupportExpiryDate = try values.decode(Date?.self, forKey: .premiumSupportExpiryDate)
         premiumFallbackDate = try values.decode(Date?.self, forKey: .premiumFallbackDate)
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(containsTrial, forKey: .containsTrial)
@@ -119,16 +119,16 @@ public struct PurchaseHistory: Codable, Equatable {
 
 class ReceiptAnalyzer {
     private let adjacentIntervalsTolerance = 7 * TimeInterval.day
-    
-    
+
+
     struct DateInterval: CustomDebugStringConvertible {
         var from: Date
         var to: Date
-        
+
         var duration: TimeInterval {
             return to.timeIntervalSince(from)
         }
-            
+
         init?(fromSubscription subscription: InAppPurchase) {
             assert(subscription.isRenewableSubscription)
             guard let expiryDate = subscription.subscriptionExpirationDate else {
@@ -139,7 +139,7 @@ class ReceiptAnalyzer {
             self.from = subscription.purchaseDate
             self.to = expiryDate
         }
-        
+
         func canExtendLeft(with interval: DateInterval, tolerance: TimeInterval) -> Bool {
             guard interval.to <= self.to else {
                 return false
@@ -149,13 +149,13 @@ class ReceiptAnalyzer {
             }
             return true
         }
-        
+
         var debugDescription: String {
             return "{ \(dateFormatter.string(from: from)) to \(dateFormatter.string(from: to)) }"
         }
     }
-    
-    
+
+
     static func logPurchaseHistory() {
         do {
             let receipt = try InAppReceipt.localReceipt()
@@ -163,7 +163,7 @@ class ReceiptAnalyzer {
                 Diag.debug("No previous purchases found.")
                 return
             }
-            
+
             Diag.debug("Purchase history:")
             let sortedPurchases = receipt.purchases.sorted(by: { $0.purchaseDate > $1.purchaseDate })
             sortedPurchases.forEach { purchase in
@@ -186,7 +186,7 @@ class ReceiptAnalyzer {
             Diag.error(error.localizedDescription)
         }
     }
-    
+
     func loadReceipt() -> PurchaseHistory {
         if BusinessModel.type == .prepaid {
             return PurchaseHistory.prepaidProVersion
@@ -199,7 +199,7 @@ class ReceiptAnalyzer {
             Diag.info("Enabling premium for test environment")
             return PurchaseHistory.betaTesting
         }
-        
+
         do {
             let receipt = try InAppReceipt.localReceipt()
             guard receipt.hasPurchases else {
@@ -220,8 +220,8 @@ class ReceiptAnalyzer {
             return PurchaseHistory.empty
         }
     }
-    
-    
+
+
     private func processLifetimePurchases(
         _ receipt: InAppReceipt,
         _ purchaseHistory: inout PurchaseHistory
@@ -244,7 +244,7 @@ class ReceiptAnalyzer {
         }
     }
 
-    
+
     private func processVersionPurchases(
         _ receipt: InAppReceipt,
         _ purchaseHistory: inout PurchaseHistory
@@ -269,7 +269,7 @@ class ReceiptAnalyzer {
             purchaseHistory.premiumSupportExpiryDate = versionPremiumSupportExpiryDate
             return
         }
-        
+
         let isSubscriptionActive = (subscriptionExpiryDate.timeIntervalSinceNow > 0)
         if isSubscriptionActive {
             purchaseHistory.premiumFallbackDate = Date.max(
@@ -277,7 +277,7 @@ class ReceiptAnalyzer {
                 versionFallbackDate)
             return
         }
-        
+
         if let subscriptionFallbackDate = purchaseHistory.premiumFallbackDate,
            subscriptionFallbackDate > versionFallbackDate
         {
@@ -292,7 +292,7 @@ class ReceiptAnalyzer {
             purchaseHistory.premiumSupportExpiryDate = versionPremiumSupportExpiryDate
         }
     }
-    
+
     private func getLatestPurchasedVersion(_ receipt: InAppReceipt) -> InAppPurchase? {
         let versionPurchases = receipt.purchases.filter { purchase in
             guard purchase.cancellationDateString == nil else { return false }
@@ -303,27 +303,25 @@ class ReceiptAnalyzer {
             }
             return product.isVersionPurchase
         }
-        
+
         let latestPurchasedVersion = versionPurchases.max(by: { $1.purchaseDate > $0.purchaseDate })
         return latestPurchasedVersion
     }
-    
-    
+
+
     private func processSubscriptionPurchases(
         _ receipt: InAppReceipt,
         _ purchaseHistory: inout PurchaseHistory
     ) {
-        purchaseHistory.containsTrial = receipt.autoRenewablePurchases.reduce(false) {
-            (result, purchase) -> Bool in
-            return result
-                || purchase.subscriptionTrialPeriod
-                || purchase.subscriptionIntroductoryPricePeriod
+        purchaseHistory.containsTrial = receipt.autoRenewablePurchases.contains {
+            let isTrial = $0.subscriptionTrialPeriod || $0.subscriptionIntroductoryPricePeriod
+            return isTrial
         }
 
         let validSubscriptions = receipt.autoRenewablePurchases
             .filter { $0.cancellationDateString == nil } 
         purchaseHistory.premiumFallbackDate = getSubscriptionFallbackDate(validSubscriptions)
-        
+
         if let latestSubscription = getLatestExpiringSubscription(validSubscriptions) {
             guard let product = InAppProduct(rawValue: latestSubscription.productIdentifier)
             else {
@@ -337,14 +335,14 @@ class ReceiptAnalyzer {
                 .addingTimeInterval(product.premiumSupportDurationAfterExpiry)
         }
     }
-    
+
     private func getLatestExpiringSubscription(_ validSubscriptions: [InAppPurchase]) -> InAppPurchase? {
         let subscriptionsRecentToOld = validSubscriptions
             .filter { $0.subscriptionExpirationDate != nil } 
             .sorted { $0.subscriptionExpirationDate! > $1.subscriptionExpirationDate! }
         return subscriptionsRecentToOld.first
     }
-    
+
     private func getSubscriptionFallbackDate(_ validSubscriptions: [InAppPurchase]) -> Date? {
         let sortedSubscriptions = validSubscriptions
             .sorted { $0.purchaseDate > $1.purchaseDate } 
@@ -352,13 +350,13 @@ class ReceiptAnalyzer {
         guard let latestSubscription = subscriptionIterator.next() else {
             return nil
         }
-        
+
         guard var continuousInterval = DateInterval(fromSubscription: latestSubscription) else {
             assertionFailure()
             return nil 
         }
-        
-        var fallbackDate: Date? = nil
+
+        var fallbackDate: Date?
         while true {
             let duration = continuousInterval.duration
             if duration >= .year {
@@ -373,7 +371,7 @@ class ReceiptAnalyzer {
                 assertionFailure()
                 break 
             }
-            
+
             let canExtend = continuousInterval.canExtendLeft(with: interval, tolerance: adjacentIntervalsTolerance)
             if canExtend {
                 continuousInterval.from = interval.from
@@ -381,7 +379,7 @@ class ReceiptAnalyzer {
                 continuousInterval = interval
             }
         }
-        
+
         if let _fallbackDate = fallbackDate {
             Diag.info("Subscription fallback date: \(dateFormatter.string(from: _fallbackDate))")
         }

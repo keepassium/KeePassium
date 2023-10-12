@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIWindow {
-    
+
     func setScreen(_ screen: UIScreen) {
         #if !targetEnvironment(macCatalyst)
         self.screen = screen

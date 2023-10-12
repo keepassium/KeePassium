@@ -16,7 +16,7 @@ protocol DatabaseKeyChangerDelegate: AnyObject {
 }
 
 final class DatabaseKeyChangerVC: UIViewController {
-   
+
     @IBOutlet private weak var databaseNameLabel: UILabel!
     @IBOutlet private weak var databaseIcon: UIImageView!
     @IBOutlet private weak var inputPanel: UIView!
@@ -25,9 +25,9 @@ final class DatabaseKeyChangerVC: UIViewController {
     @IBOutlet private weak var keyFileField: ValidatingTextField!
     @IBOutlet private weak var hardwareKeyField: ValidatingTextField!
     @IBOutlet private weak var passwordMismatchImage: UIImageView!
-    
+
     weak var delegate: DatabaseKeyChangerDelegate?
-    
+
     internal var password: String { return passwordField.text ?? ""}
     internal private(set) var keyFileRef: URLReference?
     internal private(set) var yubiKey: YubiKey?
@@ -41,10 +41,10 @@ final class DatabaseKeyChangerVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         databaseNameLabel.text = databaseFile.visibleFileName
         databaseIcon.image = .symbol(databaseFile.getIconSymbol())
-        
+
         passwordField.invalidBackgroundColor = nil
         repeatPasswordField.invalidBackgroundColor = nil
         keyFileField.invalidBackgroundColor = nil
@@ -64,12 +64,12 @@ final class DatabaseKeyChangerVC: UIViewController {
         repeatPasswordField.accessibilityLabel = LString.fieldRepeatPassword
         keyFileField.accessibilityLabel = LString.fieldKeyFile
         hardwareKeyField.accessibilityLabel = LString.fieldHardwareKey
-        
+
         passwordField.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         repeatPasswordField.maskedCorners = []
         keyFileField.maskedCorners = []
         hardwareKeyField.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        
+
         #if targetEnvironment(macCatalyst)
         keyFileField.cursor = .arrow
         hardwareKeyField.cursor = .arrow
@@ -77,29 +77,29 @@ final class DatabaseKeyChangerVC: UIViewController {
 
         view.backgroundColor = ImageAsset.backgroundPattern.asColor()
         view.layer.isOpaque = false
-        
+
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         passwordField.becomeFirstResponder()
         refresh()
     }
-    
+
     func refresh() {
         navigationItem.rightBarButtonItem?.isEnabled = areAllFieldsValid()
     }
-    
-    
+
+
     func setKeyFile(_ urlRef: URLReference?) {
         self.keyFileRef = urlRef
-        
+
         guard let keyFileRef = urlRef else {
             keyFileField.text = ""
             return
         }
-        
+
         if let error = keyFileRef.error {
             keyFileField.text = ""
             showErrorAlert(error)
@@ -108,7 +108,7 @@ final class DatabaseKeyChangerVC: UIViewController {
         }
         refresh()
     }
-    
+
     func setYubiKey(_ yubiKey: YubiKey?) {
         self.yubiKey = yubiKey
 
@@ -121,8 +121,8 @@ final class DatabaseKeyChangerVC: UIViewController {
         }
         refresh()
     }
-    
-    
+
+
     private func isFieldValid(_ textField: UITextField) -> Bool {
         switch textField {
         case passwordField, keyFileField, hardwareKeyField:
@@ -140,7 +140,7 @@ final class DatabaseKeyChangerVC: UIViewController {
             return true
         }
     }
-    
+
     private func areAllFieldsValid() -> Bool {
         let result = passwordField.isValid &&
             repeatPasswordField.isValid &&
@@ -148,13 +148,13 @@ final class DatabaseKeyChangerVC: UIViewController {
             hardwareKeyField.isValid
         return result
     }
-    
+
     private func shakeInvalidInputs() {
         if areAllFieldsValid() {
             assertionFailure("Everything is ok, why are we here?")
             return
         }
-        
+
         if !repeatPasswordField.isValid { 
             repeatPasswordField.shake()
             passwordMismatchImage.shake()
@@ -163,9 +163,9 @@ final class DatabaseKeyChangerVC: UIViewController {
             passwordMismatchImage.shake()
         }
     }
-        
-    
-    @IBAction func didPressSaveChanges(_ sender: Any) {
+
+
+    @IBAction private func didPressSaveChanges(_ sender: Any) {
         guard areAllFieldsValid() else {
             Diag.warning("Not all fields are valid, cannot save")
             return
@@ -190,7 +190,7 @@ extension DatabaseKeyChangerVC: UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard UIDevice.current.userInterfaceIdiom == .phone else {
             return true
@@ -208,7 +208,7 @@ extension DatabaseKeyChangerVC: UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         guard UIDevice.current.userInterfaceIdiom != .phone else {
             return
@@ -232,7 +232,7 @@ extension DatabaseKeyChangerVC: UITextFieldDelegate {
             }
         }
     }
-    
+
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
@@ -249,13 +249,13 @@ extension DatabaseKeyChangerVC: ValidatingTextFieldDelegate {
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         return isFieldValid(sender)
     }
-    
+
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         if sender === passwordField {
             repeatPasswordField.validate()
         }
     }
-    
+
     func validatingTextField(_ sender: ValidatingTextField, validityDidChange isValid: Bool) {
         refresh()
     }

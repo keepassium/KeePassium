@@ -6,13 +6,14 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
+// swiftlint:disable line_length
 extension LString {
     public static let actionRestoreDefaults = NSLocalizedString(
         "[Settings/RestoreDefaults/action]",
         bundle: Bundle.framework,
         value: "Restore Defaults",
         comment: "Action/button which resets some settings to their default state.")
-    
+
     public static let appLockWithBiometricsSubtitleTemplate = NSLocalizedString(
         "[Settings/AppLock/subtitle] App Lock, %@, timeout",
         bundle: Bundle.framework,
@@ -23,7 +24,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "App Lock, passcode, timeout",
         comment: "Settings: subtitle of the `App Protection` section when biometric auth is not available.")
-    
+
     public static let premiumVersion = NSLocalizedString(
         "[Premium/Status/title]",
         bundle: Bundle.framework,
@@ -59,13 +60,13 @@ extension LString {
         bundle: Bundle.framework,
         value: "Current version: %@",
         comment: "Status: current version of the app. For example: `Current version: 1.23`. Should be similar to the `Licensed version` string. [version: String]")
-    
+
     public static let appBeingUsefulTemplate = NSLocalizedString(
         "[Premium/usage] App being useful: %@/month, that is around %@/year.",
         bundle: Bundle.framework,
         value: "App being useful: %@/month, that is around %@/year.",
         comment: "Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)]")
-    
+
 
     public static let autoOpenPreviousDatabase = NSLocalizedString(
         "[Settings/AutoOpenPreviousDatabase/title]",
@@ -73,7 +74,7 @@ extension LString {
         value: "Auto-Open Previous Database",
         comment: "Option in settings: whether to open the last used database automatically on start.")
 
-    
+
     public static let titleAppearanceSettings = NSLocalizedString(
         "[Appearance/title]",
         bundle: Bundle.framework,
@@ -98,14 +99,13 @@ extension LString {
         value: "Default",
         comment: "Short name of the default/system font. For example: `Font: Default`")
 
-    
-    
+
     public static let titleAutoFillSettings = NSLocalizedString(
         "[Settings/AutoFill/title]",
         bundle: Bundle.framework,
         value: "AutoFill Passwords",
         comment: "Title of AutoFill settings screen")
-    
+
     public static let actionActivateAutoFill = NSLocalizedString(
         "[Settings/AutoFill/Activate/action]",
         bundle: Bundle.framework,
@@ -127,7 +127,6 @@ extension LString {
         value: "AutoFill is not available in KeePassium for Intune.",
         comment: "")
 
-    
     public static let titleQuickAutoFill = NSLocalizedString(
         "[QuickAutoFill/title]",
         bundle: Bundle.framework,
@@ -138,7 +137,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.",
         comment: "Description of the Quick AutoFill feature.")
-    
+
     public static let titleAutoFillPerfectMatch = NSLocalizedString(
         "[Settings/AutoFill/UsePerfectMatch/title]",
         bundle: Bundle.framework,
@@ -149,14 +148,14 @@ extension LString {
         bundle: Bundle.framework,
         value: "Copy OTP to Clipboard",
         comment: "Title of an option: copy one-time password to clipboard when using AutoFill")
-    
-    
+
+
     public static let titleSearchSettings = NSLocalizedString(
         "[Settings/Search/title]",
         bundle: Bundle.framework,
         value: "Search",
         comment: "Section title in settings")
-    
+
 
     public static let titleAppProtection = titleAppProtectionSettings
     public static let titleAppProtectionSettings = NSLocalizedString(
@@ -179,7 +178,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Use %@",
         comment: "Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String]")
-    
+
     public static let lockAppOnLaunchTitle = NSLocalizedString(
         "[Settings/AppLock/LockOnLaunch/title]",
         bundle: Bundle.framework,
@@ -220,8 +219,8 @@ extension LString {
         bundle: Bundle.framework,
         value: "After last interaction",
         comment: "A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction)")
-    
-    
+
+
     public static let titleDataProtectionSettings = NSLocalizedString(
         "[Settings/DataProtection/title]",
         bundle: Bundle.framework,
@@ -243,7 +242,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "All master keys have been deleted.",
         comment: "Text of the success message for `Clear Master Keys` button")
-    
+
     public static let keyFileAssociationsClearedTitle = NSLocalizedString(
         "[Settings/ClearKeyFileAssociations/Cleared/title] Cleared",
         bundle: Bundle.framework,
@@ -254,19 +253,19 @@ extension LString {
         bundle: Bundle.framework,
         value: "Associations between key files and databases have been removed.",
         comment: "Text of the success message for `Clear Key File Associations` button")
-    
+
     public static let databaseTimeoutDescription = NSLocalizedString(
         "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again.",
         bundle: Bundle.framework,
         value: "If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again.",
         comment: "Description of the Database Lock Timeout")
-    
+
     public static let clipboardTimeoutDescription = NSLocalizedString(
         "[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time.",
         bundle: Bundle.framework,
         value: "When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time.",
         comment: "Description of the clipboard/pasteboard timeout.")
-    
+
     public static let databaseLockTimeoutNeverFull = NSLocalizedString(
         "[Settings/DatabaseLockTimeout/fullTitle] Never",
         bundle: Bundle.framework,
@@ -292,7 +291,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "When leaving the app",
         comment: "A description/subtitle for the 'DatabaseLockTimeout: Immediately'.")
-    
+
     public static let titleNetworkAccessSettings = NSLocalizedString(
         "[Settings/NetworkAccess/title]",
         bundle: Bundle.framework,
@@ -324,7 +323,7 @@ extension LString {
         value: "Allow KeePassium to make network connections to external services?",
         comment: "Confirmation dialog message")
 
-    
+
     public static let titleDatabaseBackupSettings = NSLocalizedString(
         "[Settings/DatabaseBackup/title]",
         bundle: Bundle.framework,
@@ -340,14 +339,14 @@ extension LString {
         bundle: Bundle.framework,
         value: "No Backup Files Found",
         comment: "Status message: there are no backup files to delete")
-    
+
     public static let confirmDeleteAllBackupFiles = NSLocalizedString(
         "[Settings/Backup/Delete/title] Delete all backup files?",
         bundle: Bundle.framework,
         value: "Delete all backup files?",
         comment: "Confirmation dialog message to delete all backup files")
-    
-    
+
+
     public static let subtitleContactUs = NSLocalizedString(
         "[ContactUs/subtitle]",
         bundle: Bundle.framework,
@@ -363,10 +362,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "For expert troubleshooting",
         comment: "Subtitle for `Diagnostic Log`. Keep it short.")
-    
+
     public static let titleAboutKeePassium = NSLocalizedString(
         "[About/altTitle]",
         bundle: Bundle.framework,
         value: "About KeePassium",
         comment: "Menu item that shows info about KeePassium app")
 }
+// swiftlint:enable line_length

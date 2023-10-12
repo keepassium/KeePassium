@@ -10,9 +10,9 @@ import Foundation
 
 public class TemporaryFileURL {
     public private(set) var url: URL
-    
+
     private var isErased = false
-    
+
     public init(fileName: String) throws {
         let fileManager = FileManager.default
         let tmpFileDir = fileManager.temporaryDirectory
@@ -28,11 +28,11 @@ public class TemporaryFileURL {
             throw error
         }
     }
-    
+
     deinit {
         cleanup()
     }
-    
+
     public func cleanup() {
         guard !isErased else {
             return

@@ -17,7 +17,7 @@ public struct SecureRandomNumberGenerator: RandomNumberGenerator {
         }
         return random
     }
-    
+
     private func __failed_to_generate_random_bytes() {
         fatalError()
     }

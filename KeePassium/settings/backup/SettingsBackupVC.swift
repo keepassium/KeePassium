@@ -6,8 +6,8 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
+import UIKit
 
 class SettingsBackupVC: UITableViewController {
 
@@ -17,16 +17,16 @@ class SettingsBackupVC: UITableViewController {
     @IBOutlet weak var deleteAllBackupsButton: UIButton!
     @IBOutlet weak var backupDeletionSpinner: UIActivityIndicatorView!
     @IBOutlet weak var excludeFromSystemBackupSwitch: UISwitch!
-    
+
     private var settingsNotifications: SettingsNotifications!
     private var fileKeeperNotifications: FileKeeperNotifications!
-    
+
     static func create() -> SettingsBackupVC {
         let vc = SettingsBackupVC.instantiateFromStoryboard()
         return vc
     }
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsNotifications = SettingsNotifications(observer: self)
@@ -40,14 +40,13 @@ class SettingsBackupVC: UITableViewController {
         fileKeeperNotifications.startObserving()
         refresh()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         fileKeeperNotifications.stopObserving()
         settingsNotifications.stopObserving()
         super.viewWillDisappear(animated)
     }
 
-    
     func refresh() {
         let settings = Settings.current
         let backupFileCount = FileKeeper.shared.getBackupFiles().count
@@ -69,7 +68,7 @@ class SettingsBackupVC: UITableViewController {
         }
     }
 
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         switch selectedCell {
@@ -79,14 +78,14 @@ class SettingsBackupVC: UITableViewController {
             break
         }
     }
-    
-    
-    @IBAction func didToggleEnableDatabaseBackup(_ sender: UISwitch) {
+
+
+    @IBAction private func didToggleEnableDatabaseBackup(_ sender: UISwitch) {
         Settings.current.isBackupDatabaseOnSave = enableDatabaseBackupSwitch.isOn
         refresh()
     }
-    
-    @IBAction func didToggleShowBackupFiles(_ sender: UISwitch) {
+
+    @IBAction private func didToggleShowBackupFiles(_ sender: UISwitch) {
         Settings.current.isBackupFilesVisible = showBackupFilesSwitch.isOn
         refresh()
     }
@@ -96,18 +95,18 @@ class SettingsBackupVC: UITableViewController {
         show(durationPicker, sender: self)
     }
 
-    @IBAction func didToggleExcludeFromSystemBackup(_ sender: UISwitch) {
+    @IBAction private func didToggleExcludeFromSystemBackup(_ sender: UISwitch) {
         let isExclude = excludeFromSystemBackupSwitch.isOn
         Settings.current.isExcludeBackupFilesFromSystemBackup = isExclude
-        
+
         excludeFromSystemBackupSwitch.isEnabled = false
         DispatchQueue.main.async { [weak self] in
             self?.applyExcludeFromSystemBackup(isExclude)
             self?.excludeFromSystemBackupSwitch.isEnabled = true
         }
     }
-    
-    @IBAction func didPressDeleteAllBackupFiles(_ sender: Any) {
+
+    @IBAction private func didPressDeleteAllBackupFiles(_ sender: Any) {
         let confirmationAlert = UIAlertController.make(
             title: LString.confirmDeleteAllBackupFiles,
             message: nil,
@@ -115,14 +114,14 @@ class SettingsBackupVC: UITableViewController {
         let deleteAction = UIAlertAction(
             title: LString.actionDelete,
             style: .destructive,
-            handler: { [weak self] (action) in
+            handler: { [weak self] _ in
                 self?.deleteAllBackupFiles()
             }
         )
         confirmationAlert.addAction(deleteAction)
         present(confirmationAlert, animated: true, completion: nil)
     }
-    
+
     private func deleteAllBackupFiles() {
         backupDeletionSpinner.isHidden = false
         DispatchQueue.main.async { [self] in 
@@ -137,7 +136,7 @@ class SettingsBackupVC: UITableViewController {
             )
         }
     }
-    
+
     private func applyExcludeFromSystemBackup(_ isExclude: Bool) {
         let backupFileRefs = FileKeeper.shared.getBackupFiles()
         var successCounter = 0

@@ -9,7 +9,7 @@
 public enum KeyFileError: LocalizedError {
     case unsupportedFormat
     case keyFileCorrupted
-    
+
     public var errorDescription: String? {
         switch self {
         case .unsupportedFormat:

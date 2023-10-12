@@ -3336,6 +3336,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 754BF0912082A6BD00E3A292 /* Build configuration list for PBXNativeTarget "KeePassium" */;
 			buildPhases = (
+				F34929372AD5EFC300A08C9F /* SwiftLint */,
 				754BF0772082A6BD00E3A292 /* Sources */,
 				754BF0782082A6BD00E3A292 /* Frameworks */,
 				754BF0792082A6BD00E3A292 /* Resources */,
@@ -3972,6 +3973,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#if which bartycrouch > /dev/null; then\n#  #bartycrouch update -x\n#  bartycrouch lint -x\n#else\n#  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n#fi\n";
+		};
+		F34929372AD5EFC300A08C9F /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

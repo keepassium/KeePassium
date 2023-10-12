@@ -9,17 +9,17 @@
 import KeePassiumLib
 
 class FileAddingHelper {
-    
+
     public static func ensureFileIsDatabase(
         _ url: URL,
         parent: UIViewController,
-        handler: @escaping (URL)->Void)
-    {
+        handler: @escaping (URL) -> Void
+    ) {
         if FileType.isDatabaseFile(url: url) {
             handler(url)
             return
         }
-        
+
         DispatchQueue.main.async {
             let fileName = url.lastPathComponent
             let confirmationAlert = UIAlertController.make(
@@ -31,7 +31,7 @@ class FileAddingHelper {
             let continueAction = UIAlertAction(
                 title: LString.actionContinue,
                 style: .default,
-                handler: { (action) in
+                handler: { _ in
                     handler(url)
                 }
             )

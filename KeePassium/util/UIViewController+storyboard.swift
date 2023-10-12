@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIViewController {
-    
+
     internal class func instantiateFromStoryboard(_ name: String? = nil) -> Self {
         return instantiateHelper(storyboardName: name)
     }

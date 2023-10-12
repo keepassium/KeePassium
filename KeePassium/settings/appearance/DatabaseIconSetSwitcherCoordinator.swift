@@ -11,21 +11,21 @@ import KeePassiumLib
 class DatabaseIconSetSwitcherCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     private let router: NavigationRouter
     private let picker: DatabaseIconSetPicker
-    
+
     init(router: NavigationRouter) {
         self.router = router
         picker = DatabaseIconSetPicker.instantiateFromStoryboard()
         picker.delegate = self
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         picker.selectedItem = Settings.current.databaseIconSet
         router.push(picker, animated: true, onPop: { [weak self] in

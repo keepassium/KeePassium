@@ -6,25 +6,24 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-
 public class DatabaseFile: Eraseable {
-        
+
     public enum StatusFlag {
         case readOnly
         case localFallback
     }
     public typealias Status = Set<StatusFlag>
-    
+
     public let database: Database
-       
+
     public private(set) var data: ByteArray
-    
+
     public private(set) var storedDataSHA512: ByteArray
-    
+
     public var fileURL: URL
 
     public var fileReference: URLReference?
-    
+
     public private(set) var status: Status
 
     public var visibleFileName: String {
@@ -34,7 +33,7 @@ public class DatabaseFile: Eraseable {
     public var descriptor: URLReference.Descriptor? {
         return fileReference?.getDescriptor()
     }
-    
+
     private var _fileProvider: FileProvider?
     public var fileProvider: FileProvider? {
         get {
@@ -44,7 +43,7 @@ public class DatabaseFile: Eraseable {
             _fileProvider = newValue
         }
     }
-    
+
     init(
         database: Database,
         data: ByteArray = ByteArray(),
@@ -76,13 +75,13 @@ public class DatabaseFile: Eraseable {
         self._fileProvider = nil 
         self.status = status
     }
-    
+
     public func erase() {
         data.erase()
         database.erase()
         status.removeAll()
     }
-    
+
     public func resolveFileURL(
         timeout: Timeout,
         completionQueue: OperationQueue = .main,
@@ -102,7 +101,7 @@ public class DatabaseFile: Eraseable {
             completion()
         }
     }
-    
+
     public func setData(_ data: ByteArray, updateHash: Bool) {
         self.data = data.clone()
         if updateHash {

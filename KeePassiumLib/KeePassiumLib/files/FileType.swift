@@ -10,7 +10,7 @@ import UniformTypeIdentifiers
 
 public enum FileType {
     public static let attachmentUTIs: [UTType] = [.data, .content]
-    
+
     public static let databaseUTIs: [UTType] = [
         .data, .content, 
         .item, 
@@ -22,7 +22,7 @@ public enum FileType {
         .init("com.markmcguill.strongbox.kdbx")!,
         .init("be.kyuran.kypass.kdb")!,
         .init("org.keepassxc")!]
-    
+
     public static let keyFileUTIs: [UTType] =
         [.init("com.keepassium.keyfile")!, .data, .content, .item]
 
@@ -32,8 +32,7 @@ public enum FileType {
         public static let kdbx = "kdbx"
     }
 
-    
-    
+
     case database
     case keyFile
 

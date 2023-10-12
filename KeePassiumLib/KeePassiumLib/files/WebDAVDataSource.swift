@@ -12,7 +12,7 @@ public final class WebDAVDataSource: DataSource {
     func getAccessCoordinator() -> FileAccessCoordinator {
         return PassthroughFileAccessCoordinator()
     }
-    
+
     public func readFileInfo(
         at url: URL,
         fileProvider: FileProvider?,
@@ -45,8 +45,7 @@ public final class WebDAVDataSource: DataSource {
             completion: completion
         )
     }
-    
-    
+
     public func read(
         _ url: URL,
         fileProvider: FileProvider?,
@@ -78,7 +77,7 @@ public final class WebDAVDataSource: DataSource {
             completion: completion
         )
     }
-    
+
     public func write(
         _ data: ByteArray,
         to url: URL,

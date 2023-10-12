@@ -11,7 +11,7 @@ import UIKit
 extension URL {
     public enum AppHelp {
         public static let helpIndex = URL(string: "https://keepassium.com/apphelp/")!
-        
+
         public static let termsAndConditions = URL(string: "https://keepassium.com/terms/app")!
         public static let privacyPolicyOfflineMode = URL(string: "https://keepassium.com/privacy/app")!
         public static let privacyPolicyOnlineMode = URL(string: "https://keepassium.com/privacy/app")!
@@ -22,7 +22,7 @@ extension URL {
                 return privacyPolicyOfflineMode
             }
         }
-        
+
         public static let quickAutoFillIntro = URL(string: "https://keepassium.com/apphelp/quick-autofill/")!
         public static let autoFillMemoryLimits = URL(string: "https://keepassium.com/apphelp/autofill-memory-limits/")!
         public static let autoFillSetupGuide_iOS = URL(string: "https://keepassium.com/apphelp/how-to-set-up-autofill-ios/")!
@@ -34,7 +34,7 @@ extension URL {
                 return autoFillSetupGuide_iOS
             }
         }
-        
+
         public static let invalidDatabasePassword = URL(string: "https://keepassium.com/apphelp/invalid-database-password/")!
 
         public static let databaseFileIsInTrashWarning = URL(string: "https://keepassium.com/apphelp/database-recently-deleted-warning/")!
@@ -42,5 +42,5 @@ extension URL {
 
         public static let hibpMoreInfoURLString = "https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/#cloudflareprivacyandkanonymity"
     }
-    
+
 }

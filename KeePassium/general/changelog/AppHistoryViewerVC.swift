@@ -24,15 +24,15 @@ class AppHistoryViewerVC: UITableViewController {
             updateSections()
         }
     }
-    
+
     enum TableSection {
         case fallbackSeparator(date: Date)
         case historySection(section: AppHistory.Section)
     }
-    
+
     private let fallbackDate = PremiumManager.shared.fallbackDate
     private var sections = [TableSection]()
-    
+
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
@@ -40,20 +40,20 @@ class AppHistoryViewerVC: UITableViewController {
         dateFormatter.doesRelativeDateFormatting = true
         return dateFormatter
     }()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = LString.titleAppHistory
     }
-    
+
     private func updateSections() {
         sections.removeAll()
         defer {
             tableView.reloadData()
         }
-        
+
         guard let appHistory = appHistory else { return }
-        
+
         sections = appHistory.sections.map { return TableSection.historySection(section: $0) }
         if let perpetualFallbackDate = fallbackDate {
             sections.insert(TableSection.fallbackSeparator(date: perpetualFallbackDate), at: 0)
@@ -66,7 +66,7 @@ extension AppHistoryViewerVC {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sections[section] {
         case .fallbackSeparator:
@@ -75,12 +75,11 @@ extension AppHistoryViewerVC {
             return appHistorySection.items.count
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
-        titleForHeaderInSection section: Int)
-        -> String?
-    {
+        titleForHeaderInSection section: Int
+    ) -> String? {
         switch sections[section] {
         case .fallbackSeparator:
             return nil
@@ -89,18 +88,17 @@ extension AppHistoryViewerVC {
             return "v\(sectionInfo.version) (\(formattedDate))"
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.text = self.tableView(tableView, titleForHeaderInSection: section)
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath)
-        -> UITableViewCell
-    {
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         switch sections[indexPath.section] {
         case .fallbackSeparator(date: let fallbackDate):
             let cell = tableView
@@ -118,7 +116,7 @@ extension AppHistoryViewerVC {
             return cell
         }
     }
-    
+
     private func setupFallbackCell(_ cell: AppHistoryFallbackCell, fallbackDate: Date) {
         if fallbackDate == .distantFuture {
             cell.textLabel?.text = LString.perpetualLicense
@@ -131,7 +129,7 @@ extension AppHistoryViewerVC {
             cell.accessoryType = .disclosureIndicator
         }
     }
-    
+
     private func setupItemCell(_ cell: AppHistoryItemCell, item: AppHistory.Item, isOwned: Bool) {
         cell.titleLabel.text = item.title
         switch item.type {
@@ -162,7 +160,7 @@ extension AppHistoryViewerVC {
             }
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch sections[indexPath.section] {
@@ -172,11 +170,11 @@ extension AppHistoryViewerVC {
             break
         }
     }
-    
+
     private func scrollToDate(_ date: Date) {
         let sectionIndex = sections.firstIndex(where: {
             switch $0 {
-            case .fallbackSeparator(date: _):
+            case .fallbackSeparator:
                 return false
             case .historySection(section: let section):
                 return section.releaseDate < date

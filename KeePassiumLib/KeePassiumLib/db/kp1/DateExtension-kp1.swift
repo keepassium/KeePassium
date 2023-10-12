@@ -29,18 +29,18 @@ extension Date {
         let hour = ((Int(dw[2]) & 0x00000001) << 4) | (Int(dw[3]) >> 4)
         let minute = ((Int(dw[3]) & 0x0000000F) << 2) | (Int(dw[4]) >> 6)
         let second = Int(dw[4]) & 0x0000003F
-        
+
         guard let date = DateComponents(
             calendar: Calendar(identifier: .iso8601),
             year: year, month: month, day: day,
-            hour: hour, minute: minute, second: second, nanosecond: 0).date else
-        {
+            hour: hour, minute: minute, second: second, nanosecond: 0).date
+        else {
             Diag.warning("KP1 packed date is not valid")
             return nil
         }
         self = date
     }
-    
+
     func asKP1Bytes() -> ByteArray {
         let cal = Calendar(identifier: .iso8601)
         let dc = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
@@ -51,8 +51,8 @@ extension Date {
         let hour   = UInt8(dc.hour!)
         let minute = UInt8(dc.minute!)
         let second = UInt8(dc.second!)
-        
-        var bytes = Array<UInt8>(repeating: 0, count: 5)
+
+        var bytes = [UInt8](repeating: 0, count: 5)
         bytes[0] = UInt8(year >> 6) & 0x3F
         bytes[1] = (UInt8(year & 0x3F) << 2) | ((month >> 2) & 0x03)
         bytes[2] = ((month & 0x03) << 6) | ((day & 0x1F) << 1) | ((hour >> 4) & 0x01)

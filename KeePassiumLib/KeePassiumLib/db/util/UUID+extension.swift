@@ -11,13 +11,13 @@ import Foundation
 extension UUID {
     public static let ZERO = UUID(uuidString: "00000000-0000-0000-0000-000000000000")!
     public static let byteWidth = 16
-    
+
     mutating func erase() {
         self = UUID.ZERO
     }
-    
+
     internal var data: ByteArray {
-        var bytes = Array<UInt8>(repeating: 0, count: UUID.byteWidth)
+        var bytes = [UInt8](repeating: 0, count: UUID.byteWidth)
         guard let nsuuid = NSUUID(uuidString: self.uuidString) else {
             fatalError()
         }
@@ -33,7 +33,7 @@ extension UUID {
         }
         self.init(uuidString: nsuuid.uuidString)
     }
-    
+
     internal init?(base64Encoded base64: String?) {
         guard let data = ByteArray(base64Encoded: base64) else { return nil }
         let nsuuid = data.withBytes {
@@ -41,7 +41,7 @@ extension UUID {
         }
         self.init(uuidString: nsuuid.uuidString)
     }
-    
+
     internal func base64EncodedString() -> String {
         var bytes = [UInt8](repeating: 0, count: 16)
         (self as NSUUID).getBytes(&bytes)

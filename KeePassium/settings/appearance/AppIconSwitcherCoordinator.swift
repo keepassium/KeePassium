@@ -11,21 +11,21 @@ import KeePassiumLib
 class AppIconSwitcherCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     private let router: NavigationRouter
     private let picker: AppIconPicker
-    
+
     init(router: NavigationRouter) {
         self.router = router
         picker = AppIconPicker.instantiateFromStoryboard()
         picker.delegate = self
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         router.push(picker, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
@@ -34,7 +34,7 @@ class AppIconSwitcherCoordinator: Coordinator {
         })
         startObservingPremiumStatus(#selector(premiumStatusDidChange))
     }
-    
+
     @objc private func premiumStatusDidChange() {
         picker.refresh()
     }
@@ -44,15 +44,14 @@ extension AppIconSwitcherCoordinator: AppIconPickerDelegate {
     func didSelectIcon(_ appIcon: AppIcon, in appIconPicker: AppIconPicker) {
         assert(UIApplication.shared.supportsAlternateIcons)
         if AppIcon.isPremium(appIcon) {
-            performPremiumActionOrOfferUpgrade(for: .canChangeAppIcon, in: picker) {
-                [weak self] in
+            performPremiumActionOrOfferUpgrade(for: .canChangeAppIcon, in: picker) { [weak self] in
                 self?.setAppIcon(appIcon)
             }
         } else {
             setAppIcon(appIcon)
         }
     }
-    
+
     private func setAppIcon(_ appIcon: AppIcon) {
         UIApplication.shared.setAlternateIconName(appIcon.key) { [weak self] error in
             if let error = error {

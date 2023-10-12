@@ -6,33 +6,33 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
-import MessageUI
 import KeePassiumLib
+import MessageUI
+import UIKit
 
 class SupportEmailComposer: NSObject {
     private static let freeSupportEmail = "support@keepassium.com"
     private static let betaSupportEmail = "beta@keepassium.com"
     private static let premiumSupportEmail = "premium-support@keepassium.com"
-    
+
     enum Subject: String { 
         case problem = "Problem"
         case supportRequest = "Support Request"
         case proUpgrade = "Pro Upgradе"
     }
-    
-    typealias CompletionHandler = ((Bool)->Void)
+
+    typealias CompletionHandler = ((Bool) -> Void)
     private let completionHandler: CompletionHandler?
     private weak var parent: UIViewController?
     private var popoverAnchor: PopoverAnchor?
     private var subject = ""
     private var content = ""
-    
+
     private init(
         subject: String,
         content: String,
         parent: UIViewController,
-        popoverAnchor: PopoverAnchor?=nil,
+        popoverAnchor: PopoverAnchor? = nil,
         completionHandler: CompletionHandler?
     ) {
         self.subject = subject
@@ -41,16 +41,16 @@ class SupportEmailComposer: NSObject {
         self.popoverAnchor = popoverAnchor
         self.completionHandler = completionHandler
     }
-    
+
     static func show(
         subject: Subject,
         parent: UIViewController,
         popoverAnchor: PopoverAnchor,
-        completion: CompletionHandler?=nil
+        completion: CompletionHandler? = nil
     ) {
         let subjectText = "\(AppInfo.name) - \(subject.rawValue)" 
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
-        
+
         let includeDiagnostics = (subject == .problem)
         let contentText: String
         if includeDiagnostics {
@@ -61,29 +61,29 @@ class SupportEmailComposer: NSObject {
         } else {
             contentText = "\n\n\(AppInfo.description)"
         }
-        
+
         let instance = SupportEmailComposer(
             subject: subjectText,
             content: contentText,
             parent: parent,
             popoverAnchor: popoverAnchor,
             completionHandler: completion)
-        
+
         instance.openSystemEmailComposer()
     }
-    
+
     internal static func getSupportEmail() -> String {
         if Settings.current.isTestEnvironment {
             return betaSupportEmail
         }
-        
+
         if PremiumManager.shared.isPremiumSupportAvailable() {
             return premiumSupportEmail
         } else {
             return freeSupportEmail
         }
     }
-    
+
     private func showEmailComposer() {
         let emailComposerVC = MFMailComposeViewController()
         emailComposerVC.mailComposeDelegate = self
@@ -91,7 +91,7 @@ class SupportEmailComposer: NSObject {
         emailComposerVC.setSubject(subject)
         emailComposerVC.setMessageBody(content, isHTML: false)
     }
-    
+
     private func openSystemEmailComposer() {
         let body = content.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! 
         let email = SupportEmailComposer.getSupportEmail()
@@ -100,15 +100,14 @@ class SupportEmailComposer: NSObject {
             Diag.error("Failed to create mailto URL")
             return
         }
-        
+
         let urlOpener: URLOpener
         #if MAIN_APP
         urlOpener = URLOpener(UIApplication.shared)
         #else
         urlOpener = URLOpener(parent)
         #endif
-        
-        
+
         guard urlOpener.canOpenURL(url) else {
             showExportSheet(for: url, completion: self.completionHandler)
             return
@@ -121,13 +120,13 @@ class SupportEmailComposer: NSObject {
             }
         }
     }
-    
+
     private func showExportSheet(for url: URL, completion: CompletionHandler?) {
         guard let parent = parent else {
             completion?(false)
             return
         }
-        
+
         let exportSheet = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         popoverAnchor?.apply(to: exportSheet.popoverPresentationController)
         parent.present(exportSheet, animated: true) {
@@ -140,8 +139,8 @@ extension SupportEmailComposer: MFMailComposeViewControllerDelegate {
     func mailComposeController(
         _ controller: MFMailComposeViewController,
         didFinishWith result: MFMailComposeResult,
-        error: Error?)
-    {
+        error: Error?
+    ) {
         let success = (result == .saved || result == .sent)
         completionHandler?(success)
     }

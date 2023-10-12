@@ -19,13 +19,13 @@ struct AnnouncementItem {
 
 final class AnnouncementView: UIView {
     typealias ActionHandler = (AnnouncementView) -> Void
-    
+
     var onDidPressActionButton: ActionHandler? {
         didSet {
             setupSubviews()
         }
     }
-    
+
     var onDidPressClose: ActionHandler? {
         didSet {
             setupSubviews()
@@ -53,7 +53,7 @@ final class AnnouncementView: UIView {
             setupSubviews()
         }
     }
-    
+
     var actionTitle: String? {
         get { actionButton.currentTitle }
         set {
@@ -61,7 +61,7 @@ final class AnnouncementView: UIView {
             setupSubviews()
         }
     }
-    
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "info.circle")
@@ -76,7 +76,7 @@ final class AnnouncementView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -86,7 +86,7 @@ final class AnnouncementView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private lazy var bodyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .callout)
@@ -96,7 +96,7 @@ final class AnnouncementView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .close, primaryAction: UIAction {[weak self] _ in
             guard let self = self else { return }
@@ -107,9 +107,9 @@ final class AnnouncementView: UIView {
         button.heightAnchor.constraint(equalToConstant: 25).activate()
         return button
     }()
-    
+
     private lazy var actionButton: UIButton = {
-        let button = UIButton(primaryAction: UIAction() {[weak self] _ in
+        let button = UIButton(primaryAction: UIAction {[weak self] _ in
             guard let self = self else { return }
             self.onDidPressActionButton?(self)
         })
@@ -121,7 +121,7 @@ final class AnnouncementView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -132,11 +132,11 @@ final class AnnouncementView: UIView {
 
         setupSubviews()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("Not implemented")
     }
-    
+
     public func apply(_ announcement: AnnouncementItem) {
         title = announcement.title
         body = announcement.body
@@ -145,7 +145,7 @@ final class AnnouncementView: UIView {
         onDidPressClose = announcement.onDidPressClose
         onDidPressActionButton = announcement.onDidPressAction
     }
-    
+
     private func setupSubviews() {
         let existingSubviews = subviews
         existingSubviews.forEach {
@@ -157,9 +157,9 @@ final class AnnouncementView: UIView {
         let hasBody = !(body?.isEmpty ?? true)
         let hasButton = !(actionButton.currentTitle?.isEmpty ?? true) && (onDidPressActionButton != nil)
         let canBeClosed = onDidPressClose != nil
-        
+
         var stackedViews = [UIView]()
-        
+
         let imageTrailingAnchor: NSLayoutXAxisAnchor
         let imageTrailingAnchorConstant: CGFloat
         if hasImage {
@@ -180,7 +180,7 @@ final class AnnouncementView: UIView {
             imageTrailingAnchor = layoutMarginsGuide.leadingAnchor
             imageTrailingAnchorConstant = 8
         }
-        
+
         let titleBottomAnchor: NSLayoutYAxisAnchor
         let titleBottomAnchorConstant: CGFloat
         if hasTitle {
@@ -204,7 +204,7 @@ final class AnnouncementView: UIView {
             titleBottomAnchor = layoutMarginsGuide.topAnchor
             titleBottomAnchorConstant = 0
         }
-        
+
         let bodyBottomAnchor: NSLayoutYAxisAnchor
         let bodyBottomAnchorConstant: CGFloat
         if hasBody {
@@ -228,7 +228,7 @@ final class AnnouncementView: UIView {
             bodyBottomAnchor = titleBottomAnchor
             bodyBottomAnchorConstant = 0
         }
-        
+
         if hasButton {
             addSubview(actionButton)
             stackedViews.append(actionButton)
@@ -250,7 +250,7 @@ final class AnnouncementView: UIView {
                 .constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor)
                 .activate()
         }
-    
+
         if canBeClosed {
             addSubview(closeButton)
             closeButton.topAnchor
@@ -264,7 +264,7 @@ final class AnnouncementView: UIView {
             closeButton.leadingAnchor
                 .constraint(equalTo: closeButtonLeadingAnchor, constant: 8)
                 .activate()
-            
+
             let closeButtonBottomGuide: NSLayoutYAxisAnchor
             if stackedViews.count > 1 {
                 closeButtonBottomGuide = stackedViews[1].topAnchor

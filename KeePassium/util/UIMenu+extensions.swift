@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 extension UIMenu {
-    
+
     public static func make(
         title: String = "",
         reverse: Bool = false,
@@ -29,7 +29,7 @@ extension UIMenu {
                 children: reverse ? children.reversed() : children)
         }
     }
-    
+
     public static func makeFileSortMenuItems(
         current: Settings.FilesSortOrder,
         handler: @escaping (Settings.FilesSortOrder) -> Void
@@ -42,7 +42,7 @@ extension UIMenu {
                 handler(.noSorting)
             }
         )
-        
+
         let sortByName = makeFileSortAction(
             title: LString.titleSortByFileName,
             current: current,
@@ -67,7 +67,7 @@ extension UIMenu {
 
         return [sortByNone, sortByName, sortByDateCreated, sortByDateModified]
     }
-    
+
     private static func makeFileSortAction(
         title: String,
         current: Settings.FilesSortOrder,
@@ -108,7 +108,7 @@ extension UIMenu {
             )
         }
     }
-    
+
     public static func makeDatabaseItemSortMenuItems(
         current: Settings.GroupSortOrder,
         handler: @escaping (Settings.GroupSortOrder) -> Void
@@ -121,7 +121,7 @@ extension UIMenu {
                 handler(.noSorting)
             }
         )
-        
+
         let sortByItemTitle = makeGroupSortAction(
             title: LString.titleSortByItemTitle,
             current: current,
@@ -145,7 +145,7 @@ extension UIMenu {
         )
         return [sortByNone, sortByItemTitle, sortByDateCreated, sortByDateModified]
     }
-    
+
     private static func makeGroupSortAction(
         title: String,
         current: Settings.GroupSortOrder,

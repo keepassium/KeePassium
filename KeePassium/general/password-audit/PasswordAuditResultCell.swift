@@ -34,7 +34,7 @@ final class PasswordAuditResultCell: UITableViewCell {
         super.awakeFromNib()
         multipleSelectionBackgroundView = UIView()
     }
-    
+
     private func refresh() {
         guard let model else { return }
 

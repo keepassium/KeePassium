@@ -6,8 +6,8 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import KeePassiumLib
+import UIKit
 
 protocol WelcomeDelegate: AnyObject {
     func didPressCreateDatabase(in welcomeVC: WelcomeVC)
@@ -17,19 +17,19 @@ protocol WelcomeDelegate: AnyObject {
 
 class WelcomeVC: UIViewController {
     private weak var delegate: WelcomeDelegate?
-    
+
     @IBOutlet private weak var infoLabel: UILabel!
     @IBOutlet private weak var connectToServerButton: UIButton!
-    
+
     static func make(delegate: WelcomeDelegate) -> WelcomeVC {
         let vc = WelcomeVC.instantiateFromStoryboard()
         vc.delegate = delegate
         return vc
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         connectToServerButton.setTitle(LString.actionConnectToServer, for: .normal)
         prettifyInfoText()
     }
@@ -41,9 +41,9 @@ class WelcomeVC: UIViewController {
         paragraphStyle.lineHeightMultiple = 1.2
         paragraphStyle.paragraphSpacing = 6.0
         paragraphStyle.paragraphSpacingBefore = 6.0
-        
+
         let font = UIFont.preferredFont(forTextStyle: .body)
-        
+
         let attributedInfoText = NSMutableAttributedString(
             string: infoLabel.text ?? "",
             attributes: [
@@ -53,16 +53,16 @@ class WelcomeVC: UIViewController {
         )
         infoLabel.attributedText = attributedInfoText
     }
-    
-    @IBAction func didPressCreateDatabase(_ sender: Any) {
+
+    @IBAction private func didPressCreateDatabase(_ sender: Any) {
         delegate?.didPressCreateDatabase(in: self)
     }
-    
-    @IBAction func didPressOpenDatabase(_ sender: Any) {
+
+    @IBAction private func didPressOpenDatabase(_ sender: Any) {
         delegate?.didPressAddExistingDatabase(in: self)
     }
-    
-    @IBAction func didPressConnectToServer(_ sender: Any) {
+
+    @IBAction private func didPressConnectToServer(_ sender: Any) {
         delegate?.didPressConnectToServer(in: self)
     }
 }

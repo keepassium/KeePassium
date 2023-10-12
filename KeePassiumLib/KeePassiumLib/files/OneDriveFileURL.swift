@@ -12,7 +12,7 @@ public protocol OneDriveItem {
     func getChildrenRequestURL() -> URL
 }
 
-public struct OneDriveFileItem: OneDriveItem, RemoteFileItem  {
+public struct OneDriveFileItem: OneDriveItem, RemoteFileItem {
     public var name: String
     public var itemID: String
     public var itemPath: String
@@ -20,15 +20,15 @@ public struct OneDriveFileItem: OneDriveItem, RemoteFileItem  {
     public var isFolder: Bool
     public var fileInfo: FileInfo?
     public var driveInfo: OneDriveDriveInfo?
-    
+
     public var isSharedItem: Bool {
         return parent != nil
     }
-    
+
     public func toURL(with driveInfo: OneDriveDriveInfo) -> URL {
         return OneDriveFileURL.build(from: self, driveInfo: driveInfo)
     }
-    
+
     public func getRequestURLBase() -> String {
         let urlString: String
         let parentPath = parent?.urlPath ?? OneDriveAPI.personalDriveRootPath
@@ -41,7 +41,7 @@ public struct OneDriveFileItem: OneDriveItem, RemoteFileItem  {
         }
         return urlString
     }
-    
+
     public func getChildrenRequestURL() -> URL {
         let urlString = getRequestURLBase() + "/children?select=\(OneDriveAPI.itemFields)"
         return URL(string: urlString)!
@@ -64,11 +64,11 @@ public struct OneDriveSpecialItem: OneDriveItem, RemoteFileItem {
             return LString.titleOneDriveFolderSharedWithMe
         }
     }
-    
+
     public init(kind: Kind) {
         self.kind = kind
     }
-    
+
     public func getRequestURLBase() -> String {
         switch kind {
         case .personalFiles:
@@ -77,7 +77,7 @@ public struct OneDriveSpecialItem: OneDriveItem, RemoteFileItem {
             return OneDriveAPI.mainEndpoint + OneDriveAPI.sharedWithMeRootPath
         }
     }
-    
+
     public func getChildrenRequestURL() -> URL {
         switch kind {
         case .personalFiles:
@@ -93,7 +93,7 @@ public struct OneDriveSpecialItem: OneDriveItem, RemoteFileItem {
 public struct OneDriveItemReference {
     var path: String
     var parent: OneDriveSharedFolder?
-    
+
     public static func fromURL(_ url: URL) -> OneDriveItemReference? {
         guard let filePath = OneDriveFileURL.getFilePath(from: url) else {
             return nil
@@ -103,18 +103,17 @@ public struct OneDriveItemReference {
     }
 }
 
-
 public struct OneDriveSharedFolder {
     public var driveID: String
     public var itemID: String
     public var name: String
-    
+
     var urlPath: String {
         return "/drives/\(driveID)/items/\(itemID)"
     }
 }
 
-fileprivate enum OneDriveFileURL {
+private enum OneDriveFileURL {
     public static let schemePrefix = "keepassium"
     public static let scheme = "onedrive"
     public static let prefixedScheme = schemePrefix + String(urlSchemePrefixSeparator) + scheme
@@ -127,7 +126,7 @@ fileprivate enum OneDriveFileURL {
         static let parentItemID = "parentItemID"
         static let parentName = "parentName"
     }
-    
+
     public static func build(from fileItem: OneDriveFileItem, driveInfo: OneDriveDriveInfo) -> URL {
         var queryItems = [
             URLQueryItem(name: Key.fileID, value: fileItem.itemID),
@@ -148,11 +147,11 @@ fileprivate enum OneDriveFileURL {
         )
         return result
     }
-    
+
     internal static func getFilePath(from prefixedURL: URL) -> String? {
         return prefixedURL.relativePath
     }
-    
+
     internal static func getParent(from prefixedURL: URL) -> OneDriveSharedFolder? {
         guard prefixedURL.isOneDriveFileURL else {
             return nil
@@ -166,7 +165,7 @@ fileprivate enum OneDriveFileURL {
         }
         return .init(driveID: parentDriveID, itemID: parentItemID, name: parentName)
     }
-    
+
     public static func getDescription(for prefixedURL: URL) -> String? {
         let queryItems = prefixedURL.queryItems
         let path: String
@@ -175,7 +174,7 @@ fileprivate enum OneDriveFileURL {
         } else {
             path = prefixedURL.relativePath
         }
-        
+
         var serviceName = ""
         let owner = queryItems[Key.owner] ?? "?"
         if let driveTypeRaw = queryItems[Key.driveType],
@@ -184,13 +183,10 @@ fileprivate enum OneDriveFileURL {
             switch driveType {
             case .personal:
                 serviceName = LString.connectionTypeOneDrive
-                break
             case .business:
                 serviceName = LString.connectionTypeOneDriveForBusiness
-                break
             case .sharepoint:
                 serviceName = LString.connectionTypeSharePoint
-                break
             }
         }
         return "\(serviceName) (\(owner)) → \(path)"
@@ -201,7 +197,7 @@ internal extension URL {
     var isOneDriveFileURL: Bool {
         return self.scheme == OneDriveFileURL.prefixedScheme
     }
-    public func getOneDriveLocationDescription() -> String? {
+    func getOneDriveLocationDescription() -> String? {
         guard isOneDriveFileURL else {
             return nil
         }

@@ -9,15 +9,15 @@
 import Foundation
 
 public class TOTPGeneratorFactory {
-    
+
     public static func makeGenerator(for entry: Entry) -> TOTPGenerator? {
         return makeGenerator(from: entry.fields)
     }
-    
+
     private static func find(_ name: String, in fields: [EntryField]) -> EntryField? {
         return fields.first(where: { $0.name == name })
     }
-    
+
     public static func makeGenerator(from fields: [EntryField]) -> TOTPGenerator? {
         if let totpField = find(SingleFieldFormat.fieldName, in: fields) {
             return parseSingleFieldFormat(totpField.resolvedValue)
@@ -31,14 +31,14 @@ public class TOTPGeneratorFactory {
                 settingsString: settingsField?.resolvedValue)
         }
     }
-    
+
     private static func parseSingleFieldFormat(_ paramString: String) -> TOTPGenerator? {
         let trimmedParamString = paramString.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let uriComponents = URLComponents(string: trimmedParamString) else {
             Diag.warning("Unexpected OTP field format")
             return nil
         }
-        
+
         if GAuthFormat.isMatching(scheme: uriComponents.scheme, host: uriComponents.host) {
             return GAuthFormat.parse(uriComponents)
         }
@@ -52,76 +52,75 @@ public class TOTPGeneratorFactory {
     public static func isValidURI(_ paramString: String) -> Bool {
         return parseSingleFieldFormat(paramString) != nil
     }
-    
+
     public static func makeOtpauthURI(base32Seed seed: String) -> URL {
         return GAuthFormat.make(base32Seed: seed)
     }
 }
 
 
-
 public extension EntryField {
-    public static let otpConfig1 = EntryField.otp
-    public static let otpConfig2Seed = SplitFieldFormat.seedFieldName
-    public static let otpConfig2Settings = SplitFieldFormat.settingsFieldName
+    static let otpConfig1 = EntryField.otp
+    static let otpConfig2Seed = SplitFieldFormat.seedFieldName
+    static let otpConfig2Settings = SplitFieldFormat.settingsFieldName
 }
 
-fileprivate class SingleFieldFormat {
+private class SingleFieldFormat {
     static let fieldName = EntryField.otp
 }
 
-fileprivate class GAuthFormat: SingleFieldFormat {
+private class GAuthFormat: SingleFieldFormat {
     static let scheme = "otpauth"
     static let host = "totp"
-    
+
     static let seedParam = "secret"
     static let timeStepParam = "period"
     static let lengthParam = "digits"
     static let algorithmParam = "algorithm"
     static let issuerParam = "issuer"
     static let encoderParam = "encoder" 
-    
+
     static let defaultTimeStep = 30
     static let defaultLength = 6
     static let defaultAlgorithm = TOTPHashAlgorithm.sha1
-    
+
     static func isMatching(scheme: String?, host: String?) -> Bool {
         return scheme == GAuthFormat.scheme
     }
-    
+
     static func parse(_ uriComponents: URLComponents) -> TOTPGenerator? {
         guard uriComponents.scheme == scheme,
-            uriComponents.host == host,
-            let queryItems = uriComponents.queryItems else
-        {
+              uriComponents.host == host,
+              let queryItems = uriComponents.queryItems
+        else {
             Diag.warning("OTP URI has unexpected format")
             return nil
         }
-        
-        let params = queryItems.reduce(into: [String: String]()) { (result, item) in
+
+        let params = queryItems.reduce(into: [String: String]()) { result, item in
             result[item.name] = item.value
         }
-        
+
         guard let seedString = params[seedParam],
-            let seedData = base32DecodeToData(seedString),
-            !seedData.isEmpty else
-        {
+              let seedData = base32DecodeToData(seedString),
+              !seedData.isEmpty
+        else {
             Diag.warning("OTP parameter cannot be parsed [parameter: \(seedParam)]")
             return nil
         }
-        
+
         guard let timeStep = Int(params[timeStepParam] ?? "\(defaultTimeStep)") else {
             Diag.warning("OTP parameter cannot be parsed [parameter: \(timeStepParam)]")
             return nil
         }
-        
+
         let isSteam = uriComponents.path.starts(with: "/Steam:") ||
             (params[issuerParam] == "Steam") ||
             (params[encoderParam] == "steam")
         if isSteam {
             return TOTPGeneratorSteam(seed: ByteArray(data: seedData), timeStep: timeStep)
         }
-        
+
         var algorithm: TOTPHashAlgorithm?
         if let algorithmString = params[algorithmParam] {
             guard let _algorithm = TOTPHashAlgorithm.fromString(algorithmString) else {
@@ -130,19 +129,19 @@ fileprivate class GAuthFormat: SingleFieldFormat {
             }
             algorithm = _algorithm
         }
-        
+
         guard let length = Int(params[lengthParam] ?? "\(defaultLength)") else {
             Diag.warning("OTP parameter cannot be parsed [parameter: \(lengthParam)]")
             return nil
         }
-        
+
         return TOTPGeneratorRFC6238(
             seed: ByteArray(data: seedData),
             timeStep: timeStep,
             length: length,
             hashAlgorithm: algorithm ?? defaultAlgorithm)
     }
-    
+
     static func make(base32Seed: String) -> URL {
         var components = URLComponents()
         components.scheme = GAuthFormat.scheme
@@ -165,45 +164,48 @@ fileprivate class GAuthFormat: SingleFieldFormat {
     }
 }
 
-fileprivate class KeeOtpFormat: SingleFieldFormat {
+private class KeeOtpFormat: SingleFieldFormat {
     static let seedParam = "key"
     static let timeStepParam = "step"
     static let lengthParam = "size"
     static let typeParam = "type"
     static let algorithmParam = "otpHashMode"
-    
+
     static let defaultTimeStep = 30
     static let defaultLength = 6
     static let defaultAlgorithm = TOTPHashAlgorithm.sha1
     static let supportedType = "totp"
-    
+
     static func isMatching(scheme: String?, host: String?) -> Bool {
         return (scheme == nil) && (host == nil)
     }
 
     static func parse(_ paramString: String) -> TOTPGenerator? {
         guard let uriComponents = URLComponents(string: "fakeScheme://fakeHost?" + paramString),
-            let queryItems = uriComponents.queryItems
-            else { return nil }
-        let params = queryItems.reduce(into: [String: String]()) { (result, item) in
+              let queryItems = uriComponents.queryItems
+        else {
+            return nil
+        }
+
+        let params = queryItems.reduce(into: [String: String]()) { result, item in
             result[item.name] = item.value
         }
-        
+
         guard let seedString = params[seedParam],
-            let seedData = base32DecodeToData(seedString),
-            !seedData.isEmpty else
-        {
+              let seedData = base32DecodeToData(seedString),
+              !seedData.isEmpty
+        else {
             Diag.warning("OTP parameter cannot be parsed [parameter: \(seedParam)]")
             return nil
         }
-        
+
         if let type = params[typeParam],
-            type.caseInsensitiveCompare(supportedType) != .orderedSame
+           type.caseInsensitiveCompare(supportedType) != .orderedSame
         {
             Diag.warning("OTP type is not suppoorted [type: \(type)]")
             return nil
         }
-        
+
         var algorithm: TOTPHashAlgorithm?
         if let algorithmString = params[algorithmParam] {
             guard let _algorithm = TOTPHashAlgorithm.fromString(algorithmString) else {
@@ -212,17 +214,17 @@ fileprivate class KeeOtpFormat: SingleFieldFormat {
             }
             algorithm = _algorithm
         }
-        
+
         guard let timeStep = Int(params[timeStepParam] ?? "\(defaultTimeStep)") else {
             Diag.warning("OTP parameter cannot be parsed [parameter: \(timeStepParam)]")
             return nil
         }
-        
+
         guard let length = Int(params[lengthParam] ?? "\(defaultLength)") else {
             Diag.warning("OTP parameter cannot be parsed [parameter: \(lengthParam)]")
             return nil
         }
-        
+
         return TOTPGeneratorRFC6238(
             seed: ByteArray(data: seedData),
             timeStep: timeStep,
@@ -231,17 +233,17 @@ fileprivate class KeeOtpFormat: SingleFieldFormat {
     }
 }
 
-fileprivate class SplitFieldFormat {
+private class SplitFieldFormat {
     static let seedFieldName = "TOTP Seed"
     static let settingsFieldName = "TOTP Settings"
     static let defaultSettingsValue = "30;6"
-    
+
     static func parse(seedString: String, settingsString: String?) -> TOTPGenerator? {
         guard let seed = parseSeedString(seedString) else {
             Diag.warning("Unrecognized TOTP seed format")
             return nil
         }
-        
+
         let settingsString = settingsString ?? SplitFieldFormat.defaultSettingsValue
         let settings = settingsString.split(separator: ";")
         if settings.count > 2 {
@@ -258,7 +260,7 @@ fileprivate class SplitFieldFormat {
             Diag.warning("Invalid TOTP time step value: \(timeStep)")
             return nil
         }
-        
+
         if let length = Int(settings[1]) {
             return TOTPGeneratorRFC6238(
                 seed: seed,
@@ -273,7 +275,7 @@ fileprivate class SplitFieldFormat {
             return nil
         }
     }
-    
+
     static func parseSeedString(_ seedString: String) -> ByteArray? {
         let cleanedSeedString = seedString
             .replacingOccurrences(of: " ", with: "")

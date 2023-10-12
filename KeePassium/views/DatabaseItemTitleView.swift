@@ -10,7 +10,7 @@ import UIKit
 
 final class DatabaseItemTitleView: UIView {
     let imageSide: CGFloat = 29.0
-    
+
     lazy var iconView: UIImageView = {
         let iconView = UIImageView()
         iconView.image = nil
@@ -21,7 +21,7 @@ final class DatabaseItemTitleView: UIView {
         iconView.heightAnchor.constraint(equalTo: iconView.widthAnchor, multiplier: 1).activate()
         return iconView
     }()
-    
+
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -30,7 +30,7 @@ final class DatabaseItemTitleView: UIView {
         titleLabel.lineBreakMode = .byTruncatingTail
         return titleLabel
     }()
-    
+
     lazy var subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
         subtitleLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -39,7 +39,7 @@ final class DatabaseItemTitleView: UIView {
         subtitleLabel.lineBreakMode = .byTruncatingTail
         return subtitleLabel
     }()
-    
+
     private lazy var verticalStack: UIStackView = {
         let verticalStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         verticalStack.axis = .vertical
@@ -48,24 +48,23 @@ final class DatabaseItemTitleView: UIView {
         verticalStack.translatesAutoresizingMaskIntoConstraints = false
         return verticalStack
     }()
-    
-    
+
     override init(frame: CGRect) {
       super.init(frame: frame)
       setupView()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
       super.init(coder: aDecoder)
       setupView()
     }
-    
+
     private func setupView() {
         addSubview(iconView)
         addSubview(verticalStack)
         setupLayout()
     }
-    
+
     private func setupLayout() {
         iconView.leadingAnchor
             .constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: 0.0)
@@ -86,7 +85,7 @@ final class DatabaseItemTitleView: UIView {
             .activate()
         verticalStack.centerXAnchor
             .anchorWithOffset(to: self.centerXAnchor)
-            .constraint(equalToConstant: -imageSide/2) 
+            .constraint(equalToConstant: -imageSide / 2) 
             .activate()
         verticalStack.trailingAnchor
             .constraint(lessThanOrEqualTo: self.trailingAnchor, constant: 0)

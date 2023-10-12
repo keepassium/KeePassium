@@ -14,9 +14,9 @@ struct Favicon {
         case icon = "icon"
         case shortcutIcon = "shortcut icon"
     }
-    
+
     public static let defaultFilename = "favicon.ico"
-    
+
     private static let linkRelRegexp = try! NSRegularExpression(pattern: "rel=\"([^\"]*)\"")
     private static let linkHrefRegexp = try! NSRegularExpression(pattern: "href=\"([^\"]*)\"")
     private static let linkSizesRegexp = try! NSRegularExpression(pattern: "sizes=\"([^\"]*)\"")
@@ -41,7 +41,7 @@ struct Favicon {
         else {
             return nil
         }
-        
+
         guard let urlValueString = matchedValue(Self.linkHrefRegexp),
               let url = URL(string: urlValueString, relativeTo: baseURL)
         else {

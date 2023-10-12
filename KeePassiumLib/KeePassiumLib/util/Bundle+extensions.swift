@@ -10,7 +10,7 @@ import Foundation
 
 extension Bundle {
     internal static let framework = Bundle(identifier: "com.keepassium.ios.KeePassiumLib")!
-    
+
     static var mainAppURL: URL {
         var pathComponents = main.bundleURL.pathComponents
         guard let index = pathComponents.lastIndex(where: { $0.hasSuffix(".app") }) else {

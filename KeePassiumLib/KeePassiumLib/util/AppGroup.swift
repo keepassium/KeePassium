@@ -16,7 +16,7 @@ public class AppGroup {
             return "group.com.keepassium"
         }
     }()
-    
+
     public static let appURLScheme: String = {
         if BusinessModel.isIntuneEdition {
             return "keepassium.org"
@@ -28,7 +28,7 @@ public class AppGroup {
             return "keepassium.pro"
         }
     }()
-    
+
     public static let upgradeToPremiumURL = URL(string: appURLScheme + "://upgradeToPremium")! 
 
     public static let donateURL = URL(string: appURLScheme + "://donate")! 
@@ -36,10 +36,10 @@ public class AppGroup {
     public static var isMainApp: Bool {
         return applicationShared != nil
     }
-    
+
     public static var isAppExtension: Bool {
         return !isMainApp
     }
-    
+
     public static weak var applicationShared: UIApplication?
 }

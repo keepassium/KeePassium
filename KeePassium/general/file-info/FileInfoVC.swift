@@ -21,14 +21,14 @@ final class FileInfoVC: UITableViewController, Refreshable {
         static let fieldCell = "FieldCell"
         static let switchCell = "SwitchCell"
     }
-    
+
     public weak var delegate: FileInfoDelegate?
-    
+
     public var canExport: Bool = false
     public var isExcludedFromBackup: Bool? 
     public var fileRef: URLReference!
     public var fileType: FileType!
-    
+
     private var exportBarButton: UIBarButtonItem! 
     private var eliminateBarButton: UIBarButtonItem! 
     private var fields = [FileInfoField]()
@@ -42,38 +42,38 @@ final class FileInfoVC: UITableViewController, Refreshable {
         view.spinner.startAnimating()
         return view
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SwitchCell.classForCoder(), forCellReuseIdentifier: CellID.switchCell)
         tableView.sectionFooterHeight = 0
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-        
+
         navigationItem.titleView = titleView
         refresh()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refresh()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         tableView.removeObserver(self, forKeyPath: "contentSize")
         super.viewWillDisappear(animated)
     }
-    
+
     override func observeValue(
         forKeyPath keyPath: String?,
         of object: Any?,
-        change: [NSKeyValueChangeKey : Any]?,
-        context: UnsafeMutableRawPointer?)
-    {
+        change: [NSKeyValueChangeKey: Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
         var preferredSize = CGSize(
             width: max(tableView.contentSize.width, self.preferredContentSize.width),
             height: max(tableView.contentSize.height, self.preferredContentSize.height)
@@ -89,11 +89,11 @@ final class FileInfoVC: UITableViewController, Refreshable {
         setupToolbar()
         tableView.reloadData()
     }
-    
+
     public func showBusyIndicator(_ isBusy: Bool, animated: Bool) {
         titleView.showSpinner(isBusy, animated: animated)
     }
-    
+
     public func updateFileInfo(_ fileInfo: FileInfo?, error: FileAccessError?) {
         var newFields = makeFields(fileInfo: fileInfo)
         if let error = error {
@@ -102,7 +102,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
                 value: error.localizedDescription
             ))
         }
-        
+
         let oldSectionCount = tableView.numberOfSections
         let newSectionCount = self.numberOfSections(in: tableView)
 
@@ -123,10 +123,10 @@ final class FileInfoVC: UITableViewController, Refreshable {
         }
         setupToolbar()
     }
-    
+
     private func setupToolbar() {
         var toolbarItems = [UIBarButtonItem]()
-        
+
         let exportActionTitle: String
         let exportActionSymbol: SymbolName
         if ProcessInfo.isRunningOnMac {
@@ -141,7 +141,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
             image: .symbol(exportActionSymbol),
             primaryAction: UIAction(
                 title: exportActionTitle,
-                handler: { [weak self] action in
+                handler: { [weak self] _ in
                     guard let self = self else { return }
                     let popoverAnchor = PopoverAnchor(barButtonItem: self.exportBarButton)
                     self.delegate?.didPressExport(at: popoverAnchor, in: self)
@@ -149,7 +149,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
             )
         )
         exportBarButton.isEnabled = canExport
-        
+
         let eliminationActionTitle = DestructiveFileAction.get(for: fileRef.location).title
         eliminateBarButton = UIBarButtonItem(
             title: eliminationActionTitle,
@@ -157,7 +157,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
             primaryAction: UIAction(
                 title: eliminationActionTitle,
                 attributes: .destructive,
-                handler: { [weak self] action in
+                handler: { [weak self] _ in
                     guard let self = self else { return }
                     let popoverAnchor = PopoverAnchor(barButtonItem: self.eliminateBarButton)
                     self.delegate?.didPressEliminate(at: popoverAnchor, in: self)
@@ -171,7 +171,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
 
         setToolbarItems(toolbarItems, animated: true)
     }
-    
+
     private func makeFields(fileInfo: FileInfo?) -> [FileInfoField] {
         var fields = [FileInfoField]()
         fields.append(FileInfoField(
@@ -182,11 +182,11 @@ final class FileInfoVC: UITableViewController, Refreshable {
             name: LString.FileInfo.fieldFileLocation,
             value: fileRef.getLocationDescription()
         ))
-        
+
         guard let fileInfo = fileInfo else { 
             return fields
         }
-        
+
         if let fileSize = fileInfo.fileSize {
             fields.append(FileInfoField(
                 name: LString.FileInfo.fieldFileSize,
@@ -237,7 +237,7 @@ extension FileInfoVC {
             return 0
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -248,7 +248,7 @@ extension FileInfoVC {
             return super.tableView(tableView, titleForHeaderInSection: section)
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -277,7 +277,7 @@ extension FileInfoVC {
         cell.textLabel?.text = field.name
         cell.detailTextLabel?.text = field.value
     }
-    
+
     private func configureExcludeFromBackupCell(_ cell: SwitchCell) {
         cell.imageView?.image = .symbol(.xmarkICloud)
         cell.textLabel?.text = LString.titleExcludeFromBackup

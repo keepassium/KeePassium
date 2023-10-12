@@ -12,7 +12,7 @@ public enum UnreachableFileFallbackStrategy: Int, Codable, CaseIterable {
     case showError = 0
     case useCache = 1
     case reAddDatabase = 2
-    
+
     public var title: String {
         switch self {
         case .showError:

@@ -16,9 +16,9 @@ enum MenuIdentifier {
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
+
     private var mainCoordinator: MainCoordinator!
-    
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let incomingURL: URL? = launchOptions?[.url] as? URL
         let hasIncomingURL = incomingURL != nil
-        
+
         if UIDevice.current.userInterfaceIdiom == .pad {
             window.makeKeyAndVisible()
             mainCoordinator = MainCoordinator(window: window)
@@ -43,18 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             mainCoordinator.start(hasIncomingURL: hasIncomingURL)
             window.makeKeyAndVisible()
         }
-        
+
         self.window = window
         return true
     }
-    
+
     private func initAppGlobals(_ application: UIApplication) {
         #if PREPAID_VERSION
         BusinessModel.type = .prepaid
         #else
         BusinessModel.type = .freemium
         #endif
-        
+
         #if INTUNE
         BusinessModel.isIntuneEdition = true
         #else
@@ -62,18 +62,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         AppGroup.applicationShared = application
-        
+
         SettingsMigrator.processAppLaunch(with: Settings.current)
     }
-    
+
     func applicationWillTerminate(_ application: UIApplication) {
         PremiumManager.shared.finishObservingTransactions()
     }
-    
+
     func application(
         _ application: UIApplication,
         open url: URL,
-        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
     ) -> Bool {
         let result = mainCoordinator.processIncomingURL(
             url,
@@ -123,13 +123,13 @@ extension AppDelegate {
         builder.remove(menu: .transformations)
         builder.remove(menu: .speech)
         builder.remove(menu: .toolbar)
-        
+
         builder.replaceChildren(ofMenu: .standardEdit) { children -> [UIMenuElement] in
             children.filter {
                 ($0 as? UIKeyCommand)?.action != #selector(UIResponderStandardEditActions.pasteAndMatchStyle(_:))
             }
         }
-        
+
         let aboutAppMenuTitle = builder.menu(for: .about)?.children.first?.title
             ?? String.localizedStringWithFormat(LString.menuAboutAppTemplate, AppInfo.name)
         let aboutAppMenuAction = UICommand(
@@ -194,41 +194,41 @@ extension AppDelegate {
             options: [.displayInline],
             children: [createEntryMenuItem, createGroupMenuItem]
         )
-        
+
         builder.insertChild(databaseFileMenu, atStartOfMenu: .file)
         builder.insertSibling(databaseItemsMenu, beforeMenu: databaseFileMenu.identifier)
     }
-    
+
     @objc
     private func showAppHelp() {
         UIApplication.shared.open(URL.AppHelp.helpIndex, options: [:], completionHandler: nil)
     }
-    
+
     @objc
     private func showAboutScreen() {
         mainCoordinator.perform(action: .showAboutScreen)
     }
-    
+
     @objc
     private func showSettingsScreen() {
         mainCoordinator.perform(action: .showAppSettings)
     }
-    
+
     @objc
     private func createDatabase() {
         mainCoordinator.perform(action: .createDatabase)
     }
-    
+
     @objc
     private func openDatabase() {
         mainCoordinator.perform(action: .openDatabase)
     }
-    
+
     @objc
     private func lockDatabase() {
         mainCoordinator.perform(action: .lockDatabase)
     }
-    
+
     @objc
     private func createEntry() {
         mainCoordinator.perform(action: .createEntry)

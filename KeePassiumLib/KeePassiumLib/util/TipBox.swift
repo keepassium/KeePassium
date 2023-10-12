@@ -42,7 +42,7 @@ final public class TipBox {
             UserDefaults.appGroupShared.set(newValue, forKey: lastPurchaseDateKey)
         }
     }
-    
+
     public private(set) static var currencyCode: String? {
         get {
             let storedValue = UserDefaults.appGroupShared
@@ -53,18 +53,18 @@ final public class TipBox {
             UserDefaults.appGroupShared.set(newValue, forKey: currencyCodeKey)
         }
     }
-    
+
     public static func registerPurchase(amount: NSDecimalNumber, locale: Locale) {
         totalAmount = totalAmount + amount.doubleValue
         lastPurchaseDate = Date.now
         lastSeenDate = Date.now
         currencyCode = locale.currencyCode
     }
-    
+
     public static func registerTipBoxSeen() {
         lastSeenDate = Date.now
     }
-    
+
     public static func shouldSuggestDonation(status: PremiumManager.Status) -> Bool {
         let suggestionInterval: TimeInterval
         switch status {
@@ -84,7 +84,7 @@ final public class TipBox {
                 suggestionInterval = 1 * .month
             }
         }
-        
+
         let lastSuggestionDate = lastSeenDate ?? Settings.current.firstLaunchTimestamp
         let timeSinceLastSuggestion = Date.now.timeIntervalSince(lastSuggestionDate)
         guard timeSinceLastSuggestion > 0 else {

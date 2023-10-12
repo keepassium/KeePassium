@@ -12,7 +12,7 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
     case effLarge = 0
     case effShort1 = 1
     case effShort2 = 2
-    
+
     public var description: String {
         switch self {
         case .effLarge:
@@ -29,7 +29,7 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
             )
         }
     }
-    
+
     private var fileName: String {
         switch self {
         case .effLarge:
@@ -40,7 +40,7 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
             return "eff-short-wordlist-2-0.txt"
         }
     }
-    
+
     public var sourceURL: URL {
         switch self {
         case .effLarge:
@@ -54,7 +54,7 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
 }
 
 extension PassphraseWordlist {
-    
+
     public func load() -> StringSet? {
         Diag.debug("Will load wordlist [fileName: \(fileName)]")
         guard let resourcePath = Bundle.framework.url(
@@ -65,7 +65,7 @@ extension PassphraseWordlist {
             Diag.error("Failed to find wordlist file [fileName: \(fileName)]")
             return nil
         }
-        
+
         do {
             let data = try String(contentsOf: resourcePath)
             var stringSet = StringSet()

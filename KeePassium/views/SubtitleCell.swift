@@ -13,29 +13,29 @@ final class SubtitleCell: UITableViewCell {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         setupCell()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("Not implemented")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
-    
+
     private func setupCell() {
         selectionStyle = .none
-        
+
         textLabel?.font = .preferredFont(forTextStyle: .body)
         textLabel?.textColor = .label
         textLabel?.numberOfLines = 0
         textLabel?.lineBreakMode = .byWordWrapping
-        
+
         detailTextLabel?.font = .preferredFont(forTextStyle: .caption1)
         detailTextLabel?.textColor = .secondaryLabel
         detailTextLabel?.numberOfLines = 0
         detailTextLabel?.lineBreakMode = .byWordWrapping
-        
+
         imageView?.preferredSymbolConfiguration =
             UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
         imageView?.tintColor = .iconTint

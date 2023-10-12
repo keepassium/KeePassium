@@ -21,7 +21,7 @@ final class DatabasePrintFormatter {
         static let entryTitleFont = UIFont.systemFont(ofSize: 12.0)
         static let fieldNameFont = UIFont.boldSystemFont(ofSize: 10.0).addingTraits(.traitItalic)
         static let fieldValueFont = UIFont.monospacedSystemFont(ofSize: 10.0, weight: .regular)
-        
+
         static let documentHeaderParagraphStyle: NSParagraphStyle = {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .left
@@ -32,23 +32,22 @@ final class DatabasePrintFormatter {
             return paragraphStyle
         }()
     }
-    
-    
-    private var groupParagraphStyles = [Level : NSParagraphStyle]()
-    private var entryParagraphStyles = [Level : NSParagraphStyle]()
-    private var fieldParagraphStyles = [Level : NSParagraphStyle]()
-    
-    
+
+
+    private var groupParagraphStyles = [Level: NSParagraphStyle]()
+    private var entryParagraphStyles = [Level: NSParagraphStyle]()
+    private var fieldParagraphStyles = [Level: NSParagraphStyle]()
+
     private let iconSymbolForField: [String: SymbolName] = [
         EntryField.userName: .person,
         EntryField.password: .asterisk,
-        EntryField.url:      .globe,
-        EntryField.notes:    .noteText,
+        EntryField.url: .globe,
+        EntryField.notes: .noteText,
     ]
 }
 
 extension DatabasePrintFormatter {
-    
+
     public func toAttributedString(database: Database, title: String) -> NSAttributedString? {
         let documentContent = NSMutableAttributedString()
         documentContent.append(NSAttributedString(
@@ -56,7 +55,7 @@ extension DatabasePrintFormatter {
             attributes: [
                 NSAttributedString.Key.font: Predefined.documentTitleFont,
                 NSAttributedString.Key.paragraphStyle: Predefined.documentHeaderParagraphStyle,
-                NSAttributedString.Key.foregroundColor: UIColor.darkText
+                NSAttributedString.Key.foregroundColor: UIColor.darkText,
             ]
         ))
         guard let root = database.root else {
@@ -66,7 +65,7 @@ extension DatabasePrintFormatter {
         sortAndFormat(group: root, level: 0, to: documentContent)
         return documentContent
     }
-    
+
     private func sortAndFormat(
         group: Group,
         level: Level,
@@ -82,7 +81,7 @@ extension DatabasePrintFormatter {
             .filter { !$0.isDeleted }
             .forEach {
                 sortAndFormat(group: $0, level: level + 1, to: documentContent)
-            }        
+            }
         let sortedEntries = group.entries.sorted { sortOrder.compare($0, $1) }
         sortedEntries
             .filter { !$0.isDeleted }
@@ -109,11 +108,11 @@ extension DatabasePrintFormatter {
         groupParagraphStyles[level] = style
         return style
     }
-    
+
     private func getEntryParagraphStyle(level: Level) -> NSParagraphStyle {
         if let style = entryParagraphStyles[level] {
             return style
-        } 
+        }
         let indent = Predefined.indentStep * CGFloat(level - 1)
         let style = NSMutableParagraphStyle()
         style.alignment = .left
@@ -126,14 +125,14 @@ extension DatabasePrintFormatter {
         entryParagraphStyles[level] = style
         return style
     }
-    
+
     private func getFieldParagraphStyle(level: Level) -> NSParagraphStyle {
         if let style = fieldParagraphStyles[level] {
             return style
         }
         let entryIndent = Predefined.indentStep * CGFloat(level - 1)
         let indent = entryIndent + Predefined.itemIconSide + Predefined.indentStep
-        
+
         let style = NSMutableParagraphStyle()
         style.alignment = .left
         style.lineBreakMode = .byWordWrapping
@@ -145,7 +144,7 @@ extension DatabasePrintFormatter {
         fieldParagraphStyles[level] = style
         return style
     }
-    
+
     private func renderIcon(
         _ icon: UIImage?,
         size: CGFloat = Predefined.itemIconSide,
@@ -175,7 +174,7 @@ extension DatabasePrintFormatter {
         )
         return NSAttributedString(attachment: attachment)
     }
-    
+
     private func format(group: Group, level: Level) -> NSAttributedString {
         let titleFont = Predefined.groupTitleFont
         let attributes = [
@@ -194,10 +193,10 @@ extension DatabasePrintFormatter {
 
         return result
     }
-    
+
     private func format(entry: Entry, level: Level) -> NSAttributedString {
         let result = NSMutableAttributedString()
-        
+
         let titleFont = Predefined.entryTitleFont
         var attributes: [NSAttributedString.Key: Any] = [
             .font: titleFont,
@@ -211,7 +210,7 @@ extension DatabasePrintFormatter {
         if let icon = renderIcon(.kpIcon(forEntry: entry), forFont: titleFont) {
             result.insert(icon, at: 1)
         }
-        
+
         if entry.isExpired {
             attributes[.strikethroughStyle] = NSUnderlineStyle.single.rawValue
             attributes[.strikethroughColor] = UIColor.darkText.withAlphaComponent(0.7)
@@ -220,7 +219,7 @@ extension DatabasePrintFormatter {
             string: "\(entry.resolvedTitle)\n",
             attributes: attributes
         ))
-        
+
         entry.fields.forEach { field in
             if field.value.isNotEmpty,
                field.name != EntryField.title 
@@ -235,9 +234,9 @@ extension DatabasePrintFormatter {
         let nameAttributes = [
             NSAttributedString.Key.font: Predefined.fieldNameFont,
             NSAttributedString.Key.paragraphStyle: getFieldParagraphStyle(level: level),
-            NSAttributedString.Key.foregroundColor: UIColor.darkText,
+            NSAttributedString.Key.foregroundColor: UIColor.darkText
         ]
-        
+
         if let iconSymbol = iconSymbolForField[field.name],
            let icon = renderIcon(
                 .symbol(iconSymbol),
@@ -250,7 +249,7 @@ extension DatabasePrintFormatter {
         }
         return NSMutableAttributedString(string: field.name, attributes: nameAttributes)
     }
-    
+
     private func format(field: EntryField, level: Level) -> NSAttributedString {
         let result = formatFieldName(field, level: level)
         result.append(NSAttributedString(

@@ -20,7 +20,7 @@ public class Database2: Database {
         case v3
         case v4
         case v4_1
-        
+
         public var description: String {
             switch self {
             case .v3:
@@ -31,7 +31,7 @@ public class Database2: Database {
                 return "kdbx4.1"
             }
         }
-        
+
         public func hasMajorDifferences(with otherVersion: FormatVersion) -> Bool {
             switch (self, otherVersion) {
             case (.v3, _),
@@ -45,7 +45,7 @@ public class Database2: Database {
             }
         }
     }
-    
+
     public enum FormatError: LocalizedError {
         case prematureDataEnd
         case negativeBlockSize(blockIndex: Int)
@@ -55,6 +55,7 @@ public class Database2: Database {
         case blockHMACMismatch(blockIndex: Int) 
         case compressionError(reason: String)
         public var errorDescription: String? {
+            // swiftlint:disable line_length
             switch self {
             case .prematureDataEnd:
                 return NSLocalizedString(
@@ -109,9 +110,10 @@ public class Database2: Database {
                         comment: "Error message about Gzip compression algorithm. [reason: String]"),
                     reason)
             }
+            // swiftlint:enable line_length
         }
     }
-    
+
     private enum ProgressSteps {
         static let all: Int64 = 100
         static let keyDerivation: Int64 = 60
@@ -121,13 +123,13 @@ public class Database2: Database {
         static let readingBlocks: Int64 = 5
         static let gzipUnpack: Int64 = 5
         static let parsing: Int64 = 5
-        
+
         static let packing: Int64 = 5
         static let gzipPack: Int64 = 5
         static let encryption: Int64 = 20
         static let writingBlocks: Int64 = 5
     }
-    
+
     private(set) var header: Header2!
     private(set) var meta: Meta2!
     public var formatVersion: FormatVersion { header.formatVersion }
@@ -137,20 +139,20 @@ public class Database2: Database {
     private var cipherKey = SecureBytes.empty()
     private var hmacKey = SecureBytes.empty()
     private var deletedObjects: ContiguousArray<DeletedObject2> = []
-    
+
     override public var keyHelper: KeyHelper { return _keyHelper }
     private let _keyHelper = KeyHelper2()
-    
+
     override public init() {
         super.init()
         header = Header2(database: self)
         meta = Meta2(database: self)
     }
-    
+
     deinit {
         erase()
     }
-    
+
     override public func erase() {
         header.erase()
         meta.erase()
@@ -161,12 +163,12 @@ public class Database2: Database {
         super.erase()
         Diag.debug("DB memory cleaned up")
     }
-    
+
     internal static func makeNewV4() -> Database2 {
         let db = Database2()
         db.header.loadDefaultValuesV4()
         db.meta.loadDefaultValuesV4()
-        
+
         let rootGroup = Group2(database: db)
         rootGroup.uuid = UUID()
         rootGroup.name = "/"
@@ -177,7 +179,7 @@ public class Database2: Database {
         db.root = rootGroup
         return db
     }
-    
+
     public func formatUpgradeRequired(for feature: DatabaseFeature2) -> FormatVersion? {
         let minimumRequiredFormat = FormatVersion.minimumRequired(for: feature)
         if minimumRequiredFormat > header.formatVersion {
@@ -186,20 +188,20 @@ public class Database2: Database {
             return nil
         }
     }
-    
+
     public func upgradeFormatVersion(to newerVersion: FormatVersion) {
         header.upgradeFormatVersion(to: newerVersion)
     }
-    
+
     override public class func isSignatureMatches(data: ByteArray) -> Bool {
         return Header2.isSignatureMatches(data: data)
     }
-    
+
     internal func addDeletedObject(uuid: UUID) {
         let deletedObject = DeletedObject2(database: self, uuid: uuid)
         deletedObjects.append(deletedObject)
     }
-    
+
     override public func load(
         dbFileName: String,
         dbFileData: ByteArray,
@@ -214,14 +216,14 @@ public class Database2: Database {
             try header.read(data: dbFileData) 
             Diag.debug("Header read OK [format: \(header.formatVersion)]")
             Diag.verbose("== DB2 progress CP1: \(progress.completedUnitCount)")
-            
+
             try deriveMasterKey(
                 compositeKey: compositeKey,
                 cipher: header.dataCipher,
                 canUseFinalKey: true)
             Diag.debug("Key derivation OK")
             Diag.verbose("== DB2 progress CP2: \(progress.completedUnitCount)")
-            
+
             var decryptedData: ByteArray
             let dbWithoutHeader: ByteArray = dbFileData.suffix(from: header.size)
 
@@ -237,7 +239,7 @@ public class Database2: Database {
             }
             Diag.debug("Block decryption OK")
             Diag.verbose("== DB2 progress CP3: \(progress.completedUnitCount)")
-            
+
             if header.isCompressed {
                 progress.localizedDescription = LString.Progress.database2DecompressingDatabase
                 Diag.debug("Inflating Gzip data")
@@ -247,7 +249,7 @@ public class Database2: Database {
             }
             progress.completedUnitCount += ProgressSteps.gzipUnpack
             Diag.verbose("== DB2 progress CP4: \(progress.completedUnitCount)")
-            
+
             var xmlData: ByteArray
             switch header.formatVersion {
             case .v3:
@@ -257,17 +259,17 @@ public class Database2: Database {
                 xmlData = decryptedData.suffix(from: innerHeaderSize)
                 Diag.debug("Inner header read OK")
             }
-            
+
             try removeGarbageAfterXML(data: xmlData) 
 
             try load(xmlData: xmlData, timeParser: self, warnings: warnings)
-            
+
             if let backupGroup = getBackupGroup(createIfMissing: false) {
                 backupGroup.deepSetDeleted(true)
             }
 
             progress.localizedDescription = LString.Progress.database2IntegrityCheck
-            
+
             assert(root != nil)
             var allCurrentEntries = [Entry]()
             root?.collectAllEntries(to: &allCurrentEntries) 
@@ -279,7 +281,7 @@ public class Database2: Database {
                 guard let entry2 = entry as? Entry2 else { assertionFailure(); return }
                 allEntriesPlusHistory.append(contentsOf: entry2.history)
             }
-            
+
             resolveReferences(
                 allEntries: allEntriesPlusHistory,
                 parentProgress: progress,
@@ -322,16 +324,16 @@ public class Database2: Database {
                 error.localizedDescription)
             throw DatabaseError.loadError(reason: .gzipError(reason: reason))
         }
-        
+
         self.compositeKey = compositeKey
     }
-    
+
     func decryptBlocksV4(data: ByteArray, cipher: DataCipher) throws -> ByteArray {
         Diag.debug("Decrypting V4 blocks")
         let inStream = data.asInputStream()
         inStream.open()
         defer { inStream.close() }
-        
+
         guard let storedHash = inStream.read(count: SHA256_SIZE) else {
             throw FormatError.prematureDataEnd
         }
@@ -339,7 +341,7 @@ public class Database2: Database {
             Diag.error("Header hash mismatch. Database corrupted?")
             throw Header2.HeaderError.hashMismatch
         }
-        
+
         let headerHMAC = header.getHMAC(key: self.hmacKey)
         guard let storedHMAC = inStream.read(count: SHA256_SIZE) else {
             throw FormatError.prematureDataEnd
@@ -348,7 +350,7 @@ public class Database2: Database {
             Diag.error("Header HMAC mismatch. Invalid master key?")
             throw DatabaseError.invalidKey
         }
-        
+
         Diag.verbose("Reading blocks")
         let blockBytesCount = data.count - storedHash.count - storedHMAC.count
         let allBlocksData = ByteArray(capacity: blockBytesCount)
@@ -356,7 +358,7 @@ public class Database2: Database {
         readingProgress.totalUnitCount = Int64(blockBytesCount)
         readingProgress.localizedDescription = LString.Progress.database2ReadingContent
         progress.addChild(readingProgress, withPendingUnitCount: ProgressSteps.readingBlocks)
-        
+
         var blockIndex: UInt64 = 0
         while true {
             guard let storedBlockHMAC = inStream.read(count: SHA256_SIZE) else {
@@ -371,7 +373,7 @@ public class Database2: Database {
             guard blockSize >= 0 else {
                 throw FormatError.negativeBlockSize(blockIndex: Int(blockIndex))
             }
-            
+
             guard let blockData = inStream.read(count: Int(blockSize)) else {
                 throw FormatError.prematureDataEnd
             }
@@ -385,13 +387,13 @@ public class Database2: Database {
 
             let bytesReadNow = storedBlockHMAC.count + blockSize.byteWidth + blockData.count
             readingProgress.completedUnitCount += Int64(bytesReadNow)
-            
+
             if blockSize == 0 { break }
 
             allBlocksData.append(blockData)
             blockIndex += 1
         }
-        
+
         Diag.verbose("Will decrypt \(allBlocksData.count) bytes")
         progress.addChild(cipher.initProgress(), withPendingUnitCount: ProgressSteps.decryption)
 
@@ -406,7 +408,7 @@ public class Database2: Database {
         }
         print("cipherKey enc: \(cipherKey.description)")
         #endif
-        
+
         let decryptedData = try cipher.decrypt(
             cipherText: allBlocksData,
             key: cipherKey,
@@ -416,7 +418,7 @@ public class Database2: Database {
 
         return decryptedData
     }
-    
+
     func decryptBlocksV3(data: ByteArray, cipher: DataCipher) throws -> ByteArray {
         Diag.debug("Decrypting V3 blocks")
         progress.addChild(cipher.initProgress(), withPendingUnitCount: ProgressSteps.decryption)
@@ -425,11 +427,11 @@ public class Database2: Database {
             key: cipherKey,
             iv: SecureBytes.from(header.initialVector)) 
         Diag.verbose("Decrypted \(decryptedData.count) bytes")
-        
+
         let decryptedStream = decryptedData.asInputStream()
         decryptedStream.open()
         defer { decryptedStream.close() }
-        
+
         guard let startData = decryptedStream.read(count: SHA256_SIZE) else {
             throw FormatError.prematureDataEnd
         }
@@ -437,14 +439,14 @@ public class Database2: Database {
             Diag.error("First bytes do not match. Invalid master key?")
             throw DatabaseError.invalidKey
         }
-        
+
         let blocksData = ByteArray(capacity: decryptedData.count - startData.count)
         var blockID: UInt32 = 0
         let readingProgress = ProgressEx()
         readingProgress.totalUnitCount = Int64(decryptedData.count - startData.count)
         readingProgress.localizedDescription = LString.Progress.database2ReadingContent
         progress.addChild(readingProgress, withPendingUnitCount: ProgressSteps.readingBlocks)
-        while(true) {
+        while true {
             guard let inBlockID: UInt32 = decryptedStream.readUInt32() else {
                 throw FormatError.prematureDataEnd
             }
@@ -453,7 +455,7 @@ public class Database2: Database {
                 throw FormatError.blockIDMismatch
             }
             blockID += 1
-            
+
             guard let storedBlockHash = decryptedStream.read(count: SHA256_SIZE) else {
                 throw FormatError.prematureDataEnd
             }
@@ -485,23 +487,22 @@ public class Database2: Database {
         return blocksData
     }
 
-    
     private func removeGarbageAfterXML(data: ByteArray) throws {
         guard header.dataCipher is TwofishDataCipher else { return }
-        
+
         let finalXMLTagBytes = ("</" + Xml2.keePassFile + ">").arrayUsingUTF8StringEncoding
         let finalTagSize = finalXMLTagBytes.count
         guard data.count > finalTagSize else { return }
-        
+
         let lastBytes = data.withBytes { $0[(data.count - finalTagSize)..<data.count] }
         if lastBytes.elementsEqual(finalXMLTagBytes) {
             return
         }
-        
+
         let searchFrom = data.count - finalTagSize - 2 * Twofish.blockSize
         let searchTo = data.count - finalTagSize
         guard searchFrom > 0 && searchTo > 0 else { return }
-        var closingTagIndex: Int? = nil
+        var closingTagIndex: Int?
         data.withBytes {
             for i in searchFrom...searchTo {
                 let slice = $0[i..<(i + finalTagSize)]
@@ -540,10 +541,10 @@ public class Database2: Database {
                 Diag.error("Not a KeePass XML document [xmlRoot: \(xmlDoc.root.name)]")
                 throw Xml2.ParsingError.notKeePassDocument
             }
-            
+
             let rootGroup = Group2(database: self)
             rootGroup.parent = nil
-            
+
             for tag in xmlDoc.root.children {
                 switch tag.name {
                 case Xml2.meta:
@@ -554,7 +555,7 @@ public class Database2: Database {
                         timeParser: self,
                         warnings: warnings
                     ) 
-                    
+
                     if meta.headerHash != nil && (header.hash != meta.headerHash!) {
                         Diag.error("kdbx3 meta meta hash mismatch")
                         throw Header2.HeaderError.hashMismatch
@@ -572,9 +573,9 @@ public class Database2: Database {
                     throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "KeePassFile/*")
                 }
             }
-            
+
             progress.completedUnitCount += ProgressSteps.parsing
-            
+
             self.root = rootGroup
             Diag.debug("XML content loaded OK")
         } catch let error as Header2.HeaderError {
@@ -593,7 +594,7 @@ public class Database2: Database {
             throw FormatError.parsingError(reason: error.localizedDescription)
         }
     }
-    
+
     internal func loadRoot(
         xml: AEXMLElement,
         root: Group2,
@@ -619,7 +620,7 @@ public class Database2: Database {
             }
         }
     }
-    
+
     private func loadDeletedObjects(
         xml: AEXMLElement,
         timeParser: Database2XMLTimeParser
@@ -636,7 +637,7 @@ public class Database2: Database {
             }
         }
     }
-    
+
     func deriveMasterKey(compositeKey: CompositeKey, cipher: DataCipher, canUseFinalKey: Bool) throws {
         Diag.debug("Start key derivation")
 
@@ -664,30 +665,30 @@ public class Database2: Database {
         } else {
             preconditionFailure("Unexpected key state")
         }
-        
+
         let secureMasterSeed = SecureBytes.from(header.masterSeed)
         let joinedKey: SecureBytes
         switch header.formatVersion {
         case .v3:
-            
+
             let keyToTransform = keyHelper.getKey(fromCombinedComponents: combinedComponents)
-            
+
             let transformedKey = try header.kdf.transform(
                 key: keyToTransform,
                 params: header.kdfParams)
-            
+
             let challengeResponse = try compositeKey.getResponse(challenge: secureMasterSeed) 
             joinedKey = SecureBytes.concat(secureMasterSeed, challengeResponse, transformedKey)
         case .v4, .v4_1:
-            
+
             let challenge = try header.kdf.getChallenge(header.kdfParams) 
             let secureChallenge = SecureBytes.from(challenge)
 
             let challengeResponse = try compositeKey.getResponse(challenge: secureChallenge) 
             combinedComponents = SecureBytes.concat(combinedComponents, challengeResponse)
-            
+
             let keyToTransform = keyHelper.getKey(fromCombinedComponents: combinedComponents)
-            
+
             let transformedKey = try header.kdf.transform(
                 key: keyToTransform,
                 params: header.kdfParams)
@@ -698,13 +699,13 @@ public class Database2: Database {
         self.hmacKey = SecureBytes.concat(joinedKey, one).sha512
         compositeKey.setFinalKeys(hmacKey, cipherKey)
     }
-    
+
     override public func changeCompositeKey(to newKey: CompositeKey) {
         compositeKey = newKey.clone()
         meta.masterKeyChangedTime = Date.now
         meta.masterKeyChangeForceOnce = false
     }
-    
+
     override public func getBackupGroup(createIfMissing: Bool) -> Group? {
         assert(root != nil)
         if !meta.isRecycleBinEnabled {
@@ -717,14 +718,14 @@ public class Database2: Database {
             assertionFailure()
             return nil
         }
-        
+
         if meta.recycleBinGroupUUID != UUID.ZERO {
             if let backupGroup = root.findGroup(byUUID: meta.recycleBinGroupUUID) {
                 Diag.verbose("RecycleBin group found")
                 return backupGroup
             }
         }
-        
+
         if createIfMissing {
             let backupGroup = meta.createRecycleBinGroup()
             root.add(group: backupGroup)
@@ -737,55 +738,55 @@ public class Database2: Database {
         Diag.verbose("RecycleBin group not found nor created.")
         return nil
     }
-    
-    
+
+
     func checkAttachmentsIntegrity(allEntries: [Entry], warnings: DatabaseLoadingWarnings) {
         func mapAttachmentNamesByID(of entry: Entry2, nameByID: inout [Binary2.ID: String]) {
-            (entry.attachments as! [Attachment2]).forEach { (attachment) in
+            (entry.attachments as! [Attachment2]).forEach { attachment in
                 nameByID[attachment.id] = attachment.name
             }
-            entry.history.forEach { (historyEntry) in
+            entry.history.forEach { historyEntry in
                 mapAttachmentNamesByID(of: historyEntry, nameByID: &nameByID)
             }
         }
-        
+
         func insertAllAttachmentIDs(of entry: Entry2, into ids: inout Set<Binary2.ID>) {
             let attachments2 = entry.attachments as! [Attachment2]
             ids.formUnion(attachments2.map { $0.id })
-            entry.history.forEach { (historyEntry) in
+            entry.history.forEach { historyEntry in
                 insertAllAttachmentIDs(of: historyEntry, into: &ids)
             }
         }
-        
+
         maybeFixAttachmentNames(entries: allEntries, warnings: warnings)
-        
+
         var usedIDs = Set<Binary2.ID>() 
-        allEntries.forEach { (entry) in
+        allEntries.forEach { entry in
             insertAllAttachmentIDs(of: entry as! Entry2, into: &usedIDs)
         }
         let knownIDs = Set(binaries.keys) 
-        
+
         if knownIDs == usedIDs {
             Diag.debug("Attachments integrity OK")
             return
         }
-        
+
         let unusedBinaries = knownIDs.subtracting(usedIDs)
         let missingBinaries = usedIDs.subtracting(knownIDs)
-        
+
         if unusedBinaries.count > 0 {
             warnings.addIssue(.unusedAttachments)
-            
+
             let unusedIDs = unusedBinaries
                 .map { String($0) }
                 .joined(separator: ", ")
             Diag.warning("Some binaries are not referenced from any entry [IDs: \(unusedIDs)]")
         }
-        
+
         if missingBinaries.count > 0 {
-            
+
             var attachmentNameByID = [Binary2.ID: String]()
-            allEntries.forEach { (entry) in
+            allEntries.forEach { entry in
                 mapAttachmentNamesByID(of: entry as! Entry2, nameByID: &attachmentNameByID)
             }
             let attachmentNames = missingBinaries.compactMap { attachmentNameByID[$0] }
@@ -797,7 +798,7 @@ public class Database2: Database {
             Diag.warning("Some entries refer to non-existent binaries [IDs: \(missingIDs)]")
         }
     }
-    
+
     private func maybeFixAttachmentNames(entries: [Entry], warnings: DatabaseLoadingWarnings) {
         func maybeFixAttachmentNames(entry: Entry2) -> Bool {
             var isSomethingFixed = false
@@ -809,51 +810,49 @@ public class Database2: Database {
             }
             return isSomethingFixed
         }
-        
+
         var affectedEntries = [Entry2]()
         for entry in entries {
             let entry2 = entry as! Entry2
             let isEntryAffected = maybeFixAttachmentNames(entry: entry2)
-            let isHistoryAffected = entry2.history.reduce(false) { (result, historyEntry) in
-                return maybeFixAttachmentNames(entry: historyEntry) || result
+            let isHistoryAffected = entry2.history.contains { historyEntry in
+                return maybeFixAttachmentNames(entry: historyEntry)
             }
             if isEntryAffected || isHistoryAffected {
                 affectedEntries.append(entry2)
             }
         }
-        
+
         if affectedEntries.isEmpty {
             return
         }
-        
-        let entryNames = affectedEntries.compactMap {$0.getGroupPath() + "/" + $0.resolvedTitle }
+
+        let entryNames = affectedEntries.compactMap { $0.getGroupPath() + "/" + $0.resolvedTitle }
         let issue = DatabaseLoadingWarnings.IssueType.namelessAttachments(entryNames: entryNames)
         warnings.addIssue(issue)
         Diag.warning(warnings.getDescription(for: issue))
     }
-    
+
     private func checkCustomFieldsIntegrity(allEntries: [Entry], warnings: DatabaseLoadingWarnings) {
         let problematicEntries = allEntries.filter { entry in
-            let isProblematicEntry = entry.fields.reduce(false) { result, field in
-                return result || field.name.isEmpty
-            }
+            let isProblematicEntry = entry.fields.contains { $0.name.isEmpty }
             return isProblematicEntry
         }
         guard problematicEntries.count > 0 else { return }
-        
+
         let entryPaths = problematicEntries
             .map { "'\($0.resolvedTitle)' in '\($0.getGroupPath())'" }
         warnings.addIssue(.namelessCustomFields(entryPaths: entryPaths))
     }
-        
+
     private func updateBinaries(root: Group2) {
         Diag.verbose("Updating all binaries")
         var allEntries = [Entry2]() as [Entry]
         root.collectAllEntries(to: &allEntries)
 
-        var oldBinaryPoolInverse = [ByteArray : Binary2]()
+        var oldBinaryPoolInverse = [ByteArray: Binary2]()
         binaries.values.forEach { oldBinaryPoolInverse[$0.data] = $0 }
-        
+
         var newBinaryPoolInverse = [ByteArray: Binary2]()
         for entry in allEntries {
             updateBinaries(
@@ -868,8 +867,8 @@ public class Database2: Database {
     private func updateBinaries(
         entry: Entry2,
         oldPoolInverse: [ByteArray: Binary2],
-        newPoolInverse: inout [ByteArray: Binary2])
-    {
+        newPoolInverse: inout [ByteArray: Binary2]
+    ) {
         for histEntry in entry.history {
             updateBinaries(
                 entry: histEntry,
@@ -877,21 +876,20 @@ public class Database2: Database {
                 newPoolInverse: &newPoolInverse
             )
         }
-        
+
         for att in entry.attachments {
             let att2 = att as! Attachment2
             if let binaryInNewPool = newPoolInverse[att2.data],
-                binaryInNewPool.isCompressed == att2.isCompressed
+               binaryInNewPool.isCompressed == att2.isCompressed
             {
                 att2.id = binaryInNewPool.id
                 continue
             }
-            
+
             let newID = newPoolInverse.count
             let newBinary: Binary2
             if let binaryInOldPool = oldPoolInverse[att2.data],
-                binaryInOldPool.isCompressed == att2.isCompressed
-            {
+                binaryInOldPool.isCompressed == att2.isCompressed {
                 newBinary = Binary2(
                     id: newID,
                     data: binaryInOldPool.data,
@@ -899,7 +897,7 @@ public class Database2: Database {
                     isProtected: binaryInOldPool.isProtected
                 )
             } else {
-                
+
                 newBinary = Binary2(
                     id: newID,
                     data: att2.data,
@@ -911,11 +909,11 @@ public class Database2: Database {
             att2.id = newID
         }
     }
-    
+
     override public func save() throws -> ByteArray {
         Diag.info("Saving KDBX database")
         assert(root != nil, "Load or create a DB before saving.")
-        
+
         progress.totalUnitCount = ProgressSteps.all
         progress.completedUnitCount = 0
         header.maybeUpdateFormatVersion()
@@ -940,15 +938,15 @@ public class Database2: Database {
             throw DatabaseError.saveError(reason: error.localizedDescription)
         }
 
-        
+
         updateBinaries(root: root! as! Group2)
         Diag.verbose("Binaries updated OK")
-        
+
         let outStream = ByteArray.makeOutputStream()
         outStream.open()
         defer { outStream.close() }
         progress.completedUnitCount += ProgressSteps.packing
-        
+
         header.write(to: outStream) 
 
         meta.headerHash = header.hash
@@ -963,7 +961,7 @@ public class Database2: Database {
             try encryptBlocksV4(to: outStream, xmlData: xmlData) 
         }
         Diag.debug("Content encryption OK")
-        
+
         var allEntries = [Entry]()
         root?.collectAllEntries(to: &allEntries)
         resolveReferences(
@@ -971,17 +969,17 @@ public class Database2: Database {
             parentProgress: progress,
             pendingProgressUnits: ProgressSteps.resolvingReferences
         )
-        
+
         progress.completedUnitCount = progress.totalUnitCount
         return outStream.data!
     }
-    
+
     internal func encryptBlocksV4(to outStream: ByteArray.OutputStream, xmlData: ByteArray) throws {
         Diag.debug("Encrypting kdbx4 blocks")
         outStream.write(data: header.hash)
         outStream.write(data: header.getHMAC(key: hmacKey))
 
-        
+
         let contentStream = ByteArray.makeOutputStream()
         contentStream.open()
         defer { contentStream.close() }
@@ -1000,7 +998,7 @@ public class Database2: Database {
                 Diag.verbose("No compression required")
             }
             progress.completedUnitCount += ProgressSteps.gzipPack
-            
+
             Diag.verbose("Encrypting \(dataToEncrypt.count) bytes")
             progress.addChild(
                 header.dataCipher.initProgress(),
@@ -1010,7 +1008,7 @@ public class Database2: Database {
                 key: cipherKey,
                 iv: SecureBytes.from(header.initialVector)) 
             Diag.verbose("Encrypted \(encData.count) bytes")
-            
+
             try writeAsBlocksV4(to: outStream, data: encData) 
             Diag.verbose("Blocks written OK")
         } catch let error as Header2.HeaderError {
@@ -1038,22 +1036,22 @@ public class Database2: Database {
             throw DatabaseError.saveError(reason: errMsg)
         }
     }
-    
+
     internal func writeAsBlocksV4(to blockStream: ByteArray.OutputStream, data: ByteArray) throws {
         Diag.debug("Writing kdbx4 blocks")
-        let defaultBlockSize  = 1024 * 1024 
+        let defaultBlockSize = 1024 * 1024 
         var blockStart: Int = 0
         var blockIndex: UInt64 = 0
-        
+
         let writeProgress = ProgressEx()
         writeProgress.totalUnitCount = Int64(data.count)
         writeProgress.localizedDescription = LString.Progress.database2WritingBlocks
         progress.addChild(writeProgress, withPendingUnitCount: ProgressSteps.writingBlocks)
-        
+
         Diag.verbose("\(data.count) bytes to write")
         while blockStart != data.count {
             let blockSize = min(defaultBlockSize, data.count - blockStart)
-            let blockData = data[blockStart..<blockStart+blockSize]
+            let blockData = data[blockStart..<(blockStart + blockSize)]
 
             let blockKey = CryptoManager.getHMACKey64(key: hmacKey, blockIndex: blockIndex)
             let dataForHMAC = ByteArray.concat(blockIndex.data, Int32(blockSize).data, blockData)
@@ -1075,10 +1073,10 @@ public class Database2: Database {
             key: endBlockKey)
         blockStream.write(data: endBlockHMAC)
         blockStream.write(value: endBlockSize) 
-        
+
         writeProgress.completedUnitCount = writeProgress.totalUnitCount
     }
-    
+
     internal func encryptBlocksV3(to outStream: ByteArray.OutputStream, xmlData: ByteArray) throws {
         Diag.debug("Encrypting kdbx3 blocks")
         let dataToSplit: ByteArray
@@ -1102,7 +1100,7 @@ public class Database2: Database {
             Diag.verbose("No compression required")
         }
         progress.completedUnitCount += ProgressSteps.gzipPack
-        
+
         let blockStream = ByteArray.makeOutputStream()
         blockStream.open()
         defer { blockStream.close() }
@@ -1110,7 +1108,7 @@ public class Database2: Database {
         try splitToBlocksV3(to: blockStream, data: dataToSplit) 
         guard let blocksData = blockStream.data else { fatalError() }
         Diag.verbose("Blocks split OK")
-        
+
         do {
             progress.addChild(
                 header.dataCipher.initProgress(),
@@ -1134,7 +1132,7 @@ public class Database2: Database {
             throw DatabaseError.saveError(reason: errMsg)
         }
     }
-    
+
     internal func splitToBlocksV3(to stream: ByteArray.OutputStream, data inData: ByteArray) throws {
         Diag.verbose("Will split to kdbx3 blocks")
         let defaultBlockSize = 1024 * 1024 
@@ -1146,8 +1144,8 @@ public class Database2: Database {
         progress.addChild(writingProgress, withPendingUnitCount: ProgressSteps.writingBlocks)
         while blockStart != inData.count {
             let blockSize = min(defaultBlockSize, inData.count - blockStart)
-            let blockData = inData[blockStart..<blockStart+blockSize]
-            
+            let blockData = inData[blockStart..<(blockStart + blockSize)]
+
             stream.write(value: UInt32(blockID))
             stream.write(data: blockData.sha256)
             stream.write(value: UInt32(blockData.count))
@@ -1165,14 +1163,14 @@ public class Database2: Database {
         stream.write(data: ByteArray(count: 0))
         writingProgress.completedUnitCount = writingProgress.totalUnitCount
     }
-    
+
     func toXml(timeFormatter: Database2XMLTimeFormatter) throws -> AEXMLDocument {
         Diag.debug("Will generate XML")
         var options = AEXMLOptions()
         options.documentHeader.encoding = "utf-8"
         options.documentHeader.standalone = "yes"
         options.documentHeader.version = 1.0
-        
+
         let xmlMain = AEXMLElement(name: Xml2.keePassFile)
         let xmlDoc = AEXMLDocument(root: xmlMain, options: options)
         xmlMain.addChild(
@@ -1183,7 +1181,7 @@ public class Database2: Database {
             )
         ) 
         Diag.verbose("XML generation: Meta OK")
-        
+
         let xmlRoot = xmlMain.addChild(name: Xml2.root)
         let root2 = root! as! Group2
         let rootXML = try root2.toXml(
@@ -1193,17 +1191,17 @@ public class Database2: Database {
         ) 
         xmlRoot.addChild(rootXML)
         Diag.verbose("XML generation: Root group OK")
-        
+
         let xmlDeletedObjects = xmlRoot.addChild(name: Xml2.deletedObjects)
         for deletedObject in deletedObjects {
             xmlDeletedObjects.addChild(deletedObject.toXml(timeFormatter: timeFormatter))
         }
         return xmlDoc
     }
-    
+
     func setAllTimestamps(to time: Date) {
         meta.setAllTimestamps(to: time)
-        
+
         guard let root = root else { return }
         var groups: [Group] = [root]
         var entries: [Entry] = []
@@ -1219,25 +1217,27 @@ public class Database2: Database {
             entry.lastAccessTime = time
         }
     }
-    
-    
+
+
     override public func delete(group: Group) {
         guard let group = group as? Group2 else { fatalError() }
         guard let parentGroup = group.parent else {
             Diag.warning("Cannot delete group: no parent group")
             return
         }
-        
+
         var subGroups = [Group]()
         var subEntries = [Entry]()
         group.collectAllChildren(groups: &subGroups, entries: &subEntries)
-        
+
         let moveOnly = !group.isDeleted && meta.isRecycleBinEnabled
-        if moveOnly, let backupGroup = getBackupGroup(createIfMissing: meta.isRecycleBinEnabled) {
+        if moveOnly,
+           let backupGroup = getBackupGroup(createIfMissing: meta.isRecycleBinEnabled)
+        {
             Diag.debug("Moving group to RecycleBin")
             group.move(to: backupGroup) 
             group.touch(.accessed, updateParents: false)
-            
+
             group.isDeleted = true
             subGroups.forEach { $0.isDeleted = true }
             subEntries.forEach { $0.isDeleted = true }
@@ -1253,22 +1253,22 @@ public class Database2: Database {
         }
         Diag.debug("Delete group OK")
     }
-    
+
     override public func delete(entry: Entry) {
         guard let parentGroup = entry.parent else {
             Diag.warning("Cannot delete entry: no parent group")
             return
         }
-        
+
         if entry.isDeleted {
             Diag.debug("Already in Backup, removing permanently")
             addDeletedObject(uuid: entry.uuid)
             parentGroup.remove(entry: entry)
             return
         }
-        
+
         if meta.isRecycleBinEnabled,
-            let backupGroup = getBackupGroup(createIfMissing: meta.isRecycleBinEnabled)
+           let backupGroup = getBackupGroup(createIfMissing: meta.isRecycleBinEnabled)
         {
             entry.move(to: backupGroup) 
             entry.touch(.accessed)
@@ -1279,10 +1279,10 @@ public class Database2: Database {
         }
         Diag.debug("Delete entry OK")
     }
-    
+
     override public func makeAttachment(name: String, data: ByteArray) -> Attachment {
         let attemptCompression = header.isCompressed
-        
+
         if attemptCompression {
             do {
                 let compressedData = try data.gzipped()
@@ -1295,20 +1295,20 @@ public class Database2: Database {
         return Attachment2(name: name, isCompressed: false, data: data)
     }
 
-    
+
     public func setCustomIcon(_ icon: CustomIcon2, for entry: Entry2) {
         entry.backupState()
         entry.customIconUUID = icon.uuid
         entry.touch(.accessed)
         entry.touch(.modified, updateParents: false)
     }
-    
+
     public func setCustomIcon(_ icon: CustomIcon2, for group: Group2) {
         group.customIconUUID = icon.uuid
         group.touch(.accessed)
         group.touch(.modified, updateParents: false)
     }
-    
+
     public func addCustomIcon(_ image: UIImage) -> CustomIcon2? {
         guard let normalizedImage = image.downscalingToSquare(maxSide: CustomIcon2.maxSide) else {
             Diag.error("Failed to normalize the image, cancelling")
@@ -1320,18 +1320,18 @@ public class Database2: Database {
         }
         return addCustomIcon(pngData: ByteArray(data: pngData))
     }
-    
+
     public func addCustomIcon(pngData: ByteArray) -> CustomIcon2 {
         if let existingIcon = findCustomIcon(pngDataSha256: pngData.sha256) {
             return existingIcon
         }
-        
+
         let newCustomIcon = CustomIcon2(uuid: UUID(), data: pngData)
         meta.addCustomIcon(newCustomIcon)
         Diag.debug("Custom icon added OK")
         return newCustomIcon
     }
-    
+
     public func findCustomIcon(pngDataSha256: ByteArray) -> CustomIcon2? {
         return customIcons.first(where: { $0.data.sha256 == pngDataSha256 })
     }
@@ -1352,7 +1352,7 @@ public class Database2: Database {
         Diag.debug("Custom icon deleted OK")
         return true
     }
-    
+
     private func removeUnusedCustomIconRefs() {
         let knownIconUUIDs = Set<UUID>(customIcons.map { $0.uuid })
         root?.applyToAllChildren(
@@ -1370,7 +1370,7 @@ public class Database2: Database {
 extension Database2: Database2XMLTimeParser {
     func xmlStringToDate(_ string: String?) -> Date? {
         let trimmedString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+
         switch header.formatVersion {
         case .v3:
             if let formatAppropriateDate = Date(iso8601string: trimmedString) {
@@ -1427,6 +1427,7 @@ private extension Entry2 {
 }
 
 extension LString.Warning {
+    // swiftlint:disable line_length
     public static let unusedAttachmentsTemplate = NSLocalizedString(
         "[Database2/Loading/Warning/unusedAttachments]",
         bundle: Bundle.framework,
@@ -1451,4 +1452,5 @@ extension LString.Warning {
         value: "Some entries have attachments without a name. This is a sign of previous database corruption.\n\n Please review attached files in the following entries (and their history):\n%@",
         comment: "A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String]"
     )
+    // swiftlint:enable line_length
 }

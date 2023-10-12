@@ -11,7 +11,7 @@ import UIKit
 class AppStoreHelper {
     static public let proVersionID = 1481781647
     static public let freemiumVersionID = 1435127111
-    
+
     #if PREPAID_VERSION
     static private let appStoreID = AppStoreHelper.proVersionID
     #else
@@ -41,7 +41,7 @@ class AppStoreHelper {
     #if MAIN_APP
     static func openSubscriptionManagement() {
         guard let url = URL(string: "itms-apps://apps.apple.com/account/subscriptions") else {
-            assertionFailure();
+            assertionFailure()
             return
         }
         let application = UIApplication.shared

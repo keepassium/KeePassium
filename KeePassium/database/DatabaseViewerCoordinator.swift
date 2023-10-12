@@ -12,7 +12,7 @@ public enum DatabaseCloseReason: CustomStringConvertible {
     case userRequest
     case databaseTimeout
     case appLevelOperation
-    
+
     public var description: String {
         switch self {
         case .userRequest:
@@ -27,34 +27,34 @@ public enum DatabaseCloseReason: CustomStringConvertible {
 
 protocol DatabaseViewerCoordinatorDelegate: AnyObject {
     func didLeaveDatabase(in coordinator: DatabaseViewerCoordinator)
-    
+
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
-    
+
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: DatabaseViewerCoordinator)
-    
+
     func didPressReloadDatabase(_ databaseFile: DatabaseFile, in coordinator: DatabaseViewerCoordinator)
 }
 
 final class DatabaseViewerCoordinator: Coordinator {
     private let vcAnimationDuration = 0.3
-    
+
     enum Action {
         case lockDatabase
         case createEntry
         case createGroup
     }
-    
+
     var childCoordinators = [Coordinator]()
-    
+
     weak var delegate: DatabaseViewerCoordinatorDelegate?
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     public var currentGroupUUID: UUID? { currentGroup?.uuid }
 
     private let primaryRouter: NavigationRouter
     private let placeholderRouter: NavigationRouter
     private var entryViewerRouter: NavigationRouter?
-    
+
     private let originalRef: URLReference
     private let databaseFile: DatabaseFile
     private let database: Database
@@ -70,26 +70,26 @@ final class DatabaseViewerCoordinator: Coordinator {
     private weak var currentGroup: Group?
     private weak var currentEntry: Entry?
     private weak var rootGroupViewer: GroupViewerVC?
-    
+
     private let splitViewController: RootSplitVC
     private weak var oldSplitDelegate: UISplitViewControllerDelegate?
     private var isSplitViewCollapsed: Bool {
         return splitViewController.isCollapsed
     }
-    
+
     private var oldPrimaryRouterDetailDismissalHandler:
         NavigationRouter.CollapsedDetailDismissalHandler?
-    
+
     private var progressOverlay: ProgressOverlay?
     private var settingsNotifications: SettingsNotifications!
-    
+
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return self }
     var saveSuccessHandler: (() -> Void)?
 
     let faviconDownloader: FaviconDownloader
-    
+
     init(
         splitViewController: RootSplitVC,
         primaryRouter: NavigationRouter,
@@ -100,32 +100,32 @@ final class DatabaseViewerCoordinator: Coordinator {
     ) {
         self.splitViewController = splitViewController
         self.primaryRouter = primaryRouter
-        
+
         self.originalRef = originalRef
         self.databaseFile = databaseFile
         self.database = databaseFile.database
         self.loadingWarnings = loadingWarnings
-        
+
         self.initialGroupUUID = context?.groupUUID
-        
+
         let placeholderVC = PlaceholderVC.instantiateFromStoryboard()
         let placeholderWrapperVC = RouterNavigationController(rootViewController: placeholderVC)
         self.placeholderRouter = NavigationRouter(placeholderWrapperVC)
 
         faviconDownloader = FaviconDownloader()
     }
-    
+
     deinit {
         settingsNotifications.stopObserving()
-        
+
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         oldSplitDelegate = splitViewController.delegate
         splitViewController.delegate = self
-        
+
         oldPrimaryRouterDetailDismissalHandler = primaryRouter.collapsedDetailDismissalHandler
         primaryRouter.collapsedDetailDismissalHandler = { [weak self] dismissedVC in
             guard let self = self else { return }
@@ -135,20 +135,19 @@ final class DatabaseViewerCoordinator: Coordinator {
         }
 
         settingsNotifications = SettingsNotifications(observer: self)
-        
+
         showInitialGroups(replacingTopVC: splitViewController.isCollapsed)
         showEntry(nil)
-        
+
         settingsNotifications.startObserving()
-        
+
         updateAnnouncements()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2 * vcAnimationDuration) {
-            [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2 * vcAnimationDuration) { [weak self] in
             self?.showInitialMessages()
         }
     }
-    
-    public func stop(animated: Bool, completion: (()->Void)?) {
+
+    public func stop(animated: Bool, completion: (() -> Void)?) {
         guard let rootGroupViewer = rootGroupViewer else {
             assertionFailure("Group viewer already deallocated")
             Diag.debug("Group viewer is already deallocated, ignoring")
@@ -162,7 +161,7 @@ final class DatabaseViewerCoordinator: Coordinator {
             )
         }
     }
-    
+
     func refresh() {
         if let topPrimaryVC = primaryRouter.navigationController.topViewController {
             (topPrimaryVC as? Refreshable)?.refresh()
@@ -171,7 +170,7 @@ final class DatabaseViewerCoordinator: Coordinator {
             (topSecondaryVC as? Refreshable)?.refresh()
         }
     }
-    
+
     private func getPresenterForModals() -> UIViewController {
         return splitViewController.presentedViewController ?? splitViewController
     }
@@ -198,7 +197,7 @@ extension DatabaseViewerCoordinator {
             return permissions.canCreateGroup
         }
     }
-    
+
     public func perform(action: Action) {
         assert(canPerform(action: action))
         switch action {
@@ -234,10 +233,10 @@ extension DatabaseViewerCoordinator {
             )
         }
     }
-    
+
     private func showLoadingWarnings(_ warnings: DatabaseLoadingWarnings) {
         guard !warnings.isEmpty else { return }
-        
+
         let presentingVC = getPresenterForModals()
         DatabaseLoadingWarningsVC.present(
             warnings,
@@ -253,7 +252,7 @@ extension DatabaseViewerCoordinator {
         )
         StoreReviewSuggester.registerEvent(.trouble)
     }
-    
+
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
@@ -261,11 +260,11 @@ extension DatabaseViewerCoordinator {
             self?.removeChildCoordinator(coordinator)
         }
         diagnosticsViewerCoordinator.start()
-        
+
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(diagnosticsViewerCoordinator)
     }
-    
+
     private func startAppProtectionSetup() {
         let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
         passcodeInputVC.delegate = self
@@ -274,7 +273,7 @@ extension DatabaseViewerCoordinator {
         passcodeInputVC.isCancelAllowed = true
         getPresenterForModals().present(passcodeInputVC, animated: true, completion: nil)
     }
-    
+
     private func showInitialGroups(replacingTopVC: Bool) {
         guard let initialGroupUUID,
               let initialGroup = database.root?.findGroup(byUUID: initialGroupUUID)
@@ -282,7 +281,7 @@ extension DatabaseViewerCoordinator {
             showGroup(database.root, replacingTopVC: replacingTopVC, animated: true)
             return
         }
-        
+
         var groupStack = [Group]()
         var currentGroup: Group? = initialGroup
         while let subgroup = currentGroup {
@@ -290,17 +289,17 @@ extension DatabaseViewerCoordinator {
             currentGroup = currentGroup?.parent
         }
         groupStack.reverse() 
-        
+
         let rootGroup = groupStack.removeFirst()
         showGroup(rootGroup, replacingTopVC: replacingTopVC, animated: false)
-        
+
         groupStack.forEach { subgroup in
             DispatchQueue.main.async {
                 self.showGroup(subgroup, animated: false)
             }
         }
     }
-    
+
     private func showGroup(_ group: Group?, replacingTopVC: Bool = false, animated: Bool) {
         guard let group = group else {
             Diag.error("The group is nil")
@@ -316,7 +315,7 @@ extension DatabaseViewerCoordinator {
         groupViewerVC.delegate = self
         groupViewerVC.group = group
         groupViewerVC.canDownloadFavicons = database is Database2
-        
+
         let isCustomTransition = replacingTopVC && animated
         if isCustomTransition {
             primaryRouter.prepareCustomTransition(
@@ -329,8 +328,7 @@ extension DatabaseViewerCoordinator {
             groupViewerVC,
             animated: animated && !isCustomTransition,
             replaceTopViewController: replacingTopVC,
-            onPop: {
-                [weak self, previousGroup] in
+            onPop: { [weak self, previousGroup] in
                 guard let self = self else { return }
                 self.currentGroup = previousGroup
                 if previousGroup == nil { 
@@ -348,12 +346,12 @@ extension DatabaseViewerCoordinator {
             rootGroupViewer = groupViewerVC
         }
     }
-    
+
     private func selectEntry(_ entry: Entry?) {
         focusOnEntry(entry)
         showEntry(entry)
     }
-    
+
     private func focusOnEntry(_ entry: Entry?) {
         guard let groupViewerVC = primaryRouter.navigationController.topViewController
                 as? GroupViewerVC
@@ -363,7 +361,7 @@ extension DatabaseViewerCoordinator {
         }
         groupViewerVC.selectEntry(entry, animated: false)
     }
-    
+
     private func showEntry(_ entry: Entry?) {
         currentEntry = entry
         guard let entry = entry else {
@@ -375,7 +373,7 @@ extension DatabaseViewerCoordinator {
             childCoordinators.removeAll(where: { $0 is EntryViewerCoordinator })
             return
         }
-        
+
         if let existingCoordinator = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
             let entryViewerCoordinator = existingCoordinator as! EntryViewerCoordinator 
             entryViewerCoordinator.setEntry(
@@ -391,7 +389,7 @@ extension DatabaseViewerCoordinator {
             splitViewController.setDetailRouter(entryViewerRouter)
             return
         }
-        
+
         let entryViewerRouter = NavigationRouter(RouterNavigationController())
         let entryViewerCoordinator = EntryViewerCoordinator(
             entry: entry,
@@ -408,16 +406,16 @@ extension DatabaseViewerCoordinator {
         entryViewerCoordinator.delegate = self
         entryViewerCoordinator.start()
         addChildCoordinator(entryViewerCoordinator)
-        
+
         self.entryViewerRouter = entryViewerRouter
         splitViewController.setDetailRouter(entryViewerRouter)
     }
-    
+
     public func closeDatabase(
         shouldLock: Bool,
         reason: DatabaseCloseReason,
         animated: Bool,
-        completion: (()->Void)?
+        completion: (() -> Void)?
     ) {
         if shouldLock {
             DatabaseSettingsManager.shared.updateSettings(for: originalRef) {
@@ -427,7 +425,7 @@ extension DatabaseViewerCoordinator {
         Diag.debug("Database closed [locked: \(shouldLock), reason: \(reason)]")
         stop(animated: animated, completion: completion)
     }
-    
+
     private func showAppSettings(at popoverAnchor: PopoverAnchor, in viewController: UIViewController) {
         let modalRouter = NavigationRouter.createModal(
             style: ProcessInfo.isRunningOnMac ? .formSheet : .popover,
@@ -444,7 +442,7 @@ extension DatabaseViewerCoordinator {
     private func showPasswordAuditOrOfferPremium(in viewController: UIViewController) {
         self.showPasswordAudit(in: viewController)
     }
-    
+
     private func showPasswordAudit(in viewController: UIViewController) {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let passwordAuditCoordinator = PasswordAuditCoordinator(
@@ -494,17 +492,16 @@ extension DatabaseViewerCoordinator {
                     downloadedFavicons.count),
                 preferredStyle: .alert
             )
-            alert.addAction(title: LString.actionSaveDatabase, style: .default, preferred: true) {
-                [weak self] _ in
+            alert.addAction(title: LString.actionSaveDatabase, style: .default, preferred: true) { [weak self] _ in
                 self?.saveDatabase(databaseFile)
             }
             viewController.present(alert, animated: true)
         }
     }
-    
+
     private func showMasterKeyChanger(in viewController: UIViewController) {
         Diag.info("Will change master key")
-        
+
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let databaseKeyChangeCoordinator = DatabaseKeyChangerCoordinator(
             databaseFile: databaseFile,
@@ -518,7 +515,7 @@ extension DatabaseViewerCoordinator {
         viewController.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(databaseKeyChangeCoordinator)
     }
-    
+
     private func showGroupEditor(for groupToEdit: Group?, at popoverAnchor: PopoverAnchor?) {
         Diag.info("Will edit group")
         guard let parent = currentGroup else {
@@ -526,7 +523,7 @@ extension DatabaseViewerCoordinator {
             assertionFailure()
             return
         }
-        
+
         let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
         let groupEditorCoordinator = GroupEditorCoordinator(
             router: modalRouter,
@@ -538,19 +535,23 @@ extension DatabaseViewerCoordinator {
         }
         groupEditorCoordinator.delegate = self
         groupEditorCoordinator.start()
-        
+
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(groupEditorCoordinator)
     }
-    
-    private func showEntryEditor(for entryToEdit: Entry?, at popoverAnchor: PopoverAnchor?, onDismiss: (() -> Void)? = nil) {
+
+    private func showEntryEditor(
+        for entryToEdit: Entry?,
+        at popoverAnchor: PopoverAnchor?,
+        onDismiss: (() -> Void)? = nil
+    ) {
         Diag.info("Will edit entry")
         guard let parent = currentGroup else {
             Diag.warning("Parent group is not definted")
             assertionFailure()
             return
         }
-        
+
         let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
         let entryFieldEditorCoordinator = EntryFieldEditorCoordinator(
             router: modalRouter,
@@ -565,11 +566,11 @@ extension DatabaseViewerCoordinator {
         entryFieldEditorCoordinator.delegate = self
         entryFieldEditorCoordinator.start()
         modalRouter.dismissAttemptDelegate = entryFieldEditorCoordinator
-        
+
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(entryFieldEditorCoordinator)
     }
-    
+
     private func showItemRelocator(
         for item: DatabaseItem,
         mode: ItemRelocationMode,
@@ -587,11 +588,11 @@ extension DatabaseViewerCoordinator {
         }
         itemRelocationCoordinator.delegate = self
         itemRelocationCoordinator.start()
-        
+
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(itemRelocationCoordinator)
     }
-    
+
     private func showDatabasePrintDialog() {
         Diag.info("Will print database")
         let databaseFormatter = DatabasePrintFormatter()
@@ -602,7 +603,7 @@ extension DatabaseViewerCoordinator {
             Diag.info("Could not format database for printing, skipping")
             return
         }
-        
+
         if ProcessInfo.isRunningOnMac {
             showProgressView(title: "", allowCancelling: false, animated: false)
             let indefiniteProgress = ProgressEx()
@@ -610,7 +611,7 @@ extension DatabaseViewerCoordinator {
             indefiniteProgress.status = LString.databaseStatusPreparingPrintPreview
             updateProgressView(with: indefiniteProgress)
         }
-        
+
         let printFormatter = UISimpleTextPrintFormatter(attributedText: formattedText)
         printFormatter.perPageContentInsets = UIEdgeInsets(
             top: 72,
@@ -618,10 +619,10 @@ extension DatabaseViewerCoordinator {
             bottom: 72,
             right: 72
         )
-        
+
         let printController = UIPrintInteractionController.shared
         printController.printFormatter = printFormatter
-        printController.present(animated: true, completionHandler: { [weak self] _,_,_ in
+        printController.present(animated: true, completionHandler: { [weak self] _, _, _ in
             printController.printFormatter = nil
             if ProcessInfo.isRunningOnMac {
                 self?.hideProgressView(animated: false)
@@ -641,7 +642,7 @@ extension DatabaseViewerCoordinator: SettingsObserver {
     }
 }
 
-extension DatabaseViewerCoordinator: GroupViewerDelegate {        
+extension DatabaseViewerCoordinator: GroupViewerDelegate {
     func didPressLockDatabase(in viewController: GroupViewerVC) {
         closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
     }
@@ -657,7 +658,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     func didPressReloadDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
         delegate?.didPressReloadDatabase(databaseFile, in: self)
     }
-    
+
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
         showAppSettings(at: popoverAnchor, in: viewController)
     }
@@ -669,20 +670,20 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     func didPressFaviconsDownload(in viewController: GroupViewerVC) {
         downloadFavicons(in: viewController)
     }
-    
+
     func didPressPasswordGenerator(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
         showPasswordGenerator(at: popoverAnchor, in: viewController)
     }
-    
+
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool {
         showGroup(group, animated: true)
-        
+
         return false
     }
-    
+
     func didSelectEntry(_ entry: Entry?, in viewController: GroupViewerVC) -> Bool {
         showEntry(entry)
-        
+
         let shouldRemainSelected = !isSplitViewCollapsed
         return shouldRemainSelected
     }
@@ -694,7 +695,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     func didPressCreateEntry(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
         showEntryEditor(for: nil, at: popoverAnchor)
     }
-    
+
     func didPressEditGroup(
         _ group: Group,
         at popoverAnchor: PopoverAnchor,
@@ -710,7 +711,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     ) {
         showEntryEditor(for: entry, at: popoverAnchor)
     }
-    
+
     func didPressDeleteGroup(
         _ group: Group,
         at popoverAnchor: PopoverAnchor,
@@ -720,7 +721,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         group.touch(.accessed)
         saveDatabase(databaseFile)
     }
-    
+
     func didPressDeleteEntry(
         _ entry: Entry,
         at popoverAnchor: PopoverAnchor,
@@ -735,7 +736,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         }
         saveDatabase(databaseFile)
     }
-    
+
     func didPressRelocateItem(
         _ item: DatabaseItem,
         mode: ItemRelocationMode,
@@ -744,7 +745,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     ) {
         showItemRelocator(for: item, mode: mode, at: popoverAnchor)
     }
-    
+
     func didPressEmptyRecycleBinGroup(
         _ recycleBinGroup: Group,
         at popoverAnchor: PopoverAnchor,
@@ -759,12 +760,12 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         recycleBinGroup.touch(.accessed)
         saveDatabase(databaseFile)
     }
-    
+
     func getActionPermissions(for group: Group) -> DatabaseItem.ActionPermissions {
         guard canEditDatabase else {
             return DatabaseItem.ActionPermissions.everythingForbidden
         }
-        
+
         var result = DatabaseItem.ActionPermissions()
         result.canEditDatabase = true 
         result.canCreateGroup = !group.isDeleted
@@ -774,28 +775,28 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         } else {
             result.canCreateEntry = !group.isDeleted
         }
-        
+
         let isRecycleBin = (group === group.database?.getBackupGroup(createIfMissing: false))
         if isRecycleBin {
             result.canEditItem = group is Group2
         } else {
             result.canEditItem = !group.isDeleted
         }
-        
+
         result.canDeleteItem = !group.isRoot
-        
+
         result.canMoveItem = !group.isRoot
         if (group is Group1) && isRecycleBin {
             result.canMoveItem = false
         }
         return result
     }
-    
+
     func getActionPermissions(for entry: Entry) -> DatabaseItem.ActionPermissions {
         guard canEditDatabase else {
             return DatabaseItem.ActionPermissions.everythingForbidden
         }
-        
+
         var result = DatabaseItem.ActionPermissions()
         result.canEditDatabase = true 
         result.canCreateGroup = false
@@ -823,14 +824,14 @@ extension DatabaseViewerCoordinator: ProgressViewHost {
             self?.showDiagnostics()
         }
     }
-    
+
     public func updateProgressView(with progress: ProgressEx) {
         assert(progressOverlay != nil)
         progressOverlay?.update(with: progress)
     }
-    
+
     public func hideProgressView(animated: Bool) {
-        progressOverlay?.dismiss(animated: animated) { [weak self] finished in
+        progressOverlay?.dismiss(animated: animated) { [weak self] _ in
             guard let self = self else { return }
             self.progressOverlay?.removeFromSuperview()
             self.progressOverlay = nil
@@ -842,27 +843,27 @@ extension DatabaseViewerCoordinator: DatabaseSaving {
     func canCancelSaving(databaseFile: DatabaseFile) -> Bool {
         return false
     }
-    
+
     func didCancelSaving(databaseFile: DatabaseFile) {
         refresh()
     }
-    
+
     func didSave(databaseFile: DatabaseFile) {
         refresh()
     }
-    
+
     func didFailSaving(databaseFile: DatabaseFile) {
         refresh()
     }
-    
+
     func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
         delegate?.didRelocateDatabase(databaseFile, to: newURL)
     }
-    
+
     func getDatabaseSavingErrorParent() -> UIViewController {
         getPresenterForModals()
     }
-    
+
     func getDiagnosticsHandler() -> (() -> Void)? {
         return showDiagnostics
     }
@@ -872,7 +873,7 @@ extension DatabaseViewerCoordinator: EntryViewerCoordinatorDelegate {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryViewerCoordinator) {
         refresh()
     }
-    
+
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL) {
         delegate?.didRelocateDatabase(databaseFile, to: url)
     }
@@ -934,14 +935,13 @@ extension DatabaseViewerCoordinator: PasscodeInputDelegate {
         sender.dismiss(animated: true, completion: nil)
         refresh()
     }
-    
+
     func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
         return passcode.count > 0
     }
-    
+
     func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
-        sender.dismiss(animated: true) {
-            [weak self] in
+        sender.dismiss(animated: true) { [weak self] in
             do {
                 let keychain = Keychain.shared
                 try keychain.setAppPasscode(passcode)
@@ -988,7 +988,7 @@ extension DatabaseViewerCoordinator: UISplitViewControllerDelegate {
 }
 
 extension DatabaseViewerCoordinator {
-    
+
     private func updateAnnouncements() {
         guard let rootGroupViewer = rootGroupViewer else {
             assertionFailure()
@@ -999,7 +999,7 @@ extension DatabaseViewerCoordinator {
         if let appLockSetupAnnouncement = maybeMakeAppLockSetupAnnouncement(for: rootGroupViewer) {
             announcements.append(appLockSetupAnnouncement)
         }
-        
+
         let status = databaseFile.status
         if status.contains(.localFallback) {
             announcements.append(makeFallbackDatabaseAnnouncement(for: rootGroupViewer))
@@ -1008,15 +1008,14 @@ extension DatabaseViewerCoordinator {
                 announcements.append(makeReadOnlyDatabaseAnnouncement(for: rootGroupViewer))
             }
         }
-        
+
         if announcements.isEmpty, 
-           let donationAnnouncement = maybeMakeDonationAnnouncement(for: rootGroupViewer)
-        {
+           let donationAnnouncement = maybeMakeDonationAnnouncement(for: rootGroupViewer) {
             announcements.append(donationAnnouncement)
         }
         rootGroupViewer.announcements = announcements
     }
-    
+
     private func shouldOfferAppLockSetup() -> Bool {
         let settings = Settings.current
         if settings.isHideAppLockSetupReminder {
@@ -1025,7 +1024,7 @@ extension DatabaseViewerCoordinator {
         let isDataVulnerable = settings.isRememberDatabaseKey && !settings.isAppLockEnabled
         return isDataVulnerable
     }
-    
+
     private func maybeMakeAppLockSetupAnnouncement(
         for viewController: GroupViewerVC
     ) -> AnnouncementItem? {
@@ -1047,7 +1046,7 @@ extension DatabaseViewerCoordinator {
         )
         return announcement
     }
-    
+
     private func makeFallbackDatabaseAnnouncement(
         for viewController: GroupViewerVC
     ) -> AnnouncementItem {
@@ -1070,7 +1069,7 @@ extension DatabaseViewerCoordinator {
             }
         )
     }
-    
+
     private func makeReadOnlyDatabaseAnnouncement(
         for viewController: GroupViewerVC
     ) -> AnnouncementItem {
@@ -1081,7 +1080,7 @@ extension DatabaseViewerCoordinator {
             image: nil
         )
     }
-    
+
     private func maybeMakeDonationAnnouncement(
         for viewController: GroupViewerVC
     ) -> AnnouncementItem? {
@@ -1089,12 +1088,12 @@ extension DatabaseViewerCoordinator {
         guard TipBox.shouldSuggestDonation(status: premiumStatus) else {
             return nil
         }
-        
+
         let texts = TestHelper.getCurrent(from: [
             (nil, nil),
             (LString.tipBoxDescription1, LString.tipBoxCallToAction1),
             (LString.tipBoxDescription2, LString.tipBoxCallToAction2),
-            (LString.tipBoxDescription3, LString.tipBoxCallToAction3),
+            (LString.tipBoxDescription3, LString.tipBoxCallToAction3)
         ])
         guard texts.1 != nil else { 
             return nil
@@ -1131,7 +1130,11 @@ extension DatabaseViewerCoordinator {
 }
 
 extension DatabaseViewerCoordinator: PasswordAuditCoordinatorDelegate {
-    func didPressEditEntry(_ entry: KeePassiumLib.Entry, at popoverAnchor: PopoverAnchor, onDismiss: @escaping () -> Void) {
+    func didPressEditEntry(
+        _ entry: KeePassiumLib.Entry,
+        at popoverAnchor: PopoverAnchor,
+        onDismiss: @escaping () -> Void
+    ) {
         showEntryEditor(for: entry, at: popoverAnchor, onDismiss: onDismiss)
     }
 }

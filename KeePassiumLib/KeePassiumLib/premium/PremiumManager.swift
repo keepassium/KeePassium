@@ -20,11 +20,11 @@ public enum InAppProduct: String, Codable {
         case monthly
         case other
     }
-    
+
     static let allForever = [.forever, forever2]
-    
+
     case betaForever = "com.keepassium.ios.iap.beta.forever"
-    
+
     case forever = "com.keepassium.ios.iap.forever"
     case forever2 = "com.keepassium.ios.iap.forever.2"
     case montlySubscription = "com.keepassium.ios.iap.subscription.1month"
@@ -38,7 +38,7 @@ public enum InAppProduct: String, Codable {
     case donationSmall = "com.keepassium.ios.donation.small"
     case donationMedium = "com.keepassium.ios.donation.medium"
     case donationLarge = "com.keepassium.ios.donation.large"
-    
+
     public var period: Period {
         return InAppProduct.period(productIdentifier: self.rawValue)
     }
@@ -64,7 +64,7 @@ public enum InAppProduct: String, Codable {
             return false
         }
     }
-    
+
     public var isVersionPurchase: Bool {
         switch self {
         case .version88,
@@ -85,7 +85,7 @@ public enum InAppProduct: String, Codable {
             return false
         }
     }
-    
+
     public var kind: Kind {
         switch self {
         case .betaForever,
@@ -105,7 +105,7 @@ public enum InAppProduct: String, Codable {
             return .donation
         }
     }
-    
+
     public static func period(productIdentifier: String) -> Period {
         if productIdentifier.contains(".forever") {
             return .oneTime
@@ -122,7 +122,7 @@ public enum InAppProduct: String, Codable {
             return .other
         }
     }
-    
+
     public var premiumSupportDurationAfterExpiry: TimeInterval {
         switch self {
         case .version88,
@@ -148,18 +148,17 @@ public enum InAppProduct: String, Codable {
 }
 
 
-
 public protocol PremiumManagerDelegate: AnyObject {
     func purchaseStarted(in premiumManager: PremiumManager)
-    
+
     func purchaseSucceeded(_ product: InAppProduct, skProduct: SKProduct?, in premiumManager: PremiumManager)
-    
+
     func purchaseDeferred(in premiumManager: PremiumManager)
-    
+
     func purchaseFailed(with error: Error, in premiumManager: PremiumManager)
-    
+
     func purchaseCancelledByUser(in premiumManager: PremiumManager)
-    
+
     func purchaseRestoringFinished(in premiumManager: PremiumManager)
 }
 
@@ -171,28 +170,27 @@ public class PremiumManager: NSObject {
             assert(newValue == nil || delegate == nil, "PremiumManager supports only one delegate")
         }
     }
-    
-    
+
+
 #if DEBUG
     private let gracePeriod: TimeInterval = 1 * .minute
 
     private let lapsePeriod: TimeInterval = 2 * .minute
-    
+
     private let heavyUseThreshold: TimeInterval = 5 * .minute
 #else
     private let gracePeriod: TimeInterval = 2 * .day
     private let lapsePeriod: TimeInterval = 2 * .day
     private let heavyUseThreshold: TimeInterval = 8 * .hour / 12 
 #endif
-    
-    
-    
+
+
     private var purchaseHistory = PurchaseHistory.empty
 
     public var isTrialAvailable: Bool { return !purchaseHistory.containsTrial }
-    
+
     public var fallbackDate: Date? { return purchaseHistory.premiumFallbackDate }
-    
+
     public enum Status {
         case initialGracePeriod
         case subscribed
@@ -201,9 +199,9 @@ public class PremiumManager: NSObject {
         case freeLightUse
         case freeHeavyUse
     }
-    
+
     public var status: Status = .initialGracePeriod
-    
+
     public static let statusUpdateNotification =
         Notification.Name("com.keepassium.premiumManager.statusUpdated")
 
@@ -212,13 +210,13 @@ public class PremiumManager: NSObject {
     }
 
     public let usageMonitor = UsageMonitor()
-    
+
     private override init() {
         super.init()
         reloadReceipt()
         updateStatus(allowSubscriptionExpiration: true)
     }
-    
+
     public func updateStatus() {
         updateStatus(allowSubscriptionExpiration: false)
     }
@@ -227,7 +225,7 @@ public class PremiumManager: NSObject {
         if !allowSubscriptionExpiration && status == .subscribed {
             return
         }
-        
+
         let previousStatus = status
         var wasStatusSet = false
         if let expiryDate = purchaseHistory.latestPremiumExpiryDate {
@@ -255,7 +253,7 @@ public class PremiumManager: NSObject {
                 status = .freeHeavyUse
             }
         }
-        
+
         if status != previousStatus {
             Diag.info("Premium status has changed [was: \(previousStatus), now: \(status)]")
             notifyStatusChanged()
@@ -265,8 +263,8 @@ public class PremiumManager: NSObject {
     public func getPurchaseHistory() -> PurchaseHistory {
         return purchaseHistory
     }
-    
-    
+
+
     public func reloadReceipt() {
         let oldPurchaseHistory = purchaseHistory
         if AppGroup.isMainApp {
@@ -285,13 +283,13 @@ public class PremiumManager: NSObject {
                 Diag.error("Failed to load purchase history [message: \(error.localizedDescription)]")
             }
         }
-        
+
         if purchaseHistory != oldPurchaseHistory {
             Diag.info("Purchase history updated")
             notifyStatusChanged()
         }
     }
-    
+
     public func isPremiumSupportAvailable() -> Bool {
         guard let premiumSupportExpiryDate = purchaseHistory.premiumSupportExpiryDate else {
             return false
@@ -299,13 +297,13 @@ public class PremiumManager: NSObject {
         let timeLeft = premiumSupportExpiryDate.timeIntervalSinceNow
         return timeLeft > 0
     }
-    
-    
+
+
     public func isAvailable(feature: PremiumFeature) -> Bool {
         return feature.isAvailable(in: status, fallbackDate: fallbackDate)
     }
-    
-    
+
+
     public var gracePeriodRemaining: TimeInterval {
         let firstLaunchTimestamp = Settings.current.firstLaunchTimestamp
         let timeSinceFirstLaunch = Date.now.timeIntervalSince(firstLaunchTimestamp)
@@ -317,9 +315,9 @@ public class PremiumManager: NSObject {
         return timeLeft
     }
 
-    
+
     public fileprivate(set) var availableProducts: [SKProduct]?
-    private let purchaseableProducts: [InAppProduct.Kind : [InAppProduct]] = [
+    private let purchaseableProducts: [InAppProduct.Kind: [InAppProduct]] = [
         .premium: [
             .forever2,
             .montlySubscription,
@@ -332,56 +330,54 @@ public class PremiumManager: NSObject {
             .donationLarge,
         ]
     ]
-        
-    
+
     private var productsRequest: SKProductsRequest?
 
     public typealias ProductsRequestHandler = (([SKProduct]?, Error?) -> Void)
     fileprivate var productsRequestHandler: ProductsRequestHandler?
-    
+
     public func requestAvailableProducts(
         ofKind kind: InAppProduct.Kind,
         completionHandler: @escaping ProductsRequestHandler
     ) {
         productsRequest?.cancel()
         productsRequestHandler = completionHandler
-        
+
         let productsToRequest = purchaseableProducts[kind] ?? []
         let productIDSetToRequest = Set<String>(productsToRequest.map { $0.rawValue })
-        
+
         productsRequest = SKProductsRequest(productIdentifiers: productIDSetToRequest)
         productsRequest!.delegate = self
         productsRequest!.start()
     }
-    
-    
+
+
     public func startObservingTransactions() {
         reloadReceipt()
         SKPaymentQueue.default().add(self)
     }
-    
+
     public func finishObservingTransactions() {
         SKPaymentQueue.default().remove(self)
     }
-    
+
     public func purchase(_ product: SKProduct) {
         Diag.info("Starting purchase [product: \(product.productIdentifier)]")
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
     }
-    
+
     public func restorePurchases() {
         Diag.info("Starting to restore purchases")
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
 
-
 extension PremiumManager: SKProductsRequestDelegate {
     public func productsRequest(
         _ request: SKProductsRequest,
-        didReceive response: SKProductsResponse)
-    {
+        didReceive response: SKProductsResponse
+    ) {
         Diag.debug("Received list of in-app purchases")
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -391,7 +387,7 @@ extension PremiumManager: SKProductsRequestDelegate {
             self.productsRequestHandler = nil
         }
     }
-    
+
     public func request(_ request: SKRequest, didFailWithError error: Error) {
         Diag.warning("Failed to acquire list of in-app purchases [message: \(error.localizedDescription)]")
         DispatchQueue.main.async { [weak self] in
@@ -404,12 +400,11 @@ extension PremiumManager: SKProductsRequestDelegate {
     }
 }
 
-
 extension PremiumManager: SKPaymentTransactionObserver {
     public func paymentQueue(
         _ queue: SKPaymentQueue,
-        updatedTransactions transactions: [SKPaymentTransaction])
-    {
+        updatedTransactions transactions: [SKPaymentTransaction]
+    ) {
         reloadReceipt()
         for transaction in transactions {
             switch transaction.transactionState {
@@ -417,27 +412,23 @@ extension PremiumManager: SKPaymentTransactionObserver {
                 didPurchase(with: transaction, in: queue)
             case .purchasing:
                 delegate?.purchaseStarted(in: self)
-                break
             case .failed:
                 didFailToPurchase(with: transaction, in: queue)
-                break
             case .restored:
                 didRestorePurchase(transaction, in: queue)
-                break
             case .deferred:
                 delegate?.purchaseDeferred(in: self)
-                break
             @unknown default:
                 Diag.warning("Unknown transaction state")
                 assertionFailure()
             }
         }
     }
-    
+
     public func paymentQueue(
         _ queue: SKPaymentQueue,
-        restoreCompletedTransactionsFailedWithError error: Error)
-    {
+        restoreCompletedTransactionsFailedWithError error: Error
+    ) {
         Diag.error("Failed to restore purchases [message: \(error.localizedDescription)]")
         delegate?.purchaseFailed(with: error, in: self)
     }
@@ -449,40 +440,39 @@ extension PremiumManager: SKPaymentTransactionObserver {
         updateStatus(allowSubscriptionExpiration: false)
         delegate?.purchaseRestoringFinished(in: self)
     }
-    
+
     public func paymentQueue(
         _ queue: SKPaymentQueue,
         shouldAddStorePayment payment: SKPayment,
         for product: SKProduct
-        ) -> Bool
-    {
+    ) -> Bool {
         return true 
     }
-    
+
     private func didPurchase(with transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         guard let transactionDate = transaction.transactionDate else {
             assertionFailure()
             Diag.warning("IAP transaction date is empty?!")
             return
         }
-        
+
         let productID = transaction.payment.productIdentifier
         guard let product = InAppProduct(rawValue: productID) else {
             assertionFailure()
             Diag.error("IAP with unrecognized product ID [id: \(productID)]")
             return
         }
-        
+
         let skProduct = availableProducts?.first(where: { $0.productIdentifier == productID })
-        
+
         Diag.info("IAP purchase update [date: \(transactionDate), product: \(productID)]")
         queue.finishTransaction(transaction)
-        
+
         reloadReceipt()
         updateStatus(allowSubscriptionExpiration: false)
         delegate?.purchaseSucceeded(product, skProduct: skProduct, in: self)
     }
-    
+
     private func didRestorePurchase(_ transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         defer {
             queue.finishTransaction(transaction)
@@ -493,7 +483,7 @@ extension PremiumManager: SKPaymentTransactionObserver {
             Diag.warning("IAP transaction date is empty?!")
             return
         }
-        
+
         let productID = transaction.payment.productIdentifier
         guard let _ = InAppProduct(rawValue: productID) else {
             assertionFailure()
@@ -502,11 +492,11 @@ extension PremiumManager: SKPaymentTransactionObserver {
         }
         Diag.info("Restored purchase [date: \(transactionDate), product: \(productID)]")
     }
-    
+
     private func didFailToPurchase(
         with transaction: SKPaymentTransaction,
-        in queue: SKPaymentQueue)
-    {
+        in queue: SKPaymentQueue
+    ) {
         guard let error = transaction.error as? SKError else {
             assertionFailure()
             Diag.error("In-app purchase failed [message: \(transaction.error?.localizedDescription ?? "nil")]")

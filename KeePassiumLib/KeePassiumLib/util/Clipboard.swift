@@ -6,35 +6,35 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import UIKit
 import MobileCoreServices
+import UIKit
 import UniformTypeIdentifiers
 
 public class Clipboard {
 
     public static let general = Clipboard()
     private static let concealedTypeID = "org.nspasteboard.ConcealedType"
-    
+
     private init() {
     }
-    
-    public func insert(url: URL, timeout: Double?=nil) {
+
+    public func insert(url: URL, timeout: Double? = nil) {
         Diag.debug("Inserted a URL to clipboard")
         insert(value: url, identifier: UTType.url.identifier, timeout: timeout)
         scheduleCleanup(url: url, after: timeout)
     }
-    
+
     @discardableResult
-    public func insert(text: String, timeout: Double?=nil) -> Bool {
+    public func insert(text: String, timeout: Double? = nil) -> Bool {
         Diag.debug("Inserted a string to clipboard")
-        insert(value: text, identifier: UTType.utf8PlainText.identifier, timeout: timeout)        
+        insert(value: text, identifier: UTType.utf8PlainText.identifier, timeout: timeout)
         let isSuccessful = (UIPasteboard.general.string == text)
         if isSuccessful {
             scheduleCleanup(text: text, after: timeout)
         }
         return isSuccessful
     }
-    
+
     private func insert(value: Any, identifier: String, timeout: Double?) {
         var pasteboardItem = [String: Any]()
         pasteboardItem[identifier] = value
@@ -82,7 +82,7 @@ public class Clipboard {
             }
         }
     }
-        
+
     private func clear() {
         let isLocalOnly = !Settings.current.isUniversalClipboardEnabled
         UIPasteboard.general.setItems([[:]], options: [.localOnly: isLocalOnly])

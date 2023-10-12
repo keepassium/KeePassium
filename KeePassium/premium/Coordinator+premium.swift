@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 extension Coordinator {
-    
+
     func startObservingPremiumStatus(_ selector: Selector) {
         NotificationCenter.default.addObserver(
             self,
@@ -17,8 +17,7 @@ extension Coordinator {
             name: PremiumManager.statusUpdateNotification,
             object: nil)
     }
-    
-    
+
     func performPremiumActionOrOfferUpgrade(
         for feature: PremiumFeature,
         allowBypass: Bool = false,
@@ -30,7 +29,7 @@ extension Coordinator {
             actionHandler()
             return
         }
-        
+
         if allowBypass {
             offerPremiumUpgrade(
                 for: feature,
@@ -59,7 +58,7 @@ extension Coordinator {
             preferredStyle: .alert
         )
         upgradeNotice.addAction(title: LString.actionUpgradeToPremium, style: .default) {
-            [weak self, weak viewController] _ in
+            [weak self, weak viewController] _ in 
             guard let self = self,
                   let viewController = viewController
             else {
@@ -99,8 +98,7 @@ extension Coordinator {
 extension Coordinator {
     func showPremiumUpgrade(in viewController: UIViewController) {
         let urlOpener = URLOpener(viewController)
-        urlOpener.open(url: AppGroup.upgradeToPremiumURL) {
-            [self] (success) in
+        urlOpener.open(url: AppGroup.upgradeToPremiumURL) { [self] success in
             if !success {
                 Diag.warning("Failed to open main app")
                 showManualUpgradeMessage(in: viewController)

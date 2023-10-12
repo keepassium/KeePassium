@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIImage {
-    
+
     func downscalingToSquare(maxSide: CGFloat) -> UIImage? {
         let targetSide: CGFloat
         if size.width > maxSide && size.height > maxSide {
@@ -17,13 +17,13 @@ public extension UIImage {
         } else {
             targetSide = min(size.width, size.height)
         }
-        
+
         let targetSize = CGSize(width: targetSide, height: targetSide)
         UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
         self.draw(in: CGRect(x: 0, y: 0, width: targetSide, height: targetSide))
         let resized = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         return resized?.withRenderingMode(self.renderingMode)
     }
 }

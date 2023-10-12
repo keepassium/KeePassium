@@ -26,7 +26,7 @@ public extension KeyHelper {
             )
             return
         }
-        
+
         FileDataProvider.read(keyFileRef, timeout: timeout, completionQueue: nil) { result in
             assert(!Thread.isMainThread)
             switch result {
@@ -46,7 +46,7 @@ public extension KeyHelper {
             }
         }
     }
-    
+
     private func buildCompositeKey(
         password: String,
         keyFileData: SecureBytes,
@@ -61,7 +61,7 @@ public extension KeyHelper {
                 completion(.failure(LString.Error.passwordAndKeyFileAreBothEmpty))
             }
         }
-        
+
         do {
             let staticComponents = try self.combineComponents(
                 passwordData: passwordData, 

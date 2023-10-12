@@ -10,17 +10,17 @@ import UIKit
 
 class GradientSeparatorView: UIView {
     private var gradient: CAGradientLayer?
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupGradient()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupGradient()
     }
-    
+
     private func setupGradient() {
         super.awakeFromNib()
         let gradient = CAGradientLayer()
@@ -34,7 +34,7 @@ class GradientSeparatorView: UIView {
         layer.mask = gradient
         self.gradient = gradient
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         gradient?.frame = bounds

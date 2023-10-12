@@ -6,15 +6,16 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
+// swiftlint:disable line_length
 extension LString {
-    
+
     public static let keyFileErrorTemplate = NSLocalizedString(
         "[Database/Unlock] Key file error: %@",
         bundle: Bundle.framework,
         value: "Key file error: %@",
         comment: "Error message related to key file. [errorDetails: String]")
-    
-    
+
+
     public static let titleSyncConflict = NSLocalizedString(
         "[Database/SyncConflict/title]",
         bundle: Bundle.framework,
@@ -27,7 +28,7 @@ extension LString {
         value: "The database has changed since it was loaded in KeePassium.",
         comment: "Message shown in case of database sync conflict."
     )
-    
+
     public static let syncConflictLoadedVersion = NSLocalizedString(
         "[Database/SyncConflict/loadedVersion]",
         bundle: Bundle.framework,
@@ -40,14 +41,14 @@ extension LString {
         value: "Current version",
         comment: "Title: the current (on-server) database version in case of sync conflict."
     )
-    
+
     public static let conflictResolutionOverwriteAction = LString.actionOverwrite
     public static let conflictResolutionOverwriteDescription = NSLocalizedString(
         "[Database/SyncConflict/Overwrite/description]",
         bundle: Bundle.framework,
         value: "Overwrite target file with the local version.",
         comment: "Explanation of the database sync conflict `Overwrite` option.")
-    
+
     public static let conflictResolutionSaveAsAction = LString.actionFileSaveAs
     public static let conflictResolutionSaveAsDescription = NSLocalizedString(
         "[Database/SyncConflict/SaveAs/description]",
@@ -65,16 +66,15 @@ extension LString {
         bundle: Bundle.framework,
         value: "Combine changes before saving.",
         comment: "Explanation of the database sync conflict `Merge` option.")
-    
+
     public static let conflictResolutionCancelAction = LString.actionCancel
     public static let conflictResolutionCancelDescription = NSLocalizedString(
         "[Database/SyncConflict/Cancel/description]",
         bundle: Bundle.framework,
         value: "Cancel saving, leave target file intact.",
         comment: "Explanation of the database sync conflict `Cancel` option.")
-    
-    
-    
+
+
     public static let hardwareKeyNotAvailableInAutoFill = NSLocalizedString(
         "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill.",
         bundle: Bundle.framework,
@@ -85,15 +85,15 @@ extension LString {
         bundle: Bundle.framework,
         value: "NFC requires iOS 13 or later.",
         comment: "A notification that NFC (Near Field Communication) interface is not supported by the current iOS version.")
-    
-    
+
+
     public static let titleDatabaseSettings = NSLocalizedString(
         "[Database/Settings/title]",
         bundle: Bundle.framework,
         value: "Database Settings",
         comment: "Title of database-related settings screen"
     )
-    
+
     public static let titleSettingsFileAccess = NSLocalizedString(
         "[Database/Settings/FileAccess/title]",
         bundle: Bundle.framework,
@@ -106,7 +106,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Read Only",
         comment: "File setting title, whether the file can be modified (yes/no).")
-    
+
     public static let titleConsiderFileUnreachable = NSLocalizedString(
         "[Database/Settings/ConsiderFileUnreachable/title]",
         bundle: Bundle.framework,
@@ -118,27 +118,26 @@ extension LString {
         bundle: Bundle.framework,
         value: "If File is Unreachable",
         comment: "File settings parameter: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.)")
-    
+
     public static let titleIfFileUnreachableShowError = NSLocalizedString(
         "[Database/Settings/FallbackStrategy/ShowError/title]",
         bundle: Bundle.framework,
         value: "Show Error",
         comment: "Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.)")
-    
+
     public static let titleIfFileUnreachableUseCache = NSLocalizedString(
         "[Database/Settings/FallbackStrategy/UseCache/title]",
         bundle: Bundle.framework,
         value: "Use Local Copy",
         comment: "Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Use Local Copy`.)")
-    
+
     public static let titleIfFileUnreachableReAddFile = NSLocalizedString(
         "[Database/Settings/FallbackStrategy/ReAddFile/title]",
         bundle: Bundle.framework,
         value: "Re-add File",
         comment: "Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.)")
 
-    
-    
+
     public static let callToActionChooseDestinationGroup = NSLocalizedString(
         "[General/DestinationGroup/title] Choose a Destination",
         bundle: Bundle.framework,
@@ -150,8 +149,8 @@ extension LString {
         value: "Switch Database",
         comment: "Action/button to switch from current to some other database."
     )
-    
-    
+
+
     public static let titleEntrySubtitle = NSLocalizedString(
         "[Settings/GroupViewer] Entry Subtitle",
         bundle: Bundle.framework,
@@ -167,7 +166,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "List Settings",
         comment: "Title of list view configuration screen")
-    
+
 
     public static let actionChangeIcon = NSLocalizedString(
         "[EditEntry/Icon/change]",
@@ -183,34 +182,34 @@ extension LString {
         comment: "Action: choose a username from a list"
     )
 
-    
+
     public static let statusLoadingAttachmentFile = NSLocalizedString(
         "[Entry/Files/Add] Loading attachment file",
         bundle: Bundle.framework,
         value: "Loading attachment file",
         comment: "Status message: loading file to be attached to an entry")
-    
+
     public static let itemCategoryDefault = NSLocalizedString(
         "[ItemCategory] Default (KeePass)",
         bundle: Bundle.framework,
         value: "Default (KeePass)",
         comment: "Name of an entry/group category (visual style): default one, like in KeePass"
     )
-    
+
     public static let actionPreviewAttachments = NSLocalizedString(
         "[Entry/Attachments/preview]",
         bundle: Bundle.framework,
         value: "Preview",
         comment: "Action to preview one or several attached documents or images"
     )
-    
+
     public static let titleEntryPreviousVersions = NSLocalizedString(
         "[Entry/History] Previous Versions",
         bundle: Bundle.framework,
         value: "Previous Versions",
         comment: "Title of a list with previous versions/revisions of an entry.")
-    
-    
+
+
     public static let titleShowBackupFiles = NSLocalizedString(
         "Show Backup Files",
         bundle: Bundle.framework,
@@ -223,7 +222,7 @@ extension LString {
         value: "No database files",
         comment: "Placeholder shown when there are no database files available")
 
-    
+
     public static let databaseLastEditedByTemplate = NSLocalizedString(
         "[Database/Opened/Warning/lastEdited] Database was last edited by: %@",
         bundle: Bundle.framework,
@@ -244,8 +243,8 @@ extension LString {
         bundle: Bundle.framework,
         value: "Close Database",
         comment: "Action: lock database")
-    
-    
+
+
     public static let titleDatabaseFormatVersionUpgrade = NSLocalizedString(
         "[Database/FormatVersion/Upgrade/title]",
         bundle: Bundle.framework,
@@ -261,7 +260,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "All your data will be preserved.",
         comment: "Info message when changing database file format.")
-    
+
 
     public static let statusItemEdited = NSLocalizedString(
         "[Database/Item/Edited/state]",
@@ -269,3 +268,4 @@ extension LString {
         value: "Edited",
         comment: "Status of a database item (entry or group) after it was edited.")
 }
+// swiftlint:enable line_length

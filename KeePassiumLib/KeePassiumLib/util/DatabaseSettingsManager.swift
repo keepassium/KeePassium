@@ -10,18 +10,18 @@ import Foundation
 
 public class DatabaseSettingsManager {
     public static let shared = DatabaseSettingsManager()
-    
+
     init() {
     }
-    
+
     public func getSettings(for databaseFile: DatabaseFile) -> DatabaseSettings? {
         return getSettings(for: databaseFile.descriptor)
     }
-    
+
     public func getSettings(for databaseRef: URLReference) -> DatabaseSettings? {
         return getSettings(for: databaseRef.getDescriptor())
     }
-    
+
     public func getOrMakeSettings(for databaseFile: DatabaseFile) -> DatabaseSettings {
         return getOrMakeSettings(for: databaseFile.descriptor)
     }
@@ -60,7 +60,7 @@ public class DatabaseSettingsManager {
             Diag.error("Failed to forget all key files associations [message: \(error.localizedDescription)]")
         }
     }
-    
+
     public func forgetAllHardwareKeys() {
         do {
             try updateAllSettings { $0.setAssociatedYubiKey(nil) }
@@ -83,7 +83,7 @@ public class DatabaseSettingsManager {
             Diag.error("Failed to remove links to key file [message: \(error.localizedDescription)]")
         }
     }
-    
+
     public func eraseAllMasterKeys() {
         do {
             try updateAllSettings { $0.clearMasterKey() }
@@ -91,7 +91,7 @@ public class DatabaseSettingsManager {
             Diag.error("Failed to erase all master keys [message: \(error.localizedDescription)]")
         }
     }
-    
+
     public func eraseAllFinalKeys() {
         do {
             try updateAllSettings { $0.clearFinalKey() }
@@ -99,8 +99,8 @@ public class DatabaseSettingsManager {
             Diag.error("Failed to erase all master keys [message: \(error.localizedDescription)]")
         }
     }
-    
-    
+
+
     public func isReadOnly(_ databaseRef: URLReference) -> Bool {
         switch databaseRef.location {
         case .internalBackup:
@@ -126,7 +126,7 @@ public class DatabaseSettingsManager {
             return isEnabledForApp
         }
     }
-    
+
     public func isQuickTypeEnabled(_ databaseRef: URLReference) -> Bool {
         let isEnabledForApp = Settings.current.premiumIsQuickTypeEnabled
         if let isEnabledForDB = getSettings(for: databaseRef)?.isQuickTypeEnabled {
@@ -135,7 +135,7 @@ public class DatabaseSettingsManager {
             return isEnabledForApp
         }
     }
-    
+
     public func getQuickTypeDatabaseCount() -> Int {
         let allDatabaseRefs = FileKeeper.shared.getAllReferences(
             fileType: .database,
@@ -144,7 +144,7 @@ public class DatabaseSettingsManager {
         let quickTypeDatabases = allDatabaseRefs.filter { isQuickTypeEnabled($0) }
         return quickTypeDatabases.count
     }
-    
+
     public func getAvailableFallbackStrategies(
         _ databaseRef: URLReference
     ) -> Set<UnreachableFileFallbackStrategy> {
@@ -159,7 +159,7 @@ public class DatabaseSettingsManager {
             return [.showError, .useCache]
         }
     }
-    
+
     public func getFallbackStrategy(
         _ databaseRef: URLReference,
         forAutoFill: Bool
@@ -179,7 +179,7 @@ public class DatabaseSettingsManager {
             return getSettings(for: databaseRef)?.fallbackStrategy ?? .useCache
         }
     }
-    
+
     public func getFallbackTimeout(_ databaseRef: URLReference, forAutoFill: Bool) -> TimeInterval {
         if forAutoFill,
            let autoFillValue = getSettings(for: databaseRef)?.autofillFallbackTimeout
@@ -188,8 +188,8 @@ public class DatabaseSettingsManager {
         }
         return getSettings(for: databaseRef)?.fallbackTimeout ?? URLReference.defaultTimeoutDuration
     }
-    
-    
+
+
     private func getSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings? {
         guard let descriptor = descriptor else {
             Diag.warning("Cannot get database descriptor")
@@ -206,7 +206,7 @@ public class DatabaseSettingsManager {
             return nil
         }
     }
-    
+
     private func getOrMakeSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings {
         guard let descriptor = descriptor else {
             Diag.warning("Cannot get database descriptor")
@@ -219,38 +219,38 @@ public class DatabaseSettingsManager {
         let defaultResult = DatabaseSettings()
         return defaultResult
     }
-    
+
     private func setSettings(_ dbSettings: DatabaseSettings, for descriptor: URLReference.Descriptor?) {
         guard let descriptor = descriptor else {
             Diag.warning("Cannot get database descriptor")
             assertionFailure()
             return
         }
-        
+
         do {
             try Keychain.shared.setDatabaseSettings(dbSettings, for: descriptor) 
         } catch {
             Diag.error(error.localizedDescription)
         }
     }
-    
+
     private func updateSettings(for descriptor: URLReference.Descriptor?, updater: (DatabaseSettings) -> Void) {
         let dbSettings = getOrMakeSettings(for: descriptor)
         updater(dbSettings)
         setSettings(dbSettings, for: descriptor)
     }
-    
+
     private func updateAllSettings(updater: (DatabaseSettings) -> Void) throws {
         try Keychain.shared.updateAllDatabaseSettings(updater: updater)
     }
-    
+
     private func removeSettings(for descriptor: URLReference.Descriptor?, onlyIfUnused: Bool) {
         guard let descriptor = descriptor else {
             Diag.warning("Cannot get database descriptor")
             assertionFailure()
             return
         }
-        
+
         if onlyIfUnused {
             let allDatabaseDescriptors = FileKeeper.shared.getAllReferences(
                 fileType: .database,
@@ -260,7 +260,7 @@ public class DatabaseSettingsManager {
                 return
             }
         }
-        
+
         do {
             try Keychain.shared.removeDatabaseSettings(for: descriptor)
         } catch {

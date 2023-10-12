@@ -13,7 +13,7 @@ public enum DatabaseFeature2 {
     case customIconModificationTime
     case previousParentGroup
     case groupTags
-    
+
     var formatVersionRequired: Set<Database2.FormatVersion> {
         switch self {
         case .customData:
@@ -31,11 +31,11 @@ public enum DatabaseFeature2 {
 }
 
 extension Database2.FormatVersion {
-    
+
     func supports(_ feature: DatabaseFeature2) -> Bool {
         return  feature.formatVersionRequired.contains(self)
     }
-    
+
     static func minimumRequired(for feature: DatabaseFeature2) -> Self {
         let possibleFormats = feature.formatVersionRequired.sorted()
         return possibleFormats.first! 

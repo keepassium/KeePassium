@@ -14,13 +14,13 @@ protocol HardwareKeyPickerDelegate: AnyObject {
 
 class HardwareKeyPicker: UITableViewController, Refreshable {
     weak var delegate: HardwareKeyPickerDelegate?
-    
+
     public var selectedKey: YubiKey? {
         didSet { refresh() }
     }
-    
+
     public let dismissablePopoverDelegate = DismissablePopover(leftButton: .cancel, rightButton: nil)
-    
+
     private let nfcKeys: [YubiKey] = [
         YubiKey(interface: .nfc, slot: .slot1),
         YubiKey(interface: .nfc, slot: .slot2)]
@@ -34,12 +34,12 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     private enum Section {
         private static let macOSValues: [Section] = [.noHardwareKey, .yubiKeyUSB]
         private static let iOSValues: [Section] = [.noHardwareKey, .yubiKeyNFC, .yubiKeyMFI]
-        
+
         case noHardwareKey
         case yubiKeyNFC
         case yubiKeyMFI
         case yubiKeyUSB
-        
+
         static var allValues: [Section] {
             if ProcessInfo.isRunningOnMac {
                 return Section.macOSValues
@@ -63,10 +63,10 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     private var isNFCAvailable = false
     private var isMFIAvailable = false
     private var isUSBAvailable = false
-    
+
     override var canBecomeFirstResponder: Bool { true }
-    
-    
+
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
@@ -81,32 +81,32 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         isUSBAvailable = false
         #endif
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         tableView.removeObserver(self, forKeyPath: "contentSize")
         super.viewWillDisappear(animated)
     }
-    
+
     override func observeValue(
         forKeyPath keyPath: String?,
         of object: Any?,
-        change: [NSKeyValueChangeKey : Any]?,
-        context: UnsafeMutableRawPointer?)
-    {
+        change: [NSKeyValueChangeKey: Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
         var preferredSize = tableView.contentSize
         preferredSize.width = 400
         self.preferredContentSize = preferredSize
     }
-    
+
     func refresh() {
         tableView.reloadData()
     }
-    
-    
+
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return Section.allValues.count
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section.allValues[section] {
         case .noHardwareKey:
@@ -119,11 +119,11 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             return usbKeys.count
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Section.allValues[section].title
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch Section.allValues[section] {
         case .noHardwareKey:
@@ -139,7 +139,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         }
         return super.tableView(tableView, titleForFooterInSection: section)
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
@@ -166,20 +166,20 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         cell.accessoryType = (key == selectedKey) ? .checkmark : .none
         return cell
     }
-    
+
     private func getKeyDescription(_ key: YubiKey?) -> String {
         guard let key = key else {
             return LString.noHardwareKey
         }
-        
+
         let result = String.localizedStringWithFormat(
             LString.yubikeySlotNTemplate,
             key.slot.number
         )
         return result
     }
-    
-    
+
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch Section.allValues[indexPath.section] {
         case .noHardwareKey:
@@ -200,8 +200,7 @@ extension HardwareKeyPicker: UIPopoverPresentationControllerDelegate {
     func presentationController(
         _ controller: UIPresentationController,
         viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle
-        ) -> UIViewController?
-    {
+    ) -> UIViewController? {
         if style != .popover {
             let navVC = controller.presentedViewController as? UINavigationController
             let cancelButton = UIBarButtonItem(
@@ -212,7 +211,7 @@ extension HardwareKeyPicker: UIPopoverPresentationControllerDelegate {
         }
         return nil // "keep existing"
     }
-    
+
     @objc func dismissPopover() {
         dismiss(animated: true, completion: nil)
     }

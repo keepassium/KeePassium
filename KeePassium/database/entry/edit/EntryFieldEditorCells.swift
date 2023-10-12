@@ -7,12 +7,12 @@
 //  For commercial licensing, please contact the author.
 
 
-import UIKit
 import KeePassiumLib
+import UIKit
 
 struct EntryFieldActionConfiguration {
     static let hidden = Self(state: [.hidden], menu: nil)
-    
+
     enum State {
         case enabled
         case hidden
@@ -20,11 +20,11 @@ struct EntryFieldActionConfiguration {
     }
     var state: Set<State>
     var menu: UIMenu?
-    
+
     public func apply(to button: UIButton) {
         button.menu = menu
         button.showsMenuAsPrimaryAction = menu != nil
-        
+
         button.isHidden = state.contains(.hidden)
         button.isEnabled = state.contains(.enabled)
         button.configuration?.showsActivityIndicator = state.contains(.busy)
@@ -40,7 +40,7 @@ internal protocol EditableFieldCellDelegate: AnyObject {
         for field: EditableField,
         at popoverAnchor: PopoverAnchor,
         in cell: EditableFieldCell)
-    
+
     func getActionConfiguration(for field: EditableField) -> EntryFieldActionConfiguration
 }
 
@@ -58,10 +58,10 @@ class EntryFieldEditorTitleCell:
     TextInputEditMenuDelegate
 {
     public static let storyboardID = "TitleCell"
-    
+
     @IBOutlet weak var titleTextField: ValidatingTextField!
     @IBOutlet weak var iconButton: UIButton!
-    
+
     weak var field: EditableField? {
         didSet { refresh() }
     }
@@ -69,7 +69,7 @@ class EntryFieldEditorTitleCell:
         didSet { refresh() }
     }
     weak var delegate: EditableFieldCellDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -77,7 +77,7 @@ class EntryFieldEditorTitleCell:
         titleTextField.validityDelegate = self
         titleTextField.delegate = self
         titleTextField.addRandomizerEditMenu()
-        
+
         iconButton.configuration = .tinted()
         iconButton.borderColor = .actionTint
         iconButton.borderWidth = 1
@@ -85,16 +85,16 @@ class EntryFieldEditorTitleCell:
         iconButton.configuration?.baseForegroundColor = .iconTint
         iconButton.accessibilityLabel = LString.fieldIcon
     }
-    
+
     private func refresh() {
         guard let field else { return }
         let buttonConfig = delegate?.getActionConfiguration(for: field)
         buttonConfig?.apply(to: iconButton)
         iconButton.configuration?.image = icon?.downscalingToSquare(maxSide: 29)
-        
+
         titleTextField.text = field.value
     }
-    
+
     override func becomeFirstResponder() -> Bool {
         let result = super.becomeFirstResponder()
         titleTextField.becomeFirstResponder()
@@ -103,38 +103,38 @@ class EntryFieldEditorTitleCell:
         }
         return result
     }
-    
+
     func pulsateIcon() {
         let scalingAnimation = CABasicAnimation(keyPath: "transform.scale")
         scalingAnimation.toValue = 1.25
         scalingAnimation.duration = 0.2
-        scalingAnimation.timingFunction = CAMediaTimingFunction.init(name: .easeOut)
+        scalingAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         scalingAnimation.autoreverses = true
         scalingAnimation.repeatCount = 1
         iconButton.layer.add(scalingAnimation, forKey: nil)
     }
-    
+
     func validate() {
         titleTextField.validate()
     }
-    
+
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         guard let field = field else { return }
         field.value = titleTextField.text ?? ""
         field.isValid = field.value?.isNotEmpty ?? false
         delegate?.didChangeField(field, in: self)
     }
-    
+
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         return field?.isValid ?? false
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let field = field else { return false }
         delegate?.didPressReturn(for: field, in: self)
         return false
     }
-    
+
     func textInputDidRequestRandomizer(_ textInput: TextInputView) {
         guard textInput === titleTextField else { return }
         delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
@@ -152,7 +152,7 @@ class EntryFieldEditorSingleLineCell:
     @IBOutlet weak var textField: ValidatingTextField!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
-    
+
     weak var delegate: EditableFieldCellDelegate? {
         didSet {
             refreshActionButton()
@@ -169,14 +169,14 @@ class EntryFieldEditorSingleLineCell:
             refreshActionButton()
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
         textField.font = UIFont.entryTextFont()
         textField.adjustsFontForContentSizeCategory = true
-        
+
         textField.validityDelegate = self
         textField.delegate = self
         textField.addRandomizerEditMenu()
@@ -190,7 +190,7 @@ class EntryFieldEditorSingleLineCell:
         let actionConfig = delegate?.getActionConfiguration(for: field) ?? .hidden
         actionConfig.apply(to: actionButton)
     }
-    
+
     override func becomeFirstResponder() -> Bool {
         super.becomeFirstResponder()
         return textField.becomeFirstResponder()
@@ -200,30 +200,30 @@ class EntryFieldEditorSingleLineCell:
         textField.validate()
         refreshActionButton()
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let field = field else { return false }
         delegate?.didPressReturn(for: field, in: self)
         return false
     }
-    
+
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         guard let field = field else { return }
         field.value = textField.text ?? ""
         delegate?.didChangeField(field, in: self)
         refreshActionButton()
     }
-    
+
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         return field?.isValid ?? false
     }
-    
-    @IBAction func didPressActionButton(_ sender: Any) {
+
+    @IBAction private func didPressActionButton(_ sender: Any) {
         guard let field = field else { return }
         let popoverAnchor = PopoverAnchor(sourceView: actionButton, sourceRect: actionButton.bounds)
         delegate?.didPressButton(for: field, at: popoverAnchor, in: self)
     }
-    
+
     func textInputDidRequestRandomizer(_ textInput: TextInputView) {
         guard textInput === textField else { return }
         delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
@@ -242,7 +242,7 @@ final class PasswordEntryFieldCell:
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var passwordQualityIndicatorView: PasswordQualityIndicatorView!
     @IBOutlet weak var randomizeButton: UIButton!
-    
+
     weak var delegate: EditableFieldCellDelegate?
     weak var field: EditableField? {
         didSet {
@@ -255,55 +255,55 @@ final class PasswordEntryFieldCell:
             passwordQualityIndicatorView.quality = .init(password: field?.value)
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
         textField.font = UIFont.entryTextFont()
         textField.adjustsFontForContentSizeCategory = true
-        
+
         textField.validityDelegate = self
         textField.delegate = self
         textField.addRandomizerEditMenu()
     }
-    
+
     override func becomeFirstResponder() -> Bool {
         super.becomeFirstResponder()
         return textField.becomeFirstResponder()
     }
-    
+
     func validate() {
         textField.validate()
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let field = field else { return false }
         delegate?.didPressReturn(for: field, in: self)
         return false
     }
-    
+
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         guard let field = field else { return }
         field.value = textField.text ?? ""
         passwordQualityIndicatorView.quality = .init(password: textField.text)
         delegate?.didChangeField(field, in: self)
     }
-    
+
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         return field?.isValid ?? false
     }
-    
-    @IBAction func didPressRandomizeButton(_ sender: Any) {
+
+    @IBAction private func didPressRandomizeButton(_ sender: Any) {
         textField.selectAll(self) 
         delegate?.didPressRandomize(for: textField, viaMenu: false, in: self)
     }
-    
+
     func shouldShowRandomizerMenu(in textInput: TextInputView) -> Bool {
         return textInput === textField
     }
-    
+
     func textInputDidRequestRandomizer(_ textInput: TextInputView) {
         guard textInput === textField else { return }
         delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
@@ -320,7 +320,7 @@ class EntryFieldEditorMultiLineCell:
     public static let storyboardID = "MultiLineCell"
     @IBOutlet private weak var textView: ValidatingTextView!
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     weak var delegate: EditableFieldCellDelegate?
     weak var field: EditableField? {
         didSet {
@@ -331,15 +331,15 @@ class EntryFieldEditorMultiLineCell:
             textView.accessibilityLabel = field?.visibleName
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         titleLabel.adjustsFontForContentSizeCategory = true
         textView.font = UIFont.entryTextFont()
         textView.adjustsFontForContentSizeCategory = true
-        
+
         textView.validityDelegate = self
         textView.delegate = self
         textView.addRandomizerEditMenu()
@@ -359,11 +359,11 @@ class EntryFieldEditorMultiLineCell:
         field.value = textView.text ?? ""
         delegate?.didChangeField(field, in: self)
     }
-    
+
     func validatingTextViewShouldValidate(_ sender: ValidatingTextView) -> Bool {
         return field?.isValid ?? false
     }
-    
+
     func textInputDidRequestRandomizer(_ textInput: TextInputView) {
         guard textInput === textView else { return }
         delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
@@ -384,7 +384,7 @@ class EntryFieldEditorCustomFieldCell:
     @IBOutlet private weak var valueTextView: ValidatingTextView!
     @IBOutlet private weak var protectionSwitch: UISwitch!
     @IBOutlet private weak var deleteButton: UIButton!
-    
+
     weak var delegate: EditableFieldCellDelegate?
     weak var field: EditableField? {
         didSet {
@@ -393,16 +393,16 @@ class EntryFieldEditorCustomFieldCell:
             protectionSwitch.isOn = field?.isProtected ?? false
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         nameTextField.font = UIFont.entryTextFont()
         nameTextField.adjustsFontForContentSizeCategory = true
-        
+
         valueTextView.font = UIFont.entryTextFont()
         valueTextView.adjustsFontForContentSizeCategory = true
-        
+
         protectionSwitch.addTarget(self, action: #selector(protectionDidChange), for: .valueChanged)
         deleteButton.accessibilityLabel = LString.actionDelete
         deleteButton.addTarget(self, action: #selector(didPressDelete), for: .touchUpInside)
@@ -437,36 +437,36 @@ class EntryFieldEditorCustomFieldCell:
         field.isValid = nameTextField.isValid
         delegate?.didChangeField(field, in: self)
     }
-    
+
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         guard sender == nameTextField else { assertionFailure(); return false }
         return field?.isValid ?? false
     }
-    
+
     func validatingTextView(_ sender: ValidatingTextView, textDidChange text: String) {
         guard sender == valueTextView else { assertionFailure(); return }
         guard let field = field else { return }
         field.value = valueTextView.text ?? ""
         delegate?.didChangeField(field, in: self)
     }
-    
+
     func validatingTextViewShouldValidate(_ sender: ValidatingTextView) -> Bool {
         guard sender == valueTextView else { assertionFailure(); return false }
         return true 
     }
-    
+
     func textInputDidRequestRandomizer(_ textInput: TextInputView) {
         guard (textInput === nameTextField) || (textInput === valueTextView) else { return }
         delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
     }
-    
+
     @objc
     private func protectionDidChange() {
         guard let field = field else { return }
         field.isProtected = protectionSwitch.isOn
         delegate?.didChangeField(field, in: self)
     }
-    
+
     @objc
     private func didPressDelete() {
         guard let field = field else { return }

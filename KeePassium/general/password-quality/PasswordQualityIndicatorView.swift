@@ -20,10 +20,10 @@ final class PasswordQualityIndicatorView: UIView {
 
             isHidden = false
             let qualityIndex = PasswordQuality.allCases.firstIndex(of: quality) ?? 0
-            indicatorViews.enumerated().forEach { (index, view) in
+            indicatorViews.enumerated().forEach { index, view in
                 view.backgroundColor = index <= qualityIndex ? quality.strengthColor : .auxiliaryText
             }
-            
+
             let qualityDescription: String
             if quality == PasswordQuality.veryGood(0) {
                 let formattedBitCount = BitCountFormatter.string(fromBitCount: Int64(quality.entropy))
@@ -41,7 +41,7 @@ final class PasswordQualityIndicatorView: UIView {
             )
         }
     }
-    
+
     var isBusy: Bool {
         didSet {
             if isBusy {
@@ -105,7 +105,7 @@ final class PasswordQualityIndicatorView: UIView {
             stackView.topAnchor.constraint(equalTo: topAnchor),
             qualityLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 2),
             qualityLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            qualityLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            qualityLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
         isAccessibilityElement = true
         accessibilityTraits = [.staticText]
@@ -113,6 +113,7 @@ final class PasswordQualityIndicatorView: UIView {
 }
 
 extension LString {
+    // swiftlint:disable line_length
     public static let passwordQualityWithEntropyTemplate = NSLocalizedString(
         "[PasswordQuality/LevelWithEntropy/description]",
         value: "%@ (%@ of entropy)",
@@ -123,4 +124,5 @@ extension LString {
         value: "Password quality: %@",
         comment: "Password quality description. For example: `Password quality: Weak`. [level: String]"
     )
+    // swiftlint:enable line_length
 }

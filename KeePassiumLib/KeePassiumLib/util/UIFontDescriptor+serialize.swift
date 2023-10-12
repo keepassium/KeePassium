@@ -15,7 +15,7 @@ extension UIFontDescriptor {
             requiringSecureCoding: true)
         return data
     }
-    
+
     public static func deserialize(_ data: Data?) -> UIFontDescriptor? {
         guard let data else { return nil }
         let fontDescriptor = try? NSKeyedUnarchiver.unarchivedObject(

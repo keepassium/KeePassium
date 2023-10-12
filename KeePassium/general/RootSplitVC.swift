@@ -9,15 +9,15 @@
 import KeePassiumLib
 
 class RootSplitVC: UISplitViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.preferredDisplayMode = .oneBesideSecondary
     }
-    
+
     public func setDetailRouter(_ router: NavigationRouter) {
         assert(viewControllers.count > 0) 
-        
+
         if viewControllers.count == 1 {
             let vc = viewControllers.first! 
             guard let primaryNavVC = vc as? UINavigationController else {

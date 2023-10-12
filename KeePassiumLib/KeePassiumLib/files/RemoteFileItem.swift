@@ -6,7 +6,6 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-
 public protocol RemoteFileItem {
     var name: String { get }
     var isFolder: Bool { get }

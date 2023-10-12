@@ -9,12 +9,12 @@
 import Foundation
 
 extension Array where Element == URLQueryItem {
-    
+
     func getValue(name: String) -> String? {
         return first(where: { $0.name == name })?.value
     }
-    
+
     subscript (name: String) -> URLQueryItem? {
-        return first(where: { $0.name == name})
+        return first(where: { $0.name == name })
     }
 }

@@ -46,22 +46,22 @@ public class Database1: Database {
             }
         }
     }
-    
+
     private enum ProgressSteps {
         static let all: Int64 = 100
         static let keyDerivation: Int64 = 60
         static let resolvingReferences: Int64 = 5
-        
+
         static let decryption: Int64 = 25
         static let parsing: Int64 = 10
 
         static let encryption: Int64 = 25
         static let packing: Int64 = 10
     }
-    
+
     override public var keyHelper: KeyHelper { return _keyHelper }
     private let _keyHelper = KeyHelper1()
-    
+
     private(set) var header: Header1!
     private(set) var masterKey = SecureBytes.empty()
     private(set) var backupGroup: Group1?
@@ -88,15 +88,15 @@ public class Database1: Database {
     }
 
     func createNewGroupID() -> Group1ID {
-        var groups = Array<Group>()
-        var entries = Array<Entry>()
+        var groups = [Group]()
+        var entries = [Entry]()
         if let root = root {
             root.collectAllChildren(groups: &groups, entries: &entries)
         } else {
             Diag.warning("Creating a new Group1ID for an empty database")
             assertionFailure("Creating new Group1ID for an empty database")
         }
-        
+
         var takenIDs = ContiguousArray<Int32>()
         takenIDs.reserveCapacity(groups.count)
         var maxID: Int32 = 0
@@ -107,21 +107,21 @@ public class Database1: Database {
         }
         groups.removeAll()
         entries.removeAll()
-        
+
         var newID = maxID + 1
         while takenIDs.contains(newID) {
             newID = newID &+ 1 
         }
         return newID
     }
-    
+
     override public func getBackupGroup(createIfMissing: Bool) -> Group? {
         guard let root = root else {
             Diag.warning("Tried to get Backup group without the root one")
             assertionFailure()
             return nil
         }
-        
+
         if backupGroup == nil && createIfMissing {
             let newBackupGroup = root.createGroup() as! Group1
             newBackupGroup.name = Group1.backupGroupName
@@ -139,7 +139,7 @@ public class Database1: Database {
     override public func changeCompositeKey(to newKey: CompositeKey) {
         compositeKey = newKey
     }
-    
+
     override public func load(
         dbFileName: String,
         dbFileData: ByteArray,
@@ -152,10 +152,10 @@ public class Database1: Database {
         do {
             try header.read(data: dbFileData) 
             Diag.debug("Header read OK")
-            
+
             try deriveMasterKey(compositeKey: compositeKey, canUseFinalKey: true)
             Diag.debug("Key derivation OK")
-            
+
             let dbWithoutHeader = dbFileData.suffix(from: header.count)
             let decryptedData = try decrypt(data: dbWithoutHeader)
             Diag.debug("Decryption OK")
@@ -163,7 +163,7 @@ public class Database1: Database {
                 Diag.error("Header hash mismatch - invalid master key?")
                 throw DatabaseError.invalidKey
             }
-            
+
             try loadContent(data: decryptedData, dbFileName: dbFileName)
             Diag.debug("Content loaded OK")
 
@@ -189,14 +189,14 @@ public class Database1: Database {
             )
         } 
     }
-    
+
     func deriveMasterKey(compositeKey: CompositeKey, canUseFinalKey: Bool) throws {
         Diag.debug("Start key derivation")
-        
+
         guard compositeKey.challengeHandler == nil else {
             throw ChallengeResponseError.notSupportedByDatabaseFormat
         }
-        
+
         if canUseFinalKey,
            compositeKey.state == .final,
            let _masterKey = compositeKey.finalKey
@@ -205,7 +205,7 @@ public class Database1: Database {
             progress.completedUnitCount += ProgressSteps.keyDerivation
             return
         }
-        
+
         let kdf = AESKDF()
         progress.addChild(kdf.initProgress(), withPendingUnitCount: ProgressSteps.keyDerivation)
         let kdfParams = kdf.defaultParams
@@ -215,7 +215,7 @@ public class Database1: Database {
         kdfParams.setValue(
             key: AESKDF.transformRoundsParam,
             value: VarDict.TypedValue(value: UInt64(header.transformRounds)))
-        
+
         let combinedComponents: SecureBytes
         if compositeKey.state == .processedComponents {
             combinedComponents = try keyHelper.combineComponents(
@@ -228,27 +228,27 @@ public class Database1: Database {
         } else {
             preconditionFailure("Unexpected key state")
         }
-        
+
         let keyToTransform = keyHelper.getKey(fromCombinedComponents: combinedComponents)
         let transformedKey = try kdf.transform(key: keyToTransform, params: kdfParams)
         let secureMasterSeed = SecureBytes.from(header.masterSeed)
         masterKey = SecureBytes.concat(secureMasterSeed, transformedKey).sha256
         compositeKey.setFinalKeys(masterKey, nil)
     }
-    
+
     private func loadContent(data: ByteArray, dbFileName: String) throws {
         let stream = data.asInputStream()
         stream.open()
         defer { stream.close() }
-        
+
         let loadProgress = ProgressEx()
         loadProgress.totalUnitCount = Int64(header.groupCount + header.entryCount)
         loadProgress.localizedDescription = LString.Progress.database1ParsingContent
         self.progress.addChild(loadProgress, withPendingUnitCount: ProgressSteps.parsing)
-        
+
         Diag.debug("Loading groups")
         var groups = ContiguousArray<Group1>()
-        var groupByID = [Group1ID : Group1]() 
+        var groupByID = [Group1ID: Group1]() 
         var maxLevel = 0                      
         for _ in 0..<header.groupCount {
             loadProgress.completedUnitCount += 1
@@ -276,13 +276,13 @@ public class Database1: Database {
             }
         }
         Diag.info("Loaded \(groups.count) groups and \(entries.count) entries")
-        
+
         let _root = Group1(database: self)
         _root.level = -1 
         _root.iconID = Group.defaultIconID 
         _root.name = dbFileName
         self.root = _root
-        
+
         var parentGroup = _root
         for level in 0...maxLevel {
             let prevLevel = level - 1
@@ -294,11 +294,11 @@ public class Database1: Database {
                 }
             }
         }
-        
+
         Diag.debug("Moving entries to their groups")
         for entry in entries {
             if entry.isMetaStream {
-                metaStreamEntries.append(entry);
+                metaStreamEntries.append(entry)
             } else {
                 guard let group = groupByID[entry.groupID] else { throw FormatError.orphanedEntry }
                 entry.isDeleted = group.isDeleted
@@ -306,14 +306,14 @@ public class Database1: Database {
             }
         }
         backupGroup?.deepSetDeleted(true)
-        
+
         resolveReferences(
             allEntries: entries,
             parentProgress: progress,
             pendingProgressUnits: ProgressSteps.resolvingReferences
         )
     }
-    
+
     func decrypt(data: ByteArray) throws -> ByteArray {
         switch header.algorithm {
         case .aes:
@@ -338,18 +338,18 @@ public class Database1: Database {
             return decrypted
         }
     }
-    
+
     override public func save() throws -> ByteArray {
         Diag.info("Saving KP1 database")
         let contentStream = ByteArray.makeOutputStream()
         contentStream.open()
         guard let root = root else { fatalError("Tried to save without root group") }
-        
+
         progress.completedUnitCount = 0
         progress.totalUnitCount = ProgressSteps.all
         do {
-            var groups = Array<Group>()
-            var entries = Array<Entry>()
+            var groups = [Group]()
+            var entries = [Entry]()
             root.collectAllChildren(groups: &groups, entries: &entries)
 
             resolveReferences(
@@ -386,19 +386,19 @@ public class Database1: Database {
             }
             contentStream.close()
             guard let contentData = contentStream.data else { fatalError() }
-        
+
             Diag.debug("Updating the header")
             header.groupCount = groups.count
             header.entryCount = entries.count + metaStreamEntries.count
             header.contentHash = contentData.sha256
-        
+
             try header.randomizeSeeds() 
             try deriveMasterKey(compositeKey: self.compositeKey, canUseFinalKey: false)
             Diag.debug("Key derivation OK")
-            
+
             let encryptedContent = try encrypt(data: contentData)
             Diag.debug("Content encryption OK")
-            
+
             let outStream = ByteArray.makeOutputStream()
             outStream.open()
             defer { outStream.close() }
@@ -416,7 +416,7 @@ public class Database1: Database {
             throw DatabaseError.saveError(reason: error.localizedDescription)
         } 
     }
-    
+
     func encrypt(data: ByteArray) throws -> ByteArray {
         switch header.algorithm {
         case .aes:
@@ -437,55 +437,55 @@ public class Database1: Database {
                 iv: header.initialVector) 
         }
     }
-    
-    
+
+
     override public func delete(group: Group) {
         guard let group = group as? Group1 else { fatalError() }
         guard let parentGroup = group.parent else {
             Diag.warning("Cannot delete group: no parent group")
             return
         }
-        
+
         if group === self.backupGroup {
             parentGroup.remove(group: group)
             self.backupGroup = nil
             Diag.info("Deleted Backup group")
             return
         }
-        
+
         guard let backupGroup = getBackupGroup(createIfMissing: true) else {
             Diag.warning("Cannot delete group: no backup group")
             return
         }
-        
+
         parentGroup.remove(group: group)
-        
+
         var subEntries = [Entry]()
         group.collectAllEntries(to: &subEntries)
-        
-        subEntries.forEach { (entry) in
+
+        subEntries.forEach { entry in
             entry.move(to: backupGroup)
             entry.touch(.accessed, updateParents: false)
         }
         Diag.debug("Delete group OK")
     }
-    
+
     override public func delete(entry: Entry) {
         if entry.isDeleted {
             entry.parent?.remove(entry: entry)
             return
         }
-        
+
         guard let backupGroup = getBackupGroup(createIfMissing: true) else {
             Diag.warning("Failed to get or create backup group")
             return
         }
-        
+
         entry.move(to: backupGroup)
         entry.touch(.accessed, updateParents: false)
         Diag.info("Delete entry OK")
     }
-    
+
     override public func makeAttachment(name: String, data: ByteArray) -> Attachment {
         return Attachment(name: name, isCompressed: false, data: data)
     }

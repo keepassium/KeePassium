@@ -17,14 +17,14 @@ public final class ChaCha20: StreamCipher {
     private var counter: UInt32
     private var block: [UInt8]
     private var posInBlock: Int
-    
+
     init(key: SecureBytes, iv: SecureBytes) {
         precondition(key.count == 32, "ChaCha20 expects 32-byte key")
         precondition(iv.count == ChaCha20.nonceSize, "ChaCha20 expects \(ChaCha20.nonceSize)-byte IV")
-        
+
         self.key = key.decrypted()
         self.iv = iv.decrypted()
-        
+
         block = [UInt8](repeating: 0, count: blockSize)
         counter = 0
         posInBlock = blockSize
@@ -32,7 +32,7 @@ public final class ChaCha20: StreamCipher {
     deinit {
         erase()
     }
-    
+
     public func erase() {
         key.erase()
         iv.erase()
@@ -40,11 +40,11 @@ public final class ChaCha20: StreamCipher {
         block = [UInt8](repeating: 0, count: blockSize) 
         counter = 0
     }
-    
+
     func xor(bytes: inout [UInt8], progress: ProgressEx?) throws {
         let progressBatchSize = blockSize * 1024
         progress?.completedUnitCount = 0
-        
+
         progress?.totalUnitCount = Int64(bytes.count / progressBatchSize) + 1
 
         key.withDecryptedBytes { keyBytes in
@@ -55,7 +55,7 @@ public final class ChaCha20: StreamCipher {
                         chacha20_make_block(keyBytes, ivBytes, &counterBytes, &block)
                         counter += 1
                         posInBlock = 0
-                        if (i % progressBatchSize == 0) {
+                        if i % progressBatchSize == 0 {
                             progress?.completedUnitCount += 1
                             if progress?.isCancelled ?? false { break }
                         }
@@ -73,15 +73,14 @@ public final class ChaCha20: StreamCipher {
             }
         }
     }
-    
-    func encrypt(data: ByteArray, progress: ProgressEx?=nil) throws -> ByteArray {
+
+    func encrypt(data: ByteArray, progress: ProgressEx? = nil) throws -> ByteArray {
         var outBytes = data.bytesCopy()
         try xor(bytes: &outBytes, progress: progress) 
         return ByteArray(bytes: outBytes)
     }
-    
-    func decrypt(data: ByteArray, progress: ProgressEx?=nil) throws -> ByteArray {
+
+    func decrypt(data: ByteArray, progress: ProgressEx? = nil) throws -> ByteArray {
         return try encrypt(data: data, progress: progress) 
     }
 }
-

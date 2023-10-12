@@ -14,7 +14,7 @@ public struct Timeout {
         let durationInMicroseconds = Int(duration * 1.0e6)
         return startTime.advanced(by: .microseconds(durationInMicroseconds))
     }
-    
+
     public var remainingTimeInterval: TimeInterval {
         let remaining = DispatchTime.now().distance(to: deadline)
         switch remaining {
@@ -30,7 +30,7 @@ public struct Timeout {
             return .greatestFiniteMagnitude
         }
     }
-    
+
     public init(startTime: DispatchTime = .now(), duration: TimeInterval) {
         self.duration = duration
         self.startTime = startTime

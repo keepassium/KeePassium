@@ -24,17 +24,17 @@ public class UsageMonitor {
             }
         }
     }
-    
+
     private let appUseDurationKey = "dailyAppUsageDuration"
     private var startTime: Date?
 
     private let referenceDate = Date(timeIntervalSinceReferenceDate: 0.0)
-    
+
     private let maxHistoryLength = 30
-    
+
     private var cachedUsageDuration = 0.0
     private var cachedUsageDurationNeedUpdate = true
-    
+
     init() {
         NotificationCenter.default.addObserver(
             self,
@@ -48,7 +48,7 @@ public class UsageMonitor {
             object: nil)
         cleanupObsoleteData()
     }
-    
+
     public var isEnabled: Bool {
         switch PremiumManager.shared.status {
         case .initialGracePeriod,
@@ -61,8 +61,8 @@ public class UsageMonitor {
             return true
         }
     }
-    
-    
+
+
     @objc public func startInterval() {
         if isEnabled {
             startTime = Date.now
@@ -70,30 +70,30 @@ public class UsageMonitor {
             startTime = nil
         }
     }
-    
+
     public func refresh() {
         guard startTime != nil else { return } 
-        
+
         stopInterval()
         startInterval()
     }
-    
+
     @objc public func stopInterval() {
         guard let startTime = startTime else { return }
         let endTime = Date.now
         let secondsElapsed = abs(endTime.timeIntervalSince(startTime))
         self.startTime = nil 
-        
+
         var history = loadHistoryData()
         let todaysIndex = daysSinceReferenceDate(date: endTime)
         let todaysUsage = history[todaysIndex] ?? 0.0
         history[todaysIndex] = todaysUsage + secondsElapsed
         saveHistoryData(history)
-        
+
         Diag.verbose(String(format: "Usage time added: %.1f s", secondsElapsed))
     }
-    
-    
+
+
     public func getAppUsageDuration(_ reportType: ReportType) -> TimeInterval {
         guard cachedUsageDurationNeedUpdate else {
             return cachedUsageDuration * reportType.scale
@@ -103,13 +103,13 @@ public class UsageMonitor {
         cachedUsageDurationNeedUpdate = false
         let history = loadHistoryData()
         let from = daysSinceReferenceDate(date: Date.now) - maxHistoryLength
-        history.forEach { (dayIndex, dayUsage) in
+        history.forEach { dayIndex, dayUsage in
             guard dayIndex > from else { return }
             cachedUsageDuration += dayUsage
         }
         return cachedUsageDuration * reportType.scale
     }
-    
+
     private func daysSinceReferenceDate(date: Date) -> Int {
         let calendar = Calendar.current
         guard let days = calendar.dateComponents([.day], from: referenceDate, to: date).day else {
@@ -118,8 +118,8 @@ public class UsageMonitor {
         }
         return days
     }
-    
-    
+
+
     private func loadHistoryData() -> DailyAppUsageHistory {
         guard let historyData = UserDefaults.appGroupShared.data(forKey: appUseDurationKey) else {
             return DailyAppUsageHistory()
@@ -141,7 +141,7 @@ public class UsageMonitor {
             return DailyAppUsageHistory()
         }
     }
-    
+
     private func saveHistoryData(_ history: DailyAppUsageHistory) {
         do {
             let historyData = try NSKeyedArchiver.archivedData(
@@ -155,22 +155,22 @@ public class UsageMonitor {
             return
         }
     }
-    
+
     private func cleanupObsoleteData() {
         let history = loadHistoryData()
         guard history.keys.count > maxHistoryLength else {
             return
         }
-        
+
         let earliestDayIndexToKeep = daysSinceReferenceDate(date: Date.now) - maxHistoryLength
-        let trimmedHistory = history.filter { (dayIndex, dayUsage) in
+        let trimmedHistory = history.filter { dayIndex, dayUsage in
             let shouldKeep = dayIndex < earliestDayIndexToKeep
             return shouldKeep
         }
         Diag.debug("Usage stats trimmed from \(history.keys.count) to \(trimmedHistory.keys.count) entries")
         saveHistoryData(trimmedHistory)
     }
-    
+
     #if DEBUG
     public func resetStats() {
         let emptyHistory = DailyAppUsageHistory()

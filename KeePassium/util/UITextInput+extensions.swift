@@ -9,7 +9,7 @@
 import UIKit
 
 extension UITextInput {
-    
+
     var selectedOrFullTextRange: UITextRange {
         return selectedTextRange
             ?? textRange(

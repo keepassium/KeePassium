@@ -10,20 +10,20 @@ import Foundation
 
 final public class DatabaseSettings: Eraseable {
     public var isReadOnlyFile: Bool = false
-    
+
     public var isRememberMasterKey: Bool?
     public var isRememberFinalKey: Bool?
     public private(set) var masterKey: CompositeKey?
     public var hasMasterKey: Bool { return masterKey != nil }
-    
+
     public var isRememberKeyFile: Bool?
     public private(set) var associatedKeyFile: URLReference?
-    
+
     public var isRememberHardwareKey: Bool?
     public private(set) var associatedYubiKey: YubiKey?
-    
+
     public var isQuickTypeEnabled: Bool?
-    
+
     public var fallbackStrategy: UnreachableFileFallbackStrategy?
     public var fallbackTimeout: TimeInterval?
     public var autofillFallbackStrategy: UnreachableFileFallbackStrategy?
@@ -32,26 +32,26 @@ final public class DatabaseSettings: Eraseable {
     init() {
         isReadOnlyFile = false
     }
-    
+
     deinit {
         erase()
     }
-    
+
     public func erase() {
         self.isReadOnlyFile = false
-        
+
         isRememberMasterKey = nil
         isRememberFinalKey = nil
         clearMasterKey()
-        
+
         isRememberKeyFile = nil
         associatedKeyFile = nil
-        
+
         isRememberHardwareKey = nil
         associatedYubiKey = nil
-        
+
         isQuickTypeEnabled = nil
-        
+
         fallbackStrategy = nil
         fallbackTimeout = nil
         autofillFallbackStrategy = nil
@@ -65,11 +65,11 @@ final public class DatabaseSettings: Eraseable {
             masterKey?.eraseFinalKeys()
         }
     }
-    
+
     public func maybeSetMasterKey(of database: Database) {
         maybeSetMasterKey(database.compositeKey)
     }
-    
+
     public func maybeSetMasterKey(_ key: CompositeKey) {
         guard isRememberMasterKey ?? Settings.current.isRememberDatabaseKey else { return }
         guard key.state >= .combinedComponents else { return }
@@ -84,11 +84,11 @@ final public class DatabaseSettings: Eraseable {
     public func clearFinalKey() {
         masterKey?.eraseFinalKeys()
     }
-    
+
     public func setAssociatedKeyFile(_ urlRef: URLReference?) {
         associatedKeyFile = urlRef
     }
-    
+
     public func maybeSetAssociatedKeyFile(_ urlRef: URLReference?) {
         guard isRememberKeyFile ?? Settings.current.isKeepKeyFileAssociations else { return }
         setAssociatedKeyFile(urlRef)
@@ -106,7 +106,7 @@ final public class DatabaseSettings: Eraseable {
 
 
 extension DatabaseSettings: Codable {
-    
+
     private enum CodingKeys: String, CodingKey {
         case isReadOnlyFile
         case isRememberMasterKey
@@ -122,13 +122,13 @@ extension DatabaseSettings: Codable {
         case autofillFallbackStrategy
         case autofillFallbackTimeout
     }
-    
+
     internal func serialize() -> Data {
         let encoder = JSONEncoder()
         let encodedData = try! encoder.encode(self)
         return encodedData
     }
-    
+
     internal static func deserialize(from data: Data?) -> DatabaseSettings? {
         guard let data = data else { return nil }
         let decoder = JSONDecoder()
@@ -140,25 +140,27 @@ extension DatabaseSettings: Codable {
             return nil
         }
     }
-    
+
     public convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.init()
+        // swiftlint:disable line_length
         self.isReadOnlyFile = try container.decodeIfPresent(Bool.self, forKey: .isReadOnlyFile) ?? false
         self.isRememberMasterKey = try container.decodeIfPresent(Bool.self, forKey: .isRememberMasterKey)
         self.isRememberFinalKey = try container.decodeIfPresent(Bool.self, forKey: .isRememberFinalKey)
         self.masterKey = try container.decodeIfPresent(CompositeKey.self, forKey: .masterKey)
-        self.isRememberKeyFile =  try container.decodeIfPresent(Bool.self, forKey: .isRememberKeyFile)
+        self.isRememberKeyFile = try container.decodeIfPresent(Bool.self, forKey: .isRememberKeyFile)
         self.associatedKeyFile = try container.decodeIfPresent(URLReference.self, forKey: .associatedKeyFile)
-        self.isRememberHardwareKey =  try container.decodeIfPresent(Bool.self, forKey: .isRememberHardwareKey)
+        self.isRememberHardwareKey = try container.decodeIfPresent(Bool.self, forKey: .isRememberHardwareKey)
         self.associatedYubiKey = try container.decodeIfPresent(YubiKey.self, forKey: .associatedYubiKey)
         self.isQuickTypeEnabled = try container.decodeIfPresent(Bool.self, forKey: .isQuickTypeEnabled)
         self.fallbackStrategy = try container.decodeIfPresent(UnreachableFileFallbackStrategy.self, forKey: .fallbackStrategy)
         self.fallbackTimeout = try container.decodeIfPresent(TimeInterval.self, forKey: .fallbackTimeout)
         self.autofillFallbackStrategy = try container.decodeIfPresent(UnreachableFileFallbackStrategy.self, forKey: .autofillFallbackStrategy)
         self.autofillFallbackTimeout = try container.decodeIfPresent(TimeInterval.self, forKey: .autofillFallbackTimeout)
+        // swiftlint:enable line_length
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(isReadOnlyFile, forKey: .isReadOnlyFile)

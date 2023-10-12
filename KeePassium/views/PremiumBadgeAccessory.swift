@@ -15,7 +15,7 @@ final class PremiumBadgeAccessory: UIImageView {
         contentMode = .scaleAspectFill
         accessibilityLabel = LString.premiumFeatureGenericTitle
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
     }

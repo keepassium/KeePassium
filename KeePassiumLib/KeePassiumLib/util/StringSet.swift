@@ -12,19 +12,19 @@ public typealias StringSet = Set<String>
 
 public extension StringSet {
     static let digits: Set<String> =
-        ["0","1","2","3","4","5","6","7","8","9"]
+        ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     static let lowerCase: Set<String> = [
-        "a","b","c","d","e","f","g","h","i","j","k","l","m",
-        "n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+        "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     static let upperCase: Set<String> = [
-        "A","B","C","D","E","F","G","H","I","J","K","L","M",
-        "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+        "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     static let specials: Set<String> = [
-        "`","~","!","@","#","$","%","^","&","*","_","-","+","=","(",")","[","]",
-        "{","}","<",">","\\","|",":",";",",",".","?","/","'","\""]
+        "`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "(", ")", "[", "]",
+        "{", "}", "<", ">", "\\", "|", ":", ";", ",", ".", "?", "/", "'", "\""]
     static let lookalikes: Set<String> =
-        ["I","l","|","1","0","O","S","5"]
-    
+        ["I", "l", "|", "1", "0", "O", "S", "5"]
+
     static func fromCharacters(of string: String) -> StringSet {
         let result = string.reduce(into: StringSet()) { characterSet, character in
             characterSet.insert(String(character))
@@ -33,10 +33,10 @@ public extension StringSet {
     }
 }
 
-public struct ConditionalStringSet {    
+public struct ConditionalStringSet {
     var set: StringSet
     var condition: InclusionCondition
-    
+
     public init(_ set: StringSet, condition: InclusionCondition) {
         self.set = set
         self.condition = condition

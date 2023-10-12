@@ -17,7 +17,7 @@ public enum CommonFileFormat: CustomStringConvertible {
     case svg
     case jpeg
     case msOffice 
-    
+
     public var description: String {
         switch self {
         case .emptyFile:
@@ -42,7 +42,7 @@ public final class FileFormatRecognizer {
         var signature: UInt64
         var mask: UInt64
         var format: CommonFileFormat
-        
+
         init(_ signature: UInt64, _ mask: UInt64, _ format: CommonFileFormat) {
             self.signature = signature
             self.mask = mask
@@ -62,7 +62,7 @@ public final class FileFormatRecognizer {
         KnownSignature(0xffd8ff0000000000, 0xffffff0000000000, .jpeg),
         KnownSignature(0xd0cf11e0a1b11ae1, 0xffffffffffffffff, .msOffice),
     ]
-    
+
     public static func recognize(_ signature: ByteArray) -> CommonFileFormat? {
         if signature.count == 0 {
             return .emptyFile
@@ -73,7 +73,7 @@ public final class FileFormatRecognizer {
             assertionFailure("Expecting strictly 8-byte signatures")
             return nil
         }
-        
+
         let matchingSignature = knownFormats.first { format in
             (format.signature & format.mask) == (testSignature & format.mask)
         }

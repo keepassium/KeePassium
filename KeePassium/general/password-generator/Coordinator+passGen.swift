@@ -9,7 +9,7 @@
 import UIKit
 
 extension Coordinator {
-    
+
     func showPasswordGenerator(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController

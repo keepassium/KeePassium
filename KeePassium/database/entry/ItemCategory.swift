@@ -11,7 +11,7 @@ import KeePassiumLib
 
 enum ItemCategory: String {
     public static let all: [ItemCategory] = [.default]
-    
+
     case `default` = "keepass"
 
     var fixedFields: [String] {
@@ -24,7 +24,7 @@ enum ItemCategory: String {
             EntryField.notes]
     }
     var name: String { LString.itemCategoryDefault }
-    
+
     func getFieldRanks() -> [String: Int] {
         return [
             EntryField.title: 1,
@@ -34,19 +34,19 @@ enum ItemCategory: String {
             EntryField.url: 5,
             EntryField.notes: 6]
     }
-    
+
     public static func get(for entry: Entry) -> ItemCategory {
         return .default
     }
-    
+
     public static func get(for group: Group) -> ItemCategory {
         return .default
     }
-    
+
     public static func fromString(_ categoryString: String) -> ItemCategory {
         return ItemCategory(rawValue: categoryString) ?? .default
     }
-    
+
     public func compare(_ fieldName1: String, _ fieldName2: String) -> Bool {
         let ranks = getFieldRanks()
         let rank1 = ranks[fieldName1] ?? Int.max

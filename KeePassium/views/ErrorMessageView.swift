@@ -9,10 +9,10 @@
 import UIKit
 
 final class ErrorMessageView: UIView {
-    
+
     public struct Action {
-        typealias Handler = ()->Void
-        
+        typealias Handler = () -> Void
+
         let title: String
         let isLink: Bool
         let handler: Handler
@@ -22,7 +22,7 @@ final class ErrorMessageView: UIView {
             self.handler = handler
         }
     }
-    
+
     var message: String? {
         get { messageLabel.text }
         set {
@@ -35,7 +35,7 @@ final class ErrorMessageView: UIView {
             setupView()
         }
     }
-    
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = .symbol(.exclamationMarkTriangle)
@@ -47,7 +47,7 @@ final class ErrorMessageView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .callout)
@@ -58,14 +58,14 @@ final class ErrorMessageView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private lazy var actionButton: UIButton = {
-        let button = UIButton(primaryAction: UIAction() { [weak self] _ in
+        let button = UIButton(primaryAction: UIAction { [weak self] _ in
             self?.didPressActionButton()
         })
         button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.leading
-        
-        var config =  UIButton.Configuration.plain()
+
+        var config = UIButton.Configuration.plain()
         config.titlePadding = 0
         config.contentInsets = .init(top: 8, leading: 0, bottom: 8, trailing: 0)
         config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
@@ -74,28 +74,28 @@ final class ErrorMessageView: UIView {
             return outgoing
         }
         button.configuration = config
-        
+
         button.setTitleColor(.actionTint, for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     private lazy var zeroHeightConstraint: NSLayoutConstraint = {
         return heightAnchor.constraint(equalToConstant: 0).setPriority(.defaultHigh)
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
     }
-    
+
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .secondarySystemFill
@@ -108,7 +108,7 @@ final class ErrorMessageView: UIView {
         existingSubviews.forEach {
             $0.removeFromSuperview()
         }
-        
+
         self.addSubview(imageView)
         imageView.centerYAnchor
             .constraint(equalTo: layoutMarginsGuide.centerYAnchor, constant: 0)
@@ -122,7 +122,6 @@ final class ErrorMessageView: UIView {
         imageView.heightAnchor
             .constraint(greaterThanOrEqualToConstant: 29)
             .activate()
-
 
         self.addSubview(messageLabel)
         self.accessibilityElements = [messageLabel]
@@ -151,7 +150,7 @@ final class ErrorMessageView: UIView {
                 .constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: 8) 
                 .activate()
             actionButton.setTitle(action.title, for: .normal)
-            
+
             if action.isLink {
                 var buttonConfig = actionButton.configuration
                 buttonConfig?.imagePlacement = .trailing
@@ -170,11 +169,11 @@ final class ErrorMessageView: UIView {
         }
         self.isAccessibilityElement = false 
     }
-    
+
     private func didPressActionButton() {
         action?.handler()
     }
-    
+
     public func show(animated: Bool) {
         if animated {
             superview?.layoutIfNeeded()
@@ -190,7 +189,7 @@ final class ErrorMessageView: UIView {
             zeroHeightConstraint.isActive = false
         }
     }
-    
+
     public func hide(animated: Bool) {
         if animated {
             superview?.layoutIfNeeded()

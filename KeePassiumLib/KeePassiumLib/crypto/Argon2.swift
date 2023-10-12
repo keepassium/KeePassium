@@ -10,7 +10,7 @@ import Foundation
 
 public final class Argon2 {
     public static let version: UInt32 = 0x13
-    
+
     public struct Params {
         let salt: ByteArray
         let parallelism: UInt32
@@ -18,11 +18,11 @@ public final class Argon2 {
         let iterations: UInt32
         let version: UInt32
     }
-    
+
     public enum PrimitiveType {
         case argon2d
         case argon2id
-        
+
         var rawValue: argon2_type {
             let result: argon2_type
             switch self {
@@ -34,10 +34,10 @@ public final class Argon2 {
             return result
         }
     }
-    
+
     private init() {
     }
-    
+
     public static func hash(
         data pwd: SecureBytes,
         params: Params,
@@ -46,27 +46,26 @@ public final class Argon2 {
     ) throws -> SecureBytes {
 
         var isAbortProcessing: UInt8 = 0
-        
+
         progress?.totalUnitCount = Int64(params.iterations)
         progress?.completedUnitCount = 0
         let progressKVO = progress?.observe(
             \.isCancelled,
             options: [.new],
-            changeHandler: { (progress, _) in
+            changeHandler: { progress, _ in
                 if progress.cancellationReason == .lowMemoryWarning {
                     FLAG_clear_internal_memory = 0
                 }
                 isAbortProcessing = 1
             }
         )
-        
+
         let progressCallback: progress_fptr!   
         let progressObject: UnsafeRawPointer?  
-        
+
         if let progress = progress {
             progressObject = UnsafeRawPointer(Unmanaged.passUnretained(progress).toOpaque())
-            progressCallback = {
-                (pass: UInt32, observer: Optional<UnsafeRawPointer>) -> Int32 in
+            progressCallback = { (pass: UInt32, observer: Optional<UnsafeRawPointer>) -> Int32 in
                 guard let observer = observer else { return 0 /* continue hashing */ }
                 let progress = Unmanaged<Progress>.fromOpaque(observer).takeUnretainedValue()
                 progress.completedUnitCount = Int64(pass)
@@ -77,16 +76,14 @@ public final class Argon2 {
             progressObject = nil
             progressCallback = nil
         }
-        
+
         FLAG_clear_internal_memory = 1
         var outBytes = [UInt8](repeating: 0, count: 32)
         defer {
             outBytes.erase()
         }
-        let statusCode = pwd.withDecryptedBytes {
-            (pwdBytes) in
-            return params.salt.withBytes {
-                (saltBytes) -> Int32 in
+        let statusCode = pwd.withDecryptedBytes { pwdBytes in
+            return params.salt.withBytes { saltBytes -> Int32 in
                 return argon2_hash(
                     params.iterations,  
                     params.memoryKiB,   
@@ -111,7 +108,7 @@ public final class Argon2 {
                 throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
             }
         }
-        
+
         if statusCode != ARGON2_OK.rawValue {
             throw CryptoError.argon2Error(code: Int(statusCode))
         }

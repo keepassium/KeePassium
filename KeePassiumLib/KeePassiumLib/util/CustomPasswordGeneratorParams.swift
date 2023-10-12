@@ -30,7 +30,7 @@ public struct CustomPasswordGeneratorParams: Codable, Equatable {
                 return LString.NamedStringSet.shortTitleLookalikes
             }
         }
-        
+
         public var description: String {
             switch self {
             case .upperCase:
@@ -45,7 +45,7 @@ public struct CustomPasswordGeneratorParams: Codable, Equatable {
                 return LString.NamedStringSet.titleLookalikes
             }
         }
-        
+
         public var value: StringSet {
             switch self {
             case .upperCase:
@@ -61,7 +61,7 @@ public struct CustomPasswordGeneratorParams: Codable, Equatable {
             }
         }
     }
-    
+
     public static let lengthRange = 4...128  
     public var length: Int = 32
     public var fixedSets: [FixedSet: InclusionCondition] = [
@@ -72,9 +72,9 @@ public struct CustomPasswordGeneratorParams: Codable, Equatable {
         .lookalikes: .excluded,
     ]
     public var customLists = [InclusionCondition: String]()
-    
+
     public var maxConsecutive: Int?
-    
+
     init() {
     }
 }
@@ -82,7 +82,7 @@ public struct CustomPasswordGeneratorParams: Codable, Equatable {
 extension CustomPasswordGeneratorParams: PasswordGeneratorRequirementsConvertible {
     public func toRequirements() -> PasswordGeneratorRequirements {
         assert(CustomPasswordGeneratorParams.lengthRange.contains(length), "Length is out of bounds")
-        
+
         var conditionalSets = [ConditionalStringSet]()
         fixedSets.forEach { fixedSet, condition in
             conditionalSets.append(ConditionalStringSet(fixedSet.value, condition: condition))

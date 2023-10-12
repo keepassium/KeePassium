@@ -16,7 +16,7 @@ class AbstractArgon2KDF {
     public static let versionParam     = "V" 
     public static let secretKeyParam   = "K" 
     public static let assocDataParam   = "A" 
-    
+
     fileprivate let minVersion: UInt32 = 0x10
     fileprivate let maxVersion: UInt32 = 0x13
     fileprivate let minSalt    = 8
@@ -27,11 +27,11 @@ class AbstractArgon2KDF {
     fileprivate let maxMemory: UInt64 = UInt64.max
     fileprivate let minParallelism: UInt32 = 1
     fileprivate let maxParallelism: UInt32 = (1 << 24) - 1
-    
+
     fileprivate let defaultIterations: UInt64  = 100
     fileprivate let defaultMemory: UInt64      = 1024 * 1024 
     fileprivate let defaultParallelism: UInt32 = 2
-    
+
     fileprivate var name: String {
         fatalError("Abstract method, override this")
     }
@@ -41,9 +41,9 @@ class AbstractArgon2KDF {
     fileprivate var primitiveType: Argon2.PrimitiveType {
         fatalError("Abstract method, override this")
     }
-    
+
     fileprivate var progress = ProgressEx()
-    
+
     func initProgress() -> ProgressEx {
         progress = ProgressEx()
         progress.localizedDescription = NSLocalizedString(
@@ -53,14 +53,14 @@ class AbstractArgon2KDF {
             comment: "Status message: processing of the master key is in progress")
         return progress
     }
-    
+
     func getChallenge(_ params: KDFParams) throws -> ByteArray {
         guard let salt = params.getValue(key: AbstractArgon2KDF.saltParam)?.asByteArray() else {
             throw CryptoError.invalidKDFParam(kdfName: name, paramName: AbstractArgon2KDF.saltParam)
         }
         return salt
     }
-    
+
     public var defaultParams: KDFParams {
         let params = KDFParams()
         params.setValue(key: KDFParams.uuidParam, value: VarDict.TypedValue(value: uuid.data))
@@ -83,35 +83,35 @@ class AbstractArgon2KDF {
         if salt.count < minSalt || salt.count > maxSalt {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.saltParam)
         }
-        
+
         guard let parallelism = params.getValue(key: AbstractArgon2KDF.parallelismParam)?.asUInt32() else {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.parallelismParam)
         }
         if parallelism < minParallelism || parallelism > maxParallelism {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.parallelismParam)
         }
-        
+
         guard let memory = params.getValue(key: AbstractArgon2KDF.memoryParam)?.asUInt64() else {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.memoryParam)
         }
         if memory < minMemory || memory > maxMemory {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.memoryParam)
         }
-        
+
         guard let iterations64 = params.getValue(key: AbstractArgon2KDF.iterationsParam)?.asUInt64() else {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.iterationsParam)
         }
         if iterations64 < minIterations || iterations64 > maxIterations {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.iterationsParam)
         }
-        
+
         guard let version = params.getValue(key: AbstractArgon2KDF.versionParam)?.asUInt32() else {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.versionParam)
         }
         if version < minVersion || version > maxVersion {
             throw CryptoError.invalidKDFParam(kdfName: self.name, paramName: AbstractArgon2KDF.versionParam)
         }
-        
+
         return Argon2.Params(
             salt: salt,
             parallelism: parallelism,
@@ -120,12 +120,12 @@ class AbstractArgon2KDF {
             version: version
         )
     }
-    
+
     func transform(key: SecureBytes, params: KDFParams) throws -> SecureBytes {
         assert(key.count > 0)
-        
+
         let hashingParams = try getParams(params) 
-        
+
         let outHash = try Argon2.hash(
             data: key,
             params: hashingParams,
@@ -137,8 +137,8 @@ class AbstractArgon2KDF {
 
 final class Argon2dKDF: AbstractArgon2KDF, KeyDerivationFunction {
     public static let _uuid = UUID(
-        uuid: (0xEF,0x63,0x6D,0xDF,0x8C,0x29,0x44,0x4B,0x91,0xF7,0xA9,0xA4,0x03,0xE3,0x0A,0x0C))
-    
+        uuid: (0xEF, 0x63, 0x6D, 0xDF, 0x8C, 0x29, 0x44, 0x4B, 0x91, 0xF7, 0xA9, 0xA4, 0x03, 0xE3, 0x0A, 0x0C))
+
     override public var uuid: UUID { return Argon2dKDF._uuid }
     override public var name: String { return "Argon2d" }
 
@@ -147,8 +147,8 @@ final class Argon2dKDF: AbstractArgon2KDF, KeyDerivationFunction {
 
 final class Argon2idKDF: AbstractArgon2KDF, KeyDerivationFunction {
     public static let _uuid = UUID(
-        uuid: (0x9E,0x29,0x8B,0x19,0x56,0xDB,0x47,0x73,0xB2,0x3D,0xFC,0x3E,0xC6,0xF0,0xA1,0xE6))
-    
+        uuid: (0x9E, 0x29, 0x8B, 0x19, 0x56, 0xDB, 0x47, 0x73, 0xB2, 0x3D, 0xFC, 0x3E, 0xC6, 0xF0, 0xA1, 0xE6))
+
     override public var uuid: UUID { return Argon2idKDF._uuid }
     override public var name: String { return "Argon2id" }
 

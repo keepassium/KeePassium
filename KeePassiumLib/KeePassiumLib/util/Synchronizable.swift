@@ -9,37 +9,37 @@
 import Foundation
 
 public protocol Synchronizable: AnyObject {
-    func synchronized<T>(_ handler: ()->(T)) -> T
+    func synchronized<T>(_ handler: () -> (T)) -> T
 }
 
 public extension Synchronizable {
-    func synchronized<T>(_ handler: ()->(T)) -> T  {
+    func synchronized<T>(_ handler: () -> (T)) -> T {
         objc_sync_enter(self)
         defer { objc_sync_exit(self)}
         return handler()
     }
-    
-    func dispatchMain(_ handler: @escaping ()->()) {
+
+    func dispatchMain(_ handler: @escaping () -> Void) {
         if Thread.isMainThread {
             handler()
         } else {
             DispatchQueue.main.async(execute: handler)
         }
     }
-    
+
     func execute<SlowResultType>(
         byTime: DispatchTime,
         on queue: DispatchQueue,
-        slowSyncOperation: @escaping ()->(SlowResultType),
-        onSuccess: @escaping (SlowResultType)->(),
-        onTimeout: @escaping ()->())
-    {
+        slowSyncOperation: @escaping () -> (SlowResultType),
+        onSuccess: @escaping (SlowResultType) -> Void,
+        onTimeout: @escaping () -> Void
+    ) {
         var result: SlowResultType?
-        let workItem = DispatchWorkItem() {
+        let workItem = DispatchWorkItem {
             result = slowSyncOperation()
         }
         queue.async(execute: workItem)
-        
+
         queue.async {
             switch workItem.wait(timeout: byTime) {
             case .success:

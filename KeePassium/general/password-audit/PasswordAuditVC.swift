@@ -18,7 +18,7 @@ protocol PasswordAuditVCDelegate: AnyObject {
 final class PasswordAuditVC: UIViewController, Refreshable {
     @IBOutlet private weak var introTextView: UITextView!
     @IBOutlet private weak var startButton: UIButton!
-    
+
 
     private lazy var closeButton = UIBarButtonItem(
         barButtonSystemItem: .close,
@@ -33,11 +33,11 @@ final class PasswordAuditVC: UIViewController, Refreshable {
 
         title = LString.titlePasswordAudit
         navigationItem.leftBarButtonItem = closeButton
-        
+
         introTextView.attributedText = getIntroText()
         refresh()
     }
-    
+
     private func getIntroText() -> NSAttributedString {
         let introText = try! NSMutableAttributedString(
             markdown: String.localizedStringWithFormat(
@@ -45,15 +45,16 @@ final class PasswordAuditVC: UIViewController, Refreshable {
                 URL.AppHelp.hibpMoreInfoURLString),
             options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)
         )
-        introText.addAttributes([
+        introText.addAttributes(
+            [
                 .font: UIFont.preferredFont(forTextStyle: .body),
-                .foregroundColor: UIColor.label,
+                .foregroundColor: UIColor.label
             ],
             range: NSRange(0..<introText.length)
         )
         return introText
     }
-    
+
     func refresh() {
         var buttonConfig = UIButton.Configuration.plain()
         buttonConfig.title = LString.actionStartPasswordAudit

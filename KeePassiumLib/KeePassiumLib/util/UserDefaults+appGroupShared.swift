@@ -15,7 +15,7 @@ public extension UserDefaults {
         }
         return instance
     }
-    
+
     internal static func eraseAppGroupShared() {
         appGroupShared.removePersistentDomain(forName: AppGroup.id)
     }

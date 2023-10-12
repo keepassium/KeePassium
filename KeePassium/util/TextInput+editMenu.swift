@@ -10,7 +10,7 @@ import KeePassiumLib
 
 typealias TextInputView = UITextInput & UIView
 
-protocol TextInputEditMenuDelegate {
+protocol TextInputEditMenuDelegate: AnyObject {
     func textInputDidRequestRandomizer(_ textInput: TextInputView)
 }
 
@@ -22,7 +22,7 @@ extension UITextField {
             action: #selector(didPressRandomizerEditMenu(_:)))
         UIMenuController.shared.menuItems = [randomizerMenu]
     }
-    
+
     @objc private func didPressRandomizerEditMenu(_ sender: Any) {
         guard let editMenuDelegate = delegate as? TextInputEditMenuDelegate else {
             assertionFailure("This delegate cannot handle edit menu")
@@ -41,7 +41,7 @@ extension UITextView {
             action: #selector(didPressRandomizerEditMenu(_:)))
         UIMenuController.shared.menuItems = [randomizerMenu]
     }
-    
+
     @objc private func didPressRandomizerEditMenu(_ sender: Any) {
         guard let editMenuDelegate = delegate as? TextInputEditMenuDelegate else {
             assertionFailure("This delegate cannot handle edit menu")

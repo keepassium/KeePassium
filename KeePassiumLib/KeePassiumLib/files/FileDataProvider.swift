@@ -10,7 +10,7 @@ import Foundation
 
 public final class FileDataProvider {
     public static let defaultTimeoutDuration = URLReference.defaultTimeoutDuration
-        
+
     fileprivate static let backgroundQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.name = "FileDataProvider"
@@ -18,7 +18,7 @@ public final class FileDataProvider {
         queue.maxConcurrentOperationCount = 8
         return queue
     }()
-    
+
     fileprivate static let coordinatorSyncQueue = DispatchQueue(
         label: "CoordinatorSyncQueue",
         qos: .utility,
@@ -27,7 +27,7 @@ public final class FileDataProvider {
 }
 
 extension FileDataProvider {
-    
+
     internal static func bookmarkFile(
         at fileURL: URL,
         location: URLReference.Location,
@@ -51,7 +51,7 @@ extension FileDataProvider {
                         fileURL.stopAccessingSecurityScopedResource()
                     }
                 }
-                
+
                 do {
                     let fileRef = try creationHandler(url, location)
                     completionQueue.addOperation {
@@ -69,7 +69,7 @@ extension FileDataProvider {
             completion: completion
         )
     }
-    
+
     public static func readFileInfo(
         at fileURL: URL,
         fileProvider: FileProvider?,
@@ -80,7 +80,7 @@ extension FileDataProvider {
     ) {
         let operationQueue = FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
-        
+
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
         let dataSource = DataSourceFactory.getDataSource(for: fileURL)
         coordinateFileOperation(
@@ -96,7 +96,7 @@ extension FileDataProvider {
                         fileURL.stopAccessingSecurityScopedResource()
                     }
                 }
-                
+
                 dataSource.readFileInfo(
                     at: coordinatedURL,
                     fileProvider: fileProvider,
@@ -111,7 +111,7 @@ extension FileDataProvider {
             completion: completion
         )
     }
-    
+
     public static func read(
         _ fileRef: URLReference,
         queue: OperationQueue? = nil,
@@ -141,7 +141,7 @@ extension FileDataProvider {
             }
         }
     }
-    
+
     public static func read(
         _ fileURL: URL,
         fileProvider: FileProvider?,
@@ -160,7 +160,7 @@ extension FileDataProvider {
             fileProvider: fileProvider,
             timeout: timeout,
             queue: operationQueue,
-            fileOperation: { (coordinatedURL) in
+            fileOperation: { coordinatedURL in
                 assert(operationQueue.isCurrent)
                 defer {
                     if isAccessed {
@@ -180,7 +180,7 @@ extension FileDataProvider {
             completion: completion
         )
     }
-    
+
     public static func write(
         _ data: ByteArray,
         to fileURL: URL,
@@ -192,7 +192,7 @@ extension FileDataProvider {
     ) {
         let operationQueue = queue ?? FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
-        
+
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
         let dataSource = DataSourceFactory.getDataSource(for: fileURL)
         coordinateFileOperation(
@@ -248,9 +248,8 @@ extension FileDataProvider {
                 completion(.failure(.timeout(fileProvider: fileProvider)))
             }
         }
-        
-        accessCoordinator.coordinate(with: [intent], queue: queue) {
-            (coordinatorError) in
+
+        accessCoordinator.coordinate(with: [intent], queue: queue) { coordinatorError in
             assert(queue.isCurrent)
             let canContinue = coordinatorSyncQueue.sync(execute: { () -> Bool in
                 if hasTimedOut {
@@ -262,14 +261,14 @@ extension FileDataProvider {
             guard canContinue else { 
                 return
             }
-            
+
             if let coordinatorError = coordinatorError {
                 completionQueue.addOperation {
                     completion(.failure(.systemError(coordinatorError)))
                 }
                 return
             }
-            
+
             fileOperation(intent.url)
         }
     }

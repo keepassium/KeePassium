@@ -6,6 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
+// swiftlint:disable line_length
 extension LString {
     public static let tipBoxTitle1 = NSLocalizedString(
         "[TipBox/title/1]",
@@ -44,7 +45,7 @@ extension LString {
         value: "Do you like KeePassium but don't need the premium features?",
         comment: "Text in the Donations screen."
     )
-    
+
     public static let tipBoxCallToAction1 = NSLocalizedString(
         "[TipBox/callToAction/1]",
         bundle: Bundle.framework,
@@ -63,7 +64,7 @@ extension LString {
         value: "Help us keep KeePassium free!",
         comment: "Call to action in the Donations screen. (free = gratis)"
     )
-    
+
     public static let tipBoxThankYou = NSLocalizedString(
         "[TipBox/thankYou]",
         bundle: Bundle.framework,
@@ -71,3 +72,4 @@ extension LString {
         comment: "Notification after a successful donation."
     )
 }
+// swiftlint:enable line_length

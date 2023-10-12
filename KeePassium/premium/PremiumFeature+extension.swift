@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 extension PremiumFeature {
-    
+
     public var titleName: String {
         switch self {
         case .canUseMultipleDatabases:
@@ -38,7 +38,7 @@ extension PremiumFeature {
             return LString.premiumFeatureGenericTitle
         }
     }
-    
+
     public var upgradeNoticeText: String {
         switch self {
         case .canUseMultipleDatabases:

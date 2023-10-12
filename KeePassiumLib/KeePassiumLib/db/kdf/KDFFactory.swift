@@ -12,15 +12,15 @@ protocol KeyDerivationFunction {
     var uuid: UUID { get }
     var name: String { get }
     var defaultParams: KDFParams { get }
-    
+
     func initProgress() -> ProgressEx
 
     init()
-    
+
     func transform(key: SecureBytes, params: KDFParams) throws -> SecureBytes
-    
+
     func getChallenge(_ params: KDFParams) throws -> ByteArray
-    
+
     func randomize(params: inout KDFParams) throws
 }
 
@@ -31,7 +31,7 @@ final class KDFFactory {
 
     private init() {
     }
-    
+
     public static func createFor(uuid: UUID) -> KeyDerivationFunction? {
         switch uuid {
         case argon2dKDF.uuid:

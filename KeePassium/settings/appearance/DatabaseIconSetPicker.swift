@@ -27,12 +27,12 @@ class DatabaseIconSetPicker: UITableViewController {
         }
     }
     private var demoIconID: IconID = .key
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         randomizeDemoIcon()
     }
-    
+
     private func randomizeDemoIcon() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
             self?.demoIconID = IconID.all.randomElement() ?? .key
@@ -40,12 +40,12 @@ class DatabaseIconSetPicker: UITableViewController {
             self?.randomizeDemoIcon()
         }
     }
-    
-    
+
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard section == 0 else {
             assertionFailure()
@@ -53,7 +53,7 @@ class DatabaseIconSetPicker: UITableViewController {
         }
         return DatabaseIconSet.allValues.count
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -62,20 +62,20 @@ class DatabaseIconSetPicker: UITableViewController {
             withIdentifier: cellID,
             for: indexPath)
             as! DatabaseIconSetPickerCell
-        
+
         guard let iconSet = DatabaseIconSet(rawValue: indexPath.row) else {
             _received_wrong_icon_set_id()
             fatalError()
         }
         cell.iconView?.image = iconSet.getIcon(demoIconID)
         cell.titleLabel?.text = iconSet.title
-        
+
         let isCurrent = iconSet == selectedItem
         cell.accessoryType = isCurrent ? .checkmark : .none
         return cell
     }
-    
-    
+
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let iconSet = DatabaseIconSet(rawValue: indexPath.row) else {
             _received_wrong_icon_set_id()
@@ -85,7 +85,7 @@ class DatabaseIconSetPicker: UITableViewController {
         selectedItem = iconSet
         delegate?.didSelect(iconSet: iconSet, in: self)
     }
-    
+
     private func _received_wrong_icon_set_id() {
         fatalError()
     }

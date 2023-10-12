@@ -6,8 +6,8 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import KeePassiumLib
 import Foundation
+import KeePassiumLib
 
 protocol RemoteFilePickerDelegate: AnyObject {
     func didPressDone(
@@ -30,20 +30,20 @@ final class RemoteFilePickerVC: UITableViewController {
         static let webdavAllowUntrusted = IndexPath(row: 1, section: 0)
         static let webdavUsername = IndexPath(row: 0, section: 1)
         static let webdavPassword = IndexPath(row: 1, section: 1)
-        
+
         static let oneDriveSectionSizes = [2]
         static let oneDrivePrivateSession = IndexPath(row: 0, section: 0)
         static let oneDriveLogin = IndexPath(row: 1, section: 0)
     }
-    
+
     weak var delegate: RemoteFilePickerDelegate?
-    
+
     public var webdavURL: URL?
     public var webdavUsername: String = ""
     public var webdavPassword: String = ""
     public var allowUntrustedCertificate = false
     public var oneDrivePrivateSession = false
-    
+
     private var isBusy = false
 
     private lazy var titleView: SpinnerLabel = {
@@ -62,15 +62,14 @@ final class RemoteFilePickerVC: UITableViewController {
     private weak var webdavUsernameTextField: ValidatingTextField?
     private weak var webdavPasswordTextField: ValidatingTextField?
 
-    
     public static func make() -> RemoteFilePickerVC {
-        return RemoteFilePickerVC.init(style: .insetGrouped)
+        return RemoteFilePickerVC(style: .insetGrouped)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = titleView
-        
+
         tableView.register(
             SwitchCell.classForCoder(),
             forCellReuseIdentifier: CellID.switchCell)
@@ -100,36 +99,36 @@ final class RemoteFilePickerVC: UITableViewController {
             break
         }
     }
-    
+
     private func populateWebDAVControls() {
         webdavUsernameTextField?.text = webdavUsername
         webdavPasswordTextField?.text = webdavPassword
-        
+
         setWebdavInputURL(fromText: webdavURL?.absoluteString ?? "")
     }
-    
+
     private func setupDoneButton() {
         doneButton = UIBarButtonItem(
             systemItem: .done,
-            primaryAction: UIAction() { [weak self] _ in
+            primaryAction: UIAction { [weak self] _ in
                 self?.didPressDone()
             },
             menu: nil)
         navigationItem.rightBarButtonItem = doneButton
     }
-    
+
     public func setState(isBusy: Bool) {
         titleView.showSpinner(isBusy, animated: true)
         self.isBusy = isBusy
         refresh()
     }
-    
+
     private func refresh() {
         titleView.label.text = connectionType.description
         tableView.reloadData()
         refreshDoneButton()
     }
-    
+
     private func refreshDoneButton() {
         guard isViewLoaded else { return }
         switch connectionType {
@@ -139,7 +138,7 @@ final class RemoteFilePickerVC: UITableViewController {
             doneButton.isEnabled = false 
         }
     }
-    
+
     private func didPressDone() {
         guard doneButton.isEnabled else {
             return
@@ -157,7 +156,6 @@ final class RemoteFilePickerVC: UITableViewController {
             )
         case .oneDrive, .oneDriveForBusiness:
             assertionFailure("Done button was enabled for OneDrive connection?")
-            break
         }
     }
 }
@@ -171,7 +169,7 @@ extension RemoteFilePickerVC {
             return CellIndex.oneDriveSectionSizes.count
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (connectionType, section) {
         case (.webdav, _):
@@ -181,7 +179,7 @@ extension RemoteFilePickerVC {
             return CellIndex.oneDriveSectionSizes[section]
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         titleForHeaderInSection section: Int
@@ -195,7 +193,7 @@ extension RemoteFilePickerVC {
             return nil
         }
     }
-    
+
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -214,7 +212,7 @@ extension RemoteFilePickerVC {
         }
         return cell
     }
-    
+
     private func getReusableCellID(for indexPath: IndexPath) -> String {
         switch (connectionType, indexPath) {
         case (.webdav, CellIndex.webdavURL),
@@ -234,7 +232,7 @@ extension RemoteFilePickerVC {
             fatalError("Unexpected cell index")
         }
     }
-    
+
     private func resetCellStyle(_ cell: UITableViewCell) {
         cell.textLabel?.font = .preferredFont(forTextStyle: .body)
         cell.textLabel?.textColor = .primaryText
@@ -242,7 +240,7 @@ extension RemoteFilePickerVC {
         cell.detailTextLabel?.textColor = .auxiliaryText
         cell.imageView?.image = nil
         cell.accessoryType = .none
-        
+
         cell.textLabel?.accessibilityLabel = nil
         cell.detailTextLabel?.accessibilityLabel = nil
         cell.accessibilityTraits = []
@@ -266,7 +264,7 @@ extension RemoteFilePickerVC {
             fatalError("Unexpected cell index")
         }
     }
-    
+
     private func configureWebdavURLCell(_ cell: TextFieldCell) {
         cell.textField.placeholder = "https://host:port/path/file.kdbx"
         cell.textField.textContentType = .URL
@@ -283,7 +281,7 @@ extension RemoteFilePickerVC {
         webdavURLTextField?.validityDelegate = self
         webdavURLTextField?.text = webdavURL?.absoluteString
     }
-    
+
     private func configureWebdavAllowUntrustedCell(_ cell: SwitchCell) {
         cell.textLabel?.text = LString.titleAllowUntrustedCertificate
         cell.detailTextLabel?.text = nil
@@ -292,7 +290,7 @@ extension RemoteFilePickerVC {
             self?.allowUntrustedCertificate = theSwitch.isOn
         }
     }
-    
+
     private func configureWebdavUsernameCell(_ cell: TextFieldCell) {
         cell.textField.placeholder = LString.fieldUserName
         cell.textField.textContentType = .username
@@ -309,7 +307,7 @@ extension RemoteFilePickerVC {
         webdavUsernameTextField?.validityDelegate = self
         webdavUsernameTextField?.text = webdavUsername
     }
-    
+
     private func configureWebdavPasswordCell(_ cell: TextFieldCell) {
         cell.textField.placeholder = LString.fieldPassword
         cell.textField.textContentType = .password
@@ -324,11 +322,11 @@ extension RemoteFilePickerVC {
         webdavPasswordTextField?.validityDelegate = self
         webdavPasswordTextField?.text = webdavPassword
     }
-    
+
     private func setWebdavInputURL(fromText text: String) {
         guard var urlComponents = URLComponents(string: text),
-              (urlComponents.scheme?.isNotEmpty ?? false),
-              (urlComponents.host?.isNotEmpty ?? false),
+              urlComponents.scheme?.isNotEmpty ?? false,
+              urlComponents.host?.isNotEmpty ?? false,
               urlComponents.path.count > 1,
               let inputURL = urlComponents.url
         else { 
@@ -336,14 +334,14 @@ extension RemoteFilePickerVC {
             refreshDoneButton()
             return
         }
-        
+
         let inputURLScheme = inputURL.scheme ?? ""
         guard WebDAVFileURL.schemes.contains(inputURLScheme) else {
             self.webdavURL = nil
             refreshDoneButton()
             return
         }
-        
+
         var inputTextNeedsUpdate = false
         if let urlUser = urlComponents.user {
             webdavUsername = urlUser
@@ -358,10 +356,10 @@ extension RemoteFilePickerVC {
         urlComponents.user = nil
         urlComponents.password = nil
         self.webdavURL = urlComponents.url
-        if inputTextNeedsUpdate  {
+        if inputTextNeedsUpdate {
             webdavURLTextField?.text = self.webdavURL?.absoluteString ?? text
         }
-        
+
         refreshDoneButton()
     }
 }
@@ -377,17 +375,17 @@ extension RemoteFilePickerVC {
             fatalError("Unexpected cell index")
         }
     }
-    
+
     private func configureOneDriveLoginCell(_ cell: ButtonCell) {
         cell.button.setTitle(LString.actionSignInToOneDrive, for: .normal)
         cell.button.contentHorizontalAlignment = .center
         cell.button.isEnabled = !isBusy
     }
-    
+
     private func configureOneDrivePrivateSessionCell(_ cell: SwitchCell) {
         cell.textLabel?.text = LString.titlePrivateBrowserMode
         cell.detailTextLabel?.text = LString.descriptionPrivateBrowserMode
-        
+
         cell.theSwitch.isOn = oneDrivePrivateSession
         cell.onDidToggleSwitch = { [weak self] theSwitch in
             self?.oneDrivePrivateSession = theSwitch.isOn
@@ -412,7 +410,7 @@ extension RemoteFilePickerVC: ValidatingTextFieldDelegate, UITextFieldDelegate {
             return true 
         }
     }
-    
+
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         switch sender {
         case webdavURLTextField:

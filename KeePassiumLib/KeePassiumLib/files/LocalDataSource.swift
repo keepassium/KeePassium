@@ -7,14 +7,14 @@
 //  For commercial licensing, please contact the author.
 
 public final class LocalDataSource: DataSource {
-    
-    public static var urlSchemePrefix: String? = nil
+
+    public static var urlSchemePrefix: String?
     public static var urlSchemes: [String] = ["file"]
-    
+
     func getAccessCoordinator() -> FileAccessCoordinator {
         return NSFileCoordinator()
     }
-    
+
     public func readFileInfo(
         at url: URL,
         fileProvider: FileProvider?,
@@ -39,7 +39,7 @@ public final class LocalDataSource: DataSource {
             completion: completion
         )
     }
-    
+
     public func read(
         _ url: URL,
         fileProvider: FileProvider?,
@@ -61,7 +61,7 @@ public final class LocalDataSource: DataSource {
             }
         }
     }
-    
+
     public func write(
         _ data: ByteArray,
         to url: URL,

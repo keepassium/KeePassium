@@ -16,7 +16,7 @@ extension Date {
     }
     private static let usPosixLocale = Locale(identifier: "en_US_POSIX")
     private static let gmtTimeZone = TimeZone(secondsFromGMT: 0)
-    
+
     public static func parse(httpHeaderValue: String?) -> Date? {
         guard let dateString = httpHeaderValue else {
             return nil

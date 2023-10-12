@@ -29,7 +29,7 @@ public class Attachment: Eraseable {
         }
         return uncompressedSize
     }
-    
+
     public init(name: String, isCompressed: Bool, data: ByteArray) {
         self.name = name
         self.isCompressed = isCompressed
@@ -39,7 +39,7 @@ public class Attachment: Eraseable {
     deinit {
         erase()
     }
-    
+
     public func clone() -> Attachment {
         return Attachment(
             name: self.name,
@@ -47,7 +47,7 @@ public class Attachment: Eraseable {
             data: self.data
         )
     }
-    
+
     public func erase() {
         name.erase()
         isCompressed = false

@@ -10,12 +10,12 @@ import Foundation
 
 public class CustomIcon2: Eraseable {
     public static let maxSide = CGFloat(128)
-    
+
     public private(set) var uuid: UUID
     public private(set) var data: ByteArray
     public private(set) var name: String?
     public private(set) var lastModificationTime: Date?
-    
+
     public var description: String {
         return "CustomIcon(UUID: \(uuid.uuidString), Data: \(data.count) bytes"
     }
@@ -24,7 +24,7 @@ public class CustomIcon2: Eraseable {
         data = ByteArray()
         name = nil
         lastModificationTime = nil
-        
+
     }
     public init(uuid: UUID, data: ByteArray) {
         self.uuid = uuid
@@ -32,40 +32,40 @@ public class CustomIcon2: Eraseable {
         self.name = nil
         self.lastModificationTime = nil
     }
-    
+
     deinit {
         erase()
     }
-    
+
     public func erase() {
         uuid.erase()
         data.erase()
         name?.erase()
         lastModificationTime = nil
     }
-    
+
     public func clone() -> CustomIcon2 {
         let newIcon = CustomIcon2()
         self.apply(to: newIcon)
         return newIcon
     }
-    
+
     public func apply(to target: CustomIcon2) {
         target.uuid = uuid
         target.data = data.clone()
         target.name = name
         target.lastModificationTime = lastModificationTime
     }
-    
+
     public func setName(_ newName: String) {
         name = newName
         lastModificationTime = Date.now
     }
-    
+
     func load(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
         assert(xml.name == Xml2.icon)
         Diag.verbose("Loading XML: custom icon")
-        
+
         erase()
         var xmlUUID: UUID?
         var xmlData: ByteArray?
@@ -99,7 +99,7 @@ public class CustomIcon2: Eraseable {
         self.name = xmlName
         self.lastModificationTime = xmlLastModificationTime
     }
-    
+
     func toXml(
         formatVersion: Database2.FormatVersion,
         timeFormatter: Database2XMLTimeFormatter
@@ -108,13 +108,13 @@ public class CustomIcon2: Eraseable {
         let xmlIcon = AEXMLElement(name: Xml2.icon)
         xmlIcon.addChild(name: Xml2.uuid, value: uuid.base64EncodedString())
         xmlIcon.addChild(name: Xml2.data, value: data.base64EncodedString())
-        
+
         if formatVersion.supports(.customIconName),
            let name = name
         {
             xmlIcon.addChild(name: Xml2.name, value: name)
         }
-        
+
         if formatVersion.supports(.customIconModificationTime),
            let lastModificationTime = lastModificationTime
         {

@@ -9,11 +9,11 @@
 import UIKit
 
 class WatchdogAwareTextView: UITextView {
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         NotificationCenter.default.addObserver(
@@ -22,12 +22,12 @@ class WatchdogAwareTextView: UITextView {
             name: UITextView.textDidChangeNotification,
             object: self)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(
             self, name: UITextView.textDidChangeNotification, object: self)
     }
-    
+
     @objc
     func onTextChanged() {
         Watchdog.shared.restart()

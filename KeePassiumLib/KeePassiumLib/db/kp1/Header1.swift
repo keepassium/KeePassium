@@ -13,18 +13,18 @@ class Header1 {
     public static let signature2: UInt32 = 0xB54BFB65
     public static let fileVersion: UInt32 = 0x00030003
     public static let versionMask: UInt32 = 0xFFFFFF00
-    
+
     public let count = 124
     private let masterSeedSize    = 16
     private let initialVectorSize = 16
     private let transformSeedSize = 32
-    
+
     enum Error: LocalizedError {
         case readingError
         case wrongSignature
         case unsupportedFileVersion(actualVersion: String)
         case unsupportedDataCipher(flags: UInt32)
-        
+
         public var errorDescription: String? {
             switch self {
             case .readingError:
@@ -58,7 +58,7 @@ class Header1 {
             }
         }
     }
-    
+
     enum Flag {
         public static let sha2     = UInt32(0x01)
         public static let aes      = UInt32(0x02)
@@ -69,7 +69,7 @@ class Header1 {
         case aes     = 0
         case twofish = 1
     }
-    
+
     private weak var database: Database1?
     private(set) var flags: UInt32 
     private(set) var masterSeed: ByteArray
@@ -80,7 +80,7 @@ class Header1 {
     internal var groupCount: Int 
     internal var entryCount: Int 
     private(set) var algorithm: CipherAlgorithm
-    
+
     init(database: Database1) {
         self.database = database
         flags = 0
@@ -107,17 +107,17 @@ class Header1 {
         entryCount = 0
         algorithm = .aes
     }
-    
+
     class func isSignatureMatches(data: ByteArray) -> Bool {
         let stream = data.asInputStream()
         stream.open()
         defer { stream.close() }
-        
+
         guard let sign1 = stream.readUInt32(),
             let sign2 = stream.readUInt32(),
             let _ = stream.readUInt32(), 
-            let fileVer = stream.readUInt32() else
-        {
+            let fileVer = stream.readUInt32()
+        else {
             Diag.warning("Signature bytes missing")
             return false
         }
@@ -130,29 +130,29 @@ class Header1 {
         }
         return true
     }
-    
+
     func read(data: ByteArray) throws {
         Diag.debug("Reading the header")
         erase()
-        
+
         let stream = data.asInputStream()
         stream.open()
         defer { stream.close() }
-        
+
         guard let sign1 = stream.readUInt32(),
             let sign2 = stream.readUInt32(),
             let flags = stream.readUInt32(),
             let fileVer = stream.readUInt32() else {
                 throw Error.readingError
         }
-        
+
         guard sign1 == Header1.signature1 && sign2 == Header1.signature2 else {
             throw Error.wrongSignature
         }
         guard (fileVer & Header1.versionMask) == (Header1.fileVersion & Header1.versionMask) else {
             throw Error.unsupportedFileVersion(actualVersion: fileVer.asHexString)
         }
-        
+
         if (flags & Flag.aes != 0) && (flags & Flag.twofish == 0) {
             algorithm = .aes
         } else if (flags & Flag.twofish != 0) && (flags & Flag.aes == 0) {
@@ -160,9 +160,9 @@ class Header1 {
         } else {
             throw Error.unsupportedDataCipher(flags: flags)
         }
-        
+
         self.flags = flags
-        
+
         guard let masterSeed = stream.read(count: masterSeedSize) else { throw Error.readingError }
         guard let initialVector = stream.read(count: initialVectorSize) else { throw Error.readingError }
         self.masterSeed = masterSeed
@@ -172,16 +172,16 @@ class Header1 {
         guard let entryCount = stream.readUInt32() else { throw Error.readingError }
         self.groupCount = Int(groupCount)
         self.entryCount = Int(entryCount)
-        
+
         guard let contentHash = stream.read(count: SHA256_SIZE) else { throw Error.readingError }
         guard let transformSeed = stream.read(count: transformSeedSize) else { throw Error.readingError }
         self.contentHash = contentHash
         self.transformSeed = transformSeed
-        
+
         guard let transformRounds = stream.readUInt32() else { throw Error.readingError }
         self.transformRounds = transformRounds
     }
-    
+
     func write(to stream: ByteArray.OutputStream) {
         Diag.debug("Writing the header")
         switch algorithm {
@@ -204,7 +204,7 @@ class Header1 {
         stream.write(data: transformSeed)
         stream.write(value: transformRounds)
     }
-    
+
     internal func randomizeSeeds() throws {
         Diag.debug("Randomizing the seeds")
         initialVector = try CryptoManager.getRandomSecureBytes(count: initialVectorSize)

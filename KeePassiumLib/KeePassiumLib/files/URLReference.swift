@@ -15,7 +15,7 @@ public struct FileInfo {
     public var modificationDate: Date?
     public var isExcludedFromBackup: Bool?
     public var isInTrash: Bool
-    
+
     public init(
         fileName: String,
         fileSize: Int64? = nil,
@@ -41,20 +41,20 @@ public class URLReference:
     Synchronizable
 {
     public typealias Descriptor = String
-    
+
     public enum Location: Int, Codable, CustomStringConvertible {
         public static let allValues: [Location] =
             [.internalDocuments, .internalBackup, .internalInbox, .external]
-        
+
         public static let allInternal: [Location] =
             [.internalDocuments, .internalBackup, .internalInbox]
-        
+
         case internalDocuments = 0
         case internalBackup = 1
         case internalInbox = 2
         case external = 100
         case remote = 200
-        
+
         public var isInternal: Bool {
             switch self {
             case .internalDocuments,
@@ -66,8 +66,9 @@ public class URLReference:
                 return false
             }
         }
-        
+
         public var description: String {
+            // swiftlint:disable line_length
             switch self {
             case .internalDocuments:
                 return NSLocalizedString(
@@ -101,17 +102,17 @@ public class URLReference:
                     comment: "Human-readable file location. Example: 'File Location: Remote server'")
 
             }
+            // swiftlint:enable line_length
         }
     }
-    
+
     public static let defaultTimeoutDuration: TimeInterval = 10.0
-    
+
     public var visibleFileName: String { return url?.lastPathComponent ?? "?" }
-    
+
     public private(set) var error: FileAccessError?
     public var hasError: Bool { return error != nil}
-    
-    
+
     public var needsReinstatement: Bool {
         guard let error else { return false }
         guard !location.isInternal else { return false }
@@ -122,7 +123,7 @@ public class URLReference:
         default:
             break
         }
-        
+
         guard let nsError = error.underlyingError as NSError? else {
             return false
         }
@@ -135,19 +136,19 @@ public class URLReference:
             return false
         }
     }
-    
+
     private let data: Data
-    
+
     private lazy var dataSHA256: ByteArray = {
         return ByteArray(data: data).sha256
     }()
-    
+
     public let location: Location
-    
+
     internal var bookmarkedURL: URL?
     internal var cachedURL: URL?
     internal var resolvedURL: URL?
-    
+
     internal var originalURL: URL? {
         return bookmarkedURL ?? cachedURL
     }
@@ -155,8 +156,7 @@ public class URLReference:
     public var url: URL? {
         return resolvedURL ?? cachedURL ?? bookmarkedURL
     }
-    
-    
+
     public var isRefreshingInfo: Bool {
         let result = synchronized {
             return (self.infoRefreshRequestCount > 0)
@@ -167,10 +167,9 @@ public class URLReference:
     private var infoRefreshRequestCount = 0
 
     private var cachedInfo: FileInfo?
-    
-    
+
     public private(set) var fileProvider: FileProvider?
-    
+
     fileprivate static let backgroundQueue = DispatchQueue(
         label: "com.keepassium.URLReference",
         qos: .background,
@@ -180,15 +179,14 @@ public class URLReference:
         attributes: [], 
         target: URLReference.backgroundQueue
     )
-    
-    
+
     private enum CodingKeys: String, CodingKey {
         case data = "data"
         case location = "location"
         case cachedURL = "url"
     }
-    
-    
+
+
     internal init(from url: URL, location: Location, allowOptimization: Bool = true) throws {
         let isAccessed = url.startAccessingSecurityScopedResource()
         defer {
@@ -210,7 +208,7 @@ public class URLReference:
         self.location = location
         processReference()
     }
-    
+
     private static func shouldMakeBookmark(url: URL, location: Location, allowOptimization: Bool) -> Bool {
         guard url.scheme == "file" else {
             return false 
@@ -220,7 +218,7 @@ public class URLReference:
         }
         return !location.isInternal
     }
-    
+
     private static func makeBookmarkData(for url: URL, location: Location) throws -> Data {
         let options: URL.BookmarkCreationOptions
         if ProcessInfo.isRunningOnMac {
@@ -228,7 +226,7 @@ public class URLReference:
         } else {
             options = [.minimalBookmark]
         }
-        
+
         let result: Data
         if FileKeeper.platformSupportsSharedReferences {
             result = try url.bookmarkData(
@@ -247,7 +245,7 @@ public class URLReference:
         }
         return result
     }
-    
+
     public static func == (lhs: URLReference, rhs: URLReference) -> Bool {
         guard lhs.location == rhs.location else { return false }
         guard let lhsOriginalURL = lhs.originalURL, let rhsOriginalURL = rhs.originalURL else {
@@ -262,7 +260,7 @@ public class URLReference:
         let rhsDataHash = rhs.dataSHA256
         return lhsDataHash == rhsDataHash
     }
-    
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(location)
         guard let originalURL = originalURL else {
@@ -271,11 +269,11 @@ public class URLReference:
         }
         hasher.combine(originalURL)
     }
-    
+
     public func serialize() -> Data {
         return try! JSONEncoder().encode(self)
     }
-    
+
     public static func deserialize(from data: Data) -> URLReference? {
         guard let ref = try? JSONDecoder().decode(URLReference.self, from: data) else {
             return nil
@@ -283,7 +281,7 @@ public class URLReference:
         ref.processReference()
         return ref
     }
-    
+
     public var debugDescription: String {
         return " ‣ Location: \(location)\n" +
             " ‣ bookmarkedURL: \(bookmarkedURL?.relativeString ?? "nil")\n" +
@@ -292,9 +290,9 @@ public class URLReference:
             " ‣ fileProvider: \(fileProvider?.id ?? "nil")\n" +
             " ‣ data: \(data.count) bytes"
     }
-    
-    
-    public typealias CreateCallback = (Result<URLReference, FileAccessError>) -> ()
+
+
+    public typealias CreateCallback = (Result<URLReference, FileAccessError>) -> Void
 
     public static func create(
         for url: URL,
@@ -322,21 +320,21 @@ public class URLReference:
             }
             return
         }
-        
+
         FileDataProvider.bookmarkFile(
             at: url,
             location: location,
-            creationHandler: { (_url, _location) throws -> URLReference in
+            creationHandler: { _url, _location throws -> URLReference in
                 return try URLReference(from: _url, location: _location, allowOptimization: allowOptimization)
             },
             completionQueue: completionQueue,
             completion: completion
         )
     }
-    
-    
-    public typealias ResolveCallback = (Result<URL, FileAccessError>) -> ()
-    
+
+
+    public typealias ResolveCallback = (Result<URL, FileAccessError>) -> Void
+
     public func resolveAsync(
         timeout: Timeout,
         callbackQueue: OperationQueue = .main,
@@ -353,10 +351,10 @@ public class URLReference:
             }
             return
         }
-        
+
         let fileProvider = self.fileProvider
         URLReference.backgroundQueue.async {
-            let resolver = DispatchWorkItem() {
+            let resolver = DispatchWorkItem {
                 do {
                     let url = try self.resolveSync()
                     self.error = nil
@@ -389,15 +387,15 @@ public class URLReference:
             }
         }
     }
-    
-    
-    public typealias InfoCallback = (Result<FileInfo, FileAccessError>) -> ()
-    
+
+
+    public typealias InfoCallback = (Result<FileInfo, FileAccessError>) -> Void
+
     private enum InfoRefreshRequestState {
         case added
         case completed
     }
-    
+
     private func registerInfoRefreshRequest(_ state: InfoRefreshRequestState) {
         synchronized { [self] in
             switch state {
@@ -408,7 +406,7 @@ public class URLReference:
             }
         }
     }
-    
+
     public func getCachedInfo(
         canFetch: Bool,
         timeout: Timeout = Timeout(duration: URLReference.defaultTimeoutDuration),
@@ -427,16 +425,14 @@ public class URLReference:
             refreshInfo(timeout: timeout, completion: callback)
         }
     }
-    
-    
+
     public func refreshInfo(
         timeout: Timeout = Timeout(duration: URLReference.defaultTimeoutDuration),
         completionQueue: OperationQueue = .main,
         completion: @escaping InfoCallback
     ) {
         registerInfoRefreshRequest(.added)
-        resolveAsync(timeout: timeout, callbackQueue: completionQueue) {
-            [weak self] result in
+        resolveAsync(timeout: timeout, callbackQueue: completionQueue) { [weak self] result in
             guard let self = self else { return }
 
             assert(completionQueue.isCurrent)
@@ -456,7 +452,7 @@ public class URLReference:
             }
         }
     }
-    
+
     private func refreshInfo(
         for url: URL,
         fileProvider: FileProvider?,
@@ -484,8 +480,8 @@ public class URLReference:
             }
         )
     }
-    
-    
+
+
     public func resolveSync() throws -> URL {
         guard data.count > 0 else {
             return resolvedURL ?? cachedURL ?? bookmarkedURL! 
@@ -496,7 +492,7 @@ public class URLReference:
                 return cachedURL
             }
         }
-        
+
         if Settings.current.isNetworkAccessAllowed,
            let originalURL = originalURL,
            originalURL.isRemoteURL
@@ -504,7 +500,7 @@ public class URLReference:
             self.resolvedURL = originalURL
             return originalURL
         }
-        
+
         var isStale = false
         let _resolvedURL = try URL(
             resolvingBookmarkData: data,
@@ -514,26 +510,26 @@ public class URLReference:
         self.resolvedURL = _resolvedURL
         return _resolvedURL
     }
-    
+
     public func getDescriptor() -> Descriptor? {
         if let cachedFileName = cachedURL?.lastPathComponent {
             return cachedFileName
         }
         return bookmarkedURL?.lastPathComponent
     }
-    
+
     public func getCachedInfoSync(canFetch: Bool) -> FileInfo? {
         if cachedInfo == nil && canFetch {
             refreshInfoSync()
         }
         return cachedInfo
     }
-    
+
     public func getInfoSync() -> FileInfo? {
         refreshInfoSync()
         return cachedInfo
     }
-    
+
     private func refreshInfoSync() {
         let semaphore = DispatchSemaphore(value: 0)
         resolveQueue.async { [self] in
@@ -543,12 +539,12 @@ public class URLReference:
         }
         semaphore.wait()
     }
-    
-    public func find(in refs: [URLReference], fallbackToNamesake: Bool=false) -> URLReference? {
+
+    public func find(in refs: [URLReference], fallbackToNamesake: Bool = false) -> URLReference? {
         if let exactMatchIndex = refs.firstIndex(of: self) {
             return refs[exactMatchIndex]
         }
-        
+
         if fallbackToNamesake {
             guard let fileName = self.url?.lastPathComponent else {
                 return nil
@@ -557,14 +553,14 @@ public class URLReference:
         }
         return nil
     }
-    
-    
+
+
     fileprivate func processReference() {
         guard !data.isEmpty else {
             fileProvider = detectFileProvider(hint: nil)
             return
         }
-        
+
         func getRecordValue(data: ByteArray, fpOffset: Int) -> String? {
             let contentBytes = data[fpOffset..<data.count]
             let contentStream = contentBytes.asInputStream()
@@ -577,9 +573,10 @@ public class URLReference:
                 else { return nil }
             return utf8String
         }
-        
+
         func extractFileProviderID(_ fullString: String) -> String? {
-            
+
+            // swiftlint:disable line_length
             let regExpressions: [NSRegularExpression] = [
                 try! NSRegularExpression(
                     pattern: #"fileprovider\:#?([a-zA-Z0-9\.\-\_]+)"#,
@@ -588,6 +585,7 @@ public class URLReference:
                     pattern: #"fp\:/.*?/([a-zA-Z0-9\.\-\_]+)/"#,
                     options: [])
             ]
+            // swiftlint:enable line_length
 
             let fullRange = NSRange(fullString.startIndex..<fullString.endIndex, in: fullString)
             for regexp in regExpressions {
@@ -599,26 +597,26 @@ public class URLReference:
             }
             return nil
         }
-        
+
         func extractBookmarkedURLString(_ sandboxInfoString: String) -> String? {
             let infoTokens = sandboxInfoString.split(separator: ";")
             guard let lastToken = infoTokens.last else { return nil }
             return String(lastToken)
         }
-        
+
         let data = ByteArray(data: self.data)
         guard data.count > 0 else { return }
         let stream = data.asInputStream()
         stream.open()
         defer { stream.close() }
-        
+
         stream.skip(count: 12)
         guard let contentOffset32 = stream.readUInt32() else { return }
         let contentOffset = Int(contentOffset32)
         stream.skip(count: contentOffset - 12 - 4)
         guard let firstTOC32 = stream.readUInt32() else { return }
-        stream.skip(count: Int(firstTOC32) - 4 + 4*4)
-        
+        stream.skip(count: Int(firstTOC32) - 4 + 4 * 4)
+
         var _fileProviderID: String?
         var _sandboxBookmarkedURLString: String?
         var _hackyBookmarkedURLString: String?
@@ -648,7 +646,7 @@ public class URLReference:
                 continue
             }
         }
-        
+
         if let volumePath = _volumePath,
             let hackyURLString = _hackyBookmarkedURLString,
             !hackyURLString.starts(with: volumePath)
@@ -660,18 +658,18 @@ public class URLReference:
         }
         self.fileProvider = detectFileProvider(hint: _fileProviderID)
     }
-    
+
     private func detectFileProvider(hint: String?) -> FileProvider? {
         if let fileProviderID = hint {
             return FileProvider(rawValue: fileProviderID)
         }
-        
+
         if let url = url,
            let fileProviderDedicatedToSuchURLs = DataSourceFactory.findInAppFileProvider(for: url)
         {
             return fileProviderDedicatedToSuchURLs
         }
-        
+
         if location.isInternal || ProcessInfo.isRunningOnMac {
             return .localStorage
         }

@@ -20,7 +20,7 @@ extension LString {
             value: "File Info",
             comment: "Title of a dialog with file details (name, size, dates)"
         )
-        
+
         public static let fieldFileName = NSLocalizedString(
             "[FileInfo/Field/title] File Name",
             bundle: Bundle.framework,

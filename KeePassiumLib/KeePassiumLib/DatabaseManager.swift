@@ -56,7 +56,7 @@ public class DatabaseManager {
             }
         )
     }
-    
+
     static func shouldBackupFiles(from location: URLReference.Location) -> Bool {
         switch location {
         case .external,
@@ -68,7 +68,7 @@ public class DatabaseManager {
             return false
         }
     }
-    
+
     public static func getFallbackFile(for databaseRef: URLReference) -> URLReference? {
         let latestBackupURL = FileKeeper.shared.getBackupFileURL(
             nameTemplate: databaseRef.visibleFileName,

@@ -20,19 +20,19 @@ final class DatabaseSettingsCoordinator: Coordinator {
     private let router: NavigationRouter
     private let dbRef: URLReference
     private let dbSettingsVC: DatabaseSettingsVC
-    
+
     init(fileRef: URLReference, router: NavigationRouter) {
         self.dbRef = fileRef
         self.router = router
         dbSettingsVC = DatabaseSettingsVC.instantiateFromStoryboard()
         dbSettingsVC.delegate = self
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         router.push(dbSettingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
@@ -54,7 +54,7 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
     func didPressClose(in viewController: DatabaseSettingsVC) {
         router.pop(viewController: dbSettingsVC, animated: true, completion: nil)
     }
-    
+
     func canChangeReadOnly(in viewController: DatabaseSettingsVC) -> Bool {
         switch dbRef.location {
         case .internalBackup: 
@@ -66,7 +66,7 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
             return true
         }
     }
-    
+
     func canChangeQuickTypeEnabled(in viewController: DatabaseSettingsVC) -> Bool {
         return Settings.current.isQuickTypeEnabled
     }
@@ -76,8 +76,8 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
             dbSettings.isReadOnlyFile = isReadOnlyFile
         }
         delegate?.didChangeDatabaseSettings(in: self)
-    }    
-    
+    }
+
     func didChangeSettings(isQuickTypeEnabled: Bool, in viewController: DatabaseSettingsVC) {
         if !isQuickTypeEnabled {
             QuickTypeAutoFillStorage.removeAll()
@@ -87,7 +87,7 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
         }
         delegate?.didChangeDatabaseSettings(in: self)
     }
-    
+
     func didChangeSettings(
         newFallbackStrategy: UnreachableFileFallbackStrategy,
         forAutoFill: Bool,
@@ -106,7 +106,7 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
         }
         delegate?.didChangeDatabaseSettings(in: self)
     }
-    
+
     func didChangeSettings(
         newFallbackTimeout: TimeInterval,
         forAutoFill: Bool,

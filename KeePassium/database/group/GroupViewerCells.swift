@@ -18,31 +18,31 @@ final class GroupViewerEntryCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    
+
     @IBOutlet private weak var hStack: UIStackView!
     @IBOutlet private weak var showOTPButton: UIButton!
     @IBOutlet private weak var otpView: OTPView!
     @IBOutlet private weak var attachmentIndicator: UIImageView!
-    
+
     var hasAttachments: Bool = false {
         didSet {
             setVisible(attachmentIndicator, hasAttachments)
         }
     }
-    
+
     var totpGenerator: TOTPGenerator? {
         didSet {
             refresh()
         }
     }
-    
+
     var otpCopiedHandler: (() -> Void)?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         resetView()
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         resetView()
@@ -59,7 +59,7 @@ final class GroupViewerEntryCell: UITableViewCell {
             self?.animateOTPValue(visible: false)
         }
     }
-    
+
     private func setVisible(_ view: UIView, _ visible: Bool) {
         let isViewAlreadyVisible = !view.isHidden
         guard visible != isViewAlreadyVisible else {
@@ -67,7 +67,7 @@ final class GroupViewerEntryCell: UITableViewCell {
         }
         view.isHidden = !visible
     }
-    
+
     public func refresh() {
         guard let totpGenerator = totpGenerator else {
             setVisible(showOTPButton, false)
@@ -83,7 +83,7 @@ final class GroupViewerEntryCell: UITableViewCell {
         otpView.value = otpValue
         otpView.remainingTime = totpGenerator.remainingTime
         otpView.refresh()
-        
+
         let justSwitched = !showOTPButton.isHidden
         if justSwitched {
             animateOTPValue(visible: true)
@@ -92,7 +92,7 @@ final class GroupViewerEntryCell: UITableViewCell {
             otpCopiedHandler?()
         }
     }
-    
+
     private func animateOTPValue(visible: Bool) {
         let animateValue = (otpView.isHidden != !visible)
         let animateButton = (showOTPButton.isHidden != visible)
@@ -113,7 +113,7 @@ final class GroupViewerEntryCell: UITableViewCell {
             completion: nil
         )
     }
-    
+
     @IBAction private func didPressShowOTP(_ sender: UIButton) {
         setVisible(otpView, true)
         refresh()

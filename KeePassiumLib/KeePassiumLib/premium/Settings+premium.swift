@@ -9,9 +9,9 @@
 import Foundation
 
 public extension Settings {
-    
+
     private static let lightUseDatabaseLockTimeout = DatabaseLockTimeout.after1hour
-    
+
     var premiumDatabaseLockTimeout: Settings.DatabaseLockTimeout {
         let actualTimeout = Settings.current.databaseLockTimeout
         switch PremiumManager.shared.status {
@@ -25,11 +25,11 @@ public extension Settings {
             return actualTimeout
         }
     }
-    
+
     var premiumIsKeepKeyFileAssociations: Bool {
         return isKeepKeyFileAssociations
     }
-    
+
     var premiumIsLockDatabasesOnTimeout: Bool {
         let actualValue = Settings.current.isLockDatabasesOnTimeout
         if PremiumManager.shared.isAvailable(feature: .canKeepMasterKeyOnDatabaseTimeout) {
@@ -38,7 +38,7 @@ public extension Settings {
             return true
         }
     }
-    
+
     var premiumIsQuickTypeEnabled: Bool {
         let actualValue = Settings.current.isQuickTypeEnabled
         if PremiumManager.shared.isAvailable(feature: .canUseQuickTypeAutoFill) {
@@ -47,7 +47,7 @@ public extension Settings {
             return false
         }
     }
-    
+
     func isAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
         switch status {
         case .initialGracePeriod,
@@ -60,7 +60,7 @@ public extension Settings {
             return true
         }
     }
-    
+
     func isShownAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
         switch status {
         case .initialGracePeriod,

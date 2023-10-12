@@ -10,37 +10,38 @@ import Foundation
 
 public enum FileAccessError: LocalizedError {
     case timeout(fileProvider: FileProvider?)
-    
+
     case noInfoAvailable
-    
+
     case internalError
-    
+
     case fileProviderDoesNotRespond(fileProvider: FileProvider?)
-    
+
     case fileProviderNotFound(fileProvider: FileProvider?)
-    
+
     case targetFileIsReadOnly(fileProvider: FileProvider)
-    
+
     case networkAccessDenied
 
     case authorizationRequired(message: String, recoveryAction: String)
-    
+
     case serverSideError(message: String)
-    
+
     case networkError(message: String)
-    
+
     case systemError(_ originalError: Error?)
-    
+
     public var isTimeout: Bool {
         switch self {
-        case .timeout(_):
+        case .timeout:
             return true
         default:
             return false
         }
     }
-    
+
     public var errorDescription: String? {
+        // swiftlint:disable line_length
         switch self {
         case .timeout(let fileProvider):
             if let fileProvider = fileProvider {
@@ -141,12 +142,13 @@ public enum FileAccessError: LocalizedError {
         case .systemError(let originalError):
             return originalError?.localizedDescription
         }
+        // swiftlint:enable line_length
     }
-    
+
     public var failureReason: String? {
         return nil
     }
-    
+
     public var recoverySuggestion: String? {
         switch self {
         case .authorizationRequired(_, let recoveryAction):
@@ -155,7 +157,7 @@ public enum FileAccessError: LocalizedError {
             return nil
         }
     }
-    
+
     public static func make(
         from originalError: Error,
         fileName: String,
@@ -169,7 +171,7 @@ public enum FileAccessError: LocalizedError {
         switch (nsError.domain, nsError.code) {
         case (NSCocoaErrorDomain, CocoaError.Code.xpcConnectionReplyInvalid.rawValue): 
             return .fileProviderDoesNotRespond(fileProvider: fileProvider)
-            
+
         case (NSCocoaErrorDomain, CocoaError.Code.xpcConnectionInterrupted.rawValue), 
              (NSCocoaErrorDomain, CocoaError.Code.xpcConnectionInvalid.rawValue): 
             return .fileProviderDoesNotRespond(fileProvider: fileProvider)
@@ -180,7 +182,7 @@ public enum FileAccessError: LocalizedError {
             } else {
                 return .systemError(originalError)
             }
-        
+
         case (NSCocoaErrorDomain, CocoaError.Code.fileReadNoPermission.rawValue),
              (NSCocoaErrorDomain, CocoaError.Code.fileNoSuchFile.rawValue),
              (NSCocoaErrorDomain, CocoaError.Code.fileReadCorruptFile.rawValue):
@@ -191,7 +193,7 @@ public enum FileAccessError: LocalizedError {
                 message: message,
                 recoveryAction: LString.Error.actionReAddFileToAllowAccess
             )
-        
+
         case ("NSFileProviderInternalErrorDomain", 0), 
              ("NSFileProviderErrorDomain", -2001): 
             return .fileProviderNotFound(fileProvider: fileProvider)
@@ -200,7 +202,7 @@ public enum FileAccessError: LocalizedError {
             return .systemError(originalError)
         }
     }
-    
+
     public var underlyingError: Error? {
         switch self {
         case .systemError(let originalError):
@@ -212,6 +214,7 @@ public enum FileAccessError: LocalizedError {
 }
 
 extension LString.Error {
+    // swiftlint:disable line_length
     fileprivate static let oneDriveIsReadOnlyDescription = NSLocalizedString(
         "[FileAccessError/OneDriveReadOnly/reason]",
         bundle: Bundle.framework,
@@ -234,4 +237,5 @@ extension LString.Error {
         bundle: Bundle.framework,
         value: "Select the file again to allow access",
         comment: "Action/button for error recovery")
+    // swiftlint:enable line_length
 }

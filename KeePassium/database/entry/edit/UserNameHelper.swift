@@ -20,7 +20,7 @@ class UserNameHelper {
         result.append(contentsOf: getUniqueUserNames(from: database).prefix(namesLeft))
         return result
     }
-    
+
     static func getUniqueUserNames(from database: Database) -> [String] {
         let defaultUserName = getDefaultUserName(from: database)
 
@@ -28,21 +28,21 @@ class UserNameHelper {
         database.root?.collectAllEntries(to: &allEntries)
         let allUserNames = allEntries
             .filter { !$0.isDeleted }
-            .compactMap { $0.resolvedUserName}
+            .compactMap { $0.resolvedUserName }
             .filter { $0.isNotEmpty && ($0 != defaultUserName) }
-        
+
         var usageCount = [String: Int]()
         for userName in allUserNames {
             usageCount[userName] = (usageCount[userName] ?? 0) + 1
         }
-        
+
         let uniqueUserNamesSorted = usageCount
             .sorted { $0.value > $1.value }
             .map { $0.key }
-        
+
         return uniqueUserNamesSorted
     }
-    
+
     static func getDefaultUserName(from database: Database) -> String? {
         if let db2 = database as? Database2, db2.defaultUserName.isNotEmpty {
             return db2.defaultUserName
@@ -50,7 +50,7 @@ class UserNameHelper {
             return nil
         }
     }
-    
+
     static func getRandomUserNames(count: Int) -> [String] {
         assert(count > 0)
         var randomUserNames = [String]()
@@ -59,15 +59,17 @@ class UserNameHelper {
         }
         return randomUserNames
     }
-    
+
     static func getRandomUserName() -> String {
         return UserNameGenerator.generate()
     }
-    
+
     private class UserNameGenerator {
-        static let vowels = ["a","e","i","o","u"]
-        static let consonants = ["b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z"]
-        
+        static let vowels = ["a", "e", "i", "o", "u"]
+        static let consonants = [
+            "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n",
+            "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+
         static func generate(length: Int = 8) -> String {
             assert(length > 0)
             var randomIndices = [UInt8]()
@@ -79,7 +81,7 @@ class UserNameHelper {
                     randomIndices[i] = UInt8.random(in: 0..<255)
                 }
             }
-            
+
             var chars = [String]()
             for i in 0..<length {
                 if i % 2 == 0 {

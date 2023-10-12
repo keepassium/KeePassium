@@ -15,38 +15,38 @@ public enum ItemRelocationMode {
 
 protocol ItemRelocationCoordinatorDelegate: AnyObject {
     func didRelocateItems(in coordinator: ItemRelocationCoordinator)
-    
+
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
 class ItemRelocationCoordinator: Coordinator {
-    
+
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     public weak var delegate: ItemRelocationCoordinatorDelegate?
-    
+
     private let router: NavigationRouter
-    
+
     private let sourceDatabaseFile: DatabaseFile
     private let sourceDatabase: Database
     private var targetDatabaseFile: DatabaseFile
     private var targetDatabase: Database
     private let mode: ItemRelocationMode
     private var itemsToRelocate = [Weak<DatabaseItem>]()
-    
+
     private let groupPicker: DestinationGroupPickerVC
     private var databasePickerCoordinator: DatabasePickerCoordinator?
     private var externalGroupPicker: DestinationGroupPickerVC?
     private weak var destinationGroup: Group?
-    
+
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return router }
     var saveSuccessHandler: (() -> Void)?
-    
-    private var postSavingPhase: (()->Void)?
-    
+
+    private var postSavingPhase: (() -> Void)?
+
     init(
         router: NavigationRouter,
         databaseFile: DatabaseFile,
@@ -64,15 +64,15 @@ class ItemRelocationCoordinator: Coordinator {
         self.groupPicker = DestinationGroupPickerVC.create(mode: mode)
         groupPicker.delegate = self
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         guard let rootGroup = targetDatabase.root else {
-            assertionFailure();
+            assertionFailure()
             return
         }
 
@@ -86,7 +86,7 @@ class ItemRelocationCoordinator: Coordinator {
         let currentGroup = itemsToRelocate.first?.value?.parent
         groupPicker.expandGroup(currentGroup)
     }
-    
+
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
@@ -114,16 +114,16 @@ class ItemRelocationCoordinator: Coordinator {
 }
 
 extension ItemRelocationCoordinator {
-    
+
     private func isAllowedDestination(_ group: Group) -> Bool {
         guard group.database === targetDatabase else {
             assertionFailure()
             return false
         }
-        
+
         if let database1 = targetDatabase as? Database1,
-            let root1 = database1.root,
-            group === root1
+           let root1 = database1.root,
+           group === root1
         {
             for item in itemsToRelocate {
                 if item.value is Entry1 {
@@ -131,7 +131,7 @@ extension ItemRelocationCoordinator {
                 }
             }
         }
-        
+
         if sourceDatabase === targetDatabase {
             let hasImmovableItems = itemsToRelocate.contains {
                 guard let itemToMove = $0.value else { return false }
@@ -143,8 +143,8 @@ extension ItemRelocationCoordinator {
         }
         return true
     }
-    
-    
+
+
     private func relocateWithinDatabase(to destinationGroup: Group) {
         assert(sourceDatabase === targetDatabase)
         switch mode {
@@ -157,7 +157,7 @@ extension ItemRelocationCoordinator {
         postSavingPhase = nil 
         saveDatabase(sourceDatabaseFile)
     }
-    
+
     private func moveItemsWithingDatabase(to destinationGroup: Group) {
         for weakItem in itemsToRelocate {
             guard let strongItem = weakItem.value else { continue }
@@ -187,8 +187,8 @@ extension ItemRelocationCoordinator {
             strongItem.touch(.accessed, updateParents: true)
         }
     }
-    
-    
+
+
     private func relocateAcrossDatabases(to destinationGroup: Group) {
         assert(sourceDatabase !== targetDatabase)
         switch mode {
@@ -208,7 +208,7 @@ extension ItemRelocationCoordinator {
             saveDatabase(targetDatabaseFile)
         }
     }
-    
+
     private func deleteItemsFromSourceDatabase() {
         itemsToRelocate
             .compactMap({ $0.value })
@@ -222,7 +222,7 @@ extension ItemRelocationCoordinator {
                 }
             }
     }
-    
+
     private func crossDatabaseCopyItems(to destinationGroup: Group) {
         itemsToRelocate
             .compactMap({ $0.value })
@@ -236,19 +236,19 @@ extension ItemRelocationCoordinator {
                 }
             }
     }
-    
+
     private func crossDatabaseCopy(entry: Entry, to destinationGroup: Group) {
         let cloneEntry = entry.clone(makeNewUUID: true)
         destinationGroup.add(entry: cloneEntry)
         cloneEntry.touch(.modified, updateParents: false) 
-        
+
         guard let sourceDatabase2 = sourceDatabase as? Database2,
               let targetDatabase2 = targetDatabase as? Database2,
               let entry2 = cloneEntry as? Entry2
         else {
             return
         }
-        
+
         crossDatabaseCopyCustomIcons(
             from: sourceDatabase2,
             to: targetDatabase2,
@@ -256,12 +256,12 @@ extension ItemRelocationCoordinator {
             entries: [entry2]
         )
     }
-    
+
     private func crossDatabaseCopy(group: Group, to destinationGroup: Group) {
         let cloneGroup = group.deepClone(makeNewUUIDs: true)
         destinationGroup.add(group: cloneGroup)
         cloneGroup.touch(.modified, updateParents: false) 
-        
+
         guard let sourceDatabase2 = sourceDatabase as? Database2,
               let targetDatabase2 = targetDatabase as? Database2,
               let cloneGroup2 = cloneGroup as? Group2
@@ -271,7 +271,7 @@ extension ItemRelocationCoordinator {
         var groups: [Group] = [cloneGroup2]
         var entries = [Entry]()
         cloneGroup2.collectAllChildren(groups: &groups, entries: &entries)
-        
+
         let groups2 = groups.map { $0 as! Group2 }
         let entries2 = entries.map { $0 as! Entry2 }
         crossDatabaseCopyCustomIcons(
@@ -281,7 +281,7 @@ extension ItemRelocationCoordinator {
             entries: entries2
         )
     }
-    
+
     private func crossDatabaseCopyCustomIcons(
         from sourceDatabase: Database2,
         to targetDatabase: Database2,
@@ -295,19 +295,19 @@ extension ItemRelocationCoordinator {
         sourceIcons.append(contentsOf: groups.compactMap {
             sourceDatabase.getCustomIcon(with: $0.customIconUUID)
         })
-        
+
         var sourceIconsByUUID = [UUID: CustomIcon2]()
         sourceIcons.forEach {
             sourceIconsByUUID[$0.uuid] = $0
         }
         let uniqueSourceIcons = sourceIconsByUUID.values
-        
+
         var newIconUUIDs = [UUID: UUID]()
         uniqueSourceIcons.forEach {
             let newIcon = targetDatabase.addCustomIcon(pngData: $0.data)
             newIconUUIDs[$0.uuid] = newIcon.uuid
         }
-        
+
         entries.forEach {
             $0.customIconUUID = newIconUUIDs[$0.customIconUUID] ?? .ZERO
         }
@@ -321,11 +321,11 @@ extension ItemRelocationCoordinator: DestinationGroupPickerDelegate {
     func didPressCancel(in groupPicker: DestinationGroupPickerVC) {
         router.dismiss(animated: true, completion: nil)
     }
-    
+
     func shouldSelectGroup(_ group: Group, in groupPicker: DestinationGroupPickerVC) -> Bool {
         return isAllowedDestination(group)
     }
-    
+
     func didSelectGroup(_ group: Group, in groupPicker: DestinationGroupPickerVC) {
         destinationGroup = group
         if sourceDatabase === targetDatabase {
@@ -334,7 +334,7 @@ extension ItemRelocationCoordinator: DestinationGroupPickerDelegate {
             relocateAcrossDatabases(to: group)
         }
     }
-    
+
     func didPressSwitchDatabase(
         at popoverAnchor: PopoverAnchor,
         in groupPicker: DestinationGroupPickerVC
@@ -354,7 +354,7 @@ extension ItemRelocationCoordinator: DatabaseSaving {
     func canCancelSaving(databaseFile: DatabaseFile) -> Bool {
         return false
     }
-    
+
     func didSave(databaseFile: DatabaseFile) {
         if let postSavingPhase = postSavingPhase {
             Diag.info("Starting post-save phase")
@@ -365,15 +365,15 @@ extension ItemRelocationCoordinator: DatabaseSaving {
         delegate?.didRelocateItems(in: self)
         router.pop(viewController: groupPicker, animated: true)
     }
-    
+
     func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
         delegate?.didRelocateDatabase(databaseFile, to: newURL)
     }
-    
+
     func getDatabaseSavingErrorParent() -> UIViewController {
         return router.navigationController
     }
-    
+
     func getDiagnosticsHandler() -> (() -> Void)? {
         return showDiagnostics
     }
@@ -392,7 +392,7 @@ extension ItemRelocationCoordinator {
 
         self.databasePickerCoordinator = databasePickerCoordinator
     }
-    
+
     private func unlockDatabase(_ fileRef: URLReference) {
         let databaseUnlockerCoordinator = DatabaseUnlockerCoordinator(
             router: router,
@@ -405,7 +405,7 @@ extension ItemRelocationCoordinator {
         databaseUnlockerCoordinator.start()
         addChildCoordinator(databaseUnlockerCoordinator)
     }
-    
+
     private func showTargetDatabase(
         _ databaseFile: DatabaseFile,
         at fileRef: URLReference,
@@ -422,29 +422,28 @@ extension ItemRelocationCoordinator {
         externalGroupPicker.rootGroup = databaseFile.database.root
         externalGroupPicker.expandGroup(databaseFile.database.root)
         externalGroupPicker.refresh()
-        router.push(externalGroupPicker, animated: true, replaceTopViewController: true, onPop: {
-            [weak self] in
+        router.push(externalGroupPicker, animated: true, replaceTopViewController: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
         self.externalGroupPicker = externalGroupPicker
-        
+
         if targetDatabase is Database1 && sourceDatabase is Database2 {
             warnings.addIssue(.lesserTargetFormat)
         }
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.showLoadingWarnings(warnings, for: databaseFile)
         }
     }
-    
+
     private func showLoadingWarnings(
         _ warnings: DatabaseLoadingWarnings,
         for databaseFile: DatabaseFile
     ) {
         guard !warnings.isEmpty else { return }
-        
+
         DatabaseLoadingWarningsVC.present(
             warnings,
             in: externalGroupPicker ?? groupPicker,
@@ -456,7 +455,7 @@ extension ItemRelocationCoordinator {
     }
 }
 
-extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {    
+extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {
     func shouldAcceptDatabaseSelection(
         _ fileRef: URLReference,
         in coordinator: DatabasePickerCoordinator
@@ -467,14 +466,14 @@ extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {
         }
         return !isReadOnly
     }
-    
+
     func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator) {
         guard let fileRef = fileRef else { return }
         assert(!DatabaseSettingsManager.shared.isReadOnly(fileRef), "Cannot relocate to read-only DB")
         router.navigationController.hideAllToasts()
         unlockDatabase(fileRef)
     }
-    
+
     func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool {
         return false
     }
@@ -484,27 +483,32 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
     func shouldDismissFromKeyboard(_ coordinator: DatabaseUnlockerCoordinator) -> Bool {
         return true
     }
-    
+
     func shouldAutoUnlockDatabase(
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) -> Bool {
         return true
     }
-    
+
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
     }
-    
-    func didNotUnlockDatabase(_ fileRef: URLReference, with message: String?, reason: String?, in coordinator: DatabaseUnlockerCoordinator) {
+
+    func didNotUnlockDatabase(
+        _ fileRef: URLReference,
+        with message: String?,
+        reason: String?,
+        in coordinator: DatabaseUnlockerCoordinator
+    ) {
     }
-    
+
     func shouldChooseFallbackStrategy(
         for fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) -> UnreachableFileFallbackStrategy {
         return .showError 
     }
-    
+
     func didUnlockDatabase(
         databaseFile: DatabaseFile,
         at fileRef: URLReference,
@@ -513,7 +517,7 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
     ) {
         showTargetDatabase(databaseFile, at: fileRef, warnings: warnings)
     }
-    
+
     func didPressReinstateDatabase(
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
@@ -522,19 +526,19 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
             Diag.warning("No database picker found, cancelling")
             return
         }
-        
+
         router.pop(animated: true, completion: { [weak self] in
             self?.reinstateDatabase(fileRef)
         })
     }
-    
+
     func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator) {
         guard let databasePickerCoordinator = databasePickerCoordinator else {
             Diag.warning("No database picker found, cancelling")
             assertionFailure()
             return
         }
-        
+
         router.pop(animated: true, completion: { [weak self] in
             guard let self = self else { return }
             databasePickerCoordinator.maybeAddRemoteDatabase(

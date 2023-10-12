@@ -14,13 +14,13 @@ public enum ChallengeResponseError: LocalizedError {
     case notAvailableInAutoFill
     case keyNotConnected
     case keyNotConfigured
-    
+
     case cancelled
-    
+
     case communicationError(message: String)
-    
-    
+
     public var errorDescription: String? {
+        // swiftlint:disable line_length
         switch self {
         case .notSupportedByDeviceOrSystem(let interface):
             return String.localizedStringWithFormat(
@@ -63,6 +63,7 @@ public enum ChallengeResponseError: LocalizedError {
         case .communicationError(let message):
             return message
         }
+        // swiftlint:enable line_length
     }
 }
 

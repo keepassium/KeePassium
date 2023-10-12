@@ -12,11 +12,13 @@ public enum RemoteConnectionType: String, CustomStringConvertible {
         .oneDrive,
         .oneDriveForBusiness
     ]
-    
+
+    // swiftlint:disable redundant_string_enum_value
     case webdav = "webdav"
     case oneDrive = "oneDrive"
     case oneDriveForBusiness = "oneDriveForBusiness"
-    
+    // swiftlint:enable redundant_string_enum_value
+
     public var description: String {
         switch self {
         case .webdav:
@@ -39,7 +41,7 @@ extension RemoteConnectionType {
             return true
         }
     }
-    
+
     public var isPremiumUpgradeRequired: Bool {
         return isBusinessCloud &&
                !PremiumManager.shared.isAvailable(feature: .canUseBusinessClouds)

@@ -9,10 +9,10 @@
 import UIKit
 
 class KPApplication: UIApplication {
-    
+
     override func sendEvent(_ event: UIEvent) {
         super.sendEvent(event)
-        
+
         guard let allTouches = event.allTouches else { return }
         for touch in allTouches where touch.phase == .began {
             Watchdog.shared.restart()
@@ -26,7 +26,7 @@ class KPApplication: UIApplication {
             isNetworkActivityIndicatorVisible = true
         }
     }
-    
+
     internal func hideNetworkActivityIndicator() {
         if #available(macCatalyst 13.0, *) {
         } else {

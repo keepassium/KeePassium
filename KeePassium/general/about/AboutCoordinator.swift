@@ -10,23 +10,23 @@ import KeePassiumLib
 
 final class AboutCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
-    
+
     var dismissHandler: CoordinatorDismissHandler?
-    
+
     private let router: NavigationRouter
     private let aboutVC: AboutVC
-    
+
     init(router: NavigationRouter) {
         self.router = router
         aboutVC = AboutVC.instantiateFromStoryboard()
         aboutVC.delegate = self
     }
-    
+
     deinit {
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
-    
+
     func start() {
         setupCloseButton()
         router.push(aboutVC, animated: true, onPop: { [weak self] in
@@ -35,19 +35,19 @@ final class AboutCoordinator: Coordinator {
             self.dismissHandler?(self)
         })
     }
-    
+
     private func setupCloseButton() {
         guard router.navigationController.topViewController == nil else {
             return
         }
-        
+
         let closeButton = UIBarButtonItem(
             barButtonSystemItem: .close,
             target: self,
             action: #selector(didPressDismiss))
         aboutVC.navigationItem.leftBarButtonItem = closeButton
     }
-    
+
     @objc
     private func didPressDismiss(_ sender: UIBarButtonItem) {
         router.dismiss(animated: true)
@@ -55,15 +55,15 @@ final class AboutCoordinator: Coordinator {
 }
 
 extension AboutCoordinator: AboutDelegate {
-    
+
     func didPressContactSupport(at popoverAnchor: PopoverAnchor, in viewController: AboutVC) {
         SupportEmailComposer.show(subject: .supportRequest, parent: viewController, popoverAnchor: popoverAnchor)
     }
-    
+
     func didPressWriteReview(at popoverAnchor: PopoverAnchor, in viewController: AboutVC) {
         AppStoreHelper.writeReview()
     }
-    
+
     func didPressOpenURL(_ url: URL, at popoverAnchor: PopoverAnchor, in viewController: AboutVC) {
         AppGroup.applicationShared?.open(url, options: [:], completionHandler: nil)
     }

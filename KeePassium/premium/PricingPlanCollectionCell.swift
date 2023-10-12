@@ -10,10 +10,9 @@ import KeePassiumLib
 import StoreKit
 
 
-
 class PricingPlanTitleCell: UITableViewCell {
     static let storyboardID = "TitleCell"
-    
+
     @IBOutlet weak var highlightLabel: UILabel!
     @IBOutlet weak var highlightPanel: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,12 +26,12 @@ protocol PricingPlanConditionCellDelegate: AnyObject {
 class PricingPlanConditionCell: UITableViewCell {
     static let storyboardID = "ConditionCell"
     weak var delegate: PricingPlanConditionCellDelegate?
-    
+
     @IBOutlet weak var checkmarkImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
     var helpReference: PricingPlanCondition.HelpReference = .none
-    
+
     var isChecked: Bool = false {
         didSet {
             if isChecked {
@@ -48,13 +47,12 @@ class PricingPlanConditionCell: UITableViewCell {
             }
         }
     }
-    
-    @IBAction func didPressDetailButton(_ sender: UIButton) {
+
+    @IBAction private func didPressDetailButton(_ sender: UIButton) {
         assert(helpReference != .none)
         delegate?.didPressDetailButton(in: self)
     }
 }
-
 
 
 protocol PricingPlanCollectionCellDelegate: AnyObject {
@@ -74,13 +72,13 @@ class PricingPlanCollectionCell: UICollectionViewCell {
         case benefits = 2
         case smallprint = 3
     }
-    
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var purchaseButton: UIButton!
     @IBOutlet weak var footerLabel: UILabel!
-    
+
     weak var delegate: PricingPlanCollectionCellDelegate?
-    
+
     var isPurchaseEnabled: Bool = false {
         didSet {
             refresh()
@@ -89,18 +87,18 @@ class PricingPlanCollectionCell: UICollectionViewCell {
     var pricingPlan: PricingPlan! {
         didSet { refresh() }
     }
-    
-    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
-        
+
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: CellID.benefitCell)
     }
-    
+
     func refresh() {
         guard pricingPlan != nil else { return }
         purchaseButton.borderColor = .actionTint
@@ -120,9 +118,9 @@ class PricingPlanCollectionCell: UICollectionViewCell {
         tableView.dataSource = self
         tableView.reloadData()
     }
-    
-    
-    @IBAction func didPressPurchaseButton(_ sender: Any) {
+
+
+    @IBAction private func didPressPurchaseButton(_ sender: Any) {
         delegate?.didPressPurchaseButton(in: self, with: pricingPlan)
     }
 }
@@ -160,7 +158,7 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return Section.allValues.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .title:
@@ -173,27 +171,27 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
             return 0 
         }
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard Section(rawValue: section)! == .benefits else {
             return nil
         }
-        
+
         if pricingPlan.isFree {
             return LString.premiumWhatYouMiss
         } else {
             return LString.premiumWhatYouGet
         }
     }
-    
+
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard Section(rawValue: section)! == .smallprint else {
             return nil
         }
         return pricingPlan.smallPrint
     }
-    
-    
+
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch Section(rawValue: indexPath.section)! {
         case .title:
@@ -206,12 +204,11 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
             fatalError()
         }
     }
-    
+
     func dequeueTitleCell(
         _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath)
-        -> PricingPlanTitleCell
-    {
+        cellForRowAt indexPath: IndexPath
+    ) -> PricingPlanTitleCell {
         let cell = tableView
             .dequeueReusableCell(withIdentifier: PricingPlanTitleCell.storyboardID, for: indexPath)
             as! PricingPlanTitleCell
@@ -228,12 +225,11 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
         cell.subpriceLabel?.text = getSubpriceText(for: pricingPlan)
         return cell
     }
-    
+
     func dequeueConditionCell(
         _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath)
-        -> PricingPlanConditionCell
-    {
+        cellForRowAt indexPath: IndexPath
+    ) -> PricingPlanConditionCell {
         let condition = pricingPlan.conditions[indexPath.row]
         let cell = tableView
             .dequeueReusableCell(withIdentifier: PricingPlanConditionCell.storyboardID, for: indexPath)
@@ -242,12 +238,12 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
         cell.titleLabel?.text = condition.localizedTitle
         cell.titleLabel?.font = .preferredFont(forTextStyle: .body)
         cell.isChecked = condition.isIncluded
-        
+
         cell.helpReference = condition.moreInfo
         cell.detailButton.isHidden = (condition.moreInfo == .none)
         return cell
     }
-    
+
     func dequeueBenefitCell(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -260,12 +256,12 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
         content.textProperties.font = .preferredFont(forTextStyle: .title3)
         content.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
         content.textToSecondaryTextVerticalPadding = 4.0
-        
+
         content.imageProperties.preferredSymbolConfiguration =
             UIImage.SymbolConfiguration(textStyle: .title1, scale: .large)
                 .applying(UIImage.SymbolConfiguration(weight: .thin))
         content.imageProperties.reservedLayoutSize = CGSize(width: 32, height: 0)
-        
+
         if pricingPlan.isFree {
             content.textProperties.color = .disabledText
             content.secondaryTextProperties.color = .disabledText
@@ -279,9 +275,8 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
         cell.contentConfiguration = content
         return cell
     }
-    
-    
-    
+
+
     private func makeAttributedPrice(for pricingPlan: PricingPlan) -> NSAttributedString {
         let priceWithPeriod = pricingPlan.localizedPriceWithPeriod ?? pricingPlan.localizedPrice
         let price = pricingPlan.localizedPrice
@@ -291,7 +286,7 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
             assertionFailure()
             return NSAttributedString()
         }
-        
+
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let mainAttributes: [NSAttributedString.Key: Any] = [
@@ -302,7 +297,7 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
             NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title1),
         ]
-        
+
         let result = NSMutableAttributedString(string: priceWithPeriod, attributes: mainAttributes)
         if let priceRange = priceWithPeriod.range(of: price) {
             let nsPriceRange = NSRange(priceRange, in: priceWithPeriod)
@@ -310,19 +305,19 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
         }
         return result
     }
-    
+
     private func getSubpriceText(for pricingPlan: PricingPlan) -> String? {
         guard let pricingPlan = pricingPlan as? RealPricingPlan,
             let iapProduct = InAppProduct(rawValue: pricingPlan.product.productIdentifier),
             iapProduct.period == .yearly
             else { return nil }
-        
+
         let yearlyPrice = pricingPlan.product.price
         let monthlyPrice = yearlyPrice.dividing(by: 12)
         let localizedMonthlyPrice = SKProduct.localizePrice(
             price: monthlyPrice,
             locale: pricingPlan.product.priceLocale)
-        let result =  String.localizedStringWithFormat(
+        let result = String.localizedStringWithFormat(
             LString.priceTemplateEquivalentMonthly,
             localizedMonthlyPrice)
         return result

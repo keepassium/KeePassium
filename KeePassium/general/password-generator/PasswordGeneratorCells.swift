@@ -11,10 +11,10 @@ import KeePassiumLib
 final class PasswordGeneratorFixedSetCell: UITableViewCell {
     static let buttonSize = 29
     static let buttonSpacing = 8
-    
+
     typealias ValueChangeHandler = (InclusionCondition) -> Void
     var valueChangeHandler: ValueChangeHandler?
-    
+
     var value: InclusionCondition = .allowed {
         didSet {
             switch value {
@@ -31,27 +31,27 @@ final class PasswordGeneratorFixedSetCell: UITableViewCell {
             imageView?.image = value.image
         }
     }
-    
+
     override var isAccessibilityElement: Bool {
-        set { /* no-op, read-only */ }
         get { true }
+        set { /* no-op, read-only */ }
     }
     override var accessibilityTraits: UIAccessibilityTraits {
-        set { /* no-op, read-only */ }
         get { .adjustable }
+        set { /* no-op, read-only */ }
     }
     override var accessibilityValue: String? {
-        set { /* no-op, read-only */ }
         get { value.description }
+        set { /* no-op, read-only */ }
     }
-    
+
     fileprivate var selectorView: ConditionSelectorView!
     var availableValues: [InclusionCondition] = [] {
         didSet {
             selectorView.setButtons(for: availableValues)
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -65,7 +65,7 @@ final class PasswordGeneratorFixedSetCell: UITableViewCell {
         }
         accessoryView = selectorView
     }
-    
+
     override func accessibilityIncrement() {
         guard var index = availableValues.firstIndex(of: value) else {
             assertionFailure("Current value is not among the available ones")
@@ -78,7 +78,7 @@ final class PasswordGeneratorFixedSetCell: UITableViewCell {
         value = availableValues[index]
         valueChangeHandler?(value)
     }
-    
+
     override func accessibilityDecrement() {
         guard var index = availableValues.firstIndex(of: value) else {
             assertionFailure("Current value is not among the available ones")
@@ -94,7 +94,7 @@ final class PasswordGeneratorFixedSetCell: UITableViewCell {
 }
 
 extension PasswordGeneratorFixedSetCell {
-    
+
     fileprivate class OptionButton: UIButton {
         override var isSelected: Bool {
             didSet {
@@ -104,7 +104,7 @@ extension PasswordGeneratorFixedSetCell {
     }
     fileprivate class ConditionSelectorView: UIStackView {
         var valueChangeHandler: ValueChangeHandler?
-        
+
         private var buttons = [InclusionCondition: OptionButton]()
         var value: InclusionCondition? {
             didSet {
@@ -116,7 +116,7 @@ extension PasswordGeneratorFixedSetCell {
                 }
             }
         }
-        
+
         override init(frame: CGRect) {
             super.init(frame: frame)
             axis = .horizontal
@@ -127,7 +127,7 @@ extension PasswordGeneratorFixedSetCell {
             value = .allowed
             isAccessibilityElement = false 
         }
-        
+
         deinit {
             buttons.removeAll()
         }
@@ -138,7 +138,7 @@ extension PasswordGeneratorFixedSetCell {
                 $0.removeFromSuperview()
             }
         }
-        
+
         public func setButtons(for conditions: [InclusionCondition]) {
             resetButtons()
             bounds = CGRect(
@@ -165,11 +165,11 @@ extension PasswordGeneratorFixedSetCell {
             }
             value = conditions.first!
         }
-        
+
         required init(coder aDecoder: NSCoder) {
             fatalError("Not implemented")
         }
-        
+
         @objc
         private func didPressButton(_ button: UIButton) {
             guard let condition = buttons.first(where: { $1 === button })?.key else {
@@ -185,10 +185,10 @@ extension PasswordGeneratorFixedSetCell {
 
 final class PasswordGeneratorStepperCell: UITableViewCell {
     private let maxValue = 6
-    
+
     typealias ValueChangeHandler = (Int?) -> Void
     var valueChangeHandler: ValueChangeHandler?
-    
+
     var title: String? {
         get { textLabel?.text }
         set {
@@ -196,7 +196,7 @@ final class PasswordGeneratorStepperCell: UITableViewCell {
             stepper.accessibilityLabel = newValue
         }
     }
-    var value: Int? = nil {
+    var value: Int? {
         didSet {
             stepper.value = Double(value ?? maxValue)
             let description = getDescription(for: value)
@@ -204,12 +204,12 @@ final class PasswordGeneratorStepperCell: UITableViewCell {
             stepper.accessibilityValue = description
         }
     }
-    
+
     fileprivate var stepper: UIStepper!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         selectionStyle = .none
         stepper = AccessibleStepper(frame: CGRect.zero)
         stepper.minimumValue = 1
@@ -217,11 +217,11 @@ final class PasswordGeneratorStepperCell: UITableViewCell {
         stepper.value = stepper.maximumValue
         stepper.addTarget(self, action: #selector(stepperDidChangeValue(_:)), for: .valueChanged)
         accessoryView = stepper
-        
+
         isAccessibilityElement = false 
         accessibilityElements = [stepper as Any]
     }
-    
+
     @objc private func stepperDidChangeValue(_ sender: UIStepper) {
         let senderValue = Int(sender.value)
         if senderValue == maxValue {
@@ -231,7 +231,7 @@ final class PasswordGeneratorStepperCell: UITableViewCell {
         }
         valueChangeHandler?(self.value)
     }
-    
+
     private func getDescription(for value: Int?) -> String {
         if let value = value {
             return String(value)
