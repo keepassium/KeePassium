@@ -1,5 +1,21 @@
 #CHANGELOG
 
+## [1.46.140] - 2023-10-24
+
+### Added
+
+- Drag-and-drop attachments to entry viewer
+
+### Improved
+
+- Added SwiftLint to enforce consistent code style
+
+### Fixed
+
+- Ask network permission before favicon download (fixes #321) [thanks, vit9696]
+- DB timeout did not lock both panes on macOS (regression in 1.46.139; closes #322) [thanks, vit9696]
+
+
 ## [1.46.139] - 2023-10-05
 
 ### Added 

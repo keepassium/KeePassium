@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.46",
-            "releaseDate": "2023-10-05T00:00:00Z",
+            "releaseDate": "2023-10-24T00:00:00Z",
             "items": [
                 {
                     "title": "🧩 Added: Password audit tool (powered by the 'Have I Been Pwned' service) [thanks, everyone]",
@@ -22,6 +22,10 @@
                 },
                 {
                     "title": "🧩 Added: A button to reload the currently opened DB",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Drag-and-drop attachments to entry viewer",
                     "type": 1
                 },
                 {
@@ -49,7 +53,7 @@
                     "type": 1
                 },
                 {
-                    "title": "🛠 Changed: Intune: update MSAL version to 1.2.3",
+                    "title": "🛠 Changed: Intune: updated MSAL version to 1.2.3",
                     "type": 1
                 },
                 {
