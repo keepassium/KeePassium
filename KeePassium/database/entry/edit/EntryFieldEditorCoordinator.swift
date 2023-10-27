@@ -377,14 +377,14 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         }
 
         viewController.isDownloadingFavicon = true
-        viewController.refresh() 
+        refresh() 
         downloadFavicon(for: url, in: viewController) { [weak self, weak viewController] image in
             guard let self, let viewController else { return }
             viewController.isDownloadingFavicon = false
             if let image {
                 self.changeIcon(image: image)
             }
-            viewController.refresh()
+            refresh()
         }
     }
 }
