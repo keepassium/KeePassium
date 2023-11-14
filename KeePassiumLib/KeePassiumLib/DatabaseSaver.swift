@@ -170,11 +170,12 @@ public class DatabaseSaver: ProgressObserver {
         }
 
         Diag.info("Checking original database for out-of-band changes")
+        let phase2Timeout = Timeout(duration: timeoutDuration)
         FileDataProvider.read(
             databaseFile.fileURL,
             fileProvider: databaseFile.fileProvider,
             queue: operationQueue,
-            timeout: timeout,
+            timeout: phase2Timeout,
             completionQueue: operationQueue,
             completion: { [self] result in
                 assert(operationQueue.isCurrent)
