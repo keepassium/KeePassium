@@ -213,7 +213,8 @@ extension OneDriveManager {
         let errorKind = (error as? String) ?? "OneDriveError"
         let suberrorKind = json[OneDriveAPI.Keys.suberror] as? String
         switch (errorKind, suberrorKind) {
-        case ("invalid_grant", "token_expired"):
+        case ("invalid_grant", "token_expired"),
+             ("invalid_grant", .none):
             Diag.warning("Authorization token expired")
             return .authorizationRequired
         default:
