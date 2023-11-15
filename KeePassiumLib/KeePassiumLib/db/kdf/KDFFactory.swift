@@ -15,6 +15,10 @@ protocol KeyDerivationFunction {
 
     func initProgress() -> ProgressEx
 
+    func parseParams(_ kdfParams: KDFParams, to settings: inout EncryptionSettings)
+
+    func apply(_ settings: EncryptionSettings, to kdfParams: inout KDFParams)
+
     init()
 
     func transform(key: SecureBytes, params: KDFParams) throws -> SecureBytes

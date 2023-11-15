@@ -1195,6 +1195,8 @@
 		F331EF2E2A8509B30084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF2D2A8509B30084473D /* Zxcvbn */; };
 		F331EF302A8509BA0084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF2F2A8509BA0084473D /* Zxcvbn */; };
 		F34010A32AA1E540005FDF55 /* ExposureCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34010A22AA1E540005FDF55 /* ExposureCountFormatter.swift */; };
+		F35DBC842AED5B2D00B33757 /* EncryptionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */; };
+		F35DBC862AED5C5400B33757 /* EncryptionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */; };
 		F36296892A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */; };
 		F37338FF2AACCAFC007188D2 /* FaviconDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */; };
 		F37339002AACCAFD007188D2 /* FaviconDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */; };
@@ -2410,6 +2412,8 @@
 		F30D036E2A7BE83A0047525F /* PasswordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQuality.swift; sourceTree = "<group>"; };
 		F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditServiceTests.swift; sourceTree = "<group>"; };
 		F34010A22AA1E540005FDF55 /* ExposureCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureCountFormatter.swift; sourceTree = "<group>"; };
+		F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettingsVC.swift; sourceTree = "<group>"; };
+		F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditResultCell.swift; sourceTree = "<group>"; };
 		F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloader.swift; sourceTree = "<group>"; };
 		F377C9AC2AA74F9000266397 /* FaviconDownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloaderTests.swift; sourceTree = "<group>"; };
@@ -2999,6 +3003,7 @@
 		758BF0D920D21EE500897C83 /* general */ = {
 			isa = PBXGroup;
 			children = (
+				F35DBC802AED5B0800B33757 /* encryption-settings */,
 				F377C9A92AA74A0600266397 /* favicon-downloader */,
 				F37CAA252A87D4C70000EF64 /* password-audit */,
 				F30D036D2A7BE8300047525F /* password-quality */,
@@ -3246,6 +3251,15 @@
 				F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */,
 			);
 			path = "password-quality";
+			sourceTree = "<group>";
+		};
+		F35DBC802AED5B0800B33757 /* encryption-settings */ = {
+			isa = PBXGroup;
+			children = (
+				F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */,
+				F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */,
+			);
+			path = "encryption-settings";
 			sourceTree = "<group>";
 		};
 		F377C9A92AA74A0600266397 /* favicon-downloader */ = {
@@ -4232,6 +4246,7 @@
 				75E371942108CA08002602BD /* ProgressOverlay.swift in Sources */,
 				759A430C26206D7F0074C375 /* GroupEditorCoordinator.swift in Sources */,
 				75C11F1E22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
+				F35DBC862AED5C5400B33757 /* EncryptionSettingsCoordinator.swift in Sources */,
 				75FC842E2AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */,
 				7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */,
 				75BF1960283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
@@ -4291,6 +4306,7 @@
 				75D99DE9269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				7579A06A24F074D500C98F24 /* AppHistory.swift in Sources */,
 				F377C9AB2AA74A1A00266397 /* FaviconDownloader.swift in Sources */,
+				F35DBC842AED5B2D00B33757 /* EncryptionSettingsVC.swift in Sources */,
 				7596174E29082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */,
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* EntryViewerPagesVC.swift in Sources */,

@@ -22,6 +22,12 @@ extension LString {
         comment: "Number of bits. For example: '123 bits of entropy'. IMPORTANT: Please fill out all the plural forms."
     )
 
+    public static let threadCountTemplate = NSLocalizedString(
+        "[Generic/Count/Threads]",
+        bundle: Bundle.framework,
+        comment: "Number of computation threads. For example: '4 threads'. IMPORTANT: Please fill out all the plural forms."
+    )
+
     public static let actionOK = NSLocalizedString(
         "[Generic] OK",
         bundle: Bundle.framework,

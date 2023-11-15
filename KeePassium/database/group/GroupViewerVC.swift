@@ -17,6 +17,7 @@ protocol GroupViewerDelegate: AnyObject {
     func didPressPasswordAudit(in viewController: GroupViewerVC)
     func didPressFaviconsDownload(in viewController: GroupViewerVC)
     func didPressPasswordGenerator(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
+    func didPressEncryptionSettings(in viewController: GroupViewerVC)
 
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool
 
@@ -101,6 +102,7 @@ final class GroupViewerVC:
     }
 
     var canDownloadFavicons: Bool = true
+    var canChangeEncryptionSettings: Bool = true
 
     private var titleView = DatabaseItemTitleView()
 
@@ -323,21 +325,39 @@ final class GroupViewerVC:
             }
         )
 
+        let encryptionSettingsAction = UIAction(
+            title: LString.titleEncryptionSettings,
+            image: .symbol(.lockShield),
+            handler: { [weak self] _ in
+                guard let self else { return }
+                self.delegate?.didPressEncryptionSettings(in: self)
+            }
+        )
+
         if !actionPermissions.canEditDatabase {
             changeMasterKeyAction.attributes.insert(.disabled)
             faviconsDownloadAction.attributes.insert(.disabled)
+            encryptionSettingsAction.attributes.insert(.disabled)
         }
 
-        let lockMenu = UIMenu(options: [.displayInline], children: [lockDatabaseAction])
-
-        var menuElements = [
-                changeMasterKeyAction,
+        let frequentMenu = UIMenu(
+            options: [.displayInline],
+            children: [
                 passwordAuditAction,
                 canDownloadFavicons ? faviconsDownloadAction : nil,
                 printDatabaseAction,
-                lockMenu
             ].compactMap { $0 }
-        // swiftlint:disable:previous literal_expression_end_indentation
+        )
+        let rareMenu = UIMenu(
+            options: [.displayInline],
+            children: [
+                changeMasterKeyAction,
+                canChangeEncryptionSettings ? encryptionSettingsAction : nil,
+            ].compactMap { $0 }
+        )
+        let lockMenu = UIMenu(options: [.displayInline], children: [lockDatabaseAction])
+
+        var menuElements = [frequentMenu, rareMenu, lockMenu]
         if #available(iOS 16, *) {
             barButton.preferredMenuElementOrder = .fixed
         } else {

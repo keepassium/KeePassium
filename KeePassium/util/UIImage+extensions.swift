@@ -85,6 +85,7 @@ public enum SymbolName: String {
     case keyboard = "keyboard" 
     case listBullet = "list.bullet" 
     case lock = "lock" 
+    case lockShield = "lock.shield"
     case minus = "minus" 
     case network = "network" 
     case networkBadgeShield = "network.badge.shield" 

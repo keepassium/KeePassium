@@ -138,6 +138,62 @@ extension LString {
         comment: "Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.)")
 
 
+    public static let actionChangeEncryptionSettings = NSLocalizedString(
+        "[Database/EncryptionSettings/Change/action]",
+        bundle: Bundle.framework,
+        value: "Change Encryption Settings",
+        comment: "Action to modify database encryption settings."
+    )
+    public static let titleEncryptionSettings = NSLocalizedString(
+        "[Database/EncryptionSettings/title]",
+        bundle: Bundle.framework,
+        value: "Encryption Settings",
+        comment: "Title: database encryption settings."
+    )
+    public static let encryptionSettingsDataCipher = NSLocalizedString(
+        "[Database/EncryptionSettings/dataCipher]",
+        bundle: Bundle.framework,
+        value: "Encryption Algorithm",
+        comment: "Parameter name in database encryption settings. Example: 'Encryption Algorithm: AES-256'"
+    )
+    public static let encryptionSettingsKDF = NSLocalizedString(
+        "[Database/EncryptionSettings/kdf]",
+        bundle: Bundle.framework,
+        value: "Key Derivation Function",
+        comment: "Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2'"
+    )
+    public static let encryptionSettingsIterations = NSLocalizedString(
+        "[Database/EncryptionSettings/iterations]",
+        bundle: Bundle.framework,
+        value: "Transform Rounds",
+        comment: "Parameter name in database encryption settings. Defines the number of times/iterations a calculation (transform) should be executed. Example: 'Transform Rounds: 100'"
+    )
+    public static let encryptionSettingsMemory = NSLocalizedString(
+        "[Database/EncryptionSettings/memory]",
+        bundle: Bundle.framework,
+        value: "Memory Usage",
+        comment: "Parameter name in database encryption settings. Defines the amount of memory that should be used by an algorithm. Example: 'Memory Usage: 16 MB'"
+    )
+    public static let encryptionSettingsThreads = NSLocalizedString(
+        "[Database/EncryptionSettings/threads]",
+        bundle: Bundle.framework,
+        value: "Parallelism",
+        comment: "Parameter name in database encryption settings. Defines the number of computations to run in parallel/simultaneously. Example: 'Parallelism: 2 threads'"
+    )
+    public static let encryptionSettingsReset = NSLocalizedString(
+        "[Database/EncryptionSettings/reset]",
+        bundle: Bundle.framework,
+        value: "Reset to Recommended Settings",
+        comment: "Action/button button in database encryption settings. Resets the settings to recommended values."
+    )
+    public static let encryptionMemoryAutoFillWarning = NSLocalizedString(
+        "[Database/EncryptionSettings/memoryAutoFillWarning]",
+        bundle: Bundle.framework,
+        value: "High memory requirements can make this database incompatible with Password AutoFill.",
+        comment: "Warning for too high value of the `Memory usage` parameter in database encryption settings."
+    )
+
+
     public static let callToActionChooseDestinationGroup = NSLocalizedString(
         "[General/DestinationGroup/title] Choose a Destination",
         bundle: Bundle.framework,

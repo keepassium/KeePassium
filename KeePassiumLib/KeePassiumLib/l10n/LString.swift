@@ -84,7 +84,13 @@ public enum LString {
     }
 
 
-    enum Warning {
+    public enum Warning {
+        public static let iconWithMessageTemplate = NSLocalizedString(
+            "[Generic/WarningWithIcon/template]",
+            bundle: Bundle.framework,
+            value: "⚠️ %@",
+            comment: "Warning message template. Swap the icon and message for right-to-left languages."
+        )
         public static let fileIsInTrashTemplate = NSLocalizedString(
             "[File/In Trash/warning]",
             bundle: Bundle.framework,

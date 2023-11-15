@@ -133,6 +133,9 @@ public class Database2: Database {
     private(set) var header: Header2!
     private(set) var meta: Meta2!
     public var formatVersion: FormatVersion { header.formatVersion }
+    public var encryptionSettings: EncryptionSettings {
+        EncryptionSettings(header: header)
+    }
     public var binaries: [Binary2.ID: Binary2] = [:]
     public var customIcons: [CustomIcon2] { return meta.customIcons }
     public var defaultUserName: String { return meta.defaultUserName }
@@ -189,8 +192,24 @@ public class Database2: Database {
         }
     }
 
+    public func formatUpgradeRequired(for settings: EncryptionSettings) -> FormatVersion? {
+        switch (settings.kdf, settings.dataCipher) {
+        case (.argon2d, _), (.argon2id, _), (_, .chaCha20):
+            if .v4 > header.formatVersion {
+                return .v4
+            }
+            return nil
+        default:
+            return nil
+        }
+    }
+
     public func upgradeFormatVersion(to newerVersion: FormatVersion) {
         header.upgradeFormatVersion(to: newerVersion)
+    }
+
+    public func applyEncryptionSettings(settings: EncryptionSettings) {
+        header.applyEncryptionSettings(settings: settings)
     }
 
     override public class func isSignatureMatches(data: ByteArray) -> Bool {

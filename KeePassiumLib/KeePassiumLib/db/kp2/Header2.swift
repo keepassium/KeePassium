@@ -242,24 +242,19 @@ final class Header2: Eraseable {
 
     func loadDefaultValuesV4() {
         formatVersion = .v4
+        applyEncryptionSettings(settings: EncryptionSettings.default)
 
-        dataCipher = ChaCha20DataCipher()
+
+        initialized = true
+    }
+
+    func applyEncryptionSettings(settings: EncryptionSettings) {
+        dataCipher = settings.dataCipher.cipher
         fields[.cipherID] = dataCipher.uuid.data
 
-        kdf = Argon2dKDF()
+        kdf = settings.kdf.function
         kdfParams = kdf.defaultParams
-        let iterations: UInt64 = 100
-        let memory: UInt64 = 1 * 1024 * 1024
-        let parallelism: UInt32 = 2
-        kdfParams.setValue(
-            key: AbstractArgon2KDF.iterationsParam,
-            value: VarDict.TypedValue(value: iterations))
-        kdfParams.setValue(
-            key: AbstractArgon2KDF.memoryParam,
-            value: VarDict.TypedValue(value: memory))
-        kdfParams.setValue(
-            key: AbstractArgon2KDF.parallelismParam,
-            value: VarDict.TypedValue(value: parallelism))
+        kdf.apply(settings, to: &kdfParams)
         fields[.kdfParameters] = kdfParams.data!
 
         let compressionFlags = UInt32(exactly: CompressionAlgorithm.gzipCompression.rawValue)!
@@ -268,9 +263,6 @@ final class Header2: Eraseable {
         innerStreamAlgorithm = .ChaCha20
 
         fields[.publicCustomData] = ByteArray()
-
-
-        initialized = true
     }
 
     private func verifyFileSignature(stream: ByteArray.InputStream, headerSize: inout Int) throws {

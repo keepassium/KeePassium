@@ -315,6 +315,7 @@ extension DatabaseViewerCoordinator {
         groupViewerVC.delegate = self
         groupViewerVC.group = group
         groupViewerVC.canDownloadFavicons = database is Database2
+        groupViewerVC.canChangeEncryptionSettings = database is Database2
 
         let isCustomTransition = replacingTopVC && animated
         if isCustomTransition {
@@ -440,7 +441,7 @@ extension DatabaseViewerCoordinator {
     }
 
     private func showPasswordAuditOrOfferPremium(in viewController: UIViewController) {
-        self.showPasswordAudit(in: viewController)
+        showPasswordAudit(in: viewController)
     }
 
     private func showPasswordAudit(in viewController: UIViewController) {
@@ -457,6 +458,22 @@ extension DatabaseViewerCoordinator {
         passwordAuditCoordinator.start()
         viewController.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(passwordAuditCoordinator)
+    }
+
+    private func showEncryptionSettings(in viewController: UIViewController) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let encryptionSettingsCoordinator = EncryptionSettingsCoordinator(
+            databaseFile: databaseFile,
+            router: modalRouter
+        )
+        encryptionSettingsCoordinator.delegate = self
+        encryptionSettingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+            self?.refresh()
+        }
+        encryptionSettingsCoordinator.start()
+        viewController.present(modalRouter, animated: true, completion: nil)
+        addChildCoordinator(encryptionSettingsCoordinator)
     }
 
     private func downloadFavicons(in viewController: UIViewController) {
@@ -669,6 +686,10 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
 
     func didPressFaviconsDownload(in viewController: GroupViewerVC) {
         downloadFavicons(in: viewController)
+    }
+
+    func didPressEncryptionSettings(in viewController: GroupViewerVC) {
+        showEncryptionSettings(in: viewController)
     }
 
     func didPressPasswordGenerator(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
@@ -1138,6 +1159,8 @@ extension DatabaseViewerCoordinator: PasswordAuditCoordinatorDelegate {
         showEntryEditor(for: entry, at: popoverAnchor, onDismiss: onDismiss)
     }
 }
+
+extension DatabaseViewerCoordinator: EncryptionSettingsCoordinatorDelegate { }
 
 extension DatabaseViewerCoordinator: FaviconDownloading {
     var faviconDownloadingProgressHost: ProgressViewHost? { return self }

@@ -217,7 +217,9 @@
 		75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F594B7221BDC51001729FD /* SettingsMigrator.swift */; };
 		75F74ABA24C082F90071281E /* ReceiptAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74AB924C082F90071281E /* ReceiptAnalyzer.swift */; };
 		75F74ABC24C0EF370071281E /* IARError+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74ABB24C0EF370071281E /* IARError+description.swift */; };
+		F35708AD2AEFD52E00FC2208 /* ThreadCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */; };
 		F380E75C2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */; };
+		F3CC869B2AEE5EEA00B4DA98 /* EncryptionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -487,7 +489,9 @@
 		75F74ABB24C0EF370071281E /* IARError+description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IARError+description.swift"; sourceTree = "<group>"; };
 		75FDEF1D233ABE7800F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75FDEF49233ABED700F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCountFormatter.swift; sourceTree = "<group>"; };
 		F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesSelectedCountFormatter.swift; sourceTree = "<group>"; };
+		F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -839,6 +843,7 @@
 			isa = PBXGroup;
 			children = (
 				75D09BF22174F77000F7DEF2 /* Database2.swift */,
+				F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */,
 				75D09BEF2174F77000F7DEF2 /* Header2.swift */,
 				75D09BFA2174F77000F7DEF2 /* Meta2.swift */,
 				75D09BF82174F77000F7DEF2 /* Group2.swift */,
@@ -893,6 +898,7 @@
 				757C51D029F18192008986F4 /* DomainNameHelper.swift */,
 				754840ED2A52C957001EEF21 /* URLQueryItems+extensions.swift */,
 				75F221282A86591900CB1B5F /* BitCountFormatter.swift */,
+				F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */,
 				F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */,
 				75AEADD32ABC67A8008785D2 /* UIImage+downscaling.swift */,
 			);
@@ -953,7 +959,9 @@
 				75D0C76B2174AF1F00C64C93 /* Products */,
 				75F4ACA22175F4A400B22D8B /* Frameworks */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		75D0C76B2174AF1F00C64C93 /* Products */ = {
 			isa = PBXGroup;
@@ -1290,6 +1298,7 @@
 				7599FE1726C2A51100E3DD67 /* TipBox.swift in Sources */,
 				75D09BE42174F76500F7DEF2 /* encoding.c in Sources */,
 				75D09BE62174F76500F7DEF2 /* Argon2.swift in Sources */,
+				F3CC869B2AEE5EEA00B4DA98 /* EncryptionSettings.swift in Sources */,
 				75F4ACE52177469500B22D8B /* URLReference.swift in Sources */,
 				754025152950700E000ABA73 /* ManagedAppConfig.swift in Sources */,
 				75D5DC452894931E0021DA52 /* DataSourceFactory.swift in Sources */,
@@ -1307,6 +1316,7 @@
 				75CF4C8A2A666D8B0054B05B /* LicenseManager.swift in Sources */,
 				75D09C432174F77000F7DEF2 /* DateExtension-kp1.swift in Sources */,
 				75F221292A86591900CB1B5F /* BitCountFormatter.swift in Sources */,
+				F35708AD2AEFD52E00FC2208 /* ThreadCountFormatter.swift in Sources */,
 				75D09C322174F77000F7DEF2 /* String+extension.swift in Sources */,
 				75E60AE125CF5D310089219C /* DatabaseIconSet.swift in Sources */,
 				75AF1930282E5F6600FA4BB5 /* LString+passGen.swift in Sources */,
