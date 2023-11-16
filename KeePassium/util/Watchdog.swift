@@ -110,7 +110,7 @@ class Watchdog {
         let databaseTimeout = Settings.current.premiumDatabaseLockTimeout
         if databaseTimeout == .immediately && !isIgnoringMinimizationOnce {
             Diag.debug("Going to background: Database Lock engaged")
-            engageDatabaseLock(animate: true)
+            engageDatabaseLock(animate: false)
         }
 
         let appTimeout = Settings.current.appLockTimeout
