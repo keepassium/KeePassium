@@ -208,7 +208,11 @@ final public class NavigationRouter: NSObject {
     public func pop(animated: Bool, completion: (() -> Void)? = nil) {
         let isLastVC = (navigationController.viewControllers.count == 1)
         guard isLastVC else {
-            navigationController.popViewController(animated: animated, completion: completion)
+            let topVC = navigationController.topViewController!
+            navigationController.popViewController(animated: animated, completion: {
+                self.firePopHandler(for: topVC)
+                completion?()
+            })
             return
         }
 
@@ -225,11 +229,16 @@ final public class NavigationRouter: NSObject {
     }
 
     public func popTo(viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
-        navigationController.popToViewController(
-            viewController,
-            animated: animated,
-            completion: completion
-        )
+        guard let upperVC = navigationController.topViewController else {
+            assertionFailure("Tried to pop a view controller, but there are none in the stack.")
+            completion?()
+            return
+        }
+        let lowerVC = viewController
+        navigationController.popToViewController(viewController, animated: animated, completion: {
+            self.firePopHandlersBetween(upperVC, lowerVC, ignoreUpper: false)
+            completion?()
+        })
     }
 
     public func pop(
@@ -441,19 +450,14 @@ extension UIViewController {
     }
 }
 
-extension UINavigationController {
+fileprivate extension UINavigationController {
     func popViewController(animated: Bool, completion: (() -> Void)?) {
-        popViewController(animated: animated)
-
-        guard animated, let transitionCoordinator = transitionCoordinator else {
-            DispatchQueue.main.async {
-                completion?()
-            }
-            return
-        }
-        transitionCoordinator.animate(alongsideTransition: nil) { _ in
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
             completion?()
         }
+        popViewController(animated: animated)
+        CATransaction.commit()
     }
 
     func popToViewController(
@@ -461,16 +465,11 @@ extension UINavigationController {
         animated: Bool,
         completion: (() -> Void)?
     ) {
-        popToViewController(viewController, animated: animated)
-
-        guard animated, let transitionCoordinator = transitionCoordinator else {
-            DispatchQueue.main.async {
-                completion?()
-            }
-            return
-        }
-        transitionCoordinator.animate(alongsideTransition: nil) { _ in
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
             completion?()
         }
+        popToViewController(viewController, animated: animated)
+        CATransaction.commit()
     }
 }
