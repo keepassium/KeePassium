@@ -181,20 +181,25 @@ class AutoFillCoordinator: NSObject, Coordinator {
         )
     }
 
+    private func getOTPForClipboard(for entry: Entry) -> String? {
+        guard Settings.current.isCopyTOTPOnAutoFill,
+              let generator = TOTPGeneratorFactory.makeGenerator(for: entry)
+        else {
+            return nil
+        }
+        return generator.generate()
+    }
+
     private func returnCredentials(entry: Entry) {
         log.info("Will return credentials")
         watchdog.restart()
 
-        let settings = Settings.current
-        if settings.isCopyTOTPOnAutoFill,
-           let totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry)
-        {
-            let totpString = totpGenerator.generate()
+        if let otpString = getOTPForClipboard(for: entry) {
             let isCopied = Clipboard.general.insert(
-                text: totpString,
-                timeout: TimeInterval(settings.clipboardTimeout.seconds)
+                text: otpString,
+                timeout: TimeInterval(Settings.current.clipboardTimeout.seconds)
             )
-            let formattedOTP = OTPCodeFormatter.decorate(otpCode: totpString)
+            let formattedOTP = OTPCodeFormatter.decorate(otpCode: otpString)
             if isCopied {
                 LocalNotifications.showTOTPNotification(
                     title: formattedOTP,
@@ -405,10 +410,15 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         in databaseFile: DatabaseFile
     ) {
         assert(!hasUI, "This should run only in pre-UI mode")
-        if let foundEntry = findEntry(matching: record, in: databaseFile) {
-            returnCredentials(entry: foundEntry)
-        } else {
+        guard let foundEntry = findEntry(matching: record, in: databaseFile) else {
             cancelRequest(.credentialIdentityNotFound)
+            return
+        }
+
+        if let totpForClipboard = getOTPForClipboard(for: foundEntry) {
+            cancelRequest(.userInteractionRequired)
+        } else {
+            returnCredentials(entry: foundEntry)
         }
     }
 
