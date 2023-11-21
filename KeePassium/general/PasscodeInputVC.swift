@@ -234,7 +234,9 @@ extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
         else {
             return
         }
-        delegate?.passcodeInput(self, shouldTryPasscode: text)
+        if !Settings.current.isLockAllDatabasesOnFailedPasscode {
+            delegate?.passcodeInput(self, shouldTryPasscode: text)
+        }
     }
 }
 
