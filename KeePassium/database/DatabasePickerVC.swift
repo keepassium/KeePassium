@@ -321,8 +321,16 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
             macOptions: [],
             children: sortMenuItems
         )
+
+        let listMenuTitle: String
+        if #available(iOS 16, *) {
+            listMenuTitle = ""
+        } else {
+            listMenuTitle = LString.titleSortBy
+        }
+        
         return UIMenu.make(
-            title: LString.titleSortBy,
+            title: listMenuTitle,
             reverse: true,
             children: [sortOptionsMenu, backupMenu])
     }
