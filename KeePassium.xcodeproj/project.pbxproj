@@ -158,6 +158,10 @@
 		753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
 		753DF2D0263E0EF20046F185 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
 		753DF2D3263E0EF30046F185 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
+		753E01002B11288E00378C8D /* EncryptionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */; };
+		753E01012B11288E00378C8D /* EncryptionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */; };
+		753E01022B1128A400378C8D /* EncryptionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */; };
+		753E01032B1128A500378C8D /* EncryptionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */; };
 		753F924E2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		753F924F2290705D005E496F /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		753FE83524C1A9A400063FBB /* UIViewController+alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753FE83424C1A9A400063FBB /* UIViewController+alerts.swift */; };
@@ -4345,6 +4349,7 @@
 				75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */,
 				759F69FF29066E110089FB34 /* ConnectionTypePickerVC.swift in Sources */,
 				751A565624CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
+				753E01022B1128A400378C8D /* EncryptionSettingsVC.swift in Sources */,
 				759894B924620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */,
 				75E9E2BB290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
@@ -4470,6 +4475,7 @@
 				758BADBB24B5F8BF00CC9265 /* PricingPlans.swift in Sources */,
 				75B38C31233E5B7C006BDEFC /* PremiumFeature+extension.swift in Sources */,
 				75D7615A262ED2E200B1DE7F /* Coordinator+premium.swift in Sources */,
+				753E01002B11288E00378C8D /* EncryptionSettingsCoordinator.swift in Sources */,
 				75B38C32233E5B7C006BDEFC /* PlaceholderVC.swift in Sources */,
 				75AF1924282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift in Sources */,
 				75876B272646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */,
@@ -4584,6 +4590,7 @@
 				75D075CE28B639D200F02E39 /* AboutCoordinator.swift in Sources */,
 				75D075CF28B639D200F02E39 /* KeyFilePickerVC.swift in Sources */,
 				75D075D028B639D200F02E39 /* RemoteFilePickerVC.swift in Sources */,
+				753E01012B11288E00378C8D /* EncryptionSettingsCoordinator.swift in Sources */,
 				7586227B2A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				75D075D128B639D200F02E39 /* FileProvider+extensions.swift in Sources */,
 				75D075D228B639D200F02E39 /* EntryViewerCoordinator.swift in Sources */,
@@ -4653,6 +4660,7 @@
 				75D0761128B639D200F02E39 /* ProtectedTextField.swift in Sources */,
 				75D0761228B639D200F02E39 /* FileListCell.swift in Sources */,
 				75D0761328B639D200F02E39 /* TextInput+editMenu.swift in Sources */,
+				753E01032B1128A500378C8D /* EncryptionSettingsVC.swift in Sources */,
 				75D0761428B639D200F02E39 /* UIViewController+subviews.swift in Sources */,
 				75D0761528B639D200F02E39 /* Refreshable.swift in Sources */,
 				75D0761628B639D200F02E39 /* PopoverAnchor.swift in Sources */,
