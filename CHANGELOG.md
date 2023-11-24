@@ -1,5 +1,25 @@
 #CHANGELOG
 
+## [1.47.141] - 2023-11-24
+
+### Added
+
+- Possibility to change database encryption settings
+- Support for AppConfig managed settings in corporate deployments
+
+### Improved
+
+- Quick AutoFill can again copy TOTP to clipboard instead of simply showing it (closes #242) [thanks, David]
+
+### Fixed
+
+- "Storage does not respond" error when saving (fixes #327) [thanks, everyone]
+- Sometimes the database did not lock up properly (fixes #322) [thanks, vit9696]
+- When unlocking the app, require pressing the Unlock button when number of failed attempts matters [thanks, J.L.]
+- OneDrive: better detection of "invalid_grant" error
+- Favicon was not always refreshed after download (fixes #323) [thanks, everyone]
+
+
 ## [1.46.140] - 2023-10-24
 
 ### Added

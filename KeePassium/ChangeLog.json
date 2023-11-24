@@ -1,6 +1,44 @@
 {
     "sections": [
         {
+            "version": "1.47",
+            "releaseDate": "2023-11-24T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Possibility to change database encryption settings",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Support for AppConfig managed settings in corporate deployments",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Quick AutoFill can again copy TOTP to clipboard instead of simply showing it (closes #242) [thanks, David]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: \"Storage does not respond\" error when saving (fixes #327) [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Sometimes the database did not lock up properly (fixes #322) [thanks, vit9696]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: When unlocking the app, require pressing the Unlock button when number of failed attempts matters [thanks, J.L.]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: OneDrive: better detection of \"invalid_grant\" error",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Favicon was not always refreshed after download (fixes #323) [thanks, everyone]",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.46",
             "releaseDate": "2023-10-24T00:00:00Z",
             "items": [
