@@ -93,6 +93,7 @@ public enum SymbolName: String {
     case noteText = "note.text" 
     case pencil = "pencil" 
     case person = "person" 
+    case person2BadgeGearshape = "person.2.badge.gearshape" 
     case person3 = "person.3" 
     case photo = "photo" 
     case plus = "plus" 

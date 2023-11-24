@@ -285,6 +285,7 @@ final class SettingsVC: UITableViewController, Refreshable {
 
     @IBAction private func didToggleAutoUnlockStartupDatabase(_ sender: UISwitch) {
         Settings.current.isAutoUnlockStartupDatabase = sender.isOn
+        showNotificationIfManaged(setting: .autoUnlockStartupDatabase)
     }
 
 

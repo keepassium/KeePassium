@@ -86,18 +86,20 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
 
 
     @IBAction private func didToggleRememberMasterKeys(_ sender: UISwitch) {
-        let isRemember = rememberMasterKeysSwitch.isOn
-        Settings.current.isRememberDatabaseKey = isRemember
+        Settings.current.isRememberDatabaseKey = rememberMasterKeysSwitch.isOn
+        let isRemember = Settings.current.isRememberDatabaseKey
         refresh()
+        showNotificationIfManaged(setting: .rememberDatabaseKey)
         if !isRemember {
             didPressClearMasterKeys(self)
         }
     }
 
     @IBAction private func didToggleRememberFinalKeys(_ sender: UISwitch) {
-        let isRemember = rememberFinalKeysSwitch.isOn
-        Settings.current.isRememberDatabaseFinalKey = isRemember
+        Settings.current.isRememberDatabaseFinalKey = rememberFinalKeysSwitch.isOn
+        let isRemember = Settings.current.isRememberDatabaseFinalKey
         refresh()
+        showNotificationIfManaged(setting: .rememberDatabaseFinalKey)
         if !isRemember {
             rememberFinalKeysLabel.flashColor(to: .destructiveTint, duration: 0.7)
             DatabaseSettingsManager.shared.eraseAllFinalKeys()
@@ -116,6 +118,7 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
 
     @IBAction private func didToggleRememberUsedKeyFiles(_ sender: UISwitch) {
         Settings.current.isKeepKeyFileAssociations = sender.isOn
+        showNotificationIfManaged(setting: .keepKeyFileAssociations)
         refresh()
     }
 
@@ -136,6 +139,7 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
         assert(delegate != nil, "This won't work without a delegate")
         delegate?.didToggleLockDatabasesOnTimeout(newValue: sender.isOn, in: self)
         refresh()
+        showNotificationIfManaged(setting: .lockDatabasesOnTimeout)
     }
 
     func didPressClipboardTimeout(_ sender: Any) {
@@ -145,11 +149,13 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @IBAction private func didToggleUniversalClipboardSwitch(_ sender: UISwitch) {
         Settings.current.isUniversalClipboardEnabled = sender.isOn
         refresh()
+        showNotificationIfManaged(setting: .universalClipboardEnabled)
     }
 
     @IBAction private func didToggleHideProtectedFieldsSwitch(_ sender: UISwitch) {
         Settings.current.isHideProtectedFields = sender.isOn
         refresh()
+        showNotificationIfManaged(setting: .hideProtectedFields)
     }
 
 

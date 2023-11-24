@@ -60,6 +60,10 @@ class SettingsBackupTimeoutPickerVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Settings.current.backupKeepingDuration = items[indexPath.row]
         refresh()
-        delegate?.didFinish(self)
+        if Settings.current.isManaged(key: .backupKeepingDuration) {
+            showManagedSettingNotification()
+        } else {
+            delegate?.didFinish(self)
+        }
     }
 }

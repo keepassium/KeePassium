@@ -16,12 +16,23 @@ public final class LicenseManager {
         case unknown
     }
 
-    private func getLicenseKeyString() -> String? {
-        return ManagedAppConfig.shared.getLicenseValue()
+    private var cachedLicenseStatus: Bool?
+    public func hasActiveBusinessLicense() -> Bool {
+        if let cachedLicenseStatus {
+            return cachedLicenseStatus
+        }
+
+        let licenseStatus = isLicensedForBusiness()
+        cachedLicenseStatus = licenseStatus
+        return licenseStatus
+    }
+    
+    internal func checkBusinessLicense() {
+        cachedLicenseStatus = isLicensedForBusiness()
     }
 
-    public func hasActiveBusinessLicense() -> Bool {
-        guard let licenseKey = getLicenseKeyString() else {
+    private func isLicensedForBusiness() -> Bool {
+        guard let licenseKey = ManagedAppConfig.shared.license else {
             return false
         }
 

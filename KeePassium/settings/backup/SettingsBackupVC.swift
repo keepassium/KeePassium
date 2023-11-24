@@ -83,11 +83,13 @@ class SettingsBackupVC: UITableViewController {
     @IBAction private func didToggleEnableDatabaseBackup(_ sender: UISwitch) {
         Settings.current.isBackupDatabaseOnSave = enableDatabaseBackupSwitch.isOn
         refresh()
+        showNotificationIfManaged(setting: .backupDatabaseOnSave)
     }
 
     @IBAction private func didToggleShowBackupFiles(_ sender: UISwitch) {
         Settings.current.isBackupFilesVisible = showBackupFilesSwitch.isOn
         refresh()
+        showNotificationIfManaged(setting: .backupFilesVisible)
     }
 
     func didPressBackupDuration() {
@@ -96,8 +98,9 @@ class SettingsBackupVC: UITableViewController {
     }
 
     @IBAction private func didToggleExcludeFromSystemBackup(_ sender: UISwitch) {
-        let isExclude = excludeFromSystemBackupSwitch.isOn
-        Settings.current.isExcludeBackupFilesFromSystemBackup = isExclude
+        Settings.current.isExcludeBackupFilesFromSystemBackup = excludeFromSystemBackupSwitch.isOn
+        let isExclude = Settings.current.isExcludeBackupFilesFromSystemBackup
+        showNotificationIfManaged(setting: .excludeBackupFilesFromSystemBackup)
 
         excludeFromSystemBackupSwitch.isEnabled = false
         DispatchQueue.main.async { [weak self] in

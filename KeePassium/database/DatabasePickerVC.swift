@@ -299,6 +299,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 let isOn = (action.state == .on)
                 Settings.current.isBackupFilesVisible = !isOn
                 self?.refresh()
+                self?.showNotificationIfManaged(setting: .backupFilesVisible)
             }
         )
         let backupMenu = UIMenu.make(

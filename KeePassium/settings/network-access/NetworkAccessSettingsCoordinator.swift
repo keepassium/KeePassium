@@ -43,5 +43,7 @@ extension NetworkAccessSettingsCoordinator: NetworkAccessSettingsDelegate {
 
     func didChangeNetworkPermission(isAllowed: Bool, in viewController: NetworkAccessSettingsVC) {
         Settings.current.isNetworkAccessAllowed = isAllowed
+        viewController.isAccessAllowed = Settings.current.isNetworkAccessAllowed
+        viewController.showNotificationIfManaged(setting: .networkAccessAllowed)
     }
 }

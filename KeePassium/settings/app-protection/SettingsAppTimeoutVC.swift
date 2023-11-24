@@ -77,8 +77,10 @@ class SettingsAppTimeoutVC: UITableViewController, Refreshable {
     private func configureLaunchTriggerCell(_ cell: SwitchCell) {
         cell.textLabel?.text = LString.lockAppOnLaunchTitle
         cell.theSwitch.isOn = Settings.current.isLockAppOnLaunch
-        cell.onDidToggleSwitch = { theSwitch in
+        cell.onDidToggleSwitch = { [weak self] theSwitch in
             Settings.current.isLockAppOnLaunch = theSwitch.isOn
+            self?.refresh()
+            self?.showNotificationIfManaged(setting: .lockAppOnLaunch)
         }
     }
 
@@ -98,8 +100,13 @@ class SettingsAppTimeoutVC: UITableViewController, Refreshable {
         Settings.current.appLockTimeout = timeout
         Watchdog.shared.restart() 
         refresh()
-        DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
+
+        if Settings.current.isManaged(key: .appLockTimeout) {
+            showManagedSettingNotification()
+        } else {
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }

@@ -130,6 +130,7 @@ final class SettingsAppLockVC: UITableViewController, Refreshable {
 
     @IBAction private func didChangeLockDatabasesOnFailedPasscodeSwitch(_ sender: UISwitch) {
         Settings.current.isLockAllDatabasesOnFailedPasscode = lockDatabasesOnFailedPasscodeSwitch.isOn
+        showNotificationIfManaged(setting: .lockAllDatabasesOnFailedPasscode)
     }
 
     @IBAction private func didToggleBiometricsSwitch(_ sender: UISwitch) {

@@ -146,6 +146,13 @@ public class Settings {
             return self.rawValue
         }
 
+        static func nearest(forSeconds seconds: Int) -> AppLockTimeout {
+            let result = Self.allValues.min(by: { item1, item2 in
+                return abs(item1.seconds - seconds) < abs(item2.seconds - seconds)
+            })
+            return result! 
+        }
+
         public var triggerMode: TriggerMode {
             switch self {
             case .never,
@@ -234,6 +241,13 @@ public class Settings {
             return self.rawValue
         }
 
+        static func nearest(forSeconds seconds: Int) -> DatabaseLockTimeout {
+            let result = Self.allValues.min(by: { item1, item2 in
+                return abs(item1.seconds - seconds) < abs(item2.seconds - seconds)
+            })
+            return result! 
+        }
+
         public static func < (a: DatabaseLockTimeout, b: DatabaseLockTimeout) -> Bool {
             return a.seconds < b.seconds
         }
@@ -305,6 +319,13 @@ public class Settings {
             return self.rawValue
         }
 
+        static func nearest(forSeconds seconds: Int) -> ClipboardTimeout {
+            let result = Self.allValues.min(by: { item1, item2 in
+                return abs(item1.seconds - seconds) < abs(item2.seconds - seconds)
+            })
+            return result! 
+        }
+
         public var fullTitle: String {
             switch self {
             case .never:
@@ -370,6 +391,13 @@ public class Settings {
             default:
                 return TimeInterval(self.rawValue)
             }
+        }
+
+        static func nearest(forSeconds seconds: Int) -> BackupKeepingDuration {
+            let result = Self.allValues.min(by: { item1, item2 in
+                return abs(item1.rawValue - seconds) < abs(item2.rawValue - seconds)
+            })
+            return result! 
         }
 
         public var shortTitle: String {
@@ -784,6 +812,9 @@ public class Settings {
 
     public var isBackupFilesVisible: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.showBackupFiles) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.backupFilesVisible.rawValue)
                 as? Bool
@@ -819,6 +850,9 @@ public class Settings {
 
     public var isAutoUnlockStartupDatabase: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.autoUnlockLastDatabase) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.autoUnlockStartupDatabase.rawValue)
                 as? Bool
@@ -834,6 +868,9 @@ public class Settings {
 
     public var isRememberDatabaseKey: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.rememberDatabaseKey) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.rememberDatabaseKey.rawValue)
                 as? Bool
@@ -849,6 +886,9 @@ public class Settings {
 
     public var isRememberDatabaseFinalKey: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.rememberDatabaseFinalKey) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.rememberDatabaseFinalKey.rawValue)
                 as? Bool
@@ -864,6 +904,9 @@ public class Settings {
 
     public var isKeepKeyFileAssociations: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.keepKeyFileAssociations) {
+                return managedValue
+            }
             if contains(key: Keys.keepKeyFileAssociations) {
                 return UserDefaults.appGroupShared.bool(forKey: Keys.keepKeyFileAssociations.rawValue)
             } else {
@@ -884,6 +927,9 @@ public class Settings {
 
     public var isKeepHardwareKeyAssociations: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.keepHardwareKeyAssociations) {
+                return managedValue
+            }
             if contains(key: Keys.keepHardwareKeyAssociations) {
                 return UserDefaults.appGroupShared.bool(forKey: Keys.keepHardwareKeyAssociations.rawValue)
             } else {
@@ -929,6 +975,12 @@ public class Settings {
 
     public var isLockAllDatabasesOnFailedPasscode: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.lockAllDatabasesOnFailedPasscode) {
+                return managedValue
+            }
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.lockAllDatabasesOnFailedPasscode) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.lockAllDatabasesOnFailedPasscode.rawValue)
                 as? Bool
@@ -976,6 +1028,11 @@ public class Settings {
 
     public var appLockTimeout: AppLockTimeout {
         get {
+            if let managedValue = ManagedAppConfig.shared.getIntIfLicensed(.appLockTimeout) {
+                let nearestTimeout = AppLockTimeout.nearest(forSeconds: managedValue)
+                return maybeFixAutoFillBiometricIDLoop(nearestTimeout)
+            }
+
             if let rawValue = UserDefaults.appGroupShared
                     .object(forKey: Keys.appLockTimeout.rawValue) as? Int,
                let timeout = AppLockTimeout(rawValue: rawValue)
@@ -995,6 +1052,9 @@ public class Settings {
 
     public var isLockAppOnLaunch: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.lockAppOnLaunch) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.lockAppOnLaunch.rawValue)
                 as? Bool
@@ -1010,6 +1070,11 @@ public class Settings {
 
     public var databaseLockTimeout: DatabaseLockTimeout {
         get {
+            if let managedValue = ManagedAppConfig.shared.getIntIfLicensed(.databaseLockTimeout) {
+                let nearestTimeout = DatabaseLockTimeout.nearest(forSeconds: managedValue)
+                return nearestTimeout
+            }
+
             if let rawValue = UserDefaults.appGroupShared
                     .object(forKey: Keys.databaseLockTimeout.rawValue) as? Int,
                let timeout = DatabaseLockTimeout(rawValue: rawValue)
@@ -1031,6 +1096,9 @@ public class Settings {
 
     public var isLockDatabasesOnTimeout: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.lockDatabasesOnTimeout) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.lockDatabasesOnTimeout.rawValue)
                 as? Bool
@@ -1047,6 +1115,11 @@ public class Settings {
 
     public var clipboardTimeout: ClipboardTimeout {
         get {
+            if let managedValue = ManagedAppConfig.shared.getIntIfLicensed(.clipboardTimeout) {
+                let nearestTimeout = ClipboardTimeout.nearest(forSeconds: managedValue)
+                return nearestTimeout
+            }
+
             if let rawValue = UserDefaults.appGroupShared
                     .object(forKey: Keys.clipboardTimeout.rawValue) as? Int,
                let timeout = ClipboardTimeout(rawValue: rawValue)
@@ -1066,6 +1139,9 @@ public class Settings {
 
     public var isUniversalClipboardEnabled: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.useUniversalClipboard) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.universalClipboardEnabled.rawValue)
                 as? Bool
@@ -1149,6 +1225,9 @@ public class Settings {
 
     public var isHideProtectedFields: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.hideProtectedFields) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.hideProtectedFields.rawValue) as? Bool
             return stored ?? true
@@ -1246,6 +1325,9 @@ public class Settings {
 
     public var isBackupDatabaseOnSave: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.backupDatabaseOnSave) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.backupDatabaseOnSave.rawValue)
                 as? Bool
@@ -1261,6 +1343,11 @@ public class Settings {
 
     public var backupKeepingDuration: BackupKeepingDuration {
         get {
+            if let managedValue = ManagedAppConfig.shared.getIntIfLicensed(.backupKeepingDuration) {
+                let nearestDuration = BackupKeepingDuration.nearest(forSeconds: managedValue)
+                return nearestDuration
+            }
+
             if let stored = UserDefaults.appGroupShared
                     .object(forKey: Keys.backupKeepingDuration.rawValue) as? Int,
                let timeout = BackupKeepingDuration(rawValue: stored)
@@ -1282,6 +1369,9 @@ public class Settings {
 
     public var isExcludeBackupFilesFromSystemBackup: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.excludeBackupFilesFromSystemBackup) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.excludeBackupFilesFromSystemBackup.rawValue)
                 as? Bool
@@ -1360,6 +1450,9 @@ public class Settings {
 
     public var isQuickTypeEnabled: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.enableQuickTypeAutoFill) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.quickTypeEnabled.rawValue)
                 as? Bool
@@ -1391,6 +1484,9 @@ public class Settings {
 
     public var isHideAppLockSetupReminder: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.hideAppLockSetupReminder) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.hideAppLockSetupReminder.rawValue)
                 as? Bool
@@ -1486,6 +1582,9 @@ public class Settings {
 
     public var isNetworkAccessAllowed: Bool {
         get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.allowNetworkAccess) {
+                return managedValue
+            }
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.networkAccessAllowed.rawValue) as? Bool
             return stored ?? false
@@ -1605,6 +1704,64 @@ public class Settings {
                 Notifications.userInfoKey: changedKey.rawValue
             ]
         )
+    }
+}
+
+extension Settings.Keys {
+    internal var managedKeyMapping: ManagedAppConfig.Key? {
+        switch self {
+        case .backupFilesVisible:
+            return .showBackupFiles
+        case .autoUnlockStartupDatabase:
+            return .autoUnlockLastDatabase
+        case .rememberDatabaseKey:
+            return .rememberDatabaseKey
+        case .rememberDatabaseFinalKey:
+            return .rememberDatabaseFinalKey
+        case .keepKeyFileAssociations:
+            return .keepKeyFileAssociations
+        case .keepHardwareKeyAssociations:
+            return .keepHardwareKeyAssociations
+        case .lockAllDatabasesOnFailedPasscode:
+            return .lockAllDatabasesOnFailedPasscode
+        case .appLockTimeout:
+            return .appLockTimeout
+        case .lockAppOnLaunch:
+            return .lockAppOnLaunch
+        case .databaseLockTimeout:
+            return .databaseLockTimeout
+        case .lockDatabasesOnTimeout:
+            return .lockDatabasesOnTimeout
+        case .clipboardTimeout:
+            return .clipboardTimeout
+        case .universalClipboardEnabled:
+            return .useUniversalClipboard
+        case .hideProtectedFields:
+            return .hideProtectedFields
+        case .backupDatabaseOnSave:
+            return .backupDatabaseOnSave
+        case .backupKeepingDuration:
+            return .backupKeepingDuration
+        case .excludeBackupFilesFromSystemBackup:
+            return .excludeBackupFilesFromSystemBackup
+        case .quickTypeEnabled:
+            return .enableQuickTypeAutoFill
+        case .networkAccessAllowed:
+            return .allowNetworkAccess
+        case .hideAppLockSetupReminder:
+            return .hideAppLockSetupReminder
+        default:
+            return nil
+        }
+    }
+}
+
+extension Settings {
+    public func isManaged(key: Keys) -> Bool {
+        guard let managedKey = key.managedKeyMapping else {
+            return false
+        }
+        return ManagedAppConfig.shared.isManaged(key: managedKey)
     }
 }
 

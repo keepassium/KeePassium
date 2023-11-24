@@ -43,15 +43,19 @@ extension UIViewController {
             completion(true)
             return
         }
+
+        let isManaged = Settings.current.isManaged(key: .networkAccessAllowed)
         let networkModeAlert = UIAlertController(
             title: LString.titleNetworkAccessSettings,
-            message: LString.allowNetwokAccessQuestionText,
+            message: isManaged ? LString.thisSettingIsManaged : LString.allowNetwokAccessQuestionText,
             preferredStyle: .alert
         )
-        networkModeAlert.addAction(title: LString.titleAllowNetworkAccess, style: .default) { _ in
-            Diag.info("Network access is allowed by the user")
-            Settings.current.isNetworkAccessAllowed = true
-            completion(true)
+        if !isManaged {
+            networkModeAlert.addAction(title: LString.titleAllowNetworkAccess, style: .default) { _ in
+                Diag.info("Network access is allowed by the user")
+                Settings.current.isNetworkAccessAllowed = true
+                completion(true)
+            }
         }
         networkModeAlert.addAction(title: LString.titleStayOffline, style: .cancel) { _ in
             Diag.info("Network access is denied by the user")
@@ -104,6 +108,21 @@ extension UIViewController {
         showNotification(
             message,
             image: .symbol(icon)
+        )
+    }
+
+    func showNotificationIfManaged(setting key: Settings.Keys) {
+        if Settings.current.isManaged(key: key) {
+            showManagedSettingNotification()
+        }
+    }
+
+    func showManagedSettingNotification() {
+        hideAllToasts()
+        showNotification(
+            LString.thisSettingIsManaged,
+            image: .symbol(.person2BadgeGearshape)?
+                .withTintColor(.iconTint, renderingMode: .alwaysOriginal)
         )
     }
 

@@ -148,6 +148,7 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
 
     @IBAction private func didToggleHideProtectedFieldsSwitch(_ sender: UISwitch) {
         Settings.current.isHideProtectedFields = hideProtectedFieldsSwitch.isOn
+        showNotificationIfManaged(setting: .hideProtectedFields)
     }
 
     @IBAction private func didPressResetTextParameters(_ sender: Any) {
